@@ -1,0 +1,21 @@
+{
+  "name": "iov-ponferrada-root",
+  "description": "IOV Frontend packages",
+  "private": true,
+  "author": "IOV SAS <admin@iov.one>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/iov-one/ponferrada",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iov-one/ponferrada.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iov-one/ponferrada/issues"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.13.0"
+  }
+}
