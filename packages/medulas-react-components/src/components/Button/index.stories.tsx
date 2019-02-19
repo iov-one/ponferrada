@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import Button from './Button'
+import Button from './index'
 
 
 storiesOf('Button', module)

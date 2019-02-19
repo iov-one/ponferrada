@@ -9,6 +9,16 @@
     "type": "git",
     "url": "https://github.com/iov-one/ponferrada.git"
   },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "docs": "lerna run docs",
+    "release": "lerna run build && lerna publish",
+    "clean": "rm -rf ./packages/*/docs/"
+  },
   "bugs": {
     "url": "https://github.com/iov-one/ponferrada/issues"
   },

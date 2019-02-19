@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'medulas-react-components/src/components/Button';
+import Button from 'medulas-react-components/lib/components/Button';
 import logo from './logo.svg';
 import './App.css';
 

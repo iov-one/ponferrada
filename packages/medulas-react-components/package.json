@@ -2,6 +2,7 @@
   "name": "medulas-react-components",
   "version": "0.0.0",
   "private": true,
+  "main": "build/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
@@ -13,13 +14,11 @@
     "add": "^2.0.6",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5",
     "typescript": "3.3.3",
     "yarn": "^1.13.0"
   },
   "scripts": {
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "build": "shx rm -rf ./lib/* && tsc"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/material-ui": "^0.21.6"
+    "@types/material-ui": "^0.21.6",
+    "shx": "^0.3.2"
   }
 }

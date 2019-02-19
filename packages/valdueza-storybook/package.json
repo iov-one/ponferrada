@@ -9,14 +9,9 @@
     "@types/react-dom": "16.8.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5",
     "typescript": "3.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -35,8 +30,6 @@
     "@storybook/addon-links": "^4.1.12",
     "@storybook/addons": "^4.1.12",
     "@storybook/react": "^4.1.12",
-    "@types/node": "^11.9.4",
-    "@types/react": "^16.8.3",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
     "babel-loader": "^8.0.5"
