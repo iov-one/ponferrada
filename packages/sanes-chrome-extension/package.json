@@ -7,17 +7,28 @@
     "@types/node": "11.9.4",
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
+    "medulas-react-components": "*",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
-    "typescript": "3.3.3",
-    "medulas-react-components": "*"
+    "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:build": "npm-watch build"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "."
+      ],
+      "ignore": "build",
+      "extensions": "*",
+      "quiet": false
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +38,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "npm-watch": "^0.6.0"
+  }
 }
