@@ -1,0 +1,15 @@
+export const primary = "#31E6C9";
+export const secondary = "#6F749A";
+export const error = "#F05956";
+export const temporaryError = "#ffb968";
+export const fontColor = "#1C1C1C";
+export const background = "#ffffff";
+export const backgroundPrimary = "#f5f7f9";
+export const buttonLargeFontSize = "12px";
+export const smallFontSize = "14px";
+export const mediumFontSize = "16px";
+export const xxlFontSize = "32px";
+export const extraLightFont = 200;
+export const lightFont = 300;
+export const regularFont = 400;
+export const semiBoldFont = 600;
