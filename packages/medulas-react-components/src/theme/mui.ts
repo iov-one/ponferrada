@@ -1,28 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
-import {
-  lightFont,
-} from "./variables";
-
-const palette = {
-  primary: {
-    main: "#31E6C9",
-  },
-  secondary: {
-    main: "#6F749A",
-  },
-  error: {
-    main: "#ffb968",
-  },
-  text: {
-    primary: "#1C1C1C",
-    secondary: "rgba(111, 116, 154, 0.47)",
-  },
-  contrastThreshold: 3,
-  tonalOffset: 0.2,
-};
-
-
+import { lightFont } from "./variables";
 
 export const themeObject: ThemeOptions = {
   palette: {
@@ -38,6 +16,9 @@ export const themeObject: ThemeOptions = {
     text: {
       primary: "#1C1C1C",
       secondary: "rgba(111, 116, 154, 0.47)",
+    },
+    background: {
+      default: "#f5f7f9",
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -78,15 +59,11 @@ export const themeObject: ThemeOptions = {
       lineHeight: "0.875rem",
     },
     button: {
-      fontFamily: "'Muli', sans-serif", 
-    }
+      fontFamily: "'Muli', sans-serif",
+    },
   },
   overrides: {
-    MuiButton: {
-      label: {
-        fontFamily: "'Muli', sans-serif",
-      }
-    },
+    MuiButton: {},
     MuiIconButton: {
       root: {
         padding: `12px 8px`,
@@ -97,11 +74,7 @@ export const themeObject: ThemeOptions = {
     },
   },
   //https://material-ui.com/customization/themes/#properties
-  props: {
-    MuiTypography: {
-      color: "textPrimary",
-    },
-  },
+  props: {},
 };
 
 export default createMuiTheme(themeObject);
