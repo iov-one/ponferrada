@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "outDir": "lib",
     "declaration": true,
     "rootDir": "src",
@@ -24,11 +24,10 @@
       "./node_modules/@types"
     ],
     "skipLibCheck": true,
+    "paths": {
+      "~/*":["src/*"],
+    }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "src/**/*stories.tsx"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "src/**/*stories.tsx"],
 }
