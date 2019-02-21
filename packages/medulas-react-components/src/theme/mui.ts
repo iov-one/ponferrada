@@ -9,7 +9,7 @@ import {
   regularFont,
   semiBoldFont,
   mediumFontSize,
-} from "~/theme/variables";
+} from "./variables";
 
 const palette = {
   primary: {
@@ -26,8 +26,6 @@ const palette = {
 };
 
 const secondaryDegraded = "rgba(111, 116, 154, 0.47)";
-
-const theme = createMuiTheme({});
 
 export const themeObject: ThemeOptions = {
   typography: {
