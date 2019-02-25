@@ -1,30 +1,30 @@
 {
   "name": "iov-ponferrada-root",
-  "description": "IOV Frontend packages",
   "private": true,
-  "author": "IOV SAS <admin@iov.one>",
-  "license": "Apache-2.0",
+  "description": "IOV Frontend packages",
   "homepage": "https://github.com/iov-one/ponferrada",
+  "bugs": {
+    "url": "https://github.com/iov-one/ponferrada/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/iov-one/ponferrada.git"
   },
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "format": "lerna run format",
-    "lint": "lerna run lint",
-    "test": "lerna run test",
-    "build": "lerna run build",
-    "docs": "lerna run docs",
-    "release": "lerna run build && lerna publish",
-    "clean": "rm -rf ./packages/*/docs/"
-  },
-  "bugs": {
-    "url": "https://github.com/iov-one/ponferrada/issues"
-  },
+  "license": "Apache-2.0",
+  "author": "IOV SAS <admin@iov.one>",
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "clean": "rm -rf ./packages/*/docs/",
+    "docs": "lerna run docs",
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "release": "lerna run build && lerna publish",
+    "test": "lerna run test"
+  },
   "devDependencies": {
     "lerna": "^3.13.0"
   }

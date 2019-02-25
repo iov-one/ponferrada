@@ -1,29 +1,16 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib",
-    "declaration": true,
     "rootDir": "src",
-    "jsx": "preserve",
     "target": "es6",
     "lib": [
       "es6"
     ],
-    "sourceMap": true,
-    "removeComments": false,
-    "pretty": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmitOnError": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "skipLibCheck": true,
+    "jsx": "preserve",
   },
   "include": [
     "src/**/*"
