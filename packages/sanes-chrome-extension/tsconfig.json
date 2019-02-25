@@ -1,7 +1,6 @@
 {
-  "extends": "../../config/tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "build",
     "rootDir": "src",
     "lib": [
@@ -12,8 +11,10 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "jsx": "preserve",
+    "allowJs": true,
+    "noEmit": true
   },
   "include": [
     "src/**/*"
-  ],
+  ]
 }

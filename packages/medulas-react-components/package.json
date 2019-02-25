@@ -12,13 +12,16 @@
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
     "add": "^2.0.6",
+    "prettier": "^1.16.4",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-scripts": "^2.1.5",
     "typescript": "3.3.3",
     "yarn": "^1.13.0"
   },
   "scripts": {
-    "build": "shx rm -rf ./lib/* && tsc"
+    "build": "shx rm -rf ./lib/* && tsc",
+    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +34,11 @@
   ],
   "devDependencies": {
     "@types/material-ui": "^0.21.6",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "eslint": "^5.14.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "shx": "^0.3.2"
   }
 }

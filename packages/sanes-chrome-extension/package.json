@@ -7,6 +7,7 @@
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test",
+    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,css}",
     "watch": "cra-build-watch"
   },
   "browserslist": [
@@ -21,6 +22,7 @@
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
     "medulas-react-components": "*",
+    "prettier": "^1.16.4",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
@@ -33,7 +35,6 @@
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "webpack-dev-server": "^3.2.0"
+    "prettier": "^1.16.4"
   }
 }
