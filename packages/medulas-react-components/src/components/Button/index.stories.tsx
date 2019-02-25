@@ -7,10 +7,8 @@ import { Storybook } from "../../utils/storybook";
 
 storiesOf('Button', module)
 
-  .add('with text', () => (
-    <Storybook>
-      <Button onClick={action('clicked')}>Buttoon</Button>
-    </Storybook>
+  .add('with text', () => (    
+      <Button onClick={action('clicked')}>Button</Button>
   ))
 
   .add('with some emoji', () => (
@@ -18,5 +16,7 @@ storiesOf('Button', module)
   ))
 
   .add('with a theme provider', () => (
-    <Button onClick={action('clicked')}>Button</Button>
+    <Storybook>
+      <Button onClick={action('clicked')}>Button</Button>
+    </Storybook>
   ))
