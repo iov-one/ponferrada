@@ -18,17 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:build": "npm-watch build"
-  },
-  "watch": {
-    "build": {
-      "patterns": [
-        "."
-      ],
-      "ignore": "build",
-      "extensions": "*",
-      "quiet": false
-    }
+    "watch": "cra-build-watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "npm-watch": "^0.6.0"
+    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#1764cf9415b3567b441527a8bd4f16cf3e93dd06",
+    "webpack-dev-server": "^3.2.0"
   }
 }
