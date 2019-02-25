@@ -30,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cra-build-watch": "^1.4.0"
+    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#1764cf9415b3567b441527a8bd4f16cf3e93dd06",
+    "webpack-dev-server": "^3.2.0"
   }
 }
