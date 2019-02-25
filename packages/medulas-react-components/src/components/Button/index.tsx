@@ -1,13 +1,16 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/styles";
-import MuiButton from "@material-ui/core/Button";
+import MuiButton, { ButtonProps } from "@material-ui/core/Button";
 
 
 const useStyles = makeStyles({
-    root: {},
-  });
+  root: {
+    fontFamily: "'Muli', sans-serif",
+  },
+});
 
-  export default function Button() {
-    const classes = useStyles();
-    return <MuiButton className={classes.root}>Hook</MuiButton>;
-  }
+export default function Button({ children }: ButtonProps) {
+  //const classes = useStyles();
+
+  return <MuiButton>{children}</MuiButton>;
+}
