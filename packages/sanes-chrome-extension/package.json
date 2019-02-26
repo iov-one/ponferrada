@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,css}",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "watch": "cra-build-watch"
   },
   "browserslist": [

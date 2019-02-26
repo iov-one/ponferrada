@@ -21,10 +21,8 @@
   },
   "scripts": {
     "build": "shx rm -rf ./lib/* && tsc",
-    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx}"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx}",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'"
   },
   "browserslist": [
     ">0.2%",
