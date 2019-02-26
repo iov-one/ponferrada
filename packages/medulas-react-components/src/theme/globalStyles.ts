@@ -22,9 +22,5 @@ export const globalStyles = makeStyles({
       "-webkit-font-smoothing": "antialiased",
       "-moz-osx-font-smoothing": "grayscale",
     },
-    "body>div:first-child": {
-      display: "flex",
-      minHeight: "100%",
-    }
   },
 });
