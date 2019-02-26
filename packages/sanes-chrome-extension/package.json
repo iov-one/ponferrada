@@ -22,7 +22,6 @@
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
     "medulas-react-components": "*",
-    "prettier": "^1.16.4",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
@@ -34,7 +33,6 @@
     "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#1764cf9415b3567b441527a8bd4f16cf3e93dd06",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "eslint-plugin-prettier": "^3.0.1"
   }
 }
