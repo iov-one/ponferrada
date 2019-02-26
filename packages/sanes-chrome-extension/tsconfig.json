@@ -3,18 +3,13 @@
   "compilerOptions": {
     "outDir": "build",
     "rootDir": "src",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es6"
-    ],
+    "lib": ["dom", "dom.iterable", "es6"],
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "jsx": "preserve",
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "isolatedModules": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
