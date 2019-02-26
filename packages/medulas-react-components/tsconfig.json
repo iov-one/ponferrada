@@ -2,15 +2,13 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "baseUrl": ".",
-    "outDir": "lib",
-    "rootDir": "src",
-    "target": "es6",
-    "lib": ["es6"],
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
     "jsx": "preserve",
-    "noEmitOnError": true
+    "lib": ["es6"],
+    "noEmitOnError": true,
+    "outDir": "lib",
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "target": "es6"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*stories.tsx"]

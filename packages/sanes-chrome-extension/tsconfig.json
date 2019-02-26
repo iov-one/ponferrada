@@ -1,15 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "build",
-    "rootDir": "src",
-    "lib": ["dom", "dom.iterable", "es6"],
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "allowJs": true,
+    "lib": ["dom", "dom.iterable", "es6"],
     "noEmit": true,
-    "isolatedModules": true
+    "outDir": "build",
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"]
 }
