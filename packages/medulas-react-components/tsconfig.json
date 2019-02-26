@@ -3,12 +3,9 @@
   "compilerOptions": {
     "declaration": true,
     "jsx": "preserve",
-    "lib": ["es6"],
     "noEmitOnError": true,
     "outDir": "lib",
-    "resolveJsonModule": true,
-    "rootDir": "src",
-    "target": "es6"
+    "rootDir": "src"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*stories.tsx"]

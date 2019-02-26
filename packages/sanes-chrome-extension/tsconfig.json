@@ -2,14 +2,15 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "es6"],
-    "noEmit": true,
     "outDir": "build",
     "resolveJsonModule": true,
     "rootDir": "src",
     "allowJs": true,
-    "allowSyntheticDefaultImports": true
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "noEmit": true
   },
   "include": ["src/**/*"]
 }
