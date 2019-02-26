@@ -5,6 +5,7 @@ import MuiButton, { ButtonProps } from "@material-ui/core/Button";
 const useStyles = makeStyles({
   label: {
     fontFamily: "'Muli', sans-serif",
+    textTransform: "capitalize",
   },
 });
 

@@ -16,6 +16,6 @@ storiesOf('Button', module)
 
   .add("with a theme provider", () => (
     <Storybook>
-      <Button onClick={action("clicked")}>Button</Button>
+      <Button onClick={action("clicked")}>Button one</Button>
     </Storybook>
   ));

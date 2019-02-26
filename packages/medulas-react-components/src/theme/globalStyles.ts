@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/styles';
-import 'typeface-muli';
+import './fonts.css';
+import theme from "./mui";
+
 
 export const globalStyles = makeStyles({
   '@global': {
@@ -17,7 +19,7 @@ export const globalStyles = makeStyles({
       overflowX: "hidden",
       fontFamily: "'Muli', sans-serif",
       margin: 0,
-      backgroundColor: "#f5f7f9",
+      backgroundColor: theme.palette.background.default,
       textRendering: "geometricPrecision",
       "-webkit-font-smoothing": "antialiased",
       "-moz-osx-font-smoothing": "grayscale",
