@@ -1,64 +1,7 @@
 import { makeStyles } from '@material-ui/styles';
+import 'typeface-muli';
 
-
-//That's the only way I found to implement different font-faces
-const fontFaceExtraLight = makeStyles({
-  '@global': {
-    '@font-face': {
-      fontFamily: 'Muli',
-      fontStyle: "normal",
-      fontWeight: 200,
-      src: "local('Muli ExtraLight'), local('Muli-ExtraLight'), \
-            url('./fonts/Muli/muli-v12-latin-200.woff2') format('woff2'), \
-            url('./fonts/Muli/muli-v12-latin-200.woff') format('woff'), \
-            url('./fonts/Muli/muli-v12-latin-200.ttf') format('truetype')",
-    }
-  }
-});
-
-const fontFaceLight = makeStyles({
-  '@global': {
-    '@font-face': {
-      fontFamily: 'Muli',
-      fontStyle: "normal",
-      fontWeight: 300,
-      src: "local('Muli Light'), local('Muli-Light'), \
-            url('./fonts/Muli/muli-v12-latin-300.woff2') format('woff2'), \
-            url('./fonts/Muli/muli-v12-latin-300.woff') format('woff'), \
-            url('./fonts/Muli/muli-v12-latin-300.ttf') format('truetype')",
-    }
-  }
-});
-
-const fontFaceRegular = makeStyles({
-  '@global': {
-    '@font-face': {
-      fontFamily: 'Muli',
-      fontStyle: "normal",
-      fontWeight: 400,
-      src: "local('Muli Regular'), local('Muli-Regular'), \
-            url('./fonts/Muli/muli-v12-latin-regular.woff2') format('woff2'), \
-            url('./fonts/Muli/muli-v12-latin-regular.woff') format('woff'), \
-            url('./fonts/Muli/muli-v12-latin-regular.ttf') format('truetype')",
-    }
-  }
-});
-
-const fontFaceSemiBold = makeStyles({
-  '@global': {
-    '@font-face': {
-      fontFamily: 'Muli',
-      fontStyle: "normal",
-      fontWeight: 600,
-      src: "local('Muli SemiBold'), local('Muli-SemiBold'), \
-            url('./fonts/Muli/muli-v12-latin-600.woff2') format('woff2'), \
-            url('./fonts/Muli/muli-v12-latin-600.woff') format('woff'), \
-            url('./fonts/Muli/muli-v12-latin-600.ttf') format('truetype')",
-    }
-  }
-});
-
-const mainStyles = makeStyles({
+export const globalStyles = makeStyles({
   '@global': {
     "html, body": {
       height: "100%",
@@ -85,11 +28,3 @@ const mainStyles = makeStyles({
     }
   },
 });
-
-export const globalStyles = () => {
-  fontFaceExtraLight();
-  fontFaceLight();
-  fontFaceRegular();
-  fontFaceSemiBold();
-  mainStyles();
-}
