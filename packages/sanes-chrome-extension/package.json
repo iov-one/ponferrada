@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "start": "react-scripts start",
     "test": "CI=true react-scripts test --env=jsdom",
-    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,css}",
+    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "watch": "cra-build-watch"
   },
