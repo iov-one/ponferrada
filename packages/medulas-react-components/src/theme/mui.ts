@@ -4,25 +4,6 @@ import {
   lightFont,
 } from "./variables";
 
-const palette = {
-  primary: {
-    main: "#31E6C9",
-  },
-  secondary: {
-    main: "#6F749A",
-  },
-  error: {
-    main: "#ffb968",
-  },
-  text: {
-    primary: "#1C1C1C",
-    secondary: "rgba(111, 116, 154, 0.47)",
-  },
-  contrastThreshold: 3,
-  tonalOffset: 0.2,
-};
-
-
 
 export const themeObject: ThemeOptions = {
   palette: {
@@ -98,9 +79,6 @@ export const themeObject: ThemeOptions = {
   },
   //https://material-ui.com/customization/themes/#properties
   props: {
-    MuiTypography: {
-      color: "textPrimary",
-    },
   },
 };
 
