@@ -1,3 +1,4 @@
+import "../bootstrap";
 import { ThemeProvider, makeStyles } from "@material-ui/styles";
 import * as React from "react";
 import theme from "../../theme/mui";
