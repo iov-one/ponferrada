@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
-import { lightFont } from "./variables";
+import { lightFont, background } from "./variables";
 
 const themeObject: ThemeOptions = {
   palette: {
@@ -60,7 +60,18 @@ const themeObject: ThemeOptions = {
     },
   },
   overrides: {
-    MuiButton: {},
+    MuiButton: {
+      label: {
+        textTransform: "capitalize",
+        color: background,
+      },
+      containedPrimary: {
+        boxShadow: "none",
+      },
+      contained: {
+        boxShadow: "none",
+      },
+    },
     MuiIconButton: {
       root: {
         padding: `12px 8px`,
@@ -71,7 +82,12 @@ const themeObject: ThemeOptions = {
     },
   },
   //https://material-ui.com/customization/themes/#properties
-  props: {},
+  props: {
+    MuiButton: {
+      variant: "contained",
+      color: "primary",
+    },
+  },
 };
 
 export default createMuiTheme(themeObject);
