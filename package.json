@@ -45,7 +45,8 @@
     "@storybook/react": "^4.1.12",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
-    "babel-loader": "^8.0.5"
+    "babel-loader": "^8.0.5",
+    "typescript": "3.3.3"
   },
   "husky": {
     "hooks": {

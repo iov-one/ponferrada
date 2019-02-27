@@ -26,7 +26,6 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
-    "typescript": "3.3.3",
     "webpack-merge": "^4.2.1"
   }
 }
