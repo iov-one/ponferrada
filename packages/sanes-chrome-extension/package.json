@@ -21,11 +21,12 @@
     "@types/node": "11.9.4",
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
-    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#1764cf9415b3567b441527a8bd4f16cf3e93dd06",
     "medulas-react-components": "*",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5",
-    "webpack-merge": "^4.2.1"
+    "react-scripts": "2.1.5"
+  },
+  "devDependencies": {
+    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#f8015a7e36b9f9307fe680dd57115417931d6ac6"
   }
 }
