@@ -2,6 +2,20 @@
   "name": "sanes-chrome-extension",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
+    "start": "react-scripts start",
+    "test": "CI=true react-scripts test --env=jsdom",
+    "watch": "cra-build-watch --verbose"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@types/jest": "24.0.6",
     "@types/node": "11.9.4",
@@ -10,27 +24,9 @@
     "medulas-react-components": "*",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5",
-    "typescript": "3.3.3"
+    "react-scripts": "2.1.5"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "watch": "cra-build-watch"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
-    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#1764cf9415b3567b441527a8bd4f16cf3e93dd06",
-    "webpack-dev-server": "^3.2.0"
+    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#f8015a7e36b9f9307fe680dd57115417931d6ac6"
   }
 }

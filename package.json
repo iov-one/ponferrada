@@ -1,31 +1,62 @@
 {
   "name": "iov-ponferrada-root",
-  "description": "IOV Frontend packages",
   "private": true,
-  "author": "IOV SAS <admin@iov.one>",
-  "license": "Apache-2.0",
+  "description": "IOV Frontend packages",
   "homepage": "https://github.com/iov-one/ponferrada",
+  "bugs": {
+    "url": "https://github.com/iov-one/ponferrada/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/iov-one/ponferrada.git"
   },
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "format": "lerna run format",
-    "lint": "lerna run lint",
-    "test": "lerna run test",
-    "build": "lerna run build",
-    "docs": "lerna run docs",
-    "release": "lerna run build && lerna publish",
-    "clean": "rm -rf ./packages/*/docs/"
-  },
-  "bugs": {
-    "url": "https://github.com/iov-one/ponferrada/issues"
-  },
+  "license": "Apache-2.0",
+  "author": "IOV SAS <admin@iov.one>",
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "build-storybook": "lerna run build-storybook -stream",
+    "clean": "rm -rf ./packages/*/docs/",
+    "docs": "lerna run docs",
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "release": "lerna run build && lerna publish",
+    "storybook": "lerna run storybook --stream",
+    "test": "lerna run test --stream"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint && yarn test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
-    "lerna": "^3.13.0"
+    "@babel/core": "^7.3.3",
+    "@storybook/addon-actions": "^4.1.12",
+    "@storybook/addon-links": "^4.1.12",
+    "@storybook/addons": "^4.1.12",
+    "@storybook/react": "^4.1.12",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__react": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "babel-loader": "^8.0.5",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lerna": "^3.13.0",
+    "lint-staged": "^8.1.4",
+    "prettier": "^1.16.4",
+    "shx": "^0.3.2",
+    "typescript": "3.3.3"
   }
 }
