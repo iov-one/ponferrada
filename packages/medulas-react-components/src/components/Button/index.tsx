@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Button({ children }: ButtonProps) {
+export default function Button({ children }: ButtonProps): JSX.Element {
   const classes = useStyles();
 
   return <MuiButton classes={classes}>{children}</MuiButton>;
