@@ -10,7 +10,7 @@ interface Props {
   readonly children: React.ReactNode;
 }
 
-//https://next.material-ui.com/css-in-js/basics/#migration-for-material-ui-core-users
+// TODO remove it: https://next.material-ui.com/css-in-js/basics/#migration-for-material-ui-core-users
 install();
 
 const MedulasThemeProvider = ({

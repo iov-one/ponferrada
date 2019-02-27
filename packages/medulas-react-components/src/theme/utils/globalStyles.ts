@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/styles";
-import "./fonts.css";
 import theme from "./mui";
 
 export const globalStyles = makeStyles({
