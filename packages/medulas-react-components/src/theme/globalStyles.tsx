@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/styles';
-import 'typeface-muli';
+import { makeStyles } from "@material-ui/styles";
+import "./fonts.css";
 
 export const globalStyles = makeStyles({
-  '@global': {
+  "@global": {
     "html, body": {
       height: "100%",
       width: "100%",
