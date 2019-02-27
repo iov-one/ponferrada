@@ -1,10 +1,9 @@
-import { makeStyles } from '@material-ui/styles';
-import './fonts.css';
+import { makeStyles } from "@material-ui/styles";
+import "./fonts.css";
 import theme from "./mui";
 
-
 export const globalStyles = makeStyles({
-  '@global': {
+  "@global": {
     "html, body": {
       height: "100%",
       width: "100%",
