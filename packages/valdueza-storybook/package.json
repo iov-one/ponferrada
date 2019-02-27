@@ -14,15 +14,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@storybook/addon-actions": "^4.1.12",
-    "@storybook/addon-links": "^4.1.12",
-    "@storybook/addons": "^4.1.12",
-    "@storybook/react": "^4.1.12",
-    "@types/storybook__addon-actions": "^3.4.2",
-    "@types/storybook__react": "^4.0.1",
-    "babel-loader": "^8.0.5"
-  }
+  ]
 }
