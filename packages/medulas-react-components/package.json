@@ -3,6 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "main": "build/index.js",
+  "scripts": {
+    "build": "shx rm -rf ./lib/* && tsc",
+    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
@@ -16,16 +27,5 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "^2.1.5"
-  },
-  "scripts": {
-    "build": "shx rm -rf ./lib/* && tsc",
-    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
-    "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }

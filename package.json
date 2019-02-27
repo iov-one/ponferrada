@@ -18,35 +18,14 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "format": "lerna run format",
-    "lint": "lerna run lint",
-    "storybook": "lerna run storybook --stream",
     "build-storybook": "lerna run build-storybook -stream",
-    "test": "lerna run test --stream",
     "clean": "rm -rf ./packages/*/docs/",
     "docs": "lerna run docs",
-    "release": "lerna run build && lerna publish"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "husky": "^1.3.1",
-    "lerna": "^3.13.0",
-    "lint-staged": "^8.1.4",
-    "prettier": "^1.16.4",
-    "shx": "^0.3.2",
-    "webpack-merge": "^4.2.1",
-    "@babel/core": "^7.3.3",
-    "@storybook/addon-actions": "^4.1.12",
-    "@storybook/addon-links": "^4.1.12",
-    "@storybook/addons": "^4.1.12",
-    "@storybook/react": "^4.1.12",
-    "@types/storybook__addon-actions": "^3.4.2",
-    "@types/storybook__react": "^4.0.1",
-    "babel-loader": "^8.0.5",
-    "typescript": "3.3.3"
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "release": "lerna run build && lerna publish",
+    "storybook": "lerna run storybook --stream",
+    "test": "lerna run test --stream"
   },
   "husky": {
     "hooks": {
@@ -59,5 +38,26 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@storybook/addon-actions": "^4.1.12",
+    "@storybook/addon-links": "^4.1.12",
+    "@storybook/addons": "^4.1.12",
+    "@storybook/react": "^4.1.12",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__react": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "babel-loader": "^8.0.5",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lerna": "^3.13.0",
+    "lint-staged": "^8.1.4",
+    "prettier": "^1.16.4",
+    "shx": "^0.3.2",
+    "typescript": "3.3.3",
+    "webpack-merge": "^4.2.1"
   }
 }
