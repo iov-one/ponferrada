@@ -1,5 +1,8 @@
 const baseConfig = require("../../.eslintrc");
 
 module.exports = {
-  ...baseConfig
+  ...baseConfig,
+  env: {
+    webextensions: true,
+  },
 };
