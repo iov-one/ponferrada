@@ -1,11 +1,12 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
-import { lightFont } from "./variables";
+import { lightFont, white } from "./variables";
 
 const themeObject: ThemeOptions = {
   palette: {
     primary: {
       main: "#31E6C9",
+      contrastText: white,
     },
     secondary: {
       main: "#6F749A",
@@ -21,7 +22,8 @@ const themeObject: ThemeOptions = {
       default: "#f5f7f9",
     },
     action: {
-      disabled: "rgba(44, 208, 182, 0.40)",
+      disabled: white,
+      disabledBackground: "rgba(44, 208, 182, 0.40)",
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -62,35 +64,17 @@ const themeObject: ThemeOptions = {
       lineHeight: "0.875rem",
     },
   },
-};
-
-const theme = createMuiTheme(themeObject);
-
-const iovTheme: ThemeOptions = {
-  ...theme,
   overrides: {
     MuiButton: {
       label: {
         textTransform: "capitalize",
-        color: theme.palette.background.paper,
       },
       contained: {
-        "&$disabled": {
-          backgroundColor: theme.palette.action.disabled,
-        },
         boxShadow: "none",
       },
       containedPrimary: {
         "&:hover": {
           backgroundColor: "#2cd0b6",
-        },
-      },
-    },
-    MuiIconButton: {
-      root: {
-        padding: `12px 8px`,
-        "&:hover": {
-          backgroundColor: "none",
         },
       },
     },
@@ -104,4 +88,4 @@ const iovTheme: ThemeOptions = {
   },
 };
 
-export default createMuiTheme(iovTheme);
+export default createMuiTheme(themeObject);
