@@ -17,14 +17,26 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@types/chrome": "^0.0.81",
+    "@types/history": "^4.7.2",
     "@types/jest": "24.0.6",
     "@types/node": "11.9.4",
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
+    "@types/react-redux": "^7.0.1",
+    "@types/react-router-dom": "^4.3.1",
+    "connected-react-router": "^6.3.1",
+    "history": "^4.7.2",
     "medulas-react-components": "*",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^3.2.1",
+    "webext-redux": "^2.0.1"
   },
   "devDependencies": {
     "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#f8015a7e36b9f9307fe680dd57115417931d6ac6"
