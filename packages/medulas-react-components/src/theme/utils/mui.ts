@@ -64,12 +64,6 @@ const themeObject: ThemeOptions = {
       lineHeight: '0.875rem',
     },
   },
-};
-
-const theme = createMuiTheme(themeObject);
-
-const iovTheme: ThemeOptions = {
-  ...theme,
   overrides: {
     MuiButton: {
       label: {
@@ -94,4 +88,4 @@ const iovTheme: ThemeOptions = {
   },
 };
 
-export default createMuiTheme(iovTheme);
+export default createMuiTheme(themeObject);
