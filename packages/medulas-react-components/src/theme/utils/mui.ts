@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-import { lightFont, white } from './variables';
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
+import { lightFont, white, secondaryColor, semiBoldFont } from "./variables";
 
 const themeObject: ThemeOptions = {
   palette: {
@@ -9,7 +9,7 @@ const themeObject: ThemeOptions = {
       contrastText: white,
     },
     secondary: {
-      main: '#6F749A',
+      main: secondaryColor,
     },
     error: {
       main: '#ffb968',
@@ -31,7 +31,7 @@ const themeObject: ThemeOptions = {
   typography: {
     fontFamily: "'Muli', sans-serif",
     fontSize: 14,
-    fontWeightLight: 300,
+    fontWeightLight: lightFont,
     fontWeightRegular: 400,
     fontWeightMedium: 600,
     h1: {
