@@ -9,7 +9,7 @@
     "start": "react-scripts start",
     "test": "CI=true react-scripts test --env=jsdom",
     "dev": "yarn watch && yarn compile:extension",
-    "watch": "cra-build-watch --verbose &",
+    "watch": "pkill cra-build-watch && cra-build-watch --verbose &",
     "compile:extension": "tsc --p ./extension"
   },
   "browserslist": [

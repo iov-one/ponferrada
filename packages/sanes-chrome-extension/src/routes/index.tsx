@@ -2,9 +2,7 @@ import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./home/container/App";
 import Welcome from "./welcome/container";
-
-export const HOME_ROUTE = "/";
-export const WELCOME_ROUTE = "/welcome";
+import { HOME_ROUTE, WELCOME_ROUTE } from "./paths";
 
 export const MainRouter = (): JSX.Element => (
   <Switch>

@@ -13,6 +13,9 @@
       "js": ["extension/contentScript.js"]
     }
   ],
+  "background": {
+    "page": "background.html"
+  },
   "permissions": ["<all_urls>"],
   "web_accessible_resources": ["extension/*"],
   "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'"
