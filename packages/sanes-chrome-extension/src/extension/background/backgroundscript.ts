@@ -1,9 +1,9 @@
 import { wrapStore } from "webext-redux";
-import { MsgToBackground } from "./utils/types";
-import { CTB_MSG_HELLO } from "./utils/messages";
-import { WELCOME_ROUTE } from "../src/routes/paths";
-import { makeStore } from "../src/store";
-import { history } from "../src/store/reducers";
+import { MsgToBackground } from "../utils/types";
+import { CTB_MSG_HELLO } from "../utils/messages";
+import { WELCOME_ROUTE } from "../../routes/paths";
+import { makeStore } from "../../store";
+import { history } from "../../store/reducers";
 
 wrapStore(makeStore());
 
