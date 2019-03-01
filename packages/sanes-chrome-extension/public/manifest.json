@@ -10,13 +10,14 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["extension/contentScript.js"]
+      "js": ["js/contentScript.js"]
     }
   ],
   "background": {
-    "page": "background.html"
+    "scripts": ["js/backgroundScript.js"],
+    "persistent": true
   },
   "permissions": ["<all_urls>"],
-  "web_accessible_resources": ["extension/*"],
+  "web_accessible_resources": ["js/*"],
   "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'"
 }
