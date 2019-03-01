@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "esNext",
+    "noEmitOnError": true,
+    "outDir": "../build",
+    "rootDirs": [".", "../src"],
+    "strict": true,
+    "sourceMap": false
+  },
+  "include": ["./*.ts", "../src/routes/paths.ts", "../src/store/**/*"]
+}
