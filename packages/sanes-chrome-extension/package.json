@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "react-scripts build && yarn compile:extension",
+    "build": "react-scripts build",
     "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "start": "react-scripts start",
     "test": "CI=true react-scripts test --env=jsdom",
     "dev": "yarn watch && yarn compile:extension",
     "watch": "pkill cra-build-watch && cra-build-watch --verbose &",
-    "compile:extension": "tsc --p ./extension"
+    "compile:extension": "tsc --p ./extension",
+    "adolfo": "chmod +x ./scripts/compile.sh && ./scripts/compile.sh"
   },
   "browserslist": [
     ">0.2%",
