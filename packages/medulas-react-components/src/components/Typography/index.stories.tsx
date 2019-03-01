@@ -4,7 +4,7 @@ import React from "react";
 import Typography from "./index";
 import { Storybook } from "../../utils/storybook";
 
-storiesOf("Typography", module).add("H4", () => (
+storiesOf("Typography", module).add("Styles", () => (
   <Storybook>
     <Typography variant="subtitle1" color="primary">
       H4
