@@ -7,6 +7,7 @@
     "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "start": "react-scripts start",
+    "eject": "react-scripts eject",
     "test": "CI=true react-scripts test --env=jsdom",
     "watch": "cra-build-watch --verbose"
   },
