@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Configuration and scripts for Create React App.",
   "engines": {
-    "node": ">=8.10"
+    "node": ">=6"
   },
   "files": [
     "bin",
@@ -15,7 +15,7 @@
     "utils"
   ],
   "bin": {
-    "oza-react-scripts": "./bin/oza-react-scripts.js"
+    "react-scripts": "./bin/oza-react-scripts.js"
   },
   "types": "./lib/react-app.d.ts",
   "dependencies": {
@@ -40,6 +40,7 @@
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.4",
     "file-loader": "2.0.0",
+    "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
