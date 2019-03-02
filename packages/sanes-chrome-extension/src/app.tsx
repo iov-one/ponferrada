@@ -1,14 +1,14 @@
-import { ConnectedRouter } from "connected-react-router";
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { Store } from "webext-redux";
-import Route from "./routes";
-import { history } from "./store/reducers";
+import { ConnectedRouter } from 'connected-react-router';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Store } from 'webext-redux';
+import Route from './routes';
+import { history } from './store/reducers';
 
 const store = new Store();
 
-const rootEl = document.getElementById("root");
+const rootEl = document.getElementById('root');
 
 const Root = (): JSX.Element => (
   <Provider store={store}>
@@ -23,8 +23,8 @@ store.ready().then(() => {
 });
 
 if (module.hot) {
-  module.hot.accept("./routes", () => {
-    const NextApp = require("./routes").default;
+  module.hot.accept('./routes', () => {
+    const NextApp = require('./routes').default;
     ReactDOM.render(<NextApp />, rootEl);
   });
 }

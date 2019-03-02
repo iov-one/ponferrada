@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "shx rm -rf ./lib/* && tsc",
-    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
+    "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'"
   },
   "browserslist": [

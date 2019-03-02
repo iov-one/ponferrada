@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "oza-react-scripts build",
-    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
+    "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "start": "oza-react-scripts start",
     "test": "CI=true oza-react-scripts test --env=jsdom",
