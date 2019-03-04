@@ -1,7 +1,7 @@
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import * as React from "react";
-import theme from "./utils/mui";
-import { globalStyles } from "./utils/globalStyles";
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import * as React from 'react';
+import theme from './utils/mui';
+import { globalStyles } from './utils/globalStyles';
 
 interface Props {
   readonly injectFonts?: boolean;
@@ -19,7 +19,7 @@ const MedulasThemeProvider = ({
   }
 
   if (injectFonts) {
-    require("./utils/fonts.css");
+    require('./utils/fonts.css');
   }
 
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;

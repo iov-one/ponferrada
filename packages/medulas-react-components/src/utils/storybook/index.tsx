@@ -1,5 +1,5 @@
-import * as React from "react";
-import MedulasThemeProvider from "~/theme/MedulasThemeProvider";
+import * as React from 'react';
+import MedulasThemeProvider from '~/theme/MedulasThemeProvider';
 
 interface Props {
   readonly children: React.ReactNode;
