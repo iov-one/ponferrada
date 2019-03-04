@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "react-scripts build",
-    "format": "prettier --write --loglevel warn ./src/**/*.{ts,tsx,json,md,css}",
+    "build": "oza-react-scripts build",
+    "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
-    "start": "react-scripts start",
-    "test": "CI=true react-scripts test --env=jsdom",
-    "watch": "cra-build-watch --verbose"
+    "start": "oza-react-scripts start",
+    "test": "CI=true oza-react-scripts test --env=jsdom",
+    "watch": "cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
   },
   "browserslist": [
     ">0.2%",
@@ -17,16 +17,29 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@types/chrome": "^0.0.81",
+    "@types/history": "^4.7.2",
     "@types/jest": "24.0.6",
     "@types/node": "11.9.4",
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
+    "@types/react-redux": "^7.0.1",
+    "@types/react-router-dom": "^4.3.1",
+    "connected-react-router": "^6.3.1",
+    "history": "^4.7.2",
     "medulas-react-components": "*",
+    "oza-react-scripts": "^0.0.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.5",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^3.2.1",
+    "webext-redux": "^2.0.1"
   },
   "devDependencies": {
-    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#f8015a7e36b9f9307fe680dd57115417931d6ac6"
+    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509"
   }
 }
