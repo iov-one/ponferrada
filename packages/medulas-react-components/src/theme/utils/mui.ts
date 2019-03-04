@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-import { lightFont, white } from './variables';
+import { lightFont, white, secondaryColor, semiBoldFont } from './variables';
 
 const themeObject: ThemeOptions = {
   palette: {
@@ -9,7 +9,7 @@ const themeObject: ThemeOptions = {
       contrastText: white,
     },
     secondary: {
-      main: '#6F749A',
+      main: secondaryColor,
     },
     error: {
       main: '#ffb968',
@@ -45,23 +45,37 @@ const themeObject: ThemeOptions = {
     },
     h4: {
       fontSize: '2.5rem',
+      lineHeight: '3.3rem',
       fontWeight: lightFont,
     },
     h5: {
-      fontSize: '2rem',
+      fontSize: '1.25rem',
+      lineHeight: '2rem',
+      fontWeight: lightFont,
     },
     h6: {
       fontSize: '1.25rem',
+      lineHeight: '130%',
+      fontWeight: lightFont,
+      color: secondaryColor,
     },
     body1: {
       fontSize: '1rem',
+      lineHeight: '130%',
     },
     body2: {
-      lineHeight: '1.15rem',
+      fontSize: '0.875rem',
+      lineHeight: '130%',
+    },
+    subtitle1: {
+      fontSize: '1rem',
+      fontWeight: semiBoldFont,
+      lineHeight: '100%',
     },
     subtitle2: {
       fontSize: '0.875rem',
-      lineHeight: '0.875rem',
+      fontWeight: semiBoldFont,
+      lineHeight: '100%',
     },
   },
   overrides: {
