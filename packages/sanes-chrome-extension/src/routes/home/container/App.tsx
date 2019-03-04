@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from 'medulas-react-components/lib/components/Button';
+import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,4 +28,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const Root = (): JSX.Element => (
+  <MedulasThemeProvider>
+    <App />
+  </MedulasThemeProvider>
+);
+
+export default Root;

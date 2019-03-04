@@ -1,3 +1,5 @@
+const { resolve } = require("path");
+
 module.exports = (baseConfig, env, config) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -7,5 +9,12 @@ module.exports = (baseConfig, env, config) => {
     }
   });
   config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    "~": resolve(process.cwd(), "..", "medulas-react-components", "src"),
+  }
+
+  console.log(config);
+
   return config;
 };
