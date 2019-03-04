@@ -1,10 +1,10 @@
-import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
-import React from "react";
-import Typography from "./index";
-import { Storybook } from "../../utils/storybook";
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
+import Typography from './index';
+import { Storybook } from '../../utils/storybook';
 
-storiesOf("Typography", module).add("Styles", () => (
+storiesOf('Typography', module).add('Styles', () => (
   <Storybook>
     <Typography variant="subtitle1" color="primary">
       H4

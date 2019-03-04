@@ -1,8 +1,8 @@
-import "../bootstrap";
-import { ThemeProvider } from "@material-ui/styles";
-import * as React from "react";
-import theme from "../../theme/mui";
-import { globalStyles } from "../../theme/globalStyles";
+import '../bootstrap';
+import { ThemeProvider } from '@material-ui/styles';
+import * as React from 'react';
+import theme from '../../theme/utils/mui';
+import { globalStyles } from '../../theme/globalStyles';
 
 interface Props {
   readonly children: React.ReactNode;
