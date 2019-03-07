@@ -14,7 +14,5 @@ module.exports = (baseConfig, env, config) => {
     "~": resolve(process.cwd(), "..", "medulas-react-components", "src"),
   }
 
-  console.log(config);
-
   return config;
 };
