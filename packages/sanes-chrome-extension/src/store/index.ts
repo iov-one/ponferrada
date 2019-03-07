@@ -15,9 +15,8 @@ const middlewares: ReadonlyArray<Middleware> = [
 ];
 
 const composeEnhancers =
-  // eslint-disable-next-line
   (typeof window === 'object' &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
   compose;
 
 export const makeStore = (): Store<RootState> => {
