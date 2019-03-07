@@ -10,4 +10,5 @@ export const MainRouter = (): JSX.Element => (
     <Route exact path={WELCOME_ROUTE} component={Welcome} />
   </Switch>
 );
+
 export default MainRouter;
