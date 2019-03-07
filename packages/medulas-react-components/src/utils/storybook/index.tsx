@@ -1,4 +1,4 @@
-import ThemeProvider from '~/theme/MedulasThemeProvider';
+import ThemeProvider from '../../theme/MedulasThemeProvider';
 import * as React from 'react';
 
 interface Props {
