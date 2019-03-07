@@ -1,10 +1,6 @@
-import { Button } from 'medulas-react-components/lib/components/Button';
 import * as React from 'react';
+import Layout from '../components';
 
-const Welcome = (): JSX.Element => (
-  <div>
-    <Button>Hi Albert</Button>
-  </div>
-);
+const Welcome = (): JSX.Element => <Layout />;
 
 export default Welcome;
