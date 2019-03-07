@@ -22,7 +22,7 @@ const MedulasThemeProvider = ({
     require('./utils/fonts.css');
   }
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
 };
 
 export default MedulasThemeProvider;
