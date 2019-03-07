@@ -14,5 +14,8 @@
   ],
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "medulas-react-components": "^0.0.0"
   }
 }
