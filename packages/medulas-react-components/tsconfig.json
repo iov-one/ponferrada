@@ -9,7 +9,8 @@
     "paths": {
       "~/*": ["src/*"]
     },
-    "rootDir": "src"
+    "rootDir": "src",
+    "typeRoots": ["./src/react-app-env.d.ts"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*stories.tsx"]
