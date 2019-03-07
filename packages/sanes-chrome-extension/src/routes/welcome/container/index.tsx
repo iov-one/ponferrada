@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const Welcome = (): JSX.Element => (
   <div>
-    <Button type="contained">Hii Albert</Button>
+    <Button>Hi Albert</Button>
   </div>
 );
 
