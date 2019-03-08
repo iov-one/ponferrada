@@ -2,7 +2,7 @@ import * as React from 'react';
 import { unstable_Box as MuiBox, BoxProps } from '@material-ui/core/Box';
 
 interface Props extends BoxProps {
-  readonly children: React.ReactNode;
+  readonly children?: React.ReactNode;
   readonly margin?: number;
   readonly marginLeft?: number;
   readonly marginTop?: number;
@@ -13,6 +13,7 @@ interface Props extends BoxProps {
   readonly paddingRight?: number;
   readonly paddingBottom?: number;
   readonly paddingLeft?: number;
+  readonly textAlign?: 'left' | 'center' | 'right';
 }
 
 // TODO fix once the proper BoxProps have been updated
