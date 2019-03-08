@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useForm, useField } from 'react-final-form-hooks';
 import { Button } from 'medulas-react-components/lib/components/Button';
+import { TextField } from 'medulas-react-components/lib/components/TextField';
 
 const onSubmit = async (values: object) => {
   // eslint-disable-line
@@ -17,13 +18,15 @@ const Signup = (): JSX.Element => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Unique Identifier</label>
-          <input {...uniqueIdentifier.input} placeholder="Unique Identifier" />
-          {uniqueIdentifier.meta.touched && uniqueIdentifier.meta.error && (
-            <span>{uniqueIdentifier.meta.error}</span>
-          )}
-        </div>
+        <TextField
+          label="Unique Identifier"
+          placeholder="Unique Identifier"
+          margin="normal"
+          variant="standard"
+          value={uniqueIdentifier.input.value}
+          onChange={uniqueIdentifier.input.onChange}
+          error={uniqueIdentifier.meta.error}
+        />
         <Button type="submit" disabled={pristine || submitting}>
           Submit
         </Button>
