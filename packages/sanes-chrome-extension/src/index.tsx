@@ -7,6 +7,7 @@ import { Store } from 'webext-redux';
 import Route from './routes';
 import { history } from './store/reducers';
 import { WELCOME_ROUTE } from './routes/paths';
+import { globalStyles } from './globalStyles';
 
 const store = new Store();
 
@@ -18,7 +19,7 @@ store.ready().then(() => {
   const render = (Component: React.ComponentType): void => {
     return ReactDOM.render(
       <Provider store={store}>
-        <MedulasThemeProvider injectGlobalStyle injectFonts>
+        <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
           <ConnectedRouter history={history}>
             <Component />
           </ConnectedRouter>
