@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { unstable_Box as MuiBox, BoxProps } from '@material-ui/core/Box';
 
+// TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
   readonly margin?: number;
