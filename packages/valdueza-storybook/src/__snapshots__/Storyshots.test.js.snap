@@ -1,0 +1,387 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots /Routes Welcome Welcome page 1`] = `
+<div>
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-text"
+    disabled={false}
+    onBlur={[Function]}
+    onContextMenu={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      Hi Albert
+    </span>
+    <span
+      className="MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`Storyshots Button Button in desktop screen 1`] = `
+<div
+  className="MuiGrid-container MuiGrid-spacing-xs-5"
+>
+  <div
+    className="MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Hower
+      </span>
+      <span
+        className="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <button
+      className="MuiButtonBase-root MuiButtonBase-disabled MuiButton-root MuiButton-text MuiButton-disabled"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Disabled
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Cancel
+      </span>
+      <span
+        className="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Full Width
+      </span>
+      <span
+        className="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Button Button in phone screen 1`] = `
+<div
+  style={
+    Object {
+      "width": "425px",
+    }
+  }
+>
+  <div
+    className="MuiGrid-container MuiGrid-spacing-xs-5"
+  >
+    <div
+      className="MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Hower
+        </span>
+        <span
+          className="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButtonBase-disabled MuiButton-root MuiButton-text MuiButton-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Disabled
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Cancel
+        </span>
+        <span
+          className="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-fullWidth"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Full Width
+        </span>
+        <span
+          className="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Image Images 1`] = `
+<div
+  className="MuiGrid-container MuiGrid-spacing-xs-5"
+>
+  <div
+    className="MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <img
+      alt="Iov Logo"
+      className="Hook-root-z8j3qi"
+      src="iov-logo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Typography Styles 1`] = `
+Array [
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    H4
+  </h6>,
+  <h4
+    className="MuiTypography-root MuiTypography-h4"
+  >
+    Main headings
+  </h4>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    H5
+  </h6>,
+  <h5
+    className="MuiTypography-root MuiTypography-h5"
+  >
+    Heading 2
+  </h5>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    H6
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    Subheading
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    body1
+  </h6>,
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
+    Lorem ipsum dolor sit amet
+  </p>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    body2
+  </h6>,
+  <p
+    className="MuiTypography-root MuiTypography-body2"
+  >
+    Lorem ipsum dolor sit amet
+  </p>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    subtitle1
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1"
+  >
+    Text field label
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    subtitle2
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle2"
+  >
+    Text field label
+  </h6>,
+]
+`;

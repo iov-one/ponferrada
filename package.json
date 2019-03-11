@@ -43,9 +43,12 @@
     "@babel/core": "^7.3.3",
     "@storybook/addon-actions": "^5.0.1",
     "@storybook/addon-links": "^5.0.1",
+    "@storybook/addon-storyshots": "^5.0.1",
     "@storybook/addons": "^5.0.1",
     "@storybook/react": "^5.0.1",
+    "@types/react-test-renderer": "^16.8.1",
     "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__addon-storyshots": "^3.4.8",
     "@types/storybook__react": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
@@ -56,6 +59,8 @@
     "lerna": "^3.13.0",
     "lint-staged": "^8.1.4",
     "prettier": "^1.16.4",
+    "react-test-renderer": "^16.8.4",
+    "require-context.macro": "^1.0.4",
     "shx": "^0.3.2",
     "typescript": "3.3.3"
   }
