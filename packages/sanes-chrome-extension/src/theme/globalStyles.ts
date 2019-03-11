@@ -1,11 +1,12 @@
 import { makeStyles } from '@material-ui/styles';
 import theme from 'medulas-react-components/lib/theme/utils/mui';
+import { EXTENSION_WIDTH, EXTENSION_HEIGHT } from './constants';
 
 export const globalStyles = makeStyles({
   '@global': {
     'html, body': {
-      height: '500px',
-      width: '350px',
+      width: `${EXTENSION_WIDTH}px`,
+      height: `${EXTENSION_HEIGHT}px`,
       '-ms-overflow-style': '-ms-autohiding-scrollbar',
     },
     body: {
