@@ -1,4 +1,4 @@
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import { ThemeProvider } from '@material-ui/styles';
 import * as React from 'react';
 import theme from './utils/mui';
 import { globalStyles } from './utils/globalStyles';

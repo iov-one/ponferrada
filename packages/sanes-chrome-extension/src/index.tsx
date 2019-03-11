@@ -1,4 +1,3 @@
-import 'medulas-react-components/lib/utils/bootstrap';
 import { ConnectedRouter } from 'connected-react-router';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
 import * as React from 'react';
