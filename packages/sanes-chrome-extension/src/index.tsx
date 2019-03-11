@@ -7,7 +7,7 @@ import { Store } from 'webext-redux';
 import Route from './routes';
 import { history } from './store/reducers';
 import { WELCOME_ROUTE } from './routes/paths';
-import { globalStyles } from './globalStyles';
+import { globalStyles } from './theme/globalStyles';
 
 const store = new Store();
 
