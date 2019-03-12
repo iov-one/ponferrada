@@ -3,7 +3,6 @@ import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 import { lightFont, white, secondaryColor } from './variables';
 
 const themeObject: ThemeOptions = {
-  spacing: 4,
   palette: {
     primary: {
       main: '#31E6C9',

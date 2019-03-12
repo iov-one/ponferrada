@@ -37,7 +37,7 @@ storiesOf('Typography', module).add('Styles', () => (
       Inline styles
     </Typography>
     <Typography variant="subtitle2" color="primary" inline>
-      First part of the text.{' '}
+      {'First part of the text. '}
     </Typography>
     <Typography variant="subtitle2" inline>
       Second part of the text.

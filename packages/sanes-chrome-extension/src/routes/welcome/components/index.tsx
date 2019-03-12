@@ -6,15 +6,14 @@ import iovLogo from '../assets/iov-logo.png';
 import * as React from 'react';
 
 const Layout = (): JSX.Element => (
-  <Block paddingRight={4} paddingLeft={4} paddingTop={4}>
+  <Block paddingRight={2} paddingLeft={2} paddingTop={2}>
     <Typography color="primary" variant="h4" inline>
       Welcome
     </Typography>
     <Typography variant="h4" inline>
-      {' '}
-      to your IOV manager
+      {' to your IOV manager'}
     </Typography>
-    <Block padding={2} marginTop={4} marginBottom={1}>
+    <Block padding={2} marginTop={3} marginBottom={1}>
       <Typography variant="body1" inline>
         This plugin lets you manage all your accounts in one place.
       </Typography>
