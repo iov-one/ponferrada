@@ -4,7 +4,7 @@ import theme from './utils/mui';
 
 interface Props {
   readonly injectFonts?: boolean;
-  readonly injectStyles?: (props?: any) => void;
+  readonly injectStyles?: (props?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
   readonly children: React.ReactNode;
 }
 
@@ -21,7 +21,7 @@ const MedulasThemeProvider = ({
     require('./utils/fonts.css');
   }
 
-  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default MedulasThemeProvider;
