@@ -6,9 +6,5 @@ interface Props {
 }
 
 export const Storybook = ({ children }: Props): JSX.Element => {
-  return (
-    <ThemeProvider injectGlobalStyle injectFonts>
-      {children}
-    </ThemeProvider>
-  );
+  return <ThemeProvider injectFonts>{children}</ThemeProvider>;
 };
