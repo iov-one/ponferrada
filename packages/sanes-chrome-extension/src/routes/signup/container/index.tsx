@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm, useField } from 'react-final-form-hooks';
 import { Button } from 'medulas-react-components/lib/components/Button';
-import { TextField } from 'medulas-react-components/lib/components/TextField';
+import { TextField } from 'medulas-react-components/lib/components/forms/TextField';
 
 const onSubmit = async (values: object) => {
   // eslint-disable-line
