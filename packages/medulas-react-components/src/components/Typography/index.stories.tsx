@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Typography from './index';
+import { Typography } from './index';
 import { Storybook } from '../../utils/storybook';
 
 storiesOf('Typography', module).add('Styles', () => (
@@ -33,5 +33,14 @@ storiesOf('Typography', module).add('Styles', () => (
       subtitle2
     </Typography>
     <Typography variant="subtitle2">Text field label</Typography>
+    <Typography variant="subtitle1" color="primary">
+      Inline styles
+    </Typography>
+    <Typography variant="subtitle2" color="primary" inline>
+      {'First part of the text. '}
+    </Typography>
+    <Typography variant="subtitle2" inline>
+      Second part of the text.
+    </Typography>
   </Storybook>
 ));

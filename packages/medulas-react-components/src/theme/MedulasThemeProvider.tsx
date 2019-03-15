@@ -1,21 +1,20 @@
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import { ThemeProvider } from '@material-ui/styles';
 import * as React from 'react';
 import theme from './utils/mui';
-import { globalStyles } from './utils/globalStyles';
 
 interface Props {
   readonly injectFonts?: boolean;
-  readonly injectGlobalStyle?: boolean;
+  readonly injectStyles?: (props?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
   readonly children: React.ReactNode;
 }
 
 const MedulasThemeProvider = ({
   injectFonts = true,
-  injectGlobalStyle = false,
+  injectStyles,
   children,
 }: Props): JSX.Element => {
-  if (injectGlobalStyle) {
-    globalStyles();
+  if (injectStyles) {
+    injectStyles();
   }
 
   if (injectFonts) {
