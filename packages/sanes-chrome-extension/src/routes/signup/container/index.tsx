@@ -3,6 +3,7 @@ import { useForm, useField } from 'react-final-form-hooks';
 import { Button } from 'medulas-react-components/lib/components/Button';
 
 const onSubmit = async (values: object) => {
+  // eslint-disable-line
   window.alert(JSON.stringify(values));
 };
 
