@@ -1,0 +1,482 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots /Routes Welcome Welcome page 1`] = `
+<div
+  className="MuiBox-root-r0dolg MuiBox-root-1"
+>
+  <h4
+    className="MuiTypography-root-8hei21 MuiTypography-h4-594um6 MuiTypography-colorPrimary-sb76nh Hook-inline-42z04s"
+  >
+    Welcome
+  </h4>
+  <h4
+    className="MuiTypography-root-8hei21 MuiTypography-h4-594um6 Hook-inline-42z04s"
+  >
+     to your IOV manager
+  </h4>
+  <div
+    className="MuiBox-root-r0dolg MuiBox-root-2"
+  >
+    <p
+      className="MuiTypography-root-8hei21 MuiTypography-body1-11e8b6e Hook-inline-42z04s"
+    >
+      This plugin lets you manage all your accounts in one place.
+    </p>
+    <div
+      className="MuiBox-root-r0dolg MuiBox-root-3"
+    />
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="contained"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        Log in
+      </span>
+      <span
+        className="MuiTouchRipple-root-101rr6o"
+      />
+    </button>
+    <div
+      className="MuiBox-root-r0dolg MuiBox-root-4"
+    />
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="contained"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        New account
+      </span>
+      <span
+        className="MuiTouchRipple-root-101rr6o"
+      />
+    </button>
+    <div
+      className="MuiBox-root-r0dolg MuiBox-root-5"
+    />
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="contained"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        Import account
+      </span>
+      <span
+        className="MuiTouchRipple-root-101rr6o"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiBox-root-r0dolg MuiBox-root-6"
+  >
+    <img
+      alt="IOV logo"
+      className="Hook-root-z8j3qi"
+      src="iov-logo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Button Button in desktop screen 1`] = `
+<div
+  className="MuiGrid-container-18iiza8 MuiGrid-spacing-xs-5-zpjmaw"
+>
+  <div
+    className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+  >
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        Hower
+      </span>
+      <span
+        className="MuiTouchRipple-root-101rr6o"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+  >
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButtonBase-disabled-1403s9b MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-disabled-1403s9b"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        Disabled
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+  >
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedSecondary-1k1tivt"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        Cancel
+      </span>
+      <span
+        className="MuiTouchRipple-root-101rr6o"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+  >
+    <button
+      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-blnbog"
+      >
+        Full Width
+      </span>
+      <span
+        className="MuiTouchRipple-root-101rr6o"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Button Button in phone screen 1`] = `
+<div
+  style={
+    Object {
+      "width": "425px",
+    }
+  }
+>
+  <div
+    className="MuiGrid-container-18iiza8 MuiGrid-spacing-xs-5-zpjmaw"
+  >
+    <div
+      className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+    >
+      <button
+        className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-blnbog"
+        >
+          Hower
+        </span>
+        <span
+          className="MuiTouchRipple-root-101rr6o"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+    >
+      <button
+        className="MuiButtonBase-root-199s9j0 MuiButtonBase-disabled-1403s9b MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-disabled-1403s9b"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-blnbog"
+        >
+          Disabled
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+    >
+      <button
+        className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedSecondary-1k1tivt"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-blnbog"
+        >
+          Cancel
+        </span>
+        <span
+          className="MuiTouchRipple-root-101rr6o"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+    >
+      <button
+        className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-blnbog"
+        >
+          Full Width
+        </span>
+        <span
+          className="MuiTouchRipple-root-101rr6o"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Image Images 1`] = `
+<div
+  className="MuiGrid-container-18iiza8 MuiGrid-spacing-xs-5-zpjmaw"
+>
+  <div
+    className="MuiGrid-item-sr7agd MuiGrid-grid-xs-12-14f7lyt"
+  >
+    <img
+      alt="Iov Logo"
+      className="Hook-root-z8j3qi"
+      src="iov-logo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Typography Styles 1`] = `
+Array [
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    H4
+  </h6>,
+  <h4
+    className="MuiTypography-root-8hei21 MuiTypography-h4-594um6"
+  >
+    Main headings
+  </h4>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    H5
+  </h6>,
+  <h5
+    className="MuiTypography-root-8hei21 MuiTypography-h5-2uddnh"
+  >
+    Heading 2
+  </h5>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    H6
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-h6-i22mvf"
+  >
+    Subheading
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    body1
+  </h6>,
+  <p
+    className="MuiTypography-root-8hei21 MuiTypography-body1-11e8b6e"
+  >
+    Lorem ipsum dolor sit amet
+  </p>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    body2
+  </h6>,
+  <p
+    className="MuiTypography-root-8hei21 MuiTypography-body2-1qilk4y"
+  >
+    Lorem ipsum dolor sit amet
+  </p>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    subtitle1
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b"
+  >
+    Text field label
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    subtitle2
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle2-1bzaqsn"
+  >
+    Text field label
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle1-rdje8b MuiTypography-colorPrimary-sb76nh"
+  >
+    Inline styles
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle2-1bzaqsn MuiTypography-colorPrimary-sb76nh Hook-inline-42z04s"
+  >
+    First part of the text. 
+  </h6>,
+  <h6
+    className="MuiTypography-root-8hei21 MuiTypography-subtitle2-1bzaqsn Hook-inline-42z04s"
+  >
+    Second part of the text.
+  </h6>,
+]
+`;

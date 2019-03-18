@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
 import theme from 'medulas-react-components/lib/theme/utils/mui';
 import { EXTENSION_WIDTH, EXTENSION_HEIGHT } from './constants';
 
