@@ -1,42 +1,18 @@
 import * as React from 'react';
-import { useForm, useField, FormRenderProps } from 'react-final-form-hooks';
-import { FormApi } from 'final-form';
+import { useForm, useField } from 'react-final-form-hooks';
 
-export { useField };
+export { useField, useForm };
 
-interface Props extends FormRenderProps {
+interface Props {
   readonly onSubmit: (
     values: object,
-    form: FormApi,
     callback?: (errors?: object) => void
   ) => object | Promise<object | undefined> | undefined | void;
-  readonly handleSubmit: (
-    event?: React.SyntheticEvent<HTMLFormElement>
-  ) => Promise<object | undefined> | undefined;
   readonly children: React.ReactNode;
 }
 
-export const useIovForm = (onSubmit: any, validate: any): FormRenderProps => {
-  // eslint-disable-line
-  const formRenderProps = useForm({
-    onSubmit, // the function to call with your form values upon valid submit
-    validate, // a record-level validation function to check all form values
-  });
-  return formRenderProps;
-};
-
-const Form = ({
-  onSubmit, // eslint-disable-line
-  handleSubmit,
-  children,
-  ...props
-}: Props): JSX.Element => {
-  return (
-    <form onSubmit={handleSubmit} {...props}>
-      {' '}
-      {children}{' '}
-    </form>
-  );
-};
+const Form = ({ onSubmit, children }: Props) => (
+  <form onSubmit={onSubmit}>{children}</form>
+);
 
 export default Form;
