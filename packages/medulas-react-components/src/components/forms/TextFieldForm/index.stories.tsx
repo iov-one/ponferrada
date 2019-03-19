@@ -1,86 +1,54 @@
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import React from 'react';
-import TextFieldForm from './index';
+import TextField from './index';
 import { Storybook } from '../../../utils/storybook';
-import Grid, { SizingBreakpoint } from '../../Grid';
-import GridItem from '../../GridItem';
-import Form, { useForm } from '../Form';
+import { Grid } from '@material-ui/core';
 
-interface Props {
-  readonly name: string;
-  readonly label: string;
-  readonly defaultValue?: string;
-  readonly helperText?: string;
-  readonly disabled?: boolean;
-  readonly placeholder?: string;
-  readonly error?: boolean;
-}
-
-const TextField = ({
-  name,
-  label,
-  defaultValue,
-  helperText,
-  disabled,
-  placeholder,
-  error,
-}: Props): JSX.Element => {
-  const { form, handleSubmit } = useForm({
-    onSubmit: action('Form submit'),
-  });
-
-  return (
-    <Form onSubmit={handleSubmit}>
-      <TextFieldForm
-        label={label}
-        placeholder={placeholder}
-        defaultValue={defaultValue}
-        helperText={helperText}
-        form={form}
-        name={name}
-        disabled={disabled}
-        error={error}
-      />
-    </Form>
-  );
-};
-
-const gridItemWidth: SizingBreakpoint = {
-  xs: '100%',
-  sm: '50%',
-};
-
-storiesOf('Components /TextFieldForm', module).add('Examples', () => (
+storiesOf('TextField', module).add('Examples', () => (
   <Storybook>
-    <Grid flexWrap="wrap">
-      <GridItem marginBottom={4} width={gridItemWidth}>
+    <Grid container spacing={5}>
+      <Grid item xs={6}>
         <TextField
-          name="field-with-error"
+          error
+          id="standard-error"
           label="Error"
           defaultValue="Standard Error"
           helperText="This is an error message"
-          error
+          className={'test-standard-Placeholder'}
+          margin="normal"
         />
-      </GridItem>
-      <GridItem marginBottom={4} width={gridItemWidth}>
-        <TextField name="field-filled" label="Filled" defaultValue="test*iov" />
-      </GridItem>
-      <GridItem marginBottom={4} width={gridItemWidth}>
+      </Grid>
+      <Grid item xs={6}>
+        <TextField
+          id="standard-with-placeholder"
+          label="Filled"
+          defaultValue="test*iov"
+          className={'test-Placeholder'}
+          margin="normal"
+        />
+      </Grid>
+      <Grid item xs={6}>
         <TextField
           disabled
-          name="standard-disabled"
+          id="standard-disabled"
           label="Disabled"
           defaultValue="Disabled input"
+          className={'test-disabled'}
+          margin="normal"
         />
-      </GridItem>
-      <GridItem marginBottom={4} width={gridItemWidth}>
+      </Grid>
+      <Grid item xs={6}>
         <TextField
-          name="standard-with-placeholder"
+          id="standard-with-placeholder"
           label="Empty"
           placeholder="IOV or wallet address"
+          className={'test-Placeholder'}
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-      </GridItem>
+      </Grid>
     </Grid>
   </Storybook>
 ));
