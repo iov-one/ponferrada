@@ -1,52 +1,88 @@
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import React from 'react';
-import TextField from './index';
+import TextFieldForm from './index';
 import { Storybook } from '../../../utils/storybook';
 import { Grid } from '@material-ui/core';
+import Form, { useForm, useField } from '../Form';
 
-storiesOf('TextField', module).add('Examples', () => (
+interface Props {
+  readonly name: string;
+  readonly label: string;
+  readonly defaultValue?: string;
+  readonly helperText?: string;
+  readonly disabled?: boolean;
+  readonly placeholder?: string;
+  readonly error?: boolean;
+}
+
+const TextField = ({
+  name,
+  label,
+  defaultValue,
+  helperText,
+  disabled,
+  placeholder,
+  error,
+}: Props): JSX.Element => {
+  const { form, handleSubmit } = useForm({
+    onSubmit: action('Form submit'),
+  });
+
+  const { input, meta } = useField(name, form);
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <TextFieldForm
+        label={label}
+        placeholder={placeholder}
+        margin="normal"
+        variant="outlined"
+        defaultValue={defaultValue}
+        helperText={helperText}
+        onChange={input.onChange}
+        form={form}
+        name={input.name}
+        meta={meta}
+        disabled={disabled}
+        error={error}
+      />
+    </Form>
+  );
+};
+
+/*InputLabelProps={{
+  shrink: true,
+}}*/
+
+storiesOf('Components /TextFieldForm', module).add('Examples', () => (
   <Storybook>
     <Grid container spacing={5}>
       <Grid item xs={6}>
         <TextField
-          error
-          id="standard-error"
+          name="field-with-error"
           label="Error"
           defaultValue="Standard Error"
           helperText="This is an error message"
-          className={'test-standard-Placeholder'}
-          margin="normal"
+          error
         />
       </Grid>
       <Grid item xs={6}>
-        <TextField
-          id="standard-with-placeholder"
-          label="Filled"
-          defaultValue="test*iov"
-          className={'test-Placeholder'}
-          margin="normal"
-        />
+        <TextField name="field-filled" label="Filled" defaultValue="test*iov" />
       </Grid>
       <Grid item xs={6}>
         <TextField
           disabled
-          id="standard-disabled"
+          name="standard-disabled"
           label="Disabled"
           defaultValue="Disabled input"
-          className={'test-disabled'}
-          margin="normal"
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
-          id="standard-with-placeholder"
+          name="standard-with-placeholder"
           label="Empty"
           placeholder="IOV or wallet address"
-          className={'test-Placeholder'}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
         />
       </Grid>
     </Grid>
