@@ -1,57 +1,59 @@
 import { Button } from '@material-ui/core';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import Form, { useForm, useField } from './index';
 import TextFieldForm from '../TextFieldForm';
-import { Storybook } from '../../../utils/storybook';
-import Form, { useForm, FormValues, ValidationError } from './index';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
 
-const onSubmit = async (values: FormValues): Promise<void> => {
-  console.log('Simulate before');
-  await sleep(7000);
-  console.log(values);
+const onSubmit = async (values: object): Promise<void> => {
+  // eslint-disable-line
+  await sleep(300);
+  window.alert(JSON.stringify(values));
 };
 
-const FIELD_NAME = 'uniqueIdentifier';
-
-const validate = (values: FormValues): object => {
-  let errors: ValidationError = {};
-  if (!values[FIELD_NAME]) {
-    errors[FIELD_NAME] = 'Required';
-  } else if (values[FIELD_NAME].length <= 4) {
-    errors[FIELD_NAME] = 'Must be at least 4 chars';
+// eslint-disable-next-line
+const validate = (values: any): object => {
+  let errors = {
+    uniqueIdentifier: '',
+  };
+  if (!values.uniqueIdentifier) {
+    errors.uniqueIdentifier = 'Required';
+  } else if (values.uniqueIdentifier.length <= 4) {
+    errors.uniqueIdentifier = 'Must be at least 4 chars';
   }
   return errors;
 };
 
-const FormStory = (): JSX.Element => {
-  const { form, handleSubmit, values, pristine, submitting } = useForm({
-    onSubmit,
-    validate,
-  });
-
-  return (
-    <Form onSubmit={handleSubmit}>
-      <TextFieldForm
-        label="Unique Identifier"
-        placeholder="Unique Identifier"
-        form={form}
-        name={FIELD_NAME}
-      />
-      <Button type="submit" disabled={pristine || submitting}>
-        Submit
-      </Button>
-      <pre>{JSON.stringify(values, undefined, 2)}</pre>
-    </Form>
-  );
-};
+const FIELD_NAME = 'test';
 
 storiesOf('Components /forms', module).add(
   'Add react-final-form-hooks form',
-  () => (
-    <Storybook>
-      <FormStory />
-    </Storybook>
-  )
+  () => {
+    const { form, values, pristine, submitting } = useForm({
+      onSubmit,
+      validate,
+    });
+    const uniqueIdentifier = useField('uniqueIdentifier', form);
+
+    return (
+      <Form onSubmit={onSubmit}>
+        <TextFieldForm
+          label="Unique Identifier"
+          placeholder="Unique Identifier"
+          margin="normal"
+          variant="standard"
+          value={uniqueIdentifier.input.value}
+          onChange={uniqueIdentifier.input.onChange}
+          error={uniqueIdentifier.meta.error}
+          form={form}
+          name={FIELD_NAME}
+        />
+        <Button type="submit" disabled={pristine || submitting}>
+          Submit
+        </Button>
+        <pre>{JSON.stringify(values, undefined, 2)}</pre>
+      </Form>
+    );
+  }
 );
