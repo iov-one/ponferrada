@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'medulas-react-components/lib/components/Button';
+import Button from 'medulas-react-components/lib/components/Button';
 import { Typography } from 'medulas-react-components/lib/components/Typography';
 import { Block } from 'medulas-react-components/lib/components/Block';
 import { Image } from 'medulas-react-components/lib/components/Image';

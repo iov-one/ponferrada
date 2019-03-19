@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Button } from './index';
+import Button from './index';
 import { Storybook } from '../../utils/storybook';
 import { Grid } from '@material-ui/core';
 
