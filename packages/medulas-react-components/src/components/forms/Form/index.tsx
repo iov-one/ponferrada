@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm, useField } from 'react-final-form-hooks';
 
-export { useField, useForm };
+export { useForm, useField };
 
 interface Props {
   readonly onSubmit: (
