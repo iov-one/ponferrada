@@ -1,6 +1,7 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../../theme/constants';
 import { WELCOME_ROUTE } from '../../paths';
+import { sleep } from '../../../utils/timer';
 
 describe('DOM > Welcome route', () => {
   let browser: Browser;
@@ -11,6 +12,7 @@ describe('DOM > Welcome route', () => {
     browser = await puppeteer.launch({
       headless: false,
       devtools: true,
+      slowMo: 200,
       args: [
         `--disable-extensions-except=${CRX_PATH}`,
         `--load-extension=${CRX_PATH}`,
@@ -32,11 +34,12 @@ describe('DOM > Welcome route', () => {
       'chrome-extension://lcfnnoggdagjbeoefdfgfpliobcablom/index.html'
     );
 
+    await sleep(8000);
+
     const inner = await page.evaluate(async (id: string) => {
       const element = document.getElementById(id);
-      console.log(element);
       if (!element) {
-        return 'moe';
+        return undefined;
       }
 
       return element.id;
