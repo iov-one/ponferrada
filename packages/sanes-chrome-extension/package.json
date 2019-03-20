@@ -17,6 +17,7 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@iov/keycontrol": "^0.12.3",
     "@types/chrome": "^0.0.81",
     "@types/history": "^4.7.2",
     "@types/jest": "24.0.6",
@@ -26,7 +27,9 @@
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
     "connected-react-router": "^6.3.1",
+    "encoding-down": "^5.0.4",
     "history": "^4.7.2",
+    "level-js": "^3.0.0",
     "levelup": "3.1.0",
     "medulas-react-components": "*",
     "memdown": "^3.0.0",
@@ -42,6 +45,7 @@
     "webext-redux": "^2.0.1"
   },
   "devDependencies": {
+    "@types/encoding-down": "^5.0.0",
     "@types/levelup": "^3.1.0",
     "@types/memdown": "^3.0.0",
     "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509",
