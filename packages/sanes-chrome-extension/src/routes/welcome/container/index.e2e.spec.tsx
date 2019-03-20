@@ -34,9 +34,9 @@ describe('DOM > Welcome route', () => {
 
     const inner = await page.evaluate(async (id: string) => {
       const element = document.getElementById(id);
-
+      console.log(element);
       if (!element) {
-        return undefined;
+        return 'moe';
       }
 
       return element.id;
