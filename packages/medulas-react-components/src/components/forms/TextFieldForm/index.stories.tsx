@@ -4,7 +4,7 @@ import React from 'react';
 import TextFieldForm from './index';
 import { Storybook } from '../../../utils/storybook';
 import { Grid } from '@material-ui/core';
-import Form, { useForm, useField } from '../Form';
+import Form, { useForm } from '../Form';
 
 interface Props {
   readonly name: string;
