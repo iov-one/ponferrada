@@ -7,7 +7,6 @@ import { useField } from 'react-final-form-hooks';
 interface InnerProps {
   name: string;
   form: FormApi;
-  meta: NonFunctionProperties<FieldState>;
   subscription?: FieldSubscription;
 }
 
