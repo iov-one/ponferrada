@@ -1,7 +1,6 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../../theme/constants';
 import { WELCOME_ROUTE } from '../../paths';
-import { sleep } from '../../../utils/timer';
 
 describe('DOM > Welcome route', () => {
   let browser: Browser;
@@ -32,8 +31,6 @@ describe('DOM > Welcome route', () => {
     await page.goto(
       'chrome-extension://lcfnnoggdagjbeoefdfgfpliobcablom/index.html'
     );
-
-    await sleep(8000);
 
     const inner = await page.evaluate(async (id: string) => {
       const element = document.getElementById(id);
