@@ -12,7 +12,6 @@ describe('DOM > Welcome route', () => {
     browser = await puppeteer.launch({
       headless: false,
       devtools: true,
-      slowMo: 200,
       args: [
         `--disable-extensions-except=${CRX_PATH}`,
         `--load-extension=${CRX_PATH}`,
