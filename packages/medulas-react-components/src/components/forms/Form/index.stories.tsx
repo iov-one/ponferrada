@@ -1,28 +1,28 @@
 import { Button } from '@material-ui/core';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import * as React from 'react';
 import TextFieldForm from '../TextFieldForm';
 import { Storybook } from '../../../utils/storybook';
-import Form, { useForm, useField } from './index';
+import Form, { useForm, FormValues, ValidationError } from './index';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
 
-const onSubmit = async (values: object): Promise<void> => {
+const onSubmit = async (values: FormValues): Promise<void> => {
   // eslint-disable-line
   console.log('Simulate before');
   await sleep(7000);
   console.log(values);
-  console.log('Simulate after');
 };
 
 const FIELD_NAME = 'uniqueIdentifier';
 
 // eslint-disable-next-line
-const validate = (values: any): object => {
-  let errors = {};
-  if (!values.uniqueIdentifier) {
+const validate = (values: FormValues): object => {
+  let errors: ValidationError = {};
+  if (!values[FIELD_NAME]) {
     errors[FIELD_NAME] = 'Required';
-  } else if (values.uniqueIdentifier.length <= 4) {
+  } else if (values[FIELD_NAME].length <= 4) {
     errors[FIELD_NAME] = 'Must be at least 4 chars';
   }
   return errors;
@@ -34,20 +34,13 @@ const FormStory = (): JSX.Element => {
     validate,
   });
 
-  const { input, meta } = useField(FIELD_NAME, form);
-
   return (
     <Form onSubmit={handleSubmit}>
       <TextFieldForm
         label="Unique Identifier"
         placeholder="Unique Identifier"
-        margin="normal"
-        variant="standard"
-        value={input.value}
-        onChange={input.onChange}
         form={form}
-        name={input.name}
-        meta={meta}
+        name={FIELD_NAME}
       />
       <Button type="submit" disabled={pristine || submitting}>
         Submit
