@@ -3,11 +3,18 @@ import { useForm, useField } from 'react-final-form-hooks';
 
 export { useForm, useField };
 
+export interface FormValues {
+  [key: string]: string;
+}
+
+export interface ValidationError {
+  [key: string]: string;
+}
+
 interface Props {
   readonly onSubmit: (
-    values: object,
-    callback?: (errors?: object) => void
-  ) => object | Promise<object | undefined> | undefined | void;
+    event?: React.SyntheticEvent<HTMLFormElement>
+  ) => Promise<object | undefined> | undefined;
   readonly children: React.ReactNode;
 }
 

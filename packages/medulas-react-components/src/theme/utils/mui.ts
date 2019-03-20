@@ -102,7 +102,7 @@ const themeObject: ThemeOptions = {
     },
     MuiInputLabel: {
       formControl: {
-        top: '-24px',
+        top: `-${theme.spacing(3)}px,`,
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightMedium,
         fontSize: theme.typography.fontSize,
@@ -113,7 +113,7 @@ const themeObject: ThemeOptions = {
     },
     MuiFormHelperText: {
       contained: {
-        margin: '8px 0',
+        margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
       },
     },
   },
@@ -124,6 +124,7 @@ const themeObject: ThemeOptions = {
       color: 'primary',
     },
     MuiTextField: {
+      variant: 'outlined',
       InputProps: {
         labelWidth: 0,
       },
