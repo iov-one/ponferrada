@@ -51,13 +51,23 @@ interface Props extends BoxProps {
     | 'space-around'
     | 'initial'
     | 'inherit';
-  //Sizing Props
-  readonly width?: string | number | SizingBreakpoint;
-  readonly minWidth?: string | number | SizingBreakpoint;
-  readonly maxWidth?: string | number | SizingBreakpoint;
-  readonly height?: string | number | SizingBreakpoint;
-  readonly minHeight?: string | number | SizingBreakpoint;
-  readonly maxHeight?: string | number | SizingBreakpoint;
+  readonly order?: number;
+  readonly flexGrow?: number;
+  readonly flexBasis?: string | number;
+  readonly width?: string | number;
+  readonly flexShrink?: number;
+  readonly flex?: string;
+  readonly alignSelf?:
+    | 'auto'
+    | 'stretch'
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'baseline'
+    | 'initial'
+    | 'inherit';
+  readonly minWidth?: string | number;
+  readonly maxWidth?: string | number;
 }
 
 // TODO fix once the proper BoxProps have been updated
