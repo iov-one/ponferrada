@@ -27,7 +27,9 @@
     "@types/react-router-dom": "^4.3.1",
     "connected-react-router": "^6.3.1",
     "history": "^4.7.2",
+    "levelup": "3.1.0",
     "medulas-react-components": "*",
+    "memdown": "^3.0.0",
     "oza-react-scripts": "^0.0.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -40,6 +42,10 @@
     "webext-redux": "^2.0.1"
   },
   "devDependencies": {
-    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509"
+    "@types/levelup": "^3.1.0",
+    "@types/memdown": "^3.0.0",
+    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509",
+    "jest": "23.6.0",
+    "ts-jest": "23.10.5"
   }
 }
