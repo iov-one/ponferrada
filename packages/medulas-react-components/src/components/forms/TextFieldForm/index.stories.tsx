@@ -29,21 +29,15 @@ const TextField = ({
     onSubmit: action('Form submit'),
   });
 
-  const { input, meta } = useField(name, form);
-
   return (
     <Form onSubmit={handleSubmit}>
       <TextFieldForm
         label={label}
         placeholder={placeholder}
-        margin="normal"
-        variant="outlined"
         defaultValue={defaultValue}
         helperText={helperText}
-        onChange={input.onChange}
         form={form}
-        name={input.name}
-        meta={meta}
+        name={name}
         disabled={disabled}
         error={error}
       />

@@ -102,7 +102,7 @@ const themeObject: ThemeOptions = {
     },
     MuiInputLabel: {
       formControl: {
-        top: `-${theme.spacing(2)}px`,
+        top: `-${theme.spacing(3)}px,`,
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightMedium,
         fontSize: theme.typography.fontSize,
