@@ -11,7 +11,7 @@ export const history = createBrowserHistory();
 const createRootReducer = (history: History) =>
   combineReducers({
     router: connectRouter(history),
-    profile: profileReducer,
+    user: profileReducer,
   });
 
 export const reducer = createRootReducer(history);
