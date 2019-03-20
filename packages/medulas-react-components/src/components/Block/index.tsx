@@ -14,6 +14,7 @@ interface Props extends BoxProps {
   readonly paddingRight?: number;
   readonly paddingBottom?: number;
   readonly paddingLeft?: number;
+  readonly width?: string | number;
   readonly textAlign?: 'left' | 'center' | 'right';
 }
 
@@ -21,6 +22,8 @@ interface Props extends BoxProps {
 // See: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.d.ts
 const IovBlock = Box as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-export const Block = ({ children, ...restProps }: Props): JSX.Element => {
+const Block = ({ children, ...restProps }: Props): JSX.Element => {
   return <IovBlock {...restProps}>{children}</IovBlock>;
 };
+
+export default Block;

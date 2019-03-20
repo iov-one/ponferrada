@@ -44,7 +44,8 @@ interface Props extends BoxProps {
     | 'inherit';
   readonly order?: number;
   readonly flexGrow?: number;
-  readonly width?: string;
+  readonly flexBasis?: string | number;
+  readonly width?: string | number;
   readonly flexShrink?: number;
   readonly flex?: string;
   readonly alignSelf?:
@@ -56,12 +57,20 @@ interface Props extends BoxProps {
     | 'baseline'
     | 'initial'
     | 'inherit';
+  readonly minWidth?: string | number;
+  readonly maxWidth?: string | number;
 }
 
 // TODO fix once the proper BoxProps have been updated
 // See: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.d.ts
 const IovBlock = Box as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-export const Grid = ({ children, ...restProps }: Props): JSX.Element => {
-  return <IovBlock {...restProps}>{children}</IovBlock>;
+const Grid = ({ children, ...restProps }: Props): JSX.Element => {
+  return (
+    <IovBlock display="flex" {...restProps}>
+      {children}
+    </IovBlock>
+  );
 };
+
+export default Grid;
