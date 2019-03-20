@@ -7,6 +7,7 @@ describe('DOM > Welcome route', () => {
 
   beforeEach(async () => {
     const CRX_PATH = require('path').join(__dirname, '../../../../build');
+    console.log(CRX_PATH);
     browser = await puppeteer.launch({
       headless: false,
       devtools: true,
@@ -31,7 +32,7 @@ describe('DOM > Welcome route', () => {
       'chrome-extension://lcfnnoggdagjbeoefdfgfpliobcablom/index.html'
     );
 
-    const inner = await page.evaluate((id: string) => {
+    const inner = await page.evaluate(async (id: string) => {
       const element = document.getElementById(id);
 
       if (!element) {
