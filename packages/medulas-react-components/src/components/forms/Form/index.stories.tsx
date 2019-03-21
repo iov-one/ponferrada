@@ -5,10 +5,9 @@ import TextFieldForm from '../TextFieldForm';
 import { Storybook } from '../../../utils/storybook';
 import Form, { useForm, FormValues, ValidationError } from './index';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const onSubmit = async (values: FormValues): Promise<void> => {
-  // eslint-disable-line
   console.log('Simulate before');
   await sleep(7000);
   console.log(values);
@@ -16,7 +15,6 @@ const onSubmit = async (values: FormValues): Promise<void> => {
 
 const FIELD_NAME = 'uniqueIdentifier';
 
-// eslint-disable-next-line
 const validate = (values: FormValues): object => {
   let errors: ValidationError = {};
   if (!values[FIELD_NAME]) {
