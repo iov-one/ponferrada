@@ -16,7 +16,7 @@ cache:
 
 before_install:
   # Enable user namespace cloning
-  - "sysctl -w kernel.unprivileged_userns_clone=1"
+  - "sudo sysctl -w kernel.unprivileged_userns_clone=1"
   # Launch XVFB
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
