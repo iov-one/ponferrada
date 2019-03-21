@@ -40,6 +40,8 @@
     "webext-redux": "^2.0.1"
   },
   "devDependencies": {
-    "cra-build-watch": "ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509"
+    "@types/puppeteer": "^1.12.3",
+    "cra-build-watch": "apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509",
+    "puppeteer": "^1.13.0"
   }
 }

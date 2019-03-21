@@ -4,9 +4,10 @@ import { Typography } from 'medulas-react-components/lib/components/Typography';
 import { Block } from 'medulas-react-components/lib/components/Block';
 import { Image } from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../assets/iov-logo.png';
+import { WELCOME_ROUTE } from '../../paths';
 
 const Layout = (): JSX.Element => (
-  <Block paddingRight={2} paddingLeft={2} paddingTop={2}>
+  <Block id={WELCOME_ROUTE} paddingRight={2} paddingLeft={2} paddingTop={2}>
     <Typography color="primary" variant="h4" inline>
       Welcome
     </Typography>

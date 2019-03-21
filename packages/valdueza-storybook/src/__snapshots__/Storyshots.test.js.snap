@@ -3,6 +3,7 @@
 exports[`Storyshots /Routes Welcome Welcome page 1`] = `
 <div
   className="MuiBox-root-r0dolg MuiBox-root-1"
+  id="/welcome"
 >
   <h4
     className="MuiTypography-root-8hei21 MuiTypography-h4-594um6 MuiTypography-colorPrimary-sb76nh Hook-inline-42z04s"

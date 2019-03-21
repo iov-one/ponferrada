@@ -1,0 +1,43 @@
+language: node_js
+dist: trusty
+addons:
+  apt:
+    packages:
+      # This is required to run new chrome on old trusty
+      - libnss3
+node_js:
+  - "10"
+sudo: required
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  # Enable user namespace cloning
+  - "sudo sysctl -w kernel.unprivileged_userns_clone=1"
+  # Launch XVFB
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  # yarn is outdated on Linux images
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+before_script:
+  # Make variables and function from Travis available in our script
+  # See implementation https://github.com/travis-ci/travis-build/blob/4041ba116ddb3bdfd66ab8acbb7094dee28d6797/lib/travis/build/templates/header.sh
+  # and http://www.garbers.co.za/2017/11/01/code-folding-and-timing-in-travis-ci/
+  - export ANSI_CLEAR
+  - export -f travis_nanoseconds travis_fold travis_time_start travis_time_finish
+
+script:
+  - ./scripts/travis.sh
+
+# whitelist long living branches to avoid testing feature branches twice (as branch and as pull request)
+branches:
+  only:
+  - master
+  - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+
+notifications:
+  email: false
