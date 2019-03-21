@@ -2,10 +2,10 @@
 
 exports[`Storyshots Button Button in desktop screen 1`] = `
 <div
-  className="MuiGrid-container-97601a MuiGrid-spacing-xs-4-y26qkl"
+  className="MuiBox-root-1tpdhdx MuiBox-root-6"
 >
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+    className="MuiBox-root-1tpdhdx MuiBox-root-7"
   >
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6"
@@ -35,7 +35,7 @@ exports[`Storyshots Button Button in desktop screen 1`] = `
     </button>
   </div>
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+    className="MuiBox-root-1tpdhdx MuiBox-root-8"
   >
     <button
       className="MuiButtonBase-root-w0iq0r MuiButtonBase-disabled-1gn1rpx MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-disabled-1gn1rpx"
@@ -62,7 +62,7 @@ exports[`Storyshots Button Button in desktop screen 1`] = `
     </button>
   </div>
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+    className="MuiBox-root-1tpdhdx MuiBox-root-9"
   >
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedSecondary-10u561l"
@@ -92,7 +92,7 @@ exports[`Storyshots Button Button in desktop screen 1`] = `
     </button>
   </div>
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+    className="MuiBox-root-1tpdhdx MuiBox-root-10"
   >
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -133,10 +133,10 @@ exports[`Storyshots Button Button in phone screen 1`] = `
   }
 >
   <div
-    className="MuiGrid-container-97601a MuiGrid-spacing-xs-4-y26qkl"
+    className="MuiBox-root-1tpdhdx MuiBox-root-1"
   >
     <div
-      className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+      className="MuiBox-root-1tpdhdx MuiBox-root-2"
     >
       <button
         className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6"
@@ -166,7 +166,7 @@ exports[`Storyshots Button Button in phone screen 1`] = `
       </button>
     </div>
     <div
-      className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+      className="MuiBox-root-1tpdhdx MuiBox-root-3"
     >
       <button
         className="MuiButtonBase-root-w0iq0r MuiButtonBase-disabled-1gn1rpx MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-disabled-1gn1rpx"
@@ -193,7 +193,7 @@ exports[`Storyshots Button Button in phone screen 1`] = `
       </button>
     </div>
     <div
-      className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+      className="MuiBox-root-1tpdhdx MuiBox-root-4"
     >
       <button
         className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedSecondary-10u561l"
@@ -223,7 +223,7 @@ exports[`Storyshots Button Button in phone screen 1`] = `
       </button>
     </div>
     <div
-      className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
+      className="MuiBox-root-1tpdhdx MuiBox-root-5"
     >
       <button
         className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -256,136 +256,12 @@ exports[`Storyshots Button Button in phone screen 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Button with Box flex layout 1`] = `
-<div
-  className="MuiBox-root-1tpdhdx MuiBox-root-1"
->
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-2"
-  >
-    <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-1ufm4pj"
-      >
-        Hower
-      </span>
-      <span
-        className="MuiTouchRipple-root-s3wr0d"
-      />
-    </button>
-  </div>
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-3"
-  >
-    <button
-      className="MuiButtonBase-root-w0iq0r MuiButtonBase-disabled-1gn1rpx MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-disabled-1gn1rpx"
-      disabled={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-1ufm4pj"
-      >
-        Disabled
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-4"
-  >
-    <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedSecondary-10u561l"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-1ufm4pj"
-      >
-        Cancel
-      </span>
-      <span
-        className="MuiTouchRipple-root-s3wr0d"
-      />
-    </button>
-  </div>
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-5"
-  >
-    <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-1ufm4pj"
-      >
-        Full Width
-      </span>
-      <span
-        className="MuiTouchRipple-root-s3wr0d"
-      />
-    </button>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Components /TextFieldForm Examples 1`] = `
 <div
-  className="MuiGrid-container-97601a MuiGrid-spacing-xs-5-1wlprb6"
+  className="MuiBox-root-1tpdhdx MuiBox-root-11"
 >
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-6-2ow24d"
+    className="MuiBox-root-1tpdhdx MuiBox-root-12"
   >
     <form
       onSubmit={[Function]}
@@ -451,7 +327,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
     </form>
   </div>
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-6-2ow24d"
+    className="MuiBox-root-1tpdhdx MuiBox-root-13"
   >
     <form
       onSubmit={[Function]}
@@ -512,7 +388,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
     </form>
   </div>
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-6-2ow24d"
+    className="MuiBox-root-1tpdhdx MuiBox-root-14"
   >
     <form
       onSubmit={[Function]}
@@ -573,7 +449,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
     </form>
   </div>
   <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-6-2ow24d"
+    className="MuiBox-root-1tpdhdx MuiBox-root-15"
   >
     <form
       onSubmit={[Function]}
@@ -722,19 +598,11 @@ exports[`Storyshots Components /forms Add react-final-form-hooks form 1`] = `
 `;
 
 exports[`Storyshots Image Images 1`] = `
-<div
-  className="MuiGrid-container-97601a MuiGrid-spacing-xs-5-1wlprb6"
->
-  <div
-    className="MuiGrid-item-lnp6pm MuiGrid-grid-xs-12-14dxsfh"
-  >
-    <img
-      alt="Iov Logo"
-      className="Hook-root-z8j3qi"
-      src="iov-logo.png"
-    />
-  </div>
-</div>
+<img
+  alt="Iov Logo"
+  className="Hook-root-z8j3qi"
+  src="iov-logo.png"
+/>
 `;
 
 exports[`Storyshots Routes/Signup Signup page 1`] = `
@@ -745,7 +613,7 @@ exports[`Storyshots Routes/Signup Signup page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1tpdhdx MuiBox-root-6"
+  className="MuiBox-root-1tpdhdx MuiBox-root-16"
   id="/welcome"
 >
   <h4
@@ -759,7 +627,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-7"
+    className="MuiBox-root-1tpdhdx MuiBox-root-17"
   >
     <p
       className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
@@ -767,7 +635,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-8"
+      className="MuiBox-root-1tpdhdx MuiBox-root-18"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -795,7 +663,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-9"
+      className="MuiBox-root-1tpdhdx MuiBox-root-19"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -823,7 +691,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-10"
+      className="MuiBox-root-1tpdhdx MuiBox-root-20"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -852,7 +720,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-11"
+    className="MuiBox-root-1tpdhdx MuiBox-root-21"
   >
     <img
       alt="IOV logo"
