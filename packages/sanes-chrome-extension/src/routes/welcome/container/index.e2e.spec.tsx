@@ -7,10 +7,10 @@ describe('DOM > Welcome route', () => {
 
   beforeEach(async () => {
     const CRX_PATH = require('path').join(__dirname, '../../../../build');
-    console.log(CRX_PATH);
     browser = await puppeteer.launch({
       headless: false,
       devtools: true,
+      // slowMo: 200,
       args: [
         `--disable-extensions-except=${CRX_PATH}`,
         `--load-extension=${CRX_PATH}`,
