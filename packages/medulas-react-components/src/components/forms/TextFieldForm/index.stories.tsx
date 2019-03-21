@@ -3,7 +3,8 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 import TextFieldForm from './index';
 import { Storybook } from '../../../utils/storybook';
-import { Grid } from '@material-ui/core';
+import Grid from '../../Grid';
+import GridItem from '../../GridItem';
 import Form, { useForm } from '../Form';
 
 interface Props {
@@ -45,14 +46,10 @@ const TextField = ({
   );
 };
 
-/*InputLabelProps={{
-  shrink: true,
-}}*/
-
 storiesOf('Components /TextFieldForm', module).add('Examples', () => (
   <Storybook>
-    <Grid container spacing={5}>
-      <Grid item xs={6}>
+    <Grid flexWrap="wrap">
+      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
         <TextField
           name="field-with-error"
           label="Error"
@@ -60,25 +57,25 @@ storiesOf('Components /TextFieldForm', module).add('Examples', () => (
           helperText="This is an error message"
           error
         />
-      </Grid>
-      <Grid item xs={6}>
+      </GridItem>
+      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
         <TextField name="field-filled" label="Filled" defaultValue="test*iov" />
-      </Grid>
-      <Grid item xs={6}>
+      </GridItem>
+      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
         <TextField
           disabled
           name="standard-disabled"
           label="Disabled"
           defaultValue="Disabled input"
         />
-      </Grid>
-      <Grid item xs={6}>
+      </GridItem>
+      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
         <TextField
           name="standard-with-placeholder"
           label="Empty"
           placeholder="IOV or wallet address"
         />
-      </Grid>
+      </GridItem>
     </Grid>
   </Storybook>
 ));
