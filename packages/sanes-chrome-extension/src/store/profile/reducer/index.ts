@@ -1,18 +1,12 @@
 import { ActionType } from 'typesafe-actions';
 
-import { createDb } from '../../../logic/db';
 import * as actions from '../actions';
-import { ProfileState } from '../states';
+import { ProfileState } from '../types';
 
-export const DB_PROFILE_NAME = 'profile';
 export type ProfileActions = ActionType<typeof actions>;
 const initState = (): ProfileState => ({
-  local: {
-    db: createDb(DB_PROFILE_NAME),
-  },
-  external: {
-    profile: undefined,
-  },
+  username: undefined,
+  bnsName: undefined,
 });
 
 export function profileReducer(
@@ -23,13 +17,11 @@ export function profileReducer(
   // using a global initState object meant re-using the same database in all tests
   // this has same effect, but allow multiple initializations in one process
   const state = maybeState ? maybeState : initState();
-
   switch (action.type) {
-    case 'CREATE_PROFILE_FULFILLED':
+    case 'SET_USERNAME':
       return {
         ...state,
-        local: { ...state.local },
-        external: { profile: action.payload },
+        username: action.username,
       };
     default:
       return state;

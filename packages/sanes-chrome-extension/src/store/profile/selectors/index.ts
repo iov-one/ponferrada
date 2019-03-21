@@ -1,3 +1,3 @@
 import { RootState } from '../../reducers';
 
-export const getUserDB = (state: RootState) => state.user.local.db;
+export const getUsername = (state: RootState): string => state.user.username;
