@@ -1,125 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots /Routes Welcome Welcome page 1`] = `
-<div
-  className="MuiBox-root-r0dolg MuiBox-root-1"
-  id="/welcome"
->
-  <h4
-    className="MuiTypography-root-8hei21 MuiTypography-h4-594um6 MuiTypography-colorPrimary-sb76nh Hook-inline-42z04s"
-  >
-    Welcome
-  </h4>
-  <h4
-    className="MuiTypography-root-8hei21 MuiTypography-h4-594um6 Hook-inline-42z04s"
-  >
-     to your IOV manager
-  </h4>
-  <div
-    className="MuiBox-root-r0dolg MuiBox-root-2"
-  >
-    <p
-      className="MuiTypography-root-8hei21 MuiTypography-body1-11e8b6e Hook-inline-42z04s"
-    >
-      This plugin lets you manage all your accounts in one place.
-    </p>
-    <div
-      className="MuiBox-root-r0dolg MuiBox-root-3"
-    />
-    <button
-      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
-      disabled={false}
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="contained"
-    >
-      <span
-        className="MuiButton-label-blnbog"
-      >
-        Log in
-      </span>
-      <span
-        className="MuiTouchRipple-root-101rr6o"
-      />
-    </button>
-    <div
-      className="MuiBox-root-r0dolg MuiBox-root-4"
-    />
-    <button
-      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
-      disabled={false}
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="contained"
-    >
-      <span
-        className="MuiButton-label-blnbog"
-      >
-        New account
-      </span>
-      <span
-        className="MuiTouchRipple-root-101rr6o"
-      />
-    </button>
-    <div
-      className="MuiBox-root-r0dolg MuiBox-root-5"
-    />
-    <button
-      className="MuiButtonBase-root-199s9j0 MuiButton-root-vy7hyk MuiButton-contained-1wct324 MuiButton-containedPrimary-zxltu3 MuiButton-fullWidth-140jv3d"
-      disabled={false}
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="contained"
-    >
-      <span
-        className="MuiButton-label-blnbog"
-      >
-        Import account
-      </span>
-      <span
-        className="MuiTouchRipple-root-101rr6o"
-      />
-    </button>
-  </div>
-  <div
-    className="MuiBox-root-r0dolg MuiBox-root-6"
-  >
-    <img
-      alt="IOV logo"
-      className="Hook-root-z8j3qi"
-      src="iov-logo.png"
-    />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Button Button in desktop screen 1`] = `
 <div
   className="MuiGrid-container-97601a MuiGrid-spacing-xs-4-y26qkl"
@@ -866,6 +746,7 @@ exports[`Storyshots Routes/Signup Signup page 1`] = `
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
   className="MuiBox-root-1tpdhdx MuiBox-root-6"
+  id="/welcome"
 >
   <h4
     className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
@@ -1062,7 +943,7 @@ Array [
   <h6
     className="MuiTypography-root-91g352 MuiTypography-subtitle2-xuzflv MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
   >
-    First part of the text.
+    First part of the text. 
   </h6>,
   <h6
     className="MuiTypography-root-91g352 MuiTypography-subtitle2-xuzflv Hook-inline-42z04s"
