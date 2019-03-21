@@ -8,7 +8,6 @@ import { WELCOME_ROUTE, SIGNUP_ROUTE } from '../../paths';
 import { history } from '../../../store/reducers/';
 
 const createNewAccount = (): void => {
-  console.log('New account creation');
   history.push(SIGNUP_ROUTE);
 };
 
