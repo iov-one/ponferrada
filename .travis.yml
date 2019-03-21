@@ -8,8 +8,7 @@ addons:
 node_js:
   - "10"
 sudo: required
-notifications:
-  email: false
+
 cache:
   directories:
     - node_modules
@@ -32,3 +31,12 @@ script:
   - yarn lint
   - yarn build
   - yarn test
+
+# whitelist long living branches to avoid testing feature branches twice (as branch and as pull request)
+branches:
+  only:
+  - master
+  - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+
+notifications:
+  email: false
