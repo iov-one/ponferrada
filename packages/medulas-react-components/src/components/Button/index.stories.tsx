@@ -10,8 +10,8 @@ storiesOf('Components /Button', module)
   .add('Button in phone screen', () => (
     <div style={{ width: '425px' }}>
       <Storybook>
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
+        <Grid flexWrap="wrap" flexDirection="column">
+          <GridItem marginBottom={4}>
             <Button onClick={action('clicked')}>Hower</Button>
           </GridItem>
           <GridItem marginBottom={4}>
@@ -35,8 +35,8 @@ storiesOf('Components /Button', module)
   ))
   .add('Button in desktop screen', () => (
     <Storybook>
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
+      <Grid flexWrap="wrap" flexDirection="column">
+        <GridItem marginBottom={4}>
           <Button onClick={action('clicked')}>Hower</Button>
         </GridItem>
         <GridItem marginBottom={4}>
