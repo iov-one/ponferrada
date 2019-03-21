@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 import TextFieldForm from './index';
 import { Storybook } from '../../../utils/storybook';
-import Grid from '../../Grid';
+import Grid, { SizingBreakpoint } from '../../Grid';
 import GridItem from '../../GridItem';
 import Form, { useForm } from '../Form';
 
@@ -46,10 +46,15 @@ const TextField = ({
   );
 };
 
+const gridItemWidth: SizingBreakpoint = {
+  xs: '100%',
+  sm: '50%',
+};
+
 storiesOf('Components /TextFieldForm', module).add('Examples', () => (
   <Storybook>
     <Grid flexWrap="wrap">
-      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
+      <GridItem marginBottom={4} width={gridItemWidth}>
         <TextField
           name="field-with-error"
           label="Error"
@@ -58,10 +63,10 @@ storiesOf('Components /TextFieldForm', module).add('Examples', () => (
           error
         />
       </GridItem>
-      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
+      <GridItem marginBottom={4} width={gridItemWidth}>
         <TextField name="field-filled" label="Filled" defaultValue="test*iov" />
       </GridItem>
-      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
+      <GridItem marginBottom={4} width={gridItemWidth}>
         <TextField
           disabled
           name="standard-disabled"
@@ -69,7 +74,7 @@ storiesOf('Components /TextFieldForm', module).add('Examples', () => (
           defaultValue="Disabled input"
         />
       </GridItem>
-      <GridItem marginBottom={4} width={{ xs: '100%', sm: '50%' }}>
+      <GridItem marginBottom={4} width={gridItemWidth}>
         <TextField
           name="standard-with-placeholder"
           label="Empty"

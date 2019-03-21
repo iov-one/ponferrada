@@ -1,6 +1,14 @@
 import * as React from 'react';
 import Box, { BoxProps } from '@material-ui/core/Box';
 
+export interface SizingBreakpoint {
+  xs?: string | number;
+  sm?: string | number;
+  md?: string | number;
+  lg?: string | number;
+  xl?: string | number;
+}
+
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
@@ -44,12 +52,12 @@ interface Props extends BoxProps {
     | 'initial'
     | 'inherit';
   //Sizing Props
-  readonly width?: string | number | object;
-  readonly minWidth?: string | number | object;
-  readonly maxWidth?: string | number | object;
-  readonly height?: string | number | object;
-  readonly minHeight?: string | number | object;
-  readonly maxHeight?: string | number | object;
+  readonly width?: string | number | SizingBreakpoint;
+  readonly minWidth?: string | number | SizingBreakpoint;
+  readonly maxWidth?: string | number | SizingBreakpoint;
+  readonly height?: string | number | SizingBreakpoint;
+  readonly minHeight?: string | number | SizingBreakpoint;
+  readonly maxHeight?: string | number | SizingBreakpoint;
 }
 
 // TODO fix once the proper BoxProps have been updated
