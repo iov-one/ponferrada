@@ -1,9 +1,14 @@
 os:
   - linux
+
+sudo: required
+
 language: node_js
 node_js:
   - "10"
+
 dist: trusty
+
 addons:
   apt:
     packages:
