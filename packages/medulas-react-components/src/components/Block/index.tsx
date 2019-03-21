@@ -5,17 +5,24 @@ import { SizingBreakpoint } from '../Grid';
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
-  readonly margin?: number;
-  readonly marginLeft?: number;
-  readonly marginTop?: number;
-  readonly marginRight?: number;
-  readonly marginBottom?: number;
-  readonly padding?: number;
-  readonly paddingTop?: number;
-  readonly paddingRight?: number;
-  readonly paddingBottom?: number;
-  readonly paddingLeft?: number;
-  readonly width?: string | number;
+  //Sizing Props
+  readonly width?: string | number | SizingBreakpoint;
+  readonly minWidth?: string | number | SizingBreakpoint;
+  readonly maxWidth?: string | number | SizingBreakpoint;
+  readonly height?: string | number | SizingBreakpoint;
+  readonly minHeight?: string | number | SizingBreakpoint;
+  readonly maxHeight?: string | number | SizingBreakpoint;
+  //Spacing Props
+  readonly margin?: string | number | SizingBreakpoint;
+  readonly marginLeft?: string | number | SizingBreakpoint;
+  readonly marginTop?: string | number | SizingBreakpoint;
+  readonly marginRight?: string | number | SizingBreakpoint;
+  readonly marginBottom?: string | number | SizingBreakpoint;
+  readonly padding?: string | number | SizingBreakpoint;
+  readonly paddingTop?: string | number | SizingBreakpoint;
+  readonly paddingRight?: string | number | SizingBreakpoint;
+  readonly paddingBottom?: string | number | SizingBreakpoint;
+  readonly paddingLeft?: string | number | SizingBreakpoint;
   readonly textAlign?: 'left' | 'center' | 'right';
   //Border
   readonly border?: string | number;
