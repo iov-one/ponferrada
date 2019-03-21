@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import { SizingBreakpoint } from '../Grid';
 
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
@@ -59,23 +58,23 @@ interface Props extends BoxProps {
     | 'initial'
     | 'inherit';
   //Sizing Props
-  readonly width?: string | number | SizingBreakpoint;
-  readonly minWidth?: string | number | SizingBreakpoint;
-  readonly maxWidth?: string | number | SizingBreakpoint;
-  readonly height?: string | number | SizingBreakpoint;
-  readonly minHeight?: string | number | SizingBreakpoint;
-  readonly maxHeight?: string | number | SizingBreakpoint;
+  readonly width?: string | number | object;
+  readonly minWidth?: string | number | object;
+  readonly maxWidth?: string | number | object;
+  readonly height?: string | number | object;
+  readonly minHeight?: string | number | object;
+  readonly maxHeight?: string | number | object;
   //Spacing Props
-  readonly margin?: string | number | SizingBreakpoint;
-  readonly marginLeft?: string | number | SizingBreakpoint;
-  readonly marginTop?: string | number | SizingBreakpoint;
-  readonly marginRight?: string | number | SizingBreakpoint;
-  readonly marginBottom?: string | number | SizingBreakpoint;
-  readonly padding?: string | number | SizingBreakpoint;
-  readonly paddingTop?: string | number | SizingBreakpoint;
-  readonly paddingRight?: string | number | SizingBreakpoint;
-  readonly paddingBottom?: string | number | SizingBreakpoint;
-  readonly paddingLeft?: string | number | SizingBreakpoint;
+  readonly margin?: string | number | object;
+  readonly marginLeft?: string | number | object;
+  readonly marginTop?: string | number | object;
+  readonly marginRight?: string | number | object;
+  readonly marginBottom?: string | number | object;
+  readonly padding?: string | number | object;
+  readonly paddingTop?: string | number | object;
+  readonly paddingRight?: string | number | object;
+  readonly paddingBottom?: string | number | object;
+  readonly paddingLeft?: string | number | object;
 }
 
 // TODO fix once the proper BoxProps have been updated
