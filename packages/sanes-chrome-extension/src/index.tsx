@@ -17,7 +17,7 @@ store.ready().then(() => {
   history.push(WELCOME_ROUTE);
 
   const render = (Component: React.ComponentType): void => {
-    return ReactDOM.render(
+    ReactDOM.render(
       <Provider store={store}>
         <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
           <ConnectedRouter history={history}>
