@@ -33,3 +33,10 @@ export const makeStore = (): Store<RootState> => {
 
   return store;
 };
+
+export const testStore = (localState?: object): Store<RootState> =>
+  createStore(
+    reducer,
+    localState,
+    composeEnhancers(applyMiddleware(...middlewares))
+  );
