@@ -29,7 +29,7 @@ describe('DOM > Welcome route', () => {
   it('loads correctly', async () => {
     const page: Page = await browser.newPage();
     await page.goto(
-      'chrome-extension://lcfnnoggdagjbeoefdfgfpliobcablom/index.html',
+      'chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html',
       { waitUntil: 'networkidle2' }
     );
 
