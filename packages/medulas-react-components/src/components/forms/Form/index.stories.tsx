@@ -5,7 +5,7 @@ import TextFieldForm from '../TextFieldForm';
 import { Storybook } from '../../../utils/storybook';
 import Form, { useForm, FormValues, ValidationError } from './index';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const onSubmit = async (values: FormValues): Promise<void> => {
   console.log('Simulate before');
