@@ -4,6 +4,7 @@ import Box, { BoxProps } from '@material-ui/core/Box';
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
+  //Flexbox Props
   readonly flexDirection?:
     | 'row'
     | 'row-reverse'
@@ -42,23 +43,13 @@ interface Props extends BoxProps {
     | 'space-around'
     | 'initial'
     | 'inherit';
-  readonly order?: number;
-  readonly flexGrow?: number;
-  readonly flexBasis?: string | number;
-  readonly width?: string | number;
-  readonly flexShrink?: number;
-  readonly flex?: string;
-  readonly alignSelf?:
-    | 'auto'
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
-  readonly minWidth?: string | number;
-  readonly maxWidth?: string | number;
+  //Sizing Props
+  readonly width?: string | number | object;
+  readonly minWidth?: string | number | object;
+  readonly maxWidth?: string | number | object;
+  readonly height?: string | number | object;
+  readonly minHeight?: string | number | object;
+  readonly maxHeight?: string | number | object;
 }
 
 // TODO fix once the proper BoxProps have been updated
