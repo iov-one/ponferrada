@@ -837,7 +837,7 @@ Array [
   <h6
     className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
@@ -1094,7 +1094,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Welcome Welcome page 1`] = `
+exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 <div
   className="MuiBox-root-svhlhv MuiBox-root-27"
   id="/welcome"
