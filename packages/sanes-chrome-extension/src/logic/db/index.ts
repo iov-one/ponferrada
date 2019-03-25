@@ -11,7 +11,7 @@ const isNode = (): boolean =>
   typeof process === 'object' && !(process as NodeJS.process).browser;
 const isBrowser = (): boolean => !isNode();
 
-export function createMemDb(name: strig): StringDB {
+export function createMemDb(name: string): StringDB {
   return levelup(leveldown('memdb/' + name));
 }
 
