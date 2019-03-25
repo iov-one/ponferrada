@@ -1,6 +1,6 @@
 import { AbstractLevelDOWN } from 'abstract-leveldown';
 import levelup, { LevelUp } from 'levelup';
-import leveldown from 'leveldown';
+import leveldown, { LevelDown } from 'leveldown';
 
 export type DB<K, V> = LevelUp<AbstractLevelDOWN<K, V>>;
 export type StringDB = DB<string, string>;
@@ -11,7 +11,7 @@ const isNode = (): boolean =>
   typeof process === 'object' && !(process as NodeJS.process).browser;
 const isBrowser = (): boolean => !isNode();
 
-export function createMemDb(name: string): StringDB {
+export function createMemDb(name: string): LevelUp<LevelDown> {
   return levelup(leveldown('memdb/' + name));
 }
 
