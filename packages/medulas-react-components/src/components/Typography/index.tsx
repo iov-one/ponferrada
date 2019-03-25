@@ -13,7 +13,7 @@ interface Props extends TypographyProps {
   readonly inline?: boolean;
 }
 
-export const Typography = ({
+const Typography = ({
   children,
   inline,
   className,
@@ -28,3 +28,5 @@ export const Typography = ({
     </MuiTypography>
   );
 };
+
+export default Typography;

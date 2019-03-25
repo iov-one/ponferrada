@@ -5,7 +5,6 @@ import { SizingBreakpoint } from '../Grid';
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
-  readonly display?: string;
   //Flexbox Props
   readonly flexDirection?:
     | 'row'
@@ -77,23 +76,18 @@ interface Props extends BoxProps {
   readonly paddingRight?: string | number | SizingBreakpoint;
   readonly paddingBottom?: string | number | SizingBreakpoint;
   readonly paddingLeft?: string | number | SizingBreakpoint;
-  readonly textAlign?: 'left' | 'center' | 'right';
 }
 
 // TODO fix once the proper BoxProps have been updated
 // See: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.d.ts
 const IovBlock = Box as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const Block = ({
-  children,
-  display = 'block',
-  ...restProps
-}: Props): JSX.Element => {
+const GridItem = ({ children, ...restProps }: Props): JSX.Element => {
   return (
-    <IovBlock display={display} {...restProps}>
+    <IovBlock display="flex" {...restProps}>
       {children}
     </IovBlock>
   );
 };
 
-export default Block;
+export default GridItem;

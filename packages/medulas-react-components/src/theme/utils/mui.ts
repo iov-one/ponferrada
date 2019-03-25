@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 import { lightFont, white, secondaryColor } from './variables';
 
-const themeObject: ThemeOptions = {
+const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#31E6C9',
@@ -67,6 +67,11 @@ const themeObject: ThemeOptions = {
       lineHeight: '0.875rem',
     },
   },
+});
+
+const themeObject: ThemeOptions = {
+  ...theme,
+
   overrides: {
     MuiButton: {
       label: {
@@ -81,12 +86,52 @@ const themeObject: ThemeOptions = {
         },
       },
     },
+    MuiOutlinedInput: {
+      root: {
+        '& $notchedOutline': {
+          borderColor: '#f3f3f3',
+        },
+        backgroundColor: '#fcfcfc',
+      },
+      input: {
+        padding: '14px',
+      },
+      error: {
+        backgroundColor: '#fff1e1',
+      },
+    },
+    MuiInputLabel: {
+      formControl: {
+        top: `-${theme.spacing(2)}px`,
+        color: theme.palette.text.primary,
+        fontWeight: theme.typography.fontWeightMedium,
+        fontSize: theme.typography.fontSize,
+      },
+      error: {
+        color: `${theme.palette.text.primary} !important`,
+      },
+    },
+    MuiFormHelperText: {
+      contained: {
+        margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
+      },
+    },
   },
   //https://material-ui.com/customization/themes/#properties
   props: {
     MuiButton: {
       variant: 'contained',
       color: 'primary',
+    },
+    MuiTextField: {
+      variant: 'outlined',
+      InputProps: {
+        labelWidth: 0,
+      },
+    },
+    MuiInputLabel: {
+      shrink: true,
+      variant: 'standard',
     },
   },
 };

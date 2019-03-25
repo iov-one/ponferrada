@@ -1,11 +1,17 @@
 import * as React from 'react';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import { SizingBreakpoint } from '../Grid';
+
+export interface SizingBreakpoint {
+  xs?: string | number;
+  sm?: string | number;
+  md?: string | number;
+  lg?: string | number;
+  xl?: string | number;
+}
 
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
-  readonly display?: string;
   //Flexbox Props
   readonly flexDirection?:
     | 'row'
@@ -45,20 +51,6 @@ interface Props extends BoxProps {
     | 'space-around'
     | 'initial'
     | 'inherit';
-  readonly order?: number;
-  readonly flexGrow?: number;
-  readonly flexBasis?: string | number;
-  readonly flexShrink?: number;
-  readonly flex?: string;
-  readonly alignSelf?:
-    | 'auto'
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
   //Sizing Props
   readonly width?: string | number | SizingBreakpoint;
   readonly minWidth?: string | number | SizingBreakpoint;
@@ -66,34 +58,18 @@ interface Props extends BoxProps {
   readonly height?: string | number | SizingBreakpoint;
   readonly minHeight?: string | number | SizingBreakpoint;
   readonly maxHeight?: string | number | SizingBreakpoint;
-  //Spacing Props
-  readonly margin?: string | number | SizingBreakpoint;
-  readonly marginLeft?: string | number | SizingBreakpoint;
-  readonly marginTop?: string | number | SizingBreakpoint;
-  readonly marginRight?: string | number | SizingBreakpoint;
-  readonly marginBottom?: string | number | SizingBreakpoint;
-  readonly padding?: string | number | SizingBreakpoint;
-  readonly paddingTop?: string | number | SizingBreakpoint;
-  readonly paddingRight?: string | number | SizingBreakpoint;
-  readonly paddingBottom?: string | number | SizingBreakpoint;
-  readonly paddingLeft?: string | number | SizingBreakpoint;
-  readonly textAlign?: 'left' | 'center' | 'right';
 }
 
 // TODO fix once the proper BoxProps have been updated
 // See: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.d.ts
 const IovBlock = Box as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const Block = ({
-  children,
-  display = 'block',
-  ...restProps
-}: Props): JSX.Element => {
+const Grid = ({ children, ...restProps }: Props): JSX.Element => {
   return (
-    <IovBlock display={display} {...restProps}>
+    <IovBlock display="flex" {...restProps}>
       {children}
     </IovBlock>
   );
 };
 
-export default Block;
+export default Grid;

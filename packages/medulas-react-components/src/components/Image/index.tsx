@@ -35,7 +35,7 @@ export interface ImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   readonly style?: React.CSSProperties;
 }
 
-export const Image = ({
+const Image = ({
   fullwidth,
   alt,
   cover,
@@ -55,3 +55,5 @@ export const Image = ({
 
   return <img alt={alt} style={style} {...props} className={imageClassNames} />;
 };
+
+export default Image;

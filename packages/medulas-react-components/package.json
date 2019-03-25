@@ -23,8 +23,8 @@
     "@types/material-ui": "^0.21.6",
     "@types/node": "11.9.4",
     "add": "^2.0.6",
+    "final-form": "^4.12.0",
     "oza-react-scripts": "^0.0.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-final-form-hooks": "^1.0.1"
   }
 }
