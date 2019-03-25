@@ -78,6 +78,16 @@ interface Props extends BoxProps {
   readonly paddingBottom?: string | number | SizingBreakpoint;
   readonly paddingLeft?: string | number | SizingBreakpoint;
   readonly textAlign?: 'left' | 'center' | 'right';
+  //Border
+  readonly border?: string | number;
+  readonly borderTop?: string | number;
+  readonly borderLeft?: string | number;
+  readonly borderRight?: string | number;
+  readonly borderBottom?: string | number;
+  readonly borderColor?: string;
+  readonly borderRadius?: string | number;
+  //Palette
+  readonly bgcolor?: string;
 }
 
 // TODO fix once the proper BoxProps have been updated
