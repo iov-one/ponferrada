@@ -605,7 +605,7 @@ exports[`Storyshots Image Images 1`] = `
 />
 `;
 
-exports[`Storyshots Routes/Signup Signup page 1`] = `
+exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
   className="MuiBox-root-1tpdhdx MuiBox-root-16"
   id="/signup_first"
@@ -852,9 +852,79 @@ exports[`Storyshots Routes/Signup Signup page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Welcome Welcome page 1`] = `
+exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 <div
   className="MuiBox-root-1tpdhdx MuiBox-root-23"
+  id="/signup_second"
+>
+  <h4
+    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
+  >
+    Recovery
+  </h4>
+  <h4
+    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq Hook-inline-42z04s"
+  >
+     Phrase
+  </h4>
+  <div
+    className="MuiBox-root-1tpdhdx MuiBox-root-24"
+  >
+    <div
+      className="MuiBox-root-1tpdhdx MuiBox-root-25"
+    >
+      <p
+        className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
+      >
+        organ wheat manage mirror wish truly tool trumpet since equip flight bracket
+      </p>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root-1tpdhdx MuiBox-root-26"
+  >
+    <button
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="submit"
+    >
+      <span
+        className="MuiButton-label-1ufm4pj"
+      >
+        Create
+      </span>
+      <span
+        className="MuiTouchRipple-root-s3wr0d"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiBox-root-1tpdhdx MuiBox-root-27"
+  >
+    <img
+      alt="IOV logo"
+      className="Hook-root-z8j3qi"
+      src="iov-logo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Welcome Welcome page 1`] = `
+<div
+  className="MuiBox-root-1tpdhdx MuiBox-root-28"
   id="/welcome"
 >
   <h4
@@ -868,7 +938,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-24"
+    className="MuiBox-root-1tpdhdx MuiBox-root-29"
   >
     <p
       className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
@@ -876,10 +946,10 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-25"
+      className="MuiBox-root-1tpdhdx MuiBox-root-30"
     />
     <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe welcome-view-buttons"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -904,10 +974,10 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-26"
+      className="MuiBox-root-1tpdhdx MuiBox-root-31"
     />
     <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe welcome-view-buttons"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -932,10 +1002,10 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-27"
+      className="MuiBox-root-1tpdhdx MuiBox-root-32"
     />
     <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe welcome-view-buttons"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -961,7 +1031,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-28"
+    className="MuiBox-root-1tpdhdx MuiBox-root-33"
   >
     <img
       alt="IOV logo"
