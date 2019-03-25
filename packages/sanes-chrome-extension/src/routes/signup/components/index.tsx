@@ -6,12 +6,14 @@ import Image from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../../paths';
 import NewAccountForm from './NewAccountForm';
+import RecoveryPhrase from './RecoveryPhrase';
 
 interface Props {
   readonly onSignup: (formValues: FormValues) => void;
+  readonly step: string;
 }
 
-const Layout = ({ onSignup }: Props): JSX.Element => {
+const Layout = ({ onSignup, step }: Props): JSX.Element => {
   return (
     <Block
       id={`${SIGNUP_ROUTE}_first`}
@@ -26,7 +28,11 @@ const Layout = ({ onSignup }: Props): JSX.Element => {
         {' Account'}
       </Typography>
       <Block padding={2} marginTop={3} marginBottom={1}>
-        <NewAccountForm onSignup={onSignup} />
+        {step === 'first' ? (
+          <NewAccountForm onSignup={onSignup} />
+        ) : (
+          <RecoveryPhrase />
+        )}
       </Block>
       <Block textAlign="center" marginBottom={1}>
         <Image src={iovLogo} alt="IOV logo" />
