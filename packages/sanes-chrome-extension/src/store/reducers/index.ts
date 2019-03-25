@@ -4,7 +4,7 @@ import { History } from 'history';
 import { combineReducers } from 'redux';
 import { StateType } from 'typesafe-actions';
 
-export const history = createBrowserHistory();
+export let history = createBrowserHistory();
 
 // eslint-disable-next-line
 const createRootReducer = (history: History) =>
@@ -15,3 +15,10 @@ const createRootReducer = (history: History) =>
 export const reducer = createRootReducer(history);
 
 export type RootState = StateType<ReturnType<typeof createRootReducer>>;
+
+/**
+ * This method can only be used in test enviromnets
+ */
+export const resetHistory = () => {
+  history = createBrowserHistory();
+};

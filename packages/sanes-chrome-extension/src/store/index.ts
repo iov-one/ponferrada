@@ -33,3 +33,14 @@ export const makeStore = (): Store<RootState> => {
 
   return store;
 };
+
+/**
+ * This method can only be used in test enviromnets
+ * @param localState Initial redux object
+ */
+export const aNewStore = (localState?: object): Store<RootState> =>
+  createStore(
+    reducer,
+    localState,
+    composeEnhancers(applyMiddleware(...middlewares))
+  );
