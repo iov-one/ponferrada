@@ -40,7 +40,7 @@ describe('DOM > Signup route', () => {
       }
 
       return element.id;
-    }, SIGNUP_ROUTE);
+    }, `${SIGNUP_ROUTE}_first`);
 
     expect(inner).toBe(SIGNUP_ROUTE);
   }, 45000);
