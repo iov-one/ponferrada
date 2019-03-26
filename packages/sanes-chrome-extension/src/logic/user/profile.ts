@@ -23,13 +23,30 @@ async function createUserProfile(fixedMnemonic?: string): Promise<UserProfile> {
 
 const getDb = singleton<typeof createDb>(createDb);
 
+/**
+ * This function returns a UserProfile instance. Remember UserProfile and Persona are
+ * the same concept. The difference UserProfile is closer to low-level blockchain capabilities.
+ * UserProfile among others, stores wallets (private keys), identities (public keys) and mnemonic exposition.
+ *
+ * @param password Password introduced by user to hash the user profile
+ * @param dbName
+ * @returns UserProfile
+ * @throws Custom exception if something has failed.
+ */
 export async function createProfile(
   password: string,
   dbName: string
 ): Promise<UserProfile> {
-  const db = getDb(dbName);
-  const profile = await createUserProfile();
-  await profile.storeIn(db, password);
+  let profile = undefined;
+  try {
+    const db = getDb(dbName);
+    profile = await createUserProfile();
+    await profile.storeIn(db, password);
 
-  return profile;
+    return profile;
+  } catch (err) {
+    console.log(err);
+
+    throw new Error('Error creating a user profile');
+  }
 }
