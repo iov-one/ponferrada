@@ -8,7 +8,7 @@ export type StringDB = DB<string, string>;
 // This was reporting jest as a browser....
 // const isBrowser = () => typeof window !== "undefined" && typeof window.document !== "undefined";
 const isNode = (): boolean =>
-  typeof process === 'object' && !(process as any).browser;
+  typeof process === 'object' && !(process as any).browser; // eslint-disable-line
 const isBrowser = (): boolean => !isNode();
 
 export function createMemDb(): StringDB {
