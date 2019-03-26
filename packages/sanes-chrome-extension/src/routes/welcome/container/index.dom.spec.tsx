@@ -28,10 +28,7 @@ describe('DOM > Feature > Welcome', () => {
   }, 55000);
 
   it(`should create three buttons`, async () => {
-    const buttons = TestUtils.scryRenderedDOMComponentsWithClass(
-      dom,
-      'welcome-view-buttons'
-    );
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(dom, 'button');
 
     expect(buttons.length).toBe(3);
   }, 55000);
