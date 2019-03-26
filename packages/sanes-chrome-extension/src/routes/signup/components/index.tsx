@@ -1,20 +1,16 @@
 import * as React from 'react';
 import NewAccount from './NewAccount';
-import RecoveryPhrase from './RecoveryPhrase';
+import ShowPhrase from './ShowPhrase';
 
-export interface StepProps {
-  readonly setStep: React.Dispatch<React.SetStateAction<'first' | 'second'>>;
-}
+const Layout = (): JSX.Element => {
+  const [step, setStep] = React.useState<'first' | 'second'>('first');
+  const onShowPhrase = () => setStep('second');
 
-interface Props extends StepProps {
-  readonly step: string;
-}
-
-const Layout = ({ setStep, step }: Props): JSX.Element =>
-  step === 'first' ? (
-    <NewAccount setStep={setStep} />
+  return step === 'first' ? (
+    <NewAccount nextStep={onShowPhrase} />
   ) : (
-    <RecoveryPhrase setStep={setStep} />
+    <ShowPhrase />
   );
+};
 
 export default Layout;
