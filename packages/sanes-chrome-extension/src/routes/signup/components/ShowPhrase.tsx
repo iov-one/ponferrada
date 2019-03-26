@@ -5,9 +5,8 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Image from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../../paths';
-import { StepProps } from './index';
 
-const NewAccount = ({ setStep }: StepProps): JSX.Element => {
+const ShowPhrase = (): JSX.Element => {
   return (
     <Block
       id={`${SIGNUP_ROUTE}_second`}
@@ -36,9 +35,7 @@ const NewAccount = ({ setStep }: StepProps): JSX.Element => {
         </Block>
       </Block>
       <Block display="flex" justifyContent="flex-end">
-        <Button type="submit" onClick={() => setStep('first')}>
-          Create
-        </Button>
+        <Button type="submit">Create</Button>
       </Block>
       <Block textAlign="center" marginBottom={1}>
         <Image src={iovLogo} alt="IOV logo" />
@@ -47,4 +44,4 @@ const NewAccount = ({ setStep }: StepProps): JSX.Element => {
   );
 };
 
-export default NewAccount;
+export default ShowPhrase;
