@@ -5,7 +5,6 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Image from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../../paths';
-import { StepProps } from './index';
 import Form, {
   useForm,
   FormValues,
@@ -45,11 +44,15 @@ const validate = (values: object): object => {
   return errors;
 };
 
-const NewAccount = ({ setStep }: StepProps): JSX.Element => {
+export interface Props {
+  readonly nextStep: () => void;
+}
+
+const NewAccount = ({ nextStep }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     console.log(formValues);
-    setStep('second');
+    nextStep();
   };
 
   const { form, handleSubmit, pristine, submitting, invalid } = useForm({
