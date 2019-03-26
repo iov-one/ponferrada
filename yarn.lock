@@ -1011,6 +1011,18 @@
     type-tagger "^1.0.0"
     xstream "^11.10.0"
 
+"@iov/core@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@iov/core/-/core-0.13.0.tgz#ffa41a6dd4facac0d5e85c43f8606e7f88cf7439"
+  integrity sha512-ORKGt1hdUieRvVmeYJ3qAEJcetCN+TUQ3WNRA1bDf9ktGx9WRzKLrx8SqiKR1JV9lYyrX4qhDfE6OK7HomIA+w==
+  dependencies:
+    "@iov/bcp" "^0.13.0"
+    "@iov/encoding" "^0.13.0"
+    "@iov/jsonrpc" "^0.13.0"
+    "@iov/keycontrol" "^0.13.0"
+    "@types/long" "^4.0.0"
+    long "^4.0.0"
+
 "@iov/crypto@^0.13.0":
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/@iov/crypto/-/crypto-0.13.0.tgz#c2eec61d65b2a93141cabd1379837dfe87c062f3"
@@ -1036,6 +1048,14 @@
     bech32 "^1.1.3"
     bn.js "^4.11.8"
     readonly-date "^1.0.0"
+
+"@iov/jsonrpc@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@iov/jsonrpc/-/jsonrpc-0.13.0.tgz#1d33487f884905c887e2c27cf21fb84fefc5d162"
+  integrity sha512-hSXLTSKJ32JntuWAjiqsfHuA1C6KssevwE+EZ5224KRVU02GagZax1qj4D+GbPiTRwkFVh1oVX8WZUqF2b16wg==
+  dependencies:
+    "@iov/stream" "^0.13.0"
+    xstream "^11.10.0"
 
 "@iov/keycontrol@^0.13.0":
   version "0.13.0"
@@ -2331,6 +2351,11 @@
     "@types/abstract-leveldown" "*"
     "@types/events" "*"
     "@types/node" "*"
+
+"@types/long@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
+  integrity sha512-1w52Nyx4Gq47uuu0EVcsHBxZFJgurQ+rTKS3qMHxR1GY2T8c2AJYd6vZoZ9q1rupaDjU0yT+Jc2XTyXkjeMA+Q==
 
 "@types/material-ui@^0.21.6":
   version "0.21.6"
