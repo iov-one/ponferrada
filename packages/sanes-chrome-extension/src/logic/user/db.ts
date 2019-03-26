@@ -16,8 +16,11 @@ export function createMemDb(): StringDB {
 }
 
 export function createBrowserDb(name: string): StringDB {
-  import encode = require('encoding-down');
-  import leveljs = require('level-js');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const encode = require('encoding-down');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const leveljs = require('level-js');
+
   return levelup(encode(leveljs(name)));
 }
 
