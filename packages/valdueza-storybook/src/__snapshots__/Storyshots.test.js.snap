@@ -276,7 +276,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
           Error
         </label>
         <div
-          className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-error-17x99dr MuiOutlinedInput-error-4ffa4b MuiInputBase-formControl-6vi063"
+          className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-error-17x99dr MuiOutlinedInput-error-4ffa4b MuiInputBase-formControl-6vi063"
           onClick={[Function]}
         >
           <fieldset
@@ -342,7 +342,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
           Filled
         </label>
         <div
-          className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-formControl-6vi063"
+          className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-formControl-6vi063"
           onClick={[Function]}
         >
           <fieldset
@@ -403,7 +403,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
           Disabled
         </label>
         <div
-          className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-disabled-1gn1rpx MuiOutlinedInput-disabled-1gn1rpx MuiInputBase-formControl-6vi063"
+          className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-disabled-1gn1rpx MuiOutlinedInput-disabled-1gn1rpx MuiInputBase-formControl-6vi063"
           onClick={[Function]}
         >
           <fieldset
@@ -464,7 +464,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
           Empty
         </label>
         <div
-          className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-formControl-6vi063"
+          className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-formControl-6vi063"
           onClick={[Function]}
         >
           <fieldset
@@ -526,7 +526,7 @@ exports[`Storyshots Components /forms Add react-final-form-hooks form 1`] = `
       Unique Identifier
     </label>
     <div
-      className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-formControl-6vi063"
+      className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-formControl-6vi063"
       onClick={[Function]}
     >
       <fieldset
@@ -644,7 +644,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </span>
           </label>
           <div
-            className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
+            className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
             onClick={[Function]}
           >
             <fieldset
@@ -706,7 +706,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </span>
           </label>
           <div
-            className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
+            className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
             onClick={[Function]}
           >
             <fieldset
@@ -768,7 +768,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </span>
           </label>
           <div
-            className="MuiInputBase-root-1swcov8 MuiOutlinedInput-root-a0520f MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
+            className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
             onClick={[Function]}
           >
             <fieldset
@@ -852,79 +852,9 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
-<div
-  className="MuiBox-root-1tpdhdx MuiBox-root-23"
-  id="/signup_second"
->
-  <h4
-    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
-  >
-    Recovery
-  </h4>
-  <h4
-    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq Hook-inline-42z04s"
-  >
-     Phrase
-  </h4>
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-24"
-  >
-    <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-25"
-    >
-      <p
-        className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
-      >
-        organ wheat manage mirror wish truly tool trumpet since equip flight bracket
-      </p>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-26"
-  >
-    <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="submit"
-    >
-      <span
-        className="MuiButton-label-1ufm4pj"
-      >
-        Create
-      </span>
-      <span
-        className="MuiTouchRipple-root-s3wr0d"
-      />
-    </button>
-  </div>
-  <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-27"
-  >
-    <img
-      alt="IOV logo"
-      className="Hook-root-z8j3qi"
-      src="iov-logo.png"
-    />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1tpdhdx MuiBox-root-28"
+  className="MuiBox-root-1tpdhdx MuiBox-root-23"
   id="/welcome"
 >
   <h4
@@ -938,7 +868,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-29"
+    className="MuiBox-root-1tpdhdx MuiBox-root-24"
   >
     <p
       className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
@@ -946,10 +876,10 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-30"
+      className="MuiBox-root-1tpdhdx MuiBox-root-25"
     />
     <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe welcome-view-buttons"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -974,10 +904,10 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-31"
+      className="MuiBox-root-1tpdhdx MuiBox-root-26"
     />
     <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe welcome-view-buttons"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -1002,10 +932,10 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-32"
+      className="MuiBox-root-1tpdhdx MuiBox-root-27"
     />
     <button
-      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe welcome-view-buttons"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -1031,7 +961,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-33"
+    className="MuiBox-root-1tpdhdx MuiBox-root-28"
   >
     <img
       alt="IOV logo"
