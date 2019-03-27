@@ -1,5 +1,6 @@
 import { TokenTicker } from '@iov/bcp';
 import { singleton } from './singleton';
+import { CodecType } from '../logic/blockchain/connection';
 
 export interface Config {
   readonly bns: ChainConfig;
@@ -11,8 +12,7 @@ export interface ChainConfig {
   readonly faucetSpec?: FaucetSpec;
 }
 
-export type CodecType = string;
-interface ChainSpec {
+export interface ChainSpec {
   readonly codecType: CodecType;
   readonly bootstrapNodes: ReadonlyArray<string>;
 }
