@@ -6,13 +6,14 @@ export interface Config {
   readonly chains: ReadonlyArray<ChainConfig>;
 }
 
-interface ChainConfig {
+export interface ChainConfig {
   readonly chainSpec: ChainSpec;
   readonly faucetSpec?: FaucetSpec;
 }
 
+export type CodecType = string;
 interface ChainSpec {
-  readonly codecType: string;
+  readonly codecType: CodecType;
   readonly bootstrapNodes: ReadonlyArray<string>;
 }
 
