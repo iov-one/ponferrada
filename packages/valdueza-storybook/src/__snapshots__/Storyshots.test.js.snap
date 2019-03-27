@@ -343,10 +343,10 @@ exports[`Storyshots Components /forms Form 1`] = `
 
 exports[`Storyshots Components /forms TextField 1`] = `
 <div
-  className="MuiBox-root-1tpdhdx MuiBox-root-11"
+  className="MuiBox-root-1tpdhdx MuiBox-root-13"
 >
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-12"
+    className="MuiBox-root-1tpdhdx MuiBox-root-14"
   >
     <form
       onSubmit={[Function]}
@@ -412,7 +412,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-13"
+    className="MuiBox-root-1tpdhdx MuiBox-root-15"
   >
     <form
       onSubmit={[Function]}
@@ -473,7 +473,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-14"
+    className="MuiBox-root-1tpdhdx MuiBox-root-16"
   >
     <form
       onSubmit={[Function]}
@@ -534,7 +534,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-15"
+    className="MuiBox-root-1tpdhdx MuiBox-root-17"
   >
     <form
       onSubmit={[Function]}
@@ -606,51 +606,108 @@ exports[`Storyshots Components Images 1`] = `
 `;
 
 exports[`Storyshots Components Switch 1`] = `
-<label
-  className="MuiFormControlLabel-root-2scvvj"
->
-  <span
-    className="MuiSwitch-root-1554mem"
+Array [
+  <div
+    className="MuiBox-root-1tpdhdx MuiBox-root-11"
   >
-    <span
-      aria-disabled={false}
-      className="MuiButtonBase-root-w0iq0r MuiIconButton-root-d97icz MuiPrivateSwitchBase-root-tlq7vd MuiSwitch-switchBase-t13mtw MuiSwitch-colorPrimary-1fp0jo1"
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={null}
+    <label
+      className="MuiFormControlLabel-root-2scvvj"
     >
       <span
-        className="MuiIconButton-label-1fbkzn8"
+        className="MuiSwitch-root-1554mem"
       >
         <span
-          className="MuiSwitch-icon-128cra7"
-        />
-        <input
-          className="MuiPrivateSwitchBase-input-kza264"
-          onChange={[Function]}
-          type="checkbox"
+          aria-disabled={false}
+          className="MuiButtonBase-root-w0iq0r MuiIconButton-root-d97icz MuiPrivateSwitchBase-root-tlq7vd MuiSwitch-switchBase-t13mtw MuiSwitch-colorPrimary-1fp0jo1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label-1fbkzn8"
+          >
+            <span
+              className="MuiSwitch-icon-128cra7"
+            />
+            <input
+              className="MuiPrivateSwitchBase-input-kza264"
+              onChange={[Function]}
+              type="checkbox"
+            />
+          </span>
+          <span
+            className="MuiTouchRipple-root-s3wr0d"
+          />
+        </span>
+        <span
+          className="MuiSwitch-bar-gionjv"
         />
       </span>
       <span
-        className="MuiTouchRipple-root-s3wr0d"
+        className="MuiTypography-root-91g352 MuiTypography-body2-ez86gr MuiFormControlLabel-label-9s5req"
+      >
+        With label
+      </span>
+    </label>
+  </div>,
+  <div
+    className="MuiBox-root-1tpdhdx MuiBox-root-12"
+  >
+    <label
+      className="MuiFormControlLabel-root-2scvvj"
+    >
+      <span
+        className="MuiSwitch-root-1554mem"
+      >
+        <span
+          aria-disabled={false}
+          className="MuiButtonBase-root-w0iq0r MuiIconButton-root-d97icz MuiPrivateSwitchBase-root-tlq7vd MuiSwitch-switchBase-t13mtw MuiSwitch-colorPrimary-1fp0jo1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label-1fbkzn8"
+          >
+            <span
+              className="MuiSwitch-icon-128cra7"
+            />
+            <input
+              className="MuiPrivateSwitchBase-input-kza264"
+              onChange={[Function]}
+              type="checkbox"
+            />
+          </span>
+          <span
+            className="MuiTouchRipple-root-s3wr0d"
+          />
+        </span>
+        <span
+          className="MuiSwitch-bar-gionjv"
+        />
+      </span>
+      <span
+        className="MuiTypography-root-91g352 MuiTypography-body2-ez86gr MuiFormControlLabel-label-9s5req"
       />
-    </span>
-    <span
-      className="MuiSwitch-bar-gionjv"
-    />
-  </span>
-  <span
-    className="MuiTypography-root-91g352 MuiTypography-body2-ez86gr MuiFormControlLabel-label-9s5req"
-  />
-</label>
+    </label>
+  </div>,
+]
 `;
 
 exports[`Storyshots Components Typography 1`] = `
@@ -992,7 +1049,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1tpdhdx MuiBox-root-23"
+  className="MuiBox-root-1tpdhdx MuiBox-root-18"
   id="/welcome"
 >
   <h4
@@ -1006,7 +1063,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-24"
+    className="MuiBox-root-1tpdhdx MuiBox-root-19"
   >
     <p
       className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
@@ -1014,7 +1071,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-25"
+      className="MuiBox-root-1tpdhdx MuiBox-root-20"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -1042,7 +1099,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-26"
+      className="MuiBox-root-1tpdhdx MuiBox-root-21"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -1071,7 +1128,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-27"
+      className="MuiBox-root-1tpdhdx MuiBox-root-22"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -1100,7 +1157,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-28"
+    className="MuiBox-root-1tpdhdx MuiBox-root-23"
   >
     <img
       alt="IOV logo"
