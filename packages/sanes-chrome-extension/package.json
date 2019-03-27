@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "oza-react-scripts build",
+    "build": "cp ./config/production.json ./public/assets/config/conf.json && oza-react-scripts build",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
-    "start": "oza-react-scripts start",
-    "test": "CI=true oza-react-scripts test --env=jsdom",
-    "watch": "cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
+    "start": "cp ./config/development.json ./public/assets/config/conf.json && oza-react-scripts start",
+    "test": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test --env=jsdom",
+    "watch": "cp ./config/development.json ./public/assets/config/conf.json && cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
   },
   "browserslist": [
     ">0.2%",
