@@ -5,6 +5,6 @@ import { Storybook } from '../../utils/storybook';
 
 storiesOf('Components', module).add('Switch', () => (
   <Storybook>
-    <Switch label="Off" />
+    <Switch color="primary" />
   </Storybook>
 ));
