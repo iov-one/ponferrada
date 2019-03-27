@@ -6,7 +6,7 @@ import { Storybook } from '../../utils/storybook';
 import Grid from '../Grid';
 import GridItem from '../GridItem';
 
-storiesOf('Button', module)
+storiesOf('Components /Button', module)
   .add('Button in phone screen', () => (
     <div style={{ width: '425px' }}>
       <Storybook>

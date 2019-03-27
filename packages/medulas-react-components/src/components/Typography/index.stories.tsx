@@ -3,7 +3,7 @@ import React from 'react';
 import Typography from './index';
 import { Storybook } from '../../utils/storybook';
 
-storiesOf('Typography', module).add('Styles', () => (
+storiesOf('Components', module).add('Typography', () => (
   <Storybook>
     <Typography variant="subtitle1" color="primary">
       H4
