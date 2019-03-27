@@ -6,8 +6,10 @@ interface Props extends SwitchProps {
   readonly label?: string;
 }
 
-const Switch = ({ label, ...restProps }: Props): JSX.Element => (
-  <FormControlLabel control={<MuiSwitch {...restProps} />} label={label} />
-);
+const Switch = ({ label, ...restProps }: Props): JSX.Element => {
+  const control = <MuiSwitch {...restProps} />;
+
+  return <FormControlLabel control={control} label={label} />;
+};
 
 export default Switch;
