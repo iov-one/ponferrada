@@ -1,4 +1,4 @@
-import { CodecType } from '../../utils/config';
+import { CodecType } from '../blockchain/connection';
 
 class Account {
   private _derivation: number;
@@ -8,7 +8,7 @@ class Account {
     this._derivation = derivation;
   }
 
-  public addBlockchainAddress(codecType: string, bcAddress: string): void {
+  public addBlockchainAddress(codecType: CodecType, bcAddress: string): void {
     this._bcAddresses.set(codecType, bcAddress);
   }
 
