@@ -1,15 +1,15 @@
 {
-  "bns": {
-    "chainSpec": {
-      "codecType": "bns",
-      "bootstrapNodes": ["wss://bns.hugnet.iov.one/"]
-    },
-    "faucetSpec": {
-      "uri": "https://bns-faucet.hugnet.iov.one",
-      "token": "IOV"
-    }
-  },
   "chains": [
+    {
+      "chainSpec": {
+        "codecType": "bns",
+        "bootstrapNodes": ["wss://bns.hugnet.iov.one/"]
+      },
+      "faucetSpec": {
+        "uri": "https://bns-faucet.hugnet.iov.one",
+        "token": "IOV"
+      }
+    },
     {
       "chainSpec": {
         "codecType": "bov",
