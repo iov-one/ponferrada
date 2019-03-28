@@ -1,5 +1,6 @@
 {
-  "chains": [
+  "chains":
+  [
     {
       "chainSpec": {
         "codecType": "bns",
