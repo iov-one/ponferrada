@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 import { lightFont, white, secondaryColor } from './variables';
+import grey from '@material-ui/core/colors/grey';
 
 const theme = createMuiTheme({
   palette: {
@@ -86,26 +87,60 @@ const themeObject: ThemeOptions = {
         },
       },
     },
+    MuiInputBase: {
+      focused: {
+        '&:hover': {
+          '& $notchedOutline': {
+            borderColor: grey[300],
+            '@media (hover: none)': {
+              borderColor: grey[300],
+            },
+          },
+          borderColor: grey[300],
+          '@media (hover: none)': {
+            borderColor: grey[300],
+          },
+        },
+        borderColor: grey[300],
+        '@media (hover: none)': {
+          borderColor: grey[300],
+        },
+      },
+    },
     MuiOutlinedInput: {
       root: {
+        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+          borderColor: grey[300],
+        },
         '& $notchedOutline': {
-          borderColor: '#f3f3f3',
+          borderColor: grey[300],
         },
         backgroundColor: '#fcfcfc',
+      },
+      focused: {
+        '&:hover $notchedOutline': {
+          borderColor: grey[300],
+        },
       },
       input: {
         padding: '14px',
       },
       error: {
+        '&:hover $notchedOutline': {
+          borderColor: '#ffb968',
+        },
         backgroundColor: '#fff1e1',
       },
     },
     MuiInputLabel: {
       formControl: {
-        top: `-${theme.spacing(2)}px`,
+        top: `-${theme.spacing(3)}px`,
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightMedium,
         fontSize: theme.typography.fontSize,
+      },
+      focused: {
+        color: `${theme.palette.text.primary} !important`,
       },
       error: {
         color: `${theme.palette.text.primary} !important`,
