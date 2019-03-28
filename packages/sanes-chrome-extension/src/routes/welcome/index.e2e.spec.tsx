@@ -1,6 +1,6 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
-import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../../theme/constants';
-import { WELCOME_ROUTE } from '../../paths';
+import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../theme/constants';
+import { WELCOME_ROUTE } from '../paths';
 
 describe('DOM > Welcome route', () => {
   let browser: Browser;

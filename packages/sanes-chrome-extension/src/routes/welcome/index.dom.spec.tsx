@@ -1,14 +1,11 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { WELCOME_ROUTE } from '../../paths';
-import { history, RootState } from '../../../store/reducers';
-import { createDom } from '../../../utils/test/dom';
-import { aNewStore } from '../../../store';
-import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import Button from 'medulas-react-components/lib/components/Button';
-
-export const sleep = (ms: number) =>
-  new Promise(resolve => setTimeout(resolve, ms));
+import { WELCOME_ROUTE } from '../paths';
+import { history, RootState } from '../../store/reducers';
+import { createDom } from '../../utils/test/dom';
+import { aNewStore } from '../../store';
+import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { sleep } from '../../utils/timer';
 
 describe('DOM > Feature > Welcome', () => {
   let store: Store<RootState>;
