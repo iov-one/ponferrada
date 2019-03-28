@@ -790,7 +790,7 @@ Array [
   <h6
     className="MuiTypography-root-91g352 MuiTypography-subtitle2-xuzflv MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
   >
-    First part of the text.
+    First part of the text. 
   </h6>,
   <h6
     className="MuiTypography-root-91g352 MuiTypography-subtitle2-xuzflv Hook-inline-42z04s"
@@ -802,7 +802,7 @@ Array [
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-1tpdhdx MuiBox-root-16"
+  className="MuiBox-root-1tpdhdx MuiBox-root-18"
   id="/signup_first"
 >
   <h4
@@ -816,13 +816,13 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
      Account
   </h4>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-17"
+    className="MuiBox-root-1tpdhdx MuiBox-root-19"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-1tpdhdx MuiBox-root-18"
+        className="MuiBox-root-1tpdhdx MuiBox-root-20"
       >
         <div
           className="MuiFormControl-root-1nb8hkj MuiFormControl-marginNormal-xfc5ur MuiFormControl-fullWidth-1vofuqe MuiTextField-root-nenw30"
@@ -884,7 +884,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1tpdhdx MuiBox-root-19"
+        className="MuiBox-root-1tpdhdx MuiBox-root-21"
       >
         <div
           className="MuiFormControl-root-1nb8hkj MuiFormControl-marginNormal-xfc5ur MuiFormControl-fullWidth-1vofuqe MuiTextField-root-nenw30"
@@ -946,7 +946,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1tpdhdx MuiBox-root-20"
+        className="MuiBox-root-1tpdhdx MuiBox-root-22"
       >
         <div
           className="MuiFormControl-root-1nb8hkj MuiFormControl-marginNormal-xfc5ur MuiFormControl-fullWidth-1vofuqe MuiTextField-root-nenw30"
@@ -1008,7 +1008,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1tpdhdx MuiBox-root-21"
+        className="MuiBox-root-1tpdhdx MuiBox-root-23"
       >
         <button
           className="MuiButtonBase-root-w0iq0r MuiButtonBase-disabled-1gn1rpx MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-disabled-1gn1rpx"
@@ -1036,7 +1036,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-22"
+    className="MuiBox-root-1tpdhdx MuiBox-root-24"
   >
     <img
       alt="IOV logo"
@@ -1049,7 +1049,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1tpdhdx MuiBox-root-18"
+  className="MuiBox-root-1tpdhdx MuiBox-root-25"
   id="/welcome"
 >
   <h4
@@ -1063,7 +1063,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-19"
+    className="MuiBox-root-1tpdhdx MuiBox-root-26"
   >
     <p
       className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
@@ -1071,7 +1071,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-20"
+      className="MuiBox-root-1tpdhdx MuiBox-root-27"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -1099,7 +1099,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-21"
+      className="MuiBox-root-1tpdhdx MuiBox-root-28"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -1128,7 +1128,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-1tpdhdx MuiBox-root-22"
+      className="MuiBox-root-1tpdhdx MuiBox-root-29"
     />
     <button
       className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
@@ -1157,7 +1157,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-1tpdhdx MuiBox-root-23"
+    className="MuiBox-root-1tpdhdx MuiBox-root-30"
   >
     <img
       alt="IOV logo"
