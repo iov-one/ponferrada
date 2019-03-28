@@ -7,7 +7,7 @@ import iovLogo from '../../../assets/iov-logo.png';
 import { WELCOME_ROUTE, SIGNUP_ROUTE } from '../../paths';
 import { history } from '../../../store/reducers/';
 
-const createNewAccount = () => {
+const createNewAccount = (): void => {
   console.log('New account creation');
   history.push(SIGNUP_ROUTE);
 };

@@ -13,32 +13,8 @@ export const createDom = (store: Store): React.Component =>
         <Route />
       </ConnectedRouter>
     </Provider>
-  ) as any;
+  ) as any; // eslint-disable-line
 
-export const expectRoute = (store: Store, route: string) => {
+export const expectRoute = (store: Store, route: string): void => {
   expect(store.getState().router.location.pathname).toBe(route);
-};
-
-export const findRenderedDOMComponentWithId = (
-  tree: React.Component<any>,
-  id: string
-): Element => {
-  const elementsWithId = TestUtils.findAllInRenderedTree(
-    tree,
-    (inst: React.ReactInstance) => {
-      return TestUtils.isDOMComponent(inst) && inst.id === id;
-    }
-  );
-
-  if (!elementsWithId || elementsWithId.length === 0) {
-    throw new Error(`Element with id "${id}" not found`);
-  }
-
-  if (elementsWithId.length > 1) {
-    throw new Error(
-      `Too many elements with id "${id}" was found (${elementsWithId.length})`
-    );
-  }
-
-  return elementsWithId[0] as Element;
 };
