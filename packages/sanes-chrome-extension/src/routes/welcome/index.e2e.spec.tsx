@@ -6,7 +6,7 @@ describe('DOM > Welcome route', () => {
   let browser: Browser;
 
   beforeEach(async () => {
-    const CRX_PATH = require('path').join(__dirname, '../../../../build');
+    const CRX_PATH = require('path').join(__dirname, '../../../build');
     browser = await puppeteer.launch({
       headless: false,
       devtools: true,
