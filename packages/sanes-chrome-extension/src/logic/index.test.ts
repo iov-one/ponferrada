@@ -1,8 +1,9 @@
 import { getPersona } from './index';
 import Persona from './persona';
+import { mayTestChains } from '../utils/testhelper';
 
 describe('logic', () => {
-  it('should get a Persona', async () => {
+  mayTestChains('should get a Persona', async () => {
     const password = 'test-password';
     const accountName = 'test-account';
     const persona: Persona = await getPersona(password, accountName);
