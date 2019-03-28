@@ -113,3 +113,7 @@ For installing automatically the extension on each chrome's instance we have had
 ## Internals
 
 The extension package has been created using create-react-app extension, but we have had to modify some parts in order to allow Webpack's HMR while developing, and chrome extension's part integration. For more details [read this](./docs/extension).
+
+## License
+
+This repository is licensed under the Apache License 2.0 (see [NOTICE](./NOTICE) and [LICENSE](./LICENSE)).
