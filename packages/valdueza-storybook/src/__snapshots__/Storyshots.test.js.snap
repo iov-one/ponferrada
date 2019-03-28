@@ -715,13 +715,8 @@ exports[`Storyshots Components Tooltip 1`] = `
   className="MuiBox-root-1tpdhdx MuiBox-root-13"
 >
   <div
+    className="Hook-container-1u6trxq"
     onClick={[Function]}
-    style={
-      Object {
-        "display": "inline",
-        "height": "16px",
-      }
-    }
   >
     <img
       alt="Info"
