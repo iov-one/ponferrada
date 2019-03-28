@@ -12,6 +12,10 @@ class Account {
     this._bcAddresses.set(codecType, bcAddress);
   }
 
+  public get blockchainAddresses(): Map<CodecType, string> {
+    return this._bcAddresses;
+  }
+
   public get derivation(): number {
     return this._derivation;
   }
