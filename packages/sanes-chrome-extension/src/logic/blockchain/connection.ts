@@ -3,7 +3,7 @@ import { ethereumCodec, ethereumConnector } from '@iov/ethereum';
 import { liskCodec, liskConnector } from '@iov/lisk';
 import { TxCodec, ChainConnector } from '@iov/bcp';
 
-export const enum Codec {
+export enum Codec {
   Bns,
   Lisk,
   Ethereum,
