@@ -3,7 +3,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import Image from 'medulas-react-components/lib/components/Image';
-import iovLogo from '../../assets/iov-logo.png';
+import iovLogo from '../../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../../paths';
 import NewAccountForm from './NewAccountForm';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Welcome from './welcome/container';
+import Welcome from './welcome';
 import Signup from './signup';
 import { WELCOME_ROUTE, SIGNUP_ROUTE } from './paths';
 
