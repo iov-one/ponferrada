@@ -4,7 +4,13 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import Image from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../../../assets/iov-logo.png';
-import { WELCOME_ROUTE } from '../../paths';
+import { WELCOME_ROUTE, SIGNUP_ROUTE } from '../../paths';
+import { history } from '../../../store/reducers/';
+
+const createNewAccount = () => {
+  console.log('New account creation');
+  history.push(SIGNUP_ROUTE);
+};
 
 const Layout = (): JSX.Element => (
   <Block id={WELCOME_ROUTE} paddingRight={2} paddingLeft={2} paddingTop={2}>
@@ -23,7 +29,7 @@ const Layout = (): JSX.Element => (
         Log in
       </Button>
       <Block marginTop={2} />
-      <Button type="contained" fullWidth>
+      <Button type="contained" fullWidth onClick={createNewAccount}>
         New account
       </Button>
       <Block marginTop={2} />
