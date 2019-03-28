@@ -23,6 +23,10 @@ interface FaucetSpec {
 }
 
 const fetchConfig = async (): Promise<Config> => {
+  if (process.env.NODE_ENV === 'test') {
+    return require('../../public/assets/config/conf.json');
+  }
+
   const url = chrome.extension.getURL('assets/config/conf.json');
   const data = await fetch(url);
   const json = await data.json();
