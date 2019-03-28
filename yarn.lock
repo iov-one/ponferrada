@@ -5100,9 +5100,9 @@ cosmiconfig@^5.0.0, cosmiconfig@^5.0.2, cosmiconfig@^5.0.5, cosmiconfig@^5.0.7, 
     js-yaml "^3.13.0"
     parse-json "^4.0.0"
 
-"cra-build-watch@ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509":
+cra-build-watch@apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509:
   version "0.0.0-development"
-  resolved "ssh://git@github.com:apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509"
+  resolved "https://codeload.github.com/apanizo/cra-build-watch/tar.gz/a768c63d7deb0d56754426b0071a85562d0d9509"
   dependencies:
     cross-spawn "6.0.5"
     fs-extra "5.0.0"
