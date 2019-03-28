@@ -61,8 +61,9 @@ To get started, please go to the root directory and run:
 
 ```
 yarn install
-cd packages/sanes-chrome-extension/
 yarn build
+cd packages/sanes-chrome-extension/
+yarn watch
 ```
 
 Then open your chrome browser and add the new generated extension (the build folder)
