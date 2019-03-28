@@ -7,10 +7,11 @@ import { SIGNUP_ROUTE } from '../../paths';
 import NewAccountForm, { NewAccountProps } from './NewAccountForm';
 import ShowPhraseForm from './ShowPhraseForm';
 
-const Layout = ({ onSignup }: NewAccountProps): JSX.Element => {
-  const [step] = React.useState<'first' | 'second'>('first');
-  //const onShowPhrase = () => setStep('second');
+interface Props extends NewAccountProps {
+  readonly step: string;
+}
 
+const Layout = ({ onSignup, step }: Props): JSX.Element => {
   return (
     <Block
       id={`${SIGNUP_ROUTE}_first`}

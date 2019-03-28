@@ -8,32 +8,35 @@ import {
 import Persona from '../../logic/persona';
 import { getPersona } from '../../logic';
 
-const onSignup = async (formValues: FormValues): Promise<void> => {
-  const accountName = formValues[ACCOUNT_NAME_FIELD];
-  const password = formValues[PASSWORD_FIELD];
-
-  try {
-    const persona: Persona = await getPersona(password, accountName);
-    const account = persona.accounts.get(accountName);
-    if (!account) {
-      throw new Error('Signup create persona failed');
-    }
-
-    console.log(
-      `We successfuly have created a persona registered in ${
-        account.blockchainAddresses.size
-      } chains`
-    );
-    // TODO export to redux necessary info
-    // TODO move to mnemonic step
-  } catch (err) {
-    console.log('Error raised when creating persona');
-    console.log(err);
-  }
-};
-
 const Signup = (): JSX.Element => {
-  return <Layout onSignup={onSignup} />;
+  const [step, setStep] = React.useState<'first' | 'second'>('first');
+  const onShowPhrase = () => setStep('second');
+
+  const onSignup = async (formValues: FormValues): Promise<void> => {
+    const accountName = formValues[ACCOUNT_NAME_FIELD];
+    const password = formValues[PASSWORD_FIELD];
+
+    try {
+      const persona: Persona = await getPersona(password, accountName);
+      const account = persona.accounts.get(accountName);
+      if (!account) {
+        throw new Error('Signup create persona failed');
+      }
+
+      console.log(
+        `We successfuly have created a persona registered in ${
+          account.blockchainAddresses.size
+        } chains`
+      );
+      // TODO export to redux necessary info
+      onShowPhrase();
+    } catch (err) {
+      console.log('Error raised when creating persona');
+      console.log(err);
+    }
+  };
+
+  return <Layout onSignup={onSignup} step={step} />;
 };
 
 export default Signup;

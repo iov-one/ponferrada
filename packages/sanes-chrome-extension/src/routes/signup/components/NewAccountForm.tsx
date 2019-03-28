@@ -92,10 +92,21 @@ const NewAccount = ({ onSignup }: NewAccountProps): JSX.Element => {
           name={PASSWORD_CONFIRM_FIELD}
         />
       </Block>
-      <Block display="flex" justifyContent="flex-end">
-        <Button type="submit" disabled={invalid || pristine || submitting}>
-          Continue
-        </Button>
+      <Block display="flex" justifyContent="space-between">
+        <Block width={120}>
+          <Button fullWidth color="secondary">
+            Back
+          </Button>
+        </Block>
+        <Block width={120}>
+          <Button
+            fullWidth
+            type="submit"
+            disabled={invalid || pristine || submitting}
+          >
+            Continue
+          </Button>
+        </Block>
       </Block>
     </Form>
   );
