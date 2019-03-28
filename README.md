@@ -75,18 +75,37 @@ Then open your chrome browser and add the new generated extension (the build fol
 
 ### Testing
 
-#### Storybook
+We take seriously the testing environment, performing three different types of tests:
 
-From main folder, run following command:
+- JEST Snapshots: Used mostly for identifying regression bugs in views (a.k.a frontend tests)
+- DOM Testing: Used for covering react-redux (a.k.a logic test) and views' logic.
+- e2e Testing: Used for testing the chrome extension in real browser, assuring all functionality and inter dependencies between all extensions part work together.
+
+#### Storybook & Snapshot testing
+
+Used for generating JEST Snapshot tests, and also for develoing components and fast prototype iteration when condig routes. From main folder, run following command:
 
 ```
 yarn storybook
 ```
 
+For updating snapshots after some changes in order to make everything to work read the [snapshot documentation](./docs/snapshots.md)
+
 #### Jest
 
+Main test stack. It is used to run DOM tests using react test-utils functionalities. From main folder, run following command:
+
+```
+yarn test
+```
+
+#### Puppeteer
+
+Framework used for running e2e tests. It launches chrome instances with the extension installed and executes logic simulating human interaction.
 From main folder, run following command:
 
 ```
 yarn test
 ```
+
+For installing automatically the extension on each chrome's instance we have had to generate a fixed extension's id. For more details [click here](./docs/extension).
