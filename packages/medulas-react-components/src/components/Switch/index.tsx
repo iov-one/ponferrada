@@ -9,6 +9,7 @@ interface Props extends SwitchProps {
 const Switch = ({ label, ...restProps }: Props): JSX.Element => {
   const control = <MuiSwitch {...restProps} />;
 
+  // FormControlLabel allows us to click on the label and toggle switch
   return <FormControlLabel control={control} label={label} />;
 };
 
