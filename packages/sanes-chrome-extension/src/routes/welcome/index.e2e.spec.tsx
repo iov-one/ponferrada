@@ -20,7 +20,7 @@ describe('DOM > Welcome route', () => {
         height: EXTENSION_HEIGHT,
       },
     });
-  });
+  }, 15000);
 
   afterEach(async () => {
     await browser.close();

@@ -47,11 +47,8 @@ const FormStory = (): JSX.Element => {
   );
 };
 
-storiesOf('Components /forms', module).add(
-  'Add react-final-form-hooks form',
-  () => (
-    <Storybook>
-      <FormStory />
-    </Storybook>
-  )
-);
+storiesOf('Components /forms', module).add('Form', () => (
+  <Storybook>
+    <FormStory />
+  </Storybook>
+));
