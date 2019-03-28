@@ -7,3 +7,4 @@ export const window = global.window || {};
 window.disableShallowSupport = true;
 
 global.window = window;
+global.config = require('../public/assets/config/conf.json');

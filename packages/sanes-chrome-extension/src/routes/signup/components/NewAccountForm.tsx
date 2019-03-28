@@ -8,33 +8,36 @@ import Form, {
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 
-const USERNAME = 'usernameInputField';
-const PASSWORD = 'passwordInputField';
-const PASSWORD_CONFIRM = 'passwordConfirmInputField';
+export const ACCOUNT_NAME_FIELD = 'accountNameField';
+export const PASSWORD_FIELD = 'passwordInputField';
+const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
   let errors: ValidationError = {};
-  if (!formValues[USERNAME]) {
-    errors[USERNAME] = 'Required';
+  if (!formValues[ACCOUNT_NAME_FIELD]) {
+    errors[ACCOUNT_NAME_FIELD] = 'Required';
   }
-  if (!formValues[PASSWORD]) {
-    errors[PASSWORD] = 'Required';
+  if (!formValues[PASSWORD_FIELD]) {
+    errors[PASSWORD_FIELD] = 'Required';
   }
-  if (!formValues[PASSWORD_CONFIRM]) {
-    errors[PASSWORD_CONFIRM] = 'Required';
-  }
-
-  if (formValues[PASSWORD] && formValues[PASSWORD].length < 8) {
-    errors[PASSWORD] = 'Password should have at least 8 characters';
+  if (!formValues[PASSWORD_CONFIRM_FIELD]) {
+    errors[PASSWORD_CONFIRM_FIELD] = 'Required';
   }
 
-  if (formValues[USERNAME] && formValues[USERNAME].length < 8) {
-    errors[USERNAME] = 'Username should have at least 8 characters';
+  if (formValues[PASSWORD_FIELD] && formValues[PASSWORD_FIELD].length < 8) {
+    errors[PASSWORD_FIELD] = 'Password should have at least 8 characters';
   }
 
-  if (formValues[PASSWORD] !== formValues[PASSWORD_CONFIRM]) {
-    errors[PASSWORD_CONFIRM] = 'Passwords mismatch';
+  if (
+    formValues[ACCOUNT_NAME_FIELD] &&
+    formValues[ACCOUNT_NAME_FIELD].length < 8
+  ) {
+    errors[ACCOUNT_NAME_FIELD] = 'Username should have at least 8 characters';
+  }
+
+  if (formValues[PASSWORD_FIELD] !== formValues[PASSWORD_CONFIRM_FIELD]) {
+    errors[PASSWORD_CONFIRM_FIELD] = 'Passwords mismatch';
   }
 
   return errors;
@@ -59,12 +62,12 @@ const NewAccount = ({ onSignup }: Props): JSX.Element => {
     <Form onSubmit={handleSubmit}>
       <Block marginBottom={1}>
         <TextFieldForm
-          label="Username"
-          placeholder="Username"
+          label="Account name"
+          placeholder="Account name"
           form={form}
           required
           fullWidth
-          name={USERNAME}
+          name={ACCOUNT_NAME_FIELD}
         />
       </Block>
       <Block marginBottom={1}>
@@ -75,7 +78,7 @@ const NewAccount = ({ onSignup }: Props): JSX.Element => {
           form={form}
           required
           fullWidth
-          name={PASSWORD}
+          name={PASSWORD_FIELD}
         />
       </Block>
       <Block marginBottom={1}>
@@ -86,7 +89,7 @@ const NewAccount = ({ onSignup }: Props): JSX.Element => {
           form={form}
           required
           fullWidth
-          name={PASSWORD_CONFIRM}
+          name={PASSWORD_CONFIRM_FIELD}
         />
       </Block>
       <Block display="flex" justifyContent="flex-end">

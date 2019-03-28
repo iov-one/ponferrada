@@ -831,7 +831,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             className="MuiFormLabel-root-1kws992 MuiFormLabel-required-1uq7ql3 MuiInputLabel-required-1uq7ql3 MuiInputLabel-root-1dpbk2t MuiInputLabel-formControl-1a3k55t MuiInputLabel-animated-11c16tv MuiInputLabel-shrink-uhqsgf"
             data-shrink={true}
           >
-            Username
+            Account name
             <span
               className="MuiFormLabel-asterisk-12z5567 MuiInputLabel-asterisk-1nskzoe"
             >
@@ -872,11 +872,11 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               aria-invalid={false}
               className="MuiInputBase-input-tw450p MuiOutlinedInput-input-zno4lu"
               disabled={false}
-              name="usernameInputField"
+              name="accountNameField"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Username"
+              placeholder="Account name"
               required={true}
               type="text"
             />

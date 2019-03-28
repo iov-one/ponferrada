@@ -1,0 +1,39 @@
+{
+  "chains": [
+    {
+      "chainSpec": {
+        "codecType": "bns",
+        "bootstrapNodes": ["wss://bns.hugnet.iov.one/"]
+      },
+      "faucetSpec": {
+        "uri": "https://bns-faucet.hugnet.iov.one",
+        "token": "IOV"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "bov",
+        "bootstrapNodes": ["wss://bov.hugnet.iov.one/"]
+      },
+      "faucetSpec": {
+        "uri": "https://bov-faucet.hugnet.iov.one",
+        "token": "ALT"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "lsk",
+        "bootstrapNodes": ["https://testnet.lisk.io"]
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "eth",
+        "bootstrapNodes": [
+          "https://rinkeby.infura.io",
+          "https://api-rinkeby.etherscan.io/api"
+        ]
+      }
+    }
+  ]
+}
