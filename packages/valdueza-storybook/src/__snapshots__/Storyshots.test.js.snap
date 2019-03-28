@@ -710,6 +710,30 @@ Array [
 ]
 `;
 
+exports[`Storyshots Components Tooltip 1`] = `
+<div
+  className="MuiBox-root-1tpdhdx MuiBox-root-13"
+>
+  <div
+    onClick={[Function]}
+    style={
+      Object {
+        "display": "inline",
+        "height": "16px",
+      }
+    }
+  >
+    <img
+      alt="Info"
+      className="Hook-root-z8j3qi"
+      height={16}
+      src="info_normal.svg"
+      width={16}
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Components Typography 1`] = `
 Array [
   <h6
@@ -790,7 +814,7 @@ Array [
   <h6
     className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
