@@ -15,10 +15,3 @@ const createRootReducer = (history: History) =>
 export const reducer = createRootReducer(history);
 
 export type RootState = StateType<ReturnType<typeof createRootReducer>>;
-
-/**
- * This method can only be used in test enviromnets
- */
-export const resetHistory = () => {
-  history = createBrowserHistory();
-};
