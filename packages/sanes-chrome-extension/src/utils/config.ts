@@ -24,7 +24,8 @@ interface FaucetSpec {
 
 const fetchConfig = async (): Promise<Config> => {
   if (process.env.NODE_ENV === 'test') {
-    return require('../../public/assets/config/conf.json');
+    const config = (window as any).config as Config; // eslint-disable-line
+    return config;
   }
 
   const url = chrome.extension.getURL('assets/config/conf.json');
