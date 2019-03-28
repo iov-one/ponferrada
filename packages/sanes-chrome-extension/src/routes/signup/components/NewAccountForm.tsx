@@ -43,11 +43,11 @@ const validate = (values: object): object => {
   return errors;
 };
 
-export interface Props {
+export interface NewAccountProps {
   readonly onSignup: (values: FormValues) => void;
 }
 
-const NewAccount = ({ onSignup }: Props): JSX.Element => {
+const NewAccount = ({ onSignup }: NewAccountProps): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     onSignup(formValues);

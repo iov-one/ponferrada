@@ -1,16 +1,15 @@
 import * as React from 'react';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
-import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import Image from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../../paths';
-import NewAccountForm from './NewAccountForm';
-import RecoveryPhrase from './RecoveryPhrase';
+import NewAccountForm, { NewAccountProps } from './NewAccountForm';
+import ShowPhraseForm from './ShowPhraseForm';
 
-const Layout = (): JSX.Element => {
-  const [step, setStep] = React.useState<'first' | 'second'>('first');
-  const onShowPhrase = () => setStep('second');
+const Layout = ({ onSignup }: NewAccountProps): JSX.Element => {
+  const [step] = React.useState<'first' | 'second'>('first');
+  //const onShowPhrase = () => setStep('second');
 
   return (
     <Block
@@ -29,7 +28,7 @@ const Layout = (): JSX.Element => {
         {step === 'first' ? (
           <NewAccountForm onSignup={onSignup} />
         ) : (
-          <RecoveryPhrase />
+          <ShowPhraseForm />
         )}
       </Block>
       <Block textAlign="center" marginBottom={1}>
