@@ -10,7 +10,6 @@ export const globalStyles = makeStyles({
       '-ms-overflow-style': '-ms-autohiding-scrollbar',
     },
     body: {
-      position: 'absolute',
       bottom: 0,
       top: 0,
       left: 0,

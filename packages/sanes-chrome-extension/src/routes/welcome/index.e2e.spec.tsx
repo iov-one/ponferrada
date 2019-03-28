@@ -1,12 +1,12 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
-import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../../theme/constants';
-import { WELCOME_ROUTE } from '../../paths';
+import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../theme/constants';
+import { WELCOME_ROUTE } from '../paths';
 
 describe('DOM > Welcome route', () => {
   let browser: Browser;
 
   beforeEach(async () => {
-    const CRX_PATH = require('path').join(__dirname, '../../../../build');
+    const CRX_PATH = require('path').join(__dirname, '../../../build');
     browser = await puppeteer.launch({
       headless: false,
       devtools: true,
