@@ -802,49 +802,49 @@ Array [
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-1tut650 MuiBox-root-18"
+  className="MuiBox-root-19uv1fm MuiBox-root-18"
   id="/signup_first"
 >
   <h4
-    className="MuiTypography-root-w78d9m MuiTypography-h4-kd3coc MuiTypography-colorPrimary-hmab9m Hook-inline-42z04s"
+    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 MuiTypography-colorPrimary-rncytn Hook-inline-42z04s"
   >
     New
   </h4>
   <h4
-    className="MuiTypography-root-w78d9m MuiTypography-h4-kd3coc Hook-inline-42z04s"
+    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 Hook-inline-42z04s"
   >
      Account
   </h4>
   <div
-    className="MuiBox-root-1tut650 MuiBox-root-19"
+    className="MuiBox-root-19uv1fm MuiBox-root-19"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-1tut650 MuiBox-root-20"
+        className="MuiBox-root-19uv1fm MuiBox-root-20"
       >
         <div
-          className="MuiFormControl-root-r3fgrm MuiFormControl-marginNormal-1amn167 MuiFormControl-fullWidth-1uhpzy1 MuiTextField-root-1i86u8u"
+          className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiFormControl-fullWidth-lvxbjr MuiTextField-root-uj0ye4"
         >
           <label
-            className="MuiFormLabel-root-1dt11vf MuiFormLabel-required-iuzk0y MuiInputLabel-required-iuzk0y MuiInputLabel-root-1ma79vo MuiInputLabel-formControl-fi41fh MuiInputLabel-animated-1gj4slp MuiInputLabel-shrink-1ph3kex"
+            className="MuiFormLabel-root-161fy9m MuiFormLabel-required-1leww9n MuiInputLabel-required-1leww9n MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
             data-shrink={true}
           >
             Account name
             <span
-              className="MuiFormLabel-asterisk-vx7n1 MuiInputLabel-asterisk-12hbvrm"
+              className="MuiFormLabel-asterisk-h72sz2 MuiInputLabel-asterisk-42zz4k"
             >
                *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-1lalc06 MuiOutlinedInput-root-dizbpa MuiInputBase-fullWidth-1uhpzy1 MuiInputBase-formControl-1ide285"
+            className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-fullWidth-lvxbjr MuiInputBase-formControl-1qwhnfq"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1kdte2z MuiOutlinedInput-notchedOutline-1sfzdgz"
+              className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -852,7 +852,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-8h8nwa"
+                className="MuiPrivateNotchedOutline-legend-dakx2c"
                 style={
                   Object {
                     "width": 0.01,
@@ -870,7 +870,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-78vzt1 MuiOutlinedInput-input-xsq9i"
+              className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq"
               disabled={false}
               name="accountNameField"
               onBlur={[Function]}
@@ -884,29 +884,29 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1tut650 MuiBox-root-21"
+        className="MuiBox-root-19uv1fm MuiBox-root-21"
       >
         <div
-          className="MuiFormControl-root-r3fgrm MuiFormControl-marginNormal-1amn167 MuiFormControl-fullWidth-1uhpzy1 MuiTextField-root-1i86u8u"
+          className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiFormControl-fullWidth-lvxbjr MuiTextField-root-uj0ye4"
         >
           <label
-            className="MuiFormLabel-root-1dt11vf MuiFormLabel-required-iuzk0y MuiInputLabel-required-iuzk0y MuiInputLabel-root-1ma79vo MuiInputLabel-formControl-fi41fh MuiInputLabel-animated-1gj4slp MuiInputLabel-shrink-1ph3kex"
+            className="MuiFormLabel-root-161fy9m MuiFormLabel-required-1leww9n MuiInputLabel-required-1leww9n MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
             data-shrink={true}
           >
             Password
             <span
-              className="MuiFormLabel-asterisk-vx7n1 MuiInputLabel-asterisk-12hbvrm"
+              className="MuiFormLabel-asterisk-h72sz2 MuiInputLabel-asterisk-42zz4k"
             >
                *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-1lalc06 MuiOutlinedInput-root-dizbpa MuiInputBase-fullWidth-1uhpzy1 MuiInputBase-formControl-1ide285"
+            className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-fullWidth-lvxbjr MuiInputBase-formControl-1qwhnfq"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1kdte2z MuiOutlinedInput-notchedOutline-1sfzdgz"
+              className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -914,7 +914,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-8h8nwa"
+                className="MuiPrivateNotchedOutline-legend-dakx2c"
                 style={
                   Object {
                     "width": 0.01,
@@ -932,7 +932,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-78vzt1 MuiOutlinedInput-input-xsq9i MuiInputBase-inputType-1ku8zj4"
+              className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq MuiInputBase-inputType-1l6nqje"
               disabled={false}
               name="passwordInputField"
               onBlur={[Function]}
@@ -946,29 +946,29 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1tut650 MuiBox-root-22"
+        className="MuiBox-root-19uv1fm MuiBox-root-22"
       >
         <div
-          className="MuiFormControl-root-r3fgrm MuiFormControl-marginNormal-1amn167 MuiFormControl-fullWidth-1uhpzy1 MuiTextField-root-1i86u8u"
+          className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiFormControl-fullWidth-lvxbjr MuiTextField-root-uj0ye4"
         >
           <label
-            className="MuiFormLabel-root-1dt11vf MuiFormLabel-required-iuzk0y MuiInputLabel-required-iuzk0y MuiInputLabel-root-1ma79vo MuiInputLabel-formControl-fi41fh MuiInputLabel-animated-1gj4slp MuiInputLabel-shrink-1ph3kex"
+            className="MuiFormLabel-root-161fy9m MuiFormLabel-required-1leww9n MuiInputLabel-required-1leww9n MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
             data-shrink={true}
           >
             Confirm Password
             <span
-              className="MuiFormLabel-asterisk-vx7n1 MuiInputLabel-asterisk-12hbvrm"
+              className="MuiFormLabel-asterisk-h72sz2 MuiInputLabel-asterisk-42zz4k"
             >
                *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-1lalc06 MuiOutlinedInput-root-dizbpa MuiInputBase-fullWidth-1uhpzy1 MuiInputBase-formControl-1ide285"
+            className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-fullWidth-lvxbjr MuiInputBase-formControl-1qwhnfq"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1kdte2z MuiOutlinedInput-notchedOutline-1sfzdgz"
+              className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -976,7 +976,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-8h8nwa"
+                className="MuiPrivateNotchedOutline-legend-dakx2c"
                 style={
                   Object {
                     "width": 0.01,
@@ -994,7 +994,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-78vzt1 MuiOutlinedInput-input-xsq9i MuiInputBase-inputType-1ku8zj4"
+              className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq MuiInputBase-inputType-1l6nqje"
               disabled={false}
               name="passwordConfirmInputField"
               onBlur={[Function]}
@@ -1008,10 +1008,10 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1tut650 MuiBox-root-23"
+        className="MuiBox-root-19uv1fm MuiBox-root-23"
       >
         <button
-          className="MuiButtonBase-root-1lrd8zr MuiButtonBase-disabled-1rfstis MuiButton-root-qjtd2n MuiButton-contained-1iqp2qz MuiButton-containedPrimary-jn6ito MuiButton-disabled-1rfstis"
+          className="MuiButtonBase-root-kkazfa MuiButtonBase-disabled-dw5jxs MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-disabled-dw5jxs"
           disabled={true}
           onBlur={[Function]}
           onFocus={[Function]}
@@ -1027,7 +1027,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
           type="submit"
         >
           <span
-            className="MuiButton-label-1uold2d"
+            className="MuiButton-label-evs3l3"
           >
             Continue
           </span>
@@ -1036,7 +1036,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-1tut650 MuiBox-root-24"
+    className="MuiBox-root-19uv1fm MuiBox-root-24"
   >
     <img
       alt="IOV logo"
@@ -1049,32 +1049,32 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1tut650 MuiBox-root-25"
+  className="MuiBox-root-19uv1fm MuiBox-root-25"
   id="/welcome"
 >
   <h4
-    className="MuiTypography-root-w78d9m MuiTypography-h4-kd3coc MuiTypography-colorPrimary-hmab9m Hook-inline-42z04s"
+    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 MuiTypography-colorPrimary-rncytn Hook-inline-42z04s"
   >
     Welcome
   </h4>
   <h4
-    className="MuiTypography-root-w78d9m MuiTypography-h4-kd3coc Hook-inline-42z04s"
+    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 Hook-inline-42z04s"
   >
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-1tut650 MuiBox-root-26"
+    className="MuiBox-root-19uv1fm MuiBox-root-26"
   >
     <p
-      className="MuiTypography-root-w78d9m MuiTypography-body1-8g1q9f Hook-inline-42z04s"
+      className="MuiTypography-root-u4wjtk MuiTypography-body1-1rnc6bo Hook-inline-42z04s"
     >
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1tut650 MuiBox-root-27"
+      className="MuiBox-root-19uv1fm MuiBox-root-27"
     />
     <button
-      className="MuiButtonBase-root-1lrd8zr MuiButton-root-qjtd2n MuiButton-contained-1iqp2qz MuiButton-containedPrimary-jn6ito MuiButton-fullWidth-1uhpzy1"
+      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -1090,19 +1090,19 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="contained"
     >
       <span
-        className="MuiButton-label-1uold2d"
+        className="MuiButton-label-evs3l3"
       >
         Log in
       </span>
       <span
-        className="MuiTouchRipple-root-1ivf2vy"
+        className="MuiTouchRipple-root-t494z3"
       />
     </button>
     <div
-      className="MuiBox-root-1tut650 MuiBox-root-28"
+      className="MuiBox-root-19uv1fm MuiBox-root-28"
     />
     <button
-      className="MuiButtonBase-root-1lrd8zr MuiButton-root-qjtd2n MuiButton-contained-1iqp2qz MuiButton-containedPrimary-jn6ito MuiButton-fullWidth-1uhpzy1"
+      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -1119,19 +1119,19 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="contained"
     >
       <span
-        className="MuiButton-label-1uold2d"
+        className="MuiButton-label-evs3l3"
       >
         New account
       </span>
       <span
-        className="MuiTouchRipple-root-1ivf2vy"
+        className="MuiTouchRipple-root-t494z3"
       />
     </button>
     <div
-      className="MuiBox-root-1tut650 MuiBox-root-29"
+      className="MuiBox-root-19uv1fm MuiBox-root-29"
     />
     <button
-      className="MuiButtonBase-root-1lrd8zr MuiButton-root-qjtd2n MuiButton-contained-1iqp2qz MuiButton-containedPrimary-jn6ito MuiButton-fullWidth-1uhpzy1"
+      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -1147,17 +1147,17 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="contained"
     >
       <span
-        className="MuiButton-label-1uold2d"
+        className="MuiButton-label-evs3l3"
       >
         Import account
       </span>
       <span
-        className="MuiTouchRipple-root-1ivf2vy"
+        className="MuiTouchRipple-root-t494z3"
       />
     </button>
   </div>
   <div
-    className="MuiBox-root-1tut650 MuiBox-root-30"
+    className="MuiBox-root-19uv1fm MuiBox-root-30"
   >
     <img
       alt="IOV logo"
