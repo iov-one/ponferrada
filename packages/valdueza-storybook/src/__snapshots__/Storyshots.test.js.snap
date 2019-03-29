@@ -2,13 +2,13 @@
 
 exports[`Storyshots Components /Button Button in desktop screen 1`] = `
 <div
-  className="MuiBox-root-19uv1fm MuiBox-root-6"
+  className="MuiBox-root-svhlhv MuiBox-root-6"
 >
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-7"
+    className="MuiBox-root-svhlhv MuiBox-root-7"
   >
     <button
-      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm"
+      className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -25,20 +25,20 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-10pi21n"
       >
         Hower
       </span>
       <span
-        className="MuiTouchRipple-root-t494z3"
+        className="MuiTouchRipple-root-zm8jaa"
       />
     </button>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-8"
+    className="MuiBox-root-svhlhv MuiBox-root-8"
   >
     <button
-      className="MuiButtonBase-root-kkazfa MuiButtonBase-disabled-dw5jxs MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-disabled-dw5jxs"
+      className="MuiButtonBase-root-131ecbq MuiButtonBase-disabled-1v65d5t MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-disabled-1v65d5t"
       disabled={true}
       onBlur={[Function]}
       onClick={[Function]}
@@ -55,17 +55,17 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-10pi21n"
       >
         Disabled
       </span>
     </button>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-9"
+    className="MuiBox-root-svhlhv MuiBox-root-9"
   >
     <button
-      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedSecondary-12tote8"
+      className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -82,20 +82,20 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-10pi21n"
       >
         Cancel
       </span>
       <span
-        className="MuiTouchRipple-root-t494z3"
+        className="MuiTouchRipple-root-zm8jaa"
       />
     </button>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-10"
+    className="MuiBox-root-svhlhv MuiBox-root-10"
   >
     <button
-      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
+      className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -112,12 +112,12 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-10pi21n"
       >
         Full Width
       </span>
       <span
-        className="MuiTouchRipple-root-t494z3"
+        className="MuiTouchRipple-root-zm8jaa"
       />
     </button>
   </div>
@@ -133,13 +133,13 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
   }
 >
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-1"
+    className="MuiBox-root-svhlhv MuiBox-root-1"
   >
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-2"
+      className="MuiBox-root-svhlhv MuiBox-root-2"
     >
       <button
-        className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm"
+        className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -156,20 +156,20 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-evs3l3"
+          className="MuiButton-label-10pi21n"
         >
           Hower
         </span>
         <span
-          className="MuiTouchRipple-root-t494z3"
+          className="MuiTouchRipple-root-zm8jaa"
         />
       </button>
     </div>
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-3"
+      className="MuiBox-root-svhlhv MuiBox-root-3"
     >
       <button
-        className="MuiButtonBase-root-kkazfa MuiButtonBase-disabled-dw5jxs MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-disabled-dw5jxs"
+        className="MuiButtonBase-root-131ecbq MuiButtonBase-disabled-1v65d5t MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-disabled-1v65d5t"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -186,17 +186,17 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-evs3l3"
+          className="MuiButton-label-10pi21n"
         >
           Disabled
         </span>
       </button>
     </div>
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-4"
+      className="MuiBox-root-svhlhv MuiBox-root-4"
     >
       <button
-        className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedSecondary-12tote8"
+        className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -213,20 +213,20 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-evs3l3"
+          className="MuiButton-label-10pi21n"
         >
           Cancel
         </span>
         <span
-          className="MuiTouchRipple-root-t494z3"
+          className="MuiTouchRipple-root-zm8jaa"
         />
       </button>
     </div>
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-5"
+      className="MuiBox-root-svhlhv MuiBox-root-5"
     >
       <button
-        className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
+        className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -243,12 +243,12 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-evs3l3"
+          className="MuiButton-label-10pi21n"
         >
           Full Width
         </span>
         <span
-          className="MuiTouchRipple-root-t494z3"
+          className="MuiTouchRipple-root-zm8jaa"
         />
       </button>
     </div>
@@ -261,21 +261,21 @@ exports[`Storyshots Components /forms Form 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiTextField-root-uj0ye4"
+    className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiTextField-root-mb0tze"
   >
     <label
-      className="MuiFormLabel-root-161fy9m MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+      className="MuiFormLabel-root-n2ir1z MuiInputLabel-root-u7lks3 MuiInputLabel-formControl-aiu6j8 MuiInputLabel-animated-1574dhs MuiInputLabel-shrink-3h2s6v"
       data-shrink={true}
     >
       Unique Identifier
     </label>
     <div
-      className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-formControl-1qwhnfq"
+      className="MuiInputBase-root-91sko6 MuiOutlinedInput-root-9m06ak MuiInputBase-formControl-1c83dgn"
       onClick={[Function]}
     >
       <fieldset
         aria-hidden={true}
-        className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+        className="MuiPrivateNotchedOutline-root-nlmqld MuiOutlinedInput-notchedOutline-myv9y8"
         style={
           Object {
             "paddingLeft": 8,
@@ -283,7 +283,7 @@ exports[`Storyshots Components /forms Form 1`] = `
         }
       >
         <legend
-          className="MuiPrivateNotchedOutline-legend-dakx2c"
+          className="MuiPrivateNotchedOutline-legend-soq3fn"
           style={
             Object {
               "width": 0.01,
@@ -301,7 +301,7 @@ exports[`Storyshots Components /forms Form 1`] = `
       </fieldset>
       <input
         aria-invalid={false}
-        className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq"
+        className="MuiInputBase-input-1dda7s5 MuiOutlinedInput-input-1lq6gfk"
         disabled={false}
         name="uniqueIdentifier"
         onBlur={[Function]}
@@ -314,7 +314,7 @@ exports[`Storyshots Components /forms Form 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root-kkazfa MuiButtonBase-disabled-dw5jxs MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-disabled-dw5jxs"
+    className="MuiButtonBase-root-131ecbq MuiButtonBase-disabled-1v65d5t MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-disabled-1v65d5t"
     disabled={true}
     onBlur={[Function]}
     onFocus={[Function]}
@@ -330,7 +330,7 @@ exports[`Storyshots Components /forms Form 1`] = `
     type="submit"
   >
     <span
-      className="MuiButton-label-evs3l3"
+      className="MuiButton-label-10pi21n"
     >
       Submit
     </span>
@@ -343,30 +343,30 @@ exports[`Storyshots Components /forms Form 1`] = `
 
 exports[`Storyshots Components /forms TextField 1`] = `
 <div
-  className="MuiBox-root-19uv1fm MuiBox-root-13"
+  className="MuiBox-root-svhlhv MuiBox-root-13"
 >
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-14"
+    className="MuiBox-root-svhlhv MuiBox-root-14"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiTextField-root-uj0ye4"
+        className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiTextField-root-mb0tze"
       >
         <label
-          className="MuiFormLabel-root-161fy9m MuiFormLabel-error-1u7o52f MuiInputLabel-error-7lc1nk MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+          className="MuiFormLabel-root-n2ir1z MuiFormLabel-error-1lfkslp MuiInputLabel-error-f7uxcl MuiInputLabel-root-u7lks3 MuiInputLabel-formControl-aiu6j8 MuiInputLabel-animated-1574dhs MuiInputLabel-shrink-3h2s6v"
           data-shrink={true}
         >
           Error
         </label>
         <div
-          className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-error-1u7o52f MuiOutlinedInput-error-1ui6612 MuiInputBase-formControl-1qwhnfq"
+          className="MuiInputBase-root-91sko6 MuiOutlinedInput-root-9m06ak MuiInputBase-error-1lfkslp MuiOutlinedInput-error-ehh1pj MuiInputBase-formControl-1c83dgn"
           onClick={[Function]}
         >
           <fieldset
             aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+            className="MuiPrivateNotchedOutline-root-nlmqld MuiOutlinedInput-notchedOutline-myv9y8"
             style={
               Object {
                 "paddingLeft": 8,
@@ -374,7 +374,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
             }
           >
             <legend
-              className="MuiPrivateNotchedOutline-legend-dakx2c"
+              className="MuiPrivateNotchedOutline-legend-soq3fn"
               style={
                 Object {
                   "width": 0.01,
@@ -392,7 +392,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
           </fieldset>
           <input
             aria-invalid={true}
-            className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq"
+            className="MuiInputBase-input-1dda7s5 MuiOutlinedInput-input-1lq6gfk"
             defaultValue="Standard Error"
             disabled={false}
             name="field-with-error"
@@ -404,7 +404,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
           />
         </div>
         <p
-          className="MuiFormHelperText-root-yf97fs MuiFormHelperText-contained-o3zsd8 MuiFormHelperText-error-1u7o52f"
+          className="MuiFormHelperText-root-16u8wp6 MuiFormHelperText-contained-1bc4o3e MuiFormHelperText-error-1lfkslp"
         >
           This is an error message
         </p>
@@ -412,27 +412,27 @@ exports[`Storyshots Components /forms TextField 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-15"
+    className="MuiBox-root-svhlhv MuiBox-root-15"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiTextField-root-uj0ye4"
+        className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiTextField-root-mb0tze"
       >
         <label
-          className="MuiFormLabel-root-161fy9m MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+          className="MuiFormLabel-root-n2ir1z MuiInputLabel-root-u7lks3 MuiInputLabel-formControl-aiu6j8 MuiInputLabel-animated-1574dhs MuiInputLabel-shrink-3h2s6v"
           data-shrink={true}
         >
           Filled
         </label>
         <div
-          className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-formControl-1qwhnfq"
+          className="MuiInputBase-root-91sko6 MuiOutlinedInput-root-9m06ak MuiInputBase-formControl-1c83dgn"
           onClick={[Function]}
         >
           <fieldset
             aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+            className="MuiPrivateNotchedOutline-root-nlmqld MuiOutlinedInput-notchedOutline-myv9y8"
             style={
               Object {
                 "paddingLeft": 8,
@@ -440,7 +440,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
             }
           >
             <legend
-              className="MuiPrivateNotchedOutline-legend-dakx2c"
+              className="MuiPrivateNotchedOutline-legend-soq3fn"
               style={
                 Object {
                   "width": 0.01,
@@ -458,7 +458,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
           </fieldset>
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq"
+            className="MuiInputBase-input-1dda7s5 MuiOutlinedInput-input-1lq6gfk"
             defaultValue="test*iov"
             disabled={false}
             name="field-filled"
@@ -473,27 +473,27 @@ exports[`Storyshots Components /forms TextField 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-16"
+    className="MuiBox-root-svhlhv MuiBox-root-16"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiTextField-root-uj0ye4"
+        className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiTextField-root-mb0tze"
       >
         <label
-          className="MuiFormLabel-root-161fy9m MuiFormLabel-disabled-dw5jxs MuiInputLabel-disabled-dw5jxs MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+          className="MuiFormLabel-root-n2ir1z MuiFormLabel-disabled-1v65d5t MuiInputLabel-disabled-1v65d5t MuiInputLabel-root-u7lks3 MuiInputLabel-formControl-aiu6j8 MuiInputLabel-animated-1574dhs MuiInputLabel-shrink-3h2s6v"
           data-shrink={true}
         >
           Disabled
         </label>
         <div
-          className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-disabled-dw5jxs MuiOutlinedInput-disabled-dw5jxs MuiInputBase-formControl-1qwhnfq"
+          className="MuiInputBase-root-91sko6 MuiOutlinedInput-root-9m06ak MuiInputBase-disabled-1v65d5t MuiOutlinedInput-disabled-1v65d5t MuiInputBase-formControl-1c83dgn"
           onClick={[Function]}
         >
           <fieldset
             aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+            className="MuiPrivateNotchedOutline-root-nlmqld MuiOutlinedInput-notchedOutline-myv9y8"
             style={
               Object {
                 "paddingLeft": 8,
@@ -501,7 +501,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
             }
           >
             <legend
-              className="MuiPrivateNotchedOutline-legend-dakx2c"
+              className="MuiPrivateNotchedOutline-legend-soq3fn"
               style={
                 Object {
                   "width": 0.01,
@@ -519,7 +519,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
           </fieldset>
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq MuiInputBase-disabled-dw5jxs MuiOutlinedInput-disabled-dw5jxs"
+            className="MuiInputBase-input-1dda7s5 MuiOutlinedInput-input-1lq6gfk MuiInputBase-disabled-1v65d5t MuiOutlinedInput-disabled-1v65d5t"
             defaultValue="Disabled input"
             disabled={true}
             name="standard-disabled"
@@ -534,27 +534,27 @@ exports[`Storyshots Components /forms TextField 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-17"
+    className="MuiBox-root-svhlhv MuiBox-root-17"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiTextField-root-uj0ye4"
+        className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiTextField-root-mb0tze"
       >
         <label
-          className="MuiFormLabel-root-161fy9m MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+          className="MuiFormLabel-root-n2ir1z MuiInputLabel-root-u7lks3 MuiInputLabel-formControl-aiu6j8 MuiInputLabel-animated-1574dhs MuiInputLabel-shrink-3h2s6v"
           data-shrink={true}
         >
           Empty
         </label>
         <div
-          className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-formControl-1qwhnfq"
+          className="MuiInputBase-root-91sko6 MuiOutlinedInput-root-9m06ak MuiInputBase-formControl-1c83dgn"
           onClick={[Function]}
         >
           <fieldset
             aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+            className="MuiPrivateNotchedOutline-root-nlmqld MuiOutlinedInput-notchedOutline-myv9y8"
             style={
               Object {
                 "paddingLeft": 8,
@@ -562,7 +562,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
             }
           >
             <legend
-              className="MuiPrivateNotchedOutline-legend-dakx2c"
+              className="MuiPrivateNotchedOutline-legend-soq3fn"
               style={
                 Object {
                   "width": 0.01,
@@ -580,7 +580,7 @@ exports[`Storyshots Components /forms TextField 1`] = `
           </fieldset>
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq"
+            className="MuiInputBase-input-1dda7s5 MuiOutlinedInput-input-1lq6gfk"
             disabled={false}
             name="standard-with-placeholder"
             onBlur={[Function]}
@@ -608,17 +608,17 @@ exports[`Storyshots Components Images 1`] = `
 exports[`Storyshots Components Switch 1`] = `
 Array [
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-11"
+    className="MuiBox-root-svhlhv MuiBox-root-11"
   >
     <label
-      className="MuiFormControlLabel-root-10brd8i"
+      className="MuiFormControlLabel-root-gncncm"
     >
       <span
-        className="MuiSwitch-root-12sa24v"
+        className="MuiSwitch-root-1r26fum"
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root-kkazfa MuiIconButton-root-jadycz MuiPrivateSwitchBase-root-xgpxj3 MuiSwitch-switchBase-l266i3 MuiSwitch-colorPrimary-19z8adu"
+          className="MuiButtonBase-root-131ecbq MuiIconButton-root-twwo1r MuiPrivateSwitchBase-root-1fy6mq0 MuiSwitch-switchBase-1njpanh MuiSwitch-colorPrimary-18cp1gd"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -632,44 +632,44 @@ Array [
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-eyr61i"
+            className="MuiIconButton-label-fojb9y"
           >
             <span
-              className="MuiSwitch-icon-x1mfuv"
+              className="MuiSwitch-icon-4n1pz8"
             />
             <input
-              className="MuiPrivateSwitchBase-input-1xj79mr"
+              className="MuiPrivateSwitchBase-input-1kb1x60"
               onChange={[Function]}
               type="checkbox"
             />
           </span>
           <span
-            className="MuiTouchRipple-root-t494z3"
+            className="MuiTouchRipple-root-zm8jaa"
           />
         </span>
         <span
-          className="MuiSwitch-bar-1s3389s"
+          className="MuiSwitch-bar-tufax1"
         />
       </span>
       <span
-        className="MuiTypography-root-u4wjtk MuiTypography-body2-zs7j0i MuiFormControlLabel-label-173s3z5"
+        className="MuiTypography-root-1sxknfi MuiTypography-body2-d30tto MuiFormControlLabel-label-10nbetz"
       >
         With label
       </span>
     </label>
   </div>,
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-12"
+    className="MuiBox-root-svhlhv MuiBox-root-12"
   >
     <label
-      className="MuiFormControlLabel-root-10brd8i"
+      className="MuiFormControlLabel-root-gncncm"
     >
       <span
-        className="MuiSwitch-root-12sa24v"
+        className="MuiSwitch-root-1r26fum"
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root-kkazfa MuiIconButton-root-jadycz MuiPrivateSwitchBase-root-xgpxj3 MuiSwitch-switchBase-l266i3 MuiSwitch-colorPrimary-19z8adu"
+          className="MuiButtonBase-root-131ecbq MuiIconButton-root-twwo1r MuiPrivateSwitchBase-root-1fy6mq0 MuiSwitch-switchBase-1njpanh MuiSwitch-colorPrimary-18cp1gd"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -683,27 +683,27 @@ Array [
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-eyr61i"
+            className="MuiIconButton-label-fojb9y"
           >
             <span
-              className="MuiSwitch-icon-x1mfuv"
+              className="MuiSwitch-icon-4n1pz8"
             />
             <input
-              className="MuiPrivateSwitchBase-input-1xj79mr"
+              className="MuiPrivateSwitchBase-input-1kb1x60"
               onChange={[Function]}
               type="checkbox"
             />
           </span>
           <span
-            className="MuiTouchRipple-root-t494z3"
+            className="MuiTouchRipple-root-zm8jaa"
           />
         </span>
         <span
-          className="MuiSwitch-bar-1s3389s"
+          className="MuiSwitch-bar-tufax1"
         />
       </span>
       <span
-        className="MuiTypography-root-u4wjtk MuiTypography-body2-zs7j0i MuiFormControlLabel-label-173s3z5"
+        className="MuiTypography-root-1sxknfi MuiTypography-body2-d30tto MuiFormControlLabel-label-10nbetz"
       />
     </label>
   </div>,
@@ -713,87 +713,87 @@ Array [
 exports[`Storyshots Components Typography 1`] = `
 Array [
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     H4
   </h6>,
   <h4
-    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99"
+    className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d"
   >
     Main headings
   </h4>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     H5
   </h6>,
   <h5
-    className="MuiTypography-root-u4wjtk MuiTypography-h5-1d8iub3"
+    className="MuiTypography-root-1sxknfi MuiTypography-h5-1mlw3i1"
   >
     Heading 2
   </h5>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     H6
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-h6-11ympd"
+    className="MuiTypography-root-1sxknfi MuiTypography-h6-d7gx89"
   >
     Subheading
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     body1
   </h6>,
   <p
-    className="MuiTypography-root-u4wjtk MuiTypography-body1-1rnc6bo"
+    className="MuiTypography-root-1sxknfi MuiTypography-body1-1gdw1oo"
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     body2
   </h6>,
   <p
-    className="MuiTypography-root-u4wjtk MuiTypography-body2-zs7j0i"
+    className="MuiTypography-root-1sxknfi MuiTypography-body2-d30tto"
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     subtitle1
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn"
   >
     Text field label
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     subtitle2
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle2-afnj1n"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj"
   >
     Text field label
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle1-1ahrb5f MuiTypography-colorPrimary-rncytn"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn MuiTypography-colorPrimary-qfkzyz"
   >
     Inline styles
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle2-afnj1n MuiTypography-colorPrimary-rncytn Hook-inline-42z04s"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
   >
     First part of the text. 
   </h6>,
   <h6
-    className="MuiTypography-root-u4wjtk MuiTypography-subtitle2-afnj1n Hook-inline-42z04s"
+    className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
   >
     Second part of the text.
   </h6>,
@@ -802,49 +802,49 @@ Array [
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-19uv1fm MuiBox-root-18"
+  className="MuiBox-root-1tpdhdx MuiBox-root-18"
   id="/signup_first"
 >
   <h4
-    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 MuiTypography-colorPrimary-rncytn Hook-inline-42z04s"
+    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
   >
     New
   </h4>
   <h4
-    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 Hook-inline-42z04s"
+    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq Hook-inline-42z04s"
   >
      Account
   </h4>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-19"
+    className="MuiBox-root-1tpdhdx MuiBox-root-19"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-19uv1fm MuiBox-root-20"
+        className="MuiBox-root-1tpdhdx MuiBox-root-20"
       >
         <div
-          className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiFormControl-fullWidth-lvxbjr MuiTextField-root-uj0ye4"
+          className="MuiFormControl-root-1nb8hkj MuiFormControl-marginNormal-xfc5ur MuiFormControl-fullWidth-1vofuqe MuiTextField-root-nenw30"
         >
           <label
-            className="MuiFormLabel-root-161fy9m MuiFormLabel-required-1leww9n MuiInputLabel-required-1leww9n MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+            className="MuiFormLabel-root-1kws992 MuiFormLabel-required-1uq7ql3 MuiInputLabel-required-1uq7ql3 MuiInputLabel-root-1dpbk2t MuiInputLabel-formControl-1a3k55t MuiInputLabel-animated-11c16tv MuiInputLabel-shrink-uhqsgf"
             data-shrink={true}
           >
             Account name
             <span
-              className="MuiFormLabel-asterisk-h72sz2 MuiInputLabel-asterisk-42zz4k"
+              className="MuiFormLabel-asterisk-12z5567 MuiInputLabel-asterisk-1nskzoe"
             >
                *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-fullWidth-lvxbjr MuiInputBase-formControl-1qwhnfq"
+            className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+              className="MuiPrivateNotchedOutline-root-tl7gwz MuiOutlinedInput-notchedOutline-1sxl3t1"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -852,7 +852,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-dakx2c"
+                className="MuiPrivateNotchedOutline-legend-1b37ak6"
                 style={
                   Object {
                     "width": 0.01,
@@ -870,7 +870,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq"
+              className="MuiInputBase-input-tw450p MuiOutlinedInput-input-zno4lu"
               disabled={false}
               name="accountNameField"
               onBlur={[Function]}
@@ -884,29 +884,29 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-19uv1fm MuiBox-root-21"
+        className="MuiBox-root-1tpdhdx MuiBox-root-21"
       >
         <div
-          className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiFormControl-fullWidth-lvxbjr MuiTextField-root-uj0ye4"
+          className="MuiFormControl-root-1nb8hkj MuiFormControl-marginNormal-xfc5ur MuiFormControl-fullWidth-1vofuqe MuiTextField-root-nenw30"
         >
           <label
-            className="MuiFormLabel-root-161fy9m MuiFormLabel-required-1leww9n MuiInputLabel-required-1leww9n MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+            className="MuiFormLabel-root-1kws992 MuiFormLabel-required-1uq7ql3 MuiInputLabel-required-1uq7ql3 MuiInputLabel-root-1dpbk2t MuiInputLabel-formControl-1a3k55t MuiInputLabel-animated-11c16tv MuiInputLabel-shrink-uhqsgf"
             data-shrink={true}
           >
             Password
             <span
-              className="MuiFormLabel-asterisk-h72sz2 MuiInputLabel-asterisk-42zz4k"
+              className="MuiFormLabel-asterisk-12z5567 MuiInputLabel-asterisk-1nskzoe"
             >
                *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-fullWidth-lvxbjr MuiInputBase-formControl-1qwhnfq"
+            className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+              className="MuiPrivateNotchedOutline-root-tl7gwz MuiOutlinedInput-notchedOutline-1sxl3t1"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -914,7 +914,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-dakx2c"
+                className="MuiPrivateNotchedOutline-legend-1b37ak6"
                 style={
                   Object {
                     "width": 0.01,
@@ -932,7 +932,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq MuiInputBase-inputType-1l6nqje"
+              className="MuiInputBase-input-tw450p MuiOutlinedInput-input-zno4lu MuiInputBase-inputType-e09jth"
               disabled={false}
               name="passwordInputField"
               onBlur={[Function]}
@@ -946,29 +946,29 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-19uv1fm MuiBox-root-22"
+        className="MuiBox-root-1tpdhdx MuiBox-root-22"
       >
         <div
-          className="MuiFormControl-root-1u9du9o MuiFormControl-marginNormal-f3570a MuiFormControl-fullWidth-lvxbjr MuiTextField-root-uj0ye4"
+          className="MuiFormControl-root-1nb8hkj MuiFormControl-marginNormal-xfc5ur MuiFormControl-fullWidth-1vofuqe MuiTextField-root-nenw30"
         >
           <label
-            className="MuiFormLabel-root-161fy9m MuiFormLabel-required-1leww9n MuiInputLabel-required-1leww9n MuiInputLabel-root-106wrol MuiInputLabel-formControl-1egs64z MuiInputLabel-animated-16jb9gm MuiInputLabel-shrink-1fpyslk"
+            className="MuiFormLabel-root-1kws992 MuiFormLabel-required-1uq7ql3 MuiInputLabel-required-1uq7ql3 MuiInputLabel-root-1dpbk2t MuiInputLabel-formControl-1a3k55t MuiInputLabel-animated-11c16tv MuiInputLabel-shrink-uhqsgf"
             data-shrink={true}
           >
             Confirm Password
             <span
-              className="MuiFormLabel-asterisk-h72sz2 MuiInputLabel-asterisk-42zz4k"
+              className="MuiFormLabel-asterisk-12z5567 MuiInputLabel-asterisk-1nskzoe"
             >
                *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-p1flee MuiOutlinedInput-root-18e9mwr MuiInputBase-fullWidth-lvxbjr MuiInputBase-formControl-1qwhnfq"
+            className="MuiInputBase-root-b4zgrm MuiOutlinedInput-root-b3obyz MuiInputBase-fullWidth-1vofuqe MuiInputBase-formControl-6vi063"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1d0n17z MuiOutlinedInput-notchedOutline-1ipg4bi"
+              className="MuiPrivateNotchedOutline-root-tl7gwz MuiOutlinedInput-notchedOutline-1sxl3t1"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -976,7 +976,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-dakx2c"
+                className="MuiPrivateNotchedOutline-legend-1b37ak6"
                 style={
                   Object {
                     "width": 0.01,
@@ -994,7 +994,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-18s8xn1 MuiOutlinedInput-input-16mbbbq MuiInputBase-inputType-1l6nqje"
+              className="MuiInputBase-input-tw450p MuiOutlinedInput-input-zno4lu MuiInputBase-inputType-e09jth"
               disabled={false}
               name="passwordConfirmInputField"
               onBlur={[Function]}
@@ -1008,10 +1008,10 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-19uv1fm MuiBox-root-23"
+        className="MuiBox-root-1tpdhdx MuiBox-root-23"
       >
         <button
-          className="MuiButtonBase-root-kkazfa MuiButtonBase-disabled-dw5jxs MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-disabled-dw5jxs"
+          className="MuiButtonBase-root-w0iq0r MuiButtonBase-disabled-1gn1rpx MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-disabled-1gn1rpx"
           disabled={true}
           onBlur={[Function]}
           onFocus={[Function]}
@@ -1027,7 +1027,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
           type="submit"
         >
           <span
-            className="MuiButton-label-evs3l3"
+            className="MuiButton-label-1ufm4pj"
           >
             Continue
           </span>
@@ -1036,7 +1036,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-24"
+    className="MuiBox-root-1tpdhdx MuiBox-root-24"
   >
     <img
       alt="IOV logo"
@@ -1049,32 +1049,32 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-19uv1fm MuiBox-root-25"
+  className="MuiBox-root-1tpdhdx MuiBox-root-25"
   id="/welcome"
 >
   <h4
-    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 MuiTypography-colorPrimary-rncytn Hook-inline-42z04s"
+    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq MuiTypography-colorPrimary-10w5l6 Hook-inline-42z04s"
   >
     Welcome
   </h4>
   <h4
-    className="MuiTypography-root-u4wjtk MuiTypography-h4-1uanw99 Hook-inline-42z04s"
+    className="MuiTypography-root-91g352 MuiTypography-h4-17jbvzq Hook-inline-42z04s"
   >
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-26"
+    className="MuiBox-root-1tpdhdx MuiBox-root-26"
   >
     <p
-      className="MuiTypography-root-u4wjtk MuiTypography-body1-1rnc6bo Hook-inline-42z04s"
+      className="MuiTypography-root-91g352 MuiTypography-body1-ipo4gk Hook-inline-42z04s"
     >
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-27"
+      className="MuiBox-root-1tpdhdx MuiBox-root-27"
     />
     <button
-      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -1090,19 +1090,19 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="contained"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-1ufm4pj"
       >
         Log in
       </span>
       <span
-        className="MuiTouchRipple-root-t494z3"
+        className="MuiTouchRipple-root-s3wr0d"
       />
     </button>
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-28"
+      className="MuiBox-root-1tpdhdx MuiBox-root-28"
     />
     <button
-      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -1119,19 +1119,19 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="contained"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-1ufm4pj"
       >
         New account
       </span>
       <span
-        className="MuiTouchRipple-root-t494z3"
+        className="MuiTouchRipple-root-s3wr0d"
       />
     </button>
     <div
-      className="MuiBox-root-19uv1fm MuiBox-root-29"
+      className="MuiBox-root-1tpdhdx MuiBox-root-29"
     />
     <button
-      className="MuiButtonBase-root-kkazfa MuiButton-root-qood0l MuiButton-contained-rucpw4 MuiButton-containedPrimary-p86bkm MuiButton-fullWidth-lvxbjr"
+      className="MuiButtonBase-root-w0iq0r MuiButton-root-1w8onii MuiButton-contained-fuk1bb MuiButton-containedPrimary-1qpv2y6 MuiButton-fullWidth-1vofuqe"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -1147,17 +1147,17 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="contained"
     >
       <span
-        className="MuiButton-label-evs3l3"
+        className="MuiButton-label-1ufm4pj"
       >
         Import account
       </span>
       <span
-        className="MuiTouchRipple-root-t494z3"
+        className="MuiTouchRipple-root-s3wr0d"
       />
     </button>
   </div>
   <div
-    className="MuiBox-root-19uv1fm MuiBox-root-30"
+    className="MuiBox-root-1tpdhdx MuiBox-root-30"
   >
     <img
       alt="IOV logo"
