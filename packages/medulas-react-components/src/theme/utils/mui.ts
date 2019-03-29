@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 import { lightFont, white, secondaryColor } from './variables';
+import grey from '@material-ui/core/colors/grey';
 
 const theme = createMuiTheme({
   palette: {
@@ -88,8 +89,22 @@ const themeObject: ThemeOptions = {
     },
     MuiOutlinedInput: {
       root: {
+        // Do not change border color in hover effect
+        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+          borderColor: grey[300],
+        },
+        // Make bolder border color when focused
+        '&$focused $notchedOutline': {
+          borderWidth: '1px',
+          borderColor: grey[400],
+        },
+        // Specify notched color
         '& $notchedOutline': {
-          borderColor: '#f3f3f3',
+          borderColor: grey[300],
+        },
+        // Make lighter border color when disabled
+        '&$disabled $notchedOutline': {
+          borderColor: grey[200],
         },
         backgroundColor: '#fcfcfc',
       },
@@ -102,12 +117,17 @@ const themeObject: ThemeOptions = {
     },
     MuiInputLabel: {
       formControl: {
-        top: `-${theme.spacing(2)}px`,
+        top: `-${theme.spacing(3)}px`,
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightMedium,
         fontSize: theme.typography.fontSize,
+        '&$focused': {
+          // Use text primary in TextField labels when focusing.
+          color: `${theme.palette.text.primary}`,
+        },
       },
       error: {
+        // Maintain the text primary color on errored text fields when loosing focus
         color: `${theme.palette.text.primary} !important`,
       },
     },
