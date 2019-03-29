@@ -122,10 +122,12 @@ const themeObject: ThemeOptions = {
         fontWeight: theme.typography.fontWeightMedium,
         fontSize: theme.typography.fontSize,
         '&$focused': {
-          color: `${theme.palette.text.primary} !important`,
+          // Use text primary in TextField labels when focusing.
+          color: `${theme.palette.text.primary}`,
         },
       },
       error: {
+        // Maintain the text primary color on errored text fields when loosing focus
         color: `${theme.palette.text.primary} !important`,
       },
     },
