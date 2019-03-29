@@ -91,20 +91,20 @@ const themeObject: ThemeOptions = {
       root: {
         // Do not change border color in hover effect
         '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
-          borderColor: `${grey[300]}`,
+          borderColor: grey[300],
         },
         // Make bolder border color when focused
         '&$focused $notchedOutline': {
           borderWidth: '1px',
-          borderColor: `${grey[400]}`,
+          borderColor: grey[400],
         },
         // Specify notched color
         '& $notchedOutline': {
-          borderColor: `${grey[300]}`,
+          borderColor: grey[300],
         },
         // Make lighter border color when disabled
         '&$disabled $notchedOutline': {
-          borderColor: `${grey[200]}`,
+          borderColor: grey[200],
         },
         backgroundColor: '#fcfcfc',
       },
