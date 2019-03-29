@@ -10,11 +10,78 @@ const DEFAULT_HEIGHT = 16;
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
-    boxShadow: `0 ${theme.spacing(1)}px ${theme.spacing(2)}px 0 #e3e4e7`,
+    boxShadow: `0 0 14px 0 #edeff4`,
   },
   container: {
     height: `${DEFAULT_HEIGHT}px`,
     display: 'inline',
+  },
+  popper: {
+    zIndex: 1,
+    '&[x-placement*="bottom"] $arrow': {
+      top: 0,
+      left: 0,
+      marginTop: '-0.9em',
+      width: '3em',
+      height: '1em',
+      '&::before': {
+        borderWidth: '0 1em 1em 1em',
+        borderColor: `transparent transparent ${
+          theme.palette.common.white
+        } transparent`,
+      },
+    },
+    '&[x-placement*="top"] $arrow': {
+      bottom: 0,
+      left: 0,
+      marginBottom: '-0.9em',
+      width: '3em',
+      height: '1em',
+      '&::before': {
+        borderWidth: '1em 1em 0 1em',
+        borderColor: `${
+          theme.palette.common.white
+        } transparent transparent transparent`,
+      },
+    },
+    '&[x-placement*="right"] $arrow': {
+      left: 0,
+      marginLeft: '-0.9em',
+      height: '3em',
+      width: '1em',
+      '&::before': {
+        borderWidth: '1em 1em 1em 0',
+        borderColor: `transparent ${
+          theme.palette.common.white
+        } transparent transparent`,
+      },
+    },
+    '&[x-placement*="left"] $arrow': {
+      right: 0,
+      marginRight: '-0.9em',
+      height: '3em',
+      width: '1em',
+      '&::before': {
+        borderWidth: '1em 0 1em 1em',
+        borderColor: `transparent transparent transparent ${
+          theme.palette.common.white
+        }`,
+      },
+    },
+  },
+  arrow: {
+    position: 'absolute',
+    fontSize: 7,
+    width: '3em',
+    height: '3em',
+    '&::before': {
+      content: '""',
+      margin: 'auto',
+      display: 'block',
+      width: 0,
+      height: 0,
+      borderStyle: 'solid',
+    },
   },
 }));
 
@@ -29,6 +96,8 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
   const [open, setOpen] = React.useState<boolean>(false);
   const toggle = (): void => setOpen(open => !open);
 
+  const tooltipRef = React.useRef(null);
+  const arrowRef = React.useRef(null);
   const classes = useStyles();
 
   const popperStyle = {
@@ -40,9 +109,11 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
     flip: {
       enabled: true,
     },
+    arrow: {
+      enabled: true,
+      element: arrowRef.current,
+    },
   };
-
-  const tooltipRef = React.useRef(null);
 
   return (
     <React.Fragment>
@@ -54,13 +125,16 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
           height={DEFAULT_HEIGHT}
         />
       </div>
+
       <Popper
         open={open}
+        className={classes.popper}
         style={popperStyle}
         anchorEl={tooltipRef.current}
         placement="bottom-end"
         modifiers={popperModifiers}
       >
+        <span className={classes.arrow} ref={arrowRef} />
         <Paper className={classes.paper}>{children}</Paper>
       </Popper>
     </React.Fragment>
