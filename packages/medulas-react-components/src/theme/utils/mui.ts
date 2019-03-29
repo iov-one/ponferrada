@@ -89,19 +89,22 @@ const themeObject: ThemeOptions = {
     },
     MuiOutlinedInput: {
       root: {
+        // Do not change border color in hover effect
         '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
-          borderColor: grey[300],
+          borderColor: `${grey[300]}`,
         },
+        // Make bolder border color when focused
+        '&$focused $notchedOutline': {
+          borderWidth: '1px',
+          borderColor: `${grey[400]}`,
+        },
+        // Specify notched color
         '& $notchedOutline': {
-          borderColor: grey[300],
+          borderColor: `${grey[300]}`,
         },
+        // Make lighter border color when disabled
         '&$disabled $notchedOutline': {
-          borderColor: grey[200],
-        },
-        '&$focused': {
-          '&:hover $notchedOutline': {
-            borderColor: grey[300],
-          },
+          borderColor: `${grey[200]}`,
         },
         backgroundColor: '#fcfcfc',
       },
@@ -109,14 +112,6 @@ const themeObject: ThemeOptions = {
         padding: '14px',
       },
       error: {
-        '&$focused': {
-          '&:hover $notchedOutline': {
-            borderColor: '#ffb968',
-          },
-        },
-        '&:hover $notchedOutline': {
-          borderColor: '#ffb968',
-        },
         backgroundColor: '#fff1e1',
       },
     },
