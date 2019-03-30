@@ -6,12 +6,18 @@ import iovLogo from '../../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../../paths';
 import NewAccountForm, { NewAccountProps } from './NewAccountForm';
 import ShowPhraseForm from './ShowPhraseForm';
+import { ShowPhraseProps } from './ShowPhraseForm';
 
-interface Props extends NewAccountProps {
+interface Props extends NewAccountProps, ShowPhraseProps {
   readonly step: string;
 }
 
-const Layout = ({ onSignup, step }: Props): JSX.Element => {
+const Layout = ({
+  onSignup,
+  step,
+  userData,
+  onHintPhrase,
+}: Props): JSX.Element => {
   return (
     <Block
       id={`${SIGNUP_ROUTE}_first`}
@@ -26,10 +32,9 @@ const Layout = ({ onSignup, step }: Props): JSX.Element => {
         {' Account'}
       </Typography>
       <Block padding={2} marginTop={3} marginBottom={1}>
-        {step === 'first' ? (
-          <NewAccountForm onSignup={onSignup} />
-        ) : (
-          <ShowPhraseForm />
+        {step === 'first' && <NewAccountForm onSignup={onSignup} />}
+        {step === 'second' && (
+          <ShowPhraseForm onHintPhrase={onHintPhrase} userData={userData} />
         )}
       </Block>
       <Block textAlign="center" marginBottom={1}>
