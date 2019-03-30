@@ -4,6 +4,12 @@ import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
+import { UserData } from './index';
+
+const userData: UserData = {
+  accountName: 'accountName',
+  password: 'password',
+};
 
 storiesOf('Routes/Signup', module)
   .add('New account page', () => (
@@ -13,6 +19,6 @@ storiesOf('Routes/Signup', module)
   ))
   .add('Recovery Phrase page', () => (
     <Storybook>
-      <ShowPhraseForm />
+      <ShowPhraseForm userData={userData} onHintPhrase={action('hint step')} />
     </Storybook>
   ));
