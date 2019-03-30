@@ -43,7 +43,7 @@ const ShowPhraseForm = ({ userData }: ShowPhraseProps): JSX.Element => {
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
-            <Typography variant="subtitle1" inline>
+            <Typography variant="subtitle2" inline>
               Activate Recovery Phrase?
             </Typography>
           </Block>
