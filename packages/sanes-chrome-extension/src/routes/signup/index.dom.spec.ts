@@ -3,12 +3,13 @@ import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
 import { aNewStore } from '../../store';
 import { mayTestChains } from '../../utils/testhelper';
-import { travelToSignup } from './testUtils/travelSignup';
+import { travelToSignup, submitAccountForm } from './testUtils/signupUtils';
+import Signup from './index';
 
 describe('DOM > Feature > Signup', () => {
   let store: Store<RootState>;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     store = aNewStore();
   });
 
@@ -16,12 +17,15 @@ describe('DOM > Feature > Signup', () => {
     `should redirect to show mnemonic step`,
     async () => {
       const signupDOM = await travelToSignup(store);
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
+      await submitAccountForm(signupDOM);
+
+      //Check for opened toast message
+      const signupComponent = TestUtils.findRenderedComponentWithType(
         signupDOM,
-        'input'
+        Signup
       );
 
-      expect(buttons.length).toBe(3);
+      expect(signupComponent.state.step).toBe('second');
     },
     55000
   );

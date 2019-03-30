@@ -13,19 +13,36 @@ export interface UserData {
   readonly password: string;
 }
 
-const Signup = (): JSX.Element => {
-  const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
-  const [userData, setUserData] = React.useState<UserData | null>(null);
+type stepType = 'first' | 'second' | 'third';
 
-  const onShowPhrase = (): void => setStep('second');
-  const onHintPhrase = (): void => setStep('third');
+interface State {
+  readonly step: stepType;
+  readonly userData: UserData | null;
+}
 
-  const onSignup = async (formValues: FormValues): Promise<void> => {
+class Signup extends React.Component<{}, State> {
+  public readonly state = {
+    step: 'first' as stepType,
+    userData: null,
+  };
+
+  public onShowPhrase = (): void =>
+    this.setState({
+      step: 'second',
+    });
+  public onHintPhrase = (): void =>
+    this.setState({
+      step: 'third',
+    });
+
+  public onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];
     const password = formValues[PASSWORD_FIELD];
-    setUserData({
-      accountName,
-      password,
+    this.setState({
+      userData: {
+        accountName,
+        password,
+      },
     });
 
     try {
@@ -41,21 +58,25 @@ const Signup = (): JSX.Element => {
         } chains`
       );
       // TODO export to redux necessary info
-      onShowPhrase();
+      this.onShowPhrase();
     } catch (err) {
       console.log('Error raised when creating persona');
       console.log(err);
     }
   };
 
-  return (
-    <Layout
-      userData={userData}
-      onSignup={onSignup}
-      onHintPhrase={onHintPhrase}
-      step={step}
-    />
-  );
-};
+  public render(): JSX.Element {
+    const { step, userData } = this.state;
+
+    return (
+      <Layout
+        userData={userData}
+        onSignup={this.onSignup}
+        onHintPhrase={this.onHintPhrase}
+        step={step}
+      />
+    );
+  }
+}
 
 export default Signup;

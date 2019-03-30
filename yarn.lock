@@ -2552,7 +2552,7 @@
 
 "@types/random-js@^1.0.31":
   version "1.0.31"
-  resolved "https://registry.yarnpkg.com/@types/random-js/-/random-js-1.0.31.tgz#18a8bcc075afa504421e638fcbe021f27e802941"
+  resolved "https://registry.npmjs.org/@types/random-js/-/random-js-1.0.31.tgz#18a8bcc075afa504421e638fcbe021f27e802941"
   integrity sha512-EAM56DrKw3VhcE4HV0/YlVKeJI07We4Mz1ra6TNtZpaMoiBVMA2bkLEcoFpYOyxoDXfVZWojxkR617LTqtRI0A==
 
 "@types/react-addons-linked-state-mixin@*":
@@ -12322,6 +12322,11 @@ random-js@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/random-js/-/random-js-1.0.8.tgz#968fd689a6f25d6c0aac766283de2f688c9c190a"
   integrity sha1-lo/WiabyXWwKrHZig94vaIycGQo=
+
+random-js@^2.0.0-rc5:
+  version "2.0.0-rc5"
+  resolved "https://registry.npmjs.org/random-js/-/random-js-2.0.0-rc5.tgz#b031d3603e4fc791c92e6ac94f184a103ea71b1c"
+  integrity sha512-8043wzgT+PhZNEs+94v3gJALWIjvOpeaufKy02PbsQJWvhmc+vk5UfJHpbo5FdIGBU9sNL0x/moDbRabfaUofg==
 
 randomatic@^3.0.0:
   version "3.1.1"
