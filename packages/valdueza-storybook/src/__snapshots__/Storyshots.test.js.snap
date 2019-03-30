@@ -1111,9 +1111,9 @@ Array [
         className="MuiBox-root-svhlhv MuiBox-root-28"
       >
         <h6
-          className="MuiTypography-root-1sxknfi MuiTypography-subtitle1-16yzjqn Hook-inline-42z04s"
+          className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
         >
-          Activate Backup Phrase?
+          Activate Recovery Phrase?
         </h6>
       </div>
       <div
@@ -1181,7 +1181,7 @@ Array [
     <p
       className="MuiTypography-root-1sxknfi MuiTypography-body1-1gdw1oo Hook-inline-42z04s"
     >
-      organ wheat manage mirror wish truly tool trumpet since equip flight bracket
+      
     </p>
   </div>,
   <div
