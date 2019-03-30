@@ -8,13 +8,25 @@ import {
 import Persona from '../../logic/persona';
 import { getPersona } from '../../logic';
 
+export interface UserData {
+  readonly accountName: string;
+  readonly password: string;
+}
+
 const Signup = (): JSX.Element => {
-  const [step, setStep] = React.useState<'first' | 'second'>('first');
+  const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
+  const [userData, setUserData] = React.useState<UserData | null>(null);
+
   const onShowPhrase = () => setStep('second');
+  const onHintPhrase = () => setStep('third');
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];
     const password = formValues[PASSWORD_FIELD];
+    setUserData({
+      accountName,
+      password,
+    });
 
     try {
       const persona: Persona = await getPersona(password, accountName);
@@ -36,7 +48,14 @@ const Signup = (): JSX.Element => {
     }
   };
 
-  return <Layout onSignup={onSignup} step={step} />;
+  return (
+    <Layout
+      userData={userData}
+      onSignup={onSignup}
+      onHintPhrase={onHintPhrase}
+      step={step}
+    />
+  );
 };
 
 export default Signup;
