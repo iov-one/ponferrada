@@ -9,5 +9,13 @@ storiesOf('Components', module).add('Tooltip', () => (
     <Block>
       <Tooltip>Some tooltip text</Tooltip>
     </Block>
+    <br />
+    <br />
+    <br />
+    <br />
+    <Block>
+      Loooooooooooooooooooooooooooooooooong text
+      <Tooltip>Tooltip for long text</Tooltip>
+    </Block>
   </Storybook>
 ));

@@ -90,14 +90,13 @@ interface Props {
   readonly maxWidth?: number;
 }
 
-//let tooltipRef = React.createRef<HTMLDivElement>();
-
 const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
   const [open, setOpen] = React.useState<boolean>(false);
   const toggle = (): void => setOpen(open => !open);
 
+  const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
+
   const tooltipRef = React.useRef(null);
-  const arrowRef = React.useRef(null);
   const classes = useStyles();
 
   const popperStyle = {
@@ -105,13 +104,19 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
     maxWidth,
   };
 
+  const arrowRefCb = React.useCallback((node: HTMLSpanElement | null) => {
+    if (node !== null) {
+      setArrowRef(node);
+    }
+  }, []);
+
   const popperModifiers = {
     flip: {
       enabled: true,
     },
     arrow: {
       enabled: true,
-      element: arrowRef.current,
+      element: arrowRef,
     },
   };
 
@@ -134,7 +139,7 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
         placement="bottom-end"
         modifiers={popperModifiers}
       >
-        <span className={classes.arrow} ref={arrowRef} />
+        <span className={classes.arrow} ref={arrowRefCb} />
         <Paper className={classes.paper}>{children}</Paper>
       </Popper>
     </React.Fragment>
