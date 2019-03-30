@@ -19,6 +19,6 @@ export type RootState = StateType<ReturnType<typeof createRootReducer>>;
 /**
  * This method can only be used in test enviromnets
  */
-export const resetHistory = () => {
+export const resetHistory = (): void => {
   history = createBrowserHistory();
 };

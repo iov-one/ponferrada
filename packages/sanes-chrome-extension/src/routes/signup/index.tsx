@@ -17,8 +17,8 @@ const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
   const [userData, setUserData] = React.useState<UserData | null>(null);
 
-  const onShowPhrase = () => setStep('second');
-  const onHintPhrase = () => setStep('third');
+  const onShowPhrase = (): void => setStep('second');
+  const onHintPhrase = (): void => setStep('third');
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];

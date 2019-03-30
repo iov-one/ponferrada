@@ -29,8 +29,9 @@ const ShowPhraseForm = ({ userData }: ShowPhraseProps): JSX.Element => {
   const onShowMnemonic = async (
     _: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
-  ) => {
+  ): Promise<void> => {
     if (checked) {
+      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       setMnemonic(await getMnemonic(userData!.password));
       return;
     }
