@@ -38,7 +38,7 @@ const SecurityHintForm = ({
     onSaveHint(formValues);
   };
 
-  const { form, handleSubmit, pristine, submitting, invalid } = useForm({
+  const { form, handleSubmit, submitting, invalid } = useForm({
     onSubmit,
     validate,
   });
