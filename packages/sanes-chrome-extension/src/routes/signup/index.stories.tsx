@@ -14,11 +14,18 @@ const userData: UserData = {
 storiesOf('Routes/Signup', module)
   .add('New account page', () => (
     <Storybook>
-      <NewAccountForm onSignup={action('next step')} />
+      <NewAccountForm
+        onBackButton={action('back in history')}
+        onSignup={action('next step')}
+      />
     </Storybook>
   ))
   .add('Recovery Phrase page', () => (
     <Storybook>
-      <ShowPhraseForm userData={userData} onHintPhrase={action('hint step')} />
+      <ShowPhraseForm
+        onBackButton={action('back in history')}
+        userData={userData}
+        onHintPhrase={action('hint step')}
+      />
     </Storybook>
   ));

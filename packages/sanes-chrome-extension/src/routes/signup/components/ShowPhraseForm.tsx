@@ -4,8 +4,11 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import Switch from 'medulas-react-components/lib/components/Switch';
 import Tooltip from 'medulas-react-components/lib/components/Tooltip';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { SIGNUP_ROUTE } from '../../paths';
 import { getUserProfile } from '../../../logic/user';
 import { UserData } from '../index';
+import { BackProps } from './NewAccountForm';
 
 const getMnemonic = async (password: string): Promise<string> => {
   try {
@@ -23,7 +26,11 @@ export interface ShowPhraseProps {
   readonly onHintPhrase: () => void;
 }
 
-const ShowPhraseForm = ({ userData }: ShowPhraseProps): JSX.Element => {
+const ShowPhraseForm = ({
+  userData,
+  onBackButton,
+  onHintPhrase,
+}: ShowPhraseProps & BackProps): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
 
   const onShowMnemonic = async (
@@ -40,7 +47,7 @@ const ShowPhraseForm = ({ userData }: ShowPhraseProps): JSX.Element => {
   };
 
   return (
-    <React.Fragment>
+    <PageLayout id={SIGNUP_ROUTE} primaryTitle="New" title="Account">
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
@@ -75,15 +82,17 @@ const ShowPhraseForm = ({ userData }: ShowPhraseProps): JSX.Element => {
       </Block>
       <Block display="flex" justifyContent="space-between">
         <Block width={120}>
-          <Button fullWidth color="secondary">
+          <Button fullWidth color="secondary" onClick={onBackButton}>
             Back
           </Button>
         </Block>
         <Block width={120}>
-          <Button fullWidth>Continue</Button>
+          <Button fullWidth onClick={onHintPhrase}>
+            Continue
+          </Button>
         </Block>
       </Block>
-    </React.Fragment>
+    </PageLayout>
   );
 };
 

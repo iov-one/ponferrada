@@ -24,20 +24,22 @@ export const submitAccountForm = async (
 
   TestUtils.act(() => {
     TestUtils.Simulate.change(accountNameField, {
-      target: { value: randomString(10) },
-    } as any);
+      target: {
+        value: randomString(10),
+      },
+    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
   });
 
   TestUtils.act(() => {
     TestUtils.Simulate.change(passwordField, {
       target: { value: password },
-    } as any);
+    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
   });
 
   TestUtils.act(() => {
     TestUtils.Simulate.change(passwordConfirmField, {
       target: { value: password },
-    } as any);
+    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
   });
 
   const form = TestUtils.findRenderedDOMComponentWithTag(
@@ -49,7 +51,7 @@ export const submitAccountForm = async (
     TestUtils.Simulate.submit(form);
   });
 
-  await sleep(1000);
+  await sleep(1500);
 };
 
 export const travelToSignup = async (

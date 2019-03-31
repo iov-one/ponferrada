@@ -7,6 +7,8 @@ import Form, {
   ValidationError,
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { SIGNUP_ROUTE } from '../../paths';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
@@ -46,8 +48,14 @@ const validate = (values: object): object => {
 export interface NewAccountProps {
   readonly onSignup: (values: FormValues) => void;
 }
+export interface BackProps {
+  readonly onBackButton: () => void;
+}
 
-const NewAccount = ({ onSignup }: NewAccountProps): JSX.Element => {
+const NewAccount = ({
+  onSignup,
+  onBackButton,
+}: NewAccountProps & BackProps): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     onSignup(formValues);
@@ -59,56 +67,58 @@ const NewAccount = ({ onSignup }: NewAccountProps): JSX.Element => {
   });
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          label="Account name"
-          placeholder="Account name"
-          form={form}
-          required
-          fullWidth
-          name={ACCOUNT_NAME_FIELD}
-        />
-      </Block>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          label="Password"
-          placeholder="Password"
-          type="password"
-          form={form}
-          required
-          fullWidth
-          name={PASSWORD_FIELD}
-        />
-      </Block>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          label="Confirm Password"
-          placeholder="Confirm Password"
-          type="password"
-          form={form}
-          required
-          fullWidth
-          name={PASSWORD_CONFIRM_FIELD}
-        />
-      </Block>
-      <Block display="flex" justifyContent="space-between">
-        <Block width={120}>
-          <Button fullWidth color="secondary">
-            Back
-          </Button>
-        </Block>
-        <Block width={120}>
-          <Button
+    <PageLayout id={SIGNUP_ROUTE} primaryTitle="New" title="Account">
+      <Form onSubmit={handleSubmit}>
+        <Block marginBottom={1}>
+          <TextFieldForm
+            label="Account name"
+            placeholder="Account name"
+            form={form}
+            required
             fullWidth
-            type="submit"
-            disabled={invalid || pristine || submitting}
-          >
-            Continue
-          </Button>
+            name={ACCOUNT_NAME_FIELD}
+          />
         </Block>
-      </Block>
-    </Form>
+        <Block marginBottom={1}>
+          <TextFieldForm
+            label="Password"
+            placeholder="Password"
+            type="password"
+            form={form}
+            required
+            fullWidth
+            name={PASSWORD_FIELD}
+          />
+        </Block>
+        <Block marginBottom={1}>
+          <TextFieldForm
+            label="Confirm Password"
+            placeholder="Confirm Password"
+            type="password"
+            form={form}
+            required
+            fullWidth
+            name={PASSWORD_CONFIRM_FIELD}
+          />
+        </Block>
+        <Block display="flex" justifyContent="space-between">
+          <Block width={120}>
+            <Button fullWidth color="secondary" onClick={onBackButton}>
+              Back
+            </Button>
+          </Block>
+          <Block width={120}>
+            <Button
+              fullWidth
+              type="submit"
+              disabled={invalid || pristine || submitting}
+            >
+              Continue
+            </Button>
+          </Block>
+        </Block>
+      </Form>
+    </PageLayout>
   );
 };
 

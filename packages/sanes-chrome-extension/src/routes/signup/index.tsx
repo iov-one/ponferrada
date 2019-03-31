@@ -34,6 +34,10 @@ class Signup extends React.Component<{}, State> {
     this.setState({
       step: 'third',
     });
+  public onNewAccount = (): void =>
+    this.setState({
+      step: 'first',
+    });
 
   public onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];
@@ -70,6 +74,7 @@ class Signup extends React.Component<{}, State> {
 
     return (
       <Layout
+        onNewAccount={this.onNewAccount}
         userData={userData}
         onSignup={this.onSignup}
         onHintPhrase={this.onHintPhrase}

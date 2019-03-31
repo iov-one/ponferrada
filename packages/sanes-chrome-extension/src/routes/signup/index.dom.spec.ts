@@ -14,18 +14,23 @@ describe('DOM > Feature > Signup', () => {
   });
 
   mayTestChains(
-    `should redirect to show mnemonic step`,
+    `should redirect to show mnemonic step and check buttons`,
     async () => {
       const signupDOM = await travelToSignup(store);
       await submitAccountForm(signupDOM);
 
-      //Check for opened toast message
+      //Check for current step
       const signupComponent = TestUtils.findRenderedComponentWithType(
         signupDOM,
         Signup
       );
-
       expect(signupComponent.state.step).toBe('second');
+
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
+        signupDOM,
+        'button'
+      );
+      expect(buttons.length).toBe(2);
     },
     55000
   );

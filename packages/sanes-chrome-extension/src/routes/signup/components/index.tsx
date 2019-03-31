@@ -1,46 +1,39 @@
 import * as React from 'react';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import Block from 'medulas-react-components/lib/components/Block';
-import Image from 'medulas-react-components/lib/components/Image';
-import iovLogo from '../../../assets/iov-logo.png';
-import { SIGNUP_ROUTE } from '../../paths';
 import NewAccountForm, { NewAccountProps } from './NewAccountForm';
 import ShowPhraseForm from './ShowPhraseForm';
 import { ShowPhraseProps } from './ShowPhraseForm';
+import { history } from '../../../store/reducers/';
 
 interface Props extends NewAccountProps, ShowPhraseProps {
   readonly step: string;
+  readonly onHintPhrase: () => void;
+  readonly onNewAccount: () => void;
 }
+
+const backToHistory = (): void => {
+  history.goBack();
+};
 
 const Layout = ({
   onSignup,
   step,
   userData,
   onHintPhrase,
+  onNewAccount,
 }: Props): JSX.Element => {
   return (
-    <Block
-      id={`${SIGNUP_ROUTE}_first`}
-      paddingRight={2}
-      paddingLeft={2}
-      paddingTop={2}
-    >
-      <Typography color="primary" variant="h4" inline>
-        New
-      </Typography>
-      <Typography variant="h4" inline>
-        {' Account'}
-      </Typography>
-      <Block padding={2} marginTop={3} marginBottom={1}>
-        {step === 'first' && <NewAccountForm onSignup={onSignup} />}
-        {step === 'second' && (
-          <ShowPhraseForm onHintPhrase={onHintPhrase} userData={userData} />
-        )}
-      </Block>
-      <Block textAlign="center" marginBottom={1}>
-        <Image src={iovLogo} alt="IOV logo" />
-      </Block>
-    </Block>
+    <React.Fragment>
+      {step === 'first' && (
+        <NewAccountForm onBackButton={backToHistory} onSignup={onSignup} />
+      )}
+      {step === 'second' && (
+        <ShowPhraseForm
+          onBackButton={onNewAccount}
+          onHintPhrase={onHintPhrase}
+          userData={userData}
+        />
+      )}
+    </React.Fragment>
   );
 };
 
