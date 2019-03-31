@@ -4,6 +4,7 @@ import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
+import SecurityHintForm from './components/SecurityHintForm';
 import { UserData } from './index';
 
 const userData: UserData = {
@@ -26,6 +27,14 @@ storiesOf('Routes/Signup', module)
         onBack={action('back in history')}
         userData={userData}
         onHintPassword={action('hint step')}
+      />
+    </Storybook>
+  ))
+  .add('Security hint page', () => (
+    <Storybook>
+      <SecurityHintForm
+        onBackButton={action('back in history')}
+        onSaveHint={action('save hint')}
       />
     </Storybook>
   ));
