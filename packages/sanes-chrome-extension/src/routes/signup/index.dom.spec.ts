@@ -44,6 +44,7 @@ describe('DOM > Feature > Signup', () => {
         'button'
       );
       expect(hintBtns.length).toBe(2);
+      expect(signupComponent.state.step).toBe('third');
     },
     55000
   );
