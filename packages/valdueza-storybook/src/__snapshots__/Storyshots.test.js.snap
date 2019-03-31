@@ -1306,6 +1306,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
         <button
           className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
           disabled={false}
+          id="continue-to-hint-button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1344,9 +1345,164 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Welcome Welcome page 1`] = `
+exports[`Storyshots Routes/Signup Security hint page 1`] = `
 <div
   className="MuiBox-root-svhlhv MuiBox-root-42"
+  id="/signup"
+>
+  <h4
+    className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
+  >
+    New
+  </h4>
+  <h4
+    className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d Hook-inline-42z04s"
+  >
+     
+    Account
+  </h4>
+  <div
+    className="MuiBox-root-svhlhv MuiBox-root-43"
+  >
+    <h6
+      className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
+    >
+      To help you remember your details in the future please provide a security hint:
+    </h6>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root-svhlhv MuiBox-root-44"
+      >
+        <div
+          className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiFormControl-fullWidth-179vbl1 MuiTextField-root-mb0tze"
+        >
+          <div
+            className="MuiInputBase-root-91sko6 MuiOutlinedInput-root-9m06ak MuiInputBase-fullWidth-179vbl1 MuiInputBase-formControl-1c83dgn"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiPrivateNotchedOutline-root-nlmqld MuiOutlinedInput-notchedOutline-myv9y8"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiPrivateNotchedOutline-legend-soq3fn"
+                style={
+                  Object {
+                    "width": 0.01,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input-1dda7s5 MuiOutlinedInput-input-1lq6gfk"
+              disabled={false}
+              name="securityHintField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Security hint"
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root-svhlhv MuiBox-root-45"
+      >
+        <div
+          className="MuiBox-root-svhlhv MuiBox-root-46"
+        >
+          <button
+            className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq MuiButton-fullWidth-179vbl1"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-10pi21n"
+            >
+              Back
+            </span>
+            <span
+              className="MuiTouchRipple-root-zm8jaa"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiBox-root-svhlhv MuiBox-root-47"
+        >
+          <button
+            className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="submit"
+          >
+            <span
+              className="MuiButton-label-10pi21n"
+            >
+              Create
+            </span>
+            <span
+              className="MuiTouchRipple-root-zm8jaa"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div
+    className="MuiBox-root-svhlhv MuiBox-root-48"
+  >
+    <img
+      alt="IOV logo"
+      className="Hook-root-z8j3qi"
+      src="iov-logo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Welcome Welcome page 1`] = `
+<div
+  className="MuiBox-root-svhlhv MuiBox-root-49"
   id="/welcome"
 >
   <h4
@@ -1360,7 +1516,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-43"
+    className="MuiBox-root-svhlhv MuiBox-root-50"
   >
     <p
       className="MuiTypography-root-1sxknfi MuiTypography-body1-1gdw1oo Hook-inline-42z04s"
@@ -1368,7 +1524,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-44"
+      className="MuiBox-root-svhlhv MuiBox-root-51"
     />
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1396,7 +1552,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-45"
+      className="MuiBox-root-svhlhv MuiBox-root-52"
     />
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1425,7 +1581,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-46"
+      className="MuiBox-root-svhlhv MuiBox-root-53"
     />
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1454,7 +1610,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-47"
+    className="MuiBox-root-svhlhv MuiBox-root-54"
   >
     <img
       alt="IOV logo"
