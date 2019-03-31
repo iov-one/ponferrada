@@ -617,7 +617,7 @@ exports[`Storyshots Components Layout 1`] = `
   <h4
     className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d Hook-inline-42z04s"
   >
-     
+
     storybook
   </h4>
   <div
@@ -873,7 +873,7 @@ Array [
   <h6
     className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
@@ -896,7 +896,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
   <h4
     className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d Hook-inline-42z04s"
   >
-     
+
     Account
   </h4>
   <div
@@ -1178,7 +1178,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
   <h4
     className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d Hook-inline-42z04s"
   >
-     
+
     Account
   </h4>
   <div
@@ -1264,7 +1264,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root-1sxknfi MuiTypography-body1-1gdw1oo Hook-inline-42z04s"
       >
-        
+
       </p>
     </div>
     <div
