@@ -27,6 +27,8 @@ const Signup = (): JSX.Element => {
   const onShowPhrase = (): void => setStep('second');
   const onHintPassword = (): void => setStep('third');
 
+  const onSaveHint = (_: FormValues): void => {};
+
   const onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];
     const password = formValues[PASSWORD_FIELD];
