@@ -2,10 +2,10 @@
 
 exports[`Storyshots Components /Button Button in desktop screen 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-6"
+  className="MuiBox-root-svhlhv MuiBox-root-7"
 >
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-7"
+    className="MuiBox-root-svhlhv MuiBox-root-8"
   >
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq"
@@ -35,7 +35,7 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-8"
+    className="MuiBox-root-svhlhv MuiBox-root-9"
   >
     <button
       className="MuiButtonBase-root-131ecbq MuiButtonBase-disabled-1v65d5t MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-disabled-1v65d5t"
@@ -62,7 +62,7 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-9"
+    className="MuiBox-root-svhlhv MuiBox-root-10"
   >
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq"
@@ -92,7 +92,37 @@ exports[`Storyshots Components /Button Button in desktop screen 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-10"
+    className="MuiBox-root-svhlhv MuiBox-root-11"
+  >
+    <button
+      className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-text-c3bwcw MuiButton-textPrimary-1rm8cpj"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-10pi21n"
+      >
+        Back
+      </span>
+      <span
+        className="MuiTouchRipple-root-zm8jaa"
+      />
+    </button>
+  </div>
+  <div
+    className="MuiBox-root-svhlhv MuiBox-root-12"
   >
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -226,6 +256,36 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
       className="MuiBox-root-svhlhv MuiBox-root-5"
     >
       <button
+        className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-text-c3bwcw MuiButton-textPrimary-1rm8cpj"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-10pi21n"
+        >
+          Back
+        </span>
+        <span
+          className="MuiTouchRipple-root-zm8jaa"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiBox-root-svhlhv MuiBox-root-6"
+    >
+      <button
         className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
         disabled={false}
         onBlur={[Function]}
@@ -258,10 +318,10 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
 
 exports[`Storyshots Components /TextFieldForm Examples 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-18"
+  className="MuiBox-root-svhlhv MuiBox-root-20"
 >
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-19"
+    className="MuiBox-root-svhlhv MuiBox-root-21"
   >
     <form
       onSubmit={[Function]}
@@ -327,7 +387,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-20"
+    className="MuiBox-root-svhlhv MuiBox-root-22"
   >
     <form
       onSubmit={[Function]}
@@ -388,7 +448,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-21"
+    className="MuiBox-root-svhlhv MuiBox-root-23"
   >
     <form
       onSubmit={[Function]}
@@ -449,7 +509,7 @@ exports[`Storyshots Components /TextFieldForm Examples 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-22"
+    className="MuiBox-root-svhlhv MuiBox-root-24"
   >
     <form
       onSubmit={[Function]}
@@ -607,7 +667,7 @@ exports[`Storyshots Components Images 1`] = `
 
 exports[`Storyshots Components Layout 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-11"
+  className="MuiBox-root-svhlhv MuiBox-root-13"
 >
   <h4
     className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
@@ -621,7 +681,7 @@ exports[`Storyshots Components Layout 1`] = `
     storybook
   </h4>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-12"
+    className="MuiBox-root-svhlhv MuiBox-root-14"
   >
     <h6
       className="MuiTypography-root-1sxknfi MuiTypography-h6-d7gx89"
@@ -630,7 +690,7 @@ exports[`Storyshots Components Layout 1`] = `
     </h6>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-13"
+    className="MuiBox-root-svhlhv MuiBox-root-15"
   >
     <img
       alt="IOV logo"
@@ -644,7 +704,7 @@ exports[`Storyshots Components Layout 1`] = `
 exports[`Storyshots Components Switch 1`] = `
 Array [
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-14"
+    className="MuiBox-root-svhlhv MuiBox-root-16"
   >
     <label
       className="MuiFormControlLabel-root-gncncm"
@@ -695,7 +755,7 @@ Array [
     </label>
   </div>,
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-15"
+    className="MuiBox-root-svhlhv MuiBox-root-17"
   >
     <label
       className="MuiFormControlLabel-root-gncncm"
@@ -749,7 +809,7 @@ Array [
 exports[`Storyshots Components Tooltip 1`] = `
 Array [
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-16"
+    className="MuiBox-root-svhlhv MuiBox-root-18"
   >
     <div
       className="Hook-container-576ype"
@@ -765,7 +825,7 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-17"
+    className="MuiBox-root-svhlhv MuiBox-root-19"
   >
     <p
       className="MuiTypography-root-1sxknfi MuiTypography-body2-d30tto Hook-inline-42z04s"
@@ -885,7 +945,7 @@ Array [
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-23"
+  className="MuiBox-root-svhlhv MuiBox-root-25"
   id="/signup1"
 >
   <h4
@@ -900,13 +960,13 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     Account
   </h4>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-24"
+    className="MuiBox-root-svhlhv MuiBox-root-26"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-25"
+        className="MuiBox-root-svhlhv MuiBox-root-27"
       >
         <div
           className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiFormControl-fullWidth-179vbl1 MuiTextField-root-mb0tze"
@@ -968,7 +1028,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-26"
+        className="MuiBox-root-svhlhv MuiBox-root-28"
       >
         <div
           className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiFormControl-fullWidth-179vbl1 MuiTextField-root-mb0tze"
@@ -1030,7 +1090,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-27"
+        className="MuiBox-root-svhlhv MuiBox-root-29"
       >
         <div
           className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiFormControl-fullWidth-179vbl1 MuiTextField-root-mb0tze"
@@ -1092,13 +1152,13 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-28"
+        className="MuiBox-root-svhlhv MuiBox-root-30"
       >
         <div
-          className="MuiBox-root-svhlhv MuiBox-root-29"
+          className="MuiBox-root-svhlhv MuiBox-root-31"
         >
           <button
-            className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq MuiButton-fullWidth-179vbl1"
+            className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-text-c3bwcw MuiButton-textPrimary-1rm8cpj MuiButton-fullWidth-179vbl1"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1125,7 +1185,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
           </button>
         </div>
         <div
-          className="MuiBox-root-svhlhv MuiBox-root-30"
+          className="MuiBox-root-svhlhv MuiBox-root-32"
         >
           <button
             className="MuiButtonBase-root-131ecbq MuiButtonBase-disabled-1v65d5t MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-disabled-1v65d5t MuiButton-fullWidth-179vbl1"
@@ -1154,7 +1214,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-31"
+    className="MuiBox-root-svhlhv MuiBox-root-33"
   >
     <img
       alt="IOV logo"
@@ -1167,7 +1227,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 
 exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-32"
+  className="MuiBox-root-svhlhv MuiBox-root-34"
   id="/signup2"
 >
   <h4
@@ -1182,16 +1242,16 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
     Account
   </h4>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-33"
+    className="MuiBox-root-svhlhv MuiBox-root-35"
   >
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-34"
+      className="MuiBox-root-svhlhv MuiBox-root-36"
     >
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-35"
+        className="MuiBox-root-svhlhv MuiBox-root-37"
       >
         <div
-          className="MuiBox-root-svhlhv MuiBox-root-36"
+          className="MuiBox-root-svhlhv MuiBox-root-38"
         >
           <h6
             className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
@@ -1259,7 +1319,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
       </label>
     </div>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-37"
+      className="MuiBox-root-svhlhv MuiBox-root-39"
     >
       <p
         className="MuiTypography-root-1sxknfi MuiTypography-body1-1gdw1oo Hook-inline-42z04s"
@@ -1268,13 +1328,13 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
       </p>
     </div>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-38"
+      className="MuiBox-root-svhlhv MuiBox-root-40"
     >
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-39"
+        className="MuiBox-root-svhlhv MuiBox-root-41"
       >
         <button
-          className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq MuiButton-fullWidth-179vbl1"
+          className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-text-c3bwcw MuiButton-textPrimary-1rm8cpj MuiButton-fullWidth-179vbl1"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1301,7 +1361,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
         </button>
       </div>
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-40"
+        className="MuiBox-root-svhlhv MuiBox-root-42"
       >
         <button
           className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1334,7 +1394,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-41"
+    className="MuiBox-root-svhlhv MuiBox-root-43"
   >
     <img
       alt="IOV logo"
@@ -1347,7 +1407,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 
 exports[`Storyshots Routes/Signup Security hint page 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-42"
+  className="MuiBox-root-svhlhv MuiBox-root-44"
   id="/signup3"
 >
   <h4
@@ -1362,7 +1422,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     Account
   </h4>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-43"
+    className="MuiBox-root-svhlhv MuiBox-root-45"
   >
     <h6
       className="MuiTypography-root-1sxknfi MuiTypography-subtitle2-1ldifqj Hook-inline-42z04s"
@@ -1373,7 +1433,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-44"
+        className="MuiBox-root-svhlhv MuiBox-root-46"
       >
         <div
           className="MuiFormControl-root-1lb2h3b MuiFormControl-marginNormal-16ii0gj MuiFormControl-fullWidth-179vbl1 MuiTextField-root-mb0tze"
@@ -1424,13 +1484,13 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-svhlhv MuiBox-root-45"
+        className="MuiBox-root-svhlhv MuiBox-root-47"
       >
         <div
-          className="MuiBox-root-svhlhv MuiBox-root-46"
+          className="MuiBox-root-svhlhv MuiBox-root-48"
         >
           <button
-            className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq MuiButton-fullWidth-179vbl1"
+            className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-text-c3bwcw MuiButton-textPrimary-1rm8cpj MuiButton-fullWidth-179vbl1"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1457,7 +1517,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
           </button>
         </div>
         <div
-          className="MuiBox-root-svhlhv MuiBox-root-47"
+          className="MuiBox-root-svhlhv MuiBox-root-49"
         >
           <button
             className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1489,7 +1549,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-48"
+    className="MuiBox-root-svhlhv MuiBox-root-50"
   >
     <img
       alt="IOV logo"
@@ -1502,7 +1562,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-svhlhv MuiBox-root-49"
+  className="MuiBox-root-svhlhv MuiBox-root-51"
   id="/welcome"
 >
   <h4
@@ -1516,7 +1576,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
      to your IOV manager
   </h4>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-50"
+    className="MuiBox-root-svhlhv MuiBox-root-52"
   >
     <p
       className="MuiTypography-root-1sxknfi MuiTypography-body1-1gdw1oo Hook-inline-42z04s"
@@ -1524,7 +1584,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-51"
+      className="MuiBox-root-svhlhv MuiBox-root-53"
     />
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1552,7 +1612,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-52"
+      className="MuiBox-root-svhlhv MuiBox-root-54"
     />
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1581,7 +1641,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       />
     </button>
     <div
-      className="MuiBox-root-svhlhv MuiBox-root-53"
+      className="MuiBox-root-svhlhv MuiBox-root-55"
     />
     <button
       className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
@@ -1610,7 +1670,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root-svhlhv MuiBox-root-54"
+    className="MuiBox-root-svhlhv MuiBox-root-56"
   >
     <img
       alt="IOV logo"
