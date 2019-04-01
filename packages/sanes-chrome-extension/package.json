@@ -7,6 +7,7 @@
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "start": "cp ./config/development.json ./public/assets/config/conf.json && oza-react-scripts start",
+    "start:firefox": "web-ext run --source-dir ./build/",
     "test-dom": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
     "test-e2e": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
     "test-unit": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test --env=jsdom ",
