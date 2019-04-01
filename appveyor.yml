@@ -19,3 +19,6 @@ install:
 build_script:
   - yarn build
   - yarn --cwd packages/sanes-chrome-extension deploy
+
+artifacts:
+  - path: 'packages/sanes-chrome-extension/dist/*.zip'
