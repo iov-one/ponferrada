@@ -20,5 +20,8 @@ build_script:
   - yarn build
   - yarn --cwd packages/sanes-chrome-extension export
 
+# Override default test step
+test: off
+
 artifacts:
   - path: 'packages/sanes-chrome-extension/exports/*.zip'
