@@ -18,4 +18,4 @@ install:
 
 build_script:
   - yarn build
-  - (cd packages/sanes-chrome-extension && yarn deploy)
+  - yarn --cwd packages/sanes-chrome-extension deploy
