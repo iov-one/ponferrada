@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from 'medulas-react-components/lib/components/Button';
 import Block from 'medulas-react-components/lib/components/Block';
+import Back from 'medulas-react-components/lib/components/Button/Back';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Form, {
   useForm,
@@ -54,7 +55,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
         security hint:
       </Typography>
       <Form onSubmit={handleSubmit}>
-        <Block marginTop={1} marginBottom={1}>
+        <Block marginTop={1} marginBottom={4}>
           <TextFieldForm
             placeholder="Security hint"
             form={form}
@@ -64,9 +65,9 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
         </Block>
         <Block display="flex" justifyContent="space-between">
           <Block width={120}>
-            <Button fullWidth color="secondary" onClick={onBack}>
+            <Back fullWidth onClick={onBack}>
               Back
-            </Button>
+            </Back>
           </Block>
           <Block width={120}>
             <Button fullWidth type="submit" disabled={invalid || submitting}>

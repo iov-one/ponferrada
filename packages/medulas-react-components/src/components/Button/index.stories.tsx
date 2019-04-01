@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Button from './index';
+import Back from './Back';
 import { Storybook } from '../../utils/storybook';
 import Grid from '../Grid';
 import GridItem from '../GridItem';
@@ -23,6 +24,9 @@ storiesOf('Components /Button', module)
             <Button onClick={action('clicked')} color="secondary">
               Cancel
             </Button>
+          </GridItem>
+          <GridItem marginBottom={4}>
+            <Back onClick={action('clicked')}>Back</Back>
           </GridItem>
           <GridItem marginBottom={4}>
             <Button onClick={action('clicked')} fullWidth>
@@ -48,6 +52,9 @@ storiesOf('Components /Button', module)
           <Button onClick={action('clicked')} color="secondary">
             Cancel
           </Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Back onClick={action('clicked')}>Back</Back>
         </GridItem>
         <GridItem marginBottom={4}>
           <Button onClick={action('clicked')} fullWidth>

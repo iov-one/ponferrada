@@ -2,6 +2,7 @@ import * as React from 'react';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
+import Back from 'medulas-react-components/lib/components/Button/Back';
 import Switch from 'medulas-react-components/lib/components/Switch';
 import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
@@ -75,7 +76,7 @@ const ShowPhraseForm = ({
       <Block
         padding={2}
         marginTop={1}
-        marginBottom={6}
+        marginBottom={4}
         minHeight={24}
         border={1}
         borderColor="grey.300"
@@ -88,9 +89,9 @@ const ShowPhraseForm = ({
       </Block>
       <Block display="flex" justifyContent="space-between">
         <Block width={120}>
-          <Button fullWidth color="secondary" onClick={onBack}>
+          <Back fullWidth onClick={onBack}>
             Back
-          </Button>
+          </Back>
         </Block>
         <Block width={120}>
           <Button
