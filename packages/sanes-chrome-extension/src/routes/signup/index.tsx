@@ -9,6 +9,8 @@ import {
 import Persona from '../../logic/persona';
 import { getPersona } from '../../logic';
 import { history } from '../../store/reducers';
+import { storeHintPhrase } from '../../utils/localstorage/hint';
+import { SECURITY_HINT } from './components/SecurityHintForm';
 
 export interface UserData {
   readonly accountName: string;
@@ -27,7 +29,14 @@ const Signup = (): JSX.Element => {
   const onShowPhrase = (): void => setStep('second');
   const onHintPassword = (): void => setStep('third');
 
-  const onSaveHint = (_: FormValues): void => {};
+  const onSaveHint = (_: FormValues): void => {
+    if (this.state.userData === null) {
+      return;
+    }
+    const { username } = this.state.userData!; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+    const hintPhrase = formValues[SECURITY_HINT];
+    storeHintPhrase(username, hintPhrase);
+  };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];
