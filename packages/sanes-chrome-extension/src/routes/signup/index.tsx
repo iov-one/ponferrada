@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Layout from './components';
+import NewAccountForm from './components/NewAccountForm';
+import ShowPhraseForm from './components/ShowPhraseForm';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import {
   ACCOUNT_NAME_FIELD,
@@ -7,46 +8,31 @@ import {
 } from './components/NewAccountForm';
 import Persona from '../../logic/persona';
 import { getPersona } from '../../logic';
+import { history } from '../../store/reducers';
 
 export interface UserData {
   readonly accountName: string;
   readonly password: string;
 }
 
-type stepType = 'first' | 'second' | 'third';
+const onBack = (): void => {
+  history.goBack();
+};
 
-interface State {
-  readonly step: stepType;
-  readonly userData: UserData | null;
-}
+const Signup = (): JSX.Element => {
+  const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
+  const [userData, setUserData] = React.useState<UserData | null>(null);
 
-class Signup extends React.Component<{}, State> {
-  public readonly state = {
-    step: 'first' as stepType,
-    userData: null,
-  };
+  const onNewAccount = (): void => setStep('first');
+  const onShowPhrase = (): void => setStep('second');
+  const onHintPassword = (): void => setStep('third');
 
-  public onShowPhrase = (): void =>
-    this.setState({
-      step: 'second',
-    });
-  public onHintPhrase = (): void =>
-    this.setState({
-      step: 'third',
-    });
-  public onNewAccount = (): void =>
-    this.setState({
-      step: 'first',
-    });
-
-  public onSignup = async (formValues: FormValues): Promise<void> => {
+  const onSignup = async (formValues: FormValues): Promise<void> => {
     const accountName = formValues[ACCOUNT_NAME_FIELD];
     const password = formValues[PASSWORD_FIELD];
-    this.setState({
-      userData: {
-        accountName,
-        password,
-      },
+    setUserData({
+      accountName,
+      password,
     });
 
     try {
@@ -61,27 +47,28 @@ class Signup extends React.Component<{}, State> {
           account.blockchainAddresses.size
         } chains`
       );
-      // TODO export to redux necessary info
-      this.onShowPhrase();
+
+      onShowPhrase();
     } catch (err) {
       console.log('Error raised when creating persona');
       console.log(err);
     }
   };
 
-  public render(): JSX.Element {
-    const { step, userData } = this.state;
-
-    return (
-      <Layout
-        onNewAccount={this.onNewAccount}
-        userData={userData}
-        onSignup={this.onSignup}
-        onHintPhrase={this.onHintPhrase}
-        step={step}
-      />
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      {step === 'first' && (
+        <NewAccountForm onBack={onBack} onSignup={onSignup} />
+      )}
+      {step === 'second' && (
+        <ShowPhraseForm
+          onBack={onNewAccount}
+          onHintPassword={onHintPassword}
+          userData={userData}
+        />
+      )}
+    </React.Fragment>
+  );
+};
 
 export default Signup;
