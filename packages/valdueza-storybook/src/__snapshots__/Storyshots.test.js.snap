@@ -886,7 +886,7 @@ Array [
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
   className="MuiBox-root-svhlhv MuiBox-root-23"
-  id="/signup"
+  id="/signup1"
 >
   <h4
     className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
@@ -1101,7 +1101,6 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq MuiButton-fullWidth-179vbl1"
             disabled={false}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -1168,7 +1167,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 <div
   className="MuiBox-root-svhlhv MuiBox-root-32"
-  id="/signup"
+  id="/signup2"
 >
   <h4
     className="MuiTypography-root-1sxknfi MuiTypography-h4-nwn03d MuiTypography-colorPrimary-qfkzyz Hook-inline-42z04s"
@@ -1277,7 +1276,6 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
           className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedSecondary-9s0mbq MuiButton-fullWidth-179vbl1"
           disabled={false}
           onBlur={[Function]}
-          onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
@@ -1307,7 +1305,6 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
           className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
           disabled={false}
           onBlur={[Function]}
-          onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
