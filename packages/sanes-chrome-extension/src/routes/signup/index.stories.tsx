@@ -15,7 +15,7 @@ storiesOf('Routes/Signup', module)
   .add('New account page', () => (
     <Storybook>
       <NewAccountForm
-        onBackButton={action('back in history')}
+        onBack={action('back in history')}
         onSignup={action('next step')}
       />
     </Storybook>
@@ -23,9 +23,9 @@ storiesOf('Routes/Signup', module)
   .add('Recovery Phrase page', () => (
     <Storybook>
       <ShowPhraseForm
-        onBackButton={action('back in history')}
+        onBack={action('back in history')}
         userData={userData}
-        onHintPhrase={action('hint step')}
+        onHintPassword={action('hint step')}
       />
     </Storybook>
   ));
