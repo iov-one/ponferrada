@@ -9,6 +9,7 @@
     "start": "cp ./config/development.json ./public/assets/config/conf.json && oza-react-scripts start",
     "test-dom": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
     "test-e2e": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
+    "test-unit": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test --env=jsdom ",
     "test": "yarn test-dom && yarn test-e2e",
     "watch": "cp ./config/test.json ./public/assets/config/conf.json && cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
   },
