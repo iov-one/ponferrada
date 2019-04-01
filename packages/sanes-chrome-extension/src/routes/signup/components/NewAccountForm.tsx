@@ -7,10 +7,14 @@ import Form, {
   ValidationError,
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { SIGNUP_ROUTE } from '../../paths';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
 const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
+
+export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -43,11 +47,12 @@ const validate = (values: object): object => {
   return errors;
 };
 
-export interface Props {
+interface Props {
   readonly onSignup: (values: FormValues) => void;
+  readonly onBack: () => void;
 }
 
-const NewAccount = ({ onSignup }: Props): JSX.Element => {
+const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     onSignup(formValues);
@@ -59,45 +64,58 @@ const NewAccount = ({ onSignup }: Props): JSX.Element => {
   });
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          label="Account name"
-          placeholder="Account name"
-          form={form}
-          required
-          fullWidth
-          name={ACCOUNT_NAME_FIELD}
-        />
-      </Block>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          label="Password"
-          placeholder="Password"
-          type="password"
-          form={form}
-          required
-          fullWidth
-          name={PASSWORD_FIELD}
-        />
-      </Block>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          label="Confirm Password"
-          placeholder="Confirm Password"
-          type="password"
-          form={form}
-          required
-          fullWidth
-          name={PASSWORD_CONFIRM_FIELD}
-        />
-      </Block>
-      <Block display="flex" justifyContent="flex-end">
-        <Button type="submit" disabled={invalid || pristine || submitting}>
-          Continue
-        </Button>
-      </Block>
-    </Form>
+    <PageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
+      <Form onSubmit={handleSubmit}>
+        <Block marginBottom={1}>
+          <TextFieldForm
+            label="Account name"
+            placeholder="Account name"
+            form={form}
+            required
+            fullWidth
+            name={ACCOUNT_NAME_FIELD}
+          />
+        </Block>
+        <Block marginBottom={1}>
+          <TextFieldForm
+            label="Password"
+            placeholder="Password"
+            type="password"
+            form={form}
+            required
+            fullWidth
+            name={PASSWORD_FIELD}
+          />
+        </Block>
+        <Block marginBottom={1}>
+          <TextFieldForm
+            label="Confirm Password"
+            placeholder="Confirm Password"
+            type="password"
+            form={form}
+            required
+            fullWidth
+            name={PASSWORD_CONFIRM_FIELD}
+          />
+        </Block>
+        <Block display="flex" justifyContent="space-between">
+          <Block width={120}>
+            <Button fullWidth color="secondary" onClick={onBack}>
+              Back
+            </Button>
+          </Block>
+          <Block width={120}>
+            <Button
+              fullWidth
+              type="submit"
+              disabled={invalid || pristine || submitting}
+            >
+              Continue
+            </Button>
+          </Block>
+        </Block>
+      </Form>
+    </PageLayout>
   );
 };
 
