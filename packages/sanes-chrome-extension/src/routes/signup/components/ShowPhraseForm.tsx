@@ -8,7 +8,8 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
 import { getUserProfile } from '../../../logic/user';
 import { UserData } from '../index';
-import { BackProps } from './NewAccountForm';
+
+export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
 const getMnemonic = async (password: string): Promise<string> => {
   try {
@@ -21,16 +22,17 @@ const getMnemonic = async (password: string): Promise<string> => {
   }
 };
 
-export interface ShowPhraseProps {
+export interface Props {
   readonly userData: UserData | null;
-  readonly onHintPhrase: () => void;
+  readonly onHintPassword: () => void;
+  readonly onBack: () => void;
 }
 
 const ShowPhraseForm = ({
   userData,
-  onBackButton,
-  onHintPhrase,
-}: ShowPhraseProps & BackProps): JSX.Element => {
+  onBack,
+  onHintPassword,
+}: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
 
   const onShowMnemonic = async (
@@ -47,7 +49,11 @@ const ShowPhraseForm = ({
   };
 
   return (
-    <PageLayout id={SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout
+      id={SECOND_STEP_SIGNUP_ROUTE}
+      primaryTitle="New"
+      title="Account"
+    >
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
@@ -82,12 +88,12 @@ const ShowPhraseForm = ({
       </Block>
       <Block display="flex" justifyContent="space-between">
         <Block width={120}>
-          <Button fullWidth color="secondary" onClick={onBackButton}>
+          <Button fullWidth color="secondary" onClick={onBack}>
             Back
           </Button>
         </Block>
         <Block width={120}>
-          <Button fullWidth onClick={onHintPhrase}>
+          <Button fullWidth onClick={onHintPassword}>
             Continue
           </Button>
         </Block>

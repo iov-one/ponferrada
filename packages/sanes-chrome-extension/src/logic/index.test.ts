@@ -1,6 +1,6 @@
 import { getPersona } from './index';
 import Persona from './persona';
-import { mayTestChains } from '../utils/testhelper';
+import { mayTestChains } from '../utils/test/testExecutor';
 
 describe('logic', () => {
   mayTestChains('should get a Persona', async () => {

@@ -14,6 +14,8 @@ export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
 const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
 
+export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
+
 const validate = (values: object): object => {
   const formValues = values as FormValues;
   let errors: ValidationError = {};
@@ -45,17 +47,12 @@ const validate = (values: object): object => {
   return errors;
 };
 
-export interface NewAccountProps {
+interface Props {
   readonly onSignup: (values: FormValues) => void;
-}
-export interface BackProps {
-  readonly onBackButton: () => void;
+  readonly onBack: () => void;
 }
 
-const NewAccount = ({
-  onSignup,
-  onBackButton,
-}: NewAccountProps & BackProps): JSX.Element => {
+const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     onSignup(formValues);
@@ -67,7 +64,7 @@ const NewAccount = ({
   });
 
   return (
-    <PageLayout id={SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={1}>
           <TextFieldForm
@@ -103,7 +100,7 @@ const NewAccount = ({
         </Block>
         <Block display="flex" justifyContent="space-between">
           <Block width={120}>
-            <Button fullWidth color="secondary" onClick={onBackButton}>
+            <Button fullWidth color="secondary" onClick={onBack}>
               Back
             </Button>
           </Block>
