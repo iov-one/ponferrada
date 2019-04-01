@@ -1,6 +1,7 @@
 import TestUtils from 'react-dom/test-utils';
-import { sleep } from '../../../utils/timer';
 import { randomString } from '../../../utils/test/random';
+import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
+import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
 
 export const submitAccountForm = async (
   AccountSubmitDom: React.Component
@@ -46,5 +47,8 @@ export const submitAccountForm = async (
     TestUtils.Simulate.submit(form);
   });
 
-  await sleep(6000);
+  return findRenderedDOMComponentWithId(
+    AccountSubmitDom,
+    SECOND_STEP_SIGNUP_ROUTE
+  );
 };
