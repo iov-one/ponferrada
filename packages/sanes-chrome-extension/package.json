@@ -9,7 +9,6 @@
     "build": "yarn use-config-production && oza-react-scripts build",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
-    "start": "yarn use-config-development && oza-react-scripts start",
     "start:firefox": "web-ext run --source-dir ./build/",
     "test-dom": "yarn use-config-test && CI=true oza-react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
     "test-e2e": "yarn use-config-test && CI=true oza-react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
