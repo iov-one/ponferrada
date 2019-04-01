@@ -13,6 +13,7 @@ import { SIGNUP_ROUTE } from '../../paths';
 import { UserData } from '../index';
 
 export const SECURITY_HINT = 'securityHintField';
+export const SECURITY_HINT_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}3`;
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -43,7 +44,11 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout
+      id={SECURITY_HINT_STEP_SIGNUP_ROUTE}
+      primaryTitle="New"
+      title="Account"
+    >
       <Typography variant="subtitle2" inline>
         To help you remember your details in the future please provide a
         security hint:

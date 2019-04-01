@@ -93,7 +93,11 @@ const ShowPhraseForm = ({
           </Button>
         </Block>
         <Block width={120}>
-          <Button fullWidth onClick={onHintPassword}>
+          <Button
+            id="continue-to-hint-button"
+            fullWidth
+            onClick={onHintPassword}
+          >
             Continue
           </Button>
         </Block>

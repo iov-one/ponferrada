@@ -33,7 +33,8 @@ storiesOf('Routes/Signup', module)
   .add('Security hint page', () => (
     <Storybook>
       <SecurityHintForm
-        onBackButton={action('back in history')}
+        onBack={action('back in history')}
+        userData={userData}
         onSaveHint={action('save hint')}
       />
     </Storybook>

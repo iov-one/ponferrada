@@ -2,12 +2,7 @@ import TestUtils from 'react-dom/test-utils';
 import { randomString } from '../../../utils/test/random';
 import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
-import { Store } from 'redux';
-import { SIGNUP_ROUTE } from '../../paths';
-import { createDom } from '../../../utils/test/dom';
-import { history } from '../../../store/reducers';
-import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import { sleep } from '../../../utils/timer';
+import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
 
 export const submitAccountForm = async (
   AccountSubmitDom: React.Component
@@ -53,17 +48,16 @@ export const submitAccountForm = async (
     TestUtils.Simulate.submit(form);
   });
 
-  return findRenderedDOMComponentWithId(
+  await findRenderedDOMComponentWithId(
     AccountSubmitDom,
     SECOND_STEP_SIGNUP_ROUTE
   );
-  await sleep(1500);
 };
 
 export const continueToSecurityHintForm = async (
   RecoveryPhraseDom: React.Component
 ): Promise<void> => {
-  const nextButton = findRenderedDOMComponentWithId(
+  const nextButton = await findRenderedDOMComponentWithId(
     RecoveryPhraseDom,
     'continue-to-hint-button'
   );
@@ -72,17 +66,8 @@ export const continueToSecurityHintForm = async (
     TestUtils.Simulate.click(nextButton);
   });
 
-  await sleep(1500);
-};
-
-export const travelToSignup = async (
-  store: Store
-): Promise<React.Component> => {
-  const dom = createDom(store);
-  TestUtils.act(() => {
-    history.push(SIGNUP_ROUTE);
-  });
-  await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);
-
-  return dom;
+  await findRenderedDOMComponentWithId(
+    RecoveryPhraseDom,
+    SECURITY_HINT_STEP_SIGNUP_ROUTE
+  );
 };
