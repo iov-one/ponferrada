@@ -10,7 +10,7 @@ import Form, {
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
-import { BackProps } from './NewAccountForm';
+import { UserData } from '../index';
 
 export const SECURITY_HINT = 'securityHintField';
 
@@ -25,14 +25,13 @@ const validate = (values: object): object => {
   return errors;
 };
 
-export interface SecurityHintProps {
+interface Props {
   readonly onSaveHint: (values: FormValues) => void;
+  readonly userData: UserData | null;
+  readonly onBack: () => void;
 }
 
-const SecurityHintForm = ({
-  onSaveHint,
-  onBackButton,
-}: SecurityHintProps & BackProps): JSX.Element => {
+const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     onSaveHint(formValues);
@@ -60,7 +59,7 @@ const SecurityHintForm = ({
         </Block>
         <Block display="flex" justifyContent="space-between">
           <Block width={120}>
-            <Button fullWidth color="secondary" onClick={onBackButton}>
+            <Button fullWidth color="secondary" onClick={onBack}>
               Back
             </Button>
           </Block>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
+import SecurityHintForm from './components/SecurityHintForm';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import {
   ACCOUNT_NAME_FIELD,
@@ -29,13 +30,13 @@ const Signup = (): JSX.Element => {
   const onShowPhrase = (): void => setStep('second');
   const onHintPassword = (): void => setStep('third');
 
-  const onSaveHint = (_: FormValues): void => {
-    if (this.state.userData === null) {
+  const onSaveHint = (formValues: FormValues): void => {
+    if (userData === null) {
       return;
     }
-    const { username } = this.state.userData!; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+    const { accountName } = userData!; //eslint-disable-line @typescript-eslint/no-non-null-assertion
     const hintPhrase = formValues[SECURITY_HINT];
-    storeHintPhrase(username, hintPhrase);
+    storeHintPhrase(accountName, hintPhrase);
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
@@ -75,6 +76,13 @@ const Signup = (): JSX.Element => {
         <ShowPhraseForm
           onBack={onNewAccount}
           onHintPassword={onHintPassword}
+          userData={userData}
+        />
+      )}
+      {step === 'third' && (
+        <SecurityHintForm
+          onBack={onShowPhrase}
+          onSaveHint={onSaveHint}
           userData={userData}
         />
       )}
