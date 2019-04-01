@@ -46,5 +46,5 @@ export const submitAccountForm = async (
     TestUtils.Simulate.submit(form);
   });
 
-  await sleep(1500);
+  await sleep(6000);
 };
