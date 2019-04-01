@@ -728,14 +728,19 @@ Array [
       />
     </div>
   </div>,
-  <br />,
-  <br />,
-  <br />,
-  <br />,
   <div
     className="MuiBox-root-svhlhv MuiBox-root-14"
   >
-    Loooooooooooooooooooooooooooooooooong text
+    <p
+      className="MuiTypography-root-1sxknfi MuiTypography-body2-d30tto Hook-inline-42z04s"
+      style={
+        Object {
+          "marginRight": "4px",
+        }
+      }
+    >
+      Loooooooooooooooooooooooooooooooooong text
+    </p>
     <div
       className="Hook-container-576ype"
       onClick={[Function]}
