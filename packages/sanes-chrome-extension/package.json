@@ -7,7 +7,7 @@
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
     "use-config-production": "cp ./config/production.json ./public/assets/config/conf.json",
     "build": "oza-react-scripts build",
-    "deploy": "yarn use-config-production && yarn build && web-ext build --source-dir ./build/ --artifacts-dir ./dist --overwrite-dest",
+    "export": "yarn use-config-production && yarn build && web-ext build --source-dir ./build/ --artifacts-dir ./exports --overwrite-dest",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
     "start:firefox:test": "yarn use-config-test && yarn build && web-ext run --source-dir ./build/",
