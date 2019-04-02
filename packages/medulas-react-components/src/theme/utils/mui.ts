@@ -58,14 +58,15 @@ const theme = createMuiTheme({
       fontSize: '1.6rem',
     },
     body2: {
+      fontSize: '1.4rem',
       lineHeight: '1.6rem',
     },
     subtitle1: {
-      fontSize: '1.4rem',
+      fontSize: '1.6rem',
     },
     subtitle2: {
-      fontSize: '1.2rem',
-      lineHeight: '1.2rem',
+      fontSize: '1.4rem',
+      lineHeight: '1.4rem',
     },
   },
 });
