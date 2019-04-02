@@ -5,12 +5,6 @@ import React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
 import SecurityHintForm from './components/SecurityHintForm';
-import { UserData } from './index';
-
-const userData: UserData = {
-  accountName: 'accountName',
-  password: 'password',
-};
 
 storiesOf('Routes/Signup', module)
   .add('New account page', () => (
@@ -25,7 +19,6 @@ storiesOf('Routes/Signup', module)
     <Storybook>
       <ShowPhraseForm
         onBack={action('back in history')}
-        userData={userData}
         onHintPassword={action('hint step')}
       />
     </Storybook>
@@ -34,7 +27,6 @@ storiesOf('Routes/Signup', module)
     <Storybook>
       <SecurityHintForm
         onBack={action('back in history')}
-        userData={userData}
         onSaveHint={action('save hint')}
       />
     </Storybook>
