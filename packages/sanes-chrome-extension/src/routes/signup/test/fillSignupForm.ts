@@ -125,7 +125,7 @@ export const handleSecurityHint = async (
     TestUtils.Simulate.submit(form);
   });
 
-  await sleep(4000);
+  await sleep(400);
   const hint = getHintPhrase(accountName);
   expect(hint).not.toBe(null);
   expect(hint).toBe('Dummy Hint');

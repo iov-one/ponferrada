@@ -26,6 +26,8 @@ describe('DOM > Feature > Signup', () => {
       await submitAccountForm(signupDOM, accountName);
       await handlePassPhrase(signupDOM);
       await handleSecurityHint(signupDOM, accountName);
+
+      // TODO travel to correct view after signing up
     },
     55000
   );
