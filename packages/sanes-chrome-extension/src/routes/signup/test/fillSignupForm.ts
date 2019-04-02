@@ -1,11 +1,17 @@
 import TestUtils from 'react-dom/test-utils';
 import { randomString } from '../../../utils/test/random';
-import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
+import {
+  SECOND_STEP_SIGNUP_ROUTE,
+  getMnemonic,
+} from '../components/ShowPhraseForm';
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
 import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
+import { sleep } from '../../../utils/timer';
+import { getHintPhrase } from '../../../utils/localstorage/hint';
 
 export const submitAccountForm = async (
-  AccountSubmitDom: React.Component
+  AccountSubmitDom: React.Component,
+  accountName: string
 ): Promise<void> => {
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
     AccountSubmitDom,
@@ -22,7 +28,7 @@ export const submitAccountForm = async (
   TestUtils.act(() => {
     TestUtils.Simulate.change(accountNameField, {
       target: {
-        value: randomString(10),
+        value: accountName,
       },
     } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
   });
@@ -54,14 +60,36 @@ export const submitAccountForm = async (
   );
 };
 
-export const continueToSecurityHintForm = async (
+export const handlePassPhrase = async (
   RecoveryPhraseDom: React.Component
 ): Promise<void> => {
-  const nextButton = await findRenderedDOMComponentWithId(
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
     RecoveryPhraseDom,
-    'continue-to-hint-button'
+    'input'
   );
+  expect(inputs.length).toBe(1);
+  TestUtils.act(() => {
+    TestUtils.Simulate.change(inputs[0], {
+      target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
+    });
+  });
 
+  await sleep(600);
+
+  const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(
+    RecoveryPhraseDom,
+    'p'
+  );
+  expect(inputs.length).toBe(1);
+  const phraseParagraph = paragraphs[0].innerHTML;
+  expect(phraseParagraph).toBe(await getMnemonic());
+
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
+    RecoveryPhraseDom,
+    'button'
+  );
+  expect(buttons.length).toBe(2);
+  const nextButton = buttons[1];
   TestUtils.act(() => {
     TestUtils.Simulate.click(nextButton);
   });
@@ -70,4 +98,35 @@ export const continueToSecurityHintForm = async (
     RecoveryPhraseDom,
     SECURITY_HINT_STEP_SIGNUP_ROUTE
   );
+};
+
+export const handleSecurityHint = async (
+  SecurityHintDom: React.Component,
+  accountName: string
+): Promise<void> => {
+  // Introduce my hint
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
+    SecurityHintDom,
+    'input'
+  );
+  expect(inputs.length).toBe(1);
+  TestUtils.act(() => {
+    TestUtils.Simulate.change(inputs[0], {
+      target: { value: 'Dummy Hint' },
+    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
+  });
+
+  const form = TestUtils.findRenderedDOMComponentWithTag(
+    SecurityHintDom,
+    'form'
+  );
+
+  TestUtils.act(() => {
+    TestUtils.Simulate.submit(form);
+  });
+
+  await sleep(4000);
+  const hint = getHintPhrase(accountName);
+  expect(hint).not.toBe(null);
+  expect(hint).toBe('Dummy Hint');
 };
