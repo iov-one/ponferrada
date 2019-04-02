@@ -778,7 +778,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root-124 MuiTypography-h4-132 makeStyles-inline-123"
     >
-       
+
       storybook
     </h4>
   </div>
@@ -1341,7 +1341,7 @@ Array [
   <h6
     className="MuiTypography-root-280 MuiTypography-subtitle2-292 MuiTypography-colorPrimary-303 makeStyles-inline-279"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root-280 MuiTypography-subtitle2-292 makeStyles-inline-279"
@@ -1351,100 +1351,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Routes/Account Show account status 1`] = `
-<div
-  className="MuiBox-root-621 MuiBox-root-622"
-  id="/signup_first"
->
-  <h4
-    className="MuiTypography-root-624 MuiTypography-h4-632 MuiTypography-colorPrimary-647 makeStyles-inline-623"
-  >
-    New
-  </h4>
-  <h4
-    className="MuiTypography-root-624 MuiTypography-h4-632 makeStyles-inline-623"
-  >
-     Account
-  </h4>
-  <div
-    className="MuiBox-root-621 MuiBox-root-654"
-  />
-  <form
-    onSubmit={[Function]}
-  >
-    <div
-      className="makeStyles-dropdown-655"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiInputBase-root-659 makeStyles-root-656 makeStyles-root-658"
-        onClick={[Function]}
-        role="button"
-      >
-        <input
-          autoComplete="off"
-          className="MuiInputBase-input-669 makeStyles-input-657"
-          name="SELECT_FIELD_ATTR"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
-      </div>
-      <img
-        alt="Phone Menu"
-        className="makeStyles-root-675 makeStyles-noShrink-676"
-        height="5"
-        src="selectChevron.svg"
-        width="8"
-      />
-    </div>
-  </form>
-  <div
-    className="MuiBox-root-621 MuiBox-root-680"
-  />
-  <div
-    className="MuiBox-root-621 MuiBox-root-681"
-  >
-    <div
-      className="MuiBox-root-621 MuiBox-root-682"
-    >
-      This is the block where we show accounts and bns name
-    </div>
-    <div
-      className="MuiBox-root-621 MuiBox-root-683"
-    >
-      This is the block where we show balances
-    </div>
-    <div
-      className="MuiBox-root-621 MuiBox-root-684"
-    >
-      This is the block where we show QR Code
-    </div>
-    <div
-      className="MuiBox-root-621 MuiBox-root-685"
-    >
-      This is the block where we show links
-    </div>
-  </div>
-  <div
-    className="MuiBox-root-621 MuiBox-root-686"
-  />
-  <div
-    className="MuiBox-root-621 MuiBox-root-687"
-  >
-    <img
-      alt="IOV logo"
-      className="makeStyles-root-675"
-      src="iov-logo.png"
-    />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Routes/Signup New account page 1`] = `
+exports[`Storyshots Routes/Login Login page 1`] = `
 <div
   className="MuiBox-root-688 MuiBox-root-689"
   id="/signup1"
@@ -1460,7 +1367,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     <h4
       className="MuiTypography-root-692 MuiTypography-h4-700 makeStyles-inline-691"
     >
-       
+
       Account
     </h4>
   </div>
@@ -1751,7 +1658,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root-825 MuiTypography-h4-833 makeStyles-inline-824"
     >
-       
+
       Account
     </h4>
   </div>
@@ -1835,7 +1742,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root-825 MuiTypography-body1-827 makeStyles-inline-824"
       >
-        
+
       </p>
     </div>
     <div
@@ -1930,7 +1837,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     <h4
       className="MuiTypography-root-936 MuiTypography-h4-944 makeStyles-inline-935"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2088,7 +1995,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     <h4
       className="MuiTypography-root-1048 MuiTypography-h4-1056 makeStyles-inline-1047"
     >
-       
+
       to your IOV manager
     </h4>
   </div>

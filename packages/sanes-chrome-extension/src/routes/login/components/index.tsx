@@ -10,7 +10,7 @@ import Form, {
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Link from 'medulas-react-components/lib/components/Link';
-import { LOGIN_ROUTE, WELCOME_ROUTE } from '../../paths';
+import { LOGIN_ROUTE } from '../../paths';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
