@@ -11,7 +11,8 @@ import { getUserProfile } from '../../../logic/user';
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
-const getMnemonic = async (): Promise<string> => {
+// Exported only for being used in test environments
+export const getMnemonic = async (): Promise<string> => {
   try {
     const profile = await getUserProfile();
     return profile.printableSecret(profile.wallets.value[0].id);
@@ -87,11 +88,7 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
           </Back>
         </Block>
         <Block width={120}>
-          <Button
-            id="continue-to-hint-button"
-            fullWidth
-            onClick={onHintPassword}
-          >
+          <Button fullWidth onClick={onHintPassword}>
             Continue
           </Button>
         </Block>
