@@ -11,9 +11,9 @@ import { getUserProfile } from '../../../logic/user';
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
-const getMnemonic = async (password: string): Promise<string> => {
+const getMnemonic = async (): Promise<string> => {
   try {
-    const profile = await getUserProfile(password);
+    const profile = await getUserProfile();
     return profile.printableSecret(profile.wallets.value[0].id);
   } catch (err) {
     console.log('Error getting user profile');
@@ -23,28 +23,19 @@ const getMnemonic = async (password: string): Promise<string> => {
 };
 
 export interface Props {
-  readonly password: string | null;
   readonly onHintPassword: () => void;
   readonly onBack: () => void;
 }
 
-const ShowPhraseForm = ({
-  password,
-  onBack,
-  onHintPassword,
-}: Props): JSX.Element => {
+const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
 
   const onShowMnemonic = async (
     _: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ): Promise<void> => {
-    if (password === null) {
-      throw new Error('For showing mnemonic we need a valid password');
-    }
-
     if (checked) {
-      setMnemonic(await getMnemonic(password));
+      setMnemonic(await getMnemonic());
       return;
     }
 

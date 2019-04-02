@@ -1,6 +1,6 @@
 import { MultiChainSigner } from '@iov/core';
 import { UserProfile } from '@iov/keycontrol';
-import { getUserProfile } from './user';
+import { createUserProfile } from './user';
 import { getConfig, ChainSpec } from '../utils/config';
 import { singleton } from '../utils/singleton';
 import Persona from './persona';
@@ -44,7 +44,7 @@ const buildPersona = async (
   password: string,
   accountName: string
 ): Promise<Persona> => {
-  const userProfile: UserProfile = await getUserProfile(password);
+  const userProfile: UserProfile = await createUserProfile(password);
   const signer: MultiChainSigner = new MultiChainSigner(userProfile);
 
   // load chains info from config file

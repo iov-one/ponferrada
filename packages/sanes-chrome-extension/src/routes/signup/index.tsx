@@ -20,7 +20,6 @@ const onBack = (): void => {
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
   const accountName = React.useRef<string | null>(null);
-  const password = React.useRef<string | null>(null);
 
   const onNewAccount = (): void => setStep('first');
   const onShowPhrase = (): void => setStep('second');
@@ -38,14 +37,11 @@ const Signup = (): JSX.Element => {
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
-    password.current = formValues[PASSWORD_FIELD];
+    const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const persona: Persona = await getPersona(
-        password.current,
-        accountName.current
-      );
+      const persona: Persona = await getPersona(password, accountName.current);
       const account = persona.accounts.get(accountName.current);
       if (!account) {
         throw new Error('Signup create persona failed');
@@ -70,11 +66,7 @@ const Signup = (): JSX.Element => {
         <NewAccountForm onBack={onBack} onSignup={onSignup} />
       )}
       {step === 'second' && (
-        <ShowPhraseForm
-          onBack={onNewAccount}
-          onHintPassword={onHintPassword}
-          password={password.current}
-        />
+        <ShowPhraseForm onBack={onNewAccount} onHintPassword={onHintPassword} />
       )}
       {step === 'third' && (
         <SecurityHintForm onBack={onShowPhrase} onSaveHint={onSaveHint} />
