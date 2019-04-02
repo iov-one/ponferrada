@@ -39,13 +39,12 @@ const PageLayout = ({
       <Block marginTop={3} marginBottom={1}>
         {children}
       </Block>
+      <Block flexGrow={1} />
       <Block
-        display="flex"
-        flexDirection="column"
-        flexGrow={1}
-        alignItems="center"
-        justifyContent="flex-end"
         marginBottom={2}
+        marginTop={2}
+        justifyContent="flex-end"
+        textAlign="center"
       >
         <Image src={iovLogo} alt="IOV logo" width={84} height={39} />
       </Block>
