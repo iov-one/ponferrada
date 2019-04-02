@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
+import SecurityHintForm from './components/SecurityHintForm';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import {
   ACCOUNT_NAME_FIELD,
@@ -9,11 +10,8 @@ import {
 import Persona from '../../logic/persona';
 import { getPersona } from '../../logic';
 import { history } from '../../store/reducers';
-
-export interface UserData {
-  readonly accountName: string;
-  readonly password: string;
-}
+import { storeHintPhrase } from '../../utils/localstorage/hint';
+import { SECURITY_HINT } from './components/SecurityHintForm';
 
 const onBack = (): void => {
   history.goBack();
@@ -21,23 +19,30 @@ const onBack = (): void => {
 
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
-  const [userData, setUserData] = React.useState<UserData | null>(null);
+  const accountName = React.useRef<string | null>(null);
 
   const onNewAccount = (): void => setStep('first');
   const onShowPhrase = (): void => setStep('second');
   const onHintPassword = (): void => setStep('third');
 
+  const onSaveHint = (formValues: FormValues): void => {
+    const hintPhrase = formValues[SECURITY_HINT];
+    if (!accountName.current) {
+      throw new Error(
+        'For saving password hint a valid account name should be provided'
+      );
+    }
+
+    storeHintPhrase(accountName.current, hintPhrase);
+  };
+
   const onSignup = async (formValues: FormValues): Promise<void> => {
-    const accountName = formValues[ACCOUNT_NAME_FIELD];
     const password = formValues[PASSWORD_FIELD];
-    setUserData({
-      accountName,
-      password,
-    });
+    accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const persona: Persona = await getPersona(password, accountName);
-      const account = persona.accounts.get(accountName);
+      const persona: Persona = await getPersona(password, accountName.current);
+      const account = persona.accounts.get(accountName.current);
       if (!account) {
         throw new Error('Signup create persona failed');
       }
@@ -61,11 +66,10 @@ const Signup = (): JSX.Element => {
         <NewAccountForm onBack={onBack} onSignup={onSignup} />
       )}
       {step === 'second' && (
-        <ShowPhraseForm
-          onBack={onNewAccount}
-          onHintPassword={onHintPassword}
-          userData={userData}
-        />
+        <ShowPhraseForm onBack={onNewAccount} onHintPassword={onHintPassword} />
+      )}
+      {step === 'third' && (
+        <SecurityHintForm onBack={onShowPhrase} onSaveHint={onSaveHint} />
       )}
     </React.Fragment>
   );

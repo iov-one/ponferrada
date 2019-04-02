@@ -6,13 +6,13 @@ const INTERVAL = 500;
 export const findRenderedDOMComponentWithId = (
   tree: React.Component<any>, // eslint-disable-line
   id: string
-): Promise<void> =>
+): Promise<React.ReactInstance> =>
   new Promise((resolve, reject) => {
     let times = 0;
     const interval = setInterval(() => {
       if (times >= MAX_TIMES_EXECUTED) {
         clearInterval(interval);
-        reject();
+        reject(`Unable to find element with id: ${id}.`);
       }
 
       const elementsWithId = TestUtils.findAllInRenderedTree(
@@ -24,7 +24,7 @@ export const findRenderedDOMComponentWithId = (
 
       if (elementsWithId.length === 1) {
         clearInterval(interval);
-        resolve();
+        resolve(elementsWithId[0]);
       }
 
       times += 1;

@@ -1,10 +1,14 @@
-import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
 import { aNewStore } from '../../store';
 import { mayTestChains } from '../../utils/test/testExecutor';
+import {
+  submitAccountForm,
+  handlePassPhrase,
+  handleSecurityHint,
+} from './test/fillSignupForm';
 import { travelToSignup } from './test/travelToSignup';
-import { submitAccountForm } from './test/fillSignupForm';
+import { randomString } from '../../utils/test/random';
 
 describe('DOM > Feature > Signup', () => {
   let store: Store<RootState>;
@@ -14,16 +18,16 @@ describe('DOM > Feature > Signup', () => {
   });
 
   mayTestChains(
-    `should redirect to show mnemonic step and check buttons`,
+    `should finish the signup three steps process`,
     async () => {
       const signupDOM = await travelToSignup(store);
-      await submitAccountForm(signupDOM);
+      const accountName = randomString(10);
 
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
-        signupDOM,
-        'button'
-      );
-      expect(buttons.length).toBe(2);
+      await submitAccountForm(signupDOM, accountName);
+      await handlePassPhrase(signupDOM);
+      await handleSecurityHint(signupDOM, accountName);
+
+      // TODO travel to correct view after signing up
     },
     55000
   );

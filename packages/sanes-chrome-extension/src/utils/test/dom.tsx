@@ -13,7 +13,7 @@ export const createDom = (store: Store): React.Component =>
         <Route />
       </ConnectedRouter>
     </Provider>
-  ) as any; // eslint-disable-line
+  ) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export const expectRoute = (store: Store, route: string): void => {
   expect(store.getState().router.location.pathname).toBe(route);
