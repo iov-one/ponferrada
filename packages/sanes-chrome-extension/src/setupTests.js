@@ -8,3 +8,29 @@ window.disableShallowSupport = true;
 
 global.window = window;
 global.config = require('../public/assets/config/conf.json');
+
+class LocalStorageMock {
+  store: Record<string, any>; // eslint-disable-line
+
+  constructor() {
+    this.store = {};
+  }
+
+  clear() {
+    this.store = {};
+  }
+
+  getItem(key) {
+    return this.store[key] || null;
+  }
+
+  setItem(key, value) {
+    this.store[key] = value.toString();
+  }
+
+  removeItem(key) {
+    delete this.store[key];
+  }
+}
+
+global.localStorage = new LocalStorageMock();
