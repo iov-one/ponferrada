@@ -1366,7 +1366,6 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
         <button
           className="MuiButtonBase-root-131ecbq MuiButton-root-1oszgoi MuiButton-contained-1akh65 MuiButton-containedPrimary-z7qkqq MuiButton-fullWidth-179vbl1"
           disabled={false}
-          id="continue-to-hint-button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
