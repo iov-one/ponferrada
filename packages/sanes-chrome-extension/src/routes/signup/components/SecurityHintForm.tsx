@@ -11,7 +11,6 @@ import Form, {
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
-import { UserData } from '../index';
 
 export const SECURITY_HINT = 'securityHintField';
 export const SECURITY_HINT_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}3`;
@@ -29,7 +28,6 @@ const validate = (values: object): object => {
 
 interface Props {
   readonly onSaveHint: (values: FormValues) => void;
-  readonly userData: UserData | null;
   readonly onBack: () => void;
 }
 
