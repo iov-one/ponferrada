@@ -8,7 +8,6 @@ import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
 import { getUserProfile } from '../../../logic/user';
-import { UserData } from '../index';
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
@@ -24,13 +23,13 @@ const getMnemonic = async (password: string): Promise<string> => {
 };
 
 export interface Props {
-  readonly userData: UserData | null;
+  readonly password: string | null;
   readonly onHintPassword: () => void;
   readonly onBack: () => void;
 }
 
 const ShowPhraseForm = ({
-  userData,
+  password,
   onBack,
   onHintPassword,
 }: Props): JSX.Element => {
@@ -40,9 +39,12 @@ const ShowPhraseForm = ({
     _: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ): Promise<void> => {
+    if (password === null) {
+      throw new Error('For showing mnemonic we need a valid password');
+    }
+
     if (checked) {
-      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      setMnemonic(await getMnemonic(userData!.password));
+      setMnemonic(await getMnemonic(password));
       return;
     }
 
