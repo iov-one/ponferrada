@@ -3,7 +3,7 @@ export const singleton = <T extends (...args: any[]) => any>(
   fn: (...args: Parameters<T>) => ReturnType<T>
 ): ((...args: Parameters<T>) => ReturnType<T>) => {
   let executed = false;
-  let response: any;
+  let response: ReturnType<T>;
 
   return (...args: Parameters<T>): ReturnType<T> => {
     if (executed) {
