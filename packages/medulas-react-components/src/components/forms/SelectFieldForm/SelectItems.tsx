@@ -9,11 +9,6 @@ import Typography from '~/components/Typography';
 import selectedTick from './assets/selectedTick.svg';
 import { Item } from './index';
 
-const style = {
-  minWidth: '100%',
-  boxShadow: 'none',
-};
-
 interface ListItemProps {
   readonly action: (value: Item) => () => void;
   readonly selectedItem: string;
@@ -26,7 +21,7 @@ const ListItems = ({
   selectedItem,
 }: ListItemProps): JSX.Element => {
   return (
-    <List component="nav" style={style}>
+    <List component="nav">
       {items.map(item => (
         <Block key={item.name}>
           <ListItem key={item.name} button onClick={action(item)}>
