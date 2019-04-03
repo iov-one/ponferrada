@@ -1,44 +1,29 @@
-import { MultiChainSigner } from '@iov/core';
+import { TxCodec, Address } from '@iov/bcp';
 import { UserProfile } from '@iov/keycontrol';
-import { createUserProfile } from './user';
-import { getConfig, ChainSpec } from '../utils/config';
+
 import { singleton } from '../utils/singleton';
-import Persona from './persona';
+
 import Account from './account';
-import {
-  codecFromString,
-  chainConnector,
-  codecImplementation,
-} from './blockchain/connection';
-import { ChainConnector, TxCodec, Address } from '@iov/bcp';
+import Persona from './persona';
+import { createUserProfile } from './user';
+import { ChainSpecWithInfo, getFullConfig } from './blockchain/config';
+import { codecImplementation } from './blockchain/connection';
 import { walletFrom, pathFrom } from './blockchain/wallet';
 
 const generateBlockchainAddressFrom = async (
   userProfile: UserProfile,
-  signer: MultiChainSigner,
-  chainSpec: ChainSpec,
+  chainSpec: ChainSpecWithInfo,
   derivation: number
 ): Promise<Address> => {
-  const nodes = chainSpec.bootstrapNodes;
-  const codecType = codecFromString(chainSpec.codecType);
-
-  // this whole clause should be done elsewhere and cached...
-  // remember we need to close connections, so pass one in
-  const connector: ChainConnector = chainConnector(codecType, nodes);
-  const { connection } = await signer.addChain(connector);
-  const chainId = connection.chainId();
-  signer.shutdown();
-  // end remove
-
-  const walletId = walletFrom(codecType, userProfile.wallets);
-  const path = pathFrom(codecType, derivation);
+  const walletId = walletFrom(chainSpec.codec, userProfile.wallets);
+  const path = pathFrom(chainSpec.codec, derivation);
   const publicIdentity = await userProfile.createIdentity(
     walletId,
-    chainId,
+    chainSpec.chainId,
     path
   );
 
-  const codec: TxCodec = codecImplementation(codecType);
+  const codec: TxCodec = codecImplementation(chainSpec.codec);
   const blockchainAddress: Address = codec.identityToAddress(publicIdentity);
 
   return blockchainAddress;
@@ -50,10 +35,9 @@ const buildPersona = async (
   accountName: string
 ): Promise<Persona> => {
   const userProfile: UserProfile = await createUserProfile(password);
-  const signer: MultiChainSigner = new MultiChainSigner(userProfile);
 
   // load chains info from config file
-  const config = await getConfig();
+  const config = await getFullConfig();
   const derivation = 0;
   const persona = new Persona();
   const account = new Account(derivation);
@@ -61,7 +45,6 @@ const buildPersona = async (
   for (const chain of config.chains) {
     const bcAddress = await generateBlockchainAddressFrom(
       userProfile,
-      signer,
       chain.chainSpec,
       derivation
     );

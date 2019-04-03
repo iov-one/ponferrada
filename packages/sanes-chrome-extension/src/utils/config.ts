@@ -2,13 +2,15 @@ import { TokenTicker } from '@iov/bcp';
 import { singleton } from './singleton';
 import { CodecType } from '../logic/blockchain/connection';
 
-export interface Config {
-  readonly bns: ChainConfig;
-  readonly chains: ReadonlyArray<ChainConfig>;
+export interface Config<T extends ChainSpec = ChainSpec> {
+  // Note: this is not present on the existing configs
+  // readonly bns: ChainConfig<T>;
+  readonly chains: ReadonlyArray<ChainConfig<T>>;
 }
 
-export interface ChainConfig {
-  readonly chainSpec: ChainSpec;
+// We can extend T to also include extra information, such as a chainId field
+export interface ChainConfig<T extends ChainSpec = ChainSpec> {
+  readonly chainSpec: T;
   readonly faucetSpec?: FaucetSpec;
 }
 
@@ -17,7 +19,7 @@ export interface ChainSpec {
   readonly bootstrapNodes: ReadonlyArray<string>;
 }
 
-interface FaucetSpec {
+export interface FaucetSpec {
   readonly uri: string;
   readonly token: TokenTicker;
 }
