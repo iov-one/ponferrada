@@ -1,12 +1,22 @@
-import { ChainId } from '@iov/bcp';
+import { ChainId, TxReadCodec } from '@iov/bcp';
+import { Slip10RawIndex } from '@iov/crypto';
 
 import { ChainConfig, ChainSpec, Config, getConfig } from '../../utils/config';
 import { singleton } from '../../utils/singleton';
-import { Codec, codecFromString, chainConnector } from './connection';
+import {
+  chainConnector,
+  Codec,
+  codecFromString,
+  codecImplementation,
+} from './connection';
+import { Algorithm, algorithmForCodec, pathForCodec } from './wallet';
 
 export interface ChainSpecWithInfo extends ChainSpec {
   readonly chainId: ChainId;
   readonly codec: Codec;
+  readonly algorithm: Algorithm;
+  readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
+  readonly encoder: TxReadCodec;
 }
 
 const isChainSpecWithId = (spec: ChainSpec): spec is ChainSpecWithInfo =>
@@ -28,8 +38,20 @@ const fetchFullSpec = async (
   const chainId = connection.chainId();
   connection.disconnect();
 
+  // add other info (TODO: revisit if this is best)
+  const algorithm = algorithmForCodec(codec);
+  const derivePath = pathForCodec(codec);
+  const encoder = codecImplementation(codec);
+
   // now return it...
-  const chainSpecWithId = { ...chainSpec, chainId, codec };
+  const chainSpecWithId = {
+    ...chainSpec,
+    chainId,
+    codec,
+    algorithm,
+    derivePath,
+    encoder,
+  };
   return { chainSpec: chainSpecWithId, faucetSpec };
 };
 
