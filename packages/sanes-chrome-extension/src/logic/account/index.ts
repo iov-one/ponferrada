@@ -56,7 +56,7 @@ export class ProfileWithAccounts {
   private _derivationInfo: DerivationInfo;
   public readonly profile: UserProfile;
 
-  constructor(profile: UserProfile, derivationInfo: DerivationInfo) {
+  public constructor(profile: UserProfile, derivationInfo: DerivationInfo) {
     this._derivationInfo = derivationInfo;
     this.profile = profile;
   }
@@ -103,8 +103,13 @@ export class ProfileWithAccounts {
         if (!isMissingAccount(maybe)) {
           return maybe;
         }
-        const info = this._derivationInfo.find(x => x.chainId == maybe.chainId);
-        return this.createChainAccount(info!, maybe.derivation);
+        const info = this._derivationInfo.find(
+          x => x.chainId === maybe.chainId
+        );
+        if (info === undefined) {
+          throw new Error(`cannot find ${maybe.chainId} in derivationInfo`);
+        }
+        return this.createChainAccount(info, maybe.derivation);
       })
     );
 
@@ -209,7 +214,7 @@ export class ProfileWithAccounts {
   ): Promise<PublicIdentity | undefined> {
     // Breaking encapsulation... bad Ethan
     const wallet: ReadonlyWallet = (this
-      .profile as any).findWalletInPrimaryKeyring(walletId);
+      .profile as any).findWalletInPrimaryKeyring(walletId); // eslint-disable-line @typescript-eslint/no-explicit-any
     const ident = await wallet.previewIdentity(chainId, path);
     const allIdentities = wallet.getIdentities();
     return allIdentities.find(x => publicIdentityEquals(x, ident));

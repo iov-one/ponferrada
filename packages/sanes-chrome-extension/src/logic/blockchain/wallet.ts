@@ -18,6 +18,7 @@ export function algorithmForCodec(codec: Codec): Algorithm {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const pathForCodec = (codec: Codec) => (
   derivation: number
 ): ReadonlyArray<Slip10RawIndex> => {
