@@ -2,6 +2,8 @@ import * as React from 'react';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import { SizingBreakpoint } from '../Grid';
 
+export type Unit = 0 | 1 | 2 | 3 | 4;
+
 // TODO: Remove those props after BoxProps will be properly implemented.
 interface Props extends BoxProps {
   readonly children?: React.ReactNode;
