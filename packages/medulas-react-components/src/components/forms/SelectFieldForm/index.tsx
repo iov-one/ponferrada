@@ -48,7 +48,7 @@ interface InnerProps {
   readonly items: ReadonlyArray<Item>;
 }
 
-type Props = InnerProps & InputBaseProps;
+export type Props = InnerProps & InputBaseProps;
 
 const SelectFieldForm = ({
   fieldName,
