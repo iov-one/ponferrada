@@ -10,10 +10,15 @@ import Form, {
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Link from 'medulas-react-components/lib/components/Link';
-import { LOGIN_ROUTE } from '../../paths';
+import { LOGIN_ROUTE, WELCOME_ROUTE } from '../../paths';
+import { history } from '../../../store/reducers/';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
+
+const backToWelcomeScreen = (): void => {
+  history.push(WELCOME_ROUTE);
+};
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -81,7 +86,13 @@ const Layout = (): JSX.Element => {
           </Block>
           <Block>
             <Link>
-              <Typography variant="subtitle2" color="primary" link inline>
+              <Typography
+                variant="subtitle2"
+                color="primary"
+                link
+                inline
+                onClick={backToWelcomeScreen}
+              >
                 More options
               </Typography>
             </Link>
