@@ -10,7 +10,7 @@ describe('logic', () => {
     expect(account.name).toEqual(accountName);
 
     expect(account.chains.length).toEqual(4);
-    account.chains.map(acct => {
+    account.chains.forEach(acct => {
       // some basic checks...
       expect(acct.address).toBeDefined();
       expect(acct.address.length).toBeGreaterThanOrEqual(6);
