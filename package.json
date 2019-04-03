@@ -64,6 +64,7 @@
     "react-test-renderer": "^16.8.4",
     "require-context.macro": "^1.0.4",
     "shx": "^0.3.2",
-    "typescript": "3.3.3"
+    "typescript": "3.3.3",
+    "web-ext": "^3.0.0"
   }
 }

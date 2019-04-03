@@ -1,0 +1,27 @@
+# whitelist long living branches
+branches:
+  only:
+    - master
+    # Minor version branches: 0.9, 0.10 etc.
+    - /^0\.[0-9]+$/
+
+environment:
+  matrix:
+    - nodejs_version: "10"
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - node --version
+  - npm --version
+  - yarn --version
+  - yarn install
+
+build_script:
+  - yarn build
+  - yarn --cwd packages/sanes-chrome-extension export
+
+# Override default test step
+test: off
+
+artifacts:
+  - path: 'packages/sanes-chrome-extension/exports/*.zip'

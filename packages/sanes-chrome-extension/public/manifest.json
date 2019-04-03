@@ -7,6 +7,11 @@
     "default_title": "IOV - Extension",
     "default_popup": "index.html"
   },
+  "applications": {
+    "gecko": {
+      "id": "admin@iov.one"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

@@ -3,15 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "cp ./config/production.json ./public/assets/config/conf.json && oza-react-scripts build",
+    "use-config-test": "cp ./config/test.json ./public/assets/config/conf.json",
+    "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
+    "use-config-production": "cp ./config/production.json ./public/assets/config/conf.json",
+    "build": "oza-react-scripts build",
+    "export": "yarn use-config-production && yarn build && web-ext build --source-dir ./build/ --artifacts-dir ./exports --overwrite-dest",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
-    "start": "cp ./config/development.json ./public/assets/config/conf.json && oza-react-scripts start",
-    "test-dom": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
-    "test-e2e": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
-    "test-unit": "cp ./config/test.json ./public/assets/config/conf.json && CI=true oza-react-scripts test --env=jsdom ",
+    "start:firefox:test": "yarn use-config-test && yarn build && web-ext run --source-dir ./build/",
+    "start:firefox:development": "yarn use-config-development && yarn build && web-ext run --source-dir ./build/",
+    "start:firefox:production": "yarn use-config-production && yarn build && web-ext run --source-dir ./build/",
+    "test-dom": "yarn use-config-test && CI=true oza-react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
+    "test-e2e": "yarn use-config-test && CI=true oza-react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
+    "test-unit": "yarn use-config-test && CI=true oza-react-scripts test --env=jsdom ",
     "test": "yarn test-dom && yarn test-e2e",
-    "watch": "cp ./config/test.json ./public/assets/config/conf.json && cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
+    "watch": "yarn use-config-test && cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
   },
   "browserslist": [
     ">0.2%",
