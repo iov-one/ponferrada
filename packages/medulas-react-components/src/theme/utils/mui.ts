@@ -31,41 +31,42 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: "'Muli', sans-serif",
-    fontSize: 14,
+    fontSize: 10,
     fontWeightLight: lightFont,
     fontWeightRegular: 400,
     fontWeightMedium: 600,
     h1: {
-      fontSize: '7rem',
+      fontSize: '9.8rem',
     },
     h2: {
-      fontSize: '4.25rem',
+      fontSize: '6rem',
     },
     h3: {
-      fontSize: '3.25rem',
+      fontSize: '4.5rem',
     },
     h4: {
-      fontSize: '2.5rem',
+      fontSize: '3.5rem',
       fontWeight: lightFont,
     },
     h5: {
-      fontSize: '2rem',
+      fontSize: '3.2rem',
     },
     h6: {
-      fontSize: '1.25rem',
+      fontSize: '1.8rem',
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: '1.6rem',
     },
     body2: {
-      lineHeight: '1.15rem',
+      fontSize: '1.4rem',
+      lineHeight: '1.6rem',
     },
     subtitle1: {
-      fontSize: '1rem',
+      fontSize: '1.6rem',
     },
     subtitle2: {
-      fontSize: '0.875rem',
-      lineHeight: '0.875rem',
+      fontSize: '1.4rem',
+      lineHeight: '1.4rem',
     },
   },
 });
@@ -75,6 +76,9 @@ const themeObject: ThemeOptions = {
 
   overrides: {
     MuiButton: {
+      root: {
+        fontSize: '1.6rem',
+      },
       label: {
         textTransform: 'capitalize',
       },
@@ -109,7 +113,8 @@ const themeObject: ThemeOptions = {
         backgroundColor: '#fcfcfc',
       },
       input: {
-        padding: '14px',
+        padding: '12px',
+        fontSize: '1.6rem',
       },
       error: {
         backgroundColor: '#fff1e1',
@@ -120,7 +125,7 @@ const themeObject: ThemeOptions = {
         top: `-${theme.spacing(3)}px`,
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightMedium,
-        fontSize: theme.typography.fontSize,
+        fontSize: '1.4rem',
         '&$focused': {
           // Use text primary in TextField labels when focusing.
           color: `${theme.palette.text.primary}`,
@@ -134,6 +139,7 @@ const themeObject: ThemeOptions = {
     MuiFormHelperText: {
       contained: {
         margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
+        fontSize: '1.4rem',
       },
     },
   },

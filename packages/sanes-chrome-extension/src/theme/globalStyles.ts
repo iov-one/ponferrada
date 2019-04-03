@@ -8,6 +8,7 @@ export const globalStyles = makeStyles({
       width: `${EXTENSION_WIDTH}px`,
       height: `${EXTENSION_HEIGHT}px`,
       '-ms-overflow-style': '-ms-autohiding-scrollbar',
+      fontSize: '10px',
     },
     body: {
       bottom: 0,

@@ -48,7 +48,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
       primaryTitle="New"
       title="Account"
     >
-      <Typography variant="subtitle2" inline>
+      <Typography variant="subtitle1" inline>
         To help you remember your details in the future please provide a
         security hint:
       </Typography>
