@@ -1,4 +1,4 @@
-import { getPersona } from './index';
+import { createPersona } from './index';
 import Persona from './persona';
 import { mayTestChains } from '../utils/test/testExecutor';
 

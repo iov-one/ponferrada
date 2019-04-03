@@ -68,4 +68,7 @@ const buildPersona = async (
   return persona;
 };
 
-export const getPersona = singleton<typeof buildPersona>(buildPersona);
+export const createPersona = singleton<typeof buildPersona>(buildPersona);
+
+export const getPersona = (): ReturnType<typeof buildPersona> =>
+  createPersona('', '');
