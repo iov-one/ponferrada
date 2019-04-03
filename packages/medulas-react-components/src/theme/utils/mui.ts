@@ -115,7 +115,7 @@ const themeObject: ThemeOptions = {
         border: `1px solid ${theme.palette.grey[300]}`,
         borderBottom: 'none',
         boxShadow: '0 10px 7px 0 rgba(237, 239, 244, 0.14)',
-        paddingBottom: 0,
+        backgroundColor: 'white',
       },
       padding: {
         paddingTop: 0,
