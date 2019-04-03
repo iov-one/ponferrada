@@ -17,18 +17,19 @@ export interface Item {
 
 const useStyles = makeStyles((theme: Theme) => ({
   dropdown: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
     backgroundColor: '#f7f7f7',
     border: `1px solid ${theme.palette.grey[300]}`,
     borderRadius: '5px',
-    padding: `0 ${theme.spacing(1)}`,
+    padding: `0 ${theme.spacing(1)}px`,
     cursor: 'pointer',
   },
-  root: {
+  root: props => ({
     fontSize: theme.typography.fontSize,
     height: '32px',
-  },
+    maxWidth: props.maxWidth,
+  }),
   input: {
     paddingLeft: 0,
     paddingRight: 0,
@@ -46,6 +47,7 @@ interface InnerProps {
   readonly onChangeCallback?: (value: Item) => void;
   readonly subscription?: FieldSubscription;
   readonly items: ReadonlyArray<Item>;
+  readonly maxWidth: string;
 }
 
 export type Props = InnerProps & InputBaseProps;
@@ -56,21 +58,32 @@ const SelectFieldForm = ({
   initial,
   items,
   onChangeCallback,
+  maxWidth = '100%',
 }: Props): JSX.Element => {
   const [isOpen, toggle] = useOpen();
-  const [value, setValue] = React.useState<string>(initial);
-  const classes = useStyles();
+  const classes = useStyles({ maxWidth });
   const inputRef = React.useRef(null);
   const { input } = useField(fieldName, form);
 
-  const { name, ...restInput } = input;
+  const { name, onChange, value, ...restInput } = input;
   const inputProps = { ...restInput, autoComplete: 'off' };
-  delete inputProps.value;
-  delete inputProps.onChange;
+
+  // TODO due a bug in rffH I can not use ", [])", so for setting initial value in form
+  // I have to hack in this way. Fix it.
+  // https://reactjs.org/docs/forms.html
+  // https://reactjs.org/docs/uncontrolled-components.html
+  React.useEffect(() => {
+    try {
+      const firstRender = value === '';
+      if (firstRender) {
+        onChange(initial);
+      }
+    } catch (err) {}
+  }, [input]);
   const inputClasses = { root: classes.root, input: classes.input };
 
   const onAction = (item: Item): (() => void) => () => {
-    setValue(item.name);
+    onChange(item.name);
     if (onChangeCallback) {
       onChangeCallback(item);
     }
