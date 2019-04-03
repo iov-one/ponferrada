@@ -7,12 +7,9 @@ import {
 } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
 import { UserProfile, WalletId } from '@iov/keycontrol';
-
-import { CodecType } from '../blockchain/connection';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
-import { EditorFormatUnderlined } from 'material-ui/svg-icons';
 
-export type Algorithm = 'secp256k1' | 'ed25519';
+import { Algorithm } from '../blockchain/wallet';
 
 export interface ChainDerivation {
   readonly chainId: ChainId;
@@ -118,7 +115,7 @@ export class ProfileWithAccounts {
   // with no accounts found. This should return all stored keys created by this class
   public async loadAllAccounts(): Promise<ReadonlyArray<Account>> {
     let result: ReadonlyArray<Account> = [];
-    let derivation = 1;
+    let derivation = 0;
     while (true) {
       const account = await this.loadAccount(derivation);
       if (!account) {
