@@ -73,6 +73,14 @@ Then open your chrome browser and add the new generated extension (the build fol
 3. Click load unpacked and go to the `ponferrada/sanes-chrome-extension/build` folder
 4. You have the iov-ponferrada extension in your browser!
 
+#### Debugging
+
+To debug the extension from browser:
+
+1. click right mouse button over extension icon
+2. click on `Inspect popup`, this will open devtools
+3. Add breakpoints in Sources tab
+
 ### Testing
 
 We take seriously the testing environment, performing three different types of tests:
