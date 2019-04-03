@@ -3,7 +3,7 @@ import { UserProfile } from '@iov/keycontrol';
 
 import { singleton } from '../utils/singleton';
 
-import Account from './account';
+import { Account } from './account';
 import Persona from './persona';
 import { createUserProfile } from './user';
 import { ChainSpecWithInfo, getFullConfig } from './blockchain/config';

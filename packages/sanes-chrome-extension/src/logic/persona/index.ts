@@ -1,4 +1,4 @@
-import Account from '../account';
+import { Account } from '../account';
 
 class Persona {
   // K is the account id: main, savings...
