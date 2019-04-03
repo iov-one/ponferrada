@@ -3,11 +3,15 @@ import Button from 'medulas-react-components/lib/components/Button';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import { WELCOME_ROUTE, SIGNUP_ROUTE } from '../../paths';
+import { WELCOME_ROUTE, SIGNUP_ROUTE, LOGIN_ROUTE } from '../../paths';
 import { history } from '../../../store/reducers/';
 
 const createNewAccount = (): void => {
   history.push(SIGNUP_ROUTE);
+};
+
+const login = (): void => {
+  history.push(LOGIN_ROUTE);
 };
 
 const Layout = (): JSX.Element => (
