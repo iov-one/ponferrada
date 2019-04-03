@@ -22,9 +22,14 @@ const generateBlockchainAddressFrom = async (
   const nodes = chainSpec.bootstrapNodes;
   const codecType = codecFromString(chainSpec.codecType);
 
+  // this whole clause should be done elsewhere and cached...
+  // remember we need to close connections, so pass one in
   const connector: ChainConnector = chainConnector(codecType, nodes);
   const { connection } = await signer.addChain(connector);
   const chainId = connection.chainId();
+  signer.shutdown();
+  // end remove
+
   const walletId = walletFrom(codecType, userProfile.wallets);
   const path = pathFrom(codecType, derivation);
   const publicIdentity = await userProfile.createIdentity(
