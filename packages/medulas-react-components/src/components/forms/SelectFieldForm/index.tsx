@@ -47,7 +47,7 @@ interface InnerProps {
   readonly onChangeCallback?: (value: Item) => void;
   readonly subscription?: FieldSubscription;
   readonly items: ReadonlyArray<Item>;
-  readonly maxWidth: string;
+  readonly maxWidth?: string;
 }
 
 export type Props = InnerProps & InputBaseProps;
