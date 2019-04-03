@@ -32,7 +32,7 @@ const SelectFieldForm = (): JSX.Element => {
   );
 };
 
-storiesOf('Components /SelectFieldForm', module).add('Examples', () => (
+storiesOf('Components /forms', module).add('SelectField', () => (
   <Storybook>
     <SelectFieldForm />
   </Storybook>
