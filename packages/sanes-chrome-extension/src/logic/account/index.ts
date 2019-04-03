@@ -83,6 +83,84 @@ export class ProfileWithAccounts {
     };
   }
 
+  // ensureAccount will check for any accounts with the given derivation, and create those which are missing.
+  // It will use the name if provided.
+  public async ensureAccount(
+    derivation: number,
+    name?: string
+  ): Promise<Account<AccountInfo>> {
+    const existing = await this.loadAccount(derivation);
+    if (!existing) {
+      // nothing here, we generate them all
+      const chains = await Promise.all(
+        this._derivationInfo.map(info =>
+          this.createChainAccount(info, derivation)
+        )
+      );
+      return { derivation, chains, name };
+    }
+
+    // otherwise, we fill in the blanks, if any
+    const chains = await Promise.all(
+      existing.chains.map(async maybe => {
+        if (!isMissingAccount(maybe)) {
+          return maybe;
+        }
+        const info = this._derivationInfo.find(x => x.chainId == maybe.chainId);
+        return this.createChainAccount(info!, maybe.derivation);
+      })
+    );
+
+    return { derivation, chains, name };
+  }
+
+  // loadAllAccounts will iterate over derivations (1, 2... N) until there is an iteration
+  // with no accounts found. This should return all stored keys created by this class
+  public async loadAllAccounts(): Promise<ReadonlyArray<Account>> {
+    let result: ReadonlyArray<Account> = [];
+    let derivation = 1;
+    while (true) {
+      const account = await this.loadAccount(derivation);
+      if (!account) {
+        return result;
+      }
+      result = [...result, account];
+    }
+  }
+
+  // ensureAllAccounts will load all accounts that have stored a key for at least one chain
+  // and ensure they have keys for all chains
+  public async ensureAllAccounts(): Promise<
+    ReadonlyArray<Account<AccountInfo>>
+  > {
+    const maybeAccounts = await this.loadAllAccounts();
+    return Promise.all(
+      maybeAccounts.map(maybe =>
+        this.ensureAccount(maybe.derivation, maybe.name)
+      )
+    );
+  }
+
+  // createChainAccount will create the new key based on the derivation.
+  // if it already exists it will throw an error (so check first)!
+  private async createChainAccount(
+    info: ChainDerivation,
+    derivation: number
+  ): Promise<AccountInfo> {
+    const { chainId, algorithm, derivePath, encoder } = info;
+    const path = derivePath(derivation);
+    const wallet = this.walletForAlgorithm(algorithm);
+    const identity = await this.profile.createIdentity(wallet, chainId, path);
+    return {
+      chainId,
+      algorithm,
+      derivation,
+      path,
+      identity,
+      address: encoder.identityToAddress(identity),
+    };
+  }
+
   // loadChainAccount will check for account (there or missing) for one chain and derivation
   private async loadChainAccount(
     info: ChainDerivation,
@@ -109,39 +187,9 @@ export class ProfileWithAccounts {
     };
   }
 
-  // ensureAccount will check for any accounts with the given derivation, and create those which are missing.
-  // It will use the name if provided.
-  public ensureAccount(
-    derivation: number,
-    name?: string
-  ): Account<AccountInfo> {
-    // TODO
-    return { derivation, name, chains: [] };
-  }
-
-  // loadAllAccounts will iterate over derivations (1, 2... N) until there is an iteration
-  // with no accounts found. This should return all stored keys created by this class
-  public async loadAllAccounts(): Promise<ReadonlyArray<Account>> {
-    let result: ReadonlyArray<Account> = [];
-    let derivation = 1;
-    while (true) {
-      const account = await this.loadAccount(derivation);
-      if (!account) {
-        return result;
-      }
-      result = [...result, account];
-    }
-  }
-
-  // ensureAllAccounts will load all accounts that have stored a key for at least one chain
-  // and ensure they have keys for all chains
-  public async ensureAllAccounts(): Promise<
-    ReadonlyArray<Account<AccountInfo>>
-  > {
-    const maybeAccounts = await this.loadAllAccounts();
-    return maybeAccounts.map(maybe =>
-      this.ensureAccount(maybe.derivation, maybe.name)
-    );
+  private walletForAlgorithm(algorithm: Algorithm): WalletId {
+    const [edWallet, secpWallet] = this.profile.wallets.value.map(x => x.id);
+    return algorithm === 'ed25519' ? edWallet : secpWallet;
   }
 
   /*
@@ -154,11 +202,6 @@ export class ProfileWithAccounts {
     // returns the corresponding public identity if there already
   }
 */
-
-  private walletForAlgorithm(algorithm: Algorithm): WalletId {
-    const [edWallet, secpWallet] = this.profile.wallets.value.map(x => x.id);
-    return algorithm === 'ed25519' ? edWallet : secpWallet;
-  }
 
   // FIXME
   // this is an ugly hack... this really needs to be added to the root UserProfile API
