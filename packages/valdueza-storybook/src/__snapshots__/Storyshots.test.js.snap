@@ -2014,6 +2014,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       className="MuiButtonBase-root-1097 MuiButton-root-1080 MuiButton-contained-1088 MuiButton-containedPrimary-1089 MuiButton-fullWidth-1096"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
