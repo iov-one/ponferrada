@@ -1,32 +1,26 @@
-import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { WELCOME_ROUTE } from '../paths';
-import { history, RootState } from '../../store/reducers';
-import { createDom } from '../../utils/test/dom';
+import { RootState } from '../../store/reducers';
 import { aNewStore } from '../../store';
-import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { sleep } from '../../utils/timer';
+import TestUtils from 'react-dom/test-utils';
+import { travelToLogin } from './test/travelToLogin';
 
-xdescribe('DOM > Feature > Login', () => {
+describe('DOM > Feature > Login', () => {
   let store: Store<RootState>;
-  let dom: React.Component;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     store = aNewStore();
-    dom = createDom(store);
-    TestUtils.act(() => {
-      history.push(WELCOME_ROUTE);
-    });
-    await sleep(500);
   });
 
-  it(`should create Welcome layout view`, async () => {
-    await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
-  }, 55000);
+  it(`should two inputs and one button`, async () => {
+    const LoginDom = await travelToLogin(store);
 
-  it(`should create three buttons`, async () => {
-    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(dom, 'button');
+    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
+      LoginDom,
+      'input'
+    );
 
-    expect(buttons.length).toBe(3);
+    expect(inputs.length).toBe(2);
+
+    TestUtils.findRenderedDOMComponentWithTag(LoginDom, 'button');
   }, 55000);
 });
