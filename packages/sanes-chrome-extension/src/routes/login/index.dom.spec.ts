@@ -23,7 +23,11 @@ describe('DOM > Feature > Login', () => {
 
     expect(inputs.length).toBe(2);
 
-    TestUtils.findRenderedDOMComponentWithTag(LoginDom, 'button');
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
+      LoginDom,
+      'button'
+    );
+    expect(buttons.length).toBe(1);
 
     //Bottom links
     const links = TestUtils.scryRenderedDOMComponentsWithTag(LoginDom, 'h6');
