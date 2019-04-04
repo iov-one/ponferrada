@@ -1,17 +1,17 @@
 import { ChainId, TxReadCodec } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
 
-import { ChainConfig, ChainSpec, Config, getConfig } from '../../utils/config';
-import { singleton } from '../../utils/singleton';
+import { ChainConfig, ChainSpec, Config, fetchConfig } from './fetchConfig';
 import {
   chainConnector,
   Codec,
   codecFromString,
   codecImplementation,
-} from './connection';
-import { Algorithm, algorithmForCodec, pathForCodec } from './wallet';
+} from '../connection';
+import { Algorithm, algorithmForCodec, pathForCodec } from '../wallet';
+import { singleton } from '../../../utils/singleton';
 
-export interface ChainSpecWithInfo extends ChainSpec {
+export interface EnhancedChainSpec extends ChainSpec {
   readonly chainId: ChainId;
   readonly codec: Codec;
   readonly algorithm: Algorithm;
@@ -19,16 +19,16 @@ export interface ChainSpecWithInfo extends ChainSpec {
   readonly encoder: TxReadCodec;
 }
 
-const isChainSpecWithId = (spec: ChainSpec): spec is ChainSpecWithInfo =>
-  typeof (spec as ChainSpecWithInfo).chainId === 'string' &&
-  typeof (spec as ChainSpecWithInfo).codec === 'string';
+const alreadyEnhanced = (spec: ChainSpec): spec is EnhancedChainSpec =>
+  typeof (spec as EnhancedChainSpec).chainId === 'string' &&
+  typeof (spec as EnhancedChainSpec).codec === 'string';
 
 // fetchFullSpec will ensure the full chain info is present
-const fetchFullSpec = async (
+const enhanceChainsInfo = async (
   cfg: ChainConfig<ChainSpec>
-): Promise<ChainConfig<ChainSpecWithInfo>> => {
+): Promise<ChainConfig<EnhancedChainSpec>> => {
   const { chainSpec, faucetSpec } = cfg;
-  if (isChainSpecWithId(chainSpec)) {
+  if (alreadyEnhanced(chainSpec)) {
     return { chainSpec, faucetSpec };
   }
   // we get all info here...
@@ -52,22 +52,22 @@ const fetchFullSpec = async (
     derivePath,
     encoder,
   };
+
   return { chainSpec: chainSpecWithId, faucetSpec };
 };
 
-const fetchFullConfigInfo = async (
-  cfg: Config<ChainSpec>
-): Promise<Config<ChainSpecWithInfo>> => {
-  // const bns = await fetchFullSpec(cfg.bns);
-  const chains = await Promise.all(cfg.chains.map(fetchFullSpec));
-  return { chains };
-  // return {bns, chains};
+const fetchFullConfig = async (): Promise<Config<EnhancedChainSpec>> => {
+  const config = await fetchConfig();
+  let enhancedConfig = {
+    chains: new Array<ChainConfig<EnhancedChainSpec>>(), // eslint-disable-line
+  };
+
+  for (const chain of config.chains) {
+    const enhancedChain = await enhanceChainsInfo(chain);
+    enhancedConfig.chains.push(enhancedChain);
+  }
+
+  return enhancedConfig;
 };
 
-const fetchFullConfig = async (): Promise<Config<ChainSpecWithInfo>> => {
-  const config = await getConfig();
-  return fetchFullConfigInfo(config);
-};
-
-// getFullConfig will get the config and query the chains to determine more info
-export const getFullConfig = singleton<typeof fetchFullConfig>(fetchFullConfig);
+export const getConfig = singleton<typeof fetchFullConfig>(fetchFullConfig);

@@ -1,11 +1,11 @@
 import { TokenTicker } from '@iov/bcp';
-import { singleton } from './singleton';
-import { CodecType } from '../logic/blockchain/connection';
+import { singleton } from '../../../utils/singleton';
+import { CodecType } from '../connection';
 
 export interface Config<T extends ChainSpec = ChainSpec> {
   // Note: this is not present on the existing configs
   // readonly bns: ChainConfig<T>;
-  readonly chains: ReadonlyArray<ChainConfig<T>>;
+  readonly chains: ChainConfig<T>[];
 }
 
 // We can extend T to also include extra information, such as a chainId field
@@ -24,7 +24,7 @@ export interface FaucetSpec {
   readonly token: TokenTicker;
 }
 
-const fetchConfig = async (): Promise<Config> => {
+const fetchConfigData = async (): Promise<Config> => {
   if (process.env.NODE_ENV === 'test') {
     const config = (window as any).config as Config; // eslint-disable-line
     return config;
@@ -37,4 +37,4 @@ const fetchConfig = async (): Promise<Config> => {
   return json;
 };
 
-export const getConfig = singleton<typeof fetchConfig>(fetchConfig);
+export const fetchConfig = singleton<typeof fetchConfigData>(fetchConfigData);
