@@ -24,7 +24,7 @@ const Layout = (): JSX.Element => (
       This plugin lets you manage all your accounts in one place.
     </Typography>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth>
+    <Button variant="contained" fullWidth onClick={login}>
       Log in
     </Button>
     <Block marginTop={2} />
