@@ -2,30 +2,33 @@ import { UserProfile } from '@iov/keycontrol';
 
 import { singleton } from '../utils/singleton';
 
-import { Account, ProfileWithAccounts, AccountInfo } from './account';
 import { createUserProfile } from './user';
-import { getFullConfig } from './blockchain/config';
+import { getConfig } from './blockchain/chainsConfig';
+import Persona from './persona';
+import { getDb } from './user/profile';
 
 // This method should be called by the "Create New Persona onSubmit fn"
 const buildPersona = async (
   password: string,
   accountName: string
-): Promise<Account<AccountInfo>> => {
-  // this assumes no database for this persona is existing?
-  // we need some load clause
+): Promise<Persona> => {
+  // TODO once we support login modify this for loading from db
   const baseProfile: UserProfile = await createUserProfile(password);
 
-  // load chains info from config file
-  const config = await getFullConfig();
+  const config = await getConfig();
+  // Remove the faucetSpect type because for creating a profile is not needed.
   const derivationInfo = config.chains.map(x => x.chainSpec);
 
-  // Do we need the Persona?
-  // I prefer to have all the info based on the wrapped profile.
-  // But we may want some more helper methods (memory caching)
-  // const persona = new Persona();
-  const profile = new ProfileWithAccounts(baseProfile, derivationInfo);
-  const account = await profile.ensureAccount(0, accountName);
-  return account;
+  const persona = new Persona(baseProfile, derivationInfo);
+  const derivation = 0;
+  const db = await getDb();
+  persona.generateAccount(derivation);
+  baseProfile.storeIn(db, password);
+
+  // const ethanProfile = new ProfileWithAccounts(baseProfile, derivationInfo);
+  // const ethanAccount = await profile.ensureAccount(0, accountName);
+
+  return persona;
 };
 
 export const createPersona = singleton<typeof buildPersona>(buildPersona);
