@@ -41,11 +41,6 @@ describe('DOM > Feature > Login', () => {
     expect(moreOptionsLink).not.toBeNull();
     expect(moreOptionsLink.tagName.toLowerCase()).toBe('a');
 
-    /*const moreOptionsLink = findRenderedDOMComponentWithId(
-      BalanceDom,
-      'more-options'
-    );*/
-
     TestUtils.act(() => {
       TestUtils.Simulate.click(moreOptionsLink);
     });
