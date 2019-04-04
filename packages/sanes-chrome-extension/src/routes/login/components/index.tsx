@@ -78,14 +78,14 @@ const Layout = (): JSX.Element => {
         </Block>
         <Block marginTop={4} textAlign="center">
           <Block marginBottom={1}>
-            <Link>
+            <Link to={WELCOME_ROUTE}>
               <Typography variant="subtitle2" color="primary" link inline>
                 Restore account
               </Typography>
             </Link>
           </Block>
           <Block>
-            <Link>
+            <Link to={WELCOME_ROUTE}>
               <Typography
                 variant="subtitle2"
                 color="primary"

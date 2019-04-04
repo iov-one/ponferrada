@@ -1,12 +1,16 @@
 import * as React from 'react';
-//import { Link as RouterLink, LinkProps } from 'react-router-dom';
+import { Link as RouterLink, LinkProps } from 'react-router-dom';
 
-interface Props {
+interface Props extends LinkProps {
   readonly children: React.ReactNode;
 }
-//TODO: Dummy component should be replaces with Link when router will be implemented
-const Link = ({ children }: Props) => {
-  return <React.Fragment>{children}</React.Fragment>;
+
+const Link = ({ children, to, ...rest }: Props) => {
+  return (
+    <RouterLink to={to} {...rest}>
+      {children}
+    </RouterLink>
+  );
 };
 
 export default Link;
