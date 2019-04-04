@@ -5,6 +5,8 @@ import TestUtils from 'react-dom/test-utils';
 import { travelToLogin } from './test/travelToLogin';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
+import { sleep } from '../../utils/timer';
+import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 
 describe('DOM > Feature > Login', () => {
   let store: Store<RootState>;
@@ -33,11 +35,23 @@ describe('DOM > Feature > Login', () => {
     const links = TestUtils.scryRenderedDOMComponentsWithTag(LoginDom, 'h6');
 
     expect(links.length).toBe(2);
-    const moreOptionsLink = links[1];
+    expect(links[0].innerHTML).toBe('Restore account');
+    expect(links[1].innerHTML).toBe('More options');
+    const moreOptionsLink = links[1].parentElement as Element;
+    expect(moreOptionsLink).not.toBeNull();
+    expect(moreOptionsLink.tagName.toLowerCase()).toBe('a');
+
+    /*const moreOptionsLink = findRenderedDOMComponentWithId(
+      BalanceDom,
+      'more-options'
+    );*/
+
     TestUtils.act(() => {
       TestUtils.Simulate.click(moreOptionsLink);
     });
 
+    await sleep(20000);
+    console.log(store.getState());
     await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
   }, 55000);
 });
