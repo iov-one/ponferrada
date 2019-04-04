@@ -763,7 +763,7 @@ exports[`Storyshots Components Images 1`] = `
 />
 `;
 
-exports[`Storyshots Components Layout 1`] = `
+exports[`Storyshots Routes/Login Login page 1`] = `
 <div
   className="MuiBox-root-120 MuiBox-root-121"
 >
@@ -773,13 +773,13 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root-124 MuiTypography-h4-132 MuiTypography-colorPrimary-147 makeStyles-inline-123"
     >
-      Title
+      Log
     </h4>
     <h4
       className="MuiTypography-root-124 MuiTypography-h4-132 makeStyles-inline-123"
     >
 
-      storybook
+      In
     </h4>
   </div>
   <div
@@ -843,7 +843,10 @@ Array [
             <input
               className="MuiPrivateSwitchBase-input-182 MuiSwitch-input-176"
               onChange={[Function]}
-              type="checkbox"
+              onFocus={[Function]}
+              placeholder="Enter your unique identifier"
+              required={true}
+              type="text"
             />
           </span>
         </span>
@@ -1346,12 +1349,18 @@ Array [
   <h6
     className="MuiTypography-root-280 MuiTypography-subtitle2-292 makeStyles-inline-279"
   >
-    Second part of the text.
-  </h6>,
-]
+    <img
+      alt="IOV logo"
+      className="Hook-root-z8j3qi"
+      height={39}
+      src="iov-logo.png"
+      width={84}
+    />
+  </div>
+</div>
 `;
 
-exports[`Storyshots Routes/Login Login page 1`] = `
+exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
   className="MuiBox-root-688 MuiBox-root-689"
   id="/signup1"
