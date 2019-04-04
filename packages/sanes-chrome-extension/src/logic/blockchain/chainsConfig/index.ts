@@ -1,4 +1,4 @@
-import { ChainId, TxReadCodec } from '@iov/bcp';
+import { ChainId, TxReadCodec, Algorithm } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
 
 import { ChainConfig, ChainSpec, Config, fetchConfig } from './fetchConfig';
@@ -8,7 +8,7 @@ import {
   codecFromString,
   codecImplementation,
 } from '../connection';
-import { Algorithm, algorithmForCodec, pathForCodec } from '../wallet';
+import { algorithmForCodec, pathForCodec } from '../wallet';
 import { singleton } from '../../../utils/singleton';
 
 export interface EnhancedChainSpec extends ChainSpec {
