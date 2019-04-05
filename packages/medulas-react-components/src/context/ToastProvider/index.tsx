@@ -31,7 +31,7 @@ export interface ToastContextInterface {
   readonly variant: ToastVariant;
 }
 
-const ToastContext = React.createContext<ToastContextInterface>({
+export const ToastContext = React.createContext<ToastContextInterface>({
   showToast: (message: string, variant: ToastVariant) => ({ message, variant }),
   onClose: () => null,
   open: false,
