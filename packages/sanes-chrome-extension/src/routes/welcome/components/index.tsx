@@ -20,15 +20,15 @@ const Layout = (): JSX.Element => (
       This plugin lets you manage all your accounts in one place.
     </Typography>
     <Block marginTop={2} />
-    <Button type="contained" fullWidth>
+    <Button variant="contained" fullWidth>
       Log in
     </Button>
     <Block marginTop={2} />
-    <Button type="contained" fullWidth onClick={createNewAccount}>
+    <Button variant="contained" fullWidth onClick={createNewAccount}>
       New account
     </Button>
     <Block marginTop={2} />
-    <Button type="contained" fullWidth>
+    <Button variant="contained" fullWidth>
       Import account
     </Button>
   </PageLayout>
