@@ -4,7 +4,11 @@ import * as React from 'react';
 import { Storybook } from '../../../utils/storybook';
 import { Toast, ToastVariant } from './index';
 
-storiesOf('Toasts', module)
+/**
+ * Unable to run snapshot testing against this story: https://github.com/mui-org/material-ui/issues/10679
+ */
+
+storiesOf('Components/Toasts (Test disabled)', module)
   .add('Success', () => (
     <Storybook>
       <Toast
