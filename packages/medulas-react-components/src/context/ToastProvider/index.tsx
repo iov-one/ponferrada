@@ -8,7 +8,7 @@ export enum ToastVariant {
   INFO = 'info',
 }
 
-const SharedToast = () => (
+const SharedToast = (): JSX.Element => (
   <ToastConsumer>
     {({ open, message, onClose, variant }: ToastContextInterface) => {
       return (
@@ -56,14 +56,14 @@ export const ToastProvider = ({ children }: Props): JSX.Element => {
     variant: ToastVariant.INFO,
   });
 
-  const showToast = (message: string, variant: ToastVariant) =>
+  const showToast = (message: string, variant: ToastVariant): void =>
     setToast({
       message,
       variant,
       open: true,
     });
 
-  const closeToast = () =>
+  const closeToast = (): void =>
     setToast({
       message: '',
       open: false,

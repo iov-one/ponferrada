@@ -60,7 +60,7 @@ interface Props {
   readonly message: string;
   readonly onClose: () => void;
   readonly variant: ToastVariant;
-  readonly ref?: React.Ref<any>;
+  readonly ref?: React.Ref<any>; //eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**
@@ -68,7 +68,13 @@ interface Props {
  * forwardRef documentation: https://reactjs.org/docs/forwarding-refs.html.
  * I decided not to use `forwardRef` but to add ref property to the `Props` interfaces
  */
-const ToastContent = ({ className, message, onClose, variant, ref }: Props) => {
+const ToastContent = ({
+  className,
+  message,
+  onClose,
+  variant,
+  ref,
+}: Props): JSX.Element => {
   const Icon = variantIcon[variant];
   const classes = useStyles();
 
