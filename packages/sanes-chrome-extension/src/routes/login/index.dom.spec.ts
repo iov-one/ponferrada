@@ -6,7 +6,6 @@ import { travelToLogin } from './test/travelToLogin';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
 import { sleep } from '../../utils/timer';
-import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 
 describe('DOM > Feature > Login', () => {
   let store: Store<RootState>;
