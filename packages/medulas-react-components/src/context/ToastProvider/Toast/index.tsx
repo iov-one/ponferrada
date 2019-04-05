@@ -1,5 +1,4 @@
-import { Snackbar } from '@material-ui/core';
-import { SnackbarOrigin } from '@material-ui/core/Snackbar';
+import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 import * as React from 'react';
 import ToastContent from './ToastContent';
 
