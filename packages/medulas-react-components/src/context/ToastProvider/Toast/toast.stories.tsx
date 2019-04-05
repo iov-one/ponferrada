@@ -8,7 +8,7 @@ storiesOf('Toasts', module)
   .add('Success', () => (
     <Storybook>
       <Toast
-        open={open}
+        open={true}
         onClose={action('closed')}
         message="Success toast"
         variant={ToastVariant.SUCCESS}
@@ -18,7 +18,7 @@ storiesOf('Toasts', module)
   .add('Error', () => (
     <Storybook>
       <Toast
-        open={open}
+        open={true}
         onClose={action('closed')}
         message="Error toast"
         variant={ToastVariant.ERROR}
@@ -28,7 +28,7 @@ storiesOf('Toasts', module)
   .add('Warning', () => (
     <Storybook>
       <Toast
-        open={open}
+        open={true}
         onClose={action('closed')}
         message="Warning toast"
         variant={ToastVariant.WARNING}

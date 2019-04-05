@@ -142,6 +142,29 @@ const themeObject: ThemeOptions = {
         fontSize: '1.4rem',
       },
     },
+    MuiSnackbarContent: {
+      root: {
+        [theme.breakpoints.up('xs')]: {
+          borderRadius: 2,
+          boxShadow: '0 0 6px 0 #f3f4fb',
+        },
+        width: 460,
+        backgroundColor: theme.palette.background,
+        padding: `${theme.spacing(2)}px ${theme.spacing(3)}px`,
+        flexWrap: 'nowrap',
+      },
+      message: {
+        display: 'flex',
+        flexGrow: 1,
+        padding: 0,
+      },
+      action: {
+        flexGrow: 0,
+        margin: 0,
+        padding: 0,
+        marginRight: 0,
+      },
+    },
   },
   //https://material-ui.com/customization/themes/#properties
   props: {
