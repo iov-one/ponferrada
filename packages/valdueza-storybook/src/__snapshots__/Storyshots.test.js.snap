@@ -316,7 +316,92 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components /TextFieldForm Examples 1`] = `
+exports[`Storyshots Components /forms Form 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiFormControl-root-271 MuiFormControl-marginNormal-272 MuiTextField-root-270"
+  >
+    <label
+      className="MuiFormLabel-root-287 MuiInputLabel-root-275 MuiInputLabel-formControl-281 MuiInputLabel-animated-284 MuiInputLabel-shrink-283"
+      data-shrink={true}
+    >
+      Unique Identifier
+    </label>
+    <div
+      className="MuiInputBase-root-307 MuiOutlinedInput-root-294 MuiInputBase-formControl-308"
+      onClick={[Function]}
+    >
+      <fieldset
+        aria-hidden={true}
+        className="MuiPrivateNotchedOutline-root-324 MuiOutlinedInput-notchedOutline-301"
+        style={
+          Object {
+            "paddingLeft": 8,
+          }
+        }
+      >
+        <legend
+          className="MuiPrivateNotchedOutline-legend-325"
+          style={
+            Object {
+              "width": 0.01,
+            }
+          }
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "&#8203;",
+              }
+            }
+          />
+        </legend>
+      </fieldset>
+      <input
+        aria-invalid={false}
+        className="MuiInputBase-input-317 MuiOutlinedInput-input-302"
+        disabled={false}
+        name="uniqueIdentifier"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Unique Identifier"
+        required={false}
+        type="text"
+      />
+    </div>
+  </div>
+  <button
+    className="MuiButtonBase-root-343 MuiButtonBase-disabled-344 MuiButton-root-326 MuiButton-contained-334 MuiButton-containedPrimary-335 MuiButton-disabled-338"
+    disabled={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="-1"
+    type="submit"
+  >
+    <span
+      className="MuiButton-label-327"
+    >
+      Submit
+    </span>
+  </button>
+  <pre>
+    {}
+  </pre>
+</form>
+`;
+
+exports[`Storyshots Components /forms TextField 1`] = `
 <div
   className="MuiBox-root-346 MuiBox-root-347"
 >
