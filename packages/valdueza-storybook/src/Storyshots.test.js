@@ -1,5 +1,6 @@
 import initStoryshots from '@storybook/addon-storyshots';
 
 initStoryshots({
-  framework: 'react'
+  framework: 'react',
+  storyKindRegex: /^((?!.*?Test disabled).)*$/,
 });
