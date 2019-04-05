@@ -60,14 +60,21 @@ interface Props {
   readonly message: string;
   readonly onClose: () => void;
   readonly variant: ToastVariant;
+  readonly ref?: React.Ref<any>;
 }
 
-const ToastContent = ({ className, message, onClose, variant }: Props) => {
+/**
+ * `ref` is required, otherwise I got error "Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?"
+ * forwardRef documentation: https://reactjs.org/docs/forwarding-refs.html.
+ * I decided not to use `forwardRef` but to add ref property to the `Props` interfaces
+ */
+const ToastContent = ({ className, message, onClose, variant, ref }: Props) => {
   const Icon = variantIcon[variant];
   const classes = useStyles();
 
   return (
     <SnackbarContent
+      innerRef={ref}
       className={classNames(classes[variant], className)}
       message={
         <Block className={classes.message} flexGrow={1}>
