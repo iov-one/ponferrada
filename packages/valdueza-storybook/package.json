@@ -5,7 +5,7 @@
   "scripts": {
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9009 -s public",
-    "test": "CI=true oza-react-scripts test --env=jsdom"
+    "test": "CI=true react-scripts test --env=jsdom"
   },
   "browserslist": [
     ">0.2%",
@@ -17,7 +17,9 @@
     "extends": "react-app"
   },
   "dependencies": {
-    "medulas-react-components": "^0.0.0",
-    "oza-react-scripts": "^0.0.0"
+    "medulas-react-components": "^0.0.0"
+  },
+  "devDependencies": {
+    "chrome-extension-react-scripts": "^0.1.0"
   }
 }

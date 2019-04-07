@@ -2,22 +2,26 @@
   "name": "sanes-chrome-extension",
   "version": "0.0.0",
   "private": true,
+  "config": {
+    "cs": "src/extension/contentscript.ts",
+    "bs": "src/extension/backgroundscript.ts"
+  },
   "scripts": {
     "use-config-test": "cp ./config/test.json ./public/assets/config/conf.json",
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
     "use-config-production": "cp ./config/production.json ./public/assets/config/conf.json",
-    "build": "oza-react-scripts build",
+    "build": "react-scripts build $npm_package_config_cs $npm_package_config_bs",
     "export": "yarn use-config-production && yarn build && web-ext build --source-dir ./build/ --artifacts-dir ./exports --overwrite-dest",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'",
+    "start": "yarn use-config-test && react-scripts start $npm_package_config_cs $npm_package_config_bs",
     "start:firefox:test": "yarn use-config-test && yarn build && web-ext run --source-dir ./build/",
     "start:firefox:development": "yarn use-config-development && yarn build && web-ext run --source-dir ./build/",
     "start:firefox:production": "yarn use-config-production && yarn build && web-ext run --source-dir ./build/",
-    "test-dom": "yarn use-config-test && CI=true oza-react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
-    "test-e2e": "yarn use-config-test && CI=true oza-react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
-    "test-unit": "yarn use-config-test && CI=true oza-react-scripts test --env=jsdom ",
-    "test": "yarn test-dom && yarn test-e2e",
-    "watch": "yarn use-config-test && cra-build-watch --cs src/extension/contentscript.ts --bs src/extension/backgroundscript.ts"
+    "test-dom": "yarn use-config-test && CI=true react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
+    "test-e2e": "yarn use-config-test && CI=true react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
+    "test-unit": "yarn use-config-test && CI=true react-scripts test --env=jsdom ",
+    "test": "yarn test-dom && yarn test-e2e"
   },
   "browserslist": [
     ">0.2%",
@@ -48,11 +52,9 @@
     "level-js": "^4.0.0",
     "medulas-react-components": "*",
     "memdown": "^3.0.0",
-    "oza-react-scripts": "^0.0.0",
     "random-js": "^2.0.0-rc5",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.5",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "typesafe-actions": "^3.2.1",
@@ -62,7 +64,7 @@
     "@types/encoding-down": "^5.0.0",
     "@types/levelup": "^3.1.0",
     "@types/memdown": "^3.0.0",
-    "cra-build-watch": "apanizo/cra-build-watch#a768c63d7deb0d56754426b0071a85562d0d9509",
+    "chrome-extension-react-scripts": "^0.1.0",
     "puppeteer": "^1.13.0"
   }
 }
