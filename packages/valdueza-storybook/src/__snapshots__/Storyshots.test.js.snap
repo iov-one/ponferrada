@@ -894,7 +894,10 @@ Array [
             <input
               className="MuiPrivateSwitchBase-input-182 MuiSwitch-input-176"
               onChange={[Function]}
-              type="checkbox"
+              onFocus={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
             />
           </span>
         </span>
@@ -1234,7 +1237,7 @@ Array [
         width={16}
       />
     </div>
-  </div>,
+  </div>
   <div
     className="MuiBox-root-236 MuiBox-root-247"
   >
@@ -1351,7 +1354,7 @@ Array [
   >
     <img
       alt="IOV logo"
-      className="Hook-root-z8j3qi"
+      className="makeStyles-root-521"
       height={39}
       src="iov-logo.png"
       width={84}
