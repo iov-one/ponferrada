@@ -17,15 +17,15 @@ const anchorProps: SnackbarOrigin = {
 interface Props {
   readonly open: boolean;
   readonly onClose: () => void;
-  readonly message: string;
-  readonly variant: ToastVariant;
+  readonly message?: string;
+  readonly variant?: ToastVariant;
 }
 
 export const Toast = ({
   open,
   onClose,
-  message,
-  variant,
+  message = '',
+  variant = ToastVariant.INFO,
 }: Props): JSX.Element => {
   return (
     <Snackbar
