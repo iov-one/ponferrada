@@ -36,22 +36,21 @@ export const ToastProvider = ({ children }: Props): JSX.Element => {
 
   const closeToast = (): void =>
     setToast({
-      message: '',
       open: false,
-      variant: ToastVariant.INFO,
     });
 
   const toastConfig = {
-    showToast: showToast,
-    onClose: closeToast,
-    open: toast.open,
-    message: toast.message,
-    variant: toast.variant,
+    show: showToast,
+    close: closeToast,
   };
 
+  const invariantToastConfig = singleton(
+    (toastConfig): ToastContextInterface => toastConfig
+  );
+
   return (
-    <ToastContext.Provider value={toastConfig}>
-      <SharedToast />
+    <ToastContext.Provider value={invariantToastConfig(toastConfig)}>
+      <Toast {...toast} onClose={closeToast} />
       {children}
     </ToastContext.Provider>
   );

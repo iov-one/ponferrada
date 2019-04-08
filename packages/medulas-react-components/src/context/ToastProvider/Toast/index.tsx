@@ -34,7 +34,9 @@ export const Toast = ({
       autoHideDuration={5000}
       onClose={onClose}
     >
-      <ToastContent onClose={onClose} variant={variant} message={message} />
+      {open && (
+        <ToastContent onClose={onClose} variant={variant} message={message} />
+      )}
     </Snackbar>
   );
 };
