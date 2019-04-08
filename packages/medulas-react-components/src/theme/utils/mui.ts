@@ -148,7 +148,7 @@ const themeObject: ThemeOptions = {
           borderRadius: 2,
           boxShadow: '0 0 6px 0 #f3f4fb',
         },
-        width: 460,
+        width: 350,
         backgroundColor: white,
         padding: `${theme.spacing(2)}px ${theme.spacing(3)}px`,
         flexWrap: 'nowrap',
