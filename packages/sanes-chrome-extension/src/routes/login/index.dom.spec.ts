@@ -48,8 +48,6 @@ describe('DOM > Feature > Login', (): void => {
       }
     );
 
-    await sleep(20000);
-    console.log(store.getState());
     await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
   }, 55000);
 });

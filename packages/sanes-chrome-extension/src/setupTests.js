@@ -1,3 +1,5 @@
+import LinkMock from './utils/test/LinkMock';
+
 export const window = global.window || {};
 // Hack while material-ui Box fixes its internal problem
 // https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.js#L31
@@ -9,8 +11,12 @@ window.disableShallowSupport = true;
 global.window = window;
 global.config = require('../public/assets/config/conf.json');
 
+jest.doMock('medulas-react-components/lib/components/Link', () => {
+  return LinkMock;
+});
+
 class LocalStorageMock {
-  store: Record<string, any>; // eslint-disable-line
+  //store: Record<string, any>; // eslint-disable-line
 
   constructor() {
     this.store = {};
