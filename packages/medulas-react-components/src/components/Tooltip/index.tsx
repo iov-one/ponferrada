@@ -1,4 +1,4 @@
-import { Popper, makeStyles } from '@material-ui/core';
+import { Popper, makeStyles, Theme } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import * as React from 'react';
 import Image from '../Image';
@@ -7,7 +7,8 @@ import theme from '../../theme/utils/mui';
 
 const DEFAULT_HEIGHT = 16;
 
-const useStyles = makeStyles(theme => ({
+//eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     padding: theme.spacing(2),
     boxShadow: `0 0 14px 0 #edeff4`,
@@ -92,7 +93,7 @@ interface Props {
 
 const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
   const [open, setOpen] = React.useState<boolean>(false);
-  const toggle = (): void => setOpen(open => !open);
+  const toggle = (): void => setOpen(open => !open); //eslint-disable-line @typescript-eslint/explicit-function-return-type
 
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
 
@@ -104,7 +105,7 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
     maxWidth,
   };
 
-  const arrowRefCb = React.useCallback((node: HTMLSpanElement | null) => {
+  const arrowRefCb = React.useCallback((node: HTMLSpanElement | null): void => {
     if (node !== null) {
       setArrowRef(node);
     }

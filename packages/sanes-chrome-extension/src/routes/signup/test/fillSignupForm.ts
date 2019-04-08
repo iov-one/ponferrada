@@ -25,34 +25,42 @@ export const submitAccountForm = async (
   const passwordField = inputs[1];
   const passwordConfirmField = inputs[2];
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.change(accountNameField, {
-      target: {
-        value: accountName,
-      },
-    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.change(accountNameField, {
+        target: {
+          value: accountName,
+        },
+      } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
+    }
+  );
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.change(passwordField, {
-      target: { value: password },
-    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.change(passwordField, {
+        target: { value: password },
+      } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
+    }
+  );
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.change(passwordConfirmField, {
-      target: { value: password },
-    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.change(passwordConfirmField, {
+        target: { value: password },
+      } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
+    }
+  );
 
   const form = TestUtils.findRenderedDOMComponentWithTag(
     AccountSubmitDom,
     'form'
   );
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.submit(form);
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.submit(form);
+    }
+  );
 
   await findRenderedDOMComponentWithId(
     AccountSubmitDom,
@@ -68,11 +76,13 @@ export const handlePassPhrase = async (
     'input'
   );
   expect(inputs.length).toBe(1);
-  TestUtils.act(() => {
-    TestUtils.Simulate.change(inputs[0], {
-      target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
-    });
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.change(inputs[0], {
+        target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
+      });
+    }
+  );
 
   await sleep(600);
 
@@ -90,9 +100,11 @@ export const handlePassPhrase = async (
   );
   expect(buttons.length).toBe(2);
   const nextButton = buttons[1];
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(nextButton);
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.click(nextButton);
+    }
+  );
 
   await findRenderedDOMComponentWithId(
     RecoveryPhraseDom,
@@ -110,20 +122,24 @@ export const handleSecurityHint = async (
     'input'
   );
   expect(inputs.length).toBe(1);
-  TestUtils.act(() => {
-    TestUtils.Simulate.change(inputs[0], {
-      target: { value: 'Dummy Hint' },
-    } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.change(inputs[0], {
+        target: { value: 'Dummy Hint' },
+      } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
+    }
+  );
 
   const form = TestUtils.findRenderedDOMComponentWithTag(
     SecurityHintDom,
     'form'
   );
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.submit(form);
-  });
+  TestUtils.act(
+    (): void => {
+      TestUtils.Simulate.submit(form);
+    }
+  );
 
   await sleep(400);
   const hint = getHintPhrase(accountName);

@@ -10,16 +10,18 @@ import {
 import { travelToSignup } from './test/travelToSignup';
 import { randomString } from '../../utils/test/random';
 
-describe('DOM > Feature > Signup', () => {
+describe('DOM > Feature > Signup', (): void => {
   let store: Store<RootState>;
 
-  beforeEach(() => {
-    store = aNewStore();
-  });
+  beforeEach(
+    (): void => {
+      store = aNewStore();
+    }
+  );
 
   mayTestChains(
     `should finish the signup three steps process`,
-    async () => {
+    async (): Promise<void> => {
       const signupDOM = await travelToSignup(store);
       const accountName = randomString(10);
 

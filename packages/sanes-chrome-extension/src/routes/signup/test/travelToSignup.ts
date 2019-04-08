@@ -9,9 +9,11 @@ export const travelToSignup = async (
   store: Store
 ): Promise<React.Component> => {
   const dom = createDom(store);
-  TestUtils.act(() => {
-    history.push(SIGNUP_ROUTE);
-  });
+  TestUtils.act(
+    (): void => {
+      history.push(SIGNUP_ROUTE);
+    }
+  );
   await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);
 
   return dom;

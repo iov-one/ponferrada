@@ -51,36 +51,43 @@ const gridItemWidth: SizingBreakpoint = {
   sm: '50%',
 };
 
-storiesOf('Components /TextFieldForm', module).add('Examples', () => (
-  <Storybook>
-    <Grid flexWrap="wrap">
-      <GridItem marginBottom={4} width={gridItemWidth}>
-        <TextField
-          name="field-with-error"
-          label="Error"
-          defaultValue="Standard Error"
-          helperText="This is an error message"
-          error
-        />
-      </GridItem>
-      <GridItem marginBottom={4} width={gridItemWidth}>
-        <TextField name="field-filled" label="Filled" defaultValue="test*iov" />
-      </GridItem>
-      <GridItem marginBottom={4} width={gridItemWidth}>
-        <TextField
-          disabled
-          name="standard-disabled"
-          label="Disabled"
-          defaultValue="Disabled input"
-        />
-      </GridItem>
-      <GridItem marginBottom={4} width={gridItemWidth}>
-        <TextField
-          name="standard-with-placeholder"
-          label="Empty"
-          placeholder="IOV or wallet address"
-        />
-      </GridItem>
-    </Grid>
-  </Storybook>
-));
+storiesOf('Components /TextFieldForm', module).add(
+  'Examples',
+  (): JSX.Element => (
+    <Storybook>
+      <Grid flexWrap="wrap">
+        <GridItem marginBottom={4} width={gridItemWidth}>
+          <TextField
+            name="field-with-error"
+            label="Error"
+            defaultValue="Standard Error"
+            helperText="This is an error message"
+            error
+          />
+        </GridItem>
+        <GridItem marginBottom={4} width={gridItemWidth}>
+          <TextField
+            name="field-filled"
+            label="Filled"
+            defaultValue="test*iov"
+          />
+        </GridItem>
+        <GridItem marginBottom={4} width={gridItemWidth}>
+          <TextField
+            disabled
+            name="standard-disabled"
+            label="Disabled"
+            defaultValue="Disabled input"
+          />
+        </GridItem>
+        <GridItem marginBottom={4} width={gridItemWidth}>
+          <TextField
+            name="standard-with-placeholder"
+            label="Empty"
+            placeholder="IOV or wallet address"
+          />
+        </GridItem>
+      </Grid>
+    </Storybook>
+  )
+);

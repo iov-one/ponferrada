@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener(
     message: MsgToBackground,
     sender: chrome.runtime.MessageSender,
     sendResponse
-  ) => {
+  ): void => {
     switch (message.msg) {
       case CTB_MSG_HELLO:
         if (sender.tab) {
