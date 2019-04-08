@@ -73,7 +73,7 @@ To get started, please go to the root directory and run:
 yarn install
 yarn build
 cd packages/
-yarn watch
+yarn start
 ```
 
 Then open your chrome browser and add the new generated extension (the build folder)
