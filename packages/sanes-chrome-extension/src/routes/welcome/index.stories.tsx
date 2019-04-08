@@ -5,7 +5,7 @@ import Layout from './index';
 
 storiesOf('Routes/Welcome', module).add(
   'Welcome page',
-  (): void => (
+  (): JSX.Element => (
     <Storybook>
       <Layout />
     </Storybook>
