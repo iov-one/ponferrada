@@ -72,7 +72,7 @@ To get started, please go to the root directory and run:
 ```
 yarn install
 yarn build
-cd packages/sanes-chrome-extension/
+cd packages/
 yarn watch
 ```
 
@@ -80,7 +80,7 @@ Then open your chrome browser and add the new generated extension (the build fol
 
 1. open the following link chrome://extensions/
 2. Turn on `Developer mode`
-3. Click load unpacked and go to the `ponferrada/sanes-chrome-extension/build` folder
+3. Click load unpacked and go to the `ponferrada/build` folder
 4. You have the iov-ponferrada extension in your browser!
 
 ### Testing
@@ -107,6 +107,38 @@ Main test stack. It is used to run DOM tests using react test-utils functionalit
 
 ```
 yarn test
+```
+
+`yarn test` will run jest tests of the entire system. However, a number of tests do end-to-end integration and require a demo blockchain running locally to be completed. By default these are skipped, unless you set the `CHAINS_ENABLED=1` environmental variable to signal they should be run.
+
+If you want to run these locally, make sure you are on a system that supports docker and that your local user has rights to connect to docker (I often use a Linux Virtualbox just for this). You must have `docker` and `docker-compose` installed.
+
+In case you are running MAC_OS you should do:
+
+```shell
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+
+brew install jq
+brew install coreutils
+alias timeout=gtimeout
+
+# Add TMPDIR=/private/var/tmp before any bash script
+# TMPDIR=/private/var/tmp bash ./scripts/test_start.sh
+```
+
+In such a case, you can run the full chain test suite from inside sanes-chrome-extension package folder:
+
+```shell
+cd packages/sanes-chrome-extension/
+# start all blockchains and a local faucets that serves multiple tokens
+bash ./test/scripts/test_start.sh
+
+export CHAINS_ENABLED=1
+# you can run this a few times....
+yarn test
+
+# stop them afterwards
+bash ./test/scripts/test_stop.sh
 ```
 
 #### Puppeteer
