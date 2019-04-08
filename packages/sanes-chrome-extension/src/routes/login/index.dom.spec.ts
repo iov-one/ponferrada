@@ -5,7 +5,6 @@ import TestUtils from 'react-dom/test-utils';
 import { travelToLogin } from './test/travelToLogin';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
-import { sleep } from '../../utils/timer';
 
 describe('DOM > Feature > Login', (): void => {
   let store: Store<RootState>;

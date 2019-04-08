@@ -6,8 +6,8 @@ interface Props {
   readonly children: React.ReactNode;
 }
 
-const LinkMock = ({ to, children }: Props) => {
-  const onClick = () => {
+const LinkMock = ({ to, children }: Props): JSX.Element => {
+  const onClick = (): boolean => {
     history.push(to);
     return false;
   };
