@@ -1,7 +1,6 @@
 import * as React from 'react';
 import theme from './utils/mui';
 import { ThemeProvider } from '@material-ui/styles';
-import { ToastProvider } from '../context/ToastProvider';
 
 interface Props {
   readonly injectFonts?: boolean;
@@ -22,11 +21,7 @@ const MedulasThemeProvider = ({
     require('./utils/fonts.css');
   }
 
-  return (
-    <ThemeProvider theme={theme}>
-      <ToastProvider>{children}</ToastProvider>
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default MedulasThemeProvider;
