@@ -2,10 +2,10 @@ import puppeteer, { Browser, Page } from 'puppeteer';
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../theme/constants';
 import { WELCOME_ROUTE } from '../paths';
 
-describe('DOM > Welcome route', () => {
+describe('DOM > Welcome route', (): void => {
   let browser: Browser;
 
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     const CRX_PATH = require('path').join(__dirname, '../../../build');
     browser = await puppeteer.launch({
       headless: false,
@@ -22,18 +22,22 @@ describe('DOM > Welcome route', () => {
     });
   }, 45000);
 
-  afterEach(async () => {
-    await browser.close();
-  });
+  afterEach(
+    async (): Promise<void> => {
+      await browser.close();
+    }
+  );
 
-  it('loads correctly', async () => {
+  it('loads correctly', async (): Promise<void> => {
     const page: Page = await browser.newPage();
     await page.goto(
       'chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html',
       { waitUntil: 'networkidle2' }
     );
 
-    const inner = await page.evaluate(async (id: string) => {
+    const inner = await page.evaluate(async (id: string): Promise<
+      string | undefined
+    > => {
       const element = document.getElementById(id);
       if (!element) {
         return undefined;

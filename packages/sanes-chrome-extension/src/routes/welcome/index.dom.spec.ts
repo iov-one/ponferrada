@@ -7,24 +7,28 @@ import { aNewStore } from '../../store';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { sleep } from '../../utils/timer';
 
-describe('DOM > Feature > Welcome', () => {
+describe('DOM > Feature > Welcome', (): void => {
   let store: Store<RootState>;
   let dom: React.Component;
 
-  beforeEach(async () => {
-    store = aNewStore();
-    dom = createDom(store);
-    TestUtils.act(() => {
-      history.push(WELCOME_ROUTE);
-    });
-    await sleep(500);
-  });
+  beforeEach(
+    async (): Promise<void> => {
+      store = aNewStore();
+      dom = createDom(store);
+      TestUtils.act(
+        (): void => {
+          history.push(WELCOME_ROUTE);
+        }
+      );
+      await sleep(500);
+    }
+  );
 
-  it(`should create Welcome layout view`, async () => {
+  it(`should create Welcome layout view`, async (): Promise<void> => {
     await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
   }, 55000);
 
-  it(`should create three buttons`, async () => {
+  it(`should create three buttons`, async (): Promise<void> => {
     const buttons = TestUtils.scryRenderedDOMComponentsWithTag(dom, 'button');
 
     expect(buttons.length).toBe(3);

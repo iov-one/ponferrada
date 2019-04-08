@@ -47,8 +47,11 @@ const FormStory = (): JSX.Element => {
   );
 };
 
-storiesOf('Components /forms', module).add('Form', () => (
-  <Storybook>
-    <FormStory />
-  </Storybook>
-));
+storiesOf('Components /forms', module).add(
+  'Form',
+  (): JSX.Element => (
+    <Storybook>
+      <FormStory />
+    </Storybook>
+  )
+);

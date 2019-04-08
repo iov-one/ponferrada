@@ -7,26 +7,28 @@ export const findRenderedDOMComponentWithId = (
   tree: React.Component<any>, // eslint-disable-line
   id: string
 ): Promise<React.ReactInstance> =>
-  new Promise((resolve, reject) => {
-    let times = 0;
-    const interval = setInterval(() => {
-      if (times >= MAX_TIMES_EXECUTED) {
-        clearInterval(interval);
-        reject(`Unable to find element with id: ${id}.`);
-      }
-
-      const elementsWithId = TestUtils.findAllInRenderedTree(
-        tree,
-        (inst: React.ReactInstance) => {
-          return TestUtils.isDOMComponent(inst) && inst.id === id;
+  new Promise(
+    (resolve, reject): void => {
+      let times = 0;
+      const interval = setInterval((): void => {
+        if (times >= MAX_TIMES_EXECUTED) {
+          clearInterval(interval);
+          reject(`Unable to find element with id: ${id}.`);
         }
-      );
 
-      if (elementsWithId.length === 1) {
-        clearInterval(interval);
-        resolve(elementsWithId[0]);
-      }
+        const elementsWithId = TestUtils.findAllInRenderedTree(
+          tree,
+          (inst: React.ReactInstance): boolean => {
+            return TestUtils.isDOMComponent(inst) && inst.id === id;
+          }
+        );
 
-      times += 1;
-    }, INTERVAL);
-  });
+        if (elementsWithId.length === 1) {
+          clearInterval(interval);
+          resolve(elementsWithId[0]);
+        }
+
+        times += 1;
+      }, INTERVAL);
+    }
+  );

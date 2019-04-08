@@ -13,28 +13,33 @@ const store = new Store();
 
 const rootEl = document.getElementById('root');
 
-store.ready().then(() => {
-  history.push(WELCOME_ROUTE);
+store.ready().then(
+  (): void => {
+    history.push(WELCOME_ROUTE);
 
-  const render = (Component: React.ComponentType): void => {
-    ReactDOM.render(
-      <Provider store={store}>
-        <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-          <ConnectedRouter history={history}>
-            <Component />
-          </ConnectedRouter>
-        </MedulasThemeProvider>
-      </Provider>,
-      rootEl
-    );
-  };
+    const render = (Component: React.ComponentType): void => {
+      ReactDOM.render(
+        <Provider store={store}>
+          <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
+            <ConnectedRouter history={history}>
+              <Component />
+            </ConnectedRouter>
+          </MedulasThemeProvider>
+        </Provider>,
+        rootEl
+      );
+    };
 
-  render(Route);
+    render(Route);
 
-  if (module.hot) {
-    module.hot.accept('./routes', () => {
-      const NextApp = require('./routes').default;
-      render(NextApp);
-    });
+    if (module.hot) {
+      module.hot.accept(
+        './routes',
+        (): void => {
+          const NextApp = require('./routes').default;
+          render(NextApp);
+        }
+      );
+    }
   }
-});
+);

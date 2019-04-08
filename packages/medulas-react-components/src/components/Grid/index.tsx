@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Box, { BoxProps } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 
 export interface SizingBreakpoint {
   xs?: string | number;
@@ -10,7 +10,7 @@ export interface SizingBreakpoint {
 }
 
 // TODO: Remove those props after BoxProps will be properly implemented.
-interface Props extends BoxProps {
+interface Props {
   readonly children?: React.ReactNode;
   //Flexbox Props
   readonly flexDirection?:
