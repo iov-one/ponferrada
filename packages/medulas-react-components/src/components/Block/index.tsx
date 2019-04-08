@@ -89,6 +89,8 @@ interface Props {
   readonly borderRadius?: string | number;
   //Palette
   readonly bgcolor?: string;
+  //Regular react.component props
+  readonly className?: string;
 }
 
 // TODO fix once the proper BoxProps have been updated

@@ -51,8 +51,8 @@ const gridItemWidth: SizingBreakpoint = {
   sm: '50%',
 };
 
-storiesOf('Components /TextFieldForm', module).add(
-  'Examples',
+storiesOf('Components /forms', module).add(
+  'TextField',
   (): JSX.Element => (
     <Storybook>
       <Grid flexWrap="wrap">
