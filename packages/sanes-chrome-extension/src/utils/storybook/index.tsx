@@ -7,6 +7,7 @@ import * as React from 'react';
 
 const history = createMemoryHistory();
 
+//eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const createRootReducer = (history: History) =>
   combineReducers({
     router: connectRouter(history),

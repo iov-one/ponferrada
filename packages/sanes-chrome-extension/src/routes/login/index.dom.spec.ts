@@ -7,14 +7,16 @@ import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
 import { sleep } from '../../utils/timer';
 
-describe('DOM > Feature > Login', () => {
+describe('DOM > Feature > Login', (): void => {
   let store: Store<RootState>;
 
-  beforeEach(() => {
-    store = aNewStore();
-  });
+  beforeEach(
+    (): void => {
+      store = aNewStore();
+    }
+  );
 
-  it(`should two inputs and one button`, async () => {
+  it(`should two inputs and one button`, async (): Promise<void> => {
     const LoginDom = await travelToLogin(store);
 
     const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
@@ -40,9 +42,11 @@ describe('DOM > Feature > Login', () => {
     expect(moreOptionsLink).not.toBeNull();
     expect(moreOptionsLink.tagName.toLowerCase()).toBe('a');
 
-    TestUtils.act(() => {
-      TestUtils.Simulate.click(moreOptionsLink);
-    });
+    TestUtils.act(
+      (): void => {
+        TestUtils.Simulate.click(moreOptionsLink);
+      }
+    );
 
     await sleep(20000);
     console.log(store.getState());

@@ -37,17 +37,21 @@ describe('DOM > Feature > Welcome', (): void => {
 
     //Click on login button
     const loginButton = buttons[0];
-    TestUtils.act(() => {
-      TestUtils.Simulate.click(loginButton);
-    });
+    TestUtils.act(
+      (): void => {
+        TestUtils.Simulate.click(loginButton);
+      }
+    );
 
     await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
 
     //Click on signup button
     const signUpButton = buttons[1];
-    TestUtils.act(() => {
-      TestUtils.Simulate.click(signUpButton);
-    });
+    TestUtils.act(
+      (): void => {
+        TestUtils.Simulate.click(signUpButton);
+      }
+    );
 
     await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);
   }, 55000);

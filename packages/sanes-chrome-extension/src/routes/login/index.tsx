@@ -25,7 +25,8 @@ const validate = (values: object): object => {
   return errors;
 };
 
-const onLogin = async (_: object): Promise<void> => {
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
+const onLogin = async (values: object): Promise<void> => {
   //const formValues = values as FormValues;
 };
 

@@ -7,9 +7,11 @@ import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
 
 export const travelToLogin = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
-  TestUtils.act(() => {
-    history.push(LOGIN_ROUTE);
-  });
+  TestUtils.act(
+    (): void => {
+      history.push(LOGIN_ROUTE);
+    }
+  );
   await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
 
   return dom;
