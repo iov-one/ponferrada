@@ -16,7 +16,7 @@ jest.doMock('medulas-react-components/lib/components/Link', () => {
 });
 
 class LocalStorageMock {
-  //store: Record<string, any>; // eslint-disable-line
+  store: Record<string, any>; // eslint-disable-line
 
   constructor() {
     this.store = {};
