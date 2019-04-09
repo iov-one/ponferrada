@@ -5,15 +5,17 @@ import { ConnectedRouter, connectRouter } from 'connected-react-router';
 import { createStore, combineReducers } from 'redux';
 import * as React from 'react';
 
-const history = createMemoryHistory();
+const storybookHistory = createMemoryHistory();
 
 //eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const createRootReducer = (history: History) =>
+const storybookCreateRootReducer = (history: History) =>
   combineReducers({
     router: connectRouter(history),
   });
 
-const store = createStore(createRootReducer(history));
+const storybookStore = createStore(
+  storybookCreateRootReducer(storybookHistory)
+);
 
 interface Props {
   readonly children: React.ReactNode;
@@ -21,8 +23,8 @@ interface Props {
 
 export const SanesStorybook = ({ children }: Props): JSX.Element => {
   return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
+    <Provider store={storybookStore}>
+      <ConnectedRouter history={storybookHistory}>
         <Storybook>{children}</Storybook>
       </ConnectedRouter>
     </Provider>
