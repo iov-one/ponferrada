@@ -2,21 +2,19 @@ import { ChainId, TxReadCodec, Algorithm } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
 
 import { ChainConfig, ChainSpec, Config, fetchConfig } from './fetchConfig';
-import { chainConnector, Codec, codecFromString } from '../connection';
+import { chainConnector, codecFromString } from '../connection';
 import { algorithmForCodec, pathForCodec } from '../wallet';
 import { singleton } from '../../../utils/singleton';
 
 export interface EnhancedChainSpec extends ChainSpec {
   readonly chainId: ChainId;
-  readonly codec: Codec;
   readonly algorithm: Algorithm;
   readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
   readonly encoder: TxReadCodec;
 }
 
 const alreadyEnhanced = (spec: ChainSpec): spec is EnhancedChainSpec =>
-  typeof (spec as EnhancedChainSpec).chainId === 'string' &&
-  typeof (spec as EnhancedChainSpec).codec === 'string';
+  typeof (spec as EnhancedChainSpec).chainId === 'string';
 
 // fetchFullSpec will ensure the full chain info is present
 const enhanceChainsInfo = async (
@@ -43,7 +41,6 @@ const enhanceChainsInfo = async (
   const chainSpecWithId = {
     ...chainSpec,
     chainId,
-    codec, // why is this returned?
     algorithm,
     derivePath,
     encoder: connector.codec,
