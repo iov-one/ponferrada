@@ -7,7 +7,7 @@ import {
   ACCOUNT_NAME_FIELD,
   PASSWORD_FIELD,
 } from './components/NewAccountForm';
-import { getPersonaFromConfig } from '../../logic';
+import { getPersonaFromConfig } from '../../logic/persona/fromconfig';
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';

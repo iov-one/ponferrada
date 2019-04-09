@@ -1,11 +1,11 @@
-import { getPersonaFromConfig } from './index';
-import { mayTestChains } from '../utils/test/testExecutor';
-import * as config from './blockchain/chainsConfig/fetchConfig';
-import { threeChainsConfig } from './test/chainConfigBuilder';
-import { AccountInfo } from './persona';
-import { getConfig } from './blockchain/chainsConfig';
+import { getPersonaFromConfig } from './fromconfig';
+import { mayTestChains } from '../../utils/test/testExecutor';
+import * as config from '../blockchain/chainsConfig/fetchConfig';
+import { threeChainsConfig } from '../test/chainConfigBuilder';
+import { AccountInfo } from '.';
+import { getConfig } from '../blockchain/chainsConfig';
 
-describe('logic', (): void => {
+describe('getPersonaFromConfig', (): void => {
   function checkAccount(
     account: AccountInfo,
     name: string,

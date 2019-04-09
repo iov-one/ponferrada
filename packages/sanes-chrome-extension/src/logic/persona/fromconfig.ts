@@ -1,8 +1,8 @@
 import { UserProfile } from '@iov/keycontrol';
 
-import { createUserProfile } from './user';
-import { getConfig } from './blockchain/chainsConfig';
-import { Persona } from './persona';
+import { createUserProfile } from '../user';
+import { getConfig } from '../blockchain/chainsConfig';
+import { Persona } from '.';
 
 const createPersonaFromConfig = async (): Promise<Persona> => {
   // TODO once we support login modify this for loading from db

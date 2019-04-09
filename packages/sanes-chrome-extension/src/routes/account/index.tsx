@@ -11,8 +11,7 @@ import SelectField, {
 } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
-import { getPersonaFromConfig } from '../../logic';
-import { Persona } from '../../logic/persona';
+import { getPersonaFromConfig, Persona } from '../../logic/persona';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
