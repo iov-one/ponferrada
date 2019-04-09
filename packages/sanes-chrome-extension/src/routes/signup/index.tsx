@@ -45,14 +45,14 @@ const Signup = (): JSX.Element => {
         password,
         accountName.current
       );
-      const account = (await persona.accounts())[0];
-      if (!account) {
+      const firstAccount = (await persona.accounts()).find(() => true);
+      if (!firstAccount) {
         throw new Error('Signup create persona failed');
       }
 
       console.log(
         `We successfuly have created a persona registered in ${
-          account.publicIdentities.size
+          firstAccount.publicIdentities.size
         } chains`
       );
 
