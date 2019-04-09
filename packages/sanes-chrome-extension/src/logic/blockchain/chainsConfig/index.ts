@@ -10,7 +10,7 @@ export interface EnhancedChainSpec extends ChainSpec {
   readonly chainId: ChainId;
   readonly algorithm: Algorithm;
   readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
-  readonly encoder: TxReadCodec;
+  readonly codec: TxReadCodec;
 }
 
 const alreadyEnhanced = (spec: ChainSpec): spec is EnhancedChainSpec =>
@@ -38,12 +38,12 @@ const enhanceChainsInfo = async (
   const derivePath = pathBuilderForCodec(codec);
 
   // now return it...
-  const chainSpecWithId = {
+  const chainSpecWithId: EnhancedChainSpec = {
     ...chainSpec,
     chainId,
     algorithm,
     derivePath,
-    encoder: connector.codec,
+    codec: connector.codec,
   };
 
   return { chainSpec: chainSpecWithId, faucetSpec };
