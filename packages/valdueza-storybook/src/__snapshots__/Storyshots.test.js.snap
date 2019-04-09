@@ -404,7 +404,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root-126 MuiTypography-h4-134 makeStyles-inline-124"
     >
-       
+
       storybook
     </h4>
   </div>
@@ -967,7 +967,7 @@ Array [
   <h6
     className="MuiTypography-root-284 MuiTypography-subtitle2-296 MuiTypography-colorPrimary-307 makeStyles-inline-282"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root-284 MuiTypography-subtitle2-296 makeStyles-inline-282"
@@ -1460,7 +1460,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
     <h4
       className="MuiTypography-root-699 MuiTypography-h4-707 makeStyles-inline-697"
     >
-       
+
       In
     </h4>
   </div>
@@ -1602,7 +1602,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Signup New account page 1`] = `
+exports[`Storyshots Routes/Recovery phrase Main 1`] = `
 <div
   className="MuiBox-root-799 MuiBox-root-800"
   id="/signup1"
@@ -1613,17 +1613,115 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     <h4
       className="MuiTypography-root-804 MuiTypography-h4-812 MuiTypography-colorPrimary-827 makeStyles-inline-802"
     >
-      New
+      Recovery
     </h4>
     <h4
       className="MuiTypography-root-804 MuiTypography-h4-812 makeStyles-inline-802"
     >
-       
-      Account
+
+      phrase
     </h4>
   </div>
   <div
     className="MuiBox-root-799 MuiBox-root-834"
+  >
+    <div
+      className="MuiBox-root-545 MuiBox-root-580"
+    >
+      <div
+        className="MuiBox-root-545 MuiBox-root-581"
+      >
+        <div
+          className="MuiBox-root-545 MuiBox-root-582"
+        >
+          <h6
+            className="MuiTypography-root-549 MuiTypography-subtitle2-561 makeStyles-inline-548"
+          >
+            Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool to recover or back up your wallet on any platform.
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root-545 MuiBox-root-583"
+    >
+      <p
+        className="MuiTypography-root-549 MuiTypography-body1-551 makeStyles-inline-548"
+      >
+
+      </p>
+    </div>
+    <div
+      className="MuiBox-root-545 MuiBox-root-584"
+    >
+      <div
+        className="MuiBox-root-545 MuiBox-root-585"
+      >
+        <button
+          className="MuiButtonBase-root-603 MuiButton-root-586 MuiButton-text-588 MuiButton-textPrimary-589 MuiButton-fullWidth-602"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-587"
+          >
+            Back
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root-545 MuiBox-root-606"
+  />
+  <div
+    className="MuiBox-root-545 MuiBox-root-607"
+  >
+    <img
+      alt="IOV logo"
+      className="makeStyles-root-608"
+      height={39}
+      src="iov-logo.png"
+      width={84}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Signup New account page 1`] = `
+<div
+  className="MuiBox-root-623 MuiBox-root-624"
+  id="/signup1"
+>
+  <div
+    className="MuiBox-root-623 MuiBox-root-625"
+  >
+    <h4
+      className="MuiTypography-root-627 MuiTypography-h4-635 MuiTypography-colorPrimary-650 makeStyles-inline-626"
+    >
+      New
+    </h4>
+    <h4
+      className="MuiTypography-root-627 MuiTypography-h4-635 makeStyles-inline-626"
+    >
+
+      Account
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root-623 MuiBox-root-657"
   >
     <form
       onSubmit={[Function]}
@@ -1909,7 +2007,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root-938 MuiTypography-h4-946 makeStyles-inline-936"
     >
-       
+
       Account
     </h4>
   </div>
@@ -1993,7 +2091,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root-938 MuiTypography-body1-940 makeStyles-inline-936"
       >
-        
+
       </p>
     </div>
     <div
@@ -2088,7 +2186,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     <h4
       className="MuiTypography-root-1050 MuiTypography-h4-1058 makeStyles-inline-1048"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2246,7 +2344,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     <h4
       className="MuiTypography-root-1163 MuiTypography-h4-1171 makeStyles-inline-1161"
     >
-       
+
       to your IOV manager
     </h4>
   </div>
