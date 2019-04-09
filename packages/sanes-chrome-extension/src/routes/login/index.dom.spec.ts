@@ -23,7 +23,7 @@ describe('DOM > Feature > Login', (): void => {
       'input'
     );
 
-    expect(inputs.length).toBe(2);
+    expect(inputs.length).toBe(1);
 
     const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
       LoginDom,
