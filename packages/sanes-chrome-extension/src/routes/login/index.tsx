@@ -6,10 +6,7 @@ import {
 } from 'medulas-react-components/lib/components/forms/Form';
 import LoginControls from './components/LoginControls';
 import { LOGIN_ROUTE } from '../paths';
-import {
-  ACCOUNT_NAME_FIELD,
-  PASSWORD_FIELD,
-} from '../signup/components/NewAccountForm';
+import { PASSWORD_FIELD } from '../signup/components/NewAccountForm';
 import LoginForm from './components/LoginForm';
 
 const validate = (values: object): object => {
