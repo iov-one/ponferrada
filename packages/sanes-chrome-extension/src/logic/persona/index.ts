@@ -31,8 +31,7 @@ class Persona {
   }
 
   public async generateNextAccount(): Promise<void> {
-    const accounts = await this.accounts();
-    const nextDerivation = accounts.length;
+    const nextDerivation = await this.numberOfExistingAccounts();
     await this.generateAccount(nextDerivation);
   }
 
@@ -40,8 +39,14 @@ class Persona {
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
   public async accounts(): Promise<string[]> {
-    const totalAccounts: string[] = [];
+    const totalAccounts: number = await this.numberOfExistingAccounts();
 
+    return Array.from(Array(totalAccounts)).map(
+      (_, index) => `Account ${index}`
+    );
+  }
+
+  private async numberOfExistingAccounts(): Promise<number> {
     const firstChain = this._chains[0];
     const { derivePath } = firstChain;
     const firstWallet = this.walletForAlgorithm(Algorithm.Ed25519);
@@ -55,13 +60,9 @@ class Persona {
       );
 
       if (!existsAccount) {
-        break;
+        return i;
       }
-
-      totalAccounts.push(`Account ${i}`);
     }
-
-    return totalAccounts;
   }
 
   private walletForAlgorithm(algorithm: Algorithm): WalletId {
