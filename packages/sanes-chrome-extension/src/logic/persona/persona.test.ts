@@ -13,7 +13,6 @@ describe('Persona', () => {
     bootstrapNodes: [],
     chainId: 'test-chain-1' as ChainId,
     codec: bnsCodec,
-    codecType: 'bns',
     derivePath: x => HdPaths.iov(x),
   };
 
@@ -22,7 +21,6 @@ describe('Persona', () => {
     bootstrapNodes: [],
     chainId: 'test-chain-2' as ChainId,
     codec: ethereumCodec,
-    codecType: 'eth',
     derivePath: x => HdPaths.ethereum(x),
   };
 

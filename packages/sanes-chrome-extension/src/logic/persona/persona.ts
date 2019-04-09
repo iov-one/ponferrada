@@ -19,9 +19,12 @@ export class Persona {
   private readonly _userProfile: UserProfile;
   private readonly _chains: EnhancedChainSpec[];
 
-  public constructor(userProfile: UserProfile, chains: EnhancedChainSpec[]) {
+  public constructor(
+    userProfile: UserProfile,
+    chains: ReadonlyArray<EnhancedChainSpec>
+  ) {
     this._userProfile = userProfile;
-    this._chains = chains;
+    this._chains = [...chains];
   }
 
   public mnemonic(): string {

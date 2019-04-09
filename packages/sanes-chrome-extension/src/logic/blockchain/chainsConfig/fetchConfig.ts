@@ -3,18 +3,6 @@ import { TokenTicker } from '@iov/bcp';
 import { singleton } from '../../../utils/singleton';
 import { CodecType } from '../connection';
 
-export interface Config<T extends ChainSpec = ChainSpec> {
-  // Note: this is not present on the existing configs
-  // readonly bns: ChainConfig<T>;
-  readonly chains: ChainConfig<T>[];
-}
-
-// We can extend T to also include extra information, such as a chainId field
-export interface ChainConfig<T extends ChainSpec = ChainSpec> {
-  readonly chainSpec: T;
-  readonly faucetSpec?: FaucetSpec;
-}
-
 export interface ChainSpec {
   readonly codecType: CodecType;
   readonly bootstrapNodes: ReadonlyArray<string>;
@@ -25,9 +13,20 @@ export interface FaucetSpec {
   readonly token: TokenTicker;
 }
 
-const fetchConfigData = async (): Promise<Config> => {
+// We can extend T to also include extra information, such as a chainId field
+export interface ChainConfig {
+  readonly chainSpec: ChainSpec;
+  readonly faucetSpec?: FaucetSpec;
+}
+
+export interface FullConfigurationFile {
+  readonly chains: ChainConfig[];
+}
+
+const fetchConfigData = async (): Promise<FullConfigurationFile> => {
   if (process.env.NODE_ENV === 'test') {
-    const config = (window as any).config as Config; // eslint-disable-line
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const config = (window as any).config;
     return config;
   }
 

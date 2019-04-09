@@ -9,10 +9,8 @@ const createPersonaFromConfig = async (): Promise<Persona> => {
   const baseProfile: UserProfile = await createUserProfile();
 
   const config = await getConfig();
-  // Remove the faucetSpect type because for creating a profile is not needed.
-  const derivationInfo = config.chains.map(x => x.chainSpec);
 
-  const persona = new Persona(baseProfile, derivationInfo);
+  const persona = new Persona(baseProfile, config);
   const derivation = 0;
   await persona.generateAccount(derivation);
 

@@ -1,29 +1,26 @@
 import { ChainId, TxReadCodec, Algorithm } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
 
-import { ChainConfig, ChainSpec, Config, fetchConfig } from './fetchConfig';
+import { ChainConfig, FaucetSpec, fetchConfig } from './fetchConfig';
 import { chainConnector, codecFromString } from '../connection';
 import { algorithmForCodec, pathBuilderForCodec } from '../wallet';
 import { singleton } from '../../../utils/singleton';
 
-export interface EnhancedChainSpec extends ChainSpec {
+export interface EnhancedChainSpec {
   readonly chainId: ChainId;
+  readonly bootstrapNodes: ReadonlyArray<string>;
   readonly algorithm: Algorithm;
   readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
   readonly codec: TxReadCodec;
+  readonly faucetSpec?: FaucetSpec;
 }
-
-const alreadyEnhanced = (spec: ChainSpec): spec is EnhancedChainSpec =>
-  typeof (spec as EnhancedChainSpec).chainId === 'string';
 
 // fetchFullSpec will ensure the full chain info is present
 const enhanceChainsInfo = async (
-  cfg: ChainConfig<ChainSpec>
-): Promise<ChainConfig<EnhancedChainSpec>> => {
+  cfg: ChainConfig
+): Promise<EnhancedChainSpec> => {
   const { chainSpec, faucetSpec } = cfg;
-  if (alreadyEnhanced(chainSpec)) {
-    return { chainSpec, faucetSpec };
-  }
+
   // we get all info here...
   const codec = codecFromString(chainSpec.codecType);
   const nodes = chainSpec.bootstrapNodes;
@@ -39,28 +36,28 @@ const enhanceChainsInfo = async (
 
   // now return it...
   const chainSpecWithId: EnhancedChainSpec = {
-    ...chainSpec,
+    bootstrapNodes: chainSpec.bootstrapNodes,
     chainId,
     algorithm,
     derivePath,
     codec: connector.codec,
+    faucetSpec: faucetSpec,
   };
 
-  return { chainSpec: chainSpecWithId, faucetSpec };
+  return chainSpecWithId;
 };
 
-const fetchFullConfig = async (): Promise<Config<EnhancedChainSpec>> => {
+const fetchFullConfig = async (): Promise<ReadonlyArray<EnhancedChainSpec>> => {
   const config = await fetchConfig();
-  let enhancedConfig = {
-    chains: new Array<ChainConfig<EnhancedChainSpec>>(), // eslint-disable-line
-  };
+
+  const out: EnhancedChainSpec[] = [];
 
   for (const chain of config.chains) {
     const enhancedChain = await enhanceChainsInfo(chain);
-    enhancedConfig.chains.push(enhancedChain);
+    out.push(enhancedChain);
   }
 
-  return enhancedConfig;
+  return out;
 };
 
 export const getConfig = singleton<typeof fetchFullConfig>(fetchFullConfig);

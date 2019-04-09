@@ -1,3 +1,5 @@
+import { ChainId } from '@iov/bcp';
+
 import { getPersonaFromConfig } from './fromconfig';
 import * as config from '../blockchain/chainsConfig/fetchConfig';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
@@ -31,14 +33,9 @@ describe('getPersonaFromConfig', () => {
     });
   }
 
-  async function getAvailableChains(): Promise<ReadonlyArray<string>> {
+  async function getAvailableChains(): Promise<ReadonlyArray<ChainId>> {
     const config = await getConfig();
-    const chainIds = [];
-    for (const chain of config.chains) {
-      chainIds.push(chain.chainSpec.chainId);
-    }
-
-    return chainIds;
+    return config.map(config => config.chainId);
   }
 
   it('works', async () => {
