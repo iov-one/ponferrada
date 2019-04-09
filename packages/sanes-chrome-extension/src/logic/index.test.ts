@@ -32,14 +32,15 @@ describe('logic', (): void => {
       const persona = await createPersona(password, accountName);
       let accounts = await persona.accounts();
       expect(accounts.length).toBe(1);
-      expect(accounts[0]).toBe('Account 0');
+      expect(accounts[0].name).toBe('Account 0');
 
       await persona.generateNextAccount();
       accounts = await persona.accounts();
       expect(accounts.length).toBe(2);
-      expect(accounts[0]).toBe('Account 0');
-      expect(accounts[1]).toBe('Account 1');
+      expect(accounts[0].name).toBe('Account 0');
+      expect(accounts[1].name).toBe('Account 1');
 
+      // check tokens for each account
       fetchConfigMock.mockRestore();
 
       // WHEN adding support for ETH

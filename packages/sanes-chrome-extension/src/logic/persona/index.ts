@@ -4,6 +4,10 @@ import { EnhancedChainSpec } from '../blockchain/chainsConfig';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
+export interface AccountInfo {
+  name: string;
+}
+
 class Persona {
   private _userProfile: UserProfile;
   private _chains: EnhancedChainSpec[];
@@ -38,12 +42,12 @@ class Persona {
   /**
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
-  public async accounts(): Promise<string[]> {
+  public async accounts(): Promise<ReadonlyArray<AccountInfo>> {
     const totalAccounts: number = await this.numberOfExistingAccounts();
 
-    return Array.from(Array(totalAccounts)).map(
-      (_, index) => `Account ${index}`
-    );
+    return Array.from(Array(totalAccounts)).map((_, index) => ({
+      name: `Account ${index}`,
+    }));
   }
 
   private async numberOfExistingAccounts(): Promise<number> {
