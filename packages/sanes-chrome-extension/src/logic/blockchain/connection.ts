@@ -41,16 +41,3 @@ export function chainConnector(
       throw new Error('No connector for this codec found');
   }
 }
-
-export function codecDefaultFractionalDigits(codec: Codec): number {
-  switch (codec) {
-    case Codec.Bns:
-      return 9; // fixed for all weave tokens
-    case Codec.Lisk:
-      return 8;
-    case Codec.Ethereum:
-      return 18;
-    default:
-      throw new Error('Unknown codec');
-  }
-}
