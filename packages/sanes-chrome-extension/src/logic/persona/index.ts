@@ -25,7 +25,7 @@ class Persona {
 
   public async generateAccount(derivation: number): Promise<void> {
     for (const chain of this._chains) {
-      const { chainId, algorithm, derivePath, encoder } = chain;
+      const { chainId, algorithm, derivePath } = chain;
       const path = derivePath(derivation);
       const wallet = this.walletForAlgorithm(algorithm);
       const identityCreated = await this.identityExistsInProfile(

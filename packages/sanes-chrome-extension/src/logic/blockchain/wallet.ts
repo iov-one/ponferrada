@@ -1,18 +1,17 @@
+import { Algorithm } from '@iov/bcp';
 import { WalletId } from '@iov/core';
 import { Codec } from './connection';
 import { ValueAndUpdates } from '@iov/stream';
 import { WalletInfo, HdPaths } from '@iov/keycontrol';
 import { Slip10RawIndex } from '@iov/crypto';
 
-export type Algorithm = 'secp256k1' | 'ed25519';
-
 export function algorithmForCodec(codec: Codec): Algorithm {
   switch (codec) {
     case Codec.Bns:
     case Codec.Lisk:
-      return 'ed25519';
+      return Algorithm.Ed25519;
     case Codec.Ethereum:
-      return 'secp256k1';
+      return Algorithm.Secp256k1;
     default:
       throw new Error(`unsupported codec: ${codec}`);
   }
