@@ -15,9 +15,6 @@ import LoginForm from './components/LoginForm';
 const validate = (values: object): object => {
   const formValues = values as FormValues;
   let errors: ValidationError = {};
-  if (!formValues[ACCOUNT_NAME_FIELD]) {
-    errors[ACCOUNT_NAME_FIELD] = 'Required';
-  }
   if (!formValues[PASSWORD_FIELD]) {
     errors[PASSWORD_FIELD] = 'Required';
   }

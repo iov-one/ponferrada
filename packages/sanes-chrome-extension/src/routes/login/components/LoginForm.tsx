@@ -6,7 +6,6 @@ import Form, {
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 
-export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
 
 interface Props {
@@ -22,15 +21,6 @@ const LoginForm = ({ onLogin, validate }: Props): JSX.Element => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Block marginBottom={1}>
-        <TextFieldForm
-          placeholder="Enter your unique identifier"
-          form={form}
-          required
-          fullWidth
-          name={ACCOUNT_NAME_FIELD}
-        />
-      </Block>
       <Block marginBottom={2}>
         <TextFieldForm
           placeholder="Password"
