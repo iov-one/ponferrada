@@ -37,10 +37,6 @@ class Persona {
     return ['foo', 'bar'];
   }
 
-  public get userProfile(): UserProfile {
-    return this._userProfile;
-  }
-
   private walletForAlgorithm(algorithm: Algorithm): WalletId {
     const [edWallet, secpWallet] = this._userProfile.wallets.value.map(
       x => x.id
