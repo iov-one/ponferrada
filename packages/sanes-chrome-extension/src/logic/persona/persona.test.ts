@@ -1,26 +1,19 @@
 import { Algorithm, ChainId } from '@iov/bcp';
-import { bnsCodec } from '@iov/bns';
 import { HdPaths } from '@iov/core';
-import { ethereumCodec } from '@iov/ethereum';
 
-import { Persona } from './persona';
+import { Persona, PersonaChainConfig } from './persona';
 import { createUserProfile } from '../user';
-import { EnhancedChainSpec } from '../blockchain/chainsConfig';
 
 describe('Persona', () => {
-  const chain1: EnhancedChainSpec = {
+  const chain1: PersonaChainConfig = {
     algorithm: Algorithm.Ed25519,
-    bootstrapNodes: [],
     chainId: 'test-chain-1' as ChainId,
-    codec: bnsCodec,
     derivePath: x => HdPaths.iov(x),
   };
 
-  const chain2: EnhancedChainSpec = {
+  const chain2: PersonaChainConfig = {
     algorithm: Algorithm.Secp256k1,
-    bootstrapNodes: [],
     chainId: 'test-chain-2' as ChainId,
-    codec: ethereumCodec,
     derivePath: x => HdPaths.ethereum(x),
   };
 

@@ -8,20 +8,24 @@ import { UserProfile, WalletId } from '@iov/core';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
-import { EnhancedChainSpec } from '../blockchain/chainsConfig';
-
 export interface AccountInfo {
   readonly name: string;
   readonly identities: ReadonlyMap<ChainId, PublicIdentity>;
 }
 
+export interface PersonaChainConfig {
+  readonly chainId: ChainId;
+  readonly algorithm: Algorithm;
+  readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
+}
+
 export class Persona {
   private readonly _userProfile: UserProfile;
-  private readonly _chains: EnhancedChainSpec[];
+  private readonly _chains: PersonaChainConfig[];
 
   public constructor(
     userProfile: UserProfile,
-    chains: ReadonlyArray<EnhancedChainSpec>
+    chains: ReadonlyArray<PersonaChainConfig>
   ) {
     this._userProfile = userProfile;
     this._chains = [...chains];
@@ -34,7 +38,7 @@ export class Persona {
     return mnemonic;
   }
 
-  public async addChain(newChain: EnhancedChainSpec): Promise<void> {
+  public async addChain(newChain: PersonaChainConfig): Promise<void> {
     if (this._chains.find(c => c.chainId === newChain.chainId)) {
       throw new Error(`Chain with ID ${newChain.chainId} already exists`);
     }
