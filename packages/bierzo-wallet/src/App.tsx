@@ -1,11 +1,7 @@
 import React from 'react';
-import Wallet from './components/wallet/Wallet';
+import Wallet from './components/Wallet';
 
 const App = () => {
-  const style: React.CSSProperties = {
-    backgroundColor: '#bb33bb',
-  };
-
   return (
     <div style={style}>
       <Wallet />
