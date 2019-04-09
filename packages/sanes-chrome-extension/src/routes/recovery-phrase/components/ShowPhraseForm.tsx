@@ -23,9 +23,15 @@ const ShowPhraseForm = ({ onBack, mnemonic }: Props): JSX.Element => {
         </Block>
       </Block>
 
+      <Block display="flex" justifyContent="flex-end" marginTop={3}>
+        <Typography variant="subtitle2" inline color="primary">
+          Get PDF button placement
+        </Typography>
+      </Block>
+
       <Block
         padding={2}
-        marginTop={3}
+        marginTop={1}
         marginBottom={4}
         minHeight={24}
         border={1}
@@ -37,8 +43,8 @@ const ShowPhraseForm = ({ onBack, mnemonic }: Props): JSX.Element => {
           {mnemonic}
         </Typography>
       </Block>
-      <Block display="flex" justifyContent="space-between">
-        <Block width={120}>
+      <Block display="flex" justifyContent="flex-start">
+        <Block width={100}>
           <Back fullWidth onClick={onBack}>
             Back
           </Back>
