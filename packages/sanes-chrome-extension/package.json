@@ -26,12 +26,12 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@iov/bns": "^0.13.0",
-    "@iov/core": "^0.13.0",
-    "@iov/crypto": "^0.13.0",
-    "@iov/ethereum": "^0.13.0",
-    "@iov/keycontrol": "^0.13.0",
-    "@iov/lisk": "^0.13.0",
+    "@iov/bns": "^0.13.3",
+    "@iov/core": "^0.13.3",
+    "@iov/crypto": "^0.13.3",
+    "@iov/ethereum": "^0.13.3",
+    "@iov/keycontrol": "^0.13.3",
+    "@iov/lisk": "^0.13.3",
     "@types/chrome": "^0.0.81",
     "@types/history": "^4.7.2",
     "@types/jest": "24.0.6",
