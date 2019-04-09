@@ -61,9 +61,10 @@ export class Persona {
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
   public async accounts(): Promise<ReadonlyArray<AccountInfo>> {
-    const totalAccounts: number = await this.numberOfExistingAccounts();
+    const existing: number = await this.numberOfExistingAccounts();
+    const accountIndices = Array.from(Array(existing)).map((_, index) => index);
 
-    return Array.from(Array(totalAccounts)).map((_, index) => {
+    return accountIndices.map(index => {
       const publicIdentities = new Map(
         this._chains.map(chain => {
           const identitiesByChain = this._userProfile
