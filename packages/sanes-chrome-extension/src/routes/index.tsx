@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Welcome from './welcome';
 import Signup from './signup';
 import Login from './login';
-import RecoveryPhrase from './reccovery-phrase';
+import RecoveryPhrase from './recovery-phrase';
 import {
   WELCOME_ROUTE,
   SIGNUP_ROUTE,
