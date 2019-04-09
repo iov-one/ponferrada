@@ -41,10 +41,7 @@ const Signup = (): JSX.Element => {
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const persona: Persona = await createPersona(
-        password,
-        accountName.current
-      );
+      const persona: Persona = await createPersona(password);
       const firstAccount = (await persona.accounts()).find(() => true);
       if (!firstAccount) {
         throw new Error('Signup create persona failed');

@@ -54,8 +54,7 @@ describe('logic', (): void => {
       fetchConfigMock.mockImplementation(threeChainsConfig);
 
       const password = 'testPass';
-      const accountName = 'main';
-      const persona = await createPersona(password, accountName);
+      const persona = await createPersona(password);
 
       const availableChains = await getAvailableChains();
       let accounts = await persona.accounts();

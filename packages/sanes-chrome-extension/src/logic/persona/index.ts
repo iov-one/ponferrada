@@ -23,6 +23,13 @@ class Persona {
     this._chains = chains;
   }
 
+  public mnemonic(): string {
+    const firstWalletId = this._userProfile.wallets.value[0].id;
+    // all wallets use the same mnemonic, so we only need to check the first one
+    const mnemonic = this._userProfile.printableSecret(firstWalletId);
+    return mnemonic;
+  }
+
   public async generateAccount(derivation: number): Promise<void> {
     for (const chain of this._chains) {
       const { chainId, algorithm, derivePath } = chain;
