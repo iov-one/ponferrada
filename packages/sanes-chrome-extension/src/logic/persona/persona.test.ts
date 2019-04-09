@@ -3,7 +3,7 @@ import { bnsCodec } from '@iov/bns';
 import { HdPaths } from '@iov/core';
 import { ethereumCodec } from '@iov/ethereum';
 
-import { Persona } from '.';
+import { Persona } from './persona';
 import { createUserProfile } from '../user';
 import { EnhancedChainSpec } from '../blockchain/chainsConfig';
 
