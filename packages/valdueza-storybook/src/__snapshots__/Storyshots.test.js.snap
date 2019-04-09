@@ -1596,8 +1596,9 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
     >
       <h6
         className="MuiTypography-root-549 MuiTypography-subtitle2-561 MuiTypography-colorPrimary-572 makeStyles-inline-548"
+        onClick={[Function]}
       >
-        Get PDF button placement
+        Get PDF
       </h6>
     </div>
     <div
