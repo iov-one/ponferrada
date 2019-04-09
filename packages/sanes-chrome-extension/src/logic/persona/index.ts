@@ -10,13 +10,13 @@ import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
 export interface AccountInfo {
-  name: string;
-  publicIdentities: ReadonlyMap<ChainId, PublicIdentity>;
+  readonly name: string;
+  readonly publicIdentities: ReadonlyMap<ChainId, PublicIdentity>;
 }
 
 export class Persona {
-  private _userProfile: UserProfile;
-  private _chains: EnhancedChainSpec[];
+  private readonly _userProfile: UserProfile;
+  private readonly _chains: EnhancedChainSpec[];
 
   public constructor(userProfile: UserProfile, chains: EnhancedChainSpec[]) {
     this._userProfile = userProfile;
