@@ -92,7 +92,10 @@ export class Persona {
   }
 
   private async numberOfExistingAccounts(): Promise<number> {
-    const firstChain = this._chains[0];
+    const firstChain = this._chains.find(() => true);
+    if (!firstChain) {
+      return 0;
+    }
     const firstWallet = this.walletForAlgorithm(firstChain.algorithm);
 
     for (let i = 0; ; i++) {

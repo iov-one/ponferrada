@@ -17,4 +17,12 @@ describe('Persona', () => {
       expect(persona.mnemonic()).toEqual(mnenomic);
     });
   });
+
+  describe('accounts', () => {
+    it('returns an empty list of accounts by default', async () => {
+      const userProfile = await createUserProfile();
+      const persona = new Persona(userProfile, []);
+      expect(await persona.accounts()).toEqual([]);
+    });
+  });
 });
