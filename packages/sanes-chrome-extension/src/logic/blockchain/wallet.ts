@@ -39,7 +39,6 @@ export function walletFrom(
   codec: Codec,
   availableWallets: ValueAndUpdates<ReadonlyArray<WalletInfo>>
 ): WalletId {
-  //eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const wallets = availableWallets.value.map(i => i.id);
   const [edWallet, secWallet] = wallets;
   switch (codec) {
