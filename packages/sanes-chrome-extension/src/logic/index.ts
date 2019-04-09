@@ -5,7 +5,7 @@ import { singleton } from '../utils/singleton';
 import { createUserProfile } from './user';
 import { getConfig } from './blockchain/chainsConfig';
 import { Persona } from './persona';
-import { getDefaultDb } from './user/profile';
+import { getDefaultDb } from './user/db';
 
 // This method should be called by the "Create New Persona onSubmit fn"
 const buildAndStorePersona = async (password: string): Promise<Persona> => {

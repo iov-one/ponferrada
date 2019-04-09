@@ -1,6 +1,7 @@
 import { AbstractLevelDOWN } from 'abstract-leveldown';
 import levelup, { LevelUp } from 'levelup';
 import MemDownConstructor from 'memdown';
+import { singleton } from '../../utils/singleton';
 
 export type DB<K, V> = LevelUp<AbstractLevelDOWN<K, V>>;
 export type StringDB = DB<string, string>;
@@ -27,6 +28,13 @@ export function createBrowserDb(name: string): StringDB {
 // placeholder to be read from configuration later
 export const createDb = (name: string): StringDB =>
   isBrowser() ? createBrowserDb(name) : createMemDb();
+
+const generateDb = singleton<typeof createDb>(createDb);
+
+// TODO: this function must be removed and replaced by one specific DB for each Persona
+export function getDefaultDb(): ReturnType<typeof createDb> {
+  return generateDb('profile');
+}
 
 interface TypeError {
   readonly notFound: boolean;

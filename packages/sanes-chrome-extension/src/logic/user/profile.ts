@@ -4,8 +4,6 @@ import {
   Secp256k1HdWallet,
   UserProfile,
 } from '@iov/keycontrol';
-import { createDb } from './db';
-import { singleton } from '../../utils/singleton';
 
 export async function createUserProfile(
   fixedMnemonic?: string
@@ -21,11 +19,4 @@ export async function createUserProfile(
   profile.addWallet(secKeyring);
 
   return profile;
-}
-
-const generateDb = singleton<typeof createDb>(createDb);
-
-// TODO: this function must be removed and replaced by one specific DB for each Persona
-export function getDefaultDb(): ReturnType<typeof createDb> {
-  return generateDb('profile');
 }
