@@ -1,8 +1,37 @@
+import { Algorithm } from '@iov/bcp';
 import { WalletId } from '@iov/core';
 import { Codec } from './connection';
 import { ValueAndUpdates } from '@iov/stream';
 import { WalletInfo, HdPaths } from '@iov/keycontrol';
 import { Slip10RawIndex } from '@iov/crypto';
+
+export function algorithmForCodec(codec: Codec): Algorithm {
+  switch (codec) {
+    case Codec.Bns:
+    case Codec.Lisk:
+      return Algorithm.Ed25519;
+    case Codec.Ethereum:
+      return Algorithm.Secp256k1;
+    default:
+      throw new Error(`unsupported codec: ${codec}`);
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const pathForCodec = (codec: Codec) => (
+  derivation: number
+): ReadonlyArray<Slip10RawIndex> => {
+  switch (codec) {
+    case Codec.Bns: // BNS and BOV
+      return HdPaths.iov(derivation);
+    case Codec.Lisk:
+      return HdPaths.bip44Like(134, derivation);
+    case Codec.Ethereum:
+      return HdPaths.ethereum(derivation);
+    default:
+      throw new Error(`unsupported codec: ${codec}`);
+  }
+};
 
 export function walletFrom(
   codec: Codec,

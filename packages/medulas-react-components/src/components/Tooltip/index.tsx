@@ -4,6 +4,7 @@ import * as React from 'react';
 import Image from '../Image';
 import infoNormal from '../../theme/assets/info_normal.svg';
 import theme from '../../theme/utils/mui';
+import { useOpen } from '../../hooks/open';
 
 const DEFAULT_HEIGHT = 16;
 
@@ -93,8 +94,7 @@ interface Props {
 }
 
 const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
-  const [open, setOpen] = React.useState<boolean>(false);
-  const toggle = (): void => setOpen((open: boolean): boolean => !open);
+  const [isOpen, toggle] = useOpen();
 
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
 
@@ -134,7 +134,7 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
       </div>
 
       <Popper
-        open={open}
+        open={isOpen}
         className={classes.popper}
         style={popperStyle}
         anchorEl={tooltipRef.current}

@@ -91,6 +91,43 @@ const themeObject: ThemeOptions = {
         },
       },
     },
+    MuiFormHelperText: {
+      contained: {
+        margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
+      },
+    },
+    MuiInputLabel: {
+      formControl: {
+        top: `-${theme.spacing(3)}px`,
+        color: theme.palette.text.primary,
+        fontWeight: theme.typography.fontWeightMedium,
+        fontSize: theme.typography.fontSize,
+        '&$focused': {
+          // Use text primary in TextField labels when focusing.
+          color: `${theme.palette.text.primary}`,
+        },
+      },
+      error: {
+        // Maintain the text primary color on errored text fields when loosing focus
+        color: `${theme.palette.text.primary} !important`,
+      },
+    },
+    // Those overrides are for dropdowns in select fields.
+    MuiList: {
+      root: {
+        boxSizing: 'border-box',
+        border: `1px solid ${theme.palette.grey[300]}`,
+        borderBottom: 'none',
+        boxShadow: '0 10px 7px 0 rgba(237, 239, 244, 0.14)',
+        backgroundColor: 'white',
+      },
+      padding: {
+        paddingTop: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingBottom: 0,
+      },
+    },
     MuiOutlinedInput: {
       root: {
         // Do not change border color in hover effect
@@ -118,28 +155,6 @@ const themeObject: ThemeOptions = {
       },
       error: {
         backgroundColor: '#fff1e1',
-      },
-    },
-    MuiInputLabel: {
-      formControl: {
-        top: `-${theme.spacing(3)}px`,
-        color: theme.palette.text.primary,
-        fontWeight: theme.typography.fontWeightMedium,
-        fontSize: '1.4rem',
-        '&$focused': {
-          // Use text primary in TextField labels when focusing.
-          color: `${theme.palette.text.primary}`,
-        },
-      },
-      error: {
-        // Maintain the text primary color on errored text fields when loosing focus
-        color: `${theme.palette.text.primary} !important`,
-      },
-    },
-    MuiFormHelperText: {
-      contained: {
-        margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
-        fontSize: '1.4rem',
       },
     },
     MuiSnackbarContent: {

@@ -21,7 +21,8 @@ async function createUserProfile(fixedMnemonic?: string): Promise<UserProfile> {
   return profile;
 }
 
-const getDb = singleton<typeof createDb>(createDb);
+const generateDb = singleton<typeof createDb>(createDb);
+export const getDb = (): ReturnType<typeof createDb> => generateDb('');
 
 const PROFILE_NAME_DB = 'profile';
 
@@ -37,7 +38,7 @@ const PROFILE_NAME_DB = 'profile';
 export async function createProfile(password: string): Promise<UserProfile> {
   let profile = undefined;
   try {
-    const db = getDb(PROFILE_NAME_DB);
+    const db = createDb(PROFILE_NAME_DB);
     profile = await createUserProfile();
     await profile.storeIn(db, password);
 

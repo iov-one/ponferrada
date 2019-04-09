@@ -1,71 +1,37 @@
-import { MultiChainSigner } from '@iov/core';
 import { UserProfile } from '@iov/keycontrol';
-import { createUserProfile } from './user';
-import { getConfig, ChainSpec } from '../utils/config';
+
 import { singleton } from '../utils/singleton';
+
+import { createUserProfile } from './user';
+import { getConfig } from './blockchain/chainsConfig';
 import Persona from './persona';
-import Account from './account';
-import {
-  codecFromString,
-  chainConnector,
-  codecImplementation,
-} from './blockchain/connection';
-import { ChainConnector, TxCodec, Address } from '@iov/bcp';
-import { walletFrom, pathFrom } from './blockchain/wallet';
-
-const generateBlockchainAddressFrom = async (
-  userProfile: UserProfile,
-  signer: MultiChainSigner,
-  chainSpec: ChainSpec,
-  derivation: number
-): Promise<Address> => {
-  const nodes = chainSpec.bootstrapNodes;
-  const codecType = codecFromString(chainSpec.codecType);
-
-  const connector: ChainConnector = chainConnector(codecType, nodes);
-  const { connection } = await signer.addChain(connector);
-  const chainId = connection.chainId();
-  const walletId = walletFrom(codecType, userProfile.wallets);
-  const path = pathFrom(codecType, derivation);
-  const publicIdentity = await userProfile.createIdentity(
-    walletId,
-    chainId,
-    path
-  );
-
-  const codec: TxCodec = codecImplementation(codecType);
-  const blockchainAddress: Address = codec.identityToAddress(publicIdentity);
-
-  return blockchainAddress;
-};
+import { getDb } from './user/profile';
 
 // This method should be called by the "Create New Persona onSubmit fn"
 const buildPersona = async (
   password: string,
   accountName: string
 ): Promise<Persona> => {
-  const userProfile: UserProfile = await createUserProfile(password);
-  const signer: MultiChainSigner = new MultiChainSigner(userProfile);
+  // TODO once we support login modify this for loading from db
+  const baseProfile: UserProfile = await createUserProfile(password);
 
-  // load chains info from config file
   const config = await getConfig();
+  // Remove the faucetSpect type because for creating a profile is not needed.
+  const derivationInfo = config.chains.map(x => x.chainSpec);
+
+  const persona = new Persona(baseProfile, derivationInfo);
   const derivation = 0;
-  const persona = new Persona();
-  const account = new Account(derivation);
+  await persona.generateAccount(derivation);
+  const db = await getDb();
+  baseProfile.storeIn(db, password);
 
-  for (const chain of config.chains) {
-    const bcAddress = await generateBlockchainAddressFrom(
-      userProfile,
-      signer,
-      chain.chainSpec,
-      derivation
-    );
-    account.addBlockchainAddress(chain.chainSpec.codecType, bcAddress);
-  }
-
-  persona.addAccount(accountName, account);
+  // const ethanProfile = new ProfileWithAccounts(baseProfile, derivationInfo);
+  // const ethanAccount = await profile.ensureAccount(0, accountName);
 
   return persona;
 };
 
-export const getPersona = singleton<typeof buildPersona>(buildPersona);
+export const createPersona = singleton<typeof buildPersona>(buildPersona);
+
+export const getPersona = (): ReturnType<typeof buildPersona> =>
+  createPersona('', '');
