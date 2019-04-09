@@ -34,7 +34,23 @@ class Persona {
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
   public get accounts(): string[] {
-    return ['foo', 'bar'];
+    const totalAccounts: string[] = [];
+
+    const firstChain = this._chains[0];
+    const { derivePath } = firstChain;
+    const firstWallet = this.walletForAlgorithm(Algorithm.Ed25519);
+    const firstPath = derivePath(0);
+    const existsFirstAccount = this.identityExistsInProfile(
+      firstWallet,
+      firstChain.chainId,
+      firstPath
+    );
+
+    if (existsFirstAccount) {
+      totalAccounts.push(`Account 0`);
+    }
+
+    return totalAccounts;
   }
 
   private walletForAlgorithm(algorithm: Algorithm): WalletId {
