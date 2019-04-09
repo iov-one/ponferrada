@@ -1,7 +1,5 @@
 import { UserProfile } from '@iov/keycontrol';
 
-import { singleton } from '../utils/singleton';
-
 import { createUserProfile } from './user';
 import { getConfig } from './blockchain/chainsConfig';
 import { Persona } from './persona';
