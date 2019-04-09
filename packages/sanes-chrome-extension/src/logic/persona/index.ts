@@ -11,7 +11,7 @@ import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
 export interface AccountInfo {
   readonly name: string;
-  readonly publicIdentities: ReadonlyMap<ChainId, PublicIdentity>;
+  readonly identities: ReadonlyMap<ChainId, PublicIdentity>;
 }
 
 export class Persona {
@@ -99,7 +99,7 @@ export class Persona {
 
       return {
         name: `Account ${index}`,
-        publicIdentities,
+        identities: publicIdentities,
       };
     });
   }

@@ -49,7 +49,7 @@ const Signup = (): JSX.Element => {
 
       console.log(
         `We successfuly have created a persona registered in ${
-          firstAccount.publicIdentities.size
+          firstAccount.identities.size
         } chains`
       );
 

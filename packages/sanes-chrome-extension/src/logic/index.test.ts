@@ -12,25 +12,21 @@ describe('logic', (): void => {
     availableChainsNames: ReadonlyArray<string>
   ): void {
     expect(account.name).toBe(name);
-    expect(account.publicIdentities.size).toBe(availableChainsNames.length);
-    expect(Array.from(account.publicIdentities.keys())).toEqual(
-      availableChainsNames
-    );
+    expect(account.identities.size).toBe(availableChainsNames.length);
+    expect(Array.from(account.identities.keys())).toEqual(availableChainsNames);
   }
 
   function checkDifferentKeys(
     firstAccount: AccountInfo,
     secondAccount: AccountInfo
   ): void {
-    expect(firstAccount.publicIdentities.size).toBe(
-      secondAccount.publicIdentities.size
-    );
+    expect(firstAccount.identities.size).toBe(secondAccount.identities.size);
 
-    const keys = Array.from(firstAccount.publicIdentities.keys());
+    const keys = Array.from(firstAccount.identities.keys());
 
     keys.forEach(chainId => {
-      const firstKey = firstAccount.publicIdentities.get(chainId);
-      const secondKey = secondAccount.publicIdentities.get(chainId);
+      const firstKey = firstAccount.identities.get(chainId);
+      const secondKey = secondAccount.identities.get(chainId);
 
       expect(firstKey).not.toEqual(secondKey);
     });

@@ -64,10 +64,10 @@ describe('Persona', () => {
       await persona.generateAccount(0);
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].publicIdentities.size).toEqual(1);
-      expect(
-        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId]);
+      expect(accounts[0].identities.size).toEqual(1);
+      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId]
+      );
     });
 
     it('generates one account with two identities when chains list has two elements', async () => {
@@ -76,10 +76,10 @@ describe('Persona', () => {
       await persona.generateAccount(0);
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].publicIdentities.size).toEqual(2);
-      expect(
-        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId, chain2.chainId]);
+      expect(accounts[0].identities.size).toEqual(2);
+      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId, chain2.chainId]
+      );
     });
   });
 
@@ -97,10 +97,10 @@ describe('Persona', () => {
       await persona.generateNextAccount();
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].publicIdentities.size).toEqual(1);
-      expect(
-        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId]);
+      expect(accounts[0].identities.size).toEqual(1);
+      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId]
+      );
     });
 
     it('generates one account with two identities when chains list has two elements', async () => {
@@ -109,10 +109,10 @@ describe('Persona', () => {
       await persona.generateNextAccount();
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].publicIdentities.size).toEqual(2);
-      expect(
-        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId, chain2.chainId]);
+      expect(accounts[0].identities.size).toEqual(2);
+      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId, chain2.chainId]
+      );
     });
 
     it('can be used multiple times', async () => {
@@ -123,18 +123,18 @@ describe('Persona', () => {
       await persona.generateNextAccount();
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(3);
-      expect(accounts[0].publicIdentities.size).toEqual(1);
-      expect(accounts[1].publicIdentities.size).toEqual(1);
-      expect(accounts[2].publicIdentities.size).toEqual(1);
-      expect(
-        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId]);
-      expect(
-        Array.from(accounts[1].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId]);
-      expect(
-        Array.from(accounts[2].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId]);
+      expect(accounts[0].identities.size).toEqual(1);
+      expect(accounts[1].identities.size).toEqual(1);
+      expect(accounts[2].identities.size).toEqual(1);
+      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId]
+      );
+      expect(Array.from(accounts[1].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId]
+      );
+      expect(Array.from(accounts[2].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId]
+      );
     });
   });
 
@@ -148,10 +148,10 @@ describe('Persona', () => {
 
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].publicIdentities.size).toEqual(2);
-      expect(
-        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
-      ).toEqual([chain1.chainId, chain2.chainId]);
+      expect(accounts[0].identities.size).toEqual(2);
+      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
+        [chain1.chainId, chain2.chainId]
+      );
     });
   });
 });
