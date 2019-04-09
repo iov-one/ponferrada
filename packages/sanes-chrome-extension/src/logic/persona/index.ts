@@ -48,11 +48,10 @@ class Persona {
 
   private async numberOfExistingAccounts(): Promise<number> {
     const firstChain = this._chains[0];
-    const { derivePath } = firstChain;
-    const firstWallet = this.walletForAlgorithm(Algorithm.Ed25519);
+    const firstWallet = this.walletForAlgorithm(firstChain.algorithm);
 
     for (let i = 0; ; i++) {
-      const path = derivePath(i);
+      const path = firstChain.derivePath(i);
       const existsAccount = await this.identityExistsInProfile(
         firstWallet,
         firstChain.chainId,
