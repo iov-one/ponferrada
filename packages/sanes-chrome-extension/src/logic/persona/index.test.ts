@@ -114,5 +114,27 @@ describe('Persona', () => {
         Array.from(accounts[0].publicIdentities).map(ident => ident[0])
       ).toEqual([chain1.chainId, chain2.chainId]);
     });
+
+    it('can be used multiple times', async () => {
+      const userProfile = await createUserProfile();
+      const persona = new Persona(userProfile, [chain1]);
+      await persona.generateNextAccount();
+      await persona.generateNextAccount();
+      await persona.generateNextAccount();
+      const accounts = await persona.accounts();
+      expect(accounts.length).toEqual(3);
+      expect(accounts[0].publicIdentities.size).toEqual(1);
+      expect(accounts[1].publicIdentities.size).toEqual(1);
+      expect(accounts[2].publicIdentities.size).toEqual(1);
+      expect(
+        Array.from(accounts[0].publicIdentities).map(ident => ident[0])
+      ).toEqual([chain1.chainId]);
+      expect(
+        Array.from(accounts[1].publicIdentities).map(ident => ident[0])
+      ).toEqual([chain1.chainId]);
+      expect(
+        Array.from(accounts[2].publicIdentities).map(ident => ident[0])
+      ).toEqual([chain1.chainId]);
+    });
   });
 });
