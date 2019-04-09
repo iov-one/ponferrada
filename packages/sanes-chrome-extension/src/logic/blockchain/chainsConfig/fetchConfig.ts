@@ -1,4 +1,5 @@
 import { TokenTicker } from '@iov/bcp';
+
 import { singleton } from '../../../utils/singleton';
 import { CodecType } from '../connection';
 

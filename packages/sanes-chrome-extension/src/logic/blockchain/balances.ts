@@ -1,5 +1,6 @@
-import { Persona } from '../persona';
 import { Amount, TokenTicker } from '@iov/bcp';
+
+import { Persona } from '../persona';
 
 export function getBalances(
   persona: Persona,

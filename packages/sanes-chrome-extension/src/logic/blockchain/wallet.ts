@@ -1,7 +1,8 @@
 import { Algorithm } from '@iov/bcp';
-import { Codec } from './connection';
 import { HdPaths } from '@iov/keycontrol';
 import { Slip10RawIndex } from '@iov/crypto';
+
+import { Codec } from './connection';
 
 export function algorithmForCodec(codec: Codec): Algorithm {
   switch (codec) {
