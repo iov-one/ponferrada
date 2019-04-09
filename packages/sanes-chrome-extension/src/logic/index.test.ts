@@ -1,25 +1,51 @@
 import { createPersona } from './index';
 import { mayTestChains } from '../utils/test/testExecutor';
-
 import * as config from './blockchain/chainsConfig/fetchConfig';
 import { threeChainsConfig } from './test/chainConfigBuilder';
+import { AccountInfo } from './persona';
+import { getConfig } from './blockchain/chainsConfig';
 
 describe('logic', (): void => {
-  /*mayTestChains('should get a Persona', async () => {
-    const password = 'test-password';
-    const accountName = 'test-account';
-    const persona = await createPersona(password, accountName);
-    const account = persona.accounts;
-    expect(persona.derivation).toEqual(0);
-    expect(account.name).toEqual(accountName);
+  function checkAccount(
+    account: AccountInfo,
+    name: string,
+    availableChainsNames: ReadonlyArray<string>
+  ): void {
+    expect(account.name).toBe(name);
+    expect(account.publicIdentities.size).toBe(availableChainsNames.length);
+    expect(Array.from(account.publicIdentities.keys())).toEqual(
+      availableChainsNames
+    );
+  }
 
-    expect(account.chains.length).toEqual(4);
-    account.chains.forEach(acct => {
-      // some basic checks...
-      expect(acct.address).toBeDefined();
-      expect(acct.address.length).toBeGreaterThanOrEqual(6);
+  function checkDifferentKeys(
+    firstAccount: AccountInfo,
+    secondAccount: AccountInfo
+  ): void {
+    expect(firstAccount.publicIdentities.size).toBe(
+      secondAccount.publicIdentities.size
+    );
+
+    const keys = Array.from(firstAccount.publicIdentities.keys());
+
+    keys.forEach(chainId => {
+      const firstKey = firstAccount.publicIdentities.get(chainId);
+      const secondKey = secondAccount.publicIdentities.get(chainId);
+
+      expect(firstKey).not.toEqual(secondKey);
     });
-  });*/
+  }
+
+  async function getAvailableChains(): Promise<ReadonlyArray<string>> {
+    const config = await getConfig();
+    const chainIds = [];
+    for (const chain of config.chains) {
+      chainIds.push(chain.chainSpec.chainId);
+    }
+
+    return chainIds;
+  }
+
   mayTestChains(
     'should fulfill blockchain accounts of just added chains',
     async (): Promise<void> => {
@@ -30,15 +56,19 @@ describe('logic', (): void => {
       const password = 'testPass';
       const accountName = 'main';
       const persona = await createPersona(password, accountName);
+
+      const availableChains = await getAvailableChains();
       let accounts = await persona.accounts();
       expect(accounts.length).toBe(1);
-      expect(accounts[0].name).toBe('Account 0');
+      checkAccount(accounts[0], 'Account 0', availableChains);
 
       await persona.generateNextAccount();
       accounts = await persona.accounts();
       expect(accounts.length).toBe(2);
-      expect(accounts[0].name).toBe('Account 0');
-      expect(accounts[1].name).toBe('Account 1');
+      checkAccount(accounts[0], 'Account 0', availableChains);
+      checkAccount(accounts[1], 'Account 1', availableChains);
+
+      checkDifferentKeys(accounts[0], accounts[1]);
 
       // check tokens for each account
       fetchConfigMock.mockRestore();

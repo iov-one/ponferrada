@@ -1,4 +1,9 @@
-import { Algorithm, ChainId, publicIdentityEquals } from '@iov/bcp';
+import {
+  Algorithm,
+  ChainId,
+  publicIdentityEquals,
+  PublicIdentity,
+} from '@iov/bcp';
 import { UserProfile, WalletId } from '@iov/core';
 import { EnhancedChainSpec } from '../blockchain/chainsConfig';
 import { Slip10RawIndex } from '@iov/crypto';
@@ -6,6 +11,7 @@ import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
 export interface AccountInfo {
   name: string;
+  publicIdentities: ReadonlyMap<ChainId, PublicIdentity>;
 }
 
 class Persona {
@@ -29,7 +35,12 @@ class Persona {
       );
 
       if (!identityCreated) {
-        await this._userProfile.createIdentity(wallet, chainId, path);
+        const identity = await this._userProfile.createIdentity(
+          wallet,
+          chainId,
+          path
+        );
+        await this._userProfile.setIdentityLabel(identity, `${derivation}`);
       }
     }
   }
@@ -45,9 +56,32 @@ class Persona {
   public async accounts(): Promise<ReadonlyArray<AccountInfo>> {
     const totalAccounts: number = await this.numberOfExistingAccounts();
 
-    return Array.from(Array(totalAccounts)).map((_, index) => ({
-      name: `Account ${index}`,
-    }));
+    return Array.from(Array(totalAccounts)).map((_, index) => {
+      const publicIdentities = new Map(
+        this._chains.map(chain => {
+          const identitiesByChain = this._userProfile
+            .getAllIdentities()
+            .filter(ident => ident.chainId === chain.chainId);
+
+          const identityByLabel = identitiesByChain.filter(
+            ident => this._userProfile.getIdentityLabel(ident) === `${index}`
+          );
+
+          if (identityByLabel.length !== 1) {
+            throw new Error(
+              'Unexpected number of identities by chain and label'
+            );
+          }
+
+          return [chain.chainId, identityByLabel[0]];
+        })
+      );
+
+      return {
+        name: `Account ${index}`,
+        publicIdentities,
+      };
+    });
   }
 
   private async numberOfExistingAccounts(): Promise<number> {
