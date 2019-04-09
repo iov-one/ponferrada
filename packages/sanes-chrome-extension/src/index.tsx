@@ -1,5 +1,6 @@
 import { ConnectedRouter } from 'connected-react-router';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
+import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -21,9 +22,11 @@ store.ready().then(
       ReactDOM.render(
         <Provider store={store}>
           <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-            <ConnectedRouter history={history}>
-              <Component />
-            </ConnectedRouter>
+            <ToastProvider>
+              <ConnectedRouter history={history}>
+                <Component />
+              </ConnectedRouter>
+            </ToastProvider>
           </MedulasThemeProvider>
         </Provider>,
         rootEl
