@@ -30,6 +30,19 @@ export class Persona {
     return mnemonic;
   }
 
+  public async addChain(newChain: EnhancedChainSpec): Promise<void> {
+    if (this._chains.find(c => c.chainId === newChain.chainId)) {
+      throw new Error(`Chain with ID ${newChain.chainId} already exists`);
+    }
+
+    this._chains.push(newChain);
+
+    const accountIndices = await this.existingAccountIndices();
+    for (const index of accountIndices) {
+      await this.generateAccount(index);
+    }
+  }
+
   public async generateAccount(derivation: number): Promise<void> {
     for (const chain of this._chains) {
       const { chainId, algorithm, derivePath } = chain;
