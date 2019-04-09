@@ -1,10 +1,10 @@
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+import { RootState, history } from '../../store/reducers';
 import { aNewStore } from '../../store';
 import TestUtils from 'react-dom/test-utils';
-import { travelToLogin } from './test/travelToLogin';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
+import { travelToLogin } from './test/travelToLogin';
 
 describe('DOM > Feature > Login', (): void => {
   let store: Store<RootState>;
@@ -43,7 +43,7 @@ describe('DOM > Feature > Login', (): void => {
 
     TestUtils.act(
       (): void => {
-        TestUtils.Simulate.click(moreOptionsLink);
+        history.push(WELCOME_ROUTE);
       }
     );
 
