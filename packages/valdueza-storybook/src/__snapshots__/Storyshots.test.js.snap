@@ -1645,6 +1645,15 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
     <div
       className="MuiBox-root-545 MuiBox-root-583"
     >
+      <h6
+        className="MuiTypography-root-549 MuiTypography-subtitle2-561 MuiTypography-colorPrimary-572 makeStyles-inline-548"
+      >
+        Get PDF button placement
+      </h6>
+    </div>
+    <div
+      className="MuiBox-root-545 MuiBox-root-584"
+    >
       <p
         className="MuiTypography-root-549 MuiTypography-body1-551 makeStyles-inline-548"
       >
@@ -1652,13 +1661,13 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
       </p>
     </div>
     <div
-      className="MuiBox-root-545 MuiBox-root-584"
+      className="MuiBox-root-545 MuiBox-root-585"
     >
       <div
-        className="MuiBox-root-545 MuiBox-root-585"
+        className="MuiBox-root-545 MuiBox-root-586"
       >
         <button
-          className="MuiButtonBase-root-603 MuiButton-root-586 MuiButton-text-588 MuiButton-textPrimary-589 MuiButton-fullWidth-602"
+          className="MuiButtonBase-root-604 MuiButton-root-587 MuiButton-text-589 MuiButton-textPrimary-590 MuiButton-fullWidth-603"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1675,7 +1684,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-587"
+            className="MuiButton-label-588"
           >
             Back
           </span>
@@ -1684,14 +1693,14 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-545 MuiBox-root-606"
+    className="MuiBox-root-545 MuiBox-root-607"
   />
   <div
-    className="MuiBox-root-545 MuiBox-root-607"
+    className="MuiBox-root-545 MuiBox-root-608"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-608"
+      className="makeStyles-root-609"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -1702,26 +1711,26 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-623 MuiBox-root-624"
+  className="MuiBox-root-624 MuiBox-root-625"
   id="/signup1"
 >
   <div
-    className="MuiBox-root-623 MuiBox-root-625"
+    className="MuiBox-root-624 MuiBox-root-626"
   >
     <h4
-      className="MuiTypography-root-627 MuiTypography-h4-635 MuiTypography-colorPrimary-650 makeStyles-inline-626"
+      className="MuiTypography-root-628 MuiTypography-h4-636 MuiTypography-colorPrimary-651 makeStyles-inline-627"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-627 MuiTypography-h4-635 makeStyles-inline-626"
+      className="MuiTypography-root-628 MuiTypography-h4-636 makeStyles-inline-627"
     >
 
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-623 MuiBox-root-657"
+    className="MuiBox-root-624 MuiBox-root-658"
   >
     <form
       onSubmit={[Function]}
