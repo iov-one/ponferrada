@@ -4,7 +4,7 @@ import * as React from 'react';
 import Image from '../Image';
 import infoNormal from '../../theme/assets/info_normal.svg';
 import theme from '../../theme/utils/mui';
-import { useOpen } from '~/hooks/open';
+import { useOpen } from '../../hooks/open';
 
 const DEFAULT_HEIGHT = 16;
 
