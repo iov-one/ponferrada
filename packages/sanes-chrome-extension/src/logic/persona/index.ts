@@ -30,24 +30,35 @@ class Persona {
     }
   }
 
+  public async generateNextAccount(): Promise<void> {
+    const accounts = await this.accounts();
+    const nextDerivation = accounts.length;
+    await this.generateAccount(nextDerivation);
+  }
+
   /**
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
-  public get accounts(): string[] {
+  public async accounts(): Promise<string[]> {
     const totalAccounts: string[] = [];
 
     const firstChain = this._chains[0];
     const { derivePath } = firstChain;
     const firstWallet = this.walletForAlgorithm(Algorithm.Ed25519);
-    const firstPath = derivePath(0);
-    const existsFirstAccount = this.identityExistsInProfile(
-      firstWallet,
-      firstChain.chainId,
-      firstPath
-    );
 
-    if (existsFirstAccount) {
-      totalAccounts.push(`Account 0`);
+    for (let i = 0; ; i++) {
+      const path = derivePath(i);
+      const existsAccount = await this.identityExistsInProfile(
+        firstWallet,
+        firstChain.chainId,
+        path
+      );
+
+      if (!existsAccount) {
+        break;
+      }
+
+      totalAccounts.push(`Account ${i}`);
     }
 
     return totalAccounts;

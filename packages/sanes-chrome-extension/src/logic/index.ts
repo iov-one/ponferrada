@@ -21,7 +21,7 @@ const buildPersona = async (
 
   const persona = new Persona(baseProfile, derivationInfo);
   const derivation = 0;
-  persona.generateAccount(derivation);
+  await persona.generateAccount(derivation);
   const db = await getDb();
   baseProfile.storeIn(db, password);
 
