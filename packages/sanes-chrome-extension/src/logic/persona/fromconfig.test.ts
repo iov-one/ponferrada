@@ -1,11 +1,10 @@
 import { getPersonaFromConfig } from './fromconfig';
-import { mayTestChains } from '../../utils/test/testExecutor';
 import * as config from '../blockchain/chainsConfig/fetchConfig';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
 import { AccountInfo } from '.';
 import { getConfig } from '../blockchain/chainsConfig';
 
-describe('getPersonaFromConfig', (): void => {
+describe('getPersonaFromConfig', () => {
   function checkAccount(
     account: AccountInfo,
     name: string,
@@ -20,7 +19,7 @@ describe('getPersonaFromConfig', (): void => {
     firstAccount: AccountInfo,
     secondAccount: AccountInfo
   ): void {
-    expect(firstAccount.identities.size).toBe(secondAccount.identities.size);
+    expect(firstAccount.identities.size).toEqual(secondAccount.identities.size);
 
     const keys = Array.from(firstAccount.identities.keys());
 
@@ -42,33 +41,26 @@ describe('getPersonaFromConfig', (): void => {
     return chainIds;
   }
 
-  mayTestChains(
-    'should fulfill blockchain accounts of just added chains',
-    async (): Promise<void> => {
-      // GIVEN an entity Persona with two accounts main and saving and exposition to bns and lsk chains
-      const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
-      fetchConfigMock.mockImplementation(threeChainsConfig);
+  it('works', async () => {
+    // GIVEN an entity Persona with two accounts main and saving and exposition to bns and lsk chains
+    const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
+    fetchConfigMock.mockImplementation(threeChainsConfig);
 
-      const persona = await getPersonaFromConfig();
+    const persona = await getPersonaFromConfig();
 
-      const availableChains = await getAvailableChains();
-      let accounts = await persona.accounts();
-      expect(accounts.length).toBe(1);
-      checkAccount(accounts[0], 'Account 0', availableChains);
+    const availableChains = await getAvailableChains();
+    let accounts = await persona.accounts();
+    expect(accounts.length).toEqual(1);
+    checkAccount(accounts[0], 'Account 0', availableChains);
 
-      await persona.generateNextAccount();
-      accounts = await persona.accounts();
-      expect(accounts.length).toBe(2);
-      checkAccount(accounts[0], 'Account 0', availableChains);
-      checkAccount(accounts[1], 'Account 1', availableChains);
+    await persona.generateNextAccount();
+    accounts = await persona.accounts();
+    expect(accounts.length).toEqual(2);
+    checkAccount(accounts[0], 'Account 0', availableChains);
+    checkAccount(accounts[1], 'Account 1', availableChains);
 
-      checkDifferentKeys(accounts[0], accounts[1]);
+    checkDifferentKeys(accounts[0], accounts[1]);
 
-      // check tokens for each account
-      fetchConfigMock.mockRestore();
-
-      // WHEN adding support for ETH
-      // THEN the two accounts (main and savings) have a eth blockchain account.
-    }
-  );
+    fetchConfigMock.mockRestore();
+  });
 });
