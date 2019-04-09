@@ -3,7 +3,7 @@ import Wallet from './components/Wallet';
 
 const App = () => {
   return (
-    <div style={style}>
+    <div>
       <Wallet />
     </div>
   );
