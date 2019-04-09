@@ -2,12 +2,12 @@ import InputBase, { InputBaseProps } from '@material-ui/core/InputBase';
 import Popper from '@material-ui/core/Popper';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { FormApi, FieldSubscription } from 'final-form';
+import { useField } from 'react-final-form-hooks';
 import * as React from 'react';
+import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
 import { useOpen } from '../../../hooks/open';
 import Image from '../../Image';
 import Block from '../../Block';
-import { useField } from '../Form';
-import selectChevron from './assets/selectChevron.svg';
 import SelectItems from './SelectItems';
 
 export interface Item {
