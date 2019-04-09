@@ -1,15 +1,15 @@
-import * as config from './config';
-import { getConfig } from '../utils/config';
-import { threeChainsConfig } from '../logic/test/chainConfigBuilder';
+import * as config from './fetchConfig';
+import { threeChainsConfig } from '../../test/chainConfigBuilder';
+import { getConfig } from '.';
 
 describe('config', () => {
   it('mocks correctly chain config', async () => {
-    const fetchConfigMock = jest.spyOn(config, 'getConfig');
+    const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
     fetchConfigMock.mockImplementation(threeChainsConfig);
-    expect((await getConfig()).chains.length).toBe(3);
+    expect((await getConfig()).length).toBe(3);
 
     fetchConfigMock.mockRestore();
 
-    expect((await getConfig()).chains.length).toBe(4);
+    expect((await getConfig()).length).toBe(4);
   });
 });

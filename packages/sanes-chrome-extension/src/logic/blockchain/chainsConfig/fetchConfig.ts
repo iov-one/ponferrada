@@ -1,5 +1,3 @@
-import { TokenTicker } from '@iov/bcp';
-
 import { singleton } from '../../../utils/singleton';
 import { CodecType } from '../connection';
 
@@ -10,7 +8,7 @@ export interface ChainSpec {
 
 export interface FaucetSpec {
   readonly uri: string;
-  readonly token: TokenTicker;
+  readonly token: string;
 }
 
 // We can extend T to also include extra information, such as a chainId field
