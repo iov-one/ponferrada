@@ -4,7 +4,7 @@ import { mayTestChains } from '../utils/test/testExecutor';
 import * as config from './blockchain/chainsConfig/fetchConfig';
 import { threeChainsConfig } from './test/chainConfigBuilder';
 
-describe('logic', () => {
+describe('logic', (): void => {
   /*mayTestChains('should get a Persona', async () => {
     const password = 'test-password';
     const accountName = 'test-account';
@@ -22,7 +22,7 @@ describe('logic', () => {
   });*/
   mayTestChains(
     'should fulfill blockchain accounts of just added chains',
-    async () => {
+    async (): Promise<void> => {
       // GIVEN an entity Persona with two accounts main and saving and exposition to bns and lsk chains
       const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
       fetchConfigMock.mockImplementation(threeChainsConfig);
