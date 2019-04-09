@@ -17,21 +17,23 @@ export function algorithmForCodec(codec: Codec): Algorithm {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const pathForCodec = (codec: Codec) => (
-  derivation: number
-): ReadonlyArray<Slip10RawIndex> => {
-  switch (codec) {
-    case Codec.Bns: // BNS and BOV
-      return HdPaths.iov(derivation);
-    case Codec.Lisk:
-      return HdPaths.bip44Like(134, derivation);
-    case Codec.Ethereum:
-      return HdPaths.ethereum(derivation);
-    default:
-      throw new Error(`unsupported codec: ${codec}`);
-  }
-};
+export function pathBuilderForCodec(
+  codec: Codec
+): (derivation: number) => ReadonlyArray<Slip10RawIndex> {
+  const pathBuilder = (derivation: number): ReadonlyArray<Slip10RawIndex> => {
+    switch (codec) {
+      case Codec.Bns: // BNS and BOV
+        return HdPaths.iov(derivation);
+      case Codec.Lisk:
+        return HdPaths.bip44Like(134, derivation);
+      case Codec.Ethereum:
+        return HdPaths.ethereum(derivation);
+      default:
+        throw new Error(`unsupported codec: ${codec}`);
+    }
+  };
+  return pathBuilder;
+}
 
 export function walletFrom(
   codec: Codec,

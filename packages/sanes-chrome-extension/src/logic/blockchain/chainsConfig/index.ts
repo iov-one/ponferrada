@@ -3,7 +3,7 @@ import { Slip10RawIndex } from '@iov/crypto';
 
 import { ChainConfig, ChainSpec, Config, fetchConfig } from './fetchConfig';
 import { chainConnector, codecFromString } from '../connection';
-import { algorithmForCodec, pathForCodec } from '../wallet';
+import { algorithmForCodec, pathBuilderForCodec } from '../wallet';
 import { singleton } from '../../../utils/singleton';
 
 export interface EnhancedChainSpec extends ChainSpec {
@@ -35,7 +35,7 @@ const enhanceChainsInfo = async (
 
   // add other info (TODO: revisit if this is best)
   const algorithm = algorithmForCodec(codec);
-  const derivePath = pathForCodec(codec);
+  const derivePath = pathBuilderForCodec(codec);
 
   // now return it...
   const chainSpecWithId = {
