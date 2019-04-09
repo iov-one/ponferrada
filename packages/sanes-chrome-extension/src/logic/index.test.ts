@@ -53,8 +53,7 @@ describe('logic', (): void => {
       const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
       fetchConfigMock.mockImplementation(threeChainsConfig);
 
-      const password = 'testPass';
-      const persona = await createPersona(password);
+      const persona = await createPersona();
 
       const availableChains = await getAvailableChains();
       let accounts = await persona.accounts();

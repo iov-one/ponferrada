@@ -36,11 +36,12 @@ const Signup = (): JSX.Element => {
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const persona = await createPersona(password);
+      const persona = await createPersona();
       const firstAccount = (await persona.accounts()).find(() => true);
       if (!firstAccount) {
         throw new Error('Signup create persona failed');

@@ -5,10 +5,9 @@ import { singleton } from '../utils/singleton';
 import { createUserProfile } from './user';
 import { getConfig } from './blockchain/chainsConfig';
 import { Persona } from './persona';
-import { getDefaultDb } from './user/db';
 
 // This method should be called by the "Create New Persona onSubmit fn"
-const buildAndStorePersona = async (password: string): Promise<Persona> => {
+const buildAndStorePersona = async (): Promise<Persona> => {
   // TODO once we support login modify this for loading from db
   const baseProfile: UserProfile = await createUserProfile();
 
@@ -20,9 +19,6 @@ const buildAndStorePersona = async (password: string): Promise<Persona> => {
   const derivation = 0;
   await persona.generateAccount(derivation);
 
-  const db = await getDefaultDb();
-  baseProfile.storeIn(db, password);
-
   return persona;
 };
 
@@ -31,4 +27,4 @@ export const createPersona = singleton<typeof buildAndStorePersona>(
 );
 
 export const getPersona = (): ReturnType<typeof buildAndStorePersona> =>
-  createPersona('');
+  createPersona();
