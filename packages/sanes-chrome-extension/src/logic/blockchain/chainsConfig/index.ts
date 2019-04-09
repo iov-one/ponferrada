@@ -2,12 +2,7 @@ import { ChainId, TxReadCodec, Algorithm } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
 
 import { ChainConfig, ChainSpec, Config, fetchConfig } from './fetchConfig';
-import {
-  chainConnector,
-  Codec,
-  codecFromString,
-  codecImplementation,
-} from '../connection';
+import { chainConnector, Codec, codecFromString } from '../connection';
 import { algorithmForCodec, pathForCodec } from '../wallet';
 import { singleton } from '../../../utils/singleton';
 
@@ -34,23 +29,24 @@ const enhanceChainsInfo = async (
   // we get all info here...
   const codec = codecFromString(chainSpec.codecType);
   const nodes = chainSpec.bootstrapNodes;
-  const connection = await chainConnector(codec, nodes).client();
+  const connector = chainConnector(codec, nodes);
+
+  const connection = await connector.client();
   const chainId = connection.chainId();
   connection.disconnect();
 
   // add other info (TODO: revisit if this is best)
   const algorithm = algorithmForCodec(codec);
   const derivePath = pathForCodec(codec);
-  const encoder = codecImplementation(codec);
 
   // now return it...
   const chainSpecWithId = {
     ...chainSpec,
     chainId,
-    codec,
+    codec, // why is this returned?
     algorithm,
     derivePath,
-    encoder,
+    encoder: connector.codec,
   };
 
   return { chainSpec: chainSpecWithId, faucetSpec };

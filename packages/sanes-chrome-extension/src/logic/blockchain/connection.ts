@@ -1,7 +1,7 @@
-import { bnsCodec, bnsConnector } from '@iov/bns';
-import { ethereumCodec, ethereumConnector } from '@iov/ethereum';
-import { liskCodec, liskConnector } from '@iov/lisk';
-import { TxCodec, ChainConnector } from '@iov/bcp';
+import { bnsConnector } from '@iov/bns';
+import { ethereumConnector } from '@iov/ethereum';
+import { liskConnector } from '@iov/lisk';
+import { ChainConnector } from '@iov/bcp';
 
 export enum Codec {
   Bns,
@@ -21,19 +21,6 @@ export function codecFromString(input: CodecType): Codec {
       return Codec.Ethereum;
     default:
       throw new Error(`Codec '${input}' not supported`);
-  }
-}
-
-export function codecImplementation(codec: Codec): TxCodec {
-  switch (codec) {
-    case Codec.Bns:
-      return bnsCodec;
-    case Codec.Lisk:
-      return liskCodec;
-    case Codec.Ethereum:
-      return ethereumCodec;
-    default:
-      throw new Error('No codec imlementation for this codec found');
   }
 }
 
