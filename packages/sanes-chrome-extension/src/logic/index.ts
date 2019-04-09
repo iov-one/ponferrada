@@ -4,7 +4,7 @@ import { singleton } from '../utils/singleton';
 
 import { createUserProfile } from './user';
 import { getConfig } from './blockchain/chainsConfig';
-import Persona from './persona';
+import { Persona } from './persona';
 import { getDefaultDb } from './user/profile';
 
 // This method should be called by the "Create New Persona onSubmit fn"

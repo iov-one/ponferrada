@@ -12,7 +12,7 @@ import SelectField, {
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
 import { getPersona } from '../../logic';
-import Persona from '../../logic/persona';
+import { Persona } from '../../logic/persona';
 
 const CREATE_NEW_ONE = 'Create a new one';
 

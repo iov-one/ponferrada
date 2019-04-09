@@ -14,7 +14,7 @@ export interface AccountInfo {
   publicIdentities: ReadonlyMap<ChainId, PublicIdentity>;
 }
 
-class Persona {
+export class Persona {
   private _userProfile: UserProfile;
   private _chains: EnhancedChainSpec[];
 
@@ -129,5 +129,3 @@ class Persona {
     return !!allIdentities.find(x => publicIdentityEquals(x, ident));
   }
 }
-
-export default Persona;

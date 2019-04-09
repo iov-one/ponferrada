@@ -1,4 +1,4 @@
-import Persona from '../persona';
+import { Persona } from '../persona';
 import { Amount, TokenTicker } from '@iov/bcp';
 
 export function getBalances(

@@ -7,7 +7,6 @@ import {
   ACCOUNT_NAME_FIELD,
   PASSWORD_FIELD,
 } from './components/NewAccountForm';
-import Persona from '../../logic/persona';
 import { createPersona } from '../../logic';
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
@@ -41,7 +40,7 @@ const Signup = (): JSX.Element => {
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const persona: Persona = await createPersona(password);
+      const persona = await createPersona(password);
       const firstAccount = (await persona.accounts()).find(() => true);
       if (!firstAccount) {
         throw new Error('Signup create persona failed');
