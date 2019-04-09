@@ -7,14 +7,14 @@ import Switch from 'medulas-react-components/lib/components/Switch';
 import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
-import { getPersona } from '../../../logic';
+import { getPersonaFromConfig } from '../../../logic';
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
 // Exported only for being used in test environments
 export const getMnemonic = async (): Promise<string> => {
   try {
-    const persona = await getPersona();
+    const persona = await getPersonaFromConfig();
     return persona.mnemonic();
   } catch (err) {
     console.log('Error getting persona or mnemonic', err);

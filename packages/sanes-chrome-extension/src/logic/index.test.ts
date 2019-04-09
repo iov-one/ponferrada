@@ -1,4 +1,4 @@
-import { createPersona } from './index';
+import { getPersonaFromConfig } from './index';
 import { mayTestChains } from '../utils/test/testExecutor';
 import * as config from './blockchain/chainsConfig/fetchConfig';
 import { threeChainsConfig } from './test/chainConfigBuilder';
@@ -53,7 +53,7 @@ describe('logic', (): void => {
       const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
       fetchConfigMock.mockImplementation(threeChainsConfig);
 
-      const persona = await createPersona();
+      const persona = await getPersonaFromConfig();
 
       const availableChains = await getAvailableChains();
       let accounts = await persona.accounts();
