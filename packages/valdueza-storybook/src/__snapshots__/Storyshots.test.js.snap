@@ -292,140 +292,22 @@ exports[`Storyshots Components /Button Button in phone screen 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components /forms Form 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <div
-    className="MuiFormControl-root-442 MuiFormControl-marginNormal-443 MuiTextField-root-441"
-  >
-    <label
-      className="MuiFormLabel-root-458 MuiInputLabel-root-446 MuiInputLabel-formControl-452 MuiInputLabel-animated-455 MuiInputLabel-shrink-454"
-      data-shrink={true}
-    >
-      Unique Identifier
-    </label>
-    <div
-      className="MuiInputBase-root-478 MuiOutlinedInput-root-465 MuiInputBase-formControl-479"
-      onClick={[Function]}
-    >
-      <fieldset
-        aria-hidden={true}
-        className="MuiPrivateNotchedOutline-root-494 MuiOutlinedInput-notchedOutline-472"
-        style={
-          Object {
-            "paddingLeft": 8,
-          }
-        }
-      >
-        <legend
-          className="MuiPrivateNotchedOutline-legend-495"
-          style={
-            Object {
-              "width": 0.01,
-            }
-          }
-        >
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "&#8203;",
-              }
-            }
-          />
-        </legend>
-      </fieldset>
-      <input
-        aria-invalid={false}
-        className="MuiInputBase-input-488 MuiOutlinedInput-input-473"
-        disabled={false}
-        name="textFieldUniqueIdentifier"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="Unique Identifier"
-        required={false}
-        type="text"
-      />
-    </div>
-  </div>
-  <div
-    className="MuiBox-root-496 MuiBox-root-497"
-  >
-    <div
-      className="makeStyles-dropdown-498"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiInputBase-root-478 makeStyles-root-499 makeStyles-root-501"
-        onClick={[Function]}
-        role="button"
-      >
-        <input
-          autoComplete="off"
-          className="MuiInputBase-input-488 makeStyles-input-500"
-          name="selectFieldUniqueIdentifier"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
-      </div>
-      <img
-        alt="Phone Menu"
-        className="makeStyles-root-502 makeStyles-noShrink-503"
-        height="5"
-        src="selectChevron.svg"
-        width="8"
-      />
-    </div>
-  </div>
-  <button
-    className="MuiButtonBase-root-524 MuiButtonBase-disabled-525 MuiButton-root-507 MuiButton-contained-515 MuiButton-containedPrimary-516 MuiButton-disabled-519"
-    disabled={true}
-    onBlur={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex="-1"
-    type="submit"
-  >
-    <span
-      className="MuiButton-label-508"
-    >
-      Submit
-    </span>
-  </button>
-  <pre>
-    {}
-  </pre>
-</form>
-`;
-
 exports[`Storyshots Components /forms SelectField 1`] = `
 <form
   onSubmit={[Function]}
 >
   <div
-    className="makeStyles-dropdown-527"
+    className="makeStyles-dropdown-601"
     onClick={[Function]}
   >
     <div
-      className="MuiInputBase-root-531 makeStyles-root-528 makeStyles-root-530"
+      className="MuiInputBase-root-605 makeStyles-root-602 makeStyles-root-604"
       onClick={[Function]}
       role="button"
     >
       <input
         autoComplete="off"
-        className="MuiInputBase-input-541 makeStyles-input-529"
+        className="MuiInputBase-input-615 makeStyles-input-603"
         name="SELECT_FIELD_ATTR"
         onBlur={[Function]}
         onChange={[Function]}
@@ -437,7 +319,7 @@ exports[`Storyshots Components /forms SelectField 1`] = `
     </div>
     <img
       alt="Phone Menu"
-      className="makeStyles-root-547 makeStyles-noShrink-548"
+      className="makeStyles-root-621 makeStyles-noShrink-622"
       height="5"
       src="selectChevron.svg"
       width="8"
@@ -446,310 +328,54 @@ exports[`Storyshots Components /forms SelectField 1`] = `
 </form>
 `;
 
-exports[`Storyshots Components /forms TextField 1`] = `
-<div
-  className="MuiBox-root-552 MuiBox-root-553"
->
-  <div
-    className="MuiBox-root-552 MuiBox-root-554"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="MuiFormControl-root-556 MuiFormControl-marginNormal-557 MuiTextField-root-555"
-      >
-        <label
-          className="MuiFormLabel-root-572 MuiFormLabel-error-575 MuiInputLabel-error-563 MuiInputLabel-root-560 MuiInputLabel-formControl-566 MuiInputLabel-animated-569 MuiInputLabel-shrink-568"
-          data-shrink={true}
-        >
-          Error
-        </label>
-        <div
-          className="MuiInputBase-root-592 MuiOutlinedInput-root-579 MuiInputBase-error-598 MuiOutlinedInput-error-584 MuiInputBase-formControl-593"
-          onClick={[Function]}
-        >
-          <fieldset
-            aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-608 MuiOutlinedInput-notchedOutline-586"
-            style={
-              Object {
-                "paddingLeft": 8,
-              }
-            }
-          >
-            <legend
-              className="MuiPrivateNotchedOutline-legend-609"
-              style={
-                Object {
-                  "width": 0.01,
-                }
-              }
-            >
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#8203;",
-                  }
-                }
-              />
-            </legend>
-          </fieldset>
-          <input
-            aria-invalid={true}
-            className="MuiInputBase-input-602 MuiOutlinedInput-input-587"
-            defaultValue="Standard Error"
-            disabled={false}
-            name="field-with-error"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-          />
-        </div>
-        <p
-          className="MuiFormHelperText-root-610 MuiFormHelperText-contained-614 MuiFormHelperText-error-611"
-        >
-          This is an error message
-        </p>
-      </div>
-    </form>
-  </div>
-  <div
-    className="MuiBox-root-552 MuiBox-root-618"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="MuiFormControl-root-556 MuiFormControl-marginNormal-557 MuiTextField-root-555"
-      >
-        <label
-          className="MuiFormLabel-root-572 MuiInputLabel-root-560 MuiInputLabel-formControl-566 MuiInputLabel-animated-569 MuiInputLabel-shrink-568"
-          data-shrink={true}
-        >
-          Filled
-        </label>
-        <div
-          className="MuiInputBase-root-592 MuiOutlinedInput-root-579 MuiInputBase-formControl-593"
-          onClick={[Function]}
-        >
-          <fieldset
-            aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-608 MuiOutlinedInput-notchedOutline-586"
-            style={
-              Object {
-                "paddingLeft": 8,
-              }
-            }
-          >
-            <legend
-              className="MuiPrivateNotchedOutline-legend-609"
-              style={
-                Object {
-                  "width": 0.01,
-                }
-              }
-            >
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#8203;",
-                  }
-                }
-              />
-            </legend>
-          </fieldset>
-          <input
-            aria-invalid={false}
-            className="MuiInputBase-input-602 MuiOutlinedInput-input-587"
-            defaultValue="test*iov"
-            disabled={false}
-            name="field-filled"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-          />
-        </div>
-      </div>
-    </form>
-  </div>
-  <div
-    className="MuiBox-root-552 MuiBox-root-619"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="MuiFormControl-root-556 MuiFormControl-marginNormal-557 MuiTextField-root-555"
-      >
-        <label
-          className="MuiFormLabel-root-572 MuiFormLabel-disabled-574 MuiInputLabel-disabled-562 MuiInputLabel-root-560 MuiInputLabel-formControl-566 MuiInputLabel-animated-569 MuiInputLabel-shrink-568"
-          data-shrink={true}
-        >
-          Disabled
-        </label>
-        <div
-          className="MuiInputBase-root-592 MuiOutlinedInput-root-579 MuiInputBase-disabled-595 MuiOutlinedInput-disabled-581 MuiInputBase-formControl-593"
-          onClick={[Function]}
-        >
-          <fieldset
-            aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-608 MuiOutlinedInput-notchedOutline-586"
-            style={
-              Object {
-                "paddingLeft": 8,
-              }
-            }
-          >
-            <legend
-              className="MuiPrivateNotchedOutline-legend-609"
-              style={
-                Object {
-                  "width": 0.01,
-                }
-              }
-            >
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#8203;",
-                  }
-                }
-              />
-            </legend>
-          </fieldset>
-          <input
-            aria-invalid={false}
-            className="MuiInputBase-input-602 MuiOutlinedInput-input-587 MuiInputBase-disabled-595 MuiOutlinedInput-disabled-581"
-            defaultValue="Disabled input"
-            disabled={true}
-            name="standard-disabled"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-          />
-        </div>
-      </div>
-    </form>
-  </div>
-  <div
-    className="MuiBox-root-552 MuiBox-root-620"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="MuiFormControl-root-556 MuiFormControl-marginNormal-557 MuiTextField-root-555"
-      >
-        <label
-          className="MuiFormLabel-root-572 MuiInputLabel-root-560 MuiInputLabel-formControl-566 MuiInputLabel-animated-569 MuiInputLabel-shrink-568"
-          data-shrink={true}
-        >
-          Empty
-        </label>
-        <div
-          className="MuiInputBase-root-592 MuiOutlinedInput-root-579 MuiInputBase-formControl-593"
-          onClick={[Function]}
-        >
-          <fieldset
-            aria-hidden={true}
-            className="MuiPrivateNotchedOutline-root-608 MuiOutlinedInput-notchedOutline-586"
-            style={
-              Object {
-                "paddingLeft": 8,
-              }
-            }
-          >
-            <legend
-              className="MuiPrivateNotchedOutline-legend-609"
-              style={
-                Object {
-                  "width": 0.01,
-                }
-              }
-            >
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#8203;",
-                  }
-                }
-              />
-            </legend>
-          </fieldset>
-          <input
-            aria-invalid={false}
-            className="MuiInputBase-input-602 MuiOutlinedInput-input-587"
-            disabled={false}
-            name="standard-with-placeholder"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="IOV or wallet address"
-            required={false}
-            type="text"
-          />
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Components Hairline 1`] = `
 Array [
   <div
     className="MuiBox-root-75 MuiBox-root-76"
   >
     <p
-      className="MuiTypography-root-78 MuiTypography-body1-80"
+      className="MuiTypography-root-79 MuiTypography-body1-81"
     >
       Regular hairline without margin
     </p>
     <div
-      className="MuiBox-root-75 MuiBox-root-108"
+      className="MuiBox-root-75 MuiBox-root-109"
     />
   </div>,
   <div
-    className="MuiBox-root-75 MuiBox-root-109"
+    className="MuiBox-root-75 MuiBox-root-110"
   >
     <p
-      className="MuiTypography-root-78 MuiTypography-body1-80"
+      className="MuiTypography-root-79 MuiTypography-body1-81"
     >
       Regular hairline with unit 1 margin
     </p>
     <div
-      className="MuiBox-root-75 MuiBox-root-110"
+      className="MuiBox-root-75 MuiBox-root-111"
     />
   </div>,
   <div
-    className="MuiBox-root-75 MuiBox-root-111"
+    className="MuiBox-root-75 MuiBox-root-112"
   >
     <p
-      className="MuiTypography-root-78 MuiTypography-body1-80"
+      className="MuiTypography-root-79 MuiTypography-body1-81"
     >
       Regular hairline with unit 4 margin
     </p>
     <div
-      className="MuiBox-root-75 MuiBox-root-112"
+      className="MuiBox-root-75 MuiBox-root-113"
     />
   </div>,
   <div
-    className="MuiBox-root-75 MuiBox-root-113"
+    className="MuiBox-root-75 MuiBox-root-114"
   >
     <p
-      className="MuiTypography-root-78 MuiTypography-body1-80"
+      className="MuiTypography-root-79 MuiTypography-body1-81"
     >
       Hairline with custom color
     </p>
     <div
-      className="MuiBox-root-75 MuiBox-root-114"
+      className="MuiBox-root-75 MuiBox-root-115"
     />
   </div>,
 ]
@@ -758,48 +384,48 @@ Array [
 exports[`Storyshots Components Images 1`] = `
 <img
   alt="Iov Logo"
-  className="makeStyles-root-115"
+  className="makeStyles-root-116"
   src="iov-logo.png"
 />
 `;
 
-exports[`Storyshots Routes/Login Login page 1`] = `
+exports[`Storyshots Components Layout 1`] = `
 <div
-  className="MuiBox-root-120 MuiBox-root-121"
+  className="MuiBox-root-121 MuiBox-root-122"
 >
   <div
-    className="MuiBox-root-120 MuiBox-root-122"
+    className="MuiBox-root-121 MuiBox-root-123"
   >
     <h4
-      className="MuiTypography-root-124 MuiTypography-h4-132 MuiTypography-colorPrimary-147 makeStyles-inline-123"
+      className="MuiTypography-root-126 MuiTypography-h4-134 MuiTypography-colorPrimary-149 makeStyles-inline-124"
     >
-      Log
+      Title
     </h4>
     <h4
-      className="MuiTypography-root-124 MuiTypography-h4-132 makeStyles-inline-123"
+      className="MuiTypography-root-126 MuiTypography-h4-134 makeStyles-inline-124"
     >
-
-      In
+       
+      storybook
     </h4>
   </div>
   <div
-    className="MuiBox-root-120 MuiBox-root-154"
+    className="MuiBox-root-121 MuiBox-root-156"
   >
     <h6
-      className="MuiTypography-root-124 MuiTypography-h6-134"
+      className="MuiTypography-root-126 MuiTypography-h6-136"
     >
       Layout content
     </h6>
   </div>
   <div
-    className="MuiBox-root-120 MuiBox-root-155"
+    className="MuiBox-root-121 MuiBox-root-157"
   />
   <div
-    className="MuiBox-root-120 MuiBox-root-156"
+    className="MuiBox-root-121 MuiBox-root-158"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-157"
+      className="makeStyles-root-159"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -811,17 +437,17 @@ exports[`Storyshots Routes/Login Login page 1`] = `
 exports[`Storyshots Components Switch 1`] = `
 Array [
   <div
-    className="MuiBox-root-162 MuiBox-root-163"
+    className="MuiBox-root-164 MuiBox-root-165"
   >
     <label
-      className="MuiFormControlLabel-root-164"
+      className="MuiFormControlLabel-root-166"
     >
       <span
-        className="MuiSwitch-root-170"
+        className="MuiSwitch-root-172"
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root-192 MuiIconButton-root-183 MuiPrivateSwitchBase-root-179 MuiSwitch-switchBase-171 MuiSwitch-colorPrimary-172"
+          className="MuiButtonBase-root-194 MuiIconButton-root-185 MuiPrivateSwitchBase-root-181 MuiSwitch-switchBase-173 MuiSwitch-colorPrimary-174"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -835,44 +461,41 @@ Array [
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-191"
+            className="MuiIconButton-label-193"
           >
             <span
-              className="MuiSwitch-thumb-177"
+              className="MuiSwitch-thumb-179"
             />
             <input
-              className="MuiPrivateSwitchBase-input-182 MuiSwitch-input-176"
+              className="MuiPrivateSwitchBase-input-184 MuiSwitch-input-178"
               onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Enter your unique identifier"
-              required={true}
-              type="text"
+              type="checkbox"
             />
           </span>
         </span>
         <span
-          className="MuiSwitch-track-178"
+          className="MuiSwitch-track-180"
         />
       </span>
       <span
-        className="MuiTypography-root-195 MuiTypography-body1-197 MuiFormControlLabel-label-169"
+        className="MuiTypography-root-197 MuiTypography-body1-199 MuiFormControlLabel-label-171"
       >
         With label
       </span>
     </label>
   </div>,
   <div
-    className="MuiBox-root-162 MuiBox-root-225"
+    className="MuiBox-root-164 MuiBox-root-227"
   >
     <label
-      className="MuiFormControlLabel-root-164"
+      className="MuiFormControlLabel-root-166"
     >
       <span
-        className="MuiSwitch-root-170"
+        className="MuiSwitch-root-172"
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root-192 MuiIconButton-root-183 MuiPrivateSwitchBase-root-179 MuiSwitch-switchBase-171 MuiSwitch-colorPrimary-172"
+          className="MuiButtonBase-root-194 MuiIconButton-root-185 MuiPrivateSwitchBase-root-181 MuiSwitch-switchBase-173 MuiSwitch-colorPrimary-174"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -886,27 +509,24 @@ Array [
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-191"
+            className="MuiIconButton-label-193"
           >
             <span
-              className="MuiSwitch-thumb-177"
+              className="MuiSwitch-thumb-179"
             />
             <input
-              className="MuiPrivateSwitchBase-input-182 MuiSwitch-input-176"
+              className="MuiPrivateSwitchBase-input-184 MuiSwitch-input-178"
               onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Password"
-              required={true}
-              type="password"
+              type="checkbox"
             />
           </span>
         </span>
         <span
-          className="MuiSwitch-track-178"
+          className="MuiSwitch-track-180"
         />
       </span>
       <span
-        className="MuiTypography-root-195 MuiTypography-body1-197 MuiFormControlLabel-label-169"
+        className="MuiTypography-root-197 MuiTypography-body1-199 MuiFormControlLabel-label-171"
       />
     </label>
   </div>,
@@ -916,16 +536,16 @@ Array [
 exports[`Storyshots Components Toasts 1`] = `
 Array [
   <div
-    className="MuiBox-root-317 MuiBox-root-318"
+    className="MuiBox-root-321 MuiBox-root-322"
   >
     <div
-      className="MuiBox-root-317 MuiBox-root-319"
+      className="MuiBox-root-321 MuiBox-root-323"
     >
       <div
-        className="MuiBox-root-317 MuiBox-root-320"
+        className="MuiBox-root-321 MuiBox-root-324"
       >
         <button
-          className="MuiButtonBase-root-338 MuiButton-root-321 MuiButton-contained-329 MuiButton-containedPrimary-330"
+          className="MuiButtonBase-root-342 MuiButton-root-325 MuiButton-contained-333 MuiButton-containedPrimary-334"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -942,51 +562,51 @@ Array [
           type="button"
         >
           <span
-            className="MuiButton-label-322"
+            className="MuiButton-label-326"
           >
             Click to generate INFO toast
           </span>
         </button>
       </div>
       <p
-        className="MuiTypography-root-342 MuiTypography-body1-344"
+        className="MuiTypography-root-347 MuiTypography-body1-349"
       >
         This should generate...
       </p>
       <div
-        className="MuiTypography-root-342 MuiTypography-body2-343 MuiPaper-root-383 MuiPaper-elevation6-391 MuiSnackbarContent-root-380 makeStyles-info-374"
+        className="MuiTypography-root-347 MuiTypography-body2-348 MuiPaper-root-388 MuiPaper-elevation6-396 MuiSnackbarContent-root-385 makeStyles-info-379"
         role="alertdialog"
       >
         <div
-          className="MuiSnackbarContent-message-381"
+          className="MuiSnackbarContent-message-386"
         >
           <div
-            className="MuiBox-root-317 MuiBox-root-410 makeStyles-message-378"
+            className="MuiBox-root-321 MuiBox-root-415 makeStyles-message-383"
           >
             <div
-              className="makeStyles-iconBackground-379"
+              className="makeStyles-iconBackground-384"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-411"
+                className="makeStyles-root-416"
                 height={24}
                 src="success.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root-342 MuiTypography-subtitle1-353 makeStyles-info-374"
+              className="MuiTypography-root-347 MuiTypography-subtitle1-358 makeStyles-info-379"
             >
               Hi INFO
             </h6>
           </div>
         </div>
         <div
-          className="MuiSnackbarContent-action-382"
+          className="MuiSnackbarContent-action-387"
         >
           <button
             aria-label="Close"
-            className="MuiButtonBase-root-338 MuiIconButton-root-416 MuiIconButton-colorSecondary-421"
+            className="MuiButtonBase-root-342 MuiIconButton-root-421 MuiIconButton-colorSecondary-426"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1003,11 +623,11 @@ Array [
             type="button"
           >
             <span
-              className="MuiIconButton-label-424"
+              className="MuiIconButton-label-429"
             >
               <img
                 alt="Close"
-                className="makeStyles-root-411"
+                className="makeStyles-root-416"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -1018,13 +638,13 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root-317 MuiBox-root-425"
+      className="MuiBox-root-321 MuiBox-root-430"
     >
       <div
-        className="MuiBox-root-317 MuiBox-root-426"
+        className="MuiBox-root-321 MuiBox-root-431"
       >
         <button
-          className="MuiButtonBase-root-338 MuiButton-root-321 MuiButton-contained-329 MuiButton-containedPrimary-330"
+          className="MuiButtonBase-root-342 MuiButton-root-325 MuiButton-contained-333 MuiButton-containedPrimary-334"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1041,51 +661,51 @@ Array [
           type="button"
         >
           <span
-            className="MuiButton-label-322"
+            className="MuiButton-label-326"
           >
             Click to generate WARN toast
           </span>
         </button>
       </div>
       <p
-        className="MuiTypography-root-342 MuiTypography-body1-344"
+        className="MuiTypography-root-347 MuiTypography-body1-349"
       >
         This should generate...
       </p>
       <div
-        className="MuiTypography-root-342 MuiTypography-body2-343 MuiPaper-root-383 MuiPaper-elevation6-391 MuiSnackbarContent-root-380 makeStyles-warning-375"
+        className="MuiTypography-root-347 MuiTypography-body2-348 MuiPaper-root-388 MuiPaper-elevation6-396 MuiSnackbarContent-root-385 makeStyles-warning-380"
         role="alertdialog"
       >
         <div
-          className="MuiSnackbarContent-message-381"
+          className="MuiSnackbarContent-message-386"
         >
           <div
-            className="MuiBox-root-317 MuiBox-root-427 makeStyles-message-378"
+            className="MuiBox-root-321 MuiBox-root-432 makeStyles-message-383"
           >
             <div
-              className="makeStyles-iconBackground-379"
+              className="makeStyles-iconBackground-384"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-411"
+                className="makeStyles-root-416"
                 height={24}
                 src="warning.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root-342 MuiTypography-subtitle1-353 makeStyles-warning-375"
+              className="MuiTypography-root-347 MuiTypography-subtitle1-358 makeStyles-warning-380"
             >
               Hi WARN
             </h6>
           </div>
         </div>
         <div
-          className="MuiSnackbarContent-action-382"
+          className="MuiSnackbarContent-action-387"
         >
           <button
             aria-label="Close"
-            className="MuiButtonBase-root-338 MuiIconButton-root-416 MuiIconButton-colorSecondary-421"
+            className="MuiButtonBase-root-342 MuiIconButton-root-421 MuiIconButton-colorSecondary-426"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1102,11 +722,11 @@ Array [
             type="button"
           >
             <span
-              className="MuiIconButton-label-424"
+              className="MuiIconButton-label-429"
             >
               <img
                 alt="Close"
-                className="makeStyles-root-411"
+                className="makeStyles-root-416"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -1117,13 +737,13 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root-317 MuiBox-root-428"
+      className="MuiBox-root-321 MuiBox-root-433"
     >
       <div
-        className="MuiBox-root-317 MuiBox-root-429"
+        className="MuiBox-root-321 MuiBox-root-434"
       >
         <button
-          className="MuiButtonBase-root-338 MuiButton-root-321 MuiButton-contained-329 MuiButton-containedPrimary-330"
+          className="MuiButtonBase-root-342 MuiButton-root-325 MuiButton-contained-333 MuiButton-containedPrimary-334"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1140,51 +760,51 @@ Array [
           type="button"
         >
           <span
-            className="MuiButton-label-322"
+            className="MuiButton-label-326"
           >
             Click to generate ERROR toast
           </span>
         </button>
       </div>
       <p
-        className="MuiTypography-root-342 MuiTypography-body1-344"
+        className="MuiTypography-root-347 MuiTypography-body1-349"
       >
         This should generate...
       </p>
       <div
-        className="MuiTypography-root-342 MuiTypography-body2-343 MuiPaper-root-383 MuiPaper-elevation6-391 MuiSnackbarContent-root-380 makeStyles-error-373"
+        className="MuiTypography-root-347 MuiTypography-body2-348 MuiPaper-root-388 MuiPaper-elevation6-396 MuiSnackbarContent-root-385 makeStyles-error-378"
         role="alertdialog"
       >
         <div
-          className="MuiSnackbarContent-message-381"
+          className="MuiSnackbarContent-message-386"
         >
           <div
-            className="MuiBox-root-317 MuiBox-root-430 makeStyles-message-378"
+            className="MuiBox-root-321 MuiBox-root-435 makeStyles-message-383"
           >
             <div
-              className="makeStyles-iconBackground-379"
+              className="makeStyles-iconBackground-384"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-411"
+                className="makeStyles-root-416"
                 height={24}
                 src="error.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root-342 MuiTypography-subtitle1-353 makeStyles-error-373"
+              className="MuiTypography-root-347 MuiTypography-subtitle1-358 makeStyles-error-378"
             >
               Hi ERR
             </h6>
           </div>
         </div>
         <div
-          className="MuiSnackbarContent-action-382"
+          className="MuiSnackbarContent-action-387"
         >
           <button
             aria-label="Close"
-            className="MuiButtonBase-root-338 MuiIconButton-root-416 MuiIconButton-colorSecondary-421"
+            className="MuiButtonBase-root-342 MuiIconButton-root-421 MuiIconButton-colorSecondary-426"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1201,11 +821,11 @@ Array [
             type="button"
           >
             <span
-              className="MuiIconButton-label-424"
+              className="MuiIconButton-label-429"
             >
               <img
                 alt="Close"
-                className="makeStyles-root-411"
+                className="makeStyles-root-416"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -1223,26 +843,26 @@ Array [
 exports[`Storyshots Components Tooltip 1`] = `
 Array [
   <div
-    className="MuiBox-root-236 MuiBox-root-237"
+    className="MuiBox-root-238 MuiBox-root-239"
   >
     <div
-      className="makeStyles-container-239"
+      className="makeStyles-container-241"
       onClick={[Function]}
     >
       <img
         alt="Info"
-        className="makeStyles-root-242"
+        className="makeStyles-root-244"
         height={16}
         src="info_normal.svg"
         width={16}
       />
     </div>
-  </div>
+  </div>,
   <div
-    className="MuiBox-root-236 MuiBox-root-247"
+    className="MuiBox-root-238 MuiBox-root-249"
   >
     <p
-      className="MuiTypography-root-249 MuiTypography-body1-251 makeStyles-inline-248"
+      className="MuiTypography-root-252 MuiTypography-body1-254 makeStyles-inline-250"
       style={
         Object {
           "marginRight": "4px",
@@ -1252,12 +872,12 @@ Array [
       Loooooooooooooooooooooooooooooooooong text
     </p>
     <div
-      className="makeStyles-container-239"
+      className="makeStyles-container-241"
       onClick={[Function]}
     >
       <img
         alt="Info"
-        className="makeStyles-root-242"
+        className="makeStyles-root-244"
         height={16}
         src="info_normal.svg"
         width={16}
@@ -1270,213 +890,599 @@ Array [
 exports[`Storyshots Components Typography 1`] = `
 Array [
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     H4
   </h6>,
   <h4
-    className="MuiTypography-root-280 MuiTypography-h4-288"
+    className="MuiTypography-root-284 MuiTypography-h4-292"
   >
     Main headings
   </h4>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     H5
   </h6>,
   <h5
-    className="MuiTypography-root-280 MuiTypography-h5-289"
+    className="MuiTypography-root-284 MuiTypography-h5-293"
   >
     Heading 2
   </h5>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     H6
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-h6-290"
+    className="MuiTypography-root-284 MuiTypography-h6-294"
   >
     Subheading
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     body1
   </h6>,
   <p
-    className="MuiTypography-root-280 MuiTypography-body1-282"
+    className="MuiTypography-root-284 MuiTypography-body1-286"
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     body2
   </h6>,
   <p
-    className="MuiTypography-root-280 MuiTypography-body2-281"
+    className="MuiTypography-root-284 MuiTypography-body2-285"
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     subtitle1
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295"
   >
     Text field label
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     subtitle2
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle2-292"
+    className="MuiTypography-root-284 MuiTypography-subtitle2-296"
   >
     Text field label
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle1-291 MuiTypography-colorPrimary-303"
+    className="MuiTypography-root-284 MuiTypography-subtitle1-295 MuiTypography-colorPrimary-307"
   >
     Inline styles
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle2-292 MuiTypography-colorPrimary-303 makeStyles-inline-279"
+    className="MuiTypography-root-284 MuiTypography-subtitle2-296 MuiTypography-colorPrimary-307 makeStyles-inline-282"
   >
-    First part of the text.
+    First part of the text. 
   </h6>,
   <h6
-    className="MuiTypography-root-280 MuiTypography-subtitle2-292 makeStyles-inline-279"
+    className="MuiTypography-root-284 MuiTypography-subtitle2-296 makeStyles-inline-282"
   >
-    <img
-      alt="IOV logo"
-      className="makeStyles-root-521"
-      height={39}
-      src="iov-logo.png"
-      width={84}
-    />
-  </div>
-</div>
+    Second part of the text.
+  </h6>,
+]
 `;
 
-exports[`Storyshots Routes/Signup New account page 1`] = `
-<div
-  className="MuiBox-root-688 MuiBox-root-689"
-  id="/signup1"
+exports[`Storyshots Components/forms Form 1`] = `
+<form
+  onSubmit={[Function]}
 >
   <div
-    className="MuiBox-root-688 MuiBox-root-690"
+    className="MuiFormControl-root-447 MuiFormControl-marginNormal-448 MuiTextField-root-446"
   >
-    <h4
-      className="MuiTypography-root-692 MuiTypography-h4-700 MuiTypography-colorPrimary-715 makeStyles-inline-691"
+    <label
+      className="MuiFormLabel-root-463 MuiInputLabel-root-451 MuiInputLabel-formControl-457 MuiInputLabel-animated-460 MuiInputLabel-shrink-459"
+      data-shrink={true}
     >
-      New
-    </h4>
-    <h4
-      className="MuiTypography-root-692 MuiTypography-h4-700 makeStyles-inline-691"
+      Unique Identifier
+    </label>
+    <div
+      className="MuiInputBase-root-483 MuiOutlinedInput-root-470 MuiInputBase-formControl-484"
+      onClick={[Function]}
     >
-
-      Account
-    </h4>
+      <fieldset
+        aria-hidden={true}
+        className="MuiPrivateNotchedOutline-root-499 MuiOutlinedInput-notchedOutline-477"
+        style={
+          Object {
+            "paddingLeft": 8,
+          }
+        }
+      >
+        <legend
+          className="MuiPrivateNotchedOutline-legend-500"
+          style={
+            Object {
+              "width": 0.01,
+            }
+          }
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "&#8203;",
+              }
+            }
+          />
+        </legend>
+      </fieldset>
+      <input
+        aria-invalid={false}
+        className="MuiInputBase-input-493 MuiOutlinedInput-input-478"
+        disabled={false}
+        name="textFieldUniqueIdentifier"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Unique Identifier"
+        required={false}
+        type="text"
+      />
+    </div>
   </div>
   <div
-    className="MuiBox-root-688 MuiBox-root-722"
+    className="MuiBox-root-501 MuiBox-root-502"
+  >
+    <div
+      className="makeStyles-dropdown-503"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiInputBase-root-483 makeStyles-root-504 makeStyles-root-506"
+        onClick={[Function]}
+        role="button"
+      >
+        <input
+          autoComplete="off"
+          className="MuiInputBase-input-493 makeStyles-input-505"
+          name="selectFieldUniqueIdentifier"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          readOnly={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <img
+        alt="Phone Menu"
+        className="makeStyles-root-507 makeStyles-noShrink-508"
+        height="5"
+        src="selectChevron.svg"
+        width="8"
+      />
+    </div>
+  </div>
+  <button
+    className="MuiButtonBase-root-529 MuiButtonBase-disabled-530 MuiButton-root-512 MuiButton-contained-520 MuiButton-containedPrimary-521 MuiButton-disabled-524"
+    disabled={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="-1"
+    type="submit"
+  >
+    <span
+      className="MuiButton-label-513"
+    >
+      Submit
+    </span>
+  </button>
+  <pre>
+    {}
+  </pre>
+</form>
+`;
+
+exports[`Storyshots Components/forms TextFieldForm 1`] = `
+<div
+  className="MuiBox-root-532 MuiBox-root-533"
+>
+  <div
+    className="MuiBox-root-532 MuiBox-root-534"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-688 MuiBox-root-723"
+        className="MuiFormControl-root-536 MuiFormControl-marginNormal-537 MuiTextField-root-535"
       >
-        <div
-          className="MuiFormControl-root-725 MuiFormControl-marginNormal-726 MuiFormControl-fullWidth-728 MuiTextField-root-724"
+        <label
+          className="MuiFormLabel-root-552 MuiFormLabel-error-555 MuiInputLabel-error-543 MuiInputLabel-root-540 MuiInputLabel-formControl-546 MuiInputLabel-animated-549 MuiInputLabel-shrink-548"
+          data-shrink={true}
         >
-          <label
-            className="MuiFormLabel-root-741 MuiFormLabel-required-746 MuiInputLabel-required-733 MuiInputLabel-root-729 MuiInputLabel-formControl-735 MuiInputLabel-animated-738 MuiInputLabel-shrink-737"
-            data-shrink={true}
+          Error
+        </label>
+        <div
+          className="MuiInputBase-root-572 MuiOutlinedInput-root-559 MuiInputBase-error-578 MuiOutlinedInput-error-564 MuiInputBase-formControl-573"
+          onClick={[Function]}
+        >
+          <fieldset
+            aria-hidden={true}
+            className="MuiPrivateNotchedOutline-root-588 MuiOutlinedInput-notchedOutline-566"
+            style={
+              Object {
+                "paddingLeft": 8,
+              }
+            }
           >
-            Account name
-            <span
-              className="MuiFormLabel-asterisk-747 MuiInputLabel-asterisk-734"
-            >
-               
-              *
-            </span>
-          </label>
-          <div
-            className="MuiInputBase-root-761 MuiOutlinedInput-root-748 MuiInputBase-fullWidth-770 MuiInputBase-formControl-762"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-777 MuiOutlinedInput-notchedOutline-755"
+            <legend
+              className="MuiPrivateNotchedOutline-legend-589"
               style={
                 Object {
-                  "paddingLeft": 8,
+                  "width": 0.01,
                 }
               }
             >
-              <legend
-                className="MuiPrivateNotchedOutline-legend-778"
-                style={
+              <span
+                dangerouslySetInnerHTML={
                   Object {
-                    "width": 0.01,
+                    "__html": "&#8203;",
                   }
                 }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
+              />
+            </legend>
+          </fieldset>
+          <input
+            aria-invalid={true}
+            className="MuiInputBase-input-582 MuiOutlinedInput-input-567"
+            defaultValue="Standard Error"
+            disabled={false}
+            name="field-with-error"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+          />
+        </div>
+        <p
+          className="MuiFormHelperText-root-590 MuiFormHelperText-contained-594 MuiFormHelperText-error-591"
+        >
+          This is an error message
+        </p>
+      </div>
+    </form>
+  </div>
+  <div
+    className="MuiBox-root-532 MuiBox-root-598"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiFormControl-root-536 MuiFormControl-marginNormal-537 MuiTextField-root-535"
+      >
+        <label
+          className="MuiFormLabel-root-552 MuiInputLabel-root-540 MuiInputLabel-formControl-546 MuiInputLabel-animated-549 MuiInputLabel-shrink-548"
+          data-shrink={true}
+        >
+          Filled
+        </label>
+        <div
+          className="MuiInputBase-root-572 MuiOutlinedInput-root-559 MuiInputBase-formControl-573"
+          onClick={[Function]}
+        >
+          <fieldset
+            aria-hidden={true}
+            className="MuiPrivateNotchedOutline-root-588 MuiOutlinedInput-notchedOutline-566"
+            style={
+              Object {
+                "paddingLeft": 8,
+              }
+            }
+          >
+            <legend
+              className="MuiPrivateNotchedOutline-legend-589"
+              style={
+                Object {
+                  "width": 0.01,
+                }
+              }
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
                   }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input-771 MuiOutlinedInput-input-756"
-              disabled={false}
-              name="accountNameField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Account name"
-              required={true}
-              type="text"
-            />
-          </div>
+                }
+              />
+            </legend>
+          </fieldset>
+          <input
+            aria-invalid={false}
+            className="MuiInputBase-input-582 MuiOutlinedInput-input-567"
+            defaultValue="test*iov"
+            disabled={false}
+            name="field-filled"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+          />
         </div>
       </div>
+    </form>
+  </div>
+  <div
+    className="MuiBox-root-532 MuiBox-root-599"
+  >
+    <form
+      onSubmit={[Function]}
+    >
       <div
-        className="MuiBox-root-688 MuiBox-root-779"
+        className="MuiFormControl-root-536 MuiFormControl-marginNormal-537 MuiTextField-root-535"
+      >
+        <label
+          className="MuiFormLabel-root-552 MuiFormLabel-disabled-554 MuiInputLabel-disabled-542 MuiInputLabel-root-540 MuiInputLabel-formControl-546 MuiInputLabel-animated-549 MuiInputLabel-shrink-548"
+          data-shrink={true}
+        >
+          Disabled
+        </label>
+        <div
+          className="MuiInputBase-root-572 MuiOutlinedInput-root-559 MuiInputBase-disabled-575 MuiOutlinedInput-disabled-561 MuiInputBase-formControl-573"
+          onClick={[Function]}
+        >
+          <fieldset
+            aria-hidden={true}
+            className="MuiPrivateNotchedOutline-root-588 MuiOutlinedInput-notchedOutline-566"
+            style={
+              Object {
+                "paddingLeft": 8,
+              }
+            }
+          >
+            <legend
+              className="MuiPrivateNotchedOutline-legend-589"
+              style={
+                Object {
+                  "width": 0.01,
+                }
+              }
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
+                  }
+                }
+              />
+            </legend>
+          </fieldset>
+          <input
+            aria-invalid={false}
+            className="MuiInputBase-input-582 MuiOutlinedInput-input-567 MuiInputBase-disabled-575 MuiOutlinedInput-disabled-561"
+            defaultValue="Disabled input"
+            disabled={true}
+            name="standard-disabled"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div
+    className="MuiBox-root-532 MuiBox-root-600"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiFormControl-root-536 MuiFormControl-marginNormal-537 MuiTextField-root-535"
+      >
+        <label
+          className="MuiFormLabel-root-552 MuiInputLabel-root-540 MuiInputLabel-formControl-546 MuiInputLabel-animated-549 MuiInputLabel-shrink-548"
+          data-shrink={true}
+        >
+          Empty
+        </label>
+        <div
+          className="MuiInputBase-root-572 MuiOutlinedInput-root-559 MuiInputBase-formControl-573"
+          onClick={[Function]}
+        >
+          <fieldset
+            aria-hidden={true}
+            className="MuiPrivateNotchedOutline-root-588 MuiOutlinedInput-notchedOutline-566"
+            style={
+              Object {
+                "paddingLeft": 8,
+              }
+            }
+          >
+            <legend
+              className="MuiPrivateNotchedOutline-legend-589"
+              style={
+                Object {
+                  "width": 0.01,
+                }
+              }
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
+                  }
+                }
+              />
+            </legend>
+          </fieldset>
+          <input
+            aria-invalid={false}
+            className="MuiInputBase-input-582 MuiOutlinedInput-input-567"
+            disabled={false}
+            name="standard-with-placeholder"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="IOV or wallet address"
+            required={false}
+            type="text"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Account Show account status 1`] = `
+<div
+  className="MuiBox-root-626 MuiBox-root-627"
+  id="/signup_first"
+>
+  <h4
+    className="MuiTypography-root-630 MuiTypography-h4-638 MuiTypography-colorPrimary-653 makeStyles-inline-628"
+  >
+    New
+  </h4>
+  <h4
+    className="MuiTypography-root-630 MuiTypography-h4-638 makeStyles-inline-628"
+  >
+     Account
+  </h4>
+  <div
+    className="MuiBox-root-626 MuiBox-root-660"
+  />
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="makeStyles-dropdown-661"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiInputBase-root-665 makeStyles-root-662 makeStyles-root-664"
+        onClick={[Function]}
+        role="button"
+      >
+        <input
+          autoComplete="off"
+          className="MuiInputBase-input-675 makeStyles-input-663"
+          name="SELECT_FIELD_ATTR"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          readOnly={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <img
+        alt="Phone Menu"
+        className="makeStyles-root-681 makeStyles-noShrink-682"
+        height="5"
+        src="selectChevron.svg"
+        width="8"
+      />
+    </div>
+  </form>
+  <div
+    className="MuiBox-root-626 MuiBox-root-686"
+  />
+  <div
+    className="MuiBox-root-626 MuiBox-root-687"
+  >
+    <div
+      className="MuiBox-root-626 MuiBox-root-688"
+    >
+      This is the block where we show accounts and bns name
+    </div>
+    <div
+      className="MuiBox-root-626 MuiBox-root-689"
+    >
+      This is the block where we show balances
+    </div>
+    <div
+      className="MuiBox-root-626 MuiBox-root-690"
+    >
+      This is the block where we show QR Code
+    </div>
+    <div
+      className="MuiBox-root-626 MuiBox-root-691"
+    >
+      This is the block where we show links
+    </div>
+  </div>
+  <div
+    className="MuiBox-root-626 MuiBox-root-692"
+  />
+  <div
+    className="MuiBox-root-626 MuiBox-root-693"
+  >
+    <img
+      alt="IOV logo"
+      className="makeStyles-root-681"
+      src="iov-logo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Login Login page 1`] = `
+<div
+  className="MuiBox-root-694 MuiBox-root-695"
+  id="/login"
+>
+  <div
+    className="MuiBox-root-694 MuiBox-root-696"
+  >
+    <h4
+      className="MuiTypography-root-699 MuiTypography-h4-707 MuiTypography-colorPrimary-722 makeStyles-inline-697"
+    >
+      Log
+    </h4>
+    <h4
+      className="MuiTypography-root-699 MuiTypography-h4-707 makeStyles-inline-697"
+    >
+       
+      In
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root-694 MuiBox-root-729"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root-694 MuiBox-root-730"
       >
         <div
-          className="MuiFormControl-root-725 MuiFormControl-marginNormal-726 MuiFormControl-fullWidth-728 MuiTextField-root-724"
+          className="MuiFormControl-root-732 MuiFormControl-marginNormal-733 MuiFormControl-fullWidth-735 MuiTextField-root-731"
         >
-          <label
-            className="MuiFormLabel-root-741 MuiFormLabel-required-746 MuiInputLabel-required-733 MuiInputLabel-root-729 MuiInputLabel-formControl-735 MuiInputLabel-animated-738 MuiInputLabel-shrink-737"
-            data-shrink={true}
-          >
-            Password
-            <span
-              className="MuiFormLabel-asterisk-747 MuiInputLabel-asterisk-734"
-            >
-               
-              *
-            </span>
-          </label>
           <div
-            className="MuiInputBase-root-761 MuiOutlinedInput-root-748 MuiInputBase-fullWidth-770 MuiInputBase-formControl-762"
+            className="MuiInputBase-root-749 MuiOutlinedInput-root-736 MuiInputBase-fullWidth-758 MuiInputBase-formControl-750"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-777 MuiOutlinedInput-notchedOutline-755"
+              className="MuiPrivateNotchedOutline-root-765 MuiOutlinedInput-notchedOutline-743"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -1484,7 +1490,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-778"
+                className="MuiPrivateNotchedOutline-legend-766"
                 style={
                   Object {
                     "width": 0.01,
@@ -1502,7 +1508,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-771 MuiOutlinedInput-input-756"
+              className="MuiInputBase-input-759 MuiOutlinedInput-input-744"
               disabled={false}
               name="passwordInputField"
               onBlur={[Function]}
@@ -1516,103 +1522,13 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-688 MuiBox-root-780"
+        className="MuiBox-root-694 MuiBox-root-767"
       >
         <div
-          className="MuiFormControl-root-725 MuiFormControl-marginNormal-726 MuiFormControl-fullWidth-728 MuiTextField-root-724"
-        >
-          <label
-            className="MuiFormLabel-root-741 MuiFormLabel-required-746 MuiInputLabel-required-733 MuiInputLabel-root-729 MuiInputLabel-formControl-735 MuiInputLabel-animated-738 MuiInputLabel-shrink-737"
-            data-shrink={true}
-          >
-            Confirm Password
-            <span
-              className="MuiFormLabel-asterisk-747 MuiInputLabel-asterisk-734"
-            >
-               
-              *
-            </span>
-          </label>
-          <div
-            className="MuiInputBase-root-761 MuiOutlinedInput-root-748 MuiInputBase-fullWidth-770 MuiInputBase-formControl-762"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-777 MuiOutlinedInput-notchedOutline-755"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="MuiPrivateNotchedOutline-legend-778"
-                style={
-                  Object {
-                    "width": 0.01,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input-771 MuiOutlinedInput-input-756"
-              disabled={false}
-              name="passwordConfirmInputField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Confirm Password"
-              required={true}
-              type="password"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root-688 MuiBox-root-781"
-      >
-        <div
-          className="MuiBox-root-688 MuiBox-root-782"
+          className="MuiBox-root-694 MuiBox-root-768"
         >
           <button
-            className="MuiButtonBase-root-800 MuiButton-root-783 MuiButton-text-785 MuiButton-textPrimary-786 MuiButton-fullWidth-799"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex="0"
-            type="button"
-          >
-            <span
-              className="MuiButton-label-784"
-            >
-              Back
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiBox-root-688 MuiBox-root-803"
-        >
-          <button
-            className="MuiButtonBase-root-800 MuiButtonBase-disabled-801 MuiButton-root-783 MuiButton-contained-791 MuiButton-containedPrimary-792 MuiButton-disabled-795 MuiButton-fullWidth-799"
+            className="MuiButtonBase-root-786 MuiButtonBase-disabled-787 MuiButton-root-769 MuiButton-contained-777 MuiButton-containedPrimary-778 MuiButton-disabled-781 MuiButton-fullWidth-785"
             disabled={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1628,7 +1544,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-784"
+              className="MuiButton-label-770"
             >
               Continue
             </span>
@@ -1636,195 +1552,48 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
     </form>
-  </div>
-  <div
-    className="MuiBox-root-688 MuiBox-root-804"
-  />
-  <div
-    className="MuiBox-root-688 MuiBox-root-805"
-  >
-    <img
-      alt="IOV logo"
-      className="makeStyles-root-806"
-      height={39}
-      src="iov-logo.png"
-      width={84}
-    />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
-<div
-  className="MuiBox-root-821 MuiBox-root-822"
-  id="/signup2"
->
-  <div
-    className="MuiBox-root-821 MuiBox-root-823"
-  >
-    <h4
-      className="MuiTypography-root-825 MuiTypography-h4-833 MuiTypography-colorPrimary-848 makeStyles-inline-824"
-    >
-      New
-    </h4>
-    <h4
-      className="MuiTypography-root-825 MuiTypography-h4-833 makeStyles-inline-824"
-    >
-
-      Account
-    </h4>
-  </div>
-  <div
-    className="MuiBox-root-821 MuiBox-root-855"
-  >
     <div
-      className="MuiBox-root-821 MuiBox-root-856"
+      className="MuiBox-root-694 MuiBox-root-789"
     >
       <div
-        className="MuiBox-root-821 MuiBox-root-857"
+        className="MuiBox-root-694 MuiBox-root-790"
       >
-        <div
-          className="MuiBox-root-821 MuiBox-root-858"
+        <a
+          href="/welcome"
+          onClick={[Function]}
         >
           <h6
-            className="MuiTypography-root-825 MuiTypography-subtitle2-837 makeStyles-inline-824"
+            className="MuiTypography-root-699 MuiTypography-subtitle2-711 MuiTypography-colorPrimary-722 makeStyles-inline-697 makeStyles-link-698"
           >
-            Activate Recovery Phrase?
+            Restore account
           </h6>
-        </div>
-        <div
-          className="makeStyles-container-860"
-          onClick={[Function]}
-        >
-          <img
-            alt="Info"
-            className="makeStyles-root-863"
-            height={16}
-            src="info_normal.svg"
-            width={16}
-          />
-        </div>
-      </div>
-      <label
-        className="MuiFormControlLabel-root-868"
-      >
-        <span
-          className="MuiSwitch-root-874"
-        >
-          <span
-            aria-disabled={false}
-            className="MuiButtonBase-root-896 MuiIconButton-root-887 MuiPrivateSwitchBase-root-883 MuiSwitch-switchBase-875 MuiSwitch-colorPrimary-876"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={null}
-          >
-            <span
-              className="MuiIconButton-label-895"
-            >
-              <span
-                className="MuiSwitch-thumb-881"
-              />
-              <input
-                className="MuiPrivateSwitchBase-input-886 MuiSwitch-input-880"
-                onChange={[Function]}
-                type="checkbox"
-              />
-            </span>
-          </span>
-          <span
-            className="MuiSwitch-track-882"
-          />
-        </span>
-        <span
-          className="MuiTypography-root-825 MuiTypography-body1-827 MuiFormControlLabel-label-873"
-        />
-      </label>
-    </div>
-    <div
-      className="MuiBox-root-821 MuiBox-root-899"
-    >
-      <p
-        className="MuiTypography-root-825 MuiTypography-body1-827 makeStyles-inline-824"
-      >
-
-      </p>
-    </div>
-    <div
-      className="MuiBox-root-821 MuiBox-root-900"
-    >
-      <div
-        className="MuiBox-root-821 MuiBox-root-901"
-      >
-        <button
-          className="MuiButtonBase-root-896 MuiButton-root-902 MuiButton-text-904 MuiButton-textPrimary-905 MuiButton-fullWidth-918"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
-        >
-          <span
-            className="MuiButton-label-903"
-          >
-            Back
-          </span>
-        </button>
+        </a>
       </div>
       <div
-        className="MuiBox-root-821 MuiBox-root-919"
+        className="MuiBox-root-694 MuiBox-root-791"
       >
-        <button
-          className="MuiButtonBase-root-896 MuiButton-root-902 MuiButton-contained-910 MuiButton-containedPrimary-911 MuiButton-fullWidth-918"
-          disabled={false}
-          onBlur={[Function]}
+        <a
+          href="/welcome"
           onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
         >
-          <span
-            className="MuiButton-label-903"
+          <h6
+            className="MuiTypography-root-699 MuiTypography-subtitle2-711 MuiTypography-colorPrimary-722 makeStyles-inline-697 makeStyles-link-698"
           >
-            Continue
-          </span>
-        </button>
+            More options
+          </h6>
+        </a>
       </div>
     </div>
   </div>
   <div
-    className="MuiBox-root-821 MuiBox-root-920"
+    className="MuiBox-root-694 MuiBox-root-792"
   />
   <div
-    className="MuiBox-root-821 MuiBox-root-921"
+    className="MuiBox-root-694 MuiBox-root-793"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-863"
+      className="makeStyles-root-794"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -1833,50 +1602,57 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Signup Security hint page 1`] = `
+exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-932 MuiBox-root-933"
-  id="/signup3"
+  className="MuiBox-root-799 MuiBox-root-800"
+  id="/signup1"
 >
   <div
-    className="MuiBox-root-932 MuiBox-root-934"
+    className="MuiBox-root-799 MuiBox-root-801"
   >
     <h4
-      className="MuiTypography-root-936 MuiTypography-h4-944 MuiTypography-colorPrimary-959 makeStyles-inline-935"
+      className="MuiTypography-root-804 MuiTypography-h4-812 MuiTypography-colorPrimary-827 makeStyles-inline-802"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-936 MuiTypography-h4-944 makeStyles-inline-935"
+      className="MuiTypography-root-804 MuiTypography-h4-812 makeStyles-inline-802"
     >
-
+       
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-932 MuiBox-root-966"
+    className="MuiBox-root-799 MuiBox-root-834"
   >
-    <h6
-      className="MuiTypography-root-936 MuiTypography-subtitle1-947 makeStyles-inline-935"
-    >
-      To help you remember your details in the future please provide a security hint:
-    </h6>
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-932 MuiBox-root-967"
+        className="MuiBox-root-799 MuiBox-root-835"
       >
         <div
-          className="MuiFormControl-root-969 MuiFormControl-marginNormal-970 MuiFormControl-fullWidth-972 MuiTextField-root-968"
+          className="MuiFormControl-root-837 MuiFormControl-marginNormal-838 MuiFormControl-fullWidth-840 MuiTextField-root-836"
         >
+          <label
+            className="MuiFormLabel-root-853 MuiFormLabel-required-858 MuiInputLabel-required-845 MuiInputLabel-root-841 MuiInputLabel-formControl-847 MuiInputLabel-animated-850 MuiInputLabel-shrink-849"
+            data-shrink={true}
+          >
+            Account name
+            <span
+              className="MuiFormLabel-asterisk-859 MuiInputLabel-asterisk-846"
+            >
+               
+              *
+            </span>
+          </label>
           <div
-            className="MuiInputBase-root-986 MuiOutlinedInput-root-973 MuiInputBase-fullWidth-995 MuiInputBase-formControl-987"
+            className="MuiInputBase-root-873 MuiOutlinedInput-root-860 MuiInputBase-fullWidth-882 MuiInputBase-formControl-874"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1002 MuiOutlinedInput-notchedOutline-980"
+              className="MuiPrivateNotchedOutline-root-889 MuiOutlinedInput-notchedOutline-867"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -1884,7 +1660,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-1003"
+                className="MuiPrivateNotchedOutline-legend-890"
                 style={
                   Object {
                     "width": 0.01,
@@ -1902,27 +1678,153 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-996 MuiOutlinedInput-input-981"
+              className="MuiInputBase-input-883 MuiOutlinedInput-input-868"
               disabled={false}
-              name="securityHintField"
+              name="accountNameField"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Security hint"
-              required={false}
+              placeholder="Account name"
+              required={true}
               type="text"
             />
           </div>
         </div>
       </div>
       <div
-        className="MuiBox-root-932 MuiBox-root-1004"
+        className="MuiBox-root-799 MuiBox-root-891"
       >
         <div
-          className="MuiBox-root-932 MuiBox-root-1005"
+          className="MuiFormControl-root-837 MuiFormControl-marginNormal-838 MuiFormControl-fullWidth-840 MuiTextField-root-836"
+        >
+          <label
+            className="MuiFormLabel-root-853 MuiFormLabel-required-858 MuiInputLabel-required-845 MuiInputLabel-root-841 MuiInputLabel-formControl-847 MuiInputLabel-animated-850 MuiInputLabel-shrink-849"
+            data-shrink={true}
+          >
+            Password
+            <span
+              className="MuiFormLabel-asterisk-859 MuiInputLabel-asterisk-846"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root-873 MuiOutlinedInput-root-860 MuiInputBase-fullWidth-882 MuiInputBase-formControl-874"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiPrivateNotchedOutline-root-889 MuiOutlinedInput-notchedOutline-867"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiPrivateNotchedOutline-legend-890"
+                style={
+                  Object {
+                    "width": 0.01,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input-883 MuiOutlinedInput-input-868"
+              disabled={false}
+              name="passwordInputField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root-799 MuiBox-root-892"
+      >
+        <div
+          className="MuiFormControl-root-837 MuiFormControl-marginNormal-838 MuiFormControl-fullWidth-840 MuiTextField-root-836"
+        >
+          <label
+            className="MuiFormLabel-root-853 MuiFormLabel-required-858 MuiInputLabel-required-845 MuiInputLabel-root-841 MuiInputLabel-formControl-847 MuiInputLabel-animated-850 MuiInputLabel-shrink-849"
+            data-shrink={true}
+          >
+            Confirm Password
+            <span
+              className="MuiFormLabel-asterisk-859 MuiInputLabel-asterisk-846"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root-873 MuiOutlinedInput-root-860 MuiInputBase-fullWidth-882 MuiInputBase-formControl-874"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiPrivateNotchedOutline-root-889 MuiOutlinedInput-notchedOutline-867"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiPrivateNotchedOutline-legend-890"
+                style={
+                  Object {
+                    "width": 0.01,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input-883 MuiOutlinedInput-input-868"
+              disabled={false}
+              name="passwordConfirmInputField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Confirm Password"
+              required={true}
+              type="password"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root-799 MuiBox-root-893"
+      >
+        <div
+          className="MuiBox-root-799 MuiBox-root-894"
         >
           <button
-            className="MuiButtonBase-root-1023 MuiButton-root-1006 MuiButton-text-1008 MuiButton-textPrimary-1009 MuiButton-fullWidth-1022"
+            className="MuiButtonBase-root-912 MuiButton-root-895 MuiButton-text-897 MuiButton-textPrimary-898 MuiButton-fullWidth-911"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1939,17 +1841,354 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-1007"
+              className="MuiButton-label-896"
             >
               Back
             </span>
           </button>
         </div>
         <div
-          className="MuiBox-root-932 MuiBox-root-1026"
+          className="MuiBox-root-799 MuiBox-root-915"
         >
           <button
-            className="MuiButtonBase-root-1023 MuiButton-root-1006 MuiButton-contained-1014 MuiButton-containedPrimary-1015 MuiButton-fullWidth-1022"
+            className="MuiButtonBase-root-912 MuiButtonBase-disabled-913 MuiButton-root-895 MuiButton-contained-903 MuiButton-containedPrimary-904 MuiButton-disabled-907 MuiButton-fullWidth-911"
+            disabled={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="-1"
+            type="submit"
+          >
+            <span
+              className="MuiButton-label-896"
+            >
+              Continue
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div
+    className="MuiBox-root-799 MuiBox-root-916"
+  />
+  <div
+    className="MuiBox-root-799 MuiBox-root-917"
+  >
+    <img
+      alt="IOV logo"
+      className="makeStyles-root-918"
+      height={39}
+      src="iov-logo.png"
+      width={84}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
+<div
+  className="MuiBox-root-933 MuiBox-root-934"
+  id="/signup2"
+>
+  <div
+    className="MuiBox-root-933 MuiBox-root-935"
+  >
+    <h4
+      className="MuiTypography-root-938 MuiTypography-h4-946 MuiTypography-colorPrimary-961 makeStyles-inline-936"
+    >
+      New
+    </h4>
+    <h4
+      className="MuiTypography-root-938 MuiTypography-h4-946 makeStyles-inline-936"
+    >
+       
+      Account
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root-933 MuiBox-root-968"
+  >
+    <div
+      className="MuiBox-root-933 MuiBox-root-969"
+    >
+      <div
+        className="MuiBox-root-933 MuiBox-root-970"
+      >
+        <div
+          className="MuiBox-root-933 MuiBox-root-971"
+        >
+          <h6
+            className="MuiTypography-root-938 MuiTypography-subtitle2-950 makeStyles-inline-936"
+          >
+            Activate Recovery Phrase?
+          </h6>
+        </div>
+        <div
+          className="makeStyles-container-973"
+          onClick={[Function]}
+        >
+          <img
+            alt="Info"
+            className="makeStyles-root-976"
+            height={16}
+            src="info_normal.svg"
+            width={16}
+          />
+        </div>
+      </div>
+      <label
+        className="MuiFormControlLabel-root-981"
+      >
+        <span
+          className="MuiSwitch-root-987"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root-1009 MuiIconButton-root-1000 MuiPrivateSwitchBase-root-996 MuiSwitch-switchBase-988 MuiSwitch-colorPrimary-989"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label-1008"
+            >
+              <span
+                className="MuiSwitch-thumb-994"
+              />
+              <input
+                className="MuiPrivateSwitchBase-input-999 MuiSwitch-input-993"
+                onChange={[Function]}
+                type="checkbox"
+              />
+            </span>
+          </span>
+          <span
+            className="MuiSwitch-track-995"
+          />
+        </span>
+        <span
+          className="MuiTypography-root-938 MuiTypography-body1-940 MuiFormControlLabel-label-986"
+        />
+      </label>
+    </div>
+    <div
+      className="MuiBox-root-933 MuiBox-root-1012"
+    >
+      <p
+        className="MuiTypography-root-938 MuiTypography-body1-940 makeStyles-inline-936"
+      >
+        
+      </p>
+    </div>
+    <div
+      className="MuiBox-root-933 MuiBox-root-1013"
+    >
+      <div
+        className="MuiBox-root-933 MuiBox-root-1014"
+      >
+        <button
+          className="MuiButtonBase-root-1009 MuiButton-root-1015 MuiButton-text-1017 MuiButton-textPrimary-1018 MuiButton-fullWidth-1031"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-1016"
+          >
+            Back
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiBox-root-933 MuiBox-root-1032"
+      >
+        <button
+          className="MuiButtonBase-root-1009 MuiButton-root-1015 MuiButton-contained-1023 MuiButton-containedPrimary-1024 MuiButton-fullWidth-1031"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-1016"
+          >
+            Continue
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root-933 MuiBox-root-1033"
+  />
+  <div
+    className="MuiBox-root-933 MuiBox-root-1034"
+  >
+    <img
+      alt="IOV logo"
+      className="makeStyles-root-976"
+      height={39}
+      src="iov-logo.png"
+      width={84}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Routes/Signup Security hint page 1`] = `
+<div
+  className="MuiBox-root-1045 MuiBox-root-1046"
+  id="/signup3"
+>
+  <div
+    className="MuiBox-root-1045 MuiBox-root-1047"
+  >
+    <h4
+      className="MuiTypography-root-1050 MuiTypography-h4-1058 MuiTypography-colorPrimary-1073 makeStyles-inline-1048"
+    >
+      New
+    </h4>
+    <h4
+      className="MuiTypography-root-1050 MuiTypography-h4-1058 makeStyles-inline-1048"
+    >
+       
+      Account
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root-1045 MuiBox-root-1080"
+  >
+    <h6
+      className="MuiTypography-root-1050 MuiTypography-subtitle1-1061 makeStyles-inline-1048"
+    >
+      To help you remember your details in the future please provide a security hint:
+    </h6>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root-1045 MuiBox-root-1081"
+      >
+        <div
+          className="MuiFormControl-root-1083 MuiFormControl-marginNormal-1084 MuiFormControl-fullWidth-1086 MuiTextField-root-1082"
+        >
+          <div
+            className="MuiInputBase-root-1100 MuiOutlinedInput-root-1087 MuiInputBase-fullWidth-1109 MuiInputBase-formControl-1101"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiPrivateNotchedOutline-root-1116 MuiOutlinedInput-notchedOutline-1094"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiPrivateNotchedOutline-legend-1117"
+                style={
+                  Object {
+                    "width": 0.01,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input-1110 MuiOutlinedInput-input-1095"
+              disabled={false}
+              name="securityHintField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Security hint"
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root-1045 MuiBox-root-1118"
+      >
+        <div
+          className="MuiBox-root-1045 MuiBox-root-1119"
+        >
+          <button
+            className="MuiButtonBase-root-1137 MuiButton-root-1120 MuiButton-text-1122 MuiButton-textPrimary-1123 MuiButton-fullWidth-1136"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-1121"
+            >
+              Back
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiBox-root-1045 MuiBox-root-1140"
+        >
+          <button
+            className="MuiButtonBase-root-1137 MuiButton-root-1120 MuiButton-contained-1128 MuiButton-containedPrimary-1129 MuiButton-fullWidth-1136"
             disabled={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1965,7 +2204,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-1007"
+              className="MuiButton-label-1121"
             >
               Create
             </span>
@@ -1975,14 +2214,14 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-932 MuiBox-root-1027"
+    className="MuiBox-root-1045 MuiBox-root-1141"
   />
   <div
-    className="MuiBox-root-932 MuiBox-root-1028"
+    className="MuiBox-root-1045 MuiBox-root-1142"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1029"
+      className="makeStyles-root-1143"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -1993,37 +2232,37 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1044 MuiBox-root-1045"
+  className="MuiBox-root-1158 MuiBox-root-1159"
   id="/welcome"
 >
   <div
-    className="MuiBox-root-1044 MuiBox-root-1046"
+    className="MuiBox-root-1158 MuiBox-root-1160"
   >
     <h4
-      className="MuiTypography-root-1048 MuiTypography-h4-1056 MuiTypography-colorPrimary-1071 makeStyles-inline-1047"
+      className="MuiTypography-root-1163 MuiTypography-h4-1171 MuiTypography-colorPrimary-1186 makeStyles-inline-1161"
     >
       Welcome
     </h4>
     <h4
-      className="MuiTypography-root-1048 MuiTypography-h4-1056 makeStyles-inline-1047"
+      className="MuiTypography-root-1163 MuiTypography-h4-1171 makeStyles-inline-1161"
     >
-
+       
       to your IOV manager
     </h4>
   </div>
   <div
-    className="MuiBox-root-1044 MuiBox-root-1078"
+    className="MuiBox-root-1158 MuiBox-root-1193"
   >
     <p
-      className="MuiTypography-root-1048 MuiTypography-body1-1050 makeStyles-inline-1047"
+      className="MuiTypography-root-1163 MuiTypography-body1-1165 makeStyles-inline-1161"
     >
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1044 MuiBox-root-1079"
+      className="MuiBox-root-1158 MuiBox-root-1194"
     />
     <button
-      className="MuiButtonBase-root-1097 MuiButton-root-1080 MuiButton-contained-1088 MuiButton-containedPrimary-1089 MuiButton-fullWidth-1096"
+      className="MuiButtonBase-root-1212 MuiButton-root-1195 MuiButton-contained-1203 MuiButton-containedPrimary-1204 MuiButton-fullWidth-1211"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -2040,16 +2279,16 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1081"
+        className="MuiButton-label-1196"
       >
         Log in
       </span>
     </button>
     <div
-      className="MuiBox-root-1044 MuiBox-root-1100"
+      className="MuiBox-root-1158 MuiBox-root-1215"
     />
     <button
-      className="MuiButtonBase-root-1097 MuiButton-root-1080 MuiButton-contained-1088 MuiButton-containedPrimary-1089 MuiButton-fullWidth-1096"
+      className="MuiButtonBase-root-1212 MuiButton-root-1195 MuiButton-contained-1203 MuiButton-containedPrimary-1204 MuiButton-fullWidth-1211"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -2066,16 +2305,16 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1081"
+        className="MuiButton-label-1196"
       >
         New account
       </span>
     </button>
     <div
-      className="MuiBox-root-1044 MuiBox-root-1101"
+      className="MuiBox-root-1158 MuiBox-root-1216"
     />
     <button
-      className="MuiButtonBase-root-1097 MuiButton-root-1080 MuiButton-contained-1088 MuiButton-containedPrimary-1089 MuiButton-fullWidth-1096"
+      className="MuiButtonBase-root-1212 MuiButton-root-1195 MuiButton-contained-1203 MuiButton-containedPrimary-1204 MuiButton-fullWidth-1211"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -2091,21 +2330,21 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1081"
+        className="MuiButton-label-1196"
       >
         Import account
       </span>
     </button>
   </div>
   <div
-    className="MuiBox-root-1044 MuiBox-root-1102"
+    className="MuiBox-root-1158 MuiBox-root-1217"
   />
   <div
-    className="MuiBox-root-1044 MuiBox-root-1103"
+    className="MuiBox-root-1158 MuiBox-root-1218"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1104"
+      className="makeStyles-root-1219"
       height={39}
       src="iov-logo.png"
       width={84}
