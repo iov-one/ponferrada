@@ -1,3 +1,9 @@
+/**
+ * This package cause jest-canvas-mock to print message to console.error (Error: Not implemented: HTMLCanvasElement.prototype.getContext (without installing the canvas npm package))
+ *
+ * But this message doesn't make test to fail so can be ignored.
+ * Accroding to: https://github.com/hustcc/jest-canvas-mock/issues/2
+ */
 import jsPDF from 'jspdf';
 import '../assets/Muli-normal';
 import '../assets/Muli-bold';
