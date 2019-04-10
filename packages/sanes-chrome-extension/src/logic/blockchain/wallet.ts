@@ -33,19 +33,3 @@ export function pathBuilderForCodec(
   };
   return pathBuilder;
 }
-
-export function pathFrom(
-  codec: Codec,
-  derivation: number
-): ReadonlyArray<Slip10RawIndex> {
-  switch (codec) {
-    case Codec.Bns: // BNS and BOV
-      return HdPaths.iov(derivation);
-    case Codec.Lisk:
-      return HdPaths.bip44Like(134, derivation);
-    case Codec.Ethereum:
-      return HdPaths.ethereum(derivation);
-    default:
-      throw new Error(`unsupported codec: ${codec}`);
-  }
-}
