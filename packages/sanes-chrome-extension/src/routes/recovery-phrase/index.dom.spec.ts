@@ -22,13 +22,12 @@ describe('DOM > Feature > Recovery Phrase', (): void => {
     const RecoveryPhraseDom = await travelToRecoveryPhrase(store);
 
     //Check for mnemonic text
-    const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(
+    const paragraph = TestUtils.findRenderedDOMComponentWithTag(
       RecoveryPhraseDom,
       'p'
     );
 
-    expect(paragraphs.length).toBe(1);
-    const phraseParagraph = paragraphs[0].innerHTML;
+    const phraseParagraph = paragraph.innerHTML;
     expect(phraseParagraph).toBe(await getMnemonic());
 
     //Check "Back" button behavior
