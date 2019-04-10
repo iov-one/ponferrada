@@ -2,34 +2,34 @@ import { Algorithm } from '@iov/bcp';
 import { HdPaths } from '@iov/keycontrol';
 import { Slip10RawIndex } from '@iov/crypto';
 
-import { CodecType } from './configurationfile';
+import { CodecString } from './configurationfile';
 
-export enum Codec {
+export enum CodecType {
   Bns,
   Lisk,
   Ethereum,
 }
 
-export function codecFromString(input: CodecType): Codec {
+export function codecTypeFromString(input: CodecString): CodecType {
   switch (input) {
     case 'bns':
     case 'bov':
-      return Codec.Bns;
+      return CodecType.Bns;
     case 'lsk':
-      return Codec.Lisk;
+      return CodecType.Lisk;
     case 'eth':
-      return Codec.Ethereum;
+      return CodecType.Ethereum;
     default:
       throw new Error(`Codec '${input}' not supported`);
   }
 }
 
-export function algorithmForCodec(codec: Codec): Algorithm {
+export function algorithmForCodec(codec: CodecType): Algorithm {
   switch (codec) {
-    case Codec.Bns:
-    case Codec.Lisk:
+    case CodecType.Bns:
+    case CodecType.Lisk:
       return Algorithm.Ed25519;
-    case Codec.Ethereum:
+    case CodecType.Ethereum:
       return Algorithm.Secp256k1;
     default:
       throw new Error(`unsupported codec: ${codec}`);
@@ -37,18 +37,18 @@ export function algorithmForCodec(codec: Codec): Algorithm {
 }
 
 export function pathBuilderForCodec(
-  codec: Codec
+  codecType: CodecType
 ): (derivation: number) => ReadonlyArray<Slip10RawIndex> {
   const pathBuilder = (derivation: number): ReadonlyArray<Slip10RawIndex> => {
-    switch (codec) {
-      case Codec.Bns: // BNS and BOV
+    switch (codecType) {
+      case CodecType.Bns: // BNS and BOV
         return HdPaths.iov(derivation);
-      case Codec.Lisk:
+      case CodecType.Lisk:
         return HdPaths.bip44Like(134, derivation);
-      case Codec.Ethereum:
+      case CodecType.Ethereum:
         return HdPaths.ethereum(derivation);
       default:
-        throw new Error(`unsupported codec: ${codec}`);
+        throw new Error(`unsupported codec: ${codecType}`);
     }
   };
   return pathBuilder;

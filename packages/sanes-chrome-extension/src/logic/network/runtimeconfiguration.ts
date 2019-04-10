@@ -7,8 +7,8 @@ import { ethereumConnector } from '@iov/ethereum';
 import {
   algorithmForCodec,
   ChainConfig,
-  codecFromString,
-  Codec,
+  codecTypeFromString,
+  CodecType,
   FaucetSpec,
   getConfigurationFile,
   pathBuilderForCodec,
@@ -20,6 +20,7 @@ export interface RuntimeChainSpec {
   readonly bootstrapNodes: ReadonlyArray<string>;
   readonly algorithm: Algorithm;
   readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
+  readonly codecType: CodecType;
   readonly codec: TxReadCodec;
   readonly faucetSpec?: FaucetSpec;
 }
@@ -29,16 +30,16 @@ export interface RuntimeConfiguration {
 }
 
 export function chainConnector(
-  codec: Codec,
+  codec: CodecType,
   nodes: ReadonlyArray<string>
 ): ChainConnector {
   const url = nodes[0];
   switch (codec) {
-    case Codec.Bns:
+    case CodecType.Bns:
       return bnsConnector(url);
-    case Codec.Lisk:
+    case CodecType.Lisk:
       return liskConnector(url);
-    case Codec.Ethereum:
+    case CodecType.Ethereum:
       const scraperApiUrl = nodes[1];
       return ethereumConnector(url, { scraperApiUrl });
     default:
@@ -49,10 +50,10 @@ export function chainConnector(
 async function loadChainSpec(fromFile: ChainConfig): Promise<RuntimeChainSpec> {
   const { chainSpec, faucetSpec } = fromFile;
 
-  const codec = codecFromString(chainSpec.codecType);
-  const algorithm = algorithmForCodec(codec);
-  const derivePath = pathBuilderForCodec(codec);
-  const connector = chainConnector(codec, chainSpec.bootstrapNodes);
+  const codecType = codecTypeFromString(chainSpec.codecType);
+  const algorithm = algorithmForCodec(codecType);
+  const derivePath = pathBuilderForCodec(codecType);
+  const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
 
   const connection = await connector.client();
   const chainId = connection.chainId();
@@ -63,6 +64,7 @@ async function loadChainSpec(fromFile: ChainConfig): Promise<RuntimeChainSpec> {
     chainId,
     algorithm,
     derivePath,
+    codecType: codecType,
     codec: connector.codec,
     faucetSpec: faucetSpec,
   };

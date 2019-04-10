@@ -1,9 +1,9 @@
 import { singleton } from '../../utils/singleton';
 
-export type CodecType = 'bns' | 'bov' | 'lsk' | 'eth';
+export type CodecString = 'bns' | 'bov' | 'lsk' | 'eth';
 
 export interface ChainSpec {
-  readonly codecType: CodecType;
+  readonly codecType: CodecString;
   readonly bootstrapNodes: ReadonlyArray<string>;
 }
 
