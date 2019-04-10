@@ -29,6 +29,7 @@ export const Toast = ({
 }: Props): JSX.Element => {
   return (
     <Snackbar
+      id="toast-provider"
       anchorOrigin={anchorProps}
       open={open}
       autoHideDuration={5000}
