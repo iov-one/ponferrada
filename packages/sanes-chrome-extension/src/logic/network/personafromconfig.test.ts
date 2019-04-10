@@ -1,7 +1,7 @@
 import { ChainId } from '@iov/bcp';
 
 import { getPersonaFromConfig } from './personafromconfig';
-import * as config from './configurationfile';
+import * as config from '../config/configurationfile';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
 import { AccountInfo } from '../persona';
 import { getRuntimeConfiguration } from './runtimeconfiguration';

@@ -1,1 +1,2 @@
-export * from './personafromconfig';
+export * from './codec';
+export * from './configurationfile';

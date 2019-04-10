@@ -5,12 +5,14 @@ import { liskConnector } from '@iov/lisk';
 import { ethereumConnector } from '@iov/ethereum';
 
 import {
+  algorithmForCodec,
   ChainConfig,
+  codecFromString,
+  Codec,
   FaucetSpec,
   getConfigurationFile,
-} from './configurationfile';
-import { codecFromString, Codec } from './codec';
-import { algorithmForCodec, pathBuilderForCodec } from './codec';
+  pathBuilderForCodec,
+} from '../config';
 import { singleton } from '../../utils/singleton';
 
 export interface RuntimeChainSpec {
