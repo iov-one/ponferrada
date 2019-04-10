@@ -3,6 +3,7 @@ import ContinueButton from './ContinueButton';
 import CurrencyToSend from './CurrencyToSend';
 import ReceiverAddress from './ReceiverAddress';
 import TextNote from './TextNote';
+import { makeStyles } from '@material-ui/core';
 
 const positionings: {
   wallet: React.CSSProperties;
@@ -46,13 +47,21 @@ const positionings: {
   },
 };
 
+const useStyles = makeStyles({
+  continue: {
+    gridArea: 'continue-button',
+  },
+});
+
 const Wallet = () => {
+  const classes = useStyles();
+
   return (
     <div style={positionings.wallet}>
       <CurrencyToSend positioning={positionings.currencyToSend} />
       <ReceiverAddress positioning={positionings.receiverAddress} />
       <TextNote positioning={positionings.textNote} />
-      <ContinueButton positioning={positionings.continueButton} />
+      <ContinueButton className={classes.continue} />
     </div>
   );
 };
