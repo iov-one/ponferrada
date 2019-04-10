@@ -1,13 +1,16 @@
-import { ChainId, TxReadCodec, Algorithm } from '@iov/bcp';
+import { ChainId, TxReadCodec, Algorithm, ChainConnector } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
+import { bnsConnector } from '@iov/bns';
+import { liskConnector } from '@iov/lisk';
+import { ethereumConnector } from '@iov/ethereum';
 
 import {
   ChainConfig,
   FaucetSpec,
   getConfigurationFile,
 } from './configurationfile';
-import { chainConnector, codecFromString } from './connection';
-import { algorithmForCodec, pathBuilderForCodec } from './wallet';
+import { codecFromString, Codec } from './codec';
+import { algorithmForCodec, pathBuilderForCodec } from './codec';
 import { singleton } from '../../utils/singleton';
 
 export interface RuntimeChainSpec {
@@ -21,6 +24,24 @@ export interface RuntimeChainSpec {
 
 export interface RuntimeConfiguration {
   readonly chains: ReadonlyArray<RuntimeChainSpec>;
+}
+
+export function chainConnector(
+  codec: Codec,
+  nodes: ReadonlyArray<string>
+): ChainConnector {
+  const url = nodes[0];
+  switch (codec) {
+    case Codec.Bns:
+      return bnsConnector(url);
+    case Codec.Lisk:
+      return liskConnector(url);
+    case Codec.Ethereum:
+      const scraperApiUrl = nodes[1];
+      return ethereumConnector(url, { scraperApiUrl });
+    default:
+      throw new Error('No connector for this codec found');
+  }
 }
 
 async function loadChainSpec(fromFile: ChainConfig): Promise<RuntimeChainSpec> {

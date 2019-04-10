@@ -2,7 +2,27 @@ import { Algorithm } from '@iov/bcp';
 import { HdPaths } from '@iov/keycontrol';
 import { Slip10RawIndex } from '@iov/crypto';
 
-import { Codec } from './connection';
+import { CodecType } from './configurationfile';
+
+export enum Codec {
+  Bns,
+  Lisk,
+  Ethereum,
+}
+
+export function codecFromString(input: CodecType): Codec {
+  switch (input) {
+    case 'bns':
+    case 'bov':
+      return Codec.Bns;
+    case 'lsk':
+      return Codec.Lisk;
+    case 'eth':
+      return Codec.Ethereum;
+    default:
+      throw new Error(`Codec '${input}' not supported`);
+  }
+}
 
 export function algorithmForCodec(codec: Codec): Algorithm {
   switch (codec) {
