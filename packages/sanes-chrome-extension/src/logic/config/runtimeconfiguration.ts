@@ -49,15 +49,8 @@ async function loadChainSpec(cfg: ChainConfig): Promise<RuntimeChainSpec> {
 
 async function loadRuntimeConfiguration(): Promise<RuntimeConfiguration> {
   const config = await getConfigurationFile();
-
-  const out: RuntimeChainSpec[] = [];
-
-  for (const chain of config.chains) {
-    const enhancedChain = await loadChainSpec(chain);
-    out.push(enhancedChain);
-  }
-
-  return { chains: out };
+  const runtimeChains = await Promise.all(config.chains.map(loadChainSpec));
+  return { chains: runtimeChains };
 }
 
 /** Requires a network connection in order to get chain IDs */
