@@ -1,9 +1,8 @@
-import classNames from 'classnames';
-import * as React from 'react';
 import { Button, makeStyles } from '@material-ui/core';
+import * as React from 'react';
 
 interface Props {
-  readonly className?: string;
+  readonly positionedClass?: string;
 }
 
 const useStyles = makeStyles({
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ContinueButton = ({ className }: Props) => {
+const ContinueButton = ({ positionedClass }: Props) => {
   const classes = useStyles();
   const muiClasses = {
     root: classes.root,
@@ -28,7 +27,7 @@ const ContinueButton = ({ className }: Props) => {
   };
 
   return (
-    <Button className={className} classes={muiClasses}>
+    <Button className={positionedClass} classes={muiClasses}>
       Continue
     </Button>
   );

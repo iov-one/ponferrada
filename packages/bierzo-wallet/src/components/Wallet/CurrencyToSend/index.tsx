@@ -10,8 +10,20 @@ interface Props {
 }
 
 const useStyles = makeStyles({
+  sendLabel: {
+    outline: '1px solid red',
+    color: '#1c1c1c',
+  },
+
   currencyContainer: {
+    outline: '1px solid red',
     display: 'flex',
+    margin: '40px 0 40px 0',
+  },
+
+  balanceLabel: {
+    outline: '1px solid red',
+    color: '#a2a6a8',
   },
 });
 
@@ -33,19 +45,22 @@ const muiClasses = {
       backgroundColor: '#ffe152',
       width: '72px',
       height: '72px',
-      marginTop: '-76px',
+      margin: '-76px 0 40px 0',
     },
   }),
 
   textField: makeStyles({
     root: {
       outline: '1px solid red',
+      height: '50px',
+      marginRight: '10px',
     },
   }),
 
   select: makeStyles({
     root: {
       outline: '1px solid red',
+      height: '30px',
     },
   }),
 };
@@ -74,10 +89,12 @@ const CurrencyToSend = ({ positionedClass }: Props) => {
   return (
     <Paper className={positionedClass} classes={overrideClasses.paper}>
       <Avatar classes={overrideClasses.avatar} />
+      <label className={classes.sendLabel}>You send</label>
       <div className={classes.currencyContainer}>
-        <TextField label="You send" classes={overrideClasses.textField} />
+        <TextField classes={overrideClasses.textField} />
         <Select classes={overrideClasses.select} />
       </div>
+      <label className={classes.balanceLabel}>balance:</label>
     </Paper>
   );
 };

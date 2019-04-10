@@ -1,17 +1,11 @@
+import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import ContinueButton from './ContinueButton';
 import CurrencyToSend from './CurrencyToSend';
 import ReceiverAddress from './ReceiverAddress';
 import TextNote from './TextNote';
-import { makeStyles } from '@material-ui/core';
 
-const positionings: {
-  wallet: React.CSSProperties;
-  currencyToSend: React.CSSProperties;
-  receiverAddress: React.CSSProperties;
-  textNote: React.CSSProperties;
-  continueButton: React.CSSProperties;
-} = {
+const useStyles = makeStyles({
   wallet: {
     backgroundColor: '#f9f9f9',
     height: 'auto',
@@ -42,15 +36,6 @@ const positionings: {
     gridArea: 'text-note',
   },
 
-  continueButton: {
-    gridArea: 'continue-button',
-  },
-};
-
-const useStyles = makeStyles({
-  currencyToSend: {
-    gridArea: 'currency-to-send',
-  },
   continue: {
     gridArea: 'continue-button',
   },
@@ -60,11 +45,11 @@ const Wallet = () => {
   const classes = useStyles();
 
   return (
-    <div style={positionings.wallet}>
+    <div className={classes.wallet}>
       <CurrencyToSend positionedClass={classes.currencyToSend} />
-      <ReceiverAddress positioning={positionings.receiverAddress} />
-      <TextNote positioning={positionings.textNote} />
-      <ContinueButton className={classes.continue} />
+      <ReceiverAddress positionedClass={classes.receiverAddress} />
+      <TextNote positionedClass={classes.textNote} />
+      <ContinueButton positionedClass={classes.continue} />
     </div>
   );
 };
