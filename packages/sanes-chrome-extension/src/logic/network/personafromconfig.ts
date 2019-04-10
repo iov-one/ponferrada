@@ -1,6 +1,7 @@
 import { getRuntimeConfiguration } from './runtimeconfiguration';
 import { Persona } from '../persona';
 import { getSignerAndProfile } from './signerandprofile';
+import { singleton } from '../../utils/singleton';
 
 const createPersonaFromConfig = async (): Promise<Persona> => {
   const { chains } = await getRuntimeConfiguration();
@@ -20,6 +21,6 @@ const createPersonaFromConfig = async (): Promise<Persona> => {
  * Uses the getSignerAndProfile() singleton internally, such that
  * getSignerAndProfile() and getPersonaFromConfig() always use the same profile.
  */
-export const getPersonaFromConfig = (): ReturnType<
-  typeof createPersonaFromConfig
-> => createPersonaFromConfig();
+export const getPersonaFromConfig = singleton<typeof createPersonaFromConfig>(
+  createPersonaFromConfig
+);

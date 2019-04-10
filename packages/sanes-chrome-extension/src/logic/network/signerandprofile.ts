@@ -3,6 +3,7 @@ import { MultiChainSigner, UserProfile } from '@iov/core';
 import { createUserProfile } from '../user';
 import { chainConnector } from './runtimeconfiguration';
 import { getConfigurationFile, codecTypeFromString } from '../config';
+import { singleton } from '../../utils/singleton';
 
 export interface SignerAndProfile {
   readonly signer: MultiChainSigner;
@@ -27,8 +28,6 @@ async function createSignerAndProfile(): Promise<SignerAndProfile> {
 }
 
 /** Creates MultiChainSigner and connects all chains if not yet created */
-export function getSignerAndProfile(): ReturnType<
-  typeof createSignerAndProfile
-> {
-  return createSignerAndProfile();
-}
+export const getSignerAndProfile = singleton<typeof createSignerAndProfile>(
+  createSignerAndProfile
+);
