@@ -11,16 +11,12 @@ export interface Props {
 const ShowPhraseForm = ({ onBack, mnemonic }: Props): JSX.Element => {
   return (
     <React.Fragment>
-      <Block display="flex" justifyContent="space-between" alignItems="center">
-        <Block display="flex" alignItems="center">
-          <Block marginRight={1}>
-            <Typography variant="subtitle2" inline>
-              Your Recovery Phrase are 12 random words that are set in a
-              particular order that acts as a tool to recover or back up your
-              wallet on any platform.
-            </Typography>
-          </Block>
-        </Block>
+      <Block marginRight={1}>
+        <Typography variant="subtitle2">
+          Your Recovery Phrase are 12 random words that are set in a particular
+          order that acts as a tool to recover or back up your wallet on any
+          platform.
+        </Typography>
       </Block>
 
       <Block display="flex" justifyContent="flex-end" marginTop={3}>
