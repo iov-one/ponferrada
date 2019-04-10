@@ -1,23 +1,25 @@
-import { UserProfile } from '@iov/keycontrol';
-
-import { createUserProfile } from '../user';
 import { getRuntimeConfiguration } from './runtimeconfiguration';
 import { Persona } from '../persona';
+import { getSignerAndProfile } from './signerandprofile';
 
 const createPersonaFromConfig = async (): Promise<Persona> => {
-  // TODO once we support login modify this for loading from db
-  const baseProfile: UserProfile = await createUserProfile();
-
   const { chains } = await getRuntimeConfiguration();
 
-  const persona = new Persona(baseProfile, chains);
+  const { profile } = await getSignerAndProfile();
+
+  const persona = new Persona(profile, chains);
   const derivation = 0;
   await persona.generateAccount(derivation);
 
   return persona;
 };
 
-/** Creates Persona if not yet created */
+/**
+ * Creates Persona if not yet created.
+ *
+ * Uses the getSignerAndProfile() singleton internally, such that
+ * getSignerAndProfile() and getPersonaFromConfig() always use the same profile.
+ */
 export const getPersonaFromConfig = (): ReturnType<
   typeof createPersonaFromConfig
 > => createPersonaFromConfig();
