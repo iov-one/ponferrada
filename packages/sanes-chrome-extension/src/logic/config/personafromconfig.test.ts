@@ -1,10 +1,10 @@
 import { ChainId } from '@iov/bcp';
 
 import { getPersonaFromConfig } from './personafromconfig';
-import * as config from './chainsConfig/fetchConfig';
+import * as config from './configurationfile';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
 import { AccountInfo } from '../persona';
-import { getConfig } from './chainsConfig';
+import { getRuntimeConfiguration } from './runtimeconfiguration';
 
 describe('getPersonaFromConfig', () => {
   function checkAccount(
@@ -34,13 +34,13 @@ describe('getPersonaFromConfig', () => {
   }
 
   async function getAvailableChains(): Promise<ReadonlyArray<ChainId>> {
-    const config = await getConfig();
-    return config.map(config => config.chainId);
+    const config = await getRuntimeConfiguration();
+    return config.chains.map(chain => chain.chainId);
   }
 
   it('works', async () => {
     // GIVEN an entity Persona with two accounts main and saving and exposition to bns and lsk chains
-    const fetchConfigMock = jest.spyOn(config, 'fetchConfig');
+    const fetchConfigMock = jest.spyOn(config, 'getConfigurationFile');
     fetchConfigMock.mockImplementation(threeChainsConfig);
 
     const persona = await getPersonaFromConfig();

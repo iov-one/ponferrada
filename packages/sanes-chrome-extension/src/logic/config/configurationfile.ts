@@ -1,5 +1,5 @@
-import { singleton } from '../../../utils/singleton';
-import { CodecType } from '../connection';
+import { singleton } from '../../utils/singleton';
+import { CodecType } from './connection';
 
 export interface ChainSpec {
   readonly codecType: CodecType;
@@ -17,11 +17,11 @@ export interface ChainConfig {
   readonly faucetSpec?: FaucetSpec;
 }
 
-export interface FullConfigurationFile {
+export interface ConfigurationFile {
   readonly chains: ChainConfig[];
 }
 
-const fetchConfigData = async (): Promise<FullConfigurationFile> => {
+const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
   if (process.env.NODE_ENV === 'test') {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const config = (window as any).config;
@@ -35,4 +35,6 @@ const fetchConfigData = async (): Promise<FullConfigurationFile> => {
   return json;
 };
 
-export const fetchConfig = singleton<typeof fetchConfigData>(fetchConfigData);
+export const getConfigurationFile = singleton<typeof loadConfigurationFile>(
+  loadConfigurationFile
+);

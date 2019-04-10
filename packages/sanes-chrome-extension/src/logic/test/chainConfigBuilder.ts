@@ -1,7 +1,7 @@
-import { FullConfigurationFile } from '../config/chainsConfig/fetchConfig';
+import { ConfigurationFile } from '../config/configurationfile';
 
-export const threeChainsConfig = (): Promise<FullConfigurationFile> => {
-  const config: FullConfigurationFile = {
+export const threeChainsConfig = (): Promise<ConfigurationFile> => {
+  const config: ConfigurationFile = {
     chains: [
       {
         chainSpec: {
