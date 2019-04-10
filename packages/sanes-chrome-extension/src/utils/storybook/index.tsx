@@ -25,11 +25,11 @@ interface Props {
 export const SanesStorybook = ({ children }: Props): JSX.Element => {
   return (
     <Provider store={storybookStore}>
-      <ToastProvider>
-        <ConnectedRouter history={storybookHistory}>
-          <Storybook>{children}</Storybook>
-        </ConnectedRouter>
-      </ToastProvider>
+      <ConnectedRouter history={storybookHistory}>
+        <Storybook>
+          <ToastProvider>{children}</ToastProvider>
+        </Storybook>
+      </ConnectedRouter>
     </Provider>
   );
 };
