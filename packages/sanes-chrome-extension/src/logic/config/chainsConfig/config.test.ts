@@ -1,6 +1,6 @@
 import * as config from './fetchConfig';
 import { threeChainsConfig } from '../../test/chainConfigBuilder';
-import { getConfig } from '.';
+import { getConfig } from '../chainsConfig';
 
 describe('config', () => {
   it('mocks correctly chain config', async () => {

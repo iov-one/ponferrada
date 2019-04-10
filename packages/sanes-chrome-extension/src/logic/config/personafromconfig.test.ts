@@ -1,10 +1,10 @@
 import { ChainId } from '@iov/bcp';
 
-import { getPersonaFromConfig } from './fromconfig';
-import * as config from '../blockchain/chainsConfig/fetchConfig';
+import { getPersonaFromConfig } from './personafromconfig';
+import * as config from './chainsConfig/fetchConfig';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
-import { AccountInfo } from '.';
-import { getConfig } from '../blockchain/chainsConfig';
+import { AccountInfo } from '../persona';
+import { getConfig } from './chainsConfig';
 
 describe('getPersonaFromConfig', () => {
   function checkAccount(

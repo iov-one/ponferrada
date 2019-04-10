@@ -1,4 +1,4 @@
-import { FullConfigurationFile } from '../blockchain/chainsConfig/fetchConfig';
+import { FullConfigurationFile } from '../config/chainsConfig/fetchConfig';
 
 export const threeChainsConfig = (): Promise<FullConfigurationFile> => {
   const config: FullConfigurationFile = {
