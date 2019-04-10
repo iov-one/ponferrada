@@ -90,7 +90,7 @@ export const handlePassPhrase = async (
     RecoveryPhraseDom,
     'p'
   );
-  expect(inputs.length).toBe(1);
+  expect(paragraphs.length).toBe(1);
   const phraseParagraph = paragraphs[0].innerHTML;
   expect(phraseParagraph).toBe(await getMnemonic());
 
