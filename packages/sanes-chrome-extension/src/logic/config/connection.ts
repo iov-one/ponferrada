@@ -3,13 +3,14 @@ import { ethereumConnector } from '@iov/ethereum';
 import { liskConnector } from '@iov/lisk';
 import { ChainConnector } from '@iov/bcp';
 
+import { CodecType } from './configurationfile';
+
 export enum Codec {
   Bns,
   Lisk,
   Ethereum,
 }
 
-export type CodecType = 'bns' | 'bov' | 'lsk' | 'eth';
 export function codecFromString(input: CodecType): Codec {
   switch (input) {
     case 'bns':

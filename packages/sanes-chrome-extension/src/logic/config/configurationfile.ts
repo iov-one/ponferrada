@@ -1,5 +1,6 @@
 import { singleton } from '../../utils/singleton';
-import { CodecType } from './connection';
+
+export type CodecType = 'bns' | 'bov' | 'lsk' | 'eth';
 
 export interface ChainSpec {
   readonly codecType: CodecType;
