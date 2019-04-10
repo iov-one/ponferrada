@@ -1,29 +1,28 @@
-import { Amount, TokenTicker } from '@iov/bcp';
+import { Amount } from '@iov/bcp';
 
-import { Persona } from '../persona';
+import { getPersonaFromConfig } from './personafromconfig';
+import { getSignerAndProfile } from './signerandprofile';
 
-export function getBalances(
-  persona: Persona,
-  account: number
-): ReadonlyArray<Amount> {
-  console.log(`${persona} ${account}`);
-  const iovAmount: Amount = {
-    quantity: '102773830',
-    fractionalDigits: 9,
-    tokenTicker: 'IOV' as TokenTicker,
-  };
+export async function getBalances(
+  accountIndex: number
+): Promise<ReadonlyArray<Amount>> {
+  const singletonPersona = await getPersonaFromConfig();
+  const singletonSigner = (await getSignerAndProfile()).signer;
 
-  const ethAmount: Amount = {
-    quantity: '978799000000000000',
-    fractionalDigits: 18,
-    tokenTicker: 'ETH' as TokenTicker,
-  };
+  const account = (await singletonPersona.accounts())[accountIndex];
+  const identities = [...account.identities.values()];
+  const pendingAccountResults = identities.map(identity => {
+    const { chainId, pubkey } = identity;
+    return singletonSigner.connection(chainId).getAccount({ pubkey });
+  });
+  const accountResults = await Promise.all(pendingAccountResults);
 
-  const lskAmount: Amount = {
-    quantity: '17738300',
-    fractionalDigits: 8,
-    tokenTicker: 'LSK' as TokenTicker,
-  };
+  const out: Amount[] = [];
+  for (const result of accountResults) {
+    if (result) {
+      out.push(...result.balance);
+    }
+  }
 
-  return [iovAmount, ethAmount, lskAmount];
+  return out;
 }
