@@ -7,7 +7,7 @@ export interface Props {
 }
 
 const PdfDownload = ({ mnemonic }: Props): JSX.Element => {
-  const generatePdf = () => {
+  const generatePdf = (): void => {
     const pdf = new PDFGenerator();
 
     pdf.createHeader([

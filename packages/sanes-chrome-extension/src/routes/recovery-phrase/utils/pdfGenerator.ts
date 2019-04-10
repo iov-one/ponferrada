@@ -25,17 +25,17 @@ class PDFGenerator {
     'Twelve',
   ];
 
-  constructor() {
+  public constructor() {
     this.doc = new jsPDF();
     this.doc.setFont('Muli', 'normal');
     this.doc.setFontSize(12);
   }
 
-  public createHeader(header: string[]) {
+  public createHeader(header: string[]): void {
     this.doc.text(header, 10, 20);
   }
 
-  public addMnemonicTable(mnemonic: string[], startLine: number) {
+  public addMnemonicTable(mnemonic: string[], startLine: number): void {
     this.addMnemonicTableHeader(startLine);
 
     mnemonic.forEach((item: string, idx: number) => {
@@ -45,11 +45,11 @@ class PDFGenerator {
     });
   }
 
-  public save(filename: string) {
+  public save(filename: string): void {
     this.doc.save(filename);
   }
 
-  private addMnemonicTableHeader(startLine: number) {
+  private addMnemonicTableHeader(startLine: number): void {
     this.doc.setFont('Muli', 'bold');
     this.doc.text('Order', 10, startLine);
     this.doc.text('Word', 35, startLine);
