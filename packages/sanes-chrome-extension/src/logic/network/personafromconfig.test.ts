@@ -5,6 +5,7 @@ import * as config from '../config/configurationfile';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
 import { AccountInfo } from '../persona';
 import { getRuntimeConfiguration } from './runtimeconfiguration';
+import { mayTestChains } from '../../utils/test/testExecutor';
 
 describe('getPersonaFromConfig', () => {
   function checkAccount(
@@ -38,7 +39,7 @@ describe('getPersonaFromConfig', () => {
     return config.chains.map(chain => chain.chainId);
   }
 
-  it('works', async () => {
+  mayTestChains('works', async () => {
     // GIVEN an entity Persona with two accounts main and saving and exposition to bns and lsk chains
     const fetchConfigMock = jest.spyOn(config, 'getConfigurationFile');
     fetchConfigMock.mockImplementation(threeChainsConfig);
