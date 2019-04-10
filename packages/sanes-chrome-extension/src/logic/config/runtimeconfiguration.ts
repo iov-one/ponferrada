@@ -23,9 +23,8 @@ export interface RuntimeConfiguration {
   readonly chains: ReadonlyArray<RuntimeChainSpec>;
 }
 
-// fetchFullSpec will ensure the full chain info is present
-async function loadChainSpec(cfg: ChainConfig): Promise<RuntimeChainSpec> {
-  const { chainSpec, faucetSpec } = cfg;
+async function loadChainSpec(fromFile: ChainConfig): Promise<RuntimeChainSpec> {
+  const { chainSpec, faucetSpec } = fromFile;
 
   const codec = codecFromString(chainSpec.codecType);
   const algorithm = algorithmForCodec(codec);
