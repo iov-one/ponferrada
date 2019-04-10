@@ -254,7 +254,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root-89 MuiTypography-h4-97 makeStyles-inline-87"
     >
-       
+
       storybook
     </h4>
   </div>
@@ -817,7 +817,7 @@ Array [
   <h6
     className="MuiTypography-root-247 MuiTypography-subtitle2-259 MuiTypography-colorPrimary-270 makeStyles-inline-245"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root-247 MuiTypography-subtitle2-259 makeStyles-inline-245"
@@ -1310,7 +1310,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
     <h4
       className="MuiTypography-root-669 MuiTypography-h4-677 makeStyles-inline-667"
     >
-       
+
       In
     </h4>
   </div>
@@ -1468,7 +1468,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
     <h4
       className="MuiTypography-root-774 MuiTypography-h4-782 makeStyles-inline-772"
     >
-       
+
       phrase
     </h4>
   </div>
@@ -1490,7 +1490,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
       <h6
         className="MuiTypography-root-774 MuiTypography-subtitle2-786 MuiTypography-colorPrimary-797 makeStyles-inline-772"
       >
-        Get PDF button placement
+        Get PDF
       </h6>
     </div>
     <div
@@ -1499,7 +1499,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
       <p
         className="MuiTypography-root-774 MuiTypography-body1-776 makeStyles-inline-772"
       >
-        
+
       </p>
     </div>
     <div
@@ -1551,7 +1551,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Routes/Recovery phrase Main 1`] = `
+exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
   className="MuiBox-root-847 MuiBox-root-848"
   id="/signup1"
@@ -1562,125 +1562,17 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
     <h4
       className="MuiTypography-root-852 MuiTypography-h4-860 MuiTypography-colorPrimary-875 makeStyles-inline-850"
     >
-      Recovery
+      New
     </h4>
     <h4
       className="MuiTypography-root-852 MuiTypography-h4-860 makeStyles-inline-850"
     >
-       
+
       Account
     </h4>
   </div>
   <div
     className="MuiBox-root-847 MuiBox-root-882"
-  >
-    <div
-      className="MuiBox-root-545 MuiBox-root-580"
-    >
-      <div
-        className="MuiBox-root-545 MuiBox-root-581"
-      >
-        <div
-          className="MuiBox-root-545 MuiBox-root-582"
-        >
-          <h6
-            className="MuiTypography-root-549 MuiTypography-subtitle2-561 makeStyles-inline-548"
-          >
-            Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool to recover or back up your wallet on any platform.
-          </h6>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root-545 MuiBox-root-583"
-    >
-      <h6
-        className="MuiTypography-root-549 MuiTypography-subtitle2-561 MuiTypography-colorPrimary-572 makeStyles-inline-548"
-        onClick={[Function]}
-      >
-        Get PDF
-      </h6>
-    </div>
-    <div
-      className="MuiBox-root-545 MuiBox-root-584"
-    >
-      <p
-        className="MuiTypography-root-549 MuiTypography-body1-551 makeStyles-inline-548"
-      >
-
-      </p>
-    </div>
-    <div
-      className="MuiBox-root-545 MuiBox-root-585"
-    >
-      <div
-        className="MuiBox-root-545 MuiBox-root-586"
-      >
-        <button
-          className="MuiButtonBase-root-604 MuiButton-root-587 MuiButton-text-589 MuiButton-textPrimary-590 MuiButton-fullWidth-603"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
-        >
-          <span
-            className="MuiButton-label-588"
-          >
-            Back
-          </span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root-545 MuiBox-root-607"
-  />
-  <div
-    className="MuiBox-root-545 MuiBox-root-608"
-  >
-    <img
-      alt="IOV logo"
-      className="makeStyles-root-609"
-      height={39}
-      src="iov-logo.png"
-      width={84}
-    />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Routes/Signup New account page 1`] = `
-<div
-  className="MuiBox-root-624 MuiBox-root-625"
-  id="/signup1"
->
-  <div
-    className="MuiBox-root-624 MuiBox-root-626"
-  >
-    <h4
-      className="MuiTypography-root-628 MuiTypography-h4-636 MuiTypography-colorPrimary-651 makeStyles-inline-627"
-    >
-      New
-    </h4>
-    <h4
-      className="MuiTypography-root-628 MuiTypography-h4-636 makeStyles-inline-627"
-    >
-
-      Account
-    </h4>
-  </div>
-  <div
-    className="MuiBox-root-624 MuiBox-root-658"
   >
     <form
       onSubmit={[Function]}
@@ -1966,7 +1858,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root-986 MuiTypography-h4-994 makeStyles-inline-984"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2050,7 +1942,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root-986 MuiTypography-body1-988 makeStyles-inline-984"
       >
-        
+
       </p>
     </div>
     <div
@@ -2145,7 +2037,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     <h4
       className="MuiTypography-root-1098 MuiTypography-h4-1106 makeStyles-inline-1096"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2303,7 +2195,7 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
     <h4
       className="MuiTypography-root-1211 MuiTypography-h4-1219 makeStyles-inline-1209"
     >
-       
+
       to your IOV manager
     </h4>
   </div>
