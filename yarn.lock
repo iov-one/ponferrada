@@ -2084,6 +2084,22 @@
     read-pkg-up "^4.0.0"
     regenerator-runtime "^0.12.1"
 
+"@storybook/addon-viewport@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.npmjs.org/@storybook/addon-viewport/-/addon-viewport-5.0.6.tgz#12a7430114a4bcfd9c35a44f42688be3b46a0910"
+  integrity sha512-GCxTSAvIR49753snvcSI0qXQ2JJrVBlfdRpQ+F5AsG2qhw8LJAkxX6lGKsX8VeieiaMUnowQTaVx/oSGIcchhQ==
+  dependencies:
+    "@storybook/addons" "5.0.6"
+    "@storybook/client-logger" "5.0.6"
+    "@storybook/components" "5.0.6"
+    "@storybook/core-events" "5.0.6"
+    "@storybook/theming" "5.0.6"
+    core-js "^2.6.5"
+    global "^4.3.2"
+    memoizerific "^1.11.3"
+    prop-types "^15.6.2"
+    util-deprecate "^1.0.2"
+
 "@storybook/addons@5.0.6", "@storybook/addons@^5.0.6":
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.0.6.tgz#3ecb7fd8421e6557b1abc71ebede905e8decfebc"
@@ -2687,6 +2703,13 @@
   dependencies:
     "@types/puppeteer" "*"
     "@types/react" "*"
+    "@types/storybook__react" "*"
+
+"@types/storybook__addon-viewport@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/@types/storybook__addon-viewport/-/storybook__addon-viewport-4.1.0.tgz#18af09f1ecd983e4c5ec803f46b15289f88cb299"
+  integrity sha512-4BAIplyTmGyRcL7DuRQv0Bc/iJyJjO/tbZR3ZA1plIO4HGurvaXAeGRPNns9bgo+xCkZUzASh8Vpc68lyrYfLA==
+  dependencies:
     "@types/storybook__react" "*"
 
 "@types/storybook__react@*", "@types/storybook__react@^4.0.1":
