@@ -2,12 +2,22 @@ import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
-const StyledPaper = withStyles({
-  root: {
-    '&&': {
+interface Props {
+  readonly positionedClass?: string;
+}
+
+const useStyles = makeStyles({
+  currencyContainer: {
+    display: 'flex',
+  },
+});
+
+const muiClasses = {
+  paper: makeStyles({
+    root: {
       outline: '1px solid red',
       display: 'flex',
       flexDirection: 'column',
@@ -15,50 +25,60 @@ const StyledPaper = withStyles({
       width: '100%',
       padding: '40px',
     },
-  },
-})(Paper);
+  }),
 
-const StyledAvatar = withStyles({
-  root: {
-    '&&': {
+  avatar: makeStyles({
+    root: {
       outline: '1px solid red',
       backgroundColor: '#ffe152',
       width: '72px',
       height: '72px',
       marginTop: '-76px',
     },
-  },
-})(Avatar);
+  }),
 
-const currencyContainer: React.CSSProperties = {
-  display: 'flex',
+  textField: makeStyles({
+    root: {
+      outline: '1px solid red',
+    },
+  }),
+
+  select: makeStyles({
+    root: {
+      outline: '1px solid red',
+    },
+  }),
 };
 
-const StyledTextField = withStyles({
-  root: {
-    '&&': {
-      outline: '1px solid red',
-    },
-  },
-})(TextField);
+const CurrencyToSend = ({ positionedClass }: Props) => {
+  const classes = useStyles();
 
-const StyledSelect = withStyles({
-  root: {
-    '&&': {
-      outline: '1px solid red',
+  const overrideClasses = {
+    paper: {
+      root: muiClasses.paper().root,
     },
-  },
-})(Select);
 
-const CurrencyToSend = (props: { positioning: React.CSSProperties }) => {
+    avatar: {
+      root: muiClasses.avatar().root,
+    },
+
+    textField: {
+      root: muiClasses.textField().root,
+    },
+
+    select: {
+      root: muiClasses.select().root,
+    },
+  };
+
   return (
-    <StyledPaper style={props.positioning}>
-      <StyledAvatar />
-      <div style={currencyContainer}>
-        <StyledTextField label="You send" />
-        <StyledSelect />
+    <Paper className={positionedClass} classes={overrideClasses.paper}>
+      <Avatar classes={overrideClasses.avatar} />
+      <div className={classes.currencyContainer}>
+        <TextField label="You send" classes={overrideClasses.textField} />
+        <Select classes={overrideClasses.select} />
       </div>
-    </StyledPaper>
+    </Paper>
   );
 };
 

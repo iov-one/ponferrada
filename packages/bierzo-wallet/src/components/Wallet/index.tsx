@@ -48,6 +48,9 @@ const positionings: {
 };
 
 const useStyles = makeStyles({
+  currencyToSend: {
+    gridArea: 'currency-to-send',
+  },
   continue: {
     gridArea: 'continue-button',
   },
@@ -58,7 +61,7 @@ const Wallet = () => {
 
   return (
     <div style={positionings.wallet}>
-      <CurrencyToSend positioning={positionings.currencyToSend} />
+      <CurrencyToSend positionedClass={classes.currencyToSend} />
       <ReceiverAddress positioning={positionings.receiverAddress} />
       <TextNote positioning={positionings.textNote} />
       <ContinueButton className={classes.continue} />
