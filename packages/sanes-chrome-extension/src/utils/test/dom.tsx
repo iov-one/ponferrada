@@ -10,11 +10,11 @@ import { history } from '../../store/reducers';
 export const createDom = (store: Store): React.Component =>
   TestUtils.renderIntoDocument(
     <Provider store={store}>
-      <ToastProvider>
-        <ConnectedRouter history={history}>
+      <ConnectedRouter history={history}>
+        <ToastProvider>
           <Route />
-        </ConnectedRouter>
-      </ToastProvider>
+        </ToastProvider>
+      </ConnectedRouter>
     </Provider>
   ) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
