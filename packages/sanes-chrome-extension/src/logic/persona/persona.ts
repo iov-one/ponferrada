@@ -1,8 +1,19 @@
 import { Amount } from '@iov/bcp';
 import { MultiChainSigner } from '@iov/core';
 
-import { AccountManager, AccountInfo, createUserProfile } from '../user';
-import { chainConnector, getRuntimeConfiguration } from '../config';
+import {
+  AccountManager,
+  AccountInfo,
+  createUserProfile,
+  AccountManagerChainConfig,
+} from '../user';
+import {
+  chainConnector,
+  getConfigurationFile,
+  codecTypeFromString,
+  algorithmForCodec,
+  pathBuilderForCodec,
+} from '../config';
 
 export class Persona {
   /**
@@ -13,18 +24,25 @@ export class Persona {
    * creating accounts.
    */
   public static async create(): Promise<Persona> {
-    const { chains } = await getRuntimeConfiguration();
+    const config = await getConfigurationFile();
 
     const profile = await createUserProfile();
     const signer = new MultiChainSigner(profile);
 
     // connect chains
-    for (const chain of chains) {
-      const connector = chainConnector(chain.codecType, chain.bootstrapNodes);
-      signer.addChain(connector);
+    const managerChains: AccountManagerChainConfig[] = [];
+    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+      const codecType = codecTypeFromString(chainSpec.codecType);
+      const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
+      const { connection } = await signer.addChain(connector);
+      managerChains.push({
+        chainId: connection.chainId(),
+        algorithm: algorithmForCodec(codecType),
+        derivePath: pathBuilderForCodec(codecType),
+      });
     }
 
-    const manager = new AccountManager(profile, chains);
+    const manager = new AccountManager(profile, managerChains);
 
     // Setup accounts
     await manager.generateAccount(0);

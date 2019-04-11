@@ -1,6 +1,9 @@
-import { Algorithm } from '@iov/bcp';
+import { Algorithm, ChainConnector } from '@iov/bcp';
 import { HdPaths } from '@iov/keycontrol';
 import { Slip10RawIndex } from '@iov/crypto';
+import { bnsConnector } from '@iov/bns';
+import { liskConnector } from '@iov/lisk';
+import { ethereumConnector } from '@iov/ethereum';
 
 import { CodecString } from './configurationfile';
 
@@ -52,4 +55,22 @@ export function pathBuilderForCodec(
     }
   };
   return pathBuilder;
+}
+
+export function chainConnector(
+  codec: CodecType,
+  nodes: ReadonlyArray<string>
+): ChainConnector {
+  const url = nodes[0];
+  switch (codec) {
+    case CodecType.Bns:
+      return bnsConnector(url);
+    case CodecType.Lisk:
+      return liskConnector(url);
+    case CodecType.Ethereum:
+      const scraperApiUrl = nodes[1];
+      return ethereumConnector(url, { scraperApiUrl });
+    default:
+      throw new Error('No connector for this codec found');
+  }
 }
