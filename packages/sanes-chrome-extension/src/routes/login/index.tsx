@@ -1,5 +1,7 @@
 import * as React from 'react';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import {
   FormValues,
   ValidationError,
@@ -19,12 +21,14 @@ const validate = (values: object): object => {
   return errors;
 };
 
-//eslint-disable-next-line @typescript-eslint/no-unused-vars
-const onLogin = async (_: object): Promise<void> => {
-  //const formValues = values as FormValues;
-};
-
 const Login = (): JSX.Element => {
+  const toast = React.useContext(ToastContext);
+
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onLogin = async (_: object): Promise<void> => {
+    toast.show('Toast message', ToastVariant.ERROR);
+  };
+
   return (
     <PageLayout id={LOGIN_ROUTE} primaryTitle="Log" title="In">
       <LoginForm onLogin={onLogin} validate={validate} />

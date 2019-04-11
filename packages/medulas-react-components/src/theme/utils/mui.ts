@@ -92,6 +92,9 @@ const themeObject: ThemeOptions = {
       },
     },
     MuiFormHelperText: {
+      root: {
+        fontSize: '1.4rem',
+      },
       contained: {
         margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
       },
@@ -101,7 +104,6 @@ const themeObject: ThemeOptions = {
         top: `-${theme.spacing(3)}px`,
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightMedium,
-        fontSize: theme.typography.fontSize,
         '&$focused': {
           // Use text primary in TextField labels when focusing.
           color: `${theme.palette.text.primary}`,

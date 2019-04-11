@@ -7,66 +7,33 @@ import { Storybook } from '../../utils/storybook';
 import Grid from '../Grid';
 import GridItem from '../GridItem';
 
-storiesOf('Components /Button', module)
-  .add(
-    'Button in phone screen',
-    (): JSX.Element => (
-      <div style={{ width: '425px' }}>
-        <Storybook>
-          <Grid flexWrap="wrap" flexDirection="column">
-            <GridItem marginBottom={4}>
-              <Button onClick={action('clicked')}>Hower</Button>
-            </GridItem>
-            <GridItem marginBottom={4}>
-              <Button onClick={action('clicked')} disabled>
-                Disabled
-              </Button>
-            </GridItem>
-            <GridItem marginBottom={4}>
-              <Button onClick={action('clicked')} color="secondary">
-                Cancel
-              </Button>
-            </GridItem>
-            <GridItem marginBottom={4}>
-              <Back onClick={action('clicked')}>Back</Back>
-            </GridItem>
-            <GridItem marginBottom={4}>
-              <Button onClick={action('clicked')} fullWidth>
-                Full Width
-              </Button>
-            </GridItem>
-          </Grid>
-        </Storybook>
-      </div>
-    )
+storiesOf('Components', module).add(
+  'Buttons',
+  (): JSX.Element => (
+    <Storybook>
+      <Grid flexWrap="wrap" flexDirection="column">
+        <GridItem marginBottom={4}>
+          <Button onClick={action('clicked')}>Hower</Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Button onClick={action('clicked')} disabled>
+            Disabled
+          </Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Button onClick={action('clicked')} color="secondary">
+            Cancel
+          </Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Back onClick={action('clicked')}>Back</Back>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Button onClick={action('clicked')} fullWidth>
+            Full Width
+          </Button>
+        </GridItem>
+      </Grid>
+    </Storybook>
   )
-  .add(
-    'Button in desktop screen',
-    (): JSX.Element => (
-      <Storybook>
-        <Grid flexWrap="wrap" flexDirection="column">
-          <GridItem marginBottom={4}>
-            <Button onClick={action('clicked')}>Hower</Button>
-          </GridItem>
-          <GridItem marginBottom={4}>
-            <Button onClick={action('clicked')} disabled>
-              Disabled
-            </Button>
-          </GridItem>
-          <GridItem marginBottom={4}>
-            <Button onClick={action('clicked')} color="secondary">
-              Cancel
-            </Button>
-          </GridItem>
-          <GridItem marginBottom={4}>
-            <Back onClick={action('clicked')}>Back</Back>
-          </GridItem>
-          <GridItem marginBottom={4}>
-            <Button onClick={action('clicked')} fullWidth>
-              Full Width
-            </Button>
-          </GridItem>
-        </Grid>
-      </Storybook>
-    )
-  );
+);

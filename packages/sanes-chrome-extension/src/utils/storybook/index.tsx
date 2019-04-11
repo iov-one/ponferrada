@@ -1,4 +1,5 @@
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
+import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import { Provider } from 'react-redux';
 import { createMemoryHistory, History } from 'history';
 import { ConnectedRouter, connectRouter } from 'connected-react-router';
@@ -25,7 +26,9 @@ export const SanesStorybook = ({ children }: Props): JSX.Element => {
   return (
     <Provider store={storybookStore}>
       <ConnectedRouter history={storybookHistory}>
-        <Storybook>{children}</Storybook>
+        <Storybook>
+          <ToastProvider>{children}</ToastProvider>
+        </Storybook>
       </ConnectedRouter>
     </Provider>
   );

@@ -9,7 +9,6 @@ The most beautiful UI in Blockchain.
 Ponferrada browser extension is split in 4 packages:
 
 - **medulas-react-components**: All the react components that we use in the UI, based on material-ui v4.0.
-- **oza-react-scripts**: Configuration and scripts for Create React App
 - **sanes-chrome-extension**: Main application
 - **valdueza-storybook**: Storybook configuration
 
@@ -72,7 +71,7 @@ To get started, please go to the root directory and run:
 ```
 yarn install
 yarn build
-cd packages/
+cd packages/sanes-chrome-extension/
 yarn start
 ```
 

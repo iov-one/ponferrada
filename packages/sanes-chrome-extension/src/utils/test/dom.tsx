@@ -1,6 +1,7 @@
 import { ConnectedRouter } from 'connected-react-router';
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
+import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import Route from '../../routes';
@@ -10,7 +11,9 @@ export const createDom = (store: Store): React.Component =>
   TestUtils.renderIntoDocument(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Route />
+        <ToastProvider>
+          <Route />
+        </ToastProvider>
       </ConnectedRouter>
     </Provider>
   ) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
