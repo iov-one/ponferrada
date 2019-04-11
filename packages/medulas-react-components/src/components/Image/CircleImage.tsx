@@ -18,7 +18,7 @@ const CircleImage = ({
   dia,
   iconClasses,
   ...props
-}: Props) => {
+}: Props): JSX.Element => {
   return (
     <Block
       display="flex"
