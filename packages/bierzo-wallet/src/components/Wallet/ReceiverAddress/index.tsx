@@ -1,4 +1,4 @@
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
@@ -10,9 +10,25 @@ interface Props {
 }
 
 const useStyles = makeStyles({
+  paperRoot: {
+    outline: '1px solid red',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    padding: '40px',
+  },
+
   toLabel: {
     outline: '1px solid red',
     alignSelf: 'flex-start',
+  },
+
+  textFieldRoot: {
+    outline: '1px solid red',
+    width: '100%',
+    height: '50px',
+    margin: '16px 0 8px 0',
   },
 
   validityLabel: {
@@ -39,45 +55,21 @@ const useStyles = makeStyles({
   },
 });
 
-const muiClasses = {
-  paper: makeStyles({
-    root: {
-      outline: '1px solid red',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      padding: '40px',
-    },
-  }),
-
-  textField: makeStyles({
-    root: {
-      outline: '1px solid red',
-      width: '100%',
-      height: '50px',
-      margin: '16px 0 8px 0',
-    },
-  }),
-};
-
 const ReceiverAddress = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
-  const overrideClasses = {
-    paper: {
-      root: muiClasses.paper().root,
-    },
+  const paperClasses = {
+    root: classes.paperRoot,
+  };
 
-    textField: {
-      root: muiClasses.textField().root,
-    },
+  const textFieldClasses = {
+    root: classes.textFieldRoot,
   };
 
   return (
-    <Paper className={positionedClass} classes={overrideClasses.paper}>
+    <Paper className={positionedClass} classes={paperClasses}>
       <label className={classes.toLabel}>To</label>
-      <TextField classes={overrideClasses.textField} />
+      <TextField classes={textFieldClasses} />
       <label className={classes.validityLabel}>RequiredText</label>
       <div className={classes.tooltipContainer}>
         <label className={classes.tooltipLabel}>How it works</label>

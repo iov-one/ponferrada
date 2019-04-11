@@ -6,7 +6,7 @@ interface Props {
 }
 
 const useStyles = makeStyles({
-  root: {
+  buttonRoot: {
     outline: '1px solid red',
     width: '75%',
     height: '42px',
@@ -14,20 +14,22 @@ const useStyles = makeStyles({
     backgroundColor: '#31e6c9',
     color: '#ffffff',
   },
-  label: {
+
+  buttonLabel: {
     textTransform: 'capitalize',
   },
 });
 
 const ContinueButton = ({ positionedClass }: Props) => {
   const classes = useStyles();
-  const muiClasses = {
-    root: classes.root,
-    label: classes.label,
+
+  const buttonClasses = {
+    root: classes.buttonRoot,
+    label: classes.buttonLabel,
   };
 
   return (
-    <Button className={positionedClass} classes={muiClasses}>
+    <Button className={positionedClass} classes={buttonClasses}>
       Continue
     </Button>
   );

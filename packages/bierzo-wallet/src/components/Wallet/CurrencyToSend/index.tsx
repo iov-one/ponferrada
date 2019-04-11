@@ -10,6 +10,23 @@ interface Props {
 }
 
 const useStyles = makeStyles({
+  paperRoot: {
+    outline: '1px solid red',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    padding: '40px',
+  },
+
+  avatarRoot: {
+    outline: '1px solid red',
+    backgroundColor: '#ffe152',
+    width: '72px',
+    height: '72px',
+    margin: '-76px 0 40px 0',
+  },
+
   sendLabel: {
     outline: '1px solid red',
     color: '#1c1c1c',
@@ -21,78 +38,49 @@ const useStyles = makeStyles({
     margin: '40px 0 40px 0',
   },
 
+  textFieldRoot: {
+    outline: '1px solid red',
+    height: '50px',
+    marginRight: '10px',
+  },
+
+  selectRoot: {
+    outline: '1px solid red',
+    height: '30px',
+  },
+
   balanceLabel: {
     outline: '1px solid red',
     color: '#a2a6a8',
   },
 });
 
-const muiClasses = {
-  paper: makeStyles({
-    root: {
-      outline: '1px solid red',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      padding: '40px',
-    },
-  }),
-
-  avatar: makeStyles({
-    root: {
-      outline: '1px solid red',
-      backgroundColor: '#ffe152',
-      width: '72px',
-      height: '72px',
-      margin: '-76px 0 40px 0',
-    },
-  }),
-
-  textField: makeStyles({
-    root: {
-      outline: '1px solid red',
-      height: '50px',
-      marginRight: '10px',
-    },
-  }),
-
-  select: makeStyles({
-    root: {
-      outline: '1px solid red',
-      height: '30px',
-    },
-  }),
-};
-
 const CurrencyToSend = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
-  const overrideClasses = {
-    paper: {
-      root: muiClasses.paper().root,
-    },
+  const paperClasses = {
+    root: classes.paperRoot,
+  };
 
-    avatar: {
-      root: muiClasses.avatar().root,
-    },
+  const avatarClasses = {
+    root: classes.avatarRoot,
+  };
 
-    textField: {
-      root: muiClasses.textField().root,
-    },
+  const textFieldClasses = {
+    root: classes.textFieldRoot,
+  };
 
-    select: {
-      root: muiClasses.select().root,
-    },
+  const selectClasses = {
+    root: classes.selectRoot,
   };
 
   return (
-    <Paper className={positionedClass} classes={overrideClasses.paper}>
-      <Avatar classes={overrideClasses.avatar} />
+    <Paper className={positionedClass} classes={paperClasses}>
+      <Avatar classes={avatarClasses} />
       <label className={classes.sendLabel}>You send</label>
       <div className={classes.currencyContainer}>
-        <TextField classes={overrideClasses.textField} />
-        <Select classes={overrideClasses.select} />
+        <TextField classes={textFieldClasses} />
+        <Select classes={selectClasses} />
       </div>
       <label className={classes.balanceLabel}>balance:</label>
     </Paper>
