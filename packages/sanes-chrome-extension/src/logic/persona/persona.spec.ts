@@ -10,6 +10,20 @@ describeWithChains('Persona', () => {
     });
   });
 
+  describe('getAccounts', () => {
+    it('can get accounts', async () => {
+      const persona = await Persona.create();
+
+      const accounts = await persona.getAccounts();
+      expect(accounts.length).toEqual(1);
+
+      expect(accounts[0].name).toEqual('Account 0');
+      expect(new Set(accounts[0].identities).size).toEqual(4);
+
+      persona.destroy();
+    });
+  });
+
   describe('getBalances', () => {
     it('can get balances of first account', async () => {
       const persona = await Persona.create();
