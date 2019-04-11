@@ -1,9 +1,9 @@
 import { ChainId } from '@iov/bcp';
 
-import { getPersonaFromConfig } from './personafromconfig';
+import { getAccountsManagerFromConfig } from './personafromconfig';
 import * as config from '../config/configurationfile';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
-import { AccountInfo } from '../persona';
+import { AccountInfo } from '../user';
 import { getRuntimeConfiguration } from './runtimeconfiguration';
 import { mayTestChains } from '../../utils/test/testExecutor';
 
@@ -44,15 +44,15 @@ describe('getPersonaFromConfig', () => {
     const fetchConfigMock = jest.spyOn(config, 'getConfigurationFile');
     fetchConfigMock.mockImplementation(threeChainsConfig);
 
-    const persona = await getPersonaFromConfig();
+    const manager = await getAccountsManagerFromConfig();
 
     const availableChains = await getAvailableChains();
-    let accounts = await persona.accounts();
+    let accounts = await manager.accounts();
     expect(accounts.length).toEqual(1);
     checkAccount(accounts[0], 'Account 0', availableChains);
 
-    await persona.generateNextAccount();
-    accounts = await persona.accounts();
+    await manager.generateNextAccount();
+    accounts = await manager.accounts();
     expect(accounts.length).toEqual(2);
     checkAccount(accounts[0], 'Account 0', availableChains);
     checkAccount(accounts[1], 'Account 1', availableChains);

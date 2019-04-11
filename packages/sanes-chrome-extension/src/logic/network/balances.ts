@@ -1,15 +1,15 @@
 import { Amount } from '@iov/bcp';
 
-import { getPersonaFromConfig } from './personafromconfig';
+import { getAccountsManagerFromConfig } from './personafromconfig';
 import { getSignerAndProfile } from './signerandprofile';
 
 export async function getBalances(
   accountIndex: number
 ): Promise<ReadonlyArray<Amount>> {
-  const singletonPersona = await getPersonaFromConfig();
+  const singletonManager = await getAccountsManagerFromConfig();
   const singletonSigner = (await getSignerAndProfile()).signer;
 
-  const account = (await singletonPersona.accounts())[accountIndex];
+  const account = (await singletonManager.accounts())[accountIndex];
   const identities = [...account.identities.values()];
   const pendingAccountResults = identities.map(identity => {
     const { chainId, pubkey } = identity;

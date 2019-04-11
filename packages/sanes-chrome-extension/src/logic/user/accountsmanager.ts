@@ -13,19 +13,19 @@ export interface AccountInfo {
   readonly identities: ReadonlyMap<ChainId, PublicIdentity>;
 }
 
-export interface PersonaChainConfig {
+export interface AccountsManagerChainConfig {
   readonly chainId: ChainId;
   readonly algorithm: Algorithm;
   readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
 }
 
-export class Persona {
+export class AccountsManager {
   private readonly _userProfile: UserProfile;
-  private readonly _chains: PersonaChainConfig[];
+  private readonly _chains: AccountsManagerChainConfig[];
 
   public constructor(
     userProfile: UserProfile,
-    chains: ReadonlyArray<PersonaChainConfig>
+    chains: ReadonlyArray<AccountsManagerChainConfig>
   ) {
     this._userProfile = userProfile;
     this._chains = [...chains];
@@ -38,7 +38,7 @@ export class Persona {
     return mnemonic;
   }
 
-  public async addChain(newChain: PersonaChainConfig): Promise<void> {
+  public async addChain(newChain: AccountsManagerChainConfig): Promise<void> {
     if (this._chains.find(c => c.chainId === newChain.chainId)) {
       throw new Error(`Chain with ID ${newChain.chainId} already exists`);
     }

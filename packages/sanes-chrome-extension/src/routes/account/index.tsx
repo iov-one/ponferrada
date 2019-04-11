@@ -11,21 +11,21 @@ import SelectField, {
 } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
-import { Persona } from '../../logic/persona';
-import { getPersonaFromConfig } from '../../logic/network';
+import { AccountsManager } from '../../logic/user';
+import { getAccountsManagerFromConfig } from '../../logic/network';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
 const AccountView = (): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Item[]>([]);
-  const persona = React.useRef<Persona | null>(null);
+  const persona = React.useRef<AccountsManager | null>(null);
   const { form, handleSubmit } = useForm({
     onSubmit: () => {},
   });
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const storedPersona = await getPersonaFromConfig();
+      const storedPersona = await getAccountsManagerFromConfig();
       persona.current = storedPersona;
       let actualItems: Item[] = [];
       Object.keys(persona.current.accounts).forEach((acc: string) =>

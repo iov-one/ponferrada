@@ -1,26 +1,26 @@
 import { getRuntimeConfiguration } from './runtimeconfiguration';
-import { Persona } from '../persona';
+import { AccountsManager } from '../user';
 import { getSignerAndProfile } from './signerandprofile';
 import { singleton } from '../../utils/singleton';
 
-const createPersonaFromConfig = async (): Promise<Persona> => {
+const createAccountsManagerFromConfig = async (): Promise<AccountsManager> => {
   const { chains } = await getRuntimeConfiguration();
 
   const { profile } = await getSignerAndProfile();
 
-  const persona = new Persona(profile, chains);
+  const manager = new AccountsManager(profile, chains);
   const derivation = 0;
-  await persona.generateAccount(derivation);
+  await manager.generateAccount(derivation);
 
-  return persona;
+  return manager;
 };
 
 /**
- * Creates Persona if not yet created.
+ * Creates AccountsManager if not yet created.
  *
  * Uses the getSignerAndProfile() singleton internally, such that
  * getSignerAndProfile() and getPersonaFromConfig() always use the same profile.
  */
-export const getPersonaFromConfig = singleton<typeof createPersonaFromConfig>(
-  createPersonaFromConfig
-);
+export const getAccountsManagerFromConfig = singleton<
+  typeof createAccountsManagerFromConfig
+>(createAccountsManagerFromConfig);
