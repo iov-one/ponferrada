@@ -22,9 +22,6 @@ const buildPersona = async (password: string): Promise<Persona> => {
   const db = await getDb();
   baseProfile.storeIn(db, password);
 
-  // const ethanProfile = new ProfileWithAccounts(baseProfile, derivationInfo);
-  // const ethanAccount = await profile.ensureAccount(0, accountName);
-
   return persona;
 };
 

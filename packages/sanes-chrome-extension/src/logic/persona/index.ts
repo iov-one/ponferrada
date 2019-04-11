@@ -4,10 +4,11 @@ import {
   publicIdentityEquals,
   PublicIdentity,
 } from '@iov/bcp';
-import { UserProfile, WalletId } from '@iov/core';
+import { UserProfile, WalletId, MultiChainSigner } from '@iov/core';
 import { EnhancedChainSpec } from '../blockchain/chainsConfig';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
+import { chainConnector, codecFromString } from '../blockchain/connection';
 
 export interface AccountInfo {
   name: string;
@@ -17,10 +18,19 @@ export interface AccountInfo {
 class Persona {
   private _userProfile: UserProfile;
   private _chains: EnhancedChainSpec[];
+  private _signer: MultiChainSigner;
 
   public constructor(userProfile: UserProfile, chains: EnhancedChainSpec[]) {
+    const signer = new MultiChainSigner(userProfile);
+    for (const chain of chains) {
+      const codecType = codecFromString(chain.codecType);
+      const connector = chainConnector(codecType, chain.bootstrapNodes);
+      signer.addChain(connector);
+    }
+
     this._userProfile = userProfile;
     this._chains = chains;
+    this._signer = signer;
   }
 
   public async generateAccount(derivation: number): Promise<void> {
