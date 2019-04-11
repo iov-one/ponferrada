@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     alignItems: 'baseline',
     width: '100%',
     padding: '40px',
+    fontSize: '16px',
   },
 
   noteIcon: {
@@ -45,7 +46,12 @@ const TextNote = ({ positionedClass }: Props) => {
   return (
     <Paper className={positionedClass} classes={paperClasses}>
       <FontAwesomeIcon icon={faStickyNote} className={classes.noteIcon} />
-      <TextField label="Add a note" classes={textFieldClasses} />
+      <TextField
+        multiline={true}
+        placeholder="Add a note"
+        variant="outlined"
+        classes={textFieldClasses}
+      />
     </Paper>
   );
 };

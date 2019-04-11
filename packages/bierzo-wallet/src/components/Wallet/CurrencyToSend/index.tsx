@@ -1,3 +1,5 @@
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
@@ -22,9 +24,15 @@ const useStyles = makeStyles({
   avatarRoot: {
     outline: '1px solid red',
     backgroundColor: '#ffe152',
+    fontSize: '27.5px',
     width: '72px',
     height: '72px',
     margin: '-76px 0 40px 0',
+  },
+
+  avatarIcon: {
+    outline: '1px solid red',
+    color: '#ffffff',
   },
 
   sendLabel: {
@@ -76,10 +84,16 @@ const CurrencyToSend = ({ positionedClass }: Props) => {
 
   return (
     <Paper className={positionedClass} classes={paperClasses}>
-      <Avatar classes={avatarClasses} />
+      <Avatar classes={avatarClasses}>
+        <FontAwesomeIcon icon={faUser} className={classes.avatarIcon} />
+      </Avatar>
       <label className={classes.sendLabel}>You send</label>
       <div className={classes.currencyContainer}>
-        <TextField classes={textFieldClasses} />
+        <TextField
+          placeholder="0,00"
+          variant="outlined"
+          classes={textFieldClasses}
+        />
         <Select classes={selectClasses} />
       </div>
       <label className={classes.balanceLabel}>balance:</label>

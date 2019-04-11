@@ -40,6 +40,7 @@ const useStyles = makeStyles({
     outline: '1px solid red',
     display: 'flex',
     alignSelf: 'flex-end',
+    fontSize: '16px',
     marginTop: '24px',
   },
 
@@ -69,7 +70,11 @@ const ReceiverAddress = ({ positionedClass }: Props) => {
   return (
     <Paper className={positionedClass} classes={paperClasses}>
       <label className={classes.toLabel}>To</label>
-      <TextField classes={textFieldClasses} />
+      <TextField
+        placeholder="IOV or wallet address"
+        variant="outlined"
+        classes={textFieldClasses}
+      />
       <label className={classes.validityLabel}>RequiredText</label>
       <div className={classes.tooltipContainer}>
         <label className={classes.tooltipLabel}>How it works</label>
