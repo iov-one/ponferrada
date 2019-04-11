@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Button from './index';
+import Download from './Download';
 import Back from './Back';
 import { Storybook } from '../../utils/storybook';
 import Grid from '../Grid';
@@ -32,6 +33,9 @@ storiesOf('Components', module).add(
           <Button onClick={action('clicked')} fullWidth>
             Full Width
           </Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Download onDownload={action('clicked')}>Download</Download>
         </GridItem>
       </Grid>
     </Storybook>
