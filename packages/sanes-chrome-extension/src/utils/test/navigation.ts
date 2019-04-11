@@ -13,7 +13,7 @@ export const whenOnNavigatedToRoute = (
       const interval = setInterval((): void => {
         if (times >= MAX_TIMES_EXECUTED) {
           clearInterval(interval);
-          reject();
+          reject(`Unable to navigate to ${desiredRoute}`);
         }
         const actualRoute = refreshStore.getState().router.location.pathname;
         if (actualRoute === desiredRoute) {
