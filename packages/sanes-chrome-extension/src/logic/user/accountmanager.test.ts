@@ -1,17 +1,17 @@
 import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
 
-import { AccountsManager, AccountsManagerChainConfig } from './accountsmanager';
-import { createUserProfile } from '.';
+import { AccountManager, AccountManagerChainConfig } from './accountmanager';
+import { createUserProfile } from './profile';
 
-describe('AccountsManager', () => {
-  const chain1: AccountsManagerChainConfig = {
+describe('AccountManager', () => {
+  const chain1: AccountManagerChainConfig = {
     algorithm: Algorithm.Ed25519,
     chainId: 'test-chain-1' as ChainId,
     derivePath: x => HdPaths.iov(x),
   };
 
-  const chain2: AccountsManagerChainConfig = {
+  const chain2: AccountManagerChainConfig = {
     algorithm: Algorithm.Secp256k1,
     chainId: 'test-chain-2' as ChainId,
     derivePath: x => HdPaths.ethereum(x),
@@ -19,7 +19,7 @@ describe('AccountsManager', () => {
 
   it('can be created', async () => {
     const userProfile = await createUserProfile();
-    const persona = new AccountsManager(userProfile, []);
+    const persona = new AccountManager(userProfile, []);
     expect(persona).toBeTruthy();
   });
 
@@ -28,7 +28,7 @@ describe('AccountsManager', () => {
       const mnenomic =
         'pulse ankle attack minute install ceiling arena bargain primary degree system sense';
       const userProfile = await createUserProfile(mnenomic);
-      const persona = new AccountsManager(userProfile, []);
+      const persona = new AccountManager(userProfile, []);
       expect(persona.mnemonic()).toEqual(mnenomic);
     });
   });
@@ -36,7 +36,7 @@ describe('AccountsManager', () => {
   describe('accounts', () => {
     it('returns an empty list of accounts by default', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, []);
+      const persona = new AccountManager(userProfile, []);
       expect(await persona.accounts()).toEqual([]);
     });
   });
@@ -44,14 +44,14 @@ describe('AccountsManager', () => {
   describe('generateAccount', () => {
     it('does not change accounts for empty chains list', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, []);
+      const persona = new AccountManager(userProfile, []);
       await persona.generateAccount(0);
       expect(await persona.accounts()).toEqual([]);
     });
 
     it('generates one account with one identity when chains list has one element', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, [chain1]);
+      const persona = new AccountManager(userProfile, [chain1]);
       await persona.generateAccount(0);
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
@@ -63,7 +63,7 @@ describe('AccountsManager', () => {
 
     it('generates one account with two identities when chains list has two elements', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, [chain1, chain2]);
+      const persona = new AccountManager(userProfile, [chain1, chain2]);
       await persona.generateAccount(0);
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
@@ -77,14 +77,14 @@ describe('AccountsManager', () => {
   describe('generateNextAccount', () => {
     it('does not change accounts for empty chains list', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, []);
+      const persona = new AccountManager(userProfile, []);
       await persona.generateNextAccount();
       expect(await persona.accounts()).toEqual([]);
     });
 
     it('generates one account with one identity when chains list has one element', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, [chain1]);
+      const persona = new AccountManager(userProfile, [chain1]);
       await persona.generateNextAccount();
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
@@ -96,7 +96,7 @@ describe('AccountsManager', () => {
 
     it('generates one account with two identities when chains list has two elements', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, [chain1, chain2]);
+      const persona = new AccountManager(userProfile, [chain1, chain2]);
       await persona.generateNextAccount();
       const accounts = await persona.accounts();
       expect(accounts.length).toEqual(1);
@@ -108,7 +108,7 @@ describe('AccountsManager', () => {
 
     it('can be used multiple times', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, [chain1]);
+      const persona = new AccountManager(userProfile, [chain1]);
       await persona.generateNextAccount();
       await persona.generateNextAccount();
       await persona.generateNextAccount();
@@ -132,7 +132,7 @@ describe('AccountsManager', () => {
   describe('addChain', () => {
     it('generates missing identities for one account when adding a chain', async () => {
       const userProfile = await createUserProfile();
-      const persona = new AccountsManager(userProfile, [chain1]);
+      const persona = new AccountManager(userProfile, [chain1]);
       await persona.generateNextAccount();
 
       await persona.addChain(chain2);

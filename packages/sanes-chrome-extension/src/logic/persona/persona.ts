@@ -1,7 +1,7 @@
 import { Amount } from '@iov/bcp';
 import { MultiChainSigner } from '@iov/core';
 
-import { AccountsManager, AccountInfo, createUserProfile } from '../user';
+import { AccountManager, AccountInfo, createUserProfile } from '../user';
 import { chainConnector, getRuntimeConfiguration } from '../config';
 
 export class Persona {
@@ -24,7 +24,7 @@ export class Persona {
       signer.addChain(connector);
     }
 
-    const manager = new AccountsManager(profile, chains);
+    const manager = new AccountManager(profile, chains);
 
     // Setup accounts
     await manager.generateAccount(0);
@@ -33,29 +33,29 @@ export class Persona {
   }
 
   private readonly signer: MultiChainSigner;
-  private readonly accountsManager: AccountsManager;
+  private readonly accountManager: AccountManager;
 
   /** The given signer and accountsManager must share the same UserProfile */
   private constructor(
     signer: MultiChainSigner,
-    accountsManager: AccountsManager
+    accountManager: AccountManager
   ) {
     this.signer = signer;
-    this.accountsManager = accountsManager;
+    this.accountManager = accountManager;
   }
 
   public mnemonic(): string {
-    return this.accountsManager.mnemonic();
+    return this.accountManager.mnemonic();
   }
 
   public async getAccounts(): Promise<ReadonlyArray<AccountInfo>> {
-    return this.accountsManager.accounts();
+    return this.accountManager.accounts();
   }
 
   public async getBalances(
     accountIndex: number
   ): Promise<ReadonlyArray<Amount>> {
-    const account = (await this.accountsManager.accounts())[accountIndex];
+    const account = (await this.accountManager.accounts())[accountIndex];
     const identities = [...account.identities.values()];
     const pendingAccountResults = identities.map(identity => {
       const { chainId, pubkey } = identity;
