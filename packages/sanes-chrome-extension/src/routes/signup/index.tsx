@@ -7,7 +7,7 @@ import {
   ACCOUNT_NAME_FIELD,
   PASSWORD_FIELD,
 } from './components/NewAccountForm';
-import { getAccountsManagerFromConfig } from '../../logic/network';
+import { getGlobalPersona } from '../../logic/persona';
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
@@ -41,8 +41,8 @@ const Signup = (): JSX.Element => {
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const manager = await getAccountsManagerFromConfig();
-      const firstAccount = (await manager.accounts()).find(() => true);
+      const persona = await getGlobalPersona();
+      const firstAccount = (await persona.getAccounts()).find(() => true);
       if (!firstAccount) {
         throw new Error('Signup create persona failed');
       }

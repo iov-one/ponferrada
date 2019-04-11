@@ -12,7 +12,7 @@ import {
   FaucetSpec,
   getConfigurationFile,
   pathBuilderForCodec,
-} from '../config';
+} from '.';
 import { singleton } from '../../utils/singleton';
 
 export interface RuntimeChainSpec {

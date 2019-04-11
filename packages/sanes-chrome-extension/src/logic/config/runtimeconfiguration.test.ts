@@ -1,4 +1,4 @@
-import * as config from '../config/configurationfile';
+import * as config from './configurationfile';
 import { threeChainsConfig } from '../test/chainConfigBuilder';
 import { getRuntimeConfiguration } from './runtimeconfiguration';
 
