@@ -8,7 +8,7 @@ export interface Props {
   readonly onBack: () => void;
 }
 
-const ShowPhraseForm = ({ onBack, mnemonic }: Props): JSX.Element => {
+const ShowRecoveryPhrase = ({ onBack, mnemonic }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Block marginRight={1}>
@@ -50,4 +50,4 @@ const ShowPhraseForm = ({ onBack, mnemonic }: Props): JSX.Element => {
   );
 };
 
-export default ShowPhraseForm;
+export default ShowRecoveryPhrase;

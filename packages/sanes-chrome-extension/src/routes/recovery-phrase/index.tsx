@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import ShowPhraseForm from './components/ShowPhraseForm';
+import ShowRecoveryPhrase from './components/ShowRecoveryPhrase';
 import { RECOVERY_PHRASE_ROUTE } from '../paths';
 import { history } from '../../store/reducers';
 import { getMnemonic } from '../signup/components/ShowPhraseForm';
@@ -22,7 +22,7 @@ const RecoveryPhrase = (): JSX.Element => {
       primaryTitle="Recovery"
       title="phrase"
     >
-      <ShowPhraseForm onBack={onBack} mnemonic={mnemonic} />
+      <ShowRecoveryPhrase onBack={onBack} mnemonic={mnemonic} />
     </PageLayout>
   );
 };

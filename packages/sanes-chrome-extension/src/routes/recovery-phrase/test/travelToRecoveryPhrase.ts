@@ -18,6 +18,7 @@ export const travelToRecoveryPhrase = async (
   );
   await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
 
+  // TODO: Once the db and persona deletion is available, make this process deterministic, removing the sleep.
   //should wait until Profile will be created and mnemonic become available
   await sleep(1000);
 
