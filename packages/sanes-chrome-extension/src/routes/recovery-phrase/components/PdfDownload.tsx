@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Typography from 'medulas-react-components/lib/components/Typography';
+import DownloadButton from 'medulas-react-components/lib/components/Button/Download';
 import PDFGenerator from '../utils/pdfGenerator';
 
 export interface Props {
@@ -22,15 +22,7 @@ const PdfDownload = ({ mnemonic }: Props): JSX.Element => {
   };
 
   return (
-    <Typography
-      variant="subtitle2"
-      inline
-      link
-      color="primary"
-      onClick={generatePdf}
-    >
-      Get PDF
-    </Typography>
+    <DownloadButton onDownload={generatePdf}>Export as .PDF</DownloadButton>
   );
 };
 
