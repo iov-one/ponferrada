@@ -1,8 +1,8 @@
 import { Persona } from './persona';
-import { describeWithChains } from '../../utils/test/testExecutor';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { EnglishMnemonic } from '@iov/crypto';
 
-describeWithChains('Persona', () => {
+withChainsDescribe('Persona', () => {
   describe('create', () => {
     it('can be created', async () => {
       const persona = await Persona.create();
