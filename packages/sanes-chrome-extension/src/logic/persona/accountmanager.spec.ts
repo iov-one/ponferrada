@@ -121,21 +121,4 @@ describe('AccountManager', () => {
       );
     });
   });
-
-  describe('addChain', () => {
-    it('generates missing identities for one account when adding a chain', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, [chain1]);
-      await persona.generateNextAccount();
-
-      await persona.addChain(chain2);
-
-      const accounts = await persona.accounts();
-      expect(accounts.length).toEqual(1);
-      expect(accounts[0].identities.size).toEqual(2);
-      expect(Array.from(accounts[0].identities).map(ident => ident[0])).toEqual(
-        [chain1.chainId, chain2.chainId]
-      );
-    });
-  });
 });

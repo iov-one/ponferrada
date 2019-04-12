@@ -21,27 +21,14 @@ export interface AccountManagerChainConfig {
 
 export class AccountManager {
   private readonly _userProfile: UserProfile;
-  private readonly _chains: AccountManagerChainConfig[];
+  private readonly _chains: ReadonlyArray<AccountManagerChainConfig>;
 
   public constructor(
     userProfile: UserProfile,
     chains: ReadonlyArray<AccountManagerChainConfig>
   ) {
     this._userProfile = userProfile;
-    this._chains = [...chains];
-  }
-
-  public async addChain(newChain: AccountManagerChainConfig): Promise<void> {
-    if (this._chains.find(c => c.chainId === newChain.chainId)) {
-      throw new Error(`Chain with ID ${newChain.chainId} already exists`);
-    }
-
-    this._chains.push(newChain);
-
-    const accountIndices = await this.existingAccountIndices();
-    for (const index of accountIndices) {
-      await this.generateAccount(index);
-    }
+    this._chains = chains;
   }
 
   public async generateAccount(derivation: number): Promise<void> {
