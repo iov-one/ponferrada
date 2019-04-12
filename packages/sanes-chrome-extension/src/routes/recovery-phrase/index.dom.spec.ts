@@ -7,8 +7,9 @@ import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
 import { sleep } from '../../utils/timer';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 
-describe('DOM > Feature > Recovery Phrase', (): void => {
+withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   let store: Store<RootState>;
 
   beforeEach(
