@@ -1,12 +1,7 @@
 import { Amount } from '@iov/bcp';
 import { MultiChainSigner } from '@iov/core';
 
-import {
-  AccountManager,
-  AccountInfo,
-  createUserProfile,
-  AccountManagerChainConfig,
-} from '../user';
+import { createUserProfile } from '../user';
 import {
   chainConnector,
   getConfigurationFile,
@@ -14,6 +9,11 @@ import {
   algorithmForCodec,
   pathBuilderForCodec,
 } from '../config';
+import {
+  AccountManager,
+  AccountInfo,
+  AccountManagerChainConfig,
+} from './accountmanager';
 
 export class Persona {
   /**

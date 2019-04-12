@@ -2,7 +2,7 @@ import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
 
 import { AccountManager, AccountManagerChainConfig } from './accountmanager';
-import { createUserProfile } from './profile';
+import { createUserProfile } from '../user/profile';
 
 describe('AccountManager', () => {
   const chain1: AccountManagerChainConfig = {
