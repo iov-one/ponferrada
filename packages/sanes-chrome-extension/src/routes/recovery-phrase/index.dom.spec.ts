@@ -6,6 +6,7 @@ import TestUtils from 'react-dom/test-utils';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
+import { sleep } from '../../utils/timer';
 
 describe('DOM > Feature > Recovery Phrase', (): void => {
   let store: Store<RootState>;
@@ -26,6 +27,9 @@ describe('DOM > Feature > Recovery Phrase', (): void => {
       RecoveryPhraseDom,
       'p'
     );
+
+    // it takes some time until Persona is created and memonic inserted into the UI
+    await sleep(1000);
 
     const phraseParagraph = paragraph.innerHTML;
     expect(phraseParagraph).toBe(await getMnemonic());
