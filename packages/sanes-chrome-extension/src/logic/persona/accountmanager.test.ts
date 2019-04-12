@@ -23,16 +23,6 @@ describe('AccountManager', () => {
     expect(persona).toBeTruthy();
   });
 
-  describe('mnemonic', () => {
-    it('returns a given mnemonic', async () => {
-      const mnenomic =
-        'pulse ankle attack minute install ceiling arena bargain primary degree system sense';
-      const userProfile = await createUserProfile(mnenomic);
-      const persona = new AccountManager(userProfile, []);
-      expect(persona.mnemonic()).toEqual(mnenomic);
-    });
-  });
-
   describe('accounts', () => {
     it('returns an empty list of accounts by default', async () => {
       const userProfile = await createUserProfile();

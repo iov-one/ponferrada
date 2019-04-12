@@ -1,5 +1,5 @@
 import { Amount } from '@iov/bcp';
-import { MultiChainSigner } from '@iov/core';
+import { MultiChainSigner, UserProfile } from '@iov/core';
 
 import { createUserProfile } from '../user';
 import {
@@ -47,23 +47,39 @@ export class Persona {
     // Setup accounts
     await manager.generateAccount(0);
 
-    return new Persona(signer, manager);
+    return new Persona(profile, signer, manager);
   }
 
+  private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
 
   /** The given signer and accountsManager must share the same UserProfile */
   private constructor(
+    profile: UserProfile,
     signer: MultiChainSigner,
     accountManager: AccountManager
   ) {
+    this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
   }
 
+  // TODO: consistency: should all methods start with a verb (.getMenomic(), .getAccounts())
+  // or should we drop the "get" for getters (.mnemonic(), .accounts())?
   public mnemonic(): string {
-    return this.accountManager.mnemonic();
+    const wallets = this.profile.wallets.value;
+    const mnemonics = new Set(
+      wallets.map(info => this.profile.printableSecret(info.id))
+    );
+
+    if (mnemonics.size !== 1) {
+      throw new Error(
+        'Found multiple different mnemoics in different wallets. This is not supported.'
+      );
+    }
+
+    return mnemonics.values().next().value;
   }
 
   public async getAccounts(): Promise<ReadonlyArray<AccountInfo>> {

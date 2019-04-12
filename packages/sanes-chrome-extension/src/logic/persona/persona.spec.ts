@@ -1,11 +1,26 @@
 import { Persona } from './persona';
 import { describeWithChains } from '../../utils/test/testExecutor';
+import { EnglishMnemonic } from '@iov/crypto';
 
 describeWithChains('Persona', () => {
   describe('create', () => {
     it('can be created', async () => {
       const persona = await Persona.create();
       expect(persona).toBeTruthy();
+      persona.destroy();
+    });
+  });
+
+  describe('mnemonic', () => {
+    it('returns a mnemonic', async () => {
+      const persona = await Persona.create();
+
+      const mnemonic = persona.mnemonic();
+      expect(() => {
+        // this constructor throws when the mnemonic string is not valid
+        new EnglishMnemonic(mnemonic);
+      }).not.toThrow();
+
       persona.destroy();
     });
   });
