@@ -1,5 +1,6 @@
 import { Amount } from '@iov/bcp';
 import { MultiChainSigner, UserProfile } from '@iov/core';
+import { Bip39, Random } from '@iov/crypto';
 
 import { createUserProfile } from '../user';
 import {
@@ -23,10 +24,14 @@ export class Persona {
    * (because a constructor is synchonous): reading configs, connecting to the network,
    * creating accounts.
    */
-  public static async create(): Promise<Persona> {
+  public static async create(fixedMnemonic?: string): Promise<Persona> {
     const config = await getConfigurationFile();
 
-    const profile = await createUserProfile();
+    const entropyBytes = 16;
+    const mnemonic =
+      fixedMnemonic ||
+      Bip39.encode(await Random.getBytes(entropyBytes)).asString();
+    const profile = await createUserProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
 
     // connect chains

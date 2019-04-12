@@ -23,6 +23,17 @@ withChainsDescribe('Persona', () => {
 
       persona.destroy();
     });
+
+    it('returns the right mnemonic', async () => {
+      const presetMnemonic =
+        'until apple post diamond casual bridge bird solid inform size prize debris';
+      const persona = await Persona.create(presetMnemonic);
+
+      const mnemonic = persona.mnemonic();
+      expect(mnemonic).toEqual(presetMnemonic);
+
+      persona.destroy();
+    });
   });
 
   describe('getAccounts', () => {
