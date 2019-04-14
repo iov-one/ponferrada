@@ -11,57 +11,60 @@ interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   paperRoot: {
-    outline: '1px solid red',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    padding: '40px',
+    padding: '4rem',
   },
 
   avatarRoot: {
-    outline: '1px solid red',
     backgroundColor: '#ffe152',
-    fontSize: '27.5px',
-    width: '72px',
-    height: '72px',
-    margin: '-76px 0 40px 0',
+    fontSize: '2.75rem',
+    width: '7.2rem',
+    height: '7.2rem',
+    margin: '-7.6rem 0 4rem 0',
   },
 
   avatarIcon: {
-    outline: '1px solid red',
     color: '#ffffff',
   },
 
   sendLabel: {
-    outline: '1px solid red',
-    color: '#1c1c1c',
+    color: theme.palette.text.primary,
+    fontFamily: '"Muli SemiBold", sans-serif',
+    fontSize: '1.4rem',
   },
 
   currencyContainer: {
-    outline: '1px solid red',
     display: 'flex',
-    margin: '40px 0 40px 0',
+    margin: '4rem 0 .8rem 0',
   },
 
   textFieldRoot: {
-    outline: '1px solid red',
-    height: '50px',
-    marginRight: '10px',
+    height: '5rem',
+    marginRight: '1rem',
   },
 
   selectRoot: {
-    outline: '1px solid red',
-    height: '30px',
+    height: '3rem',
+  },
+
+  validityLabel: {
+    color: theme.palette.error.main,
+    fontFamily: '"Muli SemiBold", sans-serif',
+    fontSize: '1.4rem',
   },
 
   balanceLabel: {
-    outline: '1px solid red',
     color: '#a2a6a8',
+    fontFamily: '"Muli SemiBold", sans-serif',
+    fontSize: '1.4rem',
+    marginTop: '.8rem',
   },
-});
+}));
 
 const CurrencyToSend = ({ positionedClass }: Props) => {
   const classes = useStyles();
@@ -96,6 +99,7 @@ const CurrencyToSend = ({ positionedClass }: Props) => {
         />
         <Select classes={selectClasses} />
       </div>
+      <label className={classes.validityLabel}>Validity label</label>
       <label className={classes.balanceLabel}>balance:</label>
     </Paper>
   );

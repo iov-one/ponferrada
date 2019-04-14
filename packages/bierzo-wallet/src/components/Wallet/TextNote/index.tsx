@@ -9,28 +9,25 @@ interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   paperRoot: {
-    outline: '1px solid red',
     display: 'flex',
     alignItems: 'baseline',
     width: '100%',
-    padding: '40px',
-    fontSize: '16px',
+    padding: '4rem',
+    fontSize: '1.6rem',
   },
 
   noteIcon: {
-    outline: '1px solid red',
     color: '#a2a6a8',
   },
 
   textFieldRoot: {
-    outline: '1px solid red',
     width: '100%',
-    height: '50px',
-    marginLeft: '15px',
+    height: '5rem',
+    marginLeft: '1.5rem',
   },
-});
+}));
 
 const TextNote = ({ positionedClass }: Props) => {
   const classes = useStyles();

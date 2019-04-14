@@ -5,20 +5,21 @@ interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   buttonRoot: {
-    outline: '1px solid red',
     width: '75%',
-    height: '42px',
-    borderRadius: '4px',
-    backgroundColor: '#31e6c9',
+    height: '4.2rem',
+    borderRadius: '.4rem',
+    backgroundColor: theme.palette.primary.main,
     color: '#ffffff',
+    fontFamily: '"Muli SemiBold", sans-serif',
+    fontSize: '1.6rem',
   },
 
   buttonLabel: {
     textTransform: 'capitalize',
   },
-});
+}));
 
 const ContinueButton = ({ positionedClass }: Props) => {
   const classes = useStyles();

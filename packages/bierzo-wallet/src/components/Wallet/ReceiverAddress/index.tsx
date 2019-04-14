@@ -9,52 +9,53 @@ interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   paperRoot: {
-    outline: '1px solid red',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    padding: '40px',
+    padding: '4rem',
   },
 
   toLabel: {
-    outline: '1px solid red',
     alignSelf: 'flex-start',
+    color: theme.palette.text.primary,
+    fontFamily: '"Muli SemiBold", sans-serif',
+    fontSize: '1.4rem',
   },
 
   textFieldRoot: {
-    outline: '1px solid red',
     width: '100%',
-    height: '50px',
-    margin: '16px 0 8px 0',
+    height: '5rem',
+    margin: '1.6rem 0 .8rem 0',
   },
 
   validityLabel: {
-    outline: '1px solid red',
     alignSelf: 'flex-start',
+    color: theme.palette.error.main,
+    fontFamily: '"Muli SemiBold", sans-serif',
+    fontSize: '1.4rem',
   },
 
   tooltipContainer: {
-    outline: '1px solid red',
     display: 'flex',
     alignSelf: 'flex-end',
-    fontSize: '16px',
-    marginTop: '24px',
+    fontFamily: '"Muli Light", sans-serif',
+    fontSize: '1.4rem',
+    marginTop: '2.4rem',
   },
 
   tooltipLabel: {
-    outline: '1px solid red',
+    color: theme.palette.text.primary,
   },
 
   tooltipIcon: {
-    outline: '1px solid red',
     alignSelf: 'center',
-    marginLeft: '10px',
-    color: '#31e6c9',
+    marginLeft: '1rem',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 const ReceiverAddress = ({ positionedClass }: Props) => {
   const classes = useStyles();
@@ -75,7 +76,7 @@ const ReceiverAddress = ({ positionedClass }: Props) => {
         variant="outlined"
         classes={textFieldClasses}
       />
-      <label className={classes.validityLabel}>RequiredText</label>
+      <label className={classes.validityLabel}>Validity label</label>
       <div className={classes.tooltipContainer}>
         <label className={classes.tooltipLabel}>How it works</label>
         <FontAwesomeIcon

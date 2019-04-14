@@ -5,9 +5,9 @@ import CurrencyToSend from './CurrencyToSend';
 import ReceiverAddress from './ReceiverAddress';
 import TextNote from './TextNote';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   wallet: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: theme.palette.background.default,
     height: 'auto',
     minHeight: '100vh',
     display: 'grid',
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   continue: {
     gridArea: 'continue-button',
   },
-});
+}));
 
 const Wallet = () => {
   const classes = useStyles();
