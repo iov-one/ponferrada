@@ -16,7 +16,7 @@
     "start:firefox:production": "yarn use-config-production && yarn build && web-ext run --source-dir ./build/",
     "test-dom": "yarn use-config-test && CI=true react-scripts test '(index|dom).(spec|test).[jt]s[x]?' -i --detectOpenHandles --env=jsdom",
     "test-e2e": "yarn use-config-test && CI=true react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
-    "test": "yarn test-dom && yarn test-e2e"
+    "test": "yarn test-dom"
   },
   "browserslist": [
     ">0.2%",
