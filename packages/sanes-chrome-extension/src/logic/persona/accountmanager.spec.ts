@@ -22,31 +22,31 @@ describe('AccountManager', () => {
 
   it('can be created', async () => {
     const userProfile = await createUserProfile(defaultMnemonic);
-    const persona = new AccountManager(userProfile, []);
-    expect(persona).toBeTruthy();
+    const manager = new AccountManager(userProfile, []);
+    expect(manager).toBeTruthy();
   });
 
   describe('accounts', () => {
     it('returns an empty list of accounts by default', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, []);
-      expect(await persona.accounts()).toEqual([]);
+      const manager = new AccountManager(userProfile, []);
+      expect(await manager.accounts()).toEqual([]);
     });
   });
 
   describe('generateAccount', () => {
     it('does not change accounts for empty chains list', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, []);
-      await persona.generateAccount(0);
-      expect(await persona.accounts()).toEqual([]);
+      const manager = new AccountManager(userProfile, []);
+      await manager.generateAccount(0);
+      expect(await manager.accounts()).toEqual([]);
     });
 
     it('generates one account with one identity when chains list has one element', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, [chain1]);
-      await persona.generateAccount(0);
-      const accounts = await persona.accounts();
+      const manager = new AccountManager(userProfile, [chain1]);
+      await manager.generateAccount(0);
+      const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
       expect(accounts[0].identities.length).toEqual(1);
       expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([
@@ -56,9 +56,9 @@ describe('AccountManager', () => {
 
     it('generates one account with two identities when chains list has two elements', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, [chain1, chain2]);
-      await persona.generateAccount(0);
-      const accounts = await persona.accounts();
+      const manager = new AccountManager(userProfile, [chain1, chain2]);
+      await manager.generateAccount(0);
+      const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
       expect(accounts[0].identities.length).toEqual(2);
       expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([
@@ -71,16 +71,16 @@ describe('AccountManager', () => {
   describe('generateNextAccount', () => {
     it('does not change accounts for empty chains list', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, []);
-      await persona.generateNextAccount();
-      expect(await persona.accounts()).toEqual([]);
+      const manager = new AccountManager(userProfile, []);
+      await manager.generateNextAccount();
+      expect(await manager.accounts()).toEqual([]);
     });
 
     it('generates one account with one identity when chains list has one element', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, [chain1]);
-      await persona.generateNextAccount();
-      const accounts = await persona.accounts();
+      const manager = new AccountManager(userProfile, [chain1]);
+      await manager.generateNextAccount();
+      const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
       expect(accounts[0].identities.length).toEqual(1);
       expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([
@@ -90,9 +90,9 @@ describe('AccountManager', () => {
 
     it('generates one account with two identities when chains list has two elements', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, [chain1, chain2]);
-      await persona.generateNextAccount();
-      const accounts = await persona.accounts();
+      const manager = new AccountManager(userProfile, [chain1, chain2]);
+      await manager.generateNextAccount();
+      const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
       expect(accounts[0].identities.length).toEqual(2);
       expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([
@@ -103,11 +103,11 @@ describe('AccountManager', () => {
 
     it('can be used multiple times', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);
-      const persona = new AccountManager(userProfile, [chain1]);
-      await persona.generateNextAccount();
-      await persona.generateNextAccount();
-      await persona.generateNextAccount();
-      const accounts = await persona.accounts();
+      const manager = new AccountManager(userProfile, [chain1]);
+      await manager.generateNextAccount();
+      await manager.generateNextAccount();
+      await manager.generateNextAccount();
+      const accounts = await manager.accounts();
       expect(accounts.length).toEqual(3);
       expect(accounts[0].identities.length).toEqual(1);
       expect(accounts[1].identities.length).toEqual(1);
