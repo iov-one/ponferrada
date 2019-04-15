@@ -36,5 +36,9 @@
       "name": "Quick trading token",
       "sig_figs": 9
     }
-  ]
+  ],
+  "gconf": {
+    "cash:minimal_fee": {},
+    "cash:collector_address": "0000000000000000000000000000000000000000"
+  }
 }
