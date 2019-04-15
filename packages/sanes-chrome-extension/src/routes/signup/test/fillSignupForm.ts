@@ -133,14 +133,13 @@ export const handleSecurityHint = async (
     'form'
   );
 
-  TestUtils.act(
-    (): void => {
-      TestUtils.Simulate.submit(form);
-    }
-  );
-
-  await sleep(400);
-  const hint = getHintPhrase(accountName);
-  expect(hint).not.toBe(null);
-  expect(hint).toBe('Dummy Hint');
+  const submitForm = async (): Promise<void> => {
+    TestUtils.Simulate.submit(form);
+    await sleep(400);
+    const hint = getHintPhrase(accountName);
+    expect(hint).not.toBe(null);
+    expect(hint).toBe('Dummy Hint');
+  };
+  // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+  await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 };
