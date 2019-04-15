@@ -1,4 +1,5 @@
-import { Fab, makeStyles, Theme } from '@material-ui/core';
+import { Fab, makeStyles } from '@material-ui/core';
+import { Theme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/styles';
 import * as React from 'react';
 import Block from '../Block';
