@@ -50,7 +50,6 @@
     "@storybook/addon-viewport": "^5.0.6",
     "@storybook/addons": "^5.0.6",
     "@storybook/react": "^5.0.6",
-    "@types/react-test-renderer": "^16.8.1",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__addon-storyshots": "^3.4.8",
     "@types/storybook__addon-viewport": "^4.1.0",
