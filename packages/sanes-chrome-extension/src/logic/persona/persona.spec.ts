@@ -46,7 +46,7 @@ withChainsDescribe('Persona', () => {
       expect(accounts.length).toEqual(1);
 
       expect(accounts[0].name).toEqual('Account 0');
-      expect(new Set(accounts[0].identities).size).toEqual(4);
+      expect(accounts[0].identities.length).toEqual(4);
 
       persona.destroy();
     });

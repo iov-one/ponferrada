@@ -99,8 +99,7 @@ export class Persona {
       throw new Error('Account does not exist');
     }
     const account = accounts[accountIndex];
-    const identities = [...account.identities.values()];
-    const pendingAccountResults = identities.map(identity => {
+    const pendingAccountResults = account.identities.map(identity => {
       const { chainId, pubkey } = identity;
       return this.signer.connection(chainId).getAccount({ pubkey });
     });

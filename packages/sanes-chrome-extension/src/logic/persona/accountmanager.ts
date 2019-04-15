@@ -10,7 +10,7 @@ import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
 export interface AccountInfo {
   readonly name: string;
-  readonly identities: ReadonlyMap<ChainId, PublicIdentity>;
+  readonly identities: ReadonlyArray<PublicIdentity>;
 }
 
 export interface AccountManagerChainConfig {
@@ -64,30 +64,26 @@ export class AccountManager {
   public async accounts(): Promise<ReadonlyArray<AccountInfo>> {
     const accountIndices = await this.existingAccountIndices();
 
-    return accountIndices.map(index => {
-      const publicIdentities = new Map(
-        this.chains.map(chain => {
-          const identitiesByChain = this.userProfile
-            .getAllIdentities()
-            .filter(ident => ident.chainId === chain.chainId);
+    return accountIndices.map(accountIndex => {
+      const identities = this.chains.map(chain => {
+        const identitiesByChain = this.userProfile
+          .getAllIdentities()
+          .filter(ident => ident.chainId === chain.chainId);
 
-          const identityByLabel = identitiesByChain.filter(
-            ident => this.userProfile.getIdentityLabel(ident) === `${index}`
-          );
+        const identityByChainAndAccount = identitiesByChain.filter(
+          ident =>
+            this.userProfile.getIdentityLabel(ident) === `${accountIndex}`
+        );
 
-          if (identityByLabel.length !== 1) {
-            throw new Error(
-              'Unexpected number of identities by chain and label'
-            );
-          }
-
-          return [chain.chainId, identityByLabel[0]];
-        })
-      );
+        if (identityByChainAndAccount.length !== 1) {
+          throw new Error('Unexpected number of identities by chain and label');
+        }
+        return identityByChainAndAccount[0];
+      });
 
       return {
-        name: `Account ${index}`,
-        identities: publicIdentities,
+        name: `Account ${accountIndex}`,
+        identities: identities,
       };
     });
   }
