@@ -1,7 +1,7 @@
-import { Config } from '../../utils/config';
+import { ConfigurationFile } from '../config/configurationfile';
 
-export const threeChainsConfig = (): Promise<Config> => {
-  const config = ({
+export const threeChainsConfig = (): Promise<ConfigurationFile> => {
+  const config: ConfigurationFile = {
     chains: [
       {
         chainSpec: {
@@ -34,7 +34,7 @@ export const threeChainsConfig = (): Promise<Config> => {
         },
       },
     ],
-  } as any) as Config; // eslint-disable-line
+  };
 
   return Promise.resolve(config);
 };

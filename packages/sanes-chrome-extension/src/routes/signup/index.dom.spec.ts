@@ -9,6 +9,7 @@ import {
 } from './test/fillSignupForm';
 import { travelToSignup } from './test/travelToSignup';
 import { randomString } from '../../utils/test/random';
+import { getGlobalPersona } from '../../logic/persona';
 
 describe('DOM > Feature > Signup', (): void => {
   let store: Store<RootState>;
@@ -18,6 +19,11 @@ describe('DOM > Feature > Signup', (): void => {
       store = aNewStore();
     }
   );
+
+  afterEach(async () => {
+    const persona = await getGlobalPersona();
+    persona.destroy();
+  });
 
   mayTestChains(
     `should finish the signup three steps process`,

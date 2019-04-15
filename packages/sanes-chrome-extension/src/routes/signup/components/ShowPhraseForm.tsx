@@ -7,18 +7,17 @@ import Switch from 'medulas-react-components/lib/components/Switch';
 import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
-import { getUserProfile } from '../../../logic/user';
+import { getGlobalPersona } from '../../../logic/persona';
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
 // Exported only for being used in test environments
 export const getMnemonic = async (): Promise<string> => {
   try {
-    const profile = await getUserProfile();
-    return profile.printableSecret(profile.wallets.value[0].id);
+    const persona = await getGlobalPersona();
+    return persona.mnemonic();
   } catch (err) {
-    console.log('Error getting user profile');
-    console.log(err);
+    console.log('Error getting persona or mnemonic', err);
     return 'No mnemonic available';
   }
 };

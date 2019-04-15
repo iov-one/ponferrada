@@ -2,8 +2,5 @@
 set -o errexit -o nounset -o pipefail
 command -v shellcheck > /dev/null && shellcheck "$0"
 
-for LABEL_PART in "bnsd_tm" "bnsd_app"; do
-  CONTAINER_ID=$(docker container ls | grep -F "$LABEL_PART" | awk '{print $1}')
-  echo "Killing $LABEL_PART container '$CONTAINER_ID' ..."
-  docker container kill "$CONTAINER_ID"
-done
+echo "Killing BNSd containers ..."
+docker container kill "bnsd-app" "bnsd-tendermint"

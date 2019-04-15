@@ -7,8 +7,7 @@ import {
   ACCOUNT_NAME_FIELD,
   PASSWORD_FIELD,
 } from './components/NewAccountForm';
-import Persona from '../../logic/persona';
-import { createPersona } from '../../logic';
+import { getGlobalPersona } from '../../logic/persona';
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
@@ -37,22 +36,20 @@ const Signup = (): JSX.Element => {
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
-      const persona: Persona = await createPersona(
-        password,
-        accountName.current
-      );
-      const account = (await persona.accounts())[0];
-      if (!account) {
+      const persona = await getGlobalPersona();
+      const firstAccount = (await persona.getAccounts()).find(() => true);
+      if (!firstAccount) {
         throw new Error('Signup create persona failed');
       }
 
       console.log(
         `We successfuly have created a persona registered in ${
-          account.publicIdentities.size
+          firstAccount.identities.length
         } chains`
       );
 

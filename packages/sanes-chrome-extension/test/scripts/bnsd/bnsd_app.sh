@@ -15,9 +15,10 @@ if [ ! -d "${BNSD_DIR}" ]; then
   echo "Error: directory not created for bnsd"; exit 1;
 fi
 
-exec docker run --user="$UID" \
+exec docker run --rm \
+  --user="$UID" \
+  --name "bnsd-app" \
   -v "${BNSD_DIR}:/data" \
-  --name "bnsd_app" \
-  --rm "iov1/bnsd:${BNSD_VERSION}" \
+  "iov1/bnsd:${BNSD_VERSION}" \
   -home "/data" \
   start -bind="unix:///data/app.sock"

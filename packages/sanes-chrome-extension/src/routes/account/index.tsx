@@ -11,8 +11,7 @@ import SelectField, {
 } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
-import { getPersona } from '../../logic';
-import Persona from '../../logic/persona';
+import { getGlobalPersona, Persona } from '../../logic/persona';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
@@ -25,10 +24,10 @@ const AccountView = (): JSX.Element => {
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const storedPersona = await getPersona();
+      const storedPersona = await getGlobalPersona();
       persona.current = storedPersona;
       let actualItems: Item[] = [];
-      Object.keys(persona.current.accounts).forEach((acc: string) =>
+      Object.keys(persona.current.getAccounts()).forEach((acc: string) =>
         actualItems.push({ name: acc })
       );
       actualItems.push({ name: CREATE_NEW_ONE });

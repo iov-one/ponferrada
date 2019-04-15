@@ -1,17 +1,12 @@
-import { Bip39, Random } from '@iov/crypto';
 import {
   Ed25519HdWallet,
   Secp256k1HdWallet,
   UserProfile,
 } from '@iov/keycontrol';
-import { createDb } from './db';
-import { singleton } from '../../utils/singleton';
 
-async function createUserProfile(fixedMnemonic?: string): Promise<UserProfile> {
-  const EntropyBytes = 16;
-  const mnemonic =
-    fixedMnemonic ||
-    Bip39.encode(await Random.getBytes(EntropyBytes)).asString();
+export async function createUserProfile(
+  mnemonic: string
+): Promise<UserProfile> {
   const edKeyring = Ed25519HdWallet.fromMnemonic(mnemonic);
   const secKeyring = Secp256k1HdWallet.fromMnemonic(mnemonic);
   const profile = new UserProfile();
@@ -19,33 +14,4 @@ async function createUserProfile(fixedMnemonic?: string): Promise<UserProfile> {
   profile.addWallet(secKeyring);
 
   return profile;
-}
-
-const generateDb = singleton<typeof createDb>(createDb);
-export const getDb = (): ReturnType<typeof createDb> => generateDb('');
-
-const PROFILE_NAME_DB = 'profile';
-
-/**
- * This function returns a UserProfile instance. Remember UserProfile and Persona are
- * the same concept. The difference UserProfile is closer to low-level blockchain capabilities.
- * UserProfile among others, stores wallets (private keys), identities (public keys) and mnemonic exposition.
- *
- * @param password Password introduced by user to hash the user profile
- * @returns UserProfile
- * @throws Custom exception if something has failed.
- */
-export async function createProfile(password: string): Promise<UserProfile> {
-  let profile = undefined;
-  try {
-    const db = createDb(PROFILE_NAME_DB);
-    profile = await createUserProfile();
-    await profile.storeIn(db, password);
-
-    return profile;
-  } catch (err) {
-    console.log(err);
-
-    throw new Error('Error creating a user profile');
-  }
 }
