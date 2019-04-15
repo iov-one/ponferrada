@@ -42,16 +42,16 @@ describe('DOM > Feature > Login', (): void => {
       (): void => {
         TestUtils.Simulate.change(passwordInput, {
           target: { value: randomString(10) },
-        } as any);
+        } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
       }
     );
 
     const form = TestUtils.findRenderedDOMComponentWithTag(LoginDom, 'form');
-    TestUtils.act(
-      (): void => {
-        TestUtils.Simulate.submit(form);
-      }
-    );
+    const submitForm = async (): Promise<void> => {
+      TestUtils.Simulate.submit(form);
+    };
+    // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+    await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 
     //Will throw an exception if toast component will not be found
     await findRenderedDOMComponentWithId(LoginDom, 'toast-provider');
