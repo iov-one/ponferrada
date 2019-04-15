@@ -10,17 +10,15 @@ export const travelToRecoveryPhrase = async (
   store: Store
 ): Promise<React.Component> => {
   const dom = createDom(store);
-  TestUtils.act(
-    (): void => {
-      history.push(WELCOME_ROUTE); //I need this to test "Back" button behaviour
-      history.push(RECOVERY_PHRASE_ROUTE);
-    }
-  );
-  await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
 
-  // TODO: Once the db and persona deletion is available, make this process deterministic, removing the sleep.
-  //should wait until Profile will be created and mnemonic become available
-  await sleep(1000);
+  const navigate = async (): Promise<void> => {
+    history.push(WELCOME_ROUTE); //I need this to test "Back" button behaviour
+    history.push(RECOVERY_PHRASE_ROUTE);
+    await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
+    await sleep(1000);
+  };
+  // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+  await TestUtils.act(navigate as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 
   return dom;
 };

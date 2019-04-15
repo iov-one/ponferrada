@@ -1,5 +1,5 @@
 import { Store } from 'redux';
-import { RootState, history } from '../../store/reducers';
+import { RootState } from '../../store/reducers';
 import { getMnemonic } from '../signup/components/ShowPhraseForm';
 import { aNewStore } from '../../store';
 import TestUtils from 'react-dom/test-utils';

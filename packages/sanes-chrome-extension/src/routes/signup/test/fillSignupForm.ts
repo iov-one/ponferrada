@@ -56,16 +56,15 @@ export const submitAccountForm = async (
     'form'
   );
 
-  TestUtils.act(
-    (): void => {
-      TestUtils.Simulate.submit(form);
-    }
-  );
-
-  await findRenderedDOMComponentWithId(
-    AccountSubmitDom,
-    SECOND_STEP_SIGNUP_ROUTE
-  );
+  const submitForm = async (): Promise<void> => {
+    TestUtils.Simulate.submit(form);
+    await findRenderedDOMComponentWithId(
+      AccountSubmitDom,
+      SECOND_STEP_SIGNUP_ROUTE
+    );
+  };
+  // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+  await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 export const handlePassPhrase = async (
@@ -76,23 +75,22 @@ export const handlePassPhrase = async (
     'input'
   );
   expect(inputs.length).toBe(1);
-  TestUtils.act(
-    (): void => {
-      TestUtils.Simulate.change(inputs[0], {
-        target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
-      });
-    }
-  );
+  const showMnemonic = async (): Promise<void> => {
+    TestUtils.Simulate.change(inputs[0], {
+      target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
+    });
+    await sleep(600);
 
-  await sleep(600);
-
-  const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(
-    RecoveryPhraseDom,
-    'p'
-  );
-  expect(paragraphs.length).toBe(1);
-  const phraseParagraph = paragraphs[0].innerHTML;
-  expect(phraseParagraph).toBe(await getMnemonic());
+    const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(
+      RecoveryPhraseDom,
+      'p'
+    );
+    expect(paragraphs.length).toBe(1);
+    const phraseParagraph = paragraphs[0].innerHTML;
+    expect(phraseParagraph).toBe(await getMnemonic());
+  };
+  // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+  await TestUtils.act(showMnemonic as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 
   const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
     RecoveryPhraseDom,
@@ -135,14 +133,13 @@ export const handleSecurityHint = async (
     'form'
   );
 
-  TestUtils.act(
-    (): void => {
-      TestUtils.Simulate.submit(form);
-    }
-  );
-
-  await sleep(400);
-  const hint = getHintPhrase(accountName);
-  expect(hint).not.toBe(null);
-  expect(hint).toBe('Dummy Hint');
+  const submitForm = async (): Promise<void> => {
+    TestUtils.Simulate.submit(form);
+    await sleep(400);
+    const hint = getHintPhrase(accountName);
+    expect(hint).not.toBe(null);
+    expect(hint).toBe('Dummy Hint');
+  };
+  // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+  await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 };

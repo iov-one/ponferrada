@@ -8,10 +8,7 @@ import Persona from './persona';
 import { getDb } from './user/profile';
 
 // This method should be called by the "Create New Persona onSubmit fn"
-const buildPersona = async (
-  password: string,
-  accountName: string
-): Promise<Persona> => {
+const buildPersona = async (password: string): Promise<Persona> => {
   // TODO once we support login modify this for loading from db
   const baseProfile: UserProfile = await createUserProfile(password);
 
@@ -34,4 +31,4 @@ const buildPersona = async (
 export const createPersona = singleton<typeof buildPersona>(buildPersona);
 
 export const getPersona = (): ReturnType<typeof buildPersona> =>
-  createPersona('', '');
+  createPersona('');
