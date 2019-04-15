@@ -56,16 +56,15 @@ export const submitAccountForm = async (
     'form'
   );
 
-  TestUtils.act(
-    (): void => {
-      TestUtils.Simulate.submit(form);
-    }
-  );
-
-  await findRenderedDOMComponentWithId(
-    AccountSubmitDom,
-    SECOND_STEP_SIGNUP_ROUTE
-  );
+  const submitForm = async (): Promise<void> => {
+    TestUtils.Simulate.submit(form);
+    await findRenderedDOMComponentWithId(
+      AccountSubmitDom,
+      SECOND_STEP_SIGNUP_ROUTE
+    );
+  };
+  // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
+  await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 export const handlePassPhrase = async (
