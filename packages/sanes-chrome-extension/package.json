@@ -14,7 +14,7 @@
     "start:firefox:test": "yarn use-config-test && yarn build && web-ext run --source-dir ./build/",
     "start:firefox:development": "yarn use-config-development && yarn build && web-ext run --source-dir ./build/",
     "start:firefox:production": "yarn use-config-production && yarn build && web-ext run --source-dir ./build/",
-    "test-dom": "yarn use-config-test && CI=true react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --env=jsdom",
+    "test-dom": "yarn use-config-test && CI=true react-scripts test '(index|dom).(spec|test).[jt]s[x]?' --detectOpenHandles --env=jsdom",
     "test-e2e": "yarn use-config-test && CI=true react-scripts test '(e2e.spec|e2e.test).[jt]s[x]?' --env=jsdom ",
     "test": "yarn use-config-test && CI=true react-scripts test --env=jsdom"
   },
