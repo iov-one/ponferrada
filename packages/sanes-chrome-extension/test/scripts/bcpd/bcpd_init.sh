@@ -17,7 +17,8 @@ fi
 
 chmod 777 "${BCPD_DIR}"
 
-docker run --user="$UID" \
+docker run --rm \
+  --user="$UID" \
   -v "${BCPD_DIR}:/tendermint" \
   "iov1/tendermint:${BCPD_TM_VERSION}" \
   init
@@ -30,7 +31,8 @@ jq ". + {\"app_state\" : $APP_STATE}" \
   "${BCPD_DIR}/config/genesis.json.orig" \
   > "${BCPD_DIR}/config/genesis.json"
 
-docker run --user="$UID" \
+docker run --rm \
+  --user="$UID" \
   -v "${BCPD_DIR}:/data" \
   "iov1/bcpd:${BCPD_VERSION}" \
   -home "/data" \
