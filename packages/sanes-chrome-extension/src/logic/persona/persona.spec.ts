@@ -1,6 +1,8 @@
+import { TokenTicker } from '@iov/bcp';
+import { EnglishMnemonic } from '@iov/crypto';
+
 import { Persona } from './persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { EnglishMnemonic } from '@iov/crypto';
 
 withChainsDescribe('Persona', () => {
   describe('create', () => {
@@ -58,6 +60,33 @@ withChainsDescribe('Persona', () => {
       // no address exists on chain, so balance exists
       expect(balances.length).toEqual(0);
 
+      persona.destroy();
+    });
+
+    it('gets proper balance for Ethereum account', async () => {
+      const persona = await Persona.create(
+        'oxygen fall sure lava energy veteran enroll frown question detail include maximum'
+      );
+
+      const balances = await persona.getBalances(0);
+      const ethBalance = balances.find(
+        b => b.tokenTicker === ('ETH' as TokenTicker)
+      );
+      if (!ethBalance) {
+        throw new Error('Did not find an ETH balance');
+      }
+      const approxEther = Number.parseInt(ethBalance.quantity, 10) / 1e18;
+
+      expect(approxEther).toBeCloseTo(100, -1);
+
+      persona.destroy();
+    });
+
+    it('throws when calling for non-existing account', async () => {
+      const persona = await Persona.create();
+      await expect(persona.getBalances(42)).rejects.toThrowError(
+        /account does not exist/i
+      );
       persona.destroy();
     });
   });

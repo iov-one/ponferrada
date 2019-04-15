@@ -94,7 +94,11 @@ export class Persona {
   public async getBalances(
     accountIndex: number
   ): Promise<ReadonlyArray<Amount>> {
-    const account = (await this.accountManager.accounts())[accountIndex];
+    const accounts = await this.accountManager.accounts();
+    if (accounts.length <= accountIndex) {
+      throw new Error('Account does not exist');
+    }
+    const account = accounts[accountIndex];
     const identities = [...account.identities.values()];
     const pendingAccountResults = identities.map(identity => {
       const { chainId, pubkey } = identity;
