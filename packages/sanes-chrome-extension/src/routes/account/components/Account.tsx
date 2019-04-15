@@ -6,6 +6,7 @@ interface Props {
 }
 
 const Account = ({ blockchainAccounts }: Props): JSX.Element => {
+  console.log(blockchainAccounts);
   return (
     <React.Fragment>
       <Block>This is the block where we show accounts and bns name</Block>
