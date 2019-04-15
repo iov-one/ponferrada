@@ -25,7 +25,7 @@ const AccountView = (): JSX.Element => {
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const storedPersona = await getPersona();
+      const storedPersona = getPersona();
       persona.current = storedPersona;
       let actualItems: Item[] = [];
       Object.keys(persona.current.accounts).forEach((acc: string) =>

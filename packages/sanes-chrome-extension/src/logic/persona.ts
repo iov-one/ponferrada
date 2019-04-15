@@ -5,10 +5,10 @@ import {
   PublicIdentity,
 } from '@iov/bcp';
 import { UserProfile, WalletId, MultiChainSigner } from '@iov/core';
-import { EnhancedChainSpec } from '../blockchain/chainsConfig';
+import { EnhancedChainSpec } from './blockchain/chainsConfig';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
-import { chainConnector, codecFromString } from '../blockchain/connection';
+import { chainConnector, codecFromString } from './blockchain/connection';
 
 export interface AccountInfo {
   name: string;

@@ -6,6 +6,7 @@ import { createUserProfile } from './user';
 import { getConfig } from './blockchain/chainsConfig';
 import Persona from './persona';
 import { getDb } from './user/profile';
+import PersonaFactory from './personaFactory';
 
 // This method should be called by the "Create New Persona onSubmit fn"
 const buildPersona = async (password: string): Promise<Persona> => {
@@ -16,7 +17,7 @@ const buildPersona = async (password: string): Promise<Persona> => {
   // Remove the faucetSpect type because for creating a profile is not needed.
   const derivationInfo = config.chains.map(x => x.chainSpec);
 
-  const persona = new Persona(baseProfile, derivationInfo);
+  const persona = PersonaFactory.createPersona(baseProfile, derivationInfo);
   const derivation = 0;
   await persona.generateAccount(derivation);
   const db = await getDb();
@@ -27,5 +28,4 @@ const buildPersona = async (password: string): Promise<Persona> => {
 
 export const createPersona = singleton<typeof buildPersona>(buildPersona);
 
-export const getPersona = (): ReturnType<typeof buildPersona> =>
-  createPersona('');
+export const getPersona = (): Persona => PersonaFactory.getPersona();
