@@ -1,0 +1,1 @@
+This project implements a simple wallet that makes use of the chrome extension in order to sign its transactions. The goal of this project is to showcase the interaction between the wallet and the extension.
