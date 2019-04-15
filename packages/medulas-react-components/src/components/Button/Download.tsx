@@ -1,10 +1,10 @@
 import { Fab, makeStyles, Theme } from '@material-ui/core';
+import { useTheme } from '@material-ui/styles';
 import * as React from 'react';
 import Block from '../Block';
 import CircleImage from '../Image/CircleImage';
 import Typography from '../Typography';
 import download from '../../theme/assets/download.svg';
-import theme from '../../theme/utils/mui';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: 0,
     boxShadow: 'none',
-    border: `1px solid #f3f3f3`,
+    border: `1px solid ${theme.palette.grey[300]}`,
     '&:hover': {
       background: theme.palette.background.default,
     },
@@ -41,6 +41,7 @@ const DownloadCSV = ({
   children,
 }: DownloadButtonProps): JSX.Element => {
   const fabClasses = useStyles();
+  const theme = useTheme<Theme>();
 
   return (
     <Fab
