@@ -9,29 +9,29 @@ import Account from './components/Account';
 import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
-import { Persona, PersonaManager } from '../../logic/persona';
+import { PersonaContext } from '../../context/PersonaProvider';
+import { AccountInfo } from '../../logic/persona/accountManager';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
 const AccountView = (): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Item[]>([]);
-  const persona = React.useRef<Persona | null>(null);
+  const persona = React.useContext(PersonaContext);
   const { form, handleSubmit } = useForm({
     onSubmit: () => {},
   });
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const storedPersona = await PersonaManager.get();
-      persona.current = storedPersona;
+      const accounts = persona.accountNames;
       let actualItems: Item[] = [];
-      Object.keys(persona.current.getAccounts()).forEach((acc: string) => actualItems.push({ name: acc }));
+      accounts.forEach((acc: AccountInfo) => actualItems.push({ name: acc.name }));
       actualItems.push({ name: CREATE_NEW_ONE });
       setAccounts(actualItems);
     }
 
     fetchMyAccounts();
-  }, [persona]);
+  }, [persona.accountNames]);
 
   const onChange = (item: Item): void => {
     if (item.name === CREATE_NEW_ONE) {
