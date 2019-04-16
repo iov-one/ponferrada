@@ -11,10 +11,7 @@ export const submitAccountForm = async (
   AccountSubmitDom: React.Component,
   accountName: string
 ): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
-    AccountSubmitDom,
-    'input'
-  );
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(AccountSubmitDom, 'input');
 
   expect(inputs.length).toBe(3);
 
@@ -49,29 +46,18 @@ export const submitAccountForm = async (
     }
   );
 
-  const form = TestUtils.findRenderedDOMComponentWithTag(
-    AccountSubmitDom,
-    'form'
-  );
+  const form = TestUtils.findRenderedDOMComponentWithTag(AccountSubmitDom, 'form');
 
   const submitForm = async (): Promise<void> => {
     TestUtils.Simulate.submit(form);
-    await findRenderedDOMComponentWithId(
-      AccountSubmitDom,
-      SECOND_STEP_SIGNUP_ROUTE
-    );
+    await findRenderedDOMComponentWithId(AccountSubmitDom, SECOND_STEP_SIGNUP_ROUTE);
   };
   // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
   await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
-export const handlePassPhrase = async (
-  RecoveryPhraseDom: React.Component
-): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
-    RecoveryPhraseDom,
-    'input'
-  );
+export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Promise<void> => {
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'input');
   expect(inputs.length).toBe(1);
   const showMnemonic = async (): Promise<void> => {
     TestUtils.Simulate.change(inputs[0], {
@@ -79,10 +65,7 @@ export const handlePassPhrase = async (
     });
     await sleep(600);
 
-    const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(
-      RecoveryPhraseDom,
-      'p'
-    );
+    const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'p');
     expect(paragraphs.length).toBe(1);
     const phraseParagraph = paragraphs[0].innerHTML;
     expect(phraseParagraph).toBe(PersonaManager.get().mnemonic);
@@ -90,10 +73,7 @@ export const handlePassPhrase = async (
   // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
   await TestUtils.act(showMnemonic as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 
-  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
-    RecoveryPhraseDom,
-    'button'
-  );
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'button');
   expect(buttons.length).toBe(2);
   const nextButton = buttons[1];
   TestUtils.act(
@@ -102,10 +82,7 @@ export const handlePassPhrase = async (
     }
   );
 
-  await findRenderedDOMComponentWithId(
-    RecoveryPhraseDom,
-    SECURITY_HINT_STEP_SIGNUP_ROUTE
-  );
+  await findRenderedDOMComponentWithId(RecoveryPhraseDom, SECURITY_HINT_STEP_SIGNUP_ROUTE);
 };
 
 export const handleSecurityHint = async (
@@ -113,10 +90,7 @@ export const handleSecurityHint = async (
   accountName: string
 ): Promise<void> => {
   // Introduce my hint
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
-    SecurityHintDom,
-    'input'
-  );
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(SecurityHintDom, 'input');
   expect(inputs.length).toBe(1);
   TestUtils.act(
     (): void => {
@@ -126,10 +100,7 @@ export const handleSecurityHint = async (
     }
   );
 
-  const form = TestUtils.findRenderedDOMComponentWithTag(
-    SecurityHintDom,
-    'form'
-  );
+  const form = TestUtils.findRenderedDOMComponentWithTag(SecurityHintDom, 'form');
 
   const submitForm = async (): Promise<void> => {
     TestUtils.Simulate.submit(form);

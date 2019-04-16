@@ -1,9 +1,4 @@
-import {
-  Algorithm,
-  ChainId,
-  publicIdentityEquals,
-  PublicIdentity,
-} from '@iov/bcp';
+import { Algorithm, ChainId, publicIdentityEquals, PublicIdentity } from '@iov/bcp';
 import { UserProfile, WalletId } from '@iov/core';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
@@ -23,10 +18,7 @@ export class AccountManager {
   private readonly userProfile: UserProfile;
   private readonly chains: ReadonlyArray<AccountManagerChainConfig>;
 
-  public constructor(
-    userProfile: UserProfile,
-    chains: ReadonlyArray<AccountManagerChainConfig>
-  ) {
+  public constructor(userProfile: UserProfile, chains: ReadonlyArray<AccountManagerChainConfig>) {
     this.userProfile = userProfile;
     this.chains = chains;
   }
@@ -36,18 +28,10 @@ export class AccountManager {
       const { chainId, algorithm, derivePath } = chain;
       const path = derivePath(derivation);
       const wallet = this.walletForAlgorithm(algorithm);
-      const identityCreated = await this.identityExistsInProfile(
-        wallet,
-        chainId,
-        path
-      );
+      const identityCreated = await this.identityExistsInProfile(wallet, chainId, path);
 
       if (!identityCreated) {
-        const identity = await this.userProfile.createIdentity(
-          wallet,
-          chainId,
-          path
-        );
+        const identity = await this.userProfile.createIdentity(wallet, chainId, path);
         await this.userProfile.setIdentityLabel(identity, `${derivation}`);
       }
     }
@@ -71,8 +55,7 @@ export class AccountManager {
           .filter(ident => ident.chainId === chain.chainId);
 
         const identityByChainAndAccount = identitiesByChain.filter(
-          ident =>
-            this.userProfile.getIdentityLabel(ident) === `${accountIndex}`
+          ident => this.userProfile.getIdentityLabel(ident) === `${accountIndex}`
         );
 
         if (identityByChainAndAccount.length !== 1) {
@@ -102,11 +85,7 @@ export class AccountManager {
 
     for (let i = 0; ; i++) {
       const path = firstChain.derivePath(i);
-      const existsAccount = await this.identityExistsInProfile(
-        firstWallet,
-        firstChain.chainId,
-        path
-      );
+      const existsAccount = await this.identityExistsInProfile(firstWallet, firstChain.chainId, path);
 
       if (!existsAccount) {
         return i;
@@ -115,9 +94,7 @@ export class AccountManager {
   }
 
   private walletForAlgorithm(algorithm: Algorithm): WalletId {
-    const [edWallet, secpWallet] = this.userProfile.wallets.value.map(
-      x => x.id
-    );
+    const [edWallet, secpWallet] = this.userProfile.wallets.value.map(x => x.id);
     return algorithm === 'ed25519' ? edWallet : secpWallet;
   }
 
@@ -127,8 +104,7 @@ export class AccountManager {
     path: ReadonlyArray<Slip10RawIndex>
   ): Promise<boolean> {
     // FIXME iov-core, please.
-    const wallet: ReadonlyWallet = (this
-      .userProfile as any).findWalletInPrimaryKeyring(walletId); // eslint-disable-line @typescript-eslint/no-explicit-any
+    const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId); // eslint-disable-line @typescript-eslint/no-explicit-any
     const ident = await wallet.previewIdentity(chainId, path);
     const allIdentities = wallet.getIdentities();
     return !!allIdentities.find(x => publicIdentityEquals(x, ident));

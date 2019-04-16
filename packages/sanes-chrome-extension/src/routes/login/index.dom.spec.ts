@@ -17,22 +17,14 @@ describe('DOM > Feature > Login', (): void => {
     }
   );
 
-  it(`should two inputs, one button and show toast in case if wrong password`, async (): Promise<
-    void
-  > => {
+  it(`should two inputs, one button and show toast in case if wrong password`, async (): Promise<void> => {
     const LoginDom = await travelToLogin(store);
 
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(
-      LoginDom,
-      'input'
-    );
+    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(LoginDom, 'input');
 
     expect(inputs.length).toBe(1);
 
-    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
-      LoginDom,
-      'button'
-    );
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(LoginDom, 'button');
     expect(buttons.length).toBe(1);
 
     //Should show toast message

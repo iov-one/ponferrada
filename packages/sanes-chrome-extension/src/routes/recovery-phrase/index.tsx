@@ -23,11 +23,7 @@ const RecoveryPhrase = (): JSX.Element => {
   }, []);
 
   return (
-    <PageLayout
-      id={RECOVERY_PHRASE_ROUTE}
-      primaryTitle="Recovery"
-      title="phrase"
-    >
+    <PageLayout id={RECOVERY_PHRASE_ROUTE} primaryTitle="Recovery" title="phrase">
       <ShowRecoveryPhrase onBack={onBack} mnemonic={mnemonic} />
     </PageLayout>
   );

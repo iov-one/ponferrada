@@ -6,9 +6,7 @@ import { history } from '../../../store/reducers';
 import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
 import { sleep } from '../../../utils/timer';
 
-export const travelToRecoveryPhrase = async (
-  store: Store
-): Promise<React.Component> => {
+export const travelToRecoveryPhrase = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
 
   const navigate = async (): Promise<void> => {

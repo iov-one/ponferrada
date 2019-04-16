@@ -26,8 +26,7 @@ withChainsDescribe('Persona', () => {
     });
 
     it('returns the right mnemonic', async () => {
-      const presetMnemonic =
-        'until apple post diamond casual bridge bird solid inform size prize debris';
+      const presetMnemonic = 'until apple post diamond casual bridge bird solid inform size prize debris';
       const persona = await Persona.create(presetMnemonic);
 
       expect(persona.mnemonic).toEqual(presetMnemonic);
@@ -67,9 +66,7 @@ withChainsDescribe('Persona', () => {
       );
 
       const balances = await persona.getBalances(0);
-      const ethBalance = balances.find(
-        b => b.tokenTicker === ('ETH' as TokenTicker)
-      );
+      const ethBalance = balances.find(b => b.tokenTicker === ('ETH' as TokenTicker));
       if (!ethBalance) {
         throw new Error('Did not find an ETH balance');
       }
@@ -82,9 +79,7 @@ withChainsDescribe('Persona', () => {
 
     it('throws when calling for non-existing account', async () => {
       const persona = await Persona.create();
-      await expect(persona.getBalances(42)).rejects.toThrowError(
-        /account does not exist/i
-      );
+      await expect(persona.getBalances(42)).rejects.toThrowError(/account does not exist/i);
       persona.destroy();
     });
   });

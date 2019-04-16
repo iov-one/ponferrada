@@ -14,9 +14,7 @@ const storybookCreateRootReducer = (history: History) =>
     router: connectRouter(history),
   });
 
-const storybookStore = createStore(
-  storybookCreateRootReducer(storybookHistory)
-);
+const storybookStore = createStore(storybookCreateRootReducer(storybookHistory));
 
 interface Props {
   readonly children: React.ReactNode;

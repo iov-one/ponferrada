@@ -43,23 +43,13 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout
-      id={SECURITY_HINT_STEP_SIGNUP_ROUTE}
-      primaryTitle="New"
-      title="Account"
-    >
+    <PageLayout id={SECURITY_HINT_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
       <Typography variant="subtitle1" inline>
-        To help you remember your details in the future please provide a
-        security hint:
+        To help you remember your details in the future please provide a security hint:
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginTop={1} marginBottom={4}>
-          <TextFieldForm
-            placeholder="Security hint"
-            form={form}
-            fullWidth
-            name={SECURITY_HINT}
-          />
+          <TextFieldForm placeholder="Security hint" form={form} fullWidth name={SECURITY_HINT} />
         </Block>
         <Block display="flex" justifyContent="space-between">
           <Block width={120}>

@@ -4,12 +4,7 @@ import Welcome from './welcome';
 import Signup from './signup';
 import Login from './login';
 import RecoveryPhrase from './recovery-phrase';
-import {
-  WELCOME_ROUTE,
-  SIGNUP_ROUTE,
-  LOGIN_ROUTE,
-  RECOVERY_PHRASE_ROUTE,
-} from './paths';
+import { WELCOME_ROUTE, SIGNUP_ROUTE, LOGIN_ROUTE, RECOVERY_PHRASE_ROUTE } from './paths';
 
 export const MainRouter = (): JSX.Element => (
   <Switch>
