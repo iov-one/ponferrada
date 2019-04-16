@@ -43,12 +43,7 @@ const TextNote = ({ positionedClass }: Props) => {
   return (
     <Paper className={positionedClass} classes={paperClasses}>
       <FontAwesomeIcon icon={faStickyNote} className={classes.noteIcon} />
-      <TextField
-        multiline={true}
-        placeholder="Add a note"
-        variant="outlined"
-        classes={textFieldClasses}
-      />
+      <TextField multiline={true} placeholder="Add a note" variant="outlined" classes={textFieldClasses} />
     </Paper>
   );
 };
