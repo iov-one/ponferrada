@@ -8,6 +8,7 @@ import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaManager } from '../../logic/persona';
+import { PersonaContext } from '../../context/PersonaProvider';
 
 const onBack = (): void => {
   history.goBack();
@@ -16,6 +17,7 @@ const onBack = (): void => {
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
   const accountName = React.useRef<string | null>(null);
+  const personaProvider = React.useContext(PersonaContext);
 
   const onNewAccount = (): void => setStep('first');
   const onShowPhrase = (): void => setStep('second');
