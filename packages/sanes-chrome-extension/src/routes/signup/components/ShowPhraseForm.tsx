@@ -7,19 +7,9 @@ import Switch from 'medulas-react-components/lib/components/Switch';
 import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
-import { PersonaManager } from '../../../logic/persona';
+import { PersonaContext } from '../../../context/PersonaProvider';
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
-
-const getMnemonic = async (): Promise<string> => {
-  try {
-    const persona = await PersonaManager.get();
-    return persona.mnemonic;
-  } catch (err) {
-    console.log('Error getting persona or mnemonic', err);
-    return 'No mnemonic available';
-  }
-};
 
 export interface Props {
   readonly onHintPassword: () => void;
@@ -28,10 +18,11 @@ export interface Props {
 
 const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
+  const persona = React.useContext(PersonaContext);
 
   const onShowMnemonic = async (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): Promise<void> => {
     if (checked) {
-      setMnemonic(await getMnemonic());
+      setMnemonic(persona.mnemonic);
       return;
     }
 
