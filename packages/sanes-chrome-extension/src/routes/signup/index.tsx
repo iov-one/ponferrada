@@ -10,7 +10,7 @@ import {
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
-import { PersonaManager } from '../../logic/persona/personamanager';
+import { PersonaManager } from '../../logic/persona';
 
 const onBack = (): void => {
   history.goBack();
