@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import Route from '../../routes';
 import { history } from '../../store/reducers';
+import { PersonaProvider } from '../../context/PersonaProvider';
 
 export const createDom = (store: Store): React.Component =>
   TestUtils.renderIntoDocument(
@@ -14,7 +15,9 @@ export const createDom = (store: Store): React.Component =>
       <MedulasThemeProvider>
         <ConnectedRouter history={history}>
           <ToastProvider>
-            <Route />
+            <PersonaProvider>
+              <Route />
+            </PersonaProvider>
           </ToastProvider>
         </ConnectedRouter>
       </MedulasThemeProvider>
