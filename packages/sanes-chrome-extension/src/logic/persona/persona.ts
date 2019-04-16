@@ -1,6 +1,14 @@
-import { Amount } from '@iov/bcp';
-import { MultiChainSigner, UserProfile } from '@iov/core';
+import { Amount, PublicIdentity } from '@iov/bcp';
+import {
+  MultiChainSigner,
+  UserProfile,
+  SigningServerCore,
+  SignAndPostAuthorization,
+  GetIdentitiesAuthorization,
+  JsonRpcSigningServer,
+} from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
+import { JsonRpcResponse, JsonRpcRequest } from '@iov/jsonrpc';
 
 import { createUserProfile } from '../user';
 import {
@@ -11,6 +19,19 @@ import {
   pathBuilderForCodec,
 } from '../config';
 import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
+
+/** Like UseOnlyJsonRpcSigningServer but without functionality to create or shutdown */
+export interface UseOnlyJsonRpcSigningServer {
+  handleUnchecked(request: unknown): Promise<JsonRpcResponse>;
+  /**
+   * Handles a checked JsRpcRequest
+   *
+   * 1. convert JsRpcRequest into calls to SigningServerCore
+   * 2. call SigningServerCore
+   * 3. convert result to JS RPC format
+   */
+  handleChecked(request: JsonRpcRequest): Promise<JsonRpcResponse>;
+}
 
 export class Persona {
   /**
@@ -52,6 +73,7 @@ export class Persona {
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
+  private signingServer: JsonRpcSigningServer | undefined;
 
   /** The given signer and accountsManager must share the same UserProfile */
   private constructor(profile: UserProfile, signer: MultiChainSigner, accountManager: AccountManager) {
@@ -96,7 +118,33 @@ export class Persona {
     return out;
   }
 
+  public startSigningServer(): UseOnlyJsonRpcSigningServer {
+    const revealAllIdentities: GetIdentitiesAuthorization = async (
+      reason,
+      matchingIdentities
+    ): Promise<ReadonlyArray<PublicIdentity>> => {
+      // return all
+      return matchingIdentities;
+    };
+    const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
+      return true;
+    };
+
+    const core = new SigningServerCore(this.profile, this.signer, revealAllIdentities, signEverything);
+    const server = new JsonRpcSigningServer(core);
+    this.signingServer = server;
+    return server;
+  }
+
+  public tearDownSigningServer(): void {
+    if (this.signingServer) {
+      this.signingServer.shutdown();
+      this.signingServer = undefined;
+    }
+  }
+
   public destroy(): void {
+    this.tearDownSigningServer();
     this.signer.shutdown();
   }
 }

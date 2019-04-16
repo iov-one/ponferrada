@@ -1,4 +1,5 @@
 import { TokenTicker } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/core';
 import { EnglishMnemonic } from '@iov/crypto';
 
 import { Persona } from './persona';
@@ -80,6 +81,59 @@ withChainsDescribe('Persona', () => {
     it('throws when calling for non-existing account', async () => {
       const persona = await Persona.create();
       await expect(persona.getBalances(42)).rejects.toThrowError(/account does not exist/i);
+      persona.destroy();
+    });
+  });
+
+  describe('startSigningServer', () => {
+    it('can start the signing server', async () => {
+      const persona = await Persona.create();
+      const server = persona.startSigningServer();
+      expect(server).toBeTruthy();
+      persona.destroy();
+    });
+
+    it('can send example request to the signing server', async () => {
+      const persona = await Persona.create(
+        'oxygen fall sure lava energy veteran enroll frown question detail include maximum'
+      );
+      const server = persona.startSigningServer();
+      const response = await server.handleChecked({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'getIdentities',
+        params: {
+          reason: TransactionEncoder.toJson('I would like to know who you are on Ethereum'),
+          chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
+        },
+      });
+      expect(response).toEqual({
+        jsonrpc: '2.0',
+        id: 1,
+        result: [
+          {
+            chainId: 'string:ethereum-eip155-5777',
+            pubkey: {
+              algo: 'string:secp256k1',
+              data:
+                'bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381',
+            },
+          },
+        ],
+      });
+      persona.destroy();
+    });
+  });
+
+  describe('tearDownSigningServer', () => {
+    it('can tear down the signing server', async () => {
+      const persona = await Persona.create();
+
+      expect(() => {
+        persona.startSigningServer();
+        persona.tearDownSigningServer();
+      }).not.toThrow();
+
       persona.destroy();
     });
   });
