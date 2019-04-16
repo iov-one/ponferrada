@@ -92,7 +92,7 @@ const CurrencyToSend = ({ positionedClass }: Props) => {
       </Avatar>
       <label className={classes.sendLabel}>You send</label>
       <div className={classes.currencyContainer}>
-        <TextField placeholder="0,00" variant="outlined" classes={textFieldClasses} />
+        <TextField placeholder="0,00" classes={textFieldClasses} />
         <Select classes={selectClasses} />
       </div>
       <label className={classes.validityLabel}>Validity label</label>

@@ -13,13 +13,11 @@ const useStyles = makeStyles(theme => ({
   paperRoot: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     width: '100%',
     padding: '4rem',
   },
 
   toLabel: {
-    alignSelf: 'flex-start',
     color: theme.palette.text.primary,
     fontFamily: '"Muli SemiBold", sans-serif',
     fontSize: '1.4rem',
@@ -32,7 +30,6 @@ const useStyles = makeStyles(theme => ({
   },
 
   validityLabel: {
-    alignSelf: 'flex-start',
     color: theme.palette.error.main,
     fontFamily: '"Muli SemiBold", sans-serif',
     fontSize: '1.4rem',
@@ -71,7 +68,7 @@ const ReceiverAddress = ({ positionedClass }: Props) => {
   return (
     <Paper className={positionedClass} classes={paperClasses}>
       <label className={classes.toLabel}>To</label>
-      <TextField placeholder="IOV or wallet address" variant="outlined" classes={textFieldClasses} />
+      <TextField placeholder="IOV or wallet address" classes={textFieldClasses} />
       <label className={classes.validityLabel}>Validity label</label>
       <div className={classes.tooltipContainer}>
         <label className={classes.tooltipLabel}>How it works</label>
