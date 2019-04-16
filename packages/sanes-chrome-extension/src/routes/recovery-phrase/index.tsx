@@ -3,28 +3,18 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import ShowRecoveryPhrase from './components/ShowRecoveryPhrase';
 import { RECOVERY_PHRASE_ROUTE } from '../paths';
 import { history } from '../../store/reducers';
-import { PersonaManager, Persona } from '../../logic/persona';
+import { PersonaContext } from '../../context/PersonaProvider';
 
 const onBack = (): void => {
   history.goBack();
 };
 
 const RecoveryPhrase = (): JSX.Element => {
-  const [mnemonic, setMnemonic] = React.useState<string>('');
-
-  React.useEffect((): void => {
-    // when this screen is created independent of app (e.g. storybook tests),
-    // persona is undefined
-    let persona: Persona | undefined;
-    try {
-      persona = PersonaManager.get();
-    } catch (_) {}
-    setMnemonic(persona ? persona.mnemonic : '');
-  }, []);
+  const persona = React.useContext(PersonaContext);
 
   return (
     <PageLayout id={RECOVERY_PHRASE_ROUTE} primaryTitle="Recovery" title="phrase">
-      <ShowRecoveryPhrase onBack={onBack} mnemonic={mnemonic} />
+      <ShowRecoveryPhrase onBack={onBack} mnemonic={persona.mnemonic} />
     </PageLayout>
   );
 };
