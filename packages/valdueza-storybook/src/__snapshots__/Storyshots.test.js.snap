@@ -1331,29 +1331,24 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
     <div
       className="MuiBox-root-648 MuiBox-root-710"
     >
-      This is the block where we show accounts and bns name
+      acc
     </div>
     <div
       className="MuiBox-root-648 MuiBox-root-711"
     >
-      This is the block where we show balances
+      acc
     </div>
     <div
       className="MuiBox-root-648 MuiBox-root-712"
     >
-      This is the block where we show QR Code
-    </div>
-    <div
-      className="MuiBox-root-648 MuiBox-root-713"
-    >
-      This is the block where we show links
+      acc
     </div>
   </div>
   <div
-    className="MuiBox-root-648 MuiBox-root-714"
+    className="MuiBox-root-648 MuiBox-root-713"
   />
   <div
-    className="MuiBox-root-648 MuiBox-root-715"
+    className="MuiBox-root-648 MuiBox-root-714"
   >
     <img
       alt="IOV logo"
@@ -1366,43 +1361,43 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
 
 exports[`Storyshots Routes/Login Login page 1`] = `
 <div
-  className="MuiBox-root-723 MuiBox-root-724"
+  className="MuiBox-root-722 MuiBox-root-723"
   id="/login"
 >
   <div
-    className="MuiBox-root-723 MuiBox-root-725"
+    className="MuiBox-root-722 MuiBox-root-724"
   >
     <h4
-      className="MuiTypography-root-728 MuiTypography-h4-736 MuiTypography-colorPrimary-751 makeStyles-inline-726"
+      className="MuiTypography-root-727 MuiTypography-h4-735 MuiTypography-colorPrimary-750 makeStyles-inline-725"
     >
       Log
     </h4>
     <h4
-      className="MuiTypography-root-728 MuiTypography-h4-736 makeStyles-inline-726"
+      className="MuiTypography-root-727 MuiTypography-h4-735 makeStyles-inline-725"
     >
        
       In
     </h4>
   </div>
   <div
-    className="MuiBox-root-723 MuiBox-root-758"
+    className="MuiBox-root-722 MuiBox-root-757"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-723 MuiBox-root-759"
+        className="MuiBox-root-722 MuiBox-root-758"
       >
         <div
-          className="MuiFormControl-root-761 MuiFormControl-marginNormal-762 MuiFormControl-fullWidth-764 MuiTextField-root-760"
+          className="MuiFormControl-root-760 MuiFormControl-marginNormal-761 MuiFormControl-fullWidth-763 MuiTextField-root-759"
         >
           <div
-            className="MuiInputBase-root-778 MuiOutlinedInput-root-765 MuiInputBase-fullWidth-787 MuiInputBase-formControl-779"
+            className="MuiInputBase-root-777 MuiOutlinedInput-root-764 MuiInputBase-fullWidth-786 MuiInputBase-formControl-778"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-794 MuiOutlinedInput-notchedOutline-772"
+              className="MuiPrivateNotchedOutline-root-793 MuiOutlinedInput-notchedOutline-771"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -1410,7 +1405,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-795"
+                className="MuiPrivateNotchedOutline-legend-794"
                 style={
                   Object {
                     "width": 0.01,
@@ -1428,7 +1423,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-788 MuiOutlinedInput-input-773"
+              className="MuiInputBase-input-787 MuiOutlinedInput-input-772"
               disabled={false}
               name="passwordInputField"
               onBlur={[Function]}
@@ -1442,13 +1437,13 @@ exports[`Storyshots Routes/Login Login page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-723 MuiBox-root-796"
+        className="MuiBox-root-722 MuiBox-root-795"
       >
         <div
-          className="MuiBox-root-723 MuiBox-root-797"
+          className="MuiBox-root-722 MuiBox-root-796"
         >
           <button
-            className="MuiButtonBase-root-815 MuiButtonBase-disabled-816 MuiButton-root-798 MuiButton-contained-806 MuiButton-containedPrimary-807 MuiButton-disabled-810 MuiButton-fullWidth-814"
+            className="MuiButtonBase-root-814 MuiButtonBase-disabled-815 MuiButton-root-797 MuiButton-contained-805 MuiButton-containedPrimary-806 MuiButton-disabled-809 MuiButton-fullWidth-813"
             disabled={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1464,7 +1459,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-799"
+              className="MuiButton-label-798"
             >
               Continue
             </span>
@@ -1473,31 +1468,31 @@ exports[`Storyshots Routes/Login Login page 1`] = `
       </div>
     </form>
     <div
-      className="MuiBox-root-723 MuiBox-root-818"
+      className="MuiBox-root-722 MuiBox-root-817"
     >
       <div
-        className="MuiBox-root-723 MuiBox-root-819"
+        className="MuiBox-root-722 MuiBox-root-818"
       >
         <a
           href="/welcome"
           onClick={[Function]}
         >
           <h6
-            className="MuiTypography-root-728 MuiTypography-subtitle2-740 MuiTypography-colorPrimary-751 makeStyles-inline-726 makeStyles-link-727"
+            className="MuiTypography-root-727 MuiTypography-subtitle2-739 MuiTypography-colorPrimary-750 makeStyles-inline-725 makeStyles-link-726"
           >
             Restore account
           </h6>
         </a>
       </div>
       <div
-        className="MuiBox-root-723 MuiBox-root-820"
+        className="MuiBox-root-722 MuiBox-root-819"
       >
         <a
           href="/welcome"
           onClick={[Function]}
         >
           <h6
-            className="MuiTypography-root-728 MuiTypography-subtitle2-740 MuiTypography-colorPrimary-751 makeStyles-inline-726 makeStyles-link-727"
+            className="MuiTypography-root-727 MuiTypography-subtitle2-739 MuiTypography-colorPrimary-750 makeStyles-inline-725 makeStyles-link-726"
           >
             More options
           </h6>
@@ -1506,14 +1501,14 @@ exports[`Storyshots Routes/Login Login page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-723 MuiBox-root-821"
+    className="MuiBox-root-722 MuiBox-root-820"
   />
   <div
-    className="MuiBox-root-723 MuiBox-root-822"
+    className="MuiBox-root-722 MuiBox-root-821"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-823"
+      className="makeStyles-root-822"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -1524,42 +1519,42 @@ exports[`Storyshots Routes/Login Login page 1`] = `
 
 exports[`Storyshots Routes/Recovery phrase Main 1`] = `
 <div
-  className="MuiBox-root-828 MuiBox-root-829"
+  className="MuiBox-root-827 MuiBox-root-828"
   id="/recovery-phrase"
 >
   <div
-    className="MuiBox-root-828 MuiBox-root-830"
+    className="MuiBox-root-827 MuiBox-root-829"
   >
     <h4
-      className="MuiTypography-root-833 MuiTypography-h4-841 MuiTypography-colorPrimary-856 makeStyles-inline-831"
+      className="MuiTypography-root-832 MuiTypography-h4-840 MuiTypography-colorPrimary-855 makeStyles-inline-830"
     >
       Recovery
     </h4>
     <h4
-      className="MuiTypography-root-833 MuiTypography-h4-841 makeStyles-inline-831"
+      className="MuiTypography-root-832 MuiTypography-h4-840 makeStyles-inline-830"
     >
        
       phrase
     </h4>
   </div>
   <div
-    className="MuiBox-root-828 MuiBox-root-863"
+    className="MuiBox-root-827 MuiBox-root-862"
   >
     <div
-      className="MuiBox-root-828 MuiBox-root-864"
+      className="MuiBox-root-827 MuiBox-root-863"
     >
       <h6
-        className="MuiTypography-root-833 MuiTypography-subtitle2-845"
+        className="MuiTypography-root-832 MuiTypography-subtitle2-844"
       >
         Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool to recover or back up your wallet on any platform.
       </h6>
     </div>
     <div
-      className="MuiBox-root-828 MuiBox-root-865"
+      className="MuiBox-root-827 MuiBox-root-864"
     >
       <button
         aria-label="Export as CSV"
-        className="MuiButtonBase-root-880 MuiFab-root-870 makeStyles-root-866 MuiFab-extended-874 makeStyles-extended-867 MuiFab-secondary-873 makeStyles-secondary-869 MuiFab-sizeSmall-878 makeStyles-sizeSmall-868"
+        className="MuiButtonBase-root-879 MuiFab-root-869 makeStyles-root-865 MuiFab-extended-873 makeStyles-extended-866 MuiFab-secondary-872 makeStyles-secondary-868 MuiFab-sizeSmall-877 makeStyles-sizeSmall-867"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -1576,24 +1571,24 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
         type="button"
       >
         <span
-          className="MuiFab-label-871"
+          className="MuiFab-label-870"
         >
           <div
-            className="MuiBox-root-828 MuiBox-root-883"
+            className="MuiBox-root-827 MuiBox-root-882"
           >
             <img
               alt="Download"
-              className="makeStyles-root-884"
+              className="makeStyles-root-883"
               height={16}
               src="download.svg"
               width={16}
             />
           </div>
           <div
-            className="MuiBox-root-828 MuiBox-root-889"
+            className="MuiBox-root-827 MuiBox-root-888"
           >
             <h6
-              className="MuiTypography-root-833 MuiTypography-subtitle2-845 MuiTypography-colorTextPrimary-858"
+              className="MuiTypography-root-832 MuiTypography-subtitle2-844 MuiTypography-colorTextPrimary-857"
             >
               Export as .PDF
             </h6>
@@ -1602,22 +1597,22 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
       </button>
     </div>
     <div
-      className="MuiBox-root-828 MuiBox-root-890"
+      className="MuiBox-root-827 MuiBox-root-889"
     >
       <p
-        className="MuiTypography-root-833 MuiTypography-body1-835 makeStyles-inline-831"
+        className="MuiTypography-root-832 MuiTypography-body1-834 makeStyles-inline-830"
       >
         
       </p>
     </div>
     <div
-      className="MuiBox-root-828 MuiBox-root-891"
+      className="MuiBox-root-827 MuiBox-root-890"
     >
       <div
-        className="MuiBox-root-828 MuiBox-root-892"
+        className="MuiBox-root-827 MuiBox-root-891"
       >
         <button
-          className="MuiButtonBase-root-880 MuiButton-root-893 MuiButton-text-895 MuiButton-textPrimary-896 MuiButton-fullWidth-909"
+          className="MuiButtonBase-root-879 MuiButton-root-892 MuiButton-text-894 MuiButton-textPrimary-895 MuiButton-fullWidth-908"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1634,7 +1629,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-894"
+            className="MuiButton-label-893"
           >
             Back
           </span>
@@ -1643,14 +1638,14 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-828 MuiBox-root-910"
+    className="MuiBox-root-827 MuiBox-root-909"
   />
   <div
-    className="MuiBox-root-828 MuiBox-root-911"
+    className="MuiBox-root-827 MuiBox-root-910"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-884"
+      className="makeStyles-root-883"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -1661,55 +1656,55 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-922 MuiBox-root-923"
+  className="MuiBox-root-921 MuiBox-root-922"
   id="/signup1"
 >
   <div
-    className="MuiBox-root-922 MuiBox-root-924"
+    className="MuiBox-root-921 MuiBox-root-923"
   >
     <h4
-      className="MuiTypography-root-927 MuiTypography-h4-935 MuiTypography-colorPrimary-950 makeStyles-inline-925"
+      className="MuiTypography-root-926 MuiTypography-h4-934 MuiTypography-colorPrimary-949 makeStyles-inline-924"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-927 MuiTypography-h4-935 makeStyles-inline-925"
+      className="MuiTypography-root-926 MuiTypography-h4-934 makeStyles-inline-924"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-922 MuiBox-root-957"
+    className="MuiBox-root-921 MuiBox-root-956"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-922 MuiBox-root-958"
+        className="MuiBox-root-921 MuiBox-root-957"
       >
         <div
-          className="MuiFormControl-root-960 MuiFormControl-marginNormal-961 MuiFormControl-fullWidth-963 MuiTextField-root-959"
+          className="MuiFormControl-root-959 MuiFormControl-marginNormal-960 MuiFormControl-fullWidth-962 MuiTextField-root-958"
         >
           <label
-            className="MuiFormLabel-root-976 MuiFormLabel-required-981 MuiInputLabel-required-968 MuiInputLabel-root-964 MuiInputLabel-formControl-970 MuiInputLabel-animated-973 MuiInputLabel-shrink-972"
+            className="MuiFormLabel-root-975 MuiFormLabel-required-980 MuiInputLabel-required-967 MuiInputLabel-root-963 MuiInputLabel-formControl-969 MuiInputLabel-animated-972 MuiInputLabel-shrink-971"
             data-shrink={true}
           >
             Account name
             <span
-              className="MuiFormLabel-asterisk-982 MuiInputLabel-asterisk-969"
+              className="MuiFormLabel-asterisk-981 MuiInputLabel-asterisk-968"
             >
                
               *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-996 MuiOutlinedInput-root-983 MuiInputBase-fullWidth-1005 MuiInputBase-formControl-997"
+            className="MuiInputBase-root-995 MuiOutlinedInput-root-982 MuiInputBase-fullWidth-1004 MuiInputBase-formControl-996"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1012 MuiOutlinedInput-notchedOutline-990"
+              className="MuiPrivateNotchedOutline-root-1011 MuiOutlinedInput-notchedOutline-989"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -1717,7 +1712,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-1013"
+                className="MuiPrivateNotchedOutline-legend-1012"
                 style={
                   Object {
                     "width": 0.01,
@@ -1735,7 +1730,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-1006 MuiOutlinedInput-input-991"
+              className="MuiInputBase-input-1005 MuiOutlinedInput-input-990"
               disabled={false}
               name="accountNameField"
               onBlur={[Function]}
@@ -1749,30 +1744,30 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-922 MuiBox-root-1014"
+        className="MuiBox-root-921 MuiBox-root-1013"
       >
         <div
-          className="MuiFormControl-root-960 MuiFormControl-marginNormal-961 MuiFormControl-fullWidth-963 MuiTextField-root-959"
+          className="MuiFormControl-root-959 MuiFormControl-marginNormal-960 MuiFormControl-fullWidth-962 MuiTextField-root-958"
         >
           <label
-            className="MuiFormLabel-root-976 MuiFormLabel-required-981 MuiInputLabel-required-968 MuiInputLabel-root-964 MuiInputLabel-formControl-970 MuiInputLabel-animated-973 MuiInputLabel-shrink-972"
+            className="MuiFormLabel-root-975 MuiFormLabel-required-980 MuiInputLabel-required-967 MuiInputLabel-root-963 MuiInputLabel-formControl-969 MuiInputLabel-animated-972 MuiInputLabel-shrink-971"
             data-shrink={true}
           >
             Password
             <span
-              className="MuiFormLabel-asterisk-982 MuiInputLabel-asterisk-969"
+              className="MuiFormLabel-asterisk-981 MuiInputLabel-asterisk-968"
             >
                
               *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-996 MuiOutlinedInput-root-983 MuiInputBase-fullWidth-1005 MuiInputBase-formControl-997"
+            className="MuiInputBase-root-995 MuiOutlinedInput-root-982 MuiInputBase-fullWidth-1004 MuiInputBase-formControl-996"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1012 MuiOutlinedInput-notchedOutline-990"
+              className="MuiPrivateNotchedOutline-root-1011 MuiOutlinedInput-notchedOutline-989"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -1780,7 +1775,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-1013"
+                className="MuiPrivateNotchedOutline-legend-1012"
                 style={
                   Object {
                     "width": 0.01,
@@ -1798,7 +1793,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-1006 MuiOutlinedInput-input-991"
+              className="MuiInputBase-input-1005 MuiOutlinedInput-input-990"
               disabled={false}
               name="passwordInputField"
               onBlur={[Function]}
@@ -1812,30 +1807,30 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-922 MuiBox-root-1015"
+        className="MuiBox-root-921 MuiBox-root-1014"
       >
         <div
-          className="MuiFormControl-root-960 MuiFormControl-marginNormal-961 MuiFormControl-fullWidth-963 MuiTextField-root-959"
+          className="MuiFormControl-root-959 MuiFormControl-marginNormal-960 MuiFormControl-fullWidth-962 MuiTextField-root-958"
         >
           <label
-            className="MuiFormLabel-root-976 MuiFormLabel-required-981 MuiInputLabel-required-968 MuiInputLabel-root-964 MuiInputLabel-formControl-970 MuiInputLabel-animated-973 MuiInputLabel-shrink-972"
+            className="MuiFormLabel-root-975 MuiFormLabel-required-980 MuiInputLabel-required-967 MuiInputLabel-root-963 MuiInputLabel-formControl-969 MuiInputLabel-animated-972 MuiInputLabel-shrink-971"
             data-shrink={true}
           >
             Confirm Password
             <span
-              className="MuiFormLabel-asterisk-982 MuiInputLabel-asterisk-969"
+              className="MuiFormLabel-asterisk-981 MuiInputLabel-asterisk-968"
             >
                
               *
             </span>
           </label>
           <div
-            className="MuiInputBase-root-996 MuiOutlinedInput-root-983 MuiInputBase-fullWidth-1005 MuiInputBase-formControl-997"
+            className="MuiInputBase-root-995 MuiOutlinedInput-root-982 MuiInputBase-fullWidth-1004 MuiInputBase-formControl-996"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1012 MuiOutlinedInput-notchedOutline-990"
+              className="MuiPrivateNotchedOutline-root-1011 MuiOutlinedInput-notchedOutline-989"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -1843,7 +1838,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-1013"
+                className="MuiPrivateNotchedOutline-legend-1012"
                 style={
                   Object {
                     "width": 0.01,
@@ -1861,7 +1856,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-1006 MuiOutlinedInput-input-991"
+              className="MuiInputBase-input-1005 MuiOutlinedInput-input-990"
               disabled={false}
               name="passwordConfirmInputField"
               onBlur={[Function]}
@@ -1875,13 +1870,13 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-922 MuiBox-root-1016"
+        className="MuiBox-root-921 MuiBox-root-1015"
       >
         <div
-          className="MuiBox-root-922 MuiBox-root-1017"
+          className="MuiBox-root-921 MuiBox-root-1016"
         >
           <button
-            className="MuiButtonBase-root-1035 MuiButton-root-1018 MuiButton-text-1020 MuiButton-textPrimary-1021 MuiButton-fullWidth-1034"
+            className="MuiButtonBase-root-1034 MuiButton-root-1017 MuiButton-text-1019 MuiButton-textPrimary-1020 MuiButton-fullWidth-1033"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1898,17 +1893,17 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-1019"
+              className="MuiButton-label-1018"
             >
               Back
             </span>
           </button>
         </div>
         <div
-          className="MuiBox-root-922 MuiBox-root-1038"
+          className="MuiBox-root-921 MuiBox-root-1037"
         >
           <button
-            className="MuiButtonBase-root-1035 MuiButtonBase-disabled-1036 MuiButton-root-1018 MuiButton-contained-1026 MuiButton-containedPrimary-1027 MuiButton-disabled-1030 MuiButton-fullWidth-1034"
+            className="MuiButtonBase-root-1034 MuiButtonBase-disabled-1035 MuiButton-root-1017 MuiButton-contained-1025 MuiButton-containedPrimary-1026 MuiButton-disabled-1029 MuiButton-fullWidth-1033"
             disabled={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1924,7 +1919,7 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-1019"
+              className="MuiButton-label-1018"
             >
               Continue
             </span>
@@ -1934,14 +1929,14 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-922 MuiBox-root-1039"
+    className="MuiBox-root-921 MuiBox-root-1038"
   />
   <div
-    className="MuiBox-root-922 MuiBox-root-1040"
+    className="MuiBox-root-921 MuiBox-root-1039"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1041"
+      className="makeStyles-root-1040"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -1952,49 +1947,49 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
 
 exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 <div
-  className="MuiBox-root-1056 MuiBox-root-1057"
+  className="MuiBox-root-1055 MuiBox-root-1056"
   id="/signup2"
 >
   <div
-    className="MuiBox-root-1056 MuiBox-root-1058"
+    className="MuiBox-root-1055 MuiBox-root-1057"
   >
     <h4
-      className="MuiTypography-root-1061 MuiTypography-h4-1069 MuiTypography-colorPrimary-1084 makeStyles-inline-1059"
+      className="MuiTypography-root-1060 MuiTypography-h4-1068 MuiTypography-colorPrimary-1083 makeStyles-inline-1058"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-1061 MuiTypography-h4-1069 makeStyles-inline-1059"
+      className="MuiTypography-root-1060 MuiTypography-h4-1068 makeStyles-inline-1058"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-1056 MuiBox-root-1091"
+    className="MuiBox-root-1055 MuiBox-root-1090"
   >
     <div
-      className="MuiBox-root-1056 MuiBox-root-1092"
+      className="MuiBox-root-1055 MuiBox-root-1091"
     >
       <div
-        className="MuiBox-root-1056 MuiBox-root-1093"
+        className="MuiBox-root-1055 MuiBox-root-1092"
       >
         <div
-          className="MuiBox-root-1056 MuiBox-root-1094"
+          className="MuiBox-root-1055 MuiBox-root-1093"
         >
           <h6
-            className="MuiTypography-root-1061 MuiTypography-subtitle2-1073 makeStyles-inline-1059"
+            className="MuiTypography-root-1060 MuiTypography-subtitle2-1072 makeStyles-inline-1058"
           >
             Activate Recovery Phrase?
           </h6>
         </div>
         <div
-          className="makeStyles-container-1096"
+          className="makeStyles-container-1095"
           onClick={[Function]}
         >
           <img
             alt="Info"
-            className="makeStyles-root-1099"
+            className="makeStyles-root-1098"
             height={16}
             src="info_normal.svg"
             width={16}
@@ -2002,14 +1997,14 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
         </div>
       </div>
       <label
-        className="MuiFormControlLabel-root-1104"
+        className="MuiFormControlLabel-root-1103"
       >
         <span
-          className="MuiSwitch-root-1110"
+          className="MuiSwitch-root-1109"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root-1132 MuiIconButton-root-1123 MuiPrivateSwitchBase-root-1119 MuiSwitch-switchBase-1111 MuiSwitch-colorPrimary-1112"
+            className="MuiButtonBase-root-1131 MuiIconButton-root-1122 MuiPrivateSwitchBase-root-1118 MuiSwitch-switchBase-1110 MuiSwitch-colorPrimary-1111"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -2023,44 +2018,44 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-1131"
+              className="MuiIconButton-label-1130"
             >
               <span
-                className="MuiSwitch-thumb-1117"
+                className="MuiSwitch-thumb-1116"
               />
               <input
-                className="MuiPrivateSwitchBase-input-1122 MuiSwitch-input-1116"
+                className="MuiPrivateSwitchBase-input-1121 MuiSwitch-input-1115"
                 onChange={[Function]}
                 type="checkbox"
               />
             </span>
           </span>
           <span
-            className="MuiSwitch-track-1118"
+            className="MuiSwitch-track-1117"
           />
         </span>
         <span
-          className="MuiTypography-root-1061 MuiTypography-body1-1063 MuiFormControlLabel-label-1109"
+          className="MuiTypography-root-1060 MuiTypography-body1-1062 MuiFormControlLabel-label-1108"
         />
       </label>
     </div>
     <div
-      className="MuiBox-root-1056 MuiBox-root-1135"
+      className="MuiBox-root-1055 MuiBox-root-1134"
     >
       <p
-        className="MuiTypography-root-1061 MuiTypography-body1-1063 makeStyles-inline-1059"
+        className="MuiTypography-root-1060 MuiTypography-body1-1062 makeStyles-inline-1058"
       >
         
       </p>
     </div>
     <div
-      className="MuiBox-root-1056 MuiBox-root-1136"
+      className="MuiBox-root-1055 MuiBox-root-1135"
     >
       <div
-        className="MuiBox-root-1056 MuiBox-root-1137"
+        className="MuiBox-root-1055 MuiBox-root-1136"
       >
         <button
-          className="MuiButtonBase-root-1132 MuiButton-root-1138 MuiButton-text-1140 MuiButton-textPrimary-1141 MuiButton-fullWidth-1154"
+          className="MuiButtonBase-root-1131 MuiButton-root-1137 MuiButton-text-1139 MuiButton-textPrimary-1140 MuiButton-fullWidth-1153"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -2077,17 +2072,17 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-1139"
+            className="MuiButton-label-1138"
           >
             Back
           </span>
         </button>
       </div>
       <div
-        className="MuiBox-root-1056 MuiBox-root-1155"
+        className="MuiBox-root-1055 MuiBox-root-1154"
       >
         <button
-          className="MuiButtonBase-root-1132 MuiButton-root-1138 MuiButton-contained-1146 MuiButton-containedPrimary-1147 MuiButton-fullWidth-1154"
+          className="MuiButtonBase-root-1131 MuiButton-root-1137 MuiButton-contained-1145 MuiButton-containedPrimary-1146 MuiButton-fullWidth-1153"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -2104,7 +2099,7 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-1139"
+            className="MuiButton-label-1138"
           >
             Continue
           </span>
@@ -2113,14 +2108,14 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-1056 MuiBox-root-1156"
+    className="MuiBox-root-1055 MuiBox-root-1155"
   />
   <div
-    className="MuiBox-root-1056 MuiBox-root-1157"
+    className="MuiBox-root-1055 MuiBox-root-1156"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1099"
+      className="makeStyles-root-1098"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -2131,29 +2126,29 @@ exports[`Storyshots Routes/Signup Recovery Phrase page 1`] = `
 
 exports[`Storyshots Routes/Signup Security hint page 1`] = `
 <div
-  className="MuiBox-root-1168 MuiBox-root-1169"
+  className="MuiBox-root-1167 MuiBox-root-1168"
   id="/signup3"
 >
   <div
-    className="MuiBox-root-1168 MuiBox-root-1170"
+    className="MuiBox-root-1167 MuiBox-root-1169"
   >
     <h4
-      className="MuiTypography-root-1173 MuiTypography-h4-1181 MuiTypography-colorPrimary-1196 makeStyles-inline-1171"
+      className="MuiTypography-root-1172 MuiTypography-h4-1180 MuiTypography-colorPrimary-1195 makeStyles-inline-1170"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-1173 MuiTypography-h4-1181 makeStyles-inline-1171"
+      className="MuiTypography-root-1172 MuiTypography-h4-1180 makeStyles-inline-1170"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-1168 MuiBox-root-1203"
+    className="MuiBox-root-1167 MuiBox-root-1202"
   >
     <h6
-      className="MuiTypography-root-1173 MuiTypography-subtitle1-1184 makeStyles-inline-1171"
+      className="MuiTypography-root-1172 MuiTypography-subtitle1-1183 makeStyles-inline-1170"
     >
       To help you remember your details in the future please provide a security hint:
     </h6>
@@ -2161,18 +2156,18 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root-1168 MuiBox-root-1204"
+        className="MuiBox-root-1167 MuiBox-root-1203"
       >
         <div
-          className="MuiFormControl-root-1206 MuiFormControl-marginNormal-1207 MuiFormControl-fullWidth-1209 MuiTextField-root-1205"
+          className="MuiFormControl-root-1205 MuiFormControl-marginNormal-1206 MuiFormControl-fullWidth-1208 MuiTextField-root-1204"
         >
           <div
-            className="MuiInputBase-root-1223 MuiOutlinedInput-root-1210 MuiInputBase-fullWidth-1232 MuiInputBase-formControl-1224"
+            className="MuiInputBase-root-1222 MuiOutlinedInput-root-1209 MuiInputBase-fullWidth-1231 MuiInputBase-formControl-1223"
             onClick={[Function]}
           >
             <fieldset
               aria-hidden={true}
-              className="MuiPrivateNotchedOutline-root-1239 MuiOutlinedInput-notchedOutline-1217"
+              className="MuiPrivateNotchedOutline-root-1238 MuiOutlinedInput-notchedOutline-1216"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -2180,7 +2175,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
               }
             >
               <legend
-                className="MuiPrivateNotchedOutline-legend-1240"
+                className="MuiPrivateNotchedOutline-legend-1239"
                 style={
                   Object {
                     "width": 0.01,
@@ -2198,7 +2193,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
             </fieldset>
             <input
               aria-invalid={false}
-              className="MuiInputBase-input-1233 MuiOutlinedInput-input-1218"
+              className="MuiInputBase-input-1232 MuiOutlinedInput-input-1217"
               disabled={false}
               name="securityHintField"
               onBlur={[Function]}
@@ -2212,13 +2207,13 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root-1168 MuiBox-root-1241"
+        className="MuiBox-root-1167 MuiBox-root-1240"
       >
         <div
-          className="MuiBox-root-1168 MuiBox-root-1242"
+          className="MuiBox-root-1167 MuiBox-root-1241"
         >
           <button
-            className="MuiButtonBase-root-1260 MuiButton-root-1243 MuiButton-text-1245 MuiButton-textPrimary-1246 MuiButton-fullWidth-1259"
+            className="MuiButtonBase-root-1259 MuiButton-root-1242 MuiButton-text-1244 MuiButton-textPrimary-1245 MuiButton-fullWidth-1258"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -2235,17 +2230,17 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-1244"
+              className="MuiButton-label-1243"
             >
               Back
             </span>
           </button>
         </div>
         <div
-          className="MuiBox-root-1168 MuiBox-root-1263"
+          className="MuiBox-root-1167 MuiBox-root-1262"
         >
           <button
-            className="MuiButtonBase-root-1260 MuiButton-root-1243 MuiButton-contained-1251 MuiButton-containedPrimary-1252 MuiButton-fullWidth-1259"
+            className="MuiButtonBase-root-1259 MuiButton-root-1242 MuiButton-contained-1250 MuiButton-containedPrimary-1251 MuiButton-fullWidth-1258"
             disabled={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -2261,7 +2256,7 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-1244"
+              className="MuiButton-label-1243"
             >
               Create
             </span>
@@ -2271,14 +2266,14 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root-1168 MuiBox-root-1264"
+    className="MuiBox-root-1167 MuiBox-root-1263"
   />
   <div
-    className="MuiBox-root-1168 MuiBox-root-1265"
+    className="MuiBox-root-1167 MuiBox-root-1264"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1266"
+      className="makeStyles-root-1265"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -2289,37 +2284,37 @@ exports[`Storyshots Routes/Signup Security hint page 1`] = `
 
 exports[`Storyshots Routes/Welcome Welcome page 1`] = `
 <div
-  className="MuiBox-root-1281 MuiBox-root-1282"
+  className="MuiBox-root-1280 MuiBox-root-1281"
   id="/welcome"
 >
   <div
-    className="MuiBox-root-1281 MuiBox-root-1283"
+    className="MuiBox-root-1280 MuiBox-root-1282"
   >
     <h4
-      className="MuiTypography-root-1286 MuiTypography-h4-1294 MuiTypography-colorPrimary-1309 makeStyles-inline-1284"
+      className="MuiTypography-root-1285 MuiTypography-h4-1293 MuiTypography-colorPrimary-1308 makeStyles-inline-1283"
     >
       Welcome
     </h4>
     <h4
-      className="MuiTypography-root-1286 MuiTypography-h4-1294 makeStyles-inline-1284"
+      className="MuiTypography-root-1285 MuiTypography-h4-1293 makeStyles-inline-1283"
     >
        
       to your IOV manager
     </h4>
   </div>
   <div
-    className="MuiBox-root-1281 MuiBox-root-1316"
+    className="MuiBox-root-1280 MuiBox-root-1315"
   >
     <p
-      className="MuiTypography-root-1286 MuiTypography-body1-1288 makeStyles-inline-1284"
+      className="MuiTypography-root-1285 MuiTypography-body1-1287 makeStyles-inline-1283"
     >
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root-1281 MuiBox-root-1317"
+      className="MuiBox-root-1280 MuiBox-root-1316"
     />
     <button
-      className="MuiButtonBase-root-1335 MuiButton-root-1318 MuiButton-contained-1326 MuiButton-containedPrimary-1327 MuiButton-fullWidth-1334"
+      className="MuiButtonBase-root-1334 MuiButton-root-1317 MuiButton-contained-1325 MuiButton-containedPrimary-1326 MuiButton-fullWidth-1333"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -2336,16 +2331,16 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1319"
+        className="MuiButton-label-1318"
       >
         Log in
       </span>
     </button>
     <div
-      className="MuiBox-root-1281 MuiBox-root-1338"
+      className="MuiBox-root-1280 MuiBox-root-1337"
     />
     <button
-      className="MuiButtonBase-root-1335 MuiButton-root-1318 MuiButton-contained-1326 MuiButton-containedPrimary-1327 MuiButton-fullWidth-1334"
+      className="MuiButtonBase-root-1334 MuiButton-root-1317 MuiButton-contained-1325 MuiButton-containedPrimary-1326 MuiButton-fullWidth-1333"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -2362,16 +2357,16 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1319"
+        className="MuiButton-label-1318"
       >
         New account
       </span>
     </button>
     <div
-      className="MuiBox-root-1281 MuiBox-root-1339"
+      className="MuiBox-root-1280 MuiBox-root-1338"
     />
     <button
-      className="MuiButtonBase-root-1335 MuiButton-root-1318 MuiButton-contained-1326 MuiButton-containedPrimary-1327 MuiButton-fullWidth-1334"
+      className="MuiButtonBase-root-1334 MuiButton-root-1317 MuiButton-contained-1325 MuiButton-containedPrimary-1326 MuiButton-fullWidth-1333"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -2387,21 +2382,21 @@ exports[`Storyshots Routes/Welcome Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1319"
+        className="MuiButton-label-1318"
       >
         Import account
       </span>
     </button>
   </div>
   <div
-    className="MuiBox-root-1281 MuiBox-root-1340"
+    className="MuiBox-root-1280 MuiBox-root-1339"
   />
   <div
-    className="MuiBox-root-1281 MuiBox-root-1341"
+    className="MuiBox-root-1280 MuiBox-root-1340"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1342"
+      className="makeStyles-root-1341"
       height={39}
       src="iov-logo.png"
       width={84}
