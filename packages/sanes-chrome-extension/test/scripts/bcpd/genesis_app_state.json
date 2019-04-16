@@ -36,5 +36,9 @@
       "name": "Another token of this chain",
       "sig_figs": 7
     }
-  ]
+  ],
+  "gconf": {
+    "cash:minimal_fee": {},
+    "cash:collector_address": "0000000000000000000000000000000000000000"
+  }
 }
