@@ -14,7 +14,7 @@ import {
   AccountManager,
   AccountInfo,
   AccountManagerChainConfig,
-} from './accountmanager';
+} from './accountManager';
 
 export class Persona {
   /**
