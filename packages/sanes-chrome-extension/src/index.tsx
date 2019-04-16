@@ -9,6 +9,7 @@ import Route from './routes';
 import { history } from './store/reducers';
 import { WELCOME_ROUTE } from './routes/paths';
 import { globalStyles } from './theme/globalStyles';
+import { PersonaProvider } from './context/PersonaProvider';
 
 const store = new Store();
 
@@ -23,9 +24,11 @@ store.ready().then(
         <Provider store={store}>
           <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
             <ToastProvider>
-              <ConnectedRouter history={history}>
-                <Component />
-              </ConnectedRouter>
+              <PersonaProvider>
+                <ConnectedRouter history={history}>
+                  <Component />
+                </ConnectedRouter>
+              </PersonaProvider>
             </ToastProvider>
           </MedulasThemeProvider>
         </Provider>,
