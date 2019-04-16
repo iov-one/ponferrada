@@ -7,25 +7,15 @@ import { WELCOME_ROUTE } from '../paths';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
 
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { PersonaManager } from '../../logic/persona';
 
 withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   let store: Store<RootState>;
-
-  beforeAll(async () => {
-    // All tests in this file should use the same persona instance to improve test speed
-    await PersonaManager.create();
-  });
 
   beforeEach(
     (): void => {
       store = aNewStore();
     }
   );
-
-  afterAll(() => {
-    PersonaManager.destroy();
-  });
 
   it(`should contain mnemonic string and one cancel button`, async (): Promise<
     void
@@ -39,7 +29,7 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
     );
 
     const phraseParagraph = paragraph.innerHTML;
-    expect(phraseParagraph).toBe(PersonaManager.get().mnemonic);
+    expect(phraseParagraph).toBe('');
 
     //Check "Back" button behavior
     const backBtn = TestUtils.findRenderedDOMComponentWithTag(
