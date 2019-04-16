@@ -119,7 +119,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 brew install jq
 brew install coreutils
-alias timeout=gtimeout
 
 # Add TMPDIR=/private/var/tmp before any bash script
 # TMPDIR=/private/var/tmp bash ./scripts/test_start.sh
