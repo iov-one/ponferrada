@@ -14,7 +14,7 @@ import {
   AccountManager,
   AccountInfo,
   AccountManagerChainConfig,
-} from './accountmanager';
+} from './accountManager';
 
 export class Persona {
   /**
@@ -70,9 +70,7 @@ export class Persona {
     this.accountManager = accountManager;
   }
 
-  // TODO: consistency: should all methods start with a verb (.getMenomic(), .getAccounts())
-  // or should we drop the "get" for getters (.mnemonic(), .accounts())?
-  public mnemonic(): string {
+  public get mnemonic(): string {
     const wallets = this.profile.wallets.value;
     const mnemonics = new Set(
       wallets.map(info => this.profile.printableSecret(info.id))

@@ -1,13 +1,11 @@
 import TestUtils from 'react-dom/test-utils';
 import { randomString } from '../../../utils/test/random';
-import {
-  SECOND_STEP_SIGNUP_ROUTE,
-  getMnemonic,
-} from '../components/ShowPhraseForm';
+import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
 import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
 import { sleep } from '../../../utils/timer';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
+import { PersonaManager } from '../../../logic/persona';
 
 export const submitAccountForm = async (
   AccountSubmitDom: React.Component,
@@ -87,7 +85,7 @@ export const handlePassPhrase = async (
     );
     expect(paragraphs.length).toBe(1);
     const phraseParagraph = paragraphs[0].innerHTML;
-    expect(phraseParagraph).toBe(await getMnemonic());
+    expect(phraseParagraph).toBe(PersonaManager.get().mnemonic);
   };
   // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
   await TestUtils.act(showMnemonic as any); //eslint-disable-line @typescript-eslint/no-explicit-any

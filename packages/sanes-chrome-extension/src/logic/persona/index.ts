@@ -1,2 +1,2 @@
 export * from './persona';
-export * from './personafactory';
+export * from './personaManager';

@@ -17,10 +17,9 @@ withChainsDescribe('Persona', () => {
     it('returns a mnemonic', async () => {
       const persona = await Persona.create();
 
-      const mnemonic = persona.mnemonic();
       expect(() => {
         // this constructor throws when the mnemonic string is not valid
-        new EnglishMnemonic(mnemonic);
+        new EnglishMnemonic(persona.mnemonic);
       }).not.toThrow();
 
       persona.destroy();
@@ -31,8 +30,7 @@ withChainsDescribe('Persona', () => {
         'until apple post diamond casual bridge bird solid inform size prize debris';
       const persona = await Persona.create(presetMnemonic);
 
-      const mnemonic = persona.mnemonic();
-      expect(mnemonic).toEqual(presetMnemonic);
+      expect(persona.mnemonic).toEqual(presetMnemonic);
 
       persona.destroy();
     });

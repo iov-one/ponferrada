@@ -14,7 +14,7 @@
     "start:firefox:test": "yarn use-config-test && yarn build && web-ext run --source-dir ./build/",
     "start:firefox:development": "yarn use-config-development && yarn build && web-ext run --source-dir ./build/",
     "start:firefox:production": "yarn use-config-production && yarn build && web-ext run --source-dir ./build/",
-    "test-dom": "yarn use-config-test && CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --forceExit --env=jsdom",
+    "test-dom": "yarn use-config-test && CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-e2e": "yarn use-config-test && CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-unit": "yarn use-config-test && CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test": "yarn test-unit && yarn test-dom && yarn test-e2e"

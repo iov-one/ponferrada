@@ -1,12 +1,11 @@
 import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
-import { getMnemonic } from '../signup/components/ShowPhraseForm';
 import { aNewStore } from '../../store';
 import TestUtils from 'react-dom/test-utils';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
-import { sleep } from '../../utils/timer';
+
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 
 withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
@@ -29,11 +28,8 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
       'p'
     );
 
-    // it takes some time until Persona is created and memonic inserted into the UI
-    await sleep(1000);
-
     const phraseParagraph = paragraph.innerHTML;
-    expect(phraseParagraph).toBe(await getMnemonic());
+    expect(phraseParagraph).toBe('');
 
     //Check "Back" button behavior
     const backBtn = TestUtils.findRenderedDOMComponentWithTag(
