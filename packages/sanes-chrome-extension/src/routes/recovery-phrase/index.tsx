@@ -3,7 +3,7 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import ShowRecoveryPhrase from './components/ShowRecoveryPhrase';
 import { RECOVERY_PHRASE_ROUTE } from '../paths';
 import { history } from '../../store/reducers';
-import { PersonaManager } from '../../logic/persona';
+import { PersonaManager, Persona } from '../../logic/persona';
 
 const onBack = (): void => {
   history.goBack();
@@ -15,7 +15,10 @@ const RecoveryPhrase = (): JSX.Element => {
   React.useEffect((): void => {
     // when this screen is created independent of app (e.g. storybook tests),
     // persona is undefined
-    const persona = PersonaManager.getWhenCreated();
+    let persona: Persona | undefined;
+    try {
+      persona = PersonaManager.get();
+    } catch (_) {}
     setMnemonic(persona ? persona.mnemonic : '');
   }, []);
 
