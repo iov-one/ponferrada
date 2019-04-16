@@ -21,6 +21,8 @@ describe('DOM > Feature > Signup', (): void => {
   );
 
   afterEach(async () => {
+    // Every signup test will create a Persona on its own. Here we make
+    // sure that the persona instance is destroyed after each test.
     await PersonaManager.destroy();
   });
 

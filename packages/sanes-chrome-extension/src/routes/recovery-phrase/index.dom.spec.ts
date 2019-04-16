@@ -13,6 +13,7 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   let store: Store<RootState>;
 
   beforeAll(async () => {
+    // All tests in this file should use the same persona instance to improve test speed
     await PersonaManager.create();
   });
 
