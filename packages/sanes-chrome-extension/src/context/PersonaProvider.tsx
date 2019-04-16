@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { AccountInfo } from '../logic/persona/accountManager';
 
-type Accounts = ReadonlyArray<string>;
+type Accounts = ReadonlyArray<AccountInfo>;
 
 export interface PersonaContextInterface {
   readonly accountNames: Accounts;
