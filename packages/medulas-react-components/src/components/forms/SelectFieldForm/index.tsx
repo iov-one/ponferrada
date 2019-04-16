@@ -101,19 +101,9 @@ const SelectFieldForm = ({
           readOnly
           role="button"
         />
-        <Image
-          noShrink
-          src={selectChevron}
-          alt="Phone Menu"
-          width={`${CHEVRON_WIDTH}`}
-          height="5"
-        />
+        <Image noShrink src={selectChevron} alt="Phone Menu" width={`${CHEVRON_WIDTH}`} height="5" />
       </div>
-      <Popper
-        open={isOpen}
-        anchorEl={inputRef.current}
-        placement="bottom-start"
-      >
+      <Popper open={isOpen} anchorEl={inputRef.current} placement="bottom-start">
         {() => (
           <Block marginTop={1}>
             <SelectItems selectedItem={value} items={items} action={onAction} />

@@ -18,13 +18,7 @@ interface Props extends TypographyProps {
   readonly link?: boolean;
 }
 
-const Typography = ({
-  children,
-  inline,
-  link,
-  className,
-  ...restProps
-}: Props): JSX.Element => {
+const Typography = ({ children, inline, link, className, ...restProps }: Props): JSX.Element => {
   const classes = useStyles();
   const compositeClass = classNames(className, {
     [classes.inline]: inline,

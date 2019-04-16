@@ -10,19 +10,8 @@ interface Props {
   readonly children?: React.ReactNode;
   readonly display?: string;
   //Flexbox Props
-  readonly flexDirection?:
-    | 'row'
-    | 'row-reverse'
-    | 'column'
-    | 'column-reverse'
-    | 'initial'
-    | 'inherit';
-  readonly flexWrap?:
-    | 'nowrap'
-    | 'wrap'
-    | 'wrap-reverse'
-    | 'initial'
-    | 'inherit';
+  readonly flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse' | 'initial' | 'inherit';
+  readonly flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse' | 'initial' | 'inherit';
   readonly justifyContent?:
     | 'flex-start'
     | 'flex-end'
@@ -31,14 +20,7 @@ interface Props {
     | 'space-around'
     | 'initial'
     | 'inherit';
-  readonly alignItems?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
+  readonly alignItems?: 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'initial' | 'inherit';
   readonly alignContent?:
     | 'stretch'
     | 'center'
@@ -99,11 +81,7 @@ interface Props {
 // See: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.d.ts
 const IovBlock = Box as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const Block = ({
-  children,
-  display = 'block',
-  ...restProps
-}: Props): JSX.Element => {
+const Block = ({ children, display = 'block', ...restProps }: Props): JSX.Element => {
   return (
     <IovBlock display={display} {...restProps}>
       {children}

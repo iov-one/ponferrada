@@ -31,33 +31,21 @@ const ToastStorybook = (): JSX.Element => {
           <Button onClick={onInfoToast}>Click to generate INFO toast</Button>
         </Block>
         <Typography>This should generate...</Typography>
-        <ToastContent
-          message="Hi INFO"
-          onClose={action('closing')}
-          variant={ToastVariant.INFO}
-        />
+        <ToastContent message="Hi INFO" onClose={action('closing')} variant={ToastVariant.INFO} />
       </Block>
       <Block marginBottom={10}>
         <Block marginBottom={2}>
           <Button onClick={onWarnToast}>Click to generate WARN toast</Button>
         </Block>
         <Typography>This should generate...</Typography>
-        <ToastContent
-          message="Hi WARN"
-          onClose={action('closing')}
-          variant={ToastVariant.WARNING}
-        />
+        <ToastContent message="Hi WARN" onClose={action('closing')} variant={ToastVariant.WARNING} />
       </Block>
       <Block marginBottom={10}>
         <Block marginBottom={2}>
           <Button onClick={onErrToast}>Click to generate ERROR toast</Button>
         </Block>
         <Typography>This should generate...</Typography>
-        <ToastContent
-          message="Hi ERR"
-          onClose={action('closing')}
-          variant={ToastVariant.ERROR}
-        />
+        <ToastContent message="Hi ERR" onClose={action('closing')} variant={ToastVariant.ERROR} />
       </Block>
     </Block>
   );

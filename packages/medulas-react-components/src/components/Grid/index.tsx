@@ -13,19 +13,8 @@ export interface SizingBreakpoint {
 interface Props {
   readonly children?: React.ReactNode;
   //Flexbox Props
-  readonly flexDirection?:
-    | 'row'
-    | 'row-reverse'
-    | 'column'
-    | 'column-reverse'
-    | 'initial'
-    | 'inherit';
-  readonly flexWrap?:
-    | 'nowrap'
-    | 'wrap'
-    | 'wrap-reverse'
-    | 'initial'
-    | 'inherit';
+  readonly flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse' | 'initial' | 'inherit';
+  readonly flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse' | 'initial' | 'inherit';
   readonly justifyContent?:
     | 'flex-start'
     | 'flex-end'
@@ -34,14 +23,7 @@ interface Props {
     | 'space-around'
     | 'initial'
     | 'inherit';
-  readonly alignItems?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
+  readonly alignItems?: 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'initial' | 'inherit';
   readonly alignContent?:
     | 'stretch'
     | 'center'

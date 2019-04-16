@@ -8,11 +8,7 @@ interface Props {
   readonly children: React.ReactNode;
 }
 
-const MedulasThemeProvider = ({
-  injectFonts = true,
-  injectStyles,
-  children,
-}: Props): JSX.Element => {
+const MedulasThemeProvider = ({ injectFonts = true, injectStyles, children }: Props): JSX.Element => {
   if (injectStyles) {
     injectStyles();
   }

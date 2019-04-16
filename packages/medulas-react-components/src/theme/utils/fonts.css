@@ -5,8 +5,7 @@
   src: local('Muli ExtraLight'), local('Muli-ExtraLight'),
     url('../assets/fonts/Muli/muli-v12-latin-200.woff2') format('woff2'),
     url('../assets/fonts/Muli/muli-v12-latin-200.woff') format('woff'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-200.ttf') format('truetype'); /* Safari, Android, iOS */
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-200.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 /* muli-300 - latin */
@@ -16,10 +15,8 @@
   font-weight: 300;
   src: local('Muli Light'), local('Muli-Light'),
     url('../assets/fonts/Muli/muli-v12-latin-300.woff2') format('woff2'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-300.woff') format('woff'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-300.ttf') format('truetype'); /* Safari, Android, iOS */
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-300.woff') format('woff'),
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-300.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 /* muli-regular - latin */
@@ -29,10 +26,8 @@
   font-weight: 400;
   src: local('Muli Regular'), local('Muli-Regular'),
     url('../assets/fonts/Muli/muli-v12-latin-regular.woff2') format('woff2'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-regular.woff') format('woff'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-regular.ttf') format('truetype'); /* Safari, Android, iOS */
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-regular.woff') format('woff'),
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-regular.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 /* muli-600 - latin */
@@ -42,8 +37,6 @@
   font-weight: 600;
   src: local('Muli SemiBold'), local('Muli-SemiBold'),
     url('../assets/fonts/Muli/muli-v12-latin-600.woff2') format('woff2'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-600.woff') format('woff'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/Muli/muli-v12-latin-600.ttf') format('truetype'); /* Safari, Android, iOS */
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-600.woff') format('woff'),
+    /* Super Modern Browsers */ url('../assets/fonts/Muli/muli-v12-latin-600.ttf') format('truetype'); /* Safari, Android, iOS */
 }

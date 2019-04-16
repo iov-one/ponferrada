@@ -66,26 +66,13 @@ storiesOf('Components/forms', module).add(
           />
         </GridItem>
         <GridItem marginBottom={4} width={gridItemWidth}>
-          <TextField
-            name="field-filled"
-            label="Filled"
-            defaultValue="test*iov"
-          />
+          <TextField name="field-filled" label="Filled" defaultValue="test*iov" />
         </GridItem>
         <GridItem marginBottom={4} width={gridItemWidth}>
-          <TextField
-            disabled
-            name="standard-disabled"
-            label="Disabled"
-            defaultValue="Disabled input"
-          />
+          <TextField disabled name="standard-disabled" label="Disabled" defaultValue="Disabled input" />
         </GridItem>
         <GridItem marginBottom={4} width={gridItemWidth}>
-          <TextField
-            name="standard-with-placeholder"
-            label="Empty"
-            placeholder="IOV or wallet address"
-          />
+          <TextField name="standard-with-placeholder" label="Empty" placeholder="IOV or wallet address" />
         </GridItem>
       </Grid>
     </Storybook>

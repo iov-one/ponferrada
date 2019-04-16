@@ -11,14 +11,7 @@ interface Props extends ImgProps {
   readonly iconClasses?: string;
 }
 
-const CircleImage = ({
-  borderColor,
-  circleColor,
-  icon,
-  dia,
-  iconClasses,
-  ...props
-}: Props): JSX.Element => {
+const CircleImage = ({ borderColor, circleColor, icon, dia, iconClasses, ...props }: Props): JSX.Element => {
   return (
     <Block
       display="flex"

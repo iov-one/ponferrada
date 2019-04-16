@@ -36,11 +36,7 @@ const FormStory = (): JSX.Element => {
     validate,
   });
 
-  const items = [
-    { name: 'Create new account' },
-    { name: 'IOV2' },
-    { name: 'ETH3' },
-  ];
+  const items = [{ name: 'Create new account' }, { name: 'IOV2' }, { name: 'ETH3' }];
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -56,9 +52,7 @@ const FormStory = (): JSX.Element => {
           initial="IOV2"
           form={form}
           fieldName={SELECT_FIELD}
-          onChangeCallback={(item: Item) =>
-            console.log(`received ---> ${item.name}`)
-          }
+          onChangeCallback={(item: Item) => console.log(`received ---> ${item.name}`)}
         />
       </Block>
 
