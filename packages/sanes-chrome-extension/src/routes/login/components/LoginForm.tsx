@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Button from 'medulas-react-components/lib/components/Button';
 import Block from 'medulas-react-components/lib/components/Block';
-import Form, {
-  useForm,
-} from 'medulas-react-components/lib/components/forms/Form';
+import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 
 export const PASSWORD_FIELD = 'passwordInputField';
@@ -33,11 +31,7 @@ const LoginForm = ({ onLogin, validate }: Props): JSX.Element => {
       </Block>
       <Block display="flex" justifyContent="center">
         <Block width={120}>
-          <Button
-            fullWidth
-            type="submit"
-            disabled={invalid || pristine || submitting}
-          >
+          <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
             Continue
           </Button>
         </Block>

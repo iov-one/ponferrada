@@ -10,11 +10,7 @@ import {
   algorithmForCodec,
   pathBuilderForCodec,
 } from '../config';
-import {
-  AccountManager,
-  AccountInfo,
-  AccountManagerChainConfig,
-} from './accountManager';
+import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
 
 export class Persona {
   /**
@@ -28,9 +24,7 @@ export class Persona {
     const config = await getConfigurationFile();
 
     const entropyBytes = 16;
-    const mnemonic =
-      fixedMnemonic ||
-      Bip39.encode(await Random.getBytes(entropyBytes)).asString();
+    const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
     const profile = await createUserProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
 
@@ -60,11 +54,7 @@ export class Persona {
   private readonly accountManager: AccountManager;
 
   /** The given signer and accountsManager must share the same UserProfile */
-  private constructor(
-    profile: UserProfile,
-    signer: MultiChainSigner,
-    accountManager: AccountManager
-  ) {
+  private constructor(profile: UserProfile, signer: MultiChainSigner, accountManager: AccountManager) {
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
@@ -72,14 +62,10 @@ export class Persona {
 
   public get mnemonic(): string {
     const wallets = this.profile.wallets.value;
-    const mnemonics = new Set(
-      wallets.map(info => this.profile.printableSecret(info.id))
-    );
+    const mnemonics = new Set(wallets.map(info => this.profile.printableSecret(info.id)));
 
     if (mnemonics.size !== 1) {
-      throw new Error(
-        'Found multiple different mnemoics in different wallets. This is not supported.'
-      );
+      throw new Error('Found multiple different mnemoics in different wallets. This is not supported.');
     }
 
     return mnemonics.values().next().value;
@@ -89,9 +75,7 @@ export class Persona {
     return this.accountManager.accounts();
   }
 
-  public async getBalances(
-    accountIndex: number
-  ): Promise<ReadonlyArray<Amount>> {
+  public async getBalances(accountIndex: number): Promise<ReadonlyArray<Amount>> {
     const accounts = await this.accountManager.accounts();
     if (accounts.length <= accountIndex) {
       throw new Error('Account does not exist');

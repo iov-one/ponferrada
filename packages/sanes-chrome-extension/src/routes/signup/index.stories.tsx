@@ -11,10 +11,7 @@ storiesOf('Routes/Signup', module)
     'New account page',
     (): JSX.Element => (
       <Storybook>
-        <NewAccountForm
-          onBack={action('back in history')}
-          onSignup={action('next step')}
-        />
+        <NewAccountForm onBack={action('back in history')} onSignup={action('next step')} />
       </Storybook>
     )
   )
@@ -22,10 +19,7 @@ storiesOf('Routes/Signup', module)
     'Recovery Phrase page',
     (): JSX.Element => (
       <Storybook>
-        <ShowPhraseForm
-          onBack={action('back in history')}
-          onHintPassword={action('hint step')}
-        />
+        <ShowPhraseForm onBack={action('back in history')} onHintPassword={action('hint step')} />
       </Storybook>
     )
   )
@@ -33,10 +27,7 @@ storiesOf('Routes/Signup', module)
     'Security hint page',
     (): JSX.Element => (
       <Storybook>
-        <SecurityHintForm
-          onBack={action('back in history')}
-          onSaveHint={action('save hint')}
-        />
+        <SecurityHintForm onBack={action('back in history')} onSaveHint={action('save hint')} />
       </Storybook>
     )
   );

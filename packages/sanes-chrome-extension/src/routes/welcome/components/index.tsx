@@ -15,11 +15,7 @@ const login = (): void => {
 };
 
 const Layout = (): JSX.Element => (
-  <PageLayout
-    id={WELCOME_ROUTE}
-    primaryTitle="Welcome"
-    title="to your IOV manager"
-  >
+  <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to your IOV manager">
     <Typography variant="body1" inline>
       This plugin lets you manage all your accounts in one place.
     </Typography>

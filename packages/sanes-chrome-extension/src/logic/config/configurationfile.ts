@@ -36,6 +36,4 @@ const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
   return json;
 };
 
-export const getConfigurationFile = singleton<typeof loadConfigurationFile>(
-  loadConfigurationFile
-);
+export const getConfigurationFile = singleton<typeof loadConfigurationFile>(loadConfigurationFile);

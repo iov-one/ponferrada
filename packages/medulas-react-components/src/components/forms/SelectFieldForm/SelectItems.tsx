@@ -15,11 +15,7 @@ interface ListItemProps {
   readonly items: ReadonlyArray<Item>;
 }
 
-const ListItems = ({
-  action,
-  items,
-  selectedItem,
-}: ListItemProps): JSX.Element => {
+const ListItems = ({ action, items, selectedItem }: ListItemProps): JSX.Element => {
   return (
     <List component="nav">
       {items.map(
@@ -29,19 +25,10 @@ const ListItems = ({
               <ListItemText
                 disableTypography
                 primary={<Typography variant="body1">{item.name}</Typography>}
-                secondary={
-                  <Typography color="textSecondary">
-                    {item.additionalText}
-                  </Typography>
-                }
+                secondary={<Typography color="textSecondary">{item.additionalText}</Typography>}
               />
               {item.name === selectedItem && (
-                <Img
-                  src={selectedTick}
-                  alt="Selected Ticker"
-                  width={24}
-                  height={24}
-                />
+                <Img src={selectedTick} alt="Selected Ticker" width={24} height={24} />
               )}
             </ListItem>
             <Hairline />

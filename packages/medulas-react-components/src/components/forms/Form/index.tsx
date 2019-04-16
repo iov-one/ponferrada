@@ -18,8 +18,6 @@ interface Props {
   readonly children: React.ReactNode;
 }
 
-const Form = ({ onSubmit, children }: Props): JSX.Element => (
-  <form onSubmit={onSubmit}>{children}</form>
-);
+const Form = ({ onSubmit, children }: Props): JSX.Element => <form onSubmit={onSubmit}>{children}</form>;
 
 export default Form;

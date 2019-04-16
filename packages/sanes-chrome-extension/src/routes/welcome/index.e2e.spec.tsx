@@ -11,10 +11,7 @@ describe('DOM > Welcome route', (): void => {
       headless: false,
       devtools: true,
       // slowMo: 200,
-      args: [
-        `--disable-extensions-except=${CRX_PATH}`,
-        `--load-extension=${CRX_PATH}`,
-      ],
+      args: [`--disable-extensions-except=${CRX_PATH}`, `--load-extension=${CRX_PATH}`],
       defaultViewport: {
         width: EXTENSION_WIDTH,
         height: EXTENSION_HEIGHT,
@@ -30,14 +27,11 @@ describe('DOM > Welcome route', (): void => {
 
   it('loads correctly', async (): Promise<void> => {
     const page: Page = await browser.newPage();
-    await page.goto(
-      'chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html',
-      { waitUntil: 'networkidle2' }
-    );
+    await page.goto('chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html', {
+      waitUntil: 'networkidle2',
+    });
 
-    const inner = await page.evaluate(async (id: string): Promise<
-      string | undefined
-    > => {
+    const inner = await page.evaluate(async (id: string): Promise<string | undefined> => {
       const element = document.getElementById(id);
       if (!element) {
         return undefined;

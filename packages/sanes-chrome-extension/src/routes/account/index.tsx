@@ -6,9 +6,7 @@ import Image from 'medulas-react-components/lib/components/Image';
 import iovLogo from '../../assets/iov-logo.png';
 import { SIGNUP_ROUTE } from '../paths';
 import Account from './components/Account';
-import SelectField, {
-  Item,
-} from 'medulas-react-components/lib/components/forms/SelectFieldForm';
+import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
 import { Persona, PersonaManager } from '../../logic/persona';
@@ -27,9 +25,7 @@ const AccountView = (): JSX.Element => {
       const storedPersona = await PersonaManager.get();
       persona.current = storedPersona;
       let actualItems: Item[] = [];
-      Object.keys(persona.current.getAccounts()).forEach((acc: string) =>
-        actualItems.push({ name: acc })
-      );
+      Object.keys(persona.current.getAccounts()).forEach((acc: string) => actualItems.push({ name: acc }));
       actualItems.push({ name: CREATE_NEW_ONE });
       setAccounts(actualItems);
     }
@@ -56,12 +52,7 @@ const AccountView = (): JSX.Element => {
   };
 
   return (
-    <Block
-      id={`${SIGNUP_ROUTE}_first`}
-      paddingRight={2}
-      paddingLeft={2}
-      paddingTop={2}
-    >
+    <Block id={`${SIGNUP_ROUTE}_first`} paddingRight={2} paddingLeft={2} paddingTop={2}>
       <Typography color="primary" variant="h4" inline>
         New
       </Typography>

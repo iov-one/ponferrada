@@ -2,11 +2,7 @@ import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
 import { aNewStore } from '../../store';
 import { mayTestChains } from '../../utils/test/testExecutor';
-import {
-  submitAccountForm,
-  handlePassPhrase,
-  handleSecurityHint,
-} from './test/fillSignupForm';
+import { submitAccountForm, handlePassPhrase, handleSecurityHint } from './test/fillSignupForm';
 import { travelToSignup } from './test/travelToSignup';
 import { randomString } from '../../utils/test/random';
 import { PersonaManager } from '../../logic/persona';

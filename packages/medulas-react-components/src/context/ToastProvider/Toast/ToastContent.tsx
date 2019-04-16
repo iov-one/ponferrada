@@ -1,10 +1,4 @@
-import {
-  IconButton,
-  SnackbarContent,
-  Theme,
-  createStyles,
-  makeStyles,
-} from '@material-ui/core';
+import { IconButton, SnackbarContent, Theme, createStyles, makeStyles } from '@material-ui/core';
 import classNames from 'classnames';
 import * as React from 'react';
 import Block from '../../../components/Block';
@@ -65,12 +59,7 @@ interface Props {
   readonly variant: ToastVariant;
 }
 
-const ToastContent = ({
-  className,
-  message,
-  onClose,
-  variant,
-}: Props): JSX.Element => {
+const ToastContent = ({ className, message, onClose, variant }: Props): JSX.Element => {
   const Icon = variantIcon[variant];
   const classes = useStyles();
 
@@ -89,12 +78,7 @@ const ToastContent = ({
         </Block>
       }
       action={[
-        <IconButton
-          key="close"
-          aria-label="Close"
-          color="secondary"
-          onClick={onClose}
-        >
+        <IconButton key="close" aria-label="Close" color="secondary" onClick={onClose}>
           <Image src={CloseIcon} alt="Close" width={20} height={20} />
         </IconButton>,
       ]}

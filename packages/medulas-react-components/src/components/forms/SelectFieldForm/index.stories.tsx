@@ -11,11 +11,7 @@ const SelectFieldForm = (): JSX.Element => {
     onSubmit: action('Form submit'),
   });
 
-  const items = [
-    { name: 'Create new account' },
-    { name: 'IOV2' },
-    { name: 'ETH3' },
-  ];
+  const items = [{ name: 'Create new account' }, { name: 'IOV2' }, { name: 'ETH3' }];
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -24,9 +20,7 @@ const SelectFieldForm = (): JSX.Element => {
         initial="IOV2"
         form={form}
         fieldName="SELECT_FIELD_ATTR"
-        onChangeCallback={(item: Item) =>
-          console.log(`received ---> ${item.name}`)
-        }
+        onChangeCallback={(item: Item) => console.log(`received ---> ${item.name}`)}
       />
     </Form>
   );

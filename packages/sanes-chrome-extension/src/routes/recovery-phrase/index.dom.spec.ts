@@ -17,25 +17,17 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
     }
   );
 
-  it(`should contain mnemonic string and one cancel button`, async (): Promise<
-    void
-  > => {
+  it(`should contain mnemonic string and one cancel button`, async (): Promise<void> => {
     const RecoveryPhraseDom = await travelToRecoveryPhrase(store);
 
     //Check for mnemonic text
-    const paragraph = TestUtils.findRenderedDOMComponentWithTag(
-      RecoveryPhraseDom,
-      'p'
-    );
+    const paragraph = TestUtils.findRenderedDOMComponentWithTag(RecoveryPhraseDom, 'p');
 
     const phraseParagraph = paragraph.innerHTML;
     expect(phraseParagraph).toBe('');
 
     //Check "Back" button behavior
-    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
-      RecoveryPhraseDom,
-      'button'
-    );
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'button');
 
     expect(buttons.length).toBe(2);
 

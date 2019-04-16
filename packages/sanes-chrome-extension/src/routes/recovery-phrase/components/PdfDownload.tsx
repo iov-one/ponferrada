@@ -21,9 +21,7 @@ const PdfDownload = ({ mnemonic }: Props): JSX.Element => {
     pdf.save('recovery-phrase.pdf');
   };
 
-  return (
-    <DownloadButton onDownload={generatePdf}>Export as .PDF</DownloadButton>
-  );
+  return <DownloadButton onDownload={generatePdf}>Export as .PDF</DownloadButton>;
 };
 
 export default PdfDownload;

@@ -37,10 +37,7 @@ export interface DownloadButtonProps {
   readonly children?: string;
 }
 
-const DownloadCSV = ({
-  onDownload,
-  children,
-}: DownloadButtonProps): JSX.Element => {
+const DownloadCSV = ({ onDownload, children }: DownloadButtonProps): JSX.Element => {
   const fabClasses = useStyles();
   const theme = useTheme<Theme>();
 

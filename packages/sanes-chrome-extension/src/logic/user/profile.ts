@@ -1,12 +1,6 @@
-import {
-  Ed25519HdWallet,
-  Secp256k1HdWallet,
-  UserProfile,
-} from '@iov/keycontrol';
+import { Ed25519HdWallet, Secp256k1HdWallet, UserProfile } from '@iov/keycontrol';
 
-export async function createUserProfile(
-  mnemonic: string
-): Promise<UserProfile> {
+export async function createUserProfile(mnemonic: string): Promise<UserProfile> {
   const edKeyring = Ed25519HdWallet.fromMnemonic(mnemonic);
   const secKeyring = Secp256k1HdWallet.fromMnemonic(mnemonic);
   const profile = new UserProfile();

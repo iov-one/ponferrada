@@ -44,9 +44,7 @@ export const ToastProvider = ({ children }: Props): JSX.Element => {
     close: closeToast,
   };
 
-  const invariantToastConfig = singleton(
-    (toastConfig): ToastContextInterface => toastConfig
-  );
+  const invariantToastConfig = singleton((toastConfig): ToastContextInterface => toastConfig);
 
   return (
     <ToastContext.Provider value={invariantToastConfig(toastConfig)}>

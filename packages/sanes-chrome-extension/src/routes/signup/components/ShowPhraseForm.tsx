@@ -29,10 +29,7 @@ export interface Props {
 const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
 
-  const onShowMnemonic = async (
-    _: React.ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ): Promise<void> => {
+  const onShowMnemonic = async (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): Promise<void> => {
     if (checked) {
       setMnemonic(await getMnemonic());
       return;
@@ -42,11 +39,7 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
   };
 
   return (
-    <PageLayout
-      id={SECOND_STEP_SIGNUP_ROUTE}
-      primaryTitle="New"
-      title="Account"
-    >
+    <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
@@ -56,9 +49,8 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
           </Block>
           <Tooltip>
             <Typography variant="body2">
-              Your Recovery Phrase are 12 random words that are set in a
-              particular order that acts as a tool to recover or back up your
-              wallet on any platform.
+              Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool
+              to recover or back up your wallet on any platform.
             </Typography>
           </Tooltip>
         </Block>

@@ -22,12 +22,7 @@ interface Props {
   readonly variant?: ToastVariant;
 }
 
-export const Toast = ({
-  open,
-  onClose,
-  message = '',
-  variant = ToastVariant.INFO,
-}: Props): JSX.Element => {
+export const Toast = ({ open, onClose, message = '', variant = ToastVariant.INFO }: Props): JSX.Element => {
   return (
     <Snackbar
       id="toast-provider"
@@ -36,11 +31,7 @@ export const Toast = ({
       autoHideDuration={5000}
       onClose={onClose}
     >
-      {open ? (
-        <ToastContent onClose={onClose} variant={variant} message={message} />
-      ) : (
-        <SnackbarContent />
-      )}
+      {open ? <ToastContent onClose={onClose} variant={variant} message={message} /> : <SnackbarContent />}
     </Snackbar>
   );
 };

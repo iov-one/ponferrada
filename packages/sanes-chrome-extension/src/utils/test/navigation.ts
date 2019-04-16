@@ -3,10 +3,7 @@ import { Store } from 'redux';
 const MAX_TIMES_EXECUTED = 35;
 const INTERVAL = 500;
 
-export const whenOnNavigatedToRoute = (
-  refreshStore: Store,
-  desiredRoute: string
-): Promise<void> =>
+export const whenOnNavigatedToRoute = (refreshStore: Store, desiredRoute: string): Promise<void> =>
   new Promise(
     (resolve, reject): void => {
       let times = 0;

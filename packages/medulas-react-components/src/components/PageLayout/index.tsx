@@ -11,12 +11,7 @@ interface Props {
   readonly title: string;
 }
 
-const PageLayout = ({
-  id,
-  children,
-  title,
-  primaryTitle,
-}: Props): JSX.Element => {
+const PageLayout = ({ id, children, title, primaryTitle }: Props): JSX.Element => {
   return (
     <Block
       display="flex"
@@ -40,12 +35,7 @@ const PageLayout = ({
         {children}
       </Block>
       <Block flexGrow={1} />
-      <Block
-        marginBottom={2}
-        marginTop={2}
-        justifyContent="flex-end"
-        textAlign="center"
-      >
+      <Block marginBottom={2} marginTop={2} justifyContent="flex-end" textAlign="center">
         <Image src={iovLogo} alt="IOV logo" width={84} height={39} />
       </Block>
     </Block>

@@ -71,18 +71,11 @@ const ReceiverAddress = ({ positionedClass }: Props) => {
   return (
     <Paper className={positionedClass} classes={paperClasses}>
       <label className={classes.toLabel}>To</label>
-      <TextField
-        placeholder="IOV or wallet address"
-        variant="outlined"
-        classes={textFieldClasses}
-      />
+      <TextField placeholder="IOV or wallet address" variant="outlined" classes={textFieldClasses} />
       <label className={classes.validityLabel}>Validity label</label>
       <div className={classes.tooltipContainer}>
         <label className={classes.tooltipLabel}>How it works</label>
-        <FontAwesomeIcon
-          icon={faQuestionCircle}
-          className={classes.tooltipIcon}
-        />
+        <FontAwesomeIcon icon={faQuestionCircle} className={classes.tooltipIcon} />
       </div>
     </Paper>
   );

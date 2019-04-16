@@ -28,9 +28,7 @@ const useStyles = makeStyles(
         height: '1em',
         '&::before': {
           borderWidth: '0 1em 1em 1em',
-          borderColor: `transparent transparent ${
-            theme.palette.common.white
-          } transparent`,
+          borderColor: `transparent transparent ${theme.palette.common.white} transparent`,
         },
       },
       '&[x-placement*="top"] $arrow': {
@@ -41,9 +39,7 @@ const useStyles = makeStyles(
         height: '1em',
         '&::before': {
           borderWidth: '1em 1em 0 1em',
-          borderColor: `${
-            theme.palette.common.white
-          } transparent transparent transparent`,
+          borderColor: `${theme.palette.common.white} transparent transparent transparent`,
         },
       },
       '&[x-placement*="right"] $arrow': {
@@ -53,9 +49,7 @@ const useStyles = makeStyles(
         width: '1em',
         '&::before': {
           borderWidth: '1em 1em 1em 0',
-          borderColor: `transparent ${
-            theme.palette.common.white
-          } transparent transparent`,
+          borderColor: `transparent ${theme.palette.common.white} transparent transparent`,
         },
       },
       '&[x-placement*="left"] $arrow': {
@@ -65,9 +59,7 @@ const useStyles = makeStyles(
         width: '1em',
         '&::before': {
           borderWidth: '1em 0 1em 1em',
-          borderColor: `transparent transparent transparent ${
-            theme.palette.common.white
-          }`,
+          borderColor: `transparent transparent transparent ${theme.palette.common.white}`,
         },
       },
     },
@@ -125,12 +117,7 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <div className={classes.container} ref={tooltipRef} onClick={toggle}>
-        <Image
-          src={infoNormal}
-          alt="Info"
-          width={DEFAULT_HEIGHT}
-          height={DEFAULT_HEIGHT}
-        />
+        <Image src={infoNormal} alt="Info" width={DEFAULT_HEIGHT} height={DEFAULT_HEIGHT} />
       </div>
 
       <Popper

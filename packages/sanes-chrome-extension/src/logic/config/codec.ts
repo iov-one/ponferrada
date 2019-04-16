@@ -57,10 +57,7 @@ export function pathBuilderForCodec(
   return pathBuilder;
 }
 
-export function chainConnector(
-  codec: CodecType,
-  nodes: ReadonlyArray<string>
-): ChainConnector {
+export function chainConnector(codec: CodecType, nodes: ReadonlyArray<string>): ChainConnector {
   const url = nodes[0];
   switch (codec) {
     case CodecType.Bns:

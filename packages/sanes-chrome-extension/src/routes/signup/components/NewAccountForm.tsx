@@ -34,10 +34,7 @@ const validate = (values: object): object => {
     errors[PASSWORD_FIELD] = 'Password should have at least 8 characters';
   }
 
-  if (
-    formValues[ACCOUNT_NAME_FIELD] &&
-    formValues[ACCOUNT_NAME_FIELD].length < 8
-  ) {
+  if (formValues[ACCOUNT_NAME_FIELD] && formValues[ACCOUNT_NAME_FIELD].length < 8) {
     errors[ACCOUNT_NAME_FIELD] = 'Username should have at least 8 characters';
   }
 
@@ -106,11 +103,7 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
             </Back>
           </Block>
           <Block width={120}>
-            <Button
-              fullWidth
-              type="submit"
-              disabled={invalid || pristine || submitting}
-            >
+            <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
               Continue
             </Button>
           </Block>
