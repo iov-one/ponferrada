@@ -41,8 +41,8 @@ fold_end
 # Test
 #
 fold_start "yarn-tests"
-source ./packages/sanes-chrome-extension/test/scripts/test_start.sh
+bash ./packages/sanes-chrome-extension/test/scripts/test_start.sh
 export CHAINS_ENABLED=1
 yarn test
-# source ./packages/sanes-chrome-extension/test/scripts/test_stop.sh
+bash ./packages/sanes-chrome-extension/test/scripts/test_stop.sh
 fold_end
