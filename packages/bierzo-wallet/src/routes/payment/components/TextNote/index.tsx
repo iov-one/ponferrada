@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TextNote = ({ positionedClass }: Props) => {
+export const TextNote = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const paperClasses = {
@@ -47,5 +47,3 @@ const TextNote = ({ positionedClass }: Props) => {
     </Paper>
   );
 };
-
-export default TextNote;

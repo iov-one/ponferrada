@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CurrencyToSend = ({ positionedClass }: Props) => {
+export const CurrencyToSend = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const paperClasses = {
@@ -100,5 +100,3 @@ const CurrencyToSend = ({ positionedClass }: Props) => {
     </Paper>
   );
 };
-
-export default CurrencyToSend;

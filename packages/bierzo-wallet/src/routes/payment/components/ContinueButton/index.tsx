@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ContinueButton = ({ positionedClass }: Props) => {
+export const ContinueButton = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const buttonClasses = {
@@ -27,5 +27,3 @@ const ContinueButton = ({ positionedClass }: Props) => {
     </Button>
   );
 };
-
-export default ContinueButton;

@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ReceiverAddress = ({ positionedClass }: Props) => {
+export const ReceiverAddress = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const paperClasses = {
@@ -77,5 +77,3 @@ const ReceiverAddress = ({ positionedClass }: Props) => {
     </Paper>
   );
 };
-
-export default ReceiverAddress;
