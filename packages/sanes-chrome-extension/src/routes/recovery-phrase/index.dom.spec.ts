@@ -32,11 +32,14 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
     expect(phraseParagraph).toBe('');
 
     //Check "Back" button behavior
-    const backBtn = TestUtils.findRenderedDOMComponentWithTag(
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(
       RecoveryPhraseDom,
       'button'
     );
 
+    expect(buttons.length).toBe(2);
+
+    const backBtn = buttons[1];
     TestUtils.act(
       (): void => {
         TestUtils.Simulate.click(backBtn);

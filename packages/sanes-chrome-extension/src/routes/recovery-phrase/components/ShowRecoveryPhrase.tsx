@@ -2,6 +2,7 @@ import * as React from 'react';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import Back from 'medulas-react-components/lib/components/Button/Back';
+import PdfDownload from './PdfDownload';
 
 export interface Props {
   readonly mnemonic: string;
@@ -20,9 +21,7 @@ const ShowRecoveryPhrase = ({ onBack, mnemonic }: Props): JSX.Element => {
       </Block>
 
       <Block display="flex" justifyContent="flex-end" marginTop={3}>
-        <Typography variant="subtitle2" inline color="primary">
-          Get PDF button placement
-        </Typography>
+        <PdfDownload mnemonic={mnemonic} />
       </Block>
 
       <Block
