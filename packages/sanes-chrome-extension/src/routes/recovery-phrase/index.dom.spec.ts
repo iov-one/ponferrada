@@ -1,22 +1,30 @@
 import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
-import { getMnemonic } from '../signup/components/ShowPhraseForm';
 import { aNewStore } from '../../store';
 import TestUtils from 'react-dom/test-utils';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../paths';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
-import { sleep } from '../../utils/timer';
+
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { PersonaManager } from '../../logic/persona';
 
 withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   let store: Store<RootState>;
+
+  beforeAll(async () => {
+    await PersonaManager.create();
+  });
 
   beforeEach(
     (): void => {
       store = aNewStore();
     }
   );
+
+  afterAll(() => {
+    PersonaManager.destroy();
+  });
 
   it(`should contain mnemonic string and one cancel button`, async (): Promise<
     void
@@ -29,11 +37,8 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
       'p'
     );
 
-    // it takes some time until Persona is created and memonic inserted into the UI
-    await sleep(1000);
-
     const phraseParagraph = paragraph.innerHTML;
-    expect(phraseParagraph).toBe(await getMnemonic());
+    expect(phraseParagraph).toBe(PersonaManager.get().mnemonic);
 
     //Check "Back" button behavior
     const backBtn = TestUtils.findRenderedDOMComponentWithTag(

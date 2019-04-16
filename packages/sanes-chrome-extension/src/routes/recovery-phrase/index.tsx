@@ -3,7 +3,7 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import ShowRecoveryPhrase from './components/ShowRecoveryPhrase';
 import { RECOVERY_PHRASE_ROUTE } from '../paths';
 import { history } from '../../store/reducers';
-import { getMnemonic } from '../signup/components/ShowPhraseForm';
+import { PersonaManager } from '../../logic/persona';
 
 const onBack = (): void => {
   history.goBack();
@@ -13,7 +13,8 @@ const RecoveryPhrase = (): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
 
   React.useEffect((): void => {
-    getMnemonic().then((mnemonic: string): void => setMnemonic(mnemonic));
+    const mnemonic = PersonaManager.get().mnemonic;
+    setMnemonic(mnemonic);
   }, []);
 
   return (
