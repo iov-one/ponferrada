@@ -25,6 +25,13 @@ export class PersonaManager {
   }
 
   /**
+   * Gets the global Persona instance when there is one
+   */
+  public static getWhenCreated(): Persona | undefined {
+    return PersonaManager.instance;
+  }
+
+  /**
    * Destroys the global persona instance.
    *
    * Throws if instance does not exist, which indicates a bug in the app life cycle.

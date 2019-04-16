@@ -13,8 +13,10 @@ const RecoveryPhrase = (): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>('');
 
   React.useEffect((): void => {
-    const mnemonic = PersonaManager.get().mnemonic;
-    setMnemonic(mnemonic);
+    // when this screen is created independent of app (e.g. storybook tests),
+    // persona is undefined
+    const persona = PersonaManager.getWhenCreated();
+    setMnemonic(persona ? persona.mnemonic : '');
   }, []);
 
   return (
