@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: `0 ${theme.spacing(1)}px`,
     cursor: 'pointer',
   },
-  root: (props: RootStyleProps) => ({
-    fontSize: theme.typography.fontSize,
+  root: props => ({
+    fontSize: theme.typography.subtitle2.fontSize,
     height: '32px',
     maxWidth: props.maxWidth,
   }),
