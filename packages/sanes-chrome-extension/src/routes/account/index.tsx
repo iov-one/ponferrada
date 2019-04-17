@@ -27,8 +27,8 @@ const AccountView = (): JSX.Element => {
     async function fetchMyAccounts(): Promise<void> {
       const accounts = persona.accountNames;
       let actualItems: Item[] = [];
-      accounts.forEach((acc: AccountInfo) => actualItems.push({ name: acc.name }));
       actualItems.push({ name: CREATE_NEW_ONE });
+      accounts.forEach((acc: AccountInfo) => actualItems.push({ name: acc.name }));
       setAccounts(actualItems);
     }
 
