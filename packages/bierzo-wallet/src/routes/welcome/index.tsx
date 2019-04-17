@@ -14,18 +14,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const onPayment = () => {
+  history.push(PAYMENT_ROUTE);
+};
+
 export const Welcome = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.welcome}>
-      <button
-        onClick={() => {
-          history.push(PAYMENT_ROUTE);
-        }}
-      >
-        CLICK TO GO TO PAYMENT
-      </button>
+      <button onClick={onPayment}>CLICK TO GO TO PAYMENT</button>
     </div>
   );
 };
