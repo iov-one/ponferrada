@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { history } from '../../store';
 import { PAYMENT_ROUTE } from '../paths';
+import { ExtensionInteraction } from './components/ExtensionInteraction';
 
 const useStyles = makeStyles(theme => ({
   welcome: {
@@ -24,6 +25,7 @@ export const Welcome = () => {
   return (
     <div className={classes.welcome}>
       <button onClick={onPayment}>CLICK TO GO TO PAYMENT</button>
+      <ExtensionInteraction />
     </div>
   );
 };
