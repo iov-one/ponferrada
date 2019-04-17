@@ -11,9 +11,6 @@ import { globalStyles } from './theme/globalStyles';
 const store = configureStore();
 const rootEl = document.getElementById('root');
 
-//FIXME not redirecting to welcome on page load
-history.push(WELCOME_ROUTE);
-
 const render = (Component: React.ComponentType): void => {
   ReactDOM.render(
     <Provider store={store}>
@@ -28,6 +25,8 @@ const render = (Component: React.ComponentType): void => {
 };
 
 render(Router);
+
+history.push(WELCOME_ROUTE);
 
 if (module.hot) {
   module.hot.accept(
