@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   tooltipContainer: {
     display: 'flex',
     alignSelf: 'flex-end',
-    fontFamily: '"Muli Light", sans-serif',
     fontSize: '1.4rem',
     marginTop: '2.4rem',
   },
