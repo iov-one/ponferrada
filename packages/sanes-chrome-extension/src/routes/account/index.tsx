@@ -40,9 +40,6 @@ const AccountView = (): JSX.Element => {
       show('Feature coming soon. Stay tuned', ToastVariant.INFO);
       return;
     }
-
-    // const tokensPerAccount = calculate tokens from choosen acccount
-    // setTokens(tokensPerAccount)
   };
 
   return (
@@ -61,7 +58,7 @@ const AccountView = (): JSX.Element => {
       </Form>
       <Hairline space={2} />
       <Block marginBottom={4}>
-        <ListTxs title="Transations" txs={[]} />
+        <ListTxs title="Transations" txs={persona.txs} />
       </Block>
       <Block marginBottom={1}>
         <ListTxs title="Pending Transactions" txs={[]} />
