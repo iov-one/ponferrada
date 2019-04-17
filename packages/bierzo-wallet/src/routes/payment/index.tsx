@@ -1,12 +1,12 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
-import ContinueButton from './ContinueButton';
-import CurrencyToSend from './CurrencyToSend';
-import ReceiverAddress from './ReceiverAddress';
-import TextNote from './TextNote';
+import { ContinueButton } from './components/ContinueButton';
+import { CurrencyToSend } from './components/CurrencyToSend';
+import { ReceiverAddress } from './components/ReceiverAddress';
+import { TextNote } from './components/TextNote';
 
 const useStyles = makeStyles(theme => ({
-  wallet: {
+  payment: {
     backgroundColor: theme.palette.background.default,
     height: 'auto',
     minHeight: '100vh',
@@ -41,11 +41,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Wallet = () => {
+export const Payment = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.wallet}>
+    <div className={classes.payment}>
       <CurrencyToSend positionedClass={classes.currencyToSend} />
       <ReceiverAddress positionedClass={classes.receiverAddress} />
       <TextNote positionedClass={classes.textNote} />
@@ -53,5 +53,3 @@ const Wallet = () => {
     </div>
   );
 };
-
-export default Wallet;

@@ -1,27 +1,38 @@
+import { ConnectedRouter } from 'connected-react-router';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import { Router } from './routes';
+import { WELCOME_ROUTE } from './routes/paths';
+import { configureStore, history } from './store';
 import { globalStyles } from './theme/globalStyles';
 
+const store = configureStore();
 const rootEl = document.getElementById('root');
 
 const render = (Component: React.ComponentType): void => {
   ReactDOM.render(
-    <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-      <Component />
-    </MedulasThemeProvider>,
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
+          <Component />
+        </MedulasThemeProvider>
+      </ConnectedRouter>
+    </Provider>,
     rootEl
   );
 };
 
-render(App);
+render(Router);
+
+history.push(WELCOME_ROUTE);
 
 if (module.hot) {
   module.hot.accept(
-    './App',
+    './routes',
     (): void => {
-      const NextApp = require('./App').default;
+      const NextApp = require('./routes').default;
       render(NextApp);
     }
   );
