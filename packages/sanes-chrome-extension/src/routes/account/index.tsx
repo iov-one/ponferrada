@@ -70,10 +70,6 @@ const AccountView = (): JSX.Element => {
       <Block padding={2} marginTop={3} marginBottom={1}>
         <Account blockchainAccounts={['foo', 'bar', 'baz']} />
       </Block>
-      <Hairline space={1} />
-      <Block textAlign="center" marginBottom={1}>
-        <Image src={iovLogo} alt="IOV logo" />
-      </Block>
     </PageLayout>
   );
 };
