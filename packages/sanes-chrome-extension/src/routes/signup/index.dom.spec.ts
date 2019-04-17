@@ -6,6 +6,9 @@ import { submitAccountForm, handlePassPhrase, handleSecurityHint } from './test/
 import { travelToSignup } from './test/travelToSignup';
 import { randomString } from '../../utils/test/random';
 import { PersonaManager } from '../../logic/persona';
+import { ACCOUNT_NAME_FIELD } from './components/NewAccountForm';
+import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { ACCOUNT_STATUS_ROUTE } from '../paths';
 
 describe('DOM > Feature > Signup', (): void => {
   let store: Store<RootState>;
@@ -31,8 +34,7 @@ describe('DOM > Feature > Signup', (): void => {
       await submitAccountForm(signupDOM, accountName);
       await handlePassPhrase(signupDOM);
       await handleSecurityHint(signupDOM, accountName);
-
-      // TODO travel to correct view after signing up
+      await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
     },
     55000
   );
