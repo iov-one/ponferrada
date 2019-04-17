@@ -8,6 +8,7 @@ import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaManager } from '../../logic/persona';
+import { PersonaContext } from '../../context/PersonaProvider';
 
 const onBack = (): void => {
   history.goBack();
@@ -16,6 +17,7 @@ const onBack = (): void => {
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
   const accountName = React.useRef<string | null>(null);
+  const personaProvider = React.useContext(PersonaContext);
 
   const onNewAccount = (): void => setStep('first');
   const onShowPhrase = (): void => setStep('second');
@@ -31,21 +33,16 @@ const Signup = (): JSX.Element => {
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
+    // FIXME Use form values once db storage and multi account is supported on Persona
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     try {
       const persona = await PersonaManager.create();
-      const firstAccount = (await persona.getAccounts()).find(() => true);
-      if (!firstAccount) {
-        throw new Error('Signup create persona failed');
-      }
+      const accounts = await persona.getAccounts();
 
-      console.log(
-        `We successfuly have created a persona registered in ${firstAccount.identities.length} chains`
-      );
-
+      personaProvider.update(accounts, persona.mnemonic);
       onShowPhrase();
     } catch (err) {
       console.log('Error raised when creating persona');

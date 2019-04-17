@@ -5,6 +5,7 @@ import { createMemoryHistory, History } from 'history';
 import { ConnectedRouter, connectRouter } from 'connected-react-router';
 import { createStore, combineReducers } from 'redux';
 import * as React from 'react';
+import { PersonaProvider } from '../../context/PersonaProvider';
 
 const storybookHistory = createMemoryHistory();
 
@@ -25,7 +26,9 @@ export const SanesStorybook = ({ children }: Props): JSX.Element => {
     <Provider store={storybookStore}>
       <ConnectedRouter history={storybookHistory}>
         <Storybook>
-          <ToastProvider>{children}</ToastProvider>
+          <ToastProvider>
+            <PersonaProvider>{children}</PersonaProvider>
+          </ToastProvider>
         </Storybook>
       </ConnectedRouter>
     </Provider>

@@ -53,5 +53,3 @@ export const ToastProvider = ({ children }: Props): JSX.Element => {
     </ToastContext.Provider>
   );
 };
-
-export const ToastConsumer = ToastContext.Consumer;
