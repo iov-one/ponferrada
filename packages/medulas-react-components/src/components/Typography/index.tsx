@@ -11,16 +11,20 @@ const useStyles = makeStyles({
     textDecoration: 'underline',
     cursor: 'pointer',
   },
+  weight: props => ({
+    fontWeight: props.weight ? props.weight : 'regular',
+  }),
 });
 
 interface Props extends TypographyProps {
   readonly inline?: boolean;
   readonly link?: boolean;
+  readonly weight?: 'light' | 'regular' | 'semibold';
 }
 
-const Typography = ({ children, inline, link, className, ...restProps }: Props): JSX.Element => {
-  const classes = useStyles();
-  const compositeClass = classNames(className, {
+const Typography = ({ children, inline, link, className, weight, ...restProps }: Props): JSX.Element => {
+  const classes = useStyles({ weight });
+  const compositeClass = classNames(className, classes.weight, {
     [classes.inline]: inline,
     [classes.link]: link,
   });
