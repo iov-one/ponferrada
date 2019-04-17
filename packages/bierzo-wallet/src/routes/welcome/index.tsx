@@ -1,7 +1,7 @@
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
-import { history } from '../../store';
+import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
 
 const useStyles = makeStyles((theme: Theme) => ({

@@ -1,15 +1,22 @@
 import { routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { createRootReducer } from './reducers';
+import { history, reducer } from './reducers';
 
-export const history = createBrowserHistory();
+const composeEnhancers =
+  (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
+  compose;
 
 export const configureStore = () => {
-  const store = createStore(
-    createRootReducer(history),
-    compose(applyMiddleware(routerMiddleware(history)))
-  );
+  const store = createStore(reducer, composeEnhancers(applyMiddleware(routerMiddleware(history))));
+
+  if (process.env.NODE_ENV !== 'production' && module.hot) {
+    module.hot.accept(
+      './reducers',
+      (): void => {
+        store.replaceReducer(reducer);
+      }
+    );
+  }
 
   return store;
 };
