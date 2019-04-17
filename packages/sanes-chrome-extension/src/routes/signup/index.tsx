@@ -41,8 +41,8 @@ const Signup = (): JSX.Element => {
     try {
       const persona = await PersonaManager.create();
       const accounts = await persona.getAccounts();
-
-      personaProvider.update(accounts, persona.mnemonic);
+      const txs = await persona.getTxs();
+      personaProvider.update(accounts, persona.mnemonic, txs);
       onShowPhrase();
     } catch (err) {
       console.log('Error raised when creating persona');

@@ -11,6 +11,7 @@ import {
   pathBuilderForCodec,
 } from '../config';
 import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
+import { ProcessedTx } from '../../routes/account/components/ListTxs';
 
 export class Persona {
   /**
@@ -73,6 +74,11 @@ export class Persona {
 
   public async getAccounts(): Promise<ReadonlyArray<AccountInfo>> {
     return this.accountManager.accounts();
+  }
+
+  // TODO implement
+  public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
+    return [];
   }
 
   public async getBalances(accountIndex: number): Promise<ReadonlyArray<Amount>> {
