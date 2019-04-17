@@ -6,12 +6,12 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import Account from './components/Account';
 import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { AccountInfo } from '../../logic/persona/accountManager';
+import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
@@ -60,8 +60,11 @@ const AccountView = (): JSX.Element => {
         />
       </Form>
       <Hairline space={2} />
-      <Block padding={2} marginTop={3} marginBottom={1}>
-        <Account blockchainAccounts={['foo', 'bar', 'baz']} />
+      <Block marginBottom={4}>
+        <ListTxs title="Transations" txs={[]} />
+      </Block>
+      <Block marginBottom={1}>
+        <ListTxs title="Pending Transactions" txs={[]} />
       </Block>
     </PageLayout>
   );
