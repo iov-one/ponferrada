@@ -13,7 +13,7 @@ import { SIGNUP_ROUTE } from '../../paths';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
-const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
+export const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
 
 export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 
