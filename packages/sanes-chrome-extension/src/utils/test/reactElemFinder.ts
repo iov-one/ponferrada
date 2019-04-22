@@ -1,4 +1,5 @@
 import TestUtils from 'react-dom/test-utils';
+import { Page } from 'puppeteer';
 
 const MAX_TIMES_EXECUTED = 35;
 const INTERVAL = 500;
@@ -32,3 +33,11 @@ export const findRenderedDOMComponentWithId = (
       }, INTERVAL);
     }
   );
+
+export const findRenderedE2EComponentWithId = async (page: Page, elementId: string): Promise<void> => {
+  const selector = `#${elementId}`;
+  const elem = await page.$(selector.replace('/', '\\/'));
+  if (!elem) {
+    throw new Error(`Unable to find element with id: ${elementId}.`);
+  }
+};
