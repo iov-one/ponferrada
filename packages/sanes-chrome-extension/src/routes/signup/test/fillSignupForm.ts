@@ -5,7 +5,7 @@ import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
 } from '../../../utils/test/reactElemFinder';
-import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
+import { SECURITY_HINT_STEP_SIGNUP_ROUTE, SECURITY_HINT } from '../components/SecurityHintForm';
 import { sleep } from '../../../utils/timer';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
 import { PersonaManager } from '../../../logic/persona';
@@ -132,6 +132,15 @@ export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Prom
   );
 
   await findRenderedDOMComponentWithId(RecoveryPhraseDom, SECURITY_HINT_STEP_SIGNUP_ROUTE);
+};
+
+export const handleSecurityHintE2E = async (page: Page, securityHint: string): Promise<void> => {
+  await page.type(`input[name="${SECURITY_HINT}"]`, securityHint);
+
+  await page.click('button[type="submit"]');
+
+  //TODO: check for proper redirect here after logic will be implmeneted
+  //await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
 };
 
 export const handleSecurityHint = async (

@@ -1,7 +1,7 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../theme/constants';
 import { travelToSignupNewAccountStep } from './test/travelToSignup';
-import { submitAccountFormE2E, handlePassPhrase2E } from './test/fillSignupForm';
+import { submitAccountFormE2E, handlePassPhrase2E, handleSecurityHintE2E } from './test/fillSignupForm';
 import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 
@@ -26,7 +26,7 @@ withChainsDescribe(
 
     afterEach(
       async (): Promise<void> => {
-        //await browser.close();
+        await browser.close();
       }
     );
 
@@ -39,6 +39,7 @@ withChainsDescribe(
       await travelToSignupNewAccountStep(page);
       await submitAccountFormE2E(page, randomString(10), randomString(10));
       await handlePassPhrase2E(page);
+      await handleSecurityHintE2E(page, randomString(10));
     }, 45000);
   }
 );
