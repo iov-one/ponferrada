@@ -23,7 +23,7 @@ export const submitAccountFormE2E = async (
 
   await page.click('button[type="submit"]');
 
-  await sleep(1000);
+  await sleep(2000);
 
   await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
 };
