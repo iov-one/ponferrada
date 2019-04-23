@@ -15,6 +15,10 @@ export interface Item {
   readonly additionalText?: string;
 }
 
+interface RootStyleProps {
+  readonly maxWidth: number | string;
+}
+
 const useStyles = makeStyles((theme: Theme) => ({
   dropdown: {
     display: 'inline-flex',
@@ -25,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: `0 ${theme.spacing(1)}px`,
     cursor: 'pointer',
   },
-  root: props => ({
+  root: (props: RootStyleProps) => ({
     fontSize: theme.typography.fontSize,
     height: '32px',
     maxWidth: props.maxWidth,
