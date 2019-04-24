@@ -30,7 +30,9 @@ withChainsDescribe(
       }
     );
 
-    it('loads correctly', async (): Promise<void> => {
+    it('should redirect to signup route, fill required data, show recovery phrase and hint', async (): Promise<
+      void
+    > => {
       const page: Page = await browser.newPage();
       await page.goto('chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html', {
         waitUntil: 'networkidle2',

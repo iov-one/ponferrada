@@ -36,7 +36,7 @@ export const findRenderedDOMComponentWithId = (
 
 export const findRenderedE2EComponentWithId = async (page: Page, elementId: string): Promise<void> => {
   const selector = `#${elementId}`;
-  const elem = await page.$(selector.replace('/', '\\/'));
+  const elem = await page.waitForSelector(selector.replace('/', '\\/'));
   if (!elem) {
     throw new Error(`Unable to find element with id: ${elementId}.`);
   }
