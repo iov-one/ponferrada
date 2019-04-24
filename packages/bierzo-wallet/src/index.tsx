@@ -5,10 +5,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Router from './routes';
 import { configureStore } from './store';
-import { history } from './store/reducers';
+import { createRootReducer, history } from './store/reducers';
 import { globalStyles } from './theme/globalStyles';
 
-const store = configureStore();
+const reducer = createRootReducer(history);
+const store = configureStore(reducer, history);
 const rootEl = document.getElementById('root');
 
 const render = (Component: React.ComponentType): void => {
