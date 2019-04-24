@@ -1,11 +1,12 @@
-import { Button, makeStyles } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
 
 interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   buttonRoot: {
     width: '75%',
     height: '4.2rem',
