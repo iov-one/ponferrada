@@ -1,7 +1,7 @@
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec } from '@iov/ethereum';
-import { JsonRpcRequest, parseJsonRpcErrorResponse, parseJsonRpcSuccessResponse } from '@iov/jsonrpc';
+import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse } from '@iov/jsonrpc';
 import React from 'react';
 
 function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
@@ -27,27 +27,19 @@ export const ExtensionInteraction = () => {
       };
 
       chrome.runtime.sendMessage(extensionId, request, response => {
-        // Simplify parsing of `response` with IOV-Core 0.15.0+
-        // https://github.com/iov-one/iov-core/issues/939
-
-        try {
-          const errorResponse = parseJsonRpcErrorResponse(response);
-          console.log(errorResponse.error.message);
+        const parsedResponse = parseJsonRpcResponse2(response);
+        if (isJsonRpcErrorResponse(parsedResponse)) {
+          console.log(parsedResponse.error.message);
           return;
-        } catch (_) {}
+        }
 
-        try {
-          const successResponse = parseJsonRpcSuccessResponse(response);
-          const parsedResult = TransactionEncoder.fromJson(successResponse.result);
-          if (isArrayOfPublicIdentity(parsedResult)) {
-            console.log(parsedResult.map(ident => ethereumCodec.identityToAddress(ident)));
-          } else {
-            console.log('Got unexpected type of result', parsedResult);
-          }
-          return;
-        } catch (_) {}
-
-        console.error('Response was no valid JSON-RPC error or success');
+        const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
+        if (isArrayOfPublicIdentity(parsedResult)) {
+          const addresses = parsedResult.map(ident => ethereumCodec.identityToAddress(ident));
+          console.log(addresses);
+        } else {
+          console.log('Got unexpected type of result', parsedResult);
+        }
       });
     }, 2000);
   }, []);
