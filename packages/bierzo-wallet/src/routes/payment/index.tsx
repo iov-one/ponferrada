@@ -1,11 +1,12 @@
-import { makeStyles } from '@material-ui/core';
+import { Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { ContinueButton } from './components/ContinueButton';
 import { CurrencyToSend } from './components/CurrencyToSend';
 import { ReceiverAddress } from './components/ReceiverAddress';
 import { TextNote } from './components/TextNote';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   payment: {
     backgroundColor: theme.palette.background.default,
     height: 'auto',

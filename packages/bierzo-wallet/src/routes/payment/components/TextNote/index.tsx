@@ -9,7 +9,7 @@ interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   paperRoot: {
     display: 'flex',
     alignItems: 'baseline',
