@@ -1,5 +1,6 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Theme } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
@@ -11,7 +12,7 @@ interface Props {
   readonly positionedClass?: string;
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   paperRoot: {
     display: 'flex',
     flexDirection: 'column',
