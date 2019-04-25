@@ -1,5 +1,6 @@
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
 import { ContinueButton } from './components/ContinueButton';
 import { CurrencyToSend } from './components/CurrencyToSend';
@@ -46,11 +47,11 @@ export const Payment = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.payment}>
+    <Block className={classes.payment}>
       <CurrencyToSend positionedClass={classes.currencyToSend} />
       <ReceiverAddress positionedClass={classes.receiverAddress} />
       <TextNote positionedClass={classes.textNote} />
       <ContinueButton positionedClass={classes.continue} />
-    </div>
+    </Block>
   );
 };

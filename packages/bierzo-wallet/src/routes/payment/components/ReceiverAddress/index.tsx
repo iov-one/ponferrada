@@ -1,9 +1,11 @@
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Theme } from '@material-ui/core';
+import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
 
 interface Props {
@@ -67,13 +69,13 @@ export const ReceiverAddress = ({ positionedClass }: Props) => {
 
   return (
     <Paper className={positionedClass} classes={paperClasses}>
-      <label className={classes.toLabel}>To</label>
+      <InputLabel className={classes.toLabel}>To</InputLabel>
       <TextField placeholder="IOV or wallet address" classes={textFieldClasses} />
-      <label className={classes.validityLabel}>Validity label</label>
-      <div className={classes.tooltipContainer}>
-        <label className={classes.tooltipLabel}>How it works</label>
+      <InputLabel className={classes.validityLabel}>Validity label</InputLabel>
+      <Block className={classes.tooltipContainer}>
+        <InputLabel className={classes.tooltipLabel}>How it works</InputLabel>
         <FontAwesomeIcon icon={faQuestionCircle} className={classes.tooltipIcon} />
-      </div>
+      </Block>
     </Paper>
   );
 };

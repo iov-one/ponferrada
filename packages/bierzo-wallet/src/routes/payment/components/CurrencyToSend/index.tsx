@@ -2,10 +2,12 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Theme } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
+import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
 
 interface Props {
@@ -91,13 +93,13 @@ export const CurrencyToSend = ({ positionedClass }: Props) => {
       <Avatar classes={avatarClasses}>
         <FontAwesomeIcon icon={faUser} className={classes.avatarIcon} />
       </Avatar>
-      <label className={classes.sendLabel}>You send</label>
-      <div className={classes.currencyContainer}>
+      <InputLabel className={classes.sendLabel}>You send</InputLabel>
+      <Block className={classes.currencyContainer}>
         <TextField placeholder="0,00" classes={textFieldClasses} />
         <Select classes={selectClasses} />
-      </div>
-      <label className={classes.validityLabel}>Validity label</label>
-      <label className={classes.balanceLabel}>balance:</label>
+      </Block>
+      <InputLabel className={classes.validityLabel}>Validity label</InputLabel>
+      <InputLabel className={classes.balanceLabel}>balance:</InputLabel>
     </Paper>
   );
 };
