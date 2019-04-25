@@ -9,7 +9,7 @@ const onBack = (): void => {
   history.goBack();
 };
 
-const Signup = (): JSX.Element => {
+const RestoreAccount = (): JSX.Element => {
   const personaProvider = React.useContext(PersonaContext);
 
   const onRestore = async (formValues: FormValues): Promise<void> => {
@@ -31,4 +31,4 @@ const Signup = (): JSX.Element => {
   );
 };
 
-export default Signup;
+export default RestoreAccount;
