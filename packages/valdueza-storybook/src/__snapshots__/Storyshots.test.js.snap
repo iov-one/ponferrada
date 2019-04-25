@@ -1278,13 +1278,13 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
         className="MuiFormControl-root-560 MuiFormControl-marginNormal-561 MuiTextField-root-559"
       >
         <label
-          className="MuiFormLabel-root-576 MuiInputLabel-root-564 MuiInputLabel-formControl-570 MuiInputLabel-animated-573 MuiInputLabel-shrink-572"
+          className="MuiFormLabel-root-576 MuiFormLabel-filled-580 MuiInputLabel-root-564 MuiInputLabel-formControl-570 MuiInputLabel-animated-573 MuiInputLabel-shrink-572"
           data-shrink={true}
         >
           Empty
         </label>
         <div
-          className="MuiInputBase-root-596 MuiOutlinedInput-root-583 MuiInputBase-formControl-597"
+          className="MuiInputBase-root-596 MuiOutlinedInput-root-583 MuiInputBase-formControl-597 MuiInputBase-multiline-604 MuiOutlinedInput-multiline-589"
           onClick={[Function]}
         >
           <fieldset
@@ -1300,7 +1300,7 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
               className="PrivateNotchedOutline-legend-613"
               style={
                 Object {
-                  "width": 0.01,
+                  "width": 0,
                 }
               }
             >
@@ -1313,17 +1313,17 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
               />
             </legend>
           </fieldset>
-          <input
+          <textarea
             aria-invalid={false}
-            className="MuiInputBase-input-606 MuiOutlinedInput-input-591"
-            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+            className="MuiInputBase-input-606 MuiOutlinedInput-input-591 MuiInputBase-inputMultiline-608 MuiOutlinedInput-inputMultiline-593"
             disabled={false}
             name="standard-with-placeholder"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             required={false}
-            type="text"
+            rows={5}
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
           />
         </div>
       </div>
@@ -1747,12 +1747,13 @@ exports[`Storyshots Routes/Restore Account Restore 1`] = `
     >
       <div
         className="MuiBox-root-924 MuiBox-root-960"
+        mmarginBottom={4}
       >
         <div
           className="MuiFormControl-root-962 MuiFormControl-marginNormal-963 MuiFormControl-fullWidth-965 MuiTextField-root-961"
         >
           <div
-            className="MuiInputBase-root-979 MuiOutlinedInput-root-966 MuiInputBase-fullWidth-988 MuiInputBase-formControl-980"
+            className="MuiInputBase-root-979 MuiOutlinedInput-root-966 MuiInputBase-fullWidth-988 MuiInputBase-formControl-980 MuiInputBase-multiline-987 MuiOutlinedInput-multiline-972"
             onClick={[Function]}
           >
             <fieldset
@@ -1781,9 +1782,9 @@ exports[`Storyshots Routes/Restore Account Restore 1`] = `
                 />
               </legend>
             </fieldset>
-            <input
+            <textarea
               aria-invalid={false}
-              className="MuiInputBase-input-989 MuiOutlinedInput-input-974"
+              className="MuiInputBase-input-989 MuiOutlinedInput-input-974 MuiInputBase-inputMultiline-991 MuiOutlinedInput-inputMultiline-976"
               disabled={false}
               name="recoveryPhraseField"
               onBlur={[Function]}
@@ -1791,7 +1792,7 @@ exports[`Storyshots Routes/Restore Account Restore 1`] = `
               onFocus={[Function]}
               placeholder="Recovery phrase"
               required={false}
-              type="text"
+              rows={5}
             />
           </div>
         </div>

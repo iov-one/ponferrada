@@ -17,6 +17,7 @@ interface Props {
   readonly placeholder?: string;
   readonly error?: boolean;
   readonly multiline?: boolean;
+  readonly rows?: string | number;
   readonly rowsMax?: string | number;
 }
 
@@ -30,7 +31,8 @@ const TextField = ({
   placeholder,
   error,
   multiline,
-  rowsMax = 1,
+  rows,
+  rowsMax,
 }: Props): JSX.Element => {
   const { form, handleSubmit } = useForm({
     onSubmit: action('Form submit'),
@@ -49,6 +51,7 @@ const TextField = ({
         disabled={disabled}
         error={error}
         multiline={multiline}
+        rows={rows}
         rowsMax={rowsMax}
       />
     </Form>
@@ -86,7 +89,7 @@ storiesOf('Components/forms', module).add(
         <GridItem marginBottom={4} width={gridItemWidth}>
           <TextField
             multiline
-            rowsMax="4"
+            rows={5}
             name="standard-with-placeholder"
             label="Empty"
             value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
