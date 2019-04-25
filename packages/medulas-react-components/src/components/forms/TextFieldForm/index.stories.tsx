@@ -11,20 +11,26 @@ interface Props {
   readonly name: string;
   readonly label: string;
   readonly defaultValue?: string;
+  readonly value?: string;
   readonly helperText?: string;
   readonly disabled?: boolean;
   readonly placeholder?: string;
   readonly error?: boolean;
+  readonly multiline?: boolean;
+  readonly rowsMax?: string | number;
 }
 
 const TextField = ({
   name,
   label,
   defaultValue,
+  value,
   helperText,
   disabled,
   placeholder,
   error,
+  multiline,
+  rowsMax = 1,
 }: Props): JSX.Element => {
   const { form, handleSubmit } = useForm({
     onSubmit: action('Form submit'),
@@ -36,11 +42,14 @@ const TextField = ({
         label={label}
         placeholder={placeholder}
         defaultValue={defaultValue}
+        value={value}
         helperText={helperText}
         form={form}
         name={name}
         disabled={disabled}
         error={error}
+        multiline={multiline}
+        rowsMax={rowsMax}
       />
     </Form>
   );
@@ -73,6 +82,15 @@ storiesOf('Components/forms', module).add(
         </GridItem>
         <GridItem marginBottom={4} width={gridItemWidth}>
           <TextField name="standard-with-placeholder" label="Empty" placeholder="IOV or wallet address" />
+        </GridItem>
+        <GridItem marginBottom={4} width={gridItemWidth}>
+          <TextField
+            multiline
+            rowsMax="4"
+            name="standard-with-placeholder"
+            label="Empty"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+          />
         </GridItem>
       </Grid>
     </Storybook>
