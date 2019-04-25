@@ -10,6 +10,7 @@ import Form, {
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { RESTORE_ACCOUNT } from '../../paths';
 
 export const RECOVERY_PHRASE = 'recoveryPhraseField';
 
@@ -41,7 +42,7 @@ const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element =>
   });
 
   return (
-    <PageLayout primaryTitle="Restore" title="Account">
+    <PageLayout id={RESTORE_ACCOUNT} primaryTitle="Restore" title="Account">
       <Typography variant="subtitle1" inline>
         Restore your account with your recovery words. Enter your recovery words here.
       </Typography>
