@@ -46,7 +46,7 @@ const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element =>
         Restore your account with your recovery words. Enter your recovery words here.
       </Typography>
       <Form onSubmit={handleSubmit}>
-        <Block mmarginBottom={4}>
+        <Block marginBottom={4}>
           <TextFieldForm
             multiline
             rows={5}

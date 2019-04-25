@@ -1747,7 +1747,6 @@ exports[`Storyshots Routes/Restore Account Restore 1`] = `
     >
       <div
         className="MuiBox-root-924 MuiBox-root-960"
-        mmarginBottom={4}
       >
         <div
           className="MuiFormControl-root-962 MuiFormControl-marginNormal-963 MuiFormControl-fullWidth-965 MuiTextField-root-961"
