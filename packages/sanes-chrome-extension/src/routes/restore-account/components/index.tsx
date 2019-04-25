@@ -47,7 +47,13 @@ const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element =>
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginTop={1} marginBottom={4}>
-          <TextFieldForm placeholder="Recovery phrase" form={form} fullWidth name={RECOVERY_PHRASE} />
+          <TextFieldForm
+            multiline
+            placeholder="Recovery phrase"
+            form={form}
+            fullWidth
+            name={RECOVERY_PHRASE}
+          />
         </Block>
         <Block display="flex" justifyContent="space-between">
           <Block width={120}>
