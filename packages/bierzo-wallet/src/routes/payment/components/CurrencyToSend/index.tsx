@@ -15,57 +15,51 @@ interface Props {
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
-  paperRoot: {
+  paper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    padding: '4rem',
+    padding: '40px',
   },
 
-  avatarRoot: {
+  avatar: {
     backgroundColor: '#ffe152',
-    fontSize: '2.75rem',
-    width: '7.2rem',
-    height: '7.2rem',
-    margin: '-7.6rem 0 4rem 0',
+    fontSize: '27.5px',
+    width: '72px',
+    height: '72px',
+    margin: '-76px 0 40px 0',
   },
 
   avatarIcon: {
     color: '#ffffff',
   },
 
-  sendLabelRoot: {
-    color: theme.palette.text.primary,
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
+  sendLabel: {
+    fontSize: '14px',
   },
 
   currencyContainer: {
     display: 'flex',
-    margin: '4rem 0 .8rem 0',
+    margin: '40px 0 8px 0',
   },
 
-  textFieldRoot: {
-    height: '5rem',
-    marginRight: '1rem',
+  textField: {
+    height: '50px',
+    marginRight: '10px',
   },
 
-  selectRoot: {
-    height: '3rem',
+  select: {
+    height: '30px',
   },
 
-  validityLabelRoot: {
-    color: theme.palette.error.main,
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
+  validityLabel: {
+    fontSize: '14px',
   },
 
-  balanceLabelRoot: {
-    color: '#a2a6a8',
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
-    marginTop: '.8rem',
+  balanceLabel: {
+    fontSize: '14px',
+    marginTop: '8px',
   },
 }));
 
@@ -73,31 +67,31 @@ export const CurrencyToSend = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const paperClasses = {
-    root: classes.paperRoot,
+    root: classes.paper,
   };
 
   const avatarClasses = {
-    root: classes.avatarRoot,
+    root: classes.avatar,
   };
 
   const sendLabelClasses = {
-    root: classes.sendLabelRoot,
+    root: classes.sendLabel,
   };
 
   const textFieldClasses = {
-    root: classes.textFieldRoot,
+    root: classes.textField,
   };
 
   const selectClasses = {
-    root: classes.selectRoot,
+    root: classes.select,
   };
 
   const validityLabelClasses = {
-    root: classes.validityLabelRoot,
+    root: classes.validityLabel,
   };
 
   const balanceLabelClasses = {
-    root: classes.balanceLabelRoot,
+    root: classes.balanceLabel,
   };
 
   return (
@@ -105,13 +99,19 @@ export const CurrencyToSend = ({ positionedClass }: Props) => {
       <Avatar classes={avatarClasses}>
         <FontAwesomeIcon icon={faUser} className={classes.avatarIcon} />
       </Avatar>
-      <Typography classes={sendLabelClasses}>You send</Typography>
+      <Typography color="textPrimary" classes={sendLabelClasses}>
+        You send
+      </Typography>
       <Block className={classes.currencyContainer}>
         <TextField placeholder="0,00" classes={textFieldClasses} />
         <Select classes={selectClasses} />
       </Block>
-      <Typography classes={validityLabelClasses}>Validity label</Typography>
-      <Typography classes={balanceLabelClasses}>balance:</Typography>
+      <Typography color="error" classes={validityLabelClasses}>
+        Validity label
+      </Typography>
+      <Typography color="textPrimary" classes={balanceLabelClasses}>
+        balance:
+      </Typography>
     </Paper>
   );
 };

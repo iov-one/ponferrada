@@ -7,11 +7,9 @@ interface Props {
 }
 
 const useStyles = makeStyles(() => ({
-  buttonRoot: {
+  button: {
     width: '75%',
-    height: '4.2rem',
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.6rem',
+    height: '42px',
   },
 }));
 
@@ -19,7 +17,7 @@ export const ContinueButton = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const buttonClasses = {
-    root: classes.buttonRoot,
+    root: classes.button,
   };
 
   return (

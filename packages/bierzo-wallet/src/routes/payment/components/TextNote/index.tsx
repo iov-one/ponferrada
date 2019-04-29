@@ -11,20 +11,21 @@ interface Props {
 }
 
 const useStyles = makeStyles(() => ({
-  paperRoot: {
+  paper: {
     display: 'flex',
     alignItems: 'baseline',
     width: '100%',
-    padding: '4rem',
-    fontSize: '1.6rem',
+    padding: '40px',
   },
 
   noteIcon: {
     color: '#a2a6a8',
   },
 
-  textFieldRoot: {
-    marginLeft: '1.5rem',
+  textField: {
+    width: '100%',
+    height: '50px',
+    marginLeft: '15px',
   },
 }));
 
@@ -32,11 +33,11 @@ export const TextNote = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const paperClasses = {
-    root: classes.paperRoot,
+    root: classes.paper,
   };
 
   const textFieldClasses = {
-    root: classes.textFieldRoot,
+    root: classes.textField,
   };
 
   return (

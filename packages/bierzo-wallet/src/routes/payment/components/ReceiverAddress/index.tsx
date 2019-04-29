@@ -13,45 +13,37 @@ interface Props {
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
-  paperRoot: {
+  paper: {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    padding: '4rem',
+    padding: '40px',
   },
 
-  toLabelRoot: {
-    color: theme.palette.text.primary,
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
+  toLabel: {
+    fontSize: '14px',
   },
 
-  textFieldRoot: {
+  textField: {
     width: '100%',
-    height: '5rem',
-    margin: '1.6rem 0 .8rem 0',
+    height: '50px',
+    margin: '16px 0 8px 0',
   },
 
-  validityLabelRoot: {
-    color: theme.palette.error.main,
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
+  validityLabel: {
+    fontSize: '14px',
   },
 
   tooltipContainer: {
     display: 'flex',
     alignSelf: 'flex-end',
-    fontSize: '1.4rem',
-    marginTop: '2.4rem',
-  },
-
-  tooltipLabelRoot: {
-    color: theme.palette.text.primary,
+    fontSize: '14px',
+    marginTop: '24px',
   },
 
   tooltipIcon: {
     alignSelf: 'center',
-    marginLeft: '1rem',
+    marginLeft: '10px',
     color: theme.palette.primary.main,
   },
 }));
@@ -60,32 +52,32 @@ export const ReceiverAddress = ({ positionedClass }: Props) => {
   const classes = useStyles();
 
   const paperClasses = {
-    root: classes.paperRoot,
+    root: classes.paper,
   };
 
   const toLabelClasses = {
-    root: classes.toLabelRoot,
+    root: classes.toLabel,
   };
 
   const textFieldClasses = {
-    root: classes.textFieldRoot,
+    root: classes.textField,
   };
 
   const validityLabelClasses = {
-    root: classes.validityLabelRoot,
-  };
-
-  const tooltipLabelClasses = {
-    root: classes.tooltipLabelRoot,
+    root: classes.validityLabel,
   };
 
   return (
     <Paper className={positionedClass} classes={paperClasses}>
-      <Typography classes={toLabelClasses}>To</Typography>
+      <Typography color="textPrimary" classes={toLabelClasses}>
+        To
+      </Typography>
       <TextField placeholder="IOV or wallet address" classes={textFieldClasses} />
-      <Typography classes={validityLabelClasses}>Validity label</Typography>
+      <Typography color="error" classes={validityLabelClasses}>
+        Validity label
+      </Typography>
       <Block className={classes.tooltipContainer}>
-        <Typography classes={tooltipLabelClasses}>How it works</Typography>
+        <Typography color="textPrimary">How it works</Typography>
         <FontAwesomeIcon icon={faQuestionCircle} className={classes.tooltipIcon} />
       </Block>
     </Paper>
