@@ -35,10 +35,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: '#ffffff',
   },
 
-  sendLabel: {
-    fontSize: '14px',
-  },
-
   currencyContainer: {
     display: 'flex',
     margin: '40px 0 8px 0',
@@ -51,15 +47,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
   select: {
     height: '30px',
-  },
-
-  validityLabel: {
-    fontSize: '14px',
-  },
-
-  balanceLabel: {
-    fontSize: '14px',
-    marginTop: '8px',
   },
 }));
 
@@ -74,10 +61,6 @@ export const CurrencyToSend = ({ positionedClass }: Props) => {
     root: classes.avatar,
   };
 
-  const sendLabelClasses = {
-    root: classes.sendLabel,
-  };
-
   const textFieldClasses = {
     root: classes.textField,
   };
@@ -86,32 +69,26 @@ export const CurrencyToSend = ({ positionedClass }: Props) => {
     root: classes.select,
   };
 
-  const validityLabelClasses = {
-    root: classes.validityLabel,
-  };
-
-  const balanceLabelClasses = {
-    root: classes.balanceLabel,
-  };
-
   return (
     <Paper className={positionedClass} classes={paperClasses}>
       <Avatar classes={avatarClasses}>
         <FontAwesomeIcon icon={faUser} className={classes.avatarIcon} />
       </Avatar>
-      <Typography color="textPrimary" classes={sendLabelClasses}>
+      <Typography color="textPrimary" variant="subtitle2">
         You send
       </Typography>
       <Block className={classes.currencyContainer}>
         <TextField placeholder="0,00" classes={textFieldClasses} />
         <Select classes={selectClasses} />
       </Block>
-      <Typography color="error" classes={validityLabelClasses}>
+      <Typography color="error" variant="subtitle2">
         Validity label
       </Typography>
-      <Typography color="textPrimary" classes={balanceLabelClasses}>
-        balance:
-      </Typography>
+      <Block marginTop={1}>
+        <Typography color="textSecondary" variant="subtitle2">
+          balance:
+        </Typography>
+      </Block>
     </Paper>
   );
 };

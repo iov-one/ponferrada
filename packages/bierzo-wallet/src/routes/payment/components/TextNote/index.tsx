@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'baseline',
     width: '100%',
+    fontSize: '15px',
     padding: '40px',
   },
 

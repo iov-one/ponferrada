@@ -1,8 +1,7 @@
-import { Theme } from '@material-ui/core';
+import { Button, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
-import { ContinueButton } from './components/ContinueButton';
 import { CurrencyToSend } from './components/CurrencyToSend';
 import { ReceiverAddress } from './components/ReceiverAddress';
 import { TextNote } from './components/TextNote';
@@ -40,6 +39,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
   continue: {
     gridArea: 'continue-button',
+    width: '75%',
+    height: '42px',
   },
 }));
 
@@ -51,7 +52,7 @@ export const Payment = () => {
       <CurrencyToSend positionedClass={classes.currencyToSend} />
       <ReceiverAddress positionedClass={classes.receiverAddress} />
       <TextNote positionedClass={classes.textNote} />
-      <ContinueButton positionedClass={classes.continue} />
+      <Button className={classes.continue}>Continue</Button>
     </Block>
   );
 };

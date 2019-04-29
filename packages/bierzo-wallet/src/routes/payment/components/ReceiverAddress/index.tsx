@@ -20,18 +20,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '40px',
   },
 
-  toLabel: {
-    fontSize: '14px',
-  },
-
   textField: {
     width: '100%',
     height: '50px',
     margin: '16px 0 8px 0',
-  },
-
-  validityLabel: {
-    fontSize: '14px',
   },
 
   tooltipContainer: {
@@ -55,25 +47,17 @@ export const ReceiverAddress = ({ positionedClass }: Props) => {
     root: classes.paper,
   };
 
-  const toLabelClasses = {
-    root: classes.toLabel,
-  };
-
   const textFieldClasses = {
     root: classes.textField,
   };
 
-  const validityLabelClasses = {
-    root: classes.validityLabel,
-  };
-
   return (
     <Paper className={positionedClass} classes={paperClasses}>
-      <Typography color="textPrimary" classes={toLabelClasses}>
+      <Typography color="textPrimary" variant="subtitle2">
         To
       </Typography>
       <TextField placeholder="IOV or wallet address" classes={textFieldClasses} />
-      <Typography color="error" classes={validityLabelClasses}>
+      <Typography color="error" variant="subtitle2">
         Validity label
       </Typography>
       <Block className={classes.tooltipContainer}>
