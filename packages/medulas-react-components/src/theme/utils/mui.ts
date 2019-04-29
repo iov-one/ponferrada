@@ -155,6 +155,9 @@ const themeObject: ThemeOptions = {
         padding: '12px',
         fontSize: '1.6rem',
       },
+      inputMultiline: {
+        lineHeight: '1.8rem',
+      },
       error: {
         backgroundColor: '#fff1e1',
       },
