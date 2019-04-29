@@ -1535,7 +1535,7 @@ exports[`Storyshots Routes/Login Login page 1`] = `
         className="MuiBox-root-725 MuiBox-root-821"
       >
         <a
-          href="/welcome"
+          href="/restore-account"
           onClick={[Function]}
         >
           <h6
@@ -1718,6 +1718,7 @@ exports[`Storyshots Routes/Recovery phrase Main 1`] = `
 exports[`Storyshots Routes/Restore Account Restore 1`] = `
 <div
   className="MuiBox-root-924 MuiBox-root-925"
+  id="/restore-account"
 >
   <div
     className="MuiBox-root-924 MuiBox-root-926"
