@@ -18,10 +18,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.primary.main,
     padding: '50px',
   },
-
-  button: {
-    width: '150px',
-  },
 }));
 
 const handleClick = () => {
@@ -30,10 +26,6 @@ const handleClick = () => {
 
 export const Welcome = () => {
   const classes = useStyles();
-
-  const buttonClasses = {
-    root: classes.button,
-  };
 
   return (
     <Block
@@ -50,9 +42,11 @@ export const Welcome = () => {
       <Block marginTop={5} marginBottom={5}>
         <Typography variant="h6">IOV Wallet</Typography>
       </Block>
-      <Button classes={buttonClasses} onClick={handleClick}>
-        NEXT
-      </Button>
+      <Block width="150px" display="flex" justifyContent="center">
+        <Button fullWidth onClick={handleClick}>
+          NEXT
+        </Button>
+      </Block>
     </Block>
   );
 };
