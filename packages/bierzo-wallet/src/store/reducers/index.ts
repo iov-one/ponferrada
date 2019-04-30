@@ -9,4 +9,4 @@ const createRootReducer = (history: History) =>
     router: connectRouter(history),
   });
 
-export const reducer = createRootReducer(history);
+export default createRootReducer(history);

@@ -1,6 +1,6 @@
 import { routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { history, reducer } from './reducers';
+import reducer, { history } from './reducers';
 
 const composeEnhancers =
   (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
@@ -13,7 +13,8 @@ export const configureStore = () => {
     module.hot.accept(
       './reducers',
       (): void => {
-        store.replaceReducer(reducer);
+        const nextRootReducer = require('./reducers');
+        store.replaceReducer(nextRootReducer);
       }
     );
   }

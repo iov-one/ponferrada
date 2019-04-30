@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
 
 interface Props {
@@ -23,8 +24,6 @@ const useStyles = makeStyles(() => ({
   },
 
   textFieldRoot: {
-    width: '100%',
-    height: '5rem',
     marginLeft: '1.5rem',
   },
 }));
@@ -42,8 +41,10 @@ export const TextNote = ({ positionedClass }: Props) => {
 
   return (
     <Paper className={positionedClass} classes={paperClasses}>
-      <FontAwesomeIcon icon={faStickyNote} className={classes.noteIcon} />
-      <TextField multiline={true} placeholder="Add a note" classes={textFieldClasses} />
+      <FontAwesomeIcon size="lg" icon={faStickyNote} className={classes.noteIcon} />
+      <Block width="100%">
+        <TextField fullWidth multiline placeholder="Add a note" classes={textFieldClasses} />
+      </Block>
     </Paper>
   );
 };
