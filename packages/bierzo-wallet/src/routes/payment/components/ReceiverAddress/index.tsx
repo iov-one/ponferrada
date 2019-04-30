@@ -8,61 +8,35 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 
-interface Props {
-  readonly positionedClass?: string;
-}
-
 const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    padding: '40px',
-  },
-
-  textField: {
-    width: '100%',
-    height: '50px',
-    margin: '16px 0 8px 0',
-  },
-
-  tooltipContainer: {
-    display: 'flex',
-    alignSelf: 'flex-end',
-    fontSize: '14px',
-    marginTop: '24px',
-  },
-
   tooltipIcon: {
-    alignSelf: 'center',
-    marginLeft: '10px',
     color: theme.palette.primary.main,
   },
 }));
 
-export const ReceiverAddress = ({ positionedClass }: Props) => {
+export const ReceiverAddress = () => {
   const classes = useStyles();
 
-  const paperClasses = {
-    root: classes.paper,
-  };
-
-  const textFieldClasses = {
-    root: classes.textField,
-  };
-
   return (
-    <Paper className={positionedClass} classes={paperClasses}>
-      <Typography color="textPrimary" variant="subtitle2">
-        To
-      </Typography>
-      <TextField placeholder="IOV or wallet address" classes={textFieldClasses} />
-      <Typography color="error" variant="subtitle2">
-        Validity label
-      </Typography>
-      <Block className={classes.tooltipContainer}>
-        <Typography color="textPrimary">How it works</Typography>
-        <FontAwesomeIcon icon={faQuestionCircle} className={classes.tooltipIcon} />
+    <Paper>
+      <Block display="flex" flexDirection="column" width="100%" padding={5}>
+        <Typography color="textPrimary" variant="subtitle2">
+          To
+        </Typography>
+        <Block width="100%" marginTop={2} marginBottom={1}>
+          <TextField placeholder="IOV or wallet address" fullWidth />
+        </Block>
+        <Typography color="error" variant="subtitle2">
+          Validity label
+        </Typography>
+        <Block display="flex" alignSelf="flex-end" marginTop={3}>
+          <Typography color="textPrimary" variant="subtitle1">
+            How it works
+          </Typography>
+          <Block alignSelf="center" marginLeft={1}>
+            <FontAwesomeIcon icon={faQuestionCircle} size="lg" className={classes.tooltipIcon} />
+          </Block>
+        </Block>
       </Block>
     </Paper>
   );
