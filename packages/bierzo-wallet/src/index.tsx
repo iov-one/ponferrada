@@ -3,7 +3,7 @@ import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThem
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router } from './routes';
+import Router from './routes';
 import { WELCOME_ROUTE } from './routes/paths';
 import { configureStore } from './store';
 import { history } from './store/reducers';
