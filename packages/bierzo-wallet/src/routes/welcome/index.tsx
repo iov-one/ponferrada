@@ -1,10 +1,11 @@
-import { Avatar, Button, Theme } from '@material-ui/core';
+import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
-import Image from 'medulas-react-components/lib/components/Image';
+import Button from 'medulas-react-components/lib/components/Button';
+import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
-import avatar from '../../assets/iov-logo.svg';
+import icon from '../../assets/iov-logo.svg';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
 
@@ -13,10 +14,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.default,
   },
 
-  avatar: {
+  icon: {
     backgroundColor: theme.palette.primary.main,
-    width: '200px',
-    height: '200px',
+    padding: '50px',
   },
 
   button: {
@@ -30,10 +30,6 @@ const handleClick = () => {
 
 export const Welcome = () => {
   const classes = useStyles();
-
-  const avatarClasses = {
-    root: classes.avatar,
-  };
 
   const buttonClasses = {
     root: classes.button,
@@ -50,11 +46,7 @@ export const Welcome = () => {
       justifyContent="center"
       className={classes.welcome}
     >
-      <Avatar classes={avatarClasses}>
-        <Block width="50%">
-          <Image alt="Logo" src={avatar} />
-        </Block>
-      </Avatar>
+      <CircleImage alt="Logo" icon={icon} dia="200px" iconClasses={classes.icon} />
       <Block marginTop={5} marginBottom={5}>
         <Typography variant="h6">IOV Wallet</Typography>
       </Block>
