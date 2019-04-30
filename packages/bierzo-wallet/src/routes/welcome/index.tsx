@@ -11,31 +11,15 @@ import { PAYMENT_ROUTE } from '../paths';
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
     backgroundColor: theme.palette.background.default,
-    width: '100vw',
-    height: 'auto',
-    minHeight: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    placeItems: 'center',
-    placeContent: 'center',
   },
 
-  avatarRoot: {
+  avatar: {
     backgroundColor: theme.palette.primary.main,
     width: '200px',
     height: '200px',
   },
 
-  avatarIcon: {
-    width: '50%',
-  },
-
-  heading: {
-    margin: '40px 0 40px 0',
-    fontSize: '20px',
-  },
-
-  buttonRoot: {
+  button: {
     width: '150px',
   },
 }));
@@ -48,21 +32,32 @@ export const Welcome = () => {
   const classes = useStyles();
 
   const avatarClasses = {
-    root: classes.avatarRoot,
+    root: classes.avatar,
   };
 
   const buttonClasses = {
-    root: classes.buttonRoot,
+    root: classes.button,
   };
 
   return (
-    <Block className={classes.welcome}>
+    <Block
+      width="100vw"
+      height="auto"
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      className={classes.welcome}
+    >
       <Avatar classes={avatarClasses}>
-        <Image alt="Logo" className={classes.avatarIcon} src={avatar} />
+        <Block width="50%">
+          <Image alt="Logo" src={avatar} />
+        </Block>
       </Avatar>
-      <Typography className={classes.heading} variant="h1">
-        IOV Wallet
-      </Typography>
+      <Block marginTop={5} marginBottom={5}>
+        <Typography variant="h6">IOV Wallet</Typography>
+      </Block>
       <Button classes={buttonClasses} onClick={handleClick}>
         NEXT
       </Button>
