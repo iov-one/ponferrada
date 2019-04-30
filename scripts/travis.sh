@@ -34,7 +34,6 @@ yarn lint
 fold_end
 
 fold_start "yarn-build"
-yarn use-config-test
 yarn build
 fold_end
 
