@@ -81,19 +81,18 @@ export const handlePassPhrase2E = async (page: Page): Promise<void> => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   await checkbox!.click();
 
-  //await sleep(2000);
   const mnemonic = await page.evaluate(
     async (): Promise<string | null> => {
       const element = document.querySelector('p');
       if (!element) {
-        return '';
+        return null;
       }
 
       return element.textContent;
     }
   );
 
-  expect(mnemonic).not.toBeNull();
+  expect(mnemonic).not.toBe(null);
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   expect(mnemonic!.split(' ').length).toBe(12);
 
