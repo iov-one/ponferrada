@@ -1,9 +1,17 @@
 import * as React from 'react';
 import MuiTypography, { TypographyProps } from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
+import { Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import { FontWeightProperty } from 'csstype';
 
-const useStyles = makeStyles({
+type Weight = 'light' | 'regular' | 'semibold';
+
+interface StyleProps {
+  readonly weight?: Weight;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>({
   inline: {
     display: 'inline',
   },
@@ -12,14 +20,13 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   },
   weight: props => ({
-    fontWeight: props.weight ? props.weight : 'regular',
+    fontWeight: props.weight ? (props.weight as FontWeightProperty) : 'normal',
   }),
 });
 
-interface Props extends TypographyProps {
+interface Props extends TypographyProps, StyleProps {
   readonly inline?: boolean;
   readonly link?: boolean;
-  readonly weight?: 'light' | 'regular' | 'semibold';
 }
 
 const Typography = ({ children, inline, link, className, weight, ...restProps }: Props): JSX.Element => {
