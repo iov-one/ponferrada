@@ -37,19 +37,16 @@ const Signup = (): JSX.Element => {
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
     // FIXME Use form values once db storage and multi account is supported on Persona
-    console.log('onSignup 1');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
-    console.log('onSignup 2');
+
     try {
       const persona = await PersonaManager.create();
-      console.log('onSignup 3');
       const accounts = await persona.getAccounts();
       const txs = await persona.getTxs();
       personaProvider.update(accounts, persona.mnemonic, txs);
       onShowPhrase();
-      console.log('onSignup 6');
     } catch (err) {
       console.log('Error raised when creating persona');
       console.log(err);
