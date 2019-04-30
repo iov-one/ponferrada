@@ -19,7 +19,7 @@ interface RootStyleProps {
   readonly maxWidth: number | string;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles<Theme, RootStyleProps>((theme: Theme) => ({
   dropdown: {
     display: 'inline-flex',
     alignItems: 'center',
