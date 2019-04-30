@@ -12,7 +12,7 @@ import {
   LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   ACCOUNT_STATUS_ROUTE,
-  RESTORE_ACCOUNT
+  RESTORE_ACCOUNT,
 } from './paths';
 
 export const MainRouter = (): JSX.Element => (

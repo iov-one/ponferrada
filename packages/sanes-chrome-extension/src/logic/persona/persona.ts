@@ -1,7 +1,7 @@
 import { Amount } from '@iov/bcp';
 import { MultiChainSigner, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
-
+import { ReadonlyDate } from 'readonly-date';
 import { createUserProfile } from '../user';
 import {
   chainConnector,
@@ -11,7 +11,21 @@ import {
   pathBuilderForCodec,
 } from '../config';
 import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
-import { ProcessedTx } from '../../routes/account/components/ListTxs';
+
+interface TxProps {
+  readonly id: string;
+  readonly recipient: string;
+  readonly signer: string;
+  readonly amount: Amount;
+  readonly memo?: string;
+}
+
+export interface ProcessedTx extends TxProps {
+  readonly time: ReadonlyDate;
+  readonly received: boolean;
+  readonly success: boolean;
+  readonly err?: any; // eslint-disable-line
+}
 
 export class Persona {
   /**
