@@ -37,6 +37,7 @@ withChainsDescribe(
       await page.goto('chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html', {
         waitUntil: 'networkidle2',
       });
+      page.on('console', msg => console.log('PAGE LOG:', msg.text()));
 
       await travelToSignupNewAccountStep(page);
       await submitAccountFormE2E(page, randomString(10), randomString(10));
