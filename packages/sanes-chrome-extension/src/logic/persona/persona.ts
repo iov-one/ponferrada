@@ -36,7 +36,9 @@ export class Persona {
    * creating accounts.
    */
   public static async create(fixedMnemonic?: string): Promise<Persona> {
+    console.log('Persona create 1');
     const config = await getConfigurationFile();
+    console.log('Persona create 2');
 
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();

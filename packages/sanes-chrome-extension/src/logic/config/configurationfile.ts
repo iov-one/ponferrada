@@ -23,15 +23,19 @@ export interface ConfigurationFile {
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
+  console.log('loadConfigurationFile 1');
   if (process.env.NODE_ENV === 'test') {
+    console.log('loadConfigurationFile 1A');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const config = (window as any).config;
+    console.log('loadConfigurationFile 1A ' + config);
     return config;
   }
-
+  console.log('loadConfigurationFile 1B');
   const url = chrome.extension.getURL('assets/config/conf.json');
   const data = await fetch(url);
   const json = await data.json();
+  console.log('loadConfigurationFile 1B ' + json);
 
   return json;
 };
