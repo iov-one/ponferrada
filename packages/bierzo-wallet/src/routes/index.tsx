@@ -6,6 +6,7 @@ import { Welcome } from './welcome';
 
 const Router = () => (
   <Switch>
+    <Route exact path="/" component={Welcome} />
     <Route exact path={WELCOME_ROUTE} component={Welcome} />
     <Route exact path={PAYMENT_ROUTE} component={Payment} />
   </Switch>

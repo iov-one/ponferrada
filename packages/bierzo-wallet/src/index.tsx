@@ -4,7 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Router from './routes';
-import { WELCOME_ROUTE } from './routes/paths';
 import { configureStore } from './store';
 import { history } from './store/reducers';
 import { globalStyles } from './theme/globalStyles';
@@ -26,8 +25,6 @@ const render = (Component: React.ComponentType): void => {
 };
 
 render(Router);
-
-history.push(WELCOME_ROUTE);
 
 if (module.hot) {
   module.hot.accept(
