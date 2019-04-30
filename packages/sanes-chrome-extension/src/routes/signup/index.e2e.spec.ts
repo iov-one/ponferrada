@@ -42,6 +42,6 @@ withChainsDescribe(
       await submitAccountFormE2E(page, randomString(10), randomString(10));
       await handlePassPhrase2E(page);
       await handleSecurityHintE2E(page, randomString(10));
-    }, 45000);
+    }, 60000);
   }
 );
