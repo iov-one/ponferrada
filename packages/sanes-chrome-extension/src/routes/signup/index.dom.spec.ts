@@ -6,7 +6,6 @@ import { submitAccountForm, handlePassPhrase, handleSecurityHint } from './test/
 import { travelToSignup } from './test/travelToSignup';
 import { randomString } from '../../utils/test/random';
 import { PersonaManager } from '../../logic/persona';
-import { ACCOUNT_NAME_FIELD } from './components/NewAccountForm';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
 
