@@ -18,7 +18,7 @@ describe('DOM > Welcome route', (): void => {
   );
 
   it('loads correctly', async (): Promise<void> => {
-    const inner = await page.evaluate(async (id: string): Promise<string | undefined> => {
+    const inner = await page.evaluate((id: string): string | undefined => {
       const element = document.getElementById(id);
       if (!element) {
         return undefined;

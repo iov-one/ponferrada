@@ -82,7 +82,7 @@ export const handlePassPhrase2E = async (page: Page): Promise<void> => {
   await checkbox!.click();
 
   const mnemonic = await page.evaluate(
-    async (): Promise<string | null> => {
+    (): string | null => {
       const element = document.querySelector('p');
       if (!element) {
         return null;
