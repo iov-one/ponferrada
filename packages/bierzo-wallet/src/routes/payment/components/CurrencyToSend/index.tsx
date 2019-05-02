@@ -6,98 +6,51 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 
-interface Props {
-  readonly positionedClass?: string;
-}
-
 const useStyles = makeStyles((theme: Theme) => ({
-  paperRoot: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    padding: '4rem',
-  },
-
-  avatarRoot: {
+  avatar: {
     backgroundColor: '#ffe152',
-    fontSize: '2.75rem',
-    width: '7.2rem',
-    height: '7.2rem',
-    margin: '-7.6rem 0 4rem 0',
-  },
-
-  avatarIcon: {
-    color: '#ffffff',
-  },
-
-  sendLabel: {
-    color: theme.palette.text.primary,
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
-  },
-
-  currencyContainer: {
-    display: 'flex',
-    margin: '4rem 0 .8rem 0',
-  },
-
-  textFieldRoot: {
-    height: '5rem',
-    marginRight: '1rem',
-  },
-
-  selectRoot: {
-    height: '3rem',
-  },
-
-  validityLabel: {
-    color: theme.palette.error.main,
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
-  },
-
-  balanceLabel: {
-    color: '#a2a6a8',
-    fontFamily: '"Muli SemiBold", sans-serif',
-    fontSize: '1.4rem',
-    marginTop: '.8rem',
+    fontSize: '27.5px',
+    width: '72px',
+    height: '72px',
+    margin: '-76px 0 40px 0',
   },
 }));
 
-export const CurrencyToSend = ({ positionedClass }: Props) => {
+export const CurrencyToSend = () => {
   const classes = useStyles();
 
-  const paperClasses = {
-    root: classes.paperRoot,
-  };
-
   const avatarClasses = {
-    root: classes.avatarRoot,
-  };
-
-  const textFieldClasses = {
-    root: classes.textFieldRoot,
-  };
-
-  const selectClasses = {
-    root: classes.selectRoot,
+    root: classes.avatar,
   };
 
   return (
-    <Paper className={positionedClass} classes={paperClasses}>
-      <Avatar classes={avatarClasses}>
-        <FontAwesomeIcon icon={faUser} className={classes.avatarIcon} />
-      </Avatar>
-      <label className={classes.sendLabel}>You send</label>
-      <div className={classes.currencyContainer}>
-        <TextField placeholder="0,00" classes={textFieldClasses} />
-        <Select classes={selectClasses} />
-      </div>
-      <label className={classes.validityLabel}>Validity label</label>
-      <label className={classes.balanceLabel}>balance:</label>
+    <Paper>
+      <Block display="flex" flexDirection="column" alignItems="center" width="100%" padding={5}>
+        <Avatar classes={avatarClasses}>
+          <FontAwesomeIcon icon={faUser} color="#ffffff" />
+        </Avatar>
+        <Typography color="textPrimary" variant="subtitle2">
+          You send
+        </Typography>
+        <Block display="flex" marginTop={5} marginBottom={1}>
+          <Block marginRight={1}>
+            <TextField placeholder="0,00" />
+          </Block>
+          <Select />
+        </Block>
+        <Typography color="error" variant="subtitle2">
+          Validity label
+        </Typography>
+        <Block marginTop={1}>
+          <Typography color="textSecondary" variant="subtitle2">
+            balance:
+          </Typography>
+        </Block>
+      </Block>
     </Paper>
   );
 };
