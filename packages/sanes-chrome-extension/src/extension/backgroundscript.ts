@@ -2,8 +2,7 @@
 import { wrapStore } from 'webext-redux';
 import { JsonRpcErrorResponse } from '@iov/jsonrpc';
 
-import { MessageToBackground } from './utils/types';
-import { CTB_MSG_HELLO } from './utils/messages';
+import { MessageToBackground, MessageToBackgroundAction } from './utils/types';
 import { WELCOME_ROUTE } from '../routes/paths';
 import { makeStore } from '../store';
 import { history } from '../store/reducers';
@@ -18,7 +17,7 @@ chrome.runtime.onMessage.addListener(
   async (message: MessageToBackground, sender: chrome.runtime.MessageSender, sendResponse): Promise<void> => {
     console.log(message, sender);
     switch (message.action) {
-      case CTB_MSG_HELLO:
+      case MessageToBackgroundAction.ContentToBackground:
         if (sender.tab) {
           console.log('Received message from: ' + sender.tab.id);
         }
@@ -27,7 +26,7 @@ chrome.runtime.onMessage.addListener(
         // do an operation in the extension
         // replying back to content script
         break;
-      case 'create_persona':
+      case MessageToBackgroundAction.CreatePersona:
         if (sender.id !== chrome.runtime.id) {
           sendResponse('Sender is not allowed to perform this action');
           return;

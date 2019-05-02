@@ -9,7 +9,7 @@ import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import { MessageToBackground } from '../../extension/utils/types';
+import { MessageToBackground, MessageToBackgroundAction } from '../../extension/utils/types';
 
 const onBack = (): void => {
   history.goBack();
@@ -42,7 +42,7 @@ const Signup = (): JSX.Element => {
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     const message: MessageToBackground = {
-      action: 'create_persona',
+      action: MessageToBackgroundAction.CreatePersona,
     };
     chrome.runtime.sendMessage(message, response => {
       console.log(response);

@@ -6,7 +6,7 @@ import { history } from '../../store/reducers';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import { MessageToBackground } from '../../extension/utils/types';
+import { MessageToBackground, MessageToBackgroundAction } from '../../extension/utils/types';
 
 const onBack = (): void => {
   history.goBack();
@@ -20,7 +20,7 @@ const RestoreAccount = (): JSX.Element => {
     const mnemonic = formValues[RECOVERY_PHRASE];
 
     const message: MessageToBackground = {
-      action: 'create_persona',
+      action: MessageToBackgroundAction.CreatePersona,
       data: mnemonic,
     };
 
