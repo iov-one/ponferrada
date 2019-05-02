@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   tooltipIcon: {
@@ -17,6 +17,29 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const ReceiverAddress = (): JSX.Element => {
   const classes = useStyles();
 
+  const [validity, setValidity] = useState('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setValidity('');
+
+    //TODO implement valid pattern
+    if (!value.endsWith('*iov')) {
+      setValidity('Invalid address');
+    }
+
+    if (value.length > 254) {
+      setValidity('Can not be longer than 254 characters');
+    }
+  };
+
+  const handleBlur = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.value) {
+      setValidity('Required');
+    }
+  };
+
   return (
     <Paper>
       <Block display="flex" flexDirection="column" width="100%" padding={5}>
@@ -24,10 +47,15 @@ export const ReceiverAddress = (): JSX.Element => {
           To
         </Typography>
         <Block width="100%" marginTop={2} marginBottom={1}>
-          <TextField placeholder="IOV or wallet address" fullWidth />
+          <TextField
+            placeholder="IOV or wallet address"
+            fullWidth
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
         </Block>
         <Typography color="error" variant="subtitle2">
-          Validity label
+          {validity}
         </Typography>
         <Block display="flex" alignSelf="flex-end" marginTop={3}>
           <Typography color="textPrimary" variant="subtitle1">
