@@ -8,13 +8,10 @@ SCRAPER_VERSION="latest"
 TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/scraper_start_ethereum.XXXXXXXXX")
 LOGFILE="$TMP_DIR/scraper_ethereum.log"
 
-docker pull "alpine"
 DOCKER_HOST_IP=$(docker run --rm alpine ip route | awk 'NR==1 {print $3}')
 
 BLOCKCHAIN_URL="http://$DOCKER_HOST_IP:8545"
 echo "Connecting to $BLOCKCHAIN_URL"
-
-docker pull "iov1/iov-scraper-ethereum:${SCRAPER_VERSION}"
 
 docker run --read-only \
   --name "ethereum_scraper" \
