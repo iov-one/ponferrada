@@ -2,48 +2,28 @@ import { faStickyNote } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 
-interface Props {
-  readonly positionedClass?: string;
-}
-
-const useStyles = makeStyles(() => ({
-  paperRoot: {
-    display: 'flex',
-    alignItems: 'baseline',
-    width: '100%',
-    padding: '4rem',
-    fontSize: '1.6rem',
-  },
-
-  noteIcon: {
-    color: '#a2a6a8',
-  },
-
-  textFieldRoot: {
-    width: '100%',
-    height: '5rem',
-    marginLeft: '1.5rem',
-  },
-}));
-
-export const TextNote = ({ positionedClass }: Props) => {
-  const classes = useStyles();
-
-  const paperClasses = {
-    root: classes.paperRoot,
-  };
-
-  const textFieldClasses = {
-    root: classes.textFieldRoot,
-  };
-
+export const TextNote = () => {
   return (
-    <Paper className={positionedClass} classes={paperClasses}>
-      <FontAwesomeIcon icon={faStickyNote} className={classes.noteIcon} />
-      <TextField multiline={true} placeholder="Add a note" classes={textFieldClasses} />
+    <Paper>
+      <Block padding={5}>
+        <Block display="flex">
+          <Block alignSelf="center">
+            <FontAwesomeIcon icon={faStickyNote} color="#a2a6a8" size="lg" />
+          </Block>
+          <Block width="100%" marginLeft={2}>
+            <TextField multiline placeholder="Add a note" fullWidth />
+          </Block>
+        </Block>
+        <Block marginTop={1} marginLeft={4}>
+          <Typography color="error" variant="subtitle2">
+            Validity label
+          </Typography>
+        </Block>
+      </Block>
     </Paper>
   );
 };

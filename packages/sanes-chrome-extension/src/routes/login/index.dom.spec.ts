@@ -54,12 +54,5 @@ describe('DOM > Feature > Login', (): void => {
     expect(links.length).toBe(2);
     expect(links[0].children[0].innerHTML).toBe('Restore account');
     expect(links[1].children[0].innerHTML).toBe('More options');
-
-    TestUtils.act(
-      (): void => {
-        history.push(WELCOME_ROUTE);
-      }
-    );
-    await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
   }, 55000);
 });

@@ -1,3 +1,5 @@
+import { ReadonlyDate } from 'readonly-date';
+
 import { Amount, PublicIdentity } from '@iov/bcp';
 import {
   MultiChainSigner,
@@ -31,6 +33,21 @@ export interface UseOnlyJsonRpcSigningServer {
    * 3. convert result to JS RPC format
    */
   handleChecked(request: JsonRpcRequest): Promise<JsonRpcResponse>;
+}
+
+export interface TxProps {
+  readonly id: string;
+  readonly recipient: string;
+  readonly signer: string;
+  readonly amount: Amount;
+  readonly memo?: string;
+}
+
+export interface ProcessedTx extends TxProps {
+  readonly time: ReadonlyDate;
+  readonly received: boolean;
+  readonly success: boolean;
+  readonly err?: any; // eslint-disable-line
 }
 
 export class Persona {
@@ -95,6 +112,11 @@ export class Persona {
 
   public async getAccounts(): Promise<ReadonlyArray<AccountInfo>> {
     return this.accountManager.accounts();
+  }
+
+  // TODO implement
+  public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
+    return [];
   }
 
   public async getBalances(accountIndex: number): Promise<ReadonlyArray<Amount>> {

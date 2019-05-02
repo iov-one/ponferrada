@@ -1,7 +1,8 @@
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Block from 'medulas-react-components/lib/components/Block';
+import Button from 'medulas-react-components/lib/components/Button';
 import React from 'react';
-import { ContinueButton } from './components/ContinueButton';
 import { CurrencyToSend } from './components/CurrencyToSend';
 import { ReceiverAddress } from './components/ReceiverAddress';
 import { TextNote } from './components/TextNote';
@@ -9,11 +10,7 @@ import { TextNote } from './components/TextNote';
 const useStyles = makeStyles((theme: Theme) => ({
   payment: {
     backgroundColor: theme.palette.background.default,
-    height: 'auto',
-    minHeight: '100vh',
-    display: 'grid',
     gridTemplateColumns: '1fr minmax(375px, 450px) 1fr',
-    gridTemplateRows: 'repeat(4, auto)',
     gridTemplateAreas: `
   ". currency-to-send ."
   ". receiver-address ."
@@ -22,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   `,
     gridGap: '24px',
     placeItems: 'center',
-    placeContent: 'center',
   },
 
   currencyToSend: {
@@ -46,11 +42,27 @@ export const Payment = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.payment}>
-      <CurrencyToSend positionedClass={classes.currencyToSend} />
-      <ReceiverAddress positionedClass={classes.receiverAddress} />
-      <TextNote positionedClass={classes.textNote} />
-      <ContinueButton positionedClass={classes.continue} />
-    </div>
+    <Block
+      width="100vw"
+      height="auto"
+      minHeight="100vh"
+      display="grid"
+      alignContent="center"
+      justifyContent="center"
+      className={classes.payment}
+    >
+      <Block width="100%" className={classes.currencyToSend}>
+        <CurrencyToSend />
+      </Block>
+      <Block width="100%" className={classes.receiverAddress}>
+        <ReceiverAddress />
+      </Block>
+      <Block width="100%" className={classes.textNote}>
+        <TextNote />
+      </Block>
+      <Block width="75%" className={classes.continue}>
+        <Button fullWidth>Continue</Button>
+      </Block>
+    </Block>
   );
 };

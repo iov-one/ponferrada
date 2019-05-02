@@ -1,11 +1,29 @@
 import TestUtils from 'react-dom/test-utils';
 import { randomString } from '../../../utils/test/random';
 import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
-import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
-import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
+import {
+  findRenderedDOMComponentWithId,
+  findRenderedE2EComponentWithId,
+} from '../../../utils/test/reactElemFinder';
+import { SECURITY_HINT_STEP_SIGNUP_ROUTE, SECURITY_HINT } from '../components/SecurityHintForm';
 import { sleep } from '../../../utils/timer';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
 import { PersonaManager } from '../../../logic/persona';
+import { Page } from 'puppeteer';
+import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD, PASSWORD_CONFIRM_FIELD } from '../components/NewAccountForm';
+
+export const submitAccountFormE2E = async (
+  page: Page,
+  accountName: string,
+  password: string
+): Promise<void> => {
+  await page.type(`input[name="${ACCOUNT_NAME_FIELD}"]`, accountName);
+  await page.type(`input[name="${PASSWORD_FIELD}`, password);
+  await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}`, password);
+
+  await page.click('button[type="submit"]');
+  await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
+};
 
 export const submitAccountForm = async (
   AccountSubmitDom: React.Component,
@@ -56,6 +74,33 @@ export const submitAccountForm = async (
   await TestUtils.act(submitForm as any); //eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
+export const handlePassPhrase2E = async (page: Page): Promise<void> => {
+  const checkbox = await page.$('input[type="checkbox"]');
+  expect(checkbox).not.toBeNull();
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  await checkbox!.click();
+
+  const mnemonic = await page.evaluate(
+    (): string | null => {
+      const element = document.querySelector('p');
+      if (!element) {
+        return null;
+      }
+
+      return element.textContent;
+    }
+  );
+
+  expect(mnemonic).not.toBe(null);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  expect(mnemonic!.split(' ').length).toBe(12);
+
+  const buttons = await page.$$('button');
+  await buttons[1].click();
+  await findRenderedE2EComponentWithId(page, SECURITY_HINT_STEP_SIGNUP_ROUTE);
+};
+
 export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Promise<void> => {
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'input');
   expect(inputs.length).toBe(1);
@@ -83,6 +128,15 @@ export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Prom
   );
 
   await findRenderedDOMComponentWithId(RecoveryPhraseDom, SECURITY_HINT_STEP_SIGNUP_ROUTE);
+};
+
+export const handleSecurityHintE2E = async (page: Page, securityHint: string): Promise<void> => {
+  await page.type(`input[name="${SECURITY_HINT}"]`, securityHint);
+
+  await page.click('button[type="submit"]');
+
+  //TODO: check for proper redirect here after logic will be implmeneted
+  //await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
 };
 
 export const handleSecurityHint = async (

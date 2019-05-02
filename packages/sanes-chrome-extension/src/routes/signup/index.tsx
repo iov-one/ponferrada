@@ -9,6 +9,7 @@ import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaManager } from '../../logic/persona';
 import { PersonaContext } from '../../context/PersonaProvider';
+import { ACCOUNT_STATUS_ROUTE } from '../paths';
 
 const onBack = (): void => {
   history.goBack();
@@ -30,6 +31,8 @@ const Signup = (): JSX.Element => {
     }
 
     storeHintPhrase(accountName.current, hintPhrase);
+
+    history.push(ACCOUNT_STATUS_ROUTE);
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
@@ -41,8 +44,8 @@ const Signup = (): JSX.Element => {
     try {
       const persona = await PersonaManager.create();
       const accounts = await persona.getAccounts();
-
-      personaProvider.update(accounts, persona.mnemonic);
+      const txs = await persona.getTxs();
+      personaProvider.update(accounts, persona.mnemonic, txs);
       onShowPhrase();
     } catch (err) {
       console.log('Error raised when creating persona:', err);

@@ -2,13 +2,13 @@ import * as React from 'react';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Link from 'medulas-react-components/lib/components/Link';
-import { WELCOME_ROUTE } from '../../paths';
+import { RESTORE_ACCOUNT, WELCOME_ROUTE } from '../../paths';
 
 const LoginControls = (): JSX.Element => {
   return (
     <Block marginTop={4} textAlign="center">
       <Block marginBottom={1}>
-        <Link to={WELCOME_ROUTE}>
+        <Link to={RESTORE_ACCOUNT}>
           <Typography variant="subtitle2" color="primary" link inline>
             Restore account
           </Typography>

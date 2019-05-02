@@ -42,7 +42,7 @@ const useStyles = makeStyles(
     iconBackground: {
       backgroundColor: '#f5f7f9',
       height: 60,
-      width: 60,
+      minWidth: 60,
       borderRadius: 60,
       display: 'flex',
       alignItems: 'center',

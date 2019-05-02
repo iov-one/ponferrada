@@ -31,7 +31,11 @@ const ToastStorybook = (): JSX.Element => {
           <Button onClick={onInfoToast}>Click to generate INFO toast</Button>
         </Block>
         <Typography>This should generate...</Typography>
-        <ToastContent message="Hi INFO" onClose={action('closing')} variant={ToastVariant.INFO} />
+        <ToastContent
+          message="Hi INFO this is a cool feature. Stay tuned"
+          onClose={action('closing')}
+          variant={ToastVariant.INFO}
+        />
       </Block>
       <Block marginBottom={10}>
         <Block marginBottom={2}>
