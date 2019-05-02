@@ -28,6 +28,10 @@ chrome.runtime.onMessage.addListener(
         // replying back to content script
         break;
       case 'create_persona':
+        if (sender.id !== chrome.runtime.id) {
+          sendResponse('Sender is not allowed to perform this action');
+          return;
+        }
         let response;
         try {
           const persona = await PersonaManager.create(message.data);
