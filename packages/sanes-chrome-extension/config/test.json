@@ -3,7 +3,7 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "bootstrapNodes": ["ws://localhost:23456/"]
+        "bootstrapNodes": ["http://localhost:23456/"]
       },
       "faucetSpec": {
         "uri": "http://localhost:8000",
@@ -13,7 +13,7 @@
     {
       "chainSpec": {
         "codecType": "bov",
-        "bootstrapNodes": ["ws://localhost:23457/"]
+        "bootstrapNodes": ["http://localhost:23457/"]
       },
       "faucetSpec": {
         "uri": "http://localhost:8001",
