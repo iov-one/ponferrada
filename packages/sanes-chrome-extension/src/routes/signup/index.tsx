@@ -48,8 +48,7 @@ const Signup = (): JSX.Element => {
       personaProvider.update(accounts, persona.mnemonic, txs);
       onShowPhrase();
     } catch (err) {
-      console.log('Error raised when creating persona');
-      console.log(err);
+      console.log('Error raised when creating persona:', err);
     }
   };
 

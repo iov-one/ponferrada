@@ -8,6 +8,7 @@ import React from 'react';
 import icon from '../../assets/iov-logo.svg';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
+import { ExtensionInteraction } from './components/ExtensionInteraction';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -47,6 +48,7 @@ export const Welcome = () => {
           NEXT
         </Button>
       </Block>
+      <ExtensionInteraction />
     </Block>
   );
 };
