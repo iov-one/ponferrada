@@ -1,12 +1,10 @@
 import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
 import { aNewStore } from '../../store';
-import { mayTestChains, withChainsDescribe } from '../../utils/test/testExecutor';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { PersonaManager } from '../../logic/persona';
 import { travelToRestoreAccount } from './test/travelToRestoreAccount';
 import { submitRecoveryPhrase } from './test/fillRecoveryPhrase';
-import { randomString } from '../../utils/test/random';
-import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 
 withChainsDescribe(
   'DOM > Feature > Restore Account',
