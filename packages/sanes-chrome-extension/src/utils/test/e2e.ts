@@ -1,12 +1,12 @@
 import puppeteer, { Page, Browser } from 'puppeteer';
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../theme/constants';
 
-export function launchBrowser(): Promise<Browser> {
+export function launchBrowser(slowMo: number = 0): Promise<Browser> {
   const CRX_PATH = require('path').join(__dirname, '../../../build');
   return puppeteer.launch({
     headless: false,
     devtools: true,
-    //slowMo: 200,
+    slowMo,
     args: [`--disable-extensions-except=${CRX_PATH}`, `--load-extension=${CRX_PATH}`],
     defaultViewport: {
       width: EXTENSION_WIDTH,
