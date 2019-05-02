@@ -141,9 +141,9 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary makeStyles-weight-43 makeStyles-weight-126"
             >
-              balance: 
+              balance:
               24
-               
+
               IOV
             </h6>
           </div>
@@ -846,7 +846,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-395 makeStyles-weight-427 makeStyles-inline-393"
     >
-       
+
       storybook
     </h4>
   </div>
@@ -1433,7 +1433,7 @@ Array [
   <h6
     className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-605 makeStyles-inline-557"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-559 makeStyles-weight-606 makeStyles-inline-557"
@@ -1965,7 +1965,7 @@ exports[`Storyshots Extension Account Status page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1096 makeStyles-weight-1128 makeStyles-inline-1094"
     >
-       
+
       Status
     </h4>
   </div>
@@ -2121,7 +2121,7 @@ exports[`Storyshots Extension Login page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1186 makeStyles-weight-1218 makeStyles-inline-1184"
     >
-       
+
       In
     </h4>
   </div>
@@ -2279,7 +2279,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1297 makeStyles-weight-1329 makeStyles-inline-1295"
     >
-       
+
       phrase
     </h4>
   </div>
@@ -2351,7 +2351,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1297 makeStyles-weight-1360 makeStyles-inline-1295"
       >
-        
+
       </p>
     </div>
     <div
@@ -2422,7 +2422,7 @@ exports[`Storyshots Extension Restore Account page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1397 makeStyles-weight-1429 makeStyles-inline-1395"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2586,7 +2586,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1515 makeStyles-weight-1547 makeStyles-inline-1513"
     >
-       
+
       to your IOV manager
     </h4>
   </div>
@@ -2717,7 +2717,7 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1678 makeStyles-weight-1710 makeStyles-inline-1676"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -2745,13 +2745,13 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1678 makeStyles-weight-1716 makeStyles-inline-1676"
       >
-         
+
         your identity on
       </p>
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1678 makeStyles-weight-1717 makeStyles-inline-1676"
       >
-         
+
         ETH
       </p>
     </div>
@@ -2846,7 +2846,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1762 makeStyles-weight-1794 makeStyles-inline-1760"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -2877,7 +2877,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1762 makeStyles-weight-1800 makeStyles-inline-1760"
         >
-           
+
           your identity.
         </p>
         <div
@@ -3029,7 +3029,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1595 makeStyles-weight-1627 makeStyles-inline-1593"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -3057,7 +3057,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1595 makeStyles-weight-1633 makeStyles-inline-1593"
       >
-         
+
         ETH
       </p>
     </div>
@@ -3153,7 +3153,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1880 makeStyles-weight-1912 makeStyles-inline-1878"
     >
-       
+
       Account
     </h4>
   </div>
@@ -3444,7 +3444,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-2018 makeStyles-weight-2050 makeStyles-inline-2016"
     >
-       
+
       Account
     </h4>
   </div>
@@ -3531,7 +3531,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-2018 makeStyles-weight-2097 makeStyles-inline-2016"
       >
-        
+
       </p>
     </div>
     <div
@@ -3632,7 +3632,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-2135 makeStyles-weight-2167 makeStyles-inline-2133"
     >
-       
+
       Account
     </h4>
   </div>
