@@ -7,7 +7,6 @@ import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm'
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
-import { PersonaManager } from '../../logic/persona';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import { MessageToBackground } from '../../extension/utils/types';
