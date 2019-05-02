@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AccountInfo } from '../logic/persona/accountManager';
-import { ProcessedTx } from '../routes/account/components/ListTxs';
+import { ProcessedTx } from '../logic/persona';
 
 type Accounts = ReadonlyArray<AccountInfo>;
 
