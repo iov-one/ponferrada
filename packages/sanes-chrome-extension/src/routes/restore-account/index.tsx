@@ -3,10 +3,10 @@ import RestoreAccountForm, { RECOVERY_PHRASE } from './components';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import { history } from '../../store/reducers';
-import { PersonaManager } from '../../logic/persona';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
+import { MessageToBackground } from '../../extension/utils/types';
 
 const onBack = (): void => {
   history.goBack();
@@ -18,17 +18,17 @@ const RestoreAccount = (): JSX.Element => {
 
   const onRestore = async (formValues: FormValues): Promise<void> => {
     const mnemonic = formValues[RECOVERY_PHRASE];
-    try {
-      const persona = await PersonaManager.create(mnemonic);
-      const accounts = await persona.getAccounts();
 
-      personaProvider.update(accounts, persona.mnemonic, []);
+    const message: MessageToBackground = {
+      action: 'create_persona',
+      data: mnemonic,
+    };
+
+    chrome.runtime.sendMessage(message, response => {
+      console.log(response);
+      personaProvider.update(response.accounts, response.mnemonic, response.txs);
       history.push(ACCOUNT_STATUS_ROUTE);
-    } catch (err) {
-      console.log('Error raised when creating persona');
-      console.log(err);
-      toast.show('The words you entered are not correct.', ToastVariant.ERROR);
-    }
+    });
   };
 
   return (

@@ -10,6 +10,7 @@ import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaManager } from '../../logic/persona';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
+import { MessageToBackground } from '../../extension/utils/types';
 
 const onBack = (): void => {
   history.goBack();
@@ -41,15 +42,14 @@ const Signup = (): JSX.Element => {
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
-    try {
-      const persona = await PersonaManager.create();
-      const accounts = await persona.getAccounts();
-      const txs = await persona.getTxs();
-      personaProvider.update(accounts, persona.mnemonic, txs);
+    const message: MessageToBackground = {
+      action: 'create_persona',
+    };
+    chrome.runtime.sendMessage(message, response => {
+      console.log(response);
+      personaProvider.update(response.accounts, response.mnemonic, response.txs);
       onShowPhrase();
-    } catch (err) {
-      console.log('Error raised when creating persona:', err);
-    }
+    });
   };
 
   return (
