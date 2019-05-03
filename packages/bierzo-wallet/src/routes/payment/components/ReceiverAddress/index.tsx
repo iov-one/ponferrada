@@ -2,11 +2,16 @@ import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Theme } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
+import Form, {
+  FormValues,
+  useForm,
+  ValidationError,
+} from 'medulas-react-components/lib/components/forms/Form';
+import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import Typography from 'medulas-react-components/lib/components/Typography';
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   tooltipIcon: {
@@ -14,31 +19,37 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const ReceiverAddress = (): JSX.Element => {
+const ADDRESS_FIELD = 'addressField';
+
+const onSubmit = () => {};
+
+const validate = (values: object): object => {
+  const formValues = values as FormValues;
+  const errors: ValidationError = {};
+
+  if (!formValues[ADDRESS_FIELD]) {
+    errors[ADDRESS_FIELD] = 'Required';
+  }
+
+  if (formValues[ADDRESS_FIELD] && formValues[ADDRESS_FIELD].length > 254) {
+    errors[ADDRESS_FIELD] = 'Can not be longer than 254 characters';
+  }
+
+  //TODO implement valid pattern
+  if (formValues[ADDRESS_FIELD] && !formValues[ADDRESS_FIELD].endsWith('*iov')) {
+    errors[ADDRESS_FIELD] = 'Invalid address';
+  }
+
+  return errors;
+};
+
+const ReceiverAddress = () => {
   const classes = useStyles();
 
-  const [validity, setValidity] = useState('');
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-
-    setValidity('');
-
-    //TODO implement valid pattern
-    if (!value.endsWith('*iov')) {
-      setValidity('Invalid address');
-    }
-
-    if (value.length > 254) {
-      setValidity('Can not be longer than 254 characters');
-    }
-  };
-
-  const handleBlur = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.value) {
-      setValidity('Required');
-    }
-  };
+  const { form, handleSubmit } = useForm({
+    onSubmit,
+    validate,
+  });
 
   return (
     <Paper>
@@ -47,21 +58,22 @@ export const ReceiverAddress = (): JSX.Element => {
           To
         </Typography>
         <Block width="100%" marginTop={2} marginBottom={1}>
-          <TextField
-            placeholder="IOV or wallet address"
-            fullWidth
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
+          <Form onSubmit={handleSubmit}>
+            <TextFieldForm
+              name={ADDRESS_FIELD}
+              form={form}
+              required
+              placeholder="IOV or wallet address"
+              fullWidth
+            />
+          </Form>
         </Block>
-        <Typography color="error" variant="subtitle2">
-          {validity}
-        </Typography>
         <Block display="flex" alignSelf="flex-end" marginTop={3}>
           <Typography color="textPrimary" variant="subtitle1">
             How it works
           </Typography>
           <Block alignSelf="center" marginLeft={1}>
+            {/*TODO add info popup*/}
             <FontAwesomeIcon icon={faQuestionCircle} size="lg" className={classes.tooltipIcon} />
           </Block>
         </Block>
@@ -69,3 +81,5 @@ export const ReceiverAddress = (): JSX.Element => {
     </Paper>
   );
 };
+
+export default ReceiverAddress;

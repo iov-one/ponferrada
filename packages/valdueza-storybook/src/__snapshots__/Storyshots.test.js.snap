@@ -5,17 +5,17 @@ exports[`Storyshots Components /forms SelectField 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="makeStyles-dropdown-664"
+    className="makeStyles-dropdown-634"
     onClick={[Function]}
   >
     <div
-      className="MuiInputBase-root makeStyles-root-665 makeStyles-root-667"
+      className="MuiInputBase-root makeStyles-root-635 makeStyles-root-637"
       onClick={[Function]}
       role="button"
     >
       <input
         autoComplete="off"
-        className="MuiInputBase-input makeStyles-input-666"
+        className="MuiInputBase-input makeStyles-input-636"
         name="SELECT_FIELD_ATTR"
         onBlur={[Function]}
         onChange={[Function]}
@@ -27,7 +27,11 @@ exports[`Storyshots Components /forms SelectField 1`] = `
     </div>
     <img
       alt="Phone Menu"
+<<<<<<< HEAD
       className="makeStyles-root-685 makeStyles-noShrink-686"
+=======
+      className="makeStyles-root-654 makeStyles-noShrink-655"
+>>>>>>> Changes validation approach and makes use of medulas' form components
       height="5"
       src="selectChevron.svg"
       width="8"
@@ -243,51 +247,51 @@ exports[`Storyshots Components Buttons 1`] = `
 exports[`Storyshots Components Hairline 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-95"
+    className="MuiBox-root MuiBox-root-85"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-98 makeStyles-weight-99"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-88 makeStyles-weight-89"
     >
       Regular hairline without margin
     </p>
     <div
-      className="MuiBox-root MuiBox-root-130"
+      className="MuiBox-root MuiBox-root-120"
     />
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-131"
+    className="MuiBox-root MuiBox-root-121"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-98 makeStyles-weight-132"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-88 makeStyles-weight-122"
     >
       Regular hairline with unit 1 margin
     </p>
     <div
-      className="MuiBox-root MuiBox-root-133"
+      className="MuiBox-root MuiBox-root-123"
     />
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-134"
+    className="MuiBox-root MuiBox-root-124"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-98 makeStyles-weight-135"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-88 makeStyles-weight-125"
     >
       Regular hairline with unit 4 margin
     </p>
     <div
-      className="MuiBox-root MuiBox-root-136"
+      className="MuiBox-root MuiBox-root-126"
     />
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-137"
+    className="MuiBox-root MuiBox-root-127"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-98 makeStyles-weight-138"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-88 makeStyles-weight-128"
     >
       Hairline with custom color
     </p>
     <div
-      className="MuiBox-root MuiBox-root-139"
+      className="MuiBox-root MuiBox-root-129"
     />
   </div>,
 ]
@@ -295,26 +299,26 @@ Array [
 
 exports[`Storyshots Components Images 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-141"
+  className="MuiBox-root MuiBox-root-131"
 >
   <div
-    className="MuiBox-root MuiBox-root-142"
+    className="MuiBox-root MuiBox-root-132"
   >
     <img
       alt="Iov Logo"
-      className="makeStyles-root-143"
+      className="makeStyles-root-133"
       src="iov-logo.png"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-148"
+    className="MuiBox-root MuiBox-root-138"
   >
     <div
-      className="MuiBox-root MuiBox-root-149"
+      className="MuiBox-root MuiBox-root-139"
     >
       <img
         alt="Download"
-        className="makeStyles-root-143"
+        className="makeStyles-root-133"
         height={16}
         src="download.svg"
         width={16}
@@ -326,41 +330,41 @@ exports[`Storyshots Components Images 1`] = `
 
 exports[`Storyshots Components Layout 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-151"
+  className="MuiBox-root MuiBox-root-141"
 >
   <div
-    className="MuiBox-root MuiBox-root-152"
+    className="MuiBox-root MuiBox-root-142"
   >
     <h4
-      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-155 makeStyles-weight-156 makeStyles-inline-153"
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-145 makeStyles-weight-146 makeStyles-inline-143"
     >
       Title
     </h4>
     <h4
-      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-155 makeStyles-weight-187 makeStyles-inline-153"
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-145 makeStyles-weight-177 makeStyles-inline-143"
     >
        
       storybook
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-188"
+    className="MuiBox-root MuiBox-root-178"
   >
     <h6
-      className="MuiTypography-root MuiTypography-h6 makeStyles-weight-155 makeStyles-weight-189"
+      className="MuiTypography-root MuiTypography-h6 makeStyles-weight-145 makeStyles-weight-179"
     >
       Layout content
     </h6>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-190"
+    className="MuiBox-root MuiBox-root-180"
   />
   <div
-    className="MuiBox-root MuiBox-root-191"
+    className="MuiBox-root MuiBox-root-181"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-192"
+      className="makeStyles-root-182"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -802,15 +806,26 @@ Array [
 exports[`Storyshots Components Tooltip 1`] = `
 Array [
   <div
+<<<<<<< HEAD
     className="MuiBox-root MuiBox-root-272"
   >
     <div
       className="makeStyles-container-274"
+=======
+    className="MuiBox-root MuiBox-root-254"
+  >
+    <div
+      className="makeStyles-container-256"
+>>>>>>> Changes validation approach and makes use of medulas' form components
       onClick={[Function]}
     >
       <img
         alt="Info"
+<<<<<<< HEAD
         className="makeStyles-root-277"
+=======
+        className="makeStyles-root-259"
+>>>>>>> Changes validation approach and makes use of medulas' form components
         height={16}
         src="info_normal.svg"
         width={16}
@@ -818,10 +833,17 @@ Array [
     </div>
   </div>,
   <div
+<<<<<<< HEAD
     className="MuiBox-root MuiBox-root-282"
   >
     <p
       className="MuiTypography-root MuiTypography-body1 makeStyles-weight-285 makeStyles-weight-286 makeStyles-inline-283"
+=======
+    className="MuiBox-root MuiBox-root-264"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-267 makeStyles-weight-268 makeStyles-inline-265"
+>>>>>>> Changes validation approach and makes use of medulas' form components
       style={
         Object {
           "marginRight": "4px",
@@ -831,12 +853,20 @@ Array [
       Loooooooooooooooooooooooooooooooooong text
     </p>
     <div
+<<<<<<< HEAD
       className="makeStyles-container-274"
+=======
+      className="makeStyles-container-256"
+>>>>>>> Changes validation approach and makes use of medulas' form components
       onClick={[Function]}
     >
       <img
         alt="Info"
+<<<<<<< HEAD
         className="makeStyles-root-277"
+=======
+        className="makeStyles-root-259"
+>>>>>>> Changes validation approach and makes use of medulas' form components
         height={16}
         src="info_normal.svg"
         width={16}
@@ -849,87 +879,155 @@ Array [
 exports[`Storyshots Components Typography 1`] = `
 Array [
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-320"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-302"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     H4
   </h6>,
   <h4
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-h4 makeStyles-weight-319 makeStyles-weight-351"
+=======
+    className="MuiTypography-root MuiTypography-h4 makeStyles-weight-301 makeStyles-weight-333"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Main headings
   </h4>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-352"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-334"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     H5
   </h6>,
   <h5
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-h5 makeStyles-weight-319 makeStyles-weight-353"
+=======
+    className="MuiTypography-root MuiTypography-h5 makeStyles-weight-301 makeStyles-weight-335"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Heading 2
   </h5>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-354"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-336"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     H6
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-h6 makeStyles-weight-319 makeStyles-weight-355"
+=======
+    className="MuiTypography-root MuiTypography-h6 makeStyles-weight-301 makeStyles-weight-337"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Subheading
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-356"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-338"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     body1
   </h6>,
   <p
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-body1 makeStyles-weight-319 makeStyles-weight-357"
+=======
+    className="MuiTypography-root MuiTypography-body1 makeStyles-weight-301 makeStyles-weight-339"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-358"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-340"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     body2
   </h6>,
   <p
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-body2 makeStyles-weight-319 makeStyles-weight-359"
+=======
+    className="MuiTypography-root MuiTypography-body2 makeStyles-weight-301 makeStyles-weight-341"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-360"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-342"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     subtitle1
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 makeStyles-weight-319 makeStyles-weight-361"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 makeStyles-weight-301 makeStyles-weight-343"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Text field label
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-362"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-344"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     subtitle2
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-319 makeStyles-weight-363"
+=======
+    className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-301 makeStyles-weight-345"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Text field label
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-364"
+=======
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-346"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Inline styles
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary makeStyles-weight-319 makeStyles-weight-365 makeStyles-inline-317"
+=======
+    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary makeStyles-weight-301 makeStyles-weight-347 makeStyles-inline-299"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     First part of the text. 
   </h6>,
   <h6
+<<<<<<< HEAD
     className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-319 makeStyles-weight-366 makeStyles-inline-317"
+=======
+    className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-301 makeStyles-weight-348 makeStyles-inline-299"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     Second part of the text.
   </h6>,
@@ -1056,10 +1154,17 @@ exports[`Storyshots Components/forms Form 1`] = `
 
 exports[`Storyshots Components/forms TextFieldForm 1`] = `
 <div
+<<<<<<< HEAD
   className="MuiBox-root MuiBox-root-594"
 >
   <div
     className="MuiBox-root MuiBox-root-595"
+=======
+  className="MuiBox-root MuiBox-root-565"
+>
+  <div
+    className="MuiBox-root MuiBox-root-566"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     <form
       onSubmit={[Function]}
@@ -1079,7 +1184,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
         >
           <fieldset
             aria-hidden={true}
+<<<<<<< HEAD
             className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+=======
+            className="PrivateNotchedOutline-root-620 MuiOutlinedInput-notchedOutline"
+>>>>>>> Changes validation approach and makes use of medulas' form components
             style={
               Object {
                 "paddingLeft": 8,
@@ -1087,7 +1196,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
             }
           >
             <legend
+<<<<<<< HEAD
               className="MuiPrivateNotchedOutline-legend"
+=======
+              className="PrivateNotchedOutline-legend-621"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               style={
                 Object {
                   "width": 0.01,
@@ -1125,7 +1238,7 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-660"
+    className="MuiBox-root MuiBox-root-630"
   >
     <form
       onSubmit={[Function]}
@@ -1145,7 +1258,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
         >
           <fieldset
             aria-hidden={true}
+<<<<<<< HEAD
             className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+=======
+            className="PrivateNotchedOutline-root-620 MuiOutlinedInput-notchedOutline"
+>>>>>>> Changes validation approach and makes use of medulas' form components
             style={
               Object {
                 "paddingLeft": 8,
@@ -1153,7 +1270,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
             }
           >
             <legend
+<<<<<<< HEAD
               className="MuiPrivateNotchedOutline-legend"
+=======
+              className="PrivateNotchedOutline-legend-621"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               style={
                 Object {
                   "width": 0.01,
@@ -1186,7 +1307,7 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-661"
+    className="MuiBox-root MuiBox-root-631"
   >
     <form
       onSubmit={[Function]}
@@ -1206,7 +1327,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
         >
           <fieldset
             aria-hidden={true}
+<<<<<<< HEAD
             className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+=======
+            className="PrivateNotchedOutline-root-620 MuiOutlinedInput-notchedOutline"
+>>>>>>> Changes validation approach and makes use of medulas' form components
             style={
               Object {
                 "paddingLeft": 8,
@@ -1214,7 +1339,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
             }
           >
             <legend
+<<<<<<< HEAD
               className="MuiPrivateNotchedOutline-legend"
+=======
+              className="PrivateNotchedOutline-legend-621"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               style={
                 Object {
                   "width": 0.01,
@@ -1247,7 +1376,7 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-662"
+    className="MuiBox-root MuiBox-root-632"
   >
     <form
       onSubmit={[Function]}
@@ -1267,7 +1396,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
         >
           <fieldset
             aria-hidden={true}
+<<<<<<< HEAD
             className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+=======
+            className="PrivateNotchedOutline-root-620 MuiOutlinedInput-notchedOutline"
+>>>>>>> Changes validation approach and makes use of medulas' form components
             style={
               Object {
                 "paddingLeft": 8,
@@ -1275,7 +1408,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
             }
           >
             <legend
+<<<<<<< HEAD
               className="MuiPrivateNotchedOutline-legend"
+=======
+              className="PrivateNotchedOutline-legend-621"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               style={
                 Object {
                   "width": 0.01,
@@ -1308,7 +1445,7 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-663"
+    className="MuiBox-root MuiBox-root-633"
   >
     <form
       onSubmit={[Function]}
@@ -1328,7 +1465,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
         >
           <fieldset
             aria-hidden={true}
+<<<<<<< HEAD
             className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+=======
+            className="PrivateNotchedOutline-root-620 MuiOutlinedInput-notchedOutline"
+>>>>>>> Changes validation approach and makes use of medulas' form components
             style={
               Object {
                 "paddingLeft": 8,
@@ -1336,7 +1477,11 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
             }
           >
             <legend
+<<<<<<< HEAD
               className="MuiPrivateNotchedOutline-legend"
+=======
+              className="PrivateNotchedOutline-legend-621"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               style={
                 Object {
                   "width": 0,
@@ -1373,6 +1518,7 @@ exports[`Storyshots Components/forms TextFieldForm 1`] = `
 
 exports[`Storyshots Routes/Account Show account status 1`] = `
 <div
+<<<<<<< HEAD
   className="MuiBox-root MuiBox-root-698"
   id="/account"
 >
@@ -1381,43 +1527,80 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
   >
     <h4
       className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-702 makeStyles-weight-703 makeStyles-inline-700"
+=======
+  className="MuiBox-root MuiBox-root-667"
+  id="/account"
+>
+  <div
+    className="MuiBox-root MuiBox-root-668"
+  >
+    <h4
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-671 makeStyles-weight-672 makeStyles-inline-669"
+>>>>>>> Changes validation approach and makes use of medulas' form components
     >
       Account
     </h4>
     <h4
+<<<<<<< HEAD
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-702 makeStyles-weight-734 makeStyles-inline-700"
+=======
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-671 makeStyles-weight-703 makeStyles-inline-669"
+>>>>>>> Changes validation approach and makes use of medulas' form components
     >
        
       Status
     </h4>
   </div>
   <div
+<<<<<<< HEAD
     className="MuiBox-root MuiBox-root-735"
+=======
+    className="MuiBox-root MuiBox-root-704"
+>>>>>>> Changes validation approach and makes use of medulas' form components
   >
     <form
       onSubmit={[Function]}
     >
       <div
+<<<<<<< HEAD
         className="MuiBox-root MuiBox-root-736"
       >
         <h6
           className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-702 makeStyles-weight-737"
+=======
+        className="MuiBox-root MuiBox-root-705"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-671 makeStyles-weight-706"
+>>>>>>> Changes validation approach and makes use of medulas' form components
         >
           Available accounts
         </h6>
       </div>
       <div
+<<<<<<< HEAD
         className="makeStyles-dropdown-738"
         onClick={[Function]}
       >
         <div
           className="MuiInputBase-root makeStyles-root-739 makeStyles-root-741"
+=======
+        className="makeStyles-dropdown-707"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root-708 makeStyles-root-710"
+>>>>>>> Changes validation approach and makes use of medulas' form components
           onClick={[Function]}
           role="button"
         >
           <input
             autoComplete="off"
+<<<<<<< HEAD
             className="MuiInputBase-input makeStyles-input-740"
+=======
+            className="MuiInputBase-input makeStyles-input-709"
+>>>>>>> Changes validation approach and makes use of medulas' form components
             name="SELECT_FIELD_ATTR"
             onBlur={[Function]}
             onChange={[Function]}
@@ -1429,7 +1612,11 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
         </div>
         <img
           alt="Phone Menu"
+<<<<<<< HEAD
           className="makeStyles-root-759 makeStyles-noShrink-760"
+=======
+          className="makeStyles-root-727 makeStyles-noShrink-728"
+>>>>>>> Changes validation approach and makes use of medulas' form components
           height="5"
           src="selectChevron.svg"
           width="8"
@@ -1437,16 +1624,27 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
       </div>
     </form>
     <div
+<<<<<<< HEAD
       className="MuiBox-root MuiBox-root-764"
     />
     <div
       className="MuiBox-root MuiBox-root-765"
+=======
+      className="MuiBox-root MuiBox-root-732"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-733"
+>>>>>>> Changes validation approach and makes use of medulas' form components
     >
       <nav
         className="MuiList-root MuiList-padding"
       >
         <div
+<<<<<<< HEAD
           className="MuiBox-root MuiBox-root-770"
+=======
+          className="MuiBox-root MuiBox-root-738"
+>>>>>>> Changes validation approach and makes use of medulas' form components
         >
           <li
             className="MuiListItem-root MuiListItem-default MuiListItem-gutters"
@@ -1456,7 +1654,11 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
               className="MuiListItemText-root"
             >
               <p
+<<<<<<< HEAD
                 className="MuiTypography-root MuiTypography-body1 makeStyles-weight-702 makeStyles-weight-789"
+=======
+                className="MuiTypography-root MuiTypography-body1 makeStyles-weight-671 makeStyles-weight-756"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               >
                 Transations
               </p>
@@ -1464,6 +1666,7 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
           </li>
         </div>
         <div
+<<<<<<< HEAD
           className="MuiBox-root MuiBox-root-790"
         />
         <div
@@ -1479,12 +1682,33 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
             <img
               alt="No Transations"
               className="makeStyles-root-759"
+=======
+          className="MuiBox-root MuiBox-root-757"
+        />
+        <div
+          className="MuiBox-root MuiBox-root-761"
+        />
+        <li
+          className="MuiListItem-root MuiListItem-gutters makeStyles-center-759"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-empty-758"
+          >
+            <img
+              alt="No Transations"
+              className="makeStyles-root-727"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               height="42"
               src="uptodate.svg"
             />
           </div>
           <div
+<<<<<<< HEAD
             className="MuiListItemText-root makeStyles-text-793"
+=======
+            className="MuiListItemText-root makeStyles-text-760"
+>>>>>>> Changes validation approach and makes use of medulas' form components
           >
             <span
               className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
@@ -1496,13 +1720,21 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
       </nav>
     </div>
     <div
+<<<<<<< HEAD
       className="MuiBox-root MuiBox-root-796"
+=======
+      className="MuiBox-root MuiBox-root-763"
+>>>>>>> Changes validation approach and makes use of medulas' form components
     >
       <nav
         className="MuiList-root MuiList-padding"
       >
         <div
+<<<<<<< HEAD
           className="MuiBox-root MuiBox-root-797"
+=======
+          className="MuiBox-root MuiBox-root-764"
+>>>>>>> Changes validation approach and makes use of medulas' form components
         >
           <li
             className="MuiListItem-root MuiListItem-default MuiListItem-gutters"
@@ -1512,7 +1744,11 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
               className="MuiListItemText-root"
             >
               <p
+<<<<<<< HEAD
                 className="MuiTypography-root MuiTypography-body1 makeStyles-weight-702 makeStyles-weight-798"
+=======
+                className="MuiTypography-root MuiTypography-body1 makeStyles-weight-671 makeStyles-weight-765"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               >
                 Pending Transactions
               </p>
@@ -1520,6 +1756,7 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
           </li>
         </div>
         <div
+<<<<<<< HEAD
           className="MuiBox-root MuiBox-root-799"
         />
         <div
@@ -1535,12 +1772,33 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
             <img
               alt="No Pending Transactions"
               className="makeStyles-root-759"
+=======
+          className="MuiBox-root MuiBox-root-766"
+        />
+        <div
+          className="MuiBox-root MuiBox-root-767"
+        />
+        <li
+          className="MuiListItem-root MuiListItem-gutters makeStyles-center-759"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-empty-758"
+          >
+            <img
+              alt="No Pending Transactions"
+              className="makeStyles-root-727"
+>>>>>>> Changes validation approach and makes use of medulas' form components
               height="42"
               src="uptodate.svg"
             />
           </div>
           <div
+<<<<<<< HEAD
             className="MuiListItemText-root makeStyles-text-793"
+=======
+            className="MuiListItemText-root makeStyles-text-760"
+>>>>>>> Changes validation approach and makes use of medulas' form components
           >
             <span
               className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
@@ -1553,6 +1811,7 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
     </div>
   </div>
   <div
+<<<<<<< HEAD
     className="MuiBox-root MuiBox-root-801"
   />
   <div
@@ -1561,6 +1820,16 @@ exports[`Storyshots Routes/Account Show account status 1`] = `
     <img
       alt="IOV logo"
       className="makeStyles-root-759"
+=======
+    className="MuiBox-root MuiBox-root-768"
+  />
+  <div
+    className="MuiBox-root MuiBox-root-769"
+  >
+    <img
+      alt="IOV logo"
+      className="makeStyles-root-727"
+>>>>>>> Changes validation approach and makes use of medulas' form components
       height={39}
       src="iov-logo.png"
       width={84}

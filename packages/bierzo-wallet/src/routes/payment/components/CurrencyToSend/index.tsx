@@ -1,16 +1,20 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { MenuItem, Theme } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
+import Form, {
+  FormValues,
+  useForm,
+  ValidationError,
+} from 'medulas-react-components/lib/components/forms/Form';
+import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
+import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import Typography from 'medulas-react-components/lib/components/Typography';
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   avatar: {
     backgroundColor: '#ffe152',
     fontSize: '27.5px',
@@ -20,70 +24,85 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+const QUANTITY_FIELD = 'quantityField';
+const QUANTITY_MAX = 9999999;
+const QUANTITY_MIN = 1e-9;
+const CURRENCY_FIELD = 'currencyField';
+
 interface Currencies {
   [key: string]: number;
 }
 
 //NOTE hardcoded placeholder balances for each currency
 const currencies: Currencies = {
-  alt: 15,
-  iov: 24,
+  ALT: 15,
+  IOV: 24,
 };
 
-// TODO renders each MenuItem from the currencies array, but does not work because of Typescript type mismatch
-const renderedCurrencies = Object.keys(currencies).forEach(currency => {
-  return <MenuItem value={currency}>{currency.toUpperCase()}</MenuItem>;
+const currencyItems = Object.keys(currencies).map(currency => {
+  const item: Item = {
+    name: currency,
+  };
+
+  return item;
 });
 
-export const CurrencyToSend = () => {
+const onSubmit = () => {};
+
+const CurrencyToSend = () => {
   const classes = useStyles();
 
   const avatarClasses = {
     root: classes.avatar,
   };
 
-  const [validity, setValidity] = useState('');
-  //NOTE hardcoded placeholder 'iov'
-  const [currency, setCurrency] = useState('iov');
+  //NOTE hardcoded initial state for "currency"
+  const [currency, setCurrency] = useState(currencyItems[1].name);
   const [balance, setBalance] = useState(currencies[currency]);
 
-  const textFieldHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = Number(event.target.value);
-
-    setValidity('');
-
-    if (isNaN(value)) {
-      setValidity('Must be a number');
-    } else {
-      if (value > balance) {
-        setValidity(`Should be lower or equal than ${balance}`);
-      }
-
-      //TODO find out max limit
-      if (value > 9999999) {
-        setValidity('Should be lower than 9999999');
-      }
-
-      if (value < 1e-9) {
-        setValidity('Should be greater or equal than 1e-9');
-      }
-    }
+  const handleChange = (item: Item) => {
+    setCurrency(item.name);
+    setBalance(currencies[item.name]);
   };
 
-  const textFieldHandleBlur = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.value) {
-      setValidity('Required');
+  //NOTE placed this function inside the component so that it has access to "balance"
+  const validate = (values: object): object => {
+    const formValues = values as FormValues;
+    const errors: ValidationError = {};
+
+    const quantity = formValues[QUANTITY_FIELD];
+
+    if (!quantity) {
+      errors[QUANTITY_FIELD] = 'Required';
+      return errors;
     }
+
+    const numQuantity = Number(quantity);
+
+    if (isNaN(numQuantity)) {
+      errors[QUANTITY_FIELD] = 'Must be a number';
+      return errors;
+    }
+
+    if (numQuantity > balance) {
+      errors[QUANTITY_FIELD] = `Should be lower or equal than ${balance}`;
+    }
+
+    if (numQuantity > QUANTITY_MAX) {
+      errors[QUANTITY_FIELD] = `Should be lower than ${QUANTITY_MAX}`;
+    }
+
+    if (numQuantity < QUANTITY_MIN) {
+      errors[QUANTITY_FIELD] = `Should be greater or equal than ${QUANTITY_MIN}`;
+    }
+
+    return errors;
   };
 
-  const selectHandleChange = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
-    const value = event.target.value;
-
-    if (typeof value === 'string') {
-      setCurrency(value);
-      setBalance(currencies[value]);
-    }
-  };
+  const { form, handleSubmit } = useForm({
+    onSubmit,
+    validate,
+  });
 
   return (
     <Paper>
@@ -94,31 +113,32 @@ export const CurrencyToSend = () => {
         <Typography color="textPrimary" variant="subtitle2">
           You send
         </Typography>
-        <Block display="flex" marginTop={5} marginBottom={1}>
-          <Block marginRight={1}>
-            <TextField
-              placeholder="0,00"
-              fullWidth
-              onBlur={textFieldHandleBlur}
-              onChange={textFieldHandleChange}
+        {/*TODO remove extra left-right margins of the form*/}
+        <Form onSubmit={handleSubmit}>
+          <Block display="flex" marginTop={5} marginBottom={1}>
+            <Block marginRight={1}>
+              <TextFieldForm name={QUANTITY_FIELD} form={form} required placeholder="0,00" fullWidth />
+            </Block>
+            {/*NOTE hardcoded initial value*/}
+            <SelectFieldForm
+              fieldName={CURRENCY_FIELD}
+              form={form}
+              maxWidth="60px"
+              items={currencyItems}
+              initial={currencyItems[1].name}
+              value={currency}
+              onChangeCallback={handleChange}
             />
           </Block>
-          {/*TODO properly style Select component*/}
-          <Select value={currency} onChange={selectHandleChange} autoWidth>
-            {/* renderedCurrencies */}
-            <MenuItem value="alt">ALT</MenuItem>
-            <MenuItem value="iov">IOV</MenuItem>
-          </Select>
-        </Block>
-        <Typography color="error" variant="subtitle2">
-          {validity}
-        </Typography>
+        </Form>
         <Block marginTop={1}>
           <Typography color="textSecondary" variant="subtitle2">
-            balance: {balance} {currency.toUpperCase()}
+            balance: {balance} {currency}
           </Typography>
         </Block>
       </Block>
     </Paper>
   );
 };
+
+export default CurrencyToSend;
