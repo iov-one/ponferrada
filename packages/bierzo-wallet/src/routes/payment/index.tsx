@@ -2,10 +2,11 @@ import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
+import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import React from 'react';
-import { CurrencyToSend } from './components/CurrencyToSend';
-import { ReceiverAddress } from './components/ReceiverAddress';
-import { TextNote } from './components/TextNote';
+import CurrencyToSend from './components/CurrencyToSend';
+import ReceiverAddress from './components/ReceiverAddress';
+import TextNote from './components/TextNote';
 
 const useStyles = makeStyles((theme: Theme) => ({
   payment: {
@@ -38,9 +39,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const Payment = (): JSX.Element => {
+const onSubmit = () => {};
+
+export const Payment = () => {
   const classes = useStyles();
 
+  const { handleSubmit, invalid, pristine, submitting } = useForm({
+    onSubmit,
+  });
+
+  //TODO make the button be disabled according to the state of the components
   return (
     <Block
       width="100vw"
@@ -61,7 +69,11 @@ export const Payment = (): JSX.Element => {
         <TextNote />
       </Block>
       <Block width="75%" className={classes.continue}>
-        <Button fullWidth>Continue</Button>
+        <Form onSubmit={handleSubmit}>
+          <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
+            Continue
+          </Button>
+        </Form>
       </Block>
     </Block>
   );
