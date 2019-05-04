@@ -1,3 +1,4 @@
+/*global chrome*/
 import { wrapStore } from 'webext-redux';
 import { JsonRpcErrorResponse } from '@iov/jsonrpc';
 

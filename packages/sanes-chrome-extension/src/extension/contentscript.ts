@@ -1,3 +1,4 @@
+/*global chrome*/
 import { MsgToBackground } from './utils/types.js';
 import { WTC_MSG_HELLO, CTB_MSG_HELLO } from './utils/messages';
 
