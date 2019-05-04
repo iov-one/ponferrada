@@ -1,3 +1,4 @@
+/*global chrome*/
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec } from '@iov/ethereum';
