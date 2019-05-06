@@ -2842,22 +2842,22 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
   id="/signup1"
 >
   <div
-    className="MuiBox-root-1301 MuiBox-root-1303"
+    className="MuiBox-root MuiBox-root-1303"
   >
     <h4
-      className="MuiTypography-root-1308 MuiTypography-h4-1316 MuiTypography-colorPrimary-1331 makeStyles-weight-1306 makeStyles-weight-1307 makeStyles-inline-1304"
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-1306 makeStyles-weight-1307 makeStyles-inline-1304"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-1308 MuiTypography-h4-1316 makeStyles-weight-1306 makeStyles-weight-1338 makeStyles-inline-1304"
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1306 makeStyles-weight-1338 makeStyles-inline-1304"
     >
 
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-1301 MuiBox-root-1339"
+    className="MuiBox-root MuiBox-root-1339"
   >
     <form
       onSubmit={[Function]}
