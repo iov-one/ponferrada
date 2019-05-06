@@ -1,3 +1,4 @@
+/*global chrome*/
 import * as React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';

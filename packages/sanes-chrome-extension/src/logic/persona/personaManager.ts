@@ -1,4 +1,3 @@
-/*global chrome*/
 import { Persona } from './persona';
 
 export class PersonaManager {
