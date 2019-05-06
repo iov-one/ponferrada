@@ -38,6 +38,21 @@ yarn build
 fold_end
 
 #
+# Sanity
+#
+fold_start "check-dirty"
+# Ensure build step didn't modify source files to avoid unprettified repository state
+SOURCE_CHANGES=$(git status --porcelain)
+if [[ -n "$SOURCE_CHANGES" ]]; then
+  echo "Error: repository contains changes."
+  echo "Showing 'git status' and 'git diff' for debugging reasons now:"
+  git status
+  git diff
+  exit 1
+fi
+fold_end
+
+#
 # Test
 #
 fold_start "yarn-tests"
