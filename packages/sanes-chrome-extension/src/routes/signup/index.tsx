@@ -1,4 +1,3 @@
-/*global chrome*/
 import * as React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
@@ -10,7 +9,7 @@ import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import { MessageToBackground, MessageToBackgroundAction } from '../../extension/messages';
+import { sendCreatePersonaMessage } from '../../extension/messages';
 
 const onBack = (): void => {
   history.goBack();
@@ -42,14 +41,9 @@ const Signup = (): JSX.Element => {
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
-    const message: MessageToBackground = {
-      action: MessageToBackgroundAction.CreatePersona,
-    };
-    chrome.runtime.sendMessage(message, response => {
-      console.log(response);
-      personaProvider.update(response.accounts, response.mnemonic, response.txs);
-      onShowPhrase();
-    });
+    const response = await sendCreatePersonaMessage();
+    personaProvider.update(response.accounts, response.mnemonic, response.txs);
+    onShowPhrase();
   };
 
   return (
