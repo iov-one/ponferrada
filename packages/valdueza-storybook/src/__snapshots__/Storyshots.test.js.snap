@@ -2058,35 +2058,35 @@ exports[`Storyshots Routes/Share Identity Share Identity 1`] = `
     className="MuiBox-root MuiBox-root-1177"
   >
     <div
-      className="MuiBox-root-1134 MuiBox-root-1173"
+      className="MuiBox-root MuiBox-root-1173"
     >
       <p
-        className="MuiTypography-root-1141 MuiTypography-body1-1143 makeStyles-weight-1139 makeStyles-weight-1174"
+        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1139 makeStyles-weight-1174"
       >
         The following site:
       </p>
       <p
-        className="MuiTypography-root-1141 MuiTypography-body1-1143 MuiTypography-colorPrimary-1164 makeStyles-weight-1139 makeStyles-weight-1175"
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1139 makeStyles-weight-1175"
       >
         http://finex.com
       </p>
       <p
-        className="MuiTypography-root-1141 MuiTypography-body1-1143 makeStyles-weight-1139 makeStyles-weight-1176 makeStyles-inline-1137"
+        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1139 makeStyles-weight-1176 makeStyles-inline-1137"
       >
         wants to see you identity on
       </p>
 
       <p
-        className="MuiTypography-root-1141 MuiTypography-body1-1143 MuiTypography-colorPrimary-1164 makeStyles-weight-1139 makeStyles-weight-1177 makeStyles-inline-1137"
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1139 makeStyles-weight-1177 makeStyles-inline-1137"
       >
         BTC
       </p>
     </div>
     <div
-      className="MuiBox-root-1134 MuiBox-root-1178"
+      className="MuiBox-root MuiBox-root-1178"
     />
     <button
-      className="MuiButtonBase-root-1196 MuiButton-root-1179 MuiButton-contained-1187 MuiButton-containedPrimary-1188 MuiButton-fullWidth-1195"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -2102,16 +2102,16 @@ exports[`Storyshots Routes/Share Identity Share Identity 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1180"
+        className="MuiButton-label"
       >
         Accept
       </span>
     </button>
     <div
-      className="MuiBox-root-1134 MuiBox-root-1199"
+      className="MuiBox-root MuiBox-root-1199"
     />
     <button
-      className="MuiButtonBase-root-1196 MuiButton-root-1179 MuiButton-contained-1187 MuiButton-containedSecondary-1189 MuiButton-fullWidth-1195"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -2127,17 +2127,17 @@ exports[`Storyshots Routes/Share Identity Share Identity 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1180"
+        className="MuiButton-label"
       >
         Reject
       </span>
     </button>
   </div>
   <div
-    className="MuiBox-root-1134 MuiBox-root-1200"
+    className="MuiBox-root MuiBox-root-1200"
   />
   <div
-    className="MuiBox-root-1134 MuiBox-root-1201"
+    className="MuiBox-root MuiBox-root-1201"
   >
     <img
       alt="IOV logo"
@@ -2152,26 +2152,26 @@ exports[`Storyshots Routes/Share Identity Share Identity 1`] = `
 
 exports[`Storyshots Routes/Signup New account page 1`] = `
 <div
-  className="MuiBox-root-1217 MuiBox-root-1218"
+  className="MuiBox-root MuiBox-root-1218"
   id="/signup1"
 >
   <div
-    className="MuiBox-root-1217 MuiBox-root-1219"
+    className="MuiBox-root MuiBox-root-1219"
   >
     <h4
-      className="MuiTypography-root-1224 MuiTypography-h4-1232 MuiTypography-colorPrimary-1247 makeStyles-weight-1222 makeStyles-weight-1223 makeStyles-inline-1220"
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-1222 makeStyles-weight-1223 makeStyles-inline-1220"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root-1224 MuiTypography-h4-1232 makeStyles-weight-1222 makeStyles-weight-1254 makeStyles-inline-1220"
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1222 makeStyles-weight-1254 makeStyles-inline-1220"
     >
 
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root-1217 MuiBox-root-1255"
+    className="MuiBox-root MuiBox-root-1255"
   >
     <form
       onSubmit={[Function]}
