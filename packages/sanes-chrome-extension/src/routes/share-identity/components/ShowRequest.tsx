@@ -6,9 +6,10 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 
 interface Props {
   readonly showAcceptView: () => void;
+  readonly showRejectView: () => void;
 }
 
-const Layout = ({ showAcceptView }: Props): JSX.Element => (
+const Layout = ({ showAcceptView, showRejectView }: Props): JSX.Element => (
   <PageLayout primaryTitle="Share" title="Identity">
     <Block textAlign="center">
       <Typography variant="body1">The following site:</Typography>
@@ -28,7 +29,7 @@ const Layout = ({ showAcceptView }: Props): JSX.Element => (
       Accept
     </Button>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth color="secondary">
+    <Button variant="contained" fullWidth color="secondary" onClick={showRejectView}>
       Reject
     </Button>
   </PageLayout>
