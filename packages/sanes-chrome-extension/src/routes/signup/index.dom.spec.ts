@@ -7,9 +7,20 @@ import { travelToSignup } from './test/travelToSignup';
 import { randomString } from '../../utils/test/random';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
+import * as messages from '../../extension/messages';
 
 describe('DOM > Feature > Signup', (): void => {
   let store: Store<RootState>;
+
+  beforeAll(() => {
+    const response: messages.CreatePersonaResponse = {
+      accounts: [],
+      mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
+      txs: [],
+    };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (messages.sendCreatePersonaMessage as any) = jest.fn().mockReturnValue(async () => response);
+  });
 
   beforeEach(
     (): void => {

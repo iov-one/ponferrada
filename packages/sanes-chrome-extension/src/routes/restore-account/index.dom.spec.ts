@@ -4,11 +4,22 @@ import { aNewStore } from '../../store';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { travelToRestoreAccount } from './test/travelToRestoreAccount';
 import { submitRecoveryPhrase } from './test/fillRecoveryPhrase';
+import * as messages from '../../extension/messages';
 
 withChainsDescribe(
   'DOM > Feature > Restore Account',
   (): void => {
     let store: Store<RootState>;
+
+    beforeAll(() => {
+      const response: messages.CreatePersonaResponse = {
+        accounts: [],
+        mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
+        txs: [],
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (messages.sendCreatePersonaMessage as any) = jest.fn().mockReturnValue(async () => response);
+    });
 
     beforeEach(
       (): void => {
