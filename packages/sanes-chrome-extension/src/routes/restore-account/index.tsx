@@ -5,7 +5,7 @@ import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import { history } from '../../store/reducers';
 import { PersonaContext } from '../../context/PersonaProvider';
-import { MessageToBackground, MessageToBackgroundAction } from '../../extension/utils/types';
+import { MessageToBackground, MessageToBackgroundAction } from '../../extension/messages';
 
 const onBack = (): void => {
   history.goBack();

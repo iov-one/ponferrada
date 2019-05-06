@@ -10,7 +10,7 @@ import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import { MessageToBackground, MessageToBackgroundAction } from '../../extension/utils/types';
+import { MessageToBackground, MessageToBackgroundAction } from '../../extension/messages';
 
 const onBack = (): void => {
   history.goBack();

@@ -2,7 +2,7 @@
 import { wrapStore } from 'webext-redux';
 import { JsonRpcErrorResponse } from '@iov/jsonrpc';
 
-import { MessageToBackground, MessageToBackgroundAction } from './utils/types';
+import { MessageToBackground, MessageToBackgroundAction } from './messages';
 import { WELCOME_ROUTE } from '../routes/paths';
 import { makeStore } from '../store';
 import { history } from '../store/reducers';

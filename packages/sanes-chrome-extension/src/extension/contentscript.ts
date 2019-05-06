@@ -1,6 +1,5 @@
 /*global chrome*/
-import { MessageToBackground, MessageToBackgroundAction } from './utils/types';
-import { WTC_MSG_HELLO } from './utils/messages';
+import { MessageToBackground, MessageToBackgroundAction, WTC_MSG_HELLO } from './messages';
 
 export const main = async (): Promise<void> => {
   window.addEventListener(WTC_MSG_HELLO, function(): void {
