@@ -112,8 +112,9 @@ export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Prom
     const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'p');
     expect(paragraphs.length).toBe(1);
     const phraseParagraph = paragraphs[0].innerHTML;
-    // TODO: set expected testing mnemonic
-    expect(phraseParagraph).toBe('');
+    expect(phraseParagraph).toBe(
+      'badge cattle stool execute involve main mirror envelope brave scrap involve simple'
+    );
   };
   // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
   await TestUtils.act(showMnemonic as any); //eslint-disable-line @typescript-eslint/no-explicit-any

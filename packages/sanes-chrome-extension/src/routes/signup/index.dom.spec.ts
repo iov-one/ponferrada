@@ -18,8 +18,7 @@ describe('DOM > Feature > Signup', (): void => {
       mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
       txs: [],
     };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (messages.sendCreatePersonaMessage as any) = jest.fn().mockReturnValue(async () => response);
+    jest.spyOn(messages, 'sendCreatePersonaMessage').mockImplementation(() => Promise.resolve(response));
   });
 
   beforeEach(

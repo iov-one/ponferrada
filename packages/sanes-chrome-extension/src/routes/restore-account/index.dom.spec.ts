@@ -17,8 +17,7 @@ withChainsDescribe(
         mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
         txs: [],
       };
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (messages.sendCreatePersonaMessage as any) = jest.fn().mockReturnValue(async () => response);
+      jest.spyOn(messages, 'sendCreatePersonaMessage').mockImplementation(() => Promise.resolve(response));
     });
 
     beforeEach(
@@ -30,7 +29,7 @@ withChainsDescribe(
     it(`should restore profile from mnemonic`, async (): Promise<void> => {
       const RestoreDOM = await travelToRestoreAccount(store);
 
-      const mnemonic = 'degree tackle suggest window test behind mesh extra cover prepare oak script';
+      const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
       await submitRecoveryPhrase(RestoreDOM, mnemonic);
     }, 55000);
   }
