@@ -4,6 +4,8 @@ import * as React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import { Omit } from '@material-ui/core';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 interface Props extends Omit<CheckboxProps, 'form'> {
   readonly fieldName: string;
@@ -22,7 +24,6 @@ const CheckboxField = ({ fieldName, form, initial, onChangeCallback, label }: Pr
 
   React.useEffect(() => {
     try {
-      console.log(value);
       const firstRender = value === '';
       if (firstRender) {
         onChange(initial);
@@ -31,14 +32,22 @@ const CheckboxField = ({ fieldName, form, initial, onChangeCallback, label }: Pr
   }, [input]);
 
   const onCheckBoxChange = (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): void => {
-    console.log('value checked, onCheckBoxChange');
     onChange(checked);
     if (onChangeCallback) {
       onChangeCallback(checked);
     }
   };
 
-  const control = <Checkbox checked={value} onChange={onCheckBoxChange} inputProps={inputProps} />;
+  const control = (
+    <Checkbox
+      checked={value === '' ? false : value}
+      color="primary"
+      onChange={onCheckBoxChange}
+      inputProps={inputProps}
+      icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
+      checkedIcon={<CheckBoxIcon fontSize="large" />}
+    />
+  );
 
   return <FormControlLabel control={control} label={label} />;
 };
