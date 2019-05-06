@@ -5,7 +5,7 @@ command -v shellcheck > /dev/null && shellcheck "$0"
 gnutimeout="$(command -v gtimeout || echo timeout)"
 
 # Wait lisk node to be ready
-"$gnutimeout" 50 bash -c "until curl http://localhost:4000/api/node/status; do sleep 2; done"
+"$gnutimeout" 50 bash -c "until curl -s http://localhost:4000/api/node/status; do sleep 2; done"
 
 curl -sS -X POST \
   -H "Content-type: application/json" \

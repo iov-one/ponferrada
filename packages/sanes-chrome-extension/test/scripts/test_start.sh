@@ -6,6 +6,8 @@ command -v shellcheck > /dev/null && shellcheck "$0"
 # (blockchains and faucets).
 # Intended as a convenience script for developers.
 
+gnutimeout="$(command -v gtimeout || echo timeout)"
+
 # get this files directory regardless of pwd when we run it
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -32,9 +34,9 @@ echo
 echo ">>> Starting ethereum (ganache) chain, scraper and faucet..."
 echo
 bash "${SCRIPT_DIR}"/ethereum/start.sh
-sleep 5
+# Wait Ethereum node to be ready
+"$gnutimeout" 15 bash -c "until curl -s -X POST --data '{\"jsonrpc\":\"2.0\",\"method\":\"net_version\",\"id\":42}' http://localhost:8545 > /dev/null; do sleep 1; done"
 bash "${SCRIPT_DIR}"/faucet/ethereum_start.sh
-sleep 5
 bash "${SCRIPT_DIR}"/ethereum/scraper_start.sh
 
 echo
