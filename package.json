@@ -57,6 +57,7 @@
     "babel-loader": "^8.0.5",
     "connected-react-router": "^6.3.1",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-config-react-app": "4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "history": "^4.7.2",
     "husky": "^1.3.1",
@@ -74,5 +75,8 @@
     "shx": "^0.3.2",
     "typescript": "~3.4",
     "web-ext": "^3.0.0"
+  },
+  "dependencies": {
+    "react-scripts": "3.0.0"
   }
 }

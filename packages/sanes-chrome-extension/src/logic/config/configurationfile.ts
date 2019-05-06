@@ -1,3 +1,4 @@
+/*global chrome*/
 import { singleton } from '../../utils/singleton';
 
 export type CodecString = 'bns' | 'bov' | 'lsk' | 'eth';

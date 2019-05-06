@@ -18,7 +18,7 @@
     "@types/react-dom": "16.8.3",
     "medulas-react-components": "^0.0.0",
     "normalize.css": "^8.0.1",
-    "react-scripts": "2.1.8"
+    "react-scripts": "3.0.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.82"
@@ -27,9 +27,6 @@
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "react-scripts start",
     "build": "react-scripts build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

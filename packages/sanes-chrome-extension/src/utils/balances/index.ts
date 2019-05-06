@@ -6,7 +6,7 @@ export type Figures = Omit<Amount, 'tokenTicker'>;
 export function parseFigures(amount: string): Figures {
   // trim off all leading zeros when parsing
   const trimmed = amount.replace(/^0+/, '');
-  const matched = trimmed.match(/^([0-9]+)?([\.\,])?([0-9]+)?$/);
+  const matched = trimmed.match(/^([0-9]+)?([.,])?([0-9]+)?$/);
   if (!matched) {
     throw new Error(`Not a valid number: ${amount}`);
   }
