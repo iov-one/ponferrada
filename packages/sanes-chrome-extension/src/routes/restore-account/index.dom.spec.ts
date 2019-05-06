@@ -11,20 +11,16 @@ withChainsDescribe(
   (): void => {
     let store: Store<RootState>;
 
-    beforeAll(() => {
+    beforeEach(() => {
+      store = aNewStore();
+
       const response: messages.CreatePersonaResponse = {
         accounts: [],
         mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
         txs: [],
       };
-      jest.spyOn(messages, 'sendCreatePersonaMessage').mockImplementation(() => Promise.resolve(response));
+      jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValueOnce(response);
     });
-
-    beforeEach(
-      (): void => {
-        store = aNewStore();
-      }
-    );
 
     it(`should restore profile from mnemonic`, async (): Promise<void> => {
       const RestoreDOM = await travelToRestoreAccount(store);

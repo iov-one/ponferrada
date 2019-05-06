@@ -12,20 +12,16 @@ import * as messages from '../../extension/messages';
 describe('DOM > Feature > Signup', (): void => {
   let store: Store<RootState>;
 
-  beforeAll(() => {
+  beforeEach(() => {
+    store = aNewStore();
+
     const response: messages.CreatePersonaResponse = {
       accounts: [],
       mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
       txs: [],
     };
-    jest.spyOn(messages, 'sendCreatePersonaMessage').mockImplementation(() => Promise.resolve(response));
+    jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValueOnce(response);
   });
-
-  beforeEach(
-    (): void => {
-      store = aNewStore();
-    }
-  );
 
   mayTestChains(
     `should finish the signup three steps process`,
