@@ -8,7 +8,6 @@ import {
 import { SECURITY_HINT_STEP_SIGNUP_ROUTE, SECURITY_HINT } from '../components/SecurityHintForm';
 import { sleep } from '../../../utils/timer';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
-import { PersonaManager } from '../../../logic/persona';
 import { Page } from 'puppeteer';
 import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD, PASSWORD_CONFIRM_FIELD } from '../components/NewAccountForm';
 
@@ -113,7 +112,9 @@ export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Prom
     const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(RecoveryPhraseDom, 'p');
     expect(paragraphs.length).toBe(1);
     const phraseParagraph = paragraphs[0].innerHTML;
-    expect(phraseParagraph).toBe(PersonaManager.get().mnemonic);
+    expect(phraseParagraph).toBe(
+      'badge cattle stool execute involve main mirror envelope brave scrap involve simple'
+    );
   };
   // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
   await TestUtils.act(showMnemonic as any); //eslint-disable-line @typescript-eslint/no-explicit-any

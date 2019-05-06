@@ -3,7 +3,7 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "bootstrapNodes": ["wss://bns.hugnet.iov.one/"]
+        "bootstrapNodes": ["https://bns.hugnet.iov.one/"]
       },
       "faucetSpec": {
         "uri": "https://bns-faucet.hugnet.iov.one",
@@ -13,7 +13,7 @@
     {
       "chainSpec": {
         "codecType": "bov",
-        "bootstrapNodes": ["wss://bov.hugnet.iov.one/"]
+        "bootstrapNodes": ["https://bov.hugnet.iov.one/"]
       },
       "faucetSpec": {
         "uri": "https://bov-faucet.hugnet.iov.one",
@@ -29,10 +29,7 @@
     {
       "chainSpec": {
         "codecType": "eth",
-        "bootstrapNodes": [
-          "https://rinkeby.infura.io",
-          "https://api-rinkeby.etherscan.io/api"
-        ]
+        "bootstrapNodes": ["https://rinkeby.infura.io", "https://api-rinkeby.etherscan.io/api"]
       }
     }
   ]

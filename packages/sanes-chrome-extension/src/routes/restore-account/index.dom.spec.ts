@@ -2,31 +2,30 @@ import { Store } from 'redux';
 import { RootState } from '../../store/reducers';
 import { aNewStore } from '../../store';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { PersonaManager } from '../../logic/persona';
 import { travelToRestoreAccount } from './test/travelToRestoreAccount';
 import { submitRecoveryPhrase } from './test/fillRecoveryPhrase';
+import * as messages from '../../extension/messages';
 
 withChainsDescribe(
   'DOM > Feature > Restore Account',
   (): void => {
     let store: Store<RootState>;
 
-    beforeEach(
-      (): void => {
-        store = aNewStore();
-      }
-    );
+    beforeEach(() => {
+      store = aNewStore();
 
-    afterEach(async () => {
-      // Every restore account test will create a Persona on its own. Here we make
-      // sure that the persona instance is destroyed after each test.
-      await PersonaManager.destroy();
+      const response: messages.CreatePersonaResponse = {
+        accounts: [],
+        mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
+        txs: [],
+      };
+      jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValueOnce(response);
     });
 
     it(`should restore profile from mnemonic`, async (): Promise<void> => {
       const RestoreDOM = await travelToRestoreAccount(store);
 
-      const mnemonic = 'degree tackle suggest window test behind mesh extra cover prepare oak script';
+      const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
       await submitRecoveryPhrase(RestoreDOM, mnemonic);
     }, 55000);
   }

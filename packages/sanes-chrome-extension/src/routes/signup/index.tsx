@@ -7,9 +7,9 @@ import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm'
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { SECURITY_HINT } from './components/SecurityHintForm';
-import { PersonaManager } from '../../logic/persona';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
+import { sendCreatePersonaMessage } from '../../extension/messages';
 
 const onBack = (): void => {
   history.goBack();
@@ -41,15 +41,9 @@ const Signup = (): JSX.Element => {
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
-    try {
-      const persona = await PersonaManager.create();
-      const accounts = await persona.getAccounts();
-      const txs = await persona.getTxs();
-      personaProvider.update(accounts, persona.mnemonic, txs);
-      onShowPhrase();
-    } catch (err) {
-      console.log('Error raised when creating persona:', err);
-    }
+    const response = await sendCreatePersonaMessage();
+    personaProvider.update(response.accounts, response.mnemonic, response.txs);
+    onShowPhrase();
   };
 
   return (
