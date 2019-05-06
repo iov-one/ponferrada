@@ -1458,6 +1458,64 @@ exports[`Storyshots Components/forms Form 1`] = `
       />
     </div>
   </div>
+  <div
+    className="MuiBox-root MuiBox-root-676"
+  >
+    <label
+      className="MuiFormControlLabel-root"
+    >
+      <span
+        aria-disabled={false}
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-689 MuiCheckbox-root MuiCheckbox-colorPrimary"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+          <input
+            checked={false}
+            className="PrivateSwitchBase-input-692"
+            data-indeterminate={false}
+            name="checkboxFieldUniqueIdentifier"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="checkbox"
+          />
+        </span>
+      </span>
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label"
+      >
+        Checkbox field
+      </span>
+    </label>
+  </div>
   <button
     className="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled"
     disabled={true}
@@ -2809,6 +2867,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -2956,7 +3015,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1202"
+      className="makeStyles-root-1354"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -2971,22 +3030,22 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
   id="/signup1"
 >
   <div
-    className="MuiBox-root MuiBox-root-1303"
+    className="MuiBox-root MuiBox-root-1573"
   >
     <h4
-      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-1306 makeStyles-weight-1307 makeStyles-inline-1304"
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-1576 makeStyles-weight-1577 makeStyles-inline-1574"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1306 makeStyles-weight-1338 makeStyles-inline-1304"
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1576 makeStyles-weight-1608 makeStyles-inline-1574"
     >
 
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1339"
+    className="MuiBox-root MuiBox-root-1609"
   >
     <form
       onSubmit={[Function]}
