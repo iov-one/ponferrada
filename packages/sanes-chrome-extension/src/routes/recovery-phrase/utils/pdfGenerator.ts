@@ -1,15 +1,6 @@
-/**
- * This package cause jest-canvas-mock to print message to console.error (Error: Not implemented: HTMLCanvasElement.prototype.getContext (without installing the canvas npm package))
- *
- * But this message doesn't make test to fail so can be ignored.
- * Accroding to: https://github.com/hustcc/jest-canvas-mock/issues/2
- */
-import jsPDF from 'jspdf';
-import '../assets/Muli-normal';
-import '../assets/Muli-bold';
-
 class PDFGenerator {
-  private doc: jsPDF;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private doc: any;
   private readonly countWords: string[] = [
     'One',
     'Two',
@@ -26,6 +17,17 @@ class PDFGenerator {
   ];
 
   public constructor() {
+    // Loading the module 'jspdf' in an environment with no canvas available leads to the error message
+    // > Error: Not implemented: HTMLCanvasElement.prototype.getContext
+    // See also https://github.com/iov-one/ponferrada/issues/133
+    // To avoid this error message to pollute test outputs, we load jspdf only when PDFGenerator is
+    // constructed, not when it is imported.
+
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const jsPDF = require('jspdf');
+    require('../assets/Muli-normal');
+    require('../assets/Muli-bold');
+
     this.doc = new jsPDF();
     this.doc.setFont('Muli', 'normal');
     this.doc.setFontSize(12);
