@@ -109,9 +109,11 @@ const themeObject: ThemeOptions = {
           color: `${theme.palette.text.primary}`,
         },
       },
-      error: {
-        // Maintain the text primary color on errored text fields when loosing focus
-        color: `${theme.palette.text.primary} !important`,
+      root: {
+        '&$error': {
+          // Maintain the text primary color on errored text fields when loosing focus
+          color: `${theme.palette.text.primary} !important`,
+        },
       },
     },
     // Those overrides are for dropdowns in select fields.
@@ -148,6 +150,9 @@ const themeObject: ThemeOptions = {
           borderColor: grey[200],
         },
         backgroundColor: '#fcfcfc',
+        '&$error': {
+          backgroundColor: '#fff1e1',
+        },
       },
       input: {
         padding: '12px',
@@ -155,9 +160,6 @@ const themeObject: ThemeOptions = {
       },
       inputMultiline: {
         lineHeight: '1.8rem',
-      },
-      error: {
-        backgroundColor: '#fff1e1',
       },
     },
     MuiSnackbarContent: {
