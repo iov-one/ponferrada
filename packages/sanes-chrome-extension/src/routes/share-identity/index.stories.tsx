@@ -5,7 +5,7 @@ import ShowRequest from './components/ShowRequest';
 import AcceptRequest from './components/AcceptRequest';
 import { action } from '@storybook/addon-actions';
 
-storiesOf('Routes/Share Identity', module)
+storiesOf('Extension/Share Identity', module)
   .add(
     'Show Request page',
     (): JSX.Element => (
