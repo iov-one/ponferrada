@@ -10,7 +10,7 @@ wrapStore(makeStore());
 
 let signingServer: UseOnlyJsonRpcSigningServer | undefined;
 
-async function handleMessageToBackground(
+async function handleInternalMessage(
   message: MessageToBackground,
   sender: chrome.runtime.MessageSender
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,7 +50,7 @@ async function handleMessageToBackground(
 
 // https://developer.chrome.com/extensions/messaging#simple
 chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, sendResponse) => {
-  handleMessageToBackground(message, sender)
+  handleInternalMessage(message, sender)
     .then(sendResponse)
     .catch(console.error);
 
