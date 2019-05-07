@@ -26,10 +26,6 @@ describe('The /welcome route', () => {
       }
     );
 
-    it('exists', () => {
-      expect(TestUtils.isDOMComponent(button)).toBeTruthy();
-    });
-
     it('redirects to the /payment route when clicked', () => {
       TestUtils.Simulate.click(button);
       expectRoute(store, PAYMENT_ROUTE);
