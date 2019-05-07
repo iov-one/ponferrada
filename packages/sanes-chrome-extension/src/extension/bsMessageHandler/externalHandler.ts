@@ -39,12 +39,13 @@ function isForServer(request: JsonRpcRequest): boolean {
 }
 
 function handleResponseToExtension(request: JsonRpcRequest, sendResponse: SendResponse): void {
-  chrome.browserAction.setIcon({ path: 'assets/icon/request128.png' });
-  chrome.browserAction.setBadgeBackgroundColor({ color: [255, 255, 255, 255] });
+  chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
+  chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
   chrome.browserAction.setBadgeText({ text: 'REQ' });
 
   // TODO dispath info to redux for getting the info in the extension. Include the
   // sendResponse ref for handling answer
+  sendResponse(`I have handled the ${request.method} request changing the icon`);
 }
 
 export function handleExternalMessage(
