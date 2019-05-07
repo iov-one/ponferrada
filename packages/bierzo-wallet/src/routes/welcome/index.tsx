@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const handleClick = (): void => {
+const onPayment = (): void => {
   history.push(PAYMENT_ROUTE);
 };
 
@@ -46,6 +46,9 @@ const Welcome = (): JSX.Element => {
         <Typography variant="h6">IOV Wallet</Typography>
       </Block>
       <Block display="flex">
+        <Button className={classes.button} onClick={onPayment}>
+          SEND PAYMENT
+        </Button>
         <Button className={classes.button} onClick={handleClick}>
           SEND PAYMENT
         </Button>
