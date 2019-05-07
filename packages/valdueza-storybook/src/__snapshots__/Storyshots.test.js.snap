@@ -2482,7 +2482,7 @@ exports[`Storyshots Extension Share Identity page 1`] = `
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1383 makeStyles-weight-1415 makeStyles-inline-1381"
     >
 
-      identity
+      Identity
     </h4>
   </div>
   <div
@@ -2504,7 +2504,7 @@ exports[`Storyshots Extension Share Identity page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1383 makeStyles-weight-1420 makeStyles-inline-1381"
       >
-        wants to see you identity on
+        wants to see your identity on
       </p>
 
       <p
@@ -2520,6 +2520,7 @@ exports[`Storyshots Extension Share Identity page 1`] = `
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -2850,14 +2851,14 @@ exports[`Storyshots Routes/Signup New account page 1`] = `
       New
     </h4>
     <h4
-      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1306 makeStyles-weight-1338 makeStyles-inline-1304"
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1550 makeStyles-weight-1582 makeStyles-inline-1548"
     >
 
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1339"
+    className="MuiBox-root MuiBox-root-1583"
   >
     <form
       onSubmit={[Function]}
@@ -3466,11 +3467,11 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     className="MuiBox-root MuiBox-root-1897"
   />
   <div
-    className="MuiBox-root MuiBox-root-1898"
+    className="MuiBox-root MuiBox-root-1982"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-1899"
+      className="makeStyles-root-1983"
       height={39}
       src="iov-logo.png"
       width={84}
