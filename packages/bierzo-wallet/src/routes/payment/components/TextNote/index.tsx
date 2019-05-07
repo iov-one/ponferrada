@@ -1,12 +1,36 @@
 import { faStickyNote } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
 import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
+import Form, {
+  FormValues,
+  useForm,
+  ValidationError,
+} from 'medulas-react-components/lib/components/forms/Form';
+import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import React from 'react';
 
-export const TextNote = (): JSX.Element => {
+const TEXTNOTE_FIELD = 'textNoteField';
+
+const onSubmit = (): void => {};
+
+const validate = (values: object): object => {
+  const formValues = values as FormValues;
+  const errors: ValidationError = {};
+
+  if (formValues[TEXTNOTE_FIELD] && formValues[TEXTNOTE_FIELD].length > 150) {
+    errors[TEXTNOTE_FIELD] = 'Can not be longer than 150 characters';
+  }
+
+  return errors;
+};
+
+const TextNote = (): JSX.Element => {
+  const { form, handleSubmit } = useForm({
+    onSubmit,
+    validate,
+  });
+
   return (
     <Paper>
       <Block padding={5}>
@@ -15,15 +39,22 @@ export const TextNote = (): JSX.Element => {
             <FontAwesomeIcon icon={faStickyNote} color="#a2a6a8" size="lg" />
           </Block>
           <Block width="100%" marginLeft={2}>
-            <TextField multiline placeholder="Add a note" fullWidth />
+            <Form onSubmit={handleSubmit}>
+              <TextFieldForm
+                name={TEXTNOTE_FIELD}
+                form={form}
+                placeholder="Add a note"
+                multiline
+                rows="2"
+                fullWidth
+                margin="none"
+              />
+            </Form>
           </Block>
-        </Block>
-        <Block marginTop={1} marginLeft={4}>
-          <Typography color="error" variant="subtitle2">
-            Validity label
-          </Typography>
         </Block>
       </Block>
     </Paper>
   );
 };
+
+export default TextNote;
