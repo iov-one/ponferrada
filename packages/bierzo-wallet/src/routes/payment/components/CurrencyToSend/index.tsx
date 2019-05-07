@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const CurrencyToSend = () => {
+export const CurrencyToSend = (): JSX.Element => {
   const classes = useStyles();
 
   const avatarClasses = {

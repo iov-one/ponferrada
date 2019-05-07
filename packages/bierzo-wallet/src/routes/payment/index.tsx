@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const Payment = () => {
+export const Payment = (): JSX.Element => {
   const classes = useStyles();
 
   return (

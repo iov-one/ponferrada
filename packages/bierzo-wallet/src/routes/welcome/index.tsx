@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const handleClick = () => {
+const handleClick = (): void => {
   history.push(PAYMENT_ROUTE);
 };
 
-export const Welcome = () => {
+export const Welcome = (): JSX.Element => {
   const classes = useStyles();
 
   return (
