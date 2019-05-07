@@ -1,8 +1,4 @@
-import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Theme } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Form, {
   FormValues,
@@ -10,14 +6,9 @@ import Form, {
   ValidationError,
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
+import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  tooltipIcon: {
-    color: theme.palette.primary.main,
-  },
-}));
 
 const ADDRESS_FIELD = 'addressField';
 
@@ -44,8 +35,6 @@ const validate = (values: object): object => {
 };
 
 const ReceiverAddress = (): JSX.Element => {
-  const classes = useStyles();
-
   const { form, handleSubmit } = useForm({
     onSubmit,
     validate,
@@ -65,6 +54,7 @@ const ReceiverAddress = (): JSX.Element => {
               required
               placeholder="IOV or wallet address"
               fullWidth
+              margin="none"
             />
           </Form>
         </Block>
@@ -74,7 +64,12 @@ const ReceiverAddress = (): JSX.Element => {
           </Typography>
           <Block alignSelf="center" marginLeft={1}>
             {/*TODO add info popup*/}
-            <FontAwesomeIcon icon={faQuestionCircle} size="lg" className={classes.tooltipIcon} />
+            <Tooltip>
+              <Typography variant="body2">
+                Send payments to anyone with an IOV handle, and it will go directly to their account. If they
+                don’t have an IOV account add their blockchain address.
+              </Typography>
+            </Tooltip>
           </Block>
         </Block>
       </Block>
