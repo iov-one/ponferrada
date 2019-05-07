@@ -31,7 +31,7 @@ storiesOf('Extension/Share Identity', module)
     )
   )
   .add(
-    'Reject request',
+    'Reject Request page',
     (): JSX.Element => (
       <Storybook>
         <RejectRequest
