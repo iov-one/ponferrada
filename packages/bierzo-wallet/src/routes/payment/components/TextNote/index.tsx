@@ -40,7 +40,15 @@ const TextNote = (): JSX.Element => {
           </Block>
           <Block width="100%" marginLeft={2}>
             <Form onSubmit={handleSubmit}>
-              <TextFieldForm name={TEXTNOTE_FIELD} form={form} placeholder="Add a note" multiline fullWidth />
+              <TextFieldForm
+                name={TEXTNOTE_FIELD}
+                form={form}
+                placeholder="Add a note"
+                multiline
+                rows="2"
+                fullWidth
+                margin="none"
+              />
             </Form>
           </Block>
         </Block>

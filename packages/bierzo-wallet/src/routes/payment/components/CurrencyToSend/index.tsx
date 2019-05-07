@@ -105,31 +105,48 @@ const CurrencyToSend = (): JSX.Element => {
 
   return (
     <Paper>
-      <Block display="flex" flexDirection="column" alignItems="center" width="100%" padding={5}>
+      <Block
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        width="100%"
+        marginTop={'36px'}
+        padding={5}
+      >
         <Avatar classes={avatarClasses}>
           <FontAwesomeIcon icon={faUser} color="#ffffff" />
         </Avatar>
         <Typography color="textPrimary" variant="subtitle2">
           You send
         </Typography>
-        {/*TODO remove extra left-right margins of the form*/}
-        <Form onSubmit={handleSubmit}>
-          <Block display="flex" marginTop={5} marginBottom={1}>
-            <Block marginRight={1}>
-              <TextFieldForm name={QUANTITY_FIELD} form={form} required placeholder="0,00" fullWidth />
+        <Block width="100%" marginTop={5} marginBottom={1}>
+          <Form onSubmit={handleSubmit}>
+            <Block display="flex">
+              <Block width="100%" marginRight={1}>
+                <TextFieldForm
+                  name={QUANTITY_FIELD}
+                  form={form}
+                  required
+                  placeholder="0,00"
+                  fullWidth
+                  margin="none"
+                />
+              </Block>
+              {/*NOTE hardcoded initial value*/}
+              <Block height="32px">
+                <SelectFieldForm
+                  fieldName={CURRENCY_FIELD}
+                  form={form}
+                  maxWidth="60px"
+                  items={currencyItems}
+                  initial={currencyItems[1].name}
+                  value={currency}
+                  onChangeCallback={handleChange}
+                />
+              </Block>
             </Block>
-            {/*NOTE hardcoded initial value*/}
-            <SelectFieldForm
-              fieldName={CURRENCY_FIELD}
-              form={form}
-              maxWidth="60px"
-              items={currencyItems}
-              initial={currencyItems[1].name}
-              value={currency}
-              onChangeCallback={handleChange}
-            />
-          </Block>
-        </Form>
+          </Form>
+        </Block>
         <Block marginTop={1}>
           <Typography color="textSecondary" variant="subtitle2">
             balance: {balance} {currency}
