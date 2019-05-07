@@ -22,11 +22,14 @@ export interface MessageToBackground {
   readonly data?: any;
 }
 
-export interface CreatePersonaResponse {
+export interface PersonaData {
   readonly accounts: ReadonlyArray<AccountInfo>;
   readonly mnemonic: string;
   readonly txs: ReadonlyArray<ProcessedTx>;
 }
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface CreatePersonaResponse extends PersonaData {}
 
 export async function sendCreatePersonaMessage(mnemonic?: string): Promise<CreatePersonaResponse> {
   return new Promise((resolve, reject) => {
