@@ -1,5 +1,6 @@
 import { ConnectedRouter } from 'connected-react-router';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
+import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -16,7 +17,9 @@ const render = (Component: React.ComponentType): void => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-          <Component />
+          <ToastProvider>
+            <Component />
+          </ToastProvider>
         </MedulasThemeProvider>
       </ConnectedRouter>
     </Provider>,
