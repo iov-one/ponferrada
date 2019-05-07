@@ -35,15 +35,12 @@ export interface UseOnlyJsonRpcSigningServer {
   handleChecked(request: JsonRpcRequest): Promise<JsonRpcResponse>;
 }
 
-export interface TxProps {
+export interface ProcessedTx {
   readonly id: string;
   readonly recipient: string;
   readonly signer: string;
   readonly amount: Amount;
   readonly memo?: string;
-}
-
-export interface ProcessedTx extends TxProps {
   readonly time: ReadonlyDate;
   readonly received: boolean;
   readonly success: boolean;
