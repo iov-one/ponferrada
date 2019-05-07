@@ -14,10 +14,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
     backgroundColor: theme.palette.background.default,
   },
-
   icon: {
     backgroundColor: theme.palette.primary.main,
     padding: '50px',
+  },
+  button: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -43,9 +45,9 @@ const Welcome = (): JSX.Element => {
       <Block marginTop={5} marginBottom={5}>
         <Typography variant="h6">IOV Wallet</Typography>
       </Block>
-      <Block width="150px" display="flex" justifyContent="center">
-        <Button fullWidth onClick={handleClick}>
-          NEXT
+      <Block display="flex">
+        <Button className={classes.button} onClick={handleClick}>
+          SEND PAYMENT
         </Button>
       </Block>
       <ExtensionInteraction />
