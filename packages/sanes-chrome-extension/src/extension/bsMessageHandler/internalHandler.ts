@@ -1,6 +1,6 @@
 /*global chrome*/
-import { MessageToBackgroundAction, MessageToBackground } from '../messages';
-import { UseOnlyJsonRpcSigningServer, PersonaManager } from '../../logic/persona';
+import { MessageToBackgroundAction, MessageToBackground, GetPersonaResponse } from '../messages';
+import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona } from '../../logic/persona';
 import { GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
 import { PublicIdentity } from '@iov/bcp';
 import { isNewSender } from './senderWhitelist';
@@ -19,6 +19,26 @@ export async function handleInternalMessage(
 ): Promise<any> {
   console.log(message, sender);
   switch (message.action) {
+    case MessageToBackgroundAction.GetPersona: {
+      if (sender.id !== chrome.runtime.id) {
+        return 'Sender is not allowed to perform this action';
+      }
+      let persona: Persona | undefined;
+      try {
+        persona = PersonaManager.get();
+      } catch (_) {}
+      let response: GetPersonaResponse;
+      if (persona) {
+        response = {
+          mnemonic: persona.mnemonic,
+          txs: await persona.getTxs(),
+          accounts: await persona.getAccounts(),
+        };
+      } else {
+        response = null;
+      }
+      return response;
+    }
     case MessageToBackgroundAction.CreatePersona:
       if (sender.id !== chrome.runtime.id) {
         return 'Sender is not allowed to perform this action';
