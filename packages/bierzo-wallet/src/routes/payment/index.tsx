@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const onSubmit = (): void => {};
 
-export const Payment = (): JSX.Element => {
+const Payment = (): JSX.Element => {
   const classes = useStyles();
 
   const { handleSubmit, invalid, pristine, submitting } = useForm({
@@ -78,3 +78,5 @@ export const Payment = (): JSX.Element => {
     </Block>
   );
 };
+
+export default Payment;
