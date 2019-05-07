@@ -9,8 +9,8 @@ import React from 'react';
 import icon from '../../assets/iov-logo.svg';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
-import { ExtensionInteraction } from './components/ExtensionInteraction';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
+import { sendSigningRequest } from '../../communication/signing';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -35,6 +35,7 @@ const Welcome = (): JSX.Element => {
 
   const onSigning = (): void => {
     toast.show('Testing interaction with extension. Check console, please.', ToastVariant.INFO);
+    sendSigningRequest();
   };
 
   return (
