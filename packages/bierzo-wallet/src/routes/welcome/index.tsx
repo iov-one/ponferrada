@@ -4,11 +4,13 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import React from 'react';
 import icon from '../../assets/iov-logo.svg';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
 import { ExtensionInteraction } from './components/ExtensionInteraction';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -28,7 +30,12 @@ const onPayment = (): void => {
 };
 
 const Welcome = (): JSX.Element => {
+  const toast = React.useContext(ToastContext);
   const classes = useStyles();
+
+  const onSigning = (): void => {
+    toast.show('Testing interaction with extension. Check console, please.', ToastVariant.INFO);
+  };
 
   return (
     <Block
@@ -49,11 +56,10 @@ const Welcome = (): JSX.Element => {
         <Button className={classes.button} onClick={onPayment}>
           SEND PAYMENT
         </Button>
-        <Button className={classes.button} onClick={handleClick}>
-          SEND PAYMENT
+        <Button className={classes.button} onClick={onSigning}>
+          SIGN REQUEST
         </Button>
       </Block>
-      <ExtensionInteraction />
     </Block>
   );
 };
