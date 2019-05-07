@@ -51,14 +51,13 @@ const onSubmit = () => {};
 
 const CurrencyToSend = () => {
   const classes = useStyles();
+  //NOTE hardcoded initial state for "currency"
+  const [currency, setCurrency] = useState(currencyItems[1].name);
+  const [balance, setBalance] = useState(currencies[currency]);
 
   const avatarClasses = {
     root: classes.avatar,
   };
-
-  //NOTE hardcoded initial state for "currency"
-  const [currency, setCurrency] = useState(currencyItems[1].name);
-  const [balance, setBalance] = useState(currencies[currency]);
 
   const handleChange = (item: Item) => {
     setCurrency(item.name);
