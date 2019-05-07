@@ -11,6 +11,7 @@ import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import { sendSigningRequest } from '../../communication/signing';
+import { sendShareIdentityRequest } from '../../communication/shareIdentity';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -38,6 +39,14 @@ const Welcome = (): JSX.Element => {
     sendSigningRequest();
   };
 
+  const onShareIdentity = (): void => {
+    toast.show(
+      'Testing Share Identity interaction with extension. Check console, please.',
+      ToastVariant.INFO
+    );
+    sendShareIdentityRequest();
+  };
+
   return (
     <Block
       width="100vw"
@@ -59,6 +68,9 @@ const Welcome = (): JSX.Element => {
         </Button>
         <Button className={classes.button} onClick={onSigning}>
           SIGN REQUEST
+        </Button>
+        <Button className={classes.button} onClick={onShareIdentity}>
+          SHARE IDENTITY
         </Button>
       </Block>
     </Block>
