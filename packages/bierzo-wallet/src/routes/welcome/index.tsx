@@ -25,7 +25,7 @@ const handleClick = (): void => {
   history.push(PAYMENT_ROUTE);
 };
 
-export const Welcome = (): JSX.Element => {
+const Welcome = (): JSX.Element => {
   const classes = useStyles();
 
   return (
@@ -52,3 +52,5 @@ export const Welcome = (): JSX.Element => {
     </Block>
   );
 };
+
+export default Welcome;
