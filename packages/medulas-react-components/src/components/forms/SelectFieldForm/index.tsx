@@ -83,6 +83,7 @@ const SelectFieldForm = ({
         onChange(initial);
       }
     } catch (err) {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
   const inputClasses = { root: classes.root, input: classes.input };
 

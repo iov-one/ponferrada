@@ -1,10 +1,8 @@
 import { Store } from 'redux';
-import { RootState, history } from '../../store/reducers';
+import { RootState } from '../../store/reducers';
 import { randomString } from '../../utils/test/random';
 import { aNewStore } from '../../store';
 import TestUtils from 'react-dom/test-utils';
-import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { WELCOME_ROUTE } from '../paths';
 import { travelToLogin } from './test/travelToLogin';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 
