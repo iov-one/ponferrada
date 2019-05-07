@@ -3,7 +3,7 @@ import React from 'react';
 import DecoratedStorybook from '../../utils/storybook';
 import Payment from './index';
 
-storiesOf('Routes/Bierzo wallet', module).add(
+storiesOf('Bierzo wallet', module).add(
   'Payment page',
   (): JSX.Element => (
     <DecoratedStorybook>
