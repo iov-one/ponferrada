@@ -4,7 +4,7 @@ import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvide
 import React from 'react';
 import Layout from './index';
 
-storiesOf('Routes/Account', module).add('Show account status', () => (
+storiesOf('Extension', module).add('Account Status page', () => (
   <Storybook>
     <ToastProvider>
       <Layout />

@@ -3,8 +3,8 @@ import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 import Layout from './index';
 
-storiesOf('Routes/Share Identity', module).add(
-  'Share Identity',
+storiesOf('Extension', module).add(
+  'Share Identity page',
   (): JSX.Element => (
     <Storybook>
       <Layout />

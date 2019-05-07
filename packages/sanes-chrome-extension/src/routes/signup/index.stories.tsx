@@ -6,9 +6,9 @@ import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
 import SecurityHintForm from './components/SecurityHintForm';
 
-storiesOf('Routes/Signup', module)
+storiesOf('Extension/Signup', module)
   .add(
-    'New account page',
+    'New Account page',
     (): JSX.Element => (
       <Storybook>
         <NewAccountForm onBack={action('back in history')} onSignup={action('next step')} />
@@ -24,7 +24,7 @@ storiesOf('Routes/Signup', module)
     )
   )
   .add(
-    'Security hint page',
+    'Security Hint page',
     (): JSX.Element => (
       <Storybook>
         <SecurityHintForm onBack={action('back in history')} onSaveHint={action('save hint')} />

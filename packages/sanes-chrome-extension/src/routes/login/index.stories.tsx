@@ -3,7 +3,7 @@ import { SanesStorybook } from '../../utils/storybook';
 import React from 'react';
 import Layout from './index';
 
-storiesOf('Routes/Login', module).add(
+storiesOf('Extension', module).add(
   'Login page',
   (): JSX.Element => (
     <SanesStorybook>
