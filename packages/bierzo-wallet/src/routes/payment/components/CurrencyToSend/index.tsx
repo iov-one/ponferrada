@@ -47,9 +47,9 @@ const currencyItems = Object.keys(currencies).map(currency => {
   return item;
 });
 
-const onSubmit = () => {};
+const onSubmit = (): void => {};
 
-const CurrencyToSend = () => {
+const CurrencyToSend = (): JSX.Element => {
   const classes = useStyles();
   //NOTE hardcoded initial state for "currency"
   const [currency, setCurrency] = useState(currencyItems[1].name);
@@ -59,7 +59,7 @@ const CurrencyToSend = () => {
     root: classes.avatar,
   };
 
-  const handleChange = (item: Item) => {
+  const handleChange = (item: Item): void => {
     setCurrency(item.name);
     setBalance(currencies[item.name]);
   };

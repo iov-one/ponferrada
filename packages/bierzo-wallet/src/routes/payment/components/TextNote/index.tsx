@@ -12,7 +12,7 @@ import React from 'react';
 
 const TEXTNOTE_FIELD = 'textNoteField';
 
-const onSubmit = () => {};
+const onSubmit = (): void => {};
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -25,7 +25,7 @@ const validate = (values: object): object => {
   return errors;
 };
 
-const TextNote = () => {
+const TextNote = (): JSX.Element => {
   const { form, handleSubmit } = useForm({
     onSubmit,
     validate,
