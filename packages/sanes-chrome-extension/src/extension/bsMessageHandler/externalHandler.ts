@@ -1,12 +1,14 @@
+/*global chrome*/
 import { JsonRpcErrorResponse, JsonRpcRequest } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
+type SendResponse = (response: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 function handleWithServer(
   signingServer: SigningServer,
   request: JsonRpcRequest,
-  sendResponse: (response: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
+  sendResponse: SendResponse
 ): void {
   if (!signingServer) {
     console.warn('Could not pass message to signing server');
@@ -36,15 +38,24 @@ function isForServer(request: JsonRpcRequest): boolean {
   return method === 'getIdentities' || method === 'signAndPost';
 }
 
+function handleResponseToExtension(request: JsonRpcRequest, sendResponse: SendResponse): void {
+  chrome.browserAction.setIcon({ path: 'assets/icon/request128.png' });
+  chrome.browserAction.setBadgeBackgroundColor({ color: [255, 255, 255, 255] });
+  chrome.browserAction.setBadgeText({ text: 'REQ' });
+
+  // TODO dispath info to redux for getting the info in the extension. Include the
+  // sendResponse ref for handling answer
+}
+
 export function handleExternalMessage(
   signingServer: SigningServer,
   request: JsonRpcRequest,
-  sendResponse: (response: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
+  sendResponse: SendResponse
 ): void {
   if (isForServer(request)) {
     handleWithServer(signingServer, request, sendResponse);
     return;
   }
 
-  // handleResponseToExtension(request, sendResponse);
+  handleResponseToExtension(request, sendResponse);
 }
