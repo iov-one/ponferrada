@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const ReceiverAddress = () => {
+export const ReceiverAddress = (): JSX.Element => {
   const classes = useStyles();
 
   return (

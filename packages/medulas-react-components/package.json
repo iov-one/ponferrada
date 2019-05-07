@@ -6,7 +6,7 @@
   "scripts": {
     "build": "shx rm -rf ./lib/* && tsc && cp ./src/theme/utils/fonts.css ./lib/theme/utils/fonts.css && cp -R ./src/theme/assets ./lib/theme/",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "lint": "eslint -c .eslintrc.js 'src/**/*.ts{,x}'"
+    "lint": "eslint -c .eslintrc.js --max-warnings 1 'src/**/*.ts{,x}'"
   },
   "browserslist": [
     ">0.2%",

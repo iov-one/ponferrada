@@ -5,6 +5,7 @@ import { ethereumCodec } from '@iov/ethereum';
 import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse } from '@iov/jsonrpc';
 import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
   if (!Array.isArray(data)) {
     return false;
@@ -12,7 +13,7 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
   return data.every(isPublicIdentity);
 }
 
-export const ExtensionInteraction = () => {
+export const ExtensionInteraction = (): JSX.Element => {
   React.useEffect(() => {
     setInterval(async () => {
       const extensionId = 'dafekhlcpidfaopcimocbcpciholgkkb';
