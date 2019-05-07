@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const ADDRESS_FIELD = 'addressField';
 
-const onSubmit = () => {};
+const onSubmit = (): void => {};
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -43,7 +43,7 @@ const validate = (values: object): object => {
   return errors;
 };
 
-const ReceiverAddress = () => {
+const ReceiverAddress = (): JSX.Element => {
   const classes = useStyles();
 
   const { form, handleSubmit } = useForm({

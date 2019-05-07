@@ -2204,7 +2204,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-<<<<<<< HEAD
 "@material-ui/core@4.0.0-alpha.6":
   version "4.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.0.0-alpha.6.tgz#8f7893fe6e20035c2e502a3693cc1c10f884f93b"
@@ -2214,21 +2213,8 @@
     "@material-ui/styles" "^4.0.0-alpha.6"
     "@material-ui/system" "^4.0.0-alpha.0"
     "@material-ui/utils" "^4.0.0-alpha.4"
-=======
-"@material-ui/core@^4.0.0-alpha.6":
-  version "4.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.0.0-beta.1.tgz#5f8f47b66e92f266abbad6cfcc9efa6e5d87e54c"
-  integrity sha512-QuUKg7+myF+UdBs1MrCNo5N02sbXgfji7OQ8ImWzQRcwhB0uVqmGhB7rPiQnq8yb32e1X37btCinjE+gxdY1XA==
-  dependencies:
-    "@babel/runtime" "^7.2.0"
-    "@material-ui/styles" "^4.0.0-beta.1"
-    "@material-ui/system" "^4.0.0-beta.1"
-    "@material-ui/types" "^4.0.0-beta.2"
-    "@material-ui/utils" "^4.0.0-beta.1"
->>>>>>> Changes validation approach and makes use of medulas' form components
     "@types/react-transition-group" "^2.0.16"
     clsx "^1.0.2"
-    convert-css-length "^1.0.2"
     csstype "^2.5.2"
     debounce "^1.1.0"
     deepmerge "^3.0.0"
@@ -2241,11 +2227,7 @@
     react-transition-group "^2.5.3"
     warning "^4.0.1"
 
-<<<<<<< HEAD
 "@material-ui/styles@^4.0.0-alpha.6":
-=======
-"@material-ui/styles@^4.0.0-alpha.6", "@material-ui/styles@^4.0.0-beta.1":
->>>>>>> Changes validation approach and makes use of medulas' form components
   version "4.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.0.0-beta.1.tgz#a552fe402763f0579cbd39e79a9e42fbf6762139"
   integrity sha512-k41Xw6U6CHLNupWMCcc5w7AONNddsZVTUL7qe6nIMWZeBdLxX77N/nNZBq5sU2aFY5sShB8JwXK5X/xhDNfPgg==
@@ -2268,11 +2250,7 @@
     prop-types "^15.7.2"
     warning "^4.0.1"
 
-<<<<<<< HEAD
 "@material-ui/system@^4.0.0-alpha.0":
-=======
-"@material-ui/system@^4.0.0-beta.1":
->>>>>>> Changes validation approach and makes use of medulas' form components
   version "4.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-4.0.0-beta.1.tgz#6e170d72b8f4944f1d9d915f435967d1a7bcdac3"
   integrity sha512-SXmS3PYF2SzRLpcGPydqZkxJlQACQWPahKjb7VYkOucKWcHBQNEE2fD5q/A1izaGNAXMnE082butdkyZD2Kf0g==
@@ -2287,11 +2265,7 @@
   resolved "https://registry.yarnpkg.com/@material-ui/types/-/types-4.0.0-beta.2.tgz#aa686548f6eca0b055249cdeb089973f33ab6976"
   integrity sha512-Fct55vzMMUyiJqCBkBLERSrB2rdD7C4vbWtJcnhHaGSpAayG3jxhbxEoxm96UHsuI1DZAN7DdxwA4Y+w+pi78Q==
 
-<<<<<<< HEAD
 "@material-ui/utils@^4.0.0-alpha.4", "@material-ui/utils@^4.0.0-beta.1":
-=======
-"@material-ui/utils@^4.0.0-beta.1":
->>>>>>> Changes validation approach and makes use of medulas' form components
   version "4.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-4.0.0-beta.1.tgz#d5d566e38e21287a095e030d0bf465ea4f195633"
   integrity sha512-DXheNh0CQ5y9QBFmXom3+lwKjFMLS1aBog40870fH3i0P0isVweSqVGadVDoyX9ma6cV/DfcLFSsb1+CBgNA1g==
@@ -4628,9 +4602,9 @@ babylon@^6.18.0:
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
 
 bail@^1.0.0:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/bail/-/bail-1.0.3.tgz#63cfb9ddbac829b02a3128cd53224be78e6c21a3"
-  integrity sha512-1X8CnjFVQ+a+KW36uBNMTU5s8+v5FzeqrP7hTG5aTb4aPreSbZJlhwPon9VKMuEVgV++JM+SQrALY3kr7eswdg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/bail/-/bail-1.0.4.tgz#7181b66d508aa3055d3f6c13f0a0c720641dde9b"
+  integrity sha512-S8vuDB4w6YpRhICUDET3guPlQpaJl7od94tpZ0Fvnyp+MKW/HyDTcRDck+29C9g+d/qQHnddRH3+94kZdrW0Ww==
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -5164,9 +5138,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000929, caniuse-lite@^1.0.30000939, caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957, caniuse-lite@^1.0.30000963:
-  version "1.0.30000966"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000966.tgz#f3c6fefacfbfbfb981df6dfa68f2aae7bff41b64"
-  integrity sha512-qqLQ/uYrpZmFhPY96VuBkMEo8NhVFBZ9y/Bh+KnvGzGJ5I8hvpIaWlF2pw5gqe4PLAL+ZjsPgMOvoXSpX21Keg==
+  version "1.0.30000967"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000967.tgz#a5039577806fccee80a04aaafb2c0890b1ee2f73"
+  integrity sha512-rUBIbap+VJfxTzrM4akJ00lkvVb5/n5v3EGXfWzSH5zT8aJmGzjA8HWhJ4U6kCpzxozUSnB+yvAYDRPY6mRpgQ==
 
 canvg@1.5.3:
   version "1.5.3"
@@ -5759,11 +5733,6 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
 
-console-polyfill@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/console-polyfill/-/console-polyfill-0.1.2.tgz#96cfed51caf78189f699572e6f18271dc37c0e30"
-  integrity sha1-ls/tUcr3gYn2mVcubxgnHcN8DjA=
-
 constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
@@ -5866,14 +5835,6 @@ conventional-recommended-bump@^4.0.4:
     git-semver-tags "^2.0.2"
     meow "^4.0.0"
     q "^1.5.1"
-
-convert-css-length@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/convert-css-length/-/convert-css-length-1.0.2.tgz#32f38a8ac55d78372ff43562532564366c871ccc"
-  integrity sha512-ecV7j3hXyXN1X2XfJBzhMR0o1Obv0v3nHmn0UiS3ACENrzbxE/EknkiunS/fCwQva0U62X1GChi8GaPh4oTlLg==
-  dependencies:
-    console-polyfill "^0.1.2"
-    parse-unit "^1.0.1"
 
 convert-source-map@^1.1.0, convert-source-map@^1.4.0, convert-source-map@^1.5.0:
   version "1.6.0"
@@ -7976,9 +7937,9 @@ flat-cache@^2.0.1:
     write "1.0.3"
 
 flatstr@^1.0.9:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/flatstr/-/flatstr-1.0.10.tgz#bd4488f80cbd8ae9e9101b373e65e73b134770ce"
-  integrity sha512-r9A/hdaN0stt3gXsc0cdErh9takan11Pb/1MUZlToRxHrG7KycjGf5K5nNvToJB+YGR45bYrVHk0dnNWBIoCyA==
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/flatstr/-/flatstr-1.0.11.tgz#e4215663ccb8a135a549a1d29c543f05e928e785"
+  integrity sha512-CrkRmL8HgArqohPW5udNdtVae+fj5tvJdHwoo91m5OvaLk1a4lqa0R4/aPUO2zbVEnIrk+i5uTVNbSxaR1dQkQ==
 
 flatted@^2.0.0:
   version "2.0.0"
@@ -9513,9 +9474,9 @@ is-my-ip-valid@^1.0.0:
   integrity sha512-gmh/eWXROncUzRnIa1Ubrt5b8ep/MGSnfAUI3aRp+sqTCs1tv1Isl8d8F6JmkN3dXKc3ehZMrtiPN9eL03NuaQ==
 
 is-my-json-valid@^2.10.0:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/is-my-json-valid/-/is-my-json-valid-2.19.0.tgz#8fd6e40363cd06b963fa877d444bfb5eddc62175"
-  integrity sha512-mG0f/unGX1HZ5ep4uhRaPOS8EkAY8/j6mDRMJrutq4CqhoJWYp7qAlonIPy3TV7p3ju4TK9fo/PbnoksWmsp5Q==
+  version "2.20.0"
+  resolved "https://registry.yarnpkg.com/is-my-json-valid/-/is-my-json-valid-2.20.0.tgz#1345a6fca3e8daefc10d0fa77067f54cedafd59a"
+  integrity sha512-XTHBZSIIxNsIsZXg7XB5l8z/OBFosl1Wao4tXLpeC7eKU4Vm/kdop2azkPqULwnfGQjmeDIyey9g7afMMtdWAA==
   dependencies:
     generate-function "^2.0.0"
     generate-object-property "^1.1.0"
@@ -12534,11 +12495,6 @@ parse-path@^4.0.0:
     is-ssh "^1.3.0"
     protocols "^1.4.0"
 
-parse-unit@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/parse-unit/-/parse-unit-1.0.1.tgz#7e1bb6d5bef3874c28e392526a2541170291eecf"
-  integrity sha1-fhu21b7zh0wo45JSaiVBFwKR7s8=
-
 parse-url@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/parse-url/-/parse-url-5.0.1.tgz#99c4084fc11be14141efa41b3d117a96fcb9527f"
@@ -13601,9 +13557,9 @@ promise-retry@^1.1.1:
     retry "^0.10.0"
 
 promise.allsettled@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/promise.allsettled/-/promise.allsettled-1.0.0.tgz#a718290c5695c346f372297187e788b4e8c731f4"
-  integrity sha512-a5EYfJtZucSSziPrZYNBj5+C+oBik9i0cztXpGwotyXJbnLFPOPMksGMDYnY3YZTd45e3tPYH/5VdjjSF8kDYg==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/promise.allsettled/-/promise.allsettled-1.0.1.tgz#afe4bfcc13b26e2263a97a7fbbb19b8ca6eb619c"
+  integrity sha512-3ST7RS7TY3TYLOIe+OACZFvcWVe1osbgz2x07nTb446pa3t4GUZWidMDzQ4zf9jC2l6mRa1/3X81icFYbi+D/g==
   dependencies:
     define-properties "^1.1.3"
     es-abstract "^1.13.0"
@@ -16561,9 +16517,9 @@ uglify-js@3.4.x:
     source-map "~0.6.1"
 
 uglify-js@^3.1.4:
-  version "3.5.10"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.10.tgz#652bef39f86d9dbfd6674407ee05a5e2d372cf2d"
-  integrity sha512-/GTF0nosyPLbdJBd+AwYiZ+Hu5z8KXWnO0WCGt1BQ/u9Iamhejykqmz5o1OHJ53+VAk6xVxychonnApDjuqGsw==
+  version "3.5.11"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.11.tgz#833442c0aa29b3a7d34344c7c63adaa3f3504f6a"
+  integrity sha512-izPJg8RsSyqxbdnqX36ExpbH3K7tDBsAU/VfNv89VkMFy3z39zFjunQGsSHOlGlyIfGLGprGeosgQno3bo2/Kg==
   dependencies:
     commander "~2.20.0"
     source-map "~0.6.1"
@@ -17036,9 +16992,9 @@ web-ext@^3.0.0:
     zip-dir "1.0.2"
 
 web-namespaces@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-1.1.2.tgz#c8dc267ab639505276bae19e129dbd6ae72b22b4"
-  integrity sha512-II+n2ms4mPxK+RnIxRPOw3zwF2jRscdJIUE9BfkKHm4FYEg9+biIoTMnaZF5MpemE3T+VhMLrhbyD4ilkPCSbg==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-1.1.3.tgz#9bbf5c99ff0908d2da031f1d732492a96571a83f"
+  integrity sha512-r8sAtNmgR0WKOKOxzuSgk09JsHlpKlB+uHi937qypOu3PZ17UxPrierFKDye/uNHjNTTEshu5PId8rojIPj/tA==
 
 webext-redux@^2.0.1:
   version "2.0.2"
