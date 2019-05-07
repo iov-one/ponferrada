@@ -1,10 +1,11 @@
 /*global chrome*/
 import { wrapStore } from 'webext-redux';
-import { JsonRpcErrorResponse } from '@iov/jsonrpc';
 
 import { MessageToBackground, MessageToBackgroundAction } from './messages';
 import { makeStore } from '../store';
 import { PersonaManager, UseOnlyJsonRpcSigningServer } from '../logic/persona';
+import { handleExternalMessage } from './bsMessageHandler/externalHandler';
+import { JsonRpcRequest } from '@iov/jsonrpc';
 
 wrapStore(makeStore());
 
@@ -63,28 +64,8 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
   return true;
 });
 
-chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
-  if (!signingServer) {
-    console.warn('Could not pass message to signing server');
-    const error: JsonRpcErrorResponse = {
-      jsonrpc: '2.0',
-      id: typeof request.id === 'number' ? request.id : null,
-      error: {
-        code: -32000,
-        message: 'Signing server not ready',
-      },
-    };
-    sendResponse(error);
-    return;
-  }
-
-  signingServer
-    .handleUnchecked(request)
-    .then(response => {
-      console.log('Responding', response);
-      sendResponse(response);
-    })
-    .catch(console.error);
+chrome.runtime.onMessageExternal.addListener((request: JsonRpcRequest, sender, sendResponse) => {
+  handleExternalMessage(signingServer, request, sendResponse);
 
   // return true to keep the sendResponse reference alive, see
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal#Parameters
