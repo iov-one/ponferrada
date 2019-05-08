@@ -2772,7 +2772,6 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1698 makeStyles-weight-1737 makeStyles-inline-1696"
       >
-
         ETH
       </p>
     </div>
