@@ -40,7 +40,7 @@ const CheckboxField = ({ fieldName, form, initial, onChangeCallback, label }: Pr
 
   const control = (
     <Checkbox
-      checked={value === '' ? false : value}
+      checked={!!value}
       color="primary"
       onChange={onCheckBoxChange}
       inputProps={inputProps}
