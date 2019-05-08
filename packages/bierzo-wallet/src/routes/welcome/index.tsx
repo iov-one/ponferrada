@@ -10,8 +10,7 @@ import icon from '../../assets/iov-logo.svg';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import { sendSigningRequest } from '../../communication/signing';
-import { sendShareIdentityRequest } from '../../communication/shareIdentity';
+import { sendGetIdentitiesRequest } from '../../communication/identities';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -34,17 +33,9 @@ const Welcome = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
 
-  const onSigning = (): void => {
-    toast.show('Testing interaction with extension. Check console, please.', ToastVariant.INFO);
-    sendSigningRequest();
-  };
-
-  const onShareIdentity = (): void => {
-    toast.show(
-      'Testing Share Identity interaction with extension. Check console, please.',
-      ToastVariant.INFO
-    );
-    sendShareIdentityRequest();
+  const onGetIdentities = (): void => {
+    toast.show('Interaction with extension, fetching identities. Check console, please.', ToastVariant.INFO);
+    sendGetIdentitiesRequest();
   };
 
   return (
@@ -66,11 +57,8 @@ const Welcome = (): JSX.Element => {
         <Button className={classes.button} onClick={onPayment}>
           SEND PAYMENT
         </Button>
-        <Button className={classes.button} onClick={onSigning}>
-          SIGN REQUEST
-        </Button>
-        <Button className={classes.button} onClick={onShareIdentity}>
-          SHARE IDENTITY
+        <Button className={classes.button} onClick={onGetIdentities}>
+          GET IDENTITIES
         </Button>
       </Block>
     </Block>
