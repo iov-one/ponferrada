@@ -7,6 +7,8 @@ import { createStore, combineReducers } from 'redux';
 import * as React from 'react';
 import { PersonaProvider } from '../../context/PersonaProvider';
 
+export const CHROME_EXTENSION_ROOT = 'Extension';
+
 const storybookHistory = createMemoryHistory();
 
 //eslint-disable-next-line @typescript-eslint/explicit-function-return-type

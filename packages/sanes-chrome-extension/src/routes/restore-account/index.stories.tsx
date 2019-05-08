@@ -3,8 +3,9 @@ import { action } from '@storybook/addon-actions';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 import RestoreAccountForm from './components';
+import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 
-storiesOf('Extension', module).add(
+storiesOf(CHROME_EXTENSION_ROOT, module).add(
   'Restore Account page',
   (): JSX.Element => (
     <Storybook>

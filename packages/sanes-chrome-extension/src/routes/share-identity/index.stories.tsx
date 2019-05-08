@@ -6,8 +6,9 @@ import AcceptRequest from './components/AcceptRequest';
 import RejectRequest from './components/RejectRequest';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
+import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 
-storiesOf('Extension/Share Identity', module)
+storiesOf(`${CHROME_EXTENSION_ROOT}/Share Identity`, module)
   .add(
     'Show Request page',
     (): JSX.Element => (
