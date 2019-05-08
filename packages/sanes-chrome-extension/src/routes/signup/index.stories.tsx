@@ -5,8 +5,9 @@ import React from 'react';
 import NewAccountForm from './components/NewAccountForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
 import SecurityHintForm from './components/SecurityHintForm';
+import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 
-storiesOf('Extension/Signup', module)
+storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
   .add(
     'New Account page',
     (): JSX.Element => (

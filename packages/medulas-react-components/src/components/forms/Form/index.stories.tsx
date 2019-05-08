@@ -5,6 +5,7 @@ import Button from '../../Button';
 import Block from '../../Block';
 import SelectFieldForm, { Item } from '../SelectFieldForm';
 import TextFieldForm from '../TextFieldForm';
+import CheckboxField from '../CheckboxField';
 import Form, { useForm, FormValues, ValidationError } from './index';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
@@ -17,6 +18,7 @@ const onSubmit = async (values: FormValues): Promise<void> => {
 
 const TEXT_FIELD = 'textFieldUniqueIdentifier';
 const SELECT_FIELD = 'selectFieldUniqueIdentifier';
+const CHECKBOX_FIELD = 'checkboxFieldUniqueIdentifier';
 
 const validate = (values: FormValues): object => {
   let errors: ValidationError = {};
@@ -55,6 +57,15 @@ const FormStory = (): JSX.Element => {
           onChangeCallback={(item: Item) => console.log(`received ---> ${item.name}`)}
         />
       </Block>
+      <Block display="block" marginBottom={2}>
+        <CheckboxField
+          initial={true}
+          form={form}
+          fieldName={CHECKBOX_FIELD}
+          label="Checkbox field"
+          onChangeCallback={(checked: boolean) => console.log(`received ---> ${checked ? 'true' : 'false'}`)}
+        />
+      </Block>
 
       <Button type="submit" disabled={pristine || submitting}>
         Submit
@@ -68,6 +79,7 @@ storiesOf('Components/forms', module).add(
   'Form',
   (): JSX.Element => (
     <Storybook>
+      <Block marginTop={2} />
       <FormStory />
     </Storybook>
   )

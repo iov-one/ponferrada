@@ -7,6 +7,8 @@ import { configureStore } from '../../store';
 import { history } from '../../store/reducers';
 import { globalStyles } from '../../theme/globalStyles';
 
+export const WALLET_ROOT = 'Bierzo wallet';
+
 const store = configureStore();
 
 interface Props {
