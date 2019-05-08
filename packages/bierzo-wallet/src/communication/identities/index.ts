@@ -4,6 +4,8 @@ import { TransactionEncoder } from '@iov/core';
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { ethereumCodec } from '@iov/ethereum';
 import { extensionId } from '..';
+import { ToastContextInterface } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 
 const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -23,13 +25,15 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
   return data.every(isPublicIdentity);
 }
 
-export const sendGetIdentitiesRequest = (): void => {
+export const sendGetIdentitiesRequest = (toast: ToastContextInterface): void => {
   const request = generateGetIdentitiesRequest();
 
   chrome.runtime.sendMessage(extensionId, request, response => {
     const parsedResponse = parseJsonRpcResponse2(response);
     if (isJsonRpcErrorResponse(parsedResponse)) {
       console.log(parsedResponse.error.message);
+      toast.show('Error processing the request. Have you created your account?', ToastVariant.WARNING);
+
       return;
     }
 

@@ -35,7 +35,7 @@ const Welcome = (): JSX.Element => {
 
   const onGetIdentities = (): void => {
     toast.show('Interaction with extension, fetching identities. Check console, please.', ToastVariant.INFO);
-    sendGetIdentitiesRequest();
+    sendGetIdentitiesRequest(toast);
   };
 
   return (
