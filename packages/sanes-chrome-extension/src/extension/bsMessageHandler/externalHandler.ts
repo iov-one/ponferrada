@@ -1,43 +1,9 @@
-/*global chrome*/
-import { JsonRpcErrorResponse, JsonRpcRequest } from '@iov/jsonrpc';
+import { JsonRpcErrorResponse, JsonRpcRequest, JsonRpcResponse } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
-type SendResponse = (response: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-function handleWithServer(
-  signingServer: SigningServer,
-  request: JsonRpcRequest,
-  sendResponse: SendResponse
-): void {
-  if (!signingServer) {
-    console.warn('Could not pass message to signing server');
-    const error: JsonRpcErrorResponse = {
-      jsonrpc: '2.0',
-      id: typeof request.id === 'number' ? request.id : null,
-      error: {
-        code: -32000,
-        message: 'Signing server not ready',
-      },
-    };
-    sendResponse(error);
-    return;
-  }
-
-  signingServer
-    .handleUnchecked(request)
-    .then(response => {
-      console.log('Responding', response);
-      sendResponse(response);
-    })
-    .catch(console.error);
-}
-
-function isForServer(request: JsonRpcRequest): boolean {
-  const { method } = request;
-  return method === 'getIdentities' || method === 'signAndPost';
-}
-
+/*
 function handleResponseToExtension(request: JsonRpcRequest, sendResponse: SendResponse): void {
   chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
   chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
@@ -47,16 +13,28 @@ function handleResponseToExtension(request: JsonRpcRequest, sendResponse: SendRe
   // sendResponse ref for handling answer
   sendResponse(`I have handled the ${request.method} request changing the icon`);
 }
+*/
+
+function generateErrorResponse(id: number | null): JsonRpcErrorResponse {
+  return {
+    jsonrpc: '2.0',
+    id,
+    error: {
+      code: -32000,
+      message: 'Signing server not ready',
+    },
+  };
+}
 
 export function handleExternalMessage(
   signingServer: SigningServer,
-  request: JsonRpcRequest,
-  sendResponse: SendResponse
-): void {
-  if (isForServer(request)) {
-    handleWithServer(signingServer, request, sendResponse);
-    return;
+  request: JsonRpcRequest
+): Promise<JsonRpcResponse> {
+  if (!signingServer) {
+    const responseId = typeof request.id === 'number' ? request.id : null;
+    const error = generateErrorResponse(responseId);
+    return Promise.resolve(error);
   }
 
-  handleResponseToExtension(request, sendResponse);
+  return signingServer.handleUnchecked(request);
 }
