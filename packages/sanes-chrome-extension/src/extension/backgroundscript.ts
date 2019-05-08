@@ -1,48 +1,17 @@
 /*global chrome*/
 import { wrapStore } from 'webext-redux';
-import { MessageToBackground, MessageToBackgroundAction } from './messages';
+import { MessageToBackground } from './messages';
 import { makeStore } from '../store';
-import { PersonaManager, UseOnlyJsonRpcSigningServer } from '../logic/persona';
 import { handleExternalMessage } from './bsMessageHandler/externalHandler';
+import { handleInternalMessage, getSigningServer } from './bsMessageHandler/internalHandler';
 
 wrapStore(makeStore());
-
-let signingServer: UseOnlyJsonRpcSigningServer | undefined;
-
-async function handleInternalMessage(
-  message: MessageToBackground,
-  sender: chrome.runtime.MessageSender
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any> {
-  console.log(message, sender);
-  switch (message.action) {
-    case MessageToBackgroundAction.CreatePersona:
-      if (sender.id !== chrome.runtime.id) {
-        return 'Sender is not allowed to perform this action';
-      }
-      let response;
-      try {
-        const persona = await PersonaManager.create(message.data);
-
-        signingServer = persona.startSigningServer();
-        console.log('Signing server ready to handle requests');
-
-        response = {
-          mnemonic: persona.mnemonic,
-          txs: await persona.getTxs(),
-          accounts: await persona.getAccounts(),
-        };
-      } catch (error) {
-        console.error('Error when creating persona:', error);
-        response = error;
-      }
-      return response;
-    default:
-      return 'Unknown action';
-  }
-}
-
+// For a better understanding about the message change done visit:
 // https://developer.chrome.com/extensions/messaging#simple
+
+/**
+ * Listener for dispatching extension requests
+ */
 chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, sendResponse) => {
   handleInternalMessage(message, sender)
     .then(sendResponse)
@@ -61,6 +30,7 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
  * Listener for dispatching website requests towards the extension
  */
 chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
+  const signingServer = getSigningServer();
   handleExternalMessage(signingServer, request)
     .then(sendResponse)
     .catch(console.error);
