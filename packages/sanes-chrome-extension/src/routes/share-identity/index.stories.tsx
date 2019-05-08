@@ -8,35 +8,40 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/Share Identity`, module)
+const SHARE_IDENTITY_PATH = `${CHROME_EXTENSION_ROOT}/Share Identity`;
+const SHOW_REQUEST_PAGE = 'Show Request page';
+const ACCEPT_REQUEST_PAGE = 'Accept Request page';
+const REJECT_REQUEST_PAGE = 'Reject Request page';
+
+storiesOf(SHARE_IDENTITY_PATH, module)
   .add(
-    'Show Request page',
+    SHOW_REQUEST_PAGE,
     (): JSX.Element => (
       <Storybook>
         <ShowRequest
-          showAcceptView={linkTo('Routes/Share Identity', 'Accept request')}
-          showRejectView={linkTo('Routes/Share Identity', 'Accept request')}
+          showAcceptView={linkTo(SHARE_IDENTITY_PATH, ACCEPT_REQUEST_PAGE)}
+          showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
     )
   )
   .add(
-    'Accept Request page',
+    ACCEPT_REQUEST_PAGE,
     (): JSX.Element => (
       <Storybook>
         <AcceptRequest
-          onBack={linkTo('Routes/Share Identity', 'Show request')}
+          onBack={linkTo(SHARE_IDENTITY_PATH, SHOW_REQUEST_PAGE)}
           onAcceptRequest={action('onAcceptRequest')}
         />
       </Storybook>
     )
   )
   .add(
-    'Reject Request page',
+    REJECT_REQUEST_PAGE,
     (): JSX.Element => (
       <Storybook>
         <RejectRequest
-          onBack={linkTo('Routes/Share Identity', 'Show request')}
+          onBack={linkTo(SHARE_IDENTITY_PATH, SHOW_REQUEST_PAGE)}
           onRejectRequest={action('onAcceptRequest')}
         />
       </Storybook>
