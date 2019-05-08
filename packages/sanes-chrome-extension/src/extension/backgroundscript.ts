@@ -1,11 +1,9 @@
 /*global chrome*/
 import { wrapStore } from 'webext-redux';
-
 import { MessageToBackground, MessageToBackgroundAction } from './messages';
 import { makeStore } from '../store';
 import { PersonaManager, UseOnlyJsonRpcSigningServer } from '../logic/persona';
 import { handleExternalMessage } from './bsMessageHandler/externalHandler';
-import { JsonRpcRequest } from '@iov/jsonrpc';
 
 wrapStore(makeStore());
 
@@ -67,7 +65,7 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
 /**
  * Listener for dispatching website requests towards the extension
  */
-chrome.runtime.onMessageExternal.addListener((request: JsonRpcRequest, sender, sendResponse) => {
+chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
   handleExternalMessage(signingServer, request)
     .then(sendResponse)
     .catch(console.error);
