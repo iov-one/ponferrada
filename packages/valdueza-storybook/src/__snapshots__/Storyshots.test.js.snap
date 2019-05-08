@@ -142,9 +142,9 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           <h6
             className="MuiTypography-root-45 MuiTypography-subtitle2-57 MuiTypography-colorTextSecondary-71 makeStyles-weight-43 makeStyles-weight-126"
           >
-            balance: 
+            balance:
             24
-             
+
             IOV
           </h6>
         </div>
@@ -376,31 +376,31 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
 
 exports[`Storyshots Bierzo wallet Welcome page 1`] = `
 <div
-  className="MuiBox-root-166 MuiBox-root-167 makeStyles-welcome-164"
+  className="MuiBox-root-167 MuiBox-root-168 makeStyles-welcome-164"
 >
   <div
-    className="MuiBox-root-166 MuiBox-root-168 makeStyles-icon-165"
+    className="MuiBox-root-167 MuiBox-root-169 makeStyles-icon-165"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-169"
+      className="makeStyles-root-170"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root-166 MuiBox-root-174"
+    className="MuiBox-root-167 MuiBox-root-175"
   >
     <h6
-      className="MuiTypography-root-179 MuiTypography-h6-189 makeStyles-weight-177 makeStyles-weight-178"
+      className="MuiTypography-root-180 MuiTypography-h6-190 makeStyles-weight-178 makeStyles-weight-179"
     >
       IOV Wallet
     </h6>
   </div>
   <div
-    className="MuiBox-root-166 MuiBox-root-209"
+    className="MuiBox-root-167 MuiBox-root-210"
   >
     <button
-      className="MuiButtonBase-root-227 MuiButton-root-210 MuiButton-contained-218 MuiButton-containedPrimary-219 MuiButton-fullWidth-226"
+      className="MuiButtonBase-root-228 MuiButton-root-211 MuiButton-contained-219 MuiButton-containedPrimary-220 makeStyles-button-166"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -417,17 +417,40 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-211"
+        className="MuiButton-label-212"
       >
-        NEXT
+        SEND PAYMENT
       </span>
       <span
-        className="MuiTouchRipple-root-230"
+        className="MuiTouchRipple-root-231"
       />
     </button>
-  </div>
-  <div>
-    testing interaction with extension
+    <button
+      className="MuiButtonBase-root-228 MuiButton-root-211 MuiButton-contained-219 MuiButton-containedPrimary-220 makeStyles-button-166"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-212"
+      >
+        GET IDENTITIES
+      </span>
+      <span
+        className="MuiTouchRipple-root-231"
+      />
+    </button>
   </div>
 </div>
 `;
@@ -534,10 +557,10 @@ exports[`Storyshots Components /forms SelectField 1`] = `
 
 exports[`Storyshots Components Buttons 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-241"
+  className="MuiBox-root MuiBox-root-242"
 >
   <div
-    className="MuiBox-root MuiBox-root-242"
+    className="MuiBox-root MuiBox-root-243"
   >
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -567,7 +590,7 @@ exports[`Storyshots Components Buttons 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-263"
+    className="MuiBox-root MuiBox-root-264"
   >
     <button
       className="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled"
@@ -594,7 +617,7 @@ exports[`Storyshots Components Buttons 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-264"
+    className="MuiBox-root MuiBox-root-265"
   >
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
@@ -624,7 +647,7 @@ exports[`Storyshots Components Buttons 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-265"
+    className="MuiBox-root MuiBox-root-266"
   >
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
@@ -654,7 +677,7 @@ exports[`Storyshots Components Buttons 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-266"
+    className="MuiBox-root MuiBox-root-267"
   >
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -684,11 +707,11 @@ exports[`Storyshots Components Buttons 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-267"
+    className="MuiBox-root MuiBox-root-268"
   >
     <button
       aria-label="Export as CSV"
-      className="MuiButtonBase-root MuiFab-root makeStyles-root-268 MuiFab-extended makeStyles-extended-269 MuiFab-secondary makeStyles-secondary-271 MuiFab-sizeSmall makeStyles-sizeSmall-270"
+      className="MuiButtonBase-root MuiFab-root makeStyles-root-269 MuiFab-extended makeStyles-extended-270 MuiFab-secondary makeStyles-secondary-272 MuiFab-sizeSmall makeStyles-sizeSmall-271"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -708,21 +731,21 @@ exports[`Storyshots Components Buttons 1`] = `
         className="MuiFab-label"
       >
         <div
-          className="MuiBox-root MuiBox-root-282"
+          className="MuiBox-root MuiBox-root-283"
         >
           <img
             alt="Download"
-            className="makeStyles-root-283"
+            className="makeStyles-root-284"
             height={16}
             src="download.svg"
             width={16}
           />
         </div>
         <div
-          className="MuiBox-root MuiBox-root-288"
+          className="MuiBox-root MuiBox-root-289"
         >
           <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-291 makeStyles-weight-292"
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-292 makeStyles-weight-293"
           >
             Download
           </h6>
@@ -739,51 +762,51 @@ exports[`Storyshots Components Buttons 1`] = `
 exports[`Storyshots Components Hairline 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-334"
+    className="MuiBox-root MuiBox-root-335"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-337 makeStyles-weight-338"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-338 makeStyles-weight-339"
     >
       Regular hairline without margin
     </p>
     <div
-      className="MuiBox-root MuiBox-root-369"
+      className="MuiBox-root MuiBox-root-370"
     />
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-370"
+    className="MuiBox-root MuiBox-root-371"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-337 makeStyles-weight-371"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-338 makeStyles-weight-372"
     >
       Regular hairline with unit 1 margin
     </p>
     <div
-      className="MuiBox-root MuiBox-root-372"
+      className="MuiBox-root MuiBox-root-373"
     />
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-373"
+    className="MuiBox-root MuiBox-root-374"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-337 makeStyles-weight-374"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-338 makeStyles-weight-375"
     >
       Regular hairline with unit 4 margin
     </p>
     <div
-      className="MuiBox-root MuiBox-root-375"
+      className="MuiBox-root MuiBox-root-376"
     />
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-376"
+    className="MuiBox-root MuiBox-root-377"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-337 makeStyles-weight-377"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-338 makeStyles-weight-378"
     >
       Hairline with custom color
     </p>
     <div
-      className="MuiBox-root MuiBox-root-378"
+      className="MuiBox-root MuiBox-root-379"
     />
   </div>,
 ]
@@ -791,26 +814,26 @@ Array [
 
 exports[`Storyshots Components Images 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-380"
+  className="MuiBox-root MuiBox-root-381"
 >
   <div
-    className="MuiBox-root MuiBox-root-381"
+    className="MuiBox-root MuiBox-root-382"
   >
     <img
       alt="Iov Logo"
-      className="makeStyles-root-382"
+      className="makeStyles-root-383"
       src="iov-logo.png"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-387"
+    className="MuiBox-root MuiBox-root-388"
   >
     <div
-      className="MuiBox-root MuiBox-root-388"
+      className="MuiBox-root MuiBox-root-389"
     >
       <img
         alt="Download"
-        className="makeStyles-root-382"
+        className="makeStyles-root-383"
         height={16}
         src="download.svg"
         width={16}
@@ -822,41 +845,41 @@ exports[`Storyshots Components Images 1`] = `
 
 exports[`Storyshots Components Layout 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-390"
+  className="MuiBox-root MuiBox-root-391"
 >
   <div
-    className="MuiBox-root MuiBox-root-391"
+    className="MuiBox-root MuiBox-root-392"
   >
     <h4
-      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-394 makeStyles-weight-395 makeStyles-inline-392"
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary makeStyles-weight-395 makeStyles-weight-396 makeStyles-inline-393"
     >
       Title
     </h4>
     <h4
-      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-394 makeStyles-weight-426 makeStyles-inline-392"
+      className="MuiTypography-root MuiTypography-h4 makeStyles-weight-395 makeStyles-weight-427 makeStyles-inline-393"
     >
-       
+
       storybook
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-427"
+    className="MuiBox-root MuiBox-root-428"
   >
     <h6
-      className="MuiTypography-root MuiTypography-h6 makeStyles-weight-394 makeStyles-weight-428"
+      className="MuiTypography-root MuiTypography-h6 makeStyles-weight-395 makeStyles-weight-429"
     >
       Layout content
     </h6>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-429"
+    className="MuiBox-root MuiBox-root-430"
   />
   <div
-    className="MuiBox-root MuiBox-root-430"
+    className="MuiBox-root MuiBox-root-431"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-431"
+      className="makeStyles-root-432"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -868,7 +891,7 @@ exports[`Storyshots Components Layout 1`] = `
 exports[`Storyshots Components Switch 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-437"
+    className="MuiBox-root MuiBox-root-438"
   >
     <label
       className="MuiFormControlLabel-root"
@@ -919,7 +942,7 @@ Array [
     </label>
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-499"
+    className="MuiBox-root MuiBox-root-500"
   >
     <label
       className="MuiFormControlLabel-root"
@@ -973,13 +996,13 @@ Array [
 exports[`Storyshots Components Toasts 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-614"
+    className="MuiBox-root MuiBox-root-615"
   >
     <div
-      className="MuiBox-root MuiBox-root-615"
+      className="MuiBox-root MuiBox-root-616"
     >
       <div
-        className="MuiBox-root MuiBox-root-616"
+        className="MuiBox-root MuiBox-root-617"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -1009,33 +1032,33 @@ Array [
         </button>
       </div>
       <p
-        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-639 makeStyles-weight-640"
+        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-640 makeStyles-weight-641"
       >
         This should generate...
       </p>
       <div
-        className="MuiTypography-root MuiTypography-body2 MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info-673"
+        className="MuiTypography-root MuiTypography-body2 MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info-674"
         role="alertdialog"
       >
         <div
           className="MuiSnackbarContent-message"
         >
           <div
-            className="MuiBox-root MuiBox-root-709 makeStyles-message-677"
+            className="MuiBox-root MuiBox-root-710 makeStyles-message-678"
           >
             <div
-              className="makeStyles-iconBackground-678"
+              className="makeStyles-iconBackground-679"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-710"
+                className="makeStyles-root-711"
                 height={24}
                 src="success.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root MuiTypography-subtitle1 makeStyles-info-673 makeStyles-weight-639 makeStyles-weight-715"
+              className="MuiTypography-root MuiTypography-subtitle1 makeStyles-info-674 makeStyles-weight-640 makeStyles-weight-716"
             >
               Hi INFO this is a cool feature. Stay tuned
             </h6>
@@ -1067,7 +1090,7 @@ Array [
             >
               <img
                 alt="Close"
-                className="makeStyles-root-710"
+                className="makeStyles-root-711"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -1081,10 +1104,10 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-725"
+      className="MuiBox-root MuiBox-root-726"
     >
       <div
-        className="MuiBox-root MuiBox-root-726"
+        className="MuiBox-root MuiBox-root-727"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -1114,33 +1137,33 @@ Array [
         </button>
       </div>
       <p
-        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-639 makeStyles-weight-727"
+        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-640 makeStyles-weight-728"
       >
         This should generate...
       </p>
       <div
-        className="MuiTypography-root MuiTypography-body2 MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning-674"
+        className="MuiTypography-root MuiTypography-body2 MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning-675"
         role="alertdialog"
       >
         <div
           className="MuiSnackbarContent-message"
         >
           <div
-            className="MuiBox-root MuiBox-root-728 makeStyles-message-677"
+            className="MuiBox-root MuiBox-root-729 makeStyles-message-678"
           >
             <div
-              className="makeStyles-iconBackground-678"
+              className="makeStyles-iconBackground-679"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-710"
+                className="makeStyles-root-711"
                 height={24}
                 src="warning.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root MuiTypography-subtitle1 makeStyles-warning-674 makeStyles-weight-639 makeStyles-weight-729"
+              className="MuiTypography-root MuiTypography-subtitle1 makeStyles-warning-675 makeStyles-weight-640 makeStyles-weight-730"
             >
               Hi WARN
             </h6>
@@ -1172,7 +1195,7 @@ Array [
             >
               <img
                 alt="Close"
-                className="makeStyles-root-710"
+                className="makeStyles-root-711"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -1186,10 +1209,10 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-730"
+      className="MuiBox-root MuiBox-root-731"
     >
       <div
-        className="MuiBox-root MuiBox-root-731"
+        className="MuiBox-root MuiBox-root-732"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -1219,33 +1242,33 @@ Array [
         </button>
       </div>
       <p
-        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-639 makeStyles-weight-732"
+        className="MuiTypography-root MuiTypography-body1 makeStyles-weight-640 makeStyles-weight-733"
       >
         This should generate...
       </p>
       <div
-        className="MuiTypography-root MuiTypography-body2 MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error-672"
+        className="MuiTypography-root MuiTypography-body2 MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error-673"
         role="alertdialog"
       >
         <div
           className="MuiSnackbarContent-message"
         >
           <div
-            className="MuiBox-root MuiBox-root-733 makeStyles-message-677"
+            className="MuiBox-root MuiBox-root-734 makeStyles-message-678"
           >
             <div
-              className="makeStyles-iconBackground-678"
+              className="makeStyles-iconBackground-679"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-710"
+                className="makeStyles-root-711"
                 height={24}
                 src="error.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root MuiTypography-subtitle1 makeStyles-error-672 makeStyles-weight-639 makeStyles-weight-734"
+              className="MuiTypography-root MuiTypography-subtitle1 makeStyles-error-673 makeStyles-weight-640 makeStyles-weight-735"
             >
               Hi ERR
             </h6>
@@ -1277,7 +1300,7 @@ Array [
             >
               <img
                 alt="Close"
-                className="makeStyles-root-710"
+                className="makeStyles-root-711"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -1298,15 +1321,15 @@ Array [
 exports[`Storyshots Components Tooltip 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-511"
+    className="MuiBox-root MuiBox-root-512"
   >
     <div
-      className="makeStyles-container-513"
+      className="makeStyles-container-514"
       onClick={[Function]}
     >
       <img
         alt="Info"
-        className="makeStyles-root-516"
+        className="makeStyles-root-517"
         height={16}
         src="info_normal.svg"
         width={16}
@@ -1314,10 +1337,10 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-521"
+    className="MuiBox-root MuiBox-root-522"
   >
     <p
-      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-524 makeStyles-weight-525 makeStyles-inline-522"
+      className="MuiTypography-root MuiTypography-body1 makeStyles-weight-525 makeStyles-weight-526 makeStyles-inline-523"
       style={
         Object {
           "marginRight": "4px",
@@ -1327,12 +1350,12 @@ Array [
       Loooooooooooooooooooooooooooooooooong text
     </p>
     <div
-      className="makeStyles-container-513"
+      className="makeStyles-container-514"
       onClick={[Function]}
     >
       <img
         alt="Info"
-        className="makeStyles-root-516"
+        className="makeStyles-root-517"
         height={16}
         src="info_normal.svg"
         width={16}
@@ -1345,87 +1368,87 @@ Array [
 exports[`Storyshots Components Typography 1`] = `
 Array [
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-559"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-560"
   >
     H4
   </h6>,
   <h4
-    className="MuiTypography-root MuiTypography-h4 makeStyles-weight-558 makeStyles-weight-590"
+    className="MuiTypography-root MuiTypography-h4 makeStyles-weight-559 makeStyles-weight-591"
   >
     Main headings
   </h4>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-591"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-592"
   >
     H5
   </h6>,
   <h5
-    className="MuiTypography-root MuiTypography-h5 makeStyles-weight-558 makeStyles-weight-592"
+    className="MuiTypography-root MuiTypography-h5 makeStyles-weight-559 makeStyles-weight-593"
   >
     Heading 2
   </h5>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-593"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-594"
   >
     H6
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-h6 makeStyles-weight-558 makeStyles-weight-594"
+    className="MuiTypography-root MuiTypography-h6 makeStyles-weight-559 makeStyles-weight-595"
   >
     Subheading
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-595"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-596"
   >
     body1
   </h6>,
   <p
-    className="MuiTypography-root MuiTypography-body1 makeStyles-weight-558 makeStyles-weight-596"
+    className="MuiTypography-root MuiTypography-body1 makeStyles-weight-559 makeStyles-weight-597"
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-597"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-598"
   >
     body2
   </h6>,
   <p
-    className="MuiTypography-root MuiTypography-body2 makeStyles-weight-558 makeStyles-weight-598"
+    className="MuiTypography-root MuiTypography-body2 makeStyles-weight-559 makeStyles-weight-599"
   >
     Lorem ipsum dolor sit amet
   </p>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-599"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-600"
   >
     subtitle1
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 makeStyles-weight-558 makeStyles-weight-600"
+    className="MuiTypography-root MuiTypography-subtitle1 makeStyles-weight-559 makeStyles-weight-601"
   >
     Text field label
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-601"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-602"
   >
     subtitle2
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-558 makeStyles-weight-602"
+    className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-559 makeStyles-weight-603"
   >
     Text field label
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-603"
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-604"
   >
     Inline styles
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary makeStyles-weight-558 makeStyles-weight-604 makeStyles-inline-556"
+    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-605 makeStyles-inline-557"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
-    className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-558 makeStyles-weight-605 makeStyles-inline-556"
+    className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-559 makeStyles-weight-606 makeStyles-inline-557"
   >
     Second part of the text.
   </h6>,
@@ -1954,7 +1977,7 @@ exports[`Storyshots Extension Account Status page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1095 makeStyles-weight-1127 makeStyles-inline-1093"
     >
-       
+
       Status
     </h4>
   </div>
@@ -2152,7 +2175,7 @@ exports[`Storyshots Extension Login page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1208 makeStyles-weight-1240 makeStyles-inline-1206"
     >
-       
+
       In
     </h4>
   </div>
@@ -2310,7 +2333,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1319 makeStyles-weight-1351 makeStyles-inline-1317"
     >
-       
+
       phrase
     </h4>
   </div>
@@ -2382,7 +2405,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1319 makeStyles-weight-1382 makeStyles-inline-1317"
       >
-        
+
       </p>
     </div>
     <div
@@ -2453,7 +2476,7 @@ exports[`Storyshots Extension Restore Account page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1419 makeStyles-weight-1451 makeStyles-inline-1417"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2617,7 +2640,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1537 makeStyles-weight-1569 makeStyles-inline-1535"
     >
-       
+
       to your IOV manager
     </h4>
   </div>
@@ -2748,7 +2771,7 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1700 makeStyles-weight-1732 makeStyles-inline-1698"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -2776,13 +2799,13 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1700 makeStyles-weight-1738 makeStyles-inline-1698"
       >
-         
+
         your identity on
       </p>
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1700 makeStyles-weight-1739 makeStyles-inline-1698"
       >
-         
+
         ETH
       </p>
     </div>
@@ -2877,7 +2900,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1784 makeStyles-weight-1816 makeStyles-inline-1782"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -2908,7 +2931,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1784 makeStyles-weight-1822 makeStyles-inline-1782"
         >
-           
+
           your identity.
         </p>
         <div
@@ -3060,7 +3083,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1617 makeStyles-weight-1649 makeStyles-inline-1615"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -3088,7 +3111,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1617 makeStyles-weight-1655 makeStyles-inline-1615"
       >
-         
+
         ETH
       </p>
     </div>
@@ -3184,7 +3207,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1902 makeStyles-weight-1934 makeStyles-inline-1900"
     >
-       
+
       Account
     </h4>
   </div>
@@ -3475,7 +3498,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-2040 makeStyles-weight-2072 makeStyles-inline-2038"
     >
-       
+
       Account
     </h4>
   </div>
@@ -3562,7 +3585,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-2040 makeStyles-weight-2119 makeStyles-inline-2038"
       >
-        
+
       </p>
     </div>
     <div
@@ -3663,7 +3686,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-2157 makeStyles-weight-2189 makeStyles-inline-2155"
     >
-       
+
       Account
     </h4>
   </div>
