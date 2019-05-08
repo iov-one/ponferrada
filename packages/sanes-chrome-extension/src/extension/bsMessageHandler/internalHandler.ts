@@ -1,6 +1,9 @@
 /*global chrome*/
 import { MessageToBackgroundAction, MessageToBackground } from '../messages';
 import { UseOnlyJsonRpcSigningServer, PersonaManager } from '../../logic/persona';
+import { GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
+import { PublicIdentity } from '@iov/bcp';
+import { isNewSender } from './senderWhitelist';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 let signingServer: SigningServer;
@@ -24,7 +27,24 @@ export async function handleInternalMessage(
       try {
         const persona = await PersonaManager.create(message.data);
 
-        signingServer = persona.startSigningServer();
+        const getIdentitiesCallback: GetIdentitiesAuthorization = async (
+          reason,
+          matchingIdentities
+        ): Promise<ReadonlyArray<PublicIdentity>> => {
+          if (isNewSender('http://finnex.com')) {
+            chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
+            chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
+            chrome.browserAction.setBadgeText({ text: '*' });
+          }
+
+          return matchingIdentities;
+        };
+
+        const signAndPostCallback: SignAndPostAuthorization = async (): Promise<boolean> => {
+          return true;
+        };
+
+        signingServer = persona.startSigningServer(getIdentitiesCallback, signAndPostCallback);
         console.log('Signing server ready to handle requests');
 
         response = {
