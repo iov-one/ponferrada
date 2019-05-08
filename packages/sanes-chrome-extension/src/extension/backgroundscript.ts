@@ -16,11 +16,6 @@ async function handleInternalMessage(
 ): Promise<any> {
   console.log(message, sender);
   switch (message.action) {
-    case MessageToBackgroundAction.ContentToBackground:
-      if (sender.tab) {
-        console.log('Received message from: ' + sender.tab.id);
-      }
-      return { msg: 'Hello mate' };
     case MessageToBackgroundAction.CreatePersona:
       if (sender.id !== chrome.runtime.id) {
         return 'Sender is not allowed to perform this action';

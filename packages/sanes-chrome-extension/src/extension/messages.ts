@@ -9,7 +9,6 @@ export const WTC_MSG_HELLO = 'wtc_HELLO';
  * String values will be used in the JSON message objects
  */
 export enum MessageToBackgroundAction {
-  ContentToBackground = 'ctb_HELLO',
   CreatePersona = 'create_persona',
 }
 
