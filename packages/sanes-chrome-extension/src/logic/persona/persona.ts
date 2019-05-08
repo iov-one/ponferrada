@@ -1,4 +1,3 @@
-/*global chrome*/
 import { ReadonlyDate } from 'readonly-date';
 
 import { Amount, PublicIdentity } from '@iov/bcp';
@@ -22,7 +21,6 @@ import {
   pathBuilderForCodec,
 } from '../config';
 import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
-import { isNewSender } from './personaWhitelist';
 
 /** Like UseOnlyJsonRpcSigningServer but without functionality to create or shutdown */
 export interface UseOnlyJsonRpcSigningServer {
@@ -142,24 +140,26 @@ export class Persona {
     return out;
   }
 
-  public startSigningServer(): UseOnlyJsonRpcSigningServer {
+  public startSigningServer(
+    authorizeGetIdentities?: GetIdentitiesAuthorization,
+    authorizeSignAndPost?: SignAndPostAuthorization
+  ): UseOnlyJsonRpcSigningServer {
     const revealAllIdentities: GetIdentitiesAuthorization = async (
       reason,
       matchingIdentities
     ): Promise<ReadonlyArray<PublicIdentity>> => {
-      if (isNewSender('http://finnex.com')) {
-        chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
-        chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
-        chrome.browserAction.setBadgeText({ text: '*' });
-      }
-
       return matchingIdentities;
     };
     const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
       return true;
     };
 
-    const core = new SigningServerCore(this.profile, this.signer, revealAllIdentities, signEverything);
+    const core = new SigningServerCore(
+      this.profile,
+      this.signer,
+      authorizeGetIdentities || revealAllIdentities,
+      authorizeSignAndPost || signEverything
+    );
     const server = new JsonRpcSigningServer(core);
     this.signingServer = server;
     return server;
