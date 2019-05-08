@@ -3,6 +3,9 @@ import Button from 'medulas-react-components/lib/components/Button';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { SHARE_IDENTITY } from '../../paths';
+
+export const SHARE_IDENTITY_SHOW = `${SHARE_IDENTITY}_show`;
 
 interface Props {
   readonly showAcceptView: () => void;
@@ -10,7 +13,7 @@ interface Props {
 }
 
 const Layout = ({ showAcceptView, showRejectView }: Props): JSX.Element => (
-  <PageLayout primaryTitle="Share" title="Identity">
+  <PageLayout id={SHARE_IDENTITY_SHOW} primaryTitle="Share" title="Identity">
     <Block textAlign="center">
       <Typography variant="body1">The following site:</Typography>
       <Typography variant="body1" color="primary">
