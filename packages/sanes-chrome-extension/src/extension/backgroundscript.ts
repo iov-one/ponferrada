@@ -64,8 +64,13 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
   return true;
 });
 
+/**
+ * Listener for dispatching website requests towards the extension
+ */
 chrome.runtime.onMessageExternal.addListener((request: JsonRpcRequest, sender, sendResponse) => {
-  handleExternalMessage(signingServer, request, sendResponse);
+  handleExternalMessage(signingServer, request)
+    .then(sendResponse)
+    .catch(console.error);
 
   // return true to keep the sendResponse reference alive, see
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal#Parameters
