@@ -5,7 +5,7 @@ import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { ethereumCodec } from '@iov/ethereum';
 import { extensionId } from '..';
 
-const generateSigningRequest = (): JsonRpcRequest => ({
+const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',
   id: 1,
   method: 'getIdentities',
@@ -23,8 +23,8 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
   return data.every(isPublicIdentity);
 }
 
-export const sendSigningRequest = (): void => {
-  const request = generateSigningRequest();
+export const sendGetIdentitiesRequest = (): void => {
+  const request = generateGetIdentitiesRequest();
 
   chrome.runtime.sendMessage(extensionId, request, response => {
     const parsedResponse = parseJsonRpcResponse2(response);
