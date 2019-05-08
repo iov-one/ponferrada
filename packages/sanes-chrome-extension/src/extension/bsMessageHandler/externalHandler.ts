@@ -1,4 +1,4 @@
-import { JsonRpcErrorResponse, JsonRpcRequest, JsonRpcResponse } from '@iov/jsonrpc';
+import { JsonRpcErrorResponse, JsonRpcResponse } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
@@ -26,10 +26,8 @@ function generateErrorResponse(id: number | null): JsonRpcErrorResponse {
   };
 }
 
-export function handleExternalMessage(
-  signingServer: SigningServer,
-  request: JsonRpcRequest
-): Promise<JsonRpcResponse> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function handleExternalMessage(signingServer: SigningServer, request: any): Promise<JsonRpcResponse> {
   if (!signingServer) {
     const responseId = typeof request.id === 'number' ? request.id : null;
     const error = generateErrorResponse(responseId);
