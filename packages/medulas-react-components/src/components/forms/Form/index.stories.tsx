@@ -79,6 +79,7 @@ storiesOf('Components/forms', module).add(
   'Form',
   (): JSX.Element => (
     <Storybook>
+      <Block marginTop={2} />
       <FormStory />
     </Storybook>
   )
