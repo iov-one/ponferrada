@@ -17,9 +17,10 @@ const Layout = ({ showAcceptView }: Props): JSX.Element => (
       </Typography>
       <Typography variant="body1" inline>
         wants to see your identity on
-      </Typography>{' '}
+      </Typography>
       <Typography variant="body1" inline color="primary">
-        BTC
+        {' '}
+        ETH
       </Typography>
     </Block>
     <Block marginTop={10} />

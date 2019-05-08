@@ -26,7 +26,7 @@ const Layout = ({ onBack, onAcceptRequest }: Props): JSX.Element => (
       </Typography>
       <Typography variant="body1" inline color="primary">
         {' '}
-        BTC
+        ETH
       </Typography>
     </Block>
     <Block marginTop={10} />

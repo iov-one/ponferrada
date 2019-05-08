@@ -2648,7 +2648,7 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1546 makeStyles-weight-1585 makeStyles-inline-1544"
       >
          
-        BTC
+        ETH
       </p>
     </div>
     <div
@@ -2767,11 +2767,11 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       >
         wants to see your identity on
       </p>
-       
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1463 makeStyles-weight-1501 makeStyles-inline-1461"
       >
-        BTC
+         
+        ETH
       </p>
     </div>
     <div
