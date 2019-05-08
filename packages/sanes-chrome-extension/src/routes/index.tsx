@@ -5,6 +5,7 @@ import Signup from './signup';
 import Login from './login';
 import RecoveryPhrase from './recovery-phrase';
 import RestoreAccount from './restore-account';
+import ShareIdentity from './share-identity';
 import AccountStatus from './account';
 import {
   WELCOME_ROUTE,
@@ -13,6 +14,7 @@ import {
   RECOVERY_PHRASE_ROUTE,
   ACCOUNT_STATUS_ROUTE,
   RESTORE_ACCOUNT,
+  SHARE_IDENTITY,
 } from './paths';
 
 export const MainRouter = (): JSX.Element => (
@@ -23,6 +25,7 @@ export const MainRouter = (): JSX.Element => (
     <Route exact path={RECOVERY_PHRASE_ROUTE} component={RecoveryPhrase} />
     <Route exact path={RESTORE_ACCOUNT} component={RestoreAccount} />
     <Route exact path={ACCOUNT_STATUS_ROUTE} component={AccountStatus} />
+    <Route exact path={SHARE_IDENTITY} component={ShareIdentity} />
   </Switch>
 );
 
