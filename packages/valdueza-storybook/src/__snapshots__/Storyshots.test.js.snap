@@ -16,21 +16,17 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
         <div
           className="MuiAvatar-root makeStyles-avatar-9 MuiAvatar-colorDefault"
         >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-user fa-w-14 "
-            color="#ffffff"
-            data-icon="user"
-            data-prefix="far"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            className="MuiAvatar-root-38 makeStyles-avatar-9 MuiAvatar-colorDefault-39"
           >
-            <path
-              d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
-              fill="currentColor"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-user fa-w-14 "
+              color="#ffffff"
+              data-icon="user"
+              data-prefix="far"
+              focusable="false"
+              role="img"
               style={Object {}}
             />
           </svg>
@@ -94,7 +90,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                       onChange={[Function]}
                       onFocus={[Function]}
                       placeholder="0,00"
-                      required={true}
+                      required={false}
                       type="text"
                     />
                   </div>
@@ -142,11 +138,15 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           <h6
             className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary makeStyles-weight-43 makeStyles-weight-126"
           >
-            balance: 
-            24
-             
-            IOV
-          </h6>
+            <h6
+              className="MuiTypography-root-45 MuiTypography-subtitle2-57 MuiTypography-colorTextSecondary-71 makeStyles-weight-43 makeStyles-weight-126"
+            >
+              balance:
+              24
+
+              IOV
+            </h6>
+          </div>
         </div>
       </div>
     </div>
@@ -168,8 +168,13 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
         <div
           className="MuiBox-root MuiBox-root-130"
         >
-          <form
-            onSubmit={[Function]}
+          <h6
+            className="MuiTypography-root-45 MuiTypography-subtitle2-57 MuiTypography-colorTextPrimary-70 makeStyles-weight-43 makeStyles-weight-129"
+          >
+            To
+          </h6>
+          <div
+            className="MuiBox-root-6 MuiBox-root-130"
           >
             <div
               className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root"
@@ -213,7 +218,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                   onChange={[Function]}
                   onFocus={[Function]}
                   placeholder="IOV or wallet address"
-                  required={true}
+                  required={false}
                   type="text"
                 />
               </div>
@@ -231,17 +236,26 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           <div
             className="MuiBox-root MuiBox-root-133"
           >
-            <div
-              className="makeStyles-container-135"
-              onClick={[Function]}
+            <h6
+              className="MuiTypography-root-45 MuiTypography-subtitle1-56 MuiTypography-colorTextPrimary-70 makeStyles-weight-43 makeStyles-weight-132"
             >
-              <img
-                alt="Info"
-                className="makeStyles-root-120"
-                height={16}
-                src="info_normal.svg"
-                width={16}
-              />
+              How it works
+            </h6>
+            <div
+              className="MuiBox-root-6 MuiBox-root-133"
+            >
+              <div
+                className="makeStyles-container-135"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Info"
+                  className="makeStyles-root-120"
+                  height={16}
+                  src="info_normal.svg"
+                  width={16}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -263,21 +277,17 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           <div
             className="MuiBox-root MuiBox-root-141"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-sticky-note fa-w-14 fa-lg "
-              color="#a2a6a8"
-              data-icon="sticky-note"
-              data-prefix="far"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="MuiBox-root-6 MuiBox-root-141"
             >
-              <path
-                d="M448 348.106V80c0-26.51-21.49-48-48-48H48C21.49 32 0 53.49 0 80v351.988c0 26.51 21.49 48 48 48h268.118a48 48 0 0 0 33.941-14.059l83.882-83.882A48 48 0 0 0 448 348.106zm-128 80v-76.118h76.118L320 428.106zM400 80v223.988H296c-13.255 0-24 10.745-24 24v104H48V80h352z"
-                fill="currentColor"
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-sticky-note fa-w-14 fa-lg "
+                color="#a2a6a8"
+                data-icon="sticky-note"
+                data-prefix="far"
+                focusable="false"
+                role="img"
                 style={Object {}}
               />
             </svg>
@@ -335,7 +345,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                   />
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -369,9 +379,9 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           Continue
         </span>
       </button>
-    </form>
+    </div>
   </div>
-</div>
+</form>
 `;
 
 exports[`Storyshots Bierzo wallet Welcome page 1`] = `
@@ -858,7 +868,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-395 makeStyles-weight-427 makeStyles-inline-393"
     >
-       
+
       storybook
     </h4>
   </div>
@@ -1445,7 +1455,7 @@ Array [
   <h6
     className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary makeStyles-weight-559 makeStyles-weight-605 makeStyles-inline-557"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root MuiTypography-subtitle2 makeStyles-weight-559 makeStyles-weight-606 makeStyles-inline-557"
@@ -1977,7 +1987,7 @@ exports[`Storyshots Extension Account Status page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1096 makeStyles-weight-1128 makeStyles-inline-1094"
     >
-       
+
       Status
     </h4>
   </div>
@@ -2175,7 +2185,7 @@ exports[`Storyshots Extension Login page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1209 makeStyles-weight-1241 makeStyles-inline-1207"
     >
-       
+
       In
     </h4>
   </div>
@@ -2333,7 +2343,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1320 makeStyles-weight-1352 makeStyles-inline-1318"
     >
-       
+
       phrase
     </h4>
   </div>
@@ -2405,7 +2415,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1320 makeStyles-weight-1383 makeStyles-inline-1318"
       >
-        
+
       </p>
     </div>
     <div
@@ -2476,7 +2486,7 @@ exports[`Storyshots Extension Restore Account page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1420 makeStyles-weight-1452 makeStyles-inline-1418"
     >
-       
+
       Account
     </h4>
   </div>
@@ -2640,7 +2650,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1538 makeStyles-weight-1570 makeStyles-inline-1536"
     >
-       
+
       to your IOV manager
     </h4>
   </div>
@@ -2771,7 +2781,7 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1701 makeStyles-weight-1733 makeStyles-inline-1699"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -2799,13 +2809,13 @@ exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1701 makeStyles-weight-1739 makeStyles-inline-1699"
       >
-         
+
         your identity on
       </p>
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1701 makeStyles-weight-1740 makeStyles-inline-1699"
       >
-         
+
         ETH
       </p>
     </div>
@@ -2900,7 +2910,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1785 makeStyles-weight-1817 makeStyles-inline-1783"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -2931,7 +2941,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1785 makeStyles-weight-1823 makeStyles-inline-1783"
         >
-           
+
           your identity.
         </p>
         <div
@@ -3083,7 +3093,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1618 makeStyles-weight-1650 makeStyles-inline-1616"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -3111,7 +3121,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1618 makeStyles-weight-1656 makeStyles-inline-1616"
       >
-         
+
         ETH
       </p>
     </div>
@@ -3207,7 +3217,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-1903 makeStyles-weight-1935 makeStyles-inline-1901"
     >
-       
+
       Account
     </h4>
   </div>
@@ -3498,7 +3508,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-2041 makeStyles-weight-2073 makeStyles-inline-2039"
     >
-       
+
       Account
     </h4>
   </div>
@@ -3585,7 +3595,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-2041 makeStyles-weight-2120 makeStyles-inline-2039"
       >
-        
+
       </p>
     </div>
     <div
@@ -3686,7 +3696,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     <h4
       className="MuiTypography-root MuiTypography-h4 makeStyles-weight-2158 makeStyles-weight-2190 makeStyles-inline-2156"
     >
-       
+
       Account
     </h4>
   </div>
