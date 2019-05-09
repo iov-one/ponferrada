@@ -1,6 +1,8 @@
+/*global chrome*/
 import * as React from 'react';
 import { AccountInfo } from '../logic/persona/accountManager';
 import { ProcessedTx } from '../logic/persona';
+import { isMessageToForeground, MessageToForegroundAction } from '../extension/messages';
 
 type Accounts = ReadonlyArray<AccountInfo>;
 
@@ -23,6 +25,7 @@ interface Props {
 }
 
 export const PersonaProvider = ({ children }: Props): JSX.Element => {
+  const isExtensionContext = typeof chrome !== 'undefined';
   const [accountNames, setAccountNames] = React.useState<Accounts>([]);
   const [mnemonic, setMnemonic] = React.useState<string>('');
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>([]);
@@ -43,6 +46,26 @@ export const PersonaProvider = ({ children }: Props): JSX.Element => {
     txs,
     update: loadPersonaInReact,
   };
+
+  if (isExtensionContext) {
+    chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
+      if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
+        // Only handle messages from background script
+        return;
+      }
+
+      switch (message.action) {
+        case MessageToForegroundAction.TransactionsChanges:
+          if (!Array.isArray(message.data)) {
+            throw new Error('Data must be an array');
+          }
+          setTxs(message.data);
+          break;
+        default:
+          throw new Error('Unknown action');
+      }
+    });
+  }
 
   return <PersonaContext.Provider value={personaContextValue}>{children}</PersonaContext.Provider>;
 };

@@ -8,6 +8,7 @@ import {
   SignAndPostAuthorization,
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
+  SignedAndPosted,
 } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { JsonRpcResponse, JsonRpcRequest } from '@iov/jsonrpc';
@@ -139,7 +140,8 @@ export class Persona {
 
   public startSigningServer(
     authorizeGetIdentities?: GetIdentitiesAuthorization,
-    authorizeSignAndPost?: SignAndPostAuthorization
+    authorizeSignAndPost?: SignAndPostAuthorization,
+    transactionsChanged?: (transactions: ReadonlyArray<SignedAndPosted>) => void
   ): UseOnlyJsonRpcSigningServer {
     const revealAllIdentities: GetIdentitiesAuthorization = async (
       reason,
@@ -157,6 +159,8 @@ export class Persona {
       authorizeGetIdentities || revealAllIdentities,
       authorizeSignAndPost || signEverything
     );
+    core.signedAndPosted.updates.subscribe({ next: transactionsChanged });
+
     const server = new JsonRpcSigningServer(core);
     this.signingServer = server;
     return server;

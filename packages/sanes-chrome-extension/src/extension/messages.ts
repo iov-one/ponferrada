@@ -81,3 +81,27 @@ export async function sendGetPersonaMessage(): Promise<GetPersonaResponse> {
     });
   });
 }
+
+/**
+ * String values will be used in the JSON message objects
+ */
+export enum MessageToForegroundAction {
+  TransactionsChanges = 'transaction_changed',
+}
+
+/**
+ * A message either from background script to foreground
+ */
+export interface MessageToForeground {
+  readonly type: 'message_to_foreground';
+  readonly action: MessageToForegroundAction;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly data?: any;
+}
+
+export function isMessageToForeground(data: unknown): data is MessageToForeground {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+  return (data as MessageToForeground).type === 'message_to_foreground';
+}
