@@ -2,19 +2,19 @@
 
 exports[`Storyshots Bierzo wallet Payment page 1`] = `
 <div
-  className="MuiBox-root-6 MuiBox-root-7 makeStyles-payment-1"
+  className="MuiBox-root MuiBox-root-7 makeStyles-payment-1"
 >
   <div
-    className="MuiBox-root-6 MuiBox-root-8 makeStyles-currencyToSend-2"
+    className="MuiBox-root MuiBox-root-8 makeStyles-currencyToSend-2"
   >
     <div
-      className="MuiPaper-root-10 MuiPaper-elevation2-14 MuiPaper-rounded-11"
+      className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
     >
       <div
-        className="MuiBox-root-6 MuiBox-root-37"
+        className="MuiBox-root MuiBox-root-37"
       >
         <div
-          className="MuiAvatar-root-38 makeStyles-avatar-9 MuiAvatar-colorDefault-39"
+          className="MuiAvatar-root makeStyles-avatar-9 MuiAvatar-colorDefault"
         >
           <svg
             aria-hidden="true"
@@ -36,32 +36,32 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           </svg>
         </div>
         <h6
-          className="MuiTypography-root-45 MuiTypography-subtitle2-57 MuiTypography-colorTextPrimary-70 makeStyles-weight-43 makeStyles-weight-44"
+          className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-44"
         >
           You send
         </h6>
         <div
-          className="MuiBox-root-6 MuiBox-root-75"
+          className="MuiBox-root MuiBox-root-75"
         >
           <form
             onSubmit={[Function]}
           >
             <div
-              className="MuiBox-root-6 MuiBox-root-76"
+              className="MuiBox-root MuiBox-root-76"
             >
               <div
-                className="MuiBox-root-6 MuiBox-root-77"
+                className="MuiBox-root MuiBox-root-77"
               >
                 <div
-                  className="MuiFormControl-root-79 MuiFormControl-fullWidth-82 MuiTextField-root-78"
+                  className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root"
                 >
                   <div
-                    className="MuiInputBase-root-96 MuiOutlinedInput-root-83 MuiInputBase-fullWidth-105 MuiInputBase-formControl-97"
+                    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
                     onClick={[Function]}
                   >
                     <fieldset
                       aria-hidden={true}
-                      className="MuiPrivateNotchedOutline-root-113 MuiOutlinedInput-notchedOutline-90"
+                      className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
                       style={
                         Object {
                           "paddingLeft": 8,
@@ -69,7 +69,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                       }
                     >
                       <legend
-                        className="MuiPrivateNotchedOutline-legend-114"
+                        className="MuiPrivateNotchedOutline-legend"
                         style={
                           Object {
                             "width": 0.01,
@@ -87,7 +87,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                     </fieldset>
                     <input
                       aria-invalid={false}
-                      className="MuiInputBase-input-106 MuiOutlinedInput-input-91"
+                      className="MuiInputBase-input MuiOutlinedInput-input"
                       disabled={false}
                       name="quantityField"
                       onBlur={[Function]}
@@ -101,20 +101,20 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                 </div>
               </div>
               <div
-                className="MuiBox-root-6 MuiBox-root-115"
+                className="MuiBox-root MuiBox-root-115"
               >
                 <div
                   className="makeStyles-dropdown-116"
                   onClick={[Function]}
                 >
                   <div
-                    className="MuiInputBase-root-96 makeStyles-root-117 makeStyles-root-119"
+                    className="MuiInputBase-root makeStyles-root-117 makeStyles-root-119"
                     onClick={[Function]}
                     role="button"
                   >
                     <input
                       autoComplete="off"
-                      className="MuiInputBase-input-106 makeStyles-input-118"
+                      className="MuiInputBase-input makeStyles-input-118"
                       name="currencyField"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -137,10 +137,10 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           </form>
         </div>
         <div
-          className="MuiBox-root-6 MuiBox-root-125"
+          className="MuiBox-root MuiBox-root-125"
         >
           <h6
-            className="MuiTypography-root-45 MuiTypography-subtitle2-57 MuiTypography-colorTextSecondary-71 makeStyles-weight-43 makeStyles-weight-126"
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary makeStyles-weight-43 makeStyles-weight-126"
           >
             balance: 
             24
@@ -152,35 +152,35 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-6 MuiBox-root-127 makeStyles-receiverAddress-3"
+    className="MuiBox-root MuiBox-root-127 makeStyles-receiverAddress-3"
   >
     <div
-      className="MuiPaper-root-10 MuiPaper-elevation2-14 MuiPaper-rounded-11"
+      className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
     >
       <div
-        className="MuiBox-root-6 MuiBox-root-128"
+        className="MuiBox-root MuiBox-root-128"
       >
         <h6
-          className="MuiTypography-root-45 MuiTypography-subtitle2-57 MuiTypography-colorTextPrimary-70 makeStyles-weight-43 makeStyles-weight-129"
+          className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-129"
         >
           To
         </h6>
         <div
-          className="MuiBox-root-6 MuiBox-root-130"
+          className="MuiBox-root MuiBox-root-130"
         >
           <form
             onSubmit={[Function]}
           >
             <div
-              className="MuiFormControl-root-79 MuiFormControl-fullWidth-82 MuiTextField-root-78"
+              className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root"
             >
               <div
-                className="MuiInputBase-root-96 MuiOutlinedInput-root-83 MuiInputBase-fullWidth-105 MuiInputBase-formControl-97"
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
                 onClick={[Function]}
               >
                 <fieldset
                   aria-hidden={true}
-                  className="MuiPrivateNotchedOutline-root-113 MuiOutlinedInput-notchedOutline-90"
+                  className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
                   style={
                     Object {
                       "paddingLeft": 8,
@@ -188,7 +188,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                   }
                 >
                   <legend
-                    className="MuiPrivateNotchedOutline-legend-114"
+                    className="MuiPrivateNotchedOutline-legend"
                     style={
                       Object {
                         "width": 0.01,
@@ -206,7 +206,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                 </fieldset>
                 <input
                   aria-invalid={false}
-                  className="MuiInputBase-input-106 MuiOutlinedInput-input-91"
+                  className="MuiInputBase-input MuiOutlinedInput-input"
                   disabled={false}
                   name="addressField"
                   onBlur={[Function]}
@@ -221,15 +221,15 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           </form>
         </div>
         <div
-          className="MuiBox-root-6 MuiBox-root-131"
+          className="MuiBox-root MuiBox-root-131"
         >
           <h6
-            className="MuiTypography-root-45 MuiTypography-subtitle1-56 MuiTypography-colorTextPrimary-70 makeStyles-weight-43 makeStyles-weight-132"
+            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-132"
           >
             How it works
           </h6>
           <div
-            className="MuiBox-root-6 MuiBox-root-133"
+            className="MuiBox-root MuiBox-root-133"
           >
             <div
               className="makeStyles-container-135"
@@ -249,19 +249,19 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-6 MuiBox-root-138 makeStyles-textNote-4"
+    className="MuiBox-root MuiBox-root-138 makeStyles-textNote-4"
   >
     <div
-      className="MuiPaper-root-10 MuiPaper-elevation2-14 MuiPaper-rounded-11"
+      className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
     >
       <div
-        className="MuiBox-root-6 MuiBox-root-139"
+        className="MuiBox-root MuiBox-root-139"
       >
         <div
-          className="MuiBox-root-6 MuiBox-root-140"
+          className="MuiBox-root MuiBox-root-140"
         >
           <div
-            className="MuiBox-root-6 MuiBox-root-141"
+            className="MuiBox-root MuiBox-root-141"
           >
             <svg
               aria-hidden="true"
@@ -283,21 +283,21 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
             </svg>
           </div>
           <div
-            className="MuiBox-root-6 MuiBox-root-142"
+            className="MuiBox-root MuiBox-root-142"
           >
             <form
               onSubmit={[Function]}
             >
               <div
-                className="MuiFormControl-root-79 MuiFormControl-fullWidth-82 MuiTextField-root-78"
+                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root"
               >
                 <div
-                  className="MuiInputBase-root-96 MuiOutlinedInput-root-83 MuiInputBase-fullWidth-105 MuiInputBase-formControl-97 MuiInputBase-multiline-104 MuiOutlinedInput-multiline-89"
+                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
                   onClick={[Function]}
                 >
                   <fieldset
                     aria-hidden={true}
-                    className="MuiPrivateNotchedOutline-root-113 MuiOutlinedInput-notchedOutline-90"
+                    className="MuiPrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
                     style={
                       Object {
                         "paddingLeft": 8,
@@ -305,7 +305,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                     }
                   >
                     <legend
-                      className="MuiPrivateNotchedOutline-legend-114"
+                      className="MuiPrivateNotchedOutline-legend"
                       style={
                         Object {
                           "width": 0.01,
@@ -323,7 +323,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                   </fieldset>
                   <textarea
                     aria-invalid={false}
-                    className="MuiInputBase-input-106 MuiOutlinedInput-input-91 MuiInputBase-inputMultiline-108 MuiOutlinedInput-inputMultiline-93"
+                    className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
                     disabled={false}
                     name="textNoteField"
                     onBlur={[Function]}
@@ -342,13 +342,13 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root-6 MuiBox-root-143 makeStyles-continue-5"
+    className="MuiBox-root MuiBox-root-143 makeStyles-continue-5"
   >
     <form
       onSubmit={[Function]}
     >
       <button
-        className="MuiButtonBase-root-161 Mui-disabled MuiButton-root-144 MuiButton-contained-152 MuiButton-containedPrimary-153 Mui-disabled MuiButton-fullWidth-160"
+        className="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth"
         disabled={true}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -364,7 +364,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
         type="submit"
       >
         <span
-          className="MuiButton-label-145"
+          className="MuiButton-label"
         >
           Continue
         </span>
@@ -376,10 +376,10 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
 
 exports[`Storyshots Bierzo wallet Welcome page 1`] = `
 <div
-  className="MuiBox-root-167 MuiBox-root-168 makeStyles-welcome-164"
+  className="MuiBox-root MuiBox-root-168 makeStyles-welcome-164"
 >
   <div
-    className="MuiBox-root-167 MuiBox-root-169 makeStyles-icon-165"
+    className="MuiBox-root MuiBox-root-169 makeStyles-icon-165"
   >
     <img
       alt="Logo"
@@ -388,19 +388,19 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
     />
   </div>
   <div
-    className="MuiBox-root-167 MuiBox-root-175"
+    className="MuiBox-root MuiBox-root-175"
   >
     <h6
-      className="MuiTypography-root-180 MuiTypography-h6-190 makeStyles-weight-178 makeStyles-weight-179"
+      className="MuiTypography-root MuiTypography-h6 makeStyles-weight-178 makeStyles-weight-179"
     >
       IOV Wallet
     </h6>
   </div>
   <div
-    className="MuiBox-root-167 MuiBox-root-210"
+    className="MuiBox-root MuiBox-root-210"
   >
     <button
-      className="MuiButtonBase-root-228 MuiButton-root-211 MuiButton-contained-219 MuiButton-containedPrimary-220 makeStyles-button-166"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary makeStyles-button-166"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -417,16 +417,16 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-212"
+        className="MuiButton-label"
       >
         SEND PAYMENT
       </span>
       <span
-        className="MuiTouchRipple-root-231"
+        className="MuiTouchRipple-root"
       />
     </button>
     <button
-      className="MuiButtonBase-root-228 MuiButton-root-211 MuiButton-contained-219 MuiButton-containedPrimary-220 makeStyles-button-166"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary makeStyles-button-166"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -443,12 +443,12 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-212"
+        className="MuiButton-label"
       >
         GET IDENTITIES
       </span>
       <span
-        className="MuiTouchRipple-root-231"
+        className="MuiTouchRipple-root"
       />
     </button>
   </div>
