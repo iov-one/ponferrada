@@ -41,7 +41,7 @@ export const lowerOrEqualThan = (max: number): FieldValidator => {
 export const greaterOrEqualThan = (min: number): FieldValidator => {
   return (value): ValidationError => {
     if (value && value < min) {
-      return `Should be lower or equal than ${min}`;
+      return `Should be greater or equal than ${min}`;
     }
 
     return undefined;
