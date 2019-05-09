@@ -15,7 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import Typography from '../Typography';
+import Block from '../Block';
 
 const drawerWidth = 240;
 
@@ -98,15 +98,16 @@ function PersistentDrawerRight({ children }: Props): JSX.Element {
   const contentClasses = classNames(classes.content, {
     [classes.contentShift]: open,
   });
+  const drawerClasses = {
+    paper: classes.drawerPaper,
+  };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={appBarClasses}>
+      <AppBar position="fixed" color="inherit" className={appBarClasses}>
         <Toolbar>
-          <Typography variant="h6" noWrap className={classes.title}>
-            Persistent drawer
-          </Typography>
+          <Block flexGrow={1} />
           <IconButton
             color="inherit"
             aria-label="Open drawer"
@@ -127,9 +128,7 @@ function PersistentDrawerRight({ children }: Props): JSX.Element {
         variant="persistent"
         anchor="right"
         open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
+        classes={drawerClasses}
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
