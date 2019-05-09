@@ -18,11 +18,13 @@ export async function handleInternalMessage(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
   console.log(message, sender);
+
+  if (sender.id !== chrome.runtime.id) {
+    return 'Sender is not allowed to perform this action';
+  }
+
   switch (message.action) {
     case MessageToBackgroundAction.GetPersona: {
-      if (sender.id !== chrome.runtime.id) {
-        return 'Sender is not allowed to perform this action';
-      }
       let persona: Persona | undefined;
       try {
         persona = PersonaManager.get();
@@ -40,9 +42,6 @@ export async function handleInternalMessage(
       return response;
     }
     case MessageToBackgroundAction.CreatePersona:
-      if (sender.id !== chrome.runtime.id) {
-        return 'Sender is not allowed to perform this action';
-      }
       let response;
       try {
         const persona = await PersonaManager.create(message.data);
