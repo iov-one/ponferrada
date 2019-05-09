@@ -140,19 +140,26 @@ export class Persona {
     return out;
   }
 
-  public startSigningServer(): UseOnlyJsonRpcSigningServer {
+  public startSigningServer(
+    authorizeGetIdentities?: GetIdentitiesAuthorization,
+    authorizeSignAndPost?: SignAndPostAuthorization
+  ): UseOnlyJsonRpcSigningServer {
     const revealAllIdentities: GetIdentitiesAuthorization = async (
       reason,
       matchingIdentities
     ): Promise<ReadonlyArray<PublicIdentity>> => {
-      // return all
       return matchingIdentities;
     };
     const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
       return true;
     };
 
-    const core = new SigningServerCore(this.profile, this.signer, revealAllIdentities, signEverything);
+    const core = new SigningServerCore(
+      this.profile,
+      this.signer,
+      authorizeGetIdentities || revealAllIdentities,
+      authorizeSignAndPost || signEverything
+    );
     const server = new JsonRpcSigningServer(core);
     this.signingServer = server;
     return server;

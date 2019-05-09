@@ -4,29 +4,39 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import React from 'react';
 import icon from '../../assets/iov-logo.svg';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
-import { ExtensionInteraction } from './components/ExtensionInteraction';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
+import { sendGetIdentitiesRequest } from '../../communication/identities';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
     backgroundColor: theme.palette.background.default,
   },
-
   icon: {
     backgroundColor: theme.palette.primary.main,
     padding: '50px',
   },
+  button: {
+    margin: theme.spacing(1),
+  },
 }));
 
-const handleClick = (): void => {
+const onPayment = (): void => {
   history.push(PAYMENT_ROUTE);
 };
 
 const Welcome = (): JSX.Element => {
+  const toast = React.useContext(ToastContext);
   const classes = useStyles();
+
+  const onGetIdentities = (): void => {
+    toast.show('Interaction with extension, fetching identities. Check console, please.', ToastVariant.INFO);
+    sendGetIdentitiesRequest(toast);
+  };
 
   return (
     <Block
@@ -43,12 +53,14 @@ const Welcome = (): JSX.Element => {
       <Block marginTop={5} marginBottom={5}>
         <Typography variant="h6">IOV Wallet</Typography>
       </Block>
-      <Block width="150px" display="flex" justifyContent="center">
-        <Button fullWidth onClick={handleClick}>
-          NEXT
+      <Block display="flex">
+        <Button className={classes.button} onClick={onPayment}>
+          SEND PAYMENT
+        </Button>
+        <Button className={classes.button} onClick={onGetIdentities}>
+          GET IDENTITIES
         </Button>
       </Block>
-      <ExtensionInteraction />
     </Block>
   );
 };
