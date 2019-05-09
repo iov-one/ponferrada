@@ -185,6 +185,12 @@ const themeObject: ThemeOptions = {
         marginRight: 0,
       },
     },
+    MuiSvgIcon: {
+      root: {
+        width: '2em',
+        height: '2em',
+      },
+    },
   },
   //https://material-ui.com/customization/themes/#properties
   props: {
