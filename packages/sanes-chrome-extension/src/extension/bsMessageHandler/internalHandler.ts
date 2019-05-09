@@ -54,19 +54,31 @@ export async function handleInternalMessage(
         const persona = await PersonaManager.create(message.data);
 
         const getIdentitiesCallback: GetIdentitiesAuthorization = async (
-          reason,
+          _reason,
           matchingIdentities
         ): Promise<ReadonlyArray<PublicIdentity>> => {
+          // sender will be available here after upgrading to IOV-Core 0.13.7
+          // https://github.com/iov-one/iov-core/pull/993
           if (isNewSender('http://finnex.com')) {
             chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
             chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
             chrome.browserAction.setBadgeText({ text: '*' });
           }
 
-          return matchingIdentities;
+          // the identities the user accepted to reveal
+          const selectedIdentities = matchingIdentities.filter(_ => true);
+
+          return selectedIdentities;
         };
 
-        const signAndPostCallback: SignAndPostAuthorization = async (): Promise<boolean> => {
+        const signAndPostCallback: SignAndPostAuthorization = async (
+          _reason,
+          _transaction
+        ): Promise<boolean> => {
+          // sender will be available here after upgrading to IOV-Core 0.13.7
+          // https://github.com/iov-one/iov-core/pull/993
+
+          // true for accepted, false for rejected
           return true;
         };
 
