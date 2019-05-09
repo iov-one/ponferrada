@@ -7,3 +7,5 @@ rm -r node_modules/
 rm yarn.lock
 lerna clean -y
 
+yarn install && yarn build
+
