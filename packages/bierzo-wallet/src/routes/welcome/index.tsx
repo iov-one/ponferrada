@@ -34,7 +34,7 @@ const Welcome = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
 
-  const onGetIdentities = async (): Promise<void> => {
+  const onSendRequestToBeSigned = async (): Promise<void> => {
     toast.show('Interaction with extension, fetching identities. Check console, please.', ToastVariant.INFO);
     try {
       const identities = await sendGetIdentitiesRequest();
@@ -65,8 +65,8 @@ const Welcome = (): JSX.Element => {
         <Button className={classes.button} onClick={onPayment}>
           SEND PAYMENT
         </Button>
-        <Button className={classes.button} onClick={onGetIdentities}>
-          GET IDENTITIES
+        <Button className={classes.button} onClick={onSendRequestToBeSigned}>
+          SEND REQUEST TO BE SIGNED
         </Button>
       </Block>
     </Block>
