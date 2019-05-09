@@ -17,18 +17,15 @@ describe('The /welcome route', () => {
     }
   );
 
-  describe('has a button that', () => {
-    let button: React.ReactInstance;
+  it('redirects to the /payment route when clicked', () => {
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(welcomeDom, 'button');
+    const paymentButton = buttons[0];
+    if (!paymentButton) {
+      throw new Error('Payment button not found');
+    }
+    expect(paymentButton.textContent).toBe('SEND PAYMENT');
 
-    beforeEach(
-      async (): Promise<void> => {
-        button = await TestUtils.findRenderedDOMComponentWithTag(welcomeDom, 'button');
-      }
-    );
-
-    it('redirects to the /payment route when clicked', () => {
-      TestUtils.Simulate.click(button);
-      expectRoute(store, PAYMENT_ROUTE);
-    });
+    TestUtils.Simulate.click(paymentButton);
+    expectRoute(store, PAYMENT_ROUTE);
   });
 });
