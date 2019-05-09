@@ -1,50 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Bierzo wallet Payment page 1`] = `
-<div
-  className="MuiBox-root MuiBox-root-7 makeStyles-payment-1"
+<form
+  onSubmit={[Function]}
 >
   <div
-    className="MuiBox-root MuiBox-root-8 makeStyles-currencyToSend-2"
+    className="MuiBox-root MuiBox-root-7 makeStyles-payment-1"
   >
     <div
-      className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      className="MuiBox-root MuiBox-root-8 makeStyles-currencyToSend-2"
     >
       <div
-        className="MuiBox-root MuiBox-root-37"
+        className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       >
         <div
-          className="MuiAvatar-root makeStyles-avatar-9 MuiAvatar-colorDefault"
+          className="MuiBox-root MuiBox-root-37"
         >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-user fa-w-14 "
-            color="#ffffff"
-            data-icon="user"
-            data-prefix="far"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            className="MuiAvatar-root makeStyles-avatar-9 MuiAvatar-colorDefault"
           >
-            <path
-              d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
-              fill="currentColor"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-user fa-w-14 "
+              color="#ffffff"
+              data-icon="user"
+              data-prefix="far"
+              focusable="false"
+              role="img"
               style={Object {}}
-            />
-          </svg>
-        </div>
-        <h6
-          className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-44"
-        >
-          You send
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root-75"
-        >
-          <form
-            onSubmit={[Function]}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </div>
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-44"
+          >
+            You send
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root-75"
           >
             <div
               className="MuiBox-root MuiBox-root-76"
@@ -94,7 +94,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                       onChange={[Function]}
                       onFocus={[Function]}
                       placeholder="0,00"
-                      required={true}
+                      required={false}
                       type="text"
                     />
                   </div>
@@ -134,42 +134,38 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root-125"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary makeStyles-weight-43 makeStyles-weight-126"
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-125"
           >
-            balance: 
-            24
-             
-            IOV
-          </h6>
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary makeStyles-weight-43 makeStyles-weight-126"
+            >
+              balance: 
+              24
+               
+              IOV
+            </h6>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-127 makeStyles-receiverAddress-3"
-  >
     <div
-      className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      className="MuiBox-root MuiBox-root-127 makeStyles-receiverAddress-3"
     >
       <div
-        className="MuiBox-root MuiBox-root-128"
+        className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       >
-        <h6
-          className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-129"
-        >
-          To
-        </h6>
         <div
-          className="MuiBox-root MuiBox-root-130"
+          className="MuiBox-root MuiBox-root-128"
         >
-          <form
-            onSubmit={[Function]}
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-129"
+          >
+            To
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root-130"
           >
             <div
               className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root"
@@ -213,80 +209,76 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                   onChange={[Function]}
                   onFocus={[Function]}
                   placeholder="IOV or wallet address"
-                  required={true}
+                  required={false}
                   type="text"
                 />
               </div>
             </div>
-          </form>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root-131"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-132"
-          >
-            How it works
-          </h6>
+          </div>
           <div
-            className="MuiBox-root MuiBox-root-133"
+            className="MuiBox-root MuiBox-root-131"
           >
-            <div
-              className="makeStyles-container-135"
-              onClick={[Function]}
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary makeStyles-weight-43 makeStyles-weight-132"
             >
-              <img
-                alt="Info"
-                className="makeStyles-root-120"
-                height={16}
-                src="info_normal.svg"
-                width={16}
-              />
+              How it works
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root-133"
+            >
+              <div
+                className="makeStyles-container-135"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Info"
+                  className="makeStyles-root-120"
+                  height={16}
+                  src="info_normal.svg"
+                  width={16}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-138 makeStyles-textNote-4"
-  >
     <div
-      className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      className="MuiBox-root MuiBox-root-138 makeStyles-textNote-4"
     >
       <div
-        className="MuiBox-root MuiBox-root-139"
+        className="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       >
         <div
-          className="MuiBox-root MuiBox-root-140"
+          className="MuiBox-root MuiBox-root-139"
         >
           <div
-            className="MuiBox-root MuiBox-root-141"
+            className="MuiBox-root MuiBox-root-140"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-sticky-note fa-w-14 fa-lg "
-              color="#a2a6a8"
-              data-icon="sticky-note"
-              data-prefix="far"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="MuiBox-root MuiBox-root-141"
             >
-              <path
-                d="M448 348.106V80c0-26.51-21.49-48-48-48H48C21.49 32 0 53.49 0 80v351.988c0 26.51 21.49 48 48 48h268.118a48 48 0 0 0 33.941-14.059l83.882-83.882A48 48 0 0 0 448 348.106zm-128 80v-76.118h76.118L320 428.106zM400 80v223.988H296c-13.255 0-24 10.745-24 24v104H48V80h352z"
-                fill="currentColor"
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-sticky-note fa-w-14 fa-lg "
+                color="#a2a6a8"
+                data-icon="sticky-note"
+                data-prefix="far"
+                focusable="false"
+                role="img"
                 style={Object {}}
-              />
-            </svg>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root-142"
-          >
-            <form
-              onSubmit={[Function]}
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M448 348.106V80c0-26.51-21.49-48-48-48H48C21.49 32 0 53.49 0 80v351.988c0 26.51 21.49 48 48 48h268.118a48 48 0 0 0 33.941-14.059l83.882-83.882A48 48 0 0 0 448 348.106zm-128 80v-76.118h76.118L320 428.106zM400 80v223.988H296c-13.255 0-24 10.745-24 24v104H48V80h352z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-142"
             >
               <div
                 className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root"
@@ -335,17 +327,13 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                   />
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-143 makeStyles-continue-5"
-  >
-    <form
-      onSubmit={[Function]}
+    <div
+      className="MuiBox-root MuiBox-root-143 makeStyles-continue-5"
     >
       <button
         className="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth"
@@ -369,9 +357,9 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           Continue
         </span>
       </button>
-    </form>
+    </div>
   </div>
-</div>
+</form>
 `;
 
 exports[`Storyshots Bierzo wallet Welcome page 1`] = `
