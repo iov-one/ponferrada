@@ -70,7 +70,7 @@ export async function handleInternalMessage(
           return true;
         };
 
-        async function transactionsChangedHandler(transactions: ReadonlyArray<ProcessedTx>): Promise<void> {
+        function transactionsChangedHandler(transactions: ReadonlyArray<ProcessedTx>): void {
           const message: MessageToForeground = {
             type: 'message_to_foreground',
             action: MessageToForegroundAction.TransactionsChanges,
