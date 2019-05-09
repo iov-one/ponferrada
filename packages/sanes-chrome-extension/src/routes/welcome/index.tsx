@@ -10,20 +10,20 @@ const goToAccountStatus = (): void => {
 };
 
 const Welcome = (): JSX.Element => {
+  const isExtensionContext = typeof chrome !== 'undefined';
   const personaProvider = React.useContext(PersonaContext);
 
-  async function onLoad(): Promise<void> {
-    if (typeof chrome !== 'undefined') {
-      const response = await sendGetPersonaMessage();
-      if (response) {
-        personaProvider.update(response.accounts, response.mnemonic, response.txs);
-        goToAccountStatus();
-      }
-    }
-  }
-
   React.useEffect(() => {
-    onLoad();
+    (async () => {
+      if (isExtensionContext) {
+        const response = await sendGetPersonaMessage();
+        if (response) {
+          personaProvider.update(response.accounts, response.mnemonic, response.txs);
+          goToAccountStatus();
+        }
+      }
+    })();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
