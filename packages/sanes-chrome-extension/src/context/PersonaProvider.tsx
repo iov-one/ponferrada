@@ -30,6 +30,29 @@ export const PersonaProvider = ({ children }: Props): JSX.Element => {
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>([]);
   const isExtensionContext = typeof chrome !== 'undefined';
 
+  React.useEffect(() => {
+    if (isExtensionContext) {
+      chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
+        if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
+          // Only handle messages from background script
+          return;
+        }
+
+        switch (message.action) {
+          case MessageToForegroundAction.TransactionsChanges:
+            if (!Array.isArray(message.data)) {
+              throw new Error('Data must be an array');
+            }
+            setTxs(message.data);
+            break;
+          default:
+            throw new Error('Unknown action');
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const loadPersonaInReact = (
     accountNames: Accounts,
     mnemonic: string,
@@ -46,26 +69,6 @@ export const PersonaProvider = ({ children }: Props): JSX.Element => {
     txs,
     update: loadPersonaInReact,
   };
-
-  if (isExtensionContext) {
-    chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
-      if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
-        // Only handle messages from background script
-        return;
-      }
-
-      switch (message.action) {
-        case MessageToForegroundAction.TransactionsChanges:
-          if (!Array.isArray(message.data)) {
-            throw new Error('Data must be an array');
-          }
-          setTxs(message.data);
-          break;
-        default:
-          throw new Error('Unknown action');
-      }
-    });
-  }
 
   return <PersonaContext.Provider value={personaContextValue}>{children}</PersonaContext.Provider>;
 };
