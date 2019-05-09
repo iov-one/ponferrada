@@ -20,6 +20,7 @@
     "build": "lerna run build",
     "build-storybook": "lerna run build-storybook -stream",
     "clean": "rm -rf ./packages/*/docs/",
+    "cleanup": "./scripts/cleanup.sh",
     "docs": "lerna run docs",
     "format": "lerna run format",
     "lint": "lerna run lint",
