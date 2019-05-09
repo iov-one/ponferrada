@@ -2702,7 +2702,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Share Identity Accept Request page 1`] = `
+exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
 <div
   className="MuiBox-root MuiBox-root-1674"
 >

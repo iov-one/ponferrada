@@ -8,11 +8,11 @@ import { SHARE_IDENTITY } from '../../paths';
 export const SHARE_IDENTITY_SHOW = `${SHARE_IDENTITY}_show`;
 
 interface Props {
-  readonly showAcceptView: () => void;
+  readonly onAcceptRequest: () => void;
   readonly showRejectView: () => void;
 }
 
-const Layout = ({ showAcceptView, showRejectView }: Props): JSX.Element => (
+const Layout = ({ onAcceptRequest, showRejectView }: Props): JSX.Element => (
   <PageLayout id={SHARE_IDENTITY_SHOW} primaryTitle="Share" title="Identity">
     <Block textAlign="center">
       <Typography variant="body1">The following site:</Typography>
@@ -28,7 +28,7 @@ const Layout = ({ showAcceptView, showRejectView }: Props): JSX.Element => (
       </Typography>
     </Block>
     <Block marginTop={10} />
-    <Button variant="contained" fullWidth onClick={showAcceptView}>
+    <Button variant="contained" fullWidth onClick={onAcceptRequest}>
       Accept
     </Button>
     <Block marginTop={2} />

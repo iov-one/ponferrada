@@ -5,7 +5,9 @@ import React from 'react';
 import Layout from './index';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 
-storiesOf(CHROME_EXTENSION_ROOT, module).add('Account Status page', () => (
+export const ACCOUNT_STATUS_PAGE = 'Account Status page';
+
+storiesOf(CHROME_EXTENSION_ROOT, module).add(ACCOUNT_STATUS_PAGE, () => (
   <Storybook>
     <ToastProvider>
       <Layout />
