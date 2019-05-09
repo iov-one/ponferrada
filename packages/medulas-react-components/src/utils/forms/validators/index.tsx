@@ -4,8 +4,8 @@ type ValidationError = string | undefined;
 
 export const composeValidators = (...validators: FieldValidator[]): FieldValidator => {
   return (value): ValidationError => {
-    for (let i = 0; i < validators.length; i++) {
-      const validationError = validators[i](value, {});
+    for (let validator of validators) {
+      const validationError = validator(value, {});
 
       if (validationError) {
         return validationError;
