@@ -433,7 +433,7 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
       <span
         className="MuiButton-label"
       >
-        GET IDENTITIES
+        SEND REQUEST TO BE SIGNED
       </span>
       <span
         className="MuiTouchRipple-root"

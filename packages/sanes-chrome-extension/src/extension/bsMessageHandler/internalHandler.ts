@@ -1,8 +1,15 @@
 /*global chrome*/
-import { MessageToBackgroundAction, MessageToBackground, GetPersonaResponse } from '../messages';
-import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona } from '../../logic/persona';
 import { GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
 import { PublicIdentity } from '@iov/bcp';
+
+import {
+  MessageToBackgroundAction,
+  MessageToBackground,
+  GetPersonaResponse,
+  MessageToForeground,
+  MessageToForegroundAction,
+} from '../messages';
+import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona, ProcessedTx } from '../../logic/persona';
 import { isNewSender } from './senderWhitelist';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
@@ -41,29 +48,54 @@ export async function handleInternalMessage(
       }
       return response;
     }
-    case MessageToBackgroundAction.CreatePersona:
+    case MessageToBackgroundAction.CreatePersona: {
       let response;
       try {
         const persona = await PersonaManager.create(message.data);
 
         const getIdentitiesCallback: GetIdentitiesAuthorization = async (
-          reason,
+          _reason,
           matchingIdentities
         ): Promise<ReadonlyArray<PublicIdentity>> => {
+          // sender will be available here after upgrading to IOV-Core 0.13.7
+          // https://github.com/iov-one/iov-core/pull/993
           if (isNewSender('http://finnex.com')) {
             chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
             chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
             chrome.browserAction.setBadgeText({ text: '*' });
           }
 
-          return matchingIdentities;
+          // the identities the user accepted to reveal
+          const selectedIdentities = matchingIdentities.filter(_ => true);
+
+          return selectedIdentities;
         };
 
-        const signAndPostCallback: SignAndPostAuthorization = async (): Promise<boolean> => {
+        const signAndPostCallback: SignAndPostAuthorization = async (
+          _reason,
+          _transaction
+        ): Promise<boolean> => {
+          // sender will be available here after upgrading to IOV-Core 0.13.7
+          // https://github.com/iov-one/iov-core/pull/993
+
+          // true for accepted, false for rejected
           return true;
         };
 
-        signingServer = persona.startSigningServer(getIdentitiesCallback, signAndPostCallback);
+        function transactionsChangedHandler(transactions: ReadonlyArray<ProcessedTx>): void {
+          const message: MessageToForeground = {
+            type: 'message_to_foreground',
+            action: MessageToForegroundAction.TransactionsChanges,
+            data: transactions,
+          };
+          chrome.runtime.sendMessage(message);
+        }
+
+        signingServer = persona.startSigningServer(
+          getIdentitiesCallback,
+          signAndPostCallback,
+          transactionsChangedHandler
+        );
         console.log('Signing server ready to handle requests');
 
         response = {
@@ -76,6 +108,7 @@ export async function handleInternalMessage(
         response = error;
       }
       return response;
+    }
     default:
       return 'Unknown action';
   }

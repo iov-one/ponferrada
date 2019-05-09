@@ -1,11 +1,21 @@
-import { TokenTicker } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/core';
+import { TokenTicker, PublicIdentity } from '@iov/bcp';
+import { TransactionEncoder, GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
 import { EnglishMnemonic } from '@iov/crypto';
 
 import { Persona } from './persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 
 withChainsDescribe('Persona', () => {
+  const revealAllIdentities: GetIdentitiesAuthorization = async (
+    reason,
+    matchingIdentities
+  ): Promise<ReadonlyArray<PublicIdentity>> => {
+    return matchingIdentities;
+  };
+  const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
+    return true;
+  };
+
   describe('create', () => {
     it('can be created', async () => {
       const persona = await Persona.create();
@@ -88,7 +98,7 @@ withChainsDescribe('Persona', () => {
   describe('startSigningServer', () => {
     it('can start the signing server', async () => {
       const persona = await Persona.create();
-      const server = persona.startSigningServer();
+      const server = persona.startSigningServer(revealAllIdentities, signEverything);
       expect(server).toBeTruthy();
       persona.destroy();
     });
@@ -97,7 +107,7 @@ withChainsDescribe('Persona', () => {
       const persona = await Persona.create(
         'oxygen fall sure lava energy veteran enroll frown question detail include maximum'
       );
-      const server = persona.startSigningServer();
+      const server = persona.startSigningServer(revealAllIdentities, signEverything);
       const response = await server.handleChecked({
         jsonrpc: '2.0',
         id: 1,
@@ -130,7 +140,7 @@ withChainsDescribe('Persona', () => {
       const persona = await Persona.create();
 
       expect(() => {
-        persona.startSigningServer();
+        persona.startSigningServer(revealAllIdentities, signEverything);
         persona.tearDownSigningServer();
       }).not.toThrow();
 

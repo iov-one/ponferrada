@@ -1,6 +1,6 @@
 import { ReadonlyDate } from 'readonly-date';
 
-import { Amount, PublicIdentity } from '@iov/bcp';
+import { Amount, isSendTransaction, publicIdentityEquals } from '@iov/bcp';
 import {
   MultiChainSigner,
   UserProfile,
@@ -8,6 +8,7 @@ import {
   SignAndPostAuthorization,
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
+  SignedAndPosted,
 } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { JsonRpcResponse, JsonRpcRequest } from '@iov/jsonrpc';
@@ -21,6 +22,7 @@ import {
   pathBuilderForCodec,
 } from '../config';
 import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
+import { Encoding } from '@iov/encoding';
 
 /** Like UseOnlyJsonRpcSigningServer but without functionality to create or shutdown */
 export interface UseOnlyJsonRpcSigningServer {
@@ -35,19 +37,20 @@ export interface UseOnlyJsonRpcSigningServer {
   handleChecked(request: JsonRpcRequest): Promise<JsonRpcResponse>;
 }
 
-export interface TxProps {
+export interface ProcessedTx {
   readonly id: string;
   readonly recipient: string;
   readonly signer: string;
   readonly amount: Amount;
   readonly memo?: string;
-}
-
-export interface ProcessedTx extends TxProps {
   readonly time: ReadonlyDate;
   readonly received: boolean;
   readonly success: boolean;
   readonly err?: any; // eslint-disable-line
+}
+
+function isNonNull<T>(t: T | null): t is T {
+  return t !== null;
 }
 
 export class Persona {
@@ -90,6 +93,7 @@ export class Persona {
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
+  private core: SigningServerCore | undefined;
   private signingServer: JsonRpcSigningServer | undefined;
 
   /** The given signer and accountsManager must share the same UserProfile */
@@ -114,9 +118,14 @@ export class Persona {
     return this.accountManager.accounts();
   }
 
-  // TODO implement
   public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
-    return [];
+    if (!this.core) {
+      return [];
+    }
+
+    const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
+    const filtered = processed.filter(isNonNull);
+    return filtered;
   }
 
   public async getBalances(accountIndex: number): Promise<ReadonlyArray<Amount>> {
@@ -141,26 +150,29 @@ export class Persona {
   }
 
   public startSigningServer(
-    authorizeGetIdentities?: GetIdentitiesAuthorization,
-    authorizeSignAndPost?: SignAndPostAuthorization
+    authorizeGetIdentities: GetIdentitiesAuthorization,
+    authorizeSignAndPost: SignAndPostAuthorization,
+    transactionsChanged?: (transactions: ReadonlyArray<ProcessedTx>) => void
   ): UseOnlyJsonRpcSigningServer {
-    const revealAllIdentities: GetIdentitiesAuthorization = async (
-      reason,
-      matchingIdentities
-    ): Promise<ReadonlyArray<PublicIdentity>> => {
-      return matchingIdentities;
-    };
-    const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
-      return true;
-    };
-
     const core = new SigningServerCore(
       this.profile,
       this.signer,
-      authorizeGetIdentities || revealAllIdentities,
-      authorizeSignAndPost || signEverything
+      authorizeGetIdentities,
+      authorizeSignAndPost
     );
+
+    if (transactionsChanged) {
+      core.signedAndPosted.updates.subscribe({
+        next: async signedAndPosed => {
+          const processed = await Promise.all(signedAndPosed.map(s => this.processTransaction(s)));
+          const filtered = processed.filter(isNonNull);
+          transactionsChanged(filtered);
+        },
+      });
+    }
+
     const server = new JsonRpcSigningServer(core);
+    this.core = core;
     this.signingServer = server;
     return server;
   }
@@ -175,5 +187,25 @@ export class Persona {
   public destroy(): void {
     this.tearDownSigningServer();
     this.signer.shutdown();
+  }
+
+  private async processTransaction(t: SignedAndPosted): Promise<ProcessedTx | null> {
+    if (!isSendTransaction(t.transaction)) {
+      // cannot process
+      return null;
+    }
+
+    const identities = (await this.getAccounts())[0].identities;
+
+    return {
+      time: new ReadonlyDate(ReadonlyDate.now()),
+      id: t.postResponse.transactionId,
+      recipient: t.transaction.recipient,
+      signer: Encoding.toHex(t.transaction.creator.pubkey.data),
+      memo: t.transaction.memo,
+      amount: t.transaction.amount,
+      received: !identities.find(i => publicIdentityEquals(i, t.transaction.creator)),
+      success: true,
+    };
   }
 }
