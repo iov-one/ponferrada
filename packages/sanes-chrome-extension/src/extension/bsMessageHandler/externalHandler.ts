@@ -14,12 +14,14 @@ function generateErrorResponse(id: number | null): JsonRpcErrorResponse {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function handleExternalMessage(signingServer: SigningServer, request: any): Promise<JsonRpcResponse> {
+export async function handleExternalMessage(
+  signingServer: SigningServer,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  request: any
+): Promise<JsonRpcResponse> {
   if (!signingServer) {
     const responseId = typeof request.id === 'number' ? request.id : null;
-    const error = generateErrorResponse(responseId);
-    return Promise.resolve(error);
+    return generateErrorResponse(responseId);
   }
 
   return signingServer.handleUnchecked(request);
