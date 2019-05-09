@@ -1,6 +1,6 @@
 import { ReadonlyDate } from 'readonly-date';
 
-import { Amount, PublicIdentity, isSendTransaction, publicIdentityEquals } from '@iov/bcp';
+import { Amount, isSendTransaction, publicIdentityEquals } from '@iov/bcp';
 import {
   MultiChainSigner,
   UserProfile,
@@ -150,25 +150,15 @@ export class Persona {
   }
 
   public startSigningServer(
-    authorizeGetIdentities?: GetIdentitiesAuthorization,
-    authorizeSignAndPost?: SignAndPostAuthorization,
+    authorizeGetIdentities: GetIdentitiesAuthorization,
+    authorizeSignAndPost: SignAndPostAuthorization,
     transactionsChanged?: (transactions: ReadonlyArray<ProcessedTx>) => void
   ): UseOnlyJsonRpcSigningServer {
-    const revealAllIdentities: GetIdentitiesAuthorization = async (
-      reason,
-      matchingIdentities
-    ): Promise<ReadonlyArray<PublicIdentity>> => {
-      return matchingIdentities;
-    };
-    const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
-      return true;
-    };
-
     const core = new SigningServerCore(
       this.profile,
       this.signer,
-      authorizeGetIdentities || revealAllIdentities,
-      authorizeSignAndPost || signEverything
+      authorizeGetIdentities,
+      authorizeSignAndPost
     );
 
     if (transactionsChanged) {
