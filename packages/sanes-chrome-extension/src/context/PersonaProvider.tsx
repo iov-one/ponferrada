@@ -25,10 +25,10 @@ interface Props {
 }
 
 export const PersonaProvider = ({ children }: Props): JSX.Element => {
-  const isExtensionContext = typeof chrome !== 'undefined';
   const [accountNames, setAccountNames] = React.useState<Accounts>([]);
   const [mnemonic, setMnemonic] = React.useState<string>('');
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>([]);
+  const isExtensionContext = typeof chrome !== 'undefined';
 
   const loadPersonaInReact = (
     accountNames: Accounts,
