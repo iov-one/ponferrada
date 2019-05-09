@@ -93,6 +93,7 @@ export class Persona {
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
+  private core: SigningServerCore | undefined;
   private signingServer: JsonRpcSigningServer | undefined;
 
   /** The given signer and accountsManager must share the same UserProfile */
@@ -117,9 +118,14 @@ export class Persona {
     return this.accountManager.accounts();
   }
 
-  // TODO implement
   public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
-    return [];
+    if (!this.core) {
+      return [];
+    }
+
+    const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
+    const filtered = processed.filter(isNonNull);
+    return filtered;
   }
 
   public async getBalances(accountIndex: number): Promise<ReadonlyArray<Amount>> {
@@ -176,6 +182,7 @@ export class Persona {
     }
 
     const server = new JsonRpcSigningServer(core);
+    this.core = core;
     this.signingServer = server;
     return server;
   }
