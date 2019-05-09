@@ -11,6 +11,7 @@ import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import { sendGetIdentitiesRequest } from '../../communication/identities';
+import { sendSignAndPostRequest } from '../../communication/signAndPost';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -33,9 +34,16 @@ const Welcome = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
 
-  const onGetIdentities = (): void => {
+  const onGetIdentities = async (): Promise<void> => {
     toast.show('Interaction with extension, fetching identities. Check console, please.', ToastVariant.INFO);
-    sendGetIdentitiesRequest(toast);
+    try {
+      const identities = await sendGetIdentitiesRequest();
+      const transactionId = await sendSignAndPostRequest(identities[0]);
+      console.log('Transaction ID:', transactionId);
+    } catch (error) {
+      console.error(error);
+      toast.show('Error processing the request. Have you created your account?', ToastVariant.WARNING);
+    }
   };
 
   return (

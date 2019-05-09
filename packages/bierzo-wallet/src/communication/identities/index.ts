@@ -4,8 +4,6 @@ import { TransactionEncoder } from '@iov/core';
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { ethereumCodec } from '@iov/ethereum';
 import { extensionId } from '..';
-import { ToastContextInterface } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 
 const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -25,24 +23,29 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
   return data.every(isPublicIdentity);
 }
 
-export const sendGetIdentitiesRequest = (toast: ToastContextInterface): void => {
+export const sendGetIdentitiesRequest = async (): Promise<ReadonlyArray<PublicIdentity>> => {
   const request = generateGetIdentitiesRequest();
 
-  chrome.runtime.sendMessage(extensionId, request, response => {
-    const parsedResponse = parseJsonRpcResponse2(response);
-    if (isJsonRpcErrorResponse(parsedResponse)) {
-      console.log(parsedResponse.error.message);
-      toast.show('Error processing the request. Have you created your account?', ToastVariant.WARNING);
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage(extensionId, request, response => {
+      try {
+        const parsedResponse = parseJsonRpcResponse2(response);
+        if (isJsonRpcErrorResponse(parsedResponse)) {
+          reject(parsedResponse.error.message);
+          return;
+        }
 
-      return;
-    }
-
-    const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
-    if (isArrayOfPublicIdentity(parsedResult)) {
-      const addresses = parsedResult.map(ident => ethereumCodec.identityToAddress(ident));
-      console.log(addresses);
-    } else {
-      console.log('Got unexpected type of result', parsedResult);
-    }
+        const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
+        if (isArrayOfPublicIdentity(parsedResult)) {
+          const addresses = parsedResult.map(ident => ethereumCodec.identityToAddress(ident));
+          console.log(addresses);
+          resolve(parsedResult);
+        } else {
+          reject('Got unexpected type of result');
+        }
+      } catch (error) {
+        reject(error);
+      }
+    });
   });
 };
