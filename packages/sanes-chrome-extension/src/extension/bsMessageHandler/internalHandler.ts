@@ -1,8 +1,6 @@
 /*global chrome*/
-import { ReadonlyDate } from 'readonly-date';
-import { Encoding } from '@iov/encoding';
-import { GetIdentitiesAuthorization, SignAndPostAuthorization, SignedAndPosted } from '@iov/core';
-import { PublicIdentity, isSendTransaction, publicIdentityEquals } from '@iov/bcp';
+import { GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
+import { PublicIdentity } from '@iov/bcp';
 
 import {
   MessageToBackgroundAction,
@@ -19,10 +17,6 @@ let signingServer: SigningServer;
 
 export function getSigningServer(): SigningServer {
   return signingServer;
-}
-
-function isNonNull<T>(t: T | null): t is T {
-  return t !== null;
 }
 
 export async function handleInternalMessage(
@@ -76,36 +70,11 @@ export async function handleInternalMessage(
           return true;
         };
 
-        async function transactionsChangedHandler(
-          transactions: ReadonlyArray<SignedAndPosted>
-        ): Promise<void> {
-          const identities = (await persona.getAccounts())[0].identities;
-          const txs: ReadonlyArray<ProcessedTx> = transactions
-            .map(
-              (t): ProcessedTx | null => {
-                if (!isSendTransaction(t.transaction)) {
-                  // cannot process
-                  return null;
-                }
-
-                return {
-                  time: new ReadonlyDate(ReadonlyDate.now()),
-                  id: t.postResponse.transactionId,
-                  recipient: t.transaction.recipient,
-                  signer: Encoding.toHex(t.transaction.creator.pubkey.data),
-                  memo: t.transaction.memo,
-                  amount: t.transaction.amount,
-                  received: !identities.find(i => publicIdentityEquals(i, t.transaction.creator)),
-                  success: true,
-                };
-              }
-            )
-            .filter(isNonNull);
-
+        async function transactionsChangedHandler(transactions: ReadonlyArray<ProcessedTx>): Promise<void> {
           const message: MessageToForeground = {
             type: 'message_to_foreground',
             action: MessageToForegroundAction.TransactionsChanges,
-            data: txs,
+            data: transactions,
           };
           chrome.runtime.sendMessage(message);
         }

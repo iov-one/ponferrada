@@ -1,6 +1,6 @@
 import { ReadonlyDate } from 'readonly-date';
 
-import { Amount, PublicIdentity } from '@iov/bcp';
+import { Amount, PublicIdentity, isSendTransaction, publicIdentityEquals } from '@iov/bcp';
 import {
   MultiChainSigner,
   UserProfile,
@@ -22,6 +22,7 @@ import {
   pathBuilderForCodec,
 } from '../config';
 import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
+import { Encoding } from '@iov/encoding';
 
 /** Like UseOnlyJsonRpcSigningServer but without functionality to create or shutdown */
 export interface UseOnlyJsonRpcSigningServer {
@@ -46,6 +47,10 @@ export interface ProcessedTx {
   readonly received: boolean;
   readonly success: boolean;
   readonly err?: any; // eslint-disable-line
+}
+
+function isNonNull<T>(t: T | null): t is T {
+  return t !== null;
 }
 
 export class Persona {
@@ -141,7 +146,7 @@ export class Persona {
   public startSigningServer(
     authorizeGetIdentities?: GetIdentitiesAuthorization,
     authorizeSignAndPost?: SignAndPostAuthorization,
-    transactionsChanged?: (transactions: ReadonlyArray<SignedAndPosted>) => void
+    transactionsChanged?: (transactions: ReadonlyArray<ProcessedTx>) => void
   ): UseOnlyJsonRpcSigningServer {
     const revealAllIdentities: GetIdentitiesAuthorization = async (
       reason,
@@ -159,7 +164,16 @@ export class Persona {
       authorizeGetIdentities || revealAllIdentities,
       authorizeSignAndPost || signEverything
     );
-    core.signedAndPosted.updates.subscribe({ next: transactionsChanged });
+
+    if (transactionsChanged) {
+      core.signedAndPosted.updates.subscribe({
+        next: async signedAndPosed => {
+          const processed = await Promise.all(signedAndPosed.map(s => this.processTransaction(s)));
+          const filtered = processed.filter(isNonNull);
+          transactionsChanged(filtered);
+        },
+      });
+    }
 
     const server = new JsonRpcSigningServer(core);
     this.signingServer = server;
@@ -176,5 +190,25 @@ export class Persona {
   public destroy(): void {
     this.tearDownSigningServer();
     this.signer.shutdown();
+  }
+
+  private async processTransaction(t: SignedAndPosted): Promise<ProcessedTx | null> {
+    if (!isSendTransaction(t.transaction)) {
+      // cannot process
+      return null;
+    }
+
+    const identities = (await this.getAccounts())[0].identities;
+
+    return {
+      time: new ReadonlyDate(ReadonlyDate.now()),
+      id: t.postResponse.transactionId,
+      recipient: t.transaction.recipient,
+      signer: Encoding.toHex(t.transaction.creator.pubkey.data),
+      memo: t.transaction.memo,
+      amount: t.transaction.amount,
+      received: !identities.find(i => publicIdentityEquals(i, t.transaction.creator)),
+      success: true,
+    };
   }
 }
