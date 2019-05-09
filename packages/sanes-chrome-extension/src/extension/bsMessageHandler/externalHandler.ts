@@ -1,4 +1,4 @@
-import { JsonRpcErrorResponse, JsonRpcResponse } from '@iov/jsonrpc';
+import { JsonRpcErrorResponse, JsonRpcResponse, jsonRpcCode } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
@@ -8,7 +8,7 @@ function generateErrorResponse(id: number | null): JsonRpcErrorResponse {
     jsonrpc: '2.0',
     id,
     error: {
-      code: -32000,
+      code: jsonRpcCode.serverError.default,
       message: 'Signing server not ready',
     },
   };
