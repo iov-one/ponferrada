@@ -10,6 +10,7 @@ export const WTC_MSG_HELLO = 'wtc_HELLO';
  */
 export enum MessageToBackgroundAction {
   CreatePersona = 'create_persona',
+  GetPersona = 'get_persona',
 }
 
 /**
@@ -22,11 +23,14 @@ export interface MessageToBackground {
   readonly data?: any;
 }
 
-export interface CreatePersonaResponse {
+export interface PersonaData {
   readonly accounts: ReadonlyArray<AccountInfo>;
   readonly mnemonic: string;
   readonly txs: ReadonlyArray<ProcessedTx>;
 }
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface CreatePersonaResponse extends PersonaData {}
 
 export async function sendCreatePersonaMessage(mnemonic?: string): Promise<CreatePersonaResponse> {
   return new Promise((resolve, reject) => {
@@ -48,6 +52,32 @@ export async function sendCreatePersonaMessage(mnemonic?: string): Promise<Creat
         mnemonic: response.mnemonic,
         txs: response.txs,
       });
+    });
+  });
+}
+
+export type GetPersonaResponse = PersonaData | null;
+
+export async function sendGetPersonaMessage(): Promise<GetPersonaResponse> {
+  return new Promise((resolve, reject) => {
+    const message: MessageToBackground = { action: MessageToBackgroundAction.GetPersona };
+    chrome.runtime.sendMessage(message, response => {
+      const lastError = chrome.runtime.lastError;
+      if (lastError) {
+        const errorMessage = lastError.message || 'Unknown error in chrome.runtime.lastError';
+        reject(errorMessage);
+        return;
+      }
+
+      if (!response) {
+        resolve(null);
+      } else {
+        resolve({
+          accounts: response.accounts,
+          mnemonic: response.mnemonic,
+          txs: response.txs,
+        });
+      }
     });
   });
 }
