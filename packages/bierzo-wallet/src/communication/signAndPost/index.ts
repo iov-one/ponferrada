@@ -18,7 +18,7 @@ const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<Json
     recipient: '0x0000000000000000000000000000000000000000' as Address,
     creator: creator,
     amount: {
-      quantity: '11223344',
+      quantity: '1234000000000000000',
       fractionalDigits: 18,
       tokenTicker: 'ETH' as TokenTicker,
     },
