@@ -103,7 +103,6 @@ const CurrencyToSend = (props: Props): JSX.Element => {
                 margin="none"
               />
             </Block>
-            {/*NOTE hardcoded initial value*/}
             <Block height="32px">
               <SelectFieldForm
                 fieldName={CURRENCY_FIELD}
