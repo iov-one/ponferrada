@@ -1,19 +1,19 @@
-import * as React from 'react';
 import MuiTextField, { TextFieldProps } from '@material-ui/core/TextField';
-
-import { FormApi, FieldSubscription } from 'final-form';
+import { FieldSubscription, FieldValidator, FormApi } from 'final-form';
+import * as React from 'react';
 import { useField } from 'react-final-form-hooks';
 
 interface InnerProps {
   name: string;
   form: FormApi;
+  validate?: FieldValidator;
   subscription?: FieldSubscription;
 }
 
 type Props = InnerProps & TextFieldProps;
 
-const TextFieldForm = ({ name, form, ...restProps }: Props): JSX.Element => {
-  const { input, meta } = useField(name, form);
+const TextFieldForm = ({ name, form, validate, ...restProps }: Props): JSX.Element => {
+  const { input, meta } = useField(name, form, validate);
   const error = meta.error && (meta.touched || !meta.pristine);
 
   return (
