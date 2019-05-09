@@ -3,15 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/styles';
+import { FormApi } from 'final-form';
 import Block from 'medulas-react-components/lib/components/Block';
-import Form, {
-  FormValues,
-  useForm,
-  ValidationError,
-} from 'medulas-react-components/lib/components/forms/Form';
 import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import {
+  composeValidators,
+  greaterOrEqualThan,
+  lowerOrEqualThan,
+  number,
+  required,
+} from 'medulas-react-components/lib/utils/forms/validators';
 import React, { useState } from 'react';
 
 const useStyles = makeStyles(() => ({
@@ -47,9 +50,11 @@ const currencyItems = Object.keys(currencies).map(currency => {
   return item;
 });
 
-const onSubmit = (): void => {};
+interface Props {
+  form: FormApi;
+}
 
-const CurrencyToSend = (): JSX.Element => {
+const CurrencyToSend = (props: Props): JSX.Element => {
   const classes = useStyles();
   //NOTE hardcoded initial state for "currency"
   const [currency, setCurrency] = useState(currencyItems[1].name);
@@ -63,45 +68,6 @@ const CurrencyToSend = (): JSX.Element => {
     setCurrency(item.name);
     setBalance(currencies[item.name]);
   };
-
-  //NOTE placed this function inside the component so that it has access to "balance"
-  const validate = (values: object): object => {
-    const formValues = values as FormValues;
-    const errors: ValidationError = {};
-
-    const quantity = formValues[QUANTITY_FIELD];
-
-    if (!quantity) {
-      errors[QUANTITY_FIELD] = 'Required';
-      return errors;
-    }
-
-    const numQuantity = Number(quantity);
-
-    if (isNaN(numQuantity)) {
-      errors[QUANTITY_FIELD] = 'Must be a number';
-      return errors;
-    }
-
-    if (numQuantity > balance) {
-      errors[QUANTITY_FIELD] = `Should be lower or equal than ${balance}`;
-    }
-
-    if (numQuantity > QUANTITY_MAX) {
-      errors[QUANTITY_FIELD] = `Should be lower than ${QUANTITY_MAX}`;
-    }
-
-    if (numQuantity < QUANTITY_MIN) {
-      errors[QUANTITY_FIELD] = `Should be greater or equal than ${QUANTITY_MIN}`;
-    }
-
-    return errors;
-  };
-
-  const { form, handleSubmit } = useForm({
-    onSubmit,
-    validate,
-  });
 
   return (
     <Paper>
@@ -120,32 +86,36 @@ const CurrencyToSend = (): JSX.Element => {
           You send
         </Typography>
         <Block width="100%" marginTop={5} marginBottom={1}>
-          <Form onSubmit={handleSubmit}>
-            <Block display="flex">
-              <Block width="100%" marginRight={1}>
-                <TextFieldForm
-                  name={QUANTITY_FIELD}
-                  form={form}
-                  required
-                  placeholder="0,00"
-                  fullWidth
-                  margin="none"
-                />
-              </Block>
-              {/*NOTE hardcoded initial value*/}
-              <Block height="32px">
-                <SelectFieldForm
-                  fieldName={CURRENCY_FIELD}
-                  form={form}
-                  maxWidth="60px"
-                  items={currencyItems}
-                  initial={currencyItems[1].name}
-                  value={currency}
-                  onChangeCallback={handleChange}
-                />
-              </Block>
+          <Block display="flex">
+            <Block width="100%" marginRight={1}>
+              <TextFieldForm
+                name={QUANTITY_FIELD}
+                form={props.form}
+                validate={composeValidators(
+                  required,
+                  number,
+                  lowerOrEqualThan(balance),
+                  lowerOrEqualThan(QUANTITY_MAX),
+                  greaterOrEqualThan(QUANTITY_MIN)
+                )}
+                placeholder="0,00"
+                fullWidth
+                margin="none"
+              />
             </Block>
-          </Form>
+            {/*NOTE hardcoded initial value*/}
+            <Block height="32px">
+              <SelectFieldForm
+                fieldName={CURRENCY_FIELD}
+                form={props.form}
+                maxWidth="60px"
+                items={currencyItems}
+                initial={currencyItems[1].name}
+                value={currency}
+                onChangeCallback={handleChange}
+              />
+            </Block>
+          </Block>
         </Block>
         <Block marginTop={1}>
           <Typography color="textSecondary" variant="subtitle2">

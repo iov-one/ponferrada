@@ -44,38 +44,37 @@ const onSubmit = (): void => {};
 const Payment = (): JSX.Element => {
   const classes = useStyles();
 
-  const { handleSubmit, invalid, pristine, submitting } = useForm({
+  const { form, handleSubmit, invalid, pristine, submitting } = useForm({
     onSubmit,
   });
 
-  //TODO make the button be disabled according to the state of the components
   return (
-    <Block
-      width="100vw"
-      height="auto"
-      minHeight="100vh"
-      display="grid"
-      alignContent="center"
-      justifyContent="center"
-      className={classes.payment}
-    >
-      <Block width="100%" className={classes.currencyToSend}>
-        <CurrencyToSend />
-      </Block>
-      <Block width="100%" className={classes.receiverAddress}>
-        <ReceiverAddress />
-      </Block>
-      <Block width="100%" className={classes.textNote}>
-        <TextNote />
-      </Block>
-      <Block width="75%" className={classes.continue}>
-        <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
+      <Block
+        width="100vw"
+        height="auto"
+        minHeight="100vh"
+        display="grid"
+        alignContent="center"
+        justifyContent="center"
+        className={classes.payment}
+      >
+        <Block width="100%" className={classes.currencyToSend}>
+          <CurrencyToSend form={form} />
+        </Block>
+        <Block width="100%" className={classes.receiverAddress}>
+          <ReceiverAddress form={form} />
+        </Block>
+        <Block width="100%" className={classes.textNote}>
+          <TextNote form={form} />
+        </Block>
+        <Block width="75%" className={classes.continue}>
           <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
             Continue
           </Button>
-        </Form>
+        </Block>
       </Block>
-    </Block>
+    </Form>
   );
 };
 
