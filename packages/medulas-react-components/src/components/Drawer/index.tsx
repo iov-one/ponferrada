@@ -38,8 +38,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     flexGrow: 1,
   },
-  hide: {
-    display: 'none',
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    transition: theme.transitions.create('opacity', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen * 3,
+    }),
+    opacity: 1,
   },
   drawer: {
     width: drawerWidth,
@@ -63,13 +70,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginRight: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: 0,
   },
 }));
 
@@ -99,10 +99,8 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
   const appBarClasses = classNames(classes.appBar, {
     [classes.appBarShift]: open,
   });
-  const drawerIconClasses = classNames(open && classes.hide);
-  const contentClasses = classNames(classes.content, {
-    [classes.contentShift]: open,
-  });
+  const drawerIconClasses = classNames(classes.hidden, !open && classes.show);
+  const contentClasses = classNames(classes.content);
   const drawerClasses = {
     paper: classes.drawerPaper,
   };
