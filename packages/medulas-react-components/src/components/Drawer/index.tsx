@@ -141,7 +141,7 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
         <Divider />
         <List component="nav">
           {items.map(item => (
-            <ListItem button>
+            <ListItem button key={item.text}>
               <ListItemText primary={item.text} onClick={item.action} />
             </ListItem>
           ))}
