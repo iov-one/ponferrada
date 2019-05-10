@@ -15,7 +15,7 @@ import {
   number,
   required,
 } from 'medulas-react-components/lib/utils/forms/validators';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const useStyles = makeStyles(() => ({
   avatar: {
@@ -60,6 +60,16 @@ const CurrencyToSend = (props: Props): JSX.Element => {
   const [currency, setCurrency] = useState(currencyItems[1].name);
   const [balance, setBalance] = useState(currencies[currency]);
 
+  const validator = useMemo(() => {
+    return composeValidators(
+      required,
+      number,
+      lowerOrEqualThan(balance),
+      lowerOrEqualThan(QUANTITY_MAX),
+      greaterOrEqualThan(QUANTITY_MIN),
+    );
+  }, [balance]);
+
   const avatarClasses = {
     root: classes.avatar,
   };
@@ -91,13 +101,7 @@ const CurrencyToSend = (props: Props): JSX.Element => {
               <TextFieldForm
                 name={QUANTITY_FIELD}
                 form={props.form}
-                validate={composeValidators(
-                  required,
-                  number,
-                  lowerOrEqualThan(balance),
-                  lowerOrEqualThan(QUANTITY_MAX),
-                  greaterOrEqualThan(QUANTITY_MIN),
-                )}
+                validate={validator}
                 placeholder="0,00"
                 fullWidth
                 margin="none"
