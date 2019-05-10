@@ -99,6 +99,13 @@ const themeObject: ThemeOptions = {
         margin: `${theme.spacing(1)}px ${theme.spacing(0)}px`,
       },
     },
+    MuiIconButton: {
+      root: {
+        '&:hover': {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
     MuiInputLabel: {
       formControl: {
         top: `-${theme.spacing(3)}px`,
@@ -207,6 +214,10 @@ const themeObject: ThemeOptions = {
     MuiInputLabel: {
       shrink: true,
       variant: 'standard',
+    },
+    MuiButtonBase: {
+      disableRipple: true,
+      disableTouchRipple: true,
     },
   },
 };
