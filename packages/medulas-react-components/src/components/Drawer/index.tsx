@@ -11,10 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Block from '../Block';
 
 const drawerWidth = 240;
@@ -75,11 +72,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
-  readonly children: React.ReactNode;
+interface DrawerItems {
+  readonly text: string;
+  readonly action: () => void;
 }
 
-function PersistentDrawerRight({ children }: Props): JSX.Element {
+interface Props {
+  readonly children: React.ReactNode;
+  readonly items: ReadonlyArray<DrawerItems>;
+}
+
+function PersistentDrawerRight({ children, items }: Props): JSX.Element {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -136,20 +139,10 @@ function PersistentDrawerRight({ children }: Props): JSX.Element {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+        <List component="nav">
+          {items.map(item => (
+            <ListItem button>
+              <ListItemText primary={item.text} onClick={item.action} />
             </ListItem>
           ))}
         </List>
