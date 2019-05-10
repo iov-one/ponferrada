@@ -56,8 +56,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'flex-start',
   },
   content: {
+    minHeight: '100vh',
     flexGrow: 1,
-    padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -126,7 +126,7 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
       </AppBar>
       <main className={contentClasses}>
         <div className={classes.drawerHeader} />
-        {children}
+        <div>{children}</div>
       </main>
       <Drawer
         className={classes.drawer}
