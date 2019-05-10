@@ -63,21 +63,24 @@ const AccountView = (): JSX.Element => {
       return;
     }
   };
+  const accountLoaded = accounts.length > 1;
 
   return (
     <PageLayout id={ACCOUNT_STATUS_ROUTE} primaryTitle="Account" title="Status">
-      <Form onSubmit={handleSubmit}>
-        <Block marginBottom={1}>
-          <Typography variant="subtitle2">Available accounts</Typography>
-        </Block>
-        <SelectField
-          items={accounts}
-          initial={CREATE_NEW_ONE}
-          form={form}
-          fieldName="SELECT_FIELD_ATTR"
-          onChangeCallback={onChange}
-        />
-      </Form>
+      {accountLoaded && (
+        <Form onSubmit={handleSubmit}>
+          <Block marginBottom={1}>
+            <Typography variant="subtitle2">Available accounts</Typography>
+          </Block>
+          <SelectField
+            items={accounts}
+            initial={accounts[1].name}
+            form={form}
+            fieldName="SELECT_FIELD_ATTR"
+            onChangeCallback={onChange}
+          />
+        </Form>
+      )}
       <Hairline space={2} />
       <Block marginBottom={4}>
         <ListTxs title="Transations" txs={personaProvider.txs} />
