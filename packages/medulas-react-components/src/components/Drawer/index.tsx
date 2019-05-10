@@ -19,6 +19,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
+    backgroundColor: 'white',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -80,9 +81,10 @@ interface DrawerItems {
 interface Props {
   readonly children: React.ReactNode;
   readonly items: ReadonlyArray<DrawerItems>;
+  readonly elevation?: number;
 }
 
-function PersistentDrawerRight({ children, items }: Props): JSX.Element {
+function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.Element {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -108,7 +110,7 @@ function PersistentDrawerRight({ children, items }: Props): JSX.Element {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" color="inherit" className={appBarClasses}>
+      <AppBar position="fixed" color="inherit" className={appBarClasses} elevation={elevation}>
         <Toolbar>
           <Block flexGrow={1} />
           <IconButton
