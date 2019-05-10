@@ -14,8 +14,6 @@ import { makeStore } from './store';
 const rootEl = document.getElementById('root');
 const store = makeStore();
 
-history.push(WELCOME_ROUTE);
-
 const render = (Component: React.ComponentType): void => {
   ReactDOM.render(
     <Provider store={store}>
@@ -34,6 +32,8 @@ const render = (Component: React.ComponentType): void => {
 };
 
 render(Route);
+
+history.push(WELCOME_ROUTE);
 
 if (module.hot) {
   module.hot.accept(
