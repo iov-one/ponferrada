@@ -1,11 +1,8 @@
 /*global chrome*/
-import { wrapStore } from 'webext-redux';
 import { MessageToBackground } from './messages';
-import { makeStore } from '../store';
 import { handleExternalMessage } from './bsMessageHandler/externalHandler';
 import { handleInternalMessage, getSigningServer } from './bsMessageHandler/internalHandler';
 
-wrapStore(makeStore());
 // For a better understanding about the message change done visit:
 // https://developer.chrome.com/extensions/messaging#simple
 

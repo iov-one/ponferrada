@@ -4,48 +4,43 @@ import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvide
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Store } from 'webext-redux';
 import Route from './routes';
 import { history } from './store/reducers';
 import { WELCOME_ROUTE } from './routes/paths';
 import { globalStyles } from './theme/globalStyles';
 import { PersonaProvider } from './context/PersonaProvider';
-
-const store = new Store();
+import { makeStore } from './store';
 
 const rootEl = document.getElementById('root');
+const store = makeStore();
 
-store.ready().then(
-  (): void => {
-    history.push(WELCOME_ROUTE);
+const render = (Component: React.ComponentType): void => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
+        <ToastProvider>
+          <PersonaProvider>
+            <ConnectedRouter history={history}>
+              <Component />
+            </ConnectedRouter>
+          </PersonaProvider>
+        </ToastProvider>
+      </MedulasThemeProvider>
+    </Provider>,
+    rootEl
+  );
+};
 
-    const render = (Component: React.ComponentType): void => {
-      ReactDOM.render(
-        <Provider store={store}>
-          <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-            <ToastProvider>
-              <PersonaProvider>
-                <ConnectedRouter history={history}>
-                  <Component />
-                </ConnectedRouter>
-              </PersonaProvider>
-            </ToastProvider>
-          </MedulasThemeProvider>
-        </Provider>,
-        rootEl
-      );
-    };
+render(Route);
 
-    render(Route);
+history.push(WELCOME_ROUTE);
 
-    if (module.hot) {
-      module.hot.accept(
-        './routes',
-        (): void => {
-          const NextApp = require('./routes').default;
-          render(NextApp);
-        }
-      );
+if (module.hot) {
+  module.hot.accept(
+    './routes',
+    (): void => {
+      const NextApp = require('./routes').default;
+      render(NextApp);
     }
-  }
-);
+  );
+}
