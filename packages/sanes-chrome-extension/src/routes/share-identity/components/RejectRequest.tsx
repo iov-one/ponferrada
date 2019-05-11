@@ -6,8 +6,10 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Back from 'medulas-react-components/lib/components/Button/Back';
 import Form, { useForm, FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
+import { SHARE_IDENTITY } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';
+export const SHARE_IDENTITY_REJECT = `${SHARE_IDENTITY}_reject`;
 
 interface Props {
   readonly onRejectRequest: (permanent: boolean) => void;
@@ -25,7 +27,7 @@ const Layout = ({ onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout primaryTitle="Share" title="Identity">
+    <PageLayout id={SHARE_IDENTITY_REJECT} primaryTitle="Share" title="Identity">
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center">
           <Typography variant="body1">The following site:</Typography>
