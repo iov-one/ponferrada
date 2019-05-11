@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { AccountInfo } from '../logic/persona/accountManager';
 import { ProcessedTx } from '../logic/persona';
-import { isMessageToForeground, MessageToForegroundAction } from '../extension/messages';
+import { isMessageToForeground, MessageToForegroundAction, GetPersonaResponse } from '../extension/messages';
 
 type Accounts = ReadonlyArray<AccountInfo>;
 
@@ -22,12 +22,13 @@ export const PersonaContext = React.createContext<PersonaContextInterface>({
 
 interface Props {
   readonly children: React.ReactNode;
+  readonly persona: GetPersonaResponse;
 }
 
-export const PersonaProvider = ({ children }: Props): JSX.Element => {
-  const [accountNames, setAccountNames] = React.useState<Accounts>([]);
-  const [mnemonic, setMnemonic] = React.useState<string>('');
-  const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>([]);
+export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
+  const [accountNames, setAccountNames] = React.useState<Accounts>(persona ? persona.accounts : []);
+  const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
+  const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   const isExtensionContext = typeof chrome !== 'undefined';
 
   React.useEffect(() => {
