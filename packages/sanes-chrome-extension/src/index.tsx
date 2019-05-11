@@ -5,7 +5,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersonaProvider } from './context/PersonaProvider';
-import { sendGetPersonaMessage } from './extension/messages';
+import { sendGetPersonaMessage, GetPersonaResponse } from './extension/messages';
 import Route from './routes';
 import { WELCOME_ROUTE, ACCOUNT_STATUS_ROUTE } from './routes/paths';
 import { makeStore } from './store';
@@ -15,12 +15,12 @@ import { globalStyles } from './theme/globalStyles';
 const rootEl = document.getElementById('root');
 const store = makeStore();
 
-const render = (Component: React.ComponentType): void => {
+const render = (Component: React.ComponentType, persona: GetPersonaResponse): void => {
   ReactDOM.render(
     <Provider store={store}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
         <ToastProvider>
-          <PersonaProvider>
+          <PersonaProvider persona={persona}>
             <ConnectedRouter history={history}>
               <Component />
             </ConnectedRouter>
@@ -32,19 +32,19 @@ const render = (Component: React.ComponentType): void => {
   );
 };
 
-Promise.resolve(sendGetPersonaMessage).then(persona => {
-  render(Route);
+sendGetPersonaMessage().then(persona => {
+  render(Route, persona);
 
   const url = persona ? ACCOUNT_STATUS_ROUTE : WELCOME_ROUTE;
   history.push(url);
-});
 
-if (module.hot) {
-  module.hot.accept(
-    './routes',
-    (): void => {
-      const NextApp = require('./routes').default;
-      render(NextApp);
-    }
-  );
-}
+  if (module.hot) {
+    module.hot.accept(
+      './routes',
+      (): void => {
+        const NextApp = require('./routes').default;
+        render(NextApp, persona);
+      }
+    );
+  }
+});

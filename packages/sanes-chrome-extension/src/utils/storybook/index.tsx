@@ -29,7 +29,7 @@ export const SanesStorybook = ({ children }: Props): JSX.Element => {
       <ConnectedRouter history={storybookHistory}>
         <Storybook>
           <ToastProvider>
-            <PersonaProvider>{children}</PersonaProvider>
+            <PersonaProvider persona={null}>{children}</PersonaProvider>
           </ToastProvider>
         </Storybook>
       </ConnectedRouter>
