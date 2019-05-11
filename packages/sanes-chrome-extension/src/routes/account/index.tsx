@@ -17,7 +17,7 @@ const CREATE_NEW_ONE = 'Create a new one';
 
 const AccountView = (): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Item[]>([]);
-  const persona = React.useContext(PersonaContext);
+  const personaProvider = React.useContext(PersonaContext);
   const { show } = React.useContext(ToastContext);
   const { form, handleSubmit } = useForm({
     onSubmit: () => {},
@@ -25,7 +25,7 @@ const AccountView = (): JSX.Element => {
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const accounts = persona.accountNames;
+      const accounts = personaProvider.accountNames;
       let actualItems: Item[] = [];
       actualItems.push({ name: CREATE_NEW_ONE });
       accounts.forEach((acc: AccountInfo) => actualItems.push({ name: acc.name }));
@@ -33,7 +33,7 @@ const AccountView = (): JSX.Element => {
     }
 
     fetchMyAccounts();
-  }, [persona.accountNames]);
+  }, [personaProvider.accountNames]);
 
   const onChange = (item: Item): void => {
     if (item.name === CREATE_NEW_ONE) {
@@ -41,24 +41,27 @@ const AccountView = (): JSX.Element => {
       return;
     }
   };
+  const accountLoaded = accounts.length > 1;
 
   return (
     <PageLayout id={ACCOUNT_STATUS_ROUTE} primaryTitle="Account" title="Status">
-      <Form onSubmit={handleSubmit}>
-        <Block marginBottom={1}>
-          <Typography variant="subtitle2">Available accounts</Typography>
-        </Block>
-        <SelectField
-          items={accounts}
-          initial={CREATE_NEW_ONE}
-          form={form}
-          fieldName="SELECT_FIELD_ATTR"
-          onChangeCallback={onChange}
-        />
-      </Form>
+      {accountLoaded && (
+        <Form onSubmit={handleSubmit}>
+          <Block marginBottom={1}>
+            <Typography variant="subtitle2">Available accounts</Typography>
+          </Block>
+          <SelectField
+            items={accounts}
+            initial={accounts[1].name}
+            form={form}
+            fieldName="SELECT_FIELD_ATTR"
+            onChangeCallback={onChange}
+          />
+        </Form>
+      )}
       <Hairline space={2} />
       <Block marginBottom={4}>
-        <ListTxs title="Transations" txs={persona.txs} />
+        <ListTxs title="Transations" txs={personaProvider.txs} />
       </Block>
       <Block marginBottom={1}>
         <ListTxs title="Pending Transactions" txs={[]} />

@@ -1,33 +1,37 @@
 import * as React from 'react';
-import Layout from './components';
-import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import { history } from '../../store/reducers/';
-import { PersonaContext } from '../../context/PersonaProvider';
-import { sendGetPersonaMessage } from '../../extension/messages';
+import Button from 'medulas-react-components/lib/components/Button';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import Block from 'medulas-react-components/lib/components/Block';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import { history } from '../../store/reducers';
+import { SIGNUP_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from '../paths';
 
-const goToAccountStatus = (): void => {
-  history.push(ACCOUNT_STATUS_ROUTE);
+const createNewAccount = (): void => {
+  history.push(SIGNUP_ROUTE);
 };
 
-const Welcome = (): JSX.Element => {
-  const isExtensionContext = typeof chrome !== 'undefined';
-  const personaProvider = React.useContext(PersonaContext);
-
-  React.useEffect(() => {
-    (async () => {
-      if (isExtensionContext) {
-        const response = await sendGetPersonaMessage();
-        if (response) {
-          personaProvider.update(response.accounts, response.mnemonic, response.txs);
-          goToAccountStatus();
-        }
-      }
-    })();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return <Layout />;
+const login = (): void => {
+  history.push(LOGIN_ROUTE);
 };
+
+const Welcome = (): JSX.Element => (
+  <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to your IOV manager">
+    <Typography variant="body1" inline>
+      This plugin lets you manage all your accounts in one place.
+    </Typography>
+    <Block marginTop={2} />
+    <Button variant="contained" fullWidth onClick={login}>
+      Log in
+    </Button>
+    <Block marginTop={2} />
+    <Button variant="contained" fullWidth onClick={createNewAccount}>
+      New account
+    </Button>
+    <Block marginTop={2} />
+    <Button variant="contained" fullWidth>
+      Import account
+    </Button>
+  </PageLayout>
+);
 
 export default Welcome;

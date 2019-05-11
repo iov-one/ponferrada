@@ -15,7 +15,7 @@ export const createDom = (store: Store): React.Component =>
       <MedulasThemeProvider>
         <ConnectedRouter history={history}>
           <ToastProvider>
-            <PersonaProvider>
+            <PersonaProvider persona={null}>
               <Route />
             </PersonaProvider>
           </ToastProvider>

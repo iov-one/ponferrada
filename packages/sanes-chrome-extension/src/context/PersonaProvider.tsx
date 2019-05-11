@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { AccountInfo } from '../logic/persona/accountManager';
 import { ProcessedTx } from '../logic/persona';
-import { isMessageToForeground, MessageToForegroundAction } from '../extension/messages';
+import { isMessageToForeground, MessageToForegroundAction, GetPersonaResponse } from '../extension/messages';
 
 type Accounts = ReadonlyArray<AccountInfo>;
 
@@ -22,35 +22,37 @@ export const PersonaContext = React.createContext<PersonaContextInterface>({
 
 interface Props {
   readonly children: React.ReactNode;
+  readonly persona: GetPersonaResponse;
 }
 
-export const PersonaProvider = ({ children }: Props): JSX.Element => {
-  const [accountNames, setAccountNames] = React.useState<Accounts>([]);
-  const [mnemonic, setMnemonic] = React.useState<string>('');
-  const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>([]);
-  const isExtensionContext = typeof chrome !== 'undefined';
-
+export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
+  const [accountNames, setAccountNames] = React.useState<Accounts>(persona ? persona.accounts : []);
+  const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
+  const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   React.useEffect(() => {
-    if (isExtensionContext) {
-      chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
-        if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
-          // Only handle messages from background script
-          return;
-        }
-
-        switch (message.action) {
-          case MessageToForegroundAction.TransactionsChanges:
-            if (!Array.isArray(message.data)) {
-              throw new Error('Data must be an array');
-            }
-            setTxs(message.data);
-            break;
-          default:
-            throw new Error('Unknown action');
-        }
-      });
+    const isExtensionContext = typeof chrome !== 'undefined';
+    if (!isExtensionContext) {
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    console.log('PersonaProvider registering listener');
+    chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
+      if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
+        // Only handle messages from background script
+        return;
+      }
+
+      switch (message.action) {
+        case MessageToForegroundAction.TransactionsChanges:
+          if (!Array.isArray(message.data)) {
+            throw new Error('Data must be an array');
+          }
+          setTxs(message.data);
+          break;
+        default:
+          throw new Error('Unknown action');
+      }
+    });
   }, []);
 
   const loadPersonaInReact = (
