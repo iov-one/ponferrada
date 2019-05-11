@@ -30,12 +30,12 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   React.useEffect(() => {
-    console.log('PersonaProvider registering listener');
     const isExtensionContext = typeof chrome !== 'undefined';
     if (!isExtensionContext) {
       return;
     }
 
+    console.log('PersonaProvider registering listener');
     chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
       if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
         // Only handle messages from background script
