@@ -39,6 +39,9 @@ export interface UseOnlyJsonRpcSigningServer {
 
 /**
  * A transaction signed by the user of the extension.
+ *
+ * All fields must be losslessly JSON serializable/deserializable to allow
+ * messaging between background script and UI.
  */
 export interface ProcessedTx {
   readonly id: string;
@@ -46,7 +49,7 @@ export interface ProcessedTx {
   readonly signer: string;
   readonly amount: Amount;
   readonly memo?: string;
-  readonly time: ReadonlyDate;
+  readonly time: string;
   /** If error is null, the transactin succeeded  */
   readonly error: string | null;
 }
@@ -201,7 +204,7 @@ export class Persona {
     }
 
     return {
-      time: new ReadonlyDate(ReadonlyDate.now()),
+      time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
       id: t.postResponse.transactionId,
       recipient: t.transaction.recipient,
       signer: Encoding.toHex(t.transaction.creator.pubkey.data),

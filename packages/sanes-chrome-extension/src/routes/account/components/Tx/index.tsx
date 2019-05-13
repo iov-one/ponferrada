@@ -50,7 +50,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
     <Block className={classes.item}>
       <ListItem>
         <Img src={icon} height={32} alt="Tx operation" />
-        <ListItemText className={classes.msg} primary={msg} secondary={time.toLocaleString()} />
+        <ListItemText className={classes.msg} primary={msg} secondary={time} />
       </ListItem>
       {!lastOne && (
         <Block padding="md">
