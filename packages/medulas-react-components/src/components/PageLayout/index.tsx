@@ -24,23 +24,21 @@ const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.E
       paddingTop={2}
       height="100%"
     >
-      <Block display="flex" flexDirection="row" alignItems="center">
-        {onBack && (
-          <Block marginLeft={-2}>
-            <Typography link>
-              <ArrowBackIcon fontSize="large" onClick={onBack} />
-            </Typography>
-          </Block>
-        )}
-        <Block>
-          <Typography color="primary" variant="h4" inline>
-            {primaryTitle}
-          </Typography>
-          <Typography variant="h4" inline>
-            {' '}
-            {title}
+      {onBack && (
+        <Block marginLeft={-2}>
+          <Typography link>
+            <ArrowBackIcon fontSize="large" onClick={onBack} />
           </Typography>
         </Block>
+      )}
+      <Block>
+        <Typography color="primary" variant="h4" inline>
+          {primaryTitle}
+        </Typography>
+        <Typography variant="h4" inline>
+          {' '}
+          {title}
+        </Typography>
       </Block>
       <Block marginTop={3} marginBottom={1}>
         {children}
