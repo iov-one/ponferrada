@@ -14,6 +14,8 @@ interface Props {
 }
 
 const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.Element => {
+  const showBackArrow = !!onBack;
+
   return (
     <Block
       display="flex"
@@ -24,7 +26,7 @@ const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.E
       paddingTop={2}
       height="100%"
     >
-      {onBack && (
+      {showBackArrow && (
         <Block marginLeft={-2}>
           <Typography link>
             <ArrowBackIcon fontSize="large" onClick={onBack} />
