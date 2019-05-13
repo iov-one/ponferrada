@@ -107,7 +107,6 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar position="fixed" color="inherit" className={appBarClasses} elevation={elevation}>
         <Toolbar>
           <Block flexGrow={1} />
