@@ -1,7 +1,7 @@
 /*global chrome*/
 import { MessageToBackground } from './messages';
-import { handleExternalMessage } from './bsMessageHandler/externalHandler';
-import { handleInternalMessage, getSigningServer } from './bsMessageHandler/internalHandler';
+import { handleExternalMessage } from './bsExternalHandler';
+import { handleInternalMessage, getSigningServer } from './bsInternalHandler';
 
 // For a better understanding about the message change done visit:
 // https://developer.chrome.com/extensions/messaging#simple
