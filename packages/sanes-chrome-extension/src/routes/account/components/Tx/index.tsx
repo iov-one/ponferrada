@@ -36,12 +36,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, received, signer, recipient, success } = item;
+  const { time, amount, received, signer, recipient, error } = item;
 
   const beautifulAmount = prettyAmount(amount);
-  const icon = success ? (received ? receiveTx : sendTx) : errorTx;
+  const icon = error ? errorTx : received ? receiveTx : sendTx;
 
-  const msg = success ? (
+  const msg = error ? (
+    <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
+  ) : (
     <Msg
       onDetailedView={onDetailedView}
       received={received}
@@ -49,8 +51,6 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       signer={signer}
       recipient={recipient}
     />
-  ) : (
-    <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
   );
 
   return (

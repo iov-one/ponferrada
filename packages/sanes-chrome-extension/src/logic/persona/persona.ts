@@ -45,8 +45,8 @@ export interface ProcessedTx {
   readonly memo?: string;
   readonly time: ReadonlyDate;
   readonly received: boolean;
-  readonly success: boolean;
-  readonly err?: any; // eslint-disable-line
+  /** If error is null, the transactin succeeded  */
+  readonly error: string | null;
 }
 
 function isNonNull<T>(t: T | null): t is T {
@@ -205,7 +205,7 @@ export class Persona {
       memo: t.transaction.memo,
       amount: t.transaction.amount,
       received: !identities.find(i => publicIdentityEquals(i, t.transaction.creator)),
-      success: true,
+      error: null,
     };
   }
 }
