@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import * as React from 'react';
@@ -22,7 +22,7 @@ const onDetailedView = (): void => {
   //history.push(DETAILED_VIEW_ROUTE);
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   msg: {
     '& > span': {
       lineHeight: 1.3,
