@@ -3,15 +3,20 @@ import Block from '../Block';
 import Typography from '../Typography';
 import Image from '../Image';
 import iovLogo from '../../theme/assets/iov-logo.png';
+import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
+import IconButton from '@material-ui/core/IconButton';
 
 interface Props {
   readonly id?: string;
   readonly children: React.ReactNode;
   readonly primaryTitle: string;
   readonly title: string;
+  readonly onBack?: () => void;
 }
 
-const PageLayout = ({ id, children, title, primaryTitle }: Props): JSX.Element => {
+const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.Element => {
+  const showBackArrow = !!onBack;
+
   return (
     <Block
       display="flex"
@@ -22,6 +27,15 @@ const PageLayout = ({ id, children, title, primaryTitle }: Props): JSX.Element =
       paddingTop={2}
       height="100%"
     >
+      {showBackArrow && (
+        <Block marginLeft={-2} marginBottom={1}>
+          <Typography link>
+            <IconButton color="inherit" aria-label="Go back" edge="end" onClick={onBack}>
+              <ArrowBackIcon fontSize="default" />
+            </IconButton>
+          </Typography>
+        </Block>
+      )}
       <Block>
         <Typography color="primary" variant="h4" inline>
           {primaryTitle}
