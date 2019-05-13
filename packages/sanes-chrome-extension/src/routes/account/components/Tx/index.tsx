@@ -1,17 +1,16 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import * as React from 'react';
-import errorTx from '../../assets/transactionError.svg';
-import receiveTx from '../../assets/transactionReceive.svg';
-import sendTx from '../../assets/transactionSend.svg';
+import iconErrorTx from '../../assets/transactionError.svg';
+import iconSendTx from '../../assets/transactionSend.svg';
 import MsgError from './MsgError';
 import Msg from './MsgSuccess';
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Img from 'medulas-react-components/lib/components/Image';
 import { prettyAmount } from '../../../../utils/balances';
-import { ProcessedTx } from '../ListTxs';
+import { ProcessedTx } from '../../../../logic/persona';
 
 interface ItemProps {
   readonly item: ProcessedTx;
@@ -22,7 +21,7 @@ const onDetailedView = (): void => {
   //history.push(DETAILED_VIEW_ROUTE);
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   msg: {
     '& > span': {
       lineHeight: 1.3,
@@ -36,28 +35,22 @@ const useStyles = makeStyles(theme => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, received, signer, recipient, success } = item;
+  const { time, amount, recipient, error } = item;
 
   const beautifulAmount = prettyAmount(amount);
-  const icon = success ? (received ? receiveTx : sendTx) : errorTx;
+  const icon = error ? iconErrorTx : iconSendTx;
 
-  const msg = success ? (
-    <Msg
-      onDetailedView={onDetailedView}
-      received={received}
-      amount={beautifulAmount}
-      signer={signer}
-      recipient={recipient}
-    />
-  ) : (
+  const msg = error ? (
     <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
+  ) : (
+    <Msg onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
   );
 
   return (
     <Block className={classes.item}>
       <ListItem>
         <Img src={icon} height={32} alt="Tx operation" />
-        <ListItemText className={classes.msg} primary={msg} secondary={time.toLocaleString()} />
+        <ListItemText className={classes.msg} primary={msg} secondary={time} />
       </ListItem>
       {!lastOne && (
         <Block padding="md">

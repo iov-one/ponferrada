@@ -1,6 +1,6 @@
 import { ReadonlyDate } from 'readonly-date';
 
-import { Amount, isSendTransaction, publicIdentityEquals } from '@iov/bcp';
+import { Amount, isSendTransaction } from '@iov/bcp';
 import {
   MultiChainSigner,
   UserProfile,
@@ -37,16 +37,21 @@ export interface UseOnlyJsonRpcSigningServer {
   handleChecked(request: JsonRpcRequest): Promise<JsonRpcResponse>;
 }
 
+/**
+ * A transaction signed by the user of the extension.
+ *
+ * All fields must be losslessly JSON serializable/deserializable to allow
+ * messaging between background script and UI.
+ */
 export interface ProcessedTx {
   readonly id: string;
   readonly recipient: string;
   readonly signer: string;
   readonly amount: Amount;
   readonly memo?: string;
-  readonly time: ReadonlyDate;
-  readonly received: boolean;
-  readonly success: boolean;
-  readonly err?: any; // eslint-disable-line
+  readonly time: string;
+  /** If error is null, the transactin succeeded  */
+  readonly error: string | null;
 }
 
 function isNonNull<T>(t: T | null): t is T {
@@ -189,23 +194,23 @@ export class Persona {
     this.signer.shutdown();
   }
 
+  /**
+   * We keep this async for now to allow fetching IOV names
+   */
   private async processTransaction(t: SignedAndPosted): Promise<ProcessedTx | null> {
     if (!isSendTransaction(t.transaction)) {
       // cannot process
       return null;
     }
 
-    const identities = (await this.getAccounts())[0].identities;
-
     return {
-      time: new ReadonlyDate(ReadonlyDate.now()),
+      time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
       id: t.postResponse.transactionId,
       recipient: t.transaction.recipient,
       signer: Encoding.toHex(t.transaction.creator.pubkey.data),
       memo: t.transaction.memo,
       amount: t.transaction.amount,
-      received: !identities.find(i => publicIdentityEquals(i, t.transaction.creator)),
-      success: true,
+      error: null,
     };
   }
 }
