@@ -2,9 +2,8 @@ import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import * as React from 'react';
-import errorTx from '../../assets/transactionError.svg';
-import receiveTx from '../../assets/transactionReceive.svg';
-import sendTx from '../../assets/transactionSend.svg';
+import iconErrorTx from '../../assets/transactionError.svg';
+import iconSendTx from '../../assets/transactionSend.svg';
 import MsgError from './MsgError';
 import Msg from './MsgSuccess';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -36,21 +35,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, received, signer, recipient, error } = item;
+  const { time, amount, recipient, error } = item;
 
   const beautifulAmount = prettyAmount(amount);
-  const icon = error ? errorTx : received ? receiveTx : sendTx;
+  const icon = error ? iconErrorTx : iconSendTx;
 
   const msg = error ? (
     <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
   ) : (
-    <Msg
-      onDetailedView={onDetailedView}
-      received={received}
-      amount={beautifulAmount}
-      signer={signer}
-      recipient={recipient}
-    />
+    <Msg onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
   );
 
   return (
