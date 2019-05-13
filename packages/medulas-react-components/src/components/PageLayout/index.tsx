@@ -4,6 +4,7 @@ import Typography from '../Typography';
 import Image from '../Image';
 import iovLogo from '../../theme/assets/iov-logo.png';
 import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
+import IconButton from '@material-ui/core/IconButton';
 
 interface Props {
   readonly id?: string;
@@ -27,9 +28,11 @@ const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.E
       height="100%"
     >
       {showBackArrow && (
-        <Block marginLeft={-2}>
+        <Block marginLeft={-2} marginBottom={1}>
           <Typography link>
-            <ArrowBackIcon fontSize="large" onClick={onBack} />
+            <IconButton color="inherit" aria-label="Go back" edge="end" onClick={onBack}>
+              <ArrowBackIcon fontSize="default" />
+            </IconButton>
           </Typography>
         </Block>
       )}
