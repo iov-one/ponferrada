@@ -11,7 +11,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Img from 'medulas-react-components/lib/components/Image';
 import { prettyAmount } from '../../../../utils/balances';
-import { ProcessedTx } from '../ListTxs';
+import { ProcessedTx } from '../../../../logic/persona';
 
 interface ItemProps {
   readonly item: ProcessedTx;
