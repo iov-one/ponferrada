@@ -13,14 +13,14 @@ const buildGetIdentitiesRequest = (method: string, customMessage?: string): obje
   method,
   params: {
     reason: TransactionEncoder.toJson(
-      customMessage ? customMessage : 'I would like to know who you are on Ethereum'
+      customMessage ? customMessage : 'I would like to know who you are on Ethereum',
     ),
     chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
   },
 });
 const revealAllIdentities: GetIdentitiesAuthorization = async (
   reason,
-  matchingIdentities
+  matchingIdentities,
 ): Promise<ReadonlyArray<PublicIdentity>> => {
   return matchingIdentities;
 };
@@ -32,7 +32,7 @@ withChainsDescribe('External handler', () => {
   beforeEach(
     (): void => {
       localStorage.clear();
-    }
+    },
   );
 
   function checkNextRequest(request: object): void {

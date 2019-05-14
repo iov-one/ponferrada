@@ -41,7 +41,7 @@ function updateExtensionBadge(): void {
 export async function handleExternalMessage(
   signingServer: SigningServer,
   externalRequest: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-  sender: string | undefined
+  sender: string | undefined,
 ): Promise<JsonRpcResponse> {
   const responseId = typeof externalRequest.id === 'number' ? externalRequest.id : null;
   if (!sender) {
