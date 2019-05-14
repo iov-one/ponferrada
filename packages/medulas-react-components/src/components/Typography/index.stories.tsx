@@ -45,5 +45,5 @@ storiesOf('Components', module).add(
         Second part of the text.
       </Typography>
     </Storybook>
-  )
+  ),
 );

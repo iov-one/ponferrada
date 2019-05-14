@@ -31,5 +31,5 @@ storiesOf('Components', module).add(
         </Grid>
       </Storybook>
     );
-  }
+  },
 );

@@ -8,7 +8,7 @@ import { withChainsDescribe } from '../../utils/test/testExecutor';
 withChainsDescribe('Persona', () => {
   const revealAllIdentities: GetIdentitiesAuthorization = async (
     reason,
-    matchingIdentities
+    matchingIdentities,
   ): Promise<ReadonlyArray<PublicIdentity>> => {
     return matchingIdentities;
   };
@@ -73,7 +73,7 @@ withChainsDescribe('Persona', () => {
 
     it('gets proper balance for Ethereum account', async () => {
       const persona = await Persona.create(
-        'oxygen fall sure lava energy veteran enroll frown question detail include maximum'
+        'oxygen fall sure lava energy veteran enroll frown question detail include maximum',
       );
 
       const balances = await persona.getBalances(0);
@@ -105,7 +105,7 @@ withChainsDescribe('Persona', () => {
 
     it('can send example request to the signing server', async () => {
       const persona = await Persona.create(
-        'oxygen fall sure lava energy veteran enroll frown question detail include maximum'
+        'oxygen fall sure lava energy veteran enroll frown question detail include maximum',
       );
       const server = persona.startSigningServer(revealAllIdentities, signEverything);
       const response = await server.handleChecked({

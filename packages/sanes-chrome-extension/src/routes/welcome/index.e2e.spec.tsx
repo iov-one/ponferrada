@@ -14,7 +14,7 @@ describe('DOM > Welcome route', (): void => {
   afterEach(
     async (): Promise<void> => {
       await closeBrowser(browser);
-    }
+    },
   );
 
   it('loads correctly', async (): Promise<void> => {

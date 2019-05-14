@@ -13,7 +13,7 @@ export const travelToSignup = async (store: Store): Promise<React.Component> => 
   TestUtils.act(
     (): void => {
       history.push(SIGNUP_ROUTE);
-    }
+    },
   );
   await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);
 

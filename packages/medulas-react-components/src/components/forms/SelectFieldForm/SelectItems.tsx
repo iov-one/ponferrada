@@ -33,7 +33,7 @@ const ListItems = ({ action, items, selectedItem }: ListItemProps): JSX.Element 
             </ListItem>
             <Hairline />
           </Block>
-        )
+        ),
       )}
     </List>
   );

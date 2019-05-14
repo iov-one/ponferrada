@@ -9,7 +9,7 @@ import { Page } from 'puppeteer';
 
 export const submitRecoveryPhrase = async (
   AccountSubmitDom: React.Component,
-  mnemonic: string
+  mnemonic: string,
 ): Promise<void> => {
   const textarea = TestUtils.scryRenderedDOMComponentsWithTag(AccountSubmitDom, 'textarea');
 
@@ -24,7 +24,7 @@ export const submitRecoveryPhrase = async (
           value: mnemonic,
         },
       } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-    }
+    },
   );
 
   const form = TestUtils.findRenderedDOMComponentWithTag(AccountSubmitDom, 'form');

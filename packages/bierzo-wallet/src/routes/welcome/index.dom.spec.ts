@@ -14,7 +14,7 @@ describe('The /welcome route', () => {
     async (): Promise<void> => {
       store = configureStore();
       welcomeDom = await travelToWelcome(store);
-    }
+    },
   );
 
   it('redirects to the /payment route when clicked', () => {

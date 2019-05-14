@@ -17,7 +17,7 @@ export const makeStore = (): Store<RootState> => {
       './reducers',
       (): void => {
         store.replaceReducer(reducer);
-      }
+      },
     );
   }
 

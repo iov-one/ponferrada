@@ -40,7 +40,7 @@ export function algorithmForCodec(codec: CodecType): Algorithm {
 }
 
 export function pathBuilderForCodec(
-  codecType: CodecType
+  codecType: CodecType,
 ): (derivation: number) => ReadonlyArray<Slip10RawIndex> {
   const pathBuilder = (derivation: number): ReadonlyArray<Slip10RawIndex> => {
     switch (codecType) {

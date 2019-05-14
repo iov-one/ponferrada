@@ -10,7 +10,7 @@ export const travelToWelcome = async (store: Store): Promise<React.Component> =>
   TestUtils.act(
     (): void => {
       history.push(WELCOME_ROUTE);
-    }
+    },
   );
   await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
 

@@ -63,5 +63,5 @@ storiesOf('Components', module).add(
         <ToastStorybook />{' '}
       </ToastProvider>
     </Storybook>
-  )
+  ),
 );

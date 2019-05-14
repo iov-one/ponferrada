@@ -82,5 +82,5 @@ storiesOf('Components/forms', module).add(
       <Block marginTop={2} />
       <FormStory />
     </Storybook>
-  )
+  ),
 );

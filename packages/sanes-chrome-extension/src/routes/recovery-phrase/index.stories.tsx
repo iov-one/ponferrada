@@ -10,5 +10,5 @@ storiesOf(CHROME_EXTENSION_ROOT, module).add(
     <Storybook>
       <RecoveryPhrase />
     </Storybook>
-  )
+  ),
 );

@@ -10,7 +10,7 @@ export const travelToLogin = async (store: Store): Promise<React.Component> => {
   TestUtils.act(
     (): void => {
       history.push(LOGIN_ROUTE);
-    }
+    },
   );
   await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
 

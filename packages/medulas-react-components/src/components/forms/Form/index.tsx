@@ -13,7 +13,7 @@ export interface ValidationError {
 
 interface Props {
   readonly onSubmit: (
-    event?: React.SyntheticEvent<HTMLFormElement>
+    event?: React.SyntheticEvent<HTMLFormElement>,
   ) => Promise<object | undefined> | undefined;
   readonly children: React.ReactNode;
 }

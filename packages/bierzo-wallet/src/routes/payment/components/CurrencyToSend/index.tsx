@@ -96,7 +96,7 @@ const CurrencyToSend = (props: Props): JSX.Element => {
                   number,
                   lowerOrEqualThan(balance),
                   lowerOrEqualThan(QUANTITY_MAX),
-                  greaterOrEqualThan(QUANTITY_MIN)
+                  greaterOrEqualThan(QUANTITY_MIN),
                 )}
                 placeholder="0,00"
                 fullWidth
