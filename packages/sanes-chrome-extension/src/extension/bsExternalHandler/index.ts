@@ -16,6 +16,14 @@ function generateErrorResponse(id: number | null, message: string): JsonRpcError
   };
 }
 
+function rejectRequest(permanent: boolean, sender: string): void {
+  if (!permanent) {
+    return;
+  }
+
+  SenderWhitelist.block(sender);
+}
+
 export async function handleExternalMessage(
   signingServer: SigningServer,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
