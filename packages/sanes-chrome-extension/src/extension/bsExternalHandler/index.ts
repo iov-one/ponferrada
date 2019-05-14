@@ -22,18 +22,9 @@ function generateErrorResponse(id: number | null, message: string): JsonRpcError
   };
 }
 
-function rejectRequest(permanent: boolean, sender: string): void {
-  if (!permanent) {
-    return;
-  }
-
-  SenderWhitelist.block(sender);
-}
-
 export async function handleExternalMessage(
   signingServer: SigningServer,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  externalRequest: any,
+  externalRequest: any, // eslint-disable-line @typescript-eslint/no-explicit-any
   sender: string | undefined
 ): Promise<JsonRpcResponse> {
   const responseId = typeof externalRequest.id === 'number' ? externalRequest.id : null;
@@ -58,16 +49,31 @@ export async function handleExternalMessage(
     return generateErrorResponse(responseId, err.message);
   }
 
-  const chromeRequest = {
-    request,
-    accept: () => signingServer.handleChecked(request),
-    reject: (permanent: boolean) => rejectRequest(permanent, sender),
-  };
-  RequestHandler.add(chromeRequest);
-  /*
   if (SenderWhitelist.isBlocked(sender)) {
     return generateErrorResponse(responseId, 'Sender has been blocked by user');
   }
+
+  return new Promise(resolve => {
+    const accept = (signingServer: UseOnlyJsonRpcSigningServer, request: JsonRpcRequest): void => {
+      RequestHandler.solved();
+
+      resolve(signingServer.handleChecked(request));
+    };
+
+    const reject = (permanent: boolean): void => {
+      if (permanent) {
+        SenderWhitelist.block(sender);
+      }
+      RequestHandler.solved();
+
+      resolve(generateErrorResponse(responseId, 'Request has been rejected'));
+    };
+
+    RequestHandler.add({ request, accept, reject });
+  });
+
+  /*
+
 
   check if sender is blocked -> if so generate Error response with custom message
 
@@ -76,6 +82,4 @@ export async function handleExternalMessage(
 
   check request is signAndPost, update enqueue
   */
-
-  return signingServer.handleUnchecked(externalRequest);
 }

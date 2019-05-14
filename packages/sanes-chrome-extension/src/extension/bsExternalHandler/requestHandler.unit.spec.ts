@@ -33,6 +33,16 @@ withChainsDescribe('External handler', () => {
     }
   );
 
+  function checkNextRequest(request: object): void {
+    const req = RequestHandler.next();
+    expect(req.accept).not.toBe(null);
+    expect(req.accept).not.toBe(undefined);
+    expect(req.reject).not.toBe(null);
+    expect(req.reject).not.toBe(undefined);
+
+    expect(req.request).toEqual(request);
+  }
+
   it('resolves to error if sender is unknown', async () => {
     const persona = await Persona.create();
 
@@ -101,13 +111,33 @@ withChainsDescribe('External handler', () => {
     const sender = 'http://finex.com';
     handleExternalMessage(server, request, sender);
 
-    const req = RequestHandler.get();
-    expect(req.accept).not.toBe(null);
-    expect(req.accept).not.toBe(undefined);
-    expect(req.reject).not.toBe(null);
-    expect(req.reject).not.toBe(undefined);
+    expect(RequestHandler.requests().length).toBe(1);
+    checkNextRequest(request);
 
-    expect(req.request).toEqual(request);
+    persona.destroy();
+  });
+
+  it('resolves to error when sender has been permanently blocked', async () => {
+    const persona = await Persona.create();
+    SenderWhitelist.load();
+    RequestHandler.create();
+
+    const server = persona.startSigningServer(revealAllIdentities, signEverything);
+    const request = buildGetIdentitiesRequest('getIdentities');
+    const sender = 'http://finex.com';
+    handleExternalMessage(server, request, sender);
+    expect(RequestHandler.requests().length).toBe(1);
+
+    const chromeRequest = RequestHandler.next();
+    const rejectPermanently = true;
+    chromeRequest.reject(rejectPermanently);
+    expect(RequestHandler.requests().length).toBe(0);
+
+    expect(handleExternalMessage(server, request, sender)).resolves.toMatchObject({
+      error: {
+        message: 'Sender has been blocked by user',
+      },
+    });
 
     persona.destroy();
   });
