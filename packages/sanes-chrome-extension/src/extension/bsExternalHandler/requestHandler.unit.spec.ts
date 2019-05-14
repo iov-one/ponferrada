@@ -7,12 +7,14 @@ import { Persona } from '../../logic/persona';
 import { SenderWhitelist } from './senderWhitelist';
 import { RequestHandler } from './requestHandler';
 
-const buildGetIdentitiesRequest = (method: string): object => ({
+const buildGetIdentitiesRequest = (method: string, customMessage?: string): object => ({
   jsonrpc: '2.0',
   id: 1,
   method,
   params: {
-    reason: TransactionEncoder.toJson('I would like to know who you are on Ethereum'),
+    reason: TransactionEncoder.toJson(
+      customMessage ? customMessage : 'I would like to know who you are on Ethereum'
+    ),
     chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
   },
 });
@@ -137,6 +139,31 @@ withChainsDescribe('External handler', () => {
       error: {
         message: 'Sender has been blocked by user',
       },
+    });
+
+    persona.destroy();
+  });
+
+  it('resolves in order request queue', async () => {
+    const persona = await Persona.create();
+    SenderWhitelist.load();
+    RequestHandler.create();
+
+    const server = persona.startSigningServer(revealAllIdentities, signEverything);
+    const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
+    const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
+    const sender = 'http://finex.com';
+    handleExternalMessage(server, requestFoo, sender);
+    handleExternalMessage(server, requestBar, sender);
+    expect(RequestHandler.requests().length).toBe(2);
+
+    const chromeFooRequest = RequestHandler.next();
+    chromeFooRequest.accept();
+    expect(RequestHandler.requests().length).toBe(1);
+    const chromeBarRequest = RequestHandler.next();
+    expect(chromeFooRequest.request).not.toEqual(chromeBarRequest.request);
+    expect(chromeBarRequest.request.params).toMatchObject({
+      reason: 'string:Reason bar',
     });
 
     persona.destroy();

@@ -69,7 +69,7 @@ export async function handleExternalMessage(
   }
 
   return new Promise(resolve => {
-    const accept = (signingServer: UseOnlyJsonRpcSigningServer, request: JsonRpcRequest): void => {
+    const accept = (): void => {
       RequestHandler.solved();
       updateExtensionBadge();
 

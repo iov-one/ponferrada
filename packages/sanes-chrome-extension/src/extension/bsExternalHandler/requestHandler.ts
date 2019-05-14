@@ -1,9 +1,8 @@
 import { JsonRpcRequest } from '@iov/jsonrpc';
-import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
 
 interface Request {
   readonly request: JsonRpcRequest;
-  readonly accept: (signingServer: UseOnlyJsonRpcSigningServer, request: JsonRpcRequest) => void;
+  readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
 
@@ -59,6 +58,6 @@ export class RequestHandler {
       throw new Error('Request handler instance has not been initilised');
     }
 
-    return RequestHandler.instance.unshift(req);
+    return RequestHandler.instance.push(req);
   }
 }
