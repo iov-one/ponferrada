@@ -1,6 +1,7 @@
 import { JsonRpcErrorResponse, JsonRpcResponse, jsonRpcCode } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
 import { RpcCall, parseRpcCall } from './requestHandler';
+import { SenderWhitelist } from './senderWhitelist';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 
@@ -18,11 +19,20 @@ function generateErrorResponse(id: number | null, message: string): JsonRpcError
 export async function handleExternalMessage(
   signingServer: SigningServer,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  externalRequest: any
+  externalRequest: any,
+  sender: string | undefined
 ): Promise<JsonRpcResponse> {
   const responseId = typeof externalRequest.id === 'number' ? externalRequest.id : null;
+  if (!sender) {
+    return generateErrorResponse(responseId, 'Unkown sender, droped request');
+  }
+
   if (!signingServer) {
     return generateErrorResponse(responseId, 'Signing server not ready');
+  }
+
+  if (!SenderWhitelist.loaded()) {
+    return generateErrorResponse(responseId, 'SenderWhitelist has not been initialised');
   }
 
   // TODO allow this code from iov/core
@@ -33,6 +43,9 @@ export async function handleExternalMessage(
     return generateErrorResponse(responseId, err.message);
   }
 
+  if (SenderWhitelist.isBlocked(sender)) {
+    return generateErrorResponse(responseId, 'Sender has been blocked by user');
+  }
   /*
   check if sender is blocked -> if so generate Error response with custom message
 
