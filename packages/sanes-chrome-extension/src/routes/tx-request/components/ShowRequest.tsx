@@ -16,7 +16,7 @@ interface Props {
 const Layout = ({ onAcceptRequest, showRejectView }: Props): JSX.Element => (
   <PageLayout id={TX_REQUEST_SHOW} primaryTitle="Transaction" title="Request">
     <Hairline />
-    <Block textAlign="center">
+    <Block textAlign="center" marginTop={2} marginBottom={2}>
       <Typography variant="body1">The following site:</Typography>
       <Typography variant="body1" color="primary">
         http://finex.com
@@ -26,9 +26,32 @@ const Layout = ({ onAcceptRequest, showRejectView }: Props): JSX.Element => (
       </Typography>
     </Block>
     <Hairline />
-    <Block marginTop={10} />
+    <Block marginTop={2} marginBottom={2}>
+      <Block display="flex" alignItems="center">
+        <Block flex="1 0 1px">
+          <Block marginLeft={6}>
+            <Typography variant="body1">Fee</Typography>
+          </Block>
+        </Block>
+        <Block flex="1 0 1px">
+          <Typography variant="h6">0,0288 ETH</Typography>
+        </Block>
+      </Block>
+      <Block display="flex" alignItems="center">
+        <Block flex="1 0 1px">
+          <Block marginLeft={6}>
+            <Typography variant="body1">Register</Typography>
+          </Block>
+        </Block>
+        <Block flex="1 0 1px">
+          <Typography variant="h6">billy*iov</Typography>
+        </Block>
+      </Block>
+    </Block>
+    <Hairline />
+    <Block marginTop={4} />
     <Button variant="contained" fullWidth onClick={onAcceptRequest}>
-      Accept
+      Approve
     </Button>
     <Block marginTop={2} />
     <Button variant="contained" fullWidth color="secondary" onClick={showRejectView}>

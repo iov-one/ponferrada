@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Button from 'medulas-react-components/lib/components/Button';
 import Back from 'medulas-react-components/lib/components/Button/Back';
-import Form, { useForm, FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
-import { TX_REQUEST } from '../../paths';
+import Form, { FormValues, useForm } from 'medulas-react-components/lib/components/forms/Form';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+import { TX_REQUEST } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';
 export const TX_REQUEST_REJECT = `${TX_REQUEST}_reject`;
@@ -31,7 +31,7 @@ const Layout = ({ onBack, onRejectRequest }: Props): JSX.Element => {
     <PageLayout id={TX_REQUEST_REJECT} primaryTitle="Transaction" title="Request">
       <Hairline />
       <Form onSubmit={handleSubmit}>
-        <Block textAlign="center">
+        <Block textAlign="center" marginTop={2}>
           <Typography variant="body1">You are not allowing</Typography>
           <Typography variant="body1" color="primary">
             http://finex.com
@@ -49,7 +49,30 @@ const Layout = ({ onBack, onRejectRequest }: Props): JSX.Element => {
           />
         </Block>
         <Hairline />
-        <Block marginTop={10} />
+        <Block marginTop={2} marginBottom={2}>
+          <Block display="flex" alignItems="center">
+            <Block flex="1 0 1px">
+              <Block marginLeft={6}>
+                <Typography variant="body1">Fee</Typography>
+              </Block>
+            </Block>
+            <Block flex="1 0 1px">
+              <Typography variant="h6">0,0288 ETH</Typography>
+            </Block>
+          </Block>
+          <Block display="flex" alignItems="center">
+            <Block flex="1 0 1px">
+              <Block marginLeft={6}>
+                <Typography variant="body1">Register</Typography>
+              </Block>
+            </Block>
+            <Block flex="1 0 1px">
+              <Typography variant="h6">billy*iov</Typography>
+            </Block>
+          </Block>
+        </Block>
+        <Hairline />
+        <Block marginTop={4} />
         <Button variant="contained" fullWidth type="submit" disabled={pristine || submitting}>
           Reject
         </Button>
