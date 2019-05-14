@@ -1,7 +1,3 @@
-export function isNewSender(sender: string): boolean {
-  return true;
-}
-
 const ALLOWED_URLS_KEY = 'auk';
 const BLOCKED_URLS_KEY = 'buk';
 const SEPARATOR = ',';

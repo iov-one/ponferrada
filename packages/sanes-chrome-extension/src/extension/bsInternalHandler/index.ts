@@ -10,7 +10,6 @@ import {
   MessageToForegroundAction,
 } from '../messages';
 import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona, ProcessedTx } from '../../logic/persona';
-import { isNewSender } from './senderWhitelist';
 import { isRequestMeta } from './requestMeta';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
@@ -61,12 +60,6 @@ export async function handleInternalMessage(
         ): Promise<ReadonlyArray<PublicIdentity>> => {
           if (!isRequestMeta(meta)) {
             throw new Error('Unexpected type of data in meta field');
-          }
-
-          if (isNewSender(meta.senderUrl)) {
-            chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
-            chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
-            chrome.browserAction.setBadgeText({ text: '*' });
           }
 
           // the identities the user accepted to reveal

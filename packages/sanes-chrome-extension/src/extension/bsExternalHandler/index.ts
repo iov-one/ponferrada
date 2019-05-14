@@ -1,3 +1,4 @@
+/*global chrome*/
 import {
   JsonRpcErrorResponse,
   JsonRpcResponse,
@@ -22,6 +23,21 @@ function generateErrorResponse(id: number | null, message: string): JsonRpcError
   };
 }
 
+function updateExtensionBadge(): void {
+  const isExtensionContext = typeof chrome !== 'undefined'; // needed for tests
+  if (!isExtensionContext) {
+    return;
+  }
+
+  const queueSize = RequestHandler.requests().length;
+  const badgeText = queueSize === 0 ? '' : `${queueSize}`;
+  const iconPath = queueSize === 0 ? 'assets/icons/icon128.png' : 'assets/icons/request128.png';
+
+  chrome.browserAction.setIcon({ path: iconPath });
+  chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
+  chrome.browserAction.setBadgeText({ text: badgeText });
+}
+
 export async function handleExternalMessage(
   signingServer: SigningServer,
   externalRequest: any, // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -40,7 +56,6 @@ export async function handleExternalMessage(
     return generateErrorResponse(responseId, 'SenderWhitelist has not been initialised');
   }
 
-  // TODO allow this code from iov/core
   let request: JsonRpcRequest;
   try {
     request = parseJsonRpcRequest(externalRequest);
@@ -56,6 +71,7 @@ export async function handleExternalMessage(
   return new Promise(resolve => {
     const accept = (signingServer: UseOnlyJsonRpcSigningServer, request: JsonRpcRequest): void => {
       RequestHandler.solved();
+      updateExtensionBadge();
 
       resolve(signingServer.handleChecked(request));
     };
@@ -65,21 +81,12 @@ export async function handleExternalMessage(
         SenderWhitelist.block(sender);
       }
       RequestHandler.solved();
+      updateExtensionBadge();
 
       resolve(generateErrorResponse(responseId, 'Request has been rejected'));
     };
 
     RequestHandler.add({ request, accept, reject });
+    updateExtensionBadge();
   });
-
-  /*
-
-
-  check if sender is blocked -> if so generate Error response with custom message
-
-  check request is getIentitiesif getIdentities
-      check if sender is in allowed list -> if not generate a enqueue
-
-  check request is signAndPost, update enqueue
-  */
 }
