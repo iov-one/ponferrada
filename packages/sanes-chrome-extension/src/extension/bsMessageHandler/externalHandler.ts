@@ -1,5 +1,6 @@
 import { JsonRpcErrorResponse, JsonRpcResponse, jsonRpcCode } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
+import { RequestMeta } from './requestMeta';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 
@@ -29,5 +30,9 @@ export async function handleExternalMessage(
     return generateErrorResponse(responseId);
   }
 
-  return signingServer.handleUnchecked(request);
+  const meta: RequestMeta = {
+    senderUrl: sender.url,
+  };
+
+  return signingServer.handleUnchecked(request, meta);
 }
