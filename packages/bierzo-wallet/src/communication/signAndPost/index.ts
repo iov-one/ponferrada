@@ -1,5 +1,5 @@
 /*global chrome*/
-import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse } from '@iov/jsonrpc';
+import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse, makeJsonRpcId } from '@iov/jsonrpc';
 import { TransactionEncoder } from '@iov/core';
 import { PublicIdentity, SendTransaction, Address, TokenTicker, TransactionId } from '@iov/bcp';
 import { EthereumConnection } from '@iov/ethereum';
@@ -26,7 +26,7 @@ const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<Json
 
   return {
     jsonrpc: '2.0',
-    id: 2,
+    id: makeJsonRpcId(),
     method: 'signAndPost',
     params: {
       reason: TransactionEncoder.toJson('I would like you to sign this request'),

@@ -1,5 +1,5 @@
 /*global chrome*/
-import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse } from '@iov/jsonrpc';
+import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse, makeJsonRpcId } from '@iov/jsonrpc';
 import { TransactionEncoder } from '@iov/core';
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { ethereumCodec } from '@iov/ethereum';
@@ -7,7 +7,7 @@ import { extensionId } from '..';
 
 const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',
-  id: 1,
+  id: makeJsonRpcId(),
   method: 'getIdentities',
   params: {
     reason: TransactionEncoder.toJson('I would like to know who you are on Ethereum'),
