@@ -55,7 +55,7 @@ export class AccountManager {
           .filter(ident => ident.chainId === chain.chainId);
 
         const identityByChainAndAccount = identitiesByChain.filter(
-          ident => this.userProfile.getIdentityLabel(ident) === `${accountIndex}`
+          ident => this.userProfile.getIdentityLabel(ident) === `${accountIndex}`,
         );
 
         if (identityByChainAndAccount.length !== 1) {
@@ -101,7 +101,7 @@ export class AccountManager {
   private async identityExistsInProfile(
     walletId: WalletId,
     chainId: ChainId,
-    path: ReadonlyArray<Slip10RawIndex>
+    path: ReadonlyArray<Slip10RawIndex>,
   ): Promise<boolean> {
     // FIXME iov-core, please.
     const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId); // eslint-disable-line @typescript-eslint/no-explicit-any

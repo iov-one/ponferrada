@@ -15,5 +15,5 @@ storiesOf('Components', module).add(
         <Switch color="primary" />
       </Block>
     </Storybook>
-  )
+  ),
 );

@@ -21,7 +21,7 @@ export function getSigningServer(): SigningServer {
 
 export async function handleInternalMessage(
   message: MessageToBackground,
-  sender: chrome.runtime.MessageSender
+  sender: chrome.runtime.MessageSender,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
   console.log(message, sender);
@@ -55,7 +55,7 @@ export async function handleInternalMessage(
 
         const getIdentitiesCallback: GetIdentitiesAuthorization = async (
           _reason,
-          matchingIdentities
+          matchingIdentities,
         ): Promise<ReadonlyArray<PublicIdentity>> => {
           // sender will be available here after upgrading to IOV-Core 0.13.7
           // https://github.com/iov-one/iov-core/pull/993
@@ -73,7 +73,7 @@ export async function handleInternalMessage(
 
         const signAndPostCallback: SignAndPostAuthorization = async (
           _reason,
-          _transaction
+          _transaction,
         ): Promise<boolean> => {
           // sender will be available here after upgrading to IOV-Core 0.13.7
           // https://github.com/iov-one/iov-core/pull/993
@@ -94,7 +94,7 @@ export async function handleInternalMessage(
         signingServer = persona.startSigningServer(
           getIdentitiesCallback,
           signAndPostCallback,
-          transactionsChangedHandler
+          transactionsChangedHandler,
         );
         console.log('Signing server ready to handle requests');
 

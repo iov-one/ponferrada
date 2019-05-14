@@ -28,5 +28,5 @@ withChainsDescribe(
       const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
       await submitRecoveryPhrase(RestoreDOM, mnemonic);
     }, 55000);
-  }
+  },
 );

@@ -12,7 +12,7 @@ describe('DOM > Feature > Login', (): void => {
   beforeEach(
     (): void => {
       store = aNewStore();
-    }
+    },
   );
 
   it(`should two inputs, one button and show toast in case if wrong password`, async (): Promise<void> => {
@@ -33,7 +33,7 @@ describe('DOM > Feature > Login', (): void => {
         TestUtils.Simulate.change(passwordInput, {
           target: { value: randomString(10) },
         } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-      }
+      },
     );
 
     const form = TestUtils.findRenderedDOMComponentWithTag(LoginDom, 'form');

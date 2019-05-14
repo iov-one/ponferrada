@@ -17,7 +17,7 @@ function generateErrorResponse(id: number | null): JsonRpcErrorResponse {
 export async function handleExternalMessage(
   signingServer: SigningServer,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  request: any
+  request: any,
 ): Promise<JsonRpcResponse> {
   if (!signingServer) {
     const responseId = typeof request.id === 'number' ? request.id : null;

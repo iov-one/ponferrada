@@ -11,5 +11,5 @@ storiesOf(WALLET_ROOT, module)
       <DecoratedStorybook>
         <Payment />
       </DecoratedStorybook>
-    )
+    ),
   );

@@ -12,7 +12,7 @@ export const travelToRestoreAccount = async (store: Store): Promise<React.Compon
   TestUtils.act(
     (): void => {
       history.push(RESTORE_ACCOUNT);
-    }
+    },
   );
   await whenOnNavigatedToRoute(store, RESTORE_ACCOUNT);
 

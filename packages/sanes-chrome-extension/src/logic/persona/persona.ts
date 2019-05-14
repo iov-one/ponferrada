@@ -157,13 +157,13 @@ export class Persona {
   public startSigningServer(
     authorizeGetIdentities: GetIdentitiesAuthorization,
     authorizeSignAndPost: SignAndPostAuthorization,
-    transactionsChanged?: (transactions: ReadonlyArray<ProcessedTx>) => void
+    transactionsChanged?: (transactions: ReadonlyArray<ProcessedTx>) => void,
   ): UseOnlyJsonRpcSigningServer {
     const core = new SigningServerCore(
       this.profile,
       this.signer,
       authorizeGetIdentities,
-      authorizeSignAndPost
+      authorizeSignAndPost,
     );
 
     if (transactionsChanged) {

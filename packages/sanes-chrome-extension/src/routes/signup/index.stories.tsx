@@ -14,7 +14,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
       <Storybook>
         <NewAccountForm onBack={action('back in history')} onSignup={action('next step')} />
       </Storybook>
-    )
+    ),
   )
   .add(
     'Recovery Phrase page',
@@ -22,7 +22,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
       <Storybook>
         <ShowPhraseForm onBack={action('back in history')} onHintPassword={action('hint step')} />
       </Storybook>
-    )
+    ),
   )
   .add(
     'Security Hint page',
@@ -30,5 +30,5 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
       <Storybook>
         <SecurityHintForm onBack={action('back in history')} onSaveHint={action('save hint')} />
       </Storybook>
-    )
+    ),
   );

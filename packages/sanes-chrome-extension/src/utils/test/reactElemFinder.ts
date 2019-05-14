@@ -6,7 +6,7 @@ const INTERVAL = 500;
 
 export const findRenderedDOMComponentWithId = (
   tree: React.Component<any>, // eslint-disable-line
-  id: string
+  id: string,
 ): Promise<React.ReactInstance> =>
   new Promise(
     (resolve, reject): void => {
@@ -21,7 +21,7 @@ export const findRenderedDOMComponentWithId = (
           tree,
           (inst: React.ReactInstance): boolean => {
             return TestUtils.isDOMComponent(inst) && inst.id === id;
-          }
+          },
         );
 
         if (elementsWithId.length === 1) {
@@ -31,7 +31,7 @@ export const findRenderedDOMComponentWithId = (
 
         times += 1;
       }, INTERVAL);
-    }
+    },
   );
 
 export const findRenderedE2EComponentWithId = async (page: Page, elementId: string): Promise<void> => {

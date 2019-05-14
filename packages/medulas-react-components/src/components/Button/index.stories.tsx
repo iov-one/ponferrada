@@ -39,5 +39,5 @@ storiesOf('Components', module).add(
         </GridItem>
       </Grid>
     </Storybook>
-  )
+  ),
 );

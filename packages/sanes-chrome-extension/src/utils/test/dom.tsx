@@ -21,7 +21,7 @@ export const createDom = (store: Store): React.Component =>
           </ToastProvider>
         </ConnectedRouter>
       </MedulasThemeProvider>
-    </Provider>
+    </Provider>,
   ) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export const expectRoute = (store: Store, route: string): void => {

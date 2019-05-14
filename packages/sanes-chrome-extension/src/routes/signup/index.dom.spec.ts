@@ -34,6 +34,6 @@ describe('DOM > Feature > Signup', (): void => {
       await handleSecurityHint(signupDOM, accountName);
       await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
     },
-    55000
+    55000,
   );
 });

@@ -18,7 +18,7 @@ withChainsDescribe(
     afterEach(
       async (): Promise<void> => {
         await closeBrowser(browser);
-      }
+      },
     );
 
     it('should redirect to restore account route, fill recovery phrase and redirect to account route', async (): Promise<
@@ -29,5 +29,5 @@ withChainsDescribe(
       const mnemonic = 'degree tackle suggest window test behind mesh extra cover prepare oak script';
       await submitRecoveryPhraseE2E(page, mnemonic);
     }, 60000);
-  }
+  },
 );

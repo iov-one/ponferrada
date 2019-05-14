@@ -28,7 +28,7 @@ const render = (Component: React.ComponentType, persona: GetPersonaResponse): vo
         </ToastProvider>
       </MedulasThemeProvider>
     </Provider>,
-    rootEl
+    rootEl,
   );
 };
 
@@ -44,7 +44,7 @@ sendGetPersonaMessage().then(persona => {
       (): void => {
         const NextApp = require('./routes').default;
         render(NextApp, persona);
-      }
+      },
     );
   }
 });

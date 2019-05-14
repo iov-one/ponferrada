@@ -49,7 +49,7 @@ const useStyles = makeStyles(
       justifyContent: 'center',
       marginRight: `${theme.spacing(3)}px`,
     },
-  })
+  }),
 );
 
 interface Props {

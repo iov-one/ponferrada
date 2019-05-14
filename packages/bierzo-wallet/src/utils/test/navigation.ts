@@ -19,5 +19,5 @@ export const whenOnNavigatedToRoute = (refreshStore: Store, desiredRoute: string
         }
         times += 1;
       }, INTERVAL);
-    }
+    },
   );

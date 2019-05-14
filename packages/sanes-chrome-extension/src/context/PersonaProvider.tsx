@@ -58,7 +58,7 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const loadPersonaInReact = (
     accountNames: Accounts,
     mnemonic: string,
-    txs: ReadonlyArray<ProcessedTx>
+    txs: ReadonlyArray<ProcessedTx>,
   ): void => {
     setAccountNames(accountNames);
     setMnemonic(mnemonic);

@@ -99,5 +99,5 @@ storiesOf('Components/forms', module).add(
         </GridItem>
       </Grid>
     </Storybook>
-  )
+  ),
 );

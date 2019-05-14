@@ -77,7 +77,7 @@ const useStyles = makeStyles(
         borderStyle: 'solid',
       },
     },
-  })
+  }),
 );
 
 interface Props {

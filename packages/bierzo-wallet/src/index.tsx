@@ -23,7 +23,7 @@ const render = (Component: React.ComponentType): void => {
         </MedulasThemeProvider>
       </ConnectedRouter>
     </Provider>,
-    rootEl
+    rootEl,
   );
 };
 
@@ -35,6 +35,6 @@ if (module.hot) {
     (): void => {
       const NextApp = require('./routes').default;
       render(NextApp);
-    }
+    },
   );
 }

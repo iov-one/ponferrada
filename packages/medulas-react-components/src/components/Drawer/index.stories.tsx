@@ -47,5 +47,5 @@ storiesOf('Components', module).add(
         </Drawer>
       </Storybook>
     );
-  }
+  },
 );

@@ -9,5 +9,5 @@ storiesOf(CHROME_EXTENSION_ROOT, module).add(
     <SanesStorybook>
       <Layout />
     </SanesStorybook>
-  )
+  ),
 );

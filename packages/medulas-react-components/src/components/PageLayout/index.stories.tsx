@@ -13,5 +13,5 @@ storiesOf('Components', module).add(
         <Typography variant="h6">Layout content</Typography>
       </PageLayout>
     </Storybook>
-  )
+  ),
 );

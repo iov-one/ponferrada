@@ -16,7 +16,7 @@ export const configureStore = (): Store<{ router: RouterState }> => {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const nextRootReducer = require('./reducers');
         store.replaceReducer(nextRootReducer);
-      }
+      },
     );
   }
 

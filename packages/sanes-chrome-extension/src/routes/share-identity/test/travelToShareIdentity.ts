@@ -10,7 +10,7 @@ export const travelToShareIdentity = async (store: Store): Promise<React.Compone
   TestUtils.act(
     (): void => {
       history.push(SHARE_IDENTITY);
-    }
+    },
   );
   await whenOnNavigatedToRoute(store, SHARE_IDENTITY);
 

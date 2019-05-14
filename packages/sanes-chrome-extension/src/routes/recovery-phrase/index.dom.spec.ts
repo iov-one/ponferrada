@@ -14,7 +14,7 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   beforeEach(
     (): void => {
       store = aNewStore();
-    }
+    },
   );
 
   it(`should contain mnemonic string and one cancel button`, async (): Promise<void> => {
@@ -35,7 +35,7 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
     TestUtils.act(
       (): void => {
         TestUtils.Simulate.click(backBtn);
-      }
+      },
     );
 
     await whenOnNavigatedToRoute(store, WELCOME_ROUTE);

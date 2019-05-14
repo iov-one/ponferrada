@@ -22,7 +22,7 @@ storiesOf(SHARE_IDENTITY_PATH, module)
           showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
-    )
+    ),
   )
   .add(
     REJECT_REQUEST_PAGE,
@@ -33,5 +33,5 @@ storiesOf(SHARE_IDENTITY_PATH, module)
           onRejectRequest={action('onAcceptRequest')}
         />
       </Storybook>
-    )
+    ),
   );

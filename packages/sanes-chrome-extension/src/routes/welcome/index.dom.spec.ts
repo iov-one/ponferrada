@@ -18,10 +18,10 @@ describe('DOM > Feature > Welcome', (): void => {
       TestUtils.act(
         (): void => {
           history.push(WELCOME_ROUTE);
-        }
+        },
       );
       await sleep(500);
-    }
+    },
   );
 
   it(`should create Welcome layout view`, async (): Promise<void> => {
@@ -40,7 +40,7 @@ describe('DOM > Feature > Welcome', (): void => {
     TestUtils.act(
       (): void => {
         TestUtils.Simulate.click(loginButton);
-      }
+      },
     );
 
     await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
@@ -50,7 +50,7 @@ describe('DOM > Feature > Welcome', (): void => {
     TestUtils.act(
       (): void => {
         TestUtils.Simulate.click(signUpButton);
-      }
+      },
     );
 
     await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);

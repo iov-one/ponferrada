@@ -19,7 +19,7 @@ withChainsDescribe(
     afterEach(
       async (): Promise<void> => {
         await closeBrowser(browser);
-      }
+      },
     );
 
     it('should redirect to signup route, fill required data, show recovery phrase and hint', async (): Promise<
@@ -30,5 +30,5 @@ withChainsDescribe(
       await handlePassPhrase2E(page);
       await handleSecurityHintE2E(page, randomString(10));
     }, 60000);
-  }
+  },
 );

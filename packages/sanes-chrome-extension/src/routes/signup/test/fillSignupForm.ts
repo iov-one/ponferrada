@@ -14,7 +14,7 @@ import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD, PASSWORD_CONFIRM_FIELD } from '../c
 export const submitAccountFormE2E = async (
   page: Page,
   accountName: string,
-  password: string
+  password: string,
 ): Promise<void> => {
   await page.type(`input[name="${ACCOUNT_NAME_FIELD}"]`, accountName);
   await page.type(`input[name="${PASSWORD_FIELD}`, password);
@@ -26,7 +26,7 @@ export const submitAccountFormE2E = async (
 
 export const submitAccountForm = async (
   AccountSubmitDom: React.Component,
-  accountName: string
+  accountName: string,
 ): Promise<void> => {
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(AccountSubmitDom, 'input');
 
@@ -44,7 +44,7 @@ export const submitAccountForm = async (
           value: accountName,
         },
       } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-    }
+    },
   );
 
   TestUtils.act(
@@ -52,7 +52,7 @@ export const submitAccountForm = async (
       TestUtils.Simulate.change(passwordField, {
         target: { value: password },
       } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-    }
+    },
   );
 
   TestUtils.act(
@@ -60,7 +60,7 @@ export const submitAccountForm = async (
       TestUtils.Simulate.change(passwordConfirmField, {
         target: { value: password },
       } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-    }
+    },
   );
 
   const form = TestUtils.findRenderedDOMComponentWithTag(AccountSubmitDom, 'form');
@@ -88,7 +88,7 @@ export const handlePassPhrase2E = async (page: Page): Promise<void> => {
       }
 
       return element.textContent;
-    }
+    },
   );
 
   expect(mnemonic).not.toBe(null);
@@ -113,7 +113,7 @@ export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Prom
     expect(paragraphs.length).toBe(1);
     const phraseParagraph = paragraphs[0].innerHTML;
     expect(phraseParagraph).toBe(
-      'badge cattle stool execute involve main mirror envelope brave scrap involve simple'
+      'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
     );
   };
   // FIXME  Once this is updated https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-dom/test-utils/index.d.ts#L296
@@ -125,7 +125,7 @@ export const handlePassPhrase = async (RecoveryPhraseDom: React.Component): Prom
   TestUtils.act(
     (): void => {
       TestUtils.Simulate.click(nextButton);
-    }
+    },
   );
 
   await findRenderedDOMComponentWithId(RecoveryPhraseDom, SECURITY_HINT_STEP_SIGNUP_ROUTE);
@@ -142,7 +142,7 @@ export const handleSecurityHintE2E = async (page: Page, securityHint: string): P
 
 export const handleSecurityHint = async (
   SecurityHintDom: React.Component,
-  accountName: string
+  accountName: string,
 ): Promise<void> => {
   // Introduce my hint
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(SecurityHintDom, 'input');
@@ -152,7 +152,7 @@ export const handleSecurityHint = async (
       TestUtils.Simulate.change(inputs[0], {
         target: { value: 'Dummy Hint' },
       } as any); //eslint-disable-line @typescript-eslint/no-explicit-any
-    }
+    },
   );
 
   const form = TestUtils.findRenderedDOMComponentWithTag(SecurityHintDom, 'form');

@@ -27,5 +27,5 @@ storiesOf('Components', module).add(
         </Block>
       </Storybook>
     );
-  }
+  },
 );

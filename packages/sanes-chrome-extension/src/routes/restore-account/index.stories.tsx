@@ -11,5 +11,5 @@ storiesOf(CHROME_EXTENSION_ROOT, module).add(
     <Storybook>
       <RestoreAccountForm onBack={action('back in history')} onRestoreAccount={action('restore account')} />
     </Storybook>
-  )
+  ),
 );
