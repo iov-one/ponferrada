@@ -5,6 +5,7 @@ import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { handleExternalMessage } from './index';
 import { Persona } from '../../logic/persona';
 import { SenderWhitelist } from './senderWhitelist';
+import { RequestHandler } from './requestHandler';
 
 const buildGetIdentitiesRequest = (method: string): object => ({
   jsonrpc: '2.0',
@@ -48,8 +49,6 @@ withChainsDescribe('External handler', () => {
   });
 
   it('resolves to error if signing server is not ready', async () => {
-    const persona = await Persona.create();
-
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = 'http://finex.com';
     // eslint-disable-next-line
@@ -58,8 +57,6 @@ withChainsDescribe('External handler', () => {
         message: 'Signing server not ready',
       },
     });
-
-    persona.destroy();
   });
 
   it('resolves to error if whitelist handler is not loaded', async () => {
@@ -87,12 +84,31 @@ withChainsDescribe('External handler', () => {
     const sender = 'http://finex.com';
     expect(handleExternalMessage(server, request, sender)).resolves.toMatchObject({
       error: {
-        message: 'Error: Unknown method name',
+        message: 'Request method not allowed, use getIdentities or signAndPost',
       },
     });
 
     persona.destroy();
   });
 
-  it('resolves to error if sender is blocked', async () => {});
+  it('enqueues a request', async () => {
+    const persona = await Persona.create();
+    SenderWhitelist.load();
+    RequestHandler.create();
+
+    const server = persona.startSigningServer(revealAllIdentities, signEverything);
+    const request = buildGetIdentitiesRequest('getIdentities');
+    const sender = 'http://finex.com';
+    handleExternalMessage(server, request, sender);
+
+    const req = RequestHandler.get();
+    expect(req.accept).not.toBe(null);
+    expect(req.accept).not.toBe(undefined);
+    expect(req.reject).not.toBe(null);
+    expect(req.reject).not.toBe(undefined);
+
+    expect(req.request).toEqual(request);
+
+    persona.destroy();
+  });
 });

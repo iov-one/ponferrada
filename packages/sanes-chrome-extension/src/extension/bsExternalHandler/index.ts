@@ -1,6 +1,12 @@
-import { JsonRpcErrorResponse, JsonRpcResponse, jsonRpcCode } from '@iov/jsonrpc';
+import {
+  JsonRpcErrorResponse,
+  JsonRpcResponse,
+  jsonRpcCode,
+  parseJsonRpcRequest,
+  JsonRpcRequest,
+} from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
-import { RpcCall, parseRpcCall } from './requestHandler';
+import { RequestHandler, parseMethod } from './requestHandler';
 import { SenderWhitelist } from './senderWhitelist';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
@@ -44,17 +50,25 @@ export async function handleExternalMessage(
   }
 
   // TODO allow this code from iov/core
-  let rpcCall: RpcCall;
+  let request: JsonRpcRequest;
   try {
-    rpcCall = parseRpcCall(externalRequest);
+    request = parseJsonRpcRequest(externalRequest);
+    parseMethod(request.method);
   } catch (err) {
     return generateErrorResponse(responseId, err.message);
   }
 
+  const chromeRequest = {
+    request,
+    accept: () => signingServer.handleChecked(request),
+    reject: (permanent: boolean) => rejectRequest(permanent, sender),
+  };
+  RequestHandler.add(chromeRequest);
+  /*
   if (SenderWhitelist.isBlocked(sender)) {
     return generateErrorResponse(responseId, 'Sender has been blocked by user');
   }
-  /*
+
   check if sender is blocked -> if so generate Error response with custom message
 
   check request is getIentitiesif getIdentities
