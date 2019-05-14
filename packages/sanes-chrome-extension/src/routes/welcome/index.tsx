@@ -4,7 +4,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { history } from '../../store/reducers';
-import { SIGNUP_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from '../paths';
+import { SIGNUP_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE, RESTORE_ACCOUNT } from '../paths';
 
 const createNewAccount = (): void => {
   history.push(SIGNUP_ROUTE);
@@ -12,6 +12,10 @@ const createNewAccount = (): void => {
 
 const login = (): void => {
   history.push(LOGIN_ROUTE);
+};
+
+const importAccount = (): void => {
+  history.push(RESTORE_ACCOUNT);
 };
 
 const Welcome = (): JSX.Element => (
@@ -28,7 +32,7 @@ const Welcome = (): JSX.Element => (
       New account
     </Button>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth>
+    <Button variant="contained" fullWidth onClick={importAccount}>
       Import account
     </Button>
   </PageLayout>

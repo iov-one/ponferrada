@@ -1,6 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { WELCOME_ROUTE, LOGIN_ROUTE, SIGNUP_ROUTE } from '../paths';
+import { WELCOME_ROUTE, LOGIN_ROUTE, SIGNUP_ROUTE, RESTORE_ACCOUNT } from '../paths';
 import { history, RootState } from '../../store/reducers';
 import { createDom } from '../../utils/test/dom';
 import { aNewStore } from '../../store';
@@ -36,5 +36,10 @@ describe('DOM > Feature > Welcome', () => {
     const signUpButton = buttons[1];
     TestUtils.act(() => TestUtils.Simulate.click(signUpButton));
     await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);
+
+    //Click on import button
+    const importButton = buttons[2];
+    TestUtils.act(() => TestUtils.Simulate.click(importButton));
+    await whenOnNavigatedToRoute(store, RESTORE_ACCOUNT);
   }, 55000);
 });
