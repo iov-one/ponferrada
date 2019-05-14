@@ -2,6 +2,11 @@
 import { MessageToBackground } from './messages';
 import { handleExternalMessage } from './bsExternalHandler';
 import { handleInternalMessage, getSigningServer } from './bsInternalHandler';
+import { SenderWhitelist } from './bsExternalHandler/senderWhitelist';
+import { RequestHandler } from './bsExternalHandler/requestHandler';
+
+SenderWhitelist.load();
+RequestHandler.create();
 
 // For a better understanding about the message change done visit:
 // https://developer.chrome.com/extensions/messaging#simple

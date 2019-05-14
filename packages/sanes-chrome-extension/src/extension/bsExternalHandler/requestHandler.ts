@@ -49,7 +49,7 @@ export class RequestHandler {
 
     const req = RequestHandler.instance.shift();
     if (!req) {
-      throw new Error('Shifted element is undefined. . This could lead to unexpected errors');
+      throw new Error('Shifted element is undefined. This could lead to unexpected errors');
     }
   }
 
