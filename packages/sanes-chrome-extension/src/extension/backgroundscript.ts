@@ -28,7 +28,7 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
  */
 chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
   const signingServer = getSigningServer();
-  handleExternalMessage(signingServer, request, sender)
+  handleExternalMessage(signingServer, request, sender.url)
     .then(sendResponse)
     .catch(console.error);
 
