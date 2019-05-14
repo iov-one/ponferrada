@@ -1,9 +1,9 @@
 import { PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder, GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
 
-import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { withChainsDescribe } from '../../../utils/test/testExecutor';
 import { handleExternalMessage } from './index';
-import { Persona } from '../../logic/persona';
+import { Persona } from '../../../logic/persona';
 import { SenderWhitelist } from './senderWhitelist';
 import { RequestHandler } from './requestHandler';
 

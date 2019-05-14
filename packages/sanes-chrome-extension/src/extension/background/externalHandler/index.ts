@@ -6,7 +6,7 @@ import {
   parseJsonRpcRequest,
   JsonRpcRequest,
 } from '@iov/jsonrpc';
-import { UseOnlyJsonRpcSigningServer } from '../../logic/persona';
+import { UseOnlyJsonRpcSigningServer } from '../../../logic/persona';
 import { RequestHandler, parseMethod } from './requestHandler';
 import { SenderWhitelist } from './senderWhitelist';
 

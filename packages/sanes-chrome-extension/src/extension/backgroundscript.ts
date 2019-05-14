@@ -1,9 +1,9 @@
 /*global chrome*/
 import { MessageToBackground } from './messages';
-import { handleExternalMessage } from './bsExternalHandler';
-import { handleInternalMessage, getSigningServer } from './bsInternalHandler';
-import { SenderWhitelist } from './bsExternalHandler/senderWhitelist';
-import { RequestHandler } from './bsExternalHandler/requestHandler';
+import { handleExternalMessage } from './background/externalHandler';
+import { handleInternalMessage, getSigningServer } from './background/internalHandler';
+import { SenderWhitelist } from './background/externalHandler/senderWhitelist';
+import { RequestHandler } from './background/externalHandler/requestHandler';
 
 SenderWhitelist.load();
 RequestHandler.create();
