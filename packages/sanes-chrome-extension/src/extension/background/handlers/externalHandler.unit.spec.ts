@@ -134,7 +134,7 @@ withChainsDescribe('background script handler for website request', () => {
     handleExternalMessage(request, sender, sendSecondResponse);
   }, 8000);
 
-  it.only('resolves in order request queue', async () => {
+  it('resolves in order request queue', async () => {
     await createPersona();
     const sender = { url: 'http://finnex.com' };
 

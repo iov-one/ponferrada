@@ -3,6 +3,17 @@ import { RequestMeta } from '../actions/createPersona/requestCallback';
 import { SenderWhitelist } from '../actions/createPersona/requestSenderWhitelist';
 import { generateErrorResponse } from '../errorResponseGenerator';
 
+function resolveToError(
+  sendResponse: (response?: any) => void, //eslint-disable-line
+  responseId: number | null,
+  msg: string,
+): boolean {
+  const error = generateErrorResponse(responseId, msg);
+  sendResponse(error);
+
+  return false;
+}
+
 export function handleExternalMessage(
   request: any, //eslint-disable-line
   sender: chrome.runtime.MessageSender,
@@ -10,26 +21,17 @@ export function handleExternalMessage(
 ): boolean {
   const responseId = typeof request.id === 'number' ? request.id : null;
   if (!sender.url) {
-    const error = generateErrorResponse(responseId, 'Got external message without sender URL');
-    sendResponse(error);
-
-    return false;
+    return resolveToError(sendResponse, responseId, 'Got external message without sender URL');
   }
 
   const signingServer = getSigningServer();
   if (!signingServer) {
-    const error = generateErrorResponse(responseId, 'Signing server not ready');
-    sendResponse(error);
-
-    return false;
+    return resolveToError(sendResponse, responseId, 'Signing server not ready');
   }
 
   const { url: senderUrl } = sender;
   if (SenderWhitelist.isBlocked(senderUrl)) {
-    const error = generateErrorResponse(responseId, 'Sender has been blocked by user');
-    sendResponse(error);
-
-    return false;
+    return resolveToError(sendResponse, responseId, 'Sender has been blocked by user');
   }
 
   const meta: RequestMeta = {
