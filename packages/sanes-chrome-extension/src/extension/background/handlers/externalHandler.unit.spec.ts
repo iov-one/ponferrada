@@ -119,23 +119,20 @@ withChainsDescribe('background script handler for website request', () => {
 
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
+    handleExternalMessage(request, sender, jest.fn());
+
+    expect(RequestHandler.requests().length).toBe(1);
+    const rejectPermanently = true;
+    RequestHandler.next().reject(rejectPermanently);
+    expect(RequestHandler.requests().length).toBe(0);
+
     const sendSecondResponse = (response: object): void => {
+      console.log('Ey second response');
       expect(response).toEqual(generateErrorResponse(1, 'Sender has been blocked by user'));
       PersonaManager.destroy();
       done();
     };
-
-    const sendFirstResponse = (_response: object): void => {
-      expect(RequestHandler.requests().length).toBe(1);
-      const chromeRequest = RequestHandler.next();
-      const rejectPermanently = true;
-      chromeRequest.reject(rejectPermanently);
-      expect(RequestHandler.requests().length).toBe(0);
-
-      handleExternalMessage(request, sender, sendSecondResponse);
-    };
-
-    handleExternalMessage(request, sender, sendFirstResponse);
+    handleExternalMessage(request, sender, sendSecondResponse);
   }, 8000);
 });
 
