@@ -1,7 +1,7 @@
 /*global chrome*/
+import { generateErrorResponse } from './background/errorResponseGenerator';
+import { getSigningServer, handleInternalMessage } from './background/internalHandler';
 import { MessageToBackground } from './messages';
-import { handleExternalMessage } from './background/externalHandler';
-import { handleInternalMessage, getSigningServer } from './background/internalHandler';
 
 // For a better understanding about the message change done visit:
 // https://developer.chrome.com/extensions/messaging#simple
@@ -14,12 +14,9 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
     .then(sendResponse)
     .catch(console.error);
 
-  // return true to keep the sendResponse reference alive, see
-  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#Parameters
-  // However, the Promise return type seems to not work.
-  //
-  // > If you want to asynchronously use sendResponse, add return true; to the onMessage event handler.
+  // If you want to asynchronously use sendResponse, add return true; It keeps sendResponse reference alive.
   // https://developer.chrome.com/extensions/messaging#simple
+  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#Parameters
   return true;
 });
 
@@ -28,11 +25,21 @@ chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, send
  */
 chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
   const signingServer = getSigningServer();
-  handleExternalMessage(signingServer, request, sender.url)
+  if (!signingServer) {
+    const responseId = typeof request.id === 'number' ? request.id : null;
+    const error = generateErrorResponse(responseId, 'Signing server not ready');
+    sendResponse(error);
+
+    return false;
+  }
+
+  signingServer
+    .handleUnchecked(request)
     .then(sendResponse)
     .catch(console.error);
 
-  // return true to keep the sendResponse reference alive, see
-  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal#Parameters
+  // If you want to asynchronously use sendResponse, add return true; It keeps sendResponse reference alive.
+  // https://developer.chrome.com/extensions/messaging#simple
+  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#Parameters
   return true;
 });
