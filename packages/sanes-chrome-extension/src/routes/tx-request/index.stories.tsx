@@ -22,7 +22,7 @@ storiesOf(TX_REQUEST_PATH, module)
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
-    )
+    ),
   )
   .add(
     REJECT_REQUEST_PAGE,
@@ -33,5 +33,5 @@ storiesOf(TX_REQUEST_PATH, module)
           onRejectRequest={action('onAcceptRequest')}
         />
       </Storybook>
-    )
+    ),
   );
