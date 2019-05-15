@@ -1,16 +1,18 @@
 /*global chrome*/
-import { GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
 import { PublicIdentity } from '@iov/bcp';
-
+import { GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
+import { Persona, PersonaManager, ProcessedTx, UseOnlyJsonRpcSigningServer } from '../../../logic/persona';
 import {
-  MessageToBackgroundAction,
-  MessageToBackground,
   GetPersonaResponse,
+  MessageToBackground,
+  MessageToBackgroundAction,
   MessageToForeground,
   MessageToForegroundAction,
 } from '../../messages';
-import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona, ProcessedTx } from '../../../logic/persona';
+import { RequestHandler } from '../externalHandler/requestHandler';
+import { updateExtensionBadge } from './badgeUpdater';
 import { isRequestMeta } from './requestMeta';
+import { SenderWhitelist } from './senderWhitelist';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 let signingServer: SigningServer;
@@ -54,22 +56,40 @@ export async function handleInternalMessage(
         const persona = await PersonaManager.create(message.data);
 
         const getIdentitiesCallback: GetIdentitiesAuthorization = async (
-          _reason,
+          reason,
           matchingIdentities,
           meta,
         ): Promise<ReadonlyArray<PublicIdentity>> => {
           if (!isRequestMeta(meta)) {
             throw new Error('Unexpected type of data in meta field');
           }
+          const { senderUrl } = meta;
 
-          // the identities the user accepted to reveal
-          const selectedIdentities = matchingIdentities.filter(_ => true);
+          return new Promise(resolve => {
+            const accept = (): void => {
+              RequestHandler.solved();
+              updateExtensionBadge();
 
-          return selectedIdentities;
+              resolve(matchingIdentities);
+            };
+
+            const reject = (permanent: boolean): void => {
+              if (permanent) {
+                SenderWhitelist.block(senderUrl);
+              }
+              RequestHandler.solved();
+              updateExtensionBadge();
+
+              resolve([]);
+            };
+
+            RequestHandler.add({ reason, sender: meta.senderUrl, accept, reject });
+            updateExtensionBadge();
+          });
         };
 
         const signAndPostCallback: SignAndPostAuthorization = async (
-          _reason,
+          reason,
           _transaction,
           meta,
         ): Promise<boolean> => {
@@ -77,8 +97,29 @@ export async function handleInternalMessage(
             throw new Error('Unexpected type of data in meta field');
           }
 
-          // true for accepted, false for rejected
-          return true;
+          const { senderUrl } = meta;
+
+          return new Promise(resolve => {
+            const accept = (): void => {
+              RequestHandler.solved();
+              updateExtensionBadge();
+
+              resolve(true);
+            };
+
+            const reject = (permanent: boolean): void => {
+              if (permanent) {
+                SenderWhitelist.block(senderUrl);
+              }
+              RequestHandler.solved();
+              updateExtensionBadge();
+
+              resolve(false);
+            };
+
+            RequestHandler.add({ reason, sender: meta.senderUrl, accept, reject });
+            updateExtensionBadge();
+          });
         };
 
         function transactionsChangedHandler(transactions: ReadonlyArray<ProcessedTx>): void {
@@ -96,6 +137,9 @@ export async function handleInternalMessage(
           transactionsChangedHandler,
         );
         console.log('Signing server ready to handle requests');
+
+        SenderWhitelist.load();
+        RequestHandler.create();
 
         response = {
           mnemonic: persona.mnemonic,
