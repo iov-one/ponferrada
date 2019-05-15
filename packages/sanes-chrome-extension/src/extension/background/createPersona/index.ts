@@ -1,5 +1,5 @@
 import { PersonaManager, UseOnlyJsonRpcSigningServer } from '../../../logic/persona';
-import { CreatePersonaResponse } from '../../messages';
+import { CreatePersonaResponse } from '../messages';
 import { transactionsUpdater } from './requestAppUpdater';
 import { getIdentitiesCallback, signAndPostCallback } from './requestCallback';
 import { RequestHandler } from './requestHandler';

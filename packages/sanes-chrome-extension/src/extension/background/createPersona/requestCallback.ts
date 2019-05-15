@@ -16,14 +16,12 @@ function isRequestMeta(data: unknown): data is RequestMeta {
   return typeof (data as RequestMeta).senderUrl === 'string';
 }
 
-type CallbackResponse = ReadonlyArray<PublicIdentity> | boolean;
-
-async function requestCallback(
+async function requestCallback<T>(
   reason: string,
   meta: RequestMeta,
-  acceptResponse: CallbackResponse,
-  rejectResponse: CallbackResponse,
-): Promise<CallbackResponse> {
+  acceptResponse: T,
+  rejectResponse: T,
+): Promise<T> {
   if (!isRequestMeta(meta)) {
     throw new Error('Unexpected type of data in meta field');
   }
@@ -56,7 +54,7 @@ export async function getIdentitiesCallback(
   reason: string,
   matchingIdentities: ReadonlyArray<PublicIdentity>,
   meta: RequestMeta,
-): Promise<CallbackResponse> {
+): Promise<ReadonlyArray<PublicIdentity>> {
   return requestCallback(reason, meta, matchingIdentities, []);
 }
 
@@ -64,6 +62,6 @@ export async function signAndPostCallback(
   reason: string,
   _transaction: UnsignedTransaction,
   meta: RequestMeta,
-): Promise<CallbackResponse> {
+): Promise<boolean> {
   return requestCallback(reason, meta, true, false);
 }
