@@ -1,6 +1,6 @@
 /*global chrome*/
-import { ProcessedTx } from '../../../logic/persona';
-import { MessageToForeground, MessageToForegroundAction } from '../messages';
+import { ProcessedTx } from '../../../../logic/persona';
+import { MessageToForeground, MessageToForegroundAction } from '../../messages';
 
 export function transactionsUpdater(transactions: ReadonlyArray<ProcessedTx>): void {
   const message: MessageToForeground = {

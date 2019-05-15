@@ -1,5 +1,5 @@
 /*global chrome*/
-import { PersonaAcccount, ProcessedTx } from '../../logic/persona';
+import { PersonaAcccount, ProcessedTx } from '../../../logic/persona';
 
 // WTC means "web to content"
 export const WTC_MSG_HELLO = 'wtc_HELLO';

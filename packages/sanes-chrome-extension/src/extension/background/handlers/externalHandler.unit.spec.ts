@@ -1,4 +1,44 @@
-/*import { PublicIdentity } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/core';
+import { PersonaManager } from '../../../logic/persona';
+import { withChainsDescribe } from '../../../utils/test/testExecutor';
+import { createPersona } from '../actions/createPersona';
+import * as txsUpdater from '../actions/createPersona/requestAppUpdater';
+import { handleExternalMessage } from './externalHandler';
+
+const buildGetIdentitiesRequest = (method: string, customMessage?: string): object => ({
+  jsonrpc: '2.0',
+  id: 1,
+  method,
+  params: {
+    reason: TransactionEncoder.toJson(
+      customMessage ? customMessage : 'I would like to know who you are on Ethereum',
+    ),
+    chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
+  },
+});
+
+withChainsDescribe('External handler', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementationOnce(() => {});
+  });
+
+  it('resolves to error if sender is unknown', async () => {
+    await createPersona();
+
+    const request = buildGetIdentitiesRequest('getIdentities');
+    const sender = {};
+    const sendResponse = jest.fn();
+    expect(() => handleExternalMessage(request, sender, sendResponse)).toThrow(
+      /Got external message without sender URL/,
+    );
+
+    PersonaManager.destroy();
+  });
+});
+
+/*
+import { PublicIdentity } from '@iov/bcp';
 import { GetIdentitiesAuthorization, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
 import { Persona } from '../logic/persona';
 import { withChainsDescribe } from '../utils/test/testExecutor';
