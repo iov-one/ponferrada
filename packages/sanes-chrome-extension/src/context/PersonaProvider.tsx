@@ -1,20 +1,19 @@
 /*global chrome*/
 import * as React from 'react';
-import { AccountInfo } from '../logic/persona/accountManager';
-import { ProcessedTx } from '../logic/persona';
+import { ProcessedTx, PersonaAcccount } from '../logic/persona';
 import { isMessageToForeground, MessageToForegroundAction, GetPersonaResponse } from '../extension/messages';
 
-type Accounts = ReadonlyArray<AccountInfo>;
+type Accounts = ReadonlyArray<PersonaAcccount>;
 
 export interface PersonaContextInterface {
-  readonly accountNames: Accounts;
+  readonly accounts: Accounts;
   readonly txs: ReadonlyArray<ProcessedTx>;
   readonly mnemonic: string;
-  readonly update: (accountNames: Accounts, mnemonic: string, txs: ReadonlyArray<ProcessedTx>) => void;
+  readonly update: (accounts: Accounts, mnemonic: string, txs: ReadonlyArray<ProcessedTx>) => void;
 }
 
 export const PersonaContext = React.createContext<PersonaContextInterface>({
-  accountNames: [],
+  accounts: [],
   mnemonic: '',
   txs: [],
   update: (): void => {},
@@ -26,7 +25,7 @@ interface Props {
 }
 
 export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
-  const [accountNames, setAccountNames] = React.useState<Accounts>(persona ? persona.accounts : []);
+  const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   React.useEffect(() => {
@@ -60,13 +59,13 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
     mnemonic: string,
     txs: ReadonlyArray<ProcessedTx>,
   ): void => {
-    setAccountNames(accountNames);
+    setAccounts(accountNames);
     setMnemonic(mnemonic);
     setTxs(txs);
   };
 
   const personaContextValue = {
-    accountNames,
+    accounts,
     mnemonic,
     txs,
     update: loadPersonaInReact,

@@ -11,7 +11,6 @@ import SelectField, { Item } from 'medulas-react-components/lib/components/forms
 import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
 import { PersonaContext } from '../../context/PersonaProvider';
-import { AccountInfo } from '../../logic/persona/accountManager';
 import ListTxs from './components/ListTxs';
 import { history } from '../../store/reducers';
 
@@ -27,15 +26,15 @@ const AccountView = (): JSX.Element => {
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const accounts = personaProvider.accountNames;
-      let actualItems: Item[] = [];
-      actualItems.push({ name: CREATE_NEW_ONE });
-      accounts.forEach((acc: AccountInfo) => actualItems.push({ name: acc.name }));
+      const actualItems: Item[] = [
+        { name: CREATE_NEW_ONE },
+        ...personaProvider.accounts.map(account => ({ name: account.label })),
+      ];
       setAccounts(actualItems);
     }
 
     fetchMyAccounts();
-  }, [personaProvider.accountNames]);
+  }, [personaProvider.accounts]);
 
   const onChange = (item: Item): void => {
     if (item.name === CREATE_NEW_ONE) {
