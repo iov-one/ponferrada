@@ -11,6 +11,7 @@ import {
 } from '../messages';
 import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona, ProcessedTx } from '../../logic/persona';
 import { isNewSender } from './senderWhitelist';
+import { isRequestMeta } from './requestMeta';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 let signingServer: SigningServer;
@@ -56,10 +57,13 @@ export async function handleInternalMessage(
         const getIdentitiesCallback: GetIdentitiesAuthorization = async (
           _reason,
           matchingIdentities,
+          meta,
         ): Promise<ReadonlyArray<PublicIdentity>> => {
-          // sender will be available here after upgrading to IOV-Core 0.13.7
-          // https://github.com/iov-one/iov-core/pull/993
-          if (isNewSender('http://finnex.com')) {
+          if (!isRequestMeta(meta)) {
+            throw new Error('Unexpected type of data in meta field');
+          }
+
+          if (isNewSender(meta.senderUrl)) {
             chrome.browserAction.setIcon({ path: 'assets/icons/request128.png' });
             chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
             chrome.browserAction.setBadgeText({ text: '*' });
@@ -74,9 +78,11 @@ export async function handleInternalMessage(
         const signAndPostCallback: SignAndPostAuthorization = async (
           _reason,
           _transaction,
+          meta,
         ): Promise<boolean> => {
-          // sender will be available here after upgrading to IOV-Core 0.13.7
-          // https://github.com/iov-one/iov-core/pull/993
+          if (!isRequestMeta(meta)) {
+            throw new Error('Unexpected type of data in meta field');
+          }
 
           // true for accepted, false for rejected
           return true;
