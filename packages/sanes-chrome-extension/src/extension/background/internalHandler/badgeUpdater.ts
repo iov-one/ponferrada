@@ -1,5 +1,5 @@
 /*global chrome*/
-import { RequestHandler } from '../externalHandler/requestHandler';
+import { RequestHandler } from './requestHandler';
 
 export function updateExtensionBadge(): void {
   const isExtensionContext = typeof chrome !== 'undefined'; // needed for tests

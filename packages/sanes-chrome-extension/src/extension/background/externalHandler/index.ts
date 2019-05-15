@@ -1,14 +1,15 @@
 /*global chrome*/
 import {
-  JsonRpcErrorResponse,
-  JsonRpcResponse,
   jsonRpcCode,
-  parseJsonRpcRequest,
+  JsonRpcErrorResponse,
   JsonRpcRequest,
+  JsonRpcResponse,
+  parseJsonRpcRequest,
 } from '@iov/jsonrpc';
 import { UseOnlyJsonRpcSigningServer } from '../../../logic/persona';
-import { RequestHandler, parseMethod } from './requestHandler';
-import { SenderWhitelist } from './senderWhitelist';
+import { updateExtensionBadge } from '../internalHandler/badgeUpdater';
+import { parseMethod, RequestHandler } from '../internalHandler/requestHandler';
+import { SenderWhitelist } from '../internalHandler/senderWhitelist';
 
 type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 

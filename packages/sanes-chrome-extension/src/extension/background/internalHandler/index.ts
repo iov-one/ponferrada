@@ -9,8 +9,8 @@ import {
   MessageToForeground,
   MessageToForegroundAction,
 } from '../../messages';
-import { RequestHandler } from '../externalHandler/requestHandler';
 import { updateExtensionBadge } from './badgeUpdater';
+import { RequestHandler } from './requestHandler';
 import { isRequestMeta } from './requestMeta';
 import { SenderWhitelist } from './senderWhitelist';
 
