@@ -1,11 +1,9 @@
-import { PublicIdentity } from '@iov/bcp';
-import { TransactionEncoder, GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
-
-import { withChainsDescribe } from '../../../utils/test/testExecutor';
-import { handleExternalMessage } from './index';
-import { Persona } from '../../../logic/persona';
-import { SenderWhitelist } from './senderWhitelist';
-import { RequestHandler } from './requestHandler';
+/*import { PublicIdentity } from '@iov/bcp';
+import { GetIdentitiesAuthorization, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
+import { Persona } from '../logic/persona';
+import { withChainsDescribe } from '../utils/test/testExecutor';
+import { RequestHandler } from './background/createPersona/requestHandler';
+import { SenderWhitelist } from './background/createPersona/requestSenderWhitelist';
 
 const buildGetIdentitiesRequest = (method: string, customMessage?: string): object => ({
   jsonrpc: '2.0',
@@ -169,3 +167,4 @@ withChainsDescribe('External handler', () => {
     persona.destroy();
   });
 });
+*/
