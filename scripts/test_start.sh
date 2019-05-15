@@ -26,9 +26,9 @@ bash "${SCRIPT_DIR}"/faucet/bcpd_start.sh
 echo
 echo ">>> Starting lisk (test) chain and faucet..."
 echo
-bash "${SCRIPT_DIR}"/lisk/start.sh
-bash "${SCRIPT_DIR}"/lisk/load_faucet.sh
-bash "${SCRIPT_DIR}"/faucet/lisk_start.sh
+"${SCRIPT_DIR}"/lisk/start.sh
+"${SCRIPT_DIR}"/lisk/init.sh
+"${SCRIPT_DIR}"/faucet/lisk_start.sh
 
 echo
 echo ">>> Starting ethereum (ganache) chain, scraper and faucet..."
