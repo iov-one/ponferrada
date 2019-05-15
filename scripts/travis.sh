@@ -53,11 +53,24 @@ fi
 fold_end
 
 #
+# Start chains
+#
+fold_start "chains-start"
+./scripts/test_start.sh
+export CHAINS_ENABLED=1
+fold_end
+
+#
 # Test
 #
 fold_start "yarn-tests"
-bash ./packages/sanes-chrome-extension/test/scripts/test_start.sh
-export CHAINS_ENABLED=1
 yarn test
-bash ./packages/sanes-chrome-extension/test/scripts/test_stop.sh
+fold_end
+
+#
+# Stop chains
+#
+fold_start "chains-stop"
+unset CHAINS_ENABLED
+./scripts/test_stop.sh
 fold_end

@@ -127,16 +127,16 @@ brew install coreutils
 In such a case, you can run the full chain test suite from inside sanes-chrome-extension package folder:
 
 ```shell
-cd packages/sanes-chrome-extension/
 # start all blockchains and a local faucets that serves multiple tokens
-bash ./test/scripts/test_start.sh
-
+./scripts/test_start.sh
 export CHAINS_ENABLED=1
+
 # you can run this a few times....
-yarn test
+(cd packages/sanes-chrome-extension/ && yarn test)
 
 # stop them afterwards
-bash ./test/scripts/test_stop.sh
+unset CHAINS_ENABLED
+./scripts/test_stop.sh
 ```
 
 #### Puppeteer
