@@ -8,8 +8,8 @@ import {
   GetPersonaResponse,
   MessageToForeground,
   MessageToForegroundAction,
-} from '../messages';
-import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona, ProcessedTx } from '../../logic/persona';
+} from '../../messages';
+import { UseOnlyJsonRpcSigningServer, PersonaManager, Persona, ProcessedTx } from '../../../logic/persona';
 import { isRequestMeta } from './requestMeta';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
