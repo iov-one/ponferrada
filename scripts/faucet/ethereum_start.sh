@@ -14,7 +14,7 @@ BLOCKCHAIN_URL="http://$DOCKER_HOST_IP:8545"
 echo "Connecting to $BLOCKCHAIN_URL"
 
 docker run --read-only \
-  --name "ethereum_faucet" \
+  --name "ethereum-faucet" \
   --env "FAUCET_CONCURRENCY=3" \
   --env "FAUCET_MNEMONIC=oxygen fall sure lava energy veteran enroll frown question detail include maximum"  \
   --env "FAUCET_PORT=8003" \

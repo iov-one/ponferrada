@@ -14,7 +14,7 @@ BLOCKCHAIN_URL="ws://$DOCKER_HOST_IP:23457"
 echo "Connecting to $BLOCKCHAIN_URL"
 
 docker run --read-only \
-  --name "bcpd_faucet" \
+  --name "bcpd-faucet" \
   --env "FAUCET_CONCURRENCY=3" \
   --env "FAUCET_COIN_TYPE=1" \
   --env "FAUCET_MNEMONIC=degree tackle suggest window test behind mesh extra cover prepare oak script"  \
