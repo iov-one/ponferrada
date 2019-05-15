@@ -1,11 +1,14 @@
 import { TransactionEncoder } from '@iov/core';
+import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
 import { PersonaManager } from '../../../logic/persona';
 import { withChainsDescribe } from '../../../utils/test/testExecutor';
 import { createPersona } from '../actions/createPersona';
 import * as txsUpdater from '../actions/createPersona/requestAppUpdater';
+import { RequestHandler } from '../actions/createPersona/requestHandler';
+import { generateErrorResponse } from '../errorResponseGenerator';
 import { handleExternalMessage } from './externalHandler';
 
-const buildGetIdentitiesRequest = (method: string, customMessage?: string): object => ({
+const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
   jsonrpc: '2.0',
   id: 1,
   method,
@@ -17,146 +20,126 @@ const buildGetIdentitiesRequest = (method: string, customMessage?: string): obje
   },
 });
 
-withChainsDescribe('External handler', () => {
+withChainsDescribe('background script handler for website request', () => {
+  beforeAll(() => {
+    jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
+  });
   beforeEach(() => {
     localStorage.clear();
-    jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementationOnce(() => {});
+  });
+  afterAll(() => {
+    jest.spyOn(txsUpdater, 'transactionsUpdater').mockReset();
   });
 
-  it('resolves to error if sender is unknown', async () => {
-    await createPersona();
-
-    const request = buildGetIdentitiesRequest('getIdentities');
-    const sender = {};
-    const sendResponse = jest.fn();
-    expect(() => handleExternalMessage(request, sender, sendResponse)).toThrow(
-      /Got external message without sender URL/,
-    );
-
-    PersonaManager.destroy();
-  });
-});
-
-/*
-import { PublicIdentity } from '@iov/bcp';
-import { GetIdentitiesAuthorization, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
-import { Persona } from '../logic/persona';
-import { withChainsDescribe } from '../utils/test/testExecutor';
-import { RequestHandler } from './background/createPersona/requestHandler';
-import { SenderWhitelist } from './background/createPersona/requestSenderWhitelist';
-
-const buildGetIdentitiesRequest = (method: string, customMessage?: string): object => ({
-  jsonrpc: '2.0',
-  id: 1,
-  method,
-  params: {
-    reason: TransactionEncoder.toJson(
-      customMessage ? customMessage : 'I would like to know who you are on Ethereum',
-    ),
-    chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
-  },
-});
-const revealAllIdentities: GetIdentitiesAuthorization = async (
-  reason,
-  matchingIdentities,
-): Promise<ReadonlyArray<PublicIdentity>> => {
-  return matchingIdentities;
-};
-const signEverything: SignAndPostAuthorization = async (): Promise<boolean> => {
-  return true;
-};
-
-withChainsDescribe('External handler', () => {
-  beforeEach(
-    (): void => {
-      localStorage.clear();
-    },
-  );
-
-  function checkNextRequest(request: object): void {
+  function checkNextRequest(request: JsonRpcRequest, sender: string): void {
     const req = RequestHandler.next();
     expect(req.accept).not.toBe(null);
     expect(req.accept).not.toBe(undefined);
     expect(req.reject).not.toBe(null);
     expect(req.reject).not.toBe(undefined);
 
-    expect(req.request).toEqual(request);
+    const params: any = request.params; // eslint-disable-line
+    expect(req.reason).toEqual(params.reason);
+    expect(req.sender).toEqual(sender);
   }
 
   it('resolves to error if sender is unknown', async () => {
-    const persona = await Persona.create();
+    await createPersona();
 
-    const server = persona.startSigningServer(revealAllIdentities, signEverything);
     const request = buildGetIdentitiesRequest('getIdentities');
-    //eslint-disable-next-line
-    expect(handleExternalMessage(server, request, null as any)).resolves.toMatchObject({
-      error: {
-        message: 'Unkown sender, droped request',
-      },
-    });
+    const sender = {};
+    const sendResponse = (response: object): void => {
+      expect(response).toEqual(generateErrorResponse(1, 'Got external message without sender URL'));
+    };
+    handleExternalMessage(request, sender, sendResponse);
 
-    persona.destroy();
+    PersonaManager.destroy();
   });
 
   it('resolves to error if signing server is not ready', async () => {
     const request = buildGetIdentitiesRequest('getIdentities');
-    const sender = 'http://finex.com';
-    // eslint-disable-next-line
-    expect(handleExternalMessage(null as any, request, sender)).resolves.toMatchObject({
-      error: {
-        message: 'Signing server not ready',
-      },
-    });
+    const sender = { url: 'http://finnex.com' };
+    const sendResponse = (response: object): void => {
+      expect(response).toEqual(generateErrorResponse(1, 'Signing server not ready'));
+    };
+
+    handleExternalMessage(request, sender, sendResponse);
   });
 
-  it('resolves to error if whitelist handler is not loaded', async () => {
-    const persona = await Persona.create();
+  it('loads automatically request handler', async () => {
+    await createPersona();
 
-    const server = persona.startSigningServer(revealAllIdentities, signEverything);
     const request = buildGetIdentitiesRequest('getIdentities');
-    const sender = 'http://finex.com';
-    expect(handleExternalMessage(server, request, sender)).resolves.toMatchObject({
-      error: {
-        message: 'SenderWhitelist has not been initialised',
-      },
-    });
+    const sender = { url: 'http://finnex.com' };
+    const sendResponse = (response: object): void => {
+      expect(RequestHandler.requests).not.toBe(undefined);
+      expect(RequestHandler.requests).not.toBe(null);
+      expect(RequestHandler.requests).not.toBe([]);
+    };
 
-    persona.destroy();
+    handleExternalMessage(request, sender, sendResponse);
+
+    PersonaManager.destroy();
   });
 
   it('resolves to error if request method is unknown', async () => {
-    const persona = await Persona.create();
-    SenderWhitelist.load();
+    await createPersona();
     const wrongMethod = 'getIdentitiiies';
 
-    const server = persona.startSigningServer(revealAllIdentities, signEverything);
     const request = buildGetIdentitiesRequest(wrongMethod);
-    const sender = 'http://finex.com';
-    expect(handleExternalMessage(server, request, sender)).resolves.toMatchObject({
-      error: {
-        message: 'Request method not allowed, use getIdentities or signAndPost',
-      },
-    });
+    const sender = { url: 'http://finnex.com' };
+    const sendResponse = (response: object): void => {
+      expect(response).toEqual(
+        generateErrorResponse(1, 'Error: Unknown method name', jsonRpcCode.methodNotFound),
+      );
+    };
 
-    persona.destroy();
+    handleExternalMessage(request, sender, sendResponse);
+
+    PersonaManager.destroy();
   });
 
   it('enqueues a request', async () => {
-    const persona = await Persona.create();
-    SenderWhitelist.load();
-    RequestHandler.create();
+    await createPersona();
 
-    const server = persona.startSigningServer(revealAllIdentities, signEverything);
     const request = buildGetIdentitiesRequest('getIdentities');
-    const sender = 'http://finex.com';
-    handleExternalMessage(server, request, sender);
+    const sender = { url: 'http://finnex.com' };
+    const sendResponse = (response: object): void => {
+      expect(RequestHandler.requests().length).toBe(1);
+      checkNextRequest(request, sender.url);
+    };
 
-    expect(RequestHandler.requests().length).toBe(1);
-    checkNextRequest(request);
+    handleExternalMessage(request, sender, sendResponse);
 
-    persona.destroy();
+    PersonaManager.destroy();
   });
 
+  it.only('resolves to error when sender has been permanently blocked', async (done: () => void) => {
+    await createPersona();
+
+    const request = buildGetIdentitiesRequest('getIdentities');
+    const sender = { url: 'http://finnex.com' };
+    const sendSecondResponse = (response: object): void => {
+      expect(response).toEqual(generateErrorResponse(1, 'Sender has been blocked by user'));
+      PersonaManager.destroy();
+      done();
+    };
+
+    const sendFirstResponse = (_response: object): void => {
+      expect(RequestHandler.requests().length).toBe(1);
+      const chromeRequest = RequestHandler.next();
+      const rejectPermanently = true;
+      chromeRequest.reject(rejectPermanently);
+      expect(RequestHandler.requests().length).toBe(0);
+
+      handleExternalMessage(request, sender, sendSecondResponse);
+    };
+
+    handleExternalMessage(request, sender, sendFirstResponse);
+  }, 8000);
+});
+
+/*
   it('resolves to error when sender has been permanently blocked', async () => {
     const persona = await Persona.create();
     SenderWhitelist.load();

@@ -7,13 +7,16 @@ export function handleExternalMessage(
   sender: chrome.runtime.MessageSender,
   sendResponse: (response?: any) => void, //eslint-disable-line
 ): boolean {
+  const responseId = typeof request.id === 'number' ? request.id : null;
   if (!sender.url) {
-    throw new Error('Got external message without sender URL');
+    const error = generateErrorResponse(responseId, 'Got external message without sender URL');
+    sendResponse(error);
+
+    return false;
   }
 
   const signingServer = getSigningServer();
   if (!signingServer) {
-    const responseId = typeof request.id === 'number' ? request.id : null;
     const error = generateErrorResponse(responseId, 'Signing server not ready');
     sendResponse(error);
 
@@ -27,7 +30,7 @@ export function handleExternalMessage(
   signingServer
     .handleUnchecked(request, meta)
     .then(sendResponse)
-    .catch(console.error);
+    .catch(sendResponse);
 
   // If you want to asynchronously use sendResponse, add return true; It keeps sendResponse reference alive.
   // https://developer.chrome.com/extensions/messaging#simple
