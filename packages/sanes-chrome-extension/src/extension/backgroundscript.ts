@@ -1,19 +1,34 @@
 /*global chrome*/
+import { createPersona, getSigningServer } from './background/createPersona';
+import { RequestMeta } from './background/createPersona/requestCallback';
 import { generateErrorResponse } from './background/errorResponseGenerator';
-import { getSigningServer, handleInternalMessage } from './background/internalHandler';
-import { RequestMeta } from './background/internalHandler/requestMeta';
-import { MessageToBackground } from './messages';
-
-// For a better understanding about the message change done visit:
-// https://developer.chrome.com/extensions/messaging#simple
+import { getPersona } from './background/getPersona';
+import { MessageToBackground, MessageToBackgroundAction } from './messages';
 
 /**
  * Listener for dispatching extension requests
  */
 chrome.runtime.onMessage.addListener((message: MessageToBackground, sender, sendResponse) => {
-  handleInternalMessage(message, sender)
-    .then(sendResponse)
-    .catch(console.error);
+  console.log(message, sender);
+
+  if (sender.id !== chrome.runtime.id) {
+    return 'Sender is not allowed to perform this action';
+  }
+
+  switch (message.action) {
+    case MessageToBackgroundAction.GetPersona:
+      getPersona()
+        .then(sendResponse)
+        .catch(console.error);
+      break;
+    case MessageToBackgroundAction.CreatePersona:
+      createPersona()
+        .then(sendResponse)
+        .catch(console.error);
+      break;
+    default:
+      return 'Unknown action';
+  }
 
   // If you want to asynchronously use sendResponse, add return true; It keeps sendResponse reference alive.
   // https://developer.chrome.com/extensions/messaging#simple
