@@ -3,7 +3,7 @@ import { createPersona, getSigningServer } from './background/createPersona';
 import { RequestMeta } from './background/createPersona/requestCallback';
 import { generateErrorResponse } from './background/errorResponseGenerator';
 import { getPersona } from './background/getPersona';
-import { MessageToBackground, MessageToBackgroundAction } from './messages';
+import { MessageToBackground, MessageToBackgroundAction } from './background/messages';
 
 /**
  * Listener for dispatching extension requests

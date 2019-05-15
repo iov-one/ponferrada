@@ -1,7 +1,11 @@
 /*global chrome*/
 import * as React from 'react';
-import { ProcessedTx, PersonaAcccount } from '../logic/persona';
-import { isMessageToForeground, MessageToForegroundAction, GetPersonaResponse } from '../extension/messages';
+import {
+  GetPersonaResponse,
+  isMessageToForeground,
+  MessageToForegroundAction,
+} from '../extension/background/messages';
+import { PersonaAcccount, ProcessedTx } from '../logic/persona';
 
 type Accounts = ReadonlyArray<PersonaAcccount>;
 
