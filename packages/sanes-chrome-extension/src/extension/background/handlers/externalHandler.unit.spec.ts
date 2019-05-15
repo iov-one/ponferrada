@@ -127,7 +127,6 @@ withChainsDescribe('background script handler for website request', () => {
     expect(RequestHandler.requests().length).toBe(0);
 
     const sendSecondResponse = (response: object): void => {
-      console.log('Ey second response');
       expect(response).toEqual(generateErrorResponse(1, 'Sender has been blocked by user'));
       PersonaManager.destroy();
       done();

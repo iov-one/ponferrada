@@ -1,5 +1,6 @@
 import { getSigningServer } from '../actions/createPersona';
 import { RequestMeta } from '../actions/createPersona/requestCallback';
+import { SenderWhitelist } from '../actions/createPersona/requestSenderWhitelist';
 import { generateErrorResponse } from '../errorResponseGenerator';
 
 export function handleExternalMessage(
@@ -23,8 +24,16 @@ export function handleExternalMessage(
     return false;
   }
 
+  const { url: senderUrl } = sender;
+  if (SenderWhitelist.isBlocked(senderUrl)) {
+    const error = generateErrorResponse(responseId, 'Sender has been blocked by user');
+    sendResponse(error);
+
+    return false;
+  }
+
   const meta: RequestMeta = {
-    senderUrl: sender.url,
+    senderUrl,
   };
 
   signingServer
