@@ -1,7 +1,6 @@
-import { JsonRpcRequest } from '@iov/jsonrpc';
-
 interface Request {
-  readonly request: JsonRpcRequest;
+  readonly reason: string;
+  readonly sender: string;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
