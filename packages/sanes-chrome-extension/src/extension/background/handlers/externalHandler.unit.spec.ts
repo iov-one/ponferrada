@@ -114,7 +114,7 @@ withChainsDescribe('background script handler for website request', () => {
     PersonaManager.destroy();
   });
 
-  it.only('resolves to error when sender has been permanently blocked', async (done: () => void) => {
+  it('resolves to error when sender has been permanently blocked', async (done: () => void) => {
     await createPersona();
 
     const request = buildGetIdentitiesRequest('getIdentities');
@@ -133,57 +133,26 @@ withChainsDescribe('background script handler for website request', () => {
     };
     handleExternalMessage(request, sender, sendSecondResponse);
   }, 8000);
-});
 
-/*
-  it('resolves to error when sender has been permanently blocked', async () => {
-    const persona = await Persona.create();
-    SenderWhitelist.load();
-    RequestHandler.create();
+  it.only('resolves in order request queue', async () => {
+    await createPersona();
+    const sender = { url: 'http://finnex.com' };
 
-    const server = persona.startSigningServer(revealAllIdentities, signEverything);
-    const request = buildGetIdentitiesRequest('getIdentities');
-    const sender = 'http://finex.com';
-    handleExternalMessage(server, request, sender);
-    expect(RequestHandler.requests().length).toBe(1);
-
-    const chromeRequest = RequestHandler.next();
-    const rejectPermanently = true;
-    chromeRequest.reject(rejectPermanently);
-    expect(RequestHandler.requests().length).toBe(0);
-
-    expect(handleExternalMessage(server, request, sender)).resolves.toMatchObject({
-      error: {
-        message: 'Sender has been blocked by user',
-      },
-    });
-
-    persona.destroy();
-  });
-
-  it('resolves in order request queue', async () => {
-    const persona = await Persona.create();
-    SenderWhitelist.load();
-    RequestHandler.create();
-
-    const server = persona.startSigningServer(revealAllIdentities, signEverything);
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
-    const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
-    const sender = 'http://finex.com';
-    handleExternalMessage(server, requestFoo, sender);
-    handleExternalMessage(server, requestBar, sender);
-    expect(RequestHandler.requests().length).toBe(2);
+    handleExternalMessage(requestFoo, sender, jest.fn());
 
+    const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
+    handleExternalMessage(requestBar, sender, jest.fn());
+
+    expect(RequestHandler.requests().length).toBe(2);
     const chromeFooRequest = RequestHandler.next();
     chromeFooRequest.accept();
     expect(RequestHandler.requests().length).toBe(1);
-    const chromeBarRequest = RequestHandler.next();
-    expect(chromeFooRequest.request).not.toEqual(chromeBarRequest.request);
-    expect(chromeBarRequest.request.params).toMatchObject({
-      reason: 'string:Reason bar',
-    });
 
-    persona.destroy();
-  });
+    const chromeBarRequest = RequestHandler.next();
+    expect(chromeFooRequest.reason).not.toEqual(chromeBarRequest.reason);
+    expect(chromeBarRequest.reason).toBe('Reason bar');
+
+    PersonaManager.destroy();
+  }, 8000);
 });
-*/
