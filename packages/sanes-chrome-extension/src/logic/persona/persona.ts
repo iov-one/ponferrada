@@ -153,7 +153,7 @@ export class Persona {
     return accounts.map(account => {
       // TODO here: query network to get human readable address
       return {
-        label: account.name,
+        label: `Account ${account.index}`,
       };
     });
   }
