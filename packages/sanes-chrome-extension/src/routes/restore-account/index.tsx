@@ -1,10 +1,10 @@
-import * as React from 'react';
-import RestoreAccountForm, { RECOVERY_PHRASE } from './components';
-import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
-import { history } from '../../store/reducers';
+import * as React from 'react';
 import { PersonaContext } from '../../context/PersonaProvider';
-import { sendCreatePersonaMessage } from '../../extension/messages';
+import { sendCreatePersonaMessage } from '../../extension/background/messages';
+import { history } from '../../store/reducers';
+import { ACCOUNT_STATUS_ROUTE } from '../paths';
+import RestoreAccountForm, { RECOVERY_PHRASE } from './components';
 
 const onBack = (): void => {
   history.goBack();

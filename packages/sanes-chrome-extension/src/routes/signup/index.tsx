@@ -1,15 +1,13 @@
-import * as React from 'react';
-import NewAccountForm from './components/NewAccountForm';
-import ShowPhraseForm from './components/ShowPhraseForm';
-import SecurityHintForm from './components/SecurityHintForm';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
-import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm';
+import * as React from 'react';
+import { PersonaContext } from '../../context/PersonaProvider';
+import { sendCreatePersonaMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
-import { SECURITY_HINT } from './components/SecurityHintForm';
-import { PersonaContext } from '../../context/PersonaProvider';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import { sendCreatePersonaMessage } from '../../extension/messages';
+import NewAccountForm, { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm';
+import SecurityHintForm, { SECURITY_HINT } from './components/SecurityHintForm';
+import ShowPhraseForm from './components/ShowPhraseForm';
 
 const onBack = (): void => {
   history.goBack();

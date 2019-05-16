@@ -1,13 +1,13 @@
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+import * as messages from '../../extension/background/messages';
 import { aNewStore } from '../../store';
-import { mayTestChains } from '../../utils/test/testExecutor';
-import { submitAccountForm, handlePassPhrase, handleSecurityHint } from './test/fillSignupForm';
-import { travelToSignup } from './test/travelToSignup';
-import { randomString } from '../../utils/test/random';
+import { RootState } from '../../store/reducers';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { randomString } from '../../utils/test/random';
+import { mayTestChains } from '../../utils/test/testExecutor';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import * as messages from '../../extension/messages';
+import { handlePassPhrase, handleSecurityHint, submitAccountForm } from './test/fillSignupForm';
+import { travelToSignup } from './test/travelToSignup';
 
 describe('DOM > Feature > Signup', (): void => {
   let store: Store<RootState>;

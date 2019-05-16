@@ -35,7 +35,7 @@ const Welcome = (): JSX.Element => {
   const classes = useStyles();
 
   const onSendRequestToBeSigned = async (): Promise<void> => {
-    toast.show('Interaction with extension, fetching identities. Check console, please.', ToastVariant.INFO);
+    toast.show('Interaction with extension, fetching identities. Check the icon, please', ToastVariant.INFO);
     try {
       const identities = await sendGetIdentitiesRequest();
       const transactionId = await sendSignAndPostRequest(identities[0]);
