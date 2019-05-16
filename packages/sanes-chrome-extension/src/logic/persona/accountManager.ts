@@ -1,4 +1,4 @@
-import { Algorithm, ChainId, publicIdentityEquals, PublicIdentity } from '@iov/bcp';
+import { Algorithm, ChainId, PublicIdentity, publicIdentityEquals } from '@iov/bcp';
 import { UserProfile, WalletId } from '@iov/core';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';

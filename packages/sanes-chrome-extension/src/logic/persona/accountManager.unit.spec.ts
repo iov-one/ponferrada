@@ -1,8 +1,7 @@
 import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
-
-import { AccountManager, AccountManagerChainConfig } from './accountManager';
 import { createUserProfile } from '../user/profile';
+import { AccountManager, AccountManagerChainConfig } from './accountManager';
 
 describe('AccountManager', () => {
   const defaultMnemonic = 'adapt true travel equip february unhappy junk head warrior recall moral escape';
