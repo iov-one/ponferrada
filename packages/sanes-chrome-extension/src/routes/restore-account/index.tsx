@@ -16,7 +16,11 @@ const RestoreAccount = (): JSX.Element => {
   const onRestore = async (formValues: FormValues): Promise<void> => {
     const mnemonic = formValues[RECOVERY_PHRASE];
     const response = await sendCreatePersonaMessage(mnemonic);
-    personaProvider.update(response.accounts, response.mnemonic, response.txs);
+    personaProvider.update({
+      accounts: response.accounts,
+      mnemonic: response.mnemonic,
+      txs: response.txs,
+    });
     history.push(ACCOUNT_STATUS_ROUTE);
   };
 
