@@ -1,10 +1,11 @@
-import { Persona, PersonaManager } from '../../../../logic/persona';
+import { Persona } from '../../../../logic/persona';
 import { GetPersonaResponse } from '../../messages';
+import { getCreatedPersona } from '../createPersona';
 
 export async function getPersona(): Promise<GetPersonaResponse> {
   let persona: Persona;
   try {
-    persona = PersonaManager.get();
+    persona = getCreatedPersona();
   } catch (_) {
     return null;
   }

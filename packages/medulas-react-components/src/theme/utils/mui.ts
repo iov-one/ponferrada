@@ -1,7 +1,7 @@
+import grey from '@material-ui/core/colors/grey';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-import { lightFont, white, secondaryColor } from './variables';
-import grey from '@material-ui/core/colors/grey';
+import { lightFont, secondaryColor, white } from './variables';
 
 const theme = createMuiTheme({
   palette: {
@@ -75,6 +75,11 @@ const themeObject: ThemeOptions = {
   ...theme,
 
   overrides: {
+    MuiBackdrop: {
+      root: {
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      },
+    },
     MuiButton: {
       root: {
         fontSize: '1.6rem',

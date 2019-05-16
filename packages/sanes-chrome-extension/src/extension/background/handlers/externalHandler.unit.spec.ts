@@ -1,8 +1,7 @@
 import { TransactionEncoder } from '@iov/core';
 import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
-import { PersonaManager } from '../../../logic/persona';
 import { withChainsDescribe } from '../../../utils/test/testExecutor';
-import { createPersona } from '../actions/createPersona';
+import { createPersona, getCreatedPersona } from '../actions/createPersona';
 import * as txsUpdater from '../actions/createPersona/requestAppUpdater';
 import { RequestHandler } from '../actions/createPersona/requestHandler';
 import { generateErrorResponse } from '../errorResponseGenerator';
@@ -53,7 +52,7 @@ withChainsDescribe('background script handler for website request', () => {
     };
     handleExternalMessage(request, sender, sendResponse);
 
-    PersonaManager.destroy();
+    getCreatedPersona().destroy();
   });
 
   it('resolves to error if signing server is not ready', async () => {
@@ -79,7 +78,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     handleExternalMessage(request, sender, sendResponse);
 
-    PersonaManager.destroy();
+    getCreatedPersona().destroy();
   });
 
   it('resolves to error if request method is unknown', async () => {
@@ -96,7 +95,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     handleExternalMessage(request, sender, sendResponse);
 
-    PersonaManager.destroy();
+    getCreatedPersona().destroy();
   });
 
   it('enqueues a request', async () => {
@@ -104,14 +103,14 @@ withChainsDescribe('background script handler for website request', () => {
 
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
-    const sendResponse = (response: object): void => {
+    const sendResponse = (_response: object): void => {
       expect(RequestHandler.requests().length).toBe(1);
       checkNextRequest(request, sender.url);
     };
 
     handleExternalMessage(request, sender, sendResponse);
 
-    PersonaManager.destroy();
+    getCreatedPersona().destroy();
   });
 
   it('resolves to error when sender has been permanently blocked', async (done: () => void) => {
@@ -128,7 +127,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     const sendSecondResponse = (response: object): void => {
       expect(response).toEqual(generateErrorResponse(1, 'Sender has been blocked by user'));
-      PersonaManager.destroy();
+      getCreatedPersona().destroy();
       done();
     };
     handleExternalMessage(request, sender, sendSecondResponse);
@@ -153,6 +152,6 @@ withChainsDescribe('background script handler for website request', () => {
     expect(chromeFooRequest.reason).not.toEqual(chromeBarRequest.reason);
     expect(chromeBarRequest.reason).toBe('Reason bar');
 
-    PersonaManager.destroy();
+    getCreatedPersona().destroy();
   }, 8000);
 });

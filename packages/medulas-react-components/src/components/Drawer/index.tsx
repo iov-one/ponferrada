@@ -1,16 +1,16 @@
-import React from 'react';
-import classNames from 'classnames';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import MenuIcon from '@material-ui/icons/Menu';
+import classNames from 'classnames';
+import React from 'react';
 import Block from '../Block';
 
 const drawerWidth = 240;
@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginRight: -drawerWidth,
   },
 }));
 
@@ -126,7 +125,7 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
       </main>
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        variant="temporary"
         anchor="right"
         open={open}
         classes={drawerClasses}
