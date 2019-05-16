@@ -11,9 +11,6 @@ cache:
 before_install:
   # Enable user namespace cloning
   - "sudo sysctl -w kernel.unprivileged_userns_clone=1"
-  # yarn is outdated on Linux images
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
 
 before_script:
   # Make variables and function from Travis available in our script
