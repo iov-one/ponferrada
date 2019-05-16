@@ -1,6 +1,5 @@
 /*global chrome*/
-import { ProcessedTx } from '../logic/persona';
-import { AccountInfo } from '../logic/persona/accountManager';
+import { PersonaAcccount, ProcessedTx } from '../logic/persona';
 
 // WTC means "web to content"
 export const WTC_MSG_HELLO = 'wtc_HELLO';
@@ -24,7 +23,7 @@ export interface MessageToBackground {
 }
 
 export interface PersonaData {
-  readonly accounts: ReadonlyArray<AccountInfo>;
+  readonly accounts: ReadonlyArray<PersonaAcccount>;
   readonly mnemonic: string;
   readonly txs: ReadonlyArray<ProcessedTx>;
 }

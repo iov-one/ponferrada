@@ -1,10 +1,10 @@
-import { Algorithm, ChainId, publicIdentityEquals, PublicIdentity } from '@iov/bcp';
+import { Algorithm, ChainId, PublicIdentity, publicIdentityEquals } from '@iov/bcp';
 import { UserProfile, WalletId } from '@iov/core';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
 
 export interface AccountInfo {
-  readonly name: string;
+  readonly index: number;
   readonly identities: ReadonlyArray<PublicIdentity>;
 }
 
@@ -65,7 +65,7 @@ export class AccountManager {
       });
 
       return {
-        name: `Account ${accountIndex}`,
+        index: accountIndex,
         identities: identities,
       };
     });

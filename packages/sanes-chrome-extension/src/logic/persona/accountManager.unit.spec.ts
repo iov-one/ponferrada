@@ -1,8 +1,7 @@
 import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
-
-import { AccountManager, AccountManagerChainConfig } from './accountManager';
 import { createUserProfile } from '../user/profile';
+import { AccountManager, AccountManagerChainConfig } from './accountManager';
 
 describe('AccountManager', () => {
   const defaultMnemonic = 'adapt true travel equip february unhappy junk head warrior recall moral escape';
@@ -47,8 +46,10 @@ describe('AccountManager', () => {
       await manager.generateAccount(0);
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].identities.length).toEqual(1);
-      expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([chain1.chainId]);
+      expect(accounts[0]).toMatchObject({
+        index: 0,
+        identities: [{ chainId: chain1.chainId }],
+      });
     });
 
     it('generates one account with two identities when chains list has two elements', async () => {
@@ -57,8 +58,10 @@ describe('AccountManager', () => {
       await manager.generateAccount(0);
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].identities.length).toEqual(2);
-      expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([chain1.chainId, chain2.chainId]);
+      expect(accounts[0]).toMatchObject({
+        index: 0,
+        identities: [{ chainId: chain1.chainId }, { chainId: chain2.chainId }],
+      });
     });
   });
 
@@ -76,8 +79,10 @@ describe('AccountManager', () => {
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].identities.length).toEqual(1);
-      expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([chain1.chainId]);
+      expect(accounts[0]).toMatchObject({
+        index: 0,
+        identities: [{ chainId: chain1.chainId }],
+      });
     });
 
     it('generates one account with two identities when chains list has two elements', async () => {
@@ -86,8 +91,10 @@ describe('AccountManager', () => {
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
-      expect(accounts[0].identities.length).toEqual(2);
-      expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([chain1.chainId, chain2.chainId]);
+      expect(accounts[0]).toMatchObject({
+        index: 0,
+        identities: [{ chainId: chain1.chainId }, { chainId: chain2.chainId }],
+      });
     });
 
     it('can be used multiple times', async () => {
@@ -98,12 +105,18 @@ describe('AccountManager', () => {
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(3);
-      expect(accounts[0].identities.length).toEqual(1);
-      expect(accounts[1].identities.length).toEqual(1);
-      expect(accounts[2].identities.length).toEqual(1);
-      expect(accounts[0].identities.map(ident => ident.chainId)).toEqual([chain1.chainId]);
-      expect(accounts[1].identities.map(ident => ident.chainId)).toEqual([chain1.chainId]);
-      expect(accounts[2].identities.map(ident => ident.chainId)).toEqual([chain1.chainId]);
+      expect(accounts[0]).toMatchObject({
+        index: 0,
+        identities: [{ chainId: chain1.chainId }],
+      });
+      expect(accounts[1]).toMatchObject({
+        index: 1,
+        identities: [{ chainId: chain1.chainId }],
+      });
+      expect(accounts[2]).toMatchObject({
+        index: 2,
+        identities: [{ chainId: chain1.chainId }],
+      });
     });
   });
 });

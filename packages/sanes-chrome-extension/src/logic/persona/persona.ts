@@ -21,7 +21,7 @@ import {
   algorithmForCodec,
   pathBuilderForCodec,
 } from '../config';
-import { AccountManager, AccountInfo, AccountManagerChainConfig } from './accountManager';
+import { AccountManager, AccountManagerChainConfig } from './accountManager';
 import { Encoding } from '@iov/encoding';
 
 /** Like JsonRpcSigningServer but without functionality to create or shutdown */
@@ -69,6 +69,17 @@ export interface ProcessedTx {
   readonly time: string;
   /** If error is null, the transactin succeeded  */
   readonly error: string | null;
+}
+
+/**
+ * An account
+ *
+ * All fields must be losslessly JSON serializable/deserializable to allow
+ * messaging between background script and UI.
+ */
+export interface PersonaAcccount {
+  /** human readable address or placeholder text */
+  readonly label: string;
 }
 
 function isNonNull<T>(t: T | null): t is T {
@@ -136,8 +147,15 @@ export class Persona {
     return mnemonics.values().next().value;
   }
 
-  public async getAccounts(): Promise<ReadonlyArray<AccountInfo>> {
-    return this.accountManager.accounts();
+  public async getAccounts(): Promise<ReadonlyArray<PersonaAcccount>> {
+    const accounts = await this.accountManager.accounts();
+
+    return accounts.map(account => {
+      // TODO here: query network to get human readable address
+      return {
+        label: `Account ${account.index}`,
+      };
+    });
   }
 
   public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
