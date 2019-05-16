@@ -107,6 +107,7 @@ export async function sendCreateAccountMessage(): Promise<CreateAccountResponse>
  */
 export enum MessageToForegroundAction {
   TransactionsChanges = 'transaction_changed',
+  RequestChanges = 'request_changed',
 }
 
 /**
