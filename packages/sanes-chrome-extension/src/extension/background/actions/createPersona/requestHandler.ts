@@ -5,14 +5,6 @@ interface Request {
   readonly reject: (permanently: boolean) => void;
 }
 
-export function parseMethod(method: string): void {
-  const allowed = method === 'getIdentities' || method === 'signAndPost';
-
-  if (!allowed) {
-    throw new Error('Request method not allowed, use getIdentities or signAndPost');
-  }
-}
-
 export class RequestHandler {
   private static instance: Request[];
 
