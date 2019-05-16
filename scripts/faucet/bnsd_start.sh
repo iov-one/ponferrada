@@ -14,7 +14,7 @@ BLOCKCHAIN_URL="ws://$DOCKER_HOST_IP:23456"
 echo "Connecting to $BLOCKCHAIN_URL"
 
 docker run --read-only \
-  --name "bnsd_faucet" \
+  --name "bnsd-faucet" \
   --env "FAUCET_CONCURRENCY=3" \
   --env "FAUCET_COIN_TYPE=1" \
   --env "FAUCET_MNEMONIC=lazy luxury exit tail ethics guide voice ribbon denial seat reopen runway"  \

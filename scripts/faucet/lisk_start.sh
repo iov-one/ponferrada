@@ -14,7 +14,7 @@ BLOCKCHAIN_URL="http://$DOCKER_HOST_IP:4000"
 echo "Connecting to $BLOCKCHAIN_URL"
 
 docker run --read-only \
-  --name "lisk_faucet" \
+  --name "lisk-faucet" \
   --env "FAUCET_CONCURRENCY=3" \
   --env "FAUCET_CREDIT_AMOUNT_LSK=5" \
   --env "FAUCET_MNEMONIC=wagon stock borrow episode laundry kitten salute link globe zero feed marble" \

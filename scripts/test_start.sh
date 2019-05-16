@@ -14,30 +14,30 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo
 echo ">>> Starting bns chain and faucet..."
 echo
-bash "${SCRIPT_DIR}"/bnsd/start.sh
-bash "${SCRIPT_DIR}"/faucet/bnsd_start.sh
+"${SCRIPT_DIR}"/bnsd/start.sh
+"${SCRIPT_DIR}"/faucet/bnsd_start.sh
 
 echo
 echo ">>> Starting bcpd (demo) chain and faucet..."
 echo
-bash "${SCRIPT_DIR}"/bcpd/start.sh
-bash "${SCRIPT_DIR}"/faucet/bcpd_start.sh
+"${SCRIPT_DIR}"/bcpd/start.sh
+"${SCRIPT_DIR}"/faucet/bcpd_start.sh
 
 echo
 echo ">>> Starting lisk (test) chain and faucet..."
 echo
-bash "${SCRIPT_DIR}"/lisk/start.sh
-bash "${SCRIPT_DIR}"/lisk/load_faucet.sh
-bash "${SCRIPT_DIR}"/faucet/lisk_start.sh
+"${SCRIPT_DIR}"/lisk/start.sh
+"${SCRIPT_DIR}"/lisk/init.sh
+"${SCRIPT_DIR}"/faucet/lisk_start.sh
 
 echo
 echo ">>> Starting ethereum (ganache) chain, scraper and faucet..."
 echo
-bash "${SCRIPT_DIR}"/ethereum/start.sh
+"${SCRIPT_DIR}"/ethereum/start.sh
 # Wait Ethereum node to be ready
 "$gnutimeout" 15 bash -c "until curl -s -X POST --data '{\"jsonrpc\":\"2.0\",\"method\":\"net_version\",\"id\":42}' http://localhost:8545 > /dev/null; do sleep 1; done"
-bash "${SCRIPT_DIR}"/faucet/ethereum_start.sh
-bash "${SCRIPT_DIR}"/ethereum/scraper_start.sh
+"${SCRIPT_DIR}"/faucet/ethereum_start.sh
+"${SCRIPT_DIR}"/ethereum/scraper_start.sh
 
 echo
 echo ">>> Waiting for faucets to load tokens..."
