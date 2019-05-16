@@ -5,6 +5,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersonaProvider } from './context/PersonaProvider';
+import { RequestProvider } from './context/RequestProvider';
 import { GetPersonaResponse, sendGetPersonaMessage } from './extension/background/messages';
 import Route from './routes';
 import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from './routes/paths';
@@ -21,9 +22,11 @@ const render = (Component: React.ComponentType, persona: GetPersonaResponse): vo
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
         <ToastProvider>
           <PersonaProvider persona={persona}>
-            <ConnectedRouter history={history}>
-              <Component />
-            </ConnectedRouter>
+            <RequestProvider initialRequests={[]}>
+              <ConnectedRouter history={history}>
+                <Component />
+              </ConnectedRouter>
+            </RequestProvider>
           </PersonaProvider>
         </ToastProvider>
       </MedulasThemeProvider>
