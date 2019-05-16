@@ -158,6 +158,10 @@ export class Persona {
     });
   }
 
+  public async createAccount(): Promise<void> {
+    await this.accountManager.generateNextAccount();
+  }
+
   public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
     if (!this.core) {
       return [];
