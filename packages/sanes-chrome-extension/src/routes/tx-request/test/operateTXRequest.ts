@@ -33,9 +33,9 @@ export const checkPermanentRejection = async (TXRequestDom: React.Component): Pr
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, 'input');
   expect(inputs.length).toBe(1);
 
-  const doNotShowAgainCheckbox = inputs[0];
+  const rejectPermanentlyCheckbox = inputs[0];
   TestUtils.act(() => {
-    TestUtils.Simulate.change(doNotShowAgainCheckbox, {
+    TestUtils.Simulate.change(rejectPermanentlyCheckbox, {
       target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
     });
   });
@@ -47,6 +47,7 @@ export const clickOnBackButton = async (TXRequestDom: React.Component): Promise<
   expect(inputs.length).toBe(2);
 
   const backButton = inputs[1];
+  expect(backButton.getAttribute('aria-label')).toBe('Go back');
 
   TestUtils.act(() => {
     TestUtils.Simulate.click(backButton);
