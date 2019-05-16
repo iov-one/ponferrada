@@ -64,7 +64,7 @@ fold_end
 # Test
 #
 fold_start "yarn-tests"
-yarn test
+xvfb-run --auto-servernum yarn test
 fold_end
 
 #
