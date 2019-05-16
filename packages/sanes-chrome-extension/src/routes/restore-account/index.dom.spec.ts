@@ -1,10 +1,10 @@
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+import * as messages from '../../extension/background/messages';
 import { aNewStore } from '../../store';
+import { RootState } from '../../store/reducers';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { travelToRestoreAccount } from './test/travelToRestoreAccount';
 import { submitRecoveryPhrase } from './test/fillRecoveryPhrase';
-import * as messages from '../../extension/messages';
+import { travelToRestoreAccount } from './test/travelToRestoreAccount';
 
 withChainsDescribe(
   'DOM > Feature > Restore Account',
