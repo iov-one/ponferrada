@@ -1,25 +1,23 @@
-import * as React from 'react';
 import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Drawer from 'medulas-react-components/lib/components/Drawer';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from '../paths';
-import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
-import { useForm } from 'react-final-form-hooks';
 import Form from 'medulas-react-components/lib/components/forms/Form';
+import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+import { useForm } from 'react-final-form-hooks';
 import { PersonaContext } from '../../context/PersonaProvider';
-import ListTxs from './components/ListTxs';
+import { sendCreateAccountMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
+import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from '../paths';
+import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
 const AccountView = (): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Item[]>([]);
   const personaProvider = React.useContext(PersonaContext);
-  const { show } = React.useContext(ToastContext);
   const { form, handleSubmit } = useForm({
     onSubmit: () => {},
   });
@@ -36,10 +34,10 @@ const AccountView = (): JSX.Element => {
     fetchMyAccounts();
   }, [personaProvider.accounts]);
 
-  const onChange = (item: Item): void => {
+  const onChange = async (item: Item): Promise<void> => {
     if (item.name === CREATE_NEW_ONE) {
-      show('Feature coming soon. Stay tuned', ToastVariant.INFO);
-      return;
+      const response = await sendCreateAccountMessage();
+      personaProvider.update({ accounts: response.accounts });
     }
   };
   const accountLoaded = accounts.length > 1;
