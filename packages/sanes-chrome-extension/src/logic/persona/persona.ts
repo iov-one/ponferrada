@@ -168,27 +168,6 @@ export class Persona {
     return filtered;
   }
 
-  public async getBalances(accountIndex: number): Promise<ReadonlyArray<Amount>> {
-    const accounts = await this.accountManager.accounts();
-    if (accounts.length <= accountIndex) {
-      throw new Error('Account does not exist');
-    }
-    const account = accounts[accountIndex];
-    const pendingAccountResults = account.identities.map(identity => {
-      const { chainId, pubkey } = identity;
-      return this.signer.connection(chainId).getAccount({ pubkey });
-    });
-    const accountResults = await Promise.all(pendingAccountResults);
-
-    const out: Amount[] = [];
-    for (const result of accountResults) {
-      if (result) {
-        out.push(...result.balance);
-      }
-    }
-    return out;
-  }
-
   public startSigningServer(
     authorizeGetIdentities: GetIdentitiesAuthorization,
     authorizeSignAndPost: SignAndPostAuthorization,
