@@ -30,7 +30,7 @@ async function requestCallback<T>(
   return new Promise(resolve => {
     const accept = (): void => {
       RequestHandler.solved();
-      updateExtensionBadge();
+      updateExtensionBadge(RequestHandler.requests().length);
 
       resolve(acceptResponse);
     };
@@ -40,13 +40,13 @@ async function requestCallback<T>(
         SenderWhitelist.block(senderUrl);
       }
       RequestHandler.solved();
-      updateExtensionBadge();
+      updateExtensionBadge(RequestHandler.requests().length);
 
       resolve(rejectResponse);
     };
 
     RequestHandler.add({ reason, sender: senderUrl, accept, reject });
-    updateExtensionBadge();
+    updateExtensionBadge(RequestHandler.requests().length);
   });
 }
 

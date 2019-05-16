@@ -1,13 +1,11 @@
-import { RequestHandler } from './requestHandler';
-
 /*global chrome*/
-export function updateExtensionBadge(): void {
+
+export function updateExtensionBadge(queueSize: number): void {
   const isExtensionContext = typeof chrome !== 'undefined'; // needed for tests
   if (!isExtensionContext) {
     return;
   }
 
-  const queueSize = RequestHandler.requests().length;
   const badgeText = queueSize === 0 ? '' : `${queueSize}`;
   const iconPath = queueSize === 0 ? 'assets/icons/icon128.png' : 'assets/icons/request128.png';
 
