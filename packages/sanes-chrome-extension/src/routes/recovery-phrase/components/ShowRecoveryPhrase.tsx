@@ -1,15 +1,13 @@
-import * as React from 'react';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
-import Back from 'medulas-react-components/lib/components/Button/Back';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
 import PdfDownload from './PdfDownload';
 
 export interface Props {
   readonly mnemonic: string;
-  readonly onBack: () => void;
 }
 
-const ShowRecoveryPhrase = ({ onBack, mnemonic }: Props): JSX.Element => {
+const ShowRecoveryPhrase = ({ mnemonic }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Block marginRight={1}>
@@ -36,13 +34,6 @@ const ShowRecoveryPhrase = ({ onBack, mnemonic }: Props): JSX.Element => {
         <Typography variant="body1" inline>
           {mnemonic}
         </Typography>
-      </Block>
-      <Block display="flex" justifyContent="flex-start">
-        <Block width={100}>
-          <Back fullWidth onClick={onBack}>
-            Back
-          </Back>
-        </Block>
       </Block>
     </React.Fragment>
   );
