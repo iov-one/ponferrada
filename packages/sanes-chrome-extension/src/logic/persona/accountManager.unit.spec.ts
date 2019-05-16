@@ -32,39 +32,6 @@ describe('AccountManager', () => {
     });
   });
 
-  describe('generateAccount', () => {
-    it('does not change accounts for empty chains list', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, []);
-      await manager.generateAccount(0);
-      expect(await manager.accounts()).toEqual([]);
-    });
-
-    it('generates one account with one identity when chains list has one element', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, [chain1]);
-      await manager.generateAccount(0);
-      const accounts = await manager.accounts();
-      expect(accounts.length).toEqual(1);
-      expect(accounts[0]).toMatchObject({
-        index: 0,
-        identities: [{ chainId: chain1.chainId }],
-      });
-    });
-
-    it('generates one account with two identities when chains list has two elements', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, [chain1, chain2]);
-      await manager.generateAccount(0);
-      const accounts = await manager.accounts();
-      expect(accounts.length).toEqual(1);
-      expect(accounts[0]).toMatchObject({
-        index: 0,
-        identities: [{ chainId: chain1.chainId }, { chainId: chain2.chainId }],
-      });
-    });
-  });
-
   describe('generateNextAccount', () => {
     it('does not change accounts for empty chains list', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);

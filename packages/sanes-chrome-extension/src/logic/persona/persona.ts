@@ -117,8 +117,8 @@ export class Persona {
 
     const manager = new AccountManager(profile, managerChains);
 
-    // Setup accounts
-    await manager.generateAccount(0);
+    // Setup initial account of index 0
+    await manager.generateNextAccount();
 
     return new Persona(profile, signer, manager);
   }
