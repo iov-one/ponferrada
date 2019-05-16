@@ -18,7 +18,7 @@ function isRequestMeta(data: unknown): data is RequestMeta {
 
 async function requestCallback<T>(
   reason: string,
-  meta: RequestMeta,
+  meta: any, // eslint-disable-line
   acceptResponse: T,
   rejectResponse: T,
 ): Promise<T> {
@@ -53,7 +53,7 @@ async function requestCallback<T>(
 export async function getIdentitiesCallback(
   reason: string,
   matchingIdentities: ReadonlyArray<PublicIdentity>,
-  meta: RequestMeta,
+  meta: any, // eslint-disable-line
 ): Promise<ReadonlyArray<PublicIdentity>> {
   return requestCallback(reason, meta, matchingIdentities, []);
 }
@@ -61,7 +61,7 @@ export async function getIdentitiesCallback(
 export async function signAndPostCallback(
   reason: string,
   _transaction: UnsignedTransaction,
-  meta: RequestMeta,
+  meta: any, // eslint-disable-line
 ): Promise<boolean> {
   return requestCallback(reason, meta, true, false);
 }
