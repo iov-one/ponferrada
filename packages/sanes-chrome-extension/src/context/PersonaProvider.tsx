@@ -6,6 +6,7 @@ import {
   MessageToForegroundAction,
 } from '../extension/background/messages';
 import { PersonaAcccount, ProcessedTx } from '../logic/persona';
+import { extensionContext } from '../utils/chrome';
 
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
@@ -40,8 +41,7 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   React.useEffect(() => {
-    const isExtensionContext = typeof chrome !== 'undefined';
-    if (!isExtensionContext) {
+    if (!extensionContext()) {
       return;
     }
 
