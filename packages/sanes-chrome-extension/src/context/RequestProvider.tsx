@@ -1,6 +1,8 @@
 /*global chrome*/
 import * as React from 'react';
+import { Request } from '../extension/background/actions/createPersona/requestHandler';
 import { isMessageToForeground, MessageToForegroundAction } from '../extension/background/messages';
+import { IovWindowExtension } from '../extension/backgroundscript';
 import { extensionContext } from '../utils/chrome';
 
 type Requests = ReadonlyArray<Request>;
@@ -27,17 +29,19 @@ export const RequestProvider = ({ children, initialRequests }: Props): JSX.Eleme
     }
 
     chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
-      if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
+      const sameTarget = sender.id === chrome.runtime.id;
+      const messageToForeground = isMessageToForeground(message, MessageToForegroundAction.RequestChanges);
+
+      if (!sameTarget || !messageToForeground) {
         // Only handle messages from background script
         return;
       }
 
       switch (message.action) {
         case MessageToForegroundAction.RequestChanges:
-          if (!Array.isArray(message.data)) {
-            throw new Error('Data must be an array');
-          }
-          setRequests(message.data);
+          const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+          const requests = extensionWindow.getQueuedRequests();
+          setRequests([...requests]);
           break;
         default:
           throw new Error('Unknown action');
