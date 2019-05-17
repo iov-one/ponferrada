@@ -1,3 +1,4 @@
+/*global chrome*/
 import { ConnectedRouter } from 'connected-react-router';
 import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
@@ -6,7 +7,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersonaProvider } from './context/PersonaProvider';
 import { RequestProvider } from './context/RequestProvider';
-import { GetPersonaResponse, sendGetPersonaMessage } from './extension/background/messages';
+import {
+  GetPersonaResponse,
+  GetRequestResponse,
+  sendGetPersonaMessage,
+} from './extension/background/messages';
+import { IovWindowExtension } from './extension/backgroundscript';
 import Route from './routes';
 import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from './routes/paths';
 import { makeStore } from './store';
@@ -16,13 +22,19 @@ import { globalStyles } from './theme/globalStyles';
 const rootEl = document.getElementById('root');
 const store = makeStore();
 
-const render = (Component: React.ComponentType, persona: GetPersonaResponse): void => {
+const render = (
+  Component: React.ComponentType,
+  persona: GetPersonaResponse,
+  requests: GetRequestResponse,
+): void => {
+  console.log('root index.tsx with requests: ' + requests.length);
+
   ReactDOM.render(
     <Provider store={store}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
         <ToastProvider>
           <PersonaProvider persona={persona}>
-            <RequestProvider initialRequests={[]}>
+            <RequestProvider initialRequests={requests}>
               <ConnectedRouter history={history}>
                 <Component />
               </ConnectedRouter>
@@ -36,7 +48,9 @@ const render = (Component: React.ComponentType, persona: GetPersonaResponse): vo
 };
 
 sendGetPersonaMessage().then(persona => {
-  render(Route, persona);
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  const requests = extensionWindow.getQueuedRequests();
+  render(Route, persona, requests);
 
   const url = persona ? ACCOUNT_STATUS_ROUTE : WELCOME_ROUTE;
   history.push(url);
@@ -46,7 +60,7 @@ sendGetPersonaMessage().then(persona => {
       './routes',
       (): void => {
         const NextApp = require('./routes').default;
-        render(NextApp, persona);
+        render(NextApp, persona, requests);
       },
     );
   }
