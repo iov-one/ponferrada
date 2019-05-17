@@ -1,4 +1,5 @@
 import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+import { requestUpdater } from './requestAppUpdater';
 import { updateExtensionBadge } from './requestExtensionBadge';
 import { RequestHandler } from './requestHandler';
 import { SenderWhitelist } from './requestSenderWhitelist';
@@ -31,7 +32,7 @@ async function requestCallback<T>(
     const accept = (): void => {
       RequestHandler.solved();
       updateExtensionBadge(RequestHandler.requests().length);
-
+      requestUpdater();
       resolve(acceptResponse);
     };
 
@@ -41,12 +42,13 @@ async function requestCallback<T>(
       }
       RequestHandler.solved();
       updateExtensionBadge(RequestHandler.requests().length);
-
+      requestUpdater();
       resolve(rejectResponse);
     };
 
     RequestHandler.add({ reason, sender: senderUrl, accept, reject });
     updateExtensionBadge(RequestHandler.requests().length);
+    requestUpdater();
   });
 }
 
