@@ -102,6 +102,8 @@ export async function sendCreateAccountMessage(): Promise<CreateAccountResponse>
   });
 }
 
+export type GetRequestResponse = ReadonlyArray<Request>;
+
 /**
  * String values will be used in the JSON message objects
  */
