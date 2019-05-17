@@ -120,9 +120,12 @@ export interface MessageToForeground {
   readonly data?: any;
 }
 
-export function isMessageToForeground(data: unknown): data is MessageToForeground {
+export function isMessageToForeground(data: unknown, expectedAction: string): data is MessageToForeground {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
-  return (data as MessageToForeground).type === 'message_to_foreground';
+  const isForeground = (data as MessageToForeground).type === 'message_to_foreground';
+  const matchesMsg = (data as MessageToForeground).action === expectedAction;
+
+  return isForeground && matchesMsg;
 }

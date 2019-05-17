@@ -46,18 +46,21 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
     }
 
     console.log('PersonaProvider registering listener');
-    chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
-      if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
+    chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
+      const sameTarget = sender.id === chrome.runtime.id;
+      const messageToForeground = isMessageToForeground(msg, MessageToForegroundAction.TransactionsChanges);
+
+      if (!sameTarget || !messageToForeground) {
         // Only handle messages from background script
         return;
       }
 
-      switch (message.action) {
+      switch (msg.action) {
         case MessageToForegroundAction.TransactionsChanges:
-          if (!Array.isArray(message.data)) {
+          if (!Array.isArray(msg.data)) {
             throw new Error('Data must be an array');
           }
-          setTxs(message.data);
+          setTxs(msg.data);
           break;
         default:
           throw new Error('Unknown action');
