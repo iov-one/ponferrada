@@ -26,7 +26,7 @@ export async function createPersona(mnemonic?: string): Promise<CreatePersonaRes
   console.log('Signing server ready to handle requests');
 
   SenderWhitelist.load();
-  RequestHandler.create();
+  RequestHandler.load();
 
   return {
     mnemonic: persona.mnemonic,
