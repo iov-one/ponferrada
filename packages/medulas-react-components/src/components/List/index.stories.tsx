@@ -5,7 +5,7 @@ import WorkIcon from '@material-ui/icons/Work';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Storybook } from '../../utils/storybook';
-import { Avatar } from '../Avatar';
+import Avatar from '../Avatar';
 import { List, ListItem, ListItemAvatar, ListItemText } from './index';
 
 const useStyles = makeStyles((theme: Theme) => ({
