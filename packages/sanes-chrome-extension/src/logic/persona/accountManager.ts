@@ -23,20 +23,6 @@ export class AccountManager {
     this.chains = chains;
   }
 
-  public async generateAccount(derivation: number): Promise<void> {
-    for (const chain of this.chains) {
-      const { chainId, algorithm, derivePath } = chain;
-      const path = derivePath(derivation);
-      const wallet = this.walletForAlgorithm(algorithm);
-      const identityCreated = await this.identityExistsInProfile(wallet, chainId, path);
-
-      if (!identityCreated) {
-        const identity = await this.userProfile.createIdentity(wallet, chainId, path);
-        await this.userProfile.setIdentityLabel(identity, `${derivation}`);
-      }
-    }
-  }
-
   public async generateNextAccount(): Promise<void> {
     const nextDerivation = await this.numberOfExistingAccounts();
     await this.generateAccount(nextDerivation);
@@ -69,6 +55,21 @@ export class AccountManager {
         identities: identities,
       };
     });
+  }
+
+  /** This must be called with the next unused derication index. Gaps are not supported. */
+  private async generateAccount(derivation: number): Promise<void> {
+    for (const chain of this.chains) {
+      const { chainId, algorithm, derivePath } = chain;
+      const path = derivePath(derivation);
+      const wallet = this.walletForAlgorithm(algorithm);
+      const identityCreated = await this.identityExistsInProfile(wallet, chainId, path);
+
+      if (!identityCreated) {
+        const identity = await this.userProfile.createIdentity(wallet, chainId, path);
+        await this.userProfile.setIdentityLabel(identity, `${derivation}`);
+      }
+    }
   }
 
   private async existingAccountIndices(): Promise<ReadonlyArray<number>> {

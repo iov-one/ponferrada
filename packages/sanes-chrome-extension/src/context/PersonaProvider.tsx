@@ -7,13 +7,18 @@ import {
 } from '../extension/background/messages';
 import { PersonaAcccount, ProcessedTx } from '../logic/persona';
 
-type Accounts = ReadonlyArray<PersonaAcccount>;
+/** Only the fields that are set will be updated */
+export interface PersonaContextUpdateData {
+  readonly accounts?: ReadonlyArray<PersonaAcccount>;
+  readonly mnemonic?: string;
+  readonly txs?: ReadonlyArray<ProcessedTx>;
+}
 
 export interface PersonaContextInterface {
-  readonly accounts: Accounts;
+  readonly accounts: ReadonlyArray<PersonaAcccount>;
   readonly txs: ReadonlyArray<ProcessedTx>;
   readonly mnemonic: string;
-  readonly update: (accounts: Accounts, mnemonic: string, txs: ReadonlyArray<ProcessedTx>) => void;
+  readonly update: (newData: PersonaContextUpdateData) => void;
 }
 
 export const PersonaContext = React.createContext<PersonaContextInterface>({
@@ -27,6 +32,8 @@ interface Props {
   readonly children: React.ReactNode;
   readonly persona: GetPersonaResponse;
 }
+
+type Accounts = ReadonlyArray<PersonaAcccount>;
 
 export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
@@ -58,14 +65,10 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
     });
   }, []);
 
-  const loadPersonaInReact = (
-    accountNames: Accounts,
-    mnemonic: string,
-    txs: ReadonlyArray<ProcessedTx>,
-  ): void => {
-    setAccounts(accountNames);
-    setMnemonic(mnemonic);
-    setTxs(txs);
+  const loadPersonaInReact = (newData: PersonaContextUpdateData): void => {
+    if (newData.accounts !== undefined) setAccounts(newData.accounts);
+    if (newData.mnemonic !== undefined) setMnemonic(newData.mnemonic);
+    if (newData.txs !== undefined) setTxs(newData.txs);
   };
 
   const personaContextValue = {

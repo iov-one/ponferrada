@@ -10,6 +10,7 @@ export const WTC_MSG_HELLO = 'wtc_HELLO';
 export enum MessageToBackgroundAction {
   CreatePersona = 'create_persona',
   GetPersona = 'get_persona',
+  CreateAccount = 'create_account',
 }
 
 /**
@@ -77,6 +78,26 @@ export async function sendGetPersonaMessage(): Promise<GetPersonaResponse> {
           txs: response.txs,
         });
       }
+    });
+  });
+}
+
+export interface CreateAccountResponse {
+  /** An updated list of accounts */
+  readonly accounts: ReadonlyArray<PersonaAcccount>;
+}
+
+export async function sendCreateAccountMessage(): Promise<CreateAccountResponse> {
+  return new Promise((resolve, reject) => {
+    const message: MessageToBackground = { action: MessageToBackgroundAction.CreateAccount };
+    chrome.runtime.sendMessage(message, response => {
+      const lastError = chrome.runtime.lastError;
+      if (lastError) {
+        const errorMessage = lastError.message || 'Unknown error in chrome.runtime.lastError';
+        reject(errorMessage);
+        return;
+      }
+      resolve({ accounts: response.accounts });
     });
   });
 }

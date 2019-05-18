@@ -58,6 +58,28 @@ withChainsDescribe('Persona', () => {
     });
   });
 
+  describe('createAccount', () => {
+    it('can create an account', async () => {
+      const persona = await Persona.create();
+
+      {
+        const accounts = await persona.getAccounts();
+        expect(accounts.length).toEqual(1); // first account created by default
+      }
+
+      await persona.createAccount();
+
+      {
+        const accounts = await persona.getAccounts();
+        expect(accounts.length).toEqual(2);
+        expect(accounts[0].label).toEqual('Account 0');
+        expect(accounts[1].label).toEqual('Account 1');
+      }
+
+      persona.destroy();
+    });
+  });
+
   describe('startSigningServer', () => {
     it('can start the signing server', async () => {
       const persona = await Persona.create();

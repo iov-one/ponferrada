@@ -2,6 +2,7 @@
 import { createPersona } from '../actions/createPersona';
 import { getPersona } from '../actions/getPersona';
 import { MessageToBackground, MessageToBackgroundAction } from '../messages';
+import { createAccount } from '../actions/createAccount';
 
 export function internalHandler(
   message: MessageToBackground,
@@ -22,6 +23,11 @@ export function internalHandler(
       break;
     case MessageToBackgroundAction.CreatePersona:
       createPersona()
+        .then(sendResponse)
+        .catch(console.error);
+      break;
+    case MessageToBackgroundAction.CreateAccount:
+      createAccount()
         .then(sendResponse)
         .catch(console.error);
       break;

@@ -40,7 +40,11 @@ const Signup = (): JSX.Element => {
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
     const response = await sendCreatePersonaMessage();
-    personaProvider.update(response.accounts, response.mnemonic, response.txs);
+    personaProvider.update({
+      accounts: response.accounts,
+      mnemonic: response.mnemonic,
+      txs: response.txs,
+    });
     onShowPhrase();
   };
 
