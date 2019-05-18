@@ -1,3 +1,4 @@
+/*global chrome*/
 export function extensionContext(): boolean {
-  return typeof chrome !== 'undefined';
+  return typeof chrome !== 'undefined' && typeof chrome.runtime.onMessage !== 'undefined';
 }
