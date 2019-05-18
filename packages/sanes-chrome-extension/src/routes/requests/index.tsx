@@ -1,19 +1,29 @@
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { RequestContext } from '../../context/RequestProvider';
+import { history } from '../../store/reducers';
+import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from '../paths';
+import RequestList from './components/RequestList';
 
 const Requests = (): JSX.Element => {
   const requestContext = React.useContext(RequestContext);
-  const onResolve = (): void => {
-    const firstTx = requestContext.requests[0];
-    console.log(firstTx);
-    firstTx.reject(false);
+  const { requests } = requestContext;
+  const hasRequests = requests.length > 0;
+
+  const onBack = (): void => {
+    history.push(ACCOUNT_STATUS_ROUTE);
   };
 
   return (
-    <React.Fragment>
-      <div>We have: {requestContext.requests.length}</div>
-      <button onClick={onResolve}>Resolve the first one</button>
-    </React.Fragment>
+    <PageLayout id={REQUEST_ROUTE} primaryTitle="Requests" title="queue" onBack={onBack}>
+      {!hasRequests && (
+        <Typography align="center" weight="semibold">
+          No requests in queue
+        </Typography>
+      )}
+      {hasRequests && <RequestList requests={requests} />}
+    </PageLayout>
   );
 };
 
