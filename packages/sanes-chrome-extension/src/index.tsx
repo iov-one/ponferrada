@@ -7,11 +7,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersonaProvider } from './context/PersonaProvider';
 import { RequestProvider } from './context/RequestProvider';
-import {
-  GetPersonaResponse,
-  GetRequestResponse,
-  sendGetPersonaMessage,
-} from './extension/background/messages';
+import { Request } from './extension/background/actions/createPersona/requestHandler';
+import { GetPersonaResponse, sendGetPersonaMessage } from './extension/background/messages';
 import { IovWindowExtension } from './extension/backgroundscript';
 import Route from './routes';
 import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from './routes/paths';
@@ -25,7 +22,7 @@ const store = makeStore();
 const render = (
   Component: React.ComponentType,
   persona: GetPersonaResponse,
-  requests: GetRequestResponse,
+  requests: ReadonlyArray<Request>,
 ): void => {
   console.log('root index.tsx with requests: ' + requests.length);
 
