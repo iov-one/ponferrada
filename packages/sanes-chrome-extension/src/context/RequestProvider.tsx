@@ -30,9 +30,9 @@ export const RequestProvider = ({ children, initialRequests }: Props): JSX.Eleme
 
     chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
       const sameTarget = sender.id === chrome.runtime.id;
-      const messageToForeground = isMessageToForeground(message, MessageToForegroundAction.RequestChanges);
-
-      if (!sameTarget || !messageToForeground) {
+      const msgToForeground = isMessageToForeground(message);
+      const msgToRequestProvider = message.action === MessageToForegroundAction.RequestChanges;
+      if (!sameTarget || !msgToForeground || !msgToRequestProvider) {
         // Only handle messages from background script
         return;
       }

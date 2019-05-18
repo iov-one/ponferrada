@@ -48,9 +48,9 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
     console.log('PersonaProvider registering listener');
     chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
       const sameTarget = sender.id === chrome.runtime.id;
-      const messageToForeground = isMessageToForeground(msg, MessageToForegroundAction.TransactionsChanges);
-
-      if (!sameTarget || !messageToForeground) {
+      const msgToForeground = isMessageToForeground(msg);
+      const msgToPersonaProvider = msg.action === MessageToForegroundAction.TransactionsChanges;
+      if (!sameTarget || !msgToForeground || !msgToPersonaProvider) {
         // Only handle messages from background script
         return;
       }
