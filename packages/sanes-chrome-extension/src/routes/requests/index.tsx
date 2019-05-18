@@ -16,7 +16,7 @@ const Requests = (): JSX.Element => {
   };
 
   return (
-    <PageLayout id={REQUEST_ROUTE} primaryTitle="Requests" title="queue" onBack={onBack}>
+    <PageLayout id={REQUEST_ROUTE} primaryTitle="Requests" title="queue" onBack={onBack} color="white">
       {!hasRequests && (
         <Typography align="center" weight="semibold">
           No requests in queue

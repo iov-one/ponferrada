@@ -1,12 +1,13 @@
-import * as React from 'react';
-import Block from '../Block';
-import Typography from '../Typography';
-import Image from '../Image';
-import iovLogo from '../../theme/assets/iov-logo.png';
-import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
+import { makeStyles, Theme } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
+import * as React from 'react';
+import iovLogo from '../../theme/assets/iov-logo.png';
+import Block from '../Block';
+import Image from '../Image';
+import Typography from '../Typography';
 
-interface Props {
+interface Props extends StyleProps {
   readonly id?: string;
   readonly children: React.ReactNode;
   readonly primaryTitle: string;
@@ -14,8 +15,26 @@ interface Props {
   readonly onBack?: () => void;
 }
 
-const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.Element => {
+interface StyleProps {
+  readonly color?: 'white' | 'transparent';
+}
+
+const useStyles = makeStyles<Theme, StyleProps>({
+  root: props => ({
+    backgroundColor: props.color,
+  }),
+});
+
+const PageLayout = ({
+  id,
+  children,
+  color = 'transparent',
+  title,
+  primaryTitle,
+  onBack,
+}: Props): JSX.Element => {
   const showBackArrow = !!onBack;
+  const classes = useStyles({ color });
 
   return (
     <Block
@@ -26,6 +45,7 @@ const PageLayout = ({ id, children, title, primaryTitle, onBack }: Props): JSX.E
       paddingLeft={4}
       paddingTop={2}
       height="100%"
+      className={classes.root}
     >
       {showBackArrow && (
         <Block marginLeft={-2} marginBottom={1}>
