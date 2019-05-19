@@ -1,8 +1,8 @@
+import { createAccount } from '../actions/createAccount';
 /*global chrome*/
 import { createPersona } from '../actions/createPersona';
 import { getPersona } from '../actions/getPersona';
 import { MessageToBackground, MessageToBackgroundAction } from '../messages';
-import { createAccount } from '../actions/createAccount';
 
 export function internalHandler(
   message: MessageToBackground,

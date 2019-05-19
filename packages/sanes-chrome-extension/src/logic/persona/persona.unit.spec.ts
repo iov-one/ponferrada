@@ -1,9 +1,9 @@
-import { TokenTicker, PublicIdentity } from '@iov/bcp';
-import { TransactionEncoder, GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
+import { PublicIdentity, TokenTicker } from '@iov/bcp';
+import { GetIdentitiesAuthorization, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
 import { EnglishMnemonic } from '@iov/crypto';
 
-import { Persona } from './persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { Persona } from './persona';
 
 withChainsDescribe('Persona', () => {
   const revealAllIdentities: GetIdentitiesAuthorization = async (

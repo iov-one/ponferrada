@@ -1,9 +1,11 @@
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import React from 'react';
-import CheckboxField from './index';
+
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+
 import { Storybook } from '../../../utils/storybook';
 import Form, { useForm } from '../Form';
+import CheckboxField from './index';
 
 const CheckboxFieldForm = (): JSX.Element => {
   const { form, handleSubmit } = useForm({

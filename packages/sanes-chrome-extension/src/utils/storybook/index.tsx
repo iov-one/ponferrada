@@ -1,10 +1,11 @@
-import { Storybook } from 'medulas-react-components/lib/utils/storybook';
-import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
-import { Provider } from 'react-redux';
-import { createMemoryHistory, History } from 'history';
 import { ConnectedRouter, connectRouter } from 'connected-react-router';
-import { createStore, combineReducers } from 'redux';
+import { createMemoryHistory, History } from 'history';
+import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
+import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
+
 import { PersonaProvider } from '../../context/PersonaProvider';
 
 export const CHROME_EXTENSION_ROOT = 'Extension';

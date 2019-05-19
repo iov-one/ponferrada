@@ -1,9 +1,11 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import React from 'react';
+
+import { Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+
 import CurrencyToSend from './components/CurrencyToSend';
 import ReceiverAddress from './components/ReceiverAddress';
 import TextNote from './components/TextNote';

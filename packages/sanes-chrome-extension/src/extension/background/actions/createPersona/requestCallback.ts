@@ -1,4 +1,5 @@
 import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+
 import { updateExtensionBadge } from './requestExtensionBadge';
 import { RequestHandler } from './requestHandler';
 import { SenderWhitelist } from './requestSenderWhitelist';

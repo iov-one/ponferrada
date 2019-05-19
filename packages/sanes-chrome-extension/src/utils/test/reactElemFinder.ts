@@ -1,5 +1,5 @@
-import TestUtils from 'react-dom/test-utils';
 import { Page } from 'puppeteer';
+import TestUtils from 'react-dom/test-utils';
 
 const MAX_TIMES_EXECUTED = 35;
 const INTERVAL = 500;

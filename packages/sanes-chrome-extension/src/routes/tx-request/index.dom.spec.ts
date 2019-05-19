@@ -1,15 +1,16 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+
 import { aNewStore } from '../../store';
-import { travelToTXRequest } from './test/travelToTXRequest';
+import { RootState } from '../../store/reducers';
+import { sleep } from '../../utils/timer';
 import {
+  checkPermanentRejection,
   clickOnBackButton,
   clickOnRejectButton,
-  checkPermanentRejection,
   confirmRejectButton,
 } from './test/operateTXRequest';
-import { sleep } from '../../utils/timer';
+import { travelToTXRequest } from './test/travelToTXRequest';
 
 describe('DOM > Feature > Transaction Request', (): void => {
   let store: Store<RootState>;

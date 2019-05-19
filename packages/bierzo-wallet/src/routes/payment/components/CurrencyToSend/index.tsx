@@ -1,8 +1,3 @@
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/styles';
 import { FormApi } from 'final-form';
 import Block from 'medulas-react-components/lib/components/Block';
 import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
@@ -16,6 +11,12 @@ import {
   required,
 } from 'medulas-react-components/lib/utils/forms/validators';
 import React, { useState } from 'react';
+
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
   avatar: {

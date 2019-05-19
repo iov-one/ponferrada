@@ -1,11 +1,12 @@
+import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { RESTORE_ACCOUNT, LOGIN_ROUTE } from '../../paths';
-import { createDom } from '../../../utils/test/dom';
+
 import { history } from '../../../store/reducers';
+import { createDom } from '../../../utils/test/dom';
 import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import { Page } from 'puppeteer';
 import { findRenderedE2EComponentWithId } from '../../../utils/test/reactElemFinder';
+import { LOGIN_ROUTE, RESTORE_ACCOUNT } from '../../paths';
 
 export const travelToRestoreAccount = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);

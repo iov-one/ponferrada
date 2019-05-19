@@ -1,8 +1,9 @@
 import { Browser, Page } from 'puppeteer';
+
+import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { launchBrowser, createPage, closeBrowser } from '../../utils/test/e2e';
-import { travelToRestoreAccountStep } from './test/travelToRestoreAccount';
 import { submitRecoveryPhraseE2E } from './test/fillRecoveryPhrase';
+import { travelToRestoreAccountStep } from './test/travelToRestoreAccount';
 
 withChainsDescribe(
   'E2E > Restore Account route',

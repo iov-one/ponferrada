@@ -1,9 +1,10 @@
 import { Browser, Page } from 'puppeteer';
+
 import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { sleep } from '../../utils/timer';
 import { submitRecoveryPhraseE2E } from '../restore-account/test/fillRecoveryPhrase';
 import { travelToRestoreAccountStep } from '../restore-account/test/travelToRestoreAccount';
-import { sleep } from '../../utils/timer';
 
 withChainsDescribe('E2E > Account route', () => {
   let browser: Browser;

@@ -1,13 +1,15 @@
+import { FieldSubscription, FormApi } from 'final-form';
+import * as React from 'react';
+import { useField } from 'react-final-form-hooks';
+
 import InputBase, { InputBaseProps } from '@material-ui/core/InputBase';
 import Popper from '@material-ui/core/Popper';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { FormApi, FieldSubscription } from 'final-form';
-import { useField } from 'react-final-form-hooks';
-import * as React from 'react';
-import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
+
 import { useOpen } from '../../../hooks/open';
-import Image from '../../Image';
+import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
 import Block from '../../Block';
+import Image from '../../Image';
 import SelectItems from './SelectItems';
 
 export interface Item {

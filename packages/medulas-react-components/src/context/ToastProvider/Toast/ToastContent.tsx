@@ -1,6 +1,8 @@
-import { IconButton, SnackbarContent, Theme, createStyles, makeStyles } from '@material-ui/core';
 import classNames from 'classnames';
 import * as React from 'react';
+
+import { createStyles, IconButton, makeStyles, SnackbarContent, Theme } from '@material-ui/core';
+
 import Block from '../../../components/Block';
 import Image from '../../../components/Image';
 import Typography from '../../../components/Typography';

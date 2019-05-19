@@ -1,5 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { randomString } from '../../utils/test/random';

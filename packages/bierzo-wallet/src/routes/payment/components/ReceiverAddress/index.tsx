@@ -1,4 +1,3 @@
-import Paper from '@material-ui/core/Paper';
 import { FormApi } from 'final-form';
 import Block from 'medulas-react-components/lib/components/Block';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
@@ -11,6 +10,8 @@ import {
   validAddress,
 } from 'medulas-react-components/lib/utils/forms/validators';
 import React from 'react';
+
+import Paper from '@material-ui/core/Paper';
 
 const ADDRESS_FIELD = 'addressField';
 const ADDRESS_MAX_LENGTH = 254;

@@ -1,4 +1,5 @@
 import { Store } from 'redux';
+
 import * as messages from '../../extension/background/messages';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';

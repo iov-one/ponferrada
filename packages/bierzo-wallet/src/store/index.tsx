@@ -1,5 +1,6 @@
 import { routerMiddleware, RouterState } from 'connected-react-router';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
+
 import reducer, { history } from './reducers';
 
 const composeEnhancers =

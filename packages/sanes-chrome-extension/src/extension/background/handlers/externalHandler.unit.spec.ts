@@ -1,5 +1,6 @@
 import { TransactionEncoder } from '@iov/core';
 import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
+
 import { withChainsDescribe } from '../../../utils/test/testExecutor';
 import { createPersona, getCreatedPersona } from '../actions/createPersona';
 import * as txsUpdater from '../actions/createPersona/requestAppUpdater';

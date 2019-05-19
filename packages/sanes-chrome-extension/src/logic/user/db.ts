@@ -1,6 +1,7 @@
 import { AbstractLevelDOWN } from 'abstract-leveldown';
 import levelup, { LevelUp } from 'levelup';
 import MemDownConstructor from 'memdown';
+
 import { singleton } from '../../utils/singleton';
 
 export type DB<K, V> = LevelUp<AbstractLevelDOWN<K, V>>;

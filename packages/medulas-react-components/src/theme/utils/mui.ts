@@ -1,6 +1,7 @@
 import grey from '@material-ui/core/colors/grey';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+
 import { lightFont, secondaryColor, white } from './variables';
 
 const theme = createMuiTheme({

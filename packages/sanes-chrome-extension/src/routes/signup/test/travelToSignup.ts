@@ -1,12 +1,13 @@
+import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { SIGNUP_ROUTE } from '../../paths';
-import { createDom } from '../../../utils/test/dom';
+
 import { history } from '../../../store/reducers';
+import { createDom } from '../../../utils/test/dom';
 import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import { Page } from 'puppeteer';
-import { FIRST_STEP_SIGNUP_ROUTE } from '../components/NewAccountForm';
 import { findRenderedE2EComponentWithId } from '../../../utils/test/reactElemFinder';
+import { SIGNUP_ROUTE } from '../../paths';
+import { FIRST_STEP_SIGNUP_ROUTE } from '../components/NewAccountForm';
 
 export const travelToSignup = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);

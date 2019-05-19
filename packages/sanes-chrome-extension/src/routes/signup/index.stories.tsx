@@ -1,11 +1,13 @@
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
-import NewAccountForm from './components/NewAccountForm';
-import ShowPhraseForm from './components/ShowPhraseForm';
-import SecurityHintForm from './components/SecurityHintForm';
+
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
+import NewAccountForm from './components/NewAccountForm';
+import SecurityHintForm from './components/SecurityHintForm';
+import ShowPhraseForm from './components/ShowPhraseForm';
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
   .add(

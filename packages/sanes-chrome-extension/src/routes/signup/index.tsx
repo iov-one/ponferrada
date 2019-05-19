@@ -1,5 +1,6 @@
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import * as React from 'react';
+
 import { PersonaContext } from '../../context/PersonaProvider';
 import { sendCreatePersonaMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';

@@ -2,27 +2,27 @@ import { ReadonlyDate } from 'readonly-date';
 
 import { Amount, isSendTransaction } from '@iov/bcp';
 import {
-  MultiChainSigner,
-  UserProfile,
-  SigningServerCore,
-  SignAndPostAuthorization,
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
+  MultiChainSigner,
+  SignAndPostAuthorization,
   SignedAndPosted,
+  SigningServerCore,
+  UserProfile,
 } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
-import { JsonRpcResponse, JsonRpcRequest } from '@iov/jsonrpc';
+import { Encoding } from '@iov/encoding';
+import { JsonRpcRequest, JsonRpcResponse } from '@iov/jsonrpc';
 
-import { createUserProfile } from '../user';
 import {
-  chainConnector,
-  getConfigurationFile,
-  codecTypeFromString,
   algorithmForCodec,
+  chainConnector,
+  codecTypeFromString,
+  getConfigurationFile,
   pathBuilderForCodec,
 } from '../config';
+import { createUserProfile } from '../user';
 import { AccountManager, AccountManagerChainConfig } from './accountManager';
-import { Encoding } from '@iov/encoding';
 
 /** Like JsonRpcSigningServer but without functionality to create or shutdown */
 export interface UseOnlyJsonRpcSigningServer {

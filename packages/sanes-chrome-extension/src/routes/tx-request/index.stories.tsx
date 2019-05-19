@@ -1,12 +1,14 @@
-import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
-import ShowRequest from './components/ShowRequest';
-import RejectRequest from './components/RejectRequest';
+
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from '@storybook/react';
+
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import { ACCOUNT_STATUS_PAGE } from '../account/index.stories';
+import RejectRequest from './components/RejectRequest';
+import ShowRequest from './components/ShowRequest';
 
 const TX_REQUEST_PATH = `${CHROME_EXTENSION_ROOT}/Transaction Request`;
 const SHOW_REQUEST_PAGE = 'Show Request page';

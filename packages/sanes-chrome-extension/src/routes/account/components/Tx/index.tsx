@@ -1,16 +1,18 @@
+import Block from 'medulas-react-components/lib/components/Block';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import Img from 'medulas-react-components/lib/components/Image';
+import * as React from 'react';
+
 import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import * as React from 'react';
+
+import { ProcessedTx } from '../../../../logic/persona';
+import { prettyAmount } from '../../../../utils/balances';
 import iconErrorTx from '../../assets/transactionError.svg';
 import iconSendTx from '../../assets/transactionSend.svg';
 import MsgError from './MsgError';
 import Msg from './MsgSuccess';
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Img from 'medulas-react-components/lib/components/Image';
-import { prettyAmount } from '../../../../utils/balances';
-import { ProcessedTx } from '../../../../logic/persona';
 
 interface ItemProps {
   readonly item: ProcessedTx;

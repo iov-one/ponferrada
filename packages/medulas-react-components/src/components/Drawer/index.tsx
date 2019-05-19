@@ -1,3 +1,6 @@
+import classNames from 'classnames';
+import React from 'react';
+
 import AppBar from '@material-ui/core/AppBar';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -9,8 +12,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
-import classNames from 'classnames';
-import React from 'react';
+
 import Block from '../Block';
 
 const drawerWidth = 240;

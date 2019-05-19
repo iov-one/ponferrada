@@ -1,5 +1,6 @@
-import * as React from 'react';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
 import { elipsify } from '../../../../utils/strings';
 
 interface MsgErrorProps {

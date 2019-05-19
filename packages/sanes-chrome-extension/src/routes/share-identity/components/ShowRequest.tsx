@@ -1,8 +1,9 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
+import Button from 'medulas-react-components/lib/components/Button';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
 import { SHARE_IDENTITY } from '../../paths';
 
 export const SHARE_IDENTITY_SHOW = `${SHARE_IDENTITY}_show`;

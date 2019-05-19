@@ -1,9 +1,10 @@
-/*global chrome*/
-import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse, makeJsonRpcId } from '@iov/jsonrpc';
-import { TransactionEncoder } from '@iov/core';
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec } from '@iov/ethereum';
-import { extensionId } from '..';
+/*global chrome*/
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+
+import { extensionId } from '../';
 
 const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',

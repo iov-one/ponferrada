@@ -1,6 +1,7 @@
 import * as React from 'react';
-import MuiSwitch, { SwitchProps } from '@material-ui/core/Switch';
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import MuiSwitch, { SwitchProps } from '@material-ui/core/Switch';
 
 interface Props extends SwitchProps {
   readonly label?: string;

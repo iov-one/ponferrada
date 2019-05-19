@@ -1,4 +1,5 @@
-import puppeteer, { Page, Browser } from 'puppeteer';
+import puppeteer, { Browser, Page } from 'puppeteer';
+
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from '../../theme/constants';
 
 export function launchBrowser(slowMo: number = 0): Promise<Browser> {

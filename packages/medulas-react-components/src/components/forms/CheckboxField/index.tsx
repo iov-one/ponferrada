@@ -1,11 +1,12 @@
-import { FormApi, FieldSubscription } from 'final-form';
-import { useField } from 'react-final-form-hooks';
+import { FieldSubscription, FormApi } from 'final-form';
 import * as React from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import { useField } from 'react-final-form-hooks';
+
 import { Omit } from '@material-ui/core';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 interface Props extends Omit<CheckboxProps, 'form'> {
   readonly fieldName: string;

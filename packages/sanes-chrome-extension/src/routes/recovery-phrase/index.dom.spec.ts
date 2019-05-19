@@ -1,12 +1,12 @@
-import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
-import { aNewStore } from '../../store';
 import TestUtils from 'react-dom/test-utils';
+import { Store } from 'redux';
+
+import { aNewStore } from '../../store';
+import { RootState } from '../../store/reducers';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { WELCOME_ROUTE } from '../paths';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
-
-import { withChainsDescribe } from '../../utils/test/testExecutor';
 
 withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   let store: Store<RootState>;

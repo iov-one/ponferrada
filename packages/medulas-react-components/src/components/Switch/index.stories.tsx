@@ -1,8 +1,10 @@
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Switch from './index';
-import Block from '../Block';
+
+import { storiesOf } from '@storybook/react';
+
 import { Storybook } from '../../utils/storybook';
+import Block from '../Block';
+import Switch from './index';
 
 storiesOf('Components', module).add(
   'Switch',

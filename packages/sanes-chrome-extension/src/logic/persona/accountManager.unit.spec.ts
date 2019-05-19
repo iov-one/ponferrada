@@ -1,5 +1,6 @@
 import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
+
 import { createUserProfile } from '../user/profile';
 import { AccountManager, AccountManagerChainConfig } from './accountManager';
 

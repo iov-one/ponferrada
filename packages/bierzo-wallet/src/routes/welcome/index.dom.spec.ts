@@ -1,5 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import { configureStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { expectRoute } from '../../utils/test/dom';

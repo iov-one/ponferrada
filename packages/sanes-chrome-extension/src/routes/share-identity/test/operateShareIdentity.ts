@@ -1,7 +1,8 @@
 import TestUtils from 'react-dom/test-utils';
+
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
-import { SHARE_IDENTITY_SHOW } from '../components/ShowRequest';
 import { SHARE_IDENTITY_REJECT } from '../components/RejectRequest';
+import { SHARE_IDENTITY_SHOW } from '../components/ShowRequest';
 
 export const clickOnRejectButton = async (ShareIdentityDom: React.Component): Promise<void> => {
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, 'button');

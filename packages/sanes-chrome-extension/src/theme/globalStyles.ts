@@ -1,6 +1,7 @@
-import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
 import theme from 'medulas-react-components/lib/theme/utils/mui';
-import { EXTENSION_WIDTH, EXTENSION_HEIGHT } from './constants';
+import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
+
+import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from './constants';
 
 export const globalStyles = makeStyles({
   '@global': {

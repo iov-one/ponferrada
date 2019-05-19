@@ -1,10 +1,12 @@
 import * as React from 'react';
-import Block from '../Block';
-import Typography from '../Typography';
-import Image from '../Image';
-import iovLogo from '../../theme/assets/iov-logo.png';
-import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
+
 import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
+
+import iovLogo from '../../theme/assets/iov-logo.png';
+import Block from '../Block';
+import Image from '../Image';
+import Typography from '../Typography';
 
 interface Props {
   readonly id?: string;

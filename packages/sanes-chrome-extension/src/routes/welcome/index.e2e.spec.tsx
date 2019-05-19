@@ -1,6 +1,7 @@
 import { Browser, Page } from 'puppeteer';
+
+import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { WELCOME_ROUTE } from '../paths';
-import { launchBrowser, createPage, closeBrowser } from '../../utils/test/e2e';
 
 describe('DOM > Welcome route', (): void => {
   let browser: Browser;

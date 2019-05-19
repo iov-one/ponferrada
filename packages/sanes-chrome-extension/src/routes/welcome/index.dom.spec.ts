@@ -1,11 +1,12 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { WELCOME_ROUTE, LOGIN_ROUTE, SIGNUP_ROUTE, RESTORE_ACCOUNT } from '../paths';
+
+import { aNewStore } from '../../store';
 import { history, RootState } from '../../store/reducers';
 import { createDom } from '../../utils/test/dom';
-import { aNewStore } from '../../store';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { sleep } from '../../utils/timer';
+import { LOGIN_ROUTE, RESTORE_ACCOUNT, SIGNUP_ROUTE, WELCOME_ROUTE } from '../paths';
 
 describe('DOM > Feature > Welcome', () => {
   let store: Store<RootState>;

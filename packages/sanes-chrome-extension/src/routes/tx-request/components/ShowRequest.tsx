@@ -1,10 +1,11 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import { TX_REQUEST } from '../../paths';
+import Button from 'medulas-react-components/lib/components/Button';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
+import { TX_REQUEST } from '../../paths';
 
 export const TX_REQUEST_SHOW = `${TX_REQUEST}_show`;
 

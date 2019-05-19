@@ -1,7 +1,9 @@
-import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 import * as React from 'react';
-import ToastContent from './ToastContent';
+
+import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+
+import ToastContent from './ToastContent';
 
 export enum ToastVariant {
   SUCCESS = 'success',

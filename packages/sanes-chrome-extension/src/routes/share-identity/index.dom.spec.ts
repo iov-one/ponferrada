@@ -1,15 +1,16 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+
 import { aNewStore } from '../../store';
-import { travelToShareIdentity } from './test/travelToShareIdentity';
+import { RootState } from '../../store/reducers';
+import { sleep } from '../../utils/timer';
 import {
+  checkPermanentRejection,
   clickOnBackButton,
   clickOnRejectButton,
-  checkPermanentRejection,
   confirmRejectButton,
 } from './test/operateShareIdentity';
-import { sleep } from '../../utils/timer';
+import { travelToShareIdentity } from './test/travelToShareIdentity';
 
 describe('DOM > Feature > Share Identity', (): void => {
   let store: Store<RootState>;

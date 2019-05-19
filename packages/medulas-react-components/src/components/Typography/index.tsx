@@ -1,9 +1,10 @@
-import * as React from 'react';
-import MuiTypography, { TypographyProps } from '@material-ui/core/Typography';
-import makeStyles from '@material-ui/styles/makeStyles';
-import { Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { FontWeightProperty } from 'csstype';
+import * as React from 'react';
+
+import { Theme } from '@material-ui/core/styles';
+import MuiTypography, { TypographyProps } from '@material-ui/core/Typography';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 type Weight = 'light' | 'regular' | 'semibold';
 

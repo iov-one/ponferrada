@@ -1,17 +1,19 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import React from 'react';
-import icon from '../../assets/iov-logo.svg';
-import { history } from '../../store/reducers';
-import { PAYMENT_ROUTE } from '../paths';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
+import React from 'react';
+
+import { Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+
+import icon from '../../assets/iov-logo.svg';
 import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
+import { history } from '../../store/reducers';
+import { PAYMENT_ROUTE } from '../paths';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {

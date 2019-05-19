@@ -1,5 +1,6 @@
-import { Amount, TokenTicker } from '@iov/bcp';
 import { Omit } from 'react-router';
+
+import { Amount, TokenTicker } from '@iov/bcp';
 
 export type Figures = Omit<Amount, 'tokenTicker'>;
 

@@ -1,10 +1,11 @@
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import React from 'react';
-import SelectField from './index';
+
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+
 import { Storybook } from '../../../utils/storybook';
 import Form, { useForm } from '../Form';
-import { Item } from './index';
+import SelectField, { Item } from './index';
 
 const SelectFieldForm = (): JSX.Element => {
   const { form, handleSubmit } = useForm({

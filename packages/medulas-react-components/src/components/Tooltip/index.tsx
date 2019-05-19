@@ -1,10 +1,12 @@
-import { Popper, createStyles, makeStyles, Theme } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
 import * as React from 'react';
-import Image from '../Image';
+
+import { createStyles, makeStyles, Popper, Theme } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+
+import { useOpen } from '../../hooks/open';
 import infoNormal from '../../theme/assets/info_normal.svg';
 import theme from '../../theme/utils/mui';
-import { useOpen } from '../../hooks/open';
+import Image from '../Image';
 
 const DEFAULT_HEIGHT = 16;
 

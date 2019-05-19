@@ -1,11 +1,12 @@
+import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
+
 import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
 } from '../../../utils/test/reactElemFinder';
 import { ACCOUNT_STATUS_ROUTE } from '../../paths';
 import { RECOVERY_PHRASE } from '../components';
-import { Page } from 'puppeteer';
 
 export const submitRecoveryPhrase = async (
   AccountSubmitDom: React.Component,

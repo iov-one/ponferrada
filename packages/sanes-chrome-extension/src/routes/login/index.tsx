@@ -3,6 +3,7 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+
 import { history } from '../../store/reducers';
 import { LOGIN_ROUTE } from '../paths';
 import { PASSWORD_FIELD } from '../signup/components/NewAccountForm';

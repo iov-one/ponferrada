@@ -1,5 +1,7 @@
-import { storiesOf } from '@storybook/react';
 import React from 'react';
+
+import { storiesOf } from '@storybook/react';
+
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Welcome from './index';
 

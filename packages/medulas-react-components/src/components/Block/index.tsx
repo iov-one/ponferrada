@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import Box from '@material-ui/core/Box';
+
 import { SizingBreakpoint } from '../Grid';
 
 export type Unit = 0 | 1 | 2 | 3 | 4;

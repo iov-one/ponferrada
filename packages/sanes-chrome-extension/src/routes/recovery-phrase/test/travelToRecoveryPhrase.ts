@@ -1,10 +1,11 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { RECOVERY_PHRASE_ROUTE, WELCOME_ROUTE } from '../../paths';
-import { createDom } from '../../../utils/test/dom';
+
 import { history } from '../../../store/reducers';
+import { createDom } from '../../../utils/test/dom';
 import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
 import { sleep } from '../../../utils/timer';
+import { RECOVERY_PHRASE_ROUTE, WELCOME_ROUTE } from '../../paths';
 
 export const travelToRecoveryPhrase = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);

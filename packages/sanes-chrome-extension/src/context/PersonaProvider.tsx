@@ -1,5 +1,6 @@
 /*global chrome*/
 import * as React from 'react';
+
 import {
   GetPersonaResponse,
   isMessageToForeground,

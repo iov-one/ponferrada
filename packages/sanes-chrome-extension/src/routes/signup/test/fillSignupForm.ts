@@ -1,15 +1,16 @@
+import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
+
+import { getHintPhrase } from '../../../utils/localstorage/hint';
 import { randomString } from '../../../utils/test/random';
-import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
 import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
 } from '../../../utils/test/reactElemFinder';
-import { SECURITY_HINT_STEP_SIGNUP_ROUTE, SECURITY_HINT } from '../components/SecurityHintForm';
 import { sleep } from '../../../utils/timer';
-import { getHintPhrase } from '../../../utils/localstorage/hint';
-import { Page } from 'puppeteer';
-import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD, PASSWORD_CONFIRM_FIELD } from '../components/NewAccountForm';
+import { ACCOUNT_NAME_FIELD, PASSWORD_CONFIRM_FIELD, PASSWORD_FIELD } from '../components/NewAccountForm';
+import { SECURITY_HINT, SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
+import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
 
 export const submitAccountFormE2E = async (
   page: Page,

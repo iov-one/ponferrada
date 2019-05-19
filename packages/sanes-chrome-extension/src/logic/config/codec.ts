@@ -1,9 +1,9 @@
 import { Algorithm, ChainConnector } from '@iov/bcp';
-import { HdPaths } from '@iov/keycontrol';
-import { Slip10RawIndex } from '@iov/crypto';
 import { bnsConnector } from '@iov/bns';
-import { liskConnector } from '@iov/lisk';
+import { Slip10RawIndex } from '@iov/crypto';
 import { ethereumConnector } from '@iov/ethereum';
+import { HdPaths } from '@iov/keycontrol';
+import { liskConnector } from '@iov/lisk';
 
 import { CodecString } from './configurationfile';
 

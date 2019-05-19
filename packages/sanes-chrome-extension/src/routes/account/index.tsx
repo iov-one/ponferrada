@@ -7,6 +7,7 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { useForm } from 'react-final-form-hooks';
+
 import { PersonaContext } from '../../context/PersonaProvider';
 import { sendCreateAccountMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';

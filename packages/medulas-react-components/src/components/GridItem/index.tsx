@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import Box from '@material-ui/core/Box';
+
 import { SizingBreakpoint } from '../Grid';
 
 // TODO: Remove those props after BoxProps will be properly implemented.

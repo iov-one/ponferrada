@@ -1,7 +1,8 @@
-import * as React from 'react';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 import Back from 'medulas-react-components/lib/components/Button/Back';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
 import PdfDownload from './PdfDownload';
 
 export interface Props {

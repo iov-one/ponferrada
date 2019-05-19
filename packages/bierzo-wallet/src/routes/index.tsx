@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import { PAYMENT_ROUTE, WELCOME_ROUTE } from './paths';
 import Payment from './payment';
 import Welcome from './welcome';

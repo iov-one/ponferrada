@@ -1,7 +1,9 @@
+import * as React from 'react';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import * as React from 'react';
+
 import selectedTick from '../../../theme/assets/selectField/selectedTick.svg';
 import Block from '../../Block';
 import Hairline from '../../Hairline';

@@ -1,11 +1,12 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Button from 'medulas-react-components/lib/components/Button';
 import Back from 'medulas-react-components/lib/components/Button/Back';
-import Form, { useForm, FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
+import Form, { FormValues, useForm } from 'medulas-react-components/lib/components/forms/Form';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
 import { SHARE_IDENTITY } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';

@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { ListItem, ListItemIcon, ListItemText } from 'medulas-react-components/lib/components/List';
 import Block from 'medulas-react-components/lib/components/Block';
 import Img from 'medulas-react-components/lib/components/Image';
+import { ListItem, ListItemIcon, ListItemText } from 'medulas-react-components/lib/components/List';
+import * as React from 'react';
+
+import { makeStyles } from '@material-ui/core';
 
 interface Props {
   readonly src: string;

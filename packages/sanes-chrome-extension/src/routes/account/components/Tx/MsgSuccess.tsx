@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { elipsify } from '../../../../utils/strings';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
+import { elipsify } from '../../../../utils/strings';
 
 interface MsgProps {
   readonly recipient: string;
