@@ -7,7 +7,7 @@ import { SenderWhitelist } from './requestSenderWhitelist';
 
 export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
 let signingServer: SigningServer;
-let persona: Persona;
+let persona: Persona | undefined;
 
 export function getSigningServer(): SigningServer {
   return signingServer;
@@ -20,7 +20,13 @@ export function getCreatedPersona(): Persona {
   return persona;
 }
 
+function clear(): void {
+  signingServer = undefined;
+  persona = undefined;
+}
+
 export async function createPersona(mnemonic?: string): Promise<CreatePersonaResponse> {
+  clear(); // Assure we start from clean instances
   persona = await Persona.create(mnemonic);
   signingServer = persona.startSigningServer(getIdentitiesCallback, signAndPostCallback, transactionsUpdater);
   console.log('Signing server ready to handle requests');
