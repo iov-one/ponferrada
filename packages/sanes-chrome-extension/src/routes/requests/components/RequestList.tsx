@@ -38,7 +38,7 @@ function buildClickHandlerFrom(request: Request): () => void {
     history.push({
       pathname,
       state: {
-        [REQUEST_FIELD]: request,
+        [REQUEST_FIELD]: request.id,
       },
     });
 }
