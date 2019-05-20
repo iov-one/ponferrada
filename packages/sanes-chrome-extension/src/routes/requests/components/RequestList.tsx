@@ -61,6 +61,7 @@ const RequestList = ({ requests }: Props): JSX.Element => {
           const first = index === 0;
           const firstElemClass = first ? classes.first : undefined;
           const onRequestClick = buildClickHandlerFrom(req);
+          const text = req.type === 'getIdentities' ? 'Get Identities Request' : 'Sign Request';
 
           return (
             <React.Fragment>
@@ -71,7 +72,7 @@ const RequestList = ({ requests }: Props): JSX.Element => {
                 onClick={first ? onRequestClick : undefined}
               >
                 <ListItemText
-                  primary="Type of request"
+                  primary={text}
                   secondary={req.reason}
                   secondaryTypographyProps={secondaryProps}
                 />
