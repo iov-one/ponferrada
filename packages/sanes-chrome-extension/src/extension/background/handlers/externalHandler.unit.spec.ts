@@ -1,11 +1,13 @@
 import { TransactionEncoder } from '@iov/core';
 import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
 import { withChainsDescribe } from '../../../utils/test/testExecutor';
-import { createPersona, getCreatedPersona } from '../actions/createPersona';
+import * as createPersonaUtilities from '../actions/createPersona';
 import * as txsUpdater from '../actions/createPersona/requestAppUpdater';
 import { RequestHandler } from '../actions/createPersona/requestHandler';
 import { generateErrorResponse } from '../errorResponseGenerator';
 import { handleExternalMessage } from './externalHandler';
+
+const { createPersona, getCreatedPersona } = createPersonaUtilities;
 
 const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -22,12 +24,14 @@ const buildGetIdentitiesRequest = (method: string, customMessage?: string): Json
 withChainsDescribe('background script handler for website request', () => {
   beforeAll(() => {
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
+    jest.spyOn(txsUpdater, 'requestUpdater').mockImplementation(() => {});
   });
   beforeEach(() => {
     localStorage.clear();
   });
   afterAll(() => {
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockReset();
+    jest.spyOn(txsUpdater, 'requestUpdater').mockReset();
   });
 
   function checkNextRequest(request: JsonRpcRequest, sender: string): void {
@@ -38,28 +42,32 @@ withChainsDescribe('background script handler for website request', () => {
     expect(req.reject).not.toBe(undefined);
 
     const params: any = request.params; // eslint-disable-line
-    expect(req.reason).toEqual(params.reason);
+    expect(`string:${req.reason}`).toEqual(params.reason);
     expect(req.sender).toEqual(sender);
   }
 
-  it('resolves to error if sender is unknown', async () => {
+  it('resolves to error if sender is unknown', async (done: () => void) => {
     await createPersona();
 
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = {};
     const sendResponse = (response: object): void => {
       expect(response).toEqual(generateErrorResponse(1, 'Got external message without sender URL'));
+      getCreatedPersona().destroy();
+
+      done();
     };
     handleExternalMessage(request, sender, sendResponse);
-
-    getCreatedPersona().destroy();
   });
 
-  it('resolves to error if signing server is not ready', async () => {
+  it('resolves to error if signing server is not ready', async (done: () => void) => {
+    jest.spyOn(createPersonaUtilities, 'getSigningServer').mockImplementationOnce(() => undefined);
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
     const sendResponse = (response: object): void => {
       expect(response).toEqual(generateErrorResponse(1, 'Signing server not ready'));
+
+      done();
     };
 
     handleExternalMessage(request, sender, sendResponse);
@@ -70,18 +78,15 @@ withChainsDescribe('background script handler for website request', () => {
 
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
-    const sendResponse = (response: object): void => {
-      expect(RequestHandler.requests).not.toBe(undefined);
-      expect(RequestHandler.requests).not.toBe(null);
-      expect(RequestHandler.requests).not.toBe([]);
-    };
+    handleExternalMessage(request, sender, jest.fn());
 
-    handleExternalMessage(request, sender, sendResponse);
-
+    expect(RequestHandler.requests).not.toBe(undefined);
+    expect(RequestHandler.requests).not.toBe(null);
+    expect(RequestHandler.requests).not.toBe([]);
     getCreatedPersona().destroy();
   });
 
-  it('resolves to error if request method is unknown', async () => {
+  it('resolves to error if request method is unknown', async (done: () => void) => {
     await createPersona();
     const wrongMethod = 'getIdentitiiies';
 
@@ -91,11 +96,11 @@ withChainsDescribe('background script handler for website request', () => {
       expect(response).toEqual(
         generateErrorResponse(1, 'Error: Unknown method name', jsonRpcCode.methodNotFound),
       );
+      getCreatedPersona().destroy();
+      done();
     };
 
     handleExternalMessage(request, sender, sendResponse);
-
-    getCreatedPersona().destroy();
   });
 
   it('enqueues a request', async () => {
@@ -103,13 +108,10 @@ withChainsDescribe('background script handler for website request', () => {
 
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
-    const sendResponse = (_response: object): void => {
-      expect(RequestHandler.requests().length).toBe(1);
-      checkNextRequest(request, sender.url);
-    };
+    handleExternalMessage(request, sender, jest.fn());
 
-    handleExternalMessage(request, sender, sendResponse);
-
+    expect(RequestHandler.requests().length).toBe(1);
+    checkNextRequest(request, sender.url);
     getCreatedPersona().destroy();
   });
 

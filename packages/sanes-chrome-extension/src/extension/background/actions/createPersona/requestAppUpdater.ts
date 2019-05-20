@@ -10,3 +10,11 @@ export function transactionsUpdater(transactions: ReadonlyArray<ProcessedTx>): v
   };
   chrome.runtime.sendMessage(message);
 }
+
+export function requestUpdater(): void {
+  const message: MessageToForeground = {
+    type: 'message_to_foreground',
+    action: MessageToForegroundAction.RequestChanges,
+  };
+  chrome.runtime.sendMessage(message);
+}

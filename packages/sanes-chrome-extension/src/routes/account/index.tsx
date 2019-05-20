@@ -10,7 +10,7 @@ import { useForm } from 'react-final-form-hooks';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { sendCreateAccountMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
-import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE } from '../paths';
+import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
@@ -46,6 +46,10 @@ const AccountView = (): JSX.Element => {
     {
       text: 'Show recovery words',
       action: () => history.push(RECOVERY_PHRASE_ROUTE),
+    },
+    {
+      text: 'Requests',
+      action: () => history.push(REQUEST_ROUTE),
     },
   ];
 

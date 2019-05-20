@@ -6,6 +6,7 @@ import {
   MessageToForegroundAction,
 } from '../extension/background/messages';
 import { PersonaAcccount, ProcessedTx } from '../logic/persona';
+import { extensionContext } from '../utils/chrome';
 
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
@@ -40,24 +41,26 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   React.useEffect(() => {
-    const isExtensionContext = typeof chrome !== 'undefined';
-    if (!isExtensionContext) {
+    if (!extensionContext()) {
       return;
     }
 
     console.log('PersonaProvider registering listener');
-    chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
-      if (sender.id !== chrome.runtime.id || !isMessageToForeground(message)) {
+    chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
+      const sameTarget = sender.id === chrome.runtime.id;
+      const msgToForeground = isMessageToForeground(msg);
+      const msgToPersonaProvider = msg.action === MessageToForegroundAction.TransactionsChanges;
+      if (!sameTarget || !msgToForeground || !msgToPersonaProvider) {
         // Only handle messages from background script
         return;
       }
 
-      switch (message.action) {
+      switch (msg.action) {
         case MessageToForegroundAction.TransactionsChanges:
-          if (!Array.isArray(message.data)) {
+          if (!Array.isArray(msg.data)) {
             throw new Error('Data must be an array');
           }
-          setTxs(message.data);
+          setTxs(msg.data);
           break;
         default:
           throw new Error('Unknown action');

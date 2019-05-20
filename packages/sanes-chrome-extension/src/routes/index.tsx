@@ -1,23 +1,25 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Welcome from './welcome';
-import Signup from './signup';
-import Login from './login';
-import RecoveryPhrase from './recovery-phrase';
-import RestoreAccount from './restore-account';
-import ShareIdentity from './share-identity';
-import TxRequest from './tx-request';
 import AccountStatus from './account';
+import Login from './login';
 import {
-  WELCOME_ROUTE,
-  SIGNUP_ROUTE,
+  ACCOUNT_STATUS_ROUTE,
   LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
-  ACCOUNT_STATUS_ROUTE,
+  REQUEST_ROUTE,
   RESTORE_ACCOUNT,
   SHARE_IDENTITY,
+  SIGNUP_ROUTE,
   TX_REQUEST,
+  WELCOME_ROUTE,
 } from './paths';
+import RecoveryPhrase from './recovery-phrase';
+import Requests from './requests';
+import RestoreAccount from './restore-account';
+import ShareIdentity from './share-identity';
+import Signup from './signup';
+import TxRequest from './tx-request';
+import Welcome from './welcome';
 
 export const MainRouter = (): JSX.Element => (
   <Switch>
@@ -29,6 +31,7 @@ export const MainRouter = (): JSX.Element => (
     <Route exact path={ACCOUNT_STATUS_ROUTE} component={AccountStatus} />
     <Route exact path={SHARE_IDENTITY} component={ShareIdentity} />
     <Route exact path={TX_REQUEST} component={TxRequest} />
+    <Route exact path={REQUEST_ROUTE} component={Requests} />
   </Switch>
 );
 

@@ -107,6 +107,7 @@ export async function sendCreateAccountMessage(): Promise<CreateAccountResponse>
  */
 export enum MessageToForegroundAction {
   TransactionsChanges = 'transaction_changed',
+  RequestChanges = 'request_changed',
 }
 
 /**
@@ -123,5 +124,6 @@ export function isMessageToForeground(data: unknown): data is MessageToForegroun
   if (typeof data !== 'object' || data === null) {
     return false;
   }
+
   return (data as MessageToForeground).type === 'message_to_foreground';
 }

@@ -1,4 +1,4 @@
-interface Request {
+export interface Request {
   readonly reason: string;
   readonly sender: string;
   readonly accept: () => void;
@@ -6,25 +6,17 @@ interface Request {
 }
 
 export class RequestHandler {
-  private static instance: Request[];
+  private static instance: Request[] = [];
 
-  public static create(): void {
+  public static load(): void {
     RequestHandler.instance = [];
   }
 
   public static requests(): Request[] {
-    if (!RequestHandler.instance) {
-      throw new Error('There are no requests stored');
-    }
-
     return RequestHandler.instance;
   }
 
   public static next(): Request {
-    if (!RequestHandler.instance) {
-      throw new Error('There are no requests stored');
-    }
-
     const req = RequestHandler.instance[0];
     if (!req) {
       throw new Error('Next element is undefined');
@@ -34,7 +26,7 @@ export class RequestHandler {
   }
 
   public static solved(): void {
-    if (!RequestHandler.instance) {
+    if (RequestHandler.instance.length === 0) {
       throw new Error('There are no requests stored. This could lead to unexpected errors');
     }
 
@@ -45,10 +37,6 @@ export class RequestHandler {
   }
 
   public static add(req: Request): number {
-    if (!RequestHandler.instance) {
-      throw new Error('Request handler instance has not been initilised');
-    }
-
     return RequestHandler.instance.push(req);
   }
 }
