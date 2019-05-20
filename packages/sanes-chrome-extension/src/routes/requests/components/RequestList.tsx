@@ -1,4 +1,5 @@
 import { makeStyles, Theme } from '@material-ui/core';
+import { TypographyProps } from '@material-ui/core/Typography';
 import CompareArrows from '@material-ui/icons/CompareArrows';
 import Avatar from 'medulas-react-components/lib/components/Avatar';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -7,6 +8,8 @@ import { List, ListItem, ListItemAvatar, ListItemText } from 'medulas-react-comp
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { Request } from '../../../extension/background/actions/createPersona/requestHandler';
+import { history } from '../../../store/reducers';
+import { SHARE_IDENTITY, TX_REQUEST } from '../../paths';
 
 interface Props {
   readonly requests: ReadonlyArray<Request>;
@@ -26,9 +29,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+export const REQUEST_FIELD = 'req';
+
+function buildClickHandlerFrom(request: Request): () => void {
+  const pathname = request.type === 'getIdentities' ? SHARE_IDENTITY : TX_REQUEST;
+
+  return () =>
+    history.push({
+      pathname,
+      state: {
+        [REQUEST_FIELD]: request,
+      },
+    });
+}
+
 const RequestList = ({ requests }: Props): JSX.Element => {
   const classes = useStyles();
-  const secondaryProps = {
+  const secondaryProps: TypographyProps = {
     color: 'textPrimary',
   };
 
@@ -43,10 +60,16 @@ const RequestList = ({ requests }: Props): JSX.Element => {
         {requests.map((req: Request, index: number) => {
           const first = index === 0;
           const firstElemClass = first ? classes.first : undefined;
+          const onRequestClick = buildClickHandlerFrom(req);
 
           return (
             <React.Fragment>
-              <ListItem key={`${index}`} className={firstElemClass} disabled={!first}>
+              <ListItem
+                key={`${index}`}
+                className={firstElemClass}
+                disabled={!first}
+                onClick={first ? onRequestClick : undefined}
+              >
                 <ListItemText
                   primary="Type of request"
                   secondary={req.reason}
