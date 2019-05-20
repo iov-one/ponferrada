@@ -1,4 +1,7 @@
+import { Omit } from '@material-ui/core';
+
 export interface Request {
+  readonly id: number;
   readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
   readonly sender: string;
@@ -8,9 +11,11 @@ export interface Request {
 
 export class RequestHandler {
   private static instance: Request[] = [];
+  private static counter = 0;
 
   public static load(): void {
     RequestHandler.instance = [];
+    RequestHandler.counter = 0;
   }
 
   public static requests(): Request[] {
@@ -37,7 +42,11 @@ export class RequestHandler {
     }
   }
 
-  public static add(req: Request): number {
-    return RequestHandler.instance.push(req);
+  // TODO use Omit included in TS when upgrade to 3.5
+  public static add(req: Omit<Request, 'id'>): number {
+    const size = RequestHandler.instance.push({ ...req, id: RequestHandler.counter });
+    RequestHandler.counter = RequestHandler.counter + 1;
+
+    return size;
   }
 }
