@@ -9,10 +9,12 @@ type Requests = ReadonlyArray<Request>;
 
 export interface RequestContextInterface {
   readonly requests: Requests;
+  readonly firstRequest: Request | undefined;
 }
 
 export const RequestContext = React.createContext<RequestContextInterface>({
   requests: [],
+  firstRequest: undefined,
 });
 
 interface Props {
@@ -51,6 +53,7 @@ export const RequestProvider = ({ children, initialRequests }: Props): JSX.Eleme
 
   const requestContextValue = {
     requests,
+    firstRequest: requests.length > 0 ? requests[0] : undefined,
   };
 
   return <RequestContext.Provider value={requestContextValue}>{children}</RequestContext.Provider>;
