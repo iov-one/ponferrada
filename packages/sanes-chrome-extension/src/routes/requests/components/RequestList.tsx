@@ -21,32 +21,37 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '35px',
     backgroundColor: theme.palette.primary.main,
   },
-  background: {
-    backgroundColor: theme.palette.grey[50],
+  first: {
     cursor: 'pointer',
   },
 }));
 
 const RequestList = ({ requests }: Props): JSX.Element => {
   const classes = useStyles();
+  const secondaryProps = {
+    color: 'textPrimary',
+  };
 
   return (
     <React.Fragment>
-      <Block marginBottom={2}>
-        <Typography variant="subtitle2" color="textSecondary">
+      <Block marginBottom={3}>
+        <Typography variant="subtitle2" color="textPrimary">
           Remember! Transactions should be resolved in order!
         </Typography>
       </Block>
       <List className={classes.root}>
         {requests.map((req: Request, index: number) => {
           const first = index === 0;
-          const background = first ? classes.background : undefined;
+          const firstElemClass = first ? classes.first : undefined;
 
           return (
             <React.Fragment>
-              {first && <Hairline />}
-              <ListItem className={background}>
-                <ListItemText primary="Type of request" secondary={req.reason} />
+              <ListItem key={`${index}`} className={firstElemClass} disabled={!first}>
+                <ListItemText
+                  primary="Type of request"
+                  secondary={req.reason}
+                  secondaryTypographyProps={secondaryProps}
+                />
                 {first && (
                   <ListItemAvatar>
                     <Avatar color="primary" className={classes.avatar}>

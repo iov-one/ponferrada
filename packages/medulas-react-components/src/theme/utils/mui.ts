@@ -142,6 +142,12 @@ const themeObject: ThemeOptions = {
         paddingBottom: 0,
       },
     },
+    MuiListItem: {
+      dense: {
+        paddingTop: 0,
+        paddingBottom: `${theme.spacing(2)}px`, // TOFIX: https://github.com/mui-org/material-ui/issues/13672#issuecomment-441105931
+      },
+    },
     MuiOutlinedInput: {
       root: {
         // Do not change border color in hover effect
