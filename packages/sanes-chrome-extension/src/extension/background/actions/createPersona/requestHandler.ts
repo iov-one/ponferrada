@@ -1,4 +1,5 @@
 export interface Request {
+  readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
   readonly sender: string;
   readonly accept: () => void;
