@@ -1,12 +1,14 @@
+import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { SIGNUP_ROUTE } from '../../paths';
-import { createDom } from '../../../utils/test/dom';
 import { history } from '../../../store/reducers';
+import { createDom } from '../../../utils/test/dom';
 import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import { Page } from 'puppeteer';
-import { FIRST_STEP_SIGNUP_ROUTE } from '../components/NewAccountForm';
+import { randomString } from '../../../utils/test/random';
 import { findRenderedE2EComponentWithId } from '../../../utils/test/reactElemFinder';
+import { SIGNUP_ROUTE } from '../../paths';
+import { FIRST_STEP_SIGNUP_ROUTE } from '../components/NewAccountForm';
+import { handlePassPhrase, handleSecurityHint, submitAccountForm } from './fillSignupForm';
 
 export const travelToSignup = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
@@ -25,3 +27,16 @@ export const travelToSignupNewAccountStep = async (page: Page): Promise<void> =>
 
   await findRenderedE2EComponentWithId(page, FIRST_STEP_SIGNUP_ROUTE);
 };
+
+export async function processSignUp(store: Store): Promise<React.Component> {
+  const signupDOM = await travelToSignup(store);
+  const accountName = randomString(10);
+
+  await submitAccountForm(signupDOM, accountName);
+  await handlePassPhrase(signupDOM);
+  await handleSecurityHint(signupDOM, accountName);
+
+  const accountStatusDom = signupDOM;
+
+  return accountStatusDom;
+}
