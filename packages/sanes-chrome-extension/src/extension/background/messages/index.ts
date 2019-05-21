@@ -106,8 +106,8 @@ export async function sendCreateAccountMessage(): Promise<CreateAccountResponse>
  * String values will be used in the JSON message objects
  */
 export enum MessageToForegroundAction {
-  TransactionsChanges = 'transaction_changed',
-  RequestChanges = 'request_changed',
+  TransactionsChanged = 'transactions_changed',
+  RequestsChanged = 'requests_changed',
 }
 
 /**

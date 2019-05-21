@@ -49,14 +49,14 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
     chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
       const sameTarget = sender.id === chrome.runtime.id;
       const msgToForeground = isMessageToForeground(msg);
-      const msgToPersonaProvider = msg.action === MessageToForegroundAction.TransactionsChanges;
+      const msgToPersonaProvider = msg.action === MessageToForegroundAction.TransactionsChanged;
       if (!sameTarget || !msgToForeground || !msgToPersonaProvider) {
         // Only handle messages from background script
         return;
       }
 
       switch (msg.action) {
-        case MessageToForegroundAction.TransactionsChanges:
+        case MessageToForegroundAction.TransactionsChanged:
           if (!Array.isArray(msg.data)) {
             throw new Error('Data must be an array');
           }
