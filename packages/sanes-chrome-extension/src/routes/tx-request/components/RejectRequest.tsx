@@ -51,31 +51,7 @@ const Layout = ({ request, onBack, onRejectRequest }: Props): JSX.Element => {
             label="Don't ask me again"
           />
         </Block>
-        <Hairline />
-        <Block marginTop={2} marginBottom={2}>
-          <Block display="flex" alignItems="center">
-            <Block flex="1 0 1px">
-              <Block marginLeft={6}>
-                <Typography variant="body1">Fee</Typography>
-              </Block>
-            </Block>
-            <Block flex="1 0 1px">
-              <Typography variant="h6">0,0288 ETH</Typography>
-            </Block>
-          </Block>
-          <Block display="flex" alignItems="center">
-            <Block flex="1 0 1px">
-              <Block marginLeft={6}>
-                <Typography variant="body1">Register</Typography>
-              </Block>
-            </Block>
-            <Block flex="1 0 1px">
-              <Typography variant="h6">billy*iov</Typography>
-            </Block>
-          </Block>
-        </Block>
-        <Hairline />
-        <Block marginTop={4} />
+        <Block marginTop={6} />
         <Button variant="contained" fullWidth type="submit" disabled={pristine || submitting}>
           Reject
         </Button>
