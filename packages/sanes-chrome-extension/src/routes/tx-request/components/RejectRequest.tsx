@@ -7,6 +7,7 @@ import Hairline from 'medulas-react-components/lib/components/Hairline';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+import { Request } from '../../../extension/background/actions/createPersona/requestHandler';
 import { TX_REQUEST } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';
@@ -15,9 +16,10 @@ export const TX_REQUEST_REJECT = `${TX_REQUEST}_reject`;
 interface Props {
   readonly onRejectRequest: (permanent: boolean) => void;
   readonly onBack: () => void;
+  readonly request: Request;
 }
 
-const Layout = ({ onBack, onRejectRequest }: Props): JSX.Element => {
+const Layout = ({ request, onBack, onRejectRequest }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     const permanentReject = `${formValues[PERMANENT_REJECT]}` === 'true';
@@ -35,7 +37,7 @@ const Layout = ({ onBack, onRejectRequest }: Props): JSX.Element => {
         <Block textAlign="center" marginTop={2}>
           <Typography variant="body1">You are not allowing</Typography>
           <Typography variant="body1" color="primary">
-            http://finex.com
+            {request.sender}
           </Typography>
           <Typography variant="body1" inline>
             to perform the following transaction to be made

@@ -31,8 +31,14 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
 
   return (
     <React.Fragment>
-      {action === 'show' && <ShowRequest onAcceptRequest={onAcceptRequest} showRejectView={showRejectView} />}
-      {action === 'reject' && <RejectRequest onBack={showRequestView} onRejectRequest={onRejectRequest} />}
+      {action === 'show' && (
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        <ShowRequest request={request!} onAcceptRequest={onAcceptRequest} showRejectView={showRejectView} />
+      )}
+      {action === 'reject' && (
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        <RejectRequest request={request!} onBack={showRequestView} onRejectRequest={onRejectRequest} />
+      )}
     </React.Fragment>
   );
 };
