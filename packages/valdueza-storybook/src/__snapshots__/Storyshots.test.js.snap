@@ -3249,7 +3249,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-2043 makeStyles-weight-2079"
         >
-          http://finex.com
+          http://localhost/
         </p>
         <p
           className="MuiTypography-root MuiTypography-body1 MuiTypography-colorError makeStyles-weight-2043 makeStyles-weight-2080 makeStyles-inline-2041"
@@ -3425,7 +3425,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-1968 makeStyles-weight-2004"
       >
-        http://finex.com
+        http://localhost/
       </p>
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-1968 makeStyles-weight-2005 makeStyles-inline-1966"
@@ -4177,7 +4177,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-2592 makeStyles-weight-2629"
         >
-          http://finex.com
+          http://localhost/
         </p>
         <p
           className="MuiTypography-root MuiTypography-body1 makeStyles-weight-2592 makeStyles-weight-2630 makeStyles-inline-2590"
@@ -4412,7 +4412,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary makeStyles-weight-2502 makeStyles-weight-2539"
       >
-        http://finex.com
+        http://localhost/
       </p>
       <p
         className="MuiTypography-root MuiTypography-body1 makeStyles-weight-2502 makeStyles-weight-2540 makeStyles-inline-2500"
