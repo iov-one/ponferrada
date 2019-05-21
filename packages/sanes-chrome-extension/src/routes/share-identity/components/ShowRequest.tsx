@@ -22,7 +22,7 @@ const Layout = ({ request, onAcceptRequest, showRejectView }: Props): JSX.Elemen
         {request.sender}
       </Typography>
       <Typography variant="body1" inline>
-        wants to see your identity
+        wants to see your identity.
       </Typography>
     </Block>
     <Block marginTop={10} />

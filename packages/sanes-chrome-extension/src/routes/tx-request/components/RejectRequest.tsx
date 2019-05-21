@@ -40,7 +40,7 @@ const Layout = ({ request, onBack, onRejectRequest }: Props): JSX.Element => {
             {request.sender}
           </Typography>
           <Typography variant="body1" inline>
-            to perform the following transaction to be made
+            to perform the following transaction to be made.
           </Typography>
 
           <Block marginTop={1} />
