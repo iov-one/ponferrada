@@ -19,6 +19,7 @@ function isRequestMeta(data: unknown): data is RequestMeta {
 
 async function requestCallback<T>(
   reason: string,
+  type: 'getIdentities' | 'signAndPost',
   meta: any, // eslint-disable-line
   acceptResponse: T,
   rejectResponse: T,
@@ -46,7 +47,7 @@ async function requestCallback<T>(
       resolve(rejectResponse);
     };
 
-    RequestHandler.add({ reason, sender: senderUrl, accept, reject });
+    RequestHandler.add({ reason, type, sender: senderUrl, accept, reject });
     updateExtensionBadge(RequestHandler.requests().length);
     requestUpdater();
   });
@@ -57,7 +58,7 @@ export async function getIdentitiesCallback(
   matchingIdentities: ReadonlyArray<PublicIdentity>,
   meta: any, // eslint-disable-line
 ): Promise<ReadonlyArray<PublicIdentity>> {
-  return requestCallback(reason, meta, matchingIdentities, []);
+  return requestCallback(reason, 'getIdentities', meta, matchingIdentities, []);
 }
 
 export async function signAndPostCallback(
@@ -65,5 +66,5 @@ export async function signAndPostCallback(
   _transaction: UnsignedTransaction,
   meta: any, // eslint-disable-line
 ): Promise<boolean> {
-  return requestCallback(reason, meta, true, false);
+  return requestCallback(reason, 'signAndPost', meta, true, false);
 }

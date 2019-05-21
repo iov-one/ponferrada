@@ -1,15 +1,16 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+import { Request } from '../../extension/background/actions/createPersona/requestHandler';
 import { aNewStore } from '../../store';
-import { travelToShareIdentity } from './test/travelToShareIdentity';
+import { RootState } from '../../store/reducers';
+import { sleep } from '../../utils/timer';
 import {
+  checkPermanentRejection,
   clickOnBackButton,
   clickOnRejectButton,
-  checkPermanentRejection,
   confirmRejectButton,
 } from './test/operateShareIdentity';
-import { sleep } from '../../utils/timer';
+import { travelToShareIdentity } from './test/travelToShareIdentity';
 
 describe('DOM > Feature > Share Identity', (): void => {
   let store: Store<RootState>;
@@ -17,8 +18,18 @@ describe('DOM > Feature > Share Identity', (): void => {
 
   beforeEach(async () => {
     store = aNewStore();
-    identityDOM = await travelToShareIdentity(store);
-  });
+    const requests: ReadonlyArray<Request> = [
+      {
+        id: 1,
+        type: 'getIdentities',
+        reason: 'Test get Identities',
+        sender: 'http://finnex.com',
+        accept: jest.fn(),
+        reject: jest.fn(),
+      },
+    ];
+    identityDOM = await travelToShareIdentity(store, requests);
+  }, 250000);
 
   it('should accept incoming request and redirect to account status view', async (): Promise<void> => {
     const inputs = TestUtils.scryRenderedDOMComponentsWithTag(identityDOM, 'button');

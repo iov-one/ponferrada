@@ -2872,6 +2872,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
       <li
         className="MuiListItem-root MuiListItem-default MuiListItem-dense MuiListItem-gutters makeStyles-first-1744"
         disabled={false}
+        onClick={[Function]}
       >
         <div
           className="MuiListItemText-root"
@@ -2879,7 +2880,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
           <span
             className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
           >
-            Type of request
+            Sign Request
           </span>
           <p
             className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary MuiListItemText-secondary"
@@ -2923,7 +2924,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
           <span
             className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
           >
-            Type of request
+            Sign Request
           </span>
           <p
             className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary MuiListItemText-secondary"
@@ -2942,7 +2943,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
           <span
             className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
           >
-            Type of request
+            Sign Request
           </span>
           <p
             className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary MuiListItemText-secondary"
