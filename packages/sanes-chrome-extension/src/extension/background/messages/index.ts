@@ -106,12 +106,15 @@ export async function sendCreateAccountMessage(): Promise<CreateAccountResponse>
  * String values will be used in the JSON message objects
  */
 export enum MessageToForegroundAction {
-  TransactionsChanges = 'transaction_changed',
-  RequestChanges = 'request_changed',
+  TransactionsChanged = 'transactions_changed',
+  RequestsChanged = 'requests_changed',
 }
 
 /**
- * A message either from background script to foreground
+ * A message from background script to foreground.
+ *
+ * Those messages are sent independent of the existence of a foreground script (i.e. UI open).
+ * When there is no UI, the messages have no effect.
  */
 export interface MessageToForeground {
   readonly type: 'message_to_foreground';

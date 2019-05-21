@@ -33,14 +33,14 @@ export const RequestProvider = ({ children, initialRequests }: Props): JSX.Eleme
     chrome.runtime.onMessage.addListener((message, sender, _sendResponse) => {
       const sameTarget = sender.id === chrome.runtime.id;
       const msgToForeground = isMessageToForeground(message);
-      const msgToRequestProvider = message.action === MessageToForegroundAction.RequestChanges;
+      const msgToRequestProvider = message.action === MessageToForegroundAction.RequestsChanged;
       if (!sameTarget || !msgToForeground || !msgToRequestProvider) {
         // Only handle messages from background script
         return;
       }
 
       switch (message.action) {
-        case MessageToForegroundAction.RequestChanges:
+        case MessageToForegroundAction.RequestsChanged:
           const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
           const requests = extensionWindow.getQueuedRequests();
           setRequests([...requests]);

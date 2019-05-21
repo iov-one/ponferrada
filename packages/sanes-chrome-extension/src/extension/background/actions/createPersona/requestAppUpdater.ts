@@ -5,7 +5,7 @@ import { MessageToForeground, MessageToForegroundAction } from '../../messages';
 export function transactionsUpdater(transactions: ReadonlyArray<ProcessedTx>): void {
   const message: MessageToForeground = {
     type: 'message_to_foreground',
-    action: MessageToForegroundAction.TransactionsChanges,
+    action: MessageToForegroundAction.TransactionsChanged,
     data: transactions,
   };
   chrome.runtime.sendMessage(message);
@@ -14,7 +14,7 @@ export function transactionsUpdater(transactions: ReadonlyArray<ProcessedTx>): v
 export function requestUpdater(): void {
   const message: MessageToForeground = {
     type: 'message_to_foreground',
-    action: MessageToForegroundAction.RequestChanges,
+    action: MessageToForegroundAction.RequestsChanged,
   };
   chrome.runtime.sendMessage(message);
 }
