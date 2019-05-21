@@ -4182,7 +4182,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 makeStyles-weight-2592 makeStyles-weight-2630 makeStyles-inline-2590"
         >
-          to perform the following transaction to be made
+          to perform the following transaction to be made.
         </p>
         <div
           className="MuiBox-root MuiBox-root-2631"
