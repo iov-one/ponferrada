@@ -82,6 +82,8 @@ interface Props {
   readonly elevation?: number;
 }
 
+export const DRAWER_HTML_ID = 'account-drawer';
+
 function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.Element {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -136,7 +138,7 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
           </IconButton>
         </div>
         <Divider />
-        <List component="nav">
+        <List component="nav" id={DRAWER_HTML_ID}>
           {items.map(item => (
             <ListItem button key={item.text}>
               <ListItemText primary={item.text} onClick={item.action} />
