@@ -64,9 +64,8 @@ const RequestList = ({ requests }: Props): JSX.Element => {
           const text = req.type === 'getIdentities' ? 'Get Identities Request' : 'Sign Request';
 
           return (
-            <React.Fragment>
+            <React.Fragment key={`${index}`}>
               <ListItem
-                key={`${index}`}
                 className={firstElemClass}
                 disabled={!first}
                 onClick={first ? onRequestClick : undefined}
