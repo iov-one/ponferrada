@@ -1,15 +1,16 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { RootState } from '../../store/reducers';
+import { Request } from '../../extension/background/actions/createPersona/requestHandler';
 import { aNewStore } from '../../store';
-import { travelToTXRequest } from './test/travelToTXRequest';
+import { RootState } from '../../store/reducers';
+import { sleep } from '../../utils/timer';
 import {
+  checkPermanentRejection,
   clickOnBackButton,
   clickOnRejectButton,
-  checkPermanentRejection,
   confirmRejectButton,
 } from './test/operateTXRequest';
-import { sleep } from '../../utils/timer';
+import { travelToTXRequest } from './test/travelToTXRequest';
 
 describe('DOM > Feature > Transaction Request', (): void => {
   let store: Store<RootState>;
@@ -17,7 +18,17 @@ describe('DOM > Feature > Transaction Request', (): void => {
 
   beforeEach(async () => {
     store = aNewStore();
-    identityDOM = await travelToTXRequest(store);
+    const requests: ReadonlyArray<Request> = [
+      {
+        id: 1,
+        type: 'signAndPost',
+        reason: 'Test get Identities',
+        sender: 'http://finnex.com',
+        accept: jest.fn(),
+        reject: jest.fn(),
+      },
+    ];
+    identityDOM = await travelToTXRequest(store, requests);
   });
 
   it('should accept incoming request and redirect to account status view', async (): Promise<void> => {
