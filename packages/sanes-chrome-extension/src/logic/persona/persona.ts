@@ -86,6 +86,28 @@ function isNonNull<T>(t: T | null): t is T {
   return t !== null;
 }
 
+async function createSignerAndManager(
+  profile: UserProfile,
+): Promise<{ readonly signer: MultiChainSigner; readonly accountManager: AccountManager }> {
+  const config = await getConfigurationFile();
+
+  const signer = new MultiChainSigner(profile);
+  const managerChains: AccountManagerChainConfig[] = [];
+  for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+    const codecType = codecTypeFromString(chainSpec.codecType);
+    const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
+    const { connection } = await signer.addChain(connector);
+    managerChains.push({
+      chainId: connection.chainId(),
+      algorithm: algorithmForCodec(codecType),
+      derivePath: pathBuilderForCodec(codecType),
+    });
+  }
+
+  const accountManager = new AccountManager(profile, managerChains, config.names);
+  return { signer, accountManager };
+}
+
 export class Persona {
   /**
    * Creates a new Persona instance.
@@ -95,58 +117,21 @@ export class Persona {
    * creating accounts.
    */
   public static async create(db: StringDb, password: string, fixedMnemonic?: string): Promise<Persona> {
-    const config = await getConfigurationFile();
-
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
     const profile = await createUserProfile(mnemonic);
-    const signer = new MultiChainSigner(profile);
-
-    // connect chains
-    const managerChains: AccountManagerChainConfig[] = [];
-    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
-      const codecType = codecTypeFromString(chainSpec.codecType);
-      const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
-      const { connection } = await signer.addChain(connector);
-      managerChains.push({
-        chainId: connection.chainId(),
-        algorithm: algorithmForCodec(codecType),
-        derivePath: pathBuilderForCodec(codecType),
-      });
-    }
-
-    const manager = new AccountManager(profile, managerChains, config.names);
+    const { signer, accountManager: manager } = await createSignerAndManager(profile);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
-
     await profile.storeIn(db, password);
 
     return new Persona(profile, signer, manager);
   }
 
   public static async load(db: StringDb, password: string): Promise<Persona> {
-    const config = await getConfigurationFile();
-
     const profile = await UserProfile.loadFrom(db, password);
-
-    const signer = new MultiChainSigner(profile);
-
-    // connect chains
-    const managerChains: AccountManagerChainConfig[] = [];
-    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
-      const codecType = codecTypeFromString(chainSpec.codecType);
-      const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
-      const { connection } = await signer.addChain(connector);
-      managerChains.push({
-        chainId: connection.chainId(),
-        algorithm: algorithmForCodec(codecType),
-        derivePath: pathBuilderForCodec(codecType),
-      });
-    }
-
-    const manager = new AccountManager(profile, managerChains, config.names);
-
+    const { signer, accountManager: manager } = await createSignerAndManager(profile);
     return new Persona(profile, signer, manager);
   }
 
