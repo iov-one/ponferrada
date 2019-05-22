@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { RequestContext } from '../../context/RequestProvider';
 import { history } from '../../store/reducers';
 import { REQUEST_ROUTE } from '../paths';
-import { checkRequest } from '../requests';
+import { validRequest } from '../requests';
 import RejectRequest from './components/RejectRequest';
 import ShowRequest from './components/ShowRequest';
 
@@ -14,30 +14,37 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
   const requestContext = React.useContext(RequestContext);
 
   const request = requestContext.firstRequest;
-  checkRequest(request, location, toast);
+  const isValid = validRequest(request, location, toast);
+  if (!isValid) {
+    return <React.Fragment />;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const requestValid = request!;
 
   const showRequestView = (): void => setAction('show');
   const showRejectView = (): void => setAction('reject');
 
   const onAcceptRequest = (): void => {
-    request!.accept(); // eslint-disable-line
+    requestValid.accept();
     history.push(REQUEST_ROUTE);
   };
 
   const onRejectRequest = (permanent: boolean): void => {
-    request!.reject(permanent); // eslint-disable-line
+    requestValid.reject(permanent);
     history.push(REQUEST_ROUTE);
   };
 
   return (
     <React.Fragment>
       {action === 'show' && (
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        <ShowRequest request={request!} onAcceptRequest={onAcceptRequest} showRejectView={showRejectView} />
+        <ShowRequest
+          request={requestValid}
+          onAcceptRequest={onAcceptRequest}
+          showRejectView={showRejectView}
+        />
       )}
       {action === 'reject' && (
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        <RejectRequest request={request!} onBack={showRequestView} onRejectRequest={onRejectRequest} />
+        <RejectRequest request={requestValid} onBack={showRequestView} onRejectRequest={onRejectRequest} />
       )}
     </React.Fragment>
   );
