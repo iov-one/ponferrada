@@ -38,11 +38,15 @@ describe('RequestHandler', () => {
   it('re-initializes itself', () => {
     RequestHandler.load();
 
-    expect(RequestHandler['instance'].length).toBe(0);
+    expect(RequestHandler.requests().length).toBe(0);
+    // RequestHandler does not expose its internal counter, so this is an exceptional use case
+    // which can not be used in regular code because it violates private modifier of blocked variable.
     expect(RequestHandler['counter']).toBe(0);
   });
 
   it('updates counter when a new request is added', () => {
+    // RequestHandler does not expose its internal counter, so this is an exceptional use case
+    // which can not be used in regular code because it violates private modifier of blocked variable.
     expect(RequestHandler['counter']).toBe(3);
     RequestHandler.solved();
     expect(RequestHandler['counter']).toBe(3);
