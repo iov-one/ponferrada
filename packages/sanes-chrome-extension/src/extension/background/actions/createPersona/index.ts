@@ -23,12 +23,18 @@ export function getCreatedPersona(): Persona {
   return instance.persona;
 }
 
-function clear(): void {
+export function clearPersona(): void {
+  if (!instance) {
+    throw new Error('The persona+server instance is unset. This indicates a bug in the lifecycle.');
+  }
+  instance.persona.destroy();
   instance = undefined;
 }
 
 export async function createPersona(mnemonic?: string): Promise<CreatePersonaResponse> {
-  clear(); // Assure we start from clean instances
+  if (instance) {
+    throw new Error('The persona+server instance is already set. This indicates a bug in the lifecycle.');
+  }
 
   const persona = await Persona.create(mnemonic);
   const signingServer = persona.startSigningServer(

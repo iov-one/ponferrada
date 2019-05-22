@@ -7,7 +7,7 @@ import { GetIdentitiesRequest, RequestHandler } from '../actions/createPersona/r
 import { generateErrorResponse } from '../errorResponseGenerator';
 import { handleExternalMessage } from './externalHandler';
 
-const { createPersona, getCreatedPersona } = createPersonaUtilities;
+const { clearPersona, createPersona } = createPersonaUtilities;
 
 const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -26,8 +26,12 @@ withChainsDescribe('background script handler for website request', () => {
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
     jest.spyOn(txsUpdater, 'requestUpdater').mockImplementation(() => {});
   });
-  beforeEach(() => {
+  beforeEach(async () => {
     localStorage.clear();
+    await createPersona();
+  });
+  afterEach(() => {
+    clearPersona();
   });
   afterAll(() => {
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockReset();
@@ -44,14 +48,10 @@ withChainsDescribe('background script handler for website request', () => {
   }
 
   it('resolves to error if sender is unknown', async (done: () => void) => {
-    await createPersona();
-
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = {};
     const sendResponse = (response: object): void => {
       expect(response).toEqual(generateErrorResponse(1, 'Got external message without sender URL'));
-      getCreatedPersona().destroy();
-
       done();
     };
     handleExternalMessage(request, sender, sendResponse);
@@ -63,27 +63,21 @@ withChainsDescribe('background script handler for website request', () => {
     const sender = { url: 'http://finnex.com' };
     const sendResponse = (response: object): void => {
       expect(response).toEqual(generateErrorResponse(1, 'Signing server not ready'));
-
       done();
     };
-
     handleExternalMessage(request, sender, sendResponse);
   });
 
   it('loads automatically request handler', async () => {
-    await createPersona();
-
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
     handleExternalMessage(request, sender, jest.fn());
 
     expect(RequestHandler.requests()).toBeInstanceOf(Array);
     expect(RequestHandler.requests()).not.toEqual([]);
-    getCreatedPersona().destroy();
   });
 
   it('resolves to error if request method is unknown', async (done: () => void) => {
-    await createPersona();
     const wrongMethod = 'getIdentitiiies';
 
     const request = buildGetIdentitiesRequest(wrongMethod);
@@ -92,28 +86,21 @@ withChainsDescribe('background script handler for website request', () => {
       expect(response).toEqual(
         generateErrorResponse(1, 'Error: Unknown method name', jsonRpcCode.methodNotFound),
       );
-      getCreatedPersona().destroy();
       done();
     };
-
     handleExternalMessage(request, sender, sendResponse);
   });
 
   it('enqueues a request', async () => {
-    await createPersona();
-
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
     handleExternalMessage(request, sender, jest.fn());
 
     expect(RequestHandler.requests().length).toBe(1);
     checkNextRequest(request, sender.url);
-    getCreatedPersona().destroy();
   });
 
   it('resolves to error when sender has been permanently blocked', async (done: () => void) => {
-    await createPersona();
-
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
     handleExternalMessage(request, sender, jest.fn());
@@ -125,14 +112,12 @@ withChainsDescribe('background script handler for website request', () => {
 
     const sendSecondResponse = (response: object): void => {
       expect(response).toEqual(generateErrorResponse(1, 'Sender has been blocked by user'));
-      getCreatedPersona().destroy();
       done();
     };
     handleExternalMessage(request, sender, sendSecondResponse);
   }, 8000);
 
   it('resolves in order request queue', async () => {
-    await createPersona();
     const sender = { url: 'http://finnex.com' };
 
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
@@ -149,13 +134,9 @@ withChainsDescribe('background script handler for website request', () => {
     const chromeBarRequest = RequestHandler.next();
     expect(chromeFooRequest.reason).not.toEqual(chromeBarRequest.reason);
     expect(chromeBarRequest.reason).toBe('Reason bar');
-
-    getCreatedPersona().destroy();
   }, 8000);
 
   it('rejects automatically enqueued request if sender rejected permanently', async () => {
-    await createPersona();
-
     const senderOne = { url: 'http://finnex.com' };
     const senderTwo = { url: 'http://example.com' };
 
@@ -189,13 +170,9 @@ withChainsDescribe('background script handler for website request', () => {
     const chromeBazRequest = RequestHandler.next();
     expect(chromeBazRequest.id).toBe(2);
     expect(chromeBazRequest.data.senderUrl).toBe('http://example.com');
-
-    getCreatedPersona().destroy();
   }, 8000);
 
   it('rejects correctly when permanently blocked is last one in the queue', async () => {
-    await createPersona();
-
     const senderOne = { url: 'http://finnex.com' };
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
     handleExternalMessage(requestFoo, senderOne, jest.fn());
@@ -218,7 +195,5 @@ withChainsDescribe('background script handler for website request', () => {
     const chromeBazRequest = RequestHandler.next();
     expect(chromeBazRequest.id).toBe(2);
     expect(chromeBazRequest.reason).toBe('Reason baz');
-
-    getCreatedPersona().destroy();
   }, 8000);
 });
