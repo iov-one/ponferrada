@@ -1,4 +1,4 @@
-import { createMemDb } from '../../../../logic/db';
+import { StringDb } from '../../../../logic/db';
 import { Persona, UseOnlyJsonRpcSigningServer } from '../../../../logic/persona';
 import { CreatePersonaResponse } from '../../messages';
 import { transactionsUpdater } from './requestAppUpdater';
@@ -32,13 +32,13 @@ export function clearPersona(): void {
   instance = undefined;
 }
 
-export async function createPersona(mnemonic?: string): Promise<CreatePersonaResponse> {
+export async function createPersona(db: StringDb, mnemonic?: string): Promise<CreatePersonaResponse> {
   if (instance) {
     throw new Error('The persona+server instance is already set. This indicates a bug in the lifecycle.');
   }
 
   // TODO: do not use hardcoded password
-  const persona = await Persona.create(createMemDb(), 'passwd', mnemonic);
+  const persona = await Persona.create(db, 'passwd', mnemonic);
   const signingServer = persona.startSigningServer(
     getIdentitiesCallback,
     signAndPostCallback,

@@ -2,6 +2,7 @@ import { getSigningServer } from '../actions/createPersona';
 import { RequestMeta } from '../actions/createPersona/requestHandler';
 import { SenderWhitelist } from '../actions/createPersona/requestSenderWhitelist';
 import { generateErrorResponse } from '../errorResponseGenerator';
+import { StringDb } from '../../../logic/db';
 
 function resolveToError(
   sendResponse: (response?: any) => void, //eslint-disable-line
@@ -15,6 +16,7 @@ function resolveToError(
 }
 
 export function handleExternalMessage(
+  db: StringDb,
   request: any, //eslint-disable-line
   sender: chrome.runtime.MessageSender,
   sendResponse: (response?: any) => void, //eslint-disable-line

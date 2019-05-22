@@ -3,8 +3,10 @@ import { createPersona } from '../actions/createPersona';
 import { getPersona } from '../actions/getPersona';
 import { MessageToBackground, MessageToBackgroundAction } from '../messages';
 import { createAccount } from '../actions/createAccount';
+import { StringDb } from '../../../logic/db';
 
 export function internalHandler(
+  db: StringDb,
   message: MessageToBackground,
   sender: chrome.runtime.MessageSender,
   sendResponse: (response?: any) => void, // eslint-disable-line
@@ -21,7 +23,7 @@ export function internalHandler(
         .catch(console.error);
       break;
     case MessageToBackgroundAction.CreatePersona:
-      createPersona()
+      createPersona(db)
         .then(sendResponse)
         // eslint-disable-next-line no-console
         .catch(console.error);
