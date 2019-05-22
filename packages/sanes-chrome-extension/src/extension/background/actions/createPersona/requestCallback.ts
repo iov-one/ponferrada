@@ -38,6 +38,7 @@ async function requestCallback<T>(
     };
 
     const reject = (permanent: boolean): void => {
+      RequestHandler.solved();
       if (permanent) {
         SenderWhitelist.block(senderUrl);
       }
