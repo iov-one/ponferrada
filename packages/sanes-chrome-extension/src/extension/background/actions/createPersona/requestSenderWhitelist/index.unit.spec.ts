@@ -1,8 +1,6 @@
 import { SenderWhitelist } from './index';
 
 describe('SenderWhitelist', () => {
-  const BLOCKED_URLS_KEY = 'buk';
-  const SEPARATOR = ',';
   const SENDER_ONE = 'Example Sender 1';
   const SENDER_TWO = 'Example Sender 2';
 
@@ -18,10 +16,9 @@ describe('SenderWhitelist', () => {
     SenderWhitelist.block(SENDER_ONE);
     SenderWhitelist.block(SENDER_TWO);
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const numBlocked = localStorage.getItem(BLOCKED_URLS_KEY)!.split(SEPARATOR).length;
-
-    expect(numBlocked).toBe(2);
+    // SenderWhitelist does not expose the array of blocked domains, so this is an exceptional
+    // use case which can not be used in regular code because it violates private modifier of blocked variable.
+    expect(SenderWhitelist['blocked']!.length).toBe(2); // eslint-disable-line
   });
 
   it('persists blocked senders to localStorage so that they survive a reload', () => {
