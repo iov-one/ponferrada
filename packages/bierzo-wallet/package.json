@@ -16,9 +16,11 @@
     "@types/node": "11.12.2",
     "@types/react": "16.8.10",
     "@types/react-dom": "16.8.3",
+    "concurrently": "^4.1.0",
     "medulas-react-components": "^0.0.0",
     "normalize.css": "^8.0.1",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.0",
+    "serve": "^11.0.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.82"
@@ -28,7 +30,8 @@
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom"
+    "test": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-e2e": "CI=true concurrently -s \"first\" -k \"serve -s build -l 3000\" \"react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom\""
   },
   "browserslist": [
     ">0.2%",
