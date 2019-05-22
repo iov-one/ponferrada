@@ -126,23 +126,36 @@ export class Persona {
     await manager.generateNextAccount();
     await profile.storeIn(db, password);
 
-    return new Persona(profile, signer, manager);
+    return new Persona(db, password, profile, signer, manager);
   }
 
   public static async load(db: StringDb, password: string): Promise<Persona> {
     const profile = await UserProfile.loadFrom(db, password);
     const { signer, accountManager: manager } = await createSignerAndManager(profile);
-    return new Persona(profile, signer, manager);
+    return new Persona(db, password, profile, signer, manager);
   }
 
+  private readonly db: StringDb;
+  private readonly password: string;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
   private core: SigningServerCore | undefined;
   private signingServer: JsonRpcSigningServer | undefined;
 
-  /** The given signer and accountsManager must share the same UserProfile */
-  private constructor(profile: UserProfile, signer: MultiChainSigner, accountManager: AccountManager) {
+  /**
+   * The given signer and accountsManager must share the same UserProfile.
+   * All changes are automatically saved in db.
+   */
+  private constructor(
+    db: StringDb,
+    password: string,
+    profile: UserProfile,
+    signer: MultiChainSigner,
+    accountManager: AccountManager,
+  ) {
+    this.db = db;
+    this.password = password;
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
@@ -180,6 +193,7 @@ export class Persona {
 
   public async createAccount(): Promise<void> {
     await this.accountManager.generateNextAccount();
+    await this.profile.storeIn(this.db, this.password);
   }
 
   public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {

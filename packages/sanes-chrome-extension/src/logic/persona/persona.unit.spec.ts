@@ -45,6 +45,25 @@ withChainsDescribe('Persona', () => {
         loadedPersona.destroy();
       }
     });
+
+    it('saves additional accounts to the database automatically', async () => {
+      const db = createMemDb();
+
+      let originalAccounts: readonly PersonaAcccount[];
+
+      {
+        const originalPersona = await Persona.create(db, 'passwd');
+        await originalPersona.createAccount();
+        originalAccounts = await originalPersona.getAccounts();
+        originalPersona.destroy();
+      }
+
+      {
+        const loadedPersona = await Persona.load(db, 'passwd');
+        expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
+        loadedPersona.destroy();
+      }
+    });
   });
 
   describe('mnemonic', () => {
