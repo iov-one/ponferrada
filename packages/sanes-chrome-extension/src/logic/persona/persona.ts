@@ -135,6 +135,21 @@ export class Persona {
     return new Persona(db, password, profile, signer, manager);
   }
 
+  /**
+   * Tests if there is a Persona stored in the database. The check is very minimal and cannot detect broken data.
+   */
+  public static async hasStoredPersona(db: StringDb): Promise<boolean> {
+    // Constant from IOV-Core source code. Would be good to have a proper API for that
+    const storageKeyFormatVersion = 'format_version';
+
+    try {
+      await db.get(storageKeyFormatVersion);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   private readonly db: StringDb;
   private readonly password: string;
   private readonly profile: UserProfile;
