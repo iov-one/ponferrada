@@ -45,7 +45,6 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
-    "encoding-down": "^6.0.1",
     "final-form": "^4.12.0",
     "jspdf": "^1.5.3",
     "level-js": "^4.0.0",
@@ -56,7 +55,6 @@
     "typesafe-actions": "^3.2.1"
   },
   "devDependencies": {
-    "@types/encoding-down": "^5.0.0",
     "@types/levelup": "^3.1.0",
     "@types/memdown": "^3.0.0",
     "chrome-extension-react-scripts": "^0.2.0",
