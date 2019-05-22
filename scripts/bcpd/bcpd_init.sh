@@ -27,8 +27,10 @@ mv "${BCPD_DIR}/config/genesis.json" "${BCPD_DIR}/config/genesis.json.orig"
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 APP_STATE=$(<"$SCRIPT_DIR/genesis_app_state.json")
-jq ". + {\"app_state\" : $APP_STATE}" \
-  "${BCPD_DIR}/config/genesis.json.orig" \
+# shellcheck disable=SC2002
+cat "${BCPD_DIR}/config/genesis.json.orig" \
+  | jq '.chain_id = "bcp-local-devnet"' \
+  | jq ". + {\"app_state\" : $APP_STATE}" \
   > "${BCPD_DIR}/config/genesis.json"
 
 docker run --rm \
