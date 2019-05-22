@@ -77,9 +77,8 @@ withChainsDescribe('background script handler for website request', () => {
     const sender = { url: 'http://finnex.com' };
     handleExternalMessage(request, sender, jest.fn());
 
-    expect(RequestHandler.requests).not.toBe(undefined);
-    expect(RequestHandler.requests).not.toBe(null);
-    expect(RequestHandler.requests).not.toBe([]);
+    expect(RequestHandler.requests()).toBeInstanceOf(Array);
+    expect(RequestHandler.requests()).not.toEqual([]);
     getCreatedPersona().destroy();
   });
 
