@@ -41,8 +41,8 @@ async function requestCallback<T>(
       RequestHandler.solved();
       if (permanent) {
         SenderWhitelist.block(senderUrl);
+        RequestHandler.purge(senderUrl);
       }
-      RequestHandler.solved();
       updateExtensionBadge(RequestHandler.requests().length);
       requestUpdater();
       resolve(rejectResponse);
