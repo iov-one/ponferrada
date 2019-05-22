@@ -6,8 +6,8 @@ describe('RequestHandler', () => {
     type: 'getIdentities',
     reason: 'Reason 1',
     sender: 'Sender 1',
-    accept: () => {},
-    reject: () => {},
+    accept: jest.fn(),
+    reject: jest.fn(),
   };
 
   const REQUEST_TWO: Request = {
@@ -15,8 +15,8 @@ describe('RequestHandler', () => {
     type: 'signAndPost',
     reason: 'Reason 2',
     sender: 'Sender 2',
-    accept: () => {},
-    reject: () => {},
+    accept: jest.fn(),
+    reject: jest.fn(),
   };
 
   const REQUEST_THREE: Request = {
@@ -24,8 +24,8 @@ describe('RequestHandler', () => {
     type: 'getIdentities',
     reason: 'Reason 3',
     sender: 'Sender 3',
-    accept: () => {},
-    reject: () => {},
+    accept: jest.fn(),
+    reject: jest.fn(),
   };
 
   beforeEach(() => {
