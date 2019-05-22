@@ -49,4 +49,22 @@ export class RequestHandler {
 
     return size;
   }
+
+  public static purge(senderUrl: string): void {
+    const initialSize = RequestHandler.instance.length;
+    for (let i = 0; i < initialSize; i++) {
+      const req = RequestHandler.instance[i];
+      if (req.sender !== senderUrl) {
+        continue;
+      }
+
+      // Note here we are mutating the array placing in first positions request to be rejected
+      RequestHandler.instance.splice(i, 1);
+      RequestHandler.instance.splice(0, 0, req);
+    }
+
+    // Note here we only get references
+    const reqToCancel = RequestHandler.instance.filter(req => req.sender === senderUrl);
+    reqToCancel.forEach(req => req.reject(false));
+  }
 }
