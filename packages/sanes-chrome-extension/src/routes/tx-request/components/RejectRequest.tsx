@@ -20,7 +20,8 @@ interface Props {
 const Layout = ({ onBack, onRejectRequest }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
-    onRejectRequest(formValues[PERMANENT_REJECT] === 'true');
+    const permanentReject = `${formValues[PERMANENT_REJECT]}` === 'true';
+    onRejectRequest(permanentReject);
   };
 
   const { form, handleSubmit, pristine, submitting } = useForm({

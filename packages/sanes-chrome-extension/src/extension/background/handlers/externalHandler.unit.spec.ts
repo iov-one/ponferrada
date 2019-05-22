@@ -156,4 +156,73 @@ withChainsDescribe('background script handler for website request', () => {
 
     getCreatedPersona().destroy();
   }, 8000);
+
+  it('rejects automatically enqueued request if sender rejected permanently', async () => {
+    await createPersona();
+
+    const senderOne = { url: 'http://finnex.com' };
+    const senderTwo = { url: 'http://example.com' };
+
+    // enqueue 2 requests of sender one
+    const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
+    handleExternalMessage(requestFoo, senderOne, jest.fn());
+    const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
+    handleExternalMessage(requestBar, senderOne, jest.fn());
+
+    // enqueue 1 request of sender two
+    const requestBaz = buildGetIdentitiesRequest('getIdentities', 'Reason baz');
+    handleExternalMessage(requestBaz, senderTwo, jest.fn());
+
+    // enqueue 2 requests of sender one
+    const requestThird = buildGetIdentitiesRequest('getIdentities', 'Reason third');
+    handleExternalMessage(requestThird, senderOne, jest.fn());
+    const requestFourth = buildGetIdentitiesRequest('getIdentities', 'Reason fourth');
+    handleExternalMessage(requestFourth, senderOne, jest.fn());
+
+    // check in total there are 5 requests in the queue
+    expect(RequestHandler.requests().length).toBe(5);
+
+    // reject permanently sender one
+    const chromeFooRequest = RequestHandler.next();
+    expect(chromeFooRequest.id).toBe(0);
+    const permanently = true;
+    chromeFooRequest.reject(permanently);
+
+    // check the only request left is the sender two
+    expect(RequestHandler.requests().length).toBe(1);
+    const chromeBazRequest = RequestHandler.next();
+    expect(chromeBazRequest.id).toBe(2);
+    expect(chromeBazRequest.sender).toBe('http://example.com');
+
+    getCreatedPersona().destroy();
+  }, 8000);
+
+  it('rejects correctly when permanently blocked is last one in the queue', async () => {
+    await createPersona();
+
+    const senderOne = { url: 'http://finnex.com' };
+    const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
+    handleExternalMessage(requestFoo, senderOne, jest.fn());
+
+    const senderTwo = { url: 'http://finnextwo.com' };
+    const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
+    handleExternalMessage(requestBar, senderTwo, jest.fn());
+
+    RequestHandler.next().accept();
+    const chromeBarRequest = RequestHandler.next();
+    expect(chromeBarRequest.id).toBe(1);
+    expect(chromeBarRequest.sender).toBe(senderTwo.url);
+    chromeBarRequest.reject(true);
+    expect(RequestHandler.requests().length).toBe(0);
+
+    // Auto rejecting does not affect to counter id
+    const senderThree = { url: 'http://finnexthree.com' };
+    const requestBaz = buildGetIdentitiesRequest('getIdentities', 'Reason baz');
+    handleExternalMessage(requestBaz, senderThree, jest.fn());
+    const chromeBazRequest = RequestHandler.next();
+    expect(chromeBazRequest.id).toBe(2);
+    expect(chromeBazRequest.reason).toBe('Reason baz');
+
+    getCreatedPersona().destroy();
+  }, 8000);
 });
