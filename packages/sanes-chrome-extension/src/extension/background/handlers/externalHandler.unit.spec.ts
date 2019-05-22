@@ -36,16 +36,11 @@ withChainsDescribe('background script handler for website request', () => {
 
   function checkNextRequest(request: JsonRpcRequest, sender: string): void {
     const req = RequestHandler.next();
-    expect(req.accept).not.toBe(null);
-    expect(req.accept).not.toBe(undefined);
-    expect(req.reject).not.toBe(null);
-    expect(req.reject).not.toBe(undefined);
-
-    const params: any = request.params; // eslint-disable-line
-    expect(`string:${req.reason}`).toEqual(params.reason);
-    const data = req.data as GetIdentitiesRequest;
-    expect(data.senderUrl).toEqual(sender);
-    expect(data.requestedIdentities[0].name).toEqual('Ethereum Testnet');
+    expect(req.accept).toBeTruthy();
+    expect(req.reject).toBeTruthy();
+    expect(req.reason).toEqual(TransactionEncoder.fromJson(request.params).reason);
+    expect(req.data.senderUrl).toEqual(sender);
+    expect((req.data as GetIdentitiesRequest).requestedIdentities[0].name).toEqual('Ethereum Testnet');
   }
 
   it('resolves to error if sender is unknown', async (done: () => void) => {
