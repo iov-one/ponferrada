@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
 import Block from 'medulas-react-components/lib/components/Block';
-import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
+import Button from 'medulas-react-components/lib/components/Button';
+import Form, { FormValues, useForm } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
+import * as React from 'react';
 
 export const PASSWORD_FIELD = 'passwordInputField';
 
 interface Props {
-  readonly onLogin: (values: object) => Promise<void>;
+  readonly onLogin: (values: FormValues) => Promise<void>;
   readonly validate: (values: object) => object;
 }
 

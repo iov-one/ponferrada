@@ -3,8 +3,10 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+import { PersonaContext } from '../../context/PersonaProvider';
+import { sendLoadPersonaMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
-import { LOGIN_ROUTE } from '../paths';
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
 import { PASSWORD_FIELD } from '../signup/components/NewAccountForm';
 import LoginControls from './components/LoginControls';
 import LoginForm from './components/LoginForm';
@@ -20,11 +22,22 @@ const validate = (values: object): object => {
 };
 
 const Login = (): JSX.Element => {
+  const personaProvider = React.useContext(PersonaContext);
   const toast = React.useContext(ToastContext);
 
-  //eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onLogin = async (_: object): Promise<void> => {
-    toast.show('Toast message', ToastVariant.ERROR);
+  const onLogin = async (formValues: FormValues): Promise<void> => {
+    const password = formValues[PASSWORD_FIELD];
+    try {
+      const response = await sendLoadPersonaMessage(password);
+      personaProvider.update({
+        accounts: response.accounts,
+        mnemonic: response.mnemonic,
+        txs: response.txs,
+      });
+      history.push(ACCOUNT_STATUS_ROUTE);
+    } catch (_) {
+      toast.show('Error during login', ToastVariant.ERROR);
+    }
   };
 
   const onBack = (): void => {

@@ -1,6 +1,6 @@
 import { StringDb } from '../../../../logic/db';
 import { Persona, UseOnlyJsonRpcSigningServer } from '../../../../logic/persona';
-import { CreatePersonaResponse } from '../../messages';
+import { CreatePersonaResponse, LoadPersonaResponse, PersonaData } from '../../messages';
 import { transactionsUpdater } from './requestAppUpdater';
 import { getIdentitiesCallback, signAndPostCallback } from './requestCallback';
 import { RequestHandler } from './requestHandler';
@@ -12,6 +12,28 @@ interface PersonaWithSigningServer {
 }
 
 let instance: PersonaWithSigningServer | undefined;
+
+async function setupPersonaAndSigningServer(persona: Persona): Promise<PersonaData> {
+  if (instance) {
+    throw new Error('The persona+server instance is already set. This indicates a bug in the lifecycle.');
+  }
+
+  const signingServer = persona.startSigningServer(
+    getIdentitiesCallback,
+    signAndPostCallback,
+    transactionsUpdater,
+  );
+  instance = { persona, signingServer };
+
+  SenderWhitelist.load();
+  RequestHandler.load();
+
+  return {
+    mnemonic: persona.mnemonic,
+    txs: await persona.getTxs(),
+    accounts: await persona.getAccounts(),
+  };
+}
 
 export function getSigningServer(): UseOnlyJsonRpcSigningServer | undefined {
   return instance ? instance.signingServer : undefined;
@@ -32,26 +54,13 @@ export function clearPersona(): void {
   instance = undefined;
 }
 
-export async function createPersona(db: StringDb, mnemonic?: string): Promise<CreatePersonaResponse> {
-  if (instance) {
-    throw new Error('The persona+server instance is already set. This indicates a bug in the lifecycle.');
-  }
+export async function loadPersona(db: StringDb, password: string): Promise<LoadPersonaResponse> {
+  const persona = await Persona.load(db, password);
+  return setupPersonaAndSigningServer(persona);
+}
 
+export async function createPersona(db: StringDb, mnemonic?: string): Promise<CreatePersonaResponse> {
   // TODO: do not use hardcoded password
   const persona = await Persona.create(db, 'passwd', mnemonic);
-  const signingServer = persona.startSigningServer(
-    getIdentitiesCallback,
-    signAndPostCallback,
-    transactionsUpdater,
-  );
-  instance = { persona, signingServer };
-
-  SenderWhitelist.load();
-  RequestHandler.load();
-
-  return {
-    mnemonic: persona.mnemonic,
-    txs: await persona.getTxs(),
-    accounts: await persona.getAccounts(),
-  };
+  return setupPersonaAndSigningServer(persona);
 }

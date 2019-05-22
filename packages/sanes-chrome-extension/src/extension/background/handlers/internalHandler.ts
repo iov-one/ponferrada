@@ -1,5 +1,5 @@
 /*global chrome*/
-import { createPersona } from '../actions/createPersona';
+import { createPersona, loadPersona } from '../actions/createPersona';
 import { getPersona } from '../actions/getPersona';
 import { MessageToBackground, MessageToBackgroundAction } from '../messages';
 import { createAccount } from '../actions/createAccount';
@@ -28,6 +28,13 @@ export function internalHandler(
         // eslint-disable-next-line no-console
         .catch(console.error);
       break;
+    case MessageToBackgroundAction.LoadPersona: {
+      const { password } = message.data;
+      loadPersona(db, password)
+        .then(sendResponse)
+        .catch(console.error);
+      break;
+    }
     case MessageToBackgroundAction.CreateAccount:
       createAccount()
         .then(sendResponse)
