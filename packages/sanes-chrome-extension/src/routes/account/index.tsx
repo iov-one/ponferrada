@@ -72,10 +72,7 @@ const AccountView = (): JSX.Element => {
         )}
         <Hairline space={2} />
         <Block marginBottom={4}>
-          <ListTxs title="Transations" txs={personaProvider.txs} />
-        </Block>
-        <Block marginBottom={1}>
-          <ListTxs title="Pending Transactions" txs={[]} />
+          <ListTxs title="Transactions" txs={personaProvider.txs} />
         </Block>
       </PageLayout>
     </Drawer>
