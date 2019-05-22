@@ -33,11 +33,17 @@ export interface PersonaData {
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface CreatePersonaResponse extends PersonaData {}
 
-export async function sendCreatePersonaMessage(mnemonic?: string): Promise<CreatePersonaResponse> {
+export async function sendCreatePersonaMessage(
+  password: string,
+  mnemonic: string | undefined,
+): Promise<CreatePersonaResponse> {
   return new Promise((resolve, reject) => {
     const message: MessageToBackground = {
       action: MessageToBackgroundAction.CreatePersona,
-      data: mnemonic,
+      data: {
+        password: password,
+        mnemonic: mnemonic,
+      },
     };
     chrome.runtime.sendMessage(message, response => {
       const lastError = chrome.runtime.lastError;

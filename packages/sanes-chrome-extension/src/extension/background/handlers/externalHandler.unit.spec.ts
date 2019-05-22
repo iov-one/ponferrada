@@ -32,7 +32,7 @@ withChainsDescribe('background script handler for website request', () => {
   beforeEach(async () => {
     localStorage.clear();
     db = createMemDb();
-    await createPersona(db);
+    await createPersona(db, 'test password', undefined);
   });
   afterEach(() => {
     clearPersona();

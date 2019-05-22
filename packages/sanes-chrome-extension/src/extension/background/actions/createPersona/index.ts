@@ -59,8 +59,11 @@ export async function loadPersona(db: StringDb, password: string): Promise<LoadP
   return setupPersonaAndSigningServer(persona);
 }
 
-export async function createPersona(db: StringDb, mnemonic?: string): Promise<CreatePersonaResponse> {
-  // TODO: do not use hardcoded password
-  const persona = await Persona.create(db, 'passwd', mnemonic);
+export async function createPersona(
+  db: StringDb,
+  password: string,
+  mnemonic: string | undefined,
+): Promise<CreatePersonaResponse> {
+  const persona = await Persona.create(db, password, mnemonic);
   return setupPersonaAndSigningServer(persona);
 }

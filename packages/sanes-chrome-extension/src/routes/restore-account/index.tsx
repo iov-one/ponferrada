@@ -15,7 +15,8 @@ const RestoreAccount = (): JSX.Element => {
 
   const onRestore = async (formValues: FormValues): Promise<void> => {
     const mnemonic = formValues[RECOVERY_PHRASE];
-    const response = await sendCreatePersonaMessage(mnemonic);
+    // TODO: use password from form (https://github.com/iov-one/ponferrada/issues/217)
+    const response = await sendCreatePersonaMessage('default password', mnemonic);
     personaProvider.update({
       accounts: response.accounts,
       mnemonic: response.mnemonic,

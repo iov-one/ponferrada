@@ -22,12 +22,14 @@ export function internalHandler(
         // eslint-disable-next-line no-console
         .catch(console.error);
       break;
-    case MessageToBackgroundAction.CreatePersona:
-      createPersona(db)
+    case MessageToBackgroundAction.CreatePersona: {
+      const { password, mnemonic } = message.data;
+      createPersona(db, password, mnemonic)
         .then(sendResponse)
         // eslint-disable-next-line no-console
         .catch(console.error);
       break;
+    }
     case MessageToBackgroundAction.LoadPersona: {
       const { password } = message.data;
       loadPersona(db, password)
