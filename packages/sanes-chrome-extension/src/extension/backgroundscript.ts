@@ -5,7 +5,7 @@ import { handleExternalMessage } from './background/handlers/externalHandler';
 import { internalHandler } from './background/handlers/internalHandler';
 
 // Instance lives as long as the BS lives. Never closed unless the background script is destroyed.
-const db = createBrowserDb('bs-database');
+const db = createBrowserDb('bs-persona');
 
 /**
  * Listener for dispatching extension requests
