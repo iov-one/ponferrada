@@ -20,6 +20,7 @@ import {
   getConfigurationFile,
   pathBuilderForCodec,
 } from '../config';
+import { StringDb } from '../db';
 import { createUserProfile } from '../user';
 import { AccountManager, AccountManagerChainConfig } from './accountManager';
 
@@ -93,7 +94,7 @@ export class Persona {
    * (because a constructor is synchonous): reading configs, connecting to the network,
    * creating accounts.
    */
-  public static async create(fixedMnemonic?: string): Promise<Persona> {
+  public static async create(db: StringDb, password: string, fixedMnemonic?: string): Promise<Persona> {
     const config = await getConfigurationFile();
 
     const entropyBytes = 16;
@@ -118,6 +119,33 @@ export class Persona {
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
+
+    await profile.storeIn(db, password);
+
+    return new Persona(profile, signer, manager);
+  }
+
+  public static async load(db: StringDb, password: string): Promise<Persona> {
+    const config = await getConfigurationFile();
+
+    const profile = await UserProfile.loadFrom(db, password);
+
+    const signer = new MultiChainSigner(profile);
+
+    // connect chains
+    const managerChains: AccountManagerChainConfig[] = [];
+    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+      const codecType = codecTypeFromString(chainSpec.codecType);
+      const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
+      const { connection } = await signer.addChain(connector);
+      managerChains.push({
+        chainId: connection.chainId(),
+        algorithm: algorithmForCodec(codecType),
+        derivePath: pathBuilderForCodec(codecType),
+      });
+    }
+
+    const manager = new AccountManager(profile, managerChains, config.names);
 
     return new Persona(profile, signer, manager);
   }

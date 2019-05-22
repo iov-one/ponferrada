@@ -2,7 +2,8 @@ import { PublicIdentity } from '@iov/bcp';
 import { GetIdentitiesAuthorization, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
 import { EnglishMnemonic } from '@iov/crypto';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { Persona } from './persona';
+import { createMemDb } from '../db';
+import { Persona, PersonaAcccount } from './persona';
 
 withChainsDescribe('Persona', () => {
   const revealAllIdentities: GetIdentitiesAuthorization = async (
@@ -17,15 +18,38 @@ withChainsDescribe('Persona', () => {
 
   describe('create', () => {
     it('can be created', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
       expect(persona).toBeTruthy();
       persona.destroy();
     });
   });
 
+  describe('load', () => {
+    it('can be loaded from database', async () => {
+      const db = createMemDb();
+
+      let originalMnemonic: string;
+      let originalAccounts: readonly PersonaAcccount[];
+
+      {
+        const originalPersona = await Persona.create(db, 'passwd');
+        originalMnemonic = originalPersona.mnemonic;
+        originalAccounts = await originalPersona.getAccounts();
+        originalPersona.destroy();
+      }
+
+      {
+        const loadedPersona = await Persona.load(db, 'passwd');
+        expect(loadedPersona.mnemonic).toEqual(originalMnemonic);
+        expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
+        loadedPersona.destroy();
+      }
+    });
+  });
+
   describe('mnemonic', () => {
     it('returns a mnemonic', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
 
       expect(() => {
         // this constructor throws when the mnemonic string is not valid
@@ -37,7 +61,7 @@ withChainsDescribe('Persona', () => {
 
     it('returns the right mnemonic', async () => {
       const presetMnemonic = 'until apple post diamond casual bridge bird solid inform size prize debris';
-      const persona = await Persona.create(presetMnemonic);
+      const persona = await Persona.create(createMemDb(), 'passwd', presetMnemonic);
 
       expect(persona.mnemonic).toEqual(presetMnemonic);
 
@@ -47,7 +71,7 @@ withChainsDescribe('Persona', () => {
 
   describe('getAccounts', () => {
     it('can get accounts', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
 
       const accounts = await persona.getAccounts();
       expect(accounts.length).toEqual(1);
@@ -59,7 +83,7 @@ withChainsDescribe('Persona', () => {
 
   describe('getChains', () => {
     it('can get chains', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
 
       const chains = await persona.getChains();
       expect(Object.keys(chains).length).toEqual(4);
@@ -70,7 +94,7 @@ withChainsDescribe('Persona', () => {
 
   describe('createAccount', () => {
     it('can create an account', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
 
       {
         const accounts = await persona.getAccounts();
@@ -92,7 +116,7 @@ withChainsDescribe('Persona', () => {
 
   describe('startSigningServer', () => {
     it('can start the signing server', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
       const server = persona.startSigningServer(revealAllIdentities, signEverything);
       expect(server).toBeTruthy();
       persona.destroy();
@@ -100,6 +124,8 @@ withChainsDescribe('Persona', () => {
 
     it('can send example request to the signing server', async () => {
       const persona = await Persona.create(
+        createMemDb(),
+        'passwd',
         'oxygen fall sure lava energy veteran enroll frown question detail include maximum',
       );
       const server = persona.startSigningServer(revealAllIdentities, signEverything);
@@ -132,7 +158,7 @@ withChainsDescribe('Persona', () => {
 
   describe('tearDownSigningServer', () => {
     it('can tear down the signing server', async () => {
-      const persona = await Persona.create();
+      const persona = await Persona.create(createMemDb(), 'passwd');
 
       expect(() => {
         persona.startSigningServer(revealAllIdentities, signEverything);
