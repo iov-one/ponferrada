@@ -37,5 +37,6 @@ export async function createPersona(mnemonic?: string): Promise<CreatePersonaRes
     mnemonic: persona.mnemonic,
     txs: await persona.getTxs(),
     accounts: await persona.getAccounts(),
+    chains: persona.getChains(),
   };
 }

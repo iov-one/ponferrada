@@ -1,9 +1,8 @@
 import { PublicIdentity } from '@iov/bcp';
-import { TransactionEncoder, GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
+import { GetIdentitiesAuthorization, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
 import { EnglishMnemonic } from '@iov/crypto';
-
-import { Persona } from './persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { Persona } from './persona';
 
 withChainsDescribe('Persona', () => {
   const revealAllIdentities: GetIdentitiesAuthorization = async (
@@ -53,6 +52,17 @@ withChainsDescribe('Persona', () => {
       const accounts = await persona.getAccounts();
       expect(accounts.length).toEqual(1);
       expect(accounts[0].label).toEqual('Account 0');
+
+      persona.destroy();
+    });
+  });
+
+  describe('getChains', () => {
+    it('can get chains', async () => {
+      const persona = await Persona.create();
+
+      const chains = persona.getChains();
+      expect(chains.length).toEqual(4);
 
       persona.destroy();
     });

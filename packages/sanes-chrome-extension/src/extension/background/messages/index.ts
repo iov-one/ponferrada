@@ -1,4 +1,5 @@
 /*global chrome*/
+import { ChainId } from '@iov/bcp';
 import { PersonaAcccount, ProcessedTx } from '../../../logic/persona';
 
 // WTC means "web to content"
@@ -27,6 +28,7 @@ export interface PersonaData {
   readonly accounts: ReadonlyArray<PersonaAcccount>;
   readonly mnemonic: string;
   readonly txs: ReadonlyArray<ProcessedTx>;
+  readonly chains: ReadonlyArray<ChainId>;
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
@@ -50,6 +52,7 @@ export async function sendCreatePersonaMessage(mnemonic?: string): Promise<Creat
         accounts: response.accounts,
         mnemonic: response.mnemonic,
         txs: response.txs,
+        chains: response.chains,
       });
     });
   });
@@ -75,6 +78,7 @@ export async function sendGetPersonaMessage(): Promise<GetPersonaResponse> {
           accounts: response.accounts,
           mnemonic: response.mnemonic,
           txs: response.txs,
+          chains: response.chains,
         });
       }
     });

@@ -32,6 +32,19 @@ describe('AccountManager', () => {
     });
   });
 
+  describe('chains', () => {
+    it('returns list of connected chains', async () => {
+      const userProfile = await createUserProfile(defaultMnemonic);
+      const manager = new AccountManager(userProfile, [chain1, chain2]);
+      expect(manager.connectedChains()).toEqual(['test-chain-1' as ChainId, 'test-chain-2' as ChainId]);
+    });
+    it('returns empty list if no chains connected', async () => {
+      const userProfile = await createUserProfile(defaultMnemonic);
+      const manager = new AccountManager(userProfile, []);
+      expect(manager.connectedChains()).toEqual([]);
+    });
+  });
+
   describe('generateNextAccount', () => {
     it('does not change accounts for empty chains list', async () => {
       const userProfile = await createUserProfile(defaultMnemonic);

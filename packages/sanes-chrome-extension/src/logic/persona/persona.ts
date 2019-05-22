@@ -1,28 +1,26 @@
-import { ReadonlyDate } from 'readonly-date';
-
-import { Amount, isSendTransaction } from '@iov/bcp';
+import { Amount, ChainId, isSendTransaction } from '@iov/bcp';
 import {
-  MultiChainSigner,
-  UserProfile,
-  SigningServerCore,
-  SignAndPostAuthorization,
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
+  MultiChainSigner,
+  SignAndPostAuthorization,
   SignedAndPosted,
+  SigningServerCore,
+  UserProfile,
 } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
-import { JsonRpcResponse, JsonRpcRequest } from '@iov/jsonrpc';
-
-import { createUserProfile } from '../user';
+import { Encoding } from '@iov/encoding';
+import { JsonRpcRequest, JsonRpcResponse } from '@iov/jsonrpc';
+import { ReadonlyDate } from 'readonly-date';
 import {
-  chainConnector,
-  getConfigurationFile,
-  codecTypeFromString,
   algorithmForCodec,
+  chainConnector,
+  codecTypeFromString,
+  getConfigurationFile,
   pathBuilderForCodec,
 } from '../config';
+import { createUserProfile } from '../user';
 import { AccountManager, AccountManagerChainConfig } from './accountManager';
-import { Encoding } from '@iov/encoding';
 
 /** Like JsonRpcSigningServer but without functionality to create or shutdown */
 export interface UseOnlyJsonRpcSigningServer {
@@ -156,6 +154,10 @@ export class Persona {
         label: `Account ${account.index}`,
       };
     });
+  }
+
+  public getChains(): ReadonlyArray<ChainId> {
+    return this.accountManager.connectedChains();
   }
 
   public async createAccount(): Promise<void> {
