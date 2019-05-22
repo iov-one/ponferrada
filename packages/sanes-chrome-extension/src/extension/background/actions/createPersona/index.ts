@@ -5,30 +5,38 @@ import { getIdentitiesCallback, signAndPostCallback } from './requestCallback';
 import { RequestHandler } from './requestHandler';
 import { SenderWhitelist } from './requestSenderWhitelist';
 
-export type SigningServer = UseOnlyJsonRpcSigningServer | undefined;
-let signingServer: SigningServer;
-let persona: Persona | undefined;
+interface PersonaWithSigningServer {
+  readonly persona: Persona;
+  readonly signingServer: UseOnlyJsonRpcSigningServer;
+}
 
-export function getSigningServer(): SigningServer {
-  return signingServer;
+let instance: PersonaWithSigningServer | undefined;
+
+export function getSigningServer(): UseOnlyJsonRpcSigningServer | undefined {
+  return instance ? instance.signingServer : undefined;
 }
 
 export function getCreatedPersona(): Persona {
-  if (!persona) {
+  if (!instance) {
     throw new Error('Persona instance does not exist');
   }
-  return persona;
+  return instance.persona;
 }
 
 function clear(): void {
-  signingServer = undefined;
-  persona = undefined;
+  instance = undefined;
 }
 
 export async function createPersona(mnemonic?: string): Promise<CreatePersonaResponse> {
   clear(); // Assure we start from clean instances
-  persona = await Persona.create(mnemonic);
-  signingServer = persona.startSigningServer(getIdentitiesCallback, signAndPostCallback, transactionsUpdater);
+
+  const persona = await Persona.create(mnemonic);
+  const signingServer = persona.startSigningServer(
+    getIdentitiesCallback,
+    signAndPostCallback,
+    transactionsUpdater,
+  );
+  instance = { persona, signingServer };
 
   SenderWhitelist.load();
   RequestHandler.load();
