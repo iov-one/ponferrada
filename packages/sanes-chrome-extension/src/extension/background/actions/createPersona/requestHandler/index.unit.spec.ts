@@ -1,8 +1,8 @@
+import { Omit } from '@material-ui/core';
 import { Request, RequestHandler } from './index';
 
 describe('RequestHandler', () => {
-  const REQUEST_ONE: Request = {
-    id: 1999,
+  const REQUEST_ONE: Omit<Request, 'id'> = {
     type: 'getIdentities',
     reason: 'Reason 1',
     sender: 'Sender 1',
@@ -10,8 +10,7 @@ describe('RequestHandler', () => {
     reject: jest.fn(),
   };
 
-  const REQUEST_TWO: Request = {
-    id: 2999,
+  const REQUEST_TWO: Omit<Request, 'id'> = {
     type: 'signAndPost',
     reason: 'Reason 2',
     sender: 'Sender 2',
@@ -19,8 +18,7 @@ describe('RequestHandler', () => {
     reject: jest.fn(),
   };
 
-  const REQUEST_THREE: Request = {
-    id: 3999,
+  const REQUEST_THREE: Omit<Request, 'id'> = {
     type: 'getIdentities',
     reason: 'Reason 3',
     sender: 'Sender 3',
