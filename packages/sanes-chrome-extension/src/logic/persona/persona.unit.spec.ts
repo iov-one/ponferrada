@@ -63,7 +63,7 @@ withChainsDescribe('Persona', () => {
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
       }
-    });
+    }, 15000); // Reset to default timeout after https://github.com/iov-one/iov-core/issues/898
   });
 
   describe('hasStoredPersona', () => {
@@ -151,7 +151,7 @@ withChainsDescribe('Persona', () => {
       }
 
       persona.destroy();
-    }, 20000);
+    }, 15000); // Reset to default timeout after https://github.com/iov-one/iov-core/issues/898
   });
 
   describe('startSigningServer', () => {
