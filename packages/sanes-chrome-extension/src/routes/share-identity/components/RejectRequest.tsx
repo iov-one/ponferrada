@@ -6,7 +6,6 @@ import Form, { FormValues, useForm } from 'medulas-react-components/lib/componen
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
-import { Request } from '../../../extension/background/actions/createPersona/requestHandler';
 import { SHARE_IDENTITY } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';
@@ -15,10 +14,10 @@ export const SHARE_IDENTITY_REJECT = `${SHARE_IDENTITY}_reject`;
 interface Props {
   readonly onRejectRequest: (permanent: boolean) => void;
   readonly onBack: () => void;
-  readonly request: Request;
+  readonly sender: string;
 }
 
-const Layout = ({ request, onBack, onRejectRequest }: Props): JSX.Element => {
+const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     const permanentReject = `${formValues[PERMANENT_REJECT]}` === 'true';
@@ -36,7 +35,7 @@ const Layout = ({ request, onBack, onRejectRequest }: Props): JSX.Element => {
         <Block textAlign="center">
           <Typography variant="body1">The following site:</Typography>
           <Typography variant="body1" color="primary">
-            {request.sender}
+            {sender}
           </Typography>
           <Typography variant="body1" inline color="error">
             would not be able to request
