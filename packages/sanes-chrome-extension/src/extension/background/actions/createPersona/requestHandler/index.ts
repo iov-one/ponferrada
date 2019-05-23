@@ -1,10 +1,23 @@
+import { PublicKeyBundle } from '@iov/bcp';
 import { Omit } from '@material-ui/core';
+
+export interface RequestMeta {
+  readonly senderUrl: string;
+}
+
+export interface GetIdentitiesRequest extends RequestMeta {
+  readonly requestedIdentities: ReadonlyArray<{ name: string; identity: PublicKeyBundle }>;
+}
+
+export interface SignAndPostRequest extends RequestMeta {
+  readonly tx: any; // eslint-disable-line
+}
 
 export interface Request {
   readonly id: number;
   readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
-  readonly sender: string;
+  readonly data: GetIdentitiesRequest | SignAndPostRequest;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
@@ -54,7 +67,7 @@ export class RequestHandler {
     const initialSize = RequestHandler.instance.length;
     for (let i = 0; i < initialSize; i++) {
       const req = RequestHandler.instance[i];
-      if (req.sender !== senderUrl) {
+      if (req.data.senderUrl !== senderUrl) {
         continue;
       }
 
@@ -64,7 +77,7 @@ export class RequestHandler {
     }
 
     // Note here we only get references
-    const reqToCancel = RequestHandler.instance.filter(req => req.sender === senderUrl);
+    const reqToCancel = RequestHandler.instance.filter(req => req.data.senderUrl === senderUrl);
     reqToCancel.forEach(req => req.reject(false));
   }
 }
