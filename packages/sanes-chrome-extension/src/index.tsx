@@ -24,8 +24,6 @@ const render = (
   persona: GetPersonaResponse,
   requests: ReadonlyArray<Request>,
 ): void => {
-  console.log('root index.tsx with requests: ' + requests.length);
-
   ReactDOM.render(
     <Provider store={store}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>

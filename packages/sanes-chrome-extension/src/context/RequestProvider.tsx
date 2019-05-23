@@ -40,11 +40,12 @@ export const RequestProvider = ({ children, initialRequests }: Props): JSX.Eleme
       }
 
       switch (message.action) {
-        case MessageToForegroundAction.RequestsChanged:
+        case MessageToForegroundAction.RequestsChanged: {
           const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
           const requests = extensionWindow.getQueuedRequests();
           setRequests([...requests]);
           break;
+        }
         default:
           throw new Error('Unknown action');
       }

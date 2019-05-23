@@ -64,9 +64,10 @@ export function chainConnector(codec: CodecType, nodes: ReadonlyArray<string>): 
       return bnsConnector(url);
     case CodecType.Lisk:
       return liskConnector(url);
-    case CodecType.Ethereum:
+    case CodecType.Ethereum: {
       const scraperApiUrl = nodes[1];
       return ethereumConnector(url, { scraperApiUrl });
+    }
     default:
       throw new Error('No connector for this codec found');
   }

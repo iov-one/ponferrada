@@ -46,7 +46,6 @@ export async function sendCreatePersonaMessage(mnemonic?: string): Promise<Creat
         return;
       }
 
-      console.log(response);
       resolve({
         accounts: response.accounts,
         mnemonic: response.mnemonic,

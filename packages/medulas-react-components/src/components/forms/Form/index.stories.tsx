@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Storybook } from '../../../utils/storybook';
