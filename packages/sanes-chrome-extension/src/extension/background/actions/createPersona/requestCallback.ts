@@ -1,12 +1,9 @@
 import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+import { getCreatedPersona } from '.';
 import { requestUpdater } from './requestAppUpdater';
 import { updateExtensionBadge } from './requestExtensionBadge';
-import { RequestHandler } from './requestHandler';
+import { GetIdentitiesRequest, RequestHandler, RequestMeta, SignAndPostRequest } from './requestHandler';
 import { SenderWhitelist } from './requestSenderWhitelist';
-
-export interface RequestMeta {
-  readonly senderUrl: string;
-}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isRequestMeta(data: unknown): data is RequestMeta {
@@ -20,15 +17,10 @@ function isRequestMeta(data: unknown): data is RequestMeta {
 async function requestCallback<T>(
   reason: string,
   type: 'getIdentities' | 'signAndPost',
-  meta: any, // eslint-disable-line
+  data: GetIdentitiesRequest | SignAndPostRequest,
   acceptResponse: T,
   rejectResponse: T,
 ): Promise<T> {
-  if (!isRequestMeta(meta)) {
-    throw new Error('Unexpected type of data in meta field');
-  }
-  const { senderUrl } = meta;
-
   return new Promise(resolve => {
     const accept = (): void => {
       RequestHandler.solved();
@@ -40,15 +32,15 @@ async function requestCallback<T>(
     const reject = (permanent: boolean): void => {
       RequestHandler.solved();
       if (permanent) {
-        SenderWhitelist.block(senderUrl);
-        RequestHandler.purge(senderUrl);
+        SenderWhitelist.block(data.senderUrl);
+        RequestHandler.purge(data.senderUrl);
       }
       updateExtensionBadge(RequestHandler.requests().length);
       requestUpdater();
       resolve(rejectResponse);
     };
 
-    RequestHandler.add({ reason, type, sender: senderUrl, accept, reject });
+    RequestHandler.add({ reason, type, data, accept, reject });
     updateExtensionBadge(RequestHandler.requests().length);
     requestUpdater();
   });
@@ -59,13 +51,44 @@ export async function getIdentitiesCallback(
   matchingIdentities: ReadonlyArray<PublicIdentity>,
   meta: any, // eslint-disable-line
 ): Promise<ReadonlyArray<PublicIdentity>> {
-  return requestCallback(reason, 'getIdentities', meta, matchingIdentities, []);
+  if (!isRequestMeta(meta)) {
+    throw new Error('Unexpected type of data in meta field');
+  }
+  const { senderUrl } = meta;
+
+  const persona = getCreatedPersona();
+  const chainNames = persona.getChains();
+  const requestedIdentities = matchingIdentities.map(matchedIdentity => {
+    const chainName = chainNames[matchedIdentity.chainId];
+
+    return {
+      name: chainName,
+      identity: matchedIdentity.pubkey,
+    };
+  });
+
+  const data: GetIdentitiesRequest = {
+    senderUrl,
+    requestedIdentities,
+  };
+
+  return requestCallback(reason, 'getIdentities', data, matchingIdentities, []);
 }
 
 export async function signAndPostCallback(
   reason: string,
-  _transaction: UnsignedTransaction,
+  transaction: UnsignedTransaction,
   meta: any, // eslint-disable-line
 ): Promise<boolean> {
-  return requestCallback(reason, 'signAndPost', meta, true, false);
+  if (!isRequestMeta(meta)) {
+    throw new Error('Unexpected type of data in meta field');
+  }
+  const { senderUrl } = meta;
+
+  const data: SignAndPostRequest = {
+    senderUrl,
+    tx: transaction,
+  };
+
+  return requestCallback(reason, 'signAndPost', data, true, false);
 }
