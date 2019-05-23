@@ -47,9 +47,9 @@
     "@types/react-router-dom": "^4.3.1",
     "final-form": "^4.12.0",
     "jspdf": "^1.5.3",
-    "level-js": "^4.0.0",
+    "level-js": "^4.0.1",
     "medulas-react-components": "*",
-    "memdown": "^3.0.0",
+    "memdown": "^4.0.0",
     "random-js": "^2.0.0-rc5",
     "redux-thunk": "^2.3.0",
     "typesafe-actions": "^3.2.1"
