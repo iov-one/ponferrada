@@ -19,8 +19,13 @@ export interface ChainConfig {
   readonly faucetSpec?: FaucetSpec;
 }
 
+export interface ChainNames {
+  readonly [key: string]: string;
+}
+
 export interface ConfigurationFile {
   readonly chains: ChainConfig[];
+  readonly names: ChainNames;
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {

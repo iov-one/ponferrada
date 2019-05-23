@@ -23,10 +23,6 @@ export class AccountManager {
     this.chains = chains;
   }
 
-  public connectedChains(): ReadonlyArray<ChainId> {
-    return this.chains.map(chain => chain.chainId);
-  }
-
   public async generateNextAccount(): Promise<void> {
     const nextDerivation = await this.numberOfExistingAccounts();
     await this.generateAccount(nextDerivation);
