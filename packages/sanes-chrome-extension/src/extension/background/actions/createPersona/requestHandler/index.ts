@@ -5,8 +5,13 @@ export interface RequestMeta {
   readonly senderUrl: string;
 }
 
+export interface GetIdentitiesData {
+  name: string;
+  identity: PublicKeyBundle;
+}
+
 export interface GetIdentitiesRequest extends RequestMeta {
-  readonly requestedIdentities: ReadonlyArray<{ name: string; identity: PublicKeyBundle }>;
+  readonly requestedIdentities: ReadonlyArray<GetIdentitiesData>;
 }
 
 export interface SignAndPostRequest extends RequestMeta {
