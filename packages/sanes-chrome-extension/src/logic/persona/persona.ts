@@ -1,4 +1,4 @@
-import { Amount, ChainId, isSendTransaction } from '@iov/bcp';
+import { Amount, isSendTransaction } from '@iov/bcp';
 import {
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
@@ -15,6 +15,7 @@ import { ReadonlyDate } from 'readonly-date';
 import {
   algorithmForCodec,
   chainConnector,
+  ChainNames,
   codecTypeFromString,
   getConfigurationFile,
   pathBuilderForCodec,
@@ -156,8 +157,9 @@ export class Persona {
     });
   }
 
-  public getChains(): ReadonlyArray<ChainId> {
-    return this.accountManager.connectedChains();
+  public async getChains(): Promise<ChainNames> {
+    const config = await getConfigurationFile();
+    return config.names;
   }
 
   public async createAccount(): Promise<void> {
