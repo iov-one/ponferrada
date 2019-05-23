@@ -29,7 +29,7 @@ const CheckboxField = ({ fieldName, form, initial, onChangeCallback, label }: Pr
         onChange(initial);
       }
     } catch (err) {}
-  }, [input]);
+  }, [initial, input, onChange, value]);
 
   const onCheckBoxChange = (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): void => {
     onChange(checked);
