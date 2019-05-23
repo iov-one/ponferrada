@@ -30,8 +30,9 @@
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-e2e": "CI=true concurrently -s \"first\" -k \"serve -s build -l 3000\" \"react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom\""
+    "test-dom": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-e2e": "CI=true concurrently -s \"first\" -k \"serve -s build -l 3000\" \"react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom\"",
+    "test": "yarn test-dom && yarn test-e2e"
   },
   "browserslist": [
     ">0.2%",
