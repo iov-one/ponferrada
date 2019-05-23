@@ -114,7 +114,7 @@ export class Persona {
       });
     }
 
-    const manager = new AccountManager(profile, managerChains);
+    const manager = new AccountManager(profile, managerChains, config.names);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
@@ -157,9 +157,8 @@ export class Persona {
     });
   }
 
-  public async getChains(): Promise<ChainNames> {
-    const config = await getConfigurationFile();
-    return config.names;
+  public getChains(): ChainNames {
+    return this.accountManager.getChainNames();
   }
 
   public async createAccount(): Promise<void> {
