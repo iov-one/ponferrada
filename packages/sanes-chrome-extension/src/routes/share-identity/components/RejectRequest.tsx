@@ -42,15 +42,14 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
           </Typography>
           <Typography variant="body1" inline>
             {' '}
-            your identity.
+            your identity on blockchains.
           </Typography>
-
-          <Block marginTop={1} />
+          <Block marginTop={2} />
           <CheckboxField
             initial={false}
             form={form}
             fieldName={PERMANENT_REJECT}
-            label="Don't ask me again"
+            label="Also block future requests"
           />
         </Block>
         <Block marginTop={10} />
