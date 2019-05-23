@@ -5,7 +5,10 @@ import { ToastContextInterface } from 'medulas-react-components/lib/context/Toas
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
 import { RequestContext } from '../../context/RequestProvider';
-import { Request } from '../../extension/background/actions/createPersona/requestHandler';
+import {
+  GetIdentitiesRequest,
+  Request,
+} from '../../extension/background/actions/createPersona/requestHandler';
 import { history } from '../../store/reducers';
 import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from '../paths';
 import RequestList, { REQUEST_FIELD } from './components/RequestList';
@@ -18,21 +21,31 @@ function getIdFrom(location: Location): number | undefined {
   return location.state[REQUEST_FIELD];
 }
 
-export function validRequest(
+export function checkRequest(
   request: Request | undefined,
   location: Location,
   toast: ToastContextInterface,
-): boolean {
+): void {
   const expectedId = getIdFrom(location);
 
   if (!request || typeof expectedId === undefined || expectedId !== request.id) {
     toast.show('Error: Request not identified', ToastVariant.ERROR);
     history.push(REQUEST_ROUTE);
+  }
+}
+
+export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
+  if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  return true;
+  const hasSender = typeof (data as GetIdentitiesRequest).senderUrl === 'string';
+  const identities = (data as GetIdentitiesRequest).requestedIdentities;
+  const hasIdentities = Array.isArray(identities) && identities.every(item => typeof item.name === 'string');
+
+  return hasIdentities && hasSender;
 }
+
 const Requests = (): JSX.Element => {
   const requestContext = React.useContext(RequestContext);
   const { requests } = requestContext;
