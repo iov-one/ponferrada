@@ -63,7 +63,7 @@ export async function getIdentitiesCallback(
 
     return {
       name: chainName,
-      identity: matchedIdentity.pubkey,
+      address: persona.getAddressFrom(matchedIdentity),
     };
   });
 

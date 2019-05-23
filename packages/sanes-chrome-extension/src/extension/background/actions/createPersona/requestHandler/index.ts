@@ -1,4 +1,4 @@
-import { PublicKeyBundle } from '@iov/bcp';
+import { Address } from '@iov/bcp';
 import { Omit } from '@material-ui/core';
 
 export interface RequestMeta {
@@ -7,7 +7,7 @@ export interface RequestMeta {
 
 export interface GetIdentitiesData {
   name: string;
-  identity: PublicKeyBundle;
+  address: Address;
 }
 
 export interface GetIdentitiesRequest extends RequestMeta {

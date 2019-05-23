@@ -1,4 +1,4 @@
-import { Amount, isSendTransaction } from '@iov/bcp';
+import { Address, Amount, isSendTransaction, PublicIdentity } from '@iov/bcp';
 import {
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
@@ -159,6 +159,10 @@ export class Persona {
 
   public getChains(): ChainNames {
     return this.accountManager.getChainNames();
+  }
+
+  public getAddressFrom(pubIdentity: PublicIdentity): Address {
+    return this.signer.identityToAddress(pubIdentity);
   }
 
   public async createAccount(): Promise<void> {
