@@ -34,6 +34,7 @@ export function internalHandler(
       const { password } = message.data;
       loadPersona(db, password)
         .then(sendResponse)
+        // eslint-disable-next-line no-console
         .catch(console.error);
       break;
     }
