@@ -9,8 +9,6 @@ export function internalHandler(
   sender: chrome.runtime.MessageSender,
   sendResponse: (response?: any) => void, // eslint-disable-line
 ): boolean {
-  console.log(message, sender);
-
   if (sender.id !== chrome.runtime.id) {
     throw new Error('Sender is not allowed to perform this action');
   }
@@ -19,16 +17,19 @@ export function internalHandler(
     case MessageToBackgroundAction.GetPersona:
       getPersona()
         .then(sendResponse)
+        // eslint-disable-next-line no-console
         .catch(console.error);
       break;
     case MessageToBackgroundAction.CreatePersona:
       createPersona()
         .then(sendResponse)
+        // eslint-disable-next-line no-console
         .catch(console.error);
       break;
     case MessageToBackgroundAction.CreateAccount:
       createAccount()
         .then(sendResponse)
+        // eslint-disable-next-line no-console
         .catch(console.error);
       break;
     default:

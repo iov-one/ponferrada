@@ -1,4 +1,4 @@
-import { TokenTicker, PublicIdentity } from '@iov/bcp';
+import { PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder, GetIdentitiesAuthorization, SignAndPostAuthorization } from '@iov/core';
 import { EnglishMnemonic } from '@iov/crypto';
 

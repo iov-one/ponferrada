@@ -20,6 +20,7 @@ export async function createPage(browser: Browser): Promise<Page> {
   await page.goto('chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html', {
     waitUntil: 'networkidle2',
   });
+  // eslint-disable-next-line no-console
   page.on('console', msg => console.log('PAGE LOG:', msg.text()));
   page.bringToFront();
 

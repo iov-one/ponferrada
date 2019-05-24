@@ -29,7 +29,6 @@ export async function createPersona(mnemonic?: string): Promise<CreatePersonaRes
   clear(); // Assure we start from clean instances
   persona = await Persona.create(mnemonic);
   signingServer = persona.startSigningServer(getIdentitiesCallback, signAndPostCallback, transactionsUpdater);
-  console.log('Signing server ready to handle requests');
 
   SenderWhitelist.load();
   RequestHandler.load();
