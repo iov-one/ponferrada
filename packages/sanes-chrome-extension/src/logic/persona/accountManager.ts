@@ -2,6 +2,7 @@ import { Algorithm, ChainId, PublicIdentity, publicIdentityEquals } from '@iov/b
 import { UserProfile, WalletId } from '@iov/core';
 import { Slip10RawIndex } from '@iov/crypto';
 import { ReadonlyWallet } from '@iov/keycontrol/types/wallet';
+import { ChainNames } from '../config';
 
 export interface AccountInfo {
   readonly index: number;
@@ -17,15 +18,25 @@ export interface AccountManagerChainConfig {
 export class AccountManager {
   private readonly userProfile: UserProfile;
   private readonly chains: ReadonlyArray<AccountManagerChainConfig>;
+  private readonly chainNames: ChainNames;
 
-  public constructor(userProfile: UserProfile, chains: ReadonlyArray<AccountManagerChainConfig>) {
+  public constructor(
+    userProfile: UserProfile,
+    chains: ReadonlyArray<AccountManagerChainConfig>,
+    chainNames: ChainNames,
+  ) {
     this.userProfile = userProfile;
     this.chains = chains;
+    this.chainNames = chainNames;
   }
 
   public async generateNextAccount(): Promise<void> {
     const nextDerivation = await this.numberOfExistingAccounts();
     await this.generateAccount(nextDerivation);
+  }
+
+  public getChainNames(): ChainNames {
+    return this.chainNames;
   }
 
   /**

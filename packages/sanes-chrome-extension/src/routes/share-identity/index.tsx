@@ -2,9 +2,10 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { RequestContext } from '../../context/RequestProvider';
+import { isGetIdentityData } from '../../extension/background/actions/createPersona/requestHandler';
 import { history } from '../../store/reducers';
 import { REQUEST_ROUTE } from '../paths';
-import { validRequest } from '../requests';
+import { checkRequest } from '../requests';
 import RejectRequest from './components/RejectRequest';
 import ShowRequest from './components/ShowRequest';
 
@@ -13,24 +14,24 @@ const ShareIdentity = ({ location }: RouteComponentProps): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const requestContext = React.useContext(RequestContext);
 
-  const request = requestContext.firstRequest;
-  const isValid = validRequest(request, location, toast);
-  if (!isValid) {
-    return <React.Fragment />;
+  const req = requestContext.firstRequest;
+  checkRequest(req, location, toast);
+  const { data, accept, reject } = req!; // eslint-disable-line
+
+  if (!isGetIdentityData(data)) {
+    throw new Error('Received request with a wrong identities data');
   }
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const requestValid = request!;
 
   const showRequestView = (): void => setAction('show');
   const showRejectView = (): void => setAction('reject');
 
   const onAcceptRequest = (): void => {
-    requestValid.accept();
+    accept();
     history.push(REQUEST_ROUTE);
   };
 
   const onRejectRequest = (permanent: boolean): void => {
-    requestValid.reject(permanent);
+    reject(permanent);
     history.push(REQUEST_ROUTE);
   };
 
@@ -38,13 +39,14 @@ const ShareIdentity = ({ location }: RouteComponentProps): JSX.Element => {
     <React.Fragment>
       {action === 'show' && (
         <ShowRequest
-          request={requestValid}
+          data={data.requestedIdentities}
+          sender={data.senderUrl}
           onAcceptRequest={onAcceptRequest}
           showRejectView={showRejectView}
         />
       )}
       {action === 'reject' && (
-        <RejectRequest request={requestValid} onBack={showRequestView} onRejectRequest={onRejectRequest} />
+        <RejectRequest sender={data.senderUrl} onBack={showRequestView} onRejectRequest={onRejectRequest} />
       )}
     </React.Fragment>
   );

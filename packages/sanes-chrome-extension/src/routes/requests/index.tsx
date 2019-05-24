@@ -18,21 +18,19 @@ function getIdFrom(location: Location): number | undefined {
   return location.state[REQUEST_FIELD];
 }
 
-export function validRequest(
+export function checkRequest(
   request: Request | undefined,
   location: Location,
   toast: ToastContextInterface,
-): boolean {
+): void {
   const expectedId = getIdFrom(location);
 
   if (!request || typeof expectedId === undefined || expectedId !== request.id) {
     toast.show('Error: Request not identified', ToastVariant.ERROR);
     history.push(REQUEST_ROUTE);
-    return false;
   }
-
-  return true;
 }
+
 const Requests = (): JSX.Element => {
   const requestContext = React.useContext(RequestContext);
   const { requests } = requestContext;

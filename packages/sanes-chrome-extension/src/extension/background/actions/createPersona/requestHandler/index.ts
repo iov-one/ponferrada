@@ -1,10 +1,40 @@
+import { Address } from '@iov/bcp';
 import { Omit } from '@material-ui/core';
+
+export interface RequestMeta {
+  readonly senderUrl: string;
+}
+
+export interface GetIdentitiesData {
+  name: string;
+  address: Address;
+}
+
+export interface GetIdentitiesRequest extends RequestMeta {
+  readonly requestedIdentities: ReadonlyArray<GetIdentitiesData>;
+}
+
+export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+
+  const hasSender = typeof (data as GetIdentitiesRequest).senderUrl === 'string';
+  const identities = (data as GetIdentitiesRequest).requestedIdentities;
+  const hasIdentities = Array.isArray(identities) && identities.every(item => typeof item.name === 'string');
+
+  return hasIdentities && hasSender;
+}
+
+export interface SignAndPostRequest extends RequestMeta {
+  readonly tx: any; // eslint-disable-line
+}
 
 export interface Request {
   readonly id: number;
   readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
-  readonly sender: string;
+  readonly data: GetIdentitiesRequest | SignAndPostRequest;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
@@ -54,7 +84,7 @@ export class RequestHandler {
     const initialSize = RequestHandler.instance.length;
     for (let i = 0; i < initialSize; i++) {
       const req = RequestHandler.instance[i];
-      if (req.sender !== senderUrl) {
+      if (req.data.senderUrl !== senderUrl) {
         continue;
       }
 
@@ -64,7 +94,7 @@ export class RequestHandler {
     }
 
     // Note here we only get references
-    const reqToCancel = RequestHandler.instance.filter(req => req.sender === senderUrl);
+    const reqToCancel = RequestHandler.instance.filter(req => req.data.senderUrl === senderUrl);
     reqToCancel.forEach(req => req.reject(false));
   }
 }

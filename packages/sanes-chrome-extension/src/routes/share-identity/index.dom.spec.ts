@@ -1,3 +1,4 @@
+import { Address } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { Request } from '../../extension/background/actions/createPersona/requestHandler';
@@ -23,7 +24,15 @@ describe('DOM > Feature > Share Identity', (): void => {
         id: 1,
         type: 'getIdentities',
         reason: 'Test get Identities',
-        sender: 'http://finnex.com',
+        data: {
+          senderUrl: 'http://finnex.com',
+          requestedIdentities: [
+            {
+              name: 'Ethereum Testnet',
+              address: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5d3aaaa' as Address,
+            },
+          ],
+        },
         accept: jest.fn(),
         reject: jest.fn(),
       },

@@ -1,5 +1,5 @@
 import { getSigningServer } from '../actions/createPersona';
-import { RequestMeta } from '../actions/createPersona/requestCallback';
+import { RequestMeta } from '../actions/createPersona/requestHandler';
 import { SenderWhitelist } from '../actions/createPersona/requestSenderWhitelist';
 import { generateErrorResponse } from '../errorResponseGenerator';
 

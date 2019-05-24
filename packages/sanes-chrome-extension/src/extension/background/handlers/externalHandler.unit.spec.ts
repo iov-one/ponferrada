@@ -3,7 +3,7 @@ import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
 import { withChainsDescribe } from '../../../utils/test/testExecutor';
 import * as createPersonaUtilities from '../actions/createPersona';
 import * as txsUpdater from '../actions/createPersona/requestAppUpdater';
-import { RequestHandler } from '../actions/createPersona/requestHandler';
+import { GetIdentitiesRequest, RequestHandler } from '../actions/createPersona/requestHandler';
 import { generateErrorResponse } from '../errorResponseGenerator';
 import { handleExternalMessage } from './externalHandler';
 
@@ -43,7 +43,9 @@ withChainsDescribe('background script handler for website request', () => {
 
     const params: any = request.params; // eslint-disable-line
     expect(`string:${req.reason}`).toEqual(params.reason);
-    expect(req.sender).toEqual(sender);
+    const data = req.data as GetIdentitiesRequest;
+    expect(data.senderUrl).toEqual(sender);
+    expect(data.requestedIdentities[0].name).toEqual('Ethereum Testnet');
   }
 
   it('resolves to error if sender is unknown', async (done: () => void) => {
@@ -192,7 +194,7 @@ withChainsDescribe('background script handler for website request', () => {
     expect(RequestHandler.requests().length).toBe(1);
     const chromeBazRequest = RequestHandler.next();
     expect(chromeBazRequest.id).toBe(2);
-    expect(chromeBazRequest.sender).toBe('http://example.com');
+    expect(chromeBazRequest.data.senderUrl).toBe('http://example.com');
 
     getCreatedPersona().destroy();
   }, 8000);
@@ -211,7 +213,7 @@ withChainsDescribe('background script handler for website request', () => {
     RequestHandler.next().accept();
     const chromeBarRequest = RequestHandler.next();
     expect(chromeBarRequest.id).toBe(1);
-    expect(chromeBarRequest.sender).toBe(senderTwo.url);
+    expect(chromeBarRequest.data.senderUrl).toBe(senderTwo.url);
     chromeBarRequest.reject(true);
     expect(RequestHandler.requests().length).toBe(0);
 

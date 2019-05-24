@@ -1,28 +1,27 @@
-import { ReadonlyDate } from 'readonly-date';
-
-import { Amount, isSendTransaction } from '@iov/bcp';
+import { Address, Amount, isSendTransaction, PublicIdentity } from '@iov/bcp';
 import {
-  MultiChainSigner,
-  UserProfile,
-  SigningServerCore,
-  SignAndPostAuthorization,
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
+  MultiChainSigner,
+  SignAndPostAuthorization,
   SignedAndPosted,
+  SigningServerCore,
+  UserProfile,
 } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
-import { JsonRpcResponse, JsonRpcRequest } from '@iov/jsonrpc';
-
-import { createUserProfile } from '../user';
+import { Encoding } from '@iov/encoding';
+import { JsonRpcRequest, JsonRpcResponse } from '@iov/jsonrpc';
+import { ReadonlyDate } from 'readonly-date';
 import {
-  chainConnector,
-  getConfigurationFile,
-  codecTypeFromString,
   algorithmForCodec,
+  chainConnector,
+  ChainNames,
+  codecTypeFromString,
+  getConfigurationFile,
   pathBuilderForCodec,
 } from '../config';
+import { createUserProfile } from '../user';
 import { AccountManager, AccountManagerChainConfig } from './accountManager';
-import { Encoding } from '@iov/encoding';
 
 /** Like JsonRpcSigningServer but without functionality to create or shutdown */
 export interface UseOnlyJsonRpcSigningServer {
@@ -115,7 +114,7 @@ export class Persona {
       });
     }
 
-    const manager = new AccountManager(profile, managerChains);
+    const manager = new AccountManager(profile, managerChains, config.names);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
@@ -156,6 +155,14 @@ export class Persona {
         label: `Account ${account.index}`,
       };
     });
+  }
+
+  public getChains(): ChainNames {
+    return this.accountManager.getChainNames();
+  }
+
+  public getAddressFrom(pubIdentity: PublicIdentity): Address {
+    return this.signer.identityToAddress(pubIdentity);
   }
 
   public async createAccount(): Promise<void> {

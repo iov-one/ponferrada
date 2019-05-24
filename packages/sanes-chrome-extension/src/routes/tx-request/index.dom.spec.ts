@@ -23,7 +23,10 @@ describe('DOM > Feature > Transaction Request', (): void => {
         id: 1,
         type: 'signAndPost',
         reason: 'Test get Identities',
-        sender: 'http://finnex.com',
+        data: {
+          senderUrl: 'http://finnex.com',
+          tx: {},
+        },
         accept: jest.fn(),
         reject: jest.fn(),
       },
