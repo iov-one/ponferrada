@@ -14,6 +14,18 @@ export interface GetIdentitiesRequest extends RequestMeta {
   readonly requestedIdentities: ReadonlyArray<GetIdentitiesData>;
 }
 
+export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+
+  const hasSender = typeof (data as GetIdentitiesRequest).senderUrl === 'string';
+  const identities = (data as GetIdentitiesRequest).requestedIdentities;
+  const hasIdentities = Array.isArray(identities) && identities.every(item => typeof item.name === 'string');
+
+  return hasIdentities && hasSender;
+}
+
 export interface SignAndPostRequest extends RequestMeta {
   readonly tx: any; // eslint-disable-line
 }

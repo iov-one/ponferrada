@@ -2,9 +2,10 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { RequestContext } from '../../context/RequestProvider';
+import { isGetIdentityData } from '../../extension/background/actions/createPersona/requestHandler';
 import { history } from '../../store/reducers';
 import { REQUEST_ROUTE } from '../paths';
-import { checkRequest, isGetIdentityData } from '../requests';
+import { checkRequest } from '../requests';
 import RejectRequest from './components/RejectRequest';
 import ShowRequest from './components/ShowRequest';
 
