@@ -25,7 +25,8 @@
     "lint": "lerna run lint",
     "release": "lerna run build && lerna publish",
     "storybook": "lerna run storybook --stream",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "test-integration": "lerna run test-integration --stream"
   },
   "husky": {
     "hooks": {

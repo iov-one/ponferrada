@@ -31,8 +31,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test-dom": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-e2e": "CI=true concurrently -s \"first\" -k \"serve -s build -l 3000\" \"react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom\"",
-    "test": "yarn test-dom && yarn test-e2e"
+    "test-integration": "CI=true concurrently -s \"first\" -k \"serve -s build -l 3000\" \"react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom\"",
+    "test": "yarn test-dom"
   },
   "browserslist": [
     ">0.2%",
