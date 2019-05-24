@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
  * Listener for dispatching website requests towards the extension
  */
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-  return handleExternalMessage(db, message, sender, sendResponse);
+  return handleExternalMessage(message, sender, sendResponse);
 });
 
 function getQueuedRequests(): ReadonlyArray<Request> {

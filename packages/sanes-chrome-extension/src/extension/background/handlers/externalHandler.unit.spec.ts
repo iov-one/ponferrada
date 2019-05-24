@@ -59,7 +59,7 @@ withChainsDescribe('background script handler for website request', () => {
       expect(response).toEqual(generateErrorResponse(1, 'Got external message without sender URL'));
       done();
     };
-    handleExternalMessage(db, request, sender, sendResponse);
+    handleExternalMessage(request, sender, sendResponse);
   });
 
   it('resolves to error if signing server is not ready', async (done: () => void) => {
@@ -70,13 +70,13 @@ withChainsDescribe('background script handler for website request', () => {
       expect(response).toEqual(generateErrorResponse(1, 'Signing server not ready'));
       done();
     };
-    handleExternalMessage(db, request, sender, sendResponse);
+    handleExternalMessage(request, sender, sendResponse);
   });
 
   it('loads automatically request handler', async () => {
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
-    handleExternalMessage(db, request, sender, jest.fn());
+    handleExternalMessage(request, sender, jest.fn());
 
     expect(RequestHandler.requests()).toBeInstanceOf(Array);
     expect(RequestHandler.requests()).not.toEqual([]);
@@ -93,13 +93,13 @@ withChainsDescribe('background script handler for website request', () => {
       );
       done();
     };
-    handleExternalMessage(db, request, sender, sendResponse);
+    handleExternalMessage(request, sender, sendResponse);
   });
 
   it('enqueues a request', async () => {
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
-    handleExternalMessage(db, request, sender, jest.fn());
+    handleExternalMessage(request, sender, jest.fn());
 
     expect(RequestHandler.requests().length).toBe(1);
     checkNextRequest(request, sender.url);
@@ -108,7 +108,7 @@ withChainsDescribe('background script handler for website request', () => {
   it('resolves to error when sender has been permanently blocked', async (done: () => void) => {
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
-    handleExternalMessage(db, request, sender, jest.fn());
+    handleExternalMessage(request, sender, jest.fn());
 
     expect(RequestHandler.requests().length).toBe(1);
     const rejectPermanently = true;
@@ -119,17 +119,17 @@ withChainsDescribe('background script handler for website request', () => {
       expect(response).toEqual(generateErrorResponse(1, 'Sender has been blocked by user'));
       done();
     };
-    handleExternalMessage(db, request, sender, sendSecondResponse);
+    handleExternalMessage(request, sender, sendSecondResponse);
   }, 8000);
 
   it('resolves in order request queue', async () => {
     const sender = { url: 'http://finnex.com' };
 
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
-    handleExternalMessage(db, requestFoo, sender, jest.fn());
+    handleExternalMessage(requestFoo, sender, jest.fn());
 
     const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
-    handleExternalMessage(db, requestBar, sender, jest.fn());
+    handleExternalMessage(requestBar, sender, jest.fn());
 
     expect(RequestHandler.requests().length).toBe(2);
     const chromeFooRequest = RequestHandler.next();
@@ -147,19 +147,19 @@ withChainsDescribe('background script handler for website request', () => {
 
     // enqueue 2 requests of sender one
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
-    handleExternalMessage(db, requestFoo, senderOne, jest.fn());
+    handleExternalMessage(requestFoo, senderOne, jest.fn());
     const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
-    handleExternalMessage(db, requestBar, senderOne, jest.fn());
+    handleExternalMessage(requestBar, senderOne, jest.fn());
 
     // enqueue 1 request of sender two
     const requestBaz = buildGetIdentitiesRequest('getIdentities', 'Reason baz');
-    handleExternalMessage(db, requestBaz, senderTwo, jest.fn());
+    handleExternalMessage(requestBaz, senderTwo, jest.fn());
 
     // enqueue 2 requests of sender one
     const requestThird = buildGetIdentitiesRequest('getIdentities', 'Reason third');
-    handleExternalMessage(db, requestThird, senderOne, jest.fn());
+    handleExternalMessage(requestThird, senderOne, jest.fn());
     const requestFourth = buildGetIdentitiesRequest('getIdentities', 'Reason fourth');
-    handleExternalMessage(db, requestFourth, senderOne, jest.fn());
+    handleExternalMessage(requestFourth, senderOne, jest.fn());
 
     // check in total there are 5 requests in the queue
     expect(RequestHandler.requests().length).toBe(5);
@@ -180,11 +180,11 @@ withChainsDescribe('background script handler for website request', () => {
   it('rejects correctly when permanently blocked is last one in the queue', async () => {
     const senderOne = { url: 'http://finnex.com' };
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
-    handleExternalMessage(db, requestFoo, senderOne, jest.fn());
+    handleExternalMessage(requestFoo, senderOne, jest.fn());
 
     const senderTwo = { url: 'http://finnextwo.com' };
     const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
-    handleExternalMessage(db, requestBar, senderTwo, jest.fn());
+    handleExternalMessage(requestBar, senderTwo, jest.fn());
 
     RequestHandler.next().accept();
     const chromeBarRequest = RequestHandler.next();
@@ -196,7 +196,7 @@ withChainsDescribe('background script handler for website request', () => {
     // Auto rejecting does not affect to counter id
     const senderThree = { url: 'http://finnexthree.com' };
     const requestBaz = buildGetIdentitiesRequest('getIdentities', 'Reason baz');
-    handleExternalMessage(db, requestBaz, senderThree, jest.fn());
+    handleExternalMessage(requestBaz, senderThree, jest.fn());
     const chromeBazRequest = RequestHandler.next();
     expect(chromeBazRequest.id).toBe(2);
     expect(chromeBazRequest.reason).toBe('Reason baz');
