@@ -58,7 +58,7 @@ withChainsDescribe('Persona', () => {
   });
 
   describe('getChains', () => {
-    it.only('can get chains', async () => {
+    it('can get chains', async () => {
       const persona = await Persona.create();
 
       const chains = await persona.getChains();
