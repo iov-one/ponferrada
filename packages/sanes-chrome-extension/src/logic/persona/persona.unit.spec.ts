@@ -77,7 +77,7 @@ withChainsDescribe('Persona', () => {
       }
 
       persona.destroy();
-    });
+    }, 20000);
   });
 
   describe('startSigningServer', () => {
