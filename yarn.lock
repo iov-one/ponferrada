@@ -2966,14 +2966,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/encoding-down@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@types/encoding-down/-/encoding-down-5.0.0.tgz#0b5b90b93ac3aa75148f19508044e7bd36463557"
-  integrity sha512-G0MlS/+/U2RIQLcSEhhAcoMrXw3hXUCFSKbhbeEljoKMra2kq+NPX6tfOveSWQLX2hJXBo+YrvKgAGe+tFL1Aw==
-  dependencies:
-    "@types/abstract-leveldown" "*"
-    "@types/level-codec" "*"
-
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"

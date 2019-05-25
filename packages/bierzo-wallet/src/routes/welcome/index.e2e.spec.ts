@@ -10,6 +10,7 @@ import {
   launchBrowser,
 } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { sleep } from '../../utils/timer';
 import { submitExtensionSignupForm } from './test/fillSignupForm';
 
 withChainsDescribe(
@@ -58,6 +59,7 @@ withChainsDescribe(
       await page.click('button:nth-of-type(2)');
       await page.click('button:nth-of-type(2)');
       await page.click('button:nth-of-type(2)');
+      await sleep(500);
       const badgeText = await backgroundPage.evaluate(
         (): Promise<string | undefined> => {
           return new Promise(resolve => {
