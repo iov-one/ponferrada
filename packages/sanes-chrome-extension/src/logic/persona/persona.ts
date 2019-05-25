@@ -20,6 +20,7 @@ import {
   getConfigurationFile,
   pathBuilderForCodec,
 } from '../config';
+import { StringDb } from '../db';
 import { createUserProfile } from '../user';
 import { AccountManager, AccountManagerChainConfig } from './accountManager';
 
@@ -85,6 +86,28 @@ function isNonNull<T>(t: T | null): t is T {
   return t !== null;
 }
 
+async function createSignerAndManager(
+  profile: UserProfile,
+): Promise<{ readonly signer: MultiChainSigner; readonly accountManager: AccountManager }> {
+  const config = await getConfigurationFile();
+
+  const signer = new MultiChainSigner(profile);
+  const managerChains: AccountManagerChainConfig[] = [];
+  for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+    const codecType = codecTypeFromString(chainSpec.codecType);
+    const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
+    const { connection } = await signer.addChain(connector);
+    managerChains.push({
+      chainId: connection.chainId(),
+      algorithm: algorithmForCodec(codecType),
+      derivePath: pathBuilderForCodec(codecType),
+    });
+  }
+
+  const accountManager = new AccountManager(profile, managerChains, config.names);
+  return { signer, accountManager };
+}
+
 export class Persona {
   /**
    * Creates a new Persona instance.
@@ -93,43 +116,61 @@ export class Persona {
    * (because a constructor is synchonous): reading configs, connecting to the network,
    * creating accounts.
    */
-  public static async create(fixedMnemonic?: string): Promise<Persona> {
-    const config = await getConfigurationFile();
-
+  public static async create(db: StringDb, password: string, fixedMnemonic?: string): Promise<Persona> {
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
     const profile = await createUserProfile(mnemonic);
-    const signer = new MultiChainSigner(profile);
-
-    // connect chains
-    const managerChains: AccountManagerChainConfig[] = [];
-    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
-      const codecType = codecTypeFromString(chainSpec.codecType);
-      const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
-      const { connection } = await signer.addChain(connector);
-      managerChains.push({
-        chainId: connection.chainId(),
-        algorithm: algorithmForCodec(codecType),
-        derivePath: pathBuilderForCodec(codecType),
-      });
-    }
-
-    const manager = new AccountManager(profile, managerChains, config.names);
+    const { signer, accountManager: manager } = await createSignerAndManager(profile);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
+    await profile.storeIn(db, password);
 
-    return new Persona(profile, signer, manager);
+    return new Persona(db, password, profile, signer, manager);
   }
 
+  public static async load(db: StringDb, password: string): Promise<Persona> {
+    const profile = await UserProfile.loadFrom(db, password);
+    const { signer, accountManager: manager } = await createSignerAndManager(profile);
+    return new Persona(db, password, profile, signer, manager);
+  }
+
+  /**
+   * Tests if there is a Persona stored in the database. The check is very minimal and cannot detect broken data.
+   */
+  public static async hasStoredPersona(db: StringDb): Promise<boolean> {
+    // Constant from IOV-Core source code. Would be good to have a proper API for that
+    const storageKeyFormatVersion = 'format_version';
+
+    try {
+      await db.get(storageKeyFormatVersion);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  private readonly db: StringDb;
+  private readonly password: string;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
   private core: SigningServerCore | undefined;
   private signingServer: JsonRpcSigningServer | undefined;
 
-  /** The given signer and accountsManager must share the same UserProfile */
-  private constructor(profile: UserProfile, signer: MultiChainSigner, accountManager: AccountManager) {
+  /**
+   * The given signer and accountsManager must share the same UserProfile.
+   * All changes are automatically saved in db.
+   */
+  private constructor(
+    db: StringDb,
+    password: string,
+    profile: UserProfile,
+    signer: MultiChainSigner,
+    accountManager: AccountManager,
+  ) {
+    this.db = db;
+    this.password = password;
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
@@ -167,6 +208,7 @@ export class Persona {
 
   public async createAccount(): Promise<void> {
     await this.accountManager.generateNextAccount();
+    await this.profile.storeIn(this.db, this.password);
   }
 
   public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {

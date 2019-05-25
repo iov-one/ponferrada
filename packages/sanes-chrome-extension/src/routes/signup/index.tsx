@@ -34,12 +34,10 @@ const Signup = (): JSX.Element => {
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
-    // FIXME Use form values once db storage and multi account is supported on Persona
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
-    const response = await sendCreatePersonaMessage();
+    const response = await sendCreatePersonaMessage(password, undefined);
     personaProvider.update({
       accounts: response.accounts,
       mnemonic: response.mnemonic,

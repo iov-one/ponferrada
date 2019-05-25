@@ -9,6 +9,7 @@ export const WTC_MSG_HELLO = 'wtc_HELLO';
  */
 export enum MessageToBackgroundAction {
   CreatePersona = 'create_persona',
+  LoadPersona = 'load_persona',
   GetPersona = 'get_persona',
   CreateAccount = 'create_account',
 }
@@ -32,11 +33,45 @@ export interface PersonaData {
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface CreatePersonaResponse extends PersonaData {}
 
-export async function sendCreatePersonaMessage(mnemonic?: string): Promise<CreatePersonaResponse> {
+export async function sendCreatePersonaMessage(
+  password: string,
+  mnemonic: string | undefined,
+): Promise<CreatePersonaResponse> {
   return new Promise((resolve, reject) => {
     const message: MessageToBackground = {
       action: MessageToBackgroundAction.CreatePersona,
-      data: mnemonic,
+      data: {
+        password: password,
+        mnemonic: mnemonic,
+      },
+    };
+    chrome.runtime.sendMessage(message, response => {
+      const lastError = chrome.runtime.lastError;
+      if (lastError) {
+        const errorMessage = lastError.message || 'Unknown error in chrome.runtime.lastError';
+        reject(errorMessage);
+        return;
+      }
+
+      resolve({
+        accounts: response.accounts,
+        mnemonic: response.mnemonic,
+        txs: response.txs,
+      });
+    });
+  });
+}
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface LoadPersonaResponse extends PersonaData {}
+
+export async function sendLoadPersonaMessage(password: string): Promise<LoadPersonaResponse> {
+  return new Promise((resolve, reject) => {
+    const message: MessageToBackground = {
+      action: MessageToBackgroundAction.LoadPersona,
+      data: {
+        password: password,
+      },
     };
     chrome.runtime.sendMessage(message, response => {
       const lastError = chrome.runtime.lastError;
