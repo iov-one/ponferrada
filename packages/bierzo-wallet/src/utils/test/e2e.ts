@@ -1,4 +1,4 @@
-import puppeteer, { Page, Browser } from 'puppeteer';
+import puppeteer, { Browser, Page } from 'puppeteer';
 import { extensionId } from '../../communication';
 
 export function launchBrowser(slowMo: number = 0): Promise<Browser> {
@@ -13,7 +13,7 @@ export function launchBrowser(slowMo: number = 0): Promise<Browser> {
 
 export async function createPage(browser: Browser): Promise<Page> {
   const page: Page = await browser.newPage();
-  await page.goto('http://localhost:3000/', {
+  await page.goto('http://localhost:9000/', {
     waitUntil: 'networkidle2',
   });
   page.on('console', msg => console.log('PAGE LOG:', msg.text()));
