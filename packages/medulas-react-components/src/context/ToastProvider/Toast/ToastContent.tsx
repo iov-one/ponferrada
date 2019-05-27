@@ -65,8 +65,6 @@ const ToastContent = React.forwardRef(
     const Icon = variantIcon[variant];
     const classes = useStyles();
 
-    console.log(ref);
-
     return (
       <SnackbarContent
         innerRef={ref}
