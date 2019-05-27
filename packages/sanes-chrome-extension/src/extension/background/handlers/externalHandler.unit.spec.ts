@@ -2,6 +2,7 @@ import { TransactionEncoder } from '@iov/core';
 import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
 import { createMemDb, StringDb } from '../../../logic/db';
 import { withChainsDescribe } from '../../../utils/test/testExecutor';
+import { sleep } from '../../../utils/timer';
 import * as createPersonaUtilities from '../actions/createPersona';
 import * as txsUpdater from '../actions/createPersona/requestAppUpdater';
 import { GetIdentitiesRequest, RequestHandler } from '../actions/createPersona/requestHandler';
@@ -73,6 +74,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     // note: will not resolve due to missing user interaction
     handleExternalMessage(request, sender);
+    await sleep(10);
 
     expect(RequestHandler.requests()).toBeInstanceOf(Array);
     expect(RequestHandler.requests()).not.toEqual([]);
@@ -96,6 +98,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     // note: will not resolve due to missing user interaction
     handleExternalMessage(request, sender);
+    await sleep(10);
 
     expect(RequestHandler.requests().length).toBe(1);
     checkNextRequest(request, sender.url);
@@ -107,6 +110,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     // note: does not resolve before the .reject() call below
     handleExternalMessage(request, sender);
+    await sleep(10);
 
     expect(RequestHandler.requests().length).toBe(1);
     const rejectPermanently = true;
@@ -127,6 +131,8 @@ withChainsDescribe('background script handler for website request', () => {
     const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
     // note: will not resolve due to missing user interaction
     handleExternalMessage(requestBar, sender);
+
+    await sleep(10);
 
     expect(RequestHandler.requests().length).toBe(2);
     const chromeFooRequest = RequestHandler.next();
@@ -158,6 +164,8 @@ withChainsDescribe('background script handler for website request', () => {
     const requestFourth = buildGetIdentitiesRequest('getIdentities', 'Reason fourth');
     handleExternalMessage(requestFourth, senderOne);
 
+    await sleep(10);
+
     // check in total there are 5 requests in the queue
     expect(RequestHandler.requests().length).toBe(5);
 
@@ -185,6 +193,8 @@ withChainsDescribe('background script handler for website request', () => {
     // note: does not resolve before the .reject() call below
     handleExternalMessage(requestBar, senderTwo);
 
+    await sleep(10);
+
     RequestHandler.next().accept();
     const chromeBarRequest = RequestHandler.next();
     expect(chromeBarRequest.id).toBe(1);
@@ -197,6 +207,7 @@ withChainsDescribe('background script handler for website request', () => {
     const requestBaz = buildGetIdentitiesRequest('getIdentities', 'Reason baz');
     // note: will not resolve due to missing user interaction
     handleExternalMessage(requestBaz, senderThree);
+    await sleep(10);
     const chromeBazRequest = RequestHandler.next();
     expect(chromeBazRequest.id).toBe(2);
     expect(chromeBazRequest.reason).toBe('Reason baz');
