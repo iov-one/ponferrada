@@ -48,7 +48,7 @@ export interface Request {
   readonly reject: (permanently: boolean) => void;
 }
 
-export class RequestHandler {
+export class RequestQueueManager {
   private instance: Request[] = [];
   private counter = 0;
 

@@ -1,3 +1,4 @@
+import { JsonRpcResponse } from '@iov/jsonrpc';
 import { Persona, PersonaAcccount, ProcessedTx } from '../persona';
 import { SigningServer } from '../signingServer';
 import { Request } from '../signingServer/requestHandler';
@@ -72,6 +73,13 @@ class Backgroundscript {
     (window as IovWindowExtension).loadPersona = this.loadPersona;
     (window as IovWindowExtension).createAccount = this.createAccount;
     (window as IovWindowExtension).getPersonaData = this.getPersonaData;
+  }
+
+  public handleRequestMessage(
+    message: any, //eslint-disable-line
+    sender: chrome.runtime.MessageSender,
+  ): Promise<JsonRpcResponse> {
+    return this.signingServer.handleRequestMessage(message, sender);
   }
 }
 

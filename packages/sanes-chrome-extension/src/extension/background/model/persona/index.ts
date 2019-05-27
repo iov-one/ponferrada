@@ -64,7 +64,7 @@ export class Persona {
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
     const profile = await PersonaBuilder.createUserProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
-    const manager = await PersonaBuilder.createAccountManager(profile);
+    const manager = await PersonaBuilder.createAccountManager(profile, signer);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
@@ -76,7 +76,7 @@ export class Persona {
   public static async load(db: StringDb, signingServer: SigningServer, password: string): Promise<Persona> {
     const profile = await UserProfile.loadFrom(db, password);
     const signer = new MultiChainSigner(profile);
-    const manager = await PersonaBuilder.createAccountManager(profile);
+    const manager = await PersonaBuilder.createAccountManager(profile, signer);
 
     const persona = new Persona(password, profile, signer, manager, signingServer);
 
@@ -100,11 +100,10 @@ export class Persona {
     this.accountManager = accountManager;
 
     const chainNames = this.accountManager.getChainNames();
-    const addressObtainer = this.signer.identityToAddress;
     this.core = new SigningServerCore(
       this.profile,
       this.signer,
-      signingServer.getIdentitiesCallback(chainNames, addressObtainer),
+      signingServer.getIdentitiesCallback(chainNames, signer),
       signingServer.signAndPostCallback(),
     );
 

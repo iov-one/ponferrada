@@ -18,10 +18,12 @@ export class PersonaBuilder {
    * (because a constructor is synchonous): reading configs, connecting to the network,
    * creating accounts.
    */
-  public static async createAccountManager(profile: UserProfile): Promise<AccountManager> {
+  public static async createAccountManager(
+    profile: UserProfile,
+    signer: MultiChainSigner,
+  ): Promise<AccountManager> {
     const config: ConfigurationFile = await getConfigurationFile();
 
-    const signer = new MultiChainSigner(profile);
     const managerChains: AccountManagerChainConfig[] = [];
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);

@@ -1,25 +1,15 @@
 /*global chrome*/
-import { createBrowserDb } from '../logic/db';
-import { Request, RequestHandler } from './background/actions/createPersona/requestHandler';
 import { generateErrorResponse } from './background/errorResponseGenerator';
-import { handleExternalMessage } from './background/handlers/externalHandler';
-import { internalHandler } from './background/handlers/internalHandler';
+import Backgroundscript from './background/model/backgroundscript';
 
-// Instance lives as long as the BS lives. Never closed unless the background script is destroyed.
-const db = createBrowserDb('bs-persona');
-
-/**
- * Listener for dispatching extension requests
- */
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  return internalHandler(db, message, sender, sendResponse);
-});
+const backgroundScript = new Backgroundscript();
 
 /**
  * Listener for dispatching website requests towards the extension
  */
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-  handleExternalMessage(message, sender)
+  backgroundScript
+    .handleRequestMessage(message, sender)
     .then(sendResponse)
     .catch((error: any) => {
       // eslint-disable-next-line no-console
@@ -38,13 +28,3 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#Parameters
   return true;
 });
-
-function getQueuedRequests(): ReadonlyArray<Request> {
-  return RequestHandler.requests();
-}
-
-export interface IovWindowExtension extends Window {
-  getQueuedRequests: () => ReadonlyArray<Request>;
-}
-
-(window as IovWindowExtension).getQueuedRequests = getQueuedRequests;

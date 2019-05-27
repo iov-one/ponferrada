@@ -1,56 +1,36 @@
-import { Address, PublicIdentity, UnsignedTransaction } from '@iov/bcp';
-import { JsonRpcSigningServer, SigningServerCore } from '@iov/core';
-import { JsonRpcRequest, JsonRpcResponse } from '@iov/jsonrpc';
+import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
+import { JsonRpcResponse } from '@iov/jsonrpc';
+import { generateErrorResponse } from '../../errorResponseGenerator';
 import { ChainNames } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
   GetIdentitiesRequest,
   isRequestMeta,
   Request,
-  RequestHandler,
+  RequestMeta,
+  RequestQueueManager,
   SignAndPostRequest,
-} from './requestHandler';
+} from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
 
-/** Like JsonRpcSigningServer but without functionality to create or shutdown */
-export interface UseOnlyJsonRpcSigningServer {
-  /**
-   * Handles a request from a possibly untrusted source.
-   *
-   * 1. Parse request as a JSON-RPC request
-   * 2. Convert JSON-RPC request into calls to SigningServerCore
-   * 3. Call SigningServerCore
-   * 4. Convert result to JSON-RPC response
-   *
-   * @param request The JSON-RPC request to be handled
-   * @param meta An arbitrary object that is passed by reference into the autorization callbacks
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleUnchecked(request: unknown, meta?: any): Promise<JsonRpcResponse>;
-  /**
-   * Handles a checked request, i.e. a request that is known to be a valid
-   * JSON-RPC "Request object".
-   *
-   * 1. Convert JSON-RPC request into calls to SigningServerCore
-   * 2. Call SigningServerCore
-   * 3. Convert result to JSON-RPC response
-   *
-   * @param request The JSON-RPC request to be handled
-   * @param meta An arbitrary object that is passed by reference into the autorization callbacks
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleChecked(request: JsonRpcRequest, meta?: any): Promise<JsonRpcResponse>;
+function resolveToError(
+  sendResponse: (response?: any) => void, //eslint-disable-line
+  responseId: number | null,
+  msg: string,
+): boolean {
+  const error = generateErrorResponse(responseId, msg);
+  sendResponse(error);
+
+  return false;
 }
 
 export class SigningServer {
-  private requestHandler = new RequestHandler();
+  private requestHandler = new RequestQueueManager();
   private senderWhitelist = new SenderWhitelist();
   private signingServer: JsonRpcSigningServer | undefined;
 
-  public getIdentitiesCallback = (
-    chainNames: ChainNames,
-    addressMapper: (id: PublicIdentity) => Address,
-  ) => async (
+  public getIdentitiesCallback = (chainNames: ChainNames, signer: MultiChainSigner) => async (
     reason: string,
     matchingIdentities: ReadonlyArray<PublicIdentity>,
     meta: any, // eslint-disable-line
@@ -65,7 +45,7 @@ export class SigningServer {
 
       return {
         name: chainName,
-        address: addressMapper(matchedIdentity),
+        address: signer.identityToAddress(matchedIdentity),
       };
     });
 
@@ -116,7 +96,7 @@ export class SigningServer {
   }
 
   public start(core: SigningServerCore): void {
-    this.requestHandler = new RequestHandler();
+    this.requestHandler = new RequestQueueManager();
     this.senderWhitelist = new SenderWhitelist();
     this.signingServer = new JsonRpcSigningServer(core);
   }
@@ -127,5 +107,31 @@ export class SigningServer {
     }
     this.signingServer.shutdown();
     this.signingServer = undefined;
+  }
+
+  public async handleRequestMessage(
+    request: any, //eslint-disable-line
+    sender: chrome.runtime.MessageSender,
+  ): Promise<JsonRpcResponse> {
+    const responseId = typeof request.id === 'number' ? request.id : null;
+    if (!sender.url) {
+      return generateErrorResponse(responseId, 'Got external message without sender URL');
+    }
+
+    if (!this.signingServer) {
+      return generateErrorResponse(responseId, 'Signing server not ready');
+    }
+
+    const { url: senderUrl } = sender;
+    if (this.senderWhitelist.isBlocked(senderUrl)) {
+      return generateErrorResponse(responseId, 'Sender has been blocked by user');
+    }
+
+    const meta: RequestMeta = {
+      senderUrl,
+    };
+
+    const response = await this.signingServer.handleUnchecked(request, meta);
+    return response;
   }
 }
