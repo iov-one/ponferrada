@@ -28,6 +28,16 @@ class Backgroundscript {
     this.persona = await Persona.load(this.db, this.signingServer, password);
   }
 
+  public clearPersona(): void {
+    if (!this.persona) {
+      throw new Error('The persona instance is unset. This indicates a bug in the lifecycle.');
+    }
+    this.persona.destroy();
+    this.persona = undefined;
+
+    this.signingServer.shutdown();
+  }
+
   public registerActionsInBackground(): void {
     (window as IovWindowExtension).getQueuedRequests = this.signingServer.getPendingRequests;
     (window as IovWindowExtension).createPersona = this.createPersona;
