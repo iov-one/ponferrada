@@ -1,9 +1,34 @@
-import { MultiChainSigner, SigningServerCore, UserProfile } from '@iov/core';
+import { Amount, isSendTransaction } from '@iov/bcp';
+import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
+import { Encoding } from '@iov/encoding';
+import { ReadonlyDate } from 'readonly-date';
+import { transactionsUpdater } from '../../updaters/appUpdater';
 import { AccountManager } from '../accountManager';
 import { StringDb } from '../backgroundscript/db';
 import { SigningServer } from '../signingServer';
 import { PersonaBuilder } from './personaBuider';
+
+function isNonNull<T>(t: T | null): t is T {
+  return t !== null;
+}
+
+/**
+ * A transaction signed by the user of the extension.
+ *
+ * All fields must be losslessly JSON serializable/deserializable to allow
+ * messaging between background script and UI.
+ */
+export interface ProcessedTx {
+  readonly id: string;
+  readonly recipient: string;
+  readonly signer: string;
+  readonly amount: Amount;
+  readonly memo?: string;
+  readonly time: string;
+  /** If error is null, the transactin succeeded  */
+  readonly error: string | null;
+}
 
 export class Persona {
   private readonly password: string;
@@ -71,5 +96,45 @@ export class Persona {
       signingServer.getIdentitiesCallback(chainNames, addressObtainer),
       signingServer.signAndPostCallback(),
     );
+
+    this.subscribeToTxUpdates(transactionsUpdater);
+  }
+
+  private subscribeToTxUpdates(notifyApp: (transactions: ReadonlyArray<ProcessedTx>) => void): void {
+    this.core.signedAndPosted.updates.subscribe({
+      next: async signedAndPosted => {
+        const processed = await Promise.all(signedAndPosted.map(s => this.processTransaction(s)));
+        const filtered = processed.filter(isNonNull);
+        notifyApp(filtered);
+      },
+    });
+  }
+
+  /**
+   * We keep this async for now to allow fetching IOV names
+   */
+  private async processTransaction(t: SignedAndPosted): Promise<ProcessedTx | null> {
+    if (!isSendTransaction(t.transaction)) {
+      // cannot process
+      return null;
+    }
+
+    return {
+      time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
+      id: t.postResponse.transactionId,
+      recipient: t.transaction.recipient,
+      signer: Encoding.toHex(t.transaction.creator.pubkey.data),
+      memo: t.transaction.memo,
+      amount: t.transaction.amount,
+      error: null,
+    };
+  }
+
+  public getCore(): SigningServerCore {
+    return this.core;
+  }
+
+  public destroy(): void {
+    this.signer.shutdown();
   }
 }
