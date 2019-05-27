@@ -121,17 +121,6 @@ withChainsDescribe('Persona', () => {
     });
   });
 
-  describe('getChains', () => {
-    it('can get chains', async () => {
-      const persona = await Persona.create(createMemDb(), 'passwd');
-
-      const chains = await persona.getChains();
-      expect(Object.keys(chains).length).toEqual(4);
-
-      persona.destroy();
-    });
-  });
-
   describe('createAccount', () => {
     it('can create an account', async () => {
       const persona = await Persona.create(createMemDb(), 'passwd');
