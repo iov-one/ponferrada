@@ -13,7 +13,8 @@ module.exports = {
     "no-console": "warn",
     "@typescript-eslint/explicit-function-return-type": [ "error", {
       allowExpressions: true,
-    }]
+    }],
+    "@typescript-eslint/no-explicit-any": "off",
   },
   plugins: ['@typescript-eslint', 'react'],
 };
