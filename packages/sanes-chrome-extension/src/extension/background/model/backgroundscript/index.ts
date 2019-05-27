@@ -8,6 +8,7 @@ export interface IovWindowExtension extends Window {
   createPersona: (password: string, mnemonic: string | undefined) => Promise<void>;
   loadPersona: (password: string) => Promise<void>;
   createAccount: () => Promise<ReadonlyArray<PersonaAcccount>>;
+  getPersonaData: () => Promise<GetPersonaResponse>;
 }
 
 interface PersonaData {
@@ -28,30 +29,37 @@ class Backgroundscript {
 
   private async createPersona(password: string, mnemonic: string | undefined): Promise<void> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
-
     this.persona = await Persona.create(this.db, this.signingServer, password, mnemonic);
     this.signingServer.start(this.persona.getCore());
   }
 
   private async loadPersona(password: string): Promise<void> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
-
     this.persona = await Persona.load(this.db, this.signingServer, password);
     this.signingServer.start(this.persona.getCore());
   }
 
   private async createAccount(): Promise<ReadonlyArray<PersonaAcccount>> {
     if (!this.persona) throw new Error(NOT_FOUND_ERR);
-
     await this.persona.createAccount(this.db);
 
     return await this.persona.getAccounts();
   }
 
-  public clearPersona(): void {
+  private async getPersonaData(): Promise<GetPersonaResponse> {
     if (!this.persona) {
-      throw new Error('The persona instance is unset. This indicates a bug in the lifecycle.');
+      return null;
     }
+
+    return {
+      mnemonic: this.persona.mnemonic,
+      txs: await this.persona.getTxs(),
+      accounts: await this.persona.getAccounts(),
+    };
+  }
+
+  public clearPersona(): void {
+    if (!this.persona) throw new Error(NOT_FOUND_ERR);
     this.persona.destroy();
     this.persona = undefined;
 
@@ -63,6 +71,7 @@ class Backgroundscript {
     (window as IovWindowExtension).createPersona = this.createPersona;
     (window as IovWindowExtension).loadPersona = this.loadPersona;
     (window as IovWindowExtension).createAccount = this.createAccount;
+    (window as IovWindowExtension).getPersonaData = this.getPersonaData;
   }
 }
 

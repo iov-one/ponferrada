@@ -164,4 +164,25 @@ export class Persona {
       };
     });
   }
+
+  public get mnemonic(): string {
+    const wallets = this.profile.wallets.value;
+    const mnemonics = new Set(wallets.map(info => this.profile.printableSecret(info.id)));
+
+    if (mnemonics.size !== 1) {
+      throw new Error('Found multiple different mnemoics in different wallets. This is not supported.');
+    }
+
+    return mnemonics.values().next().value;
+  }
+
+  public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
+    if (!this.core) {
+      return [];
+    }
+
+    const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
+    const filtered = processed.filter(isNonNull);
+    return filtered;
+  }
 }
