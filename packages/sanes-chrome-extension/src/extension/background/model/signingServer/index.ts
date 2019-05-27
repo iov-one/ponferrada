@@ -116,6 +116,8 @@ export class SigningServer {
   }
 
   public start(core: SigningServerCore): void {
+    this.requestHandler = new RequestHandler();
+    this.senderWhitelist = new SenderWhitelist();
     this.signingServer = new JsonRpcSigningServer(core);
   }
 

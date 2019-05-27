@@ -19,6 +19,7 @@ class Backgroundscript {
       throw new Error('The persona instance is already set. This indicates a bug in the lifecycle.');
     }
     this.persona = await Persona.create(this.db, this.signingServer, password, mnemonic);
+    this.signingServer.start(this.persona.getCore());
   }
 
   private async loadPersona(password: string): Promise<void> {
@@ -26,6 +27,7 @@ class Backgroundscript {
       throw new Error('The persona instance is already set. This indicates a bug in the lifecycle.');
     }
     this.persona = await Persona.load(this.db, this.signingServer, password);
+    this.signingServer.start(this.persona.getCore());
   }
 
   public clearPersona(): void {
