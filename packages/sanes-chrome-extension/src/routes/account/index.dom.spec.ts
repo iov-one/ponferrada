@@ -48,7 +48,6 @@ withChainsDescribe('DOM > Feature > Account Status', () => {
     await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
 
     accountStatusDom = await travelToAccount(store, getPersonaResponse);
-    await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
   });
 
   it('has a hamburger button', () => {
