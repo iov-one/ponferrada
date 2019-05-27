@@ -1,12 +1,7 @@
-import { JsonRpcErrorResponse } from '@iov/jsonrpc';
 import { getSigningServer } from '../actions/createPersona';
 import { RequestMeta } from '../actions/createPersona/requestHandler';
 import { SenderWhitelist } from '../actions/createPersona/requestSenderWhitelist';
 import { generateErrorResponse } from '../errorResponseGenerator';
-
-function resolveToError(responseId: number | null, msg: string): JsonRpcErrorResponse {
-  return generateErrorResponse(responseId, msg);
-}
 
 export function handleExternalMessage(
   request: any, //eslint-disable-line
@@ -15,19 +10,19 @@ export function handleExternalMessage(
 ): boolean {
   const responseId = typeof request.id === 'number' ? request.id : null;
   if (!sender.url) {
-    sendResponse(resolveToError(responseId, 'Got external message without sender URL'));
+    sendResponse(generateErrorResponse(responseId, 'Got external message without sender URL'));
     return false;
   }
 
   const signingServer = getSigningServer();
   if (!signingServer) {
-    sendResponse(resolveToError(responseId, 'Signing server not ready'));
+    sendResponse(generateErrorResponse(responseId, 'Signing server not ready'));
     return false;
   }
 
   const { url: senderUrl } = sender;
   if (SenderWhitelist.isBlocked(senderUrl)) {
-    sendResponse(resolveToError(responseId, 'Sender has been blocked by user'));
+    sendResponse(generateErrorResponse(responseId, 'Sender has been blocked by user'));
     return false;
   }
 
