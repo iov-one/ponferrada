@@ -30,6 +30,17 @@ export interface ProcessedTx {
   readonly error: string | null;
 }
 
+/**
+ * An account
+ *
+ * All fields must be losslessly JSON serializable/deserializable to allow
+ * messaging between background script and UI.
+ */
+export interface PersonaAcccount {
+  /** human readable address or placeholder text */
+  readonly label: string;
+}
+
 export class Persona {
   private readonly password: string;
   private readonly profile: UserProfile;
@@ -136,5 +147,21 @@ export class Persona {
 
   public destroy(): void {
     this.signer.shutdown();
+  }
+
+  public async createAccount(db: StringDb): Promise<void> {
+    await this.accountManager.generateNextAccount();
+    await this.profile.storeIn(db, this.password);
+  }
+
+  public async getAccounts(): Promise<ReadonlyArray<PersonaAcccount>> {
+    const accounts = await this.accountManager.accounts();
+
+    return accounts.map(account => {
+      // TODO here: query network to get human readable address
+      return {
+        label: `Account ${account.index}`,
+      };
+    });
   }
 }
