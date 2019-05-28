@@ -18,6 +18,13 @@ export async function getPersonaData(): Promise<GetPersonaResponse> {
   return response;
 }
 
+export async function createPersona(password: string, mnemonic?: string): Promise<PersonaData> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  const response = await extensionWindow.createPersona(password, mnemonic);
+
+  return response;
+}
+
 export async function loadPersona(password: string): Promise<PersonaData> {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   const response = await extensionWindow.loadPersona(password);
