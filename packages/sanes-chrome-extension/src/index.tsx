@@ -7,9 +7,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersonaProvider } from './context/PersonaProvider';
 import { RequestProvider } from './context/RequestProvider';
-import { Request } from './extension/background/actions/createPersona/requestHandler';
-import { GetPersonaResponse, sendGetPersonaMessage } from './extension/background/messages';
-import { IovWindowExtension } from './extension/backgroundscript';
+import { GetPersonaResponse, IovWindowExtension } from './extension/background/model/backgroundscript';
+import { Request } from './extension/background/model/signingServer/requestQueueManager';
 import Route from './routes';
 import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from './routes/paths';
 import { makeStore } from './store';
@@ -42,8 +41,8 @@ const render = (
   );
 };
 
-sendGetPersonaMessage().then(persona => {
-  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+extensionWindow.getPersonaData().then(persona => {
   const requests = extensionWindow.getQueuedRequests();
   render(Route, persona, requests);
 

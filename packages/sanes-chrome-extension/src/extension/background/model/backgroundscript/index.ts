@@ -1,7 +1,7 @@
 import { JsonRpcResponse } from '@iov/jsonrpc';
 import { Persona, PersonaAcccount, ProcessedTx } from '../persona';
 import { SigningServer } from '../signingServer';
-import { Request } from '../signingServer/requestHandler';
+import { Request } from '../signingServer/requestQueueManager';
 import { createBrowserDb, StringDb } from './db';
 
 export interface IovWindowExtension extends Window {
