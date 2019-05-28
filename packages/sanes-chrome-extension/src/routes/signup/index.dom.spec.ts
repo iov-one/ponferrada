@@ -1,7 +1,8 @@
 import { Store } from 'redux';
-import * as messages from '../../extension/background/messages';
+import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
+import * as chromeInternalMsgs from '../../utils/chrome';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { mayTestChains } from '../../utils/test/testExecutor';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
@@ -13,12 +14,12 @@ describe('DOM > Feature > Signup', (): void => {
   beforeEach(() => {
     store = aNewStore();
 
-    const response: messages.CreatePersonaResponse = {
+    const response: PersonaData = {
       accounts: [],
       mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
       txs: [],
     };
-    jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValueOnce(response);
+    jest.spyOn(chromeInternalMsgs, 'createPersona').mockResolvedValueOnce(response);
   });
 
   mayTestChains(

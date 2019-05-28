@@ -4,7 +4,7 @@ import { Store } from 'redux';
 import { GetPersonaResponse, PersonaData } from '../../extension/background/model/backgroundscript';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
-import * as chromeInternalMsgs from '../../utils/chrome/index';
+import * as chromeInternalMsgs from '../../utils/chrome';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
