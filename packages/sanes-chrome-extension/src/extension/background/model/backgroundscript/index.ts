@@ -80,7 +80,7 @@ class Backgroundscript {
   }
 
   public registerActionsInBackground(): void {
-    (window as IovWindowExtension).getQueuedRequests = this.signingServer.getPendingRequests;
+    (window as IovWindowExtension).getQueuedRequests = () => this.signingServer.getPendingRequests();
     (window as IovWindowExtension).createPersona = this.createPersona;
     (window as IovWindowExtension).loadPersona = this.loadPersona;
     (window as IovWindowExtension).createAccount = this.createAccount;

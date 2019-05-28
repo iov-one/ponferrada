@@ -3,6 +3,7 @@ import { generateErrorResponse } from './background/errorResponseGenerator';
 import Backgroundscript from './background/model/backgroundscript';
 
 const backgroundScript = new Backgroundscript();
+backgroundScript.registerActionsInBackground();
 
 /**
  * Listener for dispatching website requests towards the extension

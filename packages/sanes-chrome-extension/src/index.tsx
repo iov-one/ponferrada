@@ -1,4 +1,3 @@
-/*global chrome*/
 import { ConnectedRouter } from 'connected-react-router';
 import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
