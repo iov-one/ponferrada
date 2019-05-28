@@ -6,13 +6,13 @@ import { createBrowserDb, StringDb } from './db';
 
 export interface IovWindowExtension extends Window {
   getQueuedRequests: () => ReadonlyArray<Request>;
-  createPersona: (password: string, mnemonic: string | undefined) => Promise<void>;
-  loadPersona: (password: string) => Promise<void>;
+  createPersona: (password: string, mnemonic: string | undefined) => Promise<PersonaData>;
+  loadPersona: (password: string) => Promise<PersonaData>;
   createAccount: () => Promise<ReadonlyArray<PersonaAcccount>>;
   getPersonaData: () => Promise<GetPersonaResponse>;
 }
 
-interface PersonaData {
+export interface PersonaData {
   readonly accounts: ReadonlyArray<PersonaAcccount>;
   readonly mnemonic: string;
   readonly txs: ReadonlyArray<ProcessedTx>;
@@ -28,16 +28,28 @@ class Backgroundscript {
   private db: StringDb = createBrowserDb('bs-persona');
   private signingServer = new SigningServer();
 
-  private async createPersona(password: string, mnemonic: string | undefined): Promise<void> {
+  private async createPersona(password: string, mnemonic: string | undefined): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
     this.persona = await Persona.create(this.db, this.signingServer, password, mnemonic);
     this.signingServer.start(this.persona.getCore());
+
+    return {
+      mnemonic: this.persona.mnemonic,
+      txs: await this.persona.getTxs(),
+      accounts: await this.persona.getAccounts(),
+    };
   }
 
-  private async loadPersona(password: string): Promise<void> {
+  private async loadPersona(password: string): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
     this.persona = await Persona.load(this.db, this.signingServer, password);
     this.signingServer.start(this.persona.getCore());
+
+    return {
+      mnemonic: this.persona.mnemonic,
+      txs: await this.persona.getTxs(),
+      accounts: await this.persona.getAccounts(),
+    };
   }
 
   private async createAccount(): Promise<ReadonlyArray<PersonaAcccount>> {
