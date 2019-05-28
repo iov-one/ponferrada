@@ -1,4 +1,3 @@
-/*global chrome*/
 import { ConnectedRouter } from 'connected-react-router';
 import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
@@ -7,14 +6,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersonaProvider } from './context/PersonaProvider';
 import { RequestProvider } from './context/RequestProvider';
-import { Request } from './extension/background/actions/createPersona/requestHandler';
-import { GetPersonaResponse, sendGetPersonaMessage } from './extension/background/messages';
-import { IovWindowExtension } from './extension/backgroundscript';
+import { GetPersonaResponse } from './extension/background/model/backgroundscript';
+import { Request } from './extension/background/model/signingServer/requestQueueManager';
 import Route from './routes';
 import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from './routes/paths';
 import { makeStore } from './store';
 import { history } from './store/reducers';
 import { globalStyles } from './theme/globalStyles';
+import { getPersonaData, getQueuedRequests } from './utils/chrome';
 
 const rootEl = document.getElementById('root');
 const store = makeStore();
@@ -42,9 +41,8 @@ const render = (
   );
 };
 
-sendGetPersonaMessage().then(persona => {
-  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
-  const requests = extensionWindow.getQueuedRequests();
+getPersonaData().then(persona => {
+  const requests = getQueuedRequests();
   render(Route, persona, requests);
 
   const url = persona ? ACCOUNT_STATUS_ROUTE : WELCOME_ROUTE;

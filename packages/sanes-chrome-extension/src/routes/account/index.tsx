@@ -8,8 +8,8 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { useForm } from 'react-final-form-hooks';
 import { PersonaContext } from '../../context/PersonaProvider';
-import { sendCreateAccountMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
+import { createAccount } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import ListTxs from './components/ListTxs';
 
@@ -36,8 +36,8 @@ const AccountView = (): JSX.Element => {
 
   const onChange = async (item: Item): Promise<void> => {
     if (item.name === CREATE_NEW_ONE) {
-      const response = await sendCreateAccountMessage();
-      personaProvider.update({ accounts: response.accounts });
+      const accounts = await createAccount();
+      personaProvider.update({ accounts });
     }
   };
   const accountLoaded = accounts.length > 1;

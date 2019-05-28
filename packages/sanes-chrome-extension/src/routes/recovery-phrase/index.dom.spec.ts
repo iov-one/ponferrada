@@ -1,9 +1,10 @@
 import { DRAWER_HTML_ID } from 'medulas-react-components/lib/components/Drawer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import * as messages from '../../extension/background/messages';
+import { GetPersonaResponse, PersonaData } from '../../extension/background/model/backgroundscript';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
+import * as chromeInternalMsgs from '../../utils/chrome';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
@@ -24,19 +25,19 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
     recoveryPhraseDom = await travelToRecoveryPhrase(store);
     [backButton, exportButton] = TestUtils.scryRenderedDOMComponentsWithTag(recoveryPhraseDom, 'button');
 
-    const createPersonaResponse: messages.CreatePersonaResponse = {
+    const createPersonaResponse: PersonaData = {
       accounts: [],
       mnemonic,
       txs: [],
     };
-    jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValue(createPersonaResponse);
+    jest.spyOn(chromeInternalMsgs, 'createPersona').mockResolvedValue(createPersonaResponse);
 
-    const getPersonaResponse: messages.GetPersonaResponse = {
+    const getPersonaResponse: GetPersonaResponse = {
       accounts: [],
       mnemonic,
       txs: [],
     };
-    jest.spyOn(messages, 'sendGetPersonaMessage').mockResolvedValue(getPersonaResponse);
+    jest.spyOn(chromeInternalMsgs, 'getPersonaData').mockResolvedValue(getPersonaResponse);
   });
 
   it('has a back button that redirects to the previous route when clicked', async (): Promise<void> => {

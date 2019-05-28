@@ -1,10 +1,10 @@
 /*global chrome*/
 import * as React from 'react';
+import { GetPersonaResponse } from '../extension/background/model/backgroundscript';
 import {
-  GetPersonaResponse,
   isMessageToForeground,
   MessageToForegroundAction,
-} from '../extension/background/messages';
+} from '../extension/background/updaters/appUpdater';
 import { PersonaAcccount, ProcessedTx } from '../logic/persona';
 import { extensionContext } from '../utils/chrome';
 
@@ -54,6 +54,8 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
         return;
       }
 
+      // TODO Refactor to do not hard check everything, if the message is not for here
+      // just ignore it. Change the above checks as well.
       switch (msg.action) {
         case MessageToForegroundAction.TransactionsChanged:
           if (!Array.isArray(msg.data)) {

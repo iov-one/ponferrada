@@ -1,8 +1,8 @@
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import * as React from 'react';
 import { PersonaContext } from '../../context/PersonaProvider';
-import { sendCreatePersonaMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
+import { createPersona } from '../../utils/chrome';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import NewAccountForm, { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm';
@@ -37,7 +37,7 @@ const Signup = (): JSX.Element => {
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
-    const response = await sendCreatePersonaMessage(password, undefined);
+    const response = await createPersona(password, undefined);
     personaProvider.update({
       accounts: response.accounts,
       mnemonic: response.mnemonic,

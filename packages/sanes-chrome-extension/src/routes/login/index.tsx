@@ -4,8 +4,8 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
 import { PersonaContext } from '../../context/PersonaProvider';
-import { sendLoadPersonaMessage } from '../../extension/background/messages';
 import { history } from '../../store/reducers';
+import { loadPersona } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
 import { PASSWORD_FIELD } from '../signup/components/NewAccountForm';
 import LoginControls from './components/LoginControls';
@@ -28,7 +28,7 @@ const Login = (): JSX.Element => {
   const onLogin = async (formValues: FormValues): Promise<void> => {
     const password = formValues[PASSWORD_FIELD];
     try {
-      const response = await sendLoadPersonaMessage(password);
+      const response = await loadPersona(password);
       personaProvider.update({
         accounts: response.accounts,
         mnemonic: response.mnemonic,
