@@ -1,7 +1,8 @@
 import { Store } from 'redux';
-import * as messages from '../../extension/background/messages';
+import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
+import * as chromeInternalMsgs from '../../utils/chrome';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { submitRecoveryPhrase } from './test/fillRecoveryPhrase';
 import { travelToRestoreAccount } from './test/travelToRestoreAccount';
@@ -14,12 +15,12 @@ withChainsDescribe(
     beforeEach(() => {
       store = aNewStore();
 
-      const response: messages.CreatePersonaResponse = {
+      const response: PersonaData = {
         accounts: [],
         mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
         txs: [],
       };
-      jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValueOnce(response);
+      jest.spyOn(chromeInternalMsgs, 'createPersona').mockResolvedValueOnce(response);
     });
 
     it(`should restore profile from mnemonic`, async (): Promise<void> => {
