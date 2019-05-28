@@ -1,8 +1,11 @@
 /*global chrome*/
 import * as React from 'react';
-import { Request } from '../extension/background/actions/createPersona/requestHandler';
-import { isMessageToForeground, MessageToForegroundAction } from '../extension/background/messages';
-import { IovWindowExtension } from '../extension/backgroundscript';
+import { IovWindowExtension } from '../extension/background/model/backgroundscript';
+import { Request } from '../extension/background/model/signingServer/requestQueueManager';
+import {
+  isMessageToForeground,
+  MessageToForegroundAction,
+} from '../extension/background/updaters/appUpdater';
 import { extensionContext } from '../utils/chrome';
 
 type Requests = ReadonlyArray<Request>;
