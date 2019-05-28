@@ -15,7 +15,6 @@ import { ReadonlyDate } from 'readonly-date';
 import {
   algorithmForCodec,
   chainConnector,
-  ChainNames,
   codecTypeFromString,
   getConfigurationFile,
   pathBuilderForCodec,
@@ -104,7 +103,7 @@ async function createSignerAndManager(
     });
   }
 
-  const accountManager = new AccountManager(profile, managerChains, config.names);
+  const accountManager = new AccountManager(profile, managerChains);
   return { signer, accountManager };
 }
 
@@ -196,10 +195,6 @@ export class Persona {
         label: `Account ${account.index}`,
       };
     });
-  }
-
-  public getChains(): ChainNames {
-    return this.accountManager.getChainNames();
   }
 
   public getAddressFrom(pubIdentity: PublicIdentity): Address {

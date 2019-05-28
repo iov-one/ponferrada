@@ -1,5 +1,6 @@
 import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
 import { getCreatedPersona } from '.';
+import { getConfigurationFile } from '../../../../logic/config';
 import { requestUpdater } from './requestAppUpdater';
 import { updateExtensionBadge } from './requestExtensionBadge';
 import { GetIdentitiesRequest, RequestHandler, RequestMeta, SignAndPostRequest } from './requestHandler';
@@ -57,7 +58,7 @@ export async function getIdentitiesCallback(
   const { senderUrl } = meta;
 
   const persona = getCreatedPersona();
-  const chainNames = persona.getChains();
+  const chainNames = (await getConfigurationFile()).names;
   const requestedIdentities = matchingIdentities.map(matchedIdentity => {
     const chainName = chainNames[matchedIdentity.chainId];
 
