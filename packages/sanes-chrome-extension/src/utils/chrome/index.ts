@@ -3,6 +3,7 @@ import {
   IovWindowExtension,
   PersonaData,
 } from '../../extension/background/model/backgroundscript';
+import { PersonaAcccount } from '../../extension/background/model/persona';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 
 /*global chrome*/
@@ -20,6 +21,13 @@ export async function getPersonaData(): Promise<GetPersonaResponse> {
 export async function loadPersona(password: string): Promise<PersonaData> {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   const response = await extensionWindow.loadPersona(password);
+
+  return response;
+}
+
+export async function createAccount(): Promise<ReadonlyArray<PersonaAcccount>> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  const response = await extensionWindow.createAccount();
 
   return response;
 }
