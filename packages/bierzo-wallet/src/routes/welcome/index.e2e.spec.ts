@@ -41,7 +41,7 @@ withChainsDescribe(
       backgroundPage = await getBackgroundPage(browser);
       await extensionPage.click('button:nth-of-type(2)');
       await submitExtensionSignupForm(extensionPage, 'username', '12345678');
-      page.bringToFront();
+      await page.bringToFront();
     }, 45000);
 
     afterEach(
@@ -56,6 +56,7 @@ withChainsDescribe(
 
     it('should made three share identity requests', async (): Promise<void> => {
       //Create 3 share idenity requests.
+      await sleep(1500);
       await page.click('button:nth-of-type(2)');
       await page.click('button:nth-of-type(2)');
       await page.click('button:nth-of-type(2)');
