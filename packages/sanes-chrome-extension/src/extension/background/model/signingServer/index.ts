@@ -2,7 +2,7 @@ import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
 import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
 import { JsonRpcResponse } from '@iov/jsonrpc';
 import { generateErrorResponse } from '../../errorResponseGenerator';
-import { ChainNames } from '../persona/config';
+import { getConfigurationFile } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
   GetIdentitiesRequest,
@@ -14,23 +14,12 @@ import {
 } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
 
-function resolveToError(
-  sendResponse: (response?: any) => void, //eslint-disable-line
-  responseId: number | null,
-  msg: string,
-): boolean {
-  const error = generateErrorResponse(responseId, msg);
-  sendResponse(error);
-
-  return false;
-}
-
 export class SigningServer {
   private requestHandler = new RequestQueueManager();
   private senderWhitelist = new SenderWhitelist();
   private signingServer: JsonRpcSigningServer | undefined;
 
-  public getIdentitiesCallback = (chainNames: ChainNames, signer: MultiChainSigner) => async (
+  public getIdentitiesCallback = (signer: MultiChainSigner) => async (
     reason: string,
     matchingIdentities: ReadonlyArray<PublicIdentity>,
     meta: any, // eslint-disable-line
@@ -39,6 +28,7 @@ export class SigningServer {
       throw new Error('Unexpected type of data in meta field');
     }
     const { senderUrl } = meta;
+    const chainNames = (await getConfigurationFile()).names;
 
     const requestedIdentities = matchingIdentities.map(matchedIdentity => {
       const chainName = chainNames[matchedIdentity.chainId];

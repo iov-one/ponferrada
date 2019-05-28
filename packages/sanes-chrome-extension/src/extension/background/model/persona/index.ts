@@ -99,11 +99,10 @@ export class Persona {
     this.signer = signer;
     this.accountManager = accountManager;
 
-    const chainNames = this.accountManager.getChainNames();
     this.core = new SigningServerCore(
       this.profile,
       this.signer,
-      signingServer.getIdentitiesCallback(chainNames, signer),
+      signingServer.getIdentitiesCallback(signer),
       signingServer.signAndPostCallback(),
     );
 

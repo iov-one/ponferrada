@@ -36,7 +36,7 @@ export class PersonaBuilder {
       });
     }
 
-    const accountManager = new AccountManager(profile, managerChains, config.names);
+    const accountManager = new AccountManager(profile, managerChains);
 
     return accountManager;
   }
