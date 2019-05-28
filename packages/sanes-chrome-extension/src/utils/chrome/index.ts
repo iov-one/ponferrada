@@ -1,3 +1,4 @@
+/*global chrome*/
 import {
   GetPersonaResponse,
   IovWindowExtension,
@@ -6,7 +7,6 @@ import {
 import { PersonaAcccount } from '../../extension/background/model/persona';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 
-/*global chrome*/
 export function extensionContext(): boolean {
   return typeof chrome !== 'undefined' && typeof chrome.runtime.onMessage !== 'undefined';
 }

@@ -33,11 +33,13 @@ class Backgroundscript {
     this.persona = await Persona.create(this.db, this.signingServer, password, mnemonic);
     this.signingServer.start(this.persona.getCore());
 
-    return {
+    const response = {
       mnemonic: this.persona.mnemonic,
       txs: await this.persona.getTxs(),
       accounts: await this.persona.getAccounts(),
     };
+
+    return response;
   }
 
   private async loadPersona(password: string): Promise<PersonaData> {
@@ -81,10 +83,10 @@ class Backgroundscript {
 
   public registerActionsInBackground(): void {
     (window as IovWindowExtension).getQueuedRequests = () => this.signingServer.getPendingRequests();
-    (window as IovWindowExtension).createPersona = this.createPersona;
-    (window as IovWindowExtension).loadPersona = this.loadPersona;
-    (window as IovWindowExtension).createAccount = this.createAccount;
-    (window as IovWindowExtension).getPersonaData = this.getPersonaData;
+    (window as IovWindowExtension).createPersona = (pss, mn) => this.createPersona(pss, mn);
+    (window as IovWindowExtension).loadPersona = pss => this.loadPersona(pss);
+    (window as IovWindowExtension).createAccount = () => this.createAccount();
+    (window as IovWindowExtension).getPersonaData = () => this.getPersonaData();
   }
 
   public handleRequestMessage(
