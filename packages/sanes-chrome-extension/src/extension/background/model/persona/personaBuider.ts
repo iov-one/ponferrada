@@ -11,13 +11,6 @@ import {
 } from './config';
 
 export class PersonaBuilder {
-  /**
-   * Creates a new Persona instance.
-   *
-   * This function does everything that cannot be done in a constructor
-   * (because a constructor is synchonous): reading configs, connecting to the network,
-   * creating accounts.
-   */
   public static async createAccountManager(
     profile: UserProfile,
     signer: MultiChainSigner,
