@@ -59,31 +59,35 @@ interface Props {
   readonly variant: ToastVariant;
 }
 
-const ToastContent = ({ className, message, onClose, variant }: Props): JSX.Element => {
-  const Icon = variantIcon[variant];
-  const classes = useStyles();
+const ToastContent = React.forwardRef(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ({ className, message, onClose, variant }: Props, ref?: React.Ref<any>): JSX.Element => {
+    const Icon = variantIcon[variant];
+    const classes = useStyles();
 
-  return (
-    <SnackbarContent
-      className={classNames(classes[variant], className)}
-      message={
-        <Block className={classes.message} flexGrow={1}>
-          <div className={classes.iconBackground}>
-            <Image src={Icon} alt="Toast icon" width={24} height={24} />
-          </div>
+    return (
+      <SnackbarContent
+        innerRef={ref}
+        className={classNames(classes[variant], className)}
+        message={
+          <Block className={classes.message} flexGrow={1}>
+            <div className={classes.iconBackground}>
+              <Image src={Icon} alt="Toast icon" width={24} height={24} />
+            </div>
 
-          <Typography variant="subtitle1" className={classes[variant]}>
-            {message}
-          </Typography>
-        </Block>
-      }
-      action={[
-        <IconButton key="close" aria-label="Close" color="secondary" onClick={onClose}>
-          <Image src={CloseIcon} alt="Close" width={20} height={20} />
-        </IconButton>,
-      ]}
-    />
-  );
-};
+            <Typography variant="subtitle1" className={classes[variant]}>
+              {message}
+            </Typography>
+          </Block>
+        }
+        action={[
+          <IconButton key="close" aria-label="Close" color="secondary" onClick={onClose}>
+            <Image src={CloseIcon} alt="Close" width={20} height={20} />
+          </IconButton>,
+        ]}
+      />
+    );
+  },
+);
 
 export default ToastContent;
