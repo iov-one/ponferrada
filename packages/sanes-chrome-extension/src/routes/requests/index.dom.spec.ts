@@ -2,7 +2,7 @@ import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import { aNewStore } from '../../store';
-import { RootState } from '../../store/reducers';
+import { resetHistory, RootState } from '../../store/reducers';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { SHARE_IDENTITY, TX_REQUEST } from '../paths';
 import { travelToRequests } from './test/travelToRequests';
@@ -30,6 +30,7 @@ describe('DOM > Feature > Requests', () => {
   let requestsDom: React.Component;
 
   beforeEach(() => {
+    resetHistory();
     store = aNewStore();
   });
 
