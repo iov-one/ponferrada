@@ -1,18 +1,13 @@
 import { TokenTicker } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import * as messages from '../../extension/background/messages';
-import { CreatePersonaResponse, GetPersonaResponse } from '../../extension/background/messages';
+import { GetPersonaResponse } from '../../extension/background/messages';
 import { PersonaAcccount, ProcessedTx } from '../../logic/persona';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
-import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import { processSignUp } from '../signup/test/travelToSignup';
 import { travelToAccount } from './test/travelToAccount';
 
-withChainsDescribe('DOM > Feature > Account Status', () => {
+describe('DOM > Feature > Account Status', () => {
   const accountMock: PersonaAcccount = { label: 'Account 0' };
   const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
   const txMock: ProcessedTx = {
@@ -24,13 +19,7 @@ withChainsDescribe('DOM > Feature > Account Status', () => {
     error: null,
   };
 
-  const createPersonaResponse: CreatePersonaResponse = {
-    accounts: [accountMock],
-    mnemonic,
-    txs: [txMock],
-  };
-
-  const getPersonaResponse: GetPersonaResponse = {
+  const personaMock: GetPersonaResponse = {
     accounts: [accountMock],
     mnemonic,
     txs: [txMock],
@@ -41,13 +30,7 @@ withChainsDescribe('DOM > Feature > Account Status', () => {
 
   beforeEach(async () => {
     store = aNewStore();
-
-    jest.spyOn(messages, 'sendCreatePersonaMessage').mockResolvedValue(createPersonaResponse);
-
-    await processSignUp(store);
-    await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
-
-    accountStatusDom = await travelToAccount(store, getPersonaResponse);
+    accountStatusDom = await travelToAccount(store, personaMock);
   });
 
   it('has a hamburger button', () => {
