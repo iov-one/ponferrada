@@ -109,6 +109,7 @@ withChainsDescribe('background script handler for website request', () => {
     const request = buildGetIdentitiesRequest('getIdentities');
     const sender = { url: 'http://finnex.com' };
     signingServer.handleRequestMessage(request, sender);
+    await sleep(10);
 
     expect(signingServer['requestHandler'].requests().length).toBe(1);
     const rejectPermanently = true;
@@ -182,10 +183,12 @@ withChainsDescribe('background script handler for website request', () => {
     const senderOne = { url: 'http://finnex.com' };
     const requestFoo = buildGetIdentitiesRequest('getIdentities', 'Reason foo');
     signingServer.handleRequestMessage(requestFoo, senderOne);
+    await sleep(10);
 
     const senderTwo = { url: 'http://finnextwo.com' };
     const requestBar = buildGetIdentitiesRequest('getIdentities', 'Reason bar');
     signingServer.handleRequestMessage(requestBar, senderTwo);
+    await sleep(10);
 
     signingServer['requestHandler'].next().accept();
     const chromeBarRequest = signingServer['requestHandler'].next();
