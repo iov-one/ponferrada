@@ -42,7 +42,7 @@ describe('DOM > Feature > Requests', () => {
     });
 
     await whenOnNavigatedToRoute(store, SHARE_IDENTITY);
-  });
+  }, 55000);
 
   it('redirects to the TX Request view when a Request of type "signAndPost" is clicked', async () => {
     requestsDom = await travelToRequests(store, [REQUEST_TWO, REQUEST_ONE]);
@@ -53,5 +53,5 @@ describe('DOM > Feature > Requests', () => {
     });
 
     await whenOnNavigatedToRoute(store, TX_REQUEST);
-  });
+  }, 55000);
 });
