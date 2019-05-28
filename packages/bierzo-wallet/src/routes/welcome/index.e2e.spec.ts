@@ -59,7 +59,7 @@ withChainsDescribe(
       await page.click('button:nth-of-type(2)');
       await page.click('button:nth-of-type(2)');
       await page.click('button:nth-of-type(2)');
-      await sleep(500);
+      await sleep(1500);
       const badgeText = await backgroundPage.evaluate(
         (): Promise<string | undefined> => {
           return new Promise(resolve => {
