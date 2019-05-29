@@ -19,6 +19,8 @@ interface Props {
   form: FormApi;
 }
 
+const validator = composeValidators(required, validAddress, notLongerThan(ADDRESS_MAX_LENGTH));
+
 const ReceiverAddress = (props: Props): JSX.Element => {
   return (
     <Paper>
@@ -30,7 +32,7 @@ const ReceiverAddress = (props: Props): JSX.Element => {
           <TextFieldForm
             name={ADDRESS_FIELD}
             form={props.form}
-            validate={composeValidators(required, validAddress, notLongerThan(ADDRESS_MAX_LENGTH))}
+            validate={validator}
             placeholder="IOV or wallet address"
             fullWidth
             margin="none"

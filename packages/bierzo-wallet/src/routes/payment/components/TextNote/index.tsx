@@ -13,6 +13,8 @@ interface Props {
   form: FormApi;
 }
 
+const validator = notLongerThan(150);
+
 const TextNote = (props: Props): JSX.Element => {
   return (
     <Paper>
@@ -25,7 +27,7 @@ const TextNote = (props: Props): JSX.Element => {
             <TextFieldForm
               name={TEXTNOTE_FIELD}
               form={props.form}
-              validate={notLongerThan(150)}
+              validate={validator}
               placeholder="Add a note"
               multiline
               rows="2"
