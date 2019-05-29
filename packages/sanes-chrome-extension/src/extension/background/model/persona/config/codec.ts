@@ -16,7 +16,6 @@ export enum CodecType {
 export function codecTypeFromString(input: CodecString): CodecType {
   switch (input) {
     case 'bns':
-    case 'bov':
       return CodecType.Bns;
     case 'lsk':
       return CodecType.Lisk;
@@ -44,7 +43,7 @@ export function pathBuilderForCodec(
 ): (derivation: number) => ReadonlyArray<Slip10RawIndex> {
   const pathBuilder = (derivation: number): ReadonlyArray<Slip10RawIndex> => {
     switch (codecType) {
-      case CodecType.Bns: // BNS and BOV
+      case CodecType.Bns:
         return HdPaths.iov(derivation);
       case CodecType.Lisk:
         return HdPaths.bip44Like(134, derivation);

@@ -2,7 +2,7 @@ import { singleton } from '../../../../../utils/singleton';
 
 /*global chrome*/
 
-export type CodecString = 'bns' | 'bov' | 'lsk' | 'eth';
+export type CodecString = 'bns' | 'lsk' | 'eth';
 
 export interface ChainSpec {
   readonly codecType: CodecString;

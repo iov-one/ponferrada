@@ -1,7 +1,6 @@
 {
   "names": {
     "bns-local-devnet": "BNS Testnet",
-    "bcp-local-devnet": "BCP Testnet",
     "198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d": "Lisk Testnet",
     "ethereum-eip155-5777": "Ethereum Testnet"
   },
@@ -14,16 +13,6 @@
       "faucetSpec": {
         "uri": "https://bns-faucet.hugnet.iov.one",
         "token": "IOV"
-      }
-    },
-    {
-      "chainSpec": {
-        "codecType": "bov",
-        "bootstrapNodes": ["https://bov.hugnet.iov.one/"]
-      },
-      "faucetSpec": {
-        "uri": "https://bov-faucet.hugnet.iov.one",
-        "token": "ALT"
       }
     },
     {
