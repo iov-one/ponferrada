@@ -49,6 +49,7 @@ const Welcome = (): JSX.Element => {
       toast.show('Request for identities accepted', ToastVariant.SUCCESS);
     } catch (error) {
       toast.show(error, ToastVariant.ERROR);
+      return;
     }
 
     try {
