@@ -6,7 +6,7 @@ import { generateErrorResponse } from '../../errorResponseGenerator';
 import * as txsUpdater from '../../updaters/appUpdater';
 import { Db, StringDb } from '../backgroundscript/db';
 import { Persona } from '../persona';
-import { SigningServer } from './index';
+import SigningServer from './index';
 import { GetIdentitiesRequest } from './requestQueueManager';
 
 const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({

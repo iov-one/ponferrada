@@ -1,7 +1,7 @@
 import { withChainsDescribe } from '../../../../../utils/test/testExecutor';
 import * as txsUpdater from '../../../updaters/appUpdater';
 import { Persona } from '../../persona';
-import { SigningServer } from '../../signingServer';
+import SigningServer from '../../signingServer';
 import { Db } from './index';
 
 withChainsDescribe('backgroundscript db', () => {

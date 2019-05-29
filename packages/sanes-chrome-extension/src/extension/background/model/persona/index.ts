@@ -6,7 +6,7 @@ import { ReadonlyDate } from 'readonly-date';
 import { transactionsUpdater } from '../../updaters/appUpdater';
 import { AccountManager } from '../accountManager';
 import { StringDb } from '../backgroundscript/db';
-import { SigningServer } from '../signingServer';
+import SigningServer from '../signingServer';
 import { PersonaBuilder } from './personaBuider';
 
 function isNonNull<T>(t: T | null): t is T {

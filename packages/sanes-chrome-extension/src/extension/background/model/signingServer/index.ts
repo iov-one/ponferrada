@@ -14,7 +14,7 @@ import {
 } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
 
-export class SigningServer {
+export default class SigningServer {
   private requestHandler = new RequestQueueManager();
   private senderWhitelist = new SenderWhitelist();
   private signingServer: JsonRpcSigningServer | undefined;
