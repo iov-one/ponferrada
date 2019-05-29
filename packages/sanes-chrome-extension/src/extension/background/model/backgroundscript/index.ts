@@ -10,6 +10,7 @@ export interface IovWindowExtension extends Window {
   loadPersona: (password: string) => Promise<PersonaData>;
   createAccount: () => Promise<ReadonlyArray<PersonaAcccount>>;
   getPersonaData: () => Promise<GetPersonaResponse>;
+  hasStoredPersona: () => Promise<boolean>;
 }
 
 export interface PersonaData {
@@ -73,6 +74,18 @@ class Backgroundscript {
     };
   }
 
+  private async hasStoredPersona(): Promise<boolean> {
+    // Constant from IOV-Core source code. Would be good to have a proper API for that
+    const storageKeyFormatVersion = 'format_version';
+
+    try {
+      await this.db.get(storageKeyFormatVersion);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   public clearPersona(): void {
     if (!this.persona) throw new Error(NOT_FOUND_ERR);
     this.persona.destroy();
@@ -87,6 +100,7 @@ class Backgroundscript {
     (window as IovWindowExtension).loadPersona = pss => this.loadPersona(pss);
     (window as IovWindowExtension).createAccount = () => this.createAccount();
     (window as IovWindowExtension).getPersonaData = () => this.getPersonaData();
+    (window as IovWindowExtension).hasStoredPersona = () => this.hasStoredPersona();
   }
 
   public handleRequestMessage(
