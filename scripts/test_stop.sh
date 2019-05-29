@@ -16,12 +16,6 @@ echo
 "${SCRIPT_DIR}"/bnsd/stop.sh || true
 
 echo
-echo ">>> Stopping bcpd (demo) chain and faucet..."
-echo
-"${SCRIPT_DIR}"/faucet/bcpd_stop.sh || true
-"${SCRIPT_DIR}"/bcpd/stop.sh || true
-
-echo
 echo ">>> Stopping lisk chain and faucet..."
 echo
 "${SCRIPT_DIR}"/faucet/lisk_stop.sh || true

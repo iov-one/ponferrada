@@ -18,12 +18,6 @@ echo
 "${SCRIPT_DIR}"/faucet/bnsd_start.sh
 
 echo
-echo ">>> Starting bcpd (demo) chain and faucet..."
-echo
-"${SCRIPT_DIR}"/bcpd/start.sh
-"${SCRIPT_DIR}"/faucet/bcpd_start.sh
-
-echo
 echo ">>> Starting lisk (test) chain and faucet..."
 echo
 "${SCRIPT_DIR}"/lisk/start.sh

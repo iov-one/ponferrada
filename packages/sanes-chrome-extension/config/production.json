@@ -1,7 +1,6 @@
 {
   "names": {
     "bns-hugnet": "BNS Hugnet",
-    "bcp-hugnet": "BCP Hugnet",
     "da3ed6a45429278bac2666961289ca17ad86595d33b31037615d4b8e8f158bba": "Lisk Testnet",
     "ethereum-eip155-4": "Ethereum Testnet ::: Rinkeby"
   },
@@ -14,16 +13,6 @@
       "faucetSpec": {
         "uri": "https://bns-faucet.hugnet.iov.one",
         "token": "IOV"
-      }
-    },
-    {
-      "chainSpec": {
-        "codecType": "bov",
-        "bootstrapNodes": ["https://bov.hugnet.iov.one/"]
-      },
-      "faucetSpec": {
-        "uri": "https://bov-faucet.hugnet.iov.one",
-        "token": "ALT"
       }
     },
     {
