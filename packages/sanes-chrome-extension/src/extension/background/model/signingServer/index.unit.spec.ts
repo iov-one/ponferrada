@@ -4,7 +4,7 @@ import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import { generateErrorResponse } from '../../errorResponseGenerator';
 import * as txsUpdater from '../../updaters/appUpdater';
-import { createMemDb, StringDb } from '../backgroundscript/db';
+import { Db, StringDb } from '../backgroundscript/db';
 import { Persona } from '../persona';
 import { SigningServer } from './index';
 import { GetIdentitiesRequest } from './requestQueueManager';
@@ -32,7 +32,7 @@ withChainsDescribe('background script handler for website request', () => {
   });
   beforeEach(async () => {
     localStorage.clear();
-    db = createMemDb();
+    db = new Db().getDb();
     signingServer = new SigningServer();
     persona = await Persona.create(db, signingServer, 'test-password', undefined);
     signingServer.start(persona.getCore());

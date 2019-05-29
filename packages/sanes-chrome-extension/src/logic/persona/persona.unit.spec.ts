@@ -66,27 +66,6 @@ withChainsDescribe('Persona', () => {
     }, 15000); // Reset to default timeout after https://github.com/iov-one/iov-core/issues/898
   });
 
-  describe('hasStoredPersona', () => {
-    it('returns false for empty database', async () => {
-      const db = createMemDb();
-      const hasPersona = await Persona.hasStoredPersona(db);
-      expect(hasPersona).toEqual(false);
-    });
-
-    it('returns true for database with persona', async () => {
-      const db = createMemDb();
-
-      {
-        const persona = await Persona.create(db, 'passwd');
-        expect(persona).toBeTruthy();
-        persona.destroy();
-      }
-
-      const hasPersona = await Persona.hasStoredPersona(db);
-      expect(hasPersona).toEqual(true);
-    });
-  });
-
   describe('mnemonic', () => {
     it('returns a mnemonic', async () => {
       const persona = await Persona.create(createMemDb(), 'passwd');
