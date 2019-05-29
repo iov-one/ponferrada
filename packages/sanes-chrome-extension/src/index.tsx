@@ -9,11 +9,11 @@ import { RequestProvider } from './context/RequestProvider';
 import { GetPersonaResponse } from './extension/background/model/backgroundscript';
 import { Request } from './extension/background/model/signingServer/requestQueueManager';
 import Route from './routes';
-import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from './routes/paths';
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from './routes/paths';
 import { makeStore } from './store';
 import { history } from './store/reducers';
 import { globalStyles } from './theme/globalStyles';
-import { getPersonaData, getQueuedRequests } from './utils/chrome';
+import { getPersonaData, getQueuedRequests, hasStoredPersona } from './utils/chrome';
 
 const rootEl = document.getElementById('root');
 const store = makeStore();
@@ -45,16 +45,18 @@ getPersonaData().then(persona => {
   const requests = getQueuedRequests();
   render(Route, persona, requests);
 
-  const url = persona ? ACCOUNT_STATUS_ROUTE : WELCOME_ROUTE;
-  history.push(url);
+  hasStoredPersona().then(hasPersona => {
+    const url = persona ? ACCOUNT_STATUS_ROUTE : hasPersona ? LOGIN_ROUTE : WELCOME_ROUTE;
+    history.push(url);
 
-  if (module.hot) {
-    module.hot.accept(
-      './routes',
-      (): void => {
-        const NextApp = require('./routes').default;
-        render(NextApp, persona, requests);
-      },
-    );
-  }
+    if (module.hot) {
+      module.hot.accept(
+        './routes',
+        (): void => {
+          const NextApp = require('./routes').default;
+          render(NextApp, persona, requests);
+        },
+      );
+    }
+  });
 });
