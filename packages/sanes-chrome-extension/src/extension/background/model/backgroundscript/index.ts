@@ -2,7 +2,7 @@ import { JsonRpcResponse } from '@iov/jsonrpc';
 import { Persona, PersonaAcccount, ProcessedTx } from '../persona';
 import { SigningServer } from '../signingServer';
 import { Request } from '../signingServer/requestQueueManager';
-import { createBrowserDb, StringDb } from './db';
+import { Db } from './db';
 
 export interface IovWindowExtension extends Window {
   getQueuedRequests: () => ReadonlyArray<Request>;
@@ -26,12 +26,12 @@ export type GetPersonaResponse = PersonaData | null;
 
 class Backgroundscript {
   private persona: Persona | undefined;
-  private db: StringDb = createBrowserDb('bs-persona');
+  private db: Db = new Db();
   private signingServer = new SigningServer();
 
   private async createPersona(password: string, mnemonic: string | undefined): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
-    this.persona = await Persona.create(this.db, this.signingServer, password, mnemonic);
+    this.persona = await Persona.create(this.db.getDb(), this.signingServer, password, mnemonic);
     this.signingServer.start(this.persona.getCore());
 
     const response = {
@@ -45,7 +45,7 @@ class Backgroundscript {
 
   private async loadPersona(password: string): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
-    this.persona = await Persona.load(this.db, this.signingServer, password);
+    this.persona = await Persona.load(this.db.getDb(), this.signingServer, password);
     this.signingServer.start(this.persona.getCore());
 
     return {
@@ -57,7 +57,7 @@ class Backgroundscript {
 
   private async createAccount(): Promise<ReadonlyArray<PersonaAcccount>> {
     if (!this.persona) throw new Error(NOT_FOUND_ERR);
-    await this.persona.createAccount(this.db);
+    await this.persona.createAccount(this.db.getDb());
 
     return await this.persona.getAccounts();
   }
@@ -75,15 +75,7 @@ class Backgroundscript {
   }
 
   private async hasStoredPersona(): Promise<boolean> {
-    // Constant from IOV-Core source code. Would be good to have a proper API for that
-    const storageKeyFormatVersion = 'format_version';
-
-    try {
-      await this.db.get(storageKeyFormatVersion);
-      return true;
-    } catch (_) {
-      return false;
-    }
+    return this.db.hasPersona();
   }
 
   public clearPersona(): void {
