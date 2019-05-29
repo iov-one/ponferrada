@@ -1,7 +1,7 @@
 import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
-import { createUserProfile } from '../user/profile';
-import { AccountManager, AccountManagerChainConfig } from './accountManager';
+import { PersonaBuilder } from '../persona/personaBuider';
+import { AccountManager, AccountManagerChainConfig } from './index';
 
 describe('AccountManager', () => {
   const defaultMnemonic = 'adapt true travel equip february unhappy junk head warrior recall moral escape';
@@ -19,14 +19,14 @@ describe('AccountManager', () => {
   };
 
   it('can be created', async () => {
-    const userProfile = await createUserProfile(defaultMnemonic);
+    const userProfile = await PersonaBuilder.createUserProfile(defaultMnemonic);
     const manager = new AccountManager(userProfile, []);
     expect(manager).toBeTruthy();
   });
 
   describe('accounts', () => {
     it('returns an empty list of accounts by default', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
+      const userProfile = await PersonaBuilder.createUserProfile(defaultMnemonic);
       const manager = new AccountManager(userProfile, []);
       expect(await manager.accounts()).toEqual([]);
     });
@@ -34,14 +34,14 @@ describe('AccountManager', () => {
 
   describe('generateNextAccount', () => {
     it('does not change accounts for empty chains list', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
+      const userProfile = await PersonaBuilder.createUserProfile(defaultMnemonic);
       const manager = new AccountManager(userProfile, []);
       await manager.generateNextAccount();
       expect(await manager.accounts()).toEqual([]);
     });
 
     it('generates one account with one identity when chains list has one element', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
+      const userProfile = await PersonaBuilder.createUserProfile(defaultMnemonic);
       const manager = new AccountManager(userProfile, [chain1]);
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
@@ -53,7 +53,7 @@ describe('AccountManager', () => {
     });
 
     it('generates one account with two identities when chains list has two elements', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
+      const userProfile = await PersonaBuilder.createUserProfile(defaultMnemonic);
       const manager = new AccountManager(userProfile, [chain1, chain2]);
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
@@ -65,7 +65,7 @@ describe('AccountManager', () => {
     });
 
     it('can be used multiple times', async () => {
-      const userProfile = await createUserProfile(defaultMnemonic);
+      const userProfile = await PersonaBuilder.createUserProfile(defaultMnemonic);
       const manager = new AccountManager(userProfile, [chain1]);
       await manager.generateNextAccount();
       await manager.generateNextAccount();

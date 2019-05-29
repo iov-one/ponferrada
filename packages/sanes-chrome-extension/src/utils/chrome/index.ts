@@ -45,3 +45,10 @@ export function getQueuedRequests(): ReadonlyArray<Request> {
 
   return response;
 }
+
+export async function hasStoredPersona(): Promise<boolean> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  const response = await extensionWindow.hasStoredPersona();
+
+  return response;
+}
