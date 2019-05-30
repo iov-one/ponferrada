@@ -82,7 +82,7 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
     }
     expect(hamburgerElements.length).toBe(2);
     const recoveryPhraseLink = hamburgerElements[0];
-    expect(recoveryPhraseLink.textContent).toBe('Show recovery words');
+    expect(recoveryPhraseLink.textContent).toBe('Recovery words');
 
     TestUtils.act(
       (): void => {

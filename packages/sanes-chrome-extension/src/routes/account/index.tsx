@@ -47,7 +47,7 @@ const AccountView = (): JSX.Element => {
   const items = [
     {
       icon: recoveryPhrase,
-      text: 'Show recovery words',
+      text: 'Recovery words',
       action: () => history.push(RECOVERY_PHRASE_ROUTE),
     },
     {
