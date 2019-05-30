@@ -8,6 +8,7 @@ export interface IovWindowExtension extends Window {
   getQueuedRequests: () => ReadonlyArray<Request>;
   createPersona: (password: string, mnemonic: string | undefined) => Promise<PersonaData>;
   loadPersona: (password: string) => Promise<PersonaData>;
+  clearPersona: () => void;
   createAccount: () => Promise<ReadonlyArray<PersonaAcccount>>;
   getPersonaData: () => Promise<GetPersonaResponse>;
   hasStoredPersona: () => Promise<boolean>;
@@ -86,13 +87,14 @@ class Backgroundscript {
     this.signingServer.shutdown();
   }
 
-  public registerActionsInBackground(): void {
-    (window as IovWindowExtension).getQueuedRequests = () => this.signingServer.getPendingRequests();
-    (window as IovWindowExtension).createPersona = (pss, mn) => this.createPersona(pss, mn);
-    (window as IovWindowExtension).loadPersona = pss => this.loadPersona(pss);
-    (window as IovWindowExtension).createAccount = () => this.createAccount();
-    (window as IovWindowExtension).getPersonaData = () => this.getPersonaData();
-    (window as IovWindowExtension).hasStoredPersona = () => this.hasStoredPersona();
+  public registerActionsInBackground(windowExtension: IovWindowExtension): void {
+    windowExtension.getQueuedRequests = () => this.signingServer.getPendingRequests();
+    windowExtension.createPersona = (pss, mn) => this.createPersona(pss, mn);
+    windowExtension.loadPersona = pss => this.loadPersona(pss);
+    windowExtension.createAccount = () => this.createAccount();
+    windowExtension.getPersonaData = () => this.getPersonaData();
+    windowExtension.hasStoredPersona = () => this.hasStoredPersona();
+    windowExtension.clearPersona = () => this.clearPersona();
   }
 
   public handleRequestMessage(
