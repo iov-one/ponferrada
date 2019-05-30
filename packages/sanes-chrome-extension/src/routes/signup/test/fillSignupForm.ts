@@ -10,6 +10,7 @@ import { sleep } from '../../../utils/timer';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
 import { Page } from 'puppeteer';
 import { ACCOUNT_NAME_FIELD, PASSWORD_FIELD, PASSWORD_CONFIRM_FIELD } from '../components/NewAccountForm';
+import { ACCOUNT_STATUS_ROUTE } from '../../paths';
 
 export const submitAccountFormE2E = async (
   page: Page,
@@ -136,8 +137,7 @@ export const handleSecurityHintE2E = async (page: Page, securityHint: string): P
 
   await page.click('button[type="submit"]');
 
-  //TODO: check for proper redirect here after logic will be implmeneted
-  //await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
+  await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
 };
 
 export const handleSecurityHint = async (
