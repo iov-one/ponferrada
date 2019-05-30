@@ -4,6 +4,7 @@ import React from 'react';
 import { Storybook } from '../../utils/storybook';
 import Typography from '../Typography';
 import PageLayout from '../PageLayout';
+import secCenter from './assets/secCenter.svg';
 import Drawer from './index';
 
 storiesOf('Components', module).add(
@@ -11,6 +12,7 @@ storiesOf('Components', module).add(
   (): JSX.Element => {
     const items = [
       {
+        icon: secCenter,
         text: 'Security Center',
         action: action('travelled to Security center'),
       },

@@ -148,6 +148,11 @@ const themeObject: ThemeOptions = {
         paddingBottom: `${theme.spacing(2)}px`, // TOFIX: https://github.com/mui-org/material-ui/issues/13672#issuecomment-441105931
       },
     },
+    MuiListItemIcon: {
+      root: {
+        marginRight: 0,
+      },
+    },
     MuiOutlinedInput: {
       root: {
         // Do not change border color in hover effect
