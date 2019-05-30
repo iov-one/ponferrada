@@ -39,7 +39,7 @@ export interface SignAndPostRequest extends RequestMeta {
   readonly tx: SendTransaction;
 }
 
-export function isSingAndPostRequestData(data: unknown): data is SignAndPostRequest {
+export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequest {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
