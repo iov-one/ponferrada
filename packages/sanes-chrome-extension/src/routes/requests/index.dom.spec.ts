@@ -5,6 +5,7 @@ import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { SHARE_IDENTITY, TX_REQUEST } from '../paths';
+import { getTransaction } from '../tx-request/test';
 import { travelToRequests } from './test/travelToRequests';
 
 describe('DOM > Feature > Requests', () => {
@@ -21,7 +22,7 @@ describe('DOM > Feature > Requests', () => {
     id: 2,
     type: 'signAndPost',
     reason: 'Reason 2',
-    data: { senderUrl: 'www.sender2.com', tx: '' },
+    data: { senderUrl: 'www.sender2.com', tx: getTransaction() },
     accept: jest.fn(),
     reject: jest.fn(),
   };
