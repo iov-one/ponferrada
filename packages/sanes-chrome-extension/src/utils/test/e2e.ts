@@ -38,6 +38,7 @@ export async function getBackgroundPage(browser: Browser): Promise<Page> {
     throw new Error('Unable to find extension background page');
   }
   const page = await backgroundPageTarget.page();
+  // eslint-disable-next-line no-console
   page.on('console', msg => console.log('BACKGROUND PAGE LOG:', msg.text()));
   return page;
 }
