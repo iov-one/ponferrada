@@ -76,13 +76,13 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
 
     //then click on show recovery phrase
     const hamburgerList = await findRenderedDOMComponentWithId(accountDom, DRAWER_HTML_ID);
-    const hamburgerElements = (hamburgerList as Element).querySelectorAll('div > div');
+    const hamburgerElements = (hamburgerList as Element).querySelectorAll('div > div:nth-of-type(2)');
     if (!hamburgerElements) {
       throw new Error();
     }
     expect(hamburgerElements.length).toBe(2);
     const recoveryPhraseLink = hamburgerElements[0];
-    expect(recoveryPhraseLink.textContent).toBe('Show recovery words');
+    expect(recoveryPhraseLink.textContent).toBe('Recovery words');
 
     TestUtils.act(
       (): void => {

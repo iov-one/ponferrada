@@ -1,9 +1,9 @@
 import AppBar from '@material-ui/core/AppBar';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 import React from 'react';
 import Block from '../Block';
+import Image from '../Image';
 
 const drawerWidth = 240;
 
@@ -72,6 +73,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface DrawerItems {
+  readonly icon?: string;
   readonly text: string;
   readonly action: () => void;
 }
@@ -137,10 +139,14 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
             <ChevronRightIcon />
           </IconButton>
         </div>
-        <Divider />
         <List component="nav" id={DRAWER_HTML_ID}>
           {items.map(item => (
             <ListItem button key={item.text}>
+              {item.icon && (
+                <ListItemIcon>
+                  <Image src={item.icon} alt="Menu icon" />
+                </ListItemIcon>
+              )}
               <ListItemText primary={item.text} onClick={item.action} />
             </ListItem>
           ))}

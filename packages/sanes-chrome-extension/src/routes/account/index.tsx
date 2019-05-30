@@ -12,6 +12,8 @@ import { history } from '../../store/reducers';
 import { createAccount } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import ListTxs from './components/ListTxs';
+import recoveryPhrase from './assets/recoveryPhrase.svg';
+import requests from './assets/requests.svg';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
@@ -44,10 +46,12 @@ const AccountView = (): JSX.Element => {
 
   const items = [
     {
-      text: 'Show recovery words',
+      icon: recoveryPhrase,
+      text: 'Recovery words',
       action: () => history.push(RECOVERY_PHRASE_ROUTE),
     },
     {
+      icon: requests,
       text: 'Requests',
       action: () => history.push(REQUEST_ROUTE),
     },
