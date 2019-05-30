@@ -1,3 +1,4 @@
+import { PublicIdentity } from '@iov/bcp';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -5,13 +6,13 @@ import Button from 'medulas-react-components/lib/components/Button';
 import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import React from 'react';
 import icon from '../../assets/iov-logo.svg';
-import { history } from '../../store/reducers';
-import { PAYMENT_ROUTE } from '../paths';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
+import { history } from '../../store/reducers';
+import { PAYMENT_ROUTE } from '../paths';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -36,13 +37,26 @@ const Welcome = (): JSX.Element => {
 
   const onSendRequestToBeSigned = async (): Promise<void> => {
     toast.show('Interaction with extension, fetching identities. Check the icon, please', ToastVariant.INFO);
+
+    let identities: readonly PublicIdentity[] = [];
+
     try {
-      const identities = await sendGetIdentitiesRequest();
-      const transactionId = await sendSignAndPostRequest(identities[0]);
-      console.log('Transaction ID:', transactionId);
+      identities = await sendGetIdentitiesRequest();
+      if (identities.length === 0) {
+        toast.show('Request for identities rejected', ToastVariant.WARNING);
+        return;
+      }
+      toast.show('Request for identities accepted', ToastVariant.SUCCESS);
     } catch (error) {
-      console.error(error);
-      toast.show('Error processing the request. Have you created your account?', ToastVariant.WARNING);
+      toast.show(error, ToastVariant.ERROR);
+      return;
+    }
+
+    try {
+      const transactionId = await sendSignAndPostRequest(identities[0]);
+      toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+    } catch (error) {
+      toast.show('Request rejected', ToastVariant.ERROR);
     }
   };
 
