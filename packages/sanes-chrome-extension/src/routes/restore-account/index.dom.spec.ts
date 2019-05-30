@@ -3,31 +3,35 @@ import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import * as chromeInternalMsgs from '../../utils/chrome';
+import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import { submitRecoveryPhrase } from './test/fillRecoveryPhrase';
 import { travelToRestoreAccount } from './test/travelToRestoreAccount';
 
-withChainsDescribe(
-  'DOM > Feature > Restore Account',
-  (): void => {
-    let store: Store<RootState>;
+withChainsDescribe('DOM > Feature > Restore Account', () => {
+  const password = randomString(10);
+  const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
 
-    beforeEach(() => {
-      store = aNewStore();
+  const response: PersonaData = {
+    accounts: [],
+    mnemonic,
+    txs: [],
+  };
 
-      const response: PersonaData = {
-        accounts: [],
-        mnemonic: 'badge cattle stool execute involve main mirror envelope brave scrap involve simple',
-        txs: [],
-      };
-      jest.spyOn(chromeInternalMsgs, 'createPersona').mockResolvedValueOnce(response);
-    });
+  let store: Store<RootState>;
+  let restoreAccountDom: React.Component;
 
-    it(`should restore profile from mnemonic`, async (): Promise<void> => {
-      const RestoreDOM = await travelToRestoreAccount(store);
+  beforeEach(async () => {
+    jest.spyOn(chromeInternalMsgs, 'createPersona').mockResolvedValueOnce(response);
 
-      const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
-      await submitRecoveryPhrase(RestoreDOM, mnemonic);
-    }, 55000);
-  },
-);
+    store = aNewStore();
+    restoreAccountDom = await travelToRestoreAccount(store);
+  });
+
+  it('should restore profile from mnemonic', async () => {
+    await submitRecoveryPhrase(restoreAccountDom, mnemonic, password);
+    await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+  }, 55000);
+});
