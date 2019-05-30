@@ -30,7 +30,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={TX_REQUEST_REJECT} primaryTitle="Tx" title="Request">
+    <PageLayout id={TX_REQUEST_REJECT} color="white" primaryTitle="Tx" title="Request">
       <Hairline />
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center" marginTop={2}>
