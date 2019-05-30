@@ -65,7 +65,7 @@ export default class SigningServer {
     }
 
     if (!isSendTransaction(transaction)) {
-      throw new Error('Unexted unsigned transaction');
+      throw new Error('Unexpected unsigned transaction');
     }
 
     const { senderUrl } = meta;
