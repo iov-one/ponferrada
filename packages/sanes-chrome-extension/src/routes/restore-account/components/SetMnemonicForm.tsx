@@ -1,45 +1,35 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
 import Block from 'medulas-react-components/lib/components/Block';
+import Button from 'medulas-react-components/lib/components/Button';
 import Back from 'medulas-react-components/lib/components/Button/Back';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import Form, {
-  useForm,
-  FormValues,
-  ValidationError,
-} from 'medulas-react-components/lib/components/forms/Form';
+import Form, { FormValues, useForm } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import { numberOfWords } from 'medulas-react-components/lib/utils/forms/validators';
+import * as React from 'react';
+import { useMemo } from 'react';
 import { RESTORE_ACCOUNT } from '../../paths';
 
-export const RECOVERY_PHRASE = 'recoveryPhraseField';
-
-const validate = (values: object): object => {
-  const formValues = values as FormValues;
-  let errors: ValidationError = {};
-
-  if (formValues[RECOVERY_PHRASE] && formValues[RECOVERY_PHRASE].split(' ').length !== 12) {
-    errors[RECOVERY_PHRASE] = 'Recovery phrase should contain 12 words only.';
-  }
-
-  return errors;
-};
+export const MNEMONIC_FIELD = 'mnemonicField';
+export const MNEMONIC_NUM_WORDS = 12;
 
 interface Props {
-  readonly onRestoreAccount: (values: FormValues) => void;
+  readonly onSetMnemonic: (values: FormValues) => void;
   readonly onBack: () => void;
 }
 
-const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element => {
+const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
-    onRestoreAccount(formValues);
+    onSetMnemonic(formValues);
   };
 
-  const { form, handleSubmit, submitting, invalid } = useForm({
-    onSubmit,
-    validate,
-  });
+  const { form, handleSubmit, submitting, invalid } = useForm({ onSubmit });
+
+  //TODO optimize update of validators with array of dependencies
+  const validator = useMemo(() => {
+    return numberOfWords(MNEMONIC_NUM_WORDS);
+  }, []);
 
   return (
     <PageLayout id={RESTORE_ACCOUNT} primaryTitle="Restore" title="Account">
@@ -54,7 +44,8 @@ const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element =>
             placeholder="Recovery phrase"
             form={form}
             fullWidth
-            name={RECOVERY_PHRASE}
+            name={MNEMONIC_FIELD}
+            validate={validator}
           />
         </Block>
         <Block display="flex" justifyContent="space-between">
@@ -65,7 +56,7 @@ const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element =>
           </Block>
           <Block width={120}>
             <Button fullWidth type="submit" disabled={invalid || submitting}>
-              Restore
+              Continue
             </Button>
           </Block>
         </Block>
@@ -74,4 +65,4 @@ const RestoreAccountForm = ({ onRestoreAccount, onBack }: Props): JSX.Element =>
   );
 };
 
-export default RestoreAccountForm;
+export default SetMnemonicForm;
