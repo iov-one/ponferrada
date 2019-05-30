@@ -2,6 +2,7 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { RequestContext } from '../../context/RequestProvider';
+import { isSignAndPostRequestData } from '../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../store/reducers';
 import { REQUEST_ROUTE } from '../paths';
 import { checkRequest } from '../requests';
@@ -16,6 +17,10 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
   const req = requestContext.firstRequest;
   checkRequest(req, location, toast);
   const { data, accept, reject } = req!; // eslint-disable-line
+
+  if (!isSignAndPostRequestData(data)) {
+    throw new Error('Received request with a wrong sign and post request data');
+  }
 
   const showRequestView = (): void => setAction('show');
   const showRejectView = (): void => setAction('reject');
@@ -34,6 +39,7 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
     <React.Fragment>
       {action === 'show' && (
         <ShowRequest
+          tx={data.tx}
           sender={data.senderUrl}
           onAcceptRequest={onAcceptRequest}
           showRejectView={showRejectView}
