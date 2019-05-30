@@ -17,6 +17,7 @@ import { randomString } from '../../utils/test/random';
 import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { submitLoginForm } from './test/submitLoginForm';
 
 withChainsDescribe(
   'DOM > Login route',
@@ -39,7 +40,8 @@ withChainsDescribe(
 
     it('should redirect to login route after browser restart', async (): Promise<void> => {
       await travelToSignupNewAccountStep(page);
-      await submitAccountFormE2E(page, randomString(10), randomString(10));
+      const password = randomString(10);
+      await submitAccountFormE2E(page, randomString(10), password);
       await handlePassPhrase2E(page);
       await handleSecurityHintE2E(page, randomString(10));
       //Simulating reload
@@ -59,8 +61,8 @@ withChainsDescribe(
         waitUntil: 'networkidle2',
       });
       await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
-
-      expect(true).toBe(true);
+      await submitLoginForm(page, password);
+      await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
     }, 45000);
   },
 );
