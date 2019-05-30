@@ -151,6 +151,7 @@ const themeObject: ThemeOptions = {
     MuiListItemIcon: {
       root: {
         marginRight: 0,
+        marginTop: '4px',
       },
     },
     MuiOutlinedInput: {
