@@ -1,7 +1,7 @@
 import TestUtils from 'react-dom/test-utils';
 import { Page } from 'puppeteer';
 
-const MAX_TIMES_EXECUTED = 35;
+const TIMEOUT = 20000; //msec
 const INTERVAL = 500;
 
 export const findRenderedDOMComponentWithId = (
@@ -12,7 +12,7 @@ export const findRenderedDOMComponentWithId = (
     (resolve, reject): void => {
       let times = 0;
       const interval = setInterval((): void => {
-        if (times >= MAX_TIMES_EXECUTED) {
+        if (times >= TIMEOUT / INTERVAL) {
           clearInterval(interval);
           reject(`Unable to find element with id: ${id}.`);
         }
@@ -36,7 +36,7 @@ export const findRenderedDOMComponentWithId = (
 
 export const findRenderedE2EComponentWithId = async (page: Page, elementId: string): Promise<void> => {
   const selector = `#${elementId}`;
-  const elem = await page.waitForSelector(selector.replace('/', '\\/'));
+  const elem = await page.waitForSelector(selector.replace('/', '\\/'), { timeout: TIMEOUT });
   if (!elem) {
     throw new Error(`Unable to find element with id: ${elementId}.`);
   }

@@ -1,10 +1,10 @@
 /*global chrome*/
 import { generateErrorResponse } from './background/errorResponseGenerator';
-import Backgroundscript from './background/model/backgroundscript';
+import Backgroundscript, { IovWindowExtension } from './background/model/backgroundscript';
 import { updateExtensionBadge } from './background/updaters/extensionBadgeUpdater';
 
 const backgroundScript = new Backgroundscript();
-backgroundScript.registerActionsInBackground();
+backgroundScript.registerActionsInBackground(window as IovWindowExtension);
 
 //Reset extension badge to clear one after browser start because of queue reset
 updateExtensionBadge(0);
