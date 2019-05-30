@@ -140,13 +140,12 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
             <ChevronRightIcon />
           </IconButton>
         </div>
-        <Divider />
         <List component="nav" id={DRAWER_HTML_ID}>
           {items.map(item => (
             <ListItem button key={item.text}>
               {item.icon && (
                 <ListItemIcon>
-                  <Image src={item.icon} alt="" />
+                  <Image src={item.icon} alt="Menu icon" />
                 </ListItemIcon>
               )}
               <ListItemText primary={item.text} onClick={item.action} />
