@@ -76,7 +76,7 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
 
     //then click on show recovery phrase
     const hamburgerList = await findRenderedDOMComponentWithId(accountDom, DRAWER_HTML_ID);
-    const hamburgerElements = (hamburgerList as Element).querySelectorAll('div > div');
+    const hamburgerElements = (hamburgerList as Element).querySelectorAll('div > div:nth-of-type(2)');
     if (!hamburgerElements) {
       throw new Error();
     }
