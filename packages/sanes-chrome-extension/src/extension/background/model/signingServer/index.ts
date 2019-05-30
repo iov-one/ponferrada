@@ -1,4 +1,4 @@
-import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+import { isSendTransaction, PublicIdentity, UnsignedTransaction } from '@iov/bcp';
 import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
 import { JsonRpcResponse } from '@iov/jsonrpc';
 import { generateErrorResponse } from '../../errorResponseGenerator';
@@ -63,6 +63,11 @@ export default class SigningServer {
     if (!isRequestMeta(meta)) {
       throw new Error('Unexpected type of data in meta field');
     }
+
+    if (!isSendTransaction(transaction)) {
+      throw new Error('Unexpected unsigned transaction');
+    }
+
     const { senderUrl } = meta;
 
     const data: SignAndPostRequest = {

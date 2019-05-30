@@ -1,4 +1,4 @@
-import { Address } from '@iov/bcp';
+import { Address, isSendTransaction, SendTransaction } from '@iov/bcp';
 import { Omit } from '@material-ui/core';
 
 export interface RequestMeta {
@@ -36,7 +36,18 @@ export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
 }
 
 export interface SignAndPostRequest extends RequestMeta {
-  readonly tx: any; // eslint-disable-line
+  readonly tx: SendTransaction;
+}
+
+export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequest {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+
+  const hasSender = typeof (data as SignAndPostRequest).senderUrl === 'string';
+  const tx = (data as SignAndPostRequest).tx;
+
+  return hasSender && isSendTransaction(tx);
 }
 
 export interface Request {

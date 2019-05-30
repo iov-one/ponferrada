@@ -1,9 +1,10 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { Request } from '../../extension/background/actions/createPersona/requestHandler';
+import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { sleep } from '../../utils/timer';
+import { getTransaction } from './test';
 import {
   checkPermanentRejection,
   clickOnBackButton,
@@ -25,7 +26,7 @@ describe('DOM > Feature > Transaction Request', (): void => {
         reason: 'Test get Identities',
         data: {
           senderUrl: 'http://finnex.com',
-          tx: {},
+          tx: getTransaction(),
         },
         accept: jest.fn(),
         reject: jest.fn(),

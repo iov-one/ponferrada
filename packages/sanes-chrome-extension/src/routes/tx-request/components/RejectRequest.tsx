@@ -30,24 +30,23 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={TX_REQUEST_REJECT} primaryTitle="Transaction" title="Request">
+    <PageLayout id={TX_REQUEST_REJECT} color="white" primaryTitle="Tx" title="Request">
       <Hairline />
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center" marginTop={2}>
-          <Typography variant="body1">You are not allowing</Typography>
-          <Typography variant="body1" color="primary">
+          <Typography variant="body1" inline>
+            {'You are rejecting the tx sent from '}
+          </Typography>
+          <Typography variant="body1" color="primary" inline>
             {sender}
           </Typography>
-          <Typography variant="body1" inline>
-            to perform the following transaction to be made.
-          </Typography>
-
-          <Block marginTop={1} />
+          <Typography variant="body1">{' from being signed and posted.'}</Typography>
+          <Block marginTop={4} />
           <CheckboxField
             initial={false}
             form={form}
             fieldName={PERMANENT_REJECT}
-            label="Don't ask me again"
+            label="Also block future requests"
           />
         </Block>
         <Block marginTop={6} />
