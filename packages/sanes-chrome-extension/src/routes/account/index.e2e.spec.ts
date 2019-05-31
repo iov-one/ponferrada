@@ -1,9 +1,10 @@
 import { Browser, Page } from 'puppeteer';
 import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
+import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { sleep } from '../../utils/timer';
 import { submitRecoveryPhraseE2E } from '../restore-account/test/fillRecoveryPhrase';
 import { travelToRestoreAccountStep } from '../restore-account/test/travelToRestoreAccount';
-import { sleep } from '../../utils/timer';
 
 withChainsDescribe('E2E > Account route', () => {
   let browser: Browser;
@@ -14,8 +15,9 @@ withChainsDescribe('E2E > Account route', () => {
     page = await createPage(browser);
 
     await travelToRestoreAccountStep(page);
+    const password = randomString(10);
     const mnemonic = 'degree tackle suggest window test behind mesh extra cover prepare oak script';
-    await submitRecoveryPhraseE2E(page, mnemonic);
+    await submitRecoveryPhraseE2E(page, mnemonic, password);
   }, 10000);
 
   afterEach(async () => {
