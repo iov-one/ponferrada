@@ -17,24 +17,27 @@ interface Props extends StyleProps {
 
 interface StyleProps {
   readonly color?: 'white' | 'transparent';
+  readonly minHeight?: string;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>({
   root: props => ({
     backgroundColor: props.color,
+    minHeight: props.minHeight,
   }),
 });
 
 const PageLayout = ({
   id,
   children,
-  color = 'transparent',
   title,
   primaryTitle,
   onBack,
+  color = 'transparent',
+  minHeight = '500px',
 }: Props): JSX.Element => {
   const showBackArrow = !!onBack;
-  const classes = useStyles({ color });
+  const classes = useStyles({ color, minHeight });
 
   return (
     <Block
@@ -44,7 +47,7 @@ const PageLayout = ({
       paddingRight={4}
       paddingLeft={4}
       paddingTop={2}
-      height="100%"
+      height="auto"
       className={classes.root}
     >
       {showBackArrow && (
