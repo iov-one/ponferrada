@@ -59,7 +59,7 @@ const AccountView = (): JSX.Element => {
 
   return (
     <Drawer items={items}>
-      <PageLayout id={ACCOUNT_STATUS_ROUTE} primaryTitle="Account" title="Status">
+      <PageLayout id={ACCOUNT_STATUS_ROUTE} primaryTitle="Account" title="Status" minHeight="444px">
         {accountLoaded && (
           <Form onSubmit={handleSubmit}>
             <Block marginBottom={1}>
@@ -75,7 +75,7 @@ const AccountView = (): JSX.Element => {
           </Form>
         )}
         <Hairline space={2} />
-        <Block marginBottom={4}>
+        <Block>
           <ListTxs title="Transactions" txs={personaProvider.txs} />
         </Block>
       </PageLayout>
