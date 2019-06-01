@@ -49,3 +49,7 @@ export async function getBackgroundPage(browser: Browser): Promise<Page> {
 export function closeBrowser(browser: Browser): Promise<void> {
   return browser.close();
 }
+
+export async function closeToast(page: Page): Promise<void> {
+  return page.click('[aria-label="Close"]');
+}

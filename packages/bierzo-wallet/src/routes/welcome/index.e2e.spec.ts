@@ -4,6 +4,7 @@ import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
 import {
   closeBrowser,
+  closeToast,
   createExtensionPage,
   createPage,
   getBackgroundPage,
@@ -59,8 +60,11 @@ withChainsDescribe(
     it('should made three share identity requests', async (): Promise<void> => {
       //Create 3 share idenity requests.
       await page.click('button:nth-of-type(2)');
+      await closeToast(page);
       await page.click('button:nth-of-type(2)');
+      await closeToast(page);
       await page.click('button:nth-of-type(2)');
+      await closeToast(page);
       await sleep(1500);
       const badgeText = await backgroundPage.evaluate(
         (): Promise<string | undefined> => {
