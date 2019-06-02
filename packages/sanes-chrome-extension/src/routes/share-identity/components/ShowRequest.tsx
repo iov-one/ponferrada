@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.Element => (
-  <PageLayout id={SHARE_IDENTITY_SHOW} primaryTitle="Share" title="Identity">
+  <PageLayout id={SHARE_IDENTITY_SHOW} color="white" primaryTitle="Share" title="Identity">
     <Block textAlign="center" marginBottom={2}>
       <Typography variant="body1">The following site:</Typography>
       <Typography variant="body1" color="primary">
