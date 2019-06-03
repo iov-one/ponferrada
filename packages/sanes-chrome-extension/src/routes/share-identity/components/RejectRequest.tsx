@@ -30,7 +30,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={SHARE_IDENTITY_REJECT} primaryTitle="Share" title="Identity">
+    <PageLayout id={SHARE_IDENTITY_REJECT} color="white" primaryTitle="Share" title="Identity">
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center">
           <Typography variant="body1">The following site:</Typography>

@@ -7,6 +7,8 @@ import Block from '../Block';
 import Image from '../Image';
 import Typography from '../Typography';
 
+const PAGE_HEIGHT = 500;
+
 interface Props extends StyleProps {
   readonly id?: string;
   readonly children: React.ReactNode;
@@ -17,24 +19,27 @@ interface Props extends StyleProps {
 
 interface StyleProps {
   readonly color?: 'white' | 'transparent';
+  readonly minHeight?: string | number;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>({
   root: props => ({
     backgroundColor: props.color,
+    minHeight: props.minHeight,
   }),
 });
 
 const PageLayout = ({
   id,
   children,
-  color = 'transparent',
   title,
   primaryTitle,
   onBack,
+  color = 'transparent',
+  minHeight = PAGE_HEIGHT,
 }: Props): JSX.Element => {
   const showBackArrow = !!onBack;
-  const classes = useStyles({ color });
+  const classes = useStyles({ color, minHeight });
 
   return (
     <Block
@@ -44,7 +49,7 @@ const PageLayout = ({
       paddingRight={4}
       paddingLeft={4}
       paddingTop={2}
-      height="100%"
+      height="auto"
       className={classes.root}
     >
       {showBackArrow && (
