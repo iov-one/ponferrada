@@ -6,7 +6,7 @@ import * as React from 'react';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { history } from '../../store/reducers';
 import { loadPersona } from '../../utils/chrome';
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from '../paths';
 import { PASSWORD_FIELD } from '../signup/components/NewAccountForm';
 import LoginControls from './components/LoginControls';
 import LoginForm from './components/LoginForm';
@@ -19,6 +19,10 @@ const validate = (values: object): object => {
   }
 
   return errors;
+};
+
+const onBack = (): void => {
+  history.push(WELCOME_ROUTE);
 };
 
 const Login = (): JSX.Element => {
@@ -38,10 +42,6 @@ const Login = (): JSX.Element => {
     } catch (_) {
       toast.show('Error during login', ToastVariant.ERROR);
     }
-  };
-
-  const onBack = (): void => {
-    history.goBack();
   };
 
   return (
