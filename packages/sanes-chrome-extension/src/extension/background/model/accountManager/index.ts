@@ -57,7 +57,7 @@ export class AccountManager {
     });
   }
 
-  /** This must be called with the next unused derication index. Gaps are not supported. */
+  /** This must be called with the next unused derivation index. Gaps are not supported. */
   private async generateAccount(derivation: number): Promise<void> {
     for (const chain of this.chains) {
       const { chainId, algorithm, derivePath } = chain;

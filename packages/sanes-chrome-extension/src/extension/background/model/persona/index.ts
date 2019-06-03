@@ -26,7 +26,7 @@ export interface ProcessedTx {
   readonly amount: Amount;
   readonly memo?: string;
   readonly time: string;
-  /** If error is null, the transactin succeeded  */
+  /** If error is null, the transaction succeeded */
   readonly error: string | null;
 }
 
