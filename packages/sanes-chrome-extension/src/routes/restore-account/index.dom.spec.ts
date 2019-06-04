@@ -1,3 +1,4 @@
+import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { aNewStore } from '../../store';
@@ -33,5 +34,16 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
   it('should restore profile from mnemonic', async () => {
     await submitRecoveryPhrase(restoreAccountDom, mnemonic, password);
     await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+  }, 55000);
+
+  it('should warn required mnemonic if empty', async () => {
+    const mnemonicForm = TestUtils.findRenderedDOMComponentWithTag(restoreAccountDom, 'form');
+
+    TestUtils.act(() => {
+      TestUtils.Simulate.submit(mnemonicForm);
+    });
+
+    const validityLabel = TestUtils.findRenderedDOMComponentWithTag(restoreAccountDom, 'p');
+    expect(validityLabel.textContent).toBe('Required');
   }, 55000);
 });
