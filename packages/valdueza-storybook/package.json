@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "chrome-extension-react-scripts": "^0.2.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "require-context.macro": "^1.0.4"
   }
 }

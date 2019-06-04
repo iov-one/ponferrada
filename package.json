@@ -73,7 +73,6 @@
     "prettier": "^1.16.4",
     "react": "16.9.0-alpha.0",
     "react-dom": "16.9.0-alpha.0",
-    "require-context.macro": "^1.0.4",
     "shx": "^0.3.2",
     "typescript": "~3.4",
     "web-ext": "^3.0.0"
