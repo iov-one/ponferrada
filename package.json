@@ -79,7 +79,6 @@
   "dependencies": {
     "react": "16.9.0-alpha.0",
     "react-dom": "16.9.0-alpha.0",
-    "react-scripts": "3.0.0",
-    "react-test-renderer": "^16.8.6"
+    "react-scripts": "3.0.0"
   }
 }

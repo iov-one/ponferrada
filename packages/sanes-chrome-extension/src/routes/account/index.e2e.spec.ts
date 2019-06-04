@@ -29,16 +29,19 @@ withChainsDescribe('E2E > Account route', () => {
 
     // click 2nd item (nothing happens)
     await page.click(`input[name="SELECT_FIELD_ATTR"]`);
+    await sleep(50);
     await page.click(`div[role="tooltip"] nav > div:nth-child(2)`);
 
     // click 1st item (create account)
     await page.click(`input[name="SELECT_FIELD_ATTR"]`);
+    await sleep(50);
     await page.click(`div[role="tooltip"] nav > div:nth-child(1)`);
 
     await sleep(1000); // wait for account creation do be done
 
     // click 3rd item (the newly created account)
     await page.click(`input[name="SELECT_FIELD_ATTR"]`);
+    await sleep(50);
     await page.click(`div[role="tooltip"] nav > div:nth-child(3)`);
   }, 20000);
 });
