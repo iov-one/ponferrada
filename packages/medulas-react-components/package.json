@@ -15,6 +15,9 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@material-ui/core": "4.0.2",
+    "@material-ui/icons": "4.0.1",
+    "@material-ui/styles": "4.0.2",
     "add": "^2.0.6"
   }
 }
