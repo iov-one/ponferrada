@@ -1,5 +1,8 @@
-import { EnglishMnemonic } from '@iov/crypto';
+import { bnsCodec, BnsConnection, RegisterUsernameTx } from '@iov/bns';
+import { Ed25519HdWallet, HdPaths, UserProfile } from '@iov/core';
+import { Bip39, EnglishMnemonic, Random } from '@iov/crypto';
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
+import { sleep } from '../../../../utils/timer';
 import * as txsUpdater from '../../updaters/appUpdater';
 import { Db } from '../backgroundscript/db';
 import SigningServer from '../signingServer';
@@ -107,6 +110,91 @@ withChainsDescribe('Persona', () => {
 
       persona.destroy();
     });
+
+    it('can get accounts with human readable addresses', async () => {
+      const mnemonic = Bip39.encode(await Random.getBytes(16)).asString();
+
+      const bnsUrl = 'http://localhost:23456/';
+
+      const name0 = `foo-${Math.random()}`;
+      const name1 = `bar-${Math.random()}`;
+      const name2 = [`one-${Math.random()}`, `two-${Math.random()}`];
+
+      {
+        const connection = await BnsConnection.establish(bnsUrl);
+        const profile = new UserProfile();
+        const wallet = profile.addWallet(Ed25519HdWallet.fromMnemonic(mnemonic));
+        const identity0 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(0));
+        const identity1 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(1));
+        const identity2 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(2));
+
+        const registerName0: RegisterUsernameTx = {
+          kind: 'bns/register_username',
+          creator: identity0,
+          addresses: [],
+          username: name0,
+        };
+
+        const registerName1: RegisterUsernameTx = {
+          kind: 'bns/register_username',
+          creator: identity1,
+          addresses: [],
+          username: name1,
+        };
+
+        const registerName2a: RegisterUsernameTx = {
+          kind: 'bns/register_username',
+          creator: identity2,
+          addresses: [],
+          username: name2[0],
+        };
+
+        const registerName2b: RegisterUsernameTx = {
+          kind: 'bns/register_username',
+          creator: identity2,
+          addresses: [],
+          username: name2[1],
+        };
+
+        const transactions = [[registerName0], [registerName1], [registerName2a, registerName2b]];
+        const nonces = [
+          await connection.getNonces({ pubkey: identity0.pubkey }, 1),
+          await connection.getNonces({ pubkey: identity1.pubkey }, 1),
+          await connection.getNonces({ pubkey: identity2.pubkey }, 2),
+        ];
+
+        for (const creatorIndex of [0, 1, 2]) {
+          for (let i = 0; i < transactions[creatorIndex].length; ++i) {
+            const tx = transactions[creatorIndex][i];
+            const nonce = nonces[creatorIndex][i];
+
+            const fee = await connection.getFeeQuote(tx);
+            const signed = await profile.signTransaction({ ...tx, fee: fee }, bnsCodec, nonce);
+            await connection.postTx(bnsCodec.bytesToPost(signed));
+          }
+        }
+        connection.disconnect();
+      }
+
+      // Due to missing WebSocket connection, we cannot subscribe to block. Wait instead.
+      await sleep(2000);
+
+      const db = new Db().getDb();
+      const signingServer = new SigningServer();
+      const persona = await Persona.create(db, signingServer, 'passwd', mnemonic);
+      await persona.createAccount(db); // index 1
+      await persona.createAccount(db); // index 2
+      await persona.createAccount(db); // index 3
+
+      const accounts = await persona.getAccounts();
+      expect(accounts.length).toEqual(4);
+      expect(accounts[0].label).toEqual(`${name0}*iov`);
+      expect(accounts[1].label).toEqual(`${name1}*iov`);
+      expect(accounts[2].label).toEqual('Multiple names');
+      expect(accounts[3].label).toEqual('Account 3');
+
+      persona.destroy();
+    }, 20000);
   });
 
   describe('createAccount', () => {
