@@ -1,4 +1,5 @@
 import { Amount, isSendTransaction } from '@iov/bcp';
+import { BnsConnection } from '@iov/bns';
 import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { Encoding } from '@iov/encoding';
@@ -155,12 +156,29 @@ export class Persona {
   public async getAccounts(): Promise<ReadonlyArray<PersonaAcccount>> {
     const accounts = await this.accountManager.accounts();
 
-    return accounts.map(account => {
-      // TODO here: query network to get human readable address
-      return {
-        label: `Account ${account.index}`,
-      };
-    });
+    const bnsConnection = this.getBnsConnection();
+
+    return Promise.all(
+      accounts.map(async (account, index) => {
+        const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId());
+        if (!bnsIdentity) {
+          throw new Error(`Missing BNS identity for account at index ${index}`);
+        }
+
+        let label: string;
+        const names = await bnsConnection.getUsernames({ owner: this.signer.identityToAddress(bnsIdentity) });
+        if (names.length > 1) {
+          // this case will not happen for regular users that do not professionally collect username NFTs
+          label = `Multiple names`;
+        } else if (names.length === 1) {
+          label = `${names[0].id}*iov`;
+        } else {
+          label = `Account ${account.index}`;
+        }
+
+        return { label: label };
+      }),
+    );
   }
 
   public get mnemonic(): string {
@@ -182,5 +200,16 @@ export class Persona {
     const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
     const filtered = processed.filter(isNonNull);
     return filtered;
+  }
+
+  private getBnsConnection(): BnsConnection {
+    for (const chainId of this.signer.chainIds()) {
+      const connection = this.signer.connection(chainId);
+      if (connection instanceof BnsConnection) {
+        return connection;
+      }
+    }
+
+    throw new Error('No BNS connection found');
   }
 }
