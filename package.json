@@ -71,13 +71,15 @@
     "lerna": "^3.13.0",
     "lint-staged": "^8.1.4",
     "prettier": "^1.16.4",
-    "react": "16.9.0-alpha.0",
-    "react-dom": "16.9.0-alpha.0",
     "shx": "^0.3.2",
     "typescript": "~3.4",
     "web-ext": "^3.0.0"
   },
   "dependencies": {
     "react-scripts": "3.0.0"
+  },
+  "resolutions": {
+    "react": "16.9.0-alpha.0",
+    "react-dom": "16.9.0-alpha.0"
   }
 }
