@@ -7,6 +7,7 @@
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
     "use-config-production": "cp ./config/production.json ./public/assets/config/conf.json",
     "build-with-any-config": "react-scripts build src/extension/contentscript.ts src/extension/backgroundscript.ts",
+    "postbuild-with-any-config": "./scripts/set_manifest_version.sh",
     "build-test": "yarn use-config-test && yarn build-with-any-config",
     "build-development": "yarn use-config-development && yarn build-with-any-config",
     "build-production": "yarn use-config-production && yarn build-with-any-config",
