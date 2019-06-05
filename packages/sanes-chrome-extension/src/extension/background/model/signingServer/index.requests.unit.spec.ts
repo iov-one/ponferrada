@@ -1,5 +1,13 @@
+import { Address, isPublicIdentity, PublicIdentity, SendTransaction, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
-import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
+import { EthereumConnection } from '@iov/ethereum';
+import {
+  jsonRpcCode,
+  JsonRpcRequest,
+  JsonRpcSuccessResponse,
+  makeJsonRpcId,
+  parseJsonRpcResponse2,
+} from '@iov/jsonrpc';
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import { generateErrorResponse } from '../../errorResponseGenerator';
@@ -7,7 +15,7 @@ import * as txsUpdater from '../../updaters/appUpdater';
 import { Db, StringDb } from '../backgroundscript/db';
 import { Persona } from '../persona';
 import SigningServer from './index';
-import { GetIdentitiesRequest } from './requestQueueManager';
+import { GetIdentitiesRequest, SignAndPostRequest } from './requestQueueManager';
 
 const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -20,6 +28,45 @@ const buildGetIdentitiesRequest = (method: string, customMessage?: string): Json
     chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
   },
 });
+
+async function withEthereumFee(transaction: SendTransaction): Promise<SendTransaction> {
+  const connection = await EthereumConnection.establish('http://localhost:8545');
+  const fee = await connection.getFeeQuote(transaction);
+  connection.disconnect();
+  return { ...transaction, fee: fee };
+}
+
+const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<JsonRpcRequest> => {
+  const transactionWithFee: SendTransaction = await withEthereumFee({
+    kind: 'bcp/send',
+    recipient: '0x0000000000000000000000000000000000000000' as Address,
+    creator: creator,
+    amount: {
+      quantity: '1234000000000000000',
+      fractionalDigits: 18,
+      tokenTicker: 'ETH' as TokenTicker,
+    },
+  });
+
+  return {
+    jsonrpc: '2.0',
+    id: makeJsonRpcId(),
+    method: 'signAndPost',
+    params: {
+      reason: TransactionEncoder.toJson('I would like you to sign this request'),
+      transaction: TransactionEncoder.toJson(transactionWithFee),
+    },
+  };
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
+  if (!Array.isArray(data)) {
+    return false;
+  }
+
+  return data.every(isPublicIdentity);
+}
 
 withChainsDescribe('background script handler for website request', () => {
   let db: StringDb;
@@ -206,5 +253,29 @@ withChainsDescribe('background script handler for website request', () => {
     const chromeBazRequest = signingServer['requestHandler'].next();
     expect(chromeBazRequest.id).toBe(2);
     expect(chromeBazRequest.reason).toBe('Reason baz');
+  }, 8000);
+
+  it.only('generates a creator correctly when signAndPost', async () => {
+    // get Identities
+    const sender = { url: 'http://finnex.com' };
+    const identitiesRequest = buildGetIdentitiesRequest('getIdentities');
+    const responsePromise = signingServer.handleRequestMessage(identitiesRequest, sender);
+    await sleep(10);
+    signingServer['requestHandler'].next().accept();
+
+    const parsedResponse = parseJsonRpcResponse2(await responsePromise);
+    const parsedResult = TransactionEncoder.fromJson((parsedResponse as JsonRpcSuccessResponse).result);
+    if (!isArrayOfPublicIdentity(parsedResult)) {
+      throw new Error();
+    }
+
+    const signRequest = await generateSignAndPostRequest(parsedResult[0]);
+    signingServer.handleRequestMessage(signRequest, sender);
+
+    const request = signingServer['requestHandler'].next();
+    const requestData = request.data as SignAndPostRequest;
+    expect(requestData.creator).not.toBe(undefined);
+    expect(requestData.creator).not.toBe(null);
+    expect(requestData.creator).toMatch(/0x/);
   }, 8000);
 });
