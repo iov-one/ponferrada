@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "use-config-travis": "cp ./config/test.json ./build/assets/config/conf.json",
     "use-config-test": "cp ./config/test.json ./public/assets/config/conf.json",
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
     "use-config-production": "cp ./config/production.json ./public/assets/config/conf.json",
     "build": "react-scripts build src/extension/contentscript.ts src/extension/backgroundscript.ts",
+    "override-config-test": "cp ./config/test.json ./build/assets/config/conf.json",
+    "override-config-development": "cp ./config/development.json ./build/assets/config/conf.json",
+    "override-config-production": "cp ./config/production.json ./build/assets/config/conf.json",
     "export": "yarn use-config-production && yarn build && web-ext build --source-dir ./build/ --artifacts-dir ./exports --overwrite-dest",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
@@ -19,7 +21,7 @@
     "test-e2e": "yarn use-config-test && CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --runInBand --env=jsdom",
     "test-unit": "yarn use-config-test && CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-single": "yarn use-config-test && CI=true react-scripts test --env=jsdom",
-    "test": "yarn use-config-travis && yarn test-unit && yarn test-dom && yarn test-e2e"
+    "test": "yarn override-config-test && yarn test-unit && yarn test-dom && yarn test-e2e"
   },
   "browserslist": [
     ">0.2%",
