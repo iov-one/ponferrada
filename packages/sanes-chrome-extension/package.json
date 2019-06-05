@@ -25,7 +25,7 @@
     "test-e2e": "yarn use-config-test && CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --runInBand --env=jsdom",
     "test-unit": "yarn use-config-test && CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-single": "yarn use-config-test && CI=true react-scripts test --env=jsdom",
-    "test": "yarn override-config-test && yarn test-unit && yarn test-dom && yarn test-e2e"
+    "test": "yarn test-unit && yarn test-dom && yarn test-e2e"
   },
   "browserslist": [
     ">0.2%",
