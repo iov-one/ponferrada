@@ -74,3 +74,13 @@ fold_start "chains-stop"
 unset CHAINS_ENABLED
 ./scripts/test_stop.sh
 fold_end
+
+#
+# Export
+#
+fold_start "export"
+(
+  cd packages/sanes-chrome-extension
+  yarn export-production
+)
+fold_end
