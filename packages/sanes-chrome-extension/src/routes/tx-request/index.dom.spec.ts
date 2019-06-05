@@ -1,3 +1,4 @@
+import { Address } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
@@ -26,6 +27,7 @@ describe('DOM > Feature > Transaction Request', (): void => {
         reason: 'Test get Identities',
         data: {
           senderUrl: 'http://finnex.com',
+          creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
           tx: getTransaction(),
         },
         accept: jest.fn(),
