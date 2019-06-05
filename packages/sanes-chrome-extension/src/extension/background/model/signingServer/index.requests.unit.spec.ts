@@ -1,13 +1,5 @@
-import { Address, isPublicIdentity, PublicIdentity, SendTransaction, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
-import { EthereumConnection } from '@iov/ethereum';
-import {
-  jsonRpcCode,
-  JsonRpcRequest,
-  JsonRpcSuccessResponse,
-  makeJsonRpcId,
-  parseJsonRpcResponse2,
-} from '@iov/jsonrpc';
+import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import { generateErrorResponse } from '../../errorResponseGenerator';
@@ -16,57 +8,11 @@ import { Db, StringDb } from '../backgroundscript/db';
 import { Persona } from '../persona';
 import SigningServer from './index';
 import { GetIdentitiesRequest, SignAndPostRequest } from './requestQueueManager';
-
-const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
-  jsonrpc: '2.0',
-  id: 1,
-  method,
-  params: {
-    reason: TransactionEncoder.toJson(
-      customMessage ? customMessage : 'I would like to know who you are on Ethereum',
-    ),
-    chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
-  },
-});
-
-async function withEthereumFee(transaction: SendTransaction): Promise<SendTransaction> {
-  const connection = await EthereumConnection.establish('http://localhost:8545');
-  const fee = await connection.getFeeQuote(transaction);
-  connection.disconnect();
-  return { ...transaction, fee: fee };
-}
-
-const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<JsonRpcRequest> => {
-  const transactionWithFee: SendTransaction = await withEthereumFee({
-    kind: 'bcp/send',
-    recipient: '0x0000000000000000000000000000000000000000' as Address,
-    creator: creator,
-    amount: {
-      quantity: '1234000000000000000',
-      fractionalDigits: 18,
-      tokenTicker: 'ETH' as TokenTicker,
-    },
-  });
-
-  return {
-    jsonrpc: '2.0',
-    id: makeJsonRpcId(),
-    method: 'signAndPost',
-    params: {
-      reason: TransactionEncoder.toJson('I would like you to sign this request'),
-      transaction: TransactionEncoder.toJson(transactionWithFee),
-    },
-  };
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
-  if (!Array.isArray(data)) {
-    return false;
-  }
-
-  return data.every(isPublicIdentity);
-}
+import {
+  buildGetIdentitiesRequest,
+  generateSignAndPostRequest,
+  isArrayOfPublicIdentity,
+} from './test/requestBuilder';
 
 withChainsDescribe('background script handler for website request', () => {
   let db: StringDb;
