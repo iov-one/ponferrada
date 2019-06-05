@@ -55,7 +55,7 @@ export default class SigningServer {
     );
   };
 
-  public signAndPostCallback = () => (
+  public signAndPostCallback = (signer: MultiChainSigner) => (
     reason: string,
     transaction: UnsignedTransaction,
     meta: any, // eslint-disable-line
@@ -72,6 +72,7 @@ export default class SigningServer {
 
     const data: SignAndPostRequest = {
       senderUrl,
+      creator: signer.identityToAddress(transaction.creator),
       tx: transaction,
     };
 

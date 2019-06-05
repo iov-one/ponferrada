@@ -104,7 +104,7 @@ export class Persona {
       this.profile,
       this.signer,
       signingServer.getIdentitiesCallback(signer),
-      signingServer.signAndPostCallback(),
+      signingServer.signAndPostCallback(signer),
     );
 
     this.subscribeToTxUpdates(transactionsUpdater);
