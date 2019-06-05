@@ -100,6 +100,7 @@ if [[ "$TRAVIS_TAG" != "" ]]; then
 
   # https://developer.chrome.com/webstore/using_webstore_api#uploadnew
   # Note: this command fails with curl 7.54.0 from Mac but works with curl 7.65.0 from Homebrew
+  curl --version
   curl -sSv \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "x-goog-api-version: 2" \
