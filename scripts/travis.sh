@@ -24,6 +24,7 @@ function fold_end() {
 
 source ./scripts/retry.sh
 retry 3 yarn install
+retry 3 npm install -g chrome-webstore-upload-cli
 
 #
 # Build
@@ -84,3 +85,20 @@ fold_start "export"
   yarn export-production
 )
 fold_end
+
+#
+# Deployment
+#
+if [[ "$TRAVIS_TAG" != "" ]]; then
+  fold_start "deployment"
+  echo "Uploading export for tag $TRAVIS_TAG"
+  webstore upload \
+    --source packages/sanes-chrome-extension/exports/*.zip \
+    --extension-id "$EXTENSION_ID" \
+    --client-id "$CLIENT_ID" \
+    --client-secret "$CLIENT_SECRET" \
+    --refresh-token "$REFRESH_TOKEN"
+  fold_end
+else
+  echo "Not a tag build, skipping deployment"
+fi
