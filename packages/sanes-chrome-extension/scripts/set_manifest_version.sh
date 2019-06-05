@@ -7,7 +7,7 @@ PACKAGE_ROOT="$SCRIPT_DIR/.."
 
 VERSION=$(jq -r '.version' "$PACKAGE_ROOT/../../lerna.json")
 
-# We use sed instead of jq to avoid formatting incompatibilities between jq and prettier
-sed -i "" \
-  -e "s|\"version\": \"[-._a-zA-Z0-9]*\",|\"version\": \"$VERSION\",|" \
-  "$PACKAGE_ROOT/build/manifest.json"
+ORIGINAL=$(< "$PACKAGE_ROOT/build/manifest.json")
+echo "$ORIGINAL" \
+  | jq ".version = \"$VERSION\"" \
+  > "$PACKAGE_ROOT/build/manifest.json"
