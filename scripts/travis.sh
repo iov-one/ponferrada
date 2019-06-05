@@ -74,3 +74,40 @@ fold_start "chains-stop"
 unset CHAINS_ENABLED
 ./scripts/test_stop.sh
 fold_end
+
+#
+# Export
+#
+fold_start "export"
+(
+  cd packages/sanes-chrome-extension
+  yarn export-production
+)
+fold_end
+
+#
+# Deployment
+#
+if [[ "$TRAVIS_TAG" != "" ]]; then
+  fold_start "deployment"
+  echo "Uploading export for tag $TRAVIS_TAG"
+
+  # Create CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN as described in https://developer.chrome.com/webstore/using_webstore_api#beforeyoubegin
+  ACCESS_TOKEN=$(curl -sS \
+    -X POST \
+    -d "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&refresh_token=$REFRESH_TOKEN&grant_type=refresh_token" \
+    https://www.googleapis.com/oauth2/v4/token | jq -r ".access_token")
+
+  # https://developer.chrome.com/webstore/using_webstore_api#uploadnew
+  # Note: this command fails with curl 7.54.0 from Mac but works with curl 7.65.0 from Homebrew
+  curl --version
+  curl -sSv \
+    -H "Authorization: Bearer $ACCESS_TOKEN" \
+    -H "x-goog-api-version: 2" \
+    -X PUT \
+    -T packages/sanes-chrome-extension/exports/*.zip \
+    "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen"
+  fold_end
+else
+  echo "Not a tag build, skipping deployment"
+fi
