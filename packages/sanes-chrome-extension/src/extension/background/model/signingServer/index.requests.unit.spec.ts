@@ -201,7 +201,7 @@ withChainsDescribe('background script handler for website request', () => {
     expect(chromeBazRequest.reason).toBe('Reason baz');
   }, 8000);
 
-  it.only('generates a creator correctly when signAndPost', async () => {
+  it('generates a creator correctly when signAndPost', async () => {
     // get Identities
     const sender = { url: 'http://finnex.com' };
     const identitiesRequest = buildGetIdentitiesRequest('getIdentities');
