@@ -1,3 +1,4 @@
+import { Address } from '@iov/bcp';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { storiesOf } from '@storybook/react';
@@ -24,6 +25,7 @@ const request: Request = {
   reason: 'I would like you to sign this TX',
   data: {
     senderUrl: 'http://localhost/',
+    creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
     tx: getTransaction(),
   },
   type: 'signAndPost',
@@ -33,12 +35,13 @@ storiesOf(TX_REQUEST_PATH, module)
   .add(
     SHOW_REQUEST_PAGE,
     (): JSX.Element => {
-      const { tx } = request.data as SignAndPostRequest;
+      const { creator, tx } = request.data as SignAndPostRequest;
 
       return (
         <Storybook>
           <ShowRequest
             tx={tx}
+            creator={creator}
             sender={request.data.senderUrl}
             onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
             showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
