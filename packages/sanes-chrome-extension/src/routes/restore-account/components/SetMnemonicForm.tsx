@@ -5,7 +5,11 @@ import Form, { FormValues, useForm } from 'medulas-react-components/lib/componen
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
-import { numberOfWords } from 'medulas-react-components/lib/utils/forms/validators';
+import {
+  composeValidators,
+  numberOfWords,
+  required,
+} from 'medulas-react-components/lib/utils/forms/validators';
 import * as React from 'react';
 import { useMemo } from 'react';
 import { RESTORE_ACCOUNT } from '../../paths';
@@ -28,7 +32,7 @@ const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
 
   //TODO optimize update of validators with array of dependencies
   const validator = useMemo(() => {
-    return numberOfWords(MNEMONIC_NUM_WORDS);
+    return composeValidators(required, numberOfWords(MNEMONIC_NUM_WORDS));
   }, []);
 
   return (
