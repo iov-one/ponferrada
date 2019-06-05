@@ -8,7 +8,11 @@ import { PersonaAcccount } from '../../extension/background/model/persona';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 
 export function extensionContext(): boolean {
-  return typeof chrome !== 'undefined' && typeof chrome.runtime.onMessage !== 'undefined';
+  return (
+    typeof chrome !== 'undefined' &&
+    typeof chrome.runtime !== 'undefined' &&
+    typeof chrome.runtime.onMessage !== 'undefined'
+  );
 }
 
 export async function getPersonaData(): Promise<GetPersonaResponse> {
