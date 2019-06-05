@@ -37,6 +37,7 @@ export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
 
 export interface SignAndPostRequest extends RequestMeta {
   readonly tx: SendTransaction;
+  readonly creator: Address;
 }
 
 export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequest {
@@ -45,9 +46,10 @@ export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequ
   }
 
   const hasSender = typeof (data as SignAndPostRequest).senderUrl === 'string';
+  const hasCreator = typeof (data as SignAndPostRequest).creator === 'string';
   const tx = (data as SignAndPostRequest).tx;
 
-  return hasSender && isSendTransaction(tx);
+  return hasSender && hasCreator && isSendTransaction(tx);
 }
 
 export interface Request {

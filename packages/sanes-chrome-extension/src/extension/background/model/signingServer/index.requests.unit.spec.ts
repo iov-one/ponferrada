@@ -1,5 +1,5 @@
 import { TransactionEncoder } from '@iov/core';
-import { jsonRpcCode, JsonRpcRequest } from '@iov/jsonrpc';
+import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import { generateErrorResponse } from '../../errorResponseGenerator';
@@ -7,19 +7,12 @@ import * as txsUpdater from '../../updaters/appUpdater';
 import { Db, StringDb } from '../backgroundscript/db';
 import { Persona } from '../persona';
 import SigningServer from './index';
-import { GetIdentitiesRequest } from './requestQueueManager';
-
-const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
-  jsonrpc: '2.0',
-  id: 1,
-  method,
-  params: {
-    reason: TransactionEncoder.toJson(
-      customMessage ? customMessage : 'I would like to know who you are on Ethereum',
-    ),
-    chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
-  },
-});
+import { GetIdentitiesRequest, SignAndPostRequest } from './requestQueueManager';
+import {
+  buildGetIdentitiesRequest,
+  generateSignAndPostRequest,
+  isArrayOfPublicIdentity,
+} from './test/requestBuilder';
 
 withChainsDescribe('background script handler for website request', () => {
   let db: StringDb;
@@ -206,5 +199,29 @@ withChainsDescribe('background script handler for website request', () => {
     const chromeBazRequest = signingServer['requestHandler'].next();
     expect(chromeBazRequest.id).toBe(2);
     expect(chromeBazRequest.reason).toBe('Reason baz');
+  }, 8000);
+
+  it('generates a creator correctly when signAndPost', async () => {
+    // get Identities
+    const sender = { url: 'http://finnex.com' };
+    const identitiesRequest = buildGetIdentitiesRequest('getIdentities');
+    const responsePromise = signingServer.handleRequestMessage(identitiesRequest, sender);
+    await sleep(10);
+    signingServer['requestHandler'].next().accept();
+
+    const parsedResponse = parseJsonRpcResponse2(await responsePromise);
+    const parsedResult = TransactionEncoder.fromJson((parsedResponse as JsonRpcSuccessResponse).result);
+    if (!isArrayOfPublicIdentity(parsedResult)) {
+      throw new Error();
+    }
+
+    const signRequest = await generateSignAndPostRequest(parsedResult[0]);
+    signingServer.handleRequestMessage(signRequest, sender);
+
+    const request = signingServer['requestHandler'].next();
+    const requestData = request.data as SignAndPostRequest;
+    expect(requestData.creator).not.toBe(undefined);
+    expect(requestData.creator).not.toBe(null);
+    expect(requestData.creator).toMatch(/0x/);
   }, 8000);
 });
