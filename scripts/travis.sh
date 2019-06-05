@@ -106,7 +106,7 @@ if [[ "$TRAVIS_TAG" != "" ]]; then
     -H "x-goog-api-version: 2" \
     -X PUT \
     -T packages/sanes-chrome-extension/exports/*.zip \
-    "https://www.googleapis.com/upload/chromewebstore/v1.1/items/apfhiehjapaopaefchidgjkijadlbgpa"
+    "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen"
   fold_end
 else
   echo "Not a tag build, skipping deployment"
