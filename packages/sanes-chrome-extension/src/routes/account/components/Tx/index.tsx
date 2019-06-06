@@ -29,7 +29,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   item: {
-    backgroundColor: theme.palette.grey[300],
+    backgroundColor: theme.palette.grey[100],
+  },
+  icon: {
+    padding: `0 ${theme.spacing(1)}px`,
   },
 }));
 
@@ -48,8 +51,8 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
 
   return (
     <Block className={classes.item}>
-      <ListItem>
-        <Img src={icon} height={32} alt="Tx operation" />
+      <ListItem disableGutters>
+        <Img className={classes.icon} src={icon} height={32} alt="Tx operation" />
         <ListItemText className={classes.msg} primary={msg} secondary={time} />
       </ListItem>
       {!lastOne && (
