@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { PersonaProvider } from '../../context/PersonaProvider';
 import { RequestProvider } from '../../context/RequestProvider';
-import { Request } from '../../extension/background/actions/createPersona/requestHandler';
-import { GetPersonaResponse } from '../../extension/background/messages';
+import { GetPersonaResponse } from '../../extension/background/model/backgroundscript';
+import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import Route from '../../routes';
 import { history } from '../../store/reducers';
 
@@ -31,8 +31,28 @@ export const createDom = (
         </ToastProvider>
       </MedulasThemeProvider>
     </Provider>,
-  ) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) as any;
 
-export const expectRoute = (store: Store, route: string): void => {
-  expect(store.getState().router.location.pathname).toBe(route);
+export const click = (element: Element): void => {
+  TestUtils.act(() => TestUtils.Simulate.click(element));
+};
+
+export const input = (field: Element, value: any): void => {
+  TestUtils.act(() => {
+    TestUtils.Simulate.change(field, {
+      target: { value } as any,
+    });
+  });
+};
+
+export const check = (checkbox: Element): void => {
+  TestUtils.act(() => {
+    TestUtils.Simulate.change(checkbox, {
+      target: { checked: true } as any,
+    });
+  });
+};
+
+export const submit = (form: Element): void => {
+  TestUtils.act(() => TestUtils.Simulate.submit(form));
 };
