@@ -1,6 +1,6 @@
 {
   "name": "bierzo-wallet",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
@@ -15,7 +15,7 @@
     "@material-ui/styles": "4.0.2",
     "concurrently": "^4.1.0",
     "final-form": "^4.12.0",
-    "medulas-react-components": "^0.0.2",
+    "medulas-react-components": "^0.0.3",
     "normalize.css": "^8.0.1",
     "react": "16.9.0-alpha.0",
     "react-dom": "16.9.0-alpha.0",
