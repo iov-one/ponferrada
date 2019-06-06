@@ -14,6 +14,7 @@ interface MsgProps {
   readonly recipient: string;
   readonly amount: string;
   readonly blockExplorerUrl: string | null;
+  readonly id: string;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Msg = ({ amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element => {
+const Msg = ({ id, amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element => {
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
@@ -31,8 +32,8 @@ const Msg = ({ amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element => 
     root: classes.icon,
   };
   const onCopyToClipboard = (): void => {
-    copy(recipient);
-    toast.show('Address copied to clipboard', ToastVariant.INFO);
+    copy(id);
+    toast.show('Transaction id copied to clipboard', ToastVariant.INFO);
   };
 
   return (

@@ -42,7 +42,12 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const msg = error ? (
     <MsgError amount={beautifulAmount} recipient={recipient} />
   ) : (
-    <Msg blockExplorerUrl={item.blockExplorerUrl} amount={beautifulAmount} recipient={recipient} />
+    <Msg
+      blockExplorerUrl={item.blockExplorerUrl}
+      amount={beautifulAmount}
+      recipient={recipient}
+      id={item.id}
+    />
   );
 
   return (
