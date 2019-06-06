@@ -1,3 +1,4 @@
+import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { elipsify } from '../../../../utils/strings';
@@ -9,7 +10,7 @@ interface MsgProps {
 }
 
 const Msg = ({ amount, recipient, onDetailedView }: MsgProps): JSX.Element => {
-  const recipientShort = elipsify(recipient, 16);
+  const recipientShort = elipsify(recipient, 24);
 
   return (
     <React.Fragment>
@@ -22,9 +23,11 @@ const Msg = ({ amount, recipient, onDetailedView }: MsgProps): JSX.Element => {
       <Typography weight="light" inline>
         {'to '}
       </Typography>
-      <Typography weight="semibold" inline onClick={onDetailedView}>
-        {`${recipientShort} `}
-      </Typography>
+      <Block marginBottom={1}>
+        <Typography weight="semibold" onClick={onDetailedView}>
+          {`${recipientShort} `}
+        </Typography>
+      </Block>
     </React.Fragment>
   );
 };
