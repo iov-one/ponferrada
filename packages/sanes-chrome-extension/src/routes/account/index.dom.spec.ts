@@ -1,8 +1,8 @@
 import { TokenTicker } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { GetPersonaResponse } from '../../extension/background/messages';
-import { PersonaAcccount, ProcessedTx } from '../../logic/persona';
+import { GetPersonaResponse } from '../../extension/background/model/backgroundscript';
+import { PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { travelToAccount } from './test/travelToAccount';

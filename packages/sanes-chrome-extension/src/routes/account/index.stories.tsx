@@ -10,20 +10,20 @@ import Layout from './index';
 
 export const ACCOUNT_STATUS_PAGE = 'Account Status page';
 
+const processedTx = {
+  id: '111',
+  recipient: 'Example Recipient',
+  signer: 'Example Signer',
+  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
+  time: 'Sat May 25 10:10:00 2019 +0200',
+  error: null,
+};
+
 storiesOf(CHROME_EXTENSION_ROOT, module).add(ACCOUNT_STATUS_PAGE, () => {
   const persona: GetPersonaResponse = {
     mnemonic: '',
     accounts: [{ label: 'Account 0' }],
-    txs: [
-      {
-        id: '111',
-        recipient: 'Example Recipient',
-        signer: 'Example Signer',
-        amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
-        time: 'Sat May 25 10:10:00 2019 +0200',
-        error: null,
-      },
-    ],
+    txs: [processedTx, processedTx, processedTx, processedTx, processedTx],
   };
 
   return (

@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   item: {
-    backgroundColor: theme.palette.grey[100],
+    backgroundColor: theme.palette.grey[50],
   },
   icon: {
     padding: `0 ${theme.spacing(1)}px`,
