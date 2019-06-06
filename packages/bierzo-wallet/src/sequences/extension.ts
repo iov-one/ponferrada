@@ -4,7 +4,7 @@ import { AnyAction } from 'redux';
 import { extensionId } from '../communication';
 import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse } from '@iov/jsonrpc';
 import { setExtensionStateAction } from '../store/reducers/extension';
-import { RootThunkDispatch } from './types';
+import { RootThunkDispatch } from '../store/types';
 
 export const getExtension = (
   request: JsonRpcRequest,
