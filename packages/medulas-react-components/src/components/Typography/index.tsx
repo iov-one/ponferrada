@@ -1,9 +1,8 @@
-import * as React from 'react';
+import { Theme } from '@material-ui/core/styles';
 import MuiTypography, { TypographyProps } from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
-import { Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { FontWeightProperty } from 'csstype';
+import * as React from 'react';
 
 type Weight = 'light' | 'regular' | 'semibold';
 
@@ -11,7 +10,7 @@ interface StyleProps {
   readonly weight?: Weight;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>({
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   inline: {
     display: 'inline',
   },
@@ -20,9 +19,14 @@ const useStyles = makeStyles<Theme, StyleProps>({
     cursor: 'pointer',
   },
   weight: props => ({
-    fontWeight: props.weight ? (props.weight as FontWeightProperty) : 'normal',
+    fontWeight:
+      props.weight === 'light'
+        ? theme.typography.fontWeightLight
+        : props.weight === 'semibold'
+        ? theme.typography.fontWeightMedium
+        : theme.typography.fontWeightRegular,
   }),
-});
+}));
 
 interface Props extends TypographyProps, StyleProps {
   readonly inline?: boolean;
@@ -31,7 +35,7 @@ interface Props extends TypographyProps, StyleProps {
 
 const Typography = ({ children, inline, link, className, weight, ...restProps }: Props): JSX.Element => {
   const classes = useStyles({ weight });
-  const compositeClass = classNames(className, classes.weight, {
+  const compositeClass = classNames(className, weight ? classes.weight : undefined, {
     [classes.inline]: inline,
     [classes.link]: link,
   });

@@ -1,11 +1,11 @@
 /*global chrome*/
 import * as React from 'react';
 import { GetPersonaResponse } from '../extension/background/model/backgroundscript';
+import { PersonaAcccount, ProcessedTx } from '../extension/background/model/persona';
 import {
   isMessageToForeground,
   MessageToForegroundAction,
 } from '../extension/background/updaters/appUpdater';
-import { PersonaAcccount, ProcessedTx } from '../logic/persona';
 import { extensionContext } from '../utils/chrome';
 
 /** Only the fields that are set will be updated */

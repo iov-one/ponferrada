@@ -52,6 +52,7 @@
     "@types/random-js": "^1.0.31",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
+    "clipboard-copy": "^3.0.0",
     "final-form": "^4.12.0",
     "jspdf": "^1.5.3",
     "level-js": "^4.0.1",

@@ -1,12 +1,12 @@
-import * as React from 'react';
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
-import { ProcessedTx } from '../../../logic/persona';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+import { ProcessedTx } from '../../../extension/background/model/persona';
 import upToDate from '../assets/uptodate.svg';
-import Tx from './Tx';
 import EmptyList from './Empty';
+import Tx from './Tx';
 
 interface Props {
   readonly txs: ReadonlyArray<ProcessedTx>;

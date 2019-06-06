@@ -28,6 +28,7 @@ export interface ProcessedTx {
   readonly amount: Amount;
   readonly memo?: string;
   readonly time: string;
+  readonly blockExplorerUrl: string | null;
   /** If error is null, the transaction succeeded */
   readonly error: string | null;
 }
@@ -141,6 +142,7 @@ export class Persona {
       signer: Encoding.toHex(t.transaction.creator.pubkey.data),
       memo: t.transaction.memo,
       amount: t.transaction.amount,
+      blockExplorerUrl: null,
       error: null,
     };
   }

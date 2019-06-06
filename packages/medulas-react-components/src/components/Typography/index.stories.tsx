@@ -1,10 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Typography from './index';
 import { Storybook } from '../../utils/storybook';
+import Link from '../Link';
+import Typography from './index';
 
-storiesOf('Components', module).add(
-  'Typography',
+storiesOf('Components/Typography', module).add(
+  'variants',
   (): JSX.Element => (
     <Storybook>
       <Typography variant="subtitle1" color="primary">
@@ -44,6 +45,36 @@ storiesOf('Components', module).add(
       <Typography variant="subtitle2" inline>
         Second part of the text.
       </Typography>
+    </Storybook>
+  ),
+);
+
+storiesOf('Components/Typography', module).add(
+  'weight',
+  (): JSX.Element => (
+    <Storybook>
+      <Typography weight="light">Hi this is light</Typography>
+      <Typography weight="regular">Hi this is regular</Typography>
+      <Typography>Hi no weight specified</Typography>
+      <Typography weight="semibold">Hi this is bold</Typography>
+    </Storybook>
+  ),
+);
+
+storiesOf('Components/Typography', module).add(
+  'link',
+  (): JSX.Element => (
+    <Storybook>
+      <Link to="https://iov.one">
+        <Typography weight="light" link>
+          Go to IOV
+        </Typography>
+      </Link>
+      <Link to="https://iov.one">
+        <Typography weight="light" link color="primary">
+          Go to IOV
+        </Typography>
+      </Link>
     </Storybook>
   ),
 );

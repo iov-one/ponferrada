@@ -1,25 +1,21 @@
 import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Block from 'medulas-react-components/lib/components/Block';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import Img from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
+import { ProcessedTx } from '../../../../extension/background/model/persona';
+import { prettyAmount } from '../../../../utils/balances';
 import iconErrorTx from '../../assets/transactionError.svg';
 import iconSendTx from '../../assets/transactionSend.svg';
 import MsgError from './MsgError';
 import Msg from './MsgSuccess';
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Img from 'medulas-react-components/lib/components/Image';
-import { prettyAmount } from '../../../../utils/balances';
-import { ProcessedTx } from '../../../../logic/persona';
 
 interface ItemProps {
   readonly item: ProcessedTx;
   readonly lastOne: boolean;
 }
-
-const onDetailedView = (): void => {
-  //history.push(DETAILED_VIEW_ROUTE);
-};
 
 const useStyles = makeStyles((theme: Theme) => ({
   msg: {
@@ -29,7 +25,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   item: {
-    backgroundColor: theme.palette.grey[300],
+    backgroundColor: theme.palette.grey[50],
+  },
+  icon: {
+    padding: `0 ${theme.spacing(1)}px`,
   },
 }));
 
@@ -41,15 +40,20 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const icon = error ? iconErrorTx : iconSendTx;
 
   const msg = error ? (
-    <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
+    <MsgError amount={beautifulAmount} recipient={recipient} />
   ) : (
-    <Msg onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
+    <Msg
+      blockExplorerUrl={item.blockExplorerUrl}
+      amount={beautifulAmount}
+      recipient={recipient}
+      id={item.id}
+    />
   );
 
   return (
     <Block className={classes.item}>
-      <ListItem>
-        <Img src={icon} height={32} alt="Tx operation" />
+      <ListItem disableGutters>
+        <Img className={classes.icon} src={icon} height={32} alt="Tx operation" />
         <ListItemText className={classes.msg} primary={msg} secondary={time} />
       </ListItem>
       {!lastOne && (
