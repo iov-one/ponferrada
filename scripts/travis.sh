@@ -81,7 +81,7 @@ fold_end
 fold_start "export"
 (
   cd packages/sanes-chrome-extension
-  yarn export-production
+  yarn export-staging
 )
 fold_end
 
