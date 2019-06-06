@@ -168,8 +168,8 @@ withChainsDescribe('Persona', () => {
             const tx = transactions[creatorIndex][i];
             const nonce = nonces[creatorIndex][i];
 
-            const fee = await connection.getFeeQuote(tx);
-            const signed = await profile.signTransaction({ ...tx, fee: fee }, bnsCodec, nonce);
+            const withFee = await connection.withDefaultFee(tx);
+            const signed = await profile.signTransaction(withFee, bnsCodec, nonce);
             await connection.postTx(bnsCodec.bytesToPost(signed));
           }
         }

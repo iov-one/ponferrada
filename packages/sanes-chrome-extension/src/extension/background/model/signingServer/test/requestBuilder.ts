@@ -17,9 +17,9 @@ export const buildGetIdentitiesRequest = (method: string, customMessage?: string
 
 async function withEthereumFee(transaction: SendTransaction): Promise<SendTransaction> {
   const connection = await EthereumConnection.establish('http://localhost:8545', {});
-  const fee = await connection.getFeeQuote(transaction);
+  const withFee = await connection.withDefaultFee(transaction);
   connection.disconnect();
-  return { ...transaction, fee: fee };
+  return withFee;
 }
 
 export const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<JsonRpcRequest> => {
