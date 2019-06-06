@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Storybook } from '../../utils/storybook';
+import Link from '../Link';
 import Typography from './index';
 
 storiesOf('Components/Typography', module).add(
@@ -56,6 +57,24 @@ storiesOf('Components/Typography', module).add(
       <Typography weight="regular">Hi this is regular</Typography>
       <Typography>Hi no weight specified</Typography>
       <Typography weight="semibold">Hi this is bold</Typography>
+    </Storybook>
+  ),
+);
+
+storiesOf('Components/Typography', module).add(
+  'link',
+  (): JSX.Element => (
+    <Storybook>
+      <Link to="https://iov.one">
+        <Typography weight="light" link>
+          Go to IOV
+        </Typography>
+      </Link>
+      <Link to="https://iov.one">
+        <Typography weight="light" link color="primary">
+          Go to IOV
+        </Typography>
+      </Link>
     </Storybook>
   ),
 );
