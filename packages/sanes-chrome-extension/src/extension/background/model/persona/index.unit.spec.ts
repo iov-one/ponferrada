@@ -1,6 +1,7 @@
 import { bnsCodec, BnsConnection, RegisterUsernameTx } from '@iov/bns';
-import { Ed25519HdWallet, HdPaths, UserProfile } from '@iov/core';
+import { Ed25519HdWallet, HdPaths, TokenTicker, UserProfile } from '@iov/core';
 import { Bip39, EnglishMnemonic, Random } from '@iov/crypto';
+import { IovFaucet } from '@iov/faucets';
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import * as txsUpdater from '../../updaters/appUpdater';
@@ -115,6 +116,8 @@ withChainsDescribe('Persona', () => {
       const mnemonic = Bip39.encode(await Random.getBytes(16)).asString();
 
       const bnsUrl = 'http://localhost:23456/';
+      const bnsFaucetUrl = 'http://localhost:8000/';
+      const bnsFeeToken = 'CASH' as TokenTicker;
 
       const name0 = `foo-${Math.random()}`;
       const name1 = `bar-${Math.random()}`;
@@ -127,6 +130,14 @@ withChainsDescribe('Persona', () => {
         const identity0 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(0));
         const identity1 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(1));
         const identity2 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(2));
+
+        // Ensure transaction creators can pay their fees
+        const bnsFaucet = new IovFaucet(bnsFaucetUrl);
+        await Promise.all([
+          bnsFaucet.credit(bnsCodec.identityToAddress(identity0), bnsFeeToken),
+          bnsFaucet.credit(bnsCodec.identityToAddress(identity1), bnsFeeToken),
+          bnsFaucet.credit(bnsCodec.identityToAddress(identity2), bnsFeeToken),
+        ]);
 
         const registerName0: RegisterUsernameTx = {
           kind: 'bns/register_username',
