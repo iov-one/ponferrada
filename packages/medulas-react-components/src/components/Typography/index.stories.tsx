@@ -54,6 +54,7 @@ storiesOf('Components/Typography', module).add(
     <Storybook>
       <Typography weight="light">Hi this is light</Typography>
       <Typography weight="regular">Hi this is regular</Typography>
+      <Typography>Hi no weight specified</Typography>
       <Typography weight="semibold">Hi this is bold</Typography>
     </Storybook>
   ),

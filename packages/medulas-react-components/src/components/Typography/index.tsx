@@ -35,7 +35,7 @@ interface Props extends TypographyProps, StyleProps {
 
 const Typography = ({ children, inline, link, className, weight, ...restProps }: Props): JSX.Element => {
   const classes = useStyles({ weight });
-  const compositeClass = classNames(className, classes.weight, {
+  const compositeClass = classNames(className, weight ? classes.weight : undefined, {
     [classes.inline]: inline,
     [classes.link]: link,
   });
