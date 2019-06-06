@@ -7,7 +7,7 @@ interface Props extends LinkProps {
 
 const Link = ({ children, to, ...rest }: Props): JSX.Element => {
   if (typeof to === 'string') {
-    if (/^(mailto:)|((https?:)?\/\/)/.test(to)) {
+    if (/^((mailto:)|((https?:)?\/\/))/.test(to)) {
       return (
         <a href={to} target="_blank" rel="noopener noreferrer" {...rest}>
           {children}
