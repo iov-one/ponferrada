@@ -1,44 +1,44 @@
 {
   "cash": [
     {
-      "address": "1a26ab842c67d0b03be511260b988d4dee57c9c6",
-      "// name": "admin",
-      "coins": [
-        {
-          "whole": 123456789,
-          "ticker": "IOV"
-        }
-      ]
+      "address": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+      "coins": ["123456789 CASH"]
     },
     {
-      "address": "3a3f9f6958f63a8100846cd644650010a7c1f5fc",
-      "// name": "faucet",
-      "coins": [
-        {
-          "whole": 1000000,
-          "ticker": "IOV"
-        },
-        {
-          "whole": 2000000,
-          "ticker": "CASH"
-        }
-      ]
+      "address": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku",
+      "coins": ["1000000 CASH", "2000000 BASH"]
+    },
+    {
+      "address": "bech32:tiov1xwvnaxahzcszkvmk362m7vndjkzumv8ufmzy3m",
+      "coins": ["4000 CASH"]
+    },
+    {
+      "address": "bech32:tiov1qrw95py2x7fzjw25euuqlj6dq6t0jahe7rh8wp",
+      "coins": ["4000 BASH"]
     }
   ],
   "currencies": [
     {
-      "ticker": "IOV",
-      "name": "Internet of Values",
-      "sig_figs": 9
+      "ticker": "CASH",
+      "name": "Main token of this chain"
     },
     {
-      "ticker": "CASH",
-      "name": "Quick trading token",
-      "sig_figs": 9
+      "ticker": "BASH",
+      "name": "Another token of this chain"
+    },
+    {
+      "ticker": "ASH",
+      "name": "Let the Phoenix arise"
     }
   ],
   "gconf": {
-    "cash:minimal_fee": {},
+    "cash:minimal_fee": "0.01 CASH",
     "cash:collector_address": "0000000000000000000000000000000000000000"
-  }
+  },
+  "msgfee": [
+    {
+      "msg_path": "nft/username/issue",
+      "fee": "5 CASH"
+    }
+  ]
 }

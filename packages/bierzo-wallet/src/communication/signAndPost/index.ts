@@ -6,10 +6,10 @@ import { EthereumConnection } from '@iov/ethereum';
 import { extensionId } from '..';
 
 async function withEthereumFee(transaction: SendTransaction): Promise<SendTransaction> {
-  const connection = await EthereumConnection.establish('http://localhost:8545');
-  const fee = await connection.getFeeQuote(transaction);
+  const connection = await EthereumConnection.establish('http://localhost:8545', {});
+  const withFee = await connection.withDefaultFee(transaction);
   connection.disconnect();
-  return { ...transaction, fee: fee };
+  return withFee;
 }
 
 const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<JsonRpcRequest> => {
