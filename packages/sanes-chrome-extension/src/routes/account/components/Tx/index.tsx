@@ -17,10 +17,6 @@ interface ItemProps {
   readonly lastOne: boolean;
 }
 
-const onDetailedView = (): void => {
-  //history.push(DETAILED_VIEW_ROUTE);
-};
-
 const useStyles = makeStyles((theme: Theme) => ({
   msg: {
     '& > span': {
@@ -44,14 +40,9 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const icon = error ? iconErrorTx : iconSendTx;
 
   const msg = error ? (
-    <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
+    <MsgError amount={beautifulAmount} recipient={recipient} />
   ) : (
-    <Msg
-      blockExplorerUrl={item.blockExplorerUrl}
-      onDetailedView={onDetailedView}
-      amount={beautifulAmount}
-      recipient={recipient}
-    />
+    <Msg blockExplorerUrl={item.blockExplorerUrl} amount={beautifulAmount} recipient={recipient} />
   );
 
   return (

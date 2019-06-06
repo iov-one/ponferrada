@@ -14,7 +14,6 @@ interface MsgProps {
   readonly recipient: string;
   readonly amount: string;
   readonly blockExplorerUrl: string | null;
-  readonly onDetailedView: () => void;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Msg = ({ amount, blockExplorerUrl, recipient, onDetailedView }: MsgProps): JSX.Element => {
+const Msg = ({ amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element => {
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
@@ -48,7 +47,7 @@ const Msg = ({ amount, blockExplorerUrl, recipient, onDetailedView }: MsgProps):
         {'to:'}
       </Typography>
       <Block marginBottom={1.5}>
-        <Typography link={!!blockExplorerUrl} onClick={onDetailedView} inline>
+        <Typography link={!!blockExplorerUrl} inline>
           {blockExplorerUrl ? (
             <Link to={blockExplorerUrl}>{`${recipientShort} `}</Link>
           ) : (
