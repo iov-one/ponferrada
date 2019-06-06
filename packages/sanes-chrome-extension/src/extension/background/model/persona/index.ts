@@ -3,6 +3,7 @@ import { BnsConnection } from '@iov/bns';
 import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { Encoding } from '@iov/encoding';
+import { UserProfileEncryptionKey } from '@iov/keycontrol';
 import { ReadonlyDate } from 'readonly-date';
 import { transactionsUpdater } from '../../updaters/appUpdater';
 import { AccountManager } from '../accountManager';
@@ -43,7 +44,7 @@ export interface PersonaAcccount {
 }
 
 export class Persona {
-  private readonly password: string;
+  private readonly encryptionKey: UserProfileEncryptionKey;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
@@ -61,6 +62,8 @@ export class Persona {
     password: string,
     fixedMnemonic?: string,
   ): Promise<Persona> {
+    const encryptionKey = await UserProfile.deriveEncryptionKey(password);
+
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
     const profile = await PersonaBuilder.createUserProfile(mnemonic);
@@ -69,17 +72,19 @@ export class Persona {
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
-    await profile.storeIn(db, password);
+    await profile.storeIn(db, encryptionKey);
 
-    return new Persona(password, profile, signer, manager, signingServer);
+    return new Persona(encryptionKey, profile, signer, manager, signingServer);
   }
 
   public static async load(db: StringDb, signingServer: SigningServer, password: string): Promise<Persona> {
-    const profile = await UserProfile.loadFrom(db, password);
+    const encryptionKey = await UserProfile.deriveEncryptionKey(password);
+
+    const profile = await UserProfile.loadFrom(db, encryptionKey);
     const signer = new MultiChainSigner(profile);
     const manager = await PersonaBuilder.createAccountManager(profile, signer);
 
-    const persona = new Persona(password, profile, signer, manager, signingServer);
+    const persona = new Persona(encryptionKey, profile, signer, manager, signingServer);
 
     return persona;
   }
@@ -89,13 +94,13 @@ export class Persona {
    * All changes are automatically saved in db.
    */
   private constructor(
-    password: string,
+    encryptionKey: UserProfileEncryptionKey,
     profile: UserProfile,
     signer: MultiChainSigner,
     accountManager: AccountManager,
     signingServer: SigningServer,
   ) {
-    this.password = password;
+    this.encryptionKey = encryptionKey;
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
@@ -150,7 +155,7 @@ export class Persona {
 
   public async createAccount(db: StringDb): Promise<void> {
     await this.accountManager.generateNextAccount();
-    await this.profile.storeIn(db, this.password);
+    await this.profile.storeIn(db, this.encryptionKey);
   }
 
   public async getAccounts(): Promise<ReadonlyArray<PersonaAcccount>> {
