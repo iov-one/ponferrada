@@ -46,7 +46,7 @@ withChainsDescribe('background script handler for website request', () => {
     expect(req.reject).toBeTruthy();
     expect(req.reason).toEqual(TransactionEncoder.fromJson(request.params).reason);
     expect(req.data.senderUrl).toEqual(sender);
-    expect((req.data as GetIdentitiesRequest).requestedIdentities[0].name).toEqual('Ethereum Testnet');
+    expect((req.data as GetIdentitiesRequest).requestedIdentities[0].name).toEqual('Ganache');
   }
 
   it('resolves to error if sender is unknown', async () => {

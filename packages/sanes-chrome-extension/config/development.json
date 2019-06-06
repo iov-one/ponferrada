@@ -1,30 +1,38 @@
 {
   "names": {
-    "bns-local-devnet": "BNS Testnet",
-    "198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d": "Lisk Testnet",
-    "ethereum-eip155-5777": "Ethereum Testnet"
+    "bns-local-devnet": "BNS Devnet",
+    "198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d": "Lisk Devnet",
+    "ethereum-eip155-5777": "Ganache"
   },
   "chains": [
     {
       "chainSpec": {
         "codecType": "bns",
-        "bootstrapNodes": ["https://bns.hugnet.iov.one/"]
+        "bootstrapNodes": ["http://localhost:23456/"]
       },
       "faucetSpec": {
-        "uri": "https://bns-faucet.hugnet.iov.one",
+        "uri": "http://localhost:8000",
         "token": "IOV"
       }
     },
     {
       "chainSpec": {
         "codecType": "lsk",
-        "bootstrapNodes": ["https://testnet.lisk.io"]
+        "bootstrapNodes": ["http://localhost:4000/"]
+      },
+      "faucetSpec": {
+        "uri": "http://localhost:8002",
+        "token": "LSK"
       }
     },
     {
       "chainSpec": {
         "codecType": "eth",
-        "bootstrapNodes": ["https://rinkeby.infura.io", "https://api-rinkeby.etherscan.io/api"]
+        "bootstrapNodes": ["http://localhost:8545", "http://localhost:8546"]
+      },
+      "faucetSpec": {
+        "uri": "http://localhost:8003",
+        "token": "ETH"
       }
     }
   ]
