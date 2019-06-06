@@ -46,7 +46,12 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const msg = error ? (
     <MsgError onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
   ) : (
-    <Msg onDetailedView={onDetailedView} amount={beautifulAmount} recipient={recipient} />
+    <Msg
+      blockExplorerUrl={item.blockExplorerUrl}
+      onDetailedView={onDetailedView}
+      amount={beautifulAmount}
+      recipient={recipient}
+    />
   );
 
   return (

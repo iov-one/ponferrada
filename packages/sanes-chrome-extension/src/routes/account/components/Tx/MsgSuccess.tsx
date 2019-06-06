@@ -13,6 +13,7 @@ import { elipsify } from '../../../../utils/strings';
 interface MsgProps {
   readonly recipient: string;
   readonly amount: string;
+  readonly blockExplorerUrl: string | null;
   readonly onDetailedView: () => void;
 }
 
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Msg = ({ amount, recipient, onDetailedView }: MsgProps): JSX.Element => {
+const Msg = ({ amount, blockExplorerUrl, recipient, onDetailedView }: MsgProps): JSX.Element => {
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
@@ -47,8 +48,12 @@ const Msg = ({ amount, recipient, onDetailedView }: MsgProps): JSX.Element => {
         {'to:'}
       </Typography>
       <Block marginBottom={1.5}>
-        <Typography link onClick={onDetailedView} inline>
-          <Link to="https://iov.one">{`${recipientShort} `}</Link>
+        <Typography link={!!blockExplorerUrl} onClick={onDetailedView} inline>
+          {blockExplorerUrl ? (
+            <Link to={blockExplorerUrl}>{`${recipientShort} `}</Link>
+          ) : (
+            `${recipientShort} `
+          )}
         </Typography>
         <IconButton
           color="primary"
