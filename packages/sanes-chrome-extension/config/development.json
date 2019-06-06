@@ -12,7 +12,7 @@
       },
       "faucetSpec": {
         "uri": "http://localhost:8000",
-        "token": "IOV"
+        "token": "CASH"
       }
     },
     {
