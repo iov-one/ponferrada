@@ -5,7 +5,7 @@ import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { ethereumCodec } from '@iov/ethereum';
 import { extensionId } from '..';
 
-const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
+export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',
   id: makeJsonRpcId(),
   method: 'getIdentities',
