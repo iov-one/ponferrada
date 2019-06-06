@@ -1,6 +1,6 @@
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { elipsify } from '../../../../utils/strings';
-import Typography from 'medulas-react-components/lib/components/Typography';
 
 interface MsgProps {
   readonly recipient: string;
@@ -13,15 +13,17 @@ const Msg = ({ amount, recipient, onDetailedView }: MsgProps): JSX.Element => {
 
   return (
     <React.Fragment>
-      <Typography weight="regular" inline>
+      <Typography weight="light" inline>
         You
       </Typography>
-      <Typography inline>{' sent '}</Typography>
-      <Typography weight="semibold" inline link onClick={onDetailedView}>
-        {`${recipientShort} `}
-      </Typography>
       <Typography weight="semibold" inline>
-        {amount}
+        {` sent ${amount} `}
+      </Typography>
+      <Typography weight="light" inline>
+        {'to '}
+      </Typography>
+      <Typography weight="semibold" inline onClick={onDetailedView}>
+        {`${recipientShort} `}
       </Typography>
     </React.Fragment>
   );
