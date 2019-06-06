@@ -1,4 +1,5 @@
 import Block from 'medulas-react-components/lib/components/Block';
+import Link from 'medulas-react-components/lib/components/Link';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { elipsify } from '../../../../utils/strings';
@@ -24,9 +25,11 @@ const Msg = ({ amount, recipient, onDetailedView }: MsgProps): JSX.Element => {
         {'to '}
       </Typography>
       <Block marginBottom={1}>
-        <Typography weight="semibold" onClick={onDetailedView}>
-          {`${recipientShort} `}
-        </Typography>
+        <Link to="https://iov.one">
+          <Typography link onClick={onDetailedView}>
+            {`${recipientShort} `}
+          </Typography>
+        </Link>
       </Block>
     </React.Fragment>
   );
