@@ -1,8 +1,8 @@
 {
   "names": {
-    "bns-local-devnet": "BNS Testnet",
-    "198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d": "Lisk Testnet",
-    "ethereum-eip155-5777": "Ethereum Testnet"
+    "bns-hugnet": "BNS Hugnet",
+    "da3ed6a45429278bac2666961289ca17ad86595d33b31037615d4b8e8f158bba": "Lisk Testnet",
+    "ethereum-eip155-4": "Rinkeby"
   },
   "chains": [
     {
