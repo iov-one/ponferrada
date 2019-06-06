@@ -3696,7 +3696,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Ethereum Testnet
+            Ganache
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
@@ -3718,7 +3718,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Ethereum Testnet
+            Ganache
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
@@ -3740,7 +3740,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Ethereum Testnet
+            Ganache
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
@@ -3762,7 +3762,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Ethereum Testnet
+            Ganache
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"

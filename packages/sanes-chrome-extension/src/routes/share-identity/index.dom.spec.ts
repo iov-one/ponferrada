@@ -28,7 +28,7 @@ describe('DOM > Feature > Share Identity', (): void => {
           senderUrl: 'http://finnex.com',
           requestedIdentities: [
             {
-              name: 'Ethereum Testnet',
+              name: 'Ganache',
               address: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5d3aaaa' as Address,
             },
           ],
