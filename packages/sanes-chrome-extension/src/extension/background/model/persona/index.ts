@@ -9,6 +9,7 @@ import { transactionsUpdater } from '../../updaters/appUpdater';
 import { AccountManager } from '../accountManager';
 import { StringDb } from '../backgroundscript/db';
 import SigningServer from '../signingServer';
+import { ConfigurationFile, getConfigurationFile } from './config';
 import { PersonaBuilder } from './personaBuider';
 
 function isNonNull<T>(t: T | null): t is T {
@@ -135,14 +136,19 @@ export class Persona {
       return null;
     }
 
+    const config: ConfigurationFile = await getConfigurationFile();
+    const blockExplorer = config.blockExplorers[t.transaction.creator.chainId];
+    const id = t.postResponse.transactionId;
+    const blockExplorerUrl = blockExplorer ? blockExplorer + id : null;
+
     return {
       time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
-      id: t.postResponse.transactionId,
+      id,
       recipient: t.transaction.recipient,
       signer: Encoding.toHex(t.transaction.creator.pubkey.data),
       memo: t.transaction.memo,
       amount: t.transaction.amount,
-      blockExplorerUrl: null,
+      blockExplorerUrl,
       error: null,
     };
   }
