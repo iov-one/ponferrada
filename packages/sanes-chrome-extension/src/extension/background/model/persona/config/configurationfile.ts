@@ -24,9 +24,14 @@ export interface ChainNames {
   readonly [key: string]: string;
 }
 
+export interface BlockExplorers {
+  readonly [key: string]: string;
+}
+
 export interface ConfigurationFile {
   readonly chains: ChainConfig[];
   readonly names: ChainNames;
+  readonly blockExplorers: BlockExplorers;
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
