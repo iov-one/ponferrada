@@ -1,9 +1,9 @@
 import { SetExtensionStateActionType } from './types';
 
 export const setExtensionStateAction = (
-  extensionConnected: boolean,
-  personaActive: boolean,
+  connected: boolean,
+  installed: boolean,
 ): SetExtensionStateActionType => ({
   type: '@@extension/SET_EXTENSION_STATE',
-  payload: { personaActive, extensionConnected },
+  payload: { connected, installed },
 });

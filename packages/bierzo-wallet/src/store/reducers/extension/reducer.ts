@@ -5,8 +5,8 @@ import { ExtensionState } from './state';
 export type ExtensionActions = ActionType<typeof actions>;
 
 const initState: ExtensionState = {
-  personaActive: true,
-  extensionConnected: true,
+  connected: true,
+  installed: true,
 };
 
 export function extensionReducer(

@@ -1,4 +1,4 @@
 export interface ExtensionState {
-  readonly personaActive: boolean;
-  readonly extensionConnected: boolean;
+  readonly connected: boolean;
+  readonly installed: boolean;
 }
