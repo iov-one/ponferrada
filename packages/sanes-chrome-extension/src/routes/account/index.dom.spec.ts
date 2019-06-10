@@ -64,7 +64,7 @@ describe('DOM > Feature > Account Status', () => {
 });
 
 describe('DOM > Feature > Account Status', () => {
-  it('generates a link insi transaction box for an ethereum transaction', async () => {
+  it('generates a link inside transaction box for an ethereum transaction', async () => {
     // Simulate we start background page
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
     jest.spyOn(txsUpdater, 'updateRequestProvider').mockImplementation(() => {});
@@ -78,7 +78,6 @@ describe('DOM > Feature > Account Status', () => {
     const password = 'test-password';
     await background['createPersona'](password, mnemonic);
     const persona = background['persona'] as Persona;
-    signingServer.start(persona.getCore());
 
     // Accept getIdentities request
     const sender = { url: 'http://finnex.com' };
