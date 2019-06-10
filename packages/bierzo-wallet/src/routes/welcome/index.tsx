@@ -14,7 +14,8 @@ import { sendGetIdentitiesRequest, generateGetIdentitiesRequest } from '../../co
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
-import { getExtension } from '../../sequences/extension';
+import { getExtensionStatus } from '../../communication/status';
+import { setExtensionStateAction } from '../../store/reducers/extension';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -41,7 +42,8 @@ const Welcome = (): JSX.Element => {
 
   const onConnect = async (): Promise<void> => {
     const request = generateGetIdentitiesRequest();
-    dispatch(getExtension(request));
+    const result = await getExtensionStatus(request);
+    dispatch(setExtensionStateAction(result.connected, result.installed));
   };
 
   const onSendRequestToBeSigned = async (): Promise<void> => {
