@@ -18,17 +18,10 @@ describe('DOM > Feature > Login', () => {
     restoreAccountLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, 'a');
   });
 
-  it('CLICK: has a "Restore account" link that redirects to the Restore Account view when clicked', async () => {
+  it('has a "Restore account" link that redirects to the Restore Account view when clicked', async () => {
     expect(restoreAccountLink.textContent).toBe('Restore account');
 
     click(restoreAccountLink);
-    await whenOnNavigatedToRoute(store, RESTORE_ACCOUNT);
-  }, 60000);
-
-  it('TESTUTILS: has a "Restore account" link that redirects to the Restore Account view when clicked', async () => {
-    expect(restoreAccountLink.textContent).toBe('Restore account');
-
-    TestUtils.act(() => TestUtils.Simulate.click(restoreAccountLink));
     await whenOnNavigatedToRoute(store, RESTORE_ACCOUNT);
   }, 60000);
 });

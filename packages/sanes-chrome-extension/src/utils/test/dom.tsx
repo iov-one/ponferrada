@@ -35,7 +35,9 @@ export const createDom = (
 
 export const click = (element: Element): void => {
   TestUtils.act(() => {
-    TestUtils.Simulate.click(element);
+    TestUtils.Simulate.click(element, {
+      button: 0,
+    });
   });
 };
 
