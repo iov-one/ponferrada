@@ -34,7 +34,20 @@ export const createDom = (
   ) as any;
 
 export const click = (element: Element): void => {
-  TestUtils.act(() => TestUtils.Simulate.click(element));
+  TestUtils.act(() => {
+    TestUtils.Simulate.click(element);
+  });
+};
+
+//NOTE copied from fireEvent: https://github.com/testing-library/react-testing-library#other-solutions
+export const click2 = (element: Element): any => {
+  let returnValue;
+
+  TestUtils.act(() => {
+    returnValue = TestUtils.Simulate.click(element);
+  });
+
+  return returnValue;
 };
 
 export const input = (field: Element, value: any): void => {
@@ -54,5 +67,7 @@ export const check = (checkbox: Element): void => {
 };
 
 export const submit = (form: Element): void => {
-  TestUtils.act(() => TestUtils.Simulate.submit(form));
+  TestUtils.act(() => {
+    TestUtils.Simulate.submit(form);
+  });
 };
