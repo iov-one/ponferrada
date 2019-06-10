@@ -1,4 +1,4 @@
-import { SetExtensionStateActionType } from './types';
+import { SetExtensionStateActionType } from './reducer';
 
 export const setExtensionStateAction = (
   connected: boolean,
