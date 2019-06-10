@@ -33,20 +33,13 @@ export const createDom = (
     </Provider>,
   ) as any;
 
-export const click = (element: Element): void => {
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(element, {
-      button: 0,
-    });
-  });
-};
-
-//NOTE copied from fireEvent: https://github.com/testing-library/react-testing-library#other-solutions
-export const click2 = (element: Element): any => {
+export const click = (element: Element): any => {
   let returnValue;
 
   TestUtils.act(() => {
-    returnValue = TestUtils.Simulate.click(element);
+    returnValue = TestUtils.Simulate.click(element, {
+      button: 0,
+    });
   });
 
   return returnValue;
