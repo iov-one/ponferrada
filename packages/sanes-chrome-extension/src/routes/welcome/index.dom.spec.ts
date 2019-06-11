@@ -1,45 +1,46 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { WELCOME_ROUTE, LOGIN_ROUTE, SIGNUP_ROUTE, RESTORE_ACCOUNT } from '../paths';
-import { history, RootState } from '../../store/reducers';
-import { createDom } from '../../utils/test/dom';
 import { aNewStore } from '../../store';
-import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { sleep } from '../../utils/timer';
+import { resetHistory, RootState } from '../../store/reducers';
+import { click } from '../../utils/test/dom';
+import { travelToWelcome, whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { LOGIN_ROUTE, RESTORE_ACCOUNT, SIGNUP_ROUTE } from '../paths';
 
 describe('DOM > Feature > Welcome', () => {
   let store: Store<RootState>;
-  let dom: React.Component;
+  let welcomeDom: React.Component;
+  let buttons: Element[];
+  let logInButton: Element;
+  let newAccountButton: Element;
+  let importAccountButton: Element;
 
   beforeEach(async () => {
+    resetHistory();
     store = aNewStore();
-    dom = createDom(store);
-    TestUtils.act(() => history.push(WELCOME_ROUTE));
-    await sleep(500);
-  });
+    welcomeDom = await travelToWelcome(store);
+    buttons = TestUtils.scryRenderedDOMComponentsWithTag(welcomeDom, 'button');
+    [logInButton, newAccountButton, importAccountButton] = buttons;
+  }, 60000);
 
-  it('should create Welcome layout view', async () => {
-    await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
-  }, 55000);
-
-  it('should create three buttons and redirect to appropriate route when clicking on it', async () => {
-    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(dom, 'button');
-
+  it('has three buttons', () => {
     expect(buttons.length).toBe(3);
+  }, 60000);
 
-    //Click on login button
-    const loginButton = buttons[0];
-    TestUtils.act(() => TestUtils.Simulate.click(loginButton));
+  it('has a "Log In" button that redirects to the Login view when clicked', async () => {
+    expect(logInButton.textContent).toBe('Log in');
+    click(logInButton);
     await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
+  }, 60000);
 
-    //Click on signup button
-    const signUpButton = buttons[1];
-    TestUtils.act(() => TestUtils.Simulate.click(signUpButton));
+  it('has a "New Account" button that redirects to the Sign Up view when clicked', async () => {
+    expect(newAccountButton.textContent).toBe('New account');
+    click(newAccountButton);
     await whenOnNavigatedToRoute(store, SIGNUP_ROUTE);
+  }, 60000);
 
-    //Click on import button
-    const importButton = buttons[2];
-    TestUtils.act(() => TestUtils.Simulate.click(importButton));
+  it('has an "Import Account" button that redirects to the Restore Account view when clicked', async () => {
+    expect(importAccountButton.textContent).toBe('Import account');
+    click(importAccountButton);
     await whenOnNavigatedToRoute(store, RESTORE_ACCOUNT);
-  }, 55000);
+  }, 60000);
 });
