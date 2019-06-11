@@ -1,105 +1,64 @@
-import { DRAWER_HTML_ID } from 'medulas-react-components/lib/components/Drawer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { GetPersonaResponse, PersonaData } from '../../extension/background/model/backgroundscript';
 import {
-  mockCreatePersona,
+  mockGetPersonaData,
   mockPersonaResponse,
-  processSignup,
 } from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
-import { RootState } from '../../store/reducers';
-import * as chromeInternalMsgs from '../../utils/chrome';
-import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
+import { resetHistory, RootState } from '../../store/reducers';
+import { click } from '../../utils/test/dom';
+import { travelToAccount, travelToRecoveryPhrase, whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { travelToAccount } from '../account/test/travelToAccount';
+import * as Drawer from '../account/test/drawer';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE } from '../paths';
-import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
+import { getRenderedMnemonic } from './test/operateRecoveryPhrase';
 
 withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
+  const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
+  const personaMock = mockPersonaResponse([], mnemonic, []);
+
   let store: Store<RootState>;
   let recoveryPhraseDom: React.Component;
   let backButton: Element;
   let exportButton: Element;
-  const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
 
   beforeEach(async () => {
+    resetHistory();
     store = aNewStore();
     recoveryPhraseDom = await travelToRecoveryPhrase(store);
     [backButton, exportButton] = TestUtils.scryRenderedDOMComponentsWithTag(recoveryPhraseDom, 'button');
+  }, 60000);
 
-    const createPersonaResponse: PersonaData = {
-      accounts: [],
-      mnemonic,
-      txs: [],
-    };
-    jest.spyOn(chromeInternalMsgs, 'createPersona').mockResolvedValue(createPersonaResponse);
-
-    const getPersonaResponse: GetPersonaResponse = {
-      accounts: [],
-      mnemonic,
-      txs: [],
-    };
-    jest.spyOn(chromeInternalMsgs, 'getPersonaData').mockResolvedValue(getPersonaResponse);
-  });
-
-  it('has a back button that redirects to the previous route when clicked', async (): Promise<void> => {
+  it('has a back button that redirects to the previous route when clicked', async () => {
     await travelToAccount(store);
     await travelToRecoveryPhrase(store);
     expect(backButton.getAttribute('aria-label')).toBe('Go back');
-    TestUtils.act(
-      (): void => {
-        TestUtils.Simulate.click(backButton);
-      },
-    );
+    click(backButton);
     await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
-  });
+  }, 60000);
 
   it('has an "Export as .PDF" button', () => {
     expect(exportButton.textContent).toBe('Export as .PDF');
-  });
+    //TODO test downloads pdf
+  }, 60000);
 
   it('shows an empty mnemonic if there is no current Persona', () => {
-    const mnemonic = TestUtils.scryRenderedDOMComponentsWithTag(recoveryPhraseDom, 'p')[1];
-    expect(mnemonic.textContent).toBe('');
-  });
+    expect(getRenderedMnemonic(recoveryPhraseDom).textContent).toBe('');
+  }, 60000);
 
-  it('shows the mnemonic for the current Persona', async (): Promise<void> => {
-    const personaMock = mockPersonaResponse([], mnemonic, []);
-    mockCreatePersona(personaMock);
-    const accountDom = await processSignup(store);
-    await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+  it('shows the mnemonic for the current Persona', async () => {
+    recoveryPhraseDom = await travelToRecoveryPhrase(store, personaMock);
+    expect(getRenderedMnemonic(recoveryPhraseDom).textContent).toBe(mnemonic);
+  }, 60000);
 
-    //from account view, click on hamburger button
-    const hamburgerButton = TestUtils.scryRenderedDOMComponentsWithTag(accountDom, 'button')[0];
-    expect(hamburgerButton.getAttribute('aria-label')).toBe('Open drawer');
-    TestUtils.act(
-      (): void => {
-        TestUtils.Simulate.click(hamburgerButton);
-      },
-    );
+  it('shows the mnemonic for the current Persona when accessed through Drawer menu', async () => {
+    const accountDom = await travelToAccount(store, personaMock);
 
-    //then click on show recovery phrase
-    const hamburgerList = await findRenderedDOMComponentWithId(accountDom, DRAWER_HTML_ID);
-    const hamburgerElements = (hamburgerList as Element).querySelectorAll('div > div:nth-of-type(2)');
-    if (!hamburgerElements) {
-      throw new Error();
-    }
-    expect(hamburgerElements.length).toBe(2);
-    const recoveryPhraseLink = hamburgerElements[0];
-    expect(recoveryPhraseLink.textContent).toBe('Recovery words');
-
-    TestUtils.act(
-      (): void => {
-        TestUtils.Simulate.click(recoveryPhraseLink);
-      },
-    );
-
+    mockGetPersonaData(personaMock);
+    await Drawer.clickRecoveryPhrase(accountDom);
     await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
-    const recoveryPhraseDom = accountDom;
 
-    const mnemonicDom = TestUtils.scryRenderedDOMComponentsWithTag(recoveryPhraseDom, 'p')[1];
-    expect(mnemonicDom.textContent).toBe(mnemonic);
-  });
+    const recoveryPhraseDom = accountDom;
+    expect(getRenderedMnemonic(recoveryPhraseDom).textContent).toBe(mnemonic);
+  }, 60000);
 });
