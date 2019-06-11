@@ -10,12 +10,12 @@ import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 import icon from '../../assets/iov-logo.svg';
-import { sendGetIdentitiesRequest, generateGetIdentitiesRequest } from '../../communication/identities';
+import { generateGetIdentitiesRequest, sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
-import { history } from '../../store/reducers';
-import { PAYMENT_ROUTE } from '../paths';
-import { setExtensionStateAction } from '../../store/reducers/extension';
 import { getExtensionStatus } from '../../communication/status';
+import { history } from '../../routes';
+import { setExtensionStateAction } from '../../store/reducers/extension';
+import { PAYMENT_ROUTE } from '../paths';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
