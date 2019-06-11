@@ -5,9 +5,9 @@ import BellMenu from './BellMenu';
 import HiMenu from './HiMenu';
 import { LinksDesktop } from './LinksMenu';
 import TransactionsMenu from './TransactionsMenu';
-import Block from '~/components/layout/Block';
-import Img from '~/components/layout/Image';
-import Spacer from '~/components/layout/Spacer';
+import Block from 'medulas-react-components/lib/components/Block';
+import Img from 'medulas-react-components/lib/components/Image';
+import { ProcessedTx, Tx } from '../../../store/reducers/notifications/state';
 
 const styles = createStyles({
   root: {
@@ -19,7 +19,7 @@ const styles = createStyles({
   },
 });
 
-interface Props extends WithStyles<typeof styles>, LogoutProfileActions {
+interface Props extends WithStyles<typeof styles> {
   readonly phoneMode: boolean;
   readonly pendingTxs: ReadonlyArray<Tx>;
   readonly txs: ReadonlyArray<ProcessedTx>;
@@ -50,9 +50,9 @@ class HeaderComponent extends React.Component<Props, State> {
       <React.Fragment>
         <Block className={classes.root} padding={phoneMode ? 'lg' : 'xxl'}>
           <Img src={logoBlack} alt="Logo" />
-          <Spacer order={1} />
+          <Block flexGrow={1} />
           {!phoneMode && <LinksDesktop />}
-          <Spacer order={4} />
+          <Block flexGrow={4} />
           <TransactionsMenu phoneHook={phoneHook} phoneMode={phoneMode} items={pendingTxs} />
           <BellMenu phoneHook={phoneHook} phoneMode={phoneMode} items={txs} lastTx={lastTx} />
           <HiMenu phoneHook={phoneHook} phoneMode={phoneMode} logoutProfile={logoutProfile} />

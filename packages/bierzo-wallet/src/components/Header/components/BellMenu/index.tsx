@@ -4,16 +4,16 @@ import * as React from 'react';
 import bell from '~/components/Header/assets/bell.svg';
 import bellGreen from '~/components/Header/assets/bellGreen.svg';
 import upToDate from '~/components/Header/assets/uptodate.svg';
-import BadgeIcon from '~/components/layout/BadgeIcon';
-import Block from '~/components/layout/Block';
-import Hairline from '~/components/layout/Hairline';
-import Typography from '~/components/layout/Typography';
+import BadgeIcon from 'medulas-react-components/lib/components/BadgeIcon';
+import Block from 'medulas-react-components/lib/components/Block';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import EmptyListIcon from '~/components/templates/menu/EmptyListIcon';
 import ListMenu, { PhoneHook } from '~/components/templates/menu/ListMenu';
-import { ProcessedTx } from '~/store/notifications/state';
 import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
 import { BadgeProps, calcBadgeProps } from './badgeCalculator';
 import TxItem from './TxItem';
+import { ProcessedTx } from '../../../../store/reducers/notifications/state';
 
 interface Props extends PhoneHook {
   readonly items: ReadonlyArray<ProcessedTx>;
