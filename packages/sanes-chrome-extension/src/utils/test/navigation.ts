@@ -76,8 +76,11 @@ export const travelToLogin = async (store: Store): Promise<React.Component> => {
   return travelTo(LOGIN_ROUTE, store);
 };
 
-export const travelToRecoveryPhrase = async (store: Store): Promise<React.Component> => {
-  return travelTo(RECOVERY_PHRASE_ROUTE, store);
+export const travelToRecoveryPhrase = async (
+  store: Store,
+  persona?: GetPersonaResponse,
+): Promise<React.Component> => {
+  return travelTo(RECOVERY_PHRASE_ROUTE, store, [], persona);
 };
 
 export const travelToRestoreAccount = async (store: Store): Promise<React.Component> => {
@@ -111,9 +114,7 @@ export const travelToAccount = async (
 
 export const travelToRequests = async (
   store: Store,
-  requests: ReadonlyArray<Request>,
+  requests?: ReadonlyArray<Request>,
 ): Promise<React.Component> => {
-  expect(requests.length).toBeGreaterThanOrEqual(1);
-
   return travelTo(REQUEST_ROUTE, store, requests);
 };

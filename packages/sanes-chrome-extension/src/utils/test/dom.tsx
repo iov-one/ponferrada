@@ -34,7 +34,11 @@ export const createDom = (
   ) as any;
 
 export const click = (element: Element): void => {
-  TestUtils.act(() => TestUtils.Simulate.click(element));
+  TestUtils.act(() => {
+    TestUtils.Simulate.click(element, {
+      button: 0,
+    });
+  });
 };
 
 export const input = (field: Element, value: any): void => {
