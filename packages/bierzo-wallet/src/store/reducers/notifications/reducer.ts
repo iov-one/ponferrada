@@ -5,12 +5,18 @@ import { AnnotatedConfirmedTransaction } from '~/logic';
 import * as logoutActions from '~/store/logout/actions';
 import * as actions from './actions';
 import { NotificationState, ProcessedTx } from './state';
+import { Action } from 'redux';
 
 export type NotificationActions = ActionType<typeof actions & typeof logoutActions>;
 const initState: NotificationState = {
   pending: [],
   transaction: [],
 };
+
+export interface AddPendingTransactionActionType extends Action {
+  type: '@@notifications/ADD_PENDING_TRANSACTION';
+  payload: ReadonlyArray<ProcessedTx>;
+}
 
 // turns the full transaction information into a simple form as needed for display
 function simplifyTransaction(full: AnnotatedConfirmedTransaction): ProcessedTx {
