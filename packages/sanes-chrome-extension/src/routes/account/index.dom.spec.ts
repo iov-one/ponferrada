@@ -122,3 +122,55 @@ withChainsDescribe('DOM > Feature > Account Status', () => {
     jest.spyOn(txsUpdater, 'updateRequestProvider').mockReset();
   }, 60000);
 });
+
+describe('DOM > Feature > Account Status', () => {
+  it('generates a link inside transaction box for an ethereum transaction', async () => {
+    // Simulate we start background page
+    jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
+    jest.spyOn(txsUpdater, 'updateRequestProvider').mockImplementation(() => {});
+    const background = new Backgroundscript();
+    background.registerActionsInBackground(window as IovWindowExtension);
+
+    // Create a persona
+    const signingServer = background['signingServer'];
+    const db = background['db'].getDb();
+    const mnemonic = 'oxygen fall sure lava energy veteran enroll frown question detail include maximum';
+    const password = 'test-password';
+    await background['createPersona'](password, mnemonic);
+    const persona = background['persona'] as Persona;
+
+    // Accept getIdentities request
+    const sender = { url: 'http://finnex.com' };
+    const identitiesRequest = buildGetIdentitiesRequest('getIdentities');
+    const responsePromise = signingServer.handleRequestMessage(identitiesRequest, sender);
+    await sleep(10);
+    signingServer['requestHandler'].next().accept();
+
+    // Accept signAndPost request
+    const parsedResponse = parseJsonRpcResponse2(await responsePromise);
+    const parsedResult = TransactionEncoder.fromJson((parsedResponse as JsonRpcSuccessResponse).result);
+    if (!isArrayOfPublicIdentity(parsedResult)) {
+      throw new Error();
+    }
+    const signRequest = await generateSignAndPostRequest(parsedResult[0]);
+    const signResponse = signingServer.handleRequestMessage(signRequest, sender);
+    signingServer['requestHandler'].next().accept();
+    await signResponse;
+
+    // Launch react DOM with account status route
+    const store = aNewStore();
+    const personaInfo = await (window as IovWindowExtension).getPersonaData();
+    const accountStatusDom = await travelToAccount(store, personaInfo);
+
+    // Check for the link
+    const links = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'a');
+    expect(links.length).toBe(1);
+
+    // Clean everything
+    persona.destroy();
+    signingServer.shutdown();
+    db.close();
+    jest.spyOn(txsUpdater, 'transactionsUpdater').mockReset();
+    jest.spyOn(txsUpdater, 'updateRequestProvider').mockReset();
+  }, 60000);
+});
