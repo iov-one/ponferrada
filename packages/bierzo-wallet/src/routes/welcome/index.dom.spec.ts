@@ -26,6 +26,6 @@ describe('The /welcome route', () => {
     expect(paymentButton.textContent).toBe('SEND PAYMENT');
 
     TestUtils.Simulate.click(paymentButton);
-    expectRoute(store, PAYMENT_ROUTE);
+    expectRoute(PAYMENT_ROUTE);
   });
 });
