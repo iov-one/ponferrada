@@ -10,14 +10,13 @@ import {
 import { randomString } from '../../utils/test/random';
 import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
+import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import {
   submitNewAccountE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
 } from '../signup/test/operateSignup';
-import { submitLoginForm } from './test/submitLoginForm';
 
 withChainsDescribe(
   'DOM > Login route',
