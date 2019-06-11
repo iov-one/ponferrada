@@ -4,6 +4,11 @@
     "198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d": "Lisk Devnet",
     "ethereum-eip155-5777": "Ganache"
   },
+  "blockExplorers": {
+    "local-bns-devnet": null,
+    "198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d": null,
+    "ethereum-eip155-5777": "https://ganache.etherscan.io/tx/"
+  },
   "chains": [
     {
       "chainSpec": {

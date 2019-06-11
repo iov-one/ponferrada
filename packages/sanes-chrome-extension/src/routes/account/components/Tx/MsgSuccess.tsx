@@ -20,6 +20,9 @@ interface MsgProps {
 const useStyles = makeStyles((theme: Theme) => ({
   icon: {
     padding: `0 ${theme.spacing(1)}px`,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
 }));
 
@@ -27,7 +30,7 @@ const Msg = ({ id, amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
-  const recipientShort = elipsify(recipient, 24);
+  const recipientShort = elipsify(recipient, 18);
   const iconButtonClasses = {
     root: classes.icon,
   };
@@ -57,6 +60,7 @@ const Msg = ({ id, amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element
         </Typography>
         <IconButton
           color="primary"
+          disableRipple
           classes={iconButtonClasses}
           aria-label="Copy to clipboard address"
           edge="end"
