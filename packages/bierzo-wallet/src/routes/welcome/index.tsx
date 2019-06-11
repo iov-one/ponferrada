@@ -8,11 +8,14 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import React from 'react';
+import * as ReactRedux from 'react-redux';
 import icon from '../../assets/iov-logo.svg';
-import { sendGetIdentitiesRequest } from '../../communication/identities';
+import { sendGetIdentitiesRequest, generateGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import { history } from '../../store/reducers';
 import { PAYMENT_ROUTE } from '../paths';
+import { setExtensionStateAction } from '../../store/reducers/extension';
+import { getExtensionStatus } from '../../communication/status';
 
 const useStyles = makeStyles((theme: Theme) => ({
   welcome: {
@@ -34,6 +37,14 @@ const onPayment = (): void => {
 const Welcome = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
+  //TODO: Fix this as soon as proper react-redux definitions will be available
+  const dispatch = (ReactRedux as any).useDispatch();
+
+  const onConnect = async (): Promise<void> => {
+    const request = generateGetIdentitiesRequest();
+    const result = await getExtensionStatus(request);
+    dispatch(setExtensionStateAction(result.connected, result.installed));
+  };
 
   const onSendRequestToBeSigned = async (): Promise<void> => {
     toast.show('Interaction with extension, fetching identities. Check the icon, please', ToastVariant.INFO);
@@ -81,6 +92,9 @@ const Welcome = (): JSX.Element => {
         </Button>
         <Button className={classes.button} onClick={onSendRequestToBeSigned}>
           SEND REQUEST TO BE SIGNED
+        </Button>
+        <Button className={classes.button} onClick={onConnect}>
+          CHECK CONNECTION
         </Button>
       </Block>
     </Block>
