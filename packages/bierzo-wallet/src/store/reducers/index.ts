@@ -1,14 +1,15 @@
-import { connectRouter, RouterState } from 'connected-react-router';
-import { createBrowserHistory, History } from 'history';
 import { combineReducers, Reducer } from 'redux';
 import { StateType } from 'typesafe-actions';
+import { extensionReducer, ExtensionState } from './extension';
 
-export const history = createBrowserHistory();
+export interface RootReducer {
+  extension: ExtensionState;
+}
 
-const createRootReducer = (history: History): Reducer<{ router: RouterState }> =>
+const createRootReducer = (): Reducer<RootReducer> =>
   combineReducers({
-    router: connectRouter(history),
+    extension: extensionReducer,
   });
 
 export type RootState = StateType<ReturnType<typeof createRootReducer>>;
-export default createRootReducer(history);
+export default createRootReducer();

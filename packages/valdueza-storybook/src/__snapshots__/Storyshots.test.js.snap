@@ -433,6 +433,29 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
         SEND REQUEST TO BE SIGNED
       </span>
     </button>
+    <button
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-165 MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        CHECK CONNECTION
+      </span>
+    </button>
   </div>
 </div>
 `;
