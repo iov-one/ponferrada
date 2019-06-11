@@ -1,14 +1,14 @@
 import { Store } from 'redux';
-import { PersonaData } from '../../extension/background/model/backgroundscript';
-import { PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
+import { PersonaAcccount, ProcessedTx } from '..';
 import {
   submitNewAccount,
   submitSecurityHint,
   submitShowPhrase,
-} from '../../routes/signup/test/operateSignup';
-import * as chromeInternalMsgs from '../../utils/chrome';
-import { travelToSignup } from '../../utils/test/navigation';
-import { randomString } from '../../utils/test/random';
+} from '../../../../../routes/signup/test/operateSignup';
+import * as chromeInternalMsgs from '../../../../../utils/chrome';
+import { travelToSignup } from '../../../../../utils/test/navigation';
+import { randomString } from '../../../../../utils/test/random';
+import { PersonaData } from '../../backgroundscript';
 
 export async function submitSignup(
   store: Store,

@@ -1,17 +1,17 @@
 import { DRAWER_HTML_ID } from 'medulas-react-components/lib/components/Drawer';
 import TestUtils from 'react-dom/test-utils';
-import { click } from './dom';
-import { findRenderedDOMComponentWithId } from './reactElemFinder';
+import { click } from '../../../utils/test/dom';
+import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
 
 let recoveryPhraseLink: Element;
 let requestsLink: Element;
 
-const initDrawer = async (dom: React.Component): Promise<void> => {
-  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(dom, 'button')[0];
+const initDrawer = async (drawerComponent: React.Component): Promise<void> => {
+  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, 'button')[0];
   expect(drawerButton.getAttribute('aria-label')).toBe('Open drawer');
   click(drawerButton);
 
-  const drawerList = await findRenderedDOMComponentWithId(dom, DRAWER_HTML_ID);
+  const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
   const drawerElements = (drawerList as Element).querySelectorAll('div > div:nth-of-type(2)');
   expect(drawerElements.length).toBe(2);
 
@@ -22,12 +22,12 @@ const initDrawer = async (dom: React.Component): Promise<void> => {
   expect(requestsLink.textContent).toBe('Requests');
 };
 
-export const clickRecoveryPhrase = async (dom: React.Component): Promise<void> => {
-  await initDrawer(dom);
+export const clickRecoveryPhrase = async (drawerComponent: React.Component): Promise<void> => {
+  await initDrawer(drawerComponent);
   click(recoveryPhraseLink);
 };
 
-export const clickRequests = async (dom: React.Component): Promise<void> => {
-  await initDrawer(dom);
+export const clickRequests = async (drawerComponent: React.Component): Promise<void> => {
+  await initDrawer(drawerComponent);
   click(requestsLink);
 };
