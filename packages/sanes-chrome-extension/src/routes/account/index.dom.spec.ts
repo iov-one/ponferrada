@@ -3,24 +3,20 @@ import { TransactionEncoder } from '@iov/core';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import Backgroundscript, {
-  GetPersonaResponse,
-  IovWindowExtension,
-} from '../../extension/background/model/backgroundscript';
-import { Persona, PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
-import {
-  buildGetIdentitiesRequest,
-  generateSignAndPostRequest,
-  isArrayOfPublicIdentity,
-} from '../../extension/background/model/signingServer/test/requestBuilder';
-import * as txsUpdater from '../../extension/background/updaters/appUpdater';
+import { PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
 import { aNewStore } from '../../store';
-import { RootState } from '../../store/reducers';
-import { sleep } from '../../utils/timer';
-import { travelToAccount } from './test/travelToAccount';
+import { resetHistory, RootState } from '../../store/reducers';
+import { click } from '../../utils/test/dom';
+import * as Drawer from '../../utils/test/drawer';
+import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { mockPersonaResponse } from '../../utils/test/persona';
+import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
+import { getDropdown } from './test/operateAccount';
 
 describe('DOM > Feature > Account Status', () => {
-  const accountMock: PersonaAcccount = { label: 'Account 0' };
+  const ACCOUNT = 'Account 0';
+  const NEW_ACCOUNT = 'Account 1';
+  const accountMock: PersonaAcccount = { label: ACCOUNT };
   const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
   const txMock: ProcessedTx = {
     id: '111',
@@ -28,39 +24,54 @@ describe('DOM > Feature > Account Status', () => {
     signer: 'Example Signer',
     amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
     time: 'Sat May 25 10:10:00 2019 +0200',
+    blockExplorerUrl: 'www.blockexplorer.com',
     error: null,
     blockExplorerUrl: null,
   };
-
-  const personaMock: GetPersonaResponse = {
-    accounts: [accountMock],
-    mnemonic,
-    txs: [txMock],
-  };
+  const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock]);
 
   let store: Store<RootState>;
   let accountStatusDom: React.Component;
 
   beforeEach(async () => {
+    resetHistory();
     store = aNewStore();
     accountStatusDom = await travelToAccount(store, personaMock);
-  });
+  }, 60000);
 
-  it('has a hamburger button', () => {
-    const hamburgerButton = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'button')[0];
-    expect(hamburgerButton.getAttribute('aria-label')).toBe('Open drawer');
-  });
+  it('redirects to the Recovery Phrase view when link clicked in Drawer menu', async () => {
+    Drawer.clickRecoveryPhrase(accountStatusDom);
+    await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
+  }, 60000);
 
-  it('has a select dropdown with one account', () => {
+  it('redirects to the Requests view when link clicked in Drawer menu', async () => {
+    Drawer.clickRequests(accountStatusDom);
+    await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
+  }, 60000);
+
+  it('has a select dropdown that enables the creation and selection of accounts', async () => {
     const accountInput = TestUtils.findRenderedDOMComponentWithTag(accountStatusDom, 'input');
-    expect(accountInput.getAttribute('value')).toBe('Account 0');
-  });
+    expect(accountInput.getAttribute('value')).toBe(ACCOUNT);
+
+    //TODO click throws "document.createRange is not a function" error
+    click(accountInput);
+    let dropdown = getDropdown(accountStatusDom);
+    const createAccount = dropdown.children[0].children[0].children[0];
+    click(createAccount);
+
+    click(accountInput);
+    dropdown = getDropdown(accountStatusDom);
+    const newAccount = dropdown.children[0].children[0].children[2];
+    click(newAccount);
+
+    expect(accountInput.getAttribute('value')).toBe(NEW_ACCOUNT);
+  }, 60000);
 
   it('has a transactions box with one transaction', () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'li')[1];
     const txTime = tx.children[1].children[1].textContent;
     expect(txTime).toBe(txMock.time);
-  });
+  }, 60000);
 });
 
 describe('DOM > Feature > Account Status', () => {
