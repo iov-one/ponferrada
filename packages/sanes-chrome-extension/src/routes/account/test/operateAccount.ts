@@ -1,5 +1,14 @@
 import TestUtils from 'react-dom/test-utils';
 
-export const getDropdown = (accountStatusDom: React.Component): Element => {
-  return TestUtils.scryRenderedDOMComponentsWithClass(accountStatusDom, 'MuiList-padding')[1];
+export const getAccountDropDown = (accountStatusDom: React.Component): Element[] => {
+  return TestUtils.scryRenderedDOMComponentsWithClass(accountStatusDom, 'MuiList-padding');
+};
+
+export const checkCreateAccount = (accountStatusDom: React.Component): void => {
+  const accountDropdown = getAccountDropDown(accountStatusDom);
+  expect(accountDropdown.length).toBe(2);
+  const createNewAccount = accountDropdown[0];
+
+  const createAccountElem = createNewAccount.children[0].children[0].children[0];
+  expect(createAccountElem.textContent).toBe('Create a new one');
 };

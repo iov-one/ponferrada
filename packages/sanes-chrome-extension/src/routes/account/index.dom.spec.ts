@@ -19,11 +19,10 @@ import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/naviga
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
-import { getDropdown } from './test/operateAccount';
+import { checkCreateAccount } from './test/operateAccount';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';
-  const NEW_ACCOUNT = 'Account 1';
   const accountMock: PersonaAcccount = { label: ACCOUNT };
   const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
   const txMock: ProcessedTx = {
@@ -60,18 +59,8 @@ describe('DOM > Feature > Account Status', () => {
     const accountInput = TestUtils.findRenderedDOMComponentWithTag(accountStatusDom, 'input');
     expect(accountInput.getAttribute('value')).toBe(ACCOUNT);
 
-    //TODO click throws "document.createRange is not a function" error
-    click(accountInput);
-    let dropdown = getDropdown(accountStatusDom);
-    const createAccount = dropdown.children[0].children[0].children[0];
-    click(createAccount);
-
-    click(accountInput);
-    dropdown = getDropdown(accountStatusDom);
-    const newAccount = dropdown.children[0].children[0].children[2];
-    click(newAccount);
-
-    expect(accountInput.getAttribute('value')).toBe(NEW_ACCOUNT);
+    await click(accountInput);
+    await checkCreateAccount(accountStatusDom);
   }, 60000);
 
   it('has a transactions box with one transaction', () => {
