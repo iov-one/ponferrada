@@ -17,7 +17,7 @@ import {
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
 } from '../signup/test/operateSignup';
-import { submitLoginForm } from './test/submitLoginForm';
+import { submitE2ELoginForm } from './test/submitLoginForm';
 
 withChainsDescribe(
   'DOM > Login route',
@@ -61,7 +61,7 @@ withChainsDescribe(
         waitUntil: 'networkidle2',
       });
       await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
-      await submitLoginForm(page, password);
+      await submitE2ELoginForm(page, password);
       await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
     }, 45000);
   },
