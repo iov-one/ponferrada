@@ -34,3 +34,12 @@ class LocalStorageMock {
 }
 
 global.localStorage = new LocalStorageMock();
+
+global.document.createRange = () => ({
+  setEnd: () => {},
+  setStart: () => {},
+  commonAncestorContainer: {
+    nodeName: 'body',
+    ownerDocument: document,
+  },
+});
