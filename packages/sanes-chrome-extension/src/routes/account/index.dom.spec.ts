@@ -18,6 +18,7 @@ import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { sleep } from '../../utils/timer';
 import { travelToAccount } from './test/travelToAccount';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 
 describe('DOM > Feature > Account Status', () => {
   const accountMock: PersonaAcccount = { label: 'Account 0' };
@@ -63,7 +64,7 @@ describe('DOM > Feature > Account Status', () => {
   });
 });
 
-describe('DOM > Feature > Account Status', () => {
+withChainsDescribe('DOM > Feature > Account Status', () => {
   it('generates a link inside transaction box for an ethereum transaction', async () => {
     // Simulate we start background page
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
