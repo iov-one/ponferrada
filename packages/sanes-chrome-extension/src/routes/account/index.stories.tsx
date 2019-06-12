@@ -22,7 +22,7 @@ const processedTx: ProcessedTx = {
 };
 
 const blockExplorerProcessedTx = {
-  id: '111',
+  id: '112',
   recipient: 'Example Recipient',
   signer: 'Example Signer',
   amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
@@ -32,7 +32,7 @@ const blockExplorerProcessedTx = {
 };
 
 const errorProcessedTx = {
-  id: '111',
+  id: '113',
   recipient: 'Example Recipient',
   signer: 'Example Signer',
   amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
@@ -42,10 +42,13 @@ const errorProcessedTx = {
 };
 
 storiesOf(CHROME_EXTENSION_ROOT, module).add(ACCOUNT_STATUS_PAGE, () => {
+  const processedTx2 = { ...processedTx, id: '114' };
+  const processedTx3 = { ...processedTx, id: '115' };
+
   const persona: GetPersonaResponse = {
     mnemonic: '',
     accounts: [{ label: 'Account 0' }],
-    txs: [blockExplorerProcessedTx, processedTx, errorProcessedTx, processedTx, processedTx],
+    txs: [blockExplorerProcessedTx, processedTx, errorProcessedTx, processedTx2, processedTx3],
   };
 
   return (
