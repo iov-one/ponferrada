@@ -1,6 +1,5 @@
 import { Browser, Page } from 'puppeteer';
 import { IovWindowExtension } from '../../extension/background/model/backgroundscript';
-import { processSignup } from '../../extension/background/model/persona/test/persona';
 import {
   closeBrowser,
   createPage,
@@ -18,6 +17,7 @@ import {
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
 } from '../signup/test/operateSignup';
+import { submitE2ELoginForm } from './test/submitLoginForm';
 
 withChainsDescribe(
   'DOM > Login route',
@@ -61,7 +61,7 @@ withChainsDescribe(
         waitUntil: 'networkidle2',
       });
       await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
-      await processSignup(page, password);
+      await submitE2ELoginForm(page, password);
       await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
     }, 45000);
   },
