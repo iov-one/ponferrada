@@ -2,6 +2,11 @@ import { DRAWER_HTML_ID } from 'medulas-react-components/lib/components/Drawer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { GetPersonaResponse, PersonaData } from '../../extension/background/model/backgroundscript';
+import {
+  mockCreatePersona,
+  mockPersonaResponse,
+  processSignup,
+} from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import * as chromeInternalMsgs from '../../utils/chrome';
@@ -10,7 +15,6 @@ import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { travelToAccount } from '../account/test/travelToAccount';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE } from '../paths';
-import { processSignUp } from '../signup/test/travelToSignup';
 import { travelToRecoveryPhrase } from './test/travelToRecoveryPhrase';
 
 withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
@@ -62,7 +66,9 @@ withChainsDescribe('DOM > Feature > Recovery Phrase', () => {
   });
 
   it('shows the mnemonic for the current Persona', async (): Promise<void> => {
-    const accountDom = await processSignUp(store);
+    const personaMock = mockPersonaResponse([], mnemonic, []);
+    mockCreatePersona(personaMock);
+    const accountDom = await processSignup(store);
     await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
 
     //from account view, click on hamburger button

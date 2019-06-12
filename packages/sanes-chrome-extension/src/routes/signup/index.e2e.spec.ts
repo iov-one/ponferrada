@@ -1,9 +1,13 @@
 import { Browser, Page } from 'puppeteer';
-import { travelToSignupNewAccountStep } from './test/travelToSignup';
-import { submitAccountFormE2E, handlePassPhrase2E, handleSecurityHintE2E } from './test/fillSignupForm';
+import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { launchBrowser, createPage, closeBrowser } from '../../utils/test/e2e';
+import {
+  submitShowPhraseE2E,
+  submitSecurityHintE2E,
+  submitNewAccountE2E,
+  travelToSignupNewAccountStep,
+} from './test/operateSignup';
 
 withChainsDescribe(
   'DOM > Signup route',
@@ -26,9 +30,9 @@ withChainsDescribe(
       void
     > => {
       await travelToSignupNewAccountStep(page);
-      await submitAccountFormE2E(page, randomString(10), randomString(10));
-      await handlePassPhrase2E(page);
-      await handleSecurityHintE2E(page, randomString(10));
+      await submitNewAccountE2E(page, randomString(10), randomString(10));
+      await submitShowPhraseE2E(page);
+      await submitSecurityHintE2E(page, randomString(10));
     }, 60000);
   },
 );

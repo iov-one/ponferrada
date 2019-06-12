@@ -1,16 +1,17 @@
 import { Store } from 'redux';
 import { PersonaAcccount, ProcessedTx } from '..';
+import { ACCOUNT_STATUS_ROUTE } from '../../../../../routes/paths';
 import {
   submitNewAccount,
   submitSecurityHint,
   submitShowPhrase,
 } from '../../../../../routes/signup/test/operateSignup';
 import * as chromeInternalMsgs from '../../../../../utils/chrome';
-import { travelToSignup } from '../../../../../utils/test/navigation';
+import { travelToSignup, whenOnNavigatedToRoute } from '../../../../../utils/test/navigation';
 import { randomString } from '../../../../../utils/test/random';
 import { PersonaData } from '../../backgroundscript';
 
-export async function submitSignup(
+export async function processSignup(
   store: Store,
   accountName?: string,
   password?: string,
@@ -25,6 +26,8 @@ export async function submitSignup(
   await submitNewAccount(signupDom, accountName, password);
   await submitShowPhrase(signupDom);
   await submitSecurityHint(signupDom, accountName, hint);
+
+  await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
 
   const accountStatusDom = signupDom;
 

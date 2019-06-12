@@ -1,6 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { GetPersonaResponse } from '../../../extension/background/messages';
+import { GetPersonaResponse } from '../../../extension/background/model/backgroundscript';
 import { history } from '../../../store/reducers';
 import { createDom } from '../../../utils/test/dom';
 import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
