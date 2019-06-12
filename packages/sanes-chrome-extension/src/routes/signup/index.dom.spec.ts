@@ -187,8 +187,9 @@ describe('DOM > Feature > Signup', () => {
     it('has a question mark button that toggles a tooltip when clicked', async () => {
       let paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p');
       expect(paragraphs.length).toBe(1);
-      //TODO click throws "document.createRange is not a function" error
-      click(questionMark);
+
+      await click(questionMark);
+
       paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p');
       expect(paragraphs.length).toBe(2);
     }, 60000);
