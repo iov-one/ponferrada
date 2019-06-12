@@ -43,7 +43,7 @@ describe('DOM > Feature > Signup', () => {
     resetHistory();
     store = aNewStore();
     signupDom = await travelToSignup(store);
-  }, 60000);
+  }, 10000);
 
   mayTestChains(
     'should finish the signup three steps process',
@@ -52,7 +52,7 @@ describe('DOM > Feature > Signup', () => {
       await submitSignup(store);
       await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
     },
-    60000,
+    10000,
   );
 
   describe('New Account Step', () => {
@@ -75,7 +75,7 @@ describe('DOM > Feature > Signup', () => {
 
     it('has three inputs', () => {
       expect(newAccountInputs.length).toBe(3);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Account Name" input', async () => {
       expect(accountNameInput.getAttribute('placeholder')).toBe('Account name');
@@ -91,7 +91,7 @@ describe('DOM > Feature > Signup', () => {
 
       input(accountNameInput, accountName);
       checkAccountNameValidity(signupDom);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Password" input', () => {
       expect(passwordInput.getAttribute('placeholder')).toBe('Password');
@@ -107,7 +107,7 @@ describe('DOM > Feature > Signup', () => {
 
       input(passwordInput, password);
       expect(getPasswordValidity(signupDom)).toBeUndefined();
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Confirm Password" input', () => {
       expect(passwordConfirmInput.getAttribute('placeholder')).toBe('Confirm Password');
@@ -124,11 +124,11 @@ describe('DOM > Feature > Signup', () => {
 
       input(passwordConfirmInput, password);
       expect(getConfirmPasswordValidity(signupDom)).toBeUndefined();
-    }, 60000);
+    }, 10000);
 
     it('has two buttons', () => {
       expect(buttons.length).toBe(2);
-    }, 60000);
+    }, 10000);
 
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
@@ -137,7 +137,7 @@ describe('DOM > Feature > Signup', () => {
       await travelToSignup(store);
       click(backButton);
       await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Continue" button that redirects to the Show Phrase Form if the form is valid when clicked', async () => {
       expect(continueButton.textContent).toBe('Continue');
@@ -150,13 +150,9 @@ describe('DOM > Feature > Signup', () => {
       expect(isButtonDisabled(continueButton)).toBeFalsy();
       mockCreatePersona(personaMock);
 
-      const submitPasswordForm = async (): Promise<void> => {
-        TestUtils.Simulate.submit(newAccountForm);
-        await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
-      };
-
-      await TestUtils.act(submitPasswordForm as any);
-    }, 60000);
+      await submit(newAccountForm);
+      await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
+    }, 10000);
 
     it('accepts several UTF-8 alphabets as password fields', async () => {
       const password = 'abcαβγазб文字漢字한국';
@@ -164,9 +160,9 @@ describe('DOM > Feature > Signup', () => {
       input(passwordInput, password);
       input(passwordConfirmInput, password);
       mockCreatePersona(personaMock);
-      submit(newAccountForm);
+      await submit(newAccountForm);
       await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
-    }, 60000);
+    }, 10000);
   });
 
   describe('Show Phrase Step', () => {
@@ -194,7 +190,7 @@ describe('DOM > Feature > Signup', () => {
 
       paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p');
       expect(paragraphs.length).toBe(2);
-    }, 60000);
+    }, 10000);
 
     it('has a toggle button that shows the mnemonic when active', async () => {
       const renderedMnemonic = TestUtils.findRenderedDOMComponentWithTag(signupDom, 'p');
@@ -203,21 +199,21 @@ describe('DOM > Feature > Signup', () => {
       await check(checkbox);
 
       expect(renderedMnemonic.textContent).toBe(mnemonic);
-    }, 60000);
+    }, 10000);
 
     it('has a "Back" button that redirects to the previous view when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
 
       await click(backButton);
       await findRenderedDOMComponentWithId(signupDom, FIRST_STEP_SIGNUP_ROUTE);
-    }, 60000);
+    }, 10000);
 
     it('has a "Continue" button that redirects to the Security Hint Form when clicked', async () => {
       expect(continueButton.textContent).toBe('Continue');
 
       click(continueButton);
       await findRenderedDOMComponentWithId(signupDom, SECURITY_HINT_STEP_SIGNUP_ROUTE);
-    }, 60000);
+    }, 10000);
   });
 
   describe('Security Hint Step', () => {

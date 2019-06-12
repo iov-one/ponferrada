@@ -59,6 +59,8 @@ export const check = async (checkbox: Element): Promise<void> => {
   await TestUtils.act(onCheck as any);
 };
 
-export const submit = (form: Element): void => {
-  TestUtils.act(() => TestUtils.Simulate.submit(form));
+export const submit = async (form: Element): Promise<void> => {
+  const onSubmit = async (): Promise<void> => TestUtils.Simulate.submit(form);
+
+  await TestUtils.act(onSubmit as any);
 };
