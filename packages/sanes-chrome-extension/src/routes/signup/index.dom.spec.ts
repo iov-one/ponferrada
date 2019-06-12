@@ -3,7 +3,7 @@ import { Store } from 'redux';
 import {
   mockCreatePersona,
   mockPersonaResponse,
-  submitSignup,
+  processSignup,
 } from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
@@ -49,8 +49,7 @@ describe('DOM > Feature > Signup', () => {
     'should finish the signup three steps process',
     async () => {
       mockCreatePersona(personaMock);
-      await submitSignup(store);
-      await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+      await processSignup(store);
     },
     10000,
   );
