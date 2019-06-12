@@ -33,12 +33,13 @@ export const createDom = (
     </Provider>,
   ) as any;
 
-export const click = (element: Element): void => {
-  TestUtils.act(() => {
+export const click = async (element: Element): Promise<void> => {
+  const onClick = async (): Promise<void> =>
     TestUtils.Simulate.click(element, {
       button: 0,
     });
-  });
+
+  await TestUtils.act(onClick as any);
 };
 
 export const input = (field: Element, value: any): void => {
