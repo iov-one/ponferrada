@@ -70,11 +70,11 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
 
       input(mnemonicTextarea, '1 2 3 4 5 6 7 8 9 10 11 12');
       expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
-    }, 60000);
+    }, 10000);
 
     it('has two buttons', () => {
       expect(buttons.length).toBe(2);
-    }, 60000);
+    }, 10000);
 
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
@@ -83,7 +83,7 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       await travelToRestoreAccount(store);
       click(backButton);
       await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Continue" button that redirects to the Set Password Form if the form is valid when clicked', async () => {
       expect(continueButton.textContent).toBe('Continue');
@@ -92,9 +92,9 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
 
       input(mnemonicTextarea, mnemonic);
       expect(isButtonDisabled(continueButton)).toBeFalsy();
-      click(continueButton);
+      await submit(continueButton);
       await findRenderedDOMComponentWithId(restoreAccountDom, SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE);
-    }, 60000);
+    }, 10000);
   });
 
   describe('Set Password Step', () => {
@@ -113,11 +113,11 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       passwordForm = getPasswordForm(restoreAccountDom);
       buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, 'button');
       [backButton, restoreButton] = buttons;
-    }, 60000);
+    }, 10000);
 
     it('has two inputs', () => {
       expect(inputs.length).toBe(2);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Password" input', () => {
       expect(passwordInput.getAttribute('placeholder')).toBe('Password');
@@ -132,7 +132,7 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
 
       input(passwordInput, password);
       expect(getPasswordValidity(restoreAccountDom)).toBeUndefined();
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Confirm Password" input', () => {
       expect(passwordConfirmInput.getAttribute('placeholder')).toBe('Confirm Password');
@@ -147,18 +147,18 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
 
       input(passwordConfirmInput, password);
       expect(getConfirmPasswordValidity(restoreAccountDom)).toBeUndefined();
-    }, 60000);
+    }, 10000);
 
     it('has two buttons', () => {
       expect(buttons.length).toBe(2);
-    }, 60000);
+    }, 10000);
 
     it('has a "Back" button that redirects to the Set Mnemonic Step when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
 
       click(backButton);
       await findRenderedDOMComponentWithId(restoreAccountDom, RESTORE_ACCOUNT);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Restore" button that redirects to Account Status view if the form is valid when clicked', async () => {
       expect(restoreButton.textContent).toBe('Restore');
@@ -169,9 +169,9 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       input(passwordConfirmInput, password);
       expect(isButtonDisabled(restoreButton)).toBeFalsy();
       mockCreatePersona(personaMock);
-      click(restoreButton);
+      await submit(restoreButton);
       await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
-    }, 60000);
+    }, 10000);
 
     it('accepts several UTF-8 alphabets as password fields', async () => {
       const password = 'abcαβγазб文字漢字한국';
@@ -180,6 +180,6 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       mockCreatePersona(personaMock);
       submit(passwordForm);
       await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
-    }, 60000);
+    }, 10000);
   });
 });
