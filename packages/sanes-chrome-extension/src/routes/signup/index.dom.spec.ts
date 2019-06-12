@@ -140,16 +140,21 @@ describe('DOM > Feature > Signup', () => {
 
     it('has a valid "Continue" button that redirects to the Show Phrase Form if the form is valid when clicked', async () => {
       expect(continueButton.textContent).toBe('Continue');
-
       expect(isButtonDisabled(continueButton)).toBeTruthy();
 
       input(accountNameInput, accountName);
       input(passwordInput, password);
       input(passwordConfirmInput, password);
+
       expect(isButtonDisabled(continueButton)).toBeFalsy();
       mockCreatePersona(personaMock);
-      click(continueButton);
-      await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
+
+      const submitPasswordForm = async (): Promise<void> => {
+        TestUtils.Simulate.submit(newAccountForm);
+        await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
+      };
+
+      await TestUtils.act(submitPasswordForm as any);
     }, 60000);
 
     it('accepts several UTF-8 alphabets as password fields', async () => {
