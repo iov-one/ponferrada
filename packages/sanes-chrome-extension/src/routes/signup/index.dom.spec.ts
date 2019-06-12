@@ -18,9 +18,9 @@ import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from './components/SecurityHintForm';
 import { SECOND_STEP_SIGNUP_ROUTE } from './components/ShowPhraseForm';
 import {
   checkAccountNameValidity,
+  checkHintValidity,
   getConfirmPasswordMismatch,
   getConfirmPasswordValidity,
-  getHintValidity,
   getNewAccountForm,
   getNewAccountInputs,
   getPasswordValidity,
@@ -227,6 +227,7 @@ describe('DOM > Feature > Signup', () => {
     let createButton: Element;
 
     beforeEach(async () => {
+      mockCreatePersona(mockPersonaResponse([], mnemonic, []));
       await submitNewAccount(signupDom, accountName, password);
       await submitShowPhrase(signupDom);
 
@@ -239,11 +240,11 @@ describe('DOM > Feature > Signup', () => {
       expect(hintInput.getAttribute('placeholder')).toBe('Security hint');
 
       input(hintInput, randomString(16));
-      expect(getHintValidity(signupDom).textContent).toBe('15 characters max - Spaces are allowed');
+      checkHintValidity(signupDom, '15 characters max - Spaces are allowed');
 
       input(hintInput, hint);
-      expect(getHintValidity(signupDom)).toBeUndefined();
-    }, 60000);
+      checkHintValidity(signupDom, undefined);
+    }, 10000);
 
     it('has a "Back" button that redirects to the New Account Form when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
