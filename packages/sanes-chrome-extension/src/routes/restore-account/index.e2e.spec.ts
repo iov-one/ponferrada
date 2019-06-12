@@ -2,8 +2,7 @@ import { Browser, Page } from 'puppeteer';
 import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { submitRecoveryPhraseE2E } from './test/fillRecoveryPhrase';
-import { travelToRestoreAccountStep } from './test/travelToRestoreAccount';
+import { submitRecoveryPhraseE2E, travelToRestoreAccountStep } from './test/operateRestoreAccount';
 
 withChainsDescribe('E2E > Restore Account route', () => {
   const password = randomString(10);
