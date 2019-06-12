@@ -1,10 +1,15 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+import {
+  mockCreatePersona,
+  mockLoadPersona,
+  mockPersonaResponse,
+  processSignup,
+} from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { click, input, submit } from '../../utils/test/dom';
 import { travelToLogin, whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { mockCreatePersona, mockPersonaResponse, processSignup } from '../../utils/test/persona';
 import { randomString } from '../../utils/test/random';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { ACCOUNT_STATUS_ROUTE, RESTORE_ACCOUNT, WELCOME_ROUTE } from '../paths';
@@ -69,6 +74,8 @@ describe('DOM > Feature > Login', () => {
     input(passwordInput, password);
     continueButton = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, 'button')[1];
     expect(isButtonDisabled(continueButton)).toBeFalsy();
+
+    mockLoadPersona(personaMock);
     await submit(continueButton);
     await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
   }, 60000);
