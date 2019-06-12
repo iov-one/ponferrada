@@ -30,6 +30,16 @@ export const checkAccountNameValidity = (signupDom: React.Component, error?: str
   expect(elements[0].textContent).toBe(error);
 };
 
+export const checkHintValidity = (signupDom: React.Component, error?: string): void => {
+  const elements = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p');
+
+  if (elements.length === 0) {
+    return;
+  }
+
+  expect(elements[0].textContent).toBe(error);
+};
+
 export const getPasswordValidity = (signupDom: React.Component): Element => {
   return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p')[0];
 };
@@ -44,10 +54,6 @@ export const getConfirmPasswordMismatch = (signupDom: React.Component): Element 
 
 export const getNewAccountForm = (signupDom: React.Component): Element => {
   return TestUtils.findRenderedDOMComponentWithTag(signupDom, 'form');
-};
-
-export const getHintValidity = (signupDom: React.Component): Element => {
-  return TestUtils.findRenderedDOMComponentWithTag(signupDom, 'p');
 };
 
 export const getSecurityHintForm = (signupDom: React.Component): Element => {
