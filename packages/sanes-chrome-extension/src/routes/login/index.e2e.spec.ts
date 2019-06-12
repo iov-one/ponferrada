@@ -1,5 +1,6 @@
 import { Browser, Page } from 'puppeteer';
 import { IovWindowExtension } from '../../extension/background/model/backgroundscript';
+import { processSignup } from '../../extension/background/model/persona/test/persona';
 import {
   closeBrowser,
   createPage,
@@ -10,7 +11,7 @@ import {
 import { randomString } from '../../utils/test/random';
 import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { ACCOUNT_STATUS_ROUTE } from '../paths';
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
 import {
   submitNewAccountE2E,
   submitSecurityHintE2E,
@@ -60,7 +61,7 @@ withChainsDescribe(
         waitUntil: 'networkidle2',
       });
       await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
-      await submitLoginForm(page, password);
+      await processSignup(page, password);
       await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
     }, 45000);
   },

@@ -4,7 +4,7 @@ import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { click, input, submit } from '../../utils/test/dom';
 import { travelToLogin, whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { mockCreatePersona, mockPersonaResponse, submitSignup } from '../../utils/test/persona';
+import { mockCreatePersona, mockPersonaResponse, processSignup } from '../../utils/test/persona';
 import { randomString } from '../../utils/test/random';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { ACCOUNT_STATUS_ROUTE, RESTORE_ACCOUNT, WELCOME_ROUTE } from '../paths';
@@ -57,7 +57,7 @@ describe('DOM > Feature > Login', () => {
     const personaMock = mockPersonaResponse([], mnemonic, []);
 
     mockCreatePersona(personaMock);
-    await submitSignup(store, undefined, password);
+    await processSignup(store, undefined, password);
     loginDom = await travelToLogin(store);
 
     continueButton = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, 'button')[1];
