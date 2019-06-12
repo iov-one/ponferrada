@@ -3,13 +3,21 @@ import { TransactionEncoder } from '@iov/core';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
+import Backgroundscript, { IovWindowExtension } from '../../extension/background/model/backgroundscript';
+import { Persona, PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
+import { mockPersonaResponse } from '../../extension/background/model/persona/test/persona';
+import {
+  buildGetIdentitiesRequest,
+  generateSignAndPostRequest,
+  isArrayOfPublicIdentity,
+} from '../../extension/background/model/signingServer/test/requestBuilder';
+import * as txsUpdater from '../../extension/background/updaters/appUpdater';
 import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { click } from '../../utils/test/dom';
-import * as Drawer from '../../utils/test/drawer';
 import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { mockPersonaResponse } from '../../utils/test/persona';
+import { sleep } from '../../utils/timer';
+import * as Drawer from '../account/test/drawer';
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import { getDropdown } from './test/operateAccount';
 
@@ -26,7 +34,6 @@ describe('DOM > Feature > Account Status', () => {
     time: 'Sat May 25 10:10:00 2019 +0200',
     blockExplorerUrl: 'www.blockexplorer.com',
     error: null,
-    blockExplorerUrl: null,
   };
   const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock]);
 
