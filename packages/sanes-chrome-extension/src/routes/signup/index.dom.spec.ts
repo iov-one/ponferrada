@@ -7,7 +7,7 @@ import {
 } from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
-import { click, input, submit } from '../../utils/test/dom';
+import { check, click, input, submit } from '../../utils/test/dom';
 import { travelToSignup, travelToWelcome, whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { randomString } from '../../utils/test/random';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
@@ -198,7 +198,9 @@ describe('DOM > Feature > Signup', () => {
     it('has a toggle button that shows the mnemonic when active', async () => {
       const renderedMnemonic = TestUtils.findRenderedDOMComponentWithTag(signupDom, 'p');
       expect(renderedMnemonic.textContent).toBe('');
-      click(checkbox);
+
+      await check(checkbox);
+
       expect(renderedMnemonic.textContent).toBe(mnemonic);
     }, 60000);
 
