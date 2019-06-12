@@ -1,22 +1,22 @@
 import { Browser, Page } from 'puppeteer';
-import {
-  launchBrowser,
-  createPage,
-  closeBrowser,
-  getBackgroundPage,
-  EXTENSION_ID,
-} from '../../utils/test/e2e';
 import { IovWindowExtension } from '../../extension/background/model/backgroundscript';
-import { travelToSignupNewAccountStep } from '../signup/test/travelToSignup';
 import {
-  submitAccountFormE2E,
-  handlePassPhrase2E,
-  handleSecurityHintE2E,
-} from '../signup/test/fillSignupForm';
+  closeBrowser,
+  createPage,
+  EXTENSION_ID,
+  getBackgroundPage,
+  launchBrowser,
+} from '../../utils/test/e2e';
 import { randomString } from '../../utils/test/random';
 import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
+import {
+  submitNewAccountE2E,
+  submitSecurityHintE2E,
+  submitShowPhraseE2E,
+  travelToSignupNewAccountStep,
+} from '../signup/test/operateSignup';
 import { submitLoginForm } from './test/submitLoginForm';
 
 withChainsDescribe(
@@ -41,9 +41,9 @@ withChainsDescribe(
     it('should redirect to login route after browser restart', async (): Promise<void> => {
       await travelToSignupNewAccountStep(page);
       const password = randomString(10);
-      await submitAccountFormE2E(page, randomString(10), password);
-      await handlePassPhrase2E(page);
-      await handleSecurityHintE2E(page, randomString(10));
+      await submitNewAccountE2E(page, randomString(10), password);
+      await submitShowPhraseE2E(page);
+      await submitSecurityHintE2E(page, randomString(10));
       //Simulating reload
       await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
         waitUntil: 'networkidle2',
