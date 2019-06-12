@@ -5,11 +5,10 @@ import Typography from '../../components/Typography';
 interface Props {
   readonly primaryTitle: string;
   readonly secondaryTitle: string;
-  readonly phone: boolean;
 }
 
-const TitleSection = ({ primaryTitle, secondaryTitle, phone }: Props): JSX.Element => (
-  <Block padding={phone ? 3 : 6} maxWidth={450} margin={2}>
+const TitleSection = ({ primaryTitle, secondaryTitle }: Props): JSX.Element => (
+  <Block padding={6} maxWidth={450} margin={2}>
     <Typography variant="h4" color="primary" inline>
       {`${primaryTitle} `}
     </Typography>
