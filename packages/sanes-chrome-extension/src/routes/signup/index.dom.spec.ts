@@ -249,13 +249,12 @@ describe('DOM > Feature > Signup', () => {
     it('has a "Back" button that redirects to the New Account Form when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
 
-      click(backButton);
+      await click(backButton);
       await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
-    }, 60000);
+    }, 10000);
 
     it('has a valid "Create" button that redirects to the Account Status view when clicked', async () => {
       expect(createButton.textContent).toBe('Create');
-
       expect(isButtonDisabled(createButton)).toBeFalsy();
 
       input(hintInput, randomString(16));
@@ -263,9 +262,9 @@ describe('DOM > Feature > Signup', () => {
 
       input(hintInput, hint);
       expect(isButtonDisabled(createButton)).toBeFalsy();
-      mockCreatePersona(personaMock);
-      click(createButton);
+
+      await submit(createButton);
       await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
-    }, 60000);
+    }, 10000);
   });
 });
