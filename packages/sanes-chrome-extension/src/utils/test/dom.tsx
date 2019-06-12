@@ -50,12 +50,13 @@ export const input = (field: Element, value: any): void => {
   });
 };
 
-export const check = (checkbox: Element): void => {
-  TestUtils.act(() => {
+export const check = async (checkbox: Element): Promise<void> => {
+  const onCheck = async (): Promise<void> =>
     TestUtils.Simulate.change(checkbox, {
       target: { checked: true } as any,
     });
-  });
+
+  await TestUtils.act(onCheck as any);
 };
 
 export const submit = (form: Element): void => {
