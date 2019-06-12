@@ -70,7 +70,6 @@ describe('DOM > Feature > Share Identity', (): void => {
     await checkPermanentRejection(identityDOM);
     await confirmRejectButton(identityDOM);
     await sleep(2000);
-    //TODO: Check here that share request rejection has been reject successfuly and permanent
     //rejection flag has been set
   }, 60000);
 });
