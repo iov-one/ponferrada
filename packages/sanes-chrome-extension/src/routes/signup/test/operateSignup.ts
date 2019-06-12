@@ -1,9 +1,5 @@
 import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
-import {
-  mockCreatePersona,
-  mockPersonaResponse,
-} from '../../../extension/background/model/persona/test/persona';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
 import { click, input, submit } from '../../../utils/test/dom';
 import {
@@ -87,8 +83,6 @@ export const submitNewAccount = async (
   input(accountNameField, accountName);
   input(passwordField, password);
   input(passwordConfirmField, password);
-
-  mockCreatePersona(mockPersonaResponse([], 'test mnemonic', []));
 
   const newAccountForm = TestUtils.findRenderedDOMComponentWithTag(newAccountDom, 'form');
   const submitPasswordForm = async (): Promise<void> => {

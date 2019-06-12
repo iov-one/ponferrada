@@ -176,6 +176,7 @@ describe('DOM > Feature > Signup', () => {
     let continueButton: Element;
 
     beforeEach(async () => {
+      mockCreatePersona(mockPersonaResponse([], mnemonic, []));
       await submitNewAccount(signupDom, accountName, password);
 
       questionMark = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'img')[0];
