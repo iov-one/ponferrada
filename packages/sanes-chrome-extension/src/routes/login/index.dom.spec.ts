@@ -69,8 +69,7 @@ describe('DOM > Feature > Login', () => {
     input(passwordInput, password);
     continueButton = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, 'button')[1];
     expect(isButtonDisabled(continueButton)).toBeFalsy();
-    click(continueButton);
-    //TODO does not redirect to Account Status View
+    await submit(continueButton);
     await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
   }, 60000);
 
