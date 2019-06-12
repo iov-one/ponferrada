@@ -1,10 +1,13 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+import {
+  mockCreatePersona,
+  mockPersonaResponse,
+} from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { click, input, submit } from '../../utils/test/dom';
 import { travelToLogin, travelToRestoreAccount, whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { mockCreatePersona, mockPersonaResponse } from '../../utils/test/persona';
 import { randomString } from '../../utils/test/random';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
@@ -90,7 +93,6 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       input(mnemonicTextarea, mnemonic);
       expect(isButtonDisabled(continueButton)).toBeFalsy();
       click(continueButton);
-      //TODO does not redirect to Set Password Step
       await findRenderedDOMComponentWithId(restoreAccountDom, SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE);
     }, 60000);
   });
@@ -168,7 +170,6 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       expect(isButtonDisabled(restoreButton)).toBeFalsy();
       mockCreatePersona(personaMock);
       click(restoreButton);
-      //TODO does not redirect to Account Status View
       await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
     }, 60000);
 
