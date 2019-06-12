@@ -1,10 +1,14 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+import {
+  mockCreatePersona,
+  mockPersonaResponse,
+  submitSignup,
+} from '../../extension/background/model/persona/test/persona';
 import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { click, input, submit } from '../../utils/test/dom';
 import { travelToSignup, travelToWelcome, whenOnNavigatedToRoute } from '../../utils/test/navigation';
-import { mockCreatePersona, mockPersonaResponse, submitSignup } from '../../utils/test/persona';
 import { randomString } from '../../utils/test/random';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { mayTestChains } from '../../utils/test/testExecutor';
@@ -13,6 +17,7 @@ import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from './components/SecurityHintForm';
 import { SECOND_STEP_SIGNUP_ROUTE } from './components/ShowPhraseForm';
 import {
   getAccountNameValidity,
+  getConfirmPasswordMismatch,
   getConfirmPasswordValidity,
   getHintValidity,
   getNewAccountForm,
@@ -21,7 +26,6 @@ import {
   isButtonDisabled,
   submitNewAccount,
   submitShowPhrase,
-  getConfirmPasswordMismatch,
 } from './test/operateSignup';
 
 describe('DOM > Feature > Signup', () => {
