@@ -16,7 +16,7 @@ import { ACCOUNT_STATUS_ROUTE, SIGNUP_ROUTE, WELCOME_ROUTE } from '../paths';
 import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from './components/SecurityHintForm';
 import { SECOND_STEP_SIGNUP_ROUTE } from './components/ShowPhraseForm';
 import {
-  getAccountNameValidity,
+  checkAccountNameValidity,
   getConfirmPasswordMismatch,
   getConfirmPasswordValidity,
   getHintValidity,
@@ -76,22 +76,20 @@ describe('DOM > Feature > Signup', () => {
       expect(newAccountInputs.length).toBe(3);
     }, 60000);
 
-    it('has a valid "Account Name" input', () => {
+    it('has a valid "Account Name" input', async () => {
       expect(accountNameInput.getAttribute('placeholder')).toBe('Account name');
 
       input(passwordInput, password);
       input(passwordConfirmInput, password);
 
       submit(newAccountForm);
-      expect(getAccountNameValidity(signupDom).textContent).toBe('Required');
+      checkAccountNameValidity(signupDom, 'Required');
 
       input(accountNameInput, randomString(7));
-      expect(getAccountNameValidity(signupDom).textContent).toBe(
-        'Username should have at least 8 characters',
-      );
+      checkAccountNameValidity(signupDom, 'Username should have at least 8 characters');
 
       input(accountNameInput, accountName);
-      expect(getAccountNameValidity(signupDom)).toBeUndefined();
+      checkAccountNameValidity(signupDom);
     }, 60000);
 
     it('has a valid "Password" input', () => {

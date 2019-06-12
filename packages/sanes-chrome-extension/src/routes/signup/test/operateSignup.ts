@@ -20,8 +20,14 @@ export const getNewAccountInputs = (signupDom: React.Component): Element[] => {
   return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'input');
 };
 
-export const getAccountNameValidity = (signupDom: React.Component): Element => {
-  return TestUtils.findRenderedDOMComponentWithTag(signupDom, 'p');
+export const checkAccountNameValidity = (signupDom: React.Component, error?: string): void => {
+  const elements = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p');
+
+  if (elements.length === 0) {
+    return;
+  }
+
+  expect(elements[0].textContent).toBe(error);
 };
 
 export const getPasswordValidity = (signupDom: React.Component): Element => {
