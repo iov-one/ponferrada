@@ -12,7 +12,8 @@ import { travelToSignup, travelToWelcome, whenOnNavigatedToRoute } from '../../u
 import { randomString } from '../../utils/test/random';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { mayTestChains } from '../../utils/test/testExecutor';
-import { ACCOUNT_STATUS_ROUTE, SIGNUP_ROUTE, WELCOME_ROUTE } from '../paths';
+import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from '../paths';
+import { FIRST_STEP_SIGNUP_ROUTE } from './components/NewAccountForm';
 import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from './components/SecurityHintForm';
 import { SECOND_STEP_SIGNUP_ROUTE } from './components/ShowPhraseForm';
 import {
@@ -204,11 +205,11 @@ describe('DOM > Feature > Signup', () => {
       expect(renderedMnemonic.textContent).toBe(mnemonic);
     }, 60000);
 
-    it('has a "Back" button that redirects to the New Account Form when clicked', async () => {
+    it('has a "Back" button that redirects to the previous view when clicked', async () => {
       expect(backButton.textContent).toBe('Back');
 
-      click(backButton);
-      await findRenderedDOMComponentWithId(signupDom, SIGNUP_ROUTE);
+      await click(backButton);
+      await findRenderedDOMComponentWithId(signupDom, FIRST_STEP_SIGNUP_ROUTE);
     }, 60000);
 
     it('has a "Continue" button that redirects to the Security Hint Form when clicked', async () => {
