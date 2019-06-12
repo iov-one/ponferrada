@@ -12,9 +12,9 @@ interface Props {
 }
 
 const MatchMedia = ({ children }: Props): JSX.Element => {
-  const phone = useMediaQuery(`(min-width:${phoneScreen}px)`);
+  const isPhone = useMediaQuery(`(max-width:${phoneScreen}px)`);
 
-  return <MatchMediaContext.Provider value={phone}>{children}</MatchMediaContext.Provider>;
+  return <MatchMediaContext.Provider value={isPhone}>{children}</MatchMediaContext.Provider>;
 };
 
 export default MatchMedia;
