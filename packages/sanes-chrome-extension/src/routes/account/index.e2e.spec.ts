@@ -3,8 +3,10 @@ import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
-import { submitRecoveryPhraseE2E } from '../restore-account/test/fillRecoveryPhrase';
-import { travelToRestoreAccountStep } from '../restore-account/test/travelToRestoreAccount';
+import {
+  submitRecoveryPhraseE2E,
+  travelToRestoreAccountStep,
+} from '../restore-account/test/operateRestoreAccount';
 
 withChainsDescribe('E2E > Account route', () => {
   let browser: Browser;
