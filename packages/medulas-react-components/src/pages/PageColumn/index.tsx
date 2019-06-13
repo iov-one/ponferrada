@@ -36,10 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     margin: '0 auto',
   },
-  form: {
-    width: '100%',
-    height: '100%',
-  },
 }));
 
 const Layout = ({
