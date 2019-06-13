@@ -12,6 +12,7 @@ import SubtitleSection from './SubtitleSection';
 import TitleSection from './TitleSection';
 import useTheme from '@material-ui/styles/useTheme';
 import { FormApi } from 'final-form';
+import BoxScroll from '~/components/BoxScroll';
 
 interface Props {
   readonly leftMenu: () => JSX.Element;
@@ -59,7 +60,8 @@ const Layout = ({
   return (
     <Block
       display="flex"
-      flex="1 1 auto"
+      flexGrow={1}
+      flexShrink={1}
       flexDirection="row"
       flexWrap="wrap"
       bgcolor={theme.palette.background.paper}
@@ -71,14 +73,14 @@ const Layout = ({
       <Block flexGrow={1}>
         <Form onSubmit={handleSubmit}>
           <Block display="flex" flexDirection="column">
-            <Block scroll>
+            <BoxScroll>
               <Block marginLeft="8.333%" marginRight="8.333%">
                 {renderHeader ? renderHeader() : <EmptyHeader />}
                 <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
                 <SubtitleSection text={subtitle} />
                 {formRender(form)}
               </Block>
-            </Block>
+            </BoxScroll>
             <Block>
               <Hairline />
               <Block>
