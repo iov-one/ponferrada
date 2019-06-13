@@ -1,0 +1,26 @@
+{
+  "name": "sil-voting-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "medulas-react-components": "^0.0.4",
+    "normalize.css": "^8.0.1",
+    "react": "16.9.0-alpha.0",
+    "react-dom": "16.9.0-alpha.0"
+  },
+  "devDependencies": {
+    "react-scripts": "3.0.0"
+  },
+  "scripts": {
+    "lint": "eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
