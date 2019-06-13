@@ -1,18 +1,20 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 import * as React from 'react';
 import ThemeProvider from '../../theme/MedulasThemeProvider';
-import theme from '../../theme/utils/mui';
 
 interface Props {
   readonly children: React.ReactNode;
 }
 
-const globalStyles = makeStyles({
+const globalStyles = makeStyles((theme: Theme) => ({
   '@global': {
     '*': {
       boxSizing: 'inherit',
       WebkitFontSmoothing: 'antialiased', // Antialiasing.
       MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+    },
+    'a:-webkit-any-link': {
+      color: 'inherit',
     },
     '*::before, *::after': {
       boxSizing: 'inherit',
@@ -30,9 +32,13 @@ const globalStyles = makeStyles({
       overflowX: 'hidden',
       fontFamily: '"Muli", sans-serif',
       boxSizing: 'border-box',
+      backgroundColor: theme.palette.background.default,
+      textRendering: 'geometricPrecision',
+      '-webkit-font-smoothing': 'antialiased',
+      '-moz-osx-font-smoothing': 'grayscale',
     },
   },
-});
+}));
 
 export const Storybook = ({ children }: Props): JSX.Element => (
   <ThemeProvider injectFonts injectStyles={globalStyles}>
