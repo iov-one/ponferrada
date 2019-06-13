@@ -13,10 +13,9 @@ import TitleSection from './TitleSection';
 import useTheme from '@material-ui/styles/useTheme';
 import { FormApi } from 'final-form';
 import BoxScroll from '~/components/BoxScroll';
+import people from '../assets/People.svg';
 
 interface Props {
-  readonly leftMenu: () => JSX.Element;
-
   readonly icon: 'white' | 'black';
   readonly nextMsg: string;
   readonly onSubmit: (values: object) => void;
@@ -48,7 +47,6 @@ const Layout = ({
   subtitle,
   nextMsg,
   renderHeader,
-  leftMenu,
 }: Props): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme<Theme>();
@@ -67,7 +65,7 @@ const Layout = ({
       bgcolor={theme.palette.background.paper}
     >
       <Block>
-        {leftMenu()}
+        <Img src={people} alt="Log in Image" cover />
         <Img src={icon === 'black' ? logoBlack : logo} alt="Logo" className={classes.logo} />
       </Block>
       <Block flexGrow={1}>
