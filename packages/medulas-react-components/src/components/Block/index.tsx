@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Box from '@material-ui/core/Box';
 import { SizingBreakpoint } from '../Grid';
+import classNames from 'classnames';
+import { Theme, makeStyles } from '@material-ui/core';
 
 export type Unit = 0 | 1 | 2 | 3 | 4;
 
@@ -75,15 +77,26 @@ interface Props {
   readonly bgcolor?: string;
   //Regular react.component props
   readonly className?: string;
+  //Custom props
+  readonly scroll?: boolean;
 }
 
 // TODO fix once the proper BoxProps have been updated
 // See: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/Box/Box.d.ts
 const IovBlock = Box as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const Block = ({ children, display = 'block', ...restProps }: Props): JSX.Element => {
+const useStyles = makeStyles((theme: Theme) => ({
+  scroll: {
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+  },
+}));
+
+const Block = ({ children, display = 'block', scroll, className, ...restProps }: Props): JSX.Element => {
+  const classes = useStyles();
+  const blockClasses = classNames({ className, [classes.scroll]: scroll });
   return (
-    <IovBlock display={display} {...restProps}>
+    <IovBlock className={blockClasses} display={display} {...restProps}>
       {children}
     </IovBlock>
   );
