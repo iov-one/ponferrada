@@ -22,6 +22,16 @@ storiesOf('Components', module).add(
           </Button>
         </GridItem>
         <GridItem marginBottom={4}>
+          <Button onClick={action('clicked')} variant="continue">
+            Continue
+          </Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
+          <Button onClick={action('clicked')} spinner>
+            Loading
+          </Button>
+        </GridItem>
+        <GridItem marginBottom={4}>
           <Button onClick={action('clicked')} color="secondary">
             Cancel
           </Button>
