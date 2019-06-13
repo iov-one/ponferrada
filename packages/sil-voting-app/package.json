@@ -11,11 +11,7 @@
     "lint": "eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test-dom": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-e2e": "CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
-    "use-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../sil-voting-app",
-    "test": "yarn use-config-development && yarn test-dom && yarn test-e2e"
+    "build": "react-scripts build"
   },
   "browserslist": [
     ">0.2%",
