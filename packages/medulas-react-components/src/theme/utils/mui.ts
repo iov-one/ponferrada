@@ -95,6 +95,10 @@ const themeObject: ThemeOptions = {
           backgroundColor: '#2cd0b6',
         },
       },
+      sizeLarge: {
+        minHeight: '50px',
+        fontSize: '1.9rem',
+      },
     },
     MuiFormHelperText: {
       root: {
