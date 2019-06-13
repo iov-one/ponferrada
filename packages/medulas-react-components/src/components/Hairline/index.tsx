@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Block, { Unit } from '../Block';
+import Block from '../Block';
 
 interface Props {
-  readonly space?: Unit;
+  readonly space?: number;
   readonly color?: string;
 }
 
