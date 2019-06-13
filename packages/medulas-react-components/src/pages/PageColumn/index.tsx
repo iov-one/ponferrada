@@ -12,7 +12,7 @@ import SubtitleSection from './SubtitleSection';
 import TitleSection from './TitleSection';
 import useTheme from '@material-ui/styles/useTheme';
 import { FormApi } from 'final-form';
-import BoxScroll from '~/components/BoxScroll';
+import BoxScroll from '../../components/BoxScroll';
 import people from '../assets/People.svg';
 
 interface Props {
