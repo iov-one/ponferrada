@@ -1,19 +1,19 @@
 import { makeStyles, Theme } from '@material-ui/core';
+import useTheme from '@material-ui/styles/useTheme';
+import { FormApi } from 'final-form';
 import React from 'react';
-import Form, { useForm } from '../../components/forms/Form';
 import Block from '../../components/Block';
+import BoxScroll from '../../components/BoxScroll';
 import Button from '../../components/Button';
+import Form, { useForm } from '../../components/forms/Form';
 import Hairline from '../../components/Hairline';
 import Img from '../../components/Image';
 import logo from '../assets/logo.svg';
 import logoBlack from '../assets/logoBlack.svg';
+import people from '../assets/People.svg';
 import EmptyHeader from './EmptyHeader';
 import SubtitleSection from './SubtitleSection';
 import TitleSection from './TitleSection';
-import useTheme from '@material-ui/styles/useTheme';
-import { FormApi } from 'final-form';
-import BoxScroll from '../../components/BoxScroll';
-import people from '../assets/People.svg';
 
 interface Props {
   readonly icon: 'white' | 'black';
@@ -35,6 +35,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     display: 'flex',
     margin: '0 auto',
+  },
+  form: {
+    display: 'flex',
+    height: '100vh',
+    flexDirection: 'column',
   },
 }));
 
@@ -69,34 +74,27 @@ const Layout = ({
         <Img src={icon === 'black' ? logoBlack : logo} alt="Logo" className={classes.logo} />
       </Block>
       <Block flexGrow={1}>
-        <Form onSubmit={handleSubmit}>
-          <Block display="flex" flexDirection="column">
-            <BoxScroll>
-              <Block marginLeft="8.333%" marginRight="8.333%">
-                {renderHeader ? renderHeader() : <EmptyHeader />}
-                <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
-                <SubtitleSection text={subtitle} />
-                {formRender(form)}
-              </Block>
-            </BoxScroll>
-            <Block>
-              <Hairline />
-              <Block>
-                <Block margin={2} />
-                <Block display="flex" justifyContent="flex-end">
-                  <Button
-                    variant="continue"
-                    color="primary"
-                    type="submit"
-                    disabled={invalid || submitting || validating}
-                    size="large"
-                    spinner={submitting || validating}
-                  >
-                    {`${nextMsg}\u00a0`}
-                  </Button>
-                </Block>
-              </Block>
+        <Form onSubmit={handleSubmit} className={classes.form}>
+          <BoxScroll flexGrow={1}>
+            <Block marginLeft="8.333%" marginRight="8.333%">
+              {renderHeader ? renderHeader() : <EmptyHeader />}
+              <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
+              <SubtitleSection text={subtitle} />
+              {formRender(form)}
             </Block>
+          </BoxScroll>
+          <Hairline />
+          <Block padding={2} marginRight={8} display="flex" justifyContent="flex-end">
+            <Button
+              variant="continue"
+              color="primary"
+              type="submit"
+              disabled={invalid || submitting || validating}
+              size="large"
+              spinner={submitting || validating}
+            >
+              {`${nextMsg}\u00a0`}
+            </Button>
           </Block>
         </Form>
       </Block>
