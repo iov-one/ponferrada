@@ -1,7 +1,26 @@
+import Box from '@material-ui/core/Box';
+import {
+  border,
+  ComposedStyleFunction,
+  display,
+  flexbox,
+  palette,
+  PropsFor,
+  sizing,
+  spacing,
+} from '@material-ui/system';
 import * as React from 'react';
-import Box, { BoxProps } from '@material-ui/core/Box';
 
-const Block = ({ children, display = 'block', ...restProps }: BoxProps): JSX.Element => {
+type BlockStyleFunction = ComposedStyleFunction<
+  [typeof flexbox, typeof sizing, typeof spacing, typeof display, typeof border, typeof palette]
+>;
+type BlockStyleProps = PropsFor<BlockStyleFunction>;
+
+interface Props extends BlockStyleProps {
+  readonly children?: React.ReactNode;
+}
+
+const Block = ({ children, display = 'block', ...restProps }: Props): JSX.Element => {
   return (
     <Box display={display} {...restProps}>
       {children}
