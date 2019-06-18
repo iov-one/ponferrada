@@ -19,7 +19,7 @@ interface Props {
   readonly icon: 'white' | 'black';
   readonly nextMsg: string;
   readonly onSubmit: (values: object) => void;
-  readonly formRender: (form: FormApi) => JSX.Element;
+  readonly formRender?: (form: FormApi) => JSX.Element;
   readonly validation?: (values: object) => object | Promise<object>;
 
   readonly primaryTitle: string;
@@ -80,7 +80,7 @@ const Layout = ({
               {renderHeader ? renderHeader() : <EmptyHeader />}
               <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
               <SubtitleSection text={subtitle} />
-              {formRender(form)}
+              {formRender && formRender(form)}
             </Block>
           </BoxScroll>
           <Hairline />
