@@ -1,5 +1,5 @@
 /*global chrome*/
-import { ProcessedTx } from '../../../logic/persona';
+import { ProcessedTx } from '../model/persona';
 
 /**
  * String values will be used in the JSON message objects

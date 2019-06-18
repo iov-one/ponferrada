@@ -40,6 +40,7 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
       {action === 'show' && (
         <ShowRequest
           tx={data.tx}
+          creator={data.creator}
           sender={data.senderUrl}
           onAcceptRequest={onAcceptRequest}
           showRejectView={showRejectView}

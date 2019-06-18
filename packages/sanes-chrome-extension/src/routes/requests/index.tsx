@@ -5,7 +5,7 @@ import { ToastContextInterface } from 'medulas-react-components/lib/context/Toas
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
 import { RequestContext } from '../../context/RequestProvider';
-import { Request } from '../../extension/background/actions/createPersona/requestHandler';
+import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../store/reducers';
 import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from '../paths';
 import RequestList, { REQUEST_FIELD } from './components/RequestList';

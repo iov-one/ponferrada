@@ -12,7 +12,7 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "lint": "eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "react-scripts start",
     "build": "react-scripts build"

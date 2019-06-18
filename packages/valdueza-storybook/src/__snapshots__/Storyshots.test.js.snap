@@ -3573,7 +3573,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Sign Request
+            Get Identities Request
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextPrimary"
@@ -3640,12 +3640,12 @@ exports[`Storyshots Extension Request queue page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Sign Request
+            Get Identities Request
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextPrimary"
           >
-            Please sign it asap
+            Please get Identities on new website
           </p>
         </div>
       </li>

@@ -29,12 +29,12 @@ retry 3 yarn install
 # Build
 #
 
-fold_start "yarn-lint"
-yarn lint
-fold_end
-
 fold_start "yarn-build"
 yarn build
+fold_end
+
+fold_start "yarn-lint"
+yarn lint
 fold_end
 
 #
