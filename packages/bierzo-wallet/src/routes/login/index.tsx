@@ -1,10 +1,14 @@
 import PageColumn from 'medulas-react-components/lib/pages/PageColumn';
 import * as React from 'react';
+import { history } from '..';
+import { WELCOME_ROUTE } from '../paths';
 
 const SignupSection = (): JSX.Element => <React.Fragment />;
 
 const Login = (): JSX.Element => {
-  const onSubmit = (_: object): void => {};
+  const onSubmit = (_: object): void => {
+    history.push(WELCOME_ROUTE);
+  };
 
   return (
     <PageColumn
