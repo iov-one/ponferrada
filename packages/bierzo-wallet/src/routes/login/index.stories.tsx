@@ -9,7 +9,7 @@ storiesOf(WALLET_ROOT, module)
     'Login page',
     (): JSX.Element => (
       <DecoratedStorybook>
-        <Login onSubmit={() => {}} />
+        <Login />
       </DecoratedStorybook>
     ),
   );
