@@ -13,6 +13,7 @@ import {
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import { submitExtensionSignupForm } from './test/fillSignupForm';
+import { travelToWelcomeE2e } from './test/travelToWelcome';
 
 withChainsDescribe(
   'DOM > Welcome route',
@@ -58,6 +59,8 @@ withChainsDescribe(
     });
 
     it('should made three share identity requests', async (): Promise<void> => {
+      await travelToWelcomeE2e(page);
+
       //Create 3 share idenity requests.
       await page.click('button:nth-of-type(2)');
       await closeToast(page);

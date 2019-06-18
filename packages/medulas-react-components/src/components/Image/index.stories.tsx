@@ -1,13 +1,13 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Image from './index';
-import CircleImage from './CircleImage';
-import { Storybook } from '../../utils/storybook';
-import iovLogo from './assets/iov-logo.png';
 import download from '../../theme/assets/download.svg';
+import iovLogo from '../../theme/assets/iov-logo2x.png';
+import theme from '../../theme/utils/mui';
+import { Storybook } from '../../utils/storybook';
 import Grid from '../Grid';
 import GridItem from '../GridItem';
-import theme from '../../theme/utils/mui';
+import CircleImage from './CircleImage';
+import Image from './index';
 
 storiesOf('Components', module).add(
   'Images',

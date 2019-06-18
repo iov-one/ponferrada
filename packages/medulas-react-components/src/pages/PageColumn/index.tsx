@@ -8,9 +8,9 @@ import Button from '../../components/Button';
 import Form, { useForm } from '../../components/forms/Form';
 import Hairline from '../../components/Hairline';
 import Img from '../../components/Image';
-import logo from '../assets/logo.svg';
-import logoBlack from '../assets/logoBlack.svg';
-import people from '../assets/People.svg';
+import logo from '../../theme/assets/pageColumn/logo.svg';
+import logoBlack from '../../theme/assets/pageColumn/logoBlack.svg';
+import people from '../../theme/assets/pageColumn/People.svg';
 import EmptyHeader from './EmptyHeader';
 import SubtitleSection from './SubtitleSection';
 import TitleSection from './TitleSection';
@@ -19,7 +19,7 @@ interface Props {
   readonly icon: 'white' | 'black';
   readonly nextMsg: string;
   readonly onSubmit: (values: object) => void;
-  readonly formRender: (form: FormApi) => JSX.Element;
+  readonly formRender?: (form: FormApi) => JSX.Element;
   readonly validation?: (values: object) => object | Promise<object>;
 
   readonly primaryTitle: string;
@@ -80,7 +80,7 @@ const Layout = ({
               {renderHeader ? renderHeader() : <EmptyHeader />}
               <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
               <SubtitleSection text={subtitle} />
-              {formRender(form)}
+              {formRender && formRender(form)}
             </Block>
           </BoxScroll>
           <Hairline />

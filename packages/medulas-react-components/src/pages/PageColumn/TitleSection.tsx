@@ -8,7 +8,7 @@ interface Props {
 }
 
 const TitleSection = ({ primaryTitle, secondaryTitle }: Props): JSX.Element => (
-  <Block padding={6} maxWidth={450} margin={2}>
+  <Block padding={6} maxWidth={450} marginTop={5} marginLeft={1} marginRight={1}>
     <Typography variant="h4" color="primary" inline>
       {`${primaryTitle} `}
     </Typography>

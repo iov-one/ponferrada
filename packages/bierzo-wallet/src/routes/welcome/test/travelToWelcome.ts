@@ -1,3 +1,4 @@
+import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { history } from '../../../routes';
@@ -15,4 +16,8 @@ export const travelToWelcome = async (store: Store): Promise<React.Component> =>
   await whenOnNavigatedToRoute(WELCOME_ROUTE);
 
   return dom;
+};
+
+export const travelToWelcomeE2e = async (page: Page): Promise<void> => {
+  await page.click('button');
 };
