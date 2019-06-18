@@ -5588,3 +5588,54 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots Voter dashboard Login page 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-3087 makeStyles-login-3083"
+>
+  <div
+    className="MuiBox-root MuiBox-root-3088 makeStyles-icon-3084"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root-3089"
+      src="iov-logo.svg"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-3094"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+    >
+      IOV Voting Dashboard
+    </h6>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-3129"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-3085 MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        LOG IN
+      </span>
+    </button>
+  </div>
+</div>
+`;
