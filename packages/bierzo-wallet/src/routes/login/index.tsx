@@ -1,6 +1,5 @@
 import PageColumn from 'medulas-react-components/lib/pages/PageColumn';
 import * as React from 'react';
-import WelcomeMessage from './components/WelcomeMessage';
 
 const SignupSection = (): JSX.Element => <React.Fragment />;
 
@@ -16,7 +15,6 @@ const Login = ({ onSubmit }: Props): JSX.Element => (
     secondaryTitle="to your IOV wallet"
     subtitle="Continue to access your account"
     renderHeader={SignupSection}
-    formRender={WelcomeMessage}
     nextMsg="Continue"
   />
 );
