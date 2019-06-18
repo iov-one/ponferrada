@@ -41,23 +41,41 @@ const errorProcessedTx = {
   blockExplorerUrl: null,
 };
 
-storiesOf(CHROME_EXTENSION_ROOT, module).add(ACCOUNT_STATUS_PAGE, () => {
-  const processedTx2 = { ...processedTx, id: '114' };
-  const processedTx3 = { ...processedTx, id: '115' };
+storiesOf(`${CHROME_EXTENSION_ROOT}/${ACCOUNT_STATUS_PAGE}`, module)
+  .add('Txs', () => {
+    const processedTx2 = { ...processedTx, id: '114' };
+    const processedTx3 = { ...processedTx, id: '115' };
 
-  const persona: GetPersonaResponse = {
-    mnemonic: '',
-    accounts: [{ label: 'Account 0' }],
-    txs: [blockExplorerProcessedTx, processedTx, errorProcessedTx, processedTx2, processedTx3],
-  };
+    const persona: GetPersonaResponse = {
+      mnemonic: '',
+      accounts: [{ label: 'Account 0' }],
+      txs: [blockExplorerProcessedTx, processedTx, errorProcessedTx, processedTx2, processedTx3],
+    };
 
-  return (
-    <PersonaProvider persona={persona}>
-      <Storybook>
-        <ToastProvider>
-          <Layout />
-        </ToastProvider>
-      </Storybook>
-    </PersonaProvider>
-  );
-});
+    return (
+      <PersonaProvider persona={persona}>
+        <Storybook>
+          <ToastProvider>
+            <Layout />
+          </ToastProvider>
+        </Storybook>
+      </PersonaProvider>
+    );
+  })
+  .add('Empty', () => {
+    const persona: GetPersonaResponse = {
+      mnemonic: '',
+      accounts: [{ label: 'Account 0' }],
+      txs: [],
+    };
+
+    return (
+      <PersonaProvider persona={persona}>
+        <Storybook>
+          <ToastProvider>
+            <Layout />
+          </ToastProvider>
+        </Storybook>
+      </PersonaProvider>
+    );
+  });

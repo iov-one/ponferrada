@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   text: {
     marginBottom: theme.spacing(3),
     '& > span': {
-      fontSize: theme.typography.h5.fontSize,
+      fontSize: theme.typography.h6.fontSize,
     },
   },
 }));
