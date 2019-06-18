@@ -1,4 +1,3 @@
-import { PublicIdentity } from '@iov/bcp';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -49,10 +48,15 @@ const Welcome = (): JSX.Element => {
   const onSendRequestToBeSigned = async (): Promise<void> => {
     toast.show('Interaction with extension, fetching identities. Check the icon, please', ToastVariant.INFO);
 
-    let identities: readonly PublicIdentity[] = [];
+    let identities;
 
     try {
       identities = await sendGetIdentitiesRequest();
+      if (!identities) {
+        toast.show('No extension is installed', ToastVariant.WARNING);
+        return;
+      }
+
       if (identities.length === 0) {
         toast.show('Request for identities rejected', ToastVariant.WARNING);
         return;

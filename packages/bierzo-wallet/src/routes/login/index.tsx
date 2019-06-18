@@ -19,12 +19,13 @@ const Login = (): JSX.Element => {
     const result = await getExtensionStatus(request);
     dispatch(setExtensionStateAction(result.connected, result.installed));
 
-    if (!result.connected) {
-      toast.show('Please login to the IOV extension to continue.', ToastVariant.ERROR);
-      return;
-    }
     if (!result.installed) {
       toast.show('You need to install IOV extension.', ToastVariant.ERROR);
+      return;
+    }
+
+    if (!result.connected) {
+      toast.show('Please login to the IOV extension to continue.', ToastVariant.ERROR);
       return;
     }
 
