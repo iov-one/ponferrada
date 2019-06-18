@@ -2,7 +2,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import React from 'react';
-import icon from '../../assets/iov-logo.svg';
+import icon from './assets/iov-logo.svg';
 
 const Login = (): JSX.Element => {
   return (
