@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { makeStyles } from '@material-ui/core';
-import { ListItem, ListItemIcon, ListItemText } from 'medulas-react-components/lib/components/List';
 import Block from 'medulas-react-components/lib/components/Block';
 import Img from 'medulas-react-components/lib/components/Image';
+import { ListItem, ListItemIcon, ListItemText } from 'medulas-react-components/lib/components/List';
+import * as React from 'react';
 
 interface Props {
   readonly src: string;
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   text: {
     marginBottom: theme.spacing(3),
     '& > span': {
-      fontSize: theme.typography.h5.fontsize,
+      fontSize: theme.typography.h5.fontSize,
     },
   },
 }));
