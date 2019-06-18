@@ -13,5 +13,5 @@
     "noEmit": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/setupTests.js"]
+  "exclude": ["src/setupTests.js", "src/extension/contentscript.ts"]
 }
