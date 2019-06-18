@@ -16,8 +16,13 @@ interface Props {
     event?: React.SyntheticEvent<HTMLFormElement>,
   ) => Promise<object | undefined> | undefined;
   readonly children: React.ReactNode;
+  readonly className?: string;
 }
 
-const Form = ({ onSubmit, children }: Props): JSX.Element => <form onSubmit={onSubmit}>{children}</form>;
+const Form = ({ onSubmit, className, children }: Props): JSX.Element => (
+  <form className={className} onSubmit={onSubmit}>
+    {children}
+  </form>
+);
 
 export default Form;

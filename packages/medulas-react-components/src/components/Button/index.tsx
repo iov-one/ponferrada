@@ -1,8 +1,30 @@
-import * as React from 'react';
+import React from 'react';
+import { Omit } from '@material-ui/core';
 import MuiButton, { ButtonProps } from '@material-ui/core/Button';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Block from '../Block';
 
-const Button = ({ children, ...restProps }: ButtonProps): JSX.Element => (
-  <MuiButton {...restProps}>{children}</MuiButton>
-);
+interface Props extends Omit<ButtonProps, 'variant'> {
+  readonly variant?: ButtonProps['variant'] | 'continue';
+  readonly spinner?: boolean;
+  readonly children: React.ReactNode;
+}
+
+const Button = ({ children, variant, spinner, ...restProps }: Props): JSX.Element => {
+  const muiVariant: ButtonProps['variant'] = variant && variant === 'continue' ? 'contained' : variant;
+
+  return (
+    <MuiButton variant={muiVariant} {...restProps}>
+      {spinner && (
+        <Block marginRight={2}>
+          <CircularProgress size={22} color="inherit" />
+        </Block>
+      )}
+      {children}
+      {variant === 'continue' && <ArrowForwardIcon fontSize="small" />}
+    </MuiButton>
+  );
+};
 
 export default Button;

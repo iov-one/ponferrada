@@ -20,6 +20,7 @@ import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import { checkCreateAccount } from './test/operateAccount';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';
@@ -70,7 +71,7 @@ describe('DOM > Feature > Account Status', () => {
   }, 60000);
 });
 
-describe('DOM > Feature > Account Status', () => {
+withChainsDescribe('DOM > Feature > Account Status', () => {
   it('generates a link inside transaction box for an ethereum transaction', async () => {
     // Simulate we start background page
     jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
