@@ -5696,19 +5696,19 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
 
 exports[`Storyshots Voter dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3087 makeStyles-login-3083"
+  className="MuiBox-root MuiBox-root-3170 makeStyles-login-3166"
 >
   <div
-    className="MuiBox-root MuiBox-root-3088 makeStyles-icon-3084"
+    className="MuiBox-root MuiBox-root-3171 makeStyles-icon-3167"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-3089"
+      className="makeStyles-root-3172"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3094"
+    className="MuiBox-root MuiBox-root-3177"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -5717,10 +5717,10 @@ exports[`Storyshots Voter dashboard Login page 1`] = `
     </h6>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3129"
+    className="MuiBox-root MuiBox-root-3212"
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-3085 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-3168 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
