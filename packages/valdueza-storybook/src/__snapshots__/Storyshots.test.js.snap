@@ -5859,7 +5859,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Voter dashboard Login page 1`] = `
+exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
   className="MuiBox-root MuiBox-root-3363 makeStyles-login-3359"
 >
@@ -5888,6 +5888,7 @@ exports[`Storyshots Voter dashboard Login page 1`] = `
       className="MuiButtonBase-root MuiButton-root makeStyles-button-3361 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
