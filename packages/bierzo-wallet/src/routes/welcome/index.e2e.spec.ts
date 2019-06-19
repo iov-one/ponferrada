@@ -43,8 +43,6 @@ withChainsDescribe(
       backgroundPage = await getBackgroundPage(browser);
       await extensionPage.click('button:nth-of-type(2)');
       await submitExtensionSignupForm(extensionPage, 'username', '12345678');
-      // TODO change this for proper mechanism for identify once the persona has been created
-      await sleep(5000);
       await page.bringToFront();
     }, 45000);
 
