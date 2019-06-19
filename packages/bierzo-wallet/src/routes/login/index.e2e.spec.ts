@@ -4,6 +4,7 @@ import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
 import {
   closeBrowser,
+  closeToast,
   createExtensionPage,
   createPage,
   getBackgroundPage,
@@ -38,10 +39,7 @@ withChainsDescribe(
     beforeEach(async (): Promise<void> => {
       browser = await launchBrowser();
       page = await createPage(browser);
-      extensionPage = await createExtensionPage(browser);
       backgroundPage = await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
-      await page.bringToFront();
     }, 45000);
 
     afterEach(
@@ -55,6 +53,9 @@ withChainsDescribe(
     });
 
     it('should enqueue identity request when login having persona created', async (): Promise<void> => {
+      extensionPage = await createExtensionPage(browser);
+      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
+      await page.bringToFront();
       travelToWelcomeE2e(page);
 
       await sleep(1500);
@@ -67,6 +68,23 @@ withChainsDescribe(
       );
 
       expect(badgeText).toBe('1');
+    }, 45000);
+
+    it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
+      await page.bringToFront();
+      await sleep(1000);
+
+      await page.click('button');
+      await sleep(500);
+
+      const element = await page.$('h6');
+      if (element === null) {
+        throw new Error();
+      }
+      const text = await (await element.getProperty('textContent')).jsonValue();
+      expect(text).toBe('Please login to the IOV extension to continue.');
+
+      await closeToast(page);
     }, 45000);
   },
 );
