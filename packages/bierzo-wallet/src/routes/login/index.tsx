@@ -4,7 +4,6 @@ import PageColumn from 'medulas-react-components/lib/pages/PageColumn';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import { history } from '..';
-import { generateGetIdentitiesRequest } from '../../communication/identities';
 import { getExtensionStatus } from '../../communication/status';
 import { setExtensionStateAction } from '../../store/reducers/extension';
 import { WELCOME_ROUTE } from '../paths';
@@ -15,8 +14,7 @@ const Login = (): JSX.Element => {
   const dispatch = (ReactRedux as any).useDispatch();
 
   const onLogin = async (_: object): Promise<void> => {
-    const request = generateGetIdentitiesRequest();
-    const result = await getExtensionStatus(request);
+    const result = await getExtensionStatus();
     dispatch(setExtensionStateAction(result.connected, result.installed));
 
     if (!result.installed) {

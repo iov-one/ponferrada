@@ -9,7 +9,7 @@ import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 import icon from '../../assets/iov-logo.svg';
-import { generateGetIdentitiesRequest, sendGetIdentitiesRequest } from '../../communication/identities';
+import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import { getExtensionStatus } from '../../communication/status';
 import { history } from '../../routes';
@@ -40,8 +40,7 @@ const Welcome = (): JSX.Element => {
   const dispatch = (ReactRedux as any).useDispatch();
 
   const onConnect = async (): Promise<void> => {
-    const request = generateGetIdentitiesRequest();
-    const result = await getExtensionStatus(request);
+    const result = await getExtensionStatus();
     dispatch(setExtensionStateAction(result.connected, result.installed));
   };
 
