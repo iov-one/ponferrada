@@ -32,6 +32,7 @@ export const whenOnNavigatedToE2eRoute = (page: Page, desiredRoute: string): Pro
           reject(`Unable to navigate to ${desiredRoute}`);
         }
         const actualRoute = page.url();
+        console.log('Actual Route is ' + actualRoute);
         if (actualRoute.endsWith(desiredRoute)) {
           clearInterval(interval);
           resolve();
