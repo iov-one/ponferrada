@@ -1,8 +1,8 @@
 /*global chrome*/
-import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse, makeJsonRpcId } from '@iov/jsonrpc';
-import { TransactionEncoder } from '@iov/core';
 import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec } from '@iov/ethereum';
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import { extensionId } from '..';
 
 export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
@@ -23,28 +23,41 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
   return data.every(isPublicIdentity);
 }
 
-export const sendGetIdentitiesRequest = async (): Promise<ReadonlyArray<PublicIdentity>> => {
+type GetIdentitiesResponse = ReadonlyArray<PublicIdentity> | undefined;
+
+export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
   const request = generateGetIdentitiesRequest();
 
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     chrome.runtime.sendMessage(extensionId, request, response => {
+      if (response === undefined) {
+        resolve(undefined);
+        return;
+      }
+
       try {
         const parsedResponse = parseJsonRpcResponse2(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
-          reject(parsedResponse.error.message);
+          console.error(parsedResponse.error.message);
+          resolve([]);
           return;
         }
 
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
-        if (isArrayOfPublicIdentity(parsedResult)) {
-          const addresses = parsedResult.map(ident => ethereumCodec.identityToAddress(ident));
-          console.log(addresses);
-          resolve(parsedResult);
-        } else {
-          reject('Got unexpected type of result');
+        if (!isArrayOfPublicIdentity(parsedResult)) {
+          console.error('Got unexpected type of result');
+          resolve([]);
+          return;
         }
+
+        // TODO remove when the app evolves
+        const addresses = parsedResult.map(ident => ethereumCodec.identityToAddress(ident));
+        console.log(addresses);
+
+        resolve(parsedResult);
       } catch (error) {
-        reject(error);
+        console.error(error);
+        resolve([]);
       }
     });
   });

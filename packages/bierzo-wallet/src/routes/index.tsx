@@ -12,7 +12,7 @@ const Routes = (): JSX.Element => (
   <Router history={history}>
     <Switch>
       <Route exact path="/" component={Login} />
-      <Route exact path={LOGIN_ROUTE} component={Welcome} />
+      <Route exact path={LOGIN_ROUTE} component={Login} />
       <Route exact path={WELCOME_ROUTE} component={Welcome} />
       <Route exact path={PAYMENT_ROUTE} component={Payment} />
     </Switch>

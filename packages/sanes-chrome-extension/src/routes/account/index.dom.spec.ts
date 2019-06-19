@@ -16,11 +16,11 @@ import { aNewStore } from '../../store';
 import { resetHistory, RootState } from '../../store/reducers';
 import { click } from '../../utils/test/dom';
 import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/navigation';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import { checkCreateAccount } from './test/operateAccount';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';

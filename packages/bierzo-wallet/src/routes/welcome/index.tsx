@@ -1,4 +1,3 @@
-import { PublicIdentity } from '@iov/bcp';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -10,7 +9,7 @@ import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 import icon from '../../assets/iov-logo.svg';
-import { generateGetIdentitiesRequest, sendGetIdentitiesRequest } from '../../communication/identities';
+import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import { getExtensionStatus } from '../../communication/status';
 import { history } from '../../routes';
@@ -41,18 +40,22 @@ const Welcome = (): JSX.Element => {
   const dispatch = (ReactRedux as any).useDispatch();
 
   const onConnect = async (): Promise<void> => {
-    const request = generateGetIdentitiesRequest();
-    const result = await getExtensionStatus(request);
+    const result = await getExtensionStatus();
     dispatch(setExtensionStateAction(result.connected, result.installed));
   };
 
   const onSendRequestToBeSigned = async (): Promise<void> => {
     toast.show('Interaction with extension, fetching identities. Check the icon, please', ToastVariant.INFO);
 
-    let identities: readonly PublicIdentity[] = [];
+    let identities;
 
     try {
       identities = await sendGetIdentitiesRequest();
+      if (!identities) {
+        toast.show('No extension is installed', ToastVariant.WARNING);
+        return;
+      }
+
       if (identities.length === 0) {
         toast.show('Request for identities rejected', ToastVariant.WARNING);
         return;
