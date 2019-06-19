@@ -3,7 +3,7 @@ import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import { history } from '../../../routes';
 import { createDom } from '../../../utils/test/dom';
-import { whenOnNavigatedToRoute } from '../../../utils/test/navigation';
+import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from '../../../utils/test/navigation';
 import { WELCOME_ROUTE } from '../../paths';
 
 export const travelToWelcome = async (store: Store): Promise<React.Component> => {
@@ -20,4 +20,5 @@ export const travelToWelcome = async (store: Store): Promise<React.Component> =>
 
 export const travelToWelcomeE2e = async (page: Page): Promise<void> => {
   await page.click('button');
+  await whenOnNavigatedToE2eRoute(page, WELCOME_ROUTE);
 };
