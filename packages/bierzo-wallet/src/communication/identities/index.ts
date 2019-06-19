@@ -30,7 +30,6 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
 
   return new Promise(resolve => {
     chrome.runtime.sendMessage(extensionId, request, response => {
-      console.log(response);
       if (response === undefined) {
         resolve(undefined);
         return;

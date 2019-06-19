@@ -20,7 +20,5 @@ export const travelToWelcome = async (store: Store): Promise<React.Component> =>
 
 export const travelToWelcomeE2e = async (page: Page): Promise<void> => {
   await page.click('button');
-  console.log('Starting navigation to welcome');
   await whenOnNavigatedToE2eRoute(page, WELCOME_ROUTE);
-  console.log('Ended navigation to welcome');
 };
