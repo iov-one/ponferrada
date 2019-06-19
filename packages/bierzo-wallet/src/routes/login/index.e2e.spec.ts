@@ -1,4 +1,3 @@
-/*global chrome*/
 import express, { Request, Response } from 'express';
 import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
@@ -11,7 +10,7 @@ import {
   getBackgroundPage,
   launchBrowser,
 } from '../../utils/test/e2e';
-import { submitExtensionSignupForm } from '../../utils/test/persona';
+import { acceptGetIdentitiesRequest, submitExtensionSignupForm } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
@@ -21,7 +20,6 @@ withChainsDescribe(
   (): void => {
     let browser: Browser;
     let page: Page;
-    let backgroundPage: Page;
     let extensionPage: Page;
     let server: Server;
 
@@ -49,31 +47,24 @@ withChainsDescribe(
       server.close();
     });
 
-    it('should enqueue identity request when login having persona created', async (): Promise<void> => {
+    it('should redirect when enqueued login request is accepted', async (): Promise<void> => {
       browser = await launchBrowser();
       page = await createPage(browser);
-      backgroundPage = await getBackgroundPage(browser);
       extensionPage = await createExtensionPage(browser);
+      await getBackgroundPage(browser);
       await submitExtensionSignupForm(extensionPage, 'username', '12345678');
       await page.bringToFront();
-      travelToWelcomeE2e(page);
-
-      await sleep(1500);
-      const badgeText = await backgroundPage.evaluate(
-        (): Promise<string | undefined> => {
-          return new Promise(resolve => {
-            chrome.browserAction.getBadgeText({}, text => resolve(text));
-          });
-        },
-      );
-
-      expect(badgeText).toBe('1');
+      const welcomePromise = travelToWelcomeE2e(page);
+      await sleep(1000);
+      await acceptGetIdentitiesRequest(extensionPage);
+      await page.bringToFront();
+      await welcomePromise;
     }, 45000);
 
     it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
       browser = await launchBrowser();
       page = await createPage(browser);
-      backgroundPage = await getBackgroundPage(browser);
+      await getBackgroundPage(browser);
       await page.bringToFront();
       await sleep(1000);
 

@@ -28,3 +28,22 @@ export const submitExtensionSignupForm = async (
   await page.click('button[type="submit"]');
   await whenOnNavigatedToE2eRoute(page, '/account');
 };
+
+export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
+  await page.bringToFront();
+
+  //click on drawer
+  await page.click('[aria-label="Open drawer"]');
+  await sleep(1000);
+
+  // click on Requests
+  await page.click('#account-drawer > div:nth-of-type(2)');
+  await sleep(500);
+
+  // click on first request
+  await page.click('ul > li > div');
+  await sleep(500);
+
+  // accept it
+  await page.click('button');
+}
