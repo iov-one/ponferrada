@@ -25,8 +25,17 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
 
 type GetIdentitiesResponse = ReadonlyArray<PublicIdentity> | undefined;
 
+function extensionContext(): boolean {
+  return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
+}
+
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
   const request = generateGetIdentitiesRequest();
+
+  const isValid = extensionContext();
+  if (!isValid) {
+    return undefined;
+  }
 
   return new Promise(resolve => {
     chrome.runtime.sendMessage(extensionId, request, response => {
