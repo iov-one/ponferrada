@@ -4,16 +4,15 @@ import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
 import {
   closeBrowser,
-  closeToast,
   createExtensionPage,
   createPage,
   getBackgroundPage,
   launchBrowser,
 } from '../../utils/test/e2e';
+import { submitExtensionSignupForm } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
-import { submitExtensionSignupForm } from './test/fillSignupForm';
-import { travelToWelcomeE2e } from './test/travelToWelcome';
+import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
 
 withChainsDescribe(
   'DOM > Welcome route',
@@ -41,7 +40,6 @@ withChainsDescribe(
       page = await createPage(browser);
       extensionPage = await createExtensionPage(browser);
       backgroundPage = await getBackgroundPage(browser);
-      await extensionPage.click('button:nth-of-type(2)');
       await submitExtensionSignupForm(extensionPage, 'username', '12345678');
       await page.bringToFront();
     }, 45000);
@@ -56,16 +54,9 @@ withChainsDescribe(
       server.close();
     });
 
-    it('should made three share identity requests', async (): Promise<void> => {
-      await travelToWelcomeE2e(page);
+    it('should enqueue identity request when login having persona created', async (): Promise<void> => {
+      travelToWelcomeE2e(page);
 
-      //Create 3 share idenity requests.
-      await page.click('button:nth-of-type(2)');
-      await closeToast(page);
-      await page.click('button:nth-of-type(2)');
-      await closeToast(page);
-      await page.click('button:nth-of-type(2)');
-      await closeToast(page);
       await sleep(1500);
       const badgeText = await backgroundPage.evaluate(
         (): Promise<string | undefined> => {
@@ -75,7 +66,7 @@ withChainsDescribe(
         },
       );
 
-      expect(badgeText).toBe('3');
+      expect(badgeText).toBe('1');
     }, 45000);
   },
 );
