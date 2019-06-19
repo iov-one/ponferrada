@@ -8,6 +8,9 @@ import { getExtensionStatus } from '../../communication/status';
 import { setExtensionStateAction } from '../../store/reducers/extension';
 import { WELCOME_ROUTE } from '../paths';
 
+export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
+export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';
+
 const Login = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   //TODO: Fix this as soon as proper react-redux definitions will be available
@@ -18,12 +21,12 @@ const Login = (): JSX.Element => {
     dispatch(setExtensionStateAction(result.connected, result.installed));
 
     if (!result.installed) {
-      toast.show('You need to install IOV extension.', ToastVariant.ERROR);
+      toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
 
     if (!result.connected) {
-      toast.show('Please login to the IOV extension to continue.', ToastVariant.ERROR);
+      toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
 
