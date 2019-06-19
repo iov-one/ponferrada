@@ -1,13 +1,15 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { extensionId } from '../../communication';
 
-export function launchBrowser(slowMo: number = 0): Promise<Browser> {
+export function launchBrowser(slowMo: number = 0, install: boolean = true): Promise<Browser> {
   const CRX_PATH = require('path').join(__dirname, '../../../../sanes-chrome-extension/build');
+  const args = install ? [`--disable-extensions-except=${CRX_PATH}`, `--load-extension=${CRX_PATH}`] : [];
+
   return puppeteer.launch({
     headless: false,
     devtools: true,
     slowMo,
-    args: [`--disable-extensions-except=${CRX_PATH}`, `--load-extension=${CRX_PATH}`],
+    args,
   });
 }
 
