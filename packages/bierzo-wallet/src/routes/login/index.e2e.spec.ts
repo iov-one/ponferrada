@@ -1,25 +1,31 @@
-/*global chrome*/
 import express, { Request, Response } from 'express';
 import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
+import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from '.';
 import {
   closeBrowser,
+  closeToast,
   createExtensionPage,
   createPage,
   getBackgroundPage,
   launchBrowser,
 } from '../../utils/test/e2e';
-import { submitExtensionSignupForm } from '../../utils/test/persona';
+import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
+import {
+  acceptGetIdentitiesRequest,
+  rejectGetIdentitiesRequest,
+  submitExtensionSignupForm,
+} from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
+import { WELCOME_ROUTE } from '../paths';
 import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
 
 withChainsDescribe(
-  'DOM > Welcome route',
+  'E2E > Login route',
   (): void => {
     let browser: Browser;
     let page: Page;
-    let backgroundPage: Page;
     let extensionPage: Page;
     let server: Server;
 
@@ -35,14 +41,7 @@ withChainsDescribe(
       server = app.listen(9000);
     });
 
-    beforeEach(async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
-      extensionPage = await createExtensionPage(browser);
-      backgroundPage = await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
-      await page.bringToFront();
-    }, 45000);
+    beforeEach(async (): Promise<void> => {}, 45000);
 
     afterEach(
       async (): Promise<void> => {
@@ -54,19 +53,76 @@ withChainsDescribe(
       server.close();
     });
 
-    it('should enqueue identity request when login having persona created', async (): Promise<void> => {
-      travelToWelcomeE2e(page);
+    async function checkLoginMessage(page: Page): Promise<void> {
+      const element = await page.$('h6');
+      if (element === null) {
+        throw new Error();
+      }
+      const text = await (await element.getProperty('textContent')).jsonValue();
+      expect(text).toBe(LOGIN_EXTENSION_MSG);
 
-      await sleep(1500);
-      const badgeText = await backgroundPage.evaluate(
-        (): Promise<string | undefined> => {
-          return new Promise(resolve => {
-            chrome.browserAction.getBadgeText({}, text => resolve(text));
-          });
-        },
-      );
+      await closeToast(page);
+    }
 
-      expect(badgeText).toBe('1');
+    it('should redirect when enqueued login request is accepted', async (): Promise<void> => {
+      browser = await launchBrowser();
+      page = await createPage(browser);
+      extensionPage = await createExtensionPage(browser);
+      await getBackgroundPage(browser);
+      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
+      await page.bringToFront();
+      await travelToWelcomeE2e(page);
+      await sleep(1000);
+      await acceptGetIdentitiesRequest(extensionPage);
+      await page.bringToFront();
+      await whenOnNavigatedToE2eRoute(page, WELCOME_ROUTE);
+    }, 45000);
+
+    it('should stay in login view if enqueued login request is rejected', async (): Promise<void> => {
+      browser = await launchBrowser();
+      page = await createPage(browser);
+      extensionPage = await createExtensionPage(browser);
+      await getBackgroundPage(browser);
+      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
+      await page.bringToFront();
+      await travelToWelcomeE2e(page);
+      await sleep(1000);
+      await rejectGetIdentitiesRequest(extensionPage);
+      await page.bringToFront();
+      await checkLoginMessage(page);
+    }, 45000);
+
+    it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
+      browser = await launchBrowser();
+      page = await createPage(browser);
+      await getBackgroundPage(browser);
+      await page.bringToFront();
+      await sleep(1000);
+
+      await page.click('button');
+      await sleep(500);
+
+      await checkLoginMessage(page);
+    }, 45000);
+
+    it('shows install IOV extension message', async (): Promise<void> => {
+      browser = await launchBrowser(0, false);
+      page = await createPage(browser);
+      await page.bringToFront();
+
+      await sleep(1000);
+
+      await page.click('button');
+      await sleep(500);
+
+      const element = await page.$('h6');
+      if (element === null) {
+        throw new Error();
+      }
+      const text = await (await element.getProperty('textContent')).jsonValue();
+      expect(text).toBe(INSTALL_EXTENSION_MSG);
+
+      await closeToast(page);
     }, 45000);
   },
 );
