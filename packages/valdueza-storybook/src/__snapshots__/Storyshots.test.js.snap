@@ -5859,21 +5859,33 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
 </div>
 `;
 
+exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-3360"
+>
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    DASHBOARD VIEW
+  </h6>
+</div>
+`;
+
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3363 makeStyles-login-3359"
+  className="MuiBox-root MuiBox-root-3399 makeStyles-login-3395"
 >
   <div
-    className="MuiBox-root MuiBox-root-3364 makeStyles-icon-3360"
+    className="MuiBox-root MuiBox-root-3400 makeStyles-icon-3396"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-3365"
+      className="makeStyles-root-3401"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3370"
+    className="MuiBox-root MuiBox-root-3406"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -5881,14 +5893,13 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
       IOV Voting Dashboard
     </h6>
   </div>
-  <div
-    className="MuiBox-root MuiBox-root-3405"
+  <form
+    onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-3361 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-3397 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
-      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -5899,7 +5910,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
       onTouchMove={[Function]}
       onTouchStart={[Function]}
       tabIndex={0}
-      type="button"
+      type="submit"
     >
       <span
         className="MuiButton-label"
@@ -5907,6 +5918,6 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
         LOG IN
       </span>
     </button>
-  </div>
+  </form>
 </div>
 `;

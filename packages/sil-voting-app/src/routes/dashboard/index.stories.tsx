@@ -6,7 +6,7 @@ import Dashboard from './index';
 storiesOf(VOTER_ROOT, module)
   .addParameters({ viewport: { defaultViewport: 'responsive' } })
   .add(
-    'Login page',
+    'Dashboard page',
     (): JSX.Element => (
       <DecoratedStorybook>
         <Dashboard />
