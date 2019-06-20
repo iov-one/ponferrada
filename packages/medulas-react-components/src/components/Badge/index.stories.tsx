@@ -2,17 +2,22 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import RecoveryPhraseIcon from '../../theme/assets/badgeIcon/recoveryPhrase.svg';
 import { Storybook } from '../../utils/storybook';
-import BadgeIcon from './index';
+import Img from '../Image';
+import Badge from './index';
 
 storiesOf('Components', module).add(
   'Badge Icon',
   (): JSX.Element => (
     <Storybook>
       <div style={{ margin: '36px' }}>
-        <BadgeIcon invisible={false} icon={RecoveryPhraseIcon} badge="check" />
+        <Badge variant="check">
+          <Img src={RecoveryPhraseIcon} alt="Icon" />
+        </Badge>
       </div>
       <div style={{ margin: '36px' }}>
-        <BadgeIcon invisible={false} icon={RecoveryPhraseIcon} badge="dot" color="primary" />
+        <Badge variant="dot">
+          <Img src={RecoveryPhraseIcon} alt="Icon" />
+        </Badge>
       </div>
     </Storybook>
   ),
