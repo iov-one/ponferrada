@@ -1,4 +1,4 @@
-import { Badge, PropTypes, makeStyles, Theme } from '@material-ui/core';
+import { Badge, makeStyles, PropTypes, Theme } from '@material-ui/core';
 import React from 'react';
 import Img from '../Image';
 import CheckIcon from './assets/check.svg';
