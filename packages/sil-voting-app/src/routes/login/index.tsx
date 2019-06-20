@@ -2,6 +2,7 @@ import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
+import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
@@ -50,6 +51,10 @@ const Login = (): JSX.Element => {
     history.push(DASHBOARD_ROUTE);
   };
 
+  const { handleSubmit, submitting } = useForm({
+    onSubmit: onLogin,
+  });
+
   return (
     <Block
       width="100vw"
@@ -65,11 +70,11 @@ const Login = (): JSX.Element => {
       <Block marginTop={5} marginBottom={5}>
         <Typography variant="h6">IOV Voting Dashboard</Typography>
       </Block>
-      <Block display="flex">
-        <Button className={classes.button} onClick={onLogin}>
+      <Form onSubmit={handleSubmit}>
+        <Button className={classes.button} type="submit" disabled={submitting}>
           LOG IN
         </Button>
-      </Block>
+      </Form>
     </Block>
   );
 };
