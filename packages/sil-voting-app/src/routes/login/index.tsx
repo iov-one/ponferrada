@@ -15,6 +15,9 @@ import { history } from '../index';
 import { DASHBOARD_ROUTE } from '../paths';
 import icon from './assets/iov-logo.svg';
 
+export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
+export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';
+
 const useStyles = makeStyles((theme: Theme) => ({
   login: {
     backgroundColor: theme.palette.background.default,
@@ -39,12 +42,12 @@ const Login = (): JSX.Element => {
     dispatch(setExtensionStateAction(result.connected, result.installed));
 
     if (!result.installed) {
-      toast.show('You must install the IOV extension', ToastVariant.ERROR);
+      toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
 
     if (!result.connected) {
-      toast.show('You must log into the IOV extension', ToastVariant.ERROR);
+      toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
 
