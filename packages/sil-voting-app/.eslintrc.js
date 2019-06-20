@@ -1,5 +1,6 @@
-const baseConfig = require("../../.eslintrc");
-
 module.exports = {
-  ...baseConfig
+  extends: '../../.eslintrc.js',
+  rules: {
+    'no-console': 'off',
+  },
 };
