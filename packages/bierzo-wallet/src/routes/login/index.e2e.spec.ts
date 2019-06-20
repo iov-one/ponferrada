@@ -22,7 +22,7 @@ import { WELCOME_ROUTE } from '../paths';
 import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
 
 withChainsDescribe(
-  'DOM > Login route',
+  'E2E > Login route',
   (): void => {
     let browser: Browser;
     let page: Page;
