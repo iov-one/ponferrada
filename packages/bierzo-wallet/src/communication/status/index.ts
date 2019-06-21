@@ -1,4 +1,4 @@
-import { ExtensionState } from '../../store/reducers/extension';
+import { ExtensionState } from '../../store/extension';
 import { sendGetIdentitiesRequest } from '../identities';
 
 export async function getExtensionStatus(): Promise<ExtensionState> {

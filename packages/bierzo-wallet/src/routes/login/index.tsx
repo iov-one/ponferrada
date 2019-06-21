@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import { history } from '..';
 import { getExtensionStatus } from '../../communication/status';
-import { setExtensionStateAction } from '../../store/reducers/extension';
+import { setExtensionStateAction } from '../../store/extension';
 import { WELCOME_ROUTE } from '../paths';
 
 export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';

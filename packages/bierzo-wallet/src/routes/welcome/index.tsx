@@ -13,7 +13,7 @@ import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import { getExtensionStatus } from '../../communication/status';
 import { history } from '../../routes';
-import { setExtensionStateAction } from '../../store/reducers/extension';
+import { setExtensionStateAction } from '../../store/extension';
 import { PAYMENT_ROUTE } from '../paths';
 
 const useStyles = makeStyles((theme: Theme) => ({
