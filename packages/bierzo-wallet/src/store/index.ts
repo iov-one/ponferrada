@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
-import reducer, { RootReducer } from './reducers';
+import reducers, { RootReducer } from './reducers';
 
 const composeEnhancers =
   (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
@@ -8,7 +8,7 @@ const composeEnhancers =
 const middlewares: ReadonlyArray<Middleware> = [];
 
 export const configureStore = (): Store<RootReducer> => {
-  const store = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
+  const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept(
