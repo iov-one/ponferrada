@@ -1,20 +1,5 @@
-import { applyMiddleware, combineReducers, compose, createStore, Middleware, Reducer, Store } from 'redux';
-import { StateType } from 'typesafe-actions';
-import { extensionReducer, ExtensionState } from './extension';
-import { notificationReducer, NotificationState } from './notifications';
-
-export interface RootReducer {
-  extension: ExtensionState;
-  notifications: NotificationState;
-}
-
-const createRootReducer = (): Reducer<RootReducer> =>
-  combineReducers({
-    extension: extensionReducer,
-    notifications: notificationReducer,
-  });
-
-export type RootState = StateType<ReturnType<typeof createRootReducer>>;
+import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+import reducers, { RootReducer } from './reducers';
 
 const composeEnhancers =
   (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
@@ -23,12 +8,13 @@ const composeEnhancers =
 const middlewares: ReadonlyArray<Middleware> = [];
 
 export const configureStore = (): Store<RootReducer> => {
-  const store = createStore(createRootReducer(), composeEnhancers(applyMiddleware(...middlewares)));
+  const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept(
       './reducers',
       (): void => {
+        console.log('Vamos que nos vamos');
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const nextRootReducer = require('./reducers');
         store.replaceReducer(nextRootReducer);
