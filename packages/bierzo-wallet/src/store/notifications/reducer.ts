@@ -1,18 +1,31 @@
-import { ActionType } from 'typesafe-actions';
-import * as actions from './actions';
-import { NotificationState, ProcessedTx } from './state';
-import { Action } from 'redux';
+import { Amount } from '@iov/bcp';
+import { ReadonlyDate } from 'readonly-date';
+import { NotificationActions } from './actions';
 
-export type NotificationActions = ActionType<typeof actions>;
+export interface Tx {
+  readonly id: string;
+  readonly recipient: string;
+  readonly signer: string;
+  readonly amount: Amount;
+  readonly memo?: string;
+}
+
+export interface ProcessedTx extends Tx {
+  readonly time: ReadonlyDate;
+  readonly received: boolean;
+  readonly success: boolean;
+  readonly err?: any;
+}
+
+export interface NotificationState {
+  readonly pending: ReadonlyArray<Tx>;
+  readonly transactions: ReadonlyArray<ProcessedTx>;
+}
+
 const initState: NotificationState = {
   pending: [],
-  transaction: [],
+  transactions: [],
 };
-
-export interface AddPendingTransactionActionType extends Action {
-  type: '@@notifications/ADD_PENDING_TRANSACTION';
-  payload: ProcessedTx;
-}
 
 export function notificationReducer(
   state: NotificationState = initState,
