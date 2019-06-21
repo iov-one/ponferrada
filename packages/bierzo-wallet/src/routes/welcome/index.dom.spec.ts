@@ -1,6 +1,7 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { configureStore, RootState } from '../../store';
+import { configureStore } from '../../store';
+import { RootState } from '../../store/reducers';
 import { expectRoute } from '../../utils/test/dom';
 import { PAYMENT_ROUTE } from '../paths';
 import { travelToWelcome } from './test/travelToWelcome';

@@ -14,7 +14,6 @@ export const configureStore = (): Store<RootReducer> => {
     module.hot.accept(
       './reducers',
       (): void => {
-        console.log('Vamos que nos vamos');
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const nextRootReducer = require('./reducers');
         store.replaceReducer(nextRootReducer);
