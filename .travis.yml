@@ -10,7 +10,12 @@ services:
 
 cache:
   directories:
+    # See .modulesFolders in node_modules/.yarn-integrity for the list of directories to cache
     - node_modules
+    - packages/bierzo-wallet/node_modules
+    - packages/sanes-chrome-extension/node_modules
+    - packages/sil-voting-app/node_modules
+    - packages/valdueza-storybook/node_modules
 
 before_install:
   # Enable user namespace cloning
