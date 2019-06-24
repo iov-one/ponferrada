@@ -1,13 +1,13 @@
 import InputBase, { InputBaseProps } from '@material-ui/core/InputBase';
 import Popper from '@material-ui/core/Popper';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { FormApi, FieldSubscription } from 'final-form';
-import { useField } from 'react-final-form-hooks';
+import { FieldSubscription, FormApi } from 'final-form';
 import * as React from 'react';
-import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
+import { useField } from 'react-final-form-hooks';
 import { useOpen } from '../../../hooks/open';
-import Image from '../../Image';
+import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
 import Block from '../../Block';
+import Image from '../../Image';
 import SelectItems from './SelectItems';
 
 export interface Item {
@@ -95,9 +95,13 @@ const SelectFieldForm = ({
     toggle();
   };
 
+  const onClick = (): void => {
+    toggle();
+  };
+
   return (
     <React.Fragment>
-      <div className={classes.dropdown} ref={inputRef} onClick={toggle}>
+      <div className={classes.dropdown} ref={inputRef} onClick={onClick}>
         <InputBase
           name={name}
           classes={inputClasses}
