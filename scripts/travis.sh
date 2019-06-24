@@ -18,12 +18,14 @@ function fold_end() {
   travis_fold end "$CURRENT_FOLD_NAME"
 }
 
+source ./scripts/retry.sh
+
 #
 # Install
 #
-
-source ./scripts/retry.sh
+fold_start "yarn-install"
 retry 3 yarn install
+fold_end
 
 #
 # Build
