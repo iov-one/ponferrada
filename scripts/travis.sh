@@ -18,12 +18,17 @@ function fold_end() {
   travis_fold end "$CURRENT_FOLD_NAME"
 }
 
+source ./scripts/retry.sh
+
+# Ensure no .pyc files are created in node_modules/node-gyp, which cause diffs in the node_modules cache
+export PYTHONDONTWRITEBYTECODE=1
+
 #
 # Install
 #
-
-source ./scripts/retry.sh
+fold_start "yarn-install"
 retry 3 yarn install
+fold_end
 
 #
 # Build
