@@ -1,10 +1,10 @@
-import { Popper, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { createStyles, makeStyles, Popper, Theme } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import * as React from 'react';
-import Image from '../Image';
+import { useOpen } from '../../hooks/open';
 import infoNormal from '../../theme/assets/info_normal.svg';
 import theme from '../../theme/utils/mui';
-import { useOpen } from '../../hooks/open';
+import Image from '../Image';
 
 const DEFAULT_HEIGHT = 16;
 
@@ -114,9 +114,13 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
     },
   };
 
+  const onClick = (): void => {
+    toggle();
+  };
+
   return (
     <React.Fragment>
-      <div className={classes.container} ref={tooltipRef} onClick={toggle}>
+      <div className={classes.container} ref={tooltipRef} onClick={onClick}>
         <Image src={infoNormal} alt="Info" width={DEFAULT_HEIGHT} height={DEFAULT_HEIGHT} />
       </div>
 
