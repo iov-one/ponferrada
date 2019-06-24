@@ -20,6 +20,9 @@ function fold_end() {
 
 source ./scripts/retry.sh
 
+# Ensure no .pyc files are created in node_modules/node-gyp, which cause diffs in the node_modules cache
+export PYTHONDONTWRITEBYTECODE=1
+
 #
 # Install
 #
