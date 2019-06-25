@@ -1,6 +1,7 @@
 import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router';
 import { configureStore } from '../../store';
 import { globalStyles } from '../../theme/globalStyles';
 
@@ -16,7 +17,7 @@ const DecoratedStorybook = ({ children }: Props): JSX.Element => {
   return (
     <Provider store={store}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-        {children}
+        <MemoryRouter>{children}</MemoryRouter>
       </MedulasThemeProvider>
     </Provider>
   );
