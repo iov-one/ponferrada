@@ -1,19 +1,19 @@
-import { createStyles, withStyles, WithStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import Badge from 'medulas-react-components/lib/components/Badge';
+import Image from 'medulas-react-components/lib/components/Image';
+import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
 import loading from '~/components/Header/assets/loading.svg';
 import loadingSpin from '~/components/Header/assets/loadingSpin.svg';
-import BadgeIcon from '~/components/layout/BadgeIcon';
-import ListMenu, { PhoneHook } from '~/components/templates/menu/ListMenu';
-import { Tx } from '~/store/notifications/state';
-import { primary } from '~/theme/variables';
+import { Tx } from '../../../../store/notifications';
 import GotIt from './GotIt';
 import TransactionsList from './TransactionsList';
 
-interface Props extends PhoneHook, WithStyles<typeof styles> {
+interface Props {
   readonly items: ReadonlyArray<Tx>;
 }
 
-const styles = createStyles({
+const useStyles = makeStyles({
   spin: {
     animation: 'spinKeyframe 5s infinite linear',
   },
@@ -36,41 +36,32 @@ interface State {
   readonly showGotIt: boolean;
 }
 
-class TransactionsMenu extends React.Component<Props, State> {
-  public readonly state = {
-    showGotIt: localStorage.getItem(GOT_IT_KEY) === null,
-  };
+const TransactionsMenu = ({ items, ...rest }: Props): JSX.Element => {
+  const classes = useStyles();
+  const [showGotIt, setShowGotIt] = React.useState(localStorage.getItem(GOT_IT_KEY) === null);
 
-  public readonly onGotIt = () => {
+  const onGotIt = (): void => {
     localStorage.setItem(GOT_IT_KEY, 'ACCEPTED');
-    this.setState({ showGotIt: false });
+    setShowGotIt(false);
   };
 
-  public render(): JSX.Element {
-    const { showGotIt } = this.state;
-    const { classes, items, ...rest } = this.props;
+  const hasPendingTxs = items.length > 0;
+  const starterClasses = hasPendingTxs ? classes.spin : undefined;
+  const logo = hasPendingTxs ? loadingSpin : loading;
 
-    const hasPendingTxs = items.length > 0;
-    const starterClasses = hasPendingTxs ? classes.spin : undefined;
-    const logo = hasPendingTxs ? loadingSpin : loading;
+  const starter = (): JSX.Element => (
+    <Badge invisible={!hasPendingTxs} className={starterClasses} variant="dot">
+      <Image src={logo} alt="Loading Transactions" />
+    </Badge>
+  );
 
-    const starter = () => (
-      <BadgeIcon
-        invisible={!hasPendingTxs}
-        icon={logo}
-        className={starterClasses}
-        alt="Loading Transactions"
-        badge="dot"
-      />
-    );
-    const color = showGotIt ? primary : 'white';
+  const color = showGotIt ? 'primary' : 'white';
 
-    return (
-      <ListMenu starter={starter} color={color} listWidth={320} {...rest}>
-        {showGotIt ? <GotIt onGotIt={this.onGotIt} /> : <TransactionsList items={items} />}
-      </ListMenu>
-    );
-  }
-}
+  return (
+    <ListMenu starter={starter} color={color} listWidth={320} {...rest}>
+      {showGotIt ? <GotIt onGotIt={onGotIt} /> : <TransactionsList items={items} />}
+    </ListMenu>
+  );
+};
 
-export default withStyles(styles)(TransactionsMenu);
+export default TransactionsMenu;
