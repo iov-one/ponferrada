@@ -3,11 +3,20 @@ import React from 'react';
 import Proposal from './Proposal';
 
 const ProposalsList = (): JSX.Element => {
-  return (
-    <Block>
-      <Typography variant="h6">LIST OF PROPOSALS</Typography>
-    </Block>
-  );
+  const proposals = [
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+    Proposal(),
+  ];
+
+  return <Block>{proposals}</Block>;
 };
 
 export default ProposalsList;
