@@ -1,18 +1,18 @@
-import { createStyles, withStyles, WithStyles } from '@material-ui/core';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles, Theme } from '@material-ui/core';
 import classNames from 'classnames';
+import Block from 'medulas-react-components/lib/components/Block';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import Block from '~/components/layout/Block';
-import Hairline from '~/components/layout/Hairline';
-import Typography from '~/components/layout/Typography';
-import { BALANCE_ROUTE, CONFIRM_TRANSACTION, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from '~/routes';
-import { history } from '~/store';
-import { border, lg, primary } from '~/theme/variables';
-import { TXS_FEATURE_FLAG } from '~/utils/features';
+import { history } from '../../../../routes';
+import {
+  BALANCE_ROUTE,
+  CONFIRM_TRANSACTION,
+  PAYMENT_ROUTE,
+  TRANSACTIONS_ROUTE,
+} from '../../../../routes/paths';
 
-const styles = createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
   },
@@ -20,7 +20,7 @@ const styles = createStyles({
     marginTop: '12px',
   },
   item: {
-    margin: `0px ${lg}`,
+    margin: `0px ${theme.spacing(4)}px`,
     '&:hover': {
       cursor: 'pointer',
     },
@@ -33,21 +33,21 @@ const styles = createStyles({
   line: {
     visibility: 'hidden',
     height: '4px',
-    backgroundColor: primary,
+    backgroundColor: theme.palette.primary.main,
     borderRadius: '4px',
     marginTop: '4px',
   },
-});
+}));
 
-const onBalance = () => {
+const onBalance = (): void => {
   history.push(BALANCE_ROUTE);
 };
 
-const onPayments = () => {
+const onPayments = (): void => {
   history.push(PAYMENT_ROUTE);
 };
 
-const onTransactions = () => {
+const onTransactions = (): void => {
   history.push(TRANSACTIONS_ROUTE);
 };
 
@@ -60,41 +60,18 @@ interface MenuItemProps {
   readonly onClick: () => void;
 }
 
-const PhoneLinkMenuItem = ({ itemTitle, onClick }: MenuItemProps) => (
-  <ListItem button disableGutters onClick={onClick}>
-    <ListItemText disableTypography>
-      <Typography variant="body1">{itemTitle}</Typography>
-    </ListItemText>
-  </ListItem>
-);
-
-export const PhoneLinks = () => (
-  <React.Fragment>
-    <PhoneLinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
-    <PhoneLinkMenuItem onClick={onPayments} itemTitle={PAYMENT_TEXT} />
-    {TXS_FEATURE_FLAG && <PhoneLinkMenuItem onClick={onTransactions} itemTitle={TRANSACTIONS_TEXT} />}
-
-    <Hairline color={border} margin="sm" />
-  </React.Fragment>
-);
-
-const DesktopLinkMenuItem = ({ itemTitle, onClick }: MenuItemProps) => {
-  const textStyle = {
-    marginTop: '12px',
-  };
-
-  return (
-    <Block style={textStyle}>
-      <Typography variant="subtitle2" color="textPrimary" style={textStyle} onClick={onClick}>
+const LinkMenuItem = ({ itemTitle, onClick }: MenuItemProps): JSX.Element => (
+  <Block marginTop="12px">
+    <Block marginTop="12px">
+      <Typography variant="subtitle2" color="textPrimary" onClick={onClick}>
         {itemTitle}
       </Typography>
     </Block>
-  );
-};
+  </Block>
+);
 
-interface LinksProps extends RouteComponentProps<{}>, WithStyles<typeof styles> {}
-
-const DesktopLinksComponent = ({ classes, location }: LinksProps) => {
+const LinksComponent = ({ location }: RouteComponentProps): JSX.Element => {
+  const classes = useStyles();
   const { pathname: path } = location;
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
@@ -107,21 +84,19 @@ const DesktopLinksComponent = ({ classes, location }: LinksProps) => {
   return (
     <Block className={classes.root}>
       <Block className={balanceClasses}>
-        <DesktopLinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
+        <LinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
         <Block className={classes.line} />
       </Block>
       <Block className={paymentClasses}>
-        <DesktopLinkMenuItem onClick={onPayments} itemTitle={PAYMENT_TEXT} />
+        <LinkMenuItem onClick={onPayments} itemTitle={PAYMENT_TEXT} />
         <Block className={classes.line} />
       </Block>
-      {TXS_FEATURE_FLAG && (
-        <Block className={transactionsClasses}>
-          <DesktopLinkMenuItem onClick={onTransactions} itemTitle={TRANSACTIONS_TEXT} />
-          <Block className={classes.line} />
-        </Block>
-      )}
+      <Block className={transactionsClasses}>
+        <LinkMenuItem onClick={onTransactions} itemTitle={TRANSACTIONS_TEXT} />
+        <Block className={classes.line} />
+      </Block>
     </Block>
   );
 };
 
-export const LinksDesktop = withStyles(styles)(withRouter(DesktopLinksComponent));
+export const LinksMenu = withRouter(LinksComponent);
