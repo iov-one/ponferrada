@@ -1,14 +1,15 @@
-import { createStyles, withStyles, WithStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
+import Block from 'medulas-react-components/lib/components/Block';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
-import Block from '~/components/layout/Block';
-import Typography from '~/components/layout/Typography';
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
   readonly onGotIt: () => void;
 }
 
-const styles = createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    padding: `${theme.spacing(2)}px`,
     color: 'white',
     display: 'flex',
     flexDirection: 'column',
@@ -16,23 +17,25 @@ const styles = createStyles({
       cursor: 'pointer',
     },
   },
-});
+}));
 
-const GotIt = ({ classes, onGotIt }: Props) => (
-  <React.Fragment>
-    <Block className={classes.root} padding="md" onClick={onGotIt}>
+const GotIt = ({ onGotIt }: Props): JSX.Element => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root} onClick={onGotIt}>
       <Block margin="md">
         <Typography variant="body1" color="inherit" align="justify">
           To be used as helper throughout the experience
         </Typography>
       </Block>
-      <Block align="right" margin="md" padding="md">
-        <Typography variant="body1" color="inherit" underlined>
+      <Block margin={2} padding={2}>
+        <Typography variant="body1" color="inherit" align="right">
           Got it
         </Typography>
       </Block>
-    </Block>
-  </React.Fragment>
-);
+    </div>
+  );
+};
 
-export default withStyles(styles)(GotIt);
+export default GotIt;
