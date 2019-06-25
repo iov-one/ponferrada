@@ -1,6 +1,6 @@
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
-import Typography from '~/components/layout/Typography';
-import { elipsify } from '~/utils/strings';
+import { elipsify } from '../../../../../utils/strings';
 
 interface MsgProps {
   readonly received: boolean;
@@ -10,7 +10,7 @@ interface MsgProps {
   readonly onVisitSendPayment: (address: string) => () => void;
 }
 
-const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgProps) => {
+const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
   const signerWeight = received ? 'semibold' : 'regular';
   const recipientWeight = received ? 'regular' : 'semibold';
 
@@ -20,7 +20,7 @@ const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgPro
   return (
     <React.Fragment>
       {received ? (
-        <Typography weight={signerWeight} inline pointer onClick={onVisitSendPayment(signer)}>
+        <Typography weight={signerWeight} inline link onClick={onVisitSendPayment(signer)}>
           {signerShort}
         </Typography>
       ) : (
@@ -34,7 +34,7 @@ const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgPro
           {'you '}
         </Typography>
       ) : (
-        <Typography weight={recipientWeight} inline pointer onClick={onVisitSendPayment(recipient)}>
+        <Typography weight={recipientWeight} inline link onClick={onVisitSendPayment(recipient)}>
           {`${recipientShort} `}
         </Typography>
       )}
