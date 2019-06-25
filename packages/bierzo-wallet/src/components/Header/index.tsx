@@ -28,7 +28,7 @@ const Header = (): JSX.Element => {
   const lastTx = useSelector(lastTxSelector);
 
   return (
-    <Block className={classes.root} padding={5}>
+    <Block className={classes.root} padding={3}>
       <Img src={logoBlack} alt="Logo" />
       <Block flexGrow={1} />
       <LinksMenu />

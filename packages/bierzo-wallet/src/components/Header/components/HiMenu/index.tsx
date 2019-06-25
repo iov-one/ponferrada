@@ -97,7 +97,7 @@ const HiMenu = (props: {}): JSX.Element => {
 
   return (
     <ListMenu starter={starter} listWidth={280} listId={MENU_ID} {...rest}>
-      <Block padding={2}>
+      <Block paddingLeft={2} paddingRight={2} paddingBottom={1} paddingTop={1}>
         <HiElement
           height="20"
           id={SECURITY_CENTER_ID}
@@ -130,7 +130,6 @@ const HiMenu = (props: {}): JSX.Element => {
           msg="Privacy Policy"
           alt="Privacy Policy"
         />
-        <Hairline />
       </Block>
     </ListMenu>
   );

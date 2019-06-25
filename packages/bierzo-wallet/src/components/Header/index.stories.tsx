@@ -90,7 +90,7 @@ const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
   <React.Fragment>
     <Typography variant="h5">{text}</Typography>
     <Header />
-    <Hairline space={4} />
+    <Hairline />
   </React.Fragment>
 );
 
