@@ -9,6 +9,7 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    backgroundColor: theme.palette.primary.light,
     padding: `${theme.spacing(2)}px`,
     color: 'white',
     display: 'flex',
@@ -30,7 +31,7 @@ const GotIt = ({ onGotIt }: Props): JSX.Element => {
         </Typography>
       </Block>
       <Block margin={2} padding={2}>
-        <Typography variant="body1" color="inherit" align="right">
+        <Typography variant="body1" color="inherit" align="right" link>
           Got it
         </Typography>
       </Block>
