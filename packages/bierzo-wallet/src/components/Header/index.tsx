@@ -1,33 +1,36 @@
+import { makeStyles } from '@material-ui/core';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { MatchMediaContext } from '~/context/MatchMediaContext';
-import actions, { LogoutProfileActions } from './actions';
-import Layout from './components';
-import selector, { SelectorProps } from './selector';
+import { useSelector } from 'react-redux';
+import { getPendingTransactions } from '../../store/notifications/selectors';
+import { confirmedTxSelector, lastTxSelector } from './selector';
 
-interface Props extends SelectorProps, LogoutProfileActions {}
+const useStyles = makeStyles({
+  root: {
+    alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    minHeight: '70px',
+    backgroundColor: 'white',
+  },
+});
 
-class Header extends React.Component<Props> {
-  public render(): JSX.Element {
-    const { pendingTxs, txs, lastTx, logoutProfile } = this.props;
+const Header = (): JSX.Element => {
+  const classes = useStyles();
+  const pendingTxs = useSelector(getPendingTransactions);
+  const txs = useSelector(confirmedTxSelector);
+  const lastTx = useSelector(lastTxSelector);
 
-    return (
-      <MatchMediaContext.Consumer>
-        {phone => (
-          <Layout
-            phoneMode={phone}
-            pendingTxs={pendingTxs}
-            txs={txs}
-            lastTx={lastTx}
-            logoutProfile={logoutProfile}
-          />
-        )}
-      </MatchMediaContext.Consumer>
-    );
-  }
-}
+  return (
+    <Block className={classes.root} padding={5}>
+      <Img src={logoBlack} alt="Logo" />
+      <Block flexGrow={1} />
+      <LinksDesktop />
+      <Block flexGrow={4} />
+      <TransactionsMenu items={pendingTxs} />
+      <BellMenu items={txs} lastTx={lastTx} />
+      <HiMenu />
+    </Block>
+  );
+};
 
-export default connect(
-  selector,
-  actions,
-)(Header);
+export default Header;
