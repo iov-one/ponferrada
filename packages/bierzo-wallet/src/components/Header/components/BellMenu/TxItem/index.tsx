@@ -1,50 +1,52 @@
-import { createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Block from 'medulas-react-components/lib/components/Block';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import Image from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
 import errorTx from '~/components/Header/assets/transactionError.svg';
 import receiveTx from '~/components/Header/assets/transactionReceive.svg';
 import sendTx from '~/components/Header/assets/transactionSend.svg';
-import Block from '~/components/layout/Block';
-import Hairline from '~/components/layout/Hairline';
-import Img from '~/components/layout/Image';
-import { prettyAmount } from '~/logic';
-import { PAYMENT_ROUTE } from '~/routes';
-import { RECIPIENT_FIELD } from '~/routes/sendPayment/components/FillPayment/RecipientCard';
-import { history } from '~/store';
-import { ProcessedTx } from '~/store/notifications/state';
-import { itemBackground, xs } from '~/theme/variables';
+import { history } from '../../../../../routes';
+import { PAYMENT_ROUTE } from '../../../../../routes/paths';
+import { ProcessedTx } from '../../../../../store/notifications';
+import { itemBackground } from '../../../../../theme/css';
+import { prettyAmount } from '../../../../../utils/balances';
 import MsgError from './MsgError';
 import Msg from './MsgSuccess';
 
-interface ItemProps extends WithStyles<typeof styles> {
+interface ItemProps {
   readonly item: ProcessedTx;
-  readonly phone: boolean;
   readonly lastOne: boolean;
 }
 
-const onVisitSendPayment = (address: string) => () => {
-  history.push({
-    pathname: PAYMENT_ROUTE,
-    state: {
-      [RECIPIENT_FIELD]: address,
-    },
-  });
+const onVisitSendPayment = (address: string): (() => void) => () => {
+  history.push(PAYMENT_ROUTE);
+  /*
+    history.push({
+      pathname: PAYMENT_ROUTE,
+      state: {
+        [RECIPIENT_FIELD]: address,
+      },
+    });
+  */
 };
 
-const styles = createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   msg: {
     '& > span': {
       lineHeight: 1.3,
-      marginBottom: xs,
+      marginBottom: `${theme.spacing(1)}xs`,
     },
   },
   item: {
     backgroundColor: itemBackground,
   },
-});
+}));
 
-const TxItem = ({ item, phone, classes, lastOne }: ItemProps) => {
+const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
+  const classes = useStyles();
   const { time, amount, received, signer, recipient, success } = item;
 
   const beautifulAmount = prettyAmount(amount);
@@ -63,9 +65,9 @@ const TxItem = ({ item, phone, classes, lastOne }: ItemProps) => {
   );
 
   return (
-    <Block padding={phone ? 'sm' : undefined} className={classes.item}>
+    <Block padding={1} className={classes.item}>
       <ListItem>
-        <Img src={icon} height={32} alt="Tx operation" />
+        <Image src={icon} height={32} alt="Tx operation" />
         <ListItemText className={classes.msg} primary={msg} secondary={time.toLocaleString()} />
       </ListItem>
       {!lastOne && (
@@ -77,4 +79,4 @@ const TxItem = ({ item, phone, classes, lastOne }: ItemProps) => {
   );
 };
 
-export default withStyles(styles)(TxItem);
+export default TxItem;
