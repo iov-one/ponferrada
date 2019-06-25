@@ -7,7 +7,7 @@ import { getPendingTransactions } from '../../store/notifications/selectors';
 import logoBlack from './assets/logoBlack.svg';
 import BellMenu from './components/BellMenu';
 import HiMenu from './components/HiMenu';
-import { LinksDesktop } from './components/LinksMenu';
+import { LinksMenu } from './components/LinksMenu';
 import TransactionsMenu from './components/TransactionsMenu';
 import { confirmedTxSelector, lastTxSelector } from './selector';
 
@@ -31,7 +31,7 @@ const Header = (): JSX.Element => {
     <Block className={classes.root} padding={5}>
       <Img src={logoBlack} alt="Logo" />
       <Block flexGrow={1} />
-      <LinksDesktop />
+      <LinksMenu />
       <Block flexGrow={4} />
       <TransactionsMenu items={pendingTxs} />
       <BellMenu items={txs} lastTx={lastTx} />
