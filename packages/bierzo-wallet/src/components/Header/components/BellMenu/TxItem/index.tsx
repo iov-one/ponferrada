@@ -5,14 +5,14 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Image from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
-import errorTx from '~/components/Header/assets/transactionError.svg';
-import receiveTx from '~/components/Header/assets/transactionReceive.svg';
-import sendTx from '~/components/Header/assets/transactionSend.svg';
 import { history } from '../../../../../routes';
 import { PAYMENT_ROUTE } from '../../../../../routes/paths';
 import { ProcessedTx } from '../../../../../store/notifications';
 import { itemBackground } from '../../../../../theme/css';
 import { prettyAmount } from '../../../../../utils/balances';
+import errorTx from '../../../assets/transactionError.svg';
+import receiveTx from '../../../assets/transactionReceive.svg';
+import sendTx from '../../../assets/transactionSend.svg';
 import MsgError from './MsgError';
 import Msg from './MsgSuccess';
 

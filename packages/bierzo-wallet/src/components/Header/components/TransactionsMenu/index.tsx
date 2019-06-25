@@ -3,9 +3,9 @@ import Badge from 'medulas-react-components/lib/components/Badge';
 import Image from 'medulas-react-components/lib/components/Image';
 import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
-import loading from '~/components/Header/assets/loading.svg';
-import loadingSpin from '~/components/Header/assets/loadingSpin.svg';
 import { Tx } from '../../../../store/notifications';
+import loading from '../../assets/loading.svg';
+import loadingSpin from '../../assets/loadingSpin.svg';
 import GotIt from './GotIt';
 import TransactionsList from './TransactionsList';
 
