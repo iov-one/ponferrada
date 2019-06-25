@@ -1,6 +1,7 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyListIcon';
 import * as React from 'react';
@@ -33,7 +34,9 @@ const Transactions = ({ items }: Props): JSX.Element => {
           return (
             <React.Fragment key={item.id}>
               <ListItem>
-                <CircularProgress size={30} />
+                <Block paddingRight={2}>
+                  <CircularProgress size={25} />
+                </Block>
                 <ListItemText primary={`${beautifulAmount} to ${prettyReceiver}`} secondary="... Sending" />
               </ListItem>
               {!lastOne && <Hairline />}

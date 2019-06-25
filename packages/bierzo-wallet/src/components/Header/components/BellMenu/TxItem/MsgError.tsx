@@ -13,19 +13,27 @@ const MsgError = ({ amount, recipient, onVisitSendPayment }: MsgErrorProps): JSX
 
   return (
     <React.Fragment>
-      <Typography inline>{'Your '}</Typography>
-      <Typography weight="semibold" inline>
+      <Typography variant="body2" inline>
+        {'Your '}
+      </Typography>
+      <Typography variant="body2" weight="semibold" inline>
         {amount}
       </Typography>
-      <Typography inline>{' payment to '}</Typography>
-      <Typography weight="semibold" inline link onClick={onVisitSendPayment(recipient)}>
+      <Typography variant="body2" inline>
+        {' payment to '}
+      </Typography>
+      <Typography variant="body2" weight="semibold" inline link onClick={onVisitSendPayment(recipient)}>
         {shortRecipient}
       </Typography>
-      <Typography inline>{' was '}</Typography>
-      <Typography weight="semibold" inline>
+      <Typography variant="body2" inline>
+        {' was '}
+      </Typography>
+      <Typography variant="body2" weight="semibold" inline>
         {'unsuccessful'}
       </Typography>
-      <Typography inline>{', please try again later'}</Typography>
+      <Typography variant="body2" inline>
+        {', please try again later'}
+      </Typography>
     </React.Fragment>
   );
 };

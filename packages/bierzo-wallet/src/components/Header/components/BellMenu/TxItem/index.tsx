@@ -67,8 +67,10 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   return (
     <Block padding={1} className={classes.item}>
       <ListItem>
-        <Image src={icon} height={32} alt="Tx operation" />
-        <ListItemText className={classes.msg} primary={msg} secondary={time.toLocaleString()} />
+        <Image src={icon} height={30} alt="Tx operation" />
+        <Block paddingLeft={2}>
+          <ListItemText className={classes.msg} primary={msg} secondary={time.toLocaleString()} />
+        </Block>
       </ListItem>
       {!lastOne && (
         <Block padding="md">
