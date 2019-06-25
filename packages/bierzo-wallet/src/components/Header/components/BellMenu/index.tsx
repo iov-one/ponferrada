@@ -35,8 +35,8 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
     const badgeProps: BadgeProps = calcBadgeProps(lastTx, getLastTx());
 
     return (
-      <Block padding="xl">
-        <Badge color={badgeProps.color} invisible={badgeProps.invisible} alt="Transactions" variant="dot">
+      <Block padding={5}>
+        <Badge color={badgeProps.color} invisible={badgeProps.invisible} variant="dot">
           <Img src={logo} alt="Transactions Menu" />
         </Badge>
       </Block>

@@ -1,4 +1,4 @@
-import { ProcessedTx } from '~/store/notifications/state';
+import { ProcessedTx } from '../../store/notifications';
 
 export const LAST_TX = 'LAST_TX';
 
