@@ -28,8 +28,7 @@
     "reselect": "^4.0.0"
   },
   "devDependencies": {
-    "@types/express": "^4.16.1",
-    "@types/react-redux": "^7.0.9"
+    "@types/express": "^4.16.1"
   },
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",

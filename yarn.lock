@@ -3206,19 +3206,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@^7.0.1":
-  version "7.0.8"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.0.8.tgz#c928863058e334d41031c6bedd0f113bc514e234"
-  integrity sha512-vIBC15E84ehN6RzdGwRVa41whp9e4CkfPm+WfD0r6y6vqBf4tQPKZeKEBfLLM8k79uSwQC7rh3rH/MFaN1IESQ==
-  dependencies:
-    "@types/hoist-non-react-statics" "^3.3.0"
-    "@types/react" "*"
-    redux "^4.0.0"
-
-"@types/react-redux@^7.0.9":
-  version "7.0.9"
-  resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.9.tgz#4825ee2872c44768916304b6bb8df5b46d443b88"
-  integrity sha512-fMVX9SneWWw68d/JoeNUh6hj42kx2G30YhPdCYJTOv3xqbJ1xzIz6tEM/xzi7nBvpNbwZkSa9TMsV06kWOFIIg==
+"@types/react-redux@7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.0.tgz#ed2c90ff192433251bd8a264195529f3613d53e2"
+  integrity sha512-SBJd6oNACDU/taMcDzFfj0mbVa+OI42L8WNvgPsCWiWUNIavPLeX5oA22V64tYIDUc7cGmJjDyLlWeCrqpZu1w==
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.0"
     "@types/react" "*"
@@ -14538,7 +14529,7 @@ react-docgen@^4.1.0:
     node-dir "^0.1.10"
     recast "^0.17.3"
 
-react-dom@16.9.0-alpha.0:
+react-dom@16.9.0-alpha.0, react-dom@^16.8.4:
   version "16.9.0-alpha.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.9.0-alpha.0.tgz#9dfaec18ac1a500fa72cab7b70f2ae29d0cd7716"
   integrity sha512-BQ5gN42yIPuTnBvE6K9vSjNfDRpSNcYCs2sUx9XR5VaWKwlHTt3G6qIWK6zdXy8TYKb1+IxpsAI0RtbRdXQZ2A==
@@ -14547,16 +14538,6 @@ react-dom@16.9.0-alpha.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.14.0-alpha.0"
-
-react-dom@^16.8.4:
-  version "16.8.6"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
-  integrity sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.13.6"
 
 react-draggable@^3.1.1:
   version "3.3.0"
@@ -14823,7 +14804,7 @@ react-transition-group@^4.0.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@16.9.0-alpha.0:
+react@16.9.0-alpha.0, react@^16.7.0, react@^16.8.4:
   version "16.9.0-alpha.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.9.0-alpha.0.tgz#e350f3d8af36e3251079cbc90d304620e2f78ccb"
   integrity sha512-y4bu7rJvtnPPsIwOj7sp5Y2SqlOb0jFupfkdjWxxn8ZeqzUARgpR9wJBUVwW1/QosVdOblmApjo/j6iiAXnebA==
@@ -14832,16 +14813,6 @@ react@16.9.0-alpha.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.14.0-alpha.0"
-
-react@^16.7.0, react@^16.8.4:
-  version "16.8.6"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
-  integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.13.6"
 
 read-cmd-shim@^1.0.1:
   version "1.0.1"
