@@ -1,20 +1,19 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyListIcon';
 import * as React from 'react';
-import noPendingTxs from '~/components/Header/assets/noPendingTxs.svg';
-import Hairline from '~/components/layout/Hairline';
-import EmptyListIcon from '~/components/templates/menu/EmptyListIcon';
-import { prettyAmount } from '~/logic';
-import { Tx } from '~/store/notifications/state';
-import { border } from '~/theme/variables';
-import { elipsify } from '~/utils/strings';
+import { Tx } from '../../../../store/notifications';
+import { prettyAmount } from '../../../../utils/balances';
+import { elipsify } from '../../../../utils/strings';
+import noPendingTxs from '../../assets/noPendingTxs.svg';
 
 interface Props {
   readonly items: ReadonlyArray<Tx>;
 }
 
-const Transactions = ({ items }: Props) => {
+const Transactions = ({ items }: Props): JSX.Element => {
   const hasItems = items.length > 0;
 
   return (
@@ -22,7 +21,7 @@ const Transactions = ({ items }: Props) => {
       <ListItem>
         <ListItemText primary="Pending Transactions" />
       </ListItem>
-      <Hairline color={border} />
+      <Hairline />
       {hasItems ? (
         items.map((item: Tx, index: number) => {
           const { amount, recipient } = item;
