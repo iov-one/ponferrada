@@ -1,22 +1,15 @@
 import { TokenTicker } from '@iov/core';
 import { storiesOf } from '@storybook/react';
+import Hairline from 'medulas-react-components/lib/components/Hairline';
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
-import Block from '~/components/layout/Block';
-import Hairline from '~/components/layout/Hairline';
-import Typography from '~/components/layout/Typography';
-import { stringToAmount } from '~/logic';
-import { RootState } from '~/reducers';
-import { ProcessedTx, Tx } from '~/store/notifications/state';
-import { RootMatchMedia } from '~/utils/storybook';
+import { ProcessedTx, Tx } from '../../store/notifications';
+import { RootState } from '../../store/reducers';
+import { stringToAmount } from '../../utils/balances';
+import DecoratedStorybook from '../../utils/storybook';
 import Header from './index';
-
-const Separator = () => (
-  <Block margin="xl">
-    <Hairline />
-  </Block>
-);
 
 const pendingTxs: ReadonlyArray<Tx> = [
   {
@@ -65,13 +58,13 @@ const faultTx: ProcessedTx = {
 };
 
 const txStore: DeepPartial<RootState> = {
-  notification: {
-    transaction: txs,
+  notifications: {
+    transactions: txs,
   },
 };
 
 const pendingTxStore: DeepPartial<RootState> = {
-  notification: {
+  notifications: {
     pending: pendingTxs,
   },
 };
@@ -80,45 +73,46 @@ const fullStore = (faulty: boolean): DeepPartial<RootState> => {
   const fullTxs = faulty ? [faultTx, ...txs] : txs;
 
   return {
-    notification: {
+    notifications: {
       pending: pendingTxs,
-      transaction: fullTxs,
+      transactions: fullTxs,
     },
   };
 };
 
 interface EnahncedHeaderProps {
-  readonly match: boolean;
+  readonly match?: boolean;
   readonly storeProps?: DeepPartial<RootState>;
   readonly text: string;
 }
 
-const EnhancedHeader = ({ match, storeProps, text }: EnahncedHeaderProps) => (
+const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
   <React.Fragment>
     <Typography variant="h5">{text}</Typography>
-    <RootMatchMedia matchMedia={match} storeProps={storeProps}>
-      <Header />
-    </RootMatchMedia>
-    <Separator />
+    <Header />
+    <Hairline space={4} />
   </React.Fragment>
 );
 
-storiesOf('Components /header', module)
-  .add('Header for desktop', () => (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      <EnhancedHeader match={false} storeProps={fullStore(false)} text="Full Header" />
-      <EnhancedHeader match={false} storeProps={fullStore(true)} text="Faulty full Header" />
-      <EnhancedHeader match={false} storeProps={txStore} text="Txs Header" />
-      <EnhancedHeader match={false} storeProps={pendingTxStore} text="Pending Header" />
-      <EnhancedHeader match={false} text="Empty Header" />
-    </div>
-  ))
-  .add('Header for phones', () => (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '425px' }}>
-      <EnhancedHeader match storeProps={fullStore(true)} text="Full Header" />
-      <EnhancedHeader match storeProps={fullStore(false)} text="Faultyfull Header" />
-      <EnhancedHeader match storeProps={txStore} text="Txs Header" />
-      <EnhancedHeader match storeProps={pendingTxStore} text="Pending Header" />
-      <EnhancedHeader match text="Empty Header" />
-    </div>
-  ));
+storiesOf('Components', module)
+  .addParameters({ viewport: { defaultViewport: 'responsive' } })
+  .add(
+    'Header',
+    (): JSX.Element => (
+      <DecoratedStorybook>
+        <EnhancedHeader text="Full Header" />
+      </DecoratedStorybook>
+    ),
+  );
+
+/*
+  () => (
+  <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+    <EnhancedHeader match={false} storeProps={fullStore(false)} text="Full Header" />
+    <EnhancedHeader match={false} storeProps={fullStore(true)} text="Faulty full Header" />
+    <EnhancedHeader match={false} storeProps={txStore} text="Txs Header" />
+    <EnhancedHeader match={false} storeProps={pendingTxStore} text="Pending Header" />
+    <EnhancedHeader match={false} text="Empty Header" />
+  </div>
+));
+*/
