@@ -1,6 +1,6 @@
+import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
-import Typography from '~/components/layout/Typography';
-import { elipsify } from '~/utils/strings';
+import { elipsify } from '../../../../../utils/strings';
 
 interface MsgErrorProps {
   readonly amount: string;
@@ -8,7 +8,7 @@ interface MsgErrorProps {
   readonly onVisitSendPayment: (address: string) => () => void;
 }
 
-const MsgError = ({ amount, recipient, onVisitSendPayment }: MsgErrorProps) => {
+const MsgError = ({ amount, recipient, onVisitSendPayment }: MsgErrorProps): JSX.Element => {
   const shortRecipient = elipsify(recipient, 16);
 
   return (
@@ -18,7 +18,7 @@ const MsgError = ({ amount, recipient, onVisitSendPayment }: MsgErrorProps) => {
         {amount}
       </Typography>
       <Typography inline>{' payment to '}</Typography>
-      <Typography weight="semibold" inline pointer onClick={onVisitSendPayment(recipient)}>
+      <Typography weight="semibold" inline link onClick={onVisitSendPayment(recipient)}>
         {shortRecipient}
       </Typography>
       <Typography inline>{' was '}</Typography>
