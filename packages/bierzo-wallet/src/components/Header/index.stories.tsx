@@ -1,5 +1,6 @@
 import { TokenTicker } from '@iov/core';
 import { storiesOf } from '@storybook/react';
+import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
@@ -81,16 +82,15 @@ const fullStore = (faulty: boolean): DeepPartial<RootState> => {
 };
 
 interface EnahncedHeaderProps {
-  readonly match?: boolean;
-  readonly storeProps?: DeepPartial<RootState>;
   readonly text: string;
 }
 
 const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
   <React.Fragment>
-    <Typography variant="h5">{text}</Typography>
+    <Typography variant="h6">{text}</Typography>
     <Header />
     <Hairline />
+    <Block marginBottom={6} />
   </React.Fragment>
 );
 
@@ -99,20 +99,22 @@ storiesOf('Components', module)
   .add(
     'Header',
     (): JSX.Element => (
-      <DecoratedStorybook>
-        <EnhancedHeader text="Full Header" />
-      </DecoratedStorybook>
+      <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <DecoratedStorybook storeProps={fullStore(false)}>
+          <EnhancedHeader text="Full Header" />
+        </DecoratedStorybook>
+        <DecoratedStorybook storeProps={fullStore(true)}>
+          <EnhancedHeader text="Faulty full Header" />
+        </DecoratedStorybook>
+        <DecoratedStorybook storeProps={txStore}>
+          <EnhancedHeader text="Txs Header" />
+        </DecoratedStorybook>
+        <DecoratedStorybook storeProps={pendingTxStore}>
+          <EnhancedHeader text="Pending Header" />
+        </DecoratedStorybook>
+        <DecoratedStorybook>
+          <EnhancedHeader text="Empty Header" />
+        </DecoratedStorybook>
+      </div>
     ),
   );
-
-/*
-  () => (
-  <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-    <EnhancedHeader match={false} storeProps={fullStore(false)} text="Full Header" />
-    <EnhancedHeader match={false} storeProps={fullStore(true)} text="Faulty full Header" />
-    <EnhancedHeader match={false} storeProps={txStore} text="Txs Header" />
-    <EnhancedHeader match={false} storeProps={pendingTxStore} text="Pending Header" />
-    <EnhancedHeader match={false} text="Empty Header" />
-  </div>
-));
-*/

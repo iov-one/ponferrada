@@ -1,5 +1,5 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
-import reducers, { RootReducer } from './reducers';
+import { applyMiddleware, compose, createStore, DeepPartial, Middleware, Store } from 'redux';
+import reducers, { RootReducer, RootState } from './reducers';
 
 const composeEnhancers =
   (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
@@ -22,4 +22,8 @@ export const configureStore = (): Store<RootReducer> => {
   }
 
   return store;
+};
+
+export const aNewStore = (preloadedStore?: DeepPartial<RootState>): Store<RootReducer> => {
+  return createStore(reducers, preloadedStore, composeEnhancers(applyMiddleware(...middlewares)));
 };
