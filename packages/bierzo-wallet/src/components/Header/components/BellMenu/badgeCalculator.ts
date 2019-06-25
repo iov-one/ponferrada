@@ -1,4 +1,4 @@
-import { ProcessedTx } from '~/store/notifications/state';
+import { ProcessedTx } from '../../../../store/notifications';
 
 export interface BadgeProps {
   readonly invisible: boolean;
@@ -15,7 +15,7 @@ const buildBadgeFrom = (lastTxSucceded: boolean): BadgeProps => ({
   color: lastTxSucceded ? 'primary' : 'error',
 });
 
-const lastTxNewer = (lastTx: ProcessedTx, lastStoredTx: ProcessedTx) => {
+const lastTxNewer = (lastTx: ProcessedTx, lastStoredTx: ProcessedTx): boolean => {
   return lastTx.time.getTime() > lastStoredTx.time.getTime();
 };
 
