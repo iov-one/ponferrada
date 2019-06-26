@@ -4,7 +4,7 @@ import React from 'react';
 
 const ProposalsList = (): JSX.Element => {
   return (
-    <Block flexGrow={1}>
+    <Block>
       <Typography variant="h6">LIST OF PROPOSALS</Typography>
     </Block>
   );
