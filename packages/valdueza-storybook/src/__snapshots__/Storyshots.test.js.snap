@@ -6959,29 +6959,67 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 <div
   className="MuiBox-root MuiBox-root-3697"
 >
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
+  <div
+    className="MuiBox-root MuiBox-root-3698"
   >
-    DASHBOARD VIEW
-  </h6>
+    <div
+      className="MuiBox-root MuiBox-root-3699"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-3700"
+      >
+        <img
+          alt="Logo"
+          className="makeStyles-root-3701"
+          src="iov-logo.svg"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-3706"
+      >
+        <h5
+          className="MuiTypography-root MuiTypography-h5"
+        >
+          IOV
+        </h5>
+      </div>
+    </div>
+    <h5
+      className="MuiTypography-root MuiTypography-h5"
+    >
+      Voting Dashboard
+    </h5>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-3742"
+  />
+  <div
+    className="MuiBox-root MuiBox-root-3743"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+    >
+      DASHBOARD VIEW
+    </h6>
+  </div>
 </div>
 `;
 
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3736 makeStyles-login-3732"
+  className="MuiBox-root MuiBox-root-3749 makeStyles-login-3745"
 >
   <div
-    className="MuiBox-root MuiBox-root-3737 makeStyles-icon-3733"
+    className="MuiBox-root MuiBox-root-3750 makeStyles-icon-3746"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-3738"
+      className="makeStyles-root-3751"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3743"
+    className="MuiBox-root MuiBox-root-3756"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -6993,7 +7031,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-3734 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-3747 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
