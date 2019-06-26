@@ -47,14 +47,11 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
 
     chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
       const sameTarget = sender.id === chrome.runtime.id;
-      const msgToPersonaProvider = msg.action === MessageToForegroundAction.TransactionsChanged;
-      if (!sameTarget || !isMessageToForeground(msg) || !msgToPersonaProvider) {
+      if (!sameTarget || !isMessageToForeground(msg)) {
         // Only handle messages from background script
         return;
       }
 
-      // TODO Refactor to do not hard check everything, if the message is not for here
-      // just ignore it. Change the above checks as well.
       switch (msg.action) {
         case MessageToForegroundAction.TransactionsChanged:
           if (!Array.isArray(msg.data)) {
@@ -63,7 +60,7 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
           setTxs(msg.data);
           break;
         default:
-          throw new Error('Unknown action');
+        // this listener is not responsible for the given message, ignore message
       }
     });
   }, []);
