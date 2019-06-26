@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
+import RequireLogin from '../components/RequireLogin';
 import Login from './login';
 import { LOGIN_ROUTE, PAYMENT_ROUTE, WELCOME_ROUTE } from './paths';
 import Payment from './payment';
@@ -13,8 +14,10 @@ const Routes = (): JSX.Element => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path={LOGIN_ROUTE} component={Login} />
-      <Route exact path={WELCOME_ROUTE} component={Welcome} />
-      <Route exact path={PAYMENT_ROUTE} component={Payment} />
+      <RequireLogin>
+        <Route exact path={WELCOME_ROUTE} component={Welcome} />
+        <Route exact path={PAYMENT_ROUTE} component={Payment} />
+      </RequireLogin>
     </Switch>
   </Router>
 );
