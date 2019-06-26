@@ -7,7 +7,7 @@ import { getPendingTransactions } from '../../store/notifications/selectors';
 import logoBlack from './assets/logoBlack.svg';
 import BellMenu from './components/BellMenu';
 import HiMenu from './components/HiMenu';
-import { LinksMenu } from './components/LinksMenu';
+import LinksMenu from './components/LinksMenu';
 import TransactionsMenu from './components/TransactionsMenu';
 import { confirmedTxSelector, lastTxSelector } from './selector';
 
@@ -21,7 +21,11 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = (): JSX.Element => {
+interface Props {
+  path: string;
+}
+
+const Header = ({ path }: Props): JSX.Element => {
   const classes = useStyles();
   const pendingTxs = useSelector(getPendingTransactions);
   const txs = useSelector(confirmedTxSelector);
@@ -31,7 +35,7 @@ const Header = (): JSX.Element => {
     <Block className={classes.root} padding={3}>
       <Img src={logoBlack} alt="Logo" />
       <Block flexGrow={1} />
-      <LinksMenu />
+      <LinksMenu path={path} />
       <Block flexGrow={4} />
       <TransactionsMenu items={pendingTxs} />
       <BellMenu items={txs} lastTx={lastTx} />

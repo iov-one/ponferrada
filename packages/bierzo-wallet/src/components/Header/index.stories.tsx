@@ -88,7 +88,7 @@ interface EnahncedHeaderProps {
 const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
   <React.Fragment>
     <Typography variant="h6">{text}</Typography>
-    <Header />
+    <Header path="example" />
     <Hairline />
     <Block marginBottom={6} />
   </React.Fragment>

@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
 import { history } from '../../../../routes';
 import {
   BALANCE_ROUTE,
@@ -70,9 +69,12 @@ const LinkMenuItem = ({ itemTitle, onClick }: MenuItemProps): JSX.Element => (
   </Block>
 );
 
-const LinksComponent = ({ location }: RouteComponentProps): JSX.Element => {
+interface Props {
+  readonly path: string;
+}
+
+const LinksMenu = ({ path }: Props): JSX.Element => {
   const classes = useStyles();
-  const { pathname: path } = location;
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showPayment = path === PAYMENT_ROUTE || path.startsWith(CONFIRM_TRANSACTION);
@@ -99,4 +101,4 @@ const LinksComponent = ({ location }: RouteComponentProps): JSX.Element => {
   );
 };
 
-export const LinksMenu = withRouter(LinksComponent);
+export default LinksMenu;
