@@ -1,6 +1,6 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router';
 import RequireLogin from '../components/RequireLogin';
 import Login from './login';
 import { LOGIN_ROUTE, PAYMENT_ROUTE, WELCOME_ROUTE } from './paths';

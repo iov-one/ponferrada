@@ -4,7 +4,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router';
 import Header from '../../components/Header';
 import CurrencyToSend from './components/CurrencyToSend';
 import ReceiverAddress from './components/ReceiverAddress';
