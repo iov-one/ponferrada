@@ -35,7 +35,7 @@ const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<Json
   };
 };
 
-export const sendSignAndPostRequest = async (creator: PublicIdentity): Promise<TransactionId> => {
+export const sendSignAndPostRequest = async (creator: PublicIdentity): Promise<TransactionId | null> => {
   const request = await generateSignAndPostRequest(creator);
 
   return new Promise((resolve, reject) => {
@@ -50,6 +50,8 @@ export const sendSignAndPostRequest = async (creator: PublicIdentity): Promise<T
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
         if (typeof parsedResult === 'string') {
           resolve(parsedResult as TransactionId);
+        } else if (parsedResult === null) {
+          resolve(null);
         } else {
           reject('Got unexpected type of result');
         }
