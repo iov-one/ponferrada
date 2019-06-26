@@ -1,5 +1,6 @@
-import { TokenTicker } from '@iov/bcp';
+import { Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker, Address } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
+import { Encoding } from '@iov/encoding';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
@@ -26,6 +27,23 @@ describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';
   const accountMock: PersonaAcccount = { label: ACCOUNT };
   const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
+  const send: SendTransaction = {
+    kind: 'bcp/send',
+    amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
+    creator: {
+      chainId: 'foobar' as ChainId,
+      pubkey: {
+        algo: Algorithm.Secp256k1,
+        data: Encoding.fromHex('00112233') as PublicKeyBytes,
+      },
+    },
+    fee: {
+      gasLimit: '12345678',
+      gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
+    },
+    memo: 'A little donation',
+    recipient: '0x1212121212121212121212121212121212121212' as Address,
+  };
   const txMock: ProcessedTx = {
     id: '111',
     recipient: 'Example Recipient',
@@ -34,6 +52,7 @@ describe('DOM > Feature > Account Status', () => {
     time: 'Sat May 25 10:10:00 2019 +0200',
     blockExplorerUrl: 'www.blockexplorer.com',
     error: null,
+    original: send,
   };
   const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock]);
 

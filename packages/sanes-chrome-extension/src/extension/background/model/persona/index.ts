@@ -1,4 +1,4 @@
-import { Amount, isSendTransaction } from '@iov/bcp';
+import { Amount, isSendTransaction, SendTransaction } from '@iov/bcp';
 import { BnsConnection } from '@iov/bns';
 import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
@@ -17,6 +17,11 @@ function isNonNull<T>(t: T | null): t is T {
 }
 
 /**
+ * All transaction types that can be displayed and signed by the extension
+ */
+export type SupportedTransaction = SendTransaction;
+
+/**
  * A transaction signed by the user of the extension.
  */
 export interface ProcessedTx {
@@ -29,6 +34,7 @@ export interface ProcessedTx {
   readonly blockExplorerUrl: string | null;
   /** If error is null, the transaction succeeded */
   readonly error: string | null;
+  readonly original: SupportedTransaction;
 }
 
 /**
@@ -147,6 +153,7 @@ export class Persona {
       amount: t.transaction.amount,
       blockExplorerUrl,
       error: null,
+      original: t.transaction,
     };
   }
 
