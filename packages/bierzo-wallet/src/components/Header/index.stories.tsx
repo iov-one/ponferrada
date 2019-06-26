@@ -9,7 +9,7 @@ import { DeepPartial } from 'redux';
 import { ProcessedTx, Tx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';
-import DecoratedStorybook from '../../utils/storybook';
+import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Header from './index';
 
 const pendingTxs: ReadonlyArray<Tx> = [
@@ -94,7 +94,7 @@ const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
   </React.Fragment>
 );
 
-storiesOf('Components', module)
+storiesOf(`${WALLET_ROOT}/Components`, module)
   .addParameters({ viewport: { defaultViewport: 'responsive' } })
   .add(
     'Header',
