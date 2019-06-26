@@ -18,9 +18,6 @@ function isNonNull<T>(t: T | null): t is T {
 
 /**
  * A transaction signed by the user of the extension.
- *
- * All fields must be losslessly JSON serializable/deserializable to allow
- * messaging between background script and UI.
  */
 export interface ProcessedTx {
   readonly id: string;
