@@ -29,7 +29,10 @@
     {
       "chainSpec": {
         "codecType": "eth",
-        "bootstrapNodes": ["https://rinkeby.infura.io", "https://api-rinkeby.etherscan.io/api"]
+        "bootstrapNodes": [
+          "https://rinkeby.infura.io/v3/143ecb3d2d864557b4b140f731530909",
+          "https://api-rinkeby.etherscan.io/api"
+        ]
       }
     }
   ]
