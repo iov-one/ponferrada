@@ -69,7 +69,7 @@ const Layout = ({
       flexWrap="wrap"
       bgcolor={theme.palette.background.paper}
     >
-      <Block>
+      <Block height="100vh">
         <Img src={people} alt="Log in Image" cover />
         <Img src={icon === 'black' ? logoBlack : logo} alt="Logo" className={classes.logo} />
       </Block>
