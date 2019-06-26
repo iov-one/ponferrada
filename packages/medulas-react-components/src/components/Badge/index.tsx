@@ -1,7 +1,7 @@
 import { Badge, makeStyles, PropTypes, Theme } from '@material-ui/core';
 import React from 'react';
+import CheckIcon from '../../theme/assets/badgeIcon/check.svg';
 import Img from '../Image';
-import CheckIcon from './assets/check.svg';
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   readonly variant: 'dot' | 'check';
