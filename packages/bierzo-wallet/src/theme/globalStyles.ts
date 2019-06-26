@@ -19,7 +19,13 @@ export const globalStyles = makeStyles({
       padding: '0',
       fontFamily: '"Muli", sans-serif',
       boxSizing: 'border-box',
-      overflow: 'hidden',
+    },
+    '#root': {
+      position: 'absolute',
+      top: '0',
+      bottom: '0',
+      right: '0',
+      left: '0',
     },
   },
 });
