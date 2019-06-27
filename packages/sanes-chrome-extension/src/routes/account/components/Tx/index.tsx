@@ -10,8 +10,8 @@ import { ProcessedTx } from '../../../../extension/background/model/persona';
 import { prettyAmount } from '../../../../utils/balances';
 import iconErrorTx from '../../assets/transactionError.svg';
 import iconSendTx from '../../assets/transactionSend.svg';
-import MsgError from './MsgError';
-import Msg from './MsgSuccess';
+import MsgSendTransactionError from './MsgSendTransactionError';
+import MsgSendTransactionSuccess from './MsgSendTransactionSuccess';
 
 interface ItemProps {
   readonly item: ProcessedTx;
@@ -42,9 +42,9 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
     const { amount, recipient } = item.original;
     const beautifulAmount = prettyAmount(amount);
     msg = error ? (
-      <MsgError amount={beautifulAmount} recipient={recipient} />
+      <MsgSendTransactionError amount={beautifulAmount} recipient={recipient} />
     ) : (
-      <Msg
+      <MsgSendTransactionSuccess
         blockExplorerUrl={item.blockExplorerUrl}
         amount={beautifulAmount}
         recipient={recipient}

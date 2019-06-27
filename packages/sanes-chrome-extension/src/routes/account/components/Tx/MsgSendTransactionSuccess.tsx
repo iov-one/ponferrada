@@ -10,7 +10,7 @@ import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider
 import * as React from 'react';
 import { elipsify } from '../../../../utils/strings';
 
-interface MsgProps {
+interface MsgSendTransactionProps {
   readonly recipient: string;
   readonly amount: string;
   readonly blockExplorerUrl: string | null;
@@ -26,7 +26,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Msg = ({ id, amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element => {
+const MsgSendTransactionSuccess = ({
+  id,
+  amount,
+  blockExplorerUrl,
+  recipient,
+}: MsgSendTransactionProps): JSX.Element => {
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
@@ -69,4 +74,4 @@ const Msg = ({ id, amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element
   );
 };
 
-export default Msg;
+export default MsgSendTransactionSuccess;
