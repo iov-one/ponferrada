@@ -1,3 +1,4 @@
+import { isSendTransaction } from '@iov/bcp';
 import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -34,22 +35,27 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, recipient, error } = item;
+  const { time, error } = item;
 
-  const beautifulAmount = prettyAmount(amount);
+  let msg: JSX.Element;
+  if (isSendTransaction(item.original)) {
+    const { amount, recipient } = item.original;
+    const beautifulAmount = prettyAmount(amount);
+    msg = error ? (
+      <MsgError amount={beautifulAmount} recipient={recipient} />
+    ) : (
+      <Msg
+        blockExplorerUrl={item.blockExplorerUrl}
+        amount={beautifulAmount}
+        recipient={recipient}
+        id={item.id}
+      />
+    );
+  } else {
+    throw new Error('Received transaction type that cannot be displayed');
+  }
+
   const icon = error ? iconErrorTx : iconSendTx;
-
-  const msg = error ? (
-    <MsgError amount={beautifulAmount} recipient={recipient} />
-  ) : (
-    <Msg
-      blockExplorerUrl={item.blockExplorerUrl}
-      amount={beautifulAmount}
-      recipient={recipient}
-      id={item.id}
-    />
-  );
-
   return (
     <Block className={classes.item}>
       <ListItem disableGutters>

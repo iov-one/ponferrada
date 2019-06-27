@@ -46,9 +46,7 @@ describe('DOM > Feature > Account Status', () => {
   };
   const txMock: ProcessedTx = {
     id: '111',
-    recipient: 'Example Recipient',
     signer: 'Example Signer',
-    amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
     time: 'Sat May 25 10:10:00 2019 +0200',
     blockExplorerUrl: 'www.blockexplorer.com',
     error: null,

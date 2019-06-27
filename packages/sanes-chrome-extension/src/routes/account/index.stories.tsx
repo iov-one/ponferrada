@@ -32,9 +32,7 @@ const send: SendTransaction = {
 
 const processedTx: ProcessedTx = {
   id: '111',
-  recipient: 'Example Recipient',
   signer: 'Example Signer',
-  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: null,
   blockExplorerUrl: null,
@@ -43,9 +41,7 @@ const processedTx: ProcessedTx = {
 
 const blockExplorerProcessedTx: ProcessedTx = {
   id: '112',
-  recipient: 'Example Recipient',
   signer: 'Example Signer',
-  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: null,
   blockExplorerUrl: 'https://iov.one',
@@ -54,9 +50,7 @@ const blockExplorerProcessedTx: ProcessedTx = {
 
 const errorProcessedTx: ProcessedTx = {
   id: '113',
-  recipient: 'Example Recipient',
   signer: 'Example Signer',
-  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: 'This is an example of reported error',
   blockExplorerUrl: null,
