@@ -52,11 +52,7 @@ const Msg = ({ id, amount, blockExplorerUrl, recipient }: MsgProps): JSX.Element
       </Typography>
       <Block marginBottom={1.5}>
         <Typography link={!!blockExplorerUrl} inline>
-          {blockExplorerUrl ? (
-            <Link to={blockExplorerUrl}>{`${recipientShort} `}</Link>
-          ) : (
-            `${recipientShort} `
-          )}
+          {blockExplorerUrl ? <Link to={blockExplorerUrl}>{`${recipientShort}`}</Link> : `${recipientShort}`}
         </Typography>
         <IconButton
           color="primary"

@@ -4622,7 +4622,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                             rel="noopener noreferrer"
                             target="_blank"
                           >
-                            Example Recipient 
+                            Example Recipient
                           </a>
                         </p>
                         <button
@@ -4723,7 +4723,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         <p
                           className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
                         >
-                          Example Recipient 
+                          Example Recipient
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -4896,7 +4896,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         <p
                           className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
                         >
-                          Example Recipient 
+                          Example Recipient
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -4996,7 +4996,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         <p
                           className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
                         >
-                          Example Recipient 
+                          Example Recipient
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
