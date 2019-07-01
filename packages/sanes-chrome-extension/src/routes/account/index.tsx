@@ -85,7 +85,7 @@ const AccountView = (): JSX.Element => {
         </Block>
         <Block marginTop={2}>
           <Link to="https://support.iov.one/hc/en-us">
-            <Typography variant="subtitle2" align="right" link>
+            <Typography variant="subtitle2" color="primary" align="right" link>
               Terms and Conditions of use
             </Typography>
           </Link>
