@@ -14,6 +14,7 @@ import { createAccount } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import recoveryPhrase from './assets/recoveryPhrase.svg';
 import requests from './assets/requests.svg';
+import terms from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
 import Link from 'medulas-react-components/lib/components/Link';
 
@@ -60,6 +61,11 @@ const AccountView = (): JSX.Element => {
       text: 'Requests',
       action: () => history.push(REQUEST_ROUTE),
     },
+    {
+      icon: terms,
+      text: 'Terms & Conditions',
+      action: () => window.open('https://support.iov.one/hc/en-us', '_blank'),
+    },
   ];
 
   return (
@@ -82,13 +88,6 @@ const AccountView = (): JSX.Element => {
         <Hairline space={2} />
         <Block>
           <ListTxs title="Transactions" txs={personaProvider.txs} />
-        </Block>
-        <Block marginTop={2}>
-          <Link to="https://support.iov.one/hc/en-us">
-            <Typography variant="subtitle2" color="primary" align="right" link>
-              Terms and Conditions of use
-            </Typography>
-          </Link>
         </Block>
       </PageLayout>
     </Drawer>
