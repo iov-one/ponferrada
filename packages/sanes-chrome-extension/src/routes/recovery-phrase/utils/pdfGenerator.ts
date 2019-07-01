@@ -1,5 +1,4 @@
 class PDFGenerator {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private doc: any;
   private readonly countWords: string[] = [
     'One',

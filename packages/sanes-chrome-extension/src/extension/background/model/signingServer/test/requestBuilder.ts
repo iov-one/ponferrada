@@ -45,7 +45,6 @@ export const generateSignAndPostRequest = async (creator: PublicIdentity): Promi
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
   if (!Array.isArray(data)) {
     return false;

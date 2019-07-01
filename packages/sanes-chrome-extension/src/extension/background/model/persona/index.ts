@@ -1,5 +1,5 @@
-import { isSendTransaction, SendTransaction } from '@iov/bcp';
-import { BnsConnection } from '@iov/bns';
+import { isSendTransaction, SendTransaction, UnsignedTransaction } from '@iov/bcp';
+import { BnsConnection, RegisterUsernameTx, isRegisterUsernameTx } from '@iov/bns';
 import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { Encoding } from '@iov/encoding';
@@ -19,7 +19,11 @@ function isNonNull<T>(t: T | null): t is T {
 /**
  * All transaction types that can be displayed and signed by the extension
  */
-export type SupportedTransaction = SendTransaction;
+export type SupportedTransaction = SendTransaction | RegisterUsernameTx;
+
+export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
+  return isSendTransaction(tx) || isRegisterUsernameTx(tx);
+}
 
 /**
  * A transaction signed by the user of the extension.
@@ -131,7 +135,7 @@ export class Persona {
    * We keep this async for now to allow fetching IOV names
    */
   private async processTransaction(t: SignedAndPosted): Promise<ProcessedTx | null> {
-    if (!isSendTransaction(t.transaction)) {
+    if (!isSupportedTransaction(t.transaction)) {
       // cannot process
       return null;
     }

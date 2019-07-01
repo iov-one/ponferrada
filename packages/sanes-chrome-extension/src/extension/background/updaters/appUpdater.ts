@@ -18,7 +18,6 @@ export enum MessageToForegroundAction {
 export interface MessageToForeground {
   readonly type: 'message_to_foreground';
   readonly action: MessageToForegroundAction;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   readonly data?: any;
 }
 

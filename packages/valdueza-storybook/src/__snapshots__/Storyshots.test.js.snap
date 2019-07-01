@@ -4820,7 +4820,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2039 makeStyles-inline-1948 makeStyles-link-1949 MuiTypography-body1"
                       >
-                        0x12121212121...
+                        0x1212121212121...
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2040 makeStyles-inline-1948 MuiTypography-body1"

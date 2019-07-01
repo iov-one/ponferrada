@@ -97,10 +97,7 @@ class Backgroundscript {
     windowExtension.clearPersona = () => this.clearPersona();
   }
 
-  public handleRequestMessage(
-    message: any, //eslint-disable-line
-    sender: chrome.runtime.MessageSender,
-  ): Promise<JsonRpcResponse> {
+  public handleRequestMessage(message: any, sender: chrome.runtime.MessageSender): Promise<JsonRpcResponse> {
     return this.signingServer.handleRequestMessage(message, sender);
   }
 }

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 interface Props {
   readonly injectFonts?: boolean;
-  readonly injectStyles?: (props?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  readonly injectStyles?: (props?: any) => void;
   readonly children: React.ReactNode;
 }
 

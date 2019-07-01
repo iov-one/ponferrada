@@ -1,4 +1,5 @@
 import { isSendTransaction } from '@iov/bcp';
+import { isRegisterUsernameTx } from '@iov/bns';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
@@ -6,6 +7,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { SupportedTransaction } from '../../../../extension/background/model/persona';
 import { TX_REQUEST } from '../../../paths';
+import ReqRegisterUsernameTx from './ReqRegisterUsernameTx';
 import ReqSendTransaction from './ReqSendTransaction';
 
 export const TX_REQUEST_SHOW = `${TX_REQUEST}_show`;
@@ -23,6 +25,8 @@ const Layout = ({ sender, tx, creator, onAcceptRequest, showRejectView }: Props)
 
   if (isSendTransaction(tx)) {
     req = <ReqSendTransaction tx={tx} creator={creator} />;
+  } else if (isRegisterUsernameTx(tx)) {
+    req = <ReqRegisterUsernameTx tx={tx} creator={creator} />;
   } else {
     throw new Error('Received transaction type that cannot be displayed');
   }

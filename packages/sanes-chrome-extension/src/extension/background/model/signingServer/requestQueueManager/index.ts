@@ -1,11 +1,11 @@
-import { Address, isSendTransaction, SendTransaction } from '@iov/bcp';
+import { Address, isUnsignedTransaction } from '@iov/bcp';
 import { Omit } from '@material-ui/core';
+import { isSupportedTransaction, SupportedTransaction } from '../../persona';
 
 export interface RequestMeta {
   readonly senderUrl: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isRequestMeta(data: unknown): data is RequestMeta {
   if (typeof data !== 'object' || data === null) {
     return false;
@@ -36,7 +36,7 @@ export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
 }
 
 export interface SignAndPostRequest extends RequestMeta {
-  readonly tx: SendTransaction;
+  readonly tx: SupportedTransaction;
   readonly creator: Address;
 }
 
@@ -47,9 +47,11 @@ export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequ
 
   const hasSender = typeof (data as SignAndPostRequest).senderUrl === 'string';
   const hasCreator = typeof (data as SignAndPostRequest).creator === 'string';
-  const tx = (data as SignAndPostRequest).tx;
 
-  return hasSender && hasCreator && isSendTransaction(tx);
+  const tx: unknown = (data as SignAndPostRequest).tx;
+  const hasSupportedTransaction = isUnsignedTransaction(tx) && isSupportedTransaction(tx);
+
+  return hasSender && hasCreator && hasSupportedTransaction;
 }
 
 export interface Request {

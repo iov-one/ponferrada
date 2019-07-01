@@ -15,7 +15,6 @@ export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   },
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
   if (!Array.isArray(data)) {
     return false;
