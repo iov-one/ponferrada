@@ -27,7 +27,7 @@ export type GetPersonaResponse = PersonaData | null;
 
 class Backgroundscript {
   private persona: Persona | undefined;
-  private db: Db = new Db();
+  private readonly db = new Db();
   private signingServer = new SigningServer();
 
   private async createPersona(password: string, mnemonic: string | undefined): Promise<PersonaData> {
