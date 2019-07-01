@@ -12,8 +12,7 @@ import { prettyAmount } from '../../../../utils/balances';
 import iconErrorTx from '../../assets/transactionError.svg';
 import iconSendTx from '../../assets/transactionSend.svg';
 import MsgRegisterUsernameTx from './MsgRegisterUsernameTx';
-import MsgSendTransactionError from './MsgSendTransactionError';
-import MsgSendTransactionSuccess from './MsgSendTransactionSuccess';
+import MsgSendTransaction from './MsgSendTransaction';
 
 interface ItemProps {
   readonly item: ProcessedTx;
@@ -43,14 +42,13 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   if (isSendTransaction(item.original)) {
     const { amount, recipient } = item.original;
     const beautifulAmount = prettyAmount(amount);
-    msg = error ? (
-      <MsgSendTransactionError amount={beautifulAmount} recipient={recipient} />
-    ) : (
-      <MsgSendTransactionSuccess
+    msg = (
+      <MsgSendTransaction
+        id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
+        error={error}
         amount={beautifulAmount}
         recipient={recipient}
-        id={item.id}
       />
     );
   } else if (isRegisterUsernameTx(item.original)) {
