@@ -1,7 +1,7 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import React from 'react';
-import Proposal, { Props } from './Proposal';
+import Proposal, { ProposalProps } from './Proposal';
 
 // Utility methods to generate random data to do layout before consuming API
 
@@ -26,18 +26,29 @@ const randomString = (): string => {
   );
 };
 
+const randomTitle = (): string => {
+  const random = Math.random();
+  if (random < 0.33) return randomString();
+  if (random < 0.66) return randomString() + randomString();
+  return randomString() + randomString() + randomString();
+};
+
 const randomDesc = (): string => {
   const random = Math.random();
   if (random < 0.5) return shortDesc;
   return largeDesc;
 };
 
-const randomDate = (): Date => {
+const randomCreationDate = (): Date => {
   return new Date(Math.random() * new Date().getTime());
 };
 
+const randomExpiryDate = (creationDate: Date): Date => {
+  return new Date(creationDate.getTime() + Math.random() * creationDate.getTime());
+};
+
 const randomQuorum = (): number => {
-  return Math.random() * (30 - 10) + 10;
+  return Math.floor(Math.random() * (30 - 10) + 10);
 };
 
 const randomVote = (): 'Invalid' | 'Yes' | 'No' | 'Abstain' => {
@@ -49,24 +60,23 @@ const randomVote = (): 'Invalid' | 'Yes' | 'No' | 'Abstain' => {
 };
 
 const getStatus = (
-  vote: 'Invalid' | 'Yes' | 'No' | 'Abstain',
-  creationDate: Date,
   expiryDate: Date,
+  vote: 'Invalid' | 'Yes' | 'No' | 'Abstain',
 ): 'Active' | 'Submitted' | 'Ended' => {
-  if (creationDate > expiryDate) return 'Ended';
+  if (new Date() > expiryDate) return 'Ended';
   if (vote !== 'Invalid') return 'Submitted';
   return 'Active';
 };
 
-const getProps = (): Props => {
-  const creationDate = randomDate();
-  const expiryDate = randomDate();
+const getProps = (): ProposalProps => {
+  const creationDate = randomCreationDate();
+  const expiryDate = randomExpiryDate(creationDate);
   const quorum = randomQuorum();
   const vote = randomVote();
 
   return {
     id: randomString().substring(0, 3),
-    title: randomString(),
+    title: randomTitle(),
     author: randomString().substring(0, 5),
     description: randomDesc(),
     creationDate: creationDate,
@@ -74,7 +84,7 @@ const getProps = (): Props => {
     quorum: quorum,
     threshold: quorum / 2 + 1,
     vote: vote,
-    status: getStatus(vote, creationDate, expiryDate),
+    status: getStatus(expiryDate, vote),
   };
 };
 
