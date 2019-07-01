@@ -15,6 +15,7 @@ import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../p
 import recoveryPhrase from './assets/recoveryPhrase.svg';
 import requests from './assets/requests.svg';
 import ListTxs from './components/ListTxs';
+import Link from 'medulas-react-components/lib/components/Link';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
@@ -81,6 +82,13 @@ const AccountView = (): JSX.Element => {
         <Hairline space={2} />
         <Block>
           <ListTxs title="Transactions" txs={personaProvider.txs} />
+        </Block>
+        <Block marginTop={2}>
+          <Link to="https://support.iov.one/hc/en-us">
+            <Typography variant="subtitle2" align="right" link>
+              Terms and Conditions of use
+            </Typography>
+          </Link>
         </Block>
       </PageLayout>
     </Drawer>
