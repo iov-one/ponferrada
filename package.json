@@ -18,7 +18,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build-storybook": "lerna run build-storybook -stream",
+    "build-storybook": "lerna run build-storybook --stream",
     "clean": "rm -rf ./packages/*/docs/",
     "docs": "lerna run docs",
     "format": "lerna run format",
