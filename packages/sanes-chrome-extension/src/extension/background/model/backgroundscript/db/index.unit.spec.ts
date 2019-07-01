@@ -5,6 +5,18 @@ import SigningServer from '../../signingServer';
 import { Db } from './index';
 
 withChainsDescribe('backgroundscript db', () => {
+  describe('clear', () => {
+    it('clears all keys', async () => {
+      const someKey = `${Math.random()}`;
+      const db = new Db();
+      await expect(db.getDb().get(someKey)).rejects.toThrow(/Key not found in database/i);
+      await db.getDb().put(someKey, 'foo');
+      expect(await db.getDb().get(someKey, { asBuffer: false })).toEqual('foo');
+      await db.clear();
+      await expect(db.getDb().get(someKey)).rejects.toThrow(/Key not found in database/i);
+    });
+  });
+
   describe('hasStoredPersona', () => {
     beforeAll(() => {
       jest.spyOn(txsUpdater, 'transactionsUpdater').mockImplementation(() => {});
