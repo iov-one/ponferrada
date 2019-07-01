@@ -1,7 +1,8 @@
-import { isSendTransaction, PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
 import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
 import { JsonRpcResponse } from '@iov/jsonrpc';
 import { generateErrorResponse } from '../../errorResponseGenerator';
+import { isSupportedTransaction } from '../persona';
 import { getConfigurationFile } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
@@ -64,7 +65,7 @@ export default class SigningServer {
       throw new Error('Unexpected type of data in meta field');
     }
 
-    if (!isSendTransaction(transaction)) {
+    if (!isSupportedTransaction(transaction)) {
       throw new Error('Unexpected unsigned transaction');
     }
 

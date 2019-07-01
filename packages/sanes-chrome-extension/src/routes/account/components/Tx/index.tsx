@@ -1,4 +1,5 @@
 import { isSendTransaction } from '@iov/bcp';
+import { isRegisterUsernameTx } from '@iov/bns';
 import { makeStyles, Theme } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -10,6 +11,7 @@ import { ProcessedTx } from '../../../../extension/background/model/persona';
 import { prettyAmount } from '../../../../utils/balances';
 import iconErrorTx from '../../assets/transactionError.svg';
 import iconSendTx from '../../assets/transactionSend.svg';
+import MsgRegisterUsernameTx from './MsgRegisterUsernameTx';
 import MsgSendTransactionError from './MsgSendTransactionError';
 import MsgSendTransactionSuccess from './MsgSendTransactionSuccess';
 
@@ -49,6 +51,17 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
         amount={beautifulAmount}
         recipient={recipient}
         id={item.id}
+      />
+    );
+  } else if (isRegisterUsernameTx(item.original)) {
+    const { username } = item.original;
+    const iovAddress = `${username}*iov`;
+    msg = (
+      <MsgRegisterUsernameTx
+        id={item.id}
+        blockExplorerUrl={item.blockExplorerUrl}
+        iovAddress={iovAddress}
+        error={error}
       />
     );
   } else {
