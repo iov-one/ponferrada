@@ -6,7 +6,7 @@ import {
   isMessageToForeground,
   MessageToForegroundAction,
 } from '../extension/background/updaters/appUpdater';
-import { extensionContext } from '../utils/chrome';
+import { extensionContext, getPersonaData } from '../utils/chrome';
 
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
@@ -47,24 +47,29 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
 
     chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
       const sameTarget = sender.id === chrome.runtime.id;
-      const msgToForeground = isMessageToForeground(msg);
-      const msgToPersonaProvider = msg.action === MessageToForegroundAction.TransactionsChanged;
-      if (!sameTarget || !msgToForeground || !msgToPersonaProvider) {
+      if (!sameTarget || !isMessageToForeground(msg)) {
         // Only handle messages from background script
         return;
       }
 
-      // TODO Refactor to do not hard check everything, if the message is not for here
-      // just ignore it. Change the above checks as well.
       switch (msg.action) {
         case MessageToForegroundAction.TransactionsChanged:
-          if (!Array.isArray(msg.data)) {
-            throw new Error('Data must be an array');
-          }
-          setTxs(msg.data);
+          getPersonaData()
+            .then(personaData => {
+              if (personaData) {
+                setTxs(personaData.txs);
+              } else {
+                // eslint-disable-next-line no-console
+                console.warn('Could not get persona data after receiving TransactionsChanged message');
+              }
+            })
+            .catch(error => {
+              // eslint-disable-next-line no-console
+              console.error(error);
+            });
           break;
         default:
-          throw new Error('Unknown action');
+        // this listener is not responsible for the given message, ignore message
       }
     });
   }, []);

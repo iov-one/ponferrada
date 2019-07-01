@@ -30,11 +30,18 @@ export function isMessageToForeground(data: unknown): data is MessageToForegroun
   return (data as MessageToForeground).type === 'message_to_foreground';
 }
 
-export function transactionsUpdater(transactions: ReadonlyArray<ProcessedTx>): void {
+/**
+ * This is called whenever the list of transactions is updated.
+ * It sends a TransactionsChanged message to the UI.
+ *
+ * The transactions are not included in that message to avoid the need
+ * to serialize them as JSON. Instead, the UI pulls the latest list of
+ * transactions from the background script.
+ */
+export function transactionsUpdater(_transactions: ReadonlyArray<ProcessedTx>): void {
   const message: MessageToForeground = {
     type: 'message_to_foreground',
     action: MessageToForegroundAction.TransactionsChanged,
-    data: transactions,
   };
   chrome.runtime.sendMessage(message);
 }

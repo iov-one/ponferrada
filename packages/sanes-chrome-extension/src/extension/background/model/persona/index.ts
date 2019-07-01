@@ -1,4 +1,4 @@
-import { Amount, isSendTransaction } from '@iov/bcp';
+import { isSendTransaction, SendTransaction } from '@iov/bcp';
 import { BnsConnection } from '@iov/bns';
 import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
@@ -17,21 +17,21 @@ function isNonNull<T>(t: T | null): t is T {
 }
 
 /**
+ * All transaction types that can be displayed and signed by the extension
+ */
+export type SupportedTransaction = SendTransaction;
+
+/**
  * A transaction signed by the user of the extension.
- *
- * All fields must be losslessly JSON serializable/deserializable to allow
- * messaging between background script and UI.
  */
 export interface ProcessedTx {
   readonly id: string;
-  readonly recipient: string;
   readonly signer: string;
-  readonly amount: Amount;
-  readonly memo?: string;
   readonly time: string;
   readonly blockExplorerUrl: string | null;
   /** If error is null, the transaction succeeded */
   readonly error: string | null;
+  readonly original: SupportedTransaction;
 }
 
 /**
@@ -138,18 +138,16 @@ export class Persona {
 
     const config: ConfigurationFile = await getConfigurationFile();
     const blockExplorer = config.blockExplorers[t.transaction.creator.chainId];
-    const id = t.postResponse.transactionId;
-    const blockExplorerUrl = blockExplorer ? blockExplorer + id : null;
+    const transactionId = t.postResponse.transactionId;
+    const blockExplorerUrl = blockExplorer ? blockExplorer + transactionId : null;
 
     return {
       time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
-      id,
-      recipient: t.transaction.recipient,
+      id: transactionId,
       signer: Encoding.toHex(t.transaction.creator.pubkey.data),
-      memo: t.transaction.memo,
-      amount: t.transaction.amount,
       blockExplorerUrl,
       error: null,
+      original: t.transaction,
     };
   }
 

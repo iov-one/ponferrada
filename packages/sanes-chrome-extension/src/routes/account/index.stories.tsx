@@ -1,4 +1,5 @@
-import { TokenTicker } from '@iov/bcp';
+import { Address, Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker } from '@iov/bcp';
+import { Encoding } from '@iov/encoding';
 import { storiesOf } from '@storybook/react';
 import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
@@ -11,34 +12,49 @@ import Layout from './index';
 
 export const ACCOUNT_STATUS_PAGE = 'Account Status page';
 
+const send: SendTransaction = {
+  kind: 'bcp/send',
+  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
+  creator: {
+    chainId: 'foobar' as ChainId,
+    pubkey: {
+      algo: Algorithm.Secp256k1,
+      data: Encoding.fromHex('00112233') as PublicKeyBytes,
+    },
+  },
+  fee: {
+    gasLimit: '12345678',
+    gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
+  },
+  memo: 'A little donation',
+  recipient: '0x1212121212121212121212121212121212121212' as Address,
+};
+
 const processedTx: ProcessedTx = {
   id: '111',
-  recipient: 'Example Recipient',
   signer: 'Example Signer',
-  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: null,
   blockExplorerUrl: null,
+  original: send,
 };
 
-const blockExplorerProcessedTx = {
+const blockExplorerProcessedTx: ProcessedTx = {
   id: '112',
-  recipient: 'Example Recipient',
   signer: 'Example Signer',
-  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: null,
   blockExplorerUrl: 'https://iov.one',
+  original: send,
 };
 
-const errorProcessedTx = {
+const errorProcessedTx: ProcessedTx = {
   id: '113',
-  recipient: 'Example Recipient',
   signer: 'Example Signer',
-  amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: 'This is an example of reported error',
   blockExplorerUrl: null,
+  original: send,
 };
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/${ACCOUNT_STATUS_PAGE}`, module)

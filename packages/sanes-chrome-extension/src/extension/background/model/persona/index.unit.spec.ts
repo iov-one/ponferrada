@@ -50,7 +50,7 @@ withChainsDescribe('Persona', () => {
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
       }
-    });
+    }, 8000);
 
     it('saves additional accounts to the database automatically', async () => {
       const db = new Db().getDb();
@@ -70,7 +70,7 @@ withChainsDescribe('Persona', () => {
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
       }
-    });
+    }, 8000);
   });
 
   describe('mnemonic', () => {

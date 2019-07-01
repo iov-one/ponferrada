@@ -3,12 +3,12 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { elipsify } from '../../../../utils/strings';
 
-interface MsgErrorProps {
+interface MsgSendTransactionErrorProps {
   readonly amount: string;
   readonly recipient: string;
 }
 
-const MsgError = ({ amount, recipient }: MsgErrorProps): JSX.Element => {
+const MsgSendTransactionError = ({ amount, recipient }: MsgSendTransactionErrorProps): JSX.Element => {
   const shortRecipient = elipsify(recipient, 16);
 
   return (
@@ -39,4 +39,4 @@ const MsgError = ({ amount, recipient }: MsgErrorProps): JSX.Element => {
   );
 };
 
-export default MsgError;
+export default MsgSendTransactionError;

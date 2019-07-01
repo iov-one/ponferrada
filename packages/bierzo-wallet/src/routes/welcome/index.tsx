@@ -68,9 +68,15 @@ const Welcome = (): JSX.Element => {
 
     try {
       const transactionId = await sendSignAndPostRequest(identities[0]);
-      toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+      if (transactionId === null) {
+        toast.show('Request rejected', ToastVariant.ERROR);
+      } else {
+        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+      }
     } catch (error) {
-      toast.show('Request rejected', ToastVariant.ERROR);
+      console.error(error);
+      toast.show('An error ocurred', ToastVariant.ERROR);
+      return;
     }
   };
 

@@ -19,7 +19,7 @@ interface Props {
   readonly tx: SendTransaction;
 }
 
-const Req = ({ tx, creator }: Props): JSX.Element => {
+const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
   const classes = useStyles();
 
   const listItemClasses = { root: classes.root };
@@ -72,4 +72,4 @@ const Req = ({ tx, creator }: Props): JSX.Element => {
   );
 };
 
-export default Req;
+export default ReqSendTransaction;
