@@ -56,7 +56,7 @@ describe('DOM > Feature > Account Status', () => {
     await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
   }, 60000);
 
-  fit('redirects to the Terms and Conditions page', async () => {
+  it('redirects to the Terms and Conditions page', async () => {
     Object.defineProperty(window, 'open', {
       configurable: true,
     });
