@@ -56,6 +56,17 @@ describe('DOM > Feature > Account Status', () => {
     await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
   }, 60000);
 
+  fit('redirects to the Terms and Conditions page', async () => {
+    Object.defineProperty(window, 'open', {
+      configurable: true,
+    });
+    window.open = jest.fn();
+
+    Drawer.clickTerms(accountStatusDom);
+    await sleep(1000);
+    expect(window.open).toHaveBeenCalledWith('https://support.iov.one/hc/en-us', '_blank');
+  }, 60000);
+
   it('has a select dropdown that enables the creation and selection of accounts', async () => {
     const accountInput = TestUtils.findRenderedDOMComponentWithTag(accountStatusDom, 'input');
     expect(accountInput.getAttribute('value')).toBe(ACCOUNT);
@@ -112,8 +123,7 @@ withChainsDescribe('DOM > Feature > Account Status', () => {
 
     // Check for the link
     const links = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'a');
-    //Amount of links calculation: 1 link for the blockExplorerUrl + 1 link for T&C
-    expect(links.length).toBe(2);
+    expect(links.length).toBe(1);
 
     // Clean everything
     persona.destroy();
