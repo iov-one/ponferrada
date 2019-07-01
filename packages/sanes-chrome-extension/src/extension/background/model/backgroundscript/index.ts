@@ -12,6 +12,7 @@ export interface IovWindowExtension extends Window {
   createAccount: () => Promise<ReadonlyArray<PersonaAcccount>>;
   getPersonaData: () => Promise<GetPersonaResponse>;
   hasStoredPersona: () => Promise<boolean>;
+  clearDatabase: () => Promise<void>;
 }
 
 export interface PersonaData {
@@ -87,6 +88,10 @@ class Backgroundscript {
     this.signingServer.shutdown();
   }
 
+  public async clearDatabase(): Promise<void> {
+    await this.db.clear();
+  }
+
   public registerActionsInBackground(windowExtension: IovWindowExtension): void {
     windowExtension.getQueuedRequests = () => this.signingServer.getPendingRequests();
     windowExtension.createPersona = (pss, mn) => this.createPersona(pss, mn);
@@ -95,6 +100,7 @@ class Backgroundscript {
     windowExtension.getPersonaData = () => this.getPersonaData();
     windowExtension.hasStoredPersona = () => this.hasStoredPersona();
     windowExtension.clearPersona = () => this.clearPersona();
+    windowExtension.clearDatabase = () => this.clearDatabase();
   }
 
   public handleRequestMessage(message: any, sender: chrome.runtime.MessageSender): Promise<JsonRpcResponse> {

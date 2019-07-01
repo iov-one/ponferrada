@@ -56,3 +56,13 @@ export async function hasStoredPersona(): Promise<boolean> {
 
   return response;
 }
+
+export async function clearPersona(): Promise<void> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  extensionWindow.clearPersona();
+}
+
+export async function clearDatabase(): Promise<void> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  extensionWindow.clearDatabase();
+}

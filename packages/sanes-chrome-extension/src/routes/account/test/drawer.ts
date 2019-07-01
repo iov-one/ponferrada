@@ -5,6 +5,7 @@ import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFin
 
 let recoveryPhraseLink: Element;
 let requestsLink: Element;
+let logoutLink: Element;
 let termsLink: Element;
 
 const initDrawer = async (drawerComponent: React.Component): Promise<void> => {
@@ -14,7 +15,7 @@ const initDrawer = async (drawerComponent: React.Component): Promise<void> => {
 
   const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
   const drawerElements = (drawerList as Element).querySelectorAll('div > div:nth-of-type(2)');
-  expect(drawerElements.length).toBe(3);
+  expect(drawerElements.length).toBe(4);
 
   recoveryPhraseLink = drawerElements[0];
   expect(recoveryPhraseLink.textContent).toBe('Recovery words');
@@ -22,7 +23,10 @@ const initDrawer = async (drawerComponent: React.Component): Promise<void> => {
   requestsLink = drawerElements[1];
   expect(requestsLink.textContent).toBe('Requests');
 
-  termsLink = drawerElements[2];
+  logoutLink = drawerElements[2];
+  expect(logoutLink.textContent).toBe('Logout');
+
+  termsLink = drawerElements[3];
   expect(termsLink.textContent).toBe('Terms & Conditions');
 };
 
