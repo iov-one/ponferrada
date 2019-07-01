@@ -22,7 +22,7 @@ export default class SigningServer {
   public getIdentitiesCallback = (signer: MultiChainSigner) => async (
     reason: string,
     matchingIdentities: ReadonlyArray<PublicIdentity>,
-    meta: any, // eslint-disable-line
+    meta: any,
   ) => {
     if (!isRequestMeta(meta)) {
       throw new Error('Unexpected type of data in meta field');
@@ -58,7 +58,7 @@ export default class SigningServer {
   public signAndPostCallback = (signer: MultiChainSigner) => (
     reason: string,
     transaction: UnsignedTransaction,
-    meta: any, // eslint-disable-line
+    meta: any,
   ): Promise<boolean> => {
     if (!isRequestMeta(meta)) {
       throw new Error('Unexpected type of data in meta field');
@@ -106,7 +106,7 @@ export default class SigningServer {
   }
 
   public async handleRequestMessage(
-    request: any, //eslint-disable-line
+    request: any,
     sender: chrome.runtime.MessageSender,
   ): Promise<JsonRpcResponse> {
     const responseId = typeof request.id === 'number' ? request.id : null;

@@ -5,7 +5,6 @@ export interface RequestMeta {
   readonly senderUrl: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isRequestMeta(data: unknown): data is RequestMeta {
   if (typeof data !== 'object' || data === null) {
     return false;
