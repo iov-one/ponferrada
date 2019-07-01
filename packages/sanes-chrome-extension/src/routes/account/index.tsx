@@ -14,9 +14,10 @@ import { history } from '../../store/reducers';
 import { EXTENSION_HEIGHT } from '../../theme/constants';
 import { clearDatabase, clearPersona, createAccount } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
-import recoveryPhrase from './assets/recoveryPhrase.svg';
-import requests from './assets/requests.svg';
-import terms from './assets/terms.svg';
+import logoutIcon from './assets/logout.svg';
+import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
+import requestsIcon from './assets/requests.svg';
+import termsIcon from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
@@ -54,17 +55,17 @@ const AccountView = (): JSX.Element => {
 
   const items = [
     {
-      icon: recoveryPhrase,
+      icon: recoveryPhraseIcon,
       text: 'Recovery words',
       action: () => history.push(RECOVERY_PHRASE_ROUTE),
     },
     {
-      icon: requests,
+      icon: requestsIcon,
       text: 'Requests',
       action: () => history.push(REQUEST_ROUTE),
     },
     {
-      icon: requests, // TODO: proper item missing
+      icon: logoutIcon,
       text: 'Logout',
       action: async () => {
         // TODO: Ask for confirmation
@@ -81,7 +82,7 @@ const AccountView = (): JSX.Element => {
       },
     },
     {
-      icon: terms,
+      icon: termsIcon,
       text: 'Terms & Conditions',
       action: () => window.open('https://support.iov.one/hc/en-us', '_blank'),
     },
