@@ -112,7 +112,8 @@ withChainsDescribe('DOM > Feature > Account Status', () => {
 
     // Check for the link
     const links = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'a');
-    expect(links.length).toBe(1);
+    //Amount of links calculation: 1 link for the blockExplorerUrl + 1 link for T&C
+    expect(links.length).toBe(2);
 
     // Clean everything
     persona.destroy();
