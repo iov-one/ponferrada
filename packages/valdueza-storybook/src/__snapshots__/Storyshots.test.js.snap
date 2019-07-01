@@ -40,7 +40,7 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
             <h4
               className="MuiTypography-root makeStyles-inline-943 MuiTypography-h4 MuiTypography-colorPrimary"
             >
-              Welcome
+              Welcome 
             </h4>
             <h4
               className="MuiTypography-root makeStyles-inline-943 MuiTypography-h4"
@@ -249,9 +249,9 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
             >
-              balance:
+              balance: 
               24
-
+               
               IOV
             </h6>
           </div>
@@ -785,7 +785,7 @@ Array [
       <span
         className="MuiBadge-badge makeStyles-dot-235 MuiBadge-colorPrimary MuiBadge-dot"
       >
-
+        
       </span>
     </span>
   </div>,
@@ -812,7 +812,7 @@ Array [
       <span
         className="MuiBadge-badge makeStyles-dot-235 MuiBadge-colorError MuiBadge-dot"
       >
-
+        
       </span>
     </span>
   </div>,
@@ -839,7 +839,7 @@ Array [
       <span
         className="MuiBadge-badge makeStyles-dot-235 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
       >
-
+        
       </span>
     </span>
   </div>,
@@ -1208,7 +1208,7 @@ exports[`Storyshots Components Drawer 1`] = `
           <h4
             className="MuiTypography-root makeStyles-inline-435 MuiTypography-h4"
           >
-
+             
             drawer
           </h4>
         </div>
@@ -1410,7 +1410,7 @@ exports[`Storyshots Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
         >
-
+          
         </span>
       </span>
     </div>
@@ -1432,7 +1432,7 @@ exports[`Storyshots Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
           >
-
+            
           </span>
         </span>
       </div>
@@ -1586,7 +1586,7 @@ exports[`Storyshots Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
         >
-
+          
         </span>
       </span>
     </div>
@@ -1608,7 +1608,7 @@ exports[`Storyshots Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorError MuiBadge-dot"
           >
-
+            
           </span>
         </span>
       </div>
@@ -1762,7 +1762,7 @@ exports[`Storyshots Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
         >
-
+          
         </span>
       </span>
     </div>
@@ -1784,7 +1784,7 @@ exports[`Storyshots Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
           >
-
+            
           </span>
         </span>
       </div>
@@ -1938,7 +1938,7 @@ exports[`Storyshots Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
         >
-
+          
         </span>
       </span>
     </div>
@@ -1960,7 +1960,7 @@ exports[`Storyshots Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-invisible MuiBadge-dot"
           >
-
+            
           </span>
         </span>
       </div>
@@ -2114,7 +2114,7 @@ exports[`Storyshots Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
         >
-
+          
         </span>
       </span>
     </div>
@@ -2136,7 +2136,7 @@ exports[`Storyshots Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-invisible MuiBadge-dot"
           >
-
+            
           </span>
         </span>
       </div>
@@ -2284,7 +2284,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-619 MuiTypography-h4"
     >
-
+       
       storybook
     </h4>
   </div>
@@ -2937,7 +2937,7 @@ exports[`Storyshots Components/Pages PageColumn 1`] = `
             <h4
               className="MuiTypography-root makeStyles-inline-1692 MuiTypography-h4 MuiTypography-colorPrimary"
             >
-              Page
+              Page 
             </h4>
             <h4
               className="MuiTypography-root makeStyles-inline-1692 MuiTypography-h4"
@@ -3112,7 +3112,7 @@ Array [
   <h6
     className="MuiTypography-root makeStyles-inline-1240 MuiTypography-subtitle2 MuiTypography-colorPrimary"
   >
-    First part of the text.
+    First part of the text. 
   </h6>,
   <h6
     className="MuiTypography-root makeStyles-inline-1240 MuiTypography-subtitle2"
@@ -3712,7 +3712,7 @@ exports[`Storyshots Extension Login page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2304 MuiTypography-h4"
     >
-
+       
       In
     </h4>
   </div>
@@ -3902,7 +3902,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2434 MuiTypography-h4"
     >
-
+       
       phrase
     </h4>
   </div>
@@ -3971,7 +3971,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root makeStyles-inline-2434 MuiTypography-body1"
       >
-
+        
       </p>
     </div>
   </div>
@@ -4054,7 +4054,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2527 MuiTypography-h4"
     >
-
+       
       queue
     </h4>
   </div>
@@ -4195,7 +4195,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2630 MuiTypography-h4"
     >
-
+       
       to your IOV manager
     </h4>
   </div>
@@ -4378,7 +4378,7 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
           <h4
             className="MuiTypography-root makeStyles-inline-2182 MuiTypography-h4"
           >
-
+             
             Status
           </h4>
         </div>
@@ -4453,7 +4453,7 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
               target="_blank"
             >
               <h6
-                className="MuiTypography-root makeStyles-link-2183 MuiTypography-subtitle2 MuiTypography-alignRight"
+                className="MuiTypography-root makeStyles-link-2183 MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
               >
                 Terms and Conditions of use
               </h6>
@@ -4555,7 +4555,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
           <h4
             className="MuiTypography-root makeStyles-inline-1948 MuiTypography-h4"
           >
-
+             
             Status
           </h4>
         </div>
@@ -4619,7 +4619,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2021 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                         sent 0.01 ETH
+                         sent 0.01 ETH 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2022 makeStyles-inline-1948 MuiTypography-body1"
@@ -4637,7 +4637,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                             rel="noopener noreferrer"
                             target="_blank"
                           >
-                            Example Recipient
+                            Example Recipient 
                           </a>
                         </p>
                         <button
@@ -4725,7 +4725,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2029 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                         sent 0.01 ETH
+                         sent 0.01 ETH 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2030 makeStyles-inline-1948 MuiTypography-body1"
@@ -4738,7 +4738,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         <p
                           className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
                         >
-                          Example Recipient
+                          Example Recipient 
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -4820,7 +4820,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2036 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                        Your
+                        Your 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2037 makeStyles-inline-1948 MuiTypography-body1"
@@ -4830,7 +4830,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2038 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                         payment to
+                         payment to 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2039 makeStyles-inline-1948 makeStyles-link-1949 MuiTypography-body1"
@@ -4840,7 +4840,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2040 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                         was
+                         was 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2041 makeStyles-inline-1948 MuiTypography-body1"
@@ -4898,7 +4898,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2048 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                         sent 0.01 ETH
+                         sent 0.01 ETH 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2049 makeStyles-inline-1948 MuiTypography-body1"
@@ -4911,7 +4911,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         <p
                           className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
                         >
-                          Example Recipient
+                          Example Recipient 
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -4998,7 +4998,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2056 makeStyles-inline-1948 MuiTypography-body1"
                       >
-                         sent 0.01 ETH
+                         sent 0.01 ETH 
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2057 makeStyles-inline-1948 MuiTypography-body1"
@@ -5011,7 +5011,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         <p
                           className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
                         >
-                          Example Recipient
+                          Example Recipient 
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -5075,7 +5075,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
               target="_blank"
             >
               <h6
-                className="MuiTypography-root makeStyles-link-1949 MuiTypography-subtitle2 MuiTypography-alignRight"
+                className="MuiTypography-root makeStyles-link-1949 MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
               >
                 Terms and Conditions of use
               </h6>
@@ -5118,7 +5118,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2702 MuiTypography-h4"
     >
-
+       
       Account
     </h4>
   </div>
@@ -5277,7 +5277,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2811 MuiTypography-h4"
     >
-
+       
       Account
     </h4>
   </div>
@@ -5511,7 +5511,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3039 MuiTypography-h4"
     >
-
+       
       Identity
     </h4>
   </div>
@@ -5542,7 +5542,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         <p
           className="MuiTypography-root makeStyles-inline-3039 MuiTypography-body1"
         >
-
+           
           your identity on blockchains.
         </p>
         <div
@@ -5690,7 +5690,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2940 MuiTypography-h4"
     >
-
+       
       Identity
     </h4>
   </div>
@@ -5894,7 +5894,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3149 MuiTypography-h4"
     >
-
+       
       Account
     </h4>
   </div>
@@ -6186,7 +6186,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3278 MuiTypography-h4"
     >
-
+       
       Account
     </h4>
   </div>
@@ -6270,7 +6270,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root makeStyles-inline-3278 MuiTypography-body1"
       >
-
+        
       </p>
     </div>
     <div
@@ -6366,7 +6366,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3389 MuiTypography-h4"
     >
-
+       
       Account
     </h4>
   </div>
@@ -6525,7 +6525,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3595 MuiTypography-h4"
     >
-
+       
       Request
     </h4>
   </div>
@@ -6544,7 +6544,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         <p
           className="MuiTypography-root makeStyles-inline-3595 MuiTypography-body1"
         >
-          You are rejecting the tx sent from
+          You are rejecting the tx sent from 
         </p>
         <p
           className="MuiTypography-root makeStyles-inline-3595 MuiTypography-body1 MuiTypography-colorPrimary"
@@ -6701,7 +6701,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3498 MuiTypography-h4"
     >
-
+       
       Request
     </h4>
   </div>
@@ -6714,7 +6714,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
       <p
         className="MuiTypography-root makeStyles-inline-3498 MuiTypography-body1"
       >
-        The following site:
+        The following site: 
       </p>
       <p
         className="MuiTypography-root makeStyles-inline-3498 MuiTypography-body1 MuiTypography-colorPrimary"
@@ -6916,7 +6916,7 @@ exports[`Storyshots Templates/Menu Empty Menu 1`] = `
       <h6
         className="MuiTypography-root MuiTypography-h6"
       >
-        Hi!
+        Hi! 
         Menu is closed
       </h6>
       <svg
@@ -6959,7 +6959,7 @@ exports[`Storyshots Templates/Menu List Menu 1`] = `
       <h6
         className="MuiTypography-root MuiTypography-h6"
       >
-        Hi!
+        Hi! 
         Menu is closed
       </h6>
       <svg
@@ -7027,16 +7027,16 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     className="MuiBox-root MuiBox-root-3747"
   >
     <div
-      className="MuiBox-root MuiBox-root-3746"
+      className="MuiBox-root MuiBox-root-3750"
     >
       <div
         className="MuiDrawer-root MuiDrawer-docked"
       >
         <div
-          className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-3744 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+          className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-3748 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
         >
           <ul
-            className="MuiList-root makeStyles-list-3745 MuiList-padding"
+            className="MuiList-root makeStyles-list-3749 MuiList-padding"
           >
             <div
               aria-disabled={false}
@@ -7147,7 +7147,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-3810"
+      className="MuiBox-root MuiBox-root-3814"
     >
       <h6
         className="MuiTypography-root MuiTypography-h6"
@@ -7161,19 +7161,19 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3753 makeStyles-login-3749"
+  className="MuiBox-root MuiBox-root-3820 makeStyles-login-3816"
 >
   <div
-    className="MuiBox-root MuiBox-root-3754 makeStyles-icon-3750"
+    className="MuiBox-root MuiBox-root-3821 makeStyles-icon-3817"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-3755"
+      className="makeStyles-root-3822"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3760"
+    className="MuiBox-root MuiBox-root-3827"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -7185,7 +7185,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-3751 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-3818 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
