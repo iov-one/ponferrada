@@ -6,18 +6,18 @@ import MemDownConstructor from 'memdown';
 export type StringDb = LevelUp<AbstractLevelDOWN<string, string>>;
 
 export class Db {
-  private db: StringDb =
-    process.env.NODE_ENV === 'test' ? this.createMemDb() : this.createBrowserDb('bs-persona');
-
-  private createMemDb(): StringDb {
+  private static createMemDb(): StringDb {
     return levelup(MemDownConstructor<string, string>());
   }
 
-  private createBrowserDb(name: string): StringDb {
+  private static createBrowserDb(name: string): StringDb {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const leveljs = require('level-js');
     return levelup(leveljs(name));
   }
+
+  private db: StringDb =
+    process.env.NODE_ENV === 'test' ? Db.createMemDb() : Db.createBrowserDb('bs-persona');
 
   public async hasPersona(): Promise<boolean> {
     // Constant from IOV-Core source code. Would be good to have a proper API for that
