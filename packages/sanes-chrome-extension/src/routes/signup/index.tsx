@@ -1,6 +1,7 @@
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import * as React from 'react';
 import { PersonaContext } from '../../context/PersonaProvider';
+import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { history } from '../../store/reducers';
 import { createPersona } from '../../utils/chrome';
 import { storeHintPhrase } from '../../utils/localstorage/hint';
@@ -8,6 +9,8 @@ import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import NewAccountForm, { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm';
 import SecurityHintForm, { SECURITY_HINT } from './components/SecurityHintForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 
 const onBack = (): void => {
   history.goBack();
@@ -16,6 +19,7 @@ const onBack = (): void => {
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<'first' | 'second' | 'third'>('first');
   const accountName = React.useRef<string | null>(null);
+  const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
 
   const onNewAccount = (): void => setStep('first');
@@ -37,7 +41,16 @@ const Signup = (): JSX.Element => {
     const password = formValues[PASSWORD_FIELD];
     accountName.current = formValues[ACCOUNT_NAME_FIELD];
 
-    const response = await createPersona(password, undefined);
+    let response: PersonaData;
+    try {
+      response = await createPersona(password, undefined);
+    } catch (error) {
+      toast.show('An error occurred while signing up.', ToastVariant.ERROR);
+      // eslint-disable-next-line no-console
+      console.error(error);
+      return;
+    }
+
     personaProvider.update({
       accounts: response.accounts,
       mnemonic: response.mnemonic,
