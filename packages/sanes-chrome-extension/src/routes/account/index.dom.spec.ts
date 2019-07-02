@@ -1,4 +1,4 @@
-import { Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker, Address } from '@iov/bcp';
+import { Address, Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { Encoding } from '@iov/encoding';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
