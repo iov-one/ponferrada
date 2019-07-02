@@ -11,11 +11,14 @@ import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFie
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
 import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import Link from 'medulas-react-components/lib/components/Link';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
 export const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
-const TERMS_ACCEPT_FIELD = 'termsAcceptCheckboxField';
+export const TERMS_ACCEPT_FIELD = 'termsAcceptCheckboxField';
+export const TERMS_URL = 'https://support.iov.one/hc/en-us';
 
 export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 
@@ -67,6 +70,19 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
     validate,
   });
 
+  const termsCheckboxLabel = (
+    <React.Fragment>
+      <Typography variant="subtitle1" inline>
+        I have read and agree the{' '}
+      </Typography>
+      <Link to={TERMS_URL}>
+        <Typography link color="primary" variant="subtitle1" inline>
+          T&amp;C
+        </Typography>
+      </Link>
+    </React.Fragment>
+  );
+
   return (
     <PageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
       <Form onSubmit={handleSubmit}>
@@ -102,12 +118,12 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
             name={PASSWORD_CONFIRM_FIELD}
           />
         </Block>
-        <Block marginBottom={4}>
+        <Block marginBottom={2}>
           <CheckboxField
             initial={false}
             form={form}
             fieldName={TERMS_ACCEPT_FIELD}
-            label="I have read and agree the T&amp;C"
+            label={termsCheckboxLabel}
           />
         </Block>
         <Block display="flex" justifyContent="space-between">
