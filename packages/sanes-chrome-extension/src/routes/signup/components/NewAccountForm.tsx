@@ -10,10 +10,12 @@ import Form, {
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { SIGNUP_ROUTE } from '../../paths';
+import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
 export const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
+const TERMS_ACCEPT_FIELD = 'termsAcceptCheckboxField';
 
 export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 
@@ -40,6 +42,10 @@ const validate = (values: object): object => {
 
   if (formValues[PASSWORD_FIELD] !== formValues[PASSWORD_CONFIRM_FIELD]) {
     errors[PASSWORD_CONFIRM_FIELD] = 'Passwords mismatch';
+  }
+
+  if (!formValues[TERMS_ACCEPT_FIELD]) {
+    errors[TERMS_ACCEPT_FIELD] = 'You should accept T&C in order to continue';
   }
 
   return errors;
@@ -85,7 +91,7 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
             name={PASSWORD_FIELD}
           />
         </Block>
-        <Block marginBottom={4}>
+        <Block>
           <TextFieldForm
             label="Confirm Password"
             placeholder="Confirm Password"
@@ -94,6 +100,14 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
             required
             fullWidth
             name={PASSWORD_CONFIRM_FIELD}
+          />
+        </Block>
+        <Block marginBottom={4}>
+          <CheckboxField
+            initial={false}
+            form={form}
+            fieldName={TERMS_ACCEPT_FIELD}
+            label="I have read and agree the T&amp;C"
           />
         </Block>
         <Block display="flex" justifyContent="space-between">
