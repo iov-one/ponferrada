@@ -1,7 +1,7 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import React from 'react';
-import Proposal, { ProposalProps } from './Proposal';
+import Proposal, { ProposalProps, VoteResult } from './Proposal';
 
 // Utility methods to generate random data to do layout before consuming API
 
@@ -51,6 +51,16 @@ const randomQuorum = (): number => {
   return Math.floor(Math.random() * (30 - 10) + 10);
 };
 
+const randomResult = (quorum: number, threshold: number): VoteResult => {
+  const total = threshold + Math.ceil(Math.random() * (quorum - threshold));
+
+  const yes = Math.floor(Math.random() * total);
+  const no = Math.floor(Math.random() * (total - yes));
+  const abstain = Math.floor(Math.random() * (total - yes - no));
+
+  return { yes, no, abstain };
+};
+
 const randomVote = (): 'Invalid' | 'Yes' | 'No' | 'Abstain' => {
   const random = Math.random();
   if (random < 0.25) return 'Invalid';
@@ -72,6 +82,7 @@ const getProps = (): ProposalProps => {
   const creationDate = randomCreationDate();
   const expiryDate = randomExpiryDate(creationDate);
   const quorum = randomQuorum();
+  const threshold = quorum / 2 + 1;
   const vote = randomVote();
 
   return {
@@ -79,11 +90,12 @@ const getProps = (): ProposalProps => {
     title: randomTitle(),
     author: randomString().substring(0, 5),
     description: randomDesc(),
-    creationDate: creationDate,
-    expiryDate: expiryDate,
-    quorum: quorum,
-    threshold: quorum / 2 + 1,
-    vote: vote,
+    creationDate,
+    expiryDate,
+    quorum,
+    threshold,
+    result: randomResult(quorum, threshold),
+    vote,
     status: getStatus(expiryDate, vote),
   };
 };
