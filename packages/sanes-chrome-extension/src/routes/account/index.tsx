@@ -14,6 +14,7 @@ import { createAccount } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
 import recoveryPhrase from './assets/recoveryPhrase.svg';
 import requests from './assets/requests.svg';
+import terms from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
@@ -58,6 +59,11 @@ const AccountView = (): JSX.Element => {
       icon: requests,
       text: 'Requests',
       action: () => history.push(REQUEST_ROUTE),
+    },
+    {
+      icon: terms,
+      text: 'Terms & Conditions',
+      action: () => window.open('https://support.iov.one/hc/en-us', '_blank'),
     },
   ];
 
