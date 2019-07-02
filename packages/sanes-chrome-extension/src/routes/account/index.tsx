@@ -19,6 +19,7 @@ import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
 import requestsIcon from './assets/requests.svg';
 import termsIcon from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
+import { TERMS_URL } from '../signup/components/NewAccountForm';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
@@ -84,7 +85,7 @@ const AccountView = (): JSX.Element => {
     {
       icon: termsIcon,
       text: 'Terms & Conditions',
-      action: () => window.open('https://support.iov.one/hc/en-us', '_blank'),
+      action: () => window.open(TERMS_URL, '_blank'),
     },
   ];
 

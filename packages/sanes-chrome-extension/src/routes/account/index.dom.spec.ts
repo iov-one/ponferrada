@@ -26,6 +26,7 @@ import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
 import { checkCreateAccount } from './test/operateAccount';
+import { TERMS_URL } from '../signup/components/NewAccountForm';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';
@@ -94,7 +95,7 @@ describe('DOM > Feature > Account Status', () => {
 
     Drawer.clickTerms(accountStatusDom);
     await sleep(1000);
-    expect(window.open).toHaveBeenCalledWith('https://support.iov.one/hc/en-us', '_blank');
+    expect(window.open).toHaveBeenCalledWith(TERMS_URL, '_blank');
   }, 60000);
 
   it('has a select dropdown that enables the creation and selection of accounts', async () => {
