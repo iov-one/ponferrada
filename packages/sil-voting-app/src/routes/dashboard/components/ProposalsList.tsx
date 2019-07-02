@@ -11,9 +11,12 @@ const props = new Array(10).fill({}).map(() => {
 
 const ProposalsList = (): JSX.Element => {
   const proposals = props.map((_, index) => {
-    if (index === 0) return Proposal(props[index]);
+    if (index === 0) {
+      return <React.Fragment key={index}>{Proposal(props[index])}</React.Fragment>;
+    }
+
     return (
-      <React.Fragment>
+      <React.Fragment key={index}>
         <Hairline />
         {Proposal(props[index])}
       </React.Fragment>

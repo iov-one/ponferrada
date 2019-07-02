@@ -59,7 +59,7 @@ const Proposal = (props: ProposalProps): JSX.Element => {
   };
 
   return (
-    <Block key={props.title} width="100%" display="flex" alignItems="center">
+    <Block width="100%" display="flex" alignItems="center">
       <Block flexGrow={1} margin={2}>
         <Block display="flex" alignItems="center">
           <Typography variant="h6">{elipsify(props.title, TITLE_MAX_LENGTH)}</Typography>
@@ -84,19 +84,21 @@ const Proposal = (props: ProposalProps): JSX.Element => {
         {props.description.length >= DESC_MAX_LENGTH && (
           <React.Fragment>
             {!expanded && (
-              <Typography variant="body1">
-                {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
+              <React.Fragment>
+                <Typography inline variant="body1">
+                  {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
+                </Typography>
                 <Typography inline link onClick={onClick} variant="body1" weight="semibold">
                   Read more
                 </Typography>
-              </Typography>
+              </React.Fragment>
             )}
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <Typography variant="body1">
+              <Typography inline variant="body1">
                 {props.description}{' '}
-                <Typography inline link onClick={onClick} variant="body1" weight="semibold">
-                  Read less
-                </Typography>
+              </Typography>
+              <Typography inline link onClick={onClick} variant="body1" weight="semibold">
+                Read less
               </Typography>
             </Collapse>
           </React.Fragment>
