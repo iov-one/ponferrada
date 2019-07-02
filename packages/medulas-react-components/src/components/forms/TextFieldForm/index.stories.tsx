@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 import TextFieldForm from './index';
 import { Storybook } from '../../../utils/storybook';
-import Grid, { SizingBreakpoint } from '../../Grid';
+import Grid from '../../Grid';
 import GridItem from '../../GridItem';
 import Form, { useForm } from '../Form';
 import Block from '../../Block';
@@ -59,7 +59,7 @@ const TextField = ({
   );
 };
 
-const gridItemWidth: SizingBreakpoint = {
+const gridItemWidth = {
   xs: '100%',
   sm: '50%',
 };
