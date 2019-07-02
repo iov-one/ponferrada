@@ -3,6 +3,7 @@ import Drawer from 'medulas-react-components/lib/components/Drawer';
 import Form from 'medulas-react-components/lib/components/forms/Form';
 import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
+import Link from 'medulas-react-components/lib/components/Link';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
@@ -17,13 +18,12 @@ import {
   ACCOUNT_STATUS_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
-  WELCOME_ROUTE,
   TERMS_URL,
+  WELCOME_ROUTE,
 } from '../paths';
 import logoutIcon from './assets/logout.svg';
 import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
 import requestsIcon from './assets/requests.svg';
-import termsIcon from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
@@ -87,15 +87,20 @@ const AccountView = (): JSX.Element => {
         history.replace(WELCOME_ROUTE);
       },
     },
-    {
-      icon: termsIcon,
-      text: 'Terms & Conditions',
-      action: () => window.open(TERMS_URL, '_blank'),
-    },
   ];
 
+  const footer = (
+    <Block marginTop={4} textAlign="center">
+      <Block marginBottom={1}>
+        <Typography variant="subtitle2" inline>
+          <Link to={TERMS_URL}>Terms & Conditions</Link>
+        </Typography>
+      </Block>
+    </Block>
+  );
+
   return (
-    <Drawer items={items}>
+    <Drawer items={items} footer={footer}>
       <PageLayout id={ACCOUNT_STATUS_ROUTE} primaryTitle="Account" title="Status" minHeight={CONTENT_HEIGHT}>
         {accountLoaded && (
           <Form onSubmit={handleSubmit}>

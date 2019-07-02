@@ -2,8 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Storybook } from '../../utils/storybook';
-import Typography from '../Typography';
+import Block from '../Block';
 import PageLayout from '../PageLayout';
+import Typography from '../Typography';
 import secCenter from './assets/secCenter.svg';
 import Drawer from './index';
 
@@ -19,9 +20,15 @@ storiesOf('Components', module).add(
       { text: 'Invite Friends', action: action('travelled to Invite Friends') },
     ];
 
+    const footer = (
+      <Block textAlign="center">
+        Meet our team at <a href="https://iov.one/">iov.one</a>
+      </Block>
+    );
+
     return (
       <Storybook>
-        <Drawer items={items}>
+        <Drawer items={items} footer={footer}>
           <PageLayout primaryTitle="Example of" title="drawer">
             <Typography paragraph>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

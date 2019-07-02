@@ -81,12 +81,13 @@ interface DrawerItems {
 interface Props {
   readonly children: React.ReactNode;
   readonly items: ReadonlyArray<DrawerItems>;
+  readonly footer?: React.ReactNode;
   readonly elevation?: number;
 }
 
 export const DRAWER_HTML_ID = 'account-drawer';
 
-function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.Element {
+function PersistentDrawerRight({ children, items, footer, elevation = 0 }: Props): JSX.Element {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -151,6 +152,7 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
             </ListItem>
           ))}
         </List>
+        {footer && <footer>{footer}</footer>}
       </Drawer>
     </div>
   );
