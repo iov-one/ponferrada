@@ -6,17 +6,39 @@ import MemDownConstructor from 'memdown';
 export type StringDb = LevelUp<AbstractLevelDOWN<string, string>>;
 
 export class Db {
-  private db: StringDb =
-    process.env.NODE_ENV === 'test' ? this.createMemDb() : this.createBrowserDb('bs-persona');
-
-  private createMemDb(): StringDb {
+  private static createMemDb(): StringDb {
     return levelup(MemDownConstructor<string, string>());
   }
 
-  private createBrowserDb(name: string): StringDb {
+  private static createBrowserDb(name: string): StringDb {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const leveljs = require('level-js');
     return levelup(leveljs(name));
+  }
+
+  private db: StringDb =
+    process.env.NODE_ENV === 'test' ? Db.createMemDb() : Db.createBrowserDb('bs-persona');
+
+  public async clear(): Promise<void> {
+    const db = this.db;
+    const keysToClear = new Array<string>();
+    return new Promise((resolve, reject) => {
+      db.createKeyStream({ keyAsBuffer: false })
+        .on('data', key => {
+          if (typeof key !== 'string') {
+            reject('Got key of type other than string');
+            return;
+          }
+          keysToClear.push(key);
+        })
+        .on('error', (error: any) => reject(error))
+        .on('close', async () => {
+          for (const key of keysToClear) {
+            await db.del(key);
+          }
+          resolve();
+        });
+    });
   }
 
   public async hasPersona(): Promise<boolean> {

@@ -1,4 +1,4 @@
-import { Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker, Address } from '@iov/bcp';
+import { Address, Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { Encoding } from '@iov/encoding';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
@@ -6,7 +6,11 @@ import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 import Backgroundscript, { IovWindowExtension } from '../../extension/background/model/backgroundscript';
 import { Persona, PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
-import { mockPersonaResponse } from '../../extension/background/model/persona/test/persona';
+import {
+  mockClearDatabase,
+  mockClearPersona,
+  mockPersonaResponse,
+} from '../../extension/background/model/persona/test/persona';
 import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
@@ -20,7 +24,7 @@ import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/naviga
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
-import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
+import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
 import { checkCreateAccount } from './test/operateAccount';
 
 describe('DOM > Feature > Account Status', () => {
@@ -71,6 +75,15 @@ describe('DOM > Feature > Account Status', () => {
   it('redirects to the Requests view when link clicked in Drawer menu', async () => {
     Drawer.clickRequests(accountStatusDom);
     await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
+  }, 60000);
+
+  it('redirects to the Welcome page when Logout was clicked', async () => {
+    const clearPersonaMock = mockClearPersona();
+    const clearDatabaseMock = mockClearDatabase();
+    Drawer.clickLogout(accountStatusDom);
+    await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
+    expect(clearPersonaMock).toHaveBeenCalledTimes(1);
+    expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
   }, 60000);
 
   it('redirects to the Terms and Conditions page', async () => {

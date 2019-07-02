@@ -5,16 +5,19 @@ import SelectField, { Item } from 'medulas-react-components/lib/components/forms
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
 import { useForm } from 'react-final-form-hooks';
 import { PersonaContext } from '../../context/PersonaProvider';
 import { history } from '../../store/reducers';
 import { EXTENSION_HEIGHT } from '../../theme/constants';
-import { createAccount } from '../../utils/chrome';
-import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE } from '../paths';
-import recoveryPhrase from './assets/recoveryPhrase.svg';
-import requests from './assets/requests.svg';
-import terms from './assets/terms.svg';
+import { clearDatabase, clearPersona, createAccount } from '../../utils/chrome';
+import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
+import logoutIcon from './assets/logout.svg';
+import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
+import requestsIcon from './assets/requests.svg';
+import termsIcon from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
 
 const CREATE_NEW_ONE = 'Create a new one';
@@ -24,6 +27,7 @@ const CONTENT_HEIGHT = EXTENSION_HEIGHT - DRAWER_HEIGHT;
 
 const AccountView = (): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Item[]>([]);
+  const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
   const { form, handleSubmit } = useForm({
     onSubmit: () => {},
@@ -51,17 +55,34 @@ const AccountView = (): JSX.Element => {
 
   const items = [
     {
-      icon: recoveryPhrase,
+      icon: recoveryPhraseIcon,
       text: 'Recovery words',
       action: () => history.push(RECOVERY_PHRASE_ROUTE),
     },
     {
-      icon: requests,
+      icon: requestsIcon,
       text: 'Requests',
       action: () => history.push(REQUEST_ROUTE),
     },
     {
-      icon: terms,
+      icon: logoutIcon,
+      text: 'Logout',
+      action: async () => {
+        // TODO: Ask for confirmation
+        try {
+          await clearPersona();
+          await clearDatabase();
+        } catch (error) {
+          toast.show('An error occurred during logout', ToastVariant.ERROR);
+          // eslint-disable-next-line no-console
+          console.error(error);
+          return;
+        }
+        history.replace(WELCOME_ROUTE);
+      },
+    },
+    {
+      icon: termsIcon,
       text: 'Terms & Conditions',
       action: () => window.open('https://support.iov.one/hc/en-us', '_blank'),
     },
