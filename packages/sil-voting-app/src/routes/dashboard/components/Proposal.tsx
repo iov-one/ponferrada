@@ -114,14 +114,12 @@ const Proposal = (props: ProposalProps): JSX.Element => {
           )}
           {props.status !== 'Ended' && (
             <Block marginLeft={2}>
-              <Typography link>
-                <Block display="flex" alignItems="center">
-                  <Img src={deleteIcon} alt="Delete Icon" height="16px" />
-                  <Typography variant="body1" weight="semibold">
-                    Delete
-                  </Typography>
-                </Block>
-              </Typography>
+              <Block display="flex" alignItems="center">
+                <Img src={deleteIcon} alt="Delete Icon" height="16px" />
+                <Typography variant="body1" weight="semibold">
+                  Delete
+                </Typography>
+              </Block>
             </Block>
           )}
           {props.status === 'Ended' && (
