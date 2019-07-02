@@ -40,6 +40,11 @@ export const clickRequests = async (drawerComponent: React.Component): Promise<v
   click(requestsLink);
 };
 
+export const clickLogout = async (drawerComponent: React.Component): Promise<void> => {
+  await initDrawer(drawerComponent);
+  click(logoutLink);
+};
+
 export const clickTerms = async (drawerComponent: React.Component): Promise<void> => {
   await initDrawer(drawerComponent);
   click(termsLink);

@@ -53,3 +53,11 @@ export const mockCreatePersona = (personaData: PersonaData): void => {
 export const mockLoadPersona = (personaData: PersonaData): void => {
   jest.spyOn(chromeInternalMsgs, 'loadPersona').mockResolvedValueOnce(personaData);
 };
+
+export const mockClearPersona = (): jest.SpyInstance => {
+  return jest.spyOn(chromeInternalMsgs, 'clearPersona').mockResolvedValueOnce();
+};
+
+export const mockClearDatabase = (): jest.SpyInstance => {
+  return jest.spyOn(chromeInternalMsgs, 'clearDatabase').mockResolvedValueOnce();
+};
