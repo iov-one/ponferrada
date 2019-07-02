@@ -16,7 +16,6 @@ import recoveryPhrase from './assets/recoveryPhrase.svg';
 import requests from './assets/requests.svg';
 import terms from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
-import Link from 'medulas-react-components/lib/components/Link';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
