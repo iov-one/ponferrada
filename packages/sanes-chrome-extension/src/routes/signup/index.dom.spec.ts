@@ -27,6 +27,8 @@ import {
   isButtonDisabled,
   submitNewAccount,
   submitShowPhrase,
+  getTermsValidity,
+  getTermsCheckboxLabel,
 } from './test/operateSignup';
 
 describe('DOM > Feature > Signup', () => {
@@ -59,6 +61,7 @@ describe('DOM > Feature > Signup', () => {
     let accountNameInput: Element;
     let passwordInput: Element;
     let passwordConfirmInput: Element;
+    let termsAcceptField: Element;
     let newAccountForm: Element;
     let buttons: Element[];
     let backButton: Element;
@@ -66,14 +69,14 @@ describe('DOM > Feature > Signup', () => {
 
     beforeEach(async () => {
       newAccountInputs = getNewAccountInputs(signupDom);
-      [accountNameInput, passwordInput, passwordConfirmInput] = newAccountInputs;
+      [accountNameInput, passwordInput, passwordConfirmInput, termsAcceptField] = newAccountInputs;
       newAccountForm = getNewAccountForm(signupDom);
       buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'button');
       [backButton, continueButton] = buttons;
     });
 
-    it('has three inputs', () => {
-      expect(newAccountInputs.length).toBe(3);
+    it('has four inputs', () => {
+      expect(newAccountInputs.length).toBe(4);
     }, 10000);
 
     it('has a valid "Account Name" input', async () => {
@@ -81,8 +84,9 @@ describe('DOM > Feature > Signup', () => {
 
       input(passwordInput, password);
       input(passwordConfirmInput, password);
+      await check(termsAcceptField);
 
-      submit(newAccountForm);
+      await submit(newAccountForm);
       checkAccountNameValidity(signupDom, 'Required');
 
       input(accountNameInput, randomString(7));
@@ -92,13 +96,14 @@ describe('DOM > Feature > Signup', () => {
       checkAccountNameValidity(signupDom);
     }, 10000);
 
-    it('has a valid "Password" input', () => {
+    it('has a valid "Password" input', async () => {
       expect(passwordInput.getAttribute('placeholder')).toBe('Password');
 
       input(accountNameInput, accountName);
       input(passwordConfirmInput, password);
+      await check(termsAcceptField);
 
-      submit(newAccountForm);
+      await submit(newAccountForm);
       expect(getPasswordValidity(signupDom).textContent).toBe('Required');
 
       input(passwordInput, randomString(7));
@@ -108,12 +113,13 @@ describe('DOM > Feature > Signup', () => {
       expect(getPasswordValidity(signupDom)).toBeUndefined();
     }, 10000);
 
-    it('has a valid "Confirm Password" input', () => {
+    it('has a valid "Confirm Password" input', async () => {
       expect(passwordConfirmInput.getAttribute('placeholder')).toBe('Confirm Password');
 
       input(accountNameInput, accountName);
+      await check(termsAcceptField);
 
-      submit(newAccountForm);
+      await submit(newAccountForm);
       expect(getConfirmPasswordValidity(signupDom).textContent).toBe('Required');
 
       input(passwordInput, password);
@@ -122,6 +128,21 @@ describe('DOM > Feature > Signup', () => {
       expect(getConfirmPasswordMismatch(signupDom).textContent).toBe('Passwords mismatch');
 
       input(passwordConfirmInput, password);
+      expect(getConfirmPasswordValidity(signupDom)).toBeUndefined();
+    }, 10000);
+
+    it('has a valid "Terms agreement" checkbox', async () => {
+      expect(getTermsCheckboxLabel(termsAcceptField)).toBe('I have read and agree the T&C');
+
+      input(accountNameInput, accountName);
+      input(passwordInput, password);
+      input(passwordConfirmInput, password);
+
+      await submit(newAccountForm);
+
+      expect(getTermsValidity(signupDom).textContent).toBe('You should accept T&C in order to continue');
+
+      await check(termsAcceptField);
       expect(getConfirmPasswordValidity(signupDom)).toBeUndefined();
     }, 10000);
 
@@ -145,6 +166,7 @@ describe('DOM > Feature > Signup', () => {
       input(accountNameInput, accountName);
       input(passwordInput, password);
       input(passwordConfirmInput, password);
+      await check(termsAcceptField);
 
       expect(isButtonDisabled(continueButton)).toBeFalsy();
       mockCreatePersona(personaMock);
@@ -158,6 +180,7 @@ describe('DOM > Feature > Signup', () => {
       input(accountNameInput, accountName);
       input(passwordInput, password);
       input(passwordConfirmInput, password);
+      await check(termsAcceptField);
       mockCreatePersona(personaMock);
       await submit(newAccountForm);
       await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
