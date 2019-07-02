@@ -15,7 +15,7 @@ const useStyles = makeStyles<Theme>({
 
 interface Props extends Omit<CheckboxProps, 'form'> {
   readonly fieldName: string;
-  readonly label?: string;
+  readonly label?: React.ReactNode | string;
   readonly initial: boolean;
   readonly form: FormApi;
   readonly onChangeCallback?: (checked: boolean) => void;
