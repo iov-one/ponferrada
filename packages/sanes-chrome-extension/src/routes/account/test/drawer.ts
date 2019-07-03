@@ -3,6 +3,12 @@ import TestUtils from 'react-dom/test-utils';
 import { click } from '../../../utils/test/dom';
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
 
+async function openDrawer(drawerComponent: React.Component): Promise<void> {
+  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, 'button')[0];
+  expect(drawerButton.getAttribute('aria-label')).toBe('Open drawer');
+  await click(drawerButton);
+}
+
 interface InitDrawerResult {
   readonly recoveryPhraseLink: Element;
   readonly requestsLink: Element;
@@ -11,9 +17,7 @@ interface InitDrawerResult {
 }
 
 const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerResult> => {
-  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, 'button')[0];
-  expect(drawerButton.getAttribute('aria-label')).toBe('Open drawer');
-  click(drawerButton);
+  await openDrawer(drawerComponent);
 
   const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
   const drawerElements = (drawerList as Element).querySelectorAll('nav div > div:nth-of-type(2)');
