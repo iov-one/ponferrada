@@ -1,6 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
-import { configureStore } from '../../store';
+import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { expectRoute } from '../../utils/test/dom';
 import { PAYMENT_ROUTE } from '../paths';
@@ -12,7 +12,12 @@ describe('The /welcome route', () => {
 
   beforeEach(
     async (): Promise<void> => {
-      store = configureStore();
+      store = aNewStore({
+        extension: {
+          connected: true,
+          installed: true,
+        },
+      });
       welcomeDom = await travelToWelcome(store);
     },
   );

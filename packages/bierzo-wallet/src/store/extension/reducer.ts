@@ -1,6 +1,6 @@
+import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
-import { Action } from 'redux';
 
 export interface ExtensionState {
   readonly connected: boolean;
@@ -15,8 +15,8 @@ export interface SetExtensionStateActionType extends Action {
 export type ExtensionActions = ActionType<typeof actions>;
 
 const initState: ExtensionState = {
-  connected: true,
-  installed: true,
+  connected: false,
+  installed: false,
 };
 
 export function extensionReducer(

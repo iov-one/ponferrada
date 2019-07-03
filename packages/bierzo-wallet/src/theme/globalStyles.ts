@@ -20,5 +20,12 @@ export const globalStyles = makeStyles({
       fontFamily: '"Muli", sans-serif',
       boxSizing: 'border-box',
     },
+    '#root': {
+      position: 'absolute',
+      top: '0',
+      bottom: '0',
+      right: '0',
+      left: '0',
+    },
   },
 });

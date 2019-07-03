@@ -81,14 +81,7 @@ const CurrencyToSend = (props: Props): JSX.Element => {
 
   return (
     <Paper>
-      <Block
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        width="100%"
-        marginTop={'36px'}
-        padding={5}
-      >
+      <Block display="flex" flexDirection="column" alignItems="center" width="100%" marginTop={4} padding={5}>
         <Avatar classes={avatarClasses}>
           <FontAwesomeIcon icon={faUser} color="#ffffff" />
         </Avatar>

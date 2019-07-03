@@ -2,57 +2,57 @@
 
 exports[`Storyshots Bierzo wallet Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-930"
+  className="MuiBox-root MuiBox-root-218"
 >
   <div
-    className="MuiBox-root MuiBox-root-931"
+    className="MuiBox-root MuiBox-root-219"
   >
     <img
       alt="Log in Image"
-      className="makeStyles-root-932 makeStyles-cover-936"
+      className="makeStyles-root-220 makeStyles-cover-224"
       src="People.svg"
     />
     <img
       alt="Logo"
-      className="makeStyles-root-932 makeStyles-logo-927"
+      className="makeStyles-root-220 makeStyles-logo-215"
       src="logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-937"
+    className="MuiBox-root MuiBox-root-225"
   >
     <form
-      className="makeStyles-form-928"
+      className="makeStyles-form-216"
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-939 makeStyles-scroll-938"
+        className="MuiBox-root MuiBox-root-227 makeStyles-scroll-226"
       >
         <div
-          className="MuiBox-root MuiBox-root-940"
+          className="MuiBox-root MuiBox-root-228"
         >
           <div
-            className="MuiBox-root MuiBox-root-941"
+            className="MuiBox-root MuiBox-root-229"
           />
           <div
-            className="MuiBox-root MuiBox-root-942"
+            className="MuiBox-root MuiBox-root-230"
           >
             <h4
-              className="MuiTypography-root makeStyles-inline-943 MuiTypography-h4 MuiTypography-colorPrimary"
+              className="MuiTypography-root makeStyles-inline-231 MuiTypography-h4 MuiTypography-colorPrimary"
             >
               Welcome 
             </h4>
             <h4
-              className="MuiTypography-root makeStyles-inline-943 MuiTypography-h4"
+              className="MuiTypography-root makeStyles-inline-231 MuiTypography-h4"
             >
               to your IOV wallet
             </h4>
           </div>
           <div
-            className="MuiBox-root MuiBox-root-978"
+            className="MuiBox-root MuiBox-root-266"
           >
             <h6
-              className="MuiTypography-root makeStyles-weight-945 makeStyles-weight-979 MuiTypography-h6 MuiTypography-colorTextPrimary"
+              className="MuiTypography-root makeStyles-weight-233 makeStyles-weight-267 MuiTypography-h6 MuiTypography-colorTextPrimary"
             >
               Continue to access your account
             </h6>
@@ -60,10 +60,10 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-980"
+        className="MuiBox-root MuiBox-root-268"
       />
       <div
-        className="MuiBox-root MuiBox-root-981"
+        className="MuiBox-root MuiBox-root-269"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
@@ -109,268 +109,195 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
 `;
 
 exports[`Storyshots Bierzo wallet Payment page 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <div
-    className="MuiBox-root MuiBox-root-1017 makeStyles-payment-1011"
+    className="MuiBox-root MuiBox-root-306 makeStyles-root-304"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root-307"
+      src="logoBlack.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-312"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-318 makeStyles-root-313"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-319 makeStyles-item-315"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-320"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-321"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Balance
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-356 makeStyles-line-317"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-357 makeStyles-item-315"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-358"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-359"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-361 makeStyles-line-317"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-362 makeStyles-item-315"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-363"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-364"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-366 makeStyles-line-317"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root-367"
+    />
+    <div
+      className="makeStyles-root-370"
+      onClick={[Function]}
+    >
+      <span
+        className="MuiBadge-root"
+      >
+        <img
+          alt="Loading Transactions"
+          className="makeStyles-root-307"
+          src="loading.svg"
+        />
+        <span
+          className="MuiBadge-badge makeStyles-dot-375 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
+        >
+          
+        </span>
+      </span>
+    </div>
+    <div
+      className="makeStyles-root-370"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root-384"
+      >
+        <span
+          className="MuiBadge-root"
+        >
+          <img
+            alt="Transactions Menu"
+            className="makeStyles-root-307"
+            src="bell.svg"
+          />
+          <span
+            className="MuiBadge-badge makeStyles-dot-375 MuiBadge-invisible MuiBadge-dot"
+          >
+            
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="makeStyles-root-370"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root-389 makeStyles-root-385"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root-307"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>,
+  <form
+    onSubmit={[Function]}
   >
     <div
-      className="MuiBox-root MuiBox-root-1018 makeStyles-currencyToSend-1012"
+      className="MuiBox-root MuiBox-root-403 makeStyles-payment-299"
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        className="MuiBox-root MuiBox-root-404 makeStyles-currencyToSend-300"
       >
         <div
-          className="MuiBox-root MuiBox-root-1047"
+          className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            className="MuiAvatar-root makeStyles-avatar-1019 MuiAvatar-colorDefault"
-          >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-user fa-w-14 "
-              color="#ffffff"
-              data-icon="user"
-              data-prefix="far"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
-          </div>
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            You send
-          </h6>
-          <div
-            className="MuiBox-root MuiBox-root-1085"
+            className="MuiBox-root MuiBox-root-433"
           >
             <div
-              className="MuiBox-root MuiBox-root-1086"
-            >
-              <div
-                className="MuiBox-root MuiBox-root-1087"
-              >
-                <div
-                  className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-                >
-                  <div
-                    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-                    onClick={[Function]}
-                  >
-                    <fieldset
-                      aria-hidden={true}
-                      className="PrivateNotchedOutline-root-1122 MuiOutlinedInput-notchedOutline"
-                      style={
-                        Object {
-                          "paddingLeft": 8,
-                        }
-                      }
-                    >
-                      <legend
-                        className="PrivateNotchedOutline-legend-1123"
-                        style={
-                          Object {
-                            "width": 0.01,
-                          }
-                        }
-                      >
-                        <span
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "&#8203;",
-                            }
-                          }
-                        />
-                      </legend>
-                    </fieldset>
-                    <input
-                      aria-invalid={false}
-                      className="MuiInputBase-input MuiOutlinedInput-input"
-                      disabled={false}
-                      name="quantityField"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="0,00"
-                      required={false}
-                      type="text"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root-1124"
-              >
-                <div
-                  className="makeStyles-dropdown-1125"
-                  onClick={[Function]}
-                >
-                  <div
-                    className="MuiInputBase-root makeStyles-root-1126 makeStyles-root-1128"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <input
-                      autoComplete="off"
-                      className="MuiInputBase-input makeStyles-input-1127"
-                      name="currencyField"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      readOnly={true}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                  <img
-                    alt="Phone Menu"
-                    className="makeStyles-root-1129 makeStyles-noShrink-1130"
-                    height="5"
-                    src="selectChevron.svg"
-                    width="8"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root-1134"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
-            >
-              balance: 
-              24
-               
-              IOV
-            </h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root-1136 makeStyles-receiverAddress-1013"
-    >
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
-      >
-        <div
-          className="MuiBox-root MuiBox-root-1137"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            To
-          </h6>
-          <div
-            className="MuiBox-root MuiBox-root-1139"
-          >
-            <div
-              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-            >
-              <div
-                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-                onClick={[Function]}
-              >
-                <fieldset
-                  aria-hidden={true}
-                  className="PrivateNotchedOutline-root-1122 MuiOutlinedInput-notchedOutline"
-                  style={
-                    Object {
-                      "paddingLeft": 8,
-                    }
-                  }
-                >
-                  <legend
-                    className="PrivateNotchedOutline-legend-1123"
-                    style={
-                      Object {
-                        "width": 0.01,
-                      }
-                    }
-                  >
-                    <span
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "&#8203;",
-                        }
-                      }
-                    />
-                  </legend>
-                </fieldset>
-                <input
-                  aria-invalid={false}
-                  className="MuiInputBase-input MuiOutlinedInput-input"
-                  disabled={false}
-                  name="addressField"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  placeholder="IOV or wallet address"
-                  required={false}
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root-1140"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
-            >
-              How it works
-            </h6>
-            <div
-              className="MuiBox-root MuiBox-root-1142"
-            >
-              <div
-                className="makeStyles-container-1144"
-                onClick={[Function]}
-              >
-                <img
-                  alt="Info"
-                  className="makeStyles-root-1129"
-                  height={16}
-                  src="info_normal.svg"
-                  width={16}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root-1147 makeStyles-textNote-1014"
-    >
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
-      >
-        <div
-          className="MuiBox-root MuiBox-root-1148"
-        >
-          <div
-            className="MuiBox-root MuiBox-root-1149"
-          >
-            <div
-              className="MuiBox-root MuiBox-root-1150"
+              className="MuiAvatar-root makeStyles-avatar-405 MuiAvatar-colorDefault"
             >
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-sticky-note fa-w-14 fa-lg "
-                color="#a2a6a8"
-                data-icon="sticky-note"
+                className="svg-inline--fa fa-user fa-w-14 "
+                color="#ffffff"
+                data-icon="user"
                 data-prefix="far"
                 focusable="false"
                 role="img"
@@ -379,25 +306,151 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M448 348.106V80c0-26.51-21.49-48-48-48H48C21.49 32 0 53.49 0 80v351.988c0 26.51 21.49 48 48 48h268.118a48 48 0 0 0 33.941-14.059l83.882-83.882A48 48 0 0 0 448 348.106zm-128 80v-76.118h76.118L320 428.106zM400 80v223.988H296c-13.255 0-24 10.745-24 24v104H48V80h352z"
+                  d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
                   fill="currentColor"
                   style={Object {}}
                 />
               </svg>
             </div>
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+            >
+              You send
+            </h6>
             <div
-              className="MuiBox-root MuiBox-root-1151"
+              className="MuiBox-root MuiBox-root-438"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-439"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-440"
+                >
+                  <div
+                    className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                  >
+                    <div
+                      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      onClick={[Function]}
+                    >
+                      <fieldset
+                        aria-hidden={true}
+                        className="PrivateNotchedOutline-root-475 MuiOutlinedInput-notchedOutline"
+                        style={
+                          Object {
+                            "paddingLeft": 8,
+                          }
+                        }
+                      >
+                        <legend
+                          className="PrivateNotchedOutline-legend-476"
+                          style={
+                            Object {
+                              "width": 0.01,
+                            }
+                          }
+                        >
+                          <span
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "&#8203;",
+                              }
+                            }
+                          />
+                        </legend>
+                      </fieldset>
+                      <input
+                        aria-invalid={false}
+                        className="MuiInputBase-input MuiOutlinedInput-input"
+                        disabled={false}
+                        name="quantityField"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        placeholder="0,00"
+                        required={false}
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-477"
+                >
+                  <div
+                    className="makeStyles-dropdown-478"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="MuiInputBase-root makeStyles-root-479 makeStyles-root-481"
+                      onClick={[Function]}
+                      role="button"
+                    >
+                      <input
+                        autoComplete="off"
+                        className="MuiInputBase-input makeStyles-input-480"
+                        name="currencyField"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        readOnly={true}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <img
+                      alt="Phone Menu"
+                      className="makeStyles-root-307 makeStyles-noShrink-308"
+                      height="5"
+                      src="selectChevron.svg"
+                      width="8"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-482"
+            >
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+              >
+                balance: 
+                24
+                 
+                IOV
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-484 makeStyles-receiverAddress-301"
+      >
+        <div
+          className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-485"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+            >
+              To
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root-487"
             >
               <div
                 className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
               >
                 <div
-                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
                   onClick={[Function]}
                 >
                   <fieldset
                     aria-hidden={true}
-                    className="PrivateNotchedOutline-root-1122 MuiOutlinedInput-notchedOutline"
+                    className="PrivateNotchedOutline-root-475 MuiOutlinedInput-notchedOutline"
                     style={
                       Object {
                         "paddingLeft": 8,
@@ -405,7 +458,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                     }
                   >
                     <legend
-                      className="PrivateNotchedOutline-legend-1123"
+                      className="PrivateNotchedOutline-legend-476"
                       style={
                         Object {
                           "width": 0.01,
@@ -421,17 +474,42 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
                       />
                     </legend>
                   </fieldset>
-                  <textarea
+                  <input
                     aria-invalid={false}
-                    className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                    className="MuiInputBase-input MuiOutlinedInput-input"
                     disabled={false}
-                    name="textNoteField"
+                    name="addressField"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    placeholder="Add a note"
+                    placeholder="IOV or wallet address"
                     required={false}
-                    rows="2"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-488"
+            >
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
+              >
+                How it works
+              </h6>
+              <div
+                className="MuiBox-root MuiBox-root-490"
+              >
+                <div
+                  className="makeStyles-container-492"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Info"
+                    className="makeStyles-root-307"
+                    height={16}
+                    src="info_normal.svg"
+                    width={16}
                   />
                 </div>
               </div>
@@ -439,52 +517,141 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root-1152 makeStyles-continue-1015"
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
-        disabled={true}
-        onBlur={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="submit"
+      <div
+        className="MuiBox-root MuiBox-root-495 makeStyles-textNote-302"
       >
-        <span
-          className="MuiButton-label"
+        <div
+          className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
         >
-          Continue
-        </span>
-      </button>
+          <div
+            className="MuiBox-root MuiBox-root-496"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-497"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-498"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-sticky-note fa-w-14 fa-lg "
+                  color="#a2a6a8"
+                  data-icon="sticky-note"
+                  data-prefix="far"
+                  focusable="false"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M448 348.106V80c0-26.51-21.49-48-48-48H48C21.49 32 0 53.49 0 80v351.988c0 26.51 21.49 48 48 48h268.118a48 48 0 0 0 33.941-14.059l83.882-83.882A48 48 0 0 0 448 348.106zm-128 80v-76.118h76.118L320 428.106zM400 80v223.988H296c-13.255 0-24 10.745-24 24v104H48V80h352z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root-499"
+              >
+                <div
+                  className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                >
+                  <div
+                    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                    onClick={[Function]}
+                  >
+                    <fieldset
+                      aria-hidden={true}
+                      className="PrivateNotchedOutline-root-475 MuiOutlinedInput-notchedOutline"
+                      style={
+                        Object {
+                          "paddingLeft": 8,
+                        }
+                      }
+                    >
+                      <legend
+                        className="PrivateNotchedOutline-legend-476"
+                        style={
+                          Object {
+                            "width": 0.01,
+                          }
+                        }
+                      >
+                        <span
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "&#8203;",
+                            }
+                          }
+                        />
+                      </legend>
+                    </fieldset>
+                    <textarea
+                      aria-invalid={false}
+                      className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                      disabled={false}
+                      name="textNoteField"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="Add a note"
+                      required={false}
+                      rows="2"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-500 makeStyles-continue-303"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
+          disabled={true}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Continue
+          </span>
+        </button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>,
+]
 `;
 
 exports[`Storyshots Bierzo wallet Welcome page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-1177 makeStyles-welcome-1173"
+  className="MuiBox-root MuiBox-root-522 makeStyles-welcome-518"
 >
   <div
-    className="MuiBox-root MuiBox-root-1178 makeStyles-icon-1174"
+    className="MuiBox-root MuiBox-root-523 makeStyles-icon-519"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-1179"
+      className="makeStyles-root-524"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1184"
+    className="MuiBox-root MuiBox-root-529"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -493,10 +660,10 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
     </h6>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1219"
+    className="MuiBox-root MuiBox-root-564"
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-1175 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-520 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -519,7 +686,7 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-1175 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-520 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -542,7 +709,7 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-1175 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-520 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -568,738 +735,7 @@ exports[`Storyshots Bierzo wallet Welcome page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components /forms CheckboxField 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <label
-    className="MuiFormControlLabel-root"
-  >
-    <span
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1374 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={null}
-    >
-      <span
-        className="MuiIconButton-label"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-          />
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-        </svg>
-        <input
-          checked={false}
-          className="PrivateSwitchBase-input-1377"
-          data-indeterminate={false}
-          name="SELECT_FIELD_ATTR"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          type="checkbox"
-        />
-      </span>
-    </span>
-    <span
-      className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-    >
-      Checkbox field
-    </span>
-  </label>
-</form>
-`;
-
-exports[`Storyshots Components /forms SelectField 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <div
-    className="makeStyles-dropdown-1429"
-    onClick={[Function]}
-  >
-    <div
-      className="MuiInputBase-root makeStyles-root-1430 makeStyles-root-1432"
-      onClick={[Function]}
-      role="button"
-    >
-      <input
-        autoComplete="off"
-        className="MuiInputBase-input makeStyles-input-1431"
-        name="SELECT_FIELD_ATTR"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        readOnly={true}
-        type="text"
-        value=""
-      />
-    </div>
-    <img
-      alt="Phone Menu"
-      className="makeStyles-root-1449 makeStyles-noShrink-1450"
-      height="5"
-      src="selectChevron.svg"
-      width="8"
-    />
-  </div>
-</form>
-`;
-
-exports[`Storyshots Components Avatars 1`] = `
-<div
-  className="MuiBox-root MuiBox-root-219"
->
-  <div
-    className="MuiAvatar-root makeStyles-avatar-215 MuiAvatar-colorDefault"
-  >
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
-      />
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-    </svg>
-  </div>
-  <div
-    className="MuiAvatar-root makeStyles-pinkAvatar-216 MuiAvatar-colorDefault"
-  >
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M11.5 9C10.12 9 9 10.12 9 11.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S12.88 9 11.5 9zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-3.21 14.21l-2.91-2.91c-.69.44-1.51.7-2.39.7C9.01 16 7 13.99 7 11.5S9.01 7 11.5 7 16 9.01 16 11.5c0 .88-.26 1.69-.7 2.39l2.91 2.9-1.42 1.42z"
-      />
-    </svg>
-  </div>
-  <div
-    className="MuiAvatar-root makeStyles-greenAvatar-217 MuiAvatar-colorDefault"
-  >
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
-      />
-    </svg>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Badge Icon 1`] = `
-Array [
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root-233"
-    >
-      This shows the check variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root-243"
-        src="recoveryPhrase.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-check-234"
-      >
-        <img
-          alt="Badge Icon"
-          className="makeStyles-root-243"
-          src="check.svg"
-        />
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root-248"
-    >
-      This shows the badge variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root-243"
-        src="recoveryPhrase.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot-235 MuiBadge-colorPrimary MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root-249"
-    >
-      This shows the error badge variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root-243"
-        src="recoveryPhrase.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot-235 MuiBadge-colorError MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root-250"
-    >
-      This shows the invisible variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root-243"
-        src="recoveryPhrase.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot-235 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
-  </div>,
-]
-`;
-
-exports[`Storyshots Components Buttons 1`] = `
-<div
-  className="MuiBox-root MuiBox-root-252"
->
-  <div
-    className="MuiBox-root MuiBox-root-253"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Hower
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-274"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
-      disabled={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={-1}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Disabled
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-275"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Continue
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-          <path
-            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-          />
-        </svg>
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-285"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <div
-          className="MuiBox-root MuiBox-root-286"
-        >
-          <div
-            className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
-            role="progressbar"
-            style={
-              Object {
-                "height": 22,
-                "width": 22,
-              }
-            }
-          >
-            <svg
-              className="MuiCircularProgress-svg"
-              viewBox="22 22 44 44"
-            >
-              <circle
-                className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-                cx={44}
-                cy={44}
-                fill="none"
-                r={20.2}
-                strokeWidth={3.6}
-                style={Object {}}
-              />
-            </svg>
-          </div>
-        </div>
-        Loading
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-299"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Cancel
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-300"
-  >
-    <button
-      aria-label="Go back"
-      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Back
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-301"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Full Width
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-302"
-  >
-    <button
-      aria-label="Export as CSV"
-      className="MuiButtonBase-root MuiFab-root makeStyles-root-303 MuiFab-extended makeStyles-extended-304 MuiFab-secondary makeStyles-secondary-306 MuiFab-sizeSmall makeStyles-sizeSmall-305"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiFab-label"
-      >
-        <div
-          className="MuiBox-root MuiBox-root-317"
-        >
-          <img
-            alt="Download"
-            className="makeStyles-root-318"
-            height={16}
-            src="download.svg"
-            width={16}
-          />
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root-323"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            Download
-          </h6>
-        </div>
-      </span>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Drawer 1`] = `
-<div
-  className="makeStyles-root-358"
->
-  <header
-    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-359 mui-fixed"
-  >
-    <div
-      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
-    >
-      <div
-        className="MuiBox-root MuiBox-root-409"
-      />
-      <button
-        aria-label="Open drawer"
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden-362 makeStyles-show-363 MuiIconButton-colorInherit MuiIconButton-edgeEnd"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-            <path
-              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-  </header>
-  <main
-    className="makeStyles-content-367"
-  >
-    <div
-      className="makeStyles-drawerHeader-366"
-    />
-    <div>
-      <div
-        className="MuiBox-root MuiBox-root-433 makeStyles-root-431 makeStyles-root-432"
-      >
-        <div
-          className="MuiBox-root MuiBox-root-434"
-        >
-          <h4
-            className="MuiTypography-root makeStyles-inline-435 MuiTypography-h4 MuiTypography-colorPrimary"
-          >
-            Example of
-          </h4>
-          <h4
-            className="MuiTypography-root makeStyles-inline-435 MuiTypography-h4"
-          >
-             
-            drawer
-          </h4>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root-470"
-        >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-          </p>
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
-          >
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-          </p>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root-473"
-        />
-        <div
-          className="MuiBox-root MuiBox-root-474"
-        >
-          <img
-            alt="IOV logo"
-            className="makeStyles-root-475"
-            height={39}
-            src="iov-logo.png"
-            width={84}
-          />
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-`;
-
-exports[`Storyshots Components Hairline 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root-493"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Regular hairline without margin
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root-528"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root-529"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Regular hairline with unit 1 margin
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root-531"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root-532"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Regular hairline with unit 4 margin
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root-534"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root-535"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Hairline with custom color
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root-537"
-    />
-  </div>,
-]
-`;
-
-exports[`Storyshots Components Header 1`] = `
+exports[`Storyshots Bierzo wallet/Components Header 1`] = `
 <div
   style={
     Object {
@@ -2192,28 +1628,759 @@ exports[`Storyshots Components Header 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components Images 1`] = `
-<div
-  className="MuiBox-root MuiBox-root-539"
+exports[`Storyshots Components /forms CheckboxField 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <label
+    className="MuiFormControlLabel-root"
+  >
+    <span
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1431 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={null}
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+        <input
+          checked={false}
+          className="PrivateSwitchBase-input-1434"
+          data-indeterminate={false}
+          name="SELECT_FIELD_ATTR"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="checkbox"
+        />
+      </span>
+    </span>
+    <span
+      className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+    >
+      Checkbox field
+    </span>
+  </label>
+</form>
+`;
+
+exports[`Storyshots Components /forms SelectField 1`] = `
+<form
+  onSubmit={[Function]}
 >
   <div
-    className="MuiBox-root MuiBox-root-540"
+    className="makeStyles-dropdown-1486"
+    onClick={[Function]}
+  >
+    <div
+      className="MuiInputBase-root makeStyles-root-1487 makeStyles-root-1489"
+      onClick={[Function]}
+      role="button"
+    >
+      <input
+        autoComplete="off"
+        className="MuiInputBase-input makeStyles-input-1488"
+        name="SELECT_FIELD_ATTR"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <img
+      alt="Phone Menu"
+      className="makeStyles-root-1506 makeStyles-noShrink-1507"
+      height="5"
+      src="selectChevron.svg"
+      width="8"
+    />
+  </div>
+</form>
+`;
+
+exports[`Storyshots Components Avatars 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-589"
+>
+  <div
+    className="MuiAvatar-root makeStyles-avatar-585 MuiAvatar-colorDefault"
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </div>
+  <div
+    className="MuiAvatar-root makeStyles-pinkAvatar-586 MuiAvatar-colorDefault"
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+      <path
+        d="M11.5 9C10.12 9 9 10.12 9 11.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S12.88 9 11.5 9zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-3.21 14.21l-2.91-2.91c-.69.44-1.51.7-2.39.7C9.01 16 7 13.99 7 11.5S9.01 7 11.5 7 16 9.01 16 11.5c0 .88-.26 1.69-.7 2.39l2.91 2.9-1.42 1.42z"
+      />
+    </svg>
+  </div>
+  <div
+    className="MuiAvatar-root makeStyles-greenAvatar-587 MuiAvatar-colorDefault"
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+      <path
+        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components Badge Icon 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root-603"
+    >
+      This shows the check variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root-613"
+        src="recoveryPhrase.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-check-604"
+      >
+        <img
+          alt="Badge Icon"
+          className="makeStyles-root-613"
+          src="check.svg"
+        />
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root-618"
+    >
+      This shows the badge variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root-613"
+        src="recoveryPhrase.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-dot-605 MuiBadge-colorPrimary MuiBadge-dot"
+      >
+        
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root-619"
+    >
+      This shows the error badge variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root-613"
+        src="recoveryPhrase.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-dot-605 MuiBadge-colorError MuiBadge-dot"
+      >
+        
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root-620"
+    >
+      This shows the invisible variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root-613"
+        src="recoveryPhrase.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-dot-605 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
+      >
+        
+      </span>
+    </span>
+  </div>,
+]
+`;
+
+exports[`Storyshots Components Buttons 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-622"
+>
+  <div
+    className="MuiBox-root MuiBox-root-623"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Hower
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-644"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={-1}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Disabled
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-645"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Continue
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-655"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-656"
+        >
+          <div
+            className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
+            role="progressbar"
+            style={
+              Object {
+                "height": 22,
+                "width": 22,
+              }
+            }
+          >
+            <svg
+              className="MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                cx={44}
+                cy={44}
+                fill="none"
+                r={20.2}
+                strokeWidth={3.6}
+                style={Object {}}
+              />
+            </svg>
+          </div>
+        </div>
+        Loading
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-669"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Cancel
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-670"
+  >
+    <button
+      aria-label="Go back"
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Back
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-671"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Full Width
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-672"
+  >
+    <button
+      aria-label="Export as CSV"
+      className="MuiButtonBase-root MuiFab-root makeStyles-root-673 MuiFab-extended makeStyles-extended-674 MuiFab-secondary makeStyles-secondary-676 MuiFab-sizeSmall makeStyles-sizeSmall-675"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiFab-label"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-687"
+        >
+          <img
+            alt="Download"
+            className="makeStyles-root-688"
+            height={16}
+            src="download.svg"
+            width={16}
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-693"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            Download
+          </h6>
+        </div>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components Drawer 1`] = `
+<div
+  className="makeStyles-root-728"
+>
+  <header
+    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-729 mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-779"
+      />
+      <button
+        aria-label="Open drawer"
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden-732 makeStyles-show-733 MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+  <main
+    className="makeStyles-content-737"
+  >
+    <div
+      className="makeStyles-drawerHeader-736"
+    />
+    <div>
+      <div
+        className="MuiBox-root MuiBox-root-803 makeStyles-root-801 makeStyles-root-802"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-804"
+        >
+          <h4
+            className="MuiTypography-root makeStyles-inline-805 MuiTypography-h4 MuiTypography-colorPrimary"
+          >
+            Example of
+          </h4>
+          <h4
+            className="MuiTypography-root makeStyles-inline-805 MuiTypography-h4"
+          >
+             
+            drawer
+          </h4>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-840"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+          </p>
+          <p
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
+          >
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+          </p>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-843"
+        />
+        <div
+          className="MuiBox-root MuiBox-root-844"
+        >
+          <img
+            alt="IOV logo"
+            className="makeStyles-root-845"
+            height={39}
+            src="iov-logo.png"
+            width={84}
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Storyshots Components Hairline 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root-863"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Regular hairline without margin
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root-898"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root-899"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Regular hairline with unit 1 margin
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root-901"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root-902"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Regular hairline with unit 4 margin
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root-904"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root-905"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Hairline with custom color
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root-907"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots Components Images 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-909"
+>
+  <div
+    className="MuiBox-root MuiBox-root-910"
   >
     <img
       alt="Iov Logo"
-      className="makeStyles-root-541"
+      className="makeStyles-root-911"
       src="iov-logo2x.png"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-546"
+    className="MuiBox-root MuiBox-root-916"
   >
     <div
-      className="MuiBox-root MuiBox-root-547"
+      className="MuiBox-root MuiBox-root-917"
     >
       <img
         alt="Download"
-        className="makeStyles-root-541"
+        className="makeStyles-root-911"
         height={16}
         src="download.svg"
         width={16}
@@ -2225,13 +2392,13 @@ exports[`Storyshots Components Images 1`] = `
 
 exports[`Storyshots Components Layout 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-617 makeStyles-root-614 makeStyles-root-615"
+  className="MuiBox-root MuiBox-root-987 makeStyles-root-984 makeStyles-root-985"
 >
   <div
-    className="MuiBox-root MuiBox-root-618"
+    className="MuiBox-root MuiBox-root-988"
   >
     <p
-      className="MuiTypography-root makeStyles-link-620 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-link-990 MuiTypography-body1"
     >
       <button
         aria-label="Go back"
@@ -2274,22 +2441,22 @@ exports[`Storyshots Components Layout 1`] = `
     </p>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-674"
+    className="MuiBox-root MuiBox-root-1044"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-619 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-989 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Title
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-619 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-989 MuiTypography-h4"
     >
        
       storybook
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-677"
+    className="MuiBox-root MuiBox-root-1047"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -2298,14 +2465,14 @@ exports[`Storyshots Components Layout 1`] = `
     </h6>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-679"
+    className="MuiBox-root MuiBox-root-1049"
   />
   <div
-    className="MuiBox-root MuiBox-root-680"
+    className="MuiBox-root MuiBox-root-1050"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-681"
+      className="makeStyles-root-1051"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -2316,7 +2483,7 @@ exports[`Storyshots Components Layout 1`] = `
 
 exports[`Storyshots Components Lists 1`] = `
 <ul
-  className="MuiList-root makeStyles-root-548 MuiList-padding"
+  className="MuiList-root makeStyles-root-918 MuiList-padding"
 >
   <li
     className="MuiListItem-root MuiListItem-gutters"
@@ -2450,7 +2617,7 @@ exports[`Storyshots Components Lists 1`] = `
 exports[`Storyshots Components Switch 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-687"
+    className="MuiBox-root MuiBox-root-1057"
   >
     <label
       className="MuiFormControlLabel-root"
@@ -2460,7 +2627,7 @@ Array [
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-705 MuiSwitch-switchBase MuiSwitch-colorPrimary"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1075 MuiSwitch-switchBase MuiSwitch-colorPrimary"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -2480,7 +2647,7 @@ Array [
               className="MuiSwitch-thumb"
             />
             <input
-              className="PrivateSwitchBase-input-708 MuiSwitch-input"
+              className="PrivateSwitchBase-input-1078 MuiSwitch-input"
               onChange={[Function]}
               type="checkbox"
             />
@@ -2498,7 +2665,7 @@ Array [
     </label>
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-751"
+    className="MuiBox-root MuiBox-root-1121"
   >
     <label
       className="MuiFormControlLabel-root"
@@ -2508,7 +2675,7 @@ Array [
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-705 MuiSwitch-switchBase MuiSwitch-colorPrimary"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1075 MuiSwitch-switchBase MuiSwitch-colorPrimary"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -2528,7 +2695,7 @@ Array [
               className="MuiSwitch-thumb"
             />
             <input
-              className="PrivateSwitchBase-input-708 MuiSwitch-input"
+              className="PrivateSwitchBase-input-1078 MuiSwitch-input"
               onChange={[Function]}
               type="checkbox"
             />
@@ -2549,13 +2716,13 @@ Array [
 exports[`Storyshots Components Toasts 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-806"
+    className="MuiBox-root MuiBox-root-1176"
   >
     <div
-      className="MuiBox-root MuiBox-root-807"
+      className="MuiBox-root MuiBox-root-1177"
     >
       <div
-        className="MuiBox-root MuiBox-root-808"
+        className="MuiBox-root MuiBox-root-1178"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -2587,28 +2754,28 @@ Array [
         This should generate...
       </p>
       <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info-865 MuiTypography-body2"
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info-1235 MuiTypography-body2"
         role="alertdialog"
       >
         <div
           className="MuiSnackbarContent-message"
         >
           <div
-            className="MuiBox-root MuiBox-root-901 makeStyles-message-869"
+            className="MuiBox-root MuiBox-root-1271 makeStyles-message-1239"
           >
             <div
-              className="makeStyles-iconBackground-870"
+              className="makeStyles-iconBackground-1240"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-902"
+                className="makeStyles-root-1272"
                 height={24}
                 src="success.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root makeStyles-info-865 MuiTypography-subtitle1"
+              className="MuiTypography-root makeStyles-info-1235 MuiTypography-subtitle1"
             >
               Hi INFO this is a cool feature. Stay tuned
             </h6>
@@ -2640,7 +2807,7 @@ Array [
             >
               <img
                 alt="Close"
-                className="makeStyles-root-902"
+                className="makeStyles-root-1272"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -2651,10 +2818,10 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-917"
+      className="MuiBox-root MuiBox-root-1287"
     >
       <div
-        className="MuiBox-root MuiBox-root-918"
+        className="MuiBox-root MuiBox-root-1288"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -2686,28 +2853,28 @@ Array [
         This should generate...
       </p>
       <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning-866 MuiTypography-body2"
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning-1236 MuiTypography-body2"
         role="alertdialog"
       >
         <div
           className="MuiSnackbarContent-message"
         >
           <div
-            className="MuiBox-root MuiBox-root-920 makeStyles-message-869"
+            className="MuiBox-root MuiBox-root-1290 makeStyles-message-1239"
           >
             <div
-              className="makeStyles-iconBackground-870"
+              className="makeStyles-iconBackground-1240"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-902"
+                className="makeStyles-root-1272"
                 height={24}
                 src="warning.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root makeStyles-warning-866 MuiTypography-subtitle1"
+              className="MuiTypography-root makeStyles-warning-1236 MuiTypography-subtitle1"
             >
               Hi WARN
             </h6>
@@ -2739,7 +2906,7 @@ Array [
             >
               <img
                 alt="Close"
-                className="makeStyles-root-902"
+                className="makeStyles-root-1272"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -2750,10 +2917,10 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-922"
+      className="MuiBox-root MuiBox-root-1292"
     >
       <div
-        className="MuiBox-root MuiBox-root-923"
+        className="MuiBox-root MuiBox-root-1293"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -2785,28 +2952,28 @@ Array [
         This should generate...
       </p>
       <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error-864 MuiTypography-body2"
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error-1234 MuiTypography-body2"
         role="alertdialog"
       >
         <div
           className="MuiSnackbarContent-message"
         >
           <div
-            className="MuiBox-root MuiBox-root-925 makeStyles-message-869"
+            className="MuiBox-root MuiBox-root-1295 makeStyles-message-1239"
           >
             <div
-              className="makeStyles-iconBackground-870"
+              className="makeStyles-iconBackground-1240"
             >
               <img
                 alt="Toast icon"
-                className="makeStyles-root-902"
+                className="makeStyles-root-1272"
                 height={24}
                 src="error.svg"
                 width={24}
               />
             </div>
             <h6
-              className="MuiTypography-root makeStyles-error-864 MuiTypography-subtitle1"
+              className="MuiTypography-root makeStyles-error-1234 MuiTypography-subtitle1"
             >
               Hi ERR
             </h6>
@@ -2838,7 +3005,7 @@ Array [
             >
               <img
                 alt="Close"
-                className="makeStyles-root-902"
+                className="makeStyles-root-1272"
                 height={20}
                 src="close.svg"
                 width={20}
@@ -2856,15 +3023,15 @@ Array [
 exports[`Storyshots Components Tooltip 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-753"
+    className="MuiBox-root MuiBox-root-1123"
   >
     <div
-      className="makeStyles-container-755"
+      className="makeStyles-container-1125"
       onClick={[Function]}
     >
       <img
         alt="Info"
-        className="makeStyles-root-758"
+        className="makeStyles-root-1128"
         height={16}
         src="info_normal.svg"
         width={16}
@@ -2872,10 +3039,10 @@ Array [
     </div>
   </div>,
   <div
-    className="MuiBox-root MuiBox-root-763"
+    className="MuiBox-root MuiBox-root-1133"
   >
     <p
-      className="MuiTypography-root makeStyles-inline-764 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-inline-1134 MuiTypography-body1"
       style={
         Object {
           "marginRight": "4px",
@@ -2885,12 +3052,12 @@ Array [
       Loooooooooooooooooooooooooooooooooong text
     </p>
     <div
-      className="makeStyles-container-755"
+      className="makeStyles-container-1125"
       onClick={[Function]}
     >
       <img
         alt="Info"
-        className="makeStyles-root-758"
+        className="makeStyles-root-1128"
         height={16}
         src="info_normal.svg"
         width={16}
@@ -2902,54 +3069,54 @@ Array [
 
 exports[`Storyshots Components/Pages PageColumn 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-1680"
+  className="MuiBox-root MuiBox-root-1737"
 >
   <div
-    className="MuiBox-root MuiBox-root-1681"
+    className="MuiBox-root MuiBox-root-1738"
   >
     <img
       alt="Log in Image"
-      className="makeStyles-root-1682 makeStyles-cover-1686"
+      className="makeStyles-root-1739 makeStyles-cover-1743"
       src="People.svg"
     />
     <img
       alt="Logo"
-      className="makeStyles-root-1682 makeStyles-logo-1677"
+      className="makeStyles-root-1739 makeStyles-logo-1734"
       src="logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1687"
+    className="MuiBox-root MuiBox-root-1744"
   >
     <form
-      className="makeStyles-form-1678"
+      className="makeStyles-form-1735"
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-1689 makeStyles-scroll-1688"
+        className="MuiBox-root MuiBox-root-1746 makeStyles-scroll-1745"
       >
         <div
-          className="MuiBox-root MuiBox-root-1690"
+          className="MuiBox-root MuiBox-root-1747"
         >
           <div
-            className="MuiBox-root MuiBox-root-1691"
+            className="MuiBox-root MuiBox-root-1748"
           >
             <h4
-              className="MuiTypography-root makeStyles-inline-1692 MuiTypography-h4 MuiTypography-colorPrimary"
+              className="MuiTypography-root makeStyles-inline-1749 MuiTypography-h4 MuiTypography-colorPrimary"
             >
               Page 
             </h4>
             <h4
-              className="MuiTypography-root makeStyles-inline-1692 MuiTypography-h4"
+              className="MuiTypography-root makeStyles-inline-1749 MuiTypography-h4"
             >
               column
             </h4>
           </div>
           <div
-            className="MuiBox-root MuiBox-root-1727"
+            className="MuiBox-root MuiBox-root-1784"
           >
             <h6
-              className="MuiTypography-root makeStyles-weight-1694 makeStyles-weight-1728 MuiTypography-h6 MuiTypography-colorTextPrimary"
+              className="MuiTypography-root makeStyles-weight-1751 makeStyles-weight-1785 MuiTypography-h6 MuiTypography-colorTextPrimary"
             >
               Storybook PageColumn component example.
             </h6>
@@ -2957,10 +3124,10 @@ exports[`Storyshots Components/Pages PageColumn 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-1729"
+        className="MuiBox-root MuiBox-root-1786"
       />
       <div
-        className="MuiBox-root MuiBox-root-1730"
+        className="MuiBox-root MuiBox-root-1787"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
@@ -3013,7 +3180,7 @@ Array [
     target="_blank"
   >
     <p
-      className="MuiTypography-root makeStyles-weight-1329 makeStyles-weight-1330 makeStyles-link-1328 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-weight-1386 makeStyles-weight-1387 makeStyles-link-1385 MuiTypography-body1"
     >
       Go to IOV
     </p>
@@ -3024,7 +3191,7 @@ Array [
     target="_blank"
   >
     <p
-      className="MuiTypography-root makeStyles-weight-1329 makeStyles-weight-1361 makeStyles-link-1328 MuiTypography-body1 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-weight-1386 makeStyles-weight-1418 makeStyles-link-1385 MuiTypography-body1 MuiTypography-colorPrimary"
     >
       Go to IOV
     </p>
@@ -3110,12 +3277,12 @@ Array [
     Inline styles
   </h6>,
   <h6
-    className="MuiTypography-root makeStyles-inline-1240 MuiTypography-subtitle2 MuiTypography-colorPrimary"
+    className="MuiTypography-root makeStyles-inline-1297 MuiTypography-subtitle2 MuiTypography-colorPrimary"
   >
     First part of the text. 
   </h6>,
   <h6
-    className="MuiTypography-root makeStyles-inline-1240 MuiTypography-subtitle2"
+    className="MuiTypography-root makeStyles-inline-1297 MuiTypography-subtitle2"
   >
     Second part of the text.
   </h6>,
@@ -3125,12 +3292,12 @@ Array [
 exports[`Storyshots Components/Typography weight 1`] = `
 Array [
   <p
-    className="MuiTypography-root makeStyles-weight-1292 makeStyles-weight-1293 MuiTypography-body1"
+    className="MuiTypography-root makeStyles-weight-1349 makeStyles-weight-1350 MuiTypography-body1"
   >
     Hi this is light
   </p>,
   <p
-    className="MuiTypography-root makeStyles-weight-1292 makeStyles-weight-1324 MuiTypography-body1"
+    className="MuiTypography-root makeStyles-weight-1349 makeStyles-weight-1381 MuiTypography-body1"
   >
     Hi this is regular
   </p>,
@@ -3140,7 +3307,7 @@ Array [
     Hi no weight specified
   </p>,
   <p
-    className="MuiTypography-root makeStyles-weight-1292 makeStyles-weight-1326 MuiTypography-body1"
+    className="MuiTypography-root makeStyles-weight-1349 makeStyles-weight-1383 MuiTypography-body1"
   >
     Hi this is bold
   </p>,
@@ -3150,7 +3317,7 @@ Array [
 exports[`Storyshots Components/forms Form 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-1455"
+    className="MuiBox-root MuiBox-root-1512"
   />,
   <form
     onSubmit={[Function]}
@@ -3170,7 +3337,7 @@ Array [
       >
         <fieldset
           aria-hidden={true}
-          className="PrivateNotchedOutline-root-1509 MuiOutlinedInput-notchedOutline"
+          className="PrivateNotchedOutline-root-1566 MuiOutlinedInput-notchedOutline"
           style={
             Object {
               "paddingLeft": 8,
@@ -3178,7 +3345,7 @@ Array [
           }
         >
           <legend
-            className="PrivateNotchedOutline-legend-1510"
+            className="PrivateNotchedOutline-legend-1567"
             style={
               Object {
                 "width": 0.01,
@@ -3209,20 +3376,20 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-1511"
+      className="MuiBox-root MuiBox-root-1568"
     >
       <div
-        className="makeStyles-dropdown-1512"
+        className="makeStyles-dropdown-1569"
         onClick={[Function]}
       >
         <div
-          className="MuiInputBase-root makeStyles-root-1513 makeStyles-root-1515"
+          className="MuiInputBase-root makeStyles-root-1570 makeStyles-root-1572"
           onClick={[Function]}
           role="button"
         >
           <input
             autoComplete="off"
-            className="MuiInputBase-input makeStyles-input-1514"
+            className="MuiInputBase-input makeStyles-input-1571"
             name="selectFieldUniqueIdentifier"
             onBlur={[Function]}
             onChange={[Function]}
@@ -3234,7 +3401,7 @@ Array [
         </div>
         <img
           alt="Phone Menu"
-          className="makeStyles-root-1516 makeStyles-noShrink-1517"
+          className="makeStyles-root-1573 makeStyles-noShrink-1574"
           height="5"
           src="selectChevron.svg"
           width="8"
@@ -3242,14 +3409,14 @@ Array [
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-1521"
+      className="MuiBox-root MuiBox-root-1578"
     >
       <label
         className="MuiFormControlLabel-root"
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1534 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1591 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -3282,7 +3449,7 @@ Array [
             </svg>
             <input
               checked={false}
-              className="PrivateSwitchBase-input-1537"
+              className="PrivateSwitchBase-input-1594"
               data-indeterminate={false}
               name="checkboxFieldUniqueIdentifier"
               onBlur={[Function]}
@@ -3331,13 +3498,13 @@ Array [
 exports[`Storyshots Components/forms TextFieldForm 1`] = `
 Array [
   <div
-    className="MuiBox-root MuiBox-root-1607"
+    className="MuiBox-root MuiBox-root-1664"
   />,
   <div
-    className="MuiBox-root MuiBox-root-1608"
+    className="MuiBox-root MuiBox-root-1665"
   >
     <div
-      className="MuiBox-root MuiBox-root-1609"
+      className="MuiBox-root MuiBox-root-1666"
     >
       <form
         onSubmit={[Function]}
@@ -3357,7 +3524,7 @@ Array [
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-1663 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-1720 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -3365,7 +3532,7 @@ Array [
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-1664"
+                className="PrivateNotchedOutline-legend-1721"
                 style={
                   Object {
                     "width": 0,
@@ -3403,7 +3570,7 @@ Array [
       </form>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-1673"
+      className="MuiBox-root MuiBox-root-1730"
     >
       <form
         onSubmit={[Function]}
@@ -3423,7 +3590,7 @@ Array [
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-1663 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-1720 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -3431,7 +3598,7 @@ Array [
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-1664"
+                className="PrivateNotchedOutline-legend-1721"
                 style={
                   Object {
                     "width": 0,
@@ -3464,7 +3631,7 @@ Array [
       </form>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-1674"
+      className="MuiBox-root MuiBox-root-1731"
     >
       <form
         onSubmit={[Function]}
@@ -3484,7 +3651,7 @@ Array [
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-1663 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-1720 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -3492,7 +3659,7 @@ Array [
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-1664"
+                className="PrivateNotchedOutline-legend-1721"
                 style={
                   Object {
                     "width": 0,
@@ -3525,7 +3692,7 @@ Array [
       </form>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-1675"
+      className="MuiBox-root MuiBox-root-1732"
     >
       <form
         onSubmit={[Function]}
@@ -3545,7 +3712,7 @@ Array [
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-1663 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-1720 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -3553,7 +3720,7 @@ Array [
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-1664"
+                className="PrivateNotchedOutline-legend-1721"
                 style={
                   Object {
                     "width": 0.01,
@@ -3586,7 +3753,7 @@ Array [
       </form>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-1676"
+      className="MuiBox-root MuiBox-root-1733"
     >
       <form
         onSubmit={[Function]}
@@ -3606,7 +3773,7 @@ Array [
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-1663 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-1720 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -3614,7 +3781,7 @@ Array [
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-1664"
+                className="PrivateNotchedOutline-legend-1721"
                 style={
                   Object {
                     "width": 0,
@@ -3652,14 +3819,14 @@ Array [
 
 exports[`Storyshots Extension Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2298 makeStyles-root-2295 makeStyles-root-2296"
+  className="MuiBox-root MuiBox-root-2355 makeStyles-root-2352 makeStyles-root-2353"
   id="/login"
 >
   <div
-    className="MuiBox-root MuiBox-root-2299"
+    className="MuiBox-root MuiBox-root-2356"
   >
     <p
-      className="MuiTypography-root makeStyles-link-2301 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-link-2358 MuiTypography-body1"
     >
       <button
         aria-label="Go back"
@@ -3702,28 +3869,28 @@ exports[`Storyshots Extension Login page 1`] = `
     </p>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2355"
+    className="MuiBox-root MuiBox-root-2412"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2300 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2357 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Log
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2300 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2357 MuiTypography-h4"
     >
        
       In
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2358"
+    className="MuiBox-root MuiBox-root-2415"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-2359"
+        className="MuiBox-root MuiBox-root-2416"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -3734,7 +3901,7 @@ exports[`Storyshots Extension Login page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-2394 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-2451 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -3742,7 +3909,7 @@ exports[`Storyshots Extension Login page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-2395"
+                className="PrivateNotchedOutline-legend-2452"
                 style={
                   Object {
                     "width": 0.01,
@@ -3774,10 +3941,10 @@ exports[`Storyshots Extension Login page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-2396"
+        className="MuiBox-root MuiBox-root-2453"
       >
         <div
-          className="MuiBox-root MuiBox-root-2397"
+          className="MuiBox-root MuiBox-root-2454"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
@@ -3805,17 +3972,17 @@ exports[`Storyshots Extension Login page 1`] = `
       </div>
     </form>
     <div
-      className="MuiBox-root MuiBox-root-2415"
+      className="MuiBox-root MuiBox-root-2472"
     >
       <div
-        className="MuiBox-root MuiBox-root-2416"
+        className="MuiBox-root MuiBox-root-2473"
       >
         <a
           href="/restore-account"
           onClick={[Function]}
         >
           <h6
-            className="MuiTypography-root makeStyles-inline-2300 makeStyles-link-2301 MuiTypography-subtitle2 MuiTypography-colorPrimary"
+            className="MuiTypography-root makeStyles-inline-2357 makeStyles-link-2358 MuiTypography-subtitle2 MuiTypography-colorPrimary"
           >
             Restore account
           </h6>
@@ -3824,14 +3991,14 @@ exports[`Storyshots Extension Login page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2418"
+    className="MuiBox-root MuiBox-root-2475"
   />
   <div
-    className="MuiBox-root MuiBox-root-2419"
+    className="MuiBox-root MuiBox-root-2476"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-2420"
+      className="makeStyles-root-2477"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -3842,14 +4009,14 @@ exports[`Storyshots Extension Login page 1`] = `
 
 exports[`Storyshots Extension Recovery Phrase page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2428 makeStyles-root-2425 makeStyles-root-2426"
+  className="MuiBox-root MuiBox-root-2485 makeStyles-root-2482 makeStyles-root-2483"
   id="/recovery-phrase"
 >
   <div
-    className="MuiBox-root MuiBox-root-2429"
+    className="MuiBox-root MuiBox-root-2486"
   >
     <p
-      className="MuiTypography-root makeStyles-link-2431 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-link-2488 MuiTypography-body1"
     >
       <button
         aria-label="Go back"
@@ -3892,25 +4059,25 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     </p>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2485"
+    className="MuiBox-root MuiBox-root-2542"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2430 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2487 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Recovery
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2430 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2487 MuiTypography-h4"
     >
        
       phrase
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2488"
+    className="MuiBox-root MuiBox-root-2545"
   >
     <div
-      className="MuiBox-root MuiBox-root-2489"
+      className="MuiBox-root MuiBox-root-2546"
     >
       <h6
         className="MuiTypography-root MuiTypography-subtitle2"
@@ -3919,11 +4086,11 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       </h6>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-2491"
+      className="MuiBox-root MuiBox-root-2548"
     >
       <button
         aria-label="Export as CSV"
-        className="MuiButtonBase-root MuiFab-root makeStyles-root-2492 MuiFab-extended makeStyles-extended-2493 MuiFab-secondary makeStyles-secondary-2495 MuiFab-sizeSmall makeStyles-sizeSmall-2494"
+        className="MuiButtonBase-root MuiFab-root makeStyles-root-2549 MuiFab-extended makeStyles-extended-2550 MuiFab-secondary makeStyles-secondary-2552 MuiFab-sizeSmall makeStyles-sizeSmall-2551"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -3943,18 +4110,18 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
           className="MuiFab-label"
         >
           <div
-            className="MuiBox-root MuiBox-root-2506"
+            className="MuiBox-root MuiBox-root-2563"
           >
             <img
               alt="Download"
-              className="makeStyles-root-2507"
+              className="makeStyles-root-2564"
               height={16}
               src="download.svg"
               width={16}
             />
           </div>
           <div
-            className="MuiBox-root MuiBox-root-2512"
+            className="MuiBox-root MuiBox-root-2569"
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
@@ -3966,24 +4133,24 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       </button>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-2514"
+      className="MuiBox-root MuiBox-root-2571"
     >
       <p
-        className="MuiTypography-root makeStyles-inline-2430 MuiTypography-body1"
+        className="MuiTypography-root makeStyles-inline-2487 MuiTypography-body1"
       >
         
       </p>
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2516"
+    className="MuiBox-root MuiBox-root-2573"
   />
   <div
-    className="MuiBox-root MuiBox-root-2517"
+    className="MuiBox-root MuiBox-root-2574"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-2507"
+      className="makeStyles-root-2564"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -3994,14 +4161,14 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
 
 exports[`Storyshots Extension Request queue page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2521 makeStyles-root-2518 makeStyles-root-2519"
+  className="MuiBox-root MuiBox-root-2578 makeStyles-root-2575 makeStyles-root-2576"
   id="/requests"
 >
   <div
-    className="MuiBox-root MuiBox-root-2522"
+    className="MuiBox-root MuiBox-root-2579"
   >
     <p
-      className="MuiTypography-root makeStyles-link-2524 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-link-2581 MuiTypography-body1"
     >
       <button
         aria-label="Go back"
@@ -4044,25 +4211,25 @@ exports[`Storyshots Extension Request queue page 1`] = `
     </p>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2578"
+    className="MuiBox-root MuiBox-root-2635"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2523 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2580 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Requests
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2523 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2580 MuiTypography-h4"
     >
        
       queue
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2581"
+    className="MuiBox-root MuiBox-root-2638"
   >
     <div
-      className="MuiBox-root MuiBox-root-2585"
+      className="MuiBox-root MuiBox-root-2642"
     >
       <h6
         className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
@@ -4071,10 +4238,10 @@ exports[`Storyshots Extension Request queue page 1`] = `
       </h6>
     </div>
     <ul
-      className="MuiList-root makeStyles-root-2582 MuiList-padding"
+      className="MuiList-root makeStyles-root-2639 MuiList-padding"
     >
       <li
-        className="MuiListItem-root makeStyles-first-2584 MuiListItem-gutters"
+        className="MuiListItem-root makeStyles-first-2641 MuiListItem-gutters"
         disabled={false}
         onClick={[Function]}
       >
@@ -4096,7 +4263,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
           className="MuiListItemAvatar-root"
         >
           <div
-            className="MuiAvatar-root makeStyles-avatar-2583 MuiAvatar-colorDefault"
+            className="MuiAvatar-root makeStyles-avatar-2640 MuiAvatar-colorDefault"
             color="primary"
           >
             <svg
@@ -4120,7 +4287,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
         </div>
       </li>
       <div
-        className="MuiBox-root MuiBox-root-2613"
+        className="MuiBox-root MuiBox-root-2670"
       />
       <li
         className="MuiListItem-root MuiListItem-gutters Mui-disabled"
@@ -4163,14 +4330,14 @@ exports[`Storyshots Extension Request queue page 1`] = `
     </ul>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2614"
+    className="MuiBox-root MuiBox-root-2671"
   />
   <div
-    className="MuiBox-root MuiBox-root-2615"
+    className="MuiBox-root MuiBox-root-2672"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-2616"
+      className="makeStyles-root-2673"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -4181,34 +4348,34 @@ exports[`Storyshots Extension Request queue page 1`] = `
 
 exports[`Storyshots Extension Welcome page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2624 makeStyles-root-2621 makeStyles-root-2622"
+  className="MuiBox-root MuiBox-root-2681 makeStyles-root-2678 makeStyles-root-2679"
   id="/welcome"
 >
   <div
-    className="MuiBox-root MuiBox-root-2625"
+    className="MuiBox-root MuiBox-root-2682"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2626 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2683 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Welcome
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2626 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2683 MuiTypography-h4"
     >
        
       to your IOV manager
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2661"
+    className="MuiBox-root MuiBox-root-2718"
   >
     <p
-      className="MuiTypography-root makeStyles-inline-2626 MuiTypography-body1"
+      className="MuiTypography-root makeStyles-inline-2683 MuiTypography-body1"
     >
       This plugin lets you manage all your accounts in one place.
     </p>
     <div
-      className="MuiBox-root MuiBox-root-2663"
+      className="MuiBox-root MuiBox-root-2720"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -4234,7 +4401,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       </span>
     </button>
     <div
-      className="MuiBox-root MuiBox-root-2684"
+      className="MuiBox-root MuiBox-root-2741"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -4260,7 +4427,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       </span>
     </button>
     <div
-      className="MuiBox-root MuiBox-root-2685"
+      className="MuiBox-root MuiBox-root-2742"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -4287,14 +4454,14 @@ exports[`Storyshots Extension Welcome page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2686"
+    className="MuiBox-root MuiBox-root-2743"
   />
   <div
-    className="MuiBox-root MuiBox-root-2687"
+    className="MuiBox-root MuiBox-root-2744"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-2688"
+      className="makeStyles-root-2745"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -4305,20 +4472,20 @@ exports[`Storyshots Extension Welcome page 1`] = `
 
 exports[`Storyshots Extension/Account Status page Empty 1`] = `
 <div
-  className="makeStyles-root-2103"
+  className="makeStyles-root-2160"
 >
   <header
-    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-2104 mui-fixed"
+    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-2161 mui-fixed"
   >
     <div
       className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        className="MuiBox-root MuiBox-root-2154"
+        className="MuiBox-root MuiBox-root-2211"
       />
       <button
         aria-label="Open drawer"
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden-2107 makeStyles-show-2108 MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden-2164 makeStyles-show-2165 MuiIconButton-colorInherit MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -4357,45 +4524,45 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
     </div>
   </header>
   <main
-    className="makeStyles-content-2112"
+    className="makeStyles-content-2169"
   >
     <div
-      className="makeStyles-drawerHeader-2111"
+      className="makeStyles-drawerHeader-2168"
     />
     <div>
       <div
-        className="MuiBox-root MuiBox-root-2178 makeStyles-root-2176 makeStyles-root-2177"
+        className="MuiBox-root MuiBox-root-2235 makeStyles-root-2233 makeStyles-root-2234"
         id="/account"
       >
         <div
-          className="MuiBox-root MuiBox-root-2179"
+          className="MuiBox-root MuiBox-root-2236"
         >
           <h4
-            className="MuiTypography-root makeStyles-inline-2180 MuiTypography-h4 MuiTypography-colorPrimary"
+            className="MuiTypography-root makeStyles-inline-2237 MuiTypography-h4 MuiTypography-colorPrimary"
           >
             Account
           </h4>
           <h4
-            className="MuiTypography-root makeStyles-inline-2180 MuiTypography-h4"
+            className="MuiTypography-root makeStyles-inline-2237 MuiTypography-h4"
           >
              
             Status
           </h4>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-2215"
+          className="MuiBox-root MuiBox-root-2272"
         >
           <div
-            className="MuiBox-root MuiBox-root-2216"
+            className="MuiBox-root MuiBox-root-2273"
           />
           <div
-            className="MuiBox-root MuiBox-root-2217"
+            className="MuiBox-root MuiBox-root-2274"
           >
             <nav
               className="MuiList-root MuiList-padding"
             >
               <div
-                className="MuiBox-root MuiBox-root-2222"
+                className="MuiBox-root MuiBox-root-2279"
               >
                 <li
                   className="MuiListItem-root MuiListItem-gutters"
@@ -4413,27 +4580,27 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
                 </li>
               </div>
               <div
-                className="MuiBox-root MuiBox-root-2241"
+                className="MuiBox-root MuiBox-root-2298"
               />
               <div
-                className="MuiBox-root MuiBox-root-2245"
+                className="MuiBox-root MuiBox-root-2302"
               />
               <li
-                className="MuiListItem-root makeStyles-center-2243 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-center-2300 MuiListItem-gutters"
                 disabled={false}
               >
                 <div
-                  className="MuiListItemIcon-root makeStyles-empty-2242"
+                  className="MuiListItemIcon-root makeStyles-empty-2299"
                 >
                   <img
                     alt="No Transactions"
-                    className="makeStyles-root-2247"
+                    className="makeStyles-root-2304"
                     height="42"
                     src="uptodate.svg"
                   />
                 </div>
                 <div
-                  className="MuiListItemText-root makeStyles-text-2244"
+                  className="MuiListItemText-root makeStyles-text-2301"
                 >
                   <span
                     className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -4446,14 +4613,14 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
           </div>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-2252"
+          className="MuiBox-root MuiBox-root-2309"
         />
         <div
-          className="MuiBox-root MuiBox-root-2253"
+          className="MuiBox-root MuiBox-root-2310"
         >
           <img
             alt="IOV logo"
-            className="makeStyles-root-2247"
+            className="makeStyles-root-2304"
             height={39}
             src="iov-logo.png"
             width={84}
@@ -4467,20 +4634,20 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
 
 exports[`Storyshots Extension/Account Status page Txs 1`] = `
 <div
-  className="makeStyles-root-1871"
+  className="makeStyles-root-1928"
 >
   <header
-    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-1872 mui-fixed"
+    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-1929 mui-fixed"
   >
     <div
       className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        className="MuiBox-root MuiBox-root-1922"
+        className="MuiBox-root MuiBox-root-1979"
       />
       <button
         aria-label="Open drawer"
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden-1875 makeStyles-show-1876 MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden-1932 makeStyles-show-1933 MuiIconButton-colorInherit MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -4519,45 +4686,45 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
     </div>
   </header>
   <main
-    className="makeStyles-content-1880"
+    className="makeStyles-content-1937"
   >
     <div
-      className="makeStyles-drawerHeader-1879"
+      className="makeStyles-drawerHeader-1936"
     />
     <div>
       <div
-        className="MuiBox-root MuiBox-root-1946 makeStyles-root-1944 makeStyles-root-1945"
+        className="MuiBox-root MuiBox-root-2003 makeStyles-root-2001 makeStyles-root-2002"
         id="/account"
       >
         <div
-          className="MuiBox-root MuiBox-root-1947"
+          className="MuiBox-root MuiBox-root-2004"
         >
           <h4
-            className="MuiTypography-root makeStyles-inline-1948 MuiTypography-h4 MuiTypography-colorPrimary"
+            className="MuiTypography-root makeStyles-inline-2005 MuiTypography-h4 MuiTypography-colorPrimary"
           >
             Account
           </h4>
           <h4
-            className="MuiTypography-root makeStyles-inline-1948 MuiTypography-h4"
+            className="MuiTypography-root makeStyles-inline-2005 MuiTypography-h4"
           >
              
             Status
           </h4>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-1983"
+          className="MuiBox-root MuiBox-root-2040"
         >
           <div
-            className="MuiBox-root MuiBox-root-1984"
+            className="MuiBox-root MuiBox-root-2041"
           />
           <div
-            className="MuiBox-root MuiBox-root-1985"
+            className="MuiBox-root MuiBox-root-2042"
           >
             <nav
               className="MuiList-root MuiList-padding"
             >
               <div
-                className="MuiBox-root MuiBox-root-1990"
+                className="MuiBox-root MuiBox-root-2047"
               >
                 <li
                   className="MuiListItem-root MuiListItem-gutters"
@@ -4575,10 +4742,10 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                 </li>
               </div>
               <div
-                className="MuiBox-root MuiBox-root-2009"
+                className="MuiBox-root MuiBox-root-2066"
               />
               <div
-                className="MuiBox-root MuiBox-root-2013 makeStyles-item-2011"
+                className="MuiBox-root MuiBox-root-2070 makeStyles-item-2068"
               >
                 <li
                   className="MuiListItem-root"
@@ -4586,36 +4753,36 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root-2014 makeStyles-icon-2012"
+                    className="makeStyles-root-2071 makeStyles-icon-2069"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg-2010 MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-2067 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                     >
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2020 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2077 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         You
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2021 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2078 makeStyles-inline-2005 MuiTypography-body1"
                       >
                          sent 0.01 ETH 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2022 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2079 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         to:
                       </p>
                       <div
-                        className="MuiBox-root MuiBox-root-2023"
+                        className="MuiBox-root MuiBox-root-2080"
                       >
                         <p
-                          className="MuiTypography-root makeStyles-inline-1948 makeStyles-link-1949 MuiTypography-body1"
+                          className="MuiTypography-root makeStyles-inline-2005 makeStyles-link-2006 MuiTypography-body1"
                         >
                           <a
                             href="https://iov.one"
@@ -4627,7 +4794,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2019 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2076 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -4676,15 +4843,15 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                   </div>
                 </li>
                 <div
-                  className="MuiBox-root MuiBox-root-2025"
+                  className="MuiBox-root MuiBox-root-2082"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-2026"
+                    className="MuiBox-root MuiBox-root-2083"
                   />
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root-2027 makeStyles-item-2011"
+                className="MuiBox-root MuiBox-root-2084 makeStyles-item-2068"
               >
                 <li
                   className="MuiListItem-root"
@@ -4692,42 +4859,42 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root-2014 makeStyles-icon-2012"
+                    className="makeStyles-root-2071 makeStyles-icon-2069"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg-2010 MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-2067 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                     >
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2028 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2085 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         You
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2029 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2086 makeStyles-inline-2005 MuiTypography-body1"
                       >
                          sent 0.01 ETH 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2030 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2087 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         to:
                       </p>
                       <div
-                        className="MuiBox-root MuiBox-root-2031"
+                        className="MuiBox-root MuiBox-root-2088"
                       >
                         <p
-                          className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
+                          className="MuiTypography-root makeStyles-inline-2005 MuiTypography-body1"
                         >
                           0x1212121212121...
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2019 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2076 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -4776,15 +4943,15 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                   </div>
                 </li>
                 <div
-                  className="MuiBox-root MuiBox-root-2033"
+                  className="MuiBox-root MuiBox-root-2090"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-2034"
+                    className="MuiBox-root MuiBox-root-2091"
                   />
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root-2035 makeStyles-item-2011"
+                className="MuiBox-root MuiBox-root-2092 makeStyles-item-2068"
               >
                 <li
                   className="MuiListItem-root"
@@ -4792,53 +4959,53 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root-2014 makeStyles-icon-2012"
+                    className="makeStyles-root-2071 makeStyles-icon-2069"
                     height={32}
                     src="transactionError.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg-2010 MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-2067 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                     >
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2036 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2093 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         Your 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2037 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2094 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         0.01 ETH
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2038 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2095 makeStyles-inline-2005 MuiTypography-body1"
                       >
                          payment to 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2039 makeStyles-inline-1948 makeStyles-link-1949 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2096 makeStyles-inline-2005 makeStyles-link-2006 MuiTypography-body1"
                       >
                         0x1212121212121...
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2040 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2097 makeStyles-inline-2005 MuiTypography-body1"
                       >
                          was 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2041 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2098 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         unsuccessful
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2042 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2099 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         , please try again later
                       </p>
                       <div
-                        className="MuiBox-root MuiBox-root-2043"
+                        className="MuiBox-root MuiBox-root-2100"
                       />
                     </span>
                     <p
@@ -4849,15 +5016,15 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                   </div>
                 </li>
                 <div
-                  className="MuiBox-root MuiBox-root-2044"
+                  className="MuiBox-root MuiBox-root-2101"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-2045"
+                    className="MuiBox-root MuiBox-root-2102"
                   />
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root-2046 makeStyles-item-2011"
+                className="MuiBox-root MuiBox-root-2103 makeStyles-item-2068"
               >
                 <li
                   className="MuiListItem-root"
@@ -4865,42 +5032,42 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root-2014 makeStyles-icon-2012"
+                    className="makeStyles-root-2071 makeStyles-icon-2069"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg-2010 MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-2067 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                     >
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2047 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2104 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         You
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2048 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2105 makeStyles-inline-2005 MuiTypography-body1"
                       >
                          sent 0.01 ETH 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2049 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2106 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         to:
                       </p>
                       <div
-                        className="MuiBox-root MuiBox-root-2050"
+                        className="MuiBox-root MuiBox-root-2107"
                       >
                         <p
-                          className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
+                          className="MuiTypography-root makeStyles-inline-2005 MuiTypography-body1"
                         >
                           0x1212121212121...
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2019 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2076 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -4949,15 +5116,15 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                   </div>
                 </li>
                 <div
-                  className="MuiBox-root MuiBox-root-2052"
+                  className="MuiBox-root MuiBox-root-2109"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-2053"
+                    className="MuiBox-root MuiBox-root-2110"
                   />
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root-2054 makeStyles-item-2011"
+                className="MuiBox-root MuiBox-root-2111 makeStyles-item-2068"
               >
                 <li
                   className="MuiListItem-root"
@@ -4965,42 +5132,42 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root-2014 makeStyles-icon-2012"
+                    className="makeStyles-root-2071 makeStyles-icon-2069"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg-2010 MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-2067 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                     >
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2055 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2112 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         You
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2056 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2113 makeStyles-inline-2005 MuiTypography-body1"
                       >
                          sent 0.01 ETH 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight-1950 makeStyles-weight-2057 makeStyles-inline-1948 MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight-2007 makeStyles-weight-2114 makeStyles-inline-2005 MuiTypography-body1"
                       >
                         to:
                       </p>
                       <div
-                        className="MuiBox-root MuiBox-root-2058"
+                        className="MuiBox-root MuiBox-root-2115"
                       >
                         <p
-                          className="MuiTypography-root makeStyles-inline-1948 MuiTypography-body1"
+                          className="MuiTypography-root makeStyles-inline-2005 MuiTypography-body1"
                         >
                           0x1212121212121...
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2019 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-2076 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -5053,14 +5220,14 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
           </div>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-2060"
+          className="MuiBox-root MuiBox-root-2117"
         />
         <div
-          className="MuiBox-root MuiBox-root-2061"
+          className="MuiBox-root MuiBox-root-2118"
         >
           <img
             alt="IOV logo"
-            className="makeStyles-root-2014"
+            className="makeStyles-root-2071"
             height={39}
             src="iov-logo.png"
             width={84}
@@ -5074,29 +5241,29 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
 
 exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2696 makeStyles-root-2693 makeStyles-root-2694"
+  className="MuiBox-root MuiBox-root-2753 makeStyles-root-2750 makeStyles-root-2751"
   id="/restore-account"
 >
   <div
-    className="MuiBox-root MuiBox-root-2697"
+    className="MuiBox-root MuiBox-root-2754"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2698 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2755 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Restore
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2698 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2755 MuiTypography-h4"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2733"
+    className="MuiBox-root MuiBox-root-2790"
   >
     <h6
-      className="MuiTypography-root makeStyles-inline-2698 MuiTypography-subtitle1"
+      className="MuiTypography-root makeStyles-inline-2755 MuiTypography-subtitle1"
     >
       Restore your account with your recovery words. Enter your recovery words here.
     </h6>
@@ -5104,7 +5271,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-2735"
+        className="MuiBox-root MuiBox-root-2792"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -5115,7 +5282,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-2770 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-2827 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -5123,7 +5290,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-2771"
+                className="PrivateNotchedOutline-legend-2828"
                 style={
                   Object {
                     "width": 0.01,
@@ -5155,10 +5322,10 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-2772"
+        className="MuiBox-root MuiBox-root-2829"
       >
         <div
-          className="MuiBox-root MuiBox-root-2773"
+          className="MuiBox-root MuiBox-root-2830"
         >
           <button
             aria-label="Go back"
@@ -5186,7 +5353,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
           </button>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-2794"
+          className="MuiBox-root MuiBox-root-2851"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -5215,14 +5382,14 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2795"
+    className="MuiBox-root MuiBox-root-2852"
   />
   <div
-    className="MuiBox-root MuiBox-root-2796"
+    className="MuiBox-root MuiBox-root-2853"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-2797"
+      className="makeStyles-root-2854"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -5233,29 +5400,29 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
 
 exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2805 makeStyles-root-2802 makeStyles-root-2803"
+  className="MuiBox-root MuiBox-root-2862 makeStyles-root-2859 makeStyles-root-2860"
   id="/restore-account2"
 >
   <div
-    className="MuiBox-root MuiBox-root-2806"
+    className="MuiBox-root MuiBox-root-2863"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2807 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2864 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Restore
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2807 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2864 MuiTypography-h4"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2842"
+    className="MuiBox-root MuiBox-root-2899"
   >
     <h6
-      className="MuiTypography-root makeStyles-inline-2807 MuiTypography-subtitle1"
+      className="MuiTypography-root makeStyles-inline-2864 MuiTypography-subtitle1"
     >
       Enter the new password that will be used to encrypt your profile.
     </h6>
@@ -5263,7 +5430,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-2844"
+        className="MuiBox-root MuiBox-root-2901"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -5286,7 +5453,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-2898 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-2955 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -5294,7 +5461,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-2899"
+                className="PrivateNotchedOutline-legend-2956"
                 style={
                   Object {
                     "width": 0.01,
@@ -5326,7 +5493,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-2900"
+        className="MuiBox-root MuiBox-root-2957"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -5349,7 +5516,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-2898 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-2955 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -5357,7 +5524,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-2899"
+                className="PrivateNotchedOutline-legend-2956"
                 style={
                   Object {
                     "width": 0.01,
@@ -5389,10 +5556,10 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-2901"
+        className="MuiBox-root MuiBox-root-2958"
       >
         <div
-          className="MuiBox-root MuiBox-root-2902"
+          className="MuiBox-root MuiBox-root-2959"
         >
           <button
             aria-label="Go back"
@@ -5420,7 +5587,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
           </button>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-2923"
+          className="MuiBox-root MuiBox-root-2980"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -5449,14 +5616,14 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2924"
+    className="MuiBox-root MuiBox-root-2981"
   />
   <div
-    className="MuiBox-root MuiBox-root-2925"
+    className="MuiBox-root MuiBox-root-2982"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-2926"
+      className="makeStyles-root-2983"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -5467,32 +5634,32 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
 
 exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3033 makeStyles-root-3030 makeStyles-root-3031"
+  className="MuiBox-root MuiBox-root-3090 makeStyles-root-3087 makeStyles-root-3088"
   id="/share-identity_reject"
 >
   <div
-    className="MuiBox-root MuiBox-root-3034"
+    className="MuiBox-root MuiBox-root-3091"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3035 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3092 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Share
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3035 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3092 MuiTypography-h4"
     >
        
       Identity
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3070"
+    className="MuiBox-root MuiBox-root-3127"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-3071"
+        className="MuiBox-root MuiBox-root-3128"
       >
         <p
           className="MuiTypography-root MuiTypography-body1"
@@ -5505,25 +5672,25 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
           http://finnex.com
         </p>
         <p
-          className="MuiTypography-root makeStyles-inline-3035 MuiTypography-body1 MuiTypography-colorError"
+          className="MuiTypography-root makeStyles-inline-3092 MuiTypography-body1 MuiTypography-colorError"
         >
           would not be able to request
         </p>
         <p
-          className="MuiTypography-root makeStyles-inline-3035 MuiTypography-body1"
+          className="MuiTypography-root makeStyles-inline-3092 MuiTypography-body1"
         >
            
           your identity on blockchains.
         </p>
         <div
-          className="MuiBox-root MuiBox-root-3076"
+          className="MuiBox-root MuiBox-root-3133"
         />
         <label
           className="MuiFormControlLabel-root"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3089 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3146 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -5556,7 +5723,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
               </svg>
               <input
                 checked={false}
-                className="PrivateSwitchBase-input-3092"
+                className="PrivateSwitchBase-input-3149"
                 data-indeterminate={false}
                 name="permanentRejectField"
                 onBlur={[Function]}
@@ -5574,7 +5741,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         </label>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3114"
+        className="MuiBox-root MuiBox-root-3171"
       />
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
@@ -5599,7 +5766,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         </span>
       </button>
       <div
-        className="MuiBox-root MuiBox-root-3132"
+        className="MuiBox-root MuiBox-root-3189"
       />
       <button
         aria-label="Go back"
@@ -5628,14 +5795,14 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3133"
+    className="MuiBox-root MuiBox-root-3190"
   />
   <div
-    className="MuiBox-root MuiBox-root-3134"
+    className="MuiBox-root MuiBox-root-3191"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3135"
+      className="makeStyles-root-3192"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -5646,29 +5813,29 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
 
 exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-2934 makeStyles-root-2931 makeStyles-root-2932"
+  className="MuiBox-root MuiBox-root-2991 makeStyles-root-2988 makeStyles-root-2989"
   id="/share-identity_show"
 >
   <div
-    className="MuiBox-root MuiBox-root-2935"
+    className="MuiBox-root MuiBox-root-2992"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-2936 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-2993 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Share
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-2936 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-2993 MuiTypography-h4"
     >
        
       Identity
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-2971"
+    className="MuiBox-root MuiBox-root-3028"
   >
     <div
-      className="MuiBox-root MuiBox-root-2972"
+      className="MuiBox-root MuiBox-root-3029"
     >
       <p
         className="MuiTypography-root MuiTypography-body1"
@@ -5681,7 +5848,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
         http://finnex.com
       </p>
       <p
-        className="MuiTypography-root makeStyles-inline-2936 MuiTypography-body1"
+        className="MuiTypography-root makeStyles-inline-2993 MuiTypography-body1"
       >
         wants to have access to:
       </p>
@@ -5709,7 +5876,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
         </div>
       </li>
       <div
-        className="MuiBox-root MuiBox-root-2997"
+        className="MuiBox-root MuiBox-root-3054"
       />
       <li
         className="MuiListItem-root MuiListItem-gutters"
@@ -5731,7 +5898,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
         </div>
       </li>
       <div
-        className="MuiBox-root MuiBox-root-2998"
+        className="MuiBox-root MuiBox-root-3055"
       />
       <li
         className="MuiListItem-root MuiListItem-gutters"
@@ -5753,7 +5920,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
         </div>
       </li>
       <div
-        className="MuiBox-root MuiBox-root-2999"
+        className="MuiBox-root MuiBox-root-3056"
       />
       <li
         className="MuiListItem-root MuiListItem-gutters"
@@ -5775,11 +5942,11 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
         </div>
       </li>
       <div
-        className="MuiBox-root MuiBox-root-3000"
+        className="MuiBox-root MuiBox-root-3057"
       />
     </ul>
     <div
-      className="MuiBox-root MuiBox-root-3001"
+      className="MuiBox-root MuiBox-root-3058"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -5805,7 +5972,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       </span>
     </button>
     <div
-      className="MuiBox-root MuiBox-root-3022"
+      className="MuiBox-root MuiBox-root-3079"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
@@ -5832,14 +5999,14 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     </button>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3023"
+    className="MuiBox-root MuiBox-root-3080"
   />
   <div
-    className="MuiBox-root MuiBox-root-3024"
+    className="MuiBox-root MuiBox-root-3081"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3025"
+      className="makeStyles-root-3082"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -5850,32 +6017,32 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
 
 exports[`Storyshots Extension/Signup New Account page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3143 makeStyles-root-3140 makeStyles-root-3141"
+  className="MuiBox-root MuiBox-root-3200 makeStyles-root-3197 makeStyles-root-3198"
   id="/signup1"
 >
   <div
-    className="MuiBox-root MuiBox-root-3144"
+    className="MuiBox-root MuiBox-root-3201"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3145 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3202 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3145 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3202 MuiTypography-h4"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3180"
+    className="MuiBox-root MuiBox-root-3237"
   >
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-3181"
+        className="MuiBox-root MuiBox-root-3238"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -5898,7 +6065,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-3235 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-3292 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -5906,7 +6073,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-3236"
+                className="PrivateNotchedOutline-legend-3293"
                 style={
                   Object {
                     "width": 0.01,
@@ -5938,7 +6105,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3237"
+        className="MuiBox-root MuiBox-root-3294"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -5961,7 +6128,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-3235 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-3292 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -5969,7 +6136,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-3236"
+                className="PrivateNotchedOutline-legend-3293"
                 style={
                   Object {
                     "width": 0.01,
@@ -6001,7 +6168,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3238"
+        className="MuiBox-root MuiBox-root-3295"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -6024,7 +6191,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-3235 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-3292 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -6032,7 +6199,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-3236"
+                className="PrivateNotchedOutline-legend-3293"
                 style={
                   Object {
                     "width": 0.01,
@@ -6064,10 +6231,10 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3239"
+        className="MuiBox-root MuiBox-root-3296"
       >
         <div
-          className="MuiBox-root MuiBox-root-3240"
+          className="MuiBox-root MuiBox-root-3297"
         >
           <button
             aria-label="Go back"
@@ -6095,7 +6262,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
           </button>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-3261"
+          className="MuiBox-root MuiBox-root-3318"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
@@ -6124,14 +6291,14 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3262"
+    className="MuiBox-root MuiBox-root-3319"
   />
   <div
-    className="MuiBox-root MuiBox-root-3263"
+    className="MuiBox-root MuiBox-root-3320"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3264"
+      className="makeStyles-root-3321"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -6142,49 +6309,49 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
 
 exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3272 makeStyles-root-3269 makeStyles-root-3270"
+  className="MuiBox-root MuiBox-root-3329 makeStyles-root-3326 makeStyles-root-3327"
   id="/signup2"
 >
   <div
-    className="MuiBox-root MuiBox-root-3273"
+    className="MuiBox-root MuiBox-root-3330"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3274 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3331 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3274 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3331 MuiTypography-h4"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3309"
+    className="MuiBox-root MuiBox-root-3366"
   >
     <div
-      className="MuiBox-root MuiBox-root-3310"
+      className="MuiBox-root MuiBox-root-3367"
     >
       <div
-        className="MuiBox-root MuiBox-root-3311"
+        className="MuiBox-root MuiBox-root-3368"
       >
         <div
-          className="MuiBox-root MuiBox-root-3312"
+          className="MuiBox-root MuiBox-root-3369"
         >
           <h6
-            className="MuiTypography-root makeStyles-inline-3274 MuiTypography-subtitle2"
+            className="MuiTypography-root makeStyles-inline-3331 MuiTypography-subtitle2"
           >
             Activate Recovery Phrase?
           </h6>
         </div>
         <div
-          className="makeStyles-container-3315"
+          className="makeStyles-container-3372"
           onClick={[Function]}
         >
           <img
             alt="Info"
-            className="makeStyles-root-3318"
+            className="makeStyles-root-3375"
             height={16}
             src="info_normal.svg"
             width={16}
@@ -6199,7 +6366,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3340 MuiSwitch-switchBase MuiSwitch-colorPrimary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3397 MuiSwitch-switchBase MuiSwitch-colorPrimary"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -6219,7 +6386,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
                 className="MuiSwitch-thumb"
               />
               <input
-                className="PrivateSwitchBase-input-3343 MuiSwitch-input"
+                className="PrivateSwitchBase-input-3400 MuiSwitch-input"
                 onChange={[Function]}
                 type="checkbox"
               />
@@ -6235,19 +6402,19 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       </label>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-3356"
+      className="MuiBox-root MuiBox-root-3413"
     >
       <p
-        className="MuiTypography-root makeStyles-inline-3274 MuiTypography-body1"
+        className="MuiTypography-root makeStyles-inline-3331 MuiTypography-body1"
       >
         
       </p>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-3358"
+      className="MuiBox-root MuiBox-root-3415"
     >
       <div
-        className="MuiBox-root MuiBox-root-3359"
+        className="MuiBox-root MuiBox-root-3416"
       >
         <button
           aria-label="Go back"
@@ -6275,7 +6442,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
         </button>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3377"
+        className="MuiBox-root MuiBox-root-3434"
       >
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -6304,14 +6471,14 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3378"
+    className="MuiBox-root MuiBox-root-3435"
   />
   <div
-    className="MuiBox-root MuiBox-root-3379"
+    className="MuiBox-root MuiBox-root-3436"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3318"
+      className="makeStyles-root-3375"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -6322,29 +6489,29 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
 
 exports[`Storyshots Extension/Signup Security Hint page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3383 makeStyles-root-3380 makeStyles-root-3381"
+  className="MuiBox-root MuiBox-root-3440 makeStyles-root-3437 makeStyles-root-3438"
   id="/signup3"
 >
   <div
-    className="MuiBox-root MuiBox-root-3384"
+    className="MuiBox-root MuiBox-root-3441"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3385 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3442 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       New
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3385 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3442 MuiTypography-h4"
     >
        
       Account
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3420"
+    className="MuiBox-root MuiBox-root-3477"
   >
     <h6
-      className="MuiTypography-root makeStyles-inline-3385 MuiTypography-subtitle1"
+      className="MuiTypography-root makeStyles-inline-3442 MuiTypography-subtitle1"
     >
       To help you remember your details in the future please provide a security hint:
     </h6>
@@ -6352,7 +6519,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-3422"
+        className="MuiBox-root MuiBox-root-3479"
       >
         <div
           className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
@@ -6363,7 +6530,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
           >
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-3457 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-3514 MuiOutlinedInput-notchedOutline"
               style={
                 Object {
                   "paddingLeft": 8,
@@ -6371,7 +6538,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
               }
             >
               <legend
-                className="PrivateNotchedOutline-legend-3458"
+                className="PrivateNotchedOutline-legend-3515"
                 style={
                   Object {
                     "width": 0.01,
@@ -6403,10 +6570,10 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3459"
+        className="MuiBox-root MuiBox-root-3516"
       >
         <div
-          className="MuiBox-root MuiBox-root-3460"
+          className="MuiBox-root MuiBox-root-3517"
         >
           <button
             aria-label="Go back"
@@ -6434,7 +6601,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
           </button>
         </div>
         <div
-          className="MuiBox-root MuiBox-root-3481"
+          className="MuiBox-root MuiBox-root-3538"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -6463,14 +6630,14 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3482"
+    className="MuiBox-root MuiBox-root-3539"
   />
   <div
-    className="MuiBox-root MuiBox-root-3483"
+    className="MuiBox-root MuiBox-root-3540"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3484"
+      className="makeStyles-root-3541"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -6481,43 +6648,43 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
 
 exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3589 makeStyles-root-3586 makeStyles-root-3587"
+  className="MuiBox-root MuiBox-root-3646 makeStyles-root-3643 makeStyles-root-3644"
   id="/tx-request_reject"
 >
   <div
-    className="MuiBox-root MuiBox-root-3590"
+    className="MuiBox-root MuiBox-root-3647"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3591 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3648 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Tx
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3591 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3648 MuiTypography-h4"
     >
        
       Request
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3626"
+    className="MuiBox-root MuiBox-root-3683"
   >
     <div
-      className="MuiBox-root MuiBox-root-3627"
+      className="MuiBox-root MuiBox-root-3684"
     />
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-3628"
+        className="MuiBox-root MuiBox-root-3685"
       >
         <p
-          className="MuiTypography-root makeStyles-inline-3591 MuiTypography-body1"
+          className="MuiTypography-root makeStyles-inline-3648 MuiTypography-body1"
         >
           You are rejecting the tx sent from 
         </p>
         <p
-          className="MuiTypography-root makeStyles-inline-3591 MuiTypography-body1 MuiTypography-colorPrimary"
+          className="MuiTypography-root makeStyles-inline-3648 MuiTypography-body1 MuiTypography-colorPrimary"
         >
           http://localhost/
         </p>
@@ -6527,14 +6694,14 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
            from being signed and posted.
         </p>
         <div
-          className="MuiBox-root MuiBox-root-3632"
+          className="MuiBox-root MuiBox-root-3689"
         />
         <label
           className="MuiFormControlLabel-root"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3645 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3702 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -6567,7 +6734,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
               </svg>
               <input
                 checked={false}
-                className="PrivateSwitchBase-input-3648"
+                className="PrivateSwitchBase-input-3705"
                 data-indeterminate={false}
                 name="permanentRejectField"
                 onBlur={[Function]}
@@ -6585,7 +6752,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         </label>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3670"
+        className="MuiBox-root MuiBox-root-3727"
       />
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
@@ -6610,7 +6777,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         </span>
       </button>
       <div
-        className="MuiBox-root MuiBox-root-3688"
+        className="MuiBox-root MuiBox-root-3745"
       />
       <button
         aria-label="Go back"
@@ -6639,14 +6806,14 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3689"
+    className="MuiBox-root MuiBox-root-3746"
   />
   <div
-    className="MuiBox-root MuiBox-root-3690"
+    className="MuiBox-root MuiBox-root-3747"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3691"
+      className="makeStyles-root-3748"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -6657,42 +6824,42 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
 
 exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3492 makeStyles-root-3489 makeStyles-root-3490"
+  className="MuiBox-root MuiBox-root-3549 makeStyles-root-3546 makeStyles-root-3547"
   id="/tx-request_show"
 >
   <div
-    className="MuiBox-root MuiBox-root-3493"
+    className="MuiBox-root MuiBox-root-3550"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3494 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3551 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Tx
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3494 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3551 MuiTypography-h4"
     >
        
       Request
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3529"
+    className="MuiBox-root MuiBox-root-3586"
   >
     <div
-      className="MuiBox-root MuiBox-root-3530"
+      className="MuiBox-root MuiBox-root-3587"
     >
       <p
-        className="MuiTypography-root makeStyles-inline-3494 MuiTypography-body1"
+        className="MuiTypography-root makeStyles-inline-3551 MuiTypography-body1"
       >
         The following site: 
       </p>
       <p
-        className="MuiTypography-root makeStyles-inline-3494 MuiTypography-body1 MuiTypography-colorPrimary"
+        className="MuiTypography-root makeStyles-inline-3551 MuiTypography-body1 MuiTypography-colorPrimary"
       >
         http://localhost/
       </p>
       <p
-        className="MuiTypography-root makeStyles-inline-3494 MuiTypography-body1"
+        className="MuiTypography-root makeStyles-inline-3551 MuiTypography-body1"
       >
          wants you to sign:
       </p>
@@ -6705,7 +6872,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root-3534 MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-3591 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -6724,7 +6891,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root-3534 MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-3591 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -6743,7 +6910,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root-3534 MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-3591 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -6762,7 +6929,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root-3534 MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-3591 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -6781,7 +6948,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root-3534 MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-3591 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -6797,7 +6964,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
       </li>
     </ul>
     <div
-      className="MuiBox-root MuiBox-root-3556"
+      className="MuiBox-root MuiBox-root-3613"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
@@ -6823,7 +6990,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
       </span>
     </button>
     <div
-      className="MuiBox-root MuiBox-root-3577"
+      className="MuiBox-root MuiBox-root-3634"
     />
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
@@ -6849,18 +7016,18 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
       </span>
     </button>
     <div
-      className="MuiBox-root MuiBox-root-3578"
+      className="MuiBox-root MuiBox-root-3635"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3579"
+    className="MuiBox-root MuiBox-root-3636"
   />
   <div
-    className="MuiBox-root MuiBox-root-3580"
+    className="MuiBox-root MuiBox-root-3637"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3581"
+      className="makeStyles-root-3638"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -6871,17 +7038,17 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
 
 exports[`Storyshots Templates/Menu Empty Menu 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-1813"
+  className="MuiBox-root MuiBox-root-1870"
 >
   <div
-    className="MuiBox-root MuiBox-root-1814"
+    className="MuiBox-root MuiBox-root-1871"
   />
   <div
-    className="makeStyles-root-1815"
+    className="makeStyles-root-1872"
     onClick={[Function]}
   >
     <div
-      className="MuiBox-root MuiBox-root-1819"
+      className="MuiBox-root MuiBox-root-1876"
     >
       <h6
         className="MuiTypography-root MuiTypography-h6"
@@ -6907,24 +7074,24 @@ exports[`Storyshots Templates/Menu Empty Menu 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1863"
+    className="MuiBox-root MuiBox-root-1920"
   />
 </div>
 `;
 
 exports[`Storyshots Templates/Menu List Menu 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-1761"
+  className="MuiBox-root MuiBox-root-1818"
 >
   <div
-    className="MuiBox-root MuiBox-root-1762"
+    className="MuiBox-root MuiBox-root-1819"
   />
   <div
-    className="makeStyles-root-1763"
+    className="makeStyles-root-1820"
     onClick={[Function]}
   >
     <div
-      className="MuiBox-root MuiBox-root-1767"
+      className="MuiBox-root MuiBox-root-1824"
     >
       <h6
         className="MuiTypography-root MuiTypography-h6"
@@ -6950,32 +7117,32 @@ exports[`Storyshots Templates/Menu List Menu 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-1811"
+    className="MuiBox-root MuiBox-root-1868"
   />
 </div>
 `;
 
 exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3697"
+  className="MuiBox-root MuiBox-root-3754"
 >
   <div
-    className="MuiBox-root MuiBox-root-3698"
+    className="MuiBox-root MuiBox-root-3755"
   >
     <div
-      className="MuiBox-root MuiBox-root-3699"
+      className="MuiBox-root MuiBox-root-3756"
     >
       <div
-        className="MuiBox-root MuiBox-root-3700"
+        className="MuiBox-root MuiBox-root-3757"
       >
         <img
           alt="Logo"
-          className="makeStyles-root-3701"
+          className="makeStyles-root-3758"
           src="iov-logo.svg"
         />
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3706"
+        className="MuiBox-root MuiBox-root-3763"
       >
         <h5
           className="MuiTypography-root MuiTypography-h5"
@@ -6991,22 +7158,22 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     </h5>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3742"
+    className="MuiBox-root MuiBox-root-3799"
   />
   <div
-    className="MuiBox-root MuiBox-root-3743"
+    className="MuiBox-root MuiBox-root-3800"
   >
     <div
-      className="MuiBox-root MuiBox-root-3746"
+      className="MuiBox-root MuiBox-root-3803"
     >
       <div
         className="MuiDrawer-root MuiDrawer-docked"
       >
         <div
-          className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-3744 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+          className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-3801 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
         >
           <ul
-            className="MuiList-root makeStyles-list-3745 MuiList-padding"
+            className="MuiList-root makeStyles-list-3802 MuiList-padding"
           >
             <div
               aria-disabled={false}
@@ -7117,7 +7284,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-3810"
+      className="MuiBox-root MuiBox-root-3867"
     >
       <h6
         className="MuiTypography-root MuiTypography-h6"
@@ -7131,19 +7298,19 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3816 makeStyles-login-3812"
+  className="MuiBox-root MuiBox-root-3873 makeStyles-login-3869"
 >
   <div
-    className="MuiBox-root MuiBox-root-3817 makeStyles-icon-3813"
+    className="MuiBox-root MuiBox-root-3874 makeStyles-icon-3870"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-3818"
+      className="makeStyles-root-3875"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3823"
+    className="MuiBox-root MuiBox-root-3880"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -7155,7 +7322,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-3814 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-3871 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
