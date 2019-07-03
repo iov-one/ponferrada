@@ -13,7 +13,13 @@ import { PersonaContext } from '../../context/PersonaProvider';
 import { history } from '../../store/reducers';
 import { EXTENSION_HEIGHT } from '../../theme/constants';
 import { clearDatabase, clearPersona, createAccount } from '../../utils/chrome';
-import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
+import {
+  ACCOUNT_STATUS_ROUTE,
+  RECOVERY_PHRASE_ROUTE,
+  REQUEST_ROUTE,
+  WELCOME_ROUTE,
+  TERMS_URL,
+} from '../paths';
 import logoutIcon from './assets/logout.svg';
 import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
 import requestsIcon from './assets/requests.svg';
@@ -84,7 +90,7 @@ const AccountView = (): JSX.Element => {
     {
       icon: termsIcon,
       text: 'Terms & Conditions',
-      action: () => window.open('https://support.iov.one/hc/en-us', '_blank'),
+      action: () => window.open(TERMS_URL, '_blank'),
     },
   ];
 

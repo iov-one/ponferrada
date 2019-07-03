@@ -24,7 +24,7 @@ import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/naviga
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
-import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
+import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE, TERMS_URL } from '../paths';
 import { checkCreateAccount } from './test/operateAccount';
 
 describe('DOM > Feature > Account Status', () => {
@@ -94,7 +94,7 @@ describe('DOM > Feature > Account Status', () => {
 
     Drawer.clickTerms(accountStatusDom);
     await sleep(1000);
-    expect(window.open).toHaveBeenCalledWith('https://support.iov.one/hc/en-us', '_blank');
+    expect(window.open).toHaveBeenCalledWith(TERMS_URL, '_blank');
   }, 60000);
 
   it('has a select dropdown that enables the creation and selection of accounts', async () => {

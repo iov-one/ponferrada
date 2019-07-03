@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
 import { getHintPhrase } from '../../../utils/localstorage/hint';
-import { click, input, submit } from '../../../utils/test/dom';
+import { click, input, submit, check } from '../../../utils/test/dom';
 import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
@@ -12,6 +12,7 @@ import {
   FIRST_STEP_SIGNUP_ROUTE,
   PASSWORD_CONFIRM_FIELD,
   PASSWORD_FIELD,
+  TERMS_ACCEPT_FIELD,
 } from '../components/NewAccountForm';
 import { SECURITY_HINT, SECURITY_HINT_STEP_SIGNUP_ROUTE } from '../components/SecurityHintForm';
 import { SECOND_STEP_SIGNUP_ROUTE } from '../components/ShowPhraseForm';
@@ -48,6 +49,10 @@ export const getConfirmPasswordValidity = (signupDom: React.Component): Element 
   return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p')[1];
 };
 
+export const getTermsValidity = (signupDom: React.Component): Element => {
+  return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p')[0];
+};
+
 export const getConfirmPasswordMismatch = (signupDom: React.Component): Element => {
   return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, 'p')[0];
 };
@@ -60,6 +65,16 @@ export const getSecurityHintForm = (signupDom: React.Component): Element => {
   return TestUtils.findRenderedDOMComponentWithTag(signupDom, 'form');
 };
 
+export const getTermsCheckboxLabel = (termsCheckbox: Element): string | null => {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const titleSpan = termsCheckbox.parentElement!.parentElement!.parentElement!.querySelector(
+    'span:nth-of-type(2)',
+  );
+  if (titleSpan === null) return null;
+
+  return titleSpan.textContent;
+};
+
 export const isButtonDisabled = (button: Element): boolean => {
   return button.classList.contains('Mui-disabled');
 };
@@ -70,8 +85,9 @@ export const submitNewAccountE2E = async (
   password: string,
 ): Promise<void> => {
   await page.type(`input[name="${ACCOUNT_NAME_FIELD}"]`, accountName);
-  await page.type(`input[name="${PASSWORD_FIELD}`, password);
-  await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}`, password);
+  await page.type(`input[name="${PASSWORD_FIELD}"]`, password);
+  await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}"]`, password);
+  await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);
 
   await page.click('button[type="submit"]');
   await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
@@ -82,13 +98,13 @@ export const submitNewAccount = async (
   accountName: string,
   password: string,
 ): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(newAccountDom, 'input');
-  expect(inputs.length).toBe(3);
+  const inputs = getNewAccountInputs(newAccountDom);
 
-  const [accountNameField, passwordField, passwordConfirmField] = inputs;
+  const [accountNameField, passwordField, passwordConfirmField, termsAcceptField] = inputs;
   input(accountNameField, accountName);
   input(passwordField, password);
   input(passwordConfirmField, password);
+  await check(termsAcceptField);
 
   const newAccountForm = TestUtils.findRenderedDOMComponentWithTag(newAccountDom, 'form');
   const submitPasswordForm = async (): Promise<void> => {
