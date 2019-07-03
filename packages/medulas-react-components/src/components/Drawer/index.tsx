@@ -81,12 +81,13 @@ interface DrawerItems {
 interface Props {
   readonly children: React.ReactNode;
   readonly items: ReadonlyArray<DrawerItems>;
+  readonly footer?: React.ReactNode;
   readonly elevation?: number;
 }
 
 export const DRAWER_HTML_ID = 'account-drawer';
 
-function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.Element {
+function PersistentDrawerRight({ children, items, footer, elevation = 0 }: Props): JSX.Element {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -134,23 +135,26 @@ function PersistentDrawerRight({ children, items, elevation = 0 }: Props): JSX.E
         open={open}
         classes={drawerClasses}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronRightIcon />
-          </IconButton>
+        <div id={DRAWER_HTML_ID}>
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronRightIcon />
+            </IconButton>
+          </div>
+          <List component="nav">
+            {items.map(item => (
+              <ListItem button key={item.text}>
+                {item.icon && (
+                  <ListItemIcon>
+                    <Image src={item.icon} alt="Menu icon" />
+                  </ListItemIcon>
+                )}
+                <ListItemText primary={item.text} onClick={item.action} />
+              </ListItem>
+            ))}
+          </List>
+          {footer && <footer>{footer}</footer>}
         </div>
-        <List component="nav" id={DRAWER_HTML_ID}>
-          {items.map(item => (
-            <ListItem button key={item.text}>
-              {item.icon && (
-                <ListItemIcon>
-                  <Image src={item.icon} alt="Menu icon" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary={item.text} onClick={item.action} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
     </div>
   );

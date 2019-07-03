@@ -3,6 +3,12 @@ import TestUtils from 'react-dom/test-utils';
 import { click } from '../../../utils/test/dom';
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
 
+async function openDrawer(drawerComponent: React.Component): Promise<void> {
+  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, 'button')[0];
+  expect(drawerButton.getAttribute('aria-label')).toBe('Open drawer');
+  await click(drawerButton);
+}
+
 interface InitDrawerResult {
   readonly recoveryPhraseLink: Element;
   readonly requestsLink: Element;
@@ -11,14 +17,15 @@ interface InitDrawerResult {
 }
 
 const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerResult> => {
-  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, 'button')[0];
-  expect(drawerButton.getAttribute('aria-label')).toBe('Open drawer');
-  click(drawerButton);
+  await openDrawer(drawerComponent);
 
   const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
-  const drawerElements = (drawerList as Element).querySelectorAll('div > div:nth-of-type(2)');
-  expect(drawerElements.length).toBe(4);
-  const [recoveryPhraseLink, requestsLink, logoutLink, termsLink] = drawerElements;
+  const drawerElements = (drawerList as Element).querySelectorAll('nav div > div:nth-of-type(2)');
+  expect(drawerElements.length).toBe(3);
+  const [recoveryPhraseLink, requestsLink, logoutLink] = drawerElements;
+  const footerLinks = (drawerList as Element).querySelectorAll('footer a');
+  expect(footerLinks.length).toBe(1);
+  const [termsLink] = footerLinks;
 
   expect(recoveryPhraseLink.textContent).toBe('Recovery words');
   expect(requestsLink.textContent).toBe('Requests');
@@ -30,20 +37,20 @@ const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerR
 
 export const clickRecoveryPhrase = async (drawerComponent: React.Component): Promise<void> => {
   const { recoveryPhraseLink } = await initDrawer(drawerComponent);
-  click(recoveryPhraseLink);
+  await click(recoveryPhraseLink);
 };
 
 export const clickRequests = async (drawerComponent: React.Component): Promise<void> => {
   const { requestsLink } = await initDrawer(drawerComponent);
-  click(requestsLink);
+  await click(requestsLink);
 };
 
 export const clickLogout = async (drawerComponent: React.Component): Promise<void> => {
   const { logoutLink } = await initDrawer(drawerComponent);
-  click(logoutLink);
+  await click(logoutLink);
 };
 
 export const clickTerms = async (drawerComponent: React.Component): Promise<void> => {
   const { termsLink } = await initDrawer(drawerComponent);
-  click(termsLink);
+  await click(termsLink);
 };

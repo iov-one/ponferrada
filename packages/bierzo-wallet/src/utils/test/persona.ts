@@ -39,7 +39,7 @@ export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
   await sleep(1000);
 
   // click on Requests
-  await page.click('#account-drawer > div:nth-of-type(2)');
+  await page.click('#account-drawer > nav > div:nth-of-type(2)');
   await sleep(500);
 
   // click on first request
@@ -58,7 +58,7 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   await sleep(1000);
 
   // click on Requests
-  await page.click('#account-drawer > div:nth-of-type(2)');
+  await page.click('#account-drawer > nav > div:nth-of-type(2)');
   await sleep(500);
 
   // click on first request

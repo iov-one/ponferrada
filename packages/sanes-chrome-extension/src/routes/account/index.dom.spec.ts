@@ -68,19 +68,19 @@ describe('DOM > Feature > Account Status', () => {
   }, 60000);
 
   it('redirects to the Recovery Phrase view when link clicked in Drawer menu', async () => {
-    Drawer.clickRecoveryPhrase(accountStatusDom);
+    await Drawer.clickRecoveryPhrase(accountStatusDom);
     await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
   }, 60000);
 
   it('redirects to the Requests view when link clicked in Drawer menu', async () => {
-    Drawer.clickRequests(accountStatusDom);
+    await Drawer.clickRequests(accountStatusDom);
     await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
   }, 60000);
 
   it('redirects to the Welcome page when Logout was clicked', async () => {
     const clearPersonaMock = mockClearPersona();
     const clearDatabaseMock = mockClearDatabase();
-    Drawer.clickLogout(accountStatusDom);
+    await Drawer.clickLogout(accountStatusDom);
     await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
     expect(clearPersonaMock).toHaveBeenCalledTimes(1);
     expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
@@ -91,9 +91,7 @@ describe('DOM > Feature > Account Status', () => {
       configurable: true,
     });
     window.open = jest.fn();
-
-    Drawer.clickTerms(accountStatusDom);
-    await sleep(1000);
+    await Drawer.clickTerms(accountStatusDom);
     expect(window.open).toHaveBeenCalledWith(TERMS_URL, '_blank');
   }, 60000);
 

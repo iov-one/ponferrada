@@ -8,8 +8,14 @@ interface Props extends LinkProps {
 const Link = ({ children, to, ...rest }: Props): JSX.Element => {
   if (typeof to === 'string') {
     if (/^((mailto:)|((https?:)?\/\/))/.test(to)) {
+      // We use href and target in the <a> tag for styling and hover efects.
+      // The actual click event is handled via JavaScript to allow testing those clicks
+      const clickHandler = (event: React.MouseEvent): void => {
+        window.open(to, '_blank');
+        event.preventDefault();
+      };
       return (
-        <a href={to} target="_blank" rel="noopener noreferrer" {...rest}>
+        <a href={to} target="_blank" onClick={clickHandler} rel="noopener noreferrer" {...rest}>
           {children}
         </a>
       );
