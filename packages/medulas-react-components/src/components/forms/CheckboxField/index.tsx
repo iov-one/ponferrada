@@ -3,7 +3,7 @@ import { useField } from 'react-final-form-hooks';
 import * as React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-import { Omit, FormControl, FormHelperText, makeStyles, Theme } from '@material-ui/core';
+import { FormControl, FormHelperText, makeStyles, Theme } from '@material-ui/core';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
