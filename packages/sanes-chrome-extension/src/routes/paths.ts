@@ -7,3 +7,4 @@ export const SHARE_IDENTITY = '/share-identity';
 export const TX_REQUEST = '/tx-request';
 export const ACCOUNT_STATUS_ROUTE = '/account';
 export const REQUEST_ROUTE = '/requests';
+export const TERMS_URL = 'https://support.iov.one/hc/en-us';

@@ -9,7 +9,7 @@ import Form, {
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import { SIGNUP_ROUTE } from '../../paths';
+import { SIGNUP_ROUTE, TERMS_URL } from '../../paths';
 import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Link from 'medulas-react-components/lib/components/Link';
@@ -18,7 +18,6 @@ export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
 export const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
 export const TERMS_ACCEPT_FIELD = 'termsAcceptCheckboxField';
-export const TERMS_URL = 'https://support.iov.one/hc/en-us';
 
 export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 

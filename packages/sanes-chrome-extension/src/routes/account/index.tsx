@@ -13,13 +13,18 @@ import { PersonaContext } from '../../context/PersonaProvider';
 import { history } from '../../store/reducers';
 import { EXTENSION_HEIGHT } from '../../theme/constants';
 import { clearDatabase, clearPersona, createAccount } from '../../utils/chrome';
-import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
+import {
+  ACCOUNT_STATUS_ROUTE,
+  RECOVERY_PHRASE_ROUTE,
+  REQUEST_ROUTE,
+  WELCOME_ROUTE,
+  TERMS_URL,
+} from '../paths';
 import logoutIcon from './assets/logout.svg';
 import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
 import requestsIcon from './assets/requests.svg';
 import termsIcon from './assets/terms.svg';
 import ListTxs from './components/ListTxs';
-import { TERMS_URL } from '../signup/components/NewAccountForm';
 
 const CREATE_NEW_ONE = 'Create a new one';
 
