@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Storybook } from '../../utils/storybook';
 import Block from '../Block';
+import Link from '../Link';
 import PageLayout from '../PageLayout';
 import Typography from '../Typography';
 import secCenter from './assets/secCenter.svg';
@@ -22,7 +23,7 @@ storiesOf('Components', module).add(
 
     const footer = (
       <Block textAlign="center">
-        Meet our team at <a href="https://iov.one/">iov.one</a>
+        Meet our team at <Link to="https://iov.one/">iov.one</Link>
       </Block>
     );
 
