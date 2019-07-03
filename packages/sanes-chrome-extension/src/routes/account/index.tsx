@@ -92,9 +92,11 @@ const AccountView = (): JSX.Element => {
   const footer = (
     <Block marginTop={4} textAlign="center">
       <Block marginBottom={1}>
-        <Typography variant="subtitle2" inline>
-          <Link to={TERMS_URL}>Terms &amp; Conditions</Link>
-        </Typography>
+        <Link to={TERMS_URL}>
+          <Typography variant="subtitle2" color="primary" link inline>
+            Terms &amp; Conditions
+          </Typography>
+        </Link>
       </Block>
     </Block>
   );
