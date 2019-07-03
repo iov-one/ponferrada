@@ -1,4 +1,4 @@
-import { ProposalProps, VoteResult } from '../components/Proposal';
+import { ProposalProps, VoteResult } from '../../components/Proposal';
 
 const shortDesc = 'Lorem ipsum';
 
@@ -73,7 +73,7 @@ const getStatus = (
   return 'Active';
 };
 
-export const randomProps = (): ProposalProps => {
+export const aRandomProposal = (): ProposalProps => {
   const creationDate = randomCreationDate();
   const expiryDate = randomExpiryDate(creationDate);
   const quorum = randomQuorum();

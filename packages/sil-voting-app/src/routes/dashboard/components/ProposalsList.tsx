@@ -1,12 +1,12 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import React from 'react';
-import { randomProps } from '../utils/randomProposal';
+import { aRandomProposal } from '../utils/test/randomProposal';
 import Proposal from './Proposal';
 
 // Random props to test layout before consuming governance API
 const props = new Array(10).fill({}).map(() => {
-  return randomProps();
+  return aRandomProposal();
 });
 
 const ProposalsList = (): JSX.Element => {
