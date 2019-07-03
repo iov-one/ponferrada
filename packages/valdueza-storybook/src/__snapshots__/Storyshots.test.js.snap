@@ -3246,6 +3246,7 @@ exports[`Storyshots Components/Typography link 1`] = `
 Array [
   <a
     href="https://iov.one"
+    onClick={[Function]}
     rel="noopener noreferrer"
     target="_blank"
   >
@@ -3257,6 +3258,7 @@ Array [
   </a>,
   <a
     href="https://iov.one"
+    onClick={[Function]}
     rel="noopener noreferrer"
     target="_blank"
   >
@@ -4861,6 +4863,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         >
                           <a
                             href="https://iov.one"
+                            onClick={[Function]}
                             rel="noopener noreferrer"
                             target="_blank"
                           >
@@ -6376,6 +6379,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
               </h6>
               <a
                 href="https://support.iov.one/hc/en-us"
+                onClick={[Function]}
                 rel="noopener noreferrer"
                 target="_blank"
               >
