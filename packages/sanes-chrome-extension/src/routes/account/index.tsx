@@ -93,7 +93,7 @@ const AccountView = (): JSX.Element => {
     <Block marginTop={4} textAlign="center">
       <Block marginBottom={1}>
         <Typography variant="subtitle2" inline>
-          <Link to={TERMS_URL}>Terms & Conditions</Link>
+          <Link to={TERMS_URL}>Terms &amp; Conditions</Link>
         </Typography>
       </Block>
     </Block>
