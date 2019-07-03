@@ -24,9 +24,8 @@ import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/naviga
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
-import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from '../paths';
+import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE, TERMS_URL } from '../paths';
 import { checkCreateAccount } from './test/operateAccount';
-import { TERMS_URL } from '../signup/components/NewAccountForm';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';
