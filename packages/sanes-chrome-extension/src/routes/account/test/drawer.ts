@@ -37,20 +37,20 @@ const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerR
 
 export const clickRecoveryPhrase = async (drawerComponent: React.Component): Promise<void> => {
   const { recoveryPhraseLink } = await initDrawer(drawerComponent);
-  click(recoveryPhraseLink);
+  await click(recoveryPhraseLink);
 };
 
 export const clickRequests = async (drawerComponent: React.Component): Promise<void> => {
   const { requestsLink } = await initDrawer(drawerComponent);
-  click(requestsLink);
+  await click(requestsLink);
 };
 
 export const clickLogout = async (drawerComponent: React.Component): Promise<void> => {
   const { logoutLink } = await initDrawer(drawerComponent);
-  click(logoutLink);
+  await click(logoutLink);
 };
 
 export const clickTerms = async (drawerComponent: React.Component): Promise<void> => {
   const { termsLink } = await initDrawer(drawerComponent);
-  click(termsLink);
+  await click(termsLink);
 };
