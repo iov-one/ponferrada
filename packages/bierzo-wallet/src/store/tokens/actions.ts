@@ -1,7 +1,7 @@
 import { EthereumConnection } from '@iov/ethereum';
-import { AddTickerActionType, TickerState } from './reducer';
+import { AddTickerActionType, BwToken } from './reducer';
 
-export async function getTickers(): Promise<ReadonlyArray<TickerState>> {
+export async function getTickers(): Promise<ReadonlyArray<BwToken>> {
   const tickers = [];
 
   // TODO for now we only check the ethereum connection. The rest of chains will be
@@ -15,7 +15,7 @@ export async function getTickers(): Promise<ReadonlyArray<TickerState>> {
   return tickers;
 }
 
-export const addTickersAction = (tokens: ReadonlyArray<TickerState>): AddTickerActionType => ({
-  type: '@@bw/ADD_TICKERS',
+export const addTickersAction = (tokens: ReadonlyArray<BwToken>): AddTickerActionType => ({
+  type: '@@bw/ADD_TOKENS',
   payload: tokens,
 });
