@@ -32,13 +32,13 @@ const Proposal = (props: ProposalProps): JSX.Element => {
   return (
     <Block width="100%" display="flex" alignItems="center">
       <Block flexGrow={1} margin={2}>
-        <Block display="flex" alignItems="center">
+        <Block display="flex" alignItems="center" marginBottom={1}>
           <Typography variant="h6">{elipsify(props.title, TITLE_MAX_LENGTH)}</Typography>
           <Block marginLeft={2}>
             <Typography variant="body1">{props.status}</Typography>
           </Block>
         </Block>
-        <Block display="flex" alignItems="center">
+        <Block display="flex" alignItems="center" marginBottom={1}>
           <Typography variant="body1">Author: {props.author}</Typography>
           <Block marginLeft={2}>
             <Typography variant="body1">Proposal ID: {props.id}</Typography>
@@ -49,7 +49,9 @@ const Proposal = (props: ProposalProps): JSX.Element => {
             </Typography>
           </Block>
         </Block>
-        <Description description={props.description} />
+        <Block marginBottom={1}>
+          <Description description={props.description} />
+        </Block>
         <Status
           expiryDate={props.expiryDate}
           quorum={props.quorum}

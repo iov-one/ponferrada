@@ -37,7 +37,7 @@ const getWinner = (result: VoteResult): VoteWinner => {
 const Status = (props: Props): JSX.Element => {
   return (
     <React.Fragment>
-      <Block display="flex" alignItems="center">
+      <Block display="flex" alignItems="center" marginBottom={1}>
         {props.status !== 'Ended' && (
           <Typography variant="body1" weight="semibold">
             Expires on {props.expiryDate.toLocaleDateString('es-ES')}
