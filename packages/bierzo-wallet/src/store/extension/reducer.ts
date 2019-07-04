@@ -8,7 +8,7 @@ export interface ExtensionState {
 }
 
 export interface SetExtensionStateActionType extends Action {
-  type: '@@extension/SET_EXTENSION_STATE';
+  type: '@@bw/SET_EXTENSION_STATE';
   payload: ExtensionState;
 }
 
@@ -24,7 +24,7 @@ export function extensionReducer(
   action: ExtensionActions,
 ): ExtensionState {
   switch (action.type) {
-    case '@@extension/SET_EXTENSION_STATE':
+    case '@@bw/SET_EXTENSION_STATE':
       return action.payload;
     default:
       return state;
