@@ -1,22 +1,11 @@
 import { RegisterUsernameTx } from '@iov/bns';
 import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
 import * as React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { amountToString } from '../../../../utils/balances';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
+import TransactionFee, { useTxListItemStyles, txListItemSecondaryProps } from './TransactionFee';
 
 export const REQ_REGISTER_USERNAME = 'req-register-username-tx';
-
-const useStyles = makeStyles({
-  root: {
-    margin: 0,
-  },
-});
-
-const secondaryProps = {
-  noWrap: true,
-};
 
 interface Props {
   readonly creator: string;
@@ -24,22 +13,9 @@ interface Props {
 }
 
 const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
-  const listItemClasses = useStyles();
+  const listItemClasses = useTxListItemStyles();
 
-  const txFee =
-    tx.fee && tx.fee.tokens ? (
-      <React.Fragment>
-        <Block marginTop={1} />
-        <Typography variant="body1" inline>
-          Fee:{' '}
-        </Typography>
-        <Typography variant="body1" inline>
-          {amountToString(tx.fee.tokens)}
-        </Typography>
-      </React.Fragment>
-    ) : (
-      undefined
-    );
+  const txFee = tx.fee ? <TransactionFee fee={tx.fee} /> : undefined;
 
   return (
     <React.Fragment>
@@ -51,6 +27,8 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
         username registration request.
       </Typography>
       <Block marginTop={1} />
+      <List>{txFee}</List>
+      <Block marginTop={1} />
       <Typography variant="body1">Addresses:</Typography>
       <List>
         {tx.addresses.map(address => (
@@ -59,12 +37,11 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
               classes={listItemClasses}
               primary={address.chainId}
               secondary={address.address}
-              secondaryTypographyProps={secondaryProps}
+              secondaryTypographyProps={txListItemSecondaryProps}
             />
           </ListItem>
         ))}
       </List>
-      {txFee}
     </React.Fragment>
   );
 };
