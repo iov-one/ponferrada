@@ -5,21 +5,21 @@ import * as actions from './actions';
 
 export interface BwToken {
   readonly chainId: ChainId;
-  readonly tokens: ReadonlyArray<Token>;
+  readonly token: Token;
 }
 
 export interface AddTickerActionType extends Action {
   type: '@@bw/ADD_TOKENS';
-  payload: ReadonlyArray<BwToken>;
+  payload: { [key: string]: BwToken };
 }
 
 export type TokenActions = ActionType<typeof actions>;
 
 interface TokenState {
-  tokens: ReadonlyArray<BwToken>;
+  tokens: { [key: string]: BwToken };
 }
 const initState: TokenState = {
-  tokens: [],
+  tokens: {},
 };
 
 export function tokensReducer(state: TokenState = initState, action: TokenActions): TokenState {
