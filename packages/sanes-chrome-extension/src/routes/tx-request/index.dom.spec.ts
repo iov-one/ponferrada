@@ -5,38 +5,42 @@ import { Request } from '../../extension/background/model/signingServer/requestQ
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';
 import { click } from '../../utils/test/dom';
-import { travelToTXRequest } from '../../utils/test/navigation';
+import { travelToTXRequest, whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { sleep } from '../../utils/timer';
-import { getTransaction } from './test';
+import { getTransaction, getUsernameTransaction } from './test';
 import {
   checkPermanentRejection,
   clickOnBackButton,
   clickOnRejectButton,
   confirmRejectButton,
 } from './test/operateTXRequest';
+import { REQUEST_ROUTE } from '../paths';
+import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
+import { REQ_SEND_TX } from './components/ShowRequest/ReqSendTransaction';
+import { REQ_REGISTER_USERNAME } from './components/ShowRequest/ReqRegisterUsernameTx';
+
+const sendRequests: ReadonlyArray<Request> = [
+  {
+    id: 1,
+    type: 'signAndPost',
+    reason: 'Test get Identities',
+    data: {
+      senderUrl: 'http://finnex.com',
+      creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
+      tx: getTransaction(),
+    },
+    accept: jest.fn(),
+    reject: jest.fn(),
+  },
+];
 
 describe('DOM > Feature > Transaction Request', (): void => {
-  const requests: ReadonlyArray<Request> = [
-    {
-      id: 1,
-      type: 'signAndPost',
-      reason: 'Test get Identities',
-      data: {
-        senderUrl: 'http://finnex.com',
-        creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
-        tx: getTransaction(),
-      },
-      accept: jest.fn(),
-      reject: jest.fn(),
-    },
-  ];
-
   let store: Store<RootState>;
   let identityDOM: React.Component;
 
   beforeEach(async () => {
     store = aNewStore();
-    identityDOM = await travelToTXRequest(store, requests);
+    identityDOM = await travelToTXRequest(store, sendRequests);
   }, 60000);
 
   it('should accept incoming request and redirect to account status view', async (): Promise<void> => {
@@ -47,7 +51,7 @@ describe('DOM > Feature > Transaction Request', (): void => {
     const acceptButton = inputs[0];
     click(acceptButton);
 
-    //TODO: Check here that share request has been accepted successfuly
+    await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
   }, 60000);
 
   it('should reject incoming request and come back', async (): Promise<void> => {
@@ -68,5 +72,48 @@ describe('DOM > Feature > Transaction Request', (): void => {
     await confirmRejectButton(identityDOM);
     await sleep(2000);
     //rejection flag has been set
+  }, 60000);
+});
+
+describe('DOM > Feature > Send Transaction Request', (): void => {
+  let store: Store<RootState>;
+  let identityDOM: React.Component;
+
+  beforeEach(async () => {
+    store = aNewStore();
+    identityDOM = await travelToTXRequest(store, sendRequests);
+  }, 60000);
+
+  it('should show send transaction request accept view', async (): Promise<void> => {
+    await findRenderedDOMComponentWithId(identityDOM, REQ_SEND_TX);
+  }, 60000);
+});
+
+describe('DOM > Feature > Username Registration Request', (): void => {
+  const requests: ReadonlyArray<Request> = [
+    {
+      id: 1,
+      type: 'signAndPost',
+      reason: 'Test username registration',
+      data: {
+        senderUrl: 'http://finnex.com',
+        creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
+        tx: getUsernameTransaction(),
+      },
+      accept: jest.fn(),
+      reject: jest.fn(),
+    },
+  ];
+
+  let store: Store<RootState>;
+  let identityDOM: React.Component;
+
+  beforeEach(async () => {
+    store = aNewStore();
+    identityDOM = await travelToTXRequest(store, requests);
+  }, 60000);
+
+  it('should show register username request accept view', async (): Promise<void> => {
+    await findRenderedDOMComponentWithId(identityDOM, REQ_REGISTER_USERNAME);
   }, 60000);
 });
