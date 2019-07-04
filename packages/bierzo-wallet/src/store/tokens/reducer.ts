@@ -15,17 +15,15 @@ export interface AddTickerActionType extends Action {
 
 export type TokenActions = ActionType<typeof actions>;
 
-interface TokenState {
-  tokens: { [key: string]: BwToken };
+export interface TokenState {
+  [key: string]: BwToken;
 }
-const initState: TokenState = {
-  tokens: {},
-};
+const initState: TokenState = {};
 
 export function tokensReducer(state: TokenState = initState, action: TokenActions): TokenState {
   switch (action.type) {
     case '@@bw/ADD_TOKENS':
-      return { ...state, tokens: action.payload };
+      return { ...state, ...action.payload };
     default:
       return state;
   }
