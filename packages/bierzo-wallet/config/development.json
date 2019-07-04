@@ -1,0 +1,34 @@
+{
+  "chains": [
+    {
+      "chainSpec": {
+        "codecType": "bns",
+        "bootstrapNodes": ["http://localhost:23456/"]
+      },
+      "faucetSpec": {
+        "uri": "http://localhost:8000",
+        "token": "CASH"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "lsk",
+        "bootstrapNodes": ["http://localhost:4000/"]
+      },
+      "faucetSpec": {
+        "uri": "http://localhost:8002",
+        "token": "LSK"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "eth",
+        "bootstrapNodes": ["http://localhost:8545", "http://localhost:8546"]
+      },
+      "faucetSpec": {
+        "uri": "http://localhost:8003",
+        "token": "ETH"
+      }
+    }
+  ]
+}

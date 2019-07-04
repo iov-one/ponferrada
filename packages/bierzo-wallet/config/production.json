@@ -1,0 +1,29 @@
+{
+  "chains": [
+    {
+      "chainSpec": {
+        "codecType": "bns",
+        "bootstrapNodes": ["https://bns.zebranet.iov.one/"]
+      },
+      "faucetSpec": {
+        "uri": "https://bns-faucet.zebranet.iov.one",
+        "token": "IOV"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "lsk",
+        "bootstrapNodes": ["https://testnet.lisk.io"]
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "eth",
+        "bootstrapNodes": [
+          "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
+          "https://api.etherscan.io/api"
+        ]
+      }
+    }
+  ]
+}
