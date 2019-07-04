@@ -1,19 +1,46 @@
+import { BlockchainConnection } from '@iov/bcp';
+import { BnsConnection } from '@iov/bns';
 import { EthereumConnection } from '@iov/ethereum';
+import { LiskConnection } from '@iov/lisk';
 
+import { ChainSpec, loadConfig } from '../../utils/config';
 import { AddTickerActionType, BwToken } from './reducer';
 
-export async function getTokens(): Promise<{ [key: string]: BwToken }> {
+async function createConnectionFor(spec: ChainSpec): Promise<BlockchainConnection | null> {
+  const url = spec.bootstrapNodes[0];
+  if (spec.codecType === 'eth') {
+    return EthereumConnection.establish(url, {});
+  }
+
+  if (spec.codecType === 'bns') {
+    return BnsConnection.establish(url);
+  }
+
+  if (spec.codecType === 'lsk') {
+    return LiskConnection.establish(url);
+  }
+
+  return null;
+}
+
+export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
+  const config = await loadConfig();
   const tokens: { [ticker: string]: BwToken } = {};
+  const chains = config.chains;
 
-  // TODO for now we only check the ethereum connection. The rest of chains will be
-  // added after it. Stay tuned!
-  const connection = await EthereumConnection.establish('http://localhost:8545', {});
-  const chainId = connection.chainId();
-  const chainTokens = await connection.getAllTokens();
+  for (const chain of chains) {
+    const connection = await createConnectionFor(chain.chainSpec);
+    if (!connection) {
+      continue;
+    }
 
-  for (const chainToken of chainTokens) {
-    const ticker = chainToken.tokenTicker as string;
-    tokens[ticker] = { chainId, token: chainToken };
+    const chainId = connection.chainId();
+    const chainTokens = await connection.getAllTokens();
+
+    for (const chainToken of chainTokens) {
+      const ticker = chainToken.tokenTicker as string;
+      tokens[ticker] = { chainId, token: chainToken };
+    }
   }
 
   return tokens;
