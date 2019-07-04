@@ -24,9 +24,7 @@ interface Props {
 }
 
 const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
-  const classes = useStyles();
-
-  const listItemClasses = { root: classes.root };
+  const listItemClasses = useStyles();
 
   const txFee =
     tx.fee && tx.fee.tokens ? (

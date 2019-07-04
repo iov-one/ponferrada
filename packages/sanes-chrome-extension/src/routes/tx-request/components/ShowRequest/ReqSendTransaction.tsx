@@ -22,9 +22,7 @@ interface Props {
 }
 
 const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
-  const classes = useStyles();
-
-  const listItemClasses = { root: classes.root };
+  const listItemClasses = useStyles();
 
   return (
     <List id={REQ_SEND_TX}>
