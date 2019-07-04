@@ -6811,43 +6811,43 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
 
 exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3695 makeStyles-root-3692 makeStyles-root-3693"
+  className="MuiBox-root MuiBox-root-3797 makeStyles-root-3794 makeStyles-root-3795"
   id="/tx-request_reject"
 >
   <div
-    className="MuiBox-root MuiBox-root-3696"
+    className="MuiBox-root MuiBox-root-3798"
   >
     <h4
-      className="MuiTypography-root makeStyles-inline-3697 MuiTypography-h4 MuiTypography-colorPrimary"
+      className="MuiTypography-root makeStyles-inline-3799 MuiTypography-h4 MuiTypography-colorPrimary"
     >
       Tx
     </h4>
     <h4
-      className="MuiTypography-root makeStyles-inline-3697 MuiTypography-h4"
+      className="MuiTypography-root makeStyles-inline-3799 MuiTypography-h4"
     >
        
       Request
     </h4>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3732"
+    className="MuiBox-root MuiBox-root-3834"
   >
     <div
-      className="MuiBox-root MuiBox-root-3733"
+      className="MuiBox-root MuiBox-root-3835"
     />
     <form
       onSubmit={[Function]}
     >
       <div
-        className="MuiBox-root MuiBox-root-3734"
+        className="MuiBox-root MuiBox-root-3836"
       >
         <p
-          className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1"
+          className="MuiTypography-root makeStyles-inline-3799 MuiTypography-body1"
         >
           You are rejecting the tx sent from 
         </p>
         <p
-          className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1 MuiTypography-colorPrimary"
+          className="MuiTypography-root makeStyles-inline-3799 MuiTypography-body1 MuiTypography-colorPrimary"
         >
           http://localhost/
         </p>
@@ -6857,7 +6857,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
            from being signed and posted.
         </p>
         <div
-          className="MuiBox-root MuiBox-root-3738"
+          className="MuiBox-root MuiBox-root-3840"
         />
         <div
           className="MuiFormControl-root"
@@ -6867,7 +6867,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3756 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3858 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
               onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -6900,7 +6900,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
                 </svg>
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-3759"
+                  className="PrivateSwitchBase-input-3861"
                   data-indeterminate={false}
                   disabled={false}
                   name="permanentRejectField"
@@ -6920,7 +6920,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3781"
+        className="MuiBox-root MuiBox-root-3883"
       />
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled MuiButton-fullWidth Mui-disabled"
@@ -6945,7 +6945,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         </span>
       </button>
       <div
-        className="MuiBox-root MuiBox-root-3799"
+        className="MuiBox-root MuiBox-root-3901"
       />
       <button
         aria-label="Go back"
@@ -6974,14 +6974,14 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
     </form>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3800"
+    className="MuiBox-root MuiBox-root-3902"
   />
   <div
-    className="MuiBox-root MuiBox-root-3801"
+    className="MuiBox-root MuiBox-root-3903"
   >
     <img
       alt="IOV logo"
-      className="makeStyles-root-3802"
+      className="makeStyles-root-3904"
       height={39}
       src="iov-logo.png"
       width={84}
@@ -6990,7 +6990,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
+exports[`Storyshots Extension/Transaction Request Show TX Request page 1`] = `
 <div
   className="MuiBox-root MuiBox-root-3598 makeStyles-root-3595 makeStyles-root-3596"
   id="/tx-request_show"
@@ -7034,6 +7034,7 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
     </div>
     <ul
       className="MuiList-root MuiList-padding"
+      id="req-send-tx"
     >
       <li
         className="MuiListItem-root MuiListItem-gutters"
@@ -7204,6 +7205,191 @@ exports[`Storyshots Extension/Transaction Request Show Request page 1`] = `
 </div>
 `;
 
+exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-3695 makeStyles-root-3692 makeStyles-root-3693"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root-3696"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline-3697 MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline-3697 MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-3732"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-3733"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <p
+      className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1 MuiTypography-colorPrimary"
+      id="req-register-username-tx"
+    >
+      test
+      *iov
+    </p>
+    <p
+      className="MuiTypography-root makeStyles-inline-3697 MuiTypography-body1"
+    >
+       
+      username registration request.
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root-3740"
+    />
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root-3737 MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root-3762"
+    />
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Addresses:
+    </p>
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root-3737 MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            foobar
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root-3764"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root-3785"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root-3786"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-3787"
+  />
+  <div
+    className="MuiBox-root MuiBox-root-3788"
+  >
+    <img
+      alt="IOV logo"
+      className="makeStyles-root-3789"
+      height={39}
+      src="iov-logo.png"
+      width={84}
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Templates/Menu Empty Menu 1`] = `
 <div
   className="MuiBox-root MuiBox-root-1876"
@@ -7292,25 +7478,25 @@ exports[`Storyshots Templates/Menu List Menu 1`] = `
 
 exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3808"
+  className="MuiBox-root MuiBox-root-3910"
 >
   <div
-    className="MuiBox-root MuiBox-root-3809"
+    className="MuiBox-root MuiBox-root-3911"
   >
     <div
-      className="MuiBox-root MuiBox-root-3810"
+      className="MuiBox-root MuiBox-root-3912"
     >
       <div
-        className="MuiBox-root MuiBox-root-3811"
+        className="MuiBox-root MuiBox-root-3913"
       >
         <img
           alt="Logo"
-          className="makeStyles-root-3812"
+          className="makeStyles-root-3914"
           src="iov-logo.svg"
         />
       </div>
       <div
-        className="MuiBox-root MuiBox-root-3817"
+        className="MuiBox-root MuiBox-root-3919"
       >
         <h5
           className="MuiTypography-root MuiTypography-h5"
@@ -7326,22 +7512,22 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     </h5>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3853"
+    className="MuiBox-root MuiBox-root-3955"
   />
   <div
-    className="MuiBox-root MuiBox-root-3854"
+    className="MuiBox-root MuiBox-root-3956"
   >
     <div
-      className="MuiBox-root MuiBox-root-3857"
+      className="MuiBox-root MuiBox-root-3959"
     >
       <div
         className="MuiDrawer-root MuiDrawer-docked"
       >
         <div
-          className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-3855 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+          className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-3957 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
         >
           <ul
-            className="MuiList-root makeStyles-list-3856 MuiList-padding"
+            className="MuiList-root makeStyles-list-3958 MuiList-padding"
           >
             <div
               aria-disabled={false}
@@ -7452,7 +7638,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-3921"
+      className="MuiBox-root MuiBox-root-4023"
     >
       <h6
         className="MuiTypography-root MuiTypography-h6"
@@ -7466,19 +7652,19 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-3927 makeStyles-login-3923"
+  className="MuiBox-root MuiBox-root-4029 makeStyles-login-4025"
 >
   <div
-    className="MuiBox-root MuiBox-root-3928 makeStyles-icon-3924"
+    className="MuiBox-root MuiBox-root-4030 makeStyles-icon-4026"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-3929"
+      className="makeStyles-root-4031"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-3934"
+    className="MuiBox-root MuiBox-root-4036"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -7490,7 +7676,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-3925 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-4027 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}

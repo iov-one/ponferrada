@@ -1,18 +1,10 @@
 import { SendTransaction } from '@iov/bcp';
-import { makeStyles } from '@material-ui/core';
 import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
 import * as React from 'react';
 import { amountToString } from '../../../../utils/balances';
+import TransactionFee, { useTxListItemStyles, txListItemSecondaryProps } from './TransactionFee';
 
-const useStyles = makeStyles({
-  root: {
-    margin: 0,
-  },
-});
-
-const secondaryProps = {
-  noWrap: true,
-};
+export const REQ_SEND_TX = 'req-send-tx';
 
 interface Props {
   readonly creator: string;
@@ -20,18 +12,18 @@ interface Props {
 }
 
 const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
-  const classes = useStyles();
+  const listItemClasses = useTxListItemStyles();
 
-  const listItemClasses = { root: classes.root };
+  const txFee = tx.fee ? <TransactionFee fee={tx.fee} /> : undefined;
 
   return (
-    <List>
+    <List id={REQ_SEND_TX}>
       <ListItem>
         <ListItemText
           classes={listItemClasses}
           primary="Creator"
           secondary={creator}
-          secondaryTypographyProps={secondaryProps}
+          secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
       <ListItem>
@@ -39,7 +31,7 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
           classes={listItemClasses}
           primary="Beneficiary"
           secondary={tx.recipient}
-          secondaryTypographyProps={secondaryProps}
+          secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
       <ListItem>
@@ -47,25 +39,16 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
           classes={listItemClasses}
           primary="Amount"
           secondary={amountToString(tx.amount)}
-          secondaryTypographyProps={secondaryProps}
+          secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
-      {tx.fee && tx.fee.tokens && (
-        <ListItem>
-          <ListItemText
-            classes={listItemClasses}
-            primary="Fee"
-            secondary={amountToString(tx.fee.tokens)}
-            secondaryTypographyProps={secondaryProps}
-          />
-        </ListItem>
-      )}
+      {txFee}
       <ListItem>
         <ListItemText
           classes={listItemClasses}
           primary="Notes"
           secondary={tx.memo || '--'}
-          secondaryTypographyProps={secondaryProps}
+          secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
     </List>
