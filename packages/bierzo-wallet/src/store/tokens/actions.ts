@@ -1,7 +1,7 @@
 import { EthereumConnection } from '@iov/ethereum';
 import { AddTickerActionType, BwToken } from './reducer';
 
-export async function getTickers(): Promise<{ [key: string]: BwToken }> {
+export async function getTokens(): Promise<{ [key: string]: BwToken }> {
   const tokens: { [ticker: string]: BwToken } = {};
 
   // TODO for now we only check the ethereum connection. The rest of chains will be
