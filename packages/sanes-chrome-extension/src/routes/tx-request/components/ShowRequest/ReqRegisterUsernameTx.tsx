@@ -6,6 +6,8 @@ import { amountToString } from '../../../../utils/balances';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
 
+export const REQ_REGISTER_USERNAME = 'req-register-username-tx';
+
 const useStyles = makeStyles({
   root: {
     margin: 0,
@@ -26,9 +28,24 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
 
   const listItemClasses = { root: classes.root };
 
+  const txFee =
+    tx.fee && tx.fee.tokens ? (
+      <React.Fragment>
+        <Block marginTop={1} />
+        <Typography variant="body1" inline>
+          Fee:{' '}
+        </Typography>
+        <Typography variant="body1" inline>
+          {amountToString(tx.fee.tokens)}
+        </Typography>
+      </React.Fragment>
+    ) : (
+      undefined
+    );
+
   return (
     <React.Fragment>
-      <Typography variant="body1" inline color="primary">
+      <Typography variant="body1" inline color="primary" id={REQ_REGISTER_USERNAME}>
         {tx.username}*iov
       </Typography>
       <Typography variant="body1" inline>
@@ -39,7 +56,7 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
       <Typography variant="body1">Addresses:</Typography>
       <List>
         {tx.addresses.map(address => (
-          <ListItem>
+          <ListItem key={address.address}>
             <ListItemText
               classes={listItemClasses}
               primary={address.chainId}
@@ -49,17 +66,7 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
           </ListItem>
         ))}
       </List>
-      {tx.fee && tx.fee.tokens && (
-        <React.Fragment>
-          <Block marginTop={1} />
-          <Typography variant="body1" inline>
-            Fee:{' '}
-          </Typography>
-          <Typography variant="body1" inline>
-            {amountToString(tx.fee.tokens)}
-          </Typography>
-        </React.Fragment>
-      )}
+      {txFee}
     </React.Fragment>
   );
 };
