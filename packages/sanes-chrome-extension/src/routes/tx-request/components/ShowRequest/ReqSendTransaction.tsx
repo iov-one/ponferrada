@@ -4,6 +4,8 @@ import { List, ListItem, ListItemText } from 'medulas-react-components/lib/compo
 import * as React from 'react';
 import { amountToString } from '../../../../utils/balances';
 
+export const REQ_SEND_TX = 'req-send-tx';
+
 const useStyles = makeStyles({
   root: {
     margin: 0,
@@ -25,7 +27,7 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
   const listItemClasses = { root: classes.root };
 
   return (
-    <List>
+    <List id={REQ_SEND_TX}>
       <ListItem>
         <ListItemText
           classes={listItemClasses}
