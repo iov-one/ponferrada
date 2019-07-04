@@ -17,7 +17,6 @@ export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
       tokens[ticker] = { chainId, token: chainToken };
     }
   }
-
   return tokens;
 }
 
