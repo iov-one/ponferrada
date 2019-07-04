@@ -28,7 +28,9 @@
     "reselect": "^4.0.0"
   },
   "devDependencies": {
-    "@types/express": "^4.16.1"
+    "@types/config": "^0.0.34",
+    "@types/express": "^4.16.1",
+    "config": "^3.1.0"
   },
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
