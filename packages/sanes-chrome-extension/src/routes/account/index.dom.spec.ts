@@ -143,7 +143,7 @@ describe('DOM > Feature > Account Status', () => {
     expect(txTime).toBe(txMock.time);
   }, 60000);
 
-  fit('has a name registration transaction box', () => {
+  it('has a name registration transaction box', () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'li')[2];
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const txUsername = tx.children[1].children[0].querySelector('p:nth-of-type(2)')!.textContent;
