@@ -25,13 +25,14 @@ import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE, TERMS_URL } from '../paths';
-import { checkCreateAccount } from './test/operateAccount';
+import { checkCreateAccount, getTransactionsCount } from './test/operateAccount';
+import { RegisterUsernameTx } from '@iov/bns';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';
   const accountMock: PersonaAcccount = { label: ACCOUNT };
   const mnemonic = 'badge cattle stool execute involve main mirror envelope brave scrap involve simple';
-  const send: SendTransaction = {
+  const sendTx: SendTransaction = {
     kind: 'bcp/send',
     amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
     creator: {
@@ -48,15 +49,44 @@ describe('DOM > Feature > Account Status', () => {
     memo: 'A little donation',
     recipient: '0x1212121212121212121212121212121212121212' as Address,
   };
+
+  const username = 'test';
+  const usernameTx: RegisterUsernameTx = {
+    kind: 'bns/register_username',
+    creator: {
+      chainId: 'foobar' as ChainId,
+      pubkey: {
+        algo: Algorithm.Secp256k1,
+        data: Encoding.fromHex('00112233') as PublicKeyBytes,
+      },
+    },
+    fee: {
+      gasLimit: '12345678',
+      gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
+    },
+    username,
+    addresses: [
+      { chainId: 'foobar' as ChainId, address: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address },
+    ],
+  };
+
   const txMock: ProcessedTx = {
     id: '111',
     signer: 'Example Signer',
     time: 'Sat May 25 10:10:00 2019 +0200',
     blockExplorerUrl: 'www.blockexplorer.com',
     error: null,
-    original: send,
+    original: sendTx,
   };
-  const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock]);
+  const usernameMock: ProcessedTx = {
+    id: '112',
+    signer: 'Example Signer',
+    time: 'Sat May 25 10:10:00 2019 +0200',
+    blockExplorerUrl: 'www.blockexplorer.com',
+    error: null,
+    original: usernameTx,
+  };
+  const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock, usernameMock]);
 
   let store: Store<RootState>;
   let accountStatusDom: React.Component;
@@ -103,13 +133,23 @@ describe('DOM > Feature > Account Status', () => {
     await checkCreateAccount(accountStatusDom);
   }, 60000);
 
-  it('has a transactions box with one transaction', () => {
+  it('has a transactions box with two transactions', () => {
+    expect(getTransactionsCount(accountStatusDom)).toBe(2);
+  }, 60000);
+
+  it('has a send transaction box', () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'li')[1];
     const txTime = tx.children[1].children[1].textContent;
     expect(txTime).toBe(txMock.time);
   }, 60000);
-});
 
+  fit('has a name registration transaction box', () => {
+    const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'li')[2];
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const txUsername = tx.children[1].children[0].querySelector('p:nth-of-type(2)')!.textContent;
+    expect(txUsername).toBe(`${username}*iov`);
+  }, 60000);
+});
 withChainsDescribe('DOM > Feature > Account Status', () => {
   it('generates a link inside transaction box for an ethereum transaction', async () => {
     // Simulate we start background page
