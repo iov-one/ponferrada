@@ -9,6 +9,7 @@ import { GetPersonaResponse } from '../../extension/background/model/backgrounds
 import { ProcessedTx } from '../../extension/background/model/persona';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import Layout from './index';
+import { RegisterUsernameTx } from '@iov/bns';
 
 export const ACCOUNT_STATUS_PAGE = 'Account Status page';
 
@@ -30,8 +31,29 @@ const send: SendTransaction = {
   recipient: '0x1212121212121212121212121212121212121212' as Address,
 };
 
+const usernameCreate: RegisterUsernameTx = {
+  kind: 'bns/register_username',
+  creator: {
+    chainId: 'foobar' as ChainId,
+    pubkey: {
+      algo: Algorithm.Secp256k1,
+      data: Encoding.fromHex('00112233') as PublicKeyBytes,
+    },
+  },
+  fee: {
+    gasLimit: '12345678',
+    gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
+  },
+  username: 'test',
+  addresses: [
+    { chainId: 'foobar' as ChainId, address: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address },
+  ],
+};
+
+let txId = 111;
+
 const processedTx: ProcessedTx = {
-  id: '111',
+  id: (txId++).toString(),
   signer: 'Example Signer',
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: null,
@@ -40,7 +62,7 @@ const processedTx: ProcessedTx = {
 };
 
 const blockExplorerProcessedTx: ProcessedTx = {
-  id: '112',
+  id: (txId++).toString(),
   signer: 'Example Signer',
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: null,
@@ -48,8 +70,25 @@ const blockExplorerProcessedTx: ProcessedTx = {
   original: send,
 };
 
+const usernameCreatedTx: ProcessedTx = {
+  id: (txId++).toString(),
+  signer: 'Example Signer',
+  time: 'Sat May 25 10:10:00 2019 +0200',
+  error: null,
+  blockExplorerUrl: null,
+  original: usernameCreate,
+};
+const errorUsernameCreatedTx: ProcessedTx = {
+  id: (txId++).toString(),
+  signer: 'Example Signer',
+  time: 'Sat May 25 10:10:00 2019 +0200',
+  error: 'This is an example of reported error',
+  blockExplorerUrl: null,
+  original: usernameCreate,
+};
+
 const errorProcessedTx: ProcessedTx = {
-  id: '113',
+  id: (txId++).toString(),
   signer: 'Example Signer',
   time: 'Sat May 25 10:10:00 2019 +0200',
   error: 'This is an example of reported error',
@@ -59,13 +98,21 @@ const errorProcessedTx: ProcessedTx = {
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/${ACCOUNT_STATUS_PAGE}`, module)
   .add('Txs', () => {
-    const processedTx2 = { ...processedTx, id: '114' };
-    const processedTx3 = { ...processedTx, id: '115' };
+    const processedTx2 = { ...processedTx, id: (txId++).toString() };
+    const processedTx3 = { ...processedTx, id: (txId++).toString() };
 
     const persona: GetPersonaResponse = {
       mnemonic: '',
       accounts: [{ label: 'Account 0' }],
-      txs: [blockExplorerProcessedTx, processedTx, errorProcessedTx, processedTx2, processedTx3],
+      txs: [
+        usernameCreatedTx,
+        errorUsernameCreatedTx,
+        blockExplorerProcessedTx,
+        processedTx,
+        errorProcessedTx,
+        processedTx2,
+        processedTx3,
+      ],
     };
 
     return (
