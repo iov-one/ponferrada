@@ -28,18 +28,16 @@
     "reselect": "^4.0.0"
   },
   "devDependencies": {
-    "@types/config": "^0.0.34",
-    "@types/express": "^4.16.1",
-    "config": "^3.1.0"
+    "@types/express": "^4.16.1"
   },
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "start": "NODE_CONFIG_ENV=development react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test-dom": "NODE_CONFIG_ENV=development CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-unit": "NODE_CONFIG_ENV=development CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-e2e": "NODE_CONFIG_ENV=development CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
+    "test-dom": "CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-unit": "CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-e2e": "CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
     "use-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../bierzo-wallet",
     "test": "yarn use-config-development && yarn test-unit && yarn test-dom && yarn test-e2e"
   },
