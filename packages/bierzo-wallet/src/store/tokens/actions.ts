@@ -1,9 +1,9 @@
+import { getConfig } from '../../config';
 import { getConnectionFor } from '../../logic/connection';
-import { loadConfig } from '../../utils/config';
 import { AddTickerActionType, BwToken } from './reducer';
 
 export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
-  const config = await loadConfig();
+  const config = getConfig();
   const tokens: { [ticker: string]: BwToken } = {};
   const chains = config.chains;
 

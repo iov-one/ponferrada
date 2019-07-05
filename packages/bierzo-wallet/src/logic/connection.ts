@@ -3,7 +3,7 @@ import { BnsConnection } from '@iov/bns';
 import { EthereumConnection } from '@iov/ethereum';
 import { LiskConnection } from '@iov/lisk';
 import { singleton } from 'medulas-react-components/lib/utils/singleton';
-import { ChainSpec, loadConfig } from '../utils/config';
+import { ChainSpec, getConfig } from '../config';
 
 async function createEthereumConnection(url: string): Promise<BlockchainConnection> {
   return EthereumConnection.establish(url, {});
@@ -41,7 +41,7 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
 }
 
 export async function disconnect(): Promise<void> {
-  const config = await loadConfig();
+  const config = getConfig();
   const chains = config.chains;
 
   for (const chain of chains) {

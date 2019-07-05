@@ -1,11 +1,11 @@
 import { EthereumConnection } from '@iov/ethereum';
-import { loadConfig } from '../utils/config';
+import { getConfig } from '../config';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect, getConnectionFor } from './connection';
 
 withChainsDescribe('Logic :: connection', () => {
   it('calls connections only once', async () => {
-    const config = await loadConfig();
+    const config = getConfig();
     const firstChain = config.chains[2];
 
     const ethereumConnectionSpy = jest.spyOn(EthereumConnection, 'establish');
@@ -20,7 +20,7 @@ withChainsDescribe('Logic :: connection', () => {
 
   it('reset connections correctly when disconnecting', async () => {
     // GIVEN
-    const config = await loadConfig();
+    const config = getConfig();
     const firstChain = config.chains[2];
     expect(firstChain.chainSpec.codecType).toBe('eth');
 
