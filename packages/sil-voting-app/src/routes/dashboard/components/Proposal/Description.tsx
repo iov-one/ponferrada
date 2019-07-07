@@ -14,36 +14,42 @@ const Description = (props: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const onClick = (): void => {
-    setExpanded(!expanded);
+    setExpanded(prevExpanded => !prevExpanded);
   };
+
+  const hasSmallDescription = props.description.length < DESC_MAX_LENGTH;
+
+  if (hasSmallDescription) {
+    return (
+      <Block marginBottom={1}>
+        <Typography variant="body1">{props.description}</Typography>
+      </Block>
+    );
+  }
+
+  if (!expanded) {
+    return (
+      <Block marginBottom={1}>
+        <Typography inline variant="body1">
+          {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
+        </Typography>
+        <Typography inline link onClick={onClick} variant="body1" weight="semibold">
+          Read more
+        </Typography>
+      </Block>
+    );
+  }
 
   return (
     <Block marginBottom={1}>
-      {props.description.length < DESC_MAX_LENGTH && (
-        <Typography variant="body1">{props.description}</Typography>
-      )}
-      {props.description.length >= DESC_MAX_LENGTH && (
-        <React.Fragment>
-          {!expanded && (
-            <React.Fragment>
-              <Typography inline variant="body1">
-                {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
-              </Typography>
-              <Typography inline link onClick={onClick} variant="body1" weight="semibold">
-                Read more
-              </Typography>
-            </React.Fragment>
-          )}
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Typography inline variant="body1">
-              {props.description}{' '}
-            </Typography>
-            <Typography inline link onClick={onClick} variant="body1" weight="semibold">
-              Read less
-            </Typography>
-          </Collapse>
-        </React.Fragment>
-      )}
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Typography inline variant="body1">
+          {props.description}{' '}
+        </Typography>
+        <Typography inline link onClick={onClick} variant="body1" weight="semibold">
+          Read less
+        </Typography>
+      </Collapse>
     </Block>
   );
 };
