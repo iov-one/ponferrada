@@ -2,7 +2,8 @@ import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
 import CreationData from './CreationData';
 import Description from './Description';
-import Status from './Status';
+import StatusEnded from './StatusEnded';
+import StatusPending from './StatusPending';
 import Title from './Title';
 import VoteActions from './VoteActions';
 
@@ -33,12 +34,12 @@ const Proposal = (props: ProposalProps): JSX.Element => {
         <Title title={props.title} status={props.status} />
         <CreationData author={props.author} id={props.id} creationDate={props.creationDate} />
         <Description description={props.description} />
-        <Status
-          expiryDate={props.expiryDate}
-          quorum={props.quorum}
-          result={props.result}
-          status={props.status}
-        />
+
+        {props.status !== 'Ended' && <StatusPending expiryDate={props.expiryDate} />}
+
+        {props.status === 'Ended' && (
+          <StatusEnded expiryDate={props.expiryDate} quorum={props.quorum} result={props.result} />
+        )}
       </Block>
       <VoteActions vote={props.vote} />
     </Block>
