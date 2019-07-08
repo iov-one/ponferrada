@@ -3,6 +3,7 @@ import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider
 import PageColumn from 'medulas-react-components/lib/pages/PageColumn';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
+
 import { history } from '..';
 import { getExtensionStatus } from '../../communication/status';
 import { setExtensionStateAction } from '../../store/extension';

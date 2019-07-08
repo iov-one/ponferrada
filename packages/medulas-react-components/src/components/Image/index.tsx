@@ -1,6 +1,6 @@
-import * as React from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
+import classNames from 'classnames';
+import * as React from 'react';
 
 const useStyles = makeStyles({
   root: {

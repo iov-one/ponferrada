@@ -1,5 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import {
   mockCreatePersona,
   mockPersonaResponse,
@@ -24,11 +25,11 @@ import {
   getNewAccountForm,
   getNewAccountInputs,
   getPasswordValidity,
+  getTermsCheckboxLabel,
+  getTermsValidity,
   isButtonDisabled,
   submitNewAccount,
   submitShowPhrase,
-  getTermsValidity,
-  getTermsCheckboxLabel,
 } from './test/operateSignup';
 
 describe('DOM > Feature > Signup', () => {

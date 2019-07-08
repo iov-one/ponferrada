@@ -3,6 +3,7 @@ import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
+
 import Routes from '../../routes';
 
 export const createDom = (store: Store): React.Component =>

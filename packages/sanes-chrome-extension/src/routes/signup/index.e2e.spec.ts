@@ -1,11 +1,12 @@
 import { Browser, Page } from 'puppeteer';
+
 import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
 import { randomString } from '../../utils/test/random';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import {
-  submitShowPhraseE2E,
-  submitSecurityHintE2E,
   submitNewAccountE2E,
+  submitSecurityHintE2E,
+  submitShowPhraseE2E,
   travelToSignupNewAccountStep,
 } from './test/operateSignup';
 

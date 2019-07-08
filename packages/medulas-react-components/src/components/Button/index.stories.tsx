@@ -1,12 +1,13 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Button from './index';
-import Download from './Download';
-import Back from './Back';
+
 import { Storybook } from '../../utils/storybook';
 import Grid from '../Grid';
 import GridItem from '../GridItem';
+import Back from './Back';
+import Download from './Download';
+import Button from './index';
 
 storiesOf('Components', module).add(
   'Buttons',

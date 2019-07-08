@@ -1,4 +1,5 @@
 import { Browser, Page } from 'puppeteer';
+
 import { IovWindowExtension } from '../../extension/background/model/backgroundscript';
 import {
   closeBrowser,

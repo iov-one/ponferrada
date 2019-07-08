@@ -5,6 +5,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Image from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
+
 import { history } from '../../../../../routes';
 import { PAYMENT_ROUTE } from '../../../../../routes/paths';
 import { ProcessedTx } from '../../../../../store/notifications';

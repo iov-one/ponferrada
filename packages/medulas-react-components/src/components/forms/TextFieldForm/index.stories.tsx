@@ -1,12 +1,13 @@
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
-import TextFieldForm from './index';
+
 import { Storybook } from '../../../utils/storybook';
+import Block from '../../Block';
 import Grid from '../../Grid';
 import GridItem from '../../GridItem';
 import Form, { useForm } from '../Form';
-import Block from '../../Block';
+import TextFieldForm from './index';
 
 interface Props {
   readonly name: string;

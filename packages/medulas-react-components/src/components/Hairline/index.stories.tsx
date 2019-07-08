@@ -1,9 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Typography from '../Typography';
+
 import { Storybook } from '../../utils/storybook';
-import Hairline from './index';
 import Block from '../Block';
+import Typography from '../Typography';
+import Hairline from './index';
 
 storiesOf('Components', module).add('Hairline', () => (
   <Storybook>

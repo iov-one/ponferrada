@@ -1,7 +1,8 @@
 import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
+
 import { getHintPhrase } from '../../../utils/localstorage/hint';
-import { click, input, submit, check } from '../../../utils/test/dom';
+import { check, click, input, submit } from '../../../utils/test/dom';
 import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,

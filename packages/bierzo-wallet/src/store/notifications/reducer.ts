@@ -1,5 +1,6 @@
 import { Amount } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
+
 import { NotificationActions } from './actions';
 
 export interface Tx {

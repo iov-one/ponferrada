@@ -4,6 +4,7 @@ import Down from '@material-ui/icons/KeyboardArrowDown';
 import Up from '@material-ui/icons/KeyboardArrowUp';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+
 import Block from '../../components/Block';
 import Typography from '../../components/Typography';
 import noPendingTxs from '../../theme/assets/icons/noPendingTxs.svg';

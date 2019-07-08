@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useForm, useField } from 'react-final-form-hooks';
+import { useField, useForm } from 'react-final-form-hooks';
 
 export { useForm, useField };
 

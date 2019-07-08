@@ -1,9 +1,11 @@
 import { Address, Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker } from '@iov/bcp';
+import { RegisterUsernameTx } from '@iov/bns';
 import { TransactionEncoder } from '@iov/core';
 import { Encoding } from '@iov/encoding';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import Backgroundscript, { IovWindowExtension } from '../../extension/background/model/backgroundscript';
 import { Persona, PersonaAcccount, ProcessedTx } from '../../extension/background/model/persona';
 import {
@@ -24,9 +26,8 @@ import { travelToAccount, whenOnNavigatedToRoute } from '../../utils/test/naviga
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import * as Drawer from '../account/test/drawer';
-import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE, TERMS_URL } from '../paths';
+import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL, WELCOME_ROUTE } from '../paths';
 import { checkCreateAccount, getTransactionsCount } from './test/operateAccount';
-import { RegisterUsernameTx } from '@iov/bns';
 
 describe('DOM > Feature > Account Status', () => {
   const ACCOUNT = 'Account 0';

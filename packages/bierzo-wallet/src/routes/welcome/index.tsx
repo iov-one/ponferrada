@@ -8,6 +8,7 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import React from 'react';
 import * as ReactRedux from 'react-redux';
+
 import icon from '../../assets/iov-logo.svg';
 import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';

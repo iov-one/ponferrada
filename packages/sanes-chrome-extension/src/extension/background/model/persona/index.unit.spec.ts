@@ -2,6 +2,7 @@ import { bnsCodec, BnsConnection, RegisterUsernameTx } from '@iov/bns';
 import { Ed25519HdWallet, HdPaths, TokenTicker, UserProfile } from '@iov/core';
 import { Bip39, EnglishMnemonic, Random } from '@iov/crypto';
 import { IovFaucet } from '@iov/faucets';
+
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import * as txsUpdater from '../../updaters/appUpdater';

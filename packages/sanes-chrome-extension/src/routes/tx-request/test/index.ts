@@ -8,8 +8,8 @@ import {
   SendTransaction,
   TokenTicker,
 } from '@iov/bcp';
-import { Encoding } from '@iov/encoding';
 import { RegisterUsernameTx } from '@iov/bns';
+import { Encoding } from '@iov/encoding';
 
 export function getTransaction(): SendTransaction {
   const defaultCreator: PublicIdentity = {

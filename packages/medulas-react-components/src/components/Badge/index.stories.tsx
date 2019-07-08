@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+
 import RecoveryPhraseIcon from '../../theme/assets/badgeIcon/recoveryPhrase.svg';
 import { Storybook } from '../../utils/storybook';
 import Block from '../Block';

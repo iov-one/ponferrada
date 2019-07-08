@@ -5,6 +5,7 @@ import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
+
 import { PersonaProvider } from '../../context/PersonaProvider';
 import { RequestProvider } from '../../context/RequestProvider';
 import { GetPersonaResponse } from '../../extension/background/model/backgroundscript';

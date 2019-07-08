@@ -7,6 +7,7 @@ import Hairline from 'medulas-react-components/lib/components/Hairline';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { TX_REQUEST } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';

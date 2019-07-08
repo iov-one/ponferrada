@@ -1,4 +1,5 @@
 import { Omit } from '@material-ui/core';
+
 import { Request, RequestQueueManager } from './index';
 
 describe('RequestHandler', () => {

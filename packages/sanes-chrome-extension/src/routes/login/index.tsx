@@ -3,6 +3,7 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+
 import { PersonaContext } from '../../context/PersonaProvider';
 import { history } from '../../store/reducers';
 import { loadPersona } from '../../utils/chrome';

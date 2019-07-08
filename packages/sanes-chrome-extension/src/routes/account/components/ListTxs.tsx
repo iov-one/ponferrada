@@ -3,6 +3,7 @@ import Hairline from 'medulas-react-components/lib/components/Hairline';
 import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { ProcessedTx } from '../../../extension/background/model/persona';
 import upToDate from '../assets/uptodate.svg';
 import EmptyList from './Empty';

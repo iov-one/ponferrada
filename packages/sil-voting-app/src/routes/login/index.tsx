@@ -9,11 +9,12 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import React, { useContext } from 'react';
 import * as ReactRedux from 'react-redux';
+
+import icon from '../../assets/iov-logo.svg';
 import { getExtensionStatus } from '../../communication/status';
 import { setExtensionStateAction } from '../../store/reducers/extension';
 import { history } from '../index';
 import { DASHBOARD_ROUTE } from '../paths';
-import icon from '../../assets/iov-logo.svg';
 
 export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
 export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';

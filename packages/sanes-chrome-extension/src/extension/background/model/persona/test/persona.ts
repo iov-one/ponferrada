@@ -1,4 +1,5 @@
 import { Store } from 'redux';
+
 import { PersonaAcccount, ProcessedTx } from '..';
 import { ACCOUNT_STATUS_ROUTE } from '../../../../../routes/paths';
 import {

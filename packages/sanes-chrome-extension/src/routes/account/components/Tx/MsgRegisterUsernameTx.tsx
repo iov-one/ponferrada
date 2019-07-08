@@ -1,5 +1,5 @@
-import * as React from 'react';
 import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
 
 interface MsgRegisterUsernameTxProps {
   readonly id: string;

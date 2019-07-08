@@ -9,6 +9,7 @@ import Image from 'medulas-react-components/lib/components/Image';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
+
 import { getBorderColor } from '../../../../theme/css';
 import chevronDown from '../../assets/chevronDown.svg';
 import chevronUp from '../../assets/chevronUp.svg';

@@ -1,4 +1,5 @@
 import { Page } from 'puppeteer';
+
 import { sleep } from '../timer';
 import { whenOnNavigatedToE2eRoute } from './navigation';
 

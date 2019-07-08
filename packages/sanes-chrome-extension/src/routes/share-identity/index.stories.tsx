@@ -4,6 +4,7 @@ import { linkTo } from '@storybook/addon-links';
 import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
+
 import { GetIdentitiesRequest } from '../../extension/background/model/signingServer/requestQueueManager';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import { ACCOUNT_STATUS_PAGE } from '../account/index.stories';

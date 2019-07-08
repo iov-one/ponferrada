@@ -1,9 +1,10 @@
 import { RegisterUsernameTx } from '@iov/bns';
-import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
-import * as React from 'react';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Block from 'medulas-react-components/lib/components/Block';
-import TransactionFee, { useTxListItemStyles, txListItemSecondaryProps } from './TransactionFee';
+import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
+import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from './TransactionFee';
 
 export const REQ_REGISTER_USERNAME = 'req-register-username-tx';
 

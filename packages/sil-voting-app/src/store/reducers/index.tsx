@@ -1,5 +1,6 @@
 import { combineReducers, Reducer } from 'redux';
 import { StateType } from 'typesafe-actions';
+
 import { extensionReducer, ExtensionState } from './extension';
 
 export interface RootReducer {

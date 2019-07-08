@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
-import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from '.';
+
 import {
   closeBrowser,
   closeToast,
@@ -20,6 +20,7 @@ import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import { WELCOME_ROUTE } from '../paths';
 import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
+import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from '.';
 
 withChainsDescribe(
   'E2E > Login route',

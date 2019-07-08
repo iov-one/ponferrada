@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+
 import { Storybook } from '../../../utils/storybook';
-import Button from '../../Button';
 import Block from '../../Block';
+import Button from '../../Button';
+import CheckboxField from '../CheckboxField';
 import SelectFieldForm, { Item } from '../SelectFieldForm';
 import TextFieldForm from '../TextFieldForm';
-import CheckboxField from '../CheckboxField';
-import Form, { useForm, FormValues, ValidationError } from './index';
+import Form, { FormValues, useForm, ValidationError } from './index';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
 

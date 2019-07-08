@@ -1,5 +1,6 @@
 import { Address, isUnsignedTransaction } from '@iov/bcp';
 import { Omit } from '@material-ui/core';
+
 import { isSupportedTransaction, SupportedTransaction } from '../../persona';
 
 export interface RequestMeta {

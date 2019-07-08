@@ -1,6 +1,7 @@
 import { createStyles, makeStyles, Popper, Theme } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import * as React from 'react';
+
 import { useOpen } from '../../hooks/open';
 import infoNormal from '../../theme/assets/info_normal.svg';
 import theme from '../../theme/utils/mui';

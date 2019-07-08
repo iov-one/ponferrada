@@ -1,4 +1,5 @@
 import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+
 import reducer, { RootReducer } from './reducers';
 
 const composeEnhancers =

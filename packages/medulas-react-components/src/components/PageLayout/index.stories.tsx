@@ -1,9 +1,10 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+
+import { Storybook } from '../../utils/storybook';
 import Typography from '../Typography';
 import PageLayout from './index';
-import { Storybook } from '../../utils/storybook';
-import { action } from '@storybook/addon-actions';
 
 storiesOf('Components', module).add(
   'Layout',

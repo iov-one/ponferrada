@@ -1,5 +1,6 @@
 import { Page } from 'puppeteer';
 import TestUtils from 'react-dom/test-utils';
+
 import { input, submit } from '../../../utils/test/dom';
 import {
   findRenderedDOMComponentWithId,

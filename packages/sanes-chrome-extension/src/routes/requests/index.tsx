@@ -4,6 +4,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContextInterface } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+
 import { RequestContext } from '../../context/RequestProvider';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../store/reducers';

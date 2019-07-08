@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
-import SelectField from './index';
+
 import { Storybook } from '../../../utils/storybook';
 import Form, { useForm } from '../Form';
+import SelectField from './index';
 import { Item } from './index';
 
 const SelectFieldForm = (): JSX.Element => {

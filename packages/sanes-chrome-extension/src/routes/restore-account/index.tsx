@@ -1,6 +1,8 @@
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+
 import { PersonaContext } from '../../context/PersonaProvider';
 import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { history } from '../../store/reducers';
@@ -8,7 +10,6 @@ import { createPersona } from '../../utils/chrome';
 import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import SetMnemonicForm, { MNEMONIC_FIELD } from './components/SetMnemonicForm';
 import SetPasswordForm, { PASSWORD_FIELD } from './components/SetPasswordForm';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 
 const onBack = (): void => {
   history.goBack();

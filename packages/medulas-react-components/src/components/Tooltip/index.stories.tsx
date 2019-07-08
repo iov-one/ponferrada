@@ -1,9 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Tooltip from './index';
+
+import { Storybook } from '../../utils/storybook';
 import Block from '../Block';
 import Typography from '../Typography';
-import { Storybook } from '../../utils/storybook';
+import Tooltip from './index';
 
 storiesOf('Components', module).add(
   'Tooltip',

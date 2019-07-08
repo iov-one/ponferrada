@@ -1,8 +1,9 @@
 /*global chrome*/
-import { JsonRpcRequest, parseJsonRpcResponse2, isJsonRpcErrorResponse, makeJsonRpcId } from '@iov/jsonrpc';
+import { Address, PublicIdentity, SendTransaction, TokenTicker, TransactionId } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
-import { PublicIdentity, SendTransaction, Address, TokenTicker, TransactionId } from '@iov/bcp';
 import { EthereumConnection } from '@iov/ethereum';
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+
 import { extensionId } from '..';
 
 async function withEthereumFee(transaction: SendTransaction): Promise<SendTransaction> {

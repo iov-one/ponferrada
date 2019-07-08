@@ -1,4 +1,5 @@
 import { JsonRpcResponse } from '@iov/jsonrpc';
+
 import { Persona, PersonaAcccount, ProcessedTx } from '../persona';
 import SigningServer from '../signingServer';
 import { Request } from '../signingServer/requestQueueManager';

@@ -6,6 +6,7 @@ import Form, { FormValues, useForm } from 'medulas-react-components/lib/componen
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { SHARE_IDENTITY } from '../../paths';
 
 const PERMANENT_REJECT = 'permanentRejectField';

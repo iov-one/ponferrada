@@ -1,4 +1,5 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
+
 import { extensionId } from '../../communication';
 
 export function launchBrowser(slowMo: number = 0, install: boolean = true): Promise<Browser> {

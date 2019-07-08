@@ -11,10 +11,12 @@ module.exports = {
   rules: {
     "no-empty": "off",
     "no-console": "warn",
+    "sort-imports": "off", // we use the simple-import-sort plugin instead
+    "simple-import-sort/sort": "warn",
     "@typescript-eslint/explicit-function-return-type": [ "error", {
       allowExpressions: true,
     }],
     "@typescript-eslint/no-explicit-any": "off",
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
 };

@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
+
 import Dashboard from './dashboard';
 import Login from './login';
 import { DASHBOARD_ROUTE, LOGIN_ROUTE } from './paths';

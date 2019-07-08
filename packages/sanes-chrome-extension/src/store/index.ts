@@ -1,6 +1,7 @@
 import { routerMiddleware } from 'connected-react-router';
-import { createStore, applyMiddleware, compose, Middleware, Store } from 'redux';
+import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
 import thunk from 'redux-thunk';
+
 import { history, reducer, RootState } from './reducers';
 
 const middlewares: ReadonlyArray<Middleware> = [thunk, routerMiddleware(history)];
