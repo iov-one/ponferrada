@@ -1,4 +1,5 @@
 import { EthereumConnection } from '@iov/ethereum';
+
 import { getConfig } from '../config';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect, getConnectionFor } from './connection';

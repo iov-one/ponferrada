@@ -3,6 +3,7 @@ import { BnsConnection } from '@iov/bns';
 import { EthereumConnection } from '@iov/ethereum';
 import { LiskConnection } from '@iov/lisk';
 import { singleton } from 'medulas-react-components/lib/utils/singleton';
+
 import { ChainSpec, getConfig } from '../config';
 
 async function createEthereumConnection(url: string): Promise<BlockchainConnection> {

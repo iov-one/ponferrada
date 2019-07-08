@@ -1,5 +1,6 @@
 import { TokenTicker } from '@iov/bcp';
 import { singleton } from 'medulas-react-components/lib/utils/singleton';
+
 import development from './development.json';
 import production from './production.json';
 // import staging from './staging';
