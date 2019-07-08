@@ -14,7 +14,7 @@ const StatusPending = (props: Props): JSX.Element => {
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expires on {props.expiryDate.toLocaleDateString('es-ES')}
+          Expires on {props.expiryDate.toLocaleDateString('en-EN')}
         </Typography>
         <Block marginLeft={2}>
           <Block display="flex" alignItems="center">
@@ -27,7 +27,7 @@ const StatusPending = (props: Props): JSX.Element => {
       </Block>
       <Block padding={1} bgcolor="#d8d8d8" borderRadius="16px">
         <Typography variant="body1">
-          This poll results will be available until {props.expiryDate.toLocaleDateString('es-ES')}
+          This poll results will be available until {props.expiryDate.toLocaleDateString('en-EN')}
         </Typography>
       </Block>
     </React.Fragment>

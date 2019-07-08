@@ -16,7 +16,7 @@ const CreationData = (props: Props): JSX.Element => {
         <Typography variant="body1">Proposal ID: {props.id}</Typography>
       </Block>
       <Block marginLeft={2}>
-        <Typography variant="body1">Created on {props.creationDate.toLocaleDateString('es-ES')}</Typography>
+        <Typography variant="body1">Created on {props.creationDate.toLocaleDateString('en-EN')}</Typography>
       </Block>
     </Block>
   );

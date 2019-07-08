@@ -37,7 +37,7 @@ const StatusEnded = (props: Props): JSX.Element => {
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expired on {props.expiryDate.toLocaleDateString('es-ES')}
+          Expired on {props.expiryDate.toLocaleDateString('en-EN')}
         </Typography>
         <React.Fragment>
           <Block marginLeft={2}>
