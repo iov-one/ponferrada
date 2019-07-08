@@ -17,6 +17,19 @@ const Description = (props: Props): JSX.Element => {
     setExpanded(prevExpanded => !prevExpanded);
   };
 
+  const ReadMore = (): JSX.Element => {
+    return (
+      <React.Fragment>
+        <Typography inline variant="body1">
+          {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
+        </Typography>
+        <Typography inline link onClick={onClick} variant="body1" weight="semibold">
+          Read more
+        </Typography>
+      </React.Fragment>
+    );
+  };
+
   const hasSmallDescription = props.description.length < DESC_MAX_LENGTH;
 
   if (hasSmallDescription) {
@@ -27,21 +40,9 @@ const Description = (props: Props): JSX.Element => {
     );
   }
 
-  if (!expanded) {
-    return (
-      <Block marginBottom={1}>
-        <Typography inline variant="body1">
-          {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
-        </Typography>
-        <Typography inline link onClick={onClick} variant="body1" weight="semibold">
-          Read more
-        </Typography>
-      </Block>
-    );
-  }
-
   return (
     <Block marginBottom={1}>
+      {!expanded && <ReadMore />}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Typography inline variant="body1">
           {props.description}{' '}
