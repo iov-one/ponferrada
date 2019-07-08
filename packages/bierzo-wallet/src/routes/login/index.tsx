@@ -7,6 +7,7 @@ import * as ReactRedux from 'react-redux';
 import { history } from '..';
 import { getExtensionStatus } from '../../communication/status';
 import { setExtensionStateAction } from '../../store/extension';
+import { addTickersAction, getTokens } from '../../store/tokens';
 import { WELCOME_ROUTE } from '../paths';
 
 export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
@@ -30,6 +31,9 @@ const Login = (): JSX.Element => {
       toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
+
+    const chainTokens = await getTokens();
+    dispatch(addTickersAction(chainTokens));
 
     history.push(WELCOME_ROUTE);
   };
