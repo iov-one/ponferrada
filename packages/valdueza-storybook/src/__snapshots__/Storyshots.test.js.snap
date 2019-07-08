@@ -4914,7 +4914,6 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         className="MuiTypography-root makeStyles-weight-2013 makeStyles-weight-2091 makeStyles-inline-2011 MuiTypography-body1"
                       >
                         unsuccessful
-                         
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2013 makeStyles-weight-2092 makeStyles-inline-2011 MuiTypography-body1"
