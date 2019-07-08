@@ -150,6 +150,7 @@ describe('DOM > Feature > Account Status', () => {
     expect(txUsername).toBe(`${username}*iov`);
   }, 60000);
 });
+
 withChainsDescribe('DOM > Feature > Account Status', () => {
   it('generates a link inside transaction box for an ethereum transaction', async () => {
     // Simulate we start background page

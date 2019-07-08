@@ -28,7 +28,7 @@ const MsgRegisterUsernameTx = ({
           username was{' '}
         </Typography>
         <Typography weight="semibold" inline>
-          unsuccessful{' '}
+          unsuccessful
         </Typography>
         <Typography weight="light" inline>
           , please try again later.
