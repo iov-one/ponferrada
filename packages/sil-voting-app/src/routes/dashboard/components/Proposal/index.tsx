@@ -1,5 +1,6 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
+
 import CreationData from './CreationData';
 import Description from './Description';
 import StatusEnded from './StatusEnded';

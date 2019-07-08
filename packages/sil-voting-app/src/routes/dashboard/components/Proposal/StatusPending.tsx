@@ -2,6 +2,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Img from 'medulas-react-components/lib/components/Image';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
+
 import deleteIcon from '../../../../assets/delete.svg';
 
 interface Props {

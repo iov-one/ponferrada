@@ -1,6 +1,7 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import React from 'react';
+
 import Proposal, { ProposalProps } from './Proposal';
 
 // Random props to test layout before consuming governance API
