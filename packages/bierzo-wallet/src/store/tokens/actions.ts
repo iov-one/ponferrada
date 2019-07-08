@@ -21,6 +21,6 @@ export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
 }
 
 export const addTickersAction = (tokens: { [key: string]: BwToken }): AddTickerActionType => ({
-  type: '@@bw/ADD_TOKENS',
+  type: '@@tokens/ADD',
   payload: tokens,
 });
