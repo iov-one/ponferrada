@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
+
   //TODO: Fix this as soon as proper react-redux definitions will be available
   const dispatch = (ReactRedux as any).useDispatch();
 
