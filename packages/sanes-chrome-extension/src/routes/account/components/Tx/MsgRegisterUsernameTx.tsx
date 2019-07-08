@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Typography from 'medulas-react-components/lib/components/Typography';
 
 interface MsgRegisterUsernameTxProps {
   readonly id: string;
@@ -13,9 +14,43 @@ const MsgRegisterUsernameTx = ({
   error,
   iovAddress,
 }: MsgRegisterUsernameTxProps): JSX.Element => {
-  // TODO: implement
-  // https://github.com/iov-one/ponferrada/issues/344
-  return <React.Fragment />;
+  if (error) {
+    return (
+      <React.Fragment>
+        <Typography weight="light" inline>
+          Your attempt to create{' '}
+        </Typography>
+        <Typography weight="semibold" inline link>
+          {iovAddress}
+        </Typography>
+        <Typography weight="light" inline>
+          {' '}
+          username was{' '}
+        </Typography>
+        <Typography weight="semibold" inline>
+          unsuccessful
+        </Typography>
+        <Typography weight="light" inline>
+          , please try again later.
+        </Typography>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <Typography weight="light" inline>
+          You have created{' '}
+        </Typography>
+        <Typography weight="semibold" inline link>
+          {iovAddress}
+        </Typography>
+        <Typography weight="light" inline>
+          {' '}
+          username.
+        </Typography>
+      </React.Fragment>
+    );
+  }
 };
 
 export default MsgRegisterUsernameTx;
