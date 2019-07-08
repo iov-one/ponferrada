@@ -1,6 +1,7 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
+import { ReadonlyDate } from 'readonly-date';
 
 import { VoteResult } from '.';
 
@@ -37,7 +38,7 @@ const StatusEnded = (props: Props): JSX.Element => {
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expired on {props.expiryDate.toLocaleDateString('en-EN')}
+          Expired on {`${(props.expiryDate as ReadonlyDate).toLocaleString()}`}
         </Typography>
         <React.Fragment>
           <Block marginLeft={2}>

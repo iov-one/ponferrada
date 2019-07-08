@@ -2,6 +2,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Img from 'medulas-react-components/lib/components/Image';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
+import { ReadonlyDate } from 'readonly-date';
 
 import deleteIcon from '../../../../assets/delete.svg';
 
@@ -14,7 +15,7 @@ const StatusPending = (props: Props): JSX.Element => {
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expires on {props.expiryDate.toLocaleDateString('en-EN')}
+          Expires on {`${(props.expiryDate as ReadonlyDate).toLocaleString()}`}
         </Typography>
         <Block marginLeft={2}>
           <Block display="flex" alignItems="center">
@@ -27,7 +28,7 @@ const StatusPending = (props: Props): JSX.Element => {
       </Block>
       <Block padding={1} bgcolor="#d8d8d8" borderRadius="16px">
         <Typography variant="body1">
-          This poll results will be available until {props.expiryDate.toLocaleDateString('en-EN')}
+          This poll results will be available until {`${(props.expiryDate as ReadonlyDate).toLocaleString()}`}
         </Typography>
       </Block>
     </React.Fragment>
