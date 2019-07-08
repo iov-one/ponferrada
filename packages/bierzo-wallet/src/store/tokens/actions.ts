@@ -1,19 +1,21 @@
-import { EthereumConnection } from '@iov/ethereum';
-
+import { getConfig } from '../../config';
+import { getConnectionFor } from '../../logic/connection';
 import { AddTickerActionType, BwToken } from './reducer';
 
-export async function getTokens(): Promise<{ [key: string]: BwToken }> {
+export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
+  const config = getConfig();
   const tokens: { [ticker: string]: BwToken } = {};
+  const chains = config.chains;
 
-  // TODO for now we only check the ethereum connection. The rest of chains will be
-  // added after it. Stay tuned!
-  const connection = await EthereumConnection.establish('http://localhost:8545', {});
-  const chainId = connection.chainId();
-  const chainTokens = await connection.getAllTokens();
+  for (const chain of chains) {
+    const connection = await getConnectionFor(chain.chainSpec);
+    const chainId = connection.chainId();
+    const chainTokens = await connection.getAllTokens();
 
-  for (const chainToken of chainTokens) {
-    const ticker = chainToken.tokenTicker as string;
-    tokens[ticker] = { chainId, token: chainToken };
+    for (const chainToken of chainTokens) {
+      const ticker = chainToken.tokenTicker as string;
+      tokens[ticker] = { chainId, token: chainToken };
+    }
   }
 
   return tokens;
