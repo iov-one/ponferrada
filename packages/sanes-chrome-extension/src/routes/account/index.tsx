@@ -10,6 +10,7 @@ import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
 import { useForm } from 'react-final-form-hooks';
+
 import { PersonaContext } from '../../context/PersonaProvider';
 import { history } from '../../store/reducers';
 import { EXTENSION_HEIGHT } from '../../theme/constants';

@@ -2,6 +2,7 @@ import { makeStyles, Theme } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
 import * as React from 'react';
+
 import iovLogo from '../../theme/assets/iov-logo.png';
 import Block from '../Block';
 import Image from '../Image';

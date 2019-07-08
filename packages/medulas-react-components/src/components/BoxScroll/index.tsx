@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { makeStyles, Theme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import classNames from 'classnames';
-import { Theme, makeStyles } from '@material-ui/core';
+import * as React from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   scroll: {

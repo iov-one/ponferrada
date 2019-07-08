@@ -1,6 +1,7 @@
-import * as React from 'react';
-import theme from './utils/mui';
 import { ThemeProvider } from '@material-ui/styles';
+import * as React from 'react';
+
+import theme from './utils/mui';
 
 interface Props {
   readonly injectFonts?: boolean;

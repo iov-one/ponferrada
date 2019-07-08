@@ -1,13 +1,14 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+
 import Block from '../../../components/Block';
 import Button from '../../../components/Button';
-import { Storybook } from '../../../utils/storybook';
-import { ToastVariant } from './index';
-import { ToastContext, ToastProvider } from '../index';
 import Typography from '../../../components/Typography';
+import { Storybook } from '../../../utils/storybook';
+import { ToastContext, ToastProvider } from '../index';
+import { ToastVariant } from './index';
 import ToastContent from './ToastContent';
-import { action } from '@storybook/addon-actions';
 
 const ToastStorybook = (): JSX.Element => {
   const { show } = React.useContext(ToastContext);

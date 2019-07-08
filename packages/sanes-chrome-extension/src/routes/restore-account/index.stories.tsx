@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
+
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import SetMnemonicForm from './components/SetMnemonicForm';
 import SetPasswordForm from './components/SetPasswordForm';

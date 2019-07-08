@@ -3,6 +3,7 @@ import Badge from 'medulas-react-components/lib/components/Badge';
 import Image from 'medulas-react-components/lib/components/Image';
 import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
+
 import { Tx } from '../../../../store/notifications';
 import loading from '../../assets/loading.svg';
 import loadingSpin from '../../assets/loadingSpin.svg';

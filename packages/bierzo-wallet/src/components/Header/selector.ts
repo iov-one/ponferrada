@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+
 import { ProcessedTx } from '../../store/notifications';
 import { getTransactions } from '../../store/notifications/selectors';
 

@@ -1,4 +1,5 @@
 import { EthereumConnection } from '@iov/ethereum';
+
 import { AddTickerActionType, BwToken } from './reducer';
 
 export async function getTokens(): Promise<{ [key: string]: BwToken }> {

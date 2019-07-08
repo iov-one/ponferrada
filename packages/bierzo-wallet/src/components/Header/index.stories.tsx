@@ -6,6 +6,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
+
 import { ProcessedTx, Tx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';

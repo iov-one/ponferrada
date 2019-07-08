@@ -1,6 +1,7 @@
 import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
 import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
 import { JsonRpcResponse } from '@iov/jsonrpc';
+
 import { generateErrorResponse } from '../../errorResponseGenerator';
 import { isSupportedTransaction } from '../persona';
 import { getConfigurationFile } from '../persona/config';

@@ -12,6 +12,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { composeValidators, longerThan, required } from 'medulas-react-components/lib/utils/forms/validators';
 import * as React from 'react';
 import { useMemo } from 'react';
+
 import { RESTORE_ACCOUNT } from '../../paths';
 
 export const SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE = `${RESTORE_ACCOUNT}2`;

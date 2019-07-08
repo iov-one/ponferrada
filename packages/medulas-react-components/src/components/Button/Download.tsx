@@ -2,10 +2,11 @@ import { Fab, makeStyles } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/styles';
 import * as React from 'react';
+
+import download from '../../theme/assets/download.svg';
 import Block from '../Block';
 import CircleImage from '../Image/CircleImage';
 import Typography from '../Typography';
-import download from '../../theme/assets/download.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

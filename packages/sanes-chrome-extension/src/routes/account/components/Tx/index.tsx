@@ -7,6 +7,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Img from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
+
 import { ProcessedTx } from '../../../../extension/background/model/persona';
 import { prettyAmount } from '../../../../utils/balances';
 import iconErrorTx from '../../assets/transactionError.svg';

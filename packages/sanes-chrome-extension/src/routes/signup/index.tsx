@@ -1,5 +1,8 @@
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+
 import { PersonaContext } from '../../context/PersonaProvider';
 import { PersonaData } from '../../extension/background/model/backgroundscript';
 import { history } from '../../store/reducers';
@@ -9,8 +12,6 @@ import { ACCOUNT_STATUS_ROUTE } from '../paths';
 import NewAccountForm, { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from './components/NewAccountForm';
 import SecurityHintForm, { SECURITY_HINT } from './components/SecurityHintForm';
 import ShowPhraseForm from './components/ShowPhraseForm';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 
 const onBack = (): void => {
   history.goBack();

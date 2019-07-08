@@ -7,6 +7,7 @@ import Hairline from 'medulas-react-components/lib/components/Hairline';
 import { List, ListItem, ListItemAvatar, ListItemText } from 'medulas-react-components/lib/components/List';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { Request } from '../../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../../store/reducers';
 import { SHARE_IDENTITY, TX_REQUEST } from '../../paths';

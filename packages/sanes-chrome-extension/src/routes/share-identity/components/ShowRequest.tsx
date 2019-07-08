@@ -5,6 +5,7 @@ import { List, ListItem, ListItemText } from 'medulas-react-components/lib/compo
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { GetIdentitiesData } from '../../../extension/background/model/signingServer/requestQueueManager';
 import { SHARE_IDENTITY } from '../../paths';
 

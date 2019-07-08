@@ -1,10 +1,11 @@
 import { isSendTransaction, SendTransaction, UnsignedTransaction } from '@iov/bcp';
-import { BnsConnection, RegisterUsernameTx, isRegisterUsernameTx } from '@iov/bns';
+import { BnsConnection, isRegisterUsernameTx, RegisterUsernameTx } from '@iov/bns';
 import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { Encoding } from '@iov/encoding';
 import { UserProfileEncryptionKey } from '@iov/keycontrol';
 import { ReadonlyDate } from 'readonly-date';
+
 import { transactionsUpdater } from '../../updaters/appUpdater';
 import { AccountManager } from '../accountManager';
 import { StringDb } from '../backgroundscript/db';

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Toast, ToastVariant } from './Toast';
+
 import { singleton } from '../../utils/singleton';
+import { Toast, ToastVariant } from './Toast';
 
 export interface ToastContextInterface {
   readonly show: (message: string, variant: ToastVariant) => void;

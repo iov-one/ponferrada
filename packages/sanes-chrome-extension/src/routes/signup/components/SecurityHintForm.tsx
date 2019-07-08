@@ -1,15 +1,16 @@
-import * as React from 'react';
-import Button from 'medulas-react-components/lib/components/Button';
 import Block from 'medulas-react-components/lib/components/Block';
+import Button from 'medulas-react-components/lib/components/Button';
 import Back from 'medulas-react-components/lib/components/Button/Back';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Form, {
-  useForm,
   FormValues,
+  useForm,
   ValidationError,
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
 import { SIGNUP_ROUTE } from '../../paths';
 
 export const SECURITY_HINT = 'securityHintField';

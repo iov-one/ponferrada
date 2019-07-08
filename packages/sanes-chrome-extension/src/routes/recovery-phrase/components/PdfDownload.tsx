@@ -1,5 +1,6 @@
-import * as React from 'react';
 import DownloadButton from 'medulas-react-components/lib/components/Button/Download';
+import * as React from 'react';
+
 import PDFGenerator from '../utils/pdfGenerator';
 
 export interface Props {

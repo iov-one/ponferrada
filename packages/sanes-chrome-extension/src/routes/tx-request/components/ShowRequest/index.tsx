@@ -5,6 +5,7 @@ import Button from 'medulas-react-components/lib/components/Button';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { SupportedTransaction } from '../../../../extension/background/model/persona';
 import { TX_REQUEST } from '../../../paths';
 import ReqRegisterUsernameTx from './ReqRegisterUsernameTx';

@@ -3,6 +3,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Img from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+
 import { getPendingTransactions } from '../../store/notifications/selectors';
 import logoBlack from './assets/logoBlack.svg';
 import BellMenu from './components/BellMenu';

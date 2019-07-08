@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
-import CheckboxField from './index';
+
 import { Storybook } from '../../../utils/storybook';
 import Form, { useForm, ValidationError } from '../Form';
+import CheckboxField from './index';
 
 const CHECKBOX_FIELD = 'CHECKBOX_FIELD';
 

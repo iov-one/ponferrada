@@ -3,6 +3,7 @@ import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec } from '@iov/ethereum';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+
 import { extensionId } from '..';
 
 export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({

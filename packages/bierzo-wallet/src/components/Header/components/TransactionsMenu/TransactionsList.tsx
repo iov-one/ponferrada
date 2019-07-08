@@ -5,6 +5,7 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyListIcon';
 import * as React from 'react';
+
 import { Tx } from '../../../../store/notifications';
 import { prettyAmount } from '../../../../utils/balances';
 import { elipsify } from '../../../../utils/strings';

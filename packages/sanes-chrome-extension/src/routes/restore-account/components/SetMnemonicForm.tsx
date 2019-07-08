@@ -12,6 +12,7 @@ import {
 } from 'medulas-react-components/lib/utils/forms/validators';
 import * as React from 'react';
 import { useMemo } from 'react';
+
 import { RESTORE_ACCOUNT } from '../../paths';
 
 export const MNEMONIC_FIELD = 'mnemonicField';

@@ -1,4 +1,5 @@
 import { Amount, TokenTicker } from '@iov/bcp';
+
 import {
   amountToString,
   makeAmount as makeInfo,

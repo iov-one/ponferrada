@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
-import RecoveryPhrase from './index';
+
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
+import RecoveryPhrase from './index';
 
 storiesOf(CHROME_EXTENSION_ROOT, module).add(
   'Recovery Phrase page',

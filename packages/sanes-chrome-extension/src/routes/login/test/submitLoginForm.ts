@@ -1,4 +1,5 @@
 import { Page } from 'puppeteer';
+
 import { findRenderedE2EComponentWithId } from '../../../utils/test/reactElemFinder';
 import { ACCOUNT_STATUS_ROUTE } from '../../paths';
 import { PASSWORD_FIELD } from '../components/LoginForm';

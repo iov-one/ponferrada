@@ -1,8 +1,9 @@
-import React from 'react';
+import { Fee } from '@iov/bcp';
 import { makeStyles } from '@material-ui/core';
 import { ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
+import React from 'react';
+
 import { amountToString } from '../../../../utils/balances';
-import { Fee } from '@iov/bcp';
 
 export const useTxListItemStyles = makeStyles({
   root: {

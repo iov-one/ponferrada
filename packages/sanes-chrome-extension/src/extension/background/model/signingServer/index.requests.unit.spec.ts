@@ -1,5 +1,6 @@
 import { TransactionEncoder } from '@iov/core';
 import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
 import { generateErrorResponse } from '../../errorResponseGenerator';

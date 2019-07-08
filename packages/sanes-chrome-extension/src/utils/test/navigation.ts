@@ -1,5 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import { GetPersonaResponse } from '../../extension/background/model/backgroundscript';
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import {

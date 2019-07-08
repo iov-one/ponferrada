@@ -8,6 +8,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import * as React from 'react';
+
 import { elipsify } from '../../../../utils/strings';
 
 interface MsgSendTransactionProps {

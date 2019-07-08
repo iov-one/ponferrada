@@ -1,6 +1,7 @@
-import { ActionType } from 'typesafe-actions';
-import * as actions from './actions';
 import { Action } from 'redux';
+import { ActionType } from 'typesafe-actions';
+
+import * as actions from './actions';
 
 export interface ExtensionState {
   readonly connected: boolean;

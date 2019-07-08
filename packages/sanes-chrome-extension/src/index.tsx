@@ -4,6 +4,7 @@ import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThem
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+
 import { PersonaProvider } from './context/PersonaProvider';
 import { RequestProvider } from './context/RequestProvider';
 import { GetPersonaResponse } from './extension/background/model/backgroundscript';

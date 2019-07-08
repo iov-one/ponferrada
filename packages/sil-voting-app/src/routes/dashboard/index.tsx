@@ -1,6 +1,7 @@
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import React from 'react';
+
 import Header from '../../components/Header';
 import AsideFilter from './components/AsideFilter';
 import ProposalsList from './components/ProposalsList';

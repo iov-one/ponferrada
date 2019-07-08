@@ -1,5 +1,6 @@
 import { Algorithm, ChainId } from '@iov/bcp';
 import { HdPaths } from '@iov/core';
+
 import { PersonaBuilder } from '../persona/personaBuider';
 import { AccountManager, AccountManagerChainConfig } from './index';
 

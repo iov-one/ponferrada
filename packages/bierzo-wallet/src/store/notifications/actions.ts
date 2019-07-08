@@ -1,5 +1,6 @@
 import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
+
 import { ProcessedTx } from './reducer';
 
 export interface AddPendingTransactionActionType extends Action {

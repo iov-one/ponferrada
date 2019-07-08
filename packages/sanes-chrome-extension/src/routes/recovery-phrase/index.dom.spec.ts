@@ -1,5 +1,6 @@
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import {
   mockGetPersonaData,
   mockPersonaResponse,

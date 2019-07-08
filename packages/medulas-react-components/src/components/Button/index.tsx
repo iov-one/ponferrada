@@ -1,8 +1,9 @@
-import React from 'react';
 import { Omit } from '@material-ui/core';
 import MuiButton, { ButtonProps } from '@material-ui/core/Button';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import React from 'react';
+
 import Block from '../Block';
 
 interface Props extends Omit<ButtonProps, 'variant'> {

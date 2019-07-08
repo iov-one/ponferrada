@@ -1,6 +1,7 @@
 import { Address } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
+
 import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
 import { aNewStore } from '../../store';
 import { RootState } from '../../store/reducers';

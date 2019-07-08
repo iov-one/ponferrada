@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
+
 import { history } from '../../../../routes';
 import {
   BALANCE_ROUTE,

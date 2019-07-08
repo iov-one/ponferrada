@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+
 import { Storybook } from '../../utils/storybook';
 import Link from '../Link';
 import Typography from './index';

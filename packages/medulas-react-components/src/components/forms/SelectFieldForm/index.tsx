@@ -4,6 +4,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { FieldSubscription, FormApi } from 'final-form';
 import * as React from 'react';
 import { useField } from 'react-final-form-hooks';
+
 import { useOpen } from '../../../hooks/open';
 import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
 import Block from '../../Block';

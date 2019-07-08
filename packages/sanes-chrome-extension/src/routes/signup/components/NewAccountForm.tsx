@@ -1,18 +1,19 @@
-import * as React from 'react';
+import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import Back from 'medulas-react-components/lib/components/Button/Back';
-import Block from 'medulas-react-components/lib/components/Block';
+import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
 import Form, {
-  useForm,
   FormValues,
+  useForm,
   ValidationError,
 } from 'medulas-react-components/lib/components/forms/Form';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import { SIGNUP_ROUTE, TERMS_URL } from '../../paths';
-import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import Link from 'medulas-react-components/lib/components/Link';
+import PageLayout from 'medulas-react-components/lib/components/PageLayout';
+import Typography from 'medulas-react-components/lib/components/Typography';
+import * as React from 'react';
+
+import { SIGNUP_ROUTE, TERMS_URL } from '../../paths';
 
 export const ACCOUNT_NAME_FIELD = 'accountNameField';
 export const PASSWORD_FIELD = 'passwordInputField';
