@@ -10,7 +10,7 @@ export interface BwToken {
 }
 
 export interface AddTickerActionType extends Action {
-  type: '@@bw/ADD_TOKENS';
+  type: '@@tokens/ADD';
   payload: { [key: string]: BwToken };
 }
 
@@ -23,7 +23,7 @@ const initState: TokenState = {};
 
 export function tokensReducer(state: TokenState = initState, action: TokenActions): TokenState {
   switch (action.type) {
-    case '@@bw/ADD_TOKENS':
+    case '@@tokens/ADD':
       return { ...state, ...action.payload };
     default:
       return state;
