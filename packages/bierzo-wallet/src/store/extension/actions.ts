@@ -4,6 +4,6 @@ export const setExtensionStateAction = (
   connected: boolean,
   installed: boolean,
 ): SetExtensionStateActionType => ({
-  type: '@@bw/SET_EXTENSION_STATE',
+  type: '@@extension/SET_STATE',
   payload: { connected, installed },
 });
