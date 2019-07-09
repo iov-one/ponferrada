@@ -5,8 +5,7 @@ import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 
 import { history } from '..';
-import { getExtensionStatus } from '../../communication/status';
-import { setExtensionStateAction } from '../../store/extension';
+import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { addTickersAction, getTokens } from '../../store/tokens';
 import { WELCOME_ROUTE } from '../paths';
 
@@ -20,7 +19,7 @@ const Login = (): JSX.Element => {
 
   const onLogin = async (_: object): Promise<void> => {
     const result = await getExtensionStatus();
-    dispatch(setExtensionStateAction(result.connected, result.installed));
+    dispatch(setExtensionStateAction(result.connected, result.installed, result.keys));
 
     if (!result.installed) {
       toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
