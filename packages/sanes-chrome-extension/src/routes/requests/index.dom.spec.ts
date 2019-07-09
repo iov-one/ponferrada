@@ -14,7 +14,6 @@ import { getFirstRequest, getRequests } from './test/operateRequests';
 describe('DOM > Feature > Requests', () => {
   const REQUEST_ONE: Request = {
     id: 1,
-    type: 'getIdentities',
     reason: 'Reason 1',
     data: { senderUrl: 'www.sender1.com', requestedIdentities: [] },
     accept: jest.fn(),
@@ -23,7 +22,6 @@ describe('DOM > Feature > Requests', () => {
 
   const REQUEST_TWO: Request = {
     id: 2,
-    type: 'signAndPost',
     reason: 'Reason 2',
     data: {
       senderUrl: 'www.sender2.com',

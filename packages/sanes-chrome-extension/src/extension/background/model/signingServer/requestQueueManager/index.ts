@@ -70,13 +70,22 @@ export function isSignAndPostData(data: unknown): data is SignAndPostData {
   return hasSender && hasCreator && hasSupportedTransaction;
 }
 
-export interface Request {
+export interface Request<
+  T extends GetIdentitiesData | SignAndPostData = GetIdentitiesData | SignAndPostData
+> {
   readonly id: number;
-  readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
-  readonly data: GetIdentitiesData | SignAndPostData;
+  readonly data: T;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
+}
+
+export function isGetIdentitiesRequest(request: Request): request is Request<GetIdentitiesData> {
+  return isGetIdentitiesData(request.data);
+}
+
+export function isSignAndPostRequest(request: Request): request is Request<SignAndPostData> {
+  return isSignAndPostData(request.data);
 }
 
 export class RequestQueueManager {

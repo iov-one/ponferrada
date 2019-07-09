@@ -2,7 +2,6 @@ import { Request, RequestQueueManager } from './index';
 
 describe('RequestHandler', () => {
   const REQUEST_ONE: Omit<Request, 'id'> = {
-    type: 'getIdentities',
     reason: 'Reason 1',
     data: {
       senderUrl: 'Sender 1',
@@ -13,7 +12,6 @@ describe('RequestHandler', () => {
   };
 
   const REQUEST_TWO: Omit<Request, 'id'> = {
-    type: 'signAndPost',
     reason: 'Reason 2',
     data: {
       senderUrl: 'Sender 2',
@@ -24,7 +22,6 @@ describe('RequestHandler', () => {
   };
 
   const REQUEST_THREE: Omit<Request, 'id'> = {
-    type: 'getIdentities',
     reason: 'Reason 3',
     data: {
       senderUrl: 'Sender 3',

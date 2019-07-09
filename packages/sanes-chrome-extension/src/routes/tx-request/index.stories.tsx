@@ -27,7 +27,6 @@ const txRequest: Request = {
     creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
     tx: getTransaction(),
   },
-  type: 'signAndPost',
 };
 
 const usernameRequest: Request = {
@@ -40,7 +39,6 @@ const usernameRequest: Request = {
     creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
     tx: getUsernameTransaction(),
   },
-  type: 'signAndPost',
 };
 
 storiesOf(TX_REQUEST_PATH, module)

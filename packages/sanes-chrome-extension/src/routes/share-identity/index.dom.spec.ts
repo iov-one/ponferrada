@@ -19,7 +19,6 @@ describe('DOM > Feature > Share Identity', (): void => {
   const requests: ReadonlyArray<Request> = [
     {
       id: 1,
-      type: 'getIdentities',
       reason: 'Test get Identities',
       data: {
         senderUrl: 'http://finnex.com',

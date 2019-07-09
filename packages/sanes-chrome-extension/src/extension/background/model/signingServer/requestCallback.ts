@@ -31,7 +31,7 @@ export async function requestCallback<T>(
       resolve(rejectResponse);
     };
 
-    requestQueueManager.add({ reason, type, data, accept, reject });
+    requestQueueManager.add({ reason, data, accept, reject });
     updateExtensionBadge(requestQueueManager.requests().length);
     updateRequestProvider();
   });

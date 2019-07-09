@@ -23,7 +23,6 @@ import {
 const sendRequests: ReadonlyArray<Request> = [
   {
     id: 1,
-    type: 'signAndPost',
     reason: 'Test get Identities',
     data: {
       senderUrl: 'http://finnex.com',
@@ -94,7 +93,6 @@ describe('DOM > Feature > Username Registration Request', (): void => {
   const requests: ReadonlyArray<Request> = [
     {
       id: 1,
-      type: 'signAndPost',
       reason: 'Test username registration',
       data: {
         senderUrl: 'http://finnex.com',

@@ -11,7 +11,6 @@ import Requests from './index';
 const intialRequests: Request[] = [
   {
     id: 0,
-    type: 'getIdentities',
     reason: 'Asking for identities for changing the world',
     data: {
       senderUrl: 'Sender 1',
@@ -22,7 +21,6 @@ const intialRequests: Request[] = [
   },
   {
     id: 1,
-    type: 'signAndPost',
     reason: 'Asking for signAndPost example',
     data: {
       senderUrl: 'Sender 2',
@@ -33,7 +31,6 @@ const intialRequests: Request[] = [
   },
   {
     id: 2,
-    type: 'getIdentities',
     reason: 'Please get Identities on new website',
     data: {
       senderUrl: 'Sender 3',
