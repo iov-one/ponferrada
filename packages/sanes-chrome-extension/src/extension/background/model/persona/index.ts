@@ -1,8 +1,9 @@
-import { isSendTransaction, SendTransaction, UnsignedTransaction } from '@iov/bcp';
+import { isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from '@iov/bcp';
 import { BnsConnection, isRegisterUsernameTx, RegisterUsernameTx } from '@iov/bns';
-import { MultiChainSigner, SignedAndPosted, SigningServerCore, UserProfile } from '@iov/core';
+import { MultiChainSigner, SignedAndPosted, SigningServerCore } from '@iov/core';
 import { Bip39, Random } from '@iov/crypto';
 import { Encoding } from '@iov/encoding';
+import { UserProfile } from '@iov/keycontrol';
 import { UserProfileEncryptionKey } from '@iov/keycontrol';
 import { ReadonlyDate } from 'readonly-date';
 
@@ -20,7 +21,7 @@ function isNonNull<T>(t: T | null): t is T {
 /**
  * All transaction types that can be displayed and signed by the extension
  */
-export type SupportedTransaction = SendTransaction | RegisterUsernameTx;
+export type SupportedTransaction = (SendTransaction | RegisterUsernameTx) & WithCreator;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
   return isSendTransaction(tx) || isRegisterUsernameTx(tx);

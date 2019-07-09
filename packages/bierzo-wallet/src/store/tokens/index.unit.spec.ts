@@ -57,7 +57,7 @@ withChainsDescribe('Tokens reducer', () => {
         },
       },
       LSK: {
-        chainId: '198f2b61a8eb95fbeed58b8216780b68f697f26b849acf00c8c93bb9b24f783d',
+        chainId: 'lisk-198f2b61a8',
         token: {
           fractionalDigits: 8,
           tokenName: 'Lisk',

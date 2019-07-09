@@ -1,4 +1,4 @@
-import { TokenTicker } from '@iov/core';
+import { TokenTicker } from '@iov/bcp';
 import { storiesOf } from '@storybook/react';
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';

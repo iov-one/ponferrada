@@ -1,7 +1,8 @@
+import { TokenTicker, WithCreator } from '@iov/bcp';
 import { bnsCodec, BnsConnection, RegisterUsernameTx } from '@iov/bns';
-import { Ed25519HdWallet, HdPaths, TokenTicker, UserProfile } from '@iov/core';
 import { Bip39, EnglishMnemonic, Random } from '@iov/crypto';
 import { IovFaucet } from '@iov/faucets';
+import { Ed25519HdWallet, HdPaths, UserProfile } from '@iov/keycontrol';
 
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
@@ -140,28 +141,28 @@ withChainsDescribe('Persona', () => {
           bnsFaucet.credit(bnsCodec.identityToAddress(identity2), bnsFeeToken),
         ]);
 
-        const registerName0: RegisterUsernameTx = {
+        const registerName0: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity0,
           addresses: [],
           username: name0,
         };
 
-        const registerName1: RegisterUsernameTx = {
+        const registerName1: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity1,
           addresses: [],
           username: name1,
         };
 
-        const registerName2a: RegisterUsernameTx = {
+        const registerName2a: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity2,
           addresses: [],
           username: name2[0],
         };
 
-        const registerName2b: RegisterUsernameTx = {
+        const registerName2b: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity2,
           addresses: [],

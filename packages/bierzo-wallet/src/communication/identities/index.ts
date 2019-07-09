@@ -1,5 +1,5 @@
 /*global chrome*/
-import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
+import { Identity, isIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 
@@ -15,21 +15,21 @@ export const generateGetIdentitiesRequest = (chains: ReadonlyArray<string>): Jso
   },
 });
 
-function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
+function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
   if (!Array.isArray(data)) {
     return false;
   }
-  return data.every(isPublicIdentity);
+  return data.every(isIdentity);
 }
 
-type GetIdentitiesResponse = { [chain: string]: PublicIdentity } | undefined;
+type GetIdentitiesResponse = { [chain: string]: Identity } | undefined;
 
 function extensionContext(): boolean {
   return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
 }
 
 // exported for testing purposes
-export const parseGetIdentitiesResponse = (response: any): { [chain: string]: PublicIdentity } => {
+export const parseGetIdentitiesResponse = (response: any): { [chain: string]: Identity } => {
   const parsedResponse = parseJsonRpcResponse2(response);
   if (isJsonRpcErrorResponse(parsedResponse)) {
     console.error(parsedResponse.error.message);
@@ -37,11 +37,11 @@ export const parseGetIdentitiesResponse = (response: any): { [chain: string]: Pu
   }
 
   const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
-  if (!isArrayOfPublicIdentity(parsedResult)) {
+  if (!isArrayOfIdentity(parsedResult)) {
     throw new Error('Got unexpected type of result');
   }
 
-  const keys: { [chain: string]: PublicIdentity } = {};
+  const keys: { [chain: string]: Identity } = {};
   for (const id of parsedResult) {
     keys[id.chainId] = id;
   }
