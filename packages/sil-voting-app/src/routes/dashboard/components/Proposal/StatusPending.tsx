@@ -1,3 +1,4 @@
+import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Img from 'medulas-react-components/lib/components/Image';
 import Typography from 'medulas-react-components/lib/components/Typography';
@@ -5,12 +6,22 @@ import React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 
 import deleteIcon from '../../../../assets/delete.svg';
+import { STATUS_BACKGROUND } from '../../../../theme/css';
+import { STATUS_BORDER } from '../../../../theme/css';
+
+const useStyles = makeStyles(() => ({
+  status: {
+    border: `1px solid ${STATUS_BORDER}`,
+  },
+}));
 
 interface Props {
   readonly expiryDate: Date;
 }
 
 const StatusPending = (props: Props): JSX.Element => {
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
@@ -26,7 +37,7 @@ const StatusPending = (props: Props): JSX.Element => {
           </Block>
         </Block>
       </Block>
-      <Block padding={1} bgcolor="#d8d8d8" borderRadius="16px">
+      <Block padding={1} bgcolor={STATUS_BACKGROUND} borderRadius="16px" className={classes.status}>
         <Typography variant="body1">
           This poll results will be available until {`${(props.expiryDate as ReadonlyDate).toLocaleString()}`}
         </Typography>

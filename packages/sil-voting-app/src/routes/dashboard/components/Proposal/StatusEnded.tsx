@@ -1,9 +1,18 @@
+import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 
+import { STATUS_BACKGROUND } from '../../../../theme/css';
+import { STATUS_BORDER } from '../../../../theme/css';
 import { VoteResult } from '.';
+
+const useStyles = makeStyles(() => ({
+  status: {
+    border: `1px solid ${STATUS_BORDER}`,
+  },
+}));
 
 interface Props {
   readonly expiryDate: Date;
@@ -34,6 +43,8 @@ const getWinner = (result: VoteResult): VoteWinner => {
 };
 
 const StatusEnded = (props: Props): JSX.Element => {
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
@@ -58,10 +69,10 @@ const StatusEnded = (props: Props): JSX.Element => {
           </Block>
         </React.Fragment>
       </Block>
-      <Block width="100%" border="1px solid #979797" borderRadius="16px">
+      <Block width="100%" borderRadius="16px" className={classes.status}>
         <Block
           padding={1}
-          bgcolor="#d8d8d8"
+          bgcolor={STATUS_BACKGROUND}
           borderRadius="16px"
           width={getWinner(props.result).percentage + '%'}
         >
