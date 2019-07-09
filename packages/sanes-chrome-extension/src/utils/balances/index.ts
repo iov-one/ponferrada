@@ -57,6 +57,16 @@ export function amountToString(amount: Amount): string {
   return `${value} ${tokenTicker}`;
 }
 
+export function amountToGwei(amount: Amount): string {
+  if (amount.tokenTicker !== 'ETH' || amount.fractionalDigits !== 18) {
+    throw new Error('This amount cannot be expressed in Gwei');
+  }
+
+  const value = amountToNumber(amount) * 10 ** 9;
+  const display = Number.isInteger(value) ? value : value.toFixed(2);
+  return `${display} Gwei`;
+}
+
 // this takes an amount and trims off all trailing 0s
 // TODO: remove leading 0s also
 export function trimAmount(amount: Amount): Amount {
