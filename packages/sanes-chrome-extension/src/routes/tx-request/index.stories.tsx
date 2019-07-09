@@ -17,7 +17,7 @@ const SHOW_TX_REQUEST_PAGE = 'Show TX Request page';
 const SHOW_USERNAME_REQUEST_PAGE = 'Show USERNAME Request page';
 const REJECT_REQUEST_PAGE = 'Reject Request page';
 
-const txRequest: Request = {
+const txRequest: Request<SignAndPostData> = {
   id: 0,
   accept: () => action('accept request'),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? 'yes' : 'no'}`),
@@ -29,7 +29,7 @@ const txRequest: Request = {
   },
 };
 
-const usernameRequest: Request = {
+const usernameRequest: Request<SignAndPostData> = {
   id: 0,
   accept: () => action('accept request'),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? 'yes' : 'no'}`),
@@ -45,7 +45,7 @@ storiesOf(TX_REQUEST_PATH, module)
   .add(
     SHOW_TX_REQUEST_PAGE,
     (): JSX.Element => {
-      const { creator, tx } = txRequest.data as SignAndPostData;
+      const { creator, tx } = txRequest.data;
 
       return (
         <Storybook>
@@ -63,7 +63,7 @@ storiesOf(TX_REQUEST_PATH, module)
   .add(
     SHOW_USERNAME_REQUEST_PAGE,
     (): JSX.Element => {
-      const { creator, tx } = usernameRequest.data as SignAndPostData;
+      const { creator, tx } = usernameRequest.data;
 
       return (
         <Storybook>
