@@ -28,7 +28,7 @@ export function extensionReducer(
 ): ExtensionState {
   switch (action.type) {
     case '@@extension/SET_STATE':
-      return action.payload;
+      return { ...state, ...action.payload };
     default:
       return state;
   }
