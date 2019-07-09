@@ -7,12 +7,12 @@ import { isSupportedTransaction } from '../persona';
 import { getConfigurationFile } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
-  GetIdentitiesRequest,
+  GetIdentitiesData,
   isRequestMeta,
   Request,
   RequestMeta,
   RequestQueueManager,
-  SignAndPostRequest,
+  SignAndPostData,
   UiIdentity,
 } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
@@ -44,7 +44,7 @@ export default class SigningServer {
       },
     );
 
-    const data: GetIdentitiesRequest = {
+    const data: GetIdentitiesData = {
       senderUrl,
       requestedIdentities,
     };
@@ -75,7 +75,7 @@ export default class SigningServer {
 
     const { senderUrl } = meta;
 
-    const data: SignAndPostRequest = {
+    const data: SignAndPostData = {
       senderUrl,
       creator: signer.identityToAddress(transaction.creator),
       tx: transaction,

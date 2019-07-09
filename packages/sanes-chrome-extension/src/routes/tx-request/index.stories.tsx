@@ -5,10 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 
-import {
-  Request,
-  SignAndPostRequest,
-} from '../../extension/background/model/signingServer/requestQueueManager';
+import { Request, SignAndPostData } from '../../extension/background/model/signingServer/requestQueueManager';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import { ACCOUNT_STATUS_PAGE } from '../account/index.stories';
 import RejectRequest from './components/RejectRequest';
@@ -50,7 +47,7 @@ storiesOf(TX_REQUEST_PATH, module)
   .add(
     SHOW_TX_REQUEST_PAGE,
     (): JSX.Element => {
-      const { creator, tx } = txRequest.data as SignAndPostRequest;
+      const { creator, tx } = txRequest.data as SignAndPostData;
 
       return (
         <Storybook>
@@ -68,7 +65,7 @@ storiesOf(TX_REQUEST_PATH, module)
   .add(
     SHOW_USERNAME_REQUEST_PAGE,
     (): JSX.Element => {
-      const { creator, tx } = usernameRequest.data as SignAndPostRequest;
+      const { creator, tx } = usernameRequest.data as SignAndPostData;
 
       return (
         <Storybook>

@@ -1,6 +1,6 @@
 import { updateRequestProvider } from '../../updaters/appUpdater';
 import { updateExtensionBadge } from '../../updaters/extensionBadgeUpdater';
-import { GetIdentitiesRequest, RequestQueueManager, SignAndPostRequest } from './requestQueueManager';
+import { GetIdentitiesData, RequestQueueManager, SignAndPostData } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
 
 export async function requestCallback<T>(
@@ -8,7 +8,7 @@ export async function requestCallback<T>(
   senderWhitelist: SenderWhitelist,
   reason: string,
   type: 'getIdentities' | 'signAndPost',
-  data: GetIdentitiesRequest | SignAndPostRequest,
+  data: GetIdentitiesData | SignAndPostData,
   acceptResponse: T,
   rejectResponse: T,
 ): Promise<T> {

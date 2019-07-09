@@ -8,7 +8,7 @@ import * as txsUpdater from '../../updaters/appUpdater';
 import { Db, StringDb } from '../backgroundscript/db';
 import { Persona } from '../persona';
 import SigningServer from './index';
-import { GetIdentitiesRequest, SignAndPostRequest } from './requestQueueManager';
+import { GetIdentitiesData, SignAndPostData } from './requestQueueManager';
 import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
@@ -47,7 +47,7 @@ withChainsDescribe('background script handler for website request', () => {
     expect(req.reject).toBeTruthy();
     expect(req.reason).toEqual(TransactionEncoder.fromJson(request.params).reason);
     expect(req.data.senderUrl).toEqual(sender);
-    expect((req.data as GetIdentitiesRequest).requestedIdentities[0].chainName).toEqual('Ganache');
+    expect((req.data as GetIdentitiesData).requestedIdentities[0].chainName).toEqual('Ganache');
   }
 
   it('resolves to error if sender is unknown', async () => {
@@ -220,7 +220,7 @@ withChainsDescribe('background script handler for website request', () => {
     signingServer.handleRequestMessage(signRequest, sender);
 
     const request = signingServer['requestHandler'].next();
-    const requestData = request.data as SignAndPostRequest;
+    const requestData = request.data as SignAndPostData;
     expect(requestData.creator).not.toBe(undefined);
     expect(requestData.creator).not.toBe(null);
     expect(requestData.creator).toMatch(/0x/);

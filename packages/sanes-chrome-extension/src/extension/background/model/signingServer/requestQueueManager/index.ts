@@ -35,36 +35,36 @@ function isUiIdentity(data: unknown): data is UiIdentity {
   );
 }
 
-export interface GetIdentitiesRequest extends RequestMeta {
+export interface GetIdentitiesData extends RequestMeta {
   readonly requestedIdentities: ReadonlyArray<UiIdentity>;
 }
 
-export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
+export function isGetIdentitiesData(data: unknown): data is GetIdentitiesData {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  const hasSender = typeof (data as GetIdentitiesRequest).senderUrl === 'string';
-  const identities = (data as GetIdentitiesRequest).requestedIdentities;
+  const hasSender = typeof (data as GetIdentitiesData).senderUrl === 'string';
+  const identities = (data as GetIdentitiesData).requestedIdentities;
   const hasIdentities = Array.isArray(identities) && identities.every(isUiIdentity);
 
   return hasIdentities && hasSender;
 }
 
-export interface SignAndPostRequest extends RequestMeta {
+export interface SignAndPostData extends RequestMeta {
   readonly tx: SupportedTransaction;
   readonly creator: Address;
 }
 
-export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequest {
+export function isSignAndPostData(data: unknown): data is SignAndPostData {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  const hasSender = typeof (data as SignAndPostRequest).senderUrl === 'string';
-  const hasCreator = typeof (data as SignAndPostRequest).creator === 'string';
+  const hasSender = typeof (data as SignAndPostData).senderUrl === 'string';
+  const hasCreator = typeof (data as SignAndPostData).creator === 'string';
 
-  const tx: unknown = (data as SignAndPostRequest).tx;
+  const tx: unknown = (data as SignAndPostData).tx;
   const hasSupportedTransaction = isUnsignedTransaction(tx) && isSupportedTransaction(tx);
 
   return hasSender && hasCreator && hasSupportedTransaction;
@@ -74,7 +74,7 @@ export interface Request {
   readonly id: number;
   readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
-  readonly data: GetIdentitiesRequest | SignAndPostRequest;
+  readonly data: GetIdentitiesData | SignAndPostData;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
