@@ -12,9 +12,8 @@ import * as ReactRedux from 'react-redux';
 import icon from '../../assets/iov-logo.svg';
 import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
-import { getExtensionStatus } from '../../communication/status';
 import { history } from '../../routes';
-import { setExtensionStateAction } from '../../store/extension';
+import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { PAYMENT_ROUTE } from '../paths';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -42,7 +41,7 @@ const Welcome = (): JSX.Element => {
 
   const onConnect = async (): Promise<void> => {
     const result = await getExtensionStatus();
-    dispatch(setExtensionStateAction(result.connected, result.installed));
+    dispatch(setExtensionStateAction(result.connected, result.installed, result.keys));
   };
 
   const onSendRequestToBeSigned = async (): Promise<void> => {
@@ -57,7 +56,7 @@ const Welcome = (): JSX.Element => {
         return;
       }
 
-      if (identities.length === 0) {
+      if (Object.keys(identities).length === 0) {
         toast.show('Request for identities rejected', ToastVariant.WARNING);
         return;
       }
