@@ -43,7 +43,6 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
-      {txFee}
       <ListItem>
         <ListItemText
           classes={listItemClasses}
@@ -52,6 +51,7 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
+      {txFee}
     </List>
   );
 };

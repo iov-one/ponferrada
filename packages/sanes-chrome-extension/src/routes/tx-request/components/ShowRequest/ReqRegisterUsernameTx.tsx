@@ -28,8 +28,6 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
         username registration request.
       </Typography>
       <Block marginTop={1} />
-      <List>{txFee}</List>
-      <Block marginTop={1} />
       <Typography variant="body1">Addresses:</Typography>
       <List>
         {tx.addresses.map(address => (
@@ -43,6 +41,8 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
           </ListItem>
         ))}
       </List>
+      <Block marginTop={1} />
+      <List>{txFee}</List>
     </React.Fragment>
   );
 };
