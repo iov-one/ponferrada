@@ -65,7 +65,7 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
         console.log(addresses);
 
         const keys: { [chain: string]: PublicIdentity } = {};
-        for (let i = 0; i < chains.length; i++) {
+        for (let i = 0; i < parsedResult.length; i++) {
           const chain = chains[i];
           keys[chain] = parsedResult[i];
         }
