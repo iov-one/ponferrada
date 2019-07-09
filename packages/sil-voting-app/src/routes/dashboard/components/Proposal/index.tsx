@@ -29,6 +29,9 @@ export interface ProposalProps {
 }
 
 const Proposal = (props: ProposalProps): JSX.Element => {
+  const hasEnded = props.status === 'Ended';
+  const showExpiryDate = !hasEnded;
+
   return (
     <Block width="100%" display="flex" alignItems="center">
       <Block flexGrow={1} margin={2}>
@@ -36,9 +39,9 @@ const Proposal = (props: ProposalProps): JSX.Element => {
         <CreationData author={props.author} id={props.id} creationDate={props.creationDate} />
         <Description description={props.description} />
 
-        {props.status !== 'Ended' && <StatusPending expiryDate={props.expiryDate} />}
+        {showExpiryDate && <StatusPending expiryDate={props.expiryDate} />}
 
-        {props.status === 'Ended' && (
+        {hasEnded && (
           <StatusEnded expiryDate={props.expiryDate} quorum={props.quorum} result={props.result} />
         )}
       </Block>
