@@ -16,8 +16,6 @@ interface Props {
 const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
   const listItemClasses = useTxListItemStyles();
 
-  const txFee = tx.fee ? <TransactionFee fee={tx.fee} /> : undefined;
-
   return (
     <React.Fragment>
       <Typography variant="body1" inline color="primary" id={REQ_REGISTER_USERNAME}>
@@ -42,7 +40,9 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
         ))}
       </List>
       <Block marginTop={1} />
-      <List>{txFee}</List>
+      <List>
+        <TransactionFee fee={tx.fee} />
+      </List>
     </React.Fragment>
   );
 };

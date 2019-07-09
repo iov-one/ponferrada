@@ -16,16 +16,16 @@ export const txListItemSecondaryProps = {
 };
 
 interface Props {
-  readonly fee: Fee;
+  readonly fee: Fee | undefined;
 }
 
 const TransactionFee = ({ fee }: Props): JSX.Element => {
   const listItemClasses = useTxListItemStyles();
 
   const values = new Array<string>();
-  if (fee.tokens) values.push(amountToString(fee.tokens));
-  if (fee.gasLimit) values.push(`Limit: ${fee.gasLimit}`);
-  if (fee.gasPrice) values.push(`Price: ${amountToGwei(fee.gasPrice)}`);
+  if (fee && fee.tokens) values.push(amountToString(fee.tokens));
+  if (fee && fee.gasLimit) values.push(`Limit: ${fee.gasLimit}`);
+  if (fee && fee.gasPrice) values.push(`Price: ${amountToGwei(fee.gasPrice)}`);
 
   return (
     <ListItem>

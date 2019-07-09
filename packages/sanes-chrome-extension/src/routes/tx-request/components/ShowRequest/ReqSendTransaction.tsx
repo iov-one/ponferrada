@@ -15,8 +15,6 @@ interface Props {
 const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
   const listItemClasses = useTxListItemStyles();
 
-  const txFee = tx.fee ? <TransactionFee fee={tx.fee} /> : undefined;
-
   return (
     <List id={REQ_SEND_TX}>
       <ListItem>
@@ -51,7 +49,7 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
-      {txFee}
+      <TransactionFee fee={tx.fee} />
     </List>
   );
 };
