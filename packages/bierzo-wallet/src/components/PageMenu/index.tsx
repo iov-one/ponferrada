@@ -17,15 +17,13 @@ const PageMenu = ({ children, padding = true, renderProps, location }: Props): J
   const theme = useTheme<Theme>();
 
   return (
-    <Block bgcolor={theme.palette.background.default}>
-      <Block display="flex" flexDirection="column" flexGrow={1}>
-        <Header path={location.pathname} />
-        <ErrorBoundary type="inner">
-          <Block display="flex" flexDirection="column" flexGrow={1} padding={padding ? 4 : undefined}>
-            {renderProps !== undefined ? renderProps() : children}
-          </Block>
-        </ErrorBoundary>
-      </Block>
+    <Block display="flex" flexDirection="column" bgcolor={theme.palette.background.default}>
+      <Header path={location.pathname} />
+      <ErrorBoundary type="inner">
+        <Block display="flex" flexDirection="column" padding={padding ? 4 : undefined}>
+          {renderProps !== undefined ? renderProps() : children}
+        </Block>
+      </ErrorBoundary>
     </Block>
   );
 };
