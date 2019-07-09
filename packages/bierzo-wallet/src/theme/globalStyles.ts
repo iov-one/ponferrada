@@ -1,6 +1,7 @@
 import 'normalize.css';
 
 import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
+import { backgroundColor } from 'medulas-react-components/lib/theme/utils/variables';
 
 export const globalStyles = makeStyles({
   '@global': {
@@ -20,6 +21,7 @@ export const globalStyles = makeStyles({
       padding: '0',
       fontFamily: '"Muli", sans-serif',
       boxSizing: 'border-box',
+      backgroundColor: backgroundColor,
     },
     '#root': {
       position: 'absolute',
