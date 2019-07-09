@@ -30,7 +30,8 @@ function extensionContext(): boolean {
 }
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const request = generateGetIdentitiesRequest();
+  const chains = ['ethereum-eip155-5777'];
+  const request = generateGetIdentitiesRequest(chains);
 
   const isValid = extensionContext();
   if (!isValid) {
