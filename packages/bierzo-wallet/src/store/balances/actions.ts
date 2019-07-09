@@ -1,26 +1,33 @@
+import { PublicKeyBundle } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/core';
+
 import { getConfig } from '../../config';
 import { getConnectionFor } from '../../logic/connection';
 import { amountToString } from '../../utils/balances';
 import { AddBalancesActionType } from './reducer';
 
-export async function getBalances(): Promise<{ [ticker: string]: string }> {
+export async function getBalances(keys: { [chain: string]: string }): Promise<{ [ticker: string]: string }> {
   const config = getConfig();
   const chains = config.chains;
 
   const balances: { [ticker: string]: string } = {};
-  const token = 'FAKE_TOKEN';
-  const pubkey: any = 'fakePubKey';
 
   for (const chain of chains) {
     const connection = await getConnectionFor(chain.chainSpec);
-    const account = await connection.getAccount({ pubkey });
+    const chainId = connection.chainId() as string;
+    const plainPubkey = keys[chainId];
+    if (!plainPubkey) {
+      continue;
+    }
 
+    const pubkey: PublicKeyBundle = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
+    const account = await connection.getAccount({ pubkey });
     if (!account) {
       continue;
     }
 
     for (const balance of account.balance) {
-      balances[token] = amountToString(balance);
+      balances[balance.tokenTicker] = amountToString(balance);
     }
   }
 
