@@ -1,5 +1,4 @@
 import { Address, isUnsignedTransaction } from '@iov/bcp';
-import { Omit } from '@material-ui/core';
 
 import { isSupportedTransaction, SupportedTransaction } from '../../persona';
 
@@ -97,7 +96,6 @@ export class RequestQueueManager {
     }
   }
 
-  // TODO use Omit included in TS when upgrade to 3.5
   public add(req: Omit<Request, 'id'>): number {
     const size = this.instance.push({ ...req, id: this.counter });
     this.counter = this.counter + 1;
