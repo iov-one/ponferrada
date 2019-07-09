@@ -1,5 +1,4 @@
 import { Address, isUnsignedTransaction } from '@iov/bcp';
-import { Omit } from '@material-ui/core';
 
 import { isSupportedTransaction, SupportedTransaction } from '../../persona';
 
@@ -15,53 +14,78 @@ export function isRequestMeta(data: unknown): data is RequestMeta {
   return typeof (data as RequestMeta).senderUrl === 'string';
 }
 
-export interface GetIdentitiesData {
-  name: string;
-  address: Address;
+/**
+ * A version of a BCP Identity made to be displayed in the UI.
+ *
+ * The BCP chain ID is represented as a human readable blockchain name
+ * and the BCP public key is converted into a printable address.
+ */
+export interface UiIdentity {
+  readonly chainName: string;
+  readonly address: Address;
 }
 
-export interface GetIdentitiesRequest extends RequestMeta {
-  readonly requestedIdentities: ReadonlyArray<GetIdentitiesData>;
-}
-
-export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
+function isUiIdentity(data: unknown): data is UiIdentity {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  const hasSender = typeof (data as GetIdentitiesRequest).senderUrl === 'string';
-  const identities = (data as GetIdentitiesRequest).requestedIdentities;
-  const hasIdentities = Array.isArray(identities) && identities.every(item => typeof item.name === 'string');
+  return (
+    typeof (data as UiIdentity).chainName === 'string' && typeof (data as UiIdentity).address === 'string'
+  );
+}
+
+export interface GetIdentitiesData extends RequestMeta {
+  readonly requestedIdentities: ReadonlyArray<UiIdentity>;
+}
+
+export function isGetIdentitiesData(data: unknown): data is GetIdentitiesData {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+
+  const hasSender = typeof (data as GetIdentitiesData).senderUrl === 'string';
+  const identities = (data as GetIdentitiesData).requestedIdentities;
+  const hasIdentities = Array.isArray(identities) && identities.every(isUiIdentity);
 
   return hasIdentities && hasSender;
 }
 
-export interface SignAndPostRequest extends RequestMeta {
+export interface SignAndPostData extends RequestMeta {
   readonly tx: SupportedTransaction;
   readonly creator: Address;
 }
 
-export function isSignAndPostRequestData(data: unknown): data is SignAndPostRequest {
+export function isSignAndPostData(data: unknown): data is SignAndPostData {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  const hasSender = typeof (data as SignAndPostRequest).senderUrl === 'string';
-  const hasCreator = typeof (data as SignAndPostRequest).creator === 'string';
+  const hasSender = typeof (data as SignAndPostData).senderUrl === 'string';
+  const hasCreator = typeof (data as SignAndPostData).creator === 'string';
 
-  const tx: unknown = (data as SignAndPostRequest).tx;
+  const tx: unknown = (data as SignAndPostData).tx;
   const hasSupportedTransaction = isUnsignedTransaction(tx) && isSupportedTransaction(tx);
 
   return hasSender && hasCreator && hasSupportedTransaction;
 }
 
-export interface Request {
+export interface Request<
+  T extends GetIdentitiesData | SignAndPostData = GetIdentitiesData | SignAndPostData
+> {
   readonly id: number;
-  readonly type: 'getIdentities' | 'signAndPost';
   readonly reason: string;
-  readonly data: GetIdentitiesRequest | SignAndPostRequest;
+  readonly data: T;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
+}
+
+export function isGetIdentitiesRequest(request: Request): request is Request<GetIdentitiesData> {
+  return isGetIdentitiesData(request.data);
+}
+
+export function isSignAndPostRequest(request: Request): request is Request<SignAndPostData> {
+  return isSignAndPostData(request.data);
 }
 
 export class RequestQueueManager {
@@ -97,7 +121,6 @@ export class RequestQueueManager {
     }
   }
 
-  // TODO use Omit included in TS when upgrade to 3.5
   public add(req: Omit<Request, 'id'>): number {
     const size = this.instance.push({ ...req, id: this.counter });
     this.counter = this.counter + 1;

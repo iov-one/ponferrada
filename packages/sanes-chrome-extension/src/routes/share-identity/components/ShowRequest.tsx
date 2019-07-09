@@ -6,7 +6,7 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 
-import { GetIdentitiesData } from '../../../extension/background/model/signingServer/requestQueueManager';
+import { UiIdentity } from '../../../extension/background/model/signingServer/requestQueueManager';
 import { SHARE_IDENTITY } from '../../paths';
 
 export const SHARE_IDENTITY_SHOW = `${SHARE_IDENTITY}_show`;
@@ -15,7 +15,7 @@ interface Props {
   readonly onAcceptRequest: () => void;
   readonly showRejectView: () => void;
   readonly sender: string;
-  readonly data: ReadonlyArray<GetIdentitiesData>;
+  readonly data: ReadonlyArray<UiIdentity>;
 }
 
 const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.Element => (
@@ -30,7 +30,7 @@ const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.E
       </Typography>
     </Block>
     <List>
-      {data.map((identity: GetIdentitiesData, index: number) => {
+      {data.map((identity: UiIdentity, index: number) => {
         const secondaryProps = {
           noWrap: true,
         };
@@ -39,8 +39,8 @@ const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.E
           <React.Fragment key={`${index}`}>
             <ListItem>
               <ListItemText
-                primary={identity.name}
-                secondary={identity.address as string}
+                primary={identity.chainName}
+                secondary={identity.address}
                 secondaryTypographyProps={secondaryProps}
               />
             </ListItem>

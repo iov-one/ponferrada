@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
 import { RequestContext } from '../../context/RequestProvider';
-import { isSignAndPostRequestData } from '../../extension/background/model/signingServer/requestQueueManager';
+import { isSignAndPostData } from '../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../store/reducers';
 import { REQUEST_ROUTE } from '../paths';
 import { checkRequest } from '../requests';
@@ -19,7 +19,7 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
   checkRequest(req, location, toast);
   const { data, accept, reject } = req!; // eslint-disable-line
 
-  if (!isSignAndPostRequestData(data)) {
+  if (!isSignAndPostData(data)) {
     throw new Error('Received request with a wrong sign and post request data');
   }
 

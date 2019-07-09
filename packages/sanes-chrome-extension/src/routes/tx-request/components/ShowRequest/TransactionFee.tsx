@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import { ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
 import React from 'react';
 
-import { amountToString } from '../../../../utils/balances';
+import { amountToGwei, amountToString } from '../../../../utils/balances';
 
 export const useTxListItemStyles = makeStyles({
   root: {
@@ -16,20 +16,23 @@ export const txListItemSecondaryProps = {
 };
 
 interface Props {
-  readonly fee: Fee;
+  readonly fee: Fee | undefined;
 }
 
 const TransactionFee = ({ fee }: Props): JSX.Element => {
   const listItemClasses = useTxListItemStyles();
 
-  if (!fee.tokens) return <React.Fragment />;
+  const values = new Array<string>();
+  if (fee && fee.tokens) values.push(amountToString(fee.tokens));
+  if (fee && fee.gasLimit) values.push(`Limit: ${fee.gasLimit}`);
+  if (fee && fee.gasPrice) values.push(`Price: ${amountToGwei(fee.gasPrice)}`);
 
   return (
     <ListItem>
       <ListItemText
         classes={listItemClasses}
         primary="Fee"
-        secondary={amountToString(fee.tokens)}
+        secondary={values.length !== 0 ? values.join(' ') : 'none'}
         secondaryTypographyProps={txListItemSecondaryProps}
       />
     </ListItem>

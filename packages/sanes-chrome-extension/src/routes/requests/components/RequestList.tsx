@@ -8,7 +8,10 @@ import { List, ListItem, ListItemAvatar, ListItemText } from 'medulas-react-comp
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 
-import { Request } from '../../../extension/background/model/signingServer/requestQueueManager';
+import {
+  isGetIdentitiesRequest,
+  Request,
+} from '../../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../../store/reducers';
 import { SHARE_IDENTITY, TX_REQUEST } from '../../paths';
 
@@ -33,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const REQUEST_FIELD = 'req';
 
 function buildClickHandlerFrom(request: Request): () => void {
-  const pathname = request.type === 'getIdentities' ? SHARE_IDENTITY : TX_REQUEST;
+  const pathname = isGetIdentitiesRequest(request) ? SHARE_IDENTITY : TX_REQUEST;
 
   return () =>
     history.push({
@@ -62,7 +65,7 @@ const RequestList = ({ requests }: Props): JSX.Element => {
           const first = index === 0;
           const firstElemClass = first ? classes.first : undefined;
           const onRequestClick = buildClickHandlerFrom(req);
-          const text = req.type === 'getIdentities' ? 'Get Identities Request' : 'Sign Request';
+          const text = isGetIdentitiesRequest(req) ? 'Get Identities Request' : 'Sign Request';
 
           return (
             <React.Fragment key={`${index}`}>

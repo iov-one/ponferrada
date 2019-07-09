@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 
-import { GetIdentitiesRequest } from '../../extension/background/model/signingServer/requestQueueManager';
+import { GetIdentitiesData } from '../../extension/background/model/signingServer/requestQueueManager';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import { ACCOUNT_STATUS_PAGE } from '../account/index.stories';
 import RejectRequest from './components/RejectRequest';
@@ -15,23 +15,23 @@ const SHARE_IDENTITY_PATH = `${CHROME_EXTENSION_ROOT}/Share Identity`;
 const SHOW_REQUEST_PAGE = 'Show Request page';
 const REJECT_REQUEST_PAGE = 'Reject Request page';
 
-const data: GetIdentitiesRequest = {
+const data: GetIdentitiesData = {
   senderUrl: 'http://finnex.com',
   requestedIdentities: [
     {
-      name: 'Ganache',
+      chainName: 'Ganache',
       address: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5d3aaaa' as Address,
     },
     {
-      name: 'Ganache',
+      chainName: 'Ganache',
       address: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5d3aaaa' as Address,
     },
     {
-      name: 'Ganache',
+      chainName: 'Ganache',
       address: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5d3aaaa' as Address,
     },
     {
-      name: 'Ganache',
+      chainName: 'Ganache',
       address: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5d3aaaa' as Address,
     },
   ],
