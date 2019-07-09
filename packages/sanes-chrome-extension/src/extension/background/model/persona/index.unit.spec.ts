@@ -86,7 +86,7 @@ withChainsDescribe('Persona', () => {
       }).not.toThrow();
 
       persona.destroy();
-    });
+    }, 10000);
 
     it('returns the right mnemonic', async () => {
       const db = new Db().getDb();
@@ -97,7 +97,7 @@ withChainsDescribe('Persona', () => {
       expect(persona.mnemonic).toEqual(presetMnemonic);
 
       persona.destroy();
-    });
+    }, 10000);
   });
 
   describe('getAccounts', () => {
@@ -111,7 +111,7 @@ withChainsDescribe('Persona', () => {
       expect(accounts[0].label).toEqual('Account 0');
 
       persona.destroy();
-    });
+    }, 10000);
 
     it('can get accounts with human readable addresses', async () => {
       const mnemonic = Bip39.encode(await Random.getBytes(16)).asString();
@@ -230,6 +230,6 @@ withChainsDescribe('Persona', () => {
       }
 
       persona.destroy();
-    });
+    }, 10000);
   });
 });
