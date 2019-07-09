@@ -42,51 +42,42 @@ const usernameRequest: Request<SignAndPostData> = {
 };
 
 storiesOf(TX_REQUEST_PATH, module)
-  .add(
-    SHOW_TX_REQUEST_PAGE,
-    (): JSX.Element => {
-      const { creator, tx } = txRequest.data;
+  .add(SHOW_TX_REQUEST_PAGE, () => {
+    const { creator, tx } = txRequest.data;
 
-      return (
-        <Storybook>
-          <ShowRequest
-            tx={tx}
-            creator={creator}
-            sender={txRequest.data.senderUrl}
-            onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
-            showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
-          />
-        </Storybook>
-      );
-    },
-  )
-  .add(
-    SHOW_USERNAME_REQUEST_PAGE,
-    (): JSX.Element => {
-      const { creator, tx } = usernameRequest.data;
-
-      return (
-        <Storybook>
-          <ShowRequest
-            tx={tx}
-            creator={creator}
-            sender={usernameRequest.data.senderUrl}
-            onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
-            showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
-          />
-        </Storybook>
-      );
-    },
-  )
-  .add(
-    REJECT_REQUEST_PAGE,
-    (): JSX.Element => (
+    return (
       <Storybook>
-        <RejectRequest
+        <ShowRequest
+          tx={tx}
+          creator={creator}
           sender={txRequest.data.senderUrl}
-          onBack={linkTo(TX_REQUEST_PATH, SHOW_TX_REQUEST_PAGE)}
-          onRejectRequest={action('onAcceptRequest')}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
-    ),
-  );
+    );
+  })
+  .add(SHOW_USERNAME_REQUEST_PAGE, () => {
+    const { creator, tx } = usernameRequest.data;
+
+    return (
+      <Storybook>
+        <ShowRequest
+          tx={tx}
+          creator={creator}
+          sender={usernameRequest.data.senderUrl}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
+        />
+      </Storybook>
+    );
+  })
+  .add(REJECT_REQUEST_PAGE, () => (
+    <Storybook>
+      <RejectRequest
+        sender={txRequest.data.senderUrl}
+        onBack={linkTo(TX_REQUEST_PATH, SHOW_TX_REQUEST_PAGE)}
+        onRejectRequest={action('onAcceptRequest')}
+      />
+    </Storybook>
+  ));
