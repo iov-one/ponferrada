@@ -14,13 +14,29 @@ export function isRequestMeta(data: unknown): data is RequestMeta {
   return typeof (data as RequestMeta).senderUrl === 'string';
 }
 
-export interface GetIdentitiesData {
-  name: string;
-  address: Address;
+/**
+ * A version of a BCP Identity made to be displayed in the UI.
+ *
+ * The BCP chain ID is represented as a human readable blockchain name
+ * and the BCP public key is converted into a printable address.
+ */
+export interface UiIdentity {
+  readonly chainName: string;
+  readonly address: Address;
+}
+
+function isUiIdentity(data: unknown): data is UiIdentity {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+
+  return (
+    typeof (data as UiIdentity).chainName === 'string' && typeof (data as UiIdentity).address === 'string'
+  );
 }
 
 export interface GetIdentitiesRequest extends RequestMeta {
-  readonly requestedIdentities: ReadonlyArray<GetIdentitiesData>;
+  readonly requestedIdentities: ReadonlyArray<UiIdentity>;
 }
 
 export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
@@ -30,7 +46,7 @@ export function isGetIdentityData(data: unknown): data is GetIdentitiesRequest {
 
   const hasSender = typeof (data as GetIdentitiesRequest).senderUrl === 'string';
   const identities = (data as GetIdentitiesRequest).requestedIdentities;
-  const hasIdentities = Array.isArray(identities) && identities.every(item => typeof item.name === 'string');
+  const hasIdentities = Array.isArray(identities) && identities.every(isUiIdentity);
 
   return hasIdentities && hasSender;
 }

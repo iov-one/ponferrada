@@ -13,6 +13,7 @@ import {
   RequestMeta,
   RequestQueueManager,
   SignAndPostRequest,
+  UiIdentity,
 } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
 
@@ -32,14 +33,16 @@ export default class SigningServer {
     const { senderUrl } = meta;
     const chainNames = (await getConfigurationFile()).names;
 
-    const requestedIdentities = matchingIdentities.map(matchedIdentity => {
-      const chainName = chainNames[matchedIdentity.chainId];
+    const requestedIdentities = matchingIdentities.map(
+      (matchedIdentity): UiIdentity => {
+        const chainName = chainNames[matchedIdentity.chainId];
 
-      return {
-        name: chainName,
-        address: signer.identityToAddress(matchedIdentity),
-      };
-    });
+        return {
+          chainName: chainName,
+          address: signer.identityToAddress(matchedIdentity),
+        };
+      },
+    );
 
     const data: GetIdentitiesRequest = {
       senderUrl,
