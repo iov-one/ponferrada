@@ -6,6 +6,7 @@ import * as actions from './actions';
 export interface ExtensionState {
   readonly connected: boolean;
   readonly installed: boolean;
+  readonly keys: { [chain: string]: string };
 }
 
 export interface SetExtensionStateActionType extends Action {
@@ -18,6 +19,7 @@ export type ExtensionActions = ActionType<typeof actions>;
 const initState: ExtensionState = {
   connected: false,
   installed: false,
+  keys: {},
 };
 
 export function extensionReducer(

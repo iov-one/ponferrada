@@ -33,7 +33,8 @@ export async function getExtensionStatus(): Promise<ExtensionState> {
 export const setExtensionStateAction = (
   connected: boolean,
   installed: boolean,
+  keys: { [chain: string]: string },
 ): SetExtensionStateActionType => ({
   type: '@@extension/SET_STATE',
-  payload: { connected, installed },
+  payload: { connected, installed, keys },
 });
