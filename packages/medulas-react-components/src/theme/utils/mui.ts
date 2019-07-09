@@ -2,7 +2,7 @@ import grey from '@material-ui/core/colors/grey';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 
-import { lightFont, secondaryColor, white } from './variables';
+import { backgroundColor, lightFont, secondaryColor, white } from './variables';
 
 const theme = createMuiTheme({
   palette: {
@@ -21,7 +21,7 @@ const theme = createMuiTheme({
       secondary: 'rgba(111, 116, 154, 0.47)',
     },
     background: {
-      default: '#f5f7f9',
+      default: backgroundColor,
     },
     action: {
       disabled: white,
