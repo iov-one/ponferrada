@@ -10,7 +10,7 @@ import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import { ACCOUNT_STATUS_PAGE } from '../account/index.stories';
 import RejectRequest from './components/RejectRequest';
 import ShowRequest from './components/ShowRequest';
-import { getTransaction, getUsernameTransaction } from './test';
+import { getCashTransaction, getUsernameTransaction } from './test';
 
 const TX_REQUEST_PATH = `${CHROME_EXTENSION_ROOT}/Transaction Request`;
 const SHOW_TX_REQUEST_PAGE = 'Show TX Request page';
@@ -25,7 +25,7 @@ const txRequest: Request<SignAndPostData> = {
   data: {
     senderUrl: 'http://localhost/',
     creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
-    tx: getTransaction(),
+    tx: getCashTransaction(),
   },
 };
 

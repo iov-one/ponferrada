@@ -8,7 +8,7 @@ import { resetHistory, RootState } from '../../store/reducers';
 import { click } from '../../utils/test/dom';
 import { travelToRequests, whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { ACCOUNT_STATUS_ROUTE, SHARE_IDENTITY, TX_REQUEST } from '../paths';
-import { getTransaction } from '../tx-request/test';
+import { getCashTransaction } from '../tx-request/test';
 import { getFirstRequest, getRequests } from './test/operateRequests';
 
 describe('DOM > Feature > Requests', () => {
@@ -26,7 +26,7 @@ describe('DOM > Feature > Requests', () => {
     data: {
       senderUrl: 'www.sender2.com',
       creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
-      tx: getTransaction(),
+      tx: getCashTransaction(),
     },
     accept: jest.fn(),
     reject: jest.fn(),

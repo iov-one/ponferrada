@@ -12,7 +12,7 @@ import { sleep } from '../../utils/timer';
 import { REQUEST_ROUTE } from '../paths';
 import { REQ_REGISTER_USERNAME } from './components/ShowRequest/ReqRegisterUsernameTx';
 import { REQ_SEND_TX } from './components/ShowRequest/ReqSendTransaction';
-import { getTransaction, getUsernameTransaction } from './test';
+import { getCashTransaction, getUsernameTransaction } from './test';
 import {
   checkPermanentRejection,
   clickOnBackButton,
@@ -27,7 +27,7 @@ const sendRequests: ReadonlyArray<Request> = [
     data: {
       senderUrl: 'http://finnex.com',
       creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
-      tx: getTransaction(),
+      tx: getCashTransaction(),
     },
     accept: jest.fn(),
     reject: jest.fn(),

@@ -11,7 +11,7 @@ import {
 import { RegisterUsernameTx } from '@iov/bns';
 import { Encoding } from '@iov/encoding';
 
-export function getTransaction(): SendTransaction {
+export function getCashTransaction(): SendTransaction {
   const defaultCreator: PublicIdentity = {
     chainId: 'some-chain' as ChainId,
     pubkey: {
