@@ -1,4 +1,4 @@
-import { PublicKeyBundle } from '@iov/bcp';
+import { PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 
 import { getConfig } from '../../config';
@@ -20,8 +20,8 @@ export async function getBalances(keys: { [chain: string]: string }): Promise<{ 
       continue;
     }
 
-    const pubkey: PublicKeyBundle = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
-    const account = await connection.getAccount({ pubkey });
+    const pubIdentity: PublicIdentity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
+    const account = await connection.getAccount({ pubkey: pubIdentity.pubkey });
     if (!account) {
       continue;
     }
