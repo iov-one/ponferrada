@@ -6,13 +6,13 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResp
 
 import { extensionId } from '..';
 
-export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
+export const generateGetIdentitiesRequest = (chains: ReadonlyArray<string>): JsonRpcRequest => ({
   jsonrpc: '2.0',
   id: makeJsonRpcId(),
   method: 'getIdentities',
   params: {
     reason: TransactionEncoder.toJson('I would like to know who you are on Ethereum'),
-    chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
+    chainIds: TransactionEncoder.toJson(chains),
   },
 });
 
@@ -23,7 +23,7 @@ function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentit
   return data.every(isPublicIdentity);
 }
 
-type GetIdentitiesResponse = ReadonlyArray<PublicIdentity> | undefined;
+type GetIdentitiesResponse = { [chain: string]: PublicIdentity } | undefined;
 
 function extensionContext(): boolean {
   return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
@@ -49,14 +49,14 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
         const parsedResponse = parseJsonRpcResponse2(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
           console.error(parsedResponse.error.message);
-          resolve([]);
+          resolve({});
           return;
         }
 
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
         if (!isArrayOfPublicIdentity(parsedResult)) {
           console.error('Got unexpected type of result');
-          resolve([]);
+          resolve({});
           return;
         }
 
@@ -64,10 +64,16 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
         const addresses = parsedResult.map(ident => ethereumCodec.identityToAddress(ident));
         console.log(addresses);
 
-        resolve(parsedResult);
+        const keys: { [chain: string]: PublicIdentity } = {};
+        for (let i = 0; i < chains.length; i++) {
+          const chain = chains[i];
+          keys[chain] = parsedResult[i];
+        }
+
+        resolve(keys);
       } catch (error) {
         console.error(error);
-        resolve([]);
+        resolve({});
       }
     });
   });
