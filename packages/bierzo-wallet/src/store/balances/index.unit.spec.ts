@@ -40,6 +40,11 @@ withChainsDescribe('Tokens reducer', () => {
     store.dispatch(addBalancesAction(tokens));
 
     const balances = store.getState().balances;
-    expect(balances).toEqual({ ETH: '100 ETH' });
+    const ethBalance = {
+      fractionalDigits: 18,
+      quantity: '100000000000000000000',
+      tokenTicker: 'ETH',
+    };
+    expect(balances).toEqual({ ETH: ethBalance });
   });
 });
