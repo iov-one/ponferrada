@@ -1,9 +1,11 @@
 import { Amount, TokenTicker } from '@iov/bcp';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import * as React from 'react';
-import PageMenu from '~/components/pages/PageMenu';
-import { RootMatchMedia } from '~/utils/storybook';
-import Layout from './index';
+import React from 'react';
+
+import PageMenu from '../../components/PageMenu';
+import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
+import Layout from './components/index';
 
 const TOKENS: ReadonlyArray<Amount> = [
   {
@@ -22,31 +24,29 @@ const NO_TOKENS: ReadonlyArray<Amount> = [];
 
 const ACCOUNT_NAME = 'adolfo*iov';
 
-const renderProps = (tokens: ReadonlyArray<Amount>) => (phone: boolean) => (
-  <Layout
-    name={ACCOUNT_NAME}
-    tokens={tokens}
-    phone={phone}
-    onReceivePayment={() => true}
-    onSendPayment={() => true}
-  />
-);
-
-storiesOf('Routes /balance', module)
-  .add('Balance view for desktop', () => (
-    <RootMatchMedia matchMedia={false}>
-      <PageMenu phoneFullWidth renderProps={renderProps(TOKENS)} />
-    </RootMatchMedia>
+storiesOf(`${WALLET_ROOT}/balance`, module)
+  .addParameters({ viewport: { defaultViewport: 'responsive' } })
+  .add('View', () => (
+    <DecoratedStorybook>
+      <PageMenu>
+        <Layout
+          name={ACCOUNT_NAME}
+          tokens={TOKENS}
+          onReceivePayment={action('onReceivePayment')}
+          onSendPayment={action('onSendPayment')}
+        />
+      </PageMenu>
+    </DecoratedStorybook>
   ))
-  .add('Balance view without currencies', () => (
-    <RootMatchMedia matchMedia={false}>
-      <PageMenu phoneFullWidth renderProps={renderProps(NO_TOKENS)} />
-    </RootMatchMedia>
-  ))
-  .add('Balance view for phones', () => (
-    <RootMatchMedia matchMedia={true}>
-      <div style={{ maxWidth: '360px' }}>
-        <PageMenu phoneFullWidth renderProps={renderProps(TOKENS)} />
-      </div>
-    </RootMatchMedia>
+  .add('View without tokens', () => (
+    <DecoratedStorybook>
+      <PageMenu>
+        <Layout
+          name={ACCOUNT_NAME}
+          tokens={NO_TOKENS}
+          onReceivePayment={action('onReceivePayment')}
+          onSendPayment={action('onSendPayment')}
+        />
+      </PageMenu>
+    </DecoratedStorybook>
   ));
