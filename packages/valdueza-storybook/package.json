@@ -5,7 +5,7 @@
   "scripts": {
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9009 -s public",
-    "test": "CI=true react-scripts test --env=jsdom"
+    "test": "TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test --env=jsdom"
   },
   "browserslist": [
     ">0.2%",

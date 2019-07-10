@@ -8226,7 +8226,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     className="MuiBox-root MuiBox-root-4273"
   >
     <div
-      className="MuiBox-root MuiBox-root-4276"
+      className="MuiBox-root MuiBox-root-4277"
     >
       <div
         className="MuiDrawer-root MuiDrawer-docked"
@@ -8239,7 +8239,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
           >
             <div
               aria-disabled={false}
-              className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+              className="MuiButtonBase-root MuiListItem-root makeStyles-activeFilter-4276 MuiListItem-gutters MuiListItem-button"
               onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -8346,13 +8346,608 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
       </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-4340"
+      className="MuiBox-root MuiBox-root-4341"
     >
-      <h6
-        className="MuiTypography-root MuiTypography-h6"
+      <div
+        className="MuiBox-root MuiBox-root-4342"
       >
-        LIST OF PROPOSALS
-      </h6>
+        <div
+          className="MuiBox-root MuiBox-root-4343"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-4344"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-h6"
+            >
+              title1
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root-4346"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Active
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4348"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              Author: 
+              author1
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root-4350"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Proposal ID: 
+                qwereqwer
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-4352"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Created on 
+                12/10/1995, 1:00:00 AM
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4354"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              short description
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4358"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4359 MuiTypography-body1"
+            >
+              Expires on 
+              12/10/2020, 4:00:00 AM
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root-4360"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-4361"
+              >
+                <img
+                  alt="Delete Icon"
+                  className="makeStyles-root-4231 makeStyles-deleteIcon-4356"
+                  src="delete.svg"
+                />
+                <p
+                  className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4362 MuiTypography-body1"
+                >
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4363 makeStyles-status-4357"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              This poll results will be available until 
+              12/10/2020, 4:00:00 AM
+            </p>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-4365"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Your Vote:
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root-4367"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Yes
+              </span>
+            </button>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4385"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                No
+              </span>
+            </button>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4386"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Abstain
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-4387"
+      />
+      <div
+        className="MuiBox-root MuiBox-root-4388"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-4389"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-4390"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-h6"
+            >
+              title2
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root-4392"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Submitted
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4394"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              Author: 
+              author2
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root-4396"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Proposal ID: 
+                asdfasdf
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-4398"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Created on 
+                4/3/2017, 8:00:00 AM
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4400"
+          >
+            <p
+              className="MuiTypography-root makeStyles-inline-4237 MuiTypography-body1"
+            >
+              Really Long Description:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam massa, in comm... 
+            </p>
+            <p
+              className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4402 makeStyles-inline-4237 makeStyles-link-4238 MuiTypography-body1"
+              onClick={[Function]}
+            >
+              Read more
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4408"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4409 MuiTypography-body1"
+            >
+              Expires on 
+              5/5/2023, 3:00:00 AM
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root-4410"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-4411"
+              >
+                <img
+                  alt="Delete Icon"
+                  className="makeStyles-root-4231 makeStyles-deleteIcon-4356"
+                  src="delete.svg"
+                />
+                <p
+                  className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4412 MuiTypography-body1"
+                >
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4413 makeStyles-status-4357"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              This poll results will be available until 
+              5/5/2023, 3:00:00 AM
+            </p>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-4415"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Your Vote:
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root-4417"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Yes
+              </span>
+            </button>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4418"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                No
+              </span>
+            </button>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4419"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Abstain
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-4420"
+      />
+      <div
+        className="MuiBox-root MuiBox-root-4421"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-4422"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-4423"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-h6"
+            >
+              title3
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root-4425"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Ended
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4427"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              Author: 
+              author3
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root-4429"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Proposal ID: 
+                zxcvzxcv
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-4431"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Created on 
+                1/3/2010, 4:00:00 AM
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4433"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              short description again
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4437"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4438 MuiTypography-body1"
+            >
+              Expired on 
+              6/5/2017, 3:00:00 AM
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root-4439"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4440 MuiTypography-body1"
+              >
+                Quorum: 
+                30
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-4441"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4442 MuiTypography-body1"
+              >
+                Total votes: 
+                25
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-4443"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight-4239 makeStyles-weight-4444 MuiTypography-body1"
+              >
+                Result: 
+                Yes
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4445 makeStyles-status-4435"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-4446 makeStyles-winnerBar-4436"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                60%
+                 
+                Yes
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-4448"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Your Vote:
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root-4450"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Yes
+              </span>
+            </button>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4451"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                No
+              </span>
+            </button>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-4452"
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Abstain
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -8360,19 +8955,19 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-4346 makeStyles-login-4342"
+  className="MuiBox-root MuiBox-root-4457 makeStyles-login-4453"
 >
   <div
-    className="MuiBox-root MuiBox-root-4347 makeStyles-icon-4343"
+    className="MuiBox-root MuiBox-root-4458 makeStyles-icon-4454"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-4348"
+      className="makeStyles-root-4459"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-4353"
+    className="MuiBox-root MuiBox-root-4464"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -8384,7 +8979,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-4344 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-4455 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
