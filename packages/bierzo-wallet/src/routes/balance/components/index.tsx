@@ -74,7 +74,6 @@ const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props)
       <Block flexGrow={1} />
       <Block bgcolor={theme.palette.background.paper} height="unset" width={450}>
         <Block padding={4} display="flex" flexDirection="column">
-          <Block margin={1} />
           <Typography variant="h5" align="center" weight="light">
             {name ? name : '--'}
           </Typography>
@@ -116,10 +115,8 @@ const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props)
               </Typography>
             </Tooltip>
           </Block>
-          <Block margin={1} />
         </Block>
       </Block>
-      <Block flexGrow={1} />
     </Block>
   );
 };
