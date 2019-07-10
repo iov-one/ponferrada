@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, Theme } from '@material-ui/core';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
@@ -8,9 +8,13 @@ import { STATUS_BACKGROUND } from '../../../../theme/css';
 import { STATUS_BORDER } from '../../../../theme/css';
 import { VoteResult } from '.';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   status: {
     border: `1px solid ${STATUS_BORDER}`,
+    borderRadius: theme.spacing(2),
+  },
+  winnerBar: {
+    borderRadius: theme.spacing(2),
   },
 }));
 
@@ -45,11 +49,16 @@ const getWinner = (result: VoteResult): VoteWinner => {
 const StatusEnded = (props: Props): JSX.Element => {
   const classes = useStyles();
 
+  const expiryDate = (props.expiryDate as ReadonlyDate).toLocaleString();
+  const totalVotes = getTotalVotes(props.result);
+  const winnerVote = getWinner(props.result).vote;
+  const winnerPercentage = getWinner(props.result).percentage + '%';
+
   return (
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expired on {`${(props.expiryDate as ReadonlyDate).toLocaleString()}`}
+          Expired on {expiryDate}
         </Typography>
         <React.Fragment>
           <Block marginLeft={2}>
@@ -59,25 +68,20 @@ const StatusEnded = (props: Props): JSX.Element => {
           </Block>
           <Block marginLeft={2}>
             <Typography variant="body1" weight="semibold">
-              Total votes: {getTotalVotes(props.result)}
+              Total votes: {totalVotes}
             </Typography>
           </Block>
           <Block marginLeft={2}>
             <Typography variant="body1" weight="semibold">
-              Result: {getWinner(props.result).vote}
+              Result: {winnerVote}
             </Typography>
           </Block>
         </React.Fragment>
       </Block>
-      <Block width="100%" borderRadius="16px" className={classes.status}>
-        <Block
-          padding={1}
-          bgcolor={STATUS_BACKGROUND}
-          borderRadius="16px"
-          width={getWinner(props.result).percentage + '%'}
-        >
+      <Block width="100%" className={classes.status}>
+        <Block padding={1} bgcolor={STATUS_BACKGROUND} width={winnerPercentage} className={classes.winnerBar}>
           <Typography variant="body1">
-            {getWinner(props.result).percentage + '%'} {getWinner(props.result).vote}
+            {winnerPercentage} {winnerVote}
           </Typography>
         </Block>
       </Block>
