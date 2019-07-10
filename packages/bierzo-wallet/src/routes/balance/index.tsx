@@ -19,16 +19,16 @@ const Balance = (): JSX.Element => {
   const tokens: ReadonlyArray<Amount> = [];
   const iovAddress = `${name}*iov`;
 
-  const renderProps = (): JSX.Element => (
-    <Layout
-      onSendPayment={onSendPayment}
-      onReceivePayment={onReceivePayment}
-      name={iovAddress}
-      tokens={tokens}
-    />
+  return (
+    <PageMenu>
+      <Layout
+        onSendPayment={onSendPayment}
+        onReceivePayment={onReceivePayment}
+        name={iovAddress}
+        tokens={tokens}
+      />
+    </PageMenu>
   );
-
-  return <PageMenu renderProps={renderProps} />;
 };
 
 export default Balance;
