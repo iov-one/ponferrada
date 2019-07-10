@@ -38,9 +38,7 @@ const Proposal = (props: ProposalProps): JSX.Element => {
         <Title title={props.title} status={props.status} />
         <CreationData author={props.author} id={props.id} creationDate={props.creationDate} />
         <Description description={props.description} />
-
         {showExpiryDate && <StatusPending expiryDate={props.expiryDate} />}
-
         {hasEnded && (
           <StatusEnded expiryDate={props.expiryDate} quorum={props.quorum} result={props.result} />
         )}
