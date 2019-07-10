@@ -1,16 +1,15 @@
-import { PublicIdentity } from '@iov/bcp';
+import { Amount, PublicIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 
 import { getConfig } from '../../config';
 import { getConnectionFor } from '../../logic/connection';
-import { amountToString } from '../../utils/balances';
 import { AddBalancesActionType } from './reducer';
 
-export async function getBalances(keys: { [chain: string]: string }): Promise<{ [ticker: string]: string }> {
+export async function getBalances(keys: { [chain: string]: string }): Promise<{ [ticker: string]: Amount }> {
   const config = getConfig();
   const chains = config.chains;
 
-  const balances: { [ticker: string]: string } = {};
+  const balances: { [ticker: string]: Amount } = {};
 
   for (const chain of chains) {
     const connection = await getConnectionFor(chain.chainSpec);
@@ -27,14 +26,14 @@ export async function getBalances(keys: { [chain: string]: string }): Promise<{ 
     }
 
     for (const balance of account.balance) {
-      balances[balance.tokenTicker] = amountToString(balance);
+      balances[balance.tokenTicker] = balance;
     }
   }
 
   return balances;
 }
 
-export const addBalancesAction = (tokens: { [key: string]: string }): AddBalancesActionType => ({
+export const addBalancesAction = (tokens: { [key: string]: Amount }): AddBalancesActionType => ({
   type: '@@balances/ADD',
   payload: tokens,
 });
