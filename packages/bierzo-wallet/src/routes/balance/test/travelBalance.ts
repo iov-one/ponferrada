@@ -1,4 +1,4 @@
-import { Store } from 'redux';
+/*import { Store } from 'redux';
 
 import { BALANCE_ROUTE, HOME_ROUTE, LOGIN_ROUTE, SET_NAME_ROUTE, SIGNUP_ROUTE } from '~/routes';
 import { processSetName } from '~/routes/signupName/test/utils/travelSetName';
@@ -41,4 +41,4 @@ const travelToHome = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
   await sleep(500);
   return dom;
-};
+};*/

@@ -1,4 +1,4 @@
-import { Store } from 'redux';
+/*import { Store } from 'redux';
 
 import { mayTestBns, randomString } from '~/logic/testhelpers';
 import { RootState } from '~/reducers';
@@ -27,4 +27,4 @@ describe('DOM > Feature > Balance', () => {
     },
     55000,
   );
-});
+});*/
