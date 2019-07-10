@@ -19,10 +19,12 @@ const Description = (props: Props): JSX.Element => {
   };
 
   const ReadMore = (): JSX.Element => {
+    const shortDescription = elipsify(props.description, DESC_MAX_LENGTH) + ' ';
+
     return (
       <React.Fragment>
         <Typography inline variant="body1">
-          {elipsify(props.description, DESC_MAX_LENGTH)}{' '}
+          {shortDescription}
         </Typography>
         <Typography inline link onClick={onClick} variant="body1" weight="semibold">
           Read more

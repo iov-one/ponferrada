@@ -12,9 +12,11 @@ interface Props {
 }
 
 const Title = (props: Props): JSX.Element => {
+  const shortTitle = elipsify(props.title, TITLE_MAX_LENGTH);
+
   return (
     <Block display="flex" alignItems="center" marginBottom={1}>
-      <Typography variant="h6">{elipsify(props.title, TITLE_MAX_LENGTH)}</Typography>
+      <Typography variant="h6">{shortTitle}</Typography>
       <Block marginLeft={2}>
         <Typography variant="body1">{props.status}</Typography>
       </Block>

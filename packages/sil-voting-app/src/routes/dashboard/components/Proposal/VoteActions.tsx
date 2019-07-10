@@ -8,21 +8,25 @@ interface Props {
 }
 
 const VoteActions = (props: Props): JSX.Element => {
+  const yesButton = props.vote === 'Yes' ? 'contained' : 'outlined';
+  const noButton = props.vote === 'No' ? 'contained' : 'outlined';
+  const abstainButton = props.vote === 'Abstain' ? 'contained' : 'outlined';
+
   return (
     <Block minWidth="100px" margin={2} display="flex" flexDirection="column">
       <Typography variant="body1">Your Vote:</Typography>
-      <Block marginTop="4px" marginBottom="4px">
-        <Button fullWidth variant={props.vote === 'Yes' ? 'contained' : 'outlined'}>
+      <Block marginTop={0.5} marginBottom={0.5}>
+        <Button fullWidth variant={yesButton}>
           Yes
         </Button>
       </Block>
-      <Block marginTop="4px" marginBottom="4px">
-        <Button fullWidth variant={props.vote === 'No' ? 'contained' : 'outlined'}>
+      <Block marginTop={0.5} marginBottom={0.5}>
+        <Button fullWidth variant={noButton}>
           No
         </Button>
       </Block>
-      <Block marginTop="4px" marginBottom="4px">
-        <Button fullWidth variant={props.vote === 'Abstain' ? 'contained' : 'outlined'}>
+      <Block marginTop={0.5} marginBottom={0.5}>
+        <Button fullWidth variant={abstainButton}>
           Abstain
         </Button>
       </Block>
