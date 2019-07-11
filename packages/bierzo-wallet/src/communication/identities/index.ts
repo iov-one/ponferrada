@@ -53,7 +53,7 @@ export const parseGetIdentitiesResponse = (
 };
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const chains = ['ethereum-eip155-5777'];
+  const chains = ['ethereum-eip155-5777', 'local-bns-devnet'];
   const request = generateGetIdentitiesRequest(chains);
 
   const isValid = extensionContext();
