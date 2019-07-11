@@ -8,6 +8,7 @@ import { history } from '..';
 import { addBalancesAction, getBalances } from '../../store/balances';
 import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { addTickersAction, getTokens } from '../../store/tokens';
+import { addUsernamesAction, getUsernames } from '../../store/usernames/actions';
 import { WELCOME_ROUTE } from '../paths';
 
 export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
@@ -39,6 +40,9 @@ const Login = (): JSX.Element => {
     const keys = store.getState().extension.keys;
     const balances = await getBalances(keys);
     dispatch(addBalancesAction(balances));
+
+    const usernames = await getUsernames(keys);
+    dispatch(addUsernamesAction(usernames));
 
     history.push(WELCOME_ROUTE);
   };
