@@ -45,9 +45,8 @@ export const parseGetIdentitiesResponse = (
   }
 
   const keys: { [chain: string]: PublicIdentity } = {};
-  for (let i = 0; i < parsedResult.length; i++) {
-    const chain = chains[i];
-    keys[chain] = parsedResult[i];
+  for (const id of parsedResult) {
+    keys[id.chainId] = id;
   }
 
   return keys;
