@@ -18,7 +18,7 @@ import {
 } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
-import { WELCOME_ROUTE } from '../paths';
+import { BALANCE_ROUTE } from '../paths';
 import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
 import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from '.';
 
@@ -42,7 +42,11 @@ withChainsDescribe(
       server = app.listen(9000);
     });
 
-    beforeEach(async (): Promise<void> => {}, 45000);
+    beforeEach(async (): Promise<void> => {
+      browser = await launchBrowser();
+      page = await createPage(browser);
+      extensionPage = await createExtensionPage(browser);
+    }, 45000);
 
     afterEach(
       async (): Promise<void> => {
@@ -66,9 +70,6 @@ withChainsDescribe(
     }
 
     it('should redirect when enqueued login request is accepted', async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
-      extensionPage = await createExtensionPage(browser);
       await getBackgroundPage(browser);
       await submitExtensionSignupForm(extensionPage, 'username', '12345678');
       await page.bringToFront();
@@ -76,13 +77,10 @@ withChainsDescribe(
       await sleep(1000);
       await acceptGetIdentitiesRequest(extensionPage);
       await page.bringToFront();
-      await whenOnNavigatedToE2eRoute(page, WELCOME_ROUTE);
+      await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
     }, 45000);
 
     it('should stay in login view if enqueued login request is rejected', async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
-      extensionPage = await createExtensionPage(browser);
       await getBackgroundPage(browser);
       await submitExtensionSignupForm(extensionPage, 'username', '12345678');
       await page.bringToFront();
@@ -94,8 +92,6 @@ withChainsDescribe(
     }, 45000);
 
     it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
       await getBackgroundPage(browser);
       await page.bringToFront();
       await sleep(1000);
