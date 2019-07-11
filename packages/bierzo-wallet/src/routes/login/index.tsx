@@ -9,7 +9,7 @@ import { addBalancesAction, getBalances } from '../../store/balances';
 import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { addTickersAction, getTokens } from '../../store/tokens';
 import { addUsernamesAction, getUsernames } from '../../store/usernames/actions';
-import { WELCOME_ROUTE } from '../paths';
+import { BALANCE_ROUTE } from '../paths';
 
 export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
 export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';
@@ -44,7 +44,7 @@ const Login = (): JSX.Element => {
     const usernames = await getUsernames(keys);
     dispatch(addUsernamesAction(usernames));
 
-    history.push(WELCOME_ROUTE);
+    history.push(BALANCE_ROUTE);
   };
 
   return (
