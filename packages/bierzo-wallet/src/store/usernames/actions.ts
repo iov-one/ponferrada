@@ -29,8 +29,9 @@ export async function getUsernames(keys: {
     const pubIdentity: PublicIdentity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
     const account = await connection.getAccount({ pubkey: pubIdentity.pubkey });
     if (!account) {
-      throw new Error('Not found BNS account');
+      break;
     }
+
     const names = await connection.getUsernames({ owner: account.address });
     const hasName = names.length > 0;
     if (!hasName) {
