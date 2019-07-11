@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
 
-import reducer, { RootReducer } from './reducers';
+import reducer, { RootReducer, RootState } from './reducers';
 
 const composeEnhancers =
   (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
@@ -24,3 +24,10 @@ export const configureStore = (): Store<RootReducer> => {
 
   return store;
 };
+
+/**
+ * This method can only be used in test enviromnets
+ * @param localState Initial redux object
+ */
+export const aNewStore = (localState?: object): Store<RootState> =>
+  createStore(reducer, localState, composeEnhancers(applyMiddleware(...middlewares)));
