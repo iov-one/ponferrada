@@ -8764,6 +8764,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 >
   <div
     className="MuiBox-root MuiBox-root-4482"
+    id="header"
   >
     <div
       className="MuiBox-root MuiBox-root-4483"
@@ -8801,6 +8802,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
   >
     <div
       className="MuiBox-root MuiBox-root-4531"
+      id="aside-filter"
     >
       <div
         className="MuiDrawer-root MuiDrawer-docked"
@@ -8921,6 +8923,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     </div>
     <div
       className="MuiBox-root MuiBox-root-4595"
+      id="proposals"
     >
       <div
         className="MuiBox-root MuiBox-root-4596"
@@ -9175,8 +9178,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
             <p
               className="MuiTypography-root makeStyles-inline-4491 MuiTypography-body1"
             >
-              Really Long Description:
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam massa, in comm... 
+              Really Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam massa, in commodo ... 
             </p>
             <p
               className="MuiTypography-root makeStyles-weight-4493 makeStyles-weight-4656 makeStyles-inline-4491 makeStyles-link-4492 MuiTypography-body1"
