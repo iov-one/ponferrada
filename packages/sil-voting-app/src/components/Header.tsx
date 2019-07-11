@@ -5,9 +5,11 @@ import React from 'react';
 
 import icon from '../assets/iov-logo.svg';
 
+export const HEADER_HTML_ID = 'header';
+
 const Header = (): JSX.Element => {
   return (
-    <Block width="100%" minHeight="78px" display="flex" alignItems="center">
+    <Block id={HEADER_HTML_ID} width="100%" minHeight="78px" display="flex" alignItems="center">
       <Block minWidth="205px" display="flex" alignItems="center" justifyContent="center">
         <CircleImage alt="Logo" icon={icon} dia="48px" circleColor="#fff" />
         <Block marginLeft={2}>

@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import React, { useState } from 'react';
 
+export const ASIDE_FILTER_HTML_ID = 'aside-filter';
+
 const useStyles = makeStyles({
   drawerPaper: {
     position: 'relative',
@@ -31,7 +33,7 @@ const AsideFilter = (): JSX.Element => {
   };
 
   return (
-    <Block minWidth="205px">
+    <Block id={ASIDE_FILTER_HTML_ID} minWidth="205px">
       <Drawer variant="permanent" classes={paperClasses}>
         <List classes={listClasses}>
           {['All Elections', 'Active Elections', 'Submitted Elections', 'Ended Elections'].map(text => (
