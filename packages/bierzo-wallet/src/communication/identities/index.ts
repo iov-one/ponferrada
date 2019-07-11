@@ -29,10 +29,7 @@ function extensionContext(): boolean {
 }
 
 // exported for testing purposes
-export const parseGetIdentitiesResponse = (
-  response: any,
-  chains: ReadonlyArray<string>,
-): { [chain: string]: PublicIdentity } => {
+export const parseGetIdentitiesResponse = (response: any): { [chain: string]: PublicIdentity } => {
   const parsedResponse = parseJsonRpcResponse2(response);
   if (isJsonRpcErrorResponse(parsedResponse)) {
     console.error(parsedResponse.error.message);
@@ -69,7 +66,7 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
       }
 
       try {
-        const keys = parseGetIdentitiesResponse(response, chains);
+        const keys = parseGetIdentitiesResponse(response);
         resolve(keys);
       } catch (error) {
         console.error(error);

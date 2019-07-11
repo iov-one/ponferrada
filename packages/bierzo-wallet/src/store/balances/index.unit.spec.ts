@@ -29,7 +29,7 @@ withChainsDescribe('Tokens reducer', () => {
       ],
     };
 
-    const identitiesResponse = parseGetIdentitiesResponse(ethResponse, ['ethereum-eip155-5777']);
+    const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
     jest.spyOn(identities, 'sendGetIdentitiesRequest').mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
