@@ -29,10 +29,7 @@ function extensionContext(): boolean {
 }
 
 // exported for testing purposes
-export const parseGetIdentitiesResponse = (
-  response: any,
-  chains: ReadonlyArray<string>,
-): { [chain: string]: PublicIdentity } => {
+export const parseGetIdentitiesResponse = (response: any): { [chain: string]: PublicIdentity } => {
   const parsedResponse = parseJsonRpcResponse2(response);
   if (isJsonRpcErrorResponse(parsedResponse)) {
     console.error(parsedResponse.error.message);
@@ -45,16 +42,15 @@ export const parseGetIdentitiesResponse = (
   }
 
   const keys: { [chain: string]: PublicIdentity } = {};
-  for (let i = 0; i < parsedResult.length; i++) {
-    const chain = chains[i];
-    keys[chain] = parsedResult[i];
+  for (const id of parsedResult) {
+    keys[id.chainId] = id;
   }
 
   return keys;
 };
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const chains = ['ethereum-eip155-5777'];
+  const chains = ['ethereum-eip155-5777', 'local-bns-devnet'];
   const request = generateGetIdentitiesRequest(chains);
 
   const isValid = extensionContext();
@@ -70,7 +66,7 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
       }
 
       try {
-        const keys = parseGetIdentitiesResponse(response, chains);
+        const keys = parseGetIdentitiesResponse(response);
         resolve(keys);
       } catch (error) {
         console.error(error);
