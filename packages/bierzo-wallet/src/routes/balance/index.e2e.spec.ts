@@ -4,6 +4,7 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { getNoFundsMessage, getNoFundsMessageE2E } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
 withChainsDescribe(
@@ -35,7 +36,7 @@ withChainsDescribe(
 
     afterEach(
       async (): Promise<void> => {
-        //await closeBrowser(browser);
+        await closeBrowser(browser);
       },
     );
 
@@ -44,13 +45,9 @@ withChainsDescribe(
     });
 
     it('should contain "No funds available" message', async (): Promise<void> => {
-      const message = await page.$('h6.nth-of-type(4)');
-      expect(message).not.toBeNull();
+      const noFundsMessage = await getNoFundsMessageE2E(await page.$$('h6'));
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const text = await (await message!.getProperty('textContent')).jsonValue();
-
-      expect(text).toBe('No funds available');
+      expect(noFundsMessage).toBe('No funds available');
     }, 45000);
   },
 );
