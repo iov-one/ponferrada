@@ -4,7 +4,7 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { getNoFundsMessage, getNoFundsMessageE2E } from './test/operateBalances';
+import { getNoFundsMessageE2E } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
 withChainsDescribe(
