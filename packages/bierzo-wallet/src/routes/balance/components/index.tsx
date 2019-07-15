@@ -1,4 +1,3 @@
-import { Amount } from '@iov/bcp';
 import { makeStyles, Theme } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -9,13 +8,14 @@ import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 
+import { BalanceState } from '../../../store/balances';
 import { amountToString, trimAmount } from '../../../utils/balances';
 import receive from '../assets/transactionReceive.svg';
 import send from '../assets/transactionSend.svg';
 
 interface Props {
   readonly name: string | undefined;
-  readonly tokens: ReadonlyArray<Amount>;
+  readonly balance: BalanceState;
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
 }
@@ -58,8 +58,8 @@ const Card = ({ text, logo, onAction }: CardProps): JSX.Element => {
   );
 };
 
-const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props): JSX.Element => {
-  const hasTokens = tokens && tokens.length;
+const BalanceLayout = ({ name, balance, onSendPayment, onReceivePayment }: Props): JSX.Element => {
+  const hasBalance = balance && Object.keys(balance).length;
   const theme = useTheme<Theme>();
 
   return (
@@ -79,12 +79,12 @@ const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props)
           </Typography>
           <Hairline space={4} />
           <Typography variant="subtitle2" align="center">
-            {hasTokens ? 'Your currencies' : 'No funds available'}
+            {hasBalance ? 'Your currencies' : 'No funds available'}
           </Typography>
           <Block margin={2} />
-          {tokens.map(token => (
+          {Object.keys(balance).map(token => (
             <Typography
-              key={token.tokenTicker}
+              key={balance[token].tokenTicker}
               link
               variant="h6"
               weight="regular"
@@ -92,7 +92,7 @@ const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props)
               align="center"
               onClick={onSendPayment}
             >
-              {`${amountToString(trimAmount(token))}`}
+              {`${amountToString(trimAmount(balance[token]))}`}
             </Typography>
           ))}
           <Block margin={1} />
