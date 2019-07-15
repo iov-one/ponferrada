@@ -1,11 +1,11 @@
 {
   "names": {
-    "bns-zebranet": "BNS Zebranet",
+    "bns-antnet": "BNS Antnet",
     "da3ed6a45429278bac2666961289ca17ad86595d33b31037615d4b8e8f158bba": "Lisk Testnet",
     "ethereum-eip155-4": "Rinkeby"
   },
   "blockExplorers": {
-    "bns-zebranet": null,
+    "bns-antnet": null,
     "da3ed6a45429278bac2666961289ca17ad86595d33b31037615d4b8e8f158bba": "https://testnet-explorer.lisk.io/tx/",
     "ethereum-eip155-4": "https://rinkeby.etherscan.io/tx/"
   },
@@ -13,10 +13,10 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "bootstrapNodes": ["https://bns.zebranet.iov.one/"]
+        "bootstrapNodes": ["https://bns.antnet.iov.one/"]
       },
       "faucetSpec": {
-        "uri": "https://bns-faucet.zebranet.iov.one",
+        "uri": "https://bns-faucet.antnet.iov.one",
         "token": "IOV"
       }
     },
