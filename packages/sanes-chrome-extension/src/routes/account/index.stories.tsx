@@ -28,7 +28,10 @@ const defaultCreator: Identity = {
   chainId: 'foobar' as ChainId,
   pubkey: {
     algo: Algorithm.Secp256k1,
-    data: Encoding.fromHex('00112233') as PubkeyBytes,
+    // Random Ethereum pubkey. Derived address: 0x7c15484EA11FD233AE566469af15d84335023c30
+    data: Encoding.fromHex(
+      '0434ce248a6a5979c04d75d1a75907b2bec1cb4d4f6e17b76521f0925e8b6b40e00711fe98e789cf5c8317cf1e731b3101e9dbfaba5e351e424e45c9a2f4dfb63c',
+    ) as PubkeyBytes,
   },
 };
 
