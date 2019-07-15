@@ -10,6 +10,7 @@ import React from 'react';
 
 import { BalanceState } from '../../../store/balances';
 import { amountToString, trimAmount } from '../../../utils/balances';
+import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../../paths';
 import receive from '../assets/transactionReceive.svg';
 import send from '../assets/transactionSend.svg';
 
@@ -25,6 +26,7 @@ const ETH_FACUET = 'https://faucet.rinkeby.io/';
 const ERC20_DOCS = 'https://github.com/iov-one/wallet-demo/wiki/ERC20-demo-tokens';
 
 interface CardProps {
+  readonly id: string;
   readonly text: string;
   readonly logo: string;
   readonly onAction?: () => void;
@@ -36,12 +38,13 @@ const useCardStyles = makeStyles({
   },
 });
 
-const Card = ({ text, logo, onAction }: CardProps): JSX.Element => {
+const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
   const theme = useTheme<Theme>();
   const classes = useCardStyles();
 
   return (
     <Block
+      id={id}
       bgcolor={theme.palette.background.paper}
       display="flex"
       width={215}
@@ -66,9 +69,9 @@ const BalanceLayout = ({ name, balance, onSendPayment, onReceivePayment }: Props
     <Block alignSelf="center">
       <Block margin={2} />
       <Block display="flex" alignItems="center" justifyContent="center" width={450}>
-        <Card text="Send payment" logo={send} onAction={onSendPayment} />
+        <Card id={PAYMENT_ROUTE} text="Send payment" logo={send} onAction={onSendPayment} />
         <Block flexGrow={1} />
-        <Card text="Receive Payment" logo={receive} onAction={onReceivePayment} />
+        <Card id={RECEIVE_FROM_IOV_USER} text="Receive Payment" logo={receive} onAction={onReceivePayment} />
       </Block>
       <Block margin={2} />
       <Block flexGrow={1} />
