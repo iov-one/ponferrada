@@ -1,4 +1,3 @@
-import { Amount } from '@iov/bcp';
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 
