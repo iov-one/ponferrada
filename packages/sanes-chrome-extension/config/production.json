@@ -1,12 +1,12 @@
 {
   "names": {
     "bns-antnet": "BNS Antnet",
-    "da3ed6a45429278bac2666961289ca17ad86595d33b31037615d4b8e8f158bba": "Lisk Testnet",
+    "lisk-ed14889723": "Lisk Mainnet",
     "ethereum-eip155-1": "Ethereum Mainnet"
   },
   "blockExplorers": {
     "bns-antnet": null,
-    "da3ed6a45429278bac2666961289ca17ad86595d33b31037615d4b8e8f158bba": "https://testnet-explorer.lisk.io/tx/",
+    "lisk-ed14889723": "https://explorer.lisk.io/tx/",
     "ethereum-eip155-1": "https://etherscan.io/tx/"
   },
   "chains": [
