@@ -1,5 +1,8 @@
-import { TokenTicker } from '@iov/bcp';
 import { singleton } from 'medulas-react-components/lib/utils/singleton';
+
+import developmentConfig from './development.json';
+import productionConfig from './production.json';
+import stagingConfig from './staging.json';
 
 export interface Config {
   readonly chains: ReadonlyArray<ChainConfig>;
@@ -23,20 +26,20 @@ export interface ChainSpec {
 
 export interface FaucetSpec {
   readonly uri: string;
-  readonly token: TokenTicker;
+  readonly token: string;
 }
 
 const configuration = (): Config => {
   if (process.env.REACT_APP_CONFIG === 'development') {
-    return require('./development.json') as Config;
+    return developmentConfig;
   }
 
   if (process.env.REACT_APP_CONFIG === 'staging') {
-    return require('./staging.json') as Config;
+    return stagingConfig;
   }
 
   if (process.env.REACT_APP_CONFIG === 'production') {
-    return require('./production.json') as Config;
+    return productionConfig;
   }
 
   throw new Error('Unexpected REACT_APP_CONFIG variable for obtaining configuration');
