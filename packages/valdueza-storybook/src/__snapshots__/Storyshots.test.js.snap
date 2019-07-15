@@ -2189,6 +2189,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
       >
         <div
           className="MuiBox-root MuiBox-root-526 makeStyles-root-525"
+          id="/payment"
           onClick={[Function]}
         >
           <img
@@ -2209,6 +2210,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
         />
         <div
           className="MuiBox-root MuiBox-root-529 makeStyles-root-525"
+          id="/receive-from-iov"
           onClick={[Function]}
         >
           <img
@@ -2482,6 +2484,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens 1`] = `
       >
         <div
           className="MuiBox-root MuiBox-root-654 makeStyles-root-653"
+          id="/payment"
           onClick={[Function]}
         >
           <img
@@ -2502,6 +2505,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens 1`] = `
         />
         <div
           className="MuiBox-root MuiBox-root-657 makeStyles-root-653"
+          id="/receive-from-iov"
           onClick={[Function]}
         >
           <img
