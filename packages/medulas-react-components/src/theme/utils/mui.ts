@@ -22,7 +22,7 @@ const theme = createMuiTheme({
     },
     background: {
       default: backgroundColor,
-      paper: '#fffff',
+      paper: '#ffffff',
     },
     action: {
       disabled: white,
