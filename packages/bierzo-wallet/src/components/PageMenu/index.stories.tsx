@@ -1,4 +1,4 @@
-import { TokenTicker } from '@iov/core';
+import { TokenTicker } from '@iov/bcp';
 import { storiesOf } from '@storybook/react';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';

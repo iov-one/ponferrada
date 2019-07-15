@@ -1,6 +1,16 @@
-import { Address, Algorithm, ChainId, PublicKeyBytes, SendTransaction, TokenTicker } from '@iov/bcp';
+import {
+  Address,
+  Algorithm,
+  ChainId,
+  Identity,
+  PubkeyBytes,
+  SendTransaction,
+  TokenTicker,
+  WithCreator,
+} from '@iov/bcp';
 import { RegisterUsernameTx } from '@iov/bns';
 import { Encoding } from '@iov/encoding';
+import { ethereumCodec } from '@iov/ethereum';
 import { storiesOf } from '@storybook/react';
 import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
@@ -14,16 +24,22 @@ import Layout from './index';
 
 export const ACCOUNT_STATUS_PAGE = 'Account Status page';
 
-const send: SendTransaction = {
+const defaultCreator: Identity = {
+  chainId: 'foobar' as ChainId,
+  pubkey: {
+    algo: Algorithm.Secp256k1,
+    // Random Ethereum pubkey. Derived address: 0x7c15484EA11FD233AE566469af15d84335023c30
+    data: Encoding.fromHex(
+      '0434ce248a6a5979c04d75d1a75907b2bec1cb4d4f6e17b76521f0925e8b6b40e00711fe98e789cf5c8317cf1e731b3101e9dbfaba5e351e424e45c9a2f4dfb63c',
+    ) as PubkeyBytes,
+  },
+};
+
+const send: SendTransaction & WithCreator = {
   kind: 'bcp/send',
   amount: { quantity: '10', fractionalDigits: 3, tokenTicker: 'ETH' as TokenTicker },
-  creator: {
-    chainId: 'foobar' as ChainId,
-    pubkey: {
-      algo: Algorithm.Secp256k1,
-      data: Encoding.fromHex('00112233') as PublicKeyBytes,
-    },
-  },
+  creator: defaultCreator,
+  sender: ethereumCodec.identityToAddress(defaultCreator),
   fee: {
     gasLimit: '12345678',
     gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
@@ -32,15 +48,9 @@ const send: SendTransaction = {
   recipient: '0x1212121212121212121212121212121212121212' as Address,
 };
 
-const usernameCreate: RegisterUsernameTx = {
+const usernameCreate: RegisterUsernameTx & WithCreator = {
   kind: 'bns/register_username',
-  creator: {
-    chainId: 'foobar' as ChainId,
-    pubkey: {
-      algo: Algorithm.Secp256k1,
-      data: Encoding.fromHex('00112233') as PublicKeyBytes,
-    },
-  },
+  creator: defaultCreator,
   fee: {
     gasLimit: '12345678',
     gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },

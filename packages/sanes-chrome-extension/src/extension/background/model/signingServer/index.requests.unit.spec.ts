@@ -12,7 +12,7 @@ import { isGetIdentitiesRequest, isSignAndPostRequest } from './requestQueueMana
 import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
-  isArrayOfPublicIdentity,
+  isArrayOfIdentity,
 } from './test/requestBuilder';
 
 withChainsDescribe('background script handler for website request', () => {
@@ -213,7 +213,7 @@ withChainsDescribe('background script handler for website request', () => {
 
     const parsedResponse = parseJsonRpcResponse2(await responsePromise);
     const parsedResult = TransactionEncoder.fromJson((parsedResponse as JsonRpcSuccessResponse).result);
-    if (!isArrayOfPublicIdentity(parsedResult)) {
+    if (!isArrayOfIdentity(parsedResult)) {
       throw new Error();
     }
 

@@ -1,11 +1,11 @@
-import { Algorithm, ChainId, PublicIdentity, publicIdentityEquals } from '@iov/bcp';
-import { UserProfile, WalletId } from '@iov/core';
+import { Algorithm, ChainId, Identity, identityEquals } from '@iov/bcp';
 import { Slip10RawIndex } from '@iov/crypto';
+import { UserProfile, WalletId } from '@iov/keycontrol';
 import { ReadonlyWallet } from '@iov/keycontrol';
 
 export interface AccountInfo {
   readonly index: number;
-  readonly identities: ReadonlyArray<PublicIdentity>;
+  readonly identities: ReadonlyArray<Identity>;
 }
 
 export interface AccountManagerChainConfig {
@@ -108,6 +108,6 @@ export class AccountManager {
     const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId); // eslint-disable-line @typescript-eslint/no-explicit-any
     const ident = await wallet.previewIdentity(chainId, path);
     const allIdentities = wallet.getIdentities();
-    return !!allIdentities.find(x => publicIdentityEquals(x, ident));
+    return !!allIdentities.find(x => identityEquals(x, ident));
   }
 }

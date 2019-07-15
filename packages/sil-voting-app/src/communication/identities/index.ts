@@ -1,5 +1,5 @@
 /*global chrome*/
-import { isPublicIdentity, PublicIdentity } from '@iov/bcp';
+import { Identity, isIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 
@@ -15,15 +15,15 @@ export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   },
 });
 
-const isArrayOfPublicIdentity = (data: any): data is ReadonlyArray<PublicIdentity> => {
+const isArrayOfIdentity = (data: any): data is ReadonlyArray<Identity> => {
   if (!Array.isArray(data)) {
     return false;
   }
 
-  return data.every(isPublicIdentity);
+  return data.every(isIdentity);
 };
 
-type GetIdentitiesResponse = ReadonlyArray<PublicIdentity> | undefined;
+type GetIdentitiesResponse = ReadonlyArray<Identity> | undefined;
 
 function extensionContext(): boolean {
   return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
@@ -52,7 +52,7 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
         }
 
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
-        if (!isArrayOfPublicIdentity(parsedResult)) {
+        if (!isArrayOfIdentity(parsedResult)) {
           resolve([]);
           return;
         }

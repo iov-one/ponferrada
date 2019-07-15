@@ -1,4 +1,4 @@
-import { PublicIdentity } from '@iov/bcp';
+import { Identity } from '@iov/bcp';
 import { BnsConnection } from '@iov/bns';
 import { TransactionEncoder } from '@iov/core';
 
@@ -26,8 +26,8 @@ export async function getUsernames(keys: {
       break;
     }
 
-    const pubIdentity: PublicIdentity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
-    const account = await connection.getAccount({ pubkey: pubIdentity.pubkey });
+    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
+    const account = await connection.getAccount({ pubkey: identity.pubkey });
     if (!account) {
       break;
     }

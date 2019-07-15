@@ -1,4 +1,4 @@
-import { PublicIdentity, UnsignedTransaction } from '@iov/bcp';
+import { Identity, UnsignedTransaction } from '@iov/bcp';
 import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
 import { JsonRpcResponse } from '@iov/jsonrpc';
 
@@ -24,7 +24,7 @@ export default class SigningServer {
 
   public getIdentitiesCallback = (signer: MultiChainSigner) => async (
     reason: string,
-    matchingIdentities: ReadonlyArray<PublicIdentity>,
+    matchingIdentities: ReadonlyArray<Identity>,
     meta: any,
   ) => {
     if (!isRequestMeta(meta)) {

@@ -1,6 +1,14 @@
-import { Address, isPublicIdentity, PublicIdentity, SendTransaction, TokenTicker } from '@iov/bcp';
+import {
+  Address,
+  Identity,
+  isIdentity,
+  SendTransaction,
+  TokenTicker,
+  UnsignedTransaction,
+  WithCreator,
+} from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
-import { EthereumConnection } from '@iov/ethereum';
+import { ethereumCodec, EthereumConnection } from '@iov/ethereum';
 import { JsonRpcRequest, makeJsonRpcId } from '@iov/jsonrpc';
 
 export const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
@@ -15,18 +23,19 @@ export const buildGetIdentitiesRequest = (method: string, customMessage?: string
   },
 });
 
-async function withEthereumFee(transaction: SendTransaction): Promise<SendTransaction> {
+async function withEthereumFee<T extends UnsignedTransaction>(transaction: T): Promise<T> {
   const connection = await EthereumConnection.establish('http://localhost:8545', {});
   const withFee = await connection.withDefaultFee(transaction);
   connection.disconnect();
   return withFee;
 }
 
-export const generateSignAndPostRequest = async (creator: PublicIdentity): Promise<JsonRpcRequest> => {
-  const transactionWithFee: SendTransaction = await withEthereumFee({
+export const generateSignAndPostRequest = async (creator: Identity): Promise<JsonRpcRequest> => {
+  const transactionWithFee: SendTransaction & WithCreator = await withEthereumFee({
     kind: 'bcp/send',
     recipient: '0x0000000000000000000000000000000000000000' as Address,
     creator: creator,
+    sender: ethereumCodec.identityToAddress(creator),
     amount: {
       quantity: '1234000000000000000',
       fractionalDigits: 18,
@@ -45,10 +54,10 @@ export const generateSignAndPostRequest = async (creator: PublicIdentity): Promi
   };
 };
 
-export function isArrayOfPublicIdentity(data: any): data is ReadonlyArray<PublicIdentity> {
+export function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
   if (!Array.isArray(data)) {
     return false;
   }
 
-  return data.every(isPublicIdentity);
+  return data.every(isIdentity);
 }
