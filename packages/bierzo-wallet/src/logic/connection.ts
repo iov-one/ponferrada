@@ -28,6 +28,14 @@ export function isBnsSpec(spec: ChainSpec): boolean {
   return spec.codecType === 'bns';
 }
 
+export function isLskSpec(spec: ChainSpec): boolean {
+  return spec.codecType === 'lsk';
+}
+
+export function isEthSpec(spec: ChainSpec): boolean {
+  return spec.codecType === 'eth';
+}
+
 export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConnection> {
   const url = spec.bootstrapNodes[0];
   if (spec.codecType === 'eth') {
