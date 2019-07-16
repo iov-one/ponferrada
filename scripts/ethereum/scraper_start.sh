@@ -14,7 +14,7 @@ BLOCKCHAIN_URL="http://$DOCKER_HOST_IP:8545"
 echo "Connecting to $BLOCKCHAIN_URL"
 
 docker run --read-only \
-  --name "ethereum_scraper" \
+  --name "ethereum-scraper" \
   -p 8546:8546 \
   --rm "iov1/iov-scraper-ethereum:${SCRAPER_VERSION}" \
   start "$BLOCKCHAIN_URL" \
