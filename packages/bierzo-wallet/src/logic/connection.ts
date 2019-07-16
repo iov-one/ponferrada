@@ -24,7 +24,7 @@ async function createLiskConnection(url: string): Promise<BlockchainConnection> 
 
 let getLiskConnection = singleton<typeof createLiskConnection>(createLiskConnection);
 
-export function isBnsConnection(spec: ChainSpec): boolean {
+export function isBnsSpec(spec: ChainSpec): boolean {
   return spec.codecType === 'bns';
 }
 
@@ -34,7 +34,7 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
     return getEthereumConnection(url);
   }
 
-  if (isBnsConnection(spec)) {
+  if (isBnsSpec(spec)) {
     return getBnsConnection(url);
   }
 
