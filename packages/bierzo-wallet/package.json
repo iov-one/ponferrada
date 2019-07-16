@@ -9,6 +9,7 @@
     "@iov/bcp": "^0.15.0",
     "@iov/core": "^0.15.0",
     "@iov/ethereum": "^0.15.0",
+    "@iov/faucets": "^0.15.0",
     "@iov/jsonrpc": "^0.15.0",
     "@material-ui/core": "4.0.2",
     "@material-ui/icons": "4.0.1",
@@ -34,7 +35,7 @@
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "start": "react-scripts start",
+    "start": "REACT_APP_CONFIG=development react-scripts start",
     "build-development": "REACT_APP_CONFIG=development react-scripts build",
     "build-staging": "REACT_APP_CONFIG=staging react-scripts build",
     "build-production": "REACT_APP_CONFIG=production react-scripts build",

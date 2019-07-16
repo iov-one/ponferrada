@@ -3,7 +3,7 @@ import { BnsConnection } from '@iov/bns';
 import { TransactionEncoder } from '@iov/core';
 
 import { getConfig } from '../../config';
-import { getConnectionFor, isBnsConnection } from '../../logic/connection';
+import { getConnectionFor, isBnsSpec } from '../../logic/connection';
 import { AddUsernamesActionType, BwUsername } from './reducer';
 
 export async function getUsernames(keys: {
@@ -14,7 +14,7 @@ export async function getUsernames(keys: {
   const chains = config.chains;
 
   for (const chain of chains) {
-    if (!isBnsConnection(chain.chainSpec)) {
+    if (!isBnsSpec(chain.chainSpec)) {
       continue;
     }
 
