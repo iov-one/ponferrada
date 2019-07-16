@@ -8,6 +8,10 @@ export async function getExtensionStatus(): Promise<ExtensionState> {
     return { installed: false, connected: false };
   }
 
+  if (Object.keys(identities).length === 0) {
+    return { installed: true, connected: false };
+  }
+
   return {
     installed: true,
     connected: true,
