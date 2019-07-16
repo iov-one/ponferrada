@@ -11,8 +11,8 @@ import React, { useContext } from 'react';
 import * as ReactRedux from 'react-redux';
 
 import icon from '../../assets/iov-logo.svg';
-import { getExtensionStatus } from '../../communication/status';
-import { setExtensionStateAction } from '../../store/reducers/extension';
+import { getExtensionStatus, setExtensionStateAction } from '../../store/reducers/extension';
+import { addProposalsAction, getProposals } from '../../store/reducers/proposals';
 import { history } from '../index';
 import { DASHBOARD_ROUTE } from '../paths';
 
@@ -38,21 +38,33 @@ const Login = (): JSX.Element => {
   //TODO: Fix this as soon as proper react-redux definitions will be available
   const dispatch = (ReactRedux as any).useDispatch();
 
-  const onLogin = async (): Promise<void> => {
+  const isExtensionConnected = async (): Promise<boolean> => {
     const result = await getExtensionStatus();
     dispatch(setExtensionStateAction(result.connected, result.installed));
 
     if (!result.installed) {
       toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
-      return;
+      return false;
     }
 
     if (!result.connected) {
       toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
-      return;
+      return false;
     }
 
-    history.push(DASHBOARD_ROUTE);
+    return true;
+  };
+
+  const loadProposals = async (): Promise<void> => {
+    const chainProposals = await getProposals();
+    dispatch(addProposalsAction(chainProposals));
+  };
+
+  const onLogin = async (): Promise<void> => {
+    if (await isExtensionConnected()) {
+      await loadProposals();
+      history.push(DASHBOARD_ROUTE);
+    }
   };
 
   const { handleSubmit, submitting } = useForm({
