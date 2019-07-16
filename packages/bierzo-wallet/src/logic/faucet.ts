@@ -48,13 +48,22 @@ export async function drinkFaucetIfNeeded(
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    const tokensByChainId = getTokensByChainId(chainId, tokens);
+    let tokensByChainId = getTokensByChainId(chainId, tokens);
     const plainPubkey = keys[chainId];
     if (!plainPubkey) {
       continue;
     }
 
     const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
+
+    // Skip balance tokens
+    const account = await connection.getAccount({ pubkey: identity.pubkey });
+    if (account) {
+      for (const balance of account.balance) {
+        tokensByChainId = tokensByChainId.filter(ticker => ticker !== balance.tokenTicker);
+      }
+    }
+
     const faucet = new IovFaucet(faucetSpec.uri);
     const address = codec.identityToAddress(identity);
 

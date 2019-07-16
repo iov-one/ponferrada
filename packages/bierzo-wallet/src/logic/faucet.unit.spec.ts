@@ -115,4 +115,31 @@ withChainsDescribe('Logic :: faucet', () => {
       },
     });
   }, 15000);
+
+  it('does not drink from faucet if tokens are already available', async () => {
+    // generate keys
+    const keys = await createPubkeys();
+    // drink faucet twice
+    await drinkFaucetIfNeeded(keys, tokens);
+    await drinkFaucetIfNeeded(keys, tokens);
+    // check their balances
+    const balances = await getBalances(keys);
+    expect(balances).toEqual({
+      BASH: {
+        fractionalDigits: 9,
+        quantity: '10000000000',
+        tokenTicker: 'BASH',
+      },
+      CASH: {
+        fractionalDigits: 9,
+        quantity: '10000000000',
+        tokenTicker: 'CASH',
+      },
+      ETH: {
+        fractionalDigits: 18,
+        quantity: '10000000000000000000',
+        tokenTicker: 'ETH',
+      },
+    });
+  }, 15000);
 });
