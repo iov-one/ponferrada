@@ -3,7 +3,7 @@ set -o errexit -o nounset -o pipefail
 command -v shellcheck > /dev/null && shellcheck "$0"
 
 # Choose from https://hub.docker.com/r/iov1/iov-scraper-ethereum/tags
-SCRAPER_VERSION="v0.2.0"
+SCRAPER_VERSION="v0.3.0"
 
 TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/scraper_start_ethereum.XXXXXXXXX")
 LOGFILE="$TMP_DIR/scraper_ethereum.log"
