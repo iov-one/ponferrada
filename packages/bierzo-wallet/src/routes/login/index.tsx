@@ -5,6 +5,7 @@ import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 
 import { history } from '..';
+import { drinkFaucetIfNeeded } from '../../logic/faucet';
 import { addBalancesAction, getBalances } from '../../store/balances';
 import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { addTickersAction, getTokens } from '../../store/tokens';
@@ -38,6 +39,8 @@ const Login = (): JSX.Element => {
     dispatch(addTickersAction(chainTokens));
 
     const keys = store.getState().extension.keys;
+    await drinkFaucetIfNeeded(keys, chainTokens);
+
     const balances = await getBalances(keys);
     dispatch(addBalancesAction(balances));
 
