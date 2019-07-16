@@ -21,7 +21,8 @@ export interface ConfigErc20Options {
 
 export interface ChainSpec {
   readonly codecType: string;
-  readonly bootstrapNodes: ReadonlyArray<string>;
+  readonly node: string;
+  readonly scraper?: string;
 }
 
 export interface FaucetSpec {

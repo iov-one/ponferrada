@@ -43,17 +43,16 @@ export function isEthSpec(spec: ChainSpec): boolean {
 }
 
 export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConnection> {
-  const url = spec.bootstrapNodes[0];
   if (spec.codecType === 'eth') {
-    return getEthereumConnection(url);
+    return getEthereumConnection(spec.node);
   }
 
   if (isBnsSpec(spec)) {
-    return getBnsConnection(url);
+    return getBnsConnection(spec.node);
   }
 
   if (spec.codecType === 'lsk') {
-    return getLiskConnection(url);
+    return getLiskConnection(spec.node);
   }
 
   throw new Error('Chain spec not supported');
