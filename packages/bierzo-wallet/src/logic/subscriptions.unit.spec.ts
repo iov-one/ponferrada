@@ -6,6 +6,7 @@ import { getTokens } from '../store/tokens';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import * as tokens from '../utils/tokens';
+import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
 import { subscribeBalance, unsubscribeBalances } from './subscriptions';
 
@@ -37,5 +38,6 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
     expect(balanceSpy).toHaveBeenCalledTimes(5);
 
     unsubscribeBalances();
+    await disconnect();
   }, 65000);
 });
