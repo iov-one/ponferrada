@@ -14,7 +14,7 @@ const ProposalsList = (): JSX.Element => {
   return (
     <Block id={PROPOSALS_HTML_ID} flexGrow={1}>
       {proposals.map((proposal, index) => (
-        <RenderedProposal proposal={proposal} index={index} />
+        <RenderedProposal key={proposal.id} proposal={proposal} index={index} />
       ))}
     </Block>
   );
