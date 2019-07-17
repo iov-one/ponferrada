@@ -16,7 +16,7 @@ function onReceivePayment(): void {
 }
 
 const Balance = (): JSX.Element => {
-  const balance = ReactRedux.useSelector((state: RootState) => state.balances);
+  const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
   const name = 'test';
   const iovAddress = `${name}*iov`;
 
@@ -26,7 +26,7 @@ const Balance = (): JSX.Element => {
         onSendPayment={onSendPayment}
         onReceivePayment={onReceivePayment}
         name={iovAddress}
-        balance={balance}
+        tokens={tokens}
       />
     </PageMenu>
   );

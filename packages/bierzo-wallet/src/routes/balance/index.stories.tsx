@@ -32,7 +32,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       <PageMenu>
         <Layout
           name={ACCOUNT_NAME}
-          balance={BALANCE}
+          tokens={BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
         />
@@ -44,7 +44,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       <PageMenu>
         <Layout
           name={ACCOUNT_NAME}
-          balance={NO_BALANCE}
+          tokens={NO_BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
         />
