@@ -1,6 +1,7 @@
 import { Identity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { Dispatch } from 'redux';
+import { Subscription } from 'xstream';
 import debounce from 'xstream/extra/debounce';
 
 import { getConfig } from '../config';
@@ -8,7 +9,7 @@ import { addBalancesAction, getBalances } from '../store/balances';
 import { getCodec } from './codec';
 import { getConnectionFor } from './connection';
 
-const balanceSubscriptions = [];
+let balanceSubscriptions: Subscription[] = [];
 
 export async function subscribeBalance(keys: { [chain: string]: string }, dispatch: Dispatch): Promise<any> {
   const config = getConfig();
@@ -41,4 +42,9 @@ export async function subscribeBalance(keys: { [chain: string]: string }, dispat
   }
   // subscribe to transactions
   // const transactionsStream = connection.liveTx({ sentFromOrTo: address });
+}
+
+export function unsubscribeBalances(): void {
+  balanceSubscriptions.forEach(subs => subs.unsubscribe());
+  balanceSubscriptions = [];
 }
