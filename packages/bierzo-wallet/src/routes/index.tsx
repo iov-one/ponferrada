@@ -5,9 +5,8 @@ import { Route, Router, Switch } from 'react-router';
 import RequireLogin from '../components/RequireLogin';
 import Balance from './balance';
 import Login from './login';
-import { BALANCE_ROUTE, LOGIN_ROUTE, PAYMENT_ROUTE, WELCOME_ROUTE } from './paths';
+import { BALANCE_ROUTE, LOGIN_ROUTE, PAYMENT_ROUTE } from './paths';
 import Payment from './payment';
-import Welcome from './welcome';
 
 export const history = createBrowserHistory();
 
@@ -17,7 +16,6 @@ const Routes = (): JSX.Element => (
       <Route exact path="/" component={Login} />
       <Route exact path={LOGIN_ROUTE} component={Login} />
       <RequireLogin>
-        <Route exact path={WELCOME_ROUTE} component={Welcome} />
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
       </RequireLogin>

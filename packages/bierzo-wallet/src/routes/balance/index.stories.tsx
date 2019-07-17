@@ -9,19 +9,19 @@ import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Layout from './components/index';
 
 const BALANCE: BalanceState = {
-  IOV: {
+  BASH: {
     quantity: '82500',
     fractionalDigits: 4,
-    tokenTicker: 'IOV' as TokenTicker,
+    tokenTicker: 'BASH' as TokenTicker,
   },
-  ETH: {
+  CASH: {
     quantity: '1226775',
     fractionalDigits: 5,
-    tokenTicker: 'ETH' as TokenTicker,
+    tokenTicker: 'CASH' as TokenTicker,
   },
 };
 
-const NO_BALANCE: BalanceState = {};
+const NO_BALANCE = {};
 
 const ACCOUNT_NAME = 'adolfo*iov';
 
@@ -32,7 +32,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       <PageMenu>
         <Layout
           name={ACCOUNT_NAME}
-          balance={BALANCE}
+          tokens={BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
         />
@@ -44,7 +44,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       <PageMenu>
         <Layout
           name={ACCOUNT_NAME}
-          balance={NO_BALANCE}
+          tokens={NO_BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
         />
