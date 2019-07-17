@@ -63,7 +63,7 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
  * Disconnects all blockchain connections. Calling getConnectionFor after
  * this will establich a new connection.
  */
-export async function disconnect(): Promise<void> {
+export function disconnect(): void {
   if (bnsConnection) bnsConnection.disconnect();
   if (ethereumConnection) ethereumConnection.disconnect();
   if (liskConnection) liskConnection.disconnect();
