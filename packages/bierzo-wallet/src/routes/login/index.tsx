@@ -7,6 +7,7 @@ import { Dispatch } from 'redux';
 
 import { history } from '..';
 import { drinkFaucetIfNeeded } from '../../logic/faucet';
+import { subscribeBalance } from '../../logic/subscriptions';
 import { addBalancesAction, getBalances } from '../../store/balances';
 import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { addTickersAction, getTokens } from '../../store/tokens';
@@ -27,6 +28,8 @@ export const loginBootSequence = async (
 
   const balances = await getBalances(keys);
   dispatch(addBalancesAction(balances));
+
+  await subscribeBalance(keys, dispatch);
 
   const usernames = await getUsernames(keys);
   dispatch(addUsernamesAction(usernames));
