@@ -11,7 +11,7 @@ interface Props {
   readonly description: string;
 }
 
-const Description = (props: Props): JSX.Element => {
+const Description = ({ description }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const onClick = (): void => {
@@ -19,7 +19,7 @@ const Description = (props: Props): JSX.Element => {
   };
 
   const ReadMore = (): JSX.Element => {
-    const shortDescription = elipsify(props.description, DESC_MAX_LENGTH) + ' ';
+    const shortDescription = elipsify(description, DESC_MAX_LENGTH) + ' ';
 
     return (
       <React.Fragment>
@@ -33,12 +33,12 @@ const Description = (props: Props): JSX.Element => {
     );
   };
 
-  const hasSmallDescription = props.description.length < DESC_MAX_LENGTH;
+  const hasSmallDescription = description.length < DESC_MAX_LENGTH;
 
   if (hasSmallDescription) {
     return (
       <Block marginBottom={1}>
-        <Typography variant="body1">{props.description}</Typography>
+        <Typography variant="body1">{description}</Typography>
       </Block>
     );
   }
@@ -48,7 +48,7 @@ const Description = (props: Props): JSX.Element => {
       {!expanded && <ReadMore />}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Typography inline variant="body1">
-          {props.description}{' '}
+          {description}{' '}
         </Typography>
         <Typography inline link onClick={onClick} variant="body1" weight="semibold">
           Read less

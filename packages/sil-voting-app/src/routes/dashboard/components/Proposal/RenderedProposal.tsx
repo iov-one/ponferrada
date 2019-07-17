@@ -8,15 +8,15 @@ interface Props {
   readonly index: number;
 }
 
-const RenderedProposal = (props: Props): JSX.Element => {
-  if (props.index === 0) {
-    return <React.Fragment key={props.index}>{Proposal(props.proposal)}</React.Fragment>;
+const RenderedProposal = ({ proposal, index }: Props): JSX.Element => {
+  if (index === 0) {
+    return <Proposal {...proposal} />;
   }
 
   return (
-    <React.Fragment key={props.index}>
+    <React.Fragment>
       <Hairline />
-      {Proposal(props.proposal)}
+      <Proposal {...proposal} />
     </React.Fragment>
   );
 };

@@ -23,16 +23,16 @@ interface Props {
   readonly expiryDate: Date;
 }
 
-const StatusPending = (props: Props): JSX.Element => {
+const StatusPending = ({ expiryDate }: Props): JSX.Element => {
   const classes = useStyles();
 
-  const expiryDate = (props.expiryDate as ReadonlyDate).toLocaleString();
+  const localeDate = (expiryDate as ReadonlyDate).toLocaleString();
 
   return (
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expires on {expiryDate}
+          Expires on {localeDate}
         </Typography>
         <Block marginLeft={2}>
           <Block display="flex" alignItems="center">
@@ -44,7 +44,7 @@ const StatusPending = (props: Props): JSX.Element => {
         </Block>
       </Block>
       <Block padding={1} bgcolor={STATUS_BACKGROUND} className={classes.status}>
-        <Typography variant="body1">This poll results will be available until {expiryDate}</Typography>
+        <Typography variant="body1">This poll results will be available until {localeDate}</Typography>
       </Block>
     </React.Fragment>
   );
