@@ -43,6 +43,7 @@
     "test-dom": "REACT_APP_CONFIG=development CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-unit": "REACT_APP_CONFIG=development CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-e2e": "CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
+    "test-single": "yarn use-config-development && CI=true react-scripts test --env=jsdom",
     "use-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../bierzo-wallet",
     "test": "yarn use-config-development && yarn test-unit && yarn test-dom && yarn test-e2e"
   },
