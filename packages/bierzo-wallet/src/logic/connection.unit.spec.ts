@@ -21,6 +21,7 @@ withChainsDescribe('Logic :: connection', () => {
     await getConnectionFor(firstChain.chainSpec);
 
     expect(ethereumConnectionSpy).toHaveBeenCalledTimes(1);
+    await disconnect();
   });
 
   it('reset connections correctly when disconnecting', async () => {
@@ -38,10 +39,11 @@ withChainsDescribe('Logic :: connection', () => {
     await disconnect();
 
     // THEN
-    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(1);
-    await getConnectionFor(firstChain.chainSpec);
-    await getConnectionFor(firstChain.chainSpec);
-    await getConnectionFor(firstChain.chainSpec);
     expect(ethereumConnectionSpy).toHaveBeenCalledTimes(2);
+    await getConnectionFor(firstChain.chainSpec);
+    await getConnectionFor(firstChain.chainSpec);
+    await getConnectionFor(firstChain.chainSpec);
+    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(3);
+    await disconnect();
   });
 });

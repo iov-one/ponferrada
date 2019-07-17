@@ -5,6 +5,7 @@ import * as balanceActions from '../store/balances/actions';
 import { getTokens } from '../store/tokens';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
+import { sleep } from '../utils/timer';
 import * as tokens from '../utils/tokens';
 import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
@@ -33,7 +34,12 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
     const chainTokens = await getTokens();
     await drinkFaucetIfNeeded(keys, chainTokens);
     await subscribeBalance(keys, store.dispatch);
+
+    // Trick for forcing account to receive balance events updates
     await drinkFaucetIfNeeded(keys, chainTokens);
+
+    // Give some time to open request to be finished
+    await sleep(5000);
 
     expect(balanceSpy).toHaveBeenCalledTimes(5);
 
