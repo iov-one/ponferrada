@@ -1,8 +1,9 @@
-import { Amount } from '@iov/bcp';
 import React from 'react';
+import * as ReactRedux from 'react-redux';
 
 import { history } from '..';
 import PageMenu from '../../components/PageMenu';
+import { RootState } from '../../store/reducers';
 import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
 import Layout from './components';
 
@@ -15,8 +16,8 @@ function onReceivePayment(): void {
 }
 
 const Balance = (): JSX.Element => {
+  const balance = ReactRedux.useSelector((state: RootState) => state.balances);
   const name = 'test';
-  const tokens: ReadonlyArray<Amount> = [];
   const iovAddress = `${name}*iov`;
 
   return (
@@ -25,7 +26,7 @@ const Balance = (): JSX.Element => {
         onSendPayment={onSendPayment}
         onReceivePayment={onReceivePayment}
         name={iovAddress}
-        tokens={tokens}
+        balance={balance}
       />
     </PageMenu>
   );
