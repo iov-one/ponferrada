@@ -12,15 +12,15 @@ import { getNoFundsMessage } from './test/operateBalances';
 import { travelToBalance } from './test/travelToBalance';
 
 const balancesAmount: DeepPartial<BalanceState> = {
-  IOV: {
+  BASH: {
     quantity: '82500',
     fractionalDigits: 4,
-    tokenTicker: 'IOV' as TokenTicker,
+    tokenTicker: 'BASH' as TokenTicker,
   },
-  ETH: {
+  CASH: {
     quantity: '1226775',
     fractionalDigits: 5,
-    tokenTicker: 'ETH' as TokenTicker,
+    tokenTicker: 'CASH' as TokenTicker,
   },
 };
 
@@ -68,8 +68,8 @@ describe('The /balance route', () => {
 
       expect(balances.length).toBe(2);
 
-      expect(balances[0].textContent).toBe('8.25 IOV');
-      expect(balances[1].textContent).toBe('12.26775 ETH');
+      expect(balances[0].textContent).toBe('8.25 BASH');
+      expect(balances[1].textContent).toBe('12.26775 CASH');
     });
   });
 

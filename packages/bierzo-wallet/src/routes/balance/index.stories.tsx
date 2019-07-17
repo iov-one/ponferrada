@@ -9,15 +9,15 @@ import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Layout from './components/index';
 
 const BALANCE: BalanceState = {
-  IOV: {
+  BASH: {
     quantity: '82500',
     fractionalDigits: 4,
-    tokenTicker: 'IOV' as TokenTicker,
+    tokenTicker: 'BASH' as TokenTicker,
   },
-  ETH: {
+  CASH: {
     quantity: '1226775',
     fractionalDigits: 5,
-    tokenTicker: 'ETH' as TokenTicker,
+    tokenTicker: 'CASH' as TokenTicker,
   },
 };
 
