@@ -3,6 +3,7 @@ import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider
 import PageColumn from 'medulas-react-components/lib/pages/PageColumn';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { history } from '..';
 import { drinkFaucetIfNeeded } from '../../logic/faucet';
@@ -14,6 +15,22 @@ import { BALANCE_ROUTE } from '../paths';
 
 export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
 export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';
+
+export const loginBootSequence = async (
+  keys: { [chain: string]: string },
+  dispatch: Dispatch,
+): Promise<void> => {
+  const chainTokens = await getTokens();
+  dispatch(addTickersAction(chainTokens));
+
+  await drinkFaucetIfNeeded(keys);
+
+  const balances = await getBalances(keys);
+  dispatch(addBalancesAction(balances));
+
+  const usernames = await getUsernames(keys);
+  dispatch(addUsernamesAction(usernames));
+};
 
 const Login = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
@@ -35,17 +52,8 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    const chainTokens = await getTokens();
-    dispatch(addTickersAction(chainTokens));
-
     const keys = store.getState().extension.keys;
-    await drinkFaucetIfNeeded(keys);
-
-    const balances = await getBalances(keys);
-    dispatch(addBalancesAction(balances));
-
-    const usernames = await getUsernames(keys);
-    dispatch(addUsernamesAction(usernames));
+    await loginBootSequence(keys, dispatch);
 
     history.push(BALANCE_ROUTE);
   };
