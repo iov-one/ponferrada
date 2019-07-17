@@ -21,7 +21,7 @@ const BALANCE: BalanceState = {
   },
 };
 
-const NO_BALANCE: BalanceState = {};
+const NO_BALANCE = {};
 
 const ACCOUNT_NAME = 'adolfo*iov';
 
