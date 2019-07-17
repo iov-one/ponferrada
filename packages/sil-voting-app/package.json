@@ -27,6 +27,7 @@
     "test-dom": "TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-e2e": "TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
     "use-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../sil-voting-app",
+    "test-single": "yarn use-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test --env=jsdom",
     "test": "yarn use-config-development && yarn test-dom && yarn test-e2e"
   },
   "browserslist": [

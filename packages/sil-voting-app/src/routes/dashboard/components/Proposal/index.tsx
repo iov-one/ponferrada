@@ -28,22 +28,31 @@ export interface ProposalProps {
   readonly status: 'Active' | 'Submitted' | 'Ended';
 }
 
-const Proposal = (props: ProposalProps): JSX.Element => {
-  const hasEnded = props.status === 'Ended';
+const Proposal = ({
+  id,
+  title,
+  author,
+  description,
+  creationDate,
+  expiryDate,
+  quorum,
+  result,
+  vote,
+  status,
+}: ProposalProps): JSX.Element => {
+  const hasEnded = status === 'Ended';
   const showExpiryDate = !hasEnded;
 
   return (
     <Block width="100%" display="flex" alignItems="center">
       <Block flexGrow={1} margin={2}>
-        <Title title={props.title} status={props.status} />
-        <CreationData author={props.author} id={props.id} creationDate={props.creationDate} />
-        <Description description={props.description} />
-        {showExpiryDate && <StatusPending expiryDate={props.expiryDate} />}
-        {hasEnded && (
-          <StatusEnded expiryDate={props.expiryDate} quorum={props.quorum} result={props.result} />
-        )}
+        <Title title={title} status={status} />
+        <CreationData author={author} id={id} creationDate={creationDate} />
+        <Description description={description} />
+        {showExpiryDate && <StatusPending expiryDate={expiryDate} />}
+        {hasEnded && <StatusEnded expiryDate={expiryDate} quorum={quorum} result={result} />}
       </Block>
-      <VoteActions vote={props.vote} />
+      <VoteActions vote={vote} />
     </Block>
   );
 };

@@ -7,10 +7,10 @@ interface Props {
   readonly vote: 'Invalid' | 'Yes' | 'No' | 'Abstain';
 }
 
-const VoteActions = (props: Props): JSX.Element => {
-  const yesButton = props.vote === 'Yes' ? 'contained' : 'outlined';
-  const noButton = props.vote === 'No' ? 'contained' : 'outlined';
-  const abstainButton = props.vote === 'Abstain' ? 'contained' : 'outlined';
+const VoteActions = ({ vote }: Props): JSX.Element => {
+  const yesButton = vote === 'Yes' ? 'contained' : 'outlined';
+  const noButton = vote === 'No' ? 'contained' : 'outlined';
+  const abstainButton = vote === 'Abstain' ? 'contained' : 'outlined';
 
   return (
     <Block minWidth="100px" margin={2} display="flex" flexDirection="column">

@@ -9,15 +9,15 @@ export interface ExtensionState {
 }
 
 export interface SetExtensionStateActionType extends Action {
-  type: '@@extension/SET_EXTENSION_STATE';
+  type: '@@extension/SET_STATE';
   payload: ExtensionState;
 }
 
 export type ExtensionActions = ActionType<typeof actions>;
 
 const initState: ExtensionState = {
-  connected: true,
-  installed: true,
+  connected: false,
+  installed: false,
 };
 
 export function extensionReducer(
@@ -25,8 +25,8 @@ export function extensionReducer(
   action: ExtensionActions,
 ): ExtensionState {
   switch (action.type) {
-    case '@@extension/SET_EXTENSION_STATE':
-      return action.payload;
+    case '@@extension/SET_STATE':
+      return { ...state, ...action.payload };
     default:
       return state;
   }

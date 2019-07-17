@@ -9,17 +9,17 @@ interface Props {
   readonly creationDate: Date;
 }
 
-const CreationData = (props: Props): JSX.Element => {
-  const creationDate = (props.creationDate as ReadonlyDate).toLocaleString();
+const CreationData = ({ author, id, creationDate }: Props): JSX.Element => {
+  const localeDate = (creationDate as ReadonlyDate).toLocaleString();
 
   return (
     <Block display="flex" alignItems="center" marginBottom={1}>
-      <Typography variant="body1">Author: {props.author}</Typography>
+      <Typography variant="body1">Author: {author}</Typography>
       <Block marginLeft={2}>
-        <Typography variant="body1">Proposal ID: {props.id}</Typography>
+        <Typography variant="body1">Proposal ID: {id}</Typography>
       </Block>
       <Block marginLeft={2}>
-        <Typography variant="body1">Created on {creationDate}</Typography>
+        <Typography variant="body1">Created on {localeDate}</Typography>
       </Block>
     </Block>
   );

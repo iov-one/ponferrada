@@ -46,24 +46,24 @@ const getWinner = (result: VoteResult): VoteWinner => {
   return { vote, percentage };
 };
 
-const StatusEnded = (props: Props): JSX.Element => {
+const StatusEnded = ({ expiryDate, quorum, result }: Props): JSX.Element => {
   const classes = useStyles();
 
-  const expiryDate = (props.expiryDate as ReadonlyDate).toLocaleString();
-  const totalVotes = getTotalVotes(props.result);
-  const winnerVote = getWinner(props.result).vote;
-  const winnerPercentage = getWinner(props.result).percentage + '%';
+  const localeDate = (expiryDate as ReadonlyDate).toLocaleString();
+  const totalVotes = getTotalVotes(result);
+  const winnerVote = getWinner(result).vote;
+  const winnerPercentage = getWinner(result).percentage + '%';
 
   return (
     <React.Fragment>
       <Block display="flex" alignItems="center" marginBottom={1}>
         <Typography variant="body1" weight="semibold">
-          Expired on {expiryDate}
+          Expired on {localeDate}
         </Typography>
         <React.Fragment>
           <Block marginLeft={2}>
             <Typography variant="body1" weight="semibold">
-              Quorum: {props.quorum}
+              Quorum: {quorum}
             </Typography>
           </Block>
           <Block marginLeft={2}>
