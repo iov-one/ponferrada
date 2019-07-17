@@ -4,7 +4,11 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { getNoFundsMessageE2E } from './test/operateBalances';
+import {
+  getFirstCurrencyBalanceE2E,
+  getSecondCurrencyBalanceE2E,
+  getThirdCurrencyBalanceE2E,
+} from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
 withChainsDescribe(
@@ -44,10 +48,14 @@ withChainsDescribe(
       server.close();
     });
 
-    it('should contain "No funds available" message', async (): Promise<void> => {
-      const noFundsMessage = await getNoFundsMessageE2E(await page.$$('h6'));
+    it('should contain balances', async (): Promise<void> => {
+      const firstBalance = await getFirstCurrencyBalanceE2E(await page.$$('h6'));
+      const secondBalance = await getSecondCurrencyBalanceE2E(await page.$$('h6'));
+      const thirdBalance = await getThirdCurrencyBalanceE2E(await page.$$('h6'));
 
-      expect(noFundsMessage).toBe('No funds available');
+      expect(firstBalance).toBe('10 BASH');
+      expect(secondBalance).toBe('10 CASH');
+      expect(thirdBalance).toBe('10 ETH');
     }, 45000);
   },
 );
