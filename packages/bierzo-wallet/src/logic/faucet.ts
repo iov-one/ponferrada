@@ -1,28 +1,10 @@
-import { Identity, TokenTicker, TxCodec } from '@iov/bcp';
-import { bnsCodec } from '@iov/bns';
+import { Identity, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
-import { ethereumCodec } from '@iov/ethereum';
 import { IovFaucet } from '@iov/faucets';
-import { liskCodec } from '@iov/lisk';
 
-import { ChainSpec, getConfig } from '../config';
-import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from './connection';
-
-function getCodec(spec: ChainSpec): TxCodec {
-  if (isEthSpec(spec)) {
-    return ethereumCodec;
-  }
-
-  if (isBnsSpec(spec)) {
-    return bnsCodec;
-  }
-
-  if (isLskSpec(spec)) {
-    return liskCodec;
-  }
-
-  throw new Error('Unsupported codecType for chain spec');
-}
+import { getConfig } from '../config';
+import { getCodec } from './codec';
+import { getConnectionFor } from './connection';
 
 export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
   const config = getConfig();
