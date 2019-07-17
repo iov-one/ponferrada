@@ -2,27 +2,33 @@ import { BlockchainConnection } from '@iov/bcp';
 import { BnsConnection } from '@iov/bns';
 import { EthereumConnection } from '@iov/ethereum';
 import { LiskConnection } from '@iov/lisk';
-import { singleton } from 'medulas-react-components/lib/utils/singleton';
 
-import { ChainSpec, getConfig } from '../config';
+import { ChainSpec } from '../config';
 
-async function createEthereumConnection(url: string): Promise<BlockchainConnection> {
-  return EthereumConnection.establish(url, {});
+let ethereumConnection: EthereumConnection | undefined;
+let bnsConnection: BnsConnection | undefined;
+let liskConnection: LiskConnection | undefined;
+
+async function getEthereumConnection(url: string): Promise<EthereumConnection> {
+  if (!ethereumConnection) {
+    ethereumConnection = await EthereumConnection.establish(url, {});
+  }
+  return ethereumConnection;
 }
 
-let getEthereumConnection = singleton<typeof createEthereumConnection>(createEthereumConnection);
-
-async function createBnsConnection(url: string): Promise<BlockchainConnection> {
-  return BnsConnection.establish(url);
+async function getBnsConnection(url: string): Promise<BnsConnection> {
+  if (!bnsConnection) {
+    bnsConnection = await BnsConnection.establish(url);
+  }
+  return bnsConnection;
 }
 
-let getBnsConnection = singleton<typeof createBnsConnection>(createBnsConnection);
-
-async function createLiskConnection(url: string): Promise<BlockchainConnection> {
-  return LiskConnection.establish(url);
+async function getLiskConnection(url: string): Promise<LiskConnection> {
+  if (!liskConnection) {
+    liskConnection = await LiskConnection.establish(url);
+  }
+  return liskConnection;
 }
-
-let getLiskConnection = singleton<typeof createLiskConnection>(createLiskConnection);
 
 export function isBnsSpec(spec: ChainSpec): boolean {
   return spec.codecType === 'bns';
@@ -53,17 +59,16 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
   throw new Error('Chain spec not supported');
 }
 
+/**
+ * Disconnects all blockchain connections. Calling getConnectionFor after
+ * this will establich a new connection.
+ */
 export async function disconnect(): Promise<void> {
-  const config = getConfig();
-  const chains = config.chains;
+  if (bnsConnection) bnsConnection.disconnect();
+  if (ethereumConnection) ethereumConnection.disconnect();
+  if (liskConnection) liskConnection.disconnect();
 
-  for (const chain of chains) {
-    const connection = await getConnectionFor(chain.chainSpec);
-    connection.disconnect();
-  }
-
-  // Get ready again for using them
-  getEthereumConnection = singleton<typeof createEthereumConnection>(createEthereumConnection);
-  getBnsConnection = singleton<typeof createBnsConnection>(createBnsConnection);
-  getLiskConnection = singleton<typeof createLiskConnection>(createLiskConnection);
+  bnsConnection = undefined;
+  ethereumConnection = undefined;
+  liskConnection = undefined;
 }
