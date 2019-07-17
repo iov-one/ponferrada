@@ -9,7 +9,6 @@ import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from '../../../util
 import { acceptGetIdentitiesRequest, submitExtensionSignupForm } from '../../../utils/test/persona';
 import { sleep } from '../../../utils/timer';
 import { BALANCE_ROUTE } from '../../paths';
-import { travelToWelcomeE2e } from '../../welcome/test/travelToWelcome';
 
 export const travelToBalance = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
@@ -27,7 +26,8 @@ export async function travelToBalanceE2E(browser: Browser, page: Page, extension
   await getBackgroundPage(browser);
   await submitExtensionSignupForm(extensionPage, 'username', '12345678');
   await page.bringToFront();
-  await travelToWelcomeE2e(page);
+  //Click on login button
+  await page.click('button');
   await sleep(1000);
   await acceptGetIdentitiesRequest(extensionPage);
   await page.bringToFront();

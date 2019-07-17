@@ -19,7 +19,6 @@ import {
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import { BALANCE_ROUTE } from '../paths';
-import { travelToWelcomeE2e } from '../welcome/test/travelToWelcome';
 import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from '.';
 
 withChainsDescribe(
@@ -76,7 +75,8 @@ withChainsDescribe(
           await getBackgroundPage(browser);
           await submitExtensionSignupForm(extensionPage, 'username', '12345678');
           await page.bringToFront();
-          await travelToWelcomeE2e(page);
+          //Click on login button
+          await page.click('button');
           await sleep(1000);
           await acceptGetIdentitiesRequest(extensionPage);
           await page.bringToFront();
@@ -87,7 +87,8 @@ withChainsDescribe(
           await getBackgroundPage(browser);
           await submitExtensionSignupForm(extensionPage, 'username', '12345678');
           await page.bringToFront();
-          await travelToWelcomeE2e(page);
+          //Click on login button
+          await page.click('button');
           await sleep(1000);
           await rejectGetIdentitiesRequest(extensionPage);
           await page.bringToFront();
