@@ -4,8 +4,6 @@ import { useTheme } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Img from 'medulas-react-components/lib/components/Image';
-import Link from 'medulas-react-components/lib/components/Link';
-import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 
@@ -20,10 +18,6 @@ interface Props {
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
 }
-
-const LISK_FAUCET = 'https://testnet-faucet.lisk.io';
-const ETH_FACUET = 'https://faucet.rinkeby.io/';
-const ERC20_DOCS = 'https://github.com/iov-one/wallet-demo/wiki/ERC20-demo-tokens';
 
 interface CardProps {
   readonly id: string;
@@ -99,25 +93,6 @@ const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props)
             </Typography>
           ))}
           <Block margin={1} />
-          <Block display="flex" alignItems="center" justifyContent="flex-end">
-            <Typography inline variant="body2">
-              need funds?
-            </Typography>
-            <Block padding={1} />
-            <Tooltip maxWidth={350}>
-              <Typography variant="body2">
-                Claim test LSK: <Link to={LISK_FAUCET}>Lisk faucet</Link>
-              </Typography>
-              <Block margin={1} />
-              <Typography variant="body2">
-                Claim test ETH: <Link to={ETH_FACUET}>Rinkeby faucet</Link>
-              </Typography>
-              <Block margin={1} />
-              <Typography variant="body2">
-                Claim test ERC20s: <Link to={ERC20_DOCS}>read the docs</Link>
-              </Typography>
-            </Tooltip>
-          </Block>
         </Block>
       </Block>
     </Block>
