@@ -21,6 +21,10 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
       );
   });
 
+  afterEach(async () => {
+    await disconnect();
+  });
+
   afterAll(() => {
     jest.spyOn(tokens, 'filterExistingTokens').mockReset();
   });
@@ -39,11 +43,13 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
     await drinkFaucetIfNeeded(keys, chainTokens);
 
     // Give some time to open request to be finished
-    await sleep(5000);
+    await sleep(1000);
+    await sleep(1000);
+    await sleep(1000);
+    await sleep(1000);
 
     expect(balanceSpy).toHaveBeenCalledTimes(5);
 
     unsubscribeBalances();
-    await disconnect();
-  }, 65000);
+  }, 35000);
 });
