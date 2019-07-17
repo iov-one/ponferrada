@@ -2161,13 +2161,13 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
             className="MuiTypography-root makeStyles-weight-442 makeStyles-weight-539 makeStyles-link-441 MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
             onClick={[Function]}
           >
-            8.25 IOV
+            8.25 BASH
           </h6>
           <h6
             className="MuiTypography-root makeStyles-weight-442 makeStyles-weight-540 makeStyles-link-441 MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
             onClick={[Function]}
           >
-            12.26775 ETH
+            12.26775 CASH
           </h6>
           <div
             className="MuiBox-root MuiBox-root-541"
