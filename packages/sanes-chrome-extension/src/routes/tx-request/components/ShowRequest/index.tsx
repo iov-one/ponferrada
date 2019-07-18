@@ -17,7 +17,6 @@ interface Props {
   readonly onAcceptRequest: () => void;
   readonly showRejectView: () => void;
   readonly sender: string;
-  readonly creator: string;
   readonly tx: SupportedTransaction;
 }
 
