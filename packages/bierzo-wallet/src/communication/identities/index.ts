@@ -22,14 +22,19 @@ function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
   return data.every(isIdentity);
 }
 
-type GetIdentitiesResponse = { [chain: string]: Identity } | undefined;
+/**
+ * The response of a "getIdentities" RPC call to the browser extension.
+ * `undefined` represents the case that the website cound not connect to the
+ * extension, i.e. the extension is not available.
+ */
+export type GetIdentitiesResponse = readonly Identity[] | undefined;
 
 function extensionContext(): boolean {
   return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
 }
 
 // exported for testing purposes
-export const parseGetIdentitiesResponse = (response: any): { [chain: string]: Identity } => {
+export const parseGetIdentitiesResponse = (response: any): readonly Identity[] => {
   const parsedResponse = parseJsonRpcResponse2(response);
   if (isJsonRpcErrorResponse(parsedResponse)) {
     console.error(parsedResponse.error.message);
@@ -41,12 +46,7 @@ export const parseGetIdentitiesResponse = (response: any): { [chain: string]: Id
     throw new Error('Got unexpected type of result');
   }
 
-  const keys: { [chain: string]: Identity } = {};
-  for (const id of parsedResult) {
-    keys[id.chainId] = id;
-  }
-
-  return keys;
+  return parsedResult;
 };
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
@@ -66,11 +66,11 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
       }
 
       try {
-        const keys = parseGetIdentitiesResponse(response);
-        resolve(keys);
+        const identities = parseGetIdentitiesResponse(response);
+        resolve(identities);
       } catch (error) {
         console.error(error);
-        resolve({});
+        resolve([]);
       }
     });
   });
