@@ -39,11 +39,8 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
 
     // Give some time to open request to be finished
     await sleep(1000);
-    await sleep(1000);
-    await sleep(1000);
-    await sleep(1000);
 
-    expect(balanceSpy).toHaveBeenCalledTimes(5);
+    expect(balanceSpy).toHaveBeenCalledTimes(2);
 
     unsubscribeBalances();
   }, 35000);
