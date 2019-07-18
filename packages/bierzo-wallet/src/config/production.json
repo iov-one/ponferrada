@@ -7,7 +7,7 @@
       },
       "faucetSpec": {
         "uri": "https://bns-faucet.antnet.iov.one",
-        "token": ["IOV"]
+        "tokens": ["IOV"]
       }
     },
     {

@@ -26,7 +26,7 @@ export interface ChainSpec {
 
 export interface FaucetSpec {
   readonly uri: string;
-  readonly token: ReadonlyArray<string>;
+  readonly tokens: ReadonlyArray<string>;
 }
 
 const configuration = (): Config => {

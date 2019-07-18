@@ -41,7 +41,7 @@ export async function drinkFaucetIfNeeded(
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    let tokensByChainId = faucetSpec.token;
+    let tokensByChainId = faucetSpec.tokens;
     const plainPubkey = keys[chainId];
     if (!plainPubkey) {
       continue;
