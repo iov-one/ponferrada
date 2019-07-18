@@ -2,7 +2,6 @@ import { BlockchainConnection, Identity } from '@iov/bcp';
 
 import { aNewStore } from '../store';
 import * as balanceActions from '../store/balances/actions';
-import { getTokens } from '../store/tokens';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { sleep } from '../utils/timer';
@@ -21,12 +20,9 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
       );
   });
 
-  afterEach(async () => {
-    await disconnect();
-  });
-
-  afterAll(() => {
+  afterAll(async () => {
     jest.spyOn(tokens, 'filterExistingTokens').mockReset();
+    await disconnect();
   });
 
   it('fires subscription callback when account balance changes', async () => {
@@ -35,12 +31,11 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
     const store = aNewStore();
     const keys = await createPubkeys();
 
-    const chainTokens = await getTokens();
-    await drinkFaucetIfNeeded(keys, chainTokens);
+    await drinkFaucetIfNeeded(keys);
     await subscribeBalance(keys, store.dispatch);
 
     // Trick for forcing account to receive balance events updates
-    await drinkFaucetIfNeeded(keys, chainTokens);
+    await drinkFaucetIfNeeded(keys);
 
     // Give some time to open request to be finished
     await sleep(1000);
