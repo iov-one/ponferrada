@@ -9,7 +9,6 @@ import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from '.
 export const REQ_REGISTER_USERNAME = 'req-register-username-tx';
 
 interface Props {
-  readonly creator: string;
   readonly tx: RegisterUsernameTx;
 }
 

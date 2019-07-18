@@ -8,11 +8,10 @@ import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from '.
 export const REQ_SEND_TX = 'req-send-tx';
 
 interface Props {
-  readonly creator: string;
   readonly tx: SendTransaction;
 }
 
-const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
+const ReqSendTransaction = ({ tx }: Props): JSX.Element => {
   const listItemClasses = useTxListItemStyles();
 
   return (
@@ -20,8 +19,8 @@ const ReqSendTransaction = ({ tx, creator }: Props): JSX.Element => {
       <ListItem>
         <ListItemText
           classes={listItemClasses}
-          primary="Creator"
-          secondary={creator}
+          primary="Sender"
+          secondary={tx.sender}
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>

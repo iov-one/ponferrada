@@ -7971,12 +7971,12 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page (Ethereum
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Creator
+            Sender
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
           >
-            0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa
+            0x7c15484EA11FD233AE566469af15d84335023c30
           </p>
         </div>
       </li>
@@ -8186,12 +8186,12 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page 1`] = `
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
           >
-            Creator
+            Sender
           </span>
           <p
             className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
           >
-            0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa
+            tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
           </p>
         </div>
       </li>

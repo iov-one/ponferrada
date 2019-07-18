@@ -21,13 +21,13 @@ interface Props {
   readonly tx: SupportedTransaction;
 }
 
-const Layout = ({ sender, tx, creator, onAcceptRequest, showRejectView }: Props): JSX.Element => {
+const Layout = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Element => {
   let req: JSX.Element;
 
   if (isSendTransaction(tx)) {
-    req = <ReqSendTransaction tx={tx} creator={creator} />;
+    req = <ReqSendTransaction tx={tx} />;
   } else if (isRegisterUsernameTx(tx)) {
-    req = <ReqRegisterUsernameTx tx={tx} creator={creator} />;
+    req = <ReqRegisterUsernameTx tx={tx} />;
   } else {
     throw new Error('Received transaction type that cannot be displayed');
   }
