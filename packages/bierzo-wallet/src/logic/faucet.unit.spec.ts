@@ -83,7 +83,7 @@ async function createPubkeys(): Promise<{ [chain: string]: string }> {
 }
 
 withChainsDescribe('Logic :: faucet', () => {
-  afterEach(async () => {
+  afterAll(async () => {
     await disconnect();
   });
 
