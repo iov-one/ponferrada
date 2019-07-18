@@ -2,7 +2,7 @@ import { Algorithm, ChainId, Identity, PubkeyBytes, TokenTicker } from '@iov/bcp
 import { TransactionEncoder } from '@iov/core';
 import { Ed25519, Random, Secp256k1 } from '@iov/crypto';
 
-import { getBalances } from '../store/balances';
+// import { getBalances } from '../store/balances';
 import { BwToken } from '../store/tokens';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect } from './connection';
@@ -88,6 +88,9 @@ withChainsDescribe('Logic :: faucet', () => {
   });
 
   it('works', async () => {
+    const keys = await createPubkeys();
+    await drinkFaucetIfNeeded(keys, tokens);
+    /*
     // generate keys
     const keys = await createPubkeys();
     // check their balance are 0
@@ -114,9 +117,13 @@ withChainsDescribe('Logic :: faucet', () => {
         tokenTicker: 'ETH',
       },
     });
-  }, 15000);
+    */
+  }, 45000);
 
   it('does not drink from faucet if tokens are already available', async () => {
+    const keys = await createPubkeys();
+    await drinkFaucetIfNeeded(keys, tokens);
+    /*
     // generate keys
     const keys = await createPubkeys();
     // drink faucet twice
@@ -141,5 +148,6 @@ withChainsDescribe('Logic :: faucet', () => {
         tokenTicker: 'ETH',
       },
     });
-  }, 15000);
+    */
+  }, 45000);
 });
