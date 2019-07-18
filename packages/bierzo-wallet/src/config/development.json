@@ -7,7 +7,7 @@
       },
       "faucetSpec": {
         "uri": "http://localhost:8000",
-        "token": "CASH"
+        "token": ["CASH", "BASH"]
       }
     },
     {
@@ -17,7 +17,7 @@
       },
       "faucetSpec": {
         "uri": "http://localhost:8002",
-        "token": "LSK"
+        "token": ["LSK"]
       }
     },
     {
@@ -27,7 +27,7 @@
       },
       "faucetSpec": {
         "uri": "http://localhost:8003",
-        "token": "ETH"
+        "token": ["ETH"]
       }
     }
   ]
