@@ -6,7 +6,6 @@ import { IovFaucet } from '@iov/faucets';
 import { liskCodec } from '@iov/lisk';
 
 import { ChainSpec, getConfig } from '../config';
-import { BwToken } from '../store/tokens';
 import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from './connection';
 
 function getCodec(spec: ChainSpec): TxCodec {
@@ -25,10 +24,7 @@ function getCodec(spec: ChainSpec): TxCodec {
   throw new Error('Unsupported codecType for chain spec');
 }
 
-export async function drinkFaucetIfNeeded(
-  keys: { [chain: string]: string },
-  tokens: { [ticker: string]: BwToken },
-): Promise<void> {
+export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
   const config = getConfig();
   const chains = config.chains;
 
