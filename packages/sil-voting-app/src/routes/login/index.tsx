@@ -11,8 +11,8 @@ import React, { useContext } from 'react';
 import * as ReactRedux from 'react-redux';
 
 import icon from '../../assets/iov-logo.svg';
-import { getExtensionStatus, setExtensionStateAction } from '../../store/reducers/extension';
-import { addProposalsAction, getProposals } from '../../store/reducers/proposals';
+import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
+import { addProposalsAction, getProposals } from '../../store/proposals';
 import { history } from '../index';
 import { DASHBOARD_ROUTE } from '../paths';
 

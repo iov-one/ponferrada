@@ -1,8 +1,8 @@
 import { Store } from 'redux';
 
-import { RootState } from '..';
-import { aNewStore } from '../..';
-import { withChainsDescribe } from '../../../utils/test/testExecutor';
+import { aNewStore } from '..';
+import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { RootState } from '../reducers';
 import { addProposalsAction, getProposals } from './actions';
 
 const proposals = {

@@ -1,4 +1,4 @@
-import { sendGetIdentitiesRequest } from '../../../communication/identities';
+import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { ExtensionState, SetExtensionStateActionType } from './reducer';
 
 export async function getExtensionStatus(): Promise<ExtensionState> {
