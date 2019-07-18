@@ -22,7 +22,7 @@ type BlockStyleFunction = ComposedStyleFunction<
     typeof border,
     typeof palette,
     typeof borders,
-    typeof typography
+    typeof typography,
   ]
 >;
 type BlockStyleProps = PropsFor<BlockStyleFunction>;

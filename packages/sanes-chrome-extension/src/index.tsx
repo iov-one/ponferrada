@@ -51,13 +51,10 @@ getPersonaData().then(persona => {
     history.push(url);
 
     if (module.hot) {
-      module.hot.accept(
-        './routes',
-        (): void => {
-          const NextApp = require('./routes').default;
-          render(NextApp, persona, requests);
-        },
-      );
+      module.hot.accept('./routes', (): void => {
+        const NextApp = require('./routes').default;
+        render(NextApp, persona, requests);
+      });
     }
   });
 });

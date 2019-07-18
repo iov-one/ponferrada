@@ -32,11 +32,8 @@ const render = (Component: React.ComponentType): void => {
 render(Routes);
 
 if (module.hot) {
-  module.hot.accept(
-    './routes',
-    (): void => {
-      const NextApp = require('./routes').default;
-      render(NextApp);
-    },
-  );
+  module.hot.accept('./routes', (): void => {
+    const NextApp = require('./routes').default;
+    render(NextApp);
+  });
 }

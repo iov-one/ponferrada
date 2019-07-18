@@ -12,14 +12,11 @@ export const configureStore = (): Store<RootReducer> => {
   const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept(
-      './reducers',
-      (): void => {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const nextRootReducer = require('./reducers');
-        store.replaceReducer(nextRootReducer);
-      },
-    );
+    module.hot.accept('./reducers', (): void => {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const nextRootReducer = require('./reducers');
+      store.replaceReducer(nextRootReducer);
+    });
   }
 
   return store;

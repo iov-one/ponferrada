@@ -8,31 +8,26 @@ export const findRenderedDOMComponentWithId = (
   tree: React.Component<any>, // eslint-disable-line
   id: string,
 ): Promise<React.ReactInstance> =>
-  new Promise(
-    (resolve, reject): void => {
-      let times = 0;
-      const interval = setInterval((): void => {
-        if (times >= TIMEOUT / INTERVAL) {
-          clearInterval(interval);
-          reject(`Unable to find element with id: ${id}.`);
-        }
+  new Promise((resolve, reject): void => {
+    let times = 0;
+    const interval = setInterval((): void => {
+      if (times >= TIMEOUT / INTERVAL) {
+        clearInterval(interval);
+        reject(`Unable to find element with id: ${id}.`);
+      }
 
-        const elementsWithId = TestUtils.findAllInRenderedTree(
-          tree,
-          (inst: React.ReactInstance): boolean => {
-            return TestUtils.isDOMComponent(inst) && inst.id === id;
-          },
-        );
+      const elementsWithId = TestUtils.findAllInRenderedTree(tree, (inst: React.ReactInstance): boolean => {
+        return TestUtils.isDOMComponent(inst) && inst.id === id;
+      });
 
-        if (elementsWithId.length === 1) {
-          clearInterval(interval);
-          resolve(elementsWithId[0]);
-        }
+      if (elementsWithId.length === 1) {
+        clearInterval(interval);
+        resolve(elementsWithId[0]);
+      }
 
-        times += 1;
-      }, INTERVAL);
-    },
-  );
+      times += 1;
+    }, INTERVAL);
+  });
 
 export const findRenderedE2EComponentWithId = async (page: Page, elementId: string): Promise<void> => {
   const selector = `#${elementId}`;

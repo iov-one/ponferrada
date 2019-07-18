@@ -14,12 +14,9 @@ export const makeStore = (): Store<RootState> => {
   const store = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept(
-      './reducers',
-      (): void => {
-        store.replaceReducer(reducer);
-      },
-    );
+    module.hot.accept('./reducers', (): void => {
+      store.replaceReducer(reducer);
+    });
   }
 
   return store;
