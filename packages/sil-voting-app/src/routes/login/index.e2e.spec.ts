@@ -22,108 +22,105 @@ import { travelToDashboardE2e } from '../dashboard/test/travelToDashboard';
 import { DASHBOARD_ROUTE } from '../paths';
 import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from '.';
 
-withChainsDescribe(
-  'E2E > Login route',
-  (): void => {
-    let browser: Browser;
-    let page: Page;
-    let extensionPage: Page;
-    let server: Server;
+withChainsDescribe('E2E > Login route', (): void => {
+  let browser: Browser;
+  let page: Page;
+  let extensionPage: Page;
+  let server: Server;
 
-    beforeAll(() => {
-      const app = express();
+  beforeAll(() => {
+    const app = express();
 
-      app.use(express.static(require('path').join(__dirname, '/../../../build')));
+    app.use(express.static(require('path').join(__dirname, '/../../../build')));
 
-      app.get('/*', function(req: Request, res: Response) {
-        res.sendFile(require('path').join(__dirname, 'build', 'index.html'));
-      });
-
-      server = app.listen(9000);
+    app.get('/*', function(req: Request, res: Response) {
+      res.sendFile(require('path').join(__dirname, 'build', 'index.html'));
     });
 
-    beforeEach(async (): Promise<void> => {}, 45000);
+    server = app.listen(9000);
+  });
 
-    afterEach(
-      async (): Promise<void> => {
-        await closeBrowser(browser);
-      },
-    );
+  beforeEach(async (): Promise<void> => {}, 45000);
 
-    afterAll(() => {
-      server.close();
-    });
+  afterEach(
+    async (): Promise<void> => {
+      await closeBrowser(browser);
+    },
+  );
 
-    async function checkLoginMessage(page: Page): Promise<void> {
-      const element = await page.$('h6');
-      if (element === null) {
-        throw new Error();
-      }
-      const text = await (await element.getProperty('textContent')).jsonValue();
-      expect(text).toBe(LOGIN_EXTENSION_MSG);
+  afterAll(() => {
+    server.close();
+  });
 
-      await closeToast(page);
+  async function checkLoginMessage(page: Page): Promise<void> {
+    const element = await page.$('h6');
+    if (element === null) {
+      throw new Error();
     }
+    const text = await (await element.getProperty('textContent')).jsonValue();
+    expect(text).toBe(LOGIN_EXTENSION_MSG);
 
-    it('should redirect when enqueued login request is accepted', async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
-      extensionPage = await createExtensionPage(browser);
-      await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
-      await page.bringToFront();
-      await travelToDashboardE2e(page);
-      await sleep(1000);
-      await acceptGetIdentitiesRequest(extensionPage);
-      await page.bringToFront();
-      await whenOnNavigatedToE2eRoute(page, DASHBOARD_ROUTE);
-    }, 45000);
+    await closeToast(page);
+  }
 
-    it('should stay in login view if enqueued login request is rejected', async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
-      extensionPage = await createExtensionPage(browser);
-      await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, 'username', '12345678');
-      await page.bringToFront();
-      await travelToDashboardE2e(page);
-      await sleep(1000);
-      await rejectGetIdentitiesRequest(extensionPage);
-      await page.bringToFront();
-      await checkLoginMessage(page);
-    }, 45000);
+  it('should redirect when enqueued login request is accepted', async (): Promise<void> => {
+    browser = await launchBrowser();
+    page = await createPage(browser);
+    extensionPage = await createExtensionPage(browser);
+    await getBackgroundPage(browser);
+    await submitExtensionSignupForm(extensionPage, 'username', '12345678');
+    await page.bringToFront();
+    await travelToDashboardE2e(page);
+    await sleep(1000);
+    await acceptGetIdentitiesRequest(extensionPage);
+    await page.bringToFront();
+    await whenOnNavigatedToE2eRoute(page, DASHBOARD_ROUTE);
+  }, 45000);
 
-    it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
-      browser = await launchBrowser();
-      page = await createPage(browser);
-      await getBackgroundPage(browser);
-      await page.bringToFront();
-      await sleep(1000);
+  it('should stay in login view if enqueued login request is rejected', async (): Promise<void> => {
+    browser = await launchBrowser();
+    page = await createPage(browser);
+    extensionPage = await createExtensionPage(browser);
+    await getBackgroundPage(browser);
+    await submitExtensionSignupForm(extensionPage, 'username', '12345678');
+    await page.bringToFront();
+    await travelToDashboardE2e(page);
+    await sleep(1000);
+    await rejectGetIdentitiesRequest(extensionPage);
+    await page.bringToFront();
+    await checkLoginMessage(page);
+  }, 45000);
 
-      await page.click('button');
-      await sleep(500);
+  it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
+    browser = await launchBrowser();
+    page = await createPage(browser);
+    await getBackgroundPage(browser);
+    await page.bringToFront();
+    await sleep(1000);
 
-      await checkLoginMessage(page);
-    }, 45000);
+    await page.click('button');
+    await sleep(500);
 
-    it('shows install IOV extension message', async (): Promise<void> => {
-      browser = await launchBrowser(0, false);
-      page = await createPage(browser);
-      await page.bringToFront();
+    await checkLoginMessage(page);
+  }, 45000);
 
-      await sleep(1000);
+  it('shows install IOV extension message', async (): Promise<void> => {
+    browser = await launchBrowser(0, false);
+    page = await createPage(browser);
+    await page.bringToFront();
 
-      await page.click('button');
-      await sleep(500);
+    await sleep(1000);
 
-      const element = await page.$('h6');
-      if (element === null) {
-        throw new Error();
-      }
-      const text = await (await element.getProperty('textContent')).jsonValue();
-      expect(text).toBe(INSTALL_EXTENSION_MSG);
+    await page.click('button');
+    await sleep(500);
 
-      await closeToast(page);
-    }, 45000);
-  },
-);
+    const element = await page.$('h6');
+    if (element === null) {
+      throw new Error();
+    }
+    const text = await (await element.getProperty('textContent')).jsonValue();
+    expect(text).toBe(INSTALL_EXTENSION_MSG);
+
+    await closeToast(page);
+  }, 45000);
+});

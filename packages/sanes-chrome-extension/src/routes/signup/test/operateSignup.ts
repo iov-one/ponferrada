@@ -123,16 +123,14 @@ export const submitShowPhraseE2E = async (page: Page): Promise<void> => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   await checkbox!.click();
 
-  const mnemonic = await page.evaluate(
-    (): string | null => {
-      const element = document.querySelector('p');
-      if (!element) {
-        return null;
-      }
+  const mnemonic = await page.evaluate((): string | null => {
+    const element = document.querySelector('p');
+    if (!element) {
+      return null;
+    }
 
-      return element.textContent;
-    },
-  );
+    return element.textContent;
+  });
 
   expect(mnemonic).not.toBe(null);
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

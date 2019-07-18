@@ -12,11 +12,9 @@ import { BALANCE_ROUTE } from '../../paths';
 
 export const travelToBalance = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
-  TestUtils.act(
-    (): void => {
-      history.push(BALANCE_ROUTE);
-    },
-  );
+  TestUtils.act((): void => {
+    history.push(BALANCE_ROUTE);
+  });
   await whenOnNavigatedToRoute(BALANCE_ROUTE);
 
   return dom;

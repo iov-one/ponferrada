@@ -9,11 +9,9 @@ import { DASHBOARD_ROUTE } from '../../paths';
 
 export const travelToDashboard = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
-  TestUtils.act(
-    (): void => {
-      history.push(DASHBOARD_ROUTE);
-    },
-  );
+  TestUtils.act((): void => {
+    history.push(DASHBOARD_ROUTE);
+  });
   await whenOnNavigatedToRoute(DASHBOARD_ROUTE);
 
   return dom;
