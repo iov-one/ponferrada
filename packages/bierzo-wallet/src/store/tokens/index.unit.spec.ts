@@ -1,8 +1,13 @@
+import { disconnect } from '../../logic/connection';
 import { aNewStore } from '../../store';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { addTickersAction, getTokens } from './actions';
 
 withChainsDescribe('Tokens reducer', () => {
+  afterAll(async () => {
+    await disconnect();
+  });
+
   it('has correct initial state', async () => {
     const store = aNewStore();
     const tokens = store.getState().tokens;

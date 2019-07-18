@@ -5,6 +5,10 @@ import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect, getConnectionFor } from './connection';
 
 withChainsDescribe('Logic :: connection', () => {
+  afterAll(async () => {
+    await disconnect();
+  });
+
   it('calls connections only once', async () => {
     const config = getConfig();
     const firstChain = config.chains[2];

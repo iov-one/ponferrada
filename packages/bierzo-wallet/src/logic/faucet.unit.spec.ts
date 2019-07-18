@@ -1,55 +1,11 @@
-import { Algorithm, ChainId, Identity, PubkeyBytes, TokenTicker } from '@iov/bcp';
+import { Algorithm, ChainId, Identity, PubkeyBytes } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { Ed25519, Random, Secp256k1 } from '@iov/crypto';
 
 import { getBalances } from '../store/balances';
-import { BwToken } from '../store/tokens';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
-
-const tokens: { [ticker: string]: BwToken } = {
-  ETH: {
-    chainId: 'ethereum-eip155-5777' as ChainId,
-    token: {
-      fractionalDigits: 18,
-      tokenName: 'Ether',
-      tokenTicker: 'ETH' as TokenTicker,
-    },
-  },
-  ASH: {
-    chainId: 'local-bns-devnet' as ChainId,
-    token: {
-      fractionalDigits: 9,
-      tokenName: 'Let the Phoenix arise',
-      tokenTicker: 'ASH' as TokenTicker,
-    },
-  },
-  BASH: {
-    chainId: 'local-bns-devnet' as ChainId,
-    token: {
-      fractionalDigits: 9,
-      tokenName: 'Another token of this chain',
-      tokenTicker: 'BASH' as TokenTicker,
-    },
-  },
-  CASH: {
-    chainId: 'local-bns-devnet' as ChainId,
-    token: {
-      fractionalDigits: 9,
-      tokenName: 'Main token of this chain',
-      tokenTicker: 'CASH' as TokenTicker,
-    },
-  },
-  LSK: {
-    chainId: 'lisk-198f2b61a8' as ChainId,
-    token: {
-      fractionalDigits: 8,
-      tokenName: 'Lisk',
-      tokenTicker: 'LSK' as TokenTicker,
-    },
-  },
-};
 
 async function createPubkeys(): Promise<{ [chain: string]: string }> {
   const keys: { [chain: string]: string } = {};
@@ -94,7 +50,7 @@ withChainsDescribe('Logic :: faucet', () => {
     const initialBalances = await getBalances(keys);
     expect(initialBalances).toEqual({});
     // drink faucet
-    await drinkFaucetIfNeeded(keys, tokens);
+    await drinkFaucetIfNeeded(keys);
     // check their balances
     const balances = await getBalances(keys);
     expect(balances).toEqual({
@@ -114,14 +70,14 @@ withChainsDescribe('Logic :: faucet', () => {
         tokenTicker: 'ETH',
       },
     });
-  }, 15000);
+  }, 45000);
 
   it('does not drink from faucet if tokens are already available', async () => {
     // generate keys
     const keys = await createPubkeys();
     // drink faucet twice
-    await drinkFaucetIfNeeded(keys, tokens);
-    await drinkFaucetIfNeeded(keys, tokens);
+    await drinkFaucetIfNeeded(keys);
+    await drinkFaucetIfNeeded(keys);
     // check their balances
     const balances = await getBalances(keys);
     expect(balances).toEqual({
@@ -141,5 +97,5 @@ withChainsDescribe('Logic :: faucet', () => {
         tokenTicker: 'ETH',
       },
     });
-  }, 15000);
+  }, 45000);
 });

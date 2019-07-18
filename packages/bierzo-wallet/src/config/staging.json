@@ -3,11 +3,11 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "bootstrapNodes": ["https://bns.antnet.iov.one/"]
+        "bootstrapNodes": ["wss://bns.antnet.iov.one/"]
       },
       "faucetSpec": {
         "uri": "https://bns-faucet.antnet.iov.one",
-        "token": "IOV"
+        "tokens": ["IOV"]
       }
     },
     {

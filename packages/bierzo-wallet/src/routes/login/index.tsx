@@ -39,7 +39,7 @@ const Login = (): JSX.Element => {
     dispatch(addTickersAction(chainTokens));
 
     const keys = store.getState().extension.keys;
-    await drinkFaucetIfNeeded(keys, chainTokens);
+    await drinkFaucetIfNeeded(keys);
 
     const balances = await getBalances(keys);
     dispatch(addBalancesAction(balances));

@@ -6,7 +6,6 @@ import { IovFaucet } from '@iov/faucets';
 import { liskCodec } from '@iov/lisk';
 
 import { ChainSpec, getConfig } from '../config';
-import { BwToken } from '../store/tokens';
 import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from './connection';
 
 function getCodec(spec: ChainSpec): TxCodec {
@@ -25,17 +24,7 @@ function getCodec(spec: ChainSpec): TxCodec {
   throw new Error('Unsupported codecType for chain spec');
 }
 
-function getTokensByChainId(chainId: string, tokens: { [ticker: string]: BwToken }): ReadonlyArray<string> {
-  return Object.entries(tokens).reduce((filteredTokens: ReadonlyArray<string>, pair) => {
-    const [key, value] = pair;
-    return value.chainId === chainId ? [...filteredTokens, key] : filteredTokens;
-  }, []);
-}
-
-export async function drinkFaucetIfNeeded(
-  keys: { [chain: string]: string },
-  tokens: { [ticker: string]: BwToken },
-): Promise<void> {
+export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
   const config = getConfig();
   const chains = config.chains;
 
@@ -48,7 +37,7 @@ export async function drinkFaucetIfNeeded(
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    let tokensByChainId = getTokensByChainId(chainId, tokens);
+    let tokensByChainId = faucetSpec.tokens;
     const plainPubkey = keys[chainId];
     if (!plainPubkey) {
       continue;
