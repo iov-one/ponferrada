@@ -5,7 +5,7 @@ import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect, getConnectionFor } from './connection';
 
 withChainsDescribe('Logic :: connection', () => {
-  afterEach(async () => {
+  afterAll(async () => {
     await disconnect();
   });
 

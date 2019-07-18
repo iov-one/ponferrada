@@ -7,7 +7,7 @@ import { getExtensionStatus, setExtensionStateAction } from '../extension';
 import { addUsernamesAction, getUsernames } from './actions';
 
 withChainsDescribe('Usernames reducer', () => {
-  afterEach(async () => {
+  afterAll(async () => {
     await disconnect();
   });
 

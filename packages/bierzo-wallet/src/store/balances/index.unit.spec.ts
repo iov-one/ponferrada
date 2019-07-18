@@ -7,7 +7,7 @@ import { getExtensionStatus, setExtensionStateAction } from '../extension';
 import { addBalancesAction, getBalances } from './actions';
 
 withChainsDescribe('Tokens reducer', () => {
-  afterEach(async () => {
+  afterAll(async () => {
     await disconnect();
   });
 
