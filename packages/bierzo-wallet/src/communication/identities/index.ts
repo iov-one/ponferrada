@@ -24,7 +24,7 @@ function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
 
 /**
  * The response of a "getIdentities" RPC call to the browser extension.
- * `undefined` represents the case that the website cound not connect to the
+ * `undefined` represents the case that the website could not connect to the
  * extension, i.e. the extension is not available.
  */
 export type GetIdentitiesResponse = readonly Identity[] | undefined;
