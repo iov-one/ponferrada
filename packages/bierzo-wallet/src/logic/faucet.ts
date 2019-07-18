@@ -1,27 +1,27 @@
-import { Identity, TokenTicker, TxCodec } from '@iov/bcp';
-import { bnsCodec } from '@iov/bns';
+import { BlockchainConnection, Identity, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
-import { ethereumCodec } from '@iov/ethereum';
 import { IovFaucet } from '@iov/faucets';
-import { liskCodec } from '@iov/lisk';
 
-import { ChainSpec, getConfig } from '../config';
-import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from './connection';
+import { getConfig } from '../config';
+import { getCodec } from './codec';
+import { getConnectionFor } from './connection';
 
-function getCodec(spec: ChainSpec): TxCodec {
-  if (isEthSpec(spec)) {
-    return ethereumCodec;
+// exported for testing purposes
+export async function filterExistingTokens(
+  connection: BlockchainConnection,
+  identity: Identity,
+  tokensByChainId: ReadonlyArray<string>,
+): Promise<ReadonlyArray<string>> {
+  const account = await connection.getAccount({ pubkey: identity.pubkey });
+  if (!account) {
+    return tokensByChainId;
   }
 
-  if (isBnsSpec(spec)) {
-    return bnsCodec;
+  for (const balance of account.balance) {
+    tokensByChainId = tokensByChainId.filter(ticker => ticker !== balance.tokenTicker);
   }
 
-  if (isLskSpec(spec)) {
-    return liskCodec;
-  }
-
-  throw new Error('Unsupported codecType for chain spec');
+  return tokensByChainId;
 }
 
 export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
@@ -37,7 +37,6 @@ export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Pr
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    let tokensByChainId = faucetSpec.tokens;
     const plainPubkey = keys[chainId];
     if (!plainPubkey) {
       continue;
@@ -46,12 +45,7 @@ export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Pr
     const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
 
     // Skip balance tokens
-    const account = await connection.getAccount({ pubkey: identity.pubkey });
-    if (account) {
-      for (const balance of account.balance) {
-        tokensByChainId = tokensByChainId.filter(ticker => ticker !== balance.tokenTicker);
-      }
-    }
+    const tokensByChainId = await filterExistingTokens(connection, identity, faucetSpec.tokens);
 
     const faucet = new IovFaucet(faucetSpec.uri);
     const address = codec.identityToAddress(identity);
