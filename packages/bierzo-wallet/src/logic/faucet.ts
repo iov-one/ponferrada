@@ -25,13 +25,6 @@ function getCodec(spec: ChainSpec): TxCodec {
   throw new Error('Unsupported codecType for chain spec');
 }
 
-function getTokensByChainId(chainId: string, tokens: { [ticker: string]: BwToken }): ReadonlyArray<string> {
-  return Object.entries(tokens).reduce((filteredTokens: ReadonlyArray<string>, pair) => {
-    const [key, value] = pair;
-    return value.chainId === chainId ? [...filteredTokens, key] : filteredTokens;
-  }, []);
-}
-
 export async function drinkFaucetIfNeeded(
   keys: { [chain: string]: string },
   tokens: { [ticker: string]: BwToken },
@@ -48,7 +41,7 @@ export async function drinkFaucetIfNeeded(
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    let tokensByChainId = getTokensByChainId(chainId, tokens);
+    let tokensByChainId = faucetSpec.token;
     const plainPubkey = keys[chainId];
     if (!plainPubkey) {
       continue;
