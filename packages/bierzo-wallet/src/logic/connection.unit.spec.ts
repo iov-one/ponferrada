@@ -5,6 +5,10 @@ import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect, getConnectionFor } from './connection';
 
 withChainsDescribe('Logic :: connection', () => {
+  afterEach(async () => {
+    await disconnect();
+  });
+
   it('calls connections only once', async () => {
     const config = getConfig();
     const firstChain = config.chains[2];
@@ -34,10 +38,10 @@ withChainsDescribe('Logic :: connection', () => {
     await disconnect();
 
     // THEN
-    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(1);
-    await getConnectionFor(firstChain.chainSpec);
-    await getConnectionFor(firstChain.chainSpec);
-    await getConnectionFor(firstChain.chainSpec);
     expect(ethereumConnectionSpy).toHaveBeenCalledTimes(2);
+    await getConnectionFor(firstChain.chainSpec);
+    await getConnectionFor(firstChain.chainSpec);
+    await getConnectionFor(firstChain.chainSpec);
+    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(3);
   });
 });

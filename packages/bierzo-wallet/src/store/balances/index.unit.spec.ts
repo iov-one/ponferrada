@@ -1,11 +1,16 @@
 import { parseGetIdentitiesResponse } from '../../communication/identities';
 import * as identities from '../../communication/identities';
+import { disconnect } from '../../logic/connection';
 import { aNewStore } from '../../store';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { getExtensionStatus, setExtensionStateAction } from '../extension';
 import { addBalancesAction, getBalances } from './actions';
 
 withChainsDescribe('Tokens reducer', () => {
+  afterEach(async () => {
+    await disconnect();
+  });
+
   it('has correct initial state', async () => {
     const store = aNewStore();
     const balances = store.getState().balances;
