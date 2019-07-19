@@ -13,7 +13,7 @@ import receive from '../assets/transactionReceive.svg';
 import send from '../assets/transactionSend.svg';
 
 interface Props {
-  readonly name: string | undefined;
+  readonly iovAddress: string | undefined;
   readonly tokens: { [token: string]: Amount };
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
@@ -55,7 +55,7 @@ const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
   );
 };
 
-const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props): JSX.Element => {
+const BalanceLayout = ({ iovAddress, tokens, onSendPayment, onReceivePayment }: Props): JSX.Element => {
   const hasTokens = tokens && Object.keys(tokens).length;
   const theme = useTheme<Theme>();
 
@@ -72,7 +72,7 @@ const BalanceLayout = ({ name, tokens, onSendPayment, onReceivePayment }: Props)
       <Block bgcolor={theme.palette.background.paper} height="unset" width={450}>
         <Block padding={4} display="flex" flexDirection="column">
           <Typography variant="h5" align="center" weight="light">
-            {name ? name : '--'}
+            {iovAddress ? iovAddress : 'Get your human readable address.'}
           </Typography>
           <Hairline space={4} />
           <Typography variant="subtitle2" align="center">

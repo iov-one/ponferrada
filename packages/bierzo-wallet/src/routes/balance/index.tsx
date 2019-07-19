@@ -17,15 +17,18 @@ function onReceivePayment(): void {
 
 const Balance = (): JSX.Element => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
-  const name = 'test';
-  const iovAddress = `${name}*iov`;
+  const bnsChainId = 'local-bns-devnet';
+  const bnsUsername = ReactRedux.useSelector((state: RootState) =>
+    Object.values(state.usernames).find(username => username.chainId === bnsChainId),
+  );
+  const iovAddress = bnsUsername ? `${bnsUsername.username}*iov` : undefined;
 
   return (
     <PageMenu>
       <Layout
         onSendPayment={onSendPayment}
         onReceivePayment={onReceivePayment}
-        name={iovAddress}
+        iovAddress={iovAddress}
         tokens={tokens}
       />
     </PageMenu>
