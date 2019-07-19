@@ -4,6 +4,7 @@ import * as ReactRedux from 'react-redux';
 import { history } from '..';
 import PageMenu from '../../components/PageMenu';
 import { RootState } from '../../store/reducers';
+import { getUsername } from '../../store/usernames/selectors';
 import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
 import Layout from './components';
 
@@ -17,10 +18,7 @@ function onReceivePayment(): void {
 
 const Balance = (): JSX.Element => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
-  const bnsChainId = 'local-bns-devnet';
-  const bnsUsername = ReactRedux.useSelector((state: RootState) =>
-    Object.values(state.usernames).find(username => username.chainId === bnsChainId),
-  );
+  const bnsUsername = ReactRedux.useSelector(getUsername);
   const iovAddress = bnsUsername ? `${bnsUsername.username}*iov` : undefined;
 
   return (
