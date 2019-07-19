@@ -5,6 +5,10 @@ export const getNoFundsMessage = (h6Elements: Element[]): string => {
   return h6Elements[NO_FUNDS_IDX].textContent || '';
 };
 
+export const getIOVUsername = (h5Elements: Element[]): string => {
+  return h5Elements[0].textContent || '';
+};
+
 export const getFirstCurrencyBalanceE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
   return (await (await h6Elements[5].getProperty('textContent')).jsonValue()) || '';
 };
