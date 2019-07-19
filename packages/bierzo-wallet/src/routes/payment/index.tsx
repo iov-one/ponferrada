@@ -2,6 +2,7 @@ import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
+import Back from 'medulas-react-components/lib/components/Button/Back';
 import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
@@ -56,6 +57,7 @@ const Payment = ({ location }: RouteComponentProps): JSX.Element => {
       <Header path={location.pathname} />
       <Form onSubmit={handleSubmit}>
         <Block
+          marginTop={4}
           width="100vw"
           height="auto"
           minHeight="100vh"
@@ -77,6 +79,9 @@ const Payment = ({ location }: RouteComponentProps): JSX.Element => {
             <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
               Continue
             </Button>
+            <Back fullWidth disabled={submitting} onClick={}>
+              Cancel
+            </Back>
           </Block>
         </Block>
       </Form>
