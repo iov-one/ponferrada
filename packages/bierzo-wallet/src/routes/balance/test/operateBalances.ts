@@ -1,8 +1,7 @@
 import { ElementHandle } from 'puppeteer';
 
-const NO_FUNDS_IDX = 4;
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
-  return h6Elements[NO_FUNDS_IDX].textContent || '';
+  return h6Elements[4].textContent || '';
 };
 
 export const getIOVUsername = (h5Elements: Element[]): string => {
@@ -19,4 +18,8 @@ export const getSecondCurrencyBalanceE2E = async (h6Elements: ElementHandle<Elem
 
 export const getThirdCurrencyBalanceE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
   return (await (await h6Elements[7].getProperty('textContent')).jsonValue()) || '';
+};
+
+export const getUsernameE2E = async (h5Elements: ElementHandle<Element>[]): Promise<string> => {
+  return (await (await h5Elements[0].getProperty('textContent')).jsonValue()) || '';
 };
