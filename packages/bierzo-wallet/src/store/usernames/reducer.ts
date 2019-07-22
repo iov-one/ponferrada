@@ -7,7 +7,7 @@ import * as actions from './actions';
 export interface BwUsername {
   readonly chainId: ChainId;
   readonly address: Address;
-  readonly username?: string;
+  readonly username: string;
 }
 
 export interface AddUsernamesActionType extends Action {
