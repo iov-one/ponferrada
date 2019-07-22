@@ -28,6 +28,51 @@ const initState: NotificationState = {
   transactions: [],
 };
 
+export interface AnnotatedConfirmedTransaction<
+  T extends Omit<UnsignedTransaction, 'creator'> = SendTransaction
+> extends ConfirmedTransaction<T> {
+  readonly received: boolean;
+  readonly time: ReadonlyDate;
+  readonly success: boolean;
+  // these are always set to the raw values (TODO: handle multisig)
+  readonly signerAddr: string;
+  readonly recipientAddr: string;
+  // these are set for reverse lookup of valuename
+  readonly signerName?: string;
+  readonly recipientName?: string;
+  readonly chainId: ChainId;
+  readonly memo?: string;
+}
+
+function simplifyTransaction(full: AnnotatedConfirmedTransaction): ProcessedTx {
+  const {
+    time,
+    transaction,
+    received,
+    signerAddr,
+    signerName,
+    recipientAddr,
+    recipientName,
+    success,
+    transactionId,
+    memo,
+  } = full;
+
+  const signer = signerName || signerAddr;
+  const recipient = recipientName || recipientAddr;
+
+  return {
+    id: transactionId,
+    time,
+    received,
+    amount: transaction.amount,
+    signer,
+    recipient,
+    success,
+    memo,
+  };
+}
+
 export function notificationReducer(
   state: NotificationState = initState,
   action: NotificationActions,
