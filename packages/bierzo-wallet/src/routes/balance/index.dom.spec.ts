@@ -25,10 +25,10 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
-const bnsChaingId = 'local-bns-devnet';
+const bnsChainId = 'local-bns-devnet';
 const usernames: DeepPartial<UsernamesState> = {
-  [bnsChaingId]: {
-    chainId: bnsChaingId,
+  [bnsChainId]: {
+    chainId: bnsChainId,
     address: 'some_address',
     username: 'albert',
   },
