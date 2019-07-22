@@ -8,6 +8,7 @@ import {
   getFirstCurrencyBalanceE2E,
   getSecondCurrencyBalanceE2E,
   getThirdCurrencyBalanceE2E,
+  getUsernameE2E,
 } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
@@ -54,5 +55,11 @@ withChainsDescribe('E2E > Balance route', (): void => {
     expect(firstBalance).toBe('10 BASH');
     expect(secondBalance).toBe('10 CASH');
     expect(thirdBalance).toBe('10 ETH');
+  }, 45000);
+
+  it('should contain message to get username', async (): Promise<void> => {
+    const username = await getUsernameE2E(await page.$$('h5'));
+
+    expect(username).toBe('No human readable address registered.');
   }, 45000);
 });

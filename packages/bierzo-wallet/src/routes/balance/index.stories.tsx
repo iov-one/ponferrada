@@ -31,7 +31,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
     <DecoratedStorybook>
       <PageMenu>
         <Layout
-          name={ACCOUNT_NAME}
+          iovAddress={ACCOUNT_NAME}
           tokens={BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
@@ -39,11 +39,11 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       </PageMenu>
     </DecoratedStorybook>
   ))
-  .add('View without tokens', () => (
+  .add('View without tokens and without name', () => (
     <DecoratedStorybook>
       <PageMenu>
         <Layout
-          name={ACCOUNT_NAME}
+          iovAddress={undefined}
           tokens={NO_BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}

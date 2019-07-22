@@ -5,10 +5,11 @@ import { DeepPartial, Store } from 'redux';
 import { aNewStore } from '../../store';
 import { BalanceState } from '../../store/balances';
 import { RootState } from '../../store/reducers';
+import { UsernamesState } from '../../store/usernames';
 import { expectRoute } from '../../utils/test/dom';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
-import { getNoFundsMessage } from './test/operateBalances';
+import { getIovUsername, getNoFundsMessage } from './test/operateBalances';
 import { travelToBalance } from './test/travelToBalance';
 
 const balancesAmount: DeepPartial<BalanceState> = {
@@ -24,6 +25,15 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
+const bnsChainId = 'local-bns-devnet';
+const usernames: DeepPartial<UsernamesState> = {
+  [bnsChainId]: {
+    chainId: bnsChainId,
+    address: 'some_address',
+    username: 'albert',
+  },
+};
+
 describe('The /balance route', () => {
   let store: Store<RootState>;
   let balanceDom: React.Component;
@@ -36,6 +46,7 @@ describe('The /balance route', () => {
             installed: true,
           },
           balances: balancesAmount,
+          usernames,
         });
         balanceDom = await travelToBalance(store);
       },
@@ -71,9 +82,15 @@ describe('The /balance route', () => {
       expect(balances[0].textContent).toBe('8.25 BASH');
       expect(balances[1].textContent).toBe('12.26775 CASH');
     });
+
+    it('should show bns username', async () => {
+      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h5'));
+
+      expect(noUsernameMessage).toBe('albert*iov');
+    });
   });
 
-  describe('without balance', () => {
+  describe('without balance and username', () => {
     beforeEach(
       async (): Promise<void> => {
         store = aNewStore({
@@ -90,6 +107,12 @@ describe('The /balance route', () => {
       const noFundsMessage = getNoFundsMessage(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h6'));
 
       expect(noFundsMessage).toBe('No funds available');
+    });
+
+    it('should show that there is no bns username available', async () => {
+      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h5'));
+
+      expect(noUsernameMessage).toBe('No human readable address registered.');
     });
   });
 });
