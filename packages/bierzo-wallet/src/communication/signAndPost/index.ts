@@ -13,16 +13,17 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResp
 import { TransactionEncoder } from '@iov/multichain';
 
 import { extensionId } from '..';
+import { ChainConfig } from '../../config';
+import { getConnectionFor } from '../../logic/connection';
 
-async function withEthereumFee<T extends UnsignedTransaction>(transaction: T): Promise<T> {
-  const connection = await EthereumConnection.establish('http://localhost:8545', {});
+async function withChainFee<T extends UnsignedTransaction>(chain: ChainConfig, transaction: T): Promise<T> {
+  const connection = await getConnectionFor(chain.chainSpec);
   const withFee = await connection.withDefaultFee(transaction);
-  connection.disconnect();
   return withFee;
 }
 
-const generateSignAndPostRequest = async (creator: Identity): Promise<JsonRpcRequest> => {
-  const transactionWithFee: SendTransaction & WithCreator = await withEthereumFee({
+/*const generateSignAndPostRequest = async (chain: ChainConfig, creator: Identity): Promise<JsonRpcRequest> => {
+  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(chain, {
     kind: 'bcp/send',
     recipient: '0x0000000000000000000000000000000000000000' as Address,
     creator: creator,
@@ -71,3 +72,4 @@ export const sendSignAndPostRequest = async (creator: Identity): Promise<Transac
     });
   });
 };
+*/
