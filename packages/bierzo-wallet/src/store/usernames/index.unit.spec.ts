@@ -10,9 +10,7 @@ import { addUsernamesAction, getUsernames } from './actions';
 import { BwUsername } from './reducer';
 
 withChainsDescribe('Usernames reducer', () => {
-  afterAll(async () => {
-    await disconnect();
-  });
+  afterAll(() => disconnect());
 
   it('has correct initial state', async () => {
     const store = aNewStore();
