@@ -7,7 +7,7 @@ import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFie
 import { notLongerThan } from 'medulas-react-components/lib/utils/forms/validators';
 import React from 'react';
 
-const TEXTNOTE_FIELD = 'textNoteField';
+export const TEXTNOTE_FIELD = 'textNoteField';
 
 interface Props {
   form: FormApi;

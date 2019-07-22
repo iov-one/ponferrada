@@ -1,92 +1,52 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
-import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
 
-import Header from '../../components/Header';
-import CurrencyToSend from './components/CurrencyToSend';
-import ReceiverAddress from './components/ReceiverAddress';
-import TextNote from './components/TextNote';
+import { history } from '..';
+//import { sendSignAndPostRequest } from '../../communication/signAndPost';
+import PageMenu from '../../components/PageMenu';
+import { PAYMENT_ROUTE } from '../paths';
+import Layout from './components';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  payment: {
-    backgroundColor: theme.palette.background.default,
-    gridTemplateColumns: '1fr minmax(375px, 450px) 1fr',
-    gridTemplateAreas: `
-  ". currency-to-send ."
-  ". receiver-address ."
-  ". text-note        ."
-  ". continue-button  ."
-  `,
-    gridGap: '24px',
-    placeItems: 'center',
-  },
+function onCancelPayment(): void {
+  history.push(PAYMENT_ROUTE);
+}
 
-  currencyToSend: {
-    gridArea: 'currency-to-send',
-  },
+const Payment = (): JSX.Element => {
+  const toast = React.useContext(ToastContext);
 
-  receiverAddress: {
-    gridArea: 'receiver-address',
-  },
+  const onSubmit = async (values: object): Promise<void> => {
+    console.log('onSubmit');
+    console.log(values);
+    /*const formValues = values as FormValues;
 
-  textNote: {
-    gridArea: 'text-note',
-  },
+    const keys = store.getState().extension.keys;
+    const plainPubkey = keys[chainId];
+    if (!plainPubkey) {
+      continue;
+    }
 
-  continue: {
-    gridArea: 'continue-button',
-  },
-}));
+    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
 
-const onSubmit = (): void => {};
-
-const Payment = ({ location }: RouteComponentProps): JSX.Element => {
-  const classes = useStyles();
-
-  const { form, handleSubmit, invalid, pristine, submitting } = useForm({
-    onSubmit,
-  });
+    try {
+      const transactionId = await sendSignAndPostRequest(identities[0]);
+      if (transactionId === null) {
+        toast.show('Request rejected', ToastVariant.ERROR);
+      } else {
+        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show('An error ocurred', ToastVariant.ERROR);
+      return;
+    }*/
+  };
 
   return (
-    <React.Fragment>
-      <Header path={location.pathname} />
-      <Form onSubmit={handleSubmit}>
-        <Block
-          marginTop={4}
-          width="100vw"
-          height="auto"
-          minHeight="100vh"
-          display="grid"
-          alignContent="center"
-          justifyContent="center"
-          className={classes.payment}
-        >
-          <Block width="100%" className={classes.currencyToSend}>
-            <CurrencyToSend form={form} />
-          </Block>
-          <Block width="100%" className={classes.receiverAddress}>
-            <ReceiverAddress form={form} />
-          </Block>
-          <Block width="100%" className={classes.textNote}>
-            <TextNote form={form} />
-          </Block>
-          <Block width="75%" className={classes.continue}>
-            <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
-              Continue
-            </Button>
-            <Back fullWidth disabled={submitting} onClick={}>
-              Cancel
-            </Back>
-          </Block>
-        </Block>
-      </Form>
-    </React.Fragment>
+    <PageMenu>
+      <Layout onCancelPayment={onCancelPayment} onSubmit={onSubmit} />
+    </PageMenu>
   );
 };
 
-export default withRouter(Payment);
+export default Payment;

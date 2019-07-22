@@ -12,7 +12,7 @@ import {
 } from 'medulas-react-components/lib/utils/forms/validators';
 import React from 'react';
 
-const ADDRESS_FIELD = 'addressField';
+export const ADDRESS_FIELD = 'addressField';
 const ADDRESS_MAX_LENGTH = 254;
 
 interface Props {
