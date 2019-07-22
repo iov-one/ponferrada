@@ -21,7 +21,7 @@ export class PersonaBuilder {
     const managerChains: AccountManagerChainConfig[] = [];
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
-      const connector = chainConnector(codecType, chainSpec.bootstrapNodes);
+      const connector = chainConnector(codecType, chainSpec.node, chainSpec.scraper);
       const { connection } = await signer.addChain(connector);
       managerChains.push({
         chainId: connection.chainId(),

@@ -56,16 +56,18 @@ export function pathBuilderForCodec(
   return pathBuilder;
 }
 
-export function chainConnector(codec: CodecType, nodes: ReadonlyArray<string>): ChainConnector {
-  const url = nodes[0];
+export function chainConnector(
+  codec: CodecType,
+  nodeUrl: string,
+  scraper: string | undefined,
+): ChainConnector {
   switch (codec) {
     case CodecType.Bns:
-      return bnsConnector(url);
+      return bnsConnector(nodeUrl);
     case CodecType.Lisk:
-      return liskConnector(url);
+      return liskConnector(nodeUrl);
     case CodecType.Ethereum: {
-      const scraperApiUrl = nodes[1];
-      return ethereumConnector(url, { scraperApiUrl });
+      return ethereumConnector(nodeUrl, { scraperApiUrl: scraper });
     }
     default:
       throw new Error('No connector for this codec found');

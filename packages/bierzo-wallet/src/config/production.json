@@ -3,7 +3,7 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "bootstrapNodes": ["wss://bns.antnet.iov.one/"]
+        "node": "wss://bns.antnet.iov.one/"
       },
       "faucetSpec": {
         "uri": "https://bns-faucet.antnet.iov.one",
@@ -13,16 +13,14 @@
     {
       "chainSpec": {
         "codecType": "lsk",
-        "bootstrapNodes": ["https://testnet.lisk.io"]
+        "node": "https://testnet.lisk.io"
       }
     },
     {
       "chainSpec": {
         "codecType": "eth",
-        "bootstrapNodes": [
-          "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
-          "https://api.etherscan.io/api"
-        ]
+        "node": "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
+        "scraper": "https://api.etherscan.io/api"
       }
     }
   ]
