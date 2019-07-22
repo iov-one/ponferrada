@@ -8,21 +8,18 @@ import {
   pubkeyBundleEquals,
   TxCodec,
 } from '@iov/bcp';
-import { BnsConnection } from '@iov/bns';
 import { TransactionEncoder } from '@iov/core';
 import { Dispatch } from 'redux';
 import { Subscription } from 'xstream';
 
 import { getConfig } from '../config';
 import { addConfirmedTransaction, ProcessedTx } from '../store/notifications';
-import { getUsernameFrom } from '../store/usernames';
 import { getCodec } from './codec';
-import { getConnectionFor, isBnsSpec } from './connection';
+import { getConnectionFor } from './connection';
 
 let txsSubscriptions: Subscription[] = [];
 
 export const parseConfirmedTransaction = async <T extends LightTransaction>(
-  bnsConn: BnsConnection,
   conn: BlockchainConnection,
   trans: ConfirmedTransaction<T>,
   identity: Identity,
@@ -39,21 +36,12 @@ export const parseConfirmedTransaction = async <T extends LightTransaction>(
 
   const received = !pubkeyBundleEquals(trans.primarySignature.pubkey, identity.pubkey);
 
-  // we look up names from the bns chain
-  const chainId = conn.chainId();
-  const recipientAddr = payload.recipient;
-  const recipientName = await getUsernameFrom(bnsConn, chainId, recipientAddr);
-  const recipient = recipientName || recipientAddr;
-
   const creatorPubkey = trans.primarySignature.pubkey;
   const creator: Identity = {
-    chainId: chainId,
+    chainId: conn.chainId(),
     pubkey: creatorPubkey,
   };
-  const signerAddr = codec.identityToAddress(creator);
-  const signerName = await getUsernameFrom(bnsConn, chainId, signerAddr);
-
-  const signer = signerName || signerAddr;
+  const signer = codec.identityToAddress(creator);
 
   return {
     id: trans.transactionId,
@@ -61,7 +49,7 @@ export const parseConfirmedTransaction = async <T extends LightTransaction>(
     amount: payload.amount,
     time,
     received,
-    recipient,
+    recipient: payload.recipient,
     signer,
     success: true,
   };
@@ -73,12 +61,6 @@ export async function subscribeTransaction(
 ): Promise<void> {
   const config = getConfig();
   const chains = config.chains;
-
-  const bnsSpec = config.chains.find(chain => isBnsSpec(chain.chainSpec));
-  if (!bnsSpec) {
-    throw new Error('For subscribing to transactions we need a BNS connection');
-  }
-  const bnsConnection: BnsConnection = (await getConnectionFor(bnsSpec.chainSpec)) as BnsConnection;
 
   for (const chain of chains) {
     const codec = getCodec(chain.chainSpec);
@@ -99,7 +81,9 @@ export async function subscribeTransaction(
           throw new Error('Confirmed transaction expected');
         }
 
-        const proccesedTx = await parseConfirmedTransaction(bnsConnection, connection, tx, identity, codec);
+        // Here once we support more tx types we need to find a solution for separating
+        // common attributes from specific attributes
+        const proccesedTx = await parseConfirmedTransaction(connection, tx, identity, codec);
         if (!proccesedTx) {
           return;
         }
