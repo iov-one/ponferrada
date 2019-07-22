@@ -1,4 +1,4 @@
-import { Amount, ChainId, ConfirmedTransaction, SendTransaction, UnsignedTransaction } from '@iov/bcp';
+import { Amount } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
 import { NotificationActions } from './actions';
@@ -27,22 +27,6 @@ const initState: NotificationState = {
   pending: [],
   transactions: [],
 };
-
-export interface AnnotatedConfirmedTransaction<
-  T extends Omit<UnsignedTransaction, 'creator'> = SendTransaction
-> extends ConfirmedTransaction<T> {
-  readonly received: boolean;
-  readonly time: ReadonlyDate;
-  readonly success: boolean;
-  // these are always set to the raw values (TODO: handle multisig)
-  readonly signerAddr: string;
-  readonly recipientAddr: string;
-  // these are set for reverse lookup of valuename
-  readonly signerName?: string;
-  readonly recipientName?: string;
-  readonly chainId: ChainId;
-  readonly memo?: string;
-}
 
 export function notificationReducer(
   state: NotificationState = initState,
