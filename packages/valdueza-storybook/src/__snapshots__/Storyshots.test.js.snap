@@ -2415,7 +2415,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens and without name 1
           <h5
             className="MuiTypography-root makeStyles-weight-563 makeStyles-weight-656 MuiTypography-h5 MuiTypography-alignCenter"
           >
-            Get your human readable address.
+            No human readable address registered.
           </h5>
           <div
             className="MuiBox-root MuiBox-root-657"
