@@ -14,12 +14,12 @@ withChainsDescribe('Usernames reducer', () => {
   it('has correct initial state', async () => {
     const store = aNewStore();
     const usernames = store.getState().usernames;
-    expect(usernames).toEqual({});
+    expect(usernames).toEqual([]);
   });
 
   it('returns empty when no keys passed to getUsernames function', async () => {
     const usernames = await getUsernames({});
-    expect(usernames).toEqual({});
+    expect(usernames).toEqual([]);
   });
 
   it('returns empty when no key bns identity key is s passed to getUsernames function', async () => {
@@ -47,7 +47,7 @@ withChainsDescribe('Usernames reducer', () => {
 
     const keys = store.getState().extension.keys;
     const usernames = await getUsernames(keys);
-    expect(usernames).toEqual({});
+    expect(usernames).toEqual([]);
   });
 
   it('dispatches correctly addUsernames action', async () => {
@@ -81,6 +81,6 @@ withChainsDescribe('Usernames reducer', () => {
     store.dispatch(addUsernamesAction(chainUsernames));
 
     const usernames = store.getState().usernames;
-    expect(usernames).toEqual({});
+    expect(usernames).toEqual([]);
   });
 });

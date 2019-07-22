@@ -26,13 +26,17 @@ const balancesAmount: DeepPartial<BalanceState> = {
 };
 
 const bnsChainId = 'local-bns-devnet';
-const usernames: DeepPartial<UsernamesState> = {
-  [bnsChainId]: {
-    chainId: bnsChainId,
-    address: 'some_address',
+const usernames: DeepPartial<UsernamesState> = [
+  {
     username: 'albert',
+    addresses: [
+      {
+        chainId: bnsChainId,
+        address: 'some_address',
+      },
+    ],
   },
-};
+];
 
 describe('The /balance route', () => {
   let store: Store<RootState>;

@@ -6,9 +6,7 @@ import { getConfig } from '../../config';
 import { getConnectionFor, isBnsSpec } from '../../logic/connection';
 import { AddUsernamesActionType, BwUsername } from './reducer';
 
-export async function getUsernames(keys: {
-  [chain: string]: string;
-}): Promise<{ [chainId: string]: BwUsername }> {
+export async function getUsernames(keys: { [chain: string]: string }): Promise<readonly BwUsername[]> {
   const bnsChainSpec = getConfig()
     .chains.map(chain => chain.chainSpec)
     .find(isBnsSpec);
@@ -17,30 +15,19 @@ export async function getUsernames(keys: {
   const bnsConnection = (await getConnectionFor(bnsChainSpec)) as BnsConnection;
 
   const plainPubkey = keys[bnsConnection.chainId()];
-  if (!plainPubkey) return {};
+  if (!plainPubkey) return [];
 
   const bnsIdentity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
   const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
 
   const usernames = await bnsConnection.getUsernames({ owner: bnsAddress });
-  // We ignore all usernames other than the first one. This is a simplification
-  // we can do as long as the wallet is not use for name traders.
-  const firstUsername = usernames.find(() => true);
-
-  if (!firstUsername) return {};
-
-  const out: { [chainId: string]: BwUsername } = {};
-  for (const address of firstUsername.addresses) {
-    out[address.chainId as string] = {
-      chainId: address.chainId,
-      address: address.address,
-      username: firstUsername.id,
-    };
-  }
-  return out;
+  return usernames.map(username => ({
+    username: username.id,
+    addresses: username.addresses,
+  }));
 }
 
-export const addUsernamesAction = (usernames: { [chainId: string]: BwUsername }): AddUsernamesActionType => ({
+export const addUsernamesAction = (usernames: readonly BwUsername[]): AddUsernamesActionType => ({
   type: '@@usernames/ADD',
   payload: usernames,
 });
