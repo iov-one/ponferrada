@@ -21,6 +21,7 @@ export async function getUsernames(keys: { [chain: string]: string }): Promise<r
   const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
 
   const usernames = await bnsConnection.getUsernames({ owner: bnsAddress });
+
   return usernames.map(username => ({
     username: username.id,
     addresses: username.addresses,
