@@ -23,6 +23,8 @@ export async function getUsernames(keys: {
   const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
 
   const usernames = await bnsConnection.getUsernames({ owner: bnsAddress });
+  // We ignore all usernames other than the first one. This is a simplification
+  // we can do as long as the wallet is not use for name traders.
   const firstUsername = usernames.find(() => true);
 
   if (!firstUsername) return {};
