@@ -21,8 +21,11 @@ const initState: UsernamesState = [];
 
 export function usernamesReducer(state: UsernamesState = initState, action: UserNameActions): UsernamesState {
   switch (action.type) {
-    case '@@usernames/ADD':
-      return [...state, ...action.payload];
+    case '@@usernames/ADD': {
+      const updatedNames = action.payload.map(name => name.username);
+      const oldNamesToCopy = state.filter(name => !updatedNames.includes(name.username));
+      return [...oldNamesToCopy, ...action.payload];
+    }
     default:
       return state;
   }
