@@ -1,4 +1,3 @@
-import { Address } from '@iov/bcp';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { storiesOf } from '@storybook/react';
@@ -25,7 +24,6 @@ const txRequest: Request<SignAndPostData> = {
   reason: 'I would like you to sign this TX',
   data: {
     senderUrl: 'http://localhost/',
-    creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
     tx: getCashTransaction(),
   },
 };
@@ -37,7 +35,6 @@ const ethereumTxRequest: Request<SignAndPostData> = {
   reason: 'I would like you to sign this Ethereum TX',
   data: {
     senderUrl: 'http://localhost/',
-    creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
     tx: getEthTransaction(),
   },
 };
@@ -49,20 +46,18 @@ const usernameRequest: Request<SignAndPostData> = {
   reason: 'I would like you to sign this TX',
   data: {
     senderUrl: 'http://localhost/',
-    creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
     tx: getUsernameTransaction(),
   },
 };
 
 storiesOf(TX_REQUEST_PATH, module)
   .add(SHOW_TX_REQUEST_PAGE, () => {
-    const { creator, tx } = txRequest.data;
+    const { tx } = txRequest.data;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          creator={creator}
           sender={txRequest.data.senderUrl}
           onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
@@ -71,13 +66,12 @@ storiesOf(TX_REQUEST_PATH, module)
     );
   })
   .add(SHOW_ETHEREUM_TX_REQUEST_PAGE, () => {
-    const { creator, tx, senderUrl } = ethereumTxRequest.data;
+    const { tx, senderUrl } = ethereumTxRequest.data;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          creator={creator}
           sender={senderUrl}
           onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
@@ -86,13 +80,12 @@ storiesOf(TX_REQUEST_PATH, module)
     );
   })
   .add(SHOW_USERNAME_REQUEST_PAGE, () => {
-    const { creator, tx } = usernameRequest.data;
+    const { tx } = usernameRequest.data;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          creator={creator}
           sender={usernameRequest.data.senderUrl}
           onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}

@@ -60,7 +60,7 @@ export default class SigningServer {
     );
   };
 
-  public signAndPostCallback = (signer: MultiChainSigner) => (
+  public signAndPostCallback = (_signer: MultiChainSigner) => (
     reason: string,
     transaction: UnsignedTransaction,
     meta: any,
@@ -77,7 +77,6 @@ export default class SigningServer {
 
     const data: SignAndPostData = {
       senderUrl,
-      creator: signer.identityToAddress(transaction.creator),
       tx: transaction,
     };
 

@@ -1,4 +1,3 @@
-import { Address } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 
@@ -25,7 +24,6 @@ describe('DOM > Feature > Requests', () => {
     reason: 'Reason 2',
     data: {
       senderUrl: 'www.sender2.com',
-      creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
       tx: getCashTransaction(),
     },
     accept: jest.fn(),

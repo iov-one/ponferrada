@@ -222,9 +222,5 @@ withChainsDescribe('background script handler for website request', () => {
 
     const request = signingServer['requestHandler'].next();
     if (!isSignAndPostRequest(request)) throw new Error('Unexpected request type');
-    const requestData = request.data;
-    expect(requestData.creator).not.toBe(undefined);
-    expect(requestData.creator).not.toBe(null);
-    expect(requestData.creator).toMatch(/0x/);
   }, 8000);
 });

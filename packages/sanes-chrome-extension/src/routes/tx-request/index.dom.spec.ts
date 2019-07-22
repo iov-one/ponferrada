@@ -1,4 +1,3 @@
-import { Address } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 
@@ -26,7 +25,6 @@ const sendRequests: ReadonlyArray<Request> = [
     reason: 'Test get Identities',
     data: {
       senderUrl: 'http://finnex.com',
-      creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
       tx: getCashTransaction(),
     },
     accept: jest.fn(),
@@ -96,7 +94,6 @@ describe('DOM > Feature > Username Registration Request', (): void => {
       reason: 'Test username registration',
       data: {
         senderUrl: 'http://finnex.com',
-        creator: '0x873fAA4cdDd5b157e8E5a57e7a5479AFC5aaaaaa' as Address,
         tx: getUsernameTransaction(),
       },
       accept: jest.fn(),

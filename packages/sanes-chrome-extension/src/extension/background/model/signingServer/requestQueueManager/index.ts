@@ -53,7 +53,6 @@ export function isGetIdentitiesData(data: unknown): data is GetIdentitiesData {
 
 export interface SignAndPostData extends RequestMeta {
   readonly tx: SupportedTransaction;
-  readonly creator: Address;
 }
 
 export function isSignAndPostData(data: unknown): data is SignAndPostData {
@@ -62,12 +61,11 @@ export function isSignAndPostData(data: unknown): data is SignAndPostData {
   }
 
   const hasSender = typeof (data as SignAndPostData).senderUrl === 'string';
-  const hasCreator = typeof (data as SignAndPostData).creator === 'string';
 
   const tx: unknown = (data as SignAndPostData).tx;
   const hasSupportedTransaction = isUnsignedTransaction(tx) && isSupportedTransaction(tx);
 
-  return hasSender && hasCreator && hasSupportedTransaction;
+  return hasSender && hasSupportedTransaction;
 }
 
 export interface Request<
