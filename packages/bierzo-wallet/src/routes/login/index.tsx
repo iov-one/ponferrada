@@ -6,8 +6,8 @@ import * as ReactRedux from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { history } from '..';
+import { subscribeBalance } from '../../logic/balances';
 import { drinkFaucetIfNeeded } from '../../logic/faucet';
-import { subscribeBalance } from '../../logic/subscriptions';
 import { addBalancesAction, getBalances } from '../../store/balances';
 import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
 import { addTickersAction, getTokens } from '../../store/tokens';

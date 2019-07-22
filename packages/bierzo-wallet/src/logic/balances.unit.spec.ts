@@ -6,9 +6,9 @@ import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { sleep } from '../utils/timer';
 import * as tokens from '../utils/tokens';
+import { subscribeBalance, unsubscribeBalances } from './balances';
 import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
-import { subscribeBalance, unsubscribeBalances } from './subscriptions';
 
 withChainsDescribe('Logic :: balance subscriptions', () => {
   beforeAll(() => {
