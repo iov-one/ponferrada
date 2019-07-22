@@ -9,7 +9,7 @@ import { UsernamesState } from '../../store/usernames';
 import { expectRoute } from '../../utils/test/dom';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
 import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
-import { getIOVUsername, getNoFundsMessage } from './test/operateBalances';
+import { getIovUsername, getNoFundsMessage } from './test/operateBalances';
 import { travelToBalance } from './test/travelToBalance';
 
 const balancesAmount: DeepPartial<BalanceState> = {
@@ -84,7 +84,7 @@ describe('The /balance route', () => {
     });
 
     it('should show bns username', async () => {
-      const noUsernameMessage = getIOVUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h5'));
+      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h5'));
 
       expect(noUsernameMessage).toBe('albert*iov');
     });
@@ -110,9 +110,9 @@ describe('The /balance route', () => {
     });
 
     it('should show that there is no bns username available', async () => {
-      const noUsernameMessage = getIOVUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h5'));
+      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, 'h5'));
 
-      expect(noUsernameMessage).toBe('Get your human readable address.');
+      expect(noUsernameMessage).toBe('No human readable address registered.');
     });
   });
 });

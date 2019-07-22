@@ -4,7 +4,7 @@ export const getNoFundsMessage = (h6Elements: Element[]): string => {
   return h6Elements[4].textContent || '';
 };
 
-export const getIOVUsername = (h5Elements: Element[]): string => {
+export const getIovUsername = (h5Elements: Element[]): string => {
   return h5Elements[0].textContent || '';
 };
 
