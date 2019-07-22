@@ -13,7 +13,7 @@ import receive from '../assets/transactionReceive.svg';
 import send from '../assets/transactionSend.svg';
 
 interface Props {
-  readonly iovAddress: string | undefined;
+  readonly iovAddress?: string;
   readonly tokens: { [token: string]: Amount };
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
