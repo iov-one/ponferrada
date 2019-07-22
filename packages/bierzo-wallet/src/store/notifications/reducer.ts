@@ -1,4 +1,4 @@
-import { Amount } from '@iov/bcp';
+import { Amount, ChainId, ConfirmedTransaction, SendTransaction, UnsignedTransaction } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
 import { NotificationActions } from './actions';
@@ -82,6 +82,22 @@ export function notificationReducer(
       return {
         ...state,
         pending: [action.payload, ...state.pending],
+      };
+    case '@@notifications/ADD_CONFIRMED_TRANSACTION':
+      if (!action.payload) {
+        return state;
+      }
+
+      // eslint-disable-next-line
+      const processedTx = simplifyTransaction(action.payload);
+      // eslint-disable-next-line
+      const orderedNotifications = [processedTx, ...state.transactions].sort(
+        (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
+      );
+
+      return {
+        ...state,
+        transactions: orderedNotifications,
       };
     default:
       return state;
