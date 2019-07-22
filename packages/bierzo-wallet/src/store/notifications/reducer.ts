@@ -44,35 +44,6 @@ export interface AnnotatedConfirmedTransaction<
   readonly memo?: string;
 }
 
-function simplifyTransaction(full: AnnotatedConfirmedTransaction): ProcessedTx {
-  const {
-    time,
-    transaction,
-    received,
-    signerAddr,
-    signerName,
-    recipientAddr,
-    recipientName,
-    success,
-    transactionId,
-    memo,
-  } = full;
-
-  const signer = signerName || signerAddr;
-  const recipient = recipientName || recipientAddr;
-
-  return {
-    id: transactionId,
-    time,
-    received,
-    amount: transaction.amount,
-    signer,
-    recipient,
-    success,
-    memo,
-  };
-}
-
 export function notificationReducer(
   state: NotificationState = initState,
   action: NotificationActions,
@@ -88,16 +59,11 @@ export function notificationReducer(
         return state;
       }
 
-      // eslint-disable-next-line
-      const processedTx = simplifyTransaction(action.payload);
-      // eslint-disable-next-line
-      const orderedNotifications = [processedTx, ...state.transactions].sort(
-        (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
-      );
-
       return {
         ...state,
-        transactions: orderedNotifications,
+        transactions: [action.payload, ...state.transactions].sort(
+          (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
+        ),
       };
     default:
       return state;

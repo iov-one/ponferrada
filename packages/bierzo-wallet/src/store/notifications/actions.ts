@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
 
-import { AnnotatedConfirmedTransaction, ProcessedTx } from './reducer';
+import { ProcessedTx } from './reducer';
 
 export interface AddPendingTransactionActionType extends Action {
   type: '@@notifications/ADD_PENDING_TRANSACTION';
@@ -15,12 +15,10 @@ export const addPendingTransactionAction = (transaction: ProcessedTx): AddPendin
 
 export interface AddConfirmedTransactionActionType extends Action {
   type: '@@notifications/ADD_CONFIRMED_TRANSACTION';
-  payload: AnnotatedConfirmedTransaction;
+  payload: ProcessedTx;
 }
 
-export const addConfirmedTransaction = (
-  transaction: AnnotatedConfirmedTransaction,
-): AddConfirmedTransactionActionType => ({
+export const addConfirmedTransaction = (transaction: ProcessedTx): AddConfirmedTransactionActionType => ({
   type: '@@notifications/ADD_CONFIRMED_TRANSACTION',
   payload: transaction,
 });
