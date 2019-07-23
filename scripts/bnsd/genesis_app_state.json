@@ -118,6 +118,10 @@
       "ver": 1
     },
     {
+      "pkg": "cron",
+      "ver": 1
+    },
+    {
       "pkg": "currency",
       "ver": 1
     },
@@ -146,10 +150,6 @@
       "ver": 1
     },
     {
-      "pkg": "namecoin",
-      "ver": 1
-    },
-    {
       "pkg": "nft",
       "ver": 1
     },
@@ -159,6 +159,10 @@
     },
     {
       "pkg": "sigs",
+      "ver": 1
+    },
+    {
+      "pkg": "username",
       "ver": 1
     },
     {
