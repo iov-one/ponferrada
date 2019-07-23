@@ -1,16 +1,16 @@
 import { BlockchainConnection, Identity } from '@iov/bcp';
 
 import { aNewStore } from '../store';
-import * as balanceActions from '../store/balances/actions';
+import * as transactionActions from '../store/notifications/actions';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
 import { sleep } from '../utils/timer';
 import * as tokens from '../utils/tokens';
-import { subscribeBalance, unsubscribeBalances } from './balances';
 import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
+import { subscribeTransaction, unsubscribeTransactions } from './transactions';
 
-withChainsDescribe('Logic :: balance subscriptions', () => {
+withChainsDescribe('Logic :: transaction subscriptions', () => {
   beforeAll(() => {
     jest
       .spyOn(tokens, 'filterExistingTokens')
@@ -25,14 +25,14 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
     await disconnect();
   });
 
-  it('fires subscription callback when account balance changes', async () => {
-    const balanceSpy = jest.spyOn(balanceActions, 'addBalancesAction');
+  it('fires transaction callback when account balance changes', async () => {
+    const txsSpy = jest.spyOn(transactionActions, 'addConfirmedTransaction');
 
     const store = aNewStore();
     const keys = await createPubkeys();
 
     await drinkFaucetIfNeeded(keys);
-    await subscribeBalance(keys, store.dispatch);
+    await subscribeTransaction(keys, store.dispatch);
 
     // Trick for forcing account to receive balance events updates
     await drinkFaucetIfNeeded(keys);
@@ -40,8 +40,9 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
     // Give some time to open request to be finished
     await sleep(1000);
 
-    expect(balanceSpy).toHaveBeenCalledTimes(2);
+    // 2 (cash) + 2 (bash) + 2 eth
+    expect(txsSpy).toHaveBeenCalledTimes(6);
 
-    unsubscribeBalances();
-  }, 35000);
+    unsubscribeTransactions();
+  }, 60000);
 });
