@@ -38,7 +38,8 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     await drinkFaucetIfNeeded(keys);
 
     // Give some time to open request to be finished
-    await sleep(1000);
+    await sleep(5000);
+    await sleep(5000);
 
     // 2 (cash) + 2 (bash) + 2 eth
     expect(txsSpy).toHaveBeenCalledTimes(6);
