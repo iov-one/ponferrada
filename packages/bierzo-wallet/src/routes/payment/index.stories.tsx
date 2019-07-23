@@ -7,9 +7,7 @@ import { DeepPartial } from 'redux';
 
 import { BalanceState } from '../../store/balances';
 import { RootState } from '../../store/reducers';
-import { padAmount, stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
-import { CURRENCY_FIELD, QUANTITY_FIELD } from './components/CurrencyToSend';
 import Layout from './components/index';
 
 const BALANCES: BalanceState = {
