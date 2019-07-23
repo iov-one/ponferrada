@@ -13,4 +13,16 @@ export const addPendingTransactionAction = (transaction: ProcessedTx): AddPendin
   payload: transaction,
 });
 
-export type NotificationActions = ActionType<typeof addPendingTransactionAction>;
+export interface AddConfirmedTransactionActionType extends Action {
+  type: '@@notifications/ADD_CONFIRMED_TRANSACTION';
+  payload: ProcessedTx;
+}
+
+export const addConfirmedTransaction = (transaction: ProcessedTx): AddConfirmedTransactionActionType => ({
+  type: '@@notifications/ADD_CONFIRMED_TRANSACTION',
+  payload: transaction,
+});
+
+export type NotificationActions = ActionType<
+  typeof addPendingTransactionAction | typeof addConfirmedTransaction
+>;

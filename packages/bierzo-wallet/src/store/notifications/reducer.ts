@@ -38,6 +38,17 @@ export function notificationReducer(
         ...state,
         pending: [action.payload, ...state.pending],
       };
+    case '@@notifications/ADD_CONFIRMED_TRANSACTION':
+      if (!action.payload) {
+        return state;
+      }
+
+      return {
+        ...state,
+        transactions: [action.payload, ...state.transactions].sort(
+          (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
+        ),
+      };
     default:
       return state;
   }
