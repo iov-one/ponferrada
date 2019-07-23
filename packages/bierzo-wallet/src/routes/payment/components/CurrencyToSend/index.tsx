@@ -40,14 +40,14 @@ interface Props {
 }
 
 const CurrencyToSend = ({ form }: Props): JSX.Element => {
-  const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
+  const balances = ReactRedux.useSelector((state: RootState) => state.balances);
   const classes = useStyles();
 
-  const currencyItems = Object.keys(tokens).map(token => ({
-    name: token,
+  const currencyItems = Object.keys(balances).map(balance => ({
+    name: balance,
   }));
 
-  const [balance, setBalance] = useState(tokens[currencyItems[0].name]);
+  const [balance, setBalance] = useState(balances[currencyItems[0].name]);
 
   const validator = useMemo(() => {
     return composeValidators(
@@ -63,7 +63,7 @@ const CurrencyToSend = ({ form }: Props): JSX.Element => {
   };
 
   const handleChange = (item: Item): void => {
-    setBalance(tokens[item.name]);
+    setBalance(balances[item.name]);
   };
 
   return (
