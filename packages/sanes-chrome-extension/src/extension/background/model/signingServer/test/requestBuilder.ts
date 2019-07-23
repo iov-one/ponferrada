@@ -7,9 +7,9 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec, EthereumConnection } from '@iov/ethereum';
 import { JsonRpcRequest, makeJsonRpcId } from '@iov/jsonrpc';
+import { TransactionEncoder } from '@iov/multichain';
 
 export const buildGetIdentitiesRequest = (method: string, customMessage?: string): JsonRpcRequest => ({
   jsonrpc: '2.0',

@@ -121,9 +121,9 @@ withChainsDescribe('Persona', () => {
       const bnsFaucetUrl = 'http://localhost:8000/';
       const bnsFeeToken = 'CASH' as TokenTicker;
 
-      const name0 = `foo-${Math.random()}`;
-      const name1 = `bar-${Math.random()}`;
-      const name2 = [`one-${Math.random()}`, `two-${Math.random()}`];
+      const name0 = `foo-${Math.random()}*iov`;
+      const name1 = `bar-${Math.random()}*iov`;
+      const name2 = [`one-${Math.random()}*iov`, `two-${Math.random()}*iov`];
 
       {
         const connection = await BnsConnection.establish(bnsUrl);
@@ -144,29 +144,29 @@ withChainsDescribe('Persona', () => {
         const registerName0: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity0,
-          addresses: [],
           username: name0,
+          targets: [],
         };
 
         const registerName1: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity1,
-          addresses: [],
           username: name1,
+          targets: [],
         };
 
         const registerName2a: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity2,
-          addresses: [],
           username: name2[0],
+          targets: [],
         };
 
         const registerName2b: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity2,
-          addresses: [],
           username: name2[1],
+          targets: [],
         };
 
         const transactions = [[registerName0], [registerName1], [registerName2a, registerName2b]];
@@ -201,8 +201,8 @@ withChainsDescribe('Persona', () => {
 
       const accounts = await persona.getAccounts();
       expect(accounts.length).toEqual(4);
-      expect(accounts[0].label).toEqual(`${name0}*iov`);
-      expect(accounts[1].label).toEqual(`${name1}*iov`);
+      expect(accounts[0].label).toEqual(name0);
+      expect(accounts[1].label).toEqual(name1);
       expect(accounts[2].label).toEqual('Multiple names');
       expect(accounts[3].label).toEqual('Account 3');
 

@@ -8391,8 +8391,7 @@ exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`]
       className="MuiTypography-root makeStyles-inline-4187 MuiTypography-body1 MuiTypography-colorPrimary"
       id="req-register-username-tx"
     >
-      test
-      *iov
+      test*iov
     </p>
     <p
       className="MuiTypography-root makeStyles-inline-4187 MuiTypography-body1"

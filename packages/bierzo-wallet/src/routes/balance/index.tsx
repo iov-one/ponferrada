@@ -19,7 +19,7 @@ function onReceivePayment(): void {
 const Balance = (): JSX.Element => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
   const bnsUsername = ReactRedux.useSelector(getFirstUsername);
-  const iovAddress = bnsUsername ? `${bnsUsername.username}*iov` : undefined;
+  const iovAddress = bnsUsername ? bnsUsername.username : undefined;
 
   return (
     <PageMenu>

@@ -45,11 +45,9 @@ withChainsDescribe('Tokens reducer', () => {
     store.dispatch(addBalancesAction(tokens));
 
     const balances = store.getState().balances;
-    const ethBalance = {
-      fractionalDigits: 18,
-      quantity: '100000000000000000000',
-      tokenTicker: 'ETH',
-    };
-    expect(balances).toEqual({ ETH: ethBalance });
+    expect(balances.ETH).toBeDefined();
+    expect(balances.ETH.fractionalDigits).toEqual(18);
+    expect(balances.ETH.quantity).toMatch(/^[0-9]{10,22}$/);
+    expect(balances.ETH.tokenTicker).toEqual('ETH');
   });
 });

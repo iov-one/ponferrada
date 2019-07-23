@@ -54,7 +54,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
     );
   } else if (isRegisterUsernameTx(item.original)) {
     const { username } = item.original;
-    const iovAddress = `${username}*iov`;
+    const iovAddress = username;
     msg = (
       <MsgRegisterUsernameTx
         id={item.id}

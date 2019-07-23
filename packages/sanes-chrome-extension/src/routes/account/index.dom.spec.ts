@@ -9,10 +9,10 @@ import {
   WithCreator,
 } from '@iov/bcp';
 import { RegisterUsernameTx } from '@iov/bns';
-import { TransactionEncoder } from '@iov/core';
 import { Encoding } from '@iov/encoding';
 import { ethereumCodec } from '@iov/ethereum';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+import { TransactionEncoder } from '@iov/multichain';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 
@@ -67,7 +67,7 @@ describe('DOM > Feature > Account Status', () => {
     recipient: '0x1212121212121212121212121212121212121212' as Address,
   };
 
-  const username = 'test';
+  const username = 'test*iov';
   const usernameTx: RegisterUsernameTx & WithCreator = {
     kind: 'bns/register_username',
     creator: defaultCreator,
@@ -76,7 +76,7 @@ describe('DOM > Feature > Account Status', () => {
       gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
     },
     username,
-    addresses: [
+    targets: [
       { chainId: 'foobar' as ChainId, address: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address },
     ],
   };
@@ -158,7 +158,7 @@ describe('DOM > Feature > Account Status', () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'li')[2];
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const txUsername = tx.children[1].children[0].querySelector('p:nth-of-type(2)')!.textContent;
-    expect(txUsername).toBe(`${username}*iov`);
+    expect(txUsername).toBe(username);
   }, 60000);
 });
 

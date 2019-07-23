@@ -107,8 +107,8 @@ export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
   const transaction: RegisterUsernameTx & WithCreator = {
     kind: 'bns/register_username',
     creator: defaultCreator,
-    username: 'test',
-    addresses: [
+    username: 'test*iov',
+    targets: [
       { chainId: 'foobar' as ChainId, address: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address },
     ],
     fee: {
