@@ -1,58 +1,33 @@
 import { Identity } from '@iov/bcp';
-import { BnsConnection } from '@iov/bns';
+import { bnsCodec, BnsConnection } from '@iov/bns';
 import { TransactionEncoder } from '@iov/core';
 
 import { getConfig } from '../../config';
 import { getConnectionFor, isBnsSpec } from '../../logic/connection';
 import { AddUsernamesActionType, BwUsername } from './reducer';
 
-export async function getUsernames(keys: {
-  [chain: string]: string;
-}): Promise<{ [chainId: string]: BwUsername }> {
-  const config = getConfig();
-  const usernames: { [chainId: string]: BwUsername } = {};
-  const chains = config.chains;
+export async function getUsernames(keys: { [chain: string]: string }): Promise<readonly BwUsername[]> {
+  const bnsChainSpec = getConfig()
+    .chains.map(chain => chain.chainSpec)
+    .find(isBnsSpec);
+  if (!bnsChainSpec) throw new Error('Missing BNS chain spec in config');
 
-  for (const chain of chains) {
-    if (!isBnsSpec(chain.chainSpec)) {
-      continue;
-    }
+  const bnsConnection = (await getConnectionFor(bnsChainSpec)) as BnsConnection;
 
-    const connection = (await getConnectionFor(chain.chainSpec)) as BnsConnection;
-    const chainId = connection.chainId();
+  const plainPubkey = keys[bnsConnection.chainId()];
+  if (!plainPubkey) return [];
 
-    const plainPubkey = keys[chainId];
-    if (!plainPubkey) {
-      break;
-    }
+  const bnsIdentity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
+  const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
 
-    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
-    const account = await connection.getAccount({ pubkey: identity.pubkey });
-    if (!account) {
-      break;
-    }
-
-    const names = await connection.getUsernames({ owner: account.address });
-    const hasName = names.length > 0;
-    if (!hasName) {
-      break;
-    }
-
-    const name = names[0];
-
-    for (const address of name.addresses) {
-      usernames[address.chainId as string] = {
-        chainId: address.chainId,
-        address: address.address,
-        username: name.id,
-      };
-    }
-  }
-
-  return usernames;
+  const usernames = await bnsConnection.getUsernames({ owner: bnsAddress });
+  return usernames.map(username => ({
+    username: username.id,
+    addresses: username.addresses,
+  }));
 }
 
-export const addUsernamesAction = (usernames: { [chainId: string]: BwUsername }): AddUsernamesActionType => ({
+export const addUsernamesAction = (usernames: readonly BwUsername[]): AddUsernamesActionType => ({
   type: '@@usernames/ADD',
   payload: usernames,
 });
