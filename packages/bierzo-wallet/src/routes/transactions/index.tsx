@@ -1,9 +1,11 @@
+import FileSaver from 'file-saver';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
 import { ProcessedTx } from '../../store/notifications';
 import Layout from './components';
+import { filterTxsBy } from './components/sorting';
 
 interface State {
   readonly rowsPerPage: number;
