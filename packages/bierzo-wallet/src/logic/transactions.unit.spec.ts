@@ -25,7 +25,7 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     await disconnect();
   });
 
-  it('fires transaction callback when account balance changes', async () => {
+  it('fires transaction callback when account does something', async () => {
     const txsSpy = jest.spyOn(transactionActions, 'addConfirmedTransaction');
 
     const store = aNewStore();
@@ -42,7 +42,7 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     await sleep(5000);
 
     // 2 (cash) + 2 (bash) + 2 eth
-    expect(txsSpy).toHaveBeenCalledTimes(4);
+    expect(txsSpy).toHaveBeenCalledTimes(6);
 
     unsubscribeTransactions();
   }, 60000);
