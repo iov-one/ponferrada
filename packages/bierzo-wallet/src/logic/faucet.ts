@@ -1,28 +1,11 @@
-import { BlockchainConnection, Identity, TokenTicker } from '@iov/bcp';
+import { Identity, TokenTicker } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/core';
 import { IovFaucet } from '@iov/faucets';
 
 import { getConfig } from '../config';
+import { filterExistingTokens } from '../utils/tokens';
 import { getCodec } from './codec';
 import { getConnectionFor } from './connection';
-
-// exported for testing purposes
-export async function filterExistingTokens(
-  connection: BlockchainConnection,
-  identity: Identity,
-  tokensByChainId: ReadonlyArray<string>,
-): Promise<ReadonlyArray<string>> {
-  const account = await connection.getAccount({ pubkey: identity.pubkey });
-  if (!account) {
-    return tokensByChainId;
-  }
-
-  for (const balance of account.balance) {
-    tokensByChainId = tokensByChainId.filter(ticker => ticker !== balance.tokenTicker);
-  }
-
-  return tokensByChainId;
-}
 
 export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
   const config = getConfig();
