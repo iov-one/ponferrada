@@ -1,9 +1,10 @@
 /*global chrome*/
 import {
   Address,
+  Amount,
+  ChainId,
   Identity,
   SendTransaction,
-  TokenTicker,
   TransactionId,
   UnsignedTransaction,
   WithCreator,
@@ -13,27 +14,33 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResp
 import { TransactionEncoder } from '@iov/multichain';
 
 import { extensionId } from '..';
-import { ChainConfig } from '../../config';
-import { getConnectionFor } from '../../logic/connection';
+import { getCodecForChainId } from '../../logic/codec';
+import { getConnectionForChainId } from '../../logic/connection';
 
-async function withChainFee<T extends UnsignedTransaction>(chain: ChainConfig, transaction: T): Promise<T> {
-  const connection = await getConnectionFor(chain.chainSpec);
+async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
+  const connection = await getConnectionForChainId(chainId);
   const withFee = await connection.withDefaultFee(transaction);
   return withFee;
 }
 
-/*const generateSignAndPostRequest = async (chain: ChainConfig, creator: Identity): Promise<JsonRpcRequest> => {
-  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(chain, {
+const generateSignAndPostRequest = async (
+  chainId: ChainId,
+  creator: Identity,
+  recipient: Address,
+  amount: Amount,
+  memo: string | undefined,
+): Promise<JsonRpcRequest> => {
+  const codec = await getCodecForChainId(chainId);
+
+  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(chainId, {
     kind: 'bcp/send',
-    recipient: '0x0000000000000000000000000000000000000000' as Address,
-    creator: creator,
-    sender: ethereumCodec.identityToAddress(creator),
-    amount: {
-      quantity: '1234000000000000000',
-      fractionalDigits: 18,
-      tokenTicker: 'ETH' as TokenTicker,
-    },
+    recipient,
+    creator,
+    sender: codec.identityToAddress(creator),
+    amount: amount,
+    memo: memo ? memo : '',
   });
+  const tx = TransactionEncoder.toJson(transactionWithFee);
 
   return {
     jsonrpc: '2.0',
@@ -41,13 +48,20 @@ async function withChainFee<T extends UnsignedTransaction>(chain: ChainConfig, t
     method: 'signAndPost',
     params: {
       reason: TransactionEncoder.toJson('I would like you to sign this request'),
-      transaction: TransactionEncoder.toJson(transactionWithFee),
+      transaction: tx,
     },
   };
 };
 
-export const sendSignAndPostRequest = async (creator: Identity): Promise<TransactionId | null> => {
-  const request = await generateSignAndPostRequest(creator);
+export const sendSignAndPostRequest = async (
+  chainId: ChainId,
+  creator: Identity,
+  recipient: Address,
+  amount: Amount,
+  memo: string | undefined,
+): Promise<TransactionId | null> => {
+  const request = await generateSignAndPostRequest(chainId, creator, recipient, amount, memo);
+  console.log(request);
 
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(extensionId, request, response => {
@@ -72,4 +86,3 @@ export const sendSignAndPostRequest = async (creator: Identity): Promise<Transac
     });
   });
 };
-*/
