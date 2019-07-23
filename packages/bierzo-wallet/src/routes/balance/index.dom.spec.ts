@@ -8,7 +8,7 @@ import { RootState } from '../../store/reducers';
 import { UsernamesState } from '../../store/usernames';
 import { expectRoute } from '../../utils/test/dom';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
-import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
+import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER, TRANSACTIONS_ROUTE } from '../paths';
 import { getIovUsername, getNoFundsMessage } from './test/operateBalances';
 import { travelToBalance } from './test/travelToBalance';
 
@@ -63,6 +63,18 @@ describe('The /balance route', () => {
 
       TestUtils.Simulate.click(paymentCard);
       expectRoute(PAYMENT_ROUTE);
+    });
+
+    it('redirects to the /transactions route when clicked', async () => {
+      const transactionsCard = (await findRenderedDOMComponentWithId(
+        balanceDom,
+        TRANSACTIONS_ROUTE,
+      )) as Element;
+
+      expect(transactionsCard.textContent).toBe('Transactions');
+
+      TestUtils.Simulate.click(transactionsCard);
+      expectRoute(TRANSACTIONS_ROUTE);
     });
 
     it('redirects to the /receive-from-iov route when clicked', async () => {
