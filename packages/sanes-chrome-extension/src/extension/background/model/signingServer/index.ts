@@ -1,6 +1,6 @@
 import { Identity, UnsignedTransaction } from '@iov/bcp';
-import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/core';
 import { JsonRpcResponse } from '@iov/jsonrpc';
+import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/multichain';
 
 import { generateErrorResponse } from '../../errorResponseGenerator';
 import { isSupportedTransaction } from '../persona';

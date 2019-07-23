@@ -8,9 +8,9 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/core';
 import { ethereumCodec, EthereumConnection } from '@iov/ethereum';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+import { TransactionEncoder } from '@iov/multichain';
 
 import { extensionId } from '..';
 

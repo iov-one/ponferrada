@@ -1,6 +1,6 @@
 import { Identity } from '@iov/bcp';
 import { bnsCodec, BnsConnection } from '@iov/bns';
-import { TransactionEncoder } from '@iov/core';
+import { TransactionEncoder } from '@iov/multichain';
 
 import { getConfig } from '../../config';
 import { getConnectionFor, isBnsSpec } from '../../logic/connection';
@@ -24,7 +24,7 @@ export async function getUsernames(keys: { [chain: string]: string }): Promise<r
 
   return usernames.map(username => ({
     username: username.id,
-    addresses: username.addresses,
+    addresses: username.targets,
   }));
 }
 

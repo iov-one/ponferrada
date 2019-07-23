@@ -144,29 +144,29 @@ withChainsDescribe('Persona', () => {
         const registerName0: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity0,
-          addresses: [],
           username: name0,
+          targets: [],
         };
 
         const registerName1: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity1,
-          addresses: [],
           username: name1,
+          targets: [],
         };
 
         const registerName2a: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity2,
-          addresses: [],
           username: name2[0],
+          targets: [],
         };
 
         const registerName2b: RegisterUsernameTx & WithCreator = {
           kind: 'bns/register_username',
           creator: identity2,
-          addresses: [],
           username: name2[1],
+          targets: [],
         };
 
         const transactions = [[registerName0], [registerName1], [registerName2a, registerName2b]];

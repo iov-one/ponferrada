@@ -1,4 +1,4 @@
-import { JsonRpcSigningServer, SignAndPostAuthorization, TransactionEncoder } from '@iov/core';
+import { JsonRpcSigningServer, SignAndPostAuthorization, TransactionEncoder } from '@iov/multichain';
 
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import * as txsUpdater from '../../updaters/appUpdater';

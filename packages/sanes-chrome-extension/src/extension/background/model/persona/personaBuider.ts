@@ -1,5 +1,5 @@
-import { MultiChainSigner } from '@iov/core';
 import { Ed25519HdWallet, Secp256k1HdWallet, UserProfile } from '@iov/keycontrol';
+import { MultiChainSigner } from '@iov/multichain';
 
 import { AccountManager, AccountManagerChainConfig } from '../accountManager';
 import {

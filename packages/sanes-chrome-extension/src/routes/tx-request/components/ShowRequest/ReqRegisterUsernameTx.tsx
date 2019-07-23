@@ -27,12 +27,12 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
       <Block marginTop={1} />
       <Typography variant="body1">Addresses:</Typography>
       <List>
-        {tx.addresses.map(address => (
-          <ListItem key={address.address}>
+        {tx.targets.map(target => (
+          <ListItem key={target.address}>
             <ListItemText
               classes={listItemClasses}
-              primary={address.chainId}
-              secondary={address.address}
+              primary={target.chainId}
+              secondary={target.address}
               secondaryTypographyProps={txListItemSecondaryProps}
             />
           </ListItem>

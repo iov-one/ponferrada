@@ -1,5 +1,5 @@
 import { Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/core';
+import { TransactionEncoder } from '@iov/multichain';
 
 import { sendGetIdentitiesRequest } from '../../communication/identities';
 import { ExtensionState } from '../../store/extension';

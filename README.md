@@ -24,7 +24,7 @@ In ponferrada, we use the following generic packages from iov-core:
 
 - `@iov/keycontrol`: manages all private keys and keeps them safe. The public API from this package is `UserProfile`.
 - `@iov/crypto`: contains low-level cryptographic functionality.
-- `@iov/core`: the main entrypoint, exposing high-level functionality to easily build blockchain clients. It uses the keymanagement functionality of `UserProfile`, and the generic blockchain connection of `BcpConnection`, and pulls them together into one `MultiChainSigner`, which can query state and sign transactions on multiple blockchains.
+- `@iov/multichain`: the high-level functionality to easily build clients that connect to multiple blockchains. It uses the keymanagement functionality of `UserProfile`, and the generic blockchain connection of `BcpConnection`, and pulls them together into one `MultiChainSigner`, which can query state and sign transactions on multiple blockchains.
 
 And we use the following specific packages to connect to each blockchain:
 

@@ -1,5 +1,5 @@
 import { Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/core';
+import { TransactionEncoder } from '@iov/multichain';
 import { Dispatch } from 'redux';
 import { Subscription } from 'xstream';
 
