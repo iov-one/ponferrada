@@ -18,7 +18,7 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Typography variant="body1" inline color="primary" id={REQ_REGISTER_USERNAME}>
-        {tx.username}*iov
+        {tx.username}
       </Typography>
       <Typography variant="body1" inline>
         {' '}

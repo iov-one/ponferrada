@@ -55,7 +55,7 @@ const usernameCreate: RegisterUsernameTx & WithCreator = {
     gasLimit: '12345678',
     gasPrice: { quantity: '20000000000', fractionalDigits: 18, tokenTicker: 'ETH' as TokenTicker },
   },
-  username: 'test',
+  username: 'test*iov',
   targets: [
     { chainId: 'foobar' as ChainId, address: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address },
   ],

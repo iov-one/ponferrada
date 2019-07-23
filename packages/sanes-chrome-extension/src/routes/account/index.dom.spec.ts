@@ -67,7 +67,7 @@ describe('DOM > Feature > Account Status', () => {
     recipient: '0x1212121212121212121212121212121212121212' as Address,
   };
 
-  const username = 'test';
+  const username = 'test*iov';
   const usernameTx: RegisterUsernameTx & WithCreator = {
     kind: 'bns/register_username',
     creator: defaultCreator,
@@ -158,7 +158,7 @@ describe('DOM > Feature > Account Status', () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, 'li')[2];
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const txUsername = tx.children[1].children[0].querySelector('p:nth-of-type(2)')!.textContent;
-    expect(txUsername).toBe(`${username}*iov`);
+    expect(txUsername).toBe(username);
   }, 60000);
 });
 

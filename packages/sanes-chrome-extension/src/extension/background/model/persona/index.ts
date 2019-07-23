@@ -188,7 +188,7 @@ export class Persona {
           // this case will not happen for regular users that do not professionally collect username NFTs
           label = `Multiple names`;
         } else if (names.length === 1) {
-          label = `${names[0].id}*iov`;
+          label = `${names[0].id}`;
         } else {
           label = `Account ${account.index}`;
         }
