@@ -4,9 +4,13 @@ import { BnsConnection } from '@iov/bns';
 import { getConfig } from '../config';
 import { getConnectionFor, isBnsSpec } from './connection';
 
-// getAddressByName returns the address associated with the name, or undefined if not registered
-// the name should not have the "*iov" suffix
-export async function getAddressByName(username: string, chainId: ChainId): Promise<Address | undefined> {
+/** lookupRecipientAddressByName returns the address associated with the name, or undefined if not registered
+ * the name should not have the "*iov" suffix
+ */
+export async function lookupRecipientAddressByName(
+  username: string,
+  chainId: ChainId,
+): Promise<Address | undefined> {
   const config = getConfig();
   const chains = config.chains;
 
@@ -19,9 +23,9 @@ export async function getAddressByName(username: string, chainId: ChainId): Prom
     const usernames = await connection.getUsernames({ username });
     if (usernames.length !== 1) return undefined;
 
-    const bnsUsername = usernames[0].addresses.find(addr => addr.chainId === chainId);
+    const chainAddressPair = usernames[0].addresses.find(addr => addr.chainId === chainId);
 
-    return bnsUsername ? bnsUsername.address : undefined;
+    return chainAddressPair ? chainAddressPair.address : undefined;
   }
 }
 

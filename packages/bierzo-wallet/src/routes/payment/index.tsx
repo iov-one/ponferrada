@@ -10,7 +10,7 @@ import { history } from '..';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 //import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import PageMenu from '../../components/PageMenu';
-import { getAddressByName, isIov } from '../../logic/account';
+import { isIov, lookupRecipientAddressByName } from '../../logic/account';
 import { RootState } from '../../store/reducers';
 import { padAmount, stringToAmount } from '../../utils/balances';
 import { PAYMENT_ROUTE } from '../paths';
@@ -37,9 +37,14 @@ const Payment = (): JSX.Element => {
     const chainId = token.chainId;
     const tokenAmount = padAmount(amount, token.token.fractionalDigits);
 
-    let recipient: string | undefined = formValues[ADDRESS_FIELD];
-    if (isIov(recipient)) {
-      recipient = await getAddressByName(recipient.replace(/\*iov$/, ''), chainId);
+    let recipient: Address | undefined;
+    if (isIov(formValues[ADDRESS_FIELD])) {
+      recipient = await lookupRecipientAddressByName(
+        formValues[ADDRESS_FIELD].replace(/\*iov$/, ''),
+        chainId,
+      );
+    } else {
+      recipient = formValues[ADDRESS_FIELD] as Address;
     }
 
     if (!recipient) {
@@ -49,7 +54,7 @@ const Payment = (): JSX.Element => {
 
     const plainPubkey = pubKeys[chainId];
     if (!plainPubkey) {
-      toast.show('Public key was not found', ToastVariant.ERROR);
+      toast.show('None of your identities can send on this chain', ToastVariant.ERROR);
       return;
     }
 
@@ -59,7 +64,7 @@ const Payment = (): JSX.Element => {
       const transactionId = await sendSignAndPostRequest(
         chainId,
         identity,
-        formValues[ADDRESS_FIELD] as Address,
+        recipient,
         tokenAmount,
         formValues[TEXTNOTE_FIELD],
       );
