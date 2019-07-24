@@ -1,4 +1,5 @@
-import { makeStyles, Theme, useTheme } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
+import { useTheme } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Img from 'medulas-react-components/lib/components/Image';
