@@ -35,13 +35,13 @@ const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Ele
 
   return (
     <React.Fragment>
-      <Block margin="md" />
-      <Block padding="lg" className={classes.footer}>
+      <Block margin={1} />
+      <Block paddingLeft={3} paddingRight={3} className={classes.footer}>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular">
           Rows per page
         </Typography>
-        <Block padding="xs" />
+        <Block padding={0.5} />
         <Form onSubmit={handleSubmit}>
           <SelectFieldForm
             items={rowsSelectorData}
@@ -49,13 +49,13 @@ const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Ele
             form={form}
             fieldName="rows-per-page"
             onChangeCallback={onChangeRows}
+            maxWidth="40px"
           />
         </Form>
-
         <Img src={arrowLeft} alt="Previous page" width={40} height={40} onClick={onPrevPage} />
         <Img src={arrowRight} alt="Next page" width={40} height={40} onClick={onNextPage} />
       </Block>
-      <Block margin="md" />
+      <Block margin={1} />
     </React.Fragment>
   );
 };
