@@ -23,9 +23,9 @@ export async function lookupRecipientAddressByName(
     const usernames = await connection.getUsernames({ username });
     if (usernames.length !== 1) return undefined;
 
-    const chainAddressPair = usernames[0].addresses.find(addr => addr.chainId === chainId);
+    const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
 
-    return chainAddressPair ? chainAddressPair.address : undefined;
+    return chainAddressPair ? chainAddressPair.targets : undefined;
   }
 }
 

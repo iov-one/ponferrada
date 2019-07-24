@@ -1,5 +1,5 @@
 import { Address, Identity, TokenTicker } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/core';
+import { TransactionEncoder } from '@iov/multichain';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
 import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
@@ -8,7 +8,6 @@ import * as ReactRedux from 'react-redux';
 
 import { history } from '..';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
-//import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import PageMenu from '../../components/PageMenu';
 import { isIov, lookupRecipientAddressByName } from '../../logic/account';
 import { RootState } from '../../store/reducers';
@@ -43,13 +42,13 @@ const Payment = (): JSX.Element => {
         formValues[ADDRESS_FIELD].replace(/\*iov$/, ''),
         chainId,
       );
+
+      if (!recipient) {
+        toast.show('IOV username was not found', ToastVariant.ERROR);
+        return;
+      }
     } else {
       recipient = formValues[ADDRESS_FIELD] as Address;
-    }
-
-    if (!recipient) {
-      toast.show('IOV username was not found', ToastVariant.ERROR);
-      return;
     }
 
     const plainPubkey = pubKeys[chainId];
