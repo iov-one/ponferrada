@@ -37,7 +37,7 @@ const generateSignAndPostRequest = async (
     creator,
     sender: codec.identityToAddress(creator),
     amount: amount,
-    memo: memo ? memo : '',
+    memo: memo,
   });
   const tx = TransactionEncoder.toJson(transactionWithFee);
 
