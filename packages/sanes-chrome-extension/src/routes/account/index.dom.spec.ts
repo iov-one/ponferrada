@@ -9,10 +9,9 @@ import {
   WithCreator,
 } from '@iov/bcp';
 import { RegisterUsernameTx } from '@iov/bns';
-import { Encoding } from '@iov/encoding';
+import { Encoding, TransactionEncoder } from '@iov/encoding';
 import { ethereumCodec } from '@iov/ethereum';
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
-import { TransactionEncoder } from '@iov/multichain';
 import TestUtils from 'react-dom/test-utils';
 import { Store } from 'redux';
 

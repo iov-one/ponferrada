@@ -1,5 +1,5 @@
 import { Amount, Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/multichain';
+import { TransactionEncoder } from '@iov/encoding';
 
 import { getConfig } from '../../config';
 import { getConnectionFor } from '../../logic/connection';

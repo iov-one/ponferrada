@@ -8,7 +8,7 @@ import {
   pubkeyBundleEquals,
   TxCodec,
 } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/multichain';
+import { TransactionEncoder } from '@iov/encoding';
 import { Dispatch } from 'redux';
 import { Subscription } from 'xstream';
 

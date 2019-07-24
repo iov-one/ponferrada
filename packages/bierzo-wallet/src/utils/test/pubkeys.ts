@@ -1,6 +1,6 @@
 import { Algorithm, ChainId, Identity, PubkeyBytes } from '@iov/bcp';
 import { Ed25519, Random, Secp256k1 } from '@iov/crypto';
-import { TransactionEncoder } from '@iov/multichain';
+import { TransactionEncoder } from '@iov/encoding';
 
 export async function createPubkeys(): Promise<{ [chain: string]: string }> {
   const keys: { [chain: string]: string } = {};

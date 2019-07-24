@@ -1,5 +1,5 @@
+import { TransactionEncoder } from '@iov/encoding';
 import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse2 } from '@iov/jsonrpc';
-import { TransactionEncoder } from '@iov/multichain';
 
 import { withChainsDescribe } from '../../../../utils/test/testExecutor';
 import { sleep } from '../../../../utils/timer';
