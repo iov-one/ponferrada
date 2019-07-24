@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import Block from 'medulas-react-components/lib/components/Block';
 import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 
 import { SortingStateProps, TX_AMOUNT_COLUMN, TX_DATE_COLUMN } from '../../sorting';
@@ -23,17 +22,15 @@ const TxTableHeader = ({ orderBy, order, onSort }: SortingStateProps): JSX.Eleme
 
   return (
     <React.Fragment>
-      <Block margin={2} />
-      <Block padding={3} className={classes.header}>
-        <Typography variant="subtitle2" weight="semibold" className={classes.title}>
-          Transactions
-        </Typography>
+      <Block margin={1} />
+      <Block paddingLeft={3} paddingRight={3} className={classes.header}>
+        <TxColumn name="Transactions" />
         <Block flexGrow={1} />
         <TxSortableColumn name={TX_DATE_COLUMN} orderBy={orderBy} order={order} onSort={onSort} />
         <Block flexGrow={1} />
         <TxColumn name={TX_AMOUNT_COLUMN} alignRight />
       </Block>
-      <Block margin={2} />
+      <Block margin={1} />
       <Hairline />
     </React.Fragment>
   );

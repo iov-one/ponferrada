@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     flex: '1 0 10px',
-    cursor: 'pointer',
   },
   alignRight: {
     justifyContent: 'flex-end',
@@ -17,7 +16,7 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly name: 'Amount';
+  readonly name: 'Amount' | 'Transactions';
   readonly alignRight?: boolean;
 }
 
