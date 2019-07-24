@@ -1,7 +1,7 @@
 /*global chrome*/
 import { Identity, isIdentity } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/encoding';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
-import { TransactionEncoder } from '@iov/multichain';
 
 import { extensionId } from '..';
 

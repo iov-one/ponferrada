@@ -1,6 +1,6 @@
 import { Identity, TokenTicker } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/encoding';
 import { IovFaucet } from '@iov/faucets';
-import { TransactionEncoder } from '@iov/multichain';
 
 import { getConfig } from '../config';
 import { filterExistingTokens } from '../utils/tokens';

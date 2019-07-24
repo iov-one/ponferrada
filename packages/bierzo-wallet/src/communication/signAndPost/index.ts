@@ -9,8 +9,8 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/encoding';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
-import { TransactionEncoder } from '@iov/multichain';
 
 import { extensionId } from '..';
 import { getCodecForChainId } from '../../logic/codec';
@@ -37,7 +37,7 @@ const generateSignAndPostRequest = async (
     creator,
     sender: codec.identityToAddress(creator),
     amount: amount,
-    memo: memo ? memo : '',
+    memo: memo,
   });
   const tx = TransactionEncoder.toJson(transactionWithFee);
 

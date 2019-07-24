@@ -1,6 +1,6 @@
 import { Identity } from '@iov/bcp';
 import { bnsCodec, BnsConnection } from '@iov/bns';
-import { TransactionEncoder } from '@iov/multichain';
+import { TransactionEncoder } from '@iov/encoding';
 
 import { getConfig } from '../../config';
 import { getConnectionFor, isBnsSpec } from '../../logic/connection';
