@@ -8,6 +8,8 @@ import * as React from 'react';
 import { getBorderColor } from '../../../../theme/css';
 import download from '../../assets/download.svg';
 
+export const CSV_PADDING = 20;
+
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: 'auto',
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   panel: {
     height: 64,
-    padding: `${theme.spacing(3)}px ${theme.spacing(20)}px`,
+    padding: `${theme.spacing(3)}px ${theme.spacing(CSV_PADDING)}px`,
     display: 'flex',
     alignItems: 'center',
     backgroundColor: 'white',
