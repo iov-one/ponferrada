@@ -16,6 +16,10 @@ import {
   required,
 } from 'medulas-react-components/lib/utils/forms/validators';
 import React, { useMemo, useState } from 'react';
+import * as ReactRedux from 'react-redux';
+
+import { RootState } from '../../../../store/reducers';
+import { amountToNumber, amountToString } from '../../../../utils/balances';
 
 const useStyles = makeStyles(() => ({
   avatar: {
@@ -27,45 +31,29 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const QUANTITY_FIELD = 'quantityField';
-const QUANTITY_MAX = 9999999;
+export const QUANTITY_FIELD = 'quantityField';
 const QUANTITY_MIN = 1e-9;
-const CURRENCY_FIELD = 'currencyField';
-
-interface Currencies {
-  [key: string]: number;
-}
-
-//NOTE hardcoded placeholder balances for each currency
-const currencies: Currencies = {
-  ALT: 15,
-  IOV: 24,
-};
-
-const currencyItems = Object.keys(currencies).map(currency => {
-  const item: Item = {
-    name: currency,
-  };
-
-  return item;
-});
+export const CURRENCY_FIELD = 'currencyField';
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
 }
 
-const CurrencyToSend = (props: Props): JSX.Element => {
+const CurrencyToSend = ({ form }: Props): JSX.Element => {
+  const balances = ReactRedux.useSelector((state: RootState) => state.balances);
   const classes = useStyles();
-  //NOTE hardcoded initial state for "currency"
-  const [currency, setCurrency] = useState(currencyItems[1].name);
-  const [balance, setBalance] = useState(currencies[currency]);
+
+  const currencyItems = Object.keys(balances).map(balance => ({
+    name: balance,
+  }));
+
+  const [balance, setBalance] = useState(balances[currencyItems[0].name]);
 
   const validator = useMemo(() => {
     return composeValidators(
       required,
       number,
-      lowerOrEqualThan(balance),
-      lowerOrEqualThan(QUANTITY_MAX),
+      lowerOrEqualThan(amountToNumber(balance)),
       greaterOrEqualThan(QUANTITY_MIN),
     );
   }, [balance]);
@@ -75,8 +63,7 @@ const CurrencyToSend = (props: Props): JSX.Element => {
   };
 
   const handleChange = (item: Item): void => {
-    setCurrency(item.name);
-    setBalance(currencies[item.name]);
+    setBalance(balances[item.name]);
   };
 
   return (
@@ -93,7 +80,7 @@ const CurrencyToSend = (props: Props): JSX.Element => {
             <Block width="100%" marginRight={1}>
               <TextFieldForm
                 name={QUANTITY_FIELD}
-                form={props.form}
+                form={form}
                 validate={validator}
                 placeholder="0,00"
                 fullWidth
@@ -103,11 +90,10 @@ const CurrencyToSend = (props: Props): JSX.Element => {
             <Block height="32px">
               <SelectFieldForm
                 fieldName={CURRENCY_FIELD}
-                form={props.form}
+                form={form}
                 maxWidth="60px"
                 items={currencyItems}
-                initial={currencyItems[1].name}
-                value={currency}
+                initial={balance.tokenTicker}
                 onChangeCallback={handleChange}
               />
             </Block>
@@ -115,7 +101,7 @@ const CurrencyToSend = (props: Props): JSX.Element => {
         </Block>
         <Block marginTop={1}>
           <Typography color="textSecondary" variant="subtitle2">
-            balance: {balance} {currency}
+            balance: {amountToString(balance)}
           </Typography>
         </Block>
       </Block>

@@ -1,9 +1,9 @@
-import { BlockchainConnection } from '@iov/bcp';
+import { BlockchainConnection, ChainId } from '@iov/bcp';
 import { BnsConnection } from '@iov/bns';
 import { EthereumConnection } from '@iov/ethereum';
 import { LiskConnection } from '@iov/lisk';
 
-import { ChainSpec } from '../config';
+import { ChainSpec, getConfig } from '../config';
 
 let ethereumConnection: EthereumConnection | undefined;
 let bnsConnection: BnsConnection | undefined;
@@ -48,6 +48,14 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
   if (isLskSpec(spec)) return getLiskConnection(spec.node);
 
   throw new Error('Chain spec not supported');
+}
+
+export async function getConnectionForChainId(chainId: ChainId): Promise<BlockchainConnection> {
+  for (const chain of getConfig().chains) {
+    const connection = await getConnectionFor(chain.chainSpec);
+    if (connection && connection.chainId() === chainId) return connection;
+  }
+  throw new Error('No connection found for this chainId');
 }
 
 /**

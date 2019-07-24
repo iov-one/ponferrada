@@ -32,7 +32,7 @@ export const makeAmount = (quantity: string, fractionalDigits: number, tokenTick
   tokenTicker,
 });
 
-function amountToNumber(amount: Amount): number {
+export function amountToNumber(amount: Amount): number {
   const { quantity, fractionalDigits } = amount;
   if (!quantity.match(/^[0-9]+$/)) {
     throw new Error(`quantity must be a number, got ${quantity}`);

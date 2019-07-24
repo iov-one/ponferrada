@@ -1,87 +1,89 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
+import { Address, Identity, TokenTicker } from '@iov/bcp';
+import { TransactionEncoder } from '@iov/multichain';
+import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import * as ReactRedux from 'react-redux';
 
-import Header from '../../components/Header';
-import CurrencyToSend from './components/CurrencyToSend';
-import ReceiverAddress from './components/ReceiverAddress';
-import TextNote from './components/TextNote';
+import { history } from '..';
+import { sendSignAndPostRequest } from '../../communication/signAndPost';
+import PageMenu from '../../components/PageMenu';
+import { isIov, lookupRecipientAddressByName } from '../../logic/account';
+import { RootState } from '../../store/reducers';
+import { padAmount, stringToAmount } from '../../utils/balances';
+import { PAYMENT_ROUTE } from '../paths';
+import Layout from './components';
+import { CURRENCY_FIELD, QUANTITY_FIELD } from './components/CurrencyToSend';
+import { ADDRESS_FIELD } from './components/ReceiverAddress';
+import { TEXTNOTE_FIELD } from './components/TextNote';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  payment: {
-    backgroundColor: theme.palette.background.default,
-    gridTemplateColumns: '1fr minmax(375px, 450px) 1fr',
-    gridTemplateAreas: `
-  ". currency-to-send ."
-  ". receiver-address ."
-  ". text-note        ."
-  ". continue-button  ."
-  `,
-    gridGap: '24px',
-    placeItems: 'center',
-  },
+function onCancelPayment(): void {
+  history.push(PAYMENT_ROUTE);
+}
 
-  currencyToSend: {
-    gridArea: 'currency-to-send',
-  },
+const Payment = (): JSX.Element => {
+  const toast = React.useContext(ToastContext);
+  const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
+  const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
 
-  receiverAddress: {
-    gridArea: 'receiver-address',
-  },
+  const onSubmit = async (values: object): Promise<void> => {
+    const formValues = values as FormValues;
 
-  textNote: {
-    gridArea: 'text-note',
-  },
+    const ticker = formValues[CURRENCY_FIELD] as TokenTicker;
+    const amount = stringToAmount(formValues[QUANTITY_FIELD], ticker);
+    const token = tokens[ticker];
+    const chainId = token.chainId;
+    const tokenAmount = padAmount(amount, token.token.fractionalDigits);
 
-  continue: {
-    gridArea: 'continue-button',
-  },
-}));
+    let recipient: Address | undefined;
+    if (isIov(formValues[ADDRESS_FIELD])) {
+      recipient = await lookupRecipientAddressByName(
+        formValues[ADDRESS_FIELD].replace(/\*iov$/, ''),
+        chainId,
+      );
 
-const onSubmit = (): void => {};
+      if (!recipient) {
+        toast.show('IOV username was not found', ToastVariant.ERROR);
+        return;
+      }
+    } else {
+      recipient = formValues[ADDRESS_FIELD] as Address;
+    }
 
-const Payment = ({ location }: RouteComponentProps): JSX.Element => {
-  const classes = useStyles();
+    const plainPubkey = pubKeys[chainId];
+    if (!plainPubkey) {
+      toast.show('None of your identities can send on this chain', ToastVariant.ERROR);
+      return;
+    }
 
-  const { form, handleSubmit, invalid, pristine, submitting } = useForm({
-    onSubmit,
-  });
+    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
+
+    try {
+      const transactionId = await sendSignAndPostRequest(
+        chainId,
+        identity,
+        recipient,
+        tokenAmount,
+        formValues[TEXTNOTE_FIELD],
+      );
+      if (transactionId === null) {
+        toast.show('Request rejected', ToastVariant.ERROR);
+      } else {
+        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show('An error ocurred', ToastVariant.ERROR);
+      return;
+    }
+  };
 
   return (
-    <React.Fragment>
-      <Header path={location.pathname} />
-      <Form onSubmit={handleSubmit}>
-        <Block
-          width="100vw"
-          height="auto"
-          minHeight="100vh"
-          display="grid"
-          alignContent="center"
-          justifyContent="center"
-          className={classes.payment}
-        >
-          <Block width="100%" className={classes.currencyToSend}>
-            <CurrencyToSend form={form} />
-          </Block>
-          <Block width="100%" className={classes.receiverAddress}>
-            <ReceiverAddress form={form} />
-          </Block>
-          <Block width="100%" className={classes.textNote}>
-            <TextNote form={form} />
-          </Block>
-          <Block width="75%" className={classes.continue}>
-            <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
-              Continue
-            </Button>
-          </Block>
-        </Block>
-      </Form>
-    </React.Fragment>
+    <PageMenu>
+      <Layout onCancelPayment={onCancelPayment} onSubmit={onSubmit} />
+    </PageMenu>
   );
 };
 
-export default withRouter(Payment);
+export default Payment;
