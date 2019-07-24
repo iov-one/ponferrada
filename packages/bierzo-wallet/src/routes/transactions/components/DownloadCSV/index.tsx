@@ -16,12 +16,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sizeSmall: {
     height: `${theme.spacing(4)}px`,
+    padding: '0 !important',
   },
   text: {
-    paddingLeft: '4px',
+    padding: `0px ${theme.spacing(1.5)}px`,
   },
   secondary: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'white',
+    color: theme.palette.text.primary,
     padding: 0,
     boxShadow: 'none',
     border: `1px solid ${getBorderColor(theme)}`,
@@ -31,9 +33,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   panel: {
     height: 64,
+    padding: `${theme.spacing(3)}px ${theme.spacing(20)}px`,
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'white',
   },
 }));
 
@@ -53,7 +56,7 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
   const diameter = `${theme.spacing(4)}px`;
 
   return (
-    <Block className={classes.panel} padding="lg">
+    <Block className={classes.panel}>
       <Fab
         variant="extended"
         size="small"
@@ -64,7 +67,7 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
       >
         <CircleImage
           icon={download}
-          circleColor="primary"
+          circleColor={theme.palette.primary.main}
           alt="Download"
           dia={diameter}
           width={16}

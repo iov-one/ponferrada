@@ -73,7 +73,7 @@ const Transactions = (): JSX.Element => {
   const orderedTxs = filterTxsBy(txs, rows, page, orderBy, order);
 
   return (
-    <PageMenu>
+    <PageMenu padding={false}>
       <Layout
         txs={orderedTxs}
         onChangeRows={onChangeRows}
