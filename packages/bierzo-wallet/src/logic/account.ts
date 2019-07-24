@@ -25,7 +25,7 @@ export async function lookupRecipientAddressByName(
 
     const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
 
-    return chainAddressPair ? chainAddressPair.targets : undefined;
+    return chainAddressPair ? chainAddressPair.address : undefined;
   }
 }
 
