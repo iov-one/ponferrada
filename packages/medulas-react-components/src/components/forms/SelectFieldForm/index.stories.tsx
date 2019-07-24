@@ -13,7 +13,11 @@ const SelectFieldForm = (): JSX.Element => {
     onSubmit: action('Form submit'),
   });
 
-  const items = [{ name: 'Create new account' }, { name: 'IOV2' }, { name: 'ETH3' }];
+  const items = [
+    { name: 'Create new account', additionalText: 'Hello world' },
+    { name: 'IOV2', additionalText: 'This attr is optional' },
+    { name: 'ETH3' },
+  ];
 
   return (
     <Form onSubmit={handleSubmit}>

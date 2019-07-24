@@ -25,8 +25,16 @@ const ListItems = ({ action, items, selectedItem }: ListItemProps): JSX.Element 
             <ListItem key={item.name} button onClick={action(item)}>
               <ListItemText
                 disableTypography
-                primary={<Typography variant="body1">{item.name}</Typography>}
-                secondary={<Typography color="textSecondary">{item.additionalText}</Typography>}
+                primary={
+                  <Block paddingRight={2}>
+                    <Typography variant="body1">{item.name}</Typography>
+                  </Block>
+                }
+                secondary={
+                  <Block paddingRight={2}>
+                    <Typography color="textSecondary">{item.additionalText}</Typography>
+                  </Block>
+                }
               />
               {item.name === selectedItem && (
                 <Img src={selectedTick} alt="Selected Ticker" width={24} height={24} />
