@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexBasis: 'auto',
   },
   panel: {
-    backgroundColor: 'white',
     boxShadow: `0 0 20px 0 ${getShadowColor()}`,
   },
 }));
