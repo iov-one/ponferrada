@@ -532,6 +532,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -553,6 +554,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -574,6 +576,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -708,6 +711,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -729,6 +733,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -750,6 +755,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -884,6 +890,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -905,6 +912,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -926,6 +934,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -1060,6 +1069,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -1081,6 +1091,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -1102,6 +1113,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -1236,6 +1248,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -1257,6 +1270,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -1278,6 +1292,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -1414,6 +1429,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -1435,6 +1451,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -1456,6 +1473,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -1603,6 +1621,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -1624,6 +1643,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -1645,6 +1665,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -1792,6 +1813,7 @@ exports[`Storyshots Bierzo wallet/Transactions page With transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -1813,6 +1835,7 @@ exports[`Storyshots Bierzo wallet/Transactions page With transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -1834,6 +1857,7 @@ exports[`Storyshots Bierzo wallet/Transactions page With transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -2544,6 +2568,7 @@ exports[`Storyshots Bierzo wallet/Transactions page Without transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -2565,6 +2590,7 @@ exports[`Storyshots Bierzo wallet/Transactions page Without transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -2586,6 +2612,7 @@ exports[`Storyshots Bierzo wallet/Transactions page Without transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -2798,6 +2825,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -2819,6 +2847,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -2840,6 +2869,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
@@ -3069,6 +3099,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens and without name 1
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
               onClick={[Function]}
             >
               Balance
@@ -3090,6 +3121,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens and without name 1
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
               onClick={[Function]}
             >
               Payments
@@ -3111,6 +3143,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens and without name 1
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
               onClick={[Function]}
             >
               Transactions
