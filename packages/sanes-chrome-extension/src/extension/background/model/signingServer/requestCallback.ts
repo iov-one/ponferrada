@@ -12,7 +12,6 @@ export async function requestCallback<T>(
   senderWhitelist: SenderWhitelist,
   senderUrl: string,
   reason: string,
-  type: 'getIdentities' | 'signAndPost',
   responseData: GetIdentitiesResponseData | SignAndPostResponseData,
   acceptResponse: T,
   rejectResponse: T,

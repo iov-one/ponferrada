@@ -52,7 +52,6 @@ export default class SigningServer {
       this.senderWhitelist,
       senderUrl,
       reason,
-      'getIdentities',
       data,
       matchingIdentities,
       [],
@@ -78,16 +77,7 @@ export default class SigningServer {
       tx: transaction,
     };
 
-    return requestCallback(
-      this.requestHandler,
-      this.senderWhitelist,
-      senderUrl,
-      reason,
-      'signAndPost',
-      data,
-      true,
-      false,
-    );
+    return requestCallback(this.requestHandler, this.senderWhitelist, senderUrl, reason, data, true, false);
   };
 
   public getPendingRequests(): Request[] {
