@@ -30,9 +30,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: theme.palette.background.default,
     },
   },
-  panel: {
-    backgroundColor: 'white',
-  },
 }));
 
 export interface DownloadCSVProps {
@@ -59,7 +56,7 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
       paddingBottom={3}
       paddingLeft={CSV_PADDING}
       paddingRight={CSV_PADDING}
-      className={classes.panel}
+      bgColor="white"
     >
       <Fab
         variant="extended"

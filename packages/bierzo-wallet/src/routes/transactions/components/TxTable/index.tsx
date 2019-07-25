@@ -38,7 +38,13 @@ function TxTable({
       <Block width={theme.spacing(CSV_PADDING)} flexShrink={1} />
       <Block display="flex" flexGrow={1} flexShrink={0} flexDirection="column" className={classes.inner}>
         <Block margin={3} />
-        <Block display="flex" flexDirection="column" borderRadius="4px" className={classes.panel}>
+        <Block
+          display="flex"
+          flexDirection="column"
+          borderRadius="4px"
+          bgColor="white"
+          className={classes.panel}
+        >
           <TxTableHeader onSort={onSort} orderBy={orderBy} order={order} />
           <Block display="flex" flexDirection="column">
             {txs.map((tx: ProcessedTx) => (
