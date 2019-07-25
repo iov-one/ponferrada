@@ -4,6 +4,7 @@ import { TransactionEncoder } from '@iov/encoding';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 
 import { getConfig } from '../../config';
+import { getConnectionFor } from '../../logic/connection';
 
 export const generateGetIdentitiesRequest = (chains: ReadonlyArray<string>): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -50,8 +51,9 @@ export const parseGetIdentitiesResponse = (response: any): readonly Identity[] =
 };
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const chains = ['ethereum-eip155-5777', 'local-bns-devnet'];
-  const request = generateGetIdentitiesRequest(chains);
+  const connections = await Promise.all(getConfig().chains.map(config => getConnectionFor(config.chainSpec)));
+  const supportedChainIds = connections.map(connection => connection.chainId());
+  const request = generateGetIdentitiesRequest(supportedChainIds);
 
   const isValid = extensionContext();
   if (!isValid) {
