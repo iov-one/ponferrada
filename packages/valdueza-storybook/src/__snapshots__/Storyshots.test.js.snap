@@ -40,7 +40,7 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
             <h4
               className="MuiTypography-root makeStyles-inline-677 MuiTypography-h4 MuiTypography-colorPrimary"
             >
-              Welcome 
+              Welcome
             </h4>
             <h4
               className="MuiTypography-root makeStyles-inline-677 MuiTypography-h4"
@@ -249,7 +249,7 @@ exports[`Storyshots Bierzo wallet Payment page 1`] = `
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
             >
-              balance: 
+              balance:
               8.25 BASH
             </h6>
           </div>
@@ -603,7 +603,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -625,7 +625,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -779,7 +779,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -801,7 +801,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorError MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -955,7 +955,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -977,7 +977,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -1131,7 +1131,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -1153,7 +1153,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-invisible MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -1307,7 +1307,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-73 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -1329,7 +1329,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-73 MuiBadge-invisible MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -1485,7 +1485,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-390 MuiBadge-colorPrimary MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -1507,7 +1507,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-390 MuiBadge-colorError MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -1674,7 +1674,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-287 MuiBadge-colorPrimary MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -1696,7 +1696,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-287 MuiBadge-colorError MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -1759,6 +1759,1012 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
       </strong>
        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </p>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo wallet/Transactions page With transactions 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-1093"
+>
+  <div
+    className="MuiBox-root MuiBox-root-1095 makeStyles-root-1094"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root-1096"
+      src="logoBlack.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-1101"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-1107 makeStyles-root-1102"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-1108 makeStyles-item-1104"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-1109"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1110"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Balance
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1145 makeStyles-line-1106"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-1146 makeStyles-item-1104"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-1147"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1148"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1150 makeStyles-line-1106"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-1151 makeStyles-item-1104"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-1152"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1153"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1155 makeStyles-line-1106"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root-1156"
+    />
+    <div
+      className="makeStyles-root-1159"
+      onClick={[Function]}
+    >
+      <span
+        className="MuiBadge-root"
+      >
+        <img
+          alt="Loading Transactions"
+          className="makeStyles-root-1096"
+          src="loading.svg"
+        />
+        <span
+          className="MuiBadge-badge makeStyles-dot-1164 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
+        >
+
+        </span>
+      </span>
+    </div>
+    <div
+      className="makeStyles-root-1159"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root-1173"
+      >
+        <span
+          className="MuiBadge-root"
+        >
+          <img
+            alt="Transactions Menu"
+            className="makeStyles-root-1096"
+            src="bell.svg"
+          />
+          <span
+            className="MuiBadge-badge makeStyles-dot-1164 MuiBadge-colorPrimary MuiBadge-dot"
+          >
+
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="makeStyles-root-1159"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root-1178 makeStyles-root-1174"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root-1096"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-1192"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-1193"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-1199 makeStyles-panel-1198"
+    >
+      <button
+        aria-label="Export as CSV"
+        className="MuiButtonBase-root MuiFab-root makeStyles-root-1194 MuiFab-extended MuiFab-secondary makeStyles-secondary-1197 MuiFab-sizeSmall makeStyles-sizeSmall-1195"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiFab-label"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1210"
+          >
+            <img
+              alt="Download"
+              className="makeStyles-root-1096"
+              height={16}
+              src="download.svg"
+              width={16}
+            />
+          </div>
+          <h6
+            className="MuiTypography-root makeStyles-text-1196 makeStyles-weight-1113 makeStyles-weight-1211 MuiTypography-subtitle2"
+          >
+            Export as .CSV
+          </h6>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root-1212"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-1217 makeStyles-outer-1214"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-1218"
+      />
+      <div
+        className="MuiBox-root MuiBox-root-1219 makeStyles-inner-1213"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-1220"
+        />
+        <div
+          className="MuiBox-root MuiBox-root-1221 makeStyles-panel-1215"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1224"
+          />
+          <div
+            className="MuiBox-root MuiBox-root-1225 makeStyles-header-1222"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-1228 makeStyles-header-1226"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1229 MuiTypography-subtitle2"
+              >
+                Transactions
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1230"
+            />
+            <div
+              className="MuiBox-root MuiBox-root-1234 makeStyles-header-1231"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1235 makeStyles-sorting-1233"
+              >
+                <img
+                  alt="Descending sort"
+                  className="makeStyles-root-1096"
+                  src="sortUp.svg"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root-1236"
+                />
+                <img
+                  alt="Ascending sort"
+                  className="makeStyles-root-1096"
+                  src="sortDownActive.svg"
+                />
+              </div>
+              <h6
+                className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1237 MuiTypography-subtitle2"
+              >
+                Date
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1238"
+            />
+            <div
+              className="MuiBox-root MuiBox-root-1239 makeStyles-header-1226 makeStyles-alignRight-1227"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1240 MuiTypography-subtitle2"
+              >
+                Amount
+              </h6>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root-1241"
+          />
+          <div
+            className="MuiBox-root MuiBox-root-1242"
+          />
+          <div
+            className="MuiBox-root MuiBox-root-1243 makeStyles-column-1216"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-1247 makeStyles-row-1244"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1248"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1249 makeStyles-rowContent-1245"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-1250"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root-1096"
+                    height={24}
+                    src="toAddressRejected.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1251 makeStyles-cell-1246"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1252 MuiTypography-subtitle2 MuiTypography-gutterBottom"
+                  >
+                    To
+
+                    blockchain address
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1253 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                  >
+                    10:51 am
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1254"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1255 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2018
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1256"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1257 MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  100.5
+
+                  IOV
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1258"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root-1096"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root-1259"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1260"
+              />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1261 makeStyles-row-1244"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1262"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1263 makeStyles-rowContent-1245"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-1264"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root-1096"
+                    height={24}
+                    src="toAddressRejected.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1265 makeStyles-cell-1246"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1266 MuiTypography-subtitle2 MuiTypography-gutterBottom"
+                  >
+                    To
+
+                    blockchain address
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1267 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                  >
+                    10:51 am
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1268"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1269 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2018
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1270"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1271 MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  100.5
+
+                  IOV
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1272"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root-1096"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root-1273"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1274"
+              />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1275 makeStyles-row-1244"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1276"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1277 makeStyles-rowContent-1245"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-1278"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root-1096"
+                    height={24}
+                    src="toAddressRejected.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1279 makeStyles-cell-1246"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1280 MuiTypography-subtitle2 MuiTypography-gutterBottom"
+                  >
+                    To
+
+                    blockchain address
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1281 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                  >
+                    10:51 am
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1282"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1283 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2018
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1284"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1285 MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  100.5
+
+                  IOV
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1286"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root-1096"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root-1287"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1288"
+              />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1289 makeStyles-row-1244"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1290"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1291 makeStyles-rowContent-1245"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-1292"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root-1096"
+                    height={24}
+                    src="toAddressRejected.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1293 makeStyles-cell-1246"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1294 MuiTypography-subtitle2 MuiTypography-gutterBottom"
+                  >
+                    To
+
+                    blockchain address
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1295 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                  >
+                    10:51 am
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1296"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1297 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2018
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1298"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1299 MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  100.5
+
+                  IOV
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1300"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root-1096"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root-1301"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1302"
+              />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1303 makeStyles-row-1244"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1304"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1305 makeStyles-rowContent-1245"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-1306"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root-1096"
+                    height={24}
+                    src="toAddressRejected.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1307 makeStyles-cell-1246"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1308 MuiTypography-subtitle2 MuiTypography-gutterBottom"
+                  >
+                    To
+
+                    blockchain address
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1309 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                  >
+                    10:51 am
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-1310"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1311 MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2018
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1312"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell-1246 makeStyles-weight-1113 makeStyles-weight-1313 MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  100.5
+
+                  IOV
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root-1314"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root-1096"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root-1315"
+              />
+              <div
+                className="MuiBox-root MuiBox-root-1316"
+              />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1318"
+            />
+            <div
+              className="MuiBox-root MuiBox-root-1319 makeStyles-footer-1317"
+            >
+              <div
+                className="MuiBox-root MuiBox-root-1320"
+              />
+              <h6
+                className="MuiTypography-root makeStyles-weight-1113 makeStyles-weight-1321 MuiTypography-subtitle2"
+              >
+                Rows per page
+              </h6>
+              <div
+                className="MuiBox-root MuiBox-root-1322"
+              />
+              <form
+                onSubmit={[Function]}
+              >
+                <div
+                  className="makeStyles-dropdown-1323"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiInputBase-root makeStyles-root-1324 makeStyles-root-1326"
+                    onClick={[Function]}
+                    role="button"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="MuiInputBase-input makeStyles-input-1325"
+                      name="rows-per-page"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      readOnly={true}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <img
+                    alt="Phone Menu"
+                    className="makeStyles-root-1096 makeStyles-noShrink-1097"
+                    height="5"
+                    src="selectChevron.svg"
+                    width="8"
+                  />
+                </div>
+              </form>
+              <img
+                alt="Previous page"
+                className="makeStyles-root-1096"
+                height={40}
+                onClick={[Function]}
+                src="arrowLeft.svg"
+                width={40}
+              />
+              <img
+                alt="Next page"
+                className="makeStyles-root-1096"
+                height={40}
+                onClick={[Function]}
+                src="arrowRight.svg"
+                width={40}
+              />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-1343"
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1344"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-1345"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo wallet/Transactions page Without transactions 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-965"
+>
+  <div
+    className="MuiBox-root MuiBox-root-967 makeStyles-root-966"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root-968"
+      src="logoBlack.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-973"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-979 makeStyles-root-974"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-980 makeStyles-item-976"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-981"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-982"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Balance
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1017 makeStyles-line-978"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-1018 makeStyles-item-976"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-1019"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1020"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1022 makeStyles-line-978"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-1023 makeStyles-item-976"
+      >
+        <div
+          className="MuiBox-root MuiBox-root-1024"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1025"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root-1027 makeStyles-line-978"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root-1028"
+    />
+    <div
+      className="makeStyles-root-1031"
+      onClick={[Function]}
+    >
+      <span
+        className="MuiBadge-root"
+      >
+        <img
+          alt="Loading Transactions"
+          className="makeStyles-root-968"
+          src="loading.svg"
+        />
+        <span
+          className="MuiBadge-badge makeStyles-dot-1036 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
+        >
+
+        </span>
+      </span>
+    </div>
+    <div
+      className="makeStyles-root-1031"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root-1045"
+      >
+        <span
+          className="MuiBadge-root"
+        >
+          <img
+            alt="Transactions Menu"
+            className="makeStyles-root-968"
+            src="bell.svg"
+          />
+          <span
+            className="MuiBadge-badge makeStyles-dot-1036 MuiBadge-invisible MuiBadge-dot"
+          >
+
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="makeStyles-root-1031"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root-1050 makeStyles-root-1046"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root-968"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-1064"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-1065"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-1071 makeStyles-panel-1070"
+    >
+      <button
+        aria-label="Export as CSV"
+        className="MuiButtonBase-root MuiFab-root makeStyles-root-1066 MuiFab-extended MuiFab-secondary makeStyles-secondary-1069 MuiFab-sizeSmall makeStyles-sizeSmall-1067"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiFab-label"
+        >
+          <div
+            className="MuiBox-root MuiBox-root-1082"
+          >
+            <img
+              alt="Download"
+              className="makeStyles-root-968"
+              height={16}
+              src="download.svg"
+              width={16}
+            />
+          </div>
+          <h6
+            className="MuiTypography-root makeStyles-text-1068 makeStyles-weight-985 makeStyles-weight-1083 MuiTypography-subtitle2"
+          >
+            Export as .CSV
+          </h6>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root-1084"
+    />
+    <div
+      className="MuiBox-root MuiBox-root-1086 makeStyles-panel-1085"
+    >
+      <img
+        alt="No Transactions"
+        className="makeStyles-root-968"
+        src="noTransactions.svg"
+      />
+      <div
+        className="MuiBox-root MuiBox-root-1087"
+      />
+      <div
+        className="MuiBox-root MuiBox-root-1088"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-weight-985 makeStyles-weight-1089 MuiTypography-subtitle1 MuiTypography-alignCenter"
+        >
+          No transactions yet
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root-1090"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+        >
+          Make your first transaction and it will appear here
+        </h6>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1863,7 +2869,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
         <span
           className="MuiBadge-badge makeStyles-dot-493 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -1885,7 +2891,7 @@ exports[`Storyshots Bierzo wallet/balance View 1`] = `
           <span
             className="MuiBadge-badge makeStyles-dot-493 MuiBadge-invisible MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -2134,7 +3140,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens and without name 1
         <span
           className="MuiBadge-badge makeStyles-dot-614 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
         >
-          
+
         </span>
       </span>
     </div>
@@ -2156,7 +3162,7 @@ exports[`Storyshots Bierzo wallet/balance View without tokens and without name 1
           <span
             className="MuiBadge-badge makeStyles-dot-614 MuiBadge-invisible MuiBadge-dot"
           >
-            
+
           </span>
         </span>
       </div>
@@ -2580,7 +3586,7 @@ Array [
       <span
         className="MuiBadge-badge makeStyles-dot-927 MuiBadge-colorPrimary MuiBadge-dot"
       >
-        
+
       </span>
     </span>
   </div>,
@@ -2607,7 +3613,7 @@ Array [
       <span
         className="MuiBadge-badge makeStyles-dot-927 MuiBadge-colorError MuiBadge-dot"
       >
-        
+
       </span>
     </span>
   </div>,
@@ -2634,7 +3640,7 @@ Array [
       <span
         className="MuiBadge-badge makeStyles-dot-927 MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
       >
-        
+
       </span>
     </span>
   </div>,
@@ -3003,7 +4009,7 @@ exports[`Storyshots Components Drawer 1`] = `
           <h4
             className="MuiTypography-root makeStyles-inline-1127 MuiTypography-h4"
           >
-             
+
             drawer
           </h4>
         </div>
@@ -3186,7 +4192,7 @@ exports[`Storyshots Components Layout 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-1311 MuiTypography-h4"
     >
-       
+
       storybook
     </h4>
   </div>
@@ -3839,7 +4845,7 @@ exports[`Storyshots Components/Pages PageColumn 1`] = `
             <h4
               className="MuiTypography-root makeStyles-inline-2077 MuiTypography-h4 MuiTypography-colorPrimary"
             >
-              Page 
+              Page
             </h4>
             <h4
               className="MuiTypography-root makeStyles-inline-2077 MuiTypography-h4"
@@ -4016,7 +5022,7 @@ Array [
   <h6
     className="MuiTypography-root makeStyles-inline-1619 MuiTypography-subtitle2 MuiTypography-colorPrimary"
   >
-    First part of the text. 
+    First part of the text.
   </h6>,
   <h6
     className="MuiTypography-root makeStyles-inline-1619 MuiTypography-subtitle2"
@@ -4621,7 +5627,7 @@ exports[`Storyshots Extension Login page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2699 MuiTypography-h4"
     >
-       
+
       In
     </h4>
   </div>
@@ -4811,7 +5817,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2829 MuiTypography-h4"
     >
-       
+
       phrase
     </h4>
   </div>
@@ -4880,7 +5886,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root makeStyles-inline-2829 MuiTypography-body1"
       >
-        
+
       </p>
     </div>
   </div>
@@ -4963,7 +5969,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-2922 MuiTypography-h4"
     >
-       
+
       queue
     </h4>
   </div>
@@ -5104,7 +6110,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3025 MuiTypography-h4"
     >
-       
+
       to your IOV manager
     </h4>
   </div>
@@ -5287,7 +6293,7 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
           <h4
             className="MuiTypography-root makeStyles-inline-2579 MuiTypography-h4"
           >
-             
+
             Status
           </h4>
         </div>
@@ -5449,7 +6455,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
           <h4
             className="MuiTypography-root makeStyles-inline-2333 MuiTypography-h4"
           >
-             
+
             Status
           </h4>
         </div>
@@ -5509,7 +6515,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2404 makeStyles-inline-2333 MuiTypography-body1"
                       >
                         You have created
-                         
+
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2405 makeStyles-inline-2333 makeStyles-link-2334 MuiTypography-body1"
@@ -5519,7 +6525,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2406 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         
+
                         username.
                       </p>
                     </span>
@@ -5561,7 +6567,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2410 makeStyles-inline-2333 MuiTypography-body1"
                       >
                         Your attempt to create
-                         
+
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2411 makeStyles-inline-2333 makeStyles-link-2334 MuiTypography-body1"
@@ -5571,9 +6577,9 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2412 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         
+
                         username was
-                         
+
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2413 makeStyles-inline-2333 MuiTypography-body1"
@@ -5628,7 +6634,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2420 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         sent 0.01 ETH 
+                         sent 0.01 ETH
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2421 makeStyles-inline-2333 MuiTypography-body1"
@@ -5735,7 +6741,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2428 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         sent 0.01 ETH 
+                         sent 0.01 ETH
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2429 makeStyles-inline-2333 MuiTypography-body1"
@@ -5830,7 +6836,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2435 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                        Your 
+                        Your
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2436 makeStyles-inline-2333 MuiTypography-body1"
@@ -5840,7 +6846,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2437 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         payment to 
+                         payment to
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2438 makeStyles-inline-2333 makeStyles-link-2334 MuiTypography-body1"
@@ -5850,7 +6856,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2439 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         was 
+                         was
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2440 makeStyles-inline-2333 MuiTypography-body1"
@@ -5908,7 +6914,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2447 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         sent 0.01 ETH 
+                         sent 0.01 ETH
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2448 makeStyles-inline-2333 MuiTypography-body1"
@@ -6008,7 +7014,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2455 makeStyles-inline-2333 MuiTypography-body1"
                       >
-                         sent 0.01 ETH 
+                         sent 0.01 ETH
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight-2335 makeStyles-weight-2456 makeStyles-inline-2333 MuiTypography-body1"
@@ -6113,7 +7119,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3097 MuiTypography-h4"
     >
-       
+
       Account
     </h4>
   </div>
@@ -6272,7 +7278,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3206 MuiTypography-h4"
     >
-       
+
       Account
     </h4>
   </div>
@@ -6506,7 +7512,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3434 MuiTypography-h4"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -6537,7 +7543,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
         <p
           className="MuiTypography-root makeStyles-inline-3434 MuiTypography-body1"
         >
-           
+
           your identity on blockchains.
         </p>
         <div
@@ -6690,7 +7696,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3335 MuiTypography-h4"
     >
-       
+
       Identity
     </h4>
   </div>
@@ -6894,7 +7900,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3549 MuiTypography-h4"
     >
-       
+
       Account
     </h4>
   </div>
@@ -7155,7 +8161,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
                 className="MuiTypography-root makeStyles-inline-3549 MuiTypography-subtitle1"
               >
                 I have read and agree the
-                 
+
               </h6>
               <a
                 href="https://support.iov.one/hc/en-us"
@@ -7266,7 +8272,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3716 MuiTypography-h4"
     >
-       
+
       Account
     </h4>
   </div>
@@ -7350,7 +8356,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       <p
         className="MuiTypography-root makeStyles-inline-3716 MuiTypography-body1"
       >
-        
+
       </p>
     </div>
     <div
@@ -7446,7 +8452,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3827 MuiTypography-h4"
     >
-       
+
       Account
     </h4>
   </div>
@@ -7605,7 +8611,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-4232 MuiTypography-h4"
     >
-       
+
       Request
     </h4>
   </div>
@@ -7624,7 +8630,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
         <p
           className="MuiTypography-root makeStyles-inline-4232 MuiTypography-body1"
         >
-          You are rejecting the tx sent from 
+          You are rejecting the tx sent from
         </p>
         <p
           className="MuiTypography-root makeStyles-inline-4232 MuiTypography-body1 MuiTypography-colorPrimary"
@@ -7786,7 +8792,7 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page (Ethereum
     <h4
       className="MuiTypography-root makeStyles-inline-4033 MuiTypography-h4"
     >
-       
+
       Request
     </h4>
   </div>
@@ -7799,7 +8805,7 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page (Ethereum
       <p
         className="MuiTypography-root makeStyles-inline-4033 MuiTypography-body1"
       >
-        The following site: 
+        The following site:
       </p>
       <p
         className="MuiTypography-root makeStyles-inline-4033 MuiTypography-body1 MuiTypography-colorPrimary"
@@ -8001,7 +9007,7 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline-3936 MuiTypography-h4"
     >
-       
+
       Request
     </h4>
   </div>
@@ -8014,7 +9020,7 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page 1`] = `
       <p
         className="MuiTypography-root makeStyles-inline-3936 MuiTypography-body1"
       >
-        The following site: 
+        The following site:
       </p>
       <p
         className="MuiTypography-root makeStyles-inline-3936 MuiTypography-body1 MuiTypography-colorPrimary"
@@ -8216,7 +9222,7 @@ exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`]
     <h4
       className="MuiTypography-root makeStyles-inline-4130 MuiTypography-h4"
     >
-       
+
       Request
     </h4>
   </div>
@@ -8229,7 +9235,7 @@ exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`]
       <p
         className="MuiTypography-root makeStyles-inline-4130 MuiTypography-body1"
       >
-        The following site: 
+        The following site:
       </p>
       <p
         className="MuiTypography-root makeStyles-inline-4130 MuiTypography-body1 MuiTypography-colorPrimary"
@@ -8251,7 +9257,7 @@ exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`]
     <p
       className="MuiTypography-root makeStyles-inline-4130 MuiTypography-body1"
     >
-       
+
       username registration request.
     </p>
     <div
@@ -8401,7 +9407,7 @@ exports[`Storyshots Templates/Menu Empty Menu 1`] = `
       <h6
         className="MuiTypography-root MuiTypography-h6"
       >
-        Hi! 
+        Hi!
         Menu is closed
       </h6>
       <svg
@@ -8444,7 +9450,7 @@ exports[`Storyshots Templates/Menu List Menu 1`] = `
       <h6
         className="MuiTypography-root MuiTypography-h6"
       >
-        Hi! 
+        Hi!
         Menu is closed
       </h6>
       <svg
