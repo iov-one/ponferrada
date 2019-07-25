@@ -1963,7 +1963,6 @@ exports[`Storyshots Bierzo wallet/Transactions page With transactions 1`] = `
       className="MuiBox-root MuiBox-root-1134"
     />
     <div
-      bgColor="white"
       className="MuiBox-root MuiBox-root-1138"
     >
       <button
@@ -2026,7 +2025,6 @@ exports[`Storyshots Bierzo wallet/Transactions page With transactions 1`] = `
           className="MuiBox-root MuiBox-root-1158"
         />
         <div
-          bgColor="white"
           className="MuiBox-root MuiBox-root-1159 makeStyles-panel-1154"
         >
           <div
@@ -2724,7 +2722,6 @@ exports[`Storyshots Bierzo wallet/Transactions page Without transactions 1`] = `
       className="MuiBox-root MuiBox-root-1008"
     />
     <div
-      bgColor="white"
       className="MuiBox-root MuiBox-root-1012"
     >
       <button

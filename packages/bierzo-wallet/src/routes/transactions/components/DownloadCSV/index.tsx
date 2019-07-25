@@ -56,7 +56,7 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
       paddingBottom={3}
       paddingLeft={CSV_PADDING}
       paddingRight={CSV_PADDING}
-      bgColor="white"
+      bgcolor="white"
     >
       <Fab
         variant="extended"

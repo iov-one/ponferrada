@@ -41,7 +41,7 @@ function TxTable({
           display="flex"
           flexDirection="column"
           borderRadius="4px"
-          bgColor="white"
+          bgcolor="white"
           className={classes.panel}
         >
           <TxTableHeader onSort={onSort} orderBy={orderBy} order={order} />
