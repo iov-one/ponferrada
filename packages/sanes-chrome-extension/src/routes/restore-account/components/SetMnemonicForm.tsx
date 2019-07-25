@@ -1,3 +1,5 @@
+import { EnglishMnemonic } from '@iov/crypto';
+import { FieldValidator } from 'final-form';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
 import Back from 'medulas-react-components/lib/components/Button/Back';
@@ -5,18 +7,24 @@ import Form, { FormValues, useForm } from 'medulas-react-components/lib/componen
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
-import {
-  composeValidators,
-  numberOfWords,
-  required,
-} from 'medulas-react-components/lib/utils/forms/validators';
+import { composeValidators, required } from 'medulas-react-components/lib/utils/forms/validators';
 import * as React from 'react';
 import { useMemo } from 'react';
 
 import { RESTORE_ACCOUNT } from '../../paths';
 
 export const MNEMONIC_FIELD = 'mnemonicField';
-export const MNEMONIC_NUM_WORDS = 12;
+
+export const englishMnemonicValidator: FieldValidator = (value): string | undefined => {
+  if (typeof value !== 'string') throw new Error('Input must be a string');
+
+  try {
+    new EnglishMnemonic(value);
+    return undefined; // valid
+  } catch (_error) {
+    return 'Not a valid English mnemonic';
+  }
+};
 
 interface Props {
   readonly onSetMnemonic: (values: FormValues) => void;
@@ -33,7 +41,7 @@ const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
 
   //TODO optimize update of validators with array of dependencies
   const validator = useMemo(() => {
-    return composeValidators(required, numberOfWords(MNEMONIC_NUM_WORDS));
+    return composeValidators(required, englishMnemonicValidator);
   }, []);
 
   return (
