@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
@@ -8,7 +8,9 @@ import { getAddressPrefix } from '../rowTxBuilder';
 
 const useStyles = makeStyles({
   details: {
-    paddingLeft: 60,
+    paddingLeft: 56,
+    display: 'flex',
+    flexDirection: 'column',
   },
   sectionName: {
     overflowWrap: 'break-word',
@@ -24,25 +26,22 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
 
   return (
     <Block className={classes.details}>
-      <Block margin={3} />
-      <Grid>
-        <Grid xs={12} sm={6}>
-          <Block>
-            <Typography variant="subtitle2" weight="regular" gutterBottom>
-              {getAddressPrefix(tx)} address:
-            </Typography>
-            <Typography
-              variant="subtitle2"
-              weight="regular"
-              color="textSecondary"
-              className={classes.sectionName}
-            >
-              {tx.received ? tx.signer : tx.recipient}
-            </Typography>
-            <Block margin={3} />
-          </Block>
-        </Grid>
-        <Grid xs={12} sm={6}>
+      <Block margin={2} />
+      <Block display="flex">
+        <Block width="50%">
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            {getAddressPrefix(tx)} address:
+          </Typography>
+          <Typography
+            variant="subtitle2"
+            weight="regular"
+            color="textSecondary"
+            className={classes.sectionName}
+          >
+            {tx.received ? tx.signer : tx.recipient}
+          </Typography>
+        </Block>
+        <Block width="50%">
           <Block>
             <Typography variant="subtitle2" weight="regular" gutterBottom>
               Note:
@@ -51,8 +50,8 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
               {tx.memo ? tx.memo : 'No note'}
             </Typography>
           </Block>
-        </Grid>
-      </Grid>
+        </Block>
+      </Block>
     </Block>
   );
 };
