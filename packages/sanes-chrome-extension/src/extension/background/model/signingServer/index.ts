@@ -7,12 +7,12 @@ import { isSupportedTransaction } from '../persona';
 import { getChainName } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
-  GetIdentitiesData,
+  GetIdentitiesResponseData,
   isRequestMeta,
   Request,
   RequestMeta,
   RequestQueueManager,
-  SignAndPostData,
+  SignAndPostResponseData,
   UiIdentity,
 } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
@@ -43,14 +43,14 @@ export default class SigningServer {
       ),
     );
 
-    const data: GetIdentitiesData = {
-      senderUrl,
+    const data: GetIdentitiesResponseData = {
       requestedIdentities,
     };
 
     return requestCallback(
       this.requestHandler,
       this.senderWhitelist,
+      senderUrl,
       reason,
       'getIdentities',
       data,
@@ -74,14 +74,14 @@ export default class SigningServer {
 
     const { senderUrl } = meta;
 
-    const data: SignAndPostData = {
-      senderUrl,
+    const data: SignAndPostResponseData = {
       tx: transaction,
     };
 
     return requestCallback(
       this.requestHandler,
       this.senderWhitelist,
+      senderUrl,
       reason,
       'signAndPost',
       data,

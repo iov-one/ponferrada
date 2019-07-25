@@ -22,9 +22,9 @@ import {
 const sendRequests: ReadonlyArray<Request> = [
   {
     id: 1,
+    senderUrl: 'http://finnex.com',
     reason: 'Test get Identities',
     responseData: {
-      senderUrl: 'http://finnex.com',
       tx: getCashTransaction(),
     },
     accept: jest.fn(),
@@ -91,9 +91,9 @@ describe('DOM > Feature > Username Registration Request', (): void => {
   const requests: ReadonlyArray<Request> = [
     {
       id: 1,
+      senderUrl: 'http://finnex.com',
       reason: 'Test username registration',
       responseData: {
-        senderUrl: 'http://finnex.com',
         tx: getUsernameTransaction(),
       },
       accept: jest.fn(),

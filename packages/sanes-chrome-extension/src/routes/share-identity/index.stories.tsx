@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Storybook } from 'medulas-react-components/lib/utils/storybook';
 import React from 'react';
 
-import { GetIdentitiesData } from '../../extension/background/model/signingServer/requestQueueManager';
+import { GetIdentitiesResponseData } from '../../extension/background/model/signingServer/requestQueueManager';
 import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
 import { ACCOUNT_STATUS_PAGE } from '../account/index.stories';
 import RejectRequest from './components/RejectRequest';
@@ -15,8 +15,8 @@ const SHARE_IDENTITY_PATH = `${CHROME_EXTENSION_ROOT}/Share Identity`;
 const SHOW_REQUEST_PAGE = 'Show Request page';
 const REJECT_REQUEST_PAGE = 'Reject Request page';
 
-const data: GetIdentitiesData = {
-  senderUrl: 'http://finnex.com',
+const senderUrl = 'http://finnex.com';
+const data: GetIdentitiesResponseData = {
   requestedIdentities: [
     {
       chainName: 'Ganache',
@@ -44,8 +44,8 @@ storiesOf(SHARE_IDENTITY_PATH, module)
       return (
         <Storybook>
           <ShowRequest
+            sender={senderUrl}
             data={data.requestedIdentities}
-            sender={data.senderUrl}
             onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
             showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
           />
@@ -58,7 +58,7 @@ storiesOf(SHARE_IDENTITY_PATH, module)
     (): JSX.Element => (
       <Storybook>
         <RejectRequest
-          sender={data.senderUrl}
+          sender={senderUrl}
           onBack={linkTo(SHARE_IDENTITY_PATH, SHOW_REQUEST_PAGE)}
           onRejectRequest={action('onAcceptRequest')}
         />
