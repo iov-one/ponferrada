@@ -4,6 +4,8 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { QUANTITY_FIELD } from './components/CurrencyToSend';
+import { ADDRESS_FIELD } from './components/ReceiverAddress';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
 withChainsDescribe('E2E > Payment route', (): void => {
@@ -41,7 +43,9 @@ withChainsDescribe('E2E > Payment route', (): void => {
     server.close();
   });
 
-  it('dump test to check tests suite', async (): Promise<void> => {
-    expect(true).toBeTruthy();
+  fit('should fill payment form and make payment', async (): Promise<void> => {
+    await page.type(`input[name="${QUANTITY_FIELD}"]`, '1');
+    await page.type(`input[name="${ADDRESS_FIELD}`, 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
+    await page.click('button:nth-of-type(1)');
   }, 45000);
 });
