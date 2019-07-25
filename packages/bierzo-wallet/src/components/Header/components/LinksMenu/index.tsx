@@ -53,7 +53,7 @@ const onTransactions = (): void => {
 
 const BALANCE_TEXT = 'Balance';
 const PAYMENT_TEXT = 'Payments';
-const TRANSACTIONS_TEXT = 'Transactions';
+export const TRANSACTIONS_TEXT = 'Transactions';
 
 interface MenuItemProps {
   readonly itemTitle: string;
@@ -63,7 +63,7 @@ interface MenuItemProps {
 const LinkMenuItem = ({ itemTitle, onClick }: MenuItemProps): JSX.Element => (
   <Block marginTop="12px">
     <Block marginTop="12px">
-      <Typography variant="subtitle2" color="textPrimary" onClick={onClick}>
+      <Typography variant="subtitle2" color="textPrimary" onClick={onClick} id={itemTitle}>
         {itemTitle}
       </Typography>
     </Block>
