@@ -1,9 +1,11 @@
 import { makeStyles, Theme } from '@material-ui/core';
+import { useTheme } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import * as React from 'react';
 
 import { ProcessedTx } from '../../../../store/notifications';
 import { getShadowColor } from '../../../../theme/css';
+import { CSV_PADDING } from '../DownloadCSV';
 import { TxTableProps } from './rowTxBuilder';
 import TxTableFooter from './TxTableFooter';
 import TxTableHeader from './TxTableHeader';
@@ -21,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   panel: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'white',
     borderRadius: 4,
     boxShadow: `0 0 20px 0 ${getShadowColor()}`,
   },
@@ -41,10 +43,11 @@ function TxTable({
   onPrevPage,
 }: TxTableProps): JSX.Element {
   const classes = useStyles();
+  const theme = useTheme<Theme>();
 
   return (
     <Block className={classes.outer}>
-      <Block width={200} flexGrow={1} />
+      <Block width={theme.spacing(CSV_PADDING)} flexShrink={1} />
       <Block className={classes.inner}>
         <Block margin={3} />
         <Block className={classes.panel}>
@@ -58,7 +61,7 @@ function TxTable({
         </Block>
         <Block margin={3} />
       </Block>
-      <Block width={200} flexGrow={1} />
+      <Block width={theme.spacing(CSV_PADDING)} flexShrink={1} />
     </Block>
   );
 }
