@@ -22,7 +22,7 @@ const txRequest: Request<SignAndPostData> = {
   accept: () => action('accept request'),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? 'yes' : 'no'}`),
   reason: 'I would like you to sign this TX',
-  data: {
+  responseData: {
     senderUrl: 'http://localhost/',
     tx: getCashTransaction(),
   },
@@ -33,7 +33,7 @@ const ethereumTxRequest: Request<SignAndPostData> = {
   accept: () => action('accept request'),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? 'yes' : 'no'}`),
   reason: 'I would like you to sign this Ethereum TX',
-  data: {
+  responseData: {
     senderUrl: 'http://localhost/',
     tx: getEthTransaction(),
   },
@@ -44,7 +44,7 @@ const usernameRequest: Request<SignAndPostData> = {
   accept: () => action('accept request'),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? 'yes' : 'no'}`),
   reason: 'I would like you to sign this TX',
-  data: {
+  responseData: {
     senderUrl: 'http://localhost/',
     tx: getUsernameTransaction(),
   },
@@ -52,13 +52,13 @@ const usernameRequest: Request<SignAndPostData> = {
 
 storiesOf(TX_REQUEST_PATH, module)
   .add(SHOW_TX_REQUEST_PAGE, () => {
-    const { tx } = txRequest.data;
+    const { tx } = txRequest.responseData;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          sender={txRequest.data.senderUrl}
+          sender={txRequest.responseData.senderUrl}
           onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
@@ -66,7 +66,7 @@ storiesOf(TX_REQUEST_PATH, module)
     );
   })
   .add(SHOW_ETHEREUM_TX_REQUEST_PAGE, () => {
-    const { tx, senderUrl } = ethereumTxRequest.data;
+    const { tx, senderUrl } = ethereumTxRequest.responseData;
 
     return (
       <Storybook>
@@ -80,13 +80,13 @@ storiesOf(TX_REQUEST_PATH, module)
     );
   })
   .add(SHOW_USERNAME_REQUEST_PAGE, () => {
-    const { tx } = usernameRequest.data;
+    const { tx } = usernameRequest.responseData;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          sender={usernameRequest.data.senderUrl}
+          sender={usernameRequest.responseData.senderUrl}
           onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
@@ -96,7 +96,7 @@ storiesOf(TX_REQUEST_PATH, module)
   .add(REJECT_REQUEST_PAGE, () => (
     <Storybook>
       <RejectRequest
-        sender={txRequest.data.senderUrl}
+        sender={txRequest.responseData.senderUrl}
         onBack={linkTo(TX_REQUEST_PATH, SHOW_TX_REQUEST_PAGE)}
         onRejectRequest={action('onAcceptRequest')}
       />

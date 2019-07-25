@@ -12,7 +12,7 @@ const intialRequests: Request[] = [
   {
     id: 0,
     reason: 'Asking for identities for changing the world',
-    data: {
+    responseData: {
       senderUrl: 'Sender 1',
       requestedIdentities: [],
     },
@@ -22,7 +22,7 @@ const intialRequests: Request[] = [
   {
     id: 1,
     reason: 'Asking for signAndPost example',
-    data: {
+    responseData: {
       senderUrl: 'Sender 2',
       requestedIdentities: [],
     },
@@ -32,7 +32,7 @@ const intialRequests: Request[] = [
   {
     id: 2,
     reason: 'Please get Identities on new website',
-    data: {
+    responseData: {
       senderUrl: 'Sender 3',
       requestedIdentities: [],
     },

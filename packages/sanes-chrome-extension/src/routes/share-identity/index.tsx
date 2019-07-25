@@ -17,9 +17,9 @@ const ShareIdentity = ({ location }: RouteComponentProps): JSX.Element => {
 
   const req = requestContext.firstRequest;
   checkRequest(req, location, toast);
-  const { data, accept, reject } = req!; // eslint-disable-line
+  const { responseData, accept, reject } = req!; // eslint-disable-line
 
-  if (!isGetIdentitiesData(data)) {
+  if (!isGetIdentitiesData(responseData)) {
     throw new Error('Received request with a wrong identities data');
   }
 
@@ -40,14 +40,18 @@ const ShareIdentity = ({ location }: RouteComponentProps): JSX.Element => {
     <React.Fragment>
       {action === 'show' && (
         <ShowRequest
-          data={data.requestedIdentities}
-          sender={data.senderUrl}
+          data={responseData.requestedIdentities}
+          sender={responseData.senderUrl}
           onAcceptRequest={onAcceptRequest}
           showRejectView={showRejectView}
         />
       )}
       {action === 'reject' && (
-        <RejectRequest sender={data.senderUrl} onBack={showRequestView} onRejectRequest={onRejectRequest} />
+        <RejectRequest
+          sender={responseData.senderUrl}
+          onBack={showRequestView}
+          onRejectRequest={onRejectRequest}
+        />
       )}
     </React.Fragment>
   );

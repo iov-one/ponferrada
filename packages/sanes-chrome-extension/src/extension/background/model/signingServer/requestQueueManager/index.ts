@@ -73,17 +73,17 @@ export interface Request<
 > {
   readonly id: number;
   readonly reason: string;
-  readonly data: T;
+  readonly responseData: T;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
 
 export function isGetIdentitiesRequest(request: Request): request is Request<GetIdentitiesData> {
-  return isGetIdentitiesData(request.data);
+  return isGetIdentitiesData(request.responseData);
 }
 
 export function isSignAndPostRequest(request: Request): request is Request<SignAndPostData> {
-  return isSignAndPostData(request.data);
+  return isSignAndPostData(request.responseData);
 }
 
 export class RequestQueueManager {
@@ -130,7 +130,7 @@ export class RequestQueueManager {
     const initialSize = this.instance.length;
     for (let i = 0; i < initialSize; i++) {
       const req = this.instance[i];
-      if (req.data.senderUrl !== senderUrl) {
+      if (req.responseData.senderUrl !== senderUrl) {
         continue;
       }
 
@@ -140,7 +140,7 @@ export class RequestQueueManager {
     }
 
     // Note here we only get references
-    const reqToCancel = this.instance.filter(req => req.data.senderUrl === senderUrl);
+    const reqToCancel = this.instance.filter(req => req.responseData.senderUrl === senderUrl);
     reqToCancel.forEach(req => req.reject(false));
   }
 }

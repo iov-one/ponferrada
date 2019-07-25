@@ -8,7 +8,7 @@ export async function requestCallback<T>(
   senderWhitelist: SenderWhitelist,
   reason: string,
   type: 'getIdentities' | 'signAndPost',
-  data: GetIdentitiesData | SignAndPostData,
+  responseData: GetIdentitiesData | SignAndPostData,
   acceptResponse: T,
   rejectResponse: T,
 ): Promise<T> {
@@ -23,15 +23,15 @@ export async function requestCallback<T>(
     const reject = (permanent: boolean): void => {
       requestQueueManager.solved();
       if (permanent) {
-        senderWhitelist.block(data.senderUrl);
-        requestQueueManager.purge(data.senderUrl);
+        senderWhitelist.block(responseData.senderUrl);
+        requestQueueManager.purge(responseData.senderUrl);
       }
       updateExtensionBadge(requestQueueManager.requests().length);
       updateRequestProvider();
       resolve(rejectResponse);
     };
 
-    requestQueueManager.add({ reason, data, accept, reject });
+    requestQueueManager.add({ reason, responseData, accept, reject });
     updateExtensionBadge(requestQueueManager.requests().length);
     updateRequestProvider();
   });

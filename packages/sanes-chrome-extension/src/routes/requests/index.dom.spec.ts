@@ -14,7 +14,7 @@ describe('DOM > Feature > Requests', () => {
   const REQUEST_ONE: Request = {
     id: 1,
     reason: 'Reason 1',
-    data: { senderUrl: 'www.sender1.com', requestedIdentities: [] },
+    responseData: { senderUrl: 'www.sender1.com', requestedIdentities: [] },
     accept: jest.fn(),
     reject: jest.fn(),
   };
@@ -22,7 +22,7 @@ describe('DOM > Feature > Requests', () => {
   const REQUEST_TWO: Request = {
     id: 2,
     reason: 'Reason 2',
-    data: {
+    responseData: {
       senderUrl: 'www.sender2.com',
       tx: getCashTransaction(),
     },

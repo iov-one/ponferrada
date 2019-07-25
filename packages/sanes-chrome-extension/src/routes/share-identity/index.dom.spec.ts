@@ -20,7 +20,7 @@ describe('DOM > Feature > Share Identity', (): void => {
     {
       id: 1,
       reason: 'Test get Identities',
-      data: {
+      responseData: {
         senderUrl: 'http://finnex.com',
         requestedIdentities: [
           {

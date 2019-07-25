@@ -23,7 +23,7 @@ const sendRequests: ReadonlyArray<Request> = [
   {
     id: 1,
     reason: 'Test get Identities',
-    data: {
+    responseData: {
       senderUrl: 'http://finnex.com',
       tx: getCashTransaction(),
     },
@@ -92,7 +92,7 @@ describe('DOM > Feature > Username Registration Request', (): void => {
     {
       id: 1,
       reason: 'Test username registration',
-      data: {
+      responseData: {
         senderUrl: 'http://finnex.com',
         tx: getUsernameTransaction(),
       },

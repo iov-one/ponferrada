@@ -3,7 +3,7 @@ import { Request, RequestQueueManager } from './index';
 describe('RequestHandler', () => {
   const REQUEST_ONE: Omit<Request, 'id'> = {
     reason: 'Reason 1',
-    data: {
+    responseData: {
       senderUrl: 'Sender 1',
       requestedIdentities: [],
     },
@@ -13,7 +13,7 @@ describe('RequestHandler', () => {
 
   const REQUEST_TWO: Omit<Request, 'id'> = {
     reason: 'Reason 2',
-    data: {
+    responseData: {
       senderUrl: 'Sender 2',
       requestedIdentities: [],
     },
@@ -23,7 +23,7 @@ describe('RequestHandler', () => {
 
   const REQUEST_THREE: Omit<Request, 'id'> = {
     reason: 'Reason 3',
-    data: {
+    responseData: {
       senderUrl: 'Sender 3',
       requestedIdentities: [],
     },
