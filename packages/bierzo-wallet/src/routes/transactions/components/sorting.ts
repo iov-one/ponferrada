@@ -21,11 +21,7 @@ export const filterTxsBy = (
   orderBy: TxsOrder,
   order: SortOrder,
 ): ReadonlyArray<ProcessedTx> => {
-  const orderedTxs = txs.slice(0).sort((a: ProcessedTx | undefined, b: ProcessedTx | undefined) => {
-    if (!a || !b) {
-      return 0;
-    }
-
+  const orderedTxs = txs.slice(0).sort((a: ProcessedTx, b: ProcessedTx) => {
     if (orderBy === TX_DATE_COLUMN) {
       return (a.time < b.time ? -1 : a.time > b.time ? 1 : 0) * order;
     }
