@@ -21,13 +21,13 @@ export const filterTxsBy = (
   orderBy: TxsOrder,
   order: SortOrder,
 ): ReadonlyArray<ProcessedTx> => {
-  const orderedTxs = txs.slice(0).sort((a: ProcessedTx, b: ProcessedTx) => {
-    if (orderBy === TX_DATE_COLUMN) {
-      return (a.time < b.time ? -1 : a.time > b.time ? 1 : 0) * order;
-    }
+  const orderedTxs = txs.slice(0); // make a mutable copy
 
-    return 0;
-  });
+  if (orderBy === TX_DATE_COLUMN) {
+    orderedTxs.sort((a: ProcessedTx, b: ProcessedTx) => {
+      return (a.time < b.time ? -1 : a.time > b.time ? 1 : 0) * order;
+    });
+  }
 
   const pageStartIdx = pageNumber * rowsPerPage;
   const pageEndIdx = Math.min(txs.length, pageStartIdx + rowsPerPage);
