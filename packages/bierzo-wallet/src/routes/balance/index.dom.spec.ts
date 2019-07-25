@@ -2,13 +2,15 @@ import { TokenTicker } from '@iov/bcp';
 import TestUtils from 'react-dom/test-utils';
 import { DeepPartial, Store } from 'redux';
 
+import { TRANSACTIONS_TEXT } from '../../components/Header/components/LinksMenu';
 import { aNewStore } from '../../store';
 import { BalanceState } from '../../store/balances';
 import { RootState } from '../../store/reducers';
 import { UsernamesState } from '../../store/usernames';
 import { expectRoute } from '../../utils/test/dom';
+import { whenOnNavigatedToRoute } from '../../utils/test/navigation';
 import { findRenderedDOMComponentWithId } from '../../utils/test/reactElemFinder';
-import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
+import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER, TRANSACTIONS_ROUTE } from '../paths';
 import { getIovUsername, getNoFundsMessage } from './test/operateBalances';
 import { travelToBalance } from './test/travelToBalance';
 
@@ -64,6 +66,18 @@ describe('The /balance route', () => {
       TestUtils.Simulate.click(paymentCard);
       expectRoute(PAYMENT_ROUTE);
     });
+
+    it('redirects to the /transactions route when clicked', async () => {
+      const transactionsCard = (await findRenderedDOMComponentWithId(
+        balanceDom,
+        TRANSACTIONS_TEXT,
+      )) as Element;
+
+      expect(transactionsCard.textContent).toBe(TRANSACTIONS_TEXT);
+
+      TestUtils.Simulate.click(transactionsCard);
+      await whenOnNavigatedToRoute(TRANSACTIONS_ROUTE);
+    }, 15000);
 
     it('redirects to the /receive-from-iov route when clicked', async () => {
       const receiveCard = (await findRenderedDOMComponentWithId(

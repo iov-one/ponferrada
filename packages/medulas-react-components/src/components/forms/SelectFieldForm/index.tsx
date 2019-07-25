@@ -84,8 +84,7 @@ const SelectFieldForm = ({
         onChange(initial);
       }
     } catch (err) {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input]);
+  }, [initial, input, onChange, value]);
   const inputClasses = { root: classes.root, input: classes.input };
 
   const onAction = (item: Item): (() => void) => () => {
