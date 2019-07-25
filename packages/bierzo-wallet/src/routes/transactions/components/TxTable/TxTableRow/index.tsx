@@ -17,14 +17,6 @@ import { DEFAULT_ADDRESS, getAddressPrefix, getTypeIcon, TxTableRowProps } from 
 import TxDetails from '../TxDetails';
 
 const useStyles = makeStyles({
-  row: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  rowContent: {
-    display: 'flex',
-    alignItems: 'center',
-  },
   cell: {
     flex: '1 0 50px',
   },
@@ -40,9 +32,9 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
   };
 
   return (
-    <Block paddingLeft={3} paddingRight={3} className={classes.row}>
+    <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
       <Block margin={2} />
-      <Block className={classes.rowContent}>
+      <Block display="flex" alignItems="center">
         <CircleImage
           icon={getTypeIcon(tx)}
           circleColor={theme.palette.background.default}

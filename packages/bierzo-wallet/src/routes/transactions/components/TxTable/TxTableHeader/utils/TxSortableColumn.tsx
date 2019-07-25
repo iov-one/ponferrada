@@ -13,17 +13,11 @@ import { calculateOppositeOrder, ORDER_ASC, ORDER_DESC, SortingStateProps } from
 
 const useStyles = makeStyles({
   header: {
-    display: 'flex',
-    alignItems: 'center',
-    flex: '1 0 10px',
+    flexBasis: '10px',
     cursor: 'pointer',
   },
   alignRight: {
     justifyContent: 'flex-end',
-  },
-  sorting: {
-    display: 'flex',
-    flexDirection: 'column',
   },
 });
 
@@ -38,8 +32,15 @@ const TxSortableColumn = ({ name, order, orderBy, alignRight, onSort }: Props): 
   const sortOrder = orderBy === name ? order : undefined;
 
   return (
-    <Block className={headerClasses} onClick={onSort(name, calculateOppositeOrder(order))}>
-      <Block className={classes.sorting} padding={1}>
+    <Block
+      display="flex"
+      alignItems="center"
+      flexGrow={1}
+      flexShrink={0}
+      className={headerClasses}
+      onClick={onSort(name, calculateOppositeOrder(order))}
+    >
+      <Block display="flex" flexDirection="column" padding={1}>
         <Img src={sortOrder === ORDER_ASC ? sortUpActive : sortUp} alt="Descending sort" />
         <Block margin={0.5} />
         <Img src={sortOrder === ORDER_DESC ? sortDownActive : sortDown} alt="Ascending sort" />

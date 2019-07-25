@@ -6,9 +6,7 @@ import * as React from 'react';
 
 const useStyles = makeStyles({
   header: {
-    display: 'flex',
-    alignItems: 'center',
-    flex: '1 0 10px',
+    flexBasis: '10px',
   },
   alignRight: {
     justifyContent: 'flex-end',
@@ -25,7 +23,7 @@ const TxColumn = ({ name, alignRight }: Props): JSX.Element => {
   const headerClasses = classNames(classes.header, { [classes.alignRight]: alignRight });
 
   return (
-    <Block className={headerClasses}>
+    <Block display="flex" alignItems="center" flexGrow={1} flexShrink={0} className={headerClasses}>
       <Typography variant="subtitle2" weight="semibold">
         {name}
       </Typography>

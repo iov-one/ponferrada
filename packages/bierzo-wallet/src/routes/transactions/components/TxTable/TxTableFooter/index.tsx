@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/core';
 import Block from 'medulas-react-components/lib/components/Block';
 import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
 import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
@@ -8,13 +7,6 @@ import * as React from 'react';
 
 import arrowLeft from '../../../assets/arrowLeft.svg';
 import arrowRight from '../../../assets/arrowRight.svg';
-
-const useStyles = makeStyles({
-  footer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
 
 interface Props {
   readonly onChangeRows: (item: Item) => void;
@@ -27,8 +19,6 @@ const rowsSelectorData: ReadonlyArray<Item> = [{ name: '5' }, { name: '10' }, { 
 const onSubmit = (): void => {};
 
 const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Element => {
-  const classes = useStyles();
-
   const { handleSubmit, form } = useForm({
     onSubmit,
   });
@@ -36,7 +26,7 @@ const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Ele
   return (
     <React.Fragment>
       <Block margin={1} />
-      <Block paddingLeft={3} paddingRight={3} className={classes.footer}>
+      <Block display="flex" alignItems="center" paddingLeft={3} paddingRight={3}>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular">
           Rows per page

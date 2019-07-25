@@ -7,11 +7,6 @@ import { ProcessedTx } from '../../../../../store/notifications';
 import { getAddressPrefix } from '../rowTxBuilder';
 
 const useStyles = makeStyles({
-  details: {
-    paddingLeft: 56,
-    display: 'flex',
-    flexDirection: 'column',
-  },
   sectionName: {
     overflowWrap: 'break-word',
   },
@@ -25,7 +20,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Block className={classes.details}>
+    <Block paddingLeft="56px" display="flex" flexDirection="column">
       <Block margin={2} />
       <Block display="flex">
         <Block width="50%">

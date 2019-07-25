@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: `${theme.spacing(4)}px`,
     padding: '0 !important',
   },
-  text: {
-    padding: `0px ${theme.spacing(1.5)}px`,
-  },
   secondary: {
     backgroundColor: 'white',
     color: theme.palette.text.primary,
@@ -34,10 +31,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   panel: {
-    height: 64,
-    padding: `${theme.spacing(3)}px ${theme.spacing(CSV_PADDING)}px`,
-    display: 'flex',
-    alignItems: 'center',
     backgroundColor: 'white',
   },
 }));
@@ -58,7 +51,16 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
   const diameter = `${theme.spacing(4)}px`;
 
   return (
-    <Block className={classes.panel}>
+    <Block
+      height={64}
+      display="flex"
+      alignItems="center"
+      paddingTop={3}
+      paddingBottom={3}
+      paddingLeft={CSV_PADDING}
+      paddingRight={CSV_PADDING}
+      className={classes.panel}
+    >
       <Fab
         variant="extended"
         size="small"
@@ -75,9 +77,11 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
           width={16}
           height={16}
         />
-        <Typography variant="subtitle2" weight="regular" className={classes.text}>
-          Export as .CSV
-        </Typography>
+        <Block paddingLeft={1.5} paddingRight={1.5}>
+          <Typography variant="subtitle2" weight="regular">
+            Export as .CSV
+          </Typography>
+        </Block>
       </Fab>
     </Block>
   );

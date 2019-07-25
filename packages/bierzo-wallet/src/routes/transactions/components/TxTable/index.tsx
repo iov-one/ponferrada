@@ -13,23 +13,11 @@ import TxTableRow from './TxTableRow';
 
 const useStyles = makeStyles((theme: Theme) => ({
   inner: {
-    display: 'flex',
-    flex: '1 0 auto',
-    flexDirection: 'column',
-  },
-  outer: {
-    display: 'flex',
+    flexBasis: 'auto',
   },
   panel: {
-    display: 'flex',
-    flexDirection: 'column',
     backgroundColor: 'white',
-    borderRadius: 4,
     boxShadow: `0 0 20px 0 ${getShadowColor()}`,
-  },
-  column: {
-    display: 'flex',
-    flexDirection: 'column',
   },
 }));
 
@@ -46,13 +34,13 @@ function TxTable({
   const theme = useTheme<Theme>();
 
   return (
-    <Block className={classes.outer}>
+    <Block display="flex">
       <Block width={theme.spacing(CSV_PADDING)} flexShrink={1} />
-      <Block className={classes.inner}>
+      <Block display="flex" flexGrow={1} flexShrink={0} flexDirection="column" className={classes.inner}>
         <Block margin={3} />
-        <Block className={classes.panel}>
+        <Block display="flex" flexDirection="column" borderRadius="4px" className={classes.panel}>
           <TxTableHeader onSort={onSort} orderBy={orderBy} order={order} />
-          <Block className={classes.column}>
+          <Block display="flex" flexDirection="column">
             {txs.map((tx: ProcessedTx) => (
               <TxTableRow key={tx.id} tx={tx} />
             ))}
