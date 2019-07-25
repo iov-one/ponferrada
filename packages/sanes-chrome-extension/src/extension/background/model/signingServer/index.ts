@@ -4,7 +4,7 @@ import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/
 
 import { generateErrorResponse } from '../../errorResponseGenerator';
 import { isSupportedTransaction } from '../persona';
-import { getConfigurationFile } from '../persona/config';
+import { getChainName } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
   GetIdentitiesData,
@@ -31,17 +31,16 @@ export default class SigningServer {
       throw new Error('Unexpected type of data in meta field');
     }
     const { senderUrl } = meta;
-    const chainNames = (await getConfigurationFile()).names;
 
-    const requestedIdentities = matchingIdentities.map(
-      (matchedIdentity): UiIdentity => {
-        const chainName = chainNames[matchedIdentity.chainId];
-
-        return {
-          chainName: chainName,
-          address: signer.identityToAddress(matchedIdentity),
-        };
-      },
+    const requestedIdentities = await Promise.all(
+      matchingIdentities.map(
+        async (matchedIdentity): Promise<UiIdentity> => {
+          return {
+            chainName: await getChainName(matchedIdentity.chainId),
+            address: signer.identityToAddress(matchedIdentity),
+          };
+        },
+      ),
     );
 
     const data: GetIdentitiesData = {
