@@ -40,7 +40,7 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
   };
 
   return (
-    <Block padding={3} className={classes.row}>
+    <Block paddingLeft={3} paddingRight={3} className={classes.row}>
       <Block margin={2} />
       <Block className={classes.rowContent}>
         <CircleImage
@@ -52,7 +52,7 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
           width={24}
           height={24}
         />
-        <Block className={classes.cell} padding={2}>
+        <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
           <Typography variant="subtitle2" weight="semibold" gutterBottom>
             {getAddressPrefix(tx)} {DEFAULT_ADDRESS}
           </Typography>
@@ -68,7 +68,7 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
         <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
           {amountToNumber(tx.amount)} {tx.amount.tokenTicker}
         </Typography>
-        <Block padding="xs" />
+        <Block padding={0.5} />
         <Img
           src={isOpen ? dropdownArrowClose : dropdownArrow}
           width={16}
@@ -78,7 +78,7 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
         />
       </Block>
       {isOpen && <TxDetails tx={tx} />}
-      <Block margin="md" />
+      <Block margin={2} />
       <Hairline />
     </Block>
   );
