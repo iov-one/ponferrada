@@ -4,10 +4,10 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "node": "wss://bns.antnet.iov.one/"
+        "node": "wss://bns.kissnet.iov.one/"
       },
       "faucetSpec": {
-        "uri": "https://bns-faucet.antnet.iov.one",
+        "uri": "https://bns-faucet.kissnet.iov.one",
         "tokens": ["IOV"]
       }
     },
