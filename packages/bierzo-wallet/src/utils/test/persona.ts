@@ -32,44 +32,50 @@ export const submitExtensionSignupForm = async (
   await whenOnNavigatedToE2eRoute(page, '/account');
 };
 
-export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
-  await page.bringToFront();
+export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> {
+  await extensionPage.bringToFront();
 
   //click on drawer
-  await page.click('[aria-label="Open drawer"]');
+  await extensionPage.click('[aria-label="Open drawer"]');
   await sleep(1000);
 
   // click on Requests
-  await page.click('#account-drawer > nav > div:nth-of-type(2)');
+  await extensionPage.click('#account-drawer > nav > div:nth-of-type(2)');
   await sleep(500);
 
   // click on first request
-  await page.click('ul > li > div');
+  await extensionPage.click('ul > li > div');
   await sleep(500);
 
   // accept it
-  await page.click('button');
+  await extensionPage.click('button');
+
+  //go back to accounts
+  await extensionPage.click('[aria-label="Go back"]');
 }
 
-export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
-  await page.bringToFront();
+export async function rejectEnqueuedRequest(extensionPage: Page): Promise<void> {
+  await extensionPage.bringToFront();
 
   //click on drawer
-  await page.click('[aria-label="Open drawer"]');
+  await extensionPage.click('[aria-label="Open drawer"]');
   await sleep(1000);
 
   // click on Requests
-  await page.click('#account-drawer > nav > div:nth-of-type(2)');
+  await extensionPage.click('#account-drawer > nav > div:nth-of-type(2)');
   await sleep(500);
 
   // click on first request
-  await page.click('ul > li > div');
+  await extensionPage.click('ul > li > div');
   await sleep(500);
 
   // reject it
-  await page.click('button:nth-of-type(2)');
+  await extensionPage.click('button:nth-of-type(2)');
   await sleep(500);
 
   // confirm rejection
-  await page.click('button');
+  await extensionPage.click('button');
+
+  //go back to accounts
+  await extensionPage.click('[aria-label="Go back"]');
 }

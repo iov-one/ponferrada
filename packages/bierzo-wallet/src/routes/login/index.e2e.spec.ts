@@ -8,12 +8,13 @@ import {
   createExtensionPage,
   createPage,
   getBackgroundPage,
+  getToastMessage,
   launchBrowser,
 } from '../../utils/test/e2e';
 import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
 import {
-  acceptGetIdentitiesRequest,
-  rejectGetIdentitiesRequest,
+  acceptEnqueuedRequest,
+  rejectEnqueuedRequest,
   submitExtensionSignupForm,
 } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
@@ -74,7 +75,7 @@ withChainsDescribe('E2E > Login route', (): void => {
       //Click on login button
       await page.click('button');
       await sleep(1000);
-      await acceptGetIdentitiesRequest(extensionPage);
+      await acceptEnqueuedRequest(extensionPage);
       await page.bringToFront();
       await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
     }, 45000);
@@ -86,7 +87,7 @@ withChainsDescribe('E2E > Login route', (): void => {
       //Click on login button
       await page.click('button');
       await sleep(1000);
-      await rejectGetIdentitiesRequest(extensionPage);
+      await rejectEnqueuedRequest(extensionPage);
       await page.bringToFront();
       await checkLoginMessage(page);
     }, 45000);
@@ -113,14 +114,10 @@ withChainsDescribe('E2E > Login route', (): void => {
     await page.click('button');
     await sleep(500);
 
-    const element = await page.$('h6');
-    if (element === null) {
-      throw new Error();
-    }
-    const text = await (await element.getProperty('textContent')).jsonValue();
-    expect(text).toBe(INSTALL_EXTENSION_MSG);
-
+    const toastMessage = await getToastMessage(page);
+    expect(toastMessage).toBe(INSTALL_EXTENSION_MSG);
     await closeToast(page);
+
     await closeBrowser(browser);
   }, 45000);
 });
