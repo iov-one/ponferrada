@@ -1,6 +1,6 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 
-import { extensionId } from '../../communication';
+import { getConfig } from '../../config';
 
 export function launchBrowser(slowMo: number = 0, install: boolean = true): Promise<Browser> {
   const CRX_PATH = require('path').join(__dirname, '../../../../sanes-chrome-extension/build');
@@ -26,8 +26,10 @@ export async function createPage(browser: Browser): Promise<Page> {
 }
 
 export async function createExtensionPage(browser: Browser): Promise<Page> {
+  const config = getConfig();
+
   const page: Page = await browser.newPage();
-  await page.goto('chrome-extension://dafekhlcpidfaopcimocbcpciholgkkb/index.html', {
+  await page.goto(`chrome-extension://${config.extensionId}/index.html`, {
     waitUntil: 'networkidle2',
   });
   page.on('console', msg => console.log('EXTENSION PAGE LOG:', msg.text()));
@@ -37,9 +39,11 @@ export async function createExtensionPage(browser: Browser): Promise<Page> {
 }
 
 export async function getBackgroundPage(browser: Browser): Promise<Page> {
+  const config = getConfig();
+
   const targets = await browser.targets();
   const backgroundPageTarget = targets.find(
-    target => target.type() === 'background_page' && target.url().includes(extensionId),
+    target => target.type() === 'background_page' && target.url().includes(config.extensionId),
   );
   if (!backgroundPageTarget) {
     throw new Error('Unable to find extension background page');

@@ -12,7 +12,7 @@ import {
 import { TransactionEncoder } from '@iov/encoding';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 
-import { extensionId } from '..';
+import { getConfig } from '../../config';
 import { getCodecForChainId } from '../../logic/codec';
 import { getConnectionForChainId } from '../../logic/connection';
 
@@ -60,10 +60,11 @@ export const sendSignAndPostRequest = async (
   memo: string | undefined,
 ): Promise<TransactionId | null> => {
   const request = await generateSignAndPostRequest(chainId, creator, recipient, amount, memo);
-  console.log(request);
+
+  const config = getConfig();
 
   return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(extensionId, request, response => {
+    chrome.runtime.sendMessage(config.extensionId, request, response => {
       try {
         const parsedResponse = parseJsonRpcResponse2(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
