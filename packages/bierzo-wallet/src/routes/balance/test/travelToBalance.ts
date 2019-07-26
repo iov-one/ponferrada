@@ -6,7 +6,7 @@ import { history } from '../../../routes';
 import { createDom } from '../../../utils/test/dom';
 import { getBackgroundPage } from '../../../utils/test/e2e';
 import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import { acceptGetIdentitiesRequest, submitExtensionSignupForm } from '../../../utils/test/persona';
+import { acceptEnqueuedRequest, submitExtensionSignupForm } from '../../../utils/test/persona';
 import { sleep } from '../../../utils/timer';
 import { BALANCE_ROUTE } from '../../paths';
 
@@ -27,7 +27,7 @@ export async function travelToBalanceE2E(browser: Browser, page: Page, extension
   //Click on login button
   await page.click('button');
   await sleep(1000);
-  await acceptGetIdentitiesRequest(extensionPage);
+  await acceptEnqueuedRequest(extensionPage);
   await page.bringToFront();
   await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
 }
