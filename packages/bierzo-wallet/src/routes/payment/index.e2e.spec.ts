@@ -2,10 +2,19 @@ import express, { Request, Response } from 'express';
 import { Server } from 'http';
 import { Browser, Page } from 'puppeteer';
 
-import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
+import {
+  closeBrowser,
+  closeToast,
+  createExtensionPage,
+  createPage,
+  getToastMessage,
+  launchBrowser,
+} from '../../utils/test/e2e';
+import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
+import { acceptEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { QUANTITY_FIELD } from './components/CurrencyToSend';
-import { ADDRESS_FIELD } from './components/ReceiverAddress';
+import { BALANCE_ROUTE } from '../paths';
+import { fillPaymentForm } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
 withChainsDescribe('E2E > Payment route', (): void => {
@@ -43,9 +52,20 @@ withChainsDescribe('E2E > Payment route', (): void => {
     server.close();
   });
 
-  fit('should fill payment form and make payment', async (): Promise<void> => {
-    await page.type(`input[name="${QUANTITY_FIELD}"]`, '1');
-    await page.type(`input[name="${ADDRESS_FIELD}`, 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
-    await page.click('button:nth-of-type(1)');
-  }, 45000);
+  it('should make payment and redirected when enqueued request is accepted', async (): Promise<void> => {
+    await fillPaymentForm(page);
+    await acceptEnqueuedRequest(extensionPage);
+    await page.bringToFront();
+    await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
+  }, 25000);
+
+  it('should show toast message in case if payment will be rejected', async (): Promise<void> => {
+    await fillPaymentForm(page);
+    await rejectEnqueuedRequest(extensionPage);
+    await page.bringToFront();
+
+    const toastMessage = await getToastMessage(page);
+    expect(toastMessage).toBe('Request rejected');
+    await closeToast(page);
+  }, 25000);
 });
