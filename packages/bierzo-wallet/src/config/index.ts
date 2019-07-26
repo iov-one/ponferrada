@@ -5,6 +5,7 @@ import productionConfig from './production.json';
 import stagingConfig from './staging.json';
 
 export interface Config {
+  readonly extensionId: string;
   readonly chains: ReadonlyArray<ChainConfig>;
 }
 
