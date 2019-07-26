@@ -20,3 +20,12 @@ export async function fillPaymentForm(page: Page): Promise<void> {
   await page.type(`input[name="${ADDRESS_FIELD}`, 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
   await page.click('button[type=submit]');
 }
+
+export async function getPaymentRequestData(page: Page, dataIndex: number): Promise<string> {
+  const element = await page.$(`li:nth-of-type(${dataIndex}) p`);
+  if (element === null) {
+    throw new Error(`LI element with index: ${dataIndex} not found.`);
+  }
+
+  return await (await element.getProperty('textContent')).jsonValue();
+}

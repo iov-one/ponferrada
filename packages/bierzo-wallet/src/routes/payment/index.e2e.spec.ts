@@ -11,10 +11,11 @@ import {
   launchBrowser,
 } from '../../utils/test/e2e';
 import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
-import { acceptEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
+import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { sleep } from '../../utils/timer';
 import { BALANCE_ROUTE } from '../paths';
-import { fillPaymentForm } from './test/operatePayment';
+import { fillPaymentForm, getPaymentRequestData } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
 withChainsDescribe('E2E > Payment route', (): void => {
@@ -57,6 +58,20 @@ withChainsDescribe('E2E > Payment route', (): void => {
     await acceptEnqueuedRequest(extensionPage);
     await page.bringToFront();
     await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
+  }, 25000);
+
+  it('should have proper information about payment request', async (): Promise<void> => {
+    await fillPaymentForm(page);
+    await openEnqueuedRequest(extensionPage);
+    await sleep(1000);
+
+    const beneficiary = await getPaymentRequestData(extensionPage, 2);
+    const amount = await getPaymentRequestData(extensionPage, 3);
+    const fee = await getPaymentRequestData(extensionPage, 5);
+
+    expect(beneficiary).toBe('tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
+    expect(amount).toBe('1 BASH');
+    expect(fee).toBe('0.01 CASH');
   }, 25000);
 
   it('should show toast message in case if payment will be rejected', async (): Promise<void> => {
