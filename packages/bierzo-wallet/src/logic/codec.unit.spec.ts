@@ -1,4 +1,4 @@
-import { ChainId, TxCodec } from '@iov/bcp';
+import { ChainId } from '@iov/bcp';
 import { EthereumCodec } from '@iov/ethereum';
 
 import { withChainsDescribe } from '../utils/test/testExecutor';
