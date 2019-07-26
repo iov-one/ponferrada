@@ -12,7 +12,7 @@ import PageMenu from '../../components/PageMenu';
 import { isIov, lookupRecipientAddressByName } from '../../logic/account';
 import { RootState } from '../../store/reducers';
 import { padAmount, stringToAmount } from '../../utils/balances';
-import { PAYMENT_ROUTE } from '../paths';
+import { BALANCE_ROUTE, PAYMENT_ROUTE } from '../paths';
 import Layout from './components';
 import { CURRENCY_FIELD, QUANTITY_FIELD } from './components/CurrencyToSend';
 import { ADDRESS_FIELD } from './components/ReceiverAddress';
@@ -70,7 +70,7 @@ const Payment = (): JSX.Element => {
       if (transactionId === null) {
         toast.show('Request rejected', ToastVariant.ERROR);
       } else {
-        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+        history.push(BALANCE_ROUTE);
       }
     } catch (error) {
       console.error(error);
