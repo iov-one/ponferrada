@@ -3,7 +3,7 @@ import { Identity, isIdentity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
 
-import { extensionId } from '..';
+import { getConfig } from '../../config';
 
 export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
   jsonrpc: '2.0',
@@ -37,8 +37,10 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
     return undefined;
   }
 
+  const config = getConfig();
+
   return new Promise(resolve => {
-    chrome.runtime.sendMessage(extensionId, request, response => {
+    chrome.runtime.sendMessage(config.extensionId, request, response => {
       if (response === undefined) {
         resolve(undefined);
         return;
