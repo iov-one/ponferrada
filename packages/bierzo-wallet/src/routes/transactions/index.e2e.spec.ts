@@ -50,7 +50,7 @@ withChainsDescribe('E2E > Transactions route', (): void => {
     await whenOnNavigatedToE2eRoute(page, TRANSACTIONS_ROUTE);
 
     // Checking number of rows
-    const rows = await page.$$('.jss263'); //.makeStyles-row-263
+    const rows = await page.$$('img[alt="Transaction type"]');
     // TODO update number to show ETH one when #412 is done
     expect(rows.length).toBe(2);
   }, 45000);
