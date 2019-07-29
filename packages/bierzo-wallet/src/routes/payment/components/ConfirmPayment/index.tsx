@@ -11,6 +11,8 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
 import React from 'react';
 
+export const PAYMENT_CONFIRMATION_VIEW_ID = 'payment-confirmation-view-id';
+
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: '#ffe152',
@@ -39,6 +41,7 @@ const ConfirmPayment = ({
 
   return (
     <Block
+      id={PAYMENT_CONFIRMATION_VIEW_ID}
       marginTop={4}
       display="flex"
       alignContent="center"
