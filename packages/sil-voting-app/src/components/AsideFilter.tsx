@@ -1,9 +1,11 @@
 import { Drawer, List, ListItem, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
+import Image from 'medulas-react-components/lib/components/Image';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import React, { useState } from 'react';
 
+import addIcon from '../assets/add.svg';
 import { history } from '../routes';
 import { CREATE_PROPOSAL_ROUTE } from '../routes/paths';
 
@@ -20,10 +22,18 @@ const useStyles = makeStyles({
   activeFilter: {
     backgroundColor: '#d8d8d8',
   },
+  addProposal: {
+    cursor: 'pointer',
+  },
+  addIcon: {
+    height: '26px',
+  },
 });
 
-const handleClick = (): void => {
-  history.push(CREATE_PROPOSAL_ROUTE);
+const addNewProposal = (): void => {
+  if (history.location.pathname !== CREATE_PROPOSAL_ROUTE) {
+    history.push(CREATE_PROPOSAL_ROUTE);
+  }
 };
 
 const AsideFilter = (): JSX.Element => {
@@ -51,7 +61,20 @@ const AsideFilter = (): JSX.Element => {
           ))}
         </List>
       </Drawer>
-      <Typography onClick={handleClick}>+ Add New Proposal</Typography>
+
+      <Block
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        marginTop={1}
+        className={classes.addProposal}
+        onClick={addNewProposal}
+      >
+        <Image alt="Add Proposal" src={addIcon} className={classes.addIcon} />
+        <Block marginLeft={1}>
+          <Typography>Add New Proposal</Typography>
+        </Block>
+      </Block>
     </Block>
   );
 };
