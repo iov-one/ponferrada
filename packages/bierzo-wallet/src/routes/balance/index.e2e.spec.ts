@@ -4,12 +4,7 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import {
-  getFirstCurrencyBalanceE2E,
-  getSecondCurrencyBalanceE2E,
-  getThirdCurrencyBalanceE2E,
-  getUsernameE2E,
-} from './test/operateBalances';
+import { getBalanceTextAtIndex, getUsernameE2E } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
 withChainsDescribe('E2E > Balance route', () => {
@@ -46,13 +41,13 @@ withChainsDescribe('E2E > Balance route', () => {
   });
 
   it('should contain balances', async () => {
-    const firstBalance = await getFirstCurrencyBalanceE2E(await page.$$('h6'));
-    const secondBalance = await getSecondCurrencyBalanceE2E(await page.$$('h6'));
-    const thirdBalance = await getThirdCurrencyBalanceE2E(await page.$$('h6'));
+    const balances = [
+      await getBalanceTextAtIndex(await page.$$('h6'), 0),
+      await getBalanceTextAtIndex(await page.$$('h6'), 1),
+      await getBalanceTextAtIndex(await page.$$('h6'), 2),
+    ];
 
-    expect(firstBalance).toBe('10 BASH');
-    expect(secondBalance).toBe('10 CASH');
-    expect(thirdBalance).toBe('10 ETH');
+    expect(balances).toEqual(['10 BASH', '10 CASH', '10 ETH']);
   }, 45000);
 
   it('should contain message to get username', async () => {
