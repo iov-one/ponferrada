@@ -12,7 +12,7 @@ import {
 } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
-withChainsDescribe('E2E > Balance route', (): void => {
+withChainsDescribe('E2E > Balance route', () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -30,24 +30,22 @@ withChainsDescribe('E2E > Balance route', (): void => {
     server = app.listen(9000);
   });
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToBalanceE2E(browser, page, extensionPage);
   }, 45000);
 
-  afterEach(
-    async (): Promise<void> => {
-      await closeBrowser(browser);
-    },
-  );
+  afterEach(async () => {
+    await closeBrowser(browser);
+  });
 
   afterAll(() => {
     server.close();
   });
 
-  it('should contain balances', async (): Promise<void> => {
+  it('should contain balances', async () => {
     const firstBalance = await getFirstCurrencyBalanceE2E(await page.$$('h6'));
     const secondBalance = await getSecondCurrencyBalanceE2E(await page.$$('h6'));
     const thirdBalance = await getThirdCurrencyBalanceE2E(await page.$$('h6'));
@@ -57,7 +55,7 @@ withChainsDescribe('E2E > Balance route', (): void => {
     expect(thirdBalance).toBe('10 ETH');
   }, 45000);
 
-  it('should contain message to get username', async (): Promise<void> => {
+  it('should contain message to get username', async () => {
     const username = await getUsernameE2E(await page.$$('h5'));
 
     expect(username).toBe('No human readable address registered.');
