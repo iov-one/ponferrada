@@ -12,7 +12,7 @@ import PageMenu from '../../components/PageMenu';
 import { isIov, lookupRecipientAddressByName } from '../../logic/account';
 import { RootState } from '../../store/reducers';
 import { padAmount, stringToAmount } from '../../utils/balances';
-import { BALANCE_ROUTE, PAYMENT_ROUTE } from '../paths';
+import { PAYMENT_ROUTE } from '../paths';
 import Layout from './components';
 import { CURRENCY_FIELD, QUANTITY_FIELD } from './components/CurrencyToSend';
 import { ADDRESS_FIELD } from './components/ReceiverAddress';

@@ -10,11 +10,9 @@ import {
   getToastMessage,
   launchBrowser,
 } from '../../utils/test/e2e';
-import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
-import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
+import { openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
-import { BALANCE_ROUTE } from '../paths';
 import { fillPaymentForm, getPaymentRequestData } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
