@@ -19,14 +19,10 @@ function getIdFrom(location: Location): number | undefined {
   return location.state[REQUEST_FIELD];
 }
 
-export function checkRequest(
-  request: Request | undefined,
-  location: Location,
-  toast: ToastContextInterface,
-): void {
+export function checkRequest(request: Request, location: Location, toast: ToastContextInterface): void {
   const expectedId = getIdFrom(location);
 
-  if (!request || typeof expectedId === undefined || expectedId !== request.id) {
+  if (typeof expectedId === undefined || expectedId !== request.id) {
     toast.show('Error: Request not identified', ToastVariant.ERROR);
     history.push(REQUEST_ROUTE);
   }

@@ -15,9 +15,10 @@ const ShareIdentity = ({ location }: RouteComponentProps): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const requestContext = React.useContext(RequestContext);
 
-  const req = requestContext.firstRequest;
-  checkRequest(req, location, toast);
-  const { senderUrl, responseData, accept, reject } = req!; // eslint-disable-line
+  const firstRequest = requestContext.requests.find(() => true);
+  if (!firstRequest) throw new Error('Did not find an authorization request');
+  checkRequest(firstRequest, location, toast);
+  const { senderUrl, responseData, accept, reject } = firstRequest;
 
   if (!isGetIdentitiesResponseData(responseData)) {
     throw new Error('Received request with a wrong identities data');
