@@ -13,7 +13,7 @@ interface Props {
 
 const DescriptionField = ({ form }: Props): JSX.Element => {
   return (
-    <Block>
+    <Block marginTop={2}>
       <Typography>{DESCRIPTION_FIELD}</Typography>
       <TextFieldForm
         name={DESCRIPTION_FIELD}

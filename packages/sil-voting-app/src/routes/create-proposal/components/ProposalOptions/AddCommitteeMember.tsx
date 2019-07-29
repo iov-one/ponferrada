@@ -10,7 +10,7 @@ interface Props {
 
 const AddCommitteeMember = ({ form }: Props): JSX.Element => {
   return (
-    <Block width="100%" display="flex" alignItems="center" marginTop={2} marginBottom={2}>
+    <Block width="100%" display="flex" alignItems="center" marginTop={2}>
       <Typography>Custom Field for AddCommitteeMember </Typography>
       <TextFieldForm
         name="AddCommitteeMember"

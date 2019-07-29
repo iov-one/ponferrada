@@ -24,7 +24,7 @@ const ProposalTypeField = ({ form, formOptions, proposalType, handleChange }: Pr
   });
 
   return (
-    <Block>
+    <Block marginTop={2}>
       <Typography>{PROPOSAL_TYPE_FIELD}</Typography>
       <SelectFieldForm
         fieldName={PROPOSAL_TYPE_FIELD}

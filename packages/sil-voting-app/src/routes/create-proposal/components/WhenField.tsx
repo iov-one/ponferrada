@@ -19,8 +19,24 @@ const WhenField = ({ form }: Props): JSX.Element => {
     <Block>
       <Typography>{WHEN_FIELD}</Typography>
       <Block display="flex">
-        <TextFieldForm name={DATE_FIELD} form={form} placeholder={DATE_PLACEHOLDER} fullWidth margin="none" />
-        <TextFieldForm name={TIME_FIELD} form={form} placeholder={TIME_PLACEHOLDER} fullWidth margin="none" />
+        <Block flexGrow={1}>
+          <TextFieldForm
+            name={DATE_FIELD}
+            form={form}
+            placeholder={DATE_PLACEHOLDER}
+            fullWidth
+            margin="none"
+          />
+        </Block>
+        <Block flexGrow={1} marginLeft={2}>
+          <TextFieldForm
+            name={TIME_FIELD}
+            form={form}
+            placeholder={TIME_PLACEHOLDER}
+            fullWidth
+            margin="none"
+          />
+        </Block>
       </Block>
     </Block>
   );

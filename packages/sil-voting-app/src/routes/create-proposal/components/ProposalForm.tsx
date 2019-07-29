@@ -47,14 +47,14 @@ const ProposalForm = (): JSX.Element => {
           proposalType={proposalType}
           handleChange={handleChange}
         />
-        <Block display="flex" justifyContent="space-between">
+        <Block display="flex" justifyContent="space-between" marginTop={2}>
           <TitleField form={form} />
           <WhenField form={form} />
         </Block>
         <FormOptions proposalType={proposalType} formOptions={formOptions} form={form} />
         <DescriptionField form={form} />
         <ParticipationData />
-        <Block display="flex" justifyContent="flex-end">
+        <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting}>
             Publish
           </Button>
