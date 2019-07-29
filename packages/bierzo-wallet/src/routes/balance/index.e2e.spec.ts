@@ -4,15 +4,10 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import {
-  getFirstCurrencyBalanceE2E,
-  getSecondCurrencyBalanceE2E,
-  getThirdCurrencyBalanceE2E,
-  getUsernameE2E,
-} from './test/operateBalances';
+import { getBalanceTextAtIndex, getUsernameE2E } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
-withChainsDescribe('E2E > Balance route', (): void => {
+withChainsDescribe('E2E > Balance route', () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -30,34 +25,32 @@ withChainsDescribe('E2E > Balance route', (): void => {
     server = app.listen(9000);
   });
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToBalanceE2E(browser, page, extensionPage);
   }, 45000);
 
-  afterEach(
-    async (): Promise<void> => {
-      await closeBrowser(browser);
-    },
-  );
+  afterEach(async () => {
+    await closeBrowser(browser);
+  });
 
   afterAll(() => {
     server.close();
   });
 
-  it('should contain balances', async (): Promise<void> => {
-    const firstBalance = await getFirstCurrencyBalanceE2E(await page.$$('h6'));
-    const secondBalance = await getSecondCurrencyBalanceE2E(await page.$$('h6'));
-    const thirdBalance = await getThirdCurrencyBalanceE2E(await page.$$('h6'));
+  it('should contain balances', async () => {
+    const balances = [
+      await getBalanceTextAtIndex(await page.$$('h6'), 0),
+      await getBalanceTextAtIndex(await page.$$('h6'), 1),
+      await getBalanceTextAtIndex(await page.$$('h6'), 2),
+    ];
 
-    expect(firstBalance).toBe('10 BASH');
-    expect(secondBalance).toBe('10 CASH');
-    expect(thirdBalance).toBe('10 ETH');
+    expect(balances).toEqual(['10 BASH', '10 CASH', '10 ETH']);
   }, 45000);
 
-  it('should contain message to get username', async (): Promise<void> => {
+  it('should contain message to get username', async () => {
     const username = await getUsernameE2E(await page.$$('h5'));
 
     expect(username).toBe('No human readable address registered.');

@@ -8,16 +8,12 @@ export const getIovUsername = (h5Elements: Element[]): string => {
   return h5Elements[0].textContent || '';
 };
 
-export const getFirstCurrencyBalanceE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
-  return (await (await h6Elements[5].getProperty('textContent')).jsonValue()) || '';
-};
-
-export const getSecondCurrencyBalanceE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
-  return (await (await h6Elements[6].getProperty('textContent')).jsonValue()) || '';
-};
-
-export const getThirdCurrencyBalanceE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
-  return (await (await h6Elements[7].getProperty('textContent')).jsonValue()) || '';
+export const getBalanceTextAtIndex = async (
+  h6Elements: ElementHandle<Element>[],
+  index: number,
+): Promise<string> => {
+  const property = await h6Elements[5 + index].getProperty('textContent');
+  return (await property.jsonValue()) || '';
 };
 
 export const getUsernameE2E = async (h5Elements: ElementHandle<Element>[]): Promise<string> => {
