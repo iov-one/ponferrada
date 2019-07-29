@@ -1,4 +1,4 @@
-import { TokenTicker } from '@iov/bcp';
+import { TokenTicker, TransactionId } from '@iov/bcp';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
@@ -8,6 +8,7 @@ import { DeepPartial } from 'redux';
 import { BalanceState } from '../../store/balances';
 import { RootState } from '../../store/reducers';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
+import ConfirmPayment from './components/ConfirmPayment';
 import Layout from './components/index';
 
 const BALANCES: BalanceState = {
@@ -43,6 +44,14 @@ storiesOf(WALLET_ROOT, module)
     (): JSX.Element => (
       <DecoratedStorybook storeProps={fullStore()}>
         <Layout onCancelPayment={action('onCancelPayment')} onSubmit={onSubmit} />
+      </DecoratedStorybook>
+    ),
+  )
+  .add(
+    'Payment confirmation',
+    (): JSX.Element => (
+      <DecoratedStorybook>
+        <ConfirmPayment transactionId={'transactionID' as TransactionId} />
       </DecoratedStorybook>
     ),
   );
