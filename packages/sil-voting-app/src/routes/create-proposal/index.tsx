@@ -4,19 +4,19 @@ import React from 'react';
 
 import AsideFilter from '../../components/AsideFilter';
 import Header from '../../components/Header';
-import ProposalsList from './components/ProposalsList';
+import ProposalForm from './components/ProposalForm';
 
-const Dashboard = (): JSX.Element => {
+const CreateProposal = (): JSX.Element => {
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">
       <Header />
       <Hairline />
       <Block minWidth="100%" display="flex">
         <AsideFilter />
-        <ProposalsList />
+        <ProposalForm />
       </Block>
     </Block>
   );
 };
 
-export default Dashboard;
+export default CreateProposal;

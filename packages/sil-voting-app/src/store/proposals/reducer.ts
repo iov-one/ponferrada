@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
 
-import { ProposalProps } from '../../../routes/dashboard/components/Proposal';
+import { ProposalProps } from '../../routes/dashboard/components/Proposal';
 import * as actions from './actions';
 
 export interface SilProposal {

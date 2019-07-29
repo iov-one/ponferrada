@@ -1,6 +1,6 @@
+import { ASIDE_FILTER_HTML_ID } from '../../../components/AsideFilter';
 import { HEADER_HTML_ID } from '../../../components/Header';
 import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
-import { ASIDE_FILTER_HTML_ID } from '../components/AsideFilter';
 import { PROPOSALS_HTML_ID } from '../components/ProposalsList';
 
 export const getHeader = async (dashboardDom: React.Component): Promise<Element> => {

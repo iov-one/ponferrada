@@ -5789,7 +5789,7 @@ exports[`Storyshots Extension Login page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3190"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -5941,7 +5941,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3277"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -6128,7 +6128,7 @@ exports[`Storyshots Extension Request queue page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3386"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -6252,7 +6252,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3458"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -6411,7 +6411,7 @@ exports[`Storyshots Extension/Account Status page Empty 1`] = `
             alt="IOV logo"
             className="makeStyles-root-3017"
             height={39}
-            src="iov-logo.png"
+            src="iov-logo.svg"
             width={84}
           />
         </div>
@@ -7134,7 +7134,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
             alt="IOV logo"
             className="makeStyles-root-2770"
             height={39}
-            src="iov-logo.png"
+            src="iov-logo.svg"
             width={84}
           />
         </div>
@@ -7296,7 +7296,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3567"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -7530,7 +7530,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3696"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -7714,7 +7714,7 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3910"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -7918,7 +7918,7 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-3795"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -8290,7 +8290,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-4077"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -8470,7 +8470,7 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-4131"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -8629,7 +8629,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-4297"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -8810,7 +8810,7 @@ exports[`Storyshots Extension/Transaction Request Reject Request page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-4708"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -9025,7 +9025,7 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page (Ethereum
       alt="IOV logo"
       className="makeStyles-root-4491"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -9240,7 +9240,7 @@ exports[`Storyshots Extension/Transaction Request Show TX Request page 1`] = `
       alt="IOV logo"
       className="makeStyles-root-4394"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -9424,7 +9424,7 @@ exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`]
       alt="IOV logo"
       className="makeStyles-root-4593"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
@@ -9560,7 +9560,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     className="MuiBox-root MuiBox-root-4760"
   >
     <div
-      className="MuiBox-root MuiBox-root-4764"
+      className="MuiBox-root MuiBox-root-4766"
       id="aside-filter"
     >
       <div
@@ -9679,9 +9679,28 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
           </ul>
         </div>
       </div>
+      <div
+        className="MuiBox-root MuiBox-root-4830 makeStyles-addProposal-4764"
+        onClick={[Function]}
+      >
+        <img
+          alt="Add Proposal"
+          className="makeStyles-root-4718 makeStyles-addIcon-4765"
+          src="add.svg"
+        />
+        <div
+          className="MuiBox-root MuiBox-root-4831"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Add New Proposal
+          </p>
+        </div>
+      </div>
     </div>
     <div
-      className="MuiBox-root MuiBox-root-4828"
+      className="MuiBox-root MuiBox-root-4833"
       id="proposals"
     />
   </div>
@@ -9690,19 +9709,19 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 
 exports[`Storyshots Voter Dashboard Login page 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-4833 makeStyles-login-4829"
+  className="MuiBox-root MuiBox-root-4838 makeStyles-login-4834"
 >
   <div
-    className="MuiBox-root MuiBox-root-4834 makeStyles-icon-4830"
+    className="MuiBox-root MuiBox-root-4839 makeStyles-icon-4835"
   >
     <img
       alt="Logo"
-      className="makeStyles-root-4835"
+      className="makeStyles-root-4840"
       src="iov-logo.svg"
     />
   </div>
   <div
-    className="MuiBox-root MuiBox-root-4840"
+    className="MuiBox-root MuiBox-root-4845"
   >
     <h6
       className="MuiTypography-root MuiTypography-h6"
@@ -9714,7 +9733,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button-4831 MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-button-4836 MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
