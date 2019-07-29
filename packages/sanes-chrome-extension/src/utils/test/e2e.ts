@@ -25,7 +25,7 @@ export async function createPage(browser: Browser): Promise<Page> {
   });
   // eslint-disable-next-line no-console
   page.on('console', msg => console.log('PAGE LOG:', msg.text()));
-  page.bringToFront();
+  await page.bringToFront();
 
   return page;
 }

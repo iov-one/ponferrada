@@ -20,7 +20,7 @@ export async function createPage(browser: Browser): Promise<Page> {
     waitUntil: 'networkidle2',
   });
   page.on('console', msg => console.log('PAGE LOG:', msg.text()));
-  page.bringToFront();
+  await page.bringToFront();
 
   return page;
 }
@@ -33,7 +33,7 @@ export async function createExtensionPage(browser: Browser): Promise<Page> {
     waitUntil: 'networkidle2',
   });
   page.on('console', msg => console.log('EXTENSION PAGE LOG:', msg.text()));
-  page.bringToFront();
+  await page.bringToFront();
 
   return page;
 }
