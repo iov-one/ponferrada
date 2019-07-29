@@ -9,7 +9,7 @@ import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { travelToBalanceE2E } from '../balance/test/travelToBalance';
 import { TRANSACTIONS_ROUTE } from '../paths';
 
-withChainsDescribe('E2E > Transactions route', (): void => {
+withChainsDescribe('E2E > Transactions route', () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -27,24 +27,22 @@ withChainsDescribe('E2E > Transactions route', (): void => {
     server = app.listen(9000);
   });
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToBalanceE2E(browser, page, extensionPage);
-  }, 45000);
+  }, 60000);
 
-  afterEach(
-    async (): Promise<void> => {
-      await closeBrowser(browser);
-    },
-  );
+  afterEach(async () => {
+    await closeBrowser(browser);
+  });
 
   afterAll(() => {
     server.close();
   });
 
-  it('contains two transactions', async (): Promise<void> => {
+  it('contains two transactions', async () => {
     const [txLink] = await page.$x(`//h6[contains(., '${TRANSACTIONS_TEXT}')]`);
     await txLink.click();
     await whenOnNavigatedToE2eRoute(page, TRANSACTIONS_ROUTE);
@@ -52,6 +50,6 @@ withChainsDescribe('E2E > Transactions route', (): void => {
     // Checking number of rows
     const rows = await page.$$('img[alt="Transaction type"]');
     // TODO update number to show ETH one when #412 is done
-    expect(rows.length).toBe(2);
+    expect(rows.length).toBe(3);
   }, 45000);
 });

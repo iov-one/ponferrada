@@ -60,3 +60,12 @@ export function closeBrowser(browser: Browser): Promise<void> {
 export async function closeToast(page: Page): Promise<void> {
   return page.click('[aria-label="Close"]');
 }
+
+export async function getToastMessage(page: Page): Promise<string> {
+  const element = await page.$('#toast-provider h6');
+  if (element === null) {
+    throw new Error();
+  }
+
+  return await (await element.getProperty('textContent')).jsonValue();
+}

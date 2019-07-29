@@ -30,7 +30,7 @@ withChainsDescribe('E2E > Balance route', () => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToBalanceE2E(browser, page, extensionPage);
-  }, 45000);
+  }, 60000);
 
   afterEach(async () => {
     await closeBrowser(browser);

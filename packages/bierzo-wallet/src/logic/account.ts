@@ -21,12 +21,16 @@ export async function lookupRecipientAddressByName(
 
     const connection = (await getConnectionFor(chain.chainSpec)) as BnsConnection;
     const usernames = await connection.getUsernames({ username });
-    if (usernames.length !== 1) return undefined;
+    if (usernames.length !== 1) {
+      return undefined;
+    }
 
     const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
 
     return chainAddressPair ? chainAddressPair.address : undefined;
   }
+
+  throw new Error('No BNS connection found');
 }
 
 export function isIov(username: string): boolean {
