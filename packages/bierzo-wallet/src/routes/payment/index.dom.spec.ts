@@ -6,7 +6,7 @@ import { aNewStore } from '../../store';
 import { BalanceState } from '../../store/balances';
 import { RootState } from '../../store/reducers';
 import { click, expectRoute } from '../../utils/test/dom';
-import { PAYMENT_ROUTE } from '../paths';
+import { BALANCE_ROUTE } from '../paths';
 import { getCancelButton, getSelectedCurrency } from './test/operatePayment';
 import { travelToPayment } from './test/travelToPayment';
 
@@ -41,7 +41,7 @@ describe('The /payment route', () => {
     const cancelButton = getCancelButton(paymentDom);
     await click(cancelButton);
 
-    expectRoute(PAYMENT_ROUTE);
+    expectRoute(BALANCE_ROUTE);
   });
 
   it('should set first currency in list as default', async () => {
