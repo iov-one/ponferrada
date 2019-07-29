@@ -82,7 +82,6 @@ const Payment = (): JSX.Element => {
         toast.show('Request rejected', ToastVariant.ERROR);
       } else {
         setTransactionId(transactionId);
-        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
       }
     } catch (error) {
       console.error(error);
