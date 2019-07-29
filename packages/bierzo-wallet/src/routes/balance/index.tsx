@@ -27,7 +27,7 @@ const Balance = (): JSX.Element => {
         onSendPayment={onSendPayment}
         onReceivePayment={onReceivePayment}
         iovAddress={iovAddress}
-        tokens={tokens}
+        balances={tokens}
       />
     </PageMenu>
   );

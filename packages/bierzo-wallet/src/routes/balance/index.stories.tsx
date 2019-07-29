@@ -32,7 +32,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       <PageMenu>
         <Layout
           iovAddress={ACCOUNT_NAME}
-          tokens={BALANCE}
+          balances={BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
         />
@@ -44,7 +44,7 @@ storiesOf(`${WALLET_ROOT}/balance`, module)
       <PageMenu>
         <Layout
           iovAddress={undefined}
-          tokens={NO_BALANCE}
+          balances={NO_BALANCE}
           onReceivePayment={action('onReceivePayment')}
           onSendPayment={action('onSendPayment')}
         />

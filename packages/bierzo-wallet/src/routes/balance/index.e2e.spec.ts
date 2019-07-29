@@ -48,7 +48,7 @@ withChainsDescribe('E2E > Balance route', () => {
       await getBalanceTextAtIndex(await page.$$('h6'), 3),
     ];
 
-    expect(balances).toEqual(['10 BASH', '10 CASH', '5 LSK', '10 ETH']);
+    expect(balances).toEqual(['10 BASH', '10 CASH', '10 ETH', '5 LSK']);
   }, 45000);
 
   it('should contain message to get username', async () => {

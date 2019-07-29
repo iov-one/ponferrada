@@ -14,7 +14,7 @@ import send from '../assets/transactionSend.svg';
 
 interface Props {
   readonly iovAddress?: string;
-  readonly tokens: { [token: string]: Amount };
+  readonly balances: { [token: string]: Amount };
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
 }
@@ -55,8 +55,9 @@ const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
   );
 };
 
-const BalanceLayout = ({ iovAddress, tokens, onSendPayment, onReceivePayment }: Props): JSX.Element => {
-  const hasTokens = tokens && Object.keys(tokens).length;
+const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }: Props): JSX.Element => {
+  const tickersList = Object.keys(balances).sort();
+  const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();
 
   return (
@@ -79,9 +80,9 @@ const BalanceLayout = ({ iovAddress, tokens, onSendPayment, onReceivePayment }: 
             {hasTokens ? 'Your currencies' : 'No funds available'}
           </Typography>
           <Block margin={2} />
-          {Object.keys(tokens).map(token => (
+          {tickersList.map(ticker => (
             <Typography
-              key={tokens[token].tokenTicker}
+              key={balances[ticker].tokenTicker}
               link
               variant="h6"
               weight="regular"
@@ -89,7 +90,7 @@ const BalanceLayout = ({ iovAddress, tokens, onSendPayment, onReceivePayment }: 
               align="center"
               onClick={onSendPayment}
             >
-              {`${amountToString(trimAmount(tokens[token]))}`}
+              {`${amountToString(trimAmount(balances[ticker]))}`}
             </Typography>
           ))}
           <Block margin={1} />
