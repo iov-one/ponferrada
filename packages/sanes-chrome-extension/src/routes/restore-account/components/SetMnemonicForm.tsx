@@ -9,13 +9,12 @@ import PageLayout from 'medulas-react-components/lib/components/PageLayout';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import { composeValidators, required } from 'medulas-react-components/lib/utils/forms/validators';
 import * as React from 'react';
-import { useMemo } from 'react';
 
 import { RESTORE_ACCOUNT } from '../../paths';
 
 export const MNEMONIC_FIELD = 'mnemonicField';
 
-export const englishMnemonicValidator: FieldValidator = (value): string | undefined => {
+const englishMnemonicValidator: FieldValidator = (value): string | undefined => {
   if (typeof value !== 'string') throw new Error('Input must be a string');
 
   try {
@@ -25,6 +24,8 @@ export const englishMnemonicValidator: FieldValidator = (value): string | undefi
     return 'Not a valid English mnemonic';
   }
 };
+
+const validator = composeValidators(required, englishMnemonicValidator);
 
 interface Props {
   readonly onSetMnemonic: (values: FormValues) => void;
@@ -38,11 +39,6 @@ const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
   };
 
   const { form, handleSubmit, submitting, invalid } = useForm({ onSubmit });
-
-  //TODO optimize update of validators with array of dependencies
-  const validator = useMemo(() => {
-    return composeValidators(required, englishMnemonicValidator);
-  }, []);
 
   return (
     <PageLayout id={RESTORE_ACCOUNT} primaryTitle="Restore" title="Account">
