@@ -5,8 +5,8 @@ import { lookupRecipientAddressByName } from './account';
 import { disconnect } from './connection';
 
 withChainsDescribe('Logic :: account', () => {
-  afterAll(async () => {
-    await disconnect();
+  afterAll(() => {
+    disconnect();
   });
 
   it('should return undefined in case if bns username was not found', async () => {

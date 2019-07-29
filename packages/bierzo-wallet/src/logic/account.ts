@@ -30,7 +30,7 @@ export async function lookupRecipientAddressByName(
     return chainAddressPair ? chainAddressPair.address : undefined;
   }
 
-  return undefined;
+  throw new Error('No BNS connection found');
 }
 
 export function isIov(username: string): boolean {

@@ -26,18 +26,16 @@ const balancesAmount: DeepPartial<BalanceState> = {
 describe('The /payment route', () => {
   let store: Store<RootState>;
   let paymentDom: React.Component;
-  beforeEach(
-    async (): Promise<void> => {
-      store = aNewStore({
-        extension: {
-          connected: true,
-          installed: true,
-        },
-        balances: balancesAmount,
-      });
-      paymentDom = await travelToPayment(store);
-    },
-  );
+  beforeEach(async () => {
+    store = aNewStore({
+      extension: {
+        connected: true,
+        installed: true,
+      },
+      balances: balancesAmount,
+    });
+    paymentDom = await travelToPayment(store);
+  });
 
   it('should redirect to the /balance route when cancel clicked', async () => {
     const cancelButton = getCancelButton(paymentDom);

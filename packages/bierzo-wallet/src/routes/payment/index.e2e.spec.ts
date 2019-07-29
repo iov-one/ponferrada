@@ -18,7 +18,7 @@ import { BALANCE_ROUTE } from '../paths';
 import { fillPaymentForm, getPaymentRequestData } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
-withChainsDescribe('E2E > Payment route', (): void => {
+withChainsDescribe('E2E > Payment route', () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -36,31 +36,29 @@ withChainsDescribe('E2E > Payment route', (): void => {
     server = app.listen(9000);
   });
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToPaymentE2E(browser, page, extensionPage);
   }, 45000);
 
-  afterEach(
-    async (): Promise<void> => {
-      await closeBrowser(browser);
-    },
-  );
+  afterEach(async () => {
+    await closeBrowser(browser);
+  });
 
   afterAll(() => {
     server.close();
   });
 
-  it('should make payment and redirected when enqueued request is accepted', async (): Promise<void> => {
+  it('should make payment and redirected when enqueued request is accepted', async () => {
     await fillPaymentForm(page);
     await acceptEnqueuedRequest(extensionPage);
     await page.bringToFront();
     await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
   }, 25000);
 
-  it('should have proper information about payment request', async (): Promise<void> => {
+  it('should have proper information about payment request', async () => {
     await fillPaymentForm(page);
     await openEnqueuedRequest(extensionPage);
     await sleep(1000);
@@ -74,7 +72,7 @@ withChainsDescribe('E2E > Payment route', (): void => {
     expect(fee).toBe('0.01 CASH');
   }, 25000);
 
-  it('should show toast message in case if payment will be rejected', async (): Promise<void> => {
+  it('should show toast message in case if payment will be rejected', async () => {
     await fillPaymentForm(page);
     await rejectEnqueuedRequest(extensionPage);
     await page.bringToFront();
