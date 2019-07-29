@@ -43,9 +43,9 @@ const CurrencyToSend = ({ form }: Props): JSX.Element => {
   const balances = ReactRedux.useSelector((state: RootState) => state.balances);
   const classes = useStyles();
 
-  const currencyItems = Object.keys(balances).map(balance => ({
-    name: balance,
-  }));
+  const currencyItems = Object.keys(balances)
+    .sort()
+    .map((ticker): Item => ({ name: ticker }));
 
   const [balance, setBalance] = useState(balances[currencyItems[0].name]);
 
