@@ -1,24 +1,40 @@
+import { bnsCodec } from '@iov/bns';
+import { ethereumCodec } from '@iov/ethereum';
+import { liskCodec } from '@iov/lisk';
 import Paper from '@material-ui/core/Paper';
-import { FormApi } from 'final-form';
+import { FieldValidator, FormApi } from 'final-form';
 import Block from 'medulas-react-components/lib/components/Block';
 import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
 import Tooltip from 'medulas-react-components/lib/components/Tooltip';
 import Typography from 'medulas-react-components/lib/components/Typography';
-import {
-  composeValidators,
-  notLongerThan,
-  required,
-} from 'medulas-react-components/lib/utils/forms/validators';
+import { composeValidators, required } from 'medulas-react-components/lib/utils/forms/validators';
 import React from 'react';
 
+import { isIov } from '../../../../logic/account';
+
 export const ADDRESS_FIELD = 'addressField';
-const ADDRESS_MAX_LENGTH = 254;
+
+function isNativeBlockchainAddress(input: string): boolean {
+  return (
+    bnsCodec.isValidAddress(input) || ethereumCodec.isValidAddress(input) || liskCodec.isValidAddress(input)
+  );
+}
+
+const recipientValidator: FieldValidator = (value): string | undefined => {
+  if (typeof value !== 'string') throw new Error('Input must be a string');
+
+  if (isNativeBlockchainAddress(value) || isIov(value)) {
+    return undefined;
+  } else {
+    return 'Must be an IOV human readable address or a native address';
+  }
+};
 
 interface Props {
   form: FormApi;
 }
 
-const validator = composeValidators(required, notLongerThan(ADDRESS_MAX_LENGTH));
+const validator = composeValidators(required, recipientValidator);
 
 const ReceiverAddress = (props: Props): JSX.Element => {
   return (
