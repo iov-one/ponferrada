@@ -19,9 +19,9 @@ describe('DOM > Feature > Share Identity', (): void => {
   const requests: ReadonlyArray<Request> = [
     {
       id: 1,
+      senderUrl: 'http://finnex.com',
       reason: 'Test get Identities',
-      data: {
-        senderUrl: 'http://finnex.com',
+      responseData: {
         requestedIdentities: [
           {
             chainName: 'Ganache',

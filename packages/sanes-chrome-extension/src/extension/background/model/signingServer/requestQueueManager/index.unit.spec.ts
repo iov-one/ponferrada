@@ -2,9 +2,9 @@ import { Request, RequestQueueManager } from './index';
 
 describe('RequestHandler', () => {
   const REQUEST_ONE: Omit<Request, 'id'> = {
+    senderUrl: 'Sender 1',
     reason: 'Reason 1',
-    data: {
-      senderUrl: 'Sender 1',
+    responseData: {
       requestedIdentities: [],
     },
     accept: jest.fn(),
@@ -12,9 +12,9 @@ describe('RequestHandler', () => {
   };
 
   const REQUEST_TWO: Omit<Request, 'id'> = {
+    senderUrl: 'Sender 2',
     reason: 'Reason 2',
-    data: {
-      senderUrl: 'Sender 2',
+    responseData: {
       requestedIdentities: [],
     },
     accept: jest.fn(),
@@ -22,9 +22,9 @@ describe('RequestHandler', () => {
   };
 
   const REQUEST_THREE: Omit<Request, 'id'> = {
+    senderUrl: 'Sender 3',
     reason: 'Reason 3',
-    data: {
-      senderUrl: 'Sender 3',
+    responseData: {
       requestedIdentities: [],
     },
     accept: jest.fn(),

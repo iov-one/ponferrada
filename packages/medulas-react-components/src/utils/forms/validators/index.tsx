@@ -67,13 +67,3 @@ export const longerThan = (minLength: number): FieldValidator => {
     return undefined;
   };
 };
-
-export const numberOfWords = (numWords: number): FieldValidator => {
-  return (value): ValidationError => {
-    if (value && value.split(' ').length !== numWords) {
-      return `Should contain ${numWords} words only`;
-    }
-
-    return undefined;
-  };
-};

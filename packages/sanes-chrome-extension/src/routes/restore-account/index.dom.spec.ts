@@ -60,16 +60,41 @@ withChainsDescribe('DOM > Feature > Restore Account', () => {
       submit(mnemonicForm);
       expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Required');
 
+      // Invalid inputs
+
       input(mnemonicTextarea, randomString(10));
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Should contain 12 words only');
-
-      input(mnemonicTextarea, '1 2 3 4 5 6 7 8 9 10 11');
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Should contain 12 words only');
-
-      input(mnemonicTextarea, '1 2 3 4 5 6 7 8 9 10 11 12 13');
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Should contain 12 words only');
+      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Not a valid English mnemonic');
 
       input(mnemonicTextarea, '1 2 3 4 5 6 7 8 9 10 11 12');
+      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Not a valid English mnemonic');
+
+      input(mnemonicTextarea, '1 2 3 4 5 6 7 8 9 10 11 12 13');
+      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Not a valid English mnemonic');
+
+      input(
+        mnemonicTextarea,
+        'convince business loop hundred useless sadness easily script valve burger common common',
+      );
+      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe('Not a valid English mnemonic');
+
+      // Valid inputs
+
+      input(
+        mnemonicTextarea,
+        'convince business loop hundred useless sadness easily script valve burger common select',
+      );
+      expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
+
+      input(
+        mnemonicTextarea,
+        'dirt motion accident topple cherry alert this track fluid crucial relief globe tourist add grape',
+      );
+      expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
+
+      input(
+        mnemonicTextarea,
+        'emerge special door speak success mechanic lesson doll tip together waste shy suffer film confirm fetch reduce suffer sound toast tribe wet thunder situate',
+      );
       expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
     }, 10000);
 

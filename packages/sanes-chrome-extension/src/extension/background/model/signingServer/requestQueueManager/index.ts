@@ -35,55 +35,55 @@ function isUiIdentity(data: unknown): data is UiIdentity {
   );
 }
 
-export interface GetIdentitiesData extends RequestMeta {
+export interface GetIdentitiesResponseData {
   readonly requestedIdentities: ReadonlyArray<UiIdentity>;
 }
 
-export function isGetIdentitiesData(data: unknown): data is GetIdentitiesData {
+export function isGetIdentitiesResponseData(data: unknown): data is GetIdentitiesResponseData {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  const hasSender = typeof (data as GetIdentitiesData).senderUrl === 'string';
-  const identities = (data as GetIdentitiesData).requestedIdentities;
+  const identities = (data as GetIdentitiesResponseData).requestedIdentities;
   const hasIdentities = Array.isArray(identities) && identities.every(isUiIdentity);
 
-  return hasIdentities && hasSender;
+  return hasIdentities;
 }
 
-export interface SignAndPostData extends RequestMeta {
+export interface SignAndPostResponseData {
   readonly tx: SupportedTransaction;
 }
 
-export function isSignAndPostData(data: unknown): data is SignAndPostData {
+export function isSignAndPostResponseData(data: unknown): data is SignAndPostResponseData {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
 
-  const hasSender = typeof (data as SignAndPostData).senderUrl === 'string';
-
-  const tx: unknown = (data as SignAndPostData).tx;
+  const tx: unknown = (data as SignAndPostResponseData).tx;
   const hasSupportedTransaction = isUnsignedTransaction(tx) && isSupportedTransaction(tx);
 
-  return hasSender && hasSupportedTransaction;
+  return hasSupportedTransaction;
 }
 
 export interface Request<
-  T extends GetIdentitiesData | SignAndPostData = GetIdentitiesData | SignAndPostData
+  T extends GetIdentitiesResponseData | SignAndPostResponseData =
+    | GetIdentitiesResponseData
+    | SignAndPostResponseData
 > {
   readonly id: number;
+  readonly senderUrl: string;
   readonly reason: string;
-  readonly data: T;
+  readonly responseData: T;
   readonly accept: () => void;
   readonly reject: (permanently: boolean) => void;
 }
 
-export function isGetIdentitiesRequest(request: Request): request is Request<GetIdentitiesData> {
-  return isGetIdentitiesData(request.data);
+export function isGetIdentitiesRequest(request: Request): request is Request<GetIdentitiesResponseData> {
+  return isGetIdentitiesResponseData(request.responseData);
 }
 
-export function isSignAndPostRequest(request: Request): request is Request<SignAndPostData> {
-  return isSignAndPostData(request.data);
+export function isSignAndPostRequest(request: Request): request is Request<SignAndPostResponseData> {
+  return isSignAndPostResponseData(request.responseData);
 }
 
 export class RequestQueueManager {
@@ -130,7 +130,7 @@ export class RequestQueueManager {
     const initialSize = this.instance.length;
     for (let i = 0; i < initialSize; i++) {
       const req = this.instance[i];
-      if (req.data.senderUrl !== senderUrl) {
+      if (req.senderUrl !== senderUrl) {
         continue;
       }
 
@@ -140,7 +140,7 @@ export class RequestQueueManager {
     }
 
     // Note here we only get references
-    const reqToCancel = this.instance.filter(req => req.data.senderUrl === senderUrl);
+    const reqToCancel = this.instance.filter(req => req.senderUrl === senderUrl);
     reqToCancel.forEach(req => req.reject(false));
   }
 }

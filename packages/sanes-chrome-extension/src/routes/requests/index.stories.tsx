@@ -11,9 +11,9 @@ import Requests from './index';
 const intialRequests: Request[] = [
   {
     id: 0,
+    senderUrl: 'Sender 1',
     reason: 'Asking for identities for changing the world',
-    data: {
-      senderUrl: 'Sender 1',
+    responseData: {
       requestedIdentities: [],
     },
     accept: action('accept'),
@@ -21,9 +21,9 @@ const intialRequests: Request[] = [
   },
   {
     id: 1,
+    senderUrl: 'Sender 2',
     reason: 'Asking for signAndPost example',
-    data: {
-      senderUrl: 'Sender 2',
+    responseData: {
       requestedIdentities: [],
     },
     accept: action('accept'),
@@ -31,9 +31,9 @@ const intialRequests: Request[] = [
   },
   {
     id: 2,
+    senderUrl: 'Sender 3',
     reason: 'Please get Identities on new website',
-    data: {
-      senderUrl: 'Sender 3',
+    responseData: {
       requestedIdentities: [],
     },
     accept: action('accept'),

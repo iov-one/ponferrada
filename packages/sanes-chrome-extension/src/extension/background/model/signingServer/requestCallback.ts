@@ -1,14 +1,18 @@
 import { updateRequestProvider } from '../../updaters/appUpdater';
 import { updateExtensionBadge } from '../../updaters/extensionBadgeUpdater';
-import { GetIdentitiesData, RequestQueueManager, SignAndPostData } from './requestQueueManager';
+import {
+  GetIdentitiesResponseData,
+  RequestQueueManager,
+  SignAndPostResponseData,
+} from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
 
 export async function requestCallback<T>(
   requestQueueManager: RequestQueueManager,
   senderWhitelist: SenderWhitelist,
+  senderUrl: string,
   reason: string,
-  type: 'getIdentities' | 'signAndPost',
-  data: GetIdentitiesData | SignAndPostData,
+  responseData: GetIdentitiesResponseData | SignAndPostResponseData,
   acceptResponse: T,
   rejectResponse: T,
 ): Promise<T> {
@@ -23,15 +27,15 @@ export async function requestCallback<T>(
     const reject = (permanent: boolean): void => {
       requestQueueManager.solved();
       if (permanent) {
-        senderWhitelist.block(data.senderUrl);
-        requestQueueManager.purge(data.senderUrl);
+        senderWhitelist.block(senderUrl);
+        requestQueueManager.purge(senderUrl);
       }
       updateExtensionBadge(requestQueueManager.requests().length);
       updateRequestProvider();
       resolve(rejectResponse);
     };
 
-    requestQueueManager.add({ reason, data, accept, reject });
+    requestQueueManager.add({ senderUrl, reason, responseData, accept, reject });
     updateExtensionBadge(requestQueueManager.requests().length);
     updateRequestProvider();
   });

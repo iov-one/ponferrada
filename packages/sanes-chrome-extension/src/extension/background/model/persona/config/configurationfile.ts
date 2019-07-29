@@ -1,3 +1,5 @@
+import { ChainId } from '@iov/bcp';
+
 import { singleton } from '../../../../../utils/singleton';
 
 /*global chrome*/
@@ -50,3 +52,17 @@ const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
 };
 
 export const getConfigurationFile = singleton<typeof loadConfigurationFile>(loadConfigurationFile);
+
+/**
+ * Gets a chain name from the configuration file. Falls back to the chain ID
+ * if no name is found.
+ */
+export async function getChainName(chainId: ChainId): Promise<string> {
+  const chainNames = (await getConfigurationFile()).names;
+
+  if (chainNames.hasOwnProperty(chainId)) {
+    return chainNames[chainId];
+  } else {
+    return chainId;
+  }
+}

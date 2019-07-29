@@ -45,10 +45,10 @@ withChainsDescribe('background script handler for website request', () => {
     const req = signingServer['requestHandler'].next();
     expect(req.accept).toBeTruthy();
     expect(req.reject).toBeTruthy();
+    expect(req.senderUrl).toEqual(sender);
     expect(req.reason).toEqual(TransactionEncoder.fromJson(request.params).reason);
-    expect(req.data.senderUrl).toEqual(sender);
     if (!isGetIdentitiesRequest(req)) throw new Error('Unexpected request type');
-    expect(req.data.requestedIdentities[0].chainName).toEqual('Ganache');
+    expect(req.responseData.requestedIdentities[0].chainName).toEqual('Ganache');
   }
 
   it('resolves to error if sender is unknown', async () => {
@@ -171,7 +171,7 @@ withChainsDescribe('background script handler for website request', () => {
     expect(signingServer['requestHandler'].requests().length).toBe(1);
     const chromeBazRequest = signingServer['requestHandler'].next();
     expect(chromeBazRequest.id).toBe(2);
-    expect(chromeBazRequest.data.senderUrl).toBe('http://example.com');
+    expect(chromeBazRequest.senderUrl).toBe('http://example.com');
   }, 8000);
 
   it('rejects correctly when permanently blocked is last one in the queue', async () => {
@@ -188,7 +188,7 @@ withChainsDescribe('background script handler for website request', () => {
     signingServer['requestHandler'].next().accept();
     const chromeBarRequest = signingServer['requestHandler'].next();
     expect(chromeBarRequest.id).toBe(1);
-    expect(chromeBarRequest.data.senderUrl).toBe(senderTwo.url);
+    expect(chromeBarRequest.senderUrl).toBe(senderTwo.url);
     chromeBarRequest.reject(true);
     expect(signingServer['requestHandler'].requests().length).toBe(0);
 

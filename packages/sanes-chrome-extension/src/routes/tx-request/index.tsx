@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
 import { RequestContext } from '../../context/RequestProvider';
-import { isSignAndPostData } from '../../extension/background/model/signingServer/requestQueueManager';
+import { isSignAndPostResponseData } from '../../extension/background/model/signingServer/requestQueueManager';
 import { history } from '../../store/reducers';
 import { REQUEST_ROUTE } from '../paths';
 import { checkRequest } from '../requests';
@@ -15,11 +15,12 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const requestContext = React.useContext(RequestContext);
 
-  const req = requestContext.firstRequest;
-  checkRequest(req, location, toast);
-  const { data, accept, reject } = req!; // eslint-disable-line
+  const firstRequest = requestContext.requests.find(() => true);
+  if (!firstRequest) throw new Error('Did not find an authorization request');
+  checkRequest(firstRequest, location, toast);
+  const { senderUrl, responseData, accept, reject } = firstRequest;
 
-  if (!isSignAndPostData(data)) {
+  if (!isSignAndPostResponseData(responseData)) {
     throw new Error('Received request with a wrong sign and post request data');
   }
 
@@ -40,14 +41,14 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
     <React.Fragment>
       {action === 'show' && (
         <ShowRequest
-          tx={data.tx}
-          sender={data.senderUrl}
+          tx={responseData.tx}
+          sender={senderUrl}
           onAcceptRequest={onAcceptRequest}
           showRejectView={showRejectView}
         />
       )}
       {action === 'reject' && (
-        <RejectRequest sender={data.senderUrl} onBack={showRequestView} onRejectRequest={onRejectRequest} />
+        <RejectRequest sender={senderUrl} onBack={showRequestView} onRejectRequest={onRejectRequest} />
       )}
     </React.Fragment>
   );

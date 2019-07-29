@@ -4,15 +4,15 @@ import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/
 
 import { generateErrorResponse } from '../../errorResponseGenerator';
 import { isSupportedTransaction } from '../persona';
-import { getConfigurationFile } from '../persona/config';
+import { getChainName } from '../persona/config';
 import { requestCallback } from './requestCallback';
 import {
-  GetIdentitiesData,
+  GetIdentitiesResponseData,
   isRequestMeta,
   Request,
   RequestMeta,
   RequestQueueManager,
-  SignAndPostData,
+  SignAndPostResponseData,
   UiIdentity,
 } from './requestQueueManager';
 import { SenderWhitelist } from './senderWhitelist';
@@ -31,29 +31,27 @@ export default class SigningServer {
       throw new Error('Unexpected type of data in meta field');
     }
     const { senderUrl } = meta;
-    const chainNames = (await getConfigurationFile()).names;
 
-    const requestedIdentities = matchingIdentities.map(
-      (matchedIdentity): UiIdentity => {
-        const chainName = chainNames[matchedIdentity.chainId];
-
-        return {
-          chainName: chainName,
-          address: signer.identityToAddress(matchedIdentity),
-        };
-      },
+    const requestedIdentities = await Promise.all(
+      matchingIdentities.map(
+        async (matchedIdentity): Promise<UiIdentity> => {
+          return {
+            chainName: await getChainName(matchedIdentity.chainId),
+            address: signer.identityToAddress(matchedIdentity),
+          };
+        },
+      ),
     );
 
-    const data: GetIdentitiesData = {
-      senderUrl,
+    const data: GetIdentitiesResponseData = {
       requestedIdentities,
     };
 
     return requestCallback(
       this.requestHandler,
       this.senderWhitelist,
+      senderUrl,
       reason,
-      'getIdentities',
       data,
       matchingIdentities,
       [],
@@ -75,20 +73,11 @@ export default class SigningServer {
 
     const { senderUrl } = meta;
 
-    const data: SignAndPostData = {
-      senderUrl,
+    const data: SignAndPostResponseData = {
       tx: transaction,
     };
 
-    return requestCallback(
-      this.requestHandler,
-      this.senderWhitelist,
-      reason,
-      'signAndPost',
-      data,
-      true,
-      false,
-    );
+    return requestCallback(this.requestHandler, this.senderWhitelist, senderUrl, reason, data, true, false);
   };
 
   public getPendingRequests(): Request[] {

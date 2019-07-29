@@ -13,17 +13,18 @@ import { getFirstRequest, getRequests } from './test/operateRequests';
 describe('DOM > Feature > Requests', () => {
   const REQUEST_ONE: Request = {
     id: 1,
+    senderUrl: 'www.sender1.com',
     reason: 'Reason 1',
-    data: { senderUrl: 'www.sender1.com', requestedIdentities: [] },
+    responseData: { requestedIdentities: [] },
     accept: jest.fn(),
     reject: jest.fn(),
   };
 
   const REQUEST_TWO: Request = {
     id: 2,
+    senderUrl: 'www.sender2.com',
     reason: 'Reason 2',
-    data: {
-      senderUrl: 'www.sender2.com',
+    responseData: {
       tx: getCashTransaction(),
     },
     accept: jest.fn(),
