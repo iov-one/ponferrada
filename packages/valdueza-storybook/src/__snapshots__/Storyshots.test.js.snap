@@ -1939,6 +1939,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
 exports[`Storyshots Bierzo wallet/Payment Confirmation 1`] = `
 <div
   className="MuiBox-root MuiBox-root-1280"
+  id="payment-confirmation-view-id"
 >
   <div
     className="MuiBox-root MuiBox-root-1281"
