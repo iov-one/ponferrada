@@ -22,12 +22,15 @@
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test-dom": "TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-e2e": "TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
+    "start": "REACT_APP_CONFIG=development react-scripts start",
+    "build-development": "REACT_APP_CONFIG=development react-scripts build",
+    "build-staging": "REACT_APP_CONFIG=staging react-scripts build",
+    "build-production": "REACT_APP_CONFIG=production react-scripts build",
+    "build": "yarn build-development",
+    "test-dom": "REACT_APP_CONFIG=development TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-e2e": "REACT_APP_CONFIG=development TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
     "use-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../sil-voting-app",
-    "test-single": "yarn use-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test --env=jsdom",
+    "test-single": "yarn use-config-development && REACT_APP_CONFIG=development TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test --env=jsdom",
     "test": "yarn use-config-development && yarn test-dom && yarn test-e2e"
   },
   "browserslist": [
