@@ -51,7 +51,7 @@ withChainsDescribe('E2E > Payment route', () => {
     server.close();
   });
 
-  fit('should make payment and redirected to payment confirmation page', async () => {
+  it('should make payment and redirected to payment confirmation page', async () => {
     await fillPaymentForm(page);
     await acceptEnqueuedRequest(extensionPage);
     await page.bringToFront();
