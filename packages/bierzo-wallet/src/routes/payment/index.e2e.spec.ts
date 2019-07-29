@@ -51,13 +51,6 @@ withChainsDescribe('E2E > Payment route', () => {
     server.close();
   });
 
-  it('should make payment and redirected when enqueued request is accepted', async () => {
-    await fillPaymentForm(page);
-    await acceptEnqueuedRequest(extensionPage);
-    await page.bringToFront();
-    await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
-  }, 25000);
-
   it('should have proper information about payment request', async () => {
     await fillPaymentForm(page);
     await openEnqueuedRequest(extensionPage);

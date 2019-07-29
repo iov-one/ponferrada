@@ -70,7 +70,7 @@ const Payment = (): JSX.Element => {
       if (transactionId === null) {
         toast.show('Request rejected', ToastVariant.ERROR);
       } else {
-        history.push(BALANCE_ROUTE);
+        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
       }
     } catch (error) {
       console.error(error);
