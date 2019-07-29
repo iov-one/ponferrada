@@ -47,23 +47,24 @@ const CurrencyToSend = ({ form }: Props): JSX.Element => {
     .sort()
     .map((ticker): Item => ({ name: ticker }));
 
-  const [balance, setBalance] = useState(balances[currencyItems[0].name]);
+  const firstToken = currencyItems.find(() => true);
+  const [selectedTokenTicker, setSelectedTokenTicker] = useState(firstToken ? firstToken.name : undefined);
 
   const validator = useMemo(() => {
     return composeValidators(
       required,
       number,
-      lowerOrEqualThan(amountToNumber(balance)),
+      lowerOrEqualThan(selectedTokenTicker ? amountToNumber(balances[selectedTokenTicker]) : 0),
       greaterOrEqualThan(QUANTITY_MIN),
     );
-  }, [balance]);
+  }, [balances, selectedTokenTicker]);
 
   const avatarClasses = {
     root: classes.avatar,
   };
 
-  const handleChange = (item: Item): void => {
-    setBalance(balances[item.name]);
+  const onTokenSelectionChanged = (item: Item): void => {
+    setSelectedTokenTicker(item.name);
   };
 
   return (
@@ -93,15 +94,15 @@ const CurrencyToSend = ({ form }: Props): JSX.Element => {
                 form={form}
                 maxWidth="60px"
                 items={currencyItems}
-                initial={balance.tokenTicker}
-                onChangeCallback={handleChange}
+                initial={firstToken ? firstToken.name : '–'}
+                onChangeCallback={onTokenSelectionChanged}
               />
             </Block>
           </Block>
         </Block>
         <Block marginTop={1}>
           <Typography color="textSecondary" variant="subtitle2">
-            balance: {amountToString(balance)}
+            balance: {selectedTokenTicker ? amountToString(balances[selectedTokenTicker]) : '–'}
           </Typography>
         </Block>
       </Block>
