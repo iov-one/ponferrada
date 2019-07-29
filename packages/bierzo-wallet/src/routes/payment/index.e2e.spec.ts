@@ -10,10 +10,12 @@ import {
   getToastMessage,
   launchBrowser,
 } from '../../utils/test/e2e';
-import { openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
+import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
+import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import { travelToBalanceE2E } from '../balance/test/travelToBalance';
+import { PAYMENT_CONFIRMATION_VIEW_ID } from './components/ConfirmPayment';
 import { fillPaymentForm, getPaymentRequestData } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
@@ -48,6 +50,13 @@ withChainsDescribe('E2E > Payment route', () => {
   afterAll(() => {
     server.close();
   });
+
+  fit('should make payment and redirected to payment confirmation page', async () => {
+    await fillPaymentForm(page);
+    await acceptEnqueuedRequest(extensionPage);
+    await page.bringToFront();
+    await findRenderedE2EComponentWithId(page, PAYMENT_CONFIRMATION_VIEW_ID);
+  }, 25000);
 
   it('should have proper information about payment request', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
