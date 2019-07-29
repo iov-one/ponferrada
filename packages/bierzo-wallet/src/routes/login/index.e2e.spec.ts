@@ -49,7 +49,7 @@ withChainsDescribe('E2E > Login route', (): void => {
       browser = await launchBrowser();
       page = await createPage(browser);
       extensionPage = await createExtensionPage(browser);
-    }, 45000);
+    }, 60000);
 
     afterEach(
       async (): Promise<void> => {
@@ -78,7 +78,7 @@ withChainsDescribe('E2E > Login route', (): void => {
       await acceptEnqueuedRequest(extensionPage);
       await page.bringToFront();
       await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
-    }, 45000);
+    }, 60000);
 
     it('should stay in login view if enqueued login request is rejected', async (): Promise<void> => {
       await getBackgroundPage(browser);
@@ -90,7 +90,7 @@ withChainsDescribe('E2E > Login route', (): void => {
       await rejectEnqueuedRequest(extensionPage);
       await page.bringToFront();
       await checkLoginMessage(page);
-    }, 45000);
+    }, 60000);
 
     it('shows login to IOV extension if not persona detected', async (): Promise<void> => {
       await getBackgroundPage(browser);
@@ -101,7 +101,7 @@ withChainsDescribe('E2E > Login route', (): void => {
       await sleep(500);
 
       await checkLoginMessage(page);
-    }, 45000);
+    }, 60000);
   });
 
   it('shows install IOV extension message', async (): Promise<void> => {
@@ -119,5 +119,5 @@ withChainsDescribe('E2E > Login route', (): void => {
     await closeToast(page);
 
     await closeBrowser(browser);
-  }, 45000);
+  }, 60000);
 });
