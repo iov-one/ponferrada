@@ -60,9 +60,9 @@ export const getConfigurationFile = singleton<typeof loadConfigurationFile>(load
 export async function getChainName(chainId: ChainId): Promise<string> {
   const chainNames = (await getConfigurationFile()).names;
 
-  if (!Object.keys(chainNames).includes(chainId)) {
+  if (chainNames.hasOwnProperty(chainId)) {
+    return chainNames[chainId];
+  } else {
     return chainId;
   }
-
-  return chainNames[chainId];
 }
