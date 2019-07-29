@@ -13,6 +13,7 @@ import {
 import { openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
+import { travelToBalanceE2E } from '../balance/test/travelToBalance';
 import { fillPaymentForm, getPaymentRequestData } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
@@ -38,7 +39,6 @@ withChainsDescribe('E2E > Payment route', () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
-    await travelToPaymentE2E(browser, page, extensionPage);
   }, 60000);
 
   afterEach(async () => {
@@ -50,6 +50,10 @@ withChainsDescribe('E2E > Payment route', () => {
   });
 
   it('should have proper information about payment request', async () => {
+    await travelToBalanceE2E(browser, page, extensionPage);
+    await sleep(18000); // wait for faucet to finish its job
+
+    await travelToPaymentE2E(page);
     await fillPaymentForm(page);
     await openEnqueuedRequest(extensionPage);
     await sleep(1000);
@@ -61,9 +65,13 @@ withChainsDescribe('E2E > Payment route', () => {
     expect(beneficiary).toBe('tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
     expect(amount).toBe('1 BASH');
     expect(fee).toBe('0.01 CASH');
-  }, 25000);
+  }, 35000);
 
   it('should show toast message in case if payment will be rejected', async () => {
+    await travelToBalanceE2E(browser, page, extensionPage);
+    await sleep(18000); // wait for faucet to finish its job
+
+    await travelToPaymentE2E(page);
     await fillPaymentForm(page);
     await rejectEnqueuedRequest(extensionPage);
     await page.bringToFront();
@@ -71,5 +79,5 @@ withChainsDescribe('E2E > Payment route', () => {
     const toastMessage = await getToastMessage(page);
     expect(toastMessage).toBe('Request rejected');
     await closeToast(page);
-  }, 25000);
+  }, 35000);
 });

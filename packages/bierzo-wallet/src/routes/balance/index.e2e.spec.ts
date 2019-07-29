@@ -4,6 +4,7 @@ import { Browser, Page } from 'puppeteer';
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { sleep } from '../../utils/timer';
 import { getBalanceTextAtIndex, getUsernameE2E } from './test/operateBalances';
 import { travelToBalanceE2E } from './test/travelToBalance';
 
@@ -30,7 +31,7 @@ withChainsDescribe('E2E > Balance route', () => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToBalanceE2E(browser, page, extensionPage);
-  }, 60000);
+  }, 30000);
 
   afterEach(async () => {
     await closeBrowser(browser);
@@ -41,6 +42,8 @@ withChainsDescribe('E2E > Balance route', () => {
   });
 
   it('should contain balances', async () => {
+    await sleep(18000); // wait for faucet to finish its job
+
     const balances = [
       await getBalanceTextAtIndex(await page.$$('h6'), 0),
       await getBalanceTextAtIndex(await page.$$('h6'), 1),
