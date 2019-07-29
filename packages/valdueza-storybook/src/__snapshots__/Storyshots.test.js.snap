@@ -4078,7 +4078,7 @@ exports[`Storyshots Components Drawer 1`] = `
             alt="IOV logo"
             className="makeStyles-root-1538"
             height={39}
-            src="iov-logo.png"
+            src="iov-logo.svg"
             width={84}
           />
         </div>
@@ -4256,7 +4256,7 @@ exports[`Storyshots Components Layout 1`] = `
       alt="IOV logo"
       className="makeStyles-root-1744"
       height={39}
-      src="iov-logo.png"
+      src="iov-logo.svg"
       width={84}
     />
   </div>
