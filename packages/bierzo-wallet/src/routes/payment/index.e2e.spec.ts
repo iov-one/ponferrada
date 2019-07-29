@@ -39,7 +39,7 @@ withChainsDescribe('E2E > Payment route', () => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await travelToPaymentE2E(browser, page, extensionPage);
-  }, 45000);
+  }, 60000);
 
   afterEach(async () => {
     await closeBrowser(browser);

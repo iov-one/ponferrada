@@ -55,5 +55,5 @@ withChainsDescribe('E2E > Balance route', () => {
     const username = await getUsernameE2E(await page.$$('h5'));
 
     expect(username).toBe('No human readable address registered.');
-  }, 60000);
+  }, 45000);
 });
