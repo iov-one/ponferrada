@@ -20,9 +20,9 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
       );
   });
 
-  afterAll(async () => {
+  afterAll(() => {
     jest.spyOn(tokens, 'filterExistingTokens').mockReset();
-    await disconnect();
+    disconnect();
   });
 
   it('fires subscription callback when account balance changes', async () => {
