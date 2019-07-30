@@ -10,14 +10,13 @@ import { getConnectionFor } from './connection';
 export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
   const chainsWithFaucet = getConfig().chains.filter(isChainConfigWithFaucet);
 
-  for (const { chainSpec, faucetSpec } of chainsWithFaucet) {
+  // Create one job per chain that sends all available tokens. All jobs run in parallel.
+  const jobs = chainsWithFaucet.map(async ({ chainSpec, faucetSpec }) => {
     const codec = getCodec(chainSpec);
     const connection = await getConnectionFor(chainSpec);
     const chainId = connection.chainId() as string;
     const plainPubkey = keys[chainId];
-    if (!plainPubkey) {
-      continue;
-    }
+    if (!plainPubkey) return;
 
     const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
 
@@ -34,5 +33,7 @@ export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Pr
         console.log(`Error using faucet for ${chainId}: ${err.message}`);
       }
     }
-  }
+  });
+
+  await Promise.all(jobs);
 }
