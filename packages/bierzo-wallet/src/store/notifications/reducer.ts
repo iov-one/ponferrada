@@ -1,6 +1,7 @@
 import { Amount } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
+import { ParsedTx } from '../../logic/transactions/BwTransaction';
 import { NotificationActions } from './actions';
 
 export interface Tx {
@@ -18,35 +19,35 @@ export interface ProcessedTx extends Tx {
   readonly err?: any;
 }
 
-export interface NotificationState {
+export interface NotificationState<T> {
   readonly pending: ReadonlyArray<Tx>;
-  readonly transactions: ReadonlyArray<ProcessedTx>;
+  readonly transactions: ReadonlyArray<ParsedTx<T>>;
 }
 
-const initState: NotificationState = {
+const initState = {
   pending: [],
   transactions: [],
 };
 
-export function notificationReducer(
-  state: NotificationState = initState,
+export function notificationReducer<T>(
+  state: NotificationState<T> = initState,
   action: NotificationActions,
-): NotificationState {
+): NotificationState<T> {
   switch (action.type) {
     case '@@notifications/ADD_PENDING_TRANSACTION':
       return {
         ...state,
         pending: [action.payload, ...state.pending],
       };
-    case '@@notifications/ADD_CONFIRMED_TRANSACTION':
+    case '@@notifications/ADD_TRANSACTION':
       if (!action.payload) {
         return state;
       }
 
       return {
         ...state,
-        transactions: [action.payload, ...state.transactions].sort(
-          (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
+        transactions: [action.payload as ParsedTx<any>, ...state.transactions].sort(
+          <T>(a: ParsedTx<T>, b: ParsedTx<T>) => b.time.getTime() - a.time.getTime(),
         ),
       };
     default:

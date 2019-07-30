@@ -1,6 +1,7 @@
 import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
 
+import { ParsedTx } from '../../logic/transactions/BwTransaction';
 import { ProcessedTx } from './reducer';
 
 export interface AddPendingTransactionActionType extends Action {
@@ -13,16 +14,14 @@ export const addPendingTransactionAction = (transaction: ProcessedTx): AddPendin
   payload: transaction,
 });
 
-export interface AddConfirmedTransactionActionType extends Action {
-  type: '@@notifications/ADD_CONFIRMED_TRANSACTION';
-  payload: ProcessedTx;
+export interface AddTransactionActionType<K> extends Action {
+  type: '@@notifications/ADD_TRANSACTION';
+  payload: ParsedTx<K>;
 }
 
-export const addConfirmedTransaction = (transaction: ProcessedTx): AddConfirmedTransactionActionType => ({
-  type: '@@notifications/ADD_CONFIRMED_TRANSACTION',
+export const addTransaction = <K>(transaction: ParsedTx<K>): AddTransactionActionType<K> => ({
+  type: '@@notifications/ADD_TRANSACTION',
   payload: transaction,
 });
 
-export type NotificationActions = ActionType<
-  typeof addPendingTransactionAction | typeof addConfirmedTransaction
->;
+export type NotificationActions = ActionType<typeof addPendingTransactionAction | typeof addTransaction>;
