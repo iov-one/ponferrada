@@ -1,13 +1,13 @@
 import { Page } from 'puppeteer';
 
-const MAX_TIMES_EXECUTED = 35;
-const INTERVAL = 500;
+const retryInterval = 500;
+const defaultTimeout = 18000;
 
 export const whenOnNavigatedToRoute = (desiredRoute: string): Promise<void> =>
   new Promise((resolve, reject): void => {
-    let times = 0;
+    const startTime = Date.now();
     const interval = setInterval((): void => {
-      if (times >= MAX_TIMES_EXECUTED) {
+      if (Date.now() - startTime >= defaultTimeout) {
         clearInterval(interval);
         reject(`Unable to navigate to ${desiredRoute}`);
       } else {
@@ -16,16 +16,15 @@ export const whenOnNavigatedToRoute = (desiredRoute: string): Promise<void> =>
           clearInterval(interval);
           resolve();
         }
-        times += 1;
       }
-    }, INTERVAL);
+    }, retryInterval);
   });
 
 export const whenOnNavigatedToE2eRoute = (page: Page, desiredRoute: string): Promise<void> =>
   new Promise((resolve, reject): void => {
-    let times = 0;
+    const startTime = Date.now();
     const interval = setInterval((): void => {
-      if (times >= MAX_TIMES_EXECUTED) {
+      if (Date.now() - startTime >= defaultTimeout) {
         clearInterval(interval);
         reject(`Unable to navigate to ${desiredRoute}`);
       } else {
@@ -34,7 +33,6 @@ export const whenOnNavigatedToE2eRoute = (page: Page, desiredRoute: string): Pro
           clearInterval(interval);
           resolve();
         }
-        times += 1;
       }
-    }, INTERVAL);
+    }, retryInterval);
   });
