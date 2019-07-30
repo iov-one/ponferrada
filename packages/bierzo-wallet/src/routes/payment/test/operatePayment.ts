@@ -14,10 +14,10 @@ export function getSelectedCurrency(inputs: Element[]): string {
   return input.value;
 }
 
-export async function fillPaymentForm(page: Page): Promise<void> {
+export async function fillPaymentForm(page: Page, quantity: string, address: string): Promise<void> {
   await page.bringToFront();
-  await page.type(`input[name="${QUANTITY_FIELD}"]`, '1');
-  await page.type(`input[name="${ADDRESS_FIELD}`, 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
+  await page.type(`input[name="${QUANTITY_FIELD}"]`, quantity);
+  await page.type(`input[name="${ADDRESS_FIELD}`, address);
   await page.click('button[type=submit]');
 }
 
@@ -28,4 +28,13 @@ export async function getPaymentRequestData(page: Page, dataIndex: number): Prom
   }
 
   return await (await element.getProperty('textContent')).jsonValue();
+}
+
+export async function getInvalidAddressError(page: Page): Promise<string> {
+  const validationError = await page.$('p.MuiFormHelperText-root');
+  if (validationError === null) {
+    throw new Error(`Validation error message was not found.`);
+  }
+
+  return await (await validationError.getProperty('textContent')).jsonValue();
 }
