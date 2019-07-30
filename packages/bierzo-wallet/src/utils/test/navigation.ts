@@ -1,38 +1,34 @@
 import { Page } from 'puppeteer';
 
 const retryInterval = 500;
-const defaultTimeout = 18000;
+
+/**
+ * Calls callback until it returns true or timeout is reachend.
+ *
+ * @param callback a callback function that is called in a loop. It should be cheap to execute.
+ * @param timeout timeout in milliseconds. Defaults to 10 seconds
+ * @returns a promise that resolves when the callback returned true and is rejected when timeout is reached.
+ */
+export function whenTrue(callback: () => boolean, timeout: number = 10000): Promise<void> {
+  return new Promise((resolve, reject): void => {
+    const startTime = Date.now();
+    const interval = setInterval((): void => {
+      const runtime = Date.now() - startTime;
+      if (runtime >= timeout) {
+        clearInterval(interval);
+        reject(`Timeout reached after ${runtime} ms`);
+      } else {
+        if (callback()) {
+          clearInterval(interval);
+          resolve();
+        }
+      }
+    }, retryInterval);
+  });
+}
 
 export const whenOnNavigatedToRoute = (desiredRoute: string): Promise<void> =>
-  new Promise((resolve, reject): void => {
-    const startTime = Date.now();
-    const interval = setInterval((): void => {
-      if (Date.now() - startTime >= defaultTimeout) {
-        clearInterval(interval);
-        reject(`Unable to navigate to ${desiredRoute}`);
-      } else {
-        const actualRoute = window.location.pathname;
-        if (actualRoute === desiredRoute) {
-          clearInterval(interval);
-          resolve();
-        }
-      }
-    }, retryInterval);
-  });
+  whenTrue(() => window.location.pathname === desiredRoute);
 
 export const whenOnNavigatedToE2eRoute = (page: Page, desiredRoute: string): Promise<void> =>
-  new Promise((resolve, reject): void => {
-    const startTime = Date.now();
-    const interval = setInterval((): void => {
-      if (Date.now() - startTime >= defaultTimeout) {
-        clearInterval(interval);
-        reject(`Unable to navigate to ${desiredRoute}`);
-      } else {
-        const actualRoute = page.url();
-        if (actualRoute.endsWith(desiredRoute)) {
-          clearInterval(interval);
-          resolve();
-        }
-      }
-    }, retryInterval);
-  });
+  whenTrue(() => page.url().endsWith(desiredRoute));
