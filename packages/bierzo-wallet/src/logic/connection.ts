@@ -9,9 +9,9 @@ let ethereumConnection: EthereumConnection | undefined;
 let bnsConnection: BnsConnection | undefined;
 let liskConnection: LiskConnection | undefined;
 
-async function getEthereumConnection(url: string): Promise<EthereumConnection> {
+async function getEthereumConnection(url: string, scraperApiUrl?: string): Promise<EthereumConnection> {
   if (!ethereumConnection) {
-    ethereumConnection = await EthereumConnection.establish(url, {});
+    ethereumConnection = await EthereumConnection.establish(url, { scraperApiUrl });
   }
   return ethereumConnection;
 }
@@ -43,7 +43,7 @@ export function isEthSpec(spec: ChainSpec): boolean {
 }
 
 export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConnection> {
-  if (isEthSpec(spec)) return getEthereumConnection(spec.node);
+  if (isEthSpec(spec)) return getEthereumConnection(spec.node, spec.scraper);
   if (isBnsSpec(spec)) return getBnsConnection(spec.node);
   if (isLskSpec(spec)) return getLiskConnection(spec.node);
 
