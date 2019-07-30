@@ -1,4 +1,4 @@
-import { Address, Identity, TokenTicker } from '@iov/bcp';
+import { Address, Identity, TokenTicker, TransactionId } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
@@ -12,20 +12,31 @@ import PageMenu from '../../components/PageMenu';
 import { isIov, lookupRecipientAddressByName } from '../../logic/account';
 import { RootState } from '../../store/reducers';
 import { padAmount, stringToAmount } from '../../utils/balances';
-import { PAYMENT_ROUTE } from '../paths';
+import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from '../paths';
 import Layout from './components';
+import ConfirmPayment from './components/ConfirmPayment';
 import { CURRENCY_FIELD, QUANTITY_FIELD } from './components/CurrencyToSend';
 import { ADDRESS_FIELD } from './components/ReceiverAddress';
 import { TEXTNOTE_FIELD } from './components/TextNote';
 
 function onCancelPayment(): void {
+  history.push(BALANCE_ROUTE);
+}
+function onNewPayment(): void {
   history.push(PAYMENT_ROUTE);
+}
+function onSeeTrasactions(): void {
+  history.push(TRANSACTIONS_ROUTE);
+}
+function onReturnToBalance(): void {
+  history.push(BALANCE_ROUTE);
 }
 
 const Payment = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
+  const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
@@ -70,7 +81,7 @@ const Payment = (): JSX.Element => {
       if (transactionId === null) {
         toast.show('Request rejected', ToastVariant.ERROR);
       } else {
-        toast.show(`Transaction successful with ID: ${transactionId.slice(0, 10)}...`, ToastVariant.SUCCESS);
+        setTransactionId(transactionId);
       }
     } catch (error) {
       console.error(error);
@@ -81,7 +92,16 @@ const Payment = (): JSX.Element => {
 
   return (
     <PageMenu>
-      <Layout onCancelPayment={onCancelPayment} onSubmit={onSubmit} />
+      {transactionId ? (
+        <ConfirmPayment
+          transactionId={transactionId}
+          onNewPayment={onNewPayment}
+          onSeeTrasactions={onSeeTrasactions}
+          onReturnToBalance={onReturnToBalance}
+        />
+      ) : (
+        <Layout onCancelPayment={onCancelPayment} onSubmit={onSubmit} />
+      )}
     </PageMenu>
   );
 };

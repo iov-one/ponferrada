@@ -10,6 +10,9 @@ import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Payment from './index';
 
+export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
+export const TRANSACTIONS_STORY_SHOW_PATH = 'With transactions';
+
 const txs: ReadonlyArray<ProcessedTx> = [
   {
     received: true,
@@ -157,7 +160,7 @@ const txStore: DeepPartial<RootState> = {
   },
 };
 
-storiesOf(`${WALLET_ROOT}/Transactions page`, module)
+storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: 'responsive' } })
   .add(
     'Without transactions',
@@ -168,7 +171,7 @@ storiesOf(`${WALLET_ROOT}/Transactions page`, module)
     ),
   )
   .add(
-    'With transactions',
+    TRANSACTIONS_STORY_SHOW_PATH,
     (): JSX.Element => (
       <DecoratedStorybook storeProps={txStore}>
         <Payment />

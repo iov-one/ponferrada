@@ -10,10 +10,12 @@ import {
   getToastMessage,
   launchBrowser,
 } from '../../utils/test/e2e';
-import { openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
+import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } from '../../utils/test/persona';
+import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
 import { travelToBalanceE2E } from '../balance/test/travelToBalance';
+import { PAYMENT_CONFIRMATION_VIEW_ID } from './components/ConfirmPayment';
 import { fillPaymentForm, getPaymentRequestData } from './test/operatePayment';
 import { travelToPaymentE2E } from './test/travelToPayment';
 
@@ -48,6 +50,17 @@ withChainsDescribe('E2E > Payment route', () => {
   afterAll(() => {
     server.close();
   });
+
+  it('should make payment and redirected to payment confirmation page', async () => {
+    await travelToBalanceE2E(browser, page, extensionPage);
+    await sleep(18000); // wait for faucet to finish its job
+
+    await travelToPaymentE2E(page);
+    await fillPaymentForm(page);
+    await acceptEnqueuedRequest(extensionPage);
+    await page.bringToFront();
+    await findRenderedE2EComponentWithId(page, PAYMENT_CONFIRMATION_VIEW_ID);
+  }, 35000);
 
   it('should have proper information about payment request', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
