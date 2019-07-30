@@ -10,13 +10,14 @@ export const whenOnNavigatedToRoute = (desiredRoute: string): Promise<void> =>
       if (times >= MAX_TIMES_EXECUTED) {
         clearInterval(interval);
         reject(`Unable to navigate to ${desiredRoute}`);
+      } else {
+        const actualRoute = window.location.pathname;
+        if (actualRoute === desiredRoute) {
+          clearInterval(interval);
+          resolve();
+        }
+        times += 1;
       }
-      const actualRoute = window.location.pathname;
-      if (actualRoute === desiredRoute) {
-        clearInterval(interval);
-        resolve();
-      }
-      times += 1;
     }, INTERVAL);
   });
 
@@ -27,12 +28,13 @@ export const whenOnNavigatedToE2eRoute = (page: Page, desiredRoute: string): Pro
       if (times >= MAX_TIMES_EXECUTED) {
         clearInterval(interval);
         reject(`Unable to navigate to ${desiredRoute}`);
+      } else {
+        const actualRoute = page.url();
+        if (actualRoute.endsWith(desiredRoute)) {
+          clearInterval(interval);
+          resolve();
+        }
+        times += 1;
       }
-      const actualRoute = page.url();
-      if (actualRoute.endsWith(desiredRoute)) {
-        clearInterval(interval);
-        resolve();
-      }
-      times += 1;
     }, INTERVAL);
   });
