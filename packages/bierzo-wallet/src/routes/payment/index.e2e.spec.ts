@@ -62,7 +62,7 @@ withChainsDescribe('E2E > Payment route', () => {
     await findRenderedE2EComponentWithId(page, PAYMENT_CONFIRMATION_VIEW_ID);
   }, 35000);
 
-  fit('should not let to make payment address is not valid', async () => {
+  it('should not let to make payment address is not valid', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
     await sleep(18000); // wait for faucet to finish its job
 
