@@ -55,6 +55,7 @@ withChainsDescribe('E2E > Payment route', () => {
     await travelToBalanceE2E(browser, page, extensionPage);
     await sleep(18000); // wait for faucet to finish its job
 
+    await travelToPaymentE2E(page);
     await fillPaymentForm(page);
     await acceptEnqueuedRequest(extensionPage);
     await page.bringToFront();
