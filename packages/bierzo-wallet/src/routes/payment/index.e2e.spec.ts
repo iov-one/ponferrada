@@ -14,6 +14,7 @@ import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } fro
 import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { sleep } from '../../utils/timer';
+import { waitForAllBalances } from '../balance/test/operateBalances';
 import { travelToBalanceE2E } from '../balance/test/travelToBalance';
 import { PAYMENT_CONFIRMATION_VIEW_ID } from './components/ConfirmPayment';
 import { fillPaymentForm, getInvalidAddressError, getPaymentRequestData } from './test/operatePayment';
@@ -53,7 +54,7 @@ withChainsDescribe('E2E > Payment route', () => {
 
   it('should make payment and redirected to payment confirmation page', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
-    await sleep(18000); // wait for faucet to finish its job
+    await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, '1', 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
@@ -64,7 +65,7 @@ withChainsDescribe('E2E > Payment route', () => {
 
   it('should not let to make payment address is not valid', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
-    await sleep(18000); // wait for faucet to finish its job
+    await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, '1', 'not_valid_address');
@@ -74,7 +75,7 @@ withChainsDescribe('E2E > Payment route', () => {
 
   it('should have proper information about payment request', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
-    await sleep(18000); // wait for faucet to finish its job
+    await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, '1', 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');
@@ -92,7 +93,7 @@ withChainsDescribe('E2E > Payment route', () => {
 
   it('should show toast message in case if payment will be rejected', async () => {
     await travelToBalanceE2E(browser, page, extensionPage);
-    await sleep(18000); // wait for faucet to finish its job
+    await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, '1', 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku');

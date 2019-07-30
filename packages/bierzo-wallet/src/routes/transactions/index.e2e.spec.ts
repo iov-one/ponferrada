@@ -6,7 +6,7 @@ import { TRANSACTIONS_TEXT } from '../../components/Header/components/LinksMenu'
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
 import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { sleep } from '../../utils/timer';
+import { waitForAllBalances } from '../balance/test/operateBalances';
 import { travelToBalanceE2E } from '../balance/test/travelToBalance';
 import { TRANSACTIONS_ROUTE } from '../paths';
 
@@ -44,7 +44,7 @@ withChainsDescribe('E2E > Transactions route', () => {
   });
 
   it('contains two transactions', async () => {
-    await sleep(18000); // wait for faucet to finish its job
+    await waitForAllBalances(page);
 
     const [txLink] = await page.$x(`//h6[contains(., '${TRANSACTIONS_TEXT}')]`);
     await txLink.click();
