@@ -42,8 +42,10 @@ const Payment = (): JSX.Element => {
 
   const onTokenSelectionChanged = async (ticker: TokenTicker): Promise<void> => {
     const token = tokens[ticker];
-    const chainId = token.chainId;
-    setSelectedChainCodec(await getCodecForChainId(chainId));
+    if (token) {
+      const chainId = token.chainId;
+      setSelectedChainCodec(await getCodecForChainId(chainId));
+    }
   };
 
   const onSubmit = async (values: object): Promise<void> => {
