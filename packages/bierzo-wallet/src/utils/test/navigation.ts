@@ -1,6 +1,6 @@
 import { Page } from 'puppeteer';
 
-const retryInterval = 500;
+const retryInterval = 400;
 
 /**
  * Calls callback until it returns true or timeout is reachend.
