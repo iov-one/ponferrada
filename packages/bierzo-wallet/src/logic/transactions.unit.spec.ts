@@ -4,6 +4,7 @@ import { aNewStore } from '../store';
 import * as transactionActions from '../store/notifications/actions';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
+import { sleep } from '../utils/timer';
 import * as tokens from '../utils/tokens';
 import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
@@ -34,6 +35,9 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
 
     // Trigger incoming SendTransactions
     await drinkFaucetIfNeeded(keys);
+
+    // Wait for events to be processed
+    await sleep(1000);
 
     // Got one incoming transaction for BASH, CASH, ETH
     expect(txsSpy).toHaveBeenCalledTimes(3);

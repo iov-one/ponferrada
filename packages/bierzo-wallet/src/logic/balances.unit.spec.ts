@@ -4,6 +4,7 @@ import { aNewStore } from '../store';
 import * as balanceActions from '../store/balances/actions';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
+import { sleep } from '../utils/timer';
 import * as tokens from '../utils/tokens';
 import { subscribeBalance, unsubscribeBalances } from './balances';
 import { disconnect } from './connection';
@@ -34,6 +35,9 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
 
     // Trick for forcing account to receive balance events updates
     await drinkFaucetIfNeeded(keys);
+
+    // Wait for events to be processed
+    await sleep(1000);
 
     // Got one update per incoming transaction for BASH, CASH, ETH
     expect(balanceSpy).toHaveBeenCalledTimes(3);
