@@ -1,3 +1,13 @@
 {
-  "extensionId": "N/A"
+  "extensionId": "N/A",
+  "bnsChain": {
+    "chainSpec": {
+      "codecType": "bns",
+      "node": "wss://bns.antnet.iov.one/"
+    },
+    "faucetSpec": {
+      "uri": "https://bns-faucet.antnet.iov.one",
+      "tokens": ["IOV"]
+    }
+  }
 }
