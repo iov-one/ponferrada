@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, received, signer, recipient, success } = item;
+  const { time, amount, received, sender, recipient, success } = item;
 
   const beautifulAmount = prettyAmount(amount);
   const icon = success ? (received ? receiveTx : sendTx) : errorTx;
@@ -58,7 +58,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       onVisitSendPayment={onVisitSendPayment}
       received={received}
       amount={beautifulAmount}
-      signer={signer}
+      signer={sender}
       recipient={recipient}
     />
   ) : (

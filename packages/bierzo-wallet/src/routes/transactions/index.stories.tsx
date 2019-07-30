@@ -16,7 +16,7 @@ export const TRANSACTIONS_STORY_SHOW_PATH = 'With transactions';
 const txs: ReadonlyArray<ProcessedTx> = [
   {
     received: true,
-    signer: 'george*iov',
+    sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
@@ -26,7 +26,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
@@ -35,7 +35,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
@@ -45,7 +45,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: true,
-    signer: 'Lx9oa7re0894eopiahsdpf98as7y908',
+    sender: 'Lx9oa7re0894eopiahsdpf98as7y908',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
@@ -55,7 +55,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
@@ -64,7 +64,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
@@ -73,7 +73,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: true,
-    signer: 'george*iov',
+    sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
@@ -82,7 +82,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
@@ -91,7 +91,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
@@ -100,7 +100,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: true,
-    signer: 'george*iov',
+    sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
@@ -109,7 +109,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
@@ -118,7 +118,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
@@ -127,7 +127,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: true,
-    signer: 'george*iov',
+    sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
@@ -136,7 +136,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'Lxasdoiu9847ioasdpfuy098q23rui',
+    sender: 'Lxasdoiu9847ioasdpfuy098q23rui',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
@@ -145,7 +145,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),

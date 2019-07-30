@@ -1,12 +1,11 @@
 import {
+  Address,
   BlockchainConnection,
   ConfirmedTransaction,
   Identity,
   isConfirmedTransaction,
   isSendTransaction,
   LightTransaction,
-  pubkeyBundleEquals,
-  TxCodec,
 } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import { Dispatch } from 'redux';
@@ -22,8 +21,7 @@ let txsSubscriptions: Subscription[] = [];
 export const parseConfirmedTransaction = async <T extends LightTransaction>(
   conn: BlockchainConnection,
   trans: ConfirmedTransaction<T>,
-  identity: Identity,
-  codec: TxCodec,
+  currentUserAddress: Address,
 ): Promise<ProcessedTx | undefined> => {
   const payload = trans.transaction;
   if (!isSendTransaction(payload)) {
@@ -34,14 +32,7 @@ export const parseConfirmedTransaction = async <T extends LightTransaction>(
   const header = await conn.getBlockHeader(trans.height);
   const time = header.time;
 
-  const received = !pubkeyBundleEquals(trans.primarySignature.pubkey, identity.pubkey);
-
-  const creatorPubkey = trans.primarySignature.pubkey;
-  const creator: Identity = {
-    chainId: conn.chainId(),
-    pubkey: creatorPubkey,
-  };
-  const signer = codec.identityToAddress(creator);
+  const received = payload.recipient === currentUserAddress;
 
   return {
     id: trans.transactionId,
@@ -50,7 +41,7 @@ export const parseConfirmedTransaction = async <T extends LightTransaction>(
     time,
     received,
     recipient: payload.recipient,
-    signer,
+    sender: payload.sender,
     success: true,
   };
 };
@@ -83,7 +74,7 @@ export async function subscribeTransaction(
 
         // Here once we support more tx types we need to find a solution for separating
         // common attributes from specific attributes
-        const proccesedTx = await parseConfirmedTransaction(connection, tx, identity, codec);
+        const proccesedTx = await parseConfirmedTransaction(connection, tx, address);
         if (!proccesedTx) {
           return;
         }
