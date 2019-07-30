@@ -1,6 +1,4 @@
-import { bnsCodec } from '@iov/bns';
-import { ethereumCodec } from '@iov/ethereum';
-import { liskCodec } from '@iov/lisk';
+import { TxCodec } from '@iov/bcp';
 import Paper from '@material-ui/core/Paper';
 import { FieldValidator, FormApi } from 'final-form';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -14,29 +12,30 @@ import { isIov } from '../../../../logic/account';
 
 export const ADDRESS_FIELD = 'addressField';
 
-function isNativeBlockchainAddress(input: string): boolean {
-  return (
-    bnsCodec.isValidAddress(input) || ethereumCodec.isValidAddress(input) || liskCodec.isValidAddress(input)
-  );
-}
-
-const recipientValidator: FieldValidator = (value): string | undefined => {
-  if (typeof value !== 'string') throw new Error('Input must be a string');
-
-  if (isNativeBlockchainAddress(value) || isIov(value)) {
-    return undefined;
-  } else {
-    return 'Must be an IOV human readable address or a native address';
-  }
-};
-
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
+  readonly selectedChainCodec: TxCodec | null;
 }
 
-const validator = composeValidators(required, recipientValidator);
+const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
+  const recipientValidator: FieldValidator = React.useMemo(() => {
+    const validator = (value: string): string | undefined => {
+      if (typeof value !== 'string') throw new Error('Input must be a string');
 
-const ReceiverAddress = (props: Props): JSX.Element => {
+      if (isIov(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
+        return undefined;
+      } else {
+        return 'Must be an IOV human readable address or a native address';
+      }
+    };
+
+    return validator;
+  }, [selectedChainCodec]);
+
+  const validator = React.useMemo(() => {
+    return composeValidators(required, recipientValidator);
+  }, [recipientValidator]);
+
   return (
     <Paper>
       <Block display="flex" flexDirection="column" width="100%" padding={5}>
@@ -46,9 +45,10 @@ const ReceiverAddress = (props: Props): JSX.Element => {
         <Block width="100%" marginTop={2} marginBottom={1}>
           <TextFieldForm
             name={ADDRESS_FIELD}
-            form={props.form}
+            form={form}
             validate={validator}
             placeholder="IOV or wallet address"
+            disabled={selectedChainCodec === null}
             fullWidth
             margin="none"
           />
