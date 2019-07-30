@@ -23,6 +23,14 @@ const useAvatar = makeStyles((theme: Theme) => ({
   },
 }));
 
+const useTypography = makeStyles({
+  wrap: {
+    width: 370,
+    whiteSpace: 'pre-wrap',
+    wordWrap: 'break-word',
+  },
+});
+
 interface Props {
   readonly transactionId: TransactionId;
   readonly onNewPayment: () => void;
@@ -37,6 +45,7 @@ const ConfirmPayment = ({
   onReturnToBalance,
 }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
+  const typographyClasses = useTypography();
   const theme = useTheme<Theme>();
 
   return (
@@ -68,7 +77,12 @@ const ConfirmPayment = ({
               <Typography variant="h6" weight="light">
                 Transaction ID:
               </Typography>
-              <Typography variant="h6" weight="semibold" color="primary">
+              <Typography
+                variant="body2"
+                weight="semibold"
+                color="primary"
+                className={typographyClasses.wrap}
+              >
                 {transactionId}
               </Typography>
             </Block>

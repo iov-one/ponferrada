@@ -54,7 +54,9 @@ storiesOf(PAYMENT_STORY_PATH, module)
     (): JSX.Element => (
       <DecoratedStorybook>
         <ConfirmPayment
-          transactionId={'transactionID' as TransactionId}
+          transactionId={
+            '0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e' as TransactionId
+          }
           onNewPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
           onSeeTrasactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
           onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
