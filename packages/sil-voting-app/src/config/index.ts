@@ -6,6 +6,23 @@ import stagingConfig from './staging.json';
 
 export interface Config {
   readonly extensionId: string;
+  readonly bnsChain: ChainConfig;
+}
+
+export interface ChainConfig {
+  readonly chainSpec: ChainSpec;
+  readonly faucetSpec?: FaucetSpec;
+}
+
+export interface ChainSpec {
+  readonly codecType: string;
+  readonly node: string;
+  readonly scraper?: string;
+}
+
+export interface FaucetSpec {
+  readonly uri: string;
+  readonly tokens: ReadonlyArray<string>;
 }
 
 const configuration = (): Config => {
