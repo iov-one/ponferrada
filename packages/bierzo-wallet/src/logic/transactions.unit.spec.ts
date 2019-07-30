@@ -4,7 +4,6 @@ import { aNewStore } from '../store';
 import * as transactionActions from '../store/notifications/actions';
 import { createPubkeys } from '../utils/test/pubkeys';
 import { withChainsDescribe } from '../utils/test/testExecutor';
-import { sleep } from '../utils/timer';
 import * as tokens from '../utils/tokens';
 import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
@@ -31,19 +30,16 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     const store = aNewStore();
     const keys = await createPubkeys();
 
-    await drinkFaucetIfNeeded(keys);
     await subscribeTransaction(keys, store.dispatch);
 
-    // Trick for forcing account to receive balance events updates
+    // Trigger incoming SendTransactions
     await drinkFaucetIfNeeded(keys);
 
-    // Give some time to open request to be finished
-    await sleep(5000);
-    await sleep(5000);
-
-    // 2 (cash) + 2 (bash) + 2 eth
-    expect(txsSpy).toHaveBeenCalledTimes(6);
+    // Got one incoming transaction for BASH, CASH, ETH
+    expect(txsSpy).toHaveBeenCalledTimes(3);
+    const transactions = txsSpy.mock.calls.map(call => call[0]);
+    expect(new Set(transactions.map(tx => tx.amount.tokenTicker))).toEqual(new Set(['BASH', 'CASH', 'ETH']));
 
     unsubscribeTransactions();
-  }, 60000);
+  }, 30000);
 });
