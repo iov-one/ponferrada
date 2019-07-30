@@ -25,7 +25,9 @@ export const loginBootSequence = async (
   const chainTokens = await getTokens();
   dispatch(addTickersAction(chainTokens));
 
-  await drinkFaucetIfNeeded(keys);
+  // Do not block the use of the wallet just because the faucet might take
+  // some time send tokens
+  drinkFaucetIfNeeded(keys).catch(console.error);
 
   const balances = await getBalances(keys);
   dispatch(addBalancesAction(balances));
