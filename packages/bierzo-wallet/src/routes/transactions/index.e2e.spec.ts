@@ -4,9 +4,9 @@ import { Browser, Page } from 'puppeteer';
 
 import { TRANSACTIONS_TEXT } from '../../components/Header/components/LinksMenu';
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from '../../utils/test/e2e';
-import { whenOnNavigatedToE2eRoute } from '../../utils/test/navigation';
+import { whenOnNavigatedToE2eRoute, whenTrue } from '../../utils/test/navigation';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { sleep } from '../../utils/timer';
+import { waitForAllBalances } from '../balance/test/operateBalances';
 import { travelToBalanceE2E } from '../balance/test/travelToBalance';
 import { TRANSACTIONS_ROUTE } from '../paths';
 
@@ -43,16 +43,20 @@ withChainsDescribe('E2E > Transactions route', () => {
     server.close();
   });
 
-  it('contains two transactions', async () => {
-    await sleep(18000); // wait for faucet to finish its job
+  it('contains faucet transactions', async () => {
+    await waitForAllBalances(page);
 
     const [txLink] = await page.$x(`//h6[contains(., '${TRANSACTIONS_TEXT}')]`);
     await txLink.click();
     await whenOnNavigatedToE2eRoute(page, TRANSACTIONS_ROUTE);
 
-    // Checking number of rows
+    const expectedRowCount = 3; // TODO update number to show ETH one when #412 is done
+
+    // wait for transaction events to populate screen
+    await whenTrue(async () => (await page.$$('img[alt="Transaction type"]')).length >= expectedRowCount);
+
+    // TODO: Run some tests in the content of those rows
     const rows = await page.$$('img[alt="Transaction type"]');
-    // TODO update number to show ETH one when #412 is done
-    expect(rows.length).toBe(3);
+    expect(rows.length).toBe(expectedRowCount);
   }, 45000);
 });
