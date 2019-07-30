@@ -1,3 +1,13 @@
 {
-  "extensionId": "hkmeinfklhongiffbgkfaandidpmklen"
+  "extensionId": "hkmeinfklhongiffbgkfaandidpmklen",
+  "bnsChain": {
+    "chainSpec": {
+      "codecType": "bns",
+      "node": "wss://bns.kissnet.iov.one/"
+    },
+    "faucetSpec": {
+      "uri": "https://bns-faucet.kissnet.iov.one",
+      "tokens": ["IOV"]
+    }
+  }
 }
