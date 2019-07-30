@@ -14,6 +14,15 @@ export interface ChainConfig {
   readonly faucetSpec?: FaucetSpec;
 }
 
+/** Like ChainConfig but with non-optional faucet */
+export interface ChainConfigWithFaucet extends ChainConfig {
+  readonly faucetSpec: FaucetSpec;
+}
+
+export function isChainConfigWithFaucet(chain: ChainConfig): chain is ChainConfigWithFaucet {
+  return !!chain.faucetSpec;
+}
+
 export interface ConfigErc20Options {
   readonly contractAddress: string;
   readonly symbol: string;
