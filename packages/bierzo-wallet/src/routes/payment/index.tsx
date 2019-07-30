@@ -36,7 +36,7 @@ const Payment = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
-  const [transactionId, setTransactionId] = React.useState<TransactionId | null>();
+  const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
