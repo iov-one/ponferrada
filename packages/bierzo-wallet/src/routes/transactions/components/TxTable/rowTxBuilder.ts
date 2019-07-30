@@ -6,14 +6,6 @@ import toAddress from '../../assets/toAddress.svg';
 import toAddressRejected from '../../assets/toAddressRejected.svg';
 import { SortingStateProps } from '../sorting';
 
-export interface TxTableRowProps {
-  readonly tx: ProcessedTx;
-}
-
-export interface TxTableState {
-  readonly phoneHook: HTMLDivElement | null;
-}
-
 export interface TxTableProps extends SortingStateProps {
   readonly txs: ReadonlyArray<ProcessedTx>;
   readonly onChangeRows: (item: Item) => void;
