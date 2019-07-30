@@ -1,4 +1,6 @@
 import { TokenTicker, TransactionId } from '@iov/bcp';
+import { liskCodec } from '@iov/lisk';
+import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -35,6 +37,10 @@ const fullStore = (): DeepPartial<RootState> => {
   };
 };
 
+async function onTokenSelectionChanged(ticker: TokenTicker): Promise<void> {
+  action(`Tiker: ${ticker}`)();
+}
+
 async function onSubmit(_: object): Promise<void> {
   linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_CONFIRMATION_PATH)();
 }
@@ -45,7 +51,12 @@ storiesOf(PAYMENT_STORY_PATH, module)
     PAYMENT_STORY_PAYMENT_PATH,
     (): JSX.Element => (
       <DecoratedStorybook storeProps={fullStore()}>
-        <Layout onCancelPayment={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)} onSubmit={onSubmit} />
+        <Layout
+          onCancelPayment={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+          onSubmit={onSubmit}
+          onTokenSelectionChanged={onTokenSelectionChanged}
+          selectedChainCodec={liskCodec}
+        />
       </DecoratedStorybook>
     ),
   )

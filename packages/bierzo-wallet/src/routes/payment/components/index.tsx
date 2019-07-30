@@ -1,3 +1,4 @@
+import { TokenTicker, TxCodec } from '@iov/bcp';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
@@ -44,9 +45,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface Props {
   readonly onSubmit: (values: object) => Promise<void>;
   readonly onCancelPayment: () => void;
+  readonly onTokenSelectionChanged: (ticker: TokenTicker) => Promise<void>;
+  readonly selectedChainCodec: TxCodec | null;
 }
 
-const Layout = ({ onSubmit, onCancelPayment }: Props): JSX.Element => {
+const Layout = ({
+  onSubmit,
+  onCancelPayment,
+  onTokenSelectionChanged,
+  selectedChainCodec,
+}: Props): JSX.Element => {
   const classes = useStyles();
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
@@ -66,10 +74,10 @@ const Layout = ({ onSubmit, onCancelPayment }: Props): JSX.Element => {
         className={classes.payment}
       >
         <Block width="100%" className={classes.currencyToSend}>
-          <CurrencyToSend form={form} />
+          <CurrencyToSend form={form} onTokenSelectionChanged={onTokenSelectionChanged} />
         </Block>
         <Block width="100%" className={classes.receiverAddress}>
-          <ReceiverAddress form={form} />
+          <ReceiverAddress form={form} selectedChainCodec={selectedChainCodec} />
         </Block>
         <Block width="100%" className={classes.textNote}>
           <TextNote form={form} />

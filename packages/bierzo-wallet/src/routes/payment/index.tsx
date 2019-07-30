@@ -1,4 +1,4 @@
-import { Address, Identity, TokenTicker, TransactionId } from '@iov/bcp';
+import { Address, Identity, TokenTicker, TransactionId, TxCodec } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
 import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
@@ -10,6 +10,7 @@ import { history } from '..';
 import { sendSignAndPostRequest } from '../../communication/signAndPost';
 import PageMenu from '../../components/PageMenu';
 import { isIov, lookupRecipientAddressByName } from '../../logic/account';
+import { getCodecForChainId } from '../../logic/codec';
 import { RootState } from '../../store/reducers';
 import { padAmount, stringToAmount } from '../../utils/balances';
 import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from '../paths';
@@ -37,6 +38,15 @@ const Payment = (): JSX.Element => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
+  const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
+
+  const onTokenSelectionChanged = async (ticker: TokenTicker): Promise<void> => {
+    const token = tokens[ticker];
+    if (token) {
+      const chainId = token.chainId;
+      setSelectedChainCodec(await getCodecForChainId(chainId));
+    }
+  };
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
@@ -100,7 +110,12 @@ const Payment = (): JSX.Element => {
           onReturnToBalance={onReturnToBalance}
         />
       ) : (
-        <Layout onCancelPayment={onCancelPayment} onSubmit={onSubmit} />
+        <Layout
+          onCancelPayment={onCancelPayment}
+          onSubmit={onSubmit}
+          onTokenSelectionChanged={onTokenSelectionChanged}
+          selectedChainCodec={selectedChainCodec}
+        />
       )}
     </PageMenu>
   );

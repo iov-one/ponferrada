@@ -1,5 +1,6 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TokenTicker } from '@iov/bcp';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/styles';
@@ -37,9 +38,10 @@ export const CURRENCY_FIELD = 'currencyField';
 
 interface Props {
   readonly form: FormApi;
+  readonly onTokenSelectionChanged: (ticker: TokenTicker) => Promise<void>;
 }
 
-const CurrencyToSend = ({ form }: Props): JSX.Element => {
+const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element => {
   const balances = ReactRedux.useSelector((state: RootState) => state.balances);
   const classes = useStyles();
 
@@ -59,12 +61,16 @@ const CurrencyToSend = ({ form }: Props): JSX.Element => {
     );
   }, [balances, selectedTokenTicker]);
 
-  const avatarClasses = {
-    root: classes.avatar,
+  React.useEffect(() => {
+    onTokenSelectionChanged(selectedTokenTicker as TokenTicker);
+  }, [onTokenSelectionChanged, selectedTokenTicker]);
+
+  const onSelectionChanged = (item: Item): void => {
+    setSelectedTokenTicker(item.name);
   };
 
-  const onTokenSelectionChanged = (item: Item): void => {
-    setSelectedTokenTicker(item.name);
+  const avatarClasses = {
+    root: classes.avatar,
   };
 
   return (
@@ -95,7 +101,7 @@ const CurrencyToSend = ({ form }: Props): JSX.Element => {
                 maxWidth="60px"
                 items={currencyItems}
                 initial={firstToken ? firstToken.name : '–'}
-                onChangeCallback={onTokenSelectionChanged}
+                onChangeCallback={onSelectionChanged}
               />
             </Block>
           </Block>
