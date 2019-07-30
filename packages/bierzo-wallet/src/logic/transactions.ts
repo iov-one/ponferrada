@@ -90,6 +90,7 @@ export async function subscribeTransaction(
 
         await dispatch(addConfirmedTransaction(proccesedTx));
       },
+      error: error => console.error(error),
     });
     txsSubscriptions.push(subscription);
   }
