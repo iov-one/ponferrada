@@ -29,9 +29,10 @@ export async function subscribeBalance(keys: { [chain: string]: string }, dispat
     // subscribe to balance changes via
     const subscription = connection.watchAccount({ address }).subscribe({
       next: async account => {
-        const balances = await getBalances(keys);
-
-        await dispatch(addBalancesAction(balances));
+        if (account) {
+          const balances = await getBalances(keys);
+          await dispatch(addBalancesAction(balances));
+        }
       },
     });
     balanceSubscriptions.push(subscription);
