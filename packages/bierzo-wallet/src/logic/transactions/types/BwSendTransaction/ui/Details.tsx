@@ -3,8 +3,8 @@ import Block from 'medulas-react-components/lib/components/Block';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 
+import { getAddressPrefix } from '../../../../../routes/transactions/components/TxTable/rowTxBuilder';
 import { ProcessedTx } from '../../../../../store/notifications';
-import { getAddressPrefix } from '../rowTxBuilder';
 
 const useStyles = makeStyles({
   sectionName: {
