@@ -1,15 +1,16 @@
 import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
-import { BwTransaction } from '../../types/BwTransaction';
+import { ProcessedTx } from '../../../../store/notifications';
+import { BwTransaction, ParsedTx } from '../../types/BwTransaction';
 import SendTransactionComponent, { BwSendTransactionProps } from './ui';
 
-export class BwSendParser extends BwTransaction<SendTransaction, BwSendTransactionProps> {
+export class BwSendParser extends BwTransaction<ProcessedTx> {
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,
     currentUserAddress: Address,
-  ): Promise<BwSendTransactionProps> {
+  ): Promise<ParsedTx<ProcessedTx>> {
     const payload = trans.transaction;
 
     const header = await conn.getBlockHeader(trans.height);
