@@ -7,6 +7,7 @@ import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
+import { ParsedTx } from '../../logic/transactions/BwTransaction';
 import { ProcessedTx, Tx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';
@@ -28,8 +29,9 @@ const pendingTxs: ReadonlyArray<Tx> = [
   },
 ];
 
-const txs: ReadonlyArray<ProcessedTx> = [
+const txs: ReadonlyArray<ParsedTx<ProcessedTx>> = [
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
@@ -39,6 +41,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx1',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -49,7 +52,8 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
 ];
 
-const faultTx: ProcessedTx = {
+const faultTx: ParsedTx<ProcessedTx> = {
+  kind: 'bcp/error',
   received: false,
   sender: 'me',
   recipient: 'alex*iov',
@@ -59,13 +63,14 @@ const faultTx: ProcessedTx = {
   id: 'tx3',
 };
 
-const txStore: DeepPartial<RootState> = {
+const txStore = {
   notifications: {
+    pending: [],
     transactions: txs,
   },
 };
 
-const pendingTxStore: DeepPartial<RootState> = {
+const pendingTxStore = {
   notifications: {
     pending: pendingTxs,
   },
