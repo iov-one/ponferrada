@@ -1,16 +1,15 @@
 import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
-import { ProcessedTx } from '../../../../store/notifications';
-import { BwParser, ParsedTx } from '../../types/BwParser';
-import SendTransactionComponent, { BwSendTransactionProps } from './ui';
+import { BwParser } from '../../types/BwParser';
+import SendTransactionComponent, { BwSendProps } from './ui';
 
-export class BwSendParser extends BwParser<ProcessedTx> {
+export class BwSendParser extends BwParser<BwSendProps> {
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,
     currentUserAddress: Address,
-  ): Promise<ParsedTx<ProcessedTx>> {
+  ): Promise<BwSendProps> {
     const payload = trans.transaction;
 
     const header = await conn.getBlockHeader(trans.height);
@@ -31,11 +30,11 @@ export class BwSendParser extends BwParser<ProcessedTx> {
     };
   }
 
-  public graphicalRepresentation(sendTx: BwSendTransactionProps): JSX.Element {
+  public graphicalRepresentation(sendTx: BwSendProps): JSX.Element {
     return <SendTransactionComponent key={sendTx.id} sendTx={sendTx} />;
   }
 
-  public csvRepresentation(tx: BwSendTransactionProps): string {
+  public csvRepresentation(tx: BwSendProps): string {
     const parties = [`"${tx.id}"`, `"${tx.recipient}"`, `"${tx.sender}"`];
     const payment = [
       `"${tx.amount.quantity}"`,

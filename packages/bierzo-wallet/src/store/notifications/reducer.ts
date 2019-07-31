@@ -12,16 +12,16 @@ export interface Tx {
   readonly memo?: string;
 }
 
-export interface ProcessedTx extends Tx {
+export interface ProcessedTx extends Tx, ParsedTx {
   readonly time: ReadonlyDate;
   readonly received: boolean;
   readonly success: boolean;
   readonly err?: any;
 }
 
-export interface NotificationState<K extends {}> {
+export interface NotificationState {
   readonly pending: ReadonlyArray<Tx>;
-  readonly transactions: ReadonlyArray<ParsedTx<K>>;
+  readonly transactions: ReadonlyArray<ParsedTx>;
 }
 
 const initState = {
@@ -30,9 +30,9 @@ const initState = {
 };
 
 export function notificationReducer(
-  state: NotificationState<{}> = initState,
+  state: NotificationState = initState,
   action: NotificationActions,
-): NotificationState<{}> {
+): NotificationState {
   switch (action.type) {
     case '@@notifications/ADD_PENDING_TRANSACTION':
       return {
@@ -46,8 +46,8 @@ export function notificationReducer(
 
       return {
         ...state,
-        transactions: [action.payload as ParsedTx<any>, ...state.transactions].sort(
-          <T>(a: ParsedTx<T>, b: ParsedTx<T>) => b.time.getTime() - a.time.getTime(),
+        transactions: [action.payload as ParsedTx, ...state.transactions].sort(
+          (a: ParsedTx, b: ParsedTx) => b.time.getTime() - a.time.getTime(),
         ),
       };
     default:

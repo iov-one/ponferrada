@@ -7,7 +7,6 @@ import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
-import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { ProcessedTx, Tx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';
@@ -29,7 +28,7 @@ const pendingTxs: ReadonlyArray<Tx> = [
   },
 ];
 
-const txs: ReadonlyArray<ParsedTx<ProcessedTx>> = [
+const txs: ReadonlyArray<ProcessedTx> = [
   {
     kind: 'bcp/send',
     received: true,
@@ -52,7 +51,7 @@ const txs: ReadonlyArray<ParsedTx<ProcessedTx>> = [
   },
 ];
 
-const faultTx: ParsedTx<ProcessedTx> = {
+const faultTx: ProcessedTx = {
   kind: 'bcp/error',
   received: false,
   sender: 'me',
