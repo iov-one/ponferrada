@@ -65,7 +65,7 @@ const Layout = ({
     <Form onSubmit={handleSubmit}>
       <Block
         marginTop={4}
-        width="100vw"
+        width="100%"
         height="auto"
         minHeight="100vh"
         display="grid"
