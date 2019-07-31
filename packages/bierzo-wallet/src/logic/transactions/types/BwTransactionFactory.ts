@@ -27,9 +27,9 @@ export class BwTransactionFactory {
     throw new Error('Not supporting generic components yet');
   }
 
-  public static getBwTransactionFrom<T extends LightTransaction, K>(
-    trans: ConfirmedTransaction<T> | FailedTransaction,
-  ): BwTransaction<T, K> {
+  public static getBwTransactionFrom(
+    trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
+  ): BwTransaction<ParsedTx<any>> {
     if (isFailedTransaction(trans)) {
       throw new Error('Not supported error txs for now');
     }
@@ -40,7 +40,7 @@ export class BwTransactionFactory {
 
     const { transaction: payload } = trans;
     if (isSendTransaction(payload)) {
-      return (new BwSendParser() as unknown) as BwTransaction<T, K>;
+      return new BwSendParser();
     }
 
     throw new Error('Unexpected Tx type');
