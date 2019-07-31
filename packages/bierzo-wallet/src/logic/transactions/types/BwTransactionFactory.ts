@@ -1,6 +1,13 @@
-import { isSendTransaction } from '@iov/bcp';
+import {
+  ConfirmedTransaction,
+  FailedTransaction,
+  isConfirmedTransaction,
+  isFailedTransaction,
+  isSendTransaction,
+  LightTransaction,
+} from '@iov/bcp';
 
-import { ParsedTx } from '../types/BwTransaction';
+import { BwTransaction, ParsedTx } from '../types/BwTransaction';
 import { BwSendTransaction } from './BwSendTransaction';
 
 export class BwTransactionFactory {
@@ -18,5 +25,24 @@ export class BwTransactionFactory {
     }
 
     throw new Error('Not supporting generic components yet');
+  }
+
+  public static getBwTransactionFrom<T extends LightTransaction, K>(
+    trans: ConfirmedTransaction<T> | FailedTransaction,
+  ): BwTransaction<T, K> {
+    if (isFailedTransaction(trans)) {
+      throw new Error('Not supported error txs for now');
+    }
+
+    if (!isConfirmedTransaction(trans)) {
+      throw new Error('Confirmed transaction expected');
+    }
+
+    const { transaction: payload } = trans;
+    if (isSendTransaction(payload)) {
+      return (new BwSendTransaction() as unknown) as BwTransaction<T, K>;
+    }
+
+    throw new Error('Unexpected Tx type');
   }
 }

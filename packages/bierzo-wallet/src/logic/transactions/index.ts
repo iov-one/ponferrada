@@ -1,15 +1,4 @@
-import {
-  Address,
-  BlockchainConnection,
-  ConfirmedTransaction,
-  FailedTransaction,
-  Identity,
-  isConfirmedTransaction,
-  isFailedTransaction,
-  isSendTransaction,
-  LightTransaction,
-  SendTransaction,
-} from '@iov/bcp';
+import { Identity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import { Dispatch } from 'redux';
 import { Subscription } from 'xstream';
@@ -18,34 +7,9 @@ import { getConfig } from '../../config';
 import { addTransaction } from '../../store/notifications';
 import { getCodec } from '../codec';
 import { getConnectionFor } from '../connection';
-import { BwSendTransaction } from './types/BwSendTransaction';
-import { ParsedTx } from './types/BwTransaction';
+import { BwTransactionFactory } from './types/BwTransactionFactory';
 
 let txsSubscriptions: Subscription[] = [];
-
-async function parseTransaction<K>(
-  conn: BlockchainConnection,
-  trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  address: Address,
-): Promise<ParsedTx<any>> {
-  if (isFailedTransaction(trans)) {
-    throw new Error('Not supported error txs for now');
-  }
-
-  if (!isConfirmedTransaction(trans)) {
-    throw new Error('Confirmed transaction expected');
-  }
-
-  const { transaction: payload } = trans;
-  if (isSendTransaction(payload)) {
-    const bwSend = new BwSendTransaction();
-    const tx = await bwSend.parse(conn, trans as ConfirmedTransaction<SendTransaction>, address);
-
-    return tx;
-  }
-
-  return {} as any;
-}
 
 export async function subscribeTransaction(
   keys: { [chain: string]: string },
@@ -69,7 +33,8 @@ export async function subscribeTransaction(
     // subscribe to balance changes via
     const subscription = connection.liveTx({ sentFromOrTo: address }).subscribe({
       next: async tx => {
-        const parsedTx = await parseTransaction(connection, tx, address);
+        const bwTransaction = BwTransactionFactory.getBwTransactionFrom(tx);
+        const parsedTx = await bwTransaction.parse(connection, tx, address);
 
         await dispatch(addTransaction(parsedTx));
       },
