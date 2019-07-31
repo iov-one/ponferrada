@@ -37,7 +37,7 @@
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "start-developmen": "REACT_APP_CONFIG=development react-scripts start",
+    "start-development": "REACT_APP_CONFIG=development react-scripts start",
     "start-staging": "REACT_APP_CONFIG=staging react-scripts start",
     "start-production": "REACT_APP_CONFIG=production react-scripts start",
     "start": "yarn start-development",
