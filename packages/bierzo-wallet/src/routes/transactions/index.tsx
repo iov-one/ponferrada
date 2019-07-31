@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
-import { ProcessedTx } from '../../store/notifications';
+import { ParsedTx } from '../../logic/transactions/BwTransaction';
 import { RootState } from '../../store/reducers';
 import Layout from './components';
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from './components/sorting';
@@ -21,7 +21,9 @@ const Transactions = (): JSX.Element => {
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN as TxsOrder);
   const [order, setOrder] = React.useState(ORDER_DESC as SortOrder);
-  const txs = useSelector((state: RootState) => state.notifications.transactions);
+  const parsedTxs: ReadonlyArray<ParsedTx<any>> = useSelector(
+    (state: RootState) => state.notifications.transactions,
+  );
 
   function onChangeRows(item: Item): void {
     setRows(Number(item.name));

@@ -1,6 +1,7 @@
 import { combineReducers, Reducer } from 'redux';
 import { StateType } from 'typesafe-actions';
 
+import { ParsedTx } from '../logic/transactions/BwTransaction';
 import { balancesReducer, BalanceState } from './balances';
 import { extensionReducer, ExtensionState } from './extension';
 import { notificationReducer, NotificationState } from './notifications';
@@ -9,7 +10,7 @@ import { usernamesReducer, UsernamesState } from './usernames';
 
 export interface RootReducer {
   extension: ExtensionState;
-  notifications: NotificationState;
+  notifications: NotificationState<ParsedTx<{}>>;
   tokens: TokenState;
   balances: BalanceState;
   usernames: UsernamesState;
