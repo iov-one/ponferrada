@@ -5,9 +5,7 @@ import { disconnect } from './connection';
 import { drinkFaucetIfNeeded } from './faucet';
 
 withChainsDescribe('Logic :: faucet', () => {
-  afterAll(async () => {
-    await disconnect();
-  });
+  afterAll(() => disconnect());
 
   it('works', async () => {
     // generate keys

@@ -4,9 +4,7 @@ import { withChainsDescribe } from '../../utils/test/testExecutor';
 import { addTickersAction, getTokens } from './actions';
 
 withChainsDescribe('Tokens reducer', () => {
-  afterAll(async () => {
-    await disconnect();
-  });
+  afterAll(() => disconnect());
 
   it('has correct initial state', async () => {
     const store = aNewStore();

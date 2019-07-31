@@ -5,9 +5,7 @@ import { withChainsDescribe } from '../utils/test/testExecutor';
 import { disconnect, getConnectionFor } from './connection';
 
 withChainsDescribe('Logic :: connection', () => {
-  afterAll(async () => {
-    await disconnect();
-  });
+  afterAll(() => disconnect());
 
   it('calls connections only once', async () => {
     const config = getConfig();
@@ -35,7 +33,7 @@ withChainsDescribe('Logic :: connection', () => {
     await getConnectionFor(firstChain.chainSpec);
 
     // WHEN
-    await disconnect();
+    disconnect();
 
     // THEN
     expect(ethereumConnectionSpy).toHaveBeenCalledTimes(1);
