@@ -89,7 +89,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
                 name={QUANTITY_FIELD}
                 form={form}
                 validate={validator}
-                placeholder="0,00"
+                placeholder="0.00"
                 fullWidth
                 margin="none"
               />

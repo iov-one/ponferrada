@@ -21,7 +21,7 @@ export const required: FieldValidator = (value): ValidationError => {
 };
 
 export const number: FieldValidator = (value): ValidationError => {
-  return !isNaN(value) ? undefined : 'Must be a number';
+  return Number.isNaN(value) ? 'Must be a number' : undefined;
 };
 
 export const validAddress: FieldValidator = (value): ValidationError => {
