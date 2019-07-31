@@ -1,11 +1,4 @@
-import {
-  BlockchainConnection,
-  ConfirmedTransaction,
-  Identity,
-  pubkeyBundleEquals,
-  SendTransaction,
-  TxCodec,
-} from '@iov/bcp';
+import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
 import { BwTransaction } from '../../BwTransaction';
@@ -15,22 +8,14 @@ export class BwSendTransaction extends BwTransaction<SendTransaction, BwSendTran
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,
-    identity: Identity,
-    codec: TxCodec,
+    currentUserAddress: Address,
   ): Promise<BwSendTransactionProps> {
     const payload = trans.transaction;
 
     const header = await conn.getBlockHeader(trans.height);
     const time = header.time;
 
-    const received = !pubkeyBundleEquals(trans.primarySignature.pubkey, identity.pubkey);
-
-    const creatorPubkey = trans.primarySignature.pubkey;
-    const creator: Identity = {
-      chainId: conn.chainId(),
-      pubkey: creatorPubkey,
-    };
-    const signer = codec.identityToAddress(creator);
+    const received = payload.recipient === currentUserAddress;
 
     return {
       kind: trans.transaction.kind,
@@ -40,7 +25,7 @@ export class BwSendTransaction extends BwTransaction<SendTransaction, BwSendTran
       time,
       received,
       recipient: payload.recipient,
-      signer,
+      sender: payload.sender,
       success: true,
     };
   }
@@ -50,7 +35,7 @@ export class BwSendTransaction extends BwTransaction<SendTransaction, BwSendTran
   }
 
   public csvRepresentation(tx: BwSendTransactionProps): string {
-    const parties = `"${tx.id}";"${tx.recipient}";"${tx.signer}";`;
+    const parties = `"${tx.id}";"${tx.recipient}";"${tx.sender}";`;
     const payment = `"${tx.amount.quantity}";"${tx.amount.fractionalDigits}";"${tx.amount.tokenTicker}";`;
     const date = `"${tx.time.toISOString()}";`;
     const status = `"${tx.received}";"${tx.success}";"${tx.err}";"${tx.memo}"`;

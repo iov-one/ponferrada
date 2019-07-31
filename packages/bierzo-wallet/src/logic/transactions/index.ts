@@ -1,4 +1,5 @@
 import {
+  Address,
   BlockchainConnection,
   ConfirmedTransaction,
   FailedTransaction,
@@ -8,7 +9,6 @@ import {
   isSendTransaction,
   LightTransaction,
   SendTransaction,
-  TxCodec,
 } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import { Dispatch } from 'redux';
@@ -26,8 +26,7 @@ let txsSubscriptions: Subscription[] = [];
 async function parseTransaction<K>(
   conn: BlockchainConnection,
   trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  identity: Identity,
-  codec: TxCodec,
+  address: Address,
 ): Promise<ParsedTx<any>> {
   if (isFailedTransaction(trans)) {
     throw new Error('Not supported error txs for now');
@@ -40,7 +39,7 @@ async function parseTransaction<K>(
   const { transaction: payload } = trans;
   if (isSendTransaction(payload)) {
     const bwSend = new BwSendTransaction();
-    const tx = await bwSend.parse(conn, trans as ConfirmedTransaction<SendTransaction>, identity, codec);
+    const tx = await bwSend.parse(conn, trans as ConfirmedTransaction<SendTransaction>, address);
 
     return tx;
   }
@@ -70,10 +69,11 @@ export async function subscribeTransaction(
     // subscribe to balance changes via
     const subscription = connection.liveTx({ sentFromOrTo: address }).subscribe({
       next: async tx => {
-        const parsedTx = await parseTransaction(connection, tx, identity, codec);
+        const parsedTx = await parseTransaction(connection, tx, address);
 
         await dispatch(addTransaction(parsedTx));
       },
+      error: error => console.error(error),
     });
     txsSubscriptions.push(subscription);
   }
