@@ -1,4 +1,4 @@
-import { Address, ChainId } from '@iov/bcp';
+import { Address } from '@iov/bcp';
 import {
   ActionKind,
   ElectionRule,
@@ -169,8 +169,6 @@ export const getDummyProposals = (): Proposal[] => [
     executorResult: ProposalExecutorResult.Succeeded,
   },
 ];
-
-export const getDummyChainId = (proposal: Proposal): ChainId => (proposal.id + proposal.title) as ChainId;
 
 export const getDummyVote = (proposal: Proposal): 'Invalid' | 'Yes' | 'No' | 'Abstain' => {
   switch (proposal.id) {

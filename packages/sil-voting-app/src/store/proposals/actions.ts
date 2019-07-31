@@ -1,21 +1,12 @@
-import { ChainId } from '@iov/bcp';
 import { Proposal, ProposalStatus } from '@iov/bns';
 
-import {
-  getDummyChainId,
-  getDummyElectionRules,
-  getDummyElectorates,
-  getDummyProposals,
-  getDummyVote,
-} from './dummyData';
+import { getDummyElectionRules, getDummyElectorates, getDummyProposals, getDummyVote } from './dummyData';
 import { AddProposalsActionType, ProposalsState } from './reducer';
 
 export async function getProposals(): Promise<ProposalsState> {
   const electorates = getDummyElectorates();
   const electionRules = getDummyElectionRules();
   const proposals = getDummyProposals();
-
-  const getChainId = (proposal: Proposal): ChainId => getDummyChainId(proposal);
 
   const getNumElectorates = (proposal: Proposal): number => {
     const electorate = electorates.find(electorate => electorate.id === proposal.electorate.id);
@@ -68,24 +59,21 @@ export async function getProposals(): Promise<ProposalsState> {
 
   const proposalsState = proposals.map(proposal => {
     return {
-      chainId: getChainId(proposal),
-      proposal: {
-        id: proposal.id.toString(),
-        title: proposal.title,
-        author: proposal.author,
-        description: proposal.description,
-        creationDate: new Date(proposal.votingStartTime * 1000),
-        expiryDate: new Date(proposal.votingEndTime * 1000),
-        quorum: getQuorum(proposal),
-        threshold: getThreshold(proposal),
-        result: {
-          yes: proposal.state.totalYes,
-          no: proposal.state.totalNo,
-          abstain: proposal.state.totalAbstain,
-        },
-        vote: getVote(proposal),
-        status: getStatus(proposal),
+      id: proposal.id.toString(),
+      title: proposal.title,
+      author: proposal.author,
+      description: proposal.description,
+      creationDate: new Date(proposal.votingStartTime * 1000),
+      expiryDate: new Date(proposal.votingEndTime * 1000),
+      quorum: getQuorum(proposal),
+      threshold: getThreshold(proposal),
+      result: {
+        yes: proposal.state.totalYes,
+        no: proposal.state.totalNo,
+        abstain: proposal.state.totalAbstain,
       },
+      vote: getVote(proposal),
+      status: getStatus(proposal),
     };
   });
 

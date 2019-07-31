@@ -1,14 +1,10 @@
-import { ChainId } from '@iov/bcp';
 import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
 
 import { ProposalProps } from '../../routes/dashboard/components/Proposal';
 import * as actions from './actions';
 
-export interface SilProposal {
-  readonly chainId: ChainId;
-  readonly proposal: ProposalProps;
-}
+export type SilProposal = ProposalProps;
 
 export type ProposalsState = SilProposal[];
 const initState: ProposalsState = [];

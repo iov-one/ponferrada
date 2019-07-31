@@ -8,8 +8,7 @@ import RenderedProposal from './Proposal/RenderedProposal';
 export const PROPOSALS_HTML_ID = 'proposals';
 
 const ProposalsList = (): JSX.Element => {
-  const storedProposals = ReactRedux.useSelector((state: RootState) => state.proposals);
-  const proposals = Object.values(storedProposals).map(state => state.proposal);
+  const proposals = ReactRedux.useSelector((state: RootState) => state.proposals);
 
   return (
     <Block id={PROPOSALS_HTML_ID} flexGrow={1}>
