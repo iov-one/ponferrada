@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ActionType } from 'typesafe-actions';
 
-import { ParsedTx } from '../../logic/transactions/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
 import { ProcessedTx } from './reducer';
 
 export interface AddPendingTransactionActionType extends Action {

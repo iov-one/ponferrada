@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
-import { ParsedTx } from '../../logic/transactions/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
 import { BwTransactionFactory } from '../../logic/transactions/types/BwTransactionFactory';
 import { RootState } from '../../store/reducers';
 import Layout from './components';

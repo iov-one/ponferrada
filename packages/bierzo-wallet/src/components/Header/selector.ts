@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { ParsedTx } from '../../logic/transactions/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
 import { ProcessedTx } from '../../store/notifications';
 import { getTransactions } from '../../store/notifications/selectors';
 

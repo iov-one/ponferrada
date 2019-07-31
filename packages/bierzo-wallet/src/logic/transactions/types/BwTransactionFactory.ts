@@ -1,6 +1,6 @@
 import { isSendTransaction } from '@iov/bcp';
 
-import { ParsedTx } from '../BwTransaction';
+import { ParsedTx } from '../types/BwTransaction';
 import { BwSendTransaction } from './BwSendTransaction';
 
 export class BwTransactionFactory {

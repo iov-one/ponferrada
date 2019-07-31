@@ -1,7 +1,7 @@
 import { combineReducers, Reducer } from 'redux';
 import { StateType } from 'typesafe-actions';
 
-import { ParsedTx } from '../logic/transactions/BwTransaction';
+import { ParsedTx } from '../logic/transactions/types/BwTransaction';
 import { balancesReducer, BalanceState } from './balances';
 import { extensionReducer, ExtensionState } from './extension';
 import { notificationReducer, NotificationState } from './notifications';
