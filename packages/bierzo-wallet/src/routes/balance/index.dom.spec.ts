@@ -27,7 +27,7 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
-const bnsChainId = 'local-bns-devnet';
+const bnsChainId = 'local-iov-devnet';
 const usernames: DeepPartial<UsernamesState> = [
   {
     username: 'albert*iov',

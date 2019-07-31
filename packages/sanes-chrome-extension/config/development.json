@@ -1,11 +1,11 @@
 {
   "names": {
-    "local-bns-devnet": "BNS Devnet",
+    "local-iov-devnet": "IOV Devnet",
     "lisk-198f2b61a8": "Lisk Devnet",
     "ethereum-eip155-5777": "Ganache"
   },
   "blockExplorers": {
-    "local-bns-devnet": null,
+    "local-iov-devnet": null,
     "lisk-198f2b61a8": null,
     "ethereum-eip155-5777": "http://localhost:8546/api?module=proxy&action=eth_getTransactionByHash&txhash="
   },
