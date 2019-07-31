@@ -4,6 +4,8 @@ import Img from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 
+import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
+import { ProcessedTx } from '../../store/notifications';
 import { getPendingTransactions } from '../../store/notifications/selectors';
 import logoBlack from './assets/logoBlack.svg';
 import BellMenu from './components/BellMenu';
@@ -29,8 +31,8 @@ interface Props {
 const Header = ({ path }: Props): JSX.Element => {
   const classes = useStyles();
   const pendingTxs = useSelector(getPendingTransactions);
-  const txs = useSelector(confirmedTxSelector);
-  const lastTx = useSelector(lastTxSelector);
+  const txs = useSelector(confirmedTxSelector) as ParsedTx<ProcessedTx>[];
+  const lastTx = useSelector(lastTxSelector) as ParsedTx<ProcessedTx> | undefined;
 
   return (
     <Block className={classes.root} padding={3}>
