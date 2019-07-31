@@ -63,14 +63,13 @@ const faultTx: ParsedTx<ProcessedTx> = {
   id: 'tx3',
 };
 
-const txStore = {
+const txStore: DeepPartial<RootState> = {
   notifications: {
-    pending: [],
     transactions: txs,
   },
 };
 
-const pendingTxStore = {
+const pendingTxStore: DeepPartial<RootState> = {
   notifications: {
     pending: pendingTxs,
   },
