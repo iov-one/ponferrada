@@ -4,7 +4,7 @@ import * as React from 'react';
 import { BwTransaction } from '../../types/BwTransaction';
 import SendTransactionComponent, { BwSendTransactionProps } from './ui';
 
-export class BwSendTransaction extends BwTransaction<SendTransaction, BwSendTransactionProps> {
+export class BwSendParser extends BwTransaction<SendTransaction, BwSendTransactionProps> {
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,
