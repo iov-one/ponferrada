@@ -19,7 +19,7 @@ export interface ProcessedTx extends Tx {
   readonly err?: any;
 }
 
-export interface NotificationState<K> {
+export interface NotificationState<K extends {}> {
   readonly pending: ReadonlyArray<Tx>;
   readonly transactions: ReadonlyArray<ParsedTx<K>>;
 }
@@ -30,9 +30,9 @@ const initState = {
 };
 
 export function notificationReducer(
-  state: NotificationState<any> = initState,
+  state: NotificationState<{}> = initState,
   action: NotificationActions,
-): NotificationState<any> {
+): NotificationState<{}> {
   switch (action.type) {
     case '@@notifications/ADD_PENDING_TRANSACTION':
       return {
