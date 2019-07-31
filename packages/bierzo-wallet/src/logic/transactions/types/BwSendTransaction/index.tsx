@@ -35,13 +35,17 @@ export class BwSendParser extends BwTransaction<SendTransaction, BwSendTransacti
   }
 
   public csvRepresentation(tx: BwSendTransactionProps): string {
-    const parties = `"${tx.id}";"${tx.recipient}";"${tx.sender}";`;
-    const payment = `"${tx.amount.quantity}";"${tx.amount.fractionalDigits}";"${tx.amount.tokenTicker}";`;
-    const date = `"${tx.time.toISOString()}";`;
-    const status = `"${tx.received}";"${tx.success}";"${tx.err}";"${tx.memo}"`;
+    const parties = [`"${tx.id}"`, `"${tx.recipient}"`, `"${tx.sender}"`];
+    const payment = [
+      `"${tx.amount.quantity}"`,
+      `"${tx.amount.fractionalDigits}"`,
+      `"${tx.amount.tokenTicker}"`,
+    ];
+    const date = [`"${tx.time.toISOString()}"`];
+    const status = [`"${tx.received}"`, `"${tx.success}"`, `"${tx.err}"`, `"${tx.memo}"`];
 
-    const txRow = `${parties}${payment}${date}${status}`;
+    const txRow = [...parties, ...payment, ...date, ...status];
 
-    return txRow;
+    return txRow.join(';');
   }
 }
