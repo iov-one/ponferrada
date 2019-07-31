@@ -8,12 +8,12 @@ import {
 } from '@iov/bcp';
 
 import { BwTransaction, ParsedTx } from '../types/BwTransaction';
-import { BwSendTransaction } from './BwSendTransaction';
+import { BwSendParser } from './BwSendTransaction';
 
 export class BwTransactionFactory {
   public static getReactComponent(tx: ParsedTx<any>): JSX.Element {
     if (isSendTransaction({ kind: tx.kind })) {
-      return new BwSendTransaction().graphicalRepresentation(tx);
+      return new BwSendParser().graphicalRepresentation(tx);
     }
 
     throw new Error('Not supporting generic components yet');
@@ -21,7 +21,7 @@ export class BwTransactionFactory {
 
   public static getCsvRepresentation(tx: ParsedTx<any>): string {
     if (isSendTransaction({ kind: tx.kind })) {
-      return new BwSendTransaction().csvRepresentation(tx);
+      return new BwSendParser().csvRepresentation(tx);
     }
 
     throw new Error('Not supporting generic components yet');
@@ -40,7 +40,7 @@ export class BwTransactionFactory {
 
     const { transaction: payload } = trans;
     if (isSendTransaction(payload)) {
-      return (new BwSendTransaction() as unknown) as BwTransaction<T, K>;
+      return (new BwSendParser() as unknown) as BwTransaction<T, K>;
     }
 
     throw new Error('Unexpected Tx type');
