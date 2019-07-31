@@ -7,7 +7,7 @@ import toAddressRejected from '../../assets/toAddressRejected.svg';
 import { SortingStateProps } from '../sorting';
 
 export interface TxTableProps extends SortingStateProps {
-  readonly rows: JSX.Element[];
+  readonly rows: readonly JSX.Element[];
   readonly onChangeRows: (item: Item) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;
