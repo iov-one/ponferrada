@@ -5,8 +5,8 @@ import { NotificationActions } from './actions';
 
 export interface Tx {
   readonly id: string;
+  readonly sender: string;
   readonly recipient: string;
-  readonly signer: string;
   readonly amount: Amount;
   readonly memo?: string;
 }

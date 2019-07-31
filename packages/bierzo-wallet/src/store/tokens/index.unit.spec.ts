@@ -38,7 +38,7 @@ withChainsDescribe('Tokens reducer', () => {
         },
       },
       ASH: {
-        chainId: 'local-bns-devnet',
+        chainId: 'local-iov-devnet',
         token: {
           fractionalDigits: 9,
           tokenName: 'Let the Phoenix arise',
@@ -46,7 +46,7 @@ withChainsDescribe('Tokens reducer', () => {
         },
       },
       BASH: {
-        chainId: 'local-bns-devnet',
+        chainId: 'local-iov-devnet',
         token: {
           fractionalDigits: 9,
           tokenName: 'Another token of this chain',
@@ -54,7 +54,7 @@ withChainsDescribe('Tokens reducer', () => {
         },
       },
       CASH: {
-        chainId: 'local-bns-devnet',
+        chainId: 'local-iov-devnet',
         token: {
           fractionalDigits: 9,
           tokenName: 'Main token of this chain',

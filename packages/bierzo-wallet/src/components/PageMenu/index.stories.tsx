@@ -16,20 +16,20 @@ const pendingTxs: ReadonlyArray<Tx> = [
     id: 'tx1',
     recipient: 'alex*iov',
     amount: stringToAmount('12.5', 'IOV' as TokenTicker),
-    signer: 'adolfo*iov',
+    sender: 'adolfo*iov',
   },
   {
     id: 'tx2',
     recipient: 'moe*iov',
     amount: stringToAmount('0.14', 'IOV' as TokenTicker),
-    signer: 'adolfo*iov',
+    sender: 'adolfo*iov',
   },
 ];
 
 const txs: ReadonlyArray<ProcessedTx> = [
   {
     received: true,
-    signer: 'george*iov',
+    sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
@@ -38,7 +38,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
   {
     received: false,
-    signer: 'me',
+    sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
@@ -49,7 +49,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
 
 const faultTx: ProcessedTx = {
   received: false,
-  signer: 'me',
+  sender: 'me',
   recipient: 'alex*iov',
   amount: stringToAmount('100.5', 'IOV' as TokenTicker),
   time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),

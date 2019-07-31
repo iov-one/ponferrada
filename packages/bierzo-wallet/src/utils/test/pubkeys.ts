@@ -17,7 +17,7 @@ export async function createPubkeys(): Promise<{ [chain: string]: string }> {
   };
 
   // get BNS pubkey
-  const bnsChain = 'local-bns-devnet';
+  const bnsChain = 'local-iov-devnet';
   const rawKeypair = await Ed25519.makeKeypair(await Random.getBytes(32));
   const bnsIdentity: Identity = {
     chainId: bnsChain as ChainId,

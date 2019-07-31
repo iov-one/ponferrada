@@ -50,7 +50,7 @@ withChainsDescribe('E2E > Transactions route', () => {
     await txLink.click();
     await whenOnNavigatedToE2eRoute(page, TRANSACTIONS_ROUTE);
 
-    const expectedRowCount = 3; // TODO update number to show ETH one when #412 is done
+    const expectedRowCount = 4;
 
     // wait for transaction events to populate screen
     await whenTrue(async () => (await page.$$('img[alt="Transaction type"]')).length >= expectedRowCount);
