@@ -9,7 +9,7 @@ import { usernamesReducer, UsernamesState } from './usernames';
 
 export interface RootReducer {
   extension: ExtensionState;
-  notifications: NotificationState<{}>;
+  notifications: NotificationState;
   tokens: TokenState;
   balances: BalanceState;
   usernames: UsernamesState;

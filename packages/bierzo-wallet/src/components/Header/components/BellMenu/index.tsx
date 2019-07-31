@@ -19,8 +19,8 @@ import { BadgeProps, calcBadgeProps } from './badgeCalculator';
 import TxItem from './TxItem';
 
 interface Props {
-  readonly items: ReadonlyArray<ParsedTx<ProcessedTx>>;
-  readonly lastTx?: ParsedTx<ProcessedTx>;
+  readonly items: ReadonlyArray<ParsedTx>;
+  readonly lastTx?: ParsedTx;
 }
 
 const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
@@ -29,12 +29,14 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
       return;
     }
 
-    storeLastTx(lastTx);
+    // TODO remove automatic casting when supported multiple types
+    storeLastTx(lastTx as ProcessedTx);
   };
 
   const starter = (open: boolean): JSX.Element => {
     const logo = open ? bellGreen : bell;
-    const badgeProps: BadgeProps = calcBadgeProps(lastTx, getLastTx());
+    // TODO remove automatic casting when supported multiple types
+    const badgeProps: BadgeProps = calcBadgeProps(lastTx as ProcessedTx, getLastTx());
 
     return (
       <Block paddingLeft={5} paddingRight={5}>
@@ -60,10 +62,11 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
       </Block>
       <Hairline />
       {hasItems ? (
-        items.map((item: ProcessedTx, index: number) => {
+        items.map((item: ParsedTx, index: number) => {
           const lastOne = index + 1 === items.length;
 
-          return <TxItem key={item.id} item={item} lastOne={lastOne} />;
+          // TODO remove automatic casting when supported multiple types
+          return <TxItem key={(item as ProcessedTx).id} item={item as ProcessedTx} lastOne={lastOne} />;
         })
       ) : (
         <EmptyListIcon src={upToDate} alt="Up to date" text="Up to date" />

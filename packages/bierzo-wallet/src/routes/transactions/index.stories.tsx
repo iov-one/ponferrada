@@ -2,7 +2,6 @@ import { TokenTicker } from '@iov/bcp';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { ReadonlyDate } from 'readonly-date';
-import { DeepPartial } from 'redux';
 
 import { ProcessedTx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
@@ -15,6 +14,7 @@ export const TRANSACTIONS_STORY_SHOW_PATH = 'With transactions';
 
 const txs: ReadonlyArray<ProcessedTx> = [
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
@@ -25,6 +25,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     memo: 'Sample note',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -34,6 +35,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx2',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -44,6 +46,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     memo: 'Another note',
   },
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'Lx9oa7re0894eopiahsdpf98as7y908',
     recipient: 'me',
@@ -54,6 +57,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     memo: 'And again note',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -63,6 +67,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx5',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -72,6 +77,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx6',
   },
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
@@ -81,6 +87,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx7',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -90,6 +97,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx8',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -99,6 +107,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx9',
   },
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
@@ -108,6 +117,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx10',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -117,6 +127,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx11',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -126,6 +137,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx12',
   },
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
@@ -135,6 +147,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx13',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'Lxasdoiu9847ioasdpfuy098q23rui',
     recipient: 'alex*iov',
@@ -144,6 +157,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx14',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -154,8 +168,9 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
 ];
 
-const txStore: DeepPartial<RootState> = {
+const txStore: Pick<RootState, 'notifications'> = {
   notifications: {
+    pending: [],
     transactions: txs,
   },
 };

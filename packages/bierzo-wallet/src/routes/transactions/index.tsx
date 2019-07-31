@@ -22,7 +22,7 @@ const Transactions = (): JSX.Element => {
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN as TxsOrder);
   const [order, setOrder] = React.useState(ORDER_DESC as SortOrder);
-  const parsedTxs: ReadonlyArray<ParsedTx<any>> = useSelector(
+  const parsedTxs: ReadonlyArray<ParsedTx> = useSelector(
     (state: RootState) => state.notifications.transactions,
   );
 
@@ -62,7 +62,7 @@ const Transactions = (): JSX.Element => {
     // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
     const csvHeader =
       '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Success";"Error";"Note"';
-    const csvBody = orderedTxs.map((tx: ParsedTx<{}>) => BwParserFactory.getCsvRepresentation(tx));
+    const csvBody = orderedTxs.map((tx: ParsedTx) => BwParserFactory.getCsvRepresentation(tx));
 
     const blob = new Blob([`${csvHeader}\n${csvBody.join('\n')}`], { type: 'text/plain;charset=utf-8' });
     FileSaver.saveAs(blob, 'transactions.csv');
