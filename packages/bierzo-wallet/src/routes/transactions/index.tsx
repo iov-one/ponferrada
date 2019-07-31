@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
 import { ParsedTx } from '../../logic/transactions/BwTransaction';
+import { BwTransactionFactory } from '../../logic/transactions/types/BwTransactionFactory';
 import { RootState } from '../../store/reducers';
 import Layout from './components';
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from './components/sorting';
@@ -24,6 +25,9 @@ const Transactions = (): JSX.Element => {
   const parsedTxs: ReadonlyArray<ParsedTx<any>> = useSelector(
     (state: RootState) => state.notifications.transactions,
   );
+
+  const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
+  const txs = orderedTxs.map(tx => BwTransactionFactory.getReactComponent(tx));
 
   function onChangeRows(item: Item): void {
     setRows(Number(item.name));
@@ -63,12 +67,10 @@ const Transactions = (): JSX.Element => {
     FileSaver.saveAs(blob, 'transactions.csv');
   }
 
-  const orderedTxs = filterTxsBy(txs, rows, page, orderBy, order);
-
   return (
     <PageMenu padding={false}>
       <Layout
-        txs={orderedTxs}
+        rows={txs}
         onChangeRows={onChangeRows}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}

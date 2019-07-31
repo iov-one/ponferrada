@@ -10,7 +10,7 @@ interface Props extends DownloadCSVProps, TxTableProps {}
 
 const Layout = ({
   onDownloadCSV,
-  txs,
+  rows,
   onChangeRows,
   onPrevPage,
   onNextPage,
@@ -18,7 +18,7 @@ const Layout = ({
   orderBy,
   order,
 }: Props): JSX.Element => {
-  const hasRows = txs && txs.length > 0;
+  const hasRows = rows && rows.length > 0;
 
   return (
     <React.Fragment>
@@ -27,7 +27,7 @@ const Layout = ({
       <Hairline />
       {hasRows ? (
         <TxTable
-          txs={txs}
+          rows={rows}
           onChangeRows={onChangeRows}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
