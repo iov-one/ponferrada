@@ -7,7 +7,7 @@ import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
-import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { ProcessedTx, Tx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';

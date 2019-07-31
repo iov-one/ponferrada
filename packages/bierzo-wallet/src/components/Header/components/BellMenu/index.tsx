@@ -9,7 +9,7 @@ import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyList
 import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
 
-import { ParsedTx } from '../../../../logic/transactions/types/BwTransaction';
+import { ParsedTx } from '../../../../logic/transactions/types/BwParser';
 import { ProcessedTx } from '../../../../store/notifications';
 import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
 import bell from '../../assets/bell.svg';

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { getTransactions } from '../../store/notifications/selectors';
 
 export const confirmedTxSelector = createSelector(

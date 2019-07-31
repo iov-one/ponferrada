@@ -4,8 +4,8 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
-import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
-import { BwTransactionFactory } from '../../logic/transactions/types/BwTransactionFactory';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
+import { BwParserFactory } from '../../logic/transactions/types/BwParserFactory';
 import { RootState } from '../../store/reducers';
 import Layout from './components';
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from './components/sorting';
@@ -27,7 +27,7 @@ const Transactions = (): JSX.Element => {
   );
 
   const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
-  const txs = orderedTxs.map(tx => BwTransactionFactory.getReactComponent(tx));
+  const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx));
 
   function onChangeRows(item: Item): void {
     setRows(Number(item.name));
@@ -62,7 +62,7 @@ const Transactions = (): JSX.Element => {
     // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
     const csvHeader =
       '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Success";"Error";"Note"';
-    const csvBody = orderedTxs.map((tx: ParsedTx<{}>) => BwTransactionFactory.getCsvRepresentation(tx));
+    const csvBody = orderedTxs.map((tx: ParsedTx<{}>) => BwParserFactory.getCsvRepresentation(tx));
 
     const blob = new Blob([`${csvHeader}\n${csvBody.join('\n')}`], { type: 'text/plain;charset=utf-8' });
     FileSaver.saveAs(blob, 'transactions.csv');

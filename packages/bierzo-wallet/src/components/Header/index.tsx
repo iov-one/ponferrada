@@ -4,7 +4,7 @@ import Img from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 
-import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { ProcessedTx } from '../../store/notifications';
 import { getPendingTransactions } from '../../store/notifications/selectors';
 import logoBlack from './assets/logoBlack.svg';

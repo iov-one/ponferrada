@@ -7,10 +7,10 @@ import {
   LightTransaction,
 } from '@iov/bcp';
 
-import { BwTransaction, ParsedTx } from '../types/BwTransaction';
+import { BwParser, ParsedTx } from '../types/BwParser';
 import { BwSendParser } from './BwSendTransaction';
 
-export class BwTransactionFactory {
+export class BwParserFactory {
   public static getReactComponent(tx: ParsedTx<any>): JSX.Element {
     if (isSendTransaction({ kind: tx.kind })) {
       return new BwSendParser().graphicalRepresentation(tx);
@@ -29,7 +29,7 @@ export class BwTransactionFactory {
 
   public static getBwTransactionFrom(
     trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  ): BwTransaction<ParsedTx<any>> {
+  ): BwParser<ParsedTx<any>> {
     if (isFailedTransaction(trans)) {
       throw new Error('Not supported error txs for now');
     }

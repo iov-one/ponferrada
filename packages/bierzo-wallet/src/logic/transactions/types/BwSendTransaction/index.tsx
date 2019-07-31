@@ -2,10 +2,10 @@ import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } 
 import * as React from 'react';
 
 import { ProcessedTx } from '../../../../store/notifications';
-import { BwTransaction, ParsedTx } from '../../types/BwTransaction';
+import { BwParser, ParsedTx } from '../../types/BwParser';
 import SendTransactionComponent, { BwSendTransactionProps } from './ui';
 
-export class BwSendParser extends BwTransaction<ProcessedTx> {
+export class BwSendParser extends BwParser<ProcessedTx> {
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,

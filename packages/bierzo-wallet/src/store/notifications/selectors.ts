@@ -1,4 +1,4 @@
-import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { RootState } from '../reducers';
 import { Tx } from './reducer';
 
