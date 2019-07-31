@@ -11,7 +11,7 @@ import { SetExtensionStateActionType } from './reducer';
  * TODO: Right now only the last identity per blockchain is returned. This should be generalized
  * to support multiple identities per blockchain.
  */
-function groupIdentitiesByChain(identities: readonly Identity[]): { [chainId: string]: Identity } {
+export function groupIdentitiesByChain(identities: readonly Identity[]): { [chainId: string]: Identity } {
   const out: { [chainId: string]: Identity } = {};
   for (const identity of identities) {
     out[identity.chainId] = identity;
