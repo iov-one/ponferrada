@@ -18,8 +18,8 @@ import { getConfig } from '../../config';
 import { addTransaction } from '../../store/notifications';
 import { getCodec } from '../codec';
 import { getConnectionFor } from '../connection';
-import { ParsedTx } from './BwTransaction';
 import { BwSendTransaction } from './types/BwSendTransaction';
+import { ParsedTx } from './types/BwTransaction';
 
 let txsSubscriptions: Subscription[] = [];
 

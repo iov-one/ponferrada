@@ -1,7 +1,7 @@
 import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
-import { BwTransaction } from '../../BwTransaction';
+import { BwTransaction } from '../../types/BwTransaction';
 import SendTransactionComponent, { BwSendTransactionProps } from './ui';
 
 export class BwSendTransaction extends BwTransaction<SendTransaction, BwSendTransactionProps> {

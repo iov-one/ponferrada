@@ -1,7 +1,7 @@
 import { Amount } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
-import { ParsedTx } from '../../logic/transactions/BwTransaction';
+import { ParsedTx } from '../../logic/transactions/types/BwTransaction';
 import { NotificationActions } from './actions';
 
 export interface Tx {

@@ -17,7 +17,7 @@ import { ProcessedTx } from '../../../../../store/notifications';
 import { getBorderColor } from '../../../../../theme/css';
 import { amountToNumber } from '../../../../../utils/balances';
 import { getDate, getTime } from '../../../../../utils/date';
-import { ParsedTx } from '../../../BwTransaction';
+import { ParsedTx } from '../../../types/BwTransaction';
 import dropdownArrow from './assets/dropdownArrowClose.svg';
 import dropdownArrowClose from './assets/dropdownArrowClose.svg';
 import SendTxDetails from './Details';
