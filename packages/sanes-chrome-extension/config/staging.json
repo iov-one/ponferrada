@@ -1,11 +1,11 @@
 {
   "names": {
-    "bns-kissnet": "BNS Kissnet",
+    "iov-lovenet": "IOV Lovenet",
     "lisk-da3ed6a454": "Lisk Testnet",
     "ethereum-eip155-4": "Rinkeby"
   },
   "blockExplorers": {
-    "bns-kissnet": null,
+    "iov-lovenet": null,
     "lisk-da3ed6a454": "https://testnet-explorer.lisk.io/tx/",
     "ethereum-eip155-4": "https://rinkeby.etherscan.io/tx/"
   },
@@ -13,10 +13,10 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "node": "https://bns.kissnet.iov.one/"
+        "node": "https://rpc.lovenet.iov.one/"
       },
       "faucetSpec": {
-        "uri": "https://bns-faucet.kissnet.iov.one",
+        "uri": "https://bns-faucet.lovenet.iov.one",
         "token": "IOV"
       }
     },
