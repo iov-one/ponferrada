@@ -14,12 +14,12 @@ export const addPendingTransactionAction = (transaction: ProcessedTx): AddPendin
   payload: transaction,
 });
 
-export interface AddTransactionActionType<K> extends Action {
+export interface AddTransactionActionType extends Action {
   type: '@@notifications/ADD_TRANSACTION';
-  payload: ParsedTx<K>;
+  payload: ParsedTx<any>;
 }
 
-export const addTransaction = <K>(transaction: ParsedTx<K>): AddTransactionActionType<K> => ({
+export const addTransaction = (transaction: ParsedTx<any>): AddTransactionActionType => ({
   type: '@@notifications/ADD_TRANSACTION',
   payload: transaction,
 });
