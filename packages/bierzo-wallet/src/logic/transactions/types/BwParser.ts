@@ -9,7 +9,7 @@ import { ReadonlyDate } from 'readonly-date';
 
 export type ParsedTx<T> = Pick<LightTransaction, 'kind'> & { time: ReadonlyDate } & T;
 
-export abstract class BwTransaction<K> {
+export abstract class BwParser<K> {
   abstract async parse(
     conn: BlockchainConnection,
     transaction: ConfirmedTransaction<LightTransaction> | FailedTransaction,

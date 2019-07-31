@@ -1,4 +1,4 @@
-import { ParsedTx } from '../../../logic/transactions/types/BwTransaction';
+import { ParsedTx } from '../../../logic/transactions/types/BwParser';
 
 export interface SortingStateProps {
   readonly onSort: (orderBy: TxsOrder, order: SortOrder) => () => void;

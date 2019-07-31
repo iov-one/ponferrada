@@ -10,7 +10,7 @@ import * as tokens from '../../utils/tokens';
 import { disconnect } from '../connection';
 import { drinkFaucetIfNeeded } from '../faucet';
 import { subscribeTransaction, unsubscribeTransactions } from '../transactions';
-import { ParsedTx } from './types/BwTransaction';
+import { ParsedTx } from './types/BwParser';
 
 withChainsDescribe('Logic :: transaction subscriptions', () => {
   beforeAll(() => {

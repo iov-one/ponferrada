@@ -7,7 +7,7 @@ import { getConfig } from '../../config';
 import { addTransaction } from '../../store/notifications';
 import { getCodec } from '../codec';
 import { getConnectionFor } from '../connection';
-import { BwTransactionFactory } from './types/BwTransactionFactory';
+import { BwParserFactory } from './types/BwParserFactory';
 
 let txsSubscriptions: Subscription[] = [];
 
@@ -33,7 +33,7 @@ export async function subscribeTransaction(
     // subscribe to balance changes via
     const subscription = connection.liveTx({ sentFromOrTo: address }).subscribe({
       next: async tx => {
-        const bwTransaction = BwTransactionFactory.getBwTransactionFrom(tx);
+        const bwTransaction = BwParserFactory.getBwTransactionFrom(tx);
         const parsedTx = await bwTransaction.parse(connection, tx, address);
 
         await dispatch(addTransaction(parsedTx));
