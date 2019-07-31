@@ -2171,7 +2171,7 @@ exports[`Storyshots Bierzo wallet/Payment Payment 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
-                      placeholder="0,00"
+                      placeholder="0.00"
                       required={false}
                       type="text"
                     />
