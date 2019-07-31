@@ -17,9 +17,9 @@ import { ProcessedTx } from '../../../../../store/notifications';
 import { getBorderColor } from '../../../../../theme/css';
 import { amountToNumber } from '../../../../../utils/balances';
 import { getDate, getTime } from '../../../../../utils/date';
-import dropdownArrow from '../../../assets/dropdownArrow.svg';
-import dropdownArrowClose from '../../../assets/dropdownArrowClose.svg';
 import { ParsedTx } from '../../../BwTransaction';
+import dropdownArrow from './assets/dropdownArrowClose.svg';
+import dropdownArrowClose from './assets/dropdownArrowClose.svg';
 import SendTxDetails from './Details';
 
 export type BwSendTransactionProps = ParsedTx<ProcessedTx>;
