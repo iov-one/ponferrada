@@ -20,12 +20,8 @@ export const required: FieldValidator = (value): ValidationError => {
   return value ? undefined : 'Required';
 };
 
-export const toValidFloat = (value: string): number => {
-  return Number(value.replace(',', '.'));
-};
-
 export const number: FieldValidator = (value): ValidationError => {
-  return Number.isNaN(toValidFloat(value)) ? 'Must be a number' : undefined;
+  return Number.isNaN(value) ? 'Must be a number' : undefined;
 };
 
 export const validAddress: FieldValidator = (value): ValidationError => {
