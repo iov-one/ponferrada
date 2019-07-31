@@ -45,9 +45,9 @@ describe('groupIdentitiesByChain', () => {
     });
   });
 
-  it('returns last identity for each chain', () => {
+  it('returns first identity for each chain', () => {
     expect(groupIdentitiesByChain([ethIdentity1, ethIdentity2])).toEqual({
-      'ethtest-1234': ethIdentity2,
+      'ethtest-1234': ethIdentity1,
     });
   });
 });
