@@ -56,17 +56,8 @@ const Transactions = (): JSX.Element => {
 
   function onDownloadCSV(): void {
     const csvHeader =
-      '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Success";"Error";"Note"';
-    const csvBody = txs.map((tx: ProcessedTx) => {
-      const parties = `"${tx.id}";"${tx.recipient}";"${tx.sender}";`;
-      const payment = `"${tx.amount.quantity}";"${tx.amount.fractionalDigits}";"${tx.amount.tokenTicker}";`;
-      const date = `"${tx.time.toISOString()}";`;
-      const status = `"${tx.received}";"${tx.success}";"${tx.err}";"${tx.memo}"`;
-
-      const txRow = `${parties}${payment}${date}${status}`;
-
-      return txRow;
-    });
+      '"ID";"Recipient";"Signer";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Success";"Error";"Note"';
+    const csvBody = orderedTxs.map((tx: ParsedTx<any>) => BwTransactionFactory.getCsvRepresentation(tx));
 
     const blob = new Blob([`${csvHeader}\n${csvBody.join('\n')}`], { type: 'text/plain;charset=utf-8' });
     FileSaver.saveAs(blob, 'transactions.csv');

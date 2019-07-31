@@ -11,32 +11,5 @@ export abstract class BwTransaction<T extends LightTransaction, K> {
     codec: TxCodec,
   ): Promise<ParsedTx<K>>;
   abstract graphicalRepresentation(tx: ParsedTx<K>): JSX.Element;
+  abstract csvRepresentation(tx: ParsedTx<K>): string;
 }
-
-/*
-export class BwTransactionFactory {
-  public static getTxFrom(
-    trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  ): BwTransaction<TxCodec, K> {
-    if (isFailedTransaction(trans)) {
-      throw new Error('Not supported error txs for now');
-    }
-
-    if (!isConfirmedTransaction(trans)) {
-      throw new Error('Confirmed transaction expected');
-    }
-
-    const { transaction: payload } = trans;
-    if (isSendTransaction(payload)) {
-      const tx = new BwSendTransaction().parse(
-        conn,
-        trans as ConfirmedTransaction<SendTransaction>,
-        identity,
-        codec,
-      );
-
-      return tx;
-    }
-  }
-}
-*/
