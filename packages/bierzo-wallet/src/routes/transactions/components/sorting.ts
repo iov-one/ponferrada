@@ -15,7 +15,7 @@ export const TX_DATE_COLUMN = 'Date';
 export type TxsOrder = 'Date';
 
 export const filterTxsBy = <K>(
-  txs: ReadonlyArray<ParsedTx<any>>,
+  txs: ReadonlyArray<ParsedTx<K>>,
   rowsPerPage: number,
   pageNumber: number,
   orderBy: TxsOrder,
