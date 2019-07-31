@@ -3,13 +3,11 @@ import { useTheme } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import * as React from 'react';
 
-import { ProcessedTx } from '../../../../store/notifications';
 import { getShadowColor } from '../../../../theme/css';
 import { CSV_PADDING } from '../DownloadCSV';
 import { TxTableProps } from './rowTxBuilder';
 import TxTableFooter from './TxTableFooter';
 import TxTableHeader from './TxTableHeader';
-import TxTableRow from './TxTableRow';
 
 const useStyles = makeStyles((theme: Theme) => ({
   inner: {
@@ -24,7 +22,7 @@ function TxTable({
   onSort,
   orderBy,
   order,
-  txs,
+  rows,
   onChangeRows,
   onNextPage,
   onPrevPage,
@@ -46,9 +44,7 @@ function TxTable({
         >
           <TxTableHeader onSort={onSort} orderBy={orderBy} order={order} />
           <Block display="flex" flexDirection="column">
-            {txs.map((tx: ProcessedTx) => (
-              <TxTableRow key={tx.id} tx={tx} />
-            ))}
+            {rows}
             <TxTableFooter onChangeRows={onChangeRows} onNextPage={onNextPage} onPrevPage={onPrevPage} />
           </Block>
         </Block>
