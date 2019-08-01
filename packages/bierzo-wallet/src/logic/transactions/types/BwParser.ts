@@ -17,4 +17,5 @@ export abstract class BwParser<K> {
   ): Promise<ParsedTx>;
   abstract graphicalRepresentation(tx: ParsedTx): JSX.Element;
   abstract csvRepresentation(tx: ParsedTx): string;
+  abstract headerRepresentation(tx: ParsedTx, lastOne: boolean): JSX.Element;
 }

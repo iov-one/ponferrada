@@ -9,12 +9,20 @@ import {
 
 import { BwParser, ParsedTx } from '../types/BwParser';
 import { BwSendParser } from './BwSendTransaction';
-import { BwSendProps } from './BwSendTransaction/ui';
+import { BwSendProps } from './BwSendTransaction';
 
 export class BwParserFactory {
   public static getReactComponent(tx: any): JSX.Element {
     if (isSendTransaction({ kind: tx.kind })) {
       return new BwSendParser().graphicalRepresentation(tx as BwSendProps);
+    }
+
+    throw new Error('Not supporting generic components yet');
+  }
+
+  public static getHeaderRepresentation(tx: any, lastOne: boolean): JSX.Element {
+    if (isSendTransaction({ kind: tx.kind })) {
+      return new BwSendParser().headerRepresentation(tx as BwSendProps, lastOne);
     }
 
     throw new Error('Not supporting generic components yet');
