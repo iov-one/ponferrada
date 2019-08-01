@@ -117,7 +117,7 @@ if [[ "$TRAVIS_TAG" != "" ]]; then
     -H "x-goog-api-version: 2" \
     -H "Content-Length: 0" \
     -X POST \
-    "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen/publish"
+    "https://www.googleapis.com/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen/publish"
   fold_end
 else
   echo "Not a tag build, skipping deployment"
