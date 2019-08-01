@@ -17,7 +17,6 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
     .handleRequestMessage(message, sender)
     .then(sendResponse)
     .catch((error: any) => {
-      // eslint-disable-next-line no-console
       console.error(error);
 
       // exception in handleExternalMessage are most likely programming errors, since all

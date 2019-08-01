@@ -30,7 +30,7 @@ export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Pr
       try {
         await faucet.credit(address, token as TokenTicker);
       } catch (err) {
-        console.log(`Error using faucet for ${chainId}: ${err.message}`);
+        console.error(`Error using faucet for ${chainId}: ${err.message}`);
       }
     }
   });

@@ -38,7 +38,6 @@ const RestoreAccount = (): JSX.Element => {
       response = await createPersona(password, mnemonic);
     } catch (error) {
       toast.show('An error occurred while restoring the account.', ToastVariant.ERROR);
-      // eslint-disable-next-line no-console
       console.error(error);
       return;
     }

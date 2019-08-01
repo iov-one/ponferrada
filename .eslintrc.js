@@ -10,7 +10,9 @@ module.exports = {
   ],
   rules: {
     "no-empty": "off",
-    "no-console": "warn",
+    "no-console": ["warn", {
+      allow: ["error", "info", "warn"]
+    }],
     "sort-imports": "off", // we use the simple-import-sort plugin instead
     "simple-import-sort/sort": "warn",
     "@typescript-eslint/explicit-function-return-type": [ "error", {
