@@ -21,7 +21,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: true,
     id: 'tx1',
   },
   {
@@ -31,21 +30,9 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: true,
     id: 'tx2',
   },
 ];
-
-const faultTx: ProcessedTx = {
-  kind: 'bcp/error',
-  received: false,
-  sender: 'me',
-  recipient: 'alex*iov',
-  amount: stringToAmount('100.5', 'IOV' as TokenTicker),
-  time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-  success: false,
-  id: 'tx3',
-};
 
 const txStore: DeepPartial<RootState> = {
   notifications: {
@@ -53,12 +40,10 @@ const txStore: DeepPartial<RootState> = {
   },
 };
 
-const fullStore = (faulty: boolean): DeepPartial<RootState> => {
-  const fullTxs = faulty ? [faultTx, ...txs] : txs;
-
+const fullStore = (): DeepPartial<RootState> => {
   return {
     notifications: {
-      transactions: fullTxs,
+      transactions: txs,
     },
   };
 };
@@ -82,11 +67,8 @@ storiesOf(`${WALLET_ROOT}/Components`, module)
     'Header',
     (): JSX.Element => (
       <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-        <DecoratedStorybook storeProps={fullStore(false)}>
+        <DecoratedStorybook storeProps={fullStore()}>
           <EnhancedHeader text="Full Header" />
-        </DecoratedStorybook>
-        <DecoratedStorybook storeProps={fullStore(true)}>
-          <EnhancedHeader text="Faulty full Header" />
         </DecoratedStorybook>
         <DecoratedStorybook storeProps={txStore}>
           <EnhancedHeader text="Txs Header" />

@@ -20,7 +20,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
-    success: true,
     id: 'tx1',
     memo: 'Sample note',
   },
@@ -31,7 +30,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
-    success: true,
     id: 'tx2',
   },
   {
@@ -41,7 +39,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: false,
     id: 'tx3',
     memo: 'Another note',
   },
@@ -52,7 +49,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
-    success: true,
     id: 'tx4',
     memo: 'And again note',
   },
@@ -63,7 +59,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
-    success: true,
     id: 'tx5',
   },
   {
@@ -73,7 +68,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: false,
     id: 'tx6',
   },
   {
@@ -83,7 +77,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
-    success: true,
     id: 'tx7',
   },
   {
@@ -93,7 +86,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
-    success: true,
     id: 'tx8',
   },
   {
@@ -103,7 +95,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: false,
     id: 'tx9',
   },
   {
@@ -113,7 +104,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
-    success: true,
     id: 'tx10',
   },
   {
@@ -123,7 +113,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
-    success: true,
     id: 'tx11',
   },
   {
@@ -133,7 +122,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: false,
     id: 'tx12',
   },
   {
@@ -143,7 +131,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
-    success: true,
     id: 'tx13',
   },
   {
@@ -153,7 +140,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-10-05T16:12:00.763Z'),
-    success: true,
     id: 'tx14',
   },
   {
@@ -163,7 +149,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('100.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: false,
     id: 'tx15',
   },
 ];

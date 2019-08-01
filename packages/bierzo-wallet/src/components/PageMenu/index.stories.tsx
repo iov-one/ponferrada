@@ -19,7 +19,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: true,
     id: 'tx1',
   },
   {
@@ -29,7 +28,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    success: true,
     id: 'tx2',
   },
 ];
@@ -41,7 +39,6 @@ const faultTx: ProcessedTx = {
   recipient: 'alex*iov',
   amount: stringToAmount('100.5', 'IOV' as TokenTicker),
   time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-  success: false,
   id: 'tx3',
 };
 
