@@ -7,26 +7,11 @@ import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
-import { ProcessedTx, Tx } from '../../store/notifications';
+import { ProcessedTx } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Header from './index';
-
-const pendingTxs: ReadonlyArray<Tx> = [
-  {
-    id: 'tx1',
-    recipient: 'alex*iov',
-    amount: stringToAmount('12.5', 'IOV' as TokenTicker),
-    sender: 'adolfo*iov',
-  },
-  {
-    id: 'tx2',
-    recipient: 'moe*iov',
-    amount: stringToAmount('0.14', 'IOV' as TokenTicker),
-    sender: 'adolfo*iov',
-  },
-];
 
 const txs: ReadonlyArray<ProcessedTx> = [
   {
@@ -68,18 +53,11 @@ const txStore: DeepPartial<RootState> = {
   },
 };
 
-const pendingTxStore: DeepPartial<RootState> = {
-  notifications: {
-    pending: pendingTxs,
-  },
-};
-
 const fullStore = (faulty: boolean): DeepPartial<RootState> => {
   const fullTxs = faulty ? [faultTx, ...txs] : txs;
 
   return {
     notifications: {
-      pending: pendingTxs,
       transactions: fullTxs,
     },
   };
@@ -112,9 +90,6 @@ storiesOf(`${WALLET_ROOT}/Components`, module)
         </DecoratedStorybook>
         <DecoratedStorybook storeProps={txStore}>
           <EnhancedHeader text="Txs Header" />
-        </DecoratedStorybook>
-        <DecoratedStorybook storeProps={pendingTxStore}>
-          <EnhancedHeader text="Pending Header" />
         </DecoratedStorybook>
         <DecoratedStorybook>
           <EnhancedHeader text="Empty Header" />

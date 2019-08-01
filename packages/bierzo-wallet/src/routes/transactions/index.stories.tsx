@@ -170,7 +170,6 @@ const txs: ReadonlyArray<ProcessedTx> = [
 
 const txStore: Pick<RootState, 'notifications'> = {
   notifications: {
-    pending: [],
     transactions: txs,
   },
 };
