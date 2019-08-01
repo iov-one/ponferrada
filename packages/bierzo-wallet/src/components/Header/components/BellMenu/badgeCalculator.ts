@@ -28,16 +28,16 @@ export const calcBadgeProps = (
   }
 
   if (!lastStoredTx) {
-    return buildBadgeFrom(lastTx.success);
+    return buildBadgeFrom(true);
   }
 
   const isLastTxNewer = lastTxNewer(lastTx, lastStoredTx);
   if (isLastTxNewer) {
-    return buildBadgeFrom(lastTx.success);
+    return buildBadgeFrom(true);
   }
 
   if (lastTx.id !== lastStoredTx.id) {
-    return buildBadgeFrom(lastTx.success);
+    return buildBadgeFrom(true);
   }
 
   return hiddenBadge;
