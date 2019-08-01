@@ -11,10 +11,8 @@ import { PAYMENT_ROUTE } from '../../../../../routes/paths';
 import { ProcessedTx } from '../../../../../store/notifications';
 import { itemBackground } from '../../../../../theme/css';
 import { prettyAmount } from '../../../../../utils/balances';
-import errorTx from '../../../assets/transactionError.svg';
 import receiveTx from '../../../assets/transactionReceive.svg';
 import sendTx from '../../../assets/transactionSend.svg';
-import MsgError from './MsgError';
 import Msg from './MsgSuccess';
 
 interface ItemProps {
@@ -48,12 +46,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, received, sender, recipient, success } = item;
+  const { time, amount, received, sender, recipient } = item;
 
   const beautifulAmount = prettyAmount(amount);
-  const icon = success ? (received ? receiveTx : sendTx) : errorTx;
+  const icon = received ? receiveTx : sendTx;
 
-  const msg = success ? (
+  const msg = (
     <Msg
       onVisitSendPayment={onVisitSendPayment}
       received={received}
@@ -61,8 +59,6 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       signer={sender}
       recipient={recipient}
     />
-  ) : (
-    <MsgError onVisitSendPayment={onVisitSendPayment} amount={beautifulAmount} recipient={recipient} />
   );
 
   return (
