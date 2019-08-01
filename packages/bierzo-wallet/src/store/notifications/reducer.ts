@@ -4,18 +4,15 @@ import { ReadonlyDate } from 'readonly-date';
 import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { NotificationActions } from './actions';
 
-export interface Tx {
+export interface ProcessedTx extends ParsedTx {
+  readonly time: ReadonlyDate;
+  readonly received: boolean;
+  readonly success: boolean;
   readonly id: string;
   readonly sender: string;
   readonly recipient: string;
   readonly amount: Amount;
   readonly memo?: string;
-}
-
-export interface ProcessedTx extends Tx, ParsedTx {
-  readonly time: ReadonlyDate;
-  readonly received: boolean;
-  readonly success: boolean;
   readonly err?: any;
 }
 
