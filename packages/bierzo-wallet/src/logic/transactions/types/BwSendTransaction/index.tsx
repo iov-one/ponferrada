@@ -1,8 +1,12 @@
 import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
+import { ProcessedTx } from '../../../../store/notifications';
 import { BwParser } from '../../types/BwParser';
-import SendTransactionComponent, { BwSendProps } from './ui';
+import SendTransactionHeader from './ui/SendTxHeader';
+import SendTransactionRow from './ui/SendTxRow';
+
+export type BwSendProps = ProcessedTx;
 
 export class BwSendParser extends BwParser<BwSendProps> {
   public async parse(
@@ -30,7 +34,7 @@ export class BwSendParser extends BwParser<BwSendProps> {
   }
 
   public graphicalRepresentation(sendTx: BwSendProps): JSX.Element {
-    return <SendTransactionComponent key={sendTx.id} sendTx={sendTx} />;
+    return <SendTransactionRow key={sendTx.id} sendTx={sendTx} />;
   }
 
   public csvRepresentation(tx: BwSendProps): string {
@@ -46,5 +50,9 @@ export class BwSendParser extends BwParser<BwSendProps> {
     const txRow = [...parties, ...payment, ...date, ...status];
 
     return txRow.join(';');
+  }
+
+  public headerRepresentation(tx: BwSendProps, lastOne: boolean): JSX.Element {
+    return <SendTransactionHeader key={tx.id} item={tx} lastOne={lastOne} />;
   }
 }
