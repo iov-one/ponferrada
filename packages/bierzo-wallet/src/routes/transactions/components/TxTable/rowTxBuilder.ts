@@ -3,7 +3,6 @@ import { Item } from 'medulas-react-components/lib/components/forms/SelectFieldF
 import { ProcessedTx } from '../../../../store/notifications';
 import fromAddress from '../../assets/fromAddress.svg';
 import toAddress from '../../assets/toAddress.svg';
-import toAddressRejected from '../../assets/toAddressRejected.svg';
 import { SortingStateProps } from '../sorting';
 
 export interface TxTableProps extends SortingStateProps {
@@ -14,13 +13,7 @@ export interface TxTableProps extends SortingStateProps {
 }
 
 export function getTypeIcon(tx: ProcessedTx): string {
-  if (tx.received) {
-    return fromAddress;
-  } else if (!tx.success) {
-    return toAddressRejected;
-  } else {
-    return toAddress;
-  }
+  return tx.received ? fromAddress : toAddress;
 }
 
 export function getAddressPrefix(tx: ProcessedTx): string {
