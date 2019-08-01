@@ -115,8 +115,8 @@ if [[ "$TRAVIS_TAG" != "" ]]; then
   curl -sSv \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "x-goog-api-version: 2" \
+    -H "Content-Length: 0" \
     -X POST \
-    -d "" \
     "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen/publish"
   fold_end
 else
