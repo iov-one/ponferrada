@@ -7,13 +7,11 @@ import { NotificationActions } from './actions';
 export interface ProcessedTx extends ParsedTx {
   readonly time: ReadonlyDate;
   readonly received: boolean;
-  readonly success: boolean;
   readonly id: string;
   readonly sender: string;
   readonly recipient: string;
   readonly amount: Amount;
   readonly memo?: string;
-  readonly err?: any;
 }
 
 export interface NotificationState {
