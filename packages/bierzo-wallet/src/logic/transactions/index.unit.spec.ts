@@ -28,7 +28,7 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
 
   it('fires transaction callback when account does something', async () => {
     const txsSpy = jest.spyOn(transactionActions, 'addTransaction') as jest.SpyInstance<
-      transactionActions.AddTransactionActionType<ProcessedTx>,
+      transactionActions.AddTransactionActionType,
       [ProcessedTx]
     >;
 
