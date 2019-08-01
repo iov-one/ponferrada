@@ -26,7 +26,6 @@ export class BwSendParser extends BwParser<BwSendProps> {
       received,
       recipient: payload.recipient,
       sender: payload.sender,
-      success: true,
     };
   }
 
@@ -42,7 +41,7 @@ export class BwSendParser extends BwParser<BwSendProps> {
       `"${tx.amount.tokenTicker}"`,
     ];
     const date = [`"${tx.time.toISOString()}"`];
-    const status = [`"${tx.received}"`, `"${tx.success}"`, `"${tx.err}"`, `"${tx.memo}"`];
+    const status = [`"${tx.received}"`, `"${tx.memo}"`];
 
     const txRow = [...parties, ...payment, ...date, ...status];
 
