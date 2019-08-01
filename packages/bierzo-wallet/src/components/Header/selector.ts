@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { ProcessedTx } from '../../store/notifications';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
 import { getTransactions } from '../../store/notifications/selectors';
 
 export const confirmedTxSelector = createSelector(
   getTransactions,
-  (txs: ReadonlyArray<ProcessedTx>) => {
+  (txs: ReadonlyArray<ParsedTx>) => {
     const min = Math.min(txs.length, 3);
 
     return txs.slice(0, min);
@@ -14,7 +14,7 @@ export const confirmedTxSelector = createSelector(
 
 export const lastTxSelector = createSelector(
   confirmedTxSelector,
-  (txs: ReadonlyArray<ProcessedTx>) => {
+  (txs: ReadonlyArray<ParsedTx>) => {
     if (txs.length === 0) {
       return undefined;
     }

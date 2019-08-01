@@ -8,13 +8,20 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { useOpen } from 'medulas-react-components/lib/hooks/open';
 import * as React from 'react';
 
+import {
+  DEFAULT_ADDRESS,
+  getAddressPrefix,
+  getTypeIcon,
+} from '../../../../../routes/transactions/components/TxTable/rowTxBuilder';
+import { ProcessedTx } from '../../../../../store/notifications';
 import { getBorderColor } from '../../../../../theme/css';
 import { amountToNumber } from '../../../../../utils/balances';
 import { getDate, getTime } from '../../../../../utils/date';
-import dropdownArrow from '../../../assets/dropdownArrow.svg';
-import dropdownArrowClose from '../../../assets/dropdownArrowClose.svg';
-import { DEFAULT_ADDRESS, getAddressPrefix, getTypeIcon, TxTableRowProps } from '../rowTxBuilder';
-import TxDetails from '../TxDetails';
+import dropdownArrow from './assets/dropdownArrowClose.svg';
+import dropdownArrowClose from './assets/dropdownArrowClose.svg';
+import SendTxDetails from './Details';
+
+export type BwSendProps = ProcessedTx;
 
 const useStyles = makeStyles({
   cell: {
@@ -22,7 +29,11 @@ const useStyles = makeStyles({
   },
 });
 
-function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
+interface Props {
+  readonly sendTx: BwSendProps;
+}
+
+function TxTableRow({ sendTx }: Props): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
@@ -36,7 +47,7 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
       <Block margin={2} />
       <Block display="flex" alignItems="center">
         <CircleImage
-          icon={getTypeIcon(tx)}
+          icon={getTypeIcon(sendTx)}
           circleColor={theme.palette.background.default}
           borderColor={getBorderColor(theme)}
           alt="Transaction type"
@@ -46,19 +57,19 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
         />
         <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
           <Typography variant="subtitle2" weight="semibold" gutterBottom>
-            {getAddressPrefix(tx)} {DEFAULT_ADDRESS}
+            {getAddressPrefix(sendTx)} {DEFAULT_ADDRESS}
           </Typography>
           <Typography variant="subtitle2" weight="regular" color="secondary">
-            {getTime(tx.time as Date)}
+            {getTime(sendTx.time as Date)}
           </Typography>
         </Block>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
-          {getDate(tx.time as Date)}
+          {getDate(sendTx.time as Date)}
         </Typography>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
-          {amountToNumber(tx.amount)} {tx.amount.tokenTicker}
+          {amountToNumber(sendTx.amount)} {sendTx.amount.tokenTicker}
         </Typography>
         <Block padding={0.5} />
         <Img
@@ -69,7 +80,7 @@ function TxTableRow({ tx }: TxTableRowProps): JSX.Element {
           onClick={onClick}
         />
       </Block>
-      {isOpen && <TxDetails tx={tx} />}
+      {isOpen && <SendTxDetails tx={sendTx} />}
       <Block margin={2} />
       <Hairline />
     </Block>

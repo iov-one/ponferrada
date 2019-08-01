@@ -4,7 +4,8 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
-import { ProcessedTx } from '../../store/notifications';
+import { ParsedTx } from '../../logic/transactions/types/BwParser';
+import { BwParserFactory } from '../../logic/transactions/types/BwParserFactory';
 import { RootState } from '../../store/reducers';
 import Layout from './components';
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from './components/sorting';
@@ -21,7 +22,12 @@ const Transactions = (): JSX.Element => {
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN as TxsOrder);
   const [order, setOrder] = React.useState(ORDER_DESC as SortOrder);
-  const txs = useSelector((state: RootState) => state.notifications.transactions);
+  const parsedTxs: ReadonlyArray<ParsedTx> = useSelector(
+    (state: RootState) => state.notifications.transactions,
+  );
+
+  const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
+  const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx));
 
   function onChangeRows(item: Item): void {
     setRows(Number(item.name));
@@ -53,29 +59,19 @@ const Transactions = (): JSX.Element => {
   }
 
   function onDownloadCSV(): void {
+    // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
     const csvHeader =
       '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Success";"Error";"Note"';
-    const csvBody = txs.map((tx: ProcessedTx) => {
-      const parties = `"${tx.id}";"${tx.recipient}";"${tx.sender}";`;
-      const payment = `"${tx.amount.quantity}";"${tx.amount.fractionalDigits}";"${tx.amount.tokenTicker}";`;
-      const date = `"${tx.time.toISOString()}";`;
-      const status = `"${tx.received}";"${tx.success}";"${tx.err}";"${tx.memo}"`;
-
-      const txRow = `${parties}${payment}${date}${status}`;
-
-      return txRow;
-    });
+    const csvBody = orderedTxs.map((tx: ParsedTx) => BwParserFactory.getCsvRepresentation(tx));
 
     const blob = new Blob([`${csvHeader}\n${csvBody.join('\n')}`], { type: 'text/plain;charset=utf-8' });
     FileSaver.saveAs(blob, 'transactions.csv');
   }
 
-  const orderedTxs = filterTxsBy(txs, rows, page, orderBy, order);
-
   return (
     <PageMenu padding={false}>
       <Layout
-        txs={orderedTxs}
+        rows={txs}
         onChangeRows={onChangeRows}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}

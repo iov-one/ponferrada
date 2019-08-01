@@ -28,6 +28,7 @@ const pendingTxs: ReadonlyArray<Tx> = [
 
 const txs: ReadonlyArray<ProcessedTx> = [
   {
+    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
@@ -37,6 +38,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
     id: 'tx1',
   },
   {
+    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
@@ -48,6 +50,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
 ];
 
 const faultTx: ProcessedTx = {
+  kind: 'bcp/send',
   received: false,
   sender: 'me',
   recipient: 'alex*iov',

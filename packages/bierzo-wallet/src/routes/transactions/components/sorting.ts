@@ -1,4 +1,4 @@
-import { ProcessedTx } from '../../../store/notifications';
+import { ParsedTx } from '../../../logic/transactions/types/BwParser';
 
 export interface SortingStateProps {
   readonly onSort: (orderBy: TxsOrder, order: SortOrder) => () => void;
@@ -15,16 +15,16 @@ export const TX_DATE_COLUMN = 'Date';
 export type TxsOrder = 'Date';
 
 export const filterTxsBy = (
-  txs: ReadonlyArray<ProcessedTx>,
+  txs: ReadonlyArray<ParsedTx>,
   rowsPerPage: number,
   pageNumber: number,
   orderBy: TxsOrder,
   order: SortOrder,
-): ReadonlyArray<ProcessedTx> => {
+): ReadonlyArray<ParsedTx> => {
   const orderedTxs = txs.slice(0); // make a mutable copy
 
   if (orderBy === TX_DATE_COLUMN) {
-    orderedTxs.sort((a: ProcessedTx, b: ProcessedTx) => {
+    orderedTxs.sort((a: ParsedTx, b: ParsedTx) => {
       return (a.time < b.time ? -1 : a.time > b.time ? 1 : 0) * order;
     });
   }
