@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import puppeteer, { Browser, Page } from 'puppeteer';
 
 import { getConfig } from '../../config';

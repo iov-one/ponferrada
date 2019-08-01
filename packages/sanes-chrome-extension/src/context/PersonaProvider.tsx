@@ -60,12 +60,10 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
               if (personaData) {
                 setTxs(personaData.txs);
               } else {
-                // eslint-disable-next-line no-console
                 console.warn('Could not get persona data after receiving TransactionsChanged message');
               }
             })
             .catch(error => {
-              // eslint-disable-next-line no-console
               console.error(error);
             });
           break;

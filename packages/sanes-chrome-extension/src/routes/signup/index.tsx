@@ -47,7 +47,6 @@ const Signup = (): JSX.Element => {
       response = await createPersona(password, undefined);
     } catch (error) {
       toast.show('An error occurred while signing up.', ToastVariant.ERROR);
-      // eslint-disable-next-line no-console
       console.error(error);
       return;
     }

@@ -81,7 +81,6 @@ const AccountView = (): JSX.Element => {
           await clearDatabase();
         } catch (error) {
           toast.show('An error occurred during logout', ToastVariant.ERROR);
-          // eslint-disable-next-line no-console
           console.error(error);
           return;
         }
