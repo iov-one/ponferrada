@@ -1,6 +1,6 @@
 {
   "name": "sanes-chrome-extension",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
