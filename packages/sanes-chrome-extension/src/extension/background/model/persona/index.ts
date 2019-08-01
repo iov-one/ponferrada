@@ -118,6 +118,7 @@ export class Persona {
       this.signer,
       signingServer.getIdentitiesCallback(signer),
       signingServer.signAndPostCallback(signer),
+      console.error,
     );
 
     this.subscribeToTxUpdates(transactionsUpdater);
