@@ -1,7 +1,7 @@
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 
-import { elipsify } from '../../../../../utils/strings';
+import { elipsify } from '../../../../../../utils/strings';
 
 interface MsgProps {
   readonly received: boolean;

@@ -10,13 +10,13 @@ import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
 
 import { ParsedTx } from '../../../../logic/transactions/types/BwParser';
+import { BwParserFactory } from '../../../../logic/transactions/types/BwParserFactory';
 import { ProcessedTx } from '../../../../store/notifications';
 import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
 import bell from '../../assets/bell.svg';
 import bellGreen from '../../assets/bellGreen.svg';
 import upToDate from '../../assets/uptodate.svg';
 import { BadgeProps, calcBadgeProps } from './badgeCalculator';
-import TxItem from './TxItem';
 
 interface Props {
   readonly items: ReadonlyArray<ParsedTx>;
@@ -65,8 +65,7 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
         items.map((item: ParsedTx, index: number) => {
           const lastOne = index + 1 === items.length;
 
-          // TODO remove automatic casting when supported multiple types
-          return <TxItem key={(item as ProcessedTx).id} item={item as ProcessedTx} lastOne={lastOne} />;
+          return BwParserFactory.getHeaderRepresentation(item, lastOne);
         })
       ) : (
         <EmptyListIcon src={upToDate} alt="Up to date" text="Up to date" />

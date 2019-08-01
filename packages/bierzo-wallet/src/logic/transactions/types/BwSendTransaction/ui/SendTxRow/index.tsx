@@ -8,20 +8,18 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { useOpen } from 'medulas-react-components/lib/hooks/open';
 import * as React from 'react';
 
+import { BwSendProps } from '../..';
 import {
   DEFAULT_ADDRESS,
   getAddressPrefix,
   getTypeIcon,
-} from '../../../../../routes/transactions/components/TxTable/rowTxBuilder';
-import { ProcessedTx } from '../../../../../store/notifications';
-import { getBorderColor } from '../../../../../theme/css';
-import { amountToNumber } from '../../../../../utils/balances';
-import { getDate, getTime } from '../../../../../utils/date';
-import dropdownArrow from './assets/dropdownArrowClose.svg';
-import dropdownArrowClose from './assets/dropdownArrowClose.svg';
+} from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
+import { getBorderColor } from '../../../../../../theme/css';
+import { amountToNumber } from '../../../../../../utils/balances';
+import { getDate, getTime } from '../../../../../../utils/date';
+import dropdownArrow from '../assets/dropdownArrowClose.svg';
+import dropdownArrowClose from '../assets/dropdownArrowClose.svg';
 import SendTxDetails from './Details';
-
-export type BwSendProps = ProcessedTx;
 
 const useStyles = makeStyles({
   cell: {
@@ -33,7 +31,7 @@ interface Props {
   readonly sendTx: BwSendProps;
 }
 
-function TxTableRow({ sendTx }: Props): JSX.Element {
+function SendTxRow({ sendTx }: Props): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
@@ -87,4 +85,4 @@ function TxTableRow({ sendTx }: Props): JSX.Element {
   );
 }
 
-export default TxTableRow;
+export default SendTxRow;
