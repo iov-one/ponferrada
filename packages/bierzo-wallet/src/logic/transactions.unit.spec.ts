@@ -20,9 +20,9 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
       );
   });
 
-  afterAll(async () => {
+  afterAll(() => {
     jest.spyOn(tokens, 'filterExistingTokens').mockReset();
-    await disconnect();
+    disconnect();
   });
 
   it('fires transaction callback when account does something', async () => {

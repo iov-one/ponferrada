@@ -6,15 +6,17 @@ import { ExtensionState } from '../../store/extension';
 import { SetExtensionStateActionType } from './reducer';
 
 /**
- * Groups the identites by blockchain.
+ * Groups the identites by blockchain. Returns the first identity of each chain.
  *
- * TODO: Right now only the last identity per blockchain is returned. This should be generalized
- * to support multiple identities per blockchain.
+ * The browser extension is supposed to only send one identity per chain.
+ * @see https://github.com/iov-one/ponferrada/issues/447
  */
-function groupIdentitiesByChain(identities: readonly Identity[]): { [chainId: string]: Identity } {
+export function groupIdentitiesByChain(identities: readonly Identity[]): { [chainId: string]: Identity } {
   const out: { [chainId: string]: Identity } = {};
   for (const identity of identities) {
-    out[identity.chainId] = identity;
+    if (!out.hasOwnProperty(identity.chainId)) {
+      out[identity.chainId] = identity;
+    }
   }
   return out;
 }
