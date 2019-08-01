@@ -112,6 +112,11 @@ if [[ "$TRAVIS_TAG" != "" ]]; then
     -X PUT \
     -T packages/sanes-chrome-extension/exports/*.zip \
     "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen"
+  curl -sSv \
+    -H "Authorization: Bearer $ACCESS_TOKEN" \
+    -H "x-goog-api-version: 2" \
+    -X POST \
+    "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen/publish"
   fold_end
 else
   echo "Not a tag build, skipping deployment"
