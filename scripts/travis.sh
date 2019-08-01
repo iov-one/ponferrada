@@ -84,9 +84,15 @@ fold_end
 # Export
 #
 fold_start "export"
+DOCKER_BUILD_VERSION=$(echo "${TRAVIS_COMMIT}" | cut -c 1-10);
 (
   cd packages/sanes-chrome-extension
   yarn export-staging
+)
+(
+  cd packages/bierzo-wallet
+  rm -r build && yarn build-staging # Rebuild necessary since configuration is fixed at build time
+  docker build -t "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" .
 )
 fold_end
 
