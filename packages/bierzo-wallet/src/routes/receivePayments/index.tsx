@@ -7,20 +7,29 @@ import { history } from '..';
 import { getChainName } from '../../config';
 import { getCodecForChainId } from '../../logic/codec';
 import { RootState } from '../../store/reducers';
-import { PAYMENT_ROUTE } from '../paths';
-import Layout from './components';
+import { BwToken } from '../../store/tokens';
+import { BALANCE_ROUTE } from '../paths';
+import Layout, { ChainAddressMap } from './components';
 
-function onReturnToPayment(): void {
-  history.push(PAYMENT_ROUTE);
+function onReturnToBalance(): void {
+  history.push(BALANCE_ROUTE);
 }
 
-const Payment = (): JSX.Element => {
+const ReceivePayment = (): JSX.Element => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
 
-  const chainAddressMap = React.useMemo(
-    () =>
-      Object.values(tokens).map(async token => {
+  const [chainAddressMap, setChainAddressMap] = React.useState<ChainAddressMap[]>([]);
+
+  React.useEffect(() => {
+    async function processAddresses(
+      tokens: { [key: string]: BwToken },
+      pubKeys: { [chain: string]: string },
+    ): Promise<void> {
+      const addressesMap: ChainAddressMap[] = [];
+      const tokensValues = Object.values(tokens);
+      for (let i = 0; i < tokensValues.length; i++) {
+        const token = tokensValues[i];
         const plainPubkey = pubKeys[token.chainId];
         if (!plainPubkey) {
           return;
@@ -29,16 +38,19 @@ const Payment = (): JSX.Element => {
         const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
         const address = (await getCodecForChainId(token.chainId)).identityToAddress(identity);
         const chainName = getChainName(token.chainId);
-        return {
+        addressesMap.push({
           chainId: token.chainId,
           chainName,
           address,
-        };
-      }),
-    [tokens, pubKeys],
-  );
+        });
+      }
 
-  return <Layout chainAddressMap={chainAddressMap} onReturnToPayment={onReturnToPayment} />;
+      setChainAddressMap(addressesMap);
+    }
+    processAddresses(tokens, pubKeys);
+  }, [tokens, pubKeys]);
+
+  return <Layout chainAddressMap={chainAddressMap} onReturnToBalance={onReturnToBalance} />;
 };
 
-export default Payment;
+export default ReceivePayment;
