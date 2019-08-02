@@ -2426,7 +2426,7 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   className="makeStyles-root-454"
                   height={10}
                   onClick={[Function]}
-                  src="dropdownArrowClose.svg"
+                  src="dropdownArrow.svg"
                   width={16}
                 />
               </div>
@@ -2546,7 +2546,7 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   className="makeStyles-root-454"
                   height={10}
                   onClick={[Function]}
-                  src="dropdownArrowClose.svg"
+                  src="dropdownArrow.svg"
                   width={16}
                 />
               </div>
@@ -2619,7 +2619,7 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   className="makeStyles-root-454"
                   height={10}
                   onClick={[Function]}
-                  src="dropdownArrowClose.svg"
+                  src="dropdownArrow.svg"
                   width={16}
                 />
               </div>
