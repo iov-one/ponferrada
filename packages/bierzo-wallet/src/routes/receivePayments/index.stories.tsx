@@ -7,7 +7,7 @@ import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from '../balance/index.stories';
 import Layout, { ChainAddressMap } from './components';
 
-const RECEIVE_PAYMENT_STORY_PATH = `${WALLET_ROOT}/Receive Payment`;
+export const RECEIVE_PAYMENT_STORY_PATH = `Receive Payment`;
 
 const CHAIN_ADDRESS: ChainAddressMap[] = [
   {
@@ -35,7 +35,7 @@ storiesOf(WALLET_ROOT, module)
       <DecoratedStorybook>
         <Layout
           chainAddressMap={CHAIN_ADDRESS}
-          onReturnToPayment={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+          onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         />
       </DecoratedStorybook>
     ),
