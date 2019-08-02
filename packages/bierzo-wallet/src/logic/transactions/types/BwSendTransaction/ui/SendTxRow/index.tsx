@@ -17,7 +17,7 @@ import {
 import { getBorderColor } from '../../../../../../theme/css';
 import { amountToNumber } from '../../../../../../utils/balances';
 import { getDate, getTime } from '../../../../../../utils/date';
-import dropdownArrow from '../assets/dropdownArrowClose.svg';
+import dropdownArrow from '../assets/dropdownArrow.svg';
 import dropdownArrowClose from '../assets/dropdownArrowClose.svg';
 import SendTxDetails from './Details';
 
@@ -36,6 +36,7 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
 
+  console.log('isOpen ' + isOpen);
   const onClick = (): void => {
     toggle();
   };
