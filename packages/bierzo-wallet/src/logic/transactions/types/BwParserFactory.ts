@@ -9,6 +9,7 @@ import {
 
 import { BwParser, ParsedTx } from '../types/BwParser';
 import { BwSendParser, BwSendProps } from './BwSendTransaction';
+import { BwUnknownProps, BwUnkownParser } from './BwUnkownTransaction';
 
 export class BwParserFactory {
   public static getReactComponent(tx: any): JSX.Element {
@@ -16,7 +17,7 @@ export class BwParserFactory {
       return new BwSendParser().graphicalRepresentation(tx as BwSendProps);
     }
 
-    throw new Error('Not supporting generic components yet');
+    return new BwUnkownParser().graphicalRepresentation(tx as BwUnknownProps);
   }
 
   public static getHeaderRepresentation(tx: any, lastOne: boolean): JSX.Element {
@@ -24,7 +25,7 @@ export class BwParserFactory {
       return new BwSendParser().headerRepresentation(tx as BwSendProps, lastOne);
     }
 
-    throw new Error('Not supporting generic components yet');
+    return new BwUnkownParser().headerRepresentation(tx as BwUnknownProps, lastOne);
   }
 
   public static getCsvRepresentation(tx: any): string {
@@ -32,7 +33,7 @@ export class BwParserFactory {
       return new BwSendParser().csvRepresentation(tx as BwSendProps);
     }
 
-    throw new Error('Not supporting generic components yet');
+    return new BwUnkownParser().csvRepresentation(tx as BwUnknownProps);
   }
 
   public static getBwTransactionFrom(
@@ -51,6 +52,6 @@ export class BwParserFactory {
       return new BwSendParser();
     }
 
-    throw new Error('Unexpected Tx type');
+    return new BwUnkownParser();
   }
 }
