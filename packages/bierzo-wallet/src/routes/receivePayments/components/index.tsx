@@ -1,4 +1,4 @@
-import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faCopy, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Address, ChainId } from '@iov/bcp';
 import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from '@material-ui/core';
@@ -7,8 +7,11 @@ import Paper from '@material-ui/core/Paper';
 import { useTheme } from '@material-ui/styles';
 import Block from 'medulas-react-components/lib/components/Block';
 import Button from 'medulas-react-components/lib/components/Button';
+import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
+import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
 import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
 import React from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 export interface ChainAddressMap {
   readonly chainId: ChainId;
@@ -17,6 +20,19 @@ export interface ChainAddressMap {
 }
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = 'payment-confirmation-view-id';
+
+const useTable = makeStyles({
+  header: {
+    '& > th': {
+      fontSize: '1.6rem',
+    },
+  },
+  copyCell: {
+    '& > svg': {
+      cursor: 'pointer',
+    },
+  },
+});
 
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
@@ -30,12 +46,18 @@ const useAvatar = makeStyles((theme: Theme) => ({
 
 interface Props {
   readonly chainAddressMap: ReadonlyArray<ChainAddressMap>;
-  readonly onReturnToPayment: () => void;
+  readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ chainAddressMap, onReturnToPayment }: Props): JSX.Element => {
+const ReceivePayment = ({ chainAddressMap, onReturnToBalance }: Props): JSX.Element => {
+  const toast = React.useContext(ToastContext);
   const avatarClasses = useAvatar();
+  const tableClasses = useTable();
   const theme = useTheme<Theme>();
+
+  const onAddressCopy = (): void => {
+    toast.show('Address has been copied to clipboard.', ToastVariant.INFO);
+  };
 
   return (
     <Block
@@ -46,7 +68,7 @@ const ReceivePayment = ({ chainAddressMap, onReturnToPayment }: Props): JSX.Elem
       justifyContent="center"
       bgcolor={theme.palette.background.default}
     >
-      <Block width={450}>
+      <Block width={650}>
         <Paper>
           <Block
             display="flex"
@@ -54,23 +76,30 @@ const ReceivePayment = ({ chainAddressMap, onReturnToPayment }: Props): JSX.Elem
             alignItems="center"
             width="100%"
             marginTop={4}
-            padding={5}
+            paddingTop={5}
+            padding={3}
           >
             <Avatar classes={avatarClasses}>
               <FontAwesomeIcon icon={faUser} color="#ffffff" />
             </Avatar>
             <Table>
               <TableHead>
-                <TableRow>
-                  <TableCell align="right">Blockchain</TableCell>
-                  <TableCell align="right">Address</TableCell>
+                <TableRow className={tableClasses.header}>
+                  <TableCell align="center">Blockchain</TableCell>
+                  <TableCell align="center">Address</TableCell>
+                  <TableCell />
                 </TableRow>
               </TableHead>
               <TableBody>
                 {chainAddressMap.map(chain => (
                   <TableRow key={chain.chainId}>
-                    <TableCell align="right">{chain.chainName}</TableCell>
-                    <TableCell align="right">{chain.address}</TableCell>
+                    <TableCell align="left">{chain.chainName}</TableCell>
+                    <TableCell align="left">{chain.address}</TableCell>
+                    <TableCell align="left" className={tableClasses.copyCell}>
+                      <CopyToClipboard text={chain.address} onCopy={onAddressCopy}>
+                        <FontAwesomeIcon icon={faCopy} />
+                      </CopyToClipboard>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -78,9 +107,9 @@ const ReceivePayment = ({ chainAddressMap, onReturnToPayment }: Props): JSX.Elem
           </Block>
         </Paper>
 
-        <Block marginTop={4}>
-          <Button fullWidth onClick={onReturnToPayment}>
-            Return to Payment
+        <Block marginTop={4} marginBottom={1}>
+          <Button fullWidth onClick={onReturnToBalance}>
+            Return to Balance
           </Button>
         </Block>
       </Block>
