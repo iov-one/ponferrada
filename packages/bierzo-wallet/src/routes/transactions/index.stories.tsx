@@ -41,6 +41,7 @@ const txs: ReadonlyArray<any> = [
         address: '0x00aabbddccffee' as Address,
       },
     ],
+    time: new ReadonlyDate('2019-12-24T10:51:33.763Z'),
   },
   {
     kind: 'bcp/send',
@@ -48,7 +49,7 @@ const txs: ReadonlyArray<any> = [
     sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
-    time: new ReadonlyDate('2018-11-13T05:35:03.763Z'),
+    time: new ReadonlyDate('2019-12-24T05:35:03.763Z'),
     id: 'tx1',
     memo: 'Sample note',
   },
@@ -62,6 +63,8 @@ const txs: ReadonlyArray<any> = [
         address: '367X' as Address,
       },
     ],
+    time: new ReadonlyDate('2019-12-24T03:35:03.763Z'),
+    id: '0xaaffBdjuhyu8898scchjsg',
   },
   {
     kind: 'bcp/send',
