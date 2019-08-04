@@ -64,7 +64,6 @@ withChainsDescribe('E2E > Receive Payment route', () => {
 
     [chainName, address] = await getAddressRow(page, 5);
     expect(chainName).toBe('Lisk Devnet');
-    expect(address.length).toBe(20);
   }, 35000);
 
   it('should copy address to clipboard and show toast with message', async () => {
