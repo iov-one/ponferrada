@@ -11,6 +11,11 @@ export const RECEIVE_PAYMENT_STORY_PATH = `Receive Payment`;
 
 const CHAIN_ADDRESS: ChainAddressMap[] = [
   {
+    chainId: 'ethereum-eip155-5777' as ChainId,
+    chainName: 'Ganache',
+    address: '0xD383382350F9f190Bd2608D6381B15b4e1cec0f3' as Address,
+  },
+  {
     chainId: 'local-iov-devnet' as ChainId,
     chainName: 'IOV Devnet',
     address: 'tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku' as Address,
@@ -19,11 +24,6 @@ const CHAIN_ADDRESS: ChainAddressMap[] = [
     chainId: 'lisk-198f2b61a8' as ChainId,
     chainName: 'Lisk Devnet',
     address: '1349293588603668134L' as Address,
-  },
-  {
-    chainId: 'ethereum-eip155-5777' as ChainId,
-    chainName: 'Ganache',
-    address: '0xD383382350F9f190Bd2608D6381B15b4e1cec0f3' as Address,
   },
 ];
 
