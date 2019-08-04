@@ -34,7 +34,9 @@
   "devDependencies": {
     "@types/express": "^4.16.1",
     "@types/file-saver": "^2.0.1",
-    "@types/react-copy-to-clipboard": "^4.2.6"
+    "@types/react-copy-to-clipboard": "^4.2.6",
+    "clipboardy": "^2.1.0",
+    "@types/clipboardy": "^2.0.1"
   },
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
