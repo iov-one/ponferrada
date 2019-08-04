@@ -27,9 +27,10 @@ const ReceivePayment = (): JSX.Element => {
       pubKeys: { [chain: string]: string },
     ): Promise<void> {
       const addressesMap: ChainAddressMap[] = [];
-      const tokensValues = Object.values(tokens);
-      for (let i = 0; i < tokensValues.length; i++) {
-        const token = tokensValues[i];
+      const tickersSorted = Object.keys(tokens).sort();
+      for (let i = 0; i < tickersSorted.length; i++) {
+        const ticker = tickersSorted[i];
+        const token = tokens[ticker];
         const plainPubkey = pubKeys[token.chainId];
         if (!plainPubkey) {
           return;
