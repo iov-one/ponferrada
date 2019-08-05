@@ -50,6 +50,7 @@ describe('The /balance route', () => {
           extension: {
             connected: true,
             installed: true,
+            keys: {},
           },
           balances: balancesAmount,
           usernames,
@@ -88,8 +89,7 @@ describe('The /balance route', () => {
       expect(receiveCard.textContent).toBe('Receive Payment');
 
       TestUtils.Simulate.click(receiveCard);
-      //TODO: check for new route after "Receive payment" component implementation
-      //expectRoute(RECEIVE_FROM_IOV_USER);
+      expectRoute(RECEIVE_FROM_IOV_USER);
     });
 
     it('should check list of available balances', async () => {
@@ -115,6 +115,7 @@ describe('The /balance route', () => {
           extension: {
             connected: true,
             installed: true,
+            keys: {},
           },
         });
         balanceDom = await travelToBalance(store);
