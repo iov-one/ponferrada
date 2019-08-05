@@ -21,6 +21,7 @@ const ReceivePayment = (): JSX.Element => {
 
   React.useEffect(() => {
     async function processAddresses(pubKeys: { [chain: string]: string }): Promise<void> {
+      if (!pubKeys) return;
       const addressesMap: ChainAddressMap[] = [];
       const chainIds = Object.keys(pubKeys);
       for (let i = 0; i < chainIds.length; i++) {
