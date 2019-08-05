@@ -51,7 +51,7 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
 }
 
 export async function getConnectionForChainId(chainId: ChainId): Promise<BlockchainConnection> {
-  for (const chain of getConfig().chains) {
+  for (const chain of (await getConfig()).chains) {
     const connection = await getConnectionFor(chain.chainSpec);
     if (connection && connection.chainId() === chainId) return connection;
   }

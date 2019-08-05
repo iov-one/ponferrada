@@ -51,7 +51,9 @@ export const parseGetIdentitiesResponse = (response: any): readonly Identity[] =
 };
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const connections = await Promise.all(getConfig().chains.map(config => getConnectionFor(config.chainSpec)));
+  const connections = await Promise.all(
+    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
+  );
   const supportedChainIds = connections.map(connection => connection.chainId());
   const request = generateGetIdentitiesRequest(supportedChainIds);
 
@@ -60,7 +62,7 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
     return undefined;
   }
 
-  const config = getConfig();
+  const config = await getConfig();
 
   return new Promise(resolve => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {

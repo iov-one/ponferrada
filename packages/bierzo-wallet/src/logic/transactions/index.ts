@@ -15,7 +15,7 @@ export async function subscribeTransaction(
   keys: { [chain: string]: string },
   dispatch: Dispatch,
 ): Promise<void> {
-  const config = getConfig();
+  const config = await getConfig();
   const chains = config.chains;
 
   for (const chain of chains) {

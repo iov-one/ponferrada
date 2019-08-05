@@ -27,7 +27,7 @@ export async function createPage(browser: Browser): Promise<Page> {
 }
 
 export async function createExtensionPage(browser: Browser): Promise<Page> {
-  const config = getConfig();
+  const config = await getConfig();
 
   const page: Page = await browser.newPage();
   await page.goto(`chrome-extension://${config.extensionId}/index.html`, {
@@ -40,7 +40,7 @@ export async function createExtensionPage(browser: Browser): Promise<Page> {
 }
 
 export async function getBackgroundPage(browser: Browser): Promise<Page> {
-  const config = getConfig();
+  const config = await getConfig();
 
   const targets = await browser.targets();
   const backgroundPageTarget = targets.find(

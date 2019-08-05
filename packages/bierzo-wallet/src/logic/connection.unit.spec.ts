@@ -7,8 +7,8 @@ import { disconnect, getConnectionFor } from "./connection";
 withChainsDescribe("Logic :: connection", () => {
   afterAll(() => disconnect());
 
-  it("calls connections only once", async () => {
-    const config = getConfig();
+  it('calls connections only once', async () => {
+    const config = await getConfig();
     const firstChain = config.chains[2];
 
     const ethereumConnectionSpy = jest.spyOn(EthereumConnection, "establish");
@@ -23,7 +23,7 @@ withChainsDescribe("Logic :: connection", () => {
 
   it("reset connections correctly when disconnecting", async () => {
     // GIVEN
-    const config = getConfig();
+    const config = await getConfig();
     const firstChain = config.chains[2];
     expect(firstChain.chainSpec.codecType).toBe("eth");
 

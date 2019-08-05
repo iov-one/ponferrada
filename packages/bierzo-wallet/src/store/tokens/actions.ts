@@ -3,7 +3,7 @@ import { getConnectionFor } from "../../logic/connection";
 import { AddTickerActionType, BwToken } from "./reducer";
 
 export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
-  const config = getConfig();
+  const config = await getConfig();
   const tokens: { [ticker: string]: BwToken } = {};
   const chains = config.chains;
 
