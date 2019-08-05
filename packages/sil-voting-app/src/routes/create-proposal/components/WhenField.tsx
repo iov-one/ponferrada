@@ -1,14 +1,14 @@
-import { FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-const WHEN_FIELD = 'When';
-const DATE_FIELD = 'Date';
-const DATE_PLACEHOLDER = 'Choose date';
-const TIME_FIELD = 'Time';
-const TIME_PLACEHOLDER = 'Choose time';
+const WHEN_FIELD = "When";
+const DATE_FIELD = "Date";
+const DATE_PLACEHOLDER = "Choose date";
+const TIME_FIELD = "Time";
+const TIME_PLACEHOLDER = "Choose time";
 
 interface Props {
   form: FormApi;

@@ -1,10 +1,10 @@
-import { ChainId, TxCodec } from '@iov/bcp';
-import { bnsCodec } from '@iov/bns';
-import { ethereumCodec } from '@iov/ethereum';
-import { liskCodec } from '@iov/lisk';
+import { ChainId, TxCodec } from "@iov/bcp";
+import { bnsCodec } from "@iov/bns";
+import { ethereumCodec } from "@iov/ethereum";
+import { liskCodec } from "@iov/lisk";
 
-import { ChainSpec, getConfig } from '../config';
-import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from './connection';
+import { ChainSpec, getConfig } from "../config";
+import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from "./connection";
 
 export function getCodec(spec: ChainSpec): TxCodec {
   if (isEthSpec(spec)) {
@@ -19,7 +19,7 @@ export function getCodec(spec: ChainSpec): TxCodec {
     return liskCodec;
   }
 
-  throw new Error('Unsupported codecType for chain spec');
+  throw new Error("Unsupported codecType for chain spec");
 }
 
 export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
@@ -29,5 +29,5 @@ export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
       return getCodec(chain.chainSpec);
     }
   }
-  throw new Error('No codec found for this chainId');
+  throw new Error("No codec found for this chainId");
 }

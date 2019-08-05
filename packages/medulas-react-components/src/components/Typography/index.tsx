@@ -1,10 +1,10 @@
-import { Theme } from '@material-ui/core/styles';
-import MuiTypography, { TypographyProps } from '@material-ui/core/Typography';
-import makeStyles from '@material-ui/styles/makeStyles';
-import classNames from 'classnames';
-import * as React from 'react';
+import { Theme } from "@material-ui/core/styles";
+import MuiTypography, { TypographyProps } from "@material-ui/core/Typography";
+import makeStyles from "@material-ui/styles/makeStyles";
+import classNames from "classnames";
+import * as React from "react";
 
-type Weight = 'light' | 'regular' | 'semibold';
+type Weight = "light" | "regular" | "semibold";
 
 interface StyleProps {
   readonly weight?: Weight;
@@ -12,17 +12,17 @@ interface StyleProps {
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   inline: {
-    display: 'inline',
+    display: "inline",
   },
   link: {
-    textDecoration: 'underline',
-    cursor: 'pointer',
+    textDecoration: "underline",
+    cursor: "pointer",
   },
   weight: props => ({
     fontWeight:
-      props.weight === 'light'
+      props.weight === "light"
         ? theme.typography.fontWeightLight
-        : props.weight === 'semibold'
+        : props.weight === "semibold"
         ? theme.typography.fontWeightMedium
         : theme.typography.fontWeightRegular,
   }),

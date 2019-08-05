@@ -1,9 +1,9 @@
-import Collapse from '@material-ui/core/Collapse';
-import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React, { useState } from 'react';
+import Collapse from "@material-ui/core/Collapse";
+import Block from "medulas-react-components/lib/components/Block";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React, { useState } from "react";
 
-import { elipsify } from '../../../../utils/strings';
+import { elipsify } from "../../../../utils/strings";
 
 const DESC_MAX_LENGTH = 180;
 
@@ -19,7 +19,7 @@ const Description = ({ description }: Props): JSX.Element => {
   };
 
   const ReadMore = (): JSX.Element => {
-    const shortDescription = elipsify(description, DESC_MAX_LENGTH) + ' ';
+    const shortDescription = elipsify(description, DESC_MAX_LENGTH) + " ";
 
     return (
       <Block marginTop={2}>
@@ -48,7 +48,7 @@ const Description = ({ description }: Props): JSX.Element => {
       {!expanded && <ReadMore />}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Typography inline variant="body2">
-          {description}{' '}
+          {description}{" "}
         </Typography>
         <Typography inline link onClick={onClick} variant="body2" weight="semibold">
           Read less

@@ -1,11 +1,11 @@
-import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
-import * as React from 'react';
-import { Provider } from 'react-redux';
+import MedulasThemeProvider from "medulas-react-components/lib/theme/MedulasThemeProvider";
+import * as React from "react";
+import { Provider } from "react-redux";
 
-import { configureStore } from '../../store';
-import { globalStyles } from '../../theme/globalStyles';
+import { configureStore } from "../../store";
+import { globalStyles } from "../../theme/globalStyles";
 
-export const VOTER_ROOT = 'Voter Dashboard';
+export const VOTER_ROOT = "Voter Dashboard";
 
 const store = configureStore();
 

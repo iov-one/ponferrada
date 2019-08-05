@@ -1,7 +1,7 @@
-import { Ed25519HdWallet, Secp256k1HdWallet, UserProfile } from '@iov/keycontrol';
-import { MultiChainSigner } from '@iov/multichain';
+import { Ed25519HdWallet, Secp256k1HdWallet, UserProfile } from "@iov/keycontrol";
+import { MultiChainSigner } from "@iov/multichain";
 
-import { AccountManager, AccountManagerChainConfig } from '../accountManager';
+import { AccountManager, AccountManagerChainConfig } from "../accountManager";
 import {
   algorithmForCodec,
   chainConnector,
@@ -9,7 +9,7 @@ import {
   ConfigurationFile,
   getConfigurationFile,
   pathBuilderForCodec,
-} from './config';
+} from "./config";
 
 export class PersonaBuilder {
   public static async createAccountManager(

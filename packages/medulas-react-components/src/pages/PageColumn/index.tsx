@@ -1,23 +1,23 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import useTheme from '@material-ui/styles/useTheme';
-import { FormApi } from 'final-form';
-import React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import useTheme from "@material-ui/styles/useTheme";
+import { FormApi } from "final-form";
+import React from "react";
 
-import Block from '../../components/Block';
-import BoxScroll from '../../components/BoxScroll';
-import Button from '../../components/Button';
-import Form, { useForm } from '../../components/forms/Form';
-import Hairline from '../../components/Hairline';
-import Img from '../../components/Image';
-import logo from '../../theme/assets/pageColumn/logo.svg';
-import logoBlack from '../../theme/assets/pageColumn/logoBlack.svg';
-import people from '../../theme/assets/pageColumn/People.svg';
-import EmptyHeader from './EmptyHeader';
-import SubtitleSection from './SubtitleSection';
-import TitleSection from './TitleSection';
+import Block from "../../components/Block";
+import BoxScroll from "../../components/BoxScroll";
+import Button from "../../components/Button";
+import Form, { useForm } from "../../components/forms/Form";
+import Hairline from "../../components/Hairline";
+import Img from "../../components/Image";
+import logo from "../../theme/assets/pageColumn/logo.svg";
+import logoBlack from "../../theme/assets/pageColumn/logoBlack.svg";
+import people from "../../theme/assets/pageColumn/People.svg";
+import EmptyHeader from "./EmptyHeader";
+import SubtitleSection from "./SubtitleSection";
+import TitleSection from "./TitleSection";
 
 interface Props {
-  readonly icon: 'white' | 'black';
+  readonly icon: "white" | "black";
   readonly nextMsg: string;
   readonly onSubmit: (values: object) => void;
   readonly formRender?: (form: FormApi) => JSX.Element;
@@ -32,15 +32,15 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) => ({
   logo: {
-    bottom: '80px',
-    position: 'relative',
-    display: 'flex',
-    margin: '0 auto',
+    bottom: "80px",
+    position: "relative",
+    display: "flex",
+    margin: "0 auto",
   },
   form: {
-    display: 'flex',
-    height: '100vh',
-    flexDirection: 'column',
+    display: "flex",
+    height: "100vh",
+    flexDirection: "column",
   },
 }));
 
@@ -72,7 +72,7 @@ const Layout = ({
     >
       <Block height="100vh">
         <Img src={people} alt="Log in Image" cover />
-        <Img src={icon === 'black' ? logoBlack : logo} alt="Logo" className={classes.logo} />
+        <Img src={icon === "black" ? logoBlack : logo} alt="Logo" className={classes.logo} />
       </Block>
       <Block flexGrow={1}>
         <Form onSubmit={handleSubmit} className={classes.form}>

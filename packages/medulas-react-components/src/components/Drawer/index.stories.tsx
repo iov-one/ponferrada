@@ -1,25 +1,25 @@
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../utils/storybook';
-import Block from '../Block';
-import Link from '../Link';
-import PageLayout from '../PageLayout';
-import Typography from '../Typography';
-import secCenter from './assets/secCenter.svg';
-import Drawer from './index';
+import { Storybook } from "../../utils/storybook";
+import Block from "../Block";
+import Link from "../Link";
+import PageLayout from "../PageLayout";
+import Typography from "../Typography";
+import secCenter from "./assets/secCenter.svg";
+import Drawer from "./index";
 
-storiesOf('Components', module).add(
-  'Drawer',
+storiesOf("Components", module).add(
+  "Drawer",
   (): JSX.Element => {
     const items = [
       {
         icon: secCenter,
-        text: 'Security Center',
-        action: action('travelled to Security center'),
+        text: "Security Center",
+        action: action("travelled to Security center"),
       },
-      { text: 'Invite Friends', action: action('travelled to Invite Friends') },
+      { text: "Invite Friends", action: action("travelled to Invite Friends") },
     ];
 
     const footer = (

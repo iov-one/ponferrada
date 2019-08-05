@@ -1,25 +1,25 @@
-import 'normalize.css';
+import "normalize.css";
 
-import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
+import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 
 export const globalStyles = makeStyles({
-  '@global': {
-    '*': {
-      boxSizing: 'inherit',
-      WebkitFontSmoothing: 'antialiased', // Antialiasing.
-      MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+  "@global": {
+    "*": {
+      boxSizing: "inherit",
+      WebkitFontSmoothing: "antialiased", // Antialiasing.
+      MozOsxFontSmoothing: "grayscale", // Antialiasing.
     },
-    '*::before, *::after': {
-      boxSizing: 'inherit',
+    "*::before, *::after": {
+      boxSizing: "inherit",
     },
     html: {
-      fontSize: '62.5%',
+      fontSize: "62.5%",
     },
     body: {
-      margin: '0',
-      padding: '0',
+      margin: "0",
+      padding: "0",
       fontFamily: '"Muli", sans-serif',
-      boxSizing: 'border-box',
+      boxSizing: "border-box",
     },
   },
 });

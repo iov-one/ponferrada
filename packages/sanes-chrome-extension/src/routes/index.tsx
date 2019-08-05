@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import * as React from "react";
+import { Route, Switch } from "react-router-dom";
 
-import AccountStatus from './account';
-import Login from './login';
+import AccountStatus from "./account";
+import Login from "./login";
 import {
   ACCOUNT_STATUS_ROUTE,
   LOGIN_ROUTE,
@@ -13,14 +13,14 @@ import {
   SIGNUP_ROUTE,
   TX_REQUEST,
   WELCOME_ROUTE,
-} from './paths';
-import RecoveryPhrase from './recovery-phrase';
-import Requests from './requests';
-import RestoreAccount from './restore-account';
-import ShareIdentity from './share-identity';
-import Signup from './signup';
-import TxRequest from './tx-request';
-import Welcome from './welcome';
+} from "./paths";
+import RecoveryPhrase from "./recovery-phrase";
+import Requests from "./requests";
+import RestoreAccount from "./restore-account";
+import ShareIdentity from "./share-identity";
+import Signup from "./signup";
+import TxRequest from "./tx-request";
+import Welcome from "./welcome";
 
 export const MainRouter = (): JSX.Element => (
   <Switch>

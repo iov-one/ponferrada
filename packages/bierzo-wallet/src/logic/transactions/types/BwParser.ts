@@ -5,8 +5,8 @@ import {
   FailedTransaction,
   LightTransaction,
   TransactionId,
-} from '@iov/bcp';
-import { ReadonlyDate } from 'readonly-date';
+} from "@iov/bcp";
+import { ReadonlyDate } from "readonly-date";
 
 export interface ProcessedTx<T = LightTransaction> {
   readonly time: ReadonlyDate;

@@ -1,6 +1,6 @@
-import { BnsConnection } from '@iov/bns';
+import { BnsConnection } from "@iov/bns";
 
-import { getConfig } from '../config';
+import { getConfig } from "../config";
 
 let bnsConnection: BnsConnection | undefined;
 

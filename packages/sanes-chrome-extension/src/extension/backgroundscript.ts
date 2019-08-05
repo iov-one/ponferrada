@@ -1,7 +1,7 @@
 /*global chrome*/
-import { generateErrorResponse } from './background/errorResponseGenerator';
-import Backgroundscript, { IovWindowExtension } from './background/model/backgroundscript';
-import { updateExtensionBadge } from './background/updaters/extensionBadgeUpdater';
+import { generateErrorResponse } from "./background/errorResponseGenerator";
+import Backgroundscript, { IovWindowExtension } from "./background/model/backgroundscript";
+import { updateExtensionBadge } from "./background/updaters/extensionBadgeUpdater";
 
 const backgroundScript = new Backgroundscript();
 backgroundScript.registerActionsInBackground(window as IovWindowExtension);
@@ -22,8 +22,8 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
       // exception in handleExternalMessage are most likely programming errors, since all
       // data validation must lead to an error response. Thus we return a server error without
       // revealing error details to the caller.
-      const responseId = typeof message.id === 'number' ? message.id : null;
-      const response = generateErrorResponse(responseId, 'Internal server error');
+      const responseId = typeof message.id === "number" ? message.id : null;
+      const response = generateErrorResponse(responseId, "Internal server error");
       sendResponse(response);
     });
 

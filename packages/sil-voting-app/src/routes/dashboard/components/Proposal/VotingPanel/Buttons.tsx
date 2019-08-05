@@ -1,16 +1,16 @@
-import { VoteOption } from '@iov/bns';
-import Button from '@material-ui/core/Button';
-import Block from 'medulas-react-components/lib/components/Block';
-import React from 'react';
+import { VoteOption } from "@iov/bns";
+import Button from "@material-ui/core/Button";
+import Block from "medulas-react-components/lib/components/Block";
+import React from "react";
 
 interface Props {
   readonly vote: VoteOption | undefined;
 }
 
 const Buttons = ({ vote }: Props): JSX.Element => {
-  const yesButton = vote === VoteOption.Yes ? 'contained' : 'outlined';
-  const noButton = vote === VoteOption.No ? 'contained' : 'outlined';
-  const abstainButton = vote === VoteOption.Abstain ? 'contained' : 'outlined';
+  const yesButton = vote === VoteOption.Yes ? "contained" : "outlined";
+  const noButton = vote === VoteOption.No ? "contained" : "outlined";
+  const abstainButton = vote === VoteOption.Abstain ? "contained" : "outlined";
 
   return (
     <Block margin={2}>

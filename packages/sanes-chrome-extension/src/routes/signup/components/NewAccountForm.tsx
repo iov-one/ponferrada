@@ -1,24 +1,24 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
-import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Back from "medulas-react-components/lib/components/Button/Back";
+import CheckboxField from "medulas-react-components/lib/components/forms/CheckboxField";
 import Form, {
   FormValues,
   useForm,
   ValidationError,
-} from 'medulas-react-components/lib/components/forms/Form';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import Link from 'medulas-react-components/lib/components/Link';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+} from "medulas-react-components/lib/components/forms/Form";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import Link from "medulas-react-components/lib/components/Link";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { SIGNUP_ROUTE, TERMS_URL } from '../../paths';
+import { SIGNUP_ROUTE, TERMS_URL } from "../../paths";
 
-export const ACCOUNT_NAME_FIELD = 'accountNameField';
-export const PASSWORD_FIELD = 'passwordInputField';
-export const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
-export const TERMS_ACCEPT_FIELD = 'termsAcceptCheckboxField';
+export const ACCOUNT_NAME_FIELD = "accountNameField";
+export const PASSWORD_FIELD = "passwordInputField";
+export const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
+export const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
 
 export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 
@@ -26,29 +26,29 @@ const validate = (values: object): object => {
   const formValues = values as FormValues;
   let errors: ValidationError = {};
   if (!formValues[ACCOUNT_NAME_FIELD]) {
-    errors[ACCOUNT_NAME_FIELD] = 'Required';
+    errors[ACCOUNT_NAME_FIELD] = "Required";
   }
   if (!formValues[PASSWORD_FIELD]) {
-    errors[PASSWORD_FIELD] = 'Required';
+    errors[PASSWORD_FIELD] = "Required";
   }
   if (!formValues[PASSWORD_CONFIRM_FIELD]) {
-    errors[PASSWORD_CONFIRM_FIELD] = 'Required';
+    errors[PASSWORD_CONFIRM_FIELD] = "Required";
   }
 
   if (formValues[PASSWORD_FIELD] && formValues[PASSWORD_FIELD].length < 8) {
-    errors[PASSWORD_FIELD] = 'Password should have at least 8 characters';
+    errors[PASSWORD_FIELD] = "Password should have at least 8 characters";
   }
 
   if (formValues[ACCOUNT_NAME_FIELD] && formValues[ACCOUNT_NAME_FIELD].length < 8) {
-    errors[ACCOUNT_NAME_FIELD] = 'Username should have at least 8 characters';
+    errors[ACCOUNT_NAME_FIELD] = "Username should have at least 8 characters";
   }
 
   if (formValues[PASSWORD_FIELD] !== formValues[PASSWORD_CONFIRM_FIELD]) {
-    errors[PASSWORD_CONFIRM_FIELD] = 'Passwords mismatch';
+    errors[PASSWORD_CONFIRM_FIELD] = "Passwords mismatch";
   }
 
   if (!formValues[TERMS_ACCEPT_FIELD]) {
-    errors[TERMS_ACCEPT_FIELD] = 'You should accept T&C in order to continue';
+    errors[TERMS_ACCEPT_FIELD] = "You should accept T&C in order to continue";
   }
 
   return errors;
@@ -73,7 +73,7 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   const termsCheckboxLabel = (
     <React.Fragment>
       <Typography variant="subtitle1" inline>
-        I have read and agree the{' '}
+        I have read and agree the{" "}
       </Typography>
       <Link to={TERMS_URL}>
         <Typography link color="primary" variant="subtitle1" inline>

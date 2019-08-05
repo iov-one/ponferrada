@@ -1,8 +1,8 @@
-import { ChainAddressPair } from '@iov/bns';
-import { Action } from 'redux';
-import { ActionType } from 'typesafe-actions';
+import { ChainAddressPair } from "@iov/bns";
+import { Action } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import * as actions from './actions';
+import * as actions from "./actions";
 
 export interface BwUsername {
   readonly username: string;
@@ -10,7 +10,7 @@ export interface BwUsername {
 }
 
 export interface AddUsernamesActionType extends Action {
-  readonly type: '@@usernames/ADD';
+  readonly type: "@@usernames/ADD";
   readonly payload: readonly BwUsername[];
 }
 
@@ -21,7 +21,7 @@ const initState: UsernamesState = [];
 
 export function usernamesReducer(state: UsernamesState = initState, action: UserNameActions): UsernamesState {
   switch (action.type) {
-    case '@@usernames/ADD': {
+    case "@@usernames/ADD": {
       const updatedNames = action.payload.map(name => name.username);
       const oldNamesToCopy = state.filter(name => !updatedNames.includes(name.username));
       return [...oldNamesToCopy, ...action.payload];

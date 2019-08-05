@@ -1,7 +1,7 @@
-import { connectRouter } from 'connected-react-router';
-import { createBrowserHistory, History } from 'history';
-import { combineReducers } from 'redux';
-import { StateType } from 'typesafe-actions';
+import { connectRouter } from "connected-react-router";
+import { createBrowserHistory, History } from "history";
+import { combineReducers } from "redux";
+import { StateType } from "typesafe-actions";
 
 export let history = createBrowserHistory();
 

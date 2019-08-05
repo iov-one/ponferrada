@@ -1,19 +1,19 @@
-import { isSendTransaction } from '@iov/bcp';
-import { isRegisterUsernameTx } from '@iov/bns';
-import { makeStyles, Theme } from '@material-ui/core';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Img from 'medulas-react-components/lib/components/Image';
-import * as React from 'react';
+import { isSendTransaction } from "@iov/bcp";
+import { isRegisterUsernameTx } from "@iov/bns";
+import { makeStyles, Theme } from "@material-ui/core";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Block from "medulas-react-components/lib/components/Block";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import Img from "medulas-react-components/lib/components/Image";
+import * as React from "react";
 
-import { ProcessedTx } from '../../../../extension/background/model/persona';
-import { prettyAmount } from '../../../../utils/balances';
-import iconErrorTx from '../../assets/transactionError.svg';
-import iconSendTx from '../../assets/transactionSend.svg';
-import MsgRegisterUsernameTx from './MsgRegisterUsernameTx';
-import MsgSendTransaction from './MsgSendTransaction';
+import { ProcessedTx } from "../../../../extension/background/model/persona";
+import { prettyAmount } from "../../../../utils/balances";
+import iconErrorTx from "../../assets/transactionError.svg";
+import iconSendTx from "../../assets/transactionSend.svg";
+import MsgRegisterUsernameTx from "./MsgRegisterUsernameTx";
+import MsgSendTransaction from "./MsgSendTransaction";
 
 interface ItemProps {
   readonly item: ProcessedTx;
@@ -22,7 +22,7 @@ interface ItemProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   msg: {
-    '& > span': {
+    "& > span": {
       lineHeight: 1.3,
       marginBottom: theme.spacing(1),
     },
@@ -64,7 +64,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       />
     );
   } else {
-    throw new Error('Received transaction type that cannot be displayed');
+    throw new Error("Received transaction type that cannot be displayed");
   }
 
   const icon = error ? iconErrorTx : iconSendTx;

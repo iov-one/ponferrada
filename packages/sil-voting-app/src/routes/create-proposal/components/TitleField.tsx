@@ -1,11 +1,11 @@
-import { FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-const TITLE_FIELD = 'Title';
-const TITLE_PLACEHOLDER = 'Enter Title';
+const TITLE_FIELD = "Title";
+const TITLE_PLACEHOLDER = "Enter Title";
 
 interface Props {
   form: FormApi;

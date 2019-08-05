@@ -1,47 +1,47 @@
-import { Address, ChainId } from '@iov/bcp';
+import { Address, ChainId } from "@iov/bcp";
 
-import { parseGetIdentitiesResponse } from '../../communication/identities';
-import * as identities from '../../communication/identities';
-import { disconnect } from '../../logic/connection';
-import { aNewStore } from '../../store';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { getExtensionStatus, setExtensionStateAction } from '../extension';
-import { addUsernamesAction, getUsernames } from './actions';
-import { BwUsername } from './reducer';
+import { parseGetIdentitiesResponse } from "../../communication/identities";
+import * as identities from "../../communication/identities";
+import { disconnect } from "../../logic/connection";
+import { aNewStore } from "../../store";
+import { withChainsDescribe } from "../../utils/test/testExecutor";
+import { getExtensionStatus, setExtensionStateAction } from "../extension";
+import { addUsernamesAction, getUsernames } from "./actions";
+import { BwUsername } from "./reducer";
 
-withChainsDescribe('Usernames reducer', () => {
+withChainsDescribe("Usernames reducer", () => {
   afterAll(() => disconnect());
 
-  it('has correct initial state', async () => {
+  it("has correct initial state", async () => {
     const store = aNewStore();
     const usernames = store.getState().usernames;
     expect(usernames).toEqual([]);
   });
 
-  it('returns empty when no keys passed to getUsernames function', async () => {
+  it("returns empty when no keys passed to getUsernames function", async () => {
     const usernames = await getUsernames({});
     expect(usernames).toEqual([]);
   });
 
-  it('returns empty when no key bns identity key is s passed to getUsernames function', async () => {
+  it("returns empty when no key bns identity key is s passed to getUsernames function", async () => {
     const store = aNewStore();
     const ethResponse = {
-      jsonrpc: '2.0',
+      jsonrpc: "2.0",
       id: 1,
       result: [
         {
-          chainId: 'string:ethereum-eip155-5777',
+          chainId: "string:ethereum-eip155-5777",
           pubkey: {
-            algo: 'string:secp256k1',
+            algo: "string:secp256k1",
             data:
-              'bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381',
+              "bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
           },
         },
       ],
     };
 
     const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
-    jest.spyOn(identities, 'sendGetIdentitiesRequest').mockResolvedValueOnce(identitiesResponse);
+    jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
     store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.keys));
@@ -51,11 +51,11 @@ withChainsDescribe('Usernames reducer', () => {
     expect(usernames).toEqual([]);
   });
 
-  describe('usernamesReducer', () => {
-    it('can add usernames', () => {
+  describe("usernamesReducer", () => {
+    it("can add usernames", () => {
       const usernamesToAdd: BwUsername[] = [
         {
-          username: 'foobar',
+          username: "foobar",
           addresses: [],
         },
       ];
@@ -66,20 +66,20 @@ withChainsDescribe('Usernames reducer', () => {
       expect(store.getState().usernames).toEqual(usernamesToAdd);
     });
 
-    it('overrides existing entries', () => {
+    it("overrides existing entries", () => {
       const usernamesToAdd1: BwUsername[] = [
         {
-          username: 'foobar',
+          username: "foobar",
           addresses: [],
         },
       ];
       const usernamesToAdd2: BwUsername[] = [
         {
-          username: 'foobar',
+          username: "foobar",
           addresses: [
             {
-              address: 'aabbccdd' as Address,
-              chainId: 'some-chain' as ChainId,
+              address: "aabbccdd" as Address,
+              chainId: "some-chain" as ChainId,
             },
           ],
         },
@@ -91,16 +91,16 @@ withChainsDescribe('Usernames reducer', () => {
       expect(store.getState().usernames).toEqual(usernamesToAdd2);
     });
 
-    it('overrides keeps existing entries alive', () => {
+    it("overrides keeps existing entries alive", () => {
       const usernamesToAdd1: BwUsername[] = [
         {
-          username: 'foobar1',
+          username: "foobar1",
           addresses: [],
         },
       ];
       const usernamesToAdd2: BwUsername[] = [
         {
-          username: 'foobar2',
+          username: "foobar2",
           addresses: [],
         },
       ];
@@ -112,25 +112,25 @@ withChainsDescribe('Usernames reducer', () => {
     });
   });
 
-  it('dispatches correctly addUsernames action', async () => {
+  it("dispatches correctly addUsernames action", async () => {
     const store = aNewStore();
     const ethResponse = {
-      jsonrpc: '2.0',
+      jsonrpc: "2.0",
       id: 1,
       result: [
         {
-          chainId: 'string:ethereum-eip155-5777',
+          chainId: "string:ethereum-eip155-5777",
           pubkey: {
-            algo: 'string:secp256k1',
+            algo: "string:secp256k1",
             data:
-              'bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381',
+              "bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
           },
         },
       ],
     };
 
     const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
-    jest.spyOn(identities, 'sendGetIdentitiesRequest').mockResolvedValueOnce(identitiesResponse);
+    jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
     store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.keys));

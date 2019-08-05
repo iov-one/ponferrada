@@ -1,5 +1,5 @@
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
 interface MsgRegisterUsernameTxProps {
   readonly id: string;
@@ -18,14 +18,14 @@ const MsgRegisterUsernameTx = ({
     return (
       <React.Fragment>
         <Typography weight="light" inline>
-          Your attempt to create{' '}
+          Your attempt to create{" "}
         </Typography>
         <Typography weight="semibold" inline link>
           {iovAddress}
         </Typography>
         <Typography weight="light" inline>
-          {' '}
-          username was{' '}
+          {" "}
+          username was{" "}
         </Typography>
         <Typography weight="semibold" inline>
           unsuccessful
@@ -39,13 +39,13 @@ const MsgRegisterUsernameTx = ({
     return (
       <React.Fragment>
         <Typography weight="light" inline>
-          You have created{' '}
+          You have created{" "}
         </Typography>
         <Typography weight="semibold" inline link>
           {iovAddress}
         </Typography>
         <Typography weight="light" inline>
-          {' '}
+          {" "}
           username.
         </Typography>
       </React.Fragment>

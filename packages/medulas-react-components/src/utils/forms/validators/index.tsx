@@ -1,4 +1,4 @@
-import { FieldValidator } from 'final-form';
+import { FieldValidator } from "final-form";
 
 type ValidationError = string | undefined;
 
@@ -17,15 +17,15 @@ export const composeValidators = (...validators: FieldValidator[]): FieldValidat
 };
 
 export const required: FieldValidator = (value): ValidationError => {
-  return value ? undefined : 'Required';
+  return value ? undefined : "Required";
 };
 
 export const number: FieldValidator = (value): ValidationError => {
-  return Number.isNaN(value) ? 'Must be a number' : undefined;
+  return Number.isNaN(value) ? "Must be a number" : undefined;
 };
 
 export const validAddress: FieldValidator = (value): ValidationError => {
-  return value.endsWith('*iov') ? undefined : 'Invalid address';
+  return value.endsWith("*iov") ? undefined : "Invalid address";
 };
 
 export const lowerOrEqualThan = (max: number): FieldValidator => {

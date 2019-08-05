@@ -1,21 +1,21 @@
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Badge from 'medulas-react-components/lib/components/Badge';
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Img from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyListIcon';
-import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
-import * as React from 'react';
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Badge from "medulas-react-components/lib/components/Badge";
+import Block from "medulas-react-components/lib/components/Block";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import Img from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import EmptyListIcon from "medulas-react-components/lib/templates/menu/EmptyListIcon";
+import ListMenu from "medulas-react-components/lib/templates/menu/ListMenu";
+import * as React from "react";
 
-import { ProcessedTx } from '../../../../logic/transactions/types/BwParser';
-import { BwParserFactory } from '../../../../logic/transactions/types/BwParserFactory';
-import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
-import bell from '../../assets/bell.svg';
-import bellGreen from '../../assets/bellGreen.svg';
-import upToDate from '../../assets/uptodate.svg';
-import { BadgeProps, calcBadgeProps } from './badgeCalculator';
+import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
+import { BwParserFactory } from "../../../../logic/transactions/types/BwParserFactory";
+import { getLastTx, storeLastTx } from "../../../../utils/localstorage/transactions";
+import bell from "../../assets/bell.svg";
+import bellGreen from "../../assets/bellGreen.svg";
+import upToDate from "../../assets/uptodate.svg";
+import { BadgeProps, calcBadgeProps } from "./badgeCalculator";
 
 interface Props {
   readonly items: ReadonlyArray<ProcessedTx>;

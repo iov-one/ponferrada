@@ -1,9 +1,9 @@
-import { Amount, Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
+import { Amount, Identity } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
 
-import { getConfig } from '../../config';
-import { getConnectionFor } from '../../logic/connection';
-import { AddBalancesActionType } from './reducer';
+import { getConfig } from "../../config";
+import { getConnectionFor } from "../../logic/connection";
+import { AddBalancesActionType } from "./reducer";
 
 export async function getBalances(keys: { [chain: string]: string }): Promise<{ [ticker: string]: Amount }> {
   const config = getConfig();
@@ -34,6 +34,6 @@ export async function getBalances(keys: { [chain: string]: string }): Promise<{ 
 }
 
 export const addBalancesAction = (tokens: { [key: string]: Amount }): AddBalancesActionType => ({
-  type: '@@balances/ADD',
+  type: "@@balances/ADD",
   payload: tokens,
 });

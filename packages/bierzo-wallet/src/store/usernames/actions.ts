@@ -1,16 +1,16 @@
-import { Identity } from '@iov/bcp';
-import { bnsCodec, BnsConnection } from '@iov/bns';
-import { TransactionEncoder } from '@iov/encoding';
+import { Identity } from "@iov/bcp";
+import { bnsCodec, BnsConnection } from "@iov/bns";
+import { TransactionEncoder } from "@iov/encoding";
 
-import { getConfig } from '../../config';
-import { getConnectionFor, isBnsSpec } from '../../logic/connection';
-import { AddUsernamesActionType, BwUsername } from './reducer';
+import { getConfig } from "../../config";
+import { getConnectionFor, isBnsSpec } from "../../logic/connection";
+import { AddUsernamesActionType, BwUsername } from "./reducer";
 
 export async function getUsernames(keys: { [chain: string]: string }): Promise<readonly BwUsername[]> {
   const bnsChainSpec = getConfig()
     .chains.map(chain => chain.chainSpec)
     .find(isBnsSpec);
-  if (!bnsChainSpec) throw new Error('Missing BNS chain spec in config');
+  if (!bnsChainSpec) throw new Error("Missing BNS chain spec in config");
 
   const bnsConnection = (await getConnectionFor(bnsChainSpec)) as BnsConnection;
 
@@ -29,6 +29,6 @@ export async function getUsernames(keys: { [chain: string]: string }): Promise<r
 }
 
 export const addUsernamesAction = (usernames: readonly BwUsername[]): AddUsernamesActionType => ({
-  type: '@@usernames/ADD',
+  type: "@@usernames/ADD",
   payload: usernames,
 });

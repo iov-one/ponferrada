@@ -1,13 +1,13 @@
-import { faStickyNote } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Paper from '@material-ui/core/Paper';
-import { FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import { notLongerThan } from 'medulas-react-components/lib/utils/forms/validators';
-import React from 'react';
+import { faStickyNote } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Paper from "@material-ui/core/Paper";
+import { FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import { notLongerThan } from "medulas-react-components/lib/utils/forms/validators";
+import React from "react";
 
-export const TEXTNOTE_FIELD = 'textNoteField';
+export const TEXTNOTE_FIELD = "textNoteField";
 
 interface Props {
   form: FormApi;

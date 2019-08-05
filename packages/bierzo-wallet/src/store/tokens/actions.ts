@@ -1,6 +1,6 @@
-import { getConfig } from '../../config';
-import { getConnectionFor } from '../../logic/connection';
-import { AddTickerActionType, BwToken } from './reducer';
+import { getConfig } from "../../config";
+import { getConnectionFor } from "../../logic/connection";
+import { AddTickerActionType, BwToken } from "./reducer";
 
 export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
   const config = getConfig();
@@ -22,6 +22,6 @@ export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
 }
 
 export const addTickersAction = (tokens: { [key: string]: BwToken }): AddTickerActionType => ({
-  type: '@@tokens/ADD',
+  type: "@@tokens/ADD",
   payload: tokens,
 });

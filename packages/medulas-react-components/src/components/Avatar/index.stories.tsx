@@ -1,15 +1,15 @@
-import green from '@material-ui/core/colors/green';
-import pink from '@material-ui/core/colors/pink';
-import { makeStyles } from '@material-ui/core/styles';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import FolderIcon from '@material-ui/icons/Folder';
-import PageviewIcon from '@material-ui/icons/Pageview';
-import { storiesOf } from '@storybook/react';
-import * as React from 'react';
+import green from "@material-ui/core/colors/green";
+import pink from "@material-ui/core/colors/pink";
+import { makeStyles } from "@material-ui/core/styles";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import FolderIcon from "@material-ui/icons/Folder";
+import PageviewIcon from "@material-ui/icons/Pageview";
+import { storiesOf } from "@storybook/react";
+import * as React from "react";
 
-import { Storybook } from '../../utils/storybook';
-import Avatar from '../Avatar';
-import Block from '../Block';
+import { Storybook } from "../../utils/storybook";
+import Avatar from "../Avatar";
+import Block from "../Block";
 
 const useStyles = makeStyles({
   avatar: {
@@ -17,12 +17,12 @@ const useStyles = makeStyles({
   },
   pinkAvatar: {
     margin: 10,
-    color: '#fff',
+    color: "#fff",
     backgroundColor: pink[500],
   },
   greenAvatar: {
     margin: 10,
-    color: '#fff',
+    color: "#fff",
     backgroundColor: green[500],
   },
 });
@@ -45,8 +45,8 @@ function IconAvatars(): JSX.Element {
   );
 }
 
-storiesOf('Components', module).add(
-  'Avatars',
+storiesOf("Components", module).add(
+  "Avatars",
   (): JSX.Element => (
     <Storybook>
       <IconAvatars />

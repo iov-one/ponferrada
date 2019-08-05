@@ -1,17 +1,17 @@
-import { ConnectedRouter } from 'connected-react-router';
-import { ToastProvider } from 'medulas-react-components/lib/context/ToastProvider';
-import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
-import * as React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import { Store } from 'redux';
+import { ConnectedRouter } from "connected-react-router";
+import { ToastProvider } from "medulas-react-components/lib/context/ToastProvider";
+import MedulasThemeProvider from "medulas-react-components/lib/theme/MedulasThemeProvider";
+import * as React from "react";
+import TestUtils from "react-dom/test-utils";
+import { Provider } from "react-redux";
+import { Store } from "redux";
 
-import { PersonaProvider } from '../../context/PersonaProvider';
-import { RequestProvider } from '../../context/RequestProvider';
-import { GetPersonaResponse } from '../../extension/background/model/backgroundscript';
-import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
-import Route from '../../routes';
-import { history } from '../../store/reducers';
+import { PersonaProvider } from "../../context/PersonaProvider";
+import { RequestProvider } from "../../context/RequestProvider";
+import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
+import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import Route from "../../routes";
+import { history } from "../../store/reducers";
 
 export const createDom = (
   store: Store,

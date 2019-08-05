@@ -1,19 +1,19 @@
-import { BlockchainConnection, Identity } from '@iov/bcp';
+import { BlockchainConnection, Identity } from "@iov/bcp";
 
-import { aNewStore } from '../store';
-import * as balanceActions from '../store/balances/actions';
-import { createPubkeys } from '../utils/test/pubkeys';
-import { withChainsDescribe } from '../utils/test/testExecutor';
-import { sleep } from '../utils/timer';
-import * as tokens from '../utils/tokens';
-import { subscribeBalance, unsubscribeBalances } from './balances';
-import { disconnect } from './connection';
-import { drinkFaucetIfNeeded } from './faucet';
+import { aNewStore } from "../store";
+import * as balanceActions from "../store/balances/actions";
+import { createPubkeys } from "../utils/test/pubkeys";
+import { withChainsDescribe } from "../utils/test/testExecutor";
+import { sleep } from "../utils/timer";
+import * as tokens from "../utils/tokens";
+import { subscribeBalance, unsubscribeBalances } from "./balances";
+import { disconnect } from "./connection";
+import { drinkFaucetIfNeeded } from "./faucet";
 
-withChainsDescribe('Logic :: balance subscriptions', () => {
+withChainsDescribe("Logic :: balance subscriptions", () => {
   beforeAll(() => {
     jest
-      .spyOn(tokens, 'filterExistingTokens')
+      .spyOn(tokens, "filterExistingTokens")
       .mockImplementation(
         (_connection: BlockchainConnection, _identity: Identity, tokensByChainId: ReadonlyArray<string>) =>
           Promise.resolve(tokensByChainId),
@@ -21,12 +21,12 @@ withChainsDescribe('Logic :: balance subscriptions', () => {
   });
 
   afterAll(() => {
-    jest.spyOn(tokens, 'filterExistingTokens').mockReset();
+    jest.spyOn(tokens, "filterExistingTokens").mockReset();
     disconnect();
   });
 
-  it('fires subscription callback when account balance changes', async () => {
-    const balanceSpy = jest.spyOn(balanceActions, 'addBalancesAction');
+  it("fires subscription callback when account balance changes", async () => {
+    const balanceSpy = jest.spyOn(balanceActions, "addBalancesAction");
 
     const store = aNewStore();
     const keys = await createPubkeys();

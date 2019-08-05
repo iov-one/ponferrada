@@ -1,12 +1,12 @@
-import { Algorithm, ChainId, Identity, PubkeyBytes } from '@iov/bcp';
-import { Ed25519, Random, Secp256k1 } from '@iov/crypto';
-import { TransactionEncoder } from '@iov/encoding';
+import { Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
+import { Ed25519, Random, Secp256k1 } from "@iov/crypto";
+import { TransactionEncoder } from "@iov/encoding";
 
 export async function createPubkeys(): Promise<{ [chain: string]: string }> {
   const keys: { [chain: string]: string } = {};
 
   // create ETH pub key
-  const ethChain = 'ethereum-eip155-5777';
+  const ethChain = "ethereum-eip155-5777";
   const keypair = await Secp256k1.makeKeypair(await Random.getBytes(32));
   const ethIdentity: Identity = {
     chainId: ethChain as ChainId,
@@ -17,7 +17,7 @@ export async function createPubkeys(): Promise<{ [chain: string]: string }> {
   };
 
   // get BNS pubkey
-  const bnsChain = 'local-iov-devnet';
+  const bnsChain = "local-iov-devnet";
   const rawKeypair = await Ed25519.makeKeypair(await Random.getBytes(32));
   const bnsIdentity: Identity = {
     chainId: bnsChain as ChainId,

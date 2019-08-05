@@ -1,16 +1,16 @@
-import { TxCodec } from '@iov/bcp';
-import Paper from '@material-ui/core/Paper';
-import { FieldValidator, FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import Tooltip from 'medulas-react-components/lib/components/Tooltip';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { composeValidators, required } from 'medulas-react-components/lib/utils/forms/validators';
-import React from 'react';
+import { TxCodec } from "@iov/bcp";
+import Paper from "@material-ui/core/Paper";
+import { FieldValidator, FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import Tooltip from "medulas-react-components/lib/components/Tooltip";
+import Typography from "medulas-react-components/lib/components/Typography";
+import { composeValidators, required } from "medulas-react-components/lib/utils/forms/validators";
+import React from "react";
 
-import { isIov } from '../../../../logic/account';
+import { isIov } from "../../../../logic/account";
 
-export const ADDRESS_FIELD = 'addressField';
+export const ADDRESS_FIELD = "addressField";
 
 interface Props {
   readonly form: FormApi;
@@ -20,12 +20,12 @@ interface Props {
 const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
   const recipientValidator: FieldValidator = React.useMemo(() => {
     const validator = (value: string): string | undefined => {
-      if (typeof value !== 'string') throw new Error('Input must be a string');
+      if (typeof value !== "string") throw new Error("Input must be a string");
 
       if (isIov(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
         return undefined;
       } else {
-        return 'Must be an IOV human readable address or a native address';
+        return "Must be an IOV human readable address or a native address";
       }
     };
 

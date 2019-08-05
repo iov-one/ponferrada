@@ -1,11 +1,11 @@
-import { Identity, TokenTicker } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
-import { IovFaucet } from '@iov/faucets';
+import { Identity, TokenTicker } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
+import { IovFaucet } from "@iov/faucets";
 
-import { getConfig, isChainConfigWithFaucet } from '../config';
-import { filterExistingTokens } from '../utils/tokens';
-import { getCodec } from './codec';
-import { getConnectionFor } from './connection';
+import { getConfig, isChainConfigWithFaucet } from "../config";
+import { filterExistingTokens } from "../utils/tokens";
+import { getCodec } from "./codec";
+import { getConnectionFor } from "./connection";
 
 export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
   const chainsWithFaucet = getConfig().chains.filter(isChainConfigWithFaucet);

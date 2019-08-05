@@ -1,12 +1,12 @@
-import React from 'react';
-import * as ReactRedux from 'react-redux';
+import React from "react";
+import * as ReactRedux from "react-redux";
 
-import { history } from '..';
-import PageMenu from '../../components/PageMenu';
-import { RootState } from '../../store/reducers';
-import { getFirstUsername } from '../../store/usernames/selectors';
-import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../paths';
-import Layout from './components';
+import { history } from "..";
+import PageMenu from "../../components/PageMenu";
+import { RootState } from "../../store/reducers";
+import { getFirstUsername } from "../../store/usernames/selectors";
+import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from "../paths";
+import Layout from "./components";
 
 function onSendPayment(): void {
   history.push(PAYMENT_ROUTE);

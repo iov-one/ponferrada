@@ -1,5 +1,5 @@
-import { Page } from 'puppeteer';
-import TestUtils from 'react-dom/test-utils';
+import { Page } from "puppeteer";
+import TestUtils from "react-dom/test-utils";
 
 const TIMEOUT = 20000; //msec
 const INTERVAL = 500;
@@ -31,7 +31,7 @@ export const findRenderedDOMComponentWithId = (
 
 export const findRenderedE2EComponentWithId = async (page: Page, elementId: string): Promise<void> => {
   const selector = `#${elementId}`;
-  const elem = await page.waitForSelector(selector.replace('/', '\\/'), { timeout: TIMEOUT });
+  const elem = await page.waitForSelector(selector.replace("/", "\\/"), { timeout: TIMEOUT });
   if (!elem) {
     throw new Error(`Unable to find element with id: ${elementId}.`);
   }

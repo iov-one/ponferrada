@@ -1,11 +1,11 @@
-import { Algorithm, ChainConnector } from '@iov/bcp';
-import { bnsConnector } from '@iov/bns';
-import { Slip10RawIndex } from '@iov/crypto';
-import { ethereumConnector } from '@iov/ethereum';
-import { HdPaths } from '@iov/keycontrol';
-import { liskConnector } from '@iov/lisk';
+import { Algorithm, ChainConnector } from "@iov/bcp";
+import { bnsConnector } from "@iov/bns";
+import { Slip10RawIndex } from "@iov/crypto";
+import { ethereumConnector } from "@iov/ethereum";
+import { HdPaths } from "@iov/keycontrol";
+import { liskConnector } from "@iov/lisk";
 
-import { CodecString } from './configurationfile';
+import { CodecString } from "./configurationfile";
 
 export enum CodecType {
   Bns,
@@ -15,11 +15,11 @@ export enum CodecType {
 
 export function codecTypeFromString(input: CodecString): CodecType {
   switch (input) {
-    case 'bns':
+    case "bns":
       return CodecType.Bns;
-    case 'lsk':
+    case "lsk":
       return CodecType.Lisk;
-    case 'eth':
+    case "eth":
       return CodecType.Ethereum;
     default:
       throw new Error(`Codec '${input}' not supported`);
@@ -70,6 +70,6 @@ export function chainConnector(
       return ethereumConnector(nodeUrl, { scraperApiUrl: scraper });
     }
     default:
-      throw new Error('No connector for this codec found');
+      throw new Error("No connector for this codec found");
   }
 }

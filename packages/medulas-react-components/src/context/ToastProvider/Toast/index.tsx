@@ -1,19 +1,19 @@
-import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import * as React from 'react';
+import Snackbar, { SnackbarOrigin } from "@material-ui/core/Snackbar";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
+import * as React from "react";
 
-import ToastContent from './ToastContent';
+import ToastContent from "./ToastContent";
 
 export enum ToastVariant {
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  ERROR = 'error',
-  INFO = 'info',
+  SUCCESS = "success",
+  WARNING = "warning",
+  ERROR = "error",
+  INFO = "info",
 }
 
 const anchorProps: SnackbarOrigin = {
-  vertical: 'bottom',
-  horizontal: 'right',
+  vertical: "bottom",
+  horizontal: "right",
 };
 
 interface Props {
@@ -23,7 +23,7 @@ interface Props {
   readonly variant?: ToastVariant;
 }
 
-export const Toast = ({ open, onClose, message = '', variant = ToastVariant.INFO }: Props): JSX.Element => {
+export const Toast = ({ open, onClose, message = "", variant = ToastVariant.INFO }: Props): JSX.Element => {
   return (
     <Snackbar
       id="toast-provider"

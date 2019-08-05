@@ -1,28 +1,28 @@
-import { makeStyles } from '@material-ui/core';
-import classNames from 'classnames';
-import Block from 'medulas-react-components/lib/components/Block';
-import Img from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { makeStyles } from "@material-ui/core";
+import classNames from "classnames";
+import Block from "medulas-react-components/lib/components/Block";
+import Img from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import sortDown from '../../../../assets/sortDown.svg';
-import sortDownActive from '../../../../assets/sortDownActive.svg';
-import sortUp from '../../../../assets/sortUp.svg';
-import sortUpActive from '../../../../assets/sortUpActive.svg';
-import { calculateOppositeOrder, ORDER_ASC, ORDER_DESC, SortingStateProps } from '../../../sorting';
+import sortDown from "../../../../assets/sortDown.svg";
+import sortDownActive from "../../../../assets/sortDownActive.svg";
+import sortUp from "../../../../assets/sortUp.svg";
+import sortUpActive from "../../../../assets/sortUpActive.svg";
+import { calculateOppositeOrder, ORDER_ASC, ORDER_DESC, SortingStateProps } from "../../../sorting";
 
 const useStyles = makeStyles({
   header: {
-    flexBasis: '10px',
-    cursor: 'pointer',
+    flexBasis: "10px",
+    cursor: "pointer",
   },
   alignRight: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
 });
 
 interface Props extends SortingStateProps {
-  readonly name: 'Date';
+  readonly name: "Date";
   readonly alignRight?: boolean;
 }
 

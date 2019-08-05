@@ -1,32 +1,32 @@
-import { Fab, makeStyles, Theme } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { Fab, makeStyles, Theme } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
+import Block from "medulas-react-components/lib/components/Block";
+import CircleImage from "medulas-react-components/lib/components/Image/CircleImage";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { getBorderColor } from '../../../../theme/css';
-import download from '../../assets/download.svg';
+import { getBorderColor } from "../../../../theme/css";
+import download from "../../assets/download.svg";
 
 export const CSV_PADDING = 20;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    width: 'auto',
-    justifyContent: 'left',
-    textTransform: 'inherit',
+    width: "auto",
+    justifyContent: "left",
+    textTransform: "inherit",
   },
   sizeSmall: {
     height: `${theme.spacing(4)}px`,
-    padding: '0 !important',
+    padding: "0 !important",
   },
   secondary: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     color: theme.palette.text.primary,
     padding: 0,
-    boxShadow: 'none',
+    boxShadow: "none",
     border: `1px solid ${getBorderColor(theme)}`,
-    '&:hover': {
+    "&:hover": {
       background: theme.palette.background.default,
     },
   },

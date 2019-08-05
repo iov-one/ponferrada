@@ -5,12 +5,12 @@ import {
   isFailedTransaction,
   isSendTransaction,
   LightTransaction,
-} from '@iov/bcp';
+} from "@iov/bcp";
 
-import { ProcessedSendTransaction } from '../../../store/notifications';
-import { BwParser, ProcessedTx } from '../types/BwParser';
-import { BwSendParser } from './BwSendTransaction';
-import { BwUnkownParser } from './BwUnkownTransaction';
+import { ProcessedSendTransaction } from "../../../store/notifications";
+import { BwParser, ProcessedTx } from "../types/BwParser";
+import { BwSendParser } from "./BwSendTransaction";
+import { BwUnkownParser } from "./BwUnkownTransaction";
 
 function isProcessedSendTransaction(tx: ProcessedTx): tx is ProcessedSendTransaction {
   return isSendTransaction(tx.original);
@@ -45,11 +45,11 @@ export class BwParserFactory {
     trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
   ): BwParser<ProcessedTx> {
     if (isFailedTransaction(trans)) {
-      throw new Error('Not supported error txs for now');
+      throw new Error("Not supported error txs for now");
     }
 
     if (!isConfirmedTransaction(trans)) {
-      throw new Error('Confirmed transaction expected');
+      throw new Error("Confirmed transaction expected");
     }
 
     const { transaction: payload } = trans;

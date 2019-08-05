@@ -1,19 +1,19 @@
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Down from '@material-ui/icons/KeyboardArrowDown';
-import Up from '@material-ui/icons/KeyboardArrowUp';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Down from "@material-ui/icons/KeyboardArrowDown";
+import Up from "@material-ui/icons/KeyboardArrowUp";
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import Block from '../../components/Block';
-import Typography from '../../components/Typography';
-import noPendingTxs from '../../theme/assets/icons/noPendingTxs.svg';
-import { Storybook } from '../../utils/storybook';
-import EmptyListIcon from './EmptyListIcon';
-import ListMenu from './ListMenu';
+import Block from "../../components/Block";
+import Typography from "../../components/Typography";
+import noPendingTxs from "../../theme/assets/icons/noPendingTxs.svg";
+import { Storybook } from "../../utils/storybook";
+import EmptyListIcon from "./EmptyListIcon";
+import ListMenu from "./ListMenu";
 
 const starter = (open: boolean): JSX.Element => {
-  const text = `Menu is ${open ? 'opened' : 'closed'}`;
+  const text = `Menu is ${open ? "opened" : "closed"}`;
 
   return (
     <Block>
@@ -31,8 +31,8 @@ const MenuItem = ({ msg }: { msg: string }): JSX.Element => (
   </ListItem>
 );
 
-storiesOf('Templates/Menu', module).add(
-  'List Menu',
+storiesOf("Templates/Menu", module).add(
+  "List Menu",
   (): JSX.Element => (
     <Storybook>
       <Block display="flex" marginTop={3}>
@@ -48,8 +48,8 @@ storiesOf('Templates/Menu', module).add(
   ),
 );
 
-storiesOf('Templates/Menu', module).add(
-  'Empty Menu',
+storiesOf("Templates/Menu", module).add(
+  "Empty Menu",
   (): JSX.Element => (
     <Storybook>
       <Block display="flex" marginTop={3}>

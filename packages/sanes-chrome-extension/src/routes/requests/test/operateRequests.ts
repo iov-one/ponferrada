@@ -1,7 +1,7 @@
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from "react-dom/test-utils";
 
 export const getRequests = (requestsDom: React.Component): Element[] => {
-  return TestUtils.scryRenderedDOMComponentsWithTag(requestsDom, 'li');
+  return TestUtils.scryRenderedDOMComponentsWithTag(requestsDom, "li");
 };
 
 export const getFirstRequest = (requestsDom: React.Component): Element => {

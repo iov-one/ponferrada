@@ -1,15 +1,15 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import FileCopy from '@material-ui/icons/FileCopyOutlined';
-import copy from 'clipboard-copy';
-import Block from 'medulas-react-components/lib/components/Block';
-import Link from 'medulas-react-components/lib/components/Link';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import FileCopy from "@material-ui/icons/FileCopyOutlined";
+import copy from "clipboard-copy";
+import Block from "medulas-react-components/lib/components/Block";
+import Link from "medulas-react-components/lib/components/Link";
+import Typography from "medulas-react-components/lib/components/Typography";
+import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import * as React from "react";
 
-import { elipsify } from '../../../../utils/strings';
+import { elipsify } from "../../../../utils/strings";
 
 interface MsgSendTransactionProps {
   readonly id: string;
@@ -22,8 +22,8 @@ interface MsgSendTransactionProps {
 const useStyles = makeStyles((theme: Theme) => ({
   icon: {
     padding: `0 ${theme.spacing(1)}px`,
-    '&:hover': {
-      backgroundColor: 'transparent',
+    "&:hover": {
+      backgroundColor: "transparent",
     },
   },
 }));
@@ -44,32 +44,32 @@ const MsgSendTransaction = ({
   };
   const onCopyToClipboard = (): void => {
     copy(id);
-    toast.show('Transaction id copied to clipboard', ToastVariant.INFO);
+    toast.show("Transaction id copied to clipboard", ToastVariant.INFO);
   };
 
   if (error) {
     return (
       <React.Fragment>
         <Typography weight="light" inline>
-          {'Your '}
+          {"Your "}
         </Typography>
         <Typography weight="semibold" inline>
           {amount}
         </Typography>
         <Typography weight="semibold" inline>
-          {' payment to '}
+          {" payment to "}
         </Typography>
         <Typography weight="semibold" inline link>
           {recipientShort}
         </Typography>
         <Typography weight="light" inline>
-          {' was '}
+          {" was "}
         </Typography>
         <Typography weight="semibold" inline>
-          {'unsuccessful'}
+          {"unsuccessful"}
         </Typography>
         <Typography weight="light" inline>
-          {', please try again later'}
+          {", please try again later"}
         </Typography>
         <Block marginBottom={1.5} />
       </React.Fragment>
@@ -84,7 +84,7 @@ const MsgSendTransaction = ({
           {` sent ${amount} `}
         </Typography>
         <Typography weight="light" inline>
-          {'to:'}
+          {"to:"}
         </Typography>
         <Block marginBottom={1.5}>
           <Typography link={!!blockExplorerUrl} inline>

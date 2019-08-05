@@ -1,14 +1,14 @@
-import FileSaver from 'file-saver';
-import { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
-import * as React from 'react';
-import { useSelector } from 'react-redux';
+import FileSaver from "file-saver";
+import { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import * as React from "react";
+import { useSelector } from "react-redux";
 
-import PageMenu from '../../components/PageMenu';
-import { ProcessedTx } from '../../logic/transactions/types/BwParser';
-import { BwParserFactory } from '../../logic/transactions/types/BwParserFactory';
-import { RootState } from '../../store/reducers';
-import Layout from './components';
-import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from './components/sorting';
+import PageMenu from "../../components/PageMenu";
+import { ProcessedTx } from "../../logic/transactions/types/BwParser";
+import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
+import { RootState } from "../../store/reducers";
+import Layout from "./components";
+import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
 interface State {
   readonly rowsPerPage: number;
@@ -64,8 +64,8 @@ const Transactions = (): JSX.Element => {
       '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Note"';
     const csvBody = orderedTxs.map((tx: ProcessedTx) => BwParserFactory.getCsvRepresentation(tx));
 
-    const blob = new Blob([`${csvHeader}\n${csvBody.join('\n')}`], { type: 'text/plain;charset=utf-8' });
-    FileSaver.saveAs(blob, 'transactions.csv');
+    const blob = new Blob([`${csvHeader}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });
+    FileSaver.saveAs(blob, "transactions.csv");
   }
 
   return (

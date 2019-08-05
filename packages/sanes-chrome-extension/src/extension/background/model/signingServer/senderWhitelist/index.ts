@@ -1,5 +1,5 @@
-const BLOCKED_URLS_KEY = 'buk';
-const SEPARATOR = ',';
+const BLOCKED_URLS_KEY = "buk";
+const SEPARATOR = ",";
 
 export class SenderWhitelist {
   private blocked: ReadonlyArray<string> = [];
@@ -15,7 +15,7 @@ export class SenderWhitelist {
 
   public isBlocked(sender: string): boolean {
     if (!this.blocked) {
-      throw new Error('SenderWhitelist has not been initialized');
+      throw new Error("SenderWhitelist has not been initialized");
     }
 
     const elem = this.blocked.find(url => url === sender);

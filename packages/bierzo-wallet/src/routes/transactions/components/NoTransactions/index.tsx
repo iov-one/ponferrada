@@ -1,9 +1,9 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Image from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Image from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import noTransactions from '../../assets/noTransactions.svg';
+import noTransactions from "../../assets/noTransactions.svg";
 
 const NoTransactions = (): JSX.Element => (
   <Block display="flex" flexDirection="column" justifyContent="center" paddingTop="100px">

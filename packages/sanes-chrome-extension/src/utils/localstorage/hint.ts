@@ -1,4 +1,4 @@
-export const HINT_PHRASE = 'HINT_PHRASE';
+export const HINT_PHRASE = "HINT_PHRASE";
 
 export function getHintPhrase(accountName: string): string | null {
   return localStorage.getItem(`${HINT_PHRASE}/${accountName}`);

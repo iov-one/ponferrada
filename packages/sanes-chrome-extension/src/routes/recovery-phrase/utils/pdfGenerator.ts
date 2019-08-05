@@ -1,18 +1,18 @@
 class PDFGenerator {
   private doc: any;
   private readonly countWords: string[] = [
-    'One',
-    'Two',
-    'Three',
-    'Four',
-    'Five',
-    'Six',
-    'Seven',
-    'Eight',
-    'Nine',
-    'Ten',
-    'Eleven',
-    'Twelve',
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Eleven",
+    "Twelve",
   ];
 
   public constructor() {
@@ -23,12 +23,12 @@ class PDFGenerator {
     // constructed, not when it is imported.
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const jsPDF = require('jspdf');
-    require('../assets/Muli-normal');
-    require('../assets/Muli-bold');
+    const jsPDF = require("jspdf");
+    require("../assets/Muli-normal");
+    require("../assets/Muli-bold");
 
     this.doc = new jsPDF();
-    this.doc.setFont('Muli', 'normal');
+    this.doc.setFont("Muli", "normal");
     this.doc.setFontSize(12);
   }
 
@@ -51,10 +51,10 @@ class PDFGenerator {
   }
 
   private addMnemonicTableHeader(startLine: number): void {
-    this.doc.setFont('Muli', 'bold');
-    this.doc.text('Order', 10, startLine);
-    this.doc.text('Word', 35, startLine);
-    this.doc.setFont('Muli', 'normal');
+    this.doc.setFont("Muli", "bold");
+    this.doc.text("Order", 10, startLine);
+    this.doc.text("Word", 35, startLine);
+    this.doc.setFont("Muli", "normal");
   }
 }
 

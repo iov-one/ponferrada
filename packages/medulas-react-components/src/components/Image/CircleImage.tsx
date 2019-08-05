@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
-import theme from '../../theme/utils/mui';
-import Block from '../Block';
-import Image, { ImgProps } from '../Image';
+import theme from "../../theme/utils/mui";
+import Block from "../Block";
+import Image, { ImgProps } from "../Image";
 
 interface Props extends ImgProps {
   readonly icon: string;

@@ -1,14 +1,14 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Switch from 'medulas-react-components/lib/components/Switch';
-import Tooltip from 'medulas-react-components/lib/components/Tooltip';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Back from "medulas-react-components/lib/components/Button/Back";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Switch from "medulas-react-components/lib/components/Switch";
+import Tooltip from "medulas-react-components/lib/components/Tooltip";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { PersonaContext } from '../../../context/PersonaProvider';
-import { SIGNUP_ROUTE } from '../../paths';
+import { PersonaContext } from "../../../context/PersonaProvider";
+import { SIGNUP_ROUTE } from "../../paths";
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
@@ -18,7 +18,7 @@ export interface Props {
 }
 
 const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
-  const [mnemonic, setMnemonic] = React.useState<string>('');
+  const [mnemonic, setMnemonic] = React.useState<string>("");
   const persona = React.useContext(PersonaContext);
 
   const onShowMnemonic = async (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): Promise<void> => {
@@ -27,7 +27,7 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
       return;
     }
 
-    setMnemonic('');
+    setMnemonic("");
   };
 
   return (

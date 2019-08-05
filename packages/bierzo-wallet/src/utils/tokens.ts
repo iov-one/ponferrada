@@ -1,4 +1,4 @@
-import { BlockchainConnection, Identity } from '@iov/bcp';
+import { BlockchainConnection, Identity } from "@iov/bcp";
 
 // exported for testing purposes
 export async function filterExistingTokens(

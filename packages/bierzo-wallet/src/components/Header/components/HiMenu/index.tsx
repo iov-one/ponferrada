@@ -1,30 +1,30 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Image from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Block from "medulas-react-components/lib/components/Block";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import Image from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import ListMenu from "medulas-react-components/lib/templates/menu/ListMenu";
+import * as React from "react";
 
-import { getBorderColor } from '../../../../theme/css';
-import chevronDown from '../../assets/chevronDown.svg';
-import chevronUp from '../../assets/chevronUp.svg';
-import invite from '../../assets/invite.svg';
-import privacy from '../../assets/privacyPolicy.svg';
-import securityCentre from '../../assets/securityCentre.svg';
-import terms from '../../assets/terms.svg';
+import { getBorderColor } from "../../../../theme/css";
+import chevronDown from "../../assets/chevronDown.svg";
+import chevronUp from "../../assets/chevronUp.svg";
+import invite from "../../assets/invite.svg";
+import privacy from "../../assets/privacyPolicy.svg";
+import securityCentre from "../../assets/securityCentre.svg";
+import terms from "../../assets/terms.svg";
 
-export const SECURITY_CENTER_ID = 'security-center';
-export const INVITE_FRIENDS_ID = 'invite-friends';
-export const TERMS_CONDITIONS_ID = 'terms';
-export const PRIVACY_POLICY_ID = 'privacy-policy';
-export const LOG_OUT_ID = 'log-out';
+export const SECURITY_CENTER_ID = "security-center";
+export const INVITE_FRIENDS_ID = "invite-friends";
+export const TERMS_CONDITIONS_ID = "terms";
+export const PRIVACY_POLICY_ID = "privacy-policy";
+export const LOG_OUT_ID = "log-out";
 
-export const MENU_ID = 'hi-menu';
+export const MENU_ID = "hi-menu";
 
 interface HiElementProps {
   readonly src: string;
@@ -35,7 +35,7 @@ interface HiElementProps {
   readonly height?: string;
 }
 
-const HiElement = ({ src, alt, id, action, msg, height = '18' }: HiElementProps): JSX.Element => {
+const HiElement = ({ src, alt, id, action, msg, height = "18" }: HiElementProps): JSX.Element => {
   const ItemIcon = (): JSX.Element => (
     <ListItemIcon>
       <Image src={src} alt={alt} height={height} />
@@ -54,14 +54,14 @@ const HiElement = ({ src, alt, id, action, msg, height = '18' }: HiElementProps)
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   chevron: {
     padding: `${theme.spacing(1)}px`,
   },
   separator: {
-    height: '30px',
+    height: "30px",
     paddingRight: `${theme.spacing(4)}px`,
     borderLeft: `1px solid ${getBorderColor(theme)}`,
   },

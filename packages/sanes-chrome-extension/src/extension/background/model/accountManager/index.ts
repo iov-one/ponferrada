@@ -1,7 +1,7 @@
-import { Algorithm, ChainId, Identity, identityEquals } from '@iov/bcp';
-import { Slip10RawIndex } from '@iov/crypto';
-import { UserProfile, WalletId } from '@iov/keycontrol';
-import { ReadonlyWallet } from '@iov/keycontrol';
+import { Algorithm, ChainId, Identity, identityEquals } from "@iov/bcp";
+import { Slip10RawIndex } from "@iov/crypto";
+import { UserProfile, WalletId } from "@iov/keycontrol";
+import { ReadonlyWallet } from "@iov/keycontrol";
 
 export interface AccountInfo {
   readonly index: number;
@@ -45,7 +45,7 @@ export class AccountManager {
         );
 
         if (identityByChainAndAccount.length !== 1) {
-          throw new Error('Unexpected number of identities by chain and label');
+          throw new Error("Unexpected number of identities by chain and label");
         }
         return identityByChainAndAccount[0];
       });
@@ -96,7 +96,7 @@ export class AccountManager {
 
   private walletForAlgorithm(algorithm: Algorithm): WalletId {
     const [edWallet, secpWallet] = this.userProfile.wallets.value.map(x => x.id);
-    return algorithm === 'ed25519' ? edWallet : secpWallet;
+    return algorithm === "ed25519" ? edWallet : secpWallet;
   }
 
   private async identityExistsInProfile(

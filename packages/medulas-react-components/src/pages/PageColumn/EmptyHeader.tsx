@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Block from '../../components/Block';
+import Block from "../../components/Block";
 
 const EmptyHeader = (): JSX.Element => <Block height={109} />;
 

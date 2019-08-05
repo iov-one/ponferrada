@@ -1,13 +1,13 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { UiIdentity } from '../../../extension/background/model/signingServer/requestQueueManager';
-import { SHARE_IDENTITY } from '../../paths';
+import { UiIdentity } from "../../../extension/background/model/signingServer/requestQueueManager";
+import { SHARE_IDENTITY } from "../../paths";
 
 export const SHARE_IDENTITY_SHOW = `${SHARE_IDENTITY}_show`;
 

@@ -1,11 +1,11 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import CircleImage from "medulas-react-components/lib/components/Image/CircleImage";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-import icon from '../assets/iov-logo.svg';
+import icon from "../assets/iov-logo.svg";
 
-export const HEADER_HTML_ID = 'header';
+export const HEADER_HTML_ID = "header";
 
 const Header = (): JSX.Element => {
   return (

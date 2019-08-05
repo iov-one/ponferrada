@@ -1,61 +1,61 @@
-import { Address, TokenTicker, TransactionId } from '@iov/bcp';
-import { storiesOf } from '@storybook/react';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
-import { ReadonlyDate } from 'readonly-date';
-import { DeepPartial } from 'redux';
+import { Address, TokenTicker, TransactionId } from "@iov/bcp";
+import { storiesOf } from "@storybook/react";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
+import { ReadonlyDate } from "readonly-date";
+import { DeepPartial } from "redux";
 
-import { ProcessedSendTransaction } from '../../store/notifications';
-import { RootState } from '../../store/reducers';
-import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
-import PageMenu from './index';
+import { ProcessedSendTransaction } from "../../store/notifications";
+import { RootState } from "../../store/reducers";
+import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import PageMenu from "./index";
 
 const txs: ReadonlyArray<ProcessedSendTransaction> = [
   {
     received: true,
-    time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    id: 'tx1' as TransactionId,
+    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
+    id: "tx1" as TransactionId,
     original: {
-      kind: 'bcp/send',
+      kind: "bcp/send",
       amount: {
-        quantity: '1050000000',
+        quantity: "1050000000",
         fractionalDigits: 8,
-        tokenTicker: 'LSK' as TokenTicker,
+        tokenTicker: "LSK" as TokenTicker,
       },
-      sender: '1L' as Address,
-      recipient: '2L' as Address,
+      sender: "1L" as Address,
+      recipient: "2L" as Address,
     },
   },
   {
     received: false,
-    time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    id: 'tx2' as TransactionId,
+    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
+    id: "tx2" as TransactionId,
     original: {
-      kind: 'bcp/send',
+      kind: "bcp/send",
       amount: {
-        quantity: '25500000000',
+        quantity: "25500000000",
         fractionalDigits: 9,
-        tokenTicker: 'IOV' as TokenTicker,
+        tokenTicker: "IOV" as TokenTicker,
       },
-      sender: 'tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3' as Address,
-      recipient: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address,
+      sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
+      recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
     },
   },
 ];
 
 const faultTx: ProcessedSendTransaction = {
   received: false,
-  time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-  id: 'tx3' as TransactionId,
+  time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
+  id: "tx3" as TransactionId,
   original: {
-    kind: 'bcp/send',
+    kind: "bcp/send",
     amount: {
-      quantity: '100500000000',
+      quantity: "100500000000",
       fractionalDigits: 9,
-      tokenTicker: 'IOV' as TokenTicker,
+      tokenTicker: "IOV" as TokenTicker,
     },
-    sender: 'tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3' as Address,
-    recipient: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address,
+    sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
+    recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
   },
 };
 
@@ -70,9 +70,9 @@ const fullStore = (): DeepPartial<RootState> => {
 };
 
 storiesOf(`${WALLET_ROOT}/Components/PageMenu`, module)
-  .addParameters({ viewport: { defaultViewport: 'responsive' } })
+  .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(
-    'Without padding',
+    "Without padding",
     (): JSX.Element => (
       <DecoratedStorybook storeProps={fullStore()}>
         <PageMenu padding={false}>
@@ -93,7 +93,7 @@ storiesOf(`${WALLET_ROOT}/Components/PageMenu`, module)
     ),
   )
   .add(
-    'With padding',
+    "With padding",
     (): JSX.Element => (
       <DecoratedStorybook storeProps={fullStore()}>
         <PageMenu>

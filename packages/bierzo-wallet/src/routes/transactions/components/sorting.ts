@@ -1,4 +1,4 @@
-import { ProcessedTx } from '../../../logic/transactions/types/BwParser';
+import { ProcessedTx } from "../../../logic/transactions/types/BwParser";
 
 export interface SortingStateProps {
   readonly onSort: (orderBy: TxsOrder, order: SortOrder) => () => void;
@@ -10,9 +10,9 @@ export const ORDER_ASC = 1;
 export const ORDER_DESC = -1;
 export type SortOrder = 1 | -1;
 
-export const TX_AMOUNT_COLUMN = 'Amount';
-export const TX_DATE_COLUMN = 'Date';
-export type TxsOrder = 'Date';
+export const TX_AMOUNT_COLUMN = "Amount";
+export const TX_DATE_COLUMN = "Date";
+export type TxsOrder = "Date";
 
 export const filterTxsBy = (
   txs: ReadonlyArray<ProcessedTx>,

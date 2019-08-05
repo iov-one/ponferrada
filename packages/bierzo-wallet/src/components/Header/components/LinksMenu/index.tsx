@@ -1,41 +1,41 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import classNames from 'classnames';
-import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import classNames from "classnames";
+import Block from "medulas-react-components/lib/components/Block";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { history } from '../../../../routes';
+import { history } from "../../../../routes";
 import {
   BALANCE_ROUTE,
   CONFIRM_TRANSACTION,
   PAYMENT_ROUTE,
   TRANSACTIONS_ROUTE,
-} from '../../../../routes/paths';
+} from "../../../../routes/paths";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   text: {
-    marginTop: '12px',
+    marginTop: "12px",
   },
   item: {
     margin: `0px ${theme.spacing(4)}px`,
-    '&:hover': {
-      cursor: 'pointer',
+    "&:hover": {
+      cursor: "pointer",
     },
   },
   activated: {
-    '& $line': {
-      visibility: 'visible',
+    "& $line": {
+      visibility: "visible",
     },
   },
   line: {
-    visibility: 'hidden',
-    height: '4px',
+    visibility: "hidden",
+    height: "4px",
     backgroundColor: theme.palette.primary.main,
-    borderRadius: '4px',
-    marginTop: '4px',
+    borderRadius: "4px",
+    marginTop: "4px",
   },
 }));
 
@@ -51,9 +51,9 @@ const onTransactions = (): void => {
   history.push(TRANSACTIONS_ROUTE);
 };
 
-const BALANCE_TEXT = 'Balance';
-const PAYMENT_TEXT = 'Payments';
-export const TRANSACTIONS_TEXT = 'Transactions';
+const BALANCE_TEXT = "Balance";
+const PAYMENT_TEXT = "Payments";
+export const TRANSACTIONS_TEXT = "Transactions";
 
 interface MenuItemProps {
   readonly itemTitle: string;

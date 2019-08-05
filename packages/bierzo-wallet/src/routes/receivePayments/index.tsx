@@ -1,14 +1,14 @@
-import { Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
-import React from 'react';
-import * as ReactRedux from 'react-redux';
+import { Identity } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
+import React from "react";
+import * as ReactRedux from "react-redux";
 
-import { history } from '..';
-import { getChainName } from '../../config';
-import { getCodecForChainId } from '../../logic/codec';
-import { RootState } from '../../store/reducers';
-import { BALANCE_ROUTE } from '../paths';
-import Layout, { ChainAddress } from './components';
+import { history } from "..";
+import { getChainName } from "../../config";
+import { getCodecForChainId } from "../../logic/codec";
+import { RootState } from "../../store/reducers";
+import { BALANCE_ROUTE } from "../paths";
+import Layout, { ChainAddress } from "./components";
 
 function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
@@ -36,7 +36,7 @@ const ReceivePayment = (): JSX.Element => {
         });
       }
       addresses.sort((a: ChainAddress, b: ChainAddress) =>
-        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: 'base' }),
+        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
       );
 
       setChainAddresses(addresses);

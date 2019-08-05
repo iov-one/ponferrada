@@ -1,15 +1,15 @@
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../utils/storybook';
-import Block from '../Block';
-import Typography from '../Typography';
-import Tooltip from './index';
+import { Storybook } from "../../utils/storybook";
+import Block from "../Block";
+import Typography from "../Typography";
+import Tooltip from "./index";
 
-storiesOf('Components', module).add(
-  'Tooltip',
+storiesOf("Components", module).add(
+  "Tooltip",
   (): JSX.Element => {
-    const tooltipStyle: React.CSSProperties = { marginRight: '4px' };
+    const tooltipStyle: React.CSSProperties = { marginRight: "4px" };
 
     return (
       <Storybook>

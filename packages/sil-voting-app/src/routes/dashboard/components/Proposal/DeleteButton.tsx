@@ -1,10 +1,10 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import Block from 'medulas-react-components/lib/components/Block';
-import Img from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import Block from "medulas-react-components/lib/components/Block";
+import Img from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-import deleteIcon from '../../../../assets/delete.svg';
+import deleteIcon from "../../../../assets/delete.svg";
 
 const useStyles = makeStyles((theme: Theme) => ({
   deleteIcon: {

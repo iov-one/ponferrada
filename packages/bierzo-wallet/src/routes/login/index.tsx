@@ -1,22 +1,22 @@
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import PageColumn from 'medulas-react-components/lib/pages/PageColumn';
-import * as React from 'react';
-import * as ReactRedux from 'react-redux';
-import { Dispatch } from 'redux';
+import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import PageColumn from "medulas-react-components/lib/pages/PageColumn";
+import * as React from "react";
+import * as ReactRedux from "react-redux";
+import { Dispatch } from "redux";
 
-import { history } from '..';
-import { subscribeBalance } from '../../logic/balances';
-import { drinkFaucetIfNeeded } from '../../logic/faucet';
-import { subscribeTransaction } from '../../logic/transactions';
-import { addBalancesAction, getBalances } from '../../store/balances';
-import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
-import { addTickersAction, getTokens } from '../../store/tokens';
-import { addUsernamesAction, getUsernames } from '../../store/usernames/actions';
-import { BALANCE_ROUTE } from '../paths';
+import { history } from "..";
+import { subscribeBalance } from "../../logic/balances";
+import { drinkFaucetIfNeeded } from "../../logic/faucet";
+import { subscribeTransaction } from "../../logic/transactions";
+import { addBalancesAction, getBalances } from "../../store/balances";
+import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
+import { addTickersAction, getTokens } from "../../store/tokens";
+import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
+import { BALANCE_ROUTE } from "../paths";
 
-export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
-export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';
+export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
+export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 export const loginBootSequence = async (
   keys: { [chain: string]: string },

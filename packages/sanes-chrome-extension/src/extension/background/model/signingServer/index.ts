@@ -1,11 +1,11 @@
-import { Identity, UnsignedTransaction } from '@iov/bcp';
-import { JsonRpcResponse } from '@iov/jsonrpc';
-import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from '@iov/multichain';
+import { Identity, UnsignedTransaction } from "@iov/bcp";
+import { JsonRpcResponse } from "@iov/jsonrpc";
+import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from "@iov/multichain";
 
-import { generateErrorResponse } from '../../errorResponseGenerator';
-import { isSupportedTransaction } from '../persona';
-import { getChainName } from '../persona/config';
-import { requestCallback } from './requestCallback';
+import { generateErrorResponse } from "../../errorResponseGenerator";
+import { isSupportedTransaction } from "../persona";
+import { getChainName } from "../persona/config";
+import { requestCallback } from "./requestCallback";
 import {
   GetIdentitiesResponseData,
   isRequestMeta,
@@ -14,8 +14,8 @@ import {
   RequestQueueManager,
   SignAndPostResponseData,
   UiIdentity,
-} from './requestQueueManager';
-import { SenderWhitelist } from './senderWhitelist';
+} from "./requestQueueManager";
+import { SenderWhitelist } from "./senderWhitelist";
 
 export default class SigningServer {
   private requestHandler = new RequestQueueManager();
@@ -28,7 +28,7 @@ export default class SigningServer {
     meta: any,
   ) => {
     if (!isRequestMeta(meta)) {
-      throw new Error('Unexpected type of data in meta field');
+      throw new Error("Unexpected type of data in meta field");
     }
     const { senderUrl } = meta;
 
@@ -64,11 +64,11 @@ export default class SigningServer {
     meta: any,
   ): Promise<boolean> => {
     if (!isRequestMeta(meta)) {
-      throw new Error('Unexpected type of data in meta field');
+      throw new Error("Unexpected type of data in meta field");
     }
 
     if (!isSupportedTransaction(transaction)) {
-      throw new Error('Unexpected unsigned transaction');
+      throw new Error("Unexpected unsigned transaction");
     }
 
     const { senderUrl } = meta;
@@ -92,7 +92,7 @@ export default class SigningServer {
 
   public shutdown(): void {
     if (!this.signingServer) {
-      throw new Error('The signing server instance is not set. This indicates a bug in the lifecycle.');
+      throw new Error("The signing server instance is not set. This indicates a bug in the lifecycle.");
     }
     this.signingServer.shutdown();
     this.signingServer = undefined;
@@ -102,18 +102,18 @@ export default class SigningServer {
     request: any,
     sender: chrome.runtime.MessageSender,
   ): Promise<JsonRpcResponse> {
-    const responseId = typeof request.id === 'number' ? request.id : null;
+    const responseId = typeof request.id === "number" ? request.id : null;
     if (!sender.url) {
-      return generateErrorResponse(responseId, 'Got external message without sender URL');
+      return generateErrorResponse(responseId, "Got external message without sender URL");
     }
 
     if (!this.signingServer) {
-      return generateErrorResponse(responseId, 'Signing server not ready');
+      return generateErrorResponse(responseId, "Signing server not ready");
     }
 
     const { url: senderUrl } = sender;
     if (this.senderWhitelist.isBlocked(senderUrl)) {
-      return generateErrorResponse(responseId, 'Sender has been blocked by user');
+      return generateErrorResponse(responseId, "Sender has been blocked by user");
     }
 
     const meta: RequestMeta = {

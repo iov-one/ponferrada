@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router';
+import * as React from "react";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router";
 
-import { LOGIN_ROUTE } from '../../routes/paths';
-import { RootState } from '../../store/reducers';
+import { LOGIN_ROUTE } from "../../routes/paths";
+import { RootState } from "../../store/reducers";
 
 interface Props {
   readonly children: React.ReactNode;

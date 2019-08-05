@@ -1,7 +1,7 @@
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { elipsify } from '../../../../../../utils/strings';
+import { elipsify } from "../../../../../../utils/strings";
 
 interface MsgProps {
   readonly received: boolean;
@@ -12,8 +12,8 @@ interface MsgProps {
 }
 
 const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
-  const signerWeight = received ? 'semibold' : 'regular';
-  const recipientWeight = received ? 'regular' : 'semibold';
+  const signerWeight = received ? "semibold" : "regular";
+  const recipientWeight = received ? "regular" : "semibold";
 
   const signerShort = elipsify(signer, 16);
   const recipientShort = elipsify(recipient, 16);
@@ -30,11 +30,11 @@ const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgPro
         </Typography>
       )}
       <Typography variant="body2" inline>
-        {' sent '}
+        {" sent "}
       </Typography>
       {received ? (
         <Typography variant="body2" weight={recipientWeight} inline>
-          {'you '}
+          {"you "}
         </Typography>
       ) : (
         <Typography

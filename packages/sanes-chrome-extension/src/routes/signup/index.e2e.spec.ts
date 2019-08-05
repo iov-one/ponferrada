@@ -1,16 +1,16 @@
-import { Browser, Page } from 'puppeteer';
+import { Browser, Page } from "puppeteer";
 
-import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
-import { randomString } from '../../utils/test/random';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
+import { randomString } from "../../utils/test/random";
+import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
   submitNewAccountE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
-} from './test/operateSignup';
+} from "./test/operateSignup";
 
-withChainsDescribe('DOM > Signup route', (): void => {
+withChainsDescribe("DOM > Signup route", (): void => {
   let browser: Browser;
   let page: Page;
 
@@ -25,7 +25,7 @@ withChainsDescribe('DOM > Signup route', (): void => {
     },
   );
 
-  it('should redirect to signup route, fill required data, show recovery phrase and hint', async (): Promise<
+  it("should redirect to signup route, fill required data, show recovery phrase and hint", async (): Promise<
     void
   > => {
     await travelToSignupNewAccountStep(page);

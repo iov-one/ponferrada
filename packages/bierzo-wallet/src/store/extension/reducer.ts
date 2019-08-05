@@ -1,7 +1,7 @@
-import { Action } from 'redux';
-import { ActionType } from 'typesafe-actions';
+import { Action } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import * as actions from './actions';
+import * as actions from "./actions";
 
 export interface ExtensionState {
   readonly connected: boolean;
@@ -10,7 +10,7 @@ export interface ExtensionState {
 }
 
 export interface SetExtensionStateActionType extends Action {
-  type: '@@extension/SET_STATE';
+  type: "@@extension/SET_STATE";
   payload: ExtensionState;
 }
 
@@ -27,7 +27,7 @@ export function extensionReducer(
   action: ExtensionActions,
 ): ExtensionState {
   switch (action.type) {
-    case '@@extension/SET_STATE':
+    case "@@extension/SET_STATE":
       return { ...state, ...action.payload };
     default:
       return state;

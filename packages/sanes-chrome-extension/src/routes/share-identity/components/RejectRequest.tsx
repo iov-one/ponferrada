@@ -1,15 +1,15 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
-import CheckboxField from 'medulas-react-components/lib/components/forms/CheckboxField';
-import Form, { FormValues, useForm } from 'medulas-react-components/lib/components/forms/Form';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Back from "medulas-react-components/lib/components/Button/Back";
+import CheckboxField from "medulas-react-components/lib/components/forms/CheckboxField";
+import Form, { FormValues, useForm } from "medulas-react-components/lib/components/forms/Form";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { SHARE_IDENTITY } from '../../paths';
+import { SHARE_IDENTITY } from "../../paths";
 
-const PERMANENT_REJECT = 'permanentRejectField';
+const PERMANENT_REJECT = "permanentRejectField";
 export const SHARE_IDENTITY_REJECT = `${SHARE_IDENTITY}_reject`;
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
 const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
-    const permanentReject = `${formValues[PERMANENT_REJECT]}` === 'true';
+    const permanentReject = `${formValues[PERMANENT_REJECT]}` === "true";
 
     onRejectRequest(permanentReject);
   };
@@ -42,7 +42,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
             would not be able to request
           </Typography>
           <Typography variant="body1" inline>
-            {' '}
+            {" "}
             your identity on blockchains.
           </Typography>
           <Block marginTop={2} />

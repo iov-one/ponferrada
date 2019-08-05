@@ -1,14 +1,14 @@
-import { makeStyles } from '@material-ui/core';
-import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { makeStyles } from "@material-ui/core";
+import Block from "medulas-react-components/lib/components/Block";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { getAddressPrefix } from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
-import { ProcessedSendTransaction } from '../../../../../../store/notifications';
+import { getAddressPrefix } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
+import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 
 const useStyles = makeStyles({
   sectionName: {
-    overflowWrap: 'break-word',
+    overflowWrap: "break-word",
   },
 });
 
@@ -42,7 +42,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
               Note:
             </Typography>
             <Typography variant="subtitle2" weight="regular" color="textSecondary">
-              {tx.original.memo || 'No note'}
+              {tx.original.memo || "No note"}
             </Typography>
           </Block>
         </Block>

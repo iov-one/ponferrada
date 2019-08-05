@@ -1,12 +1,12 @@
-import { RegisterUsernameTx } from '@iov/bns';
-import Block from 'medulas-react-components/lib/components/Block';
-import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { RegisterUsernameTx } from "@iov/bns";
+import Block from "medulas-react-components/lib/components/Block";
+import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from './TransactionFee';
+import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";
 
-export const REQ_REGISTER_USERNAME = 'req-register-username-tx';
+export const REQ_REGISTER_USERNAME = "req-register-username-tx";
 
 interface Props {
   readonly tx: RegisterUsernameTx;
@@ -21,7 +21,7 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
         {tx.username}
       </Typography>
       <Typography variant="body1" inline>
-        {' '}
+        {" "}
         username registration request.
       </Typography>
       <Block marginTop={1} />

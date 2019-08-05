@@ -3,15 +3,15 @@ import {
   GetPersonaResponse,
   IovWindowExtension,
   PersonaData,
-} from '../../extension/background/model/backgroundscript';
-import { PersonaAcccount } from '../../extension/background/model/persona';
-import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
+} from "../../extension/background/model/backgroundscript";
+import { PersonaAcccount } from "../../extension/background/model/persona";
+import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
 
 export function extensionContext(): boolean {
   return (
-    typeof chrome !== 'undefined' &&
-    typeof chrome.runtime !== 'undefined' &&
-    typeof chrome.runtime.onMessage !== 'undefined'
+    typeof chrome !== "undefined" &&
+    typeof chrome.runtime !== "undefined" &&
+    typeof chrome.runtime.onMessage !== "undefined"
   );
 }
 

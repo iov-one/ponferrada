@@ -1,8 +1,8 @@
-import { FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
 interface Props {
   form: FormApi;

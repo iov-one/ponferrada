@@ -1,34 +1,34 @@
 /* eslint-disable no-console */
-import { storiesOf } from '@storybook/react';
-import * as React from 'react';
+import { storiesOf } from "@storybook/react";
+import * as React from "react";
 
-import { Storybook } from '../../../utils/storybook';
-import Block from '../../Block';
-import Button from '../../Button';
-import CheckboxField from '../CheckboxField';
-import SelectFieldForm, { Item } from '../SelectFieldForm';
-import TextFieldForm from '../TextFieldForm';
-import Form, { FormValues, useForm, ValidationError } from './index';
+import { Storybook } from "../../../utils/storybook";
+import Block from "../../Block";
+import Button from "../../Button";
+import CheckboxField from "../CheckboxField";
+import SelectFieldForm, { Item } from "../SelectFieldForm";
+import TextFieldForm from "../TextFieldForm";
+import Form, { FormValues, useForm, ValidationError } from "./index";
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
 
 const onSubmit = async (values: FormValues): Promise<void> => {
-  console.log('Simulate before');
+  console.log("Simulate before");
   await sleep(2000);
   console.log(values);
 };
 
-const TEXT_FIELD = 'textFieldUniqueIdentifier';
-const SELECT_FIELD = 'selectFieldUniqueIdentifier';
-const CHECKBOX_FIELD = 'checkboxFieldUniqueIdentifier';
+const TEXT_FIELD = "textFieldUniqueIdentifier";
+const SELECT_FIELD = "selectFieldUniqueIdentifier";
+const CHECKBOX_FIELD = "checkboxFieldUniqueIdentifier";
 
 const validate = (values: FormValues): object => {
   let errors: ValidationError = {};
   if (!values[TEXT_FIELD]) {
-    errors[TEXT_FIELD] = 'Required';
+    errors[TEXT_FIELD] = "Required";
   }
   if (values[TEXT_FIELD] && values[TEXT_FIELD].length <= 4) {
-    errors[TEXT_FIELD] = 'Must be at least 4 chars';
+    errors[TEXT_FIELD] = "Must be at least 4 chars";
   }
 
   return errors;
@@ -40,7 +40,7 @@ const FormStory = (): JSX.Element => {
     validate,
   });
 
-  const items = [{ name: 'Create new account' }, { name: 'IOV2' }, { name: 'ETH3' }];
+  const items = [{ name: "Create new account" }, { name: "IOV2" }, { name: "ETH3" }];
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ const FormStory = (): JSX.Element => {
           form={form}
           fieldName={CHECKBOX_FIELD}
           label="Checkbox field"
-          onChangeCallback={(checked: boolean) => console.log(`received ---> ${checked ? 'true' : 'false'}`)}
+          onChangeCallback={(checked: boolean) => console.log(`received ---> ${checked ? "true" : "false"}`)}
         />
       </Block>
 
@@ -77,8 +77,8 @@ const FormStory = (): JSX.Element => {
   );
 };
 
-storiesOf('Components/forms', module).add(
-  'Form',
+storiesOf("Components/forms", module).add(
+  "Form",
   (): JSX.Element => (
     <Storybook>
       <Block marginTop={2} />

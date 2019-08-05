@@ -1,15 +1,15 @@
-import { isSendTransaction } from '@iov/bcp';
-import { isRegisterUsernameTx } from '@iov/bns';
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { isSendTransaction } from "@iov/bcp";
+import { isRegisterUsernameTx } from "@iov/bns";
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { SupportedTransaction } from '../../../../extension/background/model/persona';
-import { TX_REQUEST } from '../../../paths';
-import ReqRegisterUsernameTx from './ReqRegisterUsernameTx';
-import ReqSendTransaction from './ReqSendTransaction';
+import { SupportedTransaction } from "../../../../extension/background/model/persona";
+import { TX_REQUEST } from "../../../paths";
+import ReqRegisterUsernameTx from "./ReqRegisterUsernameTx";
+import ReqSendTransaction from "./ReqSendTransaction";
 
 export const TX_REQUEST_SHOW = `${TX_REQUEST}_show`;
 
@@ -28,20 +28,20 @@ const Layout = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
   } else if (isRegisterUsernameTx(tx)) {
     req = <ReqRegisterUsernameTx tx={tx} />;
   } else {
-    throw new Error('Received transaction type that cannot be displayed');
+    throw new Error("Received transaction type that cannot be displayed");
   }
 
   return (
     <PageLayout id={TX_REQUEST_SHOW} color="white" primaryTitle="Tx" title="Request">
       <Block textAlign="center" marginBottom={2}>
         <Typography variant="body1" inline>
-          {'The following site: '}
+          {"The following site: "}
         </Typography>
         <Typography variant="body1" color="primary" inline>
           {sender}
         </Typography>
         <Typography variant="body1" inline>
-          {' wants you to sign:'}
+          {" wants you to sign:"}
         </Typography>
       </Block>
       {req}

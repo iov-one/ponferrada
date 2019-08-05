@@ -1,10 +1,10 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import Block from "medulas-react-components/lib/components/Block";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-import { STATUS_BACKGROUND, STATUS_BORDER } from '../../../../theme/css';
-import { Tally } from '.';
+import { STATUS_BACKGROUND, STATUS_BORDER } from "../../../../theme/css";
+import { Tally } from ".";
 
 const useStyles = makeStyles((theme: Theme) => ({
   status: {
@@ -21,10 +21,10 @@ interface Props {
 }
 
 const getYesPercentage = (tally: Tally): string => {
-  let yesPercentage = '0%';
+  let yesPercentage = "0%";
 
   if (tally.yes) {
-    yesPercentage = Math.floor((tally.yes / tally.totalVotes) * 100) + '%';
+    yesPercentage = Math.floor((tally.yes / tally.totalVotes) * 100) + "%";
   }
 
   return yesPercentage;

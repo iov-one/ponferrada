@@ -1,12 +1,12 @@
-import { DRAWER_HTML_ID } from 'medulas-react-components/lib/components/Drawer';
-import TestUtils from 'react-dom/test-utils';
+import { DRAWER_HTML_ID } from "medulas-react-components/lib/components/Drawer";
+import TestUtils from "react-dom/test-utils";
 
-import { click } from '../../../utils/test/dom';
-import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
+import { click } from "../../../utils/test/dom";
+import { findRenderedDOMComponentWithId } from "../../../utils/test/reactElemFinder";
 
 async function openDrawer(drawerComponent: React.Component): Promise<void> {
-  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, 'button')[0];
-  expect(drawerButton.getAttribute('aria-label')).toBe('Open drawer');
+  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, "button")[0];
+  expect(drawerButton.getAttribute("aria-label")).toBe("Open drawer");
   await click(drawerButton);
 }
 
@@ -21,17 +21,17 @@ const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerR
   await openDrawer(drawerComponent);
 
   const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
-  const drawerElements = (drawerList as Element).querySelectorAll('nav div > div:nth-of-type(2)');
+  const drawerElements = (drawerList as Element).querySelectorAll("nav div > div:nth-of-type(2)");
   expect(drawerElements.length).toBe(3);
   const [recoveryPhraseLink, requestsLink, logoutLink] = drawerElements;
-  const footerLinks = (drawerList as Element).querySelectorAll('footer a');
+  const footerLinks = (drawerList as Element).querySelectorAll("footer a");
   expect(footerLinks.length).toBe(1);
   const [termsLink] = footerLinks;
 
-  expect(recoveryPhraseLink.textContent).toBe('Recovery words');
-  expect(requestsLink.textContent).toBe('Requests');
-  expect(logoutLink.textContent).toBe('Logout');
-  expect(termsLink.textContent).toBe('Terms & Conditions');
+  expect(recoveryPhraseLink.textContent).toBe("Recovery words");
+  expect(requestsLink.textContent).toBe("Requests");
+  expect(logoutLink.textContent).toBe("Logout");
+  expect(termsLink.textContent).toBe("Terms & Conditions");
 
   return { recoveryPhraseLink, requestsLink, logoutLink, termsLink };
 };

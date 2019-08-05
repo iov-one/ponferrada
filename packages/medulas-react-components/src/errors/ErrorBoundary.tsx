@@ -1,8 +1,8 @@
-import * as Sentry from '@sentry/browser';
-import React from 'react';
+import * as Sentry from "@sentry/browser";
+import React from "react";
 
 interface Props {
-  readonly type: 'inner' | 'outer';
+  readonly type: "inner" | "outer";
 }
 
 interface State {
@@ -16,7 +16,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
   };
 
   public readonly componentDidCatch = (error: Error | null, errorInfo: any): void => {
-    const openSentry = process.env.NODE_ENV === 'production' ? true : false;
+    const openSentry = process.env.NODE_ENV === "production" ? true : false;
     this.setState({ openSentry });
 
     Sentry.withScope(scope => {

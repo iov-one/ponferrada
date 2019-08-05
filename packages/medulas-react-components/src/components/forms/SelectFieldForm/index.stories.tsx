@@ -1,22 +1,22 @@
 /* eslint-disable no-console */
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../../utils/storybook';
-import Form, { useForm } from '../Form';
-import SelectField from './index';
-import { Item } from './index';
+import { Storybook } from "../../../utils/storybook";
+import Form, { useForm } from "../Form";
+import SelectField from "./index";
+import { Item } from "./index";
 
 const SelectFieldForm = (): JSX.Element => {
   const { form, handleSubmit } = useForm({
-    onSubmit: action('Form submit'),
+    onSubmit: action("Form submit"),
   });
 
   const items = [
-    { name: 'Create new account', additionalText: 'Hello world' },
-    { name: 'IOV2', additionalText: 'This attr is optional' },
-    { name: 'ETH3' },
+    { name: "Create new account", additionalText: "Hello world" },
+    { name: "IOV2", additionalText: "This attr is optional" },
+    { name: "ETH3" },
   ];
 
   return (
@@ -32,7 +32,7 @@ const SelectFieldForm = (): JSX.Element => {
   );
 };
 
-storiesOf('Components /forms', module).add('SelectField', () => (
+storiesOf("Components /forms", module).add("SelectField", () => (
   <Storybook>
     <SelectFieldForm />
   </Storybook>

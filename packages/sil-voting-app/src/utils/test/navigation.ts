@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { Page } from "puppeteer";
 
 const MAX_TIMES_EXECUTED = 35;
 const INTERVAL = 500;

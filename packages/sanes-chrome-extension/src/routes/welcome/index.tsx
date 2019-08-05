@@ -1,11 +1,11 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { history } from '../../store/reducers';
-import { LOGIN_ROUTE, RESTORE_ACCOUNT, SIGNUP_ROUTE, WELCOME_ROUTE } from '../paths';
+import { history } from "../../store/reducers";
+import { LOGIN_ROUTE, RESTORE_ACCOUNT, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
 
 const createNewAccount = (): void => {
   history.push(SIGNUP_ROUTE);
