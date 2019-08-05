@@ -7,6 +7,7 @@ import {
   ProposalExecutorResult,
   ProposalResult,
   ProposalStatus,
+  VoteOption,
 } from '@iov/bns';
 
 const adminAddress = 'Admin 1' as Address;
@@ -170,13 +171,13 @@ export const getDummyProposals = (): Proposal[] => [
   },
 ];
 
-export const getDummyVote = (proposal: Proposal): 'Invalid' | 'Yes' | 'No' | 'Abstain' => {
+export const getDummyVote = (proposal: Proposal): VoteOption | undefined => {
   switch (proposal.id) {
     case 2:
-      return 'Yes';
+      return VoteOption.Yes;
     case 3:
-      return 'Abstain';
+      return VoteOption.No;
     default:
-      return 'Invalid';
+      return undefined;
   }
 };

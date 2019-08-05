@@ -22,14 +22,14 @@ const Description = ({ description }: Props): JSX.Element => {
     const shortDescription = elipsify(description, DESC_MAX_LENGTH) + ' ';
 
     return (
-      <React.Fragment>
-        <Typography inline variant="body1">
+      <Block marginTop={2}>
+        <Typography inline variant="body2">
           {shortDescription}
         </Typography>
-        <Typography inline link onClick={onClick} variant="body1" weight="semibold">
+        <Typography inline link onClick={onClick} variant="body2" weight="semibold">
           Read more
         </Typography>
-      </React.Fragment>
+      </Block>
     );
   };
 
@@ -37,20 +37,20 @@ const Description = ({ description }: Props): JSX.Element => {
 
   if (hasSmallDescription) {
     return (
-      <Block marginBottom={1}>
-        <Typography variant="body1">{description}</Typography>
+      <Block marginTop={2}>
+        <Typography variant="body2">{description}</Typography>
       </Block>
     );
   }
 
   return (
-    <Block marginBottom={1}>
+    <Block marginTop={2}>
       {!expanded && <ReadMore />}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Typography inline variant="body1">
+        <Typography inline variant="body2">
           {description}{' '}
         </Typography>
-        <Typography inline link onClick={onClick} variant="body1" weight="semibold">
+        <Typography inline link onClick={onClick} variant="body2" weight="semibold">
           Read less
         </Typography>
       </Collapse>

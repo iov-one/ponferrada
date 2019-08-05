@@ -1,31 +1,37 @@
+import { Address } from '@iov/bcp';
+import { ProposalResult, VoteOption } from '@iov/bns';
 import Block from 'medulas-react-components/lib/components/Block';
 import React from 'react';
 
-import CreationData from './CreationData';
+import DeleteButton from './DeleteButton';
 import Description from './Description';
-import StatusEnded from './StatusEnded';
-import StatusPending from './StatusPending';
+import Identification from './Identification';
+import Period from './Period';
+import TallyBar from './TallyBar';
 import Title from './Title';
-import VoteActions from './VoteActions';
+import VotingPanel from './VotingPanel';
 
-export interface VoteResult {
+export interface Tally {
   readonly yes: number;
   readonly no: number;
   readonly abstain: number;
+  readonly totalVotes: number;
+  readonly maxVotes: number;
 }
 
 export interface ProposalProps {
-  readonly id: string;
+  readonly id: number;
   readonly title: string;
-  readonly author: string;
+  readonly author: Address;
   readonly description: string;
   readonly creationDate: Date;
   readonly expiryDate: Date;
   readonly quorum: number;
   readonly threshold: number;
-  readonly result: VoteResult;
-  readonly vote: 'Invalid' | 'Yes' | 'No' | 'Abstain';
-  readonly status: 'Active' | 'Submitted' | 'Ended';
+  readonly tally: Tally;
+  readonly result: ProposalResult;
+  readonly vote: VoteOption | undefined;
+  readonly hasEnded: boolean;
 }
 
 const Proposal = ({
@@ -36,23 +42,34 @@ const Proposal = ({
   creationDate,
   expiryDate,
   quorum,
+  threshold,
+  tally,
   result,
   vote,
-  status,
+  hasEnded,
 }: ProposalProps): JSX.Element => {
-  const hasEnded = status === 'Ended';
-  const showExpiryDate = !hasEnded;
-
   return (
     <Block width="100%" display="flex" alignItems="center">
-      <Block flexGrow={1} margin={2}>
-        <Title title={title} status={status} />
-        <CreationData author={author} id={id} creationDate={creationDate} />
+      <Block flexGrow={1} marginTop={2} marginBottom={2} marginLeft={2}>
+        <Title title={title} />
+        <Identification id={id} author={author} />
         <Description description={description} />
-        {showExpiryDate && <StatusPending expiryDate={expiryDate} />}
-        {hasEnded && <StatusEnded expiryDate={expiryDate} quorum={quorum} result={result} />}
+        <Block display="flex" marginTop={2}>
+          <Period expiryDate={expiryDate} creationDate={creationDate} hasEnded={hasEnded} />
+          <Block marginLeft={1}>
+            <DeleteButton />
+          </Block>
+        </Block>
+        <TallyBar tally={tally} />
       </Block>
-      <VoteActions vote={vote} />
+      <VotingPanel
+        result={result}
+        vote={vote}
+        quorum={quorum}
+        threshold={threshold}
+        tally={tally}
+        hasEnded={hasEnded}
+      />
     </Block>
   );
 };

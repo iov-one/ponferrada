@@ -1,20 +1,19 @@
+import { VoteOption } from '@iov/bns';
 import Button from '@material-ui/core/Button';
 import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
 import React from 'react';
 
 interface Props {
-  readonly vote: 'Invalid' | 'Yes' | 'No' | 'Abstain';
+  readonly vote: VoteOption | undefined;
 }
 
-const VoteActions = ({ vote }: Props): JSX.Element => {
-  const yesButton = vote === 'Yes' ? 'contained' : 'outlined';
-  const noButton = vote === 'No' ? 'contained' : 'outlined';
-  const abstainButton = vote === 'Abstain' ? 'contained' : 'outlined';
+const Buttons = ({ vote }: Props): JSX.Element => {
+  const yesButton = vote === VoteOption.Yes ? 'contained' : 'outlined';
+  const noButton = vote === VoteOption.No ? 'contained' : 'outlined';
+  const abstainButton = vote === VoteOption.Abstain ? 'contained' : 'outlined';
 
   return (
-    <Block minWidth="100px" margin={2} display="flex" flexDirection="column">
-      <Typography variant="body1">Your Vote:</Typography>
+    <Block margin={2}>
       <Block marginTop={0.5} marginBottom={0.5}>
         <Button fullWidth variant={yesButton}>
           Yes
@@ -34,4 +33,4 @@ const VoteActions = ({ vote }: Props): JSX.Element => {
   );
 };
 
-export default VoteActions;
+export default Buttons;
