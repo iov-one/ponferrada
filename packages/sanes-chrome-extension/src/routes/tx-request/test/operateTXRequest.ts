@@ -37,7 +37,7 @@ export const checkPermanentRejection = async (TXRequestDom: React.Component): Pr
   const rejectPermanentlyCheckbox = inputs[0];
   TestUtils.act(() => {
     TestUtils.Simulate.change(rejectPermanentlyCheckbox, {
-      target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
+      target: { checked: true } as any,
     });
   });
 };

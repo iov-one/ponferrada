@@ -13,7 +13,7 @@ export const createDom = (store: Store): React.Component =>
         <Routes />
       </MedulasThemeProvider>
     </Provider>,
-  ) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) as any;
 
 export const expectRoute = (route: string): void => {
   const actualRoute = window.location.pathname;
