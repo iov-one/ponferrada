@@ -49,7 +49,7 @@ interface Props {
   readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ chainAddresses: chainAddressMap, onReturnToBalance }: Props): JSX.Element => {
+const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const avatarClasses = useAvatar();
   const tableClasses = useTable();
@@ -91,7 +91,7 @@ const ReceivePayment = ({ chainAddresses: chainAddressMap, onReturnToBalance }: 
                 </TableRow>
               </TableHead>
               <TableBody>
-                {chainAddressMap.map(chain => (
+                {chainAddresses.map(chain => (
                   <TableRow key={chain.chainId}>
                     <TableCell align="left">{chain.chainName}</TableCell>
                     <TableCell align="left">{chain.address}</TableCell>
