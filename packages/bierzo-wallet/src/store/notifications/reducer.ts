@@ -1,21 +1,14 @@
-import { Amount } from '@iov/bcp';
-import { ReadonlyDate } from 'readonly-date';
+import { SendTransaction } from '@iov/bcp';
 
-import { ParsedTx } from '../../logic/transactions/types/BwParser';
+import { ProcessedTx } from '../../logic/transactions/types/BwParser';
 import { NotificationActions } from './actions';
 
-export interface ProcessedTx extends ParsedTx {
-  readonly time: ReadonlyDate;
+export interface ProcessedSendTransaction extends ProcessedTx<SendTransaction> {
   readonly received: boolean;
-  readonly id: string;
-  readonly sender: string;
-  readonly recipient: string;
-  readonly amount: Amount;
-  readonly memo?: string;
 }
 
 export interface NotificationState {
-  readonly transactions: ReadonlyArray<ParsedTx>;
+  readonly transactions: ReadonlyArray<ProcessedTx>;
 }
 
 const initState = {
@@ -28,14 +21,10 @@ export function notificationReducer(
 ): NotificationState {
   switch (action.type) {
     case '@@notifications/ADD_TRANSACTION':
-      if (!action.payload) {
-        return state;
-      }
-
       return {
         ...state,
-        transactions: [action.payload as ParsedTx, ...state.transactions].sort(
-          (a: ParsedTx, b: ParsedTx) => b.time.getTime() - a.time.getTime(),
+        transactions: [action.payload, ...state.transactions].sort(
+          (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
         ),
       };
     default:

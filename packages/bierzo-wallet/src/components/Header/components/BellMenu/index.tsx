@@ -9,9 +9,8 @@ import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyList
 import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
 
-import { ParsedTx } from '../../../../logic/transactions/types/BwParser';
+import { ProcessedTx } from '../../../../logic/transactions/types/BwParser';
 import { BwParserFactory } from '../../../../logic/transactions/types/BwParserFactory';
-import { ProcessedTx } from '../../../../store/notifications';
 import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
 import bell from '../../assets/bell.svg';
 import bellGreen from '../../assets/bellGreen.svg';
@@ -19,8 +18,8 @@ import upToDate from '../../assets/uptodate.svg';
 import { BadgeProps, calcBadgeProps } from './badgeCalculator';
 
 interface Props {
-  readonly items: ReadonlyArray<ParsedTx>;
-  readonly lastTx?: ParsedTx;
+  readonly items: ReadonlyArray<ProcessedTx>;
+  readonly lastTx?: ProcessedTx;
 }
 
 const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
@@ -29,14 +28,12 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
       return;
     }
 
-    // TODO remove automatic casting when supported multiple types
-    storeLastTx(lastTx as ProcessedTx);
+    storeLastTx(lastTx);
   };
 
   const starter = (open: boolean): JSX.Element => {
     const logo = open ? bellGreen : bell;
-    // TODO remove automatic casting when supported multiple types
-    const badgeProps: BadgeProps = calcBadgeProps(lastTx as ProcessedTx, getLastTx());
+    const badgeProps: BadgeProps = calcBadgeProps(lastTx, getLastTx());
 
     return (
       <Block paddingLeft={5} paddingRight={5}>
@@ -62,7 +59,7 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
       </Block>
       <Hairline />
       {hasItems ? (
-        items.map((item: ParsedTx, index: number) => {
+        items.map((item: ProcessedTx, index: number) => {
           const lastOne = index + 1 === items.length;
 
           return BwParserFactory.getHeaderRepresentation(item, lastOne);

@@ -18,6 +18,7 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": [ "error", {
       allowExpressions: true,
     }],
+    "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
   },
   plugins: ["@typescript-eslint", "react", "simple-import-sort"],

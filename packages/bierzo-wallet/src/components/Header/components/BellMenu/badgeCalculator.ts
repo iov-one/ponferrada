@@ -1,4 +1,4 @@
-import { ProcessedTx } from '../../../../store/notifications';
+import { TxMeta } from '../../../../utils/localstorage/transactions';
 
 export interface BadgeProps {
   readonly invisible: boolean;
@@ -15,14 +15,11 @@ const buildBadgeFrom = (lastTxSucceded: boolean): BadgeProps => ({
   color: lastTxSucceded ? 'primary' : 'error',
 });
 
-const lastTxNewer = (lastTx: ProcessedTx, lastStoredTx: ProcessedTx): boolean => {
+const lastTxNewer = (lastTx: TxMeta, lastStoredTx: TxMeta): boolean => {
   return lastTx.time.getTime() > lastStoredTx.time.getTime();
 };
 
-export const calcBadgeProps = (
-  lastTx: ProcessedTx | undefined,
-  lastStoredTx: ProcessedTx | undefined,
-): BadgeProps => {
+export const calcBadgeProps = (lastTx: TxMeta | undefined, lastStoredTx: TxMeta | undefined): BadgeProps => {
   if (!lastTx) {
     return hiddenBadge;
   }

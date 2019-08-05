@@ -1,45 +1,62 @@
-import { TokenTicker } from '@iov/bcp';
+import { Address, TokenTicker, TransactionId } from '@iov/bcp';
 import { storiesOf } from '@storybook/react';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
-import { ProcessedTx } from '../../store/notifications';
+import { ProcessedSendTransaction } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
-import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import PageMenu from './index';
 
-const txs: ReadonlyArray<ProcessedTx> = [
+const txs: ReadonlyArray<ProcessedSendTransaction> = [
   {
-    kind: 'bcp/send',
     received: true,
-    sender: 'george*iov',
-    recipient: 'me',
-    amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    id: 'tx1',
+    id: 'tx1' as TransactionId,
+    original: {
+      kind: 'bcp/send',
+      amount: {
+        quantity: '1050000000',
+        fractionalDigits: 8,
+        tokenTicker: 'LSK' as TokenTicker,
+      },
+      sender: '1L' as Address,
+      recipient: '2L' as Address,
+    },
   },
   {
-    kind: 'bcp/send',
     received: false,
-    sender: 'me',
-    recipient: 'alex*iov',
-    amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    id: 'tx2',
+    id: 'tx2' as TransactionId,
+    original: {
+      kind: 'bcp/send',
+      amount: {
+        quantity: '25500000000',
+        fractionalDigits: 9,
+        tokenTicker: 'IOV' as TokenTicker,
+      },
+      sender: 'tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3' as Address,
+      recipient: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address,
+    },
   },
 ];
 
-const faultTx: ProcessedTx = {
-  kind: 'bcp/send',
+const faultTx: ProcessedSendTransaction = {
   received: false,
-  sender: 'me',
-  recipient: 'alex*iov',
-  amount: stringToAmount('100.5', 'IOV' as TokenTicker),
   time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-  id: 'tx3',
+  id: 'tx3' as TransactionId,
+  original: {
+    kind: 'bcp/send',
+    amount: {
+      quantity: '100500000000',
+      fractionalDigits: 9,
+      tokenTicker: 'IOV' as TokenTicker,
+    },
+    sender: 'tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3' as Address,
+    recipient: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address,
+  },
 };
 
 const fullStore = (): DeepPartial<RootState> => {

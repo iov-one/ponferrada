@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import PageMenu from '../../components/PageMenu';
-import { ParsedTx } from '../../logic/transactions/types/BwParser';
+import { ProcessedTx } from '../../logic/transactions/types/BwParser';
 import { BwParserFactory } from '../../logic/transactions/types/BwParserFactory';
 import { RootState } from '../../store/reducers';
 import Layout from './components';
@@ -22,7 +22,7 @@ const Transactions = (): JSX.Element => {
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN as TxsOrder);
   const [order, setOrder] = React.useState(ORDER_DESC as SortOrder);
-  const parsedTxs: ReadonlyArray<ParsedTx> = useSelector(
+  const parsedTxs: ReadonlyArray<ProcessedTx> = useSelector(
     (state: RootState) => state.notifications.transactions,
   );
 
@@ -62,7 +62,7 @@ const Transactions = (): JSX.Element => {
     // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
     const csvHeader =
       '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Received";"Note"';
-    const csvBody = orderedTxs.map((tx: ParsedTx) => BwParserFactory.getCsvRepresentation(tx));
+    const csvBody = orderedTxs.map((tx: ProcessedTx) => BwParserFactory.getCsvRepresentation(tx));
 
     const blob = new Blob([`${csvHeader}\n${csvBody.join('\n')}`], { type: 'text/plain;charset=utf-8' });
     FileSaver.saveAs(blob, 'transactions.csv');

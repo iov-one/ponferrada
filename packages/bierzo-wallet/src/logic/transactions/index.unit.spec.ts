@@ -1,7 +1,7 @@
 import { BlockchainConnection, Identity } from '@iov/bcp';
 
 import { aNewStore } from '../../store';
-import { ProcessedTx } from '../../store/notifications';
+import { ProcessedSendTransaction } from '../../store/notifications';
 import * as transactionActions from '../../store/notifications/actions';
 import { createPubkeys } from '../../utils/test/pubkeys';
 import { withChainsDescribe } from '../../utils/test/testExecutor';
@@ -29,7 +29,7 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
   it('fires transaction callback when account does something', async () => {
     const txsSpy = jest.spyOn(transactionActions, 'addTransaction') as jest.SpyInstance<
       transactionActions.AddTransactionActionType,
-      [ProcessedTx]
+      [ProcessedSendTransaction]
     >;
 
     const store = aNewStore();
@@ -46,7 +46,9 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     // Got one incoming transaction for BASH, CASH, ETH
     expect(txsSpy).toHaveBeenCalledTimes(3);
     const transactions = txsSpy.mock.calls.map(call => call[0]);
-    expect(new Set(transactions.map(tx => tx.amount.tokenTicker))).toEqual(new Set(['BASH', 'CASH', 'ETH']));
+    expect(new Set(transactions.map(tx => tx.original.amount.tokenTicker))).toEqual(
+      new Set(['BASH', 'CASH', 'ETH']),
+    );
 
     unsubscribeTransactions();
   }, 30000);

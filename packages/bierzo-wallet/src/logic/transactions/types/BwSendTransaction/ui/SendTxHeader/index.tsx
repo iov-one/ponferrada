@@ -6,9 +6,9 @@ import Hairline from 'medulas-react-components/lib/components/Hairline';
 import Image from 'medulas-react-components/lib/components/Image';
 import * as React from 'react';
 
-import { BwSendProps } from '../..';
 import { history } from '../../../../../../routes';
 import { PAYMENT_ROUTE } from '../../../../../../routes/paths';
+import { ProcessedSendTransaction } from '../../../../../../store/notifications';
 import { itemBackground } from '../../../../../../theme/css';
 import { prettyAmount } from '../../../../../../utils/balances';
 import receiveTx from '../assets/transactionReceive.svg';
@@ -16,7 +16,7 @@ import sendTx from '../assets/transactionSend.svg';
 import Msg from './MsgSuccess';
 
 interface ItemProps {
-  readonly item: BwSendProps;
+  readonly item: ProcessedSendTransaction;
   readonly lastOne: boolean;
 }
 
@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, amount, received, sender, recipient } = item;
+  const { time, received, original } = item;
 
-  const beautifulAmount = prettyAmount(amount);
+  const beautifulAmount = prettyAmount(original.amount);
   const icon = received ? receiveTx : sendTx;
 
   const msg = (
@@ -56,8 +56,8 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       onVisitSendPayment={onVisitSendPayment}
       received={received}
       amount={beautifulAmount}
-      signer={sender}
-      recipient={recipient}
+      signer={original.sender}
+      recipient={original.recipient}
     />
   );
 

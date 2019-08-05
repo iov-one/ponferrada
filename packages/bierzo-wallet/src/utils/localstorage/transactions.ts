@@ -1,19 +1,31 @@
-import { ProcessedTx } from '../../store/notifications';
+import { ReadonlyDate } from 'readonly-date';
 
-export const LAST_TX = 'LAST_TX';
+export interface TxMeta {
+  readonly time: ReadonlyDate;
+  readonly id: string;
+}
 
-export function getLastTx(): ProcessedTx | undefined {
-  const lastTxJson = localStorage.getItem(LAST_TX);
-  if (lastTxJson) {
-    const lastTx = JSON.parse(lastTxJson);
-    // tslint:disable-next-line:no-object-mutation
-    lastTx.time = new Date(lastTx.time);
-    return lastTx;
+const LAST_TX_KEY = 'LAST_TX';
+
+export function getLastTx(): TxMeta | undefined {
+  const storageItem = localStorage.getItem(LAST_TX_KEY);
+  if (storageItem) {
+    const parsed = JSON.parse(storageItem);
+    return {
+      time: new Date(parsed.time),
+      id: parsed.id,
+    };
   }
 
   return undefined;
 }
 
-export function storeLastTx(lastTx: ProcessedTx): void {
-  localStorage.setItem(LAST_TX, JSON.stringify(lastTx));
+export function storeLastTx(lastTx: TxMeta): void {
+  // Create copy to only store what we need
+  const storageItem: TxMeta = {
+    time: lastTx.time,
+    id: lastTx.id,
+  };
+
+  localStorage.setItem(LAST_TX_KEY, JSON.stringify(storageItem));
 }

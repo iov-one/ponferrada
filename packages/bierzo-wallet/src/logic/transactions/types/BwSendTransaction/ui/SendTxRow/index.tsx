@@ -8,16 +8,16 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { useOpen } from 'medulas-react-components/lib/hooks/open';
 import * as React from 'react';
 
-import { BwSendProps } from '../..';
 import {
   DEFAULT_ADDRESS,
   getAddressPrefix,
   getTypeIcon,
 } from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
+import { ProcessedSendTransaction } from '../../../../../../store/notifications';
 import { getBorderColor } from '../../../../../../theme/css';
-import { amountToNumber } from '../../../../../../utils/balances';
-import { getDate, getTime } from '../../../../../../utils/date';
-import dropdownArrow from '../assets/dropdownArrowClose.svg';
+import { amountToString } from '../../../../../../utils/balances';
+import { formatDate, formatTime } from '../../../../../../utils/date';
+import dropdownArrow from '../assets/dropdownArrow.svg';
 import dropdownArrowClose from '../assets/dropdownArrowClose.svg';
 import SendTxDetails from './Details';
 
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly sendTx: BwSendProps;
+  readonly sendTx: ProcessedSendTransaction;
 }
 
 function SendTxRow({ sendTx }: Props): JSX.Element {
@@ -58,16 +58,16 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
             {getAddressPrefix(sendTx)} {DEFAULT_ADDRESS}
           </Typography>
           <Typography variant="subtitle2" weight="regular" color="secondary">
-            {getTime(sendTx.time as Date)}
+            {formatTime(sendTx.time)}
           </Typography>
         </Block>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
-          {getDate(sendTx.time as Date)}
+          {formatDate(sendTx.time)}
         </Typography>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
-          {amountToNumber(sendTx.amount)} {sendTx.amount.tokenTicker}
+          {amountToString(sendTx.original.amount)}
         </Typography>
         <Block padding={0.5} />
         <Img
