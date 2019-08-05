@@ -16,7 +16,7 @@ import {
 } from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
 import { getBorderColor } from '../../../../../../theme/css';
 import { amountToString } from '../../../../../../utils/balances';
-import { getDate, getTime } from '../../../../../../utils/date';
+import { formatDate, formatTime } from '../../../../../../utils/date';
 import dropdownArrow from '../assets/dropdownArrow.svg';
 import dropdownArrowClose from '../assets/dropdownArrowClose.svg';
 import SendTxDetails from './Details';
@@ -58,12 +58,12 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
             {getAddressPrefix(sendTx)} {DEFAULT_ADDRESS}
           </Typography>
           <Typography variant="subtitle2" weight="regular" color="secondary">
-            {getTime(sendTx.time as Date)}
+            {formatTime(sendTx.time)}
           </Typography>
         </Block>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
-          {getDate(sendTx.time as Date)}
+          {formatDate(sendTx.time)}
         </Typography>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
