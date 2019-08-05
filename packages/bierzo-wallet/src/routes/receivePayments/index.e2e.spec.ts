@@ -56,14 +56,15 @@ withChainsDescribe('E2E > Receive Payment route', () => {
     await travelToReceivePaymentE2E(page);
     let [chainName, address] = await getAddressRow(page, 1);
     expect(chainName).toBe('Ganache');
-    expect(address.length).toBe(42);
+    expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
 
     [chainName, address] = await getAddressRow(page, 4);
     expect(chainName).toBe('IOV Devnet');
-    expect(address.length).toBe(43);
+    expect(address).toMatch(/^tiov1[0-9a-z]{38}$/);
 
     [chainName, address] = await getAddressRow(page, 5);
     expect(chainName).toBe('Lisk Devnet');
+    expect(address).toMatch(/^[0-9]+L$/);
   }, 35000);
 
   it('should copy address to clipboard and show toast with message', async () => {
