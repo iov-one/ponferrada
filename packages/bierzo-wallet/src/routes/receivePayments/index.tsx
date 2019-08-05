@@ -7,7 +7,6 @@ import { history } from '..';
 import { getChainName } from '../../config';
 import { getCodecForChainId } from '../../logic/codec';
 import { RootState } from '../../store/reducers';
-import { BwToken } from '../../store/tokens';
 import { BALANCE_ROUTE } from '../paths';
 import Layout, { ChainAddressMap } from './components';
 
