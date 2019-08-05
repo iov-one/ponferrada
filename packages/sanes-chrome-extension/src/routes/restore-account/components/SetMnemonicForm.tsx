@@ -14,11 +14,9 @@ import { RESTORE_ACCOUNT } from "../../paths";
 
 export const MNEMONIC_FIELD = "mnemonicField";
 
-const englishMnemonicValidator: FieldValidator = (value): string | undefined => {
-  if (typeof value !== "string") throw new Error("Input must be a string");
-
+const englishMnemonicValidator: FieldValidator<string | undefined> = (value): string | undefined => {
   try {
-    new EnglishMnemonic(value);
+    new EnglishMnemonic(value || "");
     return undefined; // valid
   } catch (_error) {
     return "Not a valid English mnemonic";

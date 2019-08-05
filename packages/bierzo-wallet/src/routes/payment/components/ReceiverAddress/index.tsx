@@ -18,8 +18,8 @@ interface Props {
 }
 
 const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
-  const recipientValidator: FieldValidator = React.useMemo(() => {
-    const validator = (value: string): string | undefined => {
+  const recipientValidator: FieldValidator<string | undefined> = React.useMemo(() => {
+    const validator = (value: string | undefined): string | undefined => {
       if (typeof value !== "string") throw new Error("Input must be a string");
 
       if (isIov(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
