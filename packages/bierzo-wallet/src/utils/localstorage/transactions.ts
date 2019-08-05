@@ -1,9 +1,9 @@
 import { ProcessedSendTransaction } from '../../store/notifications';
 
-export const LAST_TX = 'LAST_TX';
+const LAST_TX_KEY = 'LAST_TX';
 
 export function getLastTx(): ProcessedSendTransaction | undefined {
-  const lastTxJson = localStorage.getItem(LAST_TX);
+  const lastTxJson = localStorage.getItem(LAST_TX_KEY);
   if (lastTxJson) {
     const lastTx = JSON.parse(lastTxJson);
     // tslint:disable-next-line:no-object-mutation
@@ -15,5 +15,5 @@ export function getLastTx(): ProcessedSendTransaction | undefined {
 }
 
 export function storeLastTx(lastTx: ProcessedSendTransaction): void {
-  localStorage.setItem(LAST_TX, JSON.stringify(lastTx));
+  localStorage.setItem(LAST_TX_KEY, JSON.stringify(lastTx));
 }
