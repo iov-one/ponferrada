@@ -58,11 +58,11 @@ withChainsDescribe('E2E > Receive Payment route', () => {
     expect(chainName).toBe('Ganache');
     expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
 
-    [chainName, address] = await getAddressRow(page, 4);
+    [chainName, address] = await getAddressRow(page, 2);
     expect(chainName).toBe('IOV Devnet');
     expect(address).toMatch(/^tiov1[0-9a-z]{38}$/);
 
-    [chainName, address] = await getAddressRow(page, 5);
+    [chainName, address] = await getAddressRow(page, 3);
     expect(chainName).toBe('Lisk Devnet');
     expect(address).toMatch(/^[0-9]+L$/);
   }, 35000);
