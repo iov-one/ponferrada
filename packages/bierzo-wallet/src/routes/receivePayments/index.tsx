@@ -1,4 +1,4 @@
-import { Identity } from '@iov/bcp';
+import { ChainId, Identity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import React from 'react';
 import * as ReactRedux from 'react-redux';
@@ -16,44 +16,38 @@ function onReturnToBalance(): void {
 }
 
 const ReceivePayment = (): JSX.Element => {
-  const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
 
   const [chainAddressMap, setChainAddressMap] = React.useState<ChainAddressMap[]>([]);
 
   React.useEffect(() => {
-    async function processAddresses(
-      tokens: { [key: string]: BwToken },
-      pubKeys: { [chain: string]: string },
-    ): Promise<void> {
+    async function processAddresses(pubKeys: { [chain: string]: string }): Promise<void> {
       const addressesMap: ChainAddressMap[] = [];
-      const tokenValues = Object.values(tokens).sort();
-      for (let i = 0; i < tokenValues.length; i++) {
-        const token = tokenValues[i];
-        const plainPubkey = pubKeys[token.chainId];
+      const chainIds = Object.keys(pubKeys);
+      for (let i = 0; i < chainIds.length; i++) {
+        const chainId = chainIds[i] as ChainId;
+        const plainPubkey = pubKeys[chainId];
         if (!plainPubkey) {
           return;
         }
 
         const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
-        const address = (await getCodecForChainId(token.chainId)).identityToAddress(identity);
-        const chainName = getChainName(token.chainId);
+        const address = (await getCodecForChainId(chainId)).identityToAddress(identity);
+        const chainName = getChainName(chainId);
         addressesMap.push({
-          chainId: token.chainId,
+          chainId: chainId,
           chainName,
           address,
         });
       }
-      addressesMap.sort((a: ChainAddressMap, b: ChainAddressMap) => {
-        if (a.chainName > b.chainName) return 1;
-        else if (a.chainName < b.chainName) return -1;
-        else return 0;
-      });
+      addressesMap.sort((a: ChainAddressMap, b: ChainAddressMap) =>
+        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: 'base' }),
+      );
 
       setChainAddressMap(addressesMap);
     }
-    processAddresses(tokens, pubKeys);
-  }, [tokens, pubKeys]);
+    processAddresses(pubKeys);
+  }, [pubKeys]);
 
   return <Layout chainAddressMap={chainAddressMap} onReturnToBalance={onReturnToBalance} />;
 };
