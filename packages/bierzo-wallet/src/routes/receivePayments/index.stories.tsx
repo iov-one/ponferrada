@@ -5,11 +5,11 @@ import React from 'react';
 
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from '../balance/index.stories';
-import Layout, { ChainAddressMap } from './components';
+import Layout, { ChainAddress } from './components';
 
 export const RECEIVE_PAYMENT_STORY_PATH = `Receive Payment`;
 
-const CHAIN_ADDRESS: ChainAddressMap[] = [
+const CHAIN_ADDRESSES: ChainAddress[] = [
   {
     chainId: 'ethereum-eip155-5777' as ChainId,
     chainName: 'Ganache',
@@ -34,7 +34,7 @@ storiesOf(WALLET_ROOT, module)
     (): JSX.Element => (
       <DecoratedStorybook>
         <Layout
-          chainAddressMap={CHAIN_ADDRESS}
+          chainAddresses={CHAIN_ADDRESSES}
           onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         />
       </DecoratedStorybook>

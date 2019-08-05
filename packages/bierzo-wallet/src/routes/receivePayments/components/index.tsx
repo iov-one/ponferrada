@@ -13,7 +13,7 @@ import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
 import React from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-export interface ChainAddressMap {
+export interface ChainAddress {
   readonly chainId: ChainId;
   readonly chainName: string;
   readonly address: Address;
@@ -45,11 +45,11 @@ const useAvatar = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
-  readonly chainAddressMap: ReadonlyArray<ChainAddressMap>;
+  readonly chainAddresses: ReadonlyArray<ChainAddress>;
   readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ chainAddressMap, onReturnToBalance }: Props): JSX.Element => {
+const ReceivePayment = ({ chainAddresses: chainAddressMap, onReturnToBalance }: Props): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const avatarClasses = useAvatar();
   const tableClasses = useTable();

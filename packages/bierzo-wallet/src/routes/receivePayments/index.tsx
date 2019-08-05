@@ -8,7 +8,7 @@ import { getChainName } from '../../config';
 import { getCodecForChainId } from '../../logic/codec';
 import { RootState } from '../../store/reducers';
 import { BALANCE_ROUTE } from '../paths';
-import Layout, { ChainAddressMap } from './components';
+import Layout, { ChainAddress } from './components';
 
 function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
@@ -17,7 +17,7 @@ function onReturnToBalance(): void {
 const ReceivePayment = (): JSX.Element => {
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
 
-  const [chainAddressMap, setChainAddressMap] = React.useState<ChainAddressMap[]>([]);
+  const [chainAddresses, setChainAddresses] = React.useState<ChainAddress[]>([]);
 
   React.useEffect(() => {
     async function processAddresses(pubKeys: { [chain: string]: string }): Promise<void> {
@@ -27,24 +27,24 @@ const ReceivePayment = (): JSX.Element => {
         },
       );
 
-      const addressesMap: ChainAddressMap[] = [];
+      const addresses: ChainAddress[] = [];
       for (const identity of identities) {
-        addressesMap.push({
+        addresses.push({
           chainId: identity.chainId,
           chainName: getChainName(identity.chainId),
           address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
         });
       }
-      addressesMap.sort((a: ChainAddressMap, b: ChainAddressMap) =>
+      addresses.sort((a: ChainAddress, b: ChainAddress) =>
         a.chainName.localeCompare(b.chainName, undefined, { sensitivity: 'base' }),
       );
 
-      setChainAddressMap(addressesMap);
+      setChainAddresses(addresses);
     }
     processAddresses(pubKeys);
   }, [pubKeys]);
 
-  return <Layout chainAddressMap={chainAddressMap} onReturnToBalance={onReturnToBalance} />;
+  return <Layout chainAddresses={chainAddresses} onReturnToBalance={onReturnToBalance} />;
 };
 
 export default ReceivePayment;
