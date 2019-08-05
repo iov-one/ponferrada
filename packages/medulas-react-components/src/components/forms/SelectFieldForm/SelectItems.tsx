@@ -1,14 +1,14 @@
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import * as React from 'react';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import * as React from "react";
 
-import selectedTick from '../../../theme/assets/selectField/selectedTick.svg';
-import Block from '../../Block';
-import Hairline from '../../Hairline';
-import Img from '../../Image';
-import Typography from '../../Typography';
-import { Item } from './index';
+import selectedTick from "../../../theme/assets/selectField/selectedTick.svg";
+import Block from "../../Block";
+import Hairline from "../../Hairline";
+import Img from "../../Image";
+import Typography from "../../Typography";
+import { Item } from "./index";
 
 interface ListItemProps {
   readonly action: (value: Item) => () => void;

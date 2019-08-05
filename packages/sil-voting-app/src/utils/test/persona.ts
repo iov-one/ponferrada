@@ -1,15 +1,15 @@
-import { Page } from 'puppeteer';
+import { Page } from "puppeteer";
 
-import { sleep } from '../timer';
-import { whenOnNavigatedToE2eRoute } from './navigation';
+import { sleep } from "../timer";
+import { whenOnNavigatedToE2eRoute } from "./navigation";
 
-const ACCOUNT_NAME_FIELD = 'accountNameField';
-const PASSWORD_FIELD = 'passwordInputField';
-const PASSWORD_CONFIRM_FIELD = 'passwordConfirmInputField';
-const TERMS_ACCEPT_FIELD = 'termsAcceptCheckboxField';
+const ACCOUNT_NAME_FIELD = "accountNameField";
+const PASSWORD_FIELD = "passwordInputField";
+const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
+const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
 
 async function clickCreatePersona(page: Page): Promise<void> {
-  await page.click('button:nth-of-type(2)');
+  await page.click("button:nth-of-type(2)");
 }
 
 export const submitExtensionSignupForm = async (
@@ -26,10 +26,10 @@ export const submitExtensionSignupForm = async (
   await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);
   await page.click('button[type="submit"]');
   await sleep(1000);
-  const buttons = await page.$$('button');
+  const buttons = await page.$$("button");
   await buttons[1].click();
   await page.click('button[type="submit"]');
-  await whenOnNavigatedToE2eRoute(page, '/account');
+  await whenOnNavigatedToE2eRoute(page, "/account");
 };
 
 export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
@@ -40,15 +40,15 @@ export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
   await sleep(1000);
 
   // click on Requests
-  await page.click('#account-drawer > nav > div:nth-of-type(2)');
+  await page.click("#account-drawer > nav > div:nth-of-type(2)");
   await sleep(500);
 
   // click on first request
-  await page.click('ul > li > div');
+  await page.click("ul > li > div");
   await sleep(500);
 
   // accept it
-  await page.click('button');
+  await page.click("button");
 }
 
 export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
@@ -59,17 +59,17 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   await sleep(1000);
 
   // click on Requests
-  await page.click('#account-drawer > nav > div:nth-of-type(2)');
+  await page.click("#account-drawer > nav > div:nth-of-type(2)");
   await sleep(500);
 
   // click on first request
-  await page.click('ul > li > div');
+  await page.click("ul > li > div");
   await sleep(500);
 
   // reject it
-  await page.click('button:nth-of-type(2)');
+  await page.click("button:nth-of-type(2)");
   await sleep(500);
 
   // confirm rejection
-  await page.click('button');
+  await page.click("button");
 }

@@ -1,17 +1,17 @@
 /*global chrome*/
-import { Identity, isIdentity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+import { Identity, isIdentity } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
 
-import { getConfig } from '../../config';
+import { getConfig } from "../../config";
 
 export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
-  jsonrpc: '2.0',
+  jsonrpc: "2.0",
   id: makeJsonRpcId(),
-  method: 'getIdentities',
+  method: "getIdentities",
   params: {
-    reason: TransactionEncoder.toJson('I would like to know who you are on Ethereum'),
-    chainIds: TransactionEncoder.toJson(['ethereum-eip155-5777']),
+    reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
+    chainIds: TransactionEncoder.toJson(["ethereum-eip155-5777"]),
   },
 });
 
@@ -26,7 +26,7 @@ const isArrayOfIdentity = (data: any): data is ReadonlyArray<Identity> => {
 type GetIdentitiesResponse = ReadonlyArray<Identity> | undefined;
 
 function extensionContext(): boolean {
-  return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
+  return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
 }
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {

@@ -1,8 +1,8 @@
-import { ChainId, Token } from '@iov/bcp';
-import { Action } from 'redux';
-import { ActionType } from 'typesafe-actions';
+import { ChainId, Token } from "@iov/bcp";
+import { Action } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import * as actions from './actions';
+import * as actions from "./actions";
 
 export interface BwToken {
   readonly chainId: ChainId;
@@ -10,7 +10,7 @@ export interface BwToken {
 }
 
 export interface AddTickerActionType extends Action {
-  type: '@@tokens/ADD';
+  type: "@@tokens/ADD";
   payload: { [key: string]: BwToken };
 }
 
@@ -23,7 +23,7 @@ const initState: TokenState = {};
 
 export function tokensReducer(state: TokenState = initState, action: TokenActions): TokenState {
   switch (action.type) {
-    case '@@tokens/ADD':
+    case "@@tokens/ADD":
       return { ...state, ...action.payload };
     default:
       return state;

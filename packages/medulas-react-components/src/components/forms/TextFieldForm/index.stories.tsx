@@ -1,13 +1,13 @@
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../../utils/storybook';
-import Block from '../../Block';
-import Grid from '../../Grid';
-import GridItem from '../../GridItem';
-import Form, { useForm } from '../Form';
-import TextFieldForm from './index';
+import { Storybook } from "../../../utils/storybook";
+import Block from "../../Block";
+import Grid from "../../Grid";
+import GridItem from "../../GridItem";
+import Form, { useForm } from "../Form";
+import TextFieldForm from "./index";
 
 interface Props {
   readonly name: string;
@@ -37,7 +37,7 @@ const TextField = ({
   rowsMax,
 }: Props): JSX.Element => {
   const { form, handleSubmit } = useForm({
-    onSubmit: action('Form submit'),
+    onSubmit: action("Form submit"),
   });
 
   return (
@@ -61,12 +61,12 @@ const TextField = ({
 };
 
 const gridItemWidth = {
-  xs: '100%',
-  sm: '50%',
+  xs: "100%",
+  sm: "50%",
 };
 
-storiesOf('Components/forms', module).add(
-  'TextFieldForm',
+storiesOf("Components/forms", module).add(
+  "TextFieldForm",
   (): JSX.Element => (
     <Storybook>
       <Block marginTop={2} />

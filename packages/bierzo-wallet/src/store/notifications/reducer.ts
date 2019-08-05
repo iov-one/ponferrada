@@ -1,7 +1,7 @@
-import { SendTransaction } from '@iov/bcp';
+import { SendTransaction } from "@iov/bcp";
 
-import { ProcessedTx } from '../../logic/transactions/types/BwParser';
-import { NotificationActions } from './actions';
+import { ProcessedTx } from "../../logic/transactions/types/BwParser";
+import { NotificationActions } from "./actions";
 
 export interface ProcessedSendTransaction extends ProcessedTx<SendTransaction> {
   readonly received: boolean;
@@ -20,7 +20,7 @@ export function notificationReducer(
   action: NotificationActions,
 ): NotificationState {
   switch (action.type) {
-    case '@@notifications/ADD_TRANSACTION':
+    case "@@notifications/ADD_TRANSACTION":
       return {
         ...state,
         transactions: [action.payload, ...state.transactions].sort(

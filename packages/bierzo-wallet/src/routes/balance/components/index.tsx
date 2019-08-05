@@ -1,16 +1,16 @@
-import { Amount } from '@iov/bcp';
-import { makeStyles, Theme } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Img from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { Amount } from "@iov/bcp";
+import { makeStyles, Theme } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
+import Block from "medulas-react-components/lib/components/Block";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import Img from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-import { amountToString, trimAmount } from '../../../utils/balances';
-import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from '../../paths';
-import receive from '../assets/transactionReceive.svg';
-import send from '../assets/transactionSend.svg';
+import { amountToString, trimAmount } from "../../../utils/balances";
+import { PAYMENT_ROUTE, RECEIVE_FROM_IOV_USER } from "../../paths";
+import receive from "../assets/transactionReceive.svg";
+import send from "../assets/transactionSend.svg";
 
 interface Props {
   readonly iovAddress?: string;
@@ -28,7 +28,7 @@ interface CardProps {
 
 const useCardStyles = makeStyles({
   root: {
-    cursor: 'pointer',
+    cursor: "pointer",
   },
 });
 
@@ -73,11 +73,11 @@ const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }
       <Block bgcolor={theme.palette.background.paper} height="unset" width={450}>
         <Block padding={4} display="flex" flexDirection="column">
           <Typography variant="h5" align="center" weight="light">
-            {iovAddress ? iovAddress : 'No human readable address registered.'}
+            {iovAddress ? iovAddress : "No human readable address registered."}
           </Typography>
           <Hairline space={4} />
           <Typography variant="subtitle2" align="center">
-            {hasTokens ? 'Your currencies' : 'No funds available'}
+            {hasTokens ? "Your currencies" : "No funds available"}
           </Typography>
           <Block margin={2} />
           {tickersList.map(ticker => (

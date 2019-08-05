@@ -1,9 +1,9 @@
-import { JsonRpcResponse } from '@iov/jsonrpc';
+import { JsonRpcResponse } from "@iov/jsonrpc";
 
-import { Persona, PersonaAcccount, ProcessedTx } from '../persona';
-import SigningServer from '../signingServer';
-import { Request } from '../signingServer/requestQueueManager';
-import { Db } from './db';
+import { Persona, PersonaAcccount, ProcessedTx } from "../persona";
+import SigningServer from "../signingServer";
+import { Request } from "../signingServer/requestQueueManager";
+import { Db } from "./db";
 
 export interface IovWindowExtension extends Window {
   getQueuedRequests: () => ReadonlyArray<Request>;
@@ -22,8 +22,8 @@ export interface PersonaData {
   readonly txs: ReadonlyArray<ProcessedTx>;
 }
 
-const ALREADY_FOUND_ERR = 'The persona instance is already set. This indicates a bug in the lifecycle.';
-const NOT_FOUND_ERR = 'The persona instance is not set. This indicates a bug in the lifecycle.';
+const ALREADY_FOUND_ERR = "The persona instance is already set. This indicates a bug in the lifecycle.";
+const NOT_FOUND_ERR = "The persona instance is not set. This indicates a bug in the lifecycle.";
 
 export type GetPersonaResponse = PersonaData | null;
 

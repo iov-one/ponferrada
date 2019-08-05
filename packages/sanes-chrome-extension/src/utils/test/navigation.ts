@@ -1,8 +1,8 @@
-import TestUtils from 'react-dom/test-utils';
-import { Store } from 'redux';
+import TestUtils from "react-dom/test-utils";
+import { Store } from "redux";
 
-import { GetPersonaResponse } from '../../extension/background/model/backgroundscript';
-import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
+import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
+import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
 import {
   ACCOUNT_STATUS_ROUTE,
   LOGIN_ROUTE,
@@ -13,10 +13,10 @@ import {
   SIGNUP_ROUTE,
   TX_REQUEST,
   WELCOME_ROUTE,
-} from '../../routes/paths';
-import { REQUEST_FIELD } from '../../routes/requests/components/RequestList';
-import { history } from '../../store/reducers';
-import { createDom } from '../../utils/test/dom';
+} from "../../routes/paths";
+import { REQUEST_FIELD } from "../../routes/requests/components/RequestList";
+import { history } from "../../store/reducers";
+import { createDom } from "../../utils/test/dom";
 
 const MAX_TIMES_EXECUTED = 35;
 const INTERVAL = 500;

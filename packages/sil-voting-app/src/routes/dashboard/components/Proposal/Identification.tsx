@@ -1,7 +1,7 @@
-import { Address } from '@iov/bcp';
-import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { Address } from "@iov/bcp";
+import Block from "medulas-react-components/lib/components/Block";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
 interface Props {
   readonly id: number;

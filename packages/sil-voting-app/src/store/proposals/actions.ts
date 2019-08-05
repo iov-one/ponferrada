@@ -1,7 +1,7 @@
-import { Proposal, ProposalStatus, VoteOption } from '@iov/bns';
+import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
 
-import { getDummyElectionRules, getDummyProposals, getDummyVote } from './dummyData';
-import { AddProposalsActionType, ProposalsState } from './reducer';
+import { getDummyElectionRules, getDummyProposals, getDummyVote } from "./dummyData";
+import { AddProposalsActionType, ProposalsState } from "./reducer";
 
 export async function getProposals(): Promise<ProposalsState> {
   const electionRules = getDummyElectionRules();
@@ -62,6 +62,6 @@ export async function getProposals(): Promise<ProposalsState> {
 }
 
 export const addProposalsAction = (proposals: ProposalsState): AddProposalsActionType => ({
-  type: '@@proposals/ADD',
+  type: "@@proposals/ADD",
   payload: proposals,
 });

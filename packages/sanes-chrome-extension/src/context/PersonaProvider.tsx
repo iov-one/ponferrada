@@ -1,13 +1,13 @@
 /*global chrome*/
-import * as React from 'react';
+import * as React from "react";
 
-import { GetPersonaResponse } from '../extension/background/model/backgroundscript';
-import { PersonaAcccount, ProcessedTx } from '../extension/background/model/persona';
+import { GetPersonaResponse } from "../extension/background/model/backgroundscript";
+import { PersonaAcccount, ProcessedTx } from "../extension/background/model/persona";
 import {
   isMessageToForeground,
   MessageToForegroundAction,
-} from '../extension/background/updaters/appUpdater';
-import { extensionContext, getPersonaData } from '../utils/chrome';
+} from "../extension/background/updaters/appUpdater";
+import { extensionContext, getPersonaData } from "../utils/chrome";
 
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
@@ -25,7 +25,7 @@ export interface PersonaContextInterface {
 
 export const PersonaContext = React.createContext<PersonaContextInterface>({
   accounts: [],
-  mnemonic: '',
+  mnemonic: "",
   txs: [],
   update: (): void => {},
 });
@@ -39,7 +39,7 @@ type Accounts = ReadonlyArray<PersonaAcccount>;
 
 export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
-  const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : '');
+  const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
   const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
   React.useEffect(() => {
     if (!extensionContext()) {
@@ -60,7 +60,7 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
               if (personaData) {
                 setTxs(personaData.txs);
               } else {
-                console.warn('Could not get persona data after receiving TransactionsChanged message');
+                console.warn("Could not get persona data after receiving TransactionsChanged message");
               }
             })
             .catch(error => {

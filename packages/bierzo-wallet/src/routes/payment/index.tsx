@@ -1,24 +1,24 @@
-import { Address, Identity, TokenTicker, TransactionId, TxCodec } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
-import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import React from 'react';
-import * as ReactRedux from 'react-redux';
+import { Address, Identity, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
+import { FormValues } from "medulas-react-components/lib/components/forms/Form";
+import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import React from "react";
+import * as ReactRedux from "react-redux";
 
-import { history } from '..';
-import { sendSignAndPostRequest } from '../../communication/signAndPost';
-import PageMenu from '../../components/PageMenu';
-import { isIov, lookupRecipientAddressByName } from '../../logic/account';
-import { getCodecForChainId } from '../../logic/codec';
-import { RootState } from '../../store/reducers';
-import { padAmount, stringToAmount } from '../../utils/balances';
-import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from '../paths';
-import Layout from './components';
-import ConfirmPayment from './components/ConfirmPayment';
-import { CURRENCY_FIELD, QUANTITY_FIELD } from './components/CurrencyToSend';
-import { ADDRESS_FIELD } from './components/ReceiverAddress';
-import { TEXTNOTE_FIELD } from './components/TextNote';
+import { history } from "..";
+import { sendSignAndPostRequest } from "../../communication/signAndPost";
+import PageMenu from "../../components/PageMenu";
+import { isIov, lookupRecipientAddressByName } from "../../logic/account";
+import { getCodecForChainId } from "../../logic/codec";
+import { RootState } from "../../store/reducers";
+import { padAmount, stringToAmount } from "../../utils/balances";
+import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
+import Layout from "./components";
+import ConfirmPayment from "./components/ConfirmPayment";
+import { CURRENCY_FIELD, QUANTITY_FIELD } from "./components/CurrencyToSend";
+import { ADDRESS_FIELD } from "./components/ReceiverAddress";
+import { TEXTNOTE_FIELD } from "./components/TextNote";
 
 function onCancelPayment(): void {
   history.push(BALANCE_ROUTE);
@@ -60,12 +60,12 @@ const Payment = (): JSX.Element => {
     let recipient: Address | undefined;
     if (isIov(formValues[ADDRESS_FIELD])) {
       recipient = await lookupRecipientAddressByName(
-        formValues[ADDRESS_FIELD].replace(/\*iov$/, ''),
+        formValues[ADDRESS_FIELD].replace(/\*iov$/, ""),
         chainId,
       );
 
       if (!recipient) {
-        toast.show('IOV username was not found', ToastVariant.ERROR);
+        toast.show("IOV username was not found", ToastVariant.ERROR);
         return;
       }
     } else {
@@ -74,7 +74,7 @@ const Payment = (): JSX.Element => {
 
     const plainPubkey = pubKeys[chainId];
     if (!plainPubkey) {
-      toast.show('None of your identities can send on this chain', ToastVariant.ERROR);
+      toast.show("None of your identities can send on this chain", ToastVariant.ERROR);
       return;
     }
 
@@ -89,13 +89,13 @@ const Payment = (): JSX.Element => {
         formValues[TEXTNOTE_FIELD],
       );
       if (transactionId === null) {
-        toast.show('Request rejected', ToastVariant.ERROR);
+        toast.show("Request rejected", ToastVariant.ERROR);
       } else {
         setTransactionId(transactionId);
       }
     } catch (error) {
       console.error(error);
-      toast.show('An error ocurred', ToastVariant.ERROR);
+      toast.show("An error ocurred", ToastVariant.ERROR);
       return;
     }
   };

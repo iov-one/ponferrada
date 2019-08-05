@@ -1,15 +1,15 @@
-import InputBase, { InputBaseProps } from '@material-ui/core/InputBase';
-import Popper from '@material-ui/core/Popper';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { FieldSubscription, FormApi } from 'final-form';
-import * as React from 'react';
-import { useField } from 'react-final-form-hooks';
+import InputBase, { InputBaseProps } from "@material-ui/core/InputBase";
+import Popper from "@material-ui/core/Popper";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import { FieldSubscription, FormApi } from "final-form";
+import * as React from "react";
+import { useField } from "react-final-form-hooks";
 
-import { useOpen } from '../../../hooks/open';
-import selectChevron from '../../../theme/assets/selectField/selectChevron.svg';
-import Block from '../../Block';
-import Image from '../../Image';
-import SelectItems from './SelectItems';
+import { useOpen } from "../../../hooks/open";
+import selectChevron from "../../../theme/assets/selectField/selectChevron.svg";
+import Block from "../../Block";
+import Image from "../../Image";
+import SelectItems from "./SelectItems";
 
 export interface Item {
   readonly name: string;
@@ -22,24 +22,24 @@ interface RootStyleProps {
 
 const useStyles = makeStyles<Theme, RootStyleProps>((theme: Theme) => ({
   dropdown: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    backgroundColor: '#f7f7f7',
+    display: "inline-flex",
+    alignItems: "center",
+    backgroundColor: "#f7f7f7",
     border: `1px solid ${theme.palette.grey[300]}`,
-    borderRadius: '5px',
+    borderRadius: "5px",
     padding: `0 ${theme.spacing(1)}px`,
-    cursor: 'pointer',
+    cursor: "pointer",
   },
   root: props => ({
     fontSize: theme.typography.subtitle2.fontSize,
-    height: '32px',
+    height: "32px",
     maxWidth: props.maxWidth,
   }),
   input: {
     paddingLeft: 0,
     paddingRight: 0,
-    textAlign: 'center',
-    cursor: 'pointer',
+    textAlign: "center",
+    cursor: "pointer",
   },
 }));
 
@@ -63,7 +63,7 @@ const SelectFieldForm = ({
   initial,
   items,
   onChangeCallback,
-  maxWidth = '100%',
+  maxWidth = "100%",
 }: Props): JSX.Element => {
   const [isOpen, toggle] = useOpen();
   const classes = useStyles({ maxWidth });
@@ -71,7 +71,7 @@ const SelectFieldForm = ({
   const { input } = useField(fieldName, form);
 
   const { name, onChange, value, ...restInput } = input;
-  const inputProps = { ...restInput, autoComplete: 'off' };
+  const inputProps = { ...restInput, autoComplete: "off" };
 
   // TODO due a bug in rffH I can not use ", [])", so for setting initial value in form
   // I have to hack in this way. Fix it.
@@ -79,7 +79,7 @@ const SelectFieldForm = ({
   // https://reactjs.org/docs/uncontrolled-components.html
   React.useEffect(() => {
     try {
-      const firstRender = value === '';
+      const firstRender = value === "";
       if (firstRender) {
         onChange(initial);
       }

@@ -1,19 +1,19 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Back from "medulas-react-components/lib/components/Button/Back";
 import Form, {
   FormValues,
   useForm,
   ValidationError,
-} from 'medulas-react-components/lib/components/forms/Form';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+} from "medulas-react-components/lib/components/forms/Form";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { SIGNUP_ROUTE } from '../../paths';
+import { SIGNUP_ROUTE } from "../../paths";
 
-export const SECURITY_HINT = 'securityHintField';
+export const SECURITY_HINT = "securityHintField";
 export const SECURITY_HINT_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}3`;
 
 const validate = (values: object): object => {
@@ -21,7 +21,7 @@ const validate = (values: object): object => {
   let errors: ValidationError = {};
 
   if (formValues[SECURITY_HINT] && formValues[SECURITY_HINT].length > 15) {
-    errors[SECURITY_HINT] = '15 characters max - Spaces are allowed';
+    errors[SECURITY_HINT] = "15 characters max - Spaces are allowed";
   }
 
   return errors;

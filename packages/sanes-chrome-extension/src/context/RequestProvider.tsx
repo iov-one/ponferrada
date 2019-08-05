@@ -1,13 +1,13 @@
 /*global chrome*/
-import * as React from 'react';
+import * as React from "react";
 
-import { IovWindowExtension } from '../extension/background/model/backgroundscript';
-import { Request } from '../extension/background/model/signingServer/requestQueueManager';
+import { IovWindowExtension } from "../extension/background/model/backgroundscript";
+import { Request } from "../extension/background/model/signingServer/requestQueueManager";
 import {
   isMessageToForeground,
   MessageToForegroundAction,
-} from '../extension/background/updaters/appUpdater';
-import { extensionContext } from '../utils/chrome';
+} from "../extension/background/updaters/appUpdater";
+import { extensionContext } from "../utils/chrome";
 
 type Requests = ReadonlyArray<Request>;
 
@@ -49,7 +49,7 @@ export const RequestProvider = ({ children, initialRequests }: Props): JSX.Eleme
           break;
         }
         default:
-          throw new Error('Unknown action');
+          throw new Error("Unknown action");
       }
     });
   }, []);

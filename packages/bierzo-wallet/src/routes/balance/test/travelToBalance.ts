@@ -1,14 +1,14 @@
-import { Browser, Page } from 'puppeteer';
-import TestUtils from 'react-dom/test-utils';
-import { Store } from 'redux';
+import { Browser, Page } from "puppeteer";
+import TestUtils from "react-dom/test-utils";
+import { Store } from "redux";
 
-import { history } from '../../../routes';
-import { createDom } from '../../../utils/test/dom';
-import { getBackgroundPage } from '../../../utils/test/e2e';
-import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from '../../../utils/test/navigation';
-import { acceptEnqueuedRequest, submitExtensionSignupForm } from '../../../utils/test/persona';
-import { sleep } from '../../../utils/timer';
-import { BALANCE_ROUTE } from '../../paths';
+import { history } from "../../../routes";
+import { createDom } from "../../../utils/test/dom";
+import { getBackgroundPage } from "../../../utils/test/e2e";
+import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from "../../../utils/test/navigation";
+import { acceptEnqueuedRequest, submitExtensionSignupForm } from "../../../utils/test/persona";
+import { sleep } from "../../../utils/timer";
+import { BALANCE_ROUTE } from "../../paths";
 
 export const travelToBalance = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
@@ -22,10 +22,10 @@ export const travelToBalance = async (store: Store): Promise<React.Component> =>
 
 export async function travelToBalanceE2E(browser: Browser, page: Page, extensionPage: Page): Promise<void> {
   await getBackgroundPage(browser);
-  await submitExtensionSignupForm(extensionPage, 'username', '12345678');
+  await submitExtensionSignupForm(extensionPage, "username", "12345678");
   await page.bringToFront();
   //Click on login button
-  await page.click('button');
+  await page.click("button");
   await sleep(1000);
   await acceptEnqueuedRequest(extensionPage);
   await page.bringToFront();

@@ -1,17 +1,17 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
+import Block from "medulas-react-components/lib/components/Block";
+import * as React from "react";
 
-import { getShadowColor } from '../../../../theme/css';
-import { CSV_PADDING } from '../DownloadCSV';
-import { TxTableProps } from './rowTxBuilder';
-import TxTableFooter from './TxTableFooter';
-import TxTableHeader from './TxTableHeader';
+import { getShadowColor } from "../../../../theme/css";
+import { CSV_PADDING } from "../DownloadCSV";
+import { TxTableProps } from "./rowTxBuilder";
+import TxTableFooter from "./TxTableFooter";
+import TxTableHeader from "./TxTableHeader";
 
 const useStyles = makeStyles((theme: Theme) => ({
   inner: {
-    flexBasis: 'auto',
+    flexBasis: "auto",
   },
   panel: {
     boxShadow: `0 0 20px 0 ${getShadowColor()}`,

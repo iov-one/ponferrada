@@ -1,7 +1,7 @@
-import MuiTextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { FieldSubscription, FieldValidator, FormApi } from 'final-form';
-import * as React from 'react';
-import { useField } from 'react-final-form-hooks';
+import MuiTextField, { TextFieldProps } from "@material-ui/core/TextField";
+import { FieldSubscription, FieldValidator, FormApi } from "final-form";
+import * as React from "react";
+import { useField } from "react-final-form-hooks";
 
 interface InnerProps {
   name: string;

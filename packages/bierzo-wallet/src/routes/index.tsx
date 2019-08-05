@@ -1,20 +1,20 @@
-import { createBrowserHistory } from 'history';
-import React from 'react';
-import { Route, Router, Switch } from 'react-router';
+import { createBrowserHistory } from "history";
+import React from "react";
+import { Route, Router, Switch } from "react-router";
 
-import RequireLogin from '../components/RequireLogin';
-import Balance from './balance';
-import Login from './login';
+import RequireLogin from "../components/RequireLogin";
+import Balance from "./balance";
+import Login from "./login";
 import {
   BALANCE_ROUTE,
   LOGIN_ROUTE,
   PAYMENT_ROUTE,
   RECEIVE_FROM_IOV_USER,
   TRANSACTIONS_ROUTE,
-} from './paths';
-import Payment from './payment';
-import ReceivePayments from './receivePayments';
-import Transactions from './transactions';
+} from "./paths";
+import Payment from "./payment";
+import ReceivePayments from "./receivePayments";
+import Transactions from "./transactions";
 
 export const history = createBrowserHistory();
 

@@ -1,52 +1,52 @@
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../utils/storybook';
-import Grid from '../Grid';
-import GridItem from '../GridItem';
-import Back from './Back';
-import Download from './Download';
-import Button from './index';
+import { Storybook } from "../../utils/storybook";
+import Grid from "../Grid";
+import GridItem from "../GridItem";
+import Back from "./Back";
+import Download from "./Download";
+import Button from "./index";
 
-storiesOf('Components', module).add(
-  'Buttons',
+storiesOf("Components", module).add(
+  "Buttons",
   (): JSX.Element => (
     <Storybook>
       <Grid flexWrap="wrap" flexDirection="column">
         <GridItem marginBottom={4}>
-          <Button onClick={action('clicked')}>Hower</Button>
+          <Button onClick={action("clicked")}>Hower</Button>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Button onClick={action('clicked')} disabled>
+          <Button onClick={action("clicked")} disabled>
             Disabled
           </Button>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Button onClick={action('clicked')} variant="continue">
+          <Button onClick={action("clicked")} variant="continue">
             Continue
           </Button>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Button onClick={action('clicked')} spinner>
+          <Button onClick={action("clicked")} spinner>
             Loading
           </Button>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Button onClick={action('clicked')} color="secondary">
+          <Button onClick={action("clicked")} color="secondary">
             Cancel
           </Button>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Back onClick={action('clicked')}>Back</Back>
+          <Back onClick={action("clicked")}>Back</Back>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Button onClick={action('clicked')} fullWidth>
+          <Button onClick={action("clicked")} fullWidth>
             Full Width
           </Button>
         </GridItem>
         <GridItem marginBottom={4}>
-          <Download onDownload={action('clicked')}>Download</Download>
+          <Download onDownload={action("clicked")}>Download</Download>
         </GridItem>
       </Grid>
     </Storybook>

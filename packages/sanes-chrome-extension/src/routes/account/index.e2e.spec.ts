@@ -1,15 +1,15 @@
-import { Browser, Page } from 'puppeteer';
+import { Browser, Page } from "puppeteer";
 
-import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
-import { randomString } from '../../utils/test/random';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { sleep } from '../../utils/timer';
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
+import { randomString } from "../../utils/test/random";
+import { withChainsDescribe } from "../../utils/test/testExecutor";
+import { sleep } from "../../utils/timer";
 import {
   submitRecoveryPhraseE2E,
   travelToRestoreAccountStep,
-} from '../restore-account/test/operateRestoreAccount';
+} from "../restore-account/test/operateRestoreAccount";
 
-withChainsDescribe('E2E > Account route', () => {
+withChainsDescribe("E2E > Account route", () => {
   let browser: Browser;
   let page: Page;
 
@@ -19,7 +19,7 @@ withChainsDescribe('E2E > Account route', () => {
 
     await travelToRestoreAccountStep(page);
     const password = randomString(10);
-    const mnemonic = 'degree tackle suggest window test behind mesh extra cover prepare oak script';
+    const mnemonic = "degree tackle suggest window test behind mesh extra cover prepare oak script";
     await submitRecoveryPhraseE2E(page, mnemonic, password);
   }, 10000);
 
@@ -27,7 +27,7 @@ withChainsDescribe('E2E > Account route', () => {
     await closeBrowser(browser);
   });
 
-  it('can create a new account', async () => {
+  it("can create a new account", async () => {
     await sleep(500);
 
     // click 2nd item (nothing happens)

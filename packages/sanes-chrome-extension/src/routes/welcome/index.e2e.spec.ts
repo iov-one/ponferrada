@@ -1,9 +1,9 @@
-import { Browser, Page } from 'puppeteer';
+import { Browser, Page } from "puppeteer";
 
-import { closeBrowser, createPage, launchBrowser } from '../../utils/test/e2e';
-import { WELCOME_ROUTE } from '../paths';
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
+import { WELCOME_ROUTE } from "../paths";
 
-describe('DOM > Welcome route', (): void => {
+describe("DOM > Welcome route", (): void => {
   let browser: Browser;
   let page: Page;
 
@@ -18,7 +18,7 @@ describe('DOM > Welcome route', (): void => {
     },
   );
 
-  it('loads correctly', async (): Promise<void> => {
+  it("loads correctly", async (): Promise<void> => {
     const inner = await page.evaluate((id: string): string | undefined => {
       const element = document.getElementById(id);
       if (!element) {

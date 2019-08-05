@@ -1,4 +1,4 @@
-import { jsonRpcCode, JsonRpcErrorResponse } from '@iov/jsonrpc';
+import { jsonRpcCode, JsonRpcErrorResponse } from "@iov/jsonrpc";
 
 export function generateErrorResponse(
   id: number | null,
@@ -6,7 +6,7 @@ export function generateErrorResponse(
   code = jsonRpcCode.serverError.default,
 ): JsonRpcErrorResponse {
   return {
-    jsonrpc: '2.0',
+    jsonrpc: "2.0",
     id,
     error: {
       code,

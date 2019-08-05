@@ -1,15 +1,15 @@
-import { FormValues } from 'medulas-react-components/lib/components/forms/Form';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import * as React from 'react';
+import { FormValues } from "medulas-react-components/lib/components/forms/Form";
+import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import * as React from "react";
 
-import { PersonaContext } from '../../context/PersonaProvider';
-import { PersonaData } from '../../extension/background/model/backgroundscript';
-import { history } from '../../store/reducers';
-import { createPersona } from '../../utils/chrome';
-import { ACCOUNT_STATUS_ROUTE } from '../paths';
-import SetMnemonicForm, { MNEMONIC_FIELD } from './components/SetMnemonicForm';
-import SetPasswordForm, { PASSWORD_FIELD } from './components/SetPasswordForm';
+import { PersonaContext } from "../../context/PersonaProvider";
+import { PersonaData } from "../../extension/background/model/backgroundscript";
+import { history } from "../../store/reducers";
+import { createPersona } from "../../utils/chrome";
+import { ACCOUNT_STATUS_ROUTE } from "../paths";
+import SetMnemonicForm, { MNEMONIC_FIELD } from "./components/SetMnemonicForm";
+import SetPasswordForm, { PASSWORD_FIELD } from "./components/SetPasswordForm";
 
 const onBack = (): void => {
   history.goBack();
@@ -20,10 +20,10 @@ let mnemonic: string;
 const RestoreAccount = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
-  const [step, setStep] = React.useState<'first' | 'second'>('first');
+  const [step, setStep] = React.useState<"first" | "second">("first");
 
-  const setStepMnemonic = (): void => setStep('first');
-  const setStepPassword = (): void => setStep('second');
+  const setStepMnemonic = (): void => setStep("first");
+  const setStepPassword = (): void => setStep("second");
 
   const saveMnemonic = async (formValues: FormValues): Promise<void> => {
     mnemonic = formValues[MNEMONIC_FIELD];
@@ -37,7 +37,7 @@ const RestoreAccount = (): JSX.Element => {
     try {
       response = await createPersona(password, mnemonic);
     } catch (error) {
-      toast.show('An error occurred while restoring the account.', ToastVariant.ERROR);
+      toast.show("An error occurred while restoring the account.", ToastVariant.ERROR);
       console.error(error);
       return;
     }
@@ -52,8 +52,8 @@ const RestoreAccount = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      {step === 'first' && <SetMnemonicForm onBack={onBack} onSetMnemonic={saveMnemonic} />}
-      {step === 'second' && <SetPasswordForm onBack={setStepMnemonic} onSetPassword={restoreAccount} />}
+      {step === "first" && <SetMnemonicForm onBack={onBack} onSetMnemonic={saveMnemonic} />}
+      {step === "second" && <SetPasswordForm onBack={setStepMnemonic} onSetPassword={restoreAccount} />}
     </React.Fragment>
   );
 };

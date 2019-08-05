@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core';
-import Block from 'medulas-react-components/lib/components/Block';
-import Img from 'medulas-react-components/lib/components/Image';
-import { ListItem, ListItemIcon, ListItemText } from 'medulas-react-components/lib/components/List';
-import * as React from 'react';
+import { makeStyles } from "@material-ui/core";
+import Block from "medulas-react-components/lib/components/Block";
+import Img from "medulas-react-components/lib/components/Image";
+import { ListItem, ListItemIcon, ListItemText } from "medulas-react-components/lib/components/List";
+import * as React from "react";
 
 interface Props {
   readonly src: string;
@@ -16,13 +16,13 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
   },
   center: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   text: {
     marginBottom: theme.spacing(3),
-    '& > span': {
+    "& > span": {
       fontSize: theme.typography.h6.fontSize,
     },
   },

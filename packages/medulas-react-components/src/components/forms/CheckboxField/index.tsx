@@ -1,11 +1,11 @@
-import { FormControl, FormHelperText, makeStyles, Theme } from '@material-ui/core';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import { FieldSubscription, FormApi } from 'final-form';
-import * as React from 'react';
-import { useField } from 'react-final-form-hooks';
+import { FormControl, FormHelperText, makeStyles, Theme } from "@material-ui/core";
+import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import { FieldSubscription, FormApi } from "final-form";
+import * as React from "react";
+import { useField } from "react-final-form-hooks";
 
 const useStyles = makeStyles<Theme>({
   root: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme>({
   },
 });
 
-interface Props extends Omit<CheckboxProps, 'form'> {
+interface Props extends Omit<CheckboxProps, "form"> {
   readonly fieldName: string;
   readonly label?: React.ReactNode | string;
   readonly initial: boolean;
@@ -32,7 +32,7 @@ const CheckboxField = ({ fieldName, form, initial, onChangeCallback, label }: Pr
 
   React.useEffect(() => {
     try {
-      const firstRender = value === '';
+      const firstRender = value === "";
       if (firstRender) {
         onChange(initial);
       }

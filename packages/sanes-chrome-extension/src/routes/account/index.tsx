@@ -1,33 +1,33 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Drawer from 'medulas-react-components/lib/components/Drawer';
-import Form from 'medulas-react-components/lib/components/forms/Form';
-import SelectField, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import Link from 'medulas-react-components/lib/components/Link';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import * as React from 'react';
-import { useForm } from 'react-final-form-hooks';
+import Block from "medulas-react-components/lib/components/Block";
+import Drawer from "medulas-react-components/lib/components/Drawer";
+import Form from "medulas-react-components/lib/components/forms/Form";
+import SelectField, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import Link from "medulas-react-components/lib/components/Link";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import * as React from "react";
+import { useForm } from "react-final-form-hooks";
 
-import { PersonaContext } from '../../context/PersonaProvider';
-import { history } from '../../store/reducers';
-import { EXTENSION_HEIGHT } from '../../theme/constants';
-import { clearDatabase, clearPersona, createAccount } from '../../utils/chrome';
+import { PersonaContext } from "../../context/PersonaProvider";
+import { history } from "../../store/reducers";
+import { EXTENSION_HEIGHT } from "../../theme/constants";
+import { clearDatabase, clearPersona, createAccount } from "../../utils/chrome";
 import {
   ACCOUNT_STATUS_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   TERMS_URL,
   WELCOME_ROUTE,
-} from '../paths';
-import logoutIcon from './assets/logout.svg';
-import recoveryPhraseIcon from './assets/recoveryPhrase.svg';
-import requestsIcon from './assets/requests.svg';
-import ListTxs from './components/ListTxs';
+} from "../paths";
+import logoutIcon from "./assets/logout.svg";
+import recoveryPhraseIcon from "./assets/recoveryPhrase.svg";
+import requestsIcon from "./assets/requests.svg";
+import ListTxs from "./components/ListTxs";
 
-const CREATE_NEW_ONE = 'Create a new one';
+const CREATE_NEW_ONE = "Create a new one";
 
 const DRAWER_HEIGHT = 56;
 const CONTENT_HEIGHT = EXTENSION_HEIGHT - DRAWER_HEIGHT;
@@ -63,24 +63,24 @@ const AccountView = (): JSX.Element => {
   const items = [
     {
       icon: recoveryPhraseIcon,
-      text: 'Recovery words',
+      text: "Recovery words",
       action: () => history.push(RECOVERY_PHRASE_ROUTE),
     },
     {
       icon: requestsIcon,
-      text: 'Requests',
+      text: "Requests",
       action: () => history.push(REQUEST_ROUTE),
     },
     {
       icon: logoutIcon,
-      text: 'Logout',
+      text: "Logout",
       action: async () => {
         // TODO: Ask for confirmation
         try {
           await clearPersona();
           await clearDatabase();
         } catch (error) {
-          toast.show('An error occurred during logout', ToastVariant.ERROR);
+          toast.show("An error occurred during logout", ToastVariant.ERROR);
           console.error(error);
           return;
         }

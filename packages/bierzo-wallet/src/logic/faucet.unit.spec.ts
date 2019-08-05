@@ -1,13 +1,13 @@
-import { getBalances } from '../store/balances';
-import { createPubkeys } from '../utils/test/pubkeys';
-import { withChainsDescribe } from '../utils/test/testExecutor';
-import { disconnect } from './connection';
-import { drinkFaucetIfNeeded } from './faucet';
+import { getBalances } from "../store/balances";
+import { createPubkeys } from "../utils/test/pubkeys";
+import { withChainsDescribe } from "../utils/test/testExecutor";
+import { disconnect } from "./connection";
+import { drinkFaucetIfNeeded } from "./faucet";
 
-withChainsDescribe('Logic :: faucet', () => {
+withChainsDescribe("Logic :: faucet", () => {
   afterAll(() => disconnect());
 
-  it('works', async () => {
+  it("works", async () => {
     // generate keys
     const keys = await createPubkeys();
     // check their balance are 0
@@ -20,23 +20,23 @@ withChainsDescribe('Logic :: faucet', () => {
     expect(balances).toEqual({
       BASH: {
         fractionalDigits: 9,
-        quantity: '10000000000',
-        tokenTicker: 'BASH',
+        quantity: "10000000000",
+        tokenTicker: "BASH",
       },
       CASH: {
         fractionalDigits: 9,
-        quantity: '10000000000',
-        tokenTicker: 'CASH',
+        quantity: "10000000000",
+        tokenTicker: "CASH",
       },
       ETH: {
         fractionalDigits: 18,
-        quantity: '10000000000000000000',
-        tokenTicker: 'ETH',
+        quantity: "10000000000000000000",
+        tokenTicker: "ETH",
       },
     });
   }, 45000);
 
-  it('does not drink from faucet if tokens are already available', async () => {
+  it("does not drink from faucet if tokens are already available", async () => {
     // generate keys
     const keys = await createPubkeys();
     // drink faucet twice
@@ -47,18 +47,18 @@ withChainsDescribe('Logic :: faucet', () => {
     expect(balances).toEqual({
       BASH: {
         fractionalDigits: 9,
-        quantity: '10000000000',
-        tokenTicker: 'BASH',
+        quantity: "10000000000",
+        tokenTicker: "BASH",
       },
       CASH: {
         fractionalDigits: 9,
-        quantity: '10000000000',
-        tokenTicker: 'CASH',
+        quantity: "10000000000",
+        tokenTicker: "CASH",
       },
       ETH: {
         fractionalDigits: 18,
-        quantity: '10000000000000000000',
-        tokenTicker: 'ETH',
+        quantity: "10000000000000000000",
+        tokenTicker: "ETH",
       },
     });
   }, 45000);

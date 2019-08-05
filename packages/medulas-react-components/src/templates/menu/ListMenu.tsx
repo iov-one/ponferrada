@@ -1,11 +1,11 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import List from '@material-ui/core/List';
-import Popper from '@material-ui/core/Popper';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import List from "@material-ui/core/List";
+import Popper from "@material-ui/core/Popper";
+import * as React from "react";
 
-import { useOpen } from '../../hooks/open';
+import { useOpen } from "../../hooks/open";
 
 interface Props {
   readonly starter: (open: boolean, visited?: boolean) => JSX.Element;
@@ -18,16 +18,16 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
-    '&:hover': {
-      cursor: 'pointer',
+    display: "flex",
+    alignItems: "center",
+    "&:hover": {
+      cursor: "pointer",
     },
-    '& > div': {
-      display: 'flex',
+    "& > div": {
+      display: "flex",
     },
   },
-  list: ({ listWidth, color }: Pick<Props, 'listWidth' | 'color'>) => ({
+  list: ({ listWidth, color }: Pick<Props, "listWidth" | "color">) => ({
     width: `${listWidth}px`,
     backgroundColor: color,
   }),
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const ListMenu = ({ listWidth, starter, children, color = 'white', listId, onClick }: Props): JSX.Element => {
+const ListMenu = ({ listWidth, starter, children, color = "white", listId, onClick }: Props): JSX.Element => {
   const menuRef = React.useRef(null);
   const [isOpen, toggle, clickAway] = useOpen();
 

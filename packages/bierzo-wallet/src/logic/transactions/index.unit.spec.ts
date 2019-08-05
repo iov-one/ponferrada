@@ -1,20 +1,20 @@
-import { BlockchainConnection, Identity } from '@iov/bcp';
+import { BlockchainConnection, Identity } from "@iov/bcp";
 
-import { aNewStore } from '../../store';
-import { ProcessedSendTransaction } from '../../store/notifications';
-import * as transactionActions from '../../store/notifications/actions';
-import { createPubkeys } from '../../utils/test/pubkeys';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { sleep } from '../../utils/timer';
-import * as tokens from '../../utils/tokens';
-import { disconnect } from '../connection';
-import { drinkFaucetIfNeeded } from '../faucet';
-import { subscribeTransaction, unsubscribeTransactions } from '../transactions';
+import { aNewStore } from "../../store";
+import { ProcessedSendTransaction } from "../../store/notifications";
+import * as transactionActions from "../../store/notifications/actions";
+import { createPubkeys } from "../../utils/test/pubkeys";
+import { withChainsDescribe } from "../../utils/test/testExecutor";
+import { sleep } from "../../utils/timer";
+import * as tokens from "../../utils/tokens";
+import { disconnect } from "../connection";
+import { drinkFaucetIfNeeded } from "../faucet";
+import { subscribeTransaction, unsubscribeTransactions } from "../transactions";
 
-withChainsDescribe('Logic :: transaction subscriptions', () => {
+withChainsDescribe("Logic :: transaction subscriptions", () => {
   beforeAll(() => {
     jest
-      .spyOn(tokens, 'filterExistingTokens')
+      .spyOn(tokens, "filterExistingTokens")
       .mockImplementation(
         (_connection: BlockchainConnection, _identity: Identity, tokensByChainId: ReadonlyArray<string>) =>
           Promise.resolve(tokensByChainId),
@@ -22,12 +22,12 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
   });
 
   afterAll(() => {
-    jest.spyOn(tokens, 'filterExistingTokens').mockReset();
+    jest.spyOn(tokens, "filterExistingTokens").mockReset();
     disconnect();
   });
 
-  it('fires transaction callback when account does something', async () => {
-    const txsSpy = jest.spyOn(transactionActions, 'addTransaction') as jest.SpyInstance<
+  it("fires transaction callback when account does something", async () => {
+    const txsSpy = jest.spyOn(transactionActions, "addTransaction") as jest.SpyInstance<
       transactionActions.AddTransactionActionType,
       [ProcessedSendTransaction]
     >;
@@ -47,7 +47,7 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     expect(txsSpy).toHaveBeenCalledTimes(3);
     const transactions = txsSpy.mock.calls.map(call => call[0]);
     expect(new Set(transactions.map(tx => tx.original.amount.tokenTicker))).toEqual(
-      new Set(['BASH', 'CASH', 'ETH']),
+      new Set(["BASH", "CASH", "ETH"]),
     );
 
     unsubscribeTransactions();

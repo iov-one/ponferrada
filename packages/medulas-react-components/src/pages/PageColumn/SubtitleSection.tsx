@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Block from '../../components/Block';
-import Typography from '../../components/Typography';
+import Block from "../../components/Block";
+import Typography from "../../components/Typography";
 
 interface Props {
   readonly text: string;

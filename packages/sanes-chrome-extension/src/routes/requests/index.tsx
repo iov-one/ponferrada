@@ -1,15 +1,15 @@
-import { Location } from 'history';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { ToastContextInterface } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import * as React from 'react';
+import { Location } from "history";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import { ToastContextInterface } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import * as React from "react";
 
-import { RequestContext } from '../../context/RequestProvider';
-import { Request } from '../../extension/background/model/signingServer/requestQueueManager';
-import { history } from '../../store/reducers';
-import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from '../paths';
-import RequestList, { REQUEST_FIELD } from './components/RequestList';
+import { RequestContext } from "../../context/RequestProvider";
+import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { history } from "../../store/reducers";
+import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from "../paths";
+import RequestList, { REQUEST_FIELD } from "./components/RequestList";
 
 function getIdFrom(location: Location): number | undefined {
   if (!location || !location.state) {
@@ -23,7 +23,7 @@ export function checkRequest(request: Request, location: Location, toast: ToastC
   const expectedId = getIdFrom(location);
 
   if (typeof expectedId === undefined || expectedId !== request.id) {
-    toast.show('Error: Request not identified', ToastVariant.ERROR);
+    toast.show("Error: Request not identified", ToastVariant.ERROR);
     history.push(REQUEST_ROUTE);
   }
 }

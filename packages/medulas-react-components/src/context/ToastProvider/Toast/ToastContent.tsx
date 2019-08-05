@@ -1,15 +1,15 @@
-import { createStyles, IconButton, makeStyles, SnackbarContent, Theme } from '@material-ui/core';
-import classNames from 'classnames';
-import * as React from 'react';
+import { createStyles, IconButton, makeStyles, SnackbarContent, Theme } from "@material-ui/core";
+import classNames from "classnames";
+import * as React from "react";
 
-import Block from '../../../components/Block';
-import Image from '../../../components/Image';
-import Typography from '../../../components/Typography';
-import CloseIcon from '../../../theme/assets/toast/close.svg';
-import ErrorIcon from '../../../theme/assets/toast/error.svg';
-import SuccessIcon from '../../../theme/assets/toast/success.svg';
-import WarningIcon from '../../../theme/assets/toast/warning.svg';
-import { ToastVariant } from './index';
+import Block from "../../../components/Block";
+import Image from "../../../components/Image";
+import Typography from "../../../components/Typography";
+import CloseIcon from "../../../theme/assets/toast/close.svg";
+import ErrorIcon from "../../../theme/assets/toast/error.svg";
+import SuccessIcon from "../../../theme/assets/toast/success.svg";
+import WarningIcon from "../../../theme/assets/toast/warning.svg";
+import { ToastVariant } from "./index";
 
 const variantIcon = {
   success: SuccessIcon,
@@ -24,7 +24,7 @@ const useStyles = makeStyles(
       color: theme.palette.primary.main,
     },
     error: {
-      color: '#F05956',
+      color: "#F05956",
     },
     info: {
       color: theme.palette.secondary.main,
@@ -37,17 +37,17 @@ const useStyles = makeStyles(
     },
     iconVariant: {},
     message: {
-      alignItems: 'center',
-      display: 'flex',
+      alignItems: "center",
+      display: "flex",
     },
     iconBackground: {
-      backgroundColor: '#f5f7f9',
+      backgroundColor: "#f5f7f9",
       height: 60,
       minWidth: 60,
       borderRadius: 60,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       marginRight: `${theme.spacing(3)}px`,
     },
   }),

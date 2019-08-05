@@ -1,9 +1,9 @@
-import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
-import * as React from 'react';
+import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from "@iov/bcp";
+import * as React from "react";
 
-import { BwParser, ProcessedTx } from '../../types/BwParser';
-import UnkownTransactionHeader from './ui/UnknownTxHeader';
-import UnkownTransactionRow from './ui/UnknownTxRow';
+import { BwParser, ProcessedTx } from "../../types/BwParser";
+import UnkownTransactionHeader from "./ui/UnknownTxHeader";
+import UnkownTransactionRow from "./ui/UnknownTxRow";
 
 export interface BwUnknownProps extends ProcessedTx {}
 
@@ -28,7 +28,7 @@ export class BwUnkownParser extends BwParser<BwUnknownProps> {
   }
 
   public csvRepresentation(tx: BwUnknownProps): string {
-    return '';
+    return "";
   }
 
   public headerRepresentation(tx: BwUnknownProps, lastOne: boolean): JSX.Element {

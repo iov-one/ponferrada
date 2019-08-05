@@ -1,8 +1,8 @@
-import { combineReducers, Reducer } from 'redux';
-import { StateType } from 'typesafe-actions';
+import { combineReducers, Reducer } from "redux";
+import { StateType } from "typesafe-actions";
 
-import { extensionReducer, ExtensionState } from './extension';
-import { proposalsReducer, ProposalsState } from './proposals';
+import { extensionReducer, ExtensionState } from "./extension";
+import { proposalsReducer, ProposalsState } from "./proposals";
 
 export interface RootReducer {
   extension: ExtensionState;

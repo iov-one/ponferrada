@@ -1,10 +1,10 @@
-import { ChainId } from '@iov/bcp';
+import { ChainId } from "@iov/bcp";
 
-import { singleton } from '../../../../../utils/singleton';
+import { singleton } from "../../../../../utils/singleton";
 
 /*global chrome*/
 
-export type CodecString = 'bns' | 'lsk' | 'eth';
+export type CodecString = "bns" | "lsk" | "eth";
 
 export interface ChainSpec {
   readonly codecType: CodecString;
@@ -38,12 +38,12 @@ export interface ConfigurationFile {
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
-  if (process.env.NODE_ENV === 'test') {
+  if (process.env.NODE_ENV === "test") {
     const config = (window as any).config;
     return config;
   }
 
-  const url = chrome.extension.getURL('assets/config/conf.json');
+  const url = chrome.extension.getURL("assets/config/conf.json");
   const data = await fetch(url);
   const json = await data.json();
 

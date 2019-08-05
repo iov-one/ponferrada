@@ -1,26 +1,26 @@
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import { Storybook } from 'medulas-react-components/lib/utils/storybook';
-import React from 'react';
+import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/react";
+import { Storybook } from "medulas-react-components/lib/utils/storybook";
+import React from "react";
 
-import { CHROME_EXTENSION_ROOT } from '../../utils/storybook';
-import SetMnemonicForm from './components/SetMnemonicForm';
-import SetPasswordForm from './components/SetPasswordForm';
+import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
+import SetMnemonicForm from "./components/SetMnemonicForm";
+import SetPasswordForm from "./components/SetPasswordForm";
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/Restore Account`, module)
   .add(
-    'Set Mnemonic page',
+    "Set Mnemonic page",
     (): JSX.Element => (
       <Storybook>
-        <SetMnemonicForm onBack={action('back in history')} onSetMnemonic={action('password step')} />
+        <SetMnemonicForm onBack={action("back in history")} onSetMnemonic={action("password step")} />
       </Storybook>
     ),
   )
   .add(
-    'Set Password page',
+    "Set Password page",
     (): JSX.Element => (
       <Storybook>
-        <SetPasswordForm onBack={action('back in history')} onSetPassword={action('restore account')} />
+        <SetPasswordForm onBack={action("back in history")} onSetPassword={action("restore account")} />
       </Storybook>
     ),
   );

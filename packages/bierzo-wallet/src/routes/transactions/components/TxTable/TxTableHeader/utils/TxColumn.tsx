@@ -1,20 +1,20 @@
-import { makeStyles } from '@material-ui/core';
-import classNames from 'classnames';
-import Block from 'medulas-react-components/lib/components/Block';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import { makeStyles } from "@material-ui/core";
+import classNames from "classnames";
+import Block from "medulas-react-components/lib/components/Block";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
 const useStyles = makeStyles({
   header: {
-    flexBasis: '10px',
+    flexBasis: "10px",
   },
   alignRight: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
 });
 
 interface Props {
-  readonly name: 'Amount' | 'Transactions';
+  readonly name: "Amount" | "Transactions";
   readonly alignRight?: boolean;
 }
 

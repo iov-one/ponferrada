@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { Page } from "puppeteer";
 
 export async function getAddressRow(page: Page, dataIndex: number): Promise<ReadonlyArray<string>> {
   const chainNameEl = await page.$(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(1)`);
@@ -11,8 +11,8 @@ export async function getAddressRow(page: Page, dataIndex: number): Promise<Read
     throw new Error(`TD element containig address with row index: ${dataIndex} not found.`);
   }
 
-  const chainName = await (await chainNameEl.getProperty('textContent')).jsonValue();
-  const address = await (await addressEl.getProperty('textContent')).jsonValue();
+  const chainName = await (await chainNameEl.getProperty("textContent")).jsonValue();
+  const address = await (await addressEl.getProperty("textContent")).jsonValue();
 
   return [chainName, address];
 }
@@ -25,5 +25,5 @@ export async function copyAddress(page: Page, dataIndex: number): Promise<string
 
   await page.click(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(3)`);
 
-  return await (await addressEl.getProperty('textContent')).jsonValue();
+  return await (await addressEl.getProperty("textContent")).jsonValue();
 }

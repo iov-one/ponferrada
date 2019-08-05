@@ -1,17 +1,17 @@
 /*global chrome*/
-import { Identity, isIdentity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from '@iov/jsonrpc';
+import { Identity, isIdentity } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
 
-import { getConfig } from '../../config';
-import { getConnectionFor } from '../../logic/connection';
+import { getConfig } from "../../config";
+import { getConnectionFor } from "../../logic/connection";
 
 export const generateGetIdentitiesRequest = (chains: ReadonlyArray<string>): JsonRpcRequest => ({
-  jsonrpc: '2.0',
+  jsonrpc: "2.0",
   id: makeJsonRpcId(),
-  method: 'getIdentities',
+  method: "getIdentities",
   params: {
-    reason: TransactionEncoder.toJson('I would like to know who you are on Ethereum'),
+    reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
     chainIds: TransactionEncoder.toJson(chains),
   },
 });
@@ -31,7 +31,7 @@ function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
 export type GetIdentitiesResponse = readonly Identity[] | undefined;
 
 function extensionContext(): boolean {
-  return typeof chrome.runtime !== 'undefined' && typeof chrome.runtime.sendMessage !== 'undefined';
+  return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
 }
 
 // exported for testing purposes
@@ -39,12 +39,12 @@ export const parseGetIdentitiesResponse = (response: any): readonly Identity[] =
   const parsedResponse = parseJsonRpcResponse2(response);
   if (isJsonRpcErrorResponse(parsedResponse)) {
     console.error(parsedResponse.error.message);
-    throw new Error('Received unexpected json rpc response');
+    throw new Error("Received unexpected json rpc response");
   }
 
   const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
   if (!isArrayOfIdentity(parsedResult)) {
-    throw new Error('Got unexpected type of result');
+    throw new Error("Got unexpected type of result");
   }
 
   return parsedResult;

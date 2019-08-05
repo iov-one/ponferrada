@@ -1,15 +1,15 @@
-import { Address } from '@iov/bcp';
-import { ProposalResult, VoteOption } from '@iov/bns';
-import Block from 'medulas-react-components/lib/components/Block';
-import React from 'react';
+import { Address } from "@iov/bcp";
+import { ProposalResult, VoteOption } from "@iov/bns";
+import Block from "medulas-react-components/lib/components/Block";
+import React from "react";
 
-import DeleteButton from './DeleteButton';
-import Description from './Description';
-import Identification from './Identification';
-import Period from './Period';
-import TallyBar from './TallyBar';
-import Title from './Title';
-import VotingPanel from './VotingPanel';
+import DeleteButton from "./DeleteButton";
+import Description from "./Description";
+import Identification from "./Identification";
+import Period from "./Period";
+import TallyBar from "./TallyBar";
+import Title from "./Title";
+import VotingPanel from "./VotingPanel";
 
 export interface Tally {
   readonly yes: number;

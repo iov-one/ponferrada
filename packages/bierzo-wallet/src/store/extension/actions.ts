@@ -1,9 +1,9 @@
-import { Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
+import { Identity } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
 
-import { sendGetIdentitiesRequest } from '../../communication/identities';
-import { ExtensionState } from '../../store/extension';
-import { SetExtensionStateActionType } from './reducer';
+import { sendGetIdentitiesRequest } from "../../communication/identities";
+import { ExtensionState } from "../../store/extension";
+import { SetExtensionStateActionType } from "./reducer";
 
 /**
  * Groups the identites by blockchain. Returns the first identity of each chain.
@@ -51,6 +51,6 @@ export const setExtensionStateAction = (
   installed: boolean,
   keys: { [chain: string]: string },
 ): SetExtensionStateActionType => ({
-  type: '@@extension/SET_STATE',
+  type: "@@extension/SET_STATE",
   payload: { connected, installed, keys },
 });

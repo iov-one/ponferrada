@@ -1,12 +1,12 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBackIos';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import ArrowBackIcon from "@material-ui/icons/ArrowBackIos";
+import * as React from "react";
 
-import iovLogo from '../../theme/assets/iov-logo.svg';
-import Block from '../Block';
-import Image from '../Image';
-import Typography from '../Typography';
+import iovLogo from "../../theme/assets/iov-logo.svg";
+import Block from "../Block";
+import Image from "../Image";
+import Typography from "../Typography";
 
 const PAGE_HEIGHT = 500;
 
@@ -19,7 +19,7 @@ interface Props extends StyleProps {
 }
 
 interface StyleProps {
-  readonly color?: 'white' | 'transparent';
+  readonly color?: "white" | "transparent";
   readonly minHeight?: string | number;
 }
 
@@ -36,7 +36,7 @@ const PageLayout = ({
   title,
   primaryTitle,
   onBack,
-  color = 'transparent',
+  color = "transparent",
   minHeight = PAGE_HEIGHT,
 }: Props): JSX.Element => {
   const showBackArrow = !!onBack;
@@ -67,7 +67,7 @@ const PageLayout = ({
           {primaryTitle}
         </Typography>
         <Typography variant="h4" inline>
-          {' '}
+          {" "}
           {title}
         </Typography>
       </Block>

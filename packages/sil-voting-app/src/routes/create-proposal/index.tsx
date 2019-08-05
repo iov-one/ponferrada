@@ -1,10 +1,10 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import React from "react";
 
-import AsideFilter from '../../components/AsideFilter';
-import Header from '../../components/Header';
-import ProposalForm from './components/ProposalForm';
+import AsideFilter from "../../components/AsideFilter";
+import Header from "../../components/Header";
+import ProposalForm from "./components/ProposalForm";
 
 const CreateProposal = (): JSX.Element => {
   return (

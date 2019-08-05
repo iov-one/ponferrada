@@ -1,32 +1,32 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Back from "medulas-react-components/lib/components/Button/Back";
 import Form, {
   FormValues,
   useForm,
   ValidationError,
-} from 'medulas-react-components/lib/components/forms/Form';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { composeValidators, longerThan, required } from 'medulas-react-components/lib/utils/forms/validators';
-import * as React from 'react';
-import { useMemo } from 'react';
+} from "medulas-react-components/lib/components/forms/Form";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import Typography from "medulas-react-components/lib/components/Typography";
+import { composeValidators, longerThan, required } from "medulas-react-components/lib/utils/forms/validators";
+import * as React from "react";
+import { useMemo } from "react";
 
-import { RESTORE_ACCOUNT } from '../../paths';
+import { RESTORE_ACCOUNT } from "../../paths";
 
 export const SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE = `${RESTORE_ACCOUNT}2`;
 
-export const PASSWORD_FIELD = 'passwordField';
+export const PASSWORD_FIELD = "passwordField";
 const PASSWORD_MIN_LENGTH = 8;
-export const PASSWORD_CONFIRM_FIELD = 'passwordConfirmField';
+export const PASSWORD_CONFIRM_FIELD = "passwordConfirmField";
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
   let errors: ValidationError = {};
 
   if (formValues[PASSWORD_FIELD] !== formValues[PASSWORD_CONFIRM_FIELD]) {
-    errors[PASSWORD_CONFIRM_FIELD] = 'Passwords mismatch';
+    errors[PASSWORD_CONFIRM_FIELD] = "Passwords mismatch";
   }
 
   return errors;

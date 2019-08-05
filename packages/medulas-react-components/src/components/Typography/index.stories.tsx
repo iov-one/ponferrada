@@ -1,12 +1,12 @@
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../utils/storybook';
-import Link from '../Link';
-import Typography from './index';
+import { Storybook } from "../../utils/storybook";
+import Link from "../Link";
+import Typography from "./index";
 
-storiesOf('Components/Typography', module).add(
-  'variants',
+storiesOf("Components/Typography", module).add(
+  "variants",
   (): JSX.Element => (
     <Storybook>
       <Typography variant="subtitle1" color="primary">
@@ -41,7 +41,7 @@ storiesOf('Components/Typography', module).add(
         Inline styles
       </Typography>
       <Typography variant="subtitle2" color="primary" inline>
-        {'First part of the text. '}
+        {"First part of the text. "}
       </Typography>
       <Typography variant="subtitle2" inline>
         Second part of the text.
@@ -50,8 +50,8 @@ storiesOf('Components/Typography', module).add(
   ),
 );
 
-storiesOf('Components/Typography', module).add(
-  'weight',
+storiesOf("Components/Typography", module).add(
+  "weight",
   (): JSX.Element => (
     <Storybook>
       <Typography weight="light">Hi this is light</Typography>
@@ -62,8 +62,8 @@ storiesOf('Components/Typography', module).add(
   ),
 );
 
-storiesOf('Components/Typography', module).add(
-  'link',
+storiesOf("Components/Typography", module).add(
+  "link",
   (): JSX.Element => (
     <Storybook>
       <Link to="https://iov.one">

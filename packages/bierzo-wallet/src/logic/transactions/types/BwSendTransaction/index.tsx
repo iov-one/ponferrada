@@ -1,10 +1,10 @@
-import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
-import * as React from 'react';
+import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from "@iov/bcp";
+import * as React from "react";
 
-import { ProcessedSendTransaction } from '../../../../store/notifications';
-import { BwParser } from '../../types/BwParser';
-import SendTransactionHeader from './ui/SendTxHeader';
-import SendTransactionRow from './ui/SendTxRow';
+import { ProcessedSendTransaction } from "../../../../store/notifications";
+import { BwParser } from "../../types/BwParser";
+import SendTransactionHeader from "./ui/SendTxHeader";
+import SendTransactionRow from "./ui/SendTxRow";
 
 export class BwSendParser extends BwParser<ProcessedSendTransaction> {
   public async parse(
@@ -42,7 +42,7 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
 
     const txRow = [...parties, ...payment, ...date, ...status];
 
-    return txRow.join(';');
+    return txRow.join(";");
   }
 
   public headerRepresentation(tx: ProcessedSendTransaction, lastOne: boolean): JSX.Element {

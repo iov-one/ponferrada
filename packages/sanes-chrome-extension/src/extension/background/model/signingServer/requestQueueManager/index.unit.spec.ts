@@ -1,9 +1,9 @@
-import { Request, RequestQueueManager } from './index';
+import { Request, RequestQueueManager } from "./index";
 
-describe('RequestHandler', () => {
-  const REQUEST_ONE: Omit<Request, 'id'> = {
-    senderUrl: 'Sender 1',
-    reason: 'Reason 1',
+describe("RequestHandler", () => {
+  const REQUEST_ONE: Omit<Request, "id"> = {
+    senderUrl: "Sender 1",
+    reason: "Reason 1",
     responseData: {
       requestedIdentities: [],
     },
@@ -11,9 +11,9 @@ describe('RequestHandler', () => {
     reject: jest.fn(),
   };
 
-  const REQUEST_TWO: Omit<Request, 'id'> = {
-    senderUrl: 'Sender 2',
-    reason: 'Reason 2',
+  const REQUEST_TWO: Omit<Request, "id"> = {
+    senderUrl: "Sender 2",
+    reason: "Reason 2",
     responseData: {
       requestedIdentities: [],
     },
@@ -21,9 +21,9 @@ describe('RequestHandler', () => {
     reject: jest.fn(),
   };
 
-  const REQUEST_THREE: Omit<Request, 'id'> = {
-    senderUrl: 'Sender 3',
-    reason: 'Reason 3',
+  const REQUEST_THREE: Omit<Request, "id"> = {
+    senderUrl: "Sender 3",
+    reason: "Reason 3",
     responseData: {
       requestedIdentities: [],
     },
@@ -39,17 +39,17 @@ describe('RequestHandler', () => {
     requestQueueManager.add(REQUEST_THREE);
   });
 
-  it('updates counter when a new request is added', () => {
+  it("updates counter when a new request is added", () => {
     // RequestHandler does not expose its internal counter, so this is an exceptional use case
     // which can not be used in regular code because it violates private modifier of blocked variable.
-    expect(requestQueueManager['counter']).toBe(3);
+    expect(requestQueueManager["counter"]).toBe(3);
     requestQueueManager.solved();
-    expect(requestQueueManager['counter']).toBe(3);
+    expect(requestQueueManager["counter"]).toBe(3);
     requestQueueManager.add(REQUEST_ONE);
-    expect(requestQueueManager['counter']).toBe(4);
+    expect(requestQueueManager["counter"]).toBe(4);
   });
 
-  it('returns all the requests', () => {
+  it("returns all the requests", () => {
     let requests = requestQueueManager.requests();
 
     expect(requests.length).toBe(3);
@@ -70,11 +70,11 @@ describe('RequestHandler', () => {
     expect(requests.length).toBe(0);
   });
 
-  it('returns the next request', () => {
+  it("returns the next request", () => {
     expect(requestQueueManager.next().reason).toBe(REQUEST_ONE.reason);
   });
 
-  it('solves requests in an orderly fashion', () => {
+  it("solves requests in an orderly fashion", () => {
     expect(requestQueueManager.next().reason).toBe(REQUEST_ONE.reason);
     requestQueueManager.solved();
     expect(requestQueueManager.next().reason).toBe(REQUEST_TWO.reason);
@@ -82,7 +82,7 @@ describe('RequestHandler', () => {
     expect(requestQueueManager.next().reason).toBe(REQUEST_THREE.reason);
   });
 
-  it('assigns new id based on counter to new added requests', () => {
+  it("assigns new id based on counter to new added requests", () => {
     let requests = requestQueueManager.requests();
 
     expect(requests[0].id).toBe(0);

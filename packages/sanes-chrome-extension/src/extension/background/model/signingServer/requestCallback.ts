@@ -1,11 +1,11 @@
-import { updateRequestProvider } from '../../updaters/appUpdater';
-import { updateExtensionBadge } from '../../updaters/extensionBadgeUpdater';
+import { updateRequestProvider } from "../../updaters/appUpdater";
+import { updateExtensionBadge } from "../../updaters/extensionBadgeUpdater";
 import {
   GetIdentitiesResponseData,
   RequestQueueManager,
   SignAndPostResponseData,
-} from './requestQueueManager';
-import { SenderWhitelist } from './senderWhitelist';
+} from "./requestQueueManager";
+import { SenderWhitelist } from "./senderWhitelist";
 
 export async function requestCallback<T>(
   requestQueueManager: RequestQueueManager,

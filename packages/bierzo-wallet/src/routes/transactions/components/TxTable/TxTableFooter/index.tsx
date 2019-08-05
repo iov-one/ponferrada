@@ -1,12 +1,12 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
-import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
-import Img from 'medulas-react-components/lib/components/Image';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
+import SelectFieldForm, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import Img from "medulas-react-components/lib/components/Image";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import arrowLeft from '../../../assets/arrowLeft.svg';
-import arrowRight from '../../../assets/arrowRight.svg';
+import arrowLeft from "../../../assets/arrowLeft.svg";
+import arrowRight from "../../../assets/arrowRight.svg";
 
 interface Props {
   readonly onChangeRows: (item: Item) => void;
@@ -14,7 +14,7 @@ interface Props {
   readonly onNextPage: () => void;
 }
 
-const rowsSelectorData: ReadonlyArray<Item> = [{ name: '5' }, { name: '10' }, { name: '25' }, { name: '50' }];
+const rowsSelectorData: ReadonlyArray<Item> = [{ name: "5" }, { name: "10" }, { name: "25" }, { name: "50" }];
 
 const onSubmit = (): void => {};
 

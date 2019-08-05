@@ -1,14 +1,14 @@
-import MedulasThemeProvider from 'medulas-react-components/lib/theme/MedulasThemeProvider';
-import * as React from 'react';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
-import { DeepPartial } from 'redux';
+import MedulasThemeProvider from "medulas-react-components/lib/theme/MedulasThemeProvider";
+import * as React from "react";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router";
+import { DeepPartial } from "redux";
 
-import { aNewStore } from '../../store';
-import { RootState } from '../../store/reducers';
-import { globalStyles } from '../../theme/globalStyles';
+import { aNewStore } from "../../store";
+import { RootState } from "../../store/reducers";
+import { globalStyles } from "../../theme/globalStyles";
 
-export const WALLET_ROOT = 'Bierzo wallet';
+export const WALLET_ROOT = "Bierzo wallet";
 
 interface Props {
   readonly children: React.ReactNode;

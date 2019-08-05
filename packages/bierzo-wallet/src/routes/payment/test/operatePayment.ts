@@ -1,11 +1,11 @@
-import { Page } from 'puppeteer';
-import TestUtils from 'react-dom/test-utils';
+import { Page } from "puppeteer";
+import TestUtils from "react-dom/test-utils";
 
-import { QUANTITY_FIELD } from '../components/CurrencyToSend';
-import { ADDRESS_FIELD } from '../components/ReceiverAddress';
+import { QUANTITY_FIELD } from "../components/CurrencyToSend";
+import { ADDRESS_FIELD } from "../components/ReceiverAddress";
 
 export function getCancelButton(paymentDom: React.Component): Element {
-  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(paymentDom, 'button');
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(paymentDom, "button");
   return buttons[2];
 }
 
@@ -18,7 +18,7 @@ export async function fillPaymentForm(page: Page, quantity: string, address: str
   await page.bringToFront();
   await page.type(`input[name="${QUANTITY_FIELD}"]`, quantity);
   await page.type(`input[name="${ADDRESS_FIELD}`, address);
-  await page.click('button[type=submit]');
+  await page.click("button[type=submit]");
 }
 
 export async function getPaymentRequestData(page: Page, dataIndex: number): Promise<string> {
@@ -27,14 +27,14 @@ export async function getPaymentRequestData(page: Page, dataIndex: number): Prom
     throw new Error(`LI element with index: ${dataIndex} not found.`);
   }
 
-  return await (await element.getProperty('textContent')).jsonValue();
+  return await (await element.getProperty("textContent")).jsonValue();
 }
 
 export async function getInvalidAddressError(page: Page): Promise<string> {
-  const validationError = await page.$('p.MuiFormHelperText-root');
+  const validationError = await page.$("p.MuiFormHelperText-root");
   if (validationError === null) {
     throw new Error(`Validation error message was not found.`);
   }
 
-  return await (await validationError.getProperty('textContent')).jsonValue();
+  return await (await validationError.getProperty("textContent")).jsonValue();
 }

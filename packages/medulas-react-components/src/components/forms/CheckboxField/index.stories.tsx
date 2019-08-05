@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
+import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/react";
+import React from "react";
 
-import { Storybook } from '../../../utils/storybook';
-import Form, { useForm, ValidationError } from '../Form';
-import CheckboxField from './index';
+import { Storybook } from "../../../utils/storybook";
+import Form, { useForm, ValidationError } from "../Form";
+import CheckboxField from "./index";
 
-const CHECKBOX_FIELD = 'CHECKBOX_FIELD';
+const CHECKBOX_FIELD = "CHECKBOX_FIELD";
 
 interface Props {
   readonly showError?: boolean;
@@ -18,7 +18,7 @@ const CheckboxFieldForm = ({ showError, label }: Props): JSX.Element => {
   const validate = (_: object): object => {
     let errors: ValidationError = {};
     if (showError) {
-      errors[CHECKBOX_FIELD] = 'Field error';
+      errors[CHECKBOX_FIELD] = "Field error";
     }
 
     return errors;
@@ -26,8 +26,8 @@ const CheckboxFieldForm = ({ showError, label }: Props): JSX.Element => {
 
   const { form, handleSubmit } = useForm({
     onSubmit: () => {
-      console.log('value checked, onSubmit');
-      action('Form submit');
+      console.log("value checked, onSubmit");
+      action("Form submit");
     },
     validate,
   });
@@ -40,15 +40,15 @@ const CheckboxFieldForm = ({ showError, label }: Props): JSX.Element => {
         fieldName={CHECKBOX_FIELD}
         label={label}
         onChangeCallback={(checked: boolean) => {
-          console.log('value checked, onChangeCallback');
-          action(`received ---> ${checked ? 'true' : 'false'}`);
+          console.log("value checked, onChangeCallback");
+          action(`received ---> ${checked ? "true" : "false"}`);
         }}
       />
     </Form>
   );
 };
 
-storiesOf('Components /forms', module).add('CheckboxField', () => (
+storiesOf("Components /forms", module).add("CheckboxField", () => (
   <Storybook>
     <CheckboxFieldForm label="Checkbox field" />
     <CheckboxFieldForm label="Checkbox field with error" showError />

@@ -1,10 +1,10 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import * as React from "react";
 
-import { SortingStateProps, TX_AMOUNT_COLUMN, TX_DATE_COLUMN } from '../../sorting';
-import TxColumn from './utils/TxColumn';
-import TxSortableColumn from './utils/TxSortableColumn';
+import { SortingStateProps, TX_AMOUNT_COLUMN, TX_DATE_COLUMN } from "../../sorting";
+import TxColumn from "./utils/TxColumn";
+import TxSortableColumn from "./utils/TxSortableColumn";
 
 const TxTableHeader = ({ orderBy, order, onSort }: SortingStateProps): JSX.Element => (
   <React.Fragment>

@@ -1,33 +1,33 @@
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TransactionId } from '@iov/bcp';
-import { Theme } from '@material-ui/core';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import { useTheme } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import makeStyles from 'medulas-react-components/lib/theme/utils/styles';
-import React from 'react';
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TransactionId } from "@iov/bcp";
+import { Theme } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import Paper from "@material-ui/core/Paper";
+import { useTheme } from "@material-ui/styles";
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Typography from "medulas-react-components/lib/components/Typography";
+import makeStyles from "medulas-react-components/lib/theme/utils/styles";
+import React from "react";
 
-export const PAYMENT_CONFIRMATION_VIEW_ID = 'payment-confirmation-view-id';
+export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
-    backgroundColor: '#ffe152',
-    fontSize: '27.5px',
-    width: '72px',
-    height: '72px',
-    margin: '-76px 0 40px 0',
+    backgroundColor: "#ffe152",
+    fontSize: "27.5px",
+    width: "72px",
+    height: "72px",
+    margin: "-76px 0 40px 0",
   },
 }));
 
 const useTypography = makeStyles({
   wrap: {
     width: 370,
-    whiteSpace: 'pre-wrap',
-    wordWrap: 'break-word',
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
   },
 });
 

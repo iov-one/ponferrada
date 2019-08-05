@@ -1,23 +1,23 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
-import CircleImage from 'medulas-react-components/lib/components/Image/CircleImage';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import { ToastContext } from 'medulas-react-components/lib/context/ToastProvider';
-import { ToastVariant } from 'medulas-react-components/lib/context/ToastProvider/Toast';
-import React, { useContext } from 'react';
-import * as ReactRedux from 'react-redux';
+import { Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
+import CircleImage from "medulas-react-components/lib/components/Image/CircleImage";
+import Typography from "medulas-react-components/lib/components/Typography";
+import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import React, { useContext } from "react";
+import * as ReactRedux from "react-redux";
 
-import icon from '../../assets/iov-logo.svg';
-import { getExtensionStatus, setExtensionStateAction } from '../../store/extension';
-import { addProposalsAction, getProposals } from '../../store/proposals';
-import { history } from '../index';
-import { DASHBOARD_ROUTE } from '../paths';
+import icon from "../../assets/iov-logo.svg";
+import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
+import { addProposalsAction, getProposals } from "../../store/proposals";
+import { history } from "../index";
+import { DASHBOARD_ROUTE } from "../paths";
 
-export const INSTALL_EXTENSION_MSG = 'You need to install IOV extension.';
-export const LOGIN_EXTENSION_MSG = 'Please login to the IOV extension to continue.';
+export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
+export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 const useStyles = makeStyles((theme: Theme) => ({
   login: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   icon: {
     backgroundColor: theme.palette.primary.main,
-    padding: '50px',
+    padding: "50px",
   },
   button: {
     margin: theme.spacing(1),

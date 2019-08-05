@@ -1,9 +1,9 @@
-import Block from 'medulas-react-components/lib/components/Block';
-import Link from 'medulas-react-components/lib/components/Link';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import * as React from 'react';
+import Block from "medulas-react-components/lib/components/Block";
+import Link from "medulas-react-components/lib/components/Link";
+import Typography from "medulas-react-components/lib/components/Typography";
+import * as React from "react";
 
-import { RESTORE_ACCOUNT } from '../../paths';
+import { RESTORE_ACCOUNT } from "../../paths";
 
 const LoginControls = (): JSX.Element => {
   return (

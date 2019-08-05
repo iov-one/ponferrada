@@ -1,44 +1,44 @@
-import { TokenTicker, TxCodec } from '@iov/bcp';
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import Block from 'medulas-react-components/lib/components/Block';
-import Button from 'medulas-react-components/lib/components/Button';
-import Back from 'medulas-react-components/lib/components/Button/Back';
-import Form, { useForm } from 'medulas-react-components/lib/components/forms/Form';
-import React from 'react';
+import { TokenTicker, TxCodec } from "@iov/bcp";
+import { Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import Block from "medulas-react-components/lib/components/Block";
+import Button from "medulas-react-components/lib/components/Button";
+import Back from "medulas-react-components/lib/components/Button/Back";
+import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
+import React from "react";
 
-import CurrencyToSend from './CurrencyToSend';
-import ReceiverAddress from './ReceiverAddress';
-import TextNote from './TextNote';
+import CurrencyToSend from "./CurrencyToSend";
+import ReceiverAddress from "./ReceiverAddress";
+import TextNote from "./TextNote";
 
 const useStyles = makeStyles((theme: Theme) => ({
   payment: {
     backgroundColor: theme.palette.background.default,
-    gridTemplateColumns: '1fr minmax(375px, 450px) 1fr',
+    gridTemplateColumns: "1fr minmax(375px, 450px) 1fr",
     gridTemplateAreas: `
   ". currency-to-send ."
   ". receiver-address ."
   ". text-note        ."
   ". continue-button  ."
   `,
-    gridGap: '24px',
-    placeItems: 'center',
+    gridGap: "24px",
+    placeItems: "center",
   },
 
   currencyToSend: {
-    gridArea: 'currency-to-send',
+    gridArea: "currency-to-send",
   },
 
   receiverAddress: {
-    gridArea: 'receiver-address',
+    gridArea: "receiver-address",
   },
 
   textNote: {
-    gridArea: 'text-note',
+    gridArea: "text-note",
   },
 
   continue: {
-    gridArea: 'continue-button',
+    gridArea: "continue-button",
   },
 }));
 

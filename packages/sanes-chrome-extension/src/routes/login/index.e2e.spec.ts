@@ -1,26 +1,26 @@
-import { Browser, Page } from 'puppeteer';
+import { Browser, Page } from "puppeteer";
 
-import { IovWindowExtension } from '../../extension/background/model/backgroundscript';
+import { IovWindowExtension } from "../../extension/background/model/backgroundscript";
 import {
   closeBrowser,
   createPage,
   EXTENSION_ID,
   getBackgroundPage,
   launchBrowser,
-} from '../../utils/test/e2e';
-import { randomString } from '../../utils/test/random';
-import { findRenderedE2EComponentWithId } from '../../utils/test/reactElemFinder';
-import { withChainsDescribe } from '../../utils/test/testExecutor';
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from '../paths';
+} from "../../utils/test/e2e";
+import { randomString } from "../../utils/test/random";
+import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
+import { withChainsDescribe } from "../../utils/test/testExecutor";
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from "../paths";
 import {
   submitNewAccountE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
-} from '../signup/test/operateSignup';
-import { submitE2ELoginForm } from './test/submitLoginForm';
+} from "../signup/test/operateSignup";
+import { submitE2ELoginForm } from "./test/submitLoginForm";
 
-withChainsDescribe('DOM > Login route', (): void => {
+withChainsDescribe("DOM > Login route", (): void => {
   let browser: Browser;
   let page: Page;
   let bgPage: Page;
@@ -37,7 +37,7 @@ withChainsDescribe('DOM > Login route', (): void => {
     },
   );
 
-  it('should redirect to login route after browser restart', async (): Promise<void> => {
+  it("should redirect to login route after browser restart", async (): Promise<void> => {
     await travelToSignupNewAccountStep(page);
     const password = randomString(10);
     await submitNewAccountE2E(page, randomString(10), password);
@@ -45,7 +45,7 @@ withChainsDescribe('DOM > Login route', (): void => {
     await submitSecurityHintE2E(page, randomString(10));
     //Simulating reload
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
-      waitUntil: 'networkidle2',
+      waitUntil: "networkidle2",
     });
     await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
 
@@ -55,7 +55,7 @@ withChainsDescribe('DOM > Login route', (): void => {
 
     //Simulating reload
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
-      waitUntil: 'networkidle2',
+      waitUntil: "networkidle2",
     });
     await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
     await submitE2ELoginForm(page, password);

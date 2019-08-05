@@ -1,11 +1,11 @@
-import { FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
-import Typography from 'medulas-react-components/lib/components/Typography';
-import React from 'react';
+import { FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import SelectFieldForm, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import Typography from "medulas-react-components/lib/components/Typography";
+import React from "react";
 
-const PROPOSAL_TYPE_FIELD = 'Proposal Type';
-const PROPOSAL_TYPE_INITIAL = 'Select a Proposal Type';
+const PROPOSAL_TYPE_FIELD = "Proposal Type";
+const PROPOSAL_TYPE_INITIAL = "Select a Proposal Type";
 
 interface Props {
   form: FormApi;

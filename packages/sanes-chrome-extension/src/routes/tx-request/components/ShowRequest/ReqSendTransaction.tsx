@@ -1,11 +1,11 @@
-import { SendTransaction } from '@iov/bcp';
-import { List, ListItem, ListItemText } from 'medulas-react-components/lib/components/List';
-import * as React from 'react';
+import { SendTransaction } from "@iov/bcp";
+import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
+import * as React from "react";
 
-import { amountToString } from '../../../../utils/balances';
-import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from './TransactionFee';
+import { amountToString } from "../../../../utils/balances";
+import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";
 
-export const REQ_SEND_TX = 'req-send-tx';
+export const REQ_SEND_TX = "req-send-tx";
 
 interface Props {
   readonly tx: SendTransaction;
@@ -44,7 +44,7 @@ const ReqSendTransaction = ({ tx }: Props): JSX.Element => {
         <ListItemText
           classes={listItemClasses}
           primary="Notes"
-          secondary={tx.memo || '--'}
+          secondary={tx.memo || "--"}
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>

@@ -1,21 +1,21 @@
-import { Fab, makeStyles } from '@material-ui/core';
-import { Theme } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/styles';
-import * as React from 'react';
+import { Fab, makeStyles } from "@material-ui/core";
+import { Theme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/styles";
+import * as React from "react";
 
-import download from '../../theme/assets/download.svg';
-import Block from '../Block';
-import CircleImage from '../Image/CircleImage';
-import Typography from '../Typography';
+import download from "../../theme/assets/download.svg";
+import Block from "../Block";
+import CircleImage from "../Image/CircleImage";
+import Typography from "../Typography";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    width: 'auto',
-    justifyContent: 'left',
-    textTransform: 'inherit',
+    width: "auto",
+    justifyContent: "left",
+    textTransform: "inherit",
   },
   extended: {
-    '&$sizeSmall': {
+    "&$sizeSmall": {
       padding: 0,
     },
   },
@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   secondary: {
     backgroundColor: theme.palette.background.default,
     padding: 0,
-    boxShadow: 'none',
+    boxShadow: "none",
     border: `1px solid ${theme.palette.grey[300]}`,
-    '&:hover': {
+    "&:hover": {
       background: theme.palette.background.default,
     },
   },

@@ -1,11 +1,11 @@
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from "react-dom/test-utils";
 
-import { findRenderedDOMComponentWithId } from '../../../utils/test/reactElemFinder';
-import { SHARE_IDENTITY_REJECT } from '../components/RejectRequest';
-import { SHARE_IDENTITY_SHOW } from '../components/ShowRequest';
+import { findRenderedDOMComponentWithId } from "../../../utils/test/reactElemFinder";
+import { SHARE_IDENTITY_REJECT } from "../components/RejectRequest";
+import { SHARE_IDENTITY_SHOW } from "../components/ShowRequest";
 
 export const clickOnRejectButton = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, 'button');
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
 
   expect(inputs.length).toBe(2);
 
@@ -19,7 +19,7 @@ export const clickOnRejectButton = async (ShareIdentityDom: React.Component): Pr
 };
 
 export const confirmRejectButton = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, 'button');
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
 
   expect(inputs.length).toBe(2);
 
@@ -31,7 +31,7 @@ export const confirmRejectButton = async (ShareIdentityDom: React.Component): Pr
 };
 
 export const checkPermanentRejection = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, 'input');
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "input");
   expect(inputs.length).toBe(1);
 
   const doNotShowAgainCheckbox = inputs[0];
@@ -43,7 +43,7 @@ export const checkPermanentRejection = async (ShareIdentityDom: React.Component)
 };
 
 export const clickOnBackButton = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, 'button');
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
 
   expect(inputs.length).toBe(2);
 

@@ -1,18 +1,18 @@
-import { TxMeta } from '../../../../utils/localstorage/transactions';
+import { TxMeta } from "../../../../utils/localstorage/transactions";
 
 export interface BadgeProps {
   readonly invisible: boolean;
-  readonly color: 'default' | 'primary' | 'error';
+  readonly color: "default" | "primary" | "error";
 }
 
 export const hiddenBadge: BadgeProps = {
   invisible: true,
-  color: 'default',
+  color: "default",
 };
 
 const buildBadgeFrom = (lastTxSucceded: boolean): BadgeProps => ({
   invisible: false,
-  color: lastTxSucceded ? 'primary' : 'error',
+  color: lastTxSucceded ? "primary" : "error",
 });
 
 const lastTxNewer = (lastTx: TxMeta, lastStoredTx: TxMeta): boolean => {

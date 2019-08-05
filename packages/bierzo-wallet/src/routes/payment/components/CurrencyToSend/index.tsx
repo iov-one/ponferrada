@@ -1,40 +1,40 @@
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TokenTicker } from '@iov/bcp';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/styles';
-import { FormApi } from 'final-form';
-import Block from 'medulas-react-components/lib/components/Block';
-import SelectFieldForm, { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
-import TextFieldForm from 'medulas-react-components/lib/components/forms/TextFieldForm';
-import Typography from 'medulas-react-components/lib/components/Typography';
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TokenTicker } from "@iov/bcp";
+import Avatar from "@material-ui/core/Avatar";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/styles";
+import { FormApi } from "final-form";
+import Block from "medulas-react-components/lib/components/Block";
+import SelectFieldForm, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import Typography from "medulas-react-components/lib/components/Typography";
 import {
   composeValidators,
   greaterOrEqualThan,
   lowerOrEqualThan,
   number,
   required,
-} from 'medulas-react-components/lib/utils/forms/validators';
-import React, { useMemo, useState } from 'react';
-import * as ReactRedux from 'react-redux';
+} from "medulas-react-components/lib/utils/forms/validators";
+import React, { useMemo, useState } from "react";
+import * as ReactRedux from "react-redux";
 
-import { RootState } from '../../../../store/reducers';
-import { amountToNumber, amountToString } from '../../../../utils/balances';
+import { RootState } from "../../../../store/reducers";
+import { amountToNumber, amountToString } from "../../../../utils/balances";
 
 const useStyles = makeStyles(() => ({
   avatar: {
-    backgroundColor: '#ffe152',
-    fontSize: '27.5px',
-    width: '72px',
-    height: '72px',
-    margin: '-76px 0 40px 0',
+    backgroundColor: "#ffe152",
+    fontSize: "27.5px",
+    width: "72px",
+    height: "72px",
+    margin: "-76px 0 40px 0",
   },
 }));
 
-export const QUANTITY_FIELD = 'quantityField';
+export const QUANTITY_FIELD = "quantityField";
 const QUANTITY_MIN = 1e-9;
-export const CURRENCY_FIELD = 'currencyField';
+export const CURRENCY_FIELD = "currencyField";
 
 interface Props {
   readonly form: FormApi;
@@ -100,7 +100,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
                 form={form}
                 maxWidth="60px"
                 items={currencyItems}
-                initial={firstToken ? firstToken.name : '–'}
+                initial={firstToken ? firstToken.name : "–"}
                 onChangeCallback={onSelectionChanged}
               />
             </Block>
@@ -108,7 +108,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
         </Block>
         <Block marginTop={1}>
           <Typography color="textSecondary" variant="subtitle2">
-            balance: {selectedTokenTicker ? amountToString(balances[selectedTokenTicker]) : '–'}
+            balance: {selectedTokenTicker ? amountToString(balances[selectedTokenTicker]) : "–"}
           </Typography>
         </Block>
       </Block>

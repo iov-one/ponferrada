@@ -1,4 +1,4 @@
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 import {
   border,
   borders,
@@ -10,8 +10,8 @@ import {
   sizing,
   spacing,
   typography,
-} from '@material-ui/system';
-import * as React from 'react';
+} from "@material-ui/system";
+import * as React from "react";
 
 type BlockStyleFunction = ComposedStyleFunction<
   [
@@ -34,7 +34,7 @@ interface Props extends BlockStyleProps {
   readonly onClick?: React.MouseEventHandler<Element>;
 }
 
-const Block = ({ children, display = 'block', ...restProps }: Props): JSX.Element => {
+const Block = ({ children, display = "block", ...restProps }: Props): JSX.Element => {
   return (
     <Box display={display} {...restProps}>
       {children}

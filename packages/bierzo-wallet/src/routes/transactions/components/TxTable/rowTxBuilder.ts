@@ -1,9 +1,9 @@
-import { Item } from 'medulas-react-components/lib/components/forms/SelectFieldForm';
+import { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
 
-import { ProcessedSendTransaction } from '../../../../store/notifications';
-import fromAddress from '../../assets/fromAddress.svg';
-import toAddress from '../../assets/toAddress.svg';
-import { SortingStateProps } from '../sorting';
+import { ProcessedSendTransaction } from "../../../../store/notifications";
+import fromAddress from "../../assets/fromAddress.svg";
+import toAddress from "../../assets/toAddress.svg";
+import { SortingStateProps } from "../sorting";
 
 export interface TxTableProps extends SortingStateProps {
   readonly rows: readonly JSX.Element[];
@@ -18,10 +18,10 @@ export function getTypeIcon(tx: ProcessedSendTransaction): string {
 
 export function getAddressPrefix(tx: ProcessedSendTransaction): string {
   if (tx.received) {
-    return 'From';
+    return "From";
   } else {
-    return 'To';
+    return "To";
   }
 }
 
-export const DEFAULT_ADDRESS = 'blockchain address';
+export const DEFAULT_ADDRESS = "blockchain address";

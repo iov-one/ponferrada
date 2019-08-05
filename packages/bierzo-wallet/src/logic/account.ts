@@ -1,8 +1,8 @@
-import { Address, ChainId } from '@iov/bcp';
-import { BnsConnection } from '@iov/bns';
+import { Address, ChainId } from "@iov/bcp";
+import { BnsConnection } from "@iov/bns";
 
-import { getConfig } from '../config';
-import { getConnectionFor, isBnsSpec } from './connection';
+import { getConfig } from "../config";
+import { getConnectionFor, isBnsSpec } from "./connection";
 
 /** lookupRecipientAddressByName returns the address associated with the name, or undefined if not registered
  * the name should not have the "*iov" suffix
@@ -30,9 +30,9 @@ export async function lookupRecipientAddressByName(
     return chainAddressPair ? chainAddressPair.address : undefined;
   }
 
-  throw new Error('No BNS connection found');
+  throw new Error("No BNS connection found");
 }
 
 export function isIov(username: string): boolean {
-  return username.endsWith('*iov');
+  return username.endsWith("*iov");
 }

@@ -1,11 +1,11 @@
-import { ReadonlyDate } from 'readonly-date';
+import { ReadonlyDate } from "readonly-date";
 
 export interface TxMeta {
   readonly time: ReadonlyDate;
   readonly id: string;
 }
 
-const LAST_TX_KEY = 'LAST_TX';
+const LAST_TX_KEY = "LAST_TX";
 
 export function getLastTx(): TxMeta | undefined {
   const storageItem = localStorage.getItem(LAST_TX_KEY);

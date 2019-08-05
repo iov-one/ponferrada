@@ -1,12 +1,12 @@
-import { Identity } from '@iov/bcp';
-import { TransactionEncoder } from '@iov/encoding';
-import { Dispatch } from 'redux';
-import { Subscription } from 'xstream';
+import { Identity } from "@iov/bcp";
+import { TransactionEncoder } from "@iov/encoding";
+import { Dispatch } from "redux";
+import { Subscription } from "xstream";
 
-import { getConfig } from '../config';
-import { addBalancesAction, getBalances } from '../store/balances';
-import { getCodec } from './codec';
-import { getConnectionFor } from './connection';
+import { getConfig } from "../config";
+import { addBalancesAction, getBalances } from "../store/balances";
+import { getCodec } from "./codec";
+import { getConnectionFor } from "./connection";
 
 let balanceSubscriptions: Subscription[] = [];
 

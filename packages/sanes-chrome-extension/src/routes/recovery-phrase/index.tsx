@@ -1,10 +1,10 @@
-import PageLayout from 'medulas-react-components/lib/components/PageLayout';
-import * as React from 'react';
+import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import * as React from "react";
 
-import { PersonaContext } from '../../context/PersonaProvider';
-import { history } from '../../store/reducers';
-import { RECOVERY_PHRASE_ROUTE } from '../paths';
-import ShowRecoveryPhrase from './components/ShowRecoveryPhrase';
+import { PersonaContext } from "../../context/PersonaProvider";
+import { history } from "../../store/reducers";
+import { RECOVERY_PHRASE_ROUTE } from "../paths";
+import ShowRecoveryPhrase from "./components/ShowRecoveryPhrase";
 
 const onBack = (): void => {
   history.goBack();

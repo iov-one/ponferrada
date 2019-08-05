@@ -1,10 +1,10 @@
-import Hairline from 'medulas-react-components/lib/components/Hairline';
-import * as React from 'react';
+import Hairline from "medulas-react-components/lib/components/Hairline";
+import * as React from "react";
 
-import DownloadCSV, { DownloadCSVProps } from './DownloadCSV';
-import NoTransactions from './NoTransactions';
-import TxTable from './TxTable';
-import { TxTableProps } from './TxTable/rowTxBuilder';
+import DownloadCSV, { DownloadCSVProps } from "./DownloadCSV";
+import NoTransactions from "./NoTransactions";
+import TxTable from "./TxTable";
+import { TxTableProps } from "./TxTable/rowTxBuilder";
 
 interface Props extends DownloadCSVProps, TxTableProps {}
 

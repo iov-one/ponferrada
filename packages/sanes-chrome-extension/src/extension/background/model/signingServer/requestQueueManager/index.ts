@@ -1,17 +1,17 @@
-import { Address, isUnsignedTransaction } from '@iov/bcp';
+import { Address, isUnsignedTransaction } from "@iov/bcp";
 
-import { isSupportedTransaction, SupportedTransaction } from '../../persona';
+import { isSupportedTransaction, SupportedTransaction } from "../../persona";
 
 export interface RequestMeta {
   readonly senderUrl: string;
 }
 
 export function isRequestMeta(data: unknown): data is RequestMeta {
-  if (typeof data !== 'object' || data === null) {
+  if (typeof data !== "object" || data === null) {
     return false;
   }
 
-  return typeof (data as RequestMeta).senderUrl === 'string';
+  return typeof (data as RequestMeta).senderUrl === "string";
 }
 
 /**
@@ -26,12 +26,12 @@ export interface UiIdentity {
 }
 
 function isUiIdentity(data: unknown): data is UiIdentity {
-  if (typeof data !== 'object' || data === null) {
+  if (typeof data !== "object" || data === null) {
     return false;
   }
 
   return (
-    typeof (data as UiIdentity).chainName === 'string' && typeof (data as UiIdentity).address === 'string'
+    typeof (data as UiIdentity).chainName === "string" && typeof (data as UiIdentity).address === "string"
   );
 }
 
@@ -40,7 +40,7 @@ export interface GetIdentitiesResponseData {
 }
 
 export function isGetIdentitiesResponseData(data: unknown): data is GetIdentitiesResponseData {
-  if (typeof data !== 'object' || data === null) {
+  if (typeof data !== "object" || data === null) {
     return false;
   }
 
@@ -55,7 +55,7 @@ export interface SignAndPostResponseData {
 }
 
 export function isSignAndPostResponseData(data: unknown): data is SignAndPostResponseData {
-  if (typeof data !== 'object' || data === null) {
+  if (typeof data !== "object" || data === null) {
     return false;
   }
 
@@ -102,7 +102,7 @@ export class RequestQueueManager {
   public next(): Request {
     const req = this.instance[0];
     if (!req) {
-      throw new Error('Next element is undefined');
+      throw new Error("Next element is undefined");
     }
 
     return req;
@@ -110,16 +110,16 @@ export class RequestQueueManager {
 
   public solved(): void {
     if (this.instance.length === 0) {
-      throw new Error('There are no requests stored. This could lead to unexpected errors');
+      throw new Error("There are no requests stored. This could lead to unexpected errors");
     }
 
     const req = this.instance.shift();
     if (!req) {
-      throw new Error('Shifted element is undefined. This could lead to unexpected errors');
+      throw new Error("Shifted element is undefined. This could lead to unexpected errors");
     }
   }
 
-  public add(req: Omit<Request, 'id'>): number {
+  public add(req: Omit<Request, "id">): number {
     const size = this.instance.push({ ...req, id: this.counter });
     this.counter = this.counter + 1;
 

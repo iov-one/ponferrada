@@ -1,18 +1,18 @@
-import { isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from '@iov/bcp';
-import { BnsConnection, isRegisterUsernameTx, RegisterUsernameTx } from '@iov/bns';
-import { Bip39, Random } from '@iov/crypto';
-import { Encoding } from '@iov/encoding';
-import { UserProfile } from '@iov/keycontrol';
-import { UserProfileEncryptionKey } from '@iov/keycontrol';
-import { MultiChainSigner, SignedAndPosted, SigningServerCore } from '@iov/multichain';
-import { ReadonlyDate } from 'readonly-date';
+import { isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
+import { BnsConnection, isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
+import { Bip39, Random } from "@iov/crypto";
+import { Encoding } from "@iov/encoding";
+import { UserProfile } from "@iov/keycontrol";
+import { UserProfileEncryptionKey } from "@iov/keycontrol";
+import { MultiChainSigner, SignedAndPosted, SigningServerCore } from "@iov/multichain";
+import { ReadonlyDate } from "readonly-date";
 
-import { transactionsUpdater } from '../../updaters/appUpdater';
-import { AccountManager } from '../accountManager';
-import { StringDb } from '../backgroundscript/db';
-import SigningServer from '../signingServer';
-import { ConfigurationFile, getConfigurationFile } from './config';
-import { PersonaBuilder } from './personaBuider';
+import { transactionsUpdater } from "../../updaters/appUpdater";
+import { AccountManager } from "../accountManager";
+import { StringDb } from "../backgroundscript/db";
+import SigningServer from "../signingServer";
+import { ConfigurationFile, getConfigurationFile } from "./config";
+import { PersonaBuilder } from "./personaBuider";
 
 function isNonNull<T>(t: T | null): t is T {
   return t !== null;
@@ -204,7 +204,7 @@ export class Persona {
     const mnemonics = new Set(wallets.map(info => this.profile.printableSecret(info.id)));
 
     if (mnemonics.size !== 1) {
-      throw new Error('Found multiple different mnemoics in different wallets. This is not supported.');
+      throw new Error("Found multiple different mnemoics in different wallets. This is not supported.");
     }
 
     return mnemonics.values().next().value;
@@ -228,6 +228,6 @@ export class Persona {
       }
     }
 
-    throw new Error('No BNS connection found');
+    throw new Error("No BNS connection found");
   }
 }

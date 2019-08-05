@@ -1,11 +1,11 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import * as React from 'react';
+import { makeStyles, Theme } from "@material-ui/core";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import * as React from "react";
 
-import Block from '../../components/Block';
-import Img from '../../components/Image';
+import Block from "../../components/Block";
+import Img from "../../components/Image";
 
 interface Props {
   readonly src: string;
@@ -18,14 +18,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(6),
   },
   center: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   text: {
     marginBottom: theme.spacing(3),
-    '& > span': {
-      fontSize: '1.6rem',
+    "& > span": {
+      fontSize: "1.6rem",
     },
   },
 }));
