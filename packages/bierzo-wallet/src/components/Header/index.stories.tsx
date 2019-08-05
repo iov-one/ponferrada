@@ -10,6 +10,7 @@ import { DeepPartial } from 'redux';
 import { BwUnknownProps } from '../../logic/transactions/types/BwUnkownTransaction';
 import { ProcessedSendTransaction } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
+import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Header from './index';
 
@@ -29,11 +30,7 @@ const txs: ReadonlyArray<ProcessedSendTransaction | BwUnknownProps> = [
       kind: 'bcp/send',
       sender: '123L' as Address,
       recipient: '456L' as Address,
-      amount: {
-        quantity: '1050000000',
-        fractionalDigits: 8,
-        tokenTicker: 'LSK' as TokenTicker,
-      },
+      amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     },
   },
   {
@@ -44,11 +41,7 @@ const txs: ReadonlyArray<ProcessedSendTransaction | BwUnknownProps> = [
       kind: 'bcp/send',
       sender: 'tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3' as Address,
       recipient: 'tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f' as Address,
-      amount: {
-        quantity: '25500000000',
-        fractionalDigits: 9,
-        tokenTicker: 'IOV' as TokenTicker,
-      },
+      amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     },
   },
 ];
