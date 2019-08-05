@@ -9,7 +9,7 @@ import EmptyListIcon from 'medulas-react-components/lib/templates/menu/EmptyList
 import ListMenu from 'medulas-react-components/lib/templates/menu/ListMenu';
 import * as React from 'react';
 
-import { ParsedTx } from '../../../../logic/transactions/types/BwParser';
+import { ProcessedTx } from '../../../../logic/transactions/types/BwParser';
 import { BwParserFactory } from '../../../../logic/transactions/types/BwParserFactory';
 import { ProcessedSendTransaction } from '../../../../store/notifications';
 import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
@@ -19,8 +19,8 @@ import upToDate from '../../assets/uptodate.svg';
 import { BadgeProps, calcBadgeProps } from './badgeCalculator';
 
 interface Props {
-  readonly items: ReadonlyArray<ParsedTx>;
-  readonly lastTx?: ParsedTx;
+  readonly items: ReadonlyArray<ProcessedTx>;
+  readonly lastTx?: ProcessedTx;
 }
 
 const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
@@ -62,7 +62,7 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
       </Block>
       <Hairline />
       {hasItems ? (
-        items.map((item: ParsedTx, index: number) => {
+        items.map((item: ProcessedTx, index: number) => {
           const lastOne = index + 1 === items.length;
 
           return BwParserFactory.getHeaderRepresentation(item, lastOne);

@@ -7,7 +7,7 @@ import {
   LightTransaction,
 } from '@iov/bcp';
 
-import { BwParser, ParsedTx } from '../types/BwParser';
+import { BwParser, ProcessedTx } from '../types/BwParser';
 import { BwSendParser, BwSendProps } from './BwSendTransaction';
 import { BwUnknownProps, BwUnkownParser } from './BwUnkownTransaction';
 
@@ -38,7 +38,7 @@ export class BwParserFactory {
 
   public static getBwTransactionFrom(
     trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  ): BwParser<ParsedTx> {
+  ): BwParser<ProcessedTx> {
     if (isFailedTransaction(trans)) {
       throw new Error('Not supported error txs for now');
     }

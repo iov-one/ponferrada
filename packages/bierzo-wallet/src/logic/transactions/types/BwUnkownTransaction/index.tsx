@@ -1,11 +1,11 @@
 import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
-import { BwParser, ParsedTx } from '../../types/BwParser';
+import { BwParser, ProcessedTx } from '../../types/BwParser';
 import UnkownTransactionHeader from './ui/UnknownTxHeader';
 import UnkownTransactionRow from './ui/UnknownTxRow';
 
-export interface BwUnknownProps extends ParsedTx {
+export interface BwUnknownProps extends ProcessedTx {
   readonly id: string;
 }
 

@@ -1,10 +1,10 @@
 import { Amount } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
-import { ParsedTx } from '../../logic/transactions/types/BwParser';
+import { ProcessedTx } from '../../logic/transactions/types/BwParser';
 import { NotificationActions } from './actions';
 
-export interface ProcessedSendTransaction extends ParsedTx {
+export interface ProcessedSendTransaction extends ProcessedTx {
   readonly time: ReadonlyDate;
   readonly received: boolean;
   readonly id: string;
@@ -15,7 +15,7 @@ export interface ProcessedSendTransaction extends ParsedTx {
 }
 
 export interface NotificationState {
-  readonly transactions: ReadonlyArray<ParsedTx>;
+  readonly transactions: ReadonlyArray<ProcessedTx>;
 }
 
 const initState = {
@@ -31,7 +31,7 @@ export function notificationReducer(
       return {
         ...state,
         transactions: [action.payload, ...state.transactions].sort(
-          (a: ParsedTx, b: ParsedTx) => b.time.getTime() - a.time.getTime(),
+          (a: ProcessedTx, b: ProcessedTx) => b.time.getTime() - a.time.getTime(),
         ),
       };
     default:
