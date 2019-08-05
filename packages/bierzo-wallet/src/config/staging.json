@@ -1,4 +1,9 @@
 {
+  "names": {
+    "iov-lovenet": "IOV Lovenet",
+    "lisk-da3ed6a454": "Lisk Testnet",
+    "ethereum-eip155-4": "Rinkeby"
+  },
   "extensionId": "hkmeinfklhongiffbgkfaandidpmklen",
   "chains": [
     {

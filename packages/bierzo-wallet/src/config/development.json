@@ -1,4 +1,9 @@
 {
+  "names": {
+    "local-iov-devnet": "IOV Devnet",
+    "lisk-198f2b61a8": "Lisk Devnet",
+    "ethereum-eip155-5777": "Ganache"
+  },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
   "chains": [
     {

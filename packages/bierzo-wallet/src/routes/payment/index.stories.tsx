@@ -14,8 +14,8 @@ import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from '../transa
 import ConfirmPayment from './components/ConfirmPayment';
 import Layout from './components/index';
 
-const PAYMENT_STORY_PATH = `${WALLET_ROOT}/Payment`;
-const PAYMENT_STORY_PAYMENT_PATH = 'Payment';
+export const PAYMENT_STORY_PATH = `${WALLET_ROOT}/Payment`;
+export const PAYMENT_STORY_PAYMENT_PATH = 'Payment';
 const PAYMENT_STORY_CONFIRMATION_PATH = 'Confirmation';
 
 const BALANCES: BalanceState = {

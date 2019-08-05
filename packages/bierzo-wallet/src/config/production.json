@@ -1,4 +1,9 @@
 {
+  "names": {
+    "bns-antnet": "BNS Antnet",
+    "lisk-ed14889723": "Lisk Mainnet",
+    "ethereum-eip155-1": "Ethereum Mainnet"
+  },
   "extensionId": "N/A",
   "chains": [
     {
