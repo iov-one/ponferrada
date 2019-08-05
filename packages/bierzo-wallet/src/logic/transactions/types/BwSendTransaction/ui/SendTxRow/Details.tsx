@@ -4,7 +4,7 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
 
 import { getAddressPrefix } from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
-import { ProcessedTx } from '../../../../../../store/notifications';
+import { ProcessedSendTransaction } from '../../../../../../store/notifications';
 
 const useStyles = makeStyles({
   sectionName: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly tx: ProcessedTx;
+  readonly tx: ProcessedSendTransaction;
 }
 
 const TxDetails = ({ tx }: Props): JSX.Element => {

@@ -8,13 +8,13 @@ import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
 import { BwUnknownProps } from '../../logic/transactions/types/BwUnkownTransaction';
-import { ProcessedTx } from '../../store/notifications';
+import { ProcessedSendTransaction } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import Header from './index';
 
-const txs: ReadonlyArray<ProcessedTx | BwUnknownProps> = [
+const txs: ReadonlyArray<ProcessedSendTransaction | BwUnknownProps> = [
   {
     kind: 'bns/register_username',
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),

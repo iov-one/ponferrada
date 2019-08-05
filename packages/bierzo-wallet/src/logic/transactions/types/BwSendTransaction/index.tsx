@@ -1,12 +1,12 @@
 import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from '@iov/bcp';
 import * as React from 'react';
 
-import { ProcessedTx } from '../../../../store/notifications';
+import { ProcessedSendTransaction } from '../../../../store/notifications';
 import { BwParser } from '../../types/BwParser';
 import SendTransactionHeader from './ui/SendTxHeader';
 import SendTransactionRow from './ui/SendTxRow';
 
-export type BwSendProps = ProcessedTx;
+export type BwSendProps = ProcessedSendTransaction;
 
 export class BwSendParser extends BwParser<BwSendProps> {
   public async parse(

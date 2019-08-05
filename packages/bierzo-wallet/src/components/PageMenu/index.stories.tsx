@@ -5,13 +5,13 @@ import * as React from 'react';
 import { ReadonlyDate } from 'readonly-date';
 import { DeepPartial } from 'redux';
 
-import { ProcessedTx } from '../../store/notifications';
+import { ProcessedSendTransaction } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
 import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import PageMenu from './index';
 
-const txs: ReadonlyArray<ProcessedTx> = [
+const txs: ReadonlyArray<ProcessedSendTransaction> = [
   {
     kind: 'bcp/send',
     received: true,
@@ -32,7 +32,7 @@ const txs: ReadonlyArray<ProcessedTx> = [
   },
 ];
 
-const faultTx: ProcessedTx = {
+const faultTx: ProcessedSendTransaction = {
   kind: 'bcp/send',
   received: false,
   sender: 'me',

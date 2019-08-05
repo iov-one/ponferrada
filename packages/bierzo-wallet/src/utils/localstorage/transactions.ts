@@ -1,8 +1,8 @@
-import { ProcessedTx } from '../../store/notifications';
+import { ProcessedSendTransaction } from '../../store/notifications';
 
 export const LAST_TX = 'LAST_TX';
 
-export function getLastTx(): ProcessedTx | undefined {
+export function getLastTx(): ProcessedSendTransaction | undefined {
   const lastTxJson = localStorage.getItem(LAST_TX);
   if (lastTxJson) {
     const lastTx = JSON.parse(lastTxJson);
@@ -14,6 +14,6 @@ export function getLastTx(): ProcessedTx | undefined {
   return undefined;
 }
 
-export function storeLastTx(lastTx: ProcessedTx): void {
+export function storeLastTx(lastTx: ProcessedSendTransaction): void {
   localStorage.setItem(LAST_TX, JSON.stringify(lastTx));
 }
