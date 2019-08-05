@@ -33,7 +33,7 @@ function UnknownTxRow({ tx }: Props): JSX.Element {
           </Typography>
           {tx.id && (
             <Typography variant="subtitle2" weight="regular" color="secondary">
-              The transaction id is: {`${tx.id}`}
+              The transaction ID is: {`${tx.id}`}
             </Typography>
           )}
         </Block>

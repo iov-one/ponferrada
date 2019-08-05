@@ -2472,7 +2472,7 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   <h6
                     className="MuiTypography-root makeStyles-weight-471 makeStyles-weight-632 MuiTypography-subtitle2 MuiTypography-colorSecondary"
                   >
-                    The transaction id is: 
+                    The transaction ID is: 
                     0xaaffBdjuhyu8898scchjsg
                   </h6>
                 </div>
