@@ -5,9 +5,7 @@ import { BwParser, ProcessedTx } from '../../types/BwParser';
 import UnkownTransactionHeader from './ui/UnknownTxHeader';
 import UnkownTransactionRow from './ui/UnknownTxRow';
 
-export interface BwUnknownProps extends ProcessedTx {
-  readonly id: string;
-}
+export interface BwUnknownProps extends ProcessedTx {}
 
 export class BwUnkownParser extends BwParser<BwUnknownProps> {
   public async parse(

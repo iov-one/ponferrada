@@ -4,10 +4,15 @@ import {
   ConfirmedTransaction,
   FailedTransaction,
   LightTransaction,
+  TransactionId,
 } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
-export type ProcessedTx = Pick<LightTransaction, 'kind'> & { time: ReadonlyDate };
+export interface ProcessedTx {
+  readonly kind: string;
+  readonly time: ReadonlyDate;
+  readonly id: TransactionId;
+}
 
 export abstract class BwParser<K> {
   abstract async parse(

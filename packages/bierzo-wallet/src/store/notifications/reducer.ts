@@ -1,13 +1,10 @@
 import { Amount } from '@iov/bcp';
-import { ReadonlyDate } from 'readonly-date';
 
 import { ProcessedTx } from '../../logic/transactions/types/BwParser';
 import { NotificationActions } from './actions';
 
 export interface ProcessedSendTransaction extends ProcessedTx {
-  readonly time: ReadonlyDate;
   readonly received: boolean;
-  readonly id: string;
   readonly sender: string;
   readonly recipient: string;
   readonly amount: Amount;

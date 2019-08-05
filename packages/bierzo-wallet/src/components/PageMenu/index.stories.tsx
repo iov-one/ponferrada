@@ -1,4 +1,4 @@
-import { TokenTicker } from '@iov/bcp';
+import { TokenTicker, TransactionId } from '@iov/bcp';
 import { storiesOf } from '@storybook/react';
 import Typography from 'medulas-react-components/lib/components/Typography';
 import * as React from 'react';
@@ -19,7 +19,7 @@ const txs: ReadonlyArray<ProcessedSendTransaction> = [
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    id: 'tx1',
+    id: 'tx1' as TransactionId,
   },
   {
     kind: 'bcp/send',
@@ -28,7 +28,7 @@ const txs: ReadonlyArray<ProcessedSendTransaction> = [
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-    id: 'tx2',
+    id: 'tx2' as TransactionId,
   },
 ];
 
@@ -39,7 +39,7 @@ const faultTx: ProcessedSendTransaction = {
   recipient: 'alex*iov',
   amount: stringToAmount('100.5', 'IOV' as TokenTicker),
   time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
-  id: 'tx3',
+  id: 'tx3' as TransactionId,
 };
 
 const fullStore = (): DeepPartial<RootState> => {

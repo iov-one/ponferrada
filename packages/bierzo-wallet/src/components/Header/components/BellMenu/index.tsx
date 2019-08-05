@@ -11,7 +11,6 @@ import * as React from 'react';
 
 import { ProcessedTx } from '../../../../logic/transactions/types/BwParser';
 import { BwParserFactory } from '../../../../logic/transactions/types/BwParserFactory';
-import { ProcessedSendTransaction } from '../../../../store/notifications';
 import { getLastTx, storeLastTx } from '../../../../utils/localstorage/transactions';
 import bell from '../../assets/bell.svg';
 import bellGreen from '../../assets/bellGreen.svg';
@@ -29,14 +28,12 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
       return;
     }
 
-    // TODO remove automatic casting when supported multiple types
-    storeLastTx(lastTx as ProcessedSendTransaction);
+    storeLastTx(lastTx);
   };
 
   const starter = (open: boolean): JSX.Element => {
     const logo = open ? bellGreen : bell;
-    // TODO remove automatic casting when supported multiple types
-    const badgeProps: BadgeProps = calcBadgeProps(lastTx as ProcessedSendTransaction, getLastTx());
+    const badgeProps: BadgeProps = calcBadgeProps(lastTx, getLastTx());
 
     return (
       <Block paddingLeft={5} paddingRight={5}>
