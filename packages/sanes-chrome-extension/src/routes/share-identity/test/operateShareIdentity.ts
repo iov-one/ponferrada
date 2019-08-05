@@ -37,7 +37,7 @@ export const checkPermanentRejection = async (ShareIdentityDom: React.Component)
   const doNotShowAgainCheckbox = inputs[0];
   TestUtils.act(() => {
     TestUtils.Simulate.change(doNotShowAgainCheckbox, {
-      target: { checked: true } as any, //eslint-disable-line @typescript-eslint/no-explicit-any
+      target: { checked: true } as any,
     });
   });
 };

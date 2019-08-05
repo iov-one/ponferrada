@@ -105,7 +105,7 @@ export class AccountManager {
     path: ReadonlyArray<Slip10RawIndex>,
   ): Promise<boolean> {
     // FIXME iov-core, please.
-    const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId); // eslint-disable-line @typescript-eslint/no-explicit-any
+    const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId);
     const ident = await wallet.previewIdentity(chainId, path);
     const allIdentities = wallet.getIdentities();
     return !!allIdentities.find(x => identityEquals(x, ident));

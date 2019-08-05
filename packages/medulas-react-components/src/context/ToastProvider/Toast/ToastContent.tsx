@@ -61,7 +61,6 @@ interface Props {
 }
 
 const ToastContent = React.forwardRef(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ({ className, message, onClose, variant }: Props, ref?: React.Ref<any>): JSX.Element => {
     const Icon = variantIcon[variant];
     const classes = useStyles();
