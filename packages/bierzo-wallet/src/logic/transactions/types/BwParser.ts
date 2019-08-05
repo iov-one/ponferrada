@@ -8,10 +8,10 @@ import {
 } from '@iov/bcp';
 import { ReadonlyDate } from 'readonly-date';
 
-export interface ProcessedTx {
-  readonly kind: string;
+export interface ProcessedTx<T = LightTransaction> {
   readonly time: ReadonlyDate;
   readonly id: TransactionId;
+  readonly original: T;
 }
 
 export abstract class BwParser<K> {

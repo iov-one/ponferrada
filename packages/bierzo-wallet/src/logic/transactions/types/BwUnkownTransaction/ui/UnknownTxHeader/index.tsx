@@ -36,7 +36,7 @@ const UnknownTxHeader = ({ tx, lastOne }: Props): JSX.Element => {
             className={classes.msg}
             primary={
               <Typography variant="body2" inline>
-                {`Transaction of unsupported type ${tx.kind}`}
+                {`Transaction of unsupported type ${tx.original.kind}`}
               </Typography>
             }
             secondary={tx.time.toLocaleString()}

@@ -17,9 +17,9 @@ export class BwUnkownParser extends BwParser<BwUnknownProps> {
     const time = header.time;
 
     return {
-      kind: 'unknown',
       time,
       id: trans.transactionId,
+      original: trans.transaction,
     };
   }
 

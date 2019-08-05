@@ -22,7 +22,6 @@ export class BwSendParser extends BwParser<BwSendProps> {
     const received = payload.recipient === currentUserAddress;
 
     return {
-      kind: trans.transaction.kind,
       id: trans.transactionId,
       memo: payload.memo,
       amount: payload.amount,
@@ -30,6 +29,7 @@ export class BwSendParser extends BwParser<BwSendProps> {
       received,
       recipient: payload.recipient,
       sender: payload.sender,
+      original: trans.transaction,
     };
   }
 

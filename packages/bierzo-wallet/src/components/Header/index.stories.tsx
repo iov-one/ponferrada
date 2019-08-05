@@ -16,27 +16,35 @@ import Header from './index';
 
 const txs: ReadonlyArray<ProcessedSendTransaction | BwUnknownProps> = [
   {
-    kind: 'bns/register_username',
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
     id: 'tx0' as TransactionId,
+    original: {
+      kind: 'bns/register_username',
+    },
   },
   {
-    kind: 'bcp/send',
     received: true,
     sender: 'george*iov',
     recipient: 'me',
     amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
     id: 'tx1' as TransactionId,
+    original: {
+      kind: 'bcp/send',
+      // TODO: add all SendTransaction properties
+    },
   },
   {
-    kind: 'bcp/send',
     received: false,
     sender: 'me',
     recipient: 'alex*iov',
     amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
     id: 'tx2' as TransactionId,
+    original: {
+      kind: 'bcp/send',
+      // TODO: add all SendTransaction properties
+    },
   },
 ];
 
