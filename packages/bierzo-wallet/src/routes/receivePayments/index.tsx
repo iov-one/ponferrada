@@ -1,4 +1,4 @@
-import { ChainId, Identity } from '@iov/bcp';
+import { Identity } from '@iov/bcp';
 import { TransactionEncoder } from '@iov/encoding';
 import React from 'react';
 import * as ReactRedux from 'react-redux';
@@ -21,22 +21,18 @@ const ReceivePayment = (): JSX.Element => {
 
   React.useEffect(() => {
     async function processAddresses(pubKeys: { [chain: string]: string }): Promise<void> {
-      const addressesMap: ChainAddressMap[] = [];
-      const chainIds = Object.keys(pubKeys);
-      for (let i = 0; i < chainIds.length; i++) {
-        const chainId = chainIds[i] as ChainId;
-        const plainPubkey = pubKeys[chainId];
-        if (!plainPubkey) {
-          return;
-        }
+      const identities = Object.values(pubKeys).map(
+        (serializedIdentity): Identity => {
+          return TransactionEncoder.fromJson(JSON.parse(serializedIdentity));
+        },
+      );
 
-        const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
-        const address = (await getCodecForChainId(chainId)).identityToAddress(identity);
-        const chainName = getChainName(chainId);
+      const addressesMap: ChainAddressMap[] = [];
+      for (const identity of identities) {
         addressesMap.push({
-          chainId: chainId,
-          chainName,
-          address,
+          chainId: identity.chainId,
+          chainName: getChainName(identity.chainId),
+          address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
         });
       }
       addressesMap.sort((a: ChainAddressMap, b: ChainAddressMap) =>
