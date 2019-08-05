@@ -4,13 +4,18 @@ import { BnsConnection } from "@iov/bns";
 import { getConfig } from "../config";
 import { getConnectionFor, isBnsSpec } from "./connection";
 
-/** lookupRecipientAddressByName returns the address associated with the name, or undefined if not registered
- * the name should not have the "*iov" suffix
+/**
+ * Returns the address associated with the name, or undefined if not registered.
+ * The name must include a namespace ("*iov")
  */
 export async function lookupRecipientAddressByName(
   username: string,
   chainId: ChainId,
 ): Promise<Address | undefined> {
+  if (!username.endsWith("*iov")) {
+    throw new Error("Username must include namespace suffix");
+  }
+
   const config = getConfig();
   const chains = config.chains;
 

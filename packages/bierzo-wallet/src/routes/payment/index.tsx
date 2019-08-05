@@ -59,10 +59,7 @@ const Payment = (): JSX.Element => {
 
     let recipient: Address | undefined;
     if (isIov(formValues[ADDRESS_FIELD])) {
-      recipient = await lookupRecipientAddressByName(
-        formValues[ADDRESS_FIELD].replace(/\*iov$/, ""),
-        chainId,
-      );
+      recipient = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
 
       if (!recipient) {
         toast.show("IOV username was not found", ToastVariant.ERROR);
