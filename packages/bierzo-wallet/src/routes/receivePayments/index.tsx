@@ -31,7 +31,7 @@ const ReceivePayment = (): JSX.Element => {
       for (const identity of identities) {
         addresses.push({
           chainId: identity.chainId,
-          chainName: getChainName(identity.chainId),
+          chainName: await getChainName(identity.chainId),
           address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
         });
       }

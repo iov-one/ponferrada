@@ -61,7 +61,7 @@ export const sendSignAndPostRequest = async (
 ): Promise<TransactionId | null> => {
   const request = await generateSignAndPostRequest(chainId, creator, recipient, amount, memo);
 
-  const config = getConfig();
+  const config = await getConfig();
 
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {

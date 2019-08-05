@@ -16,7 +16,7 @@ export async function lookupRecipientAddressByName(
     throw new Error("Username must include namespace suffix");
   }
 
-  const config = getConfig();
+  const config = await getConfig();
   const chains = config.chains;
 
   for (const chain of chains) {

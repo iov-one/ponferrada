@@ -23,7 +23,7 @@ export function getCodec(spec: ChainSpec): TxCodec {
 }
 
 export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
-  for (const chain of getConfig().chains) {
+  for (const chain of (await getConfig()).chains) {
     const connection = await getConnectionFor(chain.chainSpec);
     if (connection && connection.chainId() === chainId) {
       return getCodec(chain.chainSpec);

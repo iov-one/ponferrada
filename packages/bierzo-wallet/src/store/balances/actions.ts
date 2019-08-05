@@ -6,7 +6,7 @@ import { getConnectionFor } from "../../logic/connection";
 import { AddBalancesActionType } from "./reducer";
 
 export async function getBalances(keys: { [chain: string]: string }): Promise<{ [ticker: string]: Amount }> {
-  const config = getConfig();
+  const config = await getConfig();
   const chains = config.chains;
 
   const balances: { [ticker: string]: Amount } = {};

@@ -7,9 +7,7 @@ import { getConnectionFor, isBnsSpec } from "../../logic/connection";
 import { AddUsernamesActionType, BwUsername } from "./reducer";
 
 export async function getUsernames(keys: { [chain: string]: string }): Promise<readonly BwUsername[]> {
-  const bnsChainSpec = getConfig()
-    .chains.map(chain => chain.chainSpec)
-    .find(isBnsSpec);
+  const bnsChainSpec = (await getConfig()).chains.map(chain => chain.chainSpec).find(isBnsSpec);
   if (!bnsChainSpec) throw new Error("Missing BNS chain spec in config");
 
   const bnsConnection = (await getConnectionFor(bnsChainSpec)) as BnsConnection;

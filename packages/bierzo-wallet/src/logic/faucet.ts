@@ -8,7 +8,7 @@ import { getCodec } from "./codec";
 import { getConnectionFor } from "./connection";
 
 export async function drinkFaucetIfNeeded(keys: { [chain: string]: string }): Promise<void> {
-  const chainsWithFaucet = getConfig().chains.filter(isChainConfigWithFaucet);
+  const chainsWithFaucet = (await getConfig()).chains.filter(isChainConfigWithFaucet);
 
   // Create one job per chain that sends all available tokens. All jobs run in parallel.
   const jobs = chainsWithFaucet.map(async ({ chainSpec, faucetSpec }) => {
