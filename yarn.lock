@@ -8196,10 +8196,10 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-final-form@^4.12.0:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.12.0.tgz#1844e2a3bc9789d51115c76a94d0ea6a19e219c0"
-  integrity sha512-z1fSzDNmIBlDjRMaluM3WgDbcwCFpPm7mvopplgXGMRS49MXR+1n//lteLwPURdGQNOZhWm3GwiEJanEHCItww==
+final-form@^4.18.2:
+  version "4.18.2"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.18.2.tgz#3e7447ba36049a747d4becc61eb35e65a90f22a1"
+  integrity sha512-VQx/5x9M4CiC8fG678Dm1IS3mXvBl7ZNIUx5tUZCk00lFImJzQix4KO0+eGtl49sha2bYOxuYn8jRJiq6sazXA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -14668,10 +14668,10 @@ react-fast-compare@2.0.4:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-final-form-hooks@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-final-form-hooks/-/react-final-form-hooks-2.0.0.tgz#a551cc9047130a44bf0372b3778150cc8b14586a"
-  integrity sha512-TP0nEcvJm4kOIFpTbwmStsXTfAM5TlrE7b+vQvEJpr4khOAe4vZahWnD3vfdFBkZ2BSpb3sK/iWTvq44Xa1KNw==
+react-final-form-hooks@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-final-form-hooks/-/react-final-form-hooks-2.0.1.tgz#44b321394b8f80236318e49e1c2bfe32646352fd"
+  integrity sha512-UlWO9OuHw11iUUjnvxzyMtKnI+iSgb5vdcPPP6fLT0DGoNu9DHULm9jzwojBO4Dqvp0faybfVwKeJG45uqkHyA==
   dependencies:
     np "^5.0.1"
 
