@@ -1,6 +1,6 @@
 {
   "name": "sanes-chrome-extension",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "scripts": {
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
@@ -59,7 +59,7 @@
     "final-form": "^4.12.0",
     "jspdf": "^1.5.3",
     "level-js": "^4.0.1",
-    "medulas-react-components": "^0.1.4",
+    "medulas-react-components": "^0.1.6",
     "memdown": "^4.0.0",
     "random-js": "^2.0.0-rc5",
     "react": "16.9.0-alpha.0",

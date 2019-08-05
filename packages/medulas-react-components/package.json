@@ -1,6 +1,6 @@
 {
   "name": "medulas-react-components",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "private": true,
   "main": "build/index.js",
   "scripts": {
