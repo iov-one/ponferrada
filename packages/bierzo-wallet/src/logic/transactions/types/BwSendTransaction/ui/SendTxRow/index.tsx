@@ -36,7 +36,6 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
 
-  console.log('isOpen ' + isOpen);
   const onClick = (): void => {
     toggle();
   };
