@@ -1,9 +1,5 @@
-import { ChainId } from "@iov/bcp";
-import { singleton } from "medulas-react-components/lib/utils/singleton";
-
-import developmentConfig from "./development.json";
-import productionConfig from "./production.json";
-import stagingConfig from "./staging.json";
+import { ChainId } from '@iov/bcp';
+import { singleton } from 'medulas-react-components/lib/utils/singleton';
 
 export interface Config {
   readonly names: { [chainId: string]: string };
@@ -42,30 +38,26 @@ export interface FaucetSpec {
   readonly tokens: ReadonlyArray<string>;
 }
 
-const configuration = (): Config => {
-  if (process.env.REACT_APP_CONFIG === "development") {
-    return developmentConfig;
+const loadConfigurationFile = async (): Promise<Config> => {
+  if (process.env.NODE_ENV === 'test') {
+    const config = (window as any).config;
+    return config;
   }
 
-  if (process.env.REACT_APP_CONFIG === "staging") {
-    return stagingConfig;
-  }
+  const data = await fetch('/static/config/conf.json');
+  const json = await data.json();
 
-  if (process.env.REACT_APP_CONFIG === "production") {
-    return productionConfig;
-  }
-
-  throw new Error("Unexpected REACT_APP_CONFIG variable for obtaining configuration");
+  return json;
 };
 
-export const getConfig = singleton<typeof configuration>(configuration);
+export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurationFile);
 
 /**
  * Gets a chain name from the configuration file. Falls back to the chain ID
  * if no name is found.
  */
-export function getChainName(chainId: ChainId): string {
-  const chainNames = getConfig().names;
+export async function getChainName(chainId: ChainId): Promise<string> {
+  const chainNames = (await getConfig()).names;
 
   if (chainNames.hasOwnProperty(chainId)) {
     return chainNames[chainId];
