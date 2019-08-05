@@ -14,7 +14,7 @@
     "build-staging": "yarn use-config-staging && yarn build-with-any-config && yarn make-manifest-staging",
     "build-production": "yarn use-config-production && yarn build-with-any-config && yarn make-manifest-production",
     "build": "yarn build-development",
-    "override-config-development": "mkdir -p ./build/assets/config && cp ./config/development.json ./build/assets/config/conf.json && yarn make-manifest-development",
+    "override-config-development": "cp ./config/development.json ./build/assets/config/conf.json && yarn make-manifest-development",
     "override-config-staging": "cp ./config/staging.json ./build/assets/config/conf.json && yarn make-manifest-staging",
     "override-config-production": "cp ./config/production.json ./build/assets/config/conf.json && yarn make-manifest-production",
     "export-staging": "yarn override-config-staging && web-ext build --source-dir ./build/ --artifacts-dir ./exports --overwrite-dest",
