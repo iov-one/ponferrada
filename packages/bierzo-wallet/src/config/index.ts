@@ -1,5 +1,5 @@
-import { ChainId } from '@iov/bcp';
-import { singleton } from 'medulas-react-components/lib/utils/singleton';
+import { ChainId } from "@iov/bcp";
+import { singleton } from "medulas-react-components/lib/utils/singleton";
 
 export interface Config {
   readonly names: { [chainId: string]: string };
@@ -39,12 +39,12 @@ export interface FaucetSpec {
 }
 
 const loadConfigurationFile = async (): Promise<Config> => {
-  if (process.env.NODE_ENV === 'test') {
+  if (process.env.NODE_ENV === "test") {
     const config = (window as any).config;
     return config;
   }
 
-  const data = await fetch('/static/config/conf.json');
+  const data = await fetch("/static/config/conf.json");
   const json = await data.json();
 
   return json;

@@ -7,7 +7,7 @@ import { disconnect, getConnectionFor } from "./connection";
 withChainsDescribe("Logic :: connection", () => {
   afterAll(() => disconnect());
 
-  it('calls connections only once', async () => {
+  it("calls connections only once", async () => {
     const config = await getConfig();
     const firstChain = config.chains[2];
 
