@@ -28,13 +28,9 @@ export function notificationReducer(
 ): NotificationState {
   switch (action.type) {
     case '@@notifications/ADD_TRANSACTION':
-      if (!action.payload) {
-        return state;
-      }
-
       return {
         ...state,
-        transactions: [action.payload as ParsedTx, ...state.transactions].sort(
+        transactions: [action.payload, ...state.transactions].sort(
           (a: ParsedTx, b: ParsedTx) => b.time.getTime() - a.time.getTime(),
         ),
       };
