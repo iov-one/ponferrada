@@ -7,33 +7,38 @@ import {
   LightTransaction,
 } from '@iov/bcp';
 
+import { ProcessedSendTransaction } from '../../../store/notifications';
 import { BwParser, ProcessedTx } from '../types/BwParser';
-import { BwSendParser, BwSendProps } from './BwSendTransaction';
-import { BwUnknownProps, BwUnkownParser } from './BwUnkownTransaction';
+import { BwSendParser } from './BwSendTransaction';
+import { BwUnkownParser } from './BwUnkownTransaction';
+
+function isProcessedSendTransaction(tx: ProcessedTx): tx is ProcessedSendTransaction {
+  return isSendTransaction(tx.original);
+}
 
 export class BwParserFactory {
-  public static getReactComponent(tx: any): JSX.Element {
-    if (tx.kind === 'bcp/send') {
-      return new BwSendParser().graphicalRepresentation(tx as BwSendProps);
+  public static getReactComponent(tx: ProcessedTx): JSX.Element {
+    if (isProcessedSendTransaction(tx)) {
+      return new BwSendParser().graphicalRepresentation(tx);
     }
 
-    return new BwUnkownParser().graphicalRepresentation(tx as BwUnknownProps);
+    return new BwUnkownParser().graphicalRepresentation(tx);
   }
 
-  public static getHeaderRepresentation(tx: any, lastOne: boolean): JSX.Element {
-    if (tx.kind === 'bcp/send') {
-      return new BwSendParser().headerRepresentation(tx as BwSendProps, lastOne);
+  public static getHeaderRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element {
+    if (isProcessedSendTransaction(tx)) {
+      return new BwSendParser().headerRepresentation(tx, lastOne);
     }
 
-    return new BwUnkownParser().headerRepresentation(tx as BwUnknownProps, lastOne);
+    return new BwUnkownParser().headerRepresentation(tx, lastOne);
   }
 
-  public static getCsvRepresentation(tx: any): string {
-    if (tx.kind === 'bcp/send') {
-      return new BwSendParser().csvRepresentation(tx as BwSendProps);
+  public static getCsvRepresentation(tx: ProcessedTx): string {
+    if (isProcessedSendTransaction(tx)) {
+      return new BwSendParser().csvRepresentation(tx);
     }
 
-    return new BwUnkownParser().csvRepresentation(tx as BwUnknownProps);
+    return new BwUnkownParser().csvRepresentation(tx);
   }
 
   public static getBwTransactionFrom(

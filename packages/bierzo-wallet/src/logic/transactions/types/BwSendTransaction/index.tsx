@@ -6,14 +6,12 @@ import { BwParser } from '../../types/BwParser';
 import SendTransactionHeader from './ui/SendTxHeader';
 import SendTransactionRow from './ui/SendTxRow';
 
-export type BwSendProps = ProcessedSendTransaction;
-
-export class BwSendParser extends BwParser<BwSendProps> {
+export class BwSendParser extends BwParser<ProcessedSendTransaction> {
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,
     currentUserAddress: Address,
-  ): Promise<BwSendProps> {
+  ): Promise<ProcessedSendTransaction> {
     const header = await conn.getBlockHeader(trans.height);
     const time = header.time;
 
@@ -27,11 +25,11 @@ export class BwSendParser extends BwParser<BwSendProps> {
     };
   }
 
-  public graphicalRepresentation(sendTx: BwSendProps): JSX.Element {
+  public graphicalRepresentation(sendTx: ProcessedSendTransaction): JSX.Element {
     return <SendTransactionRow key={sendTx.id} sendTx={sendTx} />;
   }
 
-  public csvRepresentation(tx: BwSendProps): string {
+  public csvRepresentation(tx: ProcessedSendTransaction): string {
     const { original } = tx;
     const parties = [`"${tx.id}"`, `"${original.recipient}"`, `"${original.sender}"`];
     const payment = [
@@ -47,7 +45,7 @@ export class BwSendParser extends BwParser<BwSendProps> {
     return txRow.join(';');
   }
 
-  public headerRepresentation(tx: BwSendProps, lastOne: boolean): JSX.Element {
+  public headerRepresentation(tx: ProcessedSendTransaction, lastOne: boolean): JSX.Element {
     return <SendTransactionHeader key={tx.id} item={tx} lastOne={lastOne} />;
   }
 }

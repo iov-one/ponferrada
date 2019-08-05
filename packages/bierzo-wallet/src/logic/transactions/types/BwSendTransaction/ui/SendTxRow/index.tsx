@@ -8,12 +8,12 @@ import Typography from 'medulas-react-components/lib/components/Typography';
 import { useOpen } from 'medulas-react-components/lib/hooks/open';
 import * as React from 'react';
 
-import { BwSendProps } from '../..';
 import {
   DEFAULT_ADDRESS,
   getAddressPrefix,
   getTypeIcon,
 } from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
+import { ProcessedSendTransaction } from '../../../../../../store/notifications';
 import { getBorderColor } from '../../../../../../theme/css';
 import { amountToString } from '../../../../../../utils/balances';
 import { formatDate, formatTime } from '../../../../../../utils/date';
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly sendTx: BwSendProps;
+  readonly sendTx: ProcessedSendTransaction;
 }
 
 function SendTxRow({ sendTx }: Props): JSX.Element {
