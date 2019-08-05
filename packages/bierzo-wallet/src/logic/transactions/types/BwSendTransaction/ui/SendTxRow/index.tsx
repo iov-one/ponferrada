@@ -15,7 +15,7 @@ import {
   getTypeIcon,
 } from '../../../../../../routes/transactions/components/TxTable/rowTxBuilder';
 import { getBorderColor } from '../../../../../../theme/css';
-import { amountToNumber } from '../../../../../../utils/balances';
+import { amountToString } from '../../../../../../utils/balances';
 import { getDate, getTime } from '../../../../../../utils/date';
 import dropdownArrow from '../assets/dropdownArrow.svg';
 import dropdownArrowClose from '../assets/dropdownArrowClose.svg';
@@ -67,7 +67,7 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
         </Typography>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
-          {amountToNumber(sendTx.amount)} {sendTx.amount.tokenTicker}
+          {amountToString(sendTx.original.amount)}
         </Typography>
         <Block padding={0.5} />
         <Img

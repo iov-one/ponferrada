@@ -14,21 +14,15 @@ export class BwSendParser extends BwParser<BwSendProps> {
     trans: ConfirmedTransaction<SendTransaction>,
     currentUserAddress: Address,
   ): Promise<BwSendProps> {
-    const payload = trans.transaction;
-
     const header = await conn.getBlockHeader(trans.height);
     const time = header.time;
 
-    const received = payload.recipient === currentUserAddress;
+    const received = trans.transaction.recipient === currentUserAddress;
 
     return {
       id: trans.transactionId,
-      memo: payload.memo,
-      amount: payload.amount,
       time,
       received,
-      recipient: payload.recipient,
-      sender: payload.sender,
       original: trans.transaction,
     };
   }
@@ -38,14 +32,15 @@ export class BwSendParser extends BwParser<BwSendProps> {
   }
 
   public csvRepresentation(tx: BwSendProps): string {
-    const parties = [`"${tx.id}"`, `"${tx.recipient}"`, `"${tx.sender}"`];
+    const { original } = tx;
+    const parties = [`"${tx.id}"`, `"${original.recipient}"`, `"${original.sender}"`];
     const payment = [
-      `"${tx.amount.quantity}"`,
-      `"${tx.amount.fractionalDigits}"`,
-      `"${tx.amount.tokenTicker}"`,
+      `"${original.amount.quantity}"`,
+      `"${original.amount.fractionalDigits}"`,
+      `"${original.amount.tokenTicker}"`,
     ];
     const date = [`"${tx.time.toISOString()}"`];
-    const status = [`"${tx.received}"`, `"${tx.memo}"`];
+    const status = [`"${tx.received}"`, `"${original.memo}"`];
 
     const txRow = [...parties, ...payment, ...date, ...status];
 

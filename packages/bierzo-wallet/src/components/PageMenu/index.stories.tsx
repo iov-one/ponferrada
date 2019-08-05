@@ -7,16 +7,12 @@ import { DeepPartial } from 'redux';
 
 import { ProcessedSendTransaction } from '../../store/notifications';
 import { RootState } from '../../store/reducers';
-import { stringToAmount } from '../../utils/balances';
 import DecoratedStorybook, { WALLET_ROOT } from '../../utils/storybook';
 import PageMenu from './index';
 
 const txs: ReadonlyArray<ProcessedSendTransaction> = [
   {
     received: true,
-    sender: 'george*iov',
-    recipient: 'me',
-    amount: stringToAmount('10.5', 'LSK' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
     id: 'tx1' as TransactionId,
     original: {
@@ -32,9 +28,6 @@ const txs: ReadonlyArray<ProcessedSendTransaction> = [
   },
   {
     received: false,
-    sender: 'me',
-    recipient: 'alex*iov',
-    amount: stringToAmount('25.5', 'IOV' as TokenTicker),
     time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
     id: 'tx2' as TransactionId,
     original: {
@@ -52,9 +45,6 @@ const txs: ReadonlyArray<ProcessedSendTransaction> = [
 
 const faultTx: ProcessedSendTransaction = {
   received: false,
-  sender: 'me',
-  recipient: 'alex*iov',
-  amount: stringToAmount('100.5', 'IOV' as TokenTicker),
   time: new ReadonlyDate('2018-12-24T10:51:33.763Z'),
   id: 'tx3' as TransactionId,
   original: {

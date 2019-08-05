@@ -33,7 +33,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
             color="textSecondary"
             className={classes.sectionName}
           >
-            {tx.received ? tx.sender : tx.recipient}
+            {tx.received ? tx.original.sender : tx.original.recipient}
           </Typography>
         </Block>
         <Block width="50%">
@@ -42,7 +42,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
               Note:
             </Typography>
             <Typography variant="subtitle2" weight="regular" color="textSecondary">
-              {tx.memo ? tx.memo : 'No note'}
+              {tx.original.memo || 'No note'}
             </Typography>
           </Block>
         </Block>

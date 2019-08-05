@@ -46,7 +46,9 @@ withChainsDescribe('Logic :: transaction subscriptions', () => {
     // Got one incoming transaction for BASH, CASH, ETH
     expect(txsSpy).toHaveBeenCalledTimes(3);
     const transactions = txsSpy.mock.calls.map(call => call[0]);
-    expect(new Set(transactions.map(tx => tx.amount.tokenTicker))).toEqual(new Set(['BASH', 'CASH', 'ETH']));
+    expect(new Set(transactions.map(tx => tx.original.amount.tokenTicker))).toEqual(
+      new Set(['BASH', 'CASH', 'ETH']),
+    );
 
     unsubscribeTransactions();
   }, 30000);
