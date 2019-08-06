@@ -8,7 +8,7 @@ import Typography from "medulas-react-components/lib/components/Typography";
 import React from "react";
 
 import { amountToString, trimAmount } from "../../../utils/balances";
-import { PAYMENT_ROUTE, RECEIVE_ROUTE } from "../../paths";
+import { ADDRESSES_ROUTE, PAYMENT_ROUTE } from "../../paths";
 import receive from "../assets/transactionReceive.svg";
 import send from "../assets/transactionSend.svg";
 
@@ -66,7 +66,7 @@ const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }
       <Block display="flex" alignItems="center" justifyContent="center" width={450}>
         <Card id={PAYMENT_ROUTE} text="Send payment" logo={send} onAction={onSendPayment} />
         <Block flexGrow={1} />
-        <Card id={RECEIVE_ROUTE} text="Receive Payment" logo={receive} onAction={onReceivePayment} />
+        <Card id={ADDRESSES_ROUTE} text="Receive Payment" logo={receive} onAction={onReceivePayment} />
       </Block>
       <Block margin={2} />
       <Block flexGrow={1} />

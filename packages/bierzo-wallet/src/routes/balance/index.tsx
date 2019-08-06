@@ -5,7 +5,7 @@ import { history } from "..";
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getFirstUsername } from "../../store/usernames/selectors";
-import { PAYMENT_ROUTE, RECEIVE_ROUTE } from "../paths";
+import { ADDRESSES_ROUTE, PAYMENT_ROUTE } from "../paths";
 import Layout from "./components";
 
 function onSendPayment(): void {
@@ -13,7 +13,7 @@ function onSendPayment(): void {
 }
 
 function onReceivePayment(): void {
-  history.push(RECEIVE_ROUTE);
+  history.push(ADDRESSES_ROUTE);
 }
 
 const Balance = (): JSX.Element => {

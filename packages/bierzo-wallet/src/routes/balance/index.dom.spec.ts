@@ -10,7 +10,7 @@ import { UsernamesState } from "../../store/usernames";
 import { expectRoute } from "../../utils/test/dom";
 import { whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
-import { PAYMENT_ROUTE, RECEIVE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
+import { ADDRESSES_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import { getIovUsername, getNoFundsMessage } from "./test/operateBalances";
 import { travelToBalance } from "./test/travelToBalance";
 
@@ -81,12 +81,12 @@ describe("The /balance route", () => {
     }, 15000);
 
     it("redirects to the /receive-from-iov route when clicked", async () => {
-      const receiveCard = (await findRenderedDOMComponentWithId(balanceDom, RECEIVE_ROUTE)) as Element;
+      const receiveCard = (await findRenderedDOMComponentWithId(balanceDom, ADDRESSES_ROUTE)) as Element;
 
       expect(receiveCard.textContent).toBe("Receive Payment");
 
       TestUtils.Simulate.click(receiveCard);
-      expectRoute(RECEIVE_ROUTE);
+      expectRoute(ADDRESSES_ROUTE);
     });
 
     it("should check list of available balances", async () => {

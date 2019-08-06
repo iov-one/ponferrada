@@ -6,10 +6,10 @@ import * as React from "react";
 
 import { history } from "../../../../routes";
 import {
+  ADDRESSES_ROUTE,
   BALANCE_ROUTE,
   CONFIRM_TRANSACTION,
   PAYMENT_ROUTE,
-  RECEIVE_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "../../../../routes/paths";
 
@@ -49,7 +49,7 @@ const onPayments = (): void => {
 };
 
 const onAddresses = (): void => {
-  history.push(RECEIVE_ROUTE);
+  history.push(ADDRESSES_ROUTE);
 };
 
 const onTransactions = (): void => {
@@ -85,7 +85,7 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showPayment = path === PAYMENT_ROUTE || path.startsWith(CONFIRM_TRANSACTION);
-  const showAddresses = path === RECEIVE_ROUTE;
+  const showAddresses = path === ADDRESSES_ROUTE;
 
   const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
   const paymentClasses = classNames(classes.item, showPayment ? classes.activated : undefined);
