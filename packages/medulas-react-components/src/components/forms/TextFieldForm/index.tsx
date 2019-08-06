@@ -3,10 +3,12 @@ import { FieldSubscription, FieldValidator, FormApi } from "final-form";
 import * as React from "react";
 import { useField } from "react-final-form-hooks";
 
+import { FieldInputValue } from "~/utils/forms/validators";
+
 interface InnerProps {
   name: string;
   form: FormApi;
-  validate?: FieldValidator<string | undefined>;
+  validate?: FieldValidator<FieldInputValue>;
   subscription?: FieldSubscription;
 }
 

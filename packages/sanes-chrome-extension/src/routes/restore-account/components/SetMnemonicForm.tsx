@@ -7,14 +7,18 @@ import Form, { FormValues, useForm } from "medulas-react-components/lib/componen
 import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
 import PageLayout from "medulas-react-components/lib/components/PageLayout";
 import Typography from "medulas-react-components/lib/components/Typography";
-import { composeValidators, required } from "medulas-react-components/lib/utils/forms/validators";
+import {
+  composeValidators,
+  FieldInputValue,
+  required,
+} from "medulas-react-components/lib/utils/forms/validators";
 import * as React from "react";
 
 import { RESTORE_ACCOUNT } from "../../paths";
 
 export const MNEMONIC_FIELD = "mnemonicField";
 
-const englishMnemonicValidator: FieldValidator<string | undefined> = (value): string | undefined => {
+const englishMnemonicValidator: FieldValidator<FieldInputValue> = (value): FieldInputValue => {
   try {
     new EnglishMnemonic(value || "");
     return undefined; // valid
