@@ -538,7 +538,7 @@ exports[`Storyshots Bierzo wallet/Balance View 1`] = `
         />
         <div
           className="MuiBox-root MuiBox-root makeStyles-root"
-          id="/receive"
+          id="/addresses"
           onClick={[Function]}
         >
           <img
@@ -816,7 +816,7 @@ exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1
         />
         <div
           className="MuiBox-root MuiBox-root makeStyles-root"
-          id="/receive"
+          id="/addresses"
           onClick={[Function]}
         >
           <img
