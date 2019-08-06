@@ -91,7 +91,7 @@ DOCKER_BUILD_VERSION=$(echo "${TRAVIS_COMMIT}" | cut -c 1-10);
 )
 (
   cd packages/bierzo-wallet
-  rm -r build && yarn build-staging # Rebuild necessary since configuration is fixed at build time
+  yarn override-config-staging
   docker build -t "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" .
 )
 fold_end

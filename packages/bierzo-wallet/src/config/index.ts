@@ -1,6 +1,8 @@
 import { ChainId } from "@iov/bcp";
 import { singleton } from "medulas-react-components/lib/utils/singleton";
 
+import developmentConfig from "./development.json";
+
 export interface Config {
   readonly names: { [chainId: string]: string };
   readonly extensionId: string;
@@ -38,15 +40,27 @@ export interface FaucetSpec {
   readonly tokens: ReadonlyArray<string>;
 }
 
+interface WindowWithConfig extends Window {
+  readonly developmentConfig: Config;
+}
+
 const loadConfigurationFile = async (): Promise<Config> => {
   if (process.env.NODE_ENV === "test") {
-    const config = (window as any).config;
-    return config;
+    return (window as WindowWithConfig).developmentConfig;
   }
 
-  const data = await fetch("/static/config/conf.json");
-  const json = await data.json();
+  if (process.env.NODE_ENV === "development") {
+    // This is the `yarn start` case. Only the development config is supported here.
+    // If you need to use a different configuration, use yarn build + docker build + docker run.
+    return developmentConfig;
+  }
 
+  const response = await fetch("/static/config/conf.json");
+  if (!response.ok) {
+    throw new Error(`Failed to fetch URL. Response status code: ${response.status}`);
+  }
+
+  const json = await response.json();
   return json;
 };
 
