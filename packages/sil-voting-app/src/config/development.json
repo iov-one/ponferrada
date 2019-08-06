@@ -1,4 +1,7 @@
 {
+  "names": {
+    "local-iov-devnet": "IOV Devnet"
+  },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
   "bnsChain": {
     "chainSpec": {

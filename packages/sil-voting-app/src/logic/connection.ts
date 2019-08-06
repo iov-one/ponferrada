@@ -5,7 +5,8 @@ import { getConfig } from "../config";
 let bnsConnection: BnsConnection | undefined;
 
 export async function getBnsConnection(): Promise<BnsConnection> {
-  const url = getConfig().bnsChain.chainSpec.node;
+  const config = await getConfig();
+  const url = config.bnsChain.chainSpec.node;
 
   if (!bnsConnection) {
     bnsConnection = await BnsConnection.establish(url);

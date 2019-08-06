@@ -1,4 +1,7 @@
 {
+  "names": {
+    "iov-lovenet": "IOV Lovenet"
+  },
   "extensionId": "hkmeinfklhongiffbgkfaandidpmklen",
   "bnsChain": {
     "chainSpec": {
