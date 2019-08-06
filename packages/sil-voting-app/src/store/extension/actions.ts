@@ -10,7 +10,7 @@ export async function getExtensionStatus(): Promise<ExtensionState> {
     return { installed: false, connected: false, identity: undefined };
   }
 
-  if (Object.keys(identities).length === 0) {
+  if (identities.length === 0) {
     return { installed: true, connected: false, identity: undefined };
   }
 
