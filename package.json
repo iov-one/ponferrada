@@ -76,7 +76,7 @@
     "web-ext": "^3.0.0"
   },
   "resolutions": {
-    "react": "16.9.0-alpha.0",
-    "react-dom": "16.9.0-alpha.0"
+    "react": "16.9.0-rc.0",
+    "react-dom": "16.9.0-rc.0"
   }
 }
