@@ -1,9 +1,9 @@
 import { Page } from "puppeteer";
 
 import { whenOnNavigatedToE2eRoute } from "../../../utils/test/navigation";
-import { RECEIVE_FROM_IOV_USER } from "../../paths";
+import { ADDRESSES_ROUTE } from "../../paths";
 
-export async function travelToReceivePaymentE2E(page: Page): Promise<void> {
-  await page.click(`#${RECEIVE_FROM_IOV_USER.replace("/", "\\/")}`);
-  await whenOnNavigatedToE2eRoute(page, RECEIVE_FROM_IOV_USER);
+export async function travelToAddressesE2E(page: Page): Promise<void> {
+  await page.click(`#${ADDRESSES_ROUTE.replace("/", "\\/")}`);
+  await whenOnNavigatedToE2eRoute(page, ADDRESSES_ROUTE);
 }

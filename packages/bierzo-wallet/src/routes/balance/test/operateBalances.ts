@@ -2,11 +2,13 @@ import { ElementHandle, Page } from "puppeteer";
 
 import { whenTrue } from "../../../utils/test/navigation";
 
-const nonBalanceH6Elements = 5;
+const mainMenuH6Elements = 4;
+const nonBalanceH6Elements = mainMenuH6Elements + 1 /* Hi! menu */ + 1 /* Your currencies */;
 const numberOfTokensFromFaucet = 4;
 
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
-  return h6Elements[4].textContent || "";
+  const index = mainMenuH6Elements + 1;
+  return h6Elements[index].textContent || "";
 };
 
 export const getIovUsername = (h5Elements: Element[]): string => {
