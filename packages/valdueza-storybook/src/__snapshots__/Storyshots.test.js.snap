@@ -400,6 +400,28 @@ exports[`Storyshots Bierzo wallet/Balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="Transactions"
               onClick={[Function]}
             >
@@ -638,6 +660,28 @@ exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1
               onClick={[Function]}
             >
               Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
             </h6>
           </div>
         </div>
@@ -911,6 +955,28 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="Transactions"
               onClick={[Function]}
             >
@@ -1054,6 +1120,28 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
               onClick={[Function]}
             >
               Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
             </h6>
           </div>
         </div>
@@ -1235,6 +1323,28 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="Transactions"
               onClick={[Function]}
             >
@@ -1391,6 +1501,28 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
               onClick={[Function]}
             >
               Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
             </h6>
           </div>
         </div>
@@ -2114,6 +2246,28 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="Transactions"
               onClick={[Function]}
             >
@@ -2780,6 +2934,28 @@ exports[`Storyshots Bierzo wallet/Transactions Without transactions 1`] = `
               onClick={[Function]}
             >
               Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
             </h6>
           </div>
         </div>

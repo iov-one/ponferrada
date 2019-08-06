@@ -9,6 +9,7 @@ import {
   BALANCE_ROUTE,
   CONFIRM_TRANSACTION,
   PAYMENT_ROUTE,
+  RECEIVE_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "../../../../routes/paths";
 
@@ -47,12 +48,17 @@ const onPayments = (): void => {
   history.push(PAYMENT_ROUTE);
 };
 
+const onAddresses = (): void => {
+  history.push(RECEIVE_ROUTE);
+};
+
 const onTransactions = (): void => {
   history.push(TRANSACTIONS_ROUTE);
 };
 
 const BALANCE_TEXT = "Balance";
 const PAYMENT_TEXT = "Payments";
+const ADDRESSES_TEXT = "Addresses";
 export const TRANSACTIONS_TEXT = "Transactions";
 
 interface MenuItemProps {
@@ -79,9 +85,11 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showPayment = path === PAYMENT_ROUTE || path.startsWith(CONFIRM_TRANSACTION);
+  const showAddresses = path === RECEIVE_ROUTE;
 
   const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
   const paymentClasses = classNames(classes.item, showPayment ? classes.activated : undefined);
+  const addressesClasses = classNames(classes.item, showAddresses ? classes.activated : undefined);
   const transactionsClasses = classNames(classes.item, showTransactions ? classes.activated : undefined);
 
   return (
@@ -92,6 +100,10 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
       </Block>
       <Block className={paymentClasses}>
         <LinkMenuItem onClick={onPayments} itemTitle={PAYMENT_TEXT} />
+        <Block className={classes.line} />
+      </Block>
+      <Block className={addressesClasses}>
+        <LinkMenuItem onClick={onAddresses} itemTitle={ADDRESSES_TEXT} />
         <Block className={classes.line} />
       </Block>
       <Block className={transactionsClasses}>
