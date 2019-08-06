@@ -21,6 +21,7 @@
     "export-production": "yarn override-config-production && web-ext build --source-dir ./build/ --artifacts-dir ./exports --overwrite-dest",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix",
     "start": "yarn use-config-development && react-scripts start src/extension/contentscript.ts src/extension/backgroundscript.ts",
     "start-firefox-development": "yarn build-development && web-ext run --source-dir ./build/",
     "start-firefox-staging": "yarn build-staging && web-ext run --source-dir ./build/",

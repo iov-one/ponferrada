@@ -44,6 +44,7 @@
     "use-config-staging": "mkdir -p ./build/static/config && cp ./config/staging.json ./build/static/config/conf.json",
     "use-config-production": "mkdir -p ./build/static/config && cp ./config/production.json ./build/static/config/conf.json",
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start-development": "yarn use-config-development && react-scripts start",
     "start-staging": "yarn use-config-staging && react-scripts start",
