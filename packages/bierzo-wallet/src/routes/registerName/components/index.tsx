@@ -1,6 +1,5 @@
 import { faRegistered } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Address, ChainId } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
@@ -13,14 +12,8 @@ import TextFieldForm from "medulas-react-components/lib/components/forms/TextFie
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 
-export interface ChainAddress {
-  readonly chainId: ChainId;
-  readonly chainName: string;
-  readonly address: Address;
-}
-
-export const SET_NAME_VIEW_ID = "set-name-view-id";
-export const SET_NAME_FIELD = "set-name-field";
+export const SET_USERNAME_VIEW_ID = "set-username-view-id";
+export const SET_USERNAME_FIELD = "set-username-field";
 
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
@@ -47,7 +40,7 @@ const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
 
   return (
     <Block
-      id={SET_NAME_VIEW_ID}
+      id={SET_USERNAME_VIEW_ID}
       marginTop={4}
       display="flex"
       alignContent="center"
@@ -71,7 +64,7 @@ const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
               </Avatar>
               <Block width="100%" marginTop={2} marginBottom={1}>
                 <TextFieldForm
-                  name={SET_NAME_FIELD}
+                  name={SET_USERNAME_FIELD}
                   form={form}
                   placeholder="IOV username"
                   fullWidth
