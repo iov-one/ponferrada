@@ -17,22 +17,22 @@ export function composeValidators<T>(...validators: readonly FieldValidator<T>[]
 }
 
 /** This was checked running runtime tests and logging `typeof value` for the validators */
-export type InputValue = string | undefined;
+export type FieldInputValue = string | undefined;
 
-export const required: FieldValidator<InputValue> = (value): ValidationError => {
+export const required: FieldValidator<FieldInputValue> = (value): ValidationError => {
   return value ? undefined : "Required";
 };
 
-export const number: FieldValidator<InputValue> = (value): ValidationError => {
+export const number: FieldValidator<FieldInputValue> = (value): ValidationError => {
   // `+value` converts a string to number if possible. Returns NaN otherwise.
   return value && !Number.isNaN(+value) ? undefined : "Must be a number";
 };
 
-export const validAddress: FieldValidator<InputValue> = (value): ValidationError => {
+export const validAddress: FieldValidator<FieldInputValue> = (value): ValidationError => {
   return (value || "").endsWith("*iov") ? undefined : "Invalid address";
 };
 
-export const lowerOrEqualThan = (max: number): FieldValidator<InputValue> => {
+export const lowerOrEqualThan = (max: number): FieldValidator<FieldInputValue> => {
   return (value): ValidationError => {
     if (value && Number(value) > max) {
       return `Should be lower or equal than ${max}`;
@@ -42,7 +42,7 @@ export const lowerOrEqualThan = (max: number): FieldValidator<InputValue> => {
   };
 };
 
-export const greaterOrEqualThan = (min: number): FieldValidator<InputValue> => {
+export const greaterOrEqualThan = (min: number): FieldValidator<FieldInputValue> => {
   return (value): ValidationError => {
     if (value && Number(value) < min) {
       return `Should be greater or equal than ${min}`;
@@ -52,7 +52,7 @@ export const greaterOrEqualThan = (min: number): FieldValidator<InputValue> => {
   };
 };
 
-export const notLongerThan = (maxLength: number): FieldValidator<InputValue> => {
+export const notLongerThan = (maxLength: number): FieldValidator<FieldInputValue> => {
   return (value): ValidationError => {
     if (value && value.length > maxLength) {
       return `Can not be longer than ${maxLength} characters`;
@@ -62,7 +62,7 @@ export const notLongerThan = (maxLength: number): FieldValidator<InputValue> => 
   };
 };
 
-export const longerThan = (minLength: number): FieldValidator<InputValue> => {
+export const longerThan = (minLength: number): FieldValidator<FieldInputValue> => {
   return (value): ValidationError => {
     if (value && value.length < minLength) {
       return `Must be longer than ${minLength} characters`;
