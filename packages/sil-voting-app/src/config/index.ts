@@ -25,7 +25,7 @@ export interface FaucetSpec {
   readonly tokens: ReadonlyArray<string>;
 }
 
-const configuration = (): Config => {
+const configuration = async (): Promise<Config> => {
   console.log(process.env.REACT_APP_CONFIG);
   if (process.env.REACT_APP_CONFIG === "development") {
     return developmentConfig;

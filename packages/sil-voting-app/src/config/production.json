@@ -1,4 +1,7 @@
 {
+  "names": {
+    "bns-antnet": "BNS Antnet"
+  },
   "extensionId": "N/A",
   "bnsChain": {
     "chainSpec": {

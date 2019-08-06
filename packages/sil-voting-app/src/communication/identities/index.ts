@@ -1,17 +1,18 @@
 /*global chrome*/
-import { Identity, isIdentity } from "@iov/bcp";
+import { ChainId, Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
+import { getBnsConnection } from "../../logic/connection";
 
-export const generateGetIdentitiesRequest = (): JsonRpcRequest => ({
+export const generateGetIdentitiesRequest = (bnsChainId: ChainId): JsonRpcRequest => ({
   jsonrpc: "2.0",
   id: makeJsonRpcId(),
   method: "getIdentities",
   params: {
-    reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
-    chainIds: TransactionEncoder.toJson(["ethereum-eip155-5777"]),
+    reason: TransactionEncoder.toJson("I would like to know who you are on BNS"),
+    chainIds: TransactionEncoder.toJson([bnsChainId]),
   },
 });
 
@@ -30,14 +31,16 @@ function extensionContext(): boolean {
 }
 
 export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const request = generateGetIdentitiesRequest();
+  const connection = await getBnsConnection();
+
+  const request = generateGetIdentitiesRequest(connection.chainId());
 
   const isValid = extensionContext();
   if (!isValid) {
     return undefined;
   }
 
-  const config = getConfig();
+  const config = await getConfig();
 
   return new Promise(resolve => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
