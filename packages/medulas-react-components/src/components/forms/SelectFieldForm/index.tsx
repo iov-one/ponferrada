@@ -51,7 +51,7 @@ interface InnerProps {
   readonly form: FormApi;
   readonly onChangeCallback?: (value: Item) => void;
   readonly subscription?: FieldSubscription;
-  readonly items: ReadonlyArray<Item>;
+  readonly items: readonly Item[];
   readonly maxWidth?: string;
 }
 

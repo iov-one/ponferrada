@@ -6,7 +6,7 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResp
 import { getConfig } from "../../config";
 import { getConnectionFor } from "../../logic/connection";
 
-export const generateGetIdentitiesRequest = (chains: ReadonlyArray<string>): JsonRpcRequest => ({
+export const generateGetIdentitiesRequest = (chains: readonly string[]): JsonRpcRequest => ({
   jsonrpc: "2.0",
   id: makeJsonRpcId(),
   method: "getIdentities",
@@ -16,7 +16,7 @@ export const generateGetIdentitiesRequest = (chains: ReadonlyArray<string>): Jso
   },
 });
 
-function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
+function isArrayOfIdentity(data: any): data is readonly Identity[] {
   if (!Array.isArray(data)) {
     return false;
   }

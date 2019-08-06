@@ -10,7 +10,7 @@ import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import PageMenu from "./index";
 
-const txs: ReadonlyArray<ProcessedSendTransaction> = [
+const txs: readonly ProcessedSendTransaction[] = [
   {
     received: true,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),

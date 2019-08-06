@@ -15,7 +15,7 @@ interface Props {
   readonly onAcceptRequest: () => void;
   readonly showRejectView: () => void;
   readonly sender: string;
-  readonly data: ReadonlyArray<UiIdentity>;
+  readonly data: readonly UiIdentity[];
 }
 
 const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.Element => (

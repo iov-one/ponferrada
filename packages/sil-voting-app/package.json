@@ -23,6 +23,7 @@
   },
   "scripts": {
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "REACT_APP_CONFIG=development react-scripts start",
     "build-development": "REACT_APP_CONFIG=development react-scripts build",

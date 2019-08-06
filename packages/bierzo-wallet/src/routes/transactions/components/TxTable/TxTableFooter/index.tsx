@@ -14,7 +14,7 @@ interface Props {
   readonly onNextPage: () => void;
 }
 
-const rowsSelectorData: ReadonlyArray<Item> = [{ name: "5" }, { name: "10" }, { name: "25" }, { name: "50" }];
+const rowsSelectorData: readonly Item[] = [{ name: "5" }, { name: "10" }, { name: "25" }, { name: "50" }];
 
 const onSubmit = (): void => {};
 

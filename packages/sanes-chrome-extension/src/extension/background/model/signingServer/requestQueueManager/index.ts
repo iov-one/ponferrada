@@ -36,7 +36,7 @@ function isUiIdentity(data: unknown): data is UiIdentity {
 }
 
 export interface GetIdentitiesResponseData {
-  readonly requestedIdentities: ReadonlyArray<UiIdentity>;
+  readonly requestedIdentities: readonly UiIdentity[];
 }
 
 export function isGetIdentitiesResponseData(data: unknown): data is GetIdentitiesResponseData {

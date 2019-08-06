@@ -18,7 +18,7 @@ function onReturnToBalance(): void {
 const ReceivePayment = (): JSX.Element => {
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
 
-  const [chainAddresses, setChainAddresses] = React.useState<ReadonlyArray<ChainAddress>>([]);
+  const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddress[]>([]);
 
   React.useEffect(() => {
     async function processAddresses(pubKeys: { [chain: string]: string }): Promise<void> {

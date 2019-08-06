@@ -6,7 +6,7 @@ import developmentConfig from "./development.json";
 export interface Config {
   readonly names: { [chainId: string]: string };
   readonly extensionId: string;
-  readonly chains: ReadonlyArray<ChainConfig>;
+  readonly chains: readonly ChainConfig[];
 }
 
 export interface ChainConfig {
@@ -37,7 +37,7 @@ export interface ChainSpec {
 
 export interface FaucetSpec {
   readonly uri: string;
-  readonly tokens: ReadonlyArray<string>;
+  readonly tokens: readonly string[];
 }
 
 interface WindowWithConfig extends Window {

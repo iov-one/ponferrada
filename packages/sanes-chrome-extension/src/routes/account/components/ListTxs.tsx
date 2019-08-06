@@ -10,7 +10,7 @@ import EmptyList from "./Empty";
 import Tx from "./Tx";
 
 interface Props {
-  readonly txs: ReadonlyArray<ProcessedTx>;
+  readonly txs: readonly ProcessedTx[];
   readonly title: string;
 }
 

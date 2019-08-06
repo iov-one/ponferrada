@@ -13,7 +13,7 @@ import { Item } from "./index";
 interface ListItemProps {
   readonly action: (value: Item) => () => void;
   readonly selectedItem: string;
-  readonly items: ReadonlyArray<Item>;
+  readonly items: readonly Item[];
 }
 
 const ListItems = ({ action, items, selectedItem }: ListItemProps): JSX.Element => {

@@ -5,20 +5,20 @@ import { ReadonlyWallet } from "@iov/keycontrol";
 
 export interface AccountInfo {
   readonly index: number;
-  readonly identities: ReadonlyArray<Identity>;
+  readonly identities: readonly Identity[];
 }
 
 export interface AccountManagerChainConfig {
   readonly chainId: ChainId;
   readonly algorithm: Algorithm;
-  readonly derivePath: (account: number) => ReadonlyArray<Slip10RawIndex>;
+  readonly derivePath: (account: number) => readonly Slip10RawIndex[];
 }
 
 export class AccountManager {
   private readonly userProfile: UserProfile;
-  private readonly chains: ReadonlyArray<AccountManagerChainConfig>;
+  private readonly chains: readonly AccountManagerChainConfig[];
 
-  public constructor(userProfile: UserProfile, chains: ReadonlyArray<AccountManagerChainConfig>) {
+  public constructor(userProfile: UserProfile, chains: readonly AccountManagerChainConfig[]) {
     this.userProfile = userProfile;
     this.chains = chains;
   }
@@ -31,7 +31,7 @@ export class AccountManager {
   /**
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
-  public async accounts(): Promise<ReadonlyArray<AccountInfo>> {
+  public async accounts(): Promise<readonly AccountInfo[]> {
     const accountIndices = await this.existingAccountIndices();
 
     return accountIndices.map(accountIndex => {
@@ -72,7 +72,7 @@ export class AccountManager {
     }
   }
 
-  private async existingAccountIndices(): Promise<ReadonlyArray<number>> {
+  private async existingAccountIndices(): Promise<readonly number[]> {
     const existing: number = await this.numberOfExistingAccounts();
     return Array.from(Array(existing)).map((_, index) => index);
   }
@@ -102,7 +102,7 @@ export class AccountManager {
   private async identityExistsInProfile(
     walletId: WalletId,
     chainId: ChainId,
-    path: ReadonlyArray<Slip10RawIndex>,
+    path: readonly Slip10RawIndex[],
   ): Promise<boolean> {
     // FIXME iov-core, please.
     const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId);

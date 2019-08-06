@@ -22,7 +22,7 @@ const store = makeStore();
 const render = (
   Component: React.ComponentType,
   persona: GetPersonaResponse,
-  requests: ReadonlyArray<Request>,
+  requests: readonly Request[],
 ): void => {
   ReactDOM.render(
     <Provider store={store}>

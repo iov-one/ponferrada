@@ -14,7 +14,7 @@ import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import Header from "./index";
 
-const txs: ReadonlyArray<ProcessedSendTransaction | BwUnknownProps> = [
+const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
   {
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx0" as TransactionId,

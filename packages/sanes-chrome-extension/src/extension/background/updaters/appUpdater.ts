@@ -37,7 +37,7 @@ export function isMessageToForeground(data: unknown): data is MessageToForegroun
  * to serialize them as JSON. Instead, the UI pulls the latest list of
  * transactions from the background script.
  */
-export function transactionsUpdater(_transactions: ReadonlyArray<ProcessedTx>): void {
+export function transactionsUpdater(_transactions: readonly ProcessedTx[]): void {
   const message: MessageToForeground = {
     type: "message_to_foreground",
     action: MessageToForegroundAction.TransactionsChanged,
