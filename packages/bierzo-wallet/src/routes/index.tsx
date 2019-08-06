@@ -5,13 +5,7 @@ import { Route, Router, Switch } from "react-router";
 import RequireLogin from "../components/RequireLogin";
 import Balance from "./balance";
 import Login from "./login";
-import {
-  BALANCE_ROUTE,
-  LOGIN_ROUTE,
-  PAYMENT_ROUTE,
-  RECEIVE_FROM_IOV_USER,
-  TRANSACTIONS_ROUTE,
-} from "./paths";
+import { BALANCE_ROUTE, LOGIN_ROUTE, PAYMENT_ROUTE, RECEIVE_ROUTE, TRANSACTIONS_ROUTE } from "./paths";
 import Payment from "./payment";
 import ReceivePayments from "./receivePayments";
 import Transactions from "./transactions";
@@ -25,7 +19,7 @@ const Routes = (): JSX.Element => (
       <Route exact path={LOGIN_ROUTE} component={Login} />
       <RequireLogin>
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
-        <Route exact path={RECEIVE_FROM_IOV_USER} component={ReceivePayments} />
+        <Route exact path={RECEIVE_ROUTE} component={ReceivePayments} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
       </RequireLogin>
