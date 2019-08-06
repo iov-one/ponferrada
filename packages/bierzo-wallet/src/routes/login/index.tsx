@@ -70,7 +70,7 @@ const Login = (): JSX.Element => {
       icon="white"
       onSubmit={onLogin}
       primaryTitle="Welcome"
-      secondaryTitle="to your IOV wallet"
+      secondaryTitle="to your IOV Wallet"
       subtitle="Continue to access your account"
       nextMsg="Continue"
     />

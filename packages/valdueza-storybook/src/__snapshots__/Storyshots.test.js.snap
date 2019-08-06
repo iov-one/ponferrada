@@ -45,7 +45,7 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
             <h4
               className="MuiTypography-root makeStyles-inline MuiTypography-h4"
             >
-              to your IOV wallet
+              to your IOV Wallet
             </h4>
           </div>
           <div
