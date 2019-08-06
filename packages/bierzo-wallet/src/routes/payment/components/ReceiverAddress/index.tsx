@@ -5,7 +5,11 @@ import Block from "medulas-react-components/lib/components/Block";
 import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
 import Tooltip from "medulas-react-components/lib/components/Tooltip";
 import Typography from "medulas-react-components/lib/components/Typography";
-import { composeValidators, required } from "medulas-react-components/lib/utils/forms/validators";
+import {
+  composeValidators,
+  FieldInputValue,
+  required,
+} from "medulas-react-components/lib/utils/forms/validators";
 import React from "react";
 
 import { isIov } from "../../../../logic/account";
@@ -18,8 +22,8 @@ interface Props {
 }
 
 const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
-  const recipientValidator: FieldValidator = React.useMemo(() => {
-    const validator = (value: string): string | undefined => {
+  const recipientValidator = React.useMemo(() => {
+    const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
       if (typeof value !== "string") throw new Error("Input must be a string");
 
       if (isIov(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
