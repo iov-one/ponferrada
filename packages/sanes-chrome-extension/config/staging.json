@@ -33,5 +33,6 @@
         "scraper": "https://api-rinkeby.etherscan.io/api"
       }
     }
-  ]
+  ],
+  "accountCreationDisabled": true
 }

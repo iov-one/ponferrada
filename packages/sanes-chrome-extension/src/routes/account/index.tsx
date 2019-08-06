@@ -12,6 +12,7 @@ import * as React from "react";
 import { useForm } from "react-final-form-hooks";
 
 import { PersonaContext } from "../../context/PersonaProvider";
+import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../store/reducers";
 import { EXTENSION_HEIGHT } from "../../theme/constants";
 import { clearDatabase, clearPersona, createAccount } from "../../utils/chrome";
@@ -54,8 +55,15 @@ const AccountView = (): JSX.Element => {
 
   const onChange = async (item: Item): Promise<void> => {
     if (item.name === CREATE_NEW_ONE) {
-      const accounts = await createAccount();
-      personaProvider.update({ accounts });
+      if ((await getConfigurationFile()).accountCreationDisabled) {
+        toast.show(
+          "Account creation is currently disabled. Support for multiple accounts will follow soon.",
+          ToastVariant.INFO,
+        );
+      } else {
+        const accounts = await createAccount();
+        personaProvider.update({ accounts });
+      }
     }
   };
   const accountLoaded = accounts.length > 1;

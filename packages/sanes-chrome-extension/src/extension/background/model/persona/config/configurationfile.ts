@@ -35,6 +35,7 @@ export interface ConfigurationFile {
   readonly chains: ChainConfig[];
   readonly names: ChainNames;
   readonly blockExplorers: BlockExplorers;
+  readonly accountCreationDisabled: boolean;
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {

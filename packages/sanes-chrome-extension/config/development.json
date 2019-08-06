@@ -41,5 +41,6 @@
         "token": "ETH"
       }
     }
-  ]
+  ],
+  "accountCreationDisabled": false
 }
