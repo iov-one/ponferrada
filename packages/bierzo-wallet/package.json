@@ -27,7 +27,6 @@
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
     "redux": "^4.0.1",
     "reselect": "^4.0.0"
   },
@@ -36,7 +35,8 @@
     "@types/express": "^4.16.1",
     "@types/file-saver": "^2.0.1",
     "@types/react-copy-to-clipboard": "^4.2.6",
-    "clipboardy": "^2.1.0"
+    "clipboardy": "^2.1.0",
+    "react-scripts": "^3.0.1"
   },
   "scripts": {
     "use-extension-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../bierzo-wallet",

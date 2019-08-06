@@ -75,9 +75,6 @@
     "typescript": "~3.5",
     "web-ext": "^3.0.0"
   },
-  "dependencies": {
-    "react-scripts": "3.0.0"
-  },
   "resolutions": {
     "react": "16.9.0-alpha.0",
     "react-dom": "16.9.0-alpha.0"
