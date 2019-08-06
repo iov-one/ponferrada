@@ -73,7 +73,7 @@ const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }
       <Block bgcolor={theme.palette.background.paper} height="unset" width={450}>
         <Block padding={4} display="flex" flexDirection="column">
           <Typography variant="h5" align="center" weight="light">
-            {iovAddress ? iovAddress : "No human readable address registered."}
+            {iovAddress ? iovAddress : "Get your human readable address."}
           </Typography>
           <Hairline space={4} />
           <Typography variant="subtitle2" align="center">
