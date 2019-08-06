@@ -87,11 +87,11 @@ describe("DOM > Feature > Dashboard", () => {
     let longProposal = (await getProposals(dashboardDom))[1].children[0];
     let readToggle = longProposal.children[2].children[0].children[1];
 
-    click(readToggle);
+    await click(readToggle);
     let description = longProposal.children[2].children[0].children[0].textContent;
     expect(description).toBe(longDescription);
 
-    click(readToggle);
+    await click(readToggle);
     description = longProposal.children[2].children[0].children[0].textContent;
     expect(description).toBe(shortenedDescription);
   }, 60000);
