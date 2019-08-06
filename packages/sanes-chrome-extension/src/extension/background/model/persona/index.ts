@@ -124,7 +124,7 @@ export class Persona {
     this.subscribeToTxUpdates(transactionsUpdater);
   }
 
-  private subscribeToTxUpdates(notifyApp: (transactions: ReadonlyArray<ProcessedTx>) => void): void {
+  private subscribeToTxUpdates(notifyApp: (transactions: readonly ProcessedTx[]) => void): void {
     this.core.signedAndPosted.updates.subscribe({
       next: async signedAndPosted => {
         const processed = await Promise.all(signedAndPosted.map(s => this.processTransaction(s)));
@@ -171,7 +171,7 @@ export class Persona {
     await this.profile.storeIn(db, this.encryptionKey);
   }
 
-  public async getAccounts(): Promise<ReadonlyArray<PersonaAcccount>> {
+  public async getAccounts(): Promise<readonly PersonaAcccount[]> {
     const accounts = await this.accountManager.accounts();
 
     const bnsConnection = this.getBnsConnection();
@@ -210,7 +210,7 @@ export class Persona {
     return mnemonics.values().next().value;
   }
 
-  public async getTxs(): Promise<ReadonlyArray<ProcessedTx>> {
+  public async getTxs(): Promise<readonly ProcessedTx[]> {
     if (!this.core) {
       return [];
     }

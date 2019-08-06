@@ -54,7 +54,7 @@ export const generateSignAndPostRequest = async (creator: Identity): Promise<Jso
   };
 };
 
-export function isArrayOfIdentity(data: any): data is ReadonlyArray<Identity> {
+export function isArrayOfIdentity(data: any): data is readonly Identity[] {
   if (!Array.isArray(data)) {
     return false;
   }

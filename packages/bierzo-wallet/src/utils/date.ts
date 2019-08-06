@@ -12,7 +12,7 @@ export function formatTime(date: ReadonlyDate): string {
 }
 
 export function formatDate(date: ReadonlyDate): string {
-  const monthNames: ReadonlyArray<string> = [
+  const monthNames: readonly string[] = [
     "Jan",
     "Feb",
     "Mar",

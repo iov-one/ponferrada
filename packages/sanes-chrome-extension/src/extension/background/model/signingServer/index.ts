@@ -24,7 +24,7 @@ export default class SigningServer {
 
   public getIdentitiesCallback = (signer: MultiChainSigner) => async (
     reason: string,
-    matchingIdentities: ReadonlyArray<Identity>,
+    matchingIdentities: readonly Identity[],
     meta: any,
   ) => {
     if (!isRequestMeta(meta)) {

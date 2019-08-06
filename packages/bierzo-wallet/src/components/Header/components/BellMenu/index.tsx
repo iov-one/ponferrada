@@ -18,7 +18,7 @@ import upToDate from "../../assets/uptodate.svg";
 import { BadgeProps, calcBadgeProps } from "./badgeCalculator";
 
 interface Props {
-  readonly items: ReadonlyArray<ProcessedTx>;
+  readonly items: readonly ProcessedTx[];
   readonly lastTx?: ProcessedTx;
 }
 

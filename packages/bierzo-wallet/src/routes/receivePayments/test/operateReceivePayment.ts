@@ -1,6 +1,6 @@
 import { Page } from "puppeteer";
 
-export async function getAddressRow(page: Page, dataIndex: number): Promise<ReadonlyArray<string>> {
+export async function getAddressRow(page: Page, dataIndex: number): Promise<readonly string[]> {
   const chainNameEl = await page.$(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(1)`);
   if (chainNameEl === null) {
     throw new Error(`TD element containig chain name with row index: ${dataIndex} not found.`);

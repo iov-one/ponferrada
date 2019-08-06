@@ -38,10 +38,8 @@ export function algorithmForCodec(codec: CodecType): Algorithm {
   }
 }
 
-export function pathBuilderForCodec(
-  codecType: CodecType,
-): (derivation: number) => ReadonlyArray<Slip10RawIndex> {
-  const pathBuilder = (derivation: number): ReadonlyArray<Slip10RawIndex> => {
+export function pathBuilderForCodec(codecType: CodecType): (derivation: number) => readonly Slip10RawIndex[] {
+  const pathBuilder = (derivation: number): readonly Slip10RawIndex[] => {
     switch (codecType) {
       case CodecType.Bns:
         return HdPaths.iov(derivation);

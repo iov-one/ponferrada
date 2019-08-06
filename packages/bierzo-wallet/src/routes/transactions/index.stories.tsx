@@ -13,7 +13,7 @@ import Payment from "./index";
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
 
-const txs: ReadonlyArray<ProcessedSendTransaction | BwUnknownProps> = [
+const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
     time: new ReadonlyDate("2019-12-24T10:51:33.763Z"),

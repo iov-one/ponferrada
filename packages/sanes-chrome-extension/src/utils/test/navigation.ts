@@ -41,7 +41,7 @@ export const whenOnNavigatedToRoute = (refreshStore: Store, desiredRoute: string
 export const travelTo = async (
   route: string,
   store: Store,
-  requests?: ReadonlyArray<Request>,
+  requests?: readonly Request[],
   persona?: GetPersonaResponse,
 ): Promise<React.Component> => {
   const dom = createDom(store, requests, persona);
@@ -88,7 +88,7 @@ export const travelToRestoreAccount = async (store: Store): Promise<React.Compon
 
 export const travelToShareIdentity = async (
   store: Store,
-  requests: ReadonlyArray<Request>,
+  requests: readonly Request[],
 ): Promise<React.Component> => {
   expect(requests.length).toBeGreaterThanOrEqual(1);
 
@@ -97,7 +97,7 @@ export const travelToShareIdentity = async (
 
 export const travelToTXRequest = async (
   store: Store,
-  requests: ReadonlyArray<Request>,
+  requests: readonly Request[],
 ): Promise<React.Component> => {
   expect(requests.length).toBeGreaterThanOrEqual(1);
 
@@ -113,7 +113,7 @@ export const travelToAccount = async (
 
 export const travelToRequests = async (
   store: Store,
-  requests?: ReadonlyArray<Request>,
+  requests?: readonly Request[],
 ): Promise<React.Component> => {
   return travelTo(REQUEST_ROUTE, store, requests);
 };

@@ -19,7 +19,7 @@ import {
   confirmRejectButton,
 } from "./test/operateTXRequest";
 
-const sendRequests: ReadonlyArray<Request> = [
+const sendRequests: readonly Request[] = [
   {
     id: 1,
     senderUrl: "http://finnex.com",
@@ -88,7 +88,7 @@ describe("DOM > Feature > Send Transaction Request", (): void => {
 });
 
 describe("DOM > Feature > Username Registration Request", (): void => {
-  const requests: ReadonlyArray<Request> = [
+  const requests: readonly Request[] = [
     {
       id: 1,
       senderUrl: "http://finnex.com",

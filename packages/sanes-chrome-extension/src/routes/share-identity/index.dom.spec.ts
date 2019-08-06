@@ -16,7 +16,7 @@ import {
 } from "./test/operateShareIdentity";
 
 describe("DOM > Feature > Share Identity", (): void => {
-  const requests: ReadonlyArray<Request> = [
+  const requests: readonly Request[] = [
     {
       id: 1,
       senderUrl: "http://finnex.com",

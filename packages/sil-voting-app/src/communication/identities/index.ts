@@ -16,7 +16,7 @@ export const generateGetIdentitiesRequest = (bnsChainId: ChainId): JsonRpcReques
   },
 });
 
-const isArrayOfIdentity = (data: any): data is ReadonlyArray<Identity> => {
+const isArrayOfIdentity = (data: any): data is readonly Identity[] => {
   if (!Array.isArray(data)) {
     return false;
   }
@@ -24,7 +24,7 @@ const isArrayOfIdentity = (data: any): data is ReadonlyArray<Identity> => {
   return data.every(isIdentity);
 };
 
-type GetIdentitiesResponse = ReadonlyArray<Identity> | undefined;
+type GetIdentitiesResponse = readonly Identity[] | undefined;
 
 function extensionContext(): boolean {
   return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
