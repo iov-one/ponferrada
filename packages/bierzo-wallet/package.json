@@ -44,6 +44,7 @@
     "override-config-staging": "mkdir -p ./build/static/config && cp ./src/config/staging.json ./build/static/config/conf.json",
     "override-config-production": "mkdir -p ./build/static/config && cp ./src/config/production.json ./build/static/config/conf.json",
     "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
     "start": "react-scripts start",
     "build-development": "yarn react-scripts build && yarn override-config-development",

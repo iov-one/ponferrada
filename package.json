@@ -23,6 +23,7 @@
     "docs": "lerna run docs",
     "format": "lerna run format",
     "lint": "lerna run lint",
+    "lint-fix": "lerna run lint-fix",
     "release": "lerna run build && lerna publish",
     "storybook": "lerna run storybook --stream",
     "test": "lerna run --concurrency 1 test --stream"
