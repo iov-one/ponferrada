@@ -327,10 +327,10 @@ exports[`Storyshots Bierzo wallet Receive Payment 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet Set Name 1`] = `
+exports[`Storyshots Bierzo wallet Register Username 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="set-name-view-id"
+  id="set-username-view-id"
 >
   <form
     onSubmit={[Function]}
@@ -406,7 +406,7 @@ exports[`Storyshots Bierzo wallet Set Name 1`] = `
                   aria-invalid={false}
                   className="MuiInputBase-input MuiOutlinedInput-input"
                   disabled={false}
-                  name="set-name-field"
+                  name="set-username-field"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
