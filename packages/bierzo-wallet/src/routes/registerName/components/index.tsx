@@ -37,7 +37,7 @@ interface Props {
   readonly onCancel: () => void;
 }
 
-const SetName = ({ onSubmit, onCancel }: Props): JSX.Element => {
+const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -106,4 +106,4 @@ const SetName = ({ onSubmit, onCancel }: Props): JSX.Element => {
   );
 };
 
-export default SetName;
+export default Layout;

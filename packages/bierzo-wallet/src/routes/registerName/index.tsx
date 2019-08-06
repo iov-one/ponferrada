@@ -11,7 +11,7 @@ function onCancel(): void {
   console.log("on cancel");
 }
 
-const SetName = (): JSX.Element => {
+const RegisterUsername = (): JSX.Element => {
   return (
     <PageMenu>
       <Layout onSubmit={onSubmit} onCancel={onCancel} />
@@ -19,4 +19,4 @@ const SetName = (): JSX.Element => {
   );
 };
 
-export default SetName;
+export default RegisterUsername;
