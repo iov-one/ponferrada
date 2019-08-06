@@ -15,12 +15,12 @@ export const TX_DATE_COLUMN = "Date";
 export type TxsOrder = "Date";
 
 export const filterTxsBy = (
-  txs: ReadonlyArray<ProcessedTx>,
+  txs: readonly ProcessedTx[],
   rowsPerPage: number,
   pageNumber: number,
   orderBy: TxsOrder,
   order: SortOrder,
-): ReadonlyArray<ProcessedTx> => {
+): readonly ProcessedTx[] => {
   const orderedTxs = txs.slice(0); // make a mutable copy
 
   if (orderBy === TX_DATE_COLUMN) {

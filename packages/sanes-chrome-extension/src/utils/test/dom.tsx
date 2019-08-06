@@ -15,7 +15,7 @@ import { history } from "../../store/reducers";
 
 export const createDom = (
   store: Store,
-  requests: ReadonlyArray<Request> = [],
+  requests: readonly Request[] = [],
   persona: GetPersonaResponse = null,
 ): React.Component =>
   TestUtils.renderIntoDocument(

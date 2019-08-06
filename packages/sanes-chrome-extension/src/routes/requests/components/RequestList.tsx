@@ -16,7 +16,7 @@ import { history } from "../../../store/reducers";
 import { SHARE_IDENTITY, TX_REQUEST } from "../../paths";
 
 interface Props {
-  readonly requests: ReadonlyArray<Request>;
+  readonly requests: readonly Request[];
 }
 
 const useStyles = makeStyles((theme: Theme) => ({

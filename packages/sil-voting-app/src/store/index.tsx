@@ -6,7 +6,7 @@ const composeEnhancers =
   (typeof window === "object" && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
   compose;
 
-const middlewares: ReadonlyArray<Middleware> = [];
+const middlewares: readonly Middleware[] = [];
 
 export const configureStore = (): Store<RootReducer> => {
   const store = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));

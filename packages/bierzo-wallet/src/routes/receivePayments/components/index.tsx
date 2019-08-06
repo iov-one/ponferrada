@@ -45,7 +45,7 @@ const useAvatar = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
-  readonly chainAddresses: ReadonlyArray<ChainAddress>;
+  readonly chainAddresses: readonly ChainAddress[];
   readonly onReturnToBalance: () => void;
 }
 

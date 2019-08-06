@@ -11,14 +11,14 @@ import { extensionContext, getPersonaData } from "../utils/chrome";
 
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
-  readonly accounts?: ReadonlyArray<PersonaAcccount>;
+  readonly accounts?: readonly PersonaAcccount[];
   readonly mnemonic?: string;
-  readonly txs?: ReadonlyArray<ProcessedTx>;
+  readonly txs?: readonly ProcessedTx[];
 }
 
 export interface PersonaContextInterface {
-  readonly accounts: ReadonlyArray<PersonaAcccount>;
-  readonly txs: ReadonlyArray<ProcessedTx>;
+  readonly accounts: readonly PersonaAcccount[];
+  readonly txs: readonly ProcessedTx[];
   readonly mnemonic: string;
   readonly update: (newData: PersonaContextUpdateData) => void;
 }
@@ -35,12 +35,12 @@ interface Props {
   readonly persona: GetPersonaResponse;
 }
 
-type Accounts = ReadonlyArray<PersonaAcccount>;
+type Accounts = readonly PersonaAcccount[];
 
 export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
-  const [txs, setTxs] = React.useState<ReadonlyArray<ProcessedTx>>(persona ? persona.txs : []);
+  const [txs, setTxs] = React.useState<readonly ProcessedTx[]>(persona ? persona.txs : []);
   React.useEffect(() => {
     if (!extensionContext()) {
       return;

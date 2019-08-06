@@ -6,20 +6,20 @@ import { Request } from "../signingServer/requestQueueManager";
 import { Db } from "./db";
 
 export interface IovWindowExtension extends Window {
-  getQueuedRequests: () => ReadonlyArray<Request>;
+  getQueuedRequests: () => readonly Request[];
   createPersona: (password: string, mnemonic: string | undefined) => Promise<PersonaData>;
   loadPersona: (password: string) => Promise<PersonaData>;
   clearPersona: () => void;
-  createAccount: () => Promise<ReadonlyArray<PersonaAcccount>>;
+  createAccount: () => Promise<readonly PersonaAcccount[]>;
   getPersonaData: () => Promise<GetPersonaResponse>;
   hasStoredPersona: () => Promise<boolean>;
   clearDatabase: () => Promise<void>;
 }
 
 export interface PersonaData {
-  readonly accounts: ReadonlyArray<PersonaAcccount>;
+  readonly accounts: readonly PersonaAcccount[];
   readonly mnemonic: string;
-  readonly txs: ReadonlyArray<ProcessedTx>;
+  readonly txs: readonly ProcessedTx[];
 }
 
 const ALREADY_FOUND_ERR = "The persona instance is already set. This indicates a bug in the lifecycle.";
@@ -58,7 +58,7 @@ class Backgroundscript {
     };
   }
 
-  private async createAccount(): Promise<ReadonlyArray<PersonaAcccount>> {
+  private async createAccount(): Promise<readonly PersonaAcccount[]> {
     if (!this.persona) throw new Error(NOT_FOUND_ERR);
     await this.persona.createAccount(this.db.getDb());
 

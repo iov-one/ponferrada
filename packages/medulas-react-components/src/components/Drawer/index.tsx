@@ -81,7 +81,7 @@ interface DrawerItems {
 
 interface Props {
   readonly children: React.ReactNode;
-  readonly items: ReadonlyArray<DrawerItems>;
+  readonly items: readonly DrawerItems[];
   readonly footer?: React.ReactNode;
   readonly elevation?: number;
 }

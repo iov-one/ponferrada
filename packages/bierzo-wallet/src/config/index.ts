@@ -4,7 +4,7 @@ import { singleton } from "medulas-react-components/lib/utils/singleton";
 export interface Config {
   readonly names: { [chainId: string]: string };
   readonly extensionId: string;
-  readonly chains: ReadonlyArray<ChainConfig>;
+  readonly chains: readonly ChainConfig[];
 }
 
 export interface ChainConfig {
@@ -35,7 +35,7 @@ export interface ChainSpec {
 
 export interface FaucetSpec {
   readonly uri: string;
-  readonly tokens: ReadonlyArray<string>;
+  readonly tokens: readonly string[];
 }
 
 const loadConfigurationFile = async (): Promise<Config> => {

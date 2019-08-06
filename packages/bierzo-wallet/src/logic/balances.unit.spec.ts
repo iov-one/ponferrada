@@ -15,7 +15,7 @@ withChainsDescribe("Logic :: balance subscriptions", () => {
     jest
       .spyOn(tokens, "filterExistingTokens")
       .mockImplementation(
-        (_connection: BlockchainConnection, _identity: Identity, tokensByChainId: ReadonlyArray<string>) =>
+        (_connection: BlockchainConnection, _identity: Identity, tokensByChainId: readonly string[]) =>
           Promise.resolve(tokensByChainId),
       );
   });

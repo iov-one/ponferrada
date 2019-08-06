@@ -8,7 +8,7 @@ export interface ProcessedSendTransaction extends ProcessedTx<SendTransaction> {
 }
 
 export interface NotificationState {
-  readonly transactions: ReadonlyArray<ProcessedTx>;
+  readonly transactions: readonly ProcessedTx[];
 }
 
 const initState = {

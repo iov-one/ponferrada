@@ -2,7 +2,7 @@ const BLOCKED_URLS_KEY = "buk";
 const SEPARATOR = ",";
 
 export class SenderWhitelist {
-  private blocked: ReadonlyArray<string> = [];
+  private blocked: readonly string[] = [];
 
   public constructor() {
     this.load();

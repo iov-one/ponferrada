@@ -9,7 +9,7 @@ import {
 } from "../extension/background/updaters/appUpdater";
 import { extensionContext } from "../utils/chrome";
 
-type Requests = ReadonlyArray<Request>;
+type Requests = readonly Request[];
 
 export interface RequestContextInterface {
   readonly requests: Requests;

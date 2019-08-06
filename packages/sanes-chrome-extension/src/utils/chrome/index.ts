@@ -36,14 +36,14 @@ export async function loadPersona(password: string): Promise<PersonaData> {
   return response;
 }
 
-export async function createAccount(): Promise<ReadonlyArray<PersonaAcccount>> {
+export async function createAccount(): Promise<readonly PersonaAcccount[]> {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   const response = await extensionWindow.createAccount();
 
   return response;
 }
 
-export function getQueuedRequests(): ReadonlyArray<Request> {
+export function getQueuedRequests(): readonly Request[] {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   const response = extensionWindow.getQueuedRequests();
 

@@ -22,7 +22,7 @@ export interface ChainSpec {
 
 export interface FaucetSpec {
   readonly uri: string;
-  readonly tokens: ReadonlyArray<string>;
+  readonly tokens: readonly string[];
 }
 
 const configuration = async (): Promise<Config> => {

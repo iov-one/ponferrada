@@ -22,7 +22,7 @@ const Transactions = (): JSX.Element => {
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN as TxsOrder);
   const [order, setOrder] = React.useState(ORDER_DESC as SortOrder);
-  const parsedTxs: ReadonlyArray<ProcessedTx> = useSelector(
+  const parsedTxs: readonly ProcessedTx[] = useSelector(
     (state: RootState) => state.notifications.transactions,
   );
 
