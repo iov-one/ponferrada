@@ -38,10 +38,13 @@ export interface FaucetSpec {
   readonly tokens: ReadonlyArray<string>;
 }
 
+interface WindowWithConfig extends Window {
+  readonly developmentConfig: Config;
+}
+
 const loadConfigurationFile = async (): Promise<Config> => {
   if (process.env.NODE_ENV === "test") {
-    const config = (window as any).config;
-    return config;
+    return (window as WindowWithConfig).developmentConfig;
   }
 
   const response = await fetch("/static/config/conf.json");
