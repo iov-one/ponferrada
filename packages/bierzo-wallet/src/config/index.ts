@@ -44,9 +44,12 @@ const loadConfigurationFile = async (): Promise<Config> => {
     return config;
   }
 
-  const data = await fetch("/static/config/conf.json");
-  const json = await data.json();
+  const response = await fetch("/static/config/conf.json");
+  if (!response.ok) {
+    throw new Error(`Failed to fetch URL. Response status code: ${response.status}`);
+  }
 
+  const json = await response.json();
   return json;
 };
 
