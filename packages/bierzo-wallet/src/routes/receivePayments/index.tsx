@@ -4,6 +4,7 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
+import PageMenu from "../../components/PageMenu";
 import { getChainName } from "../../config";
 import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
@@ -44,7 +45,11 @@ const ReceivePayment = (): JSX.Element => {
     processAddresses(pubKeys);
   }, [pubKeys]);
 
-  return <Layout chainAddresses={chainAddresses} onReturnToBalance={onReturnToBalance} />;
+  return (
+    <PageMenu>
+      <Layout chainAddresses={chainAddresses} onReturnToBalance={onReturnToBalance} />
+    </PageMenu>
+  );
 };
 
 export default ReceivePayment;
