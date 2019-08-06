@@ -8,7 +8,7 @@ import { history } from "../../../../routes";
 import {
   ADDRESSES_ROUTE,
   BALANCE_ROUTE,
-  CONFIRM_TRANSACTION,
+  CONFIRM_TRANSACTION_ROUTE,
   PAYMENT_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "../../../../routes/paths";
@@ -84,7 +84,7 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
   const classes = useStyles();
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
-  const showPayment = path === PAYMENT_ROUTE || path.startsWith(CONFIRM_TRANSACTION);
+  const showPayment = path === PAYMENT_ROUTE || path.startsWith(CONFIRM_TRANSACTION_ROUTE);
   const showAddresses = path === ADDRESSES_ROUTE;
 
   const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
