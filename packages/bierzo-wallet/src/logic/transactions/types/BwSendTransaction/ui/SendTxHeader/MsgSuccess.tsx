@@ -1,7 +1,7 @@
 import Typography from "medulas-react-components/lib/components/Typography";
 import * as React from "react";
 
-import { elipsify } from "../../../../../../utils/strings";
+import { ellipsify } from "../../../../../../utils/strings";
 
 interface MsgProps {
   readonly outgoing: boolean;
@@ -15,8 +15,8 @@ const Msg = ({ amount, outgoing, sender, recipient, onVisitSendPayment }: MsgPro
   const senderWeight = outgoing ? "regular" : "semibold";
   const recipientWeight = outgoing ? "semibold" : "regular";
 
-  const senderShort = elipsify(sender, 16);
-  const recipientShort = elipsify(recipient, 16);
+  const senderShort = ellipsify(sender, 16);
+  const recipientShort = ellipsify(recipient, 16);
 
   return (
     <React.Fragment>
