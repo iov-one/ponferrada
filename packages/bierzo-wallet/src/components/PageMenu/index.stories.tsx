@@ -7,6 +7,7 @@ import { DeepPartial } from "redux";
 
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
+import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import PageMenu from "./index";
 
@@ -62,8 +63,22 @@ const faultTx: ProcessedSendTransaction = {
   outgoing: true,
 };
 
+const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
+  time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
+  id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
+  original: {
+    kind: "bcp/send",
+    sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    amount: stringToAmount("7.4", "IOV" as TokenTicker),
+    memo: "Send money to myself for fun",
+  },
+  incoming: true,
+  outgoing: true,
+};
+
 const fullStore = (): DeepPartial<RootState> => {
-  const fullTxs = [faultTx, ...txs];
+  const fullTxs = [faultTx, incomingAndOutgoingSendTransaction, ...txs];
 
   return {
     notifications: {
