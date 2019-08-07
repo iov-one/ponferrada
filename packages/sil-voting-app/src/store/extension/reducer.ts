@@ -1,3 +1,4 @@
+import { Governor } from "@iov/bns-governance";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
@@ -7,6 +8,7 @@ export interface ExtensionState {
   readonly connected: boolean;
   readonly installed: boolean;
   readonly identity: string | undefined;
+  readonly governor: Governor | undefined;
 }
 
 export interface SetExtensionStateActionType extends Action {
@@ -20,6 +22,7 @@ const initState: ExtensionState = {
   connected: false,
   installed: false,
   identity: undefined,
+  governor: undefined,
 };
 
 export function extensionReducer(
