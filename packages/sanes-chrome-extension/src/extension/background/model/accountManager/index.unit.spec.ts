@@ -1,7 +1,7 @@
 import { Algorithm, ChainId } from "@iov/bcp";
 import { HdPaths } from "@iov/keycontrol";
 
-import { PersonaBuilder } from "../persona/personaBuider";
+import { PersonaBuilder } from "../persona/personaBuilder";
 import { AccountManager, AccountManagerChainConfig } from "./index";
 
 describe("AccountManager", () => {
