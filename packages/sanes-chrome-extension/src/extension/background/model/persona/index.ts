@@ -12,7 +12,7 @@ import { AccountManager } from "../accountManager";
 import { StringDb } from "../backgroundscript/db";
 import SigningServer from "../signingServer";
 import { ConfigurationFile, getConfigurationFile } from "./config";
-import { PersonaBuilder } from "./personaBuider";
+import { PersonaBuilder } from "./personaBuilder";
 
 function isNonNull<T>(t: T | null): t is T {
   return t !== null;
