@@ -7,7 +7,7 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { sendSignAndPostRequest } from "../../communication/signAndPost";
+import { generateSendTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
 import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
@@ -77,13 +77,13 @@ const Payment = (): JSX.Element => {
     const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
 
     try {
-      const transactionId = await sendSignAndPostRequest(
-        chainId,
+      const request = await generateSendTxRequest(
         identity,
         recipient,
         amount,
         formValues[TEXTNOTE_FIELD],
       );
+      const transactionId = await sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
