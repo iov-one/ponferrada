@@ -37,7 +37,7 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
       `"${original.amount.tokenTicker}"`,
     ];
     const date = [`"${tx.time.toISOString()}"`];
-    const status = [`"${tx.incoming}"`, `"${original.memo}"`];
+    const status = [`"${original.memo}"`];
 
     const txRow = [...parties, ...payment, ...date, ...status];
 
