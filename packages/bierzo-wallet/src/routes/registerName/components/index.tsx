@@ -68,25 +68,14 @@ const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
                 <TextFieldForm
                   name={SET_USERNAME_FIELD}
                   form={form}
-                  placeholder="Register IOV username"
+                  placeholder="username*iov"
                   fullWidth
                   margin="none"
                 />
               </Block>
-            </Block>
-          </Paper>
-
-          <Paper>
-            <Block
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              width="100%"
-              marginTop={4}
-              paddingTop={5}
-              padding={3}
-            >
-              <AddressesTable />
+              <Block width="100%" marginTop={2} marginBottom={1}>
+                <AddressesTable />
+              </Block>
             </Block>
           </Paper>
 
