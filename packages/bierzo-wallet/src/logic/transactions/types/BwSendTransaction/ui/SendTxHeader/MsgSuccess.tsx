@@ -4,23 +4,23 @@ import * as React from "react";
 import { elipsify } from "../../../../../../utils/strings";
 
 interface MsgProps {
-  readonly received: boolean;
+  readonly incoming: boolean;
   readonly signer: string;
   readonly recipient: string;
   readonly amount: string;
   readonly onVisitSendPayment: (address: string) => () => void;
 }
 
-const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
-  const signerWeight = received ? "semibold" : "regular";
-  const recipientWeight = received ? "regular" : "semibold";
+const Msg = ({ amount, incoming, signer, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
+  const signerWeight = incoming ? "semibold" : "regular";
+  const recipientWeight = incoming ? "regular" : "semibold";
 
   const signerShort = elipsify(signer, 16);
   const recipientShort = elipsify(recipient, 16);
 
   return (
     <React.Fragment>
-      {received ? (
+      {incoming ? (
         <Typography variant="body2" weight={signerWeight} inline link onClick={onVisitSendPayment(signer)}>
           {signerShort}
         </Typography>
@@ -32,7 +32,7 @@ const Msg = ({ amount, received, signer, recipient, onVisitSendPayment }: MsgPro
       <Typography variant="body2" inline>
         {" sent "}
       </Typography>
-      {received ? (
+      {incoming ? (
         <Typography variant="body2" weight={recipientWeight} inline>
           {"you "}
         </Typography>

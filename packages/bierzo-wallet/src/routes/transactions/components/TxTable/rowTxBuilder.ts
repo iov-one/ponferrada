@@ -13,11 +13,11 @@ export interface TxTableProps extends SortingStateProps {
 }
 
 export function getTypeIcon(tx: ProcessedSendTransaction): string {
-  return tx.received ? fromAddress : toAddress;
+  return tx.incoming ? fromAddress : toAddress;
 }
 
 export function getAddressPrefix(tx: ProcessedSendTransaction): string {
-  if (tx.received) {
+  if (tx.incoming) {
     return "From";
   } else {
     return "To";

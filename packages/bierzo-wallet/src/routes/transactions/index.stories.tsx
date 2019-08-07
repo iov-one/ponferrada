@@ -22,7 +22,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
+    incoming: true,
     time: new ReadonlyDate("2019-12-24T05:35:03.763Z"),
     id: "tx1" as TransactionId,
     original: {
@@ -41,7 +41,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx2" as TransactionId,
     original: {
@@ -52,7 +52,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx3" as TransactionId,
     original: {
@@ -64,7 +64,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
+    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx4" as TransactionId,
     original: {
@@ -76,7 +76,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx5" as TransactionId,
     original: {
@@ -87,7 +87,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx6" as TransactionId,
     original: {
@@ -98,7 +98,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
+    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx7" as TransactionId,
     original: {
@@ -109,7 +109,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx8" as TransactionId,
     original: {
@@ -120,7 +120,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx9" as TransactionId,
     original: {
@@ -131,7 +131,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
+    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx10" as TransactionId,
     original: {
@@ -142,7 +142,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx11" as TransactionId,
     original: {
@@ -153,7 +153,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx12" as TransactionId,
     original: {
@@ -164,7 +164,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
+    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx13" as TransactionId,
     original: {
@@ -175,7 +175,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx14" as TransactionId,
     original: {
@@ -186,7 +186,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx15" as TransactionId,
     original: {

@@ -23,7 +23,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
+    incoming: true,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx1" as TransactionId,
     original: {
@@ -34,7 +34,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: false,
+    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx2" as TransactionId,
     original: {

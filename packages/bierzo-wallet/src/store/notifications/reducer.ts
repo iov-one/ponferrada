@@ -4,7 +4,8 @@ import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { NotificationActions } from "./actions";
 
 export interface ProcessedSendTransaction extends ProcessedTx<SendTransaction> {
-  readonly received: boolean;
+  /** the current user is the receiver of the token send transaction */
+  readonly incoming: boolean;
 }
 
 export interface NotificationState {
