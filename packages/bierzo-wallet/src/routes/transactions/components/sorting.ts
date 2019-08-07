@@ -6,12 +6,12 @@ export interface SortingStateProps {
   readonly order: SortOrder;
 }
 
-export const ORDER_ASC = 1;
-export const ORDER_DESC = -1;
 export type SortOrder = 1 | -1;
+export const ORDER_ASC: SortOrder = 1;
+export const ORDER_DESC: SortOrder = -1;
 
-export const TX_AMOUNT_COLUMN = "Amount";
-export const TX_DATE_COLUMN = "Date";
+export const TX_AMOUNT_COLUMN = "Amount" as const;
+export const TX_DATE_COLUMN = "Date" as const;
 export type TxsOrder = "Date";
 
 export const filterTxsBy = (

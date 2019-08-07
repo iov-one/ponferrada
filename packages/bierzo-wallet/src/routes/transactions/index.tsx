@@ -20,11 +20,9 @@ interface State {
 const Transactions = (): JSX.Element => {
   const [rows, setRows] = React.useState(5);
   const [page, setPage] = React.useState(0);
-  const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN as TxsOrder);
-  const [order, setOrder] = React.useState(ORDER_DESC as SortOrder);
-  const parsedTxs: readonly ProcessedTx[] = useSelector(
-    (state: RootState) => state.notifications.transactions,
-  );
+  const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN);
+  const [order, setOrder] = React.useState(ORDER_DESC);
+  const parsedTxs = useSelector((state: RootState) => state.notifications.transactions);
 
   const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
   const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx));
