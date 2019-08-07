@@ -56,6 +56,6 @@ withChainsDescribe("E2E > Balance route", () => {
   it("should contain message to get username", async () => {
     const username = await getUsernameE2E(await page.$$("h5"));
 
-    expect(username).toBe("No human readable address registered.");
+    expect(username).toBe("Get your human readable address.");
   }, 45000);
 });

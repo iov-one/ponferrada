@@ -128,7 +128,7 @@ describe("The /balance route", () => {
     it("should show that there is no bns username available", async () => {
       const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
 
-      expect(noUsernameMessage).toBe("No human readable address registered.");
+      expect(noUsernameMessage).toBe("Get your human readable address.");
     });
   });
 });

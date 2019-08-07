@@ -5,16 +5,20 @@ import PageMenu from "../../components/PageMenu";
 import { BALANCE_ROUTE } from "../paths";
 import Layout from "./components";
 
-function onReturnToBalance(): void {
+async function onSubmit(values: object): Promise<void> {
+  //console.log(values);
+}
+
+function onCancel(): void {
   history.push(BALANCE_ROUTE);
 }
 
-const ReceivePayment = (): JSX.Element => {
+const RegisterUsername = (): JSX.Element => {
   return (
     <PageMenu>
-      <Layout onReturnToBalance={onReturnToBalance} />
+      <Layout onSubmit={onSubmit} onCancel={onCancel} />
     </PageMenu>
   );
 };
 
-export default ReceivePayment;
+export default RegisterUsername;
