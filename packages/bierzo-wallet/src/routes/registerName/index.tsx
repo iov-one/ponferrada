@@ -1,14 +1,16 @@
 import React from "react";
 
+import { history } from "..";
 import PageMenu from "../../components/PageMenu";
+import { BALANCE_ROUTE } from "../paths";
 import Layout from "./components";
 
 async function onSubmit(values: object): Promise<void> {
-  console.log(values);
+  //console.log(values);
 }
 
 function onCancel(): void {
-  console.log("on cancel");
+  history.push(BALANCE_ROUTE);
 }
 
 const RegisterUsername = (): JSX.Element => {
