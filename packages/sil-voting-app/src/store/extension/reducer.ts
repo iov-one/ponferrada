@@ -7,7 +7,6 @@ import * as actions from "./actions";
 export interface ExtensionState {
   readonly connected: boolean;
   readonly installed: boolean;
-  readonly identity: string | undefined;
   readonly governor: Governor | undefined;
 }
 
@@ -21,7 +20,6 @@ export type ExtensionActions = ActionType<typeof actions>;
 const initState: ExtensionState = {
   connected: false,
   installed: false,
-  identity: undefined,
   governor: undefined,
 };
 
