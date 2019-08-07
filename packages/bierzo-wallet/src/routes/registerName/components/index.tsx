@@ -12,6 +12,8 @@ import TextFieldForm from "medulas-react-components/lib/components/forms/TextFie
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 
+import AddressesTable from "../../../components/AddressesTable";
+
 export const SET_USERNAME_VIEW_ID = "set-username-view-id";
 export const SET_USERNAME_FIELD = "set-username-field";
 
@@ -66,11 +68,25 @@ const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
                 <TextFieldForm
                   name={SET_USERNAME_FIELD}
                   form={form}
-                  placeholder="IOV username"
+                  placeholder="Register IOV username"
                   fullWidth
                   margin="none"
                 />
               </Block>
+            </Block>
+          </Paper>
+
+          <Paper>
+            <Block
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              width="100%"
+              marginTop={4}
+              paddingTop={5}
+              padding={3}
+            >
+              <AddressesTable />
             </Block>
           </Paper>
 
