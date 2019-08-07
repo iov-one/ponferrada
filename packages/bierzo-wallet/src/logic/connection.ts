@@ -58,17 +58,6 @@ export async function getConnectionForChainId(chainId: ChainId): Promise<Blockch
   throw new Error("No connection found for this chainId");
 }
 
-export async function getConnectionForBns(): Promise<BnsConnection> {
-  for (const chain of (await getConfig()).chains) {
-    if (isBnsSpec(chain.chainSpec)) {
-      const url = chain.chainSpec.node;
-      return await getBnsConnection(url);
-    }
-  }
-
-  throw new Error("No connection found for this chainId");
-}
-
 /**
  * Disconnects all blockchain connections. Calling getConnectionFor after
  * this will establich a new connection.
