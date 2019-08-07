@@ -1,6 +1,5 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Address, ChainId } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
@@ -11,12 +10,6 @@ import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 
 import AddressesTable from "../../../components/AddressesTable";
-
-export interface ChainAddress {
-  readonly chainId: ChainId;
-  readonly chainName: string;
-  readonly address: Address;
-}
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 
@@ -31,11 +24,10 @@ const useAvatar = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
-  readonly chainAddresses: readonly ChainAddress[];
   readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
+const ReceivePayment = ({ onReturnToBalance }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -62,7 +54,7 @@ const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Eleme
             <Avatar classes={avatarClasses}>
               <FontAwesomeIcon icon={faUser} color="#ffffff" />
             </Avatar>
-            <AddressesTable chainAddresses={chainAddresses} />
+            <AddressesTable />
           </Block>
         </Paper>
 
