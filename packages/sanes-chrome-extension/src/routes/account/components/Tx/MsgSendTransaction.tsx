@@ -9,7 +9,7 @@ import { ToastContext } from "medulas-react-components/lib/context/ToastProvider
 import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
 import * as React from "react";
 
-import { elipsify } from "../../../../utils/strings";
+import { ellipsify } from "../../../../utils/strings";
 
 interface MsgSendTransactionProps {
   readonly id: string;
@@ -38,7 +38,7 @@ const MsgSendTransaction = ({
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
-  const recipientShort = elipsify(recipient, 18);
+  const recipientShort = ellipsify(recipient, 18);
   const iconButtonClasses = {
     root: classes.icon,
   };
