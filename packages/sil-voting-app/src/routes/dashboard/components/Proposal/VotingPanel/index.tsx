@@ -10,20 +10,21 @@ import ResultFlair from "./ResultFlair";
 interface Props {
   readonly result: ProposalResult;
   readonly vote: VoteOption | undefined;
+  readonly id: number;
   readonly quorum: number;
   readonly threshold: number;
   readonly tally: Tally;
   readonly hasEnded: boolean;
 }
 
-const VotingPanel = ({ result, vote, quorum, threshold, tally, hasEnded }: Props): JSX.Element => {
+const VotingPanel = ({ result, vote, id, quorum, threshold, tally, hasEnded }: Props): JSX.Element => {
   const voteLabel = hasEnded && vote && VoteOption[vote];
 
   return (
     <Block minWidth="160px" margin={2} display="flex" flexDirection="column">
       {hasEnded && <ResultFlair result={result} />}
       <Typography variant="body2">Your vote: {voteLabel}</Typography>
-      {!hasEnded && <Buttons vote={vote} />}
+      {!hasEnded && <Buttons id={id} vote={vote} />}
       <ParticipationData quorum={quorum} threshold={threshold} tally={tally} />
     </Block>
   );
