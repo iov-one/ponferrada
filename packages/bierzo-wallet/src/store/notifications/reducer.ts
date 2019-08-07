@@ -6,6 +6,8 @@ import { NotificationActions } from "./actions";
 export interface ProcessedSendTransaction extends ProcessedTx<SendTransaction> {
   /** the current user is the receiver of the token send transaction */
   readonly incoming: boolean;
+  /** the current user is the sender of the token send transaction */
+  readonly outgoing: boolean;
 }
 
 export interface NotificationState {

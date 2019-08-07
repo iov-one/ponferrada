@@ -20,6 +20,7 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
       time,
       original: trans.transaction,
       incoming: trans.transaction.recipient === currentUserAddress,
+      outgoing: trans.transaction.sender === currentUserAddress,
     };
   }
 

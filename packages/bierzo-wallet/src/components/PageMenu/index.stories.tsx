@@ -12,7 +12,6 @@ import PageMenu from "./index";
 
 const txs: readonly ProcessedSendTransaction[] = [
   {
-    incoming: true,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx1" as TransactionId,
     original: {
@@ -25,9 +24,10 @@ const txs: readonly ProcessedSendTransaction[] = [
       sender: "1L" as Address,
       recipient: "2L" as Address,
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx2" as TransactionId,
     original: {
@@ -40,11 +40,12 @@ const txs: readonly ProcessedSendTransaction[] = [
       sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
       recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
     },
+    incoming: false,
+    outgoing: true,
   },
 ];
 
 const faultTx: ProcessedSendTransaction = {
-  incoming: false,
   time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
   id: "tx3" as TransactionId,
   original: {
@@ -57,6 +58,8 @@ const faultTx: ProcessedSendTransaction = {
     sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
     recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
   },
+  incoming: false,
+  outgoing: true,
 };
 
 const fullStore = (): DeepPartial<RootState> => {

@@ -22,7 +22,6 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    incoming: true,
     time: new ReadonlyDate("2019-12-24T05:35:03.763Z"),
     id: "tx1" as TransactionId,
     original: {
@@ -32,6 +31,8 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       amount: stringToAmount("10.5", "LSK" as TokenTicker),
       memo: "Sample note",
     },
+    incoming: true,
+    outgoing: false,
   },
   {
     time: new ReadonlyDate("2019-12-24T03:35:03.763Z"),
@@ -41,7 +42,6 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx2" as TransactionId,
     original: {
@@ -50,9 +50,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx3" as TransactionId,
     original: {
@@ -62,9 +63,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       amount: stringToAmount("100.5", "IOV" as TokenTicker),
       memo: "Another note",
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx4" as TransactionId,
     original: {
@@ -74,9 +76,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       amount: stringToAmount("10.5", "LSK" as TokenTicker),
       memo: "And again note",
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx5" as TransactionId,
     original: {
@@ -85,9 +88,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx6" as TransactionId,
     original: {
@@ -96,9 +100,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx7" as TransactionId,
     original: {
@@ -107,9 +112,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "me" as Address,
       amount: stringToAmount("10.5", "LSK" as TokenTicker),
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx8" as TransactionId,
     original: {
@@ -118,9 +124,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx9" as TransactionId,
     original: {
@@ -129,9 +136,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx10" as TransactionId,
     original: {
@@ -140,9 +148,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "me" as Address,
       amount: stringToAmount("10.5", "LSK" as TokenTicker),
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx11" as TransactionId,
     original: {
@@ -151,9 +160,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx12" as TransactionId,
     original: {
@@ -162,9 +172,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: true,
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
     id: "tx13" as TransactionId,
     original: {
@@ -173,9 +184,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "me" as Address,
       amount: stringToAmount("10.5", "LSK" as TokenTicker),
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
     id: "tx14" as TransactionId,
     original: {
@@ -184,9 +196,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
   {
-    incoming: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx15" as TransactionId,
     original: {
@@ -195,6 +208,8 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
 ];
 
