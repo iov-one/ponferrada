@@ -15,13 +15,12 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
     const header = await conn.getBlockHeader(trans.height);
     const time = header.time;
 
-    const received = trans.transaction.recipient === currentUserAddress;
-
     return {
       id: trans.transactionId,
       time,
-      received,
       original: trans.transaction,
+      incoming: trans.transaction.recipient === currentUserAddress,
+      outgoing: trans.transaction.sender === currentUserAddress,
     };
   }
 
@@ -38,7 +37,7 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
       `"${original.amount.tokenTicker}"`,
     ];
     const date = [`"${tx.time.toISOString()}"`];
-    const status = [`"${tx.received}"`, `"${original.memo}"`];
+    const status = [`"${original.memo}"`];
 
     const txRow = [...parties, ...payment, ...date, ...status];
 

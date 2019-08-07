@@ -7,12 +7,12 @@ import { DeepPartial } from "redux";
 
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
+import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import PageMenu from "./index";
 
 const txs: readonly ProcessedSendTransaction[] = [
   {
-    received: true,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx1" as TransactionId,
     original: {
@@ -25,9 +25,10 @@ const txs: readonly ProcessedSendTransaction[] = [
       sender: "1L" as Address,
       recipient: "2L" as Address,
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    received: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx2" as TransactionId,
     original: {
@@ -40,11 +41,12 @@ const txs: readonly ProcessedSendTransaction[] = [
       sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
       recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
     },
+    incoming: false,
+    outgoing: true,
   },
 ];
 
 const faultTx: ProcessedSendTransaction = {
-  received: false,
   time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
   id: "tx3" as TransactionId,
   original: {
@@ -57,10 +59,26 @@ const faultTx: ProcessedSendTransaction = {
     sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
     recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
   },
+  incoming: false,
+  outgoing: true,
+};
+
+const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
+  time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
+  id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
+  original: {
+    kind: "bcp/send",
+    sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    amount: stringToAmount("7.4", "IOV" as TokenTicker),
+    memo: "Send money to myself for fun",
+  },
+  incoming: true,
+  outgoing: true,
 };
 
 const fullStore = (): DeepPartial<RootState> => {
-  const fullTxs = [faultTx, ...txs];
+  const fullTxs = [faultTx, incomingAndOutgoingSendTransaction, ...txs];
 
   return {
     notifications: {

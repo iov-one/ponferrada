@@ -3,7 +3,6 @@ import Block from "medulas-react-components/lib/components/Block";
 import Typography from "medulas-react-components/lib/components/Typography";
 import * as React from "react";
 
-import { getAddressPrefix } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 
 const useStyles = makeStyles({
@@ -25,7 +24,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
       <Block display="flex">
         <Block width="50%">
           <Typography variant="subtitle2" weight="regular" gutterBottom>
-            {getAddressPrefix(tx)} address:
+            Sender:
           </Typography>
           <Typography
             variant="subtitle2"
@@ -33,7 +32,19 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
             color="textSecondary"
             className={classes.sectionName}
           >
-            {tx.received ? tx.original.sender : tx.original.recipient}
+            {tx.original.sender}
+          </Typography>
+          <Typography>&nbsp;</Typography>
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Recipient:
+          </Typography>
+          <Typography
+            variant="subtitle2"
+            weight="regular"
+            color="textSecondary"
+            className={classes.sectionName}
+          >
+            {tx.original.recipient}
           </Typography>
         </Block>
         <Block width="50%">

@@ -23,7 +23,6 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     },
   },
   {
-    received: true,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx1" as TransactionId,
     original: {
@@ -32,9 +31,10 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "456L" as Address,
       amount: stringToAmount("10.5", "LSK" as TokenTicker),
     },
+    incoming: true,
+    outgoing: false,
   },
   {
-    received: false,
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx2" as TransactionId,
     original: {
@@ -43,6 +43,8 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
       amount: stringToAmount("25.5", "IOV" as TokenTicker),
     },
+    incoming: false,
+    outgoing: true,
   },
 ];
 

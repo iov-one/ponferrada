@@ -13,15 +13,12 @@ export interface TxTableProps extends SortingStateProps {
 }
 
 export function getTypeIcon(tx: ProcessedSendTransaction): string {
-  return tx.received ? fromAddress : toAddress;
+  return tx.outgoing ? toAddress : fromAddress;
 }
 
 export function getAddressPrefix(tx: ProcessedSendTransaction): string {
-  if (tx.received) {
-    return "From";
-  } else {
-    return "To";
-  }
+  if (tx.outgoing) return "To";
+  else return "From";
 }
 
 export const DEFAULT_ADDRESS = "blockchain address";

@@ -46,17 +46,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
-  const { time, received, original } = item;
+  const { time, outgoing, original } = item;
 
   const beautifulAmount = prettyAmount(original.amount);
-  const icon = received ? receiveTx : sendTx;
+  const icon = outgoing ? sendTx : receiveTx;
 
   const msg = (
     <Msg
       onVisitSendPayment={onVisitSendPayment}
-      received={received}
+      outgoing={outgoing}
       amount={beautifulAmount}
-      signer={original.sender}
+      sender={original.sender}
       recipient={original.recipient}
     />
   );
