@@ -13,6 +13,20 @@ import Payment from "./index";
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
 
+const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
+  time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
+  id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
+  original: {
+    kind: "bcp/send",
+    sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    amount: stringToAmount("7.4", "IOV" as TokenTicker),
+    memo: "Send money to myself for fun",
+  },
+  incoming: true,
+  outgoing: true,
+};
+
 const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
@@ -34,6 +48,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
     incoming: true,
     outgoing: false,
   },
+  incomingAndOutgoingSendTransaction,
   {
     time: new ReadonlyDate("2019-12-24T03:35:03.763Z"),
     id: "0xaaffBdjuhyu8898scchjsg" as TransactionId,
