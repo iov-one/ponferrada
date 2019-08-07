@@ -292,55 +292,51 @@ exports[`Storyshots Bierzo wallet Register Username 1`] = `
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
-                  placeholder="Register IOV username"
+                  placeholder="username*iov"
                   required={false}
                   type="text"
                 />
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <table
-            className="MuiTable-root"
+          <div
+            className="MuiBox-root MuiBox-root"
           >
-            <thead
-              className="MuiTableHead-root"
+            <table
+              className="MuiTable-root"
             >
-              <tr
-                className="MuiTableRow-root makeStyles-header MuiTableRow-head"
+              <thead
+                className="MuiTableHead-root"
               >
-                <th
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
-                  scope="col"
+                <tr
+                  className="MuiTableRow-root makeStyles-header MuiTableRow-head"
                 >
-                  Blockchain
-                </th>
-                <th
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
-                  scope="col"
-                >
-                  Address
-                </th>
-                <th
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-head"
-                  scope="col"
-                />
-              </tr>
-            </thead>
-            <tbody
-              className="MuiTableBody-root"
-            />
-          </table>
+                  <th
+                    aria-sort={null}
+                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+                    scope="col"
+                  >
+                    Blockchain
+                  </th>
+                  <th
+                    aria-sort={null}
+                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+                    scope="col"
+                  >
+                    Address
+                  </th>
+                  <th
+                    aria-sort={null}
+                    className="MuiTableCell-root MuiTableCell-head"
+                    scope="col"
+                  />
+                </tr>
+              </thead>
+              <tbody
+                className="MuiTableBody-root"
+              />
+            </table>
+          </div>
         </div>
       </div>
       <div
