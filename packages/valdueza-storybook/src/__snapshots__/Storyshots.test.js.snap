@@ -2622,7 +2622,7 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                     alt="Transaction type"
                     className="makeStyles-root"
                     height={24}
-                    src="fromAddress.svg"
+                    src="toAddress.svg"
                     width={24}
                   />
                 </div>
@@ -2632,7 +2632,7 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
                   >
-                    From
+                    To
                      
                     blockchain address
                   </h6>

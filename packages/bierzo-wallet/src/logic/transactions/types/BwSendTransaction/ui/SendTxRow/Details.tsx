@@ -33,7 +33,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
             color="textSecondary"
             className={classes.sectionName}
           >
-            {tx.incoming ? tx.original.sender : tx.original.recipient}
+            {tx.outgoing ? tx.original.recipient : tx.original.sender}
           </Typography>
         </Block>
         <Block width="50%">
