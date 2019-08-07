@@ -8,7 +8,7 @@ import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
 import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
-import Payment from "./index";
+import Transactions from "./index";
 
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
@@ -240,7 +240,7 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
     "Without transactions",
     (): JSX.Element => (
       <DecoratedStorybook>
-        <Payment />
+        <Transactions />
       </DecoratedStorybook>
     ),
   )
@@ -248,7 +248,7 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
     TRANSACTIONS_STORY_SHOW_PATH,
     (): JSX.Element => (
       <DecoratedStorybook storeProps={txStore}>
-        <Payment />
+        <Transactions />
       </DecoratedStorybook>
     ),
   );
