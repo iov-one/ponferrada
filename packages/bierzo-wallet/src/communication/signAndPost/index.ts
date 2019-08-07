@@ -15,7 +15,7 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResp
 
 import { getConfig } from "../../config";
 import { getCodecForChainId } from "../../logic/codec";
-import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
+import { getConnectionForChainId } from "../../logic/connection";
 
 async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
   const connection = await getConnectionForChainId(chainId);
