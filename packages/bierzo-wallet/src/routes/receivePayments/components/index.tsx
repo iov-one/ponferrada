@@ -13,6 +13,8 @@ import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
+import AddressesTable from "../../../components/AddressesTable";
+
 export interface ChainAddress {
   readonly chainId: ChainId;
   readonly chainName: string;
@@ -82,28 +84,7 @@ const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Eleme
             <Avatar classes={avatarClasses}>
               <FontAwesomeIcon icon={faUser} color="#ffffff" />
             </Avatar>
-            <Table>
-              <TableHead>
-                <TableRow className={tableClasses.header}>
-                  <TableCell align="center">Blockchain</TableCell>
-                  <TableCell align="center">Address</TableCell>
-                  <TableCell />
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {chainAddresses.map(chain => (
-                  <TableRow key={chain.chainId}>
-                    <TableCell align="left">{chain.chainName}</TableCell>
-                    <TableCell align="left">{chain.address}</TableCell>
-                    <TableCell align="left" className={tableClasses.copyCell}>
-                      <CopyToClipboard text={chain.address} onCopy={onAddressCopy}>
-                        <FontAwesomeIcon icon={faCopy} />
-                      </CopyToClipboard>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <AddressesTable chainAddresses={chainAddresses} />
           </Block>
         </Paper>
 
