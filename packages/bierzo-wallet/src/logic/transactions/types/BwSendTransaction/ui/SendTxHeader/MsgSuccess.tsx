@@ -5,27 +5,27 @@ import { elipsify } from "../../../../../../utils/strings";
 
 interface MsgProps {
   readonly incoming: boolean;
-  readonly signer: string;
+  readonly sender: string;
   readonly recipient: string;
   readonly amount: string;
   readonly onVisitSendPayment: (address: string) => () => void;
 }
 
-const Msg = ({ amount, incoming, signer, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
-  const signerWeight = incoming ? "semibold" : "regular";
+const Msg = ({ amount, incoming, sender, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
+  const senderWeight = incoming ? "semibold" : "regular";
   const recipientWeight = incoming ? "regular" : "semibold";
 
-  const signerShort = elipsify(signer, 16);
+  const senderShort = elipsify(sender, 16);
   const recipientShort = elipsify(recipient, 16);
 
   return (
     <React.Fragment>
       {incoming ? (
-        <Typography variant="body2" weight={signerWeight} inline link onClick={onVisitSendPayment(signer)}>
-          {signerShort}
+        <Typography variant="body2" weight={senderWeight} inline link onClick={onVisitSendPayment(sender)}>
+          {senderShort}
         </Typography>
       ) : (
-        <Typography variant="body2" weight={signerWeight} inline>
+        <Typography variant="body2" weight={senderWeight} inline>
           You
         </Typography>
       )}

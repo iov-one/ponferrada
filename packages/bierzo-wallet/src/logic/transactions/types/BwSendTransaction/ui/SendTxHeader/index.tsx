@@ -56,7 +56,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       onVisitSendPayment={onVisitSendPayment}
       incoming={incoming}
       amount={beautifulAmount}
-      signer={original.sender}
+      sender={original.sender}
       recipient={original.recipient}
     />
   );
