@@ -78,8 +78,6 @@ export const generateRegisterUsernameTxRequest = async (
   };
 };
 
-//  const request = await generateSendTxRequest(chainId, creator, recipient, amount, memo);
-
 export const sendSignAndPostRequest = async (request: JsonRpcRequest): Promise<TransactionId | null> => {
   const config = await getConfig();
 
