@@ -1,17 +1,14 @@
-import { faCopy, faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Address, ChainId } from "@iov/bcp";
-import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
+import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { useTheme } from "@material-ui/styles";
 import Block from "medulas-react-components/lib/components/Block";
 import Button from "medulas-react-components/lib/components/Button";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
-import CopyToClipboard from "react-copy-to-clipboard";
 
 import AddressesTable from "../../../components/AddressesTable";
 
@@ -22,19 +19,6 @@ export interface ChainAddress {
 }
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
-
-const useTable = makeStyles({
-  header: {
-    "& > th": {
-      fontSize: "1.6rem",
-    },
-  },
-  copyCell: {
-    "& > svg": {
-      cursor: "pointer",
-    },
-  },
-});
 
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
@@ -52,14 +36,8 @@ interface Props {
 }
 
 const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
-  const toast = React.useContext(ToastContext);
   const avatarClasses = useAvatar();
-  const tableClasses = useTable();
   const theme = useTheme<Theme>();
-
-  const onAddressCopy = (): void => {
-    toast.show("Address has been copied to clipboard.", ToastVariant.INFO);
-  };
 
   return (
     <Block
