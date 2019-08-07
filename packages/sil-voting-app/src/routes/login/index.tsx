@@ -40,7 +40,7 @@ const Login = (): JSX.Element => {
 
   const isExtensionConnected = async (): Promise<boolean> => {
     const result = await getExtensionStatus();
-    dispatch(setExtensionStateAction(result.connected, result.installed, result.identity));
+    dispatch(setExtensionStateAction(result.connected, result.installed, result.governor));
 
     if (!result.installed) {
       toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
