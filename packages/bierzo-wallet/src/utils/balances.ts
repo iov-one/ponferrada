@@ -86,7 +86,3 @@ export function amountToString(amount: Amount): string {
 
   return `${value} ${tokenTicker}`;
 }
-
-export function prettyAmount(amount: Amount): string {
-  return amountToString(amount);
-}

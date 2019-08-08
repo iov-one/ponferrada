@@ -9,7 +9,7 @@ import Img from "medulas-react-components/lib/components/Image";
 import * as React from "react";
 
 import { ProcessedTx } from "../../../../extension/background/model/persona";
-import { prettyAmount } from "../../../../utils/balances";
+import { amountToString } from "../../../../utils/balances";
 import iconErrorTx from "../../assets/transactionError.svg";
 import iconSendTx from "../../assets/transactionSend.svg";
 import MsgRegisterUsernameTx from "./MsgRegisterUsernameTx";
@@ -42,7 +42,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   let msg: JSX.Element;
   if (isSendTransaction(item.original)) {
     const { amount, recipient } = item.original;
-    const beautifulAmount = prettyAmount(amount);
+    const beautifulAmount = amountToString(amount);
     msg = (
       <MsgSendTransaction
         id={item.id}

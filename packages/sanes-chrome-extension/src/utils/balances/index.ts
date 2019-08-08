@@ -40,10 +40,6 @@ export function amountToGwei(amount: Amount): string {
   return `${display} Gwei`;
 }
 
-export function prettyAmount(amount: Amount): string {
-  return amountToString(amount);
-}
-
 export const makeAmount = (quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount => ({
   quantity,
   fractionalDigits,

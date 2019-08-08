@@ -10,7 +10,7 @@ import { history } from "../../../../../../routes";
 import { PAYMENT_ROUTE } from "../../../../../../routes/paths";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { itemBackground } from "../../../../../../theme/css";
-import { prettyAmount } from "../../../../../../utils/balances";
+import { amountToString } from "../../../../../../utils/balances";
 import receiveTx from "../assets/transactionReceive.svg";
 import sendTx from "../assets/transactionSend.svg";
 import Msg from "./MsgSuccess";
@@ -48,7 +48,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   const classes = useStyles();
   const { time, outgoing, original } = item;
 
-  const beautifulAmount = prettyAmount(original.amount);
+  const beautifulAmount = amountToString(original.amount);
   const icon = outgoing ? sendTx : receiveTx;
 
   const msg = (
