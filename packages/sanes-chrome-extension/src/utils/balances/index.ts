@@ -20,13 +20,6 @@ export function parseFigures(amount: string): Figures {
   return { quantity, fractionalDigits };
 }
 
-// This parses a decimal as string into the Amount format
-export function stringToAmount(amount: string, tokenTicker: TokenTicker): Amount {
-  const figures = parseFigures(amount);
-
-  return { ...figures, tokenTicker };
-}
-
 export function amountToNumber(amount: Amount): number {
   const { quantity, fractionalDigits } = amount;
   if (!quantity.match(/^[0-9]+$/)) {

@@ -1,6 +1,6 @@
 import { TokenTicker } from "@iov/bcp";
 
-import { amountToGwei, amountToString, makeAmount as makeInfo, parseFigures, stringToAmount } from "./index";
+import { amountToGwei, amountToString, makeAmount as makeInfo, parseFigures } from "./index";
 
 describe("amountToString", () => {
   const iov = "IOV" as TokenTicker;
@@ -47,22 +47,6 @@ describe("amountToGwei", () => {
     expect(amountToGwei({ ...meta, quantity: "123000000" })).toEqual("0.12 Gwei");
     expect(amountToGwei({ ...meta, quantity: "1333333333" })).toEqual("1.33 Gwei");
     expect(amountToGwei({ ...meta, quantity: "1999999999" })).toEqual("2.00 Gwei");
-  });
-});
-
-describe("stringToAmount", () => {
-  const eth = "ETH" as TokenTicker;
-
-  it("should handle whole numbers", () => {
-    expect(stringToAmount("2340", eth)).toEqual(makeInfo("2340", 0, eth));
-    expect(stringToAmount("873", eth)).toEqual(makeInfo("873", 0, eth));
-  });
-
-  it("should handle fractional numbers with or without leading 0", () => {
-    expect(stringToAmount("0.1234", eth)).toEqual(makeInfo("1234", 4, eth));
-    expect(stringToAmount(".1234", eth)).toEqual(makeInfo("1234", 4, eth));
-    expect(stringToAmount("0,023", eth)).toEqual(makeInfo("023", 3, eth));
-    expect(stringToAmount("0.170", eth)).toEqual(makeInfo("17", 2, eth));
   });
 });
 
