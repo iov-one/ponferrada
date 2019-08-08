@@ -7,7 +7,7 @@ import Img from "medulas-react-components/lib/components/Image";
 import Typography from "medulas-react-components/lib/components/Typography";
 import React from "react";
 
-import { amountToString, trimAmount } from "../../../utils/balances";
+import { amountToString } from "../../../utils/balances";
 import { ADDRESSES_ROUTE, PAYMENT_ROUTE } from "../../paths";
 import receive from "../assets/transactionReceive.svg";
 import send from "../assets/transactionSend.svg";
@@ -90,7 +90,7 @@ const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }
               align="center"
               onClick={onSendPayment}
             >
-              {`${amountToString(trimAmount(balances[ticker]))}`}
+              {`${amountToString(balances[ticker])}`}
             </Typography>
           ))}
           <Block margin={1} />

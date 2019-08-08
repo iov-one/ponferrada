@@ -1,13 +1,6 @@
-import { Amount, TokenTicker } from "@iov/bcp";
+import { TokenTicker } from "@iov/bcp";
 
-import {
-  amountToString,
-  makeAmount as makeInfo,
-  padAmount,
-  parseFigures,
-  stringToAmount,
-  trimAmount,
-} from "./balances";
+import { amountToString, makeAmount as makeInfo, padAmount, parseFigures, stringToAmount } from "./balances";
 
 describe("amountToString", () => {
   const iov = "IOV" as TokenTicker;
@@ -80,26 +73,6 @@ describe("parseFigures", () => {
     expect(() => parseFigures("12a")).toThrow(/Not a valid number/);
     expect(() => parseFigures("0x1234")).toThrow(/Not a valid number/);
     expect(() => parseFigures("-15.6")).toThrow(/Not a valid number/);
-  });
-});
-
-describe("trimAmount", () => {
-  const eth = "ETH" as TokenTicker;
-
-  it("should trim trailing zeros", () => {
-    expect(trimAmount(makeInfo("1200", 0, eth))).toEqual(makeInfo("1200", 0, eth));
-    expect(trimAmount(makeInfo("1200", 2, eth))).toEqual(makeInfo("12", 0, eth));
-    expect(trimAmount(makeInfo("120034000", 7, eth))).toEqual(makeInfo("120034", 4, eth));
-    expect(trimAmount(makeInfo("3400", 1, eth))).toEqual(makeInfo("340", 0, eth));
-  });
-
-  it("should keep 0 amount unchanged", () => {
-    const original: Amount = {
-      quantity: "0",
-      fractionalDigits: 18,
-      tokenTicker: eth,
-    };
-    expect(trimAmount(original)).toEqual(original);
   });
 });
 

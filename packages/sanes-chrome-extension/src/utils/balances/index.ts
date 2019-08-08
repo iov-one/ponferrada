@@ -67,25 +67,6 @@ export function amountToGwei(amount: Amount): string {
   return `${display} Gwei`;
 }
 
-// this takes an amount and trims off all trailing 0s
-// TODO: remove leading 0s also
-export function trimAmount(amount: Amount): Amount {
-  const { quantity, fractionalDigits, tokenTicker } = amount;
-  const trailingZerosMatch = quantity.match(/[^0](0*)$/);
-  const numberOfTrailingZeros = trailingZerosMatch ? trailingZerosMatch[1].length : 0;
-  const cut = Math.min(numberOfTrailingZeros, fractionalDigits);
-  if (cut === 0) {
-    return amount;
-  }
-  const trimmedQuantity = quantity.slice(0, -cut);
-  const trimmedDigits = fractionalDigits - cut;
-  return {
-    quantity: trimmedQuantity,
-    fractionalDigits: trimmedDigits,
-    tokenTicker,
-  };
-}
-
 // this takes an amount and pad 0s to the desired fractionalDigits, or throws error if fractionalDigits is already larger
 export function padAmount(amount: Amount, desiredDigits: number): Amount {
   const { quantity, fractionalDigits, tokenTicker } = amount;
@@ -112,8 +93,8 @@ export function compareAmounts(a: Amount, b: Amount): number {
   }
   // same number of fractional digits
   const maxDigits = Math.max(a.fractionalDigits, b.fractionalDigits);
-  const { quantity: first } = padAmount(trimAmount(a), maxDigits);
-  const { quantity: second } = padAmount(trimAmount(b), maxDigits);
+  const { quantity: first } = padAmount(a, maxDigits);
+  const { quantity: second } = padAmount(b, maxDigits);
 
   // longer number is bigger
   if (first.length > second.length) {
@@ -131,7 +112,7 @@ export function compareAmounts(a: Amount, b: Amount): number {
 }
 
 export function prettyAmount(amount: Amount): string {
-  return amountToString(trimAmount(amount));
+  return amountToString(amount);
 }
 
 export const makeAmount = (quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount => ({

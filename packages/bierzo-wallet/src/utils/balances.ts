@@ -80,25 +80,6 @@ export function amountToString(amount: Amount): string {
   return `${value} ${tokenTicker}`;
 }
 
-// this takes an amount and trims off all trailing 0s
-// TODO: remove leading 0s also
-export function trimAmount(amount: Amount): Amount {
-  const { quantity, fractionalDigits, tokenTicker } = amount;
-  const trailingZerosMatch = quantity.match(/[^0](0*)$/);
-  const numberOfTrailingZeros = trailingZerosMatch ? trailingZerosMatch[1].length : 0;
-  const cut = Math.min(numberOfTrailingZeros, fractionalDigits);
-  if (cut === 0) {
-    return amount;
-  }
-  const trimmedQuantity = quantity.slice(0, -cut);
-  const trimmedDigits = fractionalDigits - cut;
-  return {
-    quantity: trimmedQuantity,
-    fractionalDigits: trimmedDigits,
-    tokenTicker,
-  };
-}
-
 export function prettyAmount(amount: Amount): string {
-  return amountToString(trimAmount(amount));
+  return amountToString(amount);
 }
