@@ -85,32 +85,6 @@ export function padAmount(amount: Amount, desiredDigits: number): Amount {
   }
 }
 
-// compareAmount returns 1 is a is bigger, -1 if b is bigger, 0 is the same value
-// it throws an error if they have different tickers
-export function compareAmounts(a: Amount, b: Amount): number {
-  if (a.tokenTicker !== b.tokenTicker) {
-    throw new Error(`Cannot compare ${a.tokenTicker} with ${b.tokenTicker}`);
-  }
-  // same number of fractional digits
-  const maxDigits = Math.max(a.fractionalDigits, b.fractionalDigits);
-  const { quantity: first } = padAmount(a, maxDigits);
-  const { quantity: second } = padAmount(b, maxDigits);
-
-  // longer number is bigger
-  if (first.length > second.length) {
-    return 1;
-  } else if (first.length < second.length) {
-    return -1;
-  } else if (first === second) {
-    // string compare if same length
-    return 0;
-  } else if (first > second) {
-    return 1;
-  } else {
-    return -1;
-  }
-}
-
 export function prettyAmount(amount: Amount): string {
   return amountToString(amount);
 }
