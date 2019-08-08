@@ -9,7 +9,7 @@ import Button from "medulas-react-components/lib/components/Button";
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 
-import AddressesTable from "../../../components/AddressesTable";
+import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 
@@ -23,11 +23,11 @@ const useAvatar = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
+interface Props extends AddressesTableProps {
   readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ onReturnToBalance }: Props): JSX.Element => {
+const ReceivePayment = ({ addresses, onReturnToBalance }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -54,7 +54,7 @@ const ReceivePayment = ({ onReturnToBalance }: Props): JSX.Element => {
             <Avatar classes={avatarClasses}>
               <FontAwesomeIcon icon={faUser} color="#ffffff" />
             </Avatar>
-            <AddressesTable />
+            <AddressesTable addresses={addresses} />
           </Block>
         </Paper>
 

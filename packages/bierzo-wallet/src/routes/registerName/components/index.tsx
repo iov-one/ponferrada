@@ -12,7 +12,7 @@ import TextFieldForm from "medulas-react-components/lib/components/forms/TextFie
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 
-import AddressesTable from "../../../components/AddressesTable";
+import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 
 export const SET_USERNAME_VIEW_ID = "set-username-view-id";
 export const SET_USERNAME_FIELD = "set-username-field";
@@ -27,12 +27,12 @@ const useAvatar = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
+interface Props extends AddressesTableProps {
   readonly onSubmit: (values: object) => Promise<void>;
   readonly onCancel: () => void;
 }
 
-const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
+const Layout = ({ addresses, onSubmit, onCancel }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -74,7 +74,7 @@ const Layout = ({ onSubmit, onCancel }: Props): JSX.Element => {
                 />
               </Block>
               <Block width="100%" marginTop={2} marginBottom={1}>
-                <AddressesTable />
+                <AddressesTable addresses={addresses} />
               </Block>
             </Block>
           </Paper>

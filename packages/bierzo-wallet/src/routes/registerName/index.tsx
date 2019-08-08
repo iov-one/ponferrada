@@ -10,9 +10,9 @@ import * as ReactRedux from "react-redux";
 import { history } from "..";
 import { generateRegisterUsernameTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
 import PageMenu from "../../components/PageMenu";
-import { getCodecForChainId } from "../../logic/codec";
 import { getConnectionForChainId } from "../../logic/connection";
 import { RootState } from "../../store/reducers";
+import { getChainAddressPair } from "../../utils/tokens";
 import { BALANCE_ROUTE } from "../paths";
 import Layout, { SET_USERNAME_FIELD } from "./components";
 
@@ -21,8 +21,18 @@ function onCancel(): void {
 }
 
 const RegisterUsername = (): JSX.Element => {
+  const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
   const toast = React.useContext(ToastContext);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
+
+  React.useEffect(() => {
+    async function processPubKeys(pubKeys: { [chain: string]: string }): Promise<void> {
+      setAddresses(await getChainAddressPair(pubKeys));
+    }
+
+    processPubKeys(pubKeys);
+  }, [pubKeys]);
+
   async function onSubmit(values: object): Promise<void> {
     const formValues = values as FormValues;
 
@@ -30,15 +40,10 @@ const RegisterUsername = (): JSX.Element => {
 
     let bnsIdentity: Identity | null = null;
     const addresses: ChainAddressPair[] = [];
-    for (const key of Object.values(pubKeys)) {
-      const identity: Identity = TransactionEncoder.fromJson(JSON.parse(key));
-      if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
-        bnsIdentity = identity;
+    for (const address of addresses) {
+      if ((await getConnectionForChainId(address.chainId)) instanceof BnsConnection) {
+        bnsIdentity = TransactionEncoder.fromJson(JSON.parse(pubKeys[address.chainId]));
       }
-      addresses.push({
-        chainId: identity.chainId,
-        address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
-      });
     }
 
     if (!bnsIdentity) {
@@ -63,7 +68,7 @@ const RegisterUsername = (): JSX.Element => {
 
   return (
     <PageMenu>
-      <Layout onSubmit={onSubmit} onCancel={onCancel} />
+      <Layout onSubmit={onSubmit} onCancel={onCancel} addresses={addresses} />
     </PageMenu>
   );
 };
