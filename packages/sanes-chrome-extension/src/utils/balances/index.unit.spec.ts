@@ -1,25 +1,25 @@
 import { TokenTicker } from "@iov/bcp";
 
-import { amountToGwei, amountToString, makeAmount as makeInfo, parseFigures } from "./index";
+import { amountToGwei, amountToString, makeAmount, parseFigures } from "./index";
 
 describe("amountToString", () => {
   const iov = "IOV" as TokenTicker;
 
   it("should handle whole numbers", () => {
-    expect(amountToString(makeInfo("123", 0, iov))).toEqual("123 IOV");
-    expect(amountToString(makeInfo("123000", 0, iov))).toEqual("123000 IOV");
+    expect(amountToString(makeAmount("123", 0, iov))).toEqual("123 IOV");
+    expect(amountToString(makeAmount("123000", 0, iov))).toEqual("123000 IOV");
   });
 
   it("should handle fractional", () => {
-    expect(amountToString(makeInfo("123456", 2, iov))).toEqual("1234.56 IOV");
-    expect(amountToString(makeInfo("123456", 4, iov))).toEqual("12.3456 IOV");
-    expect(amountToString(makeInfo("123456", 6, iov))).toEqual("0.123456 IOV");
+    expect(amountToString(makeAmount("123456", 2, iov))).toEqual("1234.56 IOV");
+    expect(amountToString(makeAmount("123456", 4, iov))).toEqual("12.3456 IOV");
+    expect(amountToString(makeAmount("123456", 6, iov))).toEqual("0.123456 IOV");
   });
 
   it("should handle odd formats", () => {
     // leading zeros
-    expect(amountToString(makeInfo("00123", 2, iov))).toEqual("1.23 IOV");
-    expect(amountToString(makeInfo("123456", 8, iov))).toEqual("0.00123456 IOV");
+    expect(amountToString(makeAmount("00123", 2, iov))).toEqual("1.23 IOV");
+    expect(amountToString(makeAmount("123456", 8, iov))).toEqual("0.00123456 IOV");
   });
 });
 
