@@ -1,4 +1,4 @@
-import { Address, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
@@ -13,6 +13,16 @@ import Transactions from "./index";
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
 
+const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 9,
+  tokenTicker: "IOV" as TokenTicker,
+};
+
+const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 8,
+  tokenTicker: "LSK" as TokenTicker,
+};
+
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
   id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
@@ -20,7 +30,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
     kind: "bcp/send",
     sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
     recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
-    amount: stringToAmount("7.4", "IOV" as TokenTicker),
+    amount: stringToAmount("7.4", iov),
     memo: "Send money to myself for fun",
   },
   incoming: true,
@@ -42,7 +52,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "george*iov" as Address,
       recipient: "me" as Address,
-      amount: stringToAmount("10.5", "LSK" as TokenTicker),
+      amount: stringToAmount("10.5", lsk),
       memo: "Sample note",
     },
     incoming: true,
@@ -63,7 +73,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", "IOV" as TokenTicker),
+      amount: stringToAmount("25.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -75,7 +85,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", "IOV" as TokenTicker),
+      amount: stringToAmount("100.5", iov),
       memo: "Another note",
     },
     incoming: false,
@@ -88,7 +98,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "Lx9oa7re0894eopiahsdpf98as7y908" as Address,
       recipient: "me" as Address,
-      amount: stringToAmount("10.5", "LSK" as TokenTicker),
+      amount: stringToAmount("10.5", lsk),
       memo: "And again note",
     },
     incoming: true,
@@ -101,7 +111,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", "IOV" as TokenTicker),
+      amount: stringToAmount("25.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -113,7 +123,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", "IOV" as TokenTicker),
+      amount: stringToAmount("100.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -125,7 +135,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "george*iov" as Address,
       recipient: "me" as Address,
-      amount: stringToAmount("10.5", "LSK" as TokenTicker),
+      amount: stringToAmount("10.5", lsk),
     },
     incoming: true,
     outgoing: false,
@@ -137,7 +147,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", "IOV" as TokenTicker),
+      amount: stringToAmount("25.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -149,7 +159,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", "IOV" as TokenTicker),
+      amount: stringToAmount("100.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -161,7 +171,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "george*iov" as Address,
       recipient: "me" as Address,
-      amount: stringToAmount("10.5", "LSK" as TokenTicker),
+      amount: stringToAmount("10.5", lsk),
     },
     incoming: true,
     outgoing: false,
@@ -173,7 +183,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", "IOV" as TokenTicker),
+      amount: stringToAmount("25.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -185,7 +195,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", "IOV" as TokenTicker),
+      amount: stringToAmount("100.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -197,7 +207,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "george*iov" as Address,
       recipient: "me" as Address,
-      amount: stringToAmount("10.5", "LSK" as TokenTicker),
+      amount: stringToAmount("10.5", lsk),
     },
     incoming: true,
     outgoing: false,
@@ -209,7 +219,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "Lxasdoiu9847ioasdpfuy098q23rui" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", "IOV" as TokenTicker),
+      amount: stringToAmount("25.5", iov),
     },
     incoming: false,
     outgoing: true,
@@ -221,7 +231,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", "IOV" as TokenTicker),
+      amount: stringToAmount("100.5", iov),
     },
     incoming: false,
     outgoing: true,

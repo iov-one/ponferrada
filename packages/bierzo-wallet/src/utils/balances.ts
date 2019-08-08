@@ -1,4 +1,4 @@
-import { Amount, TokenTicker } from "@iov/bcp";
+import { Amount, Token, TokenTicker } from "@iov/bcp";
 
 export type Figures = Omit<Amount, "tokenTicker">;
 
@@ -19,11 +19,19 @@ export function parseFigures(amount: string): Figures {
   return { quantity, fractionalDigits };
 }
 
-// This parses a decimal as string into the Amount format
-export function stringToAmount(amount: string, tokenTicker: TokenTicker): Amount {
+/**
+ * Parses a decimal as string into the Amount format, using the token's native fractional digits
+ */
+export function stringToAmount(
+  amount: string,
+  tokenInfo: Pick<Token, "fractionalDigits" | "tokenTicker">,
+): Amount {
   const figures = parseFigures(amount);
 
-  return { ...figures, tokenTicker };
+  return {
+    ...figures,
+    tokenTicker: tokenInfo.tokenTicker,
+  };
 }
 
 export const makeAmount = (quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount => ({

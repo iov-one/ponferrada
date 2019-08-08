@@ -51,11 +51,11 @@ const Payment = (): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
-    const ticker = formValues[CURRENCY_FIELD] as TokenTicker;
-    const amount = stringToAmount(formValues[QUANTITY_FIELD], ticker);
-    const token = tokens[ticker];
-    const chainId = token.chainId;
+    const token = tokens[formValues[CURRENCY_FIELD] as TokenTicker];
+    const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
     const tokenAmount = padAmount(amount, token.token.fractionalDigits);
+
+    const chainId = token.chainId;
 
     let recipient: Address | undefined;
     if (isIov(formValues[ADDRESS_FIELD])) {

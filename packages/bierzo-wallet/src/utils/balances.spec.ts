@@ -1,4 +1,4 @@
-import { TokenTicker } from "@iov/bcp";
+import { Token, TokenTicker } from "@iov/bcp";
 
 import { amountToString, makeAmount, padAmount, parseFigures, stringToAmount } from "./balances";
 
@@ -24,18 +24,21 @@ describe("amountToString", () => {
 });
 
 describe("stringToAmount", () => {
-  const eth = "ETH" as TokenTicker;
+  const eth: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+    fractionalDigits: 18,
+    tokenTicker: "ETH" as TokenTicker,
+  };
 
   it("should handle whole numbers", () => {
-    expect(stringToAmount("2340", eth)).toEqual(makeAmount("2340", 0, eth));
-    expect(stringToAmount("873", eth)).toEqual(makeAmount("873", 0, eth));
+    expect(stringToAmount("2340", eth)).toEqual(makeAmount("2340", 0, eth.tokenTicker));
+    expect(stringToAmount("873", eth)).toEqual(makeAmount("873", 0, eth.tokenTicker));
   });
 
   it("should handle fractional numbers with or without leading 0", () => {
-    expect(stringToAmount("0.1234", eth)).toEqual(makeAmount("1234", 4, eth));
-    expect(stringToAmount(".1234", eth)).toEqual(makeAmount("1234", 4, eth));
-    expect(stringToAmount("0,023", eth)).toEqual(makeAmount("023", 3, eth));
-    expect(stringToAmount("0.170", eth)).toEqual(makeAmount("17", 2, eth));
+    expect(stringToAmount("0.1234", eth)).toEqual(makeAmount("1234", 4, eth.tokenTicker));
+    expect(stringToAmount(".1234", eth)).toEqual(makeAmount("1234", 4, eth.tokenTicker));
+    expect(stringToAmount("0,023", eth)).toEqual(makeAmount("023", 3, eth.tokenTicker));
+    expect(stringToAmount("0.170", eth)).toEqual(makeAmount("17", 2, eth.tokenTicker));
   });
 });
 

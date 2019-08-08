@@ -1,4 +1,4 @@
-import { Address, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import Typography from "medulas-react-components/lib/components/Typography";
 import * as React from "react";
@@ -10,6 +10,11 @@ import { RootState } from "../../store/reducers";
 import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import PageMenu from "./index";
+
+const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 9,
+  tokenTicker: "IOV" as TokenTicker,
+};
 
 const txs: readonly ProcessedSendTransaction[] = [
   {
@@ -33,11 +38,7 @@ const txs: readonly ProcessedSendTransaction[] = [
     id: "tx2" as TransactionId,
     original: {
       kind: "bcp/send",
-      amount: {
-        quantity: "25500000000",
-        fractionalDigits: 9,
-        tokenTicker: "IOV" as TokenTicker,
-      },
+      amount: stringToAmount("25.5", iov),
       sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
       recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
     },
@@ -51,11 +52,7 @@ const faultTx: ProcessedSendTransaction = {
   id: "tx3" as TransactionId,
   original: {
     kind: "bcp/send",
-    amount: {
-      quantity: "100500000000",
-      fractionalDigits: 9,
-      tokenTicker: "IOV" as TokenTicker,
-    },
+    amount: stringToAmount("100.5", iov),
     sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
     recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
   },
@@ -70,7 +67,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
     kind: "bcp/send",
     sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
     recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
-    amount: stringToAmount("7.4", "IOV" as TokenTicker),
+    amount: stringToAmount("7.4", iov),
     memo: "Send money to myself for fun",
   },
   incoming: true,
