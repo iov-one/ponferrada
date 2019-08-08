@@ -1,4 +1,4 @@
-import { Address, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import Block from "medulas-react-components/lib/components/Block";
 import Hairline from "medulas-react-components/lib/components/Hairline";
@@ -13,6 +13,16 @@ import { RootState } from "../../store/reducers";
 import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import Header from "./index";
+
+const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 9,
+  tokenTicker: "IOV" as TokenTicker,
+};
+
+const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 8,
+  tokenTicker: "LSK" as TokenTicker,
+};
 
 const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
   {
@@ -29,7 +39,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "123L" as Address,
       recipient: "456L" as Address,
-      amount: stringToAmount("10.5", "LSK" as TokenTicker),
+      amount: stringToAmount("10.5", lsk),
     },
     incoming: true,
     outgoing: false,
@@ -41,7 +51,7 @@ const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
       kind: "bcp/send",
       sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
       recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
-      amount: stringToAmount("25.5", "IOV" as TokenTicker),
+      amount: stringToAmount("25.5", iov),
     },
     incoming: false,
     outgoing: true,
