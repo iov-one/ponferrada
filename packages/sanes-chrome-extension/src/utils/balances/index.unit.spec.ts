@@ -1,13 +1,6 @@
 import { TokenTicker } from "@iov/bcp";
 
-import {
-  amountToGwei,
-  amountToString,
-  makeAmount as makeInfo,
-  padAmount,
-  parseFigures,
-  stringToAmount,
-} from "./index";
+import { amountToGwei, amountToString, makeAmount as makeInfo, parseFigures, stringToAmount } from "./index";
 
 describe("amountToString", () => {
   const iov = "IOV" as TokenTicker;
@@ -107,21 +100,5 @@ describe("parseFigures", () => {
     expect(() => parseFigures("12a")).toThrow(/Not a valid number/);
     expect(() => parseFigures("0x1234")).toThrow(/Not a valid number/);
     expect(() => parseFigures("-15.6")).toThrow(/Not a valid number/);
-  });
-});
-
-describe("padAmount", () => {
-  const foo = "FOO" as TokenTicker;
-
-  it("should expand the strings as needed", () => {
-    expect(padAmount(makeInfo("12", 0, foo), 4)).toEqual(makeInfo("120000", 4, foo));
-    expect(padAmount(makeInfo("1230", 2, foo), 4)).toEqual(makeInfo("123000", 4, foo));
-    expect(padAmount(makeInfo("123456", 3, foo), 6)).toEqual(makeInfo("123456000", 6, foo));
-    expect(padAmount(makeInfo("12003400", 6, foo), 6)).toEqual(makeInfo("12003400", 6, foo));
-  });
-
-  it("should error if not enough places", () => {
-    expect(() => padAmount(makeInfo("1234", 4, foo), 2)).toThrow(/Want to pad/);
-    expect(() => padAmount(makeInfo("120000", 4, foo), 3)).toThrow(/Want to pad/);
   });
 });

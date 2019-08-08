@@ -67,24 +67,6 @@ export function amountToGwei(amount: Amount): string {
   return `${display} Gwei`;
 }
 
-// this takes an amount and pad 0s to the desired fractionalDigits, or throws error if fractionalDigits is already larger
-export function padAmount(amount: Amount, desiredDigits: number): Amount {
-  const { quantity, fractionalDigits, tokenTicker } = amount;
-  const diff = desiredDigits - fractionalDigits;
-  if (diff < 0) {
-    throw new Error(`Want to pad to ${desiredDigits}, but already has ${fractionalDigits}`);
-  } else if (diff === 0) {
-    return amount;
-  } else {
-    const newQuantity = quantity + "0".repeat(diff);
-    return {
-      quantity: newQuantity,
-      fractionalDigits: desiredDigits,
-      tokenTicker,
-    };
-  }
-}
-
 export function prettyAmount(amount: Amount): string {
   return amountToString(amount);
 }
