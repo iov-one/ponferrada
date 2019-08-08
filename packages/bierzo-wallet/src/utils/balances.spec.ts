@@ -1,25 +1,25 @@
 import { TokenTicker } from "@iov/bcp";
 
-import { amountToString, makeAmount as makeInfo, padAmount, parseFigures, stringToAmount } from "./balances";
+import { amountToString, makeAmount, padAmount, parseFigures, stringToAmount } from "./balances";
 
 describe("amountToString", () => {
   const iov = "IOV" as TokenTicker;
 
   it("should handle whole numbers", () => {
-    expect(amountToString(makeInfo("123", 0, iov))).toEqual("123 IOV");
-    expect(amountToString(makeInfo("123000", 0, iov))).toEqual("123000 IOV");
+    expect(amountToString(makeAmount("123", 0, iov))).toEqual("123 IOV");
+    expect(amountToString(makeAmount("123000", 0, iov))).toEqual("123000 IOV");
   });
 
   it("should handle fractional", () => {
-    expect(amountToString(makeInfo("123456", 2, iov))).toEqual("1234.56 IOV");
-    expect(amountToString(makeInfo("123456", 4, iov))).toEqual("12.3456 IOV");
-    expect(amountToString(makeInfo("123456", 6, iov))).toEqual("0.123456 IOV");
+    expect(amountToString(makeAmount("123456", 2, iov))).toEqual("1234.56 IOV");
+    expect(amountToString(makeAmount("123456", 4, iov))).toEqual("12.3456 IOV");
+    expect(amountToString(makeAmount("123456", 6, iov))).toEqual("0.123456 IOV");
   });
 
   it("should handle odd formats", () => {
     // leading zeros
-    expect(amountToString(makeInfo("00123", 2, iov))).toEqual("1.23 IOV");
-    expect(amountToString(makeInfo("123456", 8, iov))).toEqual("0.00123456 IOV");
+    expect(amountToString(makeAmount("00123", 2, iov))).toEqual("1.23 IOV");
+    expect(amountToString(makeAmount("123456", 8, iov))).toEqual("0.00123456 IOV");
   });
 });
 
@@ -27,15 +27,15 @@ describe("stringToAmount", () => {
   const eth = "ETH" as TokenTicker;
 
   it("should handle whole numbers", () => {
-    expect(stringToAmount("2340", eth)).toEqual(makeInfo("2340", 0, eth));
-    expect(stringToAmount("873", eth)).toEqual(makeInfo("873", 0, eth));
+    expect(stringToAmount("2340", eth)).toEqual(makeAmount("2340", 0, eth));
+    expect(stringToAmount("873", eth)).toEqual(makeAmount("873", 0, eth));
   });
 
   it("should handle fractional numbers with or without leading 0", () => {
-    expect(stringToAmount("0.1234", eth)).toEqual(makeInfo("1234", 4, eth));
-    expect(stringToAmount(".1234", eth)).toEqual(makeInfo("1234", 4, eth));
-    expect(stringToAmount("0,023", eth)).toEqual(makeInfo("023", 3, eth));
-    expect(stringToAmount("0.170", eth)).toEqual(makeInfo("17", 2, eth));
+    expect(stringToAmount("0.1234", eth)).toEqual(makeAmount("1234", 4, eth));
+    expect(stringToAmount(".1234", eth)).toEqual(makeAmount("1234", 4, eth));
+    expect(stringToAmount("0,023", eth)).toEqual(makeAmount("023", 3, eth));
+    expect(stringToAmount("0.170", eth)).toEqual(makeAmount("17", 2, eth));
   });
 });
 
@@ -80,14 +80,14 @@ describe("padAmount", () => {
   const foo = "FOO" as TokenTicker;
 
   it("should expand the strings as needed", () => {
-    expect(padAmount(makeInfo("12", 0, foo), 4)).toEqual(makeInfo("120000", 4, foo));
-    expect(padAmount(makeInfo("1230", 2, foo), 4)).toEqual(makeInfo("123000", 4, foo));
-    expect(padAmount(makeInfo("123456", 3, foo), 6)).toEqual(makeInfo("123456000", 6, foo));
-    expect(padAmount(makeInfo("12003400", 6, foo), 6)).toEqual(makeInfo("12003400", 6, foo));
+    expect(padAmount(makeAmount("12", 0, foo), 4)).toEqual(makeAmount("120000", 4, foo));
+    expect(padAmount(makeAmount("1230", 2, foo), 4)).toEqual(makeAmount("123000", 4, foo));
+    expect(padAmount(makeAmount("123456", 3, foo), 6)).toEqual(makeAmount("123456000", 6, foo));
+    expect(padAmount(makeAmount("12003400", 6, foo), 6)).toEqual(makeAmount("12003400", 6, foo));
   });
 
   it("should error if not enough places", () => {
-    expect(() => padAmount(makeInfo("1234", 4, foo), 2)).toThrow(/Want to pad/);
-    expect(() => padAmount(makeInfo("120000", 4, foo), 3)).toThrow(/Want to pad/);
+    expect(() => padAmount(makeAmount("1234", 4, foo), 2)).toThrow(/Want to pad/);
+    expect(() => padAmount(makeAmount("120000", 4, foo), 3)).toThrow(/Want to pad/);
   });
 });
