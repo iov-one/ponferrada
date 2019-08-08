@@ -1,14 +1,21 @@
 import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
+import { Governor } from "@iov/bns-governance";
 
-import { getExtensionStatus } from "../extension";
 import { getDummyVote } from "./dummyData";
 import { AddProposalsActionType, ProposalsState } from "./reducer";
 
+let governor: Governor | undefined;
+
+export const setGovernor = (newGovernor: Governor): void => {
+  governor = newGovernor;
+};
+
 export async function getProposals(): Promise<ProposalsState> {
-  const governor = (await getExtensionStatus()).governor;
   if (!governor) return [];
 
   const getQuorum = async (proposal: Proposal): Promise<number> => {
+    if (!governor) return 0;
+
     const electionRule = await governor.getElectionRuleById(proposal.electionRule.id);
     const maxVotes = proposal.state.totalElectorateWeight;
 
@@ -21,6 +28,8 @@ export async function getProposals(): Promise<ProposalsState> {
   };
 
   const getThreshold = async (proposal: Proposal): Promise<number> => {
+    if (!governor) return 0;
+
     const electionRule = await governor.getElectionRuleById(proposal.electionRule.id);
     const totalVotes = proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain;
 
