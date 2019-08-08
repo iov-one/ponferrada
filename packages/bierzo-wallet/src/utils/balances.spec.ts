@@ -1,6 +1,6 @@
 import { Token, TokenTicker } from "@iov/bcp";
 
-import { amountToString, makeAmount, padAmount, parseFigures, stringToAmount } from "./balances";
+import { amountToString, makeAmount, parseFigures, stringToAmount } from "./balances";
 
 describe("amountToString", () => {
   const iov = "IOV" as TokenTicker;
@@ -29,16 +29,61 @@ describe("stringToAmount", () => {
     tokenTicker: "ETH" as TokenTicker,
   };
 
+  const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+    fractionalDigits: 9,
+    tokenTicker: "IOV" as TokenTicker,
+  };
+
   it("should handle whole numbers", () => {
-    expect(stringToAmount("2340", eth)).toEqual(makeAmount("2340", 0, eth.tokenTicker));
-    expect(stringToAmount("873", eth)).toEqual(makeAmount("873", 0, eth.tokenTicker));
+    expect(stringToAmount("0", eth)).toEqual(makeAmount("0", eth.fractionalDigits, eth.tokenTicker));
+    expect(stringToAmount("1", eth)).toEqual(
+      makeAmount("1000000000000000000", eth.fractionalDigits, eth.tokenTicker),
+    );
+    expect(stringToAmount("873", eth)).toEqual(
+      makeAmount("873000000000000000000", eth.fractionalDigits, eth.tokenTicker),
+    );
+
+    expect(stringToAmount("0", iov)).toEqual(makeAmount("0", iov.fractionalDigits, iov.tokenTicker));
+    expect(stringToAmount("1", iov)).toEqual(makeAmount("1000000000", iov.fractionalDigits, iov.tokenTicker));
+    expect(stringToAmount("873", iov)).toEqual(
+      makeAmount("873000000000", iov.fractionalDigits, iov.tokenTicker),
+    );
   });
 
   it("should handle fractional numbers with or without leading 0", () => {
-    expect(stringToAmount("0.1234", eth)).toEqual(makeAmount("1234", 4, eth.tokenTicker));
-    expect(stringToAmount(".1234", eth)).toEqual(makeAmount("1234", 4, eth.tokenTicker));
-    expect(stringToAmount("0,023", eth)).toEqual(makeAmount("023", 3, eth.tokenTicker));
-    expect(stringToAmount("0.170", eth)).toEqual(makeAmount("17", 2, eth.tokenTicker));
+    // ETH
+    expect(stringToAmount("0.1234", eth)).toEqual(
+      makeAmount("123400000000000000", eth.fractionalDigits, eth.tokenTicker),
+    );
+    expect(stringToAmount(".1234", eth)).toEqual(
+      makeAmount("123400000000000000", eth.fractionalDigits, eth.tokenTicker),
+    );
+    expect(stringToAmount("0,023", eth)).toEqual(
+      makeAmount("23000000000000000", eth.fractionalDigits, eth.tokenTicker),
+    );
+    expect(stringToAmount("0.170", eth)).toEqual(
+      makeAmount("170000000000000000", eth.fractionalDigits, eth.tokenTicker),
+    );
+    expect(stringToAmount("0.0", eth)).toEqual(makeAmount("0", eth.fractionalDigits, eth.tokenTicker));
+    expect(stringToAmount("0.0000", eth)).toEqual(makeAmount("0", eth.fractionalDigits, eth.tokenTicker));
+    expect(stringToAmount(".0", eth)).toEqual(makeAmount("0", eth.fractionalDigits, eth.tokenTicker));
+
+    // IOV
+    expect(stringToAmount("0.1234", iov)).toEqual(
+      makeAmount("123400000", iov.fractionalDigits, iov.tokenTicker),
+    );
+    expect(stringToAmount(".1234", iov)).toEqual(
+      makeAmount("123400000", iov.fractionalDigits, iov.tokenTicker),
+    );
+    expect(stringToAmount("0,023", iov)).toEqual(
+      makeAmount("23000000", iov.fractionalDigits, iov.tokenTicker),
+    );
+    expect(stringToAmount("0.170", iov)).toEqual(
+      makeAmount("170000000", iov.fractionalDigits, iov.tokenTicker),
+    );
+    expect(stringToAmount("0.0", iov)).toEqual(makeAmount("0", iov.fractionalDigits, iov.tokenTicker));
+    expect(stringToAmount("0.0000", iov)).toEqual(makeAmount("0", iov.fractionalDigits, iov.tokenTicker));
+    expect(stringToAmount(".0", iov)).toEqual(makeAmount("0", iov.fractionalDigits, iov.tokenTicker));
   });
 });
 
@@ -76,21 +121,5 @@ describe("parseFigures", () => {
     expect(() => parseFigures("12a")).toThrow(/Not a valid number/);
     expect(() => parseFigures("0x1234")).toThrow(/Not a valid number/);
     expect(() => parseFigures("-15.6")).toThrow(/Not a valid number/);
-  });
-});
-
-describe("padAmount", () => {
-  const foo = "FOO" as TokenTicker;
-
-  it("should expand the strings as needed", () => {
-    expect(padAmount(makeAmount("12", 0, foo), 4)).toEqual(makeAmount("120000", 4, foo));
-    expect(padAmount(makeAmount("1230", 2, foo), 4)).toEqual(makeAmount("123000", 4, foo));
-    expect(padAmount(makeAmount("123456", 3, foo), 6)).toEqual(makeAmount("123456000", 6, foo));
-    expect(padAmount(makeAmount("12003400", 6, foo), 6)).toEqual(makeAmount("12003400", 6, foo));
-  });
-
-  it("should error if not enough places", () => {
-    expect(() => padAmount(makeAmount("1234", 4, foo), 2)).toThrow(/Want to pad/);
-    expect(() => padAmount(makeAmount("120000", 4, foo), 3)).toThrow(/Want to pad/);
   });
 });

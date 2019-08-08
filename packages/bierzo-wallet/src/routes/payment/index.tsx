@@ -12,7 +12,7 @@ import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
-import { padAmount, stringToAmount } from "../../utils/balances";
+import { stringToAmount } from "../../utils/balances";
 import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout from "./components";
 import ConfirmPayment from "./components/ConfirmPayment";
@@ -53,7 +53,6 @@ const Payment = (): JSX.Element => {
 
     const token = tokens[formValues[CURRENCY_FIELD] as TokenTicker];
     const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
-    const tokenAmount = padAmount(amount, token.token.fractionalDigits);
 
     const chainId = token.chainId;
 
@@ -82,7 +81,7 @@ const Payment = (): JSX.Element => {
         chainId,
         identity,
         recipient,
-        tokenAmount,
+        amount,
         formValues[TEXTNOTE_FIELD],
       );
       if (transactionId === null) {

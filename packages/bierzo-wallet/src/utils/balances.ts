@@ -28,10 +28,13 @@ export function stringToAmount(
 ): Amount {
   const figures = parseFigures(amount);
 
-  return {
+  const tmp = {
     ...figures,
     tokenTicker: tokenInfo.tokenTicker,
   };
+
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  return padAmount(tmp, tokenInfo.fractionalDigits);
 }
 
 export const makeAmount = (quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount => ({
@@ -63,21 +66,20 @@ export function amountToNumber(amount: Amount): number {
 }
 
 // this takes an amount and pad 0s to the desired fractionalDigits, or throws error if fractionalDigits is already larger
-export function padAmount(amount: Amount, desiredDigits: number): Amount {
+function padAmount(amount: Amount, desiredDigits: number): Amount {
   const { quantity, fractionalDigits, tokenTicker } = amount;
   const diff = desiredDigits - fractionalDigits;
   if (diff < 0) {
     throw new Error(`Want to pad to ${desiredDigits}, but already has ${fractionalDigits}`);
-  } else if (diff === 0) {
-    return amount;
-  } else {
-    const newQuantity = quantity + "0".repeat(diff);
-    return {
-      quantity: newQuantity,
-      fractionalDigits: desiredDigits,
-      tokenTicker,
-    };
   }
+
+  const newQuantity = quantity + "0".repeat(diff);
+  const trimmedQuantity = newQuantity.replace(/^0*/, "") || "0";
+  return {
+    quantity: trimmedQuantity,
+    fractionalDigits: desiredDigits,
+    tokenTicker,
+  };
 }
 
 // This produces a human readable format of the amount, value and token ticker
