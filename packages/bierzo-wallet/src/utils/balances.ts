@@ -27,14 +27,13 @@ export function stringToAmount(
   tokenInfo: Pick<Token, "fractionalDigits" | "tokenTicker">,
 ): Amount {
   const figures = parseFigures(amount);
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  const normalized = normalizeQuantity(figures, tokenInfo.fractionalDigits);
 
-  const tmp = {
-    ...figures,
+  return {
+    ...normalized,
     tokenTicker: tokenInfo.tokenTicker,
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  return padAmount(tmp, tokenInfo.fractionalDigits);
 }
 
 export const makeAmount = (quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount => ({
@@ -66,19 +65,17 @@ export function amountToNumber(amount: Amount): number {
 }
 
 // this takes an amount and pad 0s to the desired fractionalDigits, or throws error if fractionalDigits is already larger
-function padAmount(amount: Amount, desiredDigits: number): Amount {
-  const { quantity, fractionalDigits, tokenTicker } = amount;
-  const diff = desiredDigits - fractionalDigits;
+function normalizeQuantity(input: Figures, desiredDigits: number): Figures {
+  const diff = desiredDigits - input.fractionalDigits;
   if (diff < 0) {
-    throw new Error(`Want to pad to ${desiredDigits}, but already has ${fractionalDigits}`);
+    throw new Error(`Want to pad to ${desiredDigits}, but already has ${input.fractionalDigits}`);
   }
 
-  const newQuantity = quantity + "0".repeat(diff);
+  const newQuantity = input.quantity + "0".repeat(diff);
   const trimmedQuantity = newQuantity.replace(/^0*/, "") || "0";
   return {
     quantity: trimmedQuantity,
     fractionalDigits: desiredDigits,
-    tokenTicker,
   };
 }
 
