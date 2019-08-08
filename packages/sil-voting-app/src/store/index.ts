@@ -1,12 +1,22 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from "redux";
+import { applyMiddleware, compose, createStore, Dispatch, Middleware, Store } from "redux";
 
+import { setGovernor } from "./proposals";
 import reducer, { RootReducer, RootState } from "./reducers";
 
 const composeEnhancers =
   (typeof window === "object" && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
   compose;
 
-const middlewares: readonly Middleware[] = [];
+// eslint-disable-next-line
+const interceptGovernor: Middleware = () => (next: Dispatch) => action => {
+  if (action.type === "@@extension/SET_STATE") {
+    setGovernor(action.payload.governor);
+  }
+
+  return next(action);
+};
+
+const middlewares: readonly Middleware[] = [interceptGovernor];
 
 export const configureStore = (): Store<RootReducer> => {
   const store = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
