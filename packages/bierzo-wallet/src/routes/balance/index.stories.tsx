@@ -8,6 +8,7 @@ import { BalanceState } from "../../store/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import { PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH } from "../payment/index.stories";
 import { RECEIVE_PAYMENT_STORY_PATH } from "../receivePayments/index.stories";
+import { REGISTER_USERNAME_STORY_PATH } from "../registerName/index.stories";
 import Layout from "./components/index";
 
 export const BALANCE_STORY_PATH = `${WALLET_ROOT}/Balance`;
@@ -40,6 +41,7 @@ storiesOf(BALANCE_STORY_PATH, module)
           balances={BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
           onReceivePayment={linkTo(WALLET_ROOT, RECEIVE_PAYMENT_STORY_PATH)}
+          onRegisterUsername={linkTo(WALLET_ROOT, REGISTER_USERNAME_STORY_PATH)}
         />
       </PageMenu>
     </DecoratedStorybook>
@@ -52,6 +54,7 @@ storiesOf(BALANCE_STORY_PATH, module)
           balances={NO_BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
           onReceivePayment={linkTo(WALLET_ROOT, RECEIVE_PAYMENT_STORY_PATH)}
+          onRegisterUsername={linkTo(WALLET_ROOT, REGISTER_USERNAME_STORY_PATH)}
         />
       </PageMenu>
     </DecoratedStorybook>
