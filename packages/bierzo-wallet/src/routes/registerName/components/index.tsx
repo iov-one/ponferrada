@@ -14,8 +14,8 @@ import React from "react";
 
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 
-export const SET_USERNAME_VIEW_ID = "set-username-view-id";
-export const SET_USERNAME_FIELD = "set-username-field";
+export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";
+export const REGISTER_USERNAME_FIELD = "register-username-field";
 
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
@@ -29,20 +29,22 @@ const useAvatar = makeStyles((theme: Theme) => ({
 
 interface Props extends AddressesTableProps {
   readonly onSubmit: (values: object) => Promise<void>;
+  readonly validate: (values: object) => Promise<object>;
   readonly onCancel: () => void;
 }
 
-const Layout = ({ addresses, onSubmit, onCancel }: Props): JSX.Element => {
+const Layout = ({ addresses, validate, onSubmit, onCancel }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
-  const { form, handleSubmit, invalid, pristine, submitting } = useForm({
+  const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
     onSubmit,
+    validate,
   });
 
   return (
     <Block
-      id={SET_USERNAME_VIEW_ID}
+      id={REGISTER_USERNAME_VIEW_ID}
       marginTop={4}
       display="flex"
       alignContent="center"
@@ -66,7 +68,7 @@ const Layout = ({ addresses, onSubmit, onCancel }: Props): JSX.Element => {
               </Avatar>
               <Block width="100%" marginTop={2} marginBottom={1}>
                 <TextFieldForm
-                  name={SET_USERNAME_FIELD}
+                  name={REGISTER_USERNAME_FIELD}
                   form={form}
                   placeholder="username*iov"
                   fullWidth
@@ -88,7 +90,12 @@ const Layout = ({ addresses, onSubmit, onCancel }: Props): JSX.Element => {
             flexDirection="column"
           >
             <Block width="75%">
-              <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
+              <Button
+                fullWidth
+                type="submit"
+                disabled={invalid || pristine || submitting || validating}
+                spinner={submitting || validating}
+              >
                 Register
               </Button>
             </Block>
