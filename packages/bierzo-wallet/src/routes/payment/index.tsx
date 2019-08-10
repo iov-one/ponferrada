@@ -77,12 +77,7 @@ const Payment = (): JSX.Element => {
     const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
 
     try {
-      const request = await generateSendTxRequest(
-        identity,
-        recipient,
-        amount,
-        formValues[TEXTNOTE_FIELD],
-      );
+      const request = await generateSendTxRequest(identity, recipient, amount, formValues[TEXTNOTE_FIELD]);
       const transactionId = await sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
