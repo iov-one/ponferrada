@@ -212,7 +212,7 @@ exports[`Storyshots Bierzo wallet Receive Payment 1`] = `
 exports[`Storyshots Bierzo wallet Register Username 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="set-username-view-id"
+  id="register-username-view-id"
 >
   <form
     onSubmit={[Function]}
@@ -288,7 +288,7 @@ exports[`Storyshots Bierzo wallet Register Username 1`] = `
                   aria-invalid={false}
                   className="MuiInputBase-input MuiOutlinedInput-input"
                   disabled={false}
-                  name="set-username-field"
+                  name="register-username-field"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -365,6 +365,35 @@ exports[`Storyshots Bierzo wallet Register Username 1`] = `
             <span
               className="MuiButton-label"
             >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
+                  role="progressbar"
+                  style={
+                    Object {
+                      "height": 22,
+                      "width": 22,
+                    }
+                  }
+                >
+                  <svg
+                    className="MuiCircularProgress-svg"
+                    viewBox="22 22 44 44"
+                  >
+                    <circle
+                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                      cx={44}
+                      cy={44}
+                      fill="none"
+                      r={20.2}
+                      strokeWidth={3.6}
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
               Register
             </span>
           </button>
@@ -923,9 +952,15 @@ exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1
           className="MuiBox-root MuiBox-root"
         >
           <h5
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-alignCenter"
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-h5 MuiTypography-alignCenter"
           >
-            Get your human readable address.
+            Get your human readable
+          </h5>
+          <h5
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            onClick={[Function]}
+          >
+            address.
           </h5>
           <div
             className="MuiBox-root MuiBox-root"
