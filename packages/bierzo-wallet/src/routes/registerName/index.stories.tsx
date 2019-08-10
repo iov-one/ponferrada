@@ -9,7 +9,7 @@ import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import Layout from "./components/index";
 
-export const REGISTER_USERNAME_PATH = "Register Username";
+export const REGISTER_USERNAME_STORY_PATH = "Register Username";
 
 const addresses: ChainAddressPair[] = [
   {
@@ -30,15 +30,21 @@ async function onSubmit(_: object): Promise<void> {
   action("onSubmit")();
 }
 
+async function validate(_: object): Promise<object> {
+  action("validate")();
+  return {};
+}
+
 storiesOf(WALLET_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(
-    REGISTER_USERNAME_PATH,
+    REGISTER_USERNAME_STORY_PATH,
     (): JSX.Element => (
       <DecoratedStorybook>
         <Layout
           onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
           onSubmit={onSubmit}
+          validate={validate}
           addresses={addresses}
         />
       </DecoratedStorybook>
