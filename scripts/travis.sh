@@ -36,12 +36,17 @@ fold_end
 # Build
 #
 
-fold_start "yarn-build"
-yarn build
+fold_start "yarn-dry-build"
+# Finds compile errors that are not detected by the create-react-app production builds
+yarn dry-build
 fold_end
 
 fold_start "yarn-lint"
 yarn lint
+fold_end
+
+fold_start "yarn-build"
+yarn build
 fold_end
 
 #
