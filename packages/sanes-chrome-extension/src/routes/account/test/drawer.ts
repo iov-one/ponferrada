@@ -1,4 +1,4 @@
-import { DRAWER_HTML_ID } from "medulas-react-components/lib/components/Drawer";
+import { DRAWER_HTML_ID } from "medulas-react-components";
 import TestUtils from "react-dom/test-utils";
 
 import { click } from "../../../utils/test/dom";

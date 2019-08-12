@@ -1,6 +1,5 @@
 import { ConnectedRouter } from "connected-react-router";
-import { ToastProvider } from "medulas-react-components/lib/context/ToastProvider";
-import MedulasThemeProvider from "medulas-react-components/lib/theme/MedulasThemeProvider";
+import { MedulasThemeProvider, ToastProvider } from "medulas-react-components";
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";

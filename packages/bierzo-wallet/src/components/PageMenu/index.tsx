@@ -1,7 +1,6 @@
 import { Theme } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import ErrorBoundary from "medulas-react-components/lib/errors/ErrorBoundary";
+import { Block, ErrorBoundary } from "medulas-react-components";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 

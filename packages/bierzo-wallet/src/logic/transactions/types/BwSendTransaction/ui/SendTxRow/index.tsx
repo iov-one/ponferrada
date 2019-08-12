@@ -1,11 +1,6 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Img from "medulas-react-components/lib/components/Image";
-import CircleImage from "medulas-react-components/lib/components/Image/CircleImage";
-import Typography from "medulas-react-components/lib/components/Typography";
-import { useOpen } from "medulas-react-components/lib/hooks/open";
+import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";
 import * as React from "react";
 
 import {
@@ -70,7 +65,7 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
           {amountToString(sendTx.original.amount)}
         </Typography>
         <Block padding={0.5} />
-        <Img
+        <Image
           src={isOpen ? dropdownArrowClose : dropdownArrow}
           width={16}
           height={10}

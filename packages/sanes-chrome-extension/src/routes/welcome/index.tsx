@@ -1,7 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Button, PageLayout, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../store/reducers";

@@ -1,6 +1,6 @@
 import { VoteOption } from "@iov/bns";
 import Button from "@material-ui/core/Button";
-import Block from "medulas-react-components/lib/components/Block";
+import { Block } from "medulas-react-components";
 import React from "react";
 
 interface Props {

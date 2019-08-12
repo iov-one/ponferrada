@@ -1,20 +1,29 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
-import SelectFieldForm, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
-import Img from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
+import {
+  Block,
+  Form,
+  Image,
+  SelectFieldForm,
+  SelectFieldFormItem,
+  Typography,
+  useForm,
+} from "medulas-react-components";
 import * as React from "react";
 
 import arrowLeft from "../../../assets/arrowLeft.svg";
 import arrowRight from "../../../assets/arrowRight.svg";
 
 interface Props {
-  readonly onChangeRows: (item: Item) => void;
+  readonly onChangeRows: (item: SelectFieldFormItem) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;
 }
 
-const rowsSelectorData: readonly Item[] = [{ name: "5" }, { name: "10" }, { name: "25" }, { name: "50" }];
+const rowsSelectorData: readonly SelectFieldFormItem[] = [
+  { name: "5" },
+  { name: "10" },
+  { name: "25" },
+  { name: "50" },
+];
 
 const onSubmit = (): void => {};
 
@@ -42,8 +51,8 @@ const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Ele
             maxWidth="40px"
           />
         </Form>
-        <Img src={arrowLeft} alt="Previous page" width={40} height={40} onClick={onPrevPage} />
-        <Img src={arrowRight} alt="Next page" width={40} height={40} onClick={onNextPage} />
+        <Image src={arrowLeft} alt="Previous page" width={40} height={40} onClick={onPrevPage} />
+        <Image src={arrowRight} alt="Next page" width={40} height={40} onClick={onNextPage} />
       </Block>
       <Block margin={1} />
     </React.Fragment>

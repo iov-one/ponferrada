@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
-import { Storybook } from "medulas-react-components/lib/utils/storybook";
+import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import {

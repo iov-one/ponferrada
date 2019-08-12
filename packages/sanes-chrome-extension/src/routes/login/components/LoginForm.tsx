@@ -1,7 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Form, { FormValues, useForm } from "medulas-react-components/lib/components/forms/Form";
-import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import { Block, Button, Form, FormValues, TextFieldForm, useForm } from "medulas-react-components";
 import * as React from "react";
 
 export const PASSWORD_FIELD = "passwordInputField";

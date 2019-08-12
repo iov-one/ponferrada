@@ -1,7 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Hairline, List, ListItem, ListItemText, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { ProcessedTx } from "../../../extension/background/model/persona";

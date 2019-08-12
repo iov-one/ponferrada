@@ -1,6 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Link from "medulas-react-components/lib/components/Link";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Link, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { RESTORE_ACCOUNT } from "../../paths";

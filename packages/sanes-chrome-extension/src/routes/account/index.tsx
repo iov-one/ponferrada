@@ -1,13 +1,16 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Drawer from "medulas-react-components/lib/components/Drawer";
-import Form from "medulas-react-components/lib/components/forms/Form";
-import SelectField, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Link from "medulas-react-components/lib/components/Link";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import {
+  Block,
+  Drawer,
+  Form,
+  Hairline,
+  Link,
+  PageLayout,
+  SelectFieldForm,
+  SelectFieldFormItem,
+  ToastContext,
+  ToastVariant,
+  Typography,
+} from "medulas-react-components";
 import * as React from "react";
 import { useForm } from "react-final-form-hooks";
 
@@ -34,7 +37,7 @@ const DRAWER_HEIGHT = 56;
 const CONTENT_HEIGHT = EXTENSION_HEIGHT - DRAWER_HEIGHT;
 
 const AccountView = (): JSX.Element => {
-  const [accounts, setAccounts] = React.useState<Item[]>([]);
+  const [accounts, setAccounts] = React.useState<SelectFieldFormItem[]>([]);
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
   const { form, handleSubmit } = useForm({
@@ -43,7 +46,7 @@ const AccountView = (): JSX.Element => {
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const actualItems: Item[] = [
+      const actualItems: SelectFieldFormItem[] = [
         { name: CREATE_NEW_ONE },
         ...personaProvider.accounts.map(account => ({ name: account.label })),
       ];
@@ -53,7 +56,7 @@ const AccountView = (): JSX.Element => {
     fetchMyAccounts();
   }, [personaProvider.accounts]);
 
-  const onChange = async (item: Item): Promise<void> => {
+  const onChange = async (item: SelectFieldFormItem): Promise<void> => {
     if (item.name === CREATE_NEW_ONE) {
       if ((await getConfigurationFile()).accountCreationDisabled) {
         toast.show(
@@ -117,7 +120,7 @@ const AccountView = (): JSX.Element => {
             <Block marginBottom={1}>
               <Typography variant="subtitle2">Available accounts</Typography>
             </Block>
-            <SelectField
+            <SelectFieldForm
               items={accounts}
               initial={accounts[1].name}
               form={form}

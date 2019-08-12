@@ -1,12 +1,6 @@
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Badge from "medulas-react-components/lib/components/Badge";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Img from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
-import EmptyListIcon from "medulas-react-components/lib/templates/menu/EmptyListIcon";
-import ListMenu from "medulas-react-components/lib/templates/menu/ListMenu";
+import { Badge, Block, EmptyListIcon, Hairline, Image, ListMenu, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
@@ -38,7 +32,7 @@ const BellMenu = ({ items, lastTx }: Props): JSX.Element => {
     return (
       <Block paddingLeft={5} paddingRight={5}>
         <Badge color={badgeProps.color} invisible={badgeProps.invisible} variant="dot">
-          <Img src={logo} alt="Transactions Menu" />
+          <Image src={logo} alt="Transactions Menu" />
         </Badge>
       </Block>
     );

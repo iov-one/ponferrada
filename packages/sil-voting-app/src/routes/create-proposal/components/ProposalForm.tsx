@@ -1,8 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
-import { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Button, Form, SelectFieldFormItem, Typography, useForm } from "medulas-react-components";
 import React, { useState } from "react";
 
 import DescriptionField from "./DescriptionField";
@@ -33,7 +29,7 @@ const ProposalForm = (): JSX.Element => {
     onSubmit,
   });
 
-  const handleChange = (item: Item): void => {
+  const handleChange = (item: SelectFieldFormItem): void => {
     setProposalType(item.name);
   };
 

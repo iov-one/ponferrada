@@ -1,6 +1,5 @@
 import Collapse from "@material-ui/core/Collapse";
-import Block from "medulas-react-components/lib/components/Block";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Typography } from "medulas-react-components";
 import React, { useState } from "react";
 
 import { elipsify } from "../../../../utils/strings";

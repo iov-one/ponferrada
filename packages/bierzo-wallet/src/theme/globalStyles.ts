@@ -1,7 +1,6 @@
 import "normalize.css";
 
-import makeStyles from "medulas-react-components/lib/theme/utils/styles";
-import { backgroundColor } from "medulas-react-components/lib/theme/utils/variables";
+import { backgroundColor, makeStyles } from "medulas-react-components";
 
 export const globalStyles = makeStyles({
   "@global": {

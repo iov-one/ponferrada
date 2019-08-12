@@ -1,7 +1,6 @@
 import { ConnectedRouter, connectRouter } from "connected-react-router";
 import { createMemoryHistory, History } from "history";
-import { ToastProvider } from "medulas-react-components/lib/context/ToastProvider";
-import { Storybook } from "medulas-react-components/lib/utils/storybook";
+import { Storybook, ToastProvider } from "medulas-react-components";
 import * as React from "react";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";

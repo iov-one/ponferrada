@@ -1,4 +1,4 @@
-import DownloadButton from "medulas-react-components/lib/components/Button/Download";
+import { DownloadButton } from "medulas-react-components";
 import * as React from "react";
 
 import PDFGenerator from "../utils/pdfGenerator";

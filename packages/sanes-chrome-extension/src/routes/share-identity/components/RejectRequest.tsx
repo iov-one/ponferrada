@@ -1,10 +1,14 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Back from "medulas-react-components/lib/components/Button/Back";
-import CheckboxField from "medulas-react-components/lib/components/forms/CheckboxField";
-import Form, { FormValues, useForm } from "medulas-react-components/lib/components/forms/Form";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
+import {
+  Back,
+  Block,
+  Button,
+  CheckboxField,
+  Form,
+  FormValues,
+  PageLayout,
+  Typography,
+  useForm,
+} from "medulas-react-components";
 import * as React from "react";
 
 import { SHARE_IDENTITY } from "../../paths";

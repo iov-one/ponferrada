@@ -1,5 +1,5 @@
 import { SendTransaction } from "@iov/bcp";
-import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
+import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
 import { amountToString } from "../../../../utils/balances";

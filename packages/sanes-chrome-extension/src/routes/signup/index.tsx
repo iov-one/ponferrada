@@ -1,6 +1,4 @@
-import { FormValues } from "medulas-react-components/lib/components/forms/Form";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import { FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 
 import { PersonaContext } from "../../context/PersonaProvider";

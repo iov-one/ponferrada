@@ -1,4 +1,4 @@
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
+import { ToastContext } from "medulas-react-components";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 

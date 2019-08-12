@@ -1,8 +1,5 @@
 import { Location } from "history";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
-import { ToastContextInterface } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import { PageLayout, ToastContextInterface, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { RequestContext } from "../../context/RequestProvider";

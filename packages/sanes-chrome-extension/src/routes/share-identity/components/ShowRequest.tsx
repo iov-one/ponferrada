@@ -1,9 +1,13 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
+import {
+  Block,
+  Button,
+  Hairline,
+  List,
+  ListItem,
+  ListItemText,
+  PageLayout,
+  Typography,
+} from "medulas-react-components";
 import * as React from "react";
 
 import { UiIdentity } from "../../../extension/background/model/signingServer/requestQueueManager";

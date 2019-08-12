@@ -1,4 +1,4 @@
-import MedulasThemeProvider from "medulas-react-components/lib/theme/MedulasThemeProvider";
+import { MedulasThemeProvider } from "medulas-react-components";
 import * as React from "react";
 import TestUtils from "react-dom/test-utils";
 import { Provider } from "react-redux";

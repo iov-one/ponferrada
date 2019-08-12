@@ -1,7 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import Block from "medulas-react-components/lib/components/Block";
-import Img from "medulas-react-components/lib/components/Image";
-import { ListItem, ListItemIcon, ListItemText } from "medulas-react-components/lib/components/List";
+import { Block, Image, ListItem, ListItemIcon, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
 interface Props {
@@ -36,7 +34,7 @@ const EmptyListIcon = ({ src, alt, text }: Props): JSX.Element => {
       <Block margin="md" />
       <ListItem className={classes.center}>
         <ListItemIcon className={classes.empty}>
-          <Img src={src} alt={alt} height="42" />
+          <Image src={src} alt={alt} height="42" />
         </ListItemIcon>
         <ListItemText primary={text} className={classes.text} />
       </ListItem>

@@ -1,9 +1,5 @@
 import { faRegistered } from "@fortawesome/free-regular-svg-icons";
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Back from "medulas-react-components/lib/components/Button/Back";
-import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
-import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
+import { Back, Block, Button, Form, TextFieldForm, useForm } from "medulas-react-components";
 import React from "react";
 
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";

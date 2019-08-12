@@ -3,11 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Image from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
-import ListMenu from "medulas-react-components/lib/templates/menu/ListMenu";
+import { Block, Hairline, Image, ListMenu, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { getBorderColor } from "../../../../theme/css";

@@ -1,5 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
+import { Block, Hairline } from "medulas-react-components";
 import React from "react";
 
 import AsideFilter from "../../components/AsideFilter";

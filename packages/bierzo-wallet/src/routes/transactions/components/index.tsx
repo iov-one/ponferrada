@@ -1,4 +1,4 @@
-import Hairline from "medulas-react-components/lib/components/Hairline";
+import { Hairline } from "medulas-react-components";
 import * as React from "react";
 
 import DownloadCSV, { DownloadCSVProps } from "./DownloadCSV";
