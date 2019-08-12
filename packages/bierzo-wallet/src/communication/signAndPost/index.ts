@@ -9,6 +9,7 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from "@iov/bcp";
+import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
 
@@ -22,16 +23,15 @@ async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, tra
   return withFee;
 }
 
-const generateSignAndPostRequest = async (
-  chainId: ChainId,
+export const generateSendTxRequest = async (
   creator: Identity,
   recipient: Address,
   amount: Amount,
   memo: string | undefined,
 ): Promise<JsonRpcRequest> => {
-  const codec = await getCodecForChainId(chainId);
+  const codec = await getCodecForChainId(creator.chainId);
 
-  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(chainId, {
+  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(creator.chainId, {
     kind: "bcp/send",
     recipient,
     creator,
@@ -52,15 +52,33 @@ const generateSignAndPostRequest = async (
   };
 };
 
-export const sendSignAndPostRequest = async (
-  chainId: ChainId,
+export const generateRegisterUsernameTxRequest = async (
   creator: Identity,
-  recipient: Address,
-  amount: Amount,
-  memo: string | undefined,
-): Promise<TransactionId | null> => {
-  const request = await generateSignAndPostRequest(chainId, creator, recipient, amount, memo);
+  username: string,
+  targets: ChainAddressPair[],
+): Promise<JsonRpcRequest> => {
+  const regUsernameTx: RegisterUsernameTx & WithCreator = {
+    kind: "bns/register_username",
+    creator,
+    username,
+    targets,
+  };
+  const transactionWithFee = await withChainFee(creator.chainId, regUsernameTx);
 
+  const tx = TransactionEncoder.toJson(transactionWithFee);
+
+  return {
+    jsonrpc: "2.0",
+    id: makeJsonRpcId(),
+    method: "signAndPost",
+    params: {
+      reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      transaction: tx,
+    },
+  };
+};
+
+export const sendSignAndPostRequest = async (request: JsonRpcRequest): Promise<TransactionId | null> => {
   const config = await getConfig();
 
   return new Promise((resolve, reject) => {

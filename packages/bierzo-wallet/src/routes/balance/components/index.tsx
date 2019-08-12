@@ -17,6 +17,7 @@ interface Props {
   readonly balances: { [token: string]: Amount };
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
+  readonly onRegisterUsername: () => void;
 }
 
 interface CardProps {
@@ -55,7 +56,36 @@ const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
   );
 };
 
-const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }: Props): JSX.Element => {
+interface GetAddressProps {
+  readonly onRegisterUsername: () => void;
+}
+
+const GetYourAddress = ({ onRegisterUsername }: GetAddressProps): JSX.Element => (
+  <React.Fragment>
+    <Typography variant="h5" align="center" weight="light" inline>
+      Get your human readable
+    </Typography>
+    <Typography
+      variant="h5"
+      align="center"
+      color="primary"
+      weight="light"
+      inline
+      link
+      onClick={onRegisterUsername}
+    >
+      address.
+    </Typography>
+  </React.Fragment>
+);
+
+const BalanceLayout = ({
+  iovAddress,
+  balances,
+  onSendPayment,
+  onReceivePayment,
+  onRegisterUsername,
+}: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();
@@ -72,9 +102,13 @@ const BalanceLayout = ({ iovAddress, balances, onSendPayment, onReceivePayment }
       <Block flexGrow={1} />
       <Block bgcolor={theme.palette.background.paper} height="unset" width={450}>
         <Block padding={4} display="flex" flexDirection="column">
-          <Typography variant="h5" align="center" weight="light">
-            {iovAddress ? iovAddress : "Get your human readable address."}
-          </Typography>
+          {iovAddress ? (
+            <Typography variant="h5" align="center" weight="light">
+              {iovAddress}
+            </Typography>
+          ) : (
+            <GetYourAddress onRegisterUsername={onRegisterUsername} />
+          )}
           <Hairline space={4} />
           <Typography variant="subtitle2" align="center">
             {hasTokens ? "Your currencies" : "No funds available"}

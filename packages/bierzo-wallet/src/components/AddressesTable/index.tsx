@@ -1,7 +1,7 @@
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Address, ChainId, Identity } from "@iov/bcp";
-import { TransactionEncoder } from "@iov/encoding";
+import { Address, ChainId } from "@iov/bcp";
+import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
 import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
@@ -11,7 +11,6 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import * as ReactRedux from "react-redux";
 
 import { getChainName } from "../../config";
-import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
 
 export interface ChainAddress {
@@ -33,7 +32,11 @@ const useStyles = makeStyles({
   },
 });
 
-const AddressesTable = (): JSX.Element => {
+export interface AddressesTableProps {
+  readonly addresses: ChainAddressPair[];
+}
+
+const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
 
@@ -42,29 +45,22 @@ const AddressesTable = (): JSX.Element => {
   const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddress[]>([]);
 
   React.useEffect(() => {
-    async function processAddresses(pubKeys: { [chain: string]: string }): Promise<void> {
-      const identities = Object.values(pubKeys).map(
-        (serializedIdentity): Identity => {
-          return TransactionEncoder.fromJson(JSON.parse(serializedIdentity));
-        },
-      );
-
-      const addresses: ChainAddress[] = [];
-      for (const identity of identities) {
-        addresses.push({
-          chainId: identity.chainId,
-          chainName: await getChainName(identity.chainId),
-          address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
+    async function processAddresses(addresses: ChainAddressPair[]): Promise<void> {
+      const chainAddresses: ChainAddress[] = [];
+      for (const address of addresses) {
+        chainAddresses.push({
+          ...address,
+          chainName: await getChainName(address.chainId),
         });
       }
-      addresses.sort((a: ChainAddress, b: ChainAddress) =>
+      chainAddresses.sort((a: ChainAddress, b: ChainAddress) =>
         a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
       );
 
-      setChainAddresses(addresses);
+      setChainAddresses(chainAddresses);
     }
-    processAddresses(pubKeys);
-  }, [pubKeys]);
+    processAddresses(addresses);
+  }, [addresses, pubKeys]);
 
   const onAddressCopy = (): void => {
     toast.show("Address has been copied to clipboard.", ToastVariant.INFO);

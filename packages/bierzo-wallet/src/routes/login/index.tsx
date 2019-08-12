@@ -41,8 +41,7 @@ export const loginBootSequence = async (
 
 const Login = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
-  //TODO: Fix this as soon as proper react-redux definitions will be available
-  const dispatch = (ReactRedux as any).useDispatch();
+  const dispatch = ReactRedux.useDispatch();
   const store = ReactRedux.useStore();
 
   const onLogin = async (_: object): Promise<void> => {

@@ -10,13 +10,6 @@ import { RootState } from "../../store/reducers";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
-interface State {
-  readonly rowsPerPage: number;
-  readonly pageNumber: number;
-  readonly orderBy: TxsOrder;
-  readonly order: SortOrder;
-}
-
 const Transactions = (): JSX.Element => {
   const [rows, setRows] = React.useState(5);
   const [page, setPage] = React.useState(0);

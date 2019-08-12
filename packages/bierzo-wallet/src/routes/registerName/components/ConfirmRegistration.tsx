@@ -1,4 +1,4 @@
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faRegistered } from "@fortawesome/free-regular-svg-icons";
 import { TransactionId } from "@iov/bcp";
 import Block from "medulas-react-components/lib/components/Block";
 import Button from "medulas-react-components/lib/components/Button";
@@ -6,9 +6,10 @@ import Typography from "medulas-react-components/lib/components/Typography";
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 
-import PageContent from "../../../../components/PageContent";
+import PageContent from "../../../components/PageContent";
 
-export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
+export const USERNAME_CONFIRMATION_VIEW_ID = "username-confirmation-view-id";
+
 const useTypography = makeStyles({
   wrap: {
     width: 570,
@@ -19,17 +20,11 @@ const useTypography = makeStyles({
 
 interface Props {
   readonly transactionId: TransactionId;
-  readonly onNewPayment: () => void;
   readonly onSeeTrasactions: () => void;
   readonly onReturnToBalance: () => void;
 }
 
-const ConfirmPayment = ({
-  transactionId,
-  onNewPayment,
-  onSeeTrasactions,
-  onReturnToBalance,
-}: Props): JSX.Element => {
+const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalance }: Props): JSX.Element => {
   const typographyClasses = useTypography();
 
   const buttons = (
@@ -42,27 +37,18 @@ const ConfirmPayment = ({
       flexDirection="column"
     >
       <Block width="75%">
-        <Button fullWidth onClick={onNewPayment}>
-          New Payment
-        </Button>
+        <Button fullWidth>See Transactions</Button>
       </Block>
       <Block width="75%" marginTop={2}>
-        <Button fullWidth onClick={onSeeTrasactions}>
-          See Transactions
-        </Button>
-      </Block>
-      <Block width="75%" marginTop={2}>
-        <Button fullWidth onClick={onReturnToBalance}>
-          Return to Balance
-        </Button>
+        <Button fullWidth>Return to Balance</Button>
       </Block>
     </Block>
   );
 
   return (
-    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={faUser} buttons={buttons}>
+    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={faRegistered} buttons={buttons}>
       <Typography variant="h6" weight="light">
-        Your transaction was successfully signed and sent to the network.
+        Your username registration request was successfully signed and sent to the network.
       </Typography>
       <Block marginTop={2}>
         <Typography variant="h6" weight="light">
@@ -76,4 +62,4 @@ const ConfirmPayment = ({
   );
 };
 
-export default ConfirmPayment;
+export default ConfirmRegistration;

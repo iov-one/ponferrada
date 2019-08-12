@@ -1,17 +1,12 @@
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { useTheme } from "@material-ui/styles";
 import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
-
-import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
-
-export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 
 const useAvatar = makeStyles((theme: Theme) => ({
   root: {
@@ -23,17 +18,20 @@ const useAvatar = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props extends AddressesTableProps {
-  readonly onReturnToBalance: () => void;
+interface Props {
+  readonly id?: string;
+  readonly icon: IconDefinition;
+  readonly children?: React.ReactNode;
+  readonly buttons?: React.ReactNode;
 }
 
-const ReceivePayment = ({ addresses, onReturnToBalance }: Props): JSX.Element => {
+const PageContent = ({ id, icon, children, buttons }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
   return (
     <Block
-      id={PAYMENT_CONFIRMATION_VIEW_ID}
+      id={id}
       marginTop={4}
       display="flex"
       alignContent="center"
@@ -48,24 +46,19 @@ const ReceivePayment = ({ addresses, onReturnToBalance }: Props): JSX.Element =>
             alignItems="center"
             width="100%"
             marginTop={4}
-            paddingTop={5}
-            padding={3}
+            padding={5}
           >
             <Avatar classes={avatarClasses}>
-              <FontAwesomeIcon icon={faUser} color="#ffffff" />
+              <FontAwesomeIcon icon={icon} color="#ffffff" />
             </Avatar>
-            <AddressesTable addresses={addresses} />
+            {children}
           </Block>
         </Paper>
 
-        <Block marginTop={4} marginBottom={1}>
-          <Button fullWidth onClick={onReturnToBalance}>
-            Return to Balance
-          </Button>
-        </Block>
+        {buttons}
       </Block>
     </Block>
   );
 };
 
-export default ReceivePayment;
+export default PageContent;
