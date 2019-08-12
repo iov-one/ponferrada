@@ -16,6 +16,7 @@ import * as ReactRedux from "react-redux";
 import icon from "../../assets/iov-logo.svg";
 import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
 import { addProposalsAction, getProposals } from "../../store/proposals";
+import { RootState } from "../../store/reducers";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
 
@@ -39,6 +40,7 @@ const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
+  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
 
   const isExtensionConnected = async (): Promise<boolean> => {
     const result = await getExtensionStatus();
@@ -58,7 +60,7 @@ const Login = (): JSX.Element => {
   };
 
   const loadProposals = async (): Promise<void> => {
-    const chainProposals = await getProposals();
+    const chainProposals = await getProposals(governor);
     dispatch(addProposalsAction(chainProposals));
   };
 
