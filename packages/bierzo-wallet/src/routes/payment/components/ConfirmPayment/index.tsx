@@ -33,19 +33,30 @@ const ConfirmPayment = ({
   const typographyClasses = useTypography();
 
   const buttons = (
-    <React.Fragment>
-      <Block marginTop={4}>
+    <Block
+      marginTop={4}
+      marginBottom={1}
+      justifyContent="center"
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <Block width="75%">
         <Button fullWidth onClick={onNewPayment}>
           New Payment
         </Button>
       </Block>
-      <Block marginTop={2} onClick={onSeeTrasactions}>
-        <Button fullWidth>See Transactions</Button>
+      <Block width="75%" marginTop={2}>
+        <Button fullWidth onClick={onSeeTrasactions}>
+          See Transactions
+        </Button>
       </Block>
-      <Block marginTop={2} onClick={onReturnToBalance}>
-        <Button fullWidth>Return to Balance</Button>
+      <Block width="75%" marginTop={2}>
+        <Button fullWidth onClick={onReturnToBalance}>
+          Return to Balance
+        </Button>
       </Block>
-    </React.Fragment>
+    </Block>
   );
 
   return (

@@ -28,14 +28,21 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
   const typographyClasses = useTypography();
 
   const buttons = (
-    <React.Fragment>
-      <Block marginTop={4} onClick={onSeeTrasactions}>
+    <Block
+      marginTop={4}
+      marginBottom={1}
+      justifyContent="center"
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <Block width="75%">
         <Button fullWidth>See Transactions</Button>
       </Block>
-      <Block marginTop={2} onClick={onReturnToBalance}>
+      <Block width="75%" marginTop={2}>
         <Button fullWidth>Return to Balance</Button>
       </Block>
-    </React.Fragment>
+    </Block>
   );
 
   return (
