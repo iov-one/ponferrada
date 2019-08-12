@@ -1,4 +1,4 @@
-import { Identity } from "@iov/bcp";
+import { Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection, ChainAddressPair } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { FormValues, ValidationError } from "medulas-react-components/lib/components/forms/Form";
@@ -12,13 +12,15 @@ import { generateRegisterUsernameTxRequest, sendSignAndPostRequest } from "../..
 import PageMenu from "../../components/PageMenu";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { RootState } from "../../store/reducers";
-import { addUsernamesAction, getUsernames } from "../../store/usernames";
-import { sleep } from "../../utils/timer";
 import { getChainAddressPair } from "../../utils/tokens";
-import { BALANCE_ROUTE } from "../paths";
+import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
+import ConfirmRegistration from "./components/ConfirmRegistration";
 
-function onCancel(): void {
+function onSeeTrasactions(): void {
+  history.push(TRANSACTIONS_ROUTE);
+}
+function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
 }
 
@@ -27,7 +29,7 @@ const validate = async (values: object): Promise<object> => {
   const errors: ValidationError = {};
 
   const username = formValues[REGISTER_USERNAME_FIELD];
-  if (!username || username.length === 0) {
+  if (!username) {
     errors[REGISTER_USERNAME_FIELD] = "Required";
     return errors;
   }
@@ -49,7 +51,7 @@ const RegisterUsername = (): JSX.Element => {
   const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
   const toast = React.useContext(ToastContext);
   const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
-  const dispatch = ReactRedux.useDispatch();
+  const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
 
   React.useEffect(() => {
     async function processPubKeys(pubKeys: { [chain: string]: string }): Promise<void> {
@@ -81,11 +83,7 @@ const RegisterUsername = (): JSX.Element => {
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       }
-
-      await sleep(5000);
-      const usernames = await getUsernames(pubKeys);
-      dispatch(addUsernamesAction(usernames));
-      history.push(BALANCE_ROUTE);
+      setTransactionId(transactionId);
     } catch (error) {
       console.error(error);
       toast.show("An error ocurred", ToastVariant.ERROR);
@@ -95,7 +93,15 @@ const RegisterUsername = (): JSX.Element => {
 
   return (
     <PageMenu>
-      <Layout onSubmit={onSubmit} validate={validate} onCancel={onCancel} addresses={addresses} />
+      {transactionId ? (
+        <ConfirmRegistration
+          transactionId={transactionId}
+          onSeeTrasactions={onSeeTrasactions}
+          onReturnToBalance={onReturnToBalance}
+        />
+      ) : (
+        <Layout onSubmit={onSubmit} validate={validate} onCancel={onReturnToBalance} addresses={addresses} />
+      )}
     </PageMenu>
   );
 };
