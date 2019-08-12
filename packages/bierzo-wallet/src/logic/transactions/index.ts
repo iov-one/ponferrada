@@ -1,5 +1,5 @@
-import { Identity } from "@iov/bcp";
-import { ChainAddressPair, isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
+import { Identity, isFailedTransaction } from "@iov/bcp";
+import { isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
@@ -38,7 +38,7 @@ export async function subscribeTransaction(
         const bwTransaction = BwParserFactory.getBwTransactionFrom(tx);
         const parsedTx = await bwTransaction.parse(connection, tx, address);
 
-        if (isRegisterUsernameTx(parsedTx.original)) {
+        if (!isFailedTransaction(tx) && isRegisterUsernameTx(parsedTx.original)) {
           const usernameTx = parsedTx.original as RegisterUsernameTx;
           const usernames: BwUsername[] = [
             {
