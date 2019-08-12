@@ -8,10 +8,8 @@ import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider
 import makeStyles from "medulas-react-components/lib/theme/utils/styles";
 import React from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import * as ReactRedux from "react-redux";
 
 import { getChainName } from "../../config";
-import { RootState } from "../../store/reducers";
 
 export interface ChainAddress {
   readonly chainId: ChainId;
@@ -40,8 +38,6 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
 
-  const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
-
   const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddress[]>([]);
 
   React.useEffect(() => {
@@ -60,7 +56,7 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
       setChainAddresses(chainAddresses);
     }
     processAddresses(addresses);
-  }, [addresses, pubKeys]);
+  }, [addresses]);
 
   const onAddressCopy = (): void => {
     toast.show("Address has been copied to clipboard.", ToastVariant.INFO);
