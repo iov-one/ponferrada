@@ -1,11 +1,16 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import { TypographyProps } from "@material-ui/core/Typography";
 import CompareArrows from "@material-ui/icons/CompareArrows";
-import Avatar from "medulas-react-components/lib/components/Avatar";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import { List, ListItem, ListItemAvatar, ListItemText } from "medulas-react-components/lib/components/List";
-import Typography from "medulas-react-components/lib/components/Typography";
+import {
+  Avatar,
+  Block,
+  Hairline,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "medulas-react-components";
 import * as React from "react";
 
 import {

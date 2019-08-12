@@ -1,12 +1,15 @@
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Form, { useForm } from "medulas-react-components/lib/components/forms/Form";
-import CircleImage from "medulas-react-components/lib/components/Image/CircleImage";
-import Typography from "medulas-react-components/lib/components/Typography";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import {
+  Block,
+  Button,
+  CircleImage,
+  Form,
+  ToastContext,
+  ToastVariant,
+  Typography,
+  useForm,
+} from "medulas-react-components";
 import React, { useContext } from "react";
 import * as ReactRedux from "react-redux";
 

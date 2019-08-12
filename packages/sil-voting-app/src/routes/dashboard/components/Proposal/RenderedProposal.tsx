@@ -1,4 +1,4 @@
-import Hairline from "medulas-react-components/lib/components/Hairline";
+import { Hairline } from "medulas-react-components";
 import React from "react";
 
 import Proposal, { ProposalProps } from ".";

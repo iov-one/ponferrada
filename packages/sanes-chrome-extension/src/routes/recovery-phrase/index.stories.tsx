@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import { Storybook } from "medulas-react-components/lib/utils/storybook";
+import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";

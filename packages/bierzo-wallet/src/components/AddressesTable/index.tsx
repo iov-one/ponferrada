@@ -3,9 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Address, ChainId } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
-import makeStyles from "medulas-react-components/lib/theme/utils/styles";
+import { makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 

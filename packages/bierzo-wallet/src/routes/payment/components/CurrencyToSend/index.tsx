@@ -5,17 +5,18 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/styles";
 import { FormApi } from "final-form";
-import Block from "medulas-react-components/lib/components/Block";
-import SelectFieldForm, { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
-import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
-import Typography from "medulas-react-components/lib/components/Typography";
 import {
+  Block,
   composeValidators,
   greaterOrEqualThan,
   lowerOrEqualThan,
   number,
   required,
-} from "medulas-react-components/lib/utils/forms/validators";
+  SelectFieldForm,
+  SelectFieldFormItem,
+  TextFieldForm,
+  Typography,
+} from "medulas-react-components";
 import React, { useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
 
@@ -47,7 +48,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
 
   const currencyItems = Object.keys(balances)
     .sort()
-    .map((ticker): Item => ({ name: ticker }));
+    .map((ticker): SelectFieldFormItem => ({ name: ticker }));
 
   const firstToken = currencyItems.find(() => true);
   const [selectedTokenTicker, setSelectedTokenTicker] = useState(firstToken ? firstToken.name : undefined);
@@ -65,7 +66,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
     onTokenSelectionChanged(selectedTokenTicker as TokenTicker);
   }, [onTokenSelectionChanged, selectedTokenTicker]);
 
-  const onSelectionChanged = (item: Item): void => {
+  const onSelectionChanged = (item: SelectFieldFormItem): void => {
     setSelectedTokenTicker(item.name);
   };
 

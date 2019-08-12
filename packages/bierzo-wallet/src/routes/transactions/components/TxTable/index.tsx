@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
+import { Block } from "medulas-react-components";
 import * as React from "react";
 
 import { getShadowColor } from "../../../../theme/css";

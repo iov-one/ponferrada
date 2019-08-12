@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import Block from "medulas-react-components/lib/components/Block";
-import Img from "medulas-react-components/lib/components/Image";
+import { Block, Image } from "medulas-react-components";
 import * as React from "react";
 import { useSelector } from "react-redux";
 
@@ -31,7 +30,7 @@ const Header = ({ path }: Props): JSX.Element => {
 
   return (
     <Block className={classes.root} padding={3}>
-      <Img src={logoBlack} alt="Logo" />
+      <Image src={logoBlack} alt="Logo" />
       <Block flexGrow={1} />
       <LinksMenu path={path} />
       <Block flexGrow={4} />

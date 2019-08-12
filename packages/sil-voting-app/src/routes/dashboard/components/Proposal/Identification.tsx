@@ -1,6 +1,5 @@
 import { Address } from "@iov/bcp";
-import Block from "medulas-react-components/lib/components/Block";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 interface Props {

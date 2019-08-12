@@ -1,17 +1,19 @@
 import { EnglishMnemonic } from "@iov/crypto";
 import { FieldValidator } from "final-form";
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Back from "medulas-react-components/lib/components/Button/Back";
-import Form, { FormValues, useForm } from "medulas-react-components/lib/components/forms/Form";
-import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
 import {
+  Back,
+  Block,
+  Button,
   composeValidators,
   FieldInputValue,
+  Form,
+  FormValues,
+  PageLayout,
   required,
-} from "medulas-react-components/lib/utils/forms/validators";
+  TextFieldForm,
+  Typography,
+  useForm,
+} from "medulas-react-components";
 import * as React from "react";
 
 import { RESTORE_ACCOUNT } from "../../paths";

@@ -1,7 +1,5 @@
 import { RegisterUsernameTx } from "@iov/bns";
-import Block from "medulas-react-components/lib/components/Block";
-import { List, ListItem, ListItemText } from "medulas-react-components/lib/components/List";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, List, ListItem, ListItemText, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";

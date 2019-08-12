@@ -1,9 +1,7 @@
 import { ListItemText, makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import MarkunreadMailbox from "@material-ui/icons/MarkunreadMailboxOutlined";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Hairline, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { BwUnknownProps } from "../..";

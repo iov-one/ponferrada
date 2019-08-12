@@ -1,6 +1,6 @@
 import { Address } from "@iov/bcp";
 import { ProposalResult, VoteOption } from "@iov/bns";
-import Block from "medulas-react-components/lib/components/Block";
+import { Block } from "medulas-react-components";
 import React from "react";
 
 import DeleteButton from "./DeleteButton";

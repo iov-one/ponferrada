@@ -1,7 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core";
-import Block from "medulas-react-components/lib/components/Block";
-import Img from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Image, Typography } from "medulas-react-components";
 import React from "react";
 
 import deleteIcon from "../../../../assets/delete.svg";
@@ -17,7 +15,7 @@ const DeleteButton = (): JSX.Element => {
 
   return (
     <Block display="flex" alignItems="center">
-      <Img src={deleteIcon} alt="Delete Icon" className={classes.deleteIcon} />
+      <Image src={deleteIcon} alt="Delete Icon" className={classes.deleteIcon} />
       <Typography variant="body2" weight="semibold">
         Delete
       </Typography>

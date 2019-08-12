@@ -1,9 +1,6 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { TransactionId } from "@iov/bcp";
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Typography from "medulas-react-components/lib/components/Typography";
-import makeStyles from "medulas-react-components/lib/theme/utils/styles";
+import { Block, Button, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
 import PageContent from "../../../../components/PageContent";

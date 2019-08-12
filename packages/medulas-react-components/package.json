@@ -3,10 +3,13 @@
   "version": "0.2.0",
   "private": true,
   "main": "build/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "build": "shx rm -rf ./lib/* && tsc && cp ./src/theme/utils/fonts.css ./lib/theme/utils/fonts.css && cp -R ./src/theme/assets ./lib/theme/",
+    "build": "shx rm -rf ./build/* && tsc && cp ./src/theme/utils/fonts.css ./build/theme/utils/fonts.css && cp -R ./src/theme/assets ./build/theme/",
+    "postbuild": "prettier --write --loglevel warn './types/**/*.d.ts'",
+    "dry-build": "tsc --noEmit",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "lint": "tsc --noEmit && eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
+    "lint": "eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix"
   },
   "browserslist": [

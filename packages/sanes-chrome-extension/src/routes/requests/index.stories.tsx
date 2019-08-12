@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
-import { Storybook } from "medulas-react-components/lib/utils/storybook";
+import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import { RequestProvider } from "../../context/RequestProvider";

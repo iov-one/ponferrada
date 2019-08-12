@@ -1,8 +1,6 @@
 import { Fab, makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import CircleImage from "medulas-react-components/lib/components/Image/CircleImage";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, CircleImage, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { getBorderColor } from "../../../../theme/css";

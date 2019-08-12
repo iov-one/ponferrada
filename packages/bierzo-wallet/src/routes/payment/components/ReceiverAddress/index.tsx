@@ -1,15 +1,15 @@
 import { TxCodec } from "@iov/bcp";
 import Paper from "@material-ui/core/Paper";
 import { FieldValidator, FormApi } from "final-form";
-import Block from "medulas-react-components/lib/components/Block";
-import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
-import Tooltip from "medulas-react-components/lib/components/Tooltip";
-import Typography from "medulas-react-components/lib/components/Typography";
 import {
+  Block,
   composeValidators,
   FieldInputValue,
   required,
-} from "medulas-react-components/lib/utils/forms/validators";
+  TextFieldForm,
+  Tooltip,
+  Typography,
+} from "medulas-react-components";
 import React from "react";
 
 import { isIov } from "../../../../logic/account";

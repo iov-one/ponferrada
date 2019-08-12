@@ -1,4 +1,4 @@
-import { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import { SelectFieldFormItem } from "medulas-react-components";
 
 import { ProcessedSendTransaction } from "../../../../store/notifications";
 import fromAddress from "../../assets/fromAddress.svg";
@@ -7,7 +7,7 @@ import { SortingStateProps } from "../sorting";
 
 export interface TxTableProps extends SortingStateProps {
   readonly rows: readonly JSX.Element[];
-  readonly onChangeRows: (item: Item) => void;
+  readonly onChangeRows: (item: SelectFieldFormItem) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;
 }

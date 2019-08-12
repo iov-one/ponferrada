@@ -1,6 +1,6 @@
 import { Fee } from "@iov/bcp";
 import { makeStyles } from "@material-ui/core";
-import { ListItem, ListItemText } from "medulas-react-components/lib/components/List";
+import { ListItem, ListItemText } from "medulas-react-components";
 import React from "react";
 
 import { amountToGwei, amountToString } from "../../../../utils/balances";

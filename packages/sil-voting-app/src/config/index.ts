@@ -1,4 +1,4 @@
-import { singleton } from "medulas-react-components/lib/utils/singleton";
+import { singleton } from "medulas-react-components";
 
 import developmentConfig from "./development.json";
 import productionConfig from "./production.json";

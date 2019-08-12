@@ -1,9 +1,7 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Image from "medulas-react-components/lib/components/Image";
+import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../../../../../routes";

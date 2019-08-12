@@ -1,15 +1,18 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Back from "medulas-react-components/lib/components/Button/Back";
-import Form, {
+import {
+  Back,
+  Block,
+  Button,
+  composeValidators,
+  Form,
   FormValues,
+  longerThan,
+  PageLayout,
+  required,
+  TextFieldForm,
+  Typography,
   useForm,
   ValidationError,
-} from "medulas-react-components/lib/components/forms/Form";
-import TextFieldForm from "medulas-react-components/lib/components/forms/TextFieldForm";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Typography from "medulas-react-components/lib/components/Typography";
-import { composeValidators, longerThan, required } from "medulas-react-components/lib/utils/forms/validators";
+} from "medulas-react-components";
 import * as React from "react";
 import { useMemo } from "react";
 

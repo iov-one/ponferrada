@@ -4,9 +4,7 @@ import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { useTheme } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import makeStyles from "medulas-react-components/lib/theme/utils/styles";
+import { Block, Button, makeStyles } from "medulas-react-components";
 import React from "react";
 
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";

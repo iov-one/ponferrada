@@ -1,4 +1,4 @@
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
+import { PageLayout } from "medulas-react-components";
 import * as React from "react";
 
 import { PersonaContext } from "../../context/PersonaProvider";

@@ -5,7 +5,8 @@
     "declaration": true,
     "jsx": "react",
     "noEmitOnError": true,
-    "outDir": "lib",
+    "outDir": "build",
+    "declarationDir": "types",
     "paths": {
       "~/*": ["src/*"]
     },

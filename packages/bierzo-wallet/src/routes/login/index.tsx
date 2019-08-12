@@ -1,6 +1,4 @@
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
-import PageColumn from "medulas-react-components/lib/pages/PageColumn";
+import { PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";

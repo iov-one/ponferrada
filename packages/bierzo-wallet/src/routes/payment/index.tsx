@@ -1,8 +1,6 @@
 import { Address, Identity, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { FormValues } from "medulas-react-components/lib/components/forms/Form";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import { FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 

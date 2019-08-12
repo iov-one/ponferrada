@@ -12,8 +12,7 @@ import { RegisterUsernameTx } from "@iov/bns";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { storiesOf } from "@storybook/react";
-import { ToastProvider } from "medulas-react-components/lib/context/ToastProvider";
-import { Storybook } from "medulas-react-components/lib/utils/storybook";
+import { Storybook, ToastProvider } from "medulas-react-components";
 import React from "react";
 
 import { PersonaProvider } from "../../context/PersonaProvider";

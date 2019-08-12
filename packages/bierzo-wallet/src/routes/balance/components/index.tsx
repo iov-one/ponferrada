@@ -1,10 +1,7 @@
 import { Amount } from "@iov/bcp";
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Img from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Hairline, Image, Typography } from "medulas-react-components";
 import React from "react";
 
 import { amountToString } from "../../../utils/balances";
@@ -50,7 +47,7 @@ const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
       onClick={onAction}
       className={classes.root}
     >
-      <Img src={logo} height={36} width={36} alt={text} />
+      <Image src={logo} height={36} width={36} alt={text} />
       <Typography>{text}</Typography>
     </Block>
   );

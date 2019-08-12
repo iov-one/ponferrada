@@ -1,8 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import classNames from "classnames";
-import Block from "medulas-react-components/lib/components/Block";
-import Img from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Image, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import sortDown from "../../../../assets/sortDown.svg";
@@ -41,9 +39,9 @@ const TxSortableColumn = ({ name, order, orderBy, alignRight, onSort }: Props): 
       onClick={onSort(name, calculateOppositeOrder(order))}
     >
       <Block display="flex" flexDirection="column" padding={1}>
-        <Img src={sortOrder === ORDER_ASC ? sortUpActive : sortUp} alt="Descending sort" />
+        <Image src={sortOrder === ORDER_ASC ? sortUpActive : sortUp} alt="Descending sort" />
         <Block margin={0.5} />
-        <Img src={sortOrder === ORDER_DESC ? sortDownActive : sortDown} alt="Ascending sort" />
+        <Image src={sortOrder === ORDER_DESC ? sortDownActive : sortDown} alt="Ascending sort" />
       </Block>
       <Typography variant="subtitle2" weight="semibold">
         {name}

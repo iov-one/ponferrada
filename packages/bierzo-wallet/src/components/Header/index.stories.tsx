@@ -1,8 +1,6 @@
 import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Hairline, Typography } from "medulas-react-components";
 import * as React from "react";
 import { ReadonlyDate } from "readonly-date";
 import { DeepPartial } from "redux";

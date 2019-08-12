@@ -1,6 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Image from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Image, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import noTransactions from "../../assets/noTransactions.svg";

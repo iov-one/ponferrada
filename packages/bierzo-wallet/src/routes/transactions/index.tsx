@@ -1,5 +1,5 @@
 import FileSaver from "file-saver";
-import { Item } from "medulas-react-components/lib/components/forms/SelectFieldForm";
+import { SelectFieldFormItem } from "medulas-react-components";
 import * as React from "react";
 import { useSelector } from "react-redux";
 
@@ -20,7 +20,7 @@ const Transactions = (): JSX.Element => {
   const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
   const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx));
 
-  function onChangeRows(item: Item): void {
+  function onChangeRows(item: SelectFieldFormItem): void {
     setRows(Number(item.name));
   }
 

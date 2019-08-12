@@ -1,5 +1,4 @@
-import theme from "medulas-react-components/lib/theme/utils/mui";
-import makeStyles from "medulas-react-components/lib/theme/utils/styles";
+import { makeStyles, theme } from "medulas-react-components";
 
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from "./constants";
 

@@ -1,4 +1,4 @@
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { ellipsify } from "../../../../../../utils/strings";

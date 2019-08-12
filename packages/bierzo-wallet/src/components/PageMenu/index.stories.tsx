@@ -1,6 +1,6 @@
 import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Typography } from "medulas-react-components";
 import * as React from "react";
 import { ReadonlyDate } from "readonly-date";
 import { DeepPartial } from "redux";

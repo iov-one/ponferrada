@@ -1,6 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core";
-import Block from "medulas-react-components/lib/components/Block";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { STATUS_BACKGROUND, STATUS_BORDER } from "../../../../theme/css";

@@ -1,8 +1,6 @@
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import Block from "medulas-react-components/lib/components/Block";
-import Image from "medulas-react-components/lib/components/Image";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Block, Image, Typography } from "medulas-react-components";
 import React, { useState } from "react";
 
 import addIcon from "../assets/add.svg";

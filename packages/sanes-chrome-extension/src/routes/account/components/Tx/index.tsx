@@ -3,9 +3,7 @@ import { isRegisterUsernameTx } from "@iov/bns";
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
-import Img from "medulas-react-components/lib/components/Image";
+import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
 
 import { ProcessedTx } from "../../../../extension/background/model/persona";
@@ -71,7 +69,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
   return (
     <Block className={classes.item}>
       <ListItem disableGutters>
-        <Img className={classes.icon} src={icon} height={32} alt="Tx operation" />
+        <Image className={classes.icon} src={icon} height={32} alt="Tx operation" />
         <ListItemText className={classes.msg} primary={msg} secondary={time} />
       </ListItem>
       {!lastOne && (

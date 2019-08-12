@@ -1,5 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Hairline from "medulas-react-components/lib/components/Hairline";
+import { Block, Hairline } from "medulas-react-components";
 import * as React from "react";
 
 import { SortingStateProps, TX_AMOUNT_COLUMN, TX_DATE_COLUMN } from "../../sorting";

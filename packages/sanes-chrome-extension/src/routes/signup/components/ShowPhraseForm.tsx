@@ -1,10 +1,4 @@
-import Block from "medulas-react-components/lib/components/Block";
-import Button from "medulas-react-components/lib/components/Button";
-import Back from "medulas-react-components/lib/components/Button/Back";
-import PageLayout from "medulas-react-components/lib/components/PageLayout";
-import Switch from "medulas-react-components/lib/components/Switch";
-import Tooltip from "medulas-react-components/lib/components/Tooltip";
-import Typography from "medulas-react-components/lib/components/Typography";
+import { Back, Block, Button, PageLayout, Switch, Tooltip, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { PersonaContext } from "../../../context/PersonaProvider";

@@ -2,11 +2,7 @@ import { makeStyles, Theme } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import FileCopy from "@material-ui/icons/FileCopyOutlined";
 import copy from "clipboard-copy";
-import Block from "medulas-react-components/lib/components/Block";
-import Link from "medulas-react-components/lib/components/Link";
-import Typography from "medulas-react-components/lib/components/Typography";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import { Block, Link, ToastContext, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { ellipsify } from "../../../../utils/strings";

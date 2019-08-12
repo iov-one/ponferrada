@@ -1,9 +1,7 @@
 import { Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection, ChainAddressPair } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
-import { FormValues, ValidationError } from "medulas-react-components/lib/components/forms/Form";
-import { ToastContext } from "medulas-react-components/lib/context/ToastProvider";
-import { ToastVariant } from "medulas-react-components/lib/context/ToastProvider/Toast";
+import { FormValues, ToastContext, ToastVariant, ValidationError } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
