@@ -62,7 +62,7 @@ withChainsDescribe("Proposals reducer", () => {
   }, 60000);
 
   it("dispatches correctly getProposals action", async () => {
-    const chainProposals = await getProposals();
+    const chainProposals = await getProposals(undefined);
     store.dispatch(addProposalsAction(chainProposals));
     const proposals = store.getState().proposals;
 
@@ -70,7 +70,7 @@ withChainsDescribe("Proposals reducer", () => {
   }, 60000);
 
   it("stores correctly proposals", async () => {
-    const chainProposals = await getProposals();
+    const chainProposals = await getProposals(undefined);
     store.dispatch(addProposalsAction(chainProposals));
     const storedProposals = store.getState().proposals;
 

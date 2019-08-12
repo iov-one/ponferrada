@@ -1,6 +1,5 @@
 import { applyMiddleware, compose, createStore, Dispatch, Middleware, Store } from "redux";
 
-import { setGovernor } from "./proposals";
 import reducer, { RootReducer, RootState } from "./reducers";
 
 const composeEnhancers =
@@ -9,10 +8,6 @@ const composeEnhancers =
 
 // eslint-disable-next-line
 const interceptGovernor: Middleware = () => (next: Dispatch) => action => {
-  if (action.type === "@@extension/SET_STATE") {
-    setGovernor(action.payload.governor);
-  }
-
   return next(action);
 };
 
