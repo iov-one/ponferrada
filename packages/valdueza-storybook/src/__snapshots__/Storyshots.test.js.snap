@@ -2356,6 +2356,7 @@ exports[`Storyshots Bierzo wallet/Register Username Registeration confirmation 1
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
           disabled={false}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -2383,6 +2384,7 @@ exports[`Storyshots Bierzo wallet/Register Username Registeration confirmation 1
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
           disabled={false}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -2735,17 +2737,13 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeLarge"
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M20 6H10v2h10v12H4V8h2v4h2V4h6V0H6v6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"
-                    />
-                  </svg>
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="toAddress.svg"
+                    width={24}
+                  />
                 </div>
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-cell"
@@ -2753,15 +2751,41 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
                   >
-                    This is an unknown transaction
+                    Personalized address registration
                   </h6>
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
                   >
-                    The transaction ID is: 
-                    DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050
+                    10:51 am
                   </h6>
                 </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  -
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
               </div>
               <div
                 className="MuiBox-root MuiBox-root"
@@ -2924,17 +2948,13 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeLarge"
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M20 6H10v2h10v12H4V8h2v4h2V4h6V0H6v6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"
-                    />
-                  </svg>
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="toAddress.svg"
+                    width={24}
+                  />
                 </div>
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-cell"
@@ -2942,15 +2962,41 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
                   >
-                    This is an unknown transaction
+                    Personalized address registration
                   </h6>
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
                   >
-                    The transaction ID is: 
-                    0xaaffBdjuhyu8898scchjsg
+                    3:35 am
                   </h6>
                 </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  24 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                >
+                  -
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  onClick={[Function]}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
               </div>
               <div
                 className="MuiBox-root MuiBox-root"
