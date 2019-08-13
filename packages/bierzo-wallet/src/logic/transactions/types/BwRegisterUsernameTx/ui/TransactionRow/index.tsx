@@ -5,7 +5,6 @@ import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medula
 import * as React from "react";
 
 import toAddress from "../../../../../../routes/transactions/assets/toAddress.svg";
-import { DEFAULT_ADDRESS } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { getBorderColor } from "../../../../../../theme/css";
 import { formatDate, formatTime } from "../../../../../../utils/date";
 import { ProcessedTx } from "../../../../types/BwParser";
