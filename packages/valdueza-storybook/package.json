@@ -1,6 +1,6 @@
 {
   "name": "valdueza-storybook",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "build-storybook": "build-storybook -s public",
@@ -17,8 +17,8 @@
     "extends": "react-app"
   },
   "dependencies": {
-    "medulas-react-components": "^0.2.0",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "medulas-react-components": "^0.3.0"
   },
   "devDependencies": {
     "@iov/browser-extension-react-scripts": "^0.2.1",
