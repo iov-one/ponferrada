@@ -3,8 +3,8 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Hairline, Image, Typography } from "medulas-react-components";
 import React from "react";
+import { amountToString } from "ui-logic";
 
-import { amountToString } from "../../../utils/balances";
 import { ADDRESSES_ROUTE, PAYMENT_ROUTE } from "../../paths";
 import receive from "../assets/transactionReceive.svg";
 import send from "../assets/transactionSend.svg";

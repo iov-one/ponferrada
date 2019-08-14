@@ -3,12 +3,12 @@ import { RegisterUsernameTx } from "@iov/bns";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
+import { stringToAmount } from "ui-logic";
 
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
-import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import Transactions from "./index";
 

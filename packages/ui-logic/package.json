@@ -13,5 +13,7 @@
     "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix",
     "test": "jest --rootDir ./build"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@iov/bcp": "^0.16.2"
+  }
 }

@@ -1,4 +1,4 @@
-import { Amount, Token, TokenTicker } from "@iov/bcp";
+import { Amount, Token } from "@iov/bcp";
 
 export type Figures = Omit<Amount, "tokenTicker">;
 
@@ -35,12 +35,6 @@ export function stringToAmount(
     tokenTicker: tokenInfo.tokenTicker,
   };
 }
-
-export const makeAmount = (quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount => ({
-  quantity,
-  fractionalDigits,
-  tokenTicker,
-});
 
 export function amountToNumber(amount: Amount): number {
   const { quantity, fractionalDigits } = amount;
@@ -85,4 +79,14 @@ export function amountToString(amount: Amount): string {
   const value = amountToNumber(amount);
 
   return `${value} ${tokenTicker}`;
+}
+
+export function amountToGwei(amount: Amount): string {
+  if (amount.tokenTicker !== "ETH" || amount.fractionalDigits !== 18) {
+    throw new Error("This amount cannot be expressed in Gwei");
+  }
+
+  const value = amountToNumber(amount) * 10 ** 9;
+  const display = Number.isInteger(value) ? value : value.toFixed(2);
+  return `${display} Gwei`;
 }

@@ -19,9 +19,9 @@ import {
 } from "medulas-react-components";
 import React, { useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
+import { amountToNumber, amountToString } from "ui-logic";
 
 import { RootState } from "../../../../store/reducers";
-import { amountToNumber, amountToString } from "../../../../utils/balances";
 
 const useStyles = makeStyles(() => ({
   avatar: {

@@ -2,8 +2,7 @@ import { Fee } from "@iov/bcp";
 import { makeStyles } from "@material-ui/core";
 import { ListItem, ListItemText } from "medulas-react-components";
 import React from "react";
-
-import { amountToGwei, amountToString } from "../../../../utils/balances";
+import { amountToGwei, amountToString } from "ui-logic";
 
 export const useTxListItemStyles = makeStyles({
   root: {

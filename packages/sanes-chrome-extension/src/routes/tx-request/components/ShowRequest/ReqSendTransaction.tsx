@@ -1,8 +1,8 @@
 import { SendTransaction } from "@iov/bcp";
 import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
+import { amountToString } from "ui-logic";
 
-import { amountToString } from "../../../../utils/balances";
 import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";
 
 export const REQ_SEND_TX = "req-send-tx";

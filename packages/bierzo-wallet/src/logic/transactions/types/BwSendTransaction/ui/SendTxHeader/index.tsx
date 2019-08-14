@@ -3,12 +3,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
+import { amountToString } from "ui-logic";
 
 import { history } from "../../../../../../routes";
 import { PAYMENT_ROUTE } from "../../../../../../routes/paths";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { itemBackground } from "../../../../../../theme/css";
-import { amountToString } from "../../../../../../utils/balances";
 import receiveTx from "../assets/transactionReceive.svg";
 import sendTx from "../assets/transactionSend.svg";
 import Msg from "./MsgSuccess";

@@ -2,6 +2,7 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";
 import * as React from "react";
+import { amountToString } from "ui-logic";
 
 import {
   DEFAULT_ADDRESS,
@@ -10,7 +11,6 @@ import {
 } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { getBorderColor } from "../../../../../../theme/css";
-import { amountToString } from "../../../../../../utils/balances";
 import { formatDate, formatTime } from "../../../../../../utils/date";
 import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
