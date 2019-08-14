@@ -1,4 +1,4 @@
-import { singleton } from "medulas-react-components";
+import { singleton } from "ui-logic";
 
 import developmentConfig from "./development.json";
 import productionConfig from "./production.json";

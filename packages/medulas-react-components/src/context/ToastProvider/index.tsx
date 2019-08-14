@@ -1,6 +1,6 @@
 import * as React from "react";
+import { singleton } from "ui-logic";
 
-import { singleton } from "../../utils/singleton";
 import { Toast, ToastVariant } from "./Toast";
 
 export interface ToastContextInterface {
