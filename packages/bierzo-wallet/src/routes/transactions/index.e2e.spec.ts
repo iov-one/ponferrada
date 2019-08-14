@@ -1,10 +1,11 @@
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { whenTrue } from "ui-logic";
 
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
-import { whenOnNavigatedToE2eRoute, whenTrue } from "../../utils/test/navigation";
+import { whenOnNavigatedToE2eRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
