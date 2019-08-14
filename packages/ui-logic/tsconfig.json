@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "commonjs",
+    "declaration": true,
+    "noEmitOnError": true,
+    "outDir": "build",
+    "declarationDir": "types",
+    "strict": true,
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"]
+}
