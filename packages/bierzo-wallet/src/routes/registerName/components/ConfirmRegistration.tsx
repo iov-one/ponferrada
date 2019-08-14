@@ -34,10 +34,14 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
       flexDirection="column"
     >
       <Block width="75%">
-        <Button fullWidth>See Transactions</Button>
+        <Button fullWidth onClick={onSeeTrasactions}>
+          See Transactions
+        </Button>
       </Block>
       <Block width="75%" marginTop={2}>
-        <Button fullWidth>Return to Balance</Button>
+        <Button fullWidth onClick={onReturnToBalance}>
+          Return to Balance
+        </Button>
       </Block>
     </Block>
   );

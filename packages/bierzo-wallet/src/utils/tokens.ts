@@ -2,6 +2,8 @@ import { BlockchainConnection, Identity } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 
+import { ChainAddress } from "../components/AddressesTable";
+import { getChainName } from "../config";
 import { getCodecForChainId } from "../logic/codec";
 
 // exported for testing purposes
@@ -37,4 +39,24 @@ export async function getChainAddressPair(pubKeys: { [chain: string]: string }):
   }
 
   return addresses;
+}
+
+/**
+ * This method will convert ChainAddressPair to ChainAddress
+ */
+export async function chainAddressPairSortedMapping(
+  addresses: readonly ChainAddressPair[],
+): Promise<readonly ChainAddress[]> {
+  const chainAddresses: ChainAddress[] = [];
+  for (const address of addresses) {
+    chainAddresses.push({
+      ...address,
+      chainName: await getChainName(address.chainId),
+    });
+  }
+  chainAddresses.sort((a: ChainAddress, b: ChainAddress) =>
+    a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+  );
+
+  return chainAddresses;
 }

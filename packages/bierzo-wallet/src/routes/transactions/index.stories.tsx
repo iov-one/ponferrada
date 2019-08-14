@@ -1,8 +1,10 @@
-import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { RegisterUsernameTx } from "@iov/bns";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
 
+import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
@@ -37,12 +39,27 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   outgoing: true,
 };
 
-const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
+const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
     time: new ReadonlyDate("2019-12-24T10:51:33.763Z"),
     original: {
       kind: "bns/register_username",
+      username: "albert*iov",
+      targets: [
+        {
+          chainId: "local-iov-devnet" as ChainId,
+          address: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+        },
+        {
+          chainId: "lisk-198f2b61a8" as ChainId,
+          address: "13751834438426525516L" as Address,
+        },
+        {
+          chainId: "ethereum-eip155-5777" as ChainId,
+          address: "0x695874053fcB8D9cF038ee4E53b7b24fB0baFa4c" as Address,
+        },
+      ],
     },
   },
   {

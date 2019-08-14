@@ -7,7 +7,7 @@ import { makeStyles, ToastContext, ToastVariant } from "medulas-react-components
 import React from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
-import { getChainName } from "../../config";
+import { chainAddressPairSortedMapping } from "../../utils/tokens";
 
 export interface ChainAddress {
   readonly chainId: ChainId;
@@ -40,17 +40,7 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
 
   React.useEffect(() => {
     async function processAddresses(addresses: ChainAddressPair[]): Promise<void> {
-      const chainAddresses: ChainAddress[] = [];
-      for (const address of addresses) {
-        chainAddresses.push({
-          ...address,
-          chainName: await getChainName(address.chainId),
-        });
-      }
-      chainAddresses.sort((a: ChainAddress, b: ChainAddress) =>
-        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-      );
-
+      const chainAddresses = await chainAddressPairSortedMapping(addresses);
       setChainAddresses(chainAddresses);
     }
     processAddresses(addresses);
