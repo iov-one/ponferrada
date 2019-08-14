@@ -3,11 +3,11 @@ import { Block, Image } from "medulas-react-components";
 import * as React from "react";
 import { useSelector } from "react-redux";
 
+import { confirmedTxSelector, lastTxSelector } from "../../store/notifications/selectors";
 import logoBlack from "./assets/logoBlack.svg";
 import BellMenu from "./components/BellMenu";
 import HiMenu from "./components/HiMenu";
 import LinksMenu from "./components/LinksMenu";
-import { confirmedTxSelector, lastTxSelector } from "./selector";
 
 const useStyles = makeStyles({
   root: {
