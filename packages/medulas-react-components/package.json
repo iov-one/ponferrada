@@ -26,7 +26,6 @@
     "add": "^2.0.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-final-form-hooks": "^2.0.1",
-    "ui-logic": "^0.3.0"
+    "react-final-form-hooks": "^2.0.1"
   }
 }
