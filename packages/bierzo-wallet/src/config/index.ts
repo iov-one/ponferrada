@@ -1,5 +1,5 @@
 import { ChainId } from "@iov/bcp";
-import { singleton } from "medulas-react-components";
+import { singleton } from "ui-logic";
 
 import developmentConfig from "./development.json";
 

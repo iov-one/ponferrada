@@ -4,10 +4,10 @@ import { Typography } from "medulas-react-components";
 import * as React from "react";
 import { ReadonlyDate } from "readonly-date";
 import { DeepPartial } from "redux";
+import { stringToAmount } from "ui-logic";
 
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
-import { stringToAmount } from "../../utils/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import PageMenu from "./index";
 

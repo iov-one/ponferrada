@@ -1,6 +1,5 @@
 import { ElementHandle, Page } from "puppeteer";
-
-import { whenTrue } from "../../../utils/test/navigation";
+import { whenTrue } from "ui-logic";
 
 const mainMenuH6Elements = 4;
 const nonBalanceH6Elements = mainMenuH6Elements + 1 /* Hi! menu */ + 1 /* Your currencies */;

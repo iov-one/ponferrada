@@ -1,6 +1,8 @@
-export const singleton = <T extends (...args: any[]) => any>(
+export type SingletonInitializerFunction = (...args: any[]) => any;
+
+export function singleton<T extends SingletonInitializerFunction>(
   fn: (...args: Parameters<T>) => ReturnType<T>,
-): ((...args: Parameters<T>) => ReturnType<T>) => {
+): (...args: Parameters<T>) => ReturnType<T> {
   let executed = false;
   let response: ReturnType<T>;
 
@@ -14,4 +16,4 @@ export const singleton = <T extends (...args: any[]) => any>(
 
     return response;
   };
-};
+}

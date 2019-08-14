@@ -4,8 +4,7 @@ import FileCopy from "@material-ui/icons/FileCopyOutlined";
 import copy from "clipboard-copy";
 import { Block, Link, ToastContext, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
-
-import { ellipsify } from "../../../../utils/strings";
+import { ellipsify } from "ui-logic";
 
 interface MsgSendTransactionProps {
   readonly id: string;

@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { singleton } from "../../utils/singleton";
 import { Toast, ToastVariant } from "./Toast";
 
 export interface ToastContextInterface {
@@ -40,15 +39,13 @@ export const ToastProvider = ({ children }: Props): JSX.Element => {
       open: false,
     });
 
-  const toastConfig = {
+  const toastConfig: ToastContextInterface = {
     show: showToast,
     close: closeToast,
   };
 
-  const invariantToastConfig = singleton((toastConfig): ToastContextInterface => toastConfig);
-
   return (
-    <ToastContext.Provider value={invariantToastConfig(toastConfig)}>
+    <ToastContext.Provider value={toastConfig}>
       <Toast {...toast} onClose={closeToast} />
       {children}
     </ToastContext.Provider>

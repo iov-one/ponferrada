@@ -5,9 +5,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
+import { amountToString } from "ui-logic";
 
 import { ProcessedTx } from "../../../../extension/background/model/persona";
-import { amountToString } from "../../../../utils/balances";
 import iconErrorTx from "../../assets/transactionError.svg";
 import iconSendTx from "../../assets/transactionSend.svg";
 import MsgRegisterUsernameTx from "./MsgRegisterUsernameTx";

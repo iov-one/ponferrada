@@ -3,6 +3,7 @@ import { TransactionEncoder } from "@iov/encoding";
 import { FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
+import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
 import { generateSendTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
@@ -10,7 +11,6 @@ import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
-import { stringToAmount } from "../../utils/balances";
 import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout from "./components";
 import ConfirmPayment from "./components/ConfirmPayment";

@@ -1,6 +1,5 @@
 import { ChainId } from "@iov/bcp";
-
-import { singleton } from "../../../../../utils/singleton";
+import { singleton } from "ui-logic";
 
 /*global chrome*/
 

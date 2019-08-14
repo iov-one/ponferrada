@@ -77,5 +77,4 @@ export {
   number,
   required,
 } from "./utils/forms/validators";
-export { singleton } from "./utils/singleton";
 export { Storybook } from "./utils/storybook";
