@@ -22,8 +22,8 @@ export class BwRegisterUsernameParser extends BwParser<RegisterUsernameTx> {
     };
   }
 
-  public graphicalRepresentation(sendTx: ProcessedTx<RegisterUsernameTx>): JSX.Element {
-    return <TransactionRow key={sendTx.id} sendTx={sendTx} />;
+  public graphicalRepresentation(tx: ProcessedTx<RegisterUsernameTx>): JSX.Element {
+    return <TransactionRow key={tx.id} tx={tx} />;
   }
 
   public csvRepresentation(tx: ProcessedTx<RegisterUsernameTx>): string {

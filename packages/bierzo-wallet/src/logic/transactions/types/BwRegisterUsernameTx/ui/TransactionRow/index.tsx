@@ -10,7 +10,7 @@ import { formatDate, formatTime } from "../../../../../../utils/date";
 import { ProcessedTx } from "../../../../types/BwParser";
 import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
-import SendTxDetails from "./Details";
+import TxDetails from "./Details";
 
 const useStyles = makeStyles({
   cell: {
@@ -19,10 +19,10 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly sendTx: ProcessedTx<RegisterUsernameTx>;
+  readonly tx: ProcessedTx<RegisterUsernameTx>;
 }
 
-function TransactionRow({ sendTx }: Props): JSX.Element {
+function TransactionRow({ tx }: Props): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
@@ -49,12 +49,12 @@ function TransactionRow({ sendTx }: Props): JSX.Element {
             Personalized address registration
           </Typography>
           <Typography variant="subtitle2" weight="regular" color="secondary">
-            {formatTime(sendTx.time)}
+            {formatTime(tx.time)}
           </Typography>
         </Block>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
-          {formatDate(sendTx.time)}
+          {formatDate(tx.time)}
         </Typography>
         <Block flexGrow={1} />
         <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
@@ -69,7 +69,7 @@ function TransactionRow({ sendTx }: Props): JSX.Element {
           onClick={onClick}
         />
       </Block>
-      {isOpen && <SendTxDetails tx={sendTx} />}
+      {isOpen && <TxDetails tx={tx} />}
       <Block margin={2} />
       <Hairline />
     </Block>

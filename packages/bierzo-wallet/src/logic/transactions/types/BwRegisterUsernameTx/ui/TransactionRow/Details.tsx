@@ -5,7 +5,7 @@ import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { ChainAddress } from "../../../../../../components/AddressesTable";
-import { getChainName } from "../../../../../../config";
+import { chainAddressPairSortedMapping } from "../../../../../../utils/tokens";
 import { ProcessedTx } from "../../../../types/BwParser";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -35,21 +35,11 @@ interface Props {
 
 const TxDetails = ({ tx }: Props): JSX.Element => {
   const classes = useStyles();
-  const [addresses, setAddresses] = React.useState<ChainAddress[]>([]);
+  const [addresses, setAddresses] = React.useState<readonly ChainAddress[]>([]);
 
   React.useEffect(() => {
     async function processAddresses(addresses: readonly ChainAddressPair[]): Promise<void> {
-      const chainAddresses: ChainAddress[] = [];
-      for (const address of addresses) {
-        chainAddresses.push({
-          ...address,
-          chainName: await getChainName(address.chainId),
-        });
-      }
-      chainAddresses.sort((a: ChainAddress, b: ChainAddress) =>
-        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-      );
-
+      const chainAddresses = await chainAddressPairSortedMapping(addresses);
       setAddresses(chainAddresses);
     }
     processAddresses(tx.original.targets);

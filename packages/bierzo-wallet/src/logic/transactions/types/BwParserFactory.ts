@@ -18,12 +18,16 @@ function isProcessedSendTransaction(tx: ProcessedTx): tx is ProcessedSendTransac
   return isSendTransaction(tx.original);
 }
 
+function isProcessedRegisterUsernameTx(tx: ProcessedTx): tx is ProcessedTx<RegisterUsernameTx> {
+  return isRegisterUsernameTx(tx.original);
+}
+
 export class BwParserFactory {
   public static getReactComponent(tx: ProcessedTx): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().graphicalRepresentation(tx);
-    } else if (isRegisterUsernameTx(tx.original)) {
-      return new BwRegisterUsernameParser().graphicalRepresentation(tx as ProcessedTx<RegisterUsernameTx>);
+    } else if (isProcessedRegisterUsernameTx(tx)) {
+      return new BwRegisterUsernameParser().graphicalRepresentation(tx);
     }
 
     return new BwUnkownParser().graphicalRepresentation(tx);
@@ -32,11 +36,8 @@ export class BwParserFactory {
   public static getHeaderRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().headerRepresentation(tx, lastOne);
-    } else if (isRegisterUsernameTx(tx.original)) {
-      return new BwRegisterUsernameParser().headerRepresentation(
-        tx as ProcessedTx<RegisterUsernameTx>,
-        lastOne,
-      );
+    } else if (isProcessedRegisterUsernameTx(tx)) {
+      return new BwRegisterUsernameParser().headerRepresentation(tx, lastOne);
     }
 
     return new BwUnkownParser().headerRepresentation(tx, lastOne);
@@ -45,8 +46,8 @@ export class BwParserFactory {
   public static getCsvRepresentation(tx: ProcessedTx): string {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().csvRepresentation(tx);
-    } else if (isRegisterUsernameTx(tx.original)) {
-      return new BwRegisterUsernameParser().csvRepresentation(tx as ProcessedTx<RegisterUsernameTx>);
+    } else if (isProcessedRegisterUsernameTx(tx)) {
+      return new BwRegisterUsernameParser().csvRepresentation(tx);
     }
 
     return new BwUnkownParser().csvRepresentation(tx);
