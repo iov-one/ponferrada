@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Address, ChainId } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
-import { makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
+import clipboardCopy from "clipboard-copy";
+import { Block, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
-import CopyToClipboard from "react-copy-to-clipboard";
 
 import { chainAddressPairSortedMapping } from "../../utils/tokens";
 
@@ -26,14 +26,42 @@ const useStyles = makeStyles({
       cursor: "pointer",
     },
   },
+  link: {
+    cursor: "pointer",
+  },
 });
+
+export interface AddressesRowProps {
+  readonly chain: ChainAddress;
+}
+
+const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
+  const toast = React.useContext(ToastContext);
+  const classes = useStyles();
+
+  const onAddressCopy = (): void => {
+    clipboardCopy(chain.address);
+    toast.show("Address has been copied to clipboard.", ToastVariant.INFO);
+  };
+
+  return (
+    <TableRow key={chain.chainId}>
+      <TableCell align="left">{chain.chainName}</TableCell>
+      <TableCell align="left">{chain.address}</TableCell>
+      <TableCell align="left" className={classes.copyCell}>
+        <Block onClick={onAddressCopy} className={classes.link}>
+          <FontAwesomeIcon icon={faCopy} />
+        </Block>
+      </TableCell>
+    </TableRow>
+  );
+};
 
 export interface AddressesTableProps {
   readonly addresses: ChainAddressPair[];
 }
 
 const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
-  const toast = React.useContext(ToastContext);
   const classes = useStyles();
 
   const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddress[]>([]);
@@ -46,10 +74,6 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
     processAddresses(addresses);
   }, [addresses]);
 
-  const onAddressCopy = (): void => {
-    toast.show("Address has been copied to clipboard.", ToastVariant.INFO);
-  };
-
   return (
     <Table>
       <TableHead>
@@ -61,15 +85,7 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
       </TableHead>
       <TableBody>
         {chainAddresses.map(chain => (
-          <TableRow key={chain.chainId}>
-            <TableCell align="left">{chain.chainName}</TableCell>
-            <TableCell align="left">{chain.address}</TableCell>
-            <TableCell align="left" className={classes.copyCell}>
-              <CopyToClipboard text={chain.address} onCopy={onAddressCopy}>
-                <FontAwesomeIcon icon={faCopy} />
-              </CopyToClipboard>
-            </TableCell>
-          </TableRow>
+          <AddressRow key={chain.chainId} chain={chain} />
         ))}
       </TableBody>
     </Table>
