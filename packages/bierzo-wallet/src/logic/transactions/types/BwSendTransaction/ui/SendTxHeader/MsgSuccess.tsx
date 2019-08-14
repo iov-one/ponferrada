@@ -1,7 +1,6 @@
 import { Typography } from "medulas-react-components";
 import * as React from "react";
-
-import { ellipsify } from "../../../../../../utils/strings";
+import { ellipsify } from "ui-logic";
 
 interface MsgProps {
   readonly outgoing: boolean;

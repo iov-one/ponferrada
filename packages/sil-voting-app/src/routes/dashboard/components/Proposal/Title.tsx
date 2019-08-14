@@ -1,7 +1,6 @@
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
-
-import { elipsify } from "../../../../utils/strings";
+import { ellipsify } from "ui-logic";
 
 const TITLE_MAX_LENGTH = 30;
 
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const Title = ({ title }: Props): JSX.Element => {
-  const shortTitle = elipsify(title, TITLE_MAX_LENGTH);
+  const shortTitle = ellipsify(title, TITLE_MAX_LENGTH);
 
   return (
     <Block display="flex" alignItems="center">

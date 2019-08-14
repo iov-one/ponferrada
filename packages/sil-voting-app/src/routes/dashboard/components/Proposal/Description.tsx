@@ -1,8 +1,7 @@
 import Collapse from "@material-ui/core/Collapse";
 import { Block, Typography } from "medulas-react-components";
 import React, { useState } from "react";
-
-import { elipsify } from "../../../../utils/strings";
+import { ellipsify } from "ui-logic";
 
 const DESC_MAX_LENGTH = 180;
 
@@ -18,7 +17,7 @@ const Description = ({ description }: Props): JSX.Element => {
   };
 
   const ReadMore = (): JSX.Element => {
-    const shortDescription = elipsify(description, DESC_MAX_LENGTH) + " ";
+    const shortDescription = ellipsify(description, DESC_MAX_LENGTH) + " ";
 
     return (
       <Block marginTop={2}>
