@@ -4,8 +4,6 @@ import { BnsConnection } from "@iov/bns";
 import { getConfig } from "../config";
 import { getConnectionFor, isBnsSpec } from "./connection";
 
-export type LookupResultType = Address | "name_not_found" | "no_address_for_blockchain";
-
 /**
  * Returns the address associated with the name, or undefined if not registered.
  * The name must include a namespace ("*iov")
@@ -13,7 +11,7 @@ export type LookupResultType = Address | "name_not_found" | "no_address_for_bloc
 export async function lookupRecipientAddressByName(
   username: string,
   chainId: ChainId,
-): Promise<LookupResultType> {
+): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
   if (!username.endsWith("*iov")) {
     throw new Error("Username must include namespace suffix");
   }
