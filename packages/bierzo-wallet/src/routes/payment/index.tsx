@@ -8,7 +8,7 @@ import { stringToAmount } from "ui-logic";
 import { history } from "..";
 import { generateSendTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
 import PageMenu from "../../components/PageMenu";
-import { isIov, lookupRecipientAddressByName, LookupResultType } from "../../logic/account";
+import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
 import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
