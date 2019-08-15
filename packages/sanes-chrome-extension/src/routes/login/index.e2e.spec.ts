@@ -1,4 +1,5 @@
 import { Browser, Page } from "puppeteer";
+import { randomString } from "ui-logic";
 
 import { IovWindowExtension } from "../../extension/background/model/backgroundscript";
 import {
@@ -8,7 +9,6 @@ import {
   getBackgroundPage,
   launchBrowser,
 } from "../../utils/test/e2e";
-import { randomString } from "../../utils/test/random";
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from "../paths";

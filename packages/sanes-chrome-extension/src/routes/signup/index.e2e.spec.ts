@@ -1,7 +1,7 @@
 import { Browser, Page } from "puppeteer";
+import { randomString } from "ui-logic";
 
 import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
-import { randomString } from "../../utils/test/random";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
   submitNewAccountE2E,
