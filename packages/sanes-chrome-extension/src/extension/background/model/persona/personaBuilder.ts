@@ -1,4 +1,4 @@
-import { Ed25519HdWallet, Secp256k1HdWallet, UserProfile } from "@iov/keycontrol";
+import { UserProfile } from "@iov/keycontrol";
 import { MultiChainSigner } from "@iov/multichain";
 
 import { AccountManager, AccountManagerChainConfig } from "../accountManager";
@@ -10,6 +10,7 @@ import {
   getConfigurationFile,
   pathBuilderForCodec,
 } from "./config";
+import { createTwoWalletProfile } from "./userprofilehelpers";
 
 export class PersonaBuilder {
   public static async createAccountManager(
@@ -36,12 +37,6 @@ export class PersonaBuilder {
   }
 
   public static async createUserProfile(mnemonic: string): Promise<UserProfile> {
-    const edKeyring = Ed25519HdWallet.fromMnemonic(mnemonic);
-    const secKeyring = Secp256k1HdWallet.fromMnemonic(mnemonic);
-    const profile = new UserProfile();
-    profile.addWallet(edKeyring);
-    profile.addWallet(secKeyring);
-
-    return profile;
+    return createTwoWalletProfile(mnemonic);
   }
 }
