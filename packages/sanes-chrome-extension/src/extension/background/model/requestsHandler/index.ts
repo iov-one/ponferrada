@@ -79,7 +79,7 @@ export default class RequestsHandler {
     };
   }
 
-  public getPendingRequests(): Request[] {
+  public getPendingRequests(): readonly Request[] {
     return this.queueManager.requests();
   }
 
