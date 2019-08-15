@@ -10,7 +10,6 @@ import {
   getConfigurationFile,
   pathBuilderForCodec,
 } from "./config";
-import { createTwoWalletProfile } from "./userprofilehelpers";
 
 export class PersonaBuilder {
   public static async createAccountManager(
@@ -34,9 +33,5 @@ export class PersonaBuilder {
     const accountManager = new AccountManager(profile, managerChains);
 
     return accountManager;
-  }
-
-  public static async createUserProfile(mnemonic: string): Promise<UserProfile> {
-    return createTwoWalletProfile(mnemonic);
   }
 }

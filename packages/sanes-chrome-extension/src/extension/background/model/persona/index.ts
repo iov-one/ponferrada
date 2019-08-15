@@ -13,6 +13,7 @@ import { StringDb } from "../backgroundscript/db";
 import SigningServer from "../signingServer";
 import { ConfigurationFile, getConfigurationFile } from "./config";
 import { PersonaBuilder } from "./personaBuilder";
+import { createTwoWalletProfile } from "./userprofilehelpers";
 
 function isNonNull<T>(t: T | null): t is T {
   return t !== null;
@@ -74,7 +75,7 @@ export class Persona {
 
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
-    const profile = await PersonaBuilder.createUserProfile(mnemonic);
+    const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
     const manager = await PersonaBuilder.createAccountManager(profile, signer);
 
