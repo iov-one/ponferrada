@@ -89,7 +89,7 @@ export class Persona {
   public static async create(
     db: StringDb,
     password: string,
-    makeAuthorizationCallbacks: MakeAuthorizationCallbacks,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
     fixedMnemonic?: string,
   ): Promise<Persona> {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
@@ -111,7 +111,7 @@ export class Persona {
   public static async load(
     db: StringDb,
     password: string,
-    makeAuthorizationCallbacks: MakeAuthorizationCallbacks,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
   ): Promise<Persona> {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
 
@@ -152,14 +152,23 @@ export class Persona {
     profile: UserProfile,
     signer: MultiChainSigner,
     accountManager: AccountManager,
-    makeAuthorizationCallbacks: MakeAuthorizationCallbacks,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
   ) {
     this.encryptionKey = encryptionKey;
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
 
-    const { authorizeGetIdentities, authorizeSignAndPost } = makeAuthorizationCallbacks(signer);
+    const { authorizeGetIdentities, authorizeSignAndPost } = makeAuthorizationCallbacks
+      ? makeAuthorizationCallbacks(signer)
+      : {
+          authorizeGetIdentities: () => {
+            throw new Error("No authorizeGetIdentities callback set");
+          },
+          authorizeSignAndPost: () => {
+            throw new Error("No authorizeSignAndPost callback set");
+          },
+        };
 
     this.core = new SigningServerCore(
       this.profile,

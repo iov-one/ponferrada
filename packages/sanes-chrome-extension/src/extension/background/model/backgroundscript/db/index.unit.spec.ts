@@ -1,7 +1,6 @@
 import { withChainsDescribe } from "../../../../../utils/test/testExecutor";
 import * as txsUpdater from "../../../updaters/appUpdater";
 import { Persona } from "../../persona";
-import SigningServer from "../../signingServer";
 import { Db } from "./index";
 
 withChainsDescribe("backgroundscript db", () => {
@@ -33,11 +32,8 @@ withChainsDescribe("backgroundscript db", () => {
 
     it("returns true for database with persona", async () => {
       const db = new Db();
-      const signingServer = new SigningServer();
       {
-        const persona = await Persona.create(db.getDb(), "passwd", signer =>
-          signingServer.makeAuthorizationCallbacks(signer),
-        );
+        const persona = await Persona.create(db.getDb(), "passwd", undefined);
         expect(persona).toBeTruthy();
         persona.destroy();
       }
