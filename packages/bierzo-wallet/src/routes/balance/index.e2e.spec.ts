@@ -1,9 +1,13 @@
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { randomString, sleep } from "ui-logic";
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
+import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
+import { REGISTER_USERNAME_ROUTE } from "../paths";
+import { REGISTER_USERNAME_FIELD } from "../registerName/components";
 import { getBalanceTextAtIndex, getUsernameE2E, waitForAllBalances } from "./test/operateBalances";
 import { travelToBalanceE2E } from "./test/travelToBalance";
 
@@ -57,5 +61,24 @@ withChainsDescribe("E2E > Balance route", () => {
     const username = await getUsernameE2E(await page.$$("h5"));
 
     expect(username).toBe("Get your human readable");
+  }, 45000);
+
+  it("should create username", async () => {
+    await waitForAllBalances(page);
+    await page.click(`#${REGISTER_USERNAME_ROUTE.replace("/", "\\/")}`);
+
+    // Fill the form
+    const username = `${randomString(10)}*iov`;
+    await page.type(`input[name="${REGISTER_USERNAME_FIELD}"]`, username);
+    await page.click('button[type="submit"]');
+
+    await acceptEnqueuedRequest(extensionPage);
+    await page.bringToFront();
+    await sleep(1000);
+    const buttons = await page.$$("button");
+    await buttons[2].click();
+
+    const personaAddress = await getUsernameE2E(await page.$$("h5"));
+    expect(personaAddress).toBe(username);
   }, 45000);
 });
