@@ -1,7 +1,6 @@
-import { Algorithm, ChainId, Identity, identityEquals } from "@iov/bcp";
+import { Algorithm, ChainId, Identity } from "@iov/bcp";
 import { Slip10RawIndex } from "@iov/crypto";
 import { UserProfile, WalletId } from "@iov/keycontrol";
-import { ReadonlyWallet } from "@iov/keycontrol";
 
 export interface AccountInfo {
   readonly index: number;
@@ -104,10 +103,6 @@ export class AccountManager {
     chainId: ChainId,
     path: readonly Slip10RawIndex[],
   ): Promise<boolean> {
-    // FIXME iov-core, please.
-    const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId);
-    const ident = await wallet.previewIdentity(chainId, path);
-    const allIdentities = wallet.getIdentities();
-    return !!allIdentities.find(x => identityEquals(x, ident));
+    return this.userProfile.identityExists(walletId, chainId, path);
   }
 }
