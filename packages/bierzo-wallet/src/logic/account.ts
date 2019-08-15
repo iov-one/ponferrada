@@ -11,7 +11,7 @@ import { getConnectionFor, isBnsSpec } from "./connection";
 export async function lookupRecipientAddressByName(
   username: string,
   chainId: ChainId,
-): Promise<Address | undefined> {
+): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
   if (!username.endsWith("*iov")) {
     throw new Error("Username must include namespace suffix");
   }
@@ -27,12 +27,16 @@ export async function lookupRecipientAddressByName(
     const connection = (await getConnectionFor(chain.chainSpec)) as BnsConnection;
     const usernames = await connection.getUsernames({ username });
     if (usernames.length !== 1) {
-      return undefined;
+      return "name_not_found";
     }
 
     const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
 
-    return chainAddressPair ? chainAddressPair.address : undefined;
+    if (chainAddressPair) {
+      return chainAddressPair.address;
+    }
+
+    return "no_address_for_blockchain";
   }
 
   throw new Error("No BNS connection found");

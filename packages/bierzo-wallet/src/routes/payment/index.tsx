@@ -54,14 +54,21 @@ const Payment = (): JSX.Element => {
 
     const chainId = token.chainId;
 
-    let recipient: Address | undefined;
+    let recipient: Address;
     if (isIov(formValues[ADDRESS_FIELD])) {
-      recipient = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
+      const lookupResult = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
 
-      if (!recipient) {
-        toast.show("IOV username was not found", ToastVariant.ERROR);
+      if (lookupResult === "name_not_found") {
+        toast.show("Recipient's personalized address was not found", ToastVariant.ERROR);
+        return;
+      } else if (lookupResult === "no_address_for_blockchain") {
+        toast.show(
+          "Recipient's personalized address does not contain an address for this blockchain",
+          ToastVariant.ERROR,
+        );
         return;
       }
+      recipient = lookupResult;
     } else {
       recipient = formValues[ADDRESS_FIELD] as Address;
     }
