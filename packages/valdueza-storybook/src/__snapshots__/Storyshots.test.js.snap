@@ -734,6 +734,7 @@ exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1
           </h5>
           <h5
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            id="/register-username"
             onClick={[Function]}
           >
             address.
