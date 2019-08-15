@@ -5,7 +5,7 @@ import {
   PersonaData,
 } from "../../extension/background/model/backgroundscript";
 import { PersonaAcccount } from "../../extension/background/model/persona";
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 
 export function extensionContext(): boolean {
   return (

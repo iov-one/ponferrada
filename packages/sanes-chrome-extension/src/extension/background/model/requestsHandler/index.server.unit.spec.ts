@@ -6,7 +6,7 @@ import { withChainsDescribe } from "../../../../utils/test/testExecutor";
 import * as txsUpdater from "../../updaters/appUpdater";
 import { Db, StringDb } from "../backgroundscript/db";
 import { AuthorizationCallbacks, MakeAuthorizationCallbacks, Persona } from "../persona";
-import SigningServer from "./index";
+import RequestsHandler from "./index";
 
 jest.mock("./index", () =>
   jest.fn().mockImplementation(() => {
@@ -55,9 +55,9 @@ withChainsDescribe("background script start signing server", () => {
 
   describe("startSigningServer", () => {
     it("can start the signing server", async () => {
-      const signingServer = new SigningServer();
+      const requestsHandler = new RequestsHandler();
       const persona = await Persona.create(db, "test-password", signer =>
-        signingServer.makeAuthorizationCallbacks(signer),
+        requestsHandler.makeAuthorizationCallbacks(signer),
       );
       const server = new JsonRpcSigningServer(persona.getCore());
       expect(server).toBeTruthy();
@@ -66,11 +66,11 @@ withChainsDescribe("background script start signing server", () => {
     });
 
     it("can send example request to the signing server", async () => {
-      const signingServer = new SigningServer();
+      const requestsHandler = new RequestsHandler();
       const persona = await Persona.create(
         db,
         "test-password",
-        signer => signingServer.makeAuthorizationCallbacks(signer),
+        signer => requestsHandler.makeAuthorizationCallbacks(signer),
         "oxygen fall sure lava energy veteran enroll frown question detail include maximum",
       );
 
@@ -105,9 +105,9 @@ withChainsDescribe("background script start signing server", () => {
 
   describe("tearDownSigningServer", () => {
     it("can tear down the signing server", async () => {
-      const signingServer = new SigningServer();
+      const requestsHandler = new RequestsHandler();
       const persona = await Persona.create(db, "test-password", signer =>
-        signingServer.makeAuthorizationCallbacks(signer),
+        requestsHandler.makeAuthorizationCallbacks(signer),
       );
 
       expect(() => {

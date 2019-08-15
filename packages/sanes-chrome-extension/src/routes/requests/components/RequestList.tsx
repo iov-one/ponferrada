@@ -16,7 +16,7 @@ import * as React from "react";
 import {
   isGetIdentitiesRequest,
   Request,
-} from "../../../extension/background/model/signingServer/requestQueueManager";
+} from "../../../extension/background/model/requestsHandler/requestQueueManager";
 import { history } from "../../../store/reducers";
 import { SHARE_IDENTITY, TX_REQUEST } from "../../paths";
 

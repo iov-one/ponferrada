@@ -8,7 +8,7 @@ import { Store } from "redux";
 import { PersonaProvider } from "../../context/PersonaProvider";
 import { RequestProvider } from "../../context/RequestProvider";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import Route from "../../routes";
 import { history } from "../../store/reducers";
 

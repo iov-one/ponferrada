@@ -17,8 +17,8 @@ import {
 } from "./requestQueueManager";
 import { SenderWhitelist } from "./senderWhitelist";
 
-export default class SigningServer {
-  private requestHandler = new RequestQueueManager();
+export default class RequestsHandler {
+  private queueManager = new RequestQueueManager();
   private senderWhitelist = new SenderWhitelist();
   private signingServer: JsonRpcSigningServer | undefined;
 
@@ -43,7 +43,7 @@ export default class SigningServer {
         const data: GetIdentitiesResponseData = { requestedIdentities };
 
         return requestCallback(
-          this.requestHandler,
+          this.queueManager,
           this.senderWhitelist,
           meta.senderUrl,
           reason,
@@ -67,7 +67,7 @@ export default class SigningServer {
 
         const data: SignAndPostResponseData = { tx: transaction };
         return requestCallback(
-          this.requestHandler,
+          this.queueManager,
           this.senderWhitelist,
           meta.senderUrl,
           reason,
@@ -80,11 +80,11 @@ export default class SigningServer {
   }
 
   public getPendingRequests(): Request[] {
-    return this.requestHandler.requests();
+    return this.queueManager.requests();
   }
 
   public start(core: SigningServerCore): void {
-    this.requestHandler = new RequestQueueManager();
+    this.queueManager = new RequestQueueManager();
     this.senderWhitelist = new SenderWhitelist();
     this.signingServer = new JsonRpcSigningServer(core);
   }

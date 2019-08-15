@@ -1,8 +1,8 @@
 import { JsonRpcResponse } from "@iov/jsonrpc";
 
 import { Persona, PersonaAcccount, ProcessedTx } from "../persona";
-import SigningServer from "../signingServer";
-import { Request } from "../signingServer/requestQueueManager";
+import RequestsHandler from "../requestsHandler";
+import { Request } from "../requestsHandler/requestQueueManager";
 import { Db } from "./db";
 
 export interface IovWindowExtension extends Window {
@@ -30,17 +30,17 @@ export type GetPersonaResponse = PersonaData | null;
 class Backgroundscript {
   private persona: Persona | undefined;
   private readonly db = new Db();
-  private signingServer = new SigningServer();
+  private requestsHandler = new RequestsHandler();
 
   private async createPersona(password: string, mnemonic: string | undefined): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
     this.persona = await Persona.create(
       this.db.getDb(),
       password,
-      signer => this.signingServer.makeAuthorizationCallbacks(signer),
+      signer => this.requestsHandler.makeAuthorizationCallbacks(signer),
       mnemonic,
     );
-    this.signingServer.start(this.persona.getCore());
+    this.requestsHandler.start(this.persona.getCore());
 
     const response = {
       mnemonic: this.persona.mnemonic,
@@ -54,9 +54,9 @@ class Backgroundscript {
   private async loadPersona(password: string): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
     this.persona = await Persona.load(this.db.getDb(), password, signer =>
-      this.signingServer.makeAuthorizationCallbacks(signer),
+      this.requestsHandler.makeAuthorizationCallbacks(signer),
     );
-    this.signingServer.start(this.persona.getCore());
+    this.requestsHandler.start(this.persona.getCore());
 
     return {
       mnemonic: this.persona.mnemonic,
@@ -93,7 +93,7 @@ class Backgroundscript {
     this.persona.destroy();
     this.persona = undefined;
 
-    this.signingServer.shutdown();
+    this.requestsHandler.shutdown();
   }
 
   public async clearDatabase(): Promise<void> {
@@ -101,7 +101,7 @@ class Backgroundscript {
   }
 
   public registerActionsInBackground(windowExtension: IovWindowExtension): void {
-    windowExtension.getQueuedRequests = () => this.signingServer.getPendingRequests();
+    windowExtension.getQueuedRequests = () => this.requestsHandler.getPendingRequests();
     windowExtension.createPersona = (pss, mn) => this.createPersona(pss, mn);
     windowExtension.loadPersona = pss => this.loadPersona(pss);
     windowExtension.createAccount = () => this.createAccount();
@@ -112,7 +112,7 @@ class Backgroundscript {
   }
 
   public handleRequestMessage(message: any, sender: chrome.runtime.MessageSender): Promise<JsonRpcResponse> {
-    return this.signingServer.handleRequestMessage(message, sender);
+    return this.requestsHandler.handleRequestMessage(message, sender);
   }
 }
 

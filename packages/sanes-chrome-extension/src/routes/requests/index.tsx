@@ -3,7 +3,7 @@ import { PageLayout, ToastContextInterface, ToastVariant, Typography } from "med
 import * as React from "react";
 
 import { RequestContext } from "../../context/RequestProvider";
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { history } from "../../store/reducers";
 import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from "../paths";
 import RequestList, { REQUEST_FIELD } from "./components/RequestList";

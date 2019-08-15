@@ -2,7 +2,7 @@
 import * as React from "react";
 
 import { IovWindowExtension } from "../extension/background/model/backgroundscript";
-import { Request } from "../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../extension/background/model/requestsHandler/requestQueueManager";
 import {
   isMessageToForeground,
   MessageToForegroundAction,

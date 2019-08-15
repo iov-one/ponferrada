@@ -10,7 +10,7 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
-import { UiIdentity } from "../../../extension/background/model/signingServer/requestQueueManager";
+import { UiIdentity } from "../../../extension/background/model/requestsHandler/requestQueueManager";
 import { SHARE_IDENTITY } from "../../paths";
 
 export const SHARE_IDENTITY_SHOW = `${SHARE_IDENTITY}_show`;

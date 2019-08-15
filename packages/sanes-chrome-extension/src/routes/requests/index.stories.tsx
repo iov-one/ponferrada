@@ -4,7 +4,7 @@ import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import { RequestProvider } from "../../context/RequestProvider";
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
 import Requests from "./index";
 
