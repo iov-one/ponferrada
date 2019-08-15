@@ -15,7 +15,11 @@ import {
 import { ReadonlyDate } from "readonly-date";
 
 import { transactionsUpdater } from "../../updaters/appUpdater";
-import { AccountManager, AccountManagerChainConfig } from "../accountManager";
+import { AccountManager } from "../accountManager";
+import {
+  SoftwareAccountManager,
+  SoftwareAccountManagerChainConfig,
+} from "../accountManager/softwareAccountManager";
 import { StringDb } from "../backgroundscript/db";
 import {
   algorithmForCodec,
@@ -107,7 +111,7 @@ export class Persona {
     const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
     const managerChains = await Persona.connectToAllConfiguredChains(signer);
-    const manager = new AccountManager(profile, managerChains);
+    const manager = new SoftwareAccountManager(profile, managerChains);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
@@ -126,17 +130,17 @@ export class Persona {
     const profile = await UserProfile.loadFrom(db, encryptionKey);
     const signer = new MultiChainSigner(profile);
     const managerChains = await Persona.connectToAllConfiguredChains(signer);
-    const manager = new AccountManager(profile, managerChains);
+    const manager = new SoftwareAccountManager(profile, managerChains);
 
     return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
   }
 
   private static async connectToAllConfiguredChains(
     signer: MultiChainSigner,
-  ): Promise<readonly AccountManagerChainConfig[]> {
+  ): Promise<readonly SoftwareAccountManagerChainConfig[]> {
     const config = await getConfigurationFile();
 
-    const out: AccountManagerChainConfig[] = [];
+    const out: SoftwareAccountManagerChainConfig[] = [];
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
       const connector = chainConnector(codecType, chainSpec.node, chainSpec.scraper);

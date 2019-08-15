@@ -2,18 +2,18 @@ import { Algorithm, ChainId } from "@iov/bcp";
 import { HdPaths } from "@iov/keycontrol";
 
 import { createTwoWalletProfile } from "../persona/userprofilehelpers";
-import { AccountManager, AccountManagerChainConfig } from "./index";
+import { SoftwareAccountManager, SoftwareAccountManagerChainConfig } from "./softwareAccountManager";
 
-describe("AccountManager", () => {
+describe("SoftwareAccountManager", () => {
   const defaultMnemonic = "adapt true travel equip february unhappy junk head warrior recall moral escape";
 
-  const chain1: AccountManagerChainConfig = {
+  const chain1: SoftwareAccountManagerChainConfig = {
     algorithm: Algorithm.Ed25519,
     chainId: "test-chain-1" as ChainId,
     derivePath: x => HdPaths.iov(x),
   };
 
-  const chain2: AccountManagerChainConfig = {
+  const chain2: SoftwareAccountManagerChainConfig = {
     algorithm: Algorithm.Secp256k1,
     chainId: "test-chain-2" as ChainId,
     derivePath: x => HdPaths.ethereum(x),
@@ -21,14 +21,14 @@ describe("AccountManager", () => {
 
   it("can be created", async () => {
     const userProfile = createTwoWalletProfile(defaultMnemonic);
-    const manager = new AccountManager(userProfile, []);
+    const manager = new SoftwareAccountManager(userProfile, []);
     expect(manager).toBeTruthy();
   });
 
   describe("accounts", () => {
     it("returns an empty list of accounts by default", async () => {
       const userProfile = createTwoWalletProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, []);
+      const manager = new SoftwareAccountManager(userProfile, []);
       expect(await manager.accounts()).toEqual([]);
     });
   });
@@ -36,14 +36,14 @@ describe("AccountManager", () => {
   describe("generateNextAccount", () => {
     it("does not change accounts for empty chains list", async () => {
       const userProfile = createTwoWalletProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, []);
+      const manager = new SoftwareAccountManager(userProfile, []);
       await manager.generateNextAccount();
       expect(await manager.accounts()).toEqual([]);
     });
 
     it("generates one account with one identity when chains list has one element", async () => {
       const userProfile = createTwoWalletProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, [chain1]);
+      const manager = new SoftwareAccountManager(userProfile, [chain1]);
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
@@ -55,7 +55,7 @@ describe("AccountManager", () => {
 
     it("generates one account with two identities when chains list has two elements", async () => {
       const userProfile = createTwoWalletProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, [chain1, chain2]);
+      const manager = new SoftwareAccountManager(userProfile, [chain1, chain2]);
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
       expect(accounts.length).toEqual(1);
@@ -67,7 +67,7 @@ describe("AccountManager", () => {
 
     it("can be used multiple times", async () => {
       const userProfile = createTwoWalletProfile(defaultMnemonic);
-      const manager = new AccountManager(userProfile, [chain1]);
+      const manager = new SoftwareAccountManager(userProfile, [chain1]);
       await manager.generateNextAccount();
       await manager.generateNextAccount();
       await manager.generateNextAccount();
