@@ -1,7 +1,6 @@
-import { Algorithm, ChainId, Identity, identityEquals } from "@iov/bcp";
+import { Algorithm, ChainId, Identity } from "@iov/bcp";
 import { Slip10RawIndex } from "@iov/crypto";
 import { UserProfile, WalletId } from "@iov/keycontrol";
-import { ReadonlyWallet } from "@iov/keycontrol";
 
 export interface AccountInfo {
   readonly index: number;
@@ -63,7 +62,7 @@ export class AccountManager {
       const { chainId, algorithm, derivePath } = chain;
       const path = derivePath(derivation);
       const wallet = this.walletForAlgorithm(algorithm);
-      const identityCreated = await this.identityExistsInProfile(wallet, chainId, path);
+      const identityCreated = await this.userProfile.identityExists(wallet, chainId, path);
 
       if (!identityCreated) {
         const identity = await this.userProfile.createIdentity(wallet, chainId, path);
@@ -86,7 +85,7 @@ export class AccountManager {
 
     for (let i = 0; ; i++) {
       const path = firstChain.derivePath(i);
-      const existsAccount = await this.identityExistsInProfile(firstWallet, firstChain.chainId, path);
+      const existsAccount = await this.userProfile.identityExists(firstWallet, firstChain.chainId, path);
 
       if (!existsAccount) {
         return i;
@@ -97,17 +96,5 @@ export class AccountManager {
   private walletForAlgorithm(algorithm: Algorithm): WalletId {
     const [edWallet, secpWallet] = this.userProfile.wallets.value.map(x => x.id);
     return algorithm === "ed25519" ? edWallet : secpWallet;
-  }
-
-  private async identityExistsInProfile(
-    walletId: WalletId,
-    chainId: ChainId,
-    path: readonly Slip10RawIndex[],
-  ): Promise<boolean> {
-    // FIXME iov-core, please.
-    const wallet: ReadonlyWallet = (this.userProfile as any).findWalletInPrimaryKeyring(walletId);
-    const ident = await wallet.previewIdentity(chainId, path);
-    const allIdentities = wallet.getIdentities();
-    return !!allIdentities.find(x => identityEquals(x, ident));
   }
 }
