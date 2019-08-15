@@ -54,12 +54,13 @@ const Payment = (): JSX.Element => {
 
     const chainId = token.chainId;
 
-    let recipient: Address | undefined;
+    let recipient: Address;
     if (isIov(formValues[ADDRESS_FIELD])) {
-      recipient = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
-
-      if (!recipient) {
-        toast.show("IOV username was not found", ToastVariant.ERROR);
+      try {
+        recipient = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
+      } catch (err) {
+        toast.show(err.message, ToastVariant.ERROR);
+        console.error(err);
         return;
       }
     } else {
