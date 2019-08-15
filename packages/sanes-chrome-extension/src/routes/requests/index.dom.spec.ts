@@ -1,7 +1,7 @@
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
 
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { aNewStore } from "../../store";
 import { resetHistory, RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";

@@ -7,7 +7,7 @@ import React from "react";
 import {
   Request,
   SignAndPostResponseData,
-} from "../../extension/background/model/signingServer/requestQueueManager";
+} from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
 import { ACCOUNT_STATUS_PAGE } from "../account/index.stories";
 import RejectRequest from "./components/RejectRequest";

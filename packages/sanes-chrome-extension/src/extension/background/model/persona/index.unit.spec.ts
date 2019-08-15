@@ -8,7 +8,6 @@ import { sleep } from "ui-logic";
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
 import * as txsUpdater from "../../updaters/appUpdater";
 import { Db } from "../backgroundscript/db";
-import SigningServer from "../signingServer";
 import { Persona, PersonaAcccount } from "./index";
 
 withChainsDescribe("Persona", () => {
@@ -24,30 +23,28 @@ withChainsDescribe("Persona", () => {
   describe("create", () => {
     it("can be created", async () => {
       const db = new Db();
-      const signingServer = new SigningServer();
-      const persona = await Persona.create(db.getDb(), signingServer, "passwd");
+      const persona = await Persona.create(db.getDb(), "passwd", undefined);
       expect(persona).toBeTruthy();
       persona.destroy();
-    });
+    }, 10000);
   });
 
   describe("load", () => {
     it("can be loaded from database", async () => {
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
 
       let originalMnemonic: string;
       let originalAccounts: readonly PersonaAcccount[];
 
       {
-        const originalPersona = await Persona.create(db, signingServer, "passwd");
+        const originalPersona = await Persona.create(db, "passwd", undefined);
         originalMnemonic = originalPersona.mnemonic;
         originalAccounts = await originalPersona.getAccounts();
         originalPersona.destroy();
       }
 
       {
-        const loadedPersona = await Persona.load(db, signingServer, "passwd");
+        const loadedPersona = await Persona.load(db, "passwd", undefined);
         expect(loadedPersona.mnemonic).toEqual(originalMnemonic);
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
@@ -56,19 +53,18 @@ withChainsDescribe("Persona", () => {
 
     it("saves additional accounts to the database automatically", async () => {
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
 
       let originalAccounts: readonly PersonaAcccount[];
 
       {
-        const originalPersona = await Persona.create(db, signingServer, "passwd");
+        const originalPersona = await Persona.create(db, "passwd", undefined);
         await originalPersona.createAccount(db);
         originalAccounts = await originalPersona.getAccounts();
         originalPersona.destroy();
       }
 
       {
-        const loadedPersona = await Persona.load(db, signingServer, "passwd");
+        const loadedPersona = await Persona.load(db, "passwd", undefined);
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
       }
@@ -78,8 +74,7 @@ withChainsDescribe("Persona", () => {
   describe("mnemonic", () => {
     it("returns a mnemonic", async () => {
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd");
+      const persona = await Persona.create(db, "passwd", undefined);
 
       expect(() => {
         // this constructor throws when the mnemonic string is not valid
@@ -91,9 +86,8 @@ withChainsDescribe("Persona", () => {
 
     it("returns the right mnemonic", async () => {
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
       const presetMnemonic = "until apple post diamond casual bridge bird solid inform size prize debris";
-      const persona = await Persona.create(db, signingServer, "passwd", presetMnemonic);
+      const persona = await Persona.create(db, "passwd", undefined, presetMnemonic);
 
       expect(persona.mnemonic).toEqual(presetMnemonic);
 
@@ -104,8 +98,7 @@ withChainsDescribe("Persona", () => {
   describe("getAccounts", () => {
     it("can get accounts", async () => {
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd");
+      const persona = await Persona.create(db, "passwd", undefined);
 
       const accounts = await persona.getAccounts();
       expect(accounts.length).toEqual(1);
@@ -193,8 +186,7 @@ withChainsDescribe("Persona", () => {
       await sleep(2000);
 
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd", mnemonic);
+      const persona = await Persona.create(db, "passwd", undefined, mnemonic);
       await persona.createAccount(db); // index 1
       await persona.createAccount(db); // index 2
       await persona.createAccount(db); // index 3
@@ -213,8 +205,7 @@ withChainsDescribe("Persona", () => {
   describe("createAccount", () => {
     it("can create an account", async () => {
       const db = new Db().getDb();
-      const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd");
+      const persona = await Persona.create(db, "passwd", undefined);
 
       {
         const accounts = await persona.getAccounts();

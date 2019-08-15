@@ -90,29 +90,20 @@ export class RequestQueueManager {
   private instance: Request[] = [];
   private counter = 0;
 
-  public reset(): void {
-    this.instance = [];
-    this.counter = 0;
-  }
-
-  public requests(): Request[] {
+  public requests(): readonly Request[] {
     return this.instance;
   }
 
   public next(): Request {
-    const req = this.instance[0];
-    if (!req) {
+    const firstRequest = this.instance.find(() => true);
+    if (!firstRequest) {
       throw new Error("Next element is undefined");
     }
 
-    return req;
+    return firstRequest;
   }
 
   public solved(): void {
-    if (this.instance.length === 0) {
-      throw new Error("There are no requests stored. This could lead to unexpected errors");
-    }
-
     const req = this.instance.shift();
     if (!req) {
       throw new Error("Shifted element is undefined. This could lead to unexpected errors");

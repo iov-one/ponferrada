@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { PersonaProvider } from "./context/PersonaProvider";
 import { RequestProvider } from "./context/RequestProvider";
 import { GetPersonaResponse } from "./extension/background/model/backgroundscript";
-import { Request } from "./extension/background/model/signingServer/requestQueueManager";
+import { Request } from "./extension/background/model/requestsHandler/requestQueueManager";
 import Route from "./routes";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from "./routes/paths";
 import { makeStore } from "./store";

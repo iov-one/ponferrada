@@ -3,7 +3,7 @@ import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 
 import { RequestContext } from "../../context/RequestProvider";
-import { isGetIdentitiesResponseData } from "../../extension/background/model/signingServer/requestQueueManager";
+import { isGetIdentitiesResponseData } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { history } from "../../store/reducers";
 import { REQUEST_ROUTE } from "../paths";
 import { checkRequest } from "../requests";

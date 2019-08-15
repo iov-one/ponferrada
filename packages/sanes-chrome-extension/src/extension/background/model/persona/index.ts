@@ -4,15 +4,32 @@ import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
 import { UserProfile } from "@iov/keycontrol";
 import { UserProfileEncryptionKey } from "@iov/keycontrol";
-import { MultiChainSigner, SignedAndPosted, SigningServerCore } from "@iov/multichain";
+import {
+  GetIdentitiesAuthorization,
+  JsonRpcSigningServer,
+  MultiChainSigner,
+  SignAndPostAuthorization,
+  SignedAndPosted,
+  SigningServerCore,
+} from "@iov/multichain";
 import { ReadonlyDate } from "readonly-date";
 
 import { transactionsUpdater } from "../../updaters/appUpdater";
 import { AccountManager } from "../accountManager";
+import {
+  SoftwareAccountManager,
+  SoftwareAccountManagerChainConfig,
+} from "../accountManager/softwareAccountManager";
 import { StringDb } from "../backgroundscript/db";
-import SigningServer from "../signingServer";
-import { ConfigurationFile, getConfigurationFile } from "./config";
-import { PersonaBuilder } from "./personaBuilder";
+import {
+  algorithmForCodec,
+  chainConnector,
+  codecTypeFromString,
+  ConfigurationFile,
+  getConfigurationFile,
+  pathBuilderForCodec,
+} from "./config";
+import { createTwoWalletProfile } from "./userprofilehelpers";
 
 function isNonNull<T>(t: T | null): t is T {
   return t !== null;
@@ -40,6 +57,15 @@ export interface ProcessedTx {
   readonly original: SupportedTransaction;
 }
 
+export interface AuthorizationCallbacks {
+  readonly authorizeGetIdentities: GetIdentitiesAuthorization;
+  readonly authorizeSignAndPost: SignAndPostAuthorization;
+}
+
+export interface MakeAuthorizationCallbacks {
+  (signer: MultiChainSigner): AuthorizationCallbacks;
+}
+
 /**
  * An account
  *
@@ -51,12 +77,20 @@ export interface PersonaAcccount {
   readonly label: string;
 }
 
+export type UseOnlyJsonRpcSigningServer = Pick<JsonRpcSigningServer, "handleUnchecked" | "handleChecked">;
+
 export class Persona {
   private readonly encryptionKey: UserProfileEncryptionKey;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
-  private core: SigningServerCore;
+  private readonly core: SigningServerCore;
+  private readonly jsonRpcSigningServer: JsonRpcSigningServer;
+
+  public get signingServer(): UseOnlyJsonRpcSigningServer {
+    return this.jsonRpcSigningServer;
+  }
+
   /**
    * Creates a new Persona instance.
    *
@@ -66,35 +100,59 @@ export class Persona {
    */
   public static async create(
     db: StringDb,
-    signingServer: SigningServer,
     password: string,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
     fixedMnemonic?: string,
   ): Promise<Persona> {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
 
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
-    const profile = await PersonaBuilder.createUserProfile(mnemonic);
+    const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
-    const manager = await PersonaBuilder.createAccountManager(profile, signer);
+    const managerChains = await Persona.connectToAllConfiguredChains(signer);
+    const manager = new SoftwareAccountManager(profile, managerChains);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
     await profile.storeIn(db, encryptionKey);
 
-    return new Persona(encryptionKey, profile, signer, manager, signingServer);
+    return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
   }
 
-  public static async load(db: StringDb, signingServer: SigningServer, password: string): Promise<Persona> {
+  public static async load(
+    db: StringDb,
+    password: string,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
+  ): Promise<Persona> {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
 
     const profile = await UserProfile.loadFrom(db, encryptionKey);
     const signer = new MultiChainSigner(profile);
-    const manager = await PersonaBuilder.createAccountManager(profile, signer);
+    const managerChains = await Persona.connectToAllConfiguredChains(signer);
+    const manager = new SoftwareAccountManager(profile, managerChains);
 
-    const persona = new Persona(encryptionKey, profile, signer, manager, signingServer);
+    return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
+  }
 
-    return persona;
+  private static async connectToAllConfiguredChains(
+    signer: MultiChainSigner,
+  ): Promise<readonly SoftwareAccountManagerChainConfig[]> {
+    const config = await getConfigurationFile();
+
+    const out: SoftwareAccountManagerChainConfig[] = [];
+    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+      const codecType = codecTypeFromString(chainSpec.codecType);
+      const connector = chainConnector(codecType, chainSpec.node, chainSpec.scraper);
+      const { connection } = await signer.addChain(connector);
+      out.push({
+        chainId: connection.chainId(),
+        algorithm: algorithmForCodec(codecType),
+        derivePath: pathBuilderForCodec(codecType),
+      });
+    }
+
+    return out;
   }
 
   /**
@@ -106,20 +164,32 @@ export class Persona {
     profile: UserProfile,
     signer: MultiChainSigner,
     accountManager: AccountManager,
-    signingServer: SigningServer,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
   ) {
     this.encryptionKey = encryptionKey;
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
 
+    const { authorizeGetIdentities, authorizeSignAndPost } = makeAuthorizationCallbacks
+      ? makeAuthorizationCallbacks(signer)
+      : {
+          authorizeGetIdentities: () => {
+            throw new Error("No authorizeGetIdentities callback set");
+          },
+          authorizeSignAndPost: () => {
+            throw new Error("No authorizeSignAndPost callback set");
+          },
+        };
+
     this.core = new SigningServerCore(
       this.profile,
       this.signer,
-      signingServer.getIdentitiesCallback(signer),
-      signingServer.signAndPostCallback(signer),
+      authorizeGetIdentities,
+      authorizeSignAndPost,
       console.error,
     );
+    this.jsonRpcSigningServer = new JsonRpcSigningServer(this.core);
 
     this.subscribeToTxUpdates(transactionsUpdater);
   }
@@ -158,11 +228,8 @@ export class Persona {
     };
   }
 
-  public getCore(): SigningServerCore {
-    return this.core;
-  }
-
   public destroy(): void {
+    this.jsonRpcSigningServer.shutdown();
     this.signer.shutdown();
   }
 
@@ -211,10 +278,6 @@ export class Persona {
   }
 
   public async getTxs(): Promise<readonly ProcessedTx[]> {
-    if (!this.core) {
-      return [];
-    }
-
     const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
     const filtered = processed.filter(isNonNull);
     return filtered;

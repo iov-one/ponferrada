@@ -27,7 +27,7 @@ import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
   isArrayOfIdentity,
-} from "../../extension/background/model/signingServer/test/requestBuilder";
+} from "../../extension/background/model/requestsHandler/test/requestBuilder";
 import * as txsUpdater from "../../extension/background/updaters/appUpdater";
 import { aNewStore } from "../../store";
 import { resetHistory, RootState } from "../../store/reducers";
@@ -170,7 +170,7 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
     background.registerActionsInBackground(window as IovWindowExtension);
 
     // Create a persona
-    const signingServer = background["signingServer"];
+    const requestsHandler = background["requestsHandler"];
     const db = background["db"].getDb();
     const mnemonic = "oxygen fall sure lava energy veteran enroll frown question detail include maximum";
     const password = "test-password";
@@ -180,9 +180,9 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
     // Accept getIdentities request
     const sender = { url: "http://finnex.com" };
     const identitiesRequest = buildGetIdentitiesRequest("getIdentities");
-    const responsePromise = signingServer.handleRequestMessage(identitiesRequest, sender);
+    const responsePromise = requestsHandler.handleRequestMessage(identitiesRequest, sender);
     await sleep(10);
-    signingServer["requestHandler"].next().accept();
+    requestsHandler["queueManager"].next().accept();
 
     // Accept signAndPost request
     const parsedResponse = parseJsonRpcResponse2(await responsePromise);
@@ -191,8 +191,8 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
       throw new Error();
     }
     const signRequest = await generateSignAndPostRequest(parsedResult[0]);
-    const signResponse = signingServer.handleRequestMessage(signRequest, sender);
-    signingServer["requestHandler"].next().accept();
+    const signResponse = requestsHandler.handleRequestMessage(signRequest, sender);
+    requestsHandler["queueManager"].next().accept();
     await signResponse;
 
     // Launch react DOM with account status route
@@ -206,7 +206,7 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
 
     // Clean everything
     persona.destroy();
-    signingServer.shutdown();
+    requestsHandler.shutdown();
     db.close();
     jest.spyOn(txsUpdater, "transactionsUpdater").mockReset();
     jest.spyOn(txsUpdater, "updateRequestProvider").mockReset();

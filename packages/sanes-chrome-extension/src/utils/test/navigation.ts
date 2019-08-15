@@ -3,7 +3,7 @@ import { Store } from "redux";
 import { whenTrue } from "ui-logic";
 
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import {
   ACCOUNT_STATUS_ROUTE,
   LOGIN_ROUTE,

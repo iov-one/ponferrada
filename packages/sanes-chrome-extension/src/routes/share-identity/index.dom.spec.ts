@@ -3,7 +3,7 @@ import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
 import { sleep } from "ui-logic";
 
-import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
+import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { aNewStore } from "../../store";
 import { RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
