@@ -1,13 +1,13 @@
 import { Address } from "@iov/bcp";
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
+import { sleep } from "ui-logic";
 
 import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
 import { aNewStore } from "../../store";
 import { RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import { travelToShareIdentity } from "../../utils/test/navigation";
-import { sleep } from "../../utils/timer";
 import {
   checkPermanentRejection,
   clickOnBackButton,

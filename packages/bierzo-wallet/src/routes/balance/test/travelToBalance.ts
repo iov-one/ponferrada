@@ -1,13 +1,13 @@
 import { Browser, Page } from "puppeteer";
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
+import { sleep } from "ui-logic";
 
 import { history } from "../../../routes";
 import { createDom } from "../../../utils/test/dom";
 import { getBackgroundPage } from "../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from "../../../utils/test/navigation";
 import { acceptEnqueuedRequest, submitExtensionSignupForm } from "../../../utils/test/persona";
-import { sleep } from "../../../utils/timer";
 import { BALANCE_ROUTE } from "../../paths";
 
 export const travelToBalance = async (store: Store): Promise<React.Component> => {

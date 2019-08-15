@@ -1,6 +1,6 @@
 import { Page } from "puppeteer";
+import { sleep } from "ui-logic";
 
-import { sleep } from "../timer";
 import { whenOnNavigatedToE2eRoute } from "./navigation";
 
 const ACCOUNT_NAME_FIELD = "accountNameField";

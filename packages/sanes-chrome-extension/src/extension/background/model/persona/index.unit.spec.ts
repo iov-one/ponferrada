@@ -3,9 +3,9 @@ import { bnsCodec, BnsConnection, RegisterUsernameTx } from "@iov/bns";
 import { Bip39, EnglishMnemonic, Random } from "@iov/crypto";
 import { IovFaucet } from "@iov/faucets";
 import { Ed25519HdWallet, HdPaths, UserProfile } from "@iov/keycontrol";
+import { sleep } from "ui-logic";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
-import { sleep } from "../../../../utils/timer";
 import * as txsUpdater from "../../updaters/appUpdater";
 import { Db } from "../backgroundscript/db";
 import SigningServer from "../signingServer";

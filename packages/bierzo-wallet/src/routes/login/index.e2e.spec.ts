@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { sleep } from "ui-logic";
 
 import {
   closeBrowser,
@@ -18,7 +19,6 @@ import {
   submitExtensionSignupForm,
 } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { sleep } from "../../utils/timer";
 import { BALANCE_ROUTE } from "../paths";
 import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from ".";
 

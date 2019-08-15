@@ -14,6 +14,7 @@ import { ethereumCodec } from "@iov/ethereum";
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from "@iov/jsonrpc";
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
+import { sleep } from "ui-logic";
 
 import Backgroundscript, { IovWindowExtension } from "../../extension/background/model/backgroundscript";
 import { Persona, PersonaAcccount, ProcessedTx } from "../../extension/background/model/persona";
@@ -33,7 +34,6 @@ import { resetHistory, RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import { travelToAccount, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { sleep } from "../../utils/timer";
 import * as Drawer from "../account/test/drawer";
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL, WELCOME_ROUTE } from "../paths";
 import { checkCreateAccount, getTransactionsCount } from "./test/operateAccount";
