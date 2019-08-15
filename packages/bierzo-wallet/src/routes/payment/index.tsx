@@ -8,7 +8,7 @@ import { stringToAmount } from "ui-logic";
 import { history } from "..";
 import { generateSendTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
 import PageMenu from "../../components/PageMenu";
-import { isIov, lookupRecipientAddressByName } from "../../logic/account";
+import { isIov, lookupRecipientAddressByName, LookupResultType } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
 import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
@@ -54,13 +54,18 @@ const Payment = (): JSX.Element => {
 
     const chainId = token.chainId;
 
-    let recipient: Address;
+    let recipient: LookupResultType;
     if (isIov(formValues[ADDRESS_FIELD])) {
-      try {
-        recipient = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
-      } catch (err) {
-        toast.show(err.message, ToastVariant.ERROR);
-        console.error(err);
+      recipient = await lookupRecipientAddressByName(formValues[ADDRESS_FIELD], chainId);
+
+      if (recipient === "name_not_found") {
+        toast.show("Recipient's personalized address was not found", ToastVariant.ERROR);
+        return;
+      } else if (recipient === "no_address_for_blockchain") {
+        toast.show(
+          "Recipient's personalized address does not contain an address for this blockchain",
+          ToastVariant.ERROR,
+        );
         return;
       }
     } else {
