@@ -34,7 +34,12 @@ class Backgroundscript {
 
   private async createPersona(password: string, mnemonic: string | undefined): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
-    this.persona = await Persona.create(this.db.getDb(), this.signingServer, password, mnemonic);
+    this.persona = await Persona.create(
+      this.db.getDb(),
+      password,
+      signer => this.signingServer.makeAuthorizationCallbacks(signer),
+      mnemonic,
+    );
     this.signingServer.start(this.persona.getCore());
 
     const response = {
@@ -48,7 +53,9 @@ class Backgroundscript {
 
   private async loadPersona(password: string): Promise<PersonaData> {
     if (this.persona) throw new Error(ALREADY_FOUND_ERR);
-    this.persona = await Persona.load(this.db.getDb(), this.signingServer, password);
+    this.persona = await Persona.load(this.db.getDb(), password, signer =>
+      this.signingServer.makeAuthorizationCallbacks(signer),
+    );
     this.signingServer.start(this.persona.getCore());
 
     return {

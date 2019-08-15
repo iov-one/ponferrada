@@ -4,13 +4,18 @@ import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
 import { UserProfile } from "@iov/keycontrol";
 import { UserProfileEncryptionKey } from "@iov/keycontrol";
-import { MultiChainSigner, SignedAndPosted, SigningServerCore } from "@iov/multichain";
+import {
+  GetIdentitiesAuthorization,
+  MultiChainSigner,
+  SignAndPostAuthorization,
+  SignedAndPosted,
+  SigningServerCore,
+} from "@iov/multichain";
 import { ReadonlyDate } from "readonly-date";
 
 import { transactionsUpdater } from "../../updaters/appUpdater";
 import { AccountManager, AccountManagerChainConfig } from "../accountManager";
 import { StringDb } from "../backgroundscript/db";
-import SigningServer from "../signingServer";
 import {
   algorithmForCodec,
   chainConnector,
@@ -47,6 +52,15 @@ export interface ProcessedTx {
   readonly original: SupportedTransaction;
 }
 
+export interface AuthorizationCallbacks {
+  readonly authorizeGetIdentities: GetIdentitiesAuthorization;
+  readonly authorizeSignAndPost: SignAndPostAuthorization;
+}
+
+export interface MakeAuthorizationCallbacks {
+  (signer: MultiChainSigner): AuthorizationCallbacks;
+}
+
 /**
  * An account
  *
@@ -74,8 +88,8 @@ export class Persona {
    */
   public static async create(
     db: StringDb,
-    signingServer: SigningServer,
     password: string,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks,
     fixedMnemonic?: string,
   ): Promise<Persona> {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
@@ -91,10 +105,14 @@ export class Persona {
     await manager.generateNextAccount();
     await profile.storeIn(db, encryptionKey);
 
-    return new Persona(encryptionKey, profile, signer, manager, signingServer);
+    return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
   }
 
-  public static async load(db: StringDb, signingServer: SigningServer, password: string): Promise<Persona> {
+  public static async load(
+    db: StringDb,
+    password: string,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks,
+  ): Promise<Persona> {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
 
     const profile = await UserProfile.loadFrom(db, encryptionKey);
@@ -102,7 +120,7 @@ export class Persona {
     const managerChains = await Persona.connectToAllConfiguredChains(signer);
     const manager = new AccountManager(profile, managerChains);
 
-    return new Persona(encryptionKey, profile, signer, manager, signingServer);
+    return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
   }
 
   private static async connectToAllConfiguredChains(
@@ -134,18 +152,20 @@ export class Persona {
     profile: UserProfile,
     signer: MultiChainSigner,
     accountManager: AccountManager,
-    signingServer: SigningServer,
+    makeAuthorizationCallbacks: MakeAuthorizationCallbacks,
   ) {
     this.encryptionKey = encryptionKey;
     this.profile = profile;
     this.signer = signer;
     this.accountManager = accountManager;
 
+    const { authorizeGetIdentities, authorizeSignAndPost } = makeAuthorizationCallbacks(signer);
+
     this.core = new SigningServerCore(
       this.profile,
       this.signer,
-      signingServer.getIdentitiesCallback(signer),
-      signingServer.signAndPostCallback(signer),
+      authorizeGetIdentities,
+      authorizeSignAndPost,
       console.error,
     );
 

@@ -3,7 +3,7 @@ import { JsonRpcResponse } from "@iov/jsonrpc";
 import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from "@iov/multichain";
 
 import { generateErrorResponse } from "../../errorResponseGenerator";
-import { isSupportedTransaction } from "../persona";
+import { AuthorizationCallbacks, isSupportedTransaction } from "../persona";
 import { getChainName } from "../persona/config";
 import { requestCallback } from "./requestCallback";
 import {
@@ -22,63 +22,62 @@ export default class SigningServer {
   private senderWhitelist = new SenderWhitelist();
   private signingServer: JsonRpcSigningServer | undefined;
 
-  public getIdentitiesCallback = (signer: MultiChainSigner) => async (
-    reason: string,
-    matchingIdentities: readonly Identity[],
-    meta: any,
-  ) => {
-    if (!isRequestMeta(meta)) {
-      throw new Error("Unexpected type of data in meta field");
-    }
-    const { senderUrl } = meta;
+  public makeAuthorizationCallbacks(signer: MultiChainSigner): AuthorizationCallbacks {
+    return {
+      authorizeGetIdentities: async (reason: string, matchingIdentities: readonly Identity[], meta: any) => {
+        if (!isRequestMeta(meta)) {
+          throw new Error("Unexpected type of data in meta field");
+        }
 
-    const requestedIdentities = await Promise.all(
-      matchingIdentities.map(
-        async (matchedIdentity): Promise<UiIdentity> => {
-          return {
-            chainName: await getChainName(matchedIdentity.chainId),
-            address: signer.identityToAddress(matchedIdentity),
-          };
-        },
-      ),
-    );
+        const requestedIdentities = await Promise.all(
+          matchingIdentities.map(
+            async (matchedIdentity): Promise<UiIdentity> => {
+              return {
+                chainName: await getChainName(matchedIdentity.chainId),
+                address: signer.identityToAddress(matchedIdentity),
+              };
+            },
+          ),
+        );
 
-    const data: GetIdentitiesResponseData = {
-      requestedIdentities,
+        const data: GetIdentitiesResponseData = { requestedIdentities };
+
+        return requestCallback(
+          this.requestHandler,
+          this.senderWhitelist,
+          meta.senderUrl,
+          reason,
+          data,
+          matchingIdentities,
+          [],
+        );
+      },
+      authorizeSignAndPost: (
+        reason: string,
+        transaction: UnsignedTransaction,
+        meta: any,
+      ): Promise<boolean> => {
+        if (!isRequestMeta(meta)) {
+          throw new Error("Unexpected type of data in meta field");
+        }
+
+        if (!isSupportedTransaction(transaction)) {
+          throw new Error("Unexpected unsigned transaction");
+        }
+
+        const data: SignAndPostResponseData = { tx: transaction };
+        return requestCallback(
+          this.requestHandler,
+          this.senderWhitelist,
+          meta.senderUrl,
+          reason,
+          data,
+          true,
+          false,
+        );
+      },
     };
-
-    return requestCallback(
-      this.requestHandler,
-      this.senderWhitelist,
-      senderUrl,
-      reason,
-      data,
-      matchingIdentities,
-      [],
-    );
-  };
-
-  public signAndPostCallback = (_signer: MultiChainSigner) => (
-    reason: string,
-    transaction: UnsignedTransaction,
-    meta: any,
-  ): Promise<boolean> => {
-    if (!isRequestMeta(meta)) {
-      throw new Error("Unexpected type of data in meta field");
-    }
-
-    if (!isSupportedTransaction(transaction)) {
-      throw new Error("Unexpected unsigned transaction");
-    }
-
-    const { senderUrl } = meta;
-
-    const data: SignAndPostResponseData = {
-      tx: transaction,
-    };
-
-    return requestCallback(this.requestHandler, this.senderWhitelist, senderUrl, reason, data, true, false);
-  };
+  }
 
   public getPendingRequests(): Request[] {
     return this.requestHandler.requests();

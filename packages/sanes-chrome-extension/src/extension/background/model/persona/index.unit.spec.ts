@@ -25,7 +25,9 @@ withChainsDescribe("Persona", () => {
     it("can be created", async () => {
       const db = new Db();
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db.getDb(), signingServer, "passwd");
+      const persona = await Persona.create(db.getDb(), "passwd", signer =>
+        signingServer.makeAuthorizationCallbacks(signer),
+      );
       expect(persona).toBeTruthy();
       persona.destroy();
     });
@@ -40,14 +42,18 @@ withChainsDescribe("Persona", () => {
       let originalAccounts: readonly PersonaAcccount[];
 
       {
-        const originalPersona = await Persona.create(db, signingServer, "passwd");
+        const originalPersona = await Persona.create(db, "passwd", signer =>
+          signingServer.makeAuthorizationCallbacks(signer),
+        );
         originalMnemonic = originalPersona.mnemonic;
         originalAccounts = await originalPersona.getAccounts();
         originalPersona.destroy();
       }
 
       {
-        const loadedPersona = await Persona.load(db, signingServer, "passwd");
+        const loadedPersona = await Persona.load(db, "passwd", signer =>
+          signingServer.makeAuthorizationCallbacks(signer),
+        );
         expect(loadedPersona.mnemonic).toEqual(originalMnemonic);
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
@@ -61,14 +67,18 @@ withChainsDescribe("Persona", () => {
       let originalAccounts: readonly PersonaAcccount[];
 
       {
-        const originalPersona = await Persona.create(db, signingServer, "passwd");
+        const originalPersona = await Persona.create(db, "passwd", signer =>
+          signingServer.makeAuthorizationCallbacks(signer),
+        );
         await originalPersona.createAccount(db);
         originalAccounts = await originalPersona.getAccounts();
         originalPersona.destroy();
       }
 
       {
-        const loadedPersona = await Persona.load(db, signingServer, "passwd");
+        const loadedPersona = await Persona.load(db, "passwd", signer =>
+          signingServer.makeAuthorizationCallbacks(signer),
+        );
         expect(await loadedPersona.getAccounts()).toEqual(originalAccounts);
         loadedPersona.destroy();
       }
@@ -79,7 +89,9 @@ withChainsDescribe("Persona", () => {
     it("returns a mnemonic", async () => {
       const db = new Db().getDb();
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd");
+      const persona = await Persona.create(db, "passwd", signer =>
+        signingServer.makeAuthorizationCallbacks(signer),
+      );
 
       expect(() => {
         // this constructor throws when the mnemonic string is not valid
@@ -93,7 +105,12 @@ withChainsDescribe("Persona", () => {
       const db = new Db().getDb();
       const signingServer = new SigningServer();
       const presetMnemonic = "until apple post diamond casual bridge bird solid inform size prize debris";
-      const persona = await Persona.create(db, signingServer, "passwd", presetMnemonic);
+      const persona = await Persona.create(
+        db,
+        "passwd",
+        signer => signingServer.makeAuthorizationCallbacks(signer),
+        presetMnemonic,
+      );
 
       expect(persona.mnemonic).toEqual(presetMnemonic);
 
@@ -105,7 +122,9 @@ withChainsDescribe("Persona", () => {
     it("can get accounts", async () => {
       const db = new Db().getDb();
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd");
+      const persona = await Persona.create(db, "passwd", signer =>
+        signingServer.makeAuthorizationCallbacks(signer),
+      );
 
       const accounts = await persona.getAccounts();
       expect(accounts.length).toEqual(1);
@@ -194,7 +213,12 @@ withChainsDescribe("Persona", () => {
 
       const db = new Db().getDb();
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd", mnemonic);
+      const persona = await Persona.create(
+        db,
+        "passwd",
+        signer => signingServer.makeAuthorizationCallbacks(signer),
+        mnemonic,
+      );
       await persona.createAccount(db); // index 1
       await persona.createAccount(db); // index 2
       await persona.createAccount(db); // index 3
@@ -214,7 +238,9 @@ withChainsDescribe("Persona", () => {
     it("can create an account", async () => {
       const db = new Db().getDb();
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "passwd");
+      const persona = await Persona.create(db, "passwd", signer =>
+        signingServer.makeAuthorizationCallbacks(signer),
+      );
 
       {
         const accounts = await persona.getAccounts();

@@ -35,7 +35,9 @@ withChainsDescribe("backgroundscript db", () => {
       const db = new Db();
       const signingServer = new SigningServer();
       {
-        const persona = await Persona.create(db.getDb(), signingServer, "passwd");
+        const persona = await Persona.create(db.getDb(), "passwd", signer =>
+          signingServer.makeAuthorizationCallbacks(signer),
+        );
         expect(persona).toBeTruthy();
         persona.destroy();
       }

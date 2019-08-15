@@ -28,7 +28,12 @@ withChainsDescribe("background script handler for website request", () => {
     localStorage.clear();
     db = new Db().getDb();
     signingServer = new SigningServer();
-    persona = await Persona.create(db, signingServer, "test-password", undefined);
+    persona = await Persona.create(
+      db,
+      "test-password",
+      signer => signingServer.makeAuthorizationCallbacks(signer),
+      undefined,
+    );
     signingServer.start(persona.getCore());
   });
   afterEach(() => {

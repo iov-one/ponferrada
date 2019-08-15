@@ -1,15 +1,19 @@
+import { Identity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { JsonRpcSigningServer, SignAndPostAuthorization } from "@iov/multichain";
+import { GetIdentitiesAuthorization, JsonRpcSigningServer, SignAndPostAuthorization } from "@iov/multichain";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
 import * as txsUpdater from "../../updaters/appUpdater";
 import { Db, StringDb } from "../backgroundscript/db";
-import { Persona } from "../persona";
+import { AuthorizationCallbacks, MakeAuthorizationCallbacks, Persona } from "../persona";
 import SigningServer from "./index";
 
 jest.mock("./index", () =>
   jest.fn().mockImplementation(() => {
-    const revealAllIdentities = (): any => async (reason: any, matchingIdentities: any) => {
+    const revealAllIdentities: GetIdentitiesAuthorization = async (
+      _reason: string,
+      matchingIdentities: readonly Identity[],
+    ): Promise<readonly Identity[]> => {
       return matchingIdentities;
     };
 
@@ -17,9 +21,15 @@ jest.mock("./index", () =>
       return true;
     };
 
+    const makeAuthorizationCallbacks: MakeAuthorizationCallbacks = (): AuthorizationCallbacks => {
+      return {
+        authorizeGetIdentities: revealAllIdentities,
+        authorizeSignAndPost: signEverything,
+      };
+    };
+
     return {
-      getIdentitiesCallback: revealAllIdentities,
-      signAndPostCallback: signEverything,
+      makeAuthorizationCallbacks: makeAuthorizationCallbacks,
     };
   }),
 );
@@ -46,7 +56,9 @@ withChainsDescribe("background script start signing server", () => {
   describe("startSigningServer", () => {
     it("can start the signing server", async () => {
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "test-password", undefined);
+      const persona = await Persona.create(db, "test-password", signer =>
+        signingServer.makeAuthorizationCallbacks(signer),
+      );
       const server = new JsonRpcSigningServer(persona.getCore());
       expect(server).toBeTruthy();
       persona.destroy();
@@ -57,8 +69,8 @@ withChainsDescribe("background script start signing server", () => {
       const signingServer = new SigningServer();
       const persona = await Persona.create(
         db,
-        signingServer,
         "test-password",
+        signer => signingServer.makeAuthorizationCallbacks(signer),
         "oxygen fall sure lava energy veteran enroll frown question detail include maximum",
       );
 
@@ -94,7 +106,9 @@ withChainsDescribe("background script start signing server", () => {
   describe("tearDownSigningServer", () => {
     it("can tear down the signing server", async () => {
       const signingServer = new SigningServer();
-      const persona = await Persona.create(db, signingServer, "test-password");
+      const persona = await Persona.create(db, "test-password", signer =>
+        signingServer.makeAuthorizationCallbacks(signer),
+      );
 
       expect(() => {
         const server = new JsonRpcSigningServer(persona.getCore());
