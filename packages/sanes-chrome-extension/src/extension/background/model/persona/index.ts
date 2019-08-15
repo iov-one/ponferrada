@@ -63,7 +63,8 @@ export class Persona {
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
-  private core: SigningServerCore;
+  private readonly core: SigningServerCore;
+
   /**
    * Creates a new Persona instance.
    *
@@ -240,10 +241,6 @@ export class Persona {
   }
 
   public async getTxs(): Promise<readonly ProcessedTx[]> {
-    if (!this.core) {
-      return [];
-    }
-
     const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
     const filtered = processed.filter(isNonNull);
     return filtered;
