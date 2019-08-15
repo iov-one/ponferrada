@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { sleep } from "ui-logic";
 
 import {
   closeBrowser,
@@ -13,7 +14,6 @@ import {
 import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } from "../../utils/test/persona";
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { sleep } from "../../utils/timer";
 import { waitForAllBalances } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
 import { PAYMENT_CONFIRMATION_VIEW_ID } from "./components/ConfirmPayment";

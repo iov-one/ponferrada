@@ -1,11 +1,11 @@
 import { BlockchainConnection, Identity } from "@iov/bcp";
+import { sleep } from "ui-logic";
 
 import { aNewStore } from "../../store";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import * as transactionActions from "../../store/notifications/actions";
 import { createPubkeys } from "../../utils/test/pubkeys";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { sleep } from "../../utils/timer";
 import * as tokens from "../../utils/tokens";
 import { disconnect } from "../connection";
 import { drinkFaucetIfNeeded } from "../faucet";

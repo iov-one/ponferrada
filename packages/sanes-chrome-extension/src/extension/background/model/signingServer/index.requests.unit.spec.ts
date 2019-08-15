@@ -1,8 +1,8 @@
 import { TransactionEncoder } from "@iov/encoding";
 import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { sleep } from "ui-logic";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
-import { sleep } from "../../../../utils/timer";
 import { generateErrorResponse } from "../../errorResponseGenerator";
 import * as txsUpdater from "../../updaters/appUpdater";
 import { Db, StringDb } from "../backgroundscript/db";

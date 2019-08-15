@@ -1,5 +1,6 @@
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
+import { sleep } from "ui-logic";
 
 import { Request } from "../../extension/background/model/signingServer/requestQueueManager";
 import { aNewStore } from "../../store";
@@ -7,7 +8,6 @@ import { RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import { travelToTXRequest, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
-import { sleep } from "../../utils/timer";
 import { REQUEST_ROUTE } from "../paths";
 import { REQ_REGISTER_USERNAME } from "./components/ShowRequest/ReqRegisterUsernameTx";
 import { REQ_SEND_TX } from "./components/ShowRequest/ReqSendTransaction";
