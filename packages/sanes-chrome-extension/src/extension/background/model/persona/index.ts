@@ -8,11 +8,17 @@ import { MultiChainSigner, SignedAndPosted, SigningServerCore } from "@iov/multi
 import { ReadonlyDate } from "readonly-date";
 
 import { transactionsUpdater } from "../../updaters/appUpdater";
-import { AccountManager } from "../accountManager";
+import { AccountManager, AccountManagerChainConfig } from "../accountManager";
 import { StringDb } from "../backgroundscript/db";
 import SigningServer from "../signingServer";
-import { ConfigurationFile, getConfigurationFile } from "./config";
-import { PersonaBuilder } from "./personaBuilder";
+import {
+  algorithmForCodec,
+  chainConnector,
+  codecTypeFromString,
+  ConfigurationFile,
+  getConfigurationFile,
+  pathBuilderForCodec,
+} from "./config";
 import { createTwoWalletProfile } from "./userprofilehelpers";
 
 function isNonNull<T>(t: T | null): t is T {
@@ -77,7 +83,8 @@ export class Persona {
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
     const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
-    const manager = await PersonaBuilder.createAccountManager(profile, signer);
+    const managerChains = await Persona.connectToAllConfiguredChains(signer);
+    const manager = new AccountManager(profile, managerChains);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
@@ -91,11 +98,32 @@ export class Persona {
 
     const profile = await UserProfile.loadFrom(db, encryptionKey);
     const signer = new MultiChainSigner(profile);
-    const manager = await PersonaBuilder.createAccountManager(profile, signer);
+    const managerChains = await Persona.connectToAllConfiguredChains(signer);
+    const manager = new AccountManager(profile, managerChains);
 
     const persona = new Persona(encryptionKey, profile, signer, manager, signingServer);
 
     return persona;
+  }
+
+  private static async connectToAllConfiguredChains(
+    signer: MultiChainSigner,
+  ): Promise<readonly AccountManagerChainConfig[]> {
+    const config = await getConfigurationFile();
+
+    const out: AccountManagerChainConfig[] = [];
+    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+      const codecType = codecTypeFromString(chainSpec.codecType);
+      const connector = chainConnector(codecType, chainSpec.node, chainSpec.scraper);
+      const { connection } = await signer.addChain(connector);
+      out.push({
+        chainId: connection.chainId(),
+        algorithm: algorithmForCodec(codecType),
+        derivePath: pathBuilderForCodec(codecType),
+      });
+    }
+
+    return out;
   }
 
   /**
