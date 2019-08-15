@@ -102,9 +102,7 @@ export class Persona {
     const managerChains = await Persona.connectToAllConfiguredChains(signer);
     const manager = new AccountManager(profile, managerChains);
 
-    const persona = new Persona(encryptionKey, profile, signer, manager, signingServer);
-
-    return persona;
+    return new Persona(encryptionKey, profile, signer, manager, signingServer);
   }
 
   private static async connectToAllConfiguredChains(
