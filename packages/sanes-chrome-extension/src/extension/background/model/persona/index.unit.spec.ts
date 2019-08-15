@@ -26,7 +26,7 @@ withChainsDescribe("Persona", () => {
       const persona = await Persona.create(db.getDb(), "passwd", undefined);
       expect(persona).toBeTruthy();
       persona.destroy();
-    });
+    }, 10000);
   });
 
   describe("load", () => {
