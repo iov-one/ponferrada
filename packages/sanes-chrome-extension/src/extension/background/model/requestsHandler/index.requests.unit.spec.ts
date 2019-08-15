@@ -34,7 +34,7 @@ withChainsDescribe("background script handler for website request", () => {
       signer => requestsHandler.makeAuthorizationCallbacks(signer),
       undefined,
     );
-    requestsHandler.start(persona.getCore());
+    requestsHandler.start(persona.signingServer);
   });
   afterEach(() => {
     persona.destroy();

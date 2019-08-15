@@ -1,9 +1,9 @@
 import { Identity, UnsignedTransaction } from "@iov/bcp";
 import { JsonRpcResponse } from "@iov/jsonrpc";
-import { JsonRpcSigningServer, MultiChainSigner, SigningServerCore } from "@iov/multichain";
+import { MultiChainSigner } from "@iov/multichain";
 
 import { generateErrorResponse } from "../../errorResponseGenerator";
-import { AuthorizationCallbacks, isSupportedTransaction } from "../persona";
+import { AuthorizationCallbacks, isSupportedTransaction, UseOnlyJsonRpcSigningServer } from "../persona";
 import { getChainName } from "../persona/config";
 import { requestCallback } from "./requestCallback";
 import {
@@ -20,7 +20,7 @@ import { SenderWhitelist } from "./senderWhitelist";
 export default class RequestsHandler {
   private queueManager = new RequestQueueManager();
   private senderWhitelist = new SenderWhitelist();
-  private signingServer: JsonRpcSigningServer | undefined;
+  private signingServer: UseOnlyJsonRpcSigningServer | undefined;
 
   public makeAuthorizationCallbacks(signer: MultiChainSigner): AuthorizationCallbacks {
     return {
@@ -83,17 +83,16 @@ export default class RequestsHandler {
     return this.queueManager.requests();
   }
 
-  public start(core: SigningServerCore): void {
+  public start(signingServer: UseOnlyJsonRpcSigningServer): void {
     this.queueManager = new RequestQueueManager();
     this.senderWhitelist = new SenderWhitelist();
-    this.signingServer = new JsonRpcSigningServer(core);
+    this.signingServer = signingServer;
   }
 
   public shutdown(): void {
     if (!this.signingServer) {
       throw new Error("The signing server instance is not set. This indicates a bug in the lifecycle.");
     }
-    this.signingServer.shutdown();
     this.signingServer = undefined;
   }
 

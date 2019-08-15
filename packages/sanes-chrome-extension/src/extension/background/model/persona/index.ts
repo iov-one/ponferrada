@@ -6,6 +6,7 @@ import { UserProfile } from "@iov/keycontrol";
 import { UserProfileEncryptionKey } from "@iov/keycontrol";
 import {
   GetIdentitiesAuthorization,
+  JsonRpcSigningServer,
   MultiChainSigner,
   SignAndPostAuthorization,
   SignedAndPosted,
@@ -72,12 +73,19 @@ export interface PersonaAcccount {
   readonly label: string;
 }
 
+export type UseOnlyJsonRpcSigningServer = Pick<JsonRpcSigningServer, "handleUnchecked" | "handleChecked">;
+
 export class Persona {
   private readonly encryptionKey: UserProfileEncryptionKey;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
   private readonly accountManager: AccountManager;
   private readonly core: SigningServerCore;
+  private readonly jsonRpcSigningServer: JsonRpcSigningServer;
+
+  public get signingServer(): UseOnlyJsonRpcSigningServer {
+    return this.jsonRpcSigningServer;
+  }
 
   /**
    * Creates a new Persona instance.
@@ -177,6 +185,7 @@ export class Persona {
       authorizeSignAndPost,
       console.error,
     );
+    this.jsonRpcSigningServer = new JsonRpcSigningServer(this.core);
 
     this.subscribeToTxUpdates(transactionsUpdater);
   }
@@ -215,11 +224,8 @@ export class Persona {
     };
   }
 
-  public getCore(): SigningServerCore {
-    return this.core;
-  }
-
   public destroy(): void {
+    this.jsonRpcSigningServer.shutdown();
     this.signer.shutdown();
   }
 

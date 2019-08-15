@@ -40,7 +40,7 @@ class Backgroundscript {
       signer => this.requestsHandler.makeAuthorizationCallbacks(signer),
       mnemonic,
     );
-    this.requestsHandler.start(this.persona.getCore());
+    this.requestsHandler.start(this.persona.signingServer);
 
     const response = {
       mnemonic: this.persona.mnemonic,
@@ -56,7 +56,7 @@ class Backgroundscript {
     this.persona = await Persona.load(this.db.getDb(), password, signer =>
       this.requestsHandler.makeAuthorizationCallbacks(signer),
     );
-    this.requestsHandler.start(this.persona.getCore());
+    this.requestsHandler.start(this.persona.signingServer);
 
     return {
       mnemonic: this.persona.mnemonic,
