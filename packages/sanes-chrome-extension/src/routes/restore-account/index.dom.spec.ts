@@ -1,5 +1,6 @@
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
+import { randomString } from "ui-logic";
 
 import {
   mockCreatePersona,
@@ -9,7 +10,6 @@ import { aNewStore } from "../../store";
 import { resetHistory, RootState } from "../../store/reducers";
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToLogin, travelToRestoreAccount, whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { randomString } from "../../utils/test/random";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, RESTORE_ACCOUNT } from "../paths";

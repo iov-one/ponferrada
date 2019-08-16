@@ -63,7 +63,6 @@
     "level-js": "^4.0.1",
     "medulas-react-components": "^0.3.0",
     "memdown": "^4.0.0",
-    "random-js": "^2.0.0-rc5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-final-form-hooks": "^2.0.1",

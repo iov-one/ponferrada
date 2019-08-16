@@ -1,4 +1,5 @@
 import { Store } from "redux";
+import { randomString } from "ui-logic";
 
 import { PersonaAcccount, ProcessedTx } from "..";
 import { ACCOUNT_STATUS_ROUTE } from "../../../../../routes/paths";
@@ -9,7 +10,6 @@ import {
 } from "../../../../../routes/signup/test/operateSignup";
 import * as chromeInternalMsgs from "../../../../../utils/chrome";
 import { travelToSignup, whenOnNavigatedToRoute } from "../../../../../utils/test/navigation";
-import { randomString } from "../../../../../utils/test/random";
 import { PersonaData } from "../../backgroundscript";
 
 export async function processSignup(
