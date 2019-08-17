@@ -63,10 +63,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const onSecurityCenter = (): void => {
-  // history.push(SECURITY_CENTER_ROUTE);
-};
-
 const onInvite = (): void => {
   // history.push(INVITE_ROUTE);
 };
@@ -95,15 +91,6 @@ const HiMenu = (props: {}): JSX.Element => {
   return (
     <ListMenu starter={starter} listWidth={280} listId={MENU_ID} {...rest}>
       <Block paddingLeft={2} paddingRight={2} paddingBottom={1} paddingTop={1}>
-        <HiElement
-          height="20"
-          id={SECURITY_CENTER_ID}
-          src={securityCentre}
-          action={onSecurityCenter}
-          msg="Security Center"
-          alt="Security Center"
-        />
-        <Hairline />
         <HiElement
           src={invite}
           id={INVITE_FRIENDS_ID}
