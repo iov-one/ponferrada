@@ -13,7 +13,6 @@ import invite from "../../assets/invite.svg";
 import privacy from "../../assets/privacyPolicy.svg";
 import terms from "../../assets/terms.svg";
 
-export const SECURITY_CENTER_ID = "security-center";
 export const INVITE_FRIENDS_ID = "invite-friends";
 export const TERMS_CONDITIONS_ID = "terms";
 export const PRIVACY_POLICY_ID = "privacy-policy";
