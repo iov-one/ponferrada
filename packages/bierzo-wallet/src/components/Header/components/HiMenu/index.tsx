@@ -11,7 +11,6 @@ import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
 import invite from "../../assets/invite.svg";
 import privacy from "../../assets/privacyPolicy.svg";
-import securityCentre from "../../assets/securityCentre.svg";
 import terms from "../../assets/terms.svg";
 
 export const SECURITY_CENTER_ID = "security-center";
