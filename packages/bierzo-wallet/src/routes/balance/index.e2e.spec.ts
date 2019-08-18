@@ -6,7 +6,7 @@ import { randomString, sleep } from "ui-logic";
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
 import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { REGISTER_USERNAME_ROUTE } from "../paths";
+import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
 import { REGISTER_USERNAME_FIELD } from "../registerName/components";
 import { getBalanceTextAtIndex, getUsernameE2E, waitForAllBalances } from "./test/operateBalances";
 import { travelToBalanceE2E } from "./test/travelToBalance";
@@ -63,9 +63,9 @@ withChainsDescribe("E2E > Balance route", () => {
     expect(username).toBe("Get your human readable");
   }, 45000);
 
-  it("should create username", async () => {
+  it("should create personalized username", async () => {
     await waitForAllBalances(page);
-    await page.click(`#${REGISTER_USERNAME_ROUTE.replace("/", "\\/")}`);
+    await page.click(`#${REGISTER_PERSONALIZED_ADDRESS_ROUTE.replace("/", "\\/")}`);
 
     // Fill the form
     const username = `${randomString(10)}*iov`;

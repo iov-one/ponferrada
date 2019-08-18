@@ -5,7 +5,7 @@ import { Block, Hairline, Image, Typography } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { ADDRESSES_ROUTE, PAYMENT_ROUTE, REGISTER_USERNAME_ROUTE } from "../../paths";
+import { ADDRESSES_ROUTE, PAYMENT_ROUTE, REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
 import receive from "../assets/transactionReceive.svg";
 import send from "../assets/transactionSend.svg";
 
@@ -63,7 +63,7 @@ const GetYourAddress = ({ onRegisterUsername }: GetAddressProps): JSX.Element =>
       Get your human readable
     </Typography>
     <Typography
-      id={REGISTER_USERNAME_ROUTE}
+      id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
       variant="h5"
       align="center"
       color="primary"
@@ -72,7 +72,7 @@ const GetYourAddress = ({ onRegisterUsername }: GetAddressProps): JSX.Element =>
       link
       onClick={onRegisterUsername}
     >
-      address.
+      personalized address.
     </Typography>
   </React.Fragment>
 );

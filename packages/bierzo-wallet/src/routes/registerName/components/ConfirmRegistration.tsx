@@ -49,7 +49,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
   return (
     <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={faRegistered} buttons={buttons}>
       <Typography variant="h6" weight="light">
-        Your username registration request was successfully signed and sent to the network.
+        Your personalized address registration request was successfully signed and sent to the network.
       </Typography>
       <Block marginTop={2}>
         <Typography variant="h6" weight="light">

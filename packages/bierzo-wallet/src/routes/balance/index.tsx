@@ -5,7 +5,7 @@ import { history } from "..";
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getFirstUsername } from "../../store/usernames/selectors";
-import { ADDRESSES_ROUTE, PAYMENT_ROUTE, REGISTER_USERNAME_ROUTE } from "../paths";
+import { ADDRESSES_ROUTE, PAYMENT_ROUTE, REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
 import Layout from "./components";
 
 function onSendPayment(): void {
@@ -17,7 +17,7 @@ function onReceivePayment(): void {
 }
 
 function onRegisterUsername(): void {
-  history.push(REGISTER_USERNAME_ROUTE);
+  history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE);
 }
 
 const Balance = (): JSX.Element => {
