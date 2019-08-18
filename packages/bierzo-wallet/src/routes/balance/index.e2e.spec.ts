@@ -57,13 +57,13 @@ withChainsDescribe("E2E > Balance route", () => {
     expect(balances).toEqual(["10 BASH", "10 CASH", "10 ETH", "5 LSK"]);
   }, 45000);
 
-  it("should contain message to get username", async () => {
+  it("should contain message to get address", async () => {
     const username = await getUsernameE2E(await page.$$("h5"));
 
     expect(username).toBe("Get your human readable");
   }, 45000);
 
-  it("should create personalized username", async () => {
+  it("should create personalized address", async () => {
     await waitForAllBalances(page);
     await page.click(`#${REGISTER_PERSONALIZED_ADDRESS_ROUTE.replace("/", "\\/")}`);
 
