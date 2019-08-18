@@ -11,10 +11,8 @@ import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
 import invite from "../../assets/invite.svg";
 import privacy from "../../assets/privacyPolicy.svg";
-import securityCentre from "../../assets/securityCentre.svg";
 import terms from "../../assets/terms.svg";
 
-export const SECURITY_CENTER_ID = "security-center";
 export const INVITE_FRIENDS_ID = "invite-friends";
 export const TERMS_CONDITIONS_ID = "terms";
 export const PRIVACY_POLICY_ID = "privacy-policy";
@@ -63,10 +61,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const onSecurityCenter = (): void => {
-  // history.push(SECURITY_CENTER_ROUTE);
-};
-
 const onInvite = (): void => {
   // history.push(INVITE_ROUTE);
 };
@@ -95,15 +89,6 @@ const HiMenu = (props: {}): JSX.Element => {
   return (
     <ListMenu starter={starter} listWidth={280} listId={MENU_ID} {...rest}>
       <Block paddingLeft={2} paddingRight={2} paddingBottom={1} paddingTop={1}>
-        <HiElement
-          height="20"
-          id={SECURITY_CENTER_ID}
-          src={securityCentre}
-          action={onSecurityCenter}
-          msg="Security Center"
-          alt="Security Center"
-        />
-        <Hairline />
         <HiElement
           src={invite}
           id={INVITE_FRIENDS_ID}
