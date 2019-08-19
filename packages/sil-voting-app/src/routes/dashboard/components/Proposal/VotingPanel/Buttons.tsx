@@ -2,10 +2,11 @@ import { VoteOption } from "@iov/bns";
 import Button from "@material-ui/core/Button";
 import { Block, Form, useForm } from "medulas-react-components";
 import React, { useState } from "react";
+import * as ReactRedux from "react-redux";
 
 import { sendSignAndPostRequest } from "../../../../../communication/signandpost";
 import { getBnsConnection } from "../../../../../logic/connection";
-import { getExtensionStatus } from "../../../../../store/extension";
+import { RootState } from "../../../../../store/reducers";
 
 interface Props {
   readonly id: number;
@@ -14,6 +15,7 @@ interface Props {
 
 const Buttons = ({ id, vote }: Props): JSX.Element => {
   const [currentVote, setCurrentVote] = useState(vote);
+  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
   const noButton = currentVote === VoteOption.No ? "contained" : "outlined";
@@ -24,7 +26,6 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
   const voteAbstain = (): void => setCurrentVote(VoteOption.Abstain);
 
   const submitVote = async (): Promise<void> => {
-    const governor = (await getExtensionStatus()).governor;
     if (governor && currentVote) {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
