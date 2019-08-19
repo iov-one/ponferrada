@@ -61,6 +61,7 @@ const Login = (): JSX.Element => {
 
   const loadProposals = async (): Promise<void> => {
     const governor = store.getState().extension.governor;
+    if (!governor) throw new Error("Governor not set in store. This is a bug.");
     const chainProposals = await getProposals(governor);
     dispatch(addProposalsAction(chainProposals));
   };
