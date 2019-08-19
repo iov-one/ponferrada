@@ -20,7 +20,7 @@ const ReqRegisterUsernameTx = ({ tx }: Props): JSX.Element => {
       </Typography>
       <Typography variant="body1" inline>
         {" "}
-        username registration request.
+        personalized address registration request.
       </Typography>
       <Block marginTop={1} />
       <Typography variant="body1">Addresses:</Typography>

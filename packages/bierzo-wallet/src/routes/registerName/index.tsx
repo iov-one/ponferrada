@@ -33,14 +33,14 @@ const validate = async (values: object): Promise<object> => {
   }
 
   if (!username.endsWith("*iov")) {
-    errors[REGISTER_USERNAME_FIELD] = "Username must include namespace suffix";
+    errors[REGISTER_USERNAME_FIELD] = "Personalized address must include namespace suffix";
     return errors;
   }
 
   const connection = await getConnectionForBns();
   const usernames = await connection.getUsernames({ username });
   if (usernames.length > 0) {
-    errors[REGISTER_USERNAME_FIELD] = "Username already exists";
+    errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
   }
   return errors;
 };

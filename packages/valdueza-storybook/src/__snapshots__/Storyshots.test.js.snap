@@ -734,10 +734,10 @@ exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1
           </h5>
           <h5
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-alignCenter"
-            id="/register-username"
+            id="/register-personalized-address"
             onClick={[Function]}
           >
-            address.
+            personalized address.
           </h5>
           <div
             className="MuiBox-root MuiBox-root"
@@ -2329,7 +2329,7 @@ exports[`Storyshots Bierzo wallet/Register Username Registeration confirmation 1
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h6"
         >
-          Your username registration request was successfully signed and sent to the network.
+          Your personalized address registration request was successfully signed and sent to the network.
         </h6>
         <div
           className="MuiBox-root MuiBox-root"
@@ -6615,7 +6615,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                          
-                        username.
+                        personalized address.
                       </p>
                     </span>
                     <p
@@ -6667,7 +6667,7 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                          
-                        username was
+                        personalized address was
                          
                       </p>
                       <p
@@ -9351,7 +9351,7 @@ exports[`Storyshots Extension/Transaction Request Show USERNAME Request page 1`]
       className="MuiTypography-root makeStyles-inline MuiTypography-body1"
     >
        
-      username registration request.
+      personalized address registration request.
     </p>
     <div
       className="MuiBox-root MuiBox-root"
