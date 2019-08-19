@@ -1,8 +1,6 @@
 import { singleton } from "ui-logic";
 
 import developmentConfig from "./development.json";
-import productionConfig from "./production.json";
-import stagingConfig from "./staging.json";
 
 export interface Config {
   readonly extensionId: string;
@@ -25,20 +23,28 @@ export interface FaucetSpec {
   readonly tokens: readonly string[];
 }
 
-const configuration = async (): Promise<Config> => {
-  if (process.env.REACT_APP_CONFIG === "development") {
+interface WindowWithConfig extends Window {
+  readonly developmentConfig: Config;
+}
+
+const loadConfigurationFile = async (): Promise<Config> => {
+  if (process.env.NODE_ENV === "test") {
+    return (window as WindowWithConfig).developmentConfig;
+  }
+
+  if (process.env.NODE_ENV === "development") {
+    // This is the `yarn start` case. Only the development config is supported here.
+    // If you need to use a different configuration, use yarn build + docker build + docker run.
     return developmentConfig;
   }
 
-  if (process.env.REACT_APP_CONFIG === "staging") {
-    return stagingConfig;
+  const response = await fetch("/static/config/conf.json");
+  if (!response.ok) {
+    throw new Error(`Failed to fetch URL. Response status code: ${response.status}`);
   }
 
-  if (process.env.REACT_APP_CONFIG === "production") {
-    return productionConfig;
-  }
-
-  throw new Error("Unexpected REACT_APP_CONFIG variable for obtaining configuration");
+  const json = await response.json();
+  return json;
 };
 
-export const getConfig = singleton<typeof configuration>(configuration);
+export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurationFile);
