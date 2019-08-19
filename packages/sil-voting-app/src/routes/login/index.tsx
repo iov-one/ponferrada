@@ -1,3 +1,4 @@
+import { Governor } from "@iov/bns-governance";
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -39,9 +40,11 @@ const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
+  let governor: Governor | undefined = undefined;
 
   const isExtensionConnected = async (): Promise<boolean> => {
     const result = await getExtensionStatus();
+    governor = result.governor;
     dispatch(setExtensionStateAction(result.connected, result.installed, result.governor));
 
     if (!result.installed) {
@@ -58,7 +61,7 @@ const Login = (): JSX.Element => {
   };
 
   const loadProposals = async (): Promise<void> => {
-    const chainProposals = await getProposals();
+    const chainProposals = await getProposals(governor);
     dispatch(addProposalsAction(chainProposals));
   };
 

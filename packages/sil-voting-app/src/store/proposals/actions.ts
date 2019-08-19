@@ -1,15 +1,14 @@
 import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
+import { Governor } from "@iov/bns-governance";
 
-import { getDummyElectionRules, getDummyProposals, getDummyVote } from "./dummyData";
 import { AddProposalsActionType, ProposalsState } from "./reducer";
 
-export async function getProposals(): Promise<ProposalsState> {
-  const electionRules = getDummyElectionRules();
-  const proposals = getDummyProposals();
+export async function getProposals(governor: Governor | undefined): Promise<ProposalsState> {
+  if (!governor) return [];
 
-  const getQuorum = (proposal: Proposal): number => {
+  const getQuorum = async (proposal: Proposal): Promise<number> => {
+    const electionRule = await governor.getElectionRuleById(proposal.electionRule.id);
     const maxVotes = proposal.state.totalElectorateWeight;
-    const electionRule = electionRules.find(electionRule => electionRule.id === proposal.electionRule.id);
 
     let quorum = 0;
     if (electionRule && electionRule.quorum) {
@@ -19,9 +18,9 @@ export async function getProposals(): Promise<ProposalsState> {
     return quorum;
   };
 
-  const getThreshold = (proposal: Proposal): number => {
+  const getThreshold = async (proposal: Proposal): Promise<number> => {
+    const electionRule = await governor.getElectionRuleById(proposal.electionRule.id);
     const totalVotes = proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain;
-    const electionRule = electionRules.find(electionRule => electionRule.id === proposal.electionRule.id);
 
     let threshold = 0;
     if (electionRule) {
@@ -33,30 +32,41 @@ export async function getProposals(): Promise<ProposalsState> {
     return threshold;
   };
 
-  const getVote = (proposal: Proposal): VoteOption | undefined => getDummyVote(proposal);
+  const getVote = async (proposal: Proposal): Promise<VoteOption | undefined> => {
+    const votes = await governor.getVotes();
+    if (!votes) return undefined;
 
-  const proposalsState = proposals.map(proposal => {
-    return {
-      id: proposal.id,
-      title: proposal.title,
-      author: proposal.author,
-      description: proposal.description,
-      creationDate: new Date(proposal.votingStartTime * 1000),
-      expiryDate: new Date(proposal.votingEndTime * 1000),
-      quorum: getQuorum(proposal),
-      threshold: getThreshold(proposal),
-      tally: {
-        yes: proposal.state.totalYes,
-        no: proposal.state.totalNo,
-        abstain: proposal.state.totalAbstain,
-        totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
-        maxVotes: proposal.state.totalElectorateWeight,
-      },
-      result: proposal.result,
-      vote: getVote(proposal),
-      hasEnded: !(proposal.status === ProposalStatus.Submitted),
-    };
-  });
+    const vote = votes.find(vote => vote.proposalId === proposal.id);
+    if (!vote) return undefined;
+
+    return vote.selection;
+  };
+
+  const proposals = await governor.getProposals();
+  const proposalsState = await Promise.all(
+    proposals.map(async proposal => {
+      return {
+        id: proposal.id,
+        title: proposal.title,
+        author: proposal.author,
+        description: proposal.description,
+        creationDate: new Date(proposal.votingStartTime * 1000),
+        expiryDate: new Date(proposal.votingEndTime * 1000),
+        quorum: await getQuorum(proposal),
+        threshold: await getThreshold(proposal),
+        tally: {
+          yes: proposal.state.totalYes,
+          no: proposal.state.totalNo,
+          abstain: proposal.state.totalAbstain,
+          totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
+          maxVotes: proposal.state.totalElectorateWeight,
+        },
+        result: proposal.result,
+        vote: await getVote(proposal),
+        hasEnded: !(proposal.status === ProposalStatus.Submitted),
+      };
+    }),
+  );
 
   return proposalsState;
 }

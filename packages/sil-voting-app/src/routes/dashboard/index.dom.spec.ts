@@ -1,7 +1,7 @@
 import { Store } from "redux";
 
 import { aNewStore } from "../../store";
-import { getProposals as getStoreProposals } from "../../store/proposals/actions";
+import { getDummyProposalsState } from "../../store/proposals/dummyData";
 import { RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import {
@@ -34,7 +34,7 @@ describe("DOM > Feature > Dashboard", () => {
         connected: true,
         installed: true,
       },
-      proposals: await getStoreProposals(),
+      proposals: getDummyProposalsState(),
     });
 
     dashboardDom = await travelToDashboard(store);
