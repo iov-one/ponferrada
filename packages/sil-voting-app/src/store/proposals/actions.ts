@@ -1,7 +1,6 @@
 import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
 import { Governor } from "@iov/bns-governance";
 
-import { getDummyVote } from "./dummyData";
 import { AddProposalsActionType, ProposalsState } from "./reducer";
 
 export async function getProposals(governor: Governor | undefined): Promise<ProposalsState> {
@@ -33,8 +32,15 @@ export async function getProposals(governor: Governor | undefined): Promise<Prop
     return threshold;
   };
 
-  //TODO Get current vote from blockchain
-  const getVote = (proposal: Proposal): VoteOption | undefined => getDummyVote(proposal);
+  const getVote = async (proposal: Proposal): Promise<VoteOption | undefined> => {
+    const votes = await governor.getVotes();
+    if (!votes) return undefined;
+
+    const vote = votes.find(vote => vote.proposalId === proposal.id);
+    if (!vote) return undefined;
+
+    return vote.selection;
+  };
 
   const proposals = await governor.getProposals();
   const proposalsState = await Promise.all(
@@ -56,7 +62,7 @@ export async function getProposals(governor: Governor | undefined): Promise<Prop
           maxVotes: proposal.state.totalElectorateWeight,
         },
         result: proposal.result,
-        vote: getVote(proposal),
+        vote: await getVote(proposal),
         hasEnded: !(proposal.status === ProposalStatus.Submitted),
       };
     }),
