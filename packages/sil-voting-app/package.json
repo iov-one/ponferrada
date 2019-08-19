@@ -23,7 +23,7 @@
     "react-scripts": "^3.0.1"
   },
   "scripts": {
-    "use-extension-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../bierzo-wallet",
+    "use-extension-config-development": "cd ../sanes-chrome-extension && yarn use-config-development && yarn override-config-development && cd ../sil-voting-app",
     "override-config-development": "mkdir -p ./build/static/config && cp ./src/config/development.json ./build/static/config/conf.json",
     "override-config-staging": "mkdir -p ./build/static/config && cp ./src/config/staging.json ./build/static/config/conf.json",
     "override-config-production": "mkdir -p ./build/static/config && cp ./src/config/production.json ./build/static/config/conf.json",
