@@ -1,3 +1,4 @@
+import { Governor } from "@iov/bns-governance";
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -16,7 +17,6 @@ import * as ReactRedux from "react-redux";
 import icon from "../../assets/iov-logo.svg";
 import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
 import { addProposalsAction, getProposals } from "../../store/proposals";
-import { RootState } from "../../store/reducers";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
 
@@ -40,10 +40,11 @@ const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
-  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  let governor: Governor | undefined = undefined;
 
   const isExtensionConnected = async (): Promise<boolean> => {
     const result = await getExtensionStatus();
+    governor = result.governor;
     dispatch(setExtensionStateAction(result.connected, result.installed, result.governor));
 
     if (!result.installed) {
