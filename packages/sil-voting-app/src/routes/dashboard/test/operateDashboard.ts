@@ -74,7 +74,7 @@ export const checkActiveVotingPanel = (proposal: Element): void => {
   const yourVote = votePanel.children[0].textContent;
   expect(yourVote).toBe("Your vote: ");
 
-  const buttons = votePanel.children[1];
+  const buttons = votePanel.children[1].children[0];
 
   const yesButton = buttons.children[0].textContent;
   expect(yesButton).toBe("Yes");
