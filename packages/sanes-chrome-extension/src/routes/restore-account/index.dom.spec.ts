@@ -43,8 +43,6 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
     beforeEach(async () => {
       mnemonicTextarea = getMnemonicTextarea(restoreAccountDom);
       mnemonicForm = getMnemonicForm(restoreAccountDom);
-      //buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
-      //[backButton, continueButton] = buttons;
     });
 
     it('has a valid "Recovery phrase" textarea', () => {
