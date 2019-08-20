@@ -26,7 +26,9 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
   const voteAbstain = (): void => setCurrentVote(VoteOption.Abstain);
 
   const submitVote = async (): Promise<void> => {
-    if (governor && currentVote) {
+    if (!governor) throw new Error("Governor not set in store. This is a bug.");
+
+    if (currentVote !== undefined) {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
       await sendSignAndPostRequest(connection, voteTx);
