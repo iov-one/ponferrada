@@ -3,7 +3,8 @@ import { Store } from "redux";
 import { aNewStore } from "..";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { RootState } from "../reducers";
-import { addProposalsAction, getProposals } from "./actions";
+import { addProposalsAction } from "./actions";
+import { SilProposal } from "./reducer";
 
 const proposals = [
   {
@@ -62,7 +63,7 @@ withChainsDescribe("Proposals reducer", () => {
   }, 60000);
 
   it("dispatches correctly getProposals action", async () => {
-    const chainProposals = await getProposals(undefined);
+    const chainProposals: SilProposal[] = [];
     store.dispatch(addProposalsAction(chainProposals));
     const proposals = store.getState().proposals;
 
@@ -70,7 +71,7 @@ withChainsDescribe("Proposals reducer", () => {
   }, 60000);
 
   it("stores correctly proposals", async () => {
-    const chainProposals = await getProposals(undefined);
+    const chainProposals: SilProposal[] = [];
     store.dispatch(addProposalsAction(chainProposals));
     const storedProposals = store.getState().proposals;
 

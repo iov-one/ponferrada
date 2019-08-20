@@ -3,9 +3,7 @@ import { Governor } from "@iov/bns-governance";
 
 import { AddProposalsActionType, ProposalsState } from "./reducer";
 
-export async function getProposals(governor: Governor | undefined): Promise<ProposalsState> {
-  if (!governor) return [];
-
+export async function getProposals(governor: Governor): Promise<ProposalsState> {
   const getQuorum = async (proposal: Proposal): Promise<number> => {
     const electionRule = await governor.getElectionRuleById(proposal.electionRule.id);
     const maxVotes = proposal.state.totalElectorateWeight;
