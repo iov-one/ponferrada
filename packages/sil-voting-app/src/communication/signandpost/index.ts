@@ -10,7 +10,7 @@ async function generateSignAndPostRequest(
   connection: BnsConnection,
   tx: BnsTx & WithCreator,
 ): Promise<JsonRpcRequest> {
-  const txWithFee = connection.withDefaultFee(tx);
+  const txWithFee = await connection.withDefaultFee(tx);
   return {
     jsonrpc: "2.0",
     id: makeJsonRpcId(),
