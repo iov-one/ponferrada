@@ -1,10 +1,7 @@
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { sleep } from "ui-logic";
 
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { aNewStore } from "../../store";
-import { RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import { travelToTXRequest, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
@@ -33,12 +30,10 @@ const sendRequests: readonly Request[] = [
 ];
 
 describe("DOM > Feature > Transaction Request", (): void => {
-  let store: Store<RootState>;
   let identityDOM: React.Component;
 
   beforeEach(async () => {
-    store = aNewStore();
-    identityDOM = await travelToTXRequest(store, sendRequests);
+    identityDOM = await travelToTXRequest(sendRequests);
   }, 60000);
 
   it("should accept incoming request and redirect to account status view", async (): Promise<void> => {
@@ -49,7 +44,7 @@ describe("DOM > Feature > Transaction Request", (): void => {
     const acceptButton = inputs[0];
     click(acceptButton);
 
-    await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
+    await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
   it("should reject incoming request and come back", async (): Promise<void> => {
@@ -74,12 +69,10 @@ describe("DOM > Feature > Transaction Request", (): void => {
 });
 
 describe("DOM > Feature > Send Transaction Request", (): void => {
-  let store: Store<RootState>;
   let identityDOM: React.Component;
 
   beforeEach(async () => {
-    store = aNewStore();
-    identityDOM = await travelToTXRequest(store, sendRequests);
+    identityDOM = await travelToTXRequest(sendRequests);
   }, 60000);
 
   it("should show send transaction request accept view", async (): Promise<void> => {
@@ -101,12 +94,10 @@ describe("DOM > Feature > Username Registration Request", (): void => {
     },
   ];
 
-  let store: Store<RootState>;
   let identityDOM: React.Component;
 
   beforeEach(async () => {
-    store = aNewStore();
-    identityDOM = await travelToTXRequest(store, requests);
+    identityDOM = await travelToTXRequest(requests);
   }, 60000);
 
   it("should show register username request accept view", async (): Promise<void> => {

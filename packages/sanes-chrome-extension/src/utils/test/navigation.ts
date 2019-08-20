@@ -1,5 +1,4 @@
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { whenTrue } from "ui-logic";
 
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
@@ -19,16 +18,15 @@ import { REQUEST_FIELD } from "../../routes/requests/components/RequestList";
 import { history } from "../../utils/history";
 import { createDom } from "../../utils/test/dom";
 
-export const whenOnNavigatedToRoute = (refreshStore: Store, desiredRoute: string): Promise<void> =>
-  whenTrue(() => refreshStore.getState().router.location.pathname === desiredRoute);
+export const whenOnNavigatedToRoute = (desiredRoute: string): Promise<void> =>
+  whenTrue(() => window.location.pathname === desiredRoute);
 
 export const travelTo = async (
   route: string,
-  store: Store,
   requests?: readonly Request[],
   persona?: GetPersonaResponse,
 ): Promise<React.Component> => {
-  const dom = createDom(store, requests, persona);
+  const dom = createDom(requests, persona);
 
   TestUtils.act(() => {
     history.push({
@@ -42,62 +40,47 @@ export const travelTo = async (
     });
   });
 
-  await whenOnNavigatedToRoute(store, route);
+  await whenOnNavigatedToRoute(route);
 
   return dom;
 };
 
-export const travelToWelcome = async (store: Store): Promise<React.Component> => {
-  return travelTo(WELCOME_ROUTE, store);
+export const travelToWelcome = async (): Promise<React.Component> => {
+  return travelTo(WELCOME_ROUTE);
 };
 
-export const travelToSignup = async (store: Store): Promise<React.Component> => {
-  return travelTo(SIGNUP_ROUTE, store);
+export const travelToSignup = async (): Promise<React.Component> => {
+  return travelTo(SIGNUP_ROUTE);
 };
 
-export const travelToLogin = async (store: Store): Promise<React.Component> => {
-  return travelTo(LOGIN_ROUTE, store);
+export const travelToLogin = async (): Promise<React.Component> => {
+  return travelTo(LOGIN_ROUTE);
 };
 
-export const travelToRecoveryPhrase = async (
-  store: Store,
-  persona?: GetPersonaResponse,
-): Promise<React.Component> => {
-  return travelTo(RECOVERY_PHRASE_ROUTE, store, [], persona);
+export const travelToRecoveryPhrase = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(RECOVERY_PHRASE_ROUTE, [], persona);
 };
 
-export const travelToRestoreAccount = async (store: Store): Promise<React.Component> => {
-  return travelTo(RESTORE_ACCOUNT, store);
+export const travelToRestoreAccount = async (): Promise<React.Component> => {
+  return travelTo(RESTORE_ACCOUNT);
 };
 
-export const travelToShareIdentity = async (
-  store: Store,
-  requests: readonly Request[],
-): Promise<React.Component> => {
+export const travelToShareIdentity = async (requests: readonly Request[]): Promise<React.Component> => {
   expect(requests.length).toBeGreaterThanOrEqual(1);
 
-  return travelTo(SHARE_IDENTITY, store, requests);
+  return travelTo(SHARE_IDENTITY, requests);
 };
 
-export const travelToTXRequest = async (
-  store: Store,
-  requests: readonly Request[],
-): Promise<React.Component> => {
+export const travelToTXRequest = async (requests: readonly Request[]): Promise<React.Component> => {
   expect(requests.length).toBeGreaterThanOrEqual(1);
 
-  return travelTo(TX_REQUEST, store, requests);
+  return travelTo(TX_REQUEST, requests);
 };
 
-export const travelToAccount = async (
-  store: Store,
-  persona?: GetPersonaResponse,
-): Promise<React.Component> => {
-  return travelTo(ACCOUNT_STATUS_ROUTE, store, [], persona);
+export const travelToAccount = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(ACCOUNT_STATUS_ROUTE, [], persona);
 };
 
-export const travelToRequests = async (
-  store: Store,
-  requests?: readonly Request[],
-): Promise<React.Component> => {
-  return travelTo(REQUEST_ROUTE, store, requests);
+export const travelToRequests = async (requests?: readonly Request[]): Promise<React.Component> => {
+  return travelTo(REQUEST_ROUTE, requests);
 };

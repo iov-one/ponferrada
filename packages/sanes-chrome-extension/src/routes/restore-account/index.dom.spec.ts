@@ -1,13 +1,10 @@
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { randomString } from "ui-logic";
 
 import {
   mockCreatePersona,
   mockPersonaResponse,
 } from "../../extension/background/model/persona/test/persona";
-import { aNewStore } from "../../store";
-import { resetHistory, RootState } from "../../store/reducers";
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToLogin, travelToRestoreAccount, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
@@ -31,27 +28,23 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
   const password = randomString(10);
   const personaMock = mockPersonaResponse([], mnemonic, []);
 
-  let store: Store<RootState>;
   let restoreAccountDom: React.Component;
 
   beforeEach(async () => {
-    resetHistory();
-    store = aNewStore();
-    restoreAccountDom = await travelToRestoreAccount(store);
+    restoreAccountDom = await travelToRestoreAccount();
   });
 
   describe("Set Mnemonic Step", () => {
     let mnemonicTextarea: Element;
     let mnemonicForm: Element;
-    let buttons: Element[];
     let backButton: Element;
     let continueButton: Element;
 
     beforeEach(async () => {
       mnemonicTextarea = getMnemonicTextarea(restoreAccountDom);
       mnemonicForm = getMnemonicForm(restoreAccountDom);
-      buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
-      [backButton, continueButton] = buttons;
+      //buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
+      //[backButton, continueButton] = buttons;
     });
 
     it('has a valid "Recovery phrase" textarea', () => {
@@ -99,19 +92,28 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
     }, 10000);
 
     it("has two buttons", () => {
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
       expect(buttons.length).toBe(2);
     }, 10000);
 
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
-      expect(backButton.textContent).toBe("Back");
+      const loginDom = await travelToLogin();
+      const restoreAccountLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, "a");
+      expect(restoreAccountLink.textContent).toBe("Restore account");
+      click(restoreAccountLink);
+      await whenOnNavigatedToRoute(RESTORE_ACCOUNT);
 
-      await travelToLogin(store);
-      await travelToRestoreAccount(store);
-      click(backButton);
-      await whenOnNavigatedToRoute(store, LOGIN_ROUTE);
-    }, 10000);
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button");
+      [backButton, continueButton] = buttons;
+      expect(backButton.textContent).toBe("Back");
+      await click(backButton);
+
+      await whenOnNavigatedToRoute(LOGIN_ROUTE);
+    }, 30000);
 
     it('has a valid "Continue" button that redirects to the Set Password Form if the form is valid when clicked', async () => {
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
+      [backButton, continueButton] = buttons;
       expect(continueButton.textContent).toBe("Continue");
 
       expect(isButtonDisabled(continueButton)).toBeTruthy();
@@ -196,7 +198,7 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       expect(isButtonDisabled(restoreButton)).toBeFalsy();
       mockCreatePersona(personaMock);
       await submit(restoreButton);
-      await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+      await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
     }, 10000);
 
     it("accepts several UTF-8 alphabets as password fields", async () => {
@@ -205,7 +207,7 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       input(passwordConfirmInput, password);
       mockCreatePersona(personaMock);
       submit(passwordForm);
-      await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+      await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
     }, 10000);
   });
 });
