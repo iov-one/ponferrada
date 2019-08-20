@@ -31,7 +31,13 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
     if (currentVote !== undefined) {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
-      await sendSignAndPostRequest(connection, voteTx);
+
+      // TODO: remove error handler
+      try {
+        await sendSignAndPostRequest(connection, voteTx);
+      } catch (error) {
+        console.warn(error);
+      }
     }
   };
 
