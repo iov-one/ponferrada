@@ -98,7 +98,7 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       const loginDom = await travelToLogin();
       const restoreAccountLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, "a");
       expect(restoreAccountLink.textContent).toBe("Restore account");
-      click(restoreAccountLink);
+      await click(restoreAccountLink);
       await whenOnNavigatedToRoute(RESTORE_ACCOUNT);
 
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button");

@@ -84,7 +84,7 @@ describe("DOM > Feature > Login", () => {
 
   it('has a "Restore account" link that redirects to the Restore Account view when clicked', async () => {
     expect(restoreAccountLink.textContent).toBe("Restore account");
-    click(restoreAccountLink);
+    await click(restoreAccountLink);
     await whenOnNavigatedToRoute(RESTORE_ACCOUNT);
   }, 60000);
 });
