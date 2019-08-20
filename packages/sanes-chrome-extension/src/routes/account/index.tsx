@@ -16,9 +16,9 @@ import { useForm } from "react-final-form-hooks";
 
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
-import { history } from "../../store/reducers";
 import { EXTENSION_HEIGHT } from "../../theme/constants";
 import { clearDatabase, clearPersona, createAccount } from "../../utils/chrome";
+import { history } from "../../utils/history";
 import {
   ACCOUNT_STATUS_ROUTE,
   RECOVERY_PHRASE_ROUTE,

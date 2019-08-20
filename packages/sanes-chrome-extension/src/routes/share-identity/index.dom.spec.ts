@@ -1,11 +1,8 @@
 import { Address } from "@iov/bcp";
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { sleep } from "ui-logic";
 
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { aNewStore } from "../../store";
-import { RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import { travelToShareIdentity } from "../../utils/test/navigation";
 import {
@@ -34,12 +31,10 @@ describe("DOM > Feature > Share Identity", (): void => {
     },
   ];
 
-  let store: Store<RootState>;
   let identityDOM: React.Component;
 
   beforeEach(async () => {
-    store = aNewStore();
-    identityDOM = await travelToShareIdentity(store, requests);
+    identityDOM = await travelToShareIdentity(requests);
   }, 60000);
 
   it("should accept incoming request and redirect to account status view", async (): Promise<void> => {

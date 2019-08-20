@@ -1,9 +1,7 @@
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { aNewStore } from "../../store";
-import { resetHistory, RootState } from "../../store/reducers";
+import { resetHistory } from "../../utils/history";
 import { click } from "../../utils/test/dom";
 import { travelToRequests, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { ACCOUNT_STATUS_ROUTE, SHARE_IDENTITY, TX_REQUEST } from "../paths";
@@ -31,14 +29,12 @@ describe("DOM > Feature > Requests", () => {
     reject: jest.fn(),
   };
 
-  let store: Store<RootState>;
   let requestsDom: React.Component;
   let backButton: Element;
 
   beforeEach(async () => {
     resetHistory();
-    store = aNewStore();
-    requestsDom = await travelToRequests(store, [REQUEST_ONE, REQUEST_TWO]);
+    requestsDom = await travelToRequests([REQUEST_ONE, REQUEST_TWO]);
     backButton = TestUtils.findRenderedDOMComponentWithTag(requestsDom, "button");
   }, 60000);
 
@@ -46,7 +42,7 @@ describe("DOM > Feature > Requests", () => {
     expect(backButton.getAttribute("aria-label")).toBe("Go back");
 
     click(backButton);
-    await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+    await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
   }, 60000);
 
   it('has a "Requests" list that shows all pending requests', async () => {
@@ -56,16 +52,15 @@ describe("DOM > Feature > Requests", () => {
   it('redirects to the Share Identity view when a Request of type "getIdentities" is clicked', async () => {
     const identityRequest = getFirstRequest(requestsDom);
     click(identityRequest);
-    await whenOnNavigatedToRoute(store, SHARE_IDENTITY);
+    await whenOnNavigatedToRoute(SHARE_IDENTITY);
   }, 60000);
 
   it('redirects to the TX Request view when a Request of type "signAndPost" is clicked', async () => {
     resetHistory();
-    store = aNewStore();
-    requestsDom = await travelToRequests(store, [REQUEST_TWO, REQUEST_ONE]);
+    requestsDom = await travelToRequests([REQUEST_TWO, REQUEST_ONE]);
     const txRequest = getFirstRequest(requestsDom);
 
     click(txRequest);
-    await whenOnNavigatedToRoute(store, TX_REQUEST);
+    await whenOnNavigatedToRoute(TX_REQUEST);
   }, 60000);
 });

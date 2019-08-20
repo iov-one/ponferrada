@@ -13,7 +13,6 @@ import { Encoding, TransactionEncoder } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from "@iov/jsonrpc";
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { sleep } from "ui-logic";
 
 import Backgroundscript, { IovWindowExtension } from "../../extension/background/model/backgroundscript";
@@ -29,8 +28,6 @@ import {
   isArrayOfIdentity,
 } from "../../extension/background/model/requestsHandler/test/requestBuilder";
 import * as txsUpdater from "../../extension/background/updaters/appUpdater";
-import { aNewStore } from "../../store";
-import { resetHistory, RootState } from "../../store/reducers";
 import { click } from "../../utils/test/dom";
 import { travelToAccount, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
@@ -98,30 +95,27 @@ describe("DOM > Feature > Account Status", () => {
   };
   const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock, usernameMock]);
 
-  let store: Store<RootState>;
   let accountStatusDom: React.Component;
 
   beforeEach(async () => {
-    resetHistory();
-    store = aNewStore();
-    accountStatusDom = await travelToAccount(store, personaMock);
+    accountStatusDom = await travelToAccount(personaMock);
   }, 60000);
 
   it("redirects to the Recovery Phrase view when link clicked in Drawer menu", async () => {
     await Drawer.clickRecoveryPhrase(accountStatusDom);
-    await whenOnNavigatedToRoute(store, RECOVERY_PHRASE_ROUTE);
+    await whenOnNavigatedToRoute(RECOVERY_PHRASE_ROUTE);
   }, 60000);
 
   it("redirects to the Requests view when link clicked in Drawer menu", async () => {
     await Drawer.clickRequests(accountStatusDom);
-    await whenOnNavigatedToRoute(store, REQUEST_ROUTE);
+    await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
   it("redirects to the Welcome page when Logout was clicked", async () => {
     const clearPersonaMock = mockClearPersona();
     const clearDatabaseMock = mockClearDatabase();
     await Drawer.clickLogout(accountStatusDom);
-    await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
+    await whenOnNavigatedToRoute(WELCOME_ROUTE);
     expect(clearPersonaMock).toHaveBeenCalledTimes(1);
     expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
   }, 60000);
@@ -196,9 +190,8 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
     await signResponse;
 
     // Launch react DOM with account status route
-    const store = aNewStore();
     const personaInfo = await (window as IovWindowExtension).getPersonaData();
-    const accountStatusDom = await travelToAccount(store, personaInfo);
+    const accountStatusDom = await travelToAccount(personaInfo);
 
     // Check for the link
     const links = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, "a");

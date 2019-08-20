@@ -1,5 +1,4 @@
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { randomString } from "ui-logic";
 
 import {
@@ -8,8 +7,6 @@ import {
   mockPersonaResponse,
   processSignup,
 } from "../../extension/background/model/persona/test/persona";
-import { aNewStore } from "../../store";
-import { resetHistory, RootState } from "../../store/reducers";
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToLogin, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
@@ -17,7 +14,6 @@ import { ACCOUNT_STATUS_ROUTE, RESTORE_ACCOUNT, WELCOME_ROUTE } from "../paths";
 import { getPasswordValidity, isButtonDisabled } from "./test/operateLogin";
 
 describe("DOM > Feature > Login", () => {
-  let store: Store<RootState>;
   let loginDom: React.Component;
   let buttons: Element[];
   let backButton: Element;
@@ -27,9 +23,7 @@ describe("DOM > Feature > Login", () => {
   let restoreAccountLink: Element;
 
   beforeEach(async () => {
-    resetHistory();
-    store = aNewStore();
-    loginDom = await travelToLogin(store);
+    loginDom = await travelToLogin();
     buttons = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button");
     [backButton, continueButton] = buttons;
     passwordInput = TestUtils.findRenderedDOMComponentWithTag(loginDom, "input");
@@ -44,7 +38,7 @@ describe("DOM > Feature > Login", () => {
   it("has a back arrow button that redirects to the Welcome view when clicked", async () => {
     expect(backButton.getAttribute("aria-label")).toBe("Go back");
     click(backButton);
-    await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
+    await whenOnNavigatedToRoute(WELCOME_ROUTE);
   }, 60000);
 
   it('has a valid "Password" input', () => {
@@ -63,8 +57,8 @@ describe("DOM > Feature > Login", () => {
     const personaMock = mockPersonaResponse([], mnemonic, []);
 
     mockCreatePersona(personaMock);
-    await processSignup(store, undefined, password);
-    loginDom = await travelToLogin(store);
+    await processSignup(undefined, password);
+    loginDom = await travelToLogin();
 
     continueButton = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button")[1];
     passwordInput = TestUtils.findRenderedDOMComponentWithTag(loginDom, "input");
@@ -78,7 +72,7 @@ describe("DOM > Feature > Login", () => {
 
     mockLoadPersona(personaMock);
     await submit(continueButton);
-    await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+    await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
   }, 60000);
 
   it('shows "Error during login" toast message if login unsuccessful', async () => {
@@ -90,7 +84,7 @@ describe("DOM > Feature > Login", () => {
 
   it('has a "Restore account" link that redirects to the Restore Account view when clicked', async () => {
     expect(restoreAccountLink.textContent).toBe("Restore account");
-    click(restoreAccountLink);
-    await whenOnNavigatedToRoute(store, RESTORE_ACCOUNT);
+    await click(restoreAccountLink);
+    await whenOnNavigatedToRoute(RESTORE_ACCOUNT);
   }, 60000);
 });

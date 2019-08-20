@@ -1,36 +1,37 @@
-import { ConnectedRouter } from "connected-react-router";
 import { MedulasThemeProvider, ToastProvider } from "medulas-react-components";
 import * as React from "react";
 import TestUtils from "react-dom/test-utils";
-import { Provider } from "react-redux";
-import { Store } from "redux";
 
 import { PersonaProvider } from "../../context/PersonaProvider";
 import { RequestProvider } from "../../context/RequestProvider";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import Route from "../../routes";
-import { history } from "../../store/reducers";
+
+class FakeDom extends React.Component<{ children: React.ReactNode }> {
+  public render(): JSX.Element {
+    const { children } = this.props;
+
+    return <React.Fragment>{children}</React.Fragment>;
+  }
+}
 
 export const createDom = (
-  store: Store,
   requests: readonly Request[] = [],
   persona: GetPersonaResponse = null,
 ): React.Component =>
   TestUtils.renderIntoDocument(
-    <Provider store={store}>
+    <FakeDom>
       <MedulasThemeProvider>
         <ToastProvider>
           <PersonaProvider persona={persona}>
             <RequestProvider initialRequests={requests}>
-              <ConnectedRouter history={history}>
-                <Route />
-              </ConnectedRouter>
+              <Route />
             </RequestProvider>
           </PersonaProvider>
         </ToastProvider>
       </MedulasThemeProvider>
-    </Provider>,
+    </FakeDom>,
   ) as any;
 
 export const click = async (element: Element): Promise<void> => {

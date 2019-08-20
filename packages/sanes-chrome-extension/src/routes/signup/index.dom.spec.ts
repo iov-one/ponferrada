@@ -1,5 +1,4 @@
 import TestUtils from "react-dom/test-utils";
-import { Store } from "redux";
 import { randomString } from "ui-logic";
 
 import {
@@ -7,8 +6,6 @@ import {
   mockPersonaResponse,
   processSignup,
 } from "../../extension/background/model/persona/test/persona";
-import { aNewStore } from "../../store";
-import { resetHistory, RootState } from "../../store/reducers";
 import { check, click, input, submit } from "../../utils/test/dom";
 import { travelToSignup, travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
@@ -39,20 +36,17 @@ describe("DOM > Feature > Signup", () => {
   const hint = randomString(10);
   const personaMock = mockPersonaResponse([], mnemonic, []);
 
-  let store: Store<RootState>;
   let signupDom: React.Component;
 
   beforeEach(async () => {
-    resetHistory();
-    store = aNewStore();
-    signupDom = await travelToSignup(store);
+    signupDom = await travelToSignup();
   }, 10000);
 
   mayTestChains(
     "should finish the signup three steps process",
     async () => {
       mockCreatePersona(personaMock);
-      await processSignup(store);
+      await processSignup();
     },
     10000,
   );
@@ -154,10 +148,10 @@ describe("DOM > Feature > Signup", () => {
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
       expect(backButton.textContent).toBe("Back");
 
-      await travelToWelcome(store);
-      await travelToSignup(store);
+      await travelToWelcome();
+      await travelToSignup();
       click(backButton);
-      await whenOnNavigatedToRoute(store, WELCOME_ROUTE);
+      await whenOnNavigatedToRoute(WELCOME_ROUTE);
     }, 10000);
 
     it('has a valid "Continue" button that redirects to the Show Phrase Form if the form is valid when clicked', async () => {
@@ -283,7 +277,7 @@ describe("DOM > Feature > Signup", () => {
       expect(isButtonDisabled(createButton)).toBeFalsy();
 
       await submit(createButton);
-      await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+      await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
     }, 10000);
   });
 });

@@ -2,7 +2,7 @@ import { PageLayout } from "medulas-react-components";
 import * as React from "react";
 
 import { PersonaContext } from "../../context/PersonaProvider";
-import { history } from "../../store/reducers";
+import { history } from "../../utils/history";
 import { RECOVERY_PHRASE_ROUTE } from "../paths";
 import ShowRecoveryPhrase from "./components/ShowRecoveryPhrase";
 

@@ -1,4 +1,3 @@
-import { Store } from "redux";
 import { randomString } from "ui-logic";
 
 import { PersonaAcccount, ProcessedTx } from "..";
@@ -13,12 +12,11 @@ import { travelToSignup, whenOnNavigatedToRoute } from "../../../../../utils/tes
 import { PersonaData } from "../../backgroundscript";
 
 export async function processSignup(
-  store: Store,
   accountName?: string,
   password?: string,
   hint?: string,
 ): Promise<React.Component> {
-  const signupDom = await travelToSignup(store);
+  const signupDom = await travelToSignup();
 
   accountName = accountName || randomString(10);
   password = password || randomString(10);
@@ -28,7 +26,7 @@ export async function processSignup(
   await submitShowPhrase(signupDom);
   await submitSecurityHint(signupDom, accountName, hint);
 
-  await whenOnNavigatedToRoute(store, ACCOUNT_STATUS_ROUTE);
+  await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
 
   const accountStatusDom = signupDom;
 

@@ -3,8 +3,8 @@ import * as React from "react";
 
 import { PersonaContext } from "../../context/PersonaProvider";
 import { PersonaData } from "../../extension/background/model/backgroundscript";
-import { history } from "../../store/reducers";
 import { createPersona } from "../../utils/chrome";
+import { history } from "../../utils/history";
 import { storeHintPhrase } from "../../utils/localstorage/hint";
 import { ACCOUNT_STATUS_ROUTE } from "../paths";
 import NewAccountForm, { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from "./components/NewAccountForm";
