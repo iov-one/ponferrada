@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 
 import { RequestContext } from "../../context/RequestProvider";
 import { isSignAndPostResponseData } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { history } from "../../store/reducers";
+import { history } from "../../utils/history";
 import { REQUEST_ROUTE } from "../paths";
 import { checkRequest } from "../requests";
 import RejectRequest from "./components/RejectRequest";

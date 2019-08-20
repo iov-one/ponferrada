@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { RequestContext } from "../../context/RequestProvider";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { history } from "../../store/reducers";
+import { history } from "../../utils/history";
 import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from "../paths";
 import RequestList, { REQUEST_FIELD } from "./components/RequestList";
 

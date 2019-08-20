@@ -16,7 +16,7 @@ import {
   WELCOME_ROUTE,
 } from "../../routes/paths";
 import { REQUEST_FIELD } from "../../routes/requests/components/RequestList";
-import { history } from "../../store/reducers";
+import { history } from "../../utils/history";
 import { createDom } from "../../utils/test/dom";
 
 export const whenOnNavigatedToRoute = (refreshStore: Store, desiredRoute: string): Promise<void> =>

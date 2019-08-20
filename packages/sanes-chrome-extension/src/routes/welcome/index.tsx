@@ -1,7 +1,7 @@
 import { Block, Button, PageLayout, Typography } from "medulas-react-components";
 import * as React from "react";
 
-import { history } from "../../store/reducers";
+import { history } from "../../utils/history";
 import { LOGIN_ROUTE, RESTORE_ACCOUNT, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
 
 const createNewAccount = (): void => {

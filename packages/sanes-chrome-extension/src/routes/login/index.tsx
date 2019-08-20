@@ -8,8 +8,8 @@ import {
 import * as React from "react";
 
 import { PersonaContext } from "../../context/PersonaProvider";
-import { history } from "../../store/reducers";
 import { loadPersona } from "../../utils/chrome";
+import { history } from "../../utils/history";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from "../paths";
 import { PASSWORD_FIELD } from "../signup/components/NewAccountForm";
 import LoginControls from "./components/LoginControls";

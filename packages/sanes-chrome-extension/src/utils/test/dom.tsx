@@ -10,7 +10,7 @@ import { RequestProvider } from "../../context/RequestProvider";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import Route from "../../routes";
-import { history } from "../../store/reducers";
+import { history } from "../../utils/history";
 
 export const createDom = (
   store: Store,
