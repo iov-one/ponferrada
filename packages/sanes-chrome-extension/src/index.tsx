@@ -1,8 +1,6 @@
-import { ConnectedRouter } from "connected-react-router";
 import { MedulasThemeProvider, ToastProvider } from "medulas-react-components";
 import * as React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
 
 import { PersonaProvider } from "./context/PersonaProvider";
 import { RequestProvider } from "./context/RequestProvider";
@@ -10,13 +8,11 @@ import { GetPersonaResponse } from "./extension/background/model/backgroundscrip
 import { Request } from "./extension/background/model/requestsHandler/requestQueueManager";
 import Route from "./routes";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from "./routes/paths";
-import { makeStore } from "./store";
-import { history } from "./store/reducers";
 import { globalStyles } from "./theme/globalStyles";
 import { getPersonaData, getQueuedRequests, hasStoredPersona } from "./utils/chrome";
+import { history } from "./utils/history";
 
 const rootEl = document.getElementById("root");
-const store = makeStore();
 
 const render = (
   Component: React.ComponentType,
@@ -24,19 +20,15 @@ const render = (
   requests: readonly Request[],
 ): void => {
   ReactDOM.render(
-    <Provider store={store}>
-      <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-        <ToastProvider>
-          <PersonaProvider persona={persona}>
-            <RequestProvider initialRequests={requests}>
-              <ConnectedRouter history={history}>
-                <Component />
-              </ConnectedRouter>
-            </RequestProvider>
-          </PersonaProvider>
-        </ToastProvider>
-      </MedulasThemeProvider>
-    </Provider>,
+    <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
+      <ToastProvider>
+        <PersonaProvider persona={persona}>
+          <RequestProvider initialRequests={requests}>
+            <Component />
+          </RequestProvider>
+        </PersonaProvider>
+      </ToastProvider>
+    </MedulasThemeProvider>,
     rootEl,
   );
 };
