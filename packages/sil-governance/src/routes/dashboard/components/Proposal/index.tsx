@@ -57,7 +57,7 @@ const Proposal = ({
         <Identification id={id} author={author} />
         <Description description={description} />
         <Block display="flex" marginTop={2}>
-          <Period expiryDate={expiryDate} startDate={startDate} hasEnded={hasEnded} />
+          <Period expiryDate={expiryDate} startDate={startDate} hasStarted={hasStarted} hasEnded={hasEnded} />
           <Block marginLeft={1}>
             <DeleteButton />
           </Block>

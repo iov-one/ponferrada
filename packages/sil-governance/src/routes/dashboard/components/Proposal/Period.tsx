@@ -4,12 +4,14 @@ import React from "react";
 interface Props {
   readonly expiryDate: Date;
   readonly startDate: Date;
+  readonly hasStarted: boolean;
   readonly hasEnded: boolean;
 }
 
-const Period = ({ expiryDate, startDate, hasEnded }: Props): JSX.Element => {
+const Period = ({ expiryDate, startDate, hasStarted, hasEnded }: Props): JSX.Element => {
   const expiryLabel = hasEnded ? "Expired on" : "Expires on";
   const expiryLocaleDate = expiryDate.toLocaleString();
+  const startLabel = hasStarted ? "Started on" : "Starts on";
   const startLocaleDate = startDate.toLocaleString();
 
   return (
@@ -18,7 +20,9 @@ const Period = ({ expiryDate, startDate, hasEnded }: Props): JSX.Element => {
         {expiryLabel} {expiryLocaleDate}
       </Typography>
       <Block marginLeft={1}>
-        <Typography variant="body2">Created on {startLocaleDate}</Typography>
+        <Typography variant="body2">
+          {startLabel} {startLocaleDate}
+        </Typography>
       </Block>
     </Block>
   );
