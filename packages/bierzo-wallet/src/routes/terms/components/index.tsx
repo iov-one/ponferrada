@@ -1,14 +1,27 @@
 import { Block, Link, Paragraph, Section, Title } from "medulas-react-components";
-import * as React from "react";
+import React from "react";
+
+import { getConfig } from "../../../config";
 
 export default (): JSX.Element => {
+  const [websiteName, setWebsiteName] = React.useState("");
+
+  React.useEffect(() => {
+    async function getWebsiteName(): Promise<void> {
+      const config = await getConfig();
+      setWebsiteName(config.websiteName);
+    }
+
+    getWebsiteName();
+  }, []);
+
   return (
     <React.Fragment>
       <Title>Terms</Title>
       <Section>
         <Paragraph>
-          The website (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La
-          Boetie, 75008, Paris, France (hereinafter "IOV").
+          The website {websiteName} (hereinafter: the “Website”) is owned and operated by the company IOV SAS,
+          55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
         </Paragraph>
       </Section>
       <Title>User License</Title>
