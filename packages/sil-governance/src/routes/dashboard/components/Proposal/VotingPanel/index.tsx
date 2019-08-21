@@ -14,17 +14,27 @@ interface Props {
   readonly quorum: number;
   readonly threshold: number;
   readonly tally: Tally;
+  readonly hasStarted: boolean;
   readonly hasEnded: boolean;
 }
 
-const VotingPanel = ({ result, vote, id, quorum, threshold, tally, hasEnded }: Props): JSX.Element => {
+const VotingPanel = ({
+  result,
+  vote,
+  id,
+  quorum,
+  threshold,
+  tally,
+  hasStarted,
+  hasEnded,
+}: Props): JSX.Element => {
   const voteLabel = hasEnded && vote && VoteOption[vote];
 
   return (
     <Block minWidth="160px" margin={2} display="flex" flexDirection="column">
       {hasEnded && <ResultFlair result={result} />}
-      <Typography variant="body2">Your vote: {voteLabel}</Typography>
-      {!hasEnded && <Buttons id={id} vote={vote} />}
+      {hasStarted && <Typography variant="body2">Your vote: {voteLabel}</Typography>}
+      {hasStarted && !hasEnded && <Buttons id={id} vote={vote} />}
       <ParticipationData quorum={quorum} threshold={threshold} tally={tally} />
     </Block>
   );
