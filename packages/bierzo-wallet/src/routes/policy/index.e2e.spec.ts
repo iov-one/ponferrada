@@ -4,9 +4,9 @@ import { Browser, Page } from "puppeteer";
 
 import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { travelToTermsE2E } from "./test/travelToTerms";
+import { travelToPolicyE2E } from "./test/travelToPolicy";
 
-withChainsDescribe("E2E > Terms route", () => {
+withChainsDescribe("E2E > Policy route", () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -38,7 +38,7 @@ withChainsDescribe("E2E > Terms route", () => {
     server.close();
   });
 
-  it("should travel to terms page", async () => {
-    await travelToTermsE2E(browser, page, extensionPage);
+  it("should travel to policy page", async () => {
+    await travelToPolicyE2E(browser, page, extensionPage);
   }, 35000);
 });
