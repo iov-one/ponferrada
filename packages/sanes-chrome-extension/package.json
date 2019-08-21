@@ -60,6 +60,7 @@
     "final-form": "^4.18.2",
     "jspdf": "^1.5.3",
     "level-js": "^4.0.1",
+    "levelup": "^4.1.0",
     "medulas-react-components": "^0.3.0",
     "memdown": "^5.0.0",
     "react": "^16.9.0",
