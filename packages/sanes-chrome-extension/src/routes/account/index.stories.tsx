@@ -8,7 +8,7 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { RegisterUsernameTx } from "@iov/bns";
+import { ActionKind, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { storiesOf } from "@storybook/react";
@@ -23,6 +23,7 @@ import Layout from "./index";
 
 export const ACCOUNT_STATUS_PAGE = "Account Status page";
 
+const defaultAddress = "0x1212121212121212121212121212121212121212" as Address;
 const defaultCreator: Identity = {
   chainId: "foobar" as ChainId,
   pubkey: {
@@ -34,36 +35,66 @@ const defaultCreator: Identity = {
   },
 };
 
+const defaultAmount = { quantity: "10", fractionalDigits: 3, tokenTicker: "ETH" as TokenTicker };
+const ethereumFee = {
+  gasLimit: "12345678",
+  gasPrice: { quantity: "20000000000", fractionalDigits: 18, tokenTicker: "ETH" as TokenTicker },
+};
+
 const send: SendTransaction & WithCreator = {
   kind: "bcp/send",
-  amount: { quantity: "10", fractionalDigits: 3, tokenTicker: "ETH" as TokenTicker },
+  amount: defaultAmount,
   creator: defaultCreator,
   sender: ethereumCodec.identityToAddress(defaultCreator),
-  fee: {
-    gasLimit: "12345678",
-    gasPrice: { quantity: "20000000000", fractionalDigits: 18, tokenTicker: "ETH" as TokenTicker },
-  },
+  fee: ethereumFee,
   memo: "A little donation",
-  recipient: "0x1212121212121212121212121212121212121212" as Address,
+  recipient: defaultAddress,
 };
 
 const usernameCreate: RegisterUsernameTx & WithCreator = {
   kind: "bns/register_username",
   creator: defaultCreator,
-  fee: {
-    gasLimit: "12345678",
-    gasPrice: { quantity: "20000000000", fractionalDigits: 18, tokenTicker: "ETH" as TokenTicker },
-  },
+  fee: ethereumFee,
   username: "test*iov",
   targets: [
     { chainId: "foobar" as ChainId, address: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address },
   ],
 };
 
+const createProposal: CreateProposalTx & WithCreator = {
+  kind: "bns/create_proposal",
+  creator: defaultCreator,
+  fee: {
+    tokens: defaultAmount,
+  },
+  title: "Just an idea",
+  description: "Try a centralized approach instead?",
+  electionRuleId: 2,
+  startTime: 1566383301091,
+  author: defaultAddress,
+  action: {
+    kind: ActionKind.CreateTextResolution,
+    resolution: "Stop all this blockchain stuff",
+  },
+};
+
+const vote: VoteTx & WithCreator = {
+  kind: "bns/vote",
+  creator: defaultCreator,
+  fee: {
+    tokens: defaultAmount,
+  },
+  proposalId: 666,
+  selection: VoteOption.Yes,
+};
+
 let txId = 111;
+function newTxId(): string {
+  return (txId++).toString();
+}
 
 const processedTx: ProcessedTx = {
-  id: (txId++).toString(),
+  id: newTxId(),
   signer: "Example Signer",
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
@@ -72,7 +103,7 @@ const processedTx: ProcessedTx = {
 };
 
 const blockExplorerProcessedTx: ProcessedTx = {
-  id: (txId++).toString(),
+  id: newTxId(),
   signer: "Example Signer",
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
@@ -81,15 +112,16 @@ const blockExplorerProcessedTx: ProcessedTx = {
 };
 
 const usernameCreatedTx: ProcessedTx = {
-  id: (txId++).toString(),
+  id: newTxId(),
   signer: "Example Signer",
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
   blockExplorerUrl: null,
   original: usernameCreate,
 };
+
 const errorUsernameCreatedTx: ProcessedTx = {
-  id: (txId++).toString(),
+  id: newTxId(),
   signer: "Example Signer",
   time: "Sat May 25 10:10:00 2019 +0200",
   error: "This is an example of reported error",
@@ -98,12 +130,30 @@ const errorUsernameCreatedTx: ProcessedTx = {
 };
 
 const errorProcessedTx: ProcessedTx = {
-  id: (txId++).toString(),
+  id: newTxId(),
   signer: "Example Signer",
   time: "Sat May 25 10:10:00 2019 +0200",
   error: "This is an example of reported error",
   blockExplorerUrl: null,
   original: send,
+};
+
+const createProposalTx: ProcessedTx = {
+  id: newTxId(),
+  signer: "Example Signer",
+  time: "Sat May 25 10:10:00 2019 +0200",
+  error: null,
+  blockExplorerUrl: null,
+  original: createProposal,
+};
+
+const voteTx: ProcessedTx = {
+  id: newTxId(),
+  signer: "Example Signer",
+  time: "Sat May 25 10:10:00 2019 +0200",
+  error: null,
+  blockExplorerUrl: null,
+  original: vote,
 };
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/${ACCOUNT_STATUS_PAGE}`, module)
@@ -122,6 +172,8 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/${ACCOUNT_STATUS_PAGE}`, module)
         errorProcessedTx,
         processedTx2,
         processedTx3,
+        createProposalTx,
+        voteTx,
       ],
     };
 
