@@ -1,53 +1,75 @@
-import { Block, Button, Form, SelectFieldFormItem, Typography, useForm } from "medulas-react-components";
+import { ProposalOptions, ProposalType } from "@iov/bns-governance";
+import { Block, Button, Form, FormValues, Typography, useForm } from "medulas-react-components";
 import React, { useState } from "react";
+import * as ReactRedux from "react-redux";
 
+import { sendSignAndPostRequest } from "../../../communication/signandpost";
+import { getBnsConnection } from "../../../logic/connection";
+import { RootState } from "../../../store/reducers";
 import DescriptionField from "./DescriptionField";
+import FormOptions from "./FormOptions";
 import ParticipationData from "./ParticipationData";
-import FormOptions from "./ProposalOptions";
-import ProposalTypeField from "./ProposalTypeField";
+import ProposalTypeSelect from "./ProposalTypeSelect";
 import TitleField from "./TitleField";
 import WhenField from "./WhenField";
 
-const formOptions = {
-  addCommitteeMember: "Add Committee Member",
-  removeCommitteeMember: "Remove Committee Member",
-  amendCommitteeThreshold: "Amend Committee Threshold",
-  amendCommitteeQuorum: "Amend Committee Quorum",
-  releaseGuaranteeFunds: "Release Guarantee Funds",
-  distributeFunds: "Distribute Funds",
-  addValidator: "Add Validator",
-  removeValidator: "Remove Validator",
-  amendProtocol: "Amend Blockchain Software",
+const buildProposalOptions = (type: ProposalType, values: FormValues): ProposalOptions => {
+  console.log(JSON.stringify(values));
+
+  const [year, month, day] = values["Date"].split("-").map(el => parseInt(el));
+  const [hour, minute] = values["Time"].split(":").map(el => parseInt(el));
+
+  const title = values["Title"];
+  const description = values["Description"];
+  const startTime = new Date(year, month - 1, day, hour, minute);
+  //TODO Get Election Rule from values when the UI for selecting committee is done
+  const electionRuleId = 1;
+
+  const commonOptions = {
+    title,
+    description,
+    startTime,
+    electionRuleId,
+  };
+
+  const text = values["Text"];
+
+  switch (type) {
+    default:
+      return { ...commonOptions, type: ProposalType.AmendProtocol, text };
+  }
 };
 
-const onSubmit = (): void => {};
-
 const ProposalForm = (): JSX.Element => {
-  const [proposalType, setProposalType] = useState("");
+  const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
+  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+
+  const changeProposal = (proposalType: ProposalType): void => setProposalType(proposalType);
+
+  const onSubmit = async (values: FormValues): Promise<void> => {
+    if (!governor) throw new Error("Governor not set in store. This is a bug.");
+
+    const connection = await getBnsConnection();
+    const proposalOptions = buildProposalOptions(proposalType, values);
+    const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
+
+    await sendSignAndPostRequest(connection, createProposalTx);
+  };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
     onSubmit,
   });
 
-  const handleChange = (item: SelectFieldFormItem): void => {
-    setProposalType(item.name);
-  };
-
   return (
     <Block flexGrow={1} margin={2}>
       <Typography>Create Proposal</Typography>
       <Form onSubmit={handleSubmit}>
-        <ProposalTypeField
-          form={form}
-          formOptions={formOptions}
-          proposalType={proposalType}
-          handleChange={handleChange}
-        />
+        <ProposalTypeSelect form={form} changeProposal={changeProposal} />
         <Block display="flex" justifyContent="space-between" marginTop={2}>
           <TitleField form={form} />
           <WhenField form={form} />
         </Block>
-        <FormOptions proposalType={proposalType} formOptions={formOptions} form={form} />
+        <FormOptions form={form} proposalType={proposalType} />
         <DescriptionField form={form} />
         <ParticipationData />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
