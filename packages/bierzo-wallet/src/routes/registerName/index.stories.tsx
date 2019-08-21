@@ -13,7 +13,7 @@ import Layout from "./components/index";
 
 export const REGISTER_USERNAME_STORY_PATH = `${WALLET_ROOT}/Register Username`;
 export const REGISTER_USERNAME_REGISTRATION_STORY_PATH = "Register Username";
-const EGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registeration confirmation";
+const REGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registration confirmation";
 
 const addresses: ChainAddressPair[] = [
   {
@@ -55,7 +55,7 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
     ),
   )
   .add(
-    EGISTER_USERNAME_CONFIRMATION_STORY_PATH,
+    REGISTER_USERNAME_CONFIRMATION_STORY_PATH,
     (): JSX.Element => (
       <DecoratedStorybook>
         <ConfirmRegistration

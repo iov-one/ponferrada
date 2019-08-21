@@ -16,6 +16,9 @@ import Link from "./components/Link";
 import { List, ListItem, ListItemAvatar, ListItemIcon, ListItemText } from "./components/List";
 import PageLayout from "./components/PageLayout";
 import Switch from "./components/Switch";
+import Paragraph from "./components/TextMarkup/Paragraph";
+import Section from "./components/TextMarkup/Section";
+import Title from "./components/TextMarkup/Title";
 import Tooltip from "./components/Tooltip";
 import Typography from "./components/Typography";
 import ErrorBoundary from "./errors/ErrorBoundary";
@@ -53,11 +56,14 @@ export {
   MedulasThemeProvider,
   PageColumn,
   PageLayout,
+  Paragraph,
+  Section,
   SelectFieldForm,
   SelectFieldFormItem,
   Switch,
   TextFieldForm,
   theme,
+  Title,
   Tooltip,
   Typography,
   useForm,

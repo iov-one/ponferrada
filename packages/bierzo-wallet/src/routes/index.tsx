@@ -11,11 +11,13 @@ import {
   LOGIN_ROUTE,
   PAYMENT_ROUTE,
   REGISTER_PERSONALIZED_ADDRESS_ROUTE,
+  TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "./paths";
 import Payment from "./payment";
 import ReceivePayments from "./receivePayments";
 import RegisterUsername from "./registerName";
+import Terms from "./terms";
 import Transactions from "./transactions";
 
 export const history = createBrowserHistory();
@@ -31,6 +33,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={REGISTER_PERSONALIZED_ADDRESS_ROUTE} component={RegisterUsername} />
+        <Route exact path={TERMS_ROUTE} component={Terms} />
       </RequireLogin>
     </Switch>
   </Router>
