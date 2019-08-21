@@ -15,6 +15,7 @@ interface Props {
 
 const Buttons = ({ id, vote }: Props): JSX.Element => {
   const [currentVote, setCurrentVote] = useState(vote);
+  const [previousVote, setPreviousVote] = useState(currentVote);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
@@ -28,16 +29,12 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
   const submitVote = async (): Promise<void> => {
     if (!governor) throw new Error("Governor not set in store. This is a bug.");
 
-    if (currentVote !== undefined) {
+    if (currentVote !== undefined && currentVote !== previousVote) {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
-      // TODO: remove error handler
-      try {
-        await sendSignAndPostRequest(connection, voteTx);
-      } catch (error) {
-        console.warn(error);
-      }
+      await sendSignAndPostRequest(connection, voteTx);
+      setPreviousVote(currentVote);
     }
   };
 
