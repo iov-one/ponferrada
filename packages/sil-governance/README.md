@@ -1,1 +1,3 @@
-This is the decentralized IOV's voting app for autonomous organisations
+# Sil Governance
+
+A nice dashboard to help the Governing Board and committee members mange proposals and votes.
