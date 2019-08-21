@@ -63,7 +63,7 @@ interface Props {
 const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
-    onSignup(formValues);
+    await onSignup(formValues);
   };
 
   const { form, handleSubmit, pristine, submitting, invalid } = useForm({
