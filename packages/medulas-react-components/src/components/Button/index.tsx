@@ -17,7 +17,7 @@ const Button = ({ children, variant, spinner, ...restProps }: Props): JSX.Elemen
   return (
     <MuiButton variant={muiVariant} {...restProps}>
       {spinner && (
-        <Block marginRight={2}>
+        <Block display="flex" marginRight={2}>
           <CircularProgress size={22} color="inherit" />
         </Block>
       )}
