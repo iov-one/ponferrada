@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
   empty: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(3),
+    justifyContent: "center",
   },
   center: {
     display: "flex",
