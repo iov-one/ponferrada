@@ -420,16 +420,7 @@ exports[`Storyshots Bierzo wallet Terms 1`] = `
             <p
               className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
             >
-              The website 
-              <a
-                href="https://wallet.hugnet.iov.one"
-                onClick={[Function]}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                https://wallet.hugnet.iov.one
-              </a>
-               (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
+              The website (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
             </p>
           </div>
           <div
@@ -1711,7 +1702,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
+exports[`Storyshots Bierzo wallet/Components PageMenuColumn 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -1921,6 +1912,202 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="logoBlack.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
+              onClick={[Function]}
+            >
+              Balance
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
+              onClick={[Function]}
+            >
+              Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <span
+          className="MuiBadge-root"
+        >
+          <img
+            alt="Transactions Menu"
+            className="makeStyles-root"
+            src="bell.svg"
+          />
+          <span
+            className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+          >
+            
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h5
+      className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
+    >
+      What is Lorem Ipsum?
+    </h5>
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      <strong>
+        Lorem Ipsum
+      </strong>
+       is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -2100,33 +2287,19 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
   <div
     className="MuiBox-root MuiBox-root"
   >
-    <div
-      className="MuiBox-root MuiBox-root"
+    <h5
+      className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
     >
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <h5
-          className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
-        >
-          What is Lorem Ipsum?
-        </h5>
-        <p
-          className="MuiTypography-root MuiTypography-body1"
-        >
-          <strong>
-            Lorem Ipsum
-          </strong>
-           is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-    </div>
+      What is Lorem Ipsum?
+    </h5>
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      <strong>
+        Lorem Ipsum
+      </strong>
+       is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
   </div>
 </div>
 `;
@@ -2890,7 +3063,7 @@ exports[`Storyshots Bierzo wallet/Register Username Register Username 1`] = `
 </form>
 `;
 
-exports[`Storyshots Bierzo wallet/Register Username Registeration confirmation 1`] = `
+exports[`Storyshots Bierzo wallet/Register Username Registration confirmation 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
   id="username-confirmation-view-id"
