@@ -12,15 +12,23 @@ import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
 import { ACCOUNT_STATUS_PAGE } from "../account/index.stories";
 import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
-import { getCashTransaction, getEthTransaction, getUsernameTransaction } from "./test";
+import {
+  getCashTransaction,
+  getCreateProposalTransaction,
+  getEthTransaction,
+  getUsernameTransaction,
+  getVoteTransaction,
+} from "./test";
 
 const TX_REQUEST_PATH = `${CHROME_EXTENSION_ROOT}/Transaction Request`;
-const SHOW_TX_REQUEST_PAGE = "Show TX Request page";
-const SHOW_ETHEREUM_TX_REQUEST_PAGE = "Show TX Request page (Ethereum)";
-const SHOW_USERNAME_REQUEST_PAGE = "Show USERNAME Request page";
-const REJECT_REQUEST_PAGE = "Reject Request page";
+const SEND_BNS_REQUEST_PAGE = "Send (BNS)";
+const SEND_TX_ETHEREUM_REQUEST_PAGE = "Send (Ethereum)";
+const REGISTER_USERNAME_REQUEST_PAGE = "Create Username";
+const CREATE_PROPOSAL_REQUEST_PAGE = "Create Proposal";
+const VOTE_REQUEST_PAGE = "Vote";
+const REJECT_REQUEST_PAGE = "Reject Request";
 
-const txRequest: Request<SignAndPostResponseData> = {
+const sendBnsRequest: Request<SignAndPostResponseData> = {
   id: 0,
   accept: () => action("accept request"),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
@@ -31,7 +39,7 @@ const txRequest: Request<SignAndPostResponseData> = {
   },
 };
 
-const ethereumTxRequest: Request<SignAndPostResponseData> = {
+const sendEthereumRequest: Request<SignAndPostResponseData> = {
   id: 0,
   accept: () => action("accept request"),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
@@ -42,7 +50,7 @@ const ethereumTxRequest: Request<SignAndPostResponseData> = {
   },
 };
 
-const usernameRequest: Request<SignAndPostResponseData> = {
+const registerUsernameRequest: Request<SignAndPostResponseData> = {
   id: 0,
   accept: () => action("accept request"),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
@@ -53,24 +61,46 @@ const usernameRequest: Request<SignAndPostResponseData> = {
   },
 };
 
+const createProposalRequest: Request<SignAndPostResponseData> = {
+  id: 0,
+  accept: () => action("accept request"),
+  reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
+  senderUrl: "http://localhost/",
+  reason: "I would like you to sign this TX",
+  responseData: {
+    tx: getCreateProposalTransaction(),
+  },
+};
+
+const voteRequest: Request<SignAndPostResponseData> = {
+  id: 0,
+  accept: () => action("accept request"),
+  reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
+  senderUrl: "http://localhost/",
+  reason: "I would like you to sign this TX",
+  responseData: {
+    tx: getVoteTransaction(),
+  },
+};
+
 storiesOf(TX_REQUEST_PATH, module)
-  .add(SHOW_TX_REQUEST_PAGE, () => {
-    const { tx } = txRequest.responseData;
+  .add(SEND_BNS_REQUEST_PAGE, () => {
+    const { tx } = sendBnsRequest.responseData;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          sender={txRequest.senderUrl}
+          sender={sendBnsRequest.senderUrl}
           onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
     );
   })
-  .add(SHOW_ETHEREUM_TX_REQUEST_PAGE, () => {
-    const { senderUrl } = ethereumTxRequest;
-    const { tx } = ethereumTxRequest.responseData;
+  .add(SEND_TX_ETHEREUM_REQUEST_PAGE, () => {
+    const { senderUrl } = sendEthereumRequest;
+    const { tx } = sendEthereumRequest.responseData;
 
     return (
       <Storybook>
@@ -83,9 +113,39 @@ storiesOf(TX_REQUEST_PATH, module)
       </Storybook>
     );
   })
-  .add(SHOW_USERNAME_REQUEST_PAGE, () => {
-    const { senderUrl } = usernameRequest;
-    const { tx } = usernameRequest.responseData;
+  .add(REGISTER_USERNAME_REQUEST_PAGE, () => {
+    const { senderUrl } = registerUsernameRequest;
+    const { tx } = registerUsernameRequest.responseData;
+
+    return (
+      <Storybook>
+        <ShowRequest
+          sender={senderUrl}
+          tx={tx}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
+        />
+      </Storybook>
+    );
+  })
+  .add(CREATE_PROPOSAL_REQUEST_PAGE, () => {
+    const { senderUrl } = createProposalRequest;
+    const { tx } = createProposalRequest.responseData;
+
+    return (
+      <Storybook>
+        <ShowRequest
+          sender={senderUrl}
+          tx={tx}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
+        />
+      </Storybook>
+    );
+  })
+  .add(VOTE_REQUEST_PAGE, () => {
+    const { senderUrl } = voteRequest;
+    const { tx } = voteRequest.responseData;
 
     return (
       <Storybook>
@@ -99,13 +159,13 @@ storiesOf(TX_REQUEST_PATH, module)
     );
   })
   .add(REJECT_REQUEST_PAGE, () => {
-    const { senderUrl } = txRequest;
+    const { senderUrl } = sendBnsRequest;
 
     return (
       <Storybook>
         <RejectRequest
           sender={senderUrl}
-          onBack={linkTo(TX_REQUEST_PATH, SHOW_TX_REQUEST_PAGE)}
+          onBack={linkTo(TX_REQUEST_PATH, SEND_BNS_REQUEST_PAGE)}
           onRejectRequest={action("onAcceptRequest")}
         />
       </Storybook>

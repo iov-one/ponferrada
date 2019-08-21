@@ -1,5 +1,5 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isRegisterUsernameTx } from "@iov/bns";
+import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx, VoteOption } from "@iov/bns";
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -10,8 +10,10 @@ import { amountToString } from "ui-logic";
 import { ProcessedTx } from "../../../../extension/background/model/persona";
 import iconErrorTx from "../../assets/transactionError.svg";
 import iconSendTx from "../../assets/transactionSend.svg";
+import MsgCreateProposalTx from "./MsgCreateProposalTx";
 import MsgRegisterUsernameTx from "./MsgRegisterUsernameTx";
 import MsgSendTransaction from "./MsgSendTransaction";
+import MsgVoteTx from "./MsgVoteTx";
 
 interface ItemProps {
   readonly item: ProcessedTx;
@@ -58,6 +60,26 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
         id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
         iovAddress={iovAddress}
+        error={error}
+      />
+    );
+  } else if (isCreateProposalTx(item.original)) {
+    const { title } = item.original;
+    msg = (
+      <MsgCreateProposalTx
+        id={item.id}
+        blockExplorerUrl={item.blockExplorerUrl}
+        title={title}
+        error={error}
+      />
+    );
+  } else if (isVoteTx(item.original)) {
+    const { selection } = item.original;
+    msg = (
+      <MsgVoteTx
+        id={item.id}
+        blockExplorerUrl={item.blockExplorerUrl}
+        selection={VoteOption[selection]}
         error={error}
       />
     );
