@@ -209,6 +209,578 @@ exports[`Storyshots Bierzo wallet Receive Payment 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo wallet Terms 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="logoBlack.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
+              onClick={[Function]}
+            >
+              Balance
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
+              onClick={[Function]}
+            >
+              Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <span
+          className="MuiBadge-root"
+        >
+          <img
+            alt="Transactions Menu"
+            className="makeStyles-root"
+            src="bell.svg"
+          />
+          <span
+            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+          >
+            
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Terms
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              The website 
+              <a
+                href="https://wallet.hugnet.iov.one"
+                onClick={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                https://wallet.hugnet.iov.one
+              </a>
+               (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          User License
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              The Website, its contents, design, trademarks and software are the sole property of IOV and/or its licensors and are protected by intellectual property laws in France and in foreign countries.
+            </p>
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Permission is granted to temporarily download one copy of the materials (information or software) on the Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and, subject to mandatory legal provisions, you may not:
+            </p>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+              >
+                 - modify or copy the materials;
+              </p>
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+              >
+                 
+                - use the materials for any commercial purpose, or for any public display (commercial or non-commercial);
+              </p>
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+              >
+                 
+                - attempt to decompile or reverse engineer any software contained on the Website;
+              </p>
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+              >
+                 
+                - remove any copyright or other proprietary information from the materials; or
+              </p>
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+              >
+                 
+                - transfer the materials to another person or "mirror" the materials on any other server.
+              </p>
+            </div>
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              This license shall automatically terminate if you violate any of these restrictions and may be terminated by IOV at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Member account
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Once you have registered on the Website, you will receive a private access code to access to a secured platform. You must ensure that any information given to IOV in connection with your IOV account will always be accurate, correct, and up to date, and must promptly update it in the event changes occur.
+            </p>
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              You are solely responsible to IOV for the use of your account and must not disclose your private password to a third-party. You must notify IOV immediately if you become aware of any unauthorized use of your account. IOV will not be liable for any loss or liability incurred as a result of an unauthorized person using your account. IOV may disable you Member account or password, whether chosen by you or allocated by us, at any time, if in our reasonable opinion you have failed to comply with any of the provisions of these Terms.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Disclaimer
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              The Website and its contents are provided on an ”as is” basis. IOV makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+            </p>
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Further, IOV does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the its Website or otherwise relating to its content or on any sites linked to this site.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Limitations
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              In no event shall IOV or its subcontractors be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the Website such as payments sent to wrong IOV addresses and accidental deletion of wallets, corrupted files and security problems., even if IOV or an IOV authorized representative has been notified orally or in writing of the possibility of such damage.
+            </p>
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              The foregoing disclaimer of certain damages and limitation of liability will apply to the maximum extent permitted by applicable law. The laws of some states or jurisdictions do not allow the exclusion or limitation of certain damages, so some or all of the exclusions and limitations set forth above may not apply to you.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Accuracy of content
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              The contents appearing on the Website could include technical, typographical, or photographic errors. IOV does not warrant that any of the content on its website are accurate, complete or current. IOV may make changes to the contents contained on its website at any time without notice. However IOV does not make any commitment to update the contents.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Links
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              IOV has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by IOV of the site or association with their operators or promoters. Use of any such linked website is at the user's own risk.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Modifications
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              IOV reserves the right to update regularly these Terms, at its sole discretion. We invite you to regularly verify these Terms to take notice of any modifications we make, as they are binding on you. Your continued use of the Website after any modifications, shall constitute your consent to such changes. If you do not agree to such changes, you have no right to obtain information or access to the Website and must immediately cease use of it.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Governing Law
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              These Terms and your use of the Website, as well as all matters arising out or in relation to them (including non-contractual disputes or claims and their interpretation), shall be governed by French law, to the exclusion of the rules on conflicts of laws. Any claim or dispute regarding these Terms or in relation to them shall (including for noncontractual disputes or claims and their interpretation) be subject to the exclusive jurisdiction of Paris competent courts, France.
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Contacting us
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-content"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              For any request, please contact us at 
+              <a
+                href="mailto:contact@iov.one"
+                onClick={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                contact@iov.one
+              </a>
+            </p>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo wallet/Balance View 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -1318,19 +1890,33 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
   <div
     className="MuiBox-root MuiBox-root"
   >
-    <h5
-      className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
+    <div
+      className="MuiBox-root MuiBox-root"
     >
-      What is Lorem Ipsum?
-    </h5>
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      <strong>
-        Lorem Ipsum
-      </strong>
-       is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          What is Lorem Ipsum?
+        </h5>
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          <strong>
+            Lorem Ipsum
+          </strong>
+           is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -1514,19 +2100,33 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
   <div
     className="MuiBox-root MuiBox-root"
   >
-    <h5
-      className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
+    <div
+      className="MuiBox-root MuiBox-root"
     >
-      What is Lorem Ipsum?
-    </h5>
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      <strong>
-        Lorem Ipsum
-      </strong>
-       is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          What is Lorem Ipsum?
+        </h5>
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          <strong>
+            Lorem Ipsum
+          </strong>
+           is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -4548,6 +5148,76 @@ Array [
         className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
       />
     </label>
+  </div>,
+]
+`;
+
+exports[`Storyshots Components TextMarkup 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    What is Lorem Ipsum?
+  </h6>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    Where does it come from?
+  </h6>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
   </div>,
 ]
 `;
