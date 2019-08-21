@@ -102,7 +102,7 @@ DOCKER_BUILD_VERSION=$(echo "${TRAVIS_COMMIT}" | cut -c 1-10);
   docker build -t "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" .
 )
 (
-  cd packages/sil-voting-app
+  cd packages/sil-governance
   yarn override-config-staging
   docker build -t "iov1/sil-governance:$DOCKER_BUILD_VERSION" .
 )
