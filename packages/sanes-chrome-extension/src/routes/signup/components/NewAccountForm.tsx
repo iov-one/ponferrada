@@ -128,13 +128,13 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
           />
         </Block>
         <Block display="flex" justifyContent="space-between">
-          <Block width={120}>
+          <Block width={140}>
             <Back fullWidth onClick={onBack}>
               Back
             </Back>
           </Block>
-          <Block width={120}>
-            <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
+          <Block width={140}>
+            <Button fullWidth type="submit" disabled={invalid || pristine || submitting} spinner={submitting}>
               Continue
             </Button>
           </Block>

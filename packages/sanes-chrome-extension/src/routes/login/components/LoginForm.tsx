@@ -27,8 +27,8 @@ const LoginForm = ({ onLogin, validate }: Props): JSX.Element => {
         />
       </Block>
       <Block display="flex" justifyContent="center">
-        <Block width={120}>
-          <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
+        <Block width={140}>
+          <Button fullWidth type="submit" disabled={invalid || pristine || submitting} spinner={submitting}>
             Continue
           </Button>
         </Block>
