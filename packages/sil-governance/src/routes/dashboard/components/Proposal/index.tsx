@@ -24,7 +24,7 @@ export interface ProposalProps {
   readonly title: string;
   readonly author: Address;
   readonly description: string;
-  readonly creationDate: Date;
+  readonly startDate: Date;
   readonly expiryDate: Date;
   readonly quorum: number;
   readonly threshold: number;
@@ -40,7 +40,7 @@ const Proposal = ({
   title,
   author,
   description,
-  creationDate,
+  startDate,
   expiryDate,
   quorum,
   threshold,
@@ -57,7 +57,7 @@ const Proposal = ({
         <Identification id={id} author={author} />
         <Description description={description} />
         <Block display="flex" marginTop={2}>
-          <Period expiryDate={expiryDate} creationDate={creationDate} hasEnded={hasEnded} />
+          <Period expiryDate={expiryDate} startDate={startDate} hasEnded={hasEnded} />
           <Block marginLeft={1}>
             <DeleteButton />
           </Block>

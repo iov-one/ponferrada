@@ -217,14 +217,14 @@ export const getDummyProposalsState = (): ProposalsState => {
   const getVote = (proposal: Proposal): VoteOption | undefined => getDummyVote(proposal);
 
   const proposalsState = proposals.map(proposal => {
-    const creationDate = new Date(proposal.votingStartTime * 1000);
+    const startDate = new Date(proposal.votingStartTime * 1000);
 
     return {
       id: proposal.id,
       title: proposal.title,
       author: proposal.author,
       description: proposal.description,
-      creationDate,
+      startDate,
       expiryDate: new Date(proposal.votingEndTime * 1000),
       quorum: getQuorum(proposal),
       threshold: getThreshold(proposal),
@@ -237,7 +237,7 @@ export const getDummyProposalsState = (): ProposalsState => {
       },
       result: proposal.result,
       vote: getVote(proposal),
-      hasStarted: creationDate < new Date(),
+      hasStarted: startDate < new Date(),
       hasEnded: !(proposal.status === ProposalStatus.Submitted),
     };
   });
