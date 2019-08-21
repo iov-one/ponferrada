@@ -65,6 +65,7 @@ const Proposal = ({
       <VotingPanel
         result={result}
         vote={vote}
+        id={id}
         quorum={quorum}
         threshold={threshold}
         tally={tally}
