@@ -56,7 +56,7 @@ export const checkProposal = (proposal: Element): void => {
   expect(expiryDate).toBe("Expires on 12/10/2020, 4:00:00 AM");
 
   const startDate = dates.children[1].textContent;
-  expect(startDate).toBe("Created on 12/10/1995, 1:00:00 AM");
+  expect(startDate).toBe("Started on 12/10/1995, 1:00:00 AM");
 
   const deleteIcon = proposalPanel.children[3].children[1].children[0].children[0];
   expect(deleteIcon.getAttribute("alt")).toBe("Delete Icon");
