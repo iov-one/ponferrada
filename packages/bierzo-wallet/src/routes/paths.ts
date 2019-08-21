@@ -6,3 +6,4 @@ export const CONFIRM_TRANSACTION_ROUTE = "/confirm-transaction";
 export const ADDRESSES_ROUTE = "/addresses";
 export const REGISTER_PERSONALIZED_ADDRESS_ROUTE = "/register-personalized-address";
 export const TERMS_ROUTE = "/terms";
+export const POLICY_ROUTE = "/policy";

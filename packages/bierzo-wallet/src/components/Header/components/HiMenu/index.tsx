@@ -7,7 +7,7 @@ import { Block, Hairline, Image, ListMenu, Typography } from "medulas-react-comp
 import * as React from "react";
 
 import { history } from "../../../../routes";
-import { TERMS_ROUTE } from "../../../../routes/paths";
+import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
 import { getBorderColor } from "../../../../theme/css";
 import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
@@ -66,7 +66,7 @@ const onTerms = (): void => {
 };
 
 const onPolicy = (): void => {
-  // history.push(PRIVACY_POLICY_ROUTE);
+  history.push(POLICY_ROUTE);
 };
 
 const HiMenu = (props: {}): JSX.Element => {

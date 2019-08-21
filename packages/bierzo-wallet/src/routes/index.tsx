@@ -10,11 +10,13 @@ import {
   BALANCE_ROUTE,
   LOGIN_ROUTE,
   PAYMENT_ROUTE,
+  POLICY_ROUTE,
   REGISTER_PERSONALIZED_ADDRESS_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "./paths";
 import Payment from "./payment";
+import Policy from "./policy";
 import ReceivePayments from "./receivePayments";
 import RegisterUsername from "./registerName";
 import Terms from "./terms";
@@ -34,6 +36,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={REGISTER_PERSONALIZED_ADDRESS_ROUTE} component={RegisterUsername} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
+        <Route exact path={POLICY_ROUTE} component={Policy} />
       </RequireLogin>
     </Switch>
   </Router>
