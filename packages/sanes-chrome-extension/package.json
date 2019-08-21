@@ -61,7 +61,7 @@
     "jspdf": "^1.5.3",
     "level-js": "^4.0.1",
     "medulas-react-components": "^0.3.0",
-    "memdown": "^4.0.0",
+    "memdown": "^5.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-final-form-hooks": "^2.0.1",
