@@ -420,7 +420,9 @@ exports[`Storyshots Bierzo wallet Terms 1`] = `
             <p
               className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
             >
-              The website (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
+              The website 
+              
+               (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
             </p>
           </div>
           <div
