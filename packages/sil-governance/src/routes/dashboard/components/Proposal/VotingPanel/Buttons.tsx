@@ -15,7 +15,7 @@ interface Props {
 
 const Buttons = ({ id, vote }: Props): JSX.Element => {
   const [currentVote, setCurrentVote] = useState(vote);
-  const [previousVote, setPreviousVote] = useState(currentVote);
+  const [previousVote, setPreviousVote] = useState(vote);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
