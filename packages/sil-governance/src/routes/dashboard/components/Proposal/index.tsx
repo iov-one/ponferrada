@@ -31,6 +31,7 @@ export interface ProposalProps {
   readonly tally: Tally;
   readonly result: ProposalResult;
   readonly vote: VoteOption | undefined;
+  readonly hasStarted: boolean;
   readonly hasEnded: boolean;
 }
 
@@ -46,6 +47,7 @@ const Proposal = ({
   tally,
   result,
   vote,
+  hasStarted,
   hasEnded,
 }: ProposalProps): JSX.Element => {
   return (
@@ -69,6 +71,7 @@ const Proposal = ({
         quorum={quorum}
         threshold={threshold}
         tally={tally}
+        hasStarted={hasStarted}
         hasEnded={hasEnded}
       />
     </Block>
