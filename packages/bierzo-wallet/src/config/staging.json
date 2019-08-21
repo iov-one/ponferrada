@@ -5,6 +5,7 @@
     "ethereum-eip155-4": "Rinkeby"
   },
   "extensionId": "hkmeinfklhongiffbgkfaandidpmklen",
+  "websiteName": "wallet.hugnet.iov.one",
   "chains": [
     {
       "chainSpec": {

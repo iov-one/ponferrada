@@ -5,6 +5,7 @@
     "ethereum-eip155-1": "Ethereum Mainnet"
   },
   "extensionId": "N/A",
+  "websiteName": "N/A",
   "chains": [
     {
       "chainSpec": {
