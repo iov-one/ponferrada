@@ -13,7 +13,7 @@ import Layout from "./components/index";
 
 export const REGISTER_USERNAME_STORY_PATH = `${WALLET_ROOT}/Register Username`;
 export const REGISTER_USERNAME_REGISTRATION_STORY_PATH = "Register Username";
-const REGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registeration confirmation";
+const REGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registration confirmation";
 
 const addresses: ChainAddressPair[] = [
   {

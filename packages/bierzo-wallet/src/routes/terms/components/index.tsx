@@ -1,21 +1,14 @@
 import { Block, Link, Paragraph, Section, Title } from "medulas-react-components";
 import * as React from "react";
 
-/**
- * Workaround to avoid "Comment location overlaps with node location" error
- * https://github.com/prettier/prettier/issues/2347
- */
-
-const addLinkTo = (link: string): JSX.Element => <Link to={link}>{link}</Link>;
-
 export default (): JSX.Element => {
   return (
     <React.Fragment>
       <Title>Terms</Title>
       <Section>
         <Paragraph>
-          The website {addLinkTo("https://wallet.hugnet.iov.one")} (hereinafter: the “Website”) is owned and
-          operated by the company IOV SAS, 55 Rue La Boetie, 75008, Paris, France (hereinafter "IOV").
+          The website (hereinafter: the “Website”) is owned and operated by the company IOV SAS, 55 Rue La
+          Boetie, 75008, Paris, France (hereinafter "IOV").
         </Paragraph>
       </Section>
       <Title>User License</Title>
