@@ -33,8 +33,10 @@ const buildProposalOptions = (type: ProposalType, values: FormValues): ProposalO
   const text = values["Text"];
 
   switch (type) {
-    default:
+    case ProposalType.AmendProtocol:
       return { ...commonOptions, type: ProposalType.AmendProtocol, text };
+    default:
+      throw new Error("Unexpected type of Proposal. This is a bug.");
   }
 };
 
