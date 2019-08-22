@@ -4,7 +4,7 @@ import puppeteer, { Browser, Page } from "puppeteer";
 import { getConfig } from "../../config";
 
 export function launchBrowser(slowMo: number = 0, install: boolean = true): Promise<Browser> {
-  const CRX_PATH = require("path").join(__dirname, "../../../../sanes-chrome-extension/build");
+  const CRX_PATH = require("path").join(__dirname, "../../../../sanes-browser-extension/build");
   const args = install ? [`--disable-extensions-except=${CRX_PATH}`, `--load-extension=${CRX_PATH}`] : [];
 
   return puppeteer.launch({
