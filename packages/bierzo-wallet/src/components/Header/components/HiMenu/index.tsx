@@ -11,6 +11,7 @@ import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
 import { getBorderColor } from "../../../../theme/css";
 import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
+import logout from "../../assets/logout.svg";
 import privacy from "../../assets/privacyPolicy.svg";
 import terms from "../../assets/terms.svg";
 
@@ -69,6 +70,10 @@ const onPolicy = (): void => {
   history.push(POLICY_ROUTE);
 };
 
+const onLogout = (): void => {
+  history.push(POLICY_ROUTE);
+};
+
 const HiMenu = (props: {}): JSX.Element => {
   const classes = useStyles();
   const { ...rest } = props;
@@ -100,6 +105,8 @@ const HiMenu = (props: {}): JSX.Element => {
           msg="Privacy Policy"
           alt="Privacy Policy"
         />
+        <Hairline />
+        <HiElement src={logout} id={LOG_OUT_ID} action={onLogout} msg="Logout" alt="Logout" />
       </Block>
     </ListMenu>
   );
