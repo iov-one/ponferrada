@@ -12,36 +12,27 @@ import ReleaseGuaranteeFunds from "./ReleaseGuaranteeFunds";
 import RemoveCommitteeMember from "./RemoveCommitteeMember";
 import RemoveValidator from "./RemoveValidator";
 
+const proposalOptions = {
+  [ProposalType.AmendProtocol]: AmendProtocol,
+  [ProposalType.AddCommitteeMember]: AddCommitteeMember,
+  [ProposalType.RemoveCommitteeMember]: RemoveCommitteeMember,
+  [ProposalType.AmendElectionRuleThreshold]: AmendCommitteeThreshold,
+  [ProposalType.AmendElectionRuleQuorum]: AmendCommitteeQuorum,
+  [ProposalType.AddValidator]: AddValidator,
+  [ProposalType.RemoveValidator]: RemoveValidator,
+  [ProposalType.ReleaseGuaranteeFunds]: ReleaseGuaranteeFunds,
+  [ProposalType.DistributeFunds]: DistributeFunds,
+};
+
 interface Props {
   form: FormApi;
   proposalType: ProposalType;
 }
 
 const FormOptions = ({ form, proposalType }: Props): JSX.Element => {
-  const getCurrentFormOption = (): JSX.Element => {
-    switch (proposalType) {
-      case ProposalType.AmendProtocol:
-        return <AmendProtocol form={form} />;
-      case ProposalType.AddCommitteeMember:
-        return <AddCommitteeMember form={form} />;
-      case ProposalType.RemoveCommitteeMember:
-        return <RemoveCommitteeMember form={form} />;
-      case ProposalType.AmendElectionRuleThreshold:
-        return <AmendCommitteeThreshold form={form} />;
-      case ProposalType.AmendElectionRuleQuorum:
-        return <AmendCommitteeQuorum form={form} />;
-      case ProposalType.AddValidator:
-        return <AddValidator form={form} />;
-      case ProposalType.RemoveValidator:
-        return <RemoveValidator form={form} />;
-      case ProposalType.ReleaseGuaranteeFunds:
-        return <ReleaseGuaranteeFunds form={form} />;
-      case ProposalType.DistributeFunds:
-        return <DistributeFunds form={form} />;
-    }
-  };
+  const FormComponent = proposalOptions[proposalType];
 
-  return <React.Fragment>{getCurrentFormOption()}</React.Fragment>;
+  return <FormComponent form={form} />;
 };
 
 export default FormOptions;
