@@ -114,19 +114,33 @@ fold_end
 
 if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]]; then
   fold_start "deployment-master"
-  docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:latest"
-  docker push "iov1/bierzo-wallet:latest"
-  docker logout
+  (
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+    docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:latest"
+    docker push "iov1/bierzo-wallet:latest"
+
+    docker tag "iov1/sil-governance:$DOCKER_BUILD_VERSION" "iov1/sil-governance:latest"
+    docker push "iov1/sil-governance:latest"
+
+    docker logout
+  )
   fold_end
 elif [[ "$TRAVIS_TAG" != "" ]]; then
   fold_start "deployment-tagged"
   echo "Uploading export for tag $TRAVIS_TAG"
 
-  docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:$TRAVIS_TAG"
-  docker push "iov1/bierzo-wallet:$TRAVIS_TAG"
-  docker logout
+  (
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+    docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:$TRAVIS_TAG"
+    docker push "iov1/bierzo-wallet:$TRAVIS_TAG"
+
+    docker tag "iov1/sil-governance:$DOCKER_BUILD_VERSION" "iov1/sil-governance:$TRAVIS_TAG"
+    docker push "iov1/sil-governance:$TRAVIS_TAG"
+
+    docker logout
+  )
 
   # Create CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN as described in https://developer.chrome.com/webstore/using_webstore_api#beforeyoubegin
   ACCESS_TOKEN=$(curl -sS \
