@@ -79,8 +79,8 @@ const HiMenu = (props: {}): JSX.Element => {
   const { ...rest } = props;
 
   const onLogout = (): void => {
-    dispatch(resetAppAction());
     disconnect();
+    dispatch(resetAppAction());
   };
 
   const starter = (open: boolean): JSX.Element => (
