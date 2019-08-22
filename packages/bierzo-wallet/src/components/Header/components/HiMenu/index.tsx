@@ -5,9 +5,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Block, Hairline, Image, ListMenu, Typography } from "medulas-react-components";
 import * as React from "react";
+import * as ReactRedux from "react-redux";
 
+import { disconnect } from "../../../../logic/connection";
 import { history } from "../../../../routes";
 import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
+import { resetAppAction } from "../../../../store";
 import { getBorderColor } from "../../../../theme/css";
 import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
@@ -70,13 +73,15 @@ const onPolicy = (): void => {
   history.push(POLICY_ROUTE);
 };
 
-const onLogout = (): void => {
-  history.push(POLICY_ROUTE);
-};
-
 const HiMenu = (props: {}): JSX.Element => {
   const classes = useStyles();
+  const dispatch = ReactRedux.useDispatch();
   const { ...rest } = props;
+
+  const onLogout = (): void => {
+    dispatch(resetAppAction());
+    disconnect();
+  };
 
   const starter = (open: boolean): JSX.Element => (
     <Block className={classes.root}>
