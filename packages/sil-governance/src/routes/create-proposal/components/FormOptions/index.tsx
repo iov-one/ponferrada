@@ -17,20 +17,31 @@ interface Props {
   proposalType: ProposalType;
 }
 
-const ProposalOptions = ({ form, proposalType }: Props): JSX.Element => {
-  return (
-    <React.Fragment>
-      {proposalType === ProposalType.AmendProtocol && <AmendProtocol form={form} />}
-      {proposalType === ProposalType.AddCommitteeMember && <AddCommitteeMember form={form} />}
-      {proposalType === ProposalType.RemoveCommitteeMember && <RemoveCommitteeMember form={form} />}
-      {proposalType === ProposalType.AmendElectionRuleThreshold && <AmendCommitteeThreshold form={form} />}
-      {proposalType === ProposalType.AmendElectionRuleQuorum && <AmendCommitteeQuorum form={form} />}
-      {proposalType === ProposalType.AddValidator && <AddValidator form={form} />}
-      {proposalType === ProposalType.RemoveValidator && <RemoveValidator form={form} />}
-      {proposalType === ProposalType.ReleaseGuaranteeFunds && <ReleaseGuaranteeFunds form={form} />}
-      {proposalType === ProposalType.DistributeFunds && <DistributeFunds form={form} />}
-    </React.Fragment>
-  );
+const FormOptions = ({ form, proposalType }: Props): JSX.Element => {
+  const getCurrentFormOption = (): JSX.Element => {
+    switch (proposalType) {
+      case ProposalType.AmendProtocol:
+        return <AmendProtocol form={form} />;
+      case ProposalType.AddCommitteeMember:
+        return <AddCommitteeMember form={form} />;
+      case ProposalType.RemoveCommitteeMember:
+        return <RemoveCommitteeMember form={form} />;
+      case ProposalType.AmendElectionRuleThreshold:
+        return <AmendCommitteeThreshold form={form} />;
+      case ProposalType.AmendElectionRuleQuorum:
+        return <AmendCommitteeQuorum form={form} />;
+      case ProposalType.AddValidator:
+        return <AddValidator form={form} />;
+      case ProposalType.RemoveValidator:
+        return <RemoveValidator form={form} />;
+      case ProposalType.ReleaseGuaranteeFunds:
+        return <ReleaseGuaranteeFunds form={form} />;
+      case ProposalType.DistributeFunds:
+        return <DistributeFunds form={form} />;
+    }
+  };
+
+  return <React.Fragment>{getCurrentFormOption()}</React.Fragment>;
 };
 
-export default ProposalOptions;
+export default FormOptions;
