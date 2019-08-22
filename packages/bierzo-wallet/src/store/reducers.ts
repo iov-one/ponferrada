@@ -34,6 +34,7 @@ const createRootReducer = (): Reducer<RootReducer> => (
   action: ActionType<typeof actions>,
 ) => {
   if (action.type === "@@app/RESET") {
+    //test
     return allReducers(undefined, action);
   }
 
