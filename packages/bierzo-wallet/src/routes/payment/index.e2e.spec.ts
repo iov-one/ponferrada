@@ -58,7 +58,7 @@ withChainsDescribe("E2E > Payment route", () => {
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, "1", "tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku");
-    await acceptEnqueuedRequest(extensionPage);
+    await acceptEnqueuedRequest(browser);
     await page.bringToFront();
     await findRenderedE2EComponentWithId(page, PAYMENT_CONFIRMATION_VIEW_ID);
   }, 35000);
@@ -97,7 +97,7 @@ withChainsDescribe("E2E > Payment route", () => {
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, "1", "tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku");
-    await rejectEnqueuedRequest(extensionPage);
+    await rejectEnqueuedRequest(browser);
     await page.bringToFront();
 
     const toastMessage = await getToastMessage(page);

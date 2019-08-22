@@ -1,6 +1,7 @@
-import { Page } from "puppeteer";
+import { Browser, Page } from "puppeteer";
 import { sleep } from "ui-logic";
 
+import { createExtensionPage } from "./e2e";
 import { whenOnNavigatedToE2eRoute } from "./navigation";
 
 const ACCOUNT_NAME_FIELD = "accountNameField";
@@ -47,9 +48,19 @@ export async function openEnqueuedRequest(extensionPage: Page): Promise<void> {
   await extensionPage.click("ul > li > div");
 }
 
-export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> {
-  await openEnqueuedRequest(extensionPage);
+async function clickOnFirstRequest(browser: Browser): Promise<Page> {
+  const extensionPage = await createExtensionPage(browser);
+  await extensionPage.bringToFront();
+
+  // click on first request
+  await extensionPage.click("ul > li > div");
   await sleep(500);
+
+  return extensionPage;
+}
+
+export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
+  const extensionPage = await clickOnFirstRequest(browser);
 
   // accept it
   await extensionPage.click("button");
@@ -58,9 +69,8 @@ export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> 
   await extensionPage.click('[aria-label="Go back"]');
 }
 
-export async function rejectEnqueuedRequest(extensionPage: Page): Promise<void> {
-  await openEnqueuedRequest(extensionPage);
-  await sleep(500);
+export async function rejectEnqueuedRequest(browser: Browser): Promise<void> {
+  const extensionPage = await clickOnFirstRequest(browser);
 
   // reject it
   await extensionPage.click("button:nth-of-type(2)");

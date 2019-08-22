@@ -14,7 +14,6 @@ import { travelToBalanceE2E } from "./test/travelToBalance";
 withChainsDescribe("E2E > Balance route", () => {
   let browser: Browser;
   let page: Page;
-  let extensionPage: Page;
   let server: Server;
 
   beforeAll(() => {
@@ -32,7 +31,7 @@ withChainsDescribe("E2E > Balance route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    extensionPage = await createExtensionPage(browser);
+    const extensionPage = await createExtensionPage(browser);
     await travelToBalanceE2E(browser, page, extensionPage);
   }, 30000);
 
@@ -72,7 +71,7 @@ withChainsDescribe("E2E > Balance route", () => {
     await page.type(`input[name="${REGISTER_USERNAME_FIELD}"]`, username);
     await page.click('button[type="submit"]');
 
-    await acceptEnqueuedRequest(extensionPage);
+    await acceptEnqueuedRequest(browser);
     await page.bringToFront();
     await sleep(1000);
     const buttons = await page.$$("button");

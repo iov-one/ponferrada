@@ -7,7 +7,7 @@ import { RequestProvider } from "./context/RequestProvider";
 import { GetPersonaResponse } from "./extension/background/model/backgroundscript";
 import { Request } from "./extension/background/model/requestsHandler/requestQueueManager";
 import Route from "./routes";
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from "./routes/paths";
+import { initialUrl } from "./routes/paths";
 import { globalStyles } from "./theme/globalStyles";
 import { getPersonaData, getQueuedRequests, hasStoredPersona } from "./utils/chrome";
 import { history } from "./utils/history";
@@ -38,7 +38,8 @@ getPersonaData().then(persona => {
   render(Route, persona, requests);
 
   hasStoredPersona().then(hasPersona => {
-    const url = persona ? ACCOUNT_STATUS_ROUTE : hasPersona ? LOGIN_ROUTE : WELCOME_ROUTE;
+    const hasRequests = requests.length > 0;
+    const url = initialUrl(!!persona, hasPersona, hasRequests);
     history.push(url);
 
     if (module.hot) {
