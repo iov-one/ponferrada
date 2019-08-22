@@ -44,8 +44,6 @@ const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
 
-  const changeProposal = (proposalType: ProposalType): void => setProposalType(proposalType);
-
   const onSubmit = async (values: FormValues): Promise<void> => {
     if (!governor) throw new Error("Governor not set in store. This is a bug.");
 
@@ -64,7 +62,7 @@ const ProposalForm = (): JSX.Element => {
     <Block flexGrow={1} margin={2}>
       <Typography>Create Proposal</Typography>
       <Form onSubmit={handleSubmit}>
-        <ProposalTypeSelect form={form} changeProposal={changeProposal} />
+        <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
         <Block display="flex" justifyContent="space-between" marginTop={2}>
           <TitleField form={form} />
           <WhenField form={form} />

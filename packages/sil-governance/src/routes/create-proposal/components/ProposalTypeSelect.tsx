@@ -1,7 +1,7 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
-import { Block, SelectFieldForm, SelectFieldFormItem, Typography } from "medulas-react-components";
-import React from "react";
+import { Block, SelectFieldForm, Typography } from "medulas-react-components";
+import React, { Dispatch, SetStateAction } from "react";
 
 const PROPOSAL_TYPE_FIELD = "Proposal Type";
 const PROPOSAL_TYPE_INITIAL = "Amend Protocol";
@@ -26,12 +26,10 @@ const formOptionsItems = Object.keys(formOptions).map(formOption => {
 
 interface Props {
   form: FormApi;
-  changeProposal: (proposalType: ProposalType) => void;
+  changeProposalType: Dispatch<SetStateAction<ProposalType>>;
 }
 
-const ProposalTypeSelect = ({ form, changeProposal }: Props): JSX.Element => {
-  const handleChange = (item: SelectFieldFormItem): void => changeProposal(formOptions[item.name]);
-
+const ProposalTypeSelect = ({ form, changeProposalType }: Props): JSX.Element => {
   return (
     <Block marginTop={2}>
       <Typography>{PROPOSAL_TYPE_FIELD}</Typography>
@@ -41,7 +39,7 @@ const ProposalTypeSelect = ({ form, changeProposal }: Props): JSX.Element => {
         form={form}
         items={formOptionsItems}
         initial={PROPOSAL_TYPE_INITIAL}
-        onChangeCallback={handleChange}
+        onChangeCallback={selectedItem => changeProposalType(formOptions[selectedItem.name])}
       />
     </Block>
   );
