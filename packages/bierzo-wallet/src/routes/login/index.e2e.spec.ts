@@ -75,7 +75,7 @@ withChainsDescribe("E2E > Login route", (): void => {
       //Click on login button
       await page.click("button");
       await sleep(1000);
-      await acceptEnqueuedRequest(extensionPage);
+      await acceptEnqueuedRequest(browser);
       await page.bringToFront();
       await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
     }, 60000);
@@ -87,7 +87,7 @@ withChainsDescribe("E2E > Login route", (): void => {
       //Click on login button
       await page.click("button");
       await sleep(1000);
-      await rejectEnqueuedRequest(extensionPage);
+      await rejectEnqueuedRequest(browser);
       await page.bringToFront();
       await checkLoginMessage(page);
     }, 60000);

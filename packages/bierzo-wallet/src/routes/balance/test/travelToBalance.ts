@@ -27,7 +27,7 @@ export async function travelToBalanceE2E(browser: Browser, page: Page, extension
   //Click on login button
   await page.click("button");
   await sleep(1000);
-  await acceptEnqueuedRequest(extensionPage);
+  await acceptEnqueuedRequest(browser);
   await page.bringToFront();
   await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
 }
