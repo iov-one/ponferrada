@@ -1,7 +1,7 @@
 /*global chrome*/
 import { Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
 import { getConnectionFor } from "../../logic/connection";
@@ -36,7 +36,7 @@ function extensionContext(): boolean {
 
 // exported for testing purposes
 export const parseGetIdentitiesResponse = (response: any): readonly Identity[] => {
-  const parsedResponse = parseJsonRpcResponse2(response);
+  const parsedResponse = parseJsonRpcResponse(response);
   if (isJsonRpcErrorResponse(parsedResponse)) {
     console.error(parsedResponse.error.message);
     throw new Error("Received unexpected json rpc response");

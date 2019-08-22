@@ -1,5 +1,5 @@
 import { TransactionEncoder } from "@iov/encoding";
-import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { jsonRpcCode, JsonRpcRequest, JsonRpcSuccessResponse, parseJsonRpcResponse } from "@iov/jsonrpc";
 import { sleep } from "ui-logic";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
@@ -216,7 +216,7 @@ withChainsDescribe("background script handler for website request", () => {
     await sleep(10);
     requestsHandler["queueManager"].next().accept();
 
-    const parsedResponse = parseJsonRpcResponse2(await responsePromise);
+    const parsedResponse = parseJsonRpcResponse(await responsePromise);
     const parsedResult = TransactionEncoder.fromJson((parsedResponse as JsonRpcSuccessResponse).result);
     if (!isArrayOfIdentity(parsedResult)) {
       throw new Error();
