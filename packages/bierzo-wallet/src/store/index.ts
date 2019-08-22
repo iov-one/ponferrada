@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore, DeepPartial, Middleware, Store } from "redux";
 
 import reducers, { RootReducer, RootState } from "./reducers";
+export * from "./actions";
 
 const composeEnhancers =
   (typeof window === "object" && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line

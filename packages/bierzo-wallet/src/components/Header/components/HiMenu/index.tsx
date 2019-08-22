@@ -5,12 +5,16 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Block, Hairline, Image, ListMenu, Typography } from "medulas-react-components";
 import * as React from "react";
+import * as ReactRedux from "react-redux";
 
+import { disconnect } from "../../../../logic/connection";
 import { history } from "../../../../routes";
 import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
+import { resetAppAction } from "../../../../store";
 import { getBorderColor } from "../../../../theme/css";
 import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
+import logout from "../../assets/logout.svg";
 import privacy from "../../assets/privacyPolicy.svg";
 import terms from "../../assets/terms.svg";
 
@@ -71,7 +75,13 @@ const onPolicy = (): void => {
 
 const HiMenu = (props: {}): JSX.Element => {
   const classes = useStyles();
+  const dispatch = ReactRedux.useDispatch();
   const { ...rest } = props;
+
+  const onLogout = (): void => {
+    disconnect();
+    dispatch(resetAppAction());
+  };
 
   const starter = (open: boolean): JSX.Element => (
     <Block className={classes.root}>
@@ -100,6 +110,8 @@ const HiMenu = (props: {}): JSX.Element => {
           msg="Privacy Policy"
           alt="Privacy Policy"
         />
+        <Hairline />
+        <HiElement src={logout} id={LOG_OUT_ID} action={onLogout} msg="Logout" alt="Logout" />
       </Block>
     </ListMenu>
   );
