@@ -14,8 +14,6 @@ import TitleField from "./TitleField";
 import WhenField from "./WhenField";
 
 const buildProposalOptions = (type: ProposalType, values: FormValues): ProposalOptions => {
-  console.log(JSON.stringify(values));
-
   const [year, month, day] = values["Date"].split("-").map(el => parseInt(el));
   const [hour, minute] = values["Time"].split(":").map(el => parseInt(el));
 
