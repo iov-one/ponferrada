@@ -19,7 +19,7 @@ withChainsDescribe("E2E > Hi Menu component", () => {
   beforeAll(() => {
     const app = express();
 
-    app.use(express.static(require("path").join(__dirname, "/../../../build")));
+    app.use(express.static(require("path").join(__dirname, "/../../../../../build")));
 
     app.get("/*", function(req: Request, res: Response) {
       res.sendFile(require("path").join(__dirname, "build", "index.html"));
@@ -35,11 +35,11 @@ withChainsDescribe("E2E > Hi Menu component", () => {
   }, 60000);
 
   afterEach(async () => {
-    //await closeBrowser(browser);
+    await closeBrowser(browser);
   });
 
   afterAll(() => {
-    //server.close();
+    server.close();
   });
 
   it("should click on logout", async () => {
