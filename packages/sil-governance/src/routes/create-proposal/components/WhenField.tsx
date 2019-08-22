@@ -4,9 +4,7 @@ import React from "react";
 
 const WHEN_FIELD = "When";
 const DATE_FIELD = "Date";
-const DATE_PLACEHOLDER = "Choose date";
 const TIME_FIELD = "Time";
-const TIME_PLACEHOLDER = "Choose time";
 
 interface Props {
   form: FormApi;
@@ -18,22 +16,10 @@ const WhenField = ({ form }: Props): JSX.Element => {
       <Typography>{WHEN_FIELD}</Typography>
       <Block display="flex">
         <Block flexGrow={1}>
-          <TextFieldForm
-            name={DATE_FIELD}
-            form={form}
-            placeholder={DATE_PLACEHOLDER}
-            fullWidth
-            margin="none"
-          />
+          <TextFieldForm name={DATE_FIELD} form={form} type="date" fullWidth margin="none" />
         </Block>
         <Block flexGrow={1} marginLeft={2}>
-          <TextFieldForm
-            name={TIME_FIELD}
-            form={form}
-            placeholder={TIME_PLACEHOLDER}
-            fullWidth
-            margin="none"
-          />
+          <TextFieldForm name={TIME_FIELD} form={form} type="time" fullWidth margin="none" />
         </Block>
       </Block>
     </Block>
