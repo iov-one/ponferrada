@@ -48,13 +48,19 @@ export async function openEnqueuedRequest(extensionPage: Page): Promise<void> {
   await extensionPage.click("ul > li > div");
 }
 
-export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
+async function clickOnFirstRequest(browser: Browser): Promise<Page> {
   const extensionPage = await createExtensionPage(browser);
   await extensionPage.bringToFront();
 
   // click on first request
   await extensionPage.click("ul > li > div");
   await sleep(500);
+
+  return extensionPage;
+}
+
+export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
+  const extensionPage = await clickOnFirstRequest(browser);
 
   // accept it
   await extensionPage.click("button");
@@ -64,12 +70,7 @@ export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
 }
 
 export async function rejectEnqueuedRequest(browser: Browser): Promise<void> {
-  const extensionPage = await createExtensionPage(browser);
-  await extensionPage.bringToFront();
-
-  // click on first request
-  await extensionPage.click("ul > li > div");
-  await sleep(500);
+  const extensionPage = await clickOnFirstRequest(browser);
 
   // reject it
   await extensionPage.click("button:nth-of-type(2)");
