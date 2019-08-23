@@ -11,7 +11,7 @@ import {
 import { RegisterUsernameTx } from "@iov/bns";
 import { Encoding, TransactionEncoder } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
-import { JsonRpcSuccessResponse, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { JsonRpcSuccessResponse, parseJsonRpcResponse } from "@iov/jsonrpc";
 import TestUtils from "react-dom/test-utils";
 import { sleep } from "ui-logic";
 
@@ -179,7 +179,7 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
     requestsHandler["queueManager"].next().accept();
 
     // Accept signAndPost request
-    const parsedResponse = parseJsonRpcResponse2(await responsePromise);
+    const parsedResponse = parseJsonRpcResponse(await responsePromise);
     const parsedResult = TransactionEncoder.fromJson((parsedResponse as JsonRpcSuccessResponse).result);
     if (!isArrayOfIdentity(parsedResult)) {
       throw new Error();

@@ -1,7 +1,7 @@
 /*global chrome*/
 import { ChainId, Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
 import { getBnsConnection } from "../../logic/connection";
@@ -50,7 +50,7 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
       }
 
       try {
-        const parsedResponse = parseJsonRpcResponse2(response);
+        const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
           resolve([]);
           return;

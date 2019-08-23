@@ -2,7 +2,7 @@
 import { TransactionId, WithCreator } from "@iov/bcp";
 import { BnsConnection, BnsTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
 
@@ -32,7 +32,7 @@ export async function sendSignAndPostRequest(
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
       try {
-        const parsedResponse = parseJsonRpcResponse2(response);
+        const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
           reject(parsedResponse.error.message);
           return;

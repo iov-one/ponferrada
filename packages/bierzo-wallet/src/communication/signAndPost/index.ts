@@ -11,7 +11,7 @@ import {
 } from "@iov/bcp";
 import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse2 } from "@iov/jsonrpc";
+import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
 import { getCodecForChainId } from "../../logic/codec";
@@ -84,7 +84,7 @@ export const sendSignAndPostRequest = async (request: JsonRpcRequest): Promise<T
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
       try {
-        const parsedResponse = parseJsonRpcResponse2(response);
+        const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
           reject(parsedResponse.error.message);
           return;

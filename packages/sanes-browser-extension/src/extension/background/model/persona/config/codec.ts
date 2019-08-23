@@ -1,9 +1,9 @@
-import { Algorithm, ChainConnector } from "@iov/bcp";
-import { bnsConnector } from "@iov/bns";
+import { Algorithm, ChainConnector, ChainId } from "@iov/bcp";
+import { createBnsConnector } from "@iov/bns";
 import { Slip10RawIndex } from "@iov/crypto";
-import { ethereumConnector } from "@iov/ethereum";
+import { createEthereumConnector } from "@iov/ethereum";
 import { HdPaths } from "@iov/keycontrol";
-import { liskConnector } from "@iov/lisk";
+import { createLiskConnector } from "@iov/lisk";
 
 import { CodecString } from "./configurationfile";
 
@@ -59,14 +59,17 @@ export function chainConnector(
   nodeUrl: string,
   scraper: string | undefined,
 ): ChainConnector {
+  const expectedBnsChainId: ChainId | undefined = undefined;
+  const expectedLiskChainId: ChainId | undefined = undefined;
+  const expectedEthereumChainId: ChainId | undefined = undefined;
+
   switch (codec) {
     case CodecType.Bns:
-      return bnsConnector(nodeUrl);
+      return createBnsConnector(nodeUrl, expectedBnsChainId);
     case CodecType.Lisk:
-      return liskConnector(nodeUrl);
-    case CodecType.Ethereum: {
-      return ethereumConnector(nodeUrl, { scraperApiUrl: scraper });
-    }
+      return createLiskConnector(nodeUrl, expectedLiskChainId);
+    case CodecType.Ethereum:
+      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedEthereumChainId);
     default:
       throw new Error("No connector for this codec found");
   }
