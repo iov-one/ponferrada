@@ -21,7 +21,6 @@ import Section from "./components/TextMarkup/Section";
 import Title from "./components/TextMarkup/Title";
 import Tooltip from "./components/Tooltip";
 import Typography from "./components/Typography";
-import ErrorBoundary from "./errors/ErrorBoundary";
 import PageColumn from "./pages/PageColumn";
 import EmptyListIcon from "./templates/menu/EmptyListIcon";
 import ListMenu from "./templates/menu/ListMenu";
@@ -41,7 +40,6 @@ export {
   Drawer,
   DRAWER_HTML_ID,
   EmptyListIcon,
-  ErrorBoundary,
   Form,
   FormValues,
   Hairline,

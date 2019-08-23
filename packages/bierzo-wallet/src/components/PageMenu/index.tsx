@@ -1,6 +1,6 @@
 import { Theme } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/styles";
-import { Block, ErrorBoundary } from "medulas-react-components";
+import { Block } from "medulas-react-components";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 
@@ -21,11 +21,9 @@ const PageMenu = ({
   return (
     <Block display="flex" flexDirection="column" bgcolor={theme.palette.background.default}>
       <Header path={location.pathname} />
-      <ErrorBoundary type="inner">
-        <Block display="flex" flexDirection="column" padding={padding ? 4 : undefined}>
-          {children}
-        </Block>
-      </ErrorBoundary>
+      <Block display="flex" flexDirection="column" padding={padding ? 4 : undefined}>
+        {children}
+      </Block>
     </Block>
   );
 };
