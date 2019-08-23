@@ -7,6 +7,7 @@ import * as ReactRedux from "react-redux";
 import { history } from "..";
 import { generateRegisterUsernameTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
 import PageMenu from "../../components/PageMenu";
+import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPair } from "../../utils/tokens";
@@ -31,8 +32,25 @@ const validate = async (values: object): Promise<object> => {
     return errors;
   }
 
-  if (!username.endsWith("*iov")) {
-    errors[REGISTER_USERNAME_FIELD] = "Personalized address must include namespace suffix";
+  const checkResult = isValidIov(username);
+
+  switch (checkResult) {
+    case "not_iov":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address must include namespace suffix";
+      break;
+    case "too_short":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address should be at least 3 characters";
+      break;
+    case "too_long":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address should be maximum 64 characters";
+      break;
+    case "wrong_chars":
+      errors[REGISTER_USERNAME_FIELD] =
+        "Personalized address should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+      break;
+  }
+
+  if (checkResult !== "valid") {
     return errors;
   }
 
