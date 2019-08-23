@@ -9,7 +9,7 @@ The most beautiful UI in Blockchain.
 Ponferrada browser extension is split in 4 packages:
 
 - **medulas-react-components**: All the react components that we use in the UI, based on material-ui v4.0.
-- **sanes-chrome-extension**: Main application
+- **sanes-browser-extension**: Main application
 - **valdueza-storybook**: Storybook configuration
 
 ## Tools
@@ -71,7 +71,7 @@ To get started, please go to the root directory and run:
 ```
 yarn install
 yarn build
-cd packages/sanes-chrome-extension/
+cd packages/sanes-browser-extension/
 yarn start
 ```
 
@@ -124,7 +124,7 @@ brew install coreutils
 # TMPDIR=/private/var/tmp bash ./scripts/test_start.sh
 ```
 
-In such a case, you can run the full chain test suite from inside sanes-chrome-extension package folder:
+In such a case, you can run the full chain test suite from inside sanes-browser-extension package folder:
 
 ```shell
 # start all blockchains and a local faucets that serves multiple tokens
@@ -132,7 +132,7 @@ In such a case, you can run the full chain test suite from inside sanes-chrome-e
 export CHAINS_ENABLED=1
 
 # you can run this a few times....
-(cd packages/sanes-chrome-extension/ && yarn test)
+(cd packages/sanes-browser-extension/ && yarn test)
 
 # stop them afterwards
 unset CHAINS_ENABLED

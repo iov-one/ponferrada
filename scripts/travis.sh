@@ -93,7 +93,7 @@ fold_end
 fold_start "export"
 DOCKER_BUILD_VERSION=$(echo "${TRAVIS_COMMIT}" | cut -c 1-10);
 (
-  cd packages/sanes-chrome-extension
+  cd packages/sanes-browser-extension
   yarn export-staging
 )
 (
@@ -155,7 +155,7 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "x-goog-api-version: 2" \
     -X PUT \
-    -T packages/sanes-chrome-extension/exports/*.zip \
+    -T packages/sanes-browser-extension/exports/*.zip \
     "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen"
   curl -sS \
     -H "Authorization: Bearer $ACCESS_TOKEN" \

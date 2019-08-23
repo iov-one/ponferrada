@@ -1,5 +1,5 @@
 {
-  "name": "sanes-chrome-extension",
+  "name": "sanes-browser-extension",
   "version": "0.3.2",
   "private": true,
   "scripts": {

@@ -1,4 +1,4 @@
-The [sanes-chrome-extension](iov-one/ponferrada/blob/master/packages/sanes-chrome-project) project relies on cra' react-script project. We have to maintain our own version because at the moment cra does not support multiple webpack's entry points, and the chrome extension, besides the app itself need the `backgroundscript` and ```contentscript`.
+The [sanes-browser-extension](iov-one/ponferrada/blob/master/packages/sanes-browser-extension) project relies on cra' react-script project. We have to maintain our own version because at the moment cra does not support multiple webpack's entry points, and the chrome extension, besides the app itself need the `backgroundscript` and ```contentscript`.
 
 So basically for keeping in a good shape the [oza-react-scripts](iov-one/ponferrada/blob/master/packages/oza-react-scripts) project, on each release of react-scripts, we need to do:
 
