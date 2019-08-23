@@ -1,5 +1,4 @@
 import { Identity } from "@iov/bcp";
-import { TransactionEncoder } from "@iov/encoding";
 
 import { sendGetIdentitiesRequest } from "../../communication/identities";
 import { ExtensionState } from "../../store/extension";
@@ -25,32 +24,27 @@ export async function getExtensionStatus(): Promise<ExtensionState> {
   const identities = await sendGetIdentitiesRequest();
 
   if (!identities) {
-    return { installed: false, connected: false, keys: {} };
+    return { installed: false, connected: false, identities: {} };
   }
 
   if (identities.length === 0) {
-    return { installed: true, connected: false, keys: {} };
+    return { installed: true, connected: false, identities: {} };
   }
 
   const groupedIdentities = groupIdentitiesByChain(identities);
 
-  const publicKeys: { [chain: string]: string } = {};
-  for (const [chainId, identity] of Object.entries(groupedIdentities)) {
-    publicKeys[chainId] = JSON.stringify(TransactionEncoder.toJson(identity));
-  }
-
   return {
     installed: true,
     connected: true,
-    keys: publicKeys,
+    identities: groupedIdentities,
   };
 }
 
 export const setExtensionStateAction = (
   connected: boolean,
   installed: boolean,
-  keys: { [chain: string]: string },
+  identities: { [chain: string]: Identity },
 ): SetExtensionStateActionType => ({
   type: "@@extension/SET_STATE",
-  payload: { connected, installed, keys },
+  payload: { connected, installed, identities },
 });

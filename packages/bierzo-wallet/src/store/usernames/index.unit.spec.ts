@@ -44,9 +44,9 @@ withChainsDescribe("Usernames reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.keys));
+    store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.identities));
 
-    const keys = store.getState().extension.keys;
+    const keys = store.getState().extension.identities;
     const usernames = await getUsernames(keys);
     expect(usernames).toEqual([]);
   });
@@ -133,9 +133,9 @@ withChainsDescribe("Usernames reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.keys));
+    store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.identities));
 
-    const keys = store.getState().extension.keys;
+    const keys = store.getState().extension.identities;
     const emptyChainUsernames = await getUsernames({});
     store.dispatch(addUsernamesAction(emptyChainUsernames));
 

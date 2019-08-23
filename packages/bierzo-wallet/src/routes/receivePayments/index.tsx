@@ -1,3 +1,4 @@
+import { Identity } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import React from "react";
 import * as ReactRedux from "react-redux";
@@ -15,15 +16,15 @@ function onReturnToBalance(): void {
 
 const ReceivePayment = (): JSX.Element => {
   const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
-  const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
+  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
 
   React.useEffect(() => {
-    async function processPubKeys(pubKeys: { [chain: string]: string }): Promise<void> {
-      setAddresses(await getChainAddressPair(pubKeys));
+    async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
+      setAddresses(await getChainAddressPair(identities));
     }
 
-    processPubKeys(pubKeys);
-  }, [pubKeys]);
+    processIdentities(identities);
+  }, [identities]);
 
   return (
     <PageMenu>

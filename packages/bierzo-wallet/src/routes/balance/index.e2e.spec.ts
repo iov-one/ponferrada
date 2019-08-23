@@ -3,7 +3,7 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { randomString, sleep } from "ui-logic";
 
-import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
@@ -31,8 +31,7 @@ withChainsDescribe("E2E > Balance route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    const extensionPage = await createExtensionPage(browser);
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
   }, 30000);
 
   afterEach(async () => {

@@ -1,5 +1,4 @@
 import { Identity } from "@iov/bcp";
-import { TransactionEncoder } from "@iov/encoding";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
@@ -10,7 +9,10 @@ import { getConnectionFor } from "./connection";
 
 let balanceSubscriptions: Subscription[] = [];
 
-export async function subscribeBalance(keys: { [chain: string]: string }, dispatch: Dispatch): Promise<void> {
+export async function subscribeBalance(
+  identities: { [chain: string]: Identity },
+  dispatch: Dispatch,
+): Promise<void> {
   const config = await getConfig();
   const chains = config.chains;
 
@@ -18,19 +20,18 @@ export async function subscribeBalance(keys: { [chain: string]: string }, dispat
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    const plainPubkey = keys[chainId];
-    if (!plainPubkey) {
+    const identity = identities[chainId];
+    if (!identity) {
       continue;
     }
 
-    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
     const address = codec.identityToAddress(identity);
 
     // subscribe to balance changes via
     const subscription = connection.watchAccount({ address }).subscribe({
       next: async account => {
         if (account) {
-          const balances = await getBalances(keys);
+          const balances = await getBalances(identities);
           await dispatch(addBalancesAction(balances));
         }
       },

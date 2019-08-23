@@ -3,7 +3,7 @@ import { sleep } from "ui-logic";
 
 import { aNewStore } from "../store";
 import * as balanceActions from "../store/balances/actions";
-import { createPubkeys } from "../utils/test/pubkeys";
+import { createIdentities } from "../utils/test/identities";
 import { withChainsDescribe } from "../utils/test/testExecutor";
 import * as tokens from "../utils/tokens";
 import { subscribeBalance, unsubscribeBalances } from "./balances";
@@ -29,12 +29,12 @@ withChainsDescribe("Logic :: balance subscriptions", () => {
     const balanceSpy = jest.spyOn(balanceActions, "addBalancesAction");
 
     const store = aNewStore();
-    const keys = await createPubkeys();
+    const identities = await createIdentities();
 
-    await subscribeBalance(keys, store.dispatch);
+    await subscribeBalance(identities, store.dispatch);
 
     // Trick for forcing account to receive balance events updates
-    await drinkFaucetIfNeeded(keys);
+    await drinkFaucetIfNeeded(identities);
 
     // Wait for events to be processed
     await sleep(1000);

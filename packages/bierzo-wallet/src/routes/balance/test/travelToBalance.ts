@@ -5,7 +5,7 @@ import { sleep } from "ui-logic";
 
 import { history } from "../../../routes";
 import { createDom } from "../../../utils/test/dom";
-import { getBackgroundPage } from "../../../utils/test/e2e";
+import { createExtensionPage, getBackgroundPage } from "../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from "../../../utils/test/navigation";
 import { acceptEnqueuedRequest, submitExtensionSignupForm } from "../../../utils/test/persona";
 import { BALANCE_ROUTE } from "../../paths";
@@ -20,9 +20,11 @@ export const travelToBalance = async (store: Store): Promise<React.Component> =>
   return dom;
 };
 
-export async function travelToBalanceE2E(browser: Browser, page: Page, extensionPage: Page): Promise<void> {
+export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<void> {
   await getBackgroundPage(browser);
+  const extensionPage = await createExtensionPage(browser);
   await submitExtensionSignupForm(extensionPage, "username", "12345678");
+  await extensionPage.close();
   await page.bringToFront();
   //Click on login button
   await page.click("button");

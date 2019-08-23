@@ -1,11 +1,12 @@
 import { Amount, Identity } from "@iov/bcp";
-import { TransactionEncoder } from "@iov/encoding";
 
 import { getConfig } from "../../config";
 import { getConnectionFor } from "../../logic/connection";
 import { AddBalancesActionType } from "./reducer";
 
-export async function getBalances(keys: { [chain: string]: string }): Promise<{ [ticker: string]: Amount }> {
+export async function getBalances(identities: {
+  [chain: string]: Identity;
+}): Promise<{ [ticker: string]: Amount }> {
   const config = await getConfig();
   const chains = config.chains;
 
@@ -14,12 +15,10 @@ export async function getBalances(keys: { [chain: string]: string }): Promise<{ 
   for (const chain of chains) {
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    const plainPubkey = keys[chainId];
-    if (!plainPubkey) {
+    const identity = identities[chainId];
+    if (!identity) {
       continue;
     }
-
-    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
     const account = await connection.getAccount({ pubkey: identity.pubkey });
     if (!account) {
       continue;

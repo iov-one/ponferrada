@@ -4,7 +4,7 @@ import { Browser, Page } from "puppeteer";
 import { whenTrue } from "ui-logic";
 
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
-import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
@@ -14,7 +14,6 @@ import { TRANSACTIONS_ROUTE } from "../paths";
 withChainsDescribe("E2E > Transactions route", () => {
   let browser: Browser;
   let page: Page;
-  let extensionPage: Page;
   let server: Server;
 
   beforeAll(() => {
@@ -32,8 +31,7 @@ withChainsDescribe("E2E > Transactions route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    extensionPage = await createExtensionPage(browser);
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
   }, 60000);
 
   afterEach(async () => {
