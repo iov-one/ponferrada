@@ -4,7 +4,7 @@ import { sleep } from "ui-logic";
 import { aNewStore } from "../../store";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import * as transactionActions from "../../store/notifications/actions";
-import { createPubkeys } from "../../utils/test/pubkeys";
+import { createIdentities } from "../../utils/test/identities";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import * as tokens from "../../utils/tokens";
 import { disconnect } from "../connection";
@@ -33,12 +33,12 @@ withChainsDescribe("Logic :: transaction subscriptions", () => {
     >;
 
     const store = aNewStore();
-    const keys = await createPubkeys();
+    const identities = await createIdentities();
 
-    await subscribeTransaction(keys, store.dispatch);
+    await subscribeTransaction(identities, store.dispatch);
 
     // Trigger incoming SendTransactions
-    await drinkFaucetIfNeeded(keys);
+    await drinkFaucetIfNeeded(identities);
 
     // Wait for events to be processed
     await sleep(1000);

@@ -1,6 +1,5 @@
 import { Identity, isFailedTransaction } from "@iov/bcp";
 import { isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
-import { TransactionEncoder } from "@iov/encoding";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
@@ -14,7 +13,7 @@ import { BwParserFactory } from "./types/BwParserFactory";
 let txsSubscriptions: Subscription[] = [];
 
 export async function subscribeTransaction(
-  keys: { [chain: string]: string },
+  identities: { [chain: string]: Identity },
   dispatch: Dispatch,
 ): Promise<void> {
   const config = await getConfig();
@@ -24,12 +23,11 @@ export async function subscribeTransaction(
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
     const chainId = connection.chainId() as string;
-    const plainPubkey = keys[chainId];
-    if (!plainPubkey) {
+    const identity = identities[chainId];
+    if (!identity) {
       continue;
     }
 
-    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
     const address = codec.identityToAddress(identity);
 
     // subscribe to balance changes via

@@ -1,6 +1,5 @@
 import { BlockchainConnection, Identity } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
-import { TransactionEncoder } from "@iov/encoding";
 
 import { ChainAddress } from "../components/AddressesTable";
 import { getChainName } from "../config";
@@ -25,13 +24,13 @@ export async function filterExistingTokens(
 }
 
 /**
- * This method will convert pubKeys to ChainAddressPair
+ * This method will convert Identities to ChainAddressPair
  */
-export async function getChainAddressPair(pubKeys: { [chain: string]: string }): Promise<ChainAddressPair[]> {
+export async function getChainAddressPair(identities: {
+  [chain: string]: Identity;
+}): Promise<ChainAddressPair[]> {
   const addresses: ChainAddressPair[] = [];
-  for (const key of Object.values(pubKeys)) {
-    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(key));
-
+  for (const identity of Object.values(identities)) {
     addresses.push({
       chainId: identity.chainId,
       address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),

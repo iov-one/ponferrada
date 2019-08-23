@@ -1,5 +1,5 @@
 import { getBalances } from "../store/balances";
-import { createPubkeys } from "../utils/test/pubkeys";
+import { createIdentities } from "../utils/test/identities";
 import { withChainsDescribe } from "../utils/test/testExecutor";
 import { disconnect } from "./connection";
 import { drinkFaucetIfNeeded } from "./faucet";
@@ -8,15 +8,15 @@ withChainsDescribe("Logic :: faucet", () => {
   afterAll(() => disconnect());
 
   it("works", async () => {
-    // generate keys
-    const keys = await createPubkeys();
+    // generate identities
+    const identities = await createIdentities();
     // check their balance are 0
-    const initialBalances = await getBalances(keys);
+    const initialBalances = await getBalances(identities);
     expect(initialBalances).toEqual({});
     // drink faucet
-    await drinkFaucetIfNeeded(keys);
+    await drinkFaucetIfNeeded(identities);
     // check their balances
-    const balances = await getBalances(keys);
+    const balances = await getBalances(identities);
     expect(balances).toEqual({
       BASH: {
         fractionalDigits: 9,
@@ -37,13 +37,13 @@ withChainsDescribe("Logic :: faucet", () => {
   }, 45000);
 
   it("does not drink from faucet if tokens are already available", async () => {
-    // generate keys
-    const keys = await createPubkeys();
+    // generate identities
+    const identities = await createIdentities();
     // drink faucet twice
-    await drinkFaucetIfNeeded(keys);
-    await drinkFaucetIfNeeded(keys);
+    await drinkFaucetIfNeeded(identities);
+    await drinkFaucetIfNeeded(identities);
     // check their balances
-    const balances = await getBalances(keys);
+    const balances = await getBalances(identities);
     expect(balances).toEqual({
       BASH: {
         fractionalDigits: 9,

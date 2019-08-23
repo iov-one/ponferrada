@@ -1,5 +1,4 @@
-import { Address, Identity, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
-import { TransactionEncoder } from "@iov/encoding";
+import { Address, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
 import { FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
@@ -34,7 +33,7 @@ function onReturnToBalance(): void {
 const Payment = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
-  const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
+  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
 
@@ -73,13 +72,11 @@ const Payment = (): JSX.Element => {
       recipient = formValues[ADDRESS_FIELD] as Address;
     }
 
-    const plainPubkey = pubKeys[chainId];
-    if (!plainPubkey) {
+    const identity = identities[chainId];
+    if (!identity) {
       toast.show("None of your identities can send on this chain", ToastVariant.ERROR);
       return;
     }
-
-    const identity: Identity = TransactionEncoder.fromJson(JSON.parse(plainPubkey));
 
     try {
       const request = await generateSendTxRequest(identity, recipient, amount, formValues[TEXTNOTE_FIELD]);

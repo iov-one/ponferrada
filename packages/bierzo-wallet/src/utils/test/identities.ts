@@ -1,9 +1,8 @@
 import { Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
 import { Ed25519, Random, Secp256k1 } from "@iov/crypto";
-import { TransactionEncoder } from "@iov/encoding";
 
-export async function createPubkeys(): Promise<{ [chain: string]: string }> {
-  const keys: { [chain: string]: string } = {};
+export async function createIdentities(): Promise<{ [chain: string]: Identity }> {
+  const identities: { [chain: string]: Identity } = {};
 
   // create ETH pub key
   const ethChain = "ethereum-eip155-5777";
@@ -27,8 +26,8 @@ export async function createPubkeys(): Promise<{ [chain: string]: string }> {
     },
   };
 
-  keys[ethChain] = JSON.stringify(TransactionEncoder.toJson(ethIdentity));
-  keys[bnsChain] = JSON.stringify(TransactionEncoder.toJson(bnsIdentity));
+  identities[ethChain] = ethIdentity;
+  identities[bnsChain] = bnsIdentity;
 
-  return keys;
+  return identities;
 }

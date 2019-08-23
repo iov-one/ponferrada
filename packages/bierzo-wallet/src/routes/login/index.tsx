@@ -1,3 +1,4 @@
+import { Identity } from "@iov/bcp";
 import { PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
@@ -17,7 +18,7 @@ export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
 export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 export const loginBootSequence = async (
-  keys: { [chain: string]: string },
+  identities: { [chain: string]: Identity },
   dispatch: Dispatch,
 ): Promise<void> => {
   const chainTokens = await getTokens();
@@ -25,15 +26,15 @@ export const loginBootSequence = async (
 
   // Do not block the use of the wallet just because the faucet might take
   // some time send tokens
-  drinkFaucetIfNeeded(keys).catch(console.error);
+  drinkFaucetIfNeeded(identities).catch(console.error);
 
-  const balances = await getBalances(keys);
+  const balances = await getBalances(identities);
   dispatch(addBalancesAction(balances));
 
-  await subscribeBalance(keys, dispatch);
-  await subscribeTransaction(keys, dispatch);
+  await subscribeBalance(identities, dispatch);
+  await subscribeTransaction(identities, dispatch);
 
-  const usernames = await getUsernames(keys);
+  const usernames = await getUsernames(identities);
   dispatch(addUsernamesAction(usernames));
 };
 
@@ -44,7 +45,7 @@ const Login = (): JSX.Element => {
 
   const onLogin = async (_: object): Promise<void> => {
     const result = await getExtensionStatus();
-    dispatch(setExtensionStateAction(result.connected, result.installed, result.keys));
+    dispatch(setExtensionStateAction(result.connected, result.installed, result.identities));
 
     if (!result.installed) {
       toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
@@ -56,8 +57,8 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    const keys = store.getState().extension.keys;
-    await loginBootSequence(keys, dispatch);
+    const identities = store.getState().extension.identities;
+    await loginBootSequence(identities, dispatch);
 
     history.push(BALANCE_ROUTE);
   };

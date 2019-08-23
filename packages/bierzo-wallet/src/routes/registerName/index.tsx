@@ -1,6 +1,5 @@
 import { Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection, ChainAddressPair } from "@iov/bns";
-import { TransactionEncoder } from "@iov/encoding";
 import { FormValues, ToastContext, ToastVariant, ValidationError } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
@@ -48,16 +47,16 @@ const validate = async (values: object): Promise<object> => {
 const RegisterUsername = (): JSX.Element => {
   const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
   const toast = React.useContext(ToastContext);
-  const pubKeys = ReactRedux.useSelector((state: RootState) => state.extension.keys);
+  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
 
   React.useEffect(() => {
-    async function processPubKeys(pubKeys: { [chain: string]: string }): Promise<void> {
-      setAddresses(await getChainAddressPair(pubKeys));
+    async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
+      setAddresses(await getChainAddressPair(identities));
     }
 
-    processPubKeys(pubKeys);
-  }, [pubKeys]);
+    processIdentities(identities);
+  }, [identities]);
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
@@ -66,7 +65,7 @@ const RegisterUsername = (): JSX.Element => {
     let bnsIdentity: Identity | null = null;
     for (const address of addresses) {
       if ((await getConnectionForChainId(address.chainId)) instanceof BnsConnection) {
-        bnsIdentity = TransactionEncoder.fromJson(JSON.parse(pubKeys[address.chainId]));
+        bnsIdentity = identities[address.chainId];
       }
     }
 

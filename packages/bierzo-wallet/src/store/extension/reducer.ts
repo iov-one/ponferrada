@@ -1,3 +1,4 @@
+import { Identity } from "@iov/bcp";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
@@ -6,7 +7,7 @@ import * as actions from "./actions";
 export interface ExtensionState {
   readonly connected: boolean;
   readonly installed: boolean;
-  readonly keys: { [chain: string]: string };
+  readonly identities: { [chain: string]: Identity };
 }
 
 export interface SetExtensionStateActionType extends Action {
@@ -19,7 +20,7 @@ export type ExtensionActions = ActionType<typeof actions>;
 const initState: ExtensionState = {
   connected: false,
   installed: false,
-  keys: {},
+  identities: {},
 };
 
 export function extensionReducer(

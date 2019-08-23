@@ -50,7 +50,7 @@ describe("The /balance route", () => {
           extension: {
             connected: true,
             installed: true,
-            keys: {},
+            identities: {},
           },
           balances: balancesAmount,
           usernames,
