@@ -33,22 +33,7 @@ export const submitExtensionSignupForm = async (
   await whenOnNavigatedToE2eRoute(page, "/account");
 };
 
-export async function openEnqueuedRequest(extensionPage: Page): Promise<void> {
-  await extensionPage.bringToFront();
-
-  //click on drawer
-  await extensionPage.click('[aria-label="Open drawer"]');
-  await sleep(1000);
-
-  // click on Requests
-  await extensionPage.click("#account-drawer > nav > div:nth-of-type(2)");
-  await sleep(500);
-
-  // click on first request
-  await extensionPage.click("ul > li > div");
-}
-
-async function clickOnFirstRequest(browser: Browser): Promise<Page> {
+export async function clickOnFirstRequest(browser: Browser): Promise<Page> {
   const extensionPage = await createExtensionPage(browser);
   await extensionPage.bringToFront();
 
@@ -67,6 +52,8 @@ export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
 
   //go back to accounts
   await extensionPage.click('[aria-label="Go back"]');
+
+  await extensionPage.close();
 }
 
 export async function rejectEnqueuedRequest(browser: Browser): Promise<void> {
@@ -81,4 +68,6 @@ export async function rejectEnqueuedRequest(browser: Browser): Promise<void> {
 
   //go back to accounts
   await extensionPage.click('[aria-label="Go back"]');
+
+  await extensionPage.close();
 }

@@ -112,7 +112,7 @@ describe("The /balance route", () => {
           extension: {
             connected: true,
             installed: true,
-            keys: {},
+            identities: {},
           },
         });
         balanceDom = await travelToBalance(store);

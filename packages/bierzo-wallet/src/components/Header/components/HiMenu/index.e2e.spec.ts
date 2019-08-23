@@ -5,7 +5,7 @@ import { sleep } from "ui-logic";
 
 import { travelToBalanceE2E } from "../../../../routes/balance/test/travelToBalance";
 import { LOGIN_ROUTE } from "../../../../routes/paths";
-import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../../../utils/test/e2e";
+import { closeBrowser, createPage, launchBrowser } from "../../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute } from "../../../../utils/test/navigation";
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
 import { LOG_OUT_ID, MENU_ID } from "./index";
@@ -13,7 +13,6 @@ import { LOG_OUT_ID, MENU_ID } from "./index";
 withChainsDescribe("E2E > Hi Menu component", () => {
   let browser: Browser;
   let page: Page;
-  let extensionPage: Page;
   let server: Server;
 
   beforeAll(() => {
@@ -31,7 +30,6 @@ withChainsDescribe("E2E > Hi Menu component", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    extensionPage = await createExtensionPage(browser);
   }, 60000);
 
   afterEach(async () => {
@@ -43,7 +41,7 @@ withChainsDescribe("E2E > Hi Menu component", () => {
   });
 
   it("should click on logout", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await page.click(`#${MENU_ID}`);
     await sleep(500);
     await page.click(`#${LOG_OUT_ID}`);

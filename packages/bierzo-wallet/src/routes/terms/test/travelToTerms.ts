@@ -7,7 +7,7 @@ import { travelToBalanceE2E } from "../../balance/test/travelToBalance";
 import { TERMS_ROUTE } from "../../paths";
 
 export async function travelToTermsE2E(browser: Browser, page: Page, extensionPage: Page): Promise<void> {
-  await travelToBalanceE2E(browser, page, extensionPage);
+  await travelToBalanceE2E(browser, page);
   await page.click(`#${MENU_ID.replace("/", "\\/")}`);
   await sleep(500);
   await page.click(`#${TERMS_CONDITIONS_ID.replace("/", "\\/")}`);

@@ -3,14 +3,7 @@ import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 
-import {
-  closeBrowser,
-  closeToast,
-  createExtensionPage,
-  createPage,
-  getToastMessage,
-  launchBrowser,
-} from "../../utils/test/e2e";
+import { closeBrowser, closeToast, createPage, getToastMessage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
@@ -20,7 +13,6 @@ import { travelToAddressesE2E } from "./test/travelToReceivePayment";
 withChainsDescribe("E2E > Receive Payment route", () => {
   let browser: Browser;
   let page: Page;
-  let extensionPage: Page;
   let server: Server;
 
   beforeAll(() => {
@@ -38,7 +30,6 @@ withChainsDescribe("E2E > Receive Payment route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    extensionPage = await createExtensionPage(browser);
   }, 60000);
 
   afterEach(async () => {
@@ -50,7 +41,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
   });
 
   it("should redirecto to receive payment route and check list of addresses", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToAddressesE2E(page);
@@ -68,7 +59,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
   }, 35000);
 
   it("should copy address to clipboard and show toast with message", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToAddressesE2E(page);

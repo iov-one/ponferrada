@@ -31,11 +31,11 @@ withChainsDescribe("E2E > Terms route", () => {
   }, 60000);
 
   afterEach(async () => {
-    //await closeBrowser(browser);
+    await closeBrowser(browser);
   });
 
   afterAll(() => {
-    //server.close();
+    server.close();
   });
 
   it("should travel to terms page", async () => {

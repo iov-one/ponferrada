@@ -3,15 +3,8 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { sleep } from "ui-logic";
 
-import {
-  closeBrowser,
-  closeToast,
-  createExtensionPage,
-  createPage,
-  getToastMessage,
-  launchBrowser,
-} from "../../utils/test/e2e";
-import { acceptEnqueuedRequest, openEnqueuedRequest, rejectEnqueuedRequest } from "../../utils/test/persona";
+import { closeBrowser, closeToast, createPage, getToastMessage, launchBrowser } from "../../utils/test/e2e";
+import { acceptEnqueuedRequest, clickOnFirstRequest, rejectEnqueuedRequest } from "../../utils/test/persona";
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
@@ -23,7 +16,6 @@ import { travelToPaymentE2E } from "./test/travelToPayment";
 withChainsDescribe("E2E > Payment route", () => {
   let browser: Browser;
   let page: Page;
-  let extensionPage: Page;
   let server: Server;
 
   beforeAll(() => {
@@ -41,7 +33,6 @@ withChainsDescribe("E2E > Payment route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    extensionPage = await createExtensionPage(browser);
   }, 60000);
 
   afterEach(async () => {
@@ -53,7 +44,7 @@ withChainsDescribe("E2E > Payment route", () => {
   });
 
   it("should make payment and redirected to payment confirmation page", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
@@ -64,7 +55,7 @@ withChainsDescribe("E2E > Payment route", () => {
   }, 35000);
 
   it("should not let to make payment address is not valid", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
@@ -74,12 +65,12 @@ withChainsDescribe("E2E > Payment route", () => {
   }, 35000);
 
   it("should have proper information about payment request", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
     await fillPaymentForm(page, "1", "tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku");
-    await openEnqueuedRequest(extensionPage);
+    const extensionPage = await clickOnFirstRequest(browser);
     await sleep(1000);
 
     const beneficiary = await getPaymentRequestData(extensionPage, 2);
@@ -92,7 +83,7 @@ withChainsDescribe("E2E > Payment route", () => {
   }, 35000);
 
   it("should show toast message in case if payment will be rejected", async () => {
-    await travelToBalanceE2E(browser, page, extensionPage);
+    await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
