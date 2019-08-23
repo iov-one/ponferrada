@@ -2,14 +2,13 @@ import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 
-import { closeBrowser, createExtensionPage, createPage, launchBrowser } from "../../utils/test/e2e";
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { travelToTermsE2E } from "./test/travelToTerms";
 
 withChainsDescribe("E2E > Terms route", () => {
   let browser: Browser;
   let page: Page;
-  let extensionPage: Page;
   let server: Server;
 
   beforeAll(() => {
@@ -27,7 +26,6 @@ withChainsDescribe("E2E > Terms route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    extensionPage = await createExtensionPage(browser);
   }, 60000);
 
   afterEach(async () => {
@@ -39,6 +37,6 @@ withChainsDescribe("E2E > Terms route", () => {
   });
 
   it("should travel to terms page", async () => {
-    await travelToTermsE2E(browser, page, extensionPage);
+    await travelToTermsE2E(browser, page);
   }, 35000);
 });
