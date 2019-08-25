@@ -46,16 +46,21 @@ export async function lookupRecipientAddressByName(
   throw new Error("No BNS connection found");
 }
 
-export function isValidIov(username: string): "valid" | "not_iov" | "too_short" | "too_long" | "wrong_chars" {
+export function isValidIov(
+  username: string,
+): "valid" | "not_iov" | "wrong_number_of_asterisks" | "too_short" | "too_long" | "wrong_chars" {
   if (!isIov(username)) return "not_iov";
 
-  const usernameLength = username.length - "*iov".length;
+  const parts = username.split("*");
+  if (parts.length !== 2) return "wrong_number_of_asterisks";
+  //TODO: add namespace variable as soon as multiple namespaces has been supported
+  const [name] = parts;
 
   //Username length must be at least 3 chars long
-  if (usernameLength < 3) return "too_short";
+  if (name.length < 3) return "too_short";
 
   //Username length must maximum 64 chars long
-  if (usernameLength > 64) return "too_long";
+  if (name.length > 64) return "too_long";
 
   //Must contain only allowed chars
   if (/^[a-z0-9_\-.]{3,64}\*iov$/.test(username)) return "valid";

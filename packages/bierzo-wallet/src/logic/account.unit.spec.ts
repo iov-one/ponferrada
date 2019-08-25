@@ -30,6 +30,11 @@ describe("Logic :: account", () => {
       expect(result).toBe("not_iov");
     });
 
+    it("should return 'wrong_number_of_asterisks' error", () => {
+      const result = isValidIov(`${randomString(10)}*some*iov`);
+      expect(result).toBe("wrong_number_of_asterisks");
+    });
+
     it("should return 'too_short' error", () => {
       const result = isValidIov(`${randomString(2)}*iov`);
       expect(result).toBe("too_short");
