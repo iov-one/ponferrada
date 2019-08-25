@@ -44,6 +44,20 @@ const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
 
+  const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
+    if (!governor) throw new Error("Governor not set in store. This is a bug.");
+
+    const electorates = await governor.getElectorates();
+    let allElectionRules: ElectionRule[] = [];
+
+    for (const electorate of electorates) {
+      const electionRules = await governor.getElectionRules(electorate.id);
+      allElectionRules = [...allElectionRules, ...electionRules];
+    }
+
+    return allElectionRules;
+  };
+
   const onSubmit = async (values: FormValues): Promise<void> => {
     if (!governor) throw new Error("Governor not set in store. This is a bug.");
 
