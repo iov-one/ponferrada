@@ -83,7 +83,7 @@ const ProposalForm = (): JSX.Element => {
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
         <FormOptions form={form} proposalType={proposalType} />
         <DescriptionField form={form} />
-        <ParticipationData />
+        <CommitteeSelect form={form} />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting}>
             Publish

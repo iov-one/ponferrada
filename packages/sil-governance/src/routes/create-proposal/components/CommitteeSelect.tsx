@@ -1,0 +1,57 @@
+import { ElectionRule } from "@iov/bns";
+import { FormApi } from "final-form";
+import { Block, SelectFieldForm, Typography } from "medulas-react-components";
+import React, { useState } from "react";
+
+export const COMMITTEE_FIELD = "Select a committee";
+const COMMITTEE_FIELD_INITIAL = "AAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+interface Props {
+  form: FormApi;
+  electionRules: ElectionRule[];
+}
+
+const CommitteeSelect = ({ form, electionRules }: Props): JSX.Element => {
+  const committeeItems = electionRules.map(rule => {
+    return {
+      name: rule.title,
+    };
+  });
+
+  const [quorum, setQuorum] = useState();
+  const [threshold, setThreshold] = useState();
+  const [period, setPeriod] = useState();
+
+  const changeCommittee = (committeeName: string): void => {
+    const committee = electionRules.find(rule => rule.title === committeeName);
+    if (!committee) throw new Error("Selected committee not found. This is a bug.");
+
+    //TODO parse types and generate strings
+    setQuorum(committee.quorum);
+    setThreshold(committee.threshold);
+    setPeriod(committee.votingPeriod);
+  };
+
+  return (
+    <Block marginTop={2} display="flex" alignItems="center">
+      <Typography>{COMMITTEE_FIELD}</Typography>
+      <Block marginLeft={2}>
+        <SelectFieldForm
+          fieldName={COMMITTEE_FIELD}
+          fullWidth
+          form={form}
+          items={committeeItems}
+          initial={COMMITTEE_FIELD_INITIAL}
+          onChangeCallback={selectedItem => changeCommittee(selectedItem.name)}
+        />
+      </Block>
+      <Block display="flex" justifyContent="space-between" marginTop={2}>
+        <Typography>Quorum: {quorum}</Typography>
+        <Typography>Threshold: {threshold}</Typography>
+        <Typography>Period: {period}</Typography>
+      </Block>
+    </Block>
+  );
+};
+
+export default CommitteeSelect;
