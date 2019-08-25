@@ -51,6 +51,9 @@ async function validate(values: object): Promise<object> {
     case "not_iov":
       errors[REGISTER_USERNAME_FIELD] = "Personalized address must include namespace suffix";
       break;
+    case "wrong_number_of_asterisks":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address must include only one namespace suffix";
+      break;
     case "too_short":
       errors[REGISTER_USERNAME_FIELD] = "Personalized address should be at least 3 characters";
       break;
@@ -61,6 +64,10 @@ async function validate(values: object): Promise<object> {
       errors[REGISTER_USERNAME_FIELD] =
         "Personalized address should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
       break;
+    case "valid":
+      break;
+    default:
+      throw new Error(`"Unknown IOV personalized address validation error: ${checkResult}`);
   }
   return errors;
 }
