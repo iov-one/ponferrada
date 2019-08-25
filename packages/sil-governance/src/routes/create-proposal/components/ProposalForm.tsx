@@ -1,4 +1,5 @@
-import { ProposalOptions, ProposalType } from "@iov/bns-governance";
+import { ElectionRule } from "@iov/bns";
+import { Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Block, Button, Form, FormValues, Typography, useForm } from "medulas-react-components";
 import React, { useState } from "react";
 import * as ReactRedux from "react-redux";
@@ -6,22 +7,22 @@ import * as ReactRedux from "react-redux";
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
 import { RootState } from "../../../store/reducers";
-import DescriptionField from "./DescriptionField";
+import CommitteeSelect, { COMMITTEE_FIELD } from "./CommitteeSelect";
+import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
-import ParticipationData from "./ParticipationData";
+import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
 import ProposalTypeSelect from "./ProposalTypeSelect";
-import TitleField from "./TitleField";
-import WhenField from "./WhenField";
+import TitleField, { TITLE_FIELD } from "./TitleField";
+import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 
 const buildProposalOptions = (type: ProposalType, values: FormValues): ProposalOptions => {
-  const [year, month, day] = values["Date"].split("-").map(el => parseInt(el, 10));
-  const [hour, minute] = values["Time"].split(":").map(el => parseInt(el, 10));
+  const [year, month, day] = values[DATE_FIELD].split("-").map(el => parseInt(el, 10));
+  const [hour, minute] = values[TIME_FIELD].split(":").map(el => parseInt(el, 10));
 
-  const title = values["Title"];
-  const description = values["Description"];
+  const title = values[TITLE_FIELD];
+  const description = values[DESCRIPTION_FIELD];
   const startTime = new Date(year, month - 1, day, hour, minute);
-  //TODO Get Election Rule from values when the UI for selecting committee is done
-  const electionRuleId = 1;
+  const electionRuleId = parseInt(values[COMMITTEE_FIELD].substring(1), 10);
 
   const commonOptions = {
     title,
@@ -30,7 +31,7 @@ const buildProposalOptions = (type: ProposalType, values: FormValues): ProposalO
     electionRuleId,
   };
 
-  const text = values["Text"];
+  const text = values[TEXT_FIELD];
 
   switch (type) {
     case ProposalType.AmendProtocol:

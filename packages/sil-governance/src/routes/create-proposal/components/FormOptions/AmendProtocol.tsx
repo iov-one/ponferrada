@@ -2,7 +2,7 @@ import { FormApi } from "final-form";
 import { Block, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
-const TEXT_FIELD = "Text";
+export const TEXT_FIELD = "Text";
 const TEXT_PLACEHOLDER = "Enter the text for the protocol amendment here";
 
 interface Props {

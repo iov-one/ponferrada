@@ -2,7 +2,7 @@ import { FormApi } from "final-form";
 import { Block, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
-const TITLE_FIELD = "Title";
+export const TITLE_FIELD = "Title";
 const TITLE_PLACEHOLDER = "Enter Title";
 
 interface Props {

@@ -2,7 +2,7 @@ import { FormApi } from "final-form";
 import { Block, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
-const DESCRIPTION_FIELD = "Description";
+export const DESCRIPTION_FIELD = "Description";
 const DESCRIPTION_PLACEHOLDER = "Enter Description of the proposal";
 
 interface Props {
