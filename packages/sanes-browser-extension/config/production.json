@@ -14,10 +14,6 @@
       "chainSpec": {
         "codecType": "bns",
         "node": "https://bns.antnet.iov.one/"
-      },
-      "faucetSpec": {
-        "uri": "https://bns-faucet.antnet.iov.one",
-        "token": "IOV"
       }
     },
     {

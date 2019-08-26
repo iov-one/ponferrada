@@ -7,10 +7,6 @@
     "chainSpec": {
       "codecType": "bns",
       "node": "ws://localhost:23456/"
-    },
-    "faucetSpec": {
-      "uri": "http://localhost:8000",
-      "tokens": ["CASH", "BASH"]
     }
   }
 }

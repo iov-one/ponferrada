@@ -9,18 +9,12 @@ export interface Config {
 
 export interface ChainConfig {
   readonly chainSpec: ChainSpec;
-  readonly faucetSpec?: FaucetSpec;
 }
 
 export interface ChainSpec {
   readonly codecType: string;
   readonly node: string;
   readonly scraper?: string;
-}
-
-export interface FaucetSpec {
-  readonly uri: string;
-  readonly tokens: readonly string[];
 }
 
 interface WindowWithConfig extends Window {

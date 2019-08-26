@@ -7,10 +7,6 @@
     "chainSpec": {
       "codecType": "bns",
       "node": "wss://rpc.lovenet.iov.one/"
-    },
-    "faucetSpec": {
-      "uri": "https://bns-faucet.lovenet.iov.one",
-      "tokens": ["IOV"]
     }
   }
 }

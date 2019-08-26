@@ -11,15 +11,8 @@ export interface ChainSpec {
   readonly scraper?: string;
 }
 
-export interface FaucetSpec {
-  readonly uri: string;
-  readonly token: string;
-}
-
-// We can extend T to also include extra information, such as a chainId field
 export interface ChainConfig {
   readonly chainSpec: ChainSpec;
-  readonly faucetSpec?: FaucetSpec;
 }
 
 export interface ChainNames {
