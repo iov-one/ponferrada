@@ -115,6 +115,7 @@ fold_end
 if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]]; then
   fold_start "deployment-master"
   (
+    echo "Deploying to dockerhub ..."
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
     docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:latest"
@@ -125,12 +126,32 @@ if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVI
 
     docker logout
   )
+
+  # TODO: move this block to tagged builds once everything is stable
+  (
+    echo "Deploying to firebase ..."
+    (
+      cd packages/bierzo-wallet
+      yarn override-config-staging
+      yarn deploy-staging --token "$FIREBASE_TOKEN"
+      yarn override-config-production
+      yarn deploy-production --token "$FIREBASE_TOKEN"
+    )
+    (
+      cd packages/sil-governance
+      yarn override-config-staging
+      yarn deploy-staging --token "$FIREBASE_TOKEN"
+      yarn override-config-production
+      yarn deploy-production --token "$FIREBASE_TOKEN"
+    )
+  )
   fold_end
 elif [[ "$TRAVIS_TAG" != "" ]]; then
   fold_start "deployment-tagged"
   echo "Uploading export for tag $TRAVIS_TAG"
 
   (
+    echo "Deploying to dockerhub ..."
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
     docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:$TRAVIS_TAG"
@@ -142,6 +163,7 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     docker logout
   )
 
+  echo "Deploying to Chrome Web Store ..."
   # Create CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN as described in https://developer.chrome.com/webstore/using_webstore_api#beforeyoubegin
   ACCESS_TOKEN=$(curl -sS \
     -X POST \

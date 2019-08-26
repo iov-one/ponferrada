@@ -56,7 +56,9 @@
     "test-unit": "CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --detectOpenHandles",
     "test-e2e": "yarn override-config-development && yarn use-extension-config-development && CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
     "test-single": "yarn override-config-development && yarn use-extension-config-development && CI=true react-scripts test --env=jsdom --detectOpenHandles",
-    "test": "yarn test-unit && yarn test-dom && yarn test-e2e"
+    "test": "yarn test-unit && yarn test-dom && yarn test-e2e",
+    "deploy-staging": "cp firebase.wallet-staging.json firebase.json && firebase deploy --project iov-wallet --only hosting:iov-wallet-staging",
+    "deploy-production": "cp firebase.wallet-production.json firebase.json && firebase deploy --project iov-wallet --only hosting:iov-wallet-production"
   },
   "browserslist": [
     ">0.2%",

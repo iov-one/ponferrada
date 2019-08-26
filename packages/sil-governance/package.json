@@ -41,7 +41,9 @@
     "test-dom": "TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
     "test-e2e": "yarn override-config-development && yarn use-extension-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom --runInBand",
     "test-single": "yarn override-config-development && yarn use-extension-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test --env=jsdom",
-    "test": "yarn test-dom && yarn test-e2e"
+    "test": "yarn test-dom && yarn test-e2e",
+    "deploy-staging": "cp firebase.governance-staging.json firebase.json && firebase deploy --project iov-governance --only hosting:iov-governance-staging",
+    "deploy-production": "cp firebase.governance-production.json firebase.json && firebase deploy --project iov-governance --only hosting:iov-governance-production"
   },
   "browserslist": [
     ">0.2%",

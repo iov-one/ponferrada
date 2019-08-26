@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "iov-governance-production",
+    "public": "build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
