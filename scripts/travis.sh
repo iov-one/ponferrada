@@ -185,12 +185,14 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
       -X PUT \
       -T packages/sanes-browser-extension/exports/staging/*.zip \
       "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING"
+    echo # add missing newline
     curl -sS \
       -H "Authorization: Bearer $ACCESS_TOKEN" \
       -H "x-goog-api-version: 2" \
       -X PUT \
       -T packages/sanes-browser-extension/exports/production/*.zip \
       "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION"
+    echo # add missing newline
 
     # Publish
     # curl -sS \
