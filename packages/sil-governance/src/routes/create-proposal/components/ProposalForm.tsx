@@ -15,7 +15,7 @@ import ProposalTypeSelect from "./ProposalTypeSelect";
 import TitleField, { TITLE_FIELD } from "./TitleField";
 import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 
-const getElectionRules = async (governor: Governor): Promise<ElectionRule[]> => {
+const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   if (!governor) throw new Error("Governor not set in store. This is a bug.");
 
   const electorates = await governor.getElectorates();
@@ -32,7 +32,7 @@ const getElectionRules = async (governor: Governor): Promise<ElectionRule[]> => 
 const ProposalForm = (): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
-  const [electionRules, setElectionRules] = useState<ElectionRule[]>([]);
+  const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {

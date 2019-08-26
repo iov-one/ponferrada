@@ -7,9 +7,9 @@ export const COMMITTEE_FIELD = "Committee";
 const COMMITTEE_FIELD_INITIAL = "Select a committee";
 
 interface Props {
-  form: FormApi;
-  electionRules: ElectionRule[];
-  changeElectionRuleId: Dispatch<SetStateAction<number>>;
+  readonly form: FormApi;
+  readonly electionRules: readonly ElectionRule[];
+  readonly changeElectionRuleId: Dispatch<SetStateAction<number>>;
 }
 
 const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): JSX.Element => {
