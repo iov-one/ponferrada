@@ -1,6 +1,7 @@
 import { ElectionRule } from "@iov/bns";
 import { FormApi } from "final-form";
 import { Block, SelectFieldForm, Typography } from "medulas-react-components";
+import { Item } from "medulas-react-components/types/components/forms/SelectFieldForm";
 import React, { Dispatch, SetStateAction, useState } from "react";
 
 export const COMMITTEE_FIELD = "Committee";
@@ -15,7 +16,7 @@ interface Props {
 const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): JSX.Element => {
   const committeeItems = electionRules.map(rule => {
     return {
-      name: rule.title,
+      name: `${rule.id}: ${rule.title}`,
     };
   });
 
@@ -23,8 +24,9 @@ const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): 
   const [threshold, setThreshold] = useState();
   const [period, setPeriod] = useState();
 
-  const changeCommittee = (committeeName: string): void => {
-    const committee = electionRules.find(rule => rule.title === committeeName);
+  const changeCommittee = (selectedItem: Item): void => {
+    const committeeId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
+    const committee = electionRules.find(rule => rule.id === committeeId);
     if (!committee) throw new Error("Selected committee not found. This is a bug.");
 
     const quorum = committee.quorum
@@ -52,7 +54,7 @@ const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): 
             form={form}
             items={committeeItems}
             initial={COMMITTEE_FIELD_INITIAL}
-            onChangeCallback={selectedItem => changeCommittee(selectedItem.name)}
+            onChangeCallback={changeCommittee}
           />
         </Block>
       </Block>
