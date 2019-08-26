@@ -3,3 +3,7 @@ yarn-error.log
 
 # macOS
 .DS_Store
+
+# Deployment
+firebase.json
+.firebase/
