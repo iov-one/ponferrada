@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "IOV - Browser extension",
+  "name": "NEUMA - Browser extension",
   "version": "will_be_set_in_build_step",
   "description": "Key manager and transaction signer for the IOV, Ethereum and Lisk blockchains (production)",
   "browser_action": {
-    "default_title": "IOV - Extension (production)",
+    "default_title": "NEUMA (production)",
     "default_popup": "index.html"
   },
   "applications": {
