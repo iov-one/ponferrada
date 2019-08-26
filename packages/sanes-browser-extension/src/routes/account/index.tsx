@@ -26,7 +26,7 @@ import {
   TERMS_URL,
   WELCOME_ROUTE,
 } from "../paths";
-import logoutIcon from "./assets/logout.svg";
+import deleteWalletIcon from "./assets/deleteWallet.svg";
 import recoveryPhraseIcon from "./assets/recoveryPhrase.svg";
 import requestsIcon from "./assets/requests.svg";
 import ListTxs from "./components/ListTxs";
@@ -83,15 +83,15 @@ const AccountView = (): JSX.Element => {
       action: () => history.push(REQUEST_ROUTE),
     },
     {
-      icon: logoutIcon,
-      text: "Logout",
+      icon: deleteWalletIcon,
+      text: "Delete Wallet",
       action: async () => {
         // TODO: Ask for confirmation
         try {
           await clearPersona();
           await clearDatabase();
         } catch (error) {
-          toast.show("An error occurred during logout", ToastVariant.ERROR);
+          toast.show("An error occurred during deleting wallet", ToastVariant.ERROR);
           console.error(error);
           return;
         }

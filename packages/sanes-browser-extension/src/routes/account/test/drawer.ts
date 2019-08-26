@@ -13,7 +13,7 @@ async function openDrawer(drawerComponent: React.Component): Promise<void> {
 interface InitDrawerResult {
   readonly recoveryPhraseLink: Element;
   readonly requestsLink: Element;
-  readonly logoutLink: Element;
+  readonly deleteWalletLink: Element;
   readonly termsLink: Element;
 }
 
@@ -23,17 +23,17 @@ const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerR
   const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
   const drawerElements = (drawerList as Element).querySelectorAll("nav div > div:nth-of-type(2)");
   expect(drawerElements.length).toBe(3);
-  const [recoveryPhraseLink, requestsLink, logoutLink] = drawerElements;
+  const [recoveryPhraseLink, requestsLink, deleteWalletLink] = drawerElements;
   const footerLinks = (drawerList as Element).querySelectorAll("footer a");
   expect(footerLinks.length).toBe(1);
   const [termsLink] = footerLinks;
 
   expect(recoveryPhraseLink.textContent).toBe("Recovery words");
   expect(requestsLink.textContent).toBe("Requests");
-  expect(logoutLink.textContent).toBe("Logout");
+  expect(deleteWalletLink.textContent).toBe("Delete Wallet");
   expect(termsLink.textContent).toBe("Terms & Conditions");
 
-  return { recoveryPhraseLink, requestsLink, logoutLink, termsLink };
+  return { recoveryPhraseLink, requestsLink, deleteWalletLink, termsLink };
 };
 
 export const clickRecoveryPhrase = async (drawerComponent: React.Component): Promise<void> => {
@@ -46,9 +46,9 @@ export const clickRequests = async (drawerComponent: React.Component): Promise<v
   await click(requestsLink);
 };
 
-export const clickLogout = async (drawerComponent: React.Component): Promise<void> => {
-  const { logoutLink } = await initDrawer(drawerComponent);
-  await click(logoutLink);
+export const clickDeleteWallet = async (drawerComponent: React.Component): Promise<void> => {
+  const { deleteWalletLink } = await initDrawer(drawerComponent);
+  await click(deleteWalletLink);
 };
 
 export const clickTerms = async (drawerComponent: React.Component): Promise<void> => {

@@ -111,10 +111,10 @@ describe("DOM > Feature > Account Status", () => {
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
-  it("redirects to the Welcome page when Logout was clicked", async () => {
+  it("redirects to the Welcome page when Delete wallet was clicked", async () => {
     const clearPersonaMock = mockClearPersona();
     const clearDatabaseMock = mockClearDatabase();
-    await Drawer.clickLogout(accountStatusDom);
+    await Drawer.clickDeleteWallet(accountStatusDom);
     await whenOnNavigatedToRoute(WELCOME_ROUTE);
     expect(clearPersonaMock).toHaveBeenCalledTimes(1);
     expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
