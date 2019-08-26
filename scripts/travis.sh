@@ -7,6 +7,9 @@ command -v shellcheck > /dev/null && shellcheck "$0"
 # Config
 #
 
+export EXTENSION_ID_STAGING="ililemcipflfijjbkniehikepfpdgail"
+export EXTENSION_ID_PRODUCTION="gegmganblgchemddleocdoadmljledcj"
+
 function fold_start() {
   export CURRENT_FOLD_NAME="$1"
   travis_fold start "$CURRENT_FOLD_NAME"
@@ -164,28 +167,39 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     docker logout
   )
 
-  echo "Deploying to Chrome Web Store ..."
-  # Create CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN as described in https://developer.chrome.com/webstore/using_webstore_api#beforeyoubegin
-  ACCESS_TOKEN=$(curl -sS \
-    -X POST \
-    -d "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&refresh_token=$REFRESH_TOKEN&grant_type=refresh_token" \
-    https://www.googleapis.com/oauth2/v4/token | jq -r ".access_token")
+  (
+    echo "Deploying to Chrome Web Store ..."
+    # Create CHROME_WEBSTORE_CLIENT_ID, CHROME_WEBSTORE_CLIENT_SECRET, CHROME_WEBSTORE_REFRESH_TOKEN
+    # as described in https://developer.chrome.com/webstore/using_webstore_api#beforeyoubegin
+    ACCESS_TOKEN=$(curl -sS \
+      -X POST \
+      -d "client_id=$CHROME_WEBSTORE_CLIENT_ID&client_secret=$CHROME_WEBSTORE_CLIENT_SECRET&refresh_token=$CHROME_WEBSTORE_REFRESH_TOKEN&grant_type=refresh_token" \
+      https://www.googleapis.com/oauth2/v4/token | jq -r ".access_token")
 
-  # https://developer.chrome.com/webstore/using_webstore_api#uploadnew
-  # Note: this command fails with curl 7.54.0 from Mac but works with curl 7.65.0 from Homebrew
-  curl --version
-  curl -sS \
-    -H "Authorization: Bearer $ACCESS_TOKEN" \
-    -H "x-goog-api-version: 2" \
-    -X PUT \
-    -T packages/sanes-browser-extension/exports/staging/*.zip \
-    "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen"
-  curl -sS \
-    -H "Authorization: Bearer $ACCESS_TOKEN" \
-    -H "x-goog-api-version: 2" \
-    -H "Content-Length: 0" \
-    -X POST \
-    "https://www.googleapis.com/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen/publish"
+    # https://developer.chrome.com/webstore/using_webstore_api#uploadnew
+    # Note: this command fails with curl 7.54.0 from Mac but works with curl 7.65.0 from Homebrew
+    curl --version
+    curl -sS \
+      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -H "x-goog-api-version: 2" \
+      -X PUT \
+      -T packages/sanes-browser-extension/exports/staging/*.zip \
+      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$EXTENSION_ID_STAGING"
+    curl -sS \
+      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -H "x-goog-api-version: 2" \
+      -X PUT \
+      -T packages/sanes-browser-extension/exports/production/*.zip \
+      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$EXTENSION_ID_PRODUCTION"
+
+    # Publish
+    # curl -sS \
+    #   -H "Authorization: Bearer $ACCESS_TOKEN" \
+    #   -H "x-goog-api-version: 2" \
+    #   -H "Content-Length: 0" \
+    #   -X POST \
+    #   "https://www.googleapis.com/chromewebstore/v1.1/items/$EXTENSION_ID_STAGING/publish"
+  )
   fold_end
 else
   echo "Not a mater or tag build, skipping deployment"
