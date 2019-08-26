@@ -7,8 +7,8 @@ command -v shellcheck > /dev/null && shellcheck "$0"
 # Config
 #
 
-export EXTENSION_ID_STAGING="ililemcipflfijjbkniehikepfpdgail"
-export EXTENSION_ID_PRODUCTION="gegmganblgchemddleocdoadmljledcj"
+export CHROME_WEBSTORE_EXTENSION_ID_STAGING="ililemcipflfijjbkniehikepfpdgail"
+export CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION="gegmganblgchemddleocdoadmljledcj"
 
 function fold_start() {
   export CURRENT_FOLD_NAME="$1"
@@ -184,13 +184,13 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
       -H "x-goog-api-version: 2" \
       -X PUT \
       -T packages/sanes-browser-extension/exports/staging/*.zip \
-      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$EXTENSION_ID_STAGING"
+      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING"
     curl -sS \
       -H "Authorization: Bearer $ACCESS_TOKEN" \
       -H "x-goog-api-version: 2" \
       -X PUT \
       -T packages/sanes-browser-extension/exports/production/*.zip \
-      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$EXTENSION_ID_PRODUCTION"
+      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION"
 
     # Publish
     # curl -sS \
@@ -198,7 +198,7 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     #   -H "x-goog-api-version: 2" \
     #   -H "Content-Length: 0" \
     #   -X POST \
-    #   "https://www.googleapis.com/chromewebstore/v1.1/items/$EXTENSION_ID_STAGING/publish"
+    #   "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING/publish"
   )
   fold_end
 else
