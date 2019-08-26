@@ -1,11 +1,11 @@
 {
   "names": {
-    "iov-lovenet": "IOV Lovenet",
+    "iov-boarnet": "IOV Boarnet",
     "lisk-da3ed6a454": "Lisk Testnet",
     "ethereum-eip155-4": "Rinkeby"
   },
   "blockExplorers": {
-    "iov-lovenet": null,
+    "iov-boarnet": null,
     "lisk-da3ed6a454": "https://testnet-explorer.lisk.io/tx/",
     "ethereum-eip155-4": "https://rinkeby.etherscan.io/tx/"
   },
@@ -13,7 +13,7 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "node": "https://rpc.lovenet.iov.one/"
+        "node": "https://rpc.boarnet.iov.one/"
       }
     },
     {

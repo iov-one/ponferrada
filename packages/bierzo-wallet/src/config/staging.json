@@ -1,6 +1,6 @@
 {
   "names": {
-    "iov-lovenet": "IOV Lovenet",
+    "iov-boarnet": "IOV Boarnet",
     "lisk-da3ed6a454": "Lisk Testnet",
     "ethereum-eip155-4": "Rinkeby"
   },
@@ -10,10 +10,10 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "node": "wss://rpc.lovenet.iov.one/"
+        "node": "wss://rpc.boarnet.iov.one/"
       },
       "faucetSpec": {
-        "uri": "https://bns-faucet.lovenet.iov.one",
+        "uri": "https://faucet.boarnet.iov.one",
         "tokens": ["IOV"]
       }
     },

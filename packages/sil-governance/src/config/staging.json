@@ -1,12 +1,12 @@
 {
   "names": {
-    "iov-lovenet": "IOV Lovenet"
+    "iov-boarnet": "IOV Boarnet"
   },
   "extensionId": "hkmeinfklhongiffbgkfaandidpmklen",
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
-      "node": "wss://rpc.lovenet.iov.one/"
+      "node": "wss://rpc.boarnet.iov.one/"
     }
   }
 }
