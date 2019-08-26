@@ -174,7 +174,7 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     ACCESS_TOKEN=$(curl -sS \
       -X POST \
       -d "client_id=$CHROME_WEBSTORE_CLIENT_ID&client_secret=$CHROME_WEBSTORE_CLIENT_SECRET&refresh_token=$CHROME_WEBSTORE_REFRESH_TOKEN&grant_type=refresh_token" \
-      https://www.googleapis.com/oauth2/v4/token | jq -r ".access_token")
+      https://www.googleapis.com/oauth2/v4/token | jq -r -e ".access_token")
 
     # https://developer.chrome.com/webstore/using_webstore_api#uploadnew
     # Note: this command fails with curl 7.54.0 from Mac but works with curl 7.65.0 from Homebrew
