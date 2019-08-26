@@ -3,13 +3,15 @@ import { ChainAddressPair } from "@iov/bns";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
+import { FormValues, ValidationError } from "medulas-react-components";
 import React from "react";
 
+import { isValidIov } from "../../logic/account";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
 import ConfirmRegistration from "./components/ConfirmRegistration";
-import Layout from "./components/index";
+import Layout, { REGISTER_USERNAME_FIELD } from "./components/index";
 
 export const REGISTER_USERNAME_STORY_PATH = `${WALLET_ROOT}/Register Username`;
 export const REGISTER_USERNAME_REGISTRATION_STORY_PATH = "Register Username";
@@ -34,9 +36,40 @@ async function onSubmit(_: object): Promise<void> {
   action("onSubmit")();
 }
 
-async function validate(_: object): Promise<object> {
-  action("validate")();
-  return {};
+async function validate(values: object): Promise<object> {
+  const formValues = values as FormValues;
+  const errors: ValidationError = {};
+
+  const username = formValues[REGISTER_USERNAME_FIELD];
+  if (!username) {
+    errors[REGISTER_USERNAME_FIELD] = "Required";
+    return errors;
+  }
+  const checkResult = isValidIov(username);
+
+  switch (checkResult) {
+    case "not_iov":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address must include namespace suffix";
+      break;
+    case "wrong_number_of_asterisks":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address must include only one namespace suffix";
+      break;
+    case "too_short":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address should be at least 3 characters";
+      break;
+    case "too_long":
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address should be maximum 64 characters";
+      break;
+    case "wrong_chars":
+      errors[REGISTER_USERNAME_FIELD] =
+        "Personalized address should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+      break;
+    case "valid":
+      break;
+    default:
+      throw new Error(`"Unknown IOV personalized address validation error: ${checkResult}`);
+  }
+  return errors;
 }
 
 storiesOf(REGISTER_USERNAME_STORY_PATH, module)
