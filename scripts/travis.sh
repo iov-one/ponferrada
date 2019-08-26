@@ -95,6 +95,7 @@ DOCKER_BUILD_VERSION=$(echo "${TRAVIS_COMMIT}" | cut -c 1-10);
 (
   cd packages/sanes-browser-extension
   yarn export-staging
+  yarn export-production
 )
 (
   cd packages/bierzo-wallet
@@ -177,7 +178,7 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "x-goog-api-version: 2" \
     -X PUT \
-    -T packages/sanes-browser-extension/exports/*.zip \
+    -T packages/sanes-browser-extension/exports/staging/*.zip \
     "https://www.googleapis.com/upload/chromewebstore/v1.1/items/hkmeinfklhongiffbgkfaandidpmklen"
   curl -sS \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
