@@ -5,7 +5,7 @@
     "ethereum-eip155-5777": "Ganache"
   },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
-  "websiteName": "wallet.hugnet.iov.one",
+  "websiteName": "localhost",
   "chains": [
     {
       "chainSpec": {
