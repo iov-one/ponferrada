@@ -5,10 +5,9 @@ import * as identities from "../../communication/identities";
 import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
-import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { getExtensionStatus, groupIdentitiesByChain, setExtensionStateAction } from "./actions";
 
-withChainsDescribe("Extension reducer", () => {
+describe("Extension reducer", () => {
   afterAll(() => disconnect());
 
   it("has correct initial state", async () => {
@@ -44,10 +43,14 @@ withChainsDescribe("Extension reducer", () => {
     const extension = await getExtensionStatus();
     store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.identities));
 
+    const extensionIdentities: { [chain: string]: Identity } = {
+      "ethereum-eip155-5777": identitiesResponse[0],
+    };
+
     const extensionState = store.getState().extension;
     expect(extensionState.connected).toBeTruthy();
     expect(extensionState.installed).toBeTruthy();
-    expect(extensionState.identities).toBe(identitiesResponse);
+    expect(extensionState.identities).toStrictEqual(extensionIdentities);
   });
 });
 
