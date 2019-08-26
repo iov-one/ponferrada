@@ -14,13 +14,13 @@ import { resetAppAction } from "../../../../store";
 import { getBorderColor } from "../../../../theme/css";
 import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
-import logout from "../../assets/logout.svg";
+import deleteWallet from "../../assets/deleteWallet.svg";
 import privacy from "../../assets/privacyPolicy.svg";
 import terms from "../../assets/terms.svg";
 
 export const TERMS_CONDITIONS_ID = "terms";
 export const PRIVACY_POLICY_ID = "privacy-policy";
-export const LOG_OUT_ID = "log-out";
+export const DELETE_WALLET_ID = "delete-wallet";
 
 export const MENU_ID = "hi-menu";
 
@@ -78,7 +78,7 @@ const HiMenu = (props: {}): JSX.Element => {
   const dispatch = ReactRedux.useDispatch();
   const { ...rest } = props;
 
-  const onLogout = (): void => {
+  const onDeleteWallet = (): void => {
     disconnect();
     dispatch(resetAppAction());
   };
@@ -111,7 +111,13 @@ const HiMenu = (props: {}): JSX.Element => {
           alt="Privacy Policy"
         />
         <Hairline />
-        <HiElement src={logout} id={LOG_OUT_ID} action={onLogout} msg="Logout" alt="Logout" />
+        <HiElement
+          src={deleteWallet}
+          id={DELETE_WALLET_ID}
+          action={onDeleteWallet}
+          msg="Delete wallet"
+          alt="Delete wallet"
+        />
       </Block>
     </ListMenu>
   );

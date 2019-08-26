@@ -8,7 +8,7 @@ import { LOGIN_ROUTE } from "../../../../routes/paths";
 import { closeBrowser, createPage, launchBrowser } from "../../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute } from "../../../../utils/test/navigation";
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
-import { LOG_OUT_ID, MENU_ID } from "./index";
+import { DELETE_WALLET_ID, MENU_ID } from "./index";
 
 withChainsDescribe("E2E > Hi Menu component", () => {
   let browser: Browser;
@@ -40,11 +40,11 @@ withChainsDescribe("E2E > Hi Menu component", () => {
     server.close();
   });
 
-  it("should click on logout", async () => {
+  it("should click on delete wallet", async () => {
     await travelToBalanceE2E(browser, page);
     await page.click(`#${MENU_ID}`);
     await sleep(500);
-    await page.click(`#${LOG_OUT_ID}`);
+    await page.click(`#${DELETE_WALLET_ID}`);
     await whenOnNavigatedToE2eRoute(page, LOGIN_ROUTE);
   }, 35000);
 });
