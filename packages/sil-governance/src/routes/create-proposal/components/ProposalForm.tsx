@@ -16,8 +16,6 @@ import TitleField, { TITLE_FIELD } from "./TitleField";
 import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 
 const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
-  if (!governor) throw new Error("Governor not set in store. This is a bug.");
-
   const electorates = await governor.getElectorates();
   let allElectionRules: ElectionRule[] = [];
 
