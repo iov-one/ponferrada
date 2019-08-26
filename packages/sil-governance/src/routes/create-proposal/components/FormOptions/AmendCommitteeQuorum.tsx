@@ -3,7 +3,7 @@ import { Block, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
 }
 
 const AmendCommitteeQuorum = ({ form }: Props): JSX.Element => {

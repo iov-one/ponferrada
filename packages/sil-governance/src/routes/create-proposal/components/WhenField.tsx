@@ -7,7 +7,7 @@ export const DATE_FIELD = "Date";
 export const TIME_FIELD = "Time";
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
 }
 
 const WhenField = ({ form }: Props): JSX.Element => {

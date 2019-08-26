@@ -6,7 +6,7 @@ export const DESCRIPTION_FIELD = "Description";
 const DESCRIPTION_PLACEHOLDER = "Enter Description of the proposal";
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
 }
 
 const DescriptionField = ({ form }: Props): JSX.Element => {

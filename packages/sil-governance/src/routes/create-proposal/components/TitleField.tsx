@@ -6,7 +6,7 @@ export const TITLE_FIELD = "Title";
 const TITLE_PLACEHOLDER = "Enter Title";
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
 }
 
 const TitleField = ({ form }: Props): JSX.Element => {

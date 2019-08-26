@@ -25,8 +25,8 @@ const formOptionsItems = Object.keys(formOptions).map(formOption => {
 });
 
 interface Props {
-  form: FormApi;
-  changeProposalType: Dispatch<SetStateAction<ProposalType>>;
+  readonly form: FormApi;
+  readonly changeProposalType: Dispatch<SetStateAction<ProposalType>>;
 }
 
 const ProposalTypeSelect = ({ form, changeProposalType }: Props): JSX.Element => {
