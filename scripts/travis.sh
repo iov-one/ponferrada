@@ -196,12 +196,20 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
     echo # add missing newline
 
     # Publish
-    # curl -sS \
-    #   -H "Authorization: Bearer $ACCESS_TOKEN" \
-    #   -H "x-goog-api-version: 2" \
-    #   -H "Content-Length: 0" \
-    #   -X POST \
-    #   "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING/publish"
+    curl -sS \
+      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -H "x-goog-api-version: 2" \
+      -H "Content-Length: 0" \
+      -X POST \
+      "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING/publish"
+    echo # add missing newline
+    curl -sS \
+      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -H "x-goog-api-version: 2" \
+      -H "Content-Length: 0" \
+      -X POST \
+      "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION/publish"
+    echo # add missing newline
     fold_end
   )
 else
