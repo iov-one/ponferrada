@@ -9,7 +9,7 @@ import {
   LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
-  RESTORE_ACCOUNT,
+  RESTORE_WALLET,
   SHARE_IDENTITY,
   SIGNUP_ROUTE,
   TX_REQUEST,
@@ -17,7 +17,7 @@ import {
 } from "./paths";
 import RecoveryPhrase from "./recovery-phrase";
 import Requests from "./requests";
-import RestoreAccount from "./restore-account";
+import RestoreWallet from "./restore-wallet";
 import ShareIdentity from "./share-identity";
 import Signup from "./signup";
 import TxRequest from "./tx-request";
@@ -30,7 +30,7 @@ export const MainRouter = (): JSX.Element => (
       <Route exact path={SIGNUP_ROUTE} component={Signup} />
       <Route exact path={LOGIN_ROUTE} component={Login} />
       <Route exact path={RECOVERY_PHRASE_ROUTE} component={RecoveryPhrase} />
-      <Route exact path={RESTORE_ACCOUNT} component={RestoreAccount} />
+      <Route exact path={RESTORE_WALLET} component={RestoreWallet} />
       <Route exact path={ACCOUNT_STATUS_ROUTE} component={AccountStatus} />
       <Route exact path={SHARE_IDENTITY} component={ShareIdentity} />
       <Route exact path={TX_REQUEST} component={TxRequest} />

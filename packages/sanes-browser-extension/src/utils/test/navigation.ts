@@ -8,7 +8,7 @@ import {
   LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
-  RESTORE_ACCOUNT,
+  RESTORE_WALLET,
   SHARE_IDENTITY,
   SIGNUP_ROUTE,
   TX_REQUEST,
@@ -61,8 +61,8 @@ export const travelToRecoveryPhrase = async (persona?: GetPersonaResponse): Prom
   return travelTo(RECOVERY_PHRASE_ROUTE, [], persona);
 };
 
-export const travelToRestoreAccount = async (): Promise<React.Component> => {
-  return travelTo(RESTORE_ACCOUNT);
+export const travelToRestoreWallet = async (): Promise<React.Component> => {
+  return travelTo(RESTORE_WALLET);
 };
 
 export const travelToShareIdentity = async (requests: readonly Request[]): Promise<React.Component> => {
