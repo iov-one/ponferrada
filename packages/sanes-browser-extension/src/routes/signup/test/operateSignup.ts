@@ -124,7 +124,7 @@ export const submitShowPhraseE2E = async (page: Page): Promise<void> => {
   await checkbox!.click();
 
   const mnemonic = await page.evaluate(() => {
-    const element = document.querySelector("p");
+    const element = document.querySelectorAll("p")[1];
     if (!element) throw new Error("Paragraph element not found");
     return element.textContent || "";
   });
