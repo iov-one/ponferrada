@@ -28,12 +28,20 @@ export class BwRegisterUsernameParser extends BwParser<RegisterUsernameTx> {
 
   public csvRepresentation(tx: ProcessedTx<RegisterUsernameTx>): string {
     const { original } = tx;
-    const parties = [`"${tx.id}"`, `"Personalized address registration"`, `"N/A"`];
-    const payment = ['"N/A"', '"N/A"', '"N/A"'];
+    const parties = [`"${tx.id}"`, `"Personalized address registration: ${original.username}"`, `"N/A"`];
+    const payment = ['""', '""', '""'];
+    let fee = [`""`, `""`, `""`];
+    if (original.fee && original.fee.tokens) {
+      fee = [
+        `"${original.fee.tokens.quantity}"`,
+        `"${original.fee.tokens.fractionalDigits}"`,
+        `"${original.fee.tokens.tokenTicker}"`,
+      ];
+    }
     const date = [`"${tx.time.toISOString()}"`];
     const status = [`"${original.username}"`];
 
-    const txRow = [...parties, ...payment, ...date, ...status];
+    const txRow = [...parties, ...payment, ...fee, ...date, ...status];
 
     return txRow.join(";");
   }

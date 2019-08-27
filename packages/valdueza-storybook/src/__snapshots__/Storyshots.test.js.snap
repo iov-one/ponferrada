@@ -4583,11 +4583,20 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
                 >
-                  -
-                </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
+                  >
+                    100 IOV
+                  </h6>
+                </div>
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
@@ -4654,11 +4663,20 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
                 >
-                  10.5 LSK
-                </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    10.5 LSK
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
+                  >
+                    1.2 IOV
+                  </h6>
+                </div>
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
@@ -4725,11 +4743,20 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
                 >
-                  7.4 IOV
-                </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    7.4 IOV
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
+                  >
+                    1.2 IOV
+                  </h6>
+                </div>
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
@@ -4794,11 +4821,20 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
                 >
-                  -
-                </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
+                  >
+                    100 IOV
+                  </h6>
+                </div>
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
@@ -4865,11 +4901,20 @@ exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
                 <div
                   className="MuiBox-root MuiBox-root"
                 />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
                 >
-                  100.5 IOV
-                </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    100.5 IOV
+                  </h6>
+                  <h6
+                    className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
+                  >
+                    1.2 IOV
+                  </h6>
+                </div>
                 <div
                   className="MuiBox-root MuiBox-root"
                 />

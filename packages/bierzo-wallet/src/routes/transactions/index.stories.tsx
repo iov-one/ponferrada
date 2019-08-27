@@ -34,6 +34,9 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
     recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
     amount: stringToAmount("7.4", iov),
     memo: "Send money to myself for fun",
+    fee: {
+      tokens: stringToAmount("1.2", iov),
+    },
   },
   incoming: true,
   outgoing: true,
@@ -60,6 +63,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
           address: "0x695874053fcB8D9cF038ee4E53b7b24fB0baFa4c" as Address,
         },
       ],
+      fee: {
+        tokens: stringToAmount("100", iov),
+      },
     },
   },
   {
@@ -71,6 +77,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       recipient: "me" as Address,
       amount: stringToAmount("10.5", lsk),
       memo: "Sample note",
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: true,
     outgoing: false,
@@ -81,6 +90,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
     id: "0xaaffBdjuhyu8898scchjsg" as TransactionId,
     original: {
       kind: "bns/register_username",
+      fee: {
+        tokens: stringToAmount("100", iov),
+      },
     },
   },
   {
@@ -91,6 +103,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -104,6 +119,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", iov),
       memo: "Another note",
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -117,6 +135,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       recipient: "me" as Address,
       amount: stringToAmount("10.5", lsk),
       memo: "And again note",
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: true,
     outgoing: false,
@@ -129,6 +150,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -141,6 +165,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -153,6 +180,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "george*iov" as Address,
       recipient: "me" as Address,
       amount: stringToAmount("10.5", lsk),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: true,
     outgoing: false,
@@ -165,6 +195,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -177,6 +210,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -189,6 +225,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "george*iov" as Address,
       recipient: "me" as Address,
       amount: stringToAmount("10.5", lsk),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: true,
     outgoing: false,
@@ -201,6 +240,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -213,6 +255,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -225,6 +270,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "george*iov" as Address,
       recipient: "me" as Address,
       amount: stringToAmount("10.5", lsk),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: true,
     outgoing: false,
@@ -237,6 +285,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "Lxasdoiu9847ioasdpfuy098q23rui" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("25.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
@@ -249,6 +300,9 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       sender: "me" as Address,
       recipient: "alex*iov" as Address,
       amount: stringToAmount("100.5", iov),
+      fee: {
+        tokens: stringToAmount("1.2", iov),
+      },
     },
     incoming: false,
     outgoing: true,
