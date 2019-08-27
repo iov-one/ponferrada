@@ -45,7 +45,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={SECURITY_HINT_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout id={SECURITY_HINT_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
       <Typography variant="subtitle1" inline>
         To help you remember your details in the future please provide a security hint:
       </Typography>

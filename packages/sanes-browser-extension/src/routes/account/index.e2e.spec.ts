@@ -5,8 +5,8 @@ import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
   submitRecoveryPhraseE2E,
-  travelToRestoreAccountStep,
-} from "../restore-account/test/operateRestoreAccount";
+  travelToRestoreWalletStep,
+} from "../restore-wallet/test/operateRestoreWallet";
 
 withChainsDescribe("E2E > Account route", () => {
   let browser: Browser;
@@ -16,7 +16,7 @@ withChainsDescribe("E2E > Account route", () => {
     browser = await launchBrowser();
     page = await createPage(browser);
 
-    await travelToRestoreAccountStep(page);
+    await travelToRestoreWalletStep(page);
     const password = randomString(10);
     const mnemonic = "degree tackle suggest window test behind mesh extra cover prepare oak script";
     await submitRecoveryPhraseE2E(page, mnemonic, password);

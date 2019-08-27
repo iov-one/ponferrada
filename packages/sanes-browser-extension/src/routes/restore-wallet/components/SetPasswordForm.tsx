@@ -16,9 +16,9 @@ import {
 import * as React from "react";
 import { useMemo } from "react";
 
-import { RESTORE_ACCOUNT } from "../../paths";
+import { RESTORE_WALLET } from "../../paths";
 
-export const SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE = `${RESTORE_ACCOUNT}2`;
+export const SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE = `${RESTORE_WALLET}2`;
 
 export const PASSWORD_FIELD = "passwordField";
 const PASSWORD_MIN_LENGTH = 8;
@@ -61,7 +61,7 @@ const SetPasswordForm = ({ onSetPassword, onBack }: Props): JSX.Element => {
   }, []);
 
   return (
-    <PageLayout id={SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE} primaryTitle="Restore" title="Account">
+    <PageLayout id={SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE} primaryTitle="Restore" title="Wallet">
       <Typography variant="subtitle1" inline>
         Enter the new password that will be used to encrypt your profile.
       </Typography>

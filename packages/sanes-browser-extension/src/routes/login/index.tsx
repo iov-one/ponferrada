@@ -11,7 +11,7 @@ import { PersonaContext } from "../../context/PersonaProvider";
 import { loadPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from "../paths";
-import { PASSWORD_FIELD } from "../signup/components/NewAccountForm";
+import { PASSWORD_FIELD } from "../signup/components/NewWalletForm";
 import LoginControls from "./components/LoginControls";
 import LoginForm from "./components/LoginForm";
 

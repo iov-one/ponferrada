@@ -3,7 +3,7 @@ import { randomString } from "ui-logic";
 import { PersonaAcccount, ProcessedTx } from "..";
 import { ACCOUNT_STATUS_ROUTE } from "../../../../../routes/paths";
 import {
-  submitNewAccount,
+  submitNewWallet,
   submitSecurityHint,
   submitShowPhrase,
 } from "../../../../../routes/signup/test/operateSignup";
@@ -22,7 +22,7 @@ export async function processSignup(
   password = password || randomString(10);
   hint = hint || randomString(10);
 
-  await submitNewAccount(signupDom, accountName, password);
+  await submitNewWallet(signupDom, accountName, password);
   await submitShowPhrase(signupDom);
   await submitSecurityHint(signupDom, accountName, hint);
 

@@ -7,7 +7,7 @@ import { createPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import { storeHintPhrase } from "../../utils/localstorage/hint";
 import { ACCOUNT_STATUS_ROUTE } from "../paths";
-import NewAccountForm, { ACCOUNT_NAME_FIELD, PASSWORD_FIELD } from "./components/NewAccountForm";
+import NewWalletForm, { PASSWORD_FIELD, WALLET_NAME_FIELD } from "./components/NewWalletForm";
 import SecurityHintForm, { SECURITY_HINT } from "./components/SecurityHintForm";
 import ShowPhraseForm from "./components/ShowPhraseForm";
 
@@ -17,7 +17,7 @@ const onBack = (): void => {
 
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<"first" | "second" | "third">("first");
-  const accountName = React.useRef<string | null>(null);
+  const walletName = React.useRef<string | null>(null);
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
 
@@ -27,18 +27,18 @@ const Signup = (): JSX.Element => {
 
   const onSaveHint = (formValues: FormValues): void => {
     const hintPhrase = formValues[SECURITY_HINT];
-    if (!accountName.current) {
+    if (!walletName.current) {
       throw new Error("For saving password hint a valid account name should be provided");
     }
 
-    storeHintPhrase(accountName.current, hintPhrase);
+    storeHintPhrase(walletName.current, hintPhrase);
 
     history.push(ACCOUNT_STATUS_ROUTE);
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
     const password = formValues[PASSWORD_FIELD];
-    accountName.current = formValues[ACCOUNT_NAME_FIELD];
+    walletName.current = formValues[WALLET_NAME_FIELD];
 
     let response: PersonaData;
     try {
@@ -59,7 +59,7 @@ const Signup = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      {step === "first" && <NewAccountForm onBack={onBack} onSignup={onSignup} />}
+      {step === "first" && <NewWalletForm onBack={onBack} onSignup={onSignup} />}
       {step === "second" && (
         <ShowPhraseForm
           mnemonic={personaProvider.mnemonic}

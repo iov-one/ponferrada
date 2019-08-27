@@ -15,7 +15,7 @@ const onBack = (): void => {
 
 let mnemonic: string;
 
-const RestoreAccount = (): JSX.Element => {
+const RestoreWallet = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
   const [step, setStep] = React.useState<"first" | "second">("first");
@@ -28,14 +28,14 @@ const RestoreAccount = (): JSX.Element => {
     setStepPassword();
   };
 
-  const restoreAccount = async (formValues: FormValues): Promise<void> => {
+  const restoreWallet = async (formValues: FormValues): Promise<void> => {
     const password = formValues[PASSWORD_FIELD];
 
     let response: PersonaData;
     try {
       response = await createPersona(password, mnemonic);
     } catch (error) {
-      toast.show("An error occurred while restoring the account.", ToastVariant.ERROR);
+      toast.show("An error occurred while restoring the wallet.", ToastVariant.ERROR);
       console.error(error);
       return;
     }
@@ -51,9 +51,9 @@ const RestoreAccount = (): JSX.Element => {
   return (
     <React.Fragment>
       {step === "first" && <SetMnemonicForm onBack={onBack} onSetMnemonic={saveMnemonic} />}
-      {step === "second" && <SetPasswordForm onBack={setStepMnemonic} onSetPassword={restoreAccount} />}
+      {step === "second" && <SetPasswordForm onBack={setStepMnemonic} onSetPassword={restoreWallet} />}
     </React.Fragment>
   );
 };
 
-export default RestoreAccount;
+export default RestoreWallet;

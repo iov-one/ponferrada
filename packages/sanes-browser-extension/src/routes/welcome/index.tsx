@@ -2,9 +2,9 @@ import { Block, Button, PageLayout, Typography } from "medulas-react-components"
 import * as React from "react";
 
 import { history } from "../../utils/history";
-import { LOGIN_ROUTE, RESTORE_ACCOUNT, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
+import { LOGIN_ROUTE, RESTORE_WALLET, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
 
-const createNewAccount = (): void => {
+const createNewWallet = (): void => {
   history.push(SIGNUP_ROUTE);
 };
 
@@ -12,8 +12,8 @@ const login = (): void => {
   history.push(LOGIN_ROUTE);
 };
 
-const importAccount = (): void => {
-  history.push(RESTORE_ACCOUNT);
+const importWallet = (): void => {
+  history.push(RESTORE_WALLET);
 };
 
 const Welcome = (): JSX.Element => (
@@ -26,12 +26,12 @@ const Welcome = (): JSX.Element => (
       Log in
     </Button>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth onClick={createNewAccount}>
-      New account
+    <Button variant="contained" fullWidth onClick={createNewWallet}>
+      New Wallet
     </Button>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth onClick={importAccount}>
-      Import account
+    <Button variant="contained" fullWidth onClick={importWallet}>
+      Import Wallet
     </Button>
   </PageLayout>
 );

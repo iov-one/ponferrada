@@ -16,7 +16,7 @@ import * as React from "react";
 
 import { SIGNUP_ROUTE, TERMS_URL } from "../../paths";
 
-export const ACCOUNT_NAME_FIELD = "accountNameField";
+export const WALLET_NAME_FIELD = "walletNameField";
 export const PASSWORD_FIELD = "passwordInputField";
 export const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
 export const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
@@ -26,8 +26,8 @@ export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 const validate = (values: object): object => {
   const formValues = values as FormValues;
   let errors: ValidationError = {};
-  if (!formValues[ACCOUNT_NAME_FIELD]) {
-    errors[ACCOUNT_NAME_FIELD] = "Required";
+  if (!formValues[WALLET_NAME_FIELD]) {
+    errors[WALLET_NAME_FIELD] = "Required";
   }
   if (!formValues[PASSWORD_FIELD]) {
     errors[PASSWORD_FIELD] = "Required";
@@ -40,8 +40,8 @@ const validate = (values: object): object => {
     errors[PASSWORD_FIELD] = "Password should have at least 8 characters";
   }
 
-  if (formValues[ACCOUNT_NAME_FIELD] && formValues[ACCOUNT_NAME_FIELD].length < 8) {
-    errors[ACCOUNT_NAME_FIELD] = "Username should have at least 8 characters";
+  if (formValues[WALLET_NAME_FIELD] && formValues[WALLET_NAME_FIELD].length < 8) {
+    errors[WALLET_NAME_FIELD] = "Username should have at least 8 characters";
   }
 
   if (formValues[PASSWORD_FIELD] !== formValues[PASSWORD_CONFIRM_FIELD]) {
@@ -85,16 +85,16 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   );
 
   return (
-    <PageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={1}>
           <TextFieldForm
-            label="Account name"
-            placeholder="Account name"
+            label="Wallet name"
+            placeholder="Wallet name"
             form={form}
             required
             fullWidth
-            name={ACCOUNT_NAME_FIELD}
+            name={WALLET_NAME_FIELD}
           />
         </Block>
         <Block marginBottom={1}>

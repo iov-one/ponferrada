@@ -7750,13 +7750,13 @@ exports[`Storyshots Extension Login page 1`] = `
         className="MuiBox-root MuiBox-root"
       >
         <a
-          href="/restore-account"
+          href="/restore-wallet"
           onClick={[Function]}
         >
           <h6
             className="MuiTypography-root makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
           >
-            Restore account
+            Restore wallet
           </h6>
         </a>
       </div>
@@ -8192,7 +8192,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       <span
         className="MuiButton-label"
       >
-        New account
+        New Wallet
       </span>
     </button>
     <div
@@ -8219,7 +8219,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       <span
         className="MuiButton-label"
       >
-        Import account
+        Import Wallet
       </span>
     </button>
   </div>
@@ -9215,10 +9215,10 @@ exports[`Storyshots Extension/Account Status page Txs 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
+exports[`Storyshots Extension/Restore Wallet Set Mnemonic page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/restore-account"
+  id="/restore-wallet"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -9232,7 +9232,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      Account
+      Wallet
     </h4>
   </div>
   <div
@@ -9241,7 +9241,7 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
     <h6
       className="MuiTypography-root makeStyles-inline MuiTypography-subtitle1"
     >
-      Restore your account with your recovery words. Enter your recovery words here.
+      Restore your wallet with your recovery words. Enter your recovery words here.
     </h6>
     <form
       onSubmit={[Function]}
@@ -9376,10 +9376,10 @@ exports[`Storyshots Extension/Restore Account Set Mnemonic page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
+exports[`Storyshots Extension/Restore Wallet Set Password page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/restore-account2"
+  id="/restore-wallet2"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -9393,7 +9393,7 @@ exports[`Storyshots Extension/Restore Account Set Password page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      Account
+      Wallet
     </h4>
   </div>
   <div
@@ -10018,7 +10018,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      Account
+      Wallet
     </h4>
   </div>
   <div
@@ -10037,7 +10037,7 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
             className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-required MuiInputLabel-required"
             data-shrink={true}
           >
-            Account name
+            Wallet name
             <span
               className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
             >
@@ -10079,11 +10079,11 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
               aria-invalid={false}
               className="MuiInputBase-input MuiOutlinedInput-input"
               disabled={false}
-              name="accountNameField"
+              name="walletNameField"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Account name"
+              placeholder="Wallet name"
               required={true}
               type="text"
             />
@@ -10568,7 +10568,7 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      Account
+      Wallet
     </h4>
   </div>
   <div
