@@ -1,6 +1,6 @@
 {
   "name": "sil-governance",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "dependencies": {
     "@iov/bcp": "^0.17.0",

@@ -1,6 +1,6 @@
 {
   "name": "sanes-browser-extension",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "scripts": {
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
