@@ -1,11 +1,10 @@
-import { Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
-import { Encoding } from "@iov/encoding";
+import { Identity } from "@iov/bcp";
 
 import * as identities from "../../communication/identities";
 import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
-import { getExtensionStatus, groupIdentitiesByChain, setExtensionStateAction } from "./actions";
+import { getExtensionStatus, setExtensionStateAction } from "./actions";
 
 describe("Extension reducer", () => {
   afterAll(() => disconnect());
@@ -50,55 +49,6 @@ describe("Extension reducer", () => {
     const extensionState = store.getState().extension;
     expect(extensionState.connected).toBeTruthy();
     expect(extensionState.installed).toBeTruthy();
-    expect(extensionState.identities).toStrictEqual(extensionIdentities);
-  });
-});
-
-describe("groupIdentitiesByChain", () => {
-  const ethIdentity1: Identity = {
-    chainId: "ethtest-1234" as ChainId,
-    pubkey: {
-      algo: Algorithm.Secp256k1,
-      data: Encoding.fromHex("aabbcc") as PubkeyBytes,
-    },
-  };
-
-  const ethIdentity2: Identity = {
-    chainId: "ethtest-1234" as ChainId,
-    pubkey: {
-      algo: Algorithm.Secp256k1,
-      data: Encoding.fromHex("ddeeff") as PubkeyBytes,
-    },
-  };
-
-  const iovIdentity1: Identity = {
-    chainId: "iovtest-1234" as ChainId,
-    pubkey: {
-      algo: Algorithm.Ed25519,
-      data: Encoding.fromHex("ddeeff") as PubkeyBytes,
-    },
-  };
-
-  it("works for an empty list", () => {
-    expect(groupIdentitiesByChain([])).toEqual({});
-  });
-
-  it("works for a single identity", () => {
-    expect(groupIdentitiesByChain([ethIdentity1])).toEqual({
-      "ethtest-1234": ethIdentity1,
-    });
-  });
-
-  it("works for multiple chains", () => {
-    expect(groupIdentitiesByChain([ethIdentity1, iovIdentity1])).toEqual({
-      "ethtest-1234": ethIdentity1,
-      "iovtest-1234": iovIdentity1,
-    });
-  });
-
-  it("returns first identity for each chain", () => {
-    expect(groupIdentitiesByChain([ethIdentity1, ethIdentity2])).toEqual({
-      "ethtest-1234": ethIdentity1,
-    });
+    expect(extensionState.identities).toEqual(extensionIdentities);
   });
 });
