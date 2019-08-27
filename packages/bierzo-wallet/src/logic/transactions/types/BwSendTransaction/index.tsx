@@ -36,10 +36,18 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
       `"${original.amount.fractionalDigits}"`,
       `"${original.amount.tokenTicker}"`,
     ];
+    let fee = [`""`, `""`, `""`];
+    if (original.fee && original.fee.tokens) {
+      fee = [
+        `"${original.fee.tokens.quantity}"`,
+        `"${original.fee.tokens.fractionalDigits}"`,
+        `"${original.fee.tokens.tokenTicker}"`,
+      ];
+    }
     const date = [`"${tx.time.toISOString()}"`];
     const status = [`"${original.memo}"`];
 
-    const txRow = [...parties, ...payment, ...date, ...status];
+    const txRow = [...parties, ...payment, ...fee, ...date, ...status];
 
     return txRow.join(";");
   }

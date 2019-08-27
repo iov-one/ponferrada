@@ -51,7 +51,8 @@ const Transactions = (): JSX.Element => {
 
   function onDownloadCSV(): void {
     // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
-    const csvHeader = '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Time";"Note"';
+    const csvHeader =
+      '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Fee Quantity";"Fee Fractional Digits";"Fee Token Ticker";"Time";"Note"';
     const csvBody = orderedTxs.map((tx: ProcessedTx) => BwParserFactory.getCsvRepresentation(tx));
 
     const blob = new Blob([`${csvHeader}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });

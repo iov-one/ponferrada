@@ -16,11 +16,14 @@ import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
 import SendTxDetails from "./Details";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   cell: {
     flex: "1 0 50px",
   },
-});
+  txFee: {
+    fontSize: "1.2rem",
+  },
+}));
 
 interface Props {
   readonly sendTx: ProcessedSendTransaction;
@@ -34,6 +37,11 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
   const onClick = (): void => {
     toggle();
   };
+
+  let txFee = "-";
+  if (sendTx.original.fee && sendTx.original.fee.tokens) {
+    txFee = amountToString(sendTx.original.fee.tokens);
+  }
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
@@ -61,9 +69,20 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
           {formatDate(sendTx.time)}
         </Typography>
         <Block flexGrow={1} />
-        <Typography variant="subtitle2" weight="regular" align="right" className={classes.cell}>
-          {amountToString(sendTx.original.amount)}
-        </Typography>
+        <Block className={classes.cell}>
+          <Typography variant="subtitle2" weight="regular" align="right">
+            {amountToString(sendTx.original.amount)}
+          </Typography>
+          <Typography
+            variant="subtitle2"
+            weight="regular"
+            color="secondary"
+            align="right"
+            className={classes.txFee}
+          >
+            {txFee}
+          </Typography>
+        </Block>
         <Block padding={0.5} />
         <Image
           src={isOpen ? dropdownArrowClose : dropdownArrow}
