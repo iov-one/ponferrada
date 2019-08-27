@@ -5611,6 +5611,33 @@ Array [
       </span>
     </span>
   </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      This shows badge with text
+    </div>
+    <span
+      className="MuiBadge-root makeStyles-textRoot"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body2"
+      >
+        Cont
+      </p>
+      <span
+        className="MuiBadge-badge makeStyles-text MuiBadge-colorPrimary"
+      >
+        Some text long text
+      </span>
+    </span>
+  </div>,
 ]
 `;
 
