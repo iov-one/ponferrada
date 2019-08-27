@@ -20,10 +20,10 @@ import { EXTENSION_HEIGHT } from "../../theme/constants";
 import { clearDatabase, clearPersona, createAccount } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import {
-  ACCOUNT_STATUS_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   TERMS_URL,
+  WALLET_STATUS_ROUTE,
   WELCOME_ROUTE,
 } from "../paths";
 import deleteWalletIcon from "./assets/deleteWallet.svg";
@@ -114,7 +114,7 @@ const AccountView = (): JSX.Element => {
 
   return (
     <Drawer items={items} footer={footer}>
-      <PageLayout id={ACCOUNT_STATUS_ROUTE} primaryTitle="Account" title="Status" minHeight={CONTENT_HEIGHT}>
+      <PageLayout id={WALLET_STATUS_ROUTE} primaryTitle="Wallet" title="Status" minHeight={CONTENT_HEIGHT}>
         {accountLoaded && (
           <Form onSubmit={handleSubmit}>
             <Block marginBottom={1}>
