@@ -10338,18 +10338,26 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <h4
       className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
     >
-      New
+      Recovery
     </h4>
     <h4
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      Account
+      Phrase
     </h4>
   </div>
   <div
     className="MuiBox-root MuiBox-root"
   >
+    <p
+      className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+    >
+      Your secret recovery phrase consists of 12 words that act as a tool to recover your wallet on any platform.
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
     <div
       className="MuiBox-root MuiBox-root"
     >
@@ -10362,20 +10370,8 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
           <h6
             className="MuiTypography-root makeStyles-inline MuiTypography-subtitle2"
           >
-            Activate Recovery Phrase?
+            Show/hide recovery phrase
           </h6>
-        </div>
-        <div
-          className="makeStyles-container"
-          onClick={[Function]}
-        >
-          <img
-            alt="Info"
-            className="makeStyles-root"
-            height={16}
-            src="info_normal.svg"
-            width={16}
-          />
         </div>
       </div>
       <label

@@ -8,6 +8,9 @@ import NewAccountForm from "./components/NewAccountForm";
 import SecurityHintForm from "./components/SecurityHintForm";
 import ShowPhraseForm from "./components/ShowPhraseForm";
 
+const exampleMnemonic =
+  "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
+
 storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
   .add(
     "New Account page",
@@ -21,7 +24,11 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
     "Recovery Phrase page",
     (): JSX.Element => (
       <Storybook>
-        <ShowPhraseForm onBack={action("back in history")} onHintPassword={action("hint step")} />
+        <ShowPhraseForm
+          mnemonic={exampleMnemonic}
+          onBack={action("back in history")}
+          onHintPassword={action("hint step")}
+        />
       </Storybook>
     ),
   )

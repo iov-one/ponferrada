@@ -1,51 +1,45 @@
-import { Back, Block, Button, PageLayout, Switch, Tooltip, Typography } from "medulas-react-components";
+import { Back, Block, Button, PageLayout, Switch, Typography } from "medulas-react-components";
 import * as React from "react";
 
-import { PersonaContext } from "../../../context/PersonaProvider";
 import { SIGNUP_ROUTE } from "../../paths";
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
 export interface Props {
+  readonly mnemonic: string;
   readonly onHintPassword: () => void;
   readonly onBack: () => void;
 }
 
-const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
-  const [mnemonic, setMnemonic] = React.useState<string>("");
-  const persona = React.useContext(PersonaContext);
+const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Element => {
+  const [visibleMnemonic, setVisibleMnemonic] = React.useState<string>("");
 
-  const onShowMnemonic = async (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): Promise<void> => {
-    if (checked) {
-      setMnemonic(persona.mnemonic);
-      return;
-    }
-
-    setMnemonic("");
+  const onToggleMnemonic = (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): void => {
+    setVisibleMnemonic(checked ? mnemonic : "");
   };
 
   return (
-    <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="Recovery" title="Phrase">
+      <Typography variant="body1" inline>
+        Your secret recovery phrase consists of 12 words that act as a tool to recover your wallet on any
+        platform.
+      </Typography>
+      <Block marginTop={2} />
+
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
             <Typography variant="subtitle2" inline>
-              Activate Recovery Phrase?
+              Show/hide recovery phrase
             </Typography>
           </Block>
-          <Tooltip>
-            <Typography variant="body2">
-              Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool
-              to recover or back up your wallet on any platform.
-            </Typography>
-          </Tooltip>
         </Block>
-        <Switch color="primary" onChange={onShowMnemonic} />
+        <Switch color="primary" onChange={onToggleMnemonic} />
       </Block>
 
       <Block
         padding={2}
-        marginTop={1}
+        marginTop={0}
         marginBottom={4}
         minHeight={24}
         border={1}
@@ -54,7 +48,7 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
         bgcolor="grey.300"
       >
         <Typography variant="body1" inline>
-          {mnemonic}
+          {visibleMnemonic}
         </Typography>
       </Block>
       <Block display="flex" justifyContent="space-between">

@@ -123,18 +123,12 @@ export const submitShowPhraseE2E = async (page: Page): Promise<void> => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   await checkbox!.click();
 
-  const mnemonic = await page.evaluate((): string | null => {
-    const element = document.querySelector("p");
-    if (!element) {
-      return null;
-    }
-
-    return element.textContent;
+  const mnemonic = await page.evaluate(() => {
+    const element = document.querySelectorAll("p")[1];
+    if (!element) throw new Error("Paragraph element not found");
+    return element.textContent || "";
   });
-
-  expect(mnemonic).not.toBe(null);
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  expect(mnemonic!.split(" ").length).toBe(12);
+  expect(mnemonic.split(" ").length).toBe(12);
 
   const buttons = await page.$$("button");
   await buttons[1].click();
