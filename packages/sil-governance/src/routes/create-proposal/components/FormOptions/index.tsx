@@ -25,8 +25,8 @@ const proposalOptions = {
 };
 
 interface Props {
-  form: FormApi;
-  proposalType: ProposalType;
+  readonly form: FormApi;
+  readonly proposalType: ProposalType;
 }
 
 const FormOptions = ({ form, proposalType }: Props): JSX.Element => {

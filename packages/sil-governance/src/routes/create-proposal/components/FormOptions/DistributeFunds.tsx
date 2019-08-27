@@ -3,7 +3,7 @@ import { Block, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
 }
 
 const DistributeFunds = ({ form }: Props): JSX.Element => {

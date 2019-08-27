@@ -25,22 +25,24 @@ const formOptionsItems = Object.keys(formOptions).map(formOption => {
 });
 
 interface Props {
-  form: FormApi;
-  changeProposalType: Dispatch<SetStateAction<ProposalType>>;
+  readonly form: FormApi;
+  readonly changeProposalType: Dispatch<SetStateAction<ProposalType>>;
 }
 
 const ProposalTypeSelect = ({ form, changeProposalType }: Props): JSX.Element => {
   return (
-    <Block marginTop={2}>
+    <Block marginTop={2} display="flex" alignItems="center">
       <Typography>{PROPOSAL_TYPE_FIELD}</Typography>
-      <SelectFieldForm
-        fieldName={PROPOSAL_TYPE_FIELD}
-        fullWidth
-        form={form}
-        items={formOptionsItems}
-        initial={PROPOSAL_TYPE_INITIAL}
-        onChangeCallback={selectedItem => changeProposalType(formOptions[selectedItem.name])}
-      />
+      <Block marginLeft={2}>
+        <SelectFieldForm
+          fieldName={PROPOSAL_TYPE_FIELD}
+          fullWidth
+          form={form}
+          items={formOptionsItems}
+          initial={PROPOSAL_TYPE_INITIAL}
+          onChangeCallback={selectedItem => changeProposalType(formOptions[selectedItem.name])}
+        />
+      </Block>
     </Block>
   );
 };
