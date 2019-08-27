@@ -19,7 +19,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
   };
 
   return (
-    <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Account">
+    <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="Recovery" title="Phrase">
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
