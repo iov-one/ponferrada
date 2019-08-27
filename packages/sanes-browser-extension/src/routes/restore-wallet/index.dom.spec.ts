@@ -6,11 +6,11 @@ import {
   mockPersonaResponse,
 } from "../../extension/background/model/persona/test/persona";
 import { click, input, submit } from "../../utils/test/dom";
-import { travelToLogin, travelToRestoreAccount, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToLogin, travelToRestoreWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, RESTORE_ACCOUNT } from "../paths";
-import { SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE } from "./components/SetPasswordForm";
+import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, RESTORE_WALLET } from "../paths";
+import { SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE } from "./components/SetPasswordForm";
 import {
   getConfirmPasswordValidity,
   getMnemonicForm,
@@ -21,17 +21,17 @@ import {
   getPasswordValidity,
   isButtonDisabled,
   submitMnemonicForm,
-} from "./test/operateRestoreAccount";
+} from "./test/operateRestoreWallet";
 
-withChainsDescribe("DOM > Feature > Restore Account", () => {
+withChainsDescribe("DOM > Feature > Restore Wallet", () => {
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const password = randomString(10);
   const personaMock = mockPersonaResponse([], mnemonic, []);
 
-  let restoreAccountDom: React.Component;
+  let restoreWalletDom: React.Component;
 
   beforeEach(async () => {
-    restoreAccountDom = await travelToRestoreAccount();
+    restoreWalletDom = await travelToRestoreWallet();
   });
 
   describe("Set Mnemonic Step", () => {
@@ -41,32 +41,32 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
     let continueButton: Element;
 
     beforeEach(async () => {
-      mnemonicTextarea = getMnemonicTextarea(restoreAccountDom);
-      mnemonicForm = getMnemonicForm(restoreAccountDom);
+      mnemonicTextarea = getMnemonicTextarea(restoreWalletDom);
+      mnemonicForm = getMnemonicForm(restoreWalletDom);
     });
 
     it('has a valid "Recovery phrase" textarea', () => {
       expect(mnemonicTextarea.getAttribute("placeholder")).toBe("Recovery phrase");
 
       submit(mnemonicForm);
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe("Required");
+      expect(getMnemonicValidity(restoreWalletDom).textContent).toBe("Required");
 
       // Invalid inputs
 
       input(mnemonicTextarea, randomString(10));
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe("Not a valid English mnemonic");
+      expect(getMnemonicValidity(restoreWalletDom).textContent).toBe("Not a valid English mnemonic");
 
       input(mnemonicTextarea, "1 2 3 4 5 6 7 8 9 10 11 12");
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe("Not a valid English mnemonic");
+      expect(getMnemonicValidity(restoreWalletDom).textContent).toBe("Not a valid English mnemonic");
 
       input(mnemonicTextarea, "1 2 3 4 5 6 7 8 9 10 11 12 13");
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe("Not a valid English mnemonic");
+      expect(getMnemonicValidity(restoreWalletDom).textContent).toBe("Not a valid English mnemonic");
 
       input(
         mnemonicTextarea,
         "convince business loop hundred useless sadness easily script valve burger common common",
       );
-      expect(getMnemonicValidity(restoreAccountDom).textContent).toBe("Not a valid English mnemonic");
+      expect(getMnemonicValidity(restoreWalletDom).textContent).toBe("Not a valid English mnemonic");
 
       // Valid inputs
 
@@ -74,32 +74,32 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
         mnemonicTextarea,
         "convince business loop hundred useless sadness easily script valve burger common select",
       );
-      expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
+      expect(getMnemonicValidity(restoreWalletDom)).toBeUndefined();
 
       input(
         mnemonicTextarea,
         "dirt motion accident topple cherry alert this track fluid crucial relief globe tourist add grape",
       );
-      expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
+      expect(getMnemonicValidity(restoreWalletDom)).toBeUndefined();
 
       input(
         mnemonicTextarea,
         "emerge special door speak success mechanic lesson doll tip together waste shy suffer film confirm fetch reduce suffer sound toast tribe wet thunder situate",
       );
-      expect(getMnemonicValidity(restoreAccountDom)).toBeUndefined();
+      expect(getMnemonicValidity(restoreWalletDom)).toBeUndefined();
     }, 10000);
 
     it("has two buttons", () => {
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreWalletDom, "button");
       expect(buttons.length).toBe(2);
     }, 10000);
 
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
       const loginDom = await travelToLogin();
-      const restoreAccountLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, "a");
-      expect(restoreAccountLink.textContent).toBe("Restore account");
-      await click(restoreAccountLink);
-      await whenOnNavigatedToRoute(RESTORE_ACCOUNT);
+      const restoreWalletLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, "a");
+      expect(restoreWalletLink.textContent).toBe("Restore wallet");
+      await click(restoreWalletLink);
+      await whenOnNavigatedToRoute(RESTORE_WALLET);
 
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button");
       [backButton, continueButton] = buttons;
@@ -110,7 +110,7 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
     }, 30000);
 
     it('has a valid "Continue" button that redirects to the Set Password Form if the form is valid when clicked', async () => {
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreWalletDom, "button");
       [backButton, continueButton] = buttons;
       expect(continueButton.textContent).toBe("Continue");
 
@@ -119,7 +119,7 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       input(mnemonicTextarea, mnemonic);
       expect(isButtonDisabled(continueButton)).toBeFalsy();
       await submit(continueButton);
-      await findRenderedDOMComponentWithId(restoreAccountDom, SET_PASSWORD_STEP_RESTORE_ACCOUNT_ROUTE);
+      await findRenderedDOMComponentWithId(restoreWalletDom, SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE);
     }, 10000);
   });
 
@@ -133,11 +133,11 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
     let restoreButton: Element;
 
     beforeEach(async () => {
-      await submitMnemonicForm(restoreAccountDom, mnemonic, password);
-      inputs = getPasswordInputs(restoreAccountDom);
+      await submitMnemonicForm(restoreWalletDom, mnemonic);
+      inputs = getPasswordInputs(restoreWalletDom);
       [passwordInput, passwordConfirmInput] = inputs;
-      passwordForm = getPasswordForm(restoreAccountDom);
-      buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreAccountDom, "button");
+      passwordForm = getPasswordForm(restoreWalletDom);
+      buttons = TestUtils.scryRenderedDOMComponentsWithTag(restoreWalletDom, "button");
       [backButton, restoreButton] = buttons;
     }, 10000);
 
@@ -151,13 +151,13 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       input(passwordConfirmInput, password);
 
       submit(passwordForm);
-      expect(getPasswordValidity(restoreAccountDom).textContent).toBe("Required");
+      expect(getPasswordValidity(restoreWalletDom).textContent).toBe("Required");
 
       input(passwordInput, randomString(7));
-      expect(getPasswordValidity(restoreAccountDom).textContent).toBe("Must be longer than 8 characters");
+      expect(getPasswordValidity(restoreWalletDom).textContent).toBe("Must be longer than 8 characters");
 
       input(passwordInput, password);
-      expect(getPasswordValidity(restoreAccountDom)).toBeUndefined();
+      expect(getPasswordValidity(restoreWalletDom)).toBeUndefined();
     }, 10000);
 
     it('has a valid "Confirm Password" input', () => {
@@ -166,13 +166,13 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       input(passwordInput, password);
 
       submit(passwordForm);
-      expect(getConfirmPasswordValidity(restoreAccountDom).textContent).toBe("Required");
+      expect(getConfirmPasswordValidity(restoreWalletDom).textContent).toBe("Required");
 
       input(passwordConfirmInput, randomString(10));
-      expect(getConfirmPasswordValidity(restoreAccountDom).textContent).toBe("Passwords mismatch");
+      expect(getConfirmPasswordValidity(restoreWalletDom).textContent).toBe("Passwords mismatch");
 
       input(passwordConfirmInput, password);
-      expect(getConfirmPasswordValidity(restoreAccountDom)).toBeUndefined();
+      expect(getConfirmPasswordValidity(restoreWalletDom)).toBeUndefined();
     }, 10000);
 
     it("has two buttons", () => {
@@ -183,7 +183,7 @@ withChainsDescribe("DOM > Feature > Restore Account", () => {
       expect(backButton.textContent).toBe("Back");
 
       click(backButton);
-      await findRenderedDOMComponentWithId(restoreAccountDom, RESTORE_ACCOUNT);
+      await findRenderedDOMComponentWithId(restoreWalletDom, RESTORE_WALLET);
     }, 10000);
 
     it('has a valid "Restore" button that redirects to Account Status view if the form is valid when clicked', async () => {

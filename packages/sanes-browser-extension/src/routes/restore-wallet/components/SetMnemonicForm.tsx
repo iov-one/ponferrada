@@ -16,7 +16,7 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
-import { RESTORE_ACCOUNT } from "../../paths";
+import { RESTORE_WALLET } from "../../paths";
 
 export const MNEMONIC_FIELD = "mnemonicField";
 
@@ -45,9 +45,9 @@ const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
   const { form, handleSubmit, submitting, invalid } = useForm({ onSubmit });
 
   return (
-    <PageLayout id={RESTORE_ACCOUNT} primaryTitle="Restore" title="Account">
+    <PageLayout id={RESTORE_WALLET} primaryTitle="Restore" title="Wallet">
       <Typography variant="subtitle1" inline>
-        Restore your account with your recovery words. Enter your recovery words here.
+        Restore your wallet with your recovery words. Enter your recovery words here.
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={4}>

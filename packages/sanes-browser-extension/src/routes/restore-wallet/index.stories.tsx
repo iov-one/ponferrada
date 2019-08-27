@@ -7,7 +7,7 @@ import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
 import SetMnemonicForm from "./components/SetMnemonicForm";
 import SetPasswordForm from "./components/SetPasswordForm";
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/Restore Account`, module)
+storiesOf(`${CHROME_EXTENSION_ROOT}/Restore Wallet`, module)
   .add(
     "Set Mnemonic page",
     (): JSX.Element => (
@@ -20,7 +20,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Restore Account`, module)
     "Set Password page",
     (): JSX.Element => (
       <Storybook>
-        <SetPasswordForm onBack={action("back in history")} onSetPassword={action("restore account")} />
+        <SetPasswordForm onBack={action("back in history")} onSetPassword={action("restore wallet")} />
       </Storybook>
     ),
   );
