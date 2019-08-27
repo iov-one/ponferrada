@@ -1,27 +1,21 @@
 import { Back, Block, Button, PageLayout, Switch, Tooltip, Typography } from "medulas-react-components";
 import * as React from "react";
 
-import { PersonaContext } from "../../../context/PersonaProvider";
 import { SIGNUP_ROUTE } from "../../paths";
 
 export const SECOND_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}2`;
 
 export interface Props {
+  readonly mnemonic: string;
   readonly onHintPassword: () => void;
   readonly onBack: () => void;
 }
 
-const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
-  const [mnemonic, setMnemonic] = React.useState<string>("");
-  const persona = React.useContext(PersonaContext);
+const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Element => {
+  const [visibleMnemonic, setVisibleMnemonic] = React.useState<string>("");
 
-  const onShowMnemonic = async (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): Promise<void> => {
-    if (checked) {
-      setMnemonic(persona.mnemonic);
-      return;
-    }
-
-    setMnemonic("");
+  const onToggleMnemonic = (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): void => {
+    setVisibleMnemonic(checked ? mnemonic : "");
   };
 
   return (
@@ -40,7 +34,7 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
             </Typography>
           </Tooltip>
         </Block>
-        <Switch color="primary" onChange={onShowMnemonic} />
+        <Switch color="primary" onChange={onToggleMnemonic} />
       </Block>
 
       <Block
@@ -54,7 +48,7 @@ const ShowPhraseForm = ({ onBack, onHintPassword }: Props): JSX.Element => {
         bgcolor="grey.300"
       >
         <Typography variant="body1" inline>
-          {mnemonic}
+          {visibleMnemonic}
         </Typography>
       </Block>
       <Block display="flex" justifyContent="space-between">

@@ -60,7 +60,13 @@ const Signup = (): JSX.Element => {
   return (
     <React.Fragment>
       {step === "first" && <NewAccountForm onBack={onBack} onSignup={onSignup} />}
-      {step === "second" && <ShowPhraseForm onBack={onNewAccount} onHintPassword={onHintPassword} />}
+      {step === "second" && (
+        <ShowPhraseForm
+          mnemonic={personaProvider.mnemonic}
+          onBack={onNewAccount}
+          onHintPassword={onHintPassword}
+        />
+      )}
       {step === "third" && <SecurityHintForm onBack={onShowPhrase} onSaveHint={onSaveHint} />}
     </React.Fragment>
   );
