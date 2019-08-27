@@ -4,7 +4,7 @@ import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
-import NewAccountForm from "./components/NewAccountForm";
+import NewWalletForm from "./components/NewWalletForm";
 import SecurityHintForm from "./components/SecurityHintForm";
 import ShowPhraseForm from "./components/ShowPhraseForm";
 
@@ -16,7 +16,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
     "New Account page",
     (): JSX.Element => (
       <Storybook>
-        <NewAccountForm onBack={action("back in history")} onSignup={action("next step")} />
+        <NewWalletForm onBack={action("back in history")} onSignup={action("next step")} />
       </Storybook>
     ),
   )

@@ -9,20 +9,20 @@ import {
 } from "../../../utils/test/reactElemFinder";
 import { ACCOUNT_STATUS_ROUTE } from "../../paths";
 import {
-  ACCOUNT_NAME_FIELD,
   FIRST_STEP_SIGNUP_ROUTE,
   PASSWORD_CONFIRM_FIELD,
   PASSWORD_FIELD,
   TERMS_ACCEPT_FIELD,
-} from "../components/NewAccountForm";
+  WALLET_NAME_FIELD,
+} from "../components/NewWalletForm";
 import { SECURITY_HINT, SECURITY_HINT_STEP_SIGNUP_ROUTE } from "../components/SecurityHintForm";
 import { SECOND_STEP_SIGNUP_ROUTE } from "../components/ShowPhraseForm";
 
-export const getNewAccountInputs = (signupDom: React.Component): Element[] => {
+export const getNewWalletInputs = (signupDom: React.Component): Element[] => {
   return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "input");
 };
 
-export const checkAccountNameValidity = (signupDom: React.Component, error?: string): void => {
+export const checkWalletNameValidity = (signupDom: React.Component, error?: string): void => {
   const elements = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p");
 
   if (elements.length === 0) {
@@ -80,12 +80,8 @@ export const isButtonDisabled = (button: Element): boolean => {
   return button.classList.contains("Mui-disabled");
 };
 
-export const submitNewAccountE2E = async (
-  page: Page,
-  accountName: string,
-  password: string,
-): Promise<void> => {
-  await page.type(`input[name="${ACCOUNT_NAME_FIELD}"]`, accountName);
+export const submitNewWalletE2E = async (page: Page, walletName: string, password: string): Promise<void> => {
+  await page.type(`input[name="${WALLET_NAME_FIELD}"]`, walletName);
   await page.type(`input[name="${PASSWORD_FIELD}"]`, password);
   await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}"]`, password);
   await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);
@@ -94,23 +90,23 @@ export const submitNewAccountE2E = async (
   await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
 };
 
-export const submitNewAccount = async (
-  newAccountDom: React.Component,
-  accountName: string,
+export const submitNewWallet = async (
+  newWalletDom: React.Component,
+  walletName: string,
   password: string,
 ): Promise<void> => {
-  const inputs = getNewAccountInputs(newAccountDom);
+  const inputs = getNewWalletInputs(newWalletDom);
 
-  const [accountNameField, passwordField, passwordConfirmField, termsAcceptField] = inputs;
-  input(accountNameField, accountName);
+  const [walletNameField, passwordField, passwordConfirmField, termsAcceptField] = inputs;
+  input(walletNameField, walletName);
   input(passwordField, password);
   input(passwordConfirmField, password);
   await check(termsAcceptField);
 
-  const newAccountForm = TestUtils.findRenderedDOMComponentWithTag(newAccountDom, "form");
+  const newWalletForm = TestUtils.findRenderedDOMComponentWithTag(newWalletDom, "form");
   const submitPasswordForm = async (): Promise<void> => {
-    TestUtils.Simulate.submit(newAccountForm);
-    await findRenderedDOMComponentWithId(newAccountDom, SECOND_STEP_SIGNUP_ROUTE);
+    TestUtils.Simulate.submit(newWalletForm);
+    await findRenderedDOMComponentWithId(newWalletDom, SECOND_STEP_SIGNUP_ROUTE);
   };
 
   await TestUtils.act(submitPasswordForm as any);
@@ -151,7 +147,7 @@ export const submitSecurityHintE2E = async (page: Page, securityHint: string): P
 
 export const submitSecurityHint = async (
   securityHintDom: React.Component,
-  accountName: string,
+  walletName: string,
   hint: string,
 ): Promise<void> => {
   const hintInput = TestUtils.findRenderedDOMComponentWithTag(securityHintDom, "input");
@@ -160,7 +156,7 @@ export const submitSecurityHint = async (
   const form = TestUtils.findRenderedDOMComponentWithTag(securityHintDom, "form");
   submit(form);
   await findRenderedDOMComponentWithId(securityHintDom, ACCOUNT_STATUS_ROUTE);
-  expect(getHintPhrase(accountName)).toBe(hint);
+  expect(getHintPhrase(walletName)).toBe(hint);
 };
 
 export const travelToSignupNewAccountStep = async (page: Page): Promise<void> => {
