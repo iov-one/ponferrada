@@ -9,7 +9,7 @@ const LoginControls = (): JSX.Element => {
       <Block marginBottom={1}>
         <Link to={RESTORE_WALLET}>
           <Typography variant="subtitle2" color="primary" link inline>
-            Restore account
+            Restore wallet
           </Typography>
         </Link>
       </Block>

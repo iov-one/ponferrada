@@ -13,7 +13,7 @@ import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from "../paths";
 import {
-  submitNewAccountE2E,
+  submitNewWalletE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
@@ -40,7 +40,7 @@ withChainsDescribe("DOM > Login route", (): void => {
   it("should redirect to login route after browser restart", async (): Promise<void> => {
     await travelToSignupNewAccountStep(page);
     const password = randomString(10);
-    await submitNewAccountE2E(page, randomString(10), password);
+    await submitNewWalletE2E(page, randomString(10), password);
     await submitShowPhraseE2E(page);
     await submitSecurityHintE2E(page, randomString(10));
     //Simulating reload

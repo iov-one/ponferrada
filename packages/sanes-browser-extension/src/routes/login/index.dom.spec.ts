@@ -10,7 +10,7 @@ import {
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToLogin, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
-import { ACCOUNT_STATUS_ROUTE, RESTORE_ACCOUNT, WELCOME_ROUTE } from "../paths";
+import { ACCOUNT_STATUS_ROUTE, RESTORE_WALLET, WELCOME_ROUTE } from "../paths";
 import { getPasswordValidity, isButtonDisabled } from "./test/operateLogin";
 
 describe("DOM > Feature > Login", () => {
@@ -82,9 +82,9 @@ describe("DOM > Feature > Login", () => {
     expect(toast.textContent).toBe("Error during login");
   }, 60000);
 
-  it('has a "Restore account" link that redirects to the Restore Account view when clicked', async () => {
-    expect(restoreAccountLink.textContent).toBe("Restore account");
+  it('has a "Restore wallet" link that redirects to the Restore Wallet view when clicked', async () => {
+    expect(restoreAccountLink.textContent).toBe("Restore wallet");
     await click(restoreAccountLink);
-    await whenOnNavigatedToRoute(RESTORE_ACCOUNT);
+    await whenOnNavigatedToRoute(RESTORE_WALLET);
   }, 60000);
 });

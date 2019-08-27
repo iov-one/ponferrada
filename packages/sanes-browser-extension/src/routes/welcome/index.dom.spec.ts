@@ -34,7 +34,7 @@ describe("DOM > Feature > Welcome", () => {
   }, 60000);
 
   it('has an "Import Wallet" button that redirects to the Restore Wallet view when clicked', async () => {
-    expect(importAccountButton.textContent).toBe("Import account");
+    expect(importAccountButton.textContent).toBe("Import Wallet");
     click(importAccountButton);
     await whenOnNavigatedToRoute(RESTORE_WALLET);
   }, 60000);
