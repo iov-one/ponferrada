@@ -30,7 +30,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
             <Typography variant="subtitle2" inline>
-              Activate Recovery Phrase?
+              Show/hide Recovery Phrase
             </Typography>
           </Block>
         </Block>
@@ -39,7 +39,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
 
       <Block
         padding={2}
-        marginTop={1}
+        marginTop={0}
         marginBottom={4}
         minHeight={24}
         border={1}
