@@ -1,4 +1,4 @@
-import { Back, Block, Button, PageLayout, Switch, Tooltip, Typography } from "medulas-react-components";
+import { Back, Block, Button, PageLayout, Switch, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { SIGNUP_ROUTE } from "../../paths";
@@ -20,6 +20,12 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
 
   return (
     <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="Recovery" title="Phrase">
+      <Typography variant="body1" inline>
+        Your secret Recovery Phrase consists of 12 words that act as a tool to recover your wallet on any
+        platform.
+      </Typography>
+      <Block marginTop={2} />
+
       <Block display="flex" justifyContent="space-between" alignItems="center">
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
@@ -27,12 +33,6 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
               Activate Recovery Phrase?
             </Typography>
           </Block>
-          <Tooltip>
-            <Typography variant="body2">
-              Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool
-              to recover or back up your wallet on any platform.
-            </Typography>
-          </Tooltip>
         </Block>
         <Switch color="primary" onChange={onToggleMnemonic} />
       </Block>
