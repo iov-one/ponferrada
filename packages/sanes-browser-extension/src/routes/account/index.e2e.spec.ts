@@ -20,7 +20,7 @@ withChainsDescribe("E2E > Account route", () => {
     const password = randomString(10);
     const mnemonic = "degree tackle suggest window test behind mesh extra cover prepare oak script";
     await submitRecoveryPhraseE2E(page, mnemonic, password);
-  }, 10000);
+  }, 15000);
 
   afterEach(async () => {
     await closeBrowser(browser);
