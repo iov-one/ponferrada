@@ -183,7 +183,6 @@ describe("DOM > Feature > Signup", () => {
   });
 
   describe("Show Phrase Step", () => {
-    let questionMark: Element;
     let checkbox: Element;
     let buttons: Element[];
     let backButton: Element;
@@ -193,24 +192,18 @@ describe("DOM > Feature > Signup", () => {
       mockCreatePersona(mockPersonaResponse([], mnemonic, []));
       await submitNewAccount(signupDom, accountName, password);
 
-      questionMark = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "img")[0];
       checkbox = TestUtils.findRenderedDOMComponentWithTag(signupDom, "input");
       buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "button");
       [backButton, continueButton] = buttons;
     });
 
-    it("has a question mark button that toggles a tooltip when clicked", async () => {
-      let paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p");
-      expect(paragraphs.length).toBe(1);
-
-      await click(questionMark);
-
-      paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p");
-      expect(paragraphs.length).toBe(2);
-    }, 10000);
+    it("has an explanation text", async () => {
+      const explanation = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p")[0];
+      expect(explanation.textContent || "").toMatch(/^Your secret recovery phrase/);
+    });
 
     it("has a toggle button that shows the mnemonic when active", async () => {
-      const renderedMnemonic = TestUtils.findRenderedDOMComponentWithTag(signupDom, "p");
+      const renderedMnemonic = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p")[1];
       expect(renderedMnemonic.textContent).toBe("");
 
       await check(checkbox);
