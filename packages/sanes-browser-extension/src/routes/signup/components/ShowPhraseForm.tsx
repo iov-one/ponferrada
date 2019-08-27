@@ -21,7 +21,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
   return (
     <PageLayout id={SECOND_STEP_SIGNUP_ROUTE} primaryTitle="Recovery" title="Phrase">
       <Typography variant="body1" inline>
-        Your secret Recovery Phrase consists of 12 words that act as a tool to recover your wallet on any
+        Your secret recovery phrase consists of 12 words that act as a tool to recover your wallet on any
         platform.
       </Typography>
       <Block marginTop={2} />
@@ -30,7 +30,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
             <Typography variant="subtitle2" inline>
-              Show/hide Recovery Phrase
+              Show/hide recovery phrase
             </Typography>
           </Block>
         </Block>
