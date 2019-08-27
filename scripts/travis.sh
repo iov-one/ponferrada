@@ -132,8 +132,23 @@ if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVI
     docker logout
     fold_end
   )
+elif [[ "$TRAVIS_TAG" != "" ]]; then
+  echo "Running deployments for tag $TRAVIS_TAG ..."
 
-  # TODO: move this block to tagged builds once everything is stable
+  (
+    fold_start "deployment-dockerhub"
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+    docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:$TRAVIS_TAG"
+    docker push "iov1/bierzo-wallet:$TRAVIS_TAG"
+
+    docker tag "iov1/sil-governance:$DOCKER_BUILD_VERSION" "iov1/sil-governance:$TRAVIS_TAG"
+    docker push "iov1/sil-governance:$TRAVIS_TAG"
+
+    docker logout
+    fold_end
+  )
+
   (
     fold_start "deployment-firebase"
     (
@@ -150,22 +165,6 @@ if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVI
       yarn override-config-production
       yarn deploy-production --token "$FIREBASE_TOKEN"
     )
-    fold_end
-  )
-elif [[ "$TRAVIS_TAG" != "" ]]; then
-  echo "Running deployments for tag $TRAVIS_TAG ..."
-
-  (
-    fold_start "deployment-dockerhub"
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-
-    docker tag "iov1/bierzo-wallet:$DOCKER_BUILD_VERSION" "iov1/bierzo-wallet:$TRAVIS_TAG"
-    docker push "iov1/bierzo-wallet:$TRAVIS_TAG"
-
-    docker tag "iov1/sil-governance:$DOCKER_BUILD_VERSION" "iov1/sil-governance:$TRAVIS_TAG"
-    docker push "iov1/sil-governance:$TRAVIS_TAG"
-
-    docker logout
     fold_end
   )
 
