@@ -5,6 +5,7 @@ import RecoveryPhraseIcon from "../../theme/assets/badgeIcon/recoveryPhrase.svg"
 import { Storybook } from "../../utils/storybook";
 import Block from "../Block";
 import Img from "../Image";
+import Typography from "../Typography";
 import Badge from "./index";
 
 storiesOf("Components", module).add(
@@ -33,6 +34,12 @@ storiesOf("Components", module).add(
         <Block marginBottom={2}>This shows the invisible variant</Block>
         <Badge variant="dot" invisible>
           <Img src={RecoveryPhraseIcon} alt="Icon" />
+        </Badge>
+      </div>
+      <div style={{ margin: "36px" }}>
+        <Block marginBottom={2}>This shows badge with text</Block>
+        <Badge variant="text" badgeContent="Some text long text">
+          <Typography variant="body2">Cont</Typography>
         </Badge>
       </div>
     </Storybook>
