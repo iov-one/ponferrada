@@ -10,24 +10,20 @@ import {
   travelToSignupNewAccountStep,
 } from "./test/operateSignup";
 
-withChainsDescribe("DOM > Signup route", (): void => {
+withChainsDescribe("DOM > Signup route", () => {
   let browser: Browser;
   let page: Page;
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
   }, 45000);
 
-  afterEach(
-    async (): Promise<void> => {
-      await closeBrowser(browser);
-    },
-  );
+  afterEach(async () => {
+    await closeBrowser(browser);
+  });
 
-  it("should redirect to signup route, fill required data, show recovery phrase and hint", async (): Promise<
-    void
-  > => {
+  it("should redirect to signup route, fill required data, show recovery phrase and hint", async () => {
     await travelToSignupNewAccountStep(page);
     await submitNewAccountE2E(page, randomString(10), randomString(10));
     await submitShowPhraseE2E(page);
