@@ -2,10 +2,9 @@ import * as React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import { history } from "../utils/history";
-import AccountStatus from "./account";
+import WalletStatus from "./account";
 import Login from "./login";
 import {
-  ACCOUNT_STATUS_ROUTE,
   LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
@@ -13,6 +12,7 @@ import {
   SHARE_IDENTITY,
   SIGNUP_ROUTE,
   TX_REQUEST,
+  WALLET_STATUS_ROUTE,
   WELCOME_ROUTE,
 } from "./paths";
 import RecoveryPhrase from "./recovery-phrase";
@@ -31,7 +31,7 @@ export const MainRouter = (): JSX.Element => (
       <Route exact path={LOGIN_ROUTE} component={Login} />
       <Route exact path={RECOVERY_PHRASE_ROUTE} component={RecoveryPhrase} />
       <Route exact path={RESTORE_WALLET} component={RestoreWallet} />
-      <Route exact path={ACCOUNT_STATUS_ROUTE} component={AccountStatus} />
+      <Route exact path={WALLET_STATUS_ROUTE} component={WalletStatus} />
       <Route exact path={SHARE_IDENTITY} component={ShareIdentity} />
       <Route exact path={TX_REQUEST} component={TxRequest} />
       <Route exact path={REQUEST_ROUTE} component={Requests} />
