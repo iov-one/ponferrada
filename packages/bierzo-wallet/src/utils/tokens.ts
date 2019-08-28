@@ -16,11 +16,11 @@ export async function filterExistingTokens(
     return tokensByChainId;
   }
 
+  let tokensNotOwnedByUser: readonly string[] = tokensByChainId;
   for (const balance of account.balance) {
-    tokensByChainId = tokensByChainId.filter(ticker => ticker !== balance.tokenTicker);
+    tokensNotOwnedByUser = tokensNotOwnedByUser.filter(ticker => ticker !== balance.tokenTicker);
   }
-
-  return tokensByChainId;
+  return tokensNotOwnedByUser;
 }
 
 /**
