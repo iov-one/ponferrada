@@ -30,7 +30,7 @@ export const submitExtensionSignupForm = async (
   const buttons = await page.$$("button");
   await buttons[1].click();
   await page.click('button[type="submit"]');
-  await whenOnNavigatedToE2eRoute(page, "/account");
+  await whenOnNavigatedToE2eRoute(page, "/wallet");
 };
 
 export async function clickOnFirstRequest(browser: Browser): Promise<Page> {

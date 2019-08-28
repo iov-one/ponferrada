@@ -4,7 +4,7 @@ import { Request } from "../../extension/background/model/requestsHandler/reques
 import { resetHistory } from "../../utils/history";
 import { click } from "../../utils/test/dom";
 import { travelToRequests, whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { ACCOUNT_STATUS_ROUTE, SHARE_IDENTITY, TX_REQUEST } from "../paths";
+import { SHARE_IDENTITY, TX_REQUEST, WALLET_STATUS_ROUTE } from "../paths";
 import { getCashTransaction } from "../tx-request/test";
 import { getFirstRequest, getRequests } from "./test/operateRequests";
 
@@ -42,7 +42,7 @@ describe("DOM > Feature > Requests", () => {
     expect(backButton.getAttribute("aria-label")).toBe("Go back");
 
     click(backButton);
-    await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+    await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
   }, 60000);
 
   it('has a "Requests" list that shows all pending requests', async () => {

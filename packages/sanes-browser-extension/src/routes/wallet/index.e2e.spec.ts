@@ -8,7 +8,7 @@ import {
   travelToRestoreWalletStep,
 } from "../restore-wallet/test/operateRestoreWallet";
 
-withChainsDescribe("E2E > Account route", () => {
+withChainsDescribe("E2E > Wallet route", () => {
   let browser: Browser;
   let page: Page;
 

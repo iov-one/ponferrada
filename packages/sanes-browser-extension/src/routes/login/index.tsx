@@ -10,7 +10,7 @@ import * as React from "react";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { loadPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, WELCOME_ROUTE } from "../paths";
+import { LOGIN_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
 import { PASSWORD_FIELD } from "../signup/components/NewWalletForm";
 import LoginControls from "./components/LoginControls";
 import LoginForm from "./components/LoginForm";
@@ -42,7 +42,7 @@ const Login = (): JSX.Element => {
         mnemonic: response.mnemonic,
         txs: response.txs,
       });
-      history.push(ACCOUNT_STATUS_ROUTE);
+      history.push(WALLET_STATUS_ROUTE);
     } catch (_) {
       toast.show("Error during login", ToastVariant.ERROR);
     }

@@ -1,7 +1,7 @@
 import { randomString } from "ui-logic";
 
 import { PersonaAcccount, ProcessedTx } from "..";
-import { ACCOUNT_STATUS_ROUTE } from "../../../../../routes/paths";
+import { WALLET_STATUS_ROUTE } from "../../../../../routes/paths";
 import {
   submitNewWallet,
   submitSecurityHint,
@@ -22,7 +22,7 @@ export async function processSignup(
   await submitShowPhrase(signupDom);
   await submitSecurityHint(signupDom, accountName, hint);
 
-  await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+  await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
 
   const accountStatusDom = signupDom;
 

@@ -5,10 +5,10 @@ import {
   mockPersonaResponse,
 } from "../../extension/background/model/persona/test/persona";
 import { click } from "../../utils/test/dom";
-import { travelToAccount, travelToRecoveryPhrase, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToRecoveryPhrase, travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import * as Drawer from "../account/test/drawer";
-import { ACCOUNT_STATUS_ROUTE, RECOVERY_PHRASE_ROUTE } from "../paths";
+import { RECOVERY_PHRASE_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
+import * as Drawer from "../wallet/test/drawer";
 import { getRenderedMnemonic } from "./test/operateRecoveryPhrase";
 
 withChainsDescribe("DOM > Feature > Recovery Phrase", () => {
@@ -25,11 +25,11 @@ withChainsDescribe("DOM > Feature > Recovery Phrase", () => {
   }, 60000);
 
   it("has a back button that redirects to the previous route when clicked", async () => {
-    await travelToAccount();
+    await travelToWallet();
     await travelToRecoveryPhrase();
     expect(backButton.getAttribute("aria-label")).toBe("Go back");
     click(backButton);
-    await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+    await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
   }, 60000);
 
   it('has an "Export as .PDF" button', () => {
@@ -47,7 +47,7 @@ withChainsDescribe("DOM > Feature > Recovery Phrase", () => {
   }, 60000);
 
   it("shows the mnemonic for the current Persona when accessed through Drawer menu", async () => {
-    const accountDom = await travelToAccount(personaMock);
+    const accountDom = await travelToWallet(personaMock);
 
     mockGetPersonaData(personaMock);
     await Drawer.clickRecoveryPhrase(accountDom);

@@ -5,7 +5,7 @@ import { PersonaContext } from "../../context/PersonaProvider";
 import { PersonaData } from "../../extension/background/model/backgroundscript";
 import { createPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
-import { ACCOUNT_STATUS_ROUTE } from "../paths";
+import { WALLET_STATUS_ROUTE } from "../paths";
 import SetMnemonicForm, { MNEMONIC_FIELD } from "./components/SetMnemonicForm";
 import SetPasswordForm, { PASSWORD_FIELD } from "./components/SetPasswordForm";
 
@@ -45,7 +45,7 @@ const RestoreWallet = (): JSX.Element => {
       txs: response.txs,
     });
 
-    history.push(ACCOUNT_STATUS_ROUTE);
+    history.push(WALLET_STATUS_ROUTE);
   };
 
   return (

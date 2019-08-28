@@ -5,7 +5,7 @@ import * as React from "react";
 import { RequestContext } from "../../context/RequestProvider";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { history } from "../../utils/history";
-import { ACCOUNT_STATUS_ROUTE, REQUEST_ROUTE } from "../paths";
+import { REQUEST_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import RequestList, { REQUEST_FIELD } from "./components/RequestList";
 
 function getIdFrom(location: Location): number | undefined {
@@ -31,7 +31,7 @@ const Requests = (): JSX.Element => {
   const hasRequests = requests.length > 0;
 
   const onBack = (): void => {
-    history.push(ACCOUNT_STATUS_ROUTE);
+    history.push(WALLET_STATUS_ROUTE);
   };
 
   return (

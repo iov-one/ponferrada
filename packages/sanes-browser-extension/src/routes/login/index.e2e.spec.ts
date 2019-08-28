@@ -11,7 +11,7 @@ import {
 } from "../../utils/test/e2e";
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE } from "../paths";
+import { LOGIN_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import {
   submitNewWalletE2E,
   submitSecurityHintE2E,
@@ -47,7 +47,7 @@ withChainsDescribe("DOM > Login route", (): void => {
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
       waitUntil: "networkidle2",
     });
-    await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
+    await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
 
     await bgPage.evaluate((): void => {
       (window as IovWindowExtension).clearPersona();
@@ -59,6 +59,6 @@ withChainsDescribe("DOM > Login route", (): void => {
     });
     await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
     await submitE2ELoginForm(page, password);
-    await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
+    await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
   }, 45000);
 });

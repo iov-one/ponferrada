@@ -5,7 +5,7 @@ export const RECOVERY_PHRASE_ROUTE = "/recovery-phrase";
 export const RESTORE_WALLET = "/restore-wallet";
 export const SHARE_IDENTITY = "/share-identity";
 export const TX_REQUEST = "/tx-request";
-export const ACCOUNT_STATUS_ROUTE = "/account";
+export const WALLET_STATUS_ROUTE = "/wallet";
 export const REQUEST_ROUTE = "/requests";
 export const TERMS_URL = "https://support.iov.one/hc/en-us";
 
@@ -15,7 +15,7 @@ export function initialUrl(personaLoaded: boolean, hasPersonaStored: boolean, ha
   }
 
   if (personaLoaded && !hasRequests) {
-    return ACCOUNT_STATUS_ROUTE;
+    return WALLET_STATUS_ROUTE;
   }
 
   if (hasPersonaStored) {

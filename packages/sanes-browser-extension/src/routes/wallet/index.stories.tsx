@@ -21,7 +21,7 @@ import { ProcessedTx } from "../../extension/background/model/persona";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
 import Layout from "./index";
 
-export const ACCOUNT_STATUS_PAGE = "Account Status page";
+export const WALLET_STATUS_PAGE = "Wallet Status page";
 
 const defaultAddress = "0x1212121212121212121212121212121212121212" as Address;
 const defaultCreator: Identity = {
@@ -156,7 +156,7 @@ const voteTx: ProcessedTx = {
   original: vote,
 };
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/${ACCOUNT_STATUS_PAGE}`, module)
+storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
   .add("Txs", () => {
     const processedTx2 = { ...processedTx, id: (txId++).toString() };
     const processedTx3 = { ...processedTx, id: (txId++).toString() };

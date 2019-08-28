@@ -6,7 +6,7 @@ import { PersonaData } from "../../extension/background/model/backgroundscript";
 import { createPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import { storeHintPhrase } from "../../utils/localstorage/hint";
-import { ACCOUNT_STATUS_ROUTE } from "../paths";
+import { WALLET_STATUS_ROUTE } from "../paths";
 import NewWalletForm, { PASSWORD_FIELD, WALLET_NAME_FIELD } from "./components/NewWalletForm";
 import SecurityHintForm, { SECURITY_HINT } from "./components/SecurityHintForm";
 import ShowPhraseForm from "./components/ShowPhraseForm";
@@ -33,7 +33,7 @@ const Signup = (): JSX.Element => {
 
     storeHintPhrase(walletName.current, hintPhrase);
 
-    history.push(ACCOUNT_STATUS_ROUTE);
+    history.push(WALLET_STATUS_ROUTE);
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
