@@ -2,7 +2,6 @@ import * as React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import { history } from "../utils/history";
-import WalletStatus from "./account";
 import Login from "./login";
 import {
   LOGIN_ROUTE,
@@ -21,6 +20,7 @@ import RestoreWallet from "./restore-wallet";
 import ShareIdentity from "./share-identity";
 import Signup from "./signup";
 import TxRequest from "./tx-request";
+import WalletStatus from "./wallet";
 import Welcome from "./welcome";
 
 export const MainRouter = (): JSX.Element => (

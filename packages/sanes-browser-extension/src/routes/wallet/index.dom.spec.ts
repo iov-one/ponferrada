@@ -31,8 +31,8 @@ import * as txsUpdater from "../../extension/background/updaters/appUpdater";
 import { click } from "../../utils/test/dom";
 import { travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import * as Drawer from "../account/test/drawer";
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL, WELCOME_ROUTE } from "../paths";
+import * as Drawer from "../wallet/test/drawer";
 import { checkCreateAccount, getTransactionsCount } from "./test/operateWallet";
 
 describe("DOM > Feature > Wallet Status", () => {

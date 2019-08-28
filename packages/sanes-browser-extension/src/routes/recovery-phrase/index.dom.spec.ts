@@ -7,8 +7,8 @@ import {
 import { click } from "../../utils/test/dom";
 import { travelToRecoveryPhrase, travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import * as Drawer from "../account/test/drawer";
 import { RECOVERY_PHRASE_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
+import * as Drawer from "../wallet/test/drawer";
 import { getRenderedMnemonic } from "./test/operateRecoveryPhrase";
 
 withChainsDescribe("DOM > Feature > Recovery Phrase", () => {

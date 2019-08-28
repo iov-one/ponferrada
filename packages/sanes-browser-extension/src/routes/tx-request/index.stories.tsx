@@ -9,7 +9,7 @@ import {
   SignAndPostResponseData,
 } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
-import { WALLET_STATUS_PAGE } from "../account/index.stories";
+import { WALLET_STATUS_PAGE } from "../wallet/index.stories";
 import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
 import {
