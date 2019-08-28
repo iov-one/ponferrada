@@ -7,7 +7,7 @@ import React from "react";
 
 import { GetIdentitiesResponseData } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
-import { ACCOUNT_STATUS_PAGE } from "../account/index.stories";
+import { WALLET_STATUS_PAGE } from "../account/index.stories";
 import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
 
@@ -46,7 +46,7 @@ storiesOf(SHARE_IDENTITY_PATH, module)
           <ShowRequest
             sender={senderUrl}
             data={data.requestedIdentities}
-            onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+            onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
             showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
           />
         </Storybook>

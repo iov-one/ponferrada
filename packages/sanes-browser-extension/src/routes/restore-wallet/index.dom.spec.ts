@@ -9,7 +9,7 @@ import { click, input, submit } from "../../utils/test/dom";
 import { travelToLogin, travelToRestoreWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, RESTORE_WALLET } from "../paths";
+import { LOGIN_ROUTE, RESTORE_WALLET, WALLET_STATUS_ROUTE } from "../paths";
 import { SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE } from "./components/SetPasswordForm";
 import {
   getConfirmPasswordValidity,
@@ -196,7 +196,7 @@ withChainsDescribe("DOM > Feature > Restore Wallet", () => {
       expect(isButtonDisabled(restoreButton)).toBeFalsy();
       mockCreatePersona(personaMock);
       await submit(restoreButton);
-      await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+      await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
     }, 10000);
 
     it("accepts several UTF-8 alphabets as password fields", async () => {
@@ -205,7 +205,7 @@ withChainsDescribe("DOM > Feature > Restore Wallet", () => {
       input(passwordConfirmInput, password);
       mockCreatePersona(personaMock);
       submit(passwordForm);
-      await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+      await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
     }, 10000);
   });
 });

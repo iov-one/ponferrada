@@ -10,7 +10,7 @@ import { check, click, input, submit } from "../../utils/test/dom";
 import { travelToSignup, travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { mayTestChains } from "../../utils/test/testExecutor";
-import { ACCOUNT_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
+import { WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
 import { FIRST_STEP_SIGNUP_ROUTE } from "./components/NewWalletForm";
 import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from "./components/SecurityHintForm";
 import { SECOND_STEP_SIGNUP_ROUTE } from "./components/ShowPhraseForm";
@@ -270,7 +270,7 @@ describe("DOM > Feature > Signup", () => {
       expect(isButtonDisabled(createButton)).toBeFalsy();
 
       await submit(createButton);
-      await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+      await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
     }, 10000);
   });
 });

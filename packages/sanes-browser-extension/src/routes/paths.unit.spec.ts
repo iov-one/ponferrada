@@ -1,4 +1,4 @@
-import { ACCOUNT_STATUS_ROUTE, initialUrl, LOGIN_ROUTE, REQUEST_ROUTE, WELCOME_ROUTE } from "./paths";
+import { initialUrl, LOGIN_ROUTE, REQUEST_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "./paths";
 
 describe("Paths", () => {
   describe("calculates correctly initial route", () => {
@@ -12,8 +12,8 @@ describe("Paths", () => {
     it("goes to account status view", () => {
       const personaLoaded = true;
       const hasRequests = false;
-      expect(initialUrl(personaLoaded, true, hasRequests)).toBe(ACCOUNT_STATUS_ROUTE);
-      expect(initialUrl(personaLoaded, false, hasRequests)).toBe(ACCOUNT_STATUS_ROUTE);
+      expect(initialUrl(personaLoaded, true, hasRequests)).toBe(WALLET_STATUS_ROUTE);
+      expect(initialUrl(personaLoaded, false, hasRequests)).toBe(WALLET_STATUS_ROUTE);
     });
 
     it("goes to login route", () => {

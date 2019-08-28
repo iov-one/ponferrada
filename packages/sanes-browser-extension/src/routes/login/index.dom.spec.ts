@@ -10,7 +10,7 @@ import {
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToLogin, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
-import { ACCOUNT_STATUS_ROUTE, RESTORE_WALLET, WELCOME_ROUTE } from "../paths";
+import { RESTORE_WALLET, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
 import { getPasswordValidity, isButtonDisabled } from "./test/operateLogin";
 
 describe("DOM > Feature > Login", () => {
@@ -72,7 +72,7 @@ describe("DOM > Feature > Login", () => {
 
     mockLoadPersona(personaMock);
     await submit(continueButton);
-    await whenOnNavigatedToRoute(ACCOUNT_STATUS_ROUTE);
+    await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
   }, 60000);
 
   it('shows "Error during login" toast message if login unsuccessful', async () => {

@@ -29,13 +29,13 @@ import {
 } from "../../extension/background/model/requestsHandler/test/requestBuilder";
 import * as txsUpdater from "../../extension/background/updaters/appUpdater";
 import { click } from "../../utils/test/dom";
-import { travelToAccount, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import * as Drawer from "../account/test/drawer";
 import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL, WELCOME_ROUTE } from "../paths";
-import { checkCreateAccount, getTransactionsCount } from "./test/operateAccount";
+import { checkCreateAccount, getTransactionsCount } from "./test/operateWallet";
 
-describe("DOM > Feature > Account Status", () => {
+describe("DOM > Feature > Wallet Status", () => {
   const ACCOUNT = "Account 0";
   const accountMock: PersonaAcccount = { label: ACCOUNT };
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
@@ -95,26 +95,26 @@ describe("DOM > Feature > Account Status", () => {
   };
   const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock, usernameMock]);
 
-  let accountStatusDom: React.Component;
+  let walletStatusDom: React.Component;
 
   beforeEach(async () => {
-    accountStatusDom = await travelToAccount(personaMock);
+    walletStatusDom = await travelToWallet(personaMock);
   }, 60000);
 
   it("redirects to the Recovery Phrase view when link clicked in Drawer menu", async () => {
-    await Drawer.clickRecoveryPhrase(accountStatusDom);
+    await Drawer.clickRecoveryPhrase(walletStatusDom);
     await whenOnNavigatedToRoute(RECOVERY_PHRASE_ROUTE);
   }, 60000);
 
   it("redirects to the Requests view when link clicked in Drawer menu", async () => {
-    await Drawer.clickRequests(accountStatusDom);
+    await Drawer.clickRequests(walletStatusDom);
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
   it("redirects to the Welcome page when Delete wallet was clicked", async () => {
     const clearPersonaMock = mockClearPersona();
     const clearDatabaseMock = mockClearDatabase();
-    await Drawer.clickDeleteWallet(accountStatusDom);
+    await Drawer.clickDeleteWallet(walletStatusDom);
     await whenOnNavigatedToRoute(WELCOME_ROUTE);
     expect(clearPersonaMock).toHaveBeenCalledTimes(1);
     expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
@@ -125,37 +125,37 @@ describe("DOM > Feature > Account Status", () => {
       configurable: true,
     });
     window.open = jest.fn();
-    await Drawer.clickTerms(accountStatusDom);
+    await Drawer.clickTerms(walletStatusDom);
     expect(window.open).toHaveBeenCalledWith(TERMS_URL, "_blank");
   }, 60000);
 
   it("has a select dropdown that enables the creation and selection of accounts", async () => {
-    const accountInput = TestUtils.findRenderedDOMComponentWithTag(accountStatusDom, "input");
+    const accountInput = TestUtils.findRenderedDOMComponentWithTag(walletStatusDom, "input");
     expect(accountInput.getAttribute("value")).toBe(ACCOUNT);
 
     await click(accountInput);
-    await checkCreateAccount(accountStatusDom);
+    await checkCreateAccount(walletStatusDom);
   }, 60000);
 
   it("has a transactions box with two transactions", () => {
-    expect(getTransactionsCount(accountStatusDom)).toBe(2);
+    expect(getTransactionsCount(walletStatusDom)).toBe(2);
   }, 60000);
 
   it("has a send transaction box", () => {
-    const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, "li")[1];
+    const tx = TestUtils.scryRenderedDOMComponentsWithTag(walletStatusDom, "li")[1];
     const txTime = tx.children[1].children[1].textContent;
     expect(txTime).toBe(txMock.time);
   }, 60000);
 
   it("has a name registration transaction box", () => {
-    const tx = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, "li")[2];
+    const tx = TestUtils.scryRenderedDOMComponentsWithTag(walletStatusDom, "li")[2];
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const txUsername = tx.children[1].children[0].querySelector("p:nth-of-type(2)")!.textContent;
     expect(txUsername).toBe(username);
   }, 60000);
 });
 
-withChainsDescribe("DOM > Feature > Account Status", () => {
+withChainsDescribe("DOM > Feature > Wallet Status", () => {
   it("generates a link inside transaction box for an ethereum transaction", async () => {
     // Simulate we start background page
     jest.spyOn(txsUpdater, "transactionsUpdater").mockImplementation(() => {});
@@ -191,10 +191,10 @@ withChainsDescribe("DOM > Feature > Account Status", () => {
 
     // Launch react DOM with account status route
     const personaInfo = await (window as IovWindowExtension).getPersonaData();
-    const accountStatusDom = await travelToAccount(personaInfo);
+    const walletStatusDom = await travelToWallet(personaInfo);
 
     // Check for the link
-    const links = TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, "a");
+    const links = TestUtils.scryRenderedDOMComponentsWithTag(walletStatusDom, "a");
     expect(links.length).toBe(1);
 
     // Clean everything
