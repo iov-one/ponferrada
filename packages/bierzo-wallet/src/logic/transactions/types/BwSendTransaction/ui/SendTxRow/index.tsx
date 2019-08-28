@@ -28,10 +28,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface Props {
   readonly sendTx: ProcessedSendTransaction;
-  readonly addresses: Address[];
+  readonly userAddresses: Address[];
 }
 
-function SendTxRow({ sendTx, addresses }: Props): JSX.Element {
+function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
@@ -94,7 +94,7 @@ function SendTxRow({ sendTx, addresses }: Props): JSX.Element {
           onClick={onClick}
         />
       </Block>
-      {isOpen && <SendTxDetails tx={sendTx} addresses={addresses} />}
+      {isOpen && <SendTxDetails tx={sendTx} userAddresses={userAddresses} />}
       <Block margin={2} />
       <Hairline />
     </Block>

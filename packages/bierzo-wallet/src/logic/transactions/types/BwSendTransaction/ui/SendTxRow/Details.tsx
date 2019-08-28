@@ -14,10 +14,10 @@ const useStyles = makeStyles({
 
 interface Props {
   readonly tx: ProcessedSendTransaction;
-  readonly addresses: Address[];
+  readonly userAddresses: Address[];
 }
 
-const TxDetails = ({ addresses, tx }: Props): JSX.Element => {
+const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
@@ -52,7 +52,7 @@ const TxDetails = ({ addresses, tx }: Props): JSX.Element => {
       <Typography variant="subtitle2" weight="regular" gutterBottom>
         Recipient:
       </Typography>
-      <BlockchainAddress addresses={addresses} address={tx.original.recipient} />
+      <BlockchainAddress userAddresses={userAddresses} address={tx.original.recipient} />
     </Block>
   );
 };

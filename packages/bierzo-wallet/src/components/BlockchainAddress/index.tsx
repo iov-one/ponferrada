@@ -10,11 +10,11 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly addresses: Address[];
+  readonly userAddresses: Address[];
   readonly address: Address;
 }
 
-const BlockchainAddress = ({ addresses, address }: Props): JSX.Element => {
+const BlockchainAddress = ({ userAddresses, address }: Props): JSX.Element => {
   const classes = useStyles();
 
   const addressNode = (
@@ -23,9 +23,9 @@ const BlockchainAddress = ({ addresses, address }: Props): JSX.Element => {
     </Typography>
   );
 
-  if (addresses.indexOf(address) > -1) {
+  if (userAddresses.includes(address)) {
     return (
-      <Badge variant="text" badgeContent="mine">
+      <Badge variant="text" badgeContent="me">
         {addressNode}
       </Badge>
     );
