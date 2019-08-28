@@ -26,7 +26,7 @@ export async function filterExistingTokens(
 /**
  * This method will convert Identities to ChainAddressPair
  */
-export async function getChainAddressPair(identities: {
+export async function getChainAddressPairs(identities: {
   [chain: string]: Identity;
 }): Promise<ChainAddressPair[]> {
   const addresses: ChainAddressPair[] = [];

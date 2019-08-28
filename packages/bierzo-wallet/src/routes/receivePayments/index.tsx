@@ -6,7 +6,7 @@ import * as ReactRedux from "react-redux";
 import { history } from "..";
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPair } from "../../utils/tokens";
+import { getChainAddressPairs } from "../../utils/tokens";
 import { BALANCE_ROUTE } from "../paths";
 import Layout from "./components";
 
@@ -20,7 +20,7 @@ const ReceivePayment = (): JSX.Element => {
 
   React.useEffect(() => {
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
-      setAddresses(await getChainAddressPair(identities));
+      setAddresses(await getChainAddressPairs(identities));
     }
 
     processIdentities(identities);

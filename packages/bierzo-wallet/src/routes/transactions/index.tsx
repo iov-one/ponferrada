@@ -8,12 +8,12 @@ import PageMenu from "../../components/PageMenu";
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPair } from "../../utils/tokens";
+import { getChainAddressPairs } from "../../utils/tokens";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
 const Transactions = (): JSX.Element => {
-  const [addresses, setAddresses] = React.useState<Address[]>([]);
+  const [userAddresses, setUserAddresses] = React.useState<Address[]>([]);
   const [rows, setRows] = React.useState(5);
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN);
@@ -23,17 +23,17 @@ const Transactions = (): JSX.Element => {
 
   React.useEffect(() => {
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
-      setAddresses((await getChainAddressPair(identities)).map(pair => pair.address));
+      setUserAddresses((await getChainAddressPairs(identities)).map(pair => pair.address));
     }
 
     processIdentities(identities);
   }, [identities]);
 
   const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
-  const txs = React.useMemo(() => orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, addresses)), [
-    orderedTxs,
-    addresses,
-  ]);
+  const txs = React.useMemo(
+    () => orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, userAddresses)),
+    [orderedTxs, userAddresses],
+  );
 
   function onChangeRows(item: SelectFieldFormItem): void {
     setRows(Number(item.name));
