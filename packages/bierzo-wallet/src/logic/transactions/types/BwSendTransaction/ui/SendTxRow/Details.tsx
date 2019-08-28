@@ -1,7 +1,9 @@
+import { Address } from "@iov/bcp";
 import { makeStyles } from "@material-ui/core";
 import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import BlockchainAddress from "../../../../../../components/BlockchainAddress";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 
 const useStyles = makeStyles({
@@ -12,9 +14,10 @@ const useStyles = makeStyles({
 
 interface Props {
   readonly tx: ProcessedSendTransaction;
+  readonly addresses: Address[];
 }
 
-const TxDetails = ({ tx }: Props): JSX.Element => {
+const TxDetails = ({ addresses, tx }: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
@@ -37,14 +40,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
           <Typography variant="subtitle2" weight="regular" gutterBottom>
             Recipient:
           </Typography>
-          <Typography
-            variant="subtitle2"
-            weight="regular"
-            color="textSecondary"
-            className={classes.sectionName}
-          >
-            {tx.original.recipient}
-          </Typography>
+          <BlockchainAddress addresses={addresses} address={tx.original.recipient} />
         </Block>
         <Block width="50%">
           <Block>

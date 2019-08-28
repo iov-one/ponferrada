@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";
@@ -27,9 +28,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface Props {
   readonly sendTx: ProcessedSendTransaction;
+  readonly addresses: Address[];
 }
 
-function SendTxRow({ sendTx }: Props): JSX.Element {
+function SendTxRow({ sendTx, addresses }: Props): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
@@ -92,7 +94,7 @@ function SendTxRow({ sendTx }: Props): JSX.Element {
           onClick={onClick}
         />
       </Block>
-      {isOpen && <SendTxDetails tx={sendTx} />}
+      {isOpen && <SendTxDetails tx={sendTx} addresses={addresses} />}
       <Block margin={2} />
       <Hairline />
     </Block>
