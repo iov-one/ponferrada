@@ -1,7 +1,7 @@
 import { Hairline } from "medulas-react-components";
 import React from "react";
 
-import Proposal, { ProposalProps } from ".";
+import Proposal, { ProposalProps } from "./Proposal";
 
 interface Props {
   readonly proposal: ProposalProps;
