@@ -14,13 +14,11 @@ import React from "react";
 import { ReadonlyDate } from "readonly-date";
 import { stringToAmount } from "ui-logic";
 
-import { getCodecForChainId } from "../../logic/codec";
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
-import { createIdentities } from "../../utils/test/identities";
 import Transactions from "./index";
 
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
@@ -34,6 +32,153 @@ const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
 const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   fractionalDigits: 8,
   tokenTicker: "LSK" as TokenTicker,
+};
+
+function createIdentities(): { [chain: string]: Identity } {
+  const identities: { [chain: string]: Identity } = {};
+
+  // create ETH pub key
+  const ethChain = "ethereum-eip155-5777";
+  const ethIdentity: Identity = {
+    chainId: ethChain as ChainId,
+    pubkey: {
+      algo: Algorithm.Secp256k1,
+      data: new Uint8Array([
+        4,
+        35,
+        25,
+        143,
+        47,
+        196,
+        92,
+        94,
+        201,
+        129,
+        204,
+        227,
+        160,
+        201,
+        31,
+        172,
+        242,
+        5,
+        90,
+        33,
+        14,
+        162,
+        241,
+        51,
+        1,
+        212,
+        8,
+        100,
+        174,
+        110,
+        24,
+        76,
+        145,
+        165,
+        34,
+        134,
+        115,
+        37,
+        168,
+        109,
+        20,
+        250,
+        21,
+        102,
+        70,
+        73,
+        38,
+        69,
+        125,
+        132,
+        2,
+        235,
+        103,
+        11,
+        152,
+        39,
+        214,
+        68,
+        136,
+        10,
+        91,
+        70,
+        45,
+        180,
+        61,
+      ]) as PubkeyBytes,
+    },
+  };
+
+  // get BNS pubkey
+  const bnsChain = "local-iov-devnet";
+  const bnsIdentity: Identity = {
+    chainId: bnsChain as ChainId,
+    pubkey: {
+      algo: Algorithm.Ed25519,
+      data: new Uint8Array([
+        247,
+        161,
+        30,
+        188,
+        254,
+        34,
+        224,
+        132,
+        157,
+        164,
+        97,
+        69,
+        102,
+        26,
+        180,
+        225,
+        17,
+        171,
+        143,
+        233,
+        49,
+        34,
+        110,
+        242,
+        132,
+        138,
+        191,
+        249,
+        209,
+        128,
+        205,
+        1,
+      ]) as PubkeyBytes,
+    },
+  };
+
+  identities[ethChain] = ethIdentity;
+  identities[bnsChain] = bnsIdentity;
+
+  return identities;
+}
+
+const identities = createIdentities();
+const address = "0x794d591840927890aC7C162C3B3e4665725f8f40" as Address;
+const ownTx: ProcessedSendTransaction = {
+  time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
+  id: "ownTx1" as TransactionId,
+  original: {
+    kind: "bcp/send",
+    sender: "george*iov" as Address,
+    recipient: address,
+    amount: stringToAmount("10.5", lsk),
+    memo: "Sample note",
+    fee: {
+      tokens: stringToAmount("1.2", iov),
+    },
+  },
+  incoming: true,
+  outgoing: false,
 };
 
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
@@ -54,6 +199,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
 };
 
 const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
+  ownTx,
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
     time: new ReadonlyDate("2019-12-24T10:51:33.763Z"),
@@ -320,62 +466,16 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
   },
 ];
 
-function TxWithStore(): JSX.Element {
-  const [store, setStore] = React.useState<Pick<RootState, "notifications" | "extension">>({
-    extension: {
-      connected: false,
-      installed: false,
-      identities: {},
-    },
-    notifications: {
-      transactions: txs,
-    },
-  });
-
-  React.useEffect(() => {
-    async function updateState(): Promise<void> {
-      const identities = await createIdentities();
-      const identity = Object.values(identities)[0];
-      const address = (await getCodecForChainId(identity.chainId)).identityToAddress(identity);
-      const ownTx = {
-        time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
-        id: "ownTx1" as TransactionId,
-        original: {
-          kind: "bcp/send",
-          sender: "george*iov" as Address,
-          recipient: address,
-          amount: stringToAmount("10.5", lsk),
-          memo: "Sample note",
-          fee: {
-            tokens: stringToAmount("1.2", iov),
-          },
-        },
-        incoming: true,
-        outgoing: false,
-      };
-      const newState: Pick<RootState, "notifications" | "extension"> = {
-        extension: {
-          connected: true,
-          installed: true,
-          identities,
-        },
-        notifications: {
-          transactions: [ownTx, ...txs],
-        },
-      };
-
-      setStore(newState);
-    }
-
-    updateState();
-  }, []);
-
-  return (
-    <DecoratedStorybook storeProps={store}>
-      <Transactions />
-    </DecoratedStorybook>
-  );
-}
+const txStore: Pick<RootState, "notifications" | "extension"> = {
+  extension: {
+    connected: true,
+    installed: true,
+    identities,
+  },
+  notifications: {
+    transactions: txs,
+  },
+};
 
 storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
@@ -387,4 +487,11 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
       </DecoratedStorybook>
     ),
   )
-  .add(TRANSACTIONS_STORY_SHOW_PATH, (): JSX.Element => <TxWithStore />);
+  .add(
+    TRANSACTIONS_STORY_SHOW_PATH,
+    (): JSX.Element => (
+      <DecoratedStorybook storeProps={txStore}>
+        <Transactions />
+      </DecoratedStorybook>
+    ),
+  );
