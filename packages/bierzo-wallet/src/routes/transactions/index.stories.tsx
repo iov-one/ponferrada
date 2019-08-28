@@ -9,6 +9,7 @@ import {
   TransactionId,
 } from "@iov/bcp";
 import { RegisterUsernameTx } from "@iov/bns";
+import { Encoding } from "@iov/encoding";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
@@ -43,73 +44,9 @@ function createIdentities(): { [chain: string]: Identity } {
     chainId: ethChain as ChainId,
     pubkey: {
       algo: Algorithm.Secp256k1,
-      data: new Uint8Array([
-        4,
-        35,
-        25,
-        143,
-        47,
-        196,
-        92,
-        94,
-        201,
-        129,
-        204,
-        227,
-        160,
-        201,
-        31,
-        172,
-        242,
-        5,
-        90,
-        33,
-        14,
-        162,
-        241,
-        51,
-        1,
-        212,
-        8,
-        100,
-        174,
-        110,
-        24,
-        76,
-        145,
-        165,
-        34,
-        134,
-        115,
-        37,
-        168,
-        109,
-        20,
-        250,
-        21,
-        102,
-        70,
-        73,
-        38,
-        69,
-        125,
-        132,
-        2,
-        235,
-        103,
-        11,
-        152,
-        39,
-        214,
-        68,
-        136,
-        10,
-        91,
-        70,
-        45,
-        180,
-        61,
-      ]) as PubkeyBytes,
+      data: Encoding.fromHex(
+        "0423198f2fc45c5ec981cce3a0c91facf2055a210ea2f13301d40864ae6e184c91a522867325a86d14fa1566464926457d8402eb670b9827d644880a5b462db43d",
+      ) as PubkeyBytes,
     },
   };
 
@@ -119,40 +56,9 @@ function createIdentities(): { [chain: string]: Identity } {
     chainId: bnsChain as ChainId,
     pubkey: {
       algo: Algorithm.Ed25519,
-      data: new Uint8Array([
-        247,
-        161,
-        30,
-        188,
-        254,
-        34,
-        224,
-        132,
-        157,
-        164,
-        97,
-        69,
-        102,
-        26,
-        180,
-        225,
-        17,
-        171,
-        143,
-        233,
-        49,
-        34,
-        110,
-        242,
-        132,
-        138,
-        191,
-        249,
-        209,
-        128,
-        205,
-        1,
-      ]) as PubkeyBytes,
+      data: Encoding.fromHex(
+        "f7a11ebcfe22e0849da46145661ab4e111ab8fe931226ef2848abff9d180cd01",
+      ) as PubkeyBytes,
     },
   };
 
@@ -180,6 +86,15 @@ const ownTx: ProcessedSendTransaction = {
   incoming: true,
   outgoing: false,
 };
+
+function toHexString(byteArray: Uint8Array): string {
+  return Array.from(byteArray, function(byte) {
+    return ("0" + (byte & 0xff).toString(16)).slice(-2);
+  }).join("");
+}
+
+console.log(toHexString(Object.values(identities)[0].pubkey.data));
+console.log(toHexString(Object.values(identities)[1].pubkey.data));
 
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
