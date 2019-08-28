@@ -87,15 +87,6 @@ const ownTx: ProcessedSendTransaction = {
   outgoing: false,
 };
 
-function toHexString(byteArray: Uint8Array): string {
-  return Array.from(byteArray, function(byte) {
-    return ("0" + (byte & 0xff).toString(16)).slice(-2);
-  }).join("");
-}
-
-console.log(toHexString(Object.values(identities)[0].pubkey.data));
-console.log(toHexString(Object.values(identities)[1].pubkey.data));
-
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
   id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
