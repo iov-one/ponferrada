@@ -3,8 +3,8 @@ import { ProposalAction, ProposalResult, VoteOption } from "@iov/bns";
 import { Block } from "medulas-react-components";
 import React from "react";
 
+import CollapsingData from "./CollapsingData";
 import DeleteButton from "./DeleteButton";
-import Description from "./Description";
 import Identification from "./Identification";
 import Period from "./Period";
 import TallyBar from "./TallyBar";
@@ -57,7 +57,7 @@ const Proposal = ({
       <Block flexGrow={1} marginTop={2} marginBottom={2} marginLeft={2}>
         <Title title={title} />
         <Identification id={id} author={author} />
-        <Description description={description} />
+        <CollapsingData description={description} action={action} />
         <Block display="flex" marginTop={2}>
           <Period expiryDate={expiryDate} startDate={startDate} hasStarted={hasStarted} hasEnded={hasEnded} />
           <Block marginLeft={1}>

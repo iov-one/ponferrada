@@ -1,15 +1,17 @@
+import { ProposalAction } from "@iov/bns";
 import Collapse from "@material-ui/core/Collapse";
 import { Block, Typography } from "medulas-react-components";
 import React, { useState } from "react";
-import { ellipsify } from "ui-logic";
 
-const DESC_MAX_LENGTH = 180;
+import Description from "./Description";
+import DisplayOptions from "./DisplayOptions";
 
 interface Props {
   readonly description: string;
+  readonly action: ProposalAction;
 }
 
-const Description = ({ description }: Props): JSX.Element => {
+const CollapsingData = ({ description, action }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const onClick = (): void => {
@@ -17,13 +19,9 @@ const Description = ({ description }: Props): JSX.Element => {
   };
 
   const ReadMore = (): JSX.Element => {
-    const shortDescription = ellipsify(description, DESC_MAX_LENGTH) + " ";
-
     return (
       <Block marginTop={2}>
-        <Typography inline variant="body2">
-          {shortDescription}
-        </Typography>
+        <Description fullDescription={description} expanded={expanded} />
         <Typography inline link onClick={onClick} variant="body2" weight="semibold">
           Read more
         </Typography>
@@ -31,23 +29,12 @@ const Description = ({ description }: Props): JSX.Element => {
     );
   };
 
-  const hasSmallDescription = description.length < DESC_MAX_LENGTH;
-
-  if (hasSmallDescription) {
-    return (
-      <Block marginTop={2}>
-        <Typography variant="body2">{description}</Typography>
-      </Block>
-    );
-  }
-
   return (
     <Block marginTop={2}>
       {!expanded && <ReadMore />}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Typography inline variant="body2">
-          {description}{" "}
-        </Typography>
+        <Description fullDescription={description} expanded={expanded} />
+        <DisplayOptions action={action} />
         <Typography inline link onClick={onClick} variant="body2" weight="semibold">
           Read less
         </Typography>
@@ -56,4 +43,4 @@ const Description = ({ description }: Props): JSX.Element => {
   );
 };
 
-export default Description;
+export default CollapsingData;
