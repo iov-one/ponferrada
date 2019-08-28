@@ -6,7 +6,7 @@ import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
 } from "../../../utils/test/reactElemFinder";
-import { ACCOUNT_STATUS_ROUTE, LOGIN_ROUTE, RESTORE_WALLET } from "../../paths";
+import { LOGIN_ROUTE, RESTORE_WALLET, WALLET_STATUS_ROUTE } from "../../paths";
 import { MNEMONIC_FIELD } from "../components/SetMnemonicForm";
 import {
   PASSWORD_CONFIRM_FIELD,
@@ -67,7 +67,7 @@ export const submitRecoveryPhraseE2E = async (
   await page.type(`input[name="${PASSWORD_FIELD}"]`, password);
   await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}"]`, password);
   await page.click('button[type="submit"]');
-  await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
+  await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
 };
 
 export const travelToRestoreWalletStep = async (page: Page): Promise<void> => {

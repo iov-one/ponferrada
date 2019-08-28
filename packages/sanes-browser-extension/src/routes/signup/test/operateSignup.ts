@@ -7,7 +7,7 @@ import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
 } from "../../../utils/test/reactElemFinder";
-import { ACCOUNT_STATUS_ROUTE } from "../../paths";
+import { WALLET_STATUS_ROUTE } from "../../paths";
 import {
   FIRST_STEP_SIGNUP_ROUTE,
   PASSWORD_CONFIRM_FIELD,
@@ -142,7 +142,7 @@ export const submitSecurityHintE2E = async (page: Page, securityHint: string): P
 
   await page.click('button[type="submit"]');
 
-  await findRenderedE2EComponentWithId(page, ACCOUNT_STATUS_ROUTE);
+  await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
 };
 
 export const submitSecurityHint = async (
@@ -155,7 +155,7 @@ export const submitSecurityHint = async (
 
   const form = TestUtils.findRenderedDOMComponentWithTag(securityHintDom, "form");
   submit(form);
-  await findRenderedDOMComponentWithId(securityHintDom, ACCOUNT_STATUS_ROUTE);
+  await findRenderedDOMComponentWithId(securityHintDom, WALLET_STATUS_ROUTE);
   expect(getHintPhrase(walletName)).toBe(hint);
 };
 

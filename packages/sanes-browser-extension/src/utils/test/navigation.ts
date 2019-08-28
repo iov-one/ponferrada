@@ -4,7 +4,6 @@ import { whenTrue } from "ui-logic";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import {
-  ACCOUNT_STATUS_ROUTE,
   LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
@@ -12,6 +11,7 @@ import {
   SHARE_IDENTITY,
   SIGNUP_ROUTE,
   TX_REQUEST,
+  WALLET_STATUS_ROUTE,
   WELCOME_ROUTE,
 } from "../../routes/paths";
 import { REQUEST_FIELD } from "../../routes/requests/components/RequestList";
@@ -77,8 +77,8 @@ export const travelToTXRequest = async (requests: readonly Request[]): Promise<R
   return travelTo(TX_REQUEST, requests);
 };
 
-export const travelToAccount = async (persona?: GetPersonaResponse): Promise<React.Component> => {
-  return travelTo(ACCOUNT_STATUS_ROUTE, [], persona);
+export const travelToWallet = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(WALLET_STATUS_ROUTE, [], persona);
 };
 
 export const travelToRequests = async (requests?: readonly Request[]): Promise<React.Component> => {
