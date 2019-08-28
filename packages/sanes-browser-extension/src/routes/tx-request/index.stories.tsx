@@ -9,7 +9,7 @@ import {
   SignAndPostResponseData,
 } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
-import { ACCOUNT_STATUS_PAGE } from "../account/index.stories";
+import { WALLET_STATUS_PAGE } from "../account/index.stories";
 import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
 import {
@@ -92,7 +92,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           tx={tx}
           sender={sendBnsRequest.senderUrl}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -107,7 +107,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           tx={tx}
           sender={senderUrl}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -122,7 +122,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           sender={senderUrl}
           tx={tx}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -137,7 +137,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           sender={senderUrl}
           tx={tx}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -152,7 +152,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           sender={senderUrl}
           tx={tx}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, ACCOUNT_STATUS_PAGE)}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
