@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly userAddresses: Address[];
+  readonly userAddresses: readonly Address[];
   readonly address: Address;
 }
 
