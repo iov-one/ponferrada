@@ -5,10 +5,11 @@ import CheckIcon from "../../theme/assets/badgeIcon/check.svg";
 import Img from "../Image";
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
-  readonly variant: "dot" | "check";
+  readonly variant: "dot" | "check" | "text";
   readonly invisible?: boolean;
   readonly color?: PropTypes.Color | "error";
   readonly children: React.ReactNode;
+  readonly badgeContent?: string;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -25,20 +26,38 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: "-7px",
     zIndex: 0,
   },
+  text: {
+    fontSize: "1.2rem",
+    position: "initial",
+    transform: "initial",
+    marginLeft: `${theme.spacing(0.5)}px`,
+  },
+  textRoot: {
+    position: "initial",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
 }));
 
-const BadgeIcon = ({ variant, invisible = false, color = "primary", children }: Props): JSX.Element => {
+const BadgeIcon = ({
+  variant,
+  invisible = false,
+  color = "primary",
+  badgeContent = "",
+  children,
+}: Props): JSX.Element => {
   const classes = useStyles();
 
-  const badgeClasses = { badge: variant === "check" ? classes.check : classes.dot };
-  const badgeContent = variant === "check" ? <Img src={CheckIcon} alt="Badge Icon" /> : "";
+  const badgeClasses = { badge: classes[variant], root: variant === "text" ? classes.textRoot : undefined };
+  const content = variant === "check" ? <Img src={CheckIcon} alt="Badge Icon" /> : badgeContent;
 
-  const badgeVariant = variant === "check" ? "standard" : "dot";
+  const badgeVariant = variant === "dot" ? "dot" : "standard";
   const badgeColor = variant === "check" ? "default" : color;
 
   return (
     <Badge
-      badgeContent={badgeContent}
+      badgeContent={content}
       classes={badgeClasses}
       invisible={invisible}
       variant={badgeVariant}

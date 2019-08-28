@@ -10,7 +10,7 @@ import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPair } from "../../utils/tokens";
+import { getChainAddressPairs } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
@@ -77,7 +77,7 @@ const RegisterUsername = (): JSX.Element => {
 
   React.useEffect(() => {
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
-      setAddresses(await getChainAddressPair(identities));
+      setAddresses(await getChainAddressPairs(identities));
     }
 
     processIdentities(identities);

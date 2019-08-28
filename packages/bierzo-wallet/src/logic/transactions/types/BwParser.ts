@@ -20,7 +20,7 @@ export abstract class BwParser<K> {
     transaction: ConfirmedTransaction<LightTransaction> | FailedTransaction,
     currentUserAddress: Address,
   ): Promise<ProcessedTx>;
-  abstract graphicalRepresentation(tx: ProcessedTx): JSX.Element;
+  abstract graphicalRepresentation(tx: ProcessedTx, addresses: Address[]): JSX.Element;
   abstract csvRepresentation(tx: ProcessedTx): string;
   abstract headerRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element;
 }

@@ -1,3 +1,4 @@
+import { Address, Identity } from "@iov/bcp";
 import FileSaver from "file-saver";
 import { SelectFieldFormItem } from "medulas-react-components";
 import * as React from "react";
@@ -7,18 +8,32 @@ import PageMenu from "../../components/PageMenu";
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { RootState } from "../../store/reducers";
+import { getChainAddressPairs } from "../../utils/tokens";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
 const Transactions = (): JSX.Element => {
+  const [userAddresses, setUserAddresses] = React.useState<Address[]>([]);
   const [rows, setRows] = React.useState(5);
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN);
   const [order, setOrder] = React.useState(ORDER_DESC);
   const parsedTxs = useSelector((state: RootState) => state.notifications.transactions);
+  const identities = useSelector((state: RootState) => state.extension.identities);
+
+  React.useEffect(() => {
+    async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
+      setUserAddresses((await getChainAddressPairs(identities)).map(pair => pair.address));
+    }
+
+    processIdentities(identities);
+  }, [identities]);
 
   const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);
-  const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx));
+  const txs = React.useMemo(
+    () => orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, userAddresses)),
+    [orderedTxs, userAddresses],
+  );
 
   function onChangeRows(item: SelectFieldFormItem): void {
     setRows(Number(item.name));

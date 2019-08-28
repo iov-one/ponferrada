@@ -1,5 +1,15 @@
-import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import {
+  Address,
+  Algorithm,
+  ChainId,
+  Identity,
+  PubkeyBytes,
+  Token,
+  TokenTicker,
+  TransactionId,
+} from "@iov/bcp";
 import { RegisterUsernameTx } from "@iov/bns";
+import { Encoding } from "@iov/encoding";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
@@ -25,6 +35,58 @@ const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "LSK" as TokenTicker,
 };
 
+function createIdentities(): { [chain: string]: Identity } {
+  const identities: { [chain: string]: Identity } = {};
+
+  // create ETH pub key
+  const ethChain = "ethereum-eip155-5777";
+  const ethIdentity: Identity = {
+    chainId: ethChain as ChainId,
+    pubkey: {
+      algo: Algorithm.Secp256k1,
+      data: Encoding.fromHex(
+        "0423198f2fc45c5ec981cce3a0c91facf2055a210ea2f13301d40864ae6e184c91a522867325a86d14fa1566464926457d8402eb670b9827d644880a5b462db43d",
+      ) as PubkeyBytes,
+    },
+  };
+
+  // get BNS pubkey
+  const bnsChain = "local-iov-devnet";
+  const bnsIdentity: Identity = {
+    chainId: bnsChain as ChainId,
+    pubkey: {
+      algo: Algorithm.Ed25519,
+      data: Encoding.fromHex(
+        "f7a11ebcfe22e0849da46145661ab4e111ab8fe931226ef2848abff9d180cd01",
+      ) as PubkeyBytes,
+    },
+  };
+
+  identities[ethChain] = ethIdentity;
+  identities[bnsChain] = bnsIdentity;
+
+  return identities;
+}
+
+const identities = createIdentities();
+const address = "0x794d591840927890aC7C162C3B3e4665725f8f40" as Address;
+const ownTx: ProcessedSendTransaction = {
+  time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
+  id: "ownTx1" as TransactionId,
+  original: {
+    kind: "bcp/send",
+    sender: "george*iov" as Address,
+    recipient: address,
+    amount: stringToAmount("10.5", lsk),
+    memo: "Sample note",
+    fee: {
+      tokens: stringToAmount("1.2", iov),
+    },
+  },
+  incoming: true,
+  outgoing: false,
+};
+
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
   id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
@@ -43,6 +105,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
 };
 
 const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
+  ownTx,
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
     time: new ReadonlyDate("2019-12-24T10:51:33.763Z"),
@@ -309,7 +372,12 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
   },
 ];
 
-const txStore: Pick<RootState, "notifications"> = {
+const txStore: Pick<RootState, "notifications" | "extension"> = {
+  extension: {
+    connected: true,
+    installed: true,
+    identities,
+  },
   notifications: {
     transactions: txs,
   },
