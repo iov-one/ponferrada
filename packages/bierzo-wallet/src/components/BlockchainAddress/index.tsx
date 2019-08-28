@@ -23,9 +23,6 @@ const BlockchainAddress = ({ addresses, address }: Props): JSX.Element => {
     </Typography>
   );
 
-  console.log(addresses);
-  console.log(address);
-
   if (addresses.indexOf(address) > -1) {
     return (
       <Badge variant="text" badgeContent="mine">
