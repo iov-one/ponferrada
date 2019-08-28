@@ -24,7 +24,7 @@ const TxDetails = ({ addresses, tx }: Props): JSX.Element => {
     <Block paddingLeft="56px" display="flex" flexDirection="column">
       <Block margin={2} />
       <Block display="flex">
-        <Block width="50%">
+        <Block width="65%">
           <Typography variant="subtitle2" weight="regular" gutterBottom>
             Sender:
           </Typography>
@@ -36,13 +36,8 @@ const TxDetails = ({ addresses, tx }: Props): JSX.Element => {
           >
             {tx.original.sender}
           </Typography>
-          <Typography>&nbsp;</Typography>
-          <Typography variant="subtitle2" weight="regular" gutterBottom>
-            Recipient:
-          </Typography>
-          <BlockchainAddress addresses={addresses} address={tx.original.recipient} />
         </Block>
-        <Block width="50%">
+        <Block width="35%">
           <Block>
             <Typography variant="subtitle2" weight="regular" gutterBottom>
               Note:
@@ -53,6 +48,11 @@ const TxDetails = ({ addresses, tx }: Props): JSX.Element => {
           </Block>
         </Block>
       </Block>
+      <Typography>&nbsp;</Typography>
+      <Typography variant="subtitle2" weight="regular" gutterBottom>
+        Recipient:
+      </Typography>
+      <BlockchainAddress addresses={addresses} address={tx.original.recipient} />
     </Block>
   );
 };
