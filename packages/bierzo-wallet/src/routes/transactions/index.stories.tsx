@@ -1,15 +1,26 @@
-import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import {
+  Address,
+  Algorithm,
+  ChainId,
+  Identity,
+  PubkeyBytes,
+  Token,
+  TokenTicker,
+  TransactionId,
+} from "@iov/bcp";
 import { RegisterUsernameTx } from "@iov/bns";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
 import { stringToAmount } from "ui-logic";
 
+import { getCodecForChainId } from "../../logic/codec";
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import { createIdentities } from "../../utils/test/identities";
 import Transactions from "./index";
 
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
@@ -309,11 +320,62 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
   },
 ];
 
-const txStore: Pick<RootState, "notifications"> = {
-  notifications: {
-    transactions: txs,
-  },
-};
+function TxWithStore(): JSX.Element {
+  const [store, setStore] = React.useState<Pick<RootState, "notifications" | "extension">>({
+    extension: {
+      connected: false,
+      installed: false,
+      identities: {},
+    },
+    notifications: {
+      transactions: txs,
+    },
+  });
+
+  React.useEffect(() => {
+    async function updateState(): Promise<void> {
+      const identities = await createIdentities();
+      const identity = Object.values(identities)[0];
+      const address = (await getCodecForChainId(identity.chainId)).identityToAddress(identity);
+      const ownTx = {
+        time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
+        id: "ownTx1" as TransactionId,
+        original: {
+          kind: "bcp/send",
+          sender: "george*iov" as Address,
+          recipient: address,
+          amount: stringToAmount("10.5", lsk),
+          memo: "Sample note",
+          fee: {
+            tokens: stringToAmount("1.2", iov),
+          },
+        },
+        incoming: true,
+        outgoing: false,
+      };
+      const newState: Pick<RootState, "notifications" | "extension"> = {
+        extension: {
+          connected: true,
+          installed: true,
+          identities,
+        },
+        notifications: {
+          transactions: [ownTx, ...txs],
+        },
+      };
+
+      setStore(newState);
+    }
+
+    updateState();
+  }, []);
+
+  return (
+    <DecoratedStorybook storeProps={store}>
+      <Transactions />
+    </DecoratedStorybook>
+  );
+}
 
 storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
@@ -325,11 +387,4 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
       </DecoratedStorybook>
     ),
   )
-  .add(
-    TRANSACTIONS_STORY_SHOW_PATH,
-    (): JSX.Element => (
-      <DecoratedStorybook storeProps={txStore}>
-        <Transactions />
-      </DecoratedStorybook>
-    ),
-  );
+  .add(TRANSACTIONS_STORY_SHOW_PATH, (): JSX.Element => <TxWithStore />);
