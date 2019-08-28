@@ -221,6 +221,7 @@ export const getDummyProposalsState = (): ProposalsState => {
 
     return {
       id: proposal.id,
+      action: proposal.action,
       title: proposal.title,
       author: proposal.author,
       description: proposal.description,

@@ -1,5 +1,5 @@
 import { Address } from "@iov/bcp";
-import { ProposalResult, VoteOption } from "@iov/bns";
+import { ProposalAction, ProposalResult, VoteOption } from "@iov/bns";
 import { Block } from "medulas-react-components";
 import React from "react";
 
@@ -22,6 +22,7 @@ export interface Tally {
 export interface ProposalProps {
   readonly id: number;
   readonly title: string;
+  readonly action: ProposalAction;
   readonly author: Address;
   readonly description: string;
   readonly startDate: Date;
@@ -37,6 +38,7 @@ export interface ProposalProps {
 
 const Proposal = ({
   id,
+  action,
   title,
   author,
   description,
