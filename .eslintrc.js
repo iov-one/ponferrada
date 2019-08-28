@@ -13,6 +13,7 @@ module.exports = {
     "no-console": ["warn", {
       allow: ["error", "info", "warn"]
     }],
+    "no-param-reassign": "warn",
     "sort-imports": "off", // we use the simple-import-sort plugin instead
     "simple-import-sort/sort": "warn",
     "@typescript-eslint/explicit-function-return-type": [ "error", {

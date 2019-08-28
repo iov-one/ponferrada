@@ -7,18 +7,19 @@ export const COMMITTEE_FIELD = "Committee";
 const COMMITTEE_FIELD_INITIAL = "Select a committee";
 
 const displayPeriod = (seconds: number): string => {
+  let remainingSeconds = seconds;
   const days = Math.floor(seconds / (3600 * 24));
-  seconds -= days * 3600 * 24;
+  remainingSeconds -= days * 3600 * 24;
   const hours = Math.floor(seconds / 3600);
-  seconds -= hours * 3600;
+  remainingSeconds -= hours * 3600;
   const minutes = Math.floor(seconds / 60);
-  seconds -= minutes * 60;
+  remainingSeconds -= minutes * 60;
 
   let period = "";
   if (days) period += `${days}d `;
   if (hours) period += `${hours}h `;
   if (minutes) period += `${minutes}m `;
-  if (seconds) period += `${seconds}s`;
+  if (remainingSeconds) period += `${remainingSeconds}s`;
 
   return period.trim();
 };
