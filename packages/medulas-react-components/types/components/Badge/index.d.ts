@@ -5,7 +5,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   readonly invisible?: boolean;
   readonly color?: PropTypes.Color | "error";
   readonly children: React.ReactNode;
-  readonly badgeContent?: React.ReactNode;
+  readonly badgeContent?: string;
 }
 declare const BadgeIcon: ({ variant, invisible, color, badgeContent, children }: Props) => JSX.Element;
 export default BadgeIcon;
