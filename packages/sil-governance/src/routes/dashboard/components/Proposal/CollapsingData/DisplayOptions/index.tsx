@@ -1,9 +1,9 @@
 import {
   ActionKind,
   CreateTextResolutionAction,
+  ExecuteProposalBatchAction,
   ProposalAction,
   ReleaseEscrowAction,
-  SendAction,
   SetValidatorsAction,
   UpdateElectionRuleAction,
   UpdateElectorateAction,
@@ -11,8 +11,8 @@ import {
 import React from "react";
 
 import CreateTextResolution from "./CreateTextResolution";
+import ExecuteProposalBatch from "./ExecuteProposalBatch";
 import ReleaseEscrow from "./ReleaseEscrow";
-import Send from "./Send";
 import SetValidators from "./SetValidators";
 import UpdateElectionRule from "./UpdateElectionRule";
 import UpdateElectorate from "./UpdateElectorate";
@@ -25,10 +25,10 @@ const DisplayOptions = ({ action }: Props): JSX.Element => {
   switch (action.kind) {
     case ActionKind.CreateTextResolution:
       return <CreateTextResolution action={action as CreateTextResolutionAction} />;
+    case ActionKind.ExecuteProposalBatch:
+      return <ExecuteProposalBatch action={action as ExecuteProposalBatchAction} />;
     case ActionKind.ReleaseEscrow:
       return <ReleaseEscrow action={action as ReleaseEscrowAction} />;
-    case ActionKind.Send:
-      return <Send action={action as SendAction} />;
     case ActionKind.SetValidators:
       return <SetValidators action={action as SetValidatorsAction} />;
     case ActionKind.UpdateElectionRule:
