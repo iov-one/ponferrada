@@ -7,15 +7,15 @@ interface Props {
 }
 
 const UpdateElectorate = ({ action }: Props): JSX.Element => {
-  let electors = [];
-
-  for (const elector in action.diffElectors) {
-    electors.push(
-      <Typography variant="body2">
-        {elector} - Weight {action.diffElectors[elector].weight}
-      </Typography>,
+  const electors = Object.entries(action.diffElectors).map(([elector, props]) => {
+    return (
+      <Block marginTop={0.5} marginBottom={1}>
+        <Typography variant="body2">
+          {elector} - Weight {props.weight}
+        </Typography>
+      </Block>
     );
-  }
+  });
 
   return (
     <Block marginTop={2} marginBottom={2}>
