@@ -16,24 +16,26 @@ const importWallet = (): void => {
   history.push(RESTORE_WALLET);
 };
 
-const Welcome = (): JSX.Element => (
-  <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to your IOV manager">
-    <Typography variant="body1" inline>
-      This plugin lets you manage all your accounts in one place.
-    </Typography>
-    <Block marginTop={2} />
-    <Button variant="contained" fullWidth onClick={login}>
-      Log in
-    </Button>
-    <Block marginTop={2} />
-    <Button variant="contained" fullWidth onClick={createNewWallet}>
-      New Wallet
-    </Button>
-    <Block marginTop={2} />
-    <Button variant="contained" fullWidth onClick={importWallet}>
-      Import Wallet
-    </Button>
-  </PageLayout>
-);
+const Welcome = (): JSX.Element => {
+  return (
+    <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to your IOV manager">
+      <Typography variant="body1" inline>
+        This plugin lets you manage all your accounts in one place.
+      </Typography>
+      <Block marginTop={2} />
+      <Button variant="contained" fullWidth onClick={login}>
+        Log in
+      </Button>
+      <Block marginTop={2} />
+      <Button variant="contained" fullWidth onClick={createNewWallet}>
+        New Wallet
+      </Button>
+      <Block marginTop={2} />
+      <Button variant="contained" fullWidth onClick={importWallet}>
+        Import Wallet
+      </Button>
+    </PageLayout>
+  );
+};
 
 export default Welcome;
