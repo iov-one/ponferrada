@@ -27,7 +27,10 @@ export interface ConfigurationFile {
   readonly chains: ChainConfig[];
   readonly names: ChainNames;
   readonly blockExplorers: BlockExplorers;
-  readonly accountCreationDisabled: boolean;
+  /** If set to true, wallet creation is disabled. Unsets is interpreted as false. */
+  readonly walletCreationDisabled?: boolean;
+  /** If set to true, account creation is disabled. Unsets is interpreted as false. */
+  readonly accountCreationDisabled?: boolean;
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
