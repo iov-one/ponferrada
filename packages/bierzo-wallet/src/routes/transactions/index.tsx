@@ -22,11 +22,19 @@ const Transactions = (): JSX.Element => {
   const identities = useSelector((state: RootState) => state.extension.identities);
 
   React.useEffect(() => {
+    let isSubscribed = false;
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
-      setUserAddresses((await getChainAddressPairs(identities)).map(pair => pair.address));
+      const addressPairs = (await getChainAddressPairs(identities)).map(pair => pair.address);
+      if (isSubscribed) {
+        setUserAddresses(addressPairs);
+      }
     }
 
     processIdentities(identities);
+
+    return () => {
+      isSubscribed = false;
+    };
   }, [identities]);
 
   const orderedTxs = filterTxsBy(parsedTxs, rows, page, orderBy, order);

@@ -19,11 +19,18 @@ const ReceivePayment = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
 
   React.useEffect(() => {
+    let isSubscribed = true;
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
-      setAddresses(await getChainAddressPairs(identities));
+      const addresses = await getChainAddressPairs(identities);
+      if (isSubscribed) {
+        setAddresses(addresses);
+      }
     }
 
     processIdentities(identities);
+    return () => {
+      isSubscribed = false;
+    };
   }, [identities]);
 
   return (
