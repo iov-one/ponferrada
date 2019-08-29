@@ -1,15 +1,5 @@
-import {
-  Address,
-  Algorithm,
-  ChainId,
-  Identity,
-  PubkeyBytes,
-  Token,
-  TokenTicker,
-  TransactionId,
-} from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { RegisterUsernameTx } from "@iov/bns";
-import { Encoding } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
@@ -23,7 +13,6 @@ import { ProcessedSendTransaction } from "../../store/notifications";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
-import Transactions from "./index";
 
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
