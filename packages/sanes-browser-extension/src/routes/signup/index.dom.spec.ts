@@ -16,7 +16,6 @@ import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from "./components/SecurityHintForm";
 import { SECOND_STEP_SIGNUP_ROUTE } from "./components/ShowPhraseForm";
 import {
   checkHintValidity,
-  checkWalletNameValidity,
   getConfirmPasswordMismatch,
   getConfirmPasswordValidity,
   getNewAccountForm,
@@ -30,7 +29,6 @@ import {
 } from "./test/operateSignup";
 
 describe("DOM > Feature > Signup", () => {
-  const walletName = randomString(10);
   const password = randomString(10);
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const hint = randomString(10);
@@ -53,7 +51,6 @@ describe("DOM > Feature > Signup", () => {
 
   describe("New Wallet Step", () => {
     let newWalletInputs: Element[];
-    let walletNameInput: Element;
     let passwordInput: Element;
     let passwordConfirmInput: Element;
     let termsAcceptField: Element;
@@ -64,37 +61,19 @@ describe("DOM > Feature > Signup", () => {
 
     beforeEach(async () => {
       newWalletInputs = getNewWalletInputs(signupDom);
-      [walletNameInput, passwordInput, passwordConfirmInput, termsAcceptField] = newWalletInputs;
+      [passwordInput, passwordConfirmInput, termsAcceptField] = newWalletInputs;
       newAccountForm = getNewAccountForm(signupDom);
       buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "button");
       [backButton, continueButton] = buttons;
     });
 
-    it("has four inputs", () => {
-      expect(newWalletInputs.length).toBe(4);
-    }, 10000);
-
-    it('has a valid "Wallet Name" input', async () => {
-      expect(walletNameInput.getAttribute("placeholder")).toBe("Wallet name");
-
-      input(passwordInput, password);
-      input(passwordConfirmInput, password);
-      await check(termsAcceptField);
-
-      await submit(newAccountForm);
-      checkWalletNameValidity(signupDom, "Required");
-
-      input(walletNameInput, randomString(7));
-      checkWalletNameValidity(signupDom, "Username should have at least 8 characters");
-
-      input(walletNameInput, walletName);
-      checkWalletNameValidity(signupDom);
+    it("has three inputs", () => {
+      expect(newWalletInputs.length).toBe(3);
     }, 10000);
 
     it('has a valid "Password" input', async () => {
       expect(passwordInput.getAttribute("placeholder")).toBe("Password");
 
-      input(walletNameInput, walletName);
       input(passwordConfirmInput, password);
       await check(termsAcceptField);
 
@@ -111,7 +90,6 @@ describe("DOM > Feature > Signup", () => {
     it('has a valid "Confirm Password" input', async () => {
       expect(passwordConfirmInput.getAttribute("placeholder")).toBe("Confirm Password");
 
-      input(walletNameInput, walletName);
       await check(termsAcceptField);
 
       await submit(newAccountForm);
@@ -129,7 +107,6 @@ describe("DOM > Feature > Signup", () => {
     it('has a valid "Terms agreement" checkbox', async () => {
       expect(getTermsCheckboxLabel(termsAcceptField)).toBe("I have read and agree the T&C");
 
-      input(walletNameInput, walletName);
       input(passwordInput, password);
       input(passwordConfirmInput, password);
 
@@ -158,7 +135,6 @@ describe("DOM > Feature > Signup", () => {
       expect(continueButton.textContent).toBe("Continue");
       expect(isButtonDisabled(continueButton)).toBeTruthy();
 
-      input(walletNameInput, walletName);
       input(passwordInput, password);
       input(passwordConfirmInput, password);
       await check(termsAcceptField);
@@ -172,7 +148,6 @@ describe("DOM > Feature > Signup", () => {
 
     it("accepts several UTF-8 alphabets as password fields", async () => {
       const password = "abcαβγазб文字漢字한국";
-      input(walletNameInput, walletName);
       input(passwordInput, password);
       input(passwordConfirmInput, password);
       await check(termsAcceptField);
@@ -190,7 +165,7 @@ describe("DOM > Feature > Signup", () => {
 
     beforeEach(async () => {
       mockCreatePersona(mockPersonaResponse([], mnemonic, []));
-      await submitNewWallet(signupDom, walletName, password);
+      await submitNewWallet(signupDom, password);
 
       checkbox = TestUtils.findRenderedDOMComponentWithTag(signupDom, "input");
       buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "button");
@@ -234,7 +209,7 @@ describe("DOM > Feature > Signup", () => {
 
     beforeEach(async () => {
       mockCreatePersona(mockPersonaResponse([], mnemonic, []));
-      await submitNewWallet(signupDom, walletName, password);
+      await submitNewWallet(signupDom, password);
       await submitShowPhrase(signupDom);
 
       hintInput = TestUtils.findRenderedDOMComponentWithTag(signupDom, "input");
