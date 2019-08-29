@@ -7,7 +7,9 @@ command -v shellcheck > /dev/null && shellcheck "$0"
 # Config
 #
 
+# https://chrome.google.com/webstore/detail/neuma-staging/ililemcipflfijjbkniehikepfpdgail
 export CHROME_WEBSTORE_EXTENSION_ID_STAGING="ililemcipflfijjbkniehikepfpdgail"
+# https://chrome.google.com/webstore/detail/neuma/gegmganblgchemddleocdoadmljledcj
 export CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION="gegmganblgchemddleocdoadmljledcj"
 
 function fold_start() {
