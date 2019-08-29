@@ -27,6 +27,8 @@ export interface ConfigurationFile {
   readonly chains: ChainConfig[];
   readonly names: ChainNames;
   readonly blockExplorers: BlockExplorers;
+  /** If set to true, wallet creation is disabled. Unsets is interpreted as false. */
+  readonly walletCreationDisabled?: boolean;
   /** If set to true, account creation is disabled. Unsets is interpreted as false. */
   readonly accountCreationDisabled?: boolean;
 }

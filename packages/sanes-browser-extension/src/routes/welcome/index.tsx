@@ -1,11 +1,22 @@
-import { Block, Button, PageLayout, Typography } from "medulas-react-components";
+import { Block, Button, PageLayout, ToastContext, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../utils/history";
 import { LOGIN_ROUTE, RESTORE_WALLET, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
 
 const Welcome = (): JSX.Element => {
-  const createNewWallet = (): void => {
+  const toast = React.useContext(ToastContext);
+
+  const createNewWallet = async (): Promise<void> => {
+    if ((await getConfigurationFile()).walletCreationDisabled) {
+      toast.show(
+        "Please use an external address generator and import the Wallet using your mnemonic.",
+        ToastVariant.INFO,
+      );
+      return;
+    }
+
     history.push(SIGNUP_ROUTE);
   };
 
