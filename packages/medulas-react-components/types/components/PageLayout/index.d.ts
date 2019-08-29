@@ -4,6 +4,8 @@ interface Props extends StyleProps {
   readonly children: React.ReactNode;
   readonly primaryTitle: string;
   readonly title: string;
+  readonly logoSource?: string;
+  readonly logoWidth?: number;
   readonly onBack?: () => void;
 }
 interface StyleProps {
@@ -18,5 +20,7 @@ declare const PageLayout: ({
   onBack,
   color,
   minHeight,
+  logoWidth,
+  logoSource,
 }: Props) => JSX.Element;
 export default PageLayout;

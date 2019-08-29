@@ -6029,9 +6029,8 @@ exports[`Storyshots Components Drawer 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <img
-            alt="IOV logo"
+            alt="Logo"
             className="makeStyles-root"
-            height={39}
             src="iov-logo.svg"
             width={84}
           />
@@ -6204,9 +6203,8 @@ exports[`Storyshots Components Layout 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -7796,9 +7794,8 @@ exports[`Storyshots Extension Login page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -7946,9 +7943,8 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -8130,9 +8126,8 @@ exports[`Storyshots Extension Request queue page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -8257,9 +8252,8 @@ exports[`Storyshots Extension Welcome page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -8418,9 +8412,8 @@ exports[`Storyshots Extension/Restore Wallet Set Mnemonic page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -8654,9 +8647,8 @@ exports[`Storyshots Extension/Restore Wallet Set Password page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -8837,9 +8829,8 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -9043,9 +9034,8 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -9351,9 +9341,8 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -9530,9 +9519,8 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -9691,9 +9679,8 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -9881,9 +9868,8 @@ exports[`Storyshots Extension/Transaction Request Create Proposal 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -10067,9 +10053,8 @@ exports[`Storyshots Extension/Transaction Request Create Username 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -10247,9 +10232,8 @@ exports[`Storyshots Extension/Transaction Request Reject Request 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -10464,9 +10448,8 @@ exports[`Storyshots Extension/Transaction Request Send (BNS) 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -10681,9 +10664,8 @@ exports[`Storyshots Extension/Transaction Request Send (Ethereum) 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -10864,9 +10846,8 @@ exports[`Storyshots Extension/Transaction Request Vote 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
       src="iov-logo.svg"
       width={84}
     />
@@ -11020,9 +11001,8 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <img
-            alt="IOV logo"
+            alt="Logo"
             className="makeStyles-root"
-            height={39}
             src="iov-logo.svg"
             width={84}
           />
@@ -11836,9 +11816,8 @@ exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <img
-            alt="IOV logo"
+            alt="Logo"
             className="makeStyles-root"
-            height={39}
             src="iov-logo.svg"
             width={84}
           />
