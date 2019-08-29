@@ -11,11 +11,8 @@ const ReleaseEscrow = ({ action }: Props): JSX.Element => {
   return (
     <Block marginTop={2} marginBottom={2}>
       <Typography variant="body2" weight="semibold">
-        Release escrow {action.escrowId}:
+        Escrow {action.escrowId} releases {amountToString(action.amount)}
       </Typography>
-      <Block marginTop={0.5}>
-        <Typography variant="body2">Amount: {amountToString(action.amount)}</Typography>
-      </Block>
     </Block>
   );
 };
