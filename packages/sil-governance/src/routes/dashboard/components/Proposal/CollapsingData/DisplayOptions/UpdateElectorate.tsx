@@ -9,7 +9,7 @@ interface Props {
 const UpdateElectorate = ({ action }: Props): JSX.Element => {
   const electors = Object.entries(action.diffElectors).map(([elector, props]) => {
     return (
-      <Block marginTop={0.5} marginBottom={1}>
+      <Block key={elector} marginTop={0.5} marginBottom={1}>
         <Typography variant="body2">
           {elector} - Weight {props.weight}
         </Typography>

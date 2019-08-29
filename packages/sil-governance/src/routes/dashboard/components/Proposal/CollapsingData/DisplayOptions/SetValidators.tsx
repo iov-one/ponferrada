@@ -11,7 +11,7 @@ const SetValidators = ({ action }: Props): JSX.Element => {
     const validatorLabel = `Validator ${validator.slice(8, 11)}...${validator.slice(-3)}:`;
 
     return (
-      <Block marginTop={0.5} marginBottom={1}>
+      <Block key={validator} marginTop={0.5} marginBottom={1}>
         <Typography variant="body2">
           {validatorLabel} Power {props.power}
         </Typography>

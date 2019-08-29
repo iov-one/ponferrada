@@ -3,6 +3,8 @@ import { Block, Typography } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
+const generateListKey = (): string => Math.floor(Math.random() * new Date().getTime()).toString();
+
 interface SendTxProps {
   readonly action: SendAction;
 }
@@ -50,7 +52,7 @@ const ExecuteProposalBatch = ({ action }: ExecuteProposalBatchProps): JSX.Elemen
   return (
     <React.Fragment>
       {sendActions.map(action => (
-        <SendTx action={action} />
+        <SendTx key={generateListKey()} action={action} />
       ))}
     </React.Fragment>
   );
