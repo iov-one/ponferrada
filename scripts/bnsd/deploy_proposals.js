@@ -2,6 +2,7 @@
 const { isBlockInfoPending, isBlockInfoSucceeded } = require("@iov/bcp");
 const { bnsCodec, BnsConnection, VoteOption } = require("@iov/bns");
 const { /* committeeIds, guaranteeFundEscrowIds, */ Governor, ProposalType } = require("@iov/bns-governance");
+const { Encoding } = require("@iov/encoding");
 const { Ed25519HdWallet, HdPaths, UserProfile } = require("@iov/keycontrol");
 
 // Dev admin
@@ -39,11 +40,29 @@ async function main() {
   const profile = new UserProfile();
   const wallet = profile.addWallet(Ed25519HdWallet.fromMnemonic(adminMnemonic));
   const identity = await profile.createIdentity(wallet.id, chainId, adminPath);
+  const guaranteeFundEscrowId = Encoding.fromHex("0000000000000001");
+  const rewardFundAddress = "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z";
   const signAndPost = createSignAndPoster(connection, profile);
 
+  const initialTxForReward = await connection.withDefaultFee({
+    kind: "bcp/send",
+    recipient: rewardFundAddress,
+    creator: identity,
+    sender: bnsCodec.identityToAddress(identity),
+    amount: {
+      quantity: "10000000000",
+      fractionalDigits: 9,
+      tokenTicker: "CASH",
+    },
+  });
+
+  await signAndPost(initialTxForReward);
+
   const governorOptions = {
-    connection: connection,
-    identity: identity,
+    connection,
+    identity,
+    guaranteeFundEscrowId,
+    rewardFundAddress,
   };
   const governor = new Governor(governorOptions);
 
