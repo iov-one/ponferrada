@@ -30,5 +30,6 @@
       }
     }
   ],
+  "walletCreationDisabled": true,
   "accountCreationDisabled": true
 }
