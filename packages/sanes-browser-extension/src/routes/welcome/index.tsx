@@ -31,7 +31,7 @@ const Welcome = (): JSX.Element => {
   return (
     <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to NEUMA">
       <Typography variant="body1" inline>
-        This plugin lets you manage all your accounts in one place.
+        This extension lets you manage all your accounts in one place.
       </Typography>
       <Block marginTop={2} />
       <Button variant="contained" fullWidth onClick={login}>
