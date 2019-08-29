@@ -48,7 +48,7 @@ export const checkProposal = (proposal: Element): void => {
   expect(idAndAuthor).toBe("ID:1Author:Author 1");
 
   const description = proposalPanel.children[2].textContent;
-  expect(description).toBe("short description");
+  expect(description).toBe("short description Read more");
 
   const dates = proposalPanel.children[3].children[0];
 
