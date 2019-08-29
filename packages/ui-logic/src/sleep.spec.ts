@@ -6,7 +6,10 @@ describe("sleep", () => {
       const start = Date.now();
       await sleep(x);
       const sleepingTime = Date.now() - start;
-      expect(sleepingTime).toBeGreaterThanOrEqual(x);
+
+      // Add 1 ms safety margin due to rounding issues. The elapsed time between
+      // timestamps 1000 and 1010 can be somethting between 10 and 11 ms.
+      expect(sleepingTime + 1).toBeGreaterThanOrEqual(x);
     }
   });
 
