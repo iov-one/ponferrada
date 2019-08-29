@@ -16,8 +16,8 @@ export const submitExtensionSignupForm = async (page: Page, password: string): P
   await clickCreatePersona(page);
 
   // Fill the form
-  await page.type(`input[name="${PASSWORD_FIELD}`, password);
-  await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}`, password);
+  await page.type(`input[name="${PASSWORD_FIELD}"]`, password);
+  await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}"]`, password);
   await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);
   await page.click('button[type="submit"]');
   await sleep(1000);
