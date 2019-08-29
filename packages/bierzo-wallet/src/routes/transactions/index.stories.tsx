@@ -10,16 +10,19 @@ import {
 } from "@iov/bcp";
 import { RegisterUsernameTx } from "@iov/bns";
 import { Encoding } from "@iov/encoding";
+import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
 import { stringToAmount } from "ui-logic";
 
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
+import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
-import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import Layout from "./components";
+import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 import Transactions from "./index";
 
 export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
@@ -35,40 +38,6 @@ const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "LSK" as TokenTicker,
 };
 
-function createIdentities(): { [chain: string]: Identity } {
-  const identities: { [chain: string]: Identity } = {};
-
-  // create ETH pub key
-  const ethChain = "ethereum-eip155-5777";
-  const ethIdentity: Identity = {
-    chainId: ethChain as ChainId,
-    pubkey: {
-      algo: Algorithm.Secp256k1,
-      data: Encoding.fromHex(
-        "0423198f2fc45c5ec981cce3a0c91facf2055a210ea2f13301d40864ae6e184c91a522867325a86d14fa1566464926457d8402eb670b9827d644880a5b462db43d",
-      ) as PubkeyBytes,
-    },
-  };
-
-  // get BNS pubkey
-  const bnsChain = "local-iov-devnet";
-  const bnsIdentity: Identity = {
-    chainId: bnsChain as ChainId,
-    pubkey: {
-      algo: Algorithm.Ed25519,
-      data: Encoding.fromHex(
-        "f7a11ebcfe22e0849da46145661ab4e111ab8fe931226ef2848abff9d180cd01",
-      ) as PubkeyBytes,
-    },
-  };
-
-  identities[ethChain] = ethIdentity;
-  identities[bnsChain] = bnsIdentity;
-
-  return identities;
-}
-
-const identities = createIdentities();
 const address = "0x794d591840927890aC7C162C3B3e4665725f8f40" as Address;
 const ownTx: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
@@ -104,7 +73,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   outgoing: true,
 };
 
-const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
+const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
   ownTx,
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
@@ -372,16 +341,23 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
   },
 ];
 
-const txStore: Pick<RootState, "notifications" | "extension"> = {
-  extension: {
-    connected: true,
-    installed: true,
-    identities,
-  },
-  notifications: {
-    transactions: txs,
-  },
-};
+function onChangeRows(): void {
+  action("onChangeRows action")();
+}
+function onPrevPage(): void {
+  action("onPrevPage action")();
+}
+function onNextPage(): void {
+  action("onNextPage action")();
+}
+function onSort(receivedOrderBy: TxsOrder, receivedOrder: SortOrder): () => void {
+  return () => {
+    action(`onSort action. receivedOrderBy: ${receivedOrderBy}, receivedOrder: ${receivedOrder}`)();
+  };
+}
+function onDownloadCSV(): void {
+  action("onDownloadCSV action")();
+}
 
 storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
@@ -389,15 +365,37 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
     "Without transactions",
     (): JSX.Element => (
       <DecoratedStorybook>
-        <Transactions />
+        <Layout
+          rows={[]}
+          onChangeRows={onChangeRows}
+          onPrevPage={onPrevPage}
+          onNextPage={onNextPage}
+          onSort={onSort}
+          onDownloadCSV={onDownloadCSV}
+          orderBy={TX_DATE_COLUMN}
+          order={ORDER_DESC}
+        />
       </DecoratedStorybook>
     ),
   )
   .add(
     TRANSACTIONS_STORY_SHOW_PATH,
-    (): JSX.Element => (
-      <DecoratedStorybook storeProps={txStore}>
-        <Transactions />
-      </DecoratedStorybook>
-    ),
+    (): JSX.Element => {
+      const orderedTxs = filterTxsBy(parsedTxs, 20, 0, TX_DATE_COLUMN, ORDER_DESC);
+      const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, [address]));
+      return (
+        <DecoratedStorybook>
+          <Layout
+            rows={txs}
+            onChangeRows={onChangeRows}
+            onPrevPage={onPrevPage}
+            onNextPage={onNextPage}
+            onSort={onSort}
+            onDownloadCSV={onDownloadCSV}
+            orderBy={TX_DATE_COLUMN}
+            order={ORDER_DESC}
+          />
+        </DecoratedStorybook>
+      );
+    },
   );
