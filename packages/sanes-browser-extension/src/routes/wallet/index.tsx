@@ -131,7 +131,7 @@ const AccountView = (): JSX.Element => {
         )}
         <Hairline space={2} />
         <Block>
-          <ListTxs title="Transactions" txs={personaProvider.txs} />
+          <ListTxs title="Signed Transactions" txs={personaProvider.txs} />
         </Block>
       </PageLayout>
     </Drawer>

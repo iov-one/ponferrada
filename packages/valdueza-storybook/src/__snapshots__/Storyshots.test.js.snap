@@ -10848,7 +10848,7 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
                     <p
                       className="MuiTypography-root MuiTypography-body1"
                     >
-                      Transactions
+                      Signed Transactions
                     </p>
                   </div>
                 </li>
@@ -10867,7 +10867,7 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
                   className="MuiListItemIcon-root makeStyles-empty"
                 >
                   <img
-                    alt="No Transactions"
+                    alt="No Signed Transactions"
                     className="makeStyles-root"
                     height="42"
                     src="uptodate.svg"
@@ -10879,7 +10879,7 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
                   <span
                     className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                   >
-                    No Transactions
+                    No Signed Transactions
                   </span>
                 </div>
               </li>
@@ -11007,7 +11007,7 @@ exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
                     <p
                       className="MuiTypography-root MuiTypography-body1"
                     >
-                      Transactions
+                      Signed Transactions
                     </p>
                   </div>
                 </li>
