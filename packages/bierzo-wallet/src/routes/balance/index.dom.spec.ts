@@ -7,8 +7,7 @@ import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
 import { RootState } from "../../store/reducers";
 import { UsernamesState } from "../../store/usernames";
-import { expectRoute } from "../../utils/test/dom";
-import { whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { click, expectRoute } from "../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { ADDRESSES_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import { getIovUsername, getNoFundsMessage } from "./test/operateBalances";
@@ -64,7 +63,7 @@ describe("The /balance route", () => {
 
       expect(paymentCard.textContent).toBe("Send payment");
 
-      TestUtils.Simulate.click(paymentCard);
+      await click(paymentCard);
       expectRoute(PAYMENT_ROUTE);
     });
 
@@ -76,8 +75,8 @@ describe("The /balance route", () => {
 
       expect(transactionsCard.textContent).toBe(TRANSACTIONS_TEXT);
 
-      TestUtils.Simulate.click(transactionsCard);
-      await whenOnNavigatedToRoute(TRANSACTIONS_ROUTE);
+      await click(transactionsCard);
+      expectRoute(TRANSACTIONS_ROUTE);
     }, 15000);
 
     it("redirects to the /receive-from-iov route when clicked", async () => {
@@ -85,7 +84,7 @@ describe("The /balance route", () => {
 
       expect(receiveCard.textContent).toBe("Receive Payment");
 
-      TestUtils.Simulate.click(receiveCard);
+      await click(receiveCard);
       expectRoute(ADDRESSES_ROUTE);
     });
 
@@ -99,9 +98,9 @@ describe("The /balance route", () => {
     });
 
     it("should show bns username", async () => {
-      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
+      const usernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
 
-      expect(noUsernameMessage).toBe("albert*iov");
+      expect(usernameMessage).toBe("albert*iov");
     });
   });
 
