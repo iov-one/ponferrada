@@ -23,7 +23,7 @@ export const travelToBalance = async (store: Store): Promise<React.Component> =>
 export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<void> {
   await getBackgroundPage(browser);
   const extensionPage = await createExtensionPage(browser);
-  await submitExtensionSignupForm(extensionPage, "username", "12345678");
+  await submitExtensionSignupForm(extensionPage, "12345678");
   await extensionPage.close();
   await page.bringToFront();
   //Click on login button

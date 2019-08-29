@@ -7,7 +7,7 @@ import { createPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import { storeHintPhrase } from "../../utils/localstorage/hint";
 import { WALLET_STATUS_ROUTE } from "../paths";
-import NewWalletForm, { PASSWORD_FIELD, WALLET_NAME_FIELD } from "./components/NewWalletForm";
+import NewWalletForm, { PASSWORD_FIELD } from "./components/NewWalletForm";
 import SecurityHintForm, { SECURITY_HINT } from "./components/SecurityHintForm";
 import ShowPhraseForm from "./components/ShowPhraseForm";
 
@@ -17,7 +17,6 @@ const onBack = (): void => {
 
 const Signup = (): JSX.Element => {
   const [step, setStep] = React.useState<"first" | "second" | "third">("first");
-  const walletName = React.useRef<string | null>(null);
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
 
@@ -27,18 +26,14 @@ const Signup = (): JSX.Element => {
 
   const onSaveHint = (formValues: FormValues): void => {
     const hintPhrase = formValues[SECURITY_HINT];
-    if (!walletName.current) {
-      throw new Error("For saving password hint a valid account name should be provided");
-    }
 
-    storeHintPhrase(walletName.current, hintPhrase);
+    storeHintPhrase(hintPhrase);
 
     history.push(WALLET_STATUS_ROUTE);
   };
 
   const onSignup = async (formValues: FormValues): Promise<void> => {
     const password = formValues[PASSWORD_FIELD];
-    walletName.current = formValues[WALLET_NAME_FIELD];
 
     let response: PersonaData;
     try {

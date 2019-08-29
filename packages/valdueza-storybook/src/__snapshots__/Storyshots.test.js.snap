@@ -9089,69 +9089,6 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
             className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-required MuiInputLabel-required"
             data-shrink={true}
           >
-            Wallet name
-            <span
-              className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-            >
-               
-              *
-            </span>
-          </label>
-          <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="PrivateNotchedOutline-legend"
-                style={
-                  Object {
-                    "width": 0.01,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="walletNameField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Wallet name"
-              required={true}
-              type="text"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
-        >
-          <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-required MuiInputLabel-required"
-            data-shrink={true}
-          >
             Password
             <span
               className="MuiFormLabel-asterisk MuiInputLabel-asterisk"

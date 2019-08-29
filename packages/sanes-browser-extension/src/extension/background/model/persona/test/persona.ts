@@ -12,15 +12,14 @@ import { travelToSignup, whenOnNavigatedToRoute } from "../../../../../utils/tes
 import { PersonaData } from "../../backgroundscript";
 
 export async function processSignup(
-  accountName: string = randomString(10),
   password: string = randomString(10),
   hint: string = randomString(10),
 ): Promise<React.Component> {
   const signupDom = await travelToSignup();
 
-  await submitNewWallet(signupDom, accountName, password);
+  await submitNewWallet(signupDom, password);
   await submitShowPhrase(signupDom);
-  await submitSecurityHint(signupDom, accountName, hint);
+  await submitSecurityHint(signupDom, hint);
 
   await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
 

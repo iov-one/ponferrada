@@ -4,7 +4,6 @@ import { sleep } from "ui-logic";
 import { createExtensionPage } from "./e2e";
 import { whenOnNavigatedToE2eRoute } from "./navigation";
 
-const WALLET_NAME_FIELD = "walletNameField";
 const PASSWORD_FIELD = "passwordInputField";
 const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
 const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
@@ -13,15 +12,10 @@ async function clickCreatePersona(page: Page): Promise<void> {
   await page.click("button:nth-of-type(2)");
 }
 
-export const submitExtensionSignupForm = async (
-  page: Page,
-  walletName: string,
-  password: string,
-): Promise<void> => {
+export const submitExtensionSignupForm = async (page: Page, password: string): Promise<void> => {
   await clickCreatePersona(page);
 
   // Fill the form
-  await page.type(`input[name="${WALLET_NAME_FIELD}"]`, walletName);
   await page.type(`input[name="${PASSWORD_FIELD}`, password);
   await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}`, password);
   await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);

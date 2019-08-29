@@ -13,23 +13,12 @@ import {
   PASSWORD_CONFIRM_FIELD,
   PASSWORD_FIELD,
   TERMS_ACCEPT_FIELD,
-  WALLET_NAME_FIELD,
 } from "../components/NewWalletForm";
 import { SECURITY_HINT, SECURITY_HINT_STEP_SIGNUP_ROUTE } from "../components/SecurityHintForm";
 import { SECOND_STEP_SIGNUP_ROUTE } from "../components/ShowPhraseForm";
 
 export const getNewWalletInputs = (signupDom: React.Component): Element[] => {
   return TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "input");
-};
-
-export const checkWalletNameValidity = (signupDom: React.Component, error?: string): void => {
-  const elements = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p");
-
-  if (elements.length === 0) {
-    return;
-  }
-
-  expect(elements[0].textContent).toBe(error);
 };
 
 export const checkHintValidity = (signupDom: React.Component, error?: string): void => {
@@ -81,7 +70,6 @@ export const isButtonDisabled = (button: Element): boolean => {
 };
 
 export const submitNewWalletE2E = async (page: Page, walletName: string, password: string): Promise<void> => {
-  await page.type(`input[name="${WALLET_NAME_FIELD}"]`, walletName);
   await page.type(`input[name="${PASSWORD_FIELD}"]`, password);
   await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}"]`, password);
   await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);
@@ -90,15 +78,10 @@ export const submitNewWalletE2E = async (page: Page, walletName: string, passwor
   await findRenderedE2EComponentWithId(page, SECOND_STEP_SIGNUP_ROUTE);
 };
 
-export const submitNewWallet = async (
-  newWalletDom: React.Component,
-  walletName: string,
-  password: string,
-): Promise<void> => {
+export const submitNewWallet = async (newWalletDom: React.Component, password: string): Promise<void> => {
   const inputs = getNewWalletInputs(newWalletDom);
 
-  const [walletNameField, passwordField, passwordConfirmField, termsAcceptField] = inputs;
-  input(walletNameField, walletName);
+  const [passwordField, passwordConfirmField, termsAcceptField] = inputs;
   input(passwordField, password);
   input(passwordConfirmField, password);
   await check(termsAcceptField);
@@ -145,18 +128,14 @@ export const submitSecurityHintE2E = async (page: Page, securityHint: string): P
   await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
 };
 
-export const submitSecurityHint = async (
-  securityHintDom: React.Component,
-  walletName: string,
-  hint: string,
-): Promise<void> => {
+export const submitSecurityHint = async (securityHintDom: React.Component, hint: string): Promise<void> => {
   const hintInput = TestUtils.findRenderedDOMComponentWithTag(securityHintDom, "input");
   input(hintInput, hint);
 
   const form = TestUtils.findRenderedDOMComponentWithTag(securityHintDom, "form");
   submit(form);
   await findRenderedDOMComponentWithId(securityHintDom, WALLET_STATUS_ROUTE);
-  expect(getHintPhrase(walletName)).toBe(hint);
+  expect(getHintPhrase()).toBe(hint);
 };
 
 export const travelToSignupNewAccountStep = async (page: Page): Promise<void> => {
