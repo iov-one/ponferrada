@@ -4,19 +4,19 @@ import * as React from "react";
 import { history } from "../../utils/history";
 import { LOGIN_ROUTE, RESTORE_WALLET, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
 
-const createNewWallet = (): void => {
-  history.push(SIGNUP_ROUTE);
-};
-
-const login = (): void => {
-  history.push(LOGIN_ROUTE);
-};
-
-const importWallet = (): void => {
-  history.push(RESTORE_WALLET);
-};
-
 const Welcome = (): JSX.Element => {
+  const createNewWallet = (): void => {
+    history.push(SIGNUP_ROUTE);
+  };
+
+  const login = (): void => {
+    history.push(LOGIN_ROUTE);
+  };
+
+  const importWallet = (): void => {
+    history.push(RESTORE_WALLET);
+  };
+
   return (
     <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to your IOV manager">
       <Typography variant="body1" inline>
