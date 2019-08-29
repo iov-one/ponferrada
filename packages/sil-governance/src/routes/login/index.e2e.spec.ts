@@ -68,7 +68,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await getBackgroundPage(browser);
-    await submitExtensionSignupForm(extensionPage, "username", "12345678");
+    await submitExtensionSignupForm(extensionPage, "12345678");
     await page.bringToFront();
     await travelToDashboardE2e(page);
     await sleep(1000);
@@ -82,7 +82,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await getBackgroundPage(browser);
-    await submitExtensionSignupForm(extensionPage, "username", "12345678");
+    await submitExtensionSignupForm(extensionPage, "12345678");
     await page.bringToFront();
     await travelToDashboardE2e(page);
     await sleep(1000);

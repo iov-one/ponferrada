@@ -70,7 +70,7 @@ withChainsDescribe("E2E > Login route", (): void => {
 
     it("should redirect when enqueued login request is accepted", async (): Promise<void> => {
       await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, "username", "12345678");
+      await submitExtensionSignupForm(extensionPage, "12345678");
       await page.bringToFront();
       //Click on login button
       await page.click("button");
@@ -82,7 +82,7 @@ withChainsDescribe("E2E > Login route", (): void => {
 
     it("should stay in login view if enqueued login request is rejected", async (): Promise<void> => {
       await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, "username", "12345678");
+      await submitExtensionSignupForm(extensionPage, "12345678");
       await page.bringToFront();
       //Click on login button
       await page.click("button");
