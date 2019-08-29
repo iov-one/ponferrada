@@ -8157,7 +8157,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      to your IOV manager
+      to NEUMA
     </h4>
   </div>
   <div
@@ -8166,7 +8166,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <p
       className="MuiTypography-root makeStyles-inline MuiTypography-body1"
     >
-      This plugin lets you manage all your accounts in one place.
+      This extension lets you manage all your accounts in one place.
     </p>
     <div
       className="MuiBox-root MuiBox-root"
