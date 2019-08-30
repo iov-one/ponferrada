@@ -1,4 +1,4 @@
-import { MedulasThemeProvider, ToastProvider } from "medulas-react-components";
+import { BillboardProvider, MedulasThemeProvider, ToastProvider } from "medulas-react-components";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -15,7 +15,9 @@ const render = (Component: React.ComponentType): void => {
     <Provider store={store}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
         <ToastProvider>
-          <Component />
+          <BillboardProvider>
+            <Component />
+          </BillboardProvider>
         </ToastProvider>
       </MedulasThemeProvider>
     </Provider>,
