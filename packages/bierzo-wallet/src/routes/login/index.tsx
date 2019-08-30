@@ -1,5 +1,12 @@
 import { Identity } from "@iov/bcp";
-import { PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
+import {
+  BillboardContext,
+  Block,
+  PageColumn,
+  ToastContext,
+  ToastVariant,
+  Typography,
+} from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
@@ -38,13 +45,22 @@ export const loginBootSequence = async (
   dispatch(addUsernamesAction(usernames));
 };
 
+const billboardMessage = (
+  <Block bgcolor="white" padding={2}>
+    <Typography variant="h6">Please interact with NEUMA extension before continue.</Typography>
+  </Block>
+);
+
 const Login = (): JSX.Element => {
+  const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
   const store = ReactRedux.useStore();
 
   const onLogin = async (_: object): Promise<void> => {
+    billboard.show(billboardMessage);
     const result = await getExtensionStatus();
+    billboard.close();
     dispatch(setExtensionStateAction(result.connected, result.installed, result.identities));
 
     if (!result.installed) {
