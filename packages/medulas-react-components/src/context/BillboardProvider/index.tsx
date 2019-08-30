@@ -21,7 +21,7 @@ interface BillboardState {
   readonly message: React.ReactNode;
 }
 
-export const BillboardProvider = ({ children }: Props): JSX.Element => {
+export function BillboardProvider({ children }: Props): JSX.Element {
   const [message, setMessage] = React.useState<BillboardState>({
     show: false,
     message: "",
@@ -49,4 +49,4 @@ export const BillboardProvider = ({ children }: Props): JSX.Element => {
       <Billboard {...message}>{children}</Billboard>
     </BillboardContext.Provider>
   );
-};
+}
