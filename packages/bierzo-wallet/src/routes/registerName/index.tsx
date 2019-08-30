@@ -1,11 +1,18 @@
 import { Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection, ChainAddressPair } from "@iov/bns";
-import { FormValues, ToastContext, ToastVariant, ValidationError } from "medulas-react-components";
+import {
+  BillboardContext,
+  FormValues,
+  ToastContext,
+  ToastVariant,
+  ValidationError,
+} from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
 import { generateRegisterUsernameTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
+import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
@@ -71,9 +78,12 @@ const validate = async (values: object): Promise<object> => {
 
 const RegisterUsername = (): JSX.Element => {
   const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
-  const toast = React.useContext(ToastContext);
-  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
+
+  const billboard = React.useContext(BillboardContext);
+  const toast = React.useContext(ToastContext);
+
+  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
 
   React.useEffect(() => {
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
@@ -101,6 +111,7 @@ const RegisterUsername = (): JSX.Element => {
 
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
+      billboard.show(<BillboardMessage />);
       const transactionId = await sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
@@ -110,6 +121,8 @@ const RegisterUsername = (): JSX.Element => {
       console.error(error);
       toast.show("An error ocurred", ToastVariant.ERROR);
       return;
+    } finally {
+      billboard.close();
     }
   };
 
