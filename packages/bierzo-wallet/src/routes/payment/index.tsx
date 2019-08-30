@@ -1,11 +1,12 @@
 import { Address, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
-import { FormValues, ToastContext, ToastVariant } from "medulas-react-components";
+import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
 import { generateSendTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
+import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
@@ -31,6 +32,7 @@ function onReturnToBalance(): void {
 }
 
 const Payment = (): JSX.Element => {
+  const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
@@ -80,6 +82,7 @@ const Payment = (): JSX.Element => {
 
     try {
       const request = await generateSendTxRequest(identity, recipient, amount, formValues[TEXTNOTE_FIELD]);
+      billboard.show(<BillboardMessage />);
       const transactionId = await sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
@@ -90,6 +93,8 @@ const Payment = (): JSX.Element => {
       console.error(error);
       toast.show("An error ocurred", ToastVariant.ERROR);
       return;
+    } finally {
+      billboard.close();
     }
   };
 
