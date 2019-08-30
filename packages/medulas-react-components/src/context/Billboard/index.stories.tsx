@@ -1,0 +1,63 @@
+import { storiesOf } from "@storybook/react";
+import * as React from "react";
+
+import Block from "../../components/Block";
+import Paragraph from "../../components/TextMarkup/Paragraph";
+import Section from "../../components/TextMarkup/Section";
+import Title from "../../components/TextMarkup/Title";
+import Typography from "../../components/Typography";
+import { Storybook } from "../../utils/storybook";
+import Billboard from "./Billboard";
+
+storiesOf("Components", module)
+  .addParameters({ viewport: { defaultViewport: "responsive" } })
+  .add(
+    "Billboard",
+    (): JSX.Element => {
+      const billboardMessage = (
+        <Block bgcolor="white" padding={2}>
+          <Typography variant="h6">
+            Some text to show on billboard. Please interact with NEUMA before continue.
+          </Typography>
+        </Block>
+      );
+      return (
+        <Storybook>
+          <Billboard show={true} message={billboardMessage}>
+            <Title>What is Lorem Ipsum?</Title>
+            <Section>
+              <Paragraph>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                galley of type and scrambled it to make a type specimen book. It has survived not only five
+                centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
+                was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                passages, and more recently with desktop publishing software like Aldus PageMaker including
+                versions of Lorem Ipsum.
+              </Paragraph>
+            </Section>
+            <Title>Where does it come from?</Title>
+            <Section>
+              <Paragraph>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
+                Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
+                words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in
+                classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+                1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+                Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during
+                the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+                line in section 1.10.32.
+              </Paragraph>
+              <Paragraph>
+                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                also reproduced in their exact original form, accompanied by English versions from the 1914
+                translation by H. Rackham.
+              </Paragraph>
+            </Section>
+          </Billboard>
+        </Storybook>
+      );
+    },
+  );
