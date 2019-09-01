@@ -7,7 +7,7 @@ import * as ReactRedux from "react-redux";
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
 import { RootState } from "../../../store/reducers";
-import CommitteeSelect from "./CommitteeSelect";
+import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
@@ -93,7 +93,11 @@ const ProposalForm = (): JSX.Element => {
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
         <FormOptions form={form} proposalType={proposalType} />
         <DescriptionField form={form} />
-        <CommitteeSelect form={form} electionRules={electionRules} changeElectionRuleId={setElectionRuleId} />
+        <CommitteeRulesSelect
+          form={form}
+          electionRules={electionRules}
+          changeElectionRuleId={setElectionRuleId}
+        />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting}>
             Publish
