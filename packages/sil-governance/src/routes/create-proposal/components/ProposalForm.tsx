@@ -1,4 +1,4 @@
-import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
+import { Address, Algorithm, PubkeyBundle, PubkeyBytes, TokenTicker } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
@@ -20,6 +20,11 @@ import { POWER_FIELD, PUBKEY_ADD_FIELD } from "./FormOptions/AddValidator";
 import { COMMITTEE_QUORUM_FIELD, QUORUM_FIELD } from "./FormOptions/AmendCommitteeQuorum";
 import { COMMITTEE_THRESHOLD_FIELD, THRESHOLD_FIELD } from "./FormOptions/AmendCommitteeThreshold";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
+import {
+  RELEASE_DIGITS_FIELD,
+  RELEASE_QUANTITY_FIELD,
+  RELEASE_TICKER_FIELD,
+} from "./FormOptions/ReleaseGuaranteeFunds";
 import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
 import { PUBKEY_REMOVE_FIELD } from "./FormOptions/RemoveValidator";
 import ProposalTypeSelect from "./ProposalTypeSelect";
@@ -127,6 +132,22 @@ const ProposalForm = (): JSX.Element => {
       case ProposalType.RemoveValidator: {
         const pubkey = getPubkeyBundleFromForm(values[PUBKEY_REMOVE_FIELD]);
         return { ...commonOptions, type: ProposalType.RemoveValidator, pubkey };
+      }
+      case ProposalType.ReleaseGuaranteeFunds: {
+        const quantity = values[RELEASE_QUANTITY_FIELD];
+        const fractionalDigits = parseInt(values[RELEASE_DIGITS_FIELD], 10);
+        const tokenTicker = values[RELEASE_TICKER_FIELD] as TokenTicker;
+        const amount = {
+          quantity,
+          fractionalDigits,
+          tokenTicker,
+        };
+
+        return {
+          ...commonOptions,
+          type: ProposalType.ReleaseGuaranteeFunds,
+          amount,
+        };
       }
       case ProposalType.AmendProtocol: {
         const text = values[TEXT_FIELD];
