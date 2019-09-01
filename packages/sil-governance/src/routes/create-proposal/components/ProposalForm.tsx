@@ -12,6 +12,8 @@ import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
 import { COMMITTEE_ADD_FIELD, MEMBER_ADD_FIELD, WEIGHT_FIELD } from "./FormOptions/AddCommitteeMember";
+import { COMMITTEE_QUORUM_FIELD, QUORUM_FIELD } from "./FormOptions/AmendCommitteeQuorum";
+import { COMMITTEE_THRESHOLD_FIELD, THRESHOLD_FIELD } from "./FormOptions/AmendCommitteeThreshold";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
 import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
 import ProposalTypeSelect from "./ProposalTypeSelect";
@@ -67,6 +69,44 @@ const ProposalForm = (): JSX.Element => {
         const address = values[MEMBER_REMOVE_FIELD] as Address;
 
         return { ...commonOptions, type: ProposalType.RemoveCommitteeMember, committee, address };
+      }
+      case ProposalType.AmendElectionRuleThreshold: {
+        const targetElectionRuleId = parseInt(
+          values[COMMITTEE_THRESHOLD_FIELD].substring(0, values[COMMITTEE_THRESHOLD_FIELD].indexOf(":")),
+          10,
+        );
+        const thresholdArray = values[THRESHOLD_FIELD].split("/").map(n => parseInt(n, 10));
+        const threshold = {
+          numerator: thresholdArray[0],
+          denominator: thresholdArray[1],
+        };
+
+        return {
+          ...commonOptions,
+          type: ProposalType.AmendElectionRuleThreshold,
+          targetElectionRuleId,
+          threshold,
+        };
+      }
+      case ProposalType.AmendElectionRuleQuorum: {
+        const targetElectionRuleId = parseInt(
+          values[COMMITTEE_QUORUM_FIELD].substring(0, values[COMMITTEE_QUORUM_FIELD].indexOf(":")),
+          10,
+        );
+        const quorumArray = values[QUORUM_FIELD] && values[QUORUM_FIELD].split("/").map(n => parseInt(n, 10));
+        const quorum = quorumArray
+          ? {
+              numerator: quorumArray[0],
+              denominator: quorumArray[1],
+            }
+          : null;
+
+        return {
+          ...commonOptions,
+          type: ProposalType.AmendElectionRuleQuorum,
+          targetElectionRuleId,
+          quorum,
+        };
       }
       case ProposalType.AmendProtocol: {
         const text = values[TEXT_FIELD];
