@@ -1,13 +1,4 @@
-import {
-  ActionKind,
-  CreateTextResolutionAction,
-  ExecuteProposalBatchAction,
-  ProposalAction,
-  ReleaseEscrowAction,
-  SetValidatorsAction,
-  UpdateElectionRuleAction,
-  UpdateElectorateAction,
-} from "@iov/bns";
+import { ActionKind, ProposalAction } from "@iov/bns";
 import React from "react";
 
 import CreateTextResolution from "./CreateTextResolution";
@@ -24,17 +15,17 @@ interface Props {
 const DisplayOptions = ({ action }: Props): JSX.Element => {
   switch (action.kind) {
     case ActionKind.CreateTextResolution:
-      return <CreateTextResolution action={action as CreateTextResolutionAction} />;
+      return <CreateTextResolution action={action} />;
     case ActionKind.ExecuteProposalBatch:
-      return <ExecuteProposalBatch action={action as ExecuteProposalBatchAction} />;
+      return <ExecuteProposalBatch action={action} />;
     case ActionKind.ReleaseEscrow:
-      return <ReleaseEscrow action={action as ReleaseEscrowAction} />;
+      return <ReleaseEscrow action={action} />;
     case ActionKind.SetValidators:
-      return <SetValidators action={action as SetValidatorsAction} />;
+      return <SetValidators action={action} />;
     case ActionKind.UpdateElectionRule:
-      return <UpdateElectionRule action={action as UpdateElectionRuleAction} />;
+      return <UpdateElectionRule action={action} />;
     case ActionKind.UpdateElectorate:
-      return <UpdateElectorate action={action as UpdateElectorateAction} />;
+      return <UpdateElectorate action={action} />;
     default:
       throw new Error("Action Kind not found. This is a bug.");
   }
