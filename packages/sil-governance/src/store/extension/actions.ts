@@ -1,3 +1,4 @@
+import { TransactionId } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
 
 import { sendGetIdentitiesRequest } from "../../communication/identities";
@@ -30,7 +31,8 @@ export const setExtensionStateAction = (
   connected: boolean,
   installed: boolean,
   governor: Governor | undefined,
+  lastSignAndPostResult?: TransactionId | null,
 ): SetExtensionStateActionType => ({
   type: "@@extension/SET_STATE",
-  payload: { connected, installed, governor },
+  payload: { connected, installed, governor, lastSignAndPostResult },
 });

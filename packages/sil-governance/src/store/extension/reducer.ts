@@ -1,3 +1,4 @@
+import { TransactionId } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
@@ -8,6 +9,7 @@ export interface ExtensionState {
   readonly connected: boolean;
   readonly installed: boolean;
   readonly governor: Governor | undefined;
+  readonly lastSignAndPostResult?: TransactionId | null;
 }
 
 export interface SetExtensionStateActionType extends Action {

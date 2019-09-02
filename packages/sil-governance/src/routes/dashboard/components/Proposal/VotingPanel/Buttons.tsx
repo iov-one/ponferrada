@@ -6,6 +6,7 @@ import * as ReactRedux from "react-redux";
 
 import { sendSignAndPostRequest } from "../../../../../communication/signandpost";
 import { getBnsConnection } from "../../../../../logic/connection";
+import { setExtensionStateAction } from "../../../../../store/extension";
 import { RootState } from "../../../../../store/reducers";
 
 interface Props {
@@ -16,7 +17,11 @@ interface Props {
 const Buttons = ({ id, vote }: Props): JSX.Element => {
   const [currentVote, setCurrentVote] = useState(vote);
   const [previousVote, setPreviousVote] = useState(vote);
+
+  const connected = ReactRedux.useSelector((state: RootState) => state.extension.connected);
+  const installed = ReactRedux.useSelector((state: RootState) => state.extension.installed);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  const dispatch = ReactRedux.useDispatch();
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
   const noButton = currentVote === VoteOption.No ? "contained" : "outlined";
@@ -33,8 +38,11 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
-      await sendSignAndPostRequest(connection, voteTx);
-      setPreviousVote(currentVote);
+      const transactionId = await sendSignAndPostRequest(connection, voteTx);
+      if (transactionId) {
+        dispatch(setExtensionStateAction(connected, installed, governor, transactionId));
+        setPreviousVote(currentVote);
+      }
     }
   };
 

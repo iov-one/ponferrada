@@ -1,4 +1,4 @@
-import { Address, Algorithm, PubkeyBundle, PubkeyBytes, TransactionId } from "@iov/bcp";
+import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
@@ -8,6 +8,7 @@ import * as ReactRedux from "react-redux";
 
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
+import { setExtensionStateAction } from "../../../store/extension";
 import { RootState } from "../../../store/reducers";
 import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
@@ -45,15 +46,15 @@ export const getElectionRules = async (governor: Governor): Promise<readonly Ele
   return allElectionRules;
 };
 
-interface Props {
-  readonly onTransactionIdChanged: (id: TransactionId) => void;
-}
-
-const ProposalForm = ({ onTransactionIdChanged }: Props): JSX.Element => {
-  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState();
+
+  const connected = ReactRedux.useSelector((state: RootState) => state.extension.connected);
+  const installed = ReactRedux.useSelector((state: RootState) => state.extension.installed);
+  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
     const [year, month, day] = values[DATE_FIELD].split("-").map(el => parseInt(el, 10));
@@ -143,7 +144,9 @@ const ProposalForm = ({ onTransactionIdChanged }: Props): JSX.Element => {
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
-    if (transactionId) onTransactionIdChanged(transactionId);
+    if (transactionId) {
+      dispatch(setExtensionStateAction(connected, installed, governor, transactionId));
+    }
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({

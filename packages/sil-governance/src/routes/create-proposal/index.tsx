@@ -1,31 +1,42 @@
-import { TransactionId } from "@iov/bcp";
 import { Block, Hairline } from "medulas-react-components";
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { history } from "..";
+import { store } from "../..";
 import AsideFilter from "../../components/AsideFilter";
 import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
+import { setExtensionStateAction } from "../../store/extension";
+import { RootState } from "../../store/reducers";
 import { DASHBOARD_ROUTE } from "../paths";
 import ProposalForm from "./components/ProposalForm";
 
 const onReturnToDashboard = (): void => {
+  const storeState = store.getState();
+  store.dispatch(
+    setExtensionStateAction(
+      storeState.extension.connected,
+      storeState.extension.installed,
+      storeState.extension.governor,
+    ),
+  );
   history.push(DASHBOARD_ROUTE);
 };
 
 const CreateProposal = (): JSX.Element => {
-  const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
+  const lastSignAndPostResult = useSelector((state: RootState) => state.extension.lastSignAndPostResult);
 
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">
       <Header />
       <Hairline />
-      {transactionId ? (
-        <ConfirmTransaction transactionId={transactionId} onReturnToDashboard={onReturnToDashboard} />
+      {lastSignAndPostResult ? (
+        <ConfirmTransaction transactionId={lastSignAndPostResult} onReturnToDashboard={onReturnToDashboard} />
       ) : (
         <Block minWidth="100%" display="flex">
           <AsideFilter />
-          <ProposalForm onTransactionIdChanged={setTransactionId} />
+          <ProposalForm />
         </Block>
       )}
     </Block>
