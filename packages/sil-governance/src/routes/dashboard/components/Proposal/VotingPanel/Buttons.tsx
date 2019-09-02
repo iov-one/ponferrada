@@ -16,7 +16,7 @@ interface Props {
 
 const Buttons = ({ id, vote }: Props): JSX.Element => {
   const [currentVote, setCurrentVote] = useState(vote);
-  const [previousVote, setPreviousVote] = useState(vote);
+  const previousVote = vote;
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
@@ -39,7 +39,6 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const transactionId = await sendSignAndPostRequest(connection, voteTx);
       if (transactionId) {
         dispatch(setTransactionsStateAction(transactionId));
-        setPreviousVote(currentVote);
       }
     }
   };
