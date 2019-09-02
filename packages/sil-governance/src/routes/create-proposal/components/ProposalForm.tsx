@@ -23,7 +23,7 @@ import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
   parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
 
-const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
+export const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   const electorates = await governor.getElectorates();
   let allElectionRules: ElectionRule[] = [];
 
