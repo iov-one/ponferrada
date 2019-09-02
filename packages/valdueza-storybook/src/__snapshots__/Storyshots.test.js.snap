@@ -6029,9 +6029,8 @@ exports[`Storyshots Components Drawer 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <img
-            alt="IOV logo"
+            alt="Logo"
             className="makeStyles-root"
-            height={39}
             src="iov-logo.svg"
             width={84}
           />
@@ -6122,94 +6121,6 @@ exports[`Storyshots Components Images 1`] = `
         width={16}
       />
     </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Layout 1`] = `
-<div
-  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root makeStyles-link MuiTypography-body1"
-    >
-      <button
-        aria-label="Go back"
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
-            />
-          </svg>
-        </span>
-      </button>
-    </p>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <h4
-      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
-    >
-      Title
-    </h4>
-    <h4
-      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
-    >
-       
-      storybook
-    </h4>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <h6
-      className="MuiTypography-root MuiTypography-h6"
-    >
-      Layout content
-    </h6>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <img
-      alt="IOV logo"
-      className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
-    />
   </div>
 </div>
 `;
@@ -6333,6 +6244,93 @@ exports[`Storyshots Components Lists 1`] = `
     </div>
   </li>
 </ul>
+`;
+
+exports[`Storyshots Components PageLayout 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root makeStyles-link MuiTypography-body1"
+    >
+      <button
+        aria-label="Go back"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
+            />
+          </svg>
+        </span>
+      </button>
+    </p>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Title
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      storybook
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+    >
+      Layout content
+    </h6>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="iov-logo.svg"
+      width={84}
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Components Switch 1`] = `
@@ -7796,11 +7794,10 @@ exports[`Storyshots Extension Login page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -7946,11 +7943,10 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8130,11 +8126,10 @@ exports[`Storyshots Extension Request queue page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8257,11 +8252,97 @@ exports[`Storyshots Extension Welcome page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Components NeumaPageLayout 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root makeStyles-link MuiTypography-body1"
+    >
+      <button
+        aria-label="Go back"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
+            />
+          </svg>
+        </span>
+      </button>
+    </p>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Long
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      title
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+    </p>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8418,11 +8499,10 @@ exports[`Storyshots Extension/Restore Wallet Set Mnemonic page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8654,11 +8734,10 @@ exports[`Storyshots Extension/Restore Wallet Set Password page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8837,11 +8916,10 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9043,11 +9121,10 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9351,11 +9428,10 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9530,11 +9606,10 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9691,11 +9766,10 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9881,11 +9955,10 @@ exports[`Storyshots Extension/Transaction Request Create Proposal 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10067,11 +10140,10 @@ exports[`Storyshots Extension/Transaction Request Create Username 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10247,11 +10319,10 @@ exports[`Storyshots Extension/Transaction Request Reject Request 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10464,11 +10535,10 @@ exports[`Storyshots Extension/Transaction Request Send (BNS) 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10681,11 +10751,10 @@ exports[`Storyshots Extension/Transaction Request Send (Ethereum) 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10864,11 +10933,10 @@ exports[`Storyshots Extension/Transaction Request Vote 1`] = `
     className="MuiBox-root MuiBox-root"
   >
     <img
-      alt="IOV logo"
+      alt="Logo"
       className="makeStyles-root"
-      height={39}
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -11020,11 +11088,10 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <img
-            alt="IOV logo"
+            alt="Logo"
             className="makeStyles-root"
-            height={39}
-            src="iov-logo.svg"
-            width={84}
+            src="NeumaLogo.svg"
+            width={100}
           />
         </div>
       </div>
@@ -11836,11 +11903,10 @@ exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <img
-            alt="IOV logo"
+            alt="Logo"
             className="makeStyles-root"
-            height={39}
-            src="iov-logo.svg"
-            width={84}
+            src="NeumaLogo.svg"
+            width={100}
           />
         </div>
       </div>

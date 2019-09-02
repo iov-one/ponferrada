@@ -15,6 +15,8 @@ interface Props extends StyleProps {
   readonly children: React.ReactNode;
   readonly primaryTitle: string;
   readonly title: string;
+  readonly logoSource?: string;
+  readonly logoWidth?: number;
   readonly onBack?: () => void;
 }
 
@@ -38,6 +40,8 @@ const PageLayout = ({
   onBack,
   color = "transparent",
   minHeight = PAGE_HEIGHT,
+  logoWidth = 84,
+  logoSource = iovLogo,
 }: Props): JSX.Element => {
   const showBackArrow = !!onBack;
   const classes = useStyles({ color, minHeight });
@@ -76,7 +80,7 @@ const PageLayout = ({
       </Block>
       <Block flexGrow={1} />
       <Block marginBottom={2} marginTop={2} justifyContent="flex-end" textAlign="center">
-        <Image src={iovLogo} alt="IOV logo" width={84} height={39} />
+        <Image src={logoSource} alt="Logo" width={logoWidth} />
       </Block>
     </Block>
   );

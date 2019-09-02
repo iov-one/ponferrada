@@ -5,12 +5,12 @@ import {
   CheckboxField,
   Form,
   FormValues,
-  PageLayout,
   Typography,
   useForm,
 } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../../components/NeumaPageLayout";
 import { SHARE_IDENTITY } from "../../paths";
 
 const PERMANENT_REJECT = "permanentRejectField";
@@ -35,7 +35,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={SHARE_IDENTITY_REJECT} color="white" primaryTitle="Share" title="Identity">
+    <NeumaPageLayout id={SHARE_IDENTITY_REJECT} color="white" primaryTitle="Share" title="Identity">
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center">
           <Typography variant="body1">The following site:</Typography>
@@ -66,7 +66,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
           Back
         </Back>
       </Form>
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

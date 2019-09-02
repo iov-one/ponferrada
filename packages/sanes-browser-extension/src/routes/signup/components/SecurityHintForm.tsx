@@ -4,7 +4,6 @@ import {
   Button,
   Form,
   FormValues,
-  PageLayout,
   TextFieldForm,
   Typography,
   useForm,
@@ -12,6 +11,7 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../../components/NeumaPageLayout";
 import { SIGNUP_ROUTE } from "../../paths";
 
 export const SECURITY_HINT = "securityHintField";
@@ -45,7 +45,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={SECURITY_HINT_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
+    <NeumaPageLayout id={SECURITY_HINT_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
       <Typography variant="subtitle1" inline>
         To help you remember your details in the future please provide a security hint:
       </Typography>
@@ -66,7 +66,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
           </Block>
         </Block>
       </Form>
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

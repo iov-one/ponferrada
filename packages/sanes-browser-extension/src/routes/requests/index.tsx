@@ -1,7 +1,8 @@
 import { Location } from "history";
-import { PageLayout, ToastContextInterface, ToastVariant, Typography } from "medulas-react-components";
+import { ToastContextInterface, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { RequestContext } from "../../context/RequestProvider";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { history } from "../../utils/history";
@@ -35,14 +36,14 @@ const Requests = (): JSX.Element => {
   };
 
   return (
-    <PageLayout id={REQUEST_ROUTE} primaryTitle="Requests" title="queue" onBack={onBack} color="white">
+    <NeumaPageLayout id={REQUEST_ROUTE} primaryTitle="Requests" title="queue" onBack={onBack} color="white">
       {!hasRequests && (
         <Typography align="center" weight="semibold">
           No requests in queue
         </Typography>
       )}
       {hasRequests && <RequestList requests={requests} />}
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

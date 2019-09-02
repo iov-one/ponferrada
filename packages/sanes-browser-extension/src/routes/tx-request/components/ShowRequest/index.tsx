@@ -1,8 +1,9 @@
 import { isSendTransaction } from "@iov/bcp";
 import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx } from "@iov/bns";
-import { Block, Button, PageLayout, Typography } from "medulas-react-components";
+import { Block, Button, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../../../components/NeumaPageLayout";
 import { SupportedTransaction } from "../../../../extension/background/model/persona";
 import { TX_REQUEST } from "../../../paths";
 import ReqCreateProposalTx from "./ReqCreateProposalTx";
@@ -35,7 +36,7 @@ const Layout = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
   }
 
   return (
-    <PageLayout id={TX_REQUEST_SHOW} color="white" primaryTitle="Tx" title="Request">
+    <NeumaPageLayout id={TX_REQUEST_SHOW} color="white" primaryTitle="Tx" title="Request">
       <Block textAlign="center" marginBottom={2}>
         <Typography variant="body1" inline>
           {"The following site: "}
@@ -57,7 +58,7 @@ const Layout = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
         Reject
       </Button>
       <Block marginBottom={2} />
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

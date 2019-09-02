@@ -4,7 +4,6 @@ import {
   Form,
   Hairline,
   Link,
-  PageLayout,
   SelectFieldForm,
   SelectFieldFormItem,
   ToastContext,
@@ -14,6 +13,7 @@ import {
 import * as React from "react";
 import { useForm } from "react-final-form-hooks";
 
+import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { EXTENSION_HEIGHT } from "../../theme/constants";
@@ -114,7 +114,12 @@ const AccountView = (): JSX.Element => {
 
   return (
     <Drawer items={items} footer={footer}>
-      <PageLayout id={WALLET_STATUS_ROUTE} primaryTitle="Wallet" title="Status" minHeight={CONTENT_HEIGHT}>
+      <NeumaPageLayout
+        id={WALLET_STATUS_ROUTE}
+        primaryTitle="Wallet"
+        title="Status"
+        minHeight={CONTENT_HEIGHT}
+      >
         {accountLoaded && (
           <Form onSubmit={handleSubmit}>
             <Block marginBottom={1}>
@@ -133,7 +138,7 @@ const AccountView = (): JSX.Element => {
         <Block>
           <ListTxs title="Signed Transactions" txs={personaProvider.txs} />
         </Block>
-      </PageLayout>
+      </NeumaPageLayout>
     </Drawer>
   );
 };

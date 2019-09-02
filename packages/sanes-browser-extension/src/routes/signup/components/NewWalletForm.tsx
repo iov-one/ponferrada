@@ -6,7 +6,6 @@ import {
   Form,
   FormValues,
   Link,
-  PageLayout,
   TextFieldForm,
   Typography,
   useForm,
@@ -14,6 +13,7 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../../components/NeumaPageLayout";
 import { SIGNUP_ROUTE, TERMS_URL } from "../../paths";
 
 export const PASSWORD_FIELD = "passwordInputField";
@@ -77,7 +77,7 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   );
 
   return (
-    <PageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
+    <NeumaPageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={1}>
           <TextFieldForm
@@ -122,7 +122,7 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
           </Block>
         </Block>
       </Form>
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 
