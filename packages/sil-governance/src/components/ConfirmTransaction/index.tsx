@@ -5,7 +5,7 @@ import React from "react";
 
 import PageContent from "../PageContent";
 
-export const PAYMENT_CONFIRMATION_VIEW_ID = "tx-confirmation-view-id";
+export const TX_CONFIRMATION_VIEW_ID = "tx-confirmation-view-id";
 const useTypography = makeStyles({
   wrap: {
     width: 570,
@@ -40,7 +40,7 @@ const ConfirmTransaction = ({ transactionId, onReturnToDashboard }: Props): JSX.
   );
 
   return (
-    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={faUser} buttons={buttons}>
+    <PageContent id={TX_CONFIRMATION_VIEW_ID} icon={faUser} buttons={buttons}>
       <Typography variant="h6" weight="light">
         Your transaction was successfully signed and sent to the network.
       </Typography>
