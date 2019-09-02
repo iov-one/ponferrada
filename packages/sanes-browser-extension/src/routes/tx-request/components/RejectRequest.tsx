@@ -6,12 +6,12 @@ import {
   Form,
   FormValues,
   Hairline,
-  PageLayout,
   Typography,
   useForm,
 } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../../components/NeumaPageLayout";
 import { TX_REQUEST } from "../../paths";
 
 const PERMANENT_REJECT = "permanentRejectField";
@@ -35,7 +35,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <PageLayout id={TX_REQUEST_REJECT} color="white" primaryTitle="Tx" title="Request">
+    <NeumaPageLayout id={TX_REQUEST_REJECT} color="white" primaryTitle="Tx" title="Request">
       <Hairline />
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center" marginTop={2}>
@@ -63,7 +63,7 @@ const Layout = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
           Back
         </Back>
       </Form>
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

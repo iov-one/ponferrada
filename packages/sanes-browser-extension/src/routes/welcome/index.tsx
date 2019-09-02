@@ -1,6 +1,7 @@
-import { Block, Button, PageLayout, ToastContext, ToastVariant, Typography } from "medulas-react-components";
+import { Block, Button, ToastContext, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../utils/history";
 import { LOGIN_ROUTE, RESTORE_WALLET, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
@@ -29,7 +30,7 @@ const Welcome = (): JSX.Element => {
   };
 
   return (
-    <PageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to NEUMA">
+    <NeumaPageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to NEUMA">
       <Typography variant="body1" inline>
         This extension lets you manage all your accounts in one place.
       </Typography>
@@ -45,7 +46,7 @@ const Welcome = (): JSX.Element => {
       <Button variant="contained" fullWidth onClick={importWallet}>
         Import Wallet
       </Button>
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

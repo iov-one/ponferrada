@@ -7796,8 +7796,8 @@ exports[`Storyshots Extension Login page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -7945,8 +7945,8 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8128,8 +8128,8 @@ exports[`Storyshots Extension Request queue page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8254,8 +8254,8 @@ exports[`Storyshots Extension Welcome page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8501,8 +8501,8 @@ exports[`Storyshots Extension/Restore Wallet Set Mnemonic page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8736,8 +8736,8 @@ exports[`Storyshots Extension/Restore Wallet Set Password page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -8918,8 +8918,8 @@ exports[`Storyshots Extension/Share Identity Reject Request page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9123,8 +9123,8 @@ exports[`Storyshots Extension/Share Identity Show Request page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9430,8 +9430,8 @@ exports[`Storyshots Extension/Signup New Account page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9608,8 +9608,8 @@ exports[`Storyshots Extension/Signup Recovery Phrase page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9768,8 +9768,8 @@ exports[`Storyshots Extension/Signup Security Hint page 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -9957,8 +9957,8 @@ exports[`Storyshots Extension/Transaction Request Create Proposal 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10142,8 +10142,8 @@ exports[`Storyshots Extension/Transaction Request Create Username 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10321,8 +10321,8 @@ exports[`Storyshots Extension/Transaction Request Reject Request 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10537,8 +10537,8 @@ exports[`Storyshots Extension/Transaction Request Send (BNS) 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10753,8 +10753,8 @@ exports[`Storyshots Extension/Transaction Request Send (Ethereum) 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -10935,8 +10935,8 @@ exports[`Storyshots Extension/Transaction Request Vote 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
+      src="NeumaLogo.svg"
+      width={100}
     />
   </div>
 </div>
@@ -11090,8 +11090,8 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
           <img
             alt="Logo"
             className="makeStyles-root"
-            src="iov-logo.svg"
-            width={84}
+            src="NeumaLogo.svg"
+            width={100}
           />
         </div>
       </div>
@@ -11905,8 +11905,8 @@ exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
           <img
             alt="Logo"
             className="makeStyles-root"
-            src="iov-logo.svg"
-            width={84}
+            src="NeumaLogo.svg"
+            width={100}
           />
         </div>
       </div>

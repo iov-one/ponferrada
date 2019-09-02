@@ -1,12 +1,7 @@
-import {
-  FormValues,
-  PageLayout,
-  ToastContext,
-  ToastVariant,
-  ValidationError,
-} from "medulas-react-components";
+import { FormValues, ToastContext, ToastVariant, ValidationError } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { loadPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
@@ -49,10 +44,10 @@ const Login = (): JSX.Element => {
   };
 
   return (
-    <PageLayout id={LOGIN_ROUTE} primaryTitle="Log" title="In" onBack={onBack}>
+    <NeumaPageLayout id={LOGIN_ROUTE} primaryTitle="Log" title="In" onBack={onBack}>
       <LoginForm onLogin={onLogin} validate={validate} />
       <LoginControls />
-    </PageLayout>
+    </NeumaPageLayout>
   );
 };
 

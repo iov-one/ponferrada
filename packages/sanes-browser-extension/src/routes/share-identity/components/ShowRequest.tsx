@@ -1,15 +1,7 @@
-import {
-  Block,
-  Button,
-  Hairline,
-  List,
-  ListItem,
-  ListItemText,
-  PageLayout,
-  Typography,
-} from "medulas-react-components";
+import { Block, Button, Hairline, List, ListItem, ListItemText, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import NeumaPageLayout from "../../../components/NeumaPageLayout";
 import { UiIdentity } from "../../../extension/background/model/requestsHandler/requestQueueManager";
 import { SHARE_IDENTITY } from "../../paths";
 
@@ -23,7 +15,7 @@ interface Props {
 }
 
 const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.Element => (
-  <PageLayout id={SHARE_IDENTITY_SHOW} color="white" primaryTitle="Share" title="Identity">
+  <NeumaPageLayout id={SHARE_IDENTITY_SHOW} color="white" primaryTitle="Share" title="Identity">
     <Block textAlign="center" marginBottom={2}>
       <Typography variant="body1">The following site:</Typography>
       <Typography variant="body1" color="primary">
@@ -61,7 +53,7 @@ const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.E
     <Button variant="contained" fullWidth color="secondary" onClick={showRejectView}>
       Reject
     </Button>
-  </PageLayout>
+  </NeumaPageLayout>
 );
 
 export default Layout;
