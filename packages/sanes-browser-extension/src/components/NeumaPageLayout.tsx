@@ -19,7 +19,7 @@ interface StyleProps {
 const NeumaPageLayout = (props: Props): JSX.Element => {
   const allProps = {
     ...props,
-    logoWidth: 120,
+    logoWidth: 100,
     logoSource: neumaLogo,
   };
   return <PageLayout {...allProps} />;

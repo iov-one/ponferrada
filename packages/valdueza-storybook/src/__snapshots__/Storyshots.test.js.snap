@@ -8342,7 +8342,7 @@ exports[`Storyshots Extension/Components NeumaPageLayout 1`] = `
       alt="Logo"
       className="makeStyles-root"
       src="NeumaLogo.svg"
-      width={120}
+      width={100}
     />
   </div>
 </div>
