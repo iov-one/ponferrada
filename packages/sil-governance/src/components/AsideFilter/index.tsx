@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/styles";
 import { Block, Image, Typography } from "medulas-react-components";
 import React, { useState } from "react";
 
-import addIcon from "../assets/add.svg";
-import { history } from "../routes";
-import { CREATE_PROPOSAL_ROUTE } from "../routes/paths";
+import addIcon from "../../assets/add.svg";
+import { history } from "../../routes";
+import { CREATE_PROPOSAL_ROUTE } from "../../routes/paths";
 
 export const ASIDE_FILTER_HTML_ID = "aside-filter";
 
