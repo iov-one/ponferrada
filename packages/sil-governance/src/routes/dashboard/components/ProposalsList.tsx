@@ -3,7 +3,7 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { RootState } from "../../../store/reducers";
-import RenderedProposal from "./Proposal/RenderedProposal";
+import RenderedProposal from "./RenderedProposal";
 
 export const PROPOSALS_HTML_ID = "proposals";
 
