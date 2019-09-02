@@ -7,7 +7,7 @@ import Routes from "./routes";
 import { configureStore } from "./store";
 import { globalStyles } from "./theme/globalStyles";
 
-export const store = configureStore();
+const store = configureStore();
 const rootEl = document.getElementById("root");
 
 const render = (Component: React.ComponentType): void => {
