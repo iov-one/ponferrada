@@ -1,4 +1,4 @@
-import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
+import { Address, Algorithm, PubkeyBundle, PubkeyBytes, TransactionId } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
@@ -45,7 +45,11 @@ export const getElectionRules = async (governor: Governor): Promise<readonly Ele
   return allElectionRules;
 };
 
-const ProposalForm = (): JSX.Element => {
+interface Props {
+  readonly onTransactionIdChanged: (id: TransactionId) => void;
+}
+
+const ProposalForm = ({ onTransactionIdChanged }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
@@ -138,7 +142,8 @@ const ProposalForm = (): JSX.Element => {
     const proposalOptions = buildProposalOptions(values);
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
-    await sendSignAndPostRequest(connection, createProposalTx);
+    const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
+    if (transactionId) onTransactionIdChanged(transactionId);
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
