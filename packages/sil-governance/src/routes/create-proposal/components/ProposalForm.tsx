@@ -26,6 +26,8 @@ import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
   parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
 
+const getPubkeyBytesFromForm = (formValue: string): PubkeyBytes => Encoding.fromHex(formValue) as PubkeyBytes;
+
 export const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   const electorates = await governor.getElectorates();
   let allElectionRules: ElectionRule[] = [];
@@ -106,25 +108,17 @@ const ProposalForm = (): JSX.Element => {
         };
       }
       case ProposalType.AddValidator: {
-        const pubkeyArray = values[PUBKEY_ADD_FIELD].split("_");
-        const algo = pubkeyArray[0] === Algorithm.Ed25519 ? Algorithm.Ed25519 : Algorithm.Secp256k1;
-        const data = Encoding.fromHex(pubkeyArray[1]) as PubkeyBytes;
-        const pubkey = {
-          algo,
-          data,
-        };
+        const algo = Algorithm.Ed25519;
+        const data = getPubkeyBytesFromForm(values[PUBKEY_ADD_FIELD]);
+        const pubkey = { algo, data };
         const power = parseInt(values[POWER_FIELD], 10);
 
         return { ...commonOptions, type: ProposalType.AddValidator, pubkey, power };
       }
       case ProposalType.RemoveValidator: {
-        const pubkeyArray = values[PUBKEY_REMOVE_FIELD].split("_");
-        const algo = pubkeyArray[0] === Algorithm.Ed25519 ? Algorithm.Ed25519 : Algorithm.Secp256k1;
-        const data = Encoding.fromHex(pubkeyArray[1]) as PubkeyBytes;
-        const pubkey = {
-          algo,
-          data,
-        };
+        const algo = Algorithm.Ed25519;
+        const data = getPubkeyBytesFromForm(values[PUBKEY_REMOVE_FIELD]);
+        const pubkey = { algo, data };
 
         return { ...commonOptions, type: ProposalType.RemoveValidator, pubkey };
       }
