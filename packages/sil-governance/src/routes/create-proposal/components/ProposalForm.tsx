@@ -1,5 +1,6 @@
+import { Address } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
-import { Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
+import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Block, Button, Form, FormValues, Typography, useForm } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
@@ -7,13 +8,18 @@ import * as ReactRedux from "react-redux";
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
 import { RootState } from "../../../store/reducers";
-import CommitteeSelect from "./CommitteeSelect";
+import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
+import { COMMITTEE_ADD_FIELD, MEMBER_ADD_FIELD, WEIGHT_FIELD } from "./FormOptions/AddCommitteeMember";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
+import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
 import ProposalTypeSelect from "./ProposalTypeSelect";
 import TitleField, { TITLE_FIELD } from "./TitleField";
 import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
+
+const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
+  parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
 
 const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   const electorates = await governor.getElectorates();
@@ -48,11 +54,24 @@ const ProposalForm = (): JSX.Element => {
       electionRuleId,
     };
 
-    const text = values[TEXT_FIELD];
-
     switch (proposalType) {
-      case ProposalType.AmendProtocol:
+      case ProposalType.AddCommitteeMember: {
+        const committee = getCommitteeIdFromForm(values[COMMITTEE_ADD_FIELD]);
+        const address = values[MEMBER_ADD_FIELD] as Address;
+        const weight = parseInt(values[WEIGHT_FIELD], 10);
+
+        return { ...commonOptions, type: ProposalType.AddCommitteeMember, committee, address, weight };
+      }
+      case ProposalType.RemoveCommitteeMember: {
+        const committee = getCommitteeIdFromForm(values[COMMITTEE_REMOVE_FIELD]);
+        const address = values[MEMBER_REMOVE_FIELD] as Address;
+
+        return { ...commonOptions, type: ProposalType.RemoveCommitteeMember, committee, address };
+      }
+      case ProposalType.AmendProtocol: {
+        const text = values[TEXT_FIELD];
         return { ...commonOptions, type: ProposalType.AmendProtocol, text };
+      }
       default:
         throw new Error("Unexpected type of Proposal. This is a bug.");
     }
@@ -93,7 +112,11 @@ const ProposalForm = (): JSX.Element => {
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
         <FormOptions form={form} proposalType={proposalType} />
         <DescriptionField form={form} />
-        <CommitteeSelect form={form} electionRules={electionRules} changeElectionRuleId={setElectionRuleId} />
+        <CommitteeRulesSelect
+          form={form}
+          electionRules={electionRules}
+          changeElectionRuleId={setElectionRuleId}
+        />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting}>
             Publish

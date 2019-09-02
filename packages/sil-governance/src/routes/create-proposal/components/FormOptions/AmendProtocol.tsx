@@ -2,8 +2,8 @@ import { FormApi } from "final-form";
 import { Block, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
-export const TEXT_FIELD = "Text";
-const TEXT_PLACEHOLDER = "Enter the text for the protocol amendment here";
+export const TEXT_FIELD = "Resolution";
+const TEXT_PLACEHOLDER = "Enter the resolution for the protocol amendment here";
 
 interface Props {
   readonly form: FormApi;

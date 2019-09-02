@@ -4,8 +4,8 @@ import { Block, SelectFieldForm, SelectFieldFormItem, Typography } from "medulas
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { displayPeriod } from "ui-logic";
 
-export const COMMITTEE_FIELD = "Committee";
-const COMMITTEE_FIELD_INITIAL = "Select a committee";
+const COMMITTEE_RULES_FIELD = "Committee Rule";
+const COMMITTEE_RULES_INITIAL = "Select a rule";
 
 interface Props {
   readonly form: FormApi;
@@ -13,8 +13,8 @@ interface Props {
   readonly changeElectionRuleId: Dispatch<SetStateAction<number>>;
 }
 
-const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): JSX.Element => {
-  const committeeItems = electionRules.map(rule => {
+const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Props): JSX.Element => {
+  const ruleItems = electionRules.map(rule => {
     return {
       name: `${rule.id}: ${rule.title}`,
     };
@@ -25,34 +25,32 @@ const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): 
   const [period, setPeriod] = useState();
 
   const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
-    const committeeId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
-    const committee = electionRules.find(rule => rule.id === committeeId);
-    if (!committee) throw new Error("Selected committee not found. This is a bug.");
+    const ruleId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
+    const rule = electionRules.find(rule => rule.id === ruleId);
+    if (!rule) throw new Error("Selected committee not found. This is a bug.");
 
-    const quorum = committee.quorum
-      ? `${committee.quorum.numerator}/${committee.quorum.denominator}`
-      : "none";
-    const threshold = `${committee.threshold.numerator}/${committee.threshold.denominator}`;
-    const period = displayPeriod(committee.votingPeriod);
+    const quorum = rule.quorum ? `${rule.quorum.numerator}/${rule.quorum.denominator}` : "none";
+    const threshold = `${rule.threshold.numerator}/${rule.threshold.denominator}`;
+    const period = displayPeriod(rule.votingPeriod);
 
     setQuorum(quorum);
     setThreshold(threshold);
     setPeriod(period);
 
-    changeElectionRuleId(committee.id);
+    changeElectionRuleId(rule.id);
   };
 
   return (
     <Block marginTop={2} display="flex" flexDirection="column">
       <Block display="flex" alignItems="center">
-        <Typography>{COMMITTEE_FIELD}</Typography>
+        <Typography>{COMMITTEE_RULES_FIELD}</Typography>
         <Block marginLeft={2}>
           <SelectFieldForm
-            fieldName={COMMITTEE_FIELD}
+            fieldName={COMMITTEE_RULES_FIELD}
             fullWidth
             form={form}
-            items={committeeItems}
-            initial={COMMITTEE_FIELD_INITIAL}
+            items={ruleItems}
+            initial={COMMITTEE_RULES_INITIAL}
             onChangeCallback={changeCommittee}
           />
         </Block>
@@ -66,4 +64,4 @@ const CommitteeSelect = ({ form, electionRules, changeElectionRuleId }: Props): 
   );
 };
 
-export default CommitteeSelect;
+export default CommitteeRulesSelect;
