@@ -15,7 +15,7 @@ import * as ReactRedux from "react-redux";
 
 import icon from "../../assets/iov-logo.svg";
 import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
-import { addProposalsAction, getProposals } from "../../store/proposals";
+import { getProposals, replaceProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
@@ -63,7 +63,7 @@ const Login = (): JSX.Element => {
     const governor = store.getState().extension.governor;
     if (!governor) throw new Error("Governor not set in store. This is a bug.");
     const chainProposals = await getProposals(governor);
-    dispatch(addProposalsAction(chainProposals));
+    dispatch(replaceProposalsAction(chainProposals));
   };
 
   const onLogin = async (): Promise<void> => {

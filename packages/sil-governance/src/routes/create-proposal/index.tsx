@@ -6,6 +6,7 @@ import { history } from "..";
 import AsideFilter from "../../components/AsideFilter";
 import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
+import { replaceProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { setTransactionsStateAction } from "../../store/transactions";
 import { DASHBOARD_ROUTE } from "../paths";
@@ -14,10 +15,12 @@ import ProposalForm from "./components/ProposalForm";
 const CreateProposal = (): JSX.Element => {
   const dispatch = useDispatch();
   const lastSignAndPostResult = useSelector((state: RootState) => state.transactions.lastSignAndPostResult);
+  const proposals = useSelector((state: RootState) => state.proposals);
 
   const onReturnToDashboard = (): void => {
     dispatch(setTransactionsStateAction());
     history.push(DASHBOARD_ROUTE);
+    dispatch(replaceProposalsAction(proposals));
   };
 
   return (
