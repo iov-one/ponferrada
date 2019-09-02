@@ -30,7 +30,7 @@ const Welcome = (): JSX.Element => {
   };
 
   return (
-    <NeumaPageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to NEUMA">
+    <NeumaPageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to Neuma">
       <Typography variant="body1" inline>
         This extension lets you manage all your accounts in one place.
       </Typography>
