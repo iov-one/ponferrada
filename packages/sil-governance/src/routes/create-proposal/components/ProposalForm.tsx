@@ -1,4 +1,4 @@
-import { Address, Algorithm, PubkeyBytes } from "@iov/bcp";
+import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
@@ -26,7 +26,12 @@ import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
   parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
 
-const getPubkeyBytesFromForm = (formValue: string): PubkeyBytes => Encoding.fromHex(formValue) as PubkeyBytes;
+const getPubkeyBundleFromForm = (formValue: string): PubkeyBundle => {
+  return {
+    algo: Algorithm.Ed25519,
+    data: Encoding.fromHex(formValue) as PubkeyBytes,
+  };
+};
 
 export const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   const electorates = await governor.getElectorates();
@@ -108,18 +113,13 @@ const ProposalForm = (): JSX.Element => {
         };
       }
       case ProposalType.AddValidator: {
-        const algo = Algorithm.Ed25519;
-        const data = getPubkeyBytesFromForm(values[PUBKEY_ADD_FIELD]);
-        const pubkey = { algo, data };
+        const pubkey = getPubkeyBundleFromForm(values[PUBKEY_ADD_FIELD]);
         const power = parseInt(values[POWER_FIELD], 10);
 
         return { ...commonOptions, type: ProposalType.AddValidator, pubkey, power };
       }
       case ProposalType.RemoveValidator: {
-        const algo = Algorithm.Ed25519;
-        const data = getPubkeyBytesFromForm(values[PUBKEY_REMOVE_FIELD]);
-        const pubkey = { algo, data };
-
+        const pubkey = getPubkeyBundleFromForm(values[PUBKEY_REMOVE_FIELD]);
         return { ...commonOptions, type: ProposalType.RemoveValidator, pubkey };
       }
       case ProposalType.AmendProtocol: {
