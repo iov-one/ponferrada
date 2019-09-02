@@ -37,9 +37,7 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
       const transactionId = await sendSignAndPostRequest(connection, voteTx);
-      if (transactionId) {
-        dispatch(setTransactionsStateAction(transactionId));
-      }
+      dispatch(setTransactionsStateAction(transactionId));
     }
   };
 

@@ -142,9 +142,7 @@ const ProposalForm = (): JSX.Element => {
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
-    if (transactionId) {
-      dispatch(setTransactionsStateAction(transactionId));
-    }
+    dispatch(setTransactionsStateAction(transactionId));
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
