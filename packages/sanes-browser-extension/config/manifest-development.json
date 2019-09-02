@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "NEUMA (development)",
+  "name": "Neuma (development)",
   "version": "will_be_set_in_build_step",
   "description": "Key manager and transaction signer for the IOV, Ethereum and Lisk blockchains (development)",
   "browser_action": {
-    "default_title": "NEUMA (development)",
+    "default_title": "Neuma (development)",
     "default_popup": "index.html"
   },
   "applications": {
