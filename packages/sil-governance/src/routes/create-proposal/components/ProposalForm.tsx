@@ -1,6 +1,7 @@
-import { Address } from "@iov/bcp";
+import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
+import { Encoding } from "@iov/encoding";
 import { Block, Button, Form, FormValues, Typography, useForm } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
@@ -12,16 +13,25 @@ import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
 import { COMMITTEE_ADD_FIELD, MEMBER_ADD_FIELD, WEIGHT_FIELD } from "./FormOptions/AddCommitteeMember";
+import { POWER_FIELD, PUBKEY_ADD_FIELD } from "./FormOptions/AddValidator";
 import { COMMITTEE_QUORUM_FIELD, QUORUM_FIELD } from "./FormOptions/AmendCommitteeQuorum";
 import { COMMITTEE_THRESHOLD_FIELD, THRESHOLD_FIELD } from "./FormOptions/AmendCommitteeThreshold";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
 import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
+import { PUBKEY_REMOVE_FIELD } from "./FormOptions/RemoveValidator";
 import ProposalTypeSelect from "./ProposalTypeSelect";
 import TitleField, { TITLE_FIELD } from "./TitleField";
 import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 
 const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
   parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
+
+const getPubkeyBundleFromForm = (formValue: string): PubkeyBundle => {
+  return {
+    algo: Algorithm.Ed25519,
+    data: Encoding.fromHex(formValue) as PubkeyBytes,
+  };
+};
 
 export const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   const electorates = await governor.getElectorates();
@@ -101,6 +111,16 @@ const ProposalForm = (): JSX.Element => {
           targetElectionRuleId,
           quorum,
         };
+      }
+      case ProposalType.AddValidator: {
+        const pubkey = getPubkeyBundleFromForm(values[PUBKEY_ADD_FIELD]);
+        const power = parseInt(values[POWER_FIELD], 10);
+
+        return { ...commonOptions, type: ProposalType.AddValidator, pubkey, power };
+      }
+      case ProposalType.RemoveValidator: {
+        const pubkey = getPubkeyBundleFromForm(values[PUBKEY_REMOVE_FIELD]);
+        return { ...commonOptions, type: ProposalType.RemoveValidator, pubkey };
       }
       case ProposalType.AmendProtocol: {
         const text = values[TEXT_FIELD];

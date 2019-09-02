@@ -15,6 +15,7 @@ async function clickCreatePersona(page: Page): Promise<void> {
 export const submitExtensionSignupForm = async (page: Page, password: string): Promise<void> => {
   await clickCreatePersona(page);
 
+  await sleep(20); // wait until redirect and render is done
   // Fill the form
   await page.type(`input[name="${PASSWORD_FIELD}"]`, password);
   await page.type(`input[name="${PASSWORD_CONFIRM_FIELD}"]`, password);
