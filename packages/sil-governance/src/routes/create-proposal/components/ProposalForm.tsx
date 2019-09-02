@@ -18,6 +18,9 @@ import ProposalTypeSelect from "./ProposalTypeSelect";
 import TitleField, { TITLE_FIELD } from "./TitleField";
 import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
 
+const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
+  parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
+
 const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
   const electorates = await governor.getElectorates();
   let allElectionRules: ElectionRule[] = [];
@@ -53,20 +56,14 @@ const ProposalForm = (): JSX.Element => {
 
     switch (proposalType) {
       case ProposalType.AddCommitteeMember: {
-        const committee = parseInt(
-          values[COMMITTEE_ADD_FIELD].substring(0, values[COMMITTEE_ADD_FIELD].indexOf(":")),
-          10,
-        ) as CommitteeId;
+        const committee = getCommitteeIdFromForm(values[COMMITTEE_ADD_FIELD]);
         const address = values[MEMBER_ADD_FIELD] as Address;
         const weight = parseInt(values[WEIGHT_FIELD], 10);
 
         return { ...commonOptions, type: ProposalType.AddCommitteeMember, committee, address, weight };
       }
       case ProposalType.RemoveCommitteeMember: {
-        const committee = parseInt(
-          values[COMMITTEE_REMOVE_FIELD].substring(0, values[COMMITTEE_REMOVE_FIELD].indexOf(":")),
-          10,
-        ) as CommitteeId;
+        const committee = getCommitteeIdFromForm(values[COMMITTEE_REMOVE_FIELD]);
         const address = values[MEMBER_REMOVE_FIELD] as Address;
 
         return { ...commonOptions, type: ProposalType.RemoveCommitteeMember, committee, address };
