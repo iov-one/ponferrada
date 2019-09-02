@@ -7,25 +7,18 @@ import { store } from "../..";
 import AsideFilter from "../../components/AsideFilter";
 import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
-import { setExtensionStateAction } from "../../store/extension";
 import { RootState } from "../../store/reducers";
+import { setTransactionsStateAction } from "../../store/transactions";
 import { DASHBOARD_ROUTE } from "../paths";
 import ProposalForm from "./components/ProposalForm";
 
 const onReturnToDashboard = (): void => {
-  const storeState = store.getState();
-  store.dispatch(
-    setExtensionStateAction(
-      storeState.extension.connected,
-      storeState.extension.installed,
-      storeState.extension.governor,
-    ),
-  );
+  store.dispatch(setTransactionsStateAction());
   history.push(DASHBOARD_ROUTE);
 };
 
 const CreateProposal = (): JSX.Element => {
-  const lastSignAndPostResult = useSelector((state: RootState) => state.extension.lastSignAndPostResult);
+  const lastSignAndPostResult = useSelector((state: RootState) => state.transactions.lastSignAndPostResult);
 
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">

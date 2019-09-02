@@ -8,8 +8,8 @@ import * as ReactRedux from "react-redux";
 
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
-import { setExtensionStateAction } from "../../../store/extension";
 import { RootState } from "../../../store/reducers";
+import { setTransactionsStateAction } from "../../../store/transactions";
 import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
@@ -51,8 +51,6 @@ const ProposalForm = (): JSX.Element => {
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState();
 
-  const connected = ReactRedux.useSelector((state: RootState) => state.extension.connected);
-  const installed = ReactRedux.useSelector((state: RootState) => state.extension.installed);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
 
@@ -145,7 +143,7 @@ const ProposalForm = (): JSX.Element => {
 
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
     if (transactionId) {
-      dispatch(setExtensionStateAction(connected, installed, governor, transactionId));
+      dispatch(setTransactionsStateAction(transactionId));
     }
   };
 
