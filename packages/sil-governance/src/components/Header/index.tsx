@@ -1,7 +1,7 @@
 import { Block, CircleImage, Typography } from "medulas-react-components";
 import React from "react";
 
-import icon from "../assets/iov-logo.svg";
+import icon from "../../assets/iov-logo.svg";
 
 export const HEADER_HTML_ID = "header";
 

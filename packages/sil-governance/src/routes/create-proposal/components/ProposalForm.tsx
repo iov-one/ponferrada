@@ -9,6 +9,7 @@ import * as ReactRedux from "react-redux";
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
 import { RootState } from "../../../store/reducers";
+import { setTransactionsStateAction } from "../../../store/transactions";
 import CommitteeRulesSelect from "./CommitteeRulesSelect";
 import DescriptionField, { DESCRIPTION_FIELD } from "./DescriptionField";
 import FormOptions from "./FormOptions";
@@ -46,10 +47,12 @@ export const getElectionRules = async (governor: Governor): Promise<readonly Ele
 };
 
 const ProposalForm = (): JSX.Element => {
-  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState();
+
+  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
     const [year, month, day] = values[DATE_FIELD].split("-").map(el => parseInt(el, 10));
@@ -138,7 +141,8 @@ const ProposalForm = (): JSX.Element => {
     const proposalOptions = buildProposalOptions(values);
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
-    await sendSignAndPostRequest(connection, createProposalTx);
+    const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
+    dispatch(setTransactionsStateAction(transactionId));
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({

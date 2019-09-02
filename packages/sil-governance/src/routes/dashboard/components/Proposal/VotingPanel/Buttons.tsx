@@ -7,6 +7,7 @@ import * as ReactRedux from "react-redux";
 import { sendSignAndPostRequest } from "../../../../../communication/signandpost";
 import { getBnsConnection } from "../../../../../logic/connection";
 import { RootState } from "../../../../../store/reducers";
+import { setTransactionsStateAction } from "../../../../../store/transactions";
 
 interface Props {
   readonly id: number;
@@ -15,8 +16,10 @@ interface Props {
 
 const Buttons = ({ id, vote }: Props): JSX.Element => {
   const [currentVote, setCurrentVote] = useState(vote);
-  const [previousVote, setPreviousVote] = useState(vote);
+  const previousVote = vote;
+
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  const dispatch = ReactRedux.useDispatch();
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
   const noButton = currentVote === VoteOption.No ? "contained" : "outlined";
@@ -33,8 +36,8 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
-      await sendSignAndPostRequest(connection, voteTx);
-      setPreviousVote(currentVote);
+      const transactionId = await sendSignAndPostRequest(connection, voteTx);
+      dispatch(setTransactionsStateAction(transactionId));
     }
   };
 
