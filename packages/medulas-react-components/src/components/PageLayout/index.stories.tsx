@@ -7,7 +7,7 @@ import Typography from "../Typography";
 import PageLayout from "./index";
 
 storiesOf("Components", module).add(
-  "Layout",
+  "PageLayout",
   (): JSX.Element => (
     <Storybook>
       <PageLayout primaryTitle="Title" title="storybook" onBack={action("clicking on back button")}>
