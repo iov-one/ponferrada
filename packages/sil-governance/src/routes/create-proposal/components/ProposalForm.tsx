@@ -71,10 +71,7 @@ const ProposalForm = (): JSX.Element => {
         return { ...commonOptions, type: ProposalType.RemoveCommitteeMember, committee, address };
       }
       case ProposalType.AmendElectionRuleThreshold: {
-        const targetElectionRuleId = parseInt(
-          values[COMMITTEE_THRESHOLD_FIELD].substring(0, values[COMMITTEE_THRESHOLD_FIELD].indexOf(":")),
-          10,
-        );
+        const targetElectionRuleId = getCommitteeIdFromForm(values[COMMITTEE_THRESHOLD_FIELD]);
         const thresholdArray = values[THRESHOLD_FIELD].split("/").map(n => parseInt(n, 10));
         const threshold = {
           numerator: thresholdArray[0],
@@ -89,10 +86,7 @@ const ProposalForm = (): JSX.Element => {
         };
       }
       case ProposalType.AmendElectionRuleQuorum: {
-        const targetElectionRuleId = parseInt(
-          values[COMMITTEE_QUORUM_FIELD].substring(0, values[COMMITTEE_QUORUM_FIELD].indexOf(":")),
-          10,
-        );
+        const targetElectionRuleId = getCommitteeIdFromForm(values[COMMITTEE_QUORUM_FIELD]);
         const quorumArray = values[QUORUM_FIELD] && values[QUORUM_FIELD].split("/").map(n => parseInt(n, 10));
         const quorum = quorumArray
           ? {
