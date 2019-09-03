@@ -12,8 +12,12 @@ import { setTransactionsStateAction } from "../../store/transactions";
 import { DASHBOARD_ROUTE } from "../paths";
 import ProposalsList from "./components/ProposalsList";
 
-const Dashboard = (): JSX.Element => {
-  const [filter, setFilter] = useState(ElectionFilter.All);
+interface Props {
+  filter: ElectionFilter;
+}
+
+const Dashboard = ({ filter }: Props): JSX.Element => {
+  const [activeFilter, setactiveFilter] = useState(filter);
   const dispatch = useDispatch();
   const lastSignAndPostResult = useSelector((state: RootState) => state.transactions.lastSignAndPostResult);
   const governor = useSelector((state: RootState) => state.extension.governor);
@@ -23,8 +27,8 @@ const Dashboard = (): JSX.Element => {
     history.push(DASHBOARD_ROUTE);
   };
 
-  const updateFilter = (filter: ElectionFilter): void => {
-    setFilter(filter);
+  const updateFilter = (newFilter: ElectionFilter): void => {
+    setactiveFilter(newFilter);
   };
 
   useEffect(() => {
@@ -35,7 +39,7 @@ const Dashboard = (): JSX.Element => {
     };
 
     updateChainProposals();
-  }, [dispatch, filter, governor]);
+  }, [dispatch, activeFilter, governor]);
 
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">
@@ -45,8 +49,8 @@ const Dashboard = (): JSX.Element => {
         <ConfirmTransaction transactionId={lastSignAndPostResult} onReturnToDashboard={onReturnToDashboard} />
       ) : (
         <Block minWidth="100%" display="flex">
-          <AsideFilter onChangeFilter={updateFilter} />
-          <ProposalsList filterType={filter} />
+          <AsideFilter filter={activeFilter} onChangeFilter={updateFilter} />
+          <ProposalsList filterType={activeFilter} />
         </Block>
       )}
     </Block>
