@@ -3,7 +3,7 @@ import { Store } from "redux";
 import { aNewStore } from "..";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { RootState } from "../reducers";
-import { addProposalsAction } from "./actions";
+import { replaceProposalsAction } from "./actions";
 import { SilProposal } from "./reducer";
 
 const proposals = [
@@ -64,7 +64,7 @@ withChainsDescribe("Proposals reducer", () => {
 
   it("dispatches correctly getProposals action", async () => {
     const chainProposals: SilProposal[] = [];
-    store.dispatch(addProposalsAction(chainProposals));
+    store.dispatch(replaceProposalsAction(chainProposals));
     const proposals = store.getState().proposals;
 
     expect(proposals).toEqual(chainProposals);
@@ -72,7 +72,7 @@ withChainsDescribe("Proposals reducer", () => {
 
   it("stores correctly proposals", async () => {
     const chainProposals: SilProposal[] = [];
-    store.dispatch(addProposalsAction(chainProposals));
+    store.dispatch(replaceProposalsAction(chainProposals));
     const storedProposals = store.getState().proposals;
 
     expect(storedProposals).toEqual(proposals);

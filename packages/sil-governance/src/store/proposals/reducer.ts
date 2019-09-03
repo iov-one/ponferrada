@@ -9,8 +9,8 @@ export type SilProposal = ProposalProps;
 export type ProposalsState = SilProposal[];
 const initState: ProposalsState = [];
 
-export interface AddProposalsActionType extends Action {
-  type: "@@proposals/ADD";
+export interface ReplaceProposalsActionType extends Action {
+  type: "@@proposals/REPLACE";
   payload: ProposalsState;
 }
 
@@ -21,8 +21,8 @@ export function proposalsReducer(
   action: ProposalsActions,
 ): ProposalsState {
   switch (action.type) {
-    case "@@proposals/ADD":
-      return [...state, ...action.payload];
+    case "@@proposals/REPLACE":
+      return [...action.payload];
     default:
       return state;
   }

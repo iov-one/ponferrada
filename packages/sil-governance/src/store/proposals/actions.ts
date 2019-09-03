@@ -1,7 +1,7 @@
 import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
 import { Governor } from "@iov/bns-governance";
 
-import { AddProposalsActionType, ProposalsState } from "./reducer";
+import { ProposalsState, ReplaceProposalsActionType } from "./reducer";
 
 export async function getProposals(governor: Governor): Promise<ProposalsState> {
   const getQuorum = async (proposal: Proposal): Promise<number> => {
@@ -73,7 +73,7 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
   return proposalsState;
 }
 
-export const addProposalsAction = (proposals: ProposalsState): AddProposalsActionType => ({
-  type: "@@proposals/ADD",
+export const replaceProposalsAction = (proposals: ProposalsState): ReplaceProposalsActionType => ({
+  type: "@@proposals/REPLACE",
   payload: proposals,
 });

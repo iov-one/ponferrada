@@ -8,6 +8,7 @@ import * as ReactRedux from "react-redux";
 
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
+import { getProposals, replaceProposalsAction } from "../../../store/proposals";
 import { RootState } from "../../../store/reducers";
 import { setTransactionsStateAction } from "../../../store/transactions";
 import CommitteeRulesSelect from "./CommitteeRulesSelect";
@@ -142,6 +143,14 @@ const ProposalForm = (): JSX.Element => {
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
+
+    const updateChainProposals = async (): Promise<void> => {
+      const chainProposals = await getProposals(governor);
+      dispatch(replaceProposalsAction(chainProposals));
+    };
+
+    setTimeout(() => updateChainProposals(), 5000);
+
     dispatch(setTransactionsStateAction(transactionId));
   };
 
