@@ -1,11 +1,17 @@
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { Block, Image, Typography } from "medulas-react-components";
-import React, { useState } from "react";
+import React from "react";
 
 import addIcon from "../../assets/add.svg";
 import { history } from "../../routes";
-import { CREATE_PROPOSAL_ROUTE } from "../../routes/paths";
+import {
+  CREATE_PROPOSAL_ROUTE,
+  DASHBOARD_ACTIVE_ROUTE,
+  DASHBOARD_ENDED_ROUTE,
+  DASHBOARD_ROUTE,
+  DASHBOARD_SUBMITTED_ROUTE,
+} from "../../routes/paths";
 
 export const ASIDE_FILTER_HTML_ID = "aside-filter";
 const ADD_PROPOSAL_LABEL = "Add New Proposal";
@@ -29,9 +35,9 @@ const useStyles = makeStyles({
   },
 });
 
-const addNewProposal = (): void => {
-  if (history.location.pathname !== CREATE_PROPOSAL_ROUTE) {
-    history.push(CREATE_PROPOSAL_ROUTE);
+const navigateTo = (target: string): void => {
+  if (history.location.pathname !== target) {
+    history.push(target);
   }
 };
 
@@ -44,12 +50,10 @@ export enum ElectionFilter {
 
 interface Props {
   readonly filter: ElectionFilter | null;
-  readonly onChangeFilter: (filter: ElectionFilter) => void;
 }
 
-const AsideFilter = ({ filter, onChangeFilter }: Props): JSX.Element => {
+const AsideFilter = ({ filter }: Props): JSX.Element => {
   const classes = useStyles();
-  const [activeFilter, setActiveFilter] = useState(filter);
 
   const paperClasses = {
     paper: classes.drawerPaper,
@@ -61,25 +65,17 @@ const AsideFilter = ({ filter, onChangeFilter }: Props): JSX.Element => {
     root: classes.activeFilter,
   };
 
-  const updateActiveFilter = (text: string): void => {
-    let filter;
-
-    switch (text) {
+  const menuItemToTarget = (filter: ElectionFilter): string => {
+    switch (filter) {
       case ElectionFilter.Active:
-        filter = ElectionFilter.Active;
-        break;
+        return DASHBOARD_ACTIVE_ROUTE;
       case ElectionFilter.Submitted:
-        filter = ElectionFilter.Submitted;
-        break;
+        return DASHBOARD_SUBMITTED_ROUTE;
       case ElectionFilter.Ended:
-        filter = ElectionFilter.Ended;
-        break;
+        return DASHBOARD_ENDED_ROUTE;
       default:
-        filter = ElectionFilter.All;
+        return DASHBOARD_ROUTE;
     }
-
-    setActiveFilter(filter);
-    onChangeFilter(filter);
   };
 
   return (
@@ -90,8 +86,8 @@ const AsideFilter = ({ filter, onChangeFilter }: Props): JSX.Element => {
             <ListItem
               button
               key={text}
-              classes={activeFilter === text ? filterClasses : undefined}
-              onClick={() => updateActiveFilter(text)}
+              classes={filter === text ? filterClasses : undefined}
+              onClick={() => navigateTo(menuItemToTarget(text))}
             >
               <ListItemText primary={text} />
             </ListItem>
@@ -105,7 +101,7 @@ const AsideFilter = ({ filter, onChangeFilter }: Props): JSX.Element => {
         justifyContent="center"
         marginTop={1}
         className={classes.addProposal}
-        onClick={addNewProposal}
+        onClick={() => navigateTo(CREATE_PROPOSAL_ROUTE)}
       >
         <Image alt="Add Proposal" src={addIcon} className={classes.addIcon} />
         <Block marginLeft={1}>

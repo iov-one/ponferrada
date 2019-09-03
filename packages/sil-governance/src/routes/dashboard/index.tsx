@@ -1,5 +1,5 @@
 import { Block, Hairline } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { history } from "..";
@@ -17,7 +17,6 @@ interface Props {
 }
 
 const Dashboard = ({ filter }: Props): JSX.Element => {
-  const [activeFilter, setactiveFilter] = useState(filter);
   const dispatch = useDispatch();
   const lastSignAndPostResult = useSelector((state: RootState) => state.transactions.lastSignAndPostResult);
   const governor = useSelector((state: RootState) => state.extension.governor);
@@ -25,10 +24,6 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
   const onReturnToDashboard = (): void => {
     dispatch(setTransactionsStateAction());
     history.push(DASHBOARD_ROUTE);
-  };
-
-  const updateFilter = (newFilter: ElectionFilter): void => {
-    setactiveFilter(newFilter);
   };
 
   useEffect(() => {
@@ -39,7 +34,7 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
     };
 
     updateChainProposals();
-  }, [dispatch, activeFilter, governor]);
+  }, [dispatch, governor]);
 
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">
@@ -49,8 +44,8 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
         <ConfirmTransaction transactionId={lastSignAndPostResult} onReturnToDashboard={onReturnToDashboard} />
       ) : (
         <Block minWidth="100%" display="flex">
-          <AsideFilter filter={activeFilter} onChangeFilter={updateFilter} />
-          <ProposalsList filterType={activeFilter} />
+          <AsideFilter filter={filter} />
+          <ProposalsList filterType={filter} />
         </Block>
       )}
     </Block>
