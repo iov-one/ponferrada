@@ -67,11 +67,18 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
   const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddress[]>([]);
 
   React.useEffect(() => {
+    let isSubscribed = true;
     async function processAddresses(addresses: ChainAddressPair[]): Promise<void> {
       const chainAddresses = await chainAddressPairSortedMapping(addresses);
-      setChainAddresses(chainAddresses);
+      if (isSubscribed) {
+        setChainAddresses(chainAddresses);
+      }
     }
     processAddresses(addresses);
+
+    return () => {
+      isSubscribed = false;
+    };
   }, [addresses]);
 
   return (
