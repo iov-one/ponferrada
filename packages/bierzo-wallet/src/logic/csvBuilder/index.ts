@@ -14,28 +14,36 @@ export interface CsvRow {
 }
 
 class CsvRepresentation {
-  private readonly fields: readonly string[];
-  private readonly header: string;
-  private readonly rows: CsvRow[] = [];
+  private readonly _fields: readonly string[];
+  private readonly _header: string;
+  private readonly _rows: CsvRow[] = [];
 
   public constructor(header: CsvRow) {
-    this.fields = Object.keys(header);
-    this.header = this.parse(header);
+    this._fields = Object.keys(header);
+    this._header = this.parse(header);
   }
 
   public addRow(row: CsvRow): void {
-    this.rows.push(row);
+    this._rows.push(row);
+  }
+
+  public get csvRows(): CsvRow[] {
+    return this._rows;
+  }
+
+  public get csvHeader(): string {
+    return this._header;
   }
 
   public blob(): Blob {
-    const csvBody = this.rows.map((row: CsvRow) => this.parse(row));
+    const csvBody = this._rows.map((row: CsvRow) => this.parse(row));
 
-    return new Blob([`${this.header}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });
+    return new Blob([`${this._header}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });
   }
 
   private parse(row: CsvRow): string {
     const parsedRow: string[] = [];
-    this.fields.forEach(field => parsedRow.push(`"${row[field]}"`));
+    this._fields.forEach(field => parsedRow.push(`"${row[field]}"`));
 
     return parsedRow.join(";");
   }
