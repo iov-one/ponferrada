@@ -3,8 +3,9 @@ import { Identity } from "@iov/bcp";
 import * as identities from "../../communication/identities";
 import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
+import { getExtensionStatus } from "../../logic/extension";
 import { aNewStore } from "../../store";
-import { getExtensionStatus, setExtensionStateAction } from "./actions";
+import { setExtensionStateAction } from "./actions";
 
 describe("Extension reducer", () => {
   afterAll(() => disconnect());

@@ -1,7 +1,7 @@
 import { Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
 import { Encoding } from "@iov/encoding";
 
-import { groupIdentitiesByChain } from "./actions";
+import { groupIdentitiesByChain } from "./extension";
 
 describe("groupIdentitiesByChain", () => {
   const ethIdentity1: Identity = {
