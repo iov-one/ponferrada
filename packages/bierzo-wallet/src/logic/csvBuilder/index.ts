@@ -1,5 +1,3 @@
-import FileSaver from "file-saver";
-
 export interface CsvRow {
   readonly id: string;
   readonly recepient: string;
@@ -12,6 +10,7 @@ export interface CsvRow {
   readonly feeTokenTicker: string;
   readonly time: string;
   readonly note: string;
+  [key: string]: string;
 }
 
 class CsvRepresentation {
@@ -28,7 +27,7 @@ class CsvRepresentation {
     this.rows.push(row);
   }
 
-  public get(): Blob {
+  public blob(): Blob {
     const csvBody = this.rows.map((row: CsvRow) => this.parse(row));
 
     return new Blob([`${this.header}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });
