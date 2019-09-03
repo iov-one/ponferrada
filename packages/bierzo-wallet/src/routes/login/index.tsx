@@ -44,25 +44,23 @@ const Login = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
-  const store = ReactRedux.useStore();
 
   const onLogin = async (_: object): Promise<void> => {
     billboard.show(<BillboardMessage />);
-    const result = await getExtensionStatus();
+    const { installed, connected, identities } = await getExtensionStatus();
     billboard.close();
-    dispatch(setExtensionStateAction(result.connected, result.installed, result.identities));
 
-    if (!result.installed) {
+    if (!installed) {
       toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
 
-    if (!result.connected) {
+    if (!connected) {
       toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
       return;
     }
 
-    const identities = store.getState().extension.identities;
+    dispatch(setExtensionStateAction(identities));
     await loginBootSequence(identities, dispatch);
 
     history.push(BALANCE_ROUTE);

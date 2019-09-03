@@ -5,8 +5,6 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "./actions";
 
 export interface ExtensionState {
-  readonly connected: boolean;
-  readonly installed: boolean;
   readonly identities: { [chain: string]: Identity };
 }
 
@@ -18,8 +16,6 @@ export interface SetExtensionStateActionType extends Action {
 export type ExtensionActions = ActionType<typeof actions>;
 
 const initState: ExtensionState = {
-  connected: false,
-  installed: false,
   identities: {},
 };
 

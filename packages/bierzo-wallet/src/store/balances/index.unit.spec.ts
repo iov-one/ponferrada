@@ -37,7 +37,7 @@ withChainsDescribe("Tokens reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.identities));
+    store.dispatch(setExtensionStateAction(extension.identities));
 
     const keys = store.getState().extension.identities;
     const tokens = await getBalances(keys);

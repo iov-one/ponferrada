@@ -1,4 +1,5 @@
-import { TokenTicker } from "@iov/bcp";
+import { Algorithm, ChainId, PubkeyBytes, TokenTicker } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
 import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
 
@@ -26,7 +27,7 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
-const bnsChainId = "local-iov-devnet";
+const bnsChainId = "local-iov-devnet" as ChainId;
 const usernames: DeepPartial<UsernamesState> = [
   {
     username: "albert*iov",
@@ -39,24 +40,28 @@ const usernames: DeepPartial<UsernamesState> = [
   },
 ];
 
+const identities = {
+  bnsChainId: {
+    chainId: bnsChainId,
+    pubkey: {
+      algo: Algorithm.Ed25519,
+      data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+    },
+  },
+};
+
 describe("The /balance route", () => {
   let store: Store<RootState>;
   let balanceDom: React.Component;
   describe("with balance", () => {
-    beforeEach(
-      async (): Promise<void> => {
-        store = aNewStore({
-          extension: {
-            connected: true,
-            installed: true,
-            identities: {},
-          },
-          balances: balancesAmount,
-          usernames,
-        });
-        balanceDom = await travelToBalance(store);
-      },
-    );
+    beforeEach(async () => {
+      store = aNewStore({
+        extension: { identities },
+        balances: balancesAmount,
+        usernames,
+      });
+      balanceDom = await travelToBalance(store);
+    });
 
     it("redirects to the /payment route when clicked", async () => {
       const paymentCard = (await findRenderedDOMComponentWithId(balanceDom, PAYMENT_ROUTE)) as Element;
@@ -105,18 +110,12 @@ describe("The /balance route", () => {
   });
 
   describe("without balance and username", () => {
-    beforeEach(
-      async (): Promise<void> => {
-        store = aNewStore({
-          extension: {
-            connected: true,
-            installed: true,
-            identities: {},
-          },
-        });
-        balanceDom = await travelToBalance(store);
-      },
-    );
+    beforeEach(async () => {
+      store = aNewStore({
+        extension: { identities },
+      });
+      balanceDom = await travelToBalance(store);
+    });
 
     it("should show that there is no balance available", async () => {
       const noFundsMessage = getNoFundsMessage(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));

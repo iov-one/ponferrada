@@ -14,8 +14,6 @@ describe("Extension reducer", () => {
     const store = aNewStore();
     const extension = store.getState().extension;
     expect(extension).toEqual({
-      connected: false,
-      installed: false,
       identities: {},
     });
   });
@@ -41,15 +39,13 @@ describe("Extension reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.connected, extension.installed, extension.identities));
+    store.dispatch(setExtensionStateAction(extension.identities));
 
     const extensionIdentities: { [chain: string]: Identity } = {
       "ethereum-eip155-5777": identitiesResponse[0],
     };
 
     const extensionState = store.getState().extension;
-    expect(extensionState.connected).toBeTruthy();
-    expect(extensionState.installed).toBeTruthy();
     expect(extensionState.identities).toEqual(extensionIdentities);
   });
 });
