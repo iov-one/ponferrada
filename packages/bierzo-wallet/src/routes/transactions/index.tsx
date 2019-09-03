@@ -90,12 +90,6 @@ const Transactions = (): JSX.Element => {
     const csv = new CsvRepresentation(header);
     orderedTxs.forEach(tx => csv.addRow(BwParserFactory.getCsvRepresentation(tx)));
 
-    // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
-    /*const csvHeader =
-      '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Fee Quantity";"Fee Fractional Digits";"Fee Token Ticker";"Time";"Note"';
-    const csvBody = orderedTxs.map((tx: ProcessedTx) => BwParserFactory.getCsvRepresentation(tx));
-
-    const blob = new Blob([`${csvHeader}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });*/
     FileSaver.saveAs(csv.blob(), "transactions.csv");
   }
 
