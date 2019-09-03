@@ -94,7 +94,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: "tx1" as TransactionId,
     original: {
       kind: "bcp/send",
-      sender: "george*iov" as Address,
+      sender: address,
       recipient: "me" as Address,
       amount: stringToAmount("10.5", lsk),
       memo: "Sample note",
