@@ -43,12 +43,13 @@ export enum ElectionFilter {
 }
 
 interface Props {
+  readonly filter: ElectionFilter | null;
   readonly onChangeFilter: (filter: ElectionFilter) => void;
 }
 
-const AsideFilter = ({ onChangeFilter }: Props): JSX.Element => {
+const AsideFilter = ({ filter, onChangeFilter }: Props): JSX.Element => {
   const classes = useStyles();
-  const [activeFilter, setActiveFilter] = useState(ElectionFilter.All);
+  const [activeFilter, setActiveFilter] = useState(filter);
 
   const paperClasses = {
     paper: classes.drawerPaper,
