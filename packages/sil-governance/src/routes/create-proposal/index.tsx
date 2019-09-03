@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { history } from "..";
-import AsideFilter from "../../components/AsideFilter";
+import AsideFilter, { ElectionFilter } from "../../components/AsideFilter";
 import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
 import { RootState } from "../../store/reducers";
@@ -20,6 +20,10 @@ const CreateProposal = (): JSX.Element => {
     history.push(DASHBOARD_ROUTE);
   };
 
+  const updateFilter = (_filter: ElectionFilter): void => {
+    history.push(DASHBOARD_ROUTE);
+  };
+
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">
       <Header />
@@ -28,7 +32,7 @@ const CreateProposal = (): JSX.Element => {
         <ConfirmTransaction transactionId={lastSignAndPostResult} onReturnToDashboard={onReturnToDashboard} />
       ) : (
         <Block minWidth="100%" display="flex">
-          <AsideFilter />
+          <AsideFilter onChangeFilter={updateFilter} />
           <ProposalForm />
         </Block>
       )}
