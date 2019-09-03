@@ -11,7 +11,7 @@ import { getExtensionStatus } from "../../logic/extension";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
-import { setIdentitiesStateAction } from "../../store/extension";
+import { setIdentitiesStateAction } from "../../store/identities";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";

@@ -6,7 +6,7 @@ import { disconnect } from "../../logic/connection";
 import { getExtensionStatus } from "../../logic/extension";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { setIdentitiesStateAction } from "../extension";
+import { setIdentitiesStateAction } from "../identities";
 import { addUsernamesAction, getUsernames } from "./actions";
 import { BwUsername } from "./reducer";
 

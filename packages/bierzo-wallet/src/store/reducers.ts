@@ -4,7 +4,7 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
 import { balancesReducer, BalanceState } from "./balances";
-import { identitiesReducer, IdentitiesState } from "./extension";
+import { identitiesReducer, IdentitiesState } from "./identities";
 import { notificationReducer, NotificationState } from "./notifications";
 import { tokensReducer, TokenState } from "./tokens";
 import { usernamesReducer, UsernamesState } from "./usernames";

@@ -1,10 +1,10 @@
 import { Identity } from "@iov/bcp";
 
+import { aNewStore } from "..";
 import * as identities from "../../communication/identities";
 import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
 import { getExtensionStatus } from "../../logic/extension";
-import { aNewStore } from "../../store";
 import { setIdentitiesStateAction } from "./actions";
 
 describe("Extension reducer", () => {
