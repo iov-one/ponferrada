@@ -8,6 +8,7 @@ import { history } from "../../routes";
 import { CREATE_PROPOSAL_ROUTE } from "../../routes/paths";
 
 export const ASIDE_FILTER_HTML_ID = "aside-filter";
+const ADD_PROPOSAL_LABEL = "Add New Proposal";
 
 const useStyles = makeStyles({
   drawerPaper: {
@@ -34,9 +35,20 @@ const addNewProposal = (): void => {
   }
 };
 
-const AsideFilter = (): JSX.Element => {
+export enum ElectionFilter {
+  All = "All Elections",
+  Active = "Active Elections",
+  Submitted = "Submitted Elections",
+  Ended = "Ended Elections",
+}
+
+interface Props {
+  readonly onChangeFilter: (filter: ElectionFilter) => void;
+}
+
+const AsideFilter = ({ onChangeFilter }: Props): JSX.Element => {
   const classes = useStyles();
-  const [activeFilter] = useState("All Elections");
+  const [activeFilter, setActiveFilter] = useState(ElectionFilter.All);
 
   const paperClasses = {
     paper: classes.drawerPaper,
@@ -48,12 +60,38 @@ const AsideFilter = (): JSX.Element => {
     root: classes.activeFilter,
   };
 
+  const updateActiveFilter = (text: string): void => {
+    let filter;
+
+    switch (text) {
+      case ElectionFilter.Active:
+        filter = ElectionFilter.Active;
+        break;
+      case ElectionFilter.Submitted:
+        filter = ElectionFilter.Submitted;
+        break;
+      case ElectionFilter.Ended:
+        filter = ElectionFilter.Ended;
+        break;
+      default:
+        filter = ElectionFilter.All;
+    }
+
+    setActiveFilter(filter);
+    onChangeFilter(filter);
+  };
+
   return (
     <Block id={ASIDE_FILTER_HTML_ID} minWidth="205px">
       <Drawer variant="permanent" classes={paperClasses}>
         <List classes={listClasses}>
-          {["All Elections", "Active Elections", "Submitted Elections", "Ended Elections"].map(text => (
-            <ListItem button key={text} classes={activeFilter === text ? filterClasses : undefined}>
+          {Object.values(ElectionFilter).map(text => (
+            <ListItem
+              button
+              key={text}
+              classes={activeFilter === text ? filterClasses : undefined}
+              onClick={() => updateActiveFilter(text)}
+            >
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -70,7 +108,7 @@ const AsideFilter = (): JSX.Element => {
       >
         <Image alt="Add Proposal" src={addIcon} className={classes.addIcon} />
         <Block marginLeft={1}>
-          <Typography>Add New Proposal</Typography>
+          <Typography>{ADD_PROPOSAL_LABEL}</Typography>
         </Block>
       </Block>
     </Block>
