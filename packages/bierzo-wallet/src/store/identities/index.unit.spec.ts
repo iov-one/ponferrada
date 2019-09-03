@@ -1,4 +1,4 @@
-import { Identity } from "@iov/bcp";
+import { ChainId } from "@iov/bcp";
 
 import { aNewStore } from "..";
 import * as identities from "../../communication/identities";
@@ -13,7 +13,7 @@ describe("Extension reducer", () => {
   it("has correct initial state", async () => {
     const store = aNewStore();
     const { identities } = store.getState();
-    expect(identities).toEqual({});
+    expect(identities).toEqual(new Map());
   });
 
   it("dispatches correctly setExtensionStateAction action", async () => {
@@ -39,11 +39,9 @@ describe("Extension reducer", () => {
     const extension = await getExtensionStatus();
     store.dispatch(setIdentitiesStateAction(extension.identities));
 
-    const extensionIdentities: { [chain: string]: Identity } = {
-      "ethereum-eip155-5777": identitiesResponse[0],
-    };
+    const expectedIdentities = new Map([["ethereum-eip155-5777" as ChainId, identitiesResponse[0]]]);
 
     const identitiesState = store.getState().identities;
-    expect(identitiesState).toEqual(extensionIdentities);
+    expect(identitiesState).toEqual(expectedIdentities);
   });
 });

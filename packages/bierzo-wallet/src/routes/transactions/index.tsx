@@ -1,4 +1,4 @@
-import { Address, Identity } from "@iov/bcp";
+import { Address, ChainId, Identity } from "@iov/bcp";
 import FileSaver from "file-saver";
 import { SelectFieldFormItem } from "medulas-react-components";
 import * as React from "react";
@@ -23,7 +23,7 @@ const Transactions = (): JSX.Element => {
 
   React.useEffect(() => {
     let isSubscribed = false;
-    async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
+    async function processIdentities(identities: ReadonlyMap<ChainId, Identity>): Promise<void> {
       const addressPairs = (await getChainAddressPairs(identities)).map(pair => pair.address);
       if (isSubscribed) {
         setUserAddresses(addressPairs);

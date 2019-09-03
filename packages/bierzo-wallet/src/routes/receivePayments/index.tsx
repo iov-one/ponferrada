@@ -1,4 +1,4 @@
-import { Identity } from "@iov/bcp";
+import { ChainId, Identity } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import React from "react";
 import * as ReactRedux from "react-redux";
@@ -20,7 +20,7 @@ const ReceivePayment = (): JSX.Element => {
 
   React.useEffect(() => {
     let isSubscribed = true;
-    async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
+    async function processIdentities(identities: ReadonlyMap<ChainId, Identity>): Promise<void> {
       const addresses = await getChainAddressPairs(identities);
       if (isSubscribed) {
         setAddresses(addresses);

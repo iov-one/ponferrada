@@ -1,4 +1,4 @@
-import { Identity } from "@iov/bcp";
+import { ChainId, Identity } from "@iov/bcp";
 import { BillboardContext, PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
@@ -20,7 +20,7 @@ export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
 export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 export const loginBootSequence = async (
-  identities: { [chain: string]: Identity },
+  identities: ReadonlyMap<ChainId, Identity>,
   dispatch: Dispatch,
 ): Promise<void> => {
   const chainTokens = await getTokens();

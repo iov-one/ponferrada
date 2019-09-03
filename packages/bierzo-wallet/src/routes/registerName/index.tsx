@@ -1,4 +1,4 @@
-import { Identity, TransactionId } from "@iov/bcp";
+import { ChainId, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection, ChainAddressPair } from "@iov/bns";
 import {
   BillboardContext,
@@ -86,7 +86,7 @@ const RegisterUsername = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
 
   React.useEffect(() => {
-    async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {
+    async function processIdentities(identities: ReadonlyMap<ChainId, Identity>): Promise<void> {
       setAddresses(await getChainAddressPairs(identities));
     }
 
@@ -97,10 +97,10 @@ const RegisterUsername = (): JSX.Element => {
     const formValues = values as FormValues;
 
     const username = formValues[REGISTER_USERNAME_FIELD];
-    let bnsIdentity: Identity | null = null;
+    let bnsIdentity: Identity | undefined;
     for (const address of addresses) {
       if ((await getConnectionForChainId(address.chainId)) instanceof BnsConnection) {
-        bnsIdentity = identities[address.chainId];
+        bnsIdentity = identities.get(address.chainId);
       }
     }
 

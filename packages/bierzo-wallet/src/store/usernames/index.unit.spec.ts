@@ -20,7 +20,7 @@ withChainsDescribe("Usernames reducer", () => {
   });
 
   it("returns empty when no keys passed to getUsernames function", async () => {
-    const usernames = await getUsernames({});
+    const usernames = await getUsernames(new Map());
     expect(usernames).toEqual([]);
   });
 
@@ -135,7 +135,7 @@ withChainsDescribe("Usernames reducer", () => {
     const extension = await getExtensionStatus();
     store.dispatch(setIdentitiesStateAction(extension.identities));
 
-    const emptyChainUsernames = await getUsernames({});
+    const emptyChainUsernames = await getUsernames(new Map());
     store.dispatch(addUsernamesAction(emptyChainUsernames));
 
     const chainUsernames = await getUsernames(store.getState().identities);

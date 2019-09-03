@@ -12,7 +12,7 @@ interface Props {
 const RequireLogin = ({ children }: Props): JSX.Element => {
   const identities = useSelector((state: RootState) => state.identities);
 
-  if (Object.values(identities).length !== 0) {
+  if (identities.size !== 0) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 

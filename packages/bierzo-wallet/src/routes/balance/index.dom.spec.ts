@@ -40,15 +40,18 @@ const usernames: DeepPartial<UsernamesState> = [
   },
 ];
 
-const identities = {
-  bnsChainId: {
-    chainId: bnsChainId,
-    pubkey: {
-      algo: Algorithm.Ed25519,
-      data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+const identities = new Map([
+  [
+    bnsChainId,
+    {
+      chainId: bnsChainId,
+      pubkey: {
+        algo: Algorithm.Ed25519,
+        data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+      },
     },
-  },
-};
+  ],
+]);
 
 describe("The /balance route", () => {
   let store: Store<RootState>;

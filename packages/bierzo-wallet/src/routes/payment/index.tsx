@@ -74,7 +74,7 @@ const Payment = (): JSX.Element => {
       recipient = formValues[ADDRESS_FIELD] as Address;
     }
 
-    const identity = identities[chainId];
+    const identity = identities.get(chainId);
     if (!identity) {
       toast.show("None of your identities can send on this chain", ToastVariant.ERROR);
       return;

@@ -25,15 +25,18 @@ const balancesAmount: DeepPartial<BalanceState> = {
 };
 
 const bnsChainId = "local-iov-devnet" as ChainId;
-const identities = {
-  bnsChainId: {
-    chainId: bnsChainId,
-    pubkey: {
-      algo: Algorithm.Ed25519,
-      data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+const identities = new Map([
+  [
+    bnsChainId,
+    {
+      chainId: bnsChainId,
+      pubkey: {
+        algo: Algorithm.Ed25519,
+        data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+      },
     },
-  },
-};
+  ],
+]);
 
 describe("The /payment route", () => {
   let store: Store<RootState>;
