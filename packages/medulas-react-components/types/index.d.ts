@@ -68,6 +68,7 @@ export {
   ValidationError,
 };
 export { ToastContext, ToastContextInterface, ToastProvider } from "./context/ToastProvider";
+export { BillboardContext, BillboardContextInterface, BillboardProvider } from "./context/BillboardProvider";
 export { ToastVariant } from "./context/ToastProvider/Toast";
 export { useOpen } from "./hooks/open";
 export { backgroundColor, secondaryColor, white, lightFont } from "./theme/utils/variables";

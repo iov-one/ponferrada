@@ -1,10 +1,11 @@
 import { Identity } from "@iov/bcp";
-import { PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
+import { BillboardContext, PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
 
 import { history } from "..";
+import BillboardMessage from "../../components/BillboardMessage";
 import { subscribeBalance } from "../../logic/balances";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
@@ -39,12 +40,15 @@ export const loginBootSequence = async (
 };
 
 const Login = (): JSX.Element => {
+  const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
   const store = ReactRedux.useStore();
 
   const onLogin = async (_: object): Promise<void> => {
+    billboard.show(<BillboardMessage />);
     const result = await getExtensionStatus();
+    billboard.close();
     dispatch(setExtensionStateAction(result.connected, result.installed, result.identities));
 
     if (!result.installed) {
