@@ -113,6 +113,7 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> 
       fee: {
         tokens: stringToAmount("100", iov),
       },
+      username: "test*iov",
     },
   },
   {
