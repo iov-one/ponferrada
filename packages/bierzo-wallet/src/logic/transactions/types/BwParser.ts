@@ -8,6 +8,8 @@ import {
 } from "@iov/bcp";
 import { ReadonlyDate } from "readonly-date";
 
+import { CsvRow } from "../../csvBuilder";
+
 export interface ProcessedTx<T = LightTransaction> {
   readonly time: ReadonlyDate;
   readonly id: TransactionId;
@@ -21,6 +23,6 @@ export abstract class BwParser<K> {
     currentUserAddress: Address,
   ): Promise<ProcessedTx>;
   abstract graphicalRepresentation(tx: ProcessedTx, addresses: Address[]): JSX.Element;
-  abstract csvRepresentation(tx: ProcessedTx): string;
+  abstract csvRepresentation(tx: ProcessedTx): CsvRow;
   abstract headerRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element;
 }
