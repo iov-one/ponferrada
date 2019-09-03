@@ -5,7 +5,7 @@ import * as React from "react";
 import { useSelector } from "react-redux";
 
 import PageMenu from "../../components/PageMenu";
-import { ProcessedTx } from "../../logic/transactions/types/BwParser";
+import CsvRepresentation, { CsvRow } from "../../logic/csvBuilder";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairs } from "../../utils/tokens";
@@ -73,13 +73,30 @@ const Transactions = (): JSX.Element => {
   }
 
   function onDownloadCSV(): void {
+    const header: CsvRow = {
+      id: "ID",
+      recepient: "Recepient",
+      sender: "Sender",
+      quantity: "Quantity",
+      fractionalDigits: "Fractional Digits",
+      tokenTicker: "Token Ticker",
+      feeQuantity: "Fee Quantity",
+      feeFractionalDigits: "Fee Fractional Digits",
+      feeTokenTicker: "Fee Token Ticker",
+      time: "Time",
+      note: "Note",
+    };
+
+    const csv = new CsvRepresentation(header);
+    orderedTxs.forEach(tx => csv.addRow(BwParserFactory.getCsvRepresentation(tx)));
+
     // TODO UPDATE HEADER WHEN OTHER TX TYPES ARE ADDED
-    const csvHeader =
+    /*const csvHeader =
       '"ID";"Recipient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Fee Quantity";"Fee Fractional Digits";"Fee Token Ticker";"Time";"Note"';
     const csvBody = orderedTxs.map((tx: ProcessedTx) => BwParserFactory.getCsvRepresentation(tx));
 
-    const blob = new Blob([`${csvHeader}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });
-    FileSaver.saveAs(blob, "transactions.csv");
+    const blob = new Blob([`${csvHeader}\n${csvBody.join("\n")}`], { type: "text/plain;charset=utf-8" });*/
+    FileSaver.saveAs(csv.blob(), "transactions.csv");
   }
 
   return (
