@@ -1,5 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Bierzo wallet Csv Builder 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <button
+    aria-label="Export as CSV"
+    className="MuiButtonBase-root MuiFab-root makeStyles-root MuiFab-extended MuiFab-sizeSmall makeStyles-sizeSmall MuiFab-secondary makeStyles-secondary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiFab-label"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <img
+          alt="Download"
+          className="makeStyles-root"
+          height={16}
+          src="download.svg"
+          width={16}
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2"
+        >
+          Export as .CSV
+        </h6>
+      </div>
+    </span>
+  </button>
+</div>
+`;
+
 exports[`Storyshots Bierzo wallet Login page 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
