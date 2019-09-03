@@ -149,9 +149,7 @@ const ProposalForm = (): JSX.Element => {
       dispatch(replaceProposalsAction(chainProposals));
     };
 
-    setTimeout(() => {
-      updateChainProposals();
-    }, 5000);
+    setTimeout(() => updateChainProposals(), 5000);
 
     dispatch(setTransactionsStateAction(transactionId));
   };

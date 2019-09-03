@@ -44,9 +44,7 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
         dispatch(replaceProposalsAction(chainProposals));
       };
 
-      setTimeout(() => {
-        updateChainProposals();
-      }, 5000);
+      setTimeout(() => updateChainProposals(), 5000);
 
       dispatch(setTransactionsStateAction(transactionId));
     }
