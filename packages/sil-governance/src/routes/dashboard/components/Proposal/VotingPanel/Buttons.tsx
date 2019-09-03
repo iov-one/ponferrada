@@ -6,6 +6,7 @@ import * as ReactRedux from "react-redux";
 
 import { sendSignAndPostRequest } from "../../../../../communication/signandpost";
 import { getBnsConnection } from "../../../../../logic/connection";
+import { getProposals, replaceProposalsAction } from "../../../../../store/proposals";
 import { RootState } from "../../../../../store/reducers";
 import { setTransactionsStateAction } from "../../../../../store/transactions";
 
@@ -37,6 +38,16 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
       const transactionId = await sendSignAndPostRequest(connection, voteTx);
+
+      const updateChainProposals = async (): Promise<void> => {
+        const chainProposals = await getProposals(governor);
+        dispatch(replaceProposalsAction(chainProposals));
+      };
+
+      setTimeout(() => {
+        updateChainProposals();
+      }, 5000);
+
       dispatch(setTransactionsStateAction(transactionId));
     }
   };
