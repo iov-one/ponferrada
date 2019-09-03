@@ -4,7 +4,7 @@ import React from "react";
 function BillboardMessage(): JSX.Element {
   return (
     <Block bgcolor="white" padding={2}>
-      <Typography variant="h6">Please interact with NEUMA extension before continue.</Typography>
+      <Typography variant="h6">Please authorize request in Neuma to continue.</Typography>
     </Block>
   );
 }
