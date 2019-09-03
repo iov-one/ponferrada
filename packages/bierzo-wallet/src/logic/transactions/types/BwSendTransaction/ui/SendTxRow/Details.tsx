@@ -1,16 +1,9 @@
 import { Address } from "@iov/bcp";
-import { makeStyles } from "@material-ui/core";
 import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import BlockchainAddress from "../../../../../../components/BlockchainAddress";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
-
-const useStyles = makeStyles({
-  sectionName: {
-    overflowWrap: "break-word",
-  },
-});
 
 interface Props {
   readonly tx: ProcessedSendTransaction;
@@ -18,8 +11,6 @@ interface Props {
 }
 
 const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
-  const classes = useStyles();
-
   return (
     <Block paddingLeft="56px" display="flex" flexDirection="column">
       <Block margin={2} />
