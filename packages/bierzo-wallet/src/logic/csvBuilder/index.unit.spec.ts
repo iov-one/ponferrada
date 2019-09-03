@@ -2,28 +2,26 @@ import CsvRepresentation, { CsvRow } from "./index";
 
 describe("Logic :: csvBuilder", () => {
   let csvBuilder: CsvRepresentation;
+  const header: CsvRow = {
+    id: "ID",
+    recepient: "Recepient",
+    sender: "Sender",
+    quantity: "Quantity",
+    fractionalDigits: "Fractional Digits",
+    tokenTicker: "Token Ticker",
+    feeQuantity: "Fee Quantity",
+    feeFractionalDigits: "Fee Fractional Digits",
+    feeTokenTicker: "Fee Token Ticker",
+    time: "Time",
+    note: "Note",
+  };
 
   beforeEach(() => {
-    const header: CsvRow = {
-      id: "ID",
-      recepient: "Recepient",
-      sender: "Sender",
-      quantity: "Quantity",
-      fractionalDigits: "Fractional Digits",
-      tokenTicker: "Token Ticker",
-      feeQuantity: "Fee Quantity",
-      feeFractionalDigits: "Fee Fractional Digits",
-      feeTokenTicker: "Fee Token Ticker",
-      time: "Time",
-      note: "Note",
-    };
     csvBuilder = new CsvRepresentation(header);
   });
 
   it("header should contain semicolon separated string", async () => {
-    expect(csvBuilder.csvHeader).toEqual(
-      '"ID";"Recepient";"Sender";"Quantity";"Fractional Digits";"Token Ticker";"Fee Quantity";"Fee Fractional Digits";"Fee Token Ticker";"Time";"Note"',
-    );
+    expect(csvBuilder.csvHeader).toEqual(header);
   });
 
   it("should contain added rows", async () => {
@@ -60,6 +58,6 @@ describe("Logic :: csvBuilder", () => {
 
   it("should return blob with proper encoding", async () => {
     const blob = csvBuilder.blob();
-    expect(blob.type).toEqual("text/plain;charset=utf-8");
+    expect(blob.type).toEqual("text/csv;charset=utf-8");
   });
 });
