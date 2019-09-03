@@ -4,7 +4,7 @@ import { disconnect } from "../../logic/connection";
 import { getExtensionStatus } from "../../logic/extension";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { setExtensionStateAction } from "../extension";
+import { setIdentitiesStateAction } from "../extension";
 import { addBalancesAction, getBalances } from "./actions";
 
 withChainsDescribe("Tokens reducer", () => {
@@ -37,10 +37,9 @@ withChainsDescribe("Tokens reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.identities));
+    store.dispatch(setIdentitiesStateAction(extension.identities));
 
-    const keys = store.getState().extension.identities;
-    const tokens = await getBalances(keys);
+    const tokens = await getBalances(store.getState().identities);
     store.dispatch(addBalancesAction(tokens));
 
     const balances = store.getState().balances;

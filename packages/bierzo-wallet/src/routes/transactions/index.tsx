@@ -19,7 +19,7 @@ const Transactions = (): JSX.Element => {
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN);
   const [order, setOrder] = React.useState(ORDER_DESC);
   const parsedTxs = useSelector((state: RootState) => state.notifications.transactions);
-  const identities = useSelector((state: RootState) => state.extension.identities);
+  const identities = useSelector((state: RootState) => state.identities);
 
   React.useEffect(() => {
     let isSubscribed = false;

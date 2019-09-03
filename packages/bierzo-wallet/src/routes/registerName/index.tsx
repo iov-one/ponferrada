@@ -83,7 +83,7 @@ const RegisterUsername = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
-  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
+  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
 
   React.useEffect(() => {
     async function processIdentities(identities: { [chain: string]: Identity }): Promise<void> {

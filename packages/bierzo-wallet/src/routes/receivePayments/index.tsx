@@ -16,7 +16,7 @@ function onReturnToBalance(): void {
 
 const ReceivePayment = (): JSX.Element => {
   const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
-  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
+  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
 
   React.useEffect(() => {
     let isSubscribed = true;

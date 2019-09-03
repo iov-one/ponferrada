@@ -5,17 +5,15 @@ import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
 import { getExtensionStatus } from "../../logic/extension";
 import { aNewStore } from "../../store";
-import { setExtensionStateAction } from "./actions";
+import { setIdentitiesStateAction } from "./actions";
 
 describe("Extension reducer", () => {
   afterAll(() => disconnect());
 
   it("has correct initial state", async () => {
     const store = aNewStore();
-    const extension = store.getState().extension;
-    expect(extension).toEqual({
-      identities: {},
-    });
+    const { identities } = store.getState();
+    expect(identities).toEqual({});
   });
 
   it("dispatches correctly setExtensionStateAction action", async () => {
@@ -39,13 +37,13 @@ describe("Extension reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.identities));
+    store.dispatch(setIdentitiesStateAction(extension.identities));
 
     const extensionIdentities: { [chain: string]: Identity } = {
       "ethereum-eip155-5777": identitiesResponse[0],
     };
 
-    const extensionState = store.getState().extension;
-    expect(extensionState.identities).toEqual(extensionIdentities);
+    const identitiesState = store.getState().identities;
+    expect(identitiesState).toEqual(extensionIdentities);
   });
 });

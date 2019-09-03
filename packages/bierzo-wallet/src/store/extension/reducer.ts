@@ -4,28 +4,26 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
 
-export interface ExtensionState {
-  readonly identities: { [chain: string]: Identity };
+export interface IdentitiesState {
+  [chain: string]: Identity;
 }
 
-export interface SetExtensionStateActionType extends Action {
-  type: "@@extension/SET_STATE";
-  payload: ExtensionState;
+export interface SetIdentitiesStateActionType extends Action {
+  type: "@@identities/SET_STATE";
+  payload: IdentitiesState;
 }
 
-export type ExtensionActions = ActionType<typeof actions>;
+export type IdentitiesActions = ActionType<typeof actions>;
 
-const initState: ExtensionState = {
-  identities: {},
-};
+const initState: IdentitiesState = {};
 
-export function extensionReducer(
-  state: ExtensionState = initState,
-  action: ExtensionActions,
-): ExtensionState {
+export function identitiesReducer(
+  state: IdentitiesState = initState,
+  action: IdentitiesActions,
+): IdentitiesState {
   switch (action.type) {
-    case "@@extension/SET_STATE":
-      return { ...state, ...action.payload };
+    case "@@identities/SET_STATE":
+      return action.payload;
     default:
       return state;
   }

@@ -4,7 +4,7 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
 import { balancesReducer, BalanceState } from "./balances";
-import { extensionReducer, ExtensionState } from "./extension";
+import { identitiesReducer, IdentitiesState } from "./extension";
 import { notificationReducer, NotificationState } from "./notifications";
 import { tokensReducer, TokenState } from "./tokens";
 import { usernamesReducer, UsernamesState } from "./usernames";
@@ -14,7 +14,7 @@ export interface ResetAppActionType extends Action {
 }
 
 export interface RootReducer {
-  extension: ExtensionState;
+  identities: IdentitiesState;
   notifications: NotificationState;
   tokens: TokenState;
   balances: BalanceState;
@@ -22,7 +22,7 @@ export interface RootReducer {
 }
 
 const allReducers = combineReducers({
-  extension: extensionReducer,
+  identities: identitiesReducer,
   notifications: notificationReducer,
   tokens: tokensReducer,
   balances: balancesReducer,

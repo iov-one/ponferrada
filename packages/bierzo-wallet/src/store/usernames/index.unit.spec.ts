@@ -6,7 +6,7 @@ import { disconnect } from "../../logic/connection";
 import { getExtensionStatus } from "../../logic/extension";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { setExtensionStateAction } from "../extension";
+import { setIdentitiesStateAction } from "../extension";
 import { addUsernamesAction, getUsernames } from "./actions";
 import { BwUsername } from "./reducer";
 
@@ -45,10 +45,9 @@ withChainsDescribe("Usernames reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.identities));
+    store.dispatch(setIdentitiesStateAction(extension.identities));
 
-    const keys = store.getState().extension.identities;
-    const usernames = await getUsernames(keys);
+    const usernames = await getUsernames(store.getState().identities);
     expect(usernames).toEqual([]);
   });
 
@@ -134,13 +133,12 @@ withChainsDescribe("Usernames reducer", () => {
     jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
 
     const extension = await getExtensionStatus();
-    store.dispatch(setExtensionStateAction(extension.identities));
+    store.dispatch(setIdentitiesStateAction(extension.identities));
 
-    const keys = store.getState().extension.identities;
     const emptyChainUsernames = await getUsernames({});
     store.dispatch(addUsernamesAction(emptyChainUsernames));
 
-    const chainUsernames = await getUsernames(keys);
+    const chainUsernames = await getUsernames(store.getState().identities);
     store.dispatch(addUsernamesAction(chainUsernames));
 
     const usernames = store.getState().usernames;

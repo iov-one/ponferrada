@@ -11,7 +11,7 @@ import { getExtensionStatus } from "../../logic/extension";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
-import { setExtensionStateAction } from "../../store/extension";
+import { setIdentitiesStateAction } from "../../store/extension";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
@@ -60,7 +60,7 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    dispatch(setExtensionStateAction(identities));
+    dispatch(setIdentitiesStateAction(identities));
     await loginBootSequence(identities, dispatch);
 
     history.push(BALANCE_ROUTE);

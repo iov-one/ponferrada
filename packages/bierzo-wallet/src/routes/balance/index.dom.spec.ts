@@ -56,7 +56,7 @@ describe("The /balance route", () => {
   describe("with balance", () => {
     beforeEach(async () => {
       store = aNewStore({
-        extension: { identities },
+        identities,
         balances: balancesAmount,
         usernames,
       });
@@ -111,9 +111,7 @@ describe("The /balance route", () => {
 
   describe("without balance and username", () => {
     beforeEach(async () => {
-      store = aNewStore({
-        extension: { identities },
-      });
+      store = aNewStore({ identities });
       balanceDom = await travelToBalance(store);
     });
 

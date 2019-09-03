@@ -1,10 +1,6 @@
-import { Identity } from "@iov/bcp";
+import { IdentitiesState, SetIdentitiesStateActionType } from "./reducer";
 
-import { SetExtensionStateActionType } from "./reducer";
-
-export const setExtensionStateAction = (identities: {
-  [chain: string]: Identity;
-}): SetExtensionStateActionType => ({
-  type: "@@extension/SET_STATE",
-  payload: { identities },
+export const setIdentitiesStateAction = (identities: IdentitiesState): SetIdentitiesStateActionType => ({
+  type: "@@identities/SET_STATE",
+  payload: identities,
 });

@@ -40,7 +40,7 @@ describe("The /payment route", () => {
   let paymentDom: React.Component;
   beforeEach(async () => {
     store = aNewStore({
-      extension: { identities },
+      identities,
       balances: balancesAmount,
     });
     paymentDom = await travelToPayment(store);

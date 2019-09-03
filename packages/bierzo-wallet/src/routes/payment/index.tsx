@@ -35,7 +35,7 @@ const Payment = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
-  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
+  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
 
