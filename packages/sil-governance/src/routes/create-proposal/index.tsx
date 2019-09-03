@@ -8,7 +8,12 @@ import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
 import { RootState } from "../../store/reducers";
 import { setTransactionsStateAction } from "../../store/transactions";
-import { DASHBOARD_ROUTE } from "../paths";
+import {
+  DASHBOARD_ACTIVE_ROUTE,
+  DASHBOARD_ENDED_ROUTE,
+  DASHBOARD_ROUTE,
+  DASHBOARD_SUBMITTED_ROUTE,
+} from "../paths";
 import ProposalForm from "./components/ProposalForm";
 
 const CreateProposal = (): JSX.Element => {
@@ -20,8 +25,20 @@ const CreateProposal = (): JSX.Element => {
     history.push(DASHBOARD_ROUTE);
   };
 
-  const updateFilter = (_filter: ElectionFilter): void => {
-    history.push(DASHBOARD_ROUTE);
+  const updateFilter = (filter: ElectionFilter): void => {
+    switch (filter) {
+      case ElectionFilter.Active:
+        history.push(DASHBOARD_ACTIVE_ROUTE);
+        break;
+      case ElectionFilter.Submitted:
+        history.push(DASHBOARD_SUBMITTED_ROUTE);
+        break;
+      case ElectionFilter.Ended:
+        history.push(DASHBOARD_ENDED_ROUTE);
+        break;
+      default:
+        history.push(DASHBOARD_ROUTE);
+    }
   };
 
   return (
@@ -32,7 +49,7 @@ const CreateProposal = (): JSX.Element => {
         <ConfirmTransaction transactionId={lastSignAndPostResult} onReturnToDashboard={onReturnToDashboard} />
       ) : (
         <Block minWidth="100%" display="flex">
-          <AsideFilter onChangeFilter={updateFilter} />
+          <AsideFilter filter={null} onChangeFilter={updateFilter} />
           <ProposalForm />
         </Block>
       )}
