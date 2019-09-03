@@ -28,14 +28,7 @@ const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
           <Typography variant="subtitle2" weight="regular" gutterBottom>
             Sender:
           </Typography>
-          <Typography
-            variant="subtitle2"
-            weight="regular"
-            color="textSecondary"
-            className={classes.sectionName}
-          >
-            {tx.original.sender}
-          </Typography>
+          <BlockchainAddress userAddresses={userAddresses} address={tx.original.sender} />
         </Block>
         <Block width="35%">
           <Block>
