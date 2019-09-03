@@ -7,7 +7,7 @@ import { disconnect } from "../../logic/connection";
 import { getExtensionStatus } from "../../logic/extension";
 import { setIdentitiesStateAction } from "./actions";
 
-describe("Extension reducer", () => {
+describe("Identitites reducer", () => {
   afterAll(() => disconnect());
 
   it("has correct initial state", async () => {
@@ -16,7 +16,7 @@ describe("Extension reducer", () => {
     expect(identities).toEqual(new Map());
   });
 
-  it("dispatches correctly setExtensionStateAction action", async () => {
+  it("correctly performs action from setIdentitiesStateAction", async () => {
     const store = aNewStore();
     const ethResponse = {
       jsonrpc: "2.0",
