@@ -5,9 +5,9 @@ import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
 
 import { history } from "..";
+import { getExtensionStatus } from "../../communication/extension";
 import BillboardMessage from "../../components/BillboardMessage";
 import { subscribeBalance } from "../../logic/balances";
-import { getExtensionStatus } from "../../logic/extension";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";

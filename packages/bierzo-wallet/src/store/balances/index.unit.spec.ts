@@ -1,7 +1,7 @@
+import { getExtensionStatus } from "../../communication/extension";
 import { parseGetIdentitiesResponse } from "../../communication/identities";
 import * as identities from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
-import { getExtensionStatus } from "../../logic/extension";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { setIdentitiesStateAction } from "../identities";

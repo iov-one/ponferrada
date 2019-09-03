@@ -1,10 +1,10 @@
 import { ChainId } from "@iov/bcp";
 
 import { aNewStore } from "..";
+import { getExtensionStatus } from "../../communication/extension";
 import * as identities from "../../communication/identities";
 import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
-import { getExtensionStatus } from "../../logic/extension";
 import { setIdentitiesStateAction } from "./actions";
 
 describe("Identitites reducer", () => {

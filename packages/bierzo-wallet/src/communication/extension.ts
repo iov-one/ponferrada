@@ -1,6 +1,6 @@
 import { ChainId, Identity } from "@iov/bcp";
 
-import { sendGetIdentitiesRequest } from "../communication/identities";
+import { sendGetIdentitiesRequest } from "./identities";
 
 export interface ExtensionStatus {
   readonly connected: boolean;
