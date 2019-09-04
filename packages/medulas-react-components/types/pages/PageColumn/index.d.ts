@@ -10,7 +10,7 @@ interface Props {
   readonly subtitle: string;
   readonly renderHeader?: () => JSX.Element;
 }
-declare const Layout: ({
+declare const PageColumn: ({
   formRender,
   onSubmit,
   icon,
@@ -20,4 +20,4 @@ declare const Layout: ({
   nextMsg,
   renderHeader,
 }: Props) => JSX.Element;
-export default Layout;
+export default PageColumn;

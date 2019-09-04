@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Layout = ({
+const PageColumn = ({
   formRender,
   onSubmit,
   icon,
@@ -103,4 +103,4 @@ const Layout = ({
   );
 };
 
-export default Layout;
+export default PageColumn;
