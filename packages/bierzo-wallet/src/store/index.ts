@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore, DeepPartial, Middleware, Store } from "redux";
 
-import reducers, { RootReducer, RootState } from "./reducers";
+import reducers, { RootState } from "./reducers";
 export * from "./actions";
 
 const composeEnhancers =
@@ -9,7 +9,7 @@ const composeEnhancers =
 
 const middlewares: readonly Middleware[] = [];
 
-export const configureStore = (): Store<RootReducer> => {
+export const configureStore = (): Store<RootState> => {
   const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
   if (process.env.NODE_ENV !== "production" && module.hot) {
@@ -23,6 +23,6 @@ export const configureStore = (): Store<RootReducer> => {
   return store;
 };
 
-export const aNewStore = (preloadedStore?: DeepPartial<RootState>): Store<RootReducer> => {
+export const aNewStore = (preloadedStore?: DeepPartial<RootState>): Store<RootState> => {
   return createStore(reducers, preloadedStore, composeEnhancers(applyMiddleware(...middlewares)));
 };

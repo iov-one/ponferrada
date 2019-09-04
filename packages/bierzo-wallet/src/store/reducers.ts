@@ -1,5 +1,4 @@
 import { Action, combineReducers, Reducer } from "redux";
-import { StateType } from "typesafe-actions";
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
@@ -13,7 +12,7 @@ export interface ResetAppActionType extends Action {
   type: "@@app/RESET";
 }
 
-export interface RootReducer {
+export interface RootState {
   identities: IdentitiesState;
   notifications: NotificationState;
   tokens: TokenState;
@@ -29,8 +28,8 @@ const allReducers = combineReducers({
   usernames: usernamesReducer,
 });
 
-const createRootReducer = (): Reducer<RootReducer> => (
-  state: RootReducer | undefined,
+const createRootReducer = (): Reducer<RootState> => (
+  state: RootState | undefined,
   action: ActionType<typeof actions>,
 ) => {
   if (action.type === "@@app/RESET") {
@@ -39,7 +38,5 @@ const createRootReducer = (): Reducer<RootReducer> => (
 
   return allReducers(state, action);
 };
-
-export type RootState = StateType<ReturnType<typeof createRootReducer>>;
 
 export default createRootReducer();
