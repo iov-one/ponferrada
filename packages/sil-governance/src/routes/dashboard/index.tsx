@@ -28,9 +28,11 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
 
   useEffect(() => {
     const updateChainProposals = async (): Promise<void> => {
-      if (!governor) throw new Error("Governor not set in store. This is a bug.");
-      const chainProposals = await getProposals(governor);
-      dispatch(replaceProposalsAction(chainProposals));
+      // in DOM tests, governor is not set
+      if (governor) {
+        const chainProposals = await getProposals(governor);
+        dispatch(replaceProposalsAction(chainProposals));
+      }
     };
 
     updateChainProposals();
