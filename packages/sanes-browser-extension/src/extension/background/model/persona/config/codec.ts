@@ -56,20 +56,17 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
 
 export function chainConnector(
   codec: CodecType,
+  expectedChainId: ChainId,
   nodeUrl: string,
   scraper: string | undefined,
 ): ChainConnector {
-  const expectedBnsChainId: ChainId | undefined = undefined;
-  const expectedLiskChainId: ChainId | undefined = undefined;
-  const expectedEthereumChainId: ChainId | undefined = undefined;
-
   switch (codec) {
     case CodecType.Bns:
-      return createBnsConnector(nodeUrl, expectedBnsChainId);
+      return createBnsConnector(nodeUrl, expectedChainId);
     case CodecType.Lisk:
-      return createLiskConnector(nodeUrl, expectedLiskChainId);
+      return createLiskConnector(nodeUrl, expectedChainId);
     case CodecType.Ethereum:
-      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedEthereumChainId);
+      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedChainId);
     default:
       throw new Error("No connector for this codec found");
   }

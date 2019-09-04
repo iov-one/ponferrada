@@ -8,6 +8,7 @@ export type CodecString = "bns" | "lsk" | "eth";
 export interface ChainSpec {
   readonly codecType: CodecString;
   readonly node: string;
+  readonly chainId: ChainId;
   readonly scraper?: string;
 }
 
