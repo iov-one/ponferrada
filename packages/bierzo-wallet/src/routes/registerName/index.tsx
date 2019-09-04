@@ -11,8 +11,8 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
-import { sendSignAndPostRequest } from "../../communication/signAndPost";
 import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
@@ -105,7 +105,7 @@ const RegisterUsername = (): JSX.Element => {
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
       billboard.show(<BillboardMessage />);
-      const transactionId = await sendSignAndPostRequest(request);
+      const transactionId = await extensionRpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       }

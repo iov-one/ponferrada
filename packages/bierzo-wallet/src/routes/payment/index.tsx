@@ -5,8 +5,8 @@ import * as ReactRedux from "react-redux";
 import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { generateSendTxRequest } from "../../communication/requestgenerators";
-import { sendSignAndPostRequest } from "../../communication/signAndPost";
 import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
@@ -89,7 +89,7 @@ const Payment = (): JSX.Element => {
         formValues[TEXTNOTE_FIELD],
       );
       billboard.show(<BillboardMessage />);
-      const transactionId = await sendSignAndPostRequest(request);
+      const transactionId = await extensionRpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
