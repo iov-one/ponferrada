@@ -54,7 +54,6 @@ export const generateSendTxRequest = async (
     amount: amount,
     memo: memo,
   });
-  const tx = TransactionEncoder.toJson(transactionWithFee);
 
   return {
     jsonrpc: "2.0",
@@ -62,7 +61,7 @@ export const generateSendTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      transaction: tx,
+      transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
 };
@@ -80,15 +79,13 @@ export const generateRegisterUsernameTxRequest = async (
   };
   const transactionWithFee = await withChainFee(creator.chainId, regUsernameTx);
 
-  const tx = TransactionEncoder.toJson(transactionWithFee);
-
   return {
     jsonrpc: "2.0",
     id: makeJsonRpcId(),
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      transaction: tx,
+      transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
 };
