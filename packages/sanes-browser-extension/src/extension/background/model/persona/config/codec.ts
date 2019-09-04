@@ -5,7 +5,7 @@ import { createEthereumConnector } from "@iov/ethereum";
 import { HdPaths } from "@iov/keycontrol";
 import { createLiskConnector } from "@iov/lisk";
 
-import { CodecString, getConfigurationFile } from "./configurationfile";
+import { CodecString } from "./configurationfile";
 
 export enum CodecType {
   Bns,
