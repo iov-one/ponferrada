@@ -7,21 +7,33 @@ import PageColumn from "./index";
 
 const RenderHeader = (): JSX.Element => <React.Fragment />;
 
-storiesOf("Components/Pages", module)
+storiesOf("Components/PageColumn", module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "PageColumn",
-    (): JSX.Element => (
-      <Storybook>
-        <PageColumn
-          icon="white"
-          onSubmit={action("Page form submit")}
-          primaryTitle="Page"
-          secondaryTitle="column"
-          subtitle="Storybook PageColumn component example."
-          renderHeader={RenderHeader}
-          nextMsg="Continue"
-        />
-      </Storybook>
-    ),
-  );
+  .add("default", () => (
+    <Storybook>
+      <PageColumn
+        icon="white"
+        primaryTitle="Page"
+        secondaryTitle="column"
+        subtitle="Storybook PageColumn component example."
+        renderHeader={RenderHeader}
+        primaryNextLabel="Continue"
+        primaryNextClicked={action("Page form submit")}
+      />
+    </Storybook>
+  ))
+  .add("with secondary next button", () => (
+    <Storybook>
+      <PageColumn
+        icon="white"
+        primaryTitle="Page"
+        secondaryTitle="column"
+        subtitle="Storybook PageColumn component example."
+        renderHeader={RenderHeader}
+        primaryNextLabel="Continue"
+        primaryNextClicked={action("Page form submit")}
+        secondaryNextLabel="Password forgotten"
+        secondaryNextClicked={action("Password forgotten clicked")}
+      />
+    </Storybook>
+  ));

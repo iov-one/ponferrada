@@ -77,14 +77,18 @@ const Login = (): JSX.Element => {
     history.push(BALANCE_ROUTE);
   };
 
+  const onLoginWithLedger = async (): Promise<void> => {};
+
   return (
     <PageColumn
       icon="white"
-      onSubmit={onLogin}
       primaryTitle="Welcome"
       secondaryTitle="to your IOV Wallet"
       subtitle="Continue to access your account"
-      nextMsg="Continue"
+      primaryNextLabel="Continue with Neuma"
+      primaryNextClicked={onLogin}
+      secondaryNextLabel="Continue with Ledger Nano S"
+      secondaryNextClicked={onLoginWithLedger}
     />
   );
 };

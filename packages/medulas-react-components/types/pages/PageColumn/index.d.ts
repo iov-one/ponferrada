@@ -1,8 +1,10 @@
 import { FormApi } from "final-form";
 interface Props {
   readonly icon: "white" | "black";
-  readonly nextMsg: string;
-  readonly onSubmit: (values: object) => void;
+  readonly primaryNextLabel: string;
+  readonly primaryNextClicked: (values: object) => void;
+  readonly secondaryNextLabel?: string;
+  readonly secondaryNextClicked?: () => void;
   readonly formRender?: (form: FormApi) => JSX.Element;
   readonly validation?: (values: object) => object | Promise<object>;
   readonly primaryTitle: string;
@@ -12,12 +14,14 @@ interface Props {
 }
 declare const PageColumn: ({
   formRender,
-  onSubmit,
   icon,
   primaryTitle,
   secondaryTitle,
   subtitle,
-  nextMsg,
+  primaryNextLabel,
+  primaryNextClicked,
+  secondaryNextLabel,
+  secondaryNextClicked,
   renderHeader,
 }: Props) => JSX.Element;
 export default PageColumn;

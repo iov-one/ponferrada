@@ -116,40 +116,51 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
       <div
         className="MuiBox-root MuiBox-root"
       >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="submit"
+        <div
+          className="MuiBox-root MuiBox-root"
         >
-          <span
-            className="MuiButton-label"
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
           >
-            Continue 
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
+            <span
+              className="MuiButton-label"
             >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </span>
-        </button>
+              Continue with Neuma 
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </span>
+          </button>
+          <br />
+          <p
+            className="MuiTypography-root makeStyles-secondaryNext makeStyles-link MuiTypography-body2"
+            onClick={[Function]}
+          >
+            Continue with Ledger Nano S
+          </p>
+        </div>
       </div>
     </form>
   </div>
@@ -8035,7 +8046,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Components/Pages PageColumn 1`] = `
+exports[`Storyshots Components/PageColumn default 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -8097,40 +8108,158 @@ exports[`Storyshots Components/Pages PageColumn 1`] = `
       <div
         className="MuiBox-root MuiBox-root"
       >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="submit"
+        <div
+          className="MuiBox-root MuiBox-root"
         >
-          <span
-            className="MuiButton-label"
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
           >
-            Continue 
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
+            <span
+              className="MuiButton-label"
             >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </span>
-        </button>
+              Continue 
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </span>
+          </button>
+          <br />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/PageColumn with secondary next button 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Log in Image"
+      className="makeStyles-root makeStyles-cover"
+      src="People.svg"
+    />
+    <img
+      alt="Logo"
+      className="makeStyles-root makeStyles-logo"
+      src="logo.svg"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <form
+      className="makeStyles-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-scroll"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h4
+              className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+            >
+              Page 
+            </h4>
+            <h4
+              className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+            >
+              column
+            </h4>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h6 MuiTypography-colorTextPrimary"
+            >
+              Storybook PageColumn component example.
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Continue 
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </span>
+          </button>
+          <br />
+          <p
+            className="MuiTypography-root makeStyles-secondaryNext makeStyles-link MuiTypography-body2"
+            onClick={[Function]}
+          >
+            Password forgotten
+          </p>
+        </div>
       </div>
     </form>
   </div>
