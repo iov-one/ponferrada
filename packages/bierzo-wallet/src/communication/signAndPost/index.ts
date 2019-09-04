@@ -1,82 +1,9 @@
 /*global chrome*/
-import {
-  Address,
-  Amount,
-  ChainId,
-  Identity,
-  SendTransaction,
-  TransactionId,
-  UnsignedTransaction,
-  WithCreator,
-} from "@iov/bcp";
-import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
+import { TransactionId } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
+import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
-import { getCodecForChainId } from "../../logic/codec";
-import { getConnectionForChainId } from "../../logic/connection";
-
-async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
-  const connection = await getConnectionForChainId(chainId);
-  const withFee = await connection.withDefaultFee(transaction);
-  return withFee;
-}
-
-export const generateSendTxRequest = async (
-  creator: Identity,
-  recipient: Address,
-  amount: Amount,
-  memo: string | undefined,
-): Promise<JsonRpcRequest> => {
-  const codec = await getCodecForChainId(creator.chainId);
-
-  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(creator.chainId, {
-    kind: "bcp/send",
-    recipient,
-    creator,
-    sender: codec.identityToAddress(creator),
-    amount: amount,
-    memo: memo,
-  });
-  const tx = TransactionEncoder.toJson(transactionWithFee);
-
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "signAndPost",
-    params: {
-      reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      transaction: tx,
-    },
-  };
-};
-
-export const generateRegisterUsernameTxRequest = async (
-  creator: Identity,
-  username: string,
-  targets: readonly ChainAddressPair[],
-): Promise<JsonRpcRequest> => {
-  const regUsernameTx: RegisterUsernameTx & WithCreator = {
-    kind: "bns/register_username",
-    creator,
-    username,
-    targets,
-  };
-  const transactionWithFee = await withChainFee(creator.chainId, regUsernameTx);
-
-  const tx = TransactionEncoder.toJson(transactionWithFee);
-
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "signAndPost",
-    params: {
-      reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      transaction: tx,
-    },
-  };
-};
 
 export const sendSignAndPostRequest = async (request: JsonRpcRequest): Promise<TransactionId | null> => {
   const config = await getConfig();

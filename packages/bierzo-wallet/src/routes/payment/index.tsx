@@ -5,7 +5,8 @@ import * as ReactRedux from "react-redux";
 import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
-import { generateSendTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
+import { generateSendTxRequest } from "../../communication/requestgenerators";
+import { sendSignAndPostRequest } from "../../communication/signAndPost";
 import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";

@@ -11,7 +11,8 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { generateRegisterUsernameTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
+import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
+import { sendSignAndPostRequest } from "../../communication/signAndPost";
 import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";

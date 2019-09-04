@@ -1,27 +1,9 @@
 /*global chrome*/
 import { Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
+import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../../config";
-import { getConnectionFor } from "../../logic/connection";
-
-export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
-  const connections = await Promise.all(
-    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
-  );
-  const supportedChainIds = connections.map(connection => connection.chainId());
-
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "getIdentities",
-    params: {
-      reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
-      chainIds: TransactionEncoder.toJson(supportedChainIds),
-    },
-  };
-}
 
 function isArrayOfIdentity(data: any): data is readonly Identity[] {
   if (!Array.isArray(data)) {

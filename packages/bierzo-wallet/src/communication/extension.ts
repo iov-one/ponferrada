@@ -1,6 +1,7 @@
 import { Identity } from "@iov/bcp";
 
-import { generateGetIdentitiesRequest, sendGetIdentitiesRequest } from "./identities";
+import { sendGetIdentitiesRequest } from "./identities";
+import { generateGetIdentitiesRequest } from "./requestgenerators";
 
 export interface ExtensionStatus {
   readonly connected: boolean;
