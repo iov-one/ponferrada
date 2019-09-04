@@ -9,18 +9,14 @@ import { getConnectionFor } from "./connection";
 
 let balanceSubscriptions: Subscription[] = [];
 
-export async function subscribeBalance(
-  identities: { [chain: string]: Identity },
-  dispatch: Dispatch,
-): Promise<void> {
+export async function subscribeBalance(identities: readonly Identity[], dispatch: Dispatch): Promise<void> {
   const config = await getConfig();
   const chains = config.chains;
 
   for (const chain of chains) {
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
-    const chainId = connection.chainId() as string;
-    const identity = identities[chainId];
+    const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;
     }

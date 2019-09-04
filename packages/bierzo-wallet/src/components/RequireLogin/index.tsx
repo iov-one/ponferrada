@@ -10,9 +10,9 @@ interface Props {
 }
 
 const RequireLogin = ({ children }: Props): JSX.Element => {
-  const connected = useSelector((state: RootState) => state.extension.connected);
+  const identities = useSelector((state: RootState) => state.identities);
 
-  if (connected) {
+  if (identities.size !== 0) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 

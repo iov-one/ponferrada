@@ -1,18 +1,13 @@
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Address, ChainId } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
 import { Block, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 
-import { chainAddressPairSortedMapping } from "../../utils/tokens";
-
-export interface ChainAddress {
-  readonly chainId: ChainId;
+export interface ChainAddressPairWithName extends ChainAddressPair {
   readonly chainName: string;
-  readonly address: Address;
 }
 
 const useStyles = makeStyles({
@@ -32,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 export interface AddressesRowProps {
-  readonly chain: ChainAddress;
+  readonly chain: ChainAddressPairWithName;
 }
 
 const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
@@ -58,28 +53,16 @@ const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
 };
 
 export interface AddressesTableProps {
-  readonly addresses: ChainAddressPair[];
+  readonly chainAddresses: readonly ChainAddressPairWithName[];
 }
 
-const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
+const AddressesTable = ({ chainAddresses }: AddressesTableProps): JSX.Element => {
   const classes = useStyles();
 
-  const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddress[]>([]);
-
-  React.useEffect(() => {
-    let isSubscribed = true;
-    async function processAddresses(addresses: ChainAddressPair[]): Promise<void> {
-      const chainAddresses = await chainAddressPairSortedMapping(addresses);
-      if (isSubscribed) {
-        setChainAddresses(chainAddresses);
-      }
-    }
-    processAddresses(addresses);
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [addresses]);
+  const chainAddressesSorted = Array.from(chainAddresses).sort(
+    (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+      a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+  );
 
   return (
     <Table>
@@ -91,7 +74,7 @@ const AddressesTable = ({ addresses }: AddressesTableProps): JSX.Element => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {chainAddresses.map(chain => (
+        {chainAddressesSorted.map(chain => (
           <AddressRow key={chain.chainId} chain={chain} />
         ))}
       </TableBody>

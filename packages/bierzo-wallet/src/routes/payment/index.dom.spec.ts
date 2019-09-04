@@ -1,4 +1,5 @@
-import { TokenTicker } from "@iov/bcp";
+import { Algorithm, ChainId, PubkeyBytes, TokenTicker } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
 import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
 
@@ -23,15 +24,26 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
+const bnsChainId = "local-iov-devnet" as ChainId;
+const identities = new Map([
+  [
+    bnsChainId,
+    {
+      chainId: bnsChainId,
+      pubkey: {
+        algo: Algorithm.Ed25519,
+        data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+      },
+    },
+  ],
+]);
+
 describe("The /payment route", () => {
   let store: Store<RootState>;
   let paymentDom: React.Component;
   beforeEach(async () => {
     store = aNewStore({
-      extension: {
-        connected: true,
-        installed: true,
-      },
+      identities,
       balances: balancesAmount,
     });
     paymentDom = await travelToPayment(store);

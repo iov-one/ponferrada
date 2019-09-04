@@ -1,10 +1,12 @@
-import { TokenTicker } from "@iov/bcp";
+import { Address, Algorithm, ChainId, PubkeyBytes, TokenTicker } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
 import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
 
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
 import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
+import { ExtendedIdentity, IdentitiesState } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { UsernamesState } from "../../store/usernames";
 import { click, expectRoute } from "../../utils/test/dom";
@@ -26,7 +28,7 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
-const bnsChainId = "local-iov-devnet";
+const bnsChainId = "local-iov-devnet" as ChainId;
 const usernames: DeepPartial<UsernamesState> = [
   {
     username: "albert*iov",
@@ -39,24 +41,35 @@ const usernames: DeepPartial<UsernamesState> = [
   },
 ];
 
+const identities: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
+  [
+    bnsChainId,
+    {
+      identity: {
+        chainId: bnsChainId,
+        pubkey: {
+          algo: Algorithm.Ed25519,
+          data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+        },
+      },
+      address: "tiov97g97g9" as Address,
+      chainName: "IOV Local Devnet",
+    },
+  ],
+]);
+
 describe("The /balance route", () => {
   let store: Store<RootState>;
   let balanceDom: React.Component;
-  describe("with balance", () => {
-    beforeEach(
-      async (): Promise<void> => {
-        store = aNewStore({
-          extension: {
-            connected: true,
-            installed: true,
-            identities: {},
-          },
-          balances: balancesAmount,
-          usernames,
-        });
-        balanceDom = await travelToBalance(store);
-      },
-    );
+  describe("with balance and username", () => {
+    beforeEach(async () => {
+      store = aNewStore({
+        identities: identities,
+        balances: balancesAmount,
+        usernames: usernames,
+      });
+      balanceDom = await travelToBalance(store);
+    });
 
     it("redirects to the /payment route when clicked", async () => {
       const paymentCard = (await findRenderedDOMComponentWithId(balanceDom, PAYMENT_ROUTE)) as Element;
@@ -105,18 +118,10 @@ describe("The /balance route", () => {
   });
 
   describe("without balance and username", () => {
-    beforeEach(
-      async (): Promise<void> => {
-        store = aNewStore({
-          extension: {
-            connected: true,
-            installed: true,
-            identities: {},
-          },
-        });
-        balanceDom = await travelToBalance(store);
-      },
-    );
+    beforeEach(async () => {
+      store = aNewStore({ identities });
+      balanceDom = await travelToBalance(store);
+    });
 
     it("should show that there is no balance available", async () => {
       const noFundsMessage = getNoFundsMessage(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));

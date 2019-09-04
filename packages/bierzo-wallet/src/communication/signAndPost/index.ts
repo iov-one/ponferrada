@@ -55,7 +55,7 @@ export const generateSendTxRequest = async (
 export const generateRegisterUsernameTxRequest = async (
   creator: Identity,
   username: string,
-  targets: ChainAddressPair[],
+  targets: readonly ChainAddressPair[],
 ): Promise<JsonRpcRequest> => {
   const regUsernameTx: RegisterUsernameTx & WithCreator = {
     kind: "bns/register_username",

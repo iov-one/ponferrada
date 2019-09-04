@@ -35,7 +35,7 @@ const Payment = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
-  const identities = ReactRedux.useSelector((state: RootState) => state.extension.identities);
+  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
 
@@ -74,14 +74,19 @@ const Payment = (): JSX.Element => {
       recipient = formValues[ADDRESS_FIELD] as Address;
     }
 
-    const identity = identities[chainId];
+    const identity = identities.get(chainId);
     if (!identity) {
       toast.show("None of your identities can send on this chain", ToastVariant.ERROR);
       return;
     }
 
     try {
-      const request = await generateSendTxRequest(identity, recipient, amount, formValues[TEXTNOTE_FIELD]);
+      const request = await generateSendTxRequest(
+        identity.identity,
+        recipient,
+        amount,
+        formValues[TEXTNOTE_FIELD],
+      );
       billboard.show(<BillboardMessage />);
       const transactionId = await sendSignAndPostRequest(request);
       if (transactionId === null) {

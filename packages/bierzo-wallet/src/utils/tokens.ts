@@ -1,9 +1,9 @@
-import { BlockchainConnection, Identity } from "@iov/bcp";
+import { BlockchainConnection, ChainId, Identity } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 
-import { ChainAddress } from "../components/AddressesTable";
+import { ChainAddressPairWithName } from "../components/AddressesTable";
 import { getChainName } from "../config";
-import { getCodecForChainId } from "../logic/codec";
+import { ExtendedIdentity } from "../store/identities";
 
 // exported for testing purposes
 export async function filterExistingTokens(
@@ -26,14 +26,15 @@ export async function filterExistingTokens(
 /**
  * This method will convert Identities to ChainAddressPair
  */
-export async function getChainAddressPairs(identities: {
-  [chain: string]: Identity;
-}): Promise<ChainAddressPair[]> {
-  const addresses: ChainAddressPair[] = [];
-  for (const identity of Object.values(identities)) {
+export function getChainAddressPairWithNames(
+  identities: ReadonlyMap<ChainId, ExtendedIdentity>,
+): readonly ChainAddressPairWithName[] {
+  const addresses: ChainAddressPairWithName[] = [];
+  for (const extendedIdentity of identities.values()) {
     addresses.push({
-      chainId: identity.chainId,
-      address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
+      address: extendedIdentity.address,
+      chainId: extendedIdentity.identity.chainId,
+      chainName: extendedIdentity.chainName,
     });
   }
 
@@ -45,15 +46,15 @@ export async function getChainAddressPairs(identities: {
  */
 export async function chainAddressPairSortedMapping(
   addresses: readonly ChainAddressPair[],
-): Promise<readonly ChainAddress[]> {
-  const chainAddresses: ChainAddress[] = [];
+): Promise<readonly ChainAddressPairWithName[]> {
+  const chainAddresses: ChainAddressPairWithName[] = [];
   for (const address of addresses) {
     chainAddresses.push({
       ...address,
       chainName: await getChainName(address.chainId),
     });
   }
-  chainAddresses.sort((a: ChainAddress, b: ChainAddress) =>
+  chainAddresses.sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
     a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
   );
 

@@ -13,7 +13,7 @@ import { BwParserFactory } from "./types/BwParserFactory";
 let txsSubscriptions: Subscription[] = [];
 
 export async function subscribeTransaction(
-  identities: { [chain: string]: Identity },
+  identities: readonly Identity[],
   dispatch: Dispatch,
 ): Promise<void> {
   const config = await getConfig();
@@ -22,8 +22,7 @@ export async function subscribeTransaction(
   for (const chain of chains) {
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
-    const chainId = connection.chainId() as string;
-    const identity = identities[chainId];
+    const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;
     }

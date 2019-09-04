@@ -4,9 +4,7 @@ import { getConfig } from "../../config";
 import { getConnectionFor } from "../../logic/connection";
 import { AddBalancesActionType } from "./reducer";
 
-export async function getBalances(identities: {
-  [chain: string]: Identity;
-}): Promise<{ [ticker: string]: Amount }> {
+export async function getBalances(identities: readonly Identity[]): Promise<{ [ticker: string]: Amount }> {
   const config = await getConfig();
   const chains = config.chains;
 
@@ -14,8 +12,7 @@ export async function getBalances(identities: {
 
   for (const chain of chains) {
     const connection = await getConnectionFor(chain.chainSpec);
-    const chainId = connection.chainId() as string;
-    const identity = identities[chainId];
+    const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;
     }

@@ -1,22 +1,21 @@
 import { Address, Algorithm, ChainId, PubkeyBytes } from "@iov/bcp";
 import { Encoding } from "@iov/encoding";
 
+import { aNewStore } from "..";
 import { disconnect } from "../../logic/connection";
-import { aNewStore } from "../../store";
-import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { ExtendedIdentity, IdentitiesState, setIdentitiesStateAction } from "../identities";
-import { addBalancesAction, getBalances } from "./actions";
+import { setIdentitiesStateAction } from "./actions";
+import { ExtendedIdentity, IdentitiesState } from "./reducer";
 
-withChainsDescribe("Tokens reducer", () => {
+describe("Identitites reducer", () => {
   afterAll(() => disconnect());
 
   it("has correct initial state", async () => {
     const store = aNewStore();
-    const balances = store.getState().balances;
-    expect(balances).toEqual({});
+    const { identities } = store.getState();
+    expect(identities).toEqual(new Map());
   });
 
-  it("dispatches correctly addBalances action", async () => {
+  it("correctly performs action from setIdentitiesStateAction", async () => {
     const store = aNewStore();
 
     const newState: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
@@ -40,15 +39,7 @@ withChainsDescribe("Tokens reducer", () => {
 
     store.dispatch(setIdentitiesStateAction(newState));
 
-    const tokens = await getBalances(
-      Array.from(store.getState().identities.values()).map(ext => ext.identity),
-    );
-    store.dispatch(addBalancesAction(tokens));
-
-    const balances = store.getState().balances;
-    expect(balances.ETH).toBeDefined();
-    expect(balances.ETH.fractionalDigits).toEqual(18);
-    expect(balances.ETH.quantity).toMatch(/^[0-9]{10,22}$/);
-    expect(balances.ETH.tokenTicker).toEqual("ETH");
+    const identitiesState = store.getState().identities;
+    expect(identitiesState).toEqual(newState);
   });
 });
