@@ -1,10 +1,22 @@
-import { Algorithm, ChainId, Identity, PubkeyBytes, TransactionId } from "@iov/bcp";
+import {
+  Algorithm,
+  ChainId,
+  FullSignature,
+  Identity,
+  isBlockInfoPending,
+  PubkeyBytes,
+  SignatureBytes,
+  SignedTransaction,
+  TransactionId,
+} from "@iov/bcp";
+import { bnsCodec } from "@iov/bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
-import { IovLedgerApp, isLedgerAppAddress, isLedgerAppVersion } from "@iov/ledger-bns";
+import { IovLedgerApp, isLedgerAppAddress, isLedgerAppSignature, isLedgerAppVersion } from "@iov/ledger-bns";
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 
 import { getConfig } from "../config";
+import { getConnectionForBns } from "../logic/connection";
 import { GetIdentitiesResponse, RpcEndpoint } from "./rpcEndpoint";
 
 const addressIndex = 0; // Leads to path m/44'/234'/0'
@@ -52,6 +64,45 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     return out;
   },
   sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<TransactionId | null> => {
-    throw new Error("Not implemented");
+    if (request.method !== "signAndPost" || !isJsonCompatibleDictionary(request.params)) {
+      throw new Error("Unsupported request format");
+    }
+
+    const transaction = TransactionEncoder.fromJson(request.params.transaction);
+
+    const bnsConnection = await getConnectionForBns();
+    const nonce = await bnsConnection.getNonce({ pubkey: transaction.creator.pubkey });
+    const { bytes } = bnsCodec.bytesToSign(transaction, nonce);
+
+    const transport = await TransportWebUSB.create(5000);
+
+    const app = new IovLedgerApp(transport);
+    const versionResponse = await app.getVersion();
+    if (!isLedgerAppVersion(versionResponse)) throw new Error(versionResponse.errorMessage);
+    const addressResponse = await app.getAddress(addressIndex);
+    if (!isLedgerAppAddress(addressResponse)) throw new Error(addressResponse.errorMessage);
+    const signatureResponse = await app.sign(addressIndex, bytes);
+    if (!isLedgerAppSignature(signatureResponse)) throw new Error(signatureResponse.errorMessage);
+
+    await transport.close();
+
+    const signature: FullSignature = {
+      pubkey: transaction.creator.pubkey,
+      nonce: nonce,
+      signature: signatureResponse.signature as SignatureBytes,
+    };
+
+    const signedTransaction: SignedTransaction = {
+      transaction: transaction,
+      primarySignature: signature,
+      otherSignatures: [],
+    };
+
+    const transactionId = bnsCodec.identifier(signedTransaction);
+
+    const response = await bnsConnection.postTx(bnsCodec.bytesToPost(signedTransaction));
+    await response.blockInfo.waitFor(info => !isBlockInfoPending(info));
+
+    return transactionId;
   },
 };
