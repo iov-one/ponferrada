@@ -5,6 +5,12 @@
     "ethereum-eip155-5777": "Ganache"
   },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
+  "ledger": {
+    "chainIds": {
+      "testnetBuild": "local-iov-devnet",
+      "mainnetBuild": "iov-mainnet"
+    }
+  },
   "websiteName": "localhost",
   "chains": [
     {

@@ -5,6 +5,12 @@
     "ethereum-eip155-1": "Ethereum Mainnet"
   },
   "extensionId": "N/A",
+  "ledger": {
+    "chainIds": {
+      "testnetBuild": "iov-lovenet",
+      "mainnetBuild": "iov-mainnet"
+    }
+  },
   "websiteName": "wallet.iov.one",
   "chains": [
     {

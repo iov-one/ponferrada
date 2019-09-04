@@ -6,6 +6,12 @@ import developmentConfig from "./development.json";
 export interface Config {
   readonly names: { [chainId: string]: string };
   readonly extensionId: string;
+  readonly ledger: {
+    readonly chainIds: {
+      readonly testnetBuild: string;
+      readonly mainnetBuild: string;
+    };
+  };
   readonly websiteName: string;
   readonly chains: readonly ChainConfig[];
 }
