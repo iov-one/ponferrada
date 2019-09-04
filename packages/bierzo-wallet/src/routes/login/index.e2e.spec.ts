@@ -20,7 +20,7 @@ import {
 } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { BALANCE_ROUTE } from "../paths";
-import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from ".";
+import { extensionNotInstalledMessage, extensionNotLoggedInMessage } from ".";
 
 withChainsDescribe("E2E > Login route", (): void => {
   let browser: Browser;
@@ -45,17 +45,15 @@ withChainsDescribe("E2E > Login route", (): void => {
   });
 
   withChainsDescribe("E2E > Login route", (): void => {
-    beforeEach(async (): Promise<void> => {
+    beforeEach(async () => {
       browser = await launchBrowser();
       page = await createPage(browser);
       extensionPage = await createExtensionPage(browser);
     }, 60000);
 
-    afterEach(
-      async (): Promise<void> => {
-        await closeBrowser(browser);
-      },
-    );
+    afterEach(async () => {
+      await closeBrowser(browser);
+    });
 
     async function checkLoginMessage(page: Page): Promise<void> {
       const element = await page.$("h6");
@@ -63,12 +61,12 @@ withChainsDescribe("E2E > Login route", (): void => {
         throw new Error();
       }
       const text = await (await element.getProperty("textContent")).jsonValue();
-      expect(text).toBe(LOGIN_EXTENSION_MSG);
+      expect(text).toBe(extensionNotLoggedInMessage);
 
       await closeToast(page);
     }
 
-    it("should redirect when enqueued login request is accepted", async (): Promise<void> => {
+    it("should redirect when enqueued login request is accepted", async () => {
       await getBackgroundPage(browser);
       await submitExtensionSignupForm(extensionPage, "12345678");
       await page.bringToFront();
@@ -80,7 +78,7 @@ withChainsDescribe("E2E > Login route", (): void => {
       await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
     }, 60000);
 
-    it("should stay in login view if enqueued login request is rejected", async (): Promise<void> => {
+    it("should stay in login view if enqueued login request is rejected", async () => {
       await getBackgroundPage(browser);
       await submitExtensionSignupForm(extensionPage, "12345678");
       await page.bringToFront();
@@ -92,7 +90,7 @@ withChainsDescribe("E2E > Login route", (): void => {
       await checkLoginMessage(page);
     }, 60000);
 
-    it("shows login to IOV extension if not persona detected", async (): Promise<void> => {
+    it("shows login to IOV extension if not persona detected", async () => {
       await getBackgroundPage(browser);
       await page.bringToFront();
       await sleep(1000);
@@ -104,7 +102,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     }, 60000);
   });
 
-  it("shows install IOV extension message", async (): Promise<void> => {
+  it("shows install IOV extension message", async () => {
     browser = await launchBrowser(0, false);
     page = await createPage(browser);
     await page.bringToFront();
@@ -115,7 +113,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     await sleep(500);
 
     const toastMessage = await getToastMessage(page);
-    expect(toastMessage).toBe(INSTALL_EXTENSION_MSG);
+    expect(toastMessage).toBe(extensionNotInstalledMessage);
     await closeToast(page);
 
     await closeBrowser(browser);

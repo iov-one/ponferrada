@@ -17,8 +17,8 @@ import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
 
-export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
-export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
+export const extensionNotInstalledMessage = "You need to install IOV extension.";
+export const extensionNotLoggedInMessage = "Please login to the IOV extension to continue.";
 
 export const loginBootSequence = async (
   identities: readonly Identity[],
@@ -52,12 +52,12 @@ const Login = (): JSX.Element => {
     billboard.close();
 
     if (!installed) {
-      toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
+      toast.show(extensionNotInstalledMessage, ToastVariant.ERROR);
       return;
     }
 
     if (!connected) {
-      toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
+      toast.show(extensionNotLoggedInMessage, ToastVariant.ERROR);
       return;
     }
 
