@@ -6,6 +6,8 @@ import { Dispatch } from "redux";
 
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
+import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
+import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
 import { makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
@@ -19,6 +21,8 @@ import { BALANCE_ROUTE } from "../paths";
 
 export const extensionNotInstalledMessage = "You need to install IOV extension.";
 export const extensionNotLoggedInMessage = "Please login to the IOV extension to continue.";
+const ledgerNoConnectionMessage = "Please connect your Ledger Nano S and try again.";
+const ledgerNoMatchingIdentity = "No matching identity found. Did you open the correct app?";
 
 export const loginBootSequence = async (
   identities: readonly Identity[],
@@ -68,7 +72,28 @@ const Login = (): JSX.Element => {
     history.push(BALANCE_ROUTE);
   };
 
-  const onLoginWithLedger = async (): Promise<void> => {};
+  const onLoginWithLedger = async (): Promise<void> => {
+    billboard.show(<BillboardMessage />);
+    const request = await generateGetIdentitiesRequest();
+    const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
+    billboard.close();
+
+    if (identities === undefined) {
+      toast.show(ledgerNoConnectionMessage, ToastVariant.ERROR);
+      return;
+    }
+
+    if (identities.length === 0) {
+      toast.show(ledgerNoMatchingIdentity, ToastVariant.ERROR);
+      return;
+    }
+
+    dispatch(setIdentitiesStateAction(await makeExtendedIdentities(identities)));
+
+    await loginBootSequence(identities, dispatch);
+
+    history.push(BALANCE_ROUTE);
+  };
 
   return (
     <PageColumn
