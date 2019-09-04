@@ -44,7 +44,7 @@ const Login = (): JSX.Element => {
   };
 
   return (
-    <NeumaPageLayout id={LOGIN_ROUTE} primaryTitle="Log" title="In" onBack={onBack}>
+    <NeumaPageLayout id={LOGIN_ROUTE} primaryTitle="Unlock" title="" onBack={onBack}>
       <LoginForm onLogin={onLogin} validate={validate} />
       <LoginControls />
     </NeumaPageLayout>
