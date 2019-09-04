@@ -5,7 +5,7 @@ import { createEthereumConnector } from "@iov/ethereum";
 import { HdPaths } from "@iov/keycontrol";
 import { createLiskConnector } from "@iov/lisk";
 
-import { CodecString } from "./configurationfile";
+import { CodecString, getConfigurationFile } from "./configurationfile";
 
 export enum CodecType {
   Bns,
@@ -54,22 +54,19 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
   return pathBuilder;
 }
 
-export function chainConnector(
+export async function chainConnector(
   codec: CodecType,
+  expectedChainId: ChainId,
   nodeUrl: string,
   scraper: string | undefined,
-): ChainConnector {
-  const expectedBnsChainId: ChainId | undefined = undefined;
-  const expectedLiskChainId: ChainId | undefined = undefined;
-  const expectedEthereumChainId: ChainId | undefined = undefined;
-
+): Promise<ChainConnector> {
   switch (codec) {
     case CodecType.Bns:
-      return createBnsConnector(nodeUrl, expectedBnsChainId);
+      return createBnsConnector(nodeUrl, expectedChainId);
     case CodecType.Lisk:
-      return createLiskConnector(nodeUrl, expectedLiskChainId);
+      return createLiskConnector(nodeUrl, expectedChainId);
     case CodecType.Ethereum:
-      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedEthereumChainId);
+      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedChainId);
     default:
       throw new Error("No connector for this codec found");
   }
