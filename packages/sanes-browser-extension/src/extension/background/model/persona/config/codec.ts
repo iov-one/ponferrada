@@ -54,12 +54,12 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
   return pathBuilder;
 }
 
-export async function chainConnector(
+export function chainConnector(
   codec: CodecType,
   expectedChainId: ChainId,
   nodeUrl: string,
   scraper: string | undefined,
-): Promise<ChainConnector> {
+): ChainConnector {
   switch (codec) {
     case CodecType.Bns:
       return createBnsConnector(nodeUrl, expectedChainId);

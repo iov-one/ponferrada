@@ -152,7 +152,7 @@ export class Persona {
     const out: SoftwareAccountManagerChainConfig[] = [];
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
-      const connector = await chainConnector(codecType, chainSpec.chainId, chainSpec.node, chainSpec.scraper);
+      const connector = chainConnector(codecType, chainSpec.chainId, chainSpec.node, chainSpec.scraper);
       const { connection } = await signer.addChain(connector);
       out.push({
         chainId: connection.chainId(),
