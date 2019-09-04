@@ -28,7 +28,7 @@ const CreateProposal = (): JSX.Element => {
         <ConfirmTransaction transactionId={lastSignAndPostResult} onReturnToDashboard={onReturnToDashboard} />
       ) : (
         <Block minWidth="100%" display="flex">
-          <AsideFilter />
+          <AsideFilter filter={null} />
           <ProposalForm />
         </Block>
       )}

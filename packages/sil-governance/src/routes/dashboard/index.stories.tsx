@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
+import { ElectionFilter } from "../../components/AsideFilter";
 import DecoratedStorybook, { VOTER_ROOT } from "../../utils/storybook";
 import Dashboard from "./index";
 
@@ -10,7 +11,7 @@ storiesOf(VOTER_ROOT, module)
     "Dashboard page",
     (): JSX.Element => (
       <DecoratedStorybook>
-        <Dashboard />
+        <Dashboard filter={ElectionFilter.All} />
       </DecoratedStorybook>
     ),
   );

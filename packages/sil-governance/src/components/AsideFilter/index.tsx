@@ -1,13 +1,20 @@
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { Block, Image, Typography } from "medulas-react-components";
-import React, { useState } from "react";
+import React from "react";
 
 import addIcon from "../../assets/add.svg";
 import { history } from "../../routes";
-import { CREATE_PROPOSAL_ROUTE } from "../../routes/paths";
+import {
+  CREATE_PROPOSAL_ROUTE,
+  DASHBOARD_ACTIVE_ROUTE,
+  DASHBOARD_ENDED_ROUTE,
+  DASHBOARD_ROUTE,
+  DASHBOARD_SUBMITTED_ROUTE,
+} from "../../routes/paths";
 
 export const ASIDE_FILTER_HTML_ID = "aside-filter";
+const ADD_PROPOSAL_LABEL = "Add New Proposal";
 
 const useStyles = makeStyles({
   drawerPaper: {
@@ -28,15 +35,25 @@ const useStyles = makeStyles({
   },
 });
 
-const addNewProposal = (): void => {
-  if (history.location.pathname !== CREATE_PROPOSAL_ROUTE) {
-    history.push(CREATE_PROPOSAL_ROUTE);
+const navigateTo = (target: string): void => {
+  if (history.location.pathname !== target) {
+    history.push(target);
   }
 };
 
-const AsideFilter = (): JSX.Element => {
+export enum ElectionFilter {
+  All = "All Elections",
+  Active = "Active Elections",
+  Submitted = "Submitted Elections",
+  Ended = "Ended Elections",
+}
+
+interface Props {
+  readonly filter: ElectionFilter | null;
+}
+
+const AsideFilter = ({ filter }: Props): JSX.Element => {
   const classes = useStyles();
-  const [activeFilter] = useState("All Elections");
 
   const paperClasses = {
     paper: classes.drawerPaper,
@@ -48,12 +65,30 @@ const AsideFilter = (): JSX.Element => {
     root: classes.activeFilter,
   };
 
+  const menuItemToTarget = (filter: ElectionFilter): string => {
+    switch (filter) {
+      case ElectionFilter.Active:
+        return DASHBOARD_ACTIVE_ROUTE;
+      case ElectionFilter.Submitted:
+        return DASHBOARD_SUBMITTED_ROUTE;
+      case ElectionFilter.Ended:
+        return DASHBOARD_ENDED_ROUTE;
+      default:
+        return DASHBOARD_ROUTE;
+    }
+  };
+
   return (
     <Block id={ASIDE_FILTER_HTML_ID} minWidth="205px">
       <Drawer variant="permanent" classes={paperClasses}>
         <List classes={listClasses}>
-          {["All Elections", "Active Elections", "Submitted Elections", "Ended Elections"].map(text => (
-            <ListItem button key={text} classes={activeFilter === text ? filterClasses : undefined}>
+          {Object.values(ElectionFilter).map(text => (
+            <ListItem
+              button
+              key={text}
+              classes={filter === text ? filterClasses : undefined}
+              onClick={() => navigateTo(menuItemToTarget(text))}
+            >
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -66,11 +101,11 @@ const AsideFilter = (): JSX.Element => {
         justifyContent="center"
         marginTop={1}
         className={classes.addProposal}
-        onClick={addNewProposal}
+        onClick={() => navigateTo(CREATE_PROPOSAL_ROUTE)}
       >
         <Image alt="Add Proposal" src={addIcon} className={classes.addIcon} />
         <Block marginLeft={1}>
-          <Typography>Add New Proposal</Typography>
+          <Typography>{ADD_PROPOSAL_LABEL}</Typography>
         </Block>
       </Block>
     </Block>
