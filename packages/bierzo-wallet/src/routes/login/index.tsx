@@ -6,6 +6,7 @@ import { Dispatch } from "redux";
 
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
@@ -15,6 +16,7 @@ import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
 import { setIdentitiesStateAction } from "../../store/identities";
+import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
@@ -66,6 +68,7 @@ const Login = (): JSX.Element => {
     }
 
     dispatch(setIdentitiesStateAction(await makeExtendedIdentities(identities)));
+    dispatch(setRpcEndpoint(extensionRpcEndpoint));
 
     await loginBootSequence(identities, dispatch);
 
@@ -89,6 +92,7 @@ const Login = (): JSX.Element => {
     }
 
     dispatch(setIdentitiesStateAction(await makeExtendedIdentities(identities)));
+    dispatch(setRpcEndpoint(ledgerRpcEndpoint));
 
     await loginBootSequence(identities, dispatch);
 

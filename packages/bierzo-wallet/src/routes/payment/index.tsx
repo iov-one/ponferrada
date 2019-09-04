@@ -5,7 +5,6 @@ import * as ReactRedux from "react-redux";
 import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
-import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { generateSendTxRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
@@ -37,6 +36,7 @@ const Payment = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
+  const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
 
@@ -81,6 +81,8 @@ const Payment = (): JSX.Element => {
       return;
     }
 
+    if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
+
     try {
       const request = await generateSendTxRequest(
         identity.identity,
@@ -89,7 +91,7 @@ const Payment = (): JSX.Element => {
         formValues[TEXTNOTE_FIELD],
       );
       billboard.show(<BillboardMessage />);
-      const transactionId = await extensionRpcEndpoint.sendSignAndPostRequest(request);
+      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
