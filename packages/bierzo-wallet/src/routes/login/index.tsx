@@ -1,4 +1,4 @@
-import { ChainId, Identity } from "@iov/bcp";
+import { Identity } from "@iov/bcp";
 import { BillboardContext, PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
@@ -7,13 +7,12 @@ import { Dispatch } from "redux";
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
 import BillboardMessage from "../../components/BillboardMessage";
-import { getChainName } from "../../config";
+import { makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
-import { getCodecForChainId } from "../../logic/codec";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
-import { ExtendedIdentity, setIdentitiesStateAction } from "../../store/identities";
+import { setIdentitiesStateAction } from "../../store/identities";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
@@ -62,15 +61,7 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    const extendeIdentities = new Map<ChainId, ExtendedIdentity>();
-    for (const identity of identities) {
-      extendeIdentities.set(identity.chainId, {
-        identity: identity,
-        address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
-        chainName: await getChainName(identity.chainId),
-      });
-    }
-    dispatch(setIdentitiesStateAction(extendeIdentities));
+    dispatch(setIdentitiesStateAction(await makeExtendedIdentities(identities)));
 
     await loginBootSequence(identities, dispatch);
 
