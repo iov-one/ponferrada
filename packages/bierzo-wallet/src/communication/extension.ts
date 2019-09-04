@@ -1,11 +1,11 @@
-import { ChainId, Identity } from "@iov/bcp";
+import { Identity } from "@iov/bcp";
 
 import { sendGetIdentitiesRequest } from "./identities";
 
 export interface ExtensionStatus {
   readonly connected: boolean;
   readonly installed: boolean;
-  readonly identities: ReadonlyMap<ChainId, Identity>;
+  readonly identities: readonly Identity[];
 }
 
 /**
@@ -14,11 +14,11 @@ export interface ExtensionStatus {
  * The browser extension is supposed to only send one identity per chain.
  * @see https://github.com/iov-one/ponferrada/issues/447
  */
-export function groupIdentitiesByChain(identities: readonly Identity[]): ReadonlyMap<ChainId, Identity> {
-  const out = new Map<ChainId, Identity>();
+export function chooseFirstIdentitiesByChain(identities: readonly Identity[]): readonly Identity[] {
+  const out = new Array<Identity>();
   for (const identity of identities) {
-    if (!out.has(identity.chainId)) {
-      out.set(identity.chainId, identity);
+    if (!out.find(included => included.chainId === identity.chainId)) {
+      out.push(identity);
     }
   }
   return out;
@@ -28,14 +28,14 @@ export async function getExtensionStatus(): Promise<ExtensionStatus> {
   const identities = await sendGetIdentitiesRequest();
 
   if (!identities) {
-    return { installed: false, connected: false, identities: new Map() };
+    return { installed: false, connected: false, identities: [] };
   }
 
   if (identities.length === 0) {
-    return { installed: true, connected: false, identities: new Map() };
+    return { installed: true, connected: false, identities: [] };
   }
 
-  const groupedIdentities = groupIdentitiesByChain(identities);
+  const groupedIdentities = chooseFirstIdentitiesByChain(identities);
 
   return {
     installed: true,

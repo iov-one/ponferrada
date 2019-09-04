@@ -62,19 +62,17 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    const identitiesList = Array.from(identities.values());
-
     const extendeIdentities = new Map<ChainId, ExtendedIdentity>();
-    for (const identity of identitiesList) {
+    for (const identity of identities) {
       extendeIdentities.set(identity.chainId, {
         identity: identity,
         address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
         chainName: await getChainName(identity.chainId),
       });
     }
-
     dispatch(setIdentitiesStateAction(extendeIdentities));
-    await loginBootSequence(identitiesList, dispatch);
+
+    await loginBootSequence(identities, dispatch);
 
     history.push(BALANCE_ROUTE);
   };

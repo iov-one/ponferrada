@@ -1,9 +1,9 @@
 import { Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
 import { Encoding } from "@iov/encoding";
 
-import { groupIdentitiesByChain } from "./extension";
+import { chooseFirstIdentitiesByChain } from "./extension";
 
-describe("groupIdentitiesByChain", () => {
+describe("chooseFirstIdentitiesByChain", () => {
   const ethIdentity1: Identity = {
     chainId: "ethtest-1234" as ChainId,
     pubkey: {
@@ -29,22 +29,18 @@ describe("groupIdentitiesByChain", () => {
   };
 
   it("works for an empty list", () => {
-    expect(groupIdentitiesByChain([])).toEqual(new Map());
+    expect(chooseFirstIdentitiesByChain([])).toEqual([]);
   });
 
   it("works for a single identity", () => {
-    expect(groupIdentitiesByChain([ethIdentity1])).toEqual(new Map([["ethtest-1234", ethIdentity1]]));
+    expect(chooseFirstIdentitiesByChain([ethIdentity1])).toEqual([ethIdentity1]);
   });
 
   it("works for multiple chains", () => {
-    expect(groupIdentitiesByChain([ethIdentity1, iovIdentity1])).toEqual(
-      new Map([["ethtest-1234", ethIdentity1], ["iovtest-1234", iovIdentity1]]),
-    );
+    expect(chooseFirstIdentitiesByChain([ethIdentity1, iovIdentity1])).toEqual([ethIdentity1, iovIdentity1]);
   });
 
   it("returns first identity for each chain", () => {
-    expect(groupIdentitiesByChain([ethIdentity1, ethIdentity2])).toEqual(
-      new Map([["ethtest-1234", ethIdentity1]]),
-    );
+    expect(chooseFirstIdentitiesByChain([ethIdentity1, ethIdentity2])).toEqual([ethIdentity1]);
   });
 });
