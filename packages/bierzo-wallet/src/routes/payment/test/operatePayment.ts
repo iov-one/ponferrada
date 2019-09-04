@@ -17,7 +17,7 @@ export function getSelectedCurrency(inputs: Element[]): string {
 export async function fillPaymentForm(page: Page, quantity: string, address: string): Promise<void> {
   await page.bringToFront();
   await page.type(`input[name="${QUANTITY_FIELD}"]`, quantity);
-  await page.type(`input[name="${ADDRESS_FIELD}`, address);
+  await page.type(`input[name="${ADDRESS_FIELD}"]`, address);
   await page.click("button[type=submit]");
 }
 
