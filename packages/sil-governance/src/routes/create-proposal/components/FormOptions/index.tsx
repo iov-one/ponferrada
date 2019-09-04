@@ -1,5 +1,6 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
+import { Block } from "medulas-react-components";
 import React from "react";
 
 import AddCommitteeMember from "./AddCommitteeMember";
@@ -22,6 +23,7 @@ const proposalOptions = {
   [ProposalType.RemoveValidator]: RemoveValidator,
   [ProposalType.ReleaseGuaranteeFunds]: ReleaseGuaranteeFunds,
   [ProposalType.DistributeFunds]: DistributeFunds,
+  [ProposalType.TreasurySend]: Block, // not implemented
 };
 
 interface Props {
