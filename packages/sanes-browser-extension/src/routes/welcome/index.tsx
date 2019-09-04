@@ -21,7 +21,7 @@ const Welcome = (): JSX.Element => {
     history.push(SIGNUP_ROUTE);
   };
 
-  const login = (): void => {
+  const unlock = (): void => {
     history.push(LOGIN_ROUTE);
   };
 
@@ -35,8 +35,8 @@ const Welcome = (): JSX.Element => {
         This extension lets you manage all your accounts in one place.
       </Typography>
       <Block marginTop={2} />
-      <Button variant="contained" fullWidth onClick={login}>
-        Log in
+      <Button variant="contained" fullWidth onClick={unlock}>
+        Unlock
       </Button>
       <Block marginTop={2} />
       <Button variant="contained" fullWidth onClick={createNewWallet}>
