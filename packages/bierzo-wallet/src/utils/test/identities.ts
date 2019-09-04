@@ -1,8 +1,8 @@
 import { Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
 import { Ed25519, Random, Secp256k1 } from "@iov/crypto";
 
-export async function createIdentities(): Promise<ReadonlyMap<ChainId, Identity>> {
-  const identities = new Map<ChainId, Identity>();
+export async function createIdentities(): Promise<readonly Identity[]> {
+  const identities = new Array<Identity>();
 
   // create ETH pub key
   const ethChain = "ethereum-eip155-5777" as ChainId;
@@ -26,8 +26,8 @@ export async function createIdentities(): Promise<ReadonlyMap<ChainId, Identity>
     },
   };
 
-  identities.set(ethChain, ethIdentity);
-  identities.set(bnsChain, bnsIdentity);
+  identities.push(ethIdentity);
+  identities.push(bnsIdentity);
 
   return identities;
 }

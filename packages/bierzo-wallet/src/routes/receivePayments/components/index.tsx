@@ -25,7 +25,7 @@ interface Props extends AddressesTableProps {
   readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ addresses, onReturnToBalance }: Props): JSX.Element => {
+const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -52,7 +52,7 @@ const ReceivePayment = ({ addresses, onReturnToBalance }: Props): JSX.Element =>
             <Avatar classes={avatarClasses}>
               <FontAwesomeIcon icon={faUser} color="#ffffff" />
             </Avatar>
-            <AddressesTable addresses={addresses} />
+            <AddressesTable chainAddresses={chainAddresses} />
           </Block>
         </Paper>
 

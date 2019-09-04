@@ -1,4 +1,4 @@
-import { ChainId, Identity } from "@iov/bcp";
+import { Identity } from "@iov/bcp";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
@@ -9,17 +9,14 @@ import { getConnectionFor } from "./connection";
 
 let balanceSubscriptions: Subscription[] = [];
 
-export async function subscribeBalance(
-  identities: ReadonlyMap<ChainId, Identity>,
-  dispatch: Dispatch,
-): Promise<void> {
+export async function subscribeBalance(identities: readonly Identity[], dispatch: Dispatch): Promise<void> {
   const config = await getConfig();
   const chains = config.chains;
 
   for (const chain of chains) {
     const codec = getCodec(chain.chainSpec);
     const connection = await getConnectionFor(chain.chainSpec);
-    const identity = identities.get(connection.chainId());
+    const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;
     }

@@ -7,11 +7,13 @@ import { Dispatch } from "redux";
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
 import BillboardMessage from "../../components/BillboardMessage";
+import { getChainName } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
+import { getCodecForChainId } from "../../logic/codec";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
-import { setIdentitiesStateAction } from "../../store/identities";
+import { ExtendedIdentity, setIdentitiesStateAction } from "../../store/identities";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
@@ -20,7 +22,7 @@ export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
 export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 export const loginBootSequence = async (
-  identities: ReadonlyMap<ChainId, Identity>,
+  identities: readonly Identity[],
   dispatch: Dispatch,
 ): Promise<void> => {
   const chainTokens = await getTokens();
@@ -60,8 +62,19 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    dispatch(setIdentitiesStateAction(identities));
-    await loginBootSequence(identities, dispatch);
+    const identitiesList = Array.from(identities.values());
+
+    const extendeIdentities = new Map<ChainId, ExtendedIdentity>();
+    for (const identity of identitiesList) {
+      extendeIdentities.set(identity.chainId, {
+        identity: identity,
+        address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
+        chainName: await getChainName(identity.chainId),
+      });
+    }
+
+    dispatch(setIdentitiesStateAction(extendeIdentities));
+    await loginBootSequence(identitiesList, dispatch);
 
     history.push(BALANCE_ROUTE);
   };

@@ -1,4 +1,4 @@
-import { Algorithm, ChainId, PubkeyBytes, TokenTicker } from "@iov/bcp";
+import { Address, Algorithm, ChainId, PubkeyBytes, TokenTicker } from "@iov/bcp";
 import { Encoding } from "@iov/encoding";
 import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
@@ -6,6 +6,7 @@ import { DeepPartial, Store } from "redux";
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
 import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
+import { ExtendedIdentity, IdentitiesState } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { UsernamesState } from "../../store/usernames";
 import { click, expectRoute } from "../../utils/test/dom";
@@ -40,15 +41,19 @@ const usernames: DeepPartial<UsernamesState> = [
   },
 ];
 
-const identities = new Map([
+const identities: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
   [
     bnsChainId,
     {
-      chainId: bnsChainId,
-      pubkey: {
-        algo: Algorithm.Ed25519,
-        data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+      identity: {
+        chainId: bnsChainId,
+        pubkey: {
+          algo: Algorithm.Ed25519,
+          data: Encoding.fromHex("aabbccdd") as PubkeyBytes,
+        },
       },
+      address: "tiov97g97g9" as Address,
+      chainName: "IOV Local Devnet",
     },
   ],
 ]);
@@ -56,12 +61,12 @@ const identities = new Map([
 describe("The /balance route", () => {
   let store: Store<RootState>;
   let balanceDom: React.Component;
-  describe("with balance", () => {
+  describe("with balance and username", () => {
     beforeEach(async () => {
       store = aNewStore({
-        identities,
+        identities: identities,
         balances: balancesAmount,
-        usernames,
+        usernames: usernames,
       });
       balanceDom = await travelToBalance(store);
     });

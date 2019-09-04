@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@materi
 import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
-import { ChainAddress } from "../../../../../../components/AddressesTable";
+import { ChainAddressPairWithName } from "../../../../../../components/AddressesTable";
 import { chainAddressPairSortedMapping } from "../../../../../../utils/tokens";
 import { ProcessedTx } from "../../../../types/BwParser";
 
@@ -35,7 +35,7 @@ interface Props {
 
 const TxDetails = ({ tx }: Props): JSX.Element => {
   const classes = useStyles();
-  const [addresses, setAddresses] = React.useState<readonly ChainAddress[]>([]);
+  const [addresses, setAddresses] = React.useState<readonly ChainAddressPairWithName[]>([]);
 
   React.useEffect(() => {
     async function processAddresses(addresses: readonly ChainAddressPair[]): Promise<void> {

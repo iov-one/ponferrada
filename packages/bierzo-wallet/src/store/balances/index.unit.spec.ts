@@ -1,10 +1,10 @@
-import { getExtensionStatus } from "../../communication/extension";
-import { parseGetIdentitiesResponse } from "../../communication/identities";
-import * as identities from "../../communication/identities";
+import { Address, Algorithm, ChainId, PubkeyBytes } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
+
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { setIdentitiesStateAction } from "../identities";
+import { ExtendedIdentity, IdentitiesState, setIdentitiesStateAction } from "../identities";
 import { addBalancesAction, getBalances } from "./actions";
 
 withChainsDescribe("Tokens reducer", () => {
@@ -18,28 +18,31 @@ withChainsDescribe("Tokens reducer", () => {
 
   it("dispatches correctly addBalances action", async () => {
     const store = aNewStore();
-    const ethResponse = {
-      jsonrpc: "2.0",
-      id: 1,
-      result: [
+
+    const newState: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
+      [
+        "ethereum-eip155-5777" as ChainId,
         {
-          chainId: "string:ethereum-eip155-5777",
-          pubkey: {
-            algo: "string:secp256k1",
-            data:
-              "bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
+          identity: {
+            chainId: "ethereum-eip155-5777" as ChainId,
+            pubkey: {
+              algo: Algorithm.Secp256k1,
+              data: Encoding.fromHex(
+                "04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
+              ) as PubkeyBytes,
+            },
           },
+          address: "0x88F3b5659075D0E06bB1004BE7b1a7E66F452284" as Address,
+          chainName: "Ganache",
         },
       ],
-    };
+    ]);
 
-    const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
-    jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
+    store.dispatch(setIdentitiesStateAction(newState));
 
-    const extension = await getExtensionStatus();
-    store.dispatch(setIdentitiesStateAction(extension.identities));
-
-    const tokens = await getBalances(store.getState().identities);
+    const tokens = await getBalances(
+      Array.from(store.getState().identities.values()).map(ext => ext.identity),
+    );
     store.dispatch(addBalancesAction(tokens));
 
     const balances = store.getState().balances;

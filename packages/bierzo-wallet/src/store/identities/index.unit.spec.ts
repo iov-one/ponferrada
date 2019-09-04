@@ -1,11 +1,10 @@
-import { ChainId } from "@iov/bcp";
+import { Address, Algorithm, ChainId, PubkeyBytes } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
 
 import { aNewStore } from "..";
-import { getExtensionStatus } from "../../communication/extension";
-import * as identities from "../../communication/identities";
-import { parseGetIdentitiesResponse } from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
 import { setIdentitiesStateAction } from "./actions";
+import { ExtendedIdentity, IdentitiesState } from "./reducer";
 
 describe("Identitites reducer", () => {
   afterAll(() => disconnect());
@@ -18,30 +17,29 @@ describe("Identitites reducer", () => {
 
   it("correctly performs action from setIdentitiesStateAction", async () => {
     const store = aNewStore();
-    const ethResponse = {
-      jsonrpc: "2.0",
-      id: 1,
-      result: [
+
+    const newState: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
+      [
+        "ethereum-eip155-5777" as ChainId,
         {
-          chainId: "string:ethereum-eip155-5777",
-          pubkey: {
-            algo: "string:secp256k1",
-            data:
-              "bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
+          identity: {
+            chainId: "ethereum-eip155-5777" as ChainId,
+            pubkey: {
+              algo: Algorithm.Secp256k1,
+              data: Encoding.fromHex(
+                "04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
+              ) as PubkeyBytes,
+            },
           },
+          address: "0x88F3b5659075D0E06bB1004BE7b1a7E66F452284" as Address,
+          chainName: "Ganache",
         },
       ],
-    };
+    ]);
 
-    const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
-    jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
-
-    const extension = await getExtensionStatus();
-    store.dispatch(setIdentitiesStateAction(extension.identities));
-
-    const expectedIdentities = new Map([["ethereum-eip155-5777" as ChainId, identitiesResponse[0]]]);
+    store.dispatch(setIdentitiesStateAction(newState));
 
     const identitiesState = store.getState().identities;
-    expect(identitiesState).toEqual(expectedIdentities);
+    expect(identitiesState).toEqual(newState);
   });
 });

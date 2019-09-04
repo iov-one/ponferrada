@@ -1,12 +1,10 @@
-import { Amount, ChainId, Identity } from "@iov/bcp";
+import { Amount, Identity } from "@iov/bcp";
 
 import { getConfig } from "../../config";
 import { getConnectionFor } from "../../logic/connection";
 import { AddBalancesActionType } from "./reducer";
 
-export async function getBalances(
-  identities: ReadonlyMap<ChainId, Identity>,
-): Promise<{ [ticker: string]: Amount }> {
+export async function getBalances(identities: readonly Identity[]): Promise<{ [ticker: string]: Amount }> {
   const config = await getConfig();
   const chains = config.chains;
 
@@ -14,7 +12,7 @@ export async function getBalances(
 
   for (const chain of chains) {
     const connection = await getConnectionFor(chain.chainSpec);
-    const identity = identities.get(connection.chainId());
+    const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;
     }

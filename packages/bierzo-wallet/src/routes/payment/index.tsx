@@ -81,7 +81,12 @@ const Payment = (): JSX.Element => {
     }
 
     try {
-      const request = await generateSendTxRequest(identity, recipient, amount, formValues[TEXTNOTE_FIELD]);
+      const request = await generateSendTxRequest(
+        identity.identity,
+        recipient,
+        amount,
+        formValues[TEXTNOTE_FIELD],
+      );
       billboard.show(<BillboardMessage />);
       const transactionId = await sendSignAndPostRequest(request);
       if (transactionId === null) {

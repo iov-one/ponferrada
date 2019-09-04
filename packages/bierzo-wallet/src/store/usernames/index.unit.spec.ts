@@ -1,12 +1,9 @@
-import { Address, ChainId } from "@iov/bcp";
+import { Address, Algorithm, ChainId, Identity, PubkeyBytes } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
 
-import { getExtensionStatus } from "../../communication/extension";
-import { parseGetIdentitiesResponse } from "../../communication/identities";
-import * as identities from "../../communication/identities";
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { setIdentitiesStateAction } from "../identities";
 import { addUsernamesAction, getUsernames } from "./actions";
 import { BwUsername } from "./reducer";
 
@@ -19,35 +16,25 @@ withChainsDescribe("Usernames reducer", () => {
     expect(usernames).toEqual([]);
   });
 
-  it("returns empty when no keys passed to getUsernames function", async () => {
-    const usernames = await getUsernames(new Map());
+  it("returns empty when no identities passed to getUsernames function", async () => {
+    const usernames = await getUsernames([]);
     expect(usernames).toEqual([]);
   });
 
-  it("returns empty when no key bns identity key is s passed to getUsernames function", async () => {
-    const store = aNewStore();
-    const ethResponse = {
-      jsonrpc: "2.0",
-      id: 1,
-      result: [
-        {
-          chainId: "string:ethereum-eip155-5777",
-          pubkey: {
-            algo: "string:secp256k1",
-            data:
-              "bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
-          },
+  it("returns empty when no bns identity key is s passed to getUsernames function", async () => {
+    const identities: Identity[] = [
+      {
+        chainId: "ethereum-eip155-5777" as ChainId,
+        pubkey: {
+          algo: Algorithm.Secp256k1,
+          data: Encoding.fromHex(
+            "04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
+          ) as PubkeyBytes,
         },
-      ],
-    };
+      },
+    ];
 
-    const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
-    jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
-
-    const extension = await getExtensionStatus();
-    store.dispatch(setIdentitiesStateAction(extension.identities));
-
-    const usernames = await getUsernames(store.getState().identities);
+    const usernames = await getUsernames(identities);
     expect(usernames).toEqual([]);
   });
 
@@ -110,38 +97,5 @@ withChainsDescribe("Usernames reducer", () => {
       store.dispatch(addUsernamesAction(usernamesToAdd2));
       expect(store.getState().usernames).toEqual([...usernamesToAdd1, ...usernamesToAdd2]);
     });
-  });
-
-  it("dispatches correctly addUsernames action", async () => {
-    const store = aNewStore();
-    const ethResponse = {
-      jsonrpc: "2.0",
-      id: 1,
-      result: [
-        {
-          chainId: "string:ethereum-eip155-5777",
-          pubkey: {
-            algo: "string:secp256k1",
-            data:
-              "bytes:04965fb72aad79318cd8c8c975cf18fa8bcac0c091605d10e89cd5a9f7cff564b0cb0459a7c22903119f7a42947c32c1cc6a434a86f0e26aad00ca2b2aff6ba381",
-          },
-        },
-      ],
-    };
-
-    const identitiesResponse = parseGetIdentitiesResponse(ethResponse);
-    jest.spyOn(identities, "sendGetIdentitiesRequest").mockResolvedValueOnce(identitiesResponse);
-
-    const extension = await getExtensionStatus();
-    store.dispatch(setIdentitiesStateAction(extension.identities));
-
-    const emptyChainUsernames = await getUsernames(new Map());
-    store.dispatch(addUsernamesAction(emptyChainUsernames));
-
-    const chainUsernames = await getUsernames(store.getState().identities);
-    store.dispatch(addUsernamesAction(chainUsernames));
-
-    const usernames = store.getState().usernames;
-    expect(usernames).toEqual([]);
   });
 });

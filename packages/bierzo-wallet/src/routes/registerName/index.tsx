@@ -1,5 +1,5 @@
-import { ChainId, Identity, TransactionId } from "@iov/bcp";
-import { BnsConnection, ChainAddressPair } from "@iov/bns";
+import { Identity, TransactionId } from "@iov/bcp";
+import { BnsConnection } from "@iov/bns";
 import {
   BillboardContext,
   FormValues,
@@ -17,7 +17,7 @@ import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPairs } from "../../utils/tokens";
+import { getChainAddressPairWithNames } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
@@ -77,30 +77,22 @@ const validate = async (values: object): Promise<object> => {
 };
 
 const RegisterUsername = (): JSX.Element => {
-  const [addresses, setAddresses] = React.useState<ChainAddressPair[]>([]);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
 
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-
-  React.useEffect(() => {
-    async function processIdentities(identities: ReadonlyMap<ChainId, Identity>): Promise<void> {
-      setAddresses(await getChainAddressPairs(identities));
-    }
-
-    processIdentities(identities);
-  }, [identities]);
+  const addresses = getChainAddressPairWithNames(identities);
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
     const username = formValues[REGISTER_USERNAME_FIELD];
     let bnsIdentity: Identity | undefined;
-    for (const address of addresses) {
-      if ((await getConnectionForChainId(address.chainId)) instanceof BnsConnection) {
-        bnsIdentity = identities.get(address.chainId);
+    for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
+      if ((await getConnectionForChainId(identity.chainId)) instanceof BnsConnection) {
+        bnsIdentity = identity;
       }
     }
 
@@ -134,7 +126,12 @@ const RegisterUsername = (): JSX.Element => {
           onReturnToBalance={onReturnToBalance}
         />
       ) : (
-        <Layout onSubmit={onSubmit} validate={validate} onCancel={onReturnToBalance} addresses={addresses} />
+        <Layout
+          onSubmit={onSubmit}
+          validate={validate}
+          onCancel={onReturnToBalance}
+          chainAddresses={addresses}
+        />
       )}
     </PageMenu>
   );

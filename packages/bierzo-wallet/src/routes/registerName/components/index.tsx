@@ -14,7 +14,7 @@ interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
 }
 
-const Layout = ({ addresses, validate, onSubmit, onCancel }: Props): JSX.Element => {
+const Layout = ({ chainAddresses, validate, onSubmit, onCancel }: Props): JSX.Element => {
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
     onSubmit,
     validate,
@@ -60,7 +60,7 @@ const Layout = ({ addresses, validate, onSubmit, onCancel }: Props): JSX.Element
           />
         </Block>
         <Block width="100%" marginTop={2} marginBottom={1}>
-          <AddressesTable addresses={addresses} />
+          <AddressesTable chainAddresses={chainAddresses} />
         </Block>
       </PageContent>
     </Form>
