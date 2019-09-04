@@ -6,15 +6,22 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResp
 import { getConfig } from "../../config";
 import { getConnectionFor } from "../../logic/connection";
 
-export const generateGetIdentitiesRequest = (chains: readonly string[]): JsonRpcRequest => ({
-  jsonrpc: "2.0",
-  id: makeJsonRpcId(),
-  method: "getIdentities",
-  params: {
-    reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
-    chainIds: TransactionEncoder.toJson(chains),
-  },
-});
+export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
+  const connections = await Promise.all(
+    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
+  );
+  const supportedChainIds = connections.map(connection => connection.chainId());
+
+  return {
+    jsonrpc: "2.0",
+    id: makeJsonRpcId(),
+    method: "getIdentities",
+    params: {
+      reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
+      chainIds: TransactionEncoder.toJson(supportedChainIds),
+    },
+  };
+}
 
 function isArrayOfIdentity(data: any): data is readonly Identity[] {
   if (!Array.isArray(data)) {
@@ -50,13 +57,7 @@ export const parseGetIdentitiesResponse = (response: any): readonly Identity[] =
   return parsedResult;
 };
 
-export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
-  const connections = await Promise.all(
-    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
-  );
-  const supportedChainIds = connections.map(connection => connection.chainId());
-  const request = generateGetIdentitiesRequest(supportedChainIds);
-
+export async function sendGetIdentitiesRequest(request: JsonRpcRequest): Promise<GetIdentitiesResponse> {
   const isValid = extensionContext();
   if (!isValid) {
     return undefined;
@@ -80,4 +81,4 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
       }
     });
   });
-};
+}
