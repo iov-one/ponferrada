@@ -20,6 +20,13 @@ import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEn
 
 const addressIndex = 0; // Leads to path m/44'/234'/0'
 
+function isArrayOfString(data: unknown): data is readonly string[] {
+  if (!Array.isArray(data)) {
+    return false;
+  }
+  return data.every(element => typeof element === "string");
+}
+
 export const ledgerRpcEndpoint: RpcEndpoint = {
   authorizeGetIdentitiesMessage: "Waiting for Ledger device to provide identity.",
   authorizeSignAndPostMessage: "Please sign transaction on Ledger device to continue.",
@@ -27,6 +34,16 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
   noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",
 
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
+    if (
+      request.method !== "getIdentities" ||
+      !isJsonCompatibleDictionary(request.params) ||
+      !isArrayOfString(request.params.chainIds)
+    ) {
+      throw new Error(
+        "Unsupported request format. Since this request was created by the same application, this is a bug.",
+      );
+    }
+
     let transport: TransportWebUSB;
     try {
       transport = await TransportWebUSB.create(5000);
@@ -53,12 +70,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     let out: readonly Identity[];
 
-    if (
-      request.method === "getIdentities" &&
-      isJsonCompatibleDictionary(request.params) &&
-      Array.isArray(request.params.chainIds) &&
-      TransactionEncoder.fromJson(request.params.chainIds).includes(bnsIdentity.chainId)
-    ) {
+    if (TransactionEncoder.fromJson(request.params.chainIds).includes(bnsIdentity.chainId)) {
       out = [bnsIdentity];
     } else {
       out = [];
@@ -69,7 +81,9 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
   },
   sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
     if (request.method !== "signAndPost" || !isJsonCompatibleDictionary(request.params)) {
-      throw new Error("Unsupported request format");
+      throw new Error(
+        "Unsupported request format. Since this request was created by the same application, this is a bug.",
+      );
     }
 
     const transaction = TransactionEncoder.fromJson(request.params.transaction);
