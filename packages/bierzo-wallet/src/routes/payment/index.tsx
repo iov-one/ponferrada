@@ -92,7 +92,9 @@ const Payment = (): JSX.Element => {
       );
       billboard.show(<BillboardMessage />);
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-      if (transactionId === null) {
+      if (transactionId === undefined) {
+        toast.show("Not installed", ToastVariant.ERROR);
+      } else if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
         setTransactionId(transactionId);

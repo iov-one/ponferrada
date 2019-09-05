@@ -4,7 +4,7 @@ import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
 
 import { getConfig } from "../config";
-import { GetIdentitiesResponse, RpcEndpoint } from "./rpcEndpoint";
+import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
 function extensionContext(): boolean {
   return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
@@ -33,7 +33,7 @@ function parseGetIdentitiesResponse(response: any): readonly Identity[] {
 }
 
 export const extensionRpcEndpoint: RpcEndpoint = {
-  sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse> => {
+  sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     const isValid = extensionContext();
     if (!isValid) {
       return undefined;
@@ -58,7 +58,7 @@ export const extensionRpcEndpoint: RpcEndpoint = {
       });
     });
   },
-  sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<TransactionId | null> => {
+  sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
     const config = await getConfig();
 
     return new Promise((resolve, reject) => {

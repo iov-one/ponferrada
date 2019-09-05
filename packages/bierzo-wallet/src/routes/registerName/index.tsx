@@ -108,10 +108,13 @@ const RegisterUsername = (): JSX.Element => {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
       billboard.show(<BillboardMessage />);
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-      if (transactionId === null) {
+      if (transactionId === undefined) {
+        toast.show("Not installed", ToastVariant.ERROR);
+      } else if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
+      } else {
+        setTransactionId(transactionId);
       }
-      setTransactionId(transactionId);
     } catch (error) {
       console.error(error);
       toast.show("An error ocurred", ToastVariant.ERROR);
