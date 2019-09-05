@@ -21,11 +21,6 @@ import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
 
-export const extensionNotInstalledMessage = "You need to install IOV extension.";
-export const extensionNotLoggedInMessage = "Please login to the IOV extension to continue.";
-const ledgerNoConnectionMessage = "Please connect your Ledger Nano S and try again.";
-const ledgerNoMatchingIdentity = "No matching identity found. Did you open the correct app?";
-
 export const loginBootSequence = async (
   identities: readonly Identity[],
   dispatch: Dispatch,
@@ -58,12 +53,12 @@ const Login = (): JSX.Element => {
     billboard.close();
 
     if (!installed) {
-      toast.show(extensionNotInstalledMessage, ToastVariant.ERROR);
+      toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       return;
     }
 
     if (!connected) {
-      toast.show(extensionNotLoggedInMessage, ToastVariant.ERROR);
+      toast.show(extensionRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
       return;
     }
 
@@ -82,12 +77,12 @@ const Login = (): JSX.Element => {
     billboard.close();
 
     if (identities === undefined) {
-      toast.show(ledgerNoConnectionMessage, ToastVariant.ERROR);
+      toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       return;
     }
 
     if (identities.length === 0) {
-      toast.show(ledgerNoMatchingIdentity, ToastVariant.ERROR);
+      toast.show(ledgerRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
       return;
     }
 

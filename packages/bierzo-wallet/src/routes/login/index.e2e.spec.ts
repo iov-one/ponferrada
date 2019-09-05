@@ -3,6 +3,7 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { sleep } from "ui-logic";
 
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import {
   closeBrowser,
   closeToast,
@@ -20,7 +21,6 @@ import {
 } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { BALANCE_ROUTE } from "../paths";
-import { extensionNotInstalledMessage, extensionNotLoggedInMessage } from ".";
 
 withChainsDescribe("E2E > Login route", (): void => {
   let browser: Browser;
@@ -61,7 +61,7 @@ withChainsDescribe("E2E > Login route", (): void => {
         throw new Error();
       }
       const text = await (await element.getProperty("textContent")).jsonValue();
-      expect(text).toBe(extensionNotLoggedInMessage);
+      expect(text).toBe(extensionRpcEndpoint.noMatchingIdentityMessage);
 
       await closeToast(page);
     }
@@ -113,7 +113,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     await sleep(500);
 
     const toastMessage = await getToastMessage(page);
-    expect(toastMessage).toBe(extensionNotInstalledMessage);
+    expect(toastMessage).toBe(extensionRpcEndpoint.notAvailableMessage);
     await closeToast(page);
 
     await closeBrowser(browser);

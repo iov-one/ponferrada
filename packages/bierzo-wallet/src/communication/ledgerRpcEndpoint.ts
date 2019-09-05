@@ -21,6 +21,9 @@ import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEn
 const addressIndex = 0; // Leads to path m/44'/234'/0'
 
 export const ledgerRpcEndpoint: RpcEndpoint = {
+  notAvailableMessage: "Please connect your Ledger Nano S and try again.",
+  noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",
+
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     let transport: TransportWebUSB;
     try {

@@ -109,7 +109,7 @@ const RegisterUsername = (): JSX.Element => {
       billboard.show(<BillboardMessage />);
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
-        toast.show("Not installed", ToastVariant.ERROR);
+        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       } else if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {

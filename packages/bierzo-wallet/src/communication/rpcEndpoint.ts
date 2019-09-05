@@ -16,6 +16,9 @@ export type GetIdentitiesResponse = readonly Identity[];
 export type SignAndPostResponse = TransactionId | null;
 
 export interface RpcEndpoint {
+  readonly notAvailableMessage: string;
+  readonly noMatchingIdentityMessage: string;
+
   /**
    * @returns a response or `undefined` if the endpoint was not available
    */

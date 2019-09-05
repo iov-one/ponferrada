@@ -33,6 +33,8 @@ function parseGetIdentitiesResponse(response: any): readonly Identity[] {
 }
 
 export const extensionRpcEndpoint: RpcEndpoint = {
+  notAvailableMessage: "You need to install IOV extension.",
+  noMatchingIdentityMessage: "Please login to the IOV extension to continue.",
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     if (!isExtensionContext()) return undefined;
 
