@@ -48,7 +48,7 @@ const Login = (): JSX.Element => {
   const dispatch = ReactRedux.useDispatch();
 
   const onLogin = async (_: object): Promise<void> => {
-    billboard.show(<BillboardMessage />);
+    billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
     const { installed, connected, identities } = await getExtensionStatus();
     billboard.close();
 
@@ -71,7 +71,7 @@ const Login = (): JSX.Element => {
   };
 
   const onLoginWithLedger = async (): Promise<void> => {
-    billboard.show(<BillboardMessage />);
+    billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
     const request = await generateGetIdentitiesRequest();
     const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
     billboard.close();

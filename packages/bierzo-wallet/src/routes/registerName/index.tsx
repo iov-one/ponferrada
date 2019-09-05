@@ -106,7 +106,7 @@ const RegisterUsername = (): JSX.Element => {
 
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
-      billboard.show(<BillboardMessage />);
+      billboard.show(<BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />);
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);

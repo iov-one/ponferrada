@@ -33,6 +33,8 @@ function parseGetIdentitiesResponse(response: any): readonly Identity[] {
 }
 
 export const extensionRpcEndpoint: RpcEndpoint = {
+  authorizeGetIdentitiesMessage: "Please authorize request in Neuma to continue.",
+  authorizeSignAndPostMessage: "Please authorize request in Neuma to continue.",
   notAvailableMessage: "You need to install the Neuma browser extension.",
   noMatchingIdentityMessage: "Please unlock Neuma to continue.",
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {

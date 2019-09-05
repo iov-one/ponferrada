@@ -21,6 +21,8 @@ import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEn
 const addressIndex = 0; // Leads to path m/44'/234'/0'
 
 export const ledgerRpcEndpoint: RpcEndpoint = {
+  authorizeGetIdentitiesMessage: "Waiting for Ledger device to provide identity.",
+  authorizeSignAndPostMessage: "Please sign transaction on Ledger device to continue.",
   notAvailableMessage: "Please connect your Ledger Nano S and try again.",
   noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",
 

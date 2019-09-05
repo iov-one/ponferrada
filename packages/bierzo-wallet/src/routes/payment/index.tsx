@@ -90,7 +90,7 @@ const Payment = (): JSX.Element => {
         amount,
         formValues[TEXTNOTE_FIELD],
       );
-      billboard.show(<BillboardMessage />);
+      billboard.show(<BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />);
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
