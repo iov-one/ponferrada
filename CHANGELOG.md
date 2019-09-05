@@ -7,6 +7,7 @@
   Board to change other committees.
 - Governance: Remove unused delete button on proposal
 - Upgrade IOV-Core to 0.17.3
+- Upgrade @iov/ledger-bns to 0.14.0
 
 ## 0.4.4
 
