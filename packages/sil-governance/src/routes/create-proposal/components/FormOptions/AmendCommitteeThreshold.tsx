@@ -26,7 +26,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
   const [ruleItems, setRuleItems] = useState<SelectFieldFormItem[]>([]);
 
   useEffect(() => {
-    const updateCommitteeItems = async (): Promise<void> => {
+    const reloadRuleItems = async (): Promise<void> => {
       if (!governor) throw new Error("Governor not set in store. This is a bug.");
       const electionRules = await getElectionRules(governor);
       const ruleItems = electionRules.map(rule => {
@@ -38,7 +38,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
       setRuleItems(ruleItems);
     };
 
-    updateCommitteeItems();
+    reloadRuleItems();
   }, [governor]);
 
   return (

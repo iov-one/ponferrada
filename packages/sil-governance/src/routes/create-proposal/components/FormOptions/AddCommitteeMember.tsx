@@ -29,8 +29,8 @@ const AddCommitteeMember = ({ form }: Props): JSX.Element => {
   useEffect(() => {
     const updateCommitteeItems = async (): Promise<void> => {
       if (!governor) throw new Error("Governor not set in store. This is a bug.");
-      const electorates = await governor.getElectorates();
-      const committeeItems = electorates.map(electorate => {
+      const allElectorates = await governor.getElectorates(true);
+      const committeeItems = allElectorates.map(electorate => {
         return {
           name: `${electorate.id}: ${electorate.title}`,
         };
