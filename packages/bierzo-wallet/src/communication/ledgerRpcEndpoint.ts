@@ -1,3 +1,5 @@
+import "babel-polyfill"; // required by @ledgerhq/hw-transport-webusb
+
 import {
   Algorithm,
   ChainId,
@@ -11,7 +13,12 @@ import {
 import { bnsCodec } from "@iov/bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
-import { IovLedgerApp, isLedgerAppAddress, isLedgerAppSignature, isLedgerAppVersion } from "@iov/ledger-bns";
+import {
+  IovLedgerApp,
+  isIovLedgerAppAddress,
+  isIovLedgerAppSignature,
+  isIovLedgerAppVersion,
+} from "@iov/ledger-bns";
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 
 import { getConfig } from "../config";
@@ -58,7 +65,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     // Check if correct app is open
     try {
       const version = await app.getVersion();
-      if (!isLedgerAppVersion(version)) throw new Error(version.errorMessage);
+      if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
       testnetApp = version.testMode;
     } catch (error) {
       console.warn(error);
@@ -66,7 +73,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     }
 
     const response = await app.getAddress(addressIndex);
-    if (!isLedgerAppAddress(response)) throw new Error(response.errorMessage);
+    if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
 
     const ledgerChainIds = (await getConfig()).ledger.chainIds;
 
@@ -112,11 +119,11 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     const app = new IovLedgerApp(transport);
     const versionResponse = await app.getVersion();
-    if (!isLedgerAppVersion(versionResponse)) throw new Error(versionResponse.errorMessage);
+    if (!isIovLedgerAppVersion(versionResponse)) throw new Error(versionResponse.errorMessage);
     const addressResponse = await app.getAddress(addressIndex);
-    if (!isLedgerAppAddress(addressResponse)) throw new Error(addressResponse.errorMessage);
+    if (!isIovLedgerAppAddress(addressResponse)) throw new Error(addressResponse.errorMessage);
     const signatureResponse = await app.sign(addressIndex, bytes);
-    if (!isLedgerAppSignature(signatureResponse)) throw new Error(signatureResponse.errorMessage);
+    if (!isIovLedgerAppSignature(signatureResponse)) throw new Error(signatureResponse.errorMessage);
 
     await transport.close();
 
