@@ -5,6 +5,7 @@
 - Governance: Allow using `AddCommitteeMember`/`RemoveCommitteeMember` for
   committees the current user is not a member of. This allows the Governance
   Board to change other committees.
+- Governance: Remove unused delete button on proposal
 - Upgrade IOV-Core to 0.17.3
 
 ## 0.4.4

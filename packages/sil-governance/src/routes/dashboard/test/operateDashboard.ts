@@ -58,12 +58,6 @@ export const checkProposal = (proposal: Element): void => {
   const startDate = dates.children[1].textContent;
   expect(startDate).toBe("Started on 12/10/1995, 1:00:00 AM");
 
-  const deleteIcon = proposalPanel.children[3].children[1].children[0].children[0];
-  expect(deleteIcon.getAttribute("alt")).toBe("Delete Icon");
-
-  const deleteLabel = proposalPanel.children[3].children[1].children[0].children[1].textContent;
-  expect(deleteLabel).toBe("Delete");
-
   const resultsBar = proposalPanel.children[4].textContent;
   expect(resultsBar).toBe("0% Yes");
 };
