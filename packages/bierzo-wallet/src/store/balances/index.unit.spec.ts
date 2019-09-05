@@ -4,7 +4,7 @@ import { Encoding } from "@iov/encoding";
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { ExtendedIdentity, IdentitiesState, setIdentitiesStateAction } from "../identities";
+import { ExtendedIdentity, IdentitiesState, setIdentities } from "../identities";
 import { addBalancesAction, getBalances } from "./actions";
 
 withChainsDescribe("Tokens reducer", () => {
@@ -38,7 +38,7 @@ withChainsDescribe("Tokens reducer", () => {
       ],
     ]);
 
-    store.dispatch(setIdentitiesStateAction(newState));
+    store.dispatch(setIdentities(newState));
 
     const tokens = await getBalances(
       Array.from(store.getState().identities.values()).map(ext => ext.identity),

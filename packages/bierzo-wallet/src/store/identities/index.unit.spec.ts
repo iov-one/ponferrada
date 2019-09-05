@@ -3,7 +3,7 @@ import { Encoding } from "@iov/encoding";
 
 import { aNewStore } from "..";
 import { disconnect } from "../../logic/connection";
-import { setIdentitiesStateAction } from "./actions";
+import { setIdentities } from "./actions";
 import { ExtendedIdentity, IdentitiesState } from "./reducer";
 
 describe("Identitites reducer", () => {
@@ -37,7 +37,7 @@ describe("Identitites reducer", () => {
       ],
     ]);
 
-    store.dispatch(setIdentitiesStateAction(newState));
+    store.dispatch(setIdentities(newState));
 
     const identitiesState = store.getState().identities;
     expect(identitiesState).toEqual(newState);

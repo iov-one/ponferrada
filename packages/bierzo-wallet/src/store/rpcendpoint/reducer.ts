@@ -10,7 +10,7 @@ export function rpcEndpointReducer(
   action: RpcEndpointActions,
 ): RpcEndpointState {
   switch (action.type) {
-    case "@@rpcendpoint/SET_RPC_ENDPOINT":
+    case "@@rpcendpoint/SET":
       return action.payload;
     default:
       return state;
