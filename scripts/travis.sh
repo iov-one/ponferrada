@@ -42,6 +42,8 @@ export PYTHONDONTWRITEBYTECODE=1
 
 echo "Lerna default concurrency: $(node -e 'console.log(os.cpus().length)')"
 
+echo "$CLIENT_ID"
+
 #
 # Install
 #
