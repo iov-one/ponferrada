@@ -1,11 +1,11 @@
 import { Action, combineReducers, Reducer } from "redux";
-import { StateType } from "typesafe-actions";
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
 import { balancesReducer, BalanceState } from "./balances";
 import { identitiesReducer, IdentitiesState } from "./identities";
 import { notificationReducer, NotificationState } from "./notifications";
+import { rpcEndpointReducer, RpcEndpointState } from "./rpcendpoint";
 import { tokensReducer, TokenState } from "./tokens";
 import { usernamesReducer, UsernamesState } from "./usernames";
 
@@ -13,7 +13,8 @@ export interface ResetAppActionType extends Action {
   type: "@@app/RESET";
 }
 
-export interface RootReducer {
+export interface RootState {
+  rpcEndpoint: RpcEndpointState;
   identities: IdentitiesState;
   notifications: NotificationState;
   tokens: TokenState;
@@ -22,6 +23,7 @@ export interface RootReducer {
 }
 
 const allReducers = combineReducers({
+  rpcEndpoint: rpcEndpointReducer,
   identities: identitiesReducer,
   notifications: notificationReducer,
   tokens: tokensReducer,
@@ -29,8 +31,8 @@ const allReducers = combineReducers({
   usernames: usernamesReducer,
 });
 
-const createRootReducer = (): Reducer<RootReducer> => (
-  state: RootReducer | undefined,
+const createRootReducer = (): Reducer<RootState> => (
+  state: RootState | undefined,
   action: ActionType<typeof actions>,
 ) => {
   if (action.type === "@@app/RESET") {
@@ -39,7 +41,5 @@ const createRootReducer = (): Reducer<RootReducer> => (
 
   return allReducers(state, action);
 };
-
-export type RootState = StateType<ReturnType<typeof createRootReducer>>;
 
 export default createRootReducer();

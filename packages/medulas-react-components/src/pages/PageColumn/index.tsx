@@ -9,6 +9,7 @@ import Button from "../../components/Button";
 import Form, { useForm } from "../../components/forms/Form";
 import Hairline from "../../components/Hairline";
 import Img from "../../components/Image";
+import Typography from "../../components/Typography";
 import logo from "../../theme/assets/pageColumn/logo.svg";
 import logoBlack from "../../theme/assets/pageColumn/logoBlack.svg";
 import people from "../../theme/assets/pageColumn/People.svg";
@@ -18,8 +19,10 @@ import TitleSection from "./TitleSection";
 
 interface Props {
   readonly icon: "white" | "black";
-  readonly nextMsg: string;
-  readonly onSubmit: (values: object) => void;
+  readonly primaryNextLabel: string;
+  readonly primaryNextClicked: (values: object) => void;
+  readonly secondaryNextLabel?: string;
+  readonly secondaryNextClicked?: () => void;
   readonly formRender?: (form: FormApi) => JSX.Element;
   readonly validation?: (values: object) => object | Promise<object>;
 
@@ -42,23 +45,28 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100vh",
     flexDirection: "column",
   },
+  secondaryNext: {
+    padding: "0.5em",
+  },
 }));
 
-const Layout = ({
+const PageColumn = ({
   formRender,
-  onSubmit,
   icon,
   primaryTitle,
   secondaryTitle,
   subtitle,
-  nextMsg,
+  primaryNextLabel,
+  primaryNextClicked,
+  secondaryNextLabel,
+  secondaryNextClicked,
   renderHeader,
 }: Props): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 
   const { form, handleSubmit, submitting, invalid, validating } = useForm({
-    onSubmit,
+    onSubmit: primaryNextClicked,
   });
 
   return (
@@ -86,16 +94,29 @@ const Layout = ({
           </BoxScroll>
           <Hairline />
           <Block padding={2} marginRight={8} display="flex" justifyContent="flex-end">
-            <Button
-              variant="continue"
-              color="primary"
-              type="submit"
-              disabled={invalid || submitting || validating}
-              size="large"
-              spinner={submitting || validating}
-            >
-              {`${nextMsg}\u00a0`}
-            </Button>
+            <Block display="inline-block" textAlign="center">
+              <Button
+                variant="continue"
+                color="primary"
+                type="submit"
+                disabled={invalid || submitting || validating}
+                size="large"
+                spinner={submitting || validating}
+              >
+                {`${primaryNextLabel}\u00a0`}
+              </Button>
+              <br />
+              {secondaryNextLabel && (
+                <Typography
+                  variant="body2"
+                  className={classes.secondaryNext}
+                  link={true}
+                  onClick={secondaryNextClicked}
+                >
+                  {secondaryNextLabel}
+                </Typography>
+              )}
+            </Block>
           </Block>
         </Form>
       </Block>
@@ -103,4 +124,4 @@ const Layout = ({
   );
 };
 
-export default Layout;
+export default PageColumn;

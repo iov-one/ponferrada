@@ -1,21 +1,36 @@
-/*global chrome*/
 import {
   Address,
   Amount,
   ChainId,
   Identity,
   SendTransaction,
-  TransactionId,
   UnsignedTransaction,
   WithCreator,
 } from "@iov/bcp";
 import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
+import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
-import { getConfig } from "../../config";
-import { getCodecForChainId } from "../../logic/codec";
-import { getConnectionForChainId } from "../../logic/connection";
+import { getConfig } from "../config";
+import { getCodecForChainId } from "../logic/codec";
+import { getConnectionFor, getConnectionForChainId } from "../logic/connection";
+
+export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
+  const connections = await Promise.all(
+    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
+  );
+  const supportedChainIds = connections.map(connection => connection.chainId());
+
+  return {
+    jsonrpc: "2.0",
+    id: makeJsonRpcId(),
+    method: "getIdentities",
+    params: {
+      reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
+      chainIds: TransactionEncoder.toJson(supportedChainIds),
+    },
+  };
+}
 
 async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
   const connection = await getConnectionForChainId(chainId);
@@ -39,7 +54,6 @@ export const generateSendTxRequest = async (
     amount: amount,
     memo: memo,
   });
-  const tx = TransactionEncoder.toJson(transactionWithFee);
 
   return {
     jsonrpc: "2.0",
@@ -47,7 +61,7 @@ export const generateSendTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      transaction: tx,
+      transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
 };
@@ -65,42 +79,13 @@ export const generateRegisterUsernameTxRequest = async (
   };
   const transactionWithFee = await withChainFee(creator.chainId, regUsernameTx);
 
-  const tx = TransactionEncoder.toJson(transactionWithFee);
-
   return {
     jsonrpc: "2.0",
     id: makeJsonRpcId(),
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      transaction: tx,
+      transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
-};
-
-export const sendSignAndPostRequest = async (request: JsonRpcRequest): Promise<TransactionId | null> => {
-  const config = await getConfig();
-
-  return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(config.extensionId, request, response => {
-      try {
-        const parsedResponse = parseJsonRpcResponse(response);
-        if (isJsonRpcErrorResponse(parsedResponse)) {
-          reject(parsedResponse.error.message);
-          return;
-        }
-
-        const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
-        if (typeof parsedResult === "string") {
-          resolve(parsedResult as TransactionId);
-        } else if (parsedResult === null) {
-          resolve(null);
-        } else {
-          reject("Got unexpected type of result");
-        }
-      } catch (error) {
-        reject(error);
-      }
-    });
-  });
 };

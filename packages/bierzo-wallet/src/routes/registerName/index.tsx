@@ -11,7 +11,7 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { generateRegisterUsernameTxRequest, sendSignAndPostRequest } from "../../communication/signAndPost";
+import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
@@ -82,6 +82,7 @@ const RegisterUsername = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
+  const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const addresses = getChainAddressPairWithNames(identities);
 
@@ -101,14 +102,19 @@ const RegisterUsername = (): JSX.Element => {
       return;
     }
 
+    if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
+
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
-      billboard.show(<BillboardMessage />);
-      const transactionId = await sendSignAndPostRequest(request);
-      if (transactionId === null) {
+      billboard.show(<BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />);
+      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+      if (transactionId === undefined) {
+        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      } else if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
+      } else {
+        setTransactionId(transactionId);
       }
-      setTransactionId(transactionId);
     } catch (error) {
       console.error(error);
       toast.show("An error ocurred", ToastVariant.ERROR);

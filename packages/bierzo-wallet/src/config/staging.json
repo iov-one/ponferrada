@@ -5,6 +5,12 @@
     "ethereum-eip155-4": "Rinkeby"
   },
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
+  "ledger": {
+    "chainIds": {
+      "testnetBuild": "iov-boarnet",
+      "mainnetBuild": "iov-mainnet"
+    }
+  },
   "websiteName": "wallet-staging.iov.one",
   "chains": [
     {

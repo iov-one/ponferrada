@@ -1,8 +1,7 @@
 import { Address, ChainId, Identity } from "@iov/bcp";
 import { Action } from "redux";
-import { ActionType } from "typesafe-actions";
 
-import * as actions from "./actions";
+import { IdentitiesActions } from "./actions";
 
 export interface ExtendedIdentity {
   readonly identity: Identity;
@@ -13,11 +12,9 @@ export interface ExtendedIdentity {
 export type IdentitiesState = ReadonlyMap<ChainId, ExtendedIdentity>;
 
 export interface SetIdentitiesStateActionType extends Action {
-  type: "@@identities/SET_STATE";
+  type: "@@identities/SET";
   payload: IdentitiesState;
 }
-
-export type IdentitiesActions = ActionType<typeof actions>;
 
 const initState: IdentitiesState = new Map();
 
@@ -26,7 +23,7 @@ export function identitiesReducer(
   action: IdentitiesActions,
 ): IdentitiesState {
   switch (action.type) {
-    case "@@identities/SET_STATE":
+    case "@@identities/SET":
       return action.payload;
     default:
       return state;

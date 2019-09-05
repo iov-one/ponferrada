@@ -1,11 +1,19 @@
-import { ChainId } from "@iov/bcp";
+import { ChainId, Identity } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
+import { getCodecForChainId } from "../logic/codec";
+import { ExtendedIdentity } from "../store/identities";
 import developmentConfig from "./development.json";
 
 export interface Config {
   readonly names: { [chainId: string]: string };
   readonly extensionId: string;
+  readonly ledger: {
+    readonly chainIds: {
+      readonly testnetBuild: string;
+      readonly mainnetBuild: string;
+    };
+  };
   readonly websiteName: string;
   readonly chains: readonly ChainConfig[];
 }
@@ -79,4 +87,18 @@ export async function getChainName(chainId: ChainId): Promise<string> {
   } else {
     return chainId;
   }
+}
+
+export async function makeExtendedIdentities(
+  identities: readonly Identity[],
+): Promise<Map<ChainId, ExtendedIdentity>> {
+  const out = new Map<ChainId, ExtendedIdentity>();
+  for (const identity of identities) {
+    out.set(identity.chainId, {
+      identity: identity,
+      address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
+      chainName: await getChainName(identity.chainId),
+    });
+  }
+  return out;
 }

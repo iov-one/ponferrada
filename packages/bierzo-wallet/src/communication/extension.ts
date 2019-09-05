@@ -1,6 +1,7 @@
 import { Identity } from "@iov/bcp";
 
-import { sendGetIdentitiesRequest } from "./identities";
+import { extensionRpcEndpoint } from "./extensionRpcEndpoint";
+import { generateGetIdentitiesRequest } from "./requestgenerators";
 
 export interface ExtensionStatus {
   readonly connected: boolean;
@@ -25,7 +26,8 @@ export function chooseFirstIdentitiesByChain(identities: readonly Identity[]): r
 }
 
 export async function getExtensionStatus(): Promise<ExtensionStatus> {
-  const identities = await sendGetIdentitiesRequest();
+  const request = await generateGetIdentitiesRequest();
+  const identities = await extensionRpcEndpoint.sendGetIdentitiesRequest(request);
 
   if (!identities) {
     return { installed: false, connected: false, identities: [] };

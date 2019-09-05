@@ -1,4 +1,4 @@
-import { ChainId, Identity } from "@iov/bcp";
+import { Identity } from "@iov/bcp";
 import { BillboardContext, PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
@@ -6,20 +6,20 @@ import { Dispatch } from "redux";
 
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
+import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
-import { getChainName } from "../../config";
+import { makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
-import { getCodecForChainId } from "../../logic/codec";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
-import { ExtendedIdentity, setIdentitiesStateAction } from "../../store/identities";
+import { setIdentities } from "../../store/identities";
+import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
-
-export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
-export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 export const loginBootSequence = async (
   identities: readonly Identity[],
@@ -42,35 +42,67 @@ export const loginBootSequence = async (
   dispatch(addUsernamesAction(usernames));
 };
 
+/**
+ * Tests if current environment has WebUSB available
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/USB
+ */
+function webUsbAvailable(): boolean {
+  const nav: any = navigator;
+  return typeof nav !== "undefined" && typeof nav.usb !== "undefined";
+}
+
 const Login = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
 
   const onLogin = async (_: object): Promise<void> => {
-    billboard.show(<BillboardMessage />);
+    billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
     const { installed, connected, identities } = await getExtensionStatus();
     billboard.close();
 
     if (!installed) {
-      toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
+      toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       return;
     }
 
     if (!connected) {
-      toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
+      toast.show(extensionRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
       return;
     }
 
-    const extendeIdentities = new Map<ChainId, ExtendedIdentity>();
-    for (const identity of identities) {
-      extendeIdentities.set(identity.chainId, {
-        identity: identity,
-        address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
-        chainName: await getChainName(identity.chainId),
-      });
+    dispatch(setIdentities(await makeExtendedIdentities(identities)));
+    dispatch(setRpcEndpoint(extensionRpcEndpoint));
+
+    await loginBootSequence(identities, dispatch);
+
+    history.push(BALANCE_ROUTE);
+  };
+
+  const onLoginWithLedger = async (): Promise<void> => {
+    if (!webUsbAvailable()) {
+      toast.show("Your browser does not support WebUSB", ToastVariant.ERROR);
+      return;
     }
-    dispatch(setIdentitiesStateAction(extendeIdentities));
+
+    billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
+    const request = await generateGetIdentitiesRequest();
+    const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
+    billboard.close();
+
+    if (identities === undefined) {
+      toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      return;
+    }
+
+    if (identities.length === 0) {
+      toast.show(ledgerRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
+      return;
+    }
+
+    dispatch(setIdentities(await makeExtendedIdentities(identities)));
+    dispatch(setRpcEndpoint(ledgerRpcEndpoint));
 
     await loginBootSequence(identities, dispatch);
 
@@ -80,11 +112,13 @@ const Login = (): JSX.Element => {
   return (
     <PageColumn
       icon="white"
-      onSubmit={onLogin}
       primaryTitle="Welcome"
       secondaryTitle="to your IOV Wallet"
       subtitle="Continue to access your account"
-      nextMsg="Continue"
+      primaryNextLabel="Continue with Neuma"
+      primaryNextClicked={onLogin}
+      secondaryNextLabel="Continue with Ledger Nano S"
+      secondaryNextClicked={onLoginWithLedger}
     />
   );
 };
