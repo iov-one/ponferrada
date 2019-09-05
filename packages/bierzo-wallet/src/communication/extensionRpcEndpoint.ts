@@ -6,7 +6,7 @@ import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@i
 import { getConfig } from "../config";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
-function extensionContext(): boolean {
+function isExtensionContext(): boolean {
   return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
 }
 
@@ -34,10 +34,7 @@ function parseGetIdentitiesResponse(response: any): readonly Identity[] {
 
 export const extensionRpcEndpoint: RpcEndpoint = {
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
-    const isValid = extensionContext();
-    if (!isValid) {
-      return undefined;
-    }
+    if (!isExtensionContext()) return undefined;
 
     const config = await getConfig();
 
@@ -59,6 +56,8 @@ export const extensionRpcEndpoint: RpcEndpoint = {
     });
   },
   sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
+    if (!isExtensionContext()) return undefined;
+
     const config = await getConfig();
 
     return new Promise((resolve, reject) => {
