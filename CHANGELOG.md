@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.5
+
+- Upgrade IOV-Core to 0.17.3
+
 ## 0.4.4
 
 - Wallet: Add support for Ledger nano S
