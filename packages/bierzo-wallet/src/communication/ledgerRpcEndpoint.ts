@@ -30,7 +30,7 @@ function isArrayOfString(data: unknown): data is readonly string[] {
 export const ledgerRpcEndpoint: RpcEndpoint = {
   authorizeGetIdentitiesMessage: "Waiting for Ledger device to provide identity.",
   authorizeSignAndPostMessage: "Please sign transaction on Ledger device to continue.",
-  notAvailableMessage: "Please connect your Ledger Nano S and try again.",
+  notAvailableMessage: "Please connect your Ledger Nano S, open the IOV app and try again.",
   noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",
 
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
@@ -53,15 +53,25 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     }
 
     const app = new IovLedgerApp(transport);
-    const version = await app.getVersion();
-    if (!isLedgerAppVersion(version)) throw new Error(version.errorMessage);
+    let testnetApp: boolean;
+
+    // Check if correct app is open
+    try {
+      const version = await app.getVersion();
+      if (!isLedgerAppVersion(version)) throw new Error(version.errorMessage);
+      testnetApp = version.testMode;
+    } catch (error) {
+      console.warn(error);
+      return undefined;
+    }
+
     const response = await app.getAddress(addressIndex);
     if (!isLedgerAppAddress(response)) throw new Error(response.errorMessage);
 
     const ledgerChainIds = (await getConfig()).ledger.chainIds;
 
     const bnsIdentity: Identity = {
-      chainId: (version.testMode ? ledgerChainIds.testnetBuild : ledgerChainIds.mainnetBuild) as ChainId,
+      chainId: (testnetApp ? ledgerChainIds.testnetBuild : ledgerChainIds.mainnetBuild) as ChainId,
       pubkey: {
         algo: Algorithm.Ed25519,
         data: response.pubkey as PubkeyBytes,
