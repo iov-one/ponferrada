@@ -4,7 +4,6 @@ import { Block } from "medulas-react-components";
 import React from "react";
 
 import CollapsingData from "./CollapsingData";
-import DeleteButton from "./DeleteButton";
 import Identification from "./Identification";
 import Period from "./Period";
 import TallyBar from "./TallyBar";
@@ -60,9 +59,6 @@ const Proposal = ({
         <CollapsingData description={description} action={action} />
         <Block display="flex" marginTop={2}>
           <Period expiryDate={expiryDate} startDate={startDate} hasStarted={hasStarted} hasEnded={hasEnded} />
-          <Block marginLeft={1}>
-            <DeleteButton />
-          </Block>
         </Block>
         <TallyBar tally={tally} />
       </Block>
