@@ -42,6 +42,16 @@ export const loginBootSequence = async (
   dispatch(addUsernamesAction(usernames));
 };
 
+/**
+ * Tests if current environment has WebUSB available
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/USB
+ */
+function webUsbAvailable(): boolean {
+  const nav: any = navigator;
+  return typeof nav !== "undefined" && typeof nav.usb !== "undefined";
+}
+
 const Login = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
@@ -71,6 +81,11 @@ const Login = (): JSX.Element => {
   };
 
   const onLoginWithLedger = async (): Promise<void> => {
+    if (!webUsbAvailable()) {
+      toast.show("Your browser does not support WebUSB", ToastVariant.ERROR);
+      return;
+    }
+
     billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
     const request = await generateGetIdentitiesRequest();
     const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);

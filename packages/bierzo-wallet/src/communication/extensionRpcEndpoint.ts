@@ -7,7 +7,11 @@ import { getConfig } from "../config";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
 function isExtensionContext(): boolean {
-  return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
+  return (
+    typeof chrome !== "undefined" &&
+    typeof chrome.runtime !== "undefined" &&
+    typeof chrome.runtime.sendMessage !== "undefined"
+  );
 }
 
 function isArrayOfIdentity(data: any): data is readonly Identity[] {
