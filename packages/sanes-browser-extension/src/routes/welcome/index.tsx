@@ -40,7 +40,7 @@ const Welcome = (): JSX.Element => {
       </Button>
       <Block marginTop={2} />
       <Button variant="contained" fullWidth onClick={createNewWallet}>
-        New Wallet
+        Create Wallet
       </Button>
       <Block marginTop={2} />
       <Button variant="contained" fullWidth onClick={importWallet}>
