@@ -1,7 +1,7 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
 import { Block } from "medulas-react-components";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import AddCommitteeMember from "./AddCommitteeMember";
 import AddValidator from "./AddValidator";
@@ -29,12 +29,13 @@ const proposalOptions = {
 interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
+  readonly changeElectorateId: Dispatch<SetStateAction<number>>;
 }
 
-const FormOptions = ({ form, proposalType }: Props): JSX.Element => {
+const FormOptions = ({ form, proposalType, changeElectorateId }: Props): JSX.Element => {
   const FormComponent = proposalOptions[proposalType];
 
-  return <FormComponent form={form} />;
+  return <FormComponent form={form} changeElectorateId={changeElectorateId} />;
 };
 
 export default FormOptions;
