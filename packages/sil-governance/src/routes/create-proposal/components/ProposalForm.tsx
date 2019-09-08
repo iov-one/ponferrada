@@ -2,6 +2,7 @@ import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
+import { FormApi } from "final-form";
 import { Block, Button, Form, FormValues, Typography, useForm } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
@@ -23,7 +24,7 @@ import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/Remov
 import { PUBKEY_REMOVE_FIELD } from "./FormOptions/RemoveValidator";
 import ProposalTypeSelect from "./ProposalTypeSelect";
 import TitleField, { TITLE_FIELD } from "./TitleField";
-import WhenField, { DATE_FIELD, TIME_FIELD } from "./WhenField";
+import WhenField, { DATE_FIELD, dateAfterNow } from "./WhenField";
 
 const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
   parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
@@ -56,12 +57,9 @@ const ProposalForm = (): JSX.Element => {
   const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
-    const [year, month, day] = values[DATE_FIELD].split("-").map(el => parseInt(el, 10));
-    const [hour, minute] = values[TIME_FIELD].split(":").map(el => parseInt(el, 10));
-
-    const title = values[TITLE_FIELD];
-    const description = values[DESCRIPTION_FIELD];
-    const startTime = new Date(year, month - 1, day, hour, minute);
+    const title = values[TITLE_FIELD].trim();
+    const description = values[DESCRIPTION_FIELD].trim();
+    const startTime = new Date(values[DATE_FIELD]);
 
     const commonOptions = {
       title,
@@ -135,8 +133,12 @@ const ProposalForm = (): JSX.Element => {
     }
   };
 
-  const onSubmit = async (values: FormValues): Promise<void> => {
+  const onSubmit = async (values: FormValues, form: FormApi): Promise<void> => {
     if (!governor) throw new Error("Governor not set in store. This is a bug.");
+    if (dateAfterNow(values[DATE_FIELD])) {
+      form.resetFieldState(DATE_FIELD);
+      return;
+    }
 
     const connection = await getBnsConnection();
     const proposalOptions = buildProposalOptions(values);
@@ -154,9 +156,7 @@ const ProposalForm = (): JSX.Element => {
     dispatch(setTransactionsStateAction(transactionId));
   };
 
-  const { form, handleSubmit, invalid, pristine, submitting } = useForm({
-    onSubmit,
-  });
+  const { form, handleSubmit, invalid, pristine, submitting } = useForm({ onSubmit });
 
   useEffect(() => {
     const updateElectionRules = async (): Promise<void> => {
