@@ -1,5 +1,5 @@
 import { FormApi } from "final-form";
-import { Block, TextFieldForm, Typography } from "medulas-react-components";
+import { Block, required, TextFieldForm, Typography } from "medulas-react-components";
 import React from "react";
 
 export const PUBKEY_REMOVE_FIELD = "Validator Pubkey to Remove";
@@ -17,6 +17,7 @@ const RemoveValidator = ({ form }: Props): JSX.Element => {
         <TextFieldForm
           name={PUBKEY_REMOVE_FIELD}
           form={form}
+          validate={required}
           placeholder={PUBKEY_REMOVE_PLACEHOLDER}
           fullWidth
           margin="none"
