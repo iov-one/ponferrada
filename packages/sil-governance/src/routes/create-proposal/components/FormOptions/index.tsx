@@ -30,12 +30,24 @@ interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
   readonly changeElectorateId: Dispatch<SetStateAction<number>>;
+  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number>>;
 }
 
-const FormOptions = ({ form, proposalType, changeElectorateId }: Props): JSX.Element => {
+const FormOptions = ({
+  form,
+  proposalType,
+  changeElectorateId,
+  changeAmendElectionRuleId,
+}: Props): JSX.Element => {
   const FormComponent = proposalOptions[proposalType];
 
-  return <FormComponent form={form} changeElectorateId={changeElectorateId} />;
+  return (
+    <FormComponent
+      form={form}
+      changeElectorateId={changeElectorateId}
+      changeAmendElectionRuleId={changeAmendElectionRuleId}
+    />
+  );
 };
 
 export default FormOptions;

@@ -1,13 +1,17 @@
-import { FormApi } from "final-form";
+import { FieldValidator, FormApi } from "final-form";
 import {
   Block,
+  composeValidators,
+  FieldInputValue,
+  required,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
+import { isNumber } from "util";
 
 import { RootState } from "../../../../store/reducers";
 import { getElectionRules } from "../ProposalForm";
@@ -19,11 +23,17 @@ const THRESHOLD_PLACEHOLDER = "2/3";
 
 interface Props {
   readonly form: FormApi;
+  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number>>;
 }
 
-const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
+const AmendCommitteeThreshold = ({ form, changeAmendElectionRuleId }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [ruleItems, setRuleItems] = useState<SelectFieldFormItem[]>([]);
+
+  const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
+    const electorateId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
+    changeAmendElectionRuleId(electorateId);
+  };
 
   useEffect(() => {
     const reloadRuleItems = async (): Promise<void> => {
@@ -41,6 +51,26 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
     reloadRuleItems();
   }, [governor]);
 
+  const isFraction = React.useMemo(() => {
+    const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
+      if (typeof value !== "string") throw new Error("Input must be a string");
+
+      const members = value.split("/");
+      const numerator = parseInt(members[0], 10);
+      const denominator = parseInt(members[1], 10);
+
+      if (isNumber(numerator) && isNumber(denominator) && numerator <= denominator) {
+        return undefined;
+      } else {
+        return "Must be a valid fraction";
+      }
+    };
+
+    return validator;
+  }, []);
+
+  const thresholdValidator = useMemo(() => composeValidators(required, isFraction), [isFraction]);
+
   return (
     <React.Fragment>
       <Block marginTop={2} display="flex" alignItems="center">
@@ -52,6 +82,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
             form={form}
             items={ruleItems}
             initial={COMMITTEE_THRESHOLD_INITIAL}
+            onChangeCallback={changeCommittee}
           />
         </Block>
       </Block>
@@ -62,6 +93,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
           <TextFieldForm
             name={THRESHOLD_FIELD}
             form={form}
+            validate={thresholdValidator}
             placeholder={THRESHOLD_PLACEHOLDER}
             margin="none"
           />
