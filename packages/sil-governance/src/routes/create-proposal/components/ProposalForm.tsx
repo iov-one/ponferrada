@@ -180,6 +180,7 @@ const ProposalForm = (): JSX.Element => {
     }
   };
 
+  const noRulesSet = !electionRuleId;
   const noElectorateSet = isElectorateNeeded() && !electorateId;
   const noAmendRulesSet = !amendElectionRuleId;
 
@@ -205,7 +206,10 @@ const ProposalForm = (): JSX.Element => {
           changeElectionRuleId={setElectionRuleId}
         />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
-          <Button type="submit" disabled={invalid || pristine || submitting}>
+          <Button
+            type="submit"
+            disabled={invalid || pristine || submitting || noRulesSet || noElectorateSet || noAmendRulesSet}
+          >
             Publish
           </Button>
         </Block>
