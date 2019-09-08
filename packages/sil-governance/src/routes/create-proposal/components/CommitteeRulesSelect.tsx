@@ -24,6 +24,8 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
   const [threshold, setThreshold] = useState();
   const [period, setPeriod] = useState();
 
+  const showRules = threshold && period;
+
   const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
     const ruleId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
     const rule = electionRules.find(rule => rule.id === ruleId);
@@ -55,11 +57,13 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
           />
         </Block>
       </Block>
-      <Block display="flex" justifyContent="space-between" marginTop={2}>
-        <Typography>Quorum: {quorum}</Typography>
-        <Typography>Threshold: {threshold}</Typography>
-        <Typography>Period: {period}</Typography>
-      </Block>
+      {showRules && (
+        <Block display="flex" justifyContent="space-between" marginTop={2}>
+          <Typography>Quorum: {quorum}</Typography>
+          <Typography>Threshold: {threshold}</Typography>
+          <Typography>Period: {period}</Typography>
+        </Block>
+      )}
     </Block>
   );
 };
