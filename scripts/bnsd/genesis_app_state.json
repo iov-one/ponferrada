@@ -17,6 +17,12 @@
       "coins": ["4000 BASH"]
     }
   ],
+  "username": [
+    {
+      "owner": "bech32:tiov1l678408y7a64cj66s8j64fevmspyfxdmv38cxw",
+      "username": "ledger-dev*iov"
+    }
+  ],
   "currencies": [
     {
       "ticker": "CASH",
