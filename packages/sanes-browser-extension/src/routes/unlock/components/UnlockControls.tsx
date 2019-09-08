@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { RESTORE_WALLET } from "../../paths";
 
-const LoginControls = (): JSX.Element => {
+const UnlockControls = (): JSX.Element => {
   return (
     <Block marginTop={4} textAlign="center">
       <Block marginBottom={1}>
@@ -17,4 +17,4 @@ const LoginControls = (): JSX.Element => {
   );
 };
 
-export default LoginControls;
+export default UnlockControls;

@@ -5,10 +5,10 @@ import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { loadPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
-import { LOGIN_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
+import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
 import { PASSWORD_FIELD } from "../signup/components/NewWalletForm";
-import LoginControls from "./components/LoginControls";
-import LoginForm from "./components/LoginForm";
+import UnlockControls from "./components/UnlockControls";
+import UnlockForm from "./components/UnlockForm";
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -24,11 +24,11 @@ const onBack = (): void => {
   history.push(WELCOME_ROUTE);
 };
 
-const Login = (): JSX.Element => {
+const Unlock = (): JSX.Element => {
   const personaProvider = React.useContext(PersonaContext);
   const toast = React.useContext(ToastContext);
 
-  const onLogin = async (formValues: FormValues): Promise<void> => {
+  const onUnlock = async (formValues: FormValues): Promise<void> => {
     const password = formValues[PASSWORD_FIELD];
     try {
       const response = await loadPersona(password);
@@ -39,16 +39,16 @@ const Login = (): JSX.Element => {
       });
       history.push(WALLET_STATUS_ROUTE);
     } catch (_) {
-      toast.show("Error during login", ToastVariant.ERROR);
+      toast.show("Error during unlock", ToastVariant.ERROR);
     }
   };
 
   return (
-    <NeumaPageLayout id={LOGIN_ROUTE} primaryTitle="Unlock" title="" onBack={onBack}>
-      <LoginForm onLogin={onLogin} validate={validate} />
-      <LoginControls />
+    <NeumaPageLayout id={UNLOCK_ROUTE} primaryTitle="Unlock" title="" onBack={onBack}>
+      <UnlockForm onUnlock={onUnlock} validate={validate} />
+      <UnlockControls />
     </NeumaPageLayout>
   );
 };
 
-export default Login;
+export default Unlock;

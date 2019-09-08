@@ -11,16 +11,16 @@ import {
 } from "../../utils/test/e2e";
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { LOGIN_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
+import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import {
   submitNewWalletE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
   travelToSignupNewAccountStep,
 } from "../signup/test/operateSignup";
-import { submitE2ELoginForm } from "./test/submitLoginForm";
+import { submitE2EUnlockForm } from "./test/submitUnlockForm";
 
-withChainsDescribe("DOM > Login route", (): void => {
+withChainsDescribe("DOM > Unlock route", (): void => {
   let browser: Browser;
   let page: Page;
   let bgPage: Page;
@@ -37,7 +37,7 @@ withChainsDescribe("DOM > Login route", (): void => {
     },
   );
 
-  it("should redirect to login route after browser restart", async (): Promise<void> => {
+  it("should redirect to unlock route after browser restart", async (): Promise<void> => {
     await travelToSignupNewAccountStep(page);
     const password = randomString(10);
     await submitNewWalletE2E(page, randomString(10), password);
@@ -57,8 +57,8 @@ withChainsDescribe("DOM > Login route", (): void => {
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
       waitUntil: "networkidle2",
     });
-    await findRenderedE2EComponentWithId(page, LOGIN_ROUTE);
-    await submitE2ELoginForm(page, password);
+    await findRenderedE2EComponentWithId(page, UNLOCK_ROUTE);
+    await submitE2EUnlockForm(page, password);
     await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
   }, 45000);
 });

@@ -4,7 +4,7 @@ import * as React from "react";
 import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../utils/history";
-import { LOGIN_ROUTE, RESTORE_WALLET, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
+import { RESTORE_WALLET, SIGNUP_ROUTE, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 
 const Welcome = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
@@ -22,7 +22,7 @@ const Welcome = (): JSX.Element => {
   };
 
   const unlock = (): void => {
-    history.push(LOGIN_ROUTE);
+    history.push(UNLOCK_ROUTE);
   };
 
   const importWallet = (): void => {

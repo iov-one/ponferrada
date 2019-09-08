@@ -1,6 +1,6 @@
 export const WELCOME_ROUTE = "/welcome";
 export const SIGNUP_ROUTE = "/signup";
-export const LOGIN_ROUTE = "/login";
+export const UNLOCK_ROUTE = "/unlock";
 export const RECOVERY_PHRASE_ROUTE = "/recovery-phrase";
 export const RESTORE_WALLET = "/restore-wallet";
 export const SHARE_IDENTITY = "/share-identity";
@@ -19,7 +19,7 @@ export function initialUrl(personaLoaded: boolean, hasPersonaStored: boolean, ha
   }
 
   if (hasPersonaStored) {
-    return LOGIN_ROUTE;
+    return UNLOCK_ROUTE;
   }
 
   return WELCOME_ROUTE;
