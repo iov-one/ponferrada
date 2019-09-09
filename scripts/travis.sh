@@ -66,6 +66,10 @@ fold_start "yarn-build"
 yarn build
 fold_end
 
+fold_start "yarn-build-storybook"
+yarn build-storybook
+fold_end
+
 #
 # Sanity
 #

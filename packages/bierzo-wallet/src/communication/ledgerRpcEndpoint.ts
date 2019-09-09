@@ -1,4 +1,4 @@
-import "babel-polyfill"; // required by @ledgerhq/hw-transport-webusb
+import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
 
 import {
   Algorithm,
