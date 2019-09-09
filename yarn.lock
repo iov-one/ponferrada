@@ -1480,10 +1480,12 @@
     type-tagger "^1.0.0"
     xstream "^11.10.0"
 
-"@iov/ledger-bns@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@iov/ledger-bns/-/ledger-bns-0.14.0.tgz#0d35cae34a313b8d95b82199ada77ac2bea6ffa7"
-  integrity sha512-foFGChUFX8S82BbMubxpCWJVIjrAtQJUqdwHhab8kNxaPdot0b2krneRDKawOHDms730HAFblUNJdz77vduf1w==
+"@iov/ledger-bns@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@iov/ledger-bns/-/ledger-bns-0.14.1.tgz#7d3c7cd849b89e12872acfc2f6d4baa73b4d9dd1"
+  integrity sha512-KErmLiicPvQPpefBAxq/XFfQ4fNp5HqCY2IxrJCACVM03doPZ2DBUQx9AaZ2CgGWzM/xA8CpAn1vRREEeXrhAw==
+  dependencies:
+    "@types/ledgerhq__hw-transport" "^4.21.2"
 
 "@iov/lisk@^0.17.4":
   version "0.17.4"
@@ -3376,6 +3378,13 @@
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/jspdf/-/jspdf-1.3.1.tgz#086d0ae4c393a08950d2775e992a6123d5c0d8a8"
   integrity sha512-9MQLH4+uNiFKCD5JG0yfN02O8niO/Md/Cko6pmL46dF/8eWrg61adP1aGNbuxsxuxWngKghnCeIZCeLYr1Poag==
+
+"@types/ledgerhq__hw-transport@^4.21.2":
+  version "4.21.2"
+  resolved "https://registry.yarnpkg.com/@types/ledgerhq__hw-transport/-/ledgerhq__hw-transport-4.21.2.tgz#92eaea9e4669df2c8ec5292b694097d1629b05c1"
+  integrity sha512-NhJwkdxdsqj/ZTq9KuBYtN+rDYOVYrlR3ByYNfK78iUOIlmXcXFBtfkhBUpX8c7dbE5uJZOjDdM3EC7Kf3Fakg==
+  dependencies:
+    "@types/node" "*"
 
 "@types/levelup@^3.1.0":
   version "3.1.1"
