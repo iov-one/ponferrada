@@ -27,8 +27,8 @@ describe("DOM > Feature > Welcome", () => {
     await whenOnNavigatedToRoute(UNLOCK_ROUTE);
   }, 60000);
 
-  it('has a "New Wallet" button that redirects to the Sign Up view when clicked', async () => {
-    expect(newWalletButton.textContent).toBe("New Wallet");
+  it('has a "Create Wallet" button that redirects to the Sign Up view when clicked', async () => {
+    expect(newWalletButton.textContent).toBe("Create Wallet");
     click(newWalletButton);
     await whenOnNavigatedToRoute(SIGNUP_ROUTE);
   }, 60000);

@@ -9514,7 +9514,7 @@ exports[`Storyshots Extension Welcome page 1`] = `
       <span
         className="MuiButton-label"
       >
-        New Wallet
+        Create Wallet
       </span>
     </button>
     <div
