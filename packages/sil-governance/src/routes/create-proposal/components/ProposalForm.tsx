@@ -20,11 +20,7 @@ import { POWER_FIELD, PUBKEY_ADD_FIELD } from "./FormOptions/AddValidator";
 import { COMMITTEE_QUORUM_FIELD, QUORUM_FIELD } from "./FormOptions/AmendCommitteeQuorum";
 import { COMMITTEE_THRESHOLD_FIELD, THRESHOLD_FIELD } from "./FormOptions/AmendCommitteeThreshold";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
-import {
-  RELEASE_DIGITS_FIELD,
-  RELEASE_QUANTITY_FIELD,
-  RELEASE_TICKER_FIELD,
-} from "./FormOptions/ReleaseGuaranteeFunds";
+import { RELEASE_QUANTITY_FIELD } from "./FormOptions/ReleaseGuaranteeFunds";
 import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
 import { PUBKEY_REMOVE_FIELD } from "./FormOptions/RemoveValidator";
 import ProposalTypeSelect from "./ProposalTypeSelect";
@@ -135,8 +131,8 @@ const ProposalForm = (): JSX.Element => {
       }
       case ProposalType.ReleaseGuaranteeFunds: {
         const quantity = values[RELEASE_QUANTITY_FIELD];
-        const fractionalDigits = parseInt(values[RELEASE_DIGITS_FIELD], 10);
-        const tokenTicker = values[RELEASE_TICKER_FIELD] as TokenTicker;
+        const fractionalDigits = 9;
+        const tokenTicker = "IOV" as TokenTicker;
         const amount = {
           quantity,
           fractionalDigits,
