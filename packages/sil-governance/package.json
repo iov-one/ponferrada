@@ -20,7 +20,7 @@
     "ui-logic": "^0.4.5"
   },
   "devDependencies": {
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^3.1.1"
   },
   "scripts": {
     "use-extension-config-development": "cd ../sanes-browser-extension && yarn use-config-development && yarn override-config-development && cd ../sil-governance",
