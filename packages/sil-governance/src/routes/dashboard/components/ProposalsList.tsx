@@ -35,19 +35,18 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
   const filter = getFilter(filterType);
   const proposals = ReactRedux.useSelector((state: RootState) => state.proposals).filter(filter);
 
-  const hasProposals = proposals.length > 0;
+  const noProposals = proposals.length === 0;
 
   return (
     <Block id={PROPOSALS_HTML_ID} flexGrow={1}>
-      {!hasProposals && (
+      {noProposals && (
         <Block margin={2}>
           <Typography>No proposals available</Typography>
         </Block>
       )}
-      {hasProposals &&
-        proposals.map((proposal, index) => (
-          <RenderedProposal key={proposal.id} proposal={proposal} index={index} />
-        ))}
+      {proposals.map((proposal, index) => (
+        <RenderedProposal key={proposal.id} proposal={proposal} index={index} />
+      ))}
     </Block>
   );
 };
