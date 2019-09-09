@@ -1,8 +1,7 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
-import { Block } from "medulas-react-components";
+import { Block, FieldInputValue } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
-
 import AddCommitteeMember from "./AddCommitteeMember";
 import AddValidator from "./AddValidator";
 import AmendCommitteeQuorum from "./AmendCommitteeQuorum";
@@ -24,6 +23,20 @@ const proposalOptions = {
   [ProposalType.ReleaseGuaranteeFunds]: ReleaseGuaranteeFunds,
   [ProposalType.DistributeFunds]: DistributeFunds,
   [ProposalType.TreasurySend]: Block, // not implemented
+};
+
+export const isFraction = (value: FieldInputValue): string | undefined => {
+  if (typeof value !== "string") throw new Error("Input must be a string");
+
+  const members = value.split("/");
+  const numerator = parseInt(members[0], 10);
+  const denominator = parseInt(members[1], 10);
+
+  if (Number.isInteger(numerator) && Number.isInteger(denominator) && numerator <= denominator) {
+    return undefined;
+  } else {
+    return "Must be a valid fraction";
+  }
 };
 
 interface Props {

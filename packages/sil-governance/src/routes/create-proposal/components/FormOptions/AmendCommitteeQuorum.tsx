@@ -9,8 +9,7 @@ import {
 } from "medulas-react-components";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { isNumber } from "util";
-
+import { isFraction } from ".";
 import { RootState } from "../../../../store/reducers";
 import { getElectionRules } from "../ProposalForm";
 
@@ -52,17 +51,7 @@ const AmendCommitteeQuorum = ({ form, changeAmendElectionRuleId }: Props): JSX.E
   const isFractionOrEmpty = React.useMemo(() => {
     const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
       if (!value) return undefined;
-      if (typeof value !== "string") throw new Error("Input must be a string");
-
-      const members = value.split("/");
-      const numerator = parseInt(members[0], 10);
-      const denominator = parseInt(members[1], 10);
-
-      if (isNumber(numerator) && isNumber(denominator) && numerator <= denominator) {
-        return undefined;
-      } else {
-        return "Must be a valid fraction or empty";
-      }
+      return isFraction(value);
     };
 
     return validator;

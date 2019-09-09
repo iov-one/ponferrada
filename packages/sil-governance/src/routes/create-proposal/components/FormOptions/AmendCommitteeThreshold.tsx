@@ -1,8 +1,7 @@
-import { FieldValidator, FormApi } from "final-form";
+import { FormApi } from "final-form";
 import {
   Block,
   composeValidators,
-  FieldInputValue,
   required,
   SelectFieldForm,
   SelectFieldFormItem,
@@ -11,8 +10,7 @@ import {
 } from "medulas-react-components";
 import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { isNumber } from "util";
-
+import { isFraction } from ".";
 import { RootState } from "../../../../store/reducers";
 import { getElectionRules } from "../ProposalForm";
 
@@ -51,25 +49,7 @@ const AmendCommitteeThreshold = ({ form, changeAmendElectionRuleId }: Props): JS
     reloadRuleItems();
   }, [governor]);
 
-  const isFraction = React.useMemo(() => {
-    const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-      if (typeof value !== "string") throw new Error("Input must be a string");
-
-      const members = value.split("/");
-      const numerator = parseInt(members[0], 10);
-      const denominator = parseInt(members[1], 10);
-
-      if (isNumber(numerator) && isNumber(denominator) && numerator <= denominator) {
-        return undefined;
-      } else {
-        return "Must be a valid fraction";
-      }
-    };
-
-    return validator;
-  }, []);
-
-  const thresholdValidator = useMemo(() => composeValidators(required, isFraction), [isFraction]);
+  const thresholdValidator = useMemo(() => composeValidators(required, isFraction), []);
 
   return (
     <React.Fragment>
