@@ -10,7 +10,7 @@ const COMMITTEE_RULES_INITIAL = "Select a rule";
 interface Props {
   readonly form: FormApi;
   readonly electionRules: readonly ElectionRule[];
-  readonly changeElectionRuleId: Dispatch<SetStateAction<number>>;
+  readonly changeElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Props): JSX.Element => {
@@ -20,9 +20,11 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
     };
   });
 
-  const [quorum, setQuorum] = useState();
-  const [threshold, setThreshold] = useState();
-  const [period, setPeriod] = useState();
+  const [quorum, setQuorum] = useState<string>();
+  const [threshold, setThreshold] = useState<string>();
+  const [period, setPeriod] = useState<string>();
+
+  const showRules = threshold && period;
 
   const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
     const ruleId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
@@ -55,11 +57,13 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
           />
         </Block>
       </Block>
-      <Block display="flex" justifyContent="space-between" marginTop={2}>
-        <Typography>Quorum: {quorum}</Typography>
-        <Typography>Threshold: {threshold}</Typography>
-        <Typography>Period: {period}</Typography>
-      </Block>
+      {showRules && (
+        <Block display="flex" justifyContent="space-between" marginTop={2}>
+          <Typography>Quorum: {quorum}</Typography>
+          <Typography>Threshold: {threshold}</Typography>
+          <Typography>Period: {period}</Typography>
+        </Block>
+      )}
     </Block>
   );
 };

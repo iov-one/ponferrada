@@ -1,12 +1,13 @@
 import { FormApi } from "final-form";
 import {
   Block,
+  required,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { RootState } from "../../../../store/reducers";
@@ -18,11 +19,17 @@ const MEMBER_REMOVE_PLACEHOLDER = "Enter the address of the member to remove";
 
 interface Props {
   readonly form: FormApi;
+  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
+const RemoveCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [committeeItems, setCommitteeItems] = useState<SelectFieldFormItem[]>([]);
+
+  const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
+    const electorateId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
+    changeElectorateId(electorateId);
+  };
 
   useEffect(() => {
     const updateCommitteeItems = async (): Promise<void> => {
@@ -51,6 +58,7 @@ const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
             form={form}
             items={committeeItems}
             initial={COMMITTEE_REMOVE_INITIAL}
+            onChangeCallback={changeCommittee}
           />
         </Block>
       </Block>
@@ -61,6 +69,7 @@ const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
           <TextFieldForm
             name={MEMBER_REMOVE_FIELD}
             form={form}
+            validate={required}
             placeholder={MEMBER_REMOVE_PLACEHOLDER}
             fullWidth
             margin="none"

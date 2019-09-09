@@ -1,7 +1,7 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
-import { Block } from "medulas-react-components";
-import React from "react";
+import { Block, FieldInputValue } from "medulas-react-components";
+import React, { Dispatch, SetStateAction } from "react";
 
 import AddCommitteeMember from "./AddCommitteeMember";
 import AddValidator from "./AddValidator";
@@ -26,15 +26,42 @@ const proposalOptions = {
   [ProposalType.TreasurySend]: Block, // not implemented
 };
 
+export const isFraction = (value: FieldInputValue): string | undefined => {
+  if (typeof value !== "string") throw new Error("Input must be a string");
+
+  const members = value.split("/");
+  const numerator = parseInt(members[0], 10);
+  const denominator = parseInt(members[1], 10);
+
+  if (Number.isInteger(numerator) && Number.isInteger(denominator) && numerator <= denominator) {
+    return undefined;
+  } else {
+    return "Must be a valid fraction";
+  }
+};
+
 interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
+  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
+  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const FormOptions = ({ form, proposalType }: Props): JSX.Element => {
+const FormOptions = ({
+  form,
+  proposalType,
+  changeElectorateId,
+  changeAmendElectionRuleId,
+}: Props): JSX.Element => {
   const FormComponent = proposalOptions[proposalType];
 
-  return <FormComponent form={form} />;
+  return (
+    <FormComponent
+      form={form}
+      changeElectorateId={changeElectorateId}
+      changeAmendElectionRuleId={changeAmendElectionRuleId}
+    />
+  );
 };
 
 export default FormOptions;
