@@ -180,9 +180,19 @@ const ProposalForm = (): JSX.Element => {
     }
   };
 
+  const isAmendRuleNeeded = (): boolean => {
+    switch (proposalType) {
+      case ProposalType.AmendElectionRuleThreshold:
+      case ProposalType.AmendElectionRuleQuorum:
+        return true;
+      default:
+        return false;
+    }
+  };
+
   const noRulesSet = !electionRuleId;
   const noElectorateSet = isElectorateNeeded() && !electorateId;
-  const noAmendRulesSet = !amendElectionRuleId;
+  const noAmendRulesSet = isAmendRuleNeeded() && !amendElectionRuleId;
 
   return (
     <Block flexGrow={1} margin={2}>
