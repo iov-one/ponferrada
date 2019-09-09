@@ -12,7 +12,7 @@ import React, { useMemo } from "react";
 const WHEN_FIELD = "When";
 export const DATE_FIELD = "Date";
 
-const weekMilliseconds = 604800000;
+const weekMilliseconds = 7 * 24 * 3600 * 1000;
 
 export const dateAfterNow = (value: FieldInputValue): string | undefined => {
   if (typeof value !== "string") throw new Error("Input must be a string");
