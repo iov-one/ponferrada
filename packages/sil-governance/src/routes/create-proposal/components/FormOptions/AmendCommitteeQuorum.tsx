@@ -9,9 +9,10 @@ import {
 } from "medulas-react-components";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { isFraction } from ".";
+
 import { RootState } from "../../../../store/reducers";
 import { getElectionRules } from "../ProposalForm";
+import { isFraction } from ".";
 
 export const COMMITTEE_QUORUM_FIELD = "Committee Rule to amend";
 const COMMITTEE_QUORUM_INITIAL = "Select a rule";

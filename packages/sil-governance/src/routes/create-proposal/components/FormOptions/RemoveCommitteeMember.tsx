@@ -1,11 +1,11 @@
 import { FormApi } from "final-form";
 import {
   Block,
+  required,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
   Typography,
-  required,
 } from "medulas-react-components";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";

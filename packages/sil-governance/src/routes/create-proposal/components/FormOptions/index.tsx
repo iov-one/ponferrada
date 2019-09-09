@@ -2,6 +2,7 @@ import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
 import { Block, FieldInputValue } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
+
 import AddCommitteeMember from "./AddCommitteeMember";
 import AddValidator from "./AddValidator";
 import AmendCommitteeQuorum from "./AmendCommitteeQuorum";
