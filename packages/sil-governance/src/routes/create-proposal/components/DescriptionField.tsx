@@ -7,7 +7,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useMemo } from "react";
+import React from "react";
 
 export const DESCRIPTION_FIELD = "Description";
 const DESCRIPTION_PLACEHOLDER = "Enter Description of the proposal";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const DescriptionField = ({ form }: Props): JSX.Element => {
-  const validator = useMemo(() => composeValidators(required, notLongerThan(DESCRIPTION_MAX_LENGTH)), []);
+  const validator = composeValidators(required, notLongerThan(DESCRIPTION_MAX_LENGTH));
 
   return (
     <Block marginTop={2}>

@@ -48,14 +48,10 @@ const AmendCommitteeQuorum = ({ form, changeAmendElectionRuleId }: Props): JSX.E
     updateCommitteeItems();
   }, [governor]);
 
-  const isFractionOrEmpty = React.useMemo(() => {
-    const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-      if (!value) return undefined;
-      return isFraction(value);
-    };
-
-    return validator;
-  }, []);
+  const isFractionOrEmpty: FieldValidator<FieldInputValue> = (value): string | undefined => {
+    if (!value) return undefined;
+    return isFraction(value);
+  };
 
   return (
     <React.Fragment>

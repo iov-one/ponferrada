@@ -7,7 +7,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useMemo } from "react";
+import React from "react";
 
 export const TITLE_FIELD = "Title";
 const TITLE_PLACEHOLDER = "Enter Title";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const TitleField = ({ form }: Props): JSX.Element => {
-  const validator = useMemo(() => composeValidators(required, notLongerThan(TITLE_MAX_LENGTH)), []);
+  const validator = composeValidators(required, notLongerThan(TITLE_MAX_LENGTH));
 
   return (
     <Block>

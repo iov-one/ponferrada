@@ -9,9 +9,8 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-
 import { RootState } from "../../../../store/reducers";
 
 export const COMMITTEE_ADD_FIELD = "Committee";
@@ -54,10 +53,7 @@ const AddCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element =>
     updateCommitteeItems();
   }, [governor]);
 
-  const weightValidator = useMemo(
-    () => composeValidators(required, greaterOrEqualThan(WEIGHT_MIN_VALUE)),
-    [],
-  );
+  const weightValidator = composeValidators(required, greaterOrEqualThan(WEIGHT_MIN_VALUE));
 
   return (
     <React.Fragment>

@@ -1,4 +1,4 @@
-import { FieldValidator, FormApi } from "final-form";
+import { FormApi } from "final-form";
 import {
   Block,
   composeValidators,
@@ -7,7 +7,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useMemo } from "react";
+import React from "react";
 
 const WHEN_FIELD = "When";
 export const DATE_FIELD = "Date";
@@ -33,14 +33,7 @@ interface Props {
 }
 
 const WhenField = ({ form }: Props): JSX.Element => {
-  const dateAfterNowValidator = React.useMemo(() => {
-    const validator: FieldValidator<FieldInputValue> = (value): string | undefined => dateAfterNow(value);
-    return validator;
-  }, []);
-
-  const dateValidator = useMemo(() => composeValidators(required, dateAfterNowValidator), [
-    dateAfterNowValidator,
-  ]);
+  const validator = composeValidators(required, dateAfterNow);
 
   return (
     <Block>
@@ -48,7 +41,7 @@ const WhenField = ({ form }: Props): JSX.Element => {
       <TextFieldForm
         name={DATE_FIELD}
         form={form}
-        validate={dateValidator}
+        validate={validator}
         type="datetime-local"
         fullWidth
         margin="none"

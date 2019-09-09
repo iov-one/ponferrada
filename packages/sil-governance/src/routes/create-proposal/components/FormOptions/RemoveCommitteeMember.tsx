@@ -5,6 +5,7 @@ import {
   SelectFieldFormItem,
   TextFieldForm,
   Typography,
+  required,
 } from "medulas-react-components";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
@@ -68,6 +69,7 @@ const RemoveCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element
           <TextFieldForm
             name={MEMBER_REMOVE_FIELD}
             form={form}
+            validate={required}
             placeholder={MEMBER_REMOVE_PLACEHOLDER}
             fullWidth
             margin="none"

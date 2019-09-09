@@ -7,7 +7,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useMemo } from "react";
+import React from "react";
 
 export const PUBKEY_ADD_FIELD = "New Validator Pubkey";
 const PUBKEY_ADD_PLACEHOLDER = "Enter the pubkey for the new validator";
@@ -21,7 +21,7 @@ interface Props {
 }
 
 const AddValidator = ({ form }: Props): JSX.Element => {
-  const powerValidator = useMemo(() => composeValidators(required, greaterOrEqualThan(POWER_MIN_VALUE)), []);
+  const powerValidator = composeValidators(required, greaterOrEqualThan(POWER_MIN_VALUE));
 
   return (
     <React.Fragment>

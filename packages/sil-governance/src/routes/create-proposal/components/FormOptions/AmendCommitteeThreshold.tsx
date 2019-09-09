@@ -8,7 +8,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 import { isFraction } from ".";
 import { RootState } from "../../../../store/reducers";
@@ -49,7 +49,7 @@ const AmendCommitteeThreshold = ({ form, changeAmendElectionRuleId }: Props): JS
     reloadRuleItems();
   }, [governor]);
 
-  const thresholdValidator = useMemo(() => composeValidators(required, isFraction), []);
+  const thresholdValidator = composeValidators(required, isFraction);
 
   return (
     <React.Fragment>

@@ -7,7 +7,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { useMemo } from "react";
+import React from "react";
 
 export const TEXT_FIELD = "Resolution";
 const TEXT_PLACEHOLDER = "Enter the resolution for the protocol amendment here";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const AmendProtocol = ({ form }: Props): JSX.Element => {
-  const validator = useMemo(() => composeValidators(required, notLongerThan(TEXT_MAX_LENGTH)), []);
+  const validator = composeValidators(required, notLongerThan(TEXT_MAX_LENGTH));
 
   return (
     <Block marginTop={2}>
