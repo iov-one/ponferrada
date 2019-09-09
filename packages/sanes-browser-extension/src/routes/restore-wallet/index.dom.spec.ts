@@ -6,10 +6,10 @@ import {
   mockPersonaResponse,
 } from "../../extension/background/model/persona/test/persona";
 import { click, input, submit } from "../../utils/test/dom";
-import { travelToLogin, travelToRestoreWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToRestoreWallet, travelToUnlock, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { LOGIN_ROUTE, RESTORE_WALLET, WALLET_STATUS_ROUTE } from "../paths";
+import { RESTORE_WALLET, UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import { SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE } from "./components/SetPasswordForm";
 import {
   getConfirmPasswordValidity,
@@ -95,18 +95,18 @@ withChainsDescribe("DOM > Feature > Restore Wallet", () => {
     }, 10000);
 
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
-      const loginDom = await travelToLogin();
-      const restoreWalletLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, "a");
+      const unlockDom = await travelToUnlock();
+      const restoreWalletLink = TestUtils.findRenderedDOMComponentWithTag(unlockDom, "a");
       expect(restoreWalletLink.textContent).toBe("Restore wallet");
       await click(restoreWalletLink);
       await whenOnNavigatedToRoute(RESTORE_WALLET);
 
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button");
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(unlockDom, "button");
       [backButton, continueButton] = buttons;
       expect(backButton.textContent).toBe("Back");
       await click(backButton);
 
-      await whenOnNavigatedToRoute(LOGIN_ROUTE);
+      await whenOnNavigatedToRoute(UNLOCK_ROUTE);
     }, 30000);
 
     it('has a valid "Continue" button that redirects to the Set Password Form if the form is valid when clicked', async () => {

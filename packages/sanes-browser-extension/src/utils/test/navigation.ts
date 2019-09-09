@@ -4,13 +4,13 @@ import { whenTrue } from "ui-logic";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import {
-  LOGIN_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   RESTORE_WALLET,
   SHARE_IDENTITY,
   SIGNUP_ROUTE,
   TX_REQUEST,
+  UNLOCK_ROUTE,
   WALLET_STATUS_ROUTE,
   WELCOME_ROUTE,
 } from "../../routes/paths";
@@ -53,8 +53,8 @@ export const travelToSignup = async (): Promise<React.Component> => {
   return travelTo(SIGNUP_ROUTE);
 };
 
-export const travelToLogin = async (): Promise<React.Component> => {
-  return travelTo(LOGIN_ROUTE);
+export const travelToUnlock = async (): Promise<React.Component> => {
+  return travelTo(UNLOCK_ROUTE);
 };
 
 export const travelToRecoveryPhrase = async (persona?: GetPersonaResponse): Promise<React.Component> => {

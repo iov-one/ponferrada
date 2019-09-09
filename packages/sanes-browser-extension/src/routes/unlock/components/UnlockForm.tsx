@@ -4,13 +4,13 @@ import * as React from "react";
 export const PASSWORD_FIELD = "passwordInputField";
 
 interface Props {
-  readonly onLogin: (values: FormValues) => Promise<void>;
+  readonly onUnlock: (values: FormValues) => Promise<void>;
   readonly validate: (values: object) => object;
 }
 
-const LoginForm = ({ onLogin, validate }: Props): JSX.Element => {
+const UnlockForm = ({ onUnlock, validate }: Props): JSX.Element => {
   const { form, handleSubmit, pristine, submitting, invalid } = useForm({
-    onSubmit: onLogin,
+    onSubmit: onUnlock,
     validate,
   });
 
@@ -37,4 +37,4 @@ const LoginForm = ({ onLogin, validate }: Props): JSX.Element => {
   );
 };
 
-export default LoginForm;
+export default UnlockForm;

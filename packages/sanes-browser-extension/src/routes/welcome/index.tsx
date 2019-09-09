@@ -4,7 +4,7 @@ import * as React from "react";
 import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../utils/history";
-import { LOGIN_ROUTE, RESTORE_WALLET, SIGNUP_ROUTE, WELCOME_ROUTE } from "../paths";
+import { RESTORE_WALLET, SIGNUP_ROUTE, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 
 const Welcome = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
@@ -21,8 +21,8 @@ const Welcome = (): JSX.Element => {
     history.push(SIGNUP_ROUTE);
   };
 
-  const login = (): void => {
-    history.push(LOGIN_ROUTE);
+  const unlock = (): void => {
+    history.push(UNLOCK_ROUTE);
   };
 
   const importWallet = (): void => {
@@ -35,8 +35,8 @@ const Welcome = (): JSX.Element => {
         This extension lets you manage all your accounts in one place.
       </Typography>
       <Block marginTop={2} />
-      <Button variant="contained" fullWidth onClick={login}>
-        Log in
+      <Button variant="contained" fullWidth onClick={unlock}>
+        Unlock
       </Button>
       <Block marginTop={2} />
       <Button variant="contained" fullWidth onClick={createNewWallet}>

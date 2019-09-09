@@ -1,4 +1,4 @@
-import { initialUrl, LOGIN_ROUTE, REQUEST_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "./paths";
+import { initialUrl, REQUEST_ROUTE, UNLOCK_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "./paths";
 
 describe("Paths", () => {
   describe("calculates correctly initial route", () => {
@@ -16,12 +16,12 @@ describe("Paths", () => {
       expect(initialUrl(personaLoaded, false, hasRequests)).toBe(WALLET_STATUS_ROUTE);
     });
 
-    it("goes to login route", () => {
+    it("goes to unlock route", () => {
       const personaLoaded = false;
       const hasRequests = false;
       const hasPersonaStored = true;
-      expect(initialUrl(personaLoaded, hasPersonaStored, hasRequests)).toBe(LOGIN_ROUTE);
-      expect(initialUrl(personaLoaded, hasPersonaStored, hasRequests)).toBe(LOGIN_ROUTE);
+      expect(initialUrl(personaLoaded, hasPersonaStored, hasRequests)).toBe(UNLOCK_ROUTE);
+      expect(initialUrl(personaLoaded, hasPersonaStored, hasRequests)).toBe(UNLOCK_ROUTE);
     });
 
     it("goes to welcome route", () => {

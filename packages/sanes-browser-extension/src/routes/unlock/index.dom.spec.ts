@@ -8,13 +8,13 @@ import {
   processSignup,
 } from "../../extension/background/model/persona/test/persona";
 import { click, input, submit } from "../../utils/test/dom";
-import { travelToLogin, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToUnlock, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { RESTORE_WALLET, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
-import { getPasswordValidity, isButtonDisabled } from "./test/operateLogin";
+import { getPasswordValidity, isButtonDisabled } from "./test/operateUnlock";
 
-describe("DOM > Feature > Login", () => {
-  let loginDom: React.Component;
+describe("DOM > Feature > Unlock", () => {
+  let unlockDom: React.Component;
   let buttons: Element[];
   let backButton: Element;
   let continueButton: Element;
@@ -23,12 +23,12 @@ describe("DOM > Feature > Login", () => {
   let restoreAccountLink: Element;
 
   beforeEach(async () => {
-    loginDom = await travelToLogin();
-    buttons = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button");
+    unlockDom = await travelToUnlock();
+    buttons = TestUtils.scryRenderedDOMComponentsWithTag(unlockDom, "button");
     [backButton, continueButton] = buttons;
-    passwordInput = TestUtils.findRenderedDOMComponentWithTag(loginDom, "input");
-    form = TestUtils.findRenderedDOMComponentWithTag(loginDom, "form");
-    restoreAccountLink = TestUtils.findRenderedDOMComponentWithTag(loginDom, "a");
+    passwordInput = TestUtils.findRenderedDOMComponentWithTag(unlockDom, "input");
+    form = TestUtils.findRenderedDOMComponentWithTag(unlockDom, "form");
+    restoreAccountLink = TestUtils.findRenderedDOMComponentWithTag(unlockDom, "a");
   }, 60000);
 
   it("has two buttons", () => {
@@ -45,29 +45,29 @@ describe("DOM > Feature > Login", () => {
     expect(passwordInput.getAttribute("placeholder")).toBe("Password");
 
     submit(form);
-    expect(getPasswordValidity(loginDom).textContent).toBe("Required");
+    expect(getPasswordValidity(unlockDom).textContent).toBe("Required");
 
     input(passwordInput, randomString(10));
-    expect(getPasswordValidity(loginDom)).toBeUndefined();
+    expect(getPasswordValidity(unlockDom)).toBeUndefined();
   }, 60000);
 
-  it('has a valid "Continue" button that redirects to the Account Status view if login successful when clicked', async () => {
+  it('has a valid "Continue" button that redirects to the Account Status view if unlock successful when clicked', async () => {
     const password = randomString(10);
     const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
     const personaMock = mockPersonaResponse([], mnemonic, []);
 
     mockCreatePersona(personaMock);
     await processSignup(undefined, password);
-    loginDom = await travelToLogin();
+    unlockDom = await travelToUnlock();
 
-    continueButton = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button")[1];
-    passwordInput = TestUtils.findRenderedDOMComponentWithTag(loginDom, "input");
+    continueButton = TestUtils.scryRenderedDOMComponentsWithTag(unlockDom, "button")[1];
+    passwordInput = TestUtils.findRenderedDOMComponentWithTag(unlockDom, "input");
 
     expect(continueButton.textContent).toBe("Continue");
     expect(isButtonDisabled(continueButton)).toBeTruthy();
 
     input(passwordInput, password);
-    continueButton = TestUtils.scryRenderedDOMComponentsWithTag(loginDom, "button")[1];
+    continueButton = TestUtils.scryRenderedDOMComponentsWithTag(unlockDom, "button")[1];
     expect(isButtonDisabled(continueButton)).toBeFalsy();
 
     mockLoadPersona(personaMock);
@@ -75,11 +75,11 @@ describe("DOM > Feature > Login", () => {
     await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
   }, 60000);
 
-  it('shows "Error during login" toast message if login unsuccessful', async () => {
+  it('shows "Error during unlock" toast message if unlock unsuccessful', async () => {
     input(passwordInput, randomString(10));
     submit(form);
-    const toast = (await findRenderedDOMComponentWithId(loginDom, "toast-provider")) as Element;
-    expect(toast.textContent).toBe("Error during login");
+    const toast = (await findRenderedDOMComponentWithId(unlockDom, "toast-provider")) as Element;
+    expect(toast.textContent).toBe("Error during unlock");
   }, 60000);
 
   it('has a "Restore wallet" link that redirects to the Restore Wallet view when clicked', async () => {
