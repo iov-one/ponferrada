@@ -50,7 +50,7 @@ describe("DOM > Feature > Dashboard", () => {
     expect(logoTitle).toBe("IOV");
 
     const title = getTitle(header);
-    expect(title).toBe("Voting Dashboard");
+    expect(title).toBe("Governance");
   }, 60000);
 
   it("has an aside filter with four options", async () => {
