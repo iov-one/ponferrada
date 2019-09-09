@@ -14,7 +14,7 @@
     "test": "jest --rootDir ./build"
   },
   "dependencies": {
-    "@iov/bcp": "^0.17.3",
+    "@iov/bcp": "^0.17.4",
     "random-js": "^2.1.0"
   }
 }
