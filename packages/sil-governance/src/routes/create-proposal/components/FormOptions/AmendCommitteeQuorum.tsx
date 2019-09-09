@@ -21,7 +21,7 @@ const QUORUM_PLACEHOLDER = "2/3";
 
 interface Props {
   readonly form: FormApi;
-  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number>>;
+  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const AmendCommitteeQuorum = ({ form, changeAmendElectionRuleId }: Props): JSX.Element => {

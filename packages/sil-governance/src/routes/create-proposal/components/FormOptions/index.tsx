@@ -29,8 +29,8 @@ const proposalOptions = {
 interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
-  readonly changeElectorateId: Dispatch<SetStateAction<number>>;
-  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number>>;
+  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
+  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const FormOptions = ({

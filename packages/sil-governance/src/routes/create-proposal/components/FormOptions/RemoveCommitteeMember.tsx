@@ -18,7 +18,7 @@ const MEMBER_REMOVE_PLACEHOLDER = "Enter the address of the member to remove";
 
 interface Props {
   readonly form: FormApi;
-  readonly changeElectorateId: Dispatch<SetStateAction<number>>;
+  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const RemoveCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element => {

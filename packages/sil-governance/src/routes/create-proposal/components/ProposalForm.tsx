@@ -51,14 +51,16 @@ export const getElectionRules = async (governor: Governor): Promise<readonly Ele
 const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
-  const [electionRuleId, setElectionRuleId] = useState();
-  const [electorateId, setElectorateId] = useState();
-  const [amendElectionRuleId, setAmendElectionRuleId] = useState();
+  const [electionRuleId, setElectionRuleId] = useState<number>();
+  const [electorateId, setElectorateId] = useState<number>();
+  const [amendElectionRuleId, setAmendElectionRuleId] = useState<number>();
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
+    if (!electionRuleId) throw new Error("Election Rule ID not set. This is a bug.");
+
     const title = values[TITLE_FIELD].trim();
     const description = values[DESCRIPTION_FIELD].trim();
     const startTime = new Date(values[DATE_FIELD]);

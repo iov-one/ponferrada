@@ -26,7 +26,7 @@ const WEIGHT_PLACEHOLDER = WEIGHT_MIN_VALUE.toString();
 
 interface Props {
   readonly form: FormApi;
-  readonly changeElectorateId: Dispatch<SetStateAction<number>>;
+  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const AddCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element => {
