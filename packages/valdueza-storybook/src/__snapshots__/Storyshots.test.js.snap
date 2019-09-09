@@ -13334,7 +13334,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     <h5
       className="MuiTypography-root MuiTypography-h5"
     >
-      Voting Dashboard
+      Governance
     </h5>
   </div>
   <div
@@ -13518,7 +13518,7 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
     <h6
       className="MuiTypography-root MuiTypography-h6"
     >
-      IOV Voting Dashboard
+      IOV Governance
     </h6>
   </div>
   <form
