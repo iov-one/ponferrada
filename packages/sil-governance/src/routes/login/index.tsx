@@ -90,7 +90,7 @@ const Login = (): JSX.Element => {
     >
       <CircleImage alt="Logo" icon={icon} dia="200px" iconClasses={classes.icon} />
       <Block marginTop={5} marginBottom={5}>
-        <Typography variant="h6">IOV Voting Dashboard</Typography>
+        <Typography variant="h6">IOV Governance</Typography>
       </Block>
       <Form onSubmit={handleSubmit}>
         <Button className={classes.button} type="submit" disabled={submitting}>

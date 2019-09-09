@@ -14,7 +14,7 @@ const Header = (): JSX.Element => {
           <Typography variant="h5">IOV</Typography>
         </Block>
       </Block>
-      <Typography variant="h5">Voting Dashboard</Typography>
+      <Typography variant="h5">Governance</Typography>
     </Block>
   );
 };
