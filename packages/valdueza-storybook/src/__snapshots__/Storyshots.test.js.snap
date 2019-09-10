@@ -6496,39 +6496,128 @@ Array [
 `;
 
 exports[`Storyshots Components /forms SelectField 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <div
-    className="makeStyles-dropdown"
-    onClick={[Function]}
+    className="MuiBox-root MuiBox-root"
   >
-    <div
-      className="MuiInputBase-root makeStyles-root makeStyles-root"
-      onClick={[Function]}
-      role="button"
+    <form
+      onSubmit={[Function]}
     >
-      <input
-        autoComplete="off"
-        className="MuiInputBase-input makeStyles-input"
-        name="SELECT_FIELD_ATTR"
+      <div
+        className="makeStyles-dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root makeStyles-root"
+          onClick={[Function]}
+          role="button"
+        >
+          <input
+            autoComplete="off"
+            className="MuiInputBase-input makeStyles-input"
+            name="SELECT_FIELD_ATTR"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <img
+          alt="Phone Menu"
+          className="makeStyles-root makeStyles-noShrink"
+          height="5"
+          src="selectChevron.svg"
+          width="8"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
         onBlur={[Function]}
-        onChange={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
-        readOnly={true}
-        type="text"
-        value=""
-      />
-    </div>
-    <img
-      alt="Phone Menu"
-      className="makeStyles-root makeStyles-noShrink"
-      height="5"
-      src="selectChevron.svg"
-      width="8"
-    />
-  </div>
-</form>
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Submit
+        </span>
+      </button>
+    </form>
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="makeStyles-dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root makeStyles-root"
+          onClick={[Function]}
+          role="button"
+        >
+          <input
+            autoComplete="off"
+            className="MuiInputBase-input makeStyles-input"
+            name="SELECT_FIELD_ATTR_EMPTY"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <img
+          alt="Phone Menu"
+          className="makeStyles-root makeStyles-noShrink"
+          height="5"
+          src="selectChevron.svg"
+          width="8"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Submit
+        </span>
+      </button>
+    </form>
+  </div>,
+]
 `;
 
 exports[`Storyshots Components Avatars 1`] = `
