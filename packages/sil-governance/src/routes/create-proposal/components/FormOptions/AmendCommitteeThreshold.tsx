@@ -2,13 +2,14 @@ import { FormApi } from "final-form";
 import {
   Block,
   composeValidators,
+  FieldInputValue,
   required,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { RootState } from "../../../../store/reducers";
@@ -22,17 +23,11 @@ const THRESHOLD_PLACEHOLDER = "2/3";
 
 interface Props {
   readonly form: FormApi;
-  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const AmendCommitteeThreshold = ({ form, changeAmendElectionRuleId }: Props): JSX.Element => {
+const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [ruleItems, setRuleItems] = useState<SelectFieldFormItem[]>([]);
-
-  const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
-    const electorateId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
-    changeAmendElectionRuleId(electorateId);
-  };
 
   useEffect(() => {
     const reloadRuleItems = async (): Promise<void> => {
@@ -50,6 +45,11 @@ const AmendCommitteeThreshold = ({ form, changeAmendElectionRuleId }: Props): JS
     reloadRuleItems();
   }, [governor]);
 
+  const committeeValidator = (value: FieldInputValue): string | undefined => {
+    if (value === COMMITTEE_THRESHOLD_INITIAL) return "Must select a rule";
+    return undefined;
+  };
+
   const thresholdValidator = composeValidators(required, isFraction);
 
   return (
@@ -59,11 +59,11 @@ const AmendCommitteeThreshold = ({ form, changeAmendElectionRuleId }: Props): JS
         <Block marginLeft={2}>
           <SelectFieldForm
             fieldName={COMMITTEE_THRESHOLD_FIELD}
-            fullWidth
             form={form}
+            validate={committeeValidator}
+            fullWidth
             items={ruleItems}
             initial={COMMITTEE_THRESHOLD_INITIAL}
-            onChangeCallback={changeCommittee}
           />
         </Block>
       </Block>

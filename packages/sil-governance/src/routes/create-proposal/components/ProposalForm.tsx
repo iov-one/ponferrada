@@ -53,8 +53,6 @@ const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState<number>();
-  const [electorateId, setElectorateId] = useState<number>();
-  const [amendElectionRuleId, setAmendElectionRuleId] = useState<number>();
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
@@ -189,29 +187,7 @@ const ProposalForm = (): JSX.Element => {
     updateElectionRules();
   }, [governor]);
 
-  const isElectorateNeeded = (): boolean => {
-    switch (proposalType) {
-      case ProposalType.AddCommitteeMember:
-      case ProposalType.RemoveCommitteeMember:
-        return true;
-      default:
-        return false;
-    }
-  };
-
-  const isAmendRuleNeeded = (): boolean => {
-    switch (proposalType) {
-      case ProposalType.AmendElectionRuleThreshold:
-      case ProposalType.AmendElectionRuleQuorum:
-        return true;
-      default:
-        return false;
-    }
-  };
-
   const noRulesSet = !electionRuleId;
-  const noElectorateSet = isElectorateNeeded() && !electorateId;
-  const noAmendRulesSet = isAmendRuleNeeded() && !amendElectionRuleId;
 
   return (
     <Block flexGrow={1} margin={2}>
@@ -222,12 +198,7 @@ const ProposalForm = (): JSX.Element => {
           <WhenField form={form} />
         </Block>
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
-        <FormOptions
-          form={form}
-          proposalType={proposalType}
-          changeElectorateId={setElectorateId}
-          changeAmendElectionRuleId={setAmendElectionRuleId}
-        />
+        <FormOptions form={form} proposalType={proposalType} />
         <DescriptionField form={form} />
         <CommitteeRulesSelect
           form={form}
@@ -235,10 +206,7 @@ const ProposalForm = (): JSX.Element => {
           changeElectionRuleId={setElectionRuleId}
         />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
-          <Button
-            type="submit"
-            disabled={invalid || pristine || submitting || noRulesSet || noElectorateSet || noAmendRulesSet}
-          >
+          <Button type="submit" disabled={invalid || pristine || submitting || noRulesSet}>
             Publish
           </Button>
         </Block>

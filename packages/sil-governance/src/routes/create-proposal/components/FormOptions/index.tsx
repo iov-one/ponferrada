@@ -1,7 +1,7 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
 import { Block, FieldInputValue } from "medulas-react-components";
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 
 import AddCommitteeMember from "./AddCommitteeMember";
 import AddValidator from "./AddValidator";
@@ -43,25 +43,12 @@ export const isFraction = (value: FieldInputValue): string | undefined => {
 interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
-  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
-  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const FormOptions = ({
-  form,
-  proposalType,
-  changeElectorateId,
-  changeAmendElectionRuleId,
-}: Props): JSX.Element => {
+const FormOptions = ({ form, proposalType }: Props): JSX.Element => {
   const FormComponent = proposalOptions[proposalType];
 
-  return (
-    <FormComponent
-      form={form}
-      changeElectorateId={changeElectorateId}
-      changeAmendElectionRuleId={changeAmendElectionRuleId}
-    />
-  );
+  return <FormComponent form={form} />;
 };
 
 export default FormOptions;
