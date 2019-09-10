@@ -2,7 +2,9 @@ import * as React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import { history } from "../utils/history";
+import DeleteWallet from "./delete-wallet";
 import {
+  DELETE_WALLET_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   RESTORE_WALLET,
@@ -35,6 +37,7 @@ export const MainRouter = (): JSX.Element => (
       <Route exact path={SHARE_IDENTITY} component={ShareIdentity} />
       <Route exact path={TX_REQUEST} component={TxRequest} />
       <Route exact path={REQUEST_ROUTE} component={Requests} />
+      <Route exact path={DELETE_WALLET_ROUTE} component={DeleteWallet} />
     </Switch>
   </Router>
 );
