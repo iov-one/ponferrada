@@ -52,6 +52,10 @@ export const mockClearPersona = (): jest.SpyInstance => {
   return jest.spyOn(chromeInternalMsgs, "clearPersona").mockResolvedValueOnce();
 };
 
+export const mockClearPersonaWithException = (): void => {
+  jest.spyOn(chromeInternalMsgs, "clearPersona").mockRejectedValueOnce("error during persona clearing");
+};
+
 export const mockClearDatabase = (): jest.SpyInstance => {
   return jest.spyOn(chromeInternalMsgs, "clearDatabase").mockResolvedValueOnce();
 };
