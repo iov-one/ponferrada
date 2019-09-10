@@ -4,7 +4,11 @@ import { Encoding } from "@iov/encoding";
 import { FormApi } from "final-form";
 import {
   Block,
+  composeValidators,
   FieldInputValue,
+  greaterOrEqualThan,
+  lowerOrEqualThan,
+  required,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
@@ -17,7 +21,7 @@ import { getBnsConnection } from "../../../../logic/connection";
 
 const AMOUNT_LABEL = "Amount";
 export const RELEASE_QUANTITY_FIELD = "Quantity";
-const RELEASE_QUANTITY_PLACEHOLDER = "0.00";
+const RELEASE_QUANTITY_PLACEHOLDER = "1";
 export const RELEASE_TICKER_FIELD = "Ticker";
 const RELEASE_TICKER_INITIAL = "Select a currency";
 
@@ -55,6 +59,22 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
     updateTickers();
   }, []);
 
+  const numbersOnly = (value: FieldInputValue): string | undefined => {
+    if (typeof value !== "string") throw new Error("Input must be a string");
+
+    const hasNonNumbers = value.search(new RegExp("[^0-9]")) === 1 ? true : false;
+
+    if (hasNonNumbers) return "Must be a number";
+    return undefined;
+  };
+
+  const quantityValidator = composeValidators(
+    required,
+    numbersOnly,
+    greaterOrEqualThan(1),
+    lowerOrEqualThan(1e33),
+  );
+
   const tickerValidator = (value: FieldInputValue): string | undefined => {
     if (value === RELEASE_TICKER_INITIAL) return "Must select a currency";
     return undefined;
@@ -67,6 +87,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
         <TextFieldForm
           name={RELEASE_QUANTITY_FIELD}
           form={form}
+          validate={quantityValidator}
           placeholder={RELEASE_QUANTITY_PLACEHOLDER}
           margin="none"
         />
