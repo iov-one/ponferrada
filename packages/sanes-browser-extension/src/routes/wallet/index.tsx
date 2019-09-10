@@ -17,7 +17,7 @@ import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { EXTENSION_HEIGHT } from "../../theme/constants";
-import { clearDatabase, clearPersona, createAccount } from "../../utils/chrome";
+import { createAccount } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import {
   DELETE_WALLET_ROUTE,
@@ -25,7 +25,6 @@ import {
   REQUEST_ROUTE,
   TERMS_URL,
   WALLET_STATUS_ROUTE,
-  WELCOME_ROUTE,
 } from "../paths";
 import deleteWalletIcon from "./assets/deleteWallet.svg";
 import recoveryPhraseIcon from "./assets/recoveryPhrase.svg";
