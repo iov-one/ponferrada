@@ -17,11 +17,7 @@ import { sleep } from "ui-logic";
 
 import Backgroundscript, { IovWindowExtension } from "../../extension/background/model/backgroundscript";
 import { Persona, PersonaAcccount, ProcessedTx } from "../../extension/background/model/persona";
-import {
-  mockClearDatabase,
-  mockClearPersona,
-  mockPersonaResponse,
-} from "../../extension/background/model/persona/test/persona";
+import { mockPersonaResponse } from "../../extension/background/model/persona/test/persona";
 import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
@@ -31,7 +27,7 @@ import * as txsUpdater from "../../extension/background/updaters/appUpdater";
 import { click } from "../../utils/test/dom";
 import { travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL, WELCOME_ROUTE } from "../paths";
+import { DELETE_WALLET_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL } from "../paths";
 import * as Drawer from "../wallet/test/drawer";
 import { checkCreateAccount, getTransactionsCount } from "./test/operateWallet";
 
@@ -111,13 +107,9 @@ describe("DOM > Feature > Wallet Status", () => {
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
-  it("redirects to the Welcome page when Delete wallet was clicked", async () => {
-    const clearPersonaMock = mockClearPersona();
-    const clearDatabaseMock = mockClearDatabase();
+  it("redirects to the Delete Wallet page when Delete wallet was clicked", async () => {
     await Drawer.clickDeleteWallet(walletStatusDom);
-    await whenOnNavigatedToRoute(WELCOME_ROUTE);
-    expect(clearPersonaMock).toHaveBeenCalledTimes(1);
-    expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
+    await whenOnNavigatedToRoute(DELETE_WALLET_ROUTE);
   }, 60000);
 
   it("redirects to the Terms and Conditions page", async () => {

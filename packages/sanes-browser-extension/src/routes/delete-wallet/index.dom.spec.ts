@@ -22,7 +22,6 @@ describe("DOM > Feature > Delete Wallet", () => {
   let form: Element;
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const personaMock = mockPersonaResponse([], mnemonic, []);
-  mockClearDatabase();
 
   beforeEach(async () => {
     deleteWalletDom = await travelToDeleteWallet(personaMock);
@@ -42,16 +41,16 @@ describe("DOM > Feature > Delete Wallet", () => {
     await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
   }, 60000);
 
-  it('has a valid "Recovery phrase" input', () => {
+  it('has a valid "Recovery phrase" input', async () => {
     expect(mnemonicInput.getAttribute("placeholder")).toBe("Recovery phrase");
 
-    submit(form);
+    await submit(form);
     expect(getMnemonicValidity(deleteWalletDom).textContent).toBe("Required");
 
     input(mnemonicInput, randomString(10));
-    submit(form);
+    await submit(form);
     expect(getMnemonicValidity(deleteWalletDom).textContent).toBe(
-      "Wrong mnemonic entered, please try another.",
+      "Wrong mnemonic entered, please try again.",
     );
 
     input(mnemonicInput, mnemonic);
@@ -59,7 +58,9 @@ describe("DOM > Feature > Delete Wallet", () => {
   }, 60000);
 
   it('has a valid "Delete" button that redirects to the Wallet Status view if deleted successfuly when clicked', async () => {
-    mockClearPersona();
+    const clearPersonaMock = mockClearPersona();
+    const clearDatabaseMock = mockClearDatabase();
+
     expect(deleteButton.textContent).toBe("Delete");
     expect(isButtonDisabled(deleteButton)).toBeTruthy();
 
@@ -69,6 +70,9 @@ describe("DOM > Feature > Delete Wallet", () => {
     input(mnemonicInput, mnemonic);
     await submit(mnemonicInput);
     await whenOnNavigatedToRoute(WELCOME_ROUTE);
+
+    expect(clearPersonaMock).toHaveBeenCalledTimes(1);
+    expect(clearDatabaseMock).toHaveBeenCalledTimes(1);
   }, 60000);
 
   it('shows "An error has occurred during deleting wallet" toast message if wallet deletion unsuccessful', async () => {

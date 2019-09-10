@@ -22,7 +22,7 @@ const DeleteWallet = (): JSX.Element => {
     if (!formValues[MNEMONIC_FIELD]) {
       errors[MNEMONIC_FIELD] = "Required";
     } else if (personaProvider.mnemonic !== formValues[MNEMONIC_FIELD]) {
-      errors[MNEMONIC_FIELD] = "Wrong mnemonic entered, please try another.";
+      errors[MNEMONIC_FIELD] = "Wrong mnemonic entered, please try again.";
     }
 
     return errors;
