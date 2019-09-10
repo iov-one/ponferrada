@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.6
+
+- Upgrade IOV-Core to 0.17.5
+
 ## 0.4.5
 
 - Governance: Allow using `AddCommitteeMember`/`RemoveCommitteeMember` for
