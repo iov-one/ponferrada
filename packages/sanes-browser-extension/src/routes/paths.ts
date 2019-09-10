@@ -1,6 +1,7 @@
 export const WELCOME_ROUTE = "/welcome";
 export const SIGNUP_ROUTE = "/signup";
 export const UNLOCK_ROUTE = "/unlock";
+export const DELETE_WALLET_ROUTE = "/delete-wallet";
 export const RECOVERY_PHRASE_ROUTE = "/recovery-phrase";
 export const RESTORE_WALLET = "/restore-wallet";
 export const SHARE_IDENTITY = "/share-identity";

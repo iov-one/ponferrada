@@ -4,6 +4,7 @@ import { whenTrue } from "ui-logic";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import {
+  DELETE_WALLET_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   RESTORE_WALLET,
@@ -63,6 +64,10 @@ export const travelToRecoveryPhrase = async (persona?: GetPersonaResponse): Prom
 
 export const travelToRestoreWallet = async (): Promise<React.Component> => {
   return travelTo(RESTORE_WALLET);
+};
+
+export const travelToDeleteWallet = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(DELETE_WALLET_ROUTE, [], persona);
 };
 
 export const travelToShareIdentity = async (requests: readonly Request[]): Promise<React.Component> => {

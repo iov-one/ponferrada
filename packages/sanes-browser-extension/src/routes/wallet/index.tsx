@@ -17,14 +17,14 @@ import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { EXTENSION_HEIGHT } from "../../theme/constants";
-import { clearDatabase, clearPersona, createAccount } from "../../utils/chrome";
+import { createAccount } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import {
+  DELETE_WALLET_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   TERMS_URL,
   WALLET_STATUS_ROUTE,
-  WELCOME_ROUTE,
 } from "../paths";
 import deleteWalletIcon from "./assets/deleteWallet.svg";
 import recoveryPhraseIcon from "./assets/recoveryPhrase.svg";
@@ -85,18 +85,7 @@ const AccountView = (): JSX.Element => {
     {
       icon: deleteWalletIcon,
       text: "Delete Wallet",
-      action: async () => {
-        // TODO: Ask for confirmation
-        try {
-          await clearPersona();
-          await clearDatabase();
-        } catch (error) {
-          toast.show("An error occurred during deleting wallet", ToastVariant.ERROR);
-          console.error(error);
-          return;
-        }
-        history.replace(WELCOME_ROUTE);
-      },
+      action: () => history.push(DELETE_WALLET_ROUTE),
     },
   ];
 
