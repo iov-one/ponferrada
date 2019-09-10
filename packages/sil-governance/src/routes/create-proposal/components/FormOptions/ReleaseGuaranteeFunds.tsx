@@ -1,4 +1,6 @@
-import { Address, TokenTicker } from "@iov/bcp";
+import { ChainId, TokenTicker } from "@iov/bcp";
+import { escrowIdToAddress } from "@iov/bns";
+import { Encoding } from "@iov/encoding";
 import { FormApi } from "final-form";
 import {
   Block,
@@ -9,6 +11,7 @@ import {
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
 
+import { getConfig } from "../../../../config";
 import { getBnsConnection } from "../../../../logic/connection";
 
 const AMOUNT_LABEL = "Amount";
@@ -26,11 +29,17 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
 
   useEffect(() => {
     const updateTickers = async (): Promise<void> => {
-      // TODO: Calculate dynamically from guaranteeFundEscrowId using IOV-Core
-      const guaranteeFundAddress = "tiov170qvwm0tscn5mza3vmaerkzqllvwc3kycrz6kr" as Address;
+      const config = await getConfig();
+      const escrowHex = config.bnsChain.guaranteeFundEscrowId;
+      if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
+      const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
+
+      const chainId = "local-iov-devnet" as ChainId;
+      const guaranteeFundAddress = escrowIdToAddress(chainId, guaranteeFundEscrowId);
 
       const connection = await getBnsConnection();
       const account = await connection.getAccount({ address: guaranteeFundAddress });
+
       const tickers = account
         ? account.balance.map(balance => balance.tokenTicker)
         : new Array<TokenTicker>();
