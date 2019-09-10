@@ -13494,7 +13494,17 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
       id="proposals"
-    />
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          No proposals available
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;
