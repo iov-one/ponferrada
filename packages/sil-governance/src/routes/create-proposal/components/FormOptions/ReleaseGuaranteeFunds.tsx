@@ -4,6 +4,7 @@ import { Encoding } from "@iov/encoding";
 import { FormApi } from "final-form";
 import {
   Block,
+  FieldInputValue,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
@@ -54,6 +55,11 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
     updateTickers();
   }, []);
 
+  const tickerValidator = (value: FieldInputValue): string | undefined => {
+    if (value === RELEASE_TICKER_INITIAL) return "Must select a currency";
+    return undefined;
+  };
+
   return (
     <Block marginTop={2} display="flex" alignItems="center">
       <Typography>{AMOUNT_LABEL}</Typography>
@@ -68,6 +74,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
           <SelectFieldForm
             fieldName={RELEASE_TICKER_FIELD}
             form={form}
+            validate={tickerValidator}
             items={tickerItems}
             initial={RELEASE_TICKER_INITIAL}
           />
