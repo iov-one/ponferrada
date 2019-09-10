@@ -2,6 +2,10 @@
 
 ## 0.4.6
 
+- Governance: Add message for empty proposals list
+- Governance: Add input validation for proposal creation
+- Extension: Rename "Login" to "Unlock"
+- Extension: Mnemonic must be typed-in to confirm wallet deletion
 - Upgrade IOV-Core to 0.17.5
 
 ## 0.4.5
