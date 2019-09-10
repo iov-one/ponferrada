@@ -1,14 +1,16 @@
 import InputBase, { InputBaseProps } from "@material-ui/core/InputBase";
 import Popper from "@material-ui/core/Popper";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import { FieldSubscription, FormApi } from "final-form";
+import { FieldSubscription, FieldValidator, FormApi } from "final-form";
 import * as React from "react";
 import { useField } from "react-final-form-hooks";
 
 import { useOpen } from "../../../hooks/open";
 import selectChevron from "../../../theme/assets/selectField/selectChevron.svg";
+import { FieldInputValue } from "../../../utils/forms/validators";
 import Block from "../../Block";
 import Image from "../../Image";
+import Typography from "../../Typography";
 import SelectItems from "./SelectItems";
 
 export interface Item {
@@ -51,6 +53,7 @@ interface InnerProps {
   readonly form: FormApi;
   readonly onChangeCallback?: (value: Item) => void;
   readonly subscription?: FieldSubscription;
+  readonly validate?: FieldValidator<FieldInputValue>;
   readonly items: readonly Item[];
   readonly maxWidth?: string;
 }
@@ -64,11 +67,14 @@ const SelectFieldForm = ({
   items,
   onChangeCallback,
   maxWidth = "100%",
+  validate,
 }: Props): JSX.Element => {
   const [isOpen, toggle] = useOpen();
   const classes = useStyles({ maxWidth });
   const inputRef = React.useRef(null);
-  const { input } = useField(fieldName, form);
+  const { input, meta } = useField(fieldName, form, validate);
+
+  const error = meta.error && (meta.touched || !meta.pristine);
 
   const { name, onChange, value, ...restInput } = input;
   const inputProps = { ...restInput, autoComplete: "off" };
@@ -112,6 +118,11 @@ const SelectFieldForm = ({
         />
         <Image noShrink src={selectChevron} alt="Phone Menu" width={`${CHEVRON_WIDTH}`} height="5" />
       </div>
+      {error && (
+        <Typography variant="body2" color="error">
+          {meta.error}
+        </Typography>
+      )}
       <Popper open={isOpen} anchorEl={inputRef.current} placement="bottom-start">
         {() => (
           <Block marginTop={1}>

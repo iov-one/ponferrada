@@ -1,6 +1,6 @@
 import { TextFieldProps } from "@material-ui/core/TextField";
 import { FieldSubscription, FieldValidator, FormApi } from "final-form";
-import { FieldInputValue } from "~/utils/forms/validators";
+import { FieldInputValue } from "../../../utils/forms/validators";
 interface InnerProps {
   name: string;
   form: FormApi;
