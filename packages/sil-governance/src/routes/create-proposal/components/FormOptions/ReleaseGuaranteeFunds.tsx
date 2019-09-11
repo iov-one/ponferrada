@@ -50,9 +50,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
         ? account.balance.map(balance => balance.tokenTicker)
         : new Array<TokenTicker>();
 
-      const tickerItems = Object.values(tickers)
-        .sort()
-        .map((ticker): SelectFieldFormItem => ({ name: ticker }));
+      const tickerItems = [...tickers].sort().map((ticker): SelectFieldFormItem => ({ name: ticker }));
 
       setTickerItems(tickerItems);
     };
