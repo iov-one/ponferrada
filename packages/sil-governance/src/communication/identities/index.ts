@@ -3,7 +3,7 @@ import { ChainId, Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
-import { GetIdentitiesResponse } from "..";
+import { browserExtensionErrorCodes, GetIdentitiesResponse } from "..";
 import { getConfig } from "../../config";
 import { getBnsConnection } from "../../logic/connection";
 
@@ -36,7 +36,9 @@ function isExtensionContext(): boolean {
 /**
  * @returns a response or `undefined` if the endpoint was not available
  */
-export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse | undefined> => {
+export const sendGetIdentitiesRequest = async (): Promise<
+  GetIdentitiesResponse | undefined | "not_ready"
+> => {
   if (!isExtensionContext()) return undefined;
 
   const connection = await getBnsConnection();
@@ -55,8 +57,14 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse 
       try {
         const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
-          reject(parsedResponse.error.message);
-          return;
+          switch (parsedResponse.error.code) {
+            case browserExtensionErrorCodes.signingServerNotReady:
+              resolve("not_ready");
+              return;
+            default:
+              reject(parsedResponse.error.message);
+              return;
+          }
         }
 
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);

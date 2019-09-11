@@ -4,7 +4,7 @@ import { BnsConnection, BnsTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
-import { SignAndPostResponse } from "..";
+import { browserExtensionErrorCodes, SignAndPostResponse } from "..";
 import { getConfig } from "../../config";
 
 function isExtensionContext(): boolean {
@@ -37,7 +37,7 @@ async function generateSignAndPostRequest(
 export async function sendSignAndPostRequest(
   connection: BnsConnection,
   tx: BnsTx & WithCreator,
-): Promise<SignAndPostResponse | undefined> {
+): Promise<SignAndPostResponse | undefined | "not_ready"> {
   if (!isExtensionContext()) return undefined;
 
   const request = await generateSignAndPostRequest(connection, tx);
@@ -53,8 +53,14 @@ export async function sendSignAndPostRequest(
       try {
         const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
-          reject(parsedResponse.error.message);
-          return;
+          switch (parsedResponse.error.code) {
+            case browserExtensionErrorCodes.signingServerNotReady:
+              resolve("not_ready");
+              return;
+            default:
+              reject(parsedResponse.error.message);
+              return;
+          }
         }
 
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);

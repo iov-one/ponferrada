@@ -18,5 +18,12 @@ export const communicationTexts = {
   authorizeGetIdentitiesMessage: "Please authorize request in Neuma to continue.",
   authorizeSignAndPostMessage: "Please authorize request in Neuma to continue.",
   notAvailableMessage: "You need to install the Neuma browser extension.",
+  notReadyMessage: "Please unlock Neuma to continue.",
   noMatchingIdentityMessage: "Please unlock Neuma to continue.",
+};
+
+export const browserExtensionErrorCodes = {
+  signingServerNotReady: -32010,
+  senderUrlMissing: -32011,
+  senderBlocked: -32012,
 };

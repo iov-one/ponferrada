@@ -53,6 +53,11 @@ const Login = (): JSX.Element => {
       return false;
     }
 
+    if (identities === "not_ready") {
+      toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
+      return false;
+    }
+
     if (identities.length === 0) {
       toast.show(communicationTexts.noMatchingIdentityMessage, ToastVariant.ERROR);
       return false;

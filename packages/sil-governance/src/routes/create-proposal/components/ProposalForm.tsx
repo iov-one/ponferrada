@@ -177,6 +177,8 @@ const ProposalForm = (): JSX.Element => {
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
     if (transactionId === undefined) {
       toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
+    } else if (transactionId === "not_ready") {
+      toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
     } else {
       dispatch(setTransactionsStateAction(transactionId));
     }
