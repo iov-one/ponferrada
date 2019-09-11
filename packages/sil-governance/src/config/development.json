@@ -4,6 +4,7 @@
   },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
   "bnsChain": {
+    "chainId": "local-iov-devnet",
     "chainSpec": {
       "codecType": "bns",
       "node": "ws://localhost:23456/"

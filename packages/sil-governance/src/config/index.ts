@@ -8,6 +8,7 @@ export interface Config {
 }
 
 export interface ChainConfig {
+  readonly chainId?: string;
   readonly chainSpec: ChainSpec;
   readonly guaranteeFundEscrowId?: string;
 }
