@@ -1,4 +1,4 @@
-import { Address, Algorithm, PubkeyBundle, PubkeyBytes } from "@iov/bcp";
+import { Address, Algorithm, PubkeyBundle, PubkeyBytes, TokenTicker } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
@@ -20,6 +20,7 @@ import { POWER_FIELD, PUBKEY_ADD_FIELD } from "./FormOptions/AddValidator";
 import { COMMITTEE_QUORUM_FIELD, QUORUM_FIELD } from "./FormOptions/AmendCommitteeQuorum";
 import { COMMITTEE_THRESHOLD_FIELD, THRESHOLD_FIELD } from "./FormOptions/AmendCommitteeThreshold";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
+import { RELEASE_QUANTITY_FIELD, RELEASE_TICKER_FIELD } from "./FormOptions/ReleaseGuaranteeFunds";
 import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
 import { PUBKEY_REMOVE_FIELD } from "./FormOptions/RemoveValidator";
 import ProposalTypeSelect from "./ProposalTypeSelect";
@@ -52,8 +53,6 @@ const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState<number>();
-  const [electorateId, setElectorateId] = useState<number>();
-  const [amendElectionRuleId, setAmendElectionRuleId] = useState<number>();
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
@@ -128,6 +127,22 @@ const ProposalForm = (): JSX.Element => {
         const pubkey = getPubkeyBundleFromForm(values[PUBKEY_REMOVE_FIELD]);
         return { ...commonOptions, type: ProposalType.RemoveValidator, pubkey };
       }
+      case ProposalType.ReleaseGuaranteeFunds: {
+        const quantity = values[RELEASE_QUANTITY_FIELD];
+        const fractionalDigits = 9;
+        const tokenTicker = values[RELEASE_TICKER_FIELD] as TokenTicker;
+        const amount = {
+          quantity,
+          fractionalDigits,
+          tokenTicker,
+        };
+
+        return {
+          ...commonOptions,
+          type: ProposalType.ReleaseGuaranteeFunds,
+          amount,
+        };
+      }
       case ProposalType.AmendProtocol: {
         const text = values[TEXT_FIELD];
         return { ...commonOptions, type: ProposalType.AmendProtocol, text };
@@ -172,29 +187,7 @@ const ProposalForm = (): JSX.Element => {
     updateElectionRules();
   }, [governor]);
 
-  const isElectorateNeeded = (): boolean => {
-    switch (proposalType) {
-      case ProposalType.AddCommitteeMember:
-      case ProposalType.RemoveCommitteeMember:
-        return true;
-      default:
-        return false;
-    }
-  };
-
-  const isAmendRuleNeeded = (): boolean => {
-    switch (proposalType) {
-      case ProposalType.AmendElectionRuleThreshold:
-      case ProposalType.AmendElectionRuleQuorum:
-        return true;
-      default:
-        return false;
-    }
-  };
-
   const noRulesSet = !electionRuleId;
-  const noElectorateSet = isElectorateNeeded() && !electorateId;
-  const noAmendRulesSet = isAmendRuleNeeded() && !amendElectionRuleId;
 
   return (
     <Block flexGrow={1} margin={2}>
@@ -205,12 +198,7 @@ const ProposalForm = (): JSX.Element => {
           <WhenField form={form} />
         </Block>
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
-        <FormOptions
-          form={form}
-          proposalType={proposalType}
-          changeElectorateId={setElectorateId}
-          changeAmendElectionRuleId={setAmendElectionRuleId}
-        />
+        <FormOptions form={form} proposalType={proposalType} />
         <DescriptionField form={form} />
         <CommitteeRulesSelect
           form={form}
@@ -218,10 +206,7 @@ const ProposalForm = (): JSX.Element => {
           changeElectionRuleId={setElectionRuleId}
         />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
-          <Button
-            type="submit"
-            disabled={invalid || pristine || submitting || noRulesSet || noElectorateSet || noAmendRulesSet}
-          >
+          <Button type="submit" disabled={invalid || pristine || submitting || noRulesSet}>
             Publish
           </Button>
         </Block>

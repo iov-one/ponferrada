@@ -1,13 +1,14 @@
 import { FormApi } from "final-form";
 import {
   Block,
+  FieldInputValue,
   required,
   SelectFieldForm,
   SelectFieldFormItem,
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { RootState } from "../../../../store/reducers";
@@ -19,17 +20,11 @@ const MEMBER_REMOVE_PLACEHOLDER = "Enter the address of the member to remove";
 
 interface Props {
   readonly form: FormApi;
-  readonly changeElectorateId: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const RemoveCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element => {
+const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [committeeItems, setCommitteeItems] = useState<SelectFieldFormItem[]>([]);
-
-  const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
-    const electorateId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
-    changeElectorateId(electorateId);
-  };
 
   useEffect(() => {
     const updateCommitteeItems = async (): Promise<void> => {
@@ -47,6 +42,11 @@ const RemoveCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element
     updateCommitteeItems();
   }, [governor]);
 
+  const committeeValidator = (value: FieldInputValue): string | undefined => {
+    if (value === COMMITTEE_REMOVE_INITIAL) return "Must select a committee";
+    return undefined;
+  };
+
   return (
     <React.Fragment>
       <Block marginTop={2} display="flex" alignItems="center">
@@ -54,11 +54,11 @@ const RemoveCommitteeMember = ({ form, changeElectorateId }: Props): JSX.Element
         <Block marginLeft={2}>
           <SelectFieldForm
             fieldName={COMMITTEE_REMOVE_FIELD}
-            fullWidth
             form={form}
+            validate={committeeValidator}
+            fullWidth
             items={committeeItems}
             initial={COMMITTEE_REMOVE_INITIAL}
-            onChangeCallback={changeCommittee}
           />
         </Block>
       </Block>

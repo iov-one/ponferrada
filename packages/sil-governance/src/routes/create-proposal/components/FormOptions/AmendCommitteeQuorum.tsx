@@ -7,7 +7,7 @@ import {
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { RootState } from "../../../../store/reducers";
@@ -21,17 +21,11 @@ const QUORUM_PLACEHOLDER = "2/3";
 
 interface Props {
   readonly form: FormApi;
-  readonly changeAmendElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const AmendCommitteeQuorum = ({ form, changeAmendElectionRuleId }: Props): JSX.Element => {
+const AmendCommitteeQuorum = ({ form }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [ruleItems, setRuleItems] = useState<SelectFieldFormItem[]>([]);
-
-  const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
-    const electorateId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
-    changeAmendElectionRuleId(electorateId);
-  };
 
   useEffect(() => {
     const updateCommitteeItems = async (): Promise<void> => {
@@ -49,6 +43,11 @@ const AmendCommitteeQuorum = ({ form, changeAmendElectionRuleId }: Props): JSX.E
     updateCommitteeItems();
   }, [governor]);
 
+  const committeeValidator = (value: FieldInputValue): string | undefined => {
+    if (value === COMMITTEE_QUORUM_INITIAL) return "Must select a rule";
+    return undefined;
+  };
+
   const isFractionOrEmpty: FieldValidator<FieldInputValue> = (value): string | undefined => {
     if (!value) return undefined;
     return isFraction(value);
@@ -61,11 +60,11 @@ const AmendCommitteeQuorum = ({ form, changeAmendElectionRuleId }: Props): JSX.E
         <Block marginLeft={2}>
           <SelectFieldForm
             fieldName={COMMITTEE_QUORUM_FIELD}
-            fullWidth
             form={form}
+            validate={committeeValidator}
+            fullWidth
             items={ruleItems}
             initial={COMMITTEE_QUORUM_INITIAL}
-            onChangeCallback={changeCommittee}
           />
         </Block>
       </Block>
