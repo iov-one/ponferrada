@@ -12,7 +12,7 @@ import UnlockForm from "./components/UnlockForm";
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
-  let errors: ValidationError = {};
+  const errors: ValidationError = {};
   if (!formValues[PASSWORD_FIELD]) {
     errors[PASSWORD_FIELD] = "Required";
   }

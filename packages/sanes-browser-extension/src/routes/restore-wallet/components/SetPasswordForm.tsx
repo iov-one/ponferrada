@@ -26,7 +26,7 @@ export const PASSWORD_CONFIRM_FIELD = "passwordConfirmField";
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
-  let errors: ValidationError = {};
+  const errors: ValidationError = {};
 
   if (formValues[PASSWORD_FIELD] !== formValues[PASSWORD_CONFIRM_FIELD]) {
     errors[PASSWORD_CONFIRM_FIELD] = "Passwords mismatch";

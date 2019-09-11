@@ -83,7 +83,7 @@ describe("RequestHandler", () => {
   });
 
   it("assigns new id based on counter to new added requests", () => {
-    let requests = requestQueueManager.requests();
+    const requests = requestQueueManager.requests();
 
     expect(requests[0].id).toBe(0);
     expect(requests[1].id).toBe(1);

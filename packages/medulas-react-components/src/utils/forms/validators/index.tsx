@@ -4,7 +4,7 @@ type ValidationError = string | undefined;
 
 export function composeValidators<T>(...validators: readonly FieldValidator<T>[]): FieldValidator<T> {
   return (value): ValidationError => {
-    for (let validator of validators) {
+    for (const validator of validators) {
       const validationError = validator(value, {});
 
       if (validationError) {

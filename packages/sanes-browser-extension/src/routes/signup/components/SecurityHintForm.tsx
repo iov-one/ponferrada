@@ -19,7 +19,7 @@ export const SECURITY_HINT_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}3`;
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
-  let errors: ValidationError = {};
+  const errors: ValidationError = {};
 
   if (formValues[SECURITY_HINT] && formValues[SECURITY_HINT].length > 15) {
     errors[SECURITY_HINT] = "15 characters max - Spaces are allowed";

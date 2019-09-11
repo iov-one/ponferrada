@@ -17,7 +17,7 @@ interface Props {
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
-  let errors: ValidationError = {};
+  const errors: ValidationError = {};
 
   if (!formValues["SELECT_FIELD_ATTR_EMPTY"]) {
     errors["SELECT_FIELD_ATTR_EMPTY"] = "Field is required";

@@ -16,7 +16,7 @@ interface Props {
 
 const CheckboxFieldForm = ({ showError, label }: Props): JSX.Element => {
   const validate = (_: object): object => {
-    let errors: ValidationError = {};
+    const errors: ValidationError = {};
     if (showError) {
       errors[CHECKBOX_FIELD] = "Field error";
     }
