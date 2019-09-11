@@ -164,15 +164,14 @@ const ProposalForm = (): JSX.Element => {
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
-
-    const updateChainProposals = async (): Promise<void> => {
-      const chainProposals = await getProposals(governor);
-      dispatch(replaceProposalsAction(chainProposals));
-    };
-
-    setTimeout(() => updateChainProposals(), 5000);
-
     dispatch(setTransactionsStateAction(transactionId));
+
+    setTimeout(() => {
+      getProposals(governor).then(
+        chainProposals => dispatch(replaceProposalsAction(chainProposals)),
+        error => console.error(error),
+      );
+    }, 5000);
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({ onSubmit });

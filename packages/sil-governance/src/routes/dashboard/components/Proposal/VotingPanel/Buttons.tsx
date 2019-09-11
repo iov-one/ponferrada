@@ -38,15 +38,14 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
       const transactionId = await sendSignAndPostRequest(connection, voteTx);
-
-      const updateChainProposals = async (): Promise<void> => {
-        const chainProposals = await getProposals(governor);
-        dispatch(replaceProposalsAction(chainProposals));
-      };
-
-      setTimeout(() => updateChainProposals(), 5000);
-
       dispatch(setTransactionsStateAction(transactionId));
+
+      setTimeout(() => {
+        getProposals(governor).then(
+          chainProposals => dispatch(replaceProposalsAction(chainProposals)),
+          error => console.error(error),
+        );
+      }, 5000);
     }
   };
 
