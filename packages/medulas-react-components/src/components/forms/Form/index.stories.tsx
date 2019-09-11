@@ -23,7 +23,7 @@ const SELECT_FIELD = "selectFieldUniqueIdentifier";
 const CHECKBOX_FIELD = "checkboxFieldUniqueIdentifier";
 
 const validate = (values: FormValues): object => {
-  let errors: ValidationError = {};
+  const errors: ValidationError = {};
   if (!values[TEXT_FIELD]) {
     errors[TEXT_FIELD] = "Required";
   }

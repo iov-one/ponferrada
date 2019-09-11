@@ -24,7 +24,7 @@ export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
-  let errors: ValidationError = {};
+  const errors: ValidationError = {};
   if (!formValues[PASSWORD_FIELD]) {
     errors[PASSWORD_FIELD] = "Required";
   }

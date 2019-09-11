@@ -84,8 +84,8 @@ describe("DOM > Feature > Dashboard", () => {
   }, 60000);
 
   it("has a Read more / Read less toggle when description too long", async () => {
-    let longProposal = (await getProposals(dashboardDom))[1].children[0];
-    let readToggle = longProposal.children[2].children[0].children[1];
+    const longProposal = (await getProposals(dashboardDom))[1].children[0];
+    const readToggle = longProposal.children[2].children[0].children[1];
 
     await click(readToggle);
     let description = longProposal.children[2].children[0].children[0].children[0].children[0].textContent;

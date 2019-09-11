@@ -18,7 +18,7 @@ const DeleteWallet = (): JSX.Element => {
 
   const validate = (values: object): object => {
     const formValues = values as FormValues;
-    let errors: ValidationError = {};
+    const errors: ValidationError = {};
     if (!formValues[MNEMONIC_FIELD]) {
       errors[MNEMONIC_FIELD] = "Required";
     } else if (personaProvider.mnemonic !== formValues[MNEMONIC_FIELD]) {
