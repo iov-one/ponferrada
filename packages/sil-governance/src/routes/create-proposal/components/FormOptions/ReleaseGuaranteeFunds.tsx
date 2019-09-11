@@ -61,7 +61,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
   const numbersOnly = (value: FieldInputValue): string | undefined => {
     if (typeof value !== "string") throw new Error("Input must be a string");
 
-    const hasNonNumbers = value.search(new RegExp("[^0-9]")) === 1 ? true : false;
+    const hasNonNumbers = value.match(/^[0-9]*$/) ? false : true;
 
     if (hasNonNumbers) return "Must be a number";
     return undefined;
