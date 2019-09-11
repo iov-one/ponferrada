@@ -70,6 +70,11 @@ export const extensionRpcEndpoint: RpcEndpoint = {
 
     return new Promise((resolve, reject) => {
       chrome.runtime.sendMessage(config.extensionId, request, response => {
+        if (response === undefined) {
+          resolve(undefined);
+          return;
+        }
+
         try {
           const parsedResponse = parseJsonRpcResponse(response);
           if (isJsonRpcErrorResponse(parsedResponse)) {

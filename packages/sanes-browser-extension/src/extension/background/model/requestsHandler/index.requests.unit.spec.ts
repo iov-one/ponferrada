@@ -59,8 +59,9 @@ withChainsDescribe("background script handler for website request", () => {
   it("resolves to error if sender is unknown", async () => {
     const request = buildGetIdentitiesRequest("getIdentities");
     const sender = {};
+    const expectedError = generateErrorResponse(1, "Got external message without sender URL", -32011);
     const response = await requestsHandler.handleRequestMessage(request, sender);
-    expect(response).toEqual(generateErrorResponse(1, "Got external message without sender URL"));
+    expect(response).toEqual(expectedError);
   });
 
   it("resolves to error if signing server is not ready", async () => {
@@ -68,8 +69,9 @@ withChainsDescribe("background script handler for website request", () => {
     requestsHandler["signingServer"] = undefined;
     const request = buildGetIdentitiesRequest("getIdentities");
     const sender = { url: "http://finnex.com" };
+    const expectedError = generateErrorResponse(1, "Signing server not ready", -32010);
     const response = await requestsHandler.handleRequestMessage(request, sender);
-    expect(response).toEqual(generateErrorResponse(1, "Signing server not ready"));
+    expect(response).toEqual(expectedError);
     requestsHandler["signingServer"] = ssRef;
   });
 
@@ -116,8 +118,9 @@ withChainsDescribe("background script handler for website request", () => {
     requestsHandler["queueManager"].next().reject(rejectPermanently);
     expect(requestsHandler["queueManager"].requests().length).toBe(0);
 
+    const expectedError = generateErrorResponse(1, "Sender has been blocked by user", -32012);
     const response = await requestsHandler.handleRequestMessage(request, sender);
-    expect(response).toEqual(generateErrorResponse(1, "Sender has been blocked by user"));
+    expect(response).toEqual(expectedError);
   }, 8000);
 
   it("resolves in order request queue", async () => {

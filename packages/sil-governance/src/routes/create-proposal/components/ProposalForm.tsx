@@ -3,10 +3,20 @@ import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
 import { FormApi } from "final-form";
-import { Block, Button, Form, FormValues, Typography, useForm } from "medulas-react-components";
+import {
+  Block,
+  Button,
+  Form,
+  FormValues,
+  ToastContext,
+  ToastVariant,
+  Typography,
+  useForm,
+} from "medulas-react-components";
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
+import { communicationTexts } from "../../../communication";
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
 import { getBnsConnection } from "../../../logic/connection";
 import { getProposals, replaceProposalsAction } from "../../../store/proposals";
@@ -50,6 +60,7 @@ export const getElectionRules = async (governor: Governor): Promise<readonly Ele
 };
 
 const ProposalForm = (): JSX.Element => {
+  const toast = React.useContext(ToastContext);
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState<number>();
@@ -164,15 +175,20 @@ const ProposalForm = (): JSX.Element => {
     const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
     const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
+    if (transactionId === undefined) {
+      toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
+    } else if (transactionId === "not_ready") {
+      toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
+    } else {
+      dispatch(setTransactionsStateAction(transactionId));
+    }
 
-    const updateChainProposals = async (): Promise<void> => {
-      const chainProposals = await getProposals(governor);
-      dispatch(replaceProposalsAction(chainProposals));
-    };
-
-    setTimeout(() => updateChainProposals(), 5000);
-
-    dispatch(setTransactionsStateAction(transactionId));
+    setTimeout(() => {
+      getProposals(governor).then(
+        chainProposals => dispatch(replaceProposalsAction(chainProposals)),
+        error => console.error(error),
+      );
+    }, 5000);
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({ onSubmit });

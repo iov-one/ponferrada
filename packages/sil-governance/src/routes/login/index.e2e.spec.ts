@@ -3,6 +3,7 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { sleep } from "ui-logic";
 
+import { communicationTexts } from "../../communication";
 import {
   closeBrowser,
   closeToast,
@@ -20,7 +21,6 @@ import {
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { travelToDashboardE2e } from "../dashboard/test/travelToDashboard";
 import { DASHBOARD_ROUTE } from "../paths";
-import { INSTALL_EXTENSION_MSG, LOGIN_EXTENSION_MSG } from ".";
 
 withChainsDescribe("E2E > Login route", (): void => {
   let browser: Browser;
@@ -58,7 +58,7 @@ withChainsDescribe("E2E > Login route", (): void => {
       throw new Error();
     }
     const text = await (await element.getProperty("textContent")).jsonValue();
-    expect(text).toBe(LOGIN_EXTENSION_MSG);
+    expect(text).toBe(communicationTexts.noMatchingIdentityMessage);
 
     await closeToast(page);
   }
@@ -119,7 +119,7 @@ withChainsDescribe("E2E > Login route", (): void => {
       throw new Error();
     }
     const text = await (await element.getProperty("textContent")).jsonValue();
-    expect(text).toBe(INSTALL_EXTENSION_MSG);
+    expect(text).toBe(communicationTexts.notAvailableMessage);
 
     await closeToast(page);
   }, 45000);
