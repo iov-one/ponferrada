@@ -71,7 +71,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
     required,
     numbersOnly,
     greaterOrEqualThan(1),
-    lowerOrEqualThan(1e33),
+    lowerOrEqualThan(Number.MAX_SAFE_INTEGER),
   );
 
   const tickerValidator = (value: FieldInputValue): string | undefined => {
