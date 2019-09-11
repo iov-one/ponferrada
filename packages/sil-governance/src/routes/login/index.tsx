@@ -1,3 +1,5 @@
+import { Governor } from "@iov/bns-governance";
+import { Encoding } from "@iov/encoding";
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -15,7 +17,10 @@ import * as ReactRedux from "react-redux";
 
 import icon from "../../assets/iov-logo.svg";
 import { communicationTexts } from "../../communication";
-import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
+import { sendGetIdentitiesRequest } from "../../communication/identities";
+import { getConfig } from "../../config";
+import { getBnsConnection } from "../../logic/connection";
+import { setExtensionStateAction } from "../../store/extension";
 import { getProposals, replaceProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { history } from "../index";
@@ -41,18 +46,27 @@ const Login = (): JSX.Element => {
   const dispatch = ReactRedux.useDispatch();
 
   const isExtensionConnected = async (): Promise<boolean> => {
-    const result = await getExtensionStatus();
-    dispatch(setExtensionStateAction(result.connected, result.installed, result.governor));
+    const identities = await sendGetIdentitiesRequest();
 
-    if (!result.installed) {
+    if (identities === undefined) {
       toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
       return false;
     }
 
-    if (!result.connected) {
+    if (identities.length === 0) {
       toast.show(communicationTexts.noMatchingIdentityMessage, ToastVariant.ERROR);
       return false;
     }
+
+    const config = await getConfig();
+    const escrowHex = config.bnsChain.guaranteeFundEscrowId;
+    if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
+    const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
+
+    const connection = await getBnsConnection();
+    const identity = identities[0];
+    const governor = new Governor({ connection, identity, guaranteeFundEscrowId });
+    dispatch(setExtensionStateAction(true, true, governor));
 
     return true;
   };
