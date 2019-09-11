@@ -4,7 +4,16 @@ import { BnsConnection, BnsTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
+import { SignAndPostResponse } from "..";
 import { getConfig } from "../../config";
+
+function isExtensionContext(): boolean {
+  return (
+    typeof chrome !== "undefined" &&
+    typeof chrome.runtime !== "undefined" &&
+    typeof chrome.runtime.sendMessage !== "undefined"
+  );
+}
 
 async function generateSignAndPostRequest(
   connection: BnsConnection,
@@ -22,15 +31,25 @@ async function generateSignAndPostRequest(
   };
 }
 
+/**
+ * @returns a response or `undefined` if the endpoint was not available
+ */
 export async function sendSignAndPostRequest(
   connection: BnsConnection,
   tx: BnsTx & WithCreator,
-): Promise<TransactionId | null> {
+): Promise<SignAndPostResponse | undefined> {
+  if (!isExtensionContext()) return undefined;
+
   const request = await generateSignAndPostRequest(connection, tx);
   const config = await getConfig();
 
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
+      if (response === undefined) {
+        resolve(undefined);
+        return;
+      }
+
       try {
         const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {

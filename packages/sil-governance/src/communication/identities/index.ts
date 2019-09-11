@@ -3,6 +3,7 @@ import { ChainId, Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
+import { GetIdentitiesResponse } from "..";
 import { getConfig } from "../../config";
 import { getBnsConnection } from "../../logic/connection";
 
@@ -24,25 +25,27 @@ const isArrayOfIdentity = (data: any): data is readonly Identity[] => {
   return data.every(isIdentity);
 };
 
-type GetIdentitiesResponse = readonly Identity[] | undefined;
-
-function extensionContext(): boolean {
-  return typeof chrome.runtime !== "undefined" && typeof chrome.runtime.sendMessage !== "undefined";
+function isExtensionContext(): boolean {
+  return (
+    typeof chrome !== "undefined" &&
+    typeof chrome.runtime !== "undefined" &&
+    typeof chrome.runtime.sendMessage !== "undefined"
+  );
 }
 
-export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse> => {
+/**
+ * @returns a response or `undefined` if the endpoint was not available
+ */
+export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse | undefined> => {
+  if (!isExtensionContext()) return undefined;
+
   const connection = await getBnsConnection();
 
   const request = generateGetIdentitiesRequest(connection.chainId());
 
-  const isValid = extensionContext();
-  if (!isValid) {
-    return undefined;
-  }
-
   const config = await getConfig();
 
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
       if (response === undefined) {
         resolve(undefined);
@@ -52,19 +55,19 @@ export const sendGetIdentitiesRequest = async (): Promise<GetIdentitiesResponse>
       try {
         const parsedResponse = parseJsonRpcResponse(response);
         if (isJsonRpcErrorResponse(parsedResponse)) {
-          resolve([]);
+          reject(parsedResponse.error.message);
           return;
         }
 
         const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
         if (!isArrayOfIdentity(parsedResult)) {
-          resolve([]);
+          reject("Got unexpected type of result");
           return;
         }
 
         resolve(parsedResult);
-      } catch {
-        resolve([]);
+      } catch (error) {
+        reject(error);
       }
     });
   });

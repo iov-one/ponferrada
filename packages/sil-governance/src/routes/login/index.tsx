@@ -14,14 +14,12 @@ import React, { useContext } from "react";
 import * as ReactRedux from "react-redux";
 
 import icon from "../../assets/iov-logo.svg";
+import { communicationTexts } from "../../communication";
 import { getExtensionStatus, setExtensionStateAction } from "../../store/extension";
 import { getProposals, replaceProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
-
-export const INSTALL_EXTENSION_MSG = "You need to install IOV extension.";
-export const LOGIN_EXTENSION_MSG = "Please login to the IOV extension to continue.";
 
 const useStyles = makeStyles((theme: Theme) => ({
   login: {
@@ -47,12 +45,12 @@ const Login = (): JSX.Element => {
     dispatch(setExtensionStateAction(result.connected, result.installed, result.governor));
 
     if (!result.installed) {
-      toast.show(INSTALL_EXTENSION_MSG, ToastVariant.ERROR);
+      toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
       return false;
     }
 
     if (!result.connected) {
-      toast.show(LOGIN_EXTENSION_MSG, ToastVariant.ERROR);
+      toast.show(communicationTexts.noMatchingIdentityMessage, ToastVariant.ERROR);
       return false;
     }
 
