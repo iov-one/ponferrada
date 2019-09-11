@@ -17,6 +17,15 @@ import {
 } from "./requestQueueManager";
 import { SenderWhitelist } from "./senderWhitelist";
 
+// From https://www.jsonrpc.org/specification#error_object
+// -32000 to -32099 	Server error 	Reserved for implementation-defined server-errors.
+// We use -3200 as jsonRpcCode.serverError.default
+const errorCodes = {
+  signingServerNotReady: -32010,
+  senderUrlMissing: -32011,
+  senderBlocked: -32012,
+};
+
 export default class RequestsHandler {
   private queueManager = new RequestQueueManager();
   private senderWhitelist = new SenderWhitelist();
@@ -101,21 +110,25 @@ export default class RequestsHandler {
     sender: chrome.runtime.MessageSender,
   ): Promise<JsonRpcResponse> {
     const responseId = typeof request.id === "number" ? request.id : null;
-    if (!sender.url) {
-      return generateErrorResponse(responseId, "Got external message without sender URL");
-    }
 
     if (!this.signingServer) {
-      return generateErrorResponse(responseId, "Signing server not ready");
+      return generateErrorResponse(responseId, "Signing server not ready", errorCodes.signingServerNotReady);
     }
 
-    const { url: senderUrl } = sender;
-    if (this.senderWhitelist.isBlocked(senderUrl)) {
-      return generateErrorResponse(responseId, "Sender has been blocked by user");
+    if (!sender.url) {
+      return generateErrorResponse(
+        responseId,
+        "Got external message without sender URL",
+        errorCodes.senderUrlMissing,
+      );
+    }
+
+    if (this.senderWhitelist.isBlocked(sender.url)) {
+      return generateErrorResponse(responseId, "Sender has been blocked by user", errorCodes.senderBlocked);
     }
 
     const meta: RequestMeta = {
-      senderUrl,
+      senderUrl: sender.url,
     };
 
     const response = await this.signingServer.handleUnchecked(request, meta);
