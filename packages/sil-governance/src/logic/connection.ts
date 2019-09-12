@@ -1,16 +1,17 @@
-import { BnsConnection } from "@iov/bns";
+import { ChainId } from "@iov/bcp";
+import { BnsConnection, createBnsConnector } from "@iov/bns";
 
 import { getConfig } from "../config";
 
 let bnsConnection: BnsConnection | undefined;
 
 export async function getBnsConnection(): Promise<BnsConnection> {
-  const config = await getConfig();
-  const url = config.bnsChain.chainSpec.node;
+  if (bnsConnection) return bnsConnection;
 
-  if (!bnsConnection) {
-    bnsConnection = await BnsConnection.establish(url);
-  }
+  const { bnsChain } = await getConfig();
+  const chainConnector = createBnsConnector(bnsChain.chainSpec.node, bnsChain.chainSpec.chainId as ChainId);
+  // eslint-disable-next-line require-atomic-updates
+  bnsConnection = (await chainConnector.establishConnection()) as BnsConnection;
   return bnsConnection;
 }
 
