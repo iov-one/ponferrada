@@ -16,7 +16,7 @@ export const getLogoTitle = (header: Element): string => {
 };
 
 export const getTitle = (header: Element): string => {
-  return header.children[1].textContent || "";
+  return header.children[1].children[0].textContent || "";
 };
 
 export const getAsideFilter = async (dashboardDom: React.Component): Promise<Element> => {
