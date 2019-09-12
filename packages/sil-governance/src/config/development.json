@@ -4,10 +4,10 @@
   },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
   "bnsChain": {
-    "chainId": "local-iov-devnet",
     "chainSpec": {
       "codecType": "bns",
-      "node": "ws://localhost:23456/"
+      "node": "ws://localhost:23456/",
+      "chainId": "local-iov-devnet"
     },
     "guaranteeFundEscrowId": "0000000000000001",
     "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"

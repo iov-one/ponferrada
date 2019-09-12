@@ -6,7 +6,8 @@
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
-      "node": "wss://bns.antnet.iov.one/"
+      "node": "wss://bns.antnet.iov.one/",
+      "chainId": "iov-mainnet"
     }
   }
 }

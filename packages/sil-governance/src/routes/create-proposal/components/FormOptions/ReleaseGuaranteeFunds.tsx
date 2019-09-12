@@ -39,8 +39,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
       if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
       const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
 
-      const chainId = config.bnsChain.chainId as ChainId;
-      if (!chainId) throw Error("No Chain ID provided. This is a bug.");
+      const chainId = config.bnsChain.chainSpec.chainId as ChainId;
       const guaranteeFundAddress = escrowIdToAddress(chainId, guaranteeFundEscrowId);
 
       const connection = await getBnsConnection();

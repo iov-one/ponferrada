@@ -8,7 +8,6 @@ export interface Config {
 }
 
 export interface ChainConfig {
-  readonly chainId?: string;
   readonly chainSpec: ChainSpec;
   readonly guaranteeFundEscrowId?: string;
   readonly rewardFundAddress?: string;
@@ -17,6 +16,7 @@ export interface ChainConfig {
 export interface ChainSpec {
   readonly codecType: string;
   readonly node: string;
+  readonly chainId: string;
   readonly scraper?: string;
 }
 
