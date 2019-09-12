@@ -22,6 +22,7 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
   const previousVote = vote;
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  if (!governor) throw new Error("Governor not set in store. This is a bug.");
   const dispatch = ReactRedux.useDispatch();
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
@@ -33,9 +34,9 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
   const voteAbstain = (): void => setCurrentVote(VoteOption.Abstain);
 
   const submitVote = async (): Promise<void> => {
-    if (!governor) throw new Error("Governor not set in store. This is a bug.");
+    if (currentVote === undefined || currentVote === previousVote) return;
 
-    if (currentVote !== undefined && currentVote !== previousVote) {
+    try {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
@@ -46,14 +47,17 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
         toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
       } else {
         dispatch(setTransactionsStateAction(transactionId));
-      }
 
-      setTimeout(() => {
-        getProposals(governor).then(
-          chainProposals => dispatch(replaceProposalsAction(chainProposals)),
-          error => console.error(error),
-        );
-      }, 5000);
+        setTimeout(() => {
+          getProposals(governor).then(
+            chainProposals => dispatch(replaceProposalsAction(chainProposals)),
+            error => console.error(error),
+          );
+        }, 5000);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error ocurred", ToastVariant.ERROR);
     }
   };
 

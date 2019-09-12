@@ -68,6 +68,7 @@ const ProposalForm = (): JSX.Element => {
   const [recipients, setRecipients] = useState<Readonly<Recipient[]>>([]);
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
+  if (!governor) throw new Error("Governor not set in store. This is a bug.");
   const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
@@ -169,31 +170,35 @@ const ProposalForm = (): JSX.Element => {
   };
 
   const onSubmit = async (values: FormValues, form: FormApi): Promise<void> => {
-    if (!governor) throw new Error("Governor not set in store. This is a bug.");
     if (dateAfterNow(values[DATE_FIELD])) {
       form.resetFieldState(DATE_FIELD);
       return;
     }
 
-    const connection = await getBnsConnection();
-    const proposalOptions = buildProposalOptions(values);
-    const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
+    try {
+      const connection = await getBnsConnection();
+      const proposalOptions = buildProposalOptions(values);
+      const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
-    const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
-    if (transactionId === undefined) {
-      toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
-    } else if (transactionId === "not_ready") {
-      toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
-    } else {
-      dispatch(setTransactionsStateAction(transactionId));
+      const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
+      if (transactionId === undefined) {
+        toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
+      } else if (transactionId === "not_ready") {
+        toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
+      } else {
+        dispatch(setTransactionsStateAction(transactionId));
+
+        setTimeout(() => {
+          getProposals(governor).then(
+            chainProposals => dispatch(replaceProposalsAction(chainProposals)),
+            error => console.error(error),
+          );
+        }, 5000);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error ocurred", ToastVariant.ERROR);
     }
-
-    setTimeout(() => {
-      getProposals(governor).then(
-        chainProposals => dispatch(replaceProposalsAction(chainProposals)),
-        error => console.error(error),
-      );
-    }, 5000);
   };
 
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({ onSubmit });

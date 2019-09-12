@@ -90,9 +90,14 @@ const Login = (): JSX.Element => {
   };
 
   const onLogin = async (): Promise<void> => {
-    if (await isExtensionConnected()) {
-      await loadProposals();
-      history.push(DASHBOARD_ROUTE);
+    try {
+      if (await isExtensionConnected()) {
+        await loadProposals();
+        history.push(DASHBOARD_ROUTE);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error ocurred", ToastVariant.ERROR);
     }
   };
 
