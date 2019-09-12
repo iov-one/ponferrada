@@ -63,7 +63,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
     await waitForAllBalances(page);
 
     await travelToAddressesE2E(page);
-    let address = await copyAddress(page, 1);
+    const address = await copyAddress(page, 1);
 
     expect(clipboardy.readSync()).toBe(address);
 
