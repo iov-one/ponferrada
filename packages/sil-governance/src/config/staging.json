@@ -6,7 +6,8 @@
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
-      "node": "wss://rpc.boarnet.iov.one/"
+      "node": "wss://rpc.boarnet.iov.one/",
+      "chainId": "iov-boarnet"
     }
   },
   "guaranteeFundEscrowId": "0000000000000001",
