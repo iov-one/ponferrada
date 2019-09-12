@@ -68,7 +68,6 @@ const ProposalForm = (): JSX.Element => {
   const [recipients, setRecipients] = useState<Readonly<Recipient[]>>([]);
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
-  if (!governor) throw new Error("Governor not set in store. This is a bug.");
   const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
@@ -176,6 +175,7 @@ const ProposalForm = (): JSX.Element => {
     }
 
     try {
+      if (!governor) throw new Error("Governor not set in store. This is a bug.");
       const connection = await getBnsConnection();
       const proposalOptions = buildProposalOptions(values);
       const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);

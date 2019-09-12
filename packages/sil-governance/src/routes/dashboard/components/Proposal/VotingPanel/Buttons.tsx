@@ -22,7 +22,6 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
   const previousVote = vote;
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
-  if (!governor) throw new Error("Governor not set in store. This is a bug.");
   const dispatch = ReactRedux.useDispatch();
 
   const yesButton = currentVote === VoteOption.Yes ? "contained" : "outlined";
@@ -37,6 +36,7 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
     if (currentVote === undefined || currentVote === previousVote) return;
 
     try {
+      if (!governor) throw new Error("Governor not set in store. This is a bug.");
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
