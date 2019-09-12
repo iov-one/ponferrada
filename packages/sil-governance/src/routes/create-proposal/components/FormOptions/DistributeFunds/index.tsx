@@ -44,8 +44,9 @@ const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
 
     const reader = new FileReader();
     reader.onload = () => {
-      const text = reader.result as string;
-      const recipients = text
+      if (typeof reader.result !== "string") throw new Error("Got unsupported type of file");
+
+      const recipients = reader.result
         // split per new line
         .split(/\r\n|\r|\n/)
         // remove empty lines
