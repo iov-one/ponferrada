@@ -70,6 +70,7 @@ const Login = (): JSX.Element => {
 
     const connection = await getBnsConnection();
     const identity = identities[0];
+    //TODO add rewardFundAddress
     const governor = new Governor({ connection, identity, guaranteeFundEscrowId });
     dispatch(setExtensionStateAction(true, true, governor));
 
