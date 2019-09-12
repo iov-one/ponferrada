@@ -13593,11 +13593,47 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
         </h5>
       </div>
     </div>
-    <h5
-      className="MuiTypography-root MuiTypography-h5"
+    <div
+      className="MuiBox-root MuiBox-root"
     >
-      Governance
-    </h5>
+      <h5
+        className="MuiTypography-root MuiTypography-h5"
+      >
+        Governance
+      </h5>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body2"
+          >
+            
+          </p>
+          <p
+            className="MuiTypography-root MuiTypography-body2"
+          >
+            Member of 
+            
+          </p>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <img
+              alt="Logo"
+              className="makeStyles-root"
+              src="user.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className="MuiBox-root MuiBox-root"
