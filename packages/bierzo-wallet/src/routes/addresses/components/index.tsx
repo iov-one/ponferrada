@@ -25,7 +25,7 @@ interface Props extends AddressesTableProps {
   readonly onReturnToBalance: () => void;
 }
 
-const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
+const Layout = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -66,4 +66,4 @@ const ReceivePayment = ({ chainAddresses, onReturnToBalance }: Props): JSX.Eleme
   );
 };
 
-export default ReceivePayment;
+export default Layout;
