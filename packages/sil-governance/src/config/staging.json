@@ -8,5 +8,7 @@
       "codecType": "bns",
       "node": "wss://rpc.boarnet.iov.one/"
     }
-  }
+  },
+  "guaranteeFundEscrowId": "0000000000000001",
+  "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"
 }
