@@ -1,28 +1,19 @@
+import { Address } from "@iov/bcp";
 import { Electorate } from "@iov/bns";
 import { Block, CircleImage, Typography } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 
 import iovIcon from "../../assets/iov-logo.svg";
 import userIcon from "../../assets/user.svg";
-import { RootState } from "../../store/reducers";
 
 export const HEADER_HTML_ID = "header";
 
-const Header = (): JSX.Element => {
-  const governor = useSelector((state: RootState) => state.extension.governor);
-  if (!governor) throw new Error("Governor not set in store. This is a bug.");
+interface Props {
+  readonly address: Address;
+  readonly electorates: readonly Electorate[];
+}
 
-  const [electorates, setElectorates] = useState<Readonly<Electorate[]>>([]);
-
-  useEffect(() => {
-    const updateElectorates = async (): Promise<void> => {
-      const electorates = await governor.getElectorates();
-      setElectorates(electorates);
-    };
-    updateElectorates();
-  }, [governor]);
-
+const Header = ({ address, electorates }: Props): JSX.Element => {
   return (
     <Block id={HEADER_HTML_ID} width="100%" minHeight="78px" display="flex" alignItems="center">
       <Block minWidth="205px" display="flex" alignItems="center" justifyContent="center">
@@ -35,7 +26,7 @@ const Header = (): JSX.Element => {
         <Typography variant="h5">Governance</Typography>
         <Block marginRight={4} display="flex" alignItems="center">
           <Block textAlign="right">
-            <Typography variant="body2">{governor.address}</Typography>
+            <Typography variant="body2">{address}</Typography>
             <Typography variant="body2">Member of {electorates.map(e => e.title).join(", ")}</Typography>
           </Block>
           <Block marginLeft={1}>
