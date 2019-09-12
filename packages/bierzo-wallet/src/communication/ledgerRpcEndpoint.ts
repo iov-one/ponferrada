@@ -6,6 +6,7 @@ import {
   FullSignature,
   Identity,
   isBlockInfoPending,
+  isUnsignedTransaction,
   PubkeyBytes,
   SignatureBytes,
   SignedTransaction,
@@ -104,6 +105,9 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     }
 
     const transaction = TransactionEncoder.fromJson(request.params.transaction);
+    if (!isUnsignedTransaction(transaction)) {
+      throw new Error("Invalid transaction format in RPC request to Ledger endpoint.");
+    }
 
     const bnsConnection = await getConnectionForBns();
     const nonce = await bnsConnection.getNonce({ pubkey: transaction.creator.pubkey });
