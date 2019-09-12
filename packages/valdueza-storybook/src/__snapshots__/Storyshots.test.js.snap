@@ -13437,14 +13437,13 @@ exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
                          
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                         Yes
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                         
                         .
                       </p>
                     </span>

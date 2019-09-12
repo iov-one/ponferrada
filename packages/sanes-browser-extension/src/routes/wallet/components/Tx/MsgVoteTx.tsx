@@ -36,11 +36,10 @@ const MsgVoteTx = ({ error, selection }: MsgVoteTxProps): JSX.Element => {
         <Typography weight="light" inline>
           You have voted{" "}
         </Typography>
-        <Typography weight="semibold" inline link>
+        <Typography weight="semibold" inline>
           {selection}
         </Typography>
         <Typography weight="light" inline>
-          {" "}
           .
         </Typography>
       </React.Fragment>
