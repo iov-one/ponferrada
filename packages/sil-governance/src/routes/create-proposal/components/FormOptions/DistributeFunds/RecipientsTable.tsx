@@ -10,7 +10,7 @@ interface Props {
 
 const RecipientsTable = ({ recipients }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
-  const RECIPIENTS_FIELD = expanded ? "Hide recipients" : "Show recipients";
+  const recipientsField = expanded ? "Hide recipients" : "Show recipients";
 
   const onClick = (): void => {
     setExpanded(prevExpanded => !prevExpanded);
@@ -46,7 +46,7 @@ const RecipientsTable = ({ recipients }: Props): JSX.Element => {
   return (
     <Block marginTop={2}>
       <Typography inline link onClick={onClick}>
-        {RECIPIENTS_FIELD}
+        {recipientsField}
       </Typography>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Table />
