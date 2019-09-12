@@ -11,6 +11,7 @@ export interface ChainConfig {
   readonly chainId?: string;
   readonly chainSpec: ChainSpec;
   readonly guaranteeFundEscrowId?: string;
+  readonly rewardFundAddress?: string;
 }
 
 export interface ChainSpec {

@@ -30,6 +30,7 @@ import { POWER_FIELD, PUBKEY_ADD_FIELD } from "./FormOptions/AddValidator";
 import { COMMITTEE_QUORUM_FIELD, QUORUM_FIELD } from "./FormOptions/AmendCommitteeQuorum";
 import { COMMITTEE_THRESHOLD_FIELD, THRESHOLD_FIELD } from "./FormOptions/AmendCommitteeThreshold";
 import { TEXT_FIELD } from "./FormOptions/AmendProtocol";
+import { Recipient } from "./FormOptions/DistributeFunds";
 import { RELEASE_QUANTITY_FIELD, RELEASE_TICKER_FIELD } from "./FormOptions/ReleaseGuaranteeFunds";
 import { COMMITTEE_REMOVE_FIELD, MEMBER_REMOVE_FIELD } from "./FormOptions/RemoveCommitteeMember";
 import { PUBKEY_REMOVE_FIELD } from "./FormOptions/RemoveValidator";
@@ -64,6 +65,7 @@ const ProposalForm = (): JSX.Element => {
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
   const [electionRuleId, setElectionRuleId] = useState<number>();
+  const [recipients, setRecipients] = useState<Readonly<Recipient[]>>([]);
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
@@ -154,6 +156,9 @@ const ProposalForm = (): JSX.Element => {
           amount,
         };
       }
+      case ProposalType.DistributeFunds: {
+        return { ...commonOptions, type: ProposalType.DistributeFunds, recipients };
+      }
       case ProposalType.AmendProtocol: {
         const text = values[TEXT_FIELD];
         return { ...commonOptions, type: ProposalType.AmendProtocol, text };
@@ -214,7 +219,7 @@ const ProposalForm = (): JSX.Element => {
           <WhenField form={form} />
         </Block>
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
-        <FormOptions form={form} proposalType={proposalType} />
+        <FormOptions form={form} proposalType={proposalType} recipientsChanged={setRecipients} />
         <DescriptionField form={form} />
         <CommitteeRulesSelect
           form={form}

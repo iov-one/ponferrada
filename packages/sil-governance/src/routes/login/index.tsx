@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
 import { Theme } from "@material-ui/core";
@@ -64,13 +65,18 @@ const Login = (): JSX.Element => {
     }
 
     const config = await getConfig();
+
     const escrowHex = config.bnsChain.guaranteeFundEscrowId;
     if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
     const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
 
+    const rewardFundAddress = config.bnsChain.rewardFundAddress as Address;
+    if (!rewardFundAddress) throw Error("No Reward Address provided. This is a bug.");
+
     const connection = await getBnsConnection();
     const identity = identities[0];
-    const governor = new Governor({ connection, identity, guaranteeFundEscrowId });
+
+    const governor = new Governor({ connection, identity, guaranteeFundEscrowId, rewardFundAddress });
     dispatch(setExtensionStateAction(true, true, governor));
 
     return true;
