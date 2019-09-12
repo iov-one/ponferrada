@@ -1,8 +1,6 @@
 import { makeStyles, Theme } from "@material-ui/core";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Grow from "@material-ui/core/Grow";
 import List from "@material-ui/core/List";
-import Popper from "@material-ui/core/Popper";
+import Popover, { PopoverOrigin } from "@material-ui/core/Popover";
 import * as React from "react";
 
 import { useOpen } from "../../hooks/open";
@@ -36,6 +34,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+const anchorOrigin: PopoverOrigin = {
+  vertical: "bottom",
+  horizontal: "right",
+};
+
+const transformOrigin: PopoverOrigin = {
+  vertical: "top",
+  horizontal: "right",
+};
+
 const ListMenu = ({ listWidth, starter, children, color = "white", listId, onClick }: Props): JSX.Element => {
   const menuRef = React.useRef(null);
   const [isOpen, toggle, clickAway] = useOpen();
@@ -51,15 +59,18 @@ const ListMenu = ({ listWidth, starter, children, color = "white", listId, onCli
       <div id={listId} ref={menuRef} className={classes.root} onClick={menuClicked}>
         {starter(isOpen)}
       </div>
-      <Popper open={isOpen} className={classes.popper} anchorEl={menuRef.current} placement="bottom-end">
-        <Grow>
-          <ClickAwayListener onClickAway={clickAway} mouseEvent="onClick" touchEvent={false}>
-            <List component="nav" className={classes.list}>
-              {children}
-            </List>
-          </ClickAwayListener>
-        </Grow>
-      </Popper>
+      <Popover
+        open={isOpen}
+        className={classes.popper}
+        anchorEl={menuRef.current}
+        anchorOrigin={anchorOrigin}
+        transformOrigin={transformOrigin}
+        onClose={clickAway}
+      >
+        <List component="nav" className={classes.list}>
+          {children}
+        </List>
+      </Popover>
     </React.Fragment>
   );
 };
