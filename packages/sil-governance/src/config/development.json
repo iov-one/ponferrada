@@ -9,6 +9,7 @@
       "codecType": "bns",
       "node": "ws://localhost:23456/"
     },
-    "guaranteeFundEscrowId": "0000000000000001"
+    "guaranteeFundEscrowId": "0000000000000001",
+    "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"
   }
 }
