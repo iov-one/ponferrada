@@ -33,11 +33,15 @@ export const isFraction = (value: FieldInputValue): string | undefined => {
   const numerator = parseInt(members[0], 10);
   const denominator = parseInt(members[1], 10);
 
-  if (Number.isInteger(numerator) && Number.isInteger(denominator) && numerator <= denominator) {
-    return undefined;
-  } else {
-    return "Must be a valid fraction";
+  if (!Number.isInteger(numerator) || !Number.isInteger(denominator)) {
+    return "Must be a valid fraction in the form a/b";
   }
+
+  if (numerator > denominator) {
+    return "Fraction must be less than or equal to 1";
+  }
+
+  return undefined; // valid
 };
 
 interface Props {
