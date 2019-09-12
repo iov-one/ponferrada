@@ -12,7 +12,7 @@ function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
 }
 
-const ReceivePayment = (): JSX.Element => {
+const Addresses = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const chainAddresses = getChainAddressPairWithNames(identities);
 
@@ -23,4 +23,4 @@ const ReceivePayment = (): JSX.Element => {
   );
 };
 
-export default ReceivePayment;
+export default Addresses;

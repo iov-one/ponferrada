@@ -6,8 +6,8 @@ import React from "react";
 import PageMenu from "../../components/PageMenu";
 import { BalanceState } from "../../store/balances";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import { RECEIVE_PAYMENT_STORY_PATH } from "../addresses/index.stories";
 import { PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH } from "../payment/index.stories";
-import { RECEIVE_PAYMENT_STORY_PATH } from "../receivePayments/index.stories";
 import {
   REGISTER_USERNAME_REGISTRATION_STORY_PATH,
   REGISTER_USERNAME_STORY_PATH,
