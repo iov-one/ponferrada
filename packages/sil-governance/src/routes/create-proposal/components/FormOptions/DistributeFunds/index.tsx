@@ -32,9 +32,12 @@ interface Props {
 const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
   const inputClasses = useStyles();
 
+  const [recipients, setRecipients] = useState<Recipient[]>([]);
+
   const updateRecipients = (event: ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files;
     if (!files || files.length === 0) {
+      setRecipients([]);
       changeRecipients([]);
       return;
     }
@@ -53,12 +56,15 @@ const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
           return { address: address as Address, weight: parseInt(weight, 10) };
         });
 
+      setRecipients(recipients);
       changeRecipients(recipients);
     };
 
     const file = files[0];
     reader.readAsText(file);
   };
+
+  const hasRecipients = recipients.length > 0;
 
   return (
     <React.Fragment>
@@ -76,6 +82,7 @@ const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
           />
         </Block>
       </Block>
+      {hasRecipients && <RecipientsTable recipients={recipients} />}
     </React.Fragment>
   );
 };
