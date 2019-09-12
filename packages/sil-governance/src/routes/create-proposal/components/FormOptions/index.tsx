@@ -43,13 +43,13 @@ export const isFraction = (value: FieldInputValue): string | undefined => {
 interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
-  readonly changeRecipients: Dispatch<SetStateAction<Recipient[]>>;
+  readonly recipientsChanged: Dispatch<SetStateAction<Readonly<Recipient[]>>>;
 }
 
-const FormOptions = ({ form, proposalType, changeRecipients }: Props): JSX.Element => {
+const FormOptions = ({ form, proposalType, recipientsChanged }: Props): JSX.Element => {
   const FormComponent = proposalOptions[proposalType];
 
-  return <FormComponent form={form} changeRecipients={changeRecipients} />;
+  return <FormComponent form={form} recipientsChanged={recipientsChanged} />;
 };
 
 export default FormOptions;

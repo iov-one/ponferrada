@@ -26,10 +26,10 @@ const useStyles = makeStyles(() => ({
 
 interface Props {
   readonly form: FormApi;
-  readonly changeRecipients: Dispatch<SetStateAction<Recipient[]>>;
+  readonly recipientsChanged: Dispatch<SetStateAction<Readonly<Recipient[]>>>;
 }
 
-const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
+const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
   const inputClasses = useStyles();
 
   const [recipients, setRecipients] = useState<Recipient[]>([]);
@@ -38,7 +38,7 @@ const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
     const files = event.target.files;
     if (!files || files.length === 0) {
       setRecipients([]);
-      changeRecipients([]);
+      recipientsChanged([]);
       return;
     }
 
@@ -58,7 +58,7 @@ const DistributeFunds = ({ form, changeRecipients }: Props): JSX.Element => {
         });
 
       setRecipients(recipients);
-      changeRecipients(recipients);
+      recipientsChanged(recipients);
     };
 
     const file = files[0];
