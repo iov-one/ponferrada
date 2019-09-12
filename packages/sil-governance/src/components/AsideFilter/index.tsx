@@ -48,6 +48,13 @@ export enum ElectionFilter {
   Ended = "Ended Elections",
 }
 
+const menuItems: readonly ElectionFilter[] = [
+  ElectionFilter.All,
+  ElectionFilter.Active,
+  ElectionFilter.Submitted,
+  ElectionFilter.Ended,
+];
+
 interface Props {
   readonly filter: ElectionFilter | null;
 }
@@ -82,7 +89,7 @@ const AsideFilter = ({ filter }: Props): JSX.Element => {
     <Block id={ASIDE_FILTER_HTML_ID} minWidth="205px">
       <Drawer variant="permanent" classes={paperClasses}>
         <List classes={listClasses}>
-          {Object.values(ElectionFilter).map(text => (
+          {menuItems.map(text => (
             <ListItem
               button
               key={text}
