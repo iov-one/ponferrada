@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.7
+
+- Governance: Show governor address and committee memberships in header.
+- Governance: Implement creation of proposal types
+  `ReleaseGuaranteeFunds` and `DistributeFunds`.
+- Governance: Improve input validation for proposal creation.
+- Governance: Improve error handling when connecting to brower extension.
+- Governance: Propagate blockchain error messages for create proposal
+  and vote transactions to UI.
+- Wallet: Fix error message when using the notifications menu.
+
 ## 0.4.6
 
 - Governance: Add message for empty proposals list
@@ -29,7 +40,7 @@
 - Wallet: Improve CSV exports
 - Wallet: Show "me" badge for senders in transaction list
 - Wallet: Set target JavaScript level to es6
-- Governance: Initial releaseq
+- Governance: Initial release
 - Governance: Set target JavaScript level to es6
 
 ## 0.4.2
