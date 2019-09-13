@@ -1,12 +1,16 @@
 # Changelog
 
+## 0.4.8
+
+- Governance: Fix bug in staging configuration file
+
 ## 0.4.7
 
 - Governance: Show governor address and committee memberships in header.
 - Governance: Implement creation of proposal types
   `ReleaseGuaranteeFunds` and `DistributeFunds`.
 - Governance: Improve input validation for proposal creation.
-- Governance: Improve error handling when connecting to brower extension.
+- Governance: Improve error handling when connecting to browser extension.
 - Governance: Propagate blockchain error messages for create proposal
   and vote transactions to UI.
 - Wallet: Fix error message when using the notifications menu.
