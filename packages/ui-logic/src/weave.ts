@@ -16,9 +16,11 @@ export class Weave {
 
       if (typeof code === "number" && typeof log === "string") {
         const prettified = log
-          .replace(/^cannot check tx:/, "")
+          .trim()
+          .replace(/^cannot check tx:\s*/, "")
+          .replace(/^options invalid:\s*/, "")
           .replace(/: invalid input$/, "")
-          .trim();
+          .replace(/: invalid state$/, "");
         return prettified;
       } else {
         return null;
