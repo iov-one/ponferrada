@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import { Block, Form, ToastContext, ToastVariant, useForm } from "medulas-react-components";
 import React, { useState } from "react";
 import * as ReactRedux from "react-redux";
+import { Weave } from "ui-logic";
 
 import { communicationTexts } from "../../../../../communication";
 import { sendSignAndPostRequest } from "../../../../../communication/signandpost";
@@ -57,7 +58,8 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error ocurred", ToastVariant.ERROR);
+      const message = Weave.tryParseError(error) || "An unknown error ocurred";
+      toast.show(message, ToastVariant.ERROR);
     }
   };
 
