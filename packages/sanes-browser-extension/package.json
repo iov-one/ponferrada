@@ -1,6 +1,6 @@
 {
   "name": "sanes-browser-extension",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "private": true,
   "scripts": {
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
@@ -61,7 +61,7 @@
     "jspdf": "^1.5.3",
     "level-js": "^4.0.1",
     "levelup": "^4.1.0",
-    "medulas-react-components": "^0.4.6",
+    "medulas-react-components": "^0.4.7",
     "memdown": "^5.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -69,7 +69,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "typesafe-actions": "^3.2.1",
-    "ui-logic": "^0.4.6"
+    "ui-logic": "^0.4.7"
   },
   "devDependencies": {
     "@iov/browser-extension-react-scripts": "^3.1.1",
