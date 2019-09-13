@@ -71,9 +71,6 @@ export const submitRecoveryPhraseE2E = async (
 };
 
 export const travelToRestoreWalletStep = async (page: Page): Promise<void> => {
-  await page.click("button:nth-of-type(1)");
-  await findRenderedE2EComponentWithId(page, UNLOCK_ROUTE);
-
-  await page.click("a:nth-of-type(1)");
+  await page.click("button:nth-of-type(2)");
   await findRenderedE2EComponentWithId(page, RESTORE_WALLET);
 };
