@@ -6,7 +6,7 @@ import {
   findRenderedDOMComponentWithId,
   findRenderedE2EComponentWithId,
 } from "../../../utils/test/reactElemFinder";
-import { RESTORE_WALLET, UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../../paths";
+import { RESTORE_WALLET, WALLET_STATUS_ROUTE } from "../../paths";
 import { MNEMONIC_FIELD } from "../components/SetMnemonicForm";
 import {
   PASSWORD_CONFIRM_FIELD,
