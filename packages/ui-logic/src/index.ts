@@ -5,3 +5,4 @@ export { randomString } from "./random";
 export { ellipsify } from "./strings";
 export { whenTrue } from "./testing";
 export { displayPeriod } from "./time";
+export { Weave } from "./weave";
