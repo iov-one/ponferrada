@@ -32,6 +32,7 @@ const DeleteWallet = (): JSX.Element => {
     try {
       await clearPersona();
       await clearDatabase();
+      personaProvider.clearPersona();
     } catch (error) {
       toast.show("An error has occurred during deleting wallet", ToastVariant.ERROR);
       console.error(error);
