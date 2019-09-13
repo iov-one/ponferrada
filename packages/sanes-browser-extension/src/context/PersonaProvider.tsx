@@ -20,26 +20,32 @@ export interface PersonaContextInterface {
   readonly accounts: readonly PersonaAcccount[];
   readonly txs: readonly ProcessedTx[];
   readonly mnemonic: string;
+  readonly hasPersona: boolean;
   readonly update: (newData: PersonaContextUpdateData) => void;
+  readonly clearPersona: () => void;
 }
 
 export const PersonaContext = React.createContext<PersonaContextInterface>({
   accounts: [],
   mnemonic: "",
   txs: [],
+  hasPersona: false,
   update: (): void => {},
+  clearPersona: (): void => {},
 });
 
 interface Props {
   readonly children: React.ReactNode;
   readonly persona: GetPersonaResponse;
+  readonly hasPersona: boolean;
 }
 
 type Accounts = readonly PersonaAcccount[];
 
-export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
+export const PersonaProvider = ({ children, persona, hasPersona }: Props): JSX.Element => {
   const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
+  const [personaExists, setPersonaExists] = React.useState<boolean>(hasPersona);
   const [txs, setTxs] = React.useState<readonly ProcessedTx[]>(persona ? persona.txs : []);
   React.useEffect(() => {
     if (!extensionContext()) {
@@ -77,13 +83,23 @@ export const PersonaProvider = ({ children, persona }: Props): JSX.Element => {
     if (newData.accounts !== undefined) setAccounts(newData.accounts);
     if (newData.mnemonic !== undefined) setMnemonic(newData.mnemonic);
     if (newData.txs !== undefined) setTxs(newData.txs);
+    setPersonaExists(true);
+  };
+
+  const clearPersona = (): void => {
+    setAccounts([]);
+    setMnemonic("");
+    setTxs([]);
+    setPersonaExists(false);
   };
 
   const personaContextValue = {
     accounts,
     mnemonic,
     txs,
+    hasPersona: personaExists,
     update: loadPersonaInReact,
+    clearPersona,
   };
 
   return <PersonaContext.Provider value={personaContextValue}>{children}</PersonaContext.Provider>;

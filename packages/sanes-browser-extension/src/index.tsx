@@ -16,13 +16,14 @@ const rootEl = document.getElementById("root");
 
 const render = (
   Component: React.ComponentType,
+  hasPersona: boolean,
   persona: GetPersonaResponse,
   requests: readonly Request[],
 ): void => {
   ReactDOM.render(
     <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
       <ToastProvider>
-        <PersonaProvider persona={persona}>
+        <PersonaProvider persona={persona} hasPersona={hasPersona}>
           <RequestProvider initialRequests={requests}>
             <Component />
           </RequestProvider>
@@ -33,20 +34,19 @@ const render = (
   );
 };
 
-getPersonaData().then(persona => {
+type PersonaContexType = [GetPersonaResponse, boolean];
+
+Promise.all([getPersonaData(), hasStoredPersona()]).then(([persona, hasPersona]: PersonaContexType) => {
   const requests = getQueuedRequests();
-  render(Route, persona, requests);
+  const hasRequests = requests.length > 0;
+  const url = initialUrl(!!persona, hasPersona, hasRequests);
+  history.push(url);
+  render(Route, hasPersona, persona, requests);
 
-  hasStoredPersona().then(hasPersona => {
-    const hasRequests = requests.length > 0;
-    const url = initialUrl(!!persona, hasPersona, hasRequests);
-    history.push(url);
-
-    if (module.hot) {
-      module.hot.accept("./routes", (): void => {
-        const NextApp = require("./routes").default;
-        render(NextApp, persona, requests);
-      });
-    }
-  });
+  if (module.hot) {
+    module.hot.accept("./routes", (): void => {
+      const NextApp = require("./routes").default;
+      render(NextApp, hasPersona, persona, requests);
+    });
+  }
 });
