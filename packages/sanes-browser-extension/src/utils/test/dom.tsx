@@ -19,12 +19,13 @@ class FakeDom extends React.Component<{ children: React.ReactNode }> {
 export const createDom = (
   requests: readonly Request[] = [],
   persona: GetPersonaResponse = null,
+  hasPersona: boolean = false,
 ): React.Component =>
   TestUtils.renderIntoDocument(
     <FakeDom>
       <MedulasThemeProvider>
         <ToastProvider>
-          <PersonaProvider persona={persona}>
+          <PersonaProvider persona={persona} hasPersona={hasPersona}>
             <RequestProvider initialRequests={requests}>
               <Route />
             </RequestProvider>

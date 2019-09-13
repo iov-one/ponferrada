@@ -139,7 +139,7 @@ export const submitSecurityHint = async (securityHintDom: React.Component, hint:
 };
 
 export const travelToCreateWalletNewWalletStep = async (page: Page): Promise<void> => {
-  await page.click("button:nth-of-type(2)");
+  await page.click("button:nth-of-type(1)");
 
   await findRenderedE2EComponentWithId(page, FIRST_STEP_CREATE_WALLET_ROUTE);
 };
