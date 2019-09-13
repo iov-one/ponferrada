@@ -9698,132 +9698,6 @@ exports[`Storyshots Extension Unlock page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension Welcome page 1`] = `
-<div
-  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/welcome"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <h4
-      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
-    >
-      Welcome
-    </h4>
-    <h4
-      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
-    >
-       
-      to Neuma
-    </h4>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root makeStyles-inline MuiTypography-body1"
-    >
-      This extension lets you manage all your accounts in one place.
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Unlock
-      </span>
-    </button>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Create Wallet
-      </span>
-    </button>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Import Wallet
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <img
-      alt="Logo"
-      className="makeStyles-root"
-      src="NeumaLogo.svg"
-      width={100}
-    />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Extension/Components NeumaPageLayout 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
@@ -13474,6 +13348,234 @@ exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
       </div>
     </div>
   </main>
+</div>
+`;
+
+exports[`Storyshots Extension/Welcome page With persona 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/welcome"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Welcome
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      to Neuma
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+    >
+      This extension lets you manage all your accounts in one place.
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Unlock
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Create Wallet
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Import Wallet
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Welcome page Without persona 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/welcome"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Welcome
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      to Neuma
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+    >
+      This extension lets you manage all your accounts in one place.
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Create Wallet
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Import Wallet
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
 </div>
 `;
 
