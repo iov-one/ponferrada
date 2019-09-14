@@ -15,12 +15,12 @@ const onBack = (): void => {
   history.goBack();
 };
 
-const Signup = (): JSX.Element => {
+const CreateWallet = (): JSX.Element => {
   const [step, setStep] = React.useState<"first" | "second" | "third">("first");
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
 
-  const onNewAccount = (): void => setStep("first");
+  const onNewWallet = (): void => setStep("first");
   const onShowPhrase = (): void => setStep("second");
   const onHintPassword = (): void => setStep("third");
 
@@ -32,7 +32,7 @@ const Signup = (): JSX.Element => {
     history.push(WALLET_STATUS_ROUTE);
   };
 
-  const onSignup = async (formValues: FormValues): Promise<void> => {
+  const onCreateWallet = async (formValues: FormValues): Promise<void> => {
     const password = formValues[PASSWORD_FIELD];
 
     let response: PersonaData;
@@ -54,11 +54,11 @@ const Signup = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      {step === "first" && <NewWalletForm onBack={onBack} onSignup={onSignup} />}
+      {step === "first" && <NewWalletForm onBack={onBack} onCreateWallet={onCreateWallet} />}
       {step === "second" && (
         <ShowPhraseForm
           mnemonic={personaProvider.mnemonic}
-          onBack={onNewAccount}
+          onBack={onNewWallet}
           onHintPassword={onHintPassword}
         />
       )}
@@ -67,4 +67,4 @@ const Signup = (): JSX.Element => {
   );
 };
 
-export default Signup;
+export default CreateWallet;

@@ -17,7 +17,7 @@ import { whenOnNavigatedToE2eRoute } from "../../utils/test/navigation";
 import {
   acceptEnqueuedRequest,
   rejectEnqueuedRequest,
-  submitExtensionSignupForm,
+  submitExtensionCreateWalletForm,
 } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { BALANCE_ROUTE } from "../paths";
@@ -68,7 +68,7 @@ withChainsDescribe("E2E > Login route", (): void => {
 
     it("should redirect when enqueued login request is accepted", async () => {
       await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, "12345678");
+      await submitExtensionCreateWalletForm(extensionPage, "12345678");
       await page.bringToFront();
       //Click on login button
       await page.click("button");
@@ -80,7 +80,7 @@ withChainsDescribe("E2E > Login route", (): void => {
 
     it("should stay in login view if enqueued login request is rejected", async () => {
       await getBackgroundPage(browser);
-      await submitExtensionSignupForm(extensionPage, "12345678");
+      await submitExtensionCreateWalletForm(extensionPage, "12345678");
       await page.bringToFront();
       //Click on login button
       await page.click("button");

@@ -7,10 +7,10 @@ import {
   submitNewWalletE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
-  travelToSignupNewAccountStep,
-} from "./test/operateSignup";
+  travelToCreateWalletNewWalletStep,
+} from "./test/operateCreateWallet";
 
-withChainsDescribe("DOM > Signup route", () => {
+withChainsDescribe("DOM > Create Wallet route", () => {
   let browser: Browser;
   let page: Page;
 
@@ -23,8 +23,8 @@ withChainsDescribe("DOM > Signup route", () => {
     await closeBrowser(browser);
   });
 
-  it("should redirect to signup route, fill required data, show recovery phrase and hint", async () => {
-    await travelToSignupNewAccountStep(page);
+  it("should redirect to create wallet route, fill required data, show recovery phrase and hint", async () => {
+    await travelToCreateWalletNewWalletStep(page);
     await submitNewWalletE2E(page, randomString(10), randomString(10));
     await submitShowPhraseE2E(page);
     await submitSecurityHintE2E(page, randomString(10));

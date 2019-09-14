@@ -4,21 +4,21 @@ import { randomString } from "ui-logic";
 import {
   mockCreatePersona,
   mockPersonaResponse,
-  processSignup,
+  processCreateWallet,
 } from "../../extension/background/model/persona/test/persona";
 import { check, click, input, submit } from "../../utils/test/dom";
-import { travelToSignup, travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToCreateWallet, travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { mayTestChains } from "../../utils/test/testExecutor";
 import { WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
-import { FIRST_STEP_SIGNUP_ROUTE } from "./components/NewWalletForm";
-import { SECURITY_HINT_STEP_SIGNUP_ROUTE } from "./components/SecurityHintForm";
-import { SECOND_STEP_SIGNUP_ROUTE } from "./components/ShowPhraseForm";
+import { FIRST_STEP_CREATE_WALLET_ROUTE } from "./components/NewWalletForm";
+import { SECURITY_HINT_STEP_CREATE_WALLET_ROUTE } from "./components/SecurityHintForm";
+import { SECOND_STEP_CREATE_WALLET_ROUTE } from "./components/ShowPhraseForm";
 import {
   checkHintValidity,
   getConfirmPasswordMismatch,
   getConfirmPasswordValidity,
-  getNewAccountForm,
+  getNewWalletForm,
   getNewWalletInputs,
   getPasswordValidity,
   getTermsCheckboxLabel,
@@ -26,25 +26,25 @@ import {
   isButtonDisabled,
   submitNewWallet,
   submitShowPhrase,
-} from "./test/operateSignup";
+} from "./test/operateCreateWallet";
 
-describe("DOM > Feature > Signup", () => {
+describe("DOM > Feature > CreateWallet", () => {
   const password = randomString(10);
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const hint = randomString(10);
   const personaMock = mockPersonaResponse([], mnemonic, []);
 
-  let signupDom: React.Component;
+  let createWalletDom: React.Component;
 
   beforeEach(async () => {
-    signupDom = await travelToSignup();
+    createWalletDom = await travelToCreateWallet();
   }, 10000);
 
   mayTestChains(
-    "should finish the signup three steps process",
+    "should finish the create wallet three steps process",
     async () => {
       mockCreatePersona(personaMock);
-      await processSignup();
+      await processCreateWallet();
     },
     10000,
   );
@@ -60,10 +60,10 @@ describe("DOM > Feature > Signup", () => {
     let continueButton: Element;
 
     beforeEach(async () => {
-      newWalletInputs = getNewWalletInputs(signupDom);
+      newWalletInputs = getNewWalletInputs(createWalletDom);
       [passwordInput, passwordConfirmInput, termsAcceptField] = newWalletInputs;
-      newAccountForm = getNewAccountForm(signupDom);
-      buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "button");
+      newAccountForm = getNewWalletForm(createWalletDom);
+      buttons = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "button");
       [backButton, continueButton] = buttons;
     });
 
@@ -78,13 +78,15 @@ describe("DOM > Feature > Signup", () => {
       await check(termsAcceptField);
 
       await submit(newAccountForm);
-      expect(getPasswordValidity(signupDom).textContent).toBe("Required");
+      expect(getPasswordValidity(createWalletDom).textContent).toBe("Required");
 
       input(passwordInput, randomString(7));
-      expect(getPasswordValidity(signupDom).textContent).toBe("Password should have at least 8 characters");
+      expect(getPasswordValidity(createWalletDom).textContent).toBe(
+        "Password should have at least 8 characters",
+      );
 
       input(passwordInput, password);
-      expect(getPasswordValidity(signupDom)).toBeUndefined();
+      expect(getPasswordValidity(createWalletDom)).toBeUndefined();
     }, 10000);
 
     it('has a valid "Confirm Password" input', async () => {
@@ -93,15 +95,15 @@ describe("DOM > Feature > Signup", () => {
       await check(termsAcceptField);
 
       await submit(newAccountForm);
-      expect(getConfirmPasswordValidity(signupDom).textContent).toBe("Required");
+      expect(getConfirmPasswordValidity(createWalletDom).textContent).toBe("Required");
 
       input(passwordInput, password);
 
       input(passwordConfirmInput, randomString(10));
-      expect(getConfirmPasswordMismatch(signupDom).textContent).toBe("Passwords mismatch");
+      expect(getConfirmPasswordMismatch(createWalletDom).textContent).toBe("Passwords mismatch");
 
       input(passwordConfirmInput, password);
-      expect(getConfirmPasswordValidity(signupDom)).toBeUndefined();
+      expect(getConfirmPasswordValidity(createWalletDom)).toBeUndefined();
     }, 10000);
 
     it('has a valid "Terms agreement" checkbox', async () => {
@@ -112,10 +114,12 @@ describe("DOM > Feature > Signup", () => {
 
       await submit(newAccountForm);
 
-      expect(getTermsValidity(signupDom).textContent).toBe("You should accept T&C in order to continue");
+      expect(getTermsValidity(createWalletDom).textContent).toBe(
+        "You should accept T&C in order to continue",
+      );
 
       await check(termsAcceptField);
-      expect(getConfirmPasswordValidity(signupDom)).toBeUndefined();
+      expect(getConfirmPasswordValidity(createWalletDom)).toBeUndefined();
     }, 10000);
 
     it("has two buttons", () => {
@@ -126,7 +130,7 @@ describe("DOM > Feature > Signup", () => {
       expect(backButton.textContent).toBe("Back");
 
       await travelToWelcome();
-      await travelToSignup();
+      await travelToCreateWallet();
       click(backButton);
       await whenOnNavigatedToRoute(WELCOME_ROUTE);
     }, 10000);
@@ -143,7 +147,7 @@ describe("DOM > Feature > Signup", () => {
       mockCreatePersona(personaMock);
 
       await submit(newAccountForm);
-      await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
     }, 10000);
 
     it("accepts several UTF-8 alphabets as password fields", async () => {
@@ -153,7 +157,7 @@ describe("DOM > Feature > Signup", () => {
       await check(termsAcceptField);
       mockCreatePersona(personaMock);
       await submit(newAccountForm);
-      await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
     }, 10000);
   });
 
@@ -165,20 +169,20 @@ describe("DOM > Feature > Signup", () => {
 
     beforeEach(async () => {
       mockCreatePersona(mockPersonaResponse([], mnemonic, []));
-      await submitNewWallet(signupDom, password);
+      await submitNewWallet(createWalletDom, password);
 
-      checkbox = TestUtils.findRenderedDOMComponentWithTag(signupDom, "input");
-      buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "button");
+      checkbox = TestUtils.findRenderedDOMComponentWithTag(createWalletDom, "input");
+      buttons = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "button");
       [backButton, continueButton] = buttons;
     });
 
     it("has an explanation text", async () => {
-      const explanation = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p")[0];
+      const explanation = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "p")[0];
       expect(explanation.textContent || "").toMatch(/^Your secret recovery phrase/);
     });
 
     it("has a toggle button that shows the mnemonic when active", async () => {
-      const renderedMnemonic = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "p")[1];
+      const renderedMnemonic = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "p")[1];
       expect(renderedMnemonic.textContent).toBe("");
 
       await check(checkbox);
@@ -190,14 +194,14 @@ describe("DOM > Feature > Signup", () => {
       expect(backButton.textContent).toBe("Back");
 
       await click(backButton);
-      await findRenderedDOMComponentWithId(signupDom, FIRST_STEP_SIGNUP_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, FIRST_STEP_CREATE_WALLET_ROUTE);
     }, 10000);
 
     it('has a "Continue" button that redirects to the Security Hint Form when clicked', async () => {
       expect(continueButton.textContent).toBe("Continue");
 
       click(continueButton);
-      await findRenderedDOMComponentWithId(signupDom, SECURITY_HINT_STEP_SIGNUP_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, SECURITY_HINT_STEP_CREATE_WALLET_ROUTE);
     }, 10000);
   });
 
@@ -209,11 +213,11 @@ describe("DOM > Feature > Signup", () => {
 
     beforeEach(async () => {
       mockCreatePersona(mockPersonaResponse([], mnemonic, []));
-      await submitNewWallet(signupDom, password);
-      await submitShowPhrase(signupDom);
+      await submitNewWallet(createWalletDom, password);
+      await submitShowPhrase(createWalletDom);
 
-      hintInput = TestUtils.findRenderedDOMComponentWithTag(signupDom, "input");
-      buttons = TestUtils.scryRenderedDOMComponentsWithTag(signupDom, "button");
+      hintInput = TestUtils.findRenderedDOMComponentWithTag(createWalletDom, "input");
+      buttons = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "button");
       [backButton, createButton] = buttons;
     });
 
@@ -221,17 +225,17 @@ describe("DOM > Feature > Signup", () => {
       expect(hintInput.getAttribute("placeholder")).toBe("Security hint");
 
       input(hintInput, randomString(16));
-      checkHintValidity(signupDom, "15 characters max - Spaces are allowed");
+      checkHintValidity(createWalletDom, "15 characters max - Spaces are allowed");
 
       input(hintInput, hint);
-      checkHintValidity(signupDom, undefined);
+      checkHintValidity(createWalletDom, undefined);
     }, 10000);
 
     it('has a "Back" button that redirects to the New Account Form when clicked', async () => {
       expect(backButton.textContent).toBe("Back");
 
       await click(backButton);
-      await findRenderedDOMComponentWithId(signupDom, SECOND_STEP_SIGNUP_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
     }, 10000);
 
     it('has a valid "Create" button that redirects to the Account Status view when clicked', async () => {

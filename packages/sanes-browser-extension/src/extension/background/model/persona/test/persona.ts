@@ -1,29 +1,29 @@
 import { randomString } from "ui-logic";
 
 import { PersonaAcccount, ProcessedTx } from "..";
-import { WALLET_STATUS_ROUTE } from "../../../../../routes/paths";
 import {
   submitNewWallet,
   submitSecurityHint,
   submitShowPhrase,
-} from "../../../../../routes/signup/test/operateSignup";
+} from "../../../../../routes/create-wallet/test/operateCreateWallet";
+import { WALLET_STATUS_ROUTE } from "../../../../../routes/paths";
 import * as chromeInternalMsgs from "../../../../../utils/chrome";
-import { travelToSignup, whenOnNavigatedToRoute } from "../../../../../utils/test/navigation";
+import { travelToCreateWallet, whenOnNavigatedToRoute } from "../../../../../utils/test/navigation";
 import { PersonaData } from "../../backgroundscript";
 
-export async function processSignup(
+export async function processCreateWallet(
   password: string = randomString(10),
   hint: string = randomString(10),
 ): Promise<React.Component> {
-  const signupDom = await travelToSignup();
+  const createWalletDom = await travelToCreateWallet();
 
-  await submitNewWallet(signupDom, password);
-  await submitShowPhrase(signupDom);
-  await submitSecurityHint(signupDom, hint);
+  await submitNewWallet(createWalletDom, password);
+  await submitShowPhrase(createWalletDom);
+  await submitSecurityHint(createWalletDom, hint);
 
   await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
 
-  const accountStatusDom = signupDom;
+  const accountStatusDom = createWalletDom;
 
   return accountStatusDom;
 }

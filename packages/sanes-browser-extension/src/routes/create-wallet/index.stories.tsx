@@ -11,12 +11,12 @@ import ShowPhraseForm from "./components/ShowPhraseForm";
 const exampleMnemonic =
   "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/Signup`, module)
+storiesOf(`${CHROME_EXTENSION_ROOT}/Create Wallet`, module)
   .add(
-    "New Account page",
+    "New Wallet page",
     (): JSX.Element => (
       <Storybook>
-        <NewWalletForm onBack={action("back in history")} onSignup={action("next step")} />
+        <NewWalletForm onBack={action("back in history")} onCreateWallet={action("next step")} />
       </Storybook>
     ),
   )

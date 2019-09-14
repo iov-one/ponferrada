@@ -12,7 +12,7 @@ async function clickCreatePersona(page: Page): Promise<void> {
   await page.click("button:nth-of-type(2)");
 }
 
-export const submitExtensionSignupForm = async (page: Page, password: string): Promise<void> => {
+export const submitExtensionCreateWalletForm = async (page: Page, password: string): Promise<void> => {
   await clickCreatePersona(page);
 
   await sleep(20); // wait until redirect and render is done

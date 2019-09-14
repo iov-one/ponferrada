@@ -5,8 +5,8 @@ import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { loadPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
+import { PASSWORD_FIELD } from "../create-wallet/components/NewWalletForm";
 import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
-import { PASSWORD_FIELD } from "../signup/components/NewWalletForm";
 import UnlockControls from "./components/UnlockControls";
 import UnlockForm from "./components/UnlockForm";
 

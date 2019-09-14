@@ -4,12 +4,12 @@ import { whenTrue } from "ui-logic";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import {
+  CREATE_WALLET_ROUTE,
   DELETE_WALLET_ROUTE,
   RECOVERY_PHRASE_ROUTE,
   REQUEST_ROUTE,
   RESTORE_WALLET,
   SHARE_IDENTITY,
-  SIGNUP_ROUTE,
   TX_REQUEST,
   UNLOCK_ROUTE,
   WALLET_STATUS_ROUTE,
@@ -50,8 +50,8 @@ export const travelToWelcome = async (): Promise<React.Component> => {
   return travelTo(WELCOME_ROUTE);
 };
 
-export const travelToSignup = async (): Promise<React.Component> => {
-  return travelTo(SIGNUP_ROUTE);
+export const travelToCreateWallet = async (): Promise<React.Component> => {
+  return travelTo(CREATE_WALLET_ROUTE);
 };
 
 export const travelToUnlock = async (): Promise<React.Component> => {

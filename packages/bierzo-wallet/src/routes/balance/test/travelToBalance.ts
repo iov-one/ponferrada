@@ -7,7 +7,7 @@ import { history } from "../../../routes";
 import { createDom } from "../../../utils/test/dom";
 import { createExtensionPage, getBackgroundPage } from "../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from "../../../utils/test/navigation";
-import { acceptEnqueuedRequest, submitExtensionSignupForm } from "../../../utils/test/persona";
+import { acceptEnqueuedRequest, submitExtensionCreateWalletForm } from "../../../utils/test/persona";
 import { BALANCE_ROUTE } from "../../paths";
 
 export const travelToBalance = async (store: Store): Promise<React.Component> => {
@@ -23,7 +23,7 @@ export const travelToBalance = async (store: Store): Promise<React.Component> =>
 export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<void> {
   await getBackgroundPage(browser);
   const extensionPage = await createExtensionPage(browser);
-  await submitExtensionSignupForm(extensionPage, "12345678");
+  await submitExtensionCreateWalletForm(extensionPage, "12345678");
   await extensionPage.close();
   await page.bringToFront();
   //Click on login button

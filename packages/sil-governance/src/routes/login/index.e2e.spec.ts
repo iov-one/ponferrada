@@ -16,7 +16,7 @@ import { whenOnNavigatedToE2eRoute } from "../../utils/test/navigation";
 import {
   acceptGetIdentitiesRequest,
   rejectGetIdentitiesRequest,
-  submitExtensionSignupForm,
+  submitExtensionCreateWalletForm,
 } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { travelToDashboardE2e } from "../dashboard/test/travelToDashboard";
@@ -68,7 +68,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await getBackgroundPage(browser);
-    await submitExtensionSignupForm(extensionPage, "12345678");
+    await submitExtensionCreateWalletForm(extensionPage, "12345678");
     await page.bringToFront();
     await travelToDashboardE2e(page);
     await sleep(1000);
@@ -82,7 +82,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await getBackgroundPage(browser);
-    await submitExtensionSignupForm(extensionPage, "12345678");
+    await submitExtensionCreateWalletForm(extensionPage, "12345678");
     await page.bringToFront();
     await travelToDashboardE2e(page);
     await sleep(1000);
