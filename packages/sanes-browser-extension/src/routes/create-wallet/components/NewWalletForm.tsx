@@ -52,7 +52,7 @@ interface Props {
   readonly onBack: () => void;
 }
 
-const NewAccount = ({ onCreateWallet, onBack }: Props): JSX.Element => {
+const NewWalletForm = ({ onCreateWallet, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
     await onCreateWallet(formValues);
@@ -126,4 +126,4 @@ const NewAccount = ({ onCreateWallet, onBack }: Props): JSX.Element => {
   );
 };
 
-export default NewAccount;
+export default NewWalletForm;
