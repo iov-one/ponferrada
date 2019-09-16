@@ -22,6 +22,7 @@ const TextFieldForm = ({ name, form, validate, ...restProps }: Props): JSX.Eleme
     <MuiTextField
       error={error}
       name={input.name}
+      value={input.value}
       helperText={error ? meta.error : undefined}
       onChange={input.onChange}
       margin="normal"
