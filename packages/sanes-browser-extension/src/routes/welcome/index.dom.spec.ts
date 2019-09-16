@@ -22,9 +22,9 @@ describe("DOM > Feature > Welcome", () => {
   }, 60000);
 
   it("should contain two buttons in case if no persona exists", async () => {
-    const welcomeDom = await travelToWelcome(true);
+    const welcomeDom = await travelToWelcome(false);
     const buttons = TestUtils.scryRenderedDOMComponentsWithTag(welcomeDom, "button");
-    expect(buttons.length).toBe(3);
+    expect(buttons.length).toBe(2);
   }, 60000);
 
   it('has a "Unlock" button that redirects to the Unlock view when clicked', async () => {
