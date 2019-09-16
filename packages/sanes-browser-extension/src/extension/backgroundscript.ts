@@ -1,4 +1,3 @@
-/*global chrome*/
 import { generateErrorResponse } from "./background/errorResponseGenerator";
 import Backgroundscript, { IovWindowExtension } from "./background/model/backgroundscript";
 import { updateExtensionBadge } from "./background/updaters/extensionBadgeUpdater";

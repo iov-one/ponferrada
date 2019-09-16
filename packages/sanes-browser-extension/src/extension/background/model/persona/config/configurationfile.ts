@@ -1,8 +1,6 @@
 import { ChainId } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
-/*global chrome*/
-
 export type CodecString = "bns" | "lsk" | "eth";
 
 export interface ChainSpec {

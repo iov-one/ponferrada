@@ -1,4 +1,3 @@
-/*global chrome*/
 import { Identity, isIdentity, TransactionId } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
