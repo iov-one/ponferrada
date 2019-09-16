@@ -45,7 +45,7 @@ export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
   // accept it
   await extensionPage.click("button");
 
-  //go back to accounts
+  // go back to accounts
   await extensionPage.click('[aria-label="Go back"]');
 
   await extensionPage.close();
@@ -61,7 +61,7 @@ export async function rejectEnqueuedRequest(browser: Browser): Promise<void> {
   // confirm rejection
   await extensionPage.click("button");
 
-  //go back to accounts
+  // go back to accounts
   await extensionPage.click('[aria-label="Go back"]');
 
   await extensionPage.close();

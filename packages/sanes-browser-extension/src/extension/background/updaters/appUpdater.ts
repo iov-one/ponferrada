@@ -1,4 +1,3 @@
-/*global chrome*/
 import { ProcessedTx } from "../model/persona";
 
 /**

@@ -51,7 +51,7 @@ const SetPasswordForm = ({ onSetPassword, onBack }: Props): JSX.Element => {
     validate,
   });
 
-  //TODO optimize update of validators with array of dependencies
+  // TODO optimize update of validators with array of dependencies
   const validatorPassword = useMemo(() => {
     return composeValidators(required, longerThan(PASSWORD_MIN_LENGTH));
   }, []);

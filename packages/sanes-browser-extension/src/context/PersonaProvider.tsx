@@ -1,4 +1,3 @@
-/*global chrome*/
 import * as React from "react";
 
 import { GetPersonaResponse } from "../extension/background/model/backgroundscript";

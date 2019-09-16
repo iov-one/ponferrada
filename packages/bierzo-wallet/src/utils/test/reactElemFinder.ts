@@ -1,7 +1,7 @@
 import { Page } from "puppeteer";
 import TestUtils from "react-dom/test-utils";
 
-const TIMEOUT = 20000; //msec
+const TIMEOUT = 20000; // msec
 const INTERVAL = 500;
 
 export const findRenderedDOMComponentWithId = (

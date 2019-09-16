@@ -1,5 +1,3 @@
-/*global chrome*/
-
 export function updateExtensionBadge(queueSize: number): void {
   const isExtensionContext = typeof chrome !== "undefined"; // needed for tests
   if (!isExtensionContext) {

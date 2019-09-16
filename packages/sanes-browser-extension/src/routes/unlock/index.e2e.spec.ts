@@ -43,7 +43,7 @@ withChainsDescribe("DOM > Unlock route", (): void => {
     await submitNewWalletE2E(page, randomString(10), password);
     await submitShowPhraseE2E(page);
     await submitSecurityHintE2E(page, randomString(10));
-    //Simulating reload
+    // Simulating reload
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
       waitUntil: "networkidle2",
     });
@@ -53,7 +53,7 @@ withChainsDescribe("DOM > Unlock route", (): void => {
       (window as IovWindowExtension).clearPersona();
     });
 
-    //Simulating reload
+    // Simulating reload
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
       waitUntil: "networkidle2",
     });

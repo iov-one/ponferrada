@@ -1,4 +1,3 @@
-/*global chrome*/
 import * as React from "react";
 
 import { IovWindowExtension } from "../extension/background/model/backgroundscript";

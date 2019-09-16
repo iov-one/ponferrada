@@ -26,7 +26,7 @@ export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<
   await submitExtensionCreateWalletForm(extensionPage, "12345678");
   await extensionPage.close();
   await page.bringToFront();
-  //Click on login button
+  // Click on login button
   await page.click("button");
   await sleep(1000);
   await acceptEnqueuedRequest(browser);
