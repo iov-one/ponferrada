@@ -83,7 +83,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
     if (newData.mnemonic !== undefined) setMnemonic(newData.mnemonic);
     if (newData.txs !== undefined) setTxs(newData.txs);
     if (newData.hasStoredPersona !== undefined) {
-      setStoredPersonaExists(true);
+      setStoredPersonaExists(newData.hasStoredPersona);
       if (!newData.hasStoredPersona) {
         setAccounts([]);
         setMnemonic("");
