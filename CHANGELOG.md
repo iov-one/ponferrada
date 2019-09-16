@@ -4,6 +4,9 @@
 
 - Governance: Show currect blockchain time in UI and calculate `hasStarted`
   based on blockchain time
+- Governance: Sort proposals from new to old
+- Governance: Rename "Submitted Elections" to "Authored Elections" and adapt
+  logic accordingly
 
 ## 0.4.8
 
