@@ -13385,6 +13385,7 @@ exports[`Storyshots Extension/Welcome page With persona 1`] = `
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
+      id="welcome-unlock-wallet"
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
@@ -13412,6 +13413,7 @@ exports[`Storyshots Extension/Welcome page With persona 1`] = `
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
+      id="welcome-create-wallet"
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
@@ -13439,6 +13441,7 @@ exports[`Storyshots Extension/Welcome page With persona 1`] = `
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
+      id="welcome-import-wallet"
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
@@ -13514,6 +13517,7 @@ exports[`Storyshots Extension/Welcome page Without persona 1`] = `
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
+      id="welcome-create-wallet"
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
@@ -13541,6 +13545,7 @@ exports[`Storyshots Extension/Welcome page Without persona 1`] = `
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
       disabled={false}
+      id="welcome-import-wallet"
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
