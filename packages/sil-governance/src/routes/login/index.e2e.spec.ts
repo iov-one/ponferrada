@@ -22,7 +22,7 @@ import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { travelToDashboardE2e } from "../dashboard/test/travelToDashboard";
 import { DASHBOARD_ROUTE } from "../paths";
 
-withChainsDescribe("E2E > Login route", (): void => {
+withChainsDescribe("E2E > Login route", () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -40,24 +40,18 @@ withChainsDescribe("E2E > Login route", (): void => {
     server = app.listen(9000);
   });
 
-  beforeEach(async (): Promise<void> => {}, 45000);
-
-  afterEach(
-    async (): Promise<void> => {
-      await closeBrowser(browser);
-    },
-  );
+  afterEach(async () => {
+    await closeBrowser(browser);
+  });
 
   afterAll(() => {
     server.close();
   });
 
   async function checkLoginMessage(page: Page): Promise<void> {
-    const element = await page.$("h6");
-    if (element === null) {
-      throw new Error();
-    }
-    const text = await (await element.getProperty("textContent")).jsonValue();
+    const toastTextElement = await page.$("h6");
+    if (!toastTextElement) throw new Error("h6 element not found");
+    const text = await (await toastTextElement.getProperty("textContent")).jsonValue();
     expect(text).toBe(communicationTexts.noMatchingIdentityMessage);
 
     await closeToast(page);
@@ -114,11 +108,9 @@ withChainsDescribe("E2E > Login route", (): void => {
     await page.click("button");
     await sleep(500);
 
-    const element = await page.$("h6");
-    if (element === null) {
-      throw new Error();
-    }
-    const text = await (await element.getProperty("textContent")).jsonValue();
+    const toastTextElement = await page.$("h6");
+    if (!toastTextElement) throw new Error("h6 element not found");
+    const text = await (await toastTextElement.getProperty("textContent")).jsonValue();
     expect(text).toBe(communicationTexts.notAvailableMessage);
 
     await closeToast(page);

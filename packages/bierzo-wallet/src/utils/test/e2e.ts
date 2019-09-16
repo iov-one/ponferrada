@@ -63,10 +63,8 @@ export async function closeToast(page: Page): Promise<void> {
 }
 
 export async function getToastMessage(page: Page): Promise<string> {
-  const element = await page.$("#toast-provider h6");
-  if (element === null) {
-    throw new Error();
-  }
+  const toastTextElement = await page.$("#toast-provider h6");
+  if (!toastTextElement) throw new Error("h6 element not found");
 
-  return await (await element.getProperty("textContent")).jsonValue();
+  return await (await toastTextElement.getProperty("textContent")).jsonValue();
 }
