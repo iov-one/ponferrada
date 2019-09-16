@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
 import { getConfig } from "../config";
+import { setBlockchainAction } from "../store/blockchain";
 import { setExtensionStateAction } from "../store/extension";
 import { getProposals, replaceProposalsAction } from "../store/proposals";
 import { getBnsConnection } from "./connection";
@@ -39,7 +40,12 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
 
   blockHeadersSubscription = connection.watchBlockHeaders().subscribe({
     next: header => {
-      console.log(header.height, header.time);
+      dispatch(
+        setBlockchainAction({
+          lastBlockheight: header.height,
+          lastBlockTime: header.time,
+        }),
+      );
     },
   });
 }

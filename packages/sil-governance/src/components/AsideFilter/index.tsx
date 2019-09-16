@@ -106,7 +106,8 @@ const AsideFilter = ({ filter }: Props): JSX.Element => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        marginTop={1}
+        paddingTop={1}
+        paddingBottom={1}
         className={classes.addProposal}
         onClick={() => navigateTo(CREATE_PROPOSAL_ROUTE)}
       >
