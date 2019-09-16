@@ -14,23 +14,17 @@ const persona: GetPersonaResponse = {
 };
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/Welcome page`, module)
-  .add(
-    "With persona",
-    (): JSX.Element => (
-      <PersonaProvider persona={persona} hasStoredPersona={true}>
-        <Storybook>
-          <Layout />
-        </Storybook>
-      </PersonaProvider>
-    ),
-  )
-  .add(
-    "Without persona",
-    (): JSX.Element => (
-      <PersonaProvider persona={null} hasStoredPersona={false}>
-        <Storybook>
-          <Layout />
-        </Storybook>
-      </PersonaProvider>
-    ),
-  );
+  .add("With persona", () => (
+    <PersonaProvider persona={persona} hasStoredPersona={true}>
+      <Storybook>
+        <Layout />
+      </Storybook>
+    </PersonaProvider>
+  ))
+  .add("Without persona", () => (
+    <PersonaProvider persona={null} hasStoredPersona={false}>
+      <Storybook>
+        <Layout />
+      </Storybook>
+    </PersonaProvider>
+  ));
