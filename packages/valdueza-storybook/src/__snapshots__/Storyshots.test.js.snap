@@ -13770,7 +13770,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
                   <span
                     className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
                   >
-                    Submitted Elections
+                    Authored Elections
                   </span>
                 </div>
               </div>

@@ -62,10 +62,12 @@ describe("DOM > Feature > Dashboard", () => {
     const asideFilter = await getAsideFilter(dashboardDom);
 
     const asideFilterOptions = getAsideFilterOptions(asideFilter);
-    expect(asideFilterOptions[0]).toBe("All Elections");
-    expect(asideFilterOptions[1]).toBe("Active Elections");
-    expect(asideFilterOptions[2]).toBe("Submitted Elections");
-    expect(asideFilterOptions[3]).toBe("Ended Elections");
+    expect(asideFilterOptions).toEqual([
+      "All Elections",
+      "Active Elections",
+      "Authored Elections",
+      "Ended Elections",
+    ]);
   }, 60000);
 
   it("has a proposal list with three proposals", async () => {

@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
@@ -13,17 +14,20 @@ interface Props {
   readonly filterType: ElectionFilter;
 }
 
-const getFilter = (filterType: ElectionFilter): { (proposal: ProposalProps): boolean } => {
+const getFilter = (
+  filterType: ElectionFilter,
+  currentUser: Address | null,
+): { (proposal: ProposalProps): boolean } => {
   const filterByActive = (proposal: ProposalProps): boolean => proposal.hasStarted && !proposal.hasEnded;
-  const filterBySubmitted = (proposal: ProposalProps): boolean => !!proposal.vote;
+  const filterByAuthor = (proposal: ProposalProps): boolean => proposal.author === currentUser;
   const filterByEnded = (proposal: ProposalProps): boolean => proposal.hasEnded;
   const filterNone = (_proposal: ProposalProps): boolean => true;
 
   switch (filterType) {
     case ElectionFilter.Active:
       return filterByActive;
-    case ElectionFilter.Submitted:
-      return filterBySubmitted;
+    case ElectionFilter.Authored:
+      return filterByAuthor;
     case ElectionFilter.Ended:
       return filterByEnded;
     default:
@@ -32,9 +36,11 @@ const getFilter = (filterType: ElectionFilter): { (proposal: ProposalProps): boo
 };
 
 const ProposalsList = ({ filterType }: Props): JSX.Element => {
-  const filter = getFilter(filterType);
   const proposals = ReactRedux.useSelector((state: RootState) => state.proposals);
+  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const blockchain = ReactRedux.useSelector((state: RootState) => state.blockchain);
+
+  const filter = getFilter(filterType, governor ? governor.address : null);
   const uiProposals = proposals
     .map(
       (proposal): ProposalProps => ({
