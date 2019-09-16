@@ -50,7 +50,7 @@ export function getQueuedRequests(): readonly Request[] {
   return response;
 }
 
-export async function hasStoredPersona(): Promise<boolean> {
+export async function getHasStoredPersona(): Promise<boolean> {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   const response = await extensionWindow.hasStoredPersona();
 
