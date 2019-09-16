@@ -8,9 +8,9 @@ import { history } from "../../routes";
 import {
   CREATE_PROPOSAL_ROUTE,
   DASHBOARD_ACTIVE_ROUTE,
+  DASHBOARD_AUTHORED_ROUTE,
   DASHBOARD_ENDED_ROUTE,
   DASHBOARD_ROUTE,
-  DASHBOARD_SUBMITTED_ROUTE,
 } from "../../routes/paths";
 
 export const ASIDE_FILTER_HTML_ID = "aside-filter";
@@ -44,14 +44,14 @@ const navigateTo = (target: string): void => {
 export enum ElectionFilter {
   All = "All Elections",
   Active = "Active Elections",
-  Submitted = "Submitted Elections",
+  Authored = "Authored Elections",
   Ended = "Ended Elections",
 }
 
 const menuItems: readonly ElectionFilter[] = [
   ElectionFilter.All,
   ElectionFilter.Active,
-  ElectionFilter.Submitted,
+  ElectionFilter.Authored,
   ElectionFilter.Ended,
 ];
 
@@ -76,8 +76,8 @@ const AsideFilter = ({ filter }: Props): JSX.Element => {
     switch (filter) {
       case ElectionFilter.Active:
         return DASHBOARD_ACTIVE_ROUTE;
-      case ElectionFilter.Submitted:
-        return DASHBOARD_SUBMITTED_ROUTE;
+      case ElectionFilter.Authored:
+        return DASHBOARD_AUTHORED_ROUTE;
       case ElectionFilter.Ended:
         return DASHBOARD_ENDED_ROUTE;
       default:

@@ -62,10 +62,12 @@ describe("DOM > Feature > Dashboard", () => {
     const asideFilter = await getAsideFilter(dashboardDom);
 
     const asideFilterOptions = getAsideFilterOptions(asideFilter);
-    expect(asideFilterOptions[0]).toBe("All Elections");
-    expect(asideFilterOptions[1]).toBe("Active Elections");
-    expect(asideFilterOptions[2]).toBe("Submitted Elections");
-    expect(asideFilterOptions[3]).toBe("Ended Elections");
+    expect(asideFilterOptions).toEqual([
+      "All Elections",
+      "Active Elections",
+      "Authored Elections",
+      "Ended Elections",
+    ]);
   }, 60000);
 
   it("has a proposal list with three proposals", async () => {
@@ -74,17 +76,17 @@ describe("DOM > Feature > Dashboard", () => {
   }, 60000);
 
   it("has a proposal with correct fields", async () => {
-    const proposal = (await getProposals(dashboardDom))[0];
+    const proposal = (await getProposals(dashboardDom))[2];
     checkProposal(proposal);
   }, 60000);
 
   it("has an active proposal with correct voting panel", async () => {
-    const activeProposal = (await getProposals(dashboardDom))[0];
+    const activeProposal = (await getProposals(dashboardDom))[2];
     checkActiveVotingPanel(activeProposal);
   }, 60000);
 
   it("has an ended proposal with correct voting panel", async () => {
-    const endedProposal = (await getProposals(dashboardDom))[2];
+    const endedProposal = (await getProposals(dashboardDom))[0];
     checkEndedVotingPanel(endedProposal);
   }, 60000);
 

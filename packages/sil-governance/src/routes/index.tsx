@@ -10,9 +10,9 @@ import Login from "./login";
 import {
   CREATE_PROPOSAL_ROUTE,
   DASHBOARD_ACTIVE_ROUTE,
+  DASHBOARD_AUTHORED_ROUTE,
   DASHBOARD_ENDED_ROUTE,
   DASHBOARD_ROUTE,
-  DASHBOARD_SUBMITTED_ROUTE,
   LOGIN_ROUTE,
 } from "./paths";
 
@@ -32,8 +32,8 @@ const Routes = (): JSX.Element => (
         />
         <Route
           exact
-          path={DASHBOARD_SUBMITTED_ROUTE}
-          component={() => <Dashboard filter={ElectionFilter.Submitted} />}
+          path={DASHBOARD_AUTHORED_ROUTE}
+          component={() => <Dashboard filter={ElectionFilter.Authored} />}
         />
         <Route
           exact
