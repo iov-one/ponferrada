@@ -34,6 +34,10 @@ const getFilter = (filterType: ElectionFilter, currentUser: Address | null): Pro
   }
 };
 
+function compareById<E extends { readonly id: number }>(element1: E, element2: E): number {
+  return element1.id - element2.id;
+}
+
 const ProposalsList = ({ filterType }: Props): JSX.Element => {
   const proposals = ReactRedux.useSelector((state: RootState) => state.proposals);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
@@ -47,7 +51,9 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
         hasStarted: blockchain.lastBlockTime >= proposal.startDate,
       }),
     )
-    .filter(filter);
+    .filter(filter)
+    .sort(compareById)
+    .reverse();
 
   const noProposals = uiProposals.length === 0;
 
