@@ -14,14 +14,13 @@ interface Props {
   readonly filterType: ElectionFilter;
 }
 
-const getFilter = (
-  filterType: ElectionFilter,
-  currentUser: Address | null,
-): { (proposal: ProposalProps): boolean } => {
-  const filterByActive = (proposal: ProposalProps): boolean => proposal.hasStarted && !proposal.hasEnded;
-  const filterByAuthor = (proposal: ProposalProps): boolean => proposal.author === currentUser;
-  const filterByEnded = (proposal: ProposalProps): boolean => proposal.hasEnded;
-  const filterNone = (_proposal: ProposalProps): boolean => true;
+type ProposalsFilter = (proposal: ProposalProps) => boolean;
+
+const getFilter = (filterType: ElectionFilter, currentUser: Address | null): ProposalsFilter => {
+  const filterByActive: ProposalsFilter = (proposal): boolean => proposal.hasStarted && !proposal.hasEnded;
+  const filterByAuthor: ProposalsFilter = (proposal): boolean => proposal.author === currentUser;
+  const filterByEnded: ProposalsFilter = (proposal): boolean => proposal.hasEnded;
+  const filterNone: ProposalsFilter = (): boolean => true;
 
   switch (filterType) {
     case ElectionFilter.Active:
