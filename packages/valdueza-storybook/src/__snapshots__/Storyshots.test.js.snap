@@ -3780,6 +3780,7 @@ exports[`Storyshots Bierzo wallet/Payment Payment 1`] = `
                       placeholder="0.00"
                       required={false}
                       type="text"
+                      value=""
                     />
                   </div>
                 </div>
@@ -3893,6 +3894,7 @@ exports[`Storyshots Bierzo wallet/Payment Payment 1`] = `
                   placeholder="IOV or wallet address"
                   required={false}
                   type="text"
+                  value=""
                 />
               </div>
             </div>
@@ -4006,6 +4008,7 @@ exports[`Storyshots Bierzo wallet/Payment Payment 1`] = `
                     placeholder="Add a note"
                     required={false}
                     rows="2"
+                    value=""
                   />
                 </div>
               </div>
@@ -4156,6 +4159,7 @@ exports[`Storyshots Bierzo wallet/Register Username Register Username 1`] = `
                   placeholder="username*iov"
                   required={false}
                   type="text"
+                  value=""
                 />
               </div>
             </div>
@@ -9127,6 +9131,7 @@ exports[`Storyshots Extension Delete wallet page 1`] = `
               placeholder="Recovery phrase"
               required={true}
               rows={5}
+              value=""
             />
           </div>
         </div>
@@ -9628,6 +9633,7 @@ exports[`Storyshots Extension Unlock page 1`] = `
               placeholder="Password"
               required={true}
               type="password"
+              value=""
             />
           </div>
         </div>
@@ -9871,6 +9877,7 @@ exports[`Storyshots Extension/Create Wallet New Wallet page 1`] = `
               placeholder="Password"
               required={true}
               type="password"
+              value=""
             />
           </div>
         </div>
@@ -9934,6 +9941,7 @@ exports[`Storyshots Extension/Create Wallet New Wallet page 1`] = `
               placeholder="Confirm Password"
               required={true}
               type="password"
+              value=""
             />
           </div>
         </div>
@@ -10349,6 +10357,7 @@ exports[`Storyshots Extension/Create Wallet Security Hint page 1`] = `
               placeholder="Security hint"
               required={false}
               type="text"
+              value=""
             />
           </div>
         </div>
@@ -10509,6 +10518,7 @@ exports[`Storyshots Extension/Restore Wallet Set Mnemonic page 1`] = `
               placeholder="Recovery phrase"
               required={false}
               rows={5}
+              value=""
             />
           </div>
         </div>
@@ -10681,6 +10691,7 @@ exports[`Storyshots Extension/Restore Wallet Set Password page 1`] = `
               placeholder="Password"
               required={true}
               type="password"
+              value=""
             />
           </div>
         </div>
@@ -10744,6 +10755,7 @@ exports[`Storyshots Extension/Restore Wallet Set Password page 1`] = `
               placeholder="Confirm Password"
               required={true}
               type="password"
+              value=""
             />
           </div>
         </div>
