@@ -2,6 +2,7 @@ import { Address, Identity } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
 import { Dispatch } from "redux";
+import { Stream } from "xstream";
 
 import { getConfig } from "../config";
 import { setBlockchainAction } from "../store/blockchain";
@@ -35,7 +36,9 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
 
   // Subscriptions
 
-  const blockHeadersSubscription = connection.watchBlockHeaders().subscribe({
+  const current = Stream.fromPromise(connection.height().then(height => connection.getBlockHeader(height)));
+  const updates = connection.watchBlockHeaders();
+  const blockHeadersSubscription = Stream.merge(current, updates).subscribe({
     next: header => {
       dispatch(
         setBlockchainAction({
