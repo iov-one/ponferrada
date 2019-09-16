@@ -26,8 +26,9 @@ export const travelTo = async (
   route: string,
   requests?: readonly Request[],
   persona?: GetPersonaResponse,
+  hasStoredPersona?: boolean,
 ): Promise<React.Component> => {
-  const dom = createDom(requests, persona);
+  const dom = createDom(requests, persona, hasStoredPersona);
 
   TestUtils.act(() => {
     history.push({
@@ -46,8 +47,8 @@ export const travelTo = async (
   return dom;
 };
 
-export const travelToWelcome = async (): Promise<React.Component> => {
-  return travelTo(WELCOME_ROUTE);
+export const travelToWelcome = async (hasStoredPersona: boolean): Promise<React.Component> => {
+  return travelTo(WELCOME_ROUTE, undefined, undefined, hasStoredPersona);
 };
 
 export const travelToCreateWallet = async (): Promise<React.Component> => {

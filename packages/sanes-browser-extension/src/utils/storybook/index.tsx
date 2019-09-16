@@ -17,7 +17,7 @@ export const SanesStorybook = ({ children }: Props): JSX.Element => {
   return (
     <Storybook>
       <ToastProvider>
-        <PersonaProvider persona={null}>
+        <PersonaProvider persona={null} hasStoredPersona={false}>
           <Router history={storybookHistory}>{children}</Router>
         </PersonaProvider>
       </ToastProvider>

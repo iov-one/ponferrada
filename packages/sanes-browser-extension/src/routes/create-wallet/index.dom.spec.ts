@@ -128,8 +128,7 @@ describe("DOM > Feature > CreateWallet", () => {
 
     it('has a "Back" button that redirects to the previous route when clicked', async () => {
       expect(backButton.textContent).toBe("Back");
-
-      await travelToWelcome();
+      await travelToWelcome(true);
       await travelToCreateWallet();
       click(backButton);
       await whenOnNavigatedToRoute(WELCOME_ROUTE);

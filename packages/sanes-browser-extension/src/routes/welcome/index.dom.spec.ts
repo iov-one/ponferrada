@@ -12,13 +12,19 @@ describe("DOM > Feature > Welcome", () => {
   let importAccountButton: Element;
 
   beforeEach(async () => {
-    welcomeDom = await travelToWelcome();
+    welcomeDom = await travelToWelcome(true);
     buttons = TestUtils.scryRenderedDOMComponentsWithTag(welcomeDom, "button");
     [unlockButton, newWalletButton, importAccountButton] = buttons;
   }, 60000);
 
   it("has three buttons", () => {
     expect(buttons.length).toBe(3);
+  }, 60000);
+
+  it("should contain two buttons in case if no persona exists", async () => {
+    const welcomeDom = await travelToWelcome(false);
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(welcomeDom, "button");
+    expect(buttons.length).toBe(2);
   }, 60000);
 
   it('has a "Unlock" button that redirects to the Unlock view when clicked', async () => {

@@ -9,7 +9,7 @@ const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
 const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
 
 async function clickCreatePersona(page: Page): Promise<void> {
-  await page.click("button:nth-of-type(2)");
+  await page.click("#welcome-create-wallet");
 }
 
 export const submitExtensionCreateWalletForm = async (page: Page, password: string): Promise<void> => {

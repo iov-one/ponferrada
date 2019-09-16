@@ -8,6 +8,7 @@ import {
   findRenderedE2EComponentWithId,
 } from "../../../utils/test/reactElemFinder";
 import { WALLET_STATUS_ROUTE } from "../../paths";
+import { CREATE_WALLET_ID } from "../../welcome";
 import {
   FIRST_STEP_CREATE_WALLET_ROUTE,
   PASSWORD_CONFIRM_FIELD,
@@ -139,7 +140,7 @@ export const submitSecurityHint = async (securityHintDom: React.Component, hint:
 };
 
 export const travelToCreateWalletNewWalletStep = async (page: Page): Promise<void> => {
-  await page.click("button:nth-of-type(2)");
+  await page.click(`#${CREATE_WALLET_ID}`);
 
   await findRenderedE2EComponentWithId(page, FIRST_STEP_CREATE_WALLET_ROUTE);
 };

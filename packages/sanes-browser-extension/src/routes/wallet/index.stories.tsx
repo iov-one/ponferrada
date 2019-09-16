@@ -178,7 +178,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
     };
 
     return (
-      <PersonaProvider persona={persona}>
+      <PersonaProvider persona={persona} hasStoredPersona={true}>
         <Storybook>
           <ToastProvider>
             <Layout />
@@ -195,7 +195,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
     };
 
     return (
-      <PersonaProvider persona={persona}>
+      <PersonaProvider persona={persona} hasStoredPersona={true}>
         <Storybook>
           <ToastProvider>
             <Layout />

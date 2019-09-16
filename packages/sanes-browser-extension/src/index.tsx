@@ -9,20 +9,21 @@ import { Request } from "./extension/background/model/requestsHandler/requestQue
 import Route from "./routes";
 import { initialUrl } from "./routes/paths";
 import { globalStyles } from "./theme/globalStyles";
-import { getPersonaData, getQueuedRequests, hasStoredPersona } from "./utils/chrome";
+import { getHasStoredPersona, getPersonaData, getQueuedRequests } from "./utils/chrome";
 import { history } from "./utils/history";
 
 const rootEl = document.getElementById("root");
 
 const render = (
   Component: React.ComponentType,
+  hasStoredPersona: boolean,
   persona: GetPersonaResponse,
   requests: readonly Request[],
 ): void => {
   ReactDOM.render(
     <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
       <ToastProvider>
-        <PersonaProvider persona={persona}>
+        <PersonaProvider persona={persona} hasStoredPersona={hasStoredPersona}>
           <RequestProvider initialRequests={requests}>
             <Component />
           </RequestProvider>
@@ -33,20 +34,21 @@ const render = (
   );
 };
 
-getPersonaData().then(persona => {
-  const requests = getQueuedRequests();
-  render(Route, persona, requests);
+type PersonaContexType = [GetPersonaResponse, boolean];
 
-  hasStoredPersona().then(hasPersona => {
+Promise.all([getPersonaData(), getHasStoredPersona()]).then(
+  ([persona, hasStoredPersona]: PersonaContexType) => {
+    const requests = getQueuedRequests();
     const hasRequests = requests.length > 0;
-    const url = initialUrl(!!persona, hasPersona, hasRequests);
+    const url = initialUrl(!!persona, hasStoredPersona, hasRequests);
     history.push(url);
+    render(Route, hasStoredPersona, persona, requests);
 
     if (module.hot) {
       module.hot.accept("./routes", (): void => {
         const NextApp = require("./routes").default;
-        render(NextApp, persona, requests);
+        render(NextApp, hasStoredPersona, persona, requests);
       });
     }
-  });
-});
+  },
+);
