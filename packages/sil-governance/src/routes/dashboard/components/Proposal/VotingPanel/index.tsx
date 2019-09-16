@@ -2,7 +2,7 @@ import { ProposalResult, VoteOption } from "@iov/bns";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
-import { Tally } from "..";
+import { Tally } from "../../../../../store/proposals";
 import Buttons from "./Buttons";
 import ParticipationData from "./ParticipationData";
 import ResultFlair from "./ResultFlair";

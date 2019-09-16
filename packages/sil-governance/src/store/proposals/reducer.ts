@@ -1,10 +1,34 @@
+import { Address } from "@iov/bcp";
+import { ProposalAction, ProposalResult, VoteOption } from "@iov/bns";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { ProposalProps } from "../../routes/dashboard/components/Proposal";
 import * as actions from "./actions";
 
-export type SilProposal = ProposalProps;
+export interface Tally {
+  readonly yes: number;
+  readonly no: number;
+  readonly abstain: number;
+  readonly totalVotes: number;
+  readonly maxVotes: number;
+}
+
+export interface SilProposal {
+  readonly id: number;
+  readonly title: string;
+  readonly action: ProposalAction;
+  readonly author: Address;
+  readonly description: string;
+  readonly startDate: Date;
+  readonly expiryDate: Date;
+  readonly quorum: number;
+  readonly threshold: number;
+  readonly tally: Tally;
+  readonly result: ProposalResult;
+  readonly vote: VoteOption | undefined;
+  readonly hasStarted: boolean;
+  readonly hasEnded: boolean;
+}
 
 export type ProposalsState = SilProposal[];
 const initState: ProposalsState = [];
