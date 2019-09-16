@@ -1,31 +1,37 @@
-import { VoteTx } from "@iov/bns";
-import { makeStyles } from "@material-ui/core";
-import { List, ListItem } from "medulas-react-components";
+import { VoteOption, VoteTx } from "@iov/bns";
+import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
-export const REQ_VOTE = "req-vote-tx";
+import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";
 
-const useStyles = makeStyles({
-  txContent: {
-    margin: "0",
-    fontSize: "1.2rem",
-    overflowX: "auto",
-  },
-});
+export const REQ_VOTE = "req-vote-tx";
 
 interface Props {
   readonly tx: VoteTx;
 }
 
 const ReqVoteTx = ({ tx }: Props): JSX.Element => {
-  const classes = useStyles();
+  const listItemClasses = useTxListItemStyles();
 
-  const content = JSON.stringify(tx, null, 2);
   return (
     <List id={REQ_VOTE}>
       <ListItem>
-        <pre className={classes.txContent}>{content}</pre>
+        <ListItemText
+          classes={listItemClasses}
+          primary="Proposal ID"
+          secondary={tx.proposalId}
+          secondaryTypographyProps={txListItemSecondaryProps}
+        />
       </ListItem>
+      <ListItem>
+        <ListItemText
+          classes={listItemClasses}
+          primary="Vote"
+          secondary={VoteOption[tx.selection]}
+          secondaryTypographyProps={txListItemSecondaryProps}
+        />
+      </ListItem>
+      <TransactionFee fee={tx.fee} />
     </List>
   );
 };
