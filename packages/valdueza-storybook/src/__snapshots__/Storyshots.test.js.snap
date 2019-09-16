@@ -13563,6 +13563,26 @@ exports[`Storyshots Templates/Menu List Menu 1`] = `
 </div>
 `;
 
+exports[`Storyshots Voter Dashboard BlockchainTime 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-container"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
+    Blockchain time
+  </p>
+  <p
+    className="MuiTypography-root MuiTypography-body2"
+  >
+    9/16/2019, 7:39:10 AM
+     (Height 
+    156484
+    )
+  </p>
+</div>
+`;
+
 exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
