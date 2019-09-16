@@ -48,7 +48,7 @@ export const travelTo = async (
 };
 
 export const travelToWelcome = async (hasStoredPersona: boolean): Promise<React.Component> => {
-  return travelTo(WELCOME_ROUTE, [], undefined, hasStoredPersona);
+  return travelTo(WELCOME_ROUTE, undefined, undefined, hasStoredPersona);
 };
 
 export const travelToCreateWallet = async (): Promise<React.Component> => {
