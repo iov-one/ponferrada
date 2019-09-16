@@ -12,10 +12,9 @@ import {
 import * as React from "react";
 
 import NeumaPageLayout from "../../../components/NeumaPageLayout";
-import { CREATE_WALLET_ROUTE } from "../../paths";
 
 export const SECURITY_HINT = "securityHintField";
-export const SECURITY_HINT_STEP_CREATE_WALLET_ROUTE = `${CREATE_WALLET_ROUTE}3`;
+export const CREATE_WALLET_ID_STEP_3 = "create-wallet-step3";
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -45,7 +44,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
   });
 
   return (
-    <NeumaPageLayout id={SECURITY_HINT_STEP_CREATE_WALLET_ROUTE} primaryTitle="New" title="Wallet">
+    <NeumaPageLayout id={CREATE_WALLET_ID_STEP_3} primaryTitle="New" title="Wallet">
       <Typography variant="subtitle1" inline>
         To help you remember your details in the future please provide a security hint:
       </Typography>

@@ -14,13 +14,13 @@ import {
 import * as React from "react";
 
 import NeumaPageLayout from "../../../components/NeumaPageLayout";
-import { CREATE_WALLET_ROUTE, TERMS_URL } from "../../paths";
+import { TERMS_URL } from "../../paths";
 
 export const PASSWORD_FIELD = "passwordInputField";
 export const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
 export const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
 
-export const FIRST_STEP_CREATE_WALLET_ROUTE = `${CREATE_WALLET_ROUTE}1`;
+export const CREATE_WALLET_ID_STEP_1 = "create-wallet-step1";
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -77,7 +77,7 @@ const NewWalletForm = ({ onCreateWallet, onBack }: Props): JSX.Element => {
   );
 
   return (
-    <NeumaPageLayout id={FIRST_STEP_CREATE_WALLET_ROUTE} primaryTitle="New" title="Wallet">
+    <NeumaPageLayout id={CREATE_WALLET_ID_STEP_1} primaryTitle="New" title="Wallet">
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={1}>
           <TextFieldForm

@@ -11,9 +11,9 @@ import { travelToCreateWallet, travelToWelcome, whenOnNavigatedToRoute } from ".
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { mayTestChains } from "../../utils/test/testExecutor";
 import { WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
-import { FIRST_STEP_CREATE_WALLET_ROUTE } from "./components/NewWalletForm";
-import { SECURITY_HINT_STEP_CREATE_WALLET_ROUTE } from "./components/SecurityHintForm";
-import { SECOND_STEP_CREATE_WALLET_ROUTE } from "./components/ShowPhraseForm";
+import { CREATE_WALLET_ID_STEP_1 } from "./components/NewWalletForm";
+import { CREATE_WALLET_ID_STEP_3 } from "./components/SecurityHintForm";
+import { CREATE_WALLET_ID_STEP_2 } from "./components/ShowPhraseForm";
 import {
   checkHintValidity,
   getConfirmPasswordMismatch,
@@ -146,7 +146,7 @@ describe("DOM > Feature > CreateWallet", () => {
       mockCreatePersona(personaMock);
 
       await submit(newAccountForm);
-      await findRenderedDOMComponentWithId(createWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, CREATE_WALLET_ID_STEP_2);
     }, 10000);
 
     it("accepts several UTF-8 alphabets as password fields", async () => {
@@ -156,7 +156,7 @@ describe("DOM > Feature > CreateWallet", () => {
       await check(termsAcceptField);
       mockCreatePersona(personaMock);
       await submit(newAccountForm);
-      await findRenderedDOMComponentWithId(createWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, CREATE_WALLET_ID_STEP_2);
     }, 10000);
   });
 
@@ -193,14 +193,14 @@ describe("DOM > Feature > CreateWallet", () => {
       expect(backButton.textContent).toBe("Back");
 
       await click(backButton);
-      await findRenderedDOMComponentWithId(createWalletDom, FIRST_STEP_CREATE_WALLET_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, CREATE_WALLET_ID_STEP_1);
     }, 10000);
 
     it('has a "Continue" button that redirects to the Security Hint Form when clicked', async () => {
       expect(continueButton.textContent).toBe("Continue");
 
       click(continueButton);
-      await findRenderedDOMComponentWithId(createWalletDom, SECURITY_HINT_STEP_CREATE_WALLET_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, CREATE_WALLET_ID_STEP_3);
     }, 10000);
   });
 
@@ -234,7 +234,7 @@ describe("DOM > Feature > CreateWallet", () => {
       expect(backButton.textContent).toBe("Back");
 
       await click(backButton);
-      await findRenderedDOMComponentWithId(createWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
+      await findRenderedDOMComponentWithId(createWalletDom, CREATE_WALLET_ID_STEP_2);
     }, 10000);
 
     it('has a valid "Create" button that redirects to the Account Status view when clicked', async () => {
