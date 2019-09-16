@@ -2,7 +2,7 @@ import TestUtils from "react-dom/test-utils";
 
 import { click } from "../../utils/test/dom";
 import { travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { RESTORE_WALLET, SIGNUP_ROUTE, UNLOCK_ROUTE } from "../paths";
+import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE } from "../paths";
 
 describe("DOM > Feature > Welcome", () => {
   let welcomeDom: React.Component;
@@ -30,7 +30,7 @@ describe("DOM > Feature > Welcome", () => {
   it('has a "Create Wallet" button that redirects to the Sign Up view when clicked', async () => {
     expect(newWalletButton.textContent).toBe("Create Wallet");
     click(newWalletButton);
-    await whenOnNavigatedToRoute(SIGNUP_ROUTE);
+    await whenOnNavigatedToRoute(CREATE_WALLET_ROUTE);
   }, 60000);
 
   it('has an "Import Wallet" button that redirects to the Restore Wallet view when clicked', async () => {

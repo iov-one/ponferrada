@@ -5,7 +5,7 @@ import {
   mockCreatePersona,
   mockLoadPersona,
   mockPersonaResponse,
-  processSignup,
+  processCreateWallet,
 } from "../../extension/background/model/persona/test/persona";
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToUnlock, whenOnNavigatedToRoute } from "../../utils/test/navigation";
@@ -57,7 +57,7 @@ describe("DOM > Feature > Unlock", () => {
     const personaMock = mockPersonaResponse([], mnemonic, []);
 
     mockCreatePersona(personaMock);
-    await processSignup(undefined, password);
+    await processCreateWallet(undefined, password);
     unlockDom = await travelToUnlock();
 
     continueButton = TestUtils.scryRenderedDOMComponentsWithTag(unlockDom, "button")[1];

@@ -11,13 +11,13 @@ import {
 } from "../../utils/test/e2e";
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import {
   submitNewWalletE2E,
   submitSecurityHintE2E,
   submitShowPhraseE2E,
-  travelToSignupNewAccountStep,
-} from "../signup/test/operateSignup";
+  travelToCreateWalletNewWalletStep,
+} from "../create-wallet/test/operateCreateWallet";
+import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import { submitE2EUnlockForm } from "./test/submitUnlockForm";
 
 withChainsDescribe("DOM > Unlock route", (): void => {
@@ -38,7 +38,7 @@ withChainsDescribe("DOM > Unlock route", (): void => {
   );
 
   it("should redirect to unlock route after browser restart", async (): Promise<void> => {
-    await travelToSignupNewAccountStep(page);
+    await travelToCreateWalletNewWalletStep(page);
     const password = randomString(10);
     await submitNewWalletE2E(page, randomString(10), password);
     await submitShowPhraseE2E(page);

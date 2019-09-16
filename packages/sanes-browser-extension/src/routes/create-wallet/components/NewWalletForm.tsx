@@ -14,13 +14,13 @@ import {
 import * as React from "react";
 
 import NeumaPageLayout from "../../../components/NeumaPageLayout";
-import { SIGNUP_ROUTE, TERMS_URL } from "../../paths";
+import { CREATE_WALLET_ROUTE, TERMS_URL } from "../../paths";
 
 export const PASSWORD_FIELD = "passwordInputField";
 export const PASSWORD_CONFIRM_FIELD = "passwordConfirmInputField";
 export const TERMS_ACCEPT_FIELD = "termsAcceptCheckboxField";
 
-export const FIRST_STEP_SIGNUP_ROUTE = `${SIGNUP_ROUTE}1`;
+export const FIRST_STEP_CREATE_WALLET_ROUTE = `${CREATE_WALLET_ROUTE}1`;
 
 const validate = (values: object): object => {
   const formValues = values as FormValues;
@@ -48,14 +48,14 @@ const validate = (values: object): object => {
 };
 
 interface Props {
-  readonly onSignup: (values: FormValues) => void;
+  readonly onCreateWallet: (values: FormValues) => void;
   readonly onBack: () => void;
 }
 
-const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
+const NewWalletForm = ({ onCreateWallet, onBack }: Props): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
-    await onSignup(formValues);
+    await onCreateWallet(formValues);
   };
 
   const { form, handleSubmit, pristine, submitting, invalid } = useForm({
@@ -77,7 +77,7 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   );
 
   return (
-    <NeumaPageLayout id={FIRST_STEP_SIGNUP_ROUTE} primaryTitle="New" title="Wallet">
+    <NeumaPageLayout id={FIRST_STEP_CREATE_WALLET_ROUTE} primaryTitle="New" title="Wallet">
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={1}>
           <TextFieldForm
@@ -126,4 +126,4 @@ const NewAccount = ({ onSignup, onBack }: Props): JSX.Element => {
   );
 };
 
-export default NewAccount;
+export default NewWalletForm;
