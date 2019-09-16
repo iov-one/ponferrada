@@ -1,6 +1,3 @@
-import { Address } from "@iov/bcp";
-import { Governor } from "@iov/bns-governance";
-import { Encoding } from "@iov/encoding";
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -19,9 +16,7 @@ import * as ReactRedux from "react-redux";
 import icon from "../../assets/iov-logo.svg";
 import { communicationTexts } from "../../communication";
 import { sendGetIdentitiesRequest } from "../../communication/identities";
-import { getConfig } from "../../config";
-import { getBnsConnection } from "../../logic/connection";
-import { setExtensionStateAction } from "../../store/extension";
+import { bootApplication } from "../../logic/boot";
 import { getProposals, replaceProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { history } from "../index";
@@ -64,20 +59,7 @@ const Login = (): JSX.Element => {
       return false;
     }
 
-    const config = await getConfig();
-
-    const escrowHex = config.bnsChain.guaranteeFundEscrowId;
-    if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
-    const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
-
-    const rewardFundAddress = config.bnsChain.rewardFundAddress as Address;
-    if (!rewardFundAddress) throw Error("No Reward Address provided. This is a bug.");
-
-    const connection = await getBnsConnection();
-    const identity = identities[0];
-
-    const governor = new Governor({ connection, identity, guaranteeFundEscrowId, rewardFundAddress });
-    dispatch(setExtensionStateAction(true, true, governor));
+    await bootApplication(dispatch, identities);
 
     return true;
   };
