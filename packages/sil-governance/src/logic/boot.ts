@@ -2,15 +2,12 @@ import { Address, Identity } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
 import { Dispatch } from "redux";
-import { Subscription } from "xstream";
 
 import { getConfig } from "../config";
 import { setBlockchainAction } from "../store/blockchain";
 import { setExtensionStateAction } from "../store/extension";
 import { getProposals, replaceProposalsAction } from "../store/proposals";
 import { getBnsConnection } from "./connection";
-
-let blockHeadersSubscription: Subscription | undefined;
 
 export async function bootApplication(dispatch: Dispatch, identities: readonly Identity[]): Promise<void> {
   const config = await getConfig();
@@ -38,21 +35,16 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
 
   // Subscriptions
 
-  blockHeadersSubscription = connection.watchBlockHeaders().subscribe({
+  const blockHeadersSubscription = connection.watchBlockHeaders().subscribe({
     next: header => {
       dispatch(
         setBlockchainAction({
+          connection: connection,
+          subscriptions: [blockHeadersSubscription],
           lastBlockheight: header.height,
           lastBlockTime: header.time,
         }),
       );
     },
   });
-}
-
-export async function shutdownApplication(): Promise<void> {
-  if (blockHeadersSubscription) {
-    blockHeadersSubscription.unsubscribe();
-    blockHeadersSubscription = undefined;
-  }
 }

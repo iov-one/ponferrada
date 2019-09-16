@@ -1,15 +1,21 @@
+import { BnsConnection } from "@iov/bns";
 import { ReadonlyDate } from "readonly-date";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
+import { Subscription } from "xstream";
 
 import * as actions from "./actions";
 
 export interface BlockchainState {
+  readonly connection: BnsConnection | null;
+  readonly subscriptions: readonly Subscription[];
   readonly lastBlockheight: number;
   readonly lastBlockTime: ReadonlyDate;
 }
 
 const initState: BlockchainState = {
+  connection: null,
+  subscriptions: [],
   lastBlockheight: 0,
   lastBlockTime: new ReadonlyDate(0),
 };
