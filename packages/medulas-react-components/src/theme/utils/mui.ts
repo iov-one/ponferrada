@@ -222,7 +222,7 @@ const themeObject: ThemeOptions = {
       },
     },
   },
-  //https://material-ui.com/customization/themes/#properties
+  // https://material-ui.com/customization/themes/#properties
   props: {
     MuiButton: {
       variant: "contained",

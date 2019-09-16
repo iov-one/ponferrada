@@ -45,13 +45,13 @@ describe("DOM > Feature > Share Identity", (): void => {
     const acceptButton = inputs[0];
     click(acceptButton);
 
-    //TODO: Check here that share request has been accepted successfuly
+    // TODO: Check here that share request has been accepted successfuly
   }, 60000);
 
   it("should reject incoming request and come back", async (): Promise<void> => {
     await clickOnRejectButton(identityDOM);
     await confirmRejectButton(identityDOM);
-    //TODO: Check here that share request rejection has been reject successfuly
+    // TODO: Check here that share request rejection has been reject successfuly
 
     /**
      * Remove this code if not required in case if there is another redirection
@@ -65,6 +65,6 @@ describe("DOM > Feature > Share Identity", (): void => {
     await checkPermanentRejection(identityDOM);
     await confirmRejectButton(identityDOM);
     await sleep(2000);
-    //rejection flag has been set
+    // rejection flag has been set
   }, 60000);
 });

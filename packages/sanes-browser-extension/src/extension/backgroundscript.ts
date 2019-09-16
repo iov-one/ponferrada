@@ -5,7 +5,7 @@ import { updateExtensionBadge } from "./background/updaters/extensionBadgeUpdate
 const backgroundScript = new Backgroundscript();
 backgroundScript.registerActionsInBackground(window as IovWindowExtension);
 
-//Reset extension badge to clear one after browser start because of queue reset
+// Reset extension badge to clear one after browser start because of queue reset
 updateExtensionBadge(0);
 
 /**

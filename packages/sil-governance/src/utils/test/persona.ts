@@ -30,7 +30,7 @@ export const submitExtensionCreateWalletForm = async (page: Page, password: stri
 export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
   await page.bringToFront();
 
-  //click on drawer
+  // click on drawer
   await page.click('[aria-label="Open drawer"]');
   await sleep(1000);
 
@@ -49,7 +49,7 @@ export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
 export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   await page.bringToFront();
 
-  //click on drawer
+  // click on drawer
   await page.click('[aria-label="Open drawer"]');
   await sleep(1000);
 

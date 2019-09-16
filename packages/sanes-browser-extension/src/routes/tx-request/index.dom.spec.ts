@@ -50,7 +50,7 @@ describe("DOM > Feature > Transaction Request", (): void => {
   it("should reject incoming request and come back", async (): Promise<void> => {
     await clickOnRejectButton(identityDOM);
     await confirmRejectButton(identityDOM);
-    //TODO: Check here that share request rejection has been reject successfuly
+    // TODO: Check here that share request rejection has been reject successfuly
 
     /**
      * Remove this code if not required in case if there is another redirection
@@ -64,7 +64,7 @@ describe("DOM > Feature > Transaction Request", (): void => {
     await checkPermanentRejection(identityDOM);
     await confirmRejectButton(identityDOM);
     await sleep(2000);
-    //rejection flag has been set
+    // rejection flag has been set
   }, 60000);
 });
 

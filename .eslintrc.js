@@ -16,6 +16,7 @@ module.exports = {
     "no-param-reassign": "warn",
     "prefer-const": "warn",
     "sort-imports": "off", // we use the simple-import-sort plugin instead
+    "spaced-comment": ["warn", "always", { "line": { "markers": ["/ <reference"] } }],
     "simple-import-sort/sort": "warn",
     "@typescript-eslint/explicit-function-return-type": [ "error", {
       allowExpressions: true,

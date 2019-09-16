@@ -34,7 +34,7 @@ withChainsDescribe("DOM > Feature > Recovery Phrase", () => {
 
   it('has an "Export as .PDF" button', () => {
     expect(exportButton.textContent).toBe("Export as .PDF");
-    //TODO test downloads pdf
+    // TODO test downloads pdf
   }, 60000);
 
   it("shows an empty mnemonic if there is no current Persona", () => {
