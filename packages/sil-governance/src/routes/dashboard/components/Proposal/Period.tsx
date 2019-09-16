@@ -1,9 +1,10 @@
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
+import { ReadonlyDate } from "readonly-date";
 
 interface Props {
-  readonly expiryDate: Date;
-  readonly startDate: Date;
+  readonly expiryDate: ReadonlyDate;
+  readonly startDate: ReadonlyDate;
   readonly hasStarted: boolean;
   readonly hasEnded: boolean;
 }

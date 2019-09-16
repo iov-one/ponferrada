@@ -1,5 +1,6 @@
 import { Address } from "@iov/bcp";
 import { ProposalAction, ProposalResult, VoteOption } from "@iov/bns";
+import { ReadonlyDate } from "readonly-date";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
@@ -19,8 +20,8 @@ export interface SilProposal {
   readonly action: ProposalAction;
   readonly author: Address;
   readonly description: string;
-  readonly startDate: Date;
-  readonly expiryDate: Date;
+  readonly startDate: ReadonlyDate;
+  readonly expiryDate: ReadonlyDate;
   readonly quorum: number;
   readonly threshold: number;
   readonly tally: Tally;
