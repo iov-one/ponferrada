@@ -17,7 +17,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Welcome page`, module)
   .add(
     "With persona",
     (): JSX.Element => (
-      <PersonaProvider persona={persona} hasPersona={true}>
+      <PersonaProvider persona={persona} hasStoredPersona={true}>
         <Storybook>
           <Layout />
         </Storybook>
@@ -27,7 +27,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Welcome page`, module)
   .add(
     "Without persona",
     (): JSX.Element => (
-      <PersonaProvider persona={null} hasPersona={false}>
+      <PersonaProvider persona={null} hasStoredPersona={false}>
         <Storybook>
           <Layout />
         </Storybook>
