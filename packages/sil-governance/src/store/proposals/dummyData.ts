@@ -9,8 +9,10 @@ import {
   ProposalStatus,
   VoteOption,
 } from "@iov/bns";
+import { ReadonlyDate } from "readonly-date";
 
 import { ProposalsState } from ".";
+import { SilProposal } from "./reducer";
 
 const adminAddress = "Admin 1" as Address;
 
@@ -216,32 +218,31 @@ export const getDummyProposalsState = (): ProposalsState => {
 
   const getVote = (proposal: Proposal): VoteOption | undefined => getDummyVote(proposal);
 
-  const proposalsState = proposals.map(proposal => {
-    const startDate = new Date(proposal.votingStartTime * 1000);
-
-    return {
-      id: proposal.id,
-      action: proposal.action,
-      title: proposal.title,
-      author: proposal.author,
-      description: proposal.description,
-      startDate,
-      expiryDate: new Date(proposal.votingEndTime * 1000),
-      quorum: getQuorum(proposal),
-      threshold: getThreshold(proposal),
-      tally: {
-        yes: proposal.state.totalYes,
-        no: proposal.state.totalNo,
-        abstain: proposal.state.totalAbstain,
-        totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
-        maxVotes: proposal.state.totalElectorateWeight,
-      },
-      result: proposal.result,
-      vote: getVote(proposal),
-      hasStarted: startDate < new Date(),
-      hasEnded: !(proposal.status === ProposalStatus.Submitted),
-    };
-  });
+  const proposalsState = proposals.map(
+    (proposal): SilProposal => {
+      return {
+        id: proposal.id,
+        action: proposal.action,
+        title: proposal.title,
+        author: proposal.author,
+        description: proposal.description,
+        startDate: new ReadonlyDate(proposal.votingStartTime * 1000),
+        expiryDate: new ReadonlyDate(proposal.votingEndTime * 1000),
+        quorum: getQuorum(proposal),
+        threshold: getThreshold(proposal),
+        tally: {
+          yes: proposal.state.totalYes,
+          no: proposal.state.totalNo,
+          abstain: proposal.state.totalAbstain,
+          totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
+          maxVotes: proposal.state.totalElectorateWeight,
+        },
+        result: proposal.result,
+        vote: getVote(proposal),
+        hasEnded: !(proposal.status === ProposalStatus.Submitted),
+      };
+    },
+  );
 
   return proposalsState;
 };

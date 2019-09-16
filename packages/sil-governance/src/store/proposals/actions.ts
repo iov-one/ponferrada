@@ -43,15 +43,13 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
   const proposals = await governor.getProposals();
   const proposalsState = await Promise.all(
     proposals.map(async proposal => {
-      const startDate = new Date(proposal.votingStartTime * 1000);
-
       return {
         id: proposal.id,
         action: proposal.action,
         title: proposal.title,
         author: proposal.author,
         description: proposal.description,
-        startDate,
+        startDate: new Date(proposal.votingStartTime * 1000),
         expiryDate: new Date(proposal.votingEndTime * 1000),
         quorum: await getQuorum(proposal),
         threshold: await getThreshold(proposal),
@@ -64,7 +62,6 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
         },
         result: proposal.result,
         vote: await getVote(proposal),
-        hasStarted: startDate < new Date(),
         hasEnded: !(proposal.status === ProposalStatus.Submitted),
       };
     }),

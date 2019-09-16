@@ -2,8 +2,8 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
+import { Tally } from "../../../../store/proposals";
 import { STATUS_BACKGROUND, STATUS_BORDER } from "../../../../theme/css";
-import { Tally } from ".";
 
 const useStyles = makeStyles((theme: Theme) => ({
   status: {

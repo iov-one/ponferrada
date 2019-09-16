@@ -1,7 +1,7 @@
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
-import { Tally } from "..";
+import { Tally } from "../../../../../store/proposals";
 
 interface Props {
   readonly quorum: number;

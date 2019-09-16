@@ -1,3 +1,4 @@
+import { ReadonlyDate } from "readonly-date";
 import { Store } from "redux";
 
 import { aNewStore } from "../../store";
@@ -35,6 +36,10 @@ describe("DOM > Feature > Dashboard", () => {
         installed: true,
       },
       proposals: getDummyProposalsState(),
+      blockchain: {
+        lastBlockTime: new ReadonlyDate(),
+        lastBlockHeight: 44447774,
+      },
     });
 
     dashboardDom = await travelToDashboard(store);

@@ -1,8 +1,7 @@
-import { Address } from "@iov/bcp";
-import { ProposalAction, ProposalResult, VoteOption } from "@iov/bns";
 import { Block } from "medulas-react-components";
 import React from "react";
 
+import { SilProposal } from "../../../../store/proposals";
 import CollapsingData from "./CollapsingData";
 import Identification from "./Identification";
 import Period from "./Period";
@@ -10,29 +9,8 @@ import TallyBar from "./TallyBar";
 import Title from "./Title";
 import VotingPanel from "./VotingPanel";
 
-export interface Tally {
-  readonly yes: number;
-  readonly no: number;
-  readonly abstain: number;
-  readonly totalVotes: number;
-  readonly maxVotes: number;
-}
-
-export interface ProposalProps {
-  readonly id: number;
-  readonly title: string;
-  readonly action: ProposalAction;
-  readonly author: Address;
-  readonly description: string;
-  readonly startDate: Date;
-  readonly expiryDate: Date;
-  readonly quorum: number;
-  readonly threshold: number;
-  readonly tally: Tally;
-  readonly result: ProposalResult;
-  readonly vote: VoteOption | undefined;
+export interface ProposalProps extends SilProposal {
   readonly hasStarted: boolean;
-  readonly hasEnded: boolean;
 }
 
 const Proposal = ({

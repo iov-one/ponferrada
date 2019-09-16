@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.9
+
+- Governance: Show currect blockchain time in UI and calculate `hasStarted`
+  based on blockchain time
+
 ## 0.4.8
 
 - Governance: Fix bug in staging configuration file

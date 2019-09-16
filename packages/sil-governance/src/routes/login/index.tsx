@@ -1,6 +1,3 @@
-import { Address } from "@iov/bcp";
-import { Governor } from "@iov/bns-governance";
-import { Encoding } from "@iov/encoding";
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -19,11 +16,7 @@ import * as ReactRedux from "react-redux";
 import icon from "../../assets/iov-logo.svg";
 import { communicationTexts } from "../../communication";
 import { sendGetIdentitiesRequest } from "../../communication/identities";
-import { getConfig } from "../../config";
-import { getBnsConnection } from "../../logic/connection";
-import { setExtensionStateAction } from "../../store/extension";
-import { getProposals, replaceProposalsAction } from "../../store/proposals";
-import { RootState } from "../../store/reducers";
+import { bootApplication } from "../../logic/boot";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
 
@@ -43,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
-  const store = ReactRedux.useStore<RootState>();
   const dispatch = ReactRedux.useDispatch();
 
   const isExtensionConnected = async (): Promise<boolean> => {
@@ -64,35 +56,14 @@ const Login = (): JSX.Element => {
       return false;
     }
 
-    const config = await getConfig();
-
-    const escrowHex = config.bnsChain.guaranteeFundEscrowId;
-    if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
-    const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
-
-    const rewardFundAddress = config.bnsChain.rewardFundAddress as Address;
-    if (!rewardFundAddress) throw Error("No Reward Address provided. This is a bug.");
-
-    const connection = await getBnsConnection();
-    const identity = identities[0];
-
-    const governor = new Governor({ connection, identity, guaranteeFundEscrowId, rewardFundAddress });
-    dispatch(setExtensionStateAction(true, true, governor));
+    await bootApplication(dispatch, identities);
 
     return true;
-  };
-
-  const loadProposals = async (): Promise<void> => {
-    const governor = store.getState().extension.governor;
-    if (!governor) throw new Error("Governor not set in store. This is a bug.");
-    const chainProposals = await getProposals(governor);
-    dispatch(replaceProposalsAction(chainProposals));
   };
 
   const onLogin = async (): Promise<void> => {
     try {
       if (await isExtensionConnected()) {
-        await loadProposals();
         history.push(DASHBOARD_ROUTE);
       }
     } catch (error) {
