@@ -26,7 +26,6 @@ export interface SilProposal {
   readonly tally: Tally;
   readonly result: ProposalResult;
   readonly vote: VoteOption | undefined;
-  readonly hasStarted: boolean;
   readonly hasEnded: boolean;
 }
 

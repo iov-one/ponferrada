@@ -9,7 +9,9 @@ import TallyBar from "./TallyBar";
 import Title from "./Title";
 import VotingPanel from "./VotingPanel";
 
-export interface ProposalProps extends SilProposal {}
+export interface ProposalProps extends SilProposal {
+  readonly hasStarted: boolean;
+}
 
 const Proposal = ({
   id,

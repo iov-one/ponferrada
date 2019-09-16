@@ -33,9 +33,18 @@ const getFilter = (filterType: ElectionFilter): { (proposal: ProposalProps): boo
 
 const ProposalsList = ({ filterType }: Props): JSX.Element => {
   const filter = getFilter(filterType);
-  const proposals = ReactRedux.useSelector((state: RootState) => state.proposals).filter(filter);
+  const proposals = ReactRedux.useSelector((state: RootState) => state.proposals);
+  const blockchain = ReactRedux.useSelector((state: RootState) => state.blockchain);
+  const uiProposals = proposals
+    .map(
+      (proposal): ProposalProps => ({
+        ...proposal,
+        hasStarted: blockchain.lastBlockTime >= proposal.startDate,
+      }),
+    )
+    .filter(filter);
 
-  const noProposals = proposals.length === 0;
+  const noProposals = uiProposals.length === 0;
 
   return (
     <Block id={PROPOSALS_HTML_ID} flexGrow={1}>
@@ -44,7 +53,7 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
           <Typography>No proposals available</Typography>
         </Block>
       )}
-      {proposals.map((proposal, index) => (
+      {uiProposals.map((proposal, index) => (
         <RenderedProposal key={proposal.id} proposal={proposal} index={index} />
       ))}
     </Block>
