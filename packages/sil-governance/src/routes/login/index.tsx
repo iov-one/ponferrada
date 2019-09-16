@@ -17,8 +17,6 @@ import icon from "../../assets/iov-logo.svg";
 import { communicationTexts } from "../../communication";
 import { sendGetIdentitiesRequest } from "../../communication/identities";
 import { bootApplication } from "../../logic/boot";
-import { getProposals, replaceProposalsAction } from "../../store/proposals";
-import { RootState } from "../../store/reducers";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
 
@@ -38,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
-  const store = ReactRedux.useStore<RootState>();
   const dispatch = ReactRedux.useDispatch();
 
   const isExtensionConnected = async (): Promise<boolean> => {
@@ -64,17 +61,9 @@ const Login = (): JSX.Element => {
     return true;
   };
 
-  const loadProposals = async (): Promise<void> => {
-    const governor = store.getState().extension.governor;
-    if (!governor) throw new Error("Governor not set in store. This is a bug.");
-    const chainProposals = await getProposals(governor);
-    dispatch(replaceProposalsAction(chainProposals));
-  };
-
   const onLogin = async (): Promise<void> => {
     try {
       if (await isExtensionConnected()) {
-        await loadProposals();
         history.push(DASHBOARD_ROUTE);
       }
     } catch (error) {

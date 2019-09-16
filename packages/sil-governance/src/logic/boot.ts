@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 
 import { getConfig } from "../config";
 import { setExtensionStateAction } from "../store/extension";
+import { getProposals, replaceProposalsAction } from "../store/proposals";
 import { getBnsConnection } from "./connection";
 
 export async function bootApplication(dispatch: Dispatch, identities: readonly Identity[]): Promise<void> {
@@ -27,4 +28,7 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
     rewardFundAddress: rewardFundAddress as Address,
   });
   dispatch(setExtensionStateAction(true, true, governor));
+
+  const proposals = await getProposals(governor);
+  dispatch(replaceProposalsAction(proposals));
 }
