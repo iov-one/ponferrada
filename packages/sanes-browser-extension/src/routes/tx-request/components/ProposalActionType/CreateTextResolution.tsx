@@ -8,7 +8,7 @@ interface Props {
   readonly action: CreateTextResolutionAction;
 }
 
-function CreateTextResolutionActionType({ action }: Props): JSX.Element {
+function CreateTextResolution({ action }: Props): JSX.Element {
   const listItemClasses = useTxListItemStyles();
 
   return (
@@ -25,4 +25,4 @@ function CreateTextResolutionActionType({ action }: Props): JSX.Element {
   );
 }
 
-export default CreateTextResolutionActionType;
+export default CreateTextResolution;
