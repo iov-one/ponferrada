@@ -14,19 +14,19 @@ import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
 import {
   getCashTransaction,
-  getCreateProposalTransaction,
+  getCreateTextResolutionActionTransaction,
   getEthTransaction,
   getUsernameTransaction,
   getVoteTransaction,
 } from "./test";
 
-const TX_REQUEST_PATH = `${CHROME_EXTENSION_ROOT}/Transaction Request`;
+export const TX_REQUEST_PATH = `${CHROME_EXTENSION_ROOT}/Transaction Request`;
 const SEND_BNS_REQUEST_PAGE = "Send (BNS)";
 const SEND_TX_ETHEREUM_REQUEST_PAGE = "Send (Ethereum)";
 const REGISTER_USERNAME_REQUEST_PAGE = "Create Username";
 const CREATE_PROPOSAL_REQUEST_PAGE = "Create Proposal";
 const VOTE_REQUEST_PAGE = "Vote";
-const REJECT_REQUEST_PAGE = "Reject Request";
+export const REJECT_REQUEST_PAGE = "Reject Request";
 
 const sendBnsRequest: Request<SignAndPostResponseData> = {
   id: 0,
@@ -68,7 +68,7 @@ const createProposalRequest: Request<SignAndPostResponseData> = {
   senderUrl: "http://localhost/",
   reason: "I would like you to sign this TX",
   responseData: {
-    tx: getCreateProposalTransaction(),
+    tx: getCreateTextResolutionActionTransaction(),
   },
 };
 
