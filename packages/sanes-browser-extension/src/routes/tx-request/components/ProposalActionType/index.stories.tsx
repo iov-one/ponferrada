@@ -14,6 +14,7 @@ import ShowRequest from "../../components/ShowRequest";
 import { REJECT_REQUEST_PAGE, TX_REQUEST_PATH } from "../../index.stories";
 import {
   getCreateReleaseEscrowActionTransaction,
+  getCreateSendActionTransaction,
   getCreateTextResolutionActionTransaction,
 } from "../../test";
 
@@ -39,6 +40,17 @@ const createReleaseEscrowActionRequest: Request<SignAndPostResponseData> = {
   },
 };
 
+const createSendActionRequest: Request<SignAndPostResponseData> = {
+  id: 0,
+  accept: () => action("accept request"),
+  reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
+  senderUrl: "http://localhost/",
+  reason: "I would like you to sign this TX",
+  responseData: {
+    tx: getCreateSendActionTransaction(),
+  },
+};
+
 storiesOf(`${TX_REQUEST_PATH}/Proposal Actions`, module)
   .add("ExecuteProposalBatchAction", () => {
     const { senderUrl } = createTextResolutionActionRequest;
@@ -58,6 +70,21 @@ storiesOf(`${TX_REQUEST_PATH}/Proposal Actions`, module)
   .add("ReleaseEscrowAction", () => {
     const { senderUrl } = createReleaseEscrowActionRequest;
     const { tx } = createReleaseEscrowActionRequest.responseData;
+
+    return (
+      <Storybook>
+        <ShowRequest
+          sender={senderUrl}
+          tx={tx}
+          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
+        />
+      </Storybook>
+    );
+  })
+  .add("SendAction", () => {
+    const { senderUrl } = createSendActionRequest;
+    const { tx } = createSendActionRequest.responseData;
 
     return (
       <Storybook>

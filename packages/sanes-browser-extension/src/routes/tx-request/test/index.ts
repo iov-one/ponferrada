@@ -136,6 +136,32 @@ export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & Wi
   };
 }
 
+export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.Send,
+      sender: ethereumCodec.identityToAddress(ethereumCreator),
+      amount: {
+        quantity: "1230000000000000000", // 1.23 ETH
+        fractionalDigits: 18,
+        tokenTicker: "ETH" as TokenTicker,
+      },
+      recipient: defaultAddress,
+      memo: "paid transaction",
+    },
+  };
+}
+
 export function getVoteTransaction(): VoteTx & WithCreator {
   return {
     kind: "bns/vote",
