@@ -3,8 +3,9 @@ import { List, ListItem, ListItemText, makeStyles } from "medulas-react-componen
 import * as React from "react";
 
 import { txListItemSecondaryProps, useTxListItemStyles } from "../ShowRequest/TransactionFee";
-import CreateTextResolutionActionType from "./CreateTextResolutionActionType";
-import ReleaseEscrowActionType from "./ReleaseEscrowActionType";
+import CreateTextResolution from "./CreateTextResolution";
+import ReleaseEscrow from "./ReleaseEscrow";
+import Send from "./Send";
 
 const useStyles = makeStyles({
   root: {
@@ -14,6 +15,19 @@ const useStyles = makeStyles({
 
 interface Props {
   readonly action: ProposalAction;
+}
+
+function ProposalActionOptions({ action }: Props): JSX.Element {
+  switch (action.kind) {
+    case ActionKind.CreateTextResolution:
+      return <CreateTextResolution action={action} />;
+    case ActionKind.ReleaseEscrow:
+      return <ReleaseEscrow action={action} />;
+    case ActionKind.Send:
+      return <Send action={action} />;
+    default:
+      throw new Error("Action Kind not found. This is a bug.");
+  }
 }
 
 function ProposalActionType({ action }: Props): JSX.Element {
@@ -33,8 +47,7 @@ function ProposalActionType({ action }: Props): JSX.Element {
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
-      {action.kind === ActionKind.CreateTextResolution && <CreateTextResolutionActionType action={action} />}
-      {action.kind === ActionKind.ReleaseEscrow && <ReleaseEscrowActionType action={action} />}
+      <ProposalActionOptions action={action} />
     </List>
   );
 }
