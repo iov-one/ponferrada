@@ -58,13 +58,8 @@ const MsgSendTransaction = ({
           {recipientShort}
         </Typography>
         <Typography weight="light" inline>
-          {" was "}
-        </Typography>
-        <Typography weight="semibold" inline>
-          {"unsuccessful"}
-        </Typography>
-        <Typography weight="light" inline>
-          {", please try again later"}
+          {" "}
+          was unsuccessful
         </Typography>
         <Block marginBottom={1.5} />
       </React.Fragment>

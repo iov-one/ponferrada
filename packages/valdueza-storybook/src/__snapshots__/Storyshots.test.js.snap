@@ -12741,18 +12741,7 @@ exports[`Storyshots Extension/Wallet Status page With transactions 1`] = `
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                          
-                        personalized address was
-                         
-                      </p>
-                      <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
-                      >
-                        unsuccessful
-                      </p>
-                      <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
-                      >
-                        , please try again later.
+                        personalized address was unsuccessful
                       </p>
                     </span>
                     <p
@@ -13015,17 +13004,8 @@ exports[`Storyshots Extension/Wallet Status page With transactions 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                         was 
-                      </p>
-                      <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
-                      >
-                        unsuccessful
-                      </p>
-                      <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
-                      >
-                        , please try again later
+                         
+                        was unsuccessful
                       </p>
                       <div
                         className="MuiBox-root MuiBox-root"
@@ -13403,18 +13383,7 @@ exports[`Storyshots Extension/Wallet Status page With transactions 1`] = `
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                          
-                        was
-                         
-                      </p>
-                      <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
-                      >
-                        unsuccessful
-                      </p>
-                      <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
-                      >
-                        , please try again later.
+                        was unsuccessful
                       </p>
                     </span>
                     <p
