@@ -6,9 +6,10 @@ interface MsgVoteTxProps {
   readonly blockExplorerUrl: string | null;
   readonly error?: any;
   readonly selection: string;
+  readonly proposalId: number;
 }
 
-const MsgVoteTx = ({ error, selection }: MsgVoteTxProps): JSX.Element => {
+const MsgVoteTx = ({ error, selection, proposalId }: MsgVoteTxProps): JSX.Element => {
   if (error) {
     return (
       <React.Fragment>
@@ -17,6 +18,13 @@ const MsgVoteTx = ({ error, selection }: MsgVoteTxProps): JSX.Element => {
         </Typography>
         <Typography weight="semibold" inline>
           {selection}
+        </Typography>
+        <Typography weight="light" inline>
+          {" "}
+          on proposal{" "}
+        </Typography>
+        <Typography weight="semibold" inline>
+          {proposalId}
         </Typography>
         <Typography weight="light" inline>
           {" "}
@@ -38,6 +46,13 @@ const MsgVoteTx = ({ error, selection }: MsgVoteTxProps): JSX.Element => {
         </Typography>
         <Typography weight="semibold" inline>
           {selection}
+        </Typography>
+        <Typography weight="light" inline>
+          {" "}
+          on proposal{" "}
+        </Typography>
+        <Typography weight="semibold" inline>
+          {proposalId}
         </Typography>
         <Typography weight="light" inline>
           .

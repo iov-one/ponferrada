@@ -74,12 +74,13 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       />
     );
   } else if (isVoteTx(item.original)) {
-    const { selection } = item.original;
+    const { selection, proposalId } = item.original;
     msg = (
       <MsgVoteTx
         id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
         selection={voteToString(selection)}
+        proposalId={proposalId}
         error={error}
       />
     );

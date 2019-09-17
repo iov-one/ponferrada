@@ -13327,6 +13327,18 @@ exports[`Storyshots Extension/Wallet Status page With transactions 1`] = `
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
+                         
+                        on proposal
+                         
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                        666
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
                         .
                       </p>
                     </span>
@@ -13374,6 +13386,18 @@ exports[`Storyshots Extension/Wallet Status page With transactions 1`] = `
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                         yes
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                         
+                        on proposal
+                         
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                        666
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
