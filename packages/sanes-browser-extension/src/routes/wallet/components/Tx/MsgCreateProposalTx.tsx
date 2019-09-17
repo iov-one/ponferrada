@@ -15,7 +15,7 @@ const MsgCreateProposalTx = ({ title, error }: MsgCreateProposalTxProps): JSX.El
         <Typography weight="light" inline>
           Your attempt to create the proposal{" "}
         </Typography>
-        <Typography weight="semibold" inline link>
+        <Typography weight="semibold" inline>
           {title}
         </Typography>
         <Typography weight="light" inline>
@@ -30,12 +30,8 @@ const MsgCreateProposalTx = ({ title, error }: MsgCreateProposalTxProps): JSX.El
         <Typography weight="light" inline>
           You have created the proposal{" "}
         </Typography>
-        <Typography weight="semibold" inline link>
+        <Typography weight="semibold" inline>
           {title}
-        </Typography>
-        <Typography weight="light" inline>
-          {" "}
-          .
         </Typography>
       </React.Fragment>
     );
