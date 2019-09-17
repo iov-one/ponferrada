@@ -15,7 +15,7 @@ const MsgVoteTx = ({ error, selection }: MsgVoteTxProps): JSX.Element => {
         <Typography weight="light" inline>
           Your attempt to vote{" "}
         </Typography>
-        <Typography weight="semibold" inline link>
+        <Typography weight="semibold" inline>
           {selection}
         </Typography>
         <Typography weight="light" inline>

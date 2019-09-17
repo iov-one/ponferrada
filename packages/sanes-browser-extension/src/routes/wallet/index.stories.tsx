@@ -156,6 +156,15 @@ const voteTx: ProcessedTx = {
   original: vote,
 };
 
+const errorVoteTx: ProcessedTx = {
+  id: newTxId(),
+  signer: "Example Signer",
+  time: "Sat May 25 10:10:00 2019 +0200",
+  error: "Something went wrong :(",
+  blockExplorerUrl: null,
+  original: vote,
+};
+
 storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
   .add("Txs", () => {
     const processedTx2 = { ...processedTx, id: (txId++).toString() };
@@ -174,6 +183,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
         processedTx3,
         createProposalTx,
         voteTx,
+        errorVoteTx,
       ],
     };
 
