@@ -2,9 +2,8 @@ import { Back, Block, Button, Switch, Typography } from "medulas-react-component
 import * as React from "react";
 
 import NeumaPageLayout from "../../../components/NeumaPageLayout";
-import { CREATE_WALLET_ROUTE } from "../../paths";
 
-export const SECOND_STEP_CREATE_WALLET_ROUTE = `${CREATE_WALLET_ROUTE}2`;
+export const CREATE_WALLET_ID_STEP_2 = "create-wallet-step2";
 
 export interface Props {
   readonly mnemonic: string;
@@ -20,7 +19,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
   };
 
   return (
-    <NeumaPageLayout id={SECOND_STEP_CREATE_WALLET_ROUTE} primaryTitle="Recovery" title="Phrase">
+    <NeumaPageLayout id={CREATE_WALLET_ID_STEP_2} primaryTitle="Recovery" title="Phrase">
       <Typography variant="body1" inline>
         Your secret recovery phrase consists of 12 words that act as a tool to recover your wallet on any
         platform.

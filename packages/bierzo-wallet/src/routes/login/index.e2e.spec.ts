@@ -22,7 +22,7 @@ import {
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { BALANCE_ROUTE } from "../paths";
 
-withChainsDescribe("E2E > Login route", (): void => {
+withChainsDescribe("E2E > Login route", () => {
   let browser: Browser;
   let page: Page;
   let extensionPage: Page;
@@ -44,7 +44,7 @@ withChainsDescribe("E2E > Login route", (): void => {
     server.close();
   });
 
-  withChainsDescribe("E2E > Login route", (): void => {
+  withChainsDescribe("E2E > Login route", () => {
     beforeEach(async () => {
       browser = await launchBrowser();
       page = await createPage(browser);
@@ -56,11 +56,9 @@ withChainsDescribe("E2E > Login route", (): void => {
     });
 
     async function checkLoginMessage(page: Page): Promise<void> {
-      const element = await page.$("h6");
-      if (element === null) {
-        throw new Error();
-      }
-      const text = await (await element.getProperty("textContent")).jsonValue();
+      const toastTextElement = await page.$("h6");
+      if (!toastTextElement) throw new Error("h6 element not found");
+      const text = await (await toastTextElement.getProperty("textContent")).jsonValue();
       expect(text).toBe(extensionRpcEndpoint.noMatchingIdentityMessage);
 
       await closeToast(page);

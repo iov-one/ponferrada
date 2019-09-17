@@ -10,13 +10,13 @@ import {
 import { WALLET_STATUS_ROUTE } from "../../paths";
 import { CREATE_WALLET_ID } from "../../welcome";
 import {
-  FIRST_STEP_CREATE_WALLET_ROUTE,
+  CREATE_WALLET_ID_STEP_1,
   PASSWORD_CONFIRM_FIELD,
   PASSWORD_FIELD,
   TERMS_ACCEPT_FIELD,
 } from "../components/NewWalletForm";
-import { SECURITY_HINT, SECURITY_HINT_STEP_CREATE_WALLET_ROUTE } from "../components/SecurityHintForm";
-import { SECOND_STEP_CREATE_WALLET_ROUTE } from "../components/ShowPhraseForm";
+import { CREATE_WALLET_ID_STEP_3, SECURITY_HINT } from "../components/SecurityHintForm";
+import { CREATE_WALLET_ID_STEP_2 } from "../components/ShowPhraseForm";
 
 export const getNewWalletInputs = (createWalletDom: React.Component): Element[] => {
   return TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "input");
@@ -76,7 +76,7 @@ export const submitNewWalletE2E = async (page: Page, walletName: string, passwor
   await page.click(`input[name="${TERMS_ACCEPT_FIELD}"]`);
 
   await page.click('button[type="submit"]');
-  await findRenderedE2EComponentWithId(page, SECOND_STEP_CREATE_WALLET_ROUTE);
+  await findRenderedE2EComponentWithId(page, CREATE_WALLET_ID_STEP_2);
 };
 
 export const submitNewWallet = async (newWalletDom: React.Component, password: string): Promise<void> => {
@@ -90,7 +90,7 @@ export const submitNewWallet = async (newWalletDom: React.Component, password: s
   const newWalletForm = TestUtils.findRenderedDOMComponentWithTag(newWalletDom, "form");
   const submitPasswordForm = async (): Promise<void> => {
     TestUtils.Simulate.submit(newWalletForm);
-    await findRenderedDOMComponentWithId(newWalletDom, SECOND_STEP_CREATE_WALLET_ROUTE);
+    await findRenderedDOMComponentWithId(newWalletDom, CREATE_WALLET_ID_STEP_2);
   };
 
   await TestUtils.act(submitPasswordForm as any);
@@ -112,13 +112,13 @@ export const submitShowPhraseE2E = async (page: Page): Promise<void> => {
 
   const buttons = await page.$$("button");
   await buttons[1].click();
-  await findRenderedE2EComponentWithId(page, SECURITY_HINT_STEP_CREATE_WALLET_ROUTE);
+  await findRenderedE2EComponentWithId(page, CREATE_WALLET_ID_STEP_3);
 };
 
 export const submitShowPhrase = async (showPhraseDom: React.Component): Promise<void> => {
   const continueButton = TestUtils.scryRenderedDOMComponentsWithTag(showPhraseDom, "button")[1];
   click(continueButton);
-  await findRenderedDOMComponentWithId(showPhraseDom, SECURITY_HINT_STEP_CREATE_WALLET_ROUTE);
+  await findRenderedDOMComponentWithId(showPhraseDom, CREATE_WALLET_ID_STEP_3);
 };
 
 export const submitSecurityHintE2E = async (page: Page, securityHint: string): Promise<void> => {
@@ -142,5 +142,5 @@ export const submitSecurityHint = async (securityHintDom: React.Component, hint:
 export const travelToCreateWalletNewWalletStep = async (page: Page): Promise<void> => {
   await page.click(`#${CREATE_WALLET_ID}`);
 
-  await findRenderedE2EComponentWithId(page, FIRST_STEP_CREATE_WALLET_ROUTE);
+  await findRenderedE2EComponentWithId(page, CREATE_WALLET_ID_STEP_1);
 };

@@ -9795,7 +9795,7 @@ exports[`Storyshots Extension/Components NeumaPageLayout 1`] = `
 exports[`Storyshots Extension/Create Wallet New Wallet page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/create-wallet1"
+  id="create-wallet-step1"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -10104,7 +10104,7 @@ exports[`Storyshots Extension/Create Wallet New Wallet page 1`] = `
 exports[`Storyshots Extension/Create Wallet Recovery Phrase page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/create-wallet2"
+  id="create-wallet-step2"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -10282,7 +10282,7 @@ exports[`Storyshots Extension/Create Wallet Recovery Phrase page 1`] = `
 exports[`Storyshots Extension/Create Wallet Security Hint page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/create-wallet3"
+  id="create-wallet-step3"
 >
   <div
     className="MuiBox-root MuiBox-root"
