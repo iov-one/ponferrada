@@ -15,18 +15,12 @@ const MsgCreateProposalTx = ({ title, error }: MsgCreateProposalTxProps): JSX.El
         <Typography weight="light" inline>
           Your attempt to create the proposal{" "}
         </Typography>
-        <Typography weight="semibold" inline link>
+        <Typography weight="semibold" inline>
           {title}
         </Typography>
         <Typography weight="light" inline>
           {" "}
-          was{" "}
-        </Typography>
-        <Typography weight="semibold" inline>
-          unsuccessful
-        </Typography>
-        <Typography weight="light" inline>
-          , please try again later.
+          was unsuccessful
         </Typography>
       </React.Fragment>
     );
@@ -36,12 +30,8 @@ const MsgCreateProposalTx = ({ title, error }: MsgCreateProposalTxProps): JSX.El
         <Typography weight="light" inline>
           You have created the proposal{" "}
         </Typography>
-        <Typography weight="semibold" inline link>
+        <Typography weight="semibold" inline>
           {title}
-        </Typography>
-        <Typography weight="light" inline>
-          {" "}
-          .
         </Typography>
       </React.Fragment>
     );

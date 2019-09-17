@@ -25,13 +25,7 @@ const MsgRegisterUsernameTx = ({
         </Typography>
         <Typography weight="light" inline>
           {" "}
-          personalized address was{" "}
-        </Typography>
-        <Typography weight="semibold" inline>
-          unsuccessful
-        </Typography>
-        <Typography weight="light" inline>
-          , please try again later.
+          personalized address was unsuccessful
         </Typography>
       </React.Fragment>
     );

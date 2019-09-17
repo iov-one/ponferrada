@@ -1,6 +1,7 @@
-import { VoteOption, VoteTx } from "@iov/bns";
+import { VoteTx } from "@iov/bns";
 import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
+import { voteToString } from "ui-logic";
 
 import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";
 
@@ -27,7 +28,7 @@ const ReqVoteTx = ({ tx }: Props): JSX.Element => {
         <ListItemText
           classes={listItemClasses}
           primary="Vote"
-          secondary={VoteOption[tx.selection]}
+          secondary={voteToString(tx.selection, true)}
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>

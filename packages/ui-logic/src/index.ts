@@ -5,4 +5,5 @@ export { randomString } from "./random";
 export { ellipsify } from "./strings";
 export { whenTrue } from "./testing";
 export { displayPeriod } from "./time";
+export { voteToString } from "./votes";
 export { Weave } from "./weave";

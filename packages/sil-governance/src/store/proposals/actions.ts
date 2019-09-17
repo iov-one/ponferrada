@@ -1,7 +1,7 @@
 import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
 import { Governor } from "@iov/bns-governance";
 
-import { ProposalsState, ReplaceProposalsActionType } from "./reducer";
+import { ProposalsState, ReplaceProposalsActionType, SilProposal } from "./reducer";
 
 export async function getProposals(governor: Governor): Promise<ProposalsState> {
   const getQuorum = async (proposal: Proposal): Promise<number> => {
@@ -32,8 +32,6 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
 
   const getVote = async (proposal: Proposal): Promise<VoteOption | undefined> => {
     const votes = await governor.getVotes();
-    if (!votes) return undefined;
-
     const vote = votes.find(vote => vote.proposalId === proposal.id);
     if (!vote) return undefined;
 
@@ -42,29 +40,31 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
 
   const proposals = await governor.getProposals();
   const proposalsState = await Promise.all(
-    proposals.map(async proposal => {
-      return {
-        id: proposal.id,
-        action: proposal.action,
-        title: proposal.title,
-        author: proposal.author,
-        description: proposal.description,
-        startDate: new Date(proposal.votingStartTime * 1000),
-        expiryDate: new Date(proposal.votingEndTime * 1000),
-        quorum: await getQuorum(proposal),
-        threshold: await getThreshold(proposal),
-        tally: {
-          yes: proposal.state.totalYes,
-          no: proposal.state.totalNo,
-          abstain: proposal.state.totalAbstain,
-          totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
-          maxVotes: proposal.state.totalElectorateWeight,
-        },
-        result: proposal.result,
-        vote: await getVote(proposal),
-        hasEnded: !(proposal.status === ProposalStatus.Submitted),
-      };
-    }),
+    proposals.map(
+      async (proposal): Promise<SilProposal> => {
+        return {
+          id: proposal.id,
+          action: proposal.action,
+          title: proposal.title,
+          author: proposal.author,
+          description: proposal.description,
+          startDate: new Date(proposal.votingStartTime * 1000),
+          expiryDate: new Date(proposal.votingEndTime * 1000),
+          quorum: await getQuorum(proposal),
+          threshold: await getThreshold(proposal),
+          tally: {
+            yes: proposal.state.totalYes,
+            no: proposal.state.totalNo,
+            abstain: proposal.state.totalAbstain,
+            totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
+            maxVotes: proposal.state.totalElectorateWeight,
+          },
+          result: proposal.result,
+          vote: await getVote(proposal),
+          hasEnded: !(proposal.status === ProposalStatus.Submitted),
+        };
+      },
+    ),
   );
 
   return proposalsState;

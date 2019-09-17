@@ -1,11 +1,11 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx, VoteOption } from "@iov/bns";
+import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx } from "@iov/bns";
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
-import { amountToString } from "ui-logic";
+import { amountToString, voteToString } from "ui-logic";
 
 import { ProcessedTx } from "../../../../extension/background/model/persona";
 import iconErrorTx from "../../assets/transactionError.svg";
@@ -74,12 +74,13 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       />
     );
   } else if (isVoteTx(item.original)) {
-    const { selection } = item.original;
+    const { selection, proposalId } = item.original;
     msg = (
       <MsgVoteTx
         id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
-        selection={VoteOption[selection]}
+        selection={voteToString(selection)}
+        proposalId={proposalId}
         error={error}
       />
     );
