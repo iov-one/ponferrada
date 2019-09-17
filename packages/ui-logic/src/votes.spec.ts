@@ -10,5 +10,12 @@ describe("votes", () => {
       expect(voteToString(VoteOption.No)).toEqual("no");
       expect(voteToString(VoteOption.Abstain)).toEqual("abstain");
     });
+
+    it("works capitalized", () => {
+      expect(voteToString(undefined, true)).toEqual("–");
+      expect(voteToString(VoteOption.Yes, true)).toEqual("Yes");
+      expect(voteToString(VoteOption.No, true)).toEqual("No");
+      expect(voteToString(VoteOption.Abstain, true)).toEqual("Abstain");
+    });
   });
 });
