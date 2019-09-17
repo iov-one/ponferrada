@@ -166,7 +166,7 @@ const errorVoteTx: ProcessedTx = {
 };
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
-  .add("Txs", () => {
+  .add("With transactions", () => {
     const processedTx2 = { ...processedTx, id: (txId++).toString() };
     const processedTx3 = { ...processedTx, id: (txId++).toString() };
 
@@ -197,7 +197,7 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
       </PersonaProvider>
     );
   })
-  .add("Empty", () => {
+  .add("No transactions", () => {
     const persona: GetPersonaResponse = {
       mnemonic: "",
       accounts: [{ label: "Account 0" }],

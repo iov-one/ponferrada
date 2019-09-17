@@ -12388,7 +12388,7 @@ exports[`Storyshots Extension/Transaction Request Vote 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
+exports[`Storyshots Extension/Wallet Status page No transactions 1`] = `
 <div
   className="makeStyles-root"
 >
@@ -12546,7 +12546,7 @@ exports[`Storyshots Extension/Wallet Status page Empty 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Wallet Status page Txs 1`] = `
+exports[`Storyshots Extension/Wallet Status page With transactions 1`] = `
 <div
   className="makeStyles-root"
 >
