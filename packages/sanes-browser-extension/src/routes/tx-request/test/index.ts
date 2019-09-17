@@ -91,7 +91,7 @@ export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
   };
 }
 
-export function getCreateProposalTransaction(): CreateProposalTx & WithCreator {
+export function getCreateTextResolutionActionTransaction(): CreateProposalTx & WithCreator {
   return {
     kind: "bns/create_proposal",
     creator: defaultCreator,
@@ -106,6 +106,32 @@ export function getCreateProposalTransaction(): CreateProposalTx & WithCreator {
     action: {
       kind: ActionKind.CreateTextResolution,
       resolution: "Stop all this blockchain stuff",
+    },
+  };
+}
+
+export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.ReleaseEscrow,
+      escrowId: Encoding.fromHex(
+        "0434ce248a6a5979c04d75d1a75907b2bec1cb4d4f6e17b76521f0925e8b6b40e00711fe98e789cf5c8317cf1e731b3101e9dbfaba5e351e424e45c9a2f4dfb63c",
+      ),
+      amount: {
+        quantity: "1230000000000000000", // 1.23 ETH
+        fractionalDigits: 18,
+        tokenTicker: "ETH" as TokenTicker,
+      },
     },
   };
 }
