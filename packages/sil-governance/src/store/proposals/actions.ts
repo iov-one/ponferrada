@@ -32,8 +32,6 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
 
   const getVote = async (proposal: Proposal): Promise<VoteOption | undefined> => {
     const votes = await governor.getVotes();
-    if (!votes) return undefined;
-
     const vote = votes.find(vote => vote.proposalId === proposal.id);
     if (!vote) return undefined;
 
