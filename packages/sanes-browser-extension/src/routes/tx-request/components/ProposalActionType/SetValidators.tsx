@@ -2,7 +2,11 @@ import { SetValidatorsAction, ValidatorProperties } from "@iov/bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
-import { txListItemSecondaryProps, useTxListItemStyles } from "../ShowRequest/TransactionFee";
+import {
+  txListItemSecondaryProps,
+  useTxListItemHeaderStyles,
+  useTxListItemStyles,
+} from "../ShowRequest/TransactionFee";
 
 interface ValidatorProps {
   readonly index: string;
@@ -28,21 +32,28 @@ function ValidatorsListItem({ index, properties }: ValidatorProps): JSX.Element 
 }
 
 interface Props {
+  readonly header?: boolean;
   readonly action: SetValidatorsAction;
 }
-function ReleaseEscrow({ action }: Props): JSX.Element {
+function SetValidators({ action, header }: Props): JSX.Element {
   const listItemClasses = useTxListItemStyles();
+  const listItemHeaderClasses = useTxListItemHeaderStyles();
 
   return (
     <React.Fragment>
+      {header && (
+        <ListItem>
+          <ListItemText classes={listItemHeaderClasses} primary="Set Validators" />
+        </ListItem>
+      )}
       <ListItem>
         <ListItemText classes={listItemClasses} primary="Validators" />
       </ListItem>
-      {Object.keys(action.validatorUpdates).map(key => (
-        <ValidatorsListItem key={key} index={key} properties={action.validatorUpdates[key]} />
+      {Object.entries(action.validatorUpdates).map(([key, props]) => (
+        <ValidatorsListItem key={key} index={key} properties={props} />
       ))}
     </React.Fragment>
   );
 }
 
-export default ReleaseEscrow;
+export default SetValidators;
