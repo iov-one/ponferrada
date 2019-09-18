@@ -1,6 +1,6 @@
 import { ElectionRule } from "@iov/bns";
 import { FormApi } from "final-form";
-import { Block, SelectFieldForm, SelectFieldFormItem, Typography } from "medulas-react-components";
+import { Block, SelectField, SelectFieldItem, Typography } from "medulas-react-components";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { displayPeriod } from "ui-logic";
 
@@ -26,7 +26,7 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
 
   const showRules = threshold && period;
 
-  const changeCommittee = (selectedItem: SelectFieldFormItem): void => {
+  const changeCommittee = (selectedItem: SelectFieldItem): void => {
     const ruleId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
     const rule = electionRules.find(rule => rule.id === ruleId);
     if (!rule) throw new Error("Selected committee not found. This is a bug.");
@@ -47,7 +47,7 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
       <Block display="flex" alignItems="center">
         <Typography>{COMMITTEE_RULES_FIELD}</Typography>
         <Block marginLeft={2}>
-          <SelectFieldForm
+          <SelectField
             fieldName={COMMITTEE_RULES_FIELD}
             fullWidth
             form={form}

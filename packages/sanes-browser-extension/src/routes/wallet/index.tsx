@@ -4,8 +4,8 @@ import {
   Form,
   Hairline,
   Link,
-  SelectFieldForm,
-  SelectFieldFormItem,
+  SelectField,
+  SelectFieldItem,
   ToastContext,
   ToastVariant,
   Typography,
@@ -37,7 +37,7 @@ const DRAWER_HEIGHT = 56;
 const CONTENT_HEIGHT = EXTENSION_HEIGHT - DRAWER_HEIGHT;
 
 const AccountView = (): JSX.Element => {
-  const [accounts, setAccounts] = React.useState<SelectFieldFormItem[]>([]);
+  const [accounts, setAccounts] = React.useState<SelectFieldItem[]>([]);
   const toast = React.useContext(ToastContext);
   const personaProvider = React.useContext(PersonaContext);
   const { form, handleSubmit } = useForm({
@@ -46,7 +46,7 @@ const AccountView = (): JSX.Element => {
 
   React.useEffect(() => {
     async function fetchMyAccounts(): Promise<void> {
-      const actualItems: SelectFieldFormItem[] = [
+      const actualItems: SelectFieldItem[] = [
         { name: CREATE_NEW_ONE },
         ...personaProvider.accounts.map(account => ({ name: account.label })),
       ];
@@ -56,7 +56,7 @@ const AccountView = (): JSX.Element => {
     fetchMyAccounts();
   }, [personaProvider.accounts]);
 
-  const onChange = async (item: SelectFieldFormItem): Promise<void> => {
+  const onChange = async (item: SelectFieldItem): Promise<void> => {
     if (item.name === CREATE_NEW_ONE) {
       if ((await getConfigurationFile()).accountCreationDisabled) {
         toast.show(
@@ -114,7 +114,7 @@ const AccountView = (): JSX.Element => {
             <Block marginBottom={1}>
               <Typography variant="subtitle2">Available accounts</Typography>
             </Block>
-            <SelectFieldForm
+            <SelectField
               items={accounts}
               initial={accounts[1].name}
               form={form}

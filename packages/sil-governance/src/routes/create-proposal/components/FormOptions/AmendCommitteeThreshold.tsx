@@ -4,8 +4,8 @@ import {
   composeValidators,
   FieldInputValue,
   required,
-  SelectFieldForm,
-  SelectFieldFormItem,
+  SelectField,
+  SelectFieldItem,
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
@@ -27,7 +27,7 @@ interface Props {
 
 const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
-  const [ruleItems, setRuleItems] = useState<SelectFieldFormItem[]>([]);
+  const [ruleItems, setRuleItems] = useState<SelectFieldItem[]>([]);
 
   useEffect(() => {
     const reloadRuleItems = async (): Promise<void> => {
@@ -57,7 +57,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{COMMITTEE_THRESHOLD_FIELD}</Typography>
         <Block marginLeft={2}>
-          <SelectFieldForm
+          <SelectField
             fieldName={COMMITTEE_THRESHOLD_FIELD}
             form={form}
             validate={committeeValidator}

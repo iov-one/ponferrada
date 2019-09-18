@@ -12,8 +12,8 @@ import {
   lowerOrEqualThan,
   number,
   required,
-  SelectFieldForm,
-  SelectFieldFormItem,
+  SelectField,
+  SelectFieldItem,
   TextFieldForm,
   Typography,
 } from "medulas-react-components";
@@ -48,7 +48,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
 
   const currencyItems = Object.keys(balances)
     .sort()
-    .map((ticker): SelectFieldFormItem => ({ name: ticker }));
+    .map((ticker): SelectFieldItem => ({ name: ticker }));
 
   const firstToken = currencyItems.find(() => true);
   const [selectedTokenTicker, setSelectedTokenTicker] = useState(firstToken ? firstToken.name : undefined);
@@ -66,7 +66,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
     onTokenSelectionChanged(selectedTokenTicker as TokenTicker);
   }, [onTokenSelectionChanged, selectedTokenTicker]);
 
-  const onSelectionChanged = (item: SelectFieldFormItem): void => {
+  const onSelectionChanged = (item: SelectFieldItem): void => {
     setSelectedTokenTicker(item.name);
   };
 
@@ -96,7 +96,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
               />
             </Block>
             <Block height="32px">
-              <SelectFieldForm
+              <SelectField
                 fieldName={CURRENCY_FIELD}
                 form={form}
                 maxWidth="60px"

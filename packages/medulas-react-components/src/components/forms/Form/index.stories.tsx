@@ -6,7 +6,7 @@ import { Storybook } from "../../../utils/storybook";
 import Block from "../../Block";
 import Button from "../../Button";
 import CheckboxField from "../CheckboxField";
-import SelectFieldForm, { Item } from "../SelectFieldForm";
+import SelectField, { SelectFieldItem } from "../SelectField";
 import TextFieldForm from "../TextFieldForm";
 import Form, { FormValues, useForm, ValidationError } from "./index";
 
@@ -51,12 +51,12 @@ const FormStory = (): JSX.Element => {
         name={TEXT_FIELD}
       />
       <Block display="block" marginBottom={2}>
-        <SelectFieldForm
+        <SelectField
           items={items}
           initial="IOV2"
           form={form}
           fieldName={SELECT_FIELD}
-          onChangeCallback={(item: Item) => console.log(`received ---> ${item.name}`)}
+          onChangeCallback={(item: SelectFieldItem) => console.log(`received ---> ${item.name}`)}
         />
       </Block>
       <Block display="block" marginBottom={2}>
