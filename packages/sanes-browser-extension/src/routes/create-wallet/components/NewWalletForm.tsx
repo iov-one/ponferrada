@@ -6,7 +6,7 @@ import {
   Form,
   FormValues,
   Link,
-  TextFieldForm,
+  TextField,
   Typography,
   useForm,
   ValidationError,
@@ -80,7 +80,7 @@ const NewWalletForm = ({ onCreateWallet, onBack }: Props): JSX.Element => {
     <NeumaPageLayout id={CREATE_WALLET_ID_STEP_1} primaryTitle="New" title="Wallet">
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={1}>
-          <TextFieldForm
+          <TextField
             label="Password"
             placeholder="Password"
             type="password"
@@ -91,7 +91,7 @@ const NewWalletForm = ({ onCreateWallet, onBack }: Props): JSX.Element => {
           />
         </Block>
         <Block>
-          <TextFieldForm
+          <TextField
             label="Confirm Password"
             placeholder="Confirm Password"
             type="password"

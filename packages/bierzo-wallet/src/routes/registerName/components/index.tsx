@@ -1,5 +1,5 @@
 import { faRegistered } from "@fortawesome/free-regular-svg-icons";
-import { Back, Block, Button, Form, TextFieldForm, useForm } from "medulas-react-components";
+import { Back, Block, Button, Form, TextField, useForm } from "medulas-react-components";
 import React from "react";
 
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
@@ -51,7 +51,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel }: Props): JSX.El
     <Form onSubmit={handleSubmit}>
       <PageContent id={REGISTER_USERNAME_VIEW_ID} icon={faRegistered} buttons={buttons}>
         <Block width="100%" marginTop={2} marginBottom={1}>
-          <TextFieldForm
+          <TextField
             name={REGISTER_USERNAME_FIELD}
             form={form}
             placeholder="username*iov"

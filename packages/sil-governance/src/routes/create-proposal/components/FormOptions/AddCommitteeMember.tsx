@@ -5,9 +5,9 @@ import {
   FieldInputValue,
   greaterOrEqualThan,
   required,
-  SelectFieldForm,
-  SelectFieldFormItem,
-  TextFieldForm,
+  SelectField,
+  SelectFieldItem,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ interface Props {
 
 const AddCommitteeMember = ({ form }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
-  const [committeeItems, setCommitteeItems] = useState<SelectFieldFormItem[]>([]);
+  const [committeeItems, setCommitteeItems] = useState<SelectFieldItem[]>([]);
 
   useEffect(() => {
     const updateCommitteeItems = async (): Promise<void> => {
@@ -61,7 +61,7 @@ const AddCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{COMMITTEE_ADD_FIELD}</Typography>
         <Block marginLeft={2}>
-          <SelectFieldForm
+          <SelectField
             fieldName={COMMITTEE_ADD_FIELD}
             form={form}
             validate={committeeValidator}
@@ -75,7 +75,7 @@ const AddCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{MEMBER_ADD_FIELD}</Typography>
         <Block marginLeft={2} flexGrow={1}>
-          <TextFieldForm
+          <TextField
             name={MEMBER_ADD_FIELD}
             form={form}
             validate={required}
@@ -88,7 +88,7 @@ const AddCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{WEIGHT_FIELD}</Typography>
         <Block marginLeft={2}>
-          <TextFieldForm
+          <TextField
             name={WEIGHT_FIELD}
             form={form}
             type="number"

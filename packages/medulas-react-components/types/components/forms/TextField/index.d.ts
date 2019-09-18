@@ -8,5 +8,5 @@ interface InnerProps {
   subscription?: FieldSubscription;
 }
 declare type Props = InnerProps & TextFieldProps;
-declare const TextFieldForm: ({ name, form, validate, ...restProps }: Props) => JSX.Element;
-export default TextFieldForm;
+declare const TextField: ({ name, form, validate, ...restProps }: Props) => JSX.Element;
+export default TextField;

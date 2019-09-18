@@ -4,7 +4,7 @@ import {
   composeValidators,
   greaterOrEqualThan,
   required,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React from "react";
@@ -28,7 +28,7 @@ const AddValidator = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{PUBKEY_ADD_FIELD}</Typography>
         <Block marginLeft={2} flexGrow={1}>
-          <TextFieldForm
+          <TextField
             name={PUBKEY_ADD_FIELD}
             form={form}
             validate={required}
@@ -41,7 +41,7 @@ const AddValidator = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{POWER_FIELD}</Typography>
         <Block marginLeft={2}>
-          <TextFieldForm
+          <TextField
             name={POWER_FIELD}
             form={form}
             type="number"

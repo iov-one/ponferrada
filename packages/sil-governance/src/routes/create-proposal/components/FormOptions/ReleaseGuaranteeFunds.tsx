@@ -9,9 +9,9 @@ import {
   greaterOrEqualThan,
   lowerOrEqualThan,
   required,
-  SelectFieldForm,
-  SelectFieldFormItem,
-  TextFieldForm,
+  SelectField,
+  SelectFieldItem,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -30,7 +30,7 @@ interface Props {
 }
 
 const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
-  const [tickerItems, setTickerItems] = useState<SelectFieldFormItem[]>([]);
+  const [tickerItems, setTickerItems] = useState<SelectFieldItem[]>([]);
 
   useEffect(() => {
     const updateTickers = async (): Promise<void> => {
@@ -49,7 +49,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
         ? account.balance.map(balance => balance.tokenTicker)
         : new Array<TokenTicker>();
 
-      const tickerItems = [...tickers].sort().map((ticker): SelectFieldFormItem => ({ name: ticker }));
+      const tickerItems = [...tickers].sort().map((ticker): SelectFieldItem => ({ name: ticker }));
 
       setTickerItems(tickerItems);
     };
@@ -82,7 +82,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
     <Block marginTop={2} display="flex" alignItems="center">
       <Typography>{AMOUNT_LABEL}</Typography>
       <Block marginLeft={2} display="flex" alignItems="center">
-        <TextFieldForm
+        <TextField
           name={RELEASE_QUANTITY_FIELD}
           form={form}
           validate={quantityValidator}
@@ -90,7 +90,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
           margin="none"
         />
         <Block marginLeft={2}>
-          <SelectFieldForm
+          <SelectField
             fieldName={RELEASE_TICKER_FIELD}
             form={form}
             validate={tickerValidator}

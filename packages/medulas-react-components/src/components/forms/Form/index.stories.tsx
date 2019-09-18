@@ -6,8 +6,8 @@ import { Storybook } from "../../../utils/storybook";
 import Block from "../../Block";
 import Button from "../../Button";
 import CheckboxField from "../CheckboxField";
-import SelectFieldForm, { Item } from "../SelectFieldForm";
-import TextFieldForm from "../TextFieldForm";
+import SelectField, { SelectFieldItem } from "../SelectField";
+import TextField from "../TextField";
 import Form, { FormValues, useForm, ValidationError } from "./index";
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
@@ -44,19 +44,14 @@ const FormStory = (): JSX.Element => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <TextFieldForm
-        label="Unique Identifier"
-        placeholder="Unique Identifier"
-        form={form}
-        name={TEXT_FIELD}
-      />
+      <TextField label="Unique Identifier" placeholder="Unique Identifier" form={form} name={TEXT_FIELD} />
       <Block display="block" marginBottom={2}>
-        <SelectFieldForm
+        <SelectField
           items={items}
           initial="IOV2"
           form={form}
           fieldName={SELECT_FIELD}
-          onChangeCallback={(item: Item) => console.log(`received ---> ${item.name}`)}
+          onChangeCallback={(item: SelectFieldItem) => console.log(`received ---> ${item.name}`)}
         />
       </Block>
       <Block display="block" marginBottom={2}>

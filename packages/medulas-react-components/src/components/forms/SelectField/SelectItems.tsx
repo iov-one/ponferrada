@@ -8,12 +8,12 @@ import Block from "../../Block";
 import Hairline from "../../Hairline";
 import Img from "../../Image";
 import Typography from "../../Typography";
-import { Item } from "./index";
+import { SelectFieldItem } from "./index";
 
 interface ListItemProps {
-  readonly action: (value: Item) => () => void;
+  readonly action: (value: SelectFieldItem) => () => void;
   readonly selectedItem?: string;
-  readonly items: readonly Item[];
+  readonly items: readonly SelectFieldItem[];
 }
 
 const ListItems = ({ action, items, selectedItem }: ListItemProps): JSX.Element => {

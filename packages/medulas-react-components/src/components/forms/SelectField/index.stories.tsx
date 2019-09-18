@@ -7,8 +7,7 @@ import { Storybook } from "../../../utils/storybook";
 import Block from "../../Block";
 import Button from "../../Button";
 import Form, { FormValues, useForm, ValidationError } from "../Form";
-import SelectField from "./index";
-import { Item } from "./index";
+import SelectField, { SelectFieldItem } from "./index";
 
 interface Props {
   readonly value?: string;
@@ -25,7 +24,7 @@ const validate = (values: object): object => {
   return errors;
 };
 
-const SelectFieldForm = ({ value, fieldName }: Props): JSX.Element => {
+const SelectFieldExample = ({ value, fieldName }: Props): JSX.Element => {
   const { form, handleSubmit } = useForm({
     onSubmit: action("Form submit"),
     validate,
@@ -45,7 +44,7 @@ const SelectFieldForm = ({ value, fieldName }: Props): JSX.Element => {
         initial={value}
         form={form}
         fieldName={fieldName}
-        onChangeCallback={(item: Item) => console.log(`received ---> ${item.name}`)}
+        onChangeCallback={(item: SelectFieldItem) => console.log(`received ---> ${item.name}`)}
       />
       <Button type="submit">Submit</Button>
     </Form>
@@ -55,10 +54,10 @@ const SelectFieldForm = ({ value, fieldName }: Props): JSX.Element => {
 storiesOf("Components /forms", module).add("SelectField", () => (
   <Storybook>
     <Block marginBottom={2}>
-      <SelectFieldForm value="IOV2" fieldName="SELECT_FIELD_ATTR" />
+      <SelectFieldExample value="IOV2" fieldName="SELECT_FIELD_ATTR" />
     </Block>
     <Block marginBottom={2}>
-      <SelectFieldForm fieldName="SELECT_FIELD_ATTR_EMPTY" />
+      <SelectFieldExample fieldName="SELECT_FIELD_ATTR_EMPTY" />
     </Block>
   </Storybook>
 ));

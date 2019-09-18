@@ -1,12 +1,4 @@
-import {
-  Block,
-  Button,
-  Form,
-  FormValues,
-  TextFieldForm,
-  Typography,
-  useForm,
-} from "medulas-react-components";
+import { Block, Button, Form, FormValues, TextField, Typography, useForm } from "medulas-react-components";
 import * as React from "react";
 
 export const MNEMONIC_FIELD = "mnemonicInputField";
@@ -30,7 +22,7 @@ const UnlockForm = ({ onDelete, validate }: Props): JSX.Element => {
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={2}>
-          <TextFieldForm
+          <TextField
             multiline
             rows={5}
             placeholder="Recovery phrase"

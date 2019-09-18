@@ -1,5 +1,5 @@
 import FileSaver from "file-saver";
-import { SelectFieldFormItem } from "medulas-react-components";
+import { SelectFieldItem } from "medulas-react-components";
 import * as React from "react";
 import { useSelector } from "react-redux";
 
@@ -26,7 +26,7 @@ const Transactions = (): JSX.Element => {
     [orderedTxs, userAddresses],
   );
 
-  function onChangeRows(item: SelectFieldFormItem): void {
+  function onChangeRows(item: SelectFieldItem): void {
     setRows(Number(item.name));
   }
 

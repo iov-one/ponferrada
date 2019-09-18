@@ -1,6 +1,6 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
-import { Block, SelectFieldForm, Typography } from "medulas-react-components";
+import { Block, SelectField, Typography } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
 
 const PROPOSAL_TYPE_FIELD = "Proposal Type";
@@ -34,7 +34,7 @@ const ProposalTypeSelect = ({ form, changeProposalType }: Props): JSX.Element =>
     <Block marginTop={2} display="flex" alignItems="center">
       <Typography>{PROPOSAL_TYPE_FIELD}</Typography>
       <Block marginLeft={2}>
-        <SelectFieldForm
+        <SelectField
           fieldName={PROPOSAL_TYPE_FIELD}
           fullWidth
           form={form}

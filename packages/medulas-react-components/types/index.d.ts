@@ -7,8 +7,8 @@ import DownloadButton from "./components/Button/Download";
 import Drawer, { DRAWER_HTML_ID } from "./components/Drawer";
 import CheckboxField from "./components/forms/CheckboxField";
 import Form, { FormValues, useForm, ValidationError } from "./components/forms/Form";
-import SelectFieldForm, { Item as SelectFieldFormItem } from "./components/forms/SelectFieldForm";
-import TextFieldForm from "./components/forms/TextFieldForm";
+import SelectField, { SelectFieldItem } from "./components/forms/SelectField";
+import TextField from "./components/forms/TextField";
 import Hairline from "./components/Hairline";
 import Image from "./components/Image";
 import CircleImage from "./components/Image/CircleImage";
@@ -56,10 +56,10 @@ export {
   PageLayout,
   Paragraph,
   Section,
-  SelectFieldForm,
-  SelectFieldFormItem,
+  SelectField,
+  SelectFieldItem,
   Switch,
-  TextFieldForm,
+  TextField,
   theme,
   Title,
   Tooltip,

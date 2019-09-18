@@ -2,8 +2,8 @@ import {
   Block,
   Form,
   Image,
-  SelectFieldForm,
-  SelectFieldFormItem,
+  SelectField,
+  SelectFieldItem,
   Typography,
   useForm,
 } from "medulas-react-components";
@@ -13,12 +13,12 @@ import arrowLeft from "../../../assets/arrowLeft.svg";
 import arrowRight from "../../../assets/arrowRight.svg";
 
 interface Props {
-  readonly onChangeRows: (item: SelectFieldFormItem) => void;
+  readonly onChangeRows: (item: SelectFieldItem) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;
 }
 
-const rowsSelectorData: readonly SelectFieldFormItem[] = [
+const rowsSelectorData: readonly SelectFieldItem[] = [
   { name: "5" },
   { name: "10" },
   { name: "25" },
@@ -42,7 +42,7 @@ const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Ele
         </Typography>
         <Block padding={0.5} />
         <Form onSubmit={handleSubmit}>
-          <SelectFieldForm
+          <SelectField
             items={rowsSelectorData}
             initial={rowsSelectorData[0].name}
             form={form}

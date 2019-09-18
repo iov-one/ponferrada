@@ -9,7 +9,7 @@ import {
   Form,
   FormValues,
   required,
-  TextFieldForm,
+  TextField,
   Typography,
   useForm,
 } from "medulas-react-components";
@@ -51,7 +51,7 @@ const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={4}>
-          <TextFieldForm
+          <TextField
             multiline
             rows={5}
             placeholder="Recovery phrase"

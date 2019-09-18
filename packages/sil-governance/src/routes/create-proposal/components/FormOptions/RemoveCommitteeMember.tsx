@@ -3,9 +3,9 @@ import {
   Block,
   FieldInputValue,
   required,
-  SelectFieldForm,
-  SelectFieldFormItem,
-  TextFieldForm,
+  SelectField,
+  SelectFieldItem,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -24,7 +24,7 @@ interface Props {
 
 const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
-  const [committeeItems, setCommitteeItems] = useState<SelectFieldFormItem[]>([]);
+  const [committeeItems, setCommitteeItems] = useState<SelectFieldItem[]>([]);
 
   useEffect(() => {
     const updateCommitteeItems = async (): Promise<void> => {
@@ -52,7 +52,7 @@ const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{COMMITTEE_REMOVE_FIELD}</Typography>
         <Block marginLeft={2}>
-          <SelectFieldForm
+          <SelectField
             fieldName={COMMITTEE_REMOVE_FIELD}
             form={form}
             validate={committeeValidator}
@@ -66,7 +66,7 @@ const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{MEMBER_REMOVE_FIELD}</Typography>
         <Block marginLeft={2} flexGrow={1}>
-          <TextFieldForm
+          <TextField
             name={MEMBER_REMOVE_FIELD}
             form={form}
             validate={required}

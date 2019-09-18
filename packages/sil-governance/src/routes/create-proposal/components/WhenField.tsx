@@ -4,7 +4,7 @@ import {
   composeValidators,
   FieldInputValue,
   required,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React from "react";
@@ -38,7 +38,7 @@ const WhenField = ({ form }: Props): JSX.Element => {
   return (
     <Block>
       <Typography>{WHEN_FIELD}</Typography>
-      <TextFieldForm
+      <TextField
         name={DATE_FIELD}
         form={form}
         validate={validator}
