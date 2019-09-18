@@ -3,9 +3,9 @@ import { FieldValidator } from "final-form";
 type ValidationError = string | undefined;
 
 export function composeValidators<T>(...validators: readonly FieldValidator<T>[]): FieldValidator<T> {
-  return (value): ValidationError => {
+  return (value, allValues, meta): ValidationError => {
     for (const validator of validators) {
-      const validationError = validator(value, {});
+      const validationError = validator(value, allValues, meta);
 
       if (validationError) {
         return validationError;
