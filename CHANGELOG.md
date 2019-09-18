@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.10
+
+- Governance: Calculate selectable rules for amanding threshold/quorum from the
+  currently selected rule. All writeable rules can now be selected.
+- Governance: Fix display of the user's vote
+- Extension: Improve UI for vote transactions
+
 ## 0.4.9
 
 - Governance: Show currect blockchain time in UI and calculate `hasStarted`
