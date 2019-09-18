@@ -52,11 +52,12 @@ const AmendCommitteeQuorum = ({ form, electionRule }: Props): JSX.Element => {
       });
 
       setRuleItems(ruleItems);
-      // TODO: Trigger revalidation of committee selection
+      // Trigger revalidation of committee selection
+      form.resetFieldState(COMMITTEE_QUORUM_FIELD);
     };
 
     updateCommitteeItems();
-  }, [electionRule, governor]);
+  }, [electionRule, form, governor]);
 
   const committeeValidator = useMemo(() => {
     const availableRulesValidator = (value: FieldInputValue): string | undefined => {

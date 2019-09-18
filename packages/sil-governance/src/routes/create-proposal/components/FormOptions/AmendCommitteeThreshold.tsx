@@ -53,7 +53,8 @@ const AmendCommitteeThreshold = ({ form, electionRule }: Props): JSX.Element => 
       });
 
       setRuleItems(ruleItems);
-      // TODO: Trigger revalidation of committee selection
+      // Trigger revalidation of committee selection
+      form.resetFieldState(COMMITTEE_THRESHOLD_FIELD);
     };
 
     reloadRuleItems();
