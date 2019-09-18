@@ -65,14 +65,14 @@ const ProposalForm = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
   const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
-  const [electionRuleId, setElectionRuleId] = useState<number>();
+  const [electionRule, setElectionRule] = useState<ElectionRule>();
   const [recipients, setRecipients] = useState<Readonly<Recipient[]>>([]);
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();
 
   const buildProposalOptions = (values: FormValues): ProposalOptions => {
-    if (!electionRuleId) throw new Error("Election Rule ID not set. This is a bug.");
+    if (!electionRule) throw new Error("Election Rule not set. This is a bug.");
 
     const title = values[TITLE_FIELD].trim();
     const description = values[DESCRIPTION_FIELD].trim();
@@ -82,7 +82,7 @@ const ProposalForm = (): JSX.Element => {
       title,
       description,
       startTime,
-      electionRuleId,
+      electionRuleId: electionRule.id,
     };
 
     switch (proposalType) {
@@ -215,7 +215,7 @@ const ProposalForm = (): JSX.Element => {
     updateElectionRules();
   }, [governor]);
 
-  const noRulesSet = !electionRuleId;
+  const noRulesSet = !electionRule;
 
   return (
     <Block flexGrow={1} margin={2}>
@@ -231,7 +231,7 @@ const ProposalForm = (): JSX.Element => {
         <CommitteeRulesSelect
           form={form}
           electionRules={electionRules}
-          electionRuleIdChanged={setElectionRuleId}
+          electionRuleChanged={setElectionRule}
         />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting || noRulesSet}>

@@ -1,7 +1,7 @@
 import { ElectionRule } from "@iov/bns";
 import { FormApi } from "final-form";
 import { Block, SelectField, SelectFieldItem, Typography } from "medulas-react-components";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { displayPeriod } from "ui-logic";
 
 const COMMITTEE_RULES_FIELD = "Committee Rule";
@@ -10,10 +10,10 @@ const COMMITTEE_RULES_INITIAL = "Select a rule";
 interface Props {
   readonly form: FormApi;
   readonly electionRules: readonly ElectionRule[];
-  readonly electionRuleIdChanged: Dispatch<SetStateAction<number | undefined>>;
+  readonly electionRuleChanged: (rule: ElectionRule) => void;
 }
 
-const CommitteeRulesSelect = ({ form, electionRules, electionRuleIdChanged }: Props): JSX.Element => {
+const CommitteeRulesSelect = ({ form, electionRules, electionRuleChanged }: Props): JSX.Element => {
   const ruleItems = electionRules.map(rule => {
     return {
       name: `${rule.id}: ${rule.title}`,
@@ -39,7 +39,7 @@ const CommitteeRulesSelect = ({ form, electionRules, electionRuleIdChanged }: Pr
     setThreshold(threshold);
     setPeriod(period);
 
-    electionRuleIdChanged(rule.id);
+    electionRuleChanged(rule);
   };
 
   return (
