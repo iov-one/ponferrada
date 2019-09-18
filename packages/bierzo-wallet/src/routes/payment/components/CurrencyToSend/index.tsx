@@ -14,7 +14,7 @@ import {
   required,
   SelectField,
   SelectFieldItem,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useMemo, useState } from "react";
@@ -86,7 +86,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
         <Block width="100%" marginTop={5} marginBottom={1}>
           <Block display="flex">
             <Block width="100%" marginRight={1}>
-              <TextFieldForm
+              <TextField
                 name={QUANTITY_FIELD}
                 form={form}
                 validate={validator}

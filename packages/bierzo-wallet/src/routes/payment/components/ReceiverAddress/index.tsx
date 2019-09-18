@@ -6,7 +6,7 @@ import {
   composeValidators,
   FieldInputValue,
   required,
-  TextFieldForm,
+  TextField,
   Tooltip,
   Typography,
 } from "medulas-react-components";
@@ -47,7 +47,7 @@ const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
           To
         </Typography>
         <Block width="100%" marginTop={2} marginBottom={1}>
-          <TextFieldForm
+          <TextField
             name={ADDRESS_FIELD}
             form={form}
             validate={validator}

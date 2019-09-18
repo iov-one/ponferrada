@@ -5,7 +5,7 @@ import {
   required,
   SelectField,
   SelectFieldItem,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -66,7 +66,7 @@ const RemoveCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{MEMBER_REMOVE_FIELD}</Typography>
         <Block marginLeft={2} flexGrow={1}>
-          <TextFieldForm
+          <TextField
             name={MEMBER_REMOVE_FIELD}
             form={form}
             validate={required}

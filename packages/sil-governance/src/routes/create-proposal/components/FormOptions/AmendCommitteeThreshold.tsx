@@ -6,7 +6,7 @@ import {
   required,
   SelectField,
   SelectFieldItem,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -71,7 +71,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{THRESHOLD_FIELD}</Typography>
         <Block marginLeft={2}>
-          <TextFieldForm
+          <TextField
             name={THRESHOLD_FIELD}
             form={form}
             validate={thresholdValidator}

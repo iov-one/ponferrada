@@ -8,7 +8,7 @@ import Drawer, { DRAWER_HTML_ID } from "./components/Drawer";
 import CheckboxField from "./components/forms/CheckboxField";
 import Form, { FormValues, useForm, ValidationError } from "./components/forms/Form";
 import SelectField, { SelectFieldItem } from "./components/forms/SelectField";
-import TextFieldForm from "./components/forms/TextFieldForm";
+import TextField from "./components/forms/TextField";
 import Hairline from "./components/Hairline";
 import Image from "./components/Image";
 import CircleImage from "./components/Image/CircleImage";
@@ -60,7 +60,7 @@ export {
   SelectField,
   SelectFieldItem,
   Switch,
-  TextFieldForm,
+  TextField,
   theme,
   Title,
   Tooltip,

@@ -4,7 +4,7 @@ import {
   composeValidators,
   notLongerThan,
   required,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React from "react";
@@ -23,7 +23,7 @@ const TitleField = ({ form }: Props): JSX.Element => {
   return (
     <Block>
       <Typography>{TITLE_FIELD}</Typography>
-      <TextFieldForm
+      <TextField
         name={TITLE_FIELD}
         form={form}
         validate={validator}

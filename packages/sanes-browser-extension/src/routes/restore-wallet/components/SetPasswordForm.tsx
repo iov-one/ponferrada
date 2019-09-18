@@ -7,7 +7,7 @@ import {
   FormValues,
   longerThan,
   required,
-  TextFieldForm,
+  TextField,
   Typography,
   useForm,
   ValidationError,
@@ -67,7 +67,7 @@ const SetPasswordForm = ({ onSetPassword, onBack }: Props): JSX.Element => {
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginTop={2} marginBottom={1}>
-          <TextFieldForm
+          <TextField
             label="Password"
             placeholder="Password"
             type="password"
@@ -79,7 +79,7 @@ const SetPasswordForm = ({ onSetPassword, onBack }: Props): JSX.Element => {
           />
         </Block>
         <Block marginBottom={4}>
-          <TextFieldForm
+          <TextField
             label="Confirm Password"
             placeholder="Confirm Password"
             type="password"

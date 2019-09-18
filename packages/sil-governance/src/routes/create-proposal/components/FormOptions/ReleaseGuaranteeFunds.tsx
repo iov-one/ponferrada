@@ -11,7 +11,7 @@ import {
   required,
   SelectField,
   SelectFieldItem,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -82,7 +82,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
     <Block marginTop={2} display="flex" alignItems="center">
       <Typography>{AMOUNT_LABEL}</Typography>
       <Block marginLeft={2} display="flex" alignItems="center">
-        <TextFieldForm
+        <TextField
           name={RELEASE_QUANTITY_FIELD}
           form={form}
           validate={quantityValidator}

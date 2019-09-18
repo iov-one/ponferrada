@@ -4,7 +4,7 @@ import {
   Button,
   Form,
   FormValues,
-  TextFieldForm,
+  TextField,
   Typography,
   useForm,
   ValidationError,
@@ -50,7 +50,7 @@ const SecurityHintForm = ({ onSaveHint, onBack }: Props): JSX.Element => {
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginTop={1} marginBottom={4}>
-          <TextFieldForm placeholder="Security hint" form={form} fullWidth name={SECURITY_HINT} />
+          <TextField placeholder="Security hint" form={form} fullWidth name={SECURITY_HINT} />
         </Block>
         <Block display="flex" justifyContent="space-between">
           <Block width={120}>

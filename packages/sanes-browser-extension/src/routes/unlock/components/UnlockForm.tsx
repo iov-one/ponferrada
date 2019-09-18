@@ -1,4 +1,4 @@
-import { Block, Button, Form, FormValues, TextFieldForm, useForm } from "medulas-react-components";
+import { Block, Button, Form, FormValues, TextField, useForm } from "medulas-react-components";
 import * as React from "react";
 
 export const PASSWORD_FIELD = "passwordInputField";
@@ -17,7 +17,7 @@ const UnlockForm = ({ onUnlock, validate }: Props): JSX.Element => {
   return (
     <Form onSubmit={handleSubmit}>
       <Block marginBottom={2}>
-        <TextFieldForm
+        <TextField
           placeholder="Password"
           type="password"
           form={form}

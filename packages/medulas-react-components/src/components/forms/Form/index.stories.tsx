@@ -7,7 +7,7 @@ import Block from "../../Block";
 import Button from "../../Button";
 import CheckboxField from "../CheckboxField";
 import SelectField, { SelectFieldItem } from "../SelectField";
-import TextFieldForm from "../TextFieldForm";
+import TextField from "../TextField";
 import Form, { FormValues, useForm, ValidationError } from "./index";
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms)); // eslint-disable-line
@@ -44,12 +44,7 @@ const FormStory = (): JSX.Element => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <TextFieldForm
-        label="Unique Identifier"
-        placeholder="Unique Identifier"
-        form={form}
-        name={TEXT_FIELD}
-      />
+      <TextField label="Unique Identifier" placeholder="Unique Identifier" form={form} name={TEXT_FIELD} />
       <Block display="block" marginBottom={2}>
         <SelectField
           items={items}

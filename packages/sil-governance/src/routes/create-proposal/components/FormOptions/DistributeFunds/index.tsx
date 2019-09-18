@@ -1,6 +1,6 @@
 import { Address } from "@iov/bcp";
 import { FormApi } from "final-form";
-import { Block, makeStyles, TextFieldForm, Typography } from "medulas-react-components";
+import { Block, makeStyles, TextField, Typography } from "medulas-react-components";
 import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 import RecipientsTable from "./RecipientsTable";
@@ -72,7 +72,7 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{IMPORT_FIELD}</Typography>
         <Block marginLeft={2}>
-          <TextFieldForm
+          <TextField
             name={IMPORT_FIELD}
             form={form}
             required

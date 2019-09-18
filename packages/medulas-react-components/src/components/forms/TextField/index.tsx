@@ -14,7 +14,7 @@ interface InnerProps {
 
 type Props = InnerProps & TextFieldProps;
 
-const TextFieldForm = ({ name, form, validate, ...restProps }: Props): JSX.Element => {
+const TextField = ({ name, form, validate, ...restProps }: Props): JSX.Element => {
   const { input, meta } = useField(name, form, validate);
   const error = meta.error && (meta.touched || !meta.pristine);
 
@@ -31,4 +31,4 @@ const TextFieldForm = ({ name, form, validate, ...restProps }: Props): JSX.Eleme
   );
 };
 
-export default TextFieldForm;
+export default TextField;

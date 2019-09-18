@@ -2,7 +2,7 @@ import { faStickyNote } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Paper from "@material-ui/core/Paper";
 import { FormApi } from "final-form";
-import { Block, notLongerThan, TextFieldForm } from "medulas-react-components";
+import { Block, notLongerThan, TextField } from "medulas-react-components";
 import React from "react";
 
 export const TEXTNOTE_FIELD = "textNoteField";
@@ -22,7 +22,7 @@ const TextNote = (props: Props): JSX.Element => {
             <FontAwesomeIcon icon={faStickyNote} color="#a2a6a8" size="lg" />
           </Block>
           <Block width="100%" marginLeft={2}>
-            <TextFieldForm
+            <TextField
               name={TEXTNOTE_FIELD}
               form={props.form}
               validate={validator}

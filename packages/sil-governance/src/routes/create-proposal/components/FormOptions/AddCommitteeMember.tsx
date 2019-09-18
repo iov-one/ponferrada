@@ -7,7 +7,7 @@ import {
   required,
   SelectField,
   SelectFieldItem,
-  TextFieldForm,
+  TextField,
   Typography,
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
@@ -75,7 +75,7 @@ const AddCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{MEMBER_ADD_FIELD}</Typography>
         <Block marginLeft={2} flexGrow={1}>
-          <TextFieldForm
+          <TextField
             name={MEMBER_ADD_FIELD}
             form={form}
             validate={required}
@@ -88,7 +88,7 @@ const AddCommitteeMember = ({ form }: Props): JSX.Element => {
       <Block marginTop={2} display="flex" alignItems="center">
         <Typography>{WEIGHT_FIELD}</Typography>
         <Block marginLeft={2}>
-          <TextFieldForm
+          <TextField
             name={WEIGHT_FIELD}
             form={form}
             type="number"
