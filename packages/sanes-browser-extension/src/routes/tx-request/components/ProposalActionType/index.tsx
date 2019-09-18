@@ -1,43 +1,54 @@
 import { ActionKind, ProposalAction } from "@iov/bns";
-import { List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
+import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
-import { txListItemSecondaryProps, useTxListItemStyles } from "../ShowRequest/TransactionFee";
+import {
+  txListItemSecondaryProps,
+  useTxListItemHeaderStyles,
+  useTxListItemStyles,
+} from "../ShowRequest/TransactionFee";
 import CreateTextResolution from "./CreateTextResolution";
+import ExecuteProposalBatch from "./ExecuteProposalBatch";
 import ReleaseEscrow from "./ReleaseEscrow";
 import Send from "./Send";
-
-const useStyles = makeStyles({
-  root: {
-    textAlign: "center",
-  },
-});
+import SetValidators from "./SetValidators";
+import UpdateElectionRule from "./UpdateElectionRule";
+import UpdateElectorate from "./UpdateElectorate";
 
 interface Props {
+  readonly header?: boolean;
   readonly action: ProposalAction;
 }
 
-function ProposalActionOptions({ action }: Props): JSX.Element {
+export function ProposalActionOptions({ action, header }: Props): JSX.Element {
   switch (action.kind) {
     case ActionKind.CreateTextResolution:
-      return <CreateTextResolution action={action} />;
+      return <CreateTextResolution action={action} header={header} />;
     case ActionKind.ReleaseEscrow:
-      return <ReleaseEscrow action={action} />;
+      return <ReleaseEscrow action={action} header={header} />;
     case ActionKind.Send:
-      return <Send action={action} />;
+      return <Send action={action} header={header} />;
+    case ActionKind.SetValidators:
+      return <SetValidators action={action} header={header} />;
+    case ActionKind.UpdateElectionRule:
+      return <UpdateElectionRule action={action} header={header} />;
+    case ActionKind.UpdateElectorate:
+      return <UpdateElectorate action={action} header={header} />;
+    case ActionKind.ExecuteProposalBatch:
+      return <ExecuteProposalBatch action={action} />;
     default:
       throw new Error("Action Kind not found. This is a bug.");
   }
 }
 
 function ProposalActionType({ action }: Props): JSX.Element {
-  const classes = useStyles();
   const listItemClasses = useTxListItemStyles();
+  const listItemHeaderClasses = useTxListItemHeaderStyles();
 
   return (
     <List>
       <ListItem>
-        <ListItemText classes={classes} primary="Action" />
+        <ListItemText classes={listItemHeaderClasses} primary="Action" />
       </ListItem>
       <ListItem>
         <ListItemText
