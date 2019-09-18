@@ -1,6 +1,6 @@
 import { ChainId } from "@iov/bcp";
 import { ElectionRule, electionRuleIdToAddress } from "@iov/bns";
-import { FormApi } from "final-form";
+import { FieldValidator, FormApi } from "final-form";
 import {
   Block,
   composeValidators,
@@ -11,7 +11,7 @@ import {
   TextField,
   Typography,
 } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { getConfig } from "../../../../config";
@@ -23,6 +23,11 @@ export const COMMITTEE_THRESHOLD_FIELD = "Committee Rule to amend";
 const COMMITTEE_THRESHOLD_INITIAL = "Select a rule";
 export const THRESHOLD_FIELD = "Threshold";
 const THRESHOLD_PLACEHOLDER = "2/3";
+
+const committeeIsSet = (value: FieldInputValue): string | undefined => {
+  if (value === COMMITTEE_THRESHOLD_INITIAL) return "Must select a rule";
+  return undefined;
+};
 
 interface Props {
   readonly form: FormApi;
@@ -48,16 +53,25 @@ const AmendCommitteeThreshold = ({ form, electionRule }: Props): JSX.Element => 
       });
 
       setRuleItems(ruleItems);
+      // TODO: Trigger revalidation of committee selection
     };
 
     reloadRuleItems();
-  }, [electionRule, governor]);
+  }, [electionRule, form, governor]);
 
-  const committeeValidator = (value: FieldInputValue): string | undefined => {
-    if (value === COMMITTEE_THRESHOLD_INITIAL) return "Must select a rule";
-    return undefined;
-  };
+  const committeeValidator = useMemo(() => {
+    const availableRulesValidator: FieldValidator<FieldInputValue> = (
+      value: FieldInputValue,
+      allValues,
+    ): string | undefined => {
+      console.log(allValues);
 
+      const selection = value || "";
+      if (!ruleItems.map(item => item.name).includes(selection)) return "Selected value is not available.";
+      return undefined;
+    };
+    return composeValidators(committeeIsSet, availableRulesValidator);
+  }, [ruleItems]);
   const thresholdValidator = composeValidators(required, isFraction);
 
   return (

@@ -3,13 +3,14 @@ import { ElectionRule, electionRuleIdToAddress } from "@iov/bns";
 import { FieldValidator, FormApi } from "final-form";
 import {
   Block,
+  composeValidators,
   FieldInputValue,
   SelectField,
   SelectFieldItem,
   TextField,
   Typography,
 } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { getConfig } from "../../../../config";
@@ -21,6 +22,11 @@ export const COMMITTEE_QUORUM_FIELD = "Committee Rule to amend";
 const COMMITTEE_QUORUM_INITIAL = "Select a rule";
 export const QUORUM_FIELD = "Quorum";
 const QUORUM_PLACEHOLDER = "2/3";
+
+const committeeIsSet = (value: FieldInputValue): string | undefined => {
+  if (value === COMMITTEE_QUORUM_INITIAL) return "Must select a rule";
+  return undefined;
+};
 
 interface Props {
   readonly form: FormApi;
@@ -46,15 +52,20 @@ const AmendCommitteeQuorum = ({ form, electionRule }: Props): JSX.Element => {
       });
 
       setRuleItems(ruleItems);
+      // TODO: Trigger revalidation of committee selection
     };
 
     updateCommitteeItems();
   }, [electionRule, governor]);
 
-  const committeeValidator = (value: FieldInputValue): string | undefined => {
-    if (value === COMMITTEE_QUORUM_INITIAL) return "Must select a rule";
-    return undefined;
-  };
+  const committeeValidator = useMemo(() => {
+    const availableRulesValidator = (value: FieldInputValue): string | undefined => {
+      const selection = value || "";
+      if (!ruleItems.map(item => item.name).includes(selection)) return "Selected value is not available.";
+      return undefined;
+    };
+    return composeValidators(committeeIsSet, availableRulesValidator);
+  }, [ruleItems]);
 
   const isFractionOrEmpty: FieldValidator<FieldInputValue> = (value): string | undefined => {
     if (!value) return undefined;
