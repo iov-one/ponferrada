@@ -1,3 +1,4 @@
+import { ElectionRule } from "@iov/bns";
 import { FormApi } from "final-form";
 import {
   Block,
@@ -23,6 +24,7 @@ const THRESHOLD_PLACEHOLDER = "2/3";
 
 interface Props {
   readonly form: FormApi;
+  readonly electionRule: ElectionRule | undefined;
 }
 
 const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {

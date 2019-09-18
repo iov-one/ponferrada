@@ -226,7 +226,12 @@ const ProposalForm = (): JSX.Element => {
           <WhenField form={form} />
         </Block>
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
-        <FormOptions form={form} proposalType={proposalType} recipientsChanged={setRecipients} />
+        <FormOptions
+          form={form}
+          proposalType={proposalType}
+          electionRule={electionRule}
+          recipientsChanged={setRecipients}
+        />
         <DescriptionField form={form} />
         <CommitteeRulesSelect
           form={form}
