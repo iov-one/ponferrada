@@ -1,4 +1,5 @@
-import { ElectionRule } from "@iov/bns";
+import { ChainId } from "@iov/bcp";
+import { ElectionRule, electionRuleIdToAddress } from "@iov/bns";
 import { FormApi } from "final-form";
 import {
   Block,
@@ -13,8 +14,9 @@ import {
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
+import { getConfig } from "../../../../config";
 import { RootState } from "../../../../store/reducers";
-import { getElectionRules } from "../ProposalForm";
+import { getAllElectionRules } from "../ProposalForm";
 import { isFraction } from ".";
 
 export const COMMITTEE_THRESHOLD_FIELD = "Committee Rule to amend";
@@ -27,15 +29,19 @@ interface Props {
   readonly electionRule: ElectionRule | undefined;
 }
 
-const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
+const AmendCommitteeThreshold = ({ form, electionRule }: Props): JSX.Element => {
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const [ruleItems, setRuleItems] = useState<SelectFieldItem[]>([]);
 
   useEffect(() => {
     const reloadRuleItems = async (): Promise<void> => {
+      const chainId = (await getConfig()).bnsChain.chainSpec.chainId as ChainId;
+      const electionRuleAddress = electionRule ? electionRuleIdToAddress(chainId, electionRule.id) : null;
+
       if (!governor) throw new Error("Governor not set in store. This is a bug.");
-      const electionRules = await getElectionRules(governor);
-      const ruleItems = electionRules.map(rule => {
+      const allRules = await getAllElectionRules(governor);
+      const writeableRules = allRules.filter(rule => rule.admin === electionRuleAddress);
+      const ruleItems = writeableRules.map(rule => {
         return {
           name: `${rule.id}: ${rule.title}`,
         };
@@ -45,7 +51,7 @@ const AmendCommitteeThreshold = ({ form }: Props): JSX.Element => {
     };
 
     reloadRuleItems();
-  }, [governor]);
+  }, [electionRule, governor]);
 
   const committeeValidator = (value: FieldInputValue): string | undefined => {
     if (value === COMMITTEE_THRESHOLD_INITIAL) return "Must select a rule";

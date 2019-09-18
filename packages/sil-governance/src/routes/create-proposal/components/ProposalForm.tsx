@@ -49,16 +49,29 @@ const getPubkeyBundleFromForm = (formValue: string): PubkeyBundle => {
   };
 };
 
-export const getElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
-  const electorates = await governor.getElectorates();
-  let allElectionRules: ElectionRule[] = [];
-
+const getElectionRules = async (
+  governor: Governor,
+  filteredByGovernor = true,
+): Promise<readonly ElectionRule[]> => {
+  const electorates = await governor.getElectorates(!filteredByGovernor);
+  const out: ElectionRule[] = [];
   for (const electorate of electorates) {
-    const electionRules = await governor.getElectionRules(electorate.id);
-    allElectionRules = [...allElectionRules, ...electionRules];
+    try {
+      const electionRules = await governor.getElectionRules(electorate.id);
+      out.push(...electionRules);
+    } catch (error) {
+      if (error.toString().match(/No election rule found for electorate/)) {
+        // ignore
+      } else {
+        throw error;
+      }
+    }
   }
+  return out;
+};
 
-  return allElectionRules;
+export const getAllElectionRules = async (governor: Governor): Promise<readonly ElectionRule[]> => {
+  return getElectionRules(governor, false);
 };
 
 const ProposalForm = (): JSX.Element => {
