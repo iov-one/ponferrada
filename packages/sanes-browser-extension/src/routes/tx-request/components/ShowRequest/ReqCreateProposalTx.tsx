@@ -1,5 +1,4 @@
 import { CreateProposalTx } from "@iov/bns";
-import { makeStyles } from "@material-ui/core";
 import { Block, List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
