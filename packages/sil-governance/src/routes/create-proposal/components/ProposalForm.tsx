@@ -60,6 +60,7 @@ const getElectionRules = async (
       const electionRules = await governor.getElectionRules(electorate.id);
       out.push(...electionRules);
     } catch (error) {
+      // TODO: Remove this error handler once https://github.com/iov-one/iov-core/issues/1239 is done
       if (error.toString().match(/No election rule found for electorate/)) {
         // ignore
       } else {
