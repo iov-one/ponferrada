@@ -10,10 +10,10 @@ const COMMITTEE_RULES_INITIAL = "Select a rule";
 interface Props {
   readonly form: FormApi;
   readonly electionRules: readonly ElectionRule[];
-  readonly changeElectionRuleId: Dispatch<SetStateAction<number | undefined>>;
+  readonly electionRuleIdChanged: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Props): JSX.Element => {
+const CommitteeRulesSelect = ({ form, electionRules, electionRuleIdChanged }: Props): JSX.Element => {
   const ruleItems = electionRules.map(rule => {
     return {
       name: `${rule.id}: ${rule.title}`,
@@ -39,7 +39,7 @@ const CommitteeRulesSelect = ({ form, electionRules, changeElectionRuleId }: Pro
     setThreshold(threshold);
     setPeriod(period);
 
-    changeElectionRuleId(rule.id);
+    electionRuleIdChanged(rule.id);
   };
 
   return (

@@ -231,7 +231,7 @@ const ProposalForm = (): JSX.Element => {
         <CommitteeRulesSelect
           form={form}
           electionRules={electionRules}
-          changeElectionRuleId={setElectionRuleId}
+          electionRuleIdChanged={setElectionRuleId}
         />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting || noRulesSet}>
