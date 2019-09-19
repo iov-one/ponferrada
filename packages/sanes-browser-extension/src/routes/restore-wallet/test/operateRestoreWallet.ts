@@ -56,7 +56,7 @@ export const submitMnemonicForm = async (
   await findRenderedDOMComponentWithId(restoreWalletDom, SET_PASSWORD_STEP_RESTORE_WALLET_ROUTE);
 };
 
-export const submitRecoveryPhraseE2E = async (
+export const submitRecoveryWordsE2E = async (
   page: Page,
   mnemonic: string,
   password: string,

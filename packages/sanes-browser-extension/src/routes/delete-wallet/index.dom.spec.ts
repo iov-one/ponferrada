@@ -41,8 +41,8 @@ describe("DOM > Feature > Delete Wallet", () => {
     await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
   }, 60000);
 
-  it('has a valid "Recovery phrase" input', async () => {
-    expect(mnemonicInput.getAttribute("placeholder")).toBe("Recovery phrase");
+  it('has a valid "Recovery words" input', async () => {
+    expect(mnemonicInput.getAttribute("placeholder")).toBe("Recovery words");
 
     await submit(form);
     expect(getMnemonicValidity(deleteWalletDom).textContent).toBe("Required");

@@ -7,12 +7,12 @@ export interface Props {
   readonly mnemonic: string;
 }
 
-const ShowRecoveryPhrase = ({ mnemonic }: Props): JSX.Element => {
+const ShowRecoveryWords = ({ mnemonic }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Block marginRight={1}>
         <Typography variant="subtitle2">
-          Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool to
+          Your Recovery Words are 12 random words that are set in a particular order that acts as a tool to
           recover or back up your wallet on any platform.
         </Typography>
       </Block>
@@ -39,4 +39,4 @@ const ShowRecoveryPhrase = ({ mnemonic }: Props): JSX.Element => {
   );
 };
 
-export default ShowRecoveryPhrase;
+export default ShowRecoveryWords;

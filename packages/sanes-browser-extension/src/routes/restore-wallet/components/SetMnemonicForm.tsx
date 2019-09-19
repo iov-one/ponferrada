@@ -54,7 +54,7 @@ const SetMnemonicForm = ({ onSetMnemonic, onBack }: Props): JSX.Element => {
           <TextField
             multiline
             rows={5}
-            placeholder="Recovery phrase"
+            placeholder="Recovery words"
             form={form}
             fullWidth
             name={MNEMONIC_FIELD}

@@ -11,7 +11,7 @@ export interface Props {
   readonly onBack: () => void;
 }
 
-const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Element => {
+const ShowWordsForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Element => {
   const [visibleMnemonic, setVisibleMnemonic] = React.useState<string>("");
 
   const onToggleMnemonic = (_: React.ChangeEvent<HTMLInputElement>, checked: boolean): void => {
@@ -19,9 +19,9 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
   };
 
   return (
-    <NeumaPageLayout id={CREATE_WALLET_ID_STEP_2} primaryTitle="Recovery" title="Phrase">
+    <NeumaPageLayout id={CREATE_WALLET_ID_STEP_2} primaryTitle="Recovery" title="Words">
       <Typography variant="body1" inline>
-        Your secret recovery phrase consists of 12 words that act as a tool to recover your wallet on any
+        Your secret recovery words consists of 12 words that act as a tool to recover your wallet on any
         platform.
       </Typography>
       <Block marginTop={2} />
@@ -30,7 +30,7 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
         <Block display="flex" alignItems="center">
           <Block marginRight={1}>
             <Typography variant="subtitle2" inline>
-              Show/hide recovery phrase
+              Show/hide recovery words
             </Typography>
           </Block>
         </Block>
@@ -67,4 +67,4 @@ const ShowPhraseForm = ({ mnemonic, onBack, onHintPassword }: Props): JSX.Elemen
   );
 };
 
-export default ShowPhraseForm;
+export default ShowWordsForm;

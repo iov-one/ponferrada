@@ -5,28 +5,28 @@ import {
   mockPersonaResponse,
 } from "../../extension/background/model/persona/test/persona";
 import { click } from "../../utils/test/dom";
-import { travelToRecoveryPhrase, travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { travelToRecoveryWords, travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { RECOVERY_PHRASE_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
+import { RECOVERY_WORDS_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
 import * as Drawer from "../wallet/test/drawer";
-import { getRenderedMnemonic } from "./test/operateRecoveryPhrase";
+import { getRenderedMnemonic } from "./test/operateRecoveryWords";
 
-withChainsDescribe("DOM > Feature > Recovery Phrase", () => {
+withChainsDescribe("DOM > Feature > Recovery Words", () => {
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const personaMock = mockPersonaResponse([], mnemonic, []);
 
-  let recoveryPhraseDom: React.Component;
+  let recoveryWordsDom: React.Component;
   let backButton: Element;
   let exportButton: Element;
 
   beforeEach(async () => {
-    recoveryPhraseDom = await travelToRecoveryPhrase();
-    [backButton, exportButton] = TestUtils.scryRenderedDOMComponentsWithTag(recoveryPhraseDom, "button");
+    recoveryWordsDom = await travelToRecoveryWords();
+    [backButton, exportButton] = TestUtils.scryRenderedDOMComponentsWithTag(recoveryWordsDom, "button");
   }, 60000);
 
   it("has a back button that redirects to the previous route when clicked", async () => {
     await travelToWallet();
-    await travelToRecoveryPhrase();
+    await travelToRecoveryWords();
     expect(backButton.getAttribute("aria-label")).toBe("Go back");
     click(backButton);
     await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
@@ -38,22 +38,22 @@ withChainsDescribe("DOM > Feature > Recovery Phrase", () => {
   }, 60000);
 
   it("shows an empty mnemonic if there is no current Persona", () => {
-    expect(getRenderedMnemonic(recoveryPhraseDom).textContent).toBe("");
+    expect(getRenderedMnemonic(recoveryWordsDom).textContent).toBe("");
   }, 60000);
 
   it("shows the mnemonic for the current Persona", async () => {
-    recoveryPhraseDom = await travelToRecoveryPhrase(personaMock);
-    expect(getRenderedMnemonic(recoveryPhraseDom).textContent).toBe(mnemonic);
+    recoveryWordsDom = await travelToRecoveryWords(personaMock);
+    expect(getRenderedMnemonic(recoveryWordsDom).textContent).toBe(mnemonic);
   }, 60000);
 
   it("shows the mnemonic for the current Persona when accessed through Drawer menu", async () => {
     const accountDom = await travelToWallet(personaMock);
 
     mockGetPersonaData(personaMock);
-    await Drawer.clickRecoveryPhrase(accountDom);
-    await whenOnNavigatedToRoute(RECOVERY_PHRASE_ROUTE);
+    await Drawer.clickRecoveryWords(accountDom);
+    await whenOnNavigatedToRoute(RECOVERY_WORDS_ROUTE);
 
-    const recoveryPhraseDom = accountDom;
-    expect(getRenderedMnemonic(recoveryPhraseDom).textContent).toBe(mnemonic);
+    const recoveryWordsDom = accountDom;
+    expect(getRenderedMnemonic(recoveryWordsDom).textContent).toBe(mnemonic);
   }, 60000);
 });

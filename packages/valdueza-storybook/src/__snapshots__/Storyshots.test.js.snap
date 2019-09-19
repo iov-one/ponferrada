@@ -6696,7 +6696,7 @@ Array [
       <img
         alt="Icon"
         className="makeStyles-root"
-        src="recoveryPhrase.svg"
+        src="recoveryWords.svg"
       />
       <span
         className="MuiBadge-badge makeStyles-check"
@@ -6727,7 +6727,7 @@ Array [
       <img
         alt="Icon"
         className="makeStyles-root"
-        src="recoveryPhrase.svg"
+        src="recoveryWords.svg"
       />
       <span
         className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
@@ -6754,7 +6754,7 @@ Array [
       <img
         alt="Icon"
         className="makeStyles-root"
-        src="recoveryPhrase.svg"
+        src="recoveryWords.svg"
       />
       <span
         className="MuiBadge-badge makeStyles-dot MuiBadge-colorError MuiBadge-dot"
@@ -6781,7 +6781,7 @@ Array [
       <img
         alt="Icon"
         className="makeStyles-root"
-        src="recoveryPhrase.svg"
+        src="recoveryWords.svg"
       />
       <span
         className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"

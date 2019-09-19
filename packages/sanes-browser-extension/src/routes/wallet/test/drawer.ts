@@ -11,7 +11,7 @@ async function openDrawer(drawerComponent: React.Component): Promise<void> {
 }
 
 interface InitDrawerResult {
-  readonly recoveryPhraseLink: Element;
+  readonly recoveryWordsLink: Element;
   readonly requestsLink: Element;
   readonly deleteWalletLink: Element;
   readonly termsLink: Element;
@@ -23,22 +23,22 @@ const initDrawer = async (drawerComponent: React.Component): Promise<InitDrawerR
   const drawerList = await findRenderedDOMComponentWithId(drawerComponent, DRAWER_HTML_ID);
   const drawerElements = (drawerList as Element).querySelectorAll("nav div > div:nth-of-type(2)");
   expect(drawerElements.length).toBe(3);
-  const [recoveryPhraseLink, requestsLink, deleteWalletLink] = drawerElements;
+  const [recoveryWordsLink, requestsLink, deleteWalletLink] = drawerElements;
   const footerLinks = (drawerList as Element).querySelectorAll("footer a");
   expect(footerLinks.length).toBe(1);
   const [termsLink] = footerLinks;
 
-  expect(recoveryPhraseLink.textContent).toBe("Recovery words");
+  expect(recoveryWordsLink.textContent).toBe("Recovery words");
   expect(requestsLink.textContent).toBe("Requests");
   expect(deleteWalletLink.textContent).toBe("Delete Wallet");
   expect(termsLink.textContent).toBe("Terms & Conditions");
 
-  return { recoveryPhraseLink, requestsLink, deleteWalletLink, termsLink };
+  return { recoveryWordsLink, requestsLink, deleteWalletLink, termsLink };
 };
 
-export const clickRecoveryPhrase = async (drawerComponent: React.Component): Promise<void> => {
-  const { recoveryPhraseLink } = await initDrawer(drawerComponent);
-  await click(recoveryPhraseLink);
+export const clickRecoveryWords = async (drawerComponent: React.Component): Promise<void> => {
+  const { recoveryWordsLink } = await initDrawer(drawerComponent);
+  await click(recoveryWordsLink);
 };
 
 export const clickRequests = async (drawerComponent: React.Component): Promise<void> => {

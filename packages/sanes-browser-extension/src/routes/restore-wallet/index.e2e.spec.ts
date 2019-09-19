@@ -3,7 +3,7 @@ import { randomString } from "ui-logic";
 
 import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { submitRecoveryPhraseE2E, travelToRestoreWalletStep } from "./test/operateRestoreWallet";
+import { submitRecoveryWordsE2E, travelToRestoreWalletStep } from "./test/operateRestoreWallet";
 
 withChainsDescribe("E2E > Restore Wallet route", () => {
   const password = randomString(10);
@@ -21,8 +21,8 @@ withChainsDescribe("E2E > Restore Wallet route", () => {
     await closeBrowser(browser);
   });
 
-  it("should redirect to restore wallet route, fill recovery phrase and redirect to account route", async () => {
+  it("should redirect to restore wallet route, fill recovery words and redirect to account route", async () => {
     await travelToRestoreWalletStep(page);
-    await submitRecoveryPhraseE2E(page, mnemonic, password);
+    await submitRecoveryWordsE2E(page, mnemonic, password);
   }, 60000);
 });
