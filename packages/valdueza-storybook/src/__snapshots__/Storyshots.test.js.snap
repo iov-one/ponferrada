@@ -13760,71 +13760,7 @@ exports[`Storyshots Extension/Transaction Request/Proposal Actions ReleaseEscrow
             <p
               className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
             >
-              4
-              52
-              206
-              36
-              138
-              106
-              89
-              121
-              192
-              77
-              117
-              209
-              167
-              89
-              7
-              178
-              190
-              193
-              203
-              77
-              79
-              110
-              23
-              183
-              101
-              33
-              240
-              146
-              94
-              139
-              107
-              64
-              224
-              7
-              17
-              254
-              152
-              231
-              137
-              207
-              92
-              131
-              23
-              207
-              30
-              115
-              27
-              49
-              1
-              233
-              219
-              250
-              186
-              94
-              53
-              30
-              66
-              78
-              69
-              201
-              162
-              244
-              223
-              182
-              60
+              56482
             </p>
           </div>
         </li>
@@ -14499,7 +14435,7 @@ exports[`Storyshots Extension/Transaction Request/Proposal Actions SetValidators
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
             >
-              21eb1e708abfe781d0d0...9b4
+              21eb1e708ab...0b3b9c238d9b4
             </span>
             <p
               className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
@@ -14518,7 +14454,7 @@ exports[`Storyshots Extension/Transaction Request/Proposal Actions SetValidators
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
             >
-              3d509f9aca1d01651145...5bd
+              3d509f9aca1...6bc20e87d45bd
             </span>
             <p
               className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
@@ -15198,7 +15134,7 @@ exports[`Storyshots Extension/Transaction Request/Proposal Actions UpdateElector
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
             >
-              21eb1e708abfe781d0d0...9b4
+              21eb1e708ab...0b3b9c238d9b4
             </span>
             <p
               className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
@@ -15217,7 +15153,7 @@ exports[`Storyshots Extension/Transaction Request/Proposal Actions UpdateElector
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
             >
-              3d509f9aca1d01651145...5bd
+              3d509f9aca1...6bc20e87d45bd
             </span>
             <p
               className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
