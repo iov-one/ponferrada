@@ -4,7 +4,7 @@ import { randomString, sleep } from "ui-logic";
 import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
-  submitRecoveryPhraseE2E,
+  submitRecoveryWordsE2E,
   travelToRestoreWalletStep,
 } from "../restore-wallet/test/operateRestoreWallet";
 
@@ -19,7 +19,7 @@ withChainsDescribe("E2E > Wallet route", () => {
     await travelToRestoreWalletStep(page);
     const password = randomString(10);
     const mnemonic = "degree tackle suggest window test behind mesh extra cover prepare oak script";
-    await submitRecoveryPhraseE2E(page, mnemonic, password);
+    await submitRecoveryWordsE2E(page, mnemonic, password);
   }, 15000);
 
   afterEach(async () => {

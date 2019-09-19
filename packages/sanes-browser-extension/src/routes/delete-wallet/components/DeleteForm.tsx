@@ -17,15 +17,15 @@ const UnlockForm = ({ onDelete, validate }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Typography variant="subtitle1" inline>
-        Are you sure want to completely delete this wallet? Please type current wallet recovery phrase into
-        the field below.
+        Are you sure want to completely delete this wallet? Please type current wallet recovery words into the
+        field below.
       </Typography>
       <Form onSubmit={handleSubmit}>
         <Block marginBottom={2}>
           <TextField
             multiline
             rows={5}
-            placeholder="Recovery phrase"
+            placeholder="Recovery words"
             form={form}
             required
             fullWidth

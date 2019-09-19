@@ -27,7 +27,7 @@ import * as txsUpdater from "../../extension/background/updaters/appUpdater";
 import { click } from "../../utils/test/dom";
 import { travelToWallet, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { DELETE_WALLET_ROUTE, RECOVERY_PHRASE_ROUTE, REQUEST_ROUTE, TERMS_URL } from "../paths";
+import { DELETE_WALLET_ROUTE, RECOVERY_WORDS_ROUTE, REQUEST_ROUTE, TERMS_URL } from "../paths";
 import * as Drawer from "../wallet/test/drawer";
 import { checkCreateAccount, getTransactionsCount } from "./test/operateWallet";
 
@@ -97,9 +97,9 @@ describe("DOM > Feature > Wallet Status", () => {
     walletStatusDom = await travelToWallet(personaMock);
   }, 60000);
 
-  it("redirects to the Recovery Phrase view when link clicked in Drawer menu", async () => {
-    await Drawer.clickRecoveryPhrase(walletStatusDom);
-    await whenOnNavigatedToRoute(RECOVERY_PHRASE_ROUTE);
+  it("redirects to the Recovery Words view when link clicked in Drawer menu", async () => {
+    await Drawer.clickRecoveryWords(walletStatusDom);
+    await whenOnNavigatedToRoute(RECOVERY_WORDS_ROUTE);
   }, 60000);
 
   it("redirects to the Requests view when link clicked in Drawer menu", async () => {

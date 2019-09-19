@@ -7,7 +7,7 @@ import DeleteWallet from "./delete-wallet";
 import {
   CREATE_WALLET_ROUTE,
   DELETE_WALLET_ROUTE,
-  RECOVERY_PHRASE_ROUTE,
+  RECOVERY_WORDS_ROUTE,
   REQUEST_ROUTE,
   RESTORE_WALLET,
   SHARE_IDENTITY,
@@ -16,7 +16,7 @@ import {
   WALLET_STATUS_ROUTE,
   WELCOME_ROUTE,
 } from "./paths";
-import RecoveryPhrase from "./recovery-phrase";
+import RecoveryWords from "./recovery-words";
 import Requests from "./requests";
 import RestoreWallet from "./restore-wallet";
 import ShareIdentity from "./share-identity";
@@ -31,7 +31,7 @@ export const MainRouter = (): JSX.Element => (
       <Route exact path={WELCOME_ROUTE} component={Welcome} />
       <Route exact path={CREATE_WALLET_ROUTE} component={CreateWallet} />
       <Route exact path={UNLOCK_ROUTE} component={Unlock} />
-      <Route exact path={RECOVERY_PHRASE_ROUTE} component={RecoveryPhrase} />
+      <Route exact path={RECOVERY_WORDS_ROUTE} component={RecoveryWords} />
       <Route exact path={RESTORE_WALLET} component={RestoreWallet} />
       <Route exact path={WALLET_STATUS_ROUTE} component={WalletStatus} />
       <Route exact path={SHARE_IDENTITY} component={ShareIdentity} />

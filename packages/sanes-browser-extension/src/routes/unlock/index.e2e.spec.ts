@@ -14,7 +14,7 @@ import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
   submitNewWalletE2E,
   submitSecurityHintE2E,
-  submitShowPhraseE2E,
+  submitShowWordsE2E,
   travelToCreateWalletNewWalletStep,
 } from "../create-wallet/test/operateCreateWallet";
 import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
@@ -41,7 +41,7 @@ withChainsDescribe("DOM > Unlock route", (): void => {
     await travelToCreateWalletNewWalletStep(page);
     const password = randomString(10);
     await submitNewWalletE2E(page, randomString(10), password);
-    await submitShowPhraseE2E(page);
+    await submitShowWordsE2E(page);
     await submitSecurityHintE2E(page, randomString(10));
     // Simulating reload
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {

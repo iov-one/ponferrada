@@ -21,13 +21,13 @@ import { createAccount } from "../../utils/chrome";
 import { history } from "../../utils/history";
 import {
   DELETE_WALLET_ROUTE,
-  RECOVERY_PHRASE_ROUTE,
+  RECOVERY_WORDS_ROUTE,
   REQUEST_ROUTE,
   TERMS_URL,
   WALLET_STATUS_ROUTE,
 } from "../paths";
 import deleteWalletIcon from "./assets/deleteWallet.svg";
-import recoveryPhraseIcon from "./assets/recoveryPhrase.svg";
+import recoveryWordsIcon from "./assets/recoveryWords.svg";
 import requestsIcon from "./assets/requests.svg";
 import ListTxs from "./components/ListTxs";
 
@@ -73,9 +73,9 @@ const AccountView = (): JSX.Element => {
 
   const items = [
     {
-      icon: recoveryPhraseIcon,
+      icon: recoveryWordsIcon,
       text: "Recovery words",
-      action: () => history.push(RECOVERY_PHRASE_ROUTE),
+      action: () => history.push(RECOVERY_WORDS_ROUTE),
     },
     {
       icon: requestsIcon,

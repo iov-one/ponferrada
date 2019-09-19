@@ -6,7 +6,7 @@ import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
   submitNewWalletE2E,
   submitSecurityHintE2E,
-  submitShowPhraseE2E,
+  submitShowWordsE2E,
   travelToCreateWalletNewWalletStep,
 } from "./test/operateCreateWallet";
 
@@ -23,10 +23,10 @@ withChainsDescribe("DOM > Create Wallet route", () => {
     await closeBrowser(browser);
   });
 
-  it("should redirect to create wallet route, fill required data, show recovery phrase and hint", async () => {
+  it("should redirect to create wallet route, fill required data, show recovery words and hint", async () => {
     await travelToCreateWalletNewWalletStep(page);
     await submitNewWalletE2E(page, randomString(10), randomString(10));
-    await submitShowPhraseE2E(page);
+    await submitShowWordsE2E(page);
     await submitSecurityHintE2E(page, randomString(10));
   }, 60000);
 });

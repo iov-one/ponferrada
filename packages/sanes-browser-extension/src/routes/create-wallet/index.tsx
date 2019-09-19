@@ -9,7 +9,7 @@ import { storeHintPhrase } from "../../utils/localstorage/hint";
 import { WALLET_STATUS_ROUTE } from "../paths";
 import NewWalletForm, { PASSWORD_FIELD } from "./components/NewWalletForm";
 import SecurityHintForm, { SECURITY_HINT } from "./components/SecurityHintForm";
-import ShowPhraseForm from "./components/ShowPhraseForm";
+import ShowWordsForm from "./components/ShowWordsForm";
 
 const onBack = (): void => {
   history.goBack();
@@ -21,7 +21,7 @@ const CreateWallet = (): JSX.Element => {
   const personaProvider = React.useContext(PersonaContext);
 
   const onNewWallet = (): void => setStep("first");
-  const onShowPhrase = (): void => setStep("second");
+  const onShowWords = (): void => setStep("second");
   const onHintPassword = (): void => setStep("third");
 
   const onSaveHint = (formValues: FormValues): void => {
@@ -50,20 +50,20 @@ const CreateWallet = (): JSX.Element => {
       txs: response.txs,
       hasStoredPersona: true,
     });
-    onShowPhrase();
+    onShowWords();
   };
 
   return (
     <React.Fragment>
       {step === "first" && <NewWalletForm onBack={onBack} onCreateWallet={onCreateWallet} />}
       {step === "second" && (
-        <ShowPhraseForm
+        <ShowWordsForm
           mnemonic={personaProvider.mnemonic}
           onBack={onNewWallet}
           onHintPassword={onHintPassword}
         />
       )}
-      {step === "third" && <SecurityHintForm onBack={onShowPhrase} onSaveHint={onSaveHint} />}
+      {step === "third" && <SecurityHintForm onBack={onShowWords} onSaveHint={onSaveHint} />}
     </React.Fragment>
   );
 };

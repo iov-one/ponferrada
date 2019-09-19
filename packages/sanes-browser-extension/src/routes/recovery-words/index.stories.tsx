@@ -3,13 +3,13 @@ import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
-import RecoveryPhrase from "./index";
+import RecoveryWords from "./index";
 
 storiesOf(CHROME_EXTENSION_ROOT, module).add(
-  "Recovery Phrase page",
+  "Recovery Words page",
   (): JSX.Element => (
     <Storybook>
-      <RecoveryPhrase />
+      <RecoveryWords />
     </Storybook>
   ),
 );

@@ -6,7 +6,7 @@ import React from "react";
 import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
 import NewWalletForm from "./components/NewWalletForm";
 import SecurityHintForm from "./components/SecurityHintForm";
-import ShowPhraseForm from "./components/ShowPhraseForm";
+import ShowWordsForm from "./components/ShowWordsForm";
 
 const exampleMnemonic =
   "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
@@ -21,10 +21,10 @@ storiesOf(`${CHROME_EXTENSION_ROOT}/Create Wallet`, module)
     ),
   )
   .add(
-    "Recovery Phrase page",
+    "Recovery Words page",
     (): JSX.Element => (
       <Storybook>
-        <ShowPhraseForm
+        <ShowWordsForm
           mnemonic={exampleMnemonic}
           onBack={action("back in history")}
           onHintPassword={action("hint step")}

@@ -45,8 +45,8 @@ withChainsDescribe("DOM > Feature > Restore Wallet", () => {
       mnemonicForm = getMnemonicForm(restoreWalletDom);
     });
 
-    it('has a valid "Recovery phrase" textarea', () => {
-      expect(mnemonicTextarea.getAttribute("placeholder")).toBe("Recovery phrase");
+    it('has a valid "Recovery words" textarea', () => {
+      expect(mnemonicTextarea.getAttribute("placeholder")).toBe("Recovery words");
 
       submit(mnemonicForm);
       expect(getMnemonicValidity(restoreWalletDom).textContent).toBe("Required");

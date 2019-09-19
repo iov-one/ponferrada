@@ -4,7 +4,7 @@ import { PersonaAcccount, ProcessedTx } from "..";
 import {
   submitNewWallet,
   submitSecurityHint,
-  submitShowPhrase,
+  submitShowWords,
 } from "../../../../../routes/create-wallet/test/operateCreateWallet";
 import { WALLET_STATUS_ROUTE } from "../../../../../routes/paths";
 import * as chromeInternalMsgs from "../../../../../utils/chrome";
@@ -18,7 +18,7 @@ export async function processCreateWallet(
   const createWalletDom = await travelToCreateWallet();
 
   await submitNewWallet(createWalletDom, password);
-  await submitShowPhrase(createWalletDom);
+  await submitShowWords(createWalletDom);
   await submitSecurityHint(createWalletDom, hint);
 
   await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);

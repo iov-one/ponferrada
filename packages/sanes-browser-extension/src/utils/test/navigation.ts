@@ -6,7 +6,7 @@ import { Request } from "../../extension/background/model/requestsHandler/reques
 import {
   CREATE_WALLET_ROUTE,
   DELETE_WALLET_ROUTE,
-  RECOVERY_PHRASE_ROUTE,
+  RECOVERY_WORDS_ROUTE,
   REQUEST_ROUTE,
   RESTORE_WALLET,
   SHARE_IDENTITY,
@@ -59,8 +59,8 @@ export const travelToUnlock = async (): Promise<React.Component> => {
   return travelTo(UNLOCK_ROUTE);
 };
 
-export const travelToRecoveryPhrase = async (persona?: GetPersonaResponse): Promise<React.Component> => {
-  return travelTo(RECOVERY_PHRASE_ROUTE, [], persona);
+export const travelToRecoveryWords = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(RECOVERY_WORDS_ROUTE, [], persona);
 };
 
 export const travelToRestoreWallet = async (): Promise<React.Component> => {

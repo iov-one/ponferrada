@@ -13,7 +13,7 @@ import { mayTestChains } from "../../utils/test/testExecutor";
 import { WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
 import { CREATE_WALLET_ID_STEP_1 } from "./components/NewWalletForm";
 import { CREATE_WALLET_ID_STEP_3 } from "./components/SecurityHintForm";
-import { CREATE_WALLET_ID_STEP_2 } from "./components/ShowPhraseForm";
+import { CREATE_WALLET_ID_STEP_2 } from "./components/ShowWordsForm";
 import {
   checkHintValidity,
   getConfirmPasswordMismatch,
@@ -25,7 +25,7 @@ import {
   getTermsValidity,
   isButtonDisabled,
   submitNewWallet,
-  submitShowPhrase,
+  submitShowWords,
 } from "./test/operateCreateWallet";
 
 describe("DOM > Feature > CreateWallet", () => {
@@ -134,7 +134,7 @@ describe("DOM > Feature > CreateWallet", () => {
       await whenOnNavigatedToRoute(WELCOME_ROUTE);
     }, 10000);
 
-    it('has a valid "Continue" button that redirects to the Show Phrase Form if the form is valid when clicked', async () => {
+    it('has a valid "Continue" button that redirects to the Show Words Form if the form is valid when clicked', async () => {
       expect(continueButton.textContent).toBe("Continue");
       expect(isButtonDisabled(continueButton)).toBeTruthy();
 
@@ -160,7 +160,7 @@ describe("DOM > Feature > CreateWallet", () => {
     }, 10000);
   });
 
-  describe("Show Phrase Step", () => {
+  describe("Show Words Step", () => {
     let checkbox: Element;
     let buttons: Element[];
     let backButton: Element;
@@ -177,7 +177,7 @@ describe("DOM > Feature > CreateWallet", () => {
 
     it("has an explanation text", async () => {
       const explanation = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "p")[0];
-      expect(explanation.textContent || "").toMatch(/^Your secret recovery phrase/);
+      expect(explanation.textContent || "").toMatch(/^Your secret recovery words/);
     });
 
     it("has a toggle button that shows the mnemonic when active", async () => {
@@ -213,7 +213,7 @@ describe("DOM > Feature > CreateWallet", () => {
     beforeEach(async () => {
       mockCreatePersona(mockPersonaResponse([], mnemonic, []));
       await submitNewWallet(createWalletDom, password);
-      await submitShowPhrase(createWalletDom);
+      await submitShowWords(createWalletDom);
 
       hintInput = TestUtils.findRenderedDOMComponentWithTag(createWalletDom, "input");
       buttons = TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "button");

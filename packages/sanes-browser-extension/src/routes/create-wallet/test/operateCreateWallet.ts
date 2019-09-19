@@ -16,7 +16,7 @@ import {
   TERMS_ACCEPT_FIELD,
 } from "../components/NewWalletForm";
 import { CREATE_WALLET_ID_STEP_3, SECURITY_HINT } from "../components/SecurityHintForm";
-import { CREATE_WALLET_ID_STEP_2 } from "../components/ShowPhraseForm";
+import { CREATE_WALLET_ID_STEP_2 } from "../components/ShowWordsForm";
 
 export const getNewWalletInputs = (createWalletDom: React.Component): Element[] => {
   return TestUtils.scryRenderedDOMComponentsWithTag(createWalletDom, "input");
@@ -96,7 +96,7 @@ export const submitNewWallet = async (newWalletDom: React.Component, password: s
   await TestUtils.act(submitPasswordForm as any);
 };
 
-export const submitShowPhraseE2E = async (page: Page): Promise<void> => {
+export const submitShowWordsE2E = async (page: Page): Promise<void> => {
   const checkbox = await page.$('input[type="checkbox"]');
   expect(checkbox).not.toBeNull();
 
@@ -115,10 +115,10 @@ export const submitShowPhraseE2E = async (page: Page): Promise<void> => {
   await findRenderedE2EComponentWithId(page, CREATE_WALLET_ID_STEP_3);
 };
 
-export const submitShowPhrase = async (showPhraseDom: React.Component): Promise<void> => {
-  const continueButton = TestUtils.scryRenderedDOMComponentsWithTag(showPhraseDom, "button")[1];
+export const submitShowWords = async (showWordsDom: React.Component): Promise<void> => {
+  const continueButton = TestUtils.scryRenderedDOMComponentsWithTag(showWordsDom, "button")[1];
   click(continueButton);
-  await findRenderedDOMComponentWithId(showPhraseDom, CREATE_WALLET_ID_STEP_3);
+  await findRenderedDOMComponentWithId(showWordsDom, CREATE_WALLET_ID_STEP_3);
 };
 
 export const submitSecurityHintE2E = async (page: Page, securityHint: string): Promise<void> => {

@@ -12,14 +12,14 @@ const PdfDownload = ({ mnemonic }: Props): JSX.Element => {
     const pdf = new PDFGenerator();
 
     pdf.createHeader([
-      "Your Recovery Phrase are 12 random words that are set in a particular order that acts as a",
+      "Your Recovery Words are 12 random words that are set in a particular order that acts as a",
       "tool to recover or back up your wallet on any platform.",
       "",
-      "Your recovery phrase:",
+      "Your recovery words:",
     ]);
     pdf.addMnemonicTable(mnemonic.split(" "), 45);
 
-    pdf.save("recovery-phrase.pdf");
+    pdf.save("recovery-words.pdf");
   };
 
   return <DownloadButton onDownload={generatePdf}>Export as .PDF</DownloadButton>;
