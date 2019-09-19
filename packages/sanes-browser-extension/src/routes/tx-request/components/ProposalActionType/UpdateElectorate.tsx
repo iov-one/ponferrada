@@ -1,6 +1,7 @@
 import { ElectorProperties, UpdateElectorateAction } from "@iov/bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
+import { ellipsifyMiddle } from "ui-logic";
 
 import {
   txListItemSecondaryProps,
@@ -15,8 +16,7 @@ interface ValidatorProps {
 
 function ElectorListItem({ elector, properties }: ValidatorProps): JSX.Element {
   const listItemClasses = useTxListItemStyles();
-  const electorLabel = `${elector.slice(0, 20)}...${elector.slice(-3)}`;
-
+  const electorLabel = ellipsifyMiddle(elector, 27);
   return (
     <React.Fragment>
       <ListItem>

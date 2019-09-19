@@ -1,6 +1,7 @@
 import { SetValidatorsAction, ValidatorProperties } from "@iov/bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
+import { ellipsifyMiddle } from "ui-logic";
 
 import {
   txListItemSecondaryProps,
@@ -15,7 +16,7 @@ interface ValidatorProps {
 
 function ValidatorsListItem({ index, properties }: ValidatorProps): JSX.Element {
   const listItemClasses = useTxListItemStyles();
-  const validatorLabel = `${index.slice(8, 28)}...${index.slice(-3)}`;
+  const validatorLabel = ellipsifyMiddle(index.slice(8), 27);
 
   return (
     <React.Fragment>
