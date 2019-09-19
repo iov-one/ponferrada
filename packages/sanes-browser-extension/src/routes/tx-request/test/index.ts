@@ -91,7 +91,7 @@ export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
   };
 }
 
-export function getCreateProposalTransaction(): CreateProposalTx & WithCreator {
+export function getCreateTextResolutionActionTransaction(): CreateProposalTx & WithCreator {
   return {
     kind: "bns/create_proposal",
     creator: defaultCreator,
@@ -106,6 +106,197 @@ export function getCreateProposalTransaction(): CreateProposalTx & WithCreator {
     action: {
       kind: ActionKind.CreateTextResolution,
       resolution: "Stop all this blockchain stuff",
+    },
+  };
+}
+
+export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.ReleaseEscrow,
+      escrowId: Encoding.fromHex("000000000000dca2"),
+      amount: {
+        quantity: "1230000000000000000", // 1.23 ETH
+        fractionalDigits: 18,
+        tokenTicker: "ETH" as TokenTicker,
+      },
+    },
+  };
+}
+
+export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.Send,
+      sender: ethereumCodec.identityToAddress(ethereumCreator),
+      amount: {
+        quantity: "1230000000000000000", // 1.23 ETH
+        fractionalDigits: 18,
+        tokenTicker: "ETH" as TokenTicker,
+      },
+      recipient: defaultAddress,
+      memo: "paid transaction",
+    },
+  };
+}
+
+export function getSetValidatorsActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.SetValidators,
+      validatorUpdates: {
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        ed25519_21eb1e708abfe781d0d043a47dd0b3b9c238d9b4: { power: 10 },
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        ed25519_3d509f9aca1d01651145934e9406bc20e87d45bd: { power: 10 },
+      },
+    },
+  };
+}
+
+export function getUpdateElectionRuleActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.UpdateElectionRule,
+      electionRuleId: 12,
+      votingPeriod: 14,
+      quorum: { denominator: 2, numerator: 5 },
+      threshold: { denominator: 3, numerator: 7 },
+    },
+  };
+}
+
+export function getUpdateElectorateActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.UpdateElectorate,
+      electorateId: 14,
+      diffElectors: {
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        "21eb1e708abfe781d0d043a47dd0b3b9c238d9b4": { weight: 15 },
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        "3d509f9aca1d01651145934e9406bc20e87d45bd": { weight: 243 },
+      },
+    },
+  };
+}
+
+export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & WithCreator {
+  return {
+    kind: "bns/create_proposal",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
+    },
+    title: "Just an idea",
+    description: "Try a centralized approach instead?",
+    electionRuleId: 2,
+    startTime: 1566383301091,
+    author: defaultAddress,
+    action: {
+      kind: ActionKind.ExecuteProposalBatch,
+      messages: [
+        {
+          kind: ActionKind.UpdateElectionRule,
+          electionRuleId: 12,
+          votingPeriod: 14,
+          quorum: { denominator: 2, numerator: 5 },
+          threshold: { denominator: 3, numerator: 7 },
+        },
+        {
+          kind: ActionKind.SetValidators,
+          validatorUpdates: {
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            ed25519_21eb1e708abfe781d0d043a47dd0b3b9c238d9b4: { power: 10 },
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            ed25519_3d509f9aca1d01651145934e9406bc20e87d45bd: { power: 10 },
+          },
+        },
+        {
+          kind: ActionKind.Send,
+          sender: ethereumCodec.identityToAddress(ethereumCreator),
+          amount: {
+            quantity: "1230000000000000000", // 1.23 ETH
+            fractionalDigits: 18,
+            tokenTicker: "ETH" as TokenTicker,
+          },
+          recipient: defaultAddress,
+          memo: "paid transaction",
+        },
+        {
+          kind: ActionKind.ReleaseEscrow,
+          escrowId: Encoding.fromHex("000000000000dca2"),
+          amount: {
+            quantity: "1230000000000000000", // 1.23 ETH
+            fractionalDigits: 18,
+            tokenTicker: "ETH" as TokenTicker,
+          },
+        },
+        {
+          kind: ActionKind.CreateTextResolution,
+          resolution: "Stop all this blockchain stuff",
+        },
+        {
+          kind: ActionKind.UpdateElectorate,
+          electorateId: 14,
+          diffElectors: {
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            "21eb1e708abfe781d0d043a47dd0b3b9c238d9b4": { weight: 15 },
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            "3d509f9aca1d01651145934e9406bc20e87d45bd": { weight: 243 },
+          },
+        },
+      ],
     },
   };
 }

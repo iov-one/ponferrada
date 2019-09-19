@@ -10,6 +10,12 @@ export const useTxListItemStyles = makeStyles({
   },
 });
 
+export const useTxListItemHeaderStyles = makeStyles({
+  root: {
+    textAlign: "center",
+  },
+});
+
 export const txListItemSecondaryProps = {
   noWrap: true,
 };

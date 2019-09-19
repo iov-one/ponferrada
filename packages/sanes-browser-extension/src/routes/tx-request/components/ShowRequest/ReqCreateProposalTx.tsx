@@ -1,32 +1,68 @@
 import { CreateProposalTx } from "@iov/bns";
-import { makeStyles } from "@material-ui/core";
-import { List, ListItem } from "medulas-react-components";
+import { Block, List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 
-export const REQ_CREATE_PROPOSAL = "req-create-proposal-tx";
+import ProposalActionType from "../ProposalActionType";
+import TransactionFee, { txListItemSecondaryProps, useTxListItemStyles } from "./TransactionFee";
 
-const useStyles = makeStyles({
-  txContent: {
-    margin: "0",
-    fontSize: "1.2rem",
-    overflowX: "scroll",
-  },
-});
+export const REQ_CREATE_PROPOSAL = "req-create-proposal-tx";
 
 interface Props {
   readonly tx: CreateProposalTx;
 }
 
 const ReqCreateProposalTx = ({ tx }: Props): JSX.Element => {
-  const classes = useStyles();
+  const listItemClasses = useTxListItemStyles();
 
-  const content = JSON.stringify(tx, null, 2);
   return (
-    <List id={REQ_CREATE_PROPOSAL}>
-      <ListItem>
-        <pre className={classes.txContent}>{content}</pre>
-      </ListItem>
-    </List>
+    <React.Fragment>
+      <List id={REQ_CREATE_PROPOSAL}>
+        <ListItem>
+          <ListItemText
+            classes={listItemClasses}
+            primary="Title"
+            secondary={tx.title}
+            secondaryTypographyProps={txListItemSecondaryProps}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            classes={listItemClasses}
+            primary="Description"
+            secondary={tx.description}
+            secondaryTypographyProps={txListItemSecondaryProps}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            classes={listItemClasses}
+            primary="Start date"
+            secondary={new Date(tx.startTime).toLocaleString()}
+            secondaryTypographyProps={txListItemSecondaryProps}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            classes={listItemClasses}
+            primary="Election Rule ID"
+            secondary={tx.electionRuleId}
+            secondaryTypographyProps={txListItemSecondaryProps}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            classes={listItemClasses}
+            primary="Author"
+            secondary={tx.author}
+            secondaryTypographyProps={txListItemSecondaryProps}
+          />
+        </ListItem>
+        <TransactionFee fee={tx.fee} />
+      </List>
+      <Block marginTop={1}>
+        <ProposalActionType action={tx.action} />
+      </Block>
+    </React.Fragment>
   );
 };
 

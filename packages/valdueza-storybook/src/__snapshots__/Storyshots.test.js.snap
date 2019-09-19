@@ -11275,71 +11275,177 @@ exports[`Storyshots Extension/Transaction Request Create Proposal 1`] = `
         className="MuiListItem-root MuiListItem-gutters"
         disabled={false}
       >
-        <pre
-          className="makeStyles-txContent"
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
         >
-          {
-  "kind": "bns/create_proposal",
-  "creator": {
-    "chainId": "some-chain",
-    "pubkey": {
-      "algo": "ed25519",
-      "data": {
-        "0": 113,
-        "1": 150,
-        "2": 196,
-        "3": 101,
-        "4": 228,
-        "5": 201,
-        "6": 91,
-        "7": 61,
-        "8": 206,
-        "9": 66,
-        "10": 87,
-        "11": 132,
-        "12": 245,
-        "13": 25,
-        "14": 54,
-        "15": 185,
-        "16": 93,
-        "17": 166,
-        "18": 188,
-        "19": 88,
-        "20": 179,
-        "21": 33,
-        "22": 38,
-        "23": 72,
-        "24": 205,
-        "25": 202,
-        "26": 100,
-        "27": 238,
-        "28": 113,
-        "29": 152,
-        "30": 223,
-        "31": 71
-      }
-    }
-  },
-  "fee": {
-    "tokens": {
-      "quantity": "1000000001",
-      "fractionalDigits": 9,
-      "tokenTicker": "CASH"
-    }
-  },
-  "title": "Just an idea",
-  "description": "Try a centralized approach instead?",
-  "electionRuleId": 2,
-  "startTime": 1566383301091,
-  "author": "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f",
-  "action": {
-    "kind": "gov_create_text_resolution",
-    "resolution": "Stop all this blockchain stuff"
-  }
-}
-        </pre>
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
       </li>
     </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              gov_create_text_resolution
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Resolution
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Stop all this blockchain stuff
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div
       className="MuiBox-root MuiBox-root"
     />
@@ -12314,6 +12420,2686 @@ exports[`Storyshots Extension/Transaction Request Vote 1`] = `
         </div>
       </li>
     </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions CreateTextResolutionActionRequest 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              gov_create_text_resolution
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Resolution
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Stop all this blockchain stuff
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions ExecuteProposalBatch 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              execute_proposal_batch
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Update Election Rule
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Updates committee
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              12
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Quorum
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              5/2
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Threshold
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              7/3
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Period
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              14s
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Set Validators
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Validators
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              21eb1e708ab...0b3b9c238d9b4
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Power: 10
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              3d509f9aca1...6bc20e87d45bd
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Power: 10
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Set Validators
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Sender
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              0x7c15484EA11FD233AE566469af15d84335023c30
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Beneficiary
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Amount
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              1.23 ETH
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Notes
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              paid transaction
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Release Escrow
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Escrow ID
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              56482
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Amount
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              1.23 ETH
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Create Text Resolution
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Resolution
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Stop all this blockchain stuff
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Update Electorate
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Electorate ID
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              14
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Electors
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              21eb1e708ab...0b3b9c238d9b4
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Weight: 15
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              3d509f9aca1...6bc20e87d45bd
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Weight: 243
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions ReleaseEscrowAction 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              escrow_release
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Escrow ID
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              56482
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Amount
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              1.23 ETH
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions SendAction 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              cash_send
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Sender
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              0x7c15484EA11FD233AE566469af15d84335023c30
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Beneficiary
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Amount
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              1.23 ETH
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Notes
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              paid transaction
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions SetValidators 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              validators_apply_diff
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Validators
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              21eb1e708ab...0b3b9c238d9b4
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Power: 10
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              3d509f9aca1...6bc20e87d45bd
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Power: 10
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions UpdateElectionRule 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              gov_update_election_rule
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Updates committee
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              12
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Quorum
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              5/2
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Threshold
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              7/3
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Period
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              14s
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Approve
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Reject
+      </span>
+    </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="NeumaLogo.svg"
+      width={100}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Extension/Transaction Request/Proposal Actions UpdateElectorate 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+  id="/tx-request_show"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Tx
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      Request
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+        The following site: 
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1 MuiTypography-colorPrimary"
+      >
+        http://localhost/
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      >
+         wants you to sign:
+      </p>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+      id="req-create-proposal-tx"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Title
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Just an idea
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Description
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Try a centralized approach instead?
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Start date
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            8/21/2019, 10:28:21 AM
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Election Rule ID
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            2
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Author
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f
+          </p>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            Fee
+          </span>
+          <p
+            className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            1.000000001 CASH
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Action
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Kind
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              gov_update_electorate
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Electorate ID
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              14
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              Electors
+            </span>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              21eb1e708ab...0b3b9c238d9b4
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Weight: 15
+            </p>
+          </div>
+        </li>
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+            >
+              3d509f9aca1...6bc20e87d45bd
+            </span>
+            <p
+              className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            >
+              Weight: 243
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div
       className="MuiBox-root MuiBox-root"
     />
