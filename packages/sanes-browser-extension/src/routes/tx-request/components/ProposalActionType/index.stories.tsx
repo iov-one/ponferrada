@@ -100,7 +100,7 @@ const createExecuteProposalBatchRuleActionRequest: Request<SignAndPostResponseDa
 };
 
 storiesOf(`${TX_REQUEST_PATH}/Proposal Actions`, module)
-  .add("ExecuteProposalBatchAction", () => {
+  .add("CreateTextResolutionActionRequest", () => {
     const { senderUrl } = createTextResolutionActionRequest;
     const { tx } = createTextResolutionActionRequest.responseData;
 
