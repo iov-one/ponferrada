@@ -1,4 +1,5 @@
 import { ReleaseEscrowAction } from "@iov/bns";
+import { Uint64 } from "@iov/encoding";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { amountToString } from "ui-logic";
@@ -29,7 +30,7 @@ function ReleaseEscrow({ action, header }: Props): JSX.Element {
         <ListItemText
           classes={listItemClasses}
           primary="Escrow ID"
-          secondary={action.escrowId}
+          secondary={Uint64.fromBytesBigEndian(action.escrowId).toNumber()}
           secondaryTypographyProps={txListItemSecondaryProps}
         />
       </ListItem>
