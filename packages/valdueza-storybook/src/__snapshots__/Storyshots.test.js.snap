@@ -9079,7 +9079,7 @@ exports[`Storyshots Extension Delete wallet page 1`] = `
     <h6
       className="MuiTypography-root makeStyles-inline MuiTypography-subtitle1"
     >
-      Are you sure want to completely delete this wallet? Please type current wallet recovery phrase into the field below.
+      Are you sure want to completely delete this wallet? Please type current wallet recovery words into the field below.
     </h6>
     <form
       onSubmit={[Function]}
@@ -9128,7 +9128,7 @@ exports[`Storyshots Extension Delete wallet page 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Recovery phrase"
+              placeholder="Recovery words"
               required={true}
               rows={5}
               value=""
@@ -9185,10 +9185,10 @@ exports[`Storyshots Extension Delete wallet page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension Recovery Phrase page 1`] = `
+exports[`Storyshots Extension Recovery Words page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-  id="/recovery-phrase"
+  id="/recovery-words"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -9245,7 +9245,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      phrase
+      words
     </h4>
   </div>
   <div
@@ -9257,7 +9257,7 @@ exports[`Storyshots Extension Recovery Phrase page 1`] = `
       <h6
         className="MuiTypography-root MuiTypography-subtitle2"
       >
-        Your Recovery Phrase are 12 random words that are set in a particular order that acts as a tool to recover or back up your wallet on any platform.
+        Your Recovery Words are 12 random words that are set in a particular order that acts as a tool to recover or back up your wallet on any platform.
       </h6>
     </div>
     <div
@@ -10101,7 +10101,7 @@ exports[`Storyshots Extension/Create Wallet New Wallet page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Extension/Create Wallet Recovery Phrase page 1`] = `
+exports[`Storyshots Extension/Create Wallet Recovery Words page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
   id="create-wallet-step2"
@@ -10118,7 +10118,7 @@ exports[`Storyshots Extension/Create Wallet Recovery Phrase page 1`] = `
       className="MuiTypography-root makeStyles-inline MuiTypography-h4"
     >
        
-      Phrase
+      Words
     </h4>
   </div>
   <div
@@ -10127,7 +10127,7 @@ exports[`Storyshots Extension/Create Wallet Recovery Phrase page 1`] = `
     <p
       className="MuiTypography-root makeStyles-inline MuiTypography-body1"
     >
-      Your secret recovery phrase consists of 12 words that act as a tool to recover your wallet on any platform.
+      Your secret recovery words consists of 12 words that act as a tool to recover your wallet on any platform.
     </p>
     <div
       className="MuiBox-root MuiBox-root"
@@ -10144,7 +10144,7 @@ exports[`Storyshots Extension/Create Wallet Recovery Phrase page 1`] = `
           <h6
             className="MuiTypography-root makeStyles-inline MuiTypography-subtitle2"
           >
-            Show/hide recovery phrase
+            Show/hide recovery words
           </h6>
         </div>
       </div>
@@ -10515,7 +10515,7 @@ exports[`Storyshots Extension/Restore Wallet Set Mnemonic page 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Recovery phrase"
+              placeholder="Recovery words"
               required={false}
               rows={5}
               value=""
