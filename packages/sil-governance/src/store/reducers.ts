@@ -9,7 +9,7 @@ import { transactionsReducer, TransactionsState } from "./transactions";
 export interface RootReducer {
   extension: ExtensionState;
   blockchain: BlockchainState;
-  proposalsState: ProposalsState;
+  proposals: ProposalsState;
   transactions: TransactionsState;
 }
 
@@ -17,7 +17,7 @@ const createRootReducer = (): Reducer<RootReducer> =>
   combineReducers({
     extension: extensionReducer,
     blockchain: blockchainReducer,
-    proposalsState: proposalsReducer,
+    proposals: proposalsReducer,
     transactions: transactionsReducer,
   });
 
