@@ -30,16 +30,24 @@ export interface SilProposal {
   readonly hasEnded: boolean;
 }
 
-export type ProposalsState = SilProposal[];
-const initState: ProposalsState = [];
+export interface ProposalsState {
+  readonly proposals: SilProposal[];
+  readonly updateRequired: boolean;
+}
+
+const initState: ProposalsState = {
+  proposals: [],
+  updateRequired: false,
+};
 
 export interface ReplaceProposalsActionType extends Action {
   type: "@@proposals/REPLACE";
-  payload: ProposalsState;
+  payload: SilProposal[];
 }
 
-export interface RefreshProposalsActionType extends Action {
-  type: "@@proposals/REFRESH";
+export interface RequireUpdateProposalsActionType extends Action {
+  type: "@@proposals/REQUIRE_UPDATE";
+  payload: boolean;
 }
 
 export type ProposalsActions = ActionType<typeof actions>;
@@ -50,7 +58,9 @@ export function proposalsReducer(
 ): ProposalsState {
   switch (action.type) {
     case "@@proposals/REPLACE":
-      return [...action.payload];
+      return { proposals: action.payload, updateRequired: false };
+    case "@@proposals/REQUIRE_UPDATE":
+      return { proposals: state.proposals, updateRequired: action.payload };
     default:
       return state;
   }

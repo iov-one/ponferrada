@@ -11,7 +11,6 @@ import {
 } from "@iov/bns";
 import { ReadonlyDate } from "readonly-date";
 
-import { ProposalsState } from ".";
 import { SilProposal } from "./reducer";
 
 const adminAddress = "Admin 1" as Address;
@@ -186,7 +185,7 @@ export const getDummyVote = (proposal: Proposal): VoteOption | undefined => {
   }
 };
 
-export const getDummyProposalsState = (): ProposalsState => {
+export const getDummyProposalsState = (): SilProposal[] => {
   const electionRules = getDummyElectionRules();
   const proposals = getDummyProposals();
 

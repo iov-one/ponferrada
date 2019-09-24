@@ -1,14 +1,9 @@
 import { Proposal, ProposalStatus, VoteOption } from "@iov/bns";
 import { Governor } from "@iov/bns-governance";
 
-import {
-  ProposalsState,
-  RefreshProposalsActionType,
-  ReplaceProposalsActionType,
-  SilProposal,
-} from "./reducer";
+import { ReplaceProposalsActionType, RequireUpdateProposalsActionType, SilProposal } from "./reducer";
 
-export async function getProposals(governor: Governor): Promise<ProposalsState> {
+export async function getProposals(governor: Governor): Promise<SilProposal[]> {
   const getQuorum = async (proposal: Proposal): Promise<number> => {
     const electionRule = await governor.getElectionRuleById(proposal.electionRule.id);
     const maxVotes = proposal.state.totalElectorateWeight;
@@ -75,11 +70,12 @@ export async function getProposals(governor: Governor): Promise<ProposalsState> 
   return proposalsState;
 }
 
-export const replaceProposalsAction = (proposals: ProposalsState): ReplaceProposalsActionType => ({
+export const replaceProposalsAction = (proposals: SilProposal[]): ReplaceProposalsActionType => ({
   type: "@@proposals/REPLACE",
   payload: proposals,
 });
 
-export const refreshProposalsAction = (): RefreshProposalsActionType => ({
-  type: "@@proposals/REFRESH",
+export const requireUpdateProposalsAction = (updateRequired: boolean): RequireUpdateProposalsActionType => ({
+  type: "@@proposals/REQUIRE_UPDATE",
+  payload: updateRequired,
 });
