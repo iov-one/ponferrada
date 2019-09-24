@@ -9,7 +9,7 @@ import AsideFilter, { ElectionFilter } from "../../components/AsideFilter";
 import BlockchainTime from "../../components/BlockchainTime";
 import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
-import { refreshProposalsAction } from "../../store/proposals";
+import { requireUpdateProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { setTransactionsStateAction } from "../../store/transactions";
 import { DASHBOARD_ROUTE } from "../paths";
@@ -29,7 +29,7 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
   const [electorates, setElectorates] = useState<Readonly<Electorate[]>>([]);
 
   useEffect(() => {
-    dispatch(refreshProposalsAction());
+    dispatch(requireUpdateProposalsAction(true));
   }, [dispatch]);
 
   useEffect(() => {
