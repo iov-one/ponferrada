@@ -7,7 +7,7 @@ import { Stream } from "xstream";
 import { getConfig } from "../config";
 import { setBlockchainAction } from "../store/blockchain";
 import { setExtensionStateAction } from "../store/extension";
-import { getProposals, replaceProposalsAction } from "../store/proposals";
+import { refreshProposalsAction } from "../store/proposals";
 import { getBnsConnection } from "./connection";
 
 export async function bootApplication(dispatch: Dispatch, identities: readonly Identity[]): Promise<void> {
@@ -29,10 +29,9 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
     guaranteeFundEscrowId,
     rewardFundAddress: rewardFundAddress as Address,
   });
-  dispatch(setExtensionStateAction(true, true, governor));
 
-  const proposals = await getProposals(governor);
-  dispatch(replaceProposalsAction(proposals));
+  dispatch(setExtensionStateAction(true, true, governor));
+  dispatch(refreshProposalsAction());
 
   // Subscriptions
 

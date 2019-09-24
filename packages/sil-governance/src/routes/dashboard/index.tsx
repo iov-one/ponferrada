@@ -9,7 +9,7 @@ import AsideFilter, { ElectionFilter } from "../../components/AsideFilter";
 import BlockchainTime from "../../components/BlockchainTime";
 import ConfirmTransaction from "../../components/ConfirmTransaction";
 import Header from "../../components/Header";
-import { getProposals, replaceProposalsAction } from "../../store/proposals";
+import { refreshProposalsAction } from "../../store/proposals";
 import { RootState } from "../../store/reducers";
 import { setTransactionsStateAction } from "../../store/transactions";
 import { DASHBOARD_ROUTE } from "../paths";
@@ -29,6 +29,10 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
   const [electorates, setElectorates] = useState<Readonly<Electorate[]>>([]);
 
   useEffect(() => {
+    dispatch(refreshProposalsAction());
+  }, [dispatch]);
+
+  useEffect(() => {
     const updateElectorates = async (): Promise<void> => {
       // in DOM tests, governor is not set
       if (governor) {
@@ -43,18 +47,6 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
     dispatch(setTransactionsStateAction());
     history.push(DASHBOARD_ROUTE);
   };
-
-  useEffect(() => {
-    const updateChainProposals = async (): Promise<void> => {
-      // in DOM tests, governor is not set
-      if (governor) {
-        const chainProposals = await getProposals(governor);
-        dispatch(replaceProposalsAction(chainProposals));
-      }
-    };
-
-    updateChainProposals();
-  }, [dispatch, governor]);
 
   return (
     <Block width="100%" maxWidth="1024px" height="auto" display="flex" flexDirection="column" margin="0 auto">
