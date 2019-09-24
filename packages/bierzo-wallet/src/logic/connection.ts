@@ -1,5 +1,5 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
-import { createBnsConnector } from "@iov/bns";
+import { BnsConnection, createBnsConnector } from "@iov/bns";
 import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
 import { createLiskConnector } from "@iov/lisk";
 
@@ -75,10 +75,10 @@ export async function getConnectionForChainId(chainId: ChainId): Promise<Blockch
   throw new Error("No connection found for this chainId");
 }
 
-export async function getConnectionForBns(): Promise<BlockchainConnection> {
+export async function getConnectionForBns(): Promise<BnsConnection> {
   for (const chain of (await getConfig()).chains) {
     if (isBnsSpec(chain.chainSpec)) {
-      return await getConnectionFor(chain.chainSpec);
+      return (await getConnectionFor(chain.chainSpec)) as BnsConnection;
     }
   }
   throw new Error("No connection found for this chainId");
