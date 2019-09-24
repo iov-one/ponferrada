@@ -57,7 +57,6 @@ export async function bootApplication(
   const refreshProposals = async (): Promise<void> => {
     const proposals = await getProposals(governor);
     dispatch(replaceProposalsAction(proposals));
-    console.count("Updated proposals");
   };
 
   let lastNetworkRequest = new Date();
