@@ -16,6 +16,7 @@ export interface ChainConfig {
 export interface ChainSpec {
   readonly codecType: string;
   readonly node: string;
+  readonly name: string;
   readonly chainId: string;
   readonly scraper?: string;
 }

@@ -1,13 +1,11 @@
 {
-  "names": {
-    "local-iov-devnet": "IOV Devnet"
-  },
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
       "node": "ws://localhost:23456/",
-      "chainId": "local-iov-devnet"
+      "chainId": "local-iov-devnet",
+      "name": "IOV Devnet"
     },
     "guaranteeFundEscrowId": "0000000000000001",
     "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"

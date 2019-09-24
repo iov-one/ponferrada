@@ -1,9 +1,4 @@
 {
-  "names": {
-    "bns-antnet": "BNS Antnet",
-    "lisk-ed14889723": "Lisk Mainnet",
-    "ethereum-eip155-1": "Ethereum Mainnet"
-  },
   "extensionId": "N/A",
   "ledger": {
     "chainIds": {
@@ -17,6 +12,7 @@
       "chainSpec": {
         "codecType": "bns",
         "chainId": "bns-antnet",
+        "name": "BNS Antnet",
         "node": "wss://bns.antnet.iov.one/"
       },
       "faucetSpec": {
@@ -28,6 +24,7 @@
       "chainSpec": {
         "codecType": "lsk",
         "chainId": "lisk-ed14889723",
+        "name": "Lisk Mainnet",
         "node": "https://testnet.lisk.io"
       }
     },
@@ -35,6 +32,7 @@
       "chainSpec": {
         "codecType": "eth",
         "chainId": "ethereum-eip155-1",
+        "name": "Ethereum Mainnet",
         "node": "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
         "scraper": "https://api.etherscan.io/api"
       }
