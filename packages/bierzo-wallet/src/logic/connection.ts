@@ -1,7 +1,8 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
-import { BnsConnection } from "@iov/bns";
+import { BnsConnection, createBnsConnector } from "@iov/bns";
 import { EthereumConnection } from "@iov/ethereum";
-import { LiskConnection } from "@iov/lisk";
+import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
+import { createLiskConnector, LiskConnection } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
 
@@ -9,26 +10,33 @@ let ethereumConnection: EthereumConnection | undefined;
 let bnsConnection: BnsConnection | undefined;
 let liskConnection: LiskConnection | undefined;
 
-async function getEthereumConnection(url: string, scraperApiUrl?: string): Promise<EthereumConnection> {
+async function getEthereumConnection(
+  url: string,
+  chainId: ChainId,
+  options: EthereumConnectionOptions,
+): Promise<EthereumConnection> {
   if (!ethereumConnection) {
+    const connector = createEthereumConnector(url, options, chainId);
     // eslint-disable-next-line require-atomic-updates
-    ethereumConnection = await EthereumConnection.establish(url, { scraperApiUrl });
+    ethereumConnection = (await connector.establishConnection()) as EthereumConnection;
   }
   return ethereumConnection;
 }
 
-async function getBnsConnection(url: string): Promise<BnsConnection> {
+async function getBnsConnection(url: string, chainId: ChainId): Promise<BnsConnection> {
   if (!bnsConnection) {
+    const connector = createBnsConnector(url, chainId);
     // eslint-disable-next-line require-atomic-updates
-    bnsConnection = await BnsConnection.establish(url);
+    bnsConnection = (await connector.establishConnection()) as BnsConnection;
   }
   return bnsConnection;
 }
 
-async function getLiskConnection(url: string): Promise<LiskConnection> {
+async function getLiskConnection(url: string, chainId: ChainId): Promise<LiskConnection> {
   if (!liskConnection) {
+    const connector = createLiskConnector(url, chainId);
     // eslint-disable-next-line require-atomic-updates
-    liskConnection = await LiskConnection.establish(url);
+    liskConnection = (await connector.establishConnection()) as LiskConnection;
   }
   return liskConnection;
 }
@@ -46,9 +54,15 @@ export function isEthSpec(spec: ChainSpec): boolean {
 }
 
 export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConnection> {
-  if (isEthSpec(spec)) return getEthereumConnection(spec.node, spec.scraper);
-  if (isBnsSpec(spec)) return getBnsConnection(spec.node);
-  if (isLskSpec(spec)) return getLiskConnection(spec.node);
+  if (isEthSpec(spec)) {
+    return getEthereumConnection(spec.node, spec.chainId as ChainId, { scraperApiUrl: spec.scraper });
+  }
+  if (isBnsSpec(spec)) {
+    return getBnsConnection(spec.node, spec.chainId as ChainId);
+  }
+  if (isLskSpec(spec)) {
+    return getLiskConnection(spec.node, spec.chainId as ChainId);
+  }
 
   throw new Error("Chain spec not supported");
 }
