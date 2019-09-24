@@ -38,6 +38,10 @@ export interface ReplaceProposalsActionType extends Action {
   payload: ProposalsState;
 }
 
+export interface RefreshProposalsActionType extends Action {
+  type: "@@proposals/REFRESH";
+}
+
 export type ProposalsActions = ActionType<typeof actions>;
 
 export function proposalsReducer(
