@@ -11,7 +11,7 @@ import {
 } from "@iov/bns";
 import { ReadonlyDate } from "readonly-date";
 
-import { SilProposal } from "./reducer";
+import { ProposalsState, SilProposal } from "./reducer";
 
 const adminAddress = "Admin 1" as Address;
 
@@ -185,7 +185,7 @@ export const getDummyVote = (proposal: Proposal): VoteOption | undefined => {
   }
 };
 
-export const getDummyProposalsState = (): SilProposal[] => {
+export const getDummyProposalsState = (): ProposalsState => {
   const electionRules = getDummyElectionRules();
   const proposals = getDummyProposals();
 
@@ -217,31 +217,35 @@ export const getDummyProposalsState = (): SilProposal[] => {
 
   const getVote = (proposal: Proposal): VoteOption | undefined => getDummyVote(proposal);
 
-  const proposalsState = proposals.map(
-    (proposal): SilProposal => {
-      return {
-        id: proposal.id,
-        action: proposal.action,
-        title: proposal.title,
-        author: proposal.author,
-        description: proposal.description,
-        startDate: new ReadonlyDate(proposal.votingStartTime * 1000),
-        expiryDate: new ReadonlyDate(proposal.votingEndTime * 1000),
-        quorum: getQuorum(proposal),
-        threshold: getThreshold(proposal),
-        tally: {
-          yes: proposal.state.totalYes,
-          no: proposal.state.totalNo,
-          abstain: proposal.state.totalAbstain,
-          totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
-          maxVotes: proposal.state.totalElectorateWeight,
-        },
-        result: proposal.result,
-        vote: getVote(proposal),
-        hasEnded: !(proposal.status === ProposalStatus.Submitted),
-      };
-    },
-  );
+  const proposalsState = {
+    proposals: proposals.map(
+      (proposal): SilProposal => {
+        return {
+          id: proposal.id,
+          action: proposal.action,
+          title: proposal.title,
+          author: proposal.author,
+          description: proposal.description,
+          startDate: new ReadonlyDate(proposal.votingStartTime * 1000),
+          expiryDate: new ReadonlyDate(proposal.votingEndTime * 1000),
+          quorum: getQuorum(proposal),
+          threshold: getThreshold(proposal),
+          tally: {
+            yes: proposal.state.totalYes,
+            no: proposal.state.totalNo,
+            abstain: proposal.state.totalAbstain,
+            totalVotes: proposal.state.totalYes + proposal.state.totalNo + proposal.state.totalAbstain,
+            maxVotes: proposal.state.totalElectorateWeight,
+          },
+          result: proposal.result,
+          vote: getVote(proposal),
+          hasEnded: !(proposal.status === ProposalStatus.Submitted),
+        };
+      },
+    ),
+
+    updateRequired: false,
+  };
 
   return proposalsState;
 };
