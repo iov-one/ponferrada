@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- Connect to Catnet 🐈
+
 ## 0.4.10
 
 - Governance: Calculate selectable rules for amanding threshold/quorum from the

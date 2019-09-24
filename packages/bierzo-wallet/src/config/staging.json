@@ -1,13 +1,13 @@
 {
   "names": {
-    "iov-boarnet": "IOV Boarnet",
+    "iov-catnet": "IOV Catnet",
     "lisk-da3ed6a454": "Lisk Testnet",
     "ethereum-eip155-4": "Rinkeby"
   },
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-boarnet",
+      "testnetBuild": "iov-catnet",
       "mainnetBuild": "iov-mainnet"
     }
   },
@@ -16,11 +16,7 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "node": "wss://rpc.boarnet.iov.one/"
-      },
-      "faucetSpec": {
-        "uri": "https://faucet.boarnet.iov.one",
-        "tokens": ["IOV"]
+        "node": "wss://rpc-private-a-vip-catnet.iov.one/"
       }
     },
     {
