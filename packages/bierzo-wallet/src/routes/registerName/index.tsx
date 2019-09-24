@@ -117,7 +117,7 @@ const RegisterUsername = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error ocurred", ToastVariant.ERROR);
+      toast.show("An error occurred", ToastVariant.ERROR);
     } finally {
       billboard.close();
     }

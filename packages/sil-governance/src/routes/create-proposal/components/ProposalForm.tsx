@@ -212,7 +212,7 @@ const ProposalForm = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      const message = Weave.tryParseError(error) || "An unknown error ocurred";
+      const message = Weave.tryParseError(error) || "An unknown error occurred";
       toast.show(message, ToastVariant.ERROR);
     }
   };
