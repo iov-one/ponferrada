@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Login = (): JSX.Element => {
   const classes = useStyles();
   const toast = useContext(ToastContext);
+  const store = ReactRedux.useStore();
   const dispatch = ReactRedux.useDispatch();
 
   const isExtensionConnected = async (): Promise<boolean> => {
@@ -56,7 +57,7 @@ const Login = (): JSX.Element => {
       return false;
     }
 
-    await bootApplication(dispatch, identities);
+    await bootApplication(store, dispatch, identities);
 
     return true;
   };
