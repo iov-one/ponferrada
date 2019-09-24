@@ -60,7 +60,7 @@ export function proposalsReducer(
     case "@@proposals/REPLACE":
       return { proposals: action.payload, updateRequired: false };
     case "@@proposals/REQUIRE_UPDATE":
-      return { proposals: state.proposals, updateRequired: action.payload };
+      return { ...state, updateRequired: action.payload };
     default:
       return state;
   }
