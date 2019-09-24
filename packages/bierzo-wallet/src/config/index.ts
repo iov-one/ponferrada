@@ -40,6 +40,7 @@ export interface ConfigErc20Options {
 
 export interface ChainSpec {
   readonly codecType: string;
+  readonly chainId: string;
   readonly node: string;
   readonly scraper?: string;
 }

@@ -16,6 +16,7 @@
     {
       "chainSpec": {
         "codecType": "bns",
+        "chainId": "bns-antnet",
         "node": "wss://bns.antnet.iov.one/"
       },
       "faucetSpec": {
@@ -26,12 +27,14 @@
     {
       "chainSpec": {
         "codecType": "lsk",
+        "chainId": "lisk-ed14889723",
         "node": "https://testnet.lisk.io"
       }
     },
     {
       "chainSpec": {
         "codecType": "eth",
+        "chainId": "ethereum-eip155-1",
         "node": "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
         "scraper": "https://api.etherscan.io/api"
       }
