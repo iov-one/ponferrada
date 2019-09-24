@@ -2,6 +2,10 @@
 
 ## 0.5.0
 
+- Governance: Improve cache settings for hosting
+- Wallet: Improve cache settings for hosting
+- Extension: Use term "recovery words" consistently
+- Extension: Display create proposal transactions properly
 - Connect to Catnet 🐈
 
 ## 0.4.10
