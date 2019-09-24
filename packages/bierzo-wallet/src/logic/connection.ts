@@ -11,6 +11,7 @@ let liskConnection: LiskConnection | undefined;
 
 async function getEthereumConnection(url: string, scraperApiUrl?: string): Promise<EthereumConnection> {
   if (!ethereumConnection) {
+    // eslint-disable-next-line require-atomic-updates
     ethereumConnection = await EthereumConnection.establish(url, { scraperApiUrl });
   }
   return ethereumConnection;
@@ -18,6 +19,7 @@ async function getEthereumConnection(url: string, scraperApiUrl?: string): Promi
 
 async function getBnsConnection(url: string): Promise<BnsConnection> {
   if (!bnsConnection) {
+    // eslint-disable-next-line require-atomic-updates
     bnsConnection = await BnsConnection.establish(url);
   }
   return bnsConnection;
@@ -25,6 +27,7 @@ async function getBnsConnection(url: string): Promise<BnsConnection> {
 
 async function getLiskConnection(url: string): Promise<LiskConnection> {
   if (!liskConnection) {
+    // eslint-disable-next-line require-atomic-updates
     liskConnection = await LiskConnection.establish(url);
   }
   return liskConnection;
@@ -52,8 +55,9 @@ export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConne
 
 export async function getConnectionForChainId(chainId: ChainId): Promise<BlockchainConnection> {
   for (const chain of (await getConfig()).chains) {
-    const connection = await getConnectionFor(chain.chainSpec);
-    if (connection && connection.chainId() === chainId) return connection;
+    if (chain.chainSpec.chainId === chainId) {
+      return await getConnectionFor(chain.chainSpec);
+    }
   }
   throw new Error("No connection found for this chainId");
 }

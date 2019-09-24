@@ -40,6 +40,7 @@ export interface ConfigErc20Options {
 
 export interface ChainSpec {
   readonly codecType: string;
+  readonly chainId: string;
   readonly node: string;
   readonly scraper?: string;
 }
@@ -82,7 +83,7 @@ export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurati
 export async function getChainName(chainId: ChainId): Promise<string> {
   const chainNames = (await getConfig()).names;
 
-  if (chainNames.hasOwnProperty(chainId)) {
+  if (Object.prototype.hasOwnProperty.call(chainNames, chainId)) {
     return chainNames[chainId];
   } else {
     return chainId;
