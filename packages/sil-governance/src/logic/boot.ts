@@ -1,16 +1,21 @@
 import { Address, Identity } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
 import { Encoding } from "@iov/encoding";
-import { Dispatch } from "redux";
+import { Dispatch, Store } from "redux";
 import { Stream } from "xstream";
 
 import { getConfig } from "../config";
 import { setBlockchainAction } from "../store/blockchain";
 import { setExtensionStateAction } from "../store/extension";
 import { getProposals, replaceProposalsAction } from "../store/proposals";
+import { RootState } from "../store/reducers";
 import { getBnsConnection } from "./connection";
 
-export async function bootApplication(dispatch: Dispatch, identities: readonly Identity[]): Promise<void> {
+export async function bootApplication(
+  store: Store,
+  dispatch: Dispatch,
+  identities: readonly Identity[],
+): Promise<void> {
   const config = await getConfig();
 
   const escrowHex = config.bnsChain.guaranteeFundEscrowId;
@@ -29,10 +34,8 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
     guaranteeFundEscrowId,
     rewardFundAddress: rewardFundAddress as Address,
   });
-  dispatch(setExtensionStateAction(true, true, governor));
 
-  const proposals = await getProposals(governor);
-  dispatch(replaceProposalsAction(proposals));
+  dispatch(setExtensionStateAction(true, true, governor));
 
   // Subscriptions
 
@@ -50,4 +53,22 @@ export async function bootApplication(dispatch: Dispatch, identities: readonly I
       );
     },
   });
+
+  const refreshProposals = async (): Promise<void> => {
+    const proposals = await getProposals(governor);
+    dispatch(replaceProposalsAction(proposals));
+  };
+
+  let lastNetworkRequest = new Date();
+  const timeToPoll = 20 * 1000;
+
+  setInterval(async () => {
+    const isUpdateRequired = (store.getState() as RootState).proposals.updateRequired;
+    const timeToPollHasPassed = new Date().getTime() - lastNetworkRequest.getTime() > timeToPoll;
+
+    if (isUpdateRequired || timeToPollHasPassed) {
+      lastNetworkRequest = new Date();
+      await refreshProposals();
+    }
+  }, 500);
 }

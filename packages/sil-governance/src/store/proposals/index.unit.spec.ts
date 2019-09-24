@@ -57,7 +57,7 @@ withChainsDescribe("Proposals reducer", () => {
   }, 60000);
 
   it("has correct initial state", () => {
-    const proposals = store.getState().proposals;
+    const proposals = store.getState().proposals.proposals;
 
     expect(proposals).toEqual({});
   }, 60000);
@@ -65,7 +65,7 @@ withChainsDescribe("Proposals reducer", () => {
   it("dispatches correctly getProposals action", async () => {
     const chainProposals: SilProposal[] = [];
     store.dispatch(replaceProposalsAction(chainProposals));
-    const proposals = store.getState().proposals;
+    const proposals = store.getState().proposals.proposals;
 
     expect(proposals).toEqual(chainProposals);
   }, 60000);
@@ -73,7 +73,7 @@ withChainsDescribe("Proposals reducer", () => {
   it("stores correctly proposals", async () => {
     const chainProposals: SilProposal[] = [];
     store.dispatch(replaceProposalsAction(chainProposals));
-    const storedProposals = store.getState().proposals;
+    const storedProposals = store.getState().proposals.proposals;
 
     expect(storedProposals).toEqual(proposals);
   }, 60000);

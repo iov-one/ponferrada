@@ -8,7 +8,7 @@ import { Weave } from "ui-logic";
 import { communicationTexts } from "../../../../../communication";
 import { sendSignAndPostRequest } from "../../../../../communication/signandpost";
 import { getBnsConnection } from "../../../../../logic/connection";
-import { getProposals, replaceProposalsAction } from "../../../../../store/proposals";
+import { requireUpdateProposalsAction } from "../../../../../store/proposals";
 import { RootState } from "../../../../../store/reducers";
 import { setTransactionsStateAction } from "../../../../../store/transactions";
 
@@ -48,12 +48,10 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
         toast.show(communicationTexts.notReadyMessage, ToastVariant.ERROR);
       } else {
         dispatch(setTransactionsStateAction(transactionId));
+        dispatch(requireUpdateProposalsAction(true));
 
         setTimeout(() => {
-          getProposals(governor).then(
-            chainProposals => dispatch(replaceProposalsAction(chainProposals)),
-            error => console.error(error),
-          );
+          dispatch(requireUpdateProposalsAction(true));
         }, 5000);
       }
     } catch (error) {

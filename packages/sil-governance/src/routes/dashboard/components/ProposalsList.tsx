@@ -39,7 +39,7 @@ function compareById<E extends { readonly id: number }>(element1: E, element2: E
 }
 
 const ProposalsList = ({ filterType }: Props): JSX.Element => {
-  const proposals = ReactRedux.useSelector((state: RootState) => state.proposals);
+  const proposals = ReactRedux.useSelector((state: RootState) => state.proposals.proposals);
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const blockchain = ReactRedux.useSelector((state: RootState) => state.blockchain);
 
