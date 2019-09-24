@@ -63,12 +63,12 @@ export async function bootApplication(
   const timeToPoll = 20 * 1000;
 
   setInterval(async () => {
-    const isUpdateRequired = (store.getState() as RootState).proposalsState.updateRequired;
+    const isUpdateRequired = (store.getState() as RootState).proposals.updateRequired;
     const timeToPollHasPassed = new Date().getTime() - lastNetworkRequest.getTime() > timeToPoll;
 
     if (isUpdateRequired || timeToPollHasPassed) {
-      await refreshProposals();
       lastNetworkRequest = new Date();
+      await refreshProposals();
     }
   }, 500);
 }
