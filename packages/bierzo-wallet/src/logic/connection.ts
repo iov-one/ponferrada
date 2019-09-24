@@ -1,42 +1,41 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
-import { BnsConnection, createBnsConnector } from "@iov/bns";
-import { EthereumConnection } from "@iov/ethereum";
+import { createBnsConnector } from "@iov/bns";
 import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
-import { createLiskConnector, LiskConnection } from "@iov/lisk";
+import { createLiskConnector } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
 
-let ethereumConnection: EthereumConnection | undefined;
-let bnsConnection: BnsConnection | undefined;
-let liskConnection: LiskConnection | undefined;
+let ethereumConnection: BlockchainConnection | undefined;
+let bnsConnection: BlockchainConnection | undefined;
+let liskConnection: BlockchainConnection | undefined;
 
 async function getEthereumConnection(
   url: string,
   chainId: ChainId,
   options: EthereumConnectionOptions,
-): Promise<EthereumConnection> {
+): Promise<BlockchainConnection> {
   if (!ethereumConnection) {
     const connector = createEthereumConnector(url, options, chainId);
     // eslint-disable-next-line require-atomic-updates
-    ethereumConnection = (await connector.establishConnection()) as EthereumConnection;
+    ethereumConnection = await connector.establishConnection();
   }
   return ethereumConnection;
 }
 
-async function getBnsConnection(url: string, chainId: ChainId): Promise<BnsConnection> {
+async function getBnsConnection(url: string, chainId: ChainId): Promise<BlockchainConnection> {
   if (!bnsConnection) {
     const connector = createBnsConnector(url, chainId);
     // eslint-disable-next-line require-atomic-updates
-    bnsConnection = (await connector.establishConnection()) as BnsConnection;
+    bnsConnection = await connector.establishConnection();
   }
   return bnsConnection;
 }
 
-async function getLiskConnection(url: string, chainId: ChainId): Promise<LiskConnection> {
+async function getLiskConnection(url: string, chainId: ChainId): Promise<BlockchainConnection> {
   if (!liskConnection) {
     const connector = createLiskConnector(url, chainId);
     // eslint-disable-next-line require-atomic-updates
-    liskConnection = (await connector.establishConnection()) as LiskConnection;
+    liskConnection = await connector.establishConnection();
   }
   return liskConnection;
 }
@@ -76,10 +75,10 @@ export async function getConnectionForChainId(chainId: ChainId): Promise<Blockch
   throw new Error("No connection found for this chainId");
 }
 
-export async function getConnectionForBns(): Promise<BnsConnection> {
+export async function getConnectionForBns(): Promise<BlockchainConnection> {
   for (const chain of (await getConfig()).chains) {
     if (isBnsSpec(chain.chainSpec)) {
-      return (await getConnectionFor(chain.chainSpec)) as BnsConnection;
+      return await getConnectionFor(chain.chainSpec);
     }
   }
   throw new Error("No connection found for this chainId");
