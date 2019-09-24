@@ -6,7 +6,6 @@ import { ExtendedIdentity } from "../store/identities";
 import developmentConfig from "./development.json";
 
 export interface Config {
-  readonly names: { [chainId: string]: string };
   readonly extensionId: string;
   readonly ledger: {
     readonly chainIds: {
@@ -41,6 +40,7 @@ export interface ConfigErc20Options {
 export interface ChainSpec {
   readonly codecType: string;
   readonly chainId: string;
+  readonly name: string;
   readonly node: string;
   readonly scraper?: string;
 }
@@ -81,10 +81,11 @@ export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurati
  * if no name is found.
  */
 export async function getChainName(chainId: ChainId): Promise<string> {
-  const chainNames = (await getConfig()).names;
+  const chains = (await getConfig()).chains;
+  const selectedChain = chains.find(chain => chain.chainSpec.chainId === chainId);
 
-  if (Object.prototype.hasOwnProperty.call(chainNames, chainId)) {
-    return chainNames[chainId];
+  if (selectedChain) {
+    return selectedChain.chainSpec.name;
   } else {
     return chainId;
   }

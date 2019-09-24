@@ -1,9 +1,4 @@
 {
-  "names": {
-    "iov-catnet": "IOV Catnet",
-    "lisk-da3ed6a454": "Lisk Testnet",
-    "ethereum-eip155-4": "Rinkeby"
-  },
   "blockExplorers": {
     "iov-catnet": null,
     "lisk-da3ed6a454": "https://testnet-explorer.lisk.io/tx/",
@@ -14,6 +9,7 @@
       "chainSpec": {
         "codecType": "bns",
         "chainId": "iov-catnet",
+        "name": "IOV Catnet",
         "node": "https://rpc-private-a-vip-catnet.iov.one/"
       }
     },
@@ -21,6 +17,7 @@
       "chainSpec": {
         "codecType": "lsk",
         "chainId": "lisk-da3ed6a454",
+        "name": "Lisk Testnet",
         "node": "https://testnet.lisk.io"
       }
     },
@@ -28,6 +25,7 @@
       "chainSpec": {
         "codecType": "eth",
         "chainId": "ethereum-eip155-4",
+        "name": "Rinkeby",
         "node": "https://rinkeby.infura.io/v3/143ecb3d2d864557b4b140f731530909",
         "scraper": "https://api-rinkeby.etherscan.io/api"
       }

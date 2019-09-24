@@ -1,9 +1,4 @@
 {
-  "names": {
-    "local-iov-devnet": "IOV Devnet",
-    "lisk-198f2b61a8": "Lisk Devnet",
-    "ethereum-eip155-5777": "Ganache"
-  },
   "blockExplorers": {
     "local-iov-devnet": null,
     "lisk-198f2b61a8": null,
@@ -14,6 +9,7 @@
       "chainSpec": {
         "codecType": "bns",
         "chainId": "local-iov-devnet",
+        "name": "IOV Devnet",
         "node": "http://localhost:23456/"
       }
     },
@@ -21,6 +17,7 @@
       "chainSpec": {
         "codecType": "lsk",
         "chainId": "lisk-198f2b61a8",
+        "name": "Lisk Devnet",
         "node": "http://localhost:4000/"
       }
     },
@@ -28,6 +25,7 @@
       "chainSpec": {
         "codecType": "eth",
         "chainId": "ethereum-eip155-5777",
+        "name": "Ganache",
         "node": "http://localhost:8545",
         "scraper": "http://localhost:8546/api"
       }

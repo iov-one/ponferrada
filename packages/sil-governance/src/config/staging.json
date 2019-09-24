@@ -1,13 +1,11 @@
 {
-  "names": {
-    "iov-catnet": "IOV Catnet"
-  },
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
       "node": "wss://rpc-private-a-vip-catnet.iov.one/",
-      "chainId": "iov-catnet"
+      "chainId": "iov-catnet",
+      "name": "IOV Catnet"
     },
     "guaranteeFundEscrowId": "0000000000000001",
     "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"
