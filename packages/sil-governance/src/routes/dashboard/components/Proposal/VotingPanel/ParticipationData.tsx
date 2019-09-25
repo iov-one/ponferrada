@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ParticipationData = ({ quorum, threshold, tally }: Props): JSX.Element => {
-  const participation = (tally.totalVotes / tally.maxVotes) * 100;
+  const participation = Math.round((tally.totalVotes / tally.maxVotes) * 100 * 100) / 100;
 
   return (
     <Block>
