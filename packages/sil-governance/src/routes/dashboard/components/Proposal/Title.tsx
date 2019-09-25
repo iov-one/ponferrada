@@ -1,19 +1,24 @@
-import { Block, Typography } from "medulas-react-components";
+import { Block, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
-import { ellipsify } from "ui-logic";
 
-const TITLE_MAX_LENGTH = 30;
+const useStyles = makeStyles({
+  title: {
+    wordBreak: "break-all",
+  },
+});
 
 interface Props {
   readonly title: string;
 }
 
 const Title = ({ title }: Props): JSX.Element => {
-  const shortTitle = ellipsify(title, TITLE_MAX_LENGTH);
+  const classes = useStyles();
 
   return (
     <Block display="flex" alignItems="center">
-      <Typography variant="h6">{shortTitle}</Typography>
+      <Typography className={classes.title} variant="h6">
+        {title}
+      </Typography>
     </Block>
   );
 };
