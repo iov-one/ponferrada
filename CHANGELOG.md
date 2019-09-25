@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+- Connect to Babynet 👶
+
 ## 0.5.0
 
 - Governance: Improve cache settings for hosting
