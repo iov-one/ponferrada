@@ -1,6 +1,10 @@
 import { Amount, Token } from "@iov/bcp";
 export declare type Figures = Omit<Amount, "tokenTicker">;
 /**
+ * This produces a human readable format of the amount, value and token ticker
+ */
+export declare function amountToString(amount: Amount): string;
+/**
  * Parses a decimal as string into the Amount format, using the token's native fractional digits
  */
 export declare function stringToAmount(
@@ -12,5 +16,4 @@ export declare function stringToAmount(
  * an approximation only since not all amounts can accurately be expressed as floats.
  */
 export declare function amountToNumber(amount: Amount): number;
-export declare function amountToString(amount: Amount): string;
 export declare function amountToGwei(amount: Amount): string;

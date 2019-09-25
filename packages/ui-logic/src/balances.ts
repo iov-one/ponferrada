@@ -4,6 +4,14 @@ import { Decimal } from "@iov/encoding";
 export type Figures = Omit<Amount, "tokenTicker">;
 
 /**
+ * This produces a human readable format of the amount, value and token ticker
+ */
+export function amountToString(amount: Amount): string {
+  const { quantity, fractionalDigits, tokenTicker } = amount;
+  return `${Decimal.fromAtomics(quantity, fractionalDigits).toString()} ${tokenTicker}`;
+}
+
+/**
  * Parses a decimal as string into the Amount format, using the token's native fractional digits
  */
 export function stringToAmount(
@@ -23,14 +31,6 @@ export function stringToAmount(
  */
 export function amountToNumber(amount: Amount): number {
   return Decimal.fromAtomics(amount.quantity, amount.fractionalDigits).toFloatApproximation();
-}
-
-// This produces a human readable format of the amount, value and token ticker
-export function amountToString(amount: Amount): string {
-  const { tokenTicker } = amount;
-  const value = amountToNumber(amount);
-
-  return `${value} ${tokenTicker}`;
 }
 
 export function amountToGwei(amount: Amount): string {
