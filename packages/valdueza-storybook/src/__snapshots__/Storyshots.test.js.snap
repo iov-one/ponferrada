@@ -2281,6 +2281,293 @@ exports[`Storyshots Bierzo wallet/Balance View 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo wallet/Balance View on ledger and without name 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="logoBlack.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balance"
+              onClick={[Function]}
+            >
+              Balance
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Payments"
+              onClick={[Function]}
+            >
+              Payments
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-line"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <span
+          className="MuiBadge-root"
+        >
+          <img
+            alt="Transactions Menu"
+            className="makeStyles-root"
+            src="bell.svg"
+          />
+          <span
+            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+          >
+            
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-root"
+          id="/payment"
+          onClick={[Function]}
+        >
+          <img
+            alt="Send payment"
+            className="makeStyles-root"
+            height={36}
+            src="transactionSend.svg"
+            width={36}
+          />
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Send payment
+          </p>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-root"
+          id="/addresses"
+          onClick={[Function]}
+        >
+          <img
+            alt="Receive Payment"
+            className="makeStyles-root"
+            height={36}
+            src="transactionReceive.svg"
+            width={36}
+          />
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Receive Payment
+          </p>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h5
+            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-alignCenter"
+          >
+            You can not register
+          </h5>
+          <h5
+            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            id="/register-personalized-address"
+          >
+            personalized address
+          </h5>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h5
+              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-h5"
+            >
+              using
+               
+            </h5>
+            <h5
+              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-h5"
+            >
+              Ledger Nano S
+            </h5>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-alignCenter"
+          >
+            No funds available
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
