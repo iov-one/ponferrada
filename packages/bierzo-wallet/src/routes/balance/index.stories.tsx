@@ -41,6 +41,7 @@ storiesOf(BALANCE_STORY_PATH, module)
       <PageMenu>
         <Layout
           iovAddress={ACCOUNT_NAME}
+          rpcEndpointType="extension"
           balances={BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
           onReceivePayment={linkTo(WALLET_ROOT, RECEIVE_PAYMENT_STORY_PATH)}
@@ -54,6 +55,21 @@ storiesOf(BALANCE_STORY_PATH, module)
       <PageMenu>
         <Layout
           iovAddress={undefined}
+          rpcEndpointType="extension"
+          balances={NO_BALANCE}
+          onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
+          onReceivePayment={linkTo(WALLET_ROOT, RECEIVE_PAYMENT_STORY_PATH)}
+          onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        />
+      </PageMenu>
+    </DecoratedStorybook>
+  ))
+  .add("View on ledger and without name", () => (
+    <DecoratedStorybook>
+      <PageMenu>
+        <Layout
+          iovAddress={undefined}
+          rpcEndpointType="ledger"
           balances={NO_BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
           onReceivePayment={linkTo(WALLET_ROOT, RECEIVE_PAYMENT_STORY_PATH)}
