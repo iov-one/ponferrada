@@ -40,7 +40,7 @@ export const extensionRpcEndpoint: RpcEndpoint = {
   authorizeSignAndPostMessage: "Please authorize request in Neuma to continue.",
   notAvailableMessage: "You need to install the Neuma browser extension.",
   noMatchingIdentityMessage: "Please unlock Neuma to continue.",
-  rpcEndpointType: "extension",
+  type: "extension",
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     if (!isExtensionContext()) return undefined;
 

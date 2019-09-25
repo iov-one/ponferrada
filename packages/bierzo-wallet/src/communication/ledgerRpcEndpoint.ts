@@ -39,7 +39,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
   authorizeSignAndPostMessage: "Please sign transaction on Ledger device to continue.",
   notAvailableMessage: "Please connect your Ledger Nano S, open the IOV app and try again.",
   noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",
-  rpcEndpointType: "ledger",
+  type: "ledger",
 
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     if (

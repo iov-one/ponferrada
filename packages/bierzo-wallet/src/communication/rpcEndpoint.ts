@@ -22,7 +22,7 @@ export interface RpcEndpoint {
   readonly authorizeSignAndPostMessage: string;
   readonly notAvailableMessage: string;
   readonly noMatchingIdentityMessage: string;
-  readonly rpcEndpointType: RpcEndpointType;
+  readonly type: RpcEndpointType;
 
   /**
    * @returns a response or `undefined` if the endpoint was not available
