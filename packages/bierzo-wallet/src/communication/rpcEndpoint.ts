@@ -15,11 +15,14 @@ export type GetIdentitiesResponse = readonly Identity[];
  */
 export type SignAndPostResponse = TransactionId | null;
 
+export type RpcEndpointType = "ledger" | "extension";
+
 export interface RpcEndpoint {
   readonly authorizeGetIdentitiesMessage: string;
   readonly authorizeSignAndPostMessage: string;
   readonly notAvailableMessage: string;
   readonly noMatchingIdentityMessage: string;
+  readonly type: RpcEndpointType;
 
   /**
    * @returns a response or `undefined` if the endpoint was not available

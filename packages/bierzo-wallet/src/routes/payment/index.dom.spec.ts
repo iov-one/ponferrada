@@ -3,6 +3,7 @@ import { Encoding } from "@iov/encoding";
 import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
 
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
 import { RootState } from "../../store/reducers";
@@ -45,6 +46,7 @@ describe("The /payment route", () => {
     store = aNewStore({
       identities,
       balances: balancesAmount,
+      rpcEndpoint: extensionRpcEndpoint,
     });
     paymentDom = await travelToPayment(store);
   });
