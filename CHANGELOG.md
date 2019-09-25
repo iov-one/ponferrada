@@ -2,6 +2,7 @@
 
 ## 0.6.0
 
+- Governance: Periodically update proposals
 - Connect to Babynet 👶
 
 ## 0.5.0
