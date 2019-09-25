@@ -16,7 +16,7 @@ interface Props {
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
   readonly onRegisterUsername: () => void;
-  readonly rpcEndpointType: RpcEndpointType | undefined;
+  readonly rpcEndpointType: RpcEndpointType;
 }
 
 interface CardProps {
@@ -57,12 +57,11 @@ const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
 
 interface GetAddressProps {
   readonly onRegisterUsername: () => void;
-  readonly rpcEndpointType: RpcEndpointType | undefined;
+  readonly rpcEndpointType: RpcEndpointType;
 }
 
 const GetYourAddress = ({ rpcEndpointType, onRegisterUsername }: GetAddressProps): JSX.Element => {
   switch (rpcEndpointType) {
-    case undefined:
     case "extension":
       return <GetYourAddressWithExtension onRegisterUsername={onRegisterUsername} />;
     case "ledger":
