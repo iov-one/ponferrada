@@ -3,6 +3,8 @@ import { Encoding } from "@iov/encoding";
 import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
 
+import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
 import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
@@ -67,6 +69,7 @@ describe("The /balance route", () => {
         identities: identities,
         balances: balancesAmount,
         usernames: usernames,
+        rpcEndpoint: extensionRpcEndpoint,
       });
       balanceDom = await travelToBalance(store);
     });
@@ -117,9 +120,12 @@ describe("The /balance route", () => {
     });
   });
 
-  describe("without balance and username", () => {
+  describe("without balance and username with extension RPC Endpoint", () => {
     beforeEach(async () => {
-      store = aNewStore({ identities });
+      store = aNewStore({
+        identities,
+        rpcEndpoint: extensionRpcEndpoint,
+      });
       balanceDom = await travelToBalance(store);
     });
 
@@ -133,6 +139,22 @@ describe("The /balance route", () => {
       const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
 
       expect(noUsernameMessage).toBe("Get your human readable");
+    });
+  });
+
+  describe("without balance and username with Ledger RPC Endpoint", () => {
+    beforeEach(async () => {
+      store = aNewStore({
+        identities,
+        rpcEndpoint: ledgerRpcEndpoint,
+      });
+      balanceDom = await travelToBalance(store);
+    });
+
+    it("should show that there is no bns username available", async () => {
+      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
+
+      expect(noUsernameMessage).toBe("You can not register");
     });
   });
 });
