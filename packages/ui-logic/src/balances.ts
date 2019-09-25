@@ -1,8 +1,6 @@
 import { Amount, Token } from "@iov/bcp";
 import { Decimal } from "@iov/encoding";
 
-export type Figures = Omit<Amount, "tokenTicker">;
-
 /**
  * This produces a human readable format of the amount, value and token ticker
  */
