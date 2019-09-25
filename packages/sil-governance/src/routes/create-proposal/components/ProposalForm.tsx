@@ -233,8 +233,10 @@ const ProposalForm = (): JSX.Element => {
     <Block flexGrow={1} margin={2}>
       <Typography>Create Proposal</Typography>
       <Form onSubmit={handleSubmit}>
-        <Block display="flex" justifyContent="space-between" marginTop={2}>
-          <TitleField form={form} />
+        <Block display="flex" marginTop={2}>
+          <Block flexGrow={1} marginRight={2}>
+            <TitleField form={form} />
+          </Block>
           <WhenField form={form} />
         </Block>
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
