@@ -5,7 +5,6 @@ import {
   ChainId,
   FullSignature,
   Identity,
-  isBlockInfoPending,
   isUnsignedTransaction,
   PubkeyBytes,
   SignatureBytes,
@@ -145,8 +144,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     const transactionId = bnsCodec.identifier(signedTransaction);
 
-    const response = await bnsConnection.postTx(bnsCodec.bytesToPost(signedTransaction));
-    await response.blockInfo.waitFor(info => !isBlockInfoPending(info));
+    await bnsConnection.postTx(bnsCodec.bytesToPost(signedTransaction));
 
     return transactionId;
   },
