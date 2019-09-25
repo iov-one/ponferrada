@@ -5,6 +5,7 @@ import { Block, Hairline, Image, Typography } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
+import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { ADDRESSES_ROUTE, PAYMENT_ROUTE, REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
 import receive from "../assets/transactionReceive.svg";
 import send from "../assets/transactionSend.svg";
@@ -15,6 +16,7 @@ interface Props {
   readonly onSendPayment: () => void;
   readonly onReceivePayment: () => void;
   readonly onRegisterUsername: () => void;
+  readonly rpcEndpointType: RpcEndpointType | undefined;
 }
 
 interface CardProps {
@@ -55,9 +57,24 @@ const Card = ({ id, text, logo, onAction }: CardProps): JSX.Element => {
 
 interface GetAddressProps {
   readonly onRegisterUsername: () => void;
+  readonly rpcEndpointType: RpcEndpointType | undefined;
 }
 
-const GetYourAddress = ({ onRegisterUsername }: GetAddressProps): JSX.Element => (
+const GetYourAddress = ({ rpcEndpointType, onRegisterUsername }: GetAddressProps): JSX.Element => {
+  switch (rpcEndpointType) {
+    case undefined:
+    case "extension":
+      return <GetYourAddressWithExtension onRegisterUsername={onRegisterUsername} />;
+    case "ledger":
+      return <GetYourAddressWithLedger />;
+  }
+};
+
+interface GetAddressExtensionProps {
+  readonly onRegisterUsername: () => void;
+}
+
+const GetYourAddressWithExtension = ({ onRegisterUsername }: GetAddressExtensionProps): JSX.Element => (
   <React.Fragment>
     <Typography variant="h5" align="center" weight="light" inline>
       Get your human readable
@@ -77,12 +94,38 @@ const GetYourAddress = ({ onRegisterUsername }: GetAddressProps): JSX.Element =>
   </React.Fragment>
 );
 
+const GetYourAddressWithLedger = (): JSX.Element => (
+  <React.Fragment>
+    <Typography variant="h5" align="center" weight="light">
+      You can not register
+    </Typography>
+    <Typography
+      id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+      variant="h5"
+      align="center"
+      color="primary"
+      weight="light"
+    >
+      personalized address
+    </Typography>
+    <Block textAlign="center">
+      <Typography variant="h5" weight="light" inline>
+        using{" "}
+      </Typography>
+      <Typography variant="h5" weight="semibold" inline>
+        Ledger Nano S
+      </Typography>
+    </Block>
+  </React.Fragment>
+);
+
 const BalanceLayout = ({
   iovAddress,
   balances,
   onSendPayment,
   onReceivePayment,
   onRegisterUsername,
+  rpcEndpointType,
 }: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
@@ -105,7 +148,7 @@ const BalanceLayout = ({
               {iovAddress}
             </Typography>
           ) : (
-            <GetYourAddress onRegisterUsername={onRegisterUsername} />
+            <GetYourAddress onRegisterUsername={onRegisterUsername} rpcEndpointType={rpcEndpointType} />
           )}
           <Hairline space={4} />
           <Typography variant="subtitle2" align="center">
