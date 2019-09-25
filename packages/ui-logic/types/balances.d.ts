@@ -1,6 +1,5 @@
 import { Amount, Token } from "@iov/bcp";
 export declare type Figures = Omit<Amount, "tokenTicker">;
-export declare function parseFigures(amount: string): Figures;
 /**
  * Parses a decimal as string into the Amount format, using the token's native fractional digits
  */

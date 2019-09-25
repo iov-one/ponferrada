@@ -1,23 +1,7 @@
 import { Amount, Token } from "@iov/bcp";
+import { Decimal } from "@iov/encoding";
 
 export type Figures = Omit<Amount, "tokenTicker">;
-
-export function parseFigures(amount: string): Figures {
-  // trim off all leading zeros when parsing
-  const trimmed = amount.replace(/^0+/, "");
-  const matched = trimmed.match(/^([0-9]+)?([.,])?([0-9]+)?$/);
-  if (!matched) {
-    throw new Error(`Not a valid number: ${amount}`);
-  }
-  // elements 1 and 3...
-  const wholeString = matched[1] || "";
-  // get fraction part and remove trailing zeros.
-  const fractionString = (matched[3] || "").replace(/0+$/, "");
-  const quantity = `${wholeString}${fractionString}`;
-  const fractionalDigits = fractionString.length;
-
-  return { quantity, fractionalDigits };
-}
 
 /**
  * Parses a decimal as string into the Amount format, using the token's native fractional digits
@@ -26,12 +10,9 @@ export function stringToAmount(
   amount: string,
   tokenInfo: Pick<Token, "fractionalDigits" | "tokenTicker">,
 ): Amount {
-  const figures = parseFigures(amount);
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  const normalized = normalizeQuantity(figures, tokenInfo.fractionalDigits);
-
   return {
-    ...normalized,
+    quantity: Decimal.fromUserInput(amount, tokenInfo.fractionalDigits).atomics,
+    fractionalDigits: tokenInfo.fractionalDigits,
     tokenTicker: tokenInfo.tokenTicker,
   };
 }
@@ -56,21 +37,6 @@ export function amountToNumber(amount: Amount): number {
   const value = `${whole}${decimal}`;
 
   return Number(value);
-}
-
-// this takes an amount and pad 0s to the desired fractionalDigits, or throws error if fractionalDigits is already larger
-function normalizeQuantity(input: Figures, desiredDigits: number): Figures {
-  const diff = desiredDigits - input.fractionalDigits;
-  if (diff < 0) {
-    throw new Error(`Want to pad to ${desiredDigits}, but already has ${input.fractionalDigits}`);
-  }
-
-  const newQuantity = input.quantity + "0".repeat(diff);
-  const trimmedQuantity = newQuantity.replace(/^0*/, "") || "0";
-  return {
-    quantity: trimmedQuantity,
-    fractionalDigits: desiredDigits,
-  };
 }
 
 // This produces a human readable format of the amount, value and token ticker
