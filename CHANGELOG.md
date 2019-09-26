@@ -2,6 +2,10 @@
 
 ## 0.6.1
 
+- Wallet: Don't wait for block before confirming transaction signing with Ledger
+- Wallet: Don't show register username message when logged in with Ledger
+- Governance: Limit precision of participation display
+- Governance: Improve proposal title validation
 - Upgrade IOV-Core to 1.0.0-alpha.0
 
 ## 0.6.0
