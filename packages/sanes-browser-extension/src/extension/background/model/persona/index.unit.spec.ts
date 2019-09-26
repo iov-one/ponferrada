@@ -108,7 +108,7 @@ withChainsDescribe("Persona", () => {
     }, 10000);
 
     it("can get accounts with human readable addresses", async () => {
-      const mnemonic = Bip39.encode(await Random.getBytes(16)).asString();
+      const mnemonic = Bip39.encode(await Random.getBytes(16)).toString();
 
       const bnsUrl = "http://localhost:23456/";
       const bnsFaucetUrl = "http://localhost:8000/";

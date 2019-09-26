@@ -1,6 +1,5 @@
 import { Address, Identity } from "@iov/bcp";
 import { Governor } from "@iov/bns-governance";
-import { Encoding } from "@iov/encoding";
 import { Dispatch, Store } from "redux";
 import { Stream } from "xstream";
 
@@ -18,9 +17,8 @@ export async function bootApplication(
 ): Promise<void> {
   const config = await getConfig();
 
-  const escrowHex = config.bnsChain.guaranteeFundEscrowId;
-  if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
-  const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
+  const guaranteeFundEscrowId = config.bnsChain.guaranteeFundEscrowId;
+  if (guaranteeFundEscrowId === undefined) throw Error("No Escrow ID provided. This is a bug.");
 
   const rewardFundAddress = config.bnsChain.rewardFundAddress;
   if (!rewardFundAddress) throw Error("No Reward Address provided. This is a bug.");

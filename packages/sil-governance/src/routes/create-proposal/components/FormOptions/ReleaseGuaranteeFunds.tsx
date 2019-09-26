@@ -1,6 +1,5 @@
 import { ChainId, TokenTicker } from "@iov/bcp";
 import { escrowIdToAddress } from "@iov/bns";
-import { Encoding } from "@iov/encoding";
 import { FormApi } from "final-form";
 import {
   Block,
@@ -35,9 +34,8 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
   useEffect(() => {
     const updateTickers = async (): Promise<void> => {
       const config = await getConfig();
-      const escrowHex = config.bnsChain.guaranteeFundEscrowId;
-      if (!escrowHex) throw Error("No Escrow ID provided. This is a bug.");
-      const guaranteeFundEscrowId = Encoding.fromHex(escrowHex);
+      const guaranteeFundEscrowId = config.bnsChain.guaranteeFundEscrowId;
+      if (guaranteeFundEscrowId === undefined) throw Error("No Escrow ID provided. This is a bug.");
 
       const chainId = config.bnsChain.chainSpec.chainId as ChainId;
       const guaranteeFundAddress = escrowIdToAddress(chainId, guaranteeFundEscrowId);
