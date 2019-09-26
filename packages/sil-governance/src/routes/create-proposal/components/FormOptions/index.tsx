@@ -1,7 +1,7 @@
 import { ElectionRule } from "@iov/bns";
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
-import { Block, FieldInputValue } from "medulas-react-components";
+import { FieldInputValue } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
 
 import AddCommitteeMember from "./AddCommitteeMember";
@@ -24,7 +24,6 @@ const proposalOptions = {
   [ProposalType.RemoveValidator]: RemoveValidator,
   [ProposalType.ReleaseGuaranteeFunds]: ReleaseGuaranteeFunds,
   [ProposalType.DistributeFunds]: DistributeFunds,
-  [ProposalType.TreasurySend]: Block, // not implemented
 };
 
 export const isFraction = (value: FieldInputValue): string | undefined => {

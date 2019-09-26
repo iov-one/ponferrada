@@ -7,7 +7,7 @@
       "chainId": "iov-babynet",
       "name": "IOV Babynet"
     },
-    "guaranteeFundEscrowId": "0000000000000001",
+    "guaranteeFundEscrowId": 1,
     "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"
   }
 }

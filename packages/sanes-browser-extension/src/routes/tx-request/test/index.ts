@@ -124,7 +124,7 @@ export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & Wi
     author: defaultAddress,
     action: {
       kind: ActionKind.ReleaseEscrow,
-      escrowId: Encoding.fromHex("000000000000dca2"),
+      escrowId: 56482,
       amount: {
         quantity: "1230000000000000000", // 1.23 ETH
         fractionalDigits: 18,
@@ -275,7 +275,7 @@ export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & W
         },
         {
           kind: ActionKind.ReleaseEscrow,
-          escrowId: Encoding.fromHex("000000000000dca2"),
+          escrowId: 56482,
           amount: {
             quantity: "1230000000000000000", // 1.23 ETH
             fractionalDigits: 18,

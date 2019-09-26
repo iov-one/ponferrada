@@ -116,7 +116,7 @@ export class Persona {
     const encryptionKey = await UserProfile.deriveEncryptionKey(password);
 
     const entropyBytes = 16;
-    const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).asString();
+    const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).toString();
     const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
     const managerChains = await Persona.connectToAllConfiguredChains(signer);

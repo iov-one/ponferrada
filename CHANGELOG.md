@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+- Upgrade IOV-Core to 1.0.0-alpha.0
+
 ## 0.6.0
 
 - Governance: Periodically update proposals
