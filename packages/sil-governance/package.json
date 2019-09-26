@@ -1,6 +1,6 @@
 {
   "name": "sil-governance",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "dependencies": {
     "@iov/bcp": "^1.0.0-alpha.0",
@@ -18,7 +18,7 @@
     "react-router-dom": "5.0.0",
     "readonly-date": "^1.0.0",
     "redux": "^4.0.1",
-    "ui-logic": "^0.6.0"
+    "ui-logic": "^0.6.1"
   },
   "devDependencies": {
     "react-scripts": "^3.1.1"
