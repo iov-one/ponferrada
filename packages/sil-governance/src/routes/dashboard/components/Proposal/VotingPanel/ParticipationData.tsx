@@ -1,5 +1,6 @@
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
+import { round } from "ui-logic";
 
 import { Tally } from "../../../../../store/proposals";
 
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const ParticipationData = ({ quorum, threshold, tally }: Props): JSX.Element => {
-  const participation = (tally.totalVotes / tally.maxVotes) * 100;
+  const participation = round((tally.totalVotes / tally.maxVotes) * 100, 2);
 
   return (
     <Block>
