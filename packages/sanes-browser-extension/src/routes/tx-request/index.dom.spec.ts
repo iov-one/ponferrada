@@ -30,14 +30,14 @@ const sendRequests: readonly Request[] = [
   },
 ];
 
-describe("DOM > Feature > Transaction Request", (): void => {
+describe("DOM > Feature > Transaction Request", () => {
   let txRequestDOM: React.Component;
 
   beforeEach(async () => {
     txRequestDOM = await travelToTXRequest(sendRequests);
   }, 60000);
 
-  it("should accept incoming request and redirect to account status view", async (): Promise<void> => {
+  it("should accept incoming request and redirect to account status view", async () => {
     const inputs = TestUtils.scryRenderedDOMComponentsWithTag(txRequestDOM, "button");
 
     expect(inputs.length).toBe(2);
@@ -48,7 +48,7 @@ describe("DOM > Feature > Transaction Request", (): void => {
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
-  it("should reject incoming request and come back", async (): Promise<void> => {
+  it("should reject incoming request and come back", async () => {
     await clickOnRejectButton(txRequestDOM);
     await confirmRejectButton(txRequestDOM);
     // TODO: Check here that share request rejection has been reject successfuly
@@ -60,7 +60,7 @@ describe("DOM > Feature > Transaction Request", (): void => {
     await clickOnBackButton(txRequestDOM);
   }, 60000);
 
-  it("should reject incoming request permanently and come back", async (): Promise<void> => {
+  it("should reject incoming request permanently and come back", async () => {
     await clickOnRejectButton(txRequestDOM);
     await checkPermanentRejection(txRequestDOM);
     await confirmRejectButton(txRequestDOM);
@@ -69,19 +69,19 @@ describe("DOM > Feature > Transaction Request", (): void => {
   }, 60000);
 });
 
-describe("DOM > Feature > Send Transaction Request", (): void => {
+describe("DOM > Feature > Send Transaction Request", () => {
   let txRequestDOM: React.Component;
 
   beforeEach(async () => {
     txRequestDOM = await travelToTXRequest(sendRequests);
   }, 60000);
 
-  it("should show send transaction request accept view", async (): Promise<void> => {
+  it("should show send transaction request accept view", async () => {
     await findRenderedDOMComponentWithId(txRequestDOM, REQ_SEND_TX);
   }, 60000);
 });
 
-describe("DOM > Feature > Username Registration Request", (): void => {
+describe("DOM > Feature > Username Registration Request", () => {
   const requests: readonly Request[] = [
     {
       id: 1,
@@ -101,12 +101,12 @@ describe("DOM > Feature > Username Registration Request", (): void => {
     txRequestDOM = await travelToTXRequest(requests);
   }, 60000);
 
-  it("should show register username request accept view", async (): Promise<void> => {
+  it("should show register username request accept view", async () => {
     await findRenderedDOMComponentWithId(txRequestDOM, REQ_REGISTER_USERNAME);
   }, 60000);
 });
 
-describe("DOM > Feature > Create Proposal Request", (): void => {
+describe("DOM > Feature > Create Proposal Request", () => {
   const requests: readonly Request[] = [
     {
       id: 1,
@@ -126,7 +126,7 @@ describe("DOM > Feature > Create Proposal Request", (): void => {
     txRequestDOM = await travelToTXRequest(requests);
   }, 60000);
 
-  fit("should show proper propsal start date", async (): Promise<void> => {
+  it("should show proper propsal start date", () => {
     const proposalStartDate = getProposalStartDate(txRequestDOM);
     expect(proposalStartDate).toBe("8/21/2019, 10:28:21 AM");
   }, 60000);
