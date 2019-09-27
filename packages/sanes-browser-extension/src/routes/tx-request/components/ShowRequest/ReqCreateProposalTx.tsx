@@ -37,7 +37,7 @@ const ReqCreateProposalTx = ({ tx }: Props): JSX.Element => {
           <ListItemText
             classes={listItemClasses}
             primary="Start date"
-            secondary={new Date(tx.startTime).toLocaleString()}
+            secondary={new Date(tx.startTime * 1000).toLocaleString()}
             secondaryTypographyProps={txListItemSecondaryProps}
           />
         </ListItem>

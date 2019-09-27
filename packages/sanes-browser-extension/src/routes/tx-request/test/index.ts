@@ -101,7 +101,7 @@ export function getCreateTextResolutionActionTransaction(): CreateProposalTx & W
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.CreateTextResolution,
@@ -120,7 +120,7 @@ export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & Wi
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.ReleaseEscrow,
@@ -144,7 +144,7 @@ export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.Send,
@@ -170,7 +170,7 @@ export function getSetValidatorsActionTransaction(): CreateProposalTx & WithCrea
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.SetValidators,
@@ -194,7 +194,7 @@ export function getUpdateElectionRuleActionTransaction(): CreateProposalTx & Wit
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.UpdateElectionRule,
@@ -216,7 +216,7 @@ export function getUpdateElectorateActionTransaction(): CreateProposalTx & WithC
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.UpdateElectorate,
@@ -241,7 +241,7 @@ export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & W
     title: "Just an idea",
     description: "Try a centralized approach instead?",
     electionRuleId: 2,
-    startTime: 1566383301091,
+    startTime: 1566383301,
     author: defaultAddress,
     action: {
       kind: ActionKind.ExecuteProposalBatch,
