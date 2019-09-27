@@ -27,10 +27,10 @@
     "start-firefox-development": "yarn build-development && web-ext run --source-dir ./build/",
     "start-firefox-staging": "yarn build-staging && web-ext run --source-dir ./build/",
     "start-firefox-production": "yarn build-production && web-ext run --source-dir ./build/",
-    "test-dom": "yarn use-config-development && CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-e2e": "yarn use-config-development && CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --runInBand --env=jsdom",
-    "test-unit": "yarn use-config-development && CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
-    "test-single": "yarn use-config-development && CI=true react-scripts test --env=jsdom",
+    "test-dom": "yarn use-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.dom\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-e2e": "yarn use-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.e2e\\.(spec|test)\\.[jt]s[x]?$' --runInBand --env=jsdom",
+    "test-unit": "yarn use-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test '\\.unit\\.(spec|test)\\.[jt]s[x]?$' --env=jsdom",
+    "test-single": "yarn use-config-development && TZ=UTC LANG=en_US.UTF-8 CI=true react-scripts test --env=jsdom",
     "test": "yarn test-unit && yarn test-dom && yarn test-e2e"
   },
   "browserslist": [

@@ -56,3 +56,9 @@ export const clickOnBackButton = async (TXRequestDom: React.Component): Promise<
 
   await findRenderedDOMComponentWithId(TXRequestDom, TX_REQUEST_SHOW);
 };
+
+export const getProposalStartDate = (TXRequestDom: React.Component): string | null => {
+  const values = TestUtils.scryRenderedDOMComponentsWithClass(TXRequestDom, "MuiListItemText-secondary");
+
+  return values[2].textContent;
+};
