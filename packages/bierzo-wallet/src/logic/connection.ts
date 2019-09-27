@@ -81,7 +81,7 @@ export async function getConnectionForBns(): Promise<BnsConnection> {
       return (await getConnectionFor(chain.chainSpec)) as BnsConnection;
     }
   }
-  throw new Error("No connection found for this chainId");
+  throw new Error("No connection found for BNS chain");
 }
 
 /**
