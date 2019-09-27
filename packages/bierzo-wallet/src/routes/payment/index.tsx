@@ -11,7 +11,7 @@ import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
 import { RootState } from "../../store/reducers";
-import { BALANCE_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
+import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout from "./components";
 import ConfirmPayment from "./components/ConfirmPayment";
 import { CURRENCY_FIELD, QUANTITY_FIELD } from "./components/CurrencyToSend";
@@ -20,9 +20,6 @@ import { TEXTNOTE_FIELD } from "./components/TextNote";
 
 function onCancelPayment(): void {
   history.push(BALANCE_ROUTE);
-}
-function onNewPayment(): void {
-  history.push(PAYMENT_ROUTE);
 }
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -39,6 +36,10 @@ const Payment = (): JSX.Element => {
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
+
+  const onNewPayment = (): void => {
+    setTransactionId(null);
+  };
 
   const onTokenSelectionChanged = async (ticker: TokenTicker): Promise<void> => {
     const token = tokens[ticker];
