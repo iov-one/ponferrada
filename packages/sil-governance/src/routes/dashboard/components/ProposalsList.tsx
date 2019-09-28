@@ -1,7 +1,7 @@
 import { Address } from "@iov/bcp";
-import { Block, Typography } from "medulas-react-components";
-import React from "react";
-import * as ReactRedux from "react-redux";
+import { Block, SelectField, SelectFieldItem, Typography, useForm } from "medulas-react-components";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { ElectionFilter } from "../../../components/AsideFilter";
 import { RootState } from "../../../store/reducers";
@@ -49,14 +49,47 @@ const getFilter = (filterType: ElectionFilter, currentUser: Address | null): Pro
   }
 };
 
-function compareById<E extends { readonly id: number }>(element1: E, element2: E): number {
-  return element1.id - element2.id;
-}
+type ProposalsComparator = (proposal1: ProposalProps, proposal2: ProposalProps) => number;
+
+const compareByIdDescending: ProposalsComparator = (proposal1, proposal2): number => {
+  return proposal1 > proposal2 ? 1 : -1;
+};
+const compareByExpiryDate: ProposalsComparator = (proposal1, proposal2): number => {
+  return proposal1.expiryDate.getTime() - proposal2.expiryDate.getTime();
+};
+const compareByStartDate: ProposalsComparator = (proposal1, proposal2): number => {
+  return proposal1.startDate.getTime() - proposal2.startDate.getTime();
+};
+const compareByVote: ProposalsComparator = (proposal1, proposal2): number => {
+  if (proposal2.vote === undefined) return -1;
+  if (proposal1.vote === undefined) return 1;
+  return proposal1.vote - proposal2.vote;
+};
 
 const ProposalsList = ({ filterType }: Props): JSX.Element => {
-  const proposals = ReactRedux.useSelector((state: RootState) => state.proposals.proposals);
-  const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
-  const blockchain = ReactRedux.useSelector((state: RootState) => state.blockchain);
+  const proposals = useSelector((state: RootState) => state.proposals.proposals);
+  const governor = useSelector((state: RootState) => state.extension.governor);
+  const blockchain = useSelector((state: RootState) => state.blockchain);
+
+  const [comparator, setComparator] = useState<ProposalsComparator>(() => compareByIdDescending);
+
+  const changeComparator = (selectedItem: SelectFieldItem): void => {
+    switch (selectedItem.name) {
+      case ComparatorLabels.ExpiryDate:
+        setComparator(() => compareByExpiryDate);
+        break;
+      case ComparatorLabels.StartDate:
+        setComparator(() => compareByStartDate);
+        break;
+      case ComparatorLabels.Vote:
+        setComparator(() => compareByVote);
+        break;
+      default:
+        setComparator(() => compareByIdDescending);
+    }
+  };
+
+  const { form } = useForm({ onSubmit: () => {} });
 
   const filter = getFilter(filterType, governor ? governor.address : null);
   const uiProposals = proposals
@@ -67,8 +100,7 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
       }),
     )
     .filter(filter)
-    .sort(compareById)
-    .reverse();
+    .sort(comparator);
 
   const noProposals = uiProposals.length === 0;
 
@@ -85,9 +117,11 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
           <Block marginLeft={2} width="120px">
             <SelectField
               fieldName={comparatorLabel}
+              form={form}
               fullWidth
               items={comparatorItems}
               initial={comparatorInitial}
+              onChangeCallback={changeComparator}
             />
           </Block>
         </Block>
