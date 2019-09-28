@@ -14,6 +14,21 @@ interface Props {
   readonly filterType: ElectionFilter;
 }
 
+const comparatorLabel = "Sort by";
+
+enum ComparatorLabels {
+  None = "None",
+  ExpiryDate = "Expiry Date",
+  StartDate = "Start Date",
+  Vote = "Vote",
+}
+
+const comparatorItems = Object.values(ComparatorLabels).map(label => {
+  return { name: label };
+});
+
+const comparatorInitial = comparatorItems[0].name;
+
 type ProposalsFilter = (proposal: ProposalProps) => boolean;
 
 const getFilter = (filterType: ElectionFilter, currentUser: Address | null): ProposalsFilter => {
@@ -62,6 +77,19 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
       {noProposals && (
         <Block margin={2}>
           <Typography>No proposals available</Typography>
+        </Block>
+      )}
+      {!noProposals && (
+        <Block display="flex" alignItems="center" margin={2} height="15px">
+          <Typography>{comparatorLabel}</Typography>
+          <Block marginLeft={2} width="120px">
+            <SelectField
+              fieldName={comparatorLabel}
+              fullWidth
+              items={comparatorItems}
+              initial={comparatorInitial}
+            />
+          </Block>
         </Block>
       )}
       {uiProposals.map((proposal, index) => (
