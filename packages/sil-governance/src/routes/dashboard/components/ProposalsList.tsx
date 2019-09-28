@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 
 import { ElectionFilter } from "../../../components/AsideFilter";
 import { RootState } from "../../../store/reducers";
-import { ProposalProps } from "./Proposal";
-import RenderedProposal from "./RenderedProposal";
+import Proposal, { ProposalProps } from "./Proposal";
 
 export const PROPOSALS_HTML_ID = "proposals";
 
@@ -126,8 +125,8 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
           </Block>
         </Block>
       )}
-      {uiProposals.map((proposal, index) => (
-        <RenderedProposal key={proposal.id} proposal={proposal} index={index} />
+      {uiProposals.map(proposal => (
+        <Proposal key={proposal.id} {...proposal} />
       ))}
     </Block>
   );
