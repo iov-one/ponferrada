@@ -13,13 +13,21 @@ import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
 import { getConfig } from "../config";
 import { getCodecForChainId } from "../logic/codec";
-import { getConnectionFor, getConnectionForChainId } from "../logic/connection";
+import { getConnectionFor, getConnectionForBns, getConnectionForChainId } from "../logic/connection";
 
-export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
-  const connections = await Promise.all(
-    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
-  );
-  const supportedChainIds = connections.map(connection => connection.chainId());
+export async function generateGetIdentitiesRequest(ledger: boolean = false): Promise<JsonRpcRequest> {
+  const chainIdsToRequest: ChainId[] = [];
+
+  if (ledger) {
+    const connection = await getConnectionForBns();
+    chainIdsToRequest.push(connection.chainId());
+  } else {
+    const connections = await Promise.all(
+      (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
+    );
+    const supportedChainIds = connections.map(connection => connection.chainId());
+    chainIdsToRequest.push.apply(chainIdsToRequest, supportedChainIds);
+  }
 
   return {
     jsonrpc: "2.0",
@@ -27,7 +35,7 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
     method: "getIdentities",
     params: {
       reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
-      chainIds: TransactionEncoder.toJson(supportedChainIds),
+      chainIds: TransactionEncoder.toJson(chainIdsToRequest),
     },
   };
 }

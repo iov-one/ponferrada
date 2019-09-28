@@ -87,7 +87,7 @@ const Login = (): JSX.Element => {
     }
 
     billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
-    const request = await generateGetIdentitiesRequest();
+    const request = await generateGetIdentitiesRequest(true);
     const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
     billboard.close();
 
