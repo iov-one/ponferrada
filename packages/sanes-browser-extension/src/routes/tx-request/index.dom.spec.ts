@@ -1,8 +1,6 @@
-import TestUtils from "react-dom/test-utils";
 import { sleep } from "ui-logic";
 
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { click } from "../../utils/test/dom";
 import { travelToTXRequest, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { REQUEST_ROUTE } from "../paths";
@@ -11,59 +9,69 @@ import { REQ_SEND_TX } from "./components/ShowRequest/ReqSendTransaction";
 import { getCashTransaction, getCreateTextResolutionActionTransaction, getUsernameTransaction } from "./test";
 import {
   checkPermanentRejection,
-  clickOnBackButton,
   clickOnRejectButton,
+  confirmAcceptButton,
   confirmRejectButton,
   getProposalStartDate,
 } from "./test/operateTXRequest";
 
-const sendRequests: readonly Request[] = [
-  {
-    id: 1,
-    senderUrl: "http://finnex.com",
-    reason: "Test get Identities",
-    responseData: {
-      tx: getCashTransaction(),
-    },
-    accept: jest.fn(),
-    reject: jest.fn(),
+const sendRequest = {
+  id: 1,
+  senderUrl: "http://finnex.com",
+  reason: "Test get Identities",
+  responseData: {
+    tx: getCashTransaction(),
   },
-];
+  accept: jest.fn(),
+  reject: jest.fn(),
+};
+
+const sendRequests: readonly Request[] = [sendRequest];
 
 describe("DOM > Feature > Transaction Request", () => {
   let txRequestDOM: React.Component;
+  let windowCloseCall = false;
 
   beforeEach(async () => {
     txRequestDOM = await travelToTXRequest(sendRequests);
+    jest.spyOn(window, "close").mockImplementation(() => {
+      windowCloseCall = true;
+    });
   }, 60000);
 
-  it("should accept incoming request and redirect to account status view", async () => {
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(txRequestDOM, "button");
+  it("should accept incoming request and close extension popup", async () => {
+    await confirmAcceptButton(txRequestDOM);
+    expect(windowCloseCall).toBeTruthy();
+  }, 60000);
 
-    expect(inputs.length).toBe(2);
-
-    const acceptButton = inputs[0];
-    click(acceptButton);
-
+  it("should accept incoming request and redirect to the list of requests", async () => {
+    const requests = [sendRequest, { id: 2, ...sendRequest }];
+    txRequestDOM = await travelToTXRequest(requests);
+    await confirmAcceptButton(txRequestDOM);
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
-  it("should reject incoming request and come back", async () => {
+  it("should reject incoming request and close extension popup", async () => {
     await clickOnRejectButton(txRequestDOM);
     await confirmRejectButton(txRequestDOM);
+
     // TODO: Check here that share request rejection has been reject successfuly
 
-    /**
-     * Remove this code if not required in case if there is another redirection
-     * in confirmAcceptButton method. And apply this method in separate test method.
-     */
-    await clickOnBackButton(txRequestDOM);
+    expect(windowCloseCall).toBeTruthy();
+  }, 60000);
+
+  it("should reject incoming request and redirect to the list of requests", async () => {
+    const requests = [sendRequest, { id: 2, ...sendRequest }];
+    txRequestDOM = await travelToTXRequest(requests);
+    await clickOnRejectButton(txRequestDOM);
+    await confirmRejectButton(txRequestDOM);
+    await whenOnNavigatedToRoute(REQUEST_ROUTE);
   }, 60000);
 
   it("should reject incoming request permanently and come back", async () => {
     await clickOnRejectButton(txRequestDOM);
-    await checkPermanentRejection(txRequestDOM);
-    await confirmRejectButton(txRequestDOM);
+    checkPermanentRejection(txRequestDOM);
+    confirmRejectButton(txRequestDOM);
     await sleep(2000);
     // rejection flag has been set
   }, 60000);

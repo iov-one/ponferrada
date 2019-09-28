@@ -5,6 +5,15 @@ import { findRenderedDOMComponentWithId } from "../../../utils/test/reactElemFin
 import { TX_REQUEST_REJECT } from "../components/RejectRequest";
 import { TX_REQUEST_SHOW } from "../components/ShowRequest";
 
+export const confirmAcceptButton = async (TXRequestDom: React.Component): Promise<void> => {
+  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+
+  expect(inputs.length).toBe(2);
+
+  const acceptButton = inputs[0];
+  await click(acceptButton);
+};
+
 export const clickOnRejectButton = async (TXRequestDom: React.Component): Promise<void> => {
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
 
