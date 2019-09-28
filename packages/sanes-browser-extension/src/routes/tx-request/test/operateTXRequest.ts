@@ -1,5 +1,6 @@
 import TestUtils from "react-dom/test-utils";
 
+import { click, submit } from "../../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../../utils/test/reactElemFinder";
 import { TX_REQUEST_REJECT } from "../components/RejectRequest";
 import { TX_REQUEST_SHOW } from "../components/ShowRequest";
@@ -19,18 +20,11 @@ export const clickOnRejectButton = async (TXRequestDom: React.Component): Promis
 };
 
 export const confirmRejectButton = async (TXRequestDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
-
-  expect(inputs.length).toBe(2);
-
-  const rejectButton = inputs[0];
-
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(rejectButton);
-  });
+  const form = TestUtils.findRenderedDOMComponentWithTag(TXRequestDom, "form");
+  await submit(form);
 };
 
-export const checkPermanentRejection = async (TXRequestDom: React.Component): Promise<void> => {
+export const checkPermanentRejection = (TXRequestDom: React.Component): void => {
   const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "input");
   expect(inputs.length).toBe(1);
 
