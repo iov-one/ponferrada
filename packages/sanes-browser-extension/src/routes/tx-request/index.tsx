@@ -27,14 +27,22 @@ const TxRequest = ({ location }: RouteComponentProps): JSX.Element => {
   const showRequestView = (): void => setAction("show");
   const showRejectView = (): void => setAction("reject");
 
+  const processClose = (): void => {
+    if (requestContext.requests.length > 1) {
+      history.push(REQUEST_ROUTE);
+    } else {
+      window.close();
+    }
+  };
+
   const onAcceptRequest = (): void => {
     accept();
-    history.push(REQUEST_ROUTE);
+    processClose();
   };
 
   const onRejectRequest = (permanent: boolean): void => {
     reject(permanent);
-    history.push(REQUEST_ROUTE);
+    processClose();
   };
 
   return (
