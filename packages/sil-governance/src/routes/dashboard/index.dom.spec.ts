@@ -12,10 +12,9 @@ import {
   getAsideFilter,
   getAsideFilterOptions,
   getHeader,
-  getLogoImg,
-  getLogoTitle,
+  getHeading,
+  getLogo,
   getProposals,
-  getTitle,
 } from "./test/operateDashboard";
 import { travelToDashboard } from "./test/travelToDashboard";
 
@@ -48,14 +47,11 @@ describe("DOM > Feature > Dashboard", () => {
   it("has a header with a logo and a heading", async () => {
     const header = await getHeader(dashboardDom);
 
-    const logoImg = getLogoImg(header);
-    expect(logoImg.getAttribute("alt")).toBe("Logo");
+    const logo = getLogo(header);
+    expect(logo.getAttribute("alt")).toBe("Logo");
 
-    const logoTitle = getLogoTitle(header);
-    expect(logoTitle).toBe("IOV");
-
-    const title = getTitle(header);
-    expect(title).toBe("Governance");
+    const heading = getHeading(header);
+    expect(heading).toBe("Governance");
   }, 60000);
 
   it("has an aside filter with four options", async () => {
