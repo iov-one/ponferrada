@@ -1,9 +1,9 @@
 import { Address } from "@iov/bcp";
 import { Electorate } from "@iov/bns";
-import { Block, CircleImage, Typography } from "medulas-react-components";
+import { Block, CircleImage, Image, Typography } from "medulas-react-components";
 import React from "react";
 
-import iovIcon from "../../assets/iov-logo.svg";
+import iovLogo from "../../assets/iov-logo-title.svg";
 import userIcon from "../../assets/user.svg";
 
 export const HEADER_HTML_ID = "header";
@@ -17,10 +17,7 @@ const Header = ({ address, electorates }: Props): JSX.Element => {
   return (
     <Block id={HEADER_HTML_ID} width="100%" minHeight="78px" display="flex" alignItems="center">
       <Block minWidth="205px" display="flex" alignItems="center" justifyContent="center">
-        <CircleImage alt="Logo" icon={iovIcon} dia="48px" circleColor="#fff" />
-        <Block marginLeft={2}>
-          <Typography variant="h5">IOV</Typography>
-        </Block>
+        <Image alt="Logo" src={iovLogo} height="64px" />
       </Block>
       <Block width="100%" display="flex" alignItems="center" justifyContent="space-between">
         <Typography variant="h5">Governance</Typography>
