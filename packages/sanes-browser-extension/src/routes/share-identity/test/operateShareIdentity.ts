@@ -21,9 +21,7 @@ export const clickOnRejectButton = async (ShareIdentityDom: React.Component): Pr
 
   const rejectButton = inputs[1];
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(rejectButton);
-  });
+  await click(rejectButton);
 
   await findRenderedDOMComponentWithId(ShareIdentityDom, SHARE_IDENTITY_REJECT);
 };

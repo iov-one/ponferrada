@@ -21,9 +21,7 @@ export const clickOnRejectButton = async (TXRequestDom: React.Component): Promis
 
   const rejectButton = inputs[1];
 
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(rejectButton);
-  });
+  await click(rejectButton);
 
   await findRenderedDOMComponentWithId(TXRequestDom, TX_REQUEST_REJECT);
 };
