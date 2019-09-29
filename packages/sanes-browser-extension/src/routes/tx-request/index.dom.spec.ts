@@ -15,25 +15,28 @@ import {
   getProposalStartDate,
 } from "./test/operateTXRequest";
 
-const sendRequest = {
+const requests: Request[] = [];
+
+const request = {
   id: 1,
   senderUrl: "http://finnex.com",
   reason: "Test get Identities",
   responseData: {
     tx: getCashTransaction(),
   },
-  accept: jest.fn(),
-  reject: jest.fn(),
+  accept: () => requests.pop(),
+  reject: () => requests.pop(),
 };
-
-const sendRequests: readonly Request[] = [sendRequest];
 
 describe("DOM > Feature > Transaction Request", () => {
   let txRequestDOM: React.Component;
   let windowCloseCall = false;
 
   beforeEach(async () => {
-    txRequestDOM = await travelToTXRequest(sendRequests);
+    requests.length = 0;
+    requests.push(request);
+    windowCloseCall = false;
+    txRequestDOM = await travelToTXRequest(requests);
     jest.spyOn(window, "close").mockImplementation(() => {
       windowCloseCall = true;
     });
@@ -45,7 +48,7 @@ describe("DOM > Feature > Transaction Request", () => {
   }, 60000);
 
   it("should accept incoming request and redirect to the list of requests", async () => {
-    const requests = [sendRequest, { id: 2, ...sendRequest }];
+    requests.push({ id: 2, ...request });
     txRequestDOM = await travelToTXRequest(requests);
     await confirmAcceptButton(txRequestDOM);
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
@@ -61,7 +64,7 @@ describe("DOM > Feature > Transaction Request", () => {
   }, 60000);
 
   it("should reject incoming request and redirect to the list of requests", async () => {
-    const requests = [sendRequest, { id: 2, ...sendRequest }];
+    requests.push({ id: 2, ...request });
     txRequestDOM = await travelToTXRequest(requests);
     await clickOnRejectButton(txRequestDOM);
     await confirmRejectButton(txRequestDOM);
@@ -81,7 +84,9 @@ describe("DOM > Feature > Send Transaction Request", () => {
   let txRequestDOM: React.Component;
 
   beforeEach(async () => {
-    txRequestDOM = await travelToTXRequest(sendRequests);
+    requests.length = 0;
+    requests.push(request);
+    txRequestDOM = await travelToTXRequest(requests);
   }, 60000);
 
   it("should show send transaction request accept view", async () => {

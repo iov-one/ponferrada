@@ -11,6 +11,8 @@ import {
   confirmRejectButton,
 } from "./test/operateShareIdentity";
 
+const requests: Request[] = [];
+
 const request = {
   id: 1,
   senderUrl: "http://finnex.com",
@@ -23,17 +25,18 @@ const request = {
       },
     ],
   },
-  accept: jest.fn(),
-  reject: jest.fn(),
+  accept: () => requests.pop(),
+  reject: () => requests.pop(),
 };
-
-const requests: readonly Request[] = [request];
 
 describe("DOM > Feature > Share Identity", (): void => {
   let identityDOM: React.Component;
   let windowCloseCall = false;
 
   beforeEach(async () => {
+    requests.length = 0;
+    requests.push(request);
+    windowCloseCall = false;
     identityDOM = await travelToShareIdentity(requests);
     jest.spyOn(window, "close").mockImplementation(() => {
       windowCloseCall = true;
@@ -42,14 +45,17 @@ describe("DOM > Feature > Share Identity", (): void => {
 
   it("should accept incoming request and  close extension popup", async (): Promise<void> => {
     await confirmAcceptButton(identityDOM);
+    await sleep(2000);
+    await whenOnNavigatedToRoute(REQUEST_ROUTE);
     expect(windowCloseCall).toBeTruthy();
   }, 60000);
 
   it("should accept incoming request and redirect to the list of requests", async () => {
-    const requests = [request, { id: 2, ...request }];
+    requests.push({ id: 2, ...request });
     identityDOM = await travelToShareIdentity(requests);
     await confirmAcceptButton(identityDOM);
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
+    expect(windowCloseCall).toBeFalsy();
   }, 60000);
 
   it("should reject incoming request and close extension popup", async (): Promise<void> => {
@@ -57,15 +63,17 @@ describe("DOM > Feature > Share Identity", (): void => {
     await confirmRejectButton(identityDOM);
     // TODO: Check here that share request rejection has been reject successfuly
 
+    await whenOnNavigatedToRoute(REQUEST_ROUTE);
     expect(windowCloseCall).toBeTruthy();
   }, 60000);
 
   it("should reject incoming request and redirect to the list of requests", async () => {
-    const requests = [request, { id: 2, ...request }];
+    requests.push({ id: 2, ...request });
     identityDOM = await travelToShareIdentity(requests);
     await clickOnRejectButton(identityDOM);
     await confirmRejectButton(identityDOM);
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
+    expect(windowCloseCall).toBeFalsy();
   }, 60000);
 
   it("should reject incoming request permanently and come back", async (): Promise<void> => {
