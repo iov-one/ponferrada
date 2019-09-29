@@ -1,4 +1,5 @@
 export { amountToGwei, amountToNumber, amountToString, stringToAmount } from "./balances";
+export { parseRecipients } from "./csv";
 export { round } from "./number";
 export { randomString } from "./random";
 export { singleton } from "./singleton";
