@@ -79,9 +79,9 @@ export const getAllElectionRules = async (governor: Governor): Promise<readonly 
 const ProposalForm = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const [proposalType, setProposalType] = useState(ProposalType.AmendProtocol);
-  const [electionRules, setElectionRules] = useState<Readonly<ElectionRule[]>>([]);
+  const [electionRules, setElectionRules] = useState<readonly ElectionRule[]>([]);
   const [electionRule, setElectionRule] = useState<ElectionRule>();
-  const [recipients, setRecipients] = useState<Readonly<Recipient[]>>([]);
+  const [recipients, setRecipients] = useState<readonly Recipient[]>([]);
 
   const governor = ReactRedux.useSelector((state: RootState) => state.extension.governor);
   const dispatch = ReactRedux.useDispatch();

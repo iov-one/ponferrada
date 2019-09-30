@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Recipient } from ".";
 
 interface Props {
-  readonly recipients: Recipient[];
+  readonly recipients: readonly Recipient[];
 }
 
 const RecipientsTable = ({ recipients }: Props): JSX.Element => {

@@ -16,7 +16,7 @@ import { DASHBOARD_ROUTE } from "../paths";
 import ProposalsList from "./components/ProposalsList";
 
 interface Props {
-  filter: ElectionFilter;
+  readonly filter: ElectionFilter;
 }
 
 const Dashboard = ({ filter }: Props): JSX.Element => {
@@ -26,7 +26,7 @@ const Dashboard = ({ filter }: Props): JSX.Element => {
   const blockchain = useSelector((state: RootState) => state.blockchain);
 
   const address = governor ? governor.address : ("" as Address);
-  const [electorates, setElectorates] = useState<Readonly<Electorate[]>>([]);
+  const [electorates, setElectorates] = useState<readonly Electorate[]>([]);
 
   useEffect(() => {
     dispatch(requireUpdateProposalsAction(true));
