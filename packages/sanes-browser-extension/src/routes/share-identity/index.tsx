@@ -27,14 +27,22 @@ const ShareIdentity = ({ location }: RouteComponentProps): JSX.Element => {
   const showRequestView = (): void => setAction("show");
   const showRejectView = (): void => setAction("reject");
 
+  const processClose = (): void => {
+    // Need to navigate away from this component, otherwise it will throw "Did not find an authorization request" exception
+    history.push(REQUEST_ROUTE);
+    if (requestContext.requests.length === 0) {
+      window.close();
+    }
+  };
+
   const onAcceptRequest = (): void => {
     accept();
-    history.push(REQUEST_ROUTE);
+    processClose();
   };
 
   const onRejectRequest = (permanent: boolean): void => {
     reject(permanent);
-    history.push(REQUEST_ROUTE);
+    processClose();
   };
 
   return (
