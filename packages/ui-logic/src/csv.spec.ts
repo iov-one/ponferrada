@@ -21,7 +21,7 @@ const noIntegerWeightText = "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea,4.2";
 const zeroWeightText = "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea,0";
 
 describe("parseRecipients", () => {
-  it("outputs a Recipient array if input valid", async () => {
+  it("outputs a Recipient array if input valid", () => {
     const recipients = parseRecipients(validText);
 
     expect(recipients.length).toBe(2);
@@ -31,7 +31,7 @@ describe("parseRecipients", () => {
     expect(recipients[1].weight).toBe(5);
   });
 
-  it("ignores empty lines", async () => {
+  it("ignores empty lines", () => {
     const recipients = parseRecipients(validTextWithEmptyLines);
 
     expect(recipients.length).toBe(2);
@@ -41,31 +41,13 @@ describe("parseRecipients", () => {
     expect(recipients[1].weight).toBe(5);
   });
 
-  it("throws error if address not valid", async () => {
-    try {
-      parseRecipients(invalidAddressText);
-    } catch (error) {
-      expect(error.message).toBe("Address not valid: invalidAddress");
-    }
+  it("throws error if address not valid", () => {
+    expect(() => parseRecipients(invalidAddressText)).toThrowError(/Address not valid: invalidAddress/);
   });
 
-  it("throws error if weight is not an integer > 0", async () => {
-    try {
-      parseRecipients(noNumberWeightText);
-    } catch (error) {
-      expect(error.message).toBe("Weight not valid: invalidWeight");
-    }
-
-    try {
-      parseRecipients(noIntegerWeightText);
-    } catch (error) {
-      expect(error.message).toBe("Weight not valid: 4.2");
-    }
-
-    try {
-      parseRecipients(zeroWeightText);
-    } catch (error) {
-      expect(error.message).toBe("Weight not valid: 0");
-    }
+  it("throws error if weight is not an integer > 0", () => {
+    expect(() => parseRecipients(noNumberWeightText)).toThrowError(/Weight not valid: invalidWeight/);
+    expect(() => parseRecipients(noIntegerWeightText)).toThrowError(/Weight not valid: 4.2/);
+    expect(() => parseRecipients(zeroWeightText)).toThrowError(/Weight not valid: 0/);
   });
 });
