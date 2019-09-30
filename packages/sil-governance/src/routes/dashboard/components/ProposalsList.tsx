@@ -105,30 +105,34 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
   const noProposals = uiProposals.length === 0;
 
   return (
-    <Block id={PROPOSALS_HTML_ID} flexGrow={1}>
+    <Block flexGrow={1}>
       {noProposals && (
         <Block margin={2}>
           <Typography>No proposals available</Typography>
         </Block>
       )}
       {!noProposals && (
-        <Block display="flex" alignItems="center" margin={2} height="15px">
-          <Typography>{comparatorLabel}</Typography>
-          <Block marginLeft={2} width="120px">
-            <SelectField
-              fieldName={comparatorLabel}
-              form={form}
-              fullWidth
-              items={comparatorItems}
-              initial={comparatorInitial}
-              onChangeCallback={changeComparator}
-            />
+        <React.Fragment>
+          <Block display="flex" alignItems="center" margin={2} height="15px">
+            <Typography>{comparatorLabel}</Typography>
+            <Block marginLeft={2} width="120px">
+              <SelectField
+                fieldName={comparatorLabel}
+                form={form}
+                fullWidth
+                items={comparatorItems}
+                initial={comparatorInitial}
+                onChangeCallback={changeComparator}
+              />
+            </Block>
           </Block>
-        </Block>
+          <Block id={PROPOSALS_HTML_ID}>
+            {uiProposals.map(proposal => (
+              <Proposal key={proposal.id} {...proposal} />
+            ))}
+          </Block>
+        </React.Fragment>
       )}
-      {uiProposals.map(proposal => (
-        <Proposal key={proposal.id} {...proposal} />
-      ))}
     </Block>
   );
 };
