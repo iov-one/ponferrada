@@ -9,10 +9,6 @@ import Proposal, { ProposalProps } from "./Proposal";
 
 export const PROPOSALS_HTML_ID = "proposals";
 
-interface Props {
-  readonly filterType: ElectionFilter;
-}
-
 const comparatorLabel = "Sort by";
 
 enum ComparatorLabels {
@@ -65,6 +61,10 @@ const compareByVote: ProposalsComparator = (proposal1, proposal2): number => {
   if (proposal2.vote === undefined) return -1;
   return proposal1.vote - proposal2.vote;
 };
+
+interface Props {
+  readonly filterType: ElectionFilter;
+}
 
 const ProposalsList = ({ filterType }: Props): JSX.Element => {
   const proposals = useSelector((state: RootState) => state.proposals.proposals);
