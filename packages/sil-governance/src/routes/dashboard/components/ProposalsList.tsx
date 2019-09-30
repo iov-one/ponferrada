@@ -100,7 +100,7 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
 
   const filter = getFilter(filterType, governor ? governor.address : null);
 
-  let comparator;
+  let comparator: ProposalsComparator;
   switch (comparatorId) {
     case ComparatorId.IdDescending:
       comparator = compareByIdDescending;
@@ -114,6 +114,8 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
     case ComparatorId.Vote:
       comparator = compareByVote;
       break;
+    default:
+      comparator = compareByIdDescending;
   }
 
   const uiProposals = proposals
