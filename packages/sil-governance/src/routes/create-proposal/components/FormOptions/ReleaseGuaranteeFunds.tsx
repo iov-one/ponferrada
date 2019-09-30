@@ -19,7 +19,7 @@ import { getBnsConnection } from "../../../../logic/connection";
 
 const AMOUNT_LABEL = "Amount";
 export const RELEASE_QUANTITY_FIELD = "Quantity";
-const RELEASE_QUANTITY_PLACEHOLDER = "1";
+const RELEASE_QUANTITY_PLACEHOLDER = "165.45";
 export const RELEASE_TICKER_FIELD = "Ticker";
 const RELEASE_TICKER_INITIAL = "Select a currency";
 
