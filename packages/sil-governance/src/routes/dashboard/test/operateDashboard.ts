@@ -7,15 +7,11 @@ export const getHeader = async (dashboardDom: React.Component): Promise<Element>
   return (await findRenderedDOMComponentWithId(dashboardDom, HEADER_HTML_ID)) as Element;
 };
 
-export const getLogoImg = (header: Element): Element => {
-  return header.children[0].children[0].children[0];
+export const getLogo = (header: Element): Element => {
+  return header.children[0].children[0];
 };
 
-export const getLogoTitle = (header: Element): string => {
-  return header.children[0].children[1].children[0].textContent || "";
-};
-
-export const getTitle = (header: Element): string => {
+export const getHeading = (header: Element): string => {
   return header.children[1].children[0].textContent || "";
 };
 
