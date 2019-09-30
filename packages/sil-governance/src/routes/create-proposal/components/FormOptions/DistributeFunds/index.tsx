@@ -1,7 +1,15 @@
 import { Address } from "@iov/bcp";
 import { FormApi } from "final-form";
-import { Block, makeStyles, TextField, Typography } from "medulas-react-components";
+import {
+  Block,
+  makeStyles,
+  TextField,
+  ToastContext,
+  ToastVariant,
+  Typography,
+} from "medulas-react-components";
 import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { parseRecipients } from "ui-logic";
 
 import RecipientsTable from "./RecipientsTable";
 
@@ -31,7 +39,7 @@ interface Props {
 
 const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
   const inputClasses = useStyles();
-
+  const toast = React.useContext(ToastContext);
   const [recipients, setRecipients] = useState<Recipient[]>([]);
 
   const updateRecipients = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -46,19 +54,14 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
     reader.onload = () => {
       if (typeof reader.result !== "string") throw new Error("Got unsupported type of file");
 
-      const recipients = reader.result
-        // split per new line
-        .split(/\r\n|\r|\n/)
-        // remove empty lines
-        .filter(str => str.length > 0)
-        // generate Recipient[]
-        .map(recipient => {
-          const [address, weight] = recipient.split(",");
-          return { address: address as Address, weight: parseInt(weight, 10) };
-        });
-
-      setRecipients(recipients);
-      recipientsChanged(recipients);
+      try {
+        const recipients = parseRecipients(reader.result);
+        setRecipients(recipients);
+        recipientsChanged(recipients);
+      } catch (error) {
+        toast.show(error.message, ToastVariant.ERROR);
+        return;
+      }
     };
 
     const file = files[0];
