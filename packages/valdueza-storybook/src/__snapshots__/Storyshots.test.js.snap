@@ -16833,24 +16833,12 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <img
-          alt="Logo"
-          className="makeStyles-root"
-          src="iov-logo.svg"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <h5
-          className="MuiTypography-root MuiTypography-h5"
-        >
-          IOV
-        </h5>
-      </div>
+      <img
+        alt="Logo"
+        className="makeStyles-root"
+        height="64px"
+        src="iov-logo-title.svg"
+      />
     </div>
     <div
       className="MuiBox-root MuiBox-root"
