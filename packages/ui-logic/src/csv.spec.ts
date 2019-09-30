@@ -26,9 +26,9 @@ describe("parseRecipients", () => {
 
     expect(recipients.length).toBe(2);
     expect(recipients[0].address).toBe("tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea");
-    expect(recipients[0].weight).toBe("4");
+    expect(recipients[0].weight).toBe(4);
     expect(recipients[1].address).toBe("tiov12shyht3pvvacvyee36w5844jkfh5s0mf4gszp9");
-    expect(recipients[1].weight).toBe("5");
+    expect(recipients[1].weight).toBe(5);
   });
 
   it("ignores empty lines", async () => {
@@ -36,16 +36,16 @@ describe("parseRecipients", () => {
 
     expect(recipients.length).toBe(2);
     expect(recipients[0].address).toBe("tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea");
-    expect(recipients[0].weight).toBe("4");
+    expect(recipients[0].weight).toBe(4);
     expect(recipients[1].address).toBe("tiov12shyht3pvvacvyee36w5844jkfh5s0mf4gszp9");
-    expect(recipients[1].weight).toBe("5");
+    expect(recipients[1].weight).toBe(5);
   });
 
   it("throws error if address not valid", async () => {
     try {
       parseRecipients(invalidAddressText);
     } catch (error) {
-      expect(error).toBe("Address not valid: invalidAddress");
+      expect(error.message).toBe("Address not valid: invalidAddress");
     }
   });
 
@@ -53,19 +53,19 @@ describe("parseRecipients", () => {
     try {
       parseRecipients(noNumberWeightText);
     } catch (error) {
-      expect(error).toBe("Weight not valid: invalidAddress");
+      expect(error.message).toBe("Weight not valid: invalidWeight");
     }
 
     try {
       parseRecipients(noIntegerWeightText);
     } catch (error) {
-      expect(error).toBe("Weight not valid: 4.2");
+      expect(error.message).toBe("Weight not valid: 4.2");
     }
 
     try {
       parseRecipients(zeroWeightText);
     } catch (error) {
-      expect(error).toBe("Weight not valid: 0");
+      expect(error.message).toBe("Weight not valid: 0");
     }
   });
 });
