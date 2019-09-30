@@ -6,11 +6,8 @@ import Login from "./index";
 
 storiesOf(VOTER_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Login page",
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <Login />
-      </DecoratedStorybook>
-    ),
-  );
+  .add("Login page", () => (
+    <DecoratedStorybook>
+      <Login />
+    </DecoratedStorybook>
+  ));

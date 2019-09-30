@@ -7,11 +7,8 @@ import Dashboard from "./index";
 
 storiesOf(VOTER_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Dashboard page",
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <Dashboard filter={ElectionFilter.All} />
-      </DecoratedStorybook>
-    ),
-  );
+  .add("Dashboard page", () => (
+    <DecoratedStorybook>
+      <Dashboard filter={ElectionFilter.All} />
+    </DecoratedStorybook>
+  ));
