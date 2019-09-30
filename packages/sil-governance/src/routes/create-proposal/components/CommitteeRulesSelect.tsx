@@ -56,14 +56,14 @@ const CommitteeRulesSelect = ({ form, electionRules, electionRuleChanged }: Prop
             onChangeCallback={changeCommittee}
           />
         </Block>
+        {showRules && (
+          <Block marginLeft={2}>
+            <Typography variant="body2">
+              Quorum: {quorum}, Threshold: {threshold}, Period: {period}
+            </Typography>
+          </Block>
+        )}
       </Block>
-      {showRules && (
-        <Block display="flex" justifyContent="space-between" marginTop={2}>
-          <Typography>Quorum: {quorum}</Typography>
-          <Typography>Threshold: {threshold}</Typography>
-          <Typography>Period: {period}</Typography>
-        </Block>
-      )}
     </Block>
   );
 };
