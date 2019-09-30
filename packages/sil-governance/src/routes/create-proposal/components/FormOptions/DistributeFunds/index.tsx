@@ -60,8 +60,6 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
         setRecipients(recipients);
         recipientsChanged(recipients);
       } catch (error) {
-        // TODO the value of an input file can only be set to empty string, not working
-        (document.getElementById(IMPORT_FIELD_ID) as HTMLInputElement).value = "";
         setRecipients([]);
         recipientsChanged([]);
         toast.show(error.message, ToastVariant.ERROR);
