@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.2
+
+- Governance: Fix amount interpretation in release guarantee funds proposal
+- Governance: Fix order of UI components in create proposal screen
+- Governance: Improve distribute funds CSV parsing
+- Governance: Fix required field error message after processing CSV file
+- Extension: Fix proposal start date display
+- Extension: Close extension winder after handling last open request
+
 ## 0.6.1
 
 - Wallet: Don't wait for block before confirming transaction signing with Ledger
