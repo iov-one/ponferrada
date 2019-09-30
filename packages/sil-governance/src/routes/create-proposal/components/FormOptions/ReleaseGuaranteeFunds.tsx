@@ -1,12 +1,11 @@
 import { ChainId, TokenTicker } from "@iov/bcp";
 import { escrowIdToAddress } from "@iov/bns";
+import { Decimal } from "@iov/encoding";
 import { FormApi } from "final-form";
 import {
   Block,
   composeValidators,
   FieldInputValue,
-  greaterOrEqualThan,
-  lowerOrEqualThan,
   required,
   SelectField,
   SelectFieldItem,
@@ -55,21 +54,19 @@ const ReleaseGuaranteeFunds = ({ form, initialTickers }: Props): JSX.Element => 
     updateTickers();
   }, []);
 
-  const numbersOnly = (value: FieldInputValue): string | undefined => {
+  const decimalOnly = (value: FieldInputValue): string | undefined => {
     if (typeof value !== "string") throw new Error("Input must be a string");
 
-    const hasNonNumbers = value.match(/^[0-9]*$/) ? false : true;
+    try {
+      Decimal.fromUserInput(value, 9);
+    } catch {
+      return "Must be a decimal";
+    }
 
-    if (hasNonNumbers) return "Must be a number";
     return undefined;
   };
 
-  const quantityValidator = composeValidators(
-    required,
-    numbersOnly,
-    greaterOrEqualThan(1),
-    lowerOrEqualThan(Number.MAX_SAFE_INTEGER),
-  );
+  const quantityValidator = composeValidators(required, decimalOnly);
 
   const tickerValidator = (value: FieldInputValue): string | undefined => {
     if (value === RELEASE_TICKER_INITIAL) return "Must select a currency";

@@ -1,7 +1,7 @@
-import { Address, Algorithm, PubkeyBundle, PubkeyBytes, TokenTicker } from "@iov/bcp";
+import { Address, Algorithm, Amount, PubkeyBundle, PubkeyBytes, TokenTicker } from "@iov/bcp";
 import { ElectionRule } from "@iov/bns";
 import { CommitteeId, Governor, ProposalOptions, ProposalType } from "@iov/bns-governance";
-import { Encoding } from "@iov/encoding";
+import { Decimal, Encoding } from "@iov/encoding";
 import { FormApi } from "final-form";
 import {
   Block,
@@ -156,13 +156,10 @@ const ProposalForm = (): JSX.Element => {
         return { ...commonOptions, type: ProposalType.RemoveValidator, pubkey };
       }
       case ProposalType.ReleaseGuaranteeFunds: {
-        const quantity = values[RELEASE_QUANTITY_FIELD];
-        const fractionalDigits = 9;
-        const tokenTicker = values[RELEASE_TICKER_FIELD] as TokenTicker;
-        const amount = {
-          quantity,
-          fractionalDigits,
-          tokenTicker,
+        const amount: Amount = {
+          quantity: Decimal.fromUserInput(values[RELEASE_QUANTITY_FIELD], 9).atomics,
+          fractionalDigits: 9,
+          tokenTicker: values[RELEASE_TICKER_FIELD] as TokenTicker,
         };
 
         return {
