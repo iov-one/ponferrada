@@ -25,11 +25,11 @@ if (process.env.NODE_ENV === 'test') {
   // This optional decorator removes the material UI style IDs for deterministic snapshots. See:
   // https://github.com/mui-org/material-ui/issues/9492
   // https://github.com/abrcdf1023/egroup-material/commit/a876a4b411fda490a53ee20179acc72fe6514aaa
-  addDecorator(story => {
+  addDecorator(Story => {
     const generateClassName = (rule, styleSheet) => `${styleSheet.options.classNamePrefix}-${rule.key}`;
     return (
       <StylesProvider generateClassName={generateClassName}>
-        {story()}
+        <Story />
       </StylesProvider>
     );
   });
