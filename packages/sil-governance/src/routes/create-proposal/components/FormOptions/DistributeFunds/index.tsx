@@ -13,7 +13,8 @@ import { parseRecipients } from "ui-logic";
 
 import RecipientsTable from "./RecipientsTable";
 
-const IMPORT_FIELD = "Import recipients";
+const IMPORT_FIELD_NAME = "Import recipients";
+const IMPORT_FIELD_ID = "recipients-file";
 
 export interface Recipient {
   address: Address;
@@ -59,6 +60,10 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
         setRecipients(recipients);
         recipientsChanged(recipients);
       } catch (error) {
+        // TODO the value of an input file can only be set to empty string, not working
+        (document.getElementById(IMPORT_FIELD_ID) as HTMLInputElement).value = "";
+        setRecipients([]);
+        recipientsChanged([]);
         toast.show(error.message, ToastVariant.ERROR);
         return;
       }
@@ -73,16 +78,17 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Block marginTop={2} display="flex" alignItems="center">
-        <Typography>{IMPORT_FIELD}</Typography>
+        <Typography>{IMPORT_FIELD_NAME}</Typography>
         <Block marginLeft={2}>
           <TextField
-            name={IMPORT_FIELD}
+            name={IMPORT_FIELD_NAME}
+            id={IMPORT_FIELD_ID}
             form={form}
             required
+            onChanged={updateRecipients}
             type="file"
             margin="none"
             InputProps={{ classes: inputClasses }}
-            onChange={updateRecipients}
           />
         </Block>
       </Block>
