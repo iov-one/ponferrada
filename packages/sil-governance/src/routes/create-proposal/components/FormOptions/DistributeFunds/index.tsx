@@ -59,6 +59,8 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
         setRecipients(recipients);
         recipientsChanged(recipients);
       } catch (error) {
+        setRecipients([]);
+        recipientsChanged([]);
         toast.show(error.message, ToastVariant.ERROR);
         return;
       }
@@ -79,10 +81,10 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
             name={IMPORT_FIELD}
             form={form}
             required
+            onChanged={updateRecipients}
             type="file"
             margin="none"
             InputProps={{ classes: inputClasses }}
-            onChange={updateRecipients}
           />
         </Block>
       </Block>

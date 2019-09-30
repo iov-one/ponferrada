@@ -6,17 +6,24 @@ import { useField } from "react-final-form-hooks";
 import { FieldInputValue } from "../../../utils/forms/validators";
 
 interface InnerProps {
-  name: string;
-  form: FormApi;
-  validate?: FieldValidator<FieldInputValue>;
-  subscription?: FieldSubscription;
+  readonly name: string;
+  readonly form: FormApi;
+  readonly validate?: FieldValidator<FieldInputValue>;
+  readonly onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  readonly subscription?: FieldSubscription;
 }
 
 type Props = InnerProps & TextFieldProps;
 
-const TextField = ({ name, form, validate, ...restProps }: Props): JSX.Element => {
+const TextField = ({ name, form, validate, onChanged, ...restProps }: Props): JSX.Element => {
   const { input, meta } = useField(name, form, validate);
   const error = meta.error && (meta.touched || !meta.pristine);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    input.onChange(event);
+
+    if (onChanged) onChanged(event);
+  };
 
   return (
     <MuiTextField
@@ -24,7 +31,7 @@ const TextField = ({ name, form, validate, ...restProps }: Props): JSX.Element =
       name={input.name}
       value={input.value}
       helperText={error ? meta.error : undefined}
-      onChange={input.onChange}
+      onChange={handleChange}
       margin="normal"
       {...restProps}
     />
