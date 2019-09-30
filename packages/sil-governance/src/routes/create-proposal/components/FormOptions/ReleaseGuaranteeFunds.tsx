@@ -26,10 +26,11 @@ const RELEASE_TICKER_INITIAL = "Select a currency";
 
 interface Props {
   readonly form: FormApi;
+  readonly initialTickers?: readonly TokenTicker[];
 }
 
-const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
-  const [tickerItems, setTickerItems] = useState<SelectFieldItem[]>([]);
+const ReleaseGuaranteeFunds = ({ form, initialTickers }: Props): JSX.Element => {
+  const [tickers, setTickers] = useState<readonly TokenTicker[]>(initialTickers || []);
 
   useEffect(() => {
     const updateTickers = async (): Promise<void> => {
@@ -46,10 +47,9 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
       const tickers = account
         ? account.balance.map(balance => balance.tokenTicker)
         : new Array<TokenTicker>();
+      tickers.sort();
 
-      const tickerItems = [...tickers].sort().map((ticker): SelectFieldItem => ({ name: ticker }));
-
-      setTickerItems(tickerItems);
+      setTickers(tickers);
     };
 
     updateTickers();
@@ -92,7 +92,7 @@ const ReleaseGuaranteeFunds = ({ form }: Props): JSX.Element => {
             fieldName={RELEASE_TICKER_FIELD}
             form={form}
             validate={tickerValidator}
-            items={tickerItems}
+            items={tickers.map((ticker): SelectFieldItem => ({ name: ticker }))}
             initial={RELEASE_TICKER_INITIAL}
           />
         </Block>
