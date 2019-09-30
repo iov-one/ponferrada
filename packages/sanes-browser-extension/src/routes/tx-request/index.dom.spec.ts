@@ -30,21 +30,21 @@ const request = {
 
 describe("DOM > Feature > Transaction Request", () => {
   let txRequestDOM: React.Component;
-  let windowCloseCall = false;
+  let windowCloseCalled = false;
 
   beforeEach(async () => {
     requests.length = 0;
     requests.push(request);
-    windowCloseCall = false;
+    windowCloseCalled = false;
     txRequestDOM = await travelToTXRequest(requests);
     jest.spyOn(window, "close").mockImplementation(() => {
-      windowCloseCall = true;
+      windowCloseCalled = true;
     });
   }, 60000);
 
   it("should accept incoming request and close extension popup", async () => {
     await confirmAcceptButton(txRequestDOM);
-    expect(windowCloseCall).toBeTruthy();
+    expect(windowCloseCalled).toBeTruthy();
   }, 60000);
 
   it("should accept incoming request and redirect to the list of requests", async () => {
@@ -60,7 +60,7 @@ describe("DOM > Feature > Transaction Request", () => {
 
     // TODO: Check here that share request rejection has been reject successfuly
 
-    expect(windowCloseCall).toBeTruthy();
+    expect(windowCloseCalled).toBeTruthy();
   }, 60000);
 
   it("should reject incoming request and redirect to the list of requests", async () => {
