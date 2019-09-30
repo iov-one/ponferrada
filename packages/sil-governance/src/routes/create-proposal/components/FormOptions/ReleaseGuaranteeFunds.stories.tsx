@@ -8,7 +8,7 @@ import ReleaseGuaranteeFunds from "./ReleaseGuaranteeFunds";
 
 const initialTickers = ["BASH" as TokenTicker, "CASH" as TokenTicker];
 
-storiesOf(governanceRoot, module)
+storiesOf(`${governanceRoot}/Create proposal`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("ReleaseGuaranteeFunds", () => {
     const { form } = useForm({ onSubmit: () => 0 });

@@ -17059,7 +17059,7 @@ exports[`Storyshots Governance Login page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Governance ReleaseGuaranteeFunds 1`] = `
+exports[`Storyshots Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
