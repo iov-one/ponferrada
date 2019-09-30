@@ -51,7 +51,7 @@ const getFilter = (filterType: ElectionFilter, currentUser: Address | null): Pro
 type ProposalsComparator = (proposal1: ProposalProps, proposal2: ProposalProps) => number;
 
 const compareByIdDescending: ProposalsComparator = (proposal1, proposal2): number => {
-  return proposal1 > proposal2 ? 1 : -1;
+  return proposal1.id < proposal2.id ? 1 : -1;
 };
 const compareByExpiryDate: ProposalsComparator = (proposal1, proposal2): number => {
   return proposal1.expiryDate.getTime() - proposal2.expiryDate.getTime();
@@ -60,8 +60,9 @@ const compareByStartDate: ProposalsComparator = (proposal1, proposal2): number =
   return proposal1.startDate.getTime() - proposal2.startDate.getTime();
 };
 const compareByVote: ProposalsComparator = (proposal1, proposal2): number => {
-  if (proposal2.vote === undefined) return -1;
+  if (proposal1.vote === undefined && proposal2.vote === undefined) return 0;
   if (proposal1.vote === undefined) return 1;
+  if (proposal2.vote === undefined) return -1;
   return proposal1.vote - proposal2.vote;
 };
 
