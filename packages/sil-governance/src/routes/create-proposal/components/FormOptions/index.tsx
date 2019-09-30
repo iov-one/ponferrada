@@ -48,7 +48,7 @@ interface Props {
   readonly form: FormApi;
   readonly proposalType: ProposalType;
   readonly electionRule: ElectionRule | undefined;
-  readonly recipientsChanged: Dispatch<SetStateAction<Readonly<Recipient[]>>>;
+  readonly recipientsChanged: Dispatch<SetStateAction<readonly Recipient[]>>;
 }
 
 const FormOptions = ({ form, proposalType, electionRule, recipientsChanged }: Props): JSX.Element => {

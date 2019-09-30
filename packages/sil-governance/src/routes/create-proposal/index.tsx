@@ -21,7 +21,7 @@ const CreateProposal = (): JSX.Element => {
   const blockchain = useSelector((state: RootState) => state.blockchain);
 
   const address = governor ? governor.address : ("" as Address);
-  const [electorates, setElectorates] = useState<Readonly<Electorate[]>>([]);
+  const [electorates, setElectorates] = useState<readonly Electorate[]>([]);
 
   useEffect(() => {
     const updateElectorates = async (): Promise<void> => {

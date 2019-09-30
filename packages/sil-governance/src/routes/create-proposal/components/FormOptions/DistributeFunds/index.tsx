@@ -34,13 +34,13 @@ const useStyles = makeStyles(() => ({
 
 interface Props {
   readonly form: FormApi;
-  readonly recipientsChanged: Dispatch<SetStateAction<Readonly<Recipient[]>>>;
+  readonly recipientsChanged: Dispatch<SetStateAction<readonly Recipient[]>>;
 }
 
 const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
   const inputClasses = useStyles();
   const toast = React.useContext(ToastContext);
-  const [recipients, setRecipients] = useState<Recipient[]>([]);
+  const [recipients, setRecipients] = useState<readonly Recipient[]>([]);
 
   const updateRecipients = (event: ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files;
