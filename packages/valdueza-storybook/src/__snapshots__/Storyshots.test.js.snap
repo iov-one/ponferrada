@@ -16979,7 +16979,6 @@ exports[`Storyshots Governance Dashboard page 1`] = `
     </div>
     <div
       className="MuiBox-root MuiBox-root"
-      id="proposals"
     >
       <div
         className="MuiBox-root MuiBox-root"
