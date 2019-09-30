@@ -8,6 +8,7 @@ import {
   Button,
   Form,
   FormValues,
+  Hairline,
   ToastContext,
   ToastVariant,
   Typography,
@@ -236,18 +237,21 @@ const ProposalForm = (): JSX.Element => {
           </Block>
           <WhenField form={form} />
         </Block>
+        <DescriptionField form={form} />
+        <CommitteeRulesSelect
+          form={form}
+          electionRules={electionRules}
+          electionRuleChanged={setElectionRule}
+        />
+        <Block marginTop={2}>
+          <Hairline />
+        </Block>
         <ProposalTypeSelect form={form} changeProposalType={setProposalType} />
         <FormOptions
           form={form}
           proposalType={proposalType}
           electionRule={electionRule}
           recipientsChanged={setRecipients}
-        />
-        <DescriptionField form={form} />
-        <CommitteeRulesSelect
-          form={form}
-          electionRules={electionRules}
-          electionRuleChanged={setElectionRule}
         />
         <Block display="flex" justifyContent="flex-end" marginTop={2}>
           <Button type="submit" disabled={invalid || pristine || submitting || noRulesSet}>
