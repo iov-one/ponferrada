@@ -17059,6 +17059,103 @@ exports[`Storyshots Governance Login page 1`] = `
 </div>
 `;
 
+exports[`Storyshots Governance ReleaseGuaranteeFunds 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
+    Amount
+  </p>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root"
+    >
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="Quantity"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="1"
+          required={false}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="makeStyles-dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root makeStyles-root"
+          onClick={[Function]}
+          role="button"
+        >
+          <input
+            autoComplete="off"
+            className="MuiInputBase-input makeStyles-input"
+            name="Ticker"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <img
+          alt="Phone Menu"
+          className="makeStyles-root makeStyles-noShrink"
+          height="5"
+          src="selectChevron.svg"
+          width="8"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Templates/Menu Empty Menu 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
