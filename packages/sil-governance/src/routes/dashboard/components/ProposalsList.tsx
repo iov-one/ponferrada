@@ -115,7 +115,7 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
       comparator = compareByVote;
       break;
     default:
-      comparator = compareByIdDescending;
+      throw new Error("Unexpected comparator ID. This is a bug.");
   }
 
   const uiProposals = proposals
