@@ -2,10 +2,10 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ReadonlyDate } from "readonly-date";
 
-import DecoratedStorybook, { VOTER_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { governanceRoot } from "../../utils/storybook";
 import BlockchainTime from "./index";
 
-storiesOf(VOTER_ROOT, module)
+storiesOf(governanceRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("BlockchainTime", () => (
     <DecoratedStorybook>

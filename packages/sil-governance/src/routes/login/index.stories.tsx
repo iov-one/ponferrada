@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import DecoratedStorybook, { VOTER_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { governanceRoot } from "../../utils/storybook";
 import Login from "./index";
 
-storiesOf(VOTER_ROOT, module)
+storiesOf(governanceRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Login page", () => (
     <DecoratedStorybook>

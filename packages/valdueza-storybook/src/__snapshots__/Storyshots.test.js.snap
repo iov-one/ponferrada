@@ -16716,93 +16716,7 @@ exports[`Storyshots Extension/Welcome page Without persona 1`] = `
 </div>
 `;
 
-exports[`Storyshots Templates/Menu Empty Menu 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="makeStyles-root"
-    onClick={[Function]}
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <h6
-        className="MuiTypography-root MuiTypography-h6"
-      >
-        Hi! 
-        Menu is closed
-      </h6>
-      <svg
-        aria-hidden="true"
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
-        />
-        <path
-          d="M0 0h24v24H0V0z"
-          fill="none"
-        />
-      </svg>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-</div>
-`;
-
-exports[`Storyshots Templates/Menu List Menu 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="makeStyles-root"
-    onClick={[Function]}
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <h6
-        className="MuiTypography-root MuiTypography-h6"
-      >
-        Hi! 
-        Menu is closed
-      </h6>
-      <svg
-        aria-hidden="true"
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
-        />
-        <path
-          d="M0 0h24v24H0V0z"
-          fill="none"
-        />
-      </svg>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-</div>
-`;
-
-exports[`Storyshots Voter Dashboard BlockchainTime 1`] = `
+exports[`Storyshots Governance BlockchainTime 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-container"
 >
@@ -16822,7 +16736,7 @@ exports[`Storyshots Voter Dashboard BlockchainTime 1`] = `
 </div>
 `;
 
-exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
+exports[`Storyshots Governance Dashboard page 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -17093,7 +17007,7 @@ exports[`Storyshots Voter Dashboard Dashboard page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Voter Dashboard Login page 1`] = `
+exports[`Storyshots Governance Login page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-login"
 >
@@ -17142,5 +17056,91 @@ exports[`Storyshots Voter Dashboard Login page 1`] = `
       </span>
     </button>
   </form>
+</div>
+`;
+
+exports[`Storyshots Templates/Menu Empty Menu 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="makeStyles-root"
+    onClick={[Function]}
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <h6
+        className="MuiTypography-root MuiTypography-h6"
+      >
+        Hi! 
+        Menu is closed
+      </h6>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+        />
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+</div>
+`;
+
+exports[`Storyshots Templates/Menu List Menu 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="makeStyles-root"
+    onClick={[Function]}
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <h6
+        className="MuiTypography-root MuiTypography-h6"
+      >
+        Hi! 
+        Menu is closed
+      </h6>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+        />
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
 </div>
 `;

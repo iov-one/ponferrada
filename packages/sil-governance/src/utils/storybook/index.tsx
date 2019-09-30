@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "../../store";
 import { globalStyles } from "../../theme/globalStyles";
 
-export const VOTER_ROOT = "Voter Dashboard";
+export const governanceRoot = "Governance";
 
 const store = configureStore();
 
