@@ -13,8 +13,7 @@ import { parseRecipients } from "ui-logic";
 
 import RecipientsTable from "./RecipientsTable";
 
-const IMPORT_FIELD_NAME = "Import recipients";
-const IMPORT_FIELD_ID = "recipients-file";
+const IMPORT_FIELD = "Import recipients";
 
 export interface Recipient {
   address: Address;
@@ -76,11 +75,10 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Block marginTop={2} display="flex" alignItems="center">
-        <Typography>{IMPORT_FIELD_NAME}</Typography>
+        <Typography>{IMPORT_FIELD}</Typography>
         <Block marginLeft={2}>
           <TextField
-            name={IMPORT_FIELD_NAME}
-            id={IMPORT_FIELD_ID}
+            name={IMPORT_FIELD}
             form={form}
             required
             onChanged={updateRecipients}
