@@ -29,7 +29,7 @@ const request = {
   reject: () => requests.pop(),
 };
 
-describe("DOM > Feature > Share Identity", (): void => {
+describe("DOM > Feature > Share Identity", () => {
   let identityDOM: React.Component;
   let windowCloseCalled = false;
 
@@ -43,7 +43,7 @@ describe("DOM > Feature > Share Identity", (): void => {
     });
   }, 60000);
 
-  it("should accept incoming request and  close extension popup", async (): Promise<void> => {
+  it("should accept incoming request and  close extension popup", async () => {
     await confirmAcceptButton(identityDOM);
     await sleep(2000);
     await whenOnNavigatedToRoute(REQUEST_ROUTE);
@@ -58,7 +58,7 @@ describe("DOM > Feature > Share Identity", (): void => {
     expect(windowCloseCalled).toBeFalsy();
   }, 60000);
 
-  it("should reject incoming request and close extension popup", async (): Promise<void> => {
+  it("should reject incoming request and close extension popup", async () => {
     await clickOnRejectButton(identityDOM);
     await confirmRejectButton(identityDOM);
     // TODO: Check here that share request rejection has been reject successfuly
@@ -76,7 +76,7 @@ describe("DOM > Feature > Share Identity", (): void => {
     expect(windowCloseCalled).toBeFalsy();
   }, 60000);
 
-  it("should reject incoming request permanently and come back", async (): Promise<void> => {
+  it("should reject incoming request permanently and come back", async () => {
     await clickOnRejectButton(identityDOM);
     await checkPermanentRejection(identityDOM);
     await confirmRejectButton(identityDOM);
