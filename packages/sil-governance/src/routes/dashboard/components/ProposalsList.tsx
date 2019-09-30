@@ -44,6 +44,13 @@ const getFilter = (filterType: ElectionFilter, currentUser: Address | null): Pro
   }
 };
 
+enum ComparatorId {
+  IdDescending,
+  ExpiryDate,
+  StartDate,
+  Vote,
+}
+
 type ProposalsComparator = (proposal1: ProposalProps, proposal2: ProposalProps) => number;
 
 const compareByIdDescending: ProposalsComparator = (proposal1, proposal2): number => {
@@ -71,27 +78,44 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
   const governor = useSelector((state: RootState) => state.extension.governor);
   const blockchain = useSelector((state: RootState) => state.blockchain);
 
-  const [comparator, setComparator] = useState<ProposalsComparator>(() => compareByIdDescending);
+  const [comparatorId, setComparatorId] = useState<ComparatorId>(ComparatorId.IdDescending);
 
   const changeComparator = (selectedItem: SelectFieldItem): void => {
     switch (selectedItem.name) {
       case ComparatorLabels.ExpiryDate:
-        setComparator(() => compareByExpiryDate);
+        setComparatorId(ComparatorId.ExpiryDate);
         break;
       case ComparatorLabels.StartDate:
-        setComparator(() => compareByStartDate);
+        setComparatorId(ComparatorId.StartDate);
         break;
       case ComparatorLabels.Vote:
-        setComparator(() => compareByVote);
+        setComparatorId(ComparatorId.Vote);
         break;
       default:
-        setComparator(() => compareByIdDescending);
+        setComparatorId(ComparatorId.IdDescending);
     }
   };
 
   const { form } = useForm({ onSubmit: () => {} });
 
   const filter = getFilter(filterType, governor ? governor.address : null);
+
+  let comparator;
+  switch (comparatorId) {
+    case ComparatorId.IdDescending:
+      comparator = compareByIdDescending;
+      break;
+    case ComparatorId.ExpiryDate:
+      comparator = compareByExpiryDate;
+      break;
+    case ComparatorId.StartDate:
+      comparator = compareByStartDate;
+      break;
+    case ComparatorId.Vote:
+      comparator = compareByVote;
+      break;
+  }
+
   const uiProposals = proposals
     .map(
       (proposal): ProposalProps => ({
