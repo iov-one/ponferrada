@@ -15,6 +15,7 @@ import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import {
   IovLedgerApp,
+  IovLedgerAppAddress,
   isIovLedgerAppAddress,
   isIovLedgerAppSignature,
   isIovLedgerAppVersion,
@@ -52,29 +53,29 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       );
     }
 
-    let transport: TransportWebUSB;
+    let transport: TransportWebUSB | undefined;
+    let testnetApp: boolean;
+    let addressResponse: IovLedgerAppAddress;
+
     try {
       transport = await TransportWebUSB.create(5000);
-    } catch (error) {
-      console.warn(error);
-      return undefined;
-    }
+      const app = new IovLedgerApp(transport);
 
-    const app = new IovLedgerApp(transport);
-    let testnetApp: boolean;
-
-    // Check if correct app is open
-    try {
+      // Check if correct app is open. This also works with auto-locked Ledger.
       const version = await app.getVersion();
       if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
       testnetApp = version.testMode;
-    } catch (error) {
-      console.warn(error);
-      return undefined;
-    }
 
-    const response = await app.getAddress(addressIndex);
-    if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
+      // Get address/pubkey. This requires unlocked Ledger.
+      const response = await app.getAddress(addressIndex);
+      if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
+      addressResponse = response;
+    } catch (error) {
+      console.info("Could not get address from Ledger. Full error details:", error);
+      return undefined;
+    } finally {
+      if (transport) await transport.close();
+    }
 
     const ledgerChainIds = (await getConfig()).ledger.chainIds;
 
@@ -82,7 +83,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       chainId: (testnetApp ? ledgerChainIds.testnetBuild : ledgerChainIds.mainnetBuild) as ChainId,
       pubkey: {
         algo: Algorithm.Ed25519,
-        data: response.pubkey as PubkeyBytes,
+        data: addressResponse.pubkey as PubkeyBytes,
       },
     };
 
@@ -94,7 +95,6 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       out = [];
     }
 
-    await transport.close();
     return out;
   },
   sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
