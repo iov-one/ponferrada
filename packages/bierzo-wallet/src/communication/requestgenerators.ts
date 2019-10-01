@@ -13,21 +13,11 @@ import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
 import { getConfig } from "../config";
 import { getCodecForChainId } from "../logic/codec";
-import { getConnectionFor, getConnectionForBns, getConnectionForChainId } from "../logic/connection";
+import { getConnectionForChainId } from "../logic/connection";
 
-export async function generateGetIdentitiesRequest(ledger: boolean = false): Promise<JsonRpcRequest> {
-  const chainIdsToRequest: ChainId[] = [];
-
-  if (ledger) {
-    const connection = await getConnectionForBns();
-    chainIdsToRequest.push(connection.chainId());
-  } else {
-    const connections = await Promise.all(
-      (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
-    );
-    const supportedChainIds = connections.map(connection => connection.chainId());
-    chainIdsToRequest.push.apply(chainIdsToRequest, supportedChainIds);
-  }
+export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
+  const chains = (await getConfig()).chains;
+  const chainIdsToRequest = chains.map(chain => chain.chainSpec.chainId);
 
   return {
     jsonrpc: "2.0",
@@ -41,7 +31,7 @@ export async function generateGetIdentitiesRequest(ledger: boolean = false): Pro
 }
 
 async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
-  const connection = await getConnectionForChainId(chainId);
+  const connection = getConnectionForChainId(chainId);
   const withFee = await connection.withDefaultFee(transaction);
   return withFee;
 }
