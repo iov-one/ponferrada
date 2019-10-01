@@ -1,9 +1,14 @@
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
+import { establishAllConnections } from "../../utils/test/connections";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { addTickersAction, getTokens } from "./actions";
 
 withChainsDescribe("Tokens reducer", () => {
+  beforeAll(async () => {
+    await establishAllConnections();
+  });
+
   afterAll(() => disconnect());
 
   it("has correct initial state", async () => {

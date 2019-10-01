@@ -1,12 +1,16 @@
 import { ChainId } from "@iov/bcp";
 import { randomString } from "ui-logic";
 
+import { establishAllConnections } from "../utils/test/connections";
 import { withChainsDescribe } from "../utils/test/testExecutor";
 import { isValidIov, lookupRecipientAddressByName } from "./account";
 import { disconnect } from "./connection";
 
 describe("Logic :: account", () => {
   withChainsDescribe("with blockchain", () => {
+    beforeAll(async () => {
+      await establishAllConnections();
+    });
     afterAll(() => {
       disconnect();
     });

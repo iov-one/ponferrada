@@ -4,7 +4,7 @@ import { ethereumCodec } from "@iov/ethereum";
 import { liskCodec } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
-import { getConnectionFor, isBnsSpec, isEthSpec, isLskSpec } from "./connection";
+import { isBnsSpec, isEthSpec, isLskSpec } from "./connection";
 
 export function getCodec(spec: ChainSpec): TxCodec {
   if (isEthSpec(spec)) {
@@ -23,11 +23,11 @@ export function getCodec(spec: ChainSpec): TxCodec {
 }
 
 export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
-  for (const chain of (await getConfig()).chains) {
-    const connection = await getConnectionFor(chain.chainSpec);
-    if (connection && connection.chainId() === chainId) {
-      return getCodec(chain.chainSpec);
-    }
+  const chains = (await getConfig()).chains;
+  const specificChain = chains.find(chain => chain.chainSpec.chainId === chainId);
+  if (specificChain) {
+    return getCodec(specificChain.chainSpec);
   }
-  throw new Error("No codec found for this chainId");
+
+  throw new Error("No codec found or no active connection for this chainId");
 }

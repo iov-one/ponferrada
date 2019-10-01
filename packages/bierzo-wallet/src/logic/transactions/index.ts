@@ -1,4 +1,4 @@
-import { Identity, isFailedTransaction } from "@iov/bcp";
+import { ChainId, Identity, isFailedTransaction } from "@iov/bcp";
 import { isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
@@ -7,7 +7,7 @@ import { getConfig } from "../../config";
 import { addTransaction } from "../../store/notifications";
 import { addUsernamesAction, BwUsername } from "../../store/usernames";
 import { getCodec } from "../codec";
-import { getConnectionFor } from "../connection";
+import { getConnectionForChainId, hasActiveConnection } from "../connection";
 import { BwParserFactory } from "./types/BwParserFactory";
 
 let txsSubscriptions: Subscription[] = [];
@@ -20,8 +20,11 @@ export async function subscribeTransaction(
   const chains = config.chains;
 
   for (const chain of chains) {
+    if (!hasActiveConnection(chain.chainSpec.chainId as ChainId)) {
+      continue;
+    }
+    const connection = getConnectionForChainId(chain.chainSpec.chainId as ChainId);
     const codec = getCodec(chain.chainSpec);
-    const connection = await getConnectionFor(chain.chainSpec);
     const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;

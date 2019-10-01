@@ -1,10 +1,14 @@
 import { getBalances } from "../store/balances";
+import { establishAllConnections } from "../utils/test/connections";
 import { createIdentities } from "../utils/test/identities";
 import { withChainsDescribe } from "../utils/test/testExecutor";
 import { disconnect } from "./connection";
 import { drinkFaucetIfNeeded } from "./faucet";
 
 withChainsDescribe("Logic :: faucet", () => {
+  beforeAll(async () => {
+    await establishAllConnections();
+  });
   afterAll(() => disconnect());
 
   it("works", async () => {

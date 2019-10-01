@@ -3,11 +3,15 @@ import { Encoding } from "@iov/encoding";
 
 import { disconnect } from "../../logic/connection";
 import { aNewStore } from "../../store";
+import { establishAllConnections } from "../../utils/test/connections";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { ExtendedIdentity, IdentitiesState, setIdentities } from "../identities";
 import { addBalancesAction, getBalances } from "./actions";
 
 withChainsDescribe("Tokens reducer", () => {
+  beforeAll(async () => {
+    await establishAllConnections();
+  });
   afterAll(() => disconnect());
 
   it("has correct initial state", async () => {

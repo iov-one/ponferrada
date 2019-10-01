@@ -5,22 +5,26 @@ import { Subscription } from "xstream";
 import { getConfig } from "../config";
 import { addBalancesAction, getBalances } from "../store/balances";
 import { getCodec } from "./codec";
-import { getConnectionFor } from "./connection";
+import { getActiveConnections } from "./connection";
 
 let balanceSubscriptions: Subscription[] = [];
 
 export async function subscribeBalance(identities: readonly Identity[], dispatch: Dispatch): Promise<void> {
   const config = await getConfig();
   const chains = config.chains;
+  const connections = getActiveConnections();
 
-  for (const chain of chains) {
-    const codec = getCodec(chain.chainSpec);
-    const connection = await getConnectionFor(chain.chainSpec);
+  for (const connection of connections) {
+    const chain = chains.find(chain => chain.chainSpec.chainId === connection.chainId());
+    if (!chain) {
+      throw new Error(`Chain for ${connection.chainId()} not found.`);
+    }
     const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {
       continue;
     }
 
+    const codec = getCodec(chain.chainSpec);
     const address = codec.identityToAddress(identity);
 
     // subscribe to balance changes via
@@ -28,7 +32,7 @@ export async function subscribeBalance(identities: readonly Identity[], dispatch
       next: async account => {
         if (account) {
           const balances = await getBalances(identities);
-          await dispatch(addBalancesAction(balances));
+          dispatch(addBalancesAction(balances));
         }
       },
     });

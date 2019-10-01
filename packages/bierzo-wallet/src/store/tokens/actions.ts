@@ -1,20 +1,16 @@
-import { getConfig } from "../../config";
-import { getConnectionFor } from "../../logic/connection";
+import { getActiveConnections } from "../../logic/connection";
 import { AddTickerActionType, BwToken } from "./reducer";
 
 export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
-  const config = await getConfig();
+  const connections = getActiveConnections();
   const tokens: { [ticker: string]: BwToken } = {};
-  const chains = config.chains;
 
-  for (const chain of chains) {
-    const connection = await getConnectionFor(chain.chainSpec);
-    const chainId = connection.chainId();
+  for (const connection of connections) {
     const chainTokens = await connection.getAllTokens();
 
     for (const chainToken of chainTokens) {
       const ticker = chainToken.tokenTicker as string;
-      tokens[ticker] = { chainId, token: chainToken };
+      tokens[ticker] = { chainId: connection.chainId(), token: chainToken };
     }
   }
 

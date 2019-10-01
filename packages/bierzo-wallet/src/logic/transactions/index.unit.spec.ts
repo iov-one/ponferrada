@@ -4,6 +4,7 @@ import { sleep } from "ui-logic";
 import { aNewStore } from "../../store";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import * as transactionActions from "../../store/notifications/actions";
+import { establishAllConnections } from "../../utils/test/connections";
 import { createIdentities } from "../../utils/test/identities";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import * as tokens from "../../utils/tokens";
@@ -12,7 +13,8 @@ import { drinkFaucetIfNeeded } from "../faucet";
 import { subscribeTransaction, unsubscribeTransactions } from "../transactions";
 
 withChainsDescribe("Logic :: transaction subscriptions", () => {
-  beforeAll(() => {
+  beforeAll(async () => {
+    await establishAllConnections();
     jest
       .spyOn(tokens, "filterExistingTokens")
       .mockImplementation(
