@@ -71,6 +71,9 @@ const Login = (): JSX.Element => {
         await loginBootSequence(identities, dispatch);
         history.push(BALANCE_ROUTE);
       }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
     } finally {
       billboard.close();
     }
@@ -96,6 +99,9 @@ const Login = (): JSX.Element => {
         await loginBootSequence(identities, dispatch);
         history.push(BALANCE_ROUTE);
       }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
     } finally {
       billboard.close();
     }
