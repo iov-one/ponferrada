@@ -57,7 +57,7 @@ const Login = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
 
-  const onLogin = async (_: object): Promise<void> => {
+  const onLoginWithNeuma = async (_: object): Promise<void> => {
     billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
     const { installed, connected, identities } = await getExtensionStatus();
     billboard.close();
@@ -116,7 +116,7 @@ const Login = (): JSX.Element => {
       secondaryTitle="to your IOV Wallet"
       subtitle="Continue to access your account"
       primaryNextLabel="Continue with Neuma"
-      primaryNextClicked={onLogin}
+      primaryNextClicked={onLoginWithNeuma}
       secondaryNextLabel="Continue with Ledger Nano S"
       secondaryNextClicked={onLoginWithLedger}
     />
