@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Upgrade IOV-Core to 1.0.0-alpha.1
+
 ## 0.6.2
 
 - Governance: Fix amount interpretation in release guarantee funds proposal
