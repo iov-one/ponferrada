@@ -1,12 +1,21 @@
 import { Address } from "@iov/bcp";
 import { Electorate } from "@iov/bns";
 import { Block, CircleImage, Image, Typography } from "medulas-react-components";
-import React from "react";
+import React, { useMemo } from "react";
 
 import iovLogo from "../../assets/iov-logo-title.svg";
 import userIcon from "../../assets/user.svg";
+import { history } from "../../routes";
+import { SHOW_ELECTORATE_ROUTE } from "../../routes/paths";
 
 export const HEADER_HTML_ID = "header";
+
+const navigateToElectorate = (id: number): void => {
+  const target = `${SHOW_ELECTORATE_ROUTE}/${id}`;
+  if (history.location.pathname !== target) {
+    history.push(target);
+  }
+};
 
 interface Props {
   readonly address: Address;
@@ -14,6 +23,26 @@ interface Props {
 }
 
 const Header = ({ address, electorates }: Props): JSX.Element => {
+  const ElectorateLinks = useMemo(
+    () => (): JSX.Element => (
+      <React.Fragment>
+        {electorates.map((e, index) => (
+          <Block display="inline" key={e.id}>
+            <Typography inline link variant="body2" onClick={() => navigateToElectorate(e.id)}>
+              {e.title}
+            </Typography>
+            {index !== 1 && (
+              <Typography inline variant="body2">
+                ,{" "}
+              </Typography>
+            )}
+          </Block>
+        ))}
+      </React.Fragment>
+    ),
+    [electorates],
+  );
+
   return (
     <Block id={HEADER_HTML_ID} width="100%" minHeight="78px" display="flex" alignItems="center">
       <Block minWidth="205px" display="flex" alignItems="center" justifyContent="center">
@@ -24,7 +53,10 @@ const Header = ({ address, electorates }: Props): JSX.Element => {
         <Block marginRight={4} display="flex" alignItems="center">
           <Block textAlign="right">
             <Typography variant="body2">{address}</Typography>
-            <Typography variant="body2">Member of {electorates.map(e => e.title).join(", ")}</Typography>
+            <Typography inline variant="body2">
+              Member of{" "}
+            </Typography>
+            <ElectorateLinks />
           </Block>
           <Block marginLeft={1}>
             <CircleImage alt="Logo" icon={userIcon} dia="32px" circleColor="#fff" />
