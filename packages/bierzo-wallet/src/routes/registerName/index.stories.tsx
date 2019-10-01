@@ -77,30 +77,22 @@ async function validate(values: object): Promise<object> {
 
 storiesOf(REGISTER_USERNAME_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    REGISTER_USERNAME_REGISTRATION_STORY_PATH,
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <Layout
-          onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-          onSubmit={onSubmit}
-          validate={validate}
-          chainAddresses={addresses}
-        />
-      </DecoratedStorybook>
-    ),
-  )
-  .add(
-    REGISTER_USERNAME_CONFIRMATION_STORY_PATH,
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <ConfirmRegistration
-          transactionId={
-            "0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e" as TransactionId
-          }
-          onSeeTrasactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
-          onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        />
-      </DecoratedStorybook>
-    ),
-  );
+  .add(REGISTER_USERNAME_REGISTRATION_STORY_PATH, () => (
+    <DecoratedStorybook>
+      <Layout
+        onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+        onSubmit={onSubmit}
+        validate={validate}
+        chainAddresses={addresses}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(REGISTER_USERNAME_CONFIRMATION_STORY_PATH, () => (
+    <DecoratedStorybook>
+      <ConfirmRegistration
+        transactionId={"0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e" as TransactionId}
+        onSeeTrasactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
+        onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+      />
+    </DecoratedStorybook>
+  ));

@@ -12,31 +12,22 @@ const exampleMnemonic =
   "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/Create Wallet`, module)
-  .add(
-    "New Wallet page",
-    (): JSX.Element => (
-      <Storybook>
-        <NewWalletForm onBack={action("back in history")} onCreateWallet={action("next step")} />
-      </Storybook>
-    ),
-  )
-  .add(
-    "Recovery Words page",
-    (): JSX.Element => (
-      <Storybook>
-        <ShowWordsForm
-          mnemonic={exampleMnemonic}
-          onBack={action("back in history")}
-          onHintPassword={action("hint step")}
-        />
-      </Storybook>
-    ),
-  )
-  .add(
-    "Security Hint page",
-    (): JSX.Element => (
-      <Storybook>
-        <SecurityHintForm onBack={action("back in history")} onSaveHint={action("save hint")} />
-      </Storybook>
-    ),
-  );
+  .add("New Wallet page", () => (
+    <Storybook>
+      <NewWalletForm onBack={action("back in history")} onCreateWallet={action("next step")} />
+    </Storybook>
+  ))
+  .add("Recovery Words page", () => (
+    <Storybook>
+      <ShowWordsForm
+        mnemonic={exampleMnemonic}
+        onBack={action("back in history")}
+        onHintPassword={action("hint step")}
+      />
+    </Storybook>
+  ))
+  .add("Security Hint page", () => (
+    <Storybook>
+      <SecurityHintForm onBack={action("back in history")} onSaveHint={action("save hint")} />
+    </Storybook>
+  ));

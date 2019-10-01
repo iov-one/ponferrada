@@ -8,19 +8,13 @@ import SetMnemonicForm from "./components/SetMnemonicForm";
 import SetPasswordForm from "./components/SetPasswordForm";
 
 storiesOf(`${CHROME_EXTENSION_ROOT}/Restore Wallet`, module)
-  .add(
-    "Set Mnemonic page",
-    (): JSX.Element => (
-      <Storybook>
-        <SetMnemonicForm onBack={action("back in history")} onSetMnemonic={action("password step")} />
-      </Storybook>
-    ),
-  )
-  .add(
-    "Set Password page",
-    (): JSX.Element => (
-      <Storybook>
-        <SetPasswordForm onBack={action("back in history")} onSetPassword={action("restore wallet")} />
-      </Storybook>
-    ),
-  );
+  .add("Set Mnemonic page", () => (
+    <Storybook>
+      <SetMnemonicForm onBack={action("back in history")} onSetMnemonic={action("password step")} />
+    </Storybook>
+  ))
+  .add("Set Password page", () => (
+    <Storybook>
+      <SetPasswordForm onBack={action("back in history")} onSetPassword={action("restore wallet")} />
+    </Storybook>
+  ));

@@ -366,11 +366,8 @@ function CsvTest(): JSX.Element {
 
 storiesOf(WALLET_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Csv Builder",
-    (): JSX.Element => (
-      <DecoratedStorybook storeProps={txStore}>
-        <CsvTest />
-      </DecoratedStorybook>
-    ),
-  );
+  .add("Csv Builder", () => (
+    <DecoratedStorybook storeProps={txStore}>
+      <CsvTest />
+    </DecoratedStorybook>
+  ));

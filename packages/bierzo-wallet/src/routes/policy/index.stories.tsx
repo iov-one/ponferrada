@@ -6,11 +6,8 @@ import Policy from "./index";
 
 storiesOf(WALLET_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Policy",
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <Policy />
-      </DecoratedStorybook>
-    ),
-  );
+  .add("Policy", () => (
+    <DecoratedStorybook>
+      <Policy />
+    </DecoratedStorybook>
+  ));

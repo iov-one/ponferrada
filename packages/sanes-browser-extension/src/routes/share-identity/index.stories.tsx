@@ -38,30 +38,22 @@ const data: GetIdentitiesResponseData = {
 };
 
 storiesOf(SHARE_IDENTITY_PATH, module)
-  .add(
-    SHOW_REQUEST_PAGE,
-    (): JSX.Element => {
-      return (
-        <Storybook>
-          <ShowRequest
-            sender={senderUrl}
-            data={data.requestedIdentities}
-            onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
-            showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
-          />
-        </Storybook>
-      );
-    },
-  )
-  .add(
-    REJECT_REQUEST_PAGE,
-    (): JSX.Element => (
-      <Storybook>
-        <RejectRequest
-          sender={senderUrl}
-          onBack={linkTo(SHARE_IDENTITY_PATH, SHOW_REQUEST_PAGE)}
-          onRejectRequest={action("onAcceptRequest")}
-        />
-      </Storybook>
-    ),
-  );
+  .add(SHOW_REQUEST_PAGE, () => (
+    <Storybook>
+      <ShowRequest
+        sender={senderUrl}
+        data={data.requestedIdentities}
+        onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+        showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
+      />
+    </Storybook>
+  ))
+  .add(REJECT_REQUEST_PAGE, () => (
+    <Storybook>
+      <RejectRequest
+        sender={senderUrl}
+        onBack={linkTo(SHARE_IDENTITY_PATH, SHOW_REQUEST_PAGE)}
+        onRejectRequest={action("onAcceptRequest")}
+      />
+    </Storybook>
+  ));

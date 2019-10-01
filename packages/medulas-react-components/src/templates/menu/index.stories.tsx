@@ -31,34 +31,28 @@ const MenuItem = ({ msg }: { msg: string }): JSX.Element => (
   </ListItem>
 );
 
-storiesOf("Templates/Menu", module).add(
-  "List Menu",
-  (): JSX.Element => (
-    <Storybook>
-      <Block display="flex" marginTop={3}>
-        <Block flexGrow={3} />
-        <ListMenu starter={starter} listWidth={60}>
-          <MenuItem msg="Foo" />
-          <MenuItem msg="Bar" />
-          <MenuItem msg="Baz" />
-        </ListMenu>
-        <Block flexGrow={1} />
-      </Block>
-    </Storybook>
-  ),
-);
+storiesOf("Templates/Menu", module).add("List Menu", () => (
+  <Storybook>
+    <Block display="flex" marginTop={3}>
+      <Block flexGrow={3} />
+      <ListMenu starter={starter} listWidth={60}>
+        <MenuItem msg="Foo" />
+        <MenuItem msg="Bar" />
+        <MenuItem msg="Baz" />
+      </ListMenu>
+      <Block flexGrow={1} />
+    </Block>
+  </Storybook>
+));
 
-storiesOf("Templates/Menu", module).add(
-  "Empty Menu",
-  (): JSX.Element => (
-    <Storybook>
-      <Block display="flex" marginTop={3}>
-        <Block flexGrow={3} />
-        <ListMenu starter={starter} listWidth={200}>
-          <EmptyListIcon src={noPendingTxs} alt="No Pending Transactions" text="You are up to date!" />
-        </ListMenu>
-        <Block flexGrow={1} />
-      </Block>
-    </Storybook>
-  ),
-);
+storiesOf("Templates/Menu", module).add("Empty Menu", () => (
+  <Storybook>
+    <Block display="flex" marginTop={3}>
+      <Block flexGrow={3} />
+      <ListMenu starter={starter} listWidth={200}>
+        <EmptyListIcon src={noPendingTxs} alt="No Pending Transactions" text="You are up to date!" />
+      </ListMenu>
+      <Block flexGrow={1} />
+    </Block>
+  </Storybook>
+));

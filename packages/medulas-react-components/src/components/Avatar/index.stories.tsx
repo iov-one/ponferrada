@@ -45,11 +45,8 @@ function IconAvatars(): JSX.Element {
   );
 }
 
-storiesOf("Components", module).add(
-  "Avatars",
-  (): JSX.Element => (
-    <Storybook>
-      <IconAvatars />
-    </Storybook>
-  ),
-);
+storiesOf("Components", module).add("Avatars", () => (
+  <Storybook>
+    <IconAvatars />
+  </Storybook>
+));

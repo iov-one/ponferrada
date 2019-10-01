@@ -52,11 +52,8 @@ function FolderList(): JSX.Element {
 
 export default FolderList;
 
-storiesOf("Components", module).add(
-  "Lists",
-  (): JSX.Element => (
-    <Storybook>
-      <FolderList />
-    </Storybook>
-  ),
-);
+storiesOf("Components", module).add("Lists", () => (
+  <Storybook>
+    <FolderList />
+  </Storybook>
+));
