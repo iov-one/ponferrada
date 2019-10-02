@@ -8,7 +8,7 @@ import { aNewStore } from "../../store";
 import { RootState } from "../../store/reducers";
 import { globalStyles } from "../../theme/globalStyles";
 
-export const WALLET_ROOT = "Bierzo wallet";
+export const bierzoRoot = "Bierzo Wallet";
 
 interface Props {
   readonly children: React.ReactNode;

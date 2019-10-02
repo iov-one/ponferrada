@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Bierzo wallet Csv Builder 1`] = `
+exports[`Storyshots Bierzo Wallet Csv Builder 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -51,7 +51,7 @@ exports[`Storyshots Bierzo wallet Csv Builder 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet Login page 1`] = `
+exports[`Storyshots Bierzo Wallet Login page 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -167,7 +167,7 @@ exports[`Storyshots Bierzo wallet Login page 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet Policy 1`] = `
+exports[`Storyshots Bierzo Wallet Policy 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -1204,7 +1204,7 @@ exports[`Storyshots Bierzo wallet Policy 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet Receive Payment 1`] = `
+exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
   id="payment-confirmation-view-id"
@@ -1438,7 +1438,7 @@ exports[`Storyshots Bierzo wallet Receive Payment 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet Terms 1`] = `
+exports[`Storyshots Bierzo Wallet Terms 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -2003,7 +2003,7 @@ exports[`Storyshots Bierzo wallet Terms 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Balance View 1`] = `
+exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -2281,7 +2281,7 @@ exports[`Storyshots Bierzo wallet/Balance View 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Balance View on ledger and without name 1`] = `
+exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -2568,7 +2568,7 @@ exports[`Storyshots Bierzo wallet/Balance View on ledger and without name 1`] = 
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1`] = `
+exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -2841,7 +2841,7 @@ exports[`Storyshots Bierzo wallet/Balance View without tokens and without name 1
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Components Header 1`] = `
+exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
 <div
   style={
     Object {
@@ -3220,7 +3220,7 @@ exports[`Storyshots Bierzo wallet/Components Header 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Components PageMenuColumn 1`] = `
+exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -3430,7 +3430,7 @@ exports[`Storyshots Bierzo wallet/Components PageMenuColumn 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
+exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -3626,7 +3626,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu With padding 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
+exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -3822,7 +3822,7 @@ exports[`Storyshots Bierzo wallet/Components/PageMenu Without padding 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Payment Confirmation 1`] = `
+exports[`Storyshots Bierzo Wallet/Payment Confirmation 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
   id="payment-confirmation-view-id"
@@ -3971,7 +3971,7 @@ exports[`Storyshots Bierzo wallet/Payment Confirmation 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Payment Payment 1`] = `
+exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
 <form
   onSubmit={[Function]}
 >
@@ -4360,7 +4360,7 @@ exports[`Storyshots Bierzo wallet/Payment Payment 1`] = `
 </form>
 `;
 
-exports[`Storyshots Bierzo wallet/Register Username Register Username 1`] = `
+exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
 <form
   onSubmit={[Function]}
 >
@@ -4715,7 +4715,7 @@ exports[`Storyshots Bierzo wallet/Register Username Register Username 1`] = `
 </form>
 `;
 
-exports[`Storyshots Bierzo wallet/Register Username Registration confirmation 1`] = `
+exports[`Storyshots Bierzo Wallet/Register Username Registration confirmation 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
   id="username-confirmation-view-id"
@@ -4836,7 +4836,7 @@ exports[`Storyshots Bierzo wallet/Register Username Registration confirmation 1`
 </div>
 `;
 
-exports[`Storyshots Bierzo wallet/Transactions With transactions 1`] = `
+exports[`Storyshots Bierzo Wallet/Transactions With transactions 1`] = `
 Array [
   <div
     className="MuiBox-root MuiBox-root"
@@ -5900,7 +5900,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Bierzo wallet/Transactions Without transactions 1`] = `
+exports[`Storyshots Bierzo Wallet/Transactions Without transactions 1`] = `
 Array [
   <div
     className="MuiBox-root MuiBox-root"

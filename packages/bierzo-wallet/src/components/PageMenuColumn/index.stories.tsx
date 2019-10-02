@@ -8,7 +8,7 @@ import { stringToAmount } from "ui-logic";
 
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import PageMenuColumn from "./index";
 
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
@@ -84,7 +84,7 @@ const fullStore = (): DeepPartial<RootState> => {
   };
 };
 
-storiesOf(`${WALLET_ROOT}/Components`, module)
+storiesOf(`${bierzoRoot}/Components`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("PageMenuColumn", () => (
     <DecoratedStorybook storeProps={fullStore()}>

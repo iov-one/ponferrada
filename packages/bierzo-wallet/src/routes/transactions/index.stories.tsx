@@ -11,11 +11,11 @@ import { stringToAmount } from "ui-logic";
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { ProcessedSendTransaction } from "../../store/notifications";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
-export const TRANSACTIONS_STORY_PATH = `${WALLET_ROOT}/Transactions`;
+export const TRANSACTIONS_STORY_PATH = `${bierzoRoot}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
 
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {

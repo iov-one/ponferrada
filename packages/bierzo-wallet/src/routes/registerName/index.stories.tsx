@@ -7,13 +7,13 @@ import React from "react";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import { isValidIov } from "../../logic/account";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
 import ConfirmRegistration from "./components/ConfirmRegistration";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components/index";
 
-export const REGISTER_USERNAME_STORY_PATH = `${WALLET_ROOT}/Register Username`;
+export const REGISTER_USERNAME_STORY_PATH = `${bierzoRoot}/Register Username`;
 export const REGISTER_USERNAME_REGISTRATION_STORY_PATH = "Register Username";
 const REGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registration confirmation";
 
