@@ -18,7 +18,7 @@ import React from "react";
 import { PersonaProvider } from "../../context/PersonaProvider";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { ProcessedTx } from "../../extension/background/model/persona";
-import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
+import { sanesRoot } from "../../utils/storybook";
 import Layout from "./index";
 
 export const WALLET_STATUS_PAGE = "Wallet Status page";
@@ -165,7 +165,7 @@ const errorVoteTx: ProcessedTx = {
   original: vote,
 };
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/${WALLET_STATUS_PAGE}`, module)
+storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
   .add("With transactions", () => {
     const processedTx2 = { ...processedTx, id: (txId++).toString() };
     const processedTx3 = { ...processedTx, id: (txId++).toString() };

@@ -5,7 +5,7 @@ import { Router } from "react-router";
 
 import { PersonaProvider } from "../../context/PersonaProvider";
 
-export const CHROME_EXTENSION_ROOT = "Extension";
+export const sanesRoot = "Sanes Browser Extension";
 
 const storybookHistory = createMemoryHistory();
 

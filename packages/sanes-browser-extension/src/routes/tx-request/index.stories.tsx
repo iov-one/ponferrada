@@ -8,7 +8,7 @@ import {
   Request,
   SignAndPostResponseData,
 } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
+import { sanesRoot } from "../../utils/storybook";
 import { WALLET_STATUS_PAGE } from "../wallet/index.stories";
 import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
@@ -20,7 +20,7 @@ import {
   getVoteTransaction,
 } from "./test";
 
-export const TX_REQUEST_PATH = `${CHROME_EXTENSION_ROOT}/Transaction Request`;
+export const TX_REQUEST_PATH = `${sanesRoot}/Transaction Request`;
 const SEND_BNS_REQUEST_PAGE = "Send (BNS)";
 const SEND_TX_ETHEREUM_REQUEST_PAGE = "Send (Ethereum)";
 const REGISTER_USERNAME_REQUEST_PAGE = "Create Username";
@@ -92,7 +92,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           tx={tx}
           sender={sendBnsRequest.senderUrl}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -107,7 +107,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           tx={tx}
           sender={senderUrl}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -122,7 +122,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           sender={senderUrl}
           tx={tx}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -137,7 +137,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           sender={senderUrl}
           tx={tx}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>
@@ -152,7 +152,7 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           sender={senderUrl}
           tx={tx}
-          onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
       </Storybook>

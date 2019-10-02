@@ -6,12 +6,12 @@ import { Storybook } from "medulas-react-components";
 import React from "react";
 
 import { GetIdentitiesResponseData } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
+import { sanesRoot } from "../../utils/storybook";
 import { WALLET_STATUS_PAGE } from "../wallet/index.stories";
 import RejectRequest from "./components/RejectRequest";
 import ShowRequest from "./components/ShowRequest";
 
-const SHARE_IDENTITY_PATH = `${CHROME_EXTENSION_ROOT}/Share Identity`;
+const SHARE_IDENTITY_PATH = `${sanesRoot}/Share Identity`;
 const SHOW_REQUEST_PAGE = "Show Request page";
 const REJECT_REQUEST_PAGE = "Reject Request page";
 
@@ -43,7 +43,7 @@ storiesOf(SHARE_IDENTITY_PATH, module)
       <ShowRequest
         sender={senderUrl}
         data={data.requestedIdentities}
-        onAcceptRequest={linkTo(CHROME_EXTENSION_ROOT, WALLET_STATUS_PAGE)}
+        onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
         showRejectView={linkTo(SHARE_IDENTITY_PATH, REJECT_REQUEST_PAGE)}
       />
     </Storybook>

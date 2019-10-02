@@ -3,10 +3,10 @@ import { storiesOf } from "@storybook/react";
 import { Typography } from "medulas-react-components";
 import React from "react";
 
-import { CHROME_EXTENSION_ROOT, SanesStorybook } from "../utils/storybook";
+import { sanesRoot, SanesStorybook } from "../utils/storybook";
 import NeumaPageLayout from "./NeumaPageLayout";
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/Components`, module).add("NeumaPageLayout", () => (
+storiesOf(`${sanesRoot}/Components`, module).add("NeumaPageLayout", () => (
   <SanesStorybook>
     <NeumaPageLayout primaryTitle="Long" title="title" onBack={action("clicking on back button")}>
       <Typography>
