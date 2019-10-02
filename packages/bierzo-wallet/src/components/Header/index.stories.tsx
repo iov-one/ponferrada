@@ -6,7 +6,7 @@ import { ReadonlyDate } from "readonly-date";
 import { DeepPartial } from "redux";
 import { stringToAmount } from "ui-logic";
 
-import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
+import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
@@ -22,7 +22,7 @@ const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "LSK" as TokenTicker,
 };
 
-const txs: readonly (ProcessedSendTransaction | BwUnknownProps)[] = [
+const txs: readonly (ProcessedSendTransaction | ProcessedTx)[] = [
   {
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx0" as TransactionId,

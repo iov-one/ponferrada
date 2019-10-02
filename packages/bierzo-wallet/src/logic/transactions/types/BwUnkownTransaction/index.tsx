@@ -1,4 +1,4 @@
-import { Address, BlockchainConnection, ConfirmedTransaction, SendTransaction } from "@iov/bcp";
+import { Address, BlockchainConnection, ConfirmedTransaction, LightTransaction } from "@iov/bcp";
 import * as React from "react";
 
 import { CsvRow } from "../../../csvBuilder";
@@ -6,14 +6,12 @@ import { BwParser, ProcessedTx } from "../../types/BwParser";
 import UnkownTransactionHeader from "./ui/UnknownTxHeader";
 import UnkownTransactionRow from "./ui/UnknownTxRow";
 
-export interface BwUnknownProps extends ProcessedTx {}
-
-export class BwUnkownParser extends BwParser<BwUnknownProps> {
+export class BwUnkownParser extends BwParser<LightTransaction> {
   public async parse(
     conn: BlockchainConnection,
-    trans: ConfirmedTransaction<SendTransaction>,
+    trans: ConfirmedTransaction<LightTransaction>,
     _currentAddress: Address,
-  ): Promise<BwUnknownProps> {
+  ): Promise<ProcessedTx<LightTransaction>> {
     const header = await conn.getBlockHeader(trans.height);
     const time = header.time;
 
@@ -24,11 +22,11 @@ export class BwUnkownParser extends BwParser<BwUnknownProps> {
     };
   }
 
-  public graphicalRepresentation(tx: BwUnknownProps): JSX.Element {
+  public graphicalRepresentation(tx: ProcessedTx<LightTransaction>): JSX.Element {
     return <UnkownTransactionRow key={tx.id} tx={tx} />;
   }
 
-  public csvRepresentation(tx: BwUnknownProps): CsvRow {
+  public csvRepresentation(tx: ProcessedTx<LightTransaction>): CsvRow {
     const { original } = tx;
 
     const fee = original.fee && original.fee.tokens ? original.fee.tokens : undefined;
@@ -48,7 +46,7 @@ export class BwUnkownParser extends BwParser<BwUnknownProps> {
     };
   }
 
-  public headerRepresentation(tx: BwUnknownProps, lastOne: boolean): JSX.Element {
+  public headerRepresentation(tx: ProcessedTx<LightTransaction>, lastOne: boolean): JSX.Element {
     return <UnkownTransactionHeader key={tx.id} tx={tx} lastOne={lastOne} />;
   }
 }

@@ -10,7 +10,6 @@ import { stringToAmount } from "ui-logic";
 
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
-import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import Layout from "./components";
@@ -104,7 +103,7 @@ const voteTx: ProcessedTx<VoteTx> = {
   },
 };
 
-const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
+const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | ProcessedTx)[] = [
   incomingSendTransaction,
   voteTx,
   {

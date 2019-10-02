@@ -57,7 +57,7 @@ export class BwParserFactory {
 
   public static getBwTransactionFrom(
     trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  ): BwParser<ProcessedTx> {
+  ): BwParser<LightTransaction> {
     if (isFailedTransaction(trans)) {
       throw new Error("Not supported error txs for now");
     }
