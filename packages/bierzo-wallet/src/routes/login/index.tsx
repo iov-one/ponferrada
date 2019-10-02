@@ -68,27 +68,26 @@ const Login = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
 
-  const onLogin = async (_: object): Promise<void> => {
-    billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
-    const { installed, connected, identities } = await getExtensionStatus();
-    billboard.close();
-
-    if (!installed) {
-      toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      return;
+  const onLoginWithNeuma = async (_: object): Promise<void> => {
+    try {
+      billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
+      const { installed, connected, identities } = await getExtensionStatus();
+      if (!installed) {
+        toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      } else if (!connected) {
+        toast.show(extensionRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
+      } else {
+        dispatch(setIdentities(await makeExtendedIdentities(identities)));
+        dispatch(setRpcEndpoint(extensionRpcEndpoint));
+        await loginBootSequence(identities, dispatch);
+        history.push(BALANCE_ROUTE);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
+    } finally {
+      billboard.close();
     }
-
-    if (!connected) {
-      toast.show(extensionRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
-      return;
-    }
-
-    dispatch(setIdentities(await makeExtendedIdentities(identities)));
-    dispatch(setRpcEndpoint(extensionRpcEndpoint));
-
-    await loginBootSequence(identities, dispatch);
-
-    history.push(BALANCE_ROUTE);
   };
 
   const onLoginWithLedger = async (): Promise<void> => {
@@ -97,27 +96,26 @@ const Login = (): JSX.Element => {
       return;
     }
 
-    billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
-    const request = await generateGetIdentitiesRequest();
-    const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
-    billboard.close();
-
-    if (identities === undefined) {
-      toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      return;
+    try {
+      billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
+      const request = await generateGetIdentitiesRequest();
+      const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
+      if (identities === undefined) {
+        toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      } else if (identities.length === 0) {
+        toast.show(ledgerRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
+      } else {
+        dispatch(setIdentities(await makeExtendedIdentities(identities)));
+        dispatch(setRpcEndpoint(ledgerRpcEndpoint));
+        await loginBootSequence(identities, dispatch);
+        history.push(BALANCE_ROUTE);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
+    } finally {
+      billboard.close();
     }
-
-    if (identities.length === 0) {
-      toast.show(ledgerRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
-      return;
-    }
-
-    dispatch(setIdentities(await makeExtendedIdentities(identities)));
-    dispatch(setRpcEndpoint(ledgerRpcEndpoint));
-
-    await loginBootSequence(identities, dispatch);
-
-    history.push(BALANCE_ROUTE);
   };
 
   return (
@@ -127,7 +125,7 @@ const Login = (): JSX.Element => {
       secondaryTitle="to your IOV Wallet"
       subtitle="Continue to access your account"
       primaryNextLabel="Continue with Neuma"
-      primaryNextClicked={onLogin}
+      primaryNextClicked={onLoginWithNeuma}
       secondaryNextLabel="Continue with Ledger Nano S"
       secondaryNextClicked={onLoginWithLedger}
     />
