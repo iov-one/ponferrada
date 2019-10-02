@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.7.0
 
+- Connect to Clapnet 👏
 - Upgrade IOV-Core to 1.0.0-alpha.1
 
 ## 0.6.2

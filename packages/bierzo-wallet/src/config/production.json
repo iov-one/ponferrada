@@ -2,7 +2,7 @@
   "extensionId": "N/A",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-babynet",
+      "testnetBuild": "iov-clapnet",
       "mainnetBuild": "iov-mainnet"
     }
   },

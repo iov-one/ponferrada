@@ -2,7 +2,7 @@
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-babynet",
+      "testnetBuild": "iov-clapnet",
       "mainnetBuild": "iov-mainnet"
     }
   },
@@ -11,9 +11,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "iov-babynet",
-        "name": "IOV Babynet",
-        "node": "wss://rpc-private-a-vip-babynet.iov.one/"
+        "chainId": "iov-clapnet",
+        "name": "IOV Clapnet",
+        "node": "wss://rpc-private-a-vip2-clapnet.iov.one/"
       }
     },
     {

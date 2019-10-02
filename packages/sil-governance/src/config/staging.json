@@ -3,9 +3,9 @@
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
-      "node": "wss://rpc-private-a-vip-babynet.iov.one/",
-      "chainId": "iov-babynet",
-      "name": "IOV Babynet"
+      "node": "wss://rpc-private-a-vip2-clapnet.iov.one/",
+      "chainId": "iov-clapnet",
+      "name": "IOV Clapnet"
     },
     "guaranteeFundEscrowId": 1,
     "rewardFundAddress": "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z"

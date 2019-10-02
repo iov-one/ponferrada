@@ -1,6 +1,6 @@
 {
   "blockExplorers": {
-    "iov-babynet": null,
+    "iov-clapnet": null,
     "lisk-da3ed6a454": "https://testnet-explorer.lisk.io/tx/",
     "ethereum-eip155-4": "https://rinkeby.etherscan.io/tx/"
   },
@@ -8,9 +8,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "iov-babynet",
-        "name": "IOV Babynet",
-        "node": "https://rpc-private-a-vip-babynet.iov.one/"
+        "chainId": "iov-clapnet",
+        "name": "IOV Clapnet",
+        "node": "https://rpc-private-a-vip2-clapnet.iov.one/"
       }
     },
     {
