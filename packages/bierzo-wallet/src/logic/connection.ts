@@ -67,8 +67,9 @@ export function hasActiveConnection(chainId: ChainId): boolean {
 }
 
 export function getConnectionForChainId(chainId: ChainId): BlockchainConnection {
-  if (connections.has(chainId)) {
-    return connections.get(chainId)!;
+  const connection = connections.get(chainId);
+  if (connection) {
+    return connection;
   }
   throw new Error(`No connection found for ${chainId} chainId`);
 }
