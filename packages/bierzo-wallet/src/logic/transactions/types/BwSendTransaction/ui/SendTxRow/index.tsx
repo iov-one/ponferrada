@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface Props {
   readonly sendTx: ProcessedSendTransaction;
-  readonly userAddresses: Address[];
+  readonly userAddresses: readonly Address[];
 }
 
 function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {

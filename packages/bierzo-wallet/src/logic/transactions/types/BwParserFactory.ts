@@ -25,9 +25,9 @@ function isProcessedRegisterUsernameTx(tx: ProcessedTx): tx is ProcessedTx<Regis
 }
 
 export class BwParserFactory {
-  public static getReactComponent(tx: ProcessedTx, addresses: Address[]): JSX.Element {
+  public static getReactComponent(tx: ProcessedTx, userAddresses: readonly Address[]): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
-      return new BwSendParser().graphicalRepresentation(tx, addresses);
+      return new BwSendParser().graphicalRepresentation(tx, userAddresses);
     } else if (isProcessedRegisterUsernameTx(tx)) {
       return new BwRegisterUsernameParser().graphicalRepresentation(tx);
     }

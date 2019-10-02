@@ -25,7 +25,10 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
     };
   }
 
-  public graphicalRepresentation(sendTx: ProcessedSendTransaction, userAddresses: Address[]): JSX.Element {
+  public graphicalRepresentation(
+    sendTx: ProcessedSendTransaction,
+    userAddresses: readonly Address[],
+  ): JSX.Element {
     return <SendTransactionRow key={sendTx.id} sendTx={sendTx} userAddresses={userAddresses} />;
   }
 
