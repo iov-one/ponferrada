@@ -66,7 +66,7 @@ function BillboardStory(): JSX.Element {
   );
 }
 
-storiesOf("Components", module)
+storiesOf("Context", module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Billboard", () => (
     <Storybook>

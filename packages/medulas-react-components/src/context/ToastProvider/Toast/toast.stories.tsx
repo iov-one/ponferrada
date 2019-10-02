@@ -56,7 +56,7 @@ const ToastStorybook = (): JSX.Element => {
   );
 };
 
-storiesOf("Components", module).add("Toasts", () => (
+storiesOf("Context", module).add("Toasts", () => (
   <Storybook>
     <ToastProvider>
       <ToastStorybook />{" "}

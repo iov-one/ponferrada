@@ -6434,102 +6434,6 @@ Array [
 ]
 `;
 
-exports[`Storyshots Components Billboard 1`] = `
-<div
-  className="MuiBox-root MuiBox-root makeStyles-billboard"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    What is Lorem Ipsum?
-  </h6>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root makeStyles-content"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    Where does it come from?
-  </h6>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root makeStyles-content"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-      </p>
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-      </p>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>
-  <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-    disabled={false}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="button"
-  >
-    <span
-      className="MuiButton-label"
-    >
-      Show billboard
-    </span>
-  </button>
-</div>
-`;
-
 exports[`Storyshots Components Buttons 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -7390,319 +7294,6 @@ Array [
       className="MuiBox-root MuiBox-root"
     />
   </div>,
-]
-`;
-
-exports[`Storyshots Components Toasts 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Click to generate INFO toast
-          </span>
-        </button>
-      </div>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        This should generate...
-      </p>
-      <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info MuiTypography-body2"
-        role="alertdialog"
-      >
-        <div
-          className="MuiSnackbarContent-message"
-        >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-message"
-          >
-            <div
-              className="makeStyles-iconBackground"
-            >
-              <img
-                alt="Toast icon"
-                className="makeStyles-root"
-                height={24}
-                src="success.svg"
-                width={24}
-              />
-            </div>
-            <h6
-              className="MuiTypography-root makeStyles-info MuiTypography-subtitle1"
-            >
-              Hi INFO this is a cool feature. Stay tuned
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiSnackbarContent-action"
-        >
-          <button
-            aria-label="Close"
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <img
-                alt="Close"
-                className="makeStyles-root"
-                height={20}
-                src="close.svg"
-                width={20}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Click to generate WARN toast
-          </span>
-        </button>
-      </div>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        This should generate...
-      </p>
-      <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning MuiTypography-body2"
-        role="alertdialog"
-      >
-        <div
-          className="MuiSnackbarContent-message"
-        >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-message"
-          >
-            <div
-              className="makeStyles-iconBackground"
-            >
-              <img
-                alt="Toast icon"
-                className="makeStyles-root"
-                height={24}
-                src="warning.svg"
-                width={24}
-              />
-            </div>
-            <h6
-              className="MuiTypography-root makeStyles-warning MuiTypography-subtitle1"
-            >
-              Hi WARN
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiSnackbarContent-action"
-        >
-          <button
-            aria-label="Close"
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <img
-                alt="Close"
-                className="makeStyles-root"
-                height={20}
-                src="close.svg"
-                width={20}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Click to generate ERROR toast
-          </span>
-        </button>
-      </div>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        This should generate...
-      </p>
-      <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error MuiTypography-body2"
-        role="alertdialog"
-      >
-        <div
-          className="MuiSnackbarContent-message"
-        >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-message"
-          >
-            <div
-              className="makeStyles-iconBackground"
-            >
-              <img
-                alt="Toast icon"
-                className="makeStyles-root"
-                height={24}
-                src="error.svg"
-                width={24}
-              />
-            </div>
-            <h6
-              className="MuiTypography-root makeStyles-error MuiTypography-subtitle1"
-            >
-              Hi ERR
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiSnackbarContent-action"
-        >
-          <button
-            aria-label="Close"
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <img
-                alt="Close"
-                className="makeStyles-root"
-                height={20}
-                src="close.svg"
-                width={20}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>,
-  " ",
 ]
 `;
 
@@ -8621,6 +8212,415 @@ Array [
       </form>
     </div>
   </div>,
+]
+`;
+
+exports[`Storyshots Context Billboard 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-billboard"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    What is Lorem Ipsum?
+  </h6>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    Where does it come from?
+  </h6>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      Show billboard
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Context Toasts 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Click to generate INFO toast
+          </span>
+        </button>
+      </div>
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        This should generate...
+      </p>
+      <div
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info MuiTypography-body2"
+        role="alertdialog"
+      >
+        <div
+          className="MuiSnackbarContent-message"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-message"
+          >
+            <div
+              className="makeStyles-iconBackground"
+            >
+              <img
+                alt="Toast icon"
+                className="makeStyles-root"
+                height={24}
+                src="success.svg"
+                width={24}
+              />
+            </div>
+            <h6
+              className="MuiTypography-root makeStyles-info MuiTypography-subtitle1"
+            >
+              Hi INFO this is a cool feature. Stay tuned
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiSnackbarContent-action"
+        >
+          <button
+            aria-label="Close"
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <img
+                alt="Close"
+                className="makeStyles-root"
+                height={20}
+                src="close.svg"
+                width={20}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Click to generate WARN toast
+          </span>
+        </button>
+      </div>
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        This should generate...
+      </p>
+      <div
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning MuiTypography-body2"
+        role="alertdialog"
+      >
+        <div
+          className="MuiSnackbarContent-message"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-message"
+          >
+            <div
+              className="makeStyles-iconBackground"
+            >
+              <img
+                alt="Toast icon"
+                className="makeStyles-root"
+                height={24}
+                src="warning.svg"
+                width={24}
+              />
+            </div>
+            <h6
+              className="MuiTypography-root makeStyles-warning MuiTypography-subtitle1"
+            >
+              Hi WARN
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiSnackbarContent-action"
+        >
+          <button
+            aria-label="Close"
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <img
+                alt="Close"
+                className="makeStyles-root"
+                height={20}
+                src="close.svg"
+                width={20}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Click to generate ERROR toast
+          </span>
+        </button>
+      </div>
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        This should generate...
+      </p>
+      <div
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error MuiTypography-body2"
+        role="alertdialog"
+      >
+        <div
+          className="MuiSnackbarContent-message"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-message"
+          >
+            <div
+              className="makeStyles-iconBackground"
+            >
+              <img
+                alt="Toast icon"
+                className="makeStyles-root"
+                height={24}
+                src="error.svg"
+                width={24}
+              />
+            </div>
+            <h6
+              className="MuiTypography-root makeStyles-error MuiTypography-subtitle1"
+            >
+              Hi ERR
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiSnackbarContent-action"
+        >
+          <button
+            aria-label="Close"
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <img
+                alt="Close"
+                className="makeStyles-root"
+                height={20}
+                src="close.svg"
+                width={20}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  " ",
 ]
 `;
 
