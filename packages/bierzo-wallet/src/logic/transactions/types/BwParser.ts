@@ -16,13 +16,13 @@ export interface ProcessedTx<T = LightTransaction> {
   readonly original: T;
 }
 
-export abstract class BwParser<K> {
+export abstract class BwParser<K extends LightTransaction> {
   abstract async parse(
     conn: BlockchainConnection,
-    transaction: ConfirmedTransaction<LightTransaction> | FailedTransaction,
+    transaction: ConfirmedTransaction<K> | FailedTransaction,
     currentUserAddress: Address,
   ): Promise<ProcessedTx>;
-  abstract graphicalRepresentation(tx: ProcessedTx, addresses: Address[]): JSX.Element;
-  abstract csvRepresentation(tx: ProcessedTx): CsvRow;
-  abstract headerRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element;
+  abstract graphicalRepresentation(tx: ProcessedTx<K>, addresses: Address[]): JSX.Element;
+  abstract csvRepresentation(tx: ProcessedTx<K>): CsvRow;
+  abstract headerRepresentation(tx: ProcessedTx<K>, lastOne: boolean): JSX.Element;
 }

@@ -1,5 +1,7 @@
 import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
-import { RegisterUsernameTx } from "@iov/bns";
+import { RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import { Sha256 } from "@iov/crypto";
+import { Encoding, Uint64 } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
@@ -8,7 +10,6 @@ import { stringToAmount } from "ui-logic";
 
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
-import { BwUnknownProps } from "../../logic/transactions/types/BwUnkownTransaction";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import Layout from "./components";
@@ -27,19 +28,50 @@ const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "LSK" as TokenTicker,
 };
 
-const address = "0x794d591840927890aC7C162C3B3e4665725f8f40" as Address;
-const ownTx: ProcessedSendTransaction = {
+const eth: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 18,
+  tokenTicker: "ETH" as TokenTicker,
+};
+
+const currentUsersIovAddress = "tiov16cmjakgflq4ru6n6dm5egrztn6gc0l7af7r2tc" as Address;
+const currentUsersEthAddress = "0x794d591840927890aC7C162C3B3e4665725f8f40" as Address;
+const currentUsersLiskAddress = "16376202734673246431L" as Address;
+
+const currentUsersAddresses = [
+  currentUsersIovAddress,
+  currentUsersEthAddress,
+  currentUsersLiskAddress,
+] as const;
+
+let txCount = 0;
+
+function makeExampleEthTransactionId(): TransactionId {
+  // The generated hash is deterministic but arbitrary and has the correct format (see https://etherscan.io/txs)
+  const data = Uint64.fromNumber(txCount++).toBytesBigEndian();
+  return `0x${Encoding.toHex(new Sha256(data).digest())}` as TransactionId;
+}
+
+function makeExampleIovTransactionId(): TransactionId {
+  // The generated hash is deterministic but arbitrary and has the correct format
+  const data = Uint64.fromNumber(txCount++).toBytesBigEndian();
+  return Encoding.toHex(new Sha256(data).digest()).toUpperCase() as TransactionId;
+}
+
+function makeExampleLiskTransactionId(): TransactionId {
+  // The generated hash is deterministic but arbitrary and has the correct format (see https://explorer.lisk.io/txs/)
+  return Uint64.fromNumber(2347199254740991 + txCount++).toString() as TransactionId;
+}
+
+const incomingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
-  id: "ownTx1" as TransactionId,
+  id: makeExampleEthTransactionId(),
   original: {
     kind: "bcp/send",
-    sender: "george*iov" as Address,
-    recipient: address,
-    amount: stringToAmount("10.5", lsk),
+    sender: "0x979a731650b6F5cbE0dB2966e9b43e9a6a931bdA" as Address,
+    recipient: currentUsersEthAddress,
+    amount: stringToAmount("10.5", eth),
     memo: "Sample note",
-    fee: {
-      tokens: stringToAmount("1.2", iov),
-    },
+    fee: { tokens: stringToAmount("0.001", eth) },
   },
   incoming: true,
   outgoing: false,
@@ -47,25 +79,35 @@ const ownTx: ProcessedSendTransaction = {
 
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
-  id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
+  id: makeExampleIovTransactionId(),
   original: {
     kind: "bcp/send",
-    sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
-    recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
+    sender: currentUsersIovAddress as Address,
+    recipient: currentUsersIovAddress as Address,
     amount: stringToAmount("7.4", iov),
     memo: "Send money to myself for fun",
-    fee: {
-      tokens: stringToAmount("1.2", iov),
-    },
+    fee: { tokens: stringToAmount("1.2", iov) },
   },
   incoming: true,
   outgoing: true,
 };
 
-const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
-  ownTx,
+const voteTx: ProcessedTx<VoteTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-24T22:35:03.763Z"),
+  original: {
+    kind: "bns/vote",
+    fee: { tokens: stringToAmount("0.5", iov) },
+    proposalId: 55,
+    selection: VoteOption.Abstain,
+  },
+};
+
+const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | ProcessedTx)[] = [
+  incomingSendTransaction,
+  voteTx,
   {
-    id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
+    id: makeExampleIovTransactionId(),
     time: new ReadonlyDate("2019-12-24T10:51:33.763Z"),
     original: {
       kind: "bns/register_username",
@@ -89,26 +131,10 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
       },
     },
   },
-  {
-    time: new ReadonlyDate("2019-12-24T05:35:03.763Z"),
-    id: "tx1" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: address,
-      recipient: "me" as Address,
-      amount: stringToAmount("10.5", lsk),
-      memo: "Sample note",
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: true,
-    outgoing: false,
-  },
   incomingAndOutgoingSendTransaction,
   {
     time: new ReadonlyDate("2019-12-24T03:35:03.763Z"),
-    id: "0xaaffBdjuhyu8898scchjsg" as TransactionId,
+    id: makeExampleIovTransactionId(),
     original: {
       kind: "bns/register_username",
       fee: {
@@ -118,11 +144,11 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
   },
   {
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
-    id: "tx2" as TransactionId,
+    id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
       sender: "me" as Address,
-      recipient: "alex*iov" as Address,
+      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("25.5", iov),
       fee: {
         tokens: stringToAmount("1.2", iov),
@@ -133,11 +159,11 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
   },
   {
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
-    id: "tx3" as TransactionId,
+    id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
       sender: "me" as Address,
-      recipient: "alex*iov" as Address,
+      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("100.5", iov),
       memo: "Another note",
       fee: {
@@ -149,181 +175,53 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
   },
   {
     time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
-    id: "tx4" as TransactionId,
+    id: makeExampleLiskTransactionId(),
     original: {
       kind: "bcp/send",
-      sender: "Lx9oa7re0894eopiahsdpf98as7y908" as Address,
-      recipient: "me" as Address,
+      sender: "4652772502274938600L" as Address,
+      recipient: currentUsersLiskAddress,
       amount: stringToAmount("10.5", lsk),
       memo: "And again note",
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
+      fee: { tokens: stringToAmount("0.1", lsk) },
     },
     incoming: true,
     outgoing: false,
   },
   {
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
-    id: "tx5" as TransactionId,
+    id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
+      sender: currentUsersIovAddress,
+      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("25.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
+      fee: { tokens: stringToAmount("1.2", iov) },
     },
     incoming: false,
     outgoing: true,
   },
   {
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
-    id: "tx6" as TransactionId,
+    id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
+      sender: currentUsersIovAddress,
+      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("100.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
+      fee: { tokens: stringToAmount("1.2", iov) },
     },
     incoming: false,
     outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
-    id: "tx7" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "george*iov" as Address,
-      recipient: "me" as Address,
-      amount: stringToAmount("10.5", lsk),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: true,
-    outgoing: false,
   },
   {
     time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
-    id: "tx8" as TransactionId,
+    id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
+      sender: currentUsersIovAddress,
+      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("25.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
-    id: "tx9" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
-    id: "tx10" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "george*iov" as Address,
-      recipient: "me" as Address,
-      amount: stringToAmount("10.5", lsk),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: true,
-    outgoing: false,
-  },
-  {
-    time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
-    id: "tx11" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
-    id: "tx12" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
-    id: "tx13" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "george*iov" as Address,
-      recipient: "me" as Address,
-      amount: stringToAmount("10.5", lsk),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: true,
-    outgoing: false,
-  },
-  {
-    time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
-    id: "tx14" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "Lxasdoiu9847ioasdpfuy098q23rui" as Address,
-      recipient: "alex*iov" as Address,
-      amount: stringToAmount("25.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
-    id: "tx15" as TransactionId,
-    original: {
-      kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "alex*iov" as Address,
-      amount: stringToAmount("100.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
+      fee: { tokens: stringToAmount("1.2", iov) },
     },
     incoming: false,
     outgoing: true,
@@ -366,7 +264,7 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
   ))
   .add(TRANSACTIONS_STORY_SHOW_PATH, () => {
     const orderedTxs = filterTxsBy(parsedTxs, 20, 0, TX_DATE_COLUMN, ORDER_DESC);
-    const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, [address]));
+    const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, currentUsersAddresses));
     return (
       <DecoratedStorybook>
         <Layout

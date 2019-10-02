@@ -7,7 +7,7 @@ import { BwParser } from "../../types/BwParser";
 import SendTransactionHeader from "./ui/SendTxHeader";
 import SendTransactionRow from "./ui/SendTxRow";
 
-export class BwSendParser extends BwParser<ProcessedSendTransaction> {
+export class BwSendParser extends BwParser<SendTransaction> {
   public async parse(
     conn: BlockchainConnection,
     trans: ConfirmedTransaction<SendTransaction>,
@@ -25,7 +25,10 @@ export class BwSendParser extends BwParser<ProcessedSendTransaction> {
     };
   }
 
-  public graphicalRepresentation(sendTx: ProcessedSendTransaction, userAddresses: Address[]): JSX.Element {
+  public graphicalRepresentation(
+    sendTx: ProcessedSendTransaction,
+    userAddresses: readonly Address[],
+  ): JSX.Element {
     return <SendTransactionRow key={sendTx.id} sendTx={sendTx} userAddresses={userAddresses} />;
   }
 

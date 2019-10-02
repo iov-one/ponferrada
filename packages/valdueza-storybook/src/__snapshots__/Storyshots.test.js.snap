@@ -5027,12 +5027,12 @@ Array [
                 <h6
                   className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
                 >
-                  10.5 LSK
+                  10.5 ETH
                 </h6>
                 <h6
                   className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
                 >
-                  1.2 IOV
+                  0.001 ETH
                 </h6>
               </div>
               <div
@@ -5046,6 +5046,53 @@ Array [
                 src="dropdownArrow.svg"
                 width={16}
               />
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeLarge"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 6H10v2h10v12H4V8h2v4h2V4h6V0H6v6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-cell"
+              >
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
+                >
+                  This is an unknown transaction
+                </h6>
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  The transaction ID is: 
+                  CD04A4754498E06DB5A13C5F371F1F04FF6D2470F24AA9BD886540E5DCE77F70
+                </h6>
+              </div>
             </div>
             <div
               className="MuiBox-root MuiBox-root"
@@ -5111,86 +5158,6 @@ Array [
                   className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
                 >
                   100 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="fromAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  From
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  5:35 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                24 Dec 2019
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  10.5 LSK
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
                 </h6>
               </div>
               <div
@@ -5546,246 +5513,6 @@ Array [
                   alt="Transaction type"
                   className="makeStyles-root"
                   height={24}
-                  src="toAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  To
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  10:51 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                24 Dec 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  100.5 IOV
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="toAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  To
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  10:51 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                24 Dec 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  100.5 IOV
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="toAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  To
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  10:51 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                24 Dec 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  100.5 IOV
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
                   src="fromAddress.svg"
                   width={24}
                 />
@@ -5828,407 +5555,7 @@ Array [
                 <h6
                   className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
                 >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="fromAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  From
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  5:35 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                13 Nov 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  10.5 LSK
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="fromAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  From
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  5:35 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                13 Nov 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  10.5 LSK
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="fromAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  From
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  5:35 am
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                13 Nov 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  10.5 LSK
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="toAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  To
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  4:12 pm
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                5 Oct 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  25.5 IOV
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <img
-                alt="Sorting"
-                className="makeStyles-root"
-                height={10}
-                onClick={[Function]}
-                src="dropdownArrow.svg"
-                width={16}
-              />
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            />
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <img
-                  alt="Transaction type"
-                  className="makeStyles-root"
-                  height={24}
-                  src="toAddress.svg"
-                  width={24}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-gutterBottom"
-                >
-                  To
-                   
-                  blockchain address
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  4:12 pm
-                </h6>
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <h6
-                className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-              >
-                5 Oct 2018
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root makeStyles-cell"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-alignRight"
-                >
-                  25.5 IOV
-                </h6>
-                <h6
-                  className="MuiTypography-root makeStyles-txFee makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary MuiTypography-alignRight"
-                >
-                  1.2 IOV
+                  0.1 LSK
                 </h6>
               </div>
               <div

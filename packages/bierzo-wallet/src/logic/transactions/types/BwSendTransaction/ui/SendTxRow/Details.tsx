@@ -7,7 +7,7 @@ import { ProcessedSendTransaction } from "../../../../../../store/notifications"
 
 interface Props {
   readonly tx: ProcessedSendTransaction;
-  readonly userAddresses: Address[];
+  readonly userAddresses: readonly Address[];
 }
 
 const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {

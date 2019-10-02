@@ -150,6 +150,15 @@ if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVI
     docker logout
     fold_end
   )
+
+  (
+    fold_start "deployment-firebase"
+    (
+      cd packages/valdueza-storybook
+      yarn deploy-storybook --token "$FIREBASE_TOKEN"
+    )
+    fold_end
+  )
 elif [[ "$TRAVIS_TAG" != "" ]]; then
   echo "Running deployments for tag $TRAVIS_TAG ..."
 

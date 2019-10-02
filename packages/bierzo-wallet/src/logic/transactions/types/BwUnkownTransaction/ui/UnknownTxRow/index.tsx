@@ -3,10 +3,10 @@ import MarkunreadMailbox from "@material-ui/icons/MarkunreadMailboxOutlined";
 import { Block, Hairline, Typography } from "medulas-react-components";
 import * as React from "react";
 
-import { BwUnknownProps } from "../..";
+import { ProcessedTx } from "../../../BwParser";
 
 interface Props {
-  readonly tx: BwUnknownProps;
+  readonly tx: ProcessedTx;
 }
 
 const useStyles = makeStyles({

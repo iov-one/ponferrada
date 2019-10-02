@@ -13,7 +13,6 @@ import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
 import { ProcessedTx } from "../transactions/types/BwParser";
 import { BwParserFactory } from "../transactions/types/BwParserFactory";
-import { BwUnknownProps } from "../transactions/types/BwUnkownTransaction";
 import CsvRepresentation, { CsvRow } from "./index";
 
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
@@ -61,7 +60,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   outgoing: true,
 };
 
-const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | BwUnknownProps)[] = [
+const txs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | ProcessedTx)[] = [
   ownTx,
   {
     id: "DA9A61A3CA28C772E468D772D642978180332780ADB6410909E51487C0F61050" as TransactionId,
