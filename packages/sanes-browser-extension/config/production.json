@@ -1,7 +1,7 @@
 {
   "blockExplorers": {
-    "lisk-ed14889723": "https://explorer.lisk.io/tx/",
-    "ethereum-eip155-1": "https://etherscan.io/tx/"
+    "lisk-ed14889723": "https://explorer.lisk.io/tx/%id",
+    "ethereum-eip155-1": "https://etherscan.io/tx/%id"
   },
   "chains": [
     {

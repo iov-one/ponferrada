@@ -1,6 +1,6 @@
 {
   "blockExplorers": {
-    "ethereum-eip155-5777": "http://localhost:8546/api?module=proxy&action=eth_getTransactionByHash&txhash="
+    "ethereum-eip155-5777": "http://localhost:8546/api?module=proxy&action=eth_getTransactionByHash&txhash=%id"
   },
   "chains": [
     {
