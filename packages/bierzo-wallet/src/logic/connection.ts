@@ -63,7 +63,7 @@ export function getActiveConnections(): IterableIterator<BlockchainConnection> {
 }
 
 export function hasActiveConnection(chainId: ChainId): boolean {
-  return chainId in connections;
+  return connections.has(chainId);
 }
 
 export function getConnectionForChainId(chainId: ChainId): BlockchainConnection {
