@@ -7,7 +7,7 @@ import Paragraph from "../../components/TextMarkup/Paragraph";
 import Section from "../../components/TextMarkup/Section";
 import Title from "../../components/TextMarkup/Title";
 import Typography from "../../components/Typography";
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import { BillboardContext, BillboardProvider } from "./index";
 
 function BillboardStory(): JSX.Element {
@@ -66,7 +66,7 @@ function BillboardStory(): JSX.Element {
   );
 }
 
-storiesOf("Context", module)
+storiesOf(`${medulasRoot}/context`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Billboard", () => (
     <Storybook>

@@ -5988,2642 +5988,6 @@ Array [
 ]
 `;
 
-exports[`Storyshots Components /forms CheckboxField 1`] = `
-Array [
-  <form
-    onSubmit={[Function]}
-  >
-    <div
-      className="MuiFormControl-root"
-    >
-      <label
-        className="MuiFormControlLabel-root"
-      >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-              />
-            </svg>
-            <input
-              checked={false}
-              className="PrivateSwitchBase-input"
-              data-indeterminate={false}
-              disabled={false}
-              name="CHECKBOX_FIELD"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              type="checkbox"
-            />
-          </span>
-        </span>
-        <span
-          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-        >
-          Checkbox field
-        </span>
-      </label>
-    </div>
-  </form>,
-  <form
-    onSubmit={[Function]}
-  >
-    <div
-      className="MuiFormControl-root"
-    >
-      <label
-        className="MuiFormControlLabel-root"
-      >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-              />
-            </svg>
-            <input
-              checked={false}
-              className="PrivateSwitchBase-input"
-              data-indeterminate={false}
-              disabled={false}
-              name="CHECKBOX_FIELD"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              type="checkbox"
-            />
-          </span>
-        </span>
-        <span
-          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-        >
-          Checkbox field with error
-        </span>
-      </label>
-    </div>
-  </form>,
-]
-`;
-
-exports[`Storyshots Components /forms SelectField 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="makeStyles-dropdown"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputBase-root makeStyles-root makeStyles-root"
-          onClick={[Function]}
-          role="button"
-        >
-          <input
-            autoComplete="off"
-            className="MuiInputBase-input makeStyles-input"
-            name="SELECT_FIELD_ATTR"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            readOnly={true}
-            type="text"
-            value=""
-          />
-        </div>
-        <img
-          alt="Phone Menu"
-          className="makeStyles-root makeStyles-noShrink"
-          height="5"
-          src="selectChevron.svg"
-          width="8"
-        />
-      </div>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="submit"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Submit
-        </span>
-      </button>
-    </form>
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="makeStyles-dropdown"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputBase-root makeStyles-root makeStyles-root"
-          onClick={[Function]}
-          role="button"
-        >
-          <input
-            autoComplete="off"
-            className="MuiInputBase-input makeStyles-input"
-            name="SELECT_FIELD_ATTR_EMPTY"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            readOnly={true}
-            type="text"
-            value=""
-          />
-        </div>
-        <img
-          alt="Phone Menu"
-          className="makeStyles-root makeStyles-noShrink"
-          height="5"
-          src="selectChevron.svg"
-          width="8"
-        />
-      </div>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="submit"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Submit
-        </span>
-      </button>
-    </form>
-  </div>,
-]
-`;
-
-exports[`Storyshots Components Avatars 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiAvatar-root makeStyles-avatar MuiAvatar-colorDefault"
-  >
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
-      />
-    </svg>
-  </div>
-  <div
-    className="MuiAvatar-root makeStyles-pinkAvatar MuiAvatar-colorDefault"
-  >
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M11.5 9C10.12 9 9 10.12 9 11.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S12.88 9 11.5 9zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-3.21 14.21l-2.91-2.91c-.69.44-1.51.7-2.39.7C9.01 16 7 13.99 7 11.5S9.01 7 11.5 7 16 9.01 16 11.5c0 .88-.26 1.69-.7 2.39l2.91 2.9-1.42 1.42z"
-      />
-    </svg>
-  </div>
-  <div
-    className="MuiAvatar-root makeStyles-greenAvatar MuiAvatar-colorDefault"
-  >
-    <svg
-      aria-hidden="true"
-      className="MuiSvgIcon-root"
-      focusable="false"
-      role="presentation"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
-      />
-    </svg>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Badge Icon 1`] = `
-Array [
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      This shows the check variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root"
-        src="recoveryWords.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-check"
-      >
-        <img
-          alt="Badge Icon"
-          className="makeStyles-root"
-          src="check.svg"
-        />
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      This shows the badge variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root"
-        src="recoveryWords.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      This shows the error badge variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root"
-        src="recoveryWords.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-colorError MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      This shows the invisible variant
-    </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root"
-        src="recoveryWords.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
-  </div>,
-  <div
-    style={
-      Object {
-        "margin": "36px",
-      }
-    }
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      This shows badge with text
-    </div>
-    <span
-      className="MuiBadge-root makeStyles-textRoot"
-    >
-      <p
-        className="MuiTypography-root MuiTypography-body2"
-      >
-        Cont
-      </p>
-      <span
-        className="MuiBadge-badge makeStyles-text MuiBadge-colorPrimary"
-      >
-        Some text long text
-      </span>
-    </span>
-  </div>,
-]
-`;
-
-exports[`Storyshots Components Buttons 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Hower
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
-      disabled={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={-1}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Disabled
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Continue
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-          />
-        </svg>
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
-            role="progressbar"
-            style={
-              Object {
-                "height": 22,
-                "width": 22,
-              }
-            }
-          >
-            <svg
-              className="MuiCircularProgress-svg"
-              viewBox="22 22 44 44"
-            >
-              <circle
-                className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-                cx={44}
-                cy={44}
-                fill="none"
-                r={20.2}
-                strokeWidth={3.6}
-                style={Object {}}
-              />
-            </svg>
-          </div>
-        </div>
-        Loading
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Cancel
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      aria-label="Go back"
-      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Back
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Full Width
-      </span>
-    </button>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <button
-      aria-label="Export as CSV"
-      className="MuiButtonBase-root MuiFab-root makeStyles-root MuiFab-extended makeStyles-extended MuiFab-sizeSmall makeStyles-sizeSmall MuiFab-secondary makeStyles-secondary"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiFab-label"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <img
-            alt="Download"
-            className="makeStyles-root"
-            height={16}
-            src="download.svg"
-            width={16}
-          />
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            Download
-          </h6>
-        </div>
-      </span>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Drawer 1`] = `
-<div
-  className="makeStyles-root"
->
-  <header
-    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar mui-fixed"
-  >
-    <div
-      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <button
-        aria-label="Open drawer"
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden makeStyles-show MuiIconButton-colorInherit MuiIconButton-edgeEnd"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-  </header>
-  <main
-    className="makeStyles-content"
-  >
-    <div
-      className="makeStyles-drawerHeader"
-    />
-    <div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h4
-            className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
-          >
-            Example of
-          </h4>
-          <h4
-            className="MuiTypography-root makeStyles-inline MuiTypography-h4"
-          >
-             
-            drawer
-          </h4>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-          </p>
-          <p
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
-          >
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-          </p>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <img
-            alt="Logo"
-            className="makeStyles-root"
-            src="iov-logo.svg"
-            width={84}
-          />
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-`;
-
-exports[`Storyshots Components Hairline 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Regular hairline without margin
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Regular hairline with unit 1 margin
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Regular hairline with unit 4 margin
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root MuiTypography-body1"
-    >
-      Hairline with custom color
-    </p>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>,
-]
-`;
-
-exports[`Storyshots Components Images 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <img
-      alt="Iov Logo"
-      className="makeStyles-root"
-      src="iov-logo2x.png"
-    />
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <img
-        alt="Download"
-        className="makeStyles-root"
-        height={16}
-        src="download.svg"
-        width={16}
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Lists 1`] = `
-<ul
-  className="MuiList-root makeStyles-root MuiList-padding"
->
-  <li
-    className="MuiListItem-root MuiListItem-gutters"
-    disabled={false}
-  >
-    <div
-      className="MuiListItemAvatar-root"
-    >
-      <div
-        className="MuiAvatar-root MuiAvatar-colorDefault"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
-          />
-        </svg>
-      </div>
-    </div>
-    <div
-      className="MuiListItemText-root MuiListItemText-multiline"
-    >
-      <span
-        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-      >
-        Photos
-      </span>
-      <p
-        className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-      >
-        Jan 9, 2014
-      </p>
-    </div>
-  </li>
-  <li
-    className="MuiListItem-root MuiListItem-gutters"
-    disabled={false}
-  >
-    <div
-      className="MuiListItemAvatar-root"
-    >
-      <div
-        className="MuiAvatar-root MuiAvatar-colorDefault"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"
-          />
-        </svg>
-      </div>
-    </div>
-    <div
-      className="MuiListItemText-root MuiListItemText-multiline"
-    >
-      <span
-        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-      >
-        Work
-      </span>
-      <p
-        className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-      >
-        Jan 7, 2014
-      </p>
-    </div>
-  </li>
-  <li
-    className="MuiListItem-root MuiListItem-gutters"
-    disabled={false}
-  >
-    <div
-      className="MuiListItemAvatar-root"
-    >
-      <div
-        className="MuiAvatar-root MuiAvatar-colorDefault"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M13.127 14.56l1.43-1.43 6.44 6.443L19.57 21zm4.293-5.73l2.86-2.86c-3.95-3.95-10.35-3.96-14.3-.02 3.93-1.3 8.31-.25 11.44 2.88zM5.95 5.98c-3.94 3.95-3.93 10.35.02 14.3l2.86-2.86C5.7 14.29 4.65 9.91 5.95 5.98zm.02-.02l-.01.01c-.38 3.01 1.17 6.88 4.3 10.02l5.73-5.73c-3.13-3.13-7.01-4.68-10.02-4.3z"
-          />
-        </svg>
-      </div>
-    </div>
-    <div
-      className="MuiListItemText-root MuiListItemText-multiline"
-    >
-      <span
-        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-      >
-        Vacation
-      </span>
-      <p
-        className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-      >
-        July 20, 2014
-      </p>
-    </div>
-  </li>
-</ul>
-`;
-
-exports[`Storyshots Components PageLayout 1`] = `
-<div
-  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root makeStyles-link MuiTypography-body1"
-    >
-      <button
-        aria-label="Go back"
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
-            />
-          </svg>
-        </span>
-      </button>
-    </p>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <h4
-      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
-    >
-      Title
-    </h4>
-    <h4
-      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
-    >
-       
-      storybook
-    </h4>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <h6
-      className="MuiTypography-root MuiTypography-h6"
-    >
-      Layout content
-    </h6>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <img
-      alt="Logo"
-      className="makeStyles-root"
-      src="iov-logo.svg"
-      width={84}
-    />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components Switch 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <label
-      className="MuiFormControlLabel-root"
-    >
-      <span
-        className="MuiSwitch-root"
-      >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <span
-              className="MuiSwitch-thumb"
-            />
-            <input
-              className="PrivateSwitchBase-input MuiSwitch-input"
-              onChange={[Function]}
-              type="checkbox"
-            />
-          </span>
-        </span>
-        <span
-          className="MuiSwitch-track"
-        />
-      </span>
-      <span
-        className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-      >
-        With label
-      </span>
-    </label>
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <label
-      className="MuiFormControlLabel-root"
-    >
-      <span
-        className="MuiSwitch-root"
-      >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <span
-              className="MuiSwitch-thumb"
-            />
-            <input
-              className="PrivateSwitchBase-input MuiSwitch-input"
-              onChange={[Function]}
-              type="checkbox"
-            />
-          </span>
-        </span>
-        <span
-          className="MuiSwitch-track"
-        />
-      </span>
-      <span
-        className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-      />
-    </label>
-  </div>,
-]
-`;
-
-exports[`Storyshots Components TextMarkup 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  />,
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    What is Lorem Ipsum?
-  </h6>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  />,
-  <div
-    className="MuiBox-root MuiBox-root makeStyles-content"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  />,
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    Where does it come from?
-  </h6>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  />,
-  <div
-    className="MuiBox-root MuiBox-root makeStyles-content"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-      </p>
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-      </p>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>,
-]
-`;
-
-exports[`Storyshots Components Tooltip 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="makeStyles-container"
-      onClick={[Function]}
-    >
-      <img
-        alt="Info"
-        className="makeStyles-root"
-        height={16}
-        src="info_normal.svg"
-        width={16}
-      />
-    </div>
-  </div>,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <p
-      className="MuiTypography-root makeStyles-inline MuiTypography-body1"
-      style={
-        Object {
-          "marginRight": "4px",
-        }
-      }
-    >
-      Loooooooooooooooooooooooooooooooooong text
-    </p>
-    <div
-      className="makeStyles-container"
-      onClick={[Function]}
-    >
-      <img
-        alt="Info"
-        className="makeStyles-root"
-        height={16}
-        src="info_normal.svg"
-        width={16}
-      />
-    </div>
-  </div>,
-]
-`;
-
-exports[`Storyshots Components/PageColumn default 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <img
-      alt="Log in Image"
-      className="makeStyles-root makeStyles-cover"
-      src="People.svg"
-    />
-    <img
-      alt="Logo"
-      className="makeStyles-root makeStyles-logo"
-      src="logo.svg"
-    />
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <form
-      className="makeStyles-form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-scroll"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h4
-              className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
-            >
-              Page 
-            </h4>
-            <h4
-              className="MuiTypography-root makeStyles-inline MuiTypography-h4"
-            >
-              column
-            </h4>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h6 MuiTypography-colorTextPrimary"
-            >
-              Storybook PageColumn component example.
-            </h6>
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
-            disabled={false}
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="submit"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              Continue 
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                />
-              </svg>
-            </span>
-          </button>
-          <br />
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components/PageColumn with secondary next button 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <img
-      alt="Log in Image"
-      className="makeStyles-root makeStyles-cover"
-      src="People.svg"
-    />
-    <img
-      alt="Logo"
-      className="makeStyles-root makeStyles-logo"
-      src="logo.svg"
-    />
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <form
-      className="makeStyles-form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-scroll"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h4
-              className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
-            >
-              Page 
-            </h4>
-            <h4
-              className="MuiTypography-root makeStyles-inline MuiTypography-h4"
-            >
-              column
-            </h4>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h6 MuiTypography-colorTextPrimary"
-            >
-              Storybook PageColumn component example.
-            </h6>
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
-            disabled={false}
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="submit"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              Continue 
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                />
-              </svg>
-            </span>
-          </button>
-          <br />
-          <p
-            className="MuiTypography-root makeStyles-secondaryNext makeStyles-link MuiTypography-body2"
-            onClick={[Function]}
-          >
-            Password forgotten
-          </p>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components/Typography link 1`] = `
-Array [
-  <a
-    href="https://iov.one"
-    onClick={[Function]}
-    rel="noopener noreferrer"
-    target="_blank"
-  >
-    <p
-      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body1"
-    >
-      Go to IOV
-    </p>
-  </a>,
-  <a
-    href="https://iov.one"
-    onClick={[Function]}
-    rel="noopener noreferrer"
-    target="_blank"
-  >
-    <p
-      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-    >
-      Go to IOV
-    </p>
-  </a>,
-]
-`;
-
-exports[`Storyshots Components/Typography variants 1`] = `
-Array [
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    H4
-  </h6>,
-  <h4
-    className="MuiTypography-root MuiTypography-h4"
-  >
-    Main headings
-  </h4>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    H5
-  </h6>,
-  <h5
-    className="MuiTypography-root MuiTypography-h5"
-  >
-    Heading 2
-  </h5>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    H6
-  </h6>,
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    Subheading
-  </h6>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    body1
-  </h6>,
-  <p
-    className="MuiTypography-root MuiTypography-body1"
-  >
-    Lorem ipsum dolor sit amet
-  </p>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    body2
-  </h6>,
-  <p
-    className="MuiTypography-root MuiTypography-body2"
-  >
-    Lorem ipsum dolor sit amet
-  </p>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    subtitle1
-  </h6>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1"
-  >
-    Text field label
-  </h6>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    subtitle2
-  </h6>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle2"
-  >
-    Text field label
-  </h6>,
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
-  >
-    Inline styles
-  </h6>,
-  <h6
-    className="MuiTypography-root makeStyles-inline MuiTypography-subtitle2 MuiTypography-colorPrimary"
-  >
-    First part of the text. 
-  </h6>,
-  <h6
-    className="MuiTypography-root makeStyles-inline MuiTypography-subtitle2"
-  >
-    Second part of the text.
-  </h6>,
-]
-`;
-
-exports[`Storyshots Components/Typography weight 1`] = `
-Array [
-  <p
-    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1"
-  >
-    Hi this is light
-  </p>,
-  <p
-    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1"
-  >
-    Hi this is regular
-  </p>,
-  <p
-    className="MuiTypography-root MuiTypography-body1"
-  >
-    Hi no weight specified
-  </p>,
-  <p
-    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1"
-  >
-    Hi this is bold
-  </p>,
-]
-`;
-
-exports[`Storyshots Components/forms Form 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  />,
-  <form
-    onSubmit={[Function]}
-  >
-    <div
-      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-    >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
-        data-shrink={true}
-      >
-        Unique Identifier
-      </label>
-      <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-        onClick={[Function]}
-      >
-        <fieldset
-          aria-hidden={true}
-          className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-          style={
-            Object {
-              "paddingLeft": 8,
-            }
-          }
-        >
-          <legend
-            className="PrivateNotchedOutline-legend"
-            style={
-              Object {
-                "width": 0.01,
-              }
-            }
-          >
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "&#8203;",
-                }
-              }
-            />
-          </legend>
-        </fieldset>
-        <input
-          aria-invalid={false}
-          className="MuiInputBase-input MuiOutlinedInput-input"
-          disabled={false}
-          name="textFieldUniqueIdentifier"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Unique Identifier"
-          required={false}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="makeStyles-dropdown"
-        onClick={[Function]}
-      >
-        <div
-          className="MuiInputBase-root makeStyles-root makeStyles-root"
-          onClick={[Function]}
-          role="button"
-        >
-          <input
-            autoComplete="off"
-            className="MuiInputBase-input makeStyles-input"
-            name="selectFieldUniqueIdentifier"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            readOnly={true}
-            type="text"
-            value=""
-          />
-        </div>
-        <img
-          alt="Phone Menu"
-          className="makeStyles-root makeStyles-noShrink"
-          height="5"
-          src="selectChevron.svg"
-          width="8"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiFormControl-root"
-      >
-        <label
-          className="MuiFormControlLabel-root"
-        >
-          <span
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={null}
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                />
-              </svg>
-              <input
-                checked={false}
-                className="PrivateSwitchBase-input"
-                data-indeterminate={false}
-                disabled={false}
-                name="checkboxFieldUniqueIdentifier"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="checkbox"
-              />
-            </span>
-          </span>
-          <span
-            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-          >
-            Checkbox field
-          </span>
-        </label>
-      </div>
-    </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
-      disabled={true}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={-1}
-      type="submit"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Submit
-      </span>
-    </button>
-    <pre>
-      {}
-    </pre>
-  </form>,
-]
-`;
-
-exports[`Storyshots Components/forms TextField 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  />,
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-        >
-          <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-error MuiInputLabel-error MuiFormLabel-filled"
-            data-shrink={true}
-          >
-            Error
-          </label>
-          <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-error MuiOutlinedInput-error MuiInputBase-formControl"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="PrivateNotchedOutline-legend"
-                style={
-                  Object {
-                    "width": 0,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={true}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              defaultValue="Standard Error"
-              disabled={false}
-              name="field-with-error"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-            />
-          </div>
-          <p
-            className="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-error MuiFormHelperText-filled"
-          >
-            This is an error message
-          </p>
-        </div>
-      </form>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-        >
-          <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-            data-shrink={true}
-          >
-            Filled
-          </label>
-          <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="PrivateNotchedOutline-legend"
-                style={
-                  Object {
-                    "width": 0,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              defaultValue="test*iov"
-              disabled={false}
-              name="field-filled"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-        >
-          <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-disabled MuiInputLabel-disabled MuiFormLabel-filled"
-            data-shrink={true}
-          >
-            Disabled
-          </label>
-          <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-formControl"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="PrivateNotchedOutline-legend"
-                style={
-                  Object {
-                    "width": 0,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled"
-              defaultValue="Disabled input"
-              disabled={true}
-              name="standard-disabled"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-        >
-          <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
-            data-shrink={true}
-          >
-            Empty
-          </label>
-          <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="PrivateNotchedOutline-legend"
-                style={
-                  Object {
-                    "width": 0.01,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="standard-with-placeholder"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="IOV or wallet address"
-              required={false}
-              type="text"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-        >
-          <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-            data-shrink={true}
-          >
-            Empty
-          </label>
-          <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
-            onClick={[Function]}
-          >
-            <fieldset
-              aria-hidden={true}
-              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                }
-              }
-            >
-              <legend
-                className="PrivateNotchedOutline-legend"
-                style={
-                  Object {
-                    "width": 0,
-                  }
-                }
-              >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
-              </legend>
-            </fieldset>
-            <textarea
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-              disabled={false}
-              name="standard-with-placeholder"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              rows={5}
-              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>,
-]
-`;
-
-exports[`Storyshots Context Billboard 1`] = `
-<div
-  className="MuiBox-root MuiBox-root makeStyles-billboard"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    What is Lorem Ipsum?
-  </h6>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root makeStyles-content"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <h6
-    className="MuiTypography-root MuiTypography-h6"
-  >
-    Where does it come from?
-  </h6>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root makeStyles-content"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-      </p>
-      <p
-        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
-      >
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-      </p>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-  </div>
-  <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-    disabled={false}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="button"
-  >
-    <span
-      className="MuiButton-label"
-    >
-      Show billboard
-    </span>
-  </button>
-</div>
-`;
-
-exports[`Storyshots Context Toasts 1`] = `
-Array [
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Click to generate INFO toast
-          </span>
-        </button>
-      </div>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        This should generate...
-      </p>
-      <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info MuiTypography-body2"
-        role="alertdialog"
-      >
-        <div
-          className="MuiSnackbarContent-message"
-        >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-message"
-          >
-            <div
-              className="makeStyles-iconBackground"
-            >
-              <img
-                alt="Toast icon"
-                className="makeStyles-root"
-                height={24}
-                src="success.svg"
-                width={24}
-              />
-            </div>
-            <h6
-              className="MuiTypography-root makeStyles-info MuiTypography-subtitle1"
-            >
-              Hi INFO this is a cool feature. Stay tuned
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiSnackbarContent-action"
-        >
-          <button
-            aria-label="Close"
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <img
-                alt="Close"
-                className="makeStyles-root"
-                height={20}
-                src="close.svg"
-                width={20}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Click to generate WARN toast
-          </span>
-        </button>
-      </div>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        This should generate...
-      </p>
-      <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning MuiTypography-body2"
-        role="alertdialog"
-      >
-        <div
-          className="MuiSnackbarContent-message"
-        >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-message"
-          >
-            <div
-              className="makeStyles-iconBackground"
-            >
-              <img
-                alt="Toast icon"
-                className="makeStyles-root"
-                height={24}
-                src="warning.svg"
-                width={24}
-              />
-            </div>
-            <h6
-              className="MuiTypography-root makeStyles-warning MuiTypography-subtitle1"
-            >
-              Hi WARN
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiSnackbarContent-action"
-        >
-          <button
-            aria-label="Close"
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <img
-                alt="Close"
-                className="makeStyles-root"
-                height={20}
-                src="close.svg"
-                width={20}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Click to generate ERROR toast
-          </span>
-        </button>
-      </div>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        This should generate...
-      </p>
-      <div
-        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error MuiTypography-body2"
-        role="alertdialog"
-      >
-        <div
-          className="MuiSnackbarContent-message"
-        >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-message"
-          >
-            <div
-              className="makeStyles-iconBackground"
-            >
-              <img
-                alt="Toast icon"
-                className="makeStyles-root"
-                height={24}
-                src="error.svg"
-                width={24}
-              />
-            </div>
-            <h6
-              className="MuiTypography-root makeStyles-error MuiTypography-subtitle1"
-            >
-              Hi ERR
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiSnackbarContent-action"
-        >
-          <button
-            aria-label="Close"
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <img
-                alt="Close"
-                className="makeStyles-root"
-                height={20}
-                src="close.svg"
-                width={20}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>,
-  " ",
-]
-`;
-
 exports[`Storyshots Extension Delete wallet page 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
@@ -16470,7 +13834,1113 @@ exports[`Storyshots Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
 </div>
 `;
 
-exports[`Storyshots Templates/Menu Empty Menu 1`] = `
+exports[`Storyshots Medulas React Components/components Avatars 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiAvatar-root makeStyles-avatar MuiAvatar-colorDefault"
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
+      />
+    </svg>
+  </div>
+  <div
+    className="MuiAvatar-root makeStyles-pinkAvatar MuiAvatar-colorDefault"
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M11.5 9C10.12 9 9 10.12 9 11.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S12.88 9 11.5 9zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-3.21 14.21l-2.91-2.91c-.69.44-1.51.7-2.39.7C9.01 16 7 13.99 7 11.5S9.01 7 11.5 7 16 9.01 16 11.5c0 .88-.26 1.69-.7 2.39l2.91 2.9-1.42 1.42z"
+      />
+    </svg>
+  </div>
+  <div
+    className="MuiAvatar-root makeStyles-greenAvatar MuiAvatar-colorDefault"
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/components Badge Icon 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      This shows the check variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root"
+        src="recoveryWords.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-check"
+      >
+        <img
+          alt="Badge Icon"
+          className="makeStyles-root"
+          src="check.svg"
+        />
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      This shows the badge variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root"
+        src="recoveryWords.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+      >
+        
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      This shows the error badge variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root"
+        src="recoveryWords.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-dot MuiBadge-colorError MuiBadge-dot"
+      >
+        
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      This shows the invisible variant
+    </div>
+    <span
+      className="MuiBadge-root"
+    >
+      <img
+        alt="Icon"
+        className="makeStyles-root"
+        src="recoveryWords.svg"
+      />
+      <span
+        className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
+      >
+        
+      </span>
+    </span>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "36px",
+      }
+    }
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      This shows badge with text
+    </div>
+    <span
+      className="MuiBadge-root makeStyles-textRoot"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body2"
+      >
+        Cont
+      </p>
+      <span
+        className="MuiBadge-badge makeStyles-text MuiBadge-colorPrimary"
+      >
+        Some text long text
+      </span>
+    </span>
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components Buttons 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Hower
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={-1}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Disabled
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Continue
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
+            role="progressbar"
+            style={
+              Object {
+                "height": 22,
+                "width": 22,
+              }
+            }
+          >
+            <svg
+              className="MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                cx={44}
+                cy={44}
+                fill="none"
+                r={20.2}
+                strokeWidth={3.6}
+                style={Object {}}
+              />
+            </svg>
+          </div>
+        </div>
+        Loading
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Cancel
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      aria-label="Go back"
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Back
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Full Width
+      </span>
+    </button>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <button
+      aria-label="Export as CSV"
+      className="MuiButtonBase-root MuiFab-root makeStyles-root MuiFab-extended makeStyles-extended MuiFab-sizeSmall makeStyles-sizeSmall MuiFab-secondary makeStyles-secondary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiFab-label"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <img
+            alt="Download"
+            className="makeStyles-root"
+            height={16}
+            src="download.svg"
+            width={16}
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            Download
+          </h6>
+        </div>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/components Drawer 1`] = `
+<div
+  className="makeStyles-root"
+>
+  <header
+    className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <button
+        aria-label="Open drawer"
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-hidden makeStyles-show MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+  <main
+    className="makeStyles-content"
+  >
+    <div
+      className="makeStyles-drawerHeader"
+    />
+    <div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h4
+            className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+          >
+            Example of
+          </h4>
+          <h4
+            className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+          >
+             
+            drawer
+          </h4>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+          </p>
+          <p
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
+          >
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+          </p>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <img
+            alt="Logo"
+            className="makeStyles-root"
+            src="iov-logo.svg"
+            width={84}
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/components Hairline 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Regular hairline without margin
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Regular hairline with unit 1 margin
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Regular hairline with unit 4 margin
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1"
+    >
+      Hairline with custom color
+    </p>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components Images 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Iov Logo"
+      className="makeStyles-root"
+      src="iov-logo2x.png"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <img
+        alt="Download"
+        className="makeStyles-root"
+        height={16}
+        src="download.svg"
+        width={16}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/components Lists 1`] = `
+<ul
+  className="MuiList-root makeStyles-root MuiList-padding"
+>
+  <li
+    className="MuiListItem-root MuiListItem-gutters"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-colorDefault"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root MuiListItemText-multiline"
+    >
+      <span
+        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+      >
+        Photos
+      </span>
+      <p
+        className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
+      >
+        Jan 9, 2014
+      </p>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-colorDefault"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root MuiListItemText-multiline"
+    >
+      <span
+        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+      >
+        Work
+      </span>
+      <p
+        className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
+      >
+        Jan 7, 2014
+      </p>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-colorDefault"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13.127 14.56l1.43-1.43 6.44 6.443L19.57 21zm4.293-5.73l2.86-2.86c-3.95-3.95-10.35-3.96-14.3-.02 3.93-1.3 8.31-.25 11.44 2.88zM5.95 5.98c-3.94 3.95-3.93 10.35.02 14.3l2.86-2.86C5.7 14.29 4.65 9.91 5.95 5.98zm.02-.02l-.01.01c-.38 3.01 1.17 6.88 4.3 10.02l5.73-5.73c-3.13-3.13-7.01-4.68-10.02-4.3z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root MuiListItemText-multiline"
+    >
+      <span
+        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+      >
+        Vacation
+      </span>
+      <p
+        className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
+      >
+        July 20, 2014
+      </p>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Storyshots Medulas React Components/components PageLayout 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root makeStyles-link MuiTypography-body1"
+    >
+      <button
+        aria-label="Go back"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
+            />
+          </svg>
+        </span>
+      </button>
+    </p>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+    >
+      Title
+    </h4>
+    <h4
+      className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+    >
+       
+      storybook
+    </h4>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+    >
+      Layout content
+    </h6>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="iov-logo.svg"
+      width={84}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/components Switch 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <label
+      className="MuiFormControlLabel-root"
+    >
+      <span
+        className="MuiSwitch-root"
+      >
+        <span
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <span
+              className="MuiSwitch-thumb"
+            />
+            <input
+              className="PrivateSwitchBase-input MuiSwitch-input"
+              onChange={[Function]}
+              type="checkbox"
+            />
+          </span>
+        </span>
+        <span
+          className="MuiSwitch-track"
+        />
+      </span>
+      <span
+        className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+      >
+        With label
+      </span>
+    </label>
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <label
+      className="MuiFormControlLabel-root"
+    >
+      <span
+        className="MuiSwitch-root"
+      >
+        <span
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <span
+              className="MuiSwitch-thumb"
+            />
+            <input
+              className="PrivateSwitchBase-input MuiSwitch-input"
+              onChange={[Function]}
+              type="checkbox"
+            />
+          </span>
+        </span>
+        <span
+          className="MuiSwitch-track"
+        />
+      </span>
+      <span
+        className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+      />
+    </label>
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components TextMarkup 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    What is Lorem Ipsum?
+  </h6>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    Where does it come from?
+  </h6>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components Tooltip 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="makeStyles-container"
+      onClick={[Function]}
+    >
+      <img
+        alt="Info"
+        className="makeStyles-root"
+        height={16}
+        src="info_normal.svg"
+        width={16}
+      />
+    </div>
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <p
+      className="MuiTypography-root makeStyles-inline MuiTypography-body1"
+      style={
+        Object {
+          "marginRight": "4px",
+        }
+      }
+    >
+      Loooooooooooooooooooooooooooooooooong text
+    </p>
+    <div
+      className="makeStyles-container"
+      onClick={[Function]}
+    >
+      <img
+        alt="Info"
+        className="makeStyles-root"
+        height={16}
+        src="info_normal.svg"
+        width={16}
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/Menu Empty Menu 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -16513,7 +14983,7 @@ exports[`Storyshots Templates/Menu Empty Menu 1`] = `
 </div>
 `;
 
-exports[`Storyshots Templates/Menu List Menu 1`] = `
+exports[`Storyshots Medulas React Components/components/Menu List Menu 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -16553,5 +15023,1535 @@ exports[`Storyshots Templates/Menu List Menu 1`] = `
   <div
     className="MuiBox-root MuiBox-root"
   />
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/components/Typography link 1`] = `
+Array [
+  <a
+    href="https://iov.one"
+    onClick={[Function]}
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <p
+      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body1"
+    >
+      Go to IOV
+    </p>
+  </a>,
+  <a
+    href="https://iov.one"
+    onClick={[Function]}
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <p
+      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
+    >
+      Go to IOV
+    </p>
+  </a>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/Typography variants 1`] = `
+Array [
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    H4
+  </h6>,
+  <h4
+    className="MuiTypography-root MuiTypography-h4"
+  >
+    Main headings
+  </h4>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    H5
+  </h6>,
+  <h5
+    className="MuiTypography-root MuiTypography-h5"
+  >
+    Heading 2
+  </h5>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    H6
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    Subheading
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    body1
+  </h6>,
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
+    Lorem ipsum dolor sit amet
+  </p>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    body2
+  </h6>,
+  <p
+    className="MuiTypography-root MuiTypography-body2"
+  >
+    Lorem ipsum dolor sit amet
+  </p>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    subtitle1
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1"
+  >
+    Text field label
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    subtitle2
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle2"
+  >
+    Text field label
+  </h6>,
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+  >
+    Inline styles
+  </h6>,
+  <h6
+    className="MuiTypography-root makeStyles-inline MuiTypography-subtitle2 MuiTypography-colorPrimary"
+  >
+    First part of the text. 
+  </h6>,
+  <h6
+    className="MuiTypography-root makeStyles-inline MuiTypography-subtitle2"
+  >
+    Second part of the text.
+  </h6>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/Typography weight 1`] = `
+Array [
+  <p
+    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1"
+  >
+    Hi this is light
+  </p>,
+  <p
+    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1"
+  >
+    Hi this is regular
+  </p>,
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
+    Hi no weight specified
+  </p>,
+  <p
+    className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1"
+  >
+    Hi this is bold
+  </p>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/forms CheckboxField 1`] = `
+Array [
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="MuiFormControl-root"
+    >
+      <label
+        className="MuiFormControlLabel-root"
+      >
+        <span
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
+            <input
+              checked={false}
+              className="PrivateSwitchBase-input"
+              data-indeterminate={false}
+              disabled={false}
+              name="CHECKBOX_FIELD"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+            />
+          </span>
+        </span>
+        <span
+          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+        >
+          Checkbox field
+        </span>
+      </label>
+    </div>
+  </form>,
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="MuiFormControl-root"
+    >
+      <label
+        className="MuiFormControlLabel-root"
+      >
+        <span
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
+            <input
+              checked={false}
+              className="PrivateSwitchBase-input"
+              data-indeterminate={false}
+              disabled={false}
+              name="CHECKBOX_FIELD"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+            />
+          </span>
+        </span>
+        <span
+          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+        >
+          Checkbox field with error
+        </span>
+      </label>
+    </div>
+  </form>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/forms Form 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+        data-shrink={true}
+      >
+        Unique Identifier
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="textFieldUniqueIdentifier"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Unique Identifier"
+          required={false}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="makeStyles-dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root makeStyles-root"
+          onClick={[Function]}
+          role="button"
+        >
+          <input
+            autoComplete="off"
+            className="MuiInputBase-input makeStyles-input"
+            name="selectFieldUniqueIdentifier"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <img
+          alt="Phone Menu"
+          className="makeStyles-root makeStyles-noShrink"
+          height="5"
+          src="selectChevron.svg"
+          width="8"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiFormControl-root"
+      >
+        <label
+          className="MuiFormControlLabel-root"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+              <input
+                checked={false}
+                className="PrivateSwitchBase-input"
+                data-indeterminate={false}
+                disabled={false}
+                name="checkboxFieldUniqueIdentifier"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="checkbox"
+              />
+            </span>
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Checkbox field
+          </span>
+        </label>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
+      disabled={true}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={-1}
+      type="submit"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Submit
+      </span>
+    </button>
+    <pre>
+      {}
+    </pre>
+  </form>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/forms SelectField 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="makeStyles-dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root makeStyles-root"
+          onClick={[Function]}
+          role="button"
+        >
+          <input
+            autoComplete="off"
+            className="MuiInputBase-input makeStyles-input"
+            name="SELECT_FIELD_ATTR"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <img
+          alt="Phone Menu"
+          className="makeStyles-root makeStyles-noShrink"
+          height="5"
+          src="selectChevron.svg"
+          width="8"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Submit
+        </span>
+      </button>
+    </form>
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="makeStyles-dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiInputBase-root makeStyles-root makeStyles-root"
+          onClick={[Function]}
+          role="button"
+        >
+          <input
+            autoComplete="off"
+            className="MuiInputBase-input makeStyles-input"
+            name="SELECT_FIELD_ATTR_EMPTY"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <img
+          alt="Phone Menu"
+          className="makeStyles-root makeStyles-noShrink"
+          height="5"
+          src="selectChevron.svg"
+          width="8"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Submit
+        </span>
+      </button>
+    </form>
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/components/forms TextField 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-error MuiInputLabel-error MuiFormLabel-filled"
+            data-shrink={true}
+          >
+            Error
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-error MuiOutlinedInput-error MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="PrivateNotchedOutline-legend"
+                style={
+                  Object {
+                    "width": 0,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={true}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              defaultValue="Standard Error"
+              disabled={false}
+              name="field-with-error"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+          </div>
+          <p
+            className="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-error MuiFormHelperText-filled"
+          >
+            This is an error message
+          </p>
+        </div>
+      </form>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+            data-shrink={true}
+          >
+            Filled
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="PrivateNotchedOutline-legend"
+                style={
+                  Object {
+                    "width": 0,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              defaultValue="test*iov"
+              disabled={false}
+              name="field-filled"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-disabled MuiInputLabel-disabled MuiFormLabel-filled"
+            data-shrink={true}
+          >
+            Disabled
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="PrivateNotchedOutline-legend"
+                style={
+                  Object {
+                    "width": 0,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled"
+              defaultValue="Disabled input"
+              disabled={true}
+              name="standard-disabled"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+            data-shrink={true}
+          >
+            Empty
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="PrivateNotchedOutline-legend"
+                style={
+                  Object {
+                    "width": 0.01,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="standard-with-placeholder"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="IOV or wallet address"
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+            data-shrink={true}
+          >
+            Empty
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="PrivateNotchedOutline-legend"
+                style={
+                  Object {
+                    "width": 0,
+                  }
+                }
+              >
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&#8203;",
+                    }
+                  }
+                />
+              </legend>
+            </fieldset>
+            <textarea
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+              disabled={false}
+              name="standard-with-placeholder"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              rows={5}
+              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots Medulas React Components/context Billboard 1`] = `
+<div
+  className="MuiBox-root MuiBox-root makeStyles-billboard"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    What is Lorem Ipsum?
+  </h6>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <h6
+    className="MuiTypography-root MuiTypography-h6"
+  >
+    Where does it come from?
+  </h6>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-content"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2 MuiTypography-gutterBottom"
+      >
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+  </div>
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      Show billboard
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/context Toasts 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Click to generate INFO toast
+          </span>
+        </button>
+      </div>
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        This should generate...
+      </p>
+      <div
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-info MuiTypography-body2"
+        role="alertdialog"
+      >
+        <div
+          className="MuiSnackbarContent-message"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-message"
+          >
+            <div
+              className="makeStyles-iconBackground"
+            >
+              <img
+                alt="Toast icon"
+                className="makeStyles-root"
+                height={24}
+                src="success.svg"
+                width={24}
+              />
+            </div>
+            <h6
+              className="MuiTypography-root makeStyles-info MuiTypography-subtitle1"
+            >
+              Hi INFO this is a cool feature. Stay tuned
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiSnackbarContent-action"
+        >
+          <button
+            aria-label="Close"
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <img
+                alt="Close"
+                className="makeStyles-root"
+                height={20}
+                src="close.svg"
+                width={20}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Click to generate WARN toast
+          </span>
+        </button>
+      </div>
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        This should generate...
+      </p>
+      <div
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-warning MuiTypography-body2"
+        role="alertdialog"
+      >
+        <div
+          className="MuiSnackbarContent-message"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-message"
+          >
+            <div
+              className="makeStyles-iconBackground"
+            >
+              <img
+                alt="Toast icon"
+                className="makeStyles-root"
+                height={24}
+                src="warning.svg"
+                width={24}
+              />
+            </div>
+            <h6
+              className="MuiTypography-root makeStyles-warning MuiTypography-subtitle1"
+            >
+              Hi WARN
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiSnackbarContent-action"
+        >
+          <button
+            aria-label="Close"
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <img
+                alt="Close"
+                className="makeStyles-root"
+                height={20}
+                src="close.svg"
+                width={20}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Click to generate ERROR toast
+          </span>
+        </button>
+      </div>
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        This should generate...
+      </p>
+      <div
+        className="MuiTypography-root MuiPaper-root MuiPaper-elevation6 MuiSnackbarContent-root makeStyles-error MuiTypography-body2"
+        role="alertdialog"
+      >
+        <div
+          className="MuiSnackbarContent-message"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-message"
+          >
+            <div
+              className="makeStyles-iconBackground"
+            >
+              <img
+                alt="Toast icon"
+                className="makeStyles-root"
+                height={24}
+                src="error.svg"
+                width={24}
+              />
+            </div>
+            <h6
+              className="MuiTypography-root makeStyles-error MuiTypography-subtitle1"
+            >
+              Hi ERR
+            </h6>
+          </div>
+        </div>
+        <div
+          className="MuiSnackbarContent-action"
+        >
+          <button
+            aria-label="Close"
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <img
+                alt="Close"
+                className="makeStyles-root"
+                height={20}
+                src="close.svg"
+                width={20}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  " ",
+]
+`;
+
+exports[`Storyshots Medulas React Components/pages/PageColumn default 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Log in Image"
+      className="makeStyles-root makeStyles-cover"
+      src="People.svg"
+    />
+    <img
+      alt="Logo"
+      className="makeStyles-root makeStyles-logo"
+      src="logo.svg"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <form
+      className="makeStyles-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-scroll"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h4
+              className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+            >
+              Page 
+            </h4>
+            <h4
+              className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+            >
+              column
+            </h4>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h6 MuiTypography-colorTextPrimary"
+            >
+              Storybook PageColumn component example.
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Continue 
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </span>
+          </button>
+          <br />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Medulas React Components/pages/PageColumn with secondary next button 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <img
+      alt="Log in Image"
+      className="makeStyles-root makeStyles-cover"
+      src="People.svg"
+    />
+    <img
+      alt="Logo"
+      className="makeStyles-root makeStyles-logo"
+      src="logo.svg"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <form
+      className="makeStyles-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-scroll"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h4
+              className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+            >
+              Page 
+            </h4>
+            <h4
+              className="MuiTypography-root makeStyles-inline MuiTypography-h4"
+            >
+              column
+            </h4>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h6 MuiTypography-colorTextPrimary"
+            >
+              Storybook PageColumn component example.
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Continue 
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </span>
+          </button>
+          <br />
+          <p
+            className="MuiTypography-root makeStyles-secondaryNext makeStyles-link MuiTypography-body2"
+            onClick={[Function]}
+          >
+            Password forgotten
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 `;

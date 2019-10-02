@@ -46,3 +46,5 @@ export const Storybook = ({ children }: Props): JSX.Element => (
     {children}
   </ThemeProvider>
 );
+
+export const medulasRoot = "Medulas React Components";

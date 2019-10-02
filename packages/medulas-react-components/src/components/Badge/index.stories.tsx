@@ -2,13 +2,13 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import RecoveryWordsIcon from "../../theme/assets/badgeIcon/recoveryWords.svg";
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Block from "../Block";
 import Img from "../Image";
 import Typography from "../Typography";
 import Badge from "./index";
 
-storiesOf("Components", module).add("Badge Icon", () => (
+storiesOf(`${medulasRoot}/components`, module).add("Badge Icon", () => (
   <Storybook>
     <div style={{ margin: "36px" }}>
       <Block marginBottom={3}>This shows the check variant</Block>

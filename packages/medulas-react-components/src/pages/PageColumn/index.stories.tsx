@@ -2,12 +2,12 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import PageColumn from "./index";
 
 const RenderHeader = (): JSX.Element => <React.Fragment />;
 
-storiesOf("Components/PageColumn", module)
+storiesOf(`${medulasRoot}/pages/PageColumn`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("default", () => (
     <Storybook>

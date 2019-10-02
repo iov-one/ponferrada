@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../../utils/storybook";
+import { medulasRoot, Storybook } from "../../../utils/storybook";
 import Form, { useForm, ValidationError } from "../Form";
 import CheckboxField from "./index";
 
@@ -48,7 +48,7 @@ const CheckboxFieldForm = ({ showError, label }: Props): JSX.Element => {
   );
 };
 
-storiesOf("Components /forms", module).add("CheckboxField", () => (
+storiesOf(`${medulasRoot}/components/forms`, module).add("CheckboxField", () => (
   <Storybook>
     <CheckboxFieldForm label="Checkbox field" />
     <CheckboxFieldForm label="Checkbox field with error" showError />

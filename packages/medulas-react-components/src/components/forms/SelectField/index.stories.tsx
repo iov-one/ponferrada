@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../../utils/storybook";
+import { medulasRoot, Storybook } from "../../../utils/storybook";
 import Block from "../../Block";
 import Button from "../../Button";
 import Form, { FormValues, useForm, ValidationError } from "../Form";
@@ -51,7 +51,7 @@ const SelectFieldExample = ({ value, fieldName }: Props): JSX.Element => {
   );
 };
 
-storiesOf("Components /forms", module).add("SelectField", () => (
+storiesOf(`${medulasRoot}/components/forms`, module).add("SelectField", () => (
   <Storybook>
     <Block marginBottom={2}>
       <SelectFieldExample value="IOV2" fieldName="SELECT_FIELD_ATTR" />

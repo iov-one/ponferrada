@@ -5,7 +5,7 @@ import * as React from "react";
 import Block from "../../../components/Block";
 import Button from "../../../components/Button";
 import Typography from "../../../components/Typography";
-import { Storybook } from "../../../utils/storybook";
+import { medulasRoot, Storybook } from "../../../utils/storybook";
 import { ToastContext, ToastProvider } from "../index";
 import { ToastVariant } from "./index";
 import ToastContent from "./ToastContent";
@@ -56,7 +56,7 @@ const ToastStorybook = (): JSX.Element => {
   );
 };
 
-storiesOf("Context", module).add("Toasts", () => (
+storiesOf(`${medulasRoot}/context`, module).add("Toasts", () => (
   <Storybook>
     <ToastProvider>
       <ToastStorybook />{" "}
