@@ -10,8 +10,9 @@ import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
-import { makeExtendedIdentities } from "../../config";
+import { getConfig, makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
+import { establishConnection } from "../../logic/connection";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
@@ -25,6 +26,16 @@ export const loginBootSequence = async (
   identities: readonly Identity[],
   dispatch: Dispatch,
 ): Promise<void> => {
+  const chains = (await getConfig()).chains;
+  for (const identity of identities) {
+    const chain = chains.find(chain => chain.chainSpec.chainId === identity.chainId);
+    if (chain) {
+      await establishConnection(chain.chainSpec);
+    } else {
+      throw new Error(`Chain with ${identity.chainId} was not found.`);
+    }
+  }
+
   const chainTokens = await getTokens();
   dispatch(addTickersAction(chainTokens));
 

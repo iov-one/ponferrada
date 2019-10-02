@@ -1,15 +1,11 @@
 import { Identity } from "@iov/bcp";
-import { bnsCodec, BnsConnection } from "@iov/bns";
+import { bnsCodec } from "@iov/bns";
 
-import { getConfig } from "../../config";
-import { getConnectionFor, isBnsSpec } from "../../logic/connection";
+import { getConnectionForBns } from "../../logic/connection";
 import { AddUsernamesActionType, BwUsername } from "./reducer";
 
 export async function getUsernames(identities: readonly Identity[]): Promise<readonly BwUsername[]> {
-  const bnsChainSpec = (await getConfig()).chains.map(chain => chain.chainSpec).find(isBnsSpec);
-  if (!bnsChainSpec) throw new Error("Missing BNS chain spec in config");
-
-  const bnsConnection = (await getConnectionFor(bnsChainSpec)) as BnsConnection;
+  const bnsConnection = await getConnectionForBns();
 
   const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId());
   if (!bnsIdentity) return [];

@@ -1,8 +1,6 @@
 import { Address, ChainId } from "@iov/bcp";
-import { BnsConnection } from "@iov/bns";
 
-import { getConfig } from "../config";
-import { getConnectionFor, isBnsSpec } from "./connection";
+import { getConnectionForBns } from "./connection";
 
 export function isIov(username: string): boolean {
   return username.endsWith("*iov");
@@ -20,30 +18,19 @@ export async function lookupRecipientAddressByName(
     throw new Error("Username must include namespace suffix");
   }
 
-  const config = await getConfig();
-  const chains = config.chains;
-
-  for (const chain of chains) {
-    if (!isBnsSpec(chain.chainSpec)) {
-      continue;
-    }
-
-    const connection = (await getConnectionFor(chain.chainSpec)) as BnsConnection;
-    const usernames = await connection.getUsernames({ username });
-    if (usernames.length !== 1) {
-      return "name_not_found";
-    }
-
-    const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
-
-    if (chainAddressPair) {
-      return chainAddressPair.address;
-    }
-
-    return "no_address_for_blockchain";
+  const connection = await getConnectionForBns();
+  const usernames = await connection.getUsernames({ username });
+  if (usernames.length !== 1) {
+    return "name_not_found";
   }
 
-  throw new Error("No BNS connection found");
+  const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
+
+  if (chainAddressPair) {
+    return chainAddressPair.address;
+  }
+
+  return "no_address_for_blockchain";
 }
 
 export function isValidIov(

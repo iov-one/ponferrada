@@ -13,13 +13,11 @@ import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
 import { getConfig } from "../config";
 import { getCodecForChainId } from "../logic/codec";
-import { getConnectionFor, getConnectionForChainId } from "../logic/connection";
+import { getConnectionForChainId } from "../logic/connection";
 
 export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
-  const connections = await Promise.all(
-    (await getConfig()).chains.map(config => getConnectionFor(config.chainSpec)),
-  );
-  const supportedChainIds = connections.map(connection => connection.chainId());
+  const chains = (await getConfig()).chains;
+  const chainIdsToRequest = chains.map(chain => chain.chainSpec.chainId);
 
   return {
     jsonrpc: "2.0",
@@ -27,13 +25,16 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
     method: "getIdentities",
     params: {
       reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
-      chainIds: TransactionEncoder.toJson(supportedChainIds),
+      chainIds: TransactionEncoder.toJson(chainIdsToRequest),
     },
   };
 }
 
 async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
-  const connection = await getConnectionForChainId(chainId);
+  const connection = getConnectionForChainId(chainId);
+  if (!connection) {
+    throw new Error(`Active connection for chain with ${chainId} was not found.`);
+  }
   const withFee = await connection.withDefaultFee(transaction);
   return withFee;
 }

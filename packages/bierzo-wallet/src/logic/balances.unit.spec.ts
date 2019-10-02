@@ -3,6 +3,7 @@ import { sleep } from "ui-logic";
 
 import { aNewStore } from "../store";
 import * as balanceActions from "../store/balances/actions";
+import { establishAllConnections } from "../utils/test/connections";
 import { createIdentities } from "../utils/test/identities";
 import { withChainsDescribe } from "../utils/test/testExecutor";
 import * as tokens from "../utils/tokens";
@@ -11,7 +12,8 @@ import { disconnect } from "./connection";
 import { drinkFaucetIfNeeded } from "./faucet";
 
 withChainsDescribe("Logic :: balance subscriptions", () => {
-  beforeAll(() => {
+  beforeAll(async () => {
+    await establishAllConnections();
     jest
       .spyOn(tokens, "filterExistingTokens")
       .mockImplementation(

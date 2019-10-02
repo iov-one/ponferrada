@@ -5,39 +5,31 @@ import { createLiskConnector } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
 
-let ethereumConnection: BlockchainConnection | undefined;
-let bnsConnection: BlockchainConnection | undefined;
-let liskConnection: BlockchainConnection | undefined;
+const connections = new Map<ChainId, BlockchainConnection>();
 
-async function getEthereumConnection(
+async function establishEthereumConnection(
   url: string,
   chainId: ChainId,
   options: EthereumConnectionOptions,
-): Promise<BlockchainConnection> {
-  if (!ethereumConnection) {
+): Promise<void> {
+  if (!connections.has(chainId)) {
     const connector = createEthereumConnector(url, options, chainId);
-    // eslint-disable-next-line require-atomic-updates
-    ethereumConnection = await connector.establishConnection();
+    connections.set(chainId, await connector.establishConnection());
   }
-  return ethereumConnection;
 }
 
-async function getBnsConnection(url: string, chainId: ChainId): Promise<BlockchainConnection> {
-  if (!bnsConnection) {
+async function establishBnsConnection(url: string, chainId: ChainId): Promise<void> {
+  if (!connections.has(chainId)) {
     const connector = createBnsConnector(url, chainId);
-    // eslint-disable-next-line require-atomic-updates
-    bnsConnection = await connector.establishConnection();
+    connections.set(chainId, await connector.establishConnection());
   }
-  return bnsConnection;
 }
 
-async function getLiskConnection(url: string, chainId: ChainId): Promise<BlockchainConnection> {
-  if (!liskConnection) {
+async function establishLiskConnection(url: string, chainId: ChainId): Promise<void> {
+  if (!connections.has(chainId)) {
     const connector = createLiskConnector(url, chainId);
-    // eslint-disable-next-line require-atomic-updates
-    liskConnection = await connector.establishConnection();
+    connections.set(chainId, await connector.establishConnection());
   }
-  return liskConnection;
 }
 
 export function isBnsSpec(spec: ChainSpec): boolean {
@@ -52,48 +44,48 @@ export function isEthSpec(spec: ChainSpec): boolean {
   return spec.codecType === "eth";
 }
 
-export async function getConnectionFor(spec: ChainSpec): Promise<BlockchainConnection> {
+export async function establishConnection(spec: ChainSpec): Promise<void> {
   if (isEthSpec(spec)) {
-    return getEthereumConnection(spec.node, spec.chainId as ChainId, { scraperApiUrl: spec.scraper });
+    return await establishEthereumConnection(spec.node, spec.chainId as ChainId, {
+      scraperApiUrl: spec.scraper,
+    });
   }
   if (isBnsSpec(spec)) {
-    return getBnsConnection(spec.node, spec.chainId as ChainId);
+    return await establishBnsConnection(spec.node, spec.chainId as ChainId);
   }
   if (isLskSpec(spec)) {
-    return getLiskConnection(spec.node, spec.chainId as ChainId);
+    return await establishLiskConnection(spec.node, spec.chainId as ChainId);
   }
 
   throw new Error("Chain spec not supported");
 }
 
-export async function getConnectionForChainId(chainId: ChainId): Promise<BlockchainConnection> {
-  for (const chain of (await getConfig()).chains) {
-    if (chain.chainSpec.chainId === chainId) {
-      return await getConnectionFor(chain.chainSpec);
-    }
-  }
-  throw new Error("No connection found for this chainId");
+export function getActiveConnections(): readonly BlockchainConnection[] {
+  return [...connections.values()];
+}
+
+export function getConnectionForChainId(chainId: ChainId): BlockchainConnection | undefined {
+  return connections.get(chainId);
 }
 
 export async function getConnectionForBns(): Promise<BnsConnection> {
-  for (const chain of (await getConfig()).chains) {
-    if (isBnsSpec(chain.chainSpec)) {
-      return (await getConnectionFor(chain.chainSpec)) as BnsConnection;
-    }
+  const chains = (await getConfig()).chains;
+  const bnsChain = chains.find(chain => isBnsSpec(chain.chainSpec));
+  if (bnsChain) {
+    return getConnectionForChainId(bnsChain.chainSpec.chainId as ChainId) as BnsConnection;
   }
-  throw new Error("No connection found for this chainId");
+
+  throw new Error("No connection found for BNS chain");
 }
 
 /**
- * Disconnects all blockchain connections. Calling getConnectionFor after
+ * Disconnects all blockchain connections. Calling establishConnection after
  * this will establich a new connection.
  */
 export function disconnect(): void {
-  if (bnsConnection) bnsConnection.disconnect();
-  if (ethereumConnection) ethereumConnection.disconnect();
-  if (liskConnection) liskConnection.disconnect();
+  connections.forEach(connection => {
+    connection.disconnect();
+  });
 
-  bnsConnection = undefined;
-  ethereumConnection = undefined;
-  liskConnection = undefined;
+  connections.clear();
 }
