@@ -223,9 +223,9 @@ export class Persona {
     }
 
     const config: ConfigurationFile = await getConfigurationFile();
-    const blockExplorer = config.blockExplorers[t.transaction.creator.chainId];
+    const blockExplorerBaseUrl = config.blockExplorers[t.transaction.creator.chainId];
     const transactionId = t.postResponse.transactionId;
-    const blockExplorerUrl = blockExplorer ? blockExplorer + transactionId : null;
+    const blockExplorerUrl = blockExplorerBaseUrl ? `${blockExplorerBaseUrl}${transactionId}` : null;
 
     return {
       time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
