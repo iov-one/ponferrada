@@ -8,13 +8,13 @@ import { DeepPartial } from "redux";
 
 import { BalanceState } from "../../store/balances";
 import { RootState } from "../../store/reducers";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
 import ConfirmPayment from "./components/ConfirmPayment";
 import Layout from "./components/index";
 
-export const PAYMENT_STORY_PATH = `${WALLET_ROOT}/Payment`;
+export const PAYMENT_STORY_PATH = `${bierzoRoot}/Payment`;
 export const PAYMENT_STORY_PAYMENT_PATH = "Payment";
 const PAYMENT_STORY_CONFIRMATION_PATH = "Confirmation";
 

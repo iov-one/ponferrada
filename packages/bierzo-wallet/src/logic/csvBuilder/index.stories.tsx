@@ -10,7 +10,7 @@ import { stringToAmount } from "ui-logic";
 import DownloadCSV from "../../routes/transactions/components/DownloadCSV";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { ProcessedTx } from "../transactions/types/BwParser";
 import { BwParserFactory } from "../transactions/types/BwParserFactory";
 import CsvRepresentation, { CsvRow } from "./index";
@@ -363,7 +363,7 @@ function CsvTest(): JSX.Element {
   return <DownloadCSV onDownloadCSV={onDownloadCSV} />;
 }
 
-storiesOf(WALLET_ROOT, module)
+storiesOf(bierzoRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Csv Builder", () => (
     <DecoratedStorybook storeProps={txStore}>

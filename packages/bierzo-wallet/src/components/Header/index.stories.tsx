@@ -9,7 +9,7 @@ import { stringToAmount } from "ui-logic";
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import { RootState } from "../../store/reducers";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import Header from "./index";
 
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
@@ -75,7 +75,7 @@ const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
   </React.Fragment>
 );
 
-storiesOf(`${WALLET_ROOT}/Components`, module)
+storiesOf(`${bierzoRoot}/Components`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Header", () => (
     <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>

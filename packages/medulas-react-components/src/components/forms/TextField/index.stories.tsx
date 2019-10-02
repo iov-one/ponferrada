@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../../utils/storybook";
+import { medulasRoot, Storybook } from "../../../utils/storybook";
 import Block from "../../Block";
 import Grid from "../../Grid";
 import GridItem from "../../GridItem";
@@ -65,7 +65,7 @@ const gridItemWidth = {
   sm: "50%",
 };
 
-storiesOf("Components/forms", module).add("TextField", () => (
+storiesOf(`${medulasRoot}/components/forms`, module).add("TextField", () => (
   <Storybook>
     <Block marginTop={2} />
     <Grid flexWrap="wrap">

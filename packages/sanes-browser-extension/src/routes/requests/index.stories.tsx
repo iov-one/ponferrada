@@ -5,7 +5,7 @@ import React from "react";
 
 import { RequestProvider } from "../../context/RequestProvider";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
-import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
+import { sanesRoot } from "../../utils/storybook";
 import Requests from "./index";
 
 const intialRequests: Request[] = [
@@ -41,7 +41,7 @@ const intialRequests: Request[] = [
   },
 ];
 
-storiesOf(CHROME_EXTENSION_ROOT, module).add("Request queue page", () => (
+storiesOf(sanesRoot, module).add("Request queue page", () => (
   <Storybook>
     <RequestProvider initialRequests={intialRequests}>
       <Requests />

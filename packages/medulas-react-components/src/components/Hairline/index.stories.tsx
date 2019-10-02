@@ -1,12 +1,12 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Block from "../Block";
 import Typography from "../Typography";
 import Hairline from "./index";
 
-storiesOf("Components", module).add("Hairline", () => (
+storiesOf(`${medulasRoot}/components`, module).add("Hairline", () => (
   <Storybook>
     <Block marginBottom={4}>
       <Typography>Regular hairline without margin</Typography>

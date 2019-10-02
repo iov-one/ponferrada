@@ -7,7 +7,7 @@ import PageviewIcon from "@material-ui/icons/Pageview";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Avatar from "../Avatar";
 import Block from "../Block";
 
@@ -45,7 +45,7 @@ function IconAvatars(): JSX.Element {
   );
 }
 
-storiesOf("Components", module).add("Avatars", () => (
+storiesOf(`${medulasRoot}/components`, module).add("Avatars", () => (
   <Storybook>
     <IconAvatars />
   </Storybook>

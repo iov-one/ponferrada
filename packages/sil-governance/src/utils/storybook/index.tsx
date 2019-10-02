@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "../../store";
 import { globalStyles } from "../../theme/globalStyles";
 
-export const governanceRoot = "Governance";
+export const silRoot = "Sil Governance";
 
 const store = configureStore();
 

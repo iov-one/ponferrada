@@ -1,12 +1,12 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Paragraph from "./Paragraph";
 import Section from "./Section";
 import Title from "./Title";
 
-storiesOf("Components", module)
+storiesOf(`${medulasRoot}/components`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("TextMarkup", () => (
     <Storybook>

@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Block from "../Block";
 import Link from "../Link";
 import PageLayout from "../PageLayout";
@@ -10,7 +10,7 @@ import Typography from "../Typography";
 import secCenter from "./assets/secCenter.svg";
 import Drawer from "./index";
 
-storiesOf("Components", module).add("Drawer", () => {
+storiesOf(`${medulasRoot}/components`, module).add("Drawer", () => {
   const items = [
     {
       icon: secCenter,

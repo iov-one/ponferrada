@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import DecoratedStorybook, { WALLET_ROOT } from "../../utils/storybook";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import Layout from "./components";
 
@@ -28,7 +28,7 @@ const addresses: ChainAddressPairWithName[] = [
   },
 ];
 
-storiesOf(WALLET_ROOT, module)
+storiesOf(bierzoRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(RECEIVE_PAYMENT_STORY_PATH, () => (
     <DecoratedStorybook>

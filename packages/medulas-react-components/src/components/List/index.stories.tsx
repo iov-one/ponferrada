@@ -5,7 +5,7 @@ import WorkIcon from "@material-ui/icons/Work";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Avatar from "../Avatar";
 import { List, ListItem, ListItemAvatar, ListItemText } from "./index";
 
@@ -52,7 +52,7 @@ function FolderList(): JSX.Element {
 
 export default FolderList;
 
-storiesOf("Components", module).add("Lists", () => (
+storiesOf(`${medulasRoot}/components`, module).add("Lists", () => (
   <Storybook>
     <FolderList />
   </Storybook>

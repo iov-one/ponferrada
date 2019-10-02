@@ -4,13 +4,13 @@ import React from "react";
 import download from "../../theme/assets/download.svg";
 import iovLogo from "../../theme/assets/iov-logo2x.png";
 import theme from "../../theme/utils/mui";
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Grid from "../Grid";
 import GridItem from "../GridItem";
 import CircleImage from "./CircleImage";
 import Image from "./index";
 
-storiesOf("Components", module).add("Images", () => (
+storiesOf(`${medulasRoot}/components`, module).add("Images", () => (
   <Storybook>
     <Grid flexWrap="wrap" flexDirection="column">
       <GridItem marginBottom={4}>

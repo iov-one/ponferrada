@@ -2,7 +2,7 @@
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-import { Storybook } from "../../../utils/storybook";
+import { medulasRoot, Storybook } from "../../../utils/storybook";
 import Block from "../../Block";
 import Button from "../../Button";
 import CheckboxField from "../CheckboxField";
@@ -72,7 +72,7 @@ const FormStory = (): JSX.Element => {
   );
 };
 
-storiesOf("Components/forms", module).add("Form", () => (
+storiesOf(`${medulasRoot}/components/forms`, module).add("Form", () => (
   <Storybook>
     <Block marginTop={2} />
     <FormStory />

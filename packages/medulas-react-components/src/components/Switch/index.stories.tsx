@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Storybook } from "../../utils/storybook";
+import { medulasRoot, Storybook } from "../../utils/storybook";
 import Block from "../Block";
 import Switch from "./index";
 
-storiesOf("Components", module).add("Switch", () => (
+storiesOf(`${medulasRoot}/components`, module).add("Switch", () => (
   <Storybook>
     <Block>
       <Switch color="primary" label="With label" />

@@ -4,7 +4,7 @@ import React from "react";
 
 import { PersonaProvider } from "../../context/PersonaProvider";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
-import { CHROME_EXTENSION_ROOT } from "../../utils/storybook";
+import { sanesRoot } from "../../utils/storybook";
 import Layout from "./index";
 
 const persona: GetPersonaResponse = {
@@ -13,7 +13,7 @@ const persona: GetPersonaResponse = {
   txs: [],
 };
 
-storiesOf(`${CHROME_EXTENSION_ROOT}/Welcome page`, module)
+storiesOf(`${sanesRoot}/Welcome page`, module)
   .add("With persona", () => (
     <PersonaProvider persona={persona} hasStoredPersona={true}>
       <Storybook>
