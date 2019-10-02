@@ -5,37 +5,30 @@ import { createLiskConnector } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
 
-export interface ChainConnections {
-  [chainId: string]: BlockchainConnection;
-}
-
-const connections: ChainConnections = {};
+const connections = new Map<ChainId, BlockchainConnection>();
 
 export async function setEthereumConnection(
   url: string,
   chainId: ChainId,
   options: EthereumConnectionOptions,
 ): Promise<void> {
-  if (!connections[chainId]) {
+  if (!connections.has(chainId)) {
     const connector = createEthereumConnector(url, options, chainId);
-    // eslint-disable-next-line require-atomic-updates
-    connections[chainId] = await connector.establishConnection();
+    connections.set(chainId, await connector.establishConnection());
   }
 }
 
 export async function setBnsConnection(url: string, chainId: ChainId): Promise<void> {
-  if (!connections[chainId]) {
+  if (!connections.has(chainId)) {
     const connector = createBnsConnector(url, chainId);
-    // eslint-disable-next-line require-atomic-updates
-    connections[chainId] = await connector.establishConnection();
+    connections.set(chainId, await connector.establishConnection());
   }
 }
 
 export async function setLiskConnection(url: string, chainId: ChainId): Promise<void> {
-  if (!connections[chainId]) {
+  if (!connections.has(chainId)) {
     const connector = createLiskConnector(url, chainId);
-    // eslint-disable-next-line require-atomic-updates
-    connections[chainId] = await connector.establishConnection();
+    connections.set(chainId, await connector.establishConnection());
   }
 }
 
@@ -65,8 +58,8 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
   throw new Error("Chain spec not supported");
 }
 
-export function getActiveConnections(): BlockchainConnection[] {
-  return Object.values(connections);
+export function getActiveConnections(): IterableIterator<BlockchainConnection> {
+  return connections.values();
 }
 
 export function hasActiveConnection(chainId: ChainId): boolean {
@@ -74,8 +67,8 @@ export function hasActiveConnection(chainId: ChainId): boolean {
 }
 
 export function getConnectionForChainId(chainId: ChainId): BlockchainConnection {
-  if (connections[chainId]) {
-    return connections[chainId];
+  if (connections.has(chainId)) {
+    return connections.get(chainId)!;
   }
   throw new Error(`No connection found for ${chainId} chainId`);
 }
@@ -95,11 +88,9 @@ export async function getConnectionForBns(): Promise<BnsConnection> {
  * this will establich a new connection.
  */
 export function disconnect(): void {
-  for (const chainId in connections) {
-    connections[chainId].disconnect();
-  }
-
-  Object.keys(connections).forEach(function(chainId) {
-    delete connections[chainId];
+  connections.forEach(connection => {
+    connection.disconnect();
   });
+
+  connections.clear();
 }
