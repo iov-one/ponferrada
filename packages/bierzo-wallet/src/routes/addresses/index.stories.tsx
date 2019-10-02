@@ -30,14 +30,11 @@ const addresses: ChainAddressPairWithName[] = [
 
 storiesOf(WALLET_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    RECEIVE_PAYMENT_STORY_PATH,
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <Layout
-          onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-          chainAddresses={addresses}
-        />
-      </DecoratedStorybook>
-    ),
-  );
+  .add(RECEIVE_PAYMENT_STORY_PATH, () => (
+    <DecoratedStorybook>
+      <Layout
+        onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+        chainAddresses={addresses}
+      />
+    </DecoratedStorybook>
+  ));

@@ -41,13 +41,10 @@ const intialRequests: Request[] = [
   },
 ];
 
-storiesOf(CHROME_EXTENSION_ROOT, module).add(
-  "Request queue page",
-  (): JSX.Element => (
-    <Storybook>
-      <RequestProvider initialRequests={intialRequests}>
-        <Requests />
-      </RequestProvider>
-    </Storybook>
-  ),
-);
+storiesOf(CHROME_EXTENSION_ROOT, module).add("Request queue page", () => (
+  <Storybook>
+    <RequestProvider initialRequests={intialRequests}>
+      <Requests />
+    </RequestProvider>
+  </Storybook>
+));

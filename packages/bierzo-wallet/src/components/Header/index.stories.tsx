@@ -77,16 +77,13 @@ const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
 
 storiesOf(`${WALLET_ROOT}/Components`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Header",
-    (): JSX.Element => (
-      <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-        <DecoratedStorybook storeProps={txStore}>
-          <EnhancedHeader text="Txs Header" />
-        </DecoratedStorybook>
-        <DecoratedStorybook>
-          <EnhancedHeader text="Empty Header" />
-        </DecoratedStorybook>
-      </div>
-    ),
-  );
+  .add("Header", () => (
+    <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+      <DecoratedStorybook storeProps={txStore}>
+        <EnhancedHeader text="Txs Header" />
+      </DecoratedStorybook>
+      <DecoratedStorybook>
+        <EnhancedHeader text="Empty Header" />
+      </DecoratedStorybook>
+    </div>
+  ));

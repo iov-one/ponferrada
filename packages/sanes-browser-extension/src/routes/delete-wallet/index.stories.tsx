@@ -4,11 +4,8 @@ import React from "react";
 import { CHROME_EXTENSION_ROOT, SanesStorybook } from "../../utils/storybook";
 import DeleteWallet from "./index";
 
-storiesOf(CHROME_EXTENSION_ROOT, module).add(
-  "Delete wallet page",
-  (): JSX.Element => (
-    <SanesStorybook>
-      <DeleteWallet />
-    </SanesStorybook>
-  ),
-);
+storiesOf(CHROME_EXTENSION_ROOT, module).add("Delete wallet page", () => (
+  <SanesStorybook>
+    <DeleteWallet />
+  </SanesStorybook>
+));

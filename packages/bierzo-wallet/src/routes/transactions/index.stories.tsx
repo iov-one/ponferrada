@@ -350,12 +350,27 @@ function onDownloadCSV(): void {
 
 storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Without transactions",
-    (): JSX.Element => (
+  .add("Without transactions", () => (
+    <DecoratedStorybook>
+      <Layout
+        rows={[]}
+        onChangeRows={onChangeRows}
+        onPrevPage={onPrevPage}
+        onNextPage={onNextPage}
+        onSort={onSort}
+        onDownloadCSV={onDownloadCSV}
+        orderBy={TX_DATE_COLUMN}
+        order={ORDER_DESC}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(TRANSACTIONS_STORY_SHOW_PATH, () => {
+    const orderedTxs = filterTxsBy(parsedTxs, 20, 0, TX_DATE_COLUMN, ORDER_DESC);
+    const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, [address]));
+    return (
       <DecoratedStorybook>
         <Layout
-          rows={[]}
+          rows={txs}
           onChangeRows={onChangeRows}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
@@ -365,26 +380,5 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
           order={ORDER_DESC}
         />
       </DecoratedStorybook>
-    ),
-  )
-  .add(
-    TRANSACTIONS_STORY_SHOW_PATH,
-    (): JSX.Element => {
-      const orderedTxs = filterTxsBy(parsedTxs, 20, 0, TX_DATE_COLUMN, ORDER_DESC);
-      const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, [address]));
-      return (
-        <DecoratedStorybook>
-          <Layout
-            rows={txs}
-            onChangeRows={onChangeRows}
-            onPrevPage={onPrevPage}
-            onNextPage={onNextPage}
-            onSort={onSort}
-            onDownloadCSV={onDownloadCSV}
-            orderBy={TX_DATE_COLUMN}
-            order={ORDER_DESC}
-          />
-        </DecoratedStorybook>
-      );
-    },
-  );
+    );
+  });

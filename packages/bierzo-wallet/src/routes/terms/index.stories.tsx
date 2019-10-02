@@ -6,11 +6,8 @@ import Terms from "./";
 
 storiesOf(WALLET_ROOT, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(
-    "Terms",
-    (): JSX.Element => (
-      <DecoratedStorybook>
-        <Terms />
-      </DecoratedStorybook>
-    ),
-  );
+  .add("Terms", () => (
+    <DecoratedStorybook>
+      <Terms />
+    </DecoratedStorybook>
+  ));

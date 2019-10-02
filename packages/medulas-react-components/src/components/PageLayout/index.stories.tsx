@@ -6,13 +6,10 @@ import { Storybook } from "../../utils/storybook";
 import Typography from "../Typography";
 import PageLayout from "./index";
 
-storiesOf("Components", module).add(
-  "PageLayout",
-  (): JSX.Element => (
-    <Storybook>
-      <PageLayout primaryTitle="Title" title="storybook" onBack={action("clicking on back button")}>
-        <Typography variant="h6">Layout content</Typography>
-      </PageLayout>
-    </Storybook>
-  ),
-);
+storiesOf("Components", module).add("PageLayout", () => (
+  <Storybook>
+    <PageLayout primaryTitle="Title" title="storybook" onBack={action("clicking on back button")}>
+      <Typography variant="h6">Layout content</Typography>
+    </PageLayout>
+  </Storybook>
+));
