@@ -1,7 +1,5 @@
 {
   "blockExplorers": {
-    "local-iov-devnet": null,
-    "lisk-198f2b61a8": null,
     "ethereum-eip155-5777": "http://localhost:8546/api?module=proxy&action=eth_getTransactionByHash&txhash="
   },
   "chains": [

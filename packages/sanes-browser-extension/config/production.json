@@ -1,6 +1,5 @@
 {
   "blockExplorers": {
-    "bns-antnet": null,
     "lisk-ed14889723": "https://explorer.lisk.io/tx/",
     "ethereum-eip155-1": "https://etherscan.io/tx/"
   },

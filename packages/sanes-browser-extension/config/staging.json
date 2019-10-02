@@ -1,6 +1,5 @@
 {
   "blockExplorers": {
-    "iov-clapnet": null,
     "lisk-da3ed6a454": "https://testnet-explorer.lisk.io/tx/",
     "ethereum-eip155-4": "https://rinkeby.etherscan.io/tx/"
   },

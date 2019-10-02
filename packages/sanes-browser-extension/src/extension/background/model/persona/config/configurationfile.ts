@@ -16,7 +16,7 @@ export interface ChainConfig {
 }
 
 export interface BlockExplorers {
-  readonly [key: string]: string | null;
+  readonly [key: string]: string | undefined;
 }
 
 export interface ConfigurationFile {
