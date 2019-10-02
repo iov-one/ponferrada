@@ -7,7 +7,7 @@ import { ChainSpec, getConfig } from "../config";
 
 const connections = new Map<ChainId, BlockchainConnection>();
 
-export async function setEthereumConnection(
+async function establishEthereumConnection(
   url: string,
   chainId: ChainId,
   options: EthereumConnectionOptions,
@@ -18,14 +18,14 @@ export async function setEthereumConnection(
   }
 }
 
-export async function setBnsConnection(url: string, chainId: ChainId): Promise<void> {
+async function establishBnsConnection(url: string, chainId: ChainId): Promise<void> {
   if (!connections.has(chainId)) {
     const connector = createBnsConnector(url, chainId);
     connections.set(chainId, await connector.establishConnection());
   }
 }
 
-export async function setLiskConnection(url: string, chainId: ChainId): Promise<void> {
+async function establishLiskConnection(url: string, chainId: ChainId): Promise<void> {
   if (!connections.has(chainId)) {
     const connector = createLiskConnector(url, chainId);
     connections.set(chainId, await connector.establishConnection());
@@ -46,32 +46,26 @@ export function isEthSpec(spec: ChainSpec): boolean {
 
 export async function establishConnection(spec: ChainSpec): Promise<void> {
   if (isEthSpec(spec)) {
-    return await setEthereumConnection(spec.node, spec.chainId as ChainId, { scraperApiUrl: spec.scraper });
+    return await establishEthereumConnection(spec.node, spec.chainId as ChainId, {
+      scraperApiUrl: spec.scraper,
+    });
   }
   if (isBnsSpec(spec)) {
-    return await setBnsConnection(spec.node, spec.chainId as ChainId);
+    return await establishBnsConnection(spec.node, spec.chainId as ChainId);
   }
   if (isLskSpec(spec)) {
-    return await setLiskConnection(spec.node, spec.chainId as ChainId);
+    return await establishLiskConnection(spec.node, spec.chainId as ChainId);
   }
 
   throw new Error("Chain spec not supported");
 }
 
-export function getActiveConnections(): IterableIterator<BlockchainConnection> {
-  return connections.values();
+export function getActiveConnections(): readonly BlockchainConnection[] {
+  return [...connections.values()];
 }
 
-export function hasActiveConnection(chainId: ChainId): boolean {
-  return connections.has(chainId);
-}
-
-export function getConnectionForChainId(chainId: ChainId): BlockchainConnection {
-  const connection = connections.get(chainId);
-  if (connection) {
-    return connection;
-  }
-  throw new Error(`No connection found for ${chainId} chainId`);
+export function getConnectionForChainId(chainId: ChainId): BlockchainConnection | undefined {
+  return connections.get(chainId);
 }
 
 export async function getConnectionForBns(): Promise<BnsConnection> {

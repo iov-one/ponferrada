@@ -7,7 +7,7 @@ import { getConfig } from "../../config";
 import { addTransaction } from "../../store/notifications";
 import { addUsernamesAction, BwUsername } from "../../store/usernames";
 import { getCodec } from "../codec";
-import { getConnectionForChainId, hasActiveConnection } from "../connection";
+import { getConnectionForChainId } from "../connection";
 import { BwParserFactory } from "./types/BwParserFactory";
 
 let txsSubscriptions: Subscription[] = [];
@@ -20,10 +20,10 @@ export async function subscribeTransaction(
   const chains = config.chains;
 
   for (const chain of chains) {
-    if (!hasActiveConnection(chain.chainSpec.chainId as ChainId)) {
+    const connection = getConnectionForChainId(chain.chainSpec.chainId as ChainId);
+    if (!connection) {
       continue;
     }
-    const connection = getConnectionForChainId(chain.chainSpec.chainId as ChainId);
     const codec = getCodec(chain.chainSpec);
     const identity = identities.find(identity => identity.chainId === connection.chainId());
     if (!identity) {

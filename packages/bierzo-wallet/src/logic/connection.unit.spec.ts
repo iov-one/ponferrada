@@ -44,8 +44,7 @@ withChainsDescribe("Logic :: connection", () => {
     await establishConnection(firstChain.chainSpec);
 
     const activeConnections = getActiveConnections();
-    const firstConnection = activeConnections.next().value;
 
-    expect(firstConnection.chainId()).toEqual(firstChain.chainSpec.chainId);
+    expect(activeConnections[0].chainId()).toEqual(firstChain.chainSpec.chainId);
   });
 });

@@ -32,6 +32,9 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
 
 async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
   const connection = getConnectionForChainId(chainId);
+  if (!connection) {
+    throw new Error(`Active connection for chain with ${chainId} was not found.`);
+  }
   const withFee = await connection.withDefaultFee(transaction);
   return withFee;
 }

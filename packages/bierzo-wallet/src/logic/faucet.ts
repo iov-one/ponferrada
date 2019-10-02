@@ -4,17 +4,17 @@ import { IovFaucet } from "@iov/faucets";
 import { getConfig, isChainConfigWithFaucet } from "../config";
 import { filterExistingTokens } from "../utils/tokens";
 import { getCodec } from "./codec";
-import { getConnectionForChainId, hasActiveConnection } from "./connection";
+import { getConnectionForChainId } from "./connection";
 
 export async function drinkFaucetIfNeeded(identities: readonly Identity[]): Promise<void> {
   const chainsWithFaucet = (await getConfig()).chains.filter(isChainConfigWithFaucet);
 
   // Create one job per chain that sends all available tokens. All jobs run in parallel.
   const jobs = chainsWithFaucet.map(async ({ chainSpec, faucetSpec }) => {
-    if (!hasActiveConnection(chainSpec.chainId as ChainId)) {
+    const connection = getConnectionForChainId(chainSpec.chainId as ChainId);
+    if (!connection) {
       return;
     }
-    const connection = getConnectionForChainId(chainSpec.chainId as ChainId);
     const codec = getCodec(chainSpec);
     const chainId = connection.chainId();
     const identity = identities.find(identity => identity.chainId === chainId);
