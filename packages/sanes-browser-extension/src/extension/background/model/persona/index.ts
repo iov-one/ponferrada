@@ -33,7 +33,6 @@ import {
   algorithmForCodec,
   chainConnector,
   codecTypeFromString,
-  ConfigurationFile,
   getConfigurationFile,
   pathBuilderForCodec,
 } from "./config";
@@ -222,10 +221,10 @@ export class Persona {
       return null;
     }
 
-    const config: ConfigurationFile = await getConfigurationFile();
-    const blockExplorer = config.blockExplorers[t.transaction.creator.chainId];
+    const config = await getConfigurationFile();
+    const blockExplorerPattern = config.blockExplorers[t.transaction.creator.chainId];
     const transactionId = t.postResponse.transactionId;
-    const blockExplorerUrl = blockExplorer ? blockExplorer + transactionId : null;
+    const blockExplorerUrl = blockExplorerPattern ? blockExplorerPattern.replace("%id", transactionId) : null;
 
     return {
       time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
