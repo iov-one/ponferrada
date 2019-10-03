@@ -8,7 +8,12 @@ import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
 import { REGISTER_USERNAME_FIELD } from "../registerName/components";
-import { getBalanceTextAtIndex, getUsernameE2E, waitForAllBalances } from "./test/operateBalances";
+import {
+  getBalanceTextAtIndex,
+  getUsernameE2E,
+  waitForAllBalances,
+  waitForUsername,
+} from "./test/operateBalances";
 import { travelToBalanceE2E } from "./test/travelToBalance";
 
 withChainsDescribe("E2E > Balance route", () => {
@@ -76,7 +81,7 @@ withChainsDescribe("E2E > Balance route", () => {
     const buttons = await page.$$("button");
     await buttons[2].click();
 
-    await sleep(1500);
+    await waitForUsername(await page.$$("h5"));
     const personaAddress = await getUsernameE2E(await page.$$("h5"));
     expect(personaAddress).toBe(username);
   }, 45000);

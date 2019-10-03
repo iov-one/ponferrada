@@ -31,3 +31,6 @@ export function waitForAllBalances(page: Page): Promise<void> {
 export const getUsernameE2E = async (h5Elements: ElementHandle<Element>[]): Promise<string> => {
   return (await (await h5Elements[0].getProperty("textContent")).jsonValue()) || "";
 };
+
+export const waitForUsername = async (h5Elements: ElementHandle<Element>[]): Promise<void> =>
+  whenTrue(async () => (await getUsernameE2E(h5Elements)).match(/\*iov$/) !== null, 20000);
