@@ -76,6 +76,7 @@ withChainsDescribe("E2E > Balance route", () => {
     const buttons = await page.$$("button");
     await buttons[2].click();
 
+    await sleep(1500);
     const personaAddress = await getUsernameE2E(await page.$$("h5"));
     expect(personaAddress).toBe(username);
   }, 45000);
