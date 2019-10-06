@@ -43,6 +43,8 @@ const Header = ({ address, electorates }: Props): JSX.Element => {
     [electorates],
   );
 
+  const hasElectorates = electorates.length > 0;
+
   return (
     <Block id={HEADER_HTML_ID} width="100%" minHeight="78px" display="flex" alignItems="center">
       <Block minWidth="205px" display="flex" alignItems="center" justifyContent="center">
@@ -53,10 +55,14 @@ const Header = ({ address, electorates }: Props): JSX.Element => {
         <Block marginRight={4} display="flex" alignItems="center">
           <Block textAlign="right">
             <Typography variant="body2">{address}</Typography>
-            <Typography inline variant="body2">
-              Member of{" "}
-            </Typography>
-            <ElectorateLinks />
+            {hasElectorates && (
+              <React.Fragment>
+                <Typography inline variant="body2">
+                  Member of{" "}
+                </Typography>
+                <ElectorateLinks />
+              </React.Fragment>
+            )}
           </Block>
           <Block marginLeft={1}>
             <CircleImage alt="Logo" icon={userIcon} dia="32px" circleColor="#fff" />
