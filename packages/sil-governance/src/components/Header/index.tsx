@@ -1,21 +1,27 @@
 import { Address } from "@iov/bcp";
 import { Electorate } from "@iov/bns";
-import { Block, CircleImage, Image, Typography } from "medulas-react-components";
+import { Block, CircleImage, Image, makeStyles, Typography } from "medulas-react-components";
 import React, { useMemo } from "react";
+import { Link } from "react-router-dom";
 
 import iovLogo from "../../assets/iov-logo-title.svg";
 import userIcon from "../../assets/user.svg";
-import { history } from "../../routes";
 import { SHOW_ELECTORATE_ROUTE } from "../../routes/paths";
 
 export const HEADER_HTML_ID = "header";
 
-const navigateToElectorate = (id: number): void => {
-  const target = `${SHOW_ELECTORATE_ROUTE}/${id}`;
-  if (history.location.pathname !== target) {
-    history.push(target);
-  }
-};
+const useStyles = makeStyles({
+  commaSeparator: {
+    "& > p + p:before": {
+      content: `", "`,
+    },
+  },
+  electorateLink: {
+    "&, &:visited": {
+      color: "black",
+    },
+  },
+});
 
 interface Props {
   readonly address: Address;
@@ -23,24 +29,23 @@ interface Props {
 }
 
 const Header = ({ address, electorates }: Props): JSX.Element => {
+  const classes = useStyles();
+
   const ElectorateLinks = useMemo(
-    () => (): JSX.Element => (
-      <React.Fragment>
-        {electorates.map((e, index) => (
-          <Block display="inline" key={e.id}>
-            <Typography inline link variant="body2" onClick={() => navigateToElectorate(e.id)}>
-              {e.title}
+    () => (): JSX.Element => {
+      return (
+        <Block display="inline" className={classes.commaSeparator}>
+          {electorates.map(e => (
+            <Typography inline variant="body2" key={e.id}>
+              <Link to={`${SHOW_ELECTORATE_ROUTE}/${e.id}`} className={classes.electorateLink}>
+                {e.title}
+              </Link>
             </Typography>
-            {index !== 1 && (
-              <Typography inline variant="body2">
-                ,{" "}
-              </Typography>
-            )}
-          </Block>
-        ))}
-      </React.Fragment>
-    ),
-    [electorates],
+          ))}
+        </Block>
+      );
+    },
+    [classes.commaSeparator, classes.electorateLink, electorates],
   );
 
   const hasElectorates = electorates.length > 0;
