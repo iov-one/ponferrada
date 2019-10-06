@@ -36,7 +36,7 @@ const ElectorateMembers = ({ electorate }: Props): JSX.Element => {
 
   return (
     <Block flexGrow={1} margin={2}>
-      <Typography>{electorate.title} members:</Typography>
+      <Typography variant="h6">{electorate.title} members:</Typography>
       <MembersTable />
     </Block>
   );
