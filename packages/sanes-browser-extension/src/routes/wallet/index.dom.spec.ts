@@ -76,6 +76,7 @@ describe("DOM > Feature > Wallet Status", () => {
   const txMock: ProcessedTx = {
     id: "111",
     signer: "Example Signer",
+    creator: ethereumCodec.identityToAddress(defaultCreator),
     time: "Sat May 25 10:10:00 2019 +0200",
     blockExplorerUrl: "www.blockexplorer.com",
     error: null,
@@ -84,6 +85,7 @@ describe("DOM > Feature > Wallet Status", () => {
   const usernameMock: ProcessedTx = {
     id: "112",
     signer: "Example Signer",
+    creator: ethereumCodec.identityToAddress(defaultCreator),
     time: "Sat May 25 10:10:00 2019 +0200",
     blockExplorerUrl: "www.blockexplorer.com",
     error: null,
