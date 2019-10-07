@@ -120,7 +120,7 @@ exports[`Storyshots Bierzo Wallet Login page 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -293,7 +293,7 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
           >
             
           </span>
@@ -1251,14 +1251,14 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <th
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+                className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
                 scope="col"
               >
                 Blockchain
               </th>
               <th
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+                className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
                 scope="col"
               >
                 Address
@@ -1278,19 +1278,19 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
               >
                 Ganache
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
               >
                 0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
@@ -1321,19 +1321,19 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
               >
                 IOV Devnet
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
               >
                 tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
@@ -1364,19 +1364,19 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
               >
                 Lisk Devnet
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
               >
                 1349293588603668134L
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-body MuiTableCell-alignLeft"
+                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
@@ -1564,7 +1564,7 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
           >
             
           </span>
@@ -2129,7 +2129,7 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
           >
             
           </span>
@@ -2407,7 +2407,7 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
           >
             
           </span>
@@ -2694,7 +2694,7 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
           >
             
           </span>
@@ -2978,7 +2978,7 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
           >
             
           </span>
@@ -3161,7 +3161,7 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-invisible MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
           >
             
           </span>
@@ -3346,7 +3346,7 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
           >
             
           </span>
@@ -3556,7 +3556,7 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
           >
             
           </span>
@@ -3752,7 +3752,7 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
             src="bell.svg"
           />
           <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
           >
             
           </span>
@@ -4030,6 +4030,20 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                     className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
                     onClick={[Function]}
                   >
+                    <input
+                      aria-invalid={false}
+                      className="MuiInputBase-input MuiOutlinedInput-input"
+                      disabled={false}
+                      name="quantityField"
+                      onAnimationStart={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="0.00"
+                      required={false}
+                      type="text"
+                      value=""
+                    />
                     <fieldset
                       aria-hidden={true}
                       className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -4056,19 +4070,6 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                         />
                       </legend>
                     </fieldset>
-                    <input
-                      aria-invalid={false}
-                      className="MuiInputBase-input MuiOutlinedInput-input"
-                      disabled={false}
-                      name="quantityField"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      placeholder="0.00"
-                      required={false}
-                      type="text"
-                      value=""
-                    />
                   </div>
                 </div>
               </div>
@@ -4088,6 +4089,7 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                       autoComplete="off"
                       className="MuiInputBase-input makeStyles-input"
                       name="currencyField"
+                      onAnimationStart={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -4144,6 +4146,20 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                 className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
                 onClick={[Function]}
               >
+                <input
+                  aria-invalid={false}
+                  className="MuiInputBase-input MuiOutlinedInput-input"
+                  disabled={false}
+                  name="addressField"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="IOV or wallet address"
+                  required={false}
+                  type="text"
+                  value=""
+                />
                 <fieldset
                   aria-hidden={true}
                   className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -4170,19 +4186,6 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                     />
                   </legend>
                 </fieldset>
-                <input
-                  aria-invalid={false}
-                  className="MuiInputBase-input MuiOutlinedInput-input"
-                  disabled={false}
-                  name="addressField"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  placeholder="IOV or wallet address"
-                  required={false}
-                  type="text"
-                  value=""
-                />
               </div>
             </div>
           </div>
@@ -4258,6 +4261,20 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                   className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
                   onClick={[Function]}
                 >
+                  <textarea
+                    aria-invalid={false}
+                    className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                    disabled={false}
+                    name="textNoteField"
+                    onAnimationStart={[Function]}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Add a note"
+                    required={false}
+                    rows="2"
+                    value=""
+                  />
                   <fieldset
                     aria-hidden={true}
                     className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -4284,19 +4301,6 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                       />
                     </legend>
                   </fieldset>
-                  <textarea
-                    aria-invalid={false}
-                    className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                    disabled={false}
-                    name="textNoteField"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    placeholder="Add a note"
-                    required={false}
-                    rows="2"
-                    value=""
-                  />
                 </div>
               </div>
             </div>
@@ -4409,6 +4413,20 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                 className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
                 onClick={[Function]}
               >
+                <input
+                  aria-invalid={false}
+                  className="MuiInputBase-input MuiOutlinedInput-input"
+                  disabled={false}
+                  name="register-username-field"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="username*iov"
+                  required={false}
+                  type="text"
+                  value=""
+                />
                 <fieldset
                   aria-hidden={true}
                   className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -4435,19 +4453,6 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                     />
                   </legend>
                 </fieldset>
-                <input
-                  aria-invalid={false}
-                  className="MuiInputBase-input MuiOutlinedInput-input"
-                  disabled={false}
-                  name="register-username-field"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  placeholder="username*iov"
-                  required={false}
-                  type="text"
-                  value=""
-                />
               </div>
             </div>
           </div>
@@ -4465,14 +4470,14 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                 >
                   <th
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+                    className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
                     scope="col"
                   >
                     Blockchain
                   </th>
                   <th
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+                    className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
                     scope="col"
                   >
                     Address
@@ -4492,19 +4497,19 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                 >
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     Ganache
                   </td>
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
                   </td>
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     <div
                       className="MuiBox-root MuiBox-root makeStyles-link"
@@ -4535,19 +4540,19 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                 >
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     IOV Devnet
                   </td>
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
                   </td>
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     <div
                       className="MuiBox-root MuiBox-root makeStyles-link"
@@ -4578,19 +4583,19 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                 >
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     Lisk Devnet
                   </td>
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     1349293588603668134L
                   </td>
                   <td
                     aria-sort={null}
-                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-body MuiTableCell-alignLeft"
+                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
                   >
                     <div
                       className="MuiBox-root MuiBox-root makeStyles-link"
@@ -5850,6 +5855,7 @@ Array [
                     autoComplete="off"
                     className="MuiInputBase-input makeStyles-input"
                     name="rows-per-page"
+                    onAnimationStart={[Function]}
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -6063,7 +6069,7 @@ Array [
         src="recoveryWords.svg"
       />
       <span
-        className="MuiBadge-badge makeStyles-check"
+        className="MuiBadge-badge makeStyles-check MuiBadge-anchorOriginTopRightRectangle"
       >
         <img
           alt="Badge Icon"
@@ -6094,7 +6100,7 @@ Array [
         src="recoveryWords.svg"
       />
       <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-dot"
+        className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
       >
         
       </span>
@@ -6121,7 +6127,7 @@ Array [
         src="recoveryWords.svg"
       />
       <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-colorError MuiBadge-dot"
+        className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorError MuiBadge-dot"
       >
         
       </span>
@@ -6148,7 +6154,7 @@ Array [
         src="recoveryWords.svg"
       />
       <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
+        className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
       >
         
       </span>
@@ -6175,7 +6181,7 @@ Array [
         Cont
       </p>
       <span
-        className="MuiBadge-badge makeStyles-text MuiBadge-colorPrimary"
+        className="MuiBadge-badge makeStyles-text MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary"
       >
         Some text long text
       </span>
@@ -6906,13 +6912,13 @@ Array [
           <span
             className="MuiIconButton-label"
           >
-            <span
-              className="MuiSwitch-thumb"
-            />
             <input
               className="PrivateSwitchBase-input MuiSwitch-input"
               onChange={[Function]}
               type="checkbox"
+            />
+            <span
+              className="MuiSwitch-thumb"
             />
           </span>
         </span>
@@ -6955,13 +6961,13 @@ Array [
           <span
             className="MuiIconButton-label"
           >
-            <span
-              className="MuiSwitch-thumb"
-            />
             <input
               className="PrivateSwitchBase-input MuiSwitch-input"
               onChange={[Function]}
               type="checkbox"
+            />
+            <span
+              className="MuiSwitch-thumb"
             />
           </span>
         </span>
@@ -7124,10 +7130,6 @@ exports[`Storyshots Medulas React Components/components/Menu Empty Menu 1`] = `
         <path
           d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
         />
-        <path
-          d="M0 0h24v24H0V0z"
-          fill="none"
-        />
       </svg>
     </div>
   </div>
@@ -7166,10 +7168,6 @@ exports[`Storyshots Medulas React Components/components/Menu List Menu 1`] = `
       >
         <path
           d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
-        />
-        <path
-          d="M0 0h24v24H0V0z"
-          fill="none"
         />
       </svg>
     </div>
@@ -7354,17 +7352,6 @@ Array [
           <span
             className="MuiIconButton-label"
           >
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-              />
-            </svg>
             <input
               checked={false}
               className="PrivateSwitchBase-input"
@@ -7376,6 +7363,17 @@ Array [
               onFocus={[Function]}
               type="checkbox"
             />
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
           </span>
         </span>
         <span
@@ -7414,17 +7412,6 @@ Array [
           <span
             className="MuiIconButton-label"
           >
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-              />
-            </svg>
             <input
               checked={false}
               className="PrivateSwitchBase-input"
@@ -7436,6 +7423,17 @@ Array [
               onFocus={[Function]}
               type="checkbox"
             />
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
           </span>
         </span>
         <span
@@ -7470,6 +7468,20 @@ Array [
         className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         onClick={[Function]}
       >
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="textFieldUniqueIdentifier"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Unique Identifier"
+          required={false}
+          type="text"
+          value=""
+        />
         <fieldset
           aria-hidden={true}
           className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -7496,19 +7508,6 @@ Array [
             />
           </legend>
         </fieldset>
-        <input
-          aria-invalid={false}
-          className="MuiInputBase-input MuiOutlinedInput-input"
-          disabled={false}
-          name="textFieldUniqueIdentifier"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Unique Identifier"
-          required={false}
-          type="text"
-          value=""
-        />
       </div>
     </div>
     <div
@@ -7527,6 +7526,7 @@ Array [
             autoComplete="off"
             className="MuiInputBase-input makeStyles-input"
             name="selectFieldUniqueIdentifier"
+            onAnimationStart={[Function]}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -7572,17 +7572,6 @@ Array [
             <span
               className="MuiIconButton-label"
             >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                />
-              </svg>
               <input
                 checked={false}
                 className="PrivateSwitchBase-input"
@@ -7594,6 +7583,17 @@ Array [
                 onFocus={[Function]}
                 type="checkbox"
               />
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
             </span>
           </span>
           <span
@@ -7655,6 +7655,7 @@ Array [
             autoComplete="off"
             className="MuiInputBase-input makeStyles-input"
             name="SELECT_FIELD_ATTR"
+            onAnimationStart={[Function]}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -7715,6 +7716,7 @@ Array [
             autoComplete="off"
             className="MuiInputBase-input makeStyles-input"
             name="SELECT_FIELD_ATTR_EMPTY"
+            onAnimationStart={[Function]}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -7786,6 +7788,19 @@ Array [
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-error MuiOutlinedInput-error MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={true}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              defaultValue="Standard Error"
+              disabled={false}
+              name="field-with-error"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -7812,18 +7827,6 @@ Array [
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={true}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              defaultValue="Standard Error"
-              disabled={false}
-              name="field-with-error"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-            />
           </div>
           <p
             className="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-error MuiFormHelperText-filled"
@@ -7852,6 +7855,19 @@ Array [
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              defaultValue="test*iov"
+              disabled={false}
+              name="field-filled"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -7878,18 +7894,6 @@ Array [
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              defaultValue="test*iov"
-              disabled={false}
-              name="field-filled"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-            />
           </div>
         </div>
       </form>
@@ -7913,6 +7917,19 @@ Array [
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled"
+              defaultValue="Disabled input"
+              disabled={true}
+              name="standard-disabled"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -7939,18 +7956,6 @@ Array [
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled"
-              defaultValue="Disabled input"
-              disabled={true}
-              name="standard-disabled"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-            />
           </div>
         </div>
       </form>
@@ -7974,6 +7979,19 @@ Array [
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="standard-with-placeholder"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="IOV or wallet address"
+              required={false}
+              type="text"
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -8000,18 +8018,6 @@ Array [
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="standard-with-placeholder"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="IOV or wallet address"
-              required={false}
-              type="text"
-            />
           </div>
         </div>
       </form>
@@ -8035,6 +8041,19 @@ Array [
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
             onClick={[Function]}
           >
+            <textarea
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+              disabled={false}
+              name="standard-with-placeholder"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              rows={5}
+              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -8061,18 +8080,6 @@ Array [
                 />
               </legend>
             </fieldset>
-            <textarea
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-              disabled={false}
-              name="standard-with-placeholder"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              rows={5}
-              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-            />
           </div>
         </div>
       </form>
@@ -8556,7 +8563,7 @@ exports[`Storyshots Medulas React Components/pages/PageColumn default 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -8663,7 +8670,7 @@ exports[`Storyshots Medulas React Components/pages/PageColumn with secondary nex
           className="MuiBox-root MuiBox-root"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge"
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -8794,6 +8801,20 @@ exports[`Storyshots Sanes Browser Extension Delete wallet page 1`] = `
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
             onClick={[Function]}
           >
+            <textarea
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+              disabled={false}
+              name="mnemonicInputField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Recovery words"
+              required={true}
+              rows={5}
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -8820,19 +8841,6 @@ exports[`Storyshots Sanes Browser Extension Delete wallet page 1`] = `
                 />
               </legend>
             </fieldset>
-            <textarea
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-              disabled={false}
-              name="mnemonicInputField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Recovery words"
-              required={true}
-              rows={5}
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -9110,10 +9118,10 @@ exports[`Storyshots Sanes Browser Extension Request queue page 1`] = `
       </h6>
     </div>
     <ul
-      className="MuiList-root makeStyles-root MuiList-padding"
+      className="MuiList-root makeStyles-root-1 MuiList-padding"
     >
       <li
-        className="MuiListItem-root makeStyles-first MuiListItem-gutters"
+        className="MuiListItem-root makeStyles-first-3 MuiListItem-gutters"
         disabled={false}
         onClick={[Function]}
       >
@@ -9135,7 +9143,7 @@ exports[`Storyshots Sanes Browser Extension Request queue page 1`] = `
           className="MuiListItemAvatar-root"
         >
           <div
-            className="MuiAvatar-root makeStyles-avatar MuiAvatar-colorDefault"
+            className="MuiAvatar-root makeStyles-avatar-2 MuiAvatar-colorDefault"
             color="primary"
           >
             <svg
@@ -9296,6 +9304,20 @@ exports[`Storyshots Sanes Browser Extension Unlock page 1`] = `
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="passwordInputField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -9322,19 +9344,6 @@ exports[`Storyshots Sanes Browser Extension Unlock page 1`] = `
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="passwordInputField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Password"
-              required={true}
-              type="password"
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -9540,6 +9549,20 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet New Wallet page 1`] = 
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="passwordInputField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -9566,19 +9589,6 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet New Wallet page 1`] = 
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="passwordInputField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Password"
-              required={true}
-              type="password"
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -9604,6 +9614,20 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet New Wallet page 1`] = 
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="passwordConfirmInputField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Confirm Password"
+              required={true}
+              type="password"
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -9630,19 +9654,6 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet New Wallet page 1`] = 
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="passwordConfirmInputField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Confirm Password"
-              required={true}
-              type="password"
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -9674,17 +9685,6 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet New Wallet page 1`] = 
               <span
                 className="MuiIconButton-label"
               >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                  />
-                </svg>
                 <input
                   checked={false}
                   className="PrivateSwitchBase-input"
@@ -9696,6 +9696,17 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet New Wallet page 1`] = 
                   onFocus={[Function]}
                   type="checkbox"
                 />
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
               </span>
             </span>
             <span
@@ -9873,13 +9884,13 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet Recovery Words page 1`
             <span
               className="MuiIconButton-label"
             >
-              <span
-                className="MuiSwitch-thumb"
-              />
               <input
                 className="PrivateSwitchBase-input MuiSwitch-input"
                 onChange={[Function]}
                 type="checkbox"
+              />
+              <span
+                className="MuiSwitch-thumb"
               />
             </span>
           </span>
@@ -10020,6 +10031,20 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet Security Hint page 1`]
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="securityHintField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Security hint"
+              required={false}
+              type="text"
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -10046,19 +10071,6 @@ exports[`Storyshots Sanes Browser Extension/Create Wallet Security Hint page 1`]
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="securityHintField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Security hint"
-              required={false}
-              type="text"
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -10181,6 +10193,20 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Mnemonic page 1`]
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
             onClick={[Function]}
           >
+            <textarea
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+              disabled={false}
+              name="mnemonicField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Recovery words"
+              required={false}
+              rows={5}
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -10207,19 +10233,6 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Mnemonic page 1`]
                 />
               </legend>
             </fieldset>
-            <textarea
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-              disabled={false}
-              name="mnemonicField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Recovery words"
-              required={false}
-              rows={5}
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -10354,6 +10367,20 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Password page 1`]
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="passwordField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -10380,19 +10407,6 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Password page 1`]
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="passwordField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Password"
-              required={true}
-              type="password"
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -10418,6 +10432,20 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Password page 1`]
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             onClick={[Function]}
           >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              name="passwordConfirmField"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Confirm Password"
+              required={true}
+              type="password"
+              value=""
+            />
             <fieldset
               aria-hidden={true}
               className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -10444,19 +10472,6 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Password page 1`]
                 />
               </legend>
             </fieldset>
-            <input
-              aria-invalid={false}
-              className="MuiInputBase-input MuiOutlinedInput-input"
-              disabled={false}
-              name="passwordConfirmField"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Confirm Password"
-              required={true}
-              type="password"
-              value=""
-            />
           </div>
         </div>
       </div>
@@ -10616,17 +10631,6 @@ exports[`Storyshots Sanes Browser Extension/Share Identity Reject Request page 1
               <span
                 className="MuiIconButton-label"
               >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                  />
-                </svg>
                 <input
                   checked={false}
                   className="PrivateSwitchBase-input"
@@ -10638,6 +10642,17 @@ exports[`Storyshots Sanes Browser Extension/Share Identity Reject Request page 1
                   onFocus={[Function]}
                   type="checkbox"
                 />
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
               </span>
             </span>
             <span
@@ -10976,7 +10991,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -10995,7 +11010,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11014,7 +11029,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11033,7 +11048,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11052,7 +11067,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11071,7 +11086,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11097,7 +11112,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-92"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11111,7 +11126,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11130,7 +11145,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Proposal 
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-91 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11290,7 +11305,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Username 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-90 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11316,7 +11331,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Create Username 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-90 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11480,17 +11495,6 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Reject Request 1
               <span
                 className="MuiIconButton-label"
               >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                  />
-                </svg>
                 <input
                   checked={false}
                   className="PrivateSwitchBase-input"
@@ -11502,6 +11506,17 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Reject Request 1
                   onFocus={[Function]}
                   type="checkbox"
                 />
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
               </span>
             </span>
             <span
@@ -11635,7 +11650,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (BNS) 1`] =
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-88 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11654,7 +11669,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (BNS) 1`] =
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-88 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11673,7 +11688,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (BNS) 1`] =
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-88 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11692,7 +11707,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (BNS) 1`] =
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-88 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11711,7 +11726,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (BNS) 1`] =
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-88 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11851,7 +11866,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (Ethereum) 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-89 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11870,7 +11885,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (Ethereum) 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-89 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11889,7 +11904,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (Ethereum) 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-89 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11908,7 +11923,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (Ethereum) 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-89 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -11927,7 +11942,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Send (Ethereum) 
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-89 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12067,7 +12082,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Vote 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-93 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12086,7 +12101,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Vote 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-93 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12105,7 +12120,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request Vote 1`] = `
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-93 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12245,7 +12260,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12264,7 +12279,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12283,7 +12298,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12302,7 +12317,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12321,7 +12336,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12340,7 +12355,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12366,7 +12381,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-95"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12380,7 +12395,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12399,7 +12414,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-94 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12540,7 +12555,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12559,7 +12574,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12578,7 +12593,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12597,7 +12612,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12616,7 +12631,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12635,7 +12650,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12661,7 +12676,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12675,7 +12690,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12694,7 +12709,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12708,7 +12723,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12727,7 +12742,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12746,7 +12761,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12765,7 +12780,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12784,7 +12799,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12798,7 +12813,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-106"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12812,7 +12827,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12831,7 +12846,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12850,7 +12865,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12864,7 +12879,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12883,7 +12898,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12902,7 +12917,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12921,7 +12936,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12940,7 +12955,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12954,7 +12969,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12973,7 +12988,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -12992,7 +13007,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13006,7 +13021,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13025,7 +13040,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-107"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13039,7 +13054,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13058,7 +13073,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-106"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13072,7 +13087,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13091,7 +13106,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-106 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13232,7 +13247,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13251,7 +13266,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13270,7 +13285,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13289,7 +13304,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13308,7 +13323,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13327,7 +13342,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13353,7 +13368,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-97"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13367,7 +13382,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13386,7 +13401,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13405,7 +13420,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-96 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13546,7 +13561,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13565,7 +13580,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13584,7 +13599,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13603,7 +13618,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13622,7 +13637,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13641,7 +13656,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13667,7 +13682,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-99"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13681,7 +13696,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13700,7 +13715,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13719,7 +13734,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13738,7 +13753,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13757,7 +13772,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-98 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13898,7 +13913,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13917,7 +13932,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13936,7 +13951,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13955,7 +13970,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13974,7 +13989,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -13993,7 +14008,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14019,7 +14034,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-101"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14033,7 +14048,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14052,7 +14067,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-100"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14066,7 +14081,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14085,7 +14100,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-100 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14226,7 +14241,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14245,7 +14260,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14264,7 +14279,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14283,7 +14298,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14302,7 +14317,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14321,7 +14336,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14347,7 +14362,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-103"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14361,7 +14376,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14380,7 +14395,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14399,7 +14414,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14418,7 +14433,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14437,7 +14452,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-102 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14578,7 +14593,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14597,7 +14612,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14616,7 +14631,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14635,7 +14650,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14654,7 +14669,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14673,7 +14688,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
         disabled={false}
       >
         <div
-          className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+          className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
         >
           <span
             className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14699,7 +14714,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-105"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14713,7 +14728,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14732,7 +14747,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14751,7 +14766,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root"
+            className="MuiListItemText-root makeStyles-root-104"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14765,7 +14780,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14784,7 +14799,7 @@ exports[`Storyshots Sanes Browser Extension/Transaction Request/Proposal Actions
           disabled={false}
         >
           <div
-            className="MuiListItemText-root makeStyles-root MuiListItemText-multiline"
+            className="MuiListItemText-root makeStyles-root-104 MuiListItemText-multiline"
           >
             <span
               className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -14987,11 +15002,11 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1
                 className="MuiBox-root MuiBox-root"
               />
               <li
-                className="MuiListItem-root makeStyles-center MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-center-86 MuiListItem-gutters"
                 disabled={false}
               >
                 <div
-                  className="MuiListItemIcon-root makeStyles-empty"
+                  className="MuiListItemIcon-root makeStyles-empty-85"
                 >
                   <img
                     alt="No Signed Transactions"
@@ -15001,7 +15016,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1
                   />
                 </div>
                 <div
-                  className="MuiListItemText-root makeStyles-text"
+                  className="MuiListItemText-root makeStyles-text-87"
                 >
                   <span
                     className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15142,7 +15157,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 className="MuiBox-root MuiBox-root"
               />
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15150,12 +15165,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15196,7 +15211,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15204,12 +15219,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionError.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15260,7 +15275,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15268,12 +15283,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15312,7 +15327,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-63 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -15367,7 +15382,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15375,12 +15390,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15412,7 +15427,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-63 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -15467,7 +15482,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15475,12 +15490,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionError.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15541,7 +15556,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15549,12 +15564,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15586,7 +15601,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-63 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -15641,7 +15656,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15649,12 +15664,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15686,7 +15701,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
-                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
+                          className="MuiButtonBase-root MuiIconButton-root makeStyles-icon-63 MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -15741,7 +15756,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15749,12 +15764,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15789,7 +15804,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15797,12 +15812,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionSend.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -15854,7 +15869,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 </div>
               </div>
               <div
-                className="MuiBox-root MuiBox-root makeStyles-item"
+                className="MuiBox-root MuiBox-root makeStyles-item-14"
               >
                 <li
                   className="MuiListItem-root"
@@ -15862,12 +15877,12 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                 >
                   <img
                     alt="Tx operation"
-                    className="makeStyles-root makeStyles-icon"
+                    className="makeStyles-root makeStyles-icon-15"
                     height={32}
                     src="transactionError.svg"
                   />
                   <div
-                    className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
+                    className="MuiListItemText-root makeStyles-msg-13 MuiListItemText-multiline"
                   >
                     <span
                       className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
@@ -16481,7 +16496,7 @@ exports[`Storyshots Sil Governance Login page 1`] = `
     onSubmit={[Function]}
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-button MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary makeStyles-button"
       disabled={false}
       onBlur={[Function]}
       onDragLeave={[Function]}
@@ -16526,6 +16541,20 @@ exports[`Storyshots Sil Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
         className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         onClick={[Function]}
       >
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="Quantity"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="165.45"
+          required={false}
+          type="text"
+          value=""
+        />
         <fieldset
           aria-hidden={true}
           className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
@@ -16552,19 +16581,6 @@ exports[`Storyshots Sil Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
             />
           </legend>
         </fieldset>
-        <input
-          aria-invalid={false}
-          className="MuiInputBase-input MuiOutlinedInput-input"
-          disabled={false}
-          name="Quantity"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="165.45"
-          required={false}
-          type="text"
-          value=""
-        />
       </div>
     </div>
     <div
@@ -16583,6 +16599,7 @@ exports[`Storyshots Sil Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
             autoComplete="off"
             className="MuiInputBase-input makeStyles-input"
             name="Ticker"
+            onAnimationStart={[Function]}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
