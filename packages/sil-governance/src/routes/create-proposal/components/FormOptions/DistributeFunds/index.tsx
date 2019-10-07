@@ -15,6 +15,8 @@ import RecipientsTable from "./RecipientsTable";
 
 const IMPORT_FIELD = "Import recipients";
 
+const fileLoadErrorMsg = "The file must be a .csv";
+
 export interface Recipient {
   address: Address;
   weight: number;
@@ -52,7 +54,7 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
 
     const reader = new FileReader();
     reader.onload = () => {
-      if (typeof reader.result !== "string") throw new Error("Got unsupported type of file");
+      if (typeof reader.result !== "string") throw new Error(fileLoadErrorMsg);
 
       try {
         const recipients = parseRecipients(reader.result);
@@ -67,7 +69,8 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
     };
 
     const file = files[0];
-    reader.readAsText(file);
+    if (file.type === "text/csv") reader.readAsText(file);
+    else toast.show(fileLoadErrorMsg, ToastVariant.ERROR);
   };
 
   const hasRecipients = recipients.length > 0;
