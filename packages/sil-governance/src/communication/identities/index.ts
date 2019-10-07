@@ -11,7 +11,7 @@ export const generateGetIdentitiesRequest = (bnsChainId: ChainId): JsonRpcReques
   id: makeJsonRpcId(),
   method: "getIdentities",
   params: {
-    reason: TransactionEncoder.toJson("I would like to know who you are on BNS"),
+    reason: TransactionEncoder.toJson("I would like to know who you are on IOV Name Service"),
     chainIds: TransactionEncoder.toJson([bnsChainId]),
   },
 });
