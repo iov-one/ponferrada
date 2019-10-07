@@ -49,6 +49,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
         blockExplorerUrl={item.blockExplorerUrl}
         error={error}
         amount={beautifulAmount}
+        creator={item.creator}
         recipient={recipient}
       />
     );
@@ -59,6 +60,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
       <MsgRegisterUsernameTx
         id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
+        creator={item.creator}
         iovAddress={iovAddress}
         error={error}
       />
@@ -70,6 +72,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
         id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
         title={title}
+        creator={item.creator}
         error={error}
       />
     );
@@ -81,6 +84,7 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
         blockExplorerUrl={item.blockExplorerUrl}
         selection={voteToString(selection)}
         proposalId={proposalId}
+        creator={item.creator}
         error={error}
       />
     );
