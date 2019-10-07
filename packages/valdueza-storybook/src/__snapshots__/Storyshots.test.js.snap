@@ -15163,7 +15163,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You have created
+                        You (
+                        0x7c154...35023c30
+                        ) have created
                          
                       </p>
                       <p
@@ -15227,7 +15229,19 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                          
-                        personalized address was unsuccessful
+                        personalized address from
+                         
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                        0x7c154...35023c30
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                         
+                        was unsuccessful
                       </p>
                     </span>
                     <p
@@ -15267,7 +15281,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You
+                        You (
+                        0x7c154...35023c30
+                        )
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
@@ -15291,7 +15307,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                             rel="noopener noreferrer"
                             target="_blank"
                           >
-                            0x1212121212121...
+                            0x12121...12121212
                           </a>
                         </p>
                         <button
@@ -15372,7 +15388,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You
+                        You (
+                        0x7c154...35023c30
+                        )
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
@@ -15390,7 +15408,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         <p
                           className="MuiTypography-root makeStyles-inline MuiTypography-body1"
                         >
-                          0x1212121212121...
+                          0x12121...12121212
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -15483,9 +15501,19 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                          payment to 
                       </p>
                       <p
-                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body1"
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        0x1212121212121...
+                        0x12121...12121212
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                         from 
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                        0x7c154...35023c30
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
@@ -15534,7 +15562,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You
+                        You (
+                        0x7c154...35023c30
+                        )
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
@@ -15552,7 +15582,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         <p
                           className="MuiTypography-root makeStyles-inline MuiTypography-body1"
                         >
-                          0x1212121212121...
+                          0x12121...12121212
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -15632,7 +15662,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You
+                        You (
+                        0x7c154...35023c30
+                        )
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
@@ -15650,7 +15682,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         <p
                           className="MuiTypography-root makeStyles-inline MuiTypography-body1"
                         >
-                          0x1212121212121...
+                          0x12121...12121212
                         </p>
                         <button
                           aria-label="Copy to clipboard address"
@@ -15730,7 +15762,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You have created the proposal
+                        You (
+                        0x7c154...35023c30
+                        ) have created the proposal
                          
                       </p>
                       <p
@@ -15776,7 +15810,9 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
-                        You have voted
+                        You (
+                        0x7c154...35023c30
+                        ) have voted
                          
                       </p>
                       <p
@@ -15858,6 +15894,18 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
                       >
                         666
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                         
+                        from
+                         
+                      </p>
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
+                      >
+                        0x7c154...35023c30
                       </p>
                       <p
                         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline MuiTypography-body1"
