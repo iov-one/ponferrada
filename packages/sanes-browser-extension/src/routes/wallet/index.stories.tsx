@@ -96,6 +96,7 @@ function newTxId(): string {
 const processedTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
   blockExplorerUrl: null,
@@ -105,6 +106,7 @@ const processedTx: ProcessedTx = {
 const blockExplorerProcessedTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
   blockExplorerUrl: "https://iov.one",
@@ -114,6 +116,7 @@ const blockExplorerProcessedTx: ProcessedTx = {
 const usernameCreatedTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
   blockExplorerUrl: null,
@@ -123,6 +126,7 @@ const usernameCreatedTx: ProcessedTx = {
 const errorUsernameCreatedTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: "This is an example of reported error",
   blockExplorerUrl: null,
@@ -132,6 +136,7 @@ const errorUsernameCreatedTx: ProcessedTx = {
 const errorProcessedTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: "This is an example of reported error",
   blockExplorerUrl: null,
@@ -141,6 +146,7 @@ const errorProcessedTx: ProcessedTx = {
 const createProposalTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
   blockExplorerUrl: null,
@@ -150,6 +156,7 @@ const createProposalTx: ProcessedTx = {
 const voteTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: null,
   blockExplorerUrl: null,
@@ -159,6 +166,7 @@ const voteTx: ProcessedTx = {
 const errorVoteTx: ProcessedTx = {
   id: newTxId(),
   signer: "Example Signer",
+  creator: ethereumCodec.identityToAddress(defaultCreator),
   time: "Sat May 25 10:10:00 2019 +0200",
   error: "Something went wrong :(",
   blockExplorerUrl: null,
