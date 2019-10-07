@@ -1,4 +1,4 @@
-import { isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
+import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
 import {
   BnsConnection,
   CreateProposalTx,
@@ -57,6 +57,7 @@ export function isSupportedTransaction(tx: UnsignedTransaction): tx is Supported
  */
 export interface ProcessedTx {
   readonly id: string;
+  readonly creator: Address;
   readonly signer: string;
   readonly time: string;
   readonly blockExplorerUrl: string | null;
@@ -225,10 +226,12 @@ export class Persona {
     const blockExplorerPattern = config.blockExplorers[t.transaction.creator.chainId];
     const transactionId = t.postResponse.transactionId;
     const blockExplorerUrl = blockExplorerPattern ? blockExplorerPattern.replace("%id", transactionId) : null;
+    const creatorAddress = this.signer.identityToAddress(t.transaction.creator);
 
     return {
       time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
       id: transactionId,
+      creator: creatorAddress,
       signer: Encoding.toHex(t.transaction.creator.pubkey.data),
       blockExplorerUrl,
       error: null,
