@@ -13,9 +13,9 @@ storiesOf(`${medulasRoot}/pages/PageColumn`, module)
     <Storybook>
       <PageColumn
         icon="white"
-        primaryTitle="Page"
-        secondaryTitle="column"
-        subtitle="Storybook PageColumn component example."
+        primaryTitle="Welcome"
+        secondaryTitle="to your IOV wallet"
+        subtitle="To access the wallet please authenticate using Neuma or Ledger Nano S"
         renderHeader={RenderHeader}
         primaryNextLabel="Continue"
         primaryNextClicked={action("Page form submit")}

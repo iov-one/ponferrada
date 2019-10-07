@@ -8,7 +8,7 @@ interface Props {
 }
 
 const SubtitleSection = ({ text }: Props): JSX.Element => (
-  <Block paddingLeft={6} paddingRight={6} marginLeft={1} marginRight={1}>
+  <Block marginTop={2} marginBottom={4}>
     <Typography variant="h6" weight="light" color="textPrimary">
       {text}
     </Typography>

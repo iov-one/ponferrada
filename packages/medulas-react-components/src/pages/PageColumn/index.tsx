@@ -1,4 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 import useTheme from "@material-ui/styles/useTheme";
 import { FormApi } from "final-form";
 import React from "react";
@@ -13,7 +14,6 @@ import Typography from "../../components/Typography";
 import logo from "../../theme/assets/pageColumn/logo.svg";
 import logoBlack from "../../theme/assets/pageColumn/logoBlack.svg";
 import people from "../../theme/assets/pageColumn/People.svg";
-import EmptyHeader from "./EmptyHeader";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
 
@@ -40,13 +40,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     margin: "0 auto",
   },
-  form: {
-    display: "flex",
-    height: "100vh",
-    flexDirection: "column",
-  },
   secondaryNext: {
     padding: "0.5em",
+  },
+  contentBorder: {
+    background: theme.palette.background.paper,
+    boxSizing: "border-box",
+    boxShadow: "0px 2px 8px rgba(237, 239, 244, 0.5)",
+    borderRadius: 5,
   },
 }));
 
@@ -76,49 +77,29 @@ const PageColumn = ({
       flexShrink={1}
       flexDirection="row"
       flexWrap="wrap"
-      bgcolor={theme.palette.background.paper}
+      height="100vh"
+      bgcolor={theme.palette.background.default}
     >
-      <Block height="100vh">
-        <Img src={people} alt="Log in Image" cover />
-        <Img src={icon === "black" ? logoBlack : logo} alt="Logo" className={classes.logo} />
-      </Block>
-      <Block flexGrow={1}>
-        <Form onSubmit={handleSubmit} className={classes.form}>
-          <BoxScroll flexGrow={1}>
-            <Block marginLeft="8.333%" marginRight="8.333%">
-              {renderHeader ? renderHeader() : <EmptyHeader />}
-              <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
-              <SubtitleSection text={subtitle} />
-              {formRender && formRender(form)}
-            </Block>
-          </BoxScroll>
-          <Hairline />
-          <Block padding={2} marginRight={8} display="flex" justifyContent="flex-end">
-            <Block display="inline-block" textAlign="center">
-              <Button
-                variant="continue"
-                color="primary"
-                type="submit"
-                disabled={invalid || submitting || validating}
-                size="large"
-                spinner={submitting || validating}
-              >
-                {`${primaryNextLabel}\u00a0`}
-              </Button>
-              <br />
-              {secondaryNextLabel && (
-                <Typography
-                  variant="body2"
-                  className={classes.secondaryNext}
-                  link={true}
-                  onClick={secondaryNextClicked}
-                >
-                  {secondaryNextLabel}
-                </Typography>
-              )}
-            </Block>
-          </Block>
-        </Form>
+      <Block width={420} bgcolor="black"></Block>
+      <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
+        <Block
+          width={562}
+          border="1px solid black"
+          className={classes.contentBorder}
+          padding={5}
+          textAlign="center"
+        >
+          <Form onSubmit={handleSubmit}>
+            <TitleSection primaryTitle={primaryTitle} secondaryTitle={secondaryTitle} />
+            <SubtitleSection text={subtitle} />
+            <Button fullWidth type="submit" disabled={invalid || submitting} startIcon={<DeleteIcon />}>
+              Continue with Neuma Browser Extension
+            </Button>
+            <Button fullWidth type="submit" disabled={invalid || submitting}>
+              Continue with Ledger Nano S
+            </Button>
+          </Form>
+        </Block>
       </Block>
     </Block>
   );

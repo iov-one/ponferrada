@@ -9,14 +9,14 @@ interface Props {
 }
 
 const TitleSection = ({ primaryTitle, secondaryTitle }: Props): JSX.Element => (
-  <Block padding={6} maxWidth={450} marginTop={5} marginLeft={1} marginRight={1}>
+  <React.Fragment>
     <Typography variant="h4" color="primary" inline>
       {`${primaryTitle} `}
     </Typography>
     <Typography variant="h4" inline>
       {secondaryTitle}
     </Typography>
-  </Block>
+  </React.Fragment>
 );
 
 export default TitleSection;
