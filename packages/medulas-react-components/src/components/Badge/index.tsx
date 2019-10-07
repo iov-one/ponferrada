@@ -1,13 +1,13 @@
-import { Badge, makeStyles, PropTypes, Theme } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
+import Badge, { BadgeProps } from "@material-ui/core/Badge";
 import React from "react";
 
 import CheckIcon from "../../theme/assets/badgeIcon/check.svg";
 import Img from "../Image";
 
-interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface Props extends Omit<BadgeProps, "variant"> {
   readonly variant: "dot" | "check" | "text";
   readonly invisible?: boolean;
-  readonly color?: PropTypes.Color | "error";
   readonly children: React.ReactNode;
   readonly badgeContent?: string;
 }
