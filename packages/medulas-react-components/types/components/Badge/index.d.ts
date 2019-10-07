@@ -1,9 +1,8 @@
-import { PropTypes } from "@material-ui/core";
+import { BadgeProps } from "@material-ui/core/Badge";
 import React from "react";
-interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface Props extends Omit<BadgeProps, "variant"> {
   readonly variant: "dot" | "check" | "text";
   readonly invisible?: boolean;
-  readonly color?: PropTypes.Color | "error";
   readonly children: React.ReactNode;
   readonly badgeContent?: string;
 }
