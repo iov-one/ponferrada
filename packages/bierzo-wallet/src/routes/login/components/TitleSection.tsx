@@ -1,7 +1,5 @@
+import { Typography } from "medulas-react-components";
 import * as React from "react";
-
-import Block from "../../components/Block";
-import Typography from "../../components/Typography";
 
 interface Props {
   readonly primaryTitle: string;

@@ -1,15 +1,12 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import useTheme from "@material-ui/styles/useTheme";
+import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
-import Block from "../../components/Block";
-import Button from "../../components/Button";
-import Img from "../../components/Image";
-import Typography from "../../components/Typography";
-import ledgerIcon from "../../theme/assets/pageColumn/ledger.svg";
-import logoBlack from "../../theme/assets/pageColumn/logoBlack.svg";
-import neumaIcon from "../../theme/assets/pageColumn/neuma.svg";
+import ledgerIcon from "../assets/ledger.svg";
+import logoBlack from "../assets/logoBlack.svg";
+import neumaIcon from "../assets/neuma.svg";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
 
@@ -41,11 +38,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 function NeumaIcon(): JSX.Element {
-  return <Img src={neumaIcon} alt="Neuma login icon" />;
+  return <Image src={neumaIcon} alt="Neuma login icon" />;
 }
 
 function LedgerIcon(): JSX.Element {
-  return <Img src={ledgerIcon} alt="Ledger login icon" />;
+  return <Image src={ledgerIcon} alt="Ledger login icon" />;
 }
 
 const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }: Props): JSX.Element => {
@@ -101,7 +98,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           borderRadius={30}
           className={classes.rect3}
         ></Block>
-        <Img src={logoBlack} alt="IOV logo" />
+        <Image src={logoBlack} alt="IOV logo" />
       </Block>
       <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
         <Block
