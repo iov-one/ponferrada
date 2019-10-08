@@ -1,5 +1,5 @@
 import { Identity } from "@iov/bcp";
-import { BillboardContext, PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
@@ -21,6 +21,7 @@ import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
+import PageColumn from "./components";
 
 export const loginBootSequence = async (
   identities: readonly Identity[],
