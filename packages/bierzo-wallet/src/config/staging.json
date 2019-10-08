@@ -1,5 +1,6 @@
 {
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
+  "extensionUrl": "https://chrome.google.com/webstore/detail/neuma-staging/ililemcipflfijjbkniehikepfpdgail",
   "ledger": {
     "chainIds": {
       "testnetBuild": "iov-clapnet",
