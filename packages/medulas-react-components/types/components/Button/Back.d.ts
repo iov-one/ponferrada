@@ -20,18 +20,22 @@ declare const Back: ({
 } & {
   color?: "inherit" | "default" | "primary" | "secondary" | undefined;
   disableFocusRipple?: boolean | undefined;
+  endIcon?: React.ReactNode;
   fullWidth?: boolean | undefined;
   href?: string | undefined;
   size?: "medium" | "large" | "small" | undefined;
+  startIcon?: React.ReactNode;
   variant?: "text" | "outlined" | "contained" | undefined;
 } & import("@material-ui/core/OverridableComponent").CommonProps<
     import("@material-ui/core/ButtonBase").ExtendButtonBaseTypeMap<{
       props: {
         color?: "inherit" | "default" | "primary" | "secondary" | undefined;
         disableFocusRipple?: boolean | undefined;
+        endIcon?: React.ReactNode;
         fullWidth?: boolean | undefined;
         href?: string | undefined;
         size?: "medium" | "large" | "small" | undefined;
+        startIcon?: React.ReactNode;
         variant?: "text" | "outlined" | "contained" | undefined;
       };
       defaultComponent: "button";
