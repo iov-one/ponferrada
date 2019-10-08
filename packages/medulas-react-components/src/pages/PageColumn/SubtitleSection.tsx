@@ -4,13 +4,13 @@ import Block from "../../components/Block";
 import Typography from "../../components/Typography";
 
 interface Props {
-  readonly text: string;
+  readonly children: string;
 }
 
-const SubtitleSection = ({ text }: Props): JSX.Element => (
+const SubtitleSection = ({ children }: Props): JSX.Element => (
   <Block marginTop={2} marginBottom={4}>
     <Typography variant="h6" weight="light" color="textPrimary">
-      {text}
+      {children}
     </Typography>
   </Block>
 );
