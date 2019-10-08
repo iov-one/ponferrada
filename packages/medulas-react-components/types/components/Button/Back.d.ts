@@ -25,7 +25,7 @@ declare const Back: ({
   href?: string | undefined;
   size?: "medium" | "large" | "small" | undefined;
   startIcon?: React.ReactNode;
-  variant?: "text" | "outlined" | "contained" | undefined;
+  variant?: "text" | "contained" | "outlined" | undefined;
 } & import("@material-ui/core/OverridableComponent").CommonProps<
     import("@material-ui/core/ButtonBase").ExtendButtonBaseTypeMap<{
       props: {
@@ -36,7 +36,7 @@ declare const Back: ({
         href?: string | undefined;
         size?: "medium" | "large" | "small" | undefined;
         startIcon?: React.ReactNode;
-        variant?: "text" | "outlined" | "contained" | undefined;
+        variant?: "text" | "contained" | "outlined" | undefined;
       };
       defaultComponent: "button";
       classKey: import("@material-ui/core/Button").ButtonClassKey;

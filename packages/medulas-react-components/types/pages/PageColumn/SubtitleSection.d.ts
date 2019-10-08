@@ -1,5 +1,5 @@
 interface Props {
-  readonly text: string;
+  readonly children: string;
 }
-declare const SubtitleSection: ({ text }: Props) => JSX.Element;
+declare const SubtitleSection: ({ children }: Props) => JSX.Element;
 export default SubtitleSection;
