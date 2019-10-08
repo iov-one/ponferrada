@@ -8,6 +8,9 @@
     "@iov/bns-governance": "^1.0.0-alpha.1",
     "@iov/encoding": "^1.0.0-alpha.1",
     "@iov/jsonrpc": "^1.0.0-alpha.1",
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "@material-ui/styles": "^4.5.0",
     "medulas-react-components": "^0.7.0",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
@@ -19,9 +22,6 @@
     "ui-logic": "^0.7.0"
   },
   "devDependencies": {
-    "@material-ui/core": "^4.5.0",
-    "@material-ui/icons": "^4.4.3",
-    "@material-ui/styles": "^4.5.0",
     "react-scripts": "^3.1.1"
   },
   "scripts": {
