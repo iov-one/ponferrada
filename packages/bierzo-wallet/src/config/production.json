@@ -14,10 +14,6 @@
         "chainId": "iov-mainnet",
         "name": "IOV Mainnet",
         "node": "wss://bns.antnet.iov.one/"
-      },
-      "faucetSpec": {
-        "uri": "https://bns-faucet.antnet.iov.one",
-        "tokens": ["IOV"]
       }
     },
     {
