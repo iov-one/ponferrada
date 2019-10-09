@@ -6,6 +6,8 @@
       "node": "wss://rpc-private-a-vip-mainnet.iov.one/",
       "chainId": "iov-mainnet",
       "name": "IOV Mainnet"
-    }
+    },
+    "guaranteeFundEscrowId": 1,
+    "rewardFundAddress": "iov1k0dp2fmdunscuwjjusqtk6mttx5ufk3zpwj90n"
   }
 }
