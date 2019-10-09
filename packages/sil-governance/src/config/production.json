@@ -1,11 +1,13 @@
 {
-  "extensionId": "N/A",
+  "extensionId": "gegmganblgchemddleocdoadmljledcj",
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
-      "node": "wss://bns.antnet.iov.one/",
+      "node": "wss://rpc-private-a-vip-mainnet.iov.one/",
       "chainId": "iov-mainnet",
-      "name": "IOV Antnet"
-    }
+      "name": "IOV Mainnet"
+    },
+    "guaranteeFundEscrowId": 1,
+    "rewardFundAddress": "iov1k0dp2fmdunscuwjjusqtk6mttx5ufk3zpwj90n"
   }
 }

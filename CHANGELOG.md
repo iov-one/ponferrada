@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0
+
+- Wallet: Improve error handling when logging in with Ledger
+- Wallet: Only connect to IOV when logging in with Ledger
+- Governance: Improve checks on distribute funds CSV upload
+- Governance: Add page showing committee members
+- Extension: Show address of transaction creator in transactions list
+- Set configuration for mainnet
+- Upgrade IOV-Core to 1.0.0
+
 ## 0.7.0
 
 - Connect to Clapnet 👏

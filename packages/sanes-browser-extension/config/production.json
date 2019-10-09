@@ -7,9 +7,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "bns-antnet",
-        "name": "BNS Antnet",
-        "node": "https://bns.antnet.iov.one/"
+        "chainId": "iov-mainnet",
+        "name": "IOV Mainnet",
+        "node": "https://rpc-private-a-vip-mainnet.iov.one/"
       }
     },
     {
@@ -17,7 +17,7 @@
         "codecType": "lsk",
         "chainId": "lisk-ed14889723",
         "name": "Lisk Mainnet",
-        "node": "https://testnet.lisk.io"
+        "node": "https://main-02.liskapi.io"
       }
     },
     {
@@ -30,6 +30,6 @@
       }
     }
   ],
-  "walletCreationDisabled": true,
+  "walletCreationDisabled": false,
   "accountCreationDisabled": true
 }
