@@ -14,7 +14,9 @@ import {
   DASHBOARD_ENDED_ROUTE,
   DASHBOARD_ROUTE,
   LOGIN_ROUTE,
+  SHOW_ELECTORATE_ROUTE,
 } from "./paths";
+import ShowElectorate from "./show-electorate";
 
 export const history = createBrowserHistory();
 
@@ -41,6 +43,7 @@ const Routes = (): JSX.Element => (
           component={() => <Dashboard filter={ElectionFilter.Ended} />}
         />
         <Route exact path={CREATE_PROPOSAL_ROUTE} component={CreateProposal} />
+        <Route exact path={`${SHOW_ELECTORATE_ROUTE}/:electorateId`} component={ShowElectorate} />
       </RequireLogin>
     </Switch>
   </Router>

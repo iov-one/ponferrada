@@ -16250,10 +16250,9 @@ exports[`Storyshots Sil Governance Dashboard page 1`] = `
             
           </p>
           <p
-            className="MuiTypography-root MuiTypography-body2"
+            className="MuiTypography-root makeStyles-inline MuiTypography-body2"
           >
-            Member of 
-            
+            Not a member of any electorate
           </p>
         </div>
         <div
