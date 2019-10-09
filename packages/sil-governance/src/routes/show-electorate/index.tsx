@@ -1,7 +1,7 @@
 import { Address } from "@iov/bcp";
 import { Electorate } from "@iov/bns";
 import { Block, Hairline, Typography } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 
@@ -40,7 +40,7 @@ const ShowElectorate = ({ match }: RouteComponentProps<Params>): JSX.Element => 
     updateElectorates();
   }, [governor]);
 
-  useEffect(() => {
+  useMemo(() => {
     const electorate = electorates.find(e => e.id === parseInt(match.params.electorateId, 10));
     setElectorate(electorate);
   }, [electorates, match.params.electorateId]);
