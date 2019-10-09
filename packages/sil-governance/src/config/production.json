@@ -5,7 +5,7 @@
       "codecType": "bns",
       "node": "wss://bns.antnet.iov.one/",
       "chainId": "iov-mainnet",
-      "name": "IOV Antnet"
+      "name": "IOV Mainnet"
     }
   }
 }
