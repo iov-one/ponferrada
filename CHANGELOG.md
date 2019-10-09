@@ -8,6 +8,7 @@
 - Governance: Add page showing committee members
 - Extension: Show address of transaction creator in transactions list
 - Set configuration for mainnet
+- Upgrade IOV-Core to 1.0.0
 
 ## 0.7.0
 
