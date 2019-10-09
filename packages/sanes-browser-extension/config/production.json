@@ -30,6 +30,6 @@
       }
     }
   ],
-  "walletCreationDisabled": true,
+  "walletCreationDisabled": false,
   "accountCreationDisabled": true
 }
