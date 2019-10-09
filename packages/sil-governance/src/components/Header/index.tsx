@@ -68,6 +68,11 @@ const Header = ({ address, electorates }: Props): JSX.Element => {
                 <ElectorateLinks />
               </React.Fragment>
             )}
+            {!hasElectorates && (
+              <Typography inline variant="body2">
+                Not a member of any electorate
+              </Typography>
+            )}
           </Block>
           <Block marginLeft={1}>
             <CircleImage alt="Logo" icon={userIcon} dia="32px" circleColor="#fff" />
