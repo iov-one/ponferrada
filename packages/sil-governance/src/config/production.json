@@ -3,7 +3,7 @@
   "bnsChain": {
     "chainSpec": {
       "codecType": "bns",
-      "node": "wss://bns.antnet.iov.one/",
+      "node": "wss://rpc-private-a-vip-mainnet.iov.one/",
       "chainId": "iov-mainnet",
       "name": "IOV Mainnet"
     }

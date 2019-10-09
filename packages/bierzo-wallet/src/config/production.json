@@ -13,7 +13,7 @@
         "codecType": "bns",
         "chainId": "iov-mainnet",
         "name": "IOV Mainnet",
-        "node": "wss://bns.antnet.iov.one/"
+        "node": "wss://rpc-private-a-vip-mainnet.iov.one/"
       }
     },
     {
