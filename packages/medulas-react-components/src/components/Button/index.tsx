@@ -34,7 +34,7 @@ const Button = ({ children, variant, spinner, color, ...restProps }: Props): JSX
   let classes: ReturnType<typeof useStyles> | undefined = useStyles();
 
   let muiColor: PropTypes.Color | undefined;
-  if (color && color === "inverted") {
+  if (color === "inverted") {
     muiColor = "default";
   } else {
     muiColor = color;
