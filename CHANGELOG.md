@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Upgrade and simplify material UI dependencies
+
 ## 1.0.0
 
 - Wallet: Improve error handling when logging in with Ledger
