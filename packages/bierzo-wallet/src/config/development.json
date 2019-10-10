@@ -1,5 +1,6 @@
 {
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
+  "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
       "testnetBuild": "local-iov-devnet",

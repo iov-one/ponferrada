@@ -64,8 +64,9 @@ function webUsbAvailable(): boolean {
   return typeof nav !== "undefined" && typeof nav.usb !== "undefined";
 }
 
-function onGetNeumaExtension(): void {
-  window.open("https://www.neuma.io/", "_blank");
+async function onGetNeumaExtension(): Promise<void> {
+  const config = await getConfig();
+  window.open(config.neumaUrl, "_blank");
 }
 
 const Login = (): JSX.Element => {
