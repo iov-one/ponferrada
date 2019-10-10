@@ -21,7 +21,7 @@ import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
-import Layout from "./components";
+import PageColumn from "./components/PageColumn";
 
 export const loginBootSequence = async (
   identities: readonly Identity[],
@@ -125,7 +125,7 @@ const Login = (): JSX.Element => {
   };
 
   return (
-    <Layout
+    <PageColumn
       onLoginWithNeuma={onLoginWithNeuma}
       onLoginWithLedger={onLoginWithLedger}
       onGetNeumaExtension={onGetNeumaExtension}
