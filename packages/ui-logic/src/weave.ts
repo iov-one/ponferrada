@@ -1,3 +1,5 @@
+import { ErrorParser } from "./error";
+
 export class Weave {
   /**
    * Tries to parse error message as a Weave error. On success, returns an error string that
@@ -6,12 +8,10 @@ export class Weave {
    * @param error pass in the variable from the catch block. Error and string are supported for parsing.
    */
   public static tryParseError(error: unknown): string | null {
-    const errorMessage = error instanceof Error ? error.message : typeof error === "string" ? error : "";
-
-    const normalizedErrorMessage = errorMessage.trim().replace(/^Error:\s*/, "");
+    const errorMessage = ErrorParser.normalizeErrorMessage(error);
 
     try {
-      const parsed = JSON.parse(normalizedErrorMessage);
+      const parsed = JSON.parse(errorMessage);
       const { code, log } = parsed;
 
       if (typeof code === "number" && typeof log === "string") {
