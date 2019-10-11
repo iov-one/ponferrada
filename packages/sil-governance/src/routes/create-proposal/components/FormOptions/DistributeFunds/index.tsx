@@ -11,7 +11,7 @@ import {
 import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { parseRecipients } from "ui-logic";
 
-import RecipientsTable from "./RecipientsTable";
+import RecipientsMembers from "./RecipientsMembers";
 
 const IMPORT_FIELD = "Import recipients";
 
@@ -91,7 +91,7 @@ const DistributeFunds = ({ form, recipientsChanged }: Props): JSX.Element => {
           />
         </Block>
       </Block>
-      {hasRecipients && <RecipientsTable recipients={recipients} />}
+      {hasRecipients && <RecipientsMembers recipients={recipients} />}
     </React.Fragment>
   );
 };
