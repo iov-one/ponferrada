@@ -32,16 +32,12 @@ describe("Weave", () => {
       }
     });
 
-    it("returns error message as is if not JSON", () => {
-      const error = `Can not distribute to 0 recipients`;
-      expect(Weave.tryParseError(error)).toContain(`Can not distribute to 0 recipients`);
-    });
-
     it("returns null when other error format is found", () => {
       expect(Weave.tryParseError("")).toBeNull();
       expect(Weave.tryParseError("{}")).toBeNull();
-      expect(Weave.tryParseError('{ "code": "5" }')).toBeNull();
-      expect(Weave.tryParseError('{ "log": "error message, but code missing" }')).toBeNull();
+      expect(Weave.tryParseError('{ log: "error message, but code missing" }')).toBeNull();
+
+      expect(Weave.tryParseError(new Error("Something happened"))).toBeNull();
     });
   });
 });

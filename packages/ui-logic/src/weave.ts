@@ -26,9 +26,6 @@ export class Weave {
         return null;
       }
     } catch {
-      // Error is not JSON
-      if (normalizedErrorMessage) return normalizedErrorMessage;
-      // Error is empty string
       return null;
     }
   }
