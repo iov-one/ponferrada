@@ -21,7 +21,6 @@ import Section from "./components/TextMarkup/Section";
 import Title from "./components/TextMarkup/Title";
 import Tooltip from "./components/Tooltip";
 import Typography from "./components/Typography";
-import PageColumn from "./pages/PageColumn";
 import EmptyListIcon from "./templates/menu/EmptyListIcon";
 import ListMenu from "./templates/menu/ListMenu";
 import MedulasThemeProvider from "./theme/MedulasThemeProvider";
@@ -53,7 +52,6 @@ export {
   ListItemText,
   makeStyles,
   MedulasThemeProvider,
-  PageColumn,
   PageLayout,
   Paragraph,
   Section,

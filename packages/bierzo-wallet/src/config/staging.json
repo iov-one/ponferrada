@@ -1,5 +1,6 @@
 {
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
+  "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
       "testnetBuild": "iov-clapnet",

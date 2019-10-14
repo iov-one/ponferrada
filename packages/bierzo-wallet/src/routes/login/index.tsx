@@ -1,5 +1,5 @@
 import { Identity } from "@iov/bcp";
-import { BillboardContext, PageColumn, ToastContext, ToastVariant } from "medulas-react-components";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
@@ -21,6 +21,7 @@ import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
+import PageColumn from "./components/PageColumn";
 
 export const loginBootSequence = async (
   identities: readonly Identity[],
@@ -63,12 +64,17 @@ function webUsbAvailable(): boolean {
   return typeof nav !== "undefined" && typeof nav.usb !== "undefined";
 }
 
+async function onGetNeumaExtension(): Promise<void> {
+  const config = await getConfig();
+  window.open(config.neumaUrl, "_blank");
+}
+
 const Login = (): JSX.Element => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
 
-  const onLoginWithNeuma = async (_: object): Promise<void> => {
+  const onLoginWithNeuma = async (): Promise<void> => {
     try {
       billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
       const { installed, connected, identities } = await getExtensionStatus();
@@ -120,14 +126,9 @@ const Login = (): JSX.Element => {
 
   return (
     <PageColumn
-      icon="white"
-      primaryTitle="Welcome"
-      secondaryTitle="to your IOV Wallet"
-      subtitle="Continue to access your account"
-      primaryNextLabel="Continue with Neuma"
-      primaryNextClicked={onLoginWithNeuma}
-      secondaryNextLabel="Continue with Ledger Nano S"
-      secondaryNextClicked={onLoginWithLedger}
+      onLoginWithNeuma={onLoginWithNeuma}
+      onLoginWithLedger={onLoginWithLedger}
+      onGetNeumaExtension={onGetNeumaExtension}
     />
   );
 };

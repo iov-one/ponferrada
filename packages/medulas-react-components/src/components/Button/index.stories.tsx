@@ -36,6 +36,11 @@ storiesOf(`${medulasRoot}/components`, module).add("Buttons", () => (
         </Button>
       </GridItem>
       <GridItem marginBottom={4}>
+        <Button onClick={action("clicked")} color="inverted">
+          Inverted color
+        </Button>
+      </GridItem>
+      <GridItem marginBottom={4}>
         <Back onClick={action("clicked")}>Back</Back>
       </GridItem>
       <GridItem marginBottom={4}>
