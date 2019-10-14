@@ -3,7 +3,7 @@ import * as React from "react";
 import Billboard, { HPosition, VPosition } from "./Billboard";
 
 export interface BillboardContextInterface {
-  readonly show: (message: React.ReactNode) => void;
+  readonly show: (message: React.ReactNode, vPosition: VPosition, hPosition: HPosition) => void;
   readonly close: () => void;
 }
 
