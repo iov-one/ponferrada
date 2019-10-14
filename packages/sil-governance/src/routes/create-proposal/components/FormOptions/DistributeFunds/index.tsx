@@ -11,7 +11,7 @@ import {
 import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { parseRecipients } from "ui-logic";
 
-import RecipientsMembers from "./RecipientsMembers";
+import RecipientsMembers from "./components/RecipientsMembers";
 
 const IMPORT_FIELD = "Import recipients";
 
