@@ -1,5 +1,6 @@
 export { amountToGwei, amountToNumber, amountToString, stringToAmount } from "./balances";
 export { parseRecipients } from "./csv";
+export { ErrorParser } from "./error";
 export { round } from "./number";
 export { randomString } from "./random";
 export { singleton } from "./singleton";
@@ -8,5 +9,3 @@ export { ellipsify, ellipsifyMiddle } from "./strings";
 export { whenTrue } from "./testing";
 export { displayPeriod } from "./time";
 export { voteToString } from "./votes";
-export { Weave } from "./weave";
-export { ErrorParser } from "./error";
