@@ -16,7 +16,7 @@ import {
 } from "medulas-react-components";
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { Weave } from "ui-logic";
+import { ErrorParser } from "ui-logic";
 
 import { communicationTexts } from "../../../communication";
 import { sendSignAndPostRequest } from "../../../communication/signandpost";
@@ -208,7 +208,7 @@ const ProposalForm = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      const message = Weave.tryParseError(error) || "An unknown error occurred";
+      const message = ErrorParser.tryParseError(error) || "An unknown error occurred";
       toast.show(message, ToastVariant.ERROR);
     }
   };
