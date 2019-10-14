@@ -7,29 +7,27 @@ interface Props {
   readonly electors: Electors;
 }
 
-const MembersTable = ({ electors }: Props): JSX.Element => {
-  return (
-    <Table size="small">
-      <TableHead>
-        <TableRow>
-          <TableCell>Address</TableCell>
-          <TableCell align="right">Weight</TableCell>
+const MembersTable = ({ electors }: Props): JSX.Element => (
+  <Table size="small">
+    <TableHead>
+      <TableRow>
+        <TableCell>Address</TableCell>
+        <TableCell align="right">Weight</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {Object.keys(electors).map(address => (
+        <TableRow key={address}>
+          <TableCell>
+            <Typography>{address}</Typography>
+          </TableCell>
+          <TableCell align="right">
+            <Typography>{electors[address].weight}</Typography>
+          </TableCell>
         </TableRow>
-      </TableHead>
-      <TableBody>
-        {Object.keys(electors).map(address => (
-          <TableRow key={address}>
-            <TableCell>
-              <Typography>{address}</Typography>
-            </TableCell>
-            <TableCell align="right">
-              <Typography>{electors[address].weight}</Typography>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
+      ))}
+    </TableBody>
+  </Table>
+);
 
 export default MembersTable;
