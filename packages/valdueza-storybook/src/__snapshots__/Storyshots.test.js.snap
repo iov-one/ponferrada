@@ -2899,6 +2899,69 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/BillboardMessage Nauma 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-panel"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <img
+        alt="toolbar"
+        className="makeStyles-root makeStyles-toolbar"
+        src="toolbar.png"
+      />
+      <img
+        alt="zoom"
+        className="makeStyles-root makeStyles-zoom"
+        src="zoom.png"
+      />
+      <img
+        alt="logoZoom"
+        className="makeStyles-root makeStyles-logoZoom"
+        src="logo-zoom.svg"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        1
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <img
+          alt="arrow"
+          className="makeStyles-root makeStyles-arrowHead"
+          height={20}
+          src="arrow-head.svg"
+          width={20}
+        />
+        <img
+          alt="arrow"
+          className="makeStyles-root makeStyles-arrowBody"
+          height={83}
+          src="arrow-body.svg"
+          width={80}
+        />
+      </div>
+    </div>
+    <p
+      className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-gutterBottom MuiTypography-alignCenter"
+    >
+      Please authorize request in Neuma Browser Extension to continue.
+    </p>
+    <p
+      className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary MuiTypography-alignCenter"
+    >
+      Use the Neuma Browser Extension located in the Browser menu in order to authorize your request.
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
 <div
   style={
