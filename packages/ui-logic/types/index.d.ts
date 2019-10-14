@@ -9,3 +9,4 @@ export { whenTrue } from "./testing";
 export { displayPeriod } from "./time";
 export { voteToString } from "./votes";
 export { Weave } from "./weave";
+export { ErrorParser } from "./error";
