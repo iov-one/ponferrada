@@ -35,7 +35,7 @@ function Billboard({ show, children, message, hPosition, vPosition }: Props): JS
       alignItems={vPosition}
       width="100%"
       height="100%"
-      bgcolor="rgba(204, 204, 204, 0.5)"
+      bgcolor="rgba(26, 26, 26, 0.3)"
       className={classes.message}
     >
       {message}
