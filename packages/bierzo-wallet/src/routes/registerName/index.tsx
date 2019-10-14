@@ -13,6 +13,7 @@ import * as ReactRedux from "react-redux";
 import { history } from "..";
 import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
+import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
@@ -106,7 +107,15 @@ const RegisterUsername = (): JSX.Element => {
 
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
-      billboard.show(<BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />);
+      if (rpcEndpoint.type === "extension") {
+        billboard.show(<NeumaBillboardMessage />, "start", "flex-end");
+      } else {
+        billboard.show(
+          <BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "center",
+          "center",
+        );
+      }
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);

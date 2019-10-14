@@ -7,6 +7,7 @@ import { stringToAmount } from "ui-logic";
 import { history } from "..";
 import { generateSendTxRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
+import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
@@ -91,7 +92,16 @@ const Payment = (): JSX.Element => {
         amount,
         formValues[TEXTNOTE_FIELD],
       );
-      billboard.show(<BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />);
+      if (rpcEndpoint.type === "extension") {
+        billboard.show(<NeumaBillboardMessage />, "start", "flex-end");
+      } else {
+        billboard.show(
+          <BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "center",
+          "center",
+        );
+      }
+
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
