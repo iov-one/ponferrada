@@ -3,6 +3,7 @@ import { Block } from "medulas-react-components";
 import * as React from "react";
 
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
+import LedgerBillboardMessage from "./LedgerBillboardMessage";
 import NeumaBillboardMessage from "./NeumaBillboardMessage";
 
 storiesOf(`${bierzoRoot}/BillboardMessage`, module)
@@ -11,6 +12,13 @@ storiesOf(`${bierzoRoot}/BillboardMessage`, module)
     <DecoratedStorybook>
       <Block bgcolor="rgba(26, 26, 26, 0.3)" width="100%" height="100%" padding={4}>
         <NeumaBillboardMessage />
+      </Block>
+    </DecoratedStorybook>
+  ))
+  .add("Ledger", () => (
+    <DecoratedStorybook>
+      <Block bgcolor="rgba(26, 26, 26, 0.3)" width="100%" height="100%" padding={4}>
+        <LedgerBillboardMessage />
       </Block>
     </DecoratedStorybook>
   ));
