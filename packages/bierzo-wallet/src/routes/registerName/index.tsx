@@ -108,9 +108,17 @@ const RegisterUsername = (): JSX.Element => {
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
       if (rpcEndpoint.type === "extension") {
-        billboard.show(<NeumaBillboardMessage />, "start", "flex-end");
+        billboard.show(
+          <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "start",
+          "flex-end",
+        );
       } else {
-        billboard.show(<LedgerBillboardMessage />, "center", "center");
+        billboard.show(
+          <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "center",
+          "center",
+        );
       }
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
