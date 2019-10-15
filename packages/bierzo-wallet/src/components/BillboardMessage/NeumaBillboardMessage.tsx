@@ -8,6 +8,7 @@ import arrowHead from "./assets/arrow-head.svg";
 import logoZoom from "./assets/logo-zoom.svg";
 import toolbar from "./assets/toolbar.png";
 import zoom from "./assets/zoom.png";
+import { BillboardMessageProps } from "./index";
 
 const useStyles = makeStyles({
   panel: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-function NeumaBillboardMessage(): JSX.Element {
+function NeumaBillboardMessage({ text }: BillboardMessageProps): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 
@@ -88,7 +89,7 @@ function NeumaBillboardMessage(): JSX.Element {
       </Block>
 
       <Typography variant="body1" align="center" weight="semibold" gutterBottom>
-        Please authorize request in Neuma Browser Extension to continue.
+        {text}
       </Typography>
       <Typography variant="body2" align="center" color="textPrimary">
         Use the Neuma Browser Extension located in the Browser menu in order to authorize your request.
