@@ -12,7 +12,6 @@ import * as ReactRedux from "react-redux";
 
 import { history } from "..";
 import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
-import BillboardMessage from "../../components/BillboardMessage";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";

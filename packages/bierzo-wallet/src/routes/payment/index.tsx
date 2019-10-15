@@ -6,7 +6,6 @@ import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
 import { generateSendTxRequest } from "../../communication/requestgenerators";
-import BillboardMessage from "../../components/BillboardMessage";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";

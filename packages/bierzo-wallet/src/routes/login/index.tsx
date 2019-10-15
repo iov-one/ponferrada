@@ -9,7 +9,6 @@ import { getExtensionStatus } from "../../communication/extension";
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
-import BillboardMessage from "../../components/BillboardMessage";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import { getConfig, makeExtendedIdentities } from "../../config";
