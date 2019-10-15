@@ -13,6 +13,7 @@ import * as ReactRedux from "react-redux";
 import { history } from "..";
 import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
+import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
@@ -110,11 +111,7 @@ const RegisterUsername = (): JSX.Element => {
       if (rpcEndpoint.type === "extension") {
         billboard.show(<NeumaBillboardMessage />, "start", "flex-end");
       } else {
-        billboard.show(
-          <BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-          "center",
-          "center",
-        );
+        billboard.show(<LedgerBillboardMessage />, "center", "center");
       }
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
       if (transactionId === undefined) {
