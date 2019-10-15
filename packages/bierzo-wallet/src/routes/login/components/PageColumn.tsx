@@ -61,6 +61,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
     >
       <Block
         width={420}
+        minHeight={500}
         bgcolor="#F5F7F9"
         position="relative"
         overflow="hidden"

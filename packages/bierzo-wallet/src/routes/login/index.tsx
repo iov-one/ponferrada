@@ -10,6 +10,7 @@ import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
 import BillboardMessage from "../../components/BillboardMessage";
+import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import { getConfig, makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
@@ -76,7 +77,7 @@ const Login = (): JSX.Element => {
 
   const onLoginWithNeuma = async (): Promise<void> => {
     try {
-      billboard.show(<BillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />);
+      billboard.show(<NeumaBillboardMessage />, "start", "flex-end");
       const { installed, connected, identities } = await getExtensionStatus();
       if (!installed) {
         toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
@@ -103,7 +104,11 @@ const Login = (): JSX.Element => {
     }
 
     try {
-      billboard.show(<BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />);
+      billboard.show(
+        <BillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />,
+        "center",
+        "center",
+      );
       const request = await generateGetIdentitiesRequest();
       const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
       if (identities === undefined) {
