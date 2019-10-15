@@ -93,7 +93,7 @@ const RegisterUsername = (): JSX.Element => {
     const username = formValues[REGISTER_USERNAME_FIELD];
     let bnsIdentity: Identity | undefined;
     for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
-      if ((await getConnectionForChainId(identity.chainId)) instanceof BnsConnection) {
+      if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
         bnsIdentity = identity;
       }
     }
