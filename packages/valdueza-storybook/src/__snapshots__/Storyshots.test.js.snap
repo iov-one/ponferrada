@@ -2899,6 +2899,31 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/BillboardMessage Ledger 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-panel"
+  >
+    <img
+      alt="ledger"
+      className="makeStyles-root"
+      src="ledger.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-alignCenter"
+      >
+        Waiting for Ledger device to provide identity...
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo Wallet/BillboardMessage Neuma 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
