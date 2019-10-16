@@ -32,6 +32,17 @@ export const getAsideFilterOptions = (asideFilter: Element): string[] => {
   return Array.from(asideFilter.children, child => child.textContent || "");
 };
 
+export const getNewProposalButton = async (dashboardDom: React.Component): Promise<Element> => {
+  return ((await findRenderedDOMComponentWithId(dashboardDom, ASIDE_FILTER_HTML_ID)) as Element).children[1];
+};
+
+export const getBlockchainTimeLabel = async (dashboardDom: React.Component): Promise<string> => {
+  return (
+    ((await findRenderedDOMComponentWithId(dashboardDom, blockchainTimeHtmlId)) as Element).children[0]
+      .textContent || ""
+  );
+};
+
 export const getProposals = async (dashboardDom: React.Component): Promise<Element[]> => {
   const proposalList = (await findRenderedDOMComponentWithId(dashboardDom, PROPOSALS_HTML_ID)) as Element;
 

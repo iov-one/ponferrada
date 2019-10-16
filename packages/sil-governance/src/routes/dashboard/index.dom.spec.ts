@@ -87,14 +87,39 @@ describe("DOM > Feature > Dashboard", () => {
     ]);
   }, 60000);
 
-  it("has a proposal list with three proposals", async () => {
+  it("has a proposal list with nine proposals", async () => {
+    const proposals = await getProposals(dashboardDom);
+    expect(proposals.length).toBe(9);
+  }, 60000);
+
+  it("has a proposal list with six active proposals", async () => {
+    dashboardDom = await travelToDashboardActive(store);
+    const proposals = await getProposals(dashboardDom);
+    expect(proposals.length).toBe(6);
+  }, 60000);
+
+  it("has a proposal list with four authored proposals", async () => {
+    dashboardDom = await travelToDashboardAuthored(store);
+    const proposals = await getProposals(dashboardDom);
+    expect(proposals.length).toBe(4);
+  }, 60000);
+
+  it("has a proposal list with three ended proposals", async () => {
+    dashboardDom = await travelToDashboardEnded(store);
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(3);
   }, 60000);
 
-  it("has a proposal with correct fields", async () => {
-    const proposal = (await getProposals(dashboardDom))[2];
-    checkProposal(proposal);
+  // NOTE click fires "Cannot read property 'createEvent' of null"
+  it.skip("has an 'Add New Proposal' button that redirects to /create-proposal", async () => {
+    const newProposalButton = await getNewProposalButton(dashboardDom);
+    await click(newProposalButton);
+    await whenOnNavigatedToRoute(CREATE_PROPOSAL_ROUTE);
+  }, 60000);
+
+  it("has a 'Blockchain time' display", async () => {
+    const blockchainTimeLabel = await getBlockchainTimeLabel(dashboardDom);
+    expect(blockchainTimeLabel).toBe("Blockchain time");
   }, 60000);
 
   it("has an active proposal with correct voting panel", async () => {
