@@ -44,14 +44,31 @@ describe("DOM > Feature > Dashboard", () => {
     dashboardDom = await travelToDashboard(store);
   }, 60000);
 
-  it("has a header with a logo and a heading", async () => {
+  it("has a header with a logo", async () => {
+    const header = await getHeader(dashboardDom);
+    const logo = getHeaderLogo(header);
+    expect(logo.getAttribute("alt")).toBe("Logo");
+  }, 60000);
+
+  it("has a header with a heading", async () => {
+    const header = await getHeader(dashboardDom);
+    const heading = getHeaderHeading(header);
+    expect(heading).toBe("Governance");
+  }, 60000);
+
+  it("has a header with an user address", async () => {
     const header = await getHeader(dashboardDom);
 
-    const logo = getLogo(header);
-    expect(logo.getAttribute("alt")).toBe("Logo");
+    const address = getHeaderAddress(header);
+    expect(address).toBe(adminAddress);
+  }, 60000);
 
-    const heading = getHeading(header);
-    expect(heading).toBe("Governance");
+  it("has a header with links to electorates", async () => {
+    const header = await getHeader(dashboardDom);
+    const links = getHeaderLinks(header);
+    expect(links.length).toBe(2);
+    expect(links[0].textContent).toBe("Equal Electorate");
+    expect(links[1].textContent).toBe("Weighted Electorate");
   }, 60000);
 
   it("has an aside filter with four options", async () => {
