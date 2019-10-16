@@ -33,6 +33,10 @@ describe("DOM > Feature > Dashboard", () => {
       extension: {
         connected: true,
         installed: true,
+        governor: {
+          address: adminAddress,
+          getElectorates: getDummyElectorates,
+        },
       },
       proposals: getDummyProposalsState(),
       blockchain: {
