@@ -16108,6 +16108,7 @@ exports[`Storyshots Sanes Browser Extension/Welcome page Without persona 1`] = `
 exports[`Storyshots Sil Governance BlockchainTime 1`] = `
 <div
   className="MuiBox-root MuiBox-root makeStyles-container"
+  id="blockchain-time"
 >
   <p
     className="MuiTypography-root MuiTypography-body1"
@@ -16349,6 +16350,7 @@ exports[`Storyshots Sil Governance Dashboard page 1`] = `
       />
       <div
         className="MuiBox-root MuiBox-root makeStyles-container"
+        id="blockchain-time"
       >
         <p
           className="MuiTypography-root MuiTypography-body1"
