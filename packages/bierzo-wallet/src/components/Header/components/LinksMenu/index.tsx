@@ -4,13 +4,7 @@ import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../../../routes";
-import {
-  ADDRESSES_ROUTE,
-  BALANCE_ROUTE,
-  CONFIRM_TRANSACTION_ROUTE,
-  PAYMENT_ROUTE,
-  TRANSACTIONS_ROUTE,
-} from "../../../../routes/paths";
+import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -43,10 +37,6 @@ const onBalance = (): void => {
   history.push(BALANCE_ROUTE);
 };
 
-const onPayments = (): void => {
-  history.push(PAYMENT_ROUTE);
-};
-
 const onAddresses = (): void => {
   history.push(ADDRESSES_ROUTE);
 };
@@ -55,8 +45,7 @@ const onTransactions = (): void => {
   history.push(TRANSACTIONS_ROUTE);
 };
 
-const BALANCE_TEXT = "Balance";
-const PAYMENT_TEXT = "Payments";
+const BALANCE_TEXT = "Balances";
 const ADDRESSES_TEXT = "Addresses";
 export const TRANSACTIONS_TEXT = "Transactions";
 
@@ -83,11 +72,9 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
   const classes = useStyles();
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
-  const showPayment = path === PAYMENT_ROUTE || path.startsWith(CONFIRM_TRANSACTION_ROUTE);
   const showAddresses = path === ADDRESSES_ROUTE;
 
   const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
-  const paymentClasses = classNames(classes.item, showPayment ? classes.activated : undefined);
   const addressesClasses = classNames(classes.item, showAddresses ? classes.activated : undefined);
   const transactionsClasses = classNames(classes.item, showTransactions ? classes.activated : undefined);
 
@@ -95,10 +82,6 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
     <Block className={classes.root}>
       <Block className={balanceClasses}>
         <LinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
-        <Block className={classes.line} />
-      </Block>
-      <Block className={paymentClasses}>
-        <LinkMenuItem onClick={onPayments} itemTitle={PAYMENT_TEXT} />
         <Block className={classes.line} />
       </Block>
       <Block className={addressesClasses}>
