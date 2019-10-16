@@ -28,3 +28,11 @@ export const click = async (element: Element): Promise<void> => {
 
   await TestUtils.act(onClick as any);
 };
+
+export const input = (field: Element, value: any): void => {
+  TestUtils.act(() => {
+    TestUtils.Simulate.change(field, {
+      target: { value } as any,
+    });
+  });
+};

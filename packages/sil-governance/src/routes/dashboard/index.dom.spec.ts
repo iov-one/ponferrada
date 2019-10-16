@@ -122,9 +122,33 @@ describe("DOM > Feature > Dashboard", () => {
     expect(blockchainTimeLabel).toBe("Blockchain time");
   }, 60000);
 
-  it("has an active proposal with correct voting panel", async () => {
-    const activeProposal = (await getProposals(dashboardDom))[2];
-    checkActiveVotingPanel(activeProposal);
+  // NOTE not able to change SelectField value with input()
+  it.skip("has a sorting menu that sorts by expiry date, start date, or vote", async () => {
+    const sortSelect = findRenderedDOMComponentWithTag(dashboardDom, "input");
+
+    input(sortSelect, "Expiry Date");
+
+    let proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
+
+    input(sortSelect, "Start Date");
+
+    proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
+
+    input(sortSelect, "Vote");
+
+    proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
+
+    input(sortSelect, "None");
+
+    proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
   }, 60000);
 
   it("has an ended proposal with correct voting panel", async () => {
