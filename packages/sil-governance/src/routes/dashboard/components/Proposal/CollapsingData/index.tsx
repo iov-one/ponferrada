@@ -5,6 +5,7 @@ import React, { useState } from "react";
 
 import Description from "./Description";
 import DisplayOptions from "./DisplayOptions";
+import ReadMore from "./ReadMore";
 
 interface Props {
   readonly description: string;
@@ -14,28 +15,17 @@ interface Props {
 const CollapsingData = ({ description, action }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const onClick = (): void => {
+  const toggleExpanded = (): void => {
     setExpanded(prevExpanded => !prevExpanded);
-  };
-
-  const ReadMore = (): JSX.Element => {
-    return (
-      <Block marginTop={2}>
-        <Description fullDescription={description} expanded={expanded} />
-        <Typography inline link onClick={onClick} variant="body2" weight="semibold">
-          Read more
-        </Typography>
-      </Block>
-    );
   };
 
   return (
     <Block marginTop={2}>
-      {!expanded && <ReadMore />}
+      {!expanded && <ReadMore description={description} toggleExpanded={toggleExpanded} />}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Description fullDescription={description} expanded={expanded} />
         <DisplayOptions action={action} />
-        <Typography inline link onClick={onClick} variant="body2" weight="semibold">
+        <Typography inline link onClick={toggleExpanded} variant="body2" weight="semibold">
           Read less
         </Typography>
       </Collapse>
