@@ -6,7 +6,7 @@ import { stringToAmount } from "ui-logic";
 
 import { history } from "..";
 import { generateSendTxRequest } from "../../communication/requestgenerators";
-import BillboardMessage from "../../components/BillboardMessage";
+import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isIov, lookupRecipientAddressByName } from "../../logic/account";
@@ -95,11 +95,7 @@ const Payment = (): JSX.Element => {
       if (rpcEndpoint.type === "extension") {
         billboard.show(<NeumaBillboardMessage />, "start", "flex-end");
       } else {
-        billboard.show(
-          <BillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-          "center",
-          "center",
-        );
+        billboard.show(<LedgerBillboardMessage />, "center", "center");
       }
 
       const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
