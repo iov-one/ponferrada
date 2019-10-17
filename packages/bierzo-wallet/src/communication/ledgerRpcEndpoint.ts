@@ -36,7 +36,7 @@ function isArrayOfString(data: unknown): data is readonly string[] {
 }
 
 export const ledgerRpcEndpoint: RpcEndpoint = {
-  authorizeGetIdentitiesMessage: "Waiting for Ledger device to provide identity.",
+  authorizeGetIdentitiesMessage: "Waiting for Ledger device to provide identity...",
   authorizeSignAndPostMessage: "Please sign transaction on Ledger device to continue.",
   notAvailableMessage: "Please connect your Ledger Nano S, open the IOV app and try again.",
   noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",

@@ -4,6 +4,7 @@ import { Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
 import ledger from "./assets/ledger.svg";
+import { BillboardMessageProps } from "./index";
 
 const useStyles = makeStyles({
   panel: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-function LedgerBillboardMessage(): JSX.Element {
+function LedgerBillboardMessage({ text }: BillboardMessageProps): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 
@@ -33,7 +34,7 @@ function LedgerBillboardMessage(): JSX.Element {
 
       <Block marginTop={4}>
         <Typography variant="body1" align="center" weight="semibold">
-          Waiting for Ledger device to provide identity...
+          {text}
         </Typography>
       </Block>
     </Block>
