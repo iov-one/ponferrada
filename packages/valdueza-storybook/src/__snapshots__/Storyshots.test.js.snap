@@ -254,32 +254,10 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -335,29 +313,6 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -1525,32 +1480,10 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -1606,29 +1539,6 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -2090,32 +2000,10 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -2171,29 +2059,6 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -2368,32 +2233,10 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -2449,29 +2292,6 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -2655,32 +2475,10 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -2736,29 +2534,6 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -3002,32 +2777,10 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -3083,29 +2836,6 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -3185,32 +2915,10 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -3266,29 +2974,6 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-invisible MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -3370,32 +3055,10 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -3451,29 +3114,6 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -3580,32 +3220,10 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -3661,29 +3279,6 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
@@ -3776,32 +3371,10 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Balance"
+              id="Balances"
               onClick={[Function]}
             >
-              Balance
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Payments"
-              onClick={[Function]}
-            >
-              Payments
+              Balances
             </h6>
           </div>
         </div>
@@ -3857,29 +3430,6 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
     <div
       className="MuiBox-root MuiBox-root"
     />
-    <div
-      className="makeStyles-root"
-      onClick={[Function]}
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <span
-          className="MuiBadge-root"
-        >
-          <img
-            alt="Transactions Menu"
-            className="makeStyles-root"
-            src="bell.svg"
-          />
-          <span
-            className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-dot"
-          >
-            
-          </span>
-        </span>
-      </div>
-    </div>
     <div
       className="makeStyles-root"
       id="hi-menu"
