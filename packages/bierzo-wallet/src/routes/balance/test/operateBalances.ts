@@ -1,7 +1,7 @@
 import { ElementHandle, Page } from "puppeteer";
 import { whenTrue } from "ui-logic";
 
-const mainMenuH6Elements = 4;
+const mainMenuH6Elements = 3;
 const nonBalanceH6Elements = mainMenuH6Elements + 1 /* Hi! menu */ + 1 /* Your currencies */;
 const numberOfTokensFromFaucet = 4;
 
