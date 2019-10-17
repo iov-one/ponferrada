@@ -1,17 +1,15 @@
 import { Block, Typography } from "medulas-react-components";
-import React from "react";
-
-import Description from "./Description";
+import React, { ReactNode } from "react";
 
 interface Props {
-  readonly description: string;
+  readonly children: ReactNode;
   readonly toggleExpanded: () => void;
 }
 
-const ReadMore = ({ description, toggleExpanded }: Props): JSX.Element => {
+const ReadMore = ({ children, toggleExpanded }: Props): JSX.Element => {
   return (
     <Block marginTop={2}>
-      <Description fullDescription={description} expanded={false} />
+      {children}
       <Typography inline link onClick={toggleExpanded} variant="body2" weight="semibold">
         Read more
       </Typography>

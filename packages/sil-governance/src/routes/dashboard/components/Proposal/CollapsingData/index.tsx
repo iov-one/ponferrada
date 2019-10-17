@@ -21,7 +21,11 @@ const CollapsingData = ({ description, action }: Props): JSX.Element => {
 
   return (
     <Block marginTop={2}>
-      {!expanded && <ReadMore description={description} toggleExpanded={toggleExpanded} />}
+      {!expanded && (
+        <ReadMore toggleExpanded={toggleExpanded}>
+          <Description fullDescription={description} expanded={false} />
+        </ReadMore>
+      )}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Description fullDescription={description} expanded={expanded} />
         <DisplayOptions action={action} />
