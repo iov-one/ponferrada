@@ -129,7 +129,7 @@ describe("The /balance route", () => {
       balanceDom = await travelToBalance(store);
     });
 
-    it("should show that there is no balance available", async () => {
+    fit("should show that there is no balance available", async () => {
       const noFundsMessage = getNoFundsMessage(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
 
       expect(noFundsMessage).toBe("No funds available");
