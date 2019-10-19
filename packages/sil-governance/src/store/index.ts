@@ -1,6 +1,6 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from "redux";
+import { applyMiddleware, compose, createStore, DeepPartial, Middleware, Store } from "redux";
 
-import reducer, { RootReducer, RootState } from "./reducers";
+import reducers, { RootState } from "./reducers";
 
 const composeEnhancers =
   (typeof window === "object" && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || // eslint-disable-line
@@ -8,8 +8,8 @@ const composeEnhancers =
 
 const middlewares: readonly Middleware[] = [];
 
-export const configureStore = (): Store<RootReducer> => {
-  const store = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
+export const configureStore = (): Store<RootState> => {
+  const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
   if (process.env.NODE_ENV !== "production" && module.hot) {
     module.hot.accept("./reducers", (): void => {
@@ -22,9 +22,6 @@ export const configureStore = (): Store<RootReducer> => {
   return store;
 };
 
-/**
- * This method can only be used in test enviromnets
- * @param localState Initial redux object
- */
-export const aNewStore = (localState?: object): Store<RootState> =>
-  createStore(reducer, localState, composeEnhancers(applyMiddleware(...middlewares)));
+export const aNewStore = (preloadedStore?: DeepPartial<RootState>): Store<RootState> => {
+  return createStore(reducers, preloadedStore, composeEnhancers(applyMiddleware(...middlewares)));
+};
