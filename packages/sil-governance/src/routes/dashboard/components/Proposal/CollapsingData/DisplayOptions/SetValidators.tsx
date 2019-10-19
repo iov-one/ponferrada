@@ -1,6 +1,7 @@
 import { SetValidatorsAction } from "@iov/bns";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
+import { ellipsifyMiddle } from "ui-logic";
 
 interface Props {
   readonly action: SetValidatorsAction;
@@ -8,7 +9,7 @@ interface Props {
 
 const SetValidators = ({ action }: Props): JSX.Element => {
   const validators = Object.entries(action.validatorUpdates).map(([validator, props]) => {
-    const validatorLabel = `Validator ${validator.slice(8, 11)}...${validator.slice(-3)}:`;
+    const validatorLabel = `Validator ${ellipsifyMiddle(validator, 6)} -`;
 
     return (
       <Block key={validator} marginTop={0.5} marginBottom={1}>

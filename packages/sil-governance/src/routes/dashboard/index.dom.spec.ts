@@ -1,28 +1,39 @@
+import { findRenderedDOMComponentWithTag } from "react-dom/test-utils";
 import { ReadonlyDate } from "readonly-date";
 import { Store } from "redux";
 
 import { aNewStore } from "../../store";
-import { getDummyProposalsState } from "../../store/proposals/dummyData";
+import { adminAddress, getDummyElectorates, getDummyProposalsState } from "../../store/proposals/dummyData";
 import { RootState } from "../../store/reducers";
-import { click } from "../../utils/test/dom";
+import { click, input } from "../../utils/test/dom";
+import { whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import { CREATE_PROPOSAL_ROUTE } from "../paths";
 import {
-  checkActiveVotingPanel,
-  checkEndedVotingPanel,
-  checkProposal,
+  checkCommonFields,
+  checkCreateTextResolutionFields,
+  checkDistributeFundsFields,
+  checkReleaseEscrowFields,
+  checkSetValidatorsFields,
+  checkUpdateElectionRuleFields,
+  checkUpdateElectorateFields,
+  checkVotingPanel,
   getAsideFilter,
   getAsideFilterOptions,
+  getBlockchainTimeLabel,
   getHeader,
-  getHeading,
-  getLogo,
+  getHeaderAddress,
+  getHeaderHeading,
+  getHeaderLinks,
+  getHeaderLogo,
+  getNewProposalButton,
   getProposals,
 } from "./test/operateDashboard";
-import { travelToDashboard } from "./test/travelToDashboard";
-
-const shortenedDescription =
-  "Really Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam massa, in commodo ... ";
-
-const longDescription =
-  "Really Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam massa, in commodo sapien. Ut elementum urna sed nisl aliquet, eu feugiat magna dignissim. Sed nisi ipsum, egestas lacinia velit at, convallis malesuada elit. Sed placerat malesuada ligula, sed lobortis mauris aliquet eu. Nullam dignissim dui ut tempor imperdiet. Nulla vitae placerat enim.Maecenas volutpat lorem et egestas blandit. Etiam vitae justo eros. Etiam imperdiet ligula eros, a sollicitudin nisi vulputate et. Duis mattis congue sagittis. Donec ornare eros ut turpis sollicitudin, sed porta lectus molestie. Donec in orci dignissim, vestibulum lorem at, porta mi. Donec maximus neque lorem, ut mattis leo dapibus ac. Duis eget ex dolor. Phasellus viverra, nisi id mollis luctus, augue ante efficitur odio, eu sodales nisl lorem vel sapien. Curabitur hendrerit felis enim, ultrices lobortis orci pretium sed. Fusce at massa eu nulla interdum placerat sed nec odio. Donec faucibus orci sit amet arcu varius, id pharetra eros auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec mi dui, ornare non tristique et, pellentesque et leo. Quisque varius eu arcu non congue. Sed pellentesque ligula a elit aliquam hendrerit.Pellentesque metus libero, tincidunt vitae vehicula nec, luctus ac diam. Praesent vel blandit metus. Etiam dignissim ex tellus, pharetra bibendum erat elementum tempor. Proin augue erat, facilisis eget vehicula tempor, feugiat a diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras at tellus ut erat tincidunt tempor. Quisque faucibus urna ac feugiat finibus. Etiam tristique neque venenatis luctus volutpat.";
+import {
+  travelToDashboard,
+  travelToDashboardActive,
+  travelToDashboardAuthored,
+  travelToDashboardEnded,
+} from "./test/travelToDashboard";
 
 describe("DOM > Feature > Dashboard", () => {
   let store: Store<RootState>;
@@ -33,6 +44,10 @@ describe("DOM > Feature > Dashboard", () => {
       extension: {
         connected: true,
         installed: true,
+        governor: {
+          address: adminAddress,
+          getElectorates: getDummyElectorates,
+        },
       },
       proposals: getDummyProposalsState(),
       blockchain: {
@@ -44,14 +59,31 @@ describe("DOM > Feature > Dashboard", () => {
     dashboardDom = await travelToDashboard(store);
   }, 60000);
 
-  it("has a header with a logo and a heading", async () => {
+  it("has a header with a logo", async () => {
+    const header = await getHeader(dashboardDom);
+    const logo = getHeaderLogo(header);
+    expect(logo.getAttribute("alt")).toBe("Logo");
+  }, 60000);
+
+  it("has a header with a heading", async () => {
+    const header = await getHeader(dashboardDom);
+    const heading = getHeaderHeading(header);
+    expect(heading).toBe("Governance");
+  }, 60000);
+
+  it("has a header with an user address", async () => {
     const header = await getHeader(dashboardDom);
 
-    const logo = getLogo(header);
-    expect(logo.getAttribute("alt")).toBe("Logo");
+    const address = getHeaderAddress(header);
+    expect(address).toBe(adminAddress);
+  }, 60000);
 
-    const heading = getHeading(header);
-    expect(heading).toBe("Governance");
+  it("has a header with links to electorates", async () => {
+    const header = await getHeader(dashboardDom);
+    const links = getHeaderLinks(header);
+    expect(links.length).toBe(2);
+    expect(links[0].textContent).toBe("Equal Electorate");
+    expect(links[1].textContent).toBe("Weighted Electorate");
   }, 60000);
 
   it("has an aside filter with four options", async () => {
@@ -66,36 +98,157 @@ describe("DOM > Feature > Dashboard", () => {
     ]);
   }, 60000);
 
-  it("has a proposal list with three proposals", async () => {
+  it("has a proposal list with nine proposals", async () => {
+    const proposals = await getProposals(dashboardDom);
+    expect(proposals.length).toBe(9);
+  }, 60000);
+
+  it("has a proposal list with six active proposals", async () => {
+    dashboardDom = await travelToDashboardActive(store);
+    const proposals = await getProposals(dashboardDom);
+    expect(proposals.length).toBe(6);
+  }, 60000);
+
+  it("has a proposal list with four authored proposals", async () => {
+    dashboardDom = await travelToDashboardAuthored(store);
+    const proposals = await getProposals(dashboardDom);
+    expect(proposals.length).toBe(4);
+  }, 60000);
+
+  it("has a proposal list with three ended proposals", async () => {
+    dashboardDom = await travelToDashboardEnded(store);
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(3);
   }, 60000);
 
-  it("has a proposal with correct fields", async () => {
-    const proposal = (await getProposals(dashboardDom))[2];
-    checkProposal(proposal);
+  // NOTE click fires "Cannot read property 'createEvent' of null"
+  it.skip("has an 'Add New Proposal' button that redirects to /create-proposal", async () => {
+    const newProposalButton = await getNewProposalButton(dashboardDom);
+    await click(newProposalButton);
+    await whenOnNavigatedToRoute(CREATE_PROPOSAL_ROUTE);
   }, 60000);
 
-  it("has an active proposal with correct voting panel", async () => {
-    const activeProposal = (await getProposals(dashboardDom))[2];
-    checkActiveVotingPanel(activeProposal);
+  it("has a 'Blockchain time' display", async () => {
+    const blockchainTimeLabel = await getBlockchainTimeLabel(dashboardDom);
+    expect(blockchainTimeLabel).toBe("Blockchain time");
   }, 60000);
 
-  it("has an ended proposal with correct voting panel", async () => {
-    const endedProposal = (await getProposals(dashboardDom))[0];
-    checkEndedVotingPanel(endedProposal);
+  // NOTE not able to change SelectField value with input()
+  it.skip("has a sorting menu that sorts by expiry date, start date, or vote", async () => {
+    const sortSelect = findRenderedDOMComponentWithTag(dashboardDom, "input");
+
+    input(sortSelect, "Expiry Date");
+
+    let proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
+
+    input(sortSelect, "Start Date");
+
+    proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
+
+    input(sortSelect, "Vote");
+
+    proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
+
+    input(sortSelect, "None");
+
+    proposals = await getProposals(dashboardDom);
+    expect(proposals[0].children[0].children[0].textContent).toBe("");
+    expect(proposals[8].children[0].children[0].textContent).toBe("");
   }, 60000);
 
-  it("has a Read more / Read less toggle when description too long", async () => {
-    const longProposal = (await getProposals(dashboardDom))[1].children[0];
-    const readToggle = longProposal.children[2].children[0].children[1];
+  it("has an Amend Protocol proposal with correct fields", async () => {
+    const proposalId = 1;
+    const proposalIndex = 9 - proposalId;
 
-    await click(readToggle);
-    let description = longProposal.children[2].children[0].children[0].children[0].children[0].textContent;
-    expect(description).toBe(longDescription);
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkCreateTextResolutionFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
 
-    await click(readToggle);
-    description = longProposal.children[2].children[0].children[0].textContent;
-    expect(description).toBe(shortenedDescription);
+  it("has an Add Committee Member proposal with correct fields", async () => {
+    const proposalId = 2;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkUpdateElectorateFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has a Remove Committee Member proposal with correct fields", async () => {
+    const proposalId = 3;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkUpdateElectorateFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has an Amend Committee Threshold proposal with correct fields", async () => {
+    const proposalId = 4;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkUpdateElectionRuleFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has an Amend Committee Quorum proposal with correct fields", async () => {
+    const proposalId = 5;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkUpdateElectionRuleFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has an Add Validator proposal with correct fields", async () => {
+    const proposalId = 6;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkSetValidatorsFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has a Remove Validator proposal with correct fields", async () => {
+    const proposalId = 7;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkSetValidatorsFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has a Release Guarantee Funds proposal with correct fields", async () => {
+    const proposalId = 8;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkReleaseEscrowFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
+  }, 60000);
+
+  it("has a Distribute Funds proposal with correct fields", async () => {
+    const proposalId = 9;
+    const proposalIndex = 9 - proposalId;
+
+    const proposal = (await getProposals(dashboardDom))[proposalIndex];
+    checkCommonFields(proposal, proposalId);
+    await checkDistributeFundsFields(proposal, proposalId);
+    checkVotingPanel(proposal, proposalId);
   }, 60000);
 });

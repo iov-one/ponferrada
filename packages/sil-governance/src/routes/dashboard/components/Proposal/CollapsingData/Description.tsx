@@ -2,7 +2,7 @@ import { Typography } from "medulas-react-components";
 import React from "react";
 import { ellipsify } from "ui-logic";
 
-const DESC_MAX_LENGTH = 180;
+export const DESC_MAX_LENGTH = 180;
 
 interface Props {
   readonly fullDescription: string;
