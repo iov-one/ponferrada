@@ -1,19 +1,18 @@
 import { combineReducers, Reducer } from "redux";
-import { StateType } from "typesafe-actions";
 
 import { blockchainReducer, BlockchainState } from "./blockchain";
 import { extensionReducer, ExtensionState } from "./extension";
 import { proposalsReducer, ProposalsState } from "./proposals";
 import { transactionsReducer, TransactionsState } from "./transactions";
 
-export interface RootReducer {
+export interface RootState {
   extension: ExtensionState;
   blockchain: BlockchainState;
   proposals: ProposalsState;
   transactions: TransactionsState;
 }
 
-const createRootReducer = (): Reducer<RootReducer> =>
+const createRootReducer = (): Reducer<RootState> =>
   combineReducers({
     extension: extensionReducer,
     blockchain: blockchainReducer,
@@ -21,5 +20,4 @@ const createRootReducer = (): Reducer<RootReducer> =>
     transactions: transactionsReducer,
   });
 
-export type RootState = StateType<ReturnType<typeof createRootReducer>>;
 export default createRootReducer();
