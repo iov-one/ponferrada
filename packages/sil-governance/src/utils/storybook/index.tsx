@@ -1,23 +1,25 @@
 import { MedulasThemeProvider } from "medulas-react-components";
 import * as React from "react";
 import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router";
+import { DeepPartial } from "redux";
 
-import { configureStore } from "../../store";
+import { aNewStore } from "../../store";
+import { RootState } from "../../store/reducers";
 import { globalStyles } from "../../theme/globalStyles";
 
 export const silRoot = "Sil Governance";
 
-const store = configureStore();
-
 interface Props {
   readonly children: React.ReactNode;
+  readonly storeProps?: DeepPartial<RootState>;
 }
 
-const DecoratedStorybook = ({ children }: Props): JSX.Element => {
+const DecoratedStorybook = ({ children, storeProps }: Props): JSX.Element => {
   return (
-    <Provider store={store}>
+    <Provider store={aNewStore(storeProps)}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>
-        {children}
+        <MemoryRouter>{children}</MemoryRouter>
       </MedulasThemeProvider>
     </Provider>
   );
