@@ -18,8 +18,8 @@ const storeProps: any = {
   },
   proposals: getDummyProposalsState(),
   blockchain: {
-    lastBlockTime: new ReadonlyDate(),
-    lastBlockheight: 44447774,
+    lastBlockTime: new ReadonlyDate(1568619550 * 1000),
+    lastBlockheight: 156484,
   },
 };
 
