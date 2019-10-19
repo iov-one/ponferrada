@@ -15701,7 +15701,7 @@ exports[`Storyshots Sil Governance BlockchainTime 1`] = `
 </div>
 `;
 
-exports[`Storyshots Sil Governance Dashboard page 1`] = `
+exports[`Storyshots Sil Governance Dashboard 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
 >
@@ -15736,7 +15736,7 @@ exports[`Storyshots Sil Governance Dashboard page 1`] = `
           <p
             className="MuiTypography-root MuiTypography-body2"
           >
-            
+            adminAddress
           </p>
           <p
             className="MuiTypography-root makeStyles-inline MuiTypography-body2"
@@ -15935,9 +15935,9 @@ exports[`Storyshots Sil Governance Dashboard page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body2"
         >
-          1/1/1970, 12:00:00 AM
+          9/16/2019, 7:39:10 AM
            (Height 
-          0
+          156484
           )
         </p>
       </div>
@@ -15951,8 +15951,1391 @@ exports[`Storyshots Sil Governance Dashboard page 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          No proposals available
+          Sort by
         </p>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="makeStyles-dropdown"
+            onClick={[Function]}
+          >
+            <div
+              className="MuiInputBase-root makeStyles-root makeStyles-root"
+              onClick={[Function]}
+              role="button"
+            >
+              <input
+                autoComplete="off"
+                className="MuiInputBase-input makeStyles-input"
+                name="Sort by"
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                readOnly={true}
+                type="text"
+                value=""
+              />
+            </div>
+            <img
+              alt="Phone Menu"
+              className="makeStyles-root makeStyles-noShrink"
+              height="5"
+              src="selectChevron.svg"
+              width="8"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+        id="proposals"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Distribute Funds
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  9
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    elector5Address
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Long description for Distribute Funds: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam mass... 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expires on
+                   
+                  10/13/2019, 2:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/13/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  0%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                1
+                 / 
+                3
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                0
+                 / 
+                1
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                25
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Release Guarantee Funds
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  8
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    adminAddress
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Short description for Release Guarantee Funds 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expired on
+                   
+                  10/12/2019, 1:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/11/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  66%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                PROPOSAL 
+                ACCEPTED
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                9
+                 / 
+                5
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                6
+                 / 
+                6
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                90
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Remove Validator
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  7
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    elector4Address
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Short description for Remove Validator 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expires on
+                   
+                  10/10/2019, 2:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/10/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  0%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                1
+                 / 
+                3
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                0
+                 / 
+                1
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                25
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Add Validator
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  6
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    adminAddress
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Long description for Add Validator: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliquam massa, ... 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expires on
+                   
+                  10/9/2019, 1:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/8/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  66%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                3
+                 / 
+                5
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                2
+                 / 
+                2
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                30
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Amend Committee Quorum
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  5
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    elector3Address
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Short description for Amend Committee Quorum 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expired on
+                   
+                  10/7/2019, 2:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/7/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  0%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                PROPOSAL 
+                REJECTED
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                3
+                 / 
+                3
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                0
+                 / 
+                2
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                75
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Amend Committee Threshold
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  4
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    adminAddress
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Short description for Amend Committee Threshold 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expires on
+                   
+                  10/6/2019, 1:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/5/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  33%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                3
+                 / 
+                5
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                1
+                 / 
+                2
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                30
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Remove Committee Member
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  3
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    elector2Address
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Long description for Remove Committee Member: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod dolor mauris, a ultricies augue pulvinar eget. Nullam sed aliqu... 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expires on
+                   
+                  10/4/2019, 2:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/4/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  0%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                1
+                 / 
+                3
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                0
+                 / 
+                1
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                25
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Add Committee Member
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  2
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    adminAddress
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Short description for Add Committee Member 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expired on
+                   
+                  10/3/2019, 1:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/2/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  77%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                PROPOSAL 
+                ACCEPTED
+              </p>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                9
+                 / 
+                5
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                7
+                 / 
+                6
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                90
+                %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-title MuiTypography-h6"
+              >
+                Amend Protocol
+              </h6>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+              >
+                ID:
+              </p>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  1
+                </p>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Author:
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    elector1Address
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+                >
+                  Short description for Amend Protocol 
+                </p>
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-body2"
+                  onClick={[Function]}
+                >
+                  Read more
+                </p>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body2"
+                >
+                  Expires on
+                   
+                  10/1/2019, 2:00:00 AM
+                </p>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2"
+                  >
+                    Starts on
+                     
+                    10/1/2019, 1:00:00 AM
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-status"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-winnerBar"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2"
+                >
+                  100%
+                   Yes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Votes needed: 
+                2
+                 / 
+                3
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                "Yes" needed: 
+                2
+                 / 
+                1
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                Participation: 
+                50
+                %
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
