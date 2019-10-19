@@ -13,7 +13,7 @@ export interface RootState {
 }
 
 const createRootReducer = (): Reducer<RootState> =>
-  combineReducers({
+  combineReducers<RootState>({
     extension: extensionReducer,
     blockchain: blockchainReducer,
     proposals: proposalsReducer,

@@ -1,4 +1,4 @@
-import { applyMiddleware, compose, createStore, DeepPartial, Middleware, Store } from "redux";
+import { applyMiddleware, compose, createStore, Middleware, Store } from "redux";
 
 import reducers, { RootState } from "./reducers";
 
@@ -22,6 +22,6 @@ export const configureStore = (): Store<RootState> => {
   return store;
 };
 
-export const aNewStore = (preloadedStore?: DeepPartial<RootState>): Store<RootState> => {
+export const aNewStore = (preloadedStore?: any): Store<RootState> => {
   return createStore(reducers, preloadedStore, composeEnhancers(applyMiddleware(...middlewares)));
 };
