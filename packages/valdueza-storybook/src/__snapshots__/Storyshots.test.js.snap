@@ -17492,3 +17492,511 @@ exports[`Storyshots Sil Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots Sil Governance/Show Electorate Equal Electorate 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="header"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <img
+        alt="Logo"
+        className="makeStyles-root"
+        height="64px"
+        src="iov-logo-title.svg"
+      />
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5"
+      >
+        Governance
+      </h5>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body2"
+          >
+            adminAddress
+          </p>
+          <p
+            className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+          >
+            Not a member of any electorate
+          </p>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <img
+              alt="Logo"
+              className="makeStyles-root"
+              src="user.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+        id="aside-filter"
+      >
+        <div
+          className="MuiDrawer-root MuiDrawer-docked"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+          >
+            <ul
+              className="MuiList-root makeStyles-list MuiList-padding"
+            >
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    All Elections
+                  </span>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    Active Elections
+                  </span>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    Authored Elections
+                  </span>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    Ended Elections
+                  </span>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-addProposal"
+          onClick={[Function]}
+        >
+          <img
+            alt="Add Proposal"
+            className="makeStyles-root makeStyles-addIcon"
+            src="add.svg"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              Add New Proposal
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-container"
+        id="blockchain-time"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          Blockchain time
+        </p>
+        <p
+          className="MuiTypography-root MuiTypography-body2"
+        >
+          9/16/2019, 7:39:10 AM
+           (Height 
+          156484
+          )
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        Electorate not found
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Sil Governance/Show Electorate Weighted Electorate 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="header"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <img
+        alt="Logo"
+        className="makeStyles-root"
+        height="64px"
+        src="iov-logo-title.svg"
+      />
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5"
+      >
+        Governance
+      </h5>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body2"
+          >
+            adminAddress
+          </p>
+          <p
+            className="MuiTypography-root makeStyles-inline MuiTypography-body2"
+          >
+            Not a member of any electorate
+          </p>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <img
+              alt="Logo"
+              className="makeStyles-root"
+              src="user.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+        id="aside-filter"
+      >
+        <div
+          className="MuiDrawer-root MuiDrawer-docked"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+          >
+            <ul
+              className="MuiList-root makeStyles-list MuiList-padding"
+            >
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    All Elections
+                  </span>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    Active Elections
+                  </span>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    Authored Elections
+                  </span>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <span
+                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                  >
+                    Ended Elections
+                  </span>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-addProposal"
+          onClick={[Function]}
+        >
+          <img
+            alt="Add Proposal"
+            className="makeStyles-root makeStyles-addIcon"
+            src="add.svg"
+          />
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              Add New Proposal
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-container"
+        id="blockchain-time"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          Blockchain time
+        </p>
+        <p
+          className="MuiTypography-root MuiTypography-body2"
+        >
+          9/16/2019, 7:39:10 AM
+           (Height 
+          156484
+          )
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      >
+        Electorate not found
+      </p>
+    </div>
+  </div>
+</div>
+`;
