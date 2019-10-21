@@ -2148,13 +2148,11 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
                 />
                 <h5
                   className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-                  onClick={[Function]}
                 >
                   8.25 BASH
                 </h5>
                 <h5
                   className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-                  onClick={[Function]}
                 >
                   12.26775 CASH
                 </h5>
