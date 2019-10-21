@@ -18,6 +18,6 @@ export const travelToPayment = async (store: Store): Promise<React.Component> =>
 };
 
 export async function travelToPaymentE2E(page: Page): Promise<void> {
-  await page.click(`#${PAYMENT_ROUTE.replace("/", "\\/")}`);
+  await page.click("h5:nth-of-type(1n)");
   await whenOnNavigatedToE2eRoute(page, PAYMENT_ROUTE);
 }
