@@ -44,7 +44,6 @@ storiesOf(BALANCE_STORY_PATH, module)
           rpcEndpointType="extension"
           balances={BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
-          onReceivePayment={linkTo(bierzoRoot, RECEIVE_PAYMENT_STORY_PATH)}
           onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         />
       </PageMenu>
@@ -58,7 +57,6 @@ storiesOf(BALANCE_STORY_PATH, module)
           rpcEndpointType="extension"
           balances={NO_BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
-          onReceivePayment={linkTo(bierzoRoot, RECEIVE_PAYMENT_STORY_PATH)}
           onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         />
       </PageMenu>
@@ -72,7 +70,6 @@ storiesOf(BALANCE_STORY_PATH, module)
           rpcEndpointType="ledger"
           balances={NO_BALANCE}
           onSendPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
-          onReceivePayment={linkTo(bierzoRoot, RECEIVE_PAYMENT_STORY_PATH)}
           onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         />
       </PageMenu>
