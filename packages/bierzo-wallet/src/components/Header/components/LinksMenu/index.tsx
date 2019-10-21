@@ -46,7 +46,7 @@ const onTransactions = (): void => {
 };
 
 const BALANCE_TEXT = "Balances";
-const ADDRESSES_TEXT = "Addresses";
+export const ADDRESSES_TEXT = "Addresses";
 export const TRANSACTIONS_TEXT = "Transactions";
 
 interface MenuItemProps {
@@ -84,7 +84,7 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
         <LinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
         <Block className={classes.line} />
       </Block>
-      <Block className={addressesClasses} id={ADDRESSES_ROUTE}>
+      <Block className={addressesClasses}>
         <LinkMenuItem onClick={onAddresses} itemTitle={ADDRESSES_TEXT} />
         <Block className={classes.line} />
       </Block>
