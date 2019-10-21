@@ -1,9 +1,6 @@
-import { IconDefinition } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
-import SvgIcon from "@material-ui/core/SvgIcon";
 import { useTheme } from "@material-ui/styles";
 import { Block, makeStyles } from "medulas-react-components";
 import React from "react";
