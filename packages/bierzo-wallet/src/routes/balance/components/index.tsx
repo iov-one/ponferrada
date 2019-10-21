@@ -1,4 +1,6 @@
 import { Amount } from "@iov/bcp";
+import { Theme } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 import { Block, Image, Typography } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
@@ -34,50 +36,60 @@ interface GetAddressExtensionProps {
   readonly onRegisterUsername: () => void;
 }
 
-const GetYourAddressWithExtension = ({ onRegisterUsername }: GetAddressExtensionProps): JSX.Element => (
-  <React.Fragment>
-    <Typography variant="h5" align="center" weight="light" inline>
-      Get your human readable
-    </Typography>
-    <Typography
-      id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
-      variant="h5"
-      align="center"
-      color="primary"
-      weight="light"
-      inline
-      link
-      onClick={onRegisterUsername}
-    >
-      personalized address.
-    </Typography>
-  </React.Fragment>
-);
+function GetYourAddressWithExtension({ onRegisterUsername }: GetAddressExtensionProps): JSX.Element {
+  return (
+    <React.Fragment>
+      <Typography variant="subtitle2" weight="semibold" color="primary">
+        username*iov
+      </Typography>
+      <Block marginTop={4} />
+      <Typography variant="subtitle1" weight="semibold" gutterBottom>
+        Choose your address
+      </Typography>
+      <Typography variant="body2" color="textPrimary">
+        With IOV you can choose your easy to read human readable address. No more complicated cryptography
+        when sending to friends.
+      </Typography>
+      <Block marginTop={3} />
+      <Typography
+        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+        variant="subtitle1"
+        color="primary"
+        weight="semibold"
+        inline
+        link
+        onClick={onRegisterUsername}
+      >
+        Choose Now
+      </Typography>
+    </React.Fragment>
+  );
+}
 
-const GetYourAddressWithLedger = (): JSX.Element => (
-  <React.Fragment>
-    <Typography variant="h5" align="center" weight="light">
-      You can not register
-    </Typography>
-    <Typography
-      id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
-      variant="h5"
-      align="center"
-      color="primary"
-      weight="light"
-    >
-      personalized address
-    </Typography>
-    <Block textAlign="center">
-      <Typography variant="h5" weight="light" inline>
-        using{" "}
+function GetYourAddressWithLedger(): JSX.Element {
+  return (
+    <React.Fragment>
+      <Typography variant="subtitle2" weight="semibold" color="primary">
+        username*iov
       </Typography>
-      <Typography variant="h5" weight="semibold" inline>
-        Ledger Nano S
+      <Block marginTop={4} />
+      <Typography variant="body1" weight="light">
+        You can not register
       </Typography>
-    </Block>
-  </React.Fragment>
-);
+      <Typography id={REGISTER_PERSONALIZED_ADDRESS_ROUTE} variant="body1" color="primary" weight="light">
+        personalized address
+      </Typography>
+      <Block textAlign="center">
+        <Typography variant="body1" weight="light" inline>
+          using{" "}
+        </Typography>
+        <Typography variant="body1" weight="semibold" inline>
+          Ledger Nano S
+        </Typography>
+      </Block>
+    </React.Fragment>
+  );
+}
 
 const BalanceLayout = ({
   iovAddress,
@@ -89,18 +101,30 @@ const BalanceLayout = ({
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const walletIcon = <Image src={wallet} alt="wallet ico" />;
+  const theme = useTheme<Theme>();
 
   return (
     <Block alignSelf="center">
       <Block margin={2} />
       {!iovAddress && (
-        <GetYourAddress onRegisterUsername={onRegisterUsername} rpcEndpointType={rpcEndpointType} />
+        <Block
+          width={450}
+          bgcolor={theme.palette.background.paper}
+          padding={5}
+          display="flex"
+          flexDirection="column"
+          borderRadius={5}
+          textAlign="center"
+          border="1px solid #F3F3F3"
+        >
+          <GetYourAddress onRegisterUsername={onRegisterUsername} rpcEndpointType={rpcEndpointType} />
+        </Block>
       )}
       <Block margin={2} />
       <PageContent icon={walletIcon} width={450} avatarColor="#31E6C9">
         <Block display="flex" flexDirection="column">
-          <Typography variant="subtitle2" align="center" color="textPrimary">
-            {hasTokens ? "Your currencies" : "No funds available"}
+          <Typography variant="subtitle2" align="center" weight="semibold">
+            {hasTokens ? "Your currencies" : "You have no funds available"}
           </Typography>
           <Block margin={1} />
           {tickersList.map(ticker => (
