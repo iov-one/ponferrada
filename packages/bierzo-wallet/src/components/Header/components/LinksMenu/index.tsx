@@ -84,7 +84,7 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
         <LinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
         <Block className={classes.line} />
       </Block>
-      <Block className={addressesClasses}>
+      <Block className={addressesClasses} id={ADDRESSES_ROUTE}>
         <LinkMenuItem onClick={onAddresses} itemTitle={ADDRESSES_TEXT} />
         <Block className={classes.line} />
       </Block>
