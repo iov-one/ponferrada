@@ -13,7 +13,6 @@ import wallet from "../assets/wallet.svg";
 interface Props {
   readonly iovAddress?: string;
   readonly balances: { [token: string]: Amount };
-  readonly onSendPayment: () => void;
   readonly onRegisterUsername: () => void;
   readonly rpcEndpointType: RpcEndpointType;
 }
@@ -91,13 +90,7 @@ function GetYourAddressWithLedger(): JSX.Element {
   );
 }
 
-const BalanceLayout = ({
-  iovAddress,
-  balances,
-  onSendPayment,
-  onRegisterUsername,
-  rpcEndpointType,
-}: Props): JSX.Element => {
+const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointType }: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const walletIcon = <Image src={wallet} alt="wallet ico" />;
@@ -134,7 +127,6 @@ const BalanceLayout = ({
               weight="regular"
               color="primary"
               align="center"
-              onClick={onSendPayment}
               gutterBottom
             >
               {`${amountToString(balances[ticker])}`}
