@@ -6,12 +6,17 @@ const nonBalanceH6Elements = mainMenuH6Elements + 1 /* Hi! menu */ + 1 /* Your c
 const numberOfTokensFromFaucet = 4;
 
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
-  const index = mainMenuH6Elements + 1;
+  const index = mainMenuH6Elements + 4;
   return h6Elements[index].textContent || "";
 };
 
-export const getIovUsername = (h5Elements: Element[]): string => {
-  return h5Elements[0].textContent || "";
+export const getIovUsername = (h6Elements: Element[]): string => {
+  const index = mainMenuH6Elements + 2;
+  return h6Elements[index].textContent || "";
+};
+
+export const getLedgerUsernameWarning = (pElements: Element[]): string => {
+  return pElements[0].textContent || "";
 };
 
 export const getBalanceTextAtIndex = async (

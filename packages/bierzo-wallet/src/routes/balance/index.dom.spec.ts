@@ -13,8 +13,8 @@ import { RootState } from "../../store/reducers";
 import { UsernamesState } from "../../store/usernames";
 import { click, expectRoute } from "../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
-import { ADDRESSES_ROUTE, PAYMENT_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
-import { getIovUsername, getNoFundsMessage } from "./test/operateBalances";
+import { TRANSACTIONS_ROUTE } from "../paths";
+import { getIovUsername, getLedgerUsernameWarning, getNoFundsMessage } from "./test/operateBalances";
 import { travelToBalance } from "./test/travelToBalance";
 
 const balancesAmount: DeepPartial<BalanceState> = {
@@ -74,15 +74,6 @@ describe("The /balance route", () => {
       balanceDom = await travelToBalance(store);
     });
 
-    it("redirects to the /payment route when clicked", async () => {
-      const paymentCard = (await findRenderedDOMComponentWithId(balanceDom, PAYMENT_ROUTE)) as Element;
-
-      expect(paymentCard.textContent).toBe("Send payment");
-
-      await click(paymentCard);
-      expectRoute(PAYMENT_ROUTE);
-    });
-
     it("redirects to the /transactions route when clicked", async () => {
       const transactionsCard = (await findRenderedDOMComponentWithId(
         balanceDom,
@@ -95,15 +86,6 @@ describe("The /balance route", () => {
       expectRoute(TRANSACTIONS_ROUTE);
     }, 15000);
 
-    it("redirects to the /receive-from-iov route when clicked", async () => {
-      const receiveCard = (await findRenderedDOMComponentWithId(balanceDom, ADDRESSES_ROUTE)) as Element;
-
-      expect(receiveCard.textContent).toBe("Receive Payment");
-
-      await click(receiveCard);
-      expectRoute(ADDRESSES_ROUTE);
-    });
-
     it("should check list of available balances", async () => {
       const balances = TestUtils.scryRenderedDOMComponentsWithClass(balanceDom, "MuiTypography-colorPrimary");
 
@@ -111,12 +93,6 @@ describe("The /balance route", () => {
 
       expect(balances[0].textContent).toBe("8.25 BASH");
       expect(balances[1].textContent).toBe("12.26775 CASH");
-    });
-
-    it("should show bns username", async () => {
-      const usernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
-
-      expect(usernameMessage).toBe("albert*iov");
     });
   });
 
@@ -132,13 +108,13 @@ describe("The /balance route", () => {
     it("should show that there is no balance available", async () => {
       const noFundsMessage = getNoFundsMessage(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
 
-      expect(noFundsMessage).toBe("No funds available");
+      expect(noFundsMessage).toBe("You have no funds available");
     });
 
     it("should show that there is no bns username available", async () => {
-      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
+      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
 
-      expect(noUsernameMessage).toBe("Get your human readable");
+      expect(noUsernameMessage).toBe("Choose your address");
     });
   });
 
@@ -152,7 +128,9 @@ describe("The /balance route", () => {
     });
 
     it("should show that there is no bns username available", async () => {
-      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h5"));
+      const noUsernameMessage = getLedgerUsernameWarning(
+        TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "p"),
+      );
 
       expect(noUsernameMessage).toBe("You can not register");
     });
