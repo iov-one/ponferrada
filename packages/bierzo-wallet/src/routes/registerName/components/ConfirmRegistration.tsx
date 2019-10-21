@@ -1,4 +1,5 @@
 import { faRegistered } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TransactionId } from "@iov/bcp";
 import { Block, Button, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
@@ -6,6 +7,8 @@ import React from "react";
 import PageContent from "../../../components/PageContent";
 
 export const USERNAME_CONFIRMATION_VIEW_ID = "username-confirmation-view-id";
+
+const registerIcon = <FontAwesomeIcon icon={faRegistered} color="#ffffff" />;
 
 const useTypography = makeStyles({
   wrap: {
@@ -47,7 +50,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
   );
 
   return (
-    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={faRegistered} buttons={buttons}>
+    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={registerIcon} buttons={buttons}>
       <Typography variant="h6" weight="light">
         Your personalized address registration request was successfully signed and sent to the network.
       </Typography>
