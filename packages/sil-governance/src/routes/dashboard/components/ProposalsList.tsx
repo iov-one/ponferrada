@@ -9,7 +9,7 @@ import Proposal, { ProposalProps } from "./Proposal";
 
 export const PROPOSALS_HTML_ID = "proposals";
 
-const comparatorLabel = "Sort by";
+export const comparatorLabel = "Sort by";
 
 enum ComparatorLabels {
   None = "None",
