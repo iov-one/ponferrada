@@ -2785,13 +2785,22 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           <div
             className="MuiBox-root MuiBox-root"
           >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Transactions"
-              onClick={[Function]}
+            <span
+              className="MuiBadge-root makeStyles-textRoot"
             >
-              Transactions
-            </h6>
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+                id="Transactions"
+                onClick={[Function]}
+              >
+                Transactions
+              </h6>
+              <span
+                className="MuiBadge-badge makeStyles-text MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary"
+              >
+                new
+              </span>
+            </span>
           </div>
         </div>
         <div
@@ -3063,13 +3072,22 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
           <div
             className="MuiBox-root MuiBox-root"
           >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Transactions"
-              onClick={[Function]}
+            <span
+              className="MuiBadge-root makeStyles-textRoot"
             >
-              Transactions
-            </h6>
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+                id="Transactions"
+                onClick={[Function]}
+              >
+                Transactions
+              </h6>
+              <span
+                className="MuiBadge-badge makeStyles-text MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary"
+              >
+                new
+              </span>
+            </span>
           </div>
         </div>
         <div
@@ -3228,13 +3246,22 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
           <div
             className="MuiBox-root MuiBox-root"
           >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Transactions"
-              onClick={[Function]}
+            <span
+              className="MuiBadge-root makeStyles-textRoot"
             >
-              Transactions
-            </h6>
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+                id="Transactions"
+                onClick={[Function]}
+              >
+                Transactions
+              </h6>
+              <span
+                className="MuiBadge-badge makeStyles-text MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary"
+              >
+                new
+              </span>
+            </span>
           </div>
         </div>
         <div
@@ -3379,13 +3406,22 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
           <div
             className="MuiBox-root MuiBox-root"
           >
-            <h6
-              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Transactions"
-              onClick={[Function]}
+            <span
+              className="MuiBadge-root makeStyles-textRoot"
             >
-              Transactions
-            </h6>
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+                id="Transactions"
+                onClick={[Function]}
+              >
+                Transactions
+              </h6>
+              <span
+                className="MuiBadge-badge makeStyles-text MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary"
+              >
+                new
+              </span>
+            </span>
           </div>
         </div>
         <div
@@ -5782,20 +5818,11 @@ Array [
     >
       This shows the invisible variant
     </div>
-    <span
-      className="MuiBadge-root"
-    >
-      <img
-        alt="Icon"
-        className="makeStyles-root"
-        src="recoveryWords.svg"
-      />
-      <span
-        className="MuiBadge-badge makeStyles-dot MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorPrimary MuiBadge-invisible MuiBadge-dot"
-      >
-        
-      </span>
-    </span>
+    <img
+      alt="Icon"
+      className="makeStyles-root"
+      src="recoveryWords.svg"
+    />
   </div>,
   <div
     style={
