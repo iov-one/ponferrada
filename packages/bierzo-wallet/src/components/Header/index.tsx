@@ -1,7 +1,9 @@
 import { makeStyles } from "@material-ui/core";
 import { Block, Image } from "medulas-react-components";
 import * as React from "react";
+import { useSelector } from "react-redux";
 
+import { lastTxSelector } from "../../store/notifications/selectors";
 import logoBlack from "./assets/logoBlack.svg";
 import HiMenu from "./components/HiMenu";
 import LinksMenu from "./components/LinksMenu";
@@ -22,12 +24,13 @@ interface Props {
 
 const Header = ({ path }: Props): JSX.Element => {
   const classes = useStyles();
+  const lastTx = useSelector(lastTxSelector);
 
   return (
     <Block className={classes.root} padding={3} paddingBottom={2}>
       <Image src={logoBlack} alt="Logo" />
       <Block flexGrow={1} />
-      <LinksMenu path={path} />
+      <LinksMenu path={path} lastTx={lastTx} />
       <Block flexGrow={4} />
       <HiMenu />
     </Block>
