@@ -21,7 +21,9 @@ const Transactions = (): JSX.Element => {
   const identities = useSelector((state: RootState) => state.identities);
   const lastTx = useSelector(lastTxSelector);
 
-  storeLastTx(lastTx as TxMeta);
+  if (lastTx) {
+    storeLastTx(lastTx as TxMeta);
+  }
 
   const userAddresses = Array.from(identities.values()).map(extendedIdentity => extendedIdentity.address);
 
