@@ -52,12 +52,12 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel }: Props): JSX.El
 
   return (
     <Form onSubmit={handleSubmit}>
-      <PageContent id={REGISTER_USERNAME_VIEW_ID} icon={registerIcon} buttons={buttons}>
+      <PageContent id={REGISTER_USERNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block width="100%" marginTop={2} marginBottom={1}>
           <TextField
             name={REGISTER_USERNAME_FIELD}
             form={form}
-            placeholder="username*iov"
+            placeholder="eg. username*iov"
             fullWidth
             margin="none"
           />
