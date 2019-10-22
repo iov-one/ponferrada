@@ -1,10 +1,12 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import classNames from "classnames";
-import { Block, Typography } from "medulas-react-components";
+import { Badge, Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
 import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
+import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -45,30 +47,65 @@ const onTransactions = (): void => {
   history.push(TRANSACTIONS_ROUTE);
 };
 
+const lastTxNewer = (lastTx: TxMeta, lastStoredTx: TxMeta): boolean => {
+  return lastTx.time.getTime() > lastStoredTx.time.getTime();
+};
+
+const calcTxBadgeVisibilityState = (
+  lastTx: TxMeta | undefined,
+  lastStoredTx: TxMeta | undefined,
+): boolean => {
+  if (!lastTx) {
+    return false;
+  }
+
+  if (!lastStoredTx) {
+    return true;
+  }
+
+  const isLastTxNewer = lastTxNewer(lastTx, lastStoredTx);
+  if (isLastTxNewer) {
+    return true;
+  }
+
+  if (lastTx.id !== lastStoredTx.id) {
+    return true;
+  }
+
+  return false;
+};
+
 const BALANCE_TEXT = "Balances";
 export const ADDRESSES_TEXT = "Addresses";
 export const TRANSACTIONS_TEXT = "Transactions";
 
 interface MenuItemProps {
+  readonly showBadge?: boolean;
+  readonly badgeText?: string;
   readonly itemTitle: string;
   readonly onClick: () => void;
 }
 
-const LinkMenuItem = ({ itemTitle, onClick }: MenuItemProps): JSX.Element => (
-  <Block marginTop="12px">
+const LinkMenuItem = ({ itemTitle, onClick, showBadge, badgeText }: MenuItemProps): JSX.Element => {
+  return (
     <Block marginTop="12px">
-      <Typography variant="subtitle2" color="textPrimary" onClick={onClick} id={itemTitle}>
-        {itemTitle}
-      </Typography>
+      <Block marginTop="12px">
+        <Badge variant="text" badgeContent={badgeText} invisible={!showBadge}>
+          <Typography variant="subtitle2" color="textPrimary" onClick={onClick} id={itemTitle}>
+            {itemTitle}
+          </Typography>
+        </Badge>
+      </Block>
     </Block>
-  </Block>
-);
+  );
+};
 
 interface Props {
   readonly path: string;
+  readonly lastTx?: ProcessedTx;
 }
 
-const LinksMenu = ({ path }: Props): JSX.Element => {
+const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
   const classes = useStyles();
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
@@ -77,6 +114,8 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
   const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
   const addressesClasses = classNames(classes.item, showAddresses ? classes.activated : undefined);
   const transactionsClasses = classNames(classes.item, showTransactions ? classes.activated : undefined);
+
+  const showBadge = calcTxBadgeVisibilityState(lastTx, getLastTx());
 
   return (
     <Block className={classes.root}>
@@ -89,7 +128,12 @@ const LinksMenu = ({ path }: Props): JSX.Element => {
         <Block className={classes.line} />
       </Block>
       <Block className={transactionsClasses}>
-        <LinkMenuItem onClick={onTransactions} itemTitle={TRANSACTIONS_TEXT} />
+        <LinkMenuItem
+          onClick={onTransactions}
+          itemTitle={TRANSACTIONS_TEXT}
+          badgeText="new"
+          showBadge={showBadge}
+        />
         <Block className={classes.line} />
       </Block>
     </Block>
