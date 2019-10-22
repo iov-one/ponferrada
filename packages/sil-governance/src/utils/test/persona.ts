@@ -109,6 +109,20 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   await page.click("button");
 }
 
+export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> {
+  await extensionPage.bringToFront();
+  await extensionPage.click("ul > li > div");
+  await sleep(1000);
+  await extensionPage.click("button");
+}
+
+export async function rejectEnqueuedRequest(extensionPage: Page): Promise<void> {
+  await extensionPage.bringToFront();
+  await extensionPage.click("ul > li > div");
+  await sleep(1000);
+  await extensionPage.click("button:nth-of-type(2)");
+}
+
 export async function loginAsGovernor(page: Page, extensionPage: Page): Promise<void> {
   await submitExtensionRestoreWalletForm(
     extensionPage,
