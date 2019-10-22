@@ -32,10 +32,7 @@ export function waitForAllBalances(page: Page): Promise<void> {
   }, 20000);
 }
 
-export const getUsernameE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
+export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
   const index = mainMenuH6Elements + 2;
   return (await (await h6Elements[index].getProperty("textContent")).jsonValue()) || "";
 };
-
-export const waitForUsername = async (h5Elements: ElementHandle<Element>[]): Promise<void> =>
-  whenTrue(async () => (await getUsernameE2E(h5Elements)).match(/\*iov$/) !== null, 20000);
