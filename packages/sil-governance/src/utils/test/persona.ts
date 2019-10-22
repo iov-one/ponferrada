@@ -108,3 +108,18 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   // confirm rejection
   await page.click("button");
 }
+
+export async function loginAsGovernor(page: Page, extensionPage: Page): Promise<void> {
+  await submitExtensionRestoreWalletForm(
+    extensionPage,
+    "degree tackle suggest window test behind mesh extra cover prepare oak script",
+    "12345678",
+  );
+
+  await page.bringToFront();
+  await travelToDashboardE2e(page);
+  await sleep(1000);
+  await acceptGetIdentitiesRequest(extensionPage);
+  await page.bringToFront();
+  await whenOnNavigatedToE2eRoute(page, DASHBOARD_ROUTE);
+}
