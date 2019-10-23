@@ -143,7 +143,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel }: Props): JSX.El
             />
           </Block>
           <Block width="100%" marginTop={3} marginBottom={1}>
-            <Block display="flex" alignItems="center">
+            <Block display="flex" alignItems="center" marginBottom={1}>
               <Typography variant="subtitle2" weight="semibold" inline>
                 WILL BE LINKED TO THESE ADDRESSES
               </Typography>
