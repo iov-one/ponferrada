@@ -73,7 +73,7 @@ export { ToastVariant } from "./context/ToastProvider/Toast";
 
 export { useOpen } from "./hooks/open";
 
-export { backgroundColor, secondaryColor, white, lightFont } from "./theme/utils/variables";
+export { backgroundColor, secondaryColor, white, lightFont, defaultColor } from "./theme/utils/variables";
 
 export {
   composeValidators,
