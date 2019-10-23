@@ -9,7 +9,7 @@ interface AvatarStyleProps {
   readonly bgcolor: string;
 }
 
-const useAvatar = makeStyles<Theme, AvatarStyleProps>((theme: Theme) => ({
+const useAvatar = makeStyles<Theme, AvatarStyleProps>({
   root: props => ({
     backgroundColor: props.bgcolor,
     fontSize: "27.5px",
@@ -17,7 +17,7 @@ const useAvatar = makeStyles<Theme, AvatarStyleProps>((theme: Theme) => ({
     height: "72px",
     margin: "-76px 0 40px 0",
   }),
-}));
+});
 
 const usePaper = makeStyles({
   rounded: {
