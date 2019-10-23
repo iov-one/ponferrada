@@ -10,6 +10,8 @@ import PageContent from "../../../components/PageContent";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
 import wallet from "../assets/wallet.svg";
 
+const walletIcon = <Image src={wallet} alt="wallet ico" />;
+
 interface Props {
   readonly iovAddress?: string;
   readonly balances: { [token: string]: Amount };
@@ -93,7 +95,6 @@ function GetYourAddressWithLedger(): JSX.Element {
 const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointType }: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
-  const walletIcon = <Image src={wallet} alt="wallet ico" />;
   const theme = useTheme<Theme>();
 
   return (
