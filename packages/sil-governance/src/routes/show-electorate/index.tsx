@@ -31,12 +31,13 @@ const ShowElectorate = ({ match }: RouteComponentProps<Params>): JSX.Element => 
 
   useEffect(() => {
     let isSubscribed = true;
-
     const updateElectorates = async (): Promise<void> => {
       // in DOM tests, governor is not set
-      if (governor && isSubscribed) {
+      if (governor) {
         const electorates = await governor.getElectorates();
-        setElectorates(electorates);
+        if (isSubscribed) {
+          setElectorates(electorates);
+        }
       }
     };
     updateElectorates();
