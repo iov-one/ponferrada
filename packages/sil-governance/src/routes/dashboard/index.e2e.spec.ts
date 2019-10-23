@@ -51,7 +51,6 @@ withChainsDescribe("E2E > Dashboard route", () => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await loginAsGovernor(page, extensionPage);
-    await sleep(2000);
 
     await page.click("#aside-filter > div:nth-child(2)");
     await whenOnNavigatedToE2eRoute(page, CREATE_PROPOSAL_ROUTE);
@@ -64,8 +63,8 @@ withChainsDescribe("E2E > Dashboard route", () => {
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
     await loginAsGovernor(page, extensionPage);
-    await sleep(2000);
 
+    await page.waitForSelector("h6");
     let titles = await getProposalTitlesE2E(page);
 
     expect(titles[0]).toBe("Amend protocol");
