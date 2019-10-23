@@ -1,9 +1,12 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TransactionId } from "@iov/bcp";
 import { Block, Button, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
 import PageContent from "../../../../components/PageContent";
+
+const paymentIcon = <FontAwesomeIcon icon={faUser} color="#ffffff" />;
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 const useTypography = makeStyles({
@@ -57,7 +60,7 @@ const ConfirmPayment = ({
   );
 
   return (
-    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={faUser} buttons={buttons}>
+    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymentIcon} buttons={buttons}>
       <Typography variant="h6" weight="light">
         Your transaction was successfully signed and sent to the network.
       </Typography>

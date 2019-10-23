@@ -46,7 +46,7 @@ const onTransactions = (): void => {
 };
 
 const BALANCE_TEXT = "Balances";
-const ADDRESSES_TEXT = "Addresses";
+export const ADDRESSES_TEXT = "Addresses";
 export const TRANSACTIONS_TEXT = "Transactions";
 
 interface MenuItemProps {

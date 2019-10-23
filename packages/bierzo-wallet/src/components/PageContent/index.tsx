@@ -1,5 +1,3 @@
-import { IconDefinition } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Theme } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
@@ -7,25 +5,47 @@ import { useTheme } from "@material-ui/styles";
 import { Block, makeStyles } from "medulas-react-components";
 import React from "react";
 
-const useAvatar = makeStyles((theme: Theme) => ({
-  root: {
-    backgroundColor: "#ffe152",
+interface AvatarStyleProps {
+  readonly bgcolor: string;
+}
+
+const useAvatar = makeStyles<Theme, AvatarStyleProps>({
+  root: props => ({
+    backgroundColor: props.bgcolor,
     fontSize: "27.5px",
     width: "72px",
     height: "72px",
     margin: "-76px 0 40px 0",
+  }),
+});
+
+const usePaper = makeStyles({
+  rounded: {
+    borderRadius: "5px",
   },
-}));
+  elevation1: {
+    boxShadow: "none",
+  },
+});
 
 interface Props {
   readonly id?: string;
-  readonly icon: IconDefinition;
+  readonly icon: React.ReactNode;
+  readonly avatarColor?: string;
+  readonly width?: number | string;
   readonly children?: React.ReactNode;
   readonly buttons?: React.ReactNode;
 }
-
-const PageContent = ({ id, icon, children, buttons }: Props): JSX.Element => {
-  const avatarClasses = useAvatar();
+function PageContent({
+  id,
+  icon,
+  children,
+  buttons,
+  avatarColor = "#ffe152",
+  width = 650,
+}: Props): JSX.Element {
+  const avatarClasses = useAvatar({ bgcolor: avatarColor });
+  const paperClasses = usePaper();
   const theme = useTheme<Theme>();
 
   return (
@@ -37,8 +57,8 @@ const PageContent = ({ id, icon, children, buttons }: Props): JSX.Element => {
       justifyContent="center"
       bgcolor={theme.palette.background.default}
     >
-      <Block width={650}>
-        <Paper>
+      <Block width={width}>
+        <Paper classes={paperClasses}>
           <Block
             display="flex"
             flexDirection="column"
@@ -46,10 +66,9 @@ const PageContent = ({ id, icon, children, buttons }: Props): JSX.Element => {
             width="100%"
             marginTop={4}
             padding={5}
+            border="1px solid #F3F3F3"
           >
-            <Avatar classes={avatarClasses}>
-              <FontAwesomeIcon icon={icon} color="#ffffff" />
-            </Avatar>
+            <Avatar classes={avatarClasses}>{icon}</Avatar>
             {children}
           </Block>
         </Paper>
@@ -58,6 +77,6 @@ const PageContent = ({ id, icon, children, buttons }: Props): JSX.Element => {
       </Block>
     </Block>
   );
-};
+}
 
 export default PageContent;

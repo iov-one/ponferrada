@@ -4,6 +4,8 @@ import makeStyles from "@material-ui/styles/makeStyles";
 import classNames from "classnames";
 import * as React from "react";
 
+import { defaultColor } from "../../theme/utils/variables";
+
 type Weight = "light" | "regular" | "semibold";
 
 interface StyleProps {
@@ -18,6 +20,9 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     textDecoration: "underline",
     cursor: "pointer",
   },
+  defaultColor: {
+    color: defaultColor,
+  },
   weight: props => ({
     fontWeight:
       props.weight === "light"
@@ -28,20 +33,32 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   }),
 }));
 
-interface Props extends TypographyProps, StyleProps {
+interface Props extends StyleProps, Omit<TypographyProps, "color"> {
+  readonly color?: TypographyProps["color"] | "default";
   readonly inline?: boolean;
   readonly link?: boolean;
 }
 
-const Typography = ({ children, inline, link, className, weight, ...restProps }: Props): JSX.Element => {
+const Typography = ({
+  children,
+  inline,
+  link,
+  className,
+  weight,
+  color = "default",
+  ...restProps
+}: Props): JSX.Element => {
   const classes = useStyles({ weight });
   const compositeClass = classNames(className, weight ? classes.weight : undefined, {
     [classes.inline]: inline,
     [classes.link]: link,
+    [classes.defaultColor]: color === "default",
   });
 
+  const typographyColor = color === "default" ? undefined : color;
+
   return (
-    <MuiTypography className={compositeClass} {...restProps}>
+    <MuiTypography className={compositeClass} color={typographyColor} {...restProps}>
       {children}
     </MuiTypography>
   );
