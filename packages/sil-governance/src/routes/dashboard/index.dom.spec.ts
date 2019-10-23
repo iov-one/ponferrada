@@ -1,13 +1,9 @@
-import { findRenderedDOMComponentWithTag } from "react-dom/test-utils";
 import { ReadonlyDate } from "readonly-date";
 import { Store } from "redux";
 
 import { aNewStore } from "../../store";
 import { adminAddress, getDummyElectorates, getDummyProposalsState } from "../../store/proposals/dummyData";
 import { RootState } from "../../store/reducers";
-import { click, input } from "../../utils/test/dom";
-import { whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { CREATE_PROPOSAL_ROUTE } from "../paths";
 import {
   checkCommonFields,
   checkCreateTextResolutionFields,
@@ -25,7 +21,6 @@ import {
   getHeaderHeading,
   getHeaderLinks,
   getHeaderLogo,
-  getNewProposalButton,
   getProposals,
 } from "./test/operateDashboard";
 import {
@@ -121,45 +116,9 @@ describe("DOM > Feature > Dashboard", () => {
     expect(proposals.length).toBe(3);
   }, 60000);
 
-  // NOTE click fires "Cannot read property 'createEvent' of null"
-  it.skip("has an 'Add New Proposal' button that redirects to /create-proposal", async () => {
-    const newProposalButton = await getNewProposalButton(dashboardDom);
-    await click(newProposalButton);
-    await whenOnNavigatedToRoute(CREATE_PROPOSAL_ROUTE);
-  }, 60000);
-
   it("has a 'Blockchain time' display", async () => {
     const blockchainTimeLabel = await getBlockchainTimeLabel(dashboardDom);
     expect(blockchainTimeLabel).toBe("Blockchain time");
-  }, 60000);
-
-  // NOTE not able to change SelectField value with input()
-  it.skip("has a sorting menu that sorts by expiry date, start date, or vote", async () => {
-    const sortSelect = findRenderedDOMComponentWithTag(dashboardDom, "input");
-
-    input(sortSelect, "Expiry Date");
-
-    let proposals = await getProposals(dashboardDom);
-    expect(proposals[0].children[0].children[0].textContent).toBe("");
-    expect(proposals[8].children[0].children[0].textContent).toBe("");
-
-    input(sortSelect, "Start Date");
-
-    proposals = await getProposals(dashboardDom);
-    expect(proposals[0].children[0].children[0].textContent).toBe("");
-    expect(proposals[8].children[0].children[0].textContent).toBe("");
-
-    input(sortSelect, "Vote");
-
-    proposals = await getProposals(dashboardDom);
-    expect(proposals[0].children[0].children[0].textContent).toBe("");
-    expect(proposals[8].children[0].children[0].textContent).toBe("");
-
-    input(sortSelect, "None");
-
-    proposals = await getProposals(dashboardDom);
-    expect(proposals[0].children[0].children[0].textContent).toBe("");
-    expect(proposals[8].children[0].children[0].textContent).toBe("");
   }, 60000);
 
   it("has an Amend Protocol proposal with correct fields", async () => {
