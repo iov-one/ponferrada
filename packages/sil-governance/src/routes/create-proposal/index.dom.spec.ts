@@ -2,7 +2,7 @@ import { ReadonlyDate } from "readonly-date";
 import { Store } from "redux";
 
 import { aNewStore } from "../../store";
-import { adminAddress, getDummyElectorates } from "../../store/proposals/dummyData";
+import { adminAddress, getDummyElectionRules, getDummyElectorates } from "../../store/proposals/dummyData";
 import { RootState } from "../../store/reducers";
 import {
   getAsideFilter,
@@ -16,7 +16,7 @@ import {
 } from "./test/operateCreateProposal";
 import { travelToCreateProposal } from "./test/travelToCreateProposal";
 
-describe("DOM > Feature > Show Electorate", () => {
+describe("DOM > Feature > Create Proposal", () => {
   let store: Store<RootState>;
   let electorateDom: React.Component;
 
@@ -28,6 +28,7 @@ describe("DOM > Feature > Show Electorate", () => {
         governor: {
           address: adminAddress,
           getElectorates: getDummyElectorates,
+          getElectionRules: getDummyElectionRules,
         },
       },
       blockchain: {
