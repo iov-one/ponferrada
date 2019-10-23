@@ -216,13 +216,21 @@ const ProposalForm = (): JSX.Element => {
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({ onSubmit });
 
   useEffect(() => {
+    let isSubscribed = true;
     const updateElectionRules = async (): Promise<void> => {
-      if (!governor) throw new Error("Governor not set in store. This is a bug.");
-      const electionRules = await getElectionRules(governor);
-      setElectionRules(electionRules);
+      // in DOM tests, governor is not set
+      if (governor) {
+        const electionRules = await getElectionRules(governor);
+        if (isSubscribed) {
+          setElectionRules(electionRules);
+        }
+      }
     };
-
     updateElectionRules();
+
+    return () => {
+      isSubscribed = false;
+    };
   }, [governor]);
 
   const noRulesSet = !electionRule;
