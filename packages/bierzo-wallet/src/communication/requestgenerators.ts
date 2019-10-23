@@ -67,18 +67,27 @@ export const generateSendTxRequest = async (
   };
 };
 
-export const generateRegisterUsernameTxRequest = async (
+export const generateRegisterUsernameTxWithFee = async (
   creator: Identity,
   username: string,
   targets: readonly ChainAddressPair[],
-): Promise<JsonRpcRequest> => {
+): Promise<RegisterUsernameTx & WithCreator> => {
   const regUsernameTx: RegisterUsernameTx & WithCreator = {
     kind: "bns/register_username",
     creator,
     username,
     targets,
   };
-  const transactionWithFee = await withChainFee(creator.chainId, regUsernameTx);
+
+  return await withChainFee(creator.chainId, regUsernameTx);
+};
+
+export const generateRegisterUsernameTxRequest = async (
+  creator: Identity,
+  username: string,
+  targets: readonly ChainAddressPair[],
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateRegisterUsernameTxWithFee(creator, username, targets);
 
   return {
     jsonrpc: "2.0",
