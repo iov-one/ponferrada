@@ -60,7 +60,7 @@ const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
       </TableCell>
       <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
         <Block onClick={onAddressCopy} className={classes.link}>
-          <FontAwesomeIcon icon={faCopy} />
+          <FontAwesomeIcon icon={faCopy} color="#31E6C9" />
         </Block>
       </TableCell>
     </TableRow>
