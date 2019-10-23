@@ -1260,25 +1260,25 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             className="MuiTableHead-root"
           >
             <tr
-              className="MuiTableRow-root makeStyles-header MuiTableRow-head"
+              className="MuiTableRow-root MuiTableRow-head"
             >
               <th
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
                 scope="col"
               >
                 Blockchain
               </th>
               <th
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
                 scope="col"
               >
                 Address
               </th>
               <th
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
                 scope="col"
               />
             </tr>
@@ -1291,19 +1291,19 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 Ganache
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
               >
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
@@ -1312,6 +1312,7 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
                   <svg
                     aria-hidden="true"
                     className="svg-inline--fa fa-copy fa-w-14 "
+                    color="#31E6C9"
                     data-icon="copy"
                     data-prefix="far"
                     focusable="false"
@@ -1334,19 +1335,19 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 IOV Devnet
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
               >
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
@@ -1355,6 +1356,7 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
                   <svg
                     aria-hidden="true"
                     className="svg-inline--fa fa-copy fa-w-14 "
+                    color="#31E6C9"
                     data-icon="copy"
                     data-prefix="far"
                     focusable="false"
@@ -1377,19 +1379,19 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
             >
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 Lisk Devnet
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
               >
                 1349293588603668134L
               </td>
               <td
                 aria-sort={null}
-                className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
               >
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
@@ -1398,6 +1400,7 @@ exports[`Storyshots Bierzo Wallet Receive Payment 1`] = `
                   <svg
                     aria-hidden="true"
                     className="svg-inline--fa fa-copy fa-w-14 "
+                    color="#31E6C9"
                     data-icon="copy"
                     data-prefix="far"
                     focusable="false"
@@ -4057,245 +4060,300 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
           <div
             className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-registered fa-w-16 "
-              color="#ffffff"
-              data-icon="registered"
-              data-prefix="far"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 512 512"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm110.442-81.791c-53.046-96.284-50.25-91.468-53.271-96.085 24.267-13.879 39.482-41.563 39.482-73.176 0-52.503-30.247-85.252-101.498-85.252h-78.667c-6.617 0-12 5.383-12 12V380c0 6.617 5.383 12 12 12h38.568c6.617 0 12-5.383 12-12v-83.663h31.958l47.515 89.303a11.98 11.98 0 0 0 10.593 6.36h42.81c9.14 0 14.914-9.799 10.51-17.791zM256.933 239.906h-33.875v-64.14h27.377c32.417 0 38.929 12.133 38.929 31.709-.001 20.913-11.518 32.431-32.431 32.431z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+            <img
+              alt="shield"
+              className="makeStyles-root"
+              src="shield.svg"
+            />
           </div>
           <div
             className="MuiBox-root MuiBox-root"
           >
             <div
-              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+              className="MuiBox-root MuiBox-root"
             >
-              <div
-                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-                onClick={[Function]}
+              <h6
+                className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
               >
-                <input
-                  aria-invalid={false}
-                  className="MuiInputBase-input MuiOutlinedInput-input"
-                  disabled={false}
-                  name="register-username-field"
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  placeholder="username*iov"
-                  required={false}
-                  type="text"
-                  value=""
-                />
-                <fieldset
-                  aria-hidden={true}
-                  className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-                  style={
-                    Object {
-                      "paddingLeft": 8,
-                    }
-                  }
+                Your personalized address
+              </h6>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="makeStyles-container"
+                  onClick={[Function]}
                 >
-                  <legend
-                    className="PrivateNotchedOutline-legend"
-                    style={
-                      Object {
-                        "width": 0.01,
-                      }
-                    }
-                  >
-                    <span
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "&#8203;",
-                        }
-                      }
-                    />
-                  </legend>
-                </fieldset>
+                  <img
+                    alt="Info"
+                    className="makeStyles-root"
+                    height={16}
+                    src="info_normal.svg"
+                    width={16}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                >
+                  How it works
+                </h6>
               </div>
             </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <table
-              className="MuiTable-root"
+            <div
+              className="MuiBox-root MuiBox-root"
             >
-              <thead
-                className="MuiTableHead-root"
+              <div
+                className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
               >
-                <tr
-                  className="MuiTableRow-root makeStyles-header MuiTableRow-head"
+                <div
+                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                  onClick={[Function]}
                 >
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
-                    scope="col"
-                  >
-                    Blockchain
-                  </th>
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignCenter MuiTableCell-head"
-                    scope="col"
-                  >
-                    Address
-                  </th>
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head"
-                    scope="col"
+                  <input
+                    aria-invalid={false}
+                    className="MuiInputBase-input MuiOutlinedInput-input"
+                    disabled={false}
+                    name="register-username-field"
+                    onAnimationStart={[Function]}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="eg. username*iov"
+                    required={false}
+                    type="text"
+                    value=""
                   />
-                </tr>
-              </thead>
-              <tbody
-                className="MuiTableBody-root"
+                  <fieldset
+                    aria-hidden={true}
+                    className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                    style={
+                      Object {
+                        "paddingLeft": 8,
+                      }
+                    }
+                  >
+                    <legend
+                      className="PrivateNotchedOutline-legend"
+                      style={
+                        Object {
+                          "width": 0.01,
+                        }
+                      }
+                    >
+                      <span
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "&#8203;",
+                          }
+                        }
+                      />
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
               >
-                <tr
-                  className="MuiTableRow-root"
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
                 >
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    Ganache
-                  </td>
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
-                  </td>
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    <div
-                      className="MuiBox-root MuiBox-root makeStyles-link"
-                      onClick={[Function]}
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-copy fa-w-14 "
-                        data-icon="copy"
-                        data-prefix="far"
-                        focusable="false"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </div>
-                  </td>
-                </tr>
-                <tr
-                  className="MuiTableRow-root"
+                  WILL BE LINKED TO THESE ADDRESSES
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="makeStyles-container"
+                  onClick={[Function]}
                 >
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    IOV Devnet
-                  </td>
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
-                  </td>
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    <div
-                      className="MuiBox-root MuiBox-root makeStyles-link"
-                      onClick={[Function]}
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-copy fa-w-14 "
-                        data-icon="copy"
-                        data-prefix="far"
-                        focusable="false"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </div>
-                  </td>
-                </tr>
-                <tr
-                  className="MuiTableRow-root"
+                  <img
+                    alt="Info"
+                    className="makeStyles-root"
+                    height={16}
+                    src="info_normal.svg"
+                    width={16}
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <table
+                  className="MuiTable-root"
                 >
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
+                  <thead
+                    className="MuiTableHead-root"
                   >
-                    Lisk Devnet
-                  </td>
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    1349293588603668134L
-                  </td>
-                  <td
-                    aria-sort={null}
-                    className="MuiTableCell-root makeStyles-copyCell MuiTableCell-alignLeft MuiTableCell-body"
-                  >
-                    <div
-                      className="MuiBox-root MuiBox-root makeStyles-link"
-                      onClick={[Function]}
+                    <tr
+                      className="MuiTableRow-root MuiTableRow-head"
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-copy fa-w-14 "
-                        data-icon="copy"
-                        data-prefix="far"
-                        focusable="false"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
+                      <th
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                        scope="col"
                       >
-                        <path
-                          d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                        Blockchain
+                      </th>
+                      <th
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                        scope="col"
+                      >
+                        Address
+                      </th>
+                      <th
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                        scope="col"
+                      />
+                    </tr>
+                  </thead>
+                  <tbody
+                    className="MuiTableBody-root"
+                  >
+                    <tr
+                      className="MuiTableRow-root"
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        Ganache
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-link"
+                          onClick={[Function]}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-copy fa-w-14 "
+                            color="#31E6C9"
+                            data-icon="copy"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        IOV Devnet
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-link"
+                          onClick={[Function]}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-copy fa-w-14 "
+                            color="#31E6C9"
+                            data-icon="copy"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        Lisk Devnet
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        1349293588603668134L
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-link"
+                          onClick={[Function]}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-copy fa-w-14 "
+                            color="#31E6C9"
+                            data-icon="copy"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -4383,7 +4441,418 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
             <span
               className="MuiButton-label"
             >
-              Cancel
+              Back
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Storyshots Bierzo Wallet/Register Username Register Username without fee 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="register-username-view-id"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
+          >
+            <img
+              alt="shield"
+              className="makeStyles-root"
+              src="shield.svg"
+            />
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+              >
+                Your personalized address
+              </h6>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="makeStyles-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Info"
+                    className="makeStyles-root"
+                    height={16}
+                    src="info_normal.svg"
+                    width={16}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                >
+                  How it works
+                </h6>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+              >
+                <div
+                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                  onClick={[Function]}
+                >
+                  <input
+                    aria-invalid={false}
+                    className="MuiInputBase-input MuiOutlinedInput-input"
+                    disabled={false}
+                    name="register-username-field"
+                    onAnimationStart={[Function]}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="eg. username*iov"
+                    required={false}
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden={true}
+                    className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                    style={
+                      Object {
+                        "paddingLeft": 8,
+                      }
+                    }
+                  >
+                    <legend
+                      className="PrivateNotchedOutline-legend"
+                      style={
+                        Object {
+                          "width": 0.01,
+                        }
+                      }
+                    >
+                      <span
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "&#8203;",
+                          }
+                        }
+                      />
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                >
+                  WILL BE LINKED TO THESE ADDRESSES
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="makeStyles-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Info"
+                    className="makeStyles-root"
+                    height={16}
+                    src="info_normal.svg"
+                    width={16}
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <table
+                  className="MuiTable-root"
+                >
+                  <thead
+                    className="MuiTableHead-root"
+                  >
+                    <tr
+                      className="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                        scope="col"
+                      >
+                        Blockchain
+                      </th>
+                      <th
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                        scope="col"
+                      >
+                        Address
+                      </th>
+                      <th
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                        scope="col"
+                      />
+                    </tr>
+                  </thead>
+                  <tbody
+                    className="MuiTableBody-root"
+                  >
+                    <tr
+                      className="MuiTableRow-root"
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        Ganache
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-link"
+                          onClick={[Function]}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-copy fa-w-14 "
+                            color="#31E6C9"
+                            data-icon="copy"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        IOV Devnet
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-link"
+                          onClick={[Function]}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-copy fa-w-14 "
+                            color="#31E6C9"
+                            data-icon="copy"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        Lisk Devnet
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                      >
+                        1349293588603668134L
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-link"
+                          onClick={[Function]}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-copy fa-w-14 "
+                            color="#31E6C9"
+                            data-icon="copy"
+                            data-prefix="far"
+                            focusable="false"
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
+            disabled={true}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
+                  role="progressbar"
+                  style={
+                    Object {
+                      "height": 22,
+                      "width": 22,
+                    }
+                  }
+                >
+                  <svg
+                    className="MuiCircularProgress-svg"
+                    viewBox="22 22 44 44"
+                  >
+                    <circle
+                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                      cx={44}
+                      cy={44}
+                      fill="none"
+                      r={20.2}
+                      strokeWidth={3.6}
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              Register for 5 IOV
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Back
             </span>
           </button>
         </div>
