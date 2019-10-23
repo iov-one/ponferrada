@@ -6,7 +6,7 @@ import React from "react";
 
 import PageContent from "../../../../components/PageContent";
 
-const paymenIcon = <FontAwesomeIcon icon={faUser} color="#ffffff" />;
+const paymentIcon = <FontAwesomeIcon icon={faUser} color="#ffffff" />;
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 const useTypography = makeStyles({
@@ -60,7 +60,7 @@ const ConfirmPayment = ({
   );
 
   return (
-    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymenIcon} buttons={buttons}>
+    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymentIcon} buttons={buttons}>
       <Typography variant="h6" weight="light">
         Your transaction was successfully signed and sent to the network.
       </Typography>
