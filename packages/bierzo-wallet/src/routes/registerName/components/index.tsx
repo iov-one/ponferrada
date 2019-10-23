@@ -1,3 +1,4 @@
+import { Fee } from "@iov/bcp";
 import {
   Avatar,
   Back,
@@ -12,6 +13,7 @@ import {
   useForm,
 } from "medulas-react-components";
 import React from "react";
+import { amountToString } from "ui-logic";
 
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
@@ -73,13 +75,22 @@ function TooltipContent({ children, title, header }: TooltipContentProps): JSX.E
   );
 }
 
+function getSubmitButtonCaption(fee: Fee | undefined): string {
+  if (fee && fee.tokens) {
+    return `Register for ${amountToString(fee.tokens)}`;
+  }
+
+  return "Register";
+}
+
 interface Props extends AddressesTableProps {
   readonly onSubmit: (values: object) => Promise<void>;
   readonly validate: (values: object) => Promise<object>;
   readonly onCancel: () => void;
+  readonly transactionFee: Fee | undefined;
 }
 
-const Layout = ({ chainAddresses, validate, onSubmit, onCancel }: Props): JSX.Element => {
+const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
     onSubmit,
     validate,
@@ -101,12 +112,12 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel }: Props): JSX.El
           disabled={invalid || pristine || submitting || validating}
           spinner={submitting || validating}
         >
-          Register
+          {getSubmitButtonCaption(transactionFee)}
         </Button>
       </Block>
       <Block width="75%" marginTop={1}>
         <Back fullWidth disabled={submitting} onClick={onCancel}>
-          Cancel
+          Back
         </Back>
       </Block>
     </Block>
