@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 import PageMenu from "../../components/PageMenu";
 import CsvRepresentation, { CsvRow } from "../../logic/csvBuilder";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
+import { lastTxSelector } from "../../store/notifications/selectors";
 import { RootState } from "../../store/reducers";
+import { storeLastTx, TxMeta } from "../../utils/localstorage/transactions";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
@@ -17,6 +19,11 @@ const Transactions = (): JSX.Element => {
   const [order, setOrder] = React.useState(ORDER_DESC);
   const parsedTxs = useSelector((state: RootState) => state.notifications.transactions);
   const identities = useSelector((state: RootState) => state.identities);
+  const lastTx = useSelector(lastTxSelector);
+
+  if (lastTx) {
+    storeLastTx(lastTx as TxMeta);
+  }
 
   const userAddresses = Array.from(identities.values()).map(extendedIdentity => extendedIdentity.address);
 

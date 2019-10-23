@@ -55,17 +55,15 @@ const BadgeIcon = ({
   const badgeVariant = variant === "dot" ? "dot" : "standard";
   const badgeColor = variant === "check" ? "default" : color;
 
-  return (
-    <Badge
-      badgeContent={content}
-      classes={badgeClasses}
-      invisible={invisible}
-      variant={badgeVariant}
-      color={badgeColor}
-    >
-      {children}
-    </Badge>
-  );
+  if (invisible) {
+    return <React.Fragment>{children}</React.Fragment>;
+  } else {
+    return (
+      <Badge badgeContent={content} classes={badgeClasses} variant={badgeVariant} color={badgeColor}>
+        {children}
+      </Badge>
+    );
+  }
 };
 
 export default BadgeIcon;
