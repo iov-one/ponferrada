@@ -1,4 +1,4 @@
-import { Identity, TransactionId } from "@iov/bcp";
+import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
 import {
   BillboardContext,
@@ -11,12 +11,17 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { generateRegisterUsernameTxRequest } from "../../communication/requestgenerators";
+import {
+  generateRegisterUsernameTxRequest,
+  generateRegisterUsernameTxWithFee,
+} from "../../communication/requestgenerators";
+import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
+import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
@@ -28,6 +33,23 @@ function onSeeTrasactions(): void {
 }
 function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
+}
+
+function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
+  for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
+    if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
+      return identity;
+    }
+  }
+}
+
+async function getPersonalizedAddressRegistrationFee(
+  bnsIdentity: Identity,
+  addresses: readonly ChainAddressPairWithName[],
+): Promise<Fee | undefined> {
+  const transactionWithFee = await generateRegisterUsernameTxWithFee(bnsIdentity, "feetest*iov", addresses);
+
+  return transactionWithFee.fee;
 }
 
 const validate = async (values: object): Promise<object> => {
@@ -79,6 +101,7 @@ const validate = async (values: object): Promise<object> => {
 
 const RegisterUsername = (): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
+  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>(undefined);
 
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
@@ -87,23 +110,34 @@ const RegisterUsername = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const addresses = getChainAddressPairWithNames(identities);
 
+  const bnsIdentity = getBnsIdentity(identities);
+
+  if (!bnsIdentity) throw new Error("No BNS identity available.");
+  if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+    async function getFee(
+      bnsIdentity: Identity,
+      addresses: readonly ChainAddressPairWithName[],
+    ): Promise<void> {
+      const fee = await getPersonalizedAddressRegistrationFee(bnsIdentity, addresses);
+
+      if (isSubscribed) {
+        setTransactionFee(fee);
+      }
+    }
+    getFee(bnsIdentity, addresses);
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [bnsIdentity, addresses]);
+
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
     const username = formValues[REGISTER_USERNAME_FIELD];
-    let bnsIdentity: Identity | undefined;
-    for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
-      if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
-        bnsIdentity = identity;
-      }
-    }
-
-    if (!bnsIdentity) {
-      toast.show("No BNS identity available", ToastVariant.ERROR);
-      return;
-    }
-
-    if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
 
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
@@ -150,6 +184,7 @@ const RegisterUsername = (): JSX.Element => {
           validate={validate}
           onCancel={onReturnToBalance}
           chainAddresses={addresses}
+          transactionFee={transactionFee}
         />
       )}
     </PageMenu>
