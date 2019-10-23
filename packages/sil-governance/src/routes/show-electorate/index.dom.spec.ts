@@ -84,7 +84,7 @@ describe("DOM > Feature > Show Electorate", () => {
     expect(blockchainTimeLabel).toBe("Blockchain time");
   }, 60000);
 
-  it("has a table with two headers: Address and Weight", async () => {
+  it("has a table with two headers: Address and Weight", () => {
     const headers = scryRenderedDOMComponentsWithTag(electorateDom, "th");
 
     expect(headers.length).toBe(2);
