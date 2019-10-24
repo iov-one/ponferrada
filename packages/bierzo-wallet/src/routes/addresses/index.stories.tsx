@@ -1,14 +1,11 @@
 import { Address, ChainId } from "@iov/bcp";
-import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
-import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
+import AddressesTab from "./components/AddressesTab";
 import UserAddresses from "./components/UserAddresses";
-
-export const RECEIVE_PAYMENT_STORY_PATH = `Addresses`;
 
 const addresses: ChainAddressPairWithName[] = [
   {
@@ -28,13 +25,15 @@ const addresses: ChainAddressPairWithName[] = [
   },
 ];
 
-storiesOf(bierzoRoot, module)
+storiesOf(`${bierzoRoot}/Addresses`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(RECEIVE_PAYMENT_STORY_PATH, () => (
+  .add("Main", () => (
     <DecoratedStorybook>
-      <UserAddresses
-        onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        chainAddresses={addresses}
-      />
+      <AddressesTab />
+    </DecoratedStorybook>
+  ))
+  .add("Addresses tab", () => (
+    <DecoratedStorybook>
+      <UserAddresses chainAddresses={addresses} />
     </DecoratedStorybook>
   ));
