@@ -4,7 +4,7 @@ import * as ReactRedux from "react-redux";
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
-import UserAddresses from "./components/UserAddresses";
+import AddressesTab from "./components/AddressesTab";
 
 const Addresses = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
@@ -12,7 +12,7 @@ const Addresses = (): JSX.Element => {
 
   return (
     <PageMenu>
-      <UserAddresses chainAddresses={chainAddresses} />
+      <AddressesTab chainAddresses={chainAddresses} />
     </PageMenu>
   );
 };
