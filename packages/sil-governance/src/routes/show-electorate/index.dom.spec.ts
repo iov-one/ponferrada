@@ -5,9 +5,6 @@ import { Store } from "redux";
 import { aNewStore } from "../../store";
 import { adminAddress, getDummyElectorates } from "../../store/proposals/dummyData";
 import { RootState } from "../../store/reducers";
-import { click } from "../../utils/test/dom";
-import { whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { CREATE_PROPOSAL_ROUTE } from "../paths";
 import {
   getAsideFilter,
   getAsideFilterOptions,
@@ -17,7 +14,6 @@ import {
   getHeaderHeading,
   getHeaderLinks,
   getHeaderLogo,
-  getNewProposalButton,
 } from "./test/operateShowElectorate";
 import { travelToShowElectorate } from "./test/travelToShowElectorate";
 
@@ -83,19 +79,12 @@ describe("DOM > Feature > Show Electorate", () => {
     ]);
   }, 60000);
 
-  // NOTE click fires "Cannot read property 'createEvent' of null"
-  it.skip("has an 'Add New Proposal' button that redirects to /create-proposal", async () => {
-    const newProposalButton = await getNewProposalButton(electorateDom);
-    await click(newProposalButton);
-    await whenOnNavigatedToRoute(CREATE_PROPOSAL_ROUTE);
-  }, 60000);
-
   it("has a 'Blockchain time' display", async () => {
     const blockchainTimeLabel = await getBlockchainTimeLabel(electorateDom);
     expect(blockchainTimeLabel).toBe("Blockchain time");
   }, 60000);
 
-  it("has a table with two headers: Address and Weight", async () => {
+  it("has a table with two headers: Address and Weight", () => {
     const headers = scryRenderedDOMComponentsWithTag(electorateDom, "th");
 
     expect(headers.length).toBe(2);

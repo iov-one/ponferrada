@@ -30,14 +30,21 @@ const ShowElectorate = ({ match }: RouteComponentProps<Params>): JSX.Element => 
   const [electorate, setElectorate] = useState<Electorate>();
 
   useEffect(() => {
+    let isSubscribed = true;
     const updateElectorates = async (): Promise<void> => {
       // in DOM tests, governor is not set
       if (governor) {
         const electorates = await governor.getElectorates();
-        setElectorates(electorates);
+        if (isSubscribed) {
+          setElectorates(electorates);
+        }
       }
     };
     updateElectorates();
+
+    return () => {
+      isSubscribed = false;
+    };
   }, [governor]);
 
   useMemo(() => {
