@@ -6,7 +6,7 @@ import React from "react";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
-import Layout from "./components";
+import UserAddresses from "./components/UserAddresses";
 
 export const RECEIVE_PAYMENT_STORY_PATH = `Receive Payment`;
 
@@ -32,7 +32,7 @@ storiesOf(bierzoRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(RECEIVE_PAYMENT_STORY_PATH, () => (
     <DecoratedStorybook>
-      <Layout
+      <UserAddresses
         onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         chainAddresses={addresses}
       />

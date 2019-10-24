@@ -25,7 +25,7 @@ interface Props extends AddressesTableProps {
   readonly onReturnToBalance: () => void;
 }
 
-const Layout = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
+const UserAddresses = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
   const avatarClasses = useAvatar();
   const theme = useTheme<Theme>();
 
@@ -66,4 +66,4 @@ const Layout = ({ chainAddresses, onReturnToBalance }: Props): JSX.Element => {
   );
 };
 
-export default Layout;
+export default UserAddresses;
