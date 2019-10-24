@@ -1740,7 +1740,7 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
 exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="payment-confirmation-view-id"
+  id="your-blockchain-addresses-id"
 >
   <div
     className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -1962,7 +1962,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main 1`] = `
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
         >
-          Your blockchain address
+          Your blockchain addresses
         </h6>
         <div
           className="MuiBox-root MuiBox-root makeStyles-line"
