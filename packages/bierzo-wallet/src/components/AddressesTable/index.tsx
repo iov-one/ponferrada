@@ -2,29 +2,37 @@ import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { Theme } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
 import { Block, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
+import { defaultColor } from "medulas-react-components";
 import React from "react";
 
 export interface ChainAddressPairWithName extends ChainAddressPair {
   readonly chainName: string;
 }
 
-const useStyles = makeStyles({
-  header: {
-    "& > th": {
-      fontSize: "1.6rem",
-    },
+const useStyles = makeStyles((theme: Theme) => ({
+  cell: {
+    padding: `${theme.spacing(1)}px ${theme.spacing(4)}px ${theme.spacing(1)}px 0`,
+  },
+  cellHead: {
+    fontSize: "1.6rem",
+    border: "none",
+    fontWeight: "normal",
+    color: defaultColor,
+    paddingBottom: `${theme.spacing(2)}px`,
   },
   copyCell: {
     "& > svg": {
       cursor: "pointer",
     },
+    paddingRight: 0,
   },
   link: {
     cursor: "pointer",
   },
-});
+}));
 
 export interface AddressesRowProps {
   readonly chain: ChainAddressPairWithName;
@@ -33,6 +41,9 @@ export interface AddressesRowProps {
 const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useStyles();
+  const cellClasses = {
+    root: classes.cell,
+  };
 
   const onAddressCopy = (): void => {
     clipboardCopy(chain.address);
@@ -41,11 +52,15 @@ const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
 
   return (
     <TableRow key={chain.chainId}>
-      <TableCell align="left">{chain.chainName}</TableCell>
-      <TableCell align="left">{chain.address}</TableCell>
-      <TableCell align="left" className={classes.copyCell}>
+      <TableCell classes={cellClasses} align="left">
+        {chain.chainName}
+      </TableCell>
+      <TableCell classes={cellClasses} align="left">
+        {chain.address}
+      </TableCell>
+      <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
         <Block onClick={onAddressCopy} className={classes.link}>
-          <FontAwesomeIcon icon={faCopy} />
+          <FontAwesomeIcon icon={faCopy} color="#31E6C9" />
         </Block>
       </TableCell>
     </TableRow>
@@ -58,6 +73,10 @@ export interface AddressesTableProps {
 
 const AddressesTable = ({ chainAddresses }: AddressesTableProps): JSX.Element => {
   const classes = useStyles();
+  const cellClasses = {
+    root: classes.cell,
+    head: classes.cellHead,
+  };
 
   const chainAddressesSorted = Array.from(chainAddresses).sort(
     (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
@@ -67,10 +86,14 @@ const AddressesTable = ({ chainAddresses }: AddressesTableProps): JSX.Element =>
   return (
     <Table>
       <TableHead>
-        <TableRow className={classes.header}>
-          <TableCell align="center">Blockchain</TableCell>
-          <TableCell align="center">Address</TableCell>
-          <TableCell />
+        <TableRow>
+          <TableCell classes={cellClasses} align="left">
+            Blockchain
+          </TableCell>
+          <TableCell classes={cellClasses} align="left">
+            Address
+          </TableCell>
+          <TableCell classes={cellClasses} />
         </TableRow>
       </TableHead>
       <TableBody>

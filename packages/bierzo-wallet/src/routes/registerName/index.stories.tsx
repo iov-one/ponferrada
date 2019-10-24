@@ -1,9 +1,10 @@
-import { Address, ChainId, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Fee, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import { FormValues, ValidationError } from "medulas-react-components";
 import React from "react";
+import { stringToAmount } from "ui-logic";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import { isValidIov } from "../../logic/account";
@@ -15,6 +16,7 @@ import Layout, { REGISTER_USERNAME_FIELD } from "./components/index";
 
 export const REGISTER_USERNAME_STORY_PATH = `${bierzoRoot}/Register Username`;
 export const REGISTER_USERNAME_REGISTRATION_STORY_PATH = "Register Username";
+const REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH = "Register Username without fee";
 const REGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registration confirmation";
 
 const addresses: ChainAddressPairWithName[] = [
@@ -75,6 +77,15 @@ async function validate(values: object): Promise<object> {
   return errors;
 }
 
+const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
+  fractionalDigits: 9,
+  tokenTicker: "IOV" as TokenTicker,
+};
+
+const fee: Fee = {
+  tokens: stringToAmount("5", iov),
+};
+
 storiesOf(REGISTER_USERNAME_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(REGISTER_USERNAME_REGISTRATION_STORY_PATH, () => (
@@ -84,6 +95,18 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
         onSubmit={onSubmit}
         validate={validate}
         chainAddresses={addresses}
+        transactionFee={undefined}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
+    <DecoratedStorybook>
+      <Layout
+        onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+        onSubmit={onSubmit}
+        validate={validate}
+        chainAddresses={addresses}
+        transactionFee={fee}
       />
     </DecoratedStorybook>
   ))
