@@ -9,6 +9,7 @@ import {
   ProposalResult,
   SendAction,
 } from "@iov/bns";
+import { Page } from "puppeteer";
 import {
   amountToString,
   displayPeriod,
@@ -27,7 +28,7 @@ import { getDummyProposalsState } from "../../../store/proposals/dummyData";
 import { click } from "../../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../../utils/test/reactElemFinder";
 import { DESC_MAX_LENGTH } from "../components/Proposal/CollapsingData/Description";
-import { PROPOSALS_HTML_ID } from "../components/ProposalsList";
+import { comparatorLabel, PROPOSALS_HTML_ID } from "../components/ProposalsList";
 
 export const getHeader = async (dashboardDom: React.Component): Promise<Element> => {
   return (await findRenderedDOMComponentWithId(dashboardDom, HEADER_HTML_ID)) as Element;
@@ -62,6 +63,10 @@ export const getNewProposalButton = async (dashboardDom: React.Component): Promi
   return ((await findRenderedDOMComponentWithId(dashboardDom, ASIDE_FILTER_HTML_ID)) as Element).children[1];
 };
 
+export const getNewProposalButtonE2E = async (dashboardDom: React.Component): Promise<Element> => {
+  return ((await findRenderedDOMComponentWithId(dashboardDom, ASIDE_FILTER_HTML_ID)) as Element).children[1];
+};
+
 export const getBlockchainTimeLabel = async (dashboardDom: React.Component): Promise<string> => {
   return (
     ((await findRenderedDOMComponentWithId(dashboardDom, blockchainTimeHtmlId)) as Element).children[0]
@@ -77,6 +82,12 @@ export const getProposals = async (dashboardDom: React.Component): Promise<Eleme
   };
 
   return Array.from(proposalList.children).filter(isNotHairline);
+};
+
+export const getProposalTitlesE2E = async (page: Page): Promise<string[]> => {
+  return await page.evaluate(() =>
+    Array.from(document.querySelectorAll("h6"), element => element.textContent || ""),
+  );
 };
 
 export const checkCommonFields = (proposal: Element, id: number): void => {
@@ -355,4 +366,39 @@ export const checkVotingPanel = (proposal: Element, id: number): void => {
 
   const participationData = votingPanel.children[2];
   checkParticipationData(participationData, expected);
+};
+
+const clickSortByE2E = async (page: Page): Promise<void> => {
+  await page.click(`input[name="${comparatorLabel}"]`);
+};
+
+const clickTooltipOptionE2E = async (page: Page, option: number): Promise<void> => {
+  await page.click(`div[role="tooltip"] nav > div:nth-child(${option}) p`);
+};
+
+export const sortByExpiryDateE2E = async (page: Page): Promise<void> => {
+  await clickSortByE2E(page);
+  await sleep(1000);
+  await clickTooltipOptionE2E(page, 2);
+};
+
+export const sortByStartDateE2E = async (page: Page): Promise<void> => {
+  await clickSortByE2E(page);
+  await sleep(1000);
+  await clickTooltipOptionE2E(page, 3);
+};
+
+export const sortByVoteE2E = async (page: Page): Promise<void> => {
+  await clickSortByE2E(page);
+  await sleep(1000);
+  await clickTooltipOptionE2E(page, 4);
+};
+
+export const voteYesOnFirstProposalE2E = async (page: Page): Promise<void> => {
+  await page.click(`button[type="submit"]`);
+};
+
+export const voteNoOnFirstProposalE2E = async (page: Page): Promise<void> => {
+  const [txLink] = await page.$x(`//* [@id="proposals"]/div[2]/div[2]/div[1]/form/div[2]/button`);
+  await txLink.click();
 };
