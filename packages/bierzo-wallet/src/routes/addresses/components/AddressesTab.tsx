@@ -6,6 +6,9 @@ import React from "react";
 import { AddressesTableProps } from "../../../components/AddressesTable";
 import UserAddresses from "./UserAddresses";
 
+export const yourStarnames = "Your starnames";
+export const yourAddresses = "Your blockchain addresses";
+
 const useStyles = makeStyles((theme: Theme) => ({
   item: {
     margin: `0px ${theme.spacing(4)}px`,
@@ -58,10 +61,10 @@ function AddressesTab({ chainAddresses }: AddressesTableProps): JSX.Element {
     <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
       <Block display="flex">
         <TabItem selected={selectedTab === "starnames"} onChangeTab={changeTabToStarnames}>
-          Your starnames
+          {yourStarnames}
         </TabItem>
         <TabItem selected={selectedTab === "addresses"} onChangeTab={changeTabToAddresses}>
-          Your blockchain address
+          {yourAddresses}
         </TabItem>
       </Block>
       {selectedTab === "addresses" && <UserAddresses chainAddresses={chainAddresses} />}

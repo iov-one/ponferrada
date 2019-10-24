@@ -8,7 +8,7 @@ import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
 import { copyAddress, getAddressRow } from "./test/operateReceivePayment";
-import { travelToAddressesE2E } from "./test/travelToReceivePayment";
+import { travelToAddressesE2E, travelToBlockchainAddressesTabE2E } from "./test/travelToReceivePayment";
 
 withChainsDescribe("E2E > Receive Payment route", () => {
   let browser: Browser;
@@ -40,11 +40,12 @@ withChainsDescribe("E2E > Receive Payment route", () => {
     server.close();
   });
 
-  it("should redirecto to receive payment route and check list of addresses", async () => {
+  it("should redirect to addresses route and check list of addresses", async () => {
     await travelToBalanceE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToAddressesE2E(page);
+    await travelToBlockchainAddressesTabE2E(page);
     let [chainName, address] = await getAddressRow(page, 1);
     expect(chainName).toBe("Ganache");
     expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
@@ -63,6 +64,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
     await waitForAllBalances(page);
 
     await travelToAddressesE2E(page);
+    await travelToBlockchainAddressesTabE2E(page);
     const address = await copyAddress(page, 1);
 
     expect(clipboardy.readSync()).toBe(address);

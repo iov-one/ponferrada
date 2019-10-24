@@ -4,7 +4,7 @@ import React from "react";
 
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 
-export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
+export const yourBlockchainAddressesId = "your-blockchain-addresses-id";
 
 const usePaper = makeStyles({
   rounded: {
@@ -19,7 +19,7 @@ const UserAddresses = ({ chainAddresses }: AddressesTableProps): JSX.Element => 
   const paperClasses = usePaper();
 
   return (
-    <Block marginTop={1} width={650} id={PAYMENT_CONFIRMATION_VIEW_ID}>
+    <Block marginTop={1} width={650} id={yourBlockchainAddressesId}>
       <Paper classes={paperClasses}>
         <Block
           display="flex"
