@@ -70,7 +70,7 @@ exports[`Storyshots Bierzo Wallet Login page 1`] = `
     <img
       alt="Neuma logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
   </div>
   <div
