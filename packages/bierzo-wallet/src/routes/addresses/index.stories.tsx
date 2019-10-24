@@ -8,7 +8,7 @@ import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import UserAddresses from "./components/UserAddresses";
 
-export const RECEIVE_PAYMENT_STORY_PATH = `Receive Payment`;
+export const RECEIVE_PAYMENT_STORY_PATH = `Addresses`;
 
 const addresses: ChainAddressPairWithName[] = [
   {
