@@ -85,7 +85,7 @@ withChainsDescribe("E2E > Login route", () => {
     await checkLoginMessage(page);
   }, 45000);
 
-  it("shows login to IOV extension if not persona detected", async (): Promise<void> => {
+  it("shows login to Neuma extension if not persona detected", async (): Promise<void> => {
     browser = await launchBrowser();
     page = await createPage(browser);
     await getBackgroundPage(browser);
@@ -98,7 +98,7 @@ withChainsDescribe("E2E > Login route", () => {
     await checkLoginMessage(page);
   }, 45000);
 
-  it("shows install IOV extension message", async (): Promise<void> => {
+  it("shows install Neuma extension message", async (): Promise<void> => {
     browser = await launchBrowser(0, false);
     page = await createPage(browser);
     await page.bringToFront();
