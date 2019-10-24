@@ -6,7 +6,7 @@ import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
 import { BALANCE_ROUTE } from "../paths";
-import Layout from "./components";
+import UserAddresses from "./components/UserAddresses";
 
 function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
@@ -18,7 +18,7 @@ const Addresses = (): JSX.Element => {
 
   return (
     <PageMenu>
-      <Layout onReturnToBalance={onReturnToBalance} chainAddresses={chainAddresses} />
+      <UserAddresses onReturnToBalance={onReturnToBalance} chainAddresses={chainAddresses} />
     </PageMenu>
   );
 };
