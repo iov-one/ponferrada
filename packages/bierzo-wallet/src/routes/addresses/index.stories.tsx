@@ -29,7 +29,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Main", () => (
     <DecoratedStorybook>
-      <AddressesTab />
+      <AddressesTab chainAddresses={addresses} />
     </DecoratedStorybook>
   ))
   .add("Addresses tab", () => (
