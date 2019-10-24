@@ -15,6 +15,7 @@ export interface ChainAddressPairWithName extends ChainAddressPair {
 const useStyles = makeStyles((theme: Theme) => ({
   cell: {
     padding: `${theme.spacing(1)}px ${theme.spacing(4)}px ${theme.spacing(1)}px 0`,
+    borderBottom: "1px solid #F3F3F3",
   },
   cellHead: {
     fontSize: "1.6rem",
