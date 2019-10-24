@@ -263,9 +263,9 @@ exports[`Storyshots Bierzo Wallet Login page 1`] = `
       className="MuiBox-root MuiBox-root makeStyles-rect3"
     />
     <img
-      alt="IOV logo"
+      alt="Neuma logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
   </div>
   <div
@@ -282,7 +282,7 @@ exports[`Storyshots Bierzo Wallet Login page 1`] = `
       <h4
         className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h4"
       >
-        to your IOV wallet
+        to your Neuma wallet
       </h4>
       <div
         className="MuiBox-root MuiBox-root"

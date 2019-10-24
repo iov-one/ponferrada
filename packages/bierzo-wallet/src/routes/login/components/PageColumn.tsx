@@ -5,8 +5,8 @@ import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
 import ledgerIcon from "../assets/ledger.svg";
-import logoBlack from "../assets/logoBlack.svg";
 import neumaIcon from "../assets/neuma.svg";
+import neumaWalletLogo from "../assets/neumaWalletLogo.svg";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
 
@@ -99,7 +99,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           borderRadius={30}
           className={classes.rect3}
         ></Block>
-        <Image src={logoBlack} alt="IOV logo" />
+        <Image src={neumaWalletLogo} alt="Neuma logo" />
       </Block>
       <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
         <Block
@@ -109,7 +109,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           padding={5}
           textAlign="center"
         >
-          <TitleSection primaryTitle="Welcome" secondaryTitle="to your IOV wallet" />
+          <TitleSection primaryTitle="Welcome" secondaryTitle="to your Neuma wallet" />
           <SubtitleSection>
             To access the wallet please authenticate using Neuma or Ledger Nano S
           </SubtitleSection>
