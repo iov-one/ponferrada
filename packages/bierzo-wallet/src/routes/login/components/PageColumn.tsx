@@ -99,7 +99,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           borderRadius={30}
           className={classes.rect3}
         ></Block>
-        <Image src={logoBlack} alt="IOV logo" />
+        <Image src={logoBlack} alt="Neuma logo" />
       </Block>
       <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
         <Block
@@ -109,7 +109,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           padding={5}
           textAlign="center"
         >
-          <TitleSection primaryTitle="Welcome" secondaryTitle="to your IOV wallet" />
+          <TitleSection primaryTitle="Welcome" secondaryTitle="to your Neuma wallet" />
           <SubtitleSection>
             To access the wallet please authenticate using Neuma or Ledger Nano S
           </SubtitleSection>
