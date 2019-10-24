@@ -15,11 +15,7 @@ const usePaper = makeStyles({
   },
 });
 
-interface Props extends AddressesTableProps {
-  readonly onReturnToBalance: () => void;
-}
-
-const UserAddresses = ({ chainAddresses }: Props): JSX.Element => {
+const UserAddresses = ({ chainAddresses }: AddressesTableProps): JSX.Element => {
   const paperClasses = usePaper();
 
   return (
