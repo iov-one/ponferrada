@@ -3,6 +3,9 @@ import classNames from "classnames";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
+import { AddressesTableProps } from "../../../components/AddressesTable";
+import UserAddresses from "./UserAddresses";
+
 const useStyles = makeStyles((theme: Theme) => ({
   item: {
     margin: `0px ${theme.spacing(4)}px`,
@@ -45,20 +48,23 @@ function TabItem({ children, selected, onChangeTab }: TabItemProps): JSX.Element
   );
 }
 
-function AddressesTab(): JSX.Element {
+function AddressesTab({ chainAddresses }: AddressesTableProps): JSX.Element {
   const [selectedTab, setSelectedTab] = React.useState<"starnames" | "addresses">("starnames");
 
   const changeTabToAddresses = (): void => setSelectedTab("addresses");
   const changeTabToStarnames = (): void => setSelectedTab("starnames");
 
   return (
-    <Block marginTop={4} display="flex" alignContent="center" justifyContent="center">
-      <TabItem selected={selectedTab === "starnames"} onChangeTab={changeTabToStarnames}>
-        Your starnames
-      </TabItem>
-      <TabItem selected={selectedTab === "addresses"} onChangeTab={changeTabToAddresses}>
-        Your blockchain address
-      </TabItem>
+    <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+      <Block display="flex">
+        <TabItem selected={selectedTab === "starnames"} onChangeTab={changeTabToStarnames}>
+          Your starnames
+        </TabItem>
+        <TabItem selected={selectedTab === "addresses"} onChangeTab={changeTabToAddresses}>
+          Your blockchain address
+        </TabItem>
+      </Block>
+      {selectedTab === "addresses" && <UserAddresses chainAddresses={chainAddresses} />}
     </Block>
   );
 }
