@@ -7,7 +7,7 @@ import { amountToString } from "ui-logic";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import PageContent from "../../../components/PageContent";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
+import { GetYourAddress } from "../../addresses/components/StarnamesNotExists";
 import wallet from "../assets/wallet.svg";
 
 const walletIcon = <Image src={wallet} alt="wallet ico" />;
@@ -17,79 +17,6 @@ interface Props {
   readonly balances: { [token: string]: Amount };
   readonly onRegisterUsername: () => void;
   readonly rpcEndpointType: RpcEndpointType;
-}
-
-interface GetAddressProps {
-  readonly onRegisterUsername: () => void;
-  readonly rpcEndpointType: RpcEndpointType;
-}
-
-const GetYourAddress = ({ rpcEndpointType, onRegisterUsername }: GetAddressProps): JSX.Element => {
-  switch (rpcEndpointType) {
-    case "extension":
-      return <GetYourAddressWithExtension onRegisterUsername={onRegisterUsername} />;
-    case "ledger":
-      return <GetYourAddressWithLedger />;
-  }
-};
-
-interface GetAddressExtensionProps {
-  readonly onRegisterUsername: () => void;
-}
-
-function GetYourAddressWithExtension({ onRegisterUsername }: GetAddressExtensionProps): JSX.Element {
-  return (
-    <React.Fragment>
-      <Typography variant="subtitle2" weight="semibold" color="primary">
-        username*iov
-      </Typography>
-      <Block marginTop={4} />
-      <Typography variant="subtitle1" weight="semibold" gutterBottom>
-        Choose your address
-      </Typography>
-      <Typography variant="body2" color="textPrimary">
-        With IOV you can choose your easy to read human readable address. No more complicated cryptography
-        when sending to friends.
-      </Typography>
-      <Block marginTop={3} />
-      <Typography
-        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
-        variant="subtitle1"
-        color="primary"
-        weight="semibold"
-        inline
-        link
-        onClick={onRegisterUsername}
-      >
-        Choose Now
-      </Typography>
-    </React.Fragment>
-  );
-}
-
-function GetYourAddressWithLedger(): JSX.Element {
-  return (
-    <React.Fragment>
-      <Typography variant="subtitle2" weight="semibold" color="primary">
-        username*iov
-      </Typography>
-      <Block marginTop={4} />
-      <Typography variant="body1" weight="light">
-        You can not register
-      </Typography>
-      <Typography id={REGISTER_PERSONALIZED_ADDRESS_ROUTE} variant="body1" color="primary" weight="light">
-        personalized address
-      </Typography>
-      <Block textAlign="center">
-        <Typography variant="body1" weight="light" inline>
-          using{" "}
-        </Typography>
-        <Typography variant="body1" weight="semibold" inline>
-          Ledger Nano S
-        </Typography>
-      </Block>
-    </React.Fragment>
-  );
 }
 
 const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointType }: Props): JSX.Element => {
