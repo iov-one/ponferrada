@@ -1,10 +1,16 @@
 import { Address, ChainId } from "@iov/bcp";
+import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
+import {
+  REGISTER_USERNAME_REGISTRATION_STORY_PATH,
+  REGISTER_USERNAME_STORY_PATH,
+} from "../registerName/index.stories";
 import AddressesTab from "./components/AddressesTab";
+import Starnames from "./components/Starnames";
 import UserAddresses from "./components/UserAddresses";
 
 const addresses: ChainAddressPairWithName[] = [
@@ -27,13 +33,55 @@ const addresses: ChainAddressPairWithName[] = [
 
 storiesOf(`${bierzoRoot}/Addresses`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add("Main", () => (
+  .add("Main with extension", () => (
     <DecoratedStorybook>
-      <AddressesTab chainAddresses={addresses} />
+      <AddressesTab
+        chainAddresses={addresses}
+        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        rpcEndpointType="extension"
+      />
+    </DecoratedStorybook>
+  ))
+  .add("Main with iovAddress", () => (
+    <DecoratedStorybook>
+      <AddressesTab
+        chainAddresses={addresses}
+        iovAddress="albert*iov"
+        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        rpcEndpointType="extension"
+      />
+    </DecoratedStorybook>
+  ))
+  .add("Main with ledger", () => (
+    <DecoratedStorybook>
+      <AddressesTab
+        chainAddresses={addresses}
+        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        rpcEndpointType="ledger"
+      />
     </DecoratedStorybook>
   ))
   .add("Addresses tab", () => (
     <DecoratedStorybook>
       <UserAddresses chainAddresses={addresses} />
+    </DecoratedStorybook>
+  ))
+  .add("Starnames tab", () => (
+    <DecoratedStorybook>
+      <Starnames
+        chainAddresses={addresses}
+        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        rpcEndpointType="extension"
+      />
+    </DecoratedStorybook>
+  ))
+  .add("Starnames with name tab", () => (
+    <DecoratedStorybook>
+      <Starnames
+        chainAddresses={addresses}
+        iovAddress="albert*iov"
+        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        rpcEndpointType="extension"
+      />
     </DecoratedStorybook>
   ));
