@@ -1,12 +1,12 @@
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { Theme } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
-import { Block, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
+import { Block, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
 import { defaultColor } from "medulas-react-components";
 import React from "react";
+
+import copy from "./assets/copy.svg";
 
 export interface ChainAddressPairWithName extends ChainAddressPair {
   readonly chainName: string;
@@ -61,7 +61,7 @@ const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
       </TableCell>
       <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
         <Block onClick={onAddressCopy} className={classes.link}>
-          <FontAwesomeIcon icon={faCopy} color="#31E6C9" />
+          <Image src={copy} alt="Copy" width={14} />
         </Block>
       </TableCell>
     </TableRow>
