@@ -40,37 +40,39 @@ withChainsDescribe("E2E > Receive Payment route", () => {
     server.close();
   });
 
-  it("should redirect to addresses route and check list of addresses", async () => {
-    await travelToBalanceE2E(browser, page);
-    await waitForAllBalances(page);
+  describe("Addresses tab", () => {
+    it("should redirect to addresses route and check list of addresses", async () => {
+      await travelToBalanceE2E(browser, page);
+      await waitForAllBalances(page);
 
-    await travelToAddressesE2E(page);
-    await travelToBlockchainAddressesTabE2E(page);
-    let [chainName, address] = await getAddressRow(page, 1);
-    expect(chainName).toBe("Ganache");
-    expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
+      await travelToAddressesE2E(page);
+      await travelToBlockchainAddressesTabE2E(page);
+      let [chainName, address] = await getAddressRow(page, 1);
+      expect(chainName).toBe("Ganache");
+      expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
 
-    [chainName, address] = await getAddressRow(page, 2);
-    expect(chainName).toBe("IOV Devnet");
-    expect(address).toMatch(/^tiov1[0-9a-z]{38}$/);
+      [chainName, address] = await getAddressRow(page, 2);
+      expect(chainName).toBe("IOV Devnet");
+      expect(address).toMatch(/^tiov1[0-9a-z]{38}$/);
 
-    [chainName, address] = await getAddressRow(page, 3);
-    expect(chainName).toBe("Lisk Devnet");
-    expect(address).toMatch(/^[0-9]+L$/);
-  }, 35000);
+      [chainName, address] = await getAddressRow(page, 3);
+      expect(chainName).toBe("Lisk Devnet");
+      expect(address).toMatch(/^[0-9]+L$/);
+    }, 35000);
 
-  it("should copy address to clipboard and show toast with message", async () => {
-    await travelToBalanceE2E(browser, page);
-    await waitForAllBalances(page);
+    it("should copy address to clipboard and show toast with message", async () => {
+      await travelToBalanceE2E(browser, page);
+      await waitForAllBalances(page);
 
-    await travelToAddressesE2E(page);
-    await travelToBlockchainAddressesTabE2E(page);
-    const address = await copyAddress(page, 1);
+      await travelToAddressesE2E(page);
+      await travelToBlockchainAddressesTabE2E(page);
+      const address = await copyAddress(page, 1);
 
-    expect(clipboardy.readSync()).toBe(address);
+      expect(clipboardy.readSync()).toBe(address);
 
-    const toastMessage = await getToastMessage(page);
-    expect(toastMessage).toBe("Address has been copied to clipboard.");
-    await closeToast(page);
-  }, 35000);
+      const toastMessage = await getToastMessage(page);
+      expect(toastMessage).toBe("Address has been copied to clipboard.");
+      await closeToast(page);
+    }, 35000);
+  });
 });
