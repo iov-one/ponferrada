@@ -24,7 +24,7 @@ export async function filterExistingTokens(
 }
 
 /**
- * This method will convert Identities to ChainAddressPair
+ * This method will convert Identities to ChainAddressPairWithName
  */
 export function getChainAddressPairWithNames(
   identities: ReadonlyMap<ChainId, ExtendedIdentity>,
@@ -42,7 +42,7 @@ export function getChainAddressPairWithNames(
 }
 
 /**
- * This method will convert ChainAddressPair to ChainAddress
+ * This method will convert ChainAddressPair to ChainAddressPairWithName
  */
 export async function chainAddressPairSortedMapping(
   addresses: readonly ChainAddressPair[],
