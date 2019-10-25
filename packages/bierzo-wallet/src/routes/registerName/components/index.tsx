@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-function UsernameTooltipHeader(): JSX.Element {
+export function NoUsernameHeader(): JSX.Element {
   const classes = useStyles();
   return (
     <Block className={classes.usernameHeader} borderRadius={40} width={145} padding={1}>
@@ -48,7 +48,7 @@ function UsernameTooltipHeader(): JSX.Element {
   );
 }
 
-function AddressesTooltipHeader(): JSX.Element {
+export function AddressesTooltipHeader(): JSX.Element {
   const classes = useStyles();
   const avatarClasses = { root: classes.addressesHeader };
   return <Avatar classes={avatarClasses}>{registerTooltipIcon}</Avatar>;
@@ -60,7 +60,7 @@ interface TooltipContentProps {
   readonly children: React.ReactNode;
 }
 
-function TooltipContent({ children, title, header }: TooltipContentProps): JSX.Element {
+export function TooltipContent({ children, title, header }: TooltipContentProps): JSX.Element {
   return (
     <Block padding={2} display="flex" flexDirection="column" alignItems="center">
       {header}
@@ -133,7 +133,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
             </Typography>
             <Block display="flex" alignItems="center">
               <Tooltip maxWidth={320}>
-                <TooltipContent header={<UsernameTooltipHeader />} title="Choose your address">
+                <TooltipContent header={<NoUsernameHeader />} title="Choose your address">
                   With IOV you can choose your easy to read human readable address. No more complicated
                   cryptography when sending to friends.
                 </TooltipContent>
@@ -166,9 +166,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
                 </TooltipContent>
               </Tooltip>
             </Block>
-            <Block>
-              <AddressesTable chainAddresses={chainAddresses} />
-            </Block>
+            <AddressesTable chainAddresses={chainAddresses} />
           </Block>
         </Block>
       </PageContent>
