@@ -4,19 +4,20 @@ import { Block } from "medulas-react-components";
 import * as React from "react";
 
 import { getShadowColor } from "../../../../theme/css";
-import { CSV_PADDING } from "../DownloadCSV";
 import { TxTableProps } from "./rowTxBuilder";
 import TxTableFooter from "./TxTableFooter";
 import TxTableHeader from "./TxTableHeader";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const csvPadding = 20;
+
+const useStyles = makeStyles({
   inner: {
     flexBasis: "auto",
   },
   panel: {
     boxShadow: `0 0 20px 0 ${getShadowColor()}`,
   },
-}));
+});
 
 function TxTable({
   onSort,
@@ -32,7 +33,7 @@ function TxTable({
 
   return (
     <Block display="flex">
-      <Block width={theme.spacing(CSV_PADDING)} flexShrink={1} />
+      <Block width={theme.spacing(csvPadding)} flexShrink={1} />
       <Block display="flex" flexGrow={1} flexShrink={0} flexDirection="column" className={classes.inner}>
         <Block margin={3} />
         <Block
@@ -50,7 +51,7 @@ function TxTable({
         </Block>
         <Block margin={3} />
       </Block>
-      <Block width={theme.spacing(CSV_PADDING)} flexShrink={1} />
+      <Block width={theme.spacing(csvPadding)} flexShrink={1} />
     </Block>
   );
 }

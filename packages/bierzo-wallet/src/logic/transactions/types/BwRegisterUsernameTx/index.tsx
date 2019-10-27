@@ -2,7 +2,6 @@ import { Address, BlockchainConnection, ConfirmedTransaction } from "@iov/bcp";
 import { RegisterUsernameTx } from "@iov/bns";
 import * as React from "react";
 
-import { CsvRow } from "../../../csvBuilder";
 import { BwParser, ProcessedTx } from "../../types/BwParser";
 import TransactionHeader from "./ui/TransactionHeader";
 import TransactionRow from "./ui/TransactionRow";
@@ -25,26 +24,6 @@ export class BwRegisterUsernameParser extends BwParser<RegisterUsernameTx> {
 
   public graphicalRepresentation(tx: ProcessedTx<RegisterUsernameTx>): JSX.Element {
     return <TransactionRow key={tx.id} tx={tx} />;
-  }
-
-  public csvRepresentation(tx: ProcessedTx<RegisterUsernameTx>): CsvRow {
-    const { original } = tx;
-
-    const fee = original.fee && original.fee.tokens ? original.fee.tokens : undefined;
-
-    return {
-      id: tx.id,
-      recepient: `Personalized address registration: ${original.username}`,
-      sender: "N/A",
-      quantity: "",
-      fractionalDigits: "",
-      tokenTicker: "",
-      feeQuantity: fee ? fee.quantity : "",
-      feeFractionalDigits: fee ? fee.fractionalDigits.toString() : "",
-      feeTokenTicker: fee ? fee.tokenTicker : "",
-      time: tx.time.toISOString(),
-      note: `${original.username}`,
-    };
   }
 
   public headerRepresentation(tx: ProcessedTx<RegisterUsernameTx>, lastOne: boolean): JSX.Element {

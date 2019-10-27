@@ -242,9 +242,6 @@ function onSort(receivedOrderBy: TxsOrder, receivedOrder: SortOrder): () => void
     action(`onSort action. receivedOrderBy: ${receivedOrderBy}, receivedOrder: ${receivedOrder}`)();
   };
 }
-function onDownloadCSV(): void {
-  action("onDownloadCSV action")();
-}
 
 storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
@@ -256,7 +253,6 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}
         onSort={onSort}
-        onDownloadCSV={onDownloadCSV}
         orderBy={TX_DATE_COLUMN}
         order={ORDER_DESC}
       />
@@ -273,7 +269,6 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onSort={onSort}
-          onDownloadCSV={onDownloadCSV}
           orderBy={TX_DATE_COLUMN}
           order={ORDER_DESC}
         />
