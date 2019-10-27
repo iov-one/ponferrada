@@ -11,7 +11,7 @@ import {
 } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { getBorderColor } from "../../../../../../theme/css";
-import { formatDate, formatTime } from "../../../../../../utils/date";
+import { formatDate } from "../../../../../../utils/date";
 import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
 import SendTxDetails from "./Details";
@@ -20,8 +20,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   cell: {
     flex: "1 0 50px",
   },
-  txFee: {
-    fontSize: "1.2rem",
+  amountTo: {
+    "&::before": {
+      content: `"-"`,
+    },
+  },
+  amountFrom: {
+    color: theme.palette.primary.main,
+
+    "&::before": {
+      content: `"+"`,
+    },
   },
 }));
 
@@ -39,10 +48,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
     toggle();
   };
 
-  let txFee = "-";
-  if (sendTx.original.fee && sendTx.original.fee.tokens) {
-    txFee = amountToString(sendTx.original.fee.tokens);
-  }
+  const amountClass = sendTx.outgoing ? classes.amountTo : classes.amountFrom;
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
@@ -58,11 +64,8 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
           height={24}
         />
         <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
-          <Typography variant="subtitle2" weight="semibold" gutterBottom>
+          <Typography variant="subtitle2" weight="semibold">
             {getAddressPrefix(sendTx)} {ellipsifyAddress(sendTx.original.sender)}
-          </Typography>
-          <Typography variant="subtitle2" weight="regular" color="secondary">
-            {formatTime(sendTx.time)}
           </Typography>
         </Block>
         <Block flexGrow={1} />
@@ -71,17 +74,8 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
         </Typography>
         <Block flexGrow={1} />
         <Block className={classes.cell}>
-          <Typography variant="subtitle2" weight="regular" align="right">
+          <Typography variant="subtitle2" weight="regular" align="right" className={amountClass}>
             {amountToString(sendTx.original.amount)}
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            weight="regular"
-            color="secondary"
-            align="right"
-            className={classes.txFee}
-          >
-            {txFee}
           </Typography>
         </Block>
         <Block padding={0.5} />

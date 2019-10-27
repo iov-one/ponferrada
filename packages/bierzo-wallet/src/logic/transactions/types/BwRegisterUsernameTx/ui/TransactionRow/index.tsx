@@ -7,20 +7,17 @@ import { amountToString } from "ui-logic";
 
 import toAddress from "../../../../../../routes/transactions/assets/toAddress.svg";
 import { getBorderColor } from "../../../../../../theme/css";
-import { formatDate, formatTime } from "../../../../../../utils/date";
+import { formatDate } from "../../../../../../utils/date";
 import { ProcessedTx } from "../../../../types/BwParser";
 import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
 import TxDetails from "./Details";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles({
   cell: {
     flex: "1 0 50px",
   },
-  txFee: {
-    fontSize: "1.2rem",
-  },
-}));
+});
 
 interface Props {
   readonly tx: ProcessedTx<RegisterUsernameTx>;
@@ -54,11 +51,8 @@ function TransactionRow({ tx }: Props): JSX.Element {
           height={24}
         />
         <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
-          <Typography variant="subtitle2" weight="semibold" gutterBottom>
+          <Typography variant="subtitle2" weight="semibold">
             Personalized address registration
-          </Typography>
-          <Typography variant="subtitle2" weight="regular" color="secondary">
-            {formatTime(tx.time)}
           </Typography>
         </Block>
         <Block flexGrow={1} />
@@ -68,16 +62,7 @@ function TransactionRow({ tx }: Props): JSX.Element {
         <Block flexGrow={1} />
         <Block className={classes.cell}>
           <Typography variant="subtitle2" weight="regular" align="right">
-            -
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            weight="regular"
-            color="secondary"
-            align="right"
-            className={classes.txFee}
-          >
-            {txFee}
+            -{txFee}
           </Typography>
         </Block>
         <Block padding={0.5} />
