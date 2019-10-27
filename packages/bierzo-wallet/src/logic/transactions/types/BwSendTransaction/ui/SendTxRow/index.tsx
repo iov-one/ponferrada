@@ -3,10 +3,9 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";
 import * as React from "react";
-import { amountToString } from "ui-logic";
+import { amountToString, ellipsifyAddress } from "ui-logic";
 
 import {
-  DEFAULT_ADDRESS,
   getAddressPrefix,
   getTypeIcon,
 } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
@@ -60,7 +59,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
         />
         <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
           <Typography variant="subtitle2" weight="semibold" gutterBottom>
-            {getAddressPrefix(sendTx)} {DEFAULT_ADDRESS}
+            {getAddressPrefix(sendTx)} {ellipsifyAddress(sendTx.original.sender)}
           </Typography>
           <Typography variant="subtitle2" weight="regular" color="secondary">
             {formatTime(sendTx.time)}
