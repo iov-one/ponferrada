@@ -1,5 +1,4 @@
 import { TxCodec } from "@iov/bcp";
-import Paper from "@material-ui/core/Paper";
 import { FieldValidator, FormApi } from "final-form";
 import {
   Block,
@@ -7,7 +6,6 @@ import {
   FieldInputValue,
   required,
   TextField,
-  Tooltip,
   Typography,
 } from "medulas-react-components";
 import React from "react";
@@ -41,37 +39,22 @@ const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
   }, [recipientValidator]);
 
   return (
-    <Paper>
-      <Block display="flex" flexDirection="column" width="100%" padding={5}>
-        <Typography color="textPrimary" variant="subtitle2">
-          To
-        </Typography>
-        <Block width="100%" marginTop={2} marginBottom={1}>
-          <TextField
-            name={ADDRESS_FIELD}
-            form={form}
-            validate={validator}
-            placeholder="IOV or wallet address"
-            disabled={selectedChainCodec === null}
-            fullWidth
-            margin="none"
-          />
-        </Block>
-        <Block display="flex" alignSelf="flex-end" marginTop={3}>
-          <Typography color="textPrimary" variant="subtitle1">
-            How it works
-          </Typography>
-          <Block alignSelf="center" marginLeft={1}>
-            <Tooltip>
-              <Typography variant="body2">
-                Send payments to anyone with an IOV handle, and it will go directly to their account. If they
-                don’t have an IOV account add their blockchain address.
-              </Typography>
-            </Tooltip>
-          </Block>
-        </Block>
+    <Block width="100%" marginTop={4} display="flex" flexDirection="column">
+      <Typography color="textPrimary" variant="subtitle2">
+        To
+      </Typography>
+      <Block width="100%" marginTop={1}>
+        <TextField
+          name={ADDRESS_FIELD}
+          form={form}
+          validate={validator}
+          placeholder="Recipient's address"
+          disabled={selectedChainCodec === null}
+          fullWidth
+          margin="none"
+        />
       </Block>
-    </Paper>
+    </Block>
   );
 };
 

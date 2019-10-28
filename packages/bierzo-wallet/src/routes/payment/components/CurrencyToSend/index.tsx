@@ -2,7 +2,6 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TokenTicker } from "@iov/bcp";
 import Avatar from "@material-ui/core/Avatar";
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/styles";
 import { FormApi } from "final-form";
 import {
@@ -23,7 +22,7 @@ import { amountToNumber, amountToString } from "ui-logic";
 
 import { RootState } from "../../../../store/reducers";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles({
   avatar: {
     backgroundColor: "#ffe152",
     fontSize: "27.5px",
@@ -31,7 +30,7 @@ const useStyles = makeStyles(() => ({
     height: "72px",
     margin: "-76px 0 40px 0",
   },
-}));
+});
 
 export const QUANTITY_FIELD = "quantityField";
 const QUANTITY_MIN = 1e-9;
@@ -75,45 +74,46 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
   };
 
   return (
-    <Paper>
-      <Block display="flex" flexDirection="column" alignItems="center" width="100%" marginTop={4} padding={5}>
-        <Avatar classes={avatarClasses}>
-          <FontAwesomeIcon icon={faUser} color="#ffffff" />
-        </Avatar>
+    <Block width="100%" display="flex" flexDirection="column" alignItems="center">
+      <Avatar classes={avatarClasses}>
+        <FontAwesomeIcon icon={faUser} color="#ffffff" />
+      </Avatar>
+      <Typography color="textPrimary" variant="subtitle2">
+        Send tokens
+      </Typography>
+      <Block width="100%" marginTop={4}>
         <Typography color="textPrimary" variant="subtitle2">
-          You send
+          Amount
         </Typography>
-        <Block width="100%" marginTop={5} marginBottom={1}>
-          <Block display="flex">
-            <Block width="100%" marginRight={1}>
-              <TextField
-                name={QUANTITY_FIELD}
-                form={form}
-                validate={validator}
-                placeholder="0.00"
-                fullWidth
-                margin="none"
-              />
-            </Block>
-            <Block height="32px">
-              <SelectField
-                fieldName={CURRENCY_FIELD}
-                form={form}
-                maxWidth="60px"
-                items={currencyItems}
-                initial={firstToken ? firstToken.name : "–"}
-                onChangeCallback={onSelectionChanged}
-              />
-            </Block>
+        <Block display="flex" marginTop={1}>
+          <Block width="100%">
+            <TextField
+              name={QUANTITY_FIELD}
+              form={form}
+              validate={validator}
+              placeholder="0.00"
+              fullWidth
+              margin="none"
+            />
+          </Block>
+          <Block marginTop={0.5} marginLeft={1}>
+            <SelectField
+              fieldName={CURRENCY_FIELD}
+              form={form}
+              maxWidth="60px"
+              items={currencyItems}
+              initial={firstToken ? firstToken.name : "–"}
+              onChangeCallback={onSelectionChanged}
+            />
           </Block>
         </Block>
         <Block marginTop={1}>
-          <Typography color="textSecondary" variant="subtitle2">
-            balance: {selectedTokenTicker ? amountToString(balances[selectedTokenTicker]) : "–"}
+          <Typography color="textPrimary" variant="subtitle2">
+            Balance: {selectedTokenTicker ? amountToString(balances[selectedTokenTicker]) : "–"}
           </Typography>
         </Block>
       </Block>
-    </Paper>
+    </Block>
   );
 };
 
