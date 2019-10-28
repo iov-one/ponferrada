@@ -5,15 +5,13 @@ import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medula
 import * as React from "react";
 import { amountToString, ellipsifyAddress } from "ui-logic";
 
-import {
-  getAddressPrefix,
-  getTypeIcon,
-} from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
+import { getAddressPrefix } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { getBorderColor } from "../../../../../../theme/css";
 import { formatDate } from "../../../../../../utils/date";
 import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
+import txIcon from "../assets/user.svg";
 import SendTxDetails from "./Details";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -55,8 +53,8 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
       <Block margin={2} />
       <Block display="flex" alignItems="center">
         <CircleImage
-          icon={getTypeIcon(sendTx)}
-          circleColor={theme.palette.background.default}
+          icon={txIcon}
+          circleColor={theme.palette.background.paper}
           borderColor={getBorderColor(theme)}
           alt="Transaction type"
           dia={40}
