@@ -1,21 +1,33 @@
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TransactionId } from "@iov/bcp";
-import { Block, Button, makeStyles, Typography } from "medulas-react-components";
+import clipboardCopy from "clipboard-copy";
+import {
+  Block,
+  Button,
+  Image,
+  makeStyles,
+  ToastContext,
+  ToastVariant,
+  Typography,
+} from "medulas-react-components";
 import React from "react";
 
+import tickIcon from "../../../../assets/tick.svg";
 import PageContent from "../../../../components/PageContent";
 
-const paymentIcon = <FontAwesomeIcon icon={faUser} color="#ffffff" />;
-
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
-const useTypography = makeStyles({
+const useClasses = makeStyles({
   wrap: {
-    width: 570,
     whiteSpace: "pre-wrap",
     wordWrap: "break-word",
   },
+  copyButton: {
+    cursor: "pointer",
+  },
 });
+
+const paymentIcon = <Image src={tickIcon} alt="Tick" />;
 
 interface Props {
   readonly transactionId: TransactionId;
@@ -30,7 +42,8 @@ const ConfirmPayment = ({
   onSeeTrasactions,
   onReturnToBalance,
 }: Props): JSX.Element => {
-  const typographyClasses = useTypography();
+  const toast = React.useContext(ToastContext);
+  const classes = useClasses();
 
   const buttons = (
     <Block
@@ -47,30 +60,35 @@ const ConfirmPayment = ({
         </Button>
       </Block>
       <Block width="75%" marginTop={2}>
-        <Button fullWidth onClick={onSeeTrasactions}>
+        <Button fullWidth variant="text" onClick={onSeeTrasactions}>
           See Transactions
-        </Button>
-      </Block>
-      <Block width="75%" marginTop={2}>
-        <Button fullWidth onClick={onReturnToBalance}>
-          Return to Balance
         </Button>
       </Block>
     </Block>
   );
 
+  const copyTxId = (): void => {
+    clipboardCopy(transactionId);
+    toast.show("Address has been copied to clipboard.", ToastVariant.INFO);
+  };
+
   return (
-    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymentIcon} buttons={buttons}>
-      <Typography variant="h6" weight="light">
+    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymentIcon} avatarColor="#31E6C9" buttons={buttons}>
+      <Typography color="textPrimary" variant="subtitle1" weight="semibold">
         Your transaction was successfully signed and sent to the network.
       </Typography>
-      <Block marginTop={2}>
-        <Typography variant="h6" weight="light">
-          Transaction ID:
+      <Block marginTop={4} alignSelf="flex-start">
+        <Typography color="textPrimary" variant="subtitle2" weight="semibold">
+          Transaction ID
         </Typography>
-        <Typography variant="body2" weight="semibold" color="primary" className={typographyClasses.wrap}>
+      </Block>
+      <Block marginTop={2} alignSelf="flex-start" display="flex" alignItems="center">
+        <Typography color="textPrimary" variant="subtitle2" className={classes.wrap}>
           {transactionId}
         </Typography>
+        <Block marginLeft={1} onClick={copyTxId} className={classes.copyButton}>
+          <FontAwesomeIcon icon={faCopy} color="#31E6C9" size="lg" />
+        </Block>
       </Block>
     </PageContent>
   );
