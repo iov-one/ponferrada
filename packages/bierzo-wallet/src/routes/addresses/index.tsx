@@ -1,16 +1,10 @@
 import React from "react";
 import * as ReactRedux from "react-redux";
 
-import { history } from "..";
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
-import { BALANCE_ROUTE } from "../paths";
-import UserAddresses from "./components/UserAddresses";
-
-function onReturnToBalance(): void {
-  history.push(BALANCE_ROUTE);
-}
+import AddressesTab from "./components/AddressesTab";
 
 const Addresses = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
@@ -18,7 +12,7 @@ const Addresses = (): JSX.Element => {
 
   return (
     <PageMenu>
-      <UserAddresses onReturnToBalance={onReturnToBalance} chainAddresses={chainAddresses} />
+      <AddressesTab chainAddresses={chainAddresses} />
     </PageMenu>
   );
 };
