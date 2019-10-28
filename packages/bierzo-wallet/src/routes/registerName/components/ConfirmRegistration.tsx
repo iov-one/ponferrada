@@ -19,9 +19,6 @@ import PageContent from "../../../components/PageContent";
 export const USERNAME_CONFIRMATION_VIEW_ID = "username-confirmation-view-id";
 
 const useClasses = makeStyles({
-  heading: {
-    textAlign: "center",
-  },
   txId: {
     whiteSpace: "pre-wrap",
     wordWrap: "break-word",
@@ -72,7 +69,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
       avatarColor="#31E6C9"
       buttons={buttons}
     >
-      <Typography color="textPrimary" variant="subtitle1" weight="semibold" className={classes.heading}>
+      <Typography color="textPrimary" variant="subtitle1" weight="semibold" align="center">
         Your personalized address registration request was successfully signed and sent to the network.
       </Typography>
       <Block marginTop={4} alignSelf="flex-start">
