@@ -2,7 +2,6 @@ import clipboardy from "clipboardy";
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
-import { sleep } from "ui-logic";
 
 import { closeBrowser, closeToast, createPage, getToastMessage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";

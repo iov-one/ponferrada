@@ -2,7 +2,7 @@ import { Block } from "medulas-react-components";
 import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { AddressesTableProps, ChainAddressPairWithName } from "../../../components/AddressesTable";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import StarnamesExists from "./StarnamesExists";
 import StarnamesNotExists from "./StarnamesNotExists";
 
