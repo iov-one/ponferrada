@@ -1,22 +1,37 @@
-import { faRegistered } from "@fortawesome/free-regular-svg-icons";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TransactionId } from "@iov/bcp";
-import { Block, Button, makeStyles, Typography } from "medulas-react-components";
+import clipboardCopy from "clipboard-copy";
+import {
+  Block,
+  Button,
+  Image,
+  makeStyles,
+  ToastContext,
+  ToastVariant,
+  Typography,
+} from "medulas-react-components";
 import React from "react";
 
+import tickIcon from "../../../assets/tick.svg";
 import PageContent from "../../../components/PageContent";
 
 export const USERNAME_CONFIRMATION_VIEW_ID = "username-confirmation-view-id";
 
-const registerIcon = <FontAwesomeIcon icon={faRegistered} color="#ffffff" />;
-
-const useTypography = makeStyles({
-  wrap: {
-    width: 570,
+const useClasses = makeStyles({
+  heading: {
+    textAlign: "center",
+  },
+  txId: {
     whiteSpace: "pre-wrap",
     wordWrap: "break-word",
   },
+  copyButton: {
+    cursor: "pointer",
+  },
 });
+
+const registerIcon = <Image src={tickIcon} alt="Tick" />;
 
 interface Props {
   readonly transactionId: TransactionId;
@@ -25,7 +40,8 @@ interface Props {
 }
 
 const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalance }: Props): JSX.Element => {
-  const typographyClasses = useTypography();
+  const toast = React.useContext(ToastContext);
+  const classes = useClasses();
 
   const buttons = (
     <Block
@@ -41,26 +57,36 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
           See Transactions
         </Button>
       </Block>
-      <Block width="75%" marginTop={2}>
-        <Button fullWidth onClick={onReturnToBalance}>
-          Return to Balance
-        </Button>
-      </Block>
     </Block>
   );
 
+  const copyTxId = (): void => {
+    clipboardCopy(transactionId);
+    toast.show("Address has been copied to clipboard.", ToastVariant.INFO);
+  };
+
   return (
-    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={registerIcon} buttons={buttons}>
-      <Typography variant="h6" weight="light">
+    <PageContent
+      id={USERNAME_CONFIRMATION_VIEW_ID}
+      icon={registerIcon}
+      avatarColor="#31E6C9"
+      buttons={buttons}
+    >
+      <Typography color="textPrimary" variant="subtitle1" weight="semibold" className={classes.heading}>
         Your personalized address registration request was successfully signed and sent to the network.
       </Typography>
-      <Block marginTop={2}>
-        <Typography variant="h6" weight="light">
-          Transaction ID:
+      <Block marginTop={4} alignSelf="flex-start">
+        <Typography color="textPrimary" variant="subtitle2" weight="semibold">
+          Transaction ID
         </Typography>
-        <Typography variant="body2" weight="semibold" color="primary" className={typographyClasses.wrap}>
+      </Block>
+      <Block marginTop={2} alignSelf="flex-start" display="flex" alignItems="center">
+        <Typography color="textPrimary" variant="subtitle2" className={classes.txId}>
           {transactionId}
         </Typography>
+        <Block marginLeft={1} onClick={copyTxId} className={classes.copyButton}>
+          <FontAwesomeIcon icon={faCopy} color="#31E6C9" size="lg" />
+        </Block>
       </Block>
     </PageContent>
   );

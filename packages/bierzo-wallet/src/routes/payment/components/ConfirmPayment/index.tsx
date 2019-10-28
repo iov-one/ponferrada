@@ -18,7 +18,10 @@ import PageContent from "../../../../components/PageContent";
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
 const useClasses = makeStyles({
-  wrap: {
+  heading: {
+    textAlign: "center",
+  },
+  txId: {
     whiteSpace: "pre-wrap",
     wordWrap: "break-word",
   },
@@ -74,7 +77,7 @@ const ConfirmPayment = ({
 
   return (
     <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymentIcon} avatarColor="#31E6C9" buttons={buttons}>
-      <Typography color="textPrimary" variant="subtitle1" weight="semibold">
+      <Typography color="textPrimary" variant="subtitle1" weight="semibold" className={classes.heading}>
         Your transaction was successfully signed and sent to the network.
       </Typography>
       <Block marginTop={4} alignSelf="flex-start">
@@ -83,7 +86,7 @@ const ConfirmPayment = ({
         </Typography>
       </Block>
       <Block marginTop={2} alignSelf="flex-start" display="flex" alignItems="center">
-        <Typography color="textPrimary" variant="subtitle2" className={classes.wrap}>
+        <Typography color="textPrimary" variant="subtitle2" className={classes.txId}>
           {transactionId}
         </Typography>
         <Block marginLeft={1} onClick={copyTxId} className={classes.copyButton}>
