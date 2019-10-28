@@ -26,8 +26,8 @@ const Layout = ({
   return (
     <Form onSubmit={handleSubmit}>
       <Block marginTop={5} display="flex" justifyContent="center">
-        <Block maxWidth="450px" display="flex" flexDirection="column" alignItems="center">
-          <Block minWidth="450px" bgcolor="white" padding={5}>
+        <Block width="450px" display="flex" flexDirection="column" alignItems="center">
+          <Block width="450px" bgcolor="white" padding={5}>
             <CurrencyToSend form={form} onTokenSelectionChanged={onTokenSelectionChanged} />
             <ReceiverAddress form={form} selectedChainCodec={selectedChainCodec} />
             <TextNote form={form} />
