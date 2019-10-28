@@ -59,7 +59,7 @@ withChainsDescribe("E2E > Balance route", () => {
   it("should contain message to get address", async () => {
     const username = await getAddressCreationPromptE2E(await page.$$("h6"));
 
-    expect(username).toBe("Choose your address");
+    expect(username).toBe("You have no starnames");
   }, 45000);
 
   it("should create personalized address", async () => {
