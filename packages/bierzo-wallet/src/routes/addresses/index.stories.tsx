@@ -37,6 +37,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={addresses}
+        usernameAddresses={addresses}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
@@ -46,6 +47,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={addresses}
+        usernameAddresses={addresses}
         iovAddress="albert*iov"
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
@@ -56,6 +58,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={addresses}
+        usernameAddresses={addresses}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="ledger"
       />
@@ -69,7 +72,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Starnames tab", () => (
     <DecoratedStorybook>
       <Starnames
-        chainAddresses={addresses}
+        usernameAddresses={addresses}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
@@ -78,7 +81,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Starnames with name tab", () => (
     <DecoratedStorybook>
       <Starnames
-        chainAddresses={addresses}
+        usernameAddresses={addresses}
         iovAddress="albert*iov"
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"

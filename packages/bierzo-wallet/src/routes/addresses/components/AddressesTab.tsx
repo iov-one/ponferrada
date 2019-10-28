@@ -75,7 +75,7 @@ function AddressesTab({
       </Block>
       {selectedTab === "starnames" && (
         <Starnames
-          chainAddresses={chainAddresses}
+          usernameAddresses={chainAddresses}
           iovAddress={iovAddress}
           onRegisterUsername={onRegisterUsername}
           rpcEndpointType={rpcEndpointType}

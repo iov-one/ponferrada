@@ -2,13 +2,18 @@ import clipboardy from "clipboardy";
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { sleep } from "ui-logic";
 
 import { closeBrowser, closeToast, createPage, getToastMessage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { waitForAllBalances } from "../balance/test/operateBalances";
+import { registerPersonalizedAddress, waitForAllBalances } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
-import { copyAddress, getAddressRow } from "./test/operateReceivePayment";
-import { travelToAddressesE2E, travelToBlockchainAddressesTabE2E } from "./test/travelToReceivePayment";
+import { copyAddress, copyStarname, getAddressRow } from "./test/operateReceivePayment";
+import {
+  travelToAddressesE2E,
+  travelToBlockchainAddressesTabE2E,
+  travelToStarnamesTabE2E,
+} from "./test/travelToReceivePayment";
 
 withChainsDescribe("E2E > Receive Payment route", () => {
   let browser: Browser;
@@ -30,6 +35,9 @@ withChainsDescribe("E2E > Receive Payment route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
+    await travelToBalanceE2E(browser, page);
+    await waitForAllBalances(page);
+    await travelToAddressesE2E(page);
   }, 60000);
 
   afterEach(async () => {
@@ -41,12 +49,11 @@ withChainsDescribe("E2E > Receive Payment route", () => {
   });
 
   describe("Addresses tab", () => {
-    it("should redirect to addresses route and check list of addresses", async () => {
-      await travelToBalanceE2E(browser, page);
-      await waitForAllBalances(page);
-
-      await travelToAddressesE2E(page);
+    beforeEach(async () => {
       await travelToBlockchainAddressesTabE2E(page);
+    }, 60000);
+
+    it("should open tab, check list of addresses and copy address to clipboard", async () => {
       let [chainName, address] = await getAddressRow(page, 1);
       expect(chainName).toBe("Ganache");
       expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
@@ -58,20 +65,56 @@ withChainsDescribe("E2E > Receive Payment route", () => {
       [chainName, address] = await getAddressRow(page, 3);
       expect(chainName).toBe("Lisk Devnet");
       expect(address).toMatch(/^[0-9]+L$/);
-    }, 35000);
 
-    it("should copy address to clipboard and show toast with message", async () => {
-      await travelToBalanceE2E(browser, page);
-      await waitForAllBalances(page);
+      const blockchainAddress = await copyAddress(page, 1);
 
-      await travelToAddressesE2E(page);
-      await travelToBlockchainAddressesTabE2E(page);
-      const address = await copyAddress(page, 1);
-
-      expect(clipboardy.readSync()).toBe(address);
+      expect(clipboardy.readSync()).toBe(blockchainAddress);
 
       const toastMessage = await getToastMessage(page);
       expect(toastMessage).toBe("Address has been copied to clipboard.");
+      await closeToast(page);
+    }, 35000);
+  });
+
+  describe("Starnames tab", () => {
+    let username: string;
+    beforeEach(async () => {
+      await travelToStarnamesTabE2E(page);
+      username = await registerPersonalizedAddress(browser, page);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+    }, 60000);
+
+    it("should open tab, check list of addresses and copy address to clipboard", async () => {
+      let [chainName, address] = await getAddressRow(page, 1);
+      expect(chainName).toBe("Ganache");
+      expect(address).toMatch(/^0x[a-fA-F0-9]{40}$/);
+
+      [chainName, address] = await getAddressRow(page, 2);
+      expect(chainName).toBe("IOV Devnet");
+      expect(address).toMatch(/^tiov1[0-9a-z]{38}$/);
+
+      [chainName, address] = await getAddressRow(page, 3);
+      expect(chainName).toBe("Lisk Devnet");
+      expect(address).toMatch(/^[0-9]+L$/);
+
+      const blockchainAddress = await copyAddress(page, 1);
+
+      expect(clipboardy.readSync()).toBe(blockchainAddress);
+
+      const toastMessage = await getToastMessage(page);
+      expect(toastMessage).toBe("Address has been copied to clipboard.");
+      await closeToast(page);
+    }, 35000);
+
+    it("should check username", async () => {
+      await copyStarname(page);
+
+      expect(clipboardy.readSync()).toBe(username);
+
+      const toastMessage = await getToastMessage(page);
+      expect(toastMessage).toBe("Startname has been copied to clipboard.");
       await closeToast(page);
     }, 35000);
   });

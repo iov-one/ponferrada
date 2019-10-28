@@ -4,10 +4,11 @@ import * as ReactRedux from "react-redux";
 import { history } from "..";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import PageMenu from "../../components/PageMenu";
+import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { BwUsername } from "../../store/usernames";
 import { getFirstUsername } from "../../store/usernames/selectors";
-import { chainAddressPairSortedMapping } from "../../utils/tokens";
+import { chainAddressPairSortedMapping, getChainAddressPairWithNames } from "../../utils/tokens";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
 
@@ -18,15 +19,18 @@ function onRegisterUsername(): void {
 const Addresses = (): JSX.Element => {
   const bnsUsername = ReactRedux.useSelector(getFirstUsername);
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
+  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const iovAddress = bnsUsername ? bnsUsername.username : undefined;
-  const [chainAddresses, setChainAddresses] = React.useState<readonly ChainAddressPairWithName[]>([]);
+  const [usernameAddresses, setUsernameAddresses] = React.useState<readonly ChainAddressPairWithName[]>([]);
+
+  const chainAddresses = getChainAddressPairWithNames(identities);
 
   React.useEffect(() => {
     let isSubscribed = true;
     async function getAddressesPairs(bnsUsername: BwUsername | undefined): Promise<void> {
       if (isSubscribed) {
         const chainAddresses = bnsUsername ? await chainAddressPairSortedMapping(bnsUsername.addresses) : [];
-        setChainAddresses(chainAddresses);
+        setUsernameAddresses(chainAddresses);
       }
     }
     getAddressesPairs(bnsUsername);
@@ -40,6 +44,7 @@ const Addresses = (): JSX.Element => {
     <PageMenu>
       <AddressesTab
         chainAddresses={chainAddresses}
+        usernameAddresses={usernameAddresses}
         iovAddress={iovAddress}
         onRegisterUsername={onRegisterUsername}
         rpcEndpointType={rpcEndpointType}

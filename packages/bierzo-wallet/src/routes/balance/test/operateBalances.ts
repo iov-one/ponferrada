@@ -1,5 +1,9 @@
-import { ElementHandle, Page } from "puppeteer";
-import { whenTrue } from "ui-logic";
+import { Browser, ElementHandle, Page } from "puppeteer";
+import { randomString, sleep, whenTrue } from "ui-logic";
+
+import { acceptEnqueuedRequest } from "../../../utils/test/persona";
+import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
+import { REGISTER_USERNAME_FIELD } from "../../registerName/components";
 
 const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;
@@ -35,4 +39,21 @@ export function waitForAllBalances(page: Page): Promise<void> {
 export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
   const index = mainMenuH6Elements + 2;
   return (await (await h6Elements[index].getProperty("textContent")).jsonValue()) || "";
+};
+
+export const registerPersonalizedAddress = async (browser: Browser, page: Page): Promise<string> => {
+  await page.click(`#${REGISTER_PERSONALIZED_ADDRESS_ROUTE.replace("/", "\\/")}`);
+
+  // Fill the form
+  const username = `${randomString(10)}*iov`;
+  await page.type(`input[name="${REGISTER_USERNAME_FIELD}"]`, username);
+  await page.click('button[type="submit"]');
+
+  await acceptEnqueuedRequest(browser);
+  await page.bringToFront();
+  await sleep(1000);
+  const buttons = await page.$$("button");
+  await buttons[2].click();
+
+  return username;
 };
