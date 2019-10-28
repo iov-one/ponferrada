@@ -8,7 +8,7 @@ import { getBorderColor } from "../../../../theme/css";
 import { PAYMENT_ROUTE } from "../../../paths";
 import sendIcon from "../../assets/toAddressWhite.svg";
 
-export const csvPadding = 20;
+const sendTokenPadding = 20;
 const sendTokensLabel = "Send tokens";
 
 function goToPayment(): void {
@@ -57,8 +57,8 @@ const SendTokens = (): JSX.Element => {
       alignItems="center"
       paddingTop={3}
       paddingBottom={3}
-      paddingLeft={csvPadding}
-      paddingRight={csvPadding}
+      paddingLeft={sendTokenPadding}
+      paddingRight={sendTokenPadding}
       bgcolor="white"
     >
       <Fab

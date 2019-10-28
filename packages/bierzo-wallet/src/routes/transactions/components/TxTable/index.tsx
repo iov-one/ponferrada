@@ -8,7 +8,7 @@ import { TxTableProps } from "./rowTxBuilder";
 import TxTableFooter from "./TxTableFooter";
 import TxTableHeader from "./TxTableHeader";
 
-const csvPadding = 20;
+const txTablePadding = 20;
 
 const useStyles = makeStyles({
   inner: {
@@ -33,7 +33,7 @@ function TxTable({
 
   return (
     <Block display="flex">
-      <Block width={theme.spacing(csvPadding)} flexShrink={1} />
+      <Block width={theme.spacing(txTablePadding)} flexShrink={1} />
       <Block display="flex" flexGrow={1} flexShrink={0} flexDirection="column" className={classes.inner}>
         <Block margin={3} />
         <Block
@@ -51,7 +51,7 @@ function TxTable({
         </Block>
         <Block margin={3} />
       </Block>
-      <Block width={theme.spacing(csvPadding)} flexShrink={1} />
+      <Block width={theme.spacing(txTablePadding)} flexShrink={1} />
     </Block>
   );
 }
