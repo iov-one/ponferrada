@@ -15,8 +15,11 @@ import txIcon from "../assets/user.svg";
 import SendTxDetails from "./Details";
 
 const useStyles = makeStyles((theme: Theme) => ({
+  rowToggle: {
+    cursor: "pointer",
+  },
   cell: {
-    flex: "1 0 50px",
+    flex: "1",
   },
   amountTo: {
     "&::before": {
@@ -42,52 +45,51 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
 
-  const onClick = (): void => {
-    toggle();
-  };
-
   const amountClass = sendTx.outgoing ? classes.amountTo : classes.amountFrom;
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
-      <Block margin={2} />
-      <Block display="flex" alignItems="center">
-        <CircleImage
-          icon={txIcon}
-          circleColor={theme.palette.background.paper}
-          borderColor={getBorderColor(theme)}
-          alt="Transaction type"
-          dia={40}
-          width={24}
-          height={24}
-        />
-        <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
-          <Typography variant="subtitle2" weight="semibold">
-            {getAddressPrefix(sendTx)} {ellipsifyAddress(sendTx.original.sender)}
+      <Block className={classes.rowToggle} onClick={() => toggle()}>
+        <Block padding={2} />
+        <Block display="flex" alignItems="center">
+          <CircleImage
+            icon={txIcon}
+            circleColor={theme.palette.background.paper}
+            borderColor={getBorderColor(theme)}
+            alt="Transaction type"
+            dia={40}
+            width={24}
+            height={24}
+          />
+          <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
+            <Typography variant="subtitle2" weight="semibold">
+              {getAddressPrefix(sendTx)} {ellipsifyAddress(sendTx.original.sender)}
+            </Typography>
+          </Block>
+          <Block flexGrow={1} />
+          <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
+            {formatDate(sendTx.time)}
           </Typography>
+          <Block flexGrow={1} />
+          <Block className={classes.cell}>
+            <Typography variant="subtitle2" weight="regular" align="right" className={amountClass}>
+              {amountToString(sendTx.original.amount)}
+            </Typography>
+          </Block>
+          <Block padding={0.5} />
+          <Image src={isOpen ? dropdownArrowClose : dropdownArrow} width={16} height={10} alt="Sorting" />
         </Block>
-        <Block flexGrow={1} />
-        <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
-          {formatDate(sendTx.time)}
-        </Typography>
-        <Block flexGrow={1} />
-        <Block className={classes.cell}>
-          <Typography variant="subtitle2" weight="regular" align="right" className={amountClass}>
-            {amountToString(sendTx.original.amount)}
-          </Typography>
-        </Block>
-        <Block padding={0.5} />
-        <Image
-          src={isOpen ? dropdownArrowClose : dropdownArrow}
-          width={16}
-          height={10}
-          alt="Sorting"
-          onClick={onClick}
-        />
+        <Block marginTop={4} />
+        <Hairline />
       </Block>
-      {isOpen && <SendTxDetails tx={sendTx} userAddresses={userAddresses} />}
-      <Block margin={2} />
-      <Hairline />
+      {isOpen && (
+        <React.Fragment>
+          <Block marginTop={4} marginBottom={4}>
+            <SendTxDetails tx={sendTx} userAddresses={userAddresses} />
+          </Block>
+          <Hairline />
+        </React.Fragment>
+      )}
     </Block>
   );
 }
