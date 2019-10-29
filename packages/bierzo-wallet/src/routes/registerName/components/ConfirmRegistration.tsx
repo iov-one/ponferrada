@@ -1,5 +1,3 @@
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TransactionId } from "@iov/bcp";
 import clipboardCopy from "clipboard-copy";
 import {
@@ -13,7 +11,8 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import tickIcon from "../../../assets/tick.svg";
+import copySvg from "../../../assets/copy.svg";
+import tickSvg from "../../../assets/tick.svg";
 import PageContent from "../../../components/PageContent";
 
 export const USERNAME_CONFIRMATION_VIEW_ID = "username-confirmation-view-id";
@@ -28,7 +27,8 @@ const useClasses = makeStyles({
   },
 });
 
-const registerIcon = <Image src={tickIcon} alt="Tick" />;
+const tickIcon = <Image src={tickSvg} alt="Tick" />;
+const copyIcon = <Image src={copySvg} alt="Tick" />;
 
 interface Props {
   readonly transactionId: TransactionId;
@@ -63,12 +63,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
   };
 
   return (
-    <PageContent
-      id={USERNAME_CONFIRMATION_VIEW_ID}
-      icon={registerIcon}
-      avatarColor="#31E6C9"
-      buttons={buttons}
-    >
+    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
       <Typography color="textPrimary" variant="subtitle1" weight="semibold" align="center">
         Your personalized address registration request was successfully signed and sent to the network.
       </Typography>
@@ -82,7 +77,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
           {transactionId}
         </Typography>
         <Block marginLeft={1} onClick={copyTxId} className={classes.copyButton}>
-          <FontAwesomeIcon icon={faCopy} color="#31E6C9" size="lg" />
+          {copyIcon}
         </Block>
       </Block>
     </PageContent>

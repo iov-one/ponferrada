@@ -1,5 +1,3 @@
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TransactionId } from "@iov/bcp";
 import clipboardCopy from "clipboard-copy";
 import {
@@ -13,7 +11,8 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import tickIcon from "../../../../assets/tick.svg";
+import copySvg from "../../../../assets/copy.svg";
+import tickSvg from "../../../../assets/tick.svg";
 import PageContent from "../../../../components/PageContent";
 
 export const PAYMENT_CONFIRMATION_VIEW_ID = "payment-confirmation-view-id";
@@ -27,7 +26,8 @@ const useClasses = makeStyles({
   },
 });
 
-const paymentIcon = <Image src={tickIcon} alt="Tick" />;
+const tickIcon = <Image src={tickSvg} alt="Tick" />;
+const copyIcon = <Image src={copySvg} alt="Copy" />;
 
 interface Props {
   readonly transactionId: TransactionId;
@@ -73,7 +73,7 @@ const ConfirmPayment = ({
   };
 
   return (
-    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={paymentIcon} avatarColor="#31E6C9" buttons={buttons}>
+    <PageContent id={PAYMENT_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
       <Typography color="textPrimary" variant="subtitle1" weight="semibold" align="center">
         Your transaction was successfully signed and sent to the network.
       </Typography>
@@ -87,7 +87,7 @@ const ConfirmPayment = ({
           {transactionId}
         </Typography>
         <Block marginLeft={1} onClick={copyTxId} className={classes.copyButton}>
-          <FontAwesomeIcon icon={faCopy} color="#31E6C9" size="lg" />
+          {copyIcon}
         </Block>
       </Block>
     </PageContent>
