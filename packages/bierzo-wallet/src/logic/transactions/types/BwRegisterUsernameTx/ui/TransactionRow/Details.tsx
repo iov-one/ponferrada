@@ -1,33 +1,22 @@
 import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
 import { makeStyles } from "@material-ui/core";
-import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
 import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
+import { amountToString, ellipsifyMiddle } from "ui-logic";
 
 import { ChainAddressPairWithName } from "../../../../../../components/AddressesTable";
+import { formatTime } from "../../../../../../utils/date";
 import { chainAddressPairSortedMapping } from "../../../../../../utils/tokens";
 import { ProcessedTx } from "../../../../types/BwParser";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles({
+  rowToggle: {
+    cursor: "pointer",
+  },
   sectionName: {
     overflowWrap: "break-word",
   },
-  tableHeader: {
-    "& > th": {
-      fontSize: "1.4rem",
-      color: theme.palette.text.primary,
-      padding: `${theme.spacing(1)}px ${theme.spacing(4)}px ${theme.spacing(1)}px 0`,
-    },
-  },
-  tableBody: {
-    "& > td": {
-      fontSize: "1.4rem",
-      color: theme.palette.text.secondary,
-      paddingLeft: 0,
-      padding: `${theme.spacing(1)}px ${theme.spacing(4)}px ${theme.spacing(1)}px 0`,
-    },
-  },
-}));
+});
 
 interface Props {
   readonly tx: ProcessedTx<RegisterUsernameTx>;
@@ -36,6 +25,11 @@ interface Props {
 const TxDetails = ({ tx }: Props): JSX.Element => {
   const classes = useStyles();
   const [addresses, setAddresses] = React.useState<readonly ChainAddressPairWithName[]>([]);
+
+  let txFee = "-";
+  if (tx.original.fee && tx.original.fee.tokens) {
+    txFee = amountToString(tx.original.fee.tokens);
+  }
 
   React.useEffect(() => {
     async function processAddresses(addresses: readonly ChainAddressPair[]): Promise<void> {
@@ -47,36 +41,57 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
 
   return (
     <Block paddingLeft="56px" display="flex" flexDirection="column">
-      <Block margin={2} />
-      <Block>
-        <Typography variant="subtitle2" weight="regular" gutterBottom>
-          Personalized address:
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          weight="regular"
-          color="textSecondary"
-          className={classes.sectionName}
-        >
-          {tx.original.username}
-        </Typography>
-        <Typography>&nbsp;</Typography>
-        <Table>
-          <TableHead>
-            <TableRow className={classes.tableHeader}>
-              <TableCell align="left">Blockchain</TableCell>
-              <TableCell align="left">Address</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {addresses.map(chain => (
-              <TableRow key={chain.chainId} className={classes.tableBody}>
-                <TableCell align="left">{chain.chainName}</TableCell>
-                <TableCell align="left">{chain.address}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <Block display="flex">
+        <Block width="40%">
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Registered address:
+          </Typography>
+          <Typography
+            variant="subtitle2"
+            weight="regular"
+            color="textSecondary"
+            className={classes.sectionName}
+          >
+            {tx.original.username}
+          </Typography>
+        </Block>
+        <Block width="40%">
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Time:
+          </Typography>
+          <Typography variant="subtitle2" weight="regular" color="textSecondary">
+            {formatTime(tx.time)}
+          </Typography>
+        </Block>
+        <Block width="20%" paddingRight={3}>
+          <Typography variant="subtitle2" weight="regular" align="right" gutterBottom>
+            Transaction fee:
+          </Typography>
+          <Typography variant="subtitle2" weight="regular" color="textSecondary" align="right">
+            -{txFee}
+          </Typography>
+        </Block>
+      </Block>
+      <Typography>&nbsp;</Typography>
+      <Block display="flex">
+        <Block width="40%">
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Blockchain:
+          </Typography>
+          {addresses.map(chain => (
+            <Typography variant="subtitle2" weight="regular" color="textSecondary" gutterBottom>
+              {`${chain.chainName} (${ellipsifyMiddle(chain.address, 20)})`}
+            </Typography>
+          ))}
+        </Block>
+        <Block width="60%" paddingRight={3}>
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Transaction id:
+          </Typography>
+          <Typography variant="subtitle2" weight="regular" color="textSecondary">
+            {tx.id}
+          </Typography>
+        </Block>
       </Block>
     </Block>
   );
