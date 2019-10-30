@@ -4,6 +4,7 @@ import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { AddressesTableProps } from "../../../components/AddressesTable";
+import Starnames, { StarnamesProps } from "./Starnames";
 import UserAddresses from "./UserAddresses";
 
 export const yourStarnames = "Your starnames";
@@ -51,7 +52,12 @@ function TabItem({ children, selected, onChangeTab }: TabItemProps): JSX.Element
   );
 }
 
-function AddressesTab({ chainAddresses }: AddressesTableProps): JSX.Element {
+function AddressesTab({
+  chainAddresses,
+  iovAddress,
+  onRegisterUsername,
+  rpcEndpointType,
+}: AddressesTableProps & StarnamesProps): JSX.Element {
   const [selectedTab, setSelectedTab] = React.useState<"starnames" | "addresses">("starnames");
 
   const changeTabToAddresses = (): void => setSelectedTab("addresses");
@@ -67,6 +73,14 @@ function AddressesTab({ chainAddresses }: AddressesTableProps): JSX.Element {
           {yourAddresses}
         </TabItem>
       </Block>
+      {selectedTab === "starnames" && (
+        <Starnames
+          usernameAddresses={chainAddresses}
+          iovAddress={iovAddress}
+          onRegisterUsername={onRegisterUsername}
+          rpcEndpointType={rpcEndpointType}
+        />
+      )}
       {selectedTab === "addresses" && <UserAddresses chainAddresses={chainAddresses} />}
     </Block>
   );

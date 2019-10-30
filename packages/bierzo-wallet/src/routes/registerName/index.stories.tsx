@@ -88,7 +88,7 @@ const fee: Fee = {
 
 storiesOf(REGISTER_USERNAME_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(REGISTER_USERNAME_REGISTRATION_STORY_PATH, () => (
+  .add(REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
     <DecoratedStorybook>
       <Layout
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
@@ -99,7 +99,7 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
       />
     </DecoratedStorybook>
   ))
-  .add(REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
+  .add(REGISTER_USERNAME_REGISTRATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <Layout
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}

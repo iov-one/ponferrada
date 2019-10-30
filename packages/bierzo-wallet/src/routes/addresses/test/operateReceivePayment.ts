@@ -1,5 +1,7 @@
 import { Page } from "puppeteer";
 
+import { starnamesViewId } from "../components/Starnames";
+
 export async function getAddressRow(page: Page, dataIndex: number): Promise<readonly string[]> {
   const chainNameEl = await page.$(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(1)`);
   if (chainNameEl === null) {
@@ -26,4 +28,13 @@ export async function copyAddress(page: Page, dataIndex: number): Promise<string
   await page.click(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(3)`);
 
   return await (await addressEl.getProperty("textContent")).jsonValue();
+}
+
+export async function copyStarname(page: Page): Promise<void> {
+  const starnameEl = await page.$(`#${starnamesViewId} h4`);
+  if (starnameEl === null) {
+    throw new Error(`Starname element was not found.`);
+  }
+
+  await page.click(`#${starnamesViewId} img`);
 }

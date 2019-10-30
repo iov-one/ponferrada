@@ -1,16 +1,13 @@
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
-import { randomString, sleep } from "ui-logic";
 
 import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
-import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
-import { REGISTER_USERNAME_FIELD } from "../registerName/components";
 import {
   getAddressCreationPromptE2E,
   getBalanceTextAtIndex,
+  registerPersonalizedAddress,
   waitForAllBalances,
 } from "./test/operateBalances";
 import { travelToBalanceE2E } from "./test/travelToBalance";
@@ -62,22 +59,10 @@ withChainsDescribe("E2E > Balance route", () => {
   it("should contain message to get address", async () => {
     const username = await getAddressCreationPromptE2E(await page.$$("h6"));
 
-    expect(username).toBe("Choose your address");
+    expect(username).toBe("You have no starnames");
   }, 45000);
 
   it("should create personalized address", async () => {
-    await waitForAllBalances(page);
-    await page.click(`#${REGISTER_PERSONALIZED_ADDRESS_ROUTE.replace("/", "\\/")}`);
-
-    // Fill the form
-    const username = `${randomString(10)}*iov`;
-    await page.type(`input[name="${REGISTER_USERNAME_FIELD}"]`, username);
-    await page.click('button[type="submit"]');
-
-    await acceptEnqueuedRequest(browser);
-    await page.bringToFront();
-    await sleep(1000);
-    const buttons = await page.$$("button");
-    await buttons[2].click();
+    await registerPersonalizedAddress(browser, page);
   }, 45000);
 });
