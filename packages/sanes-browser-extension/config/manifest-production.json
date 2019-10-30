@@ -19,7 +19,7 @@
   },
   "content_scripts": [],
   "externally_connectable": {
-    "matches": ["http://localhost/*", "https://*.iov.one/*"]
+    "matches": ["http://localhost/*", "https://*.neuma.io/*"]
   },
   "background": {
     "scripts": ["js/backgroundScript.js"],
