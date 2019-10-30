@@ -13,8 +13,7 @@ import { PAYMENT_CONFIRMATION_VIEW_ID } from "./components/ConfirmPayment";
 import { fillPaymentForm, getInvalidAddressError, getPaymentRequestData } from "./test/operatePayment";
 import { travelToPaymentE2E } from "./test/travelToPayment";
 
-// TODO: Temporarily skipped until https://github.com/iov-one/ponferrada/issues/794 implementation
-withChainsDescribe.skip("E2E > Payment route", () => {
+withChainsDescribe("E2E > Payment route", () => {
   let browser: Browser;
   let page: Page;
   let server: Server;

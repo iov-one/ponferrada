@@ -53,7 +53,7 @@ export const registerPersonalizedAddress = async (browser: Browser, page: Page):
   await page.bringToFront();
   await sleep(1000);
   const buttons = await page.$$("button");
-  await buttons[2].click();
+  await buttons[1].click();
 
   return username;
 };
