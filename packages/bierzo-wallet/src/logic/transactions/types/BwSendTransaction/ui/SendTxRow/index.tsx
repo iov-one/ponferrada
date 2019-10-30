@@ -21,17 +21,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   cell: {
     flex: "1",
   },
-  amountTo: {
-    "&::before": {
-      content: `"-"`,
-    },
-  },
   amountFrom: {
     color: theme.palette.primary.main,
-
-    "&::before": {
-      content: `"+"`,
-    },
   },
 }));
 
@@ -45,7 +36,8 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
 
-  const amountClass = sendTx.outgoing ? classes.amountTo : classes.amountFrom;
+  const amountSign = sendTx.outgoing ? "-" : "+";
+  const amountClass = sendTx.outgoing ? undefined : classes.amountFrom;
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
@@ -73,7 +65,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
           <Block flexGrow={1} />
           <Block className={classes.cell}>
             <Typography variant="subtitle2" weight="regular" align="right" className={amountClass}>
-              {amountToString(sendTx.original.amount)}
+              {`${amountSign}${amountToString(sendTx.original.amount)}`}
             </Typography>
           </Block>
           <Block padding={0.5} />

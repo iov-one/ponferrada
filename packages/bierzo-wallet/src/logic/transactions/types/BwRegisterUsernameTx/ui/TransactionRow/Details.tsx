@@ -28,7 +28,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
 
   let txFee = "-";
   if (tx.original.fee && tx.original.fee.tokens) {
-    txFee = amountToString(tx.original.fee.tokens);
+    txFee = "-" + amountToString(tx.original.fee.tokens);
   }
 
   React.useEffect(() => {
@@ -68,7 +68,7 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
             Transaction fee:
           </Typography>
           <Typography variant="subtitle2" weight="regular" color="textSecondary" align="right">
-            -{txFee}
+            {txFee}
           </Typography>
         </Block>
       </Block>

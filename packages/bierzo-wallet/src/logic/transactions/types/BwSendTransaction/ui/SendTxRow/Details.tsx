@@ -1,5 +1,5 @@
 import { Address } from "@iov/bcp";
-import { Block, makeStyles, Typography } from "medulas-react-components";
+import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 import { amountToString } from "ui-logic";
 
@@ -7,30 +7,16 @@ import BlockchainAddress from "../../../../../../components/BlockchainAddress";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { formatTime } from "../../../../../../utils/date";
 
-const useStyles = makeStyles({
-  rowToggle: {
-    cursor: "pointer",
-  },
-  amountFeeTo: {
-    "&::before": {
-      content: `"-"`,
-    },
-  },
-});
-
 interface Props {
   readonly tx: ProcessedSendTransaction;
   readonly userAddresses: readonly Address[];
 }
 
 const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
-  const classes = useStyles();
-
-  const amountFeeClass = tx.outgoing ? classes.amountFeeTo : undefined;
-
   let txFee = "-";
   if (tx.original.fee && tx.original.fee.tokens) {
     txFee = amountToString(tx.original.fee.tokens);
+    if (tx.outgoing) txFee = "-" + txFee;
   }
 
   return (
@@ -54,13 +40,7 @@ const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
           <Typography variant="subtitle2" weight="regular" align="right" gutterBottom>
             Transaction fee:
           </Typography>
-          <Typography
-            variant="subtitle2"
-            weight="regular"
-            color="textSecondary"
-            align="right"
-            className={amountFeeClass}
-          >
+          <Typography variant="subtitle2" weight="regular" color="textSecondary" align="right">
             {txFee}
           </Typography>
         </Block>
