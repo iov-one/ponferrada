@@ -1,8 +1,6 @@
 import { SelectFieldItem } from "medulas-react-components";
 
 import { ProcessedSendTransaction } from "../../../../store/notifications";
-import fromAddress from "../../assets/fromAddress.svg";
-import toAddress from "../../assets/toAddress.svg";
 import { SortingStateProps } from "../sorting";
 
 export interface TxTableProps extends SortingStateProps {
@@ -10,10 +8,6 @@ export interface TxTableProps extends SortingStateProps {
   readonly onChangeRows: (item: SelectFieldItem) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;
-}
-
-export function getTypeIcon(tx: ProcessedSendTransaction): string {
-  return tx.outgoing ? toAddress : fromAddress;
 }
 
 export function getAddressPrefix(tx: ProcessedSendTransaction): string {

@@ -1,15 +1,12 @@
 import { Hairline } from "medulas-react-components";
 import * as React from "react";
 
-import DownloadCSV, { DownloadCSVProps } from "./DownloadCSV";
 import NoTransactions from "./NoTransactions";
+import SendTokens from "./SendTokens";
 import TxTable from "./TxTable";
 import { TxTableProps } from "./TxTable/rowTxBuilder";
 
-interface Props extends DownloadCSVProps, TxTableProps {}
-
 const Layout = ({
-  onDownloadCSV,
   rows,
   onChangeRows,
   onPrevPage,
@@ -17,13 +14,13 @@ const Layout = ({
   onSort,
   orderBy,
   order,
-}: Props): JSX.Element => {
+}: TxTableProps): JSX.Element => {
   const hasRows = rows && rows.length > 0;
 
   return (
     <React.Fragment>
       <Hairline />
-      <DownloadCSV onDownloadCSV={onDownloadCSV} />
+      <SendTokens />
       <Hairline />
       {hasRows ? (
         <TxTable

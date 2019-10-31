@@ -5,22 +5,22 @@ import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medula
 import * as React from "react";
 import { amountToString } from "ui-logic";
 
-import toAddress from "../../../../../../routes/transactions/assets/toAddress.svg";
 import { getBorderColor } from "../../../../../../theme/css";
-import { formatDate, formatTime } from "../../../../../../utils/date";
+import { formatDate } from "../../../../../../utils/date";
 import { ProcessedTx } from "../../../../types/BwParser";
 import dropdownArrow from "../assets/dropdownArrow.svg";
 import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
+import txIcon from "../assets/user.svg";
 import TxDetails from "./Details";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles({
+  rowToggle: {
+    cursor: "pointer",
+  },
   cell: {
-    flex: "1 0 50px",
+    flex: "1",
   },
-  txFee: {
-    fontSize: "1.2rem",
-  },
-}));
+});
 
 interface Props {
   readonly tx: ProcessedTx<RegisterUsernameTx>;
@@ -31,10 +31,6 @@ function TransactionRow({ tx }: Props): JSX.Element {
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
 
-  const onClick = (): void => {
-    toggle();
-  };
-
   let txFee = "-";
   if (tx.original.fee && tx.original.fee.tokens) {
     txFee = amountToString(tx.original.fee.tokens);
@@ -42,56 +38,47 @@ function TransactionRow({ tx }: Props): JSX.Element {
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
-      <Block margin={2} />
-      <Block display="flex" alignItems="center">
-        <CircleImage
-          icon={toAddress}
-          circleColor={theme.palette.background.default}
-          borderColor={getBorderColor(theme)}
-          alt="Transaction type"
-          dia={40}
-          width={24}
-          height={24}
-        />
-        <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
-          <Typography variant="subtitle2" weight="semibold" gutterBottom>
-            Personalized address registration
+      <Block className={classes.rowToggle} onClick={() => toggle()}>
+        <Block padding={2} />
+        <Block display="flex" alignItems="center">
+          <CircleImage
+            icon={txIcon}
+            circleColor={theme.palette.background.paper}
+            borderColor={getBorderColor(theme)}
+            alt="Transaction type"
+            dia={40}
+            width={24}
+            height={24}
+          />
+          <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
+            <Typography variant="subtitle2" weight="semibold">
+              Personalized address registration
+            </Typography>
+          </Block>
+          <Block flexGrow={1} />
+          <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
+            {formatDate(tx.time)}
           </Typography>
-          <Typography variant="subtitle2" weight="regular" color="secondary">
-            {formatTime(tx.time)}
-          </Typography>
+          <Block flexGrow={1} />
+          <Block className={classes.cell}>
+            <Typography variant="subtitle2" weight="regular" align="right">
+              -{txFee}
+            </Typography>
+          </Block>
+          <Block padding={0.5} />
+          <Image src={isOpen ? dropdownArrowClose : dropdownArrow} width={16} height={10} alt="Sorting" />
         </Block>
-        <Block flexGrow={1} />
-        <Typography variant="subtitle2" weight="regular" color="secondary" className={classes.cell}>
-          {formatDate(tx.time)}
-        </Typography>
-        <Block flexGrow={1} />
-        <Block className={classes.cell}>
-          <Typography variant="subtitle2" weight="regular" align="right">
-            -
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            weight="regular"
-            color="secondary"
-            align="right"
-            className={classes.txFee}
-          >
-            {txFee}
-          </Typography>
-        </Block>
-        <Block padding={0.5} />
-        <Image
-          src={isOpen ? dropdownArrowClose : dropdownArrow}
-          width={16}
-          height={10}
-          alt="Sorting"
-          onClick={onClick}
-        />
+        <Block marginTop={4} />
+        <Hairline />
       </Block>
-      {isOpen && <TxDetails tx={tx} />}
-      <Block margin={2} />
-      <Hairline />
+      {isOpen && (
+        <React.Fragment>
+          <Block marginTop={4} marginBottom={4}>
+            <TxDetails tx={tx} />
+          </Block>
+          <Hairline />
+        </React.Fragment>
+      )}
     </Block>
   );
 }

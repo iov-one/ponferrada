@@ -3,10 +3,17 @@ import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import { history } from "../../..";
 import { getBorderColor } from "../../../../theme/css";
-import download from "../../assets/download.svg";
+import { PAYMENT_ROUTE } from "../../../paths";
+import sendIcon from "../../assets/toAddressWhite.svg";
 
-export const CSV_PADDING = 20;
+const sendTokenPadding = 20;
+const sendTokensLabel = "Send tokens";
+
+function goToPayment(): void {
+  history.push(PAYMENT_ROUTE);
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -16,7 +23,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sizeSmall: {
     height: `${theme.spacing(4)}px`,
-    padding: "0 !important",
+    "&&": {
+      padding: 0,
+    },
   },
   secondary: {
     backgroundColor: "white",
@@ -30,11 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface DownloadCSVProps {
-  readonly onDownloadCSV: () => void;
-}
-
-const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
+const SendTokens = (): JSX.Element => {
   const theme = useTheme<Theme>();
   const classes = useStyles();
 
@@ -52,29 +57,29 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
       alignItems="center"
       paddingTop={3}
       paddingBottom={3}
-      paddingLeft={CSV_PADDING}
-      paddingRight={CSV_PADDING}
+      paddingLeft={sendTokenPadding}
+      paddingRight={sendTokenPadding}
       bgcolor="white"
     >
       <Fab
         variant="extended"
         size="small"
         color="secondary"
-        aria-label="Export as CSV"
+        aria-label={sendTokensLabel}
         classes={fabClasses}
-        onClick={onDownloadCSV}
+        onClick={goToPayment}
       >
         <CircleImage
-          icon={download}
+          icon={sendIcon}
           circleColor={theme.palette.primary.main}
-          alt="Download"
+          alt={sendTokensLabel}
           dia={diameter}
           width={16}
           height={16}
         />
         <Block paddingLeft={1.5} paddingRight={1.5}>
           <Typography variant="subtitle2" weight="regular">
-            Export as .CSV
+            {sendTokensLabel}
           </Typography>
         </Block>
       </Fab>
@@ -82,4 +87,4 @@ const DownloadCSV = ({ onDownloadCSV }: DownloadCSVProps): JSX.Element => {
   );
 };
 
-export default DownloadCSV;
+export default SendTokens;

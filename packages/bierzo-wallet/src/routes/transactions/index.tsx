@@ -1,10 +1,8 @@
-import FileSaver from "file-saver";
 import { SelectFieldItem } from "medulas-react-components";
 import * as React from "react";
 import { useSelector } from "react-redux";
 
 import PageMenu from "../../components/PageMenu";
-import CsvRepresentation, { CsvRow } from "../../logic/csvBuilder";
 import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { lastTxSelector } from "../../store/notifications/selectors";
 import { RootState } from "../../store/reducers";
@@ -62,27 +60,6 @@ const Transactions = (): JSX.Element => {
     setPage(page => page + 1);
   }
 
-  function onDownloadCSV(): void {
-    const header: CsvRow = {
-      id: "ID",
-      recepient: "Recepient",
-      sender: "Sender",
-      quantity: "Quantity",
-      fractionalDigits: "Fractional Digits",
-      tokenTicker: "Token Ticker",
-      feeQuantity: "Fee Quantity",
-      feeFractionalDigits: "Fee Fractional Digits",
-      feeTokenTicker: "Fee Token Ticker",
-      time: "Time",
-      note: "Note",
-    };
-
-    const csv = new CsvRepresentation(header);
-    orderedTxs.forEach(tx => csv.addRow(BwParserFactory.getCsvRepresentation(tx)));
-
-    FileSaver.saveAs(csv.blob(), "transactions.csv");
-  }
-
   return (
     <PageMenu padding={false}>
       <Layout
@@ -91,7 +68,6 @@ const Transactions = (): JSX.Element => {
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}
         onSort={onSort}
-        onDownloadCSV={onDownloadCSV}
         orderBy={orderBy}
         order={order}
       />

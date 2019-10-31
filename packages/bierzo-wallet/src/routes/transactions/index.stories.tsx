@@ -63,7 +63,7 @@ function makeExampleLiskTransactionId(): TransactionId {
 }
 
 const incomingSendTransaction: ProcessedSendTransaction = {
-  time: new ReadonlyDate("2019-12-25T05:35:03.763Z"),
+  time: new ReadonlyDate("2018-01-01T03:02:01.763Z"),
   id: makeExampleEthTransactionId(),
   original: {
     kind: "bcp/send",
@@ -78,7 +78,7 @@ const incomingSendTransaction: ProcessedSendTransaction = {
 };
 
 const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
-  time: new ReadonlyDate("2019-12-24T04:35:03.763Z"),
+  time: new ReadonlyDate("2018-02-03T04:03:02.763Z"),
   id: makeExampleIovTransactionId(),
   original: {
     kind: "bcp/send",
@@ -94,7 +94,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
 
 const voteTx: ProcessedTx<VoteTx> = {
   id: makeExampleIovTransactionId(),
-  time: new ReadonlyDate("2019-12-24T22:35:03.763Z"),
+  time: new ReadonlyDate("2018-03-05T05:04:03.763Z"),
   original: {
     kind: "bns/vote",
     fee: { tokens: stringToAmount("0.5", iov) },
@@ -108,7 +108,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
   voteTx,
   {
     id: makeExampleIovTransactionId(),
-    time: new ReadonlyDate("2019-12-24T10:51:33.763Z"),
+    time: new ReadonlyDate("2018-04-07T06:05:04.763Z"),
     original: {
       kind: "bns/register_username",
       username: "albert*iov",
@@ -133,7 +133,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
   },
   incomingAndOutgoingSendTransaction,
   {
-    time: new ReadonlyDate("2019-12-24T03:35:03.763Z"),
+    time: new ReadonlyDate("2018-05-09T07:06:05.763Z"),
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bns/register_username",
@@ -143,7 +143,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     },
   },
   {
-    time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
+    time: new ReadonlyDate("2018-06-10T08:07:06.763Z"),
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
@@ -158,7 +158,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     outgoing: true,
   },
   {
-    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
+    time: new ReadonlyDate("2019-07-12T13:12:11.763Z"),
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
@@ -174,7 +174,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     outgoing: true,
   },
   {
-    time: new ReadonlyDate("2018-11-13T05:35:03.763Z"),
+    time: new ReadonlyDate("2019-08-14T14:13:12.763Z"),
     id: makeExampleLiskTransactionId(),
     original: {
       kind: "bcp/send",
@@ -188,7 +188,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     outgoing: false,
   },
   {
-    time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
+    time: new ReadonlyDate("2019-09-16T15:14:13.763Z"),
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
@@ -201,7 +201,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     outgoing: true,
   },
   {
-    time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
+    time: new ReadonlyDate("2019-10-18T16:15:14.763Z"),
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
@@ -214,7 +214,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     outgoing: true,
   },
   {
-    time: new ReadonlyDate("2018-10-05T16:12:00.763Z"),
+    time: new ReadonlyDate("2019-11-20T17:16:15.763Z"),
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
@@ -242,9 +242,6 @@ function onSort(receivedOrderBy: TxsOrder, receivedOrder: SortOrder): () => void
     action(`onSort action. receivedOrderBy: ${receivedOrderBy}, receivedOrder: ${receivedOrder}`)();
   };
 }
-function onDownloadCSV(): void {
-  action("onDownloadCSV action")();
-}
 
 storiesOf(TRANSACTIONS_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
@@ -256,7 +253,6 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}
         onSort={onSort}
-        onDownloadCSV={onDownloadCSV}
         orderBy={TX_DATE_COLUMN}
         order={ORDER_DESC}
       />
@@ -273,7 +269,6 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onSort={onSort}
-          onDownloadCSV={onDownloadCSV}
           orderBy={TX_DATE_COLUMN}
           order={ORDER_DESC}
         />

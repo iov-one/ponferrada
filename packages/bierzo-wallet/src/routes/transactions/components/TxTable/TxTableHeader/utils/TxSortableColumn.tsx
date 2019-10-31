@@ -11,7 +11,8 @@ import { calculateOppositeOrder, ORDER_ASC, ORDER_DESC, SortingStateProps } from
 
 const useStyles = makeStyles({
   header: {
-    flexBasis: "10px",
+    flex: 1,
+    marginLeft: 10,
     cursor: "pointer",
   },
   alignRight: {

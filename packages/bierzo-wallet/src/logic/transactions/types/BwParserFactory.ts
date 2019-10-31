@@ -10,7 +10,6 @@ import {
 import { isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
 
 import { ProcessedSendTransaction } from "../../../store/notifications";
-import { CsvRow } from "../../csvBuilder";
 import { BwParser, ProcessedTx } from "../types/BwParser";
 import { BwRegisterUsernameParser } from "./BwRegisterUsernameTx";
 import { BwSendParser } from "./BwSendTransaction";
@@ -43,16 +42,6 @@ export class BwParserFactory {
     }
 
     return new BwUnkownParser().headerRepresentation(tx, lastOne);
-  }
-
-  public static getCsvRepresentation(tx: ProcessedTx): CsvRow {
-    if (isProcessedSendTransaction(tx)) {
-      return new BwSendParser().csvRepresentation(tx);
-    } else if (isProcessedRegisterUsernameTx(tx)) {
-      return new BwRegisterUsernameParser().csvRepresentation(tx);
-    }
-
-    return new BwUnkownParser().csvRepresentation(tx);
   }
 
   public static getBwTransactionFrom(

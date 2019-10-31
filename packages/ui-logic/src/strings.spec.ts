@@ -1,4 +1,4 @@
-import { ellipsify, ellipsifyMiddle } from "./strings";
+import { ellipsify, ellipsifyAddress, ellipsifyMiddle } from "./strings";
 
 describe("string", () => {
   describe("ellipsify", () => {
@@ -32,6 +32,18 @@ describe("string", () => {
     it("should return ellipsis if maxLength less than 6 characters", () => {
       const result = ellipsifyMiddle("short_string", 5);
       expect(result).toBe("...");
+    });
+  });
+
+  describe("ellipsifyAddress", () => {
+    it("should return full string if it is shorter than maxLength", () => {
+      const result = ellipsifyAddress("iov45612345");
+      expect(result).toBe("iov45612345");
+    });
+
+    it("should return ellipsified in the middle string if it is longer than 14", () => {
+      const result = ellipsifyAddress("iov456789abcd12345");
+      expect(result).toBe("iov456789...12345");
     });
   });
 });

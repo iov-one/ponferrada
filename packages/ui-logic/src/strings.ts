@@ -20,3 +20,12 @@ export function ellipsifyMiddle(full: string, maxLength: number): string {
   const middlePosition = Math.floor(maxLength / 2);
   return `${full.slice(0, middlePosition - 2)}...${full.slice((maxLength - middlePosition - 1) * -1)}`;
 }
+
+/**
+ * Ellipsify string in the middle of it, leaving the first 9 characters and the last 5
+ * @param full string to ellipsify
+ */
+export function ellipsifyAddress(full: string): string {
+  if (full.length <= 14) return full;
+  return `${full.slice(0, 9)}...${full.slice(-5)}`;
+}
