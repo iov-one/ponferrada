@@ -9,7 +9,7 @@ interface Props {
 
 const SetValidators = ({ action }: Props): JSX.Element => {
   const validators = Object.entries(action.validatorUpdates).map(([validator, props]) => {
-    const validatorLabel = `Validator ${ellipsifyMiddle(validator, 6)} -`;
+    const validatorLabel = `Validator ${ellipsifyMiddle(validator, 40)} -`;
 
     return (
       <Block key={validator} marginTop={0.5} marginBottom={1}>
