@@ -225,7 +225,7 @@ export const checkSetValidatorsFields = async (proposal: Element, id: number): P
   expect(paragraphs[1].textContent).toBe("Updates validators:");
   const [expectedAddress, { power: expectedPower }] = Object.entries(expected.action.validatorUpdates)[0];
   expect(paragraphs[2].textContent).toBe(
-    `Validator ${ellipsifyMiddle(expectedAddress, 6)} - Power ${expectedPower}`,
+    `Validator ${ellipsifyMiddle(expectedAddress, 40)} - Power ${expectedPower}`,
   );
 
   const readLessButton = paragraphs[3];

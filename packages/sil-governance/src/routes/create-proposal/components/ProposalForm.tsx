@@ -44,9 +44,18 @@ const getCommitteeIdFromForm = (formValue: string): CommitteeId =>
   parseInt(formValue.substring(0, formValue.indexOf(":")), 10) as CommitteeId;
 
 const getPubkeyBundleFromForm = (formValue: string): PubkeyBundle => {
+  function tryEncodeData(): PubkeyBytes {
+    // Hex length for 32 bytes pubkey = 64
+    if (formValue.length === 64) {
+      return Encoding.fromHex(formValue) as PubkeyBytes;
+    }
+
+    return Encoding.fromBase64(formValue) as PubkeyBytes;
+  }
+
   return {
     algo: Algorithm.Ed25519,
-    data: Encoding.fromHex(formValue) as PubkeyBytes,
+    data: tryEncodeData(),
   };
 };
 
