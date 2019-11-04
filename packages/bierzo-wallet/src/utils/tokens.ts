@@ -1,8 +1,10 @@
 import { BlockchainConnection, ChainId, Identity } from "@iov/bcp";
+import { Address, TokenTicker } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
+import { Erc20Options, Erc20TokensMap } from "@iov/ethereum";
 
 import { ChainAddressPairWithName } from "../components/AddressesTable";
-import { getChainName } from "../config";
+import { ConfigEthereumOptions, getChainName } from "../config";
 import { ExtendedIdentity } from "../store/identities";
 
 // exported for testing purposes
@@ -59,4 +61,22 @@ export async function chainAddressPairSortedMapping(
   );
 
   return chainAddresses;
+}
+
+export function getErc20TokensConfig(options?: ConfigEthereumOptions): Erc20TokensMap | undefined {
+  if (!options) return undefined;
+
+  const erc20s = new Map<TokenTicker, Erc20Options>();
+
+  options.erc20s.forEach(row => {
+    const ticker = row.symbol as TokenTicker;
+    const erc20Option: Erc20Options = {
+      contractAddress: row.contractAddress as Address,
+      symbol: row.symbol as TokenTicker,
+      decimals: row.decimals,
+    };
+    erc20s.set(ticker, erc20Option);
+  });
+
+  return erc20s;
 }
