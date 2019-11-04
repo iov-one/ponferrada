@@ -39,7 +39,26 @@
         "chainId": "ethereum-eip155-5777",
         "name": "Ganache",
         "node": "http://localhost:8545",
-        "scraper": "http://localhost:8546/api"
+        "scraper": "http://localhost:8546/api",
+        "ethereumOptions": {
+          "erc20s": [
+            {
+              "contractAddress": "0xc778417e063141139fce010982780140aa0cd5ab",
+              "decimals": 18,
+              "symbol": "WETH"
+            },
+            {
+              "contractAddress": "0x0c8184c21a51cdb7df9e5dc415a6a54b3a39c991",
+              "decimals": 18,
+              "symbol": "AVO"
+            },
+            {
+              "contractAddress": "0x1f9061B953bBa0E36BF50F21876132DcF276fC6e",
+              "decimals": 0,
+              "symbol": "ZEENUS"
+            }
+          ]
+        }
       },
       "faucetSpec": {
         "uri": "http://localhost:8003",
