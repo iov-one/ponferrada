@@ -49,7 +49,7 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
   if (isEthSpec(spec)) {
     return await establishEthereumConnection(spec.node, spec.chainId as ChainId, {
       scraperApiUrl: spec.scraper,
-      erc20Tokens: getErc20TokensConfig(spec.ethereumOptions),
+      erc20Tokens: spec.ethereumOptions ? getErc20TokensConfig(spec.ethereumOptions) : undefined,
     });
   }
   if (isBnsSpec(spec)) {

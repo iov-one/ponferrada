@@ -63,9 +63,7 @@ export async function chainAddressPairSortedMapping(
   return chainAddresses;
 }
 
-export function getErc20TokensConfig(options?: ConfigEthereumOptions): Erc20TokensMap | undefined {
-  if (!options) return undefined;
-
+export function getErc20TokensConfig(options: ConfigEthereumOptions): Erc20TokensMap {
   const erc20s = new Map<TokenTicker, Erc20Options>();
 
   options.erc20s.forEach(row => {
