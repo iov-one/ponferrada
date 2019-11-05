@@ -30,6 +30,7 @@ echo
 "${SCRIPT_DIR}"/ethereum/start.sh
 # Wait Ethereum node to be ready
 "$gnutimeout" 15 bash -c "until curl -s -X POST --data '{\"jsonrpc\":\"2.0\",\"method\":\"net_version\",\"id\":42}' http://localhost:8545 > /dev/null; do sleep 1; done"
+"${SCRIPT_DIR}"/ethereum/init.sh
 "${SCRIPT_DIR}"/faucet/ethereum_start.sh
 "${SCRIPT_DIR}"/ethereum/scraper_start.sh
 
