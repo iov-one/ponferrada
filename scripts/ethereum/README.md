@@ -23,7 +23,9 @@ unset ETHEREUM_ENABLED
 
 ## Query transactions by account
 
-Since this functionality is not standard in ethereum ecosystem, we provide a setup to connect with blockchain scrapers that index transactions by user account. To enable such functionality:
+Since this functionality is not standard in ethereum ecosystem, we provide a
+setup to connect with blockchain scrapers that index transactions by user
+account. To enable such functionality:
 
 ```
 export ETHEREUM_SCRAPER=1
@@ -40,11 +42,12 @@ When starting the development chain, we seed the following accounts with tokens
 
 ### Generate secret keys for Ganache CLI
 
-Use @iov/cli to get a list of secret keys, public keys and addressed for the identities above
+Use @iov/cli to get a list of secret keys, public keys and addressed for the
+identities above
 
 ```ts
 const seed = await Bip39.mnemonicToSeed(
-  new EnglishMnemonic('oxygen fall sure lava energy veteran enroll frown question detail include maximum')
+  new EnglishMnemonic("oxygen fall sure lava energy veteran enroll frown question detail include maximum"),
 );
 const paths: ReadonlyArray<ReadonlyArray<Slip10RawIndex>> = [
   HdPaths.ethereum(0), // main
@@ -62,7 +65,10 @@ const paths: ReadonlyArray<ReadonlyArray<Slip10RawIndex>> = [
 for (const path of paths) {
   const { privkey } = Slip10.derivePath(Slip10Curve.Secp256k1, seed, path);
   const { pubkey } = await Secp256k1.makeKeypair(privkey);
-  const address = ethereumPubkeyToAddress({ algo: Algorithm.Secp256k1, data: pubkey as PublicKeyBytes });
+  const address = ethereumPubkeyToAddress({
+    algo: Algorithm.Secp256k1,
+    data: pubkey as PubkeyBytes,
+  });
   console.log(`0x${toHex(privkey)},0x${toHex(pubkey)},${address}`);
 }
 ```
