@@ -19,6 +19,7 @@ export interface Config {
 }
 
 export interface ConfigErc20Options {
+  readonly name?: string;
   readonly contractAddress: string;
   readonly symbol: string;
   readonly decimals: number;

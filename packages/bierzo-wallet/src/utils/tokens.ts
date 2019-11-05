@@ -72,6 +72,7 @@ export function getErc20TokensConfig(options: ConfigEthereumOptions): Erc20Token
       contractAddress: row.contractAddress as Address,
       symbol: row.symbol as TokenTicker,
       decimals: row.decimals,
+      name: row.name,
     };
     erc20s.set(ticker, erc20Option);
   });
