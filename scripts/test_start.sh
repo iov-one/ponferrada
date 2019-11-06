@@ -14,6 +14,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo
 echo ">>> Starting bns chain and faucet..."
 echo
+export INIT_PROPOSALS="1"
 "${SCRIPT_DIR}"/bnsd/start.sh
 "${SCRIPT_DIR}"/faucet/bnsd_start.sh
 
