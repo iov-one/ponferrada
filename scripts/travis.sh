@@ -178,19 +178,20 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
 
   (
     fold_start "deployment-firebase"
+    FIREBASE_MESSAGE="Travis build: Git tag $TRAVIS_TAG"
     (
       cd packages/bierzo-wallet
       yarn override-config-staging
-      yarn deploy-staging --token "$FIREBASE_TOKEN"
+      yarn deploy-staging --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
       yarn override-config-production
-      yarn deploy-production --token "$FIREBASE_TOKEN"
+      yarn deploy-production --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
     )
     (
       cd packages/sil-governance
       yarn override-config-staging
-      yarn deploy-staging --token "$FIREBASE_TOKEN"
+      yarn deploy-staging --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
       yarn override-config-production
-      yarn deploy-production --token "$FIREBASE_TOKEN"
+      yarn deploy-production --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
     )
     fold_end
   )
