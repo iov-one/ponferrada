@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 (not yet released)
+
+- Wallet: Improve UI
+- Wallet: Rename to "Neuma Wallet"
+- Governance: Allow inputting validator pubkeys in base64 format
+- Governance: Improve test coverage
+- Extension: Add `*.neuma.io` to whitelisted domains
+
 ## 1.0.2
 
 - Change Lisk node to `main-01.liskapi.io` due to expired certificate
