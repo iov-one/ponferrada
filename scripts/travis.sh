@@ -134,6 +134,17 @@ fold_end
 # Deployment
 #
 
+# Detects if a version tag is a prerelease according to the semver definition (https://semver.org/#spec-item-9)
+# Example inputs: v1.0.0-alpha.1, v1.0.0
+function is_prerelease() {
+  # Bash uses the Extended Regular Expression (ERE) dialect
+  if [[ $1 =~ '-' ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_TAG" == "" ]] && [[ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]]; then
   echo "Running master deployments ..."
 
@@ -183,15 +194,21 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
       cd packages/bierzo-wallet
       yarn override-config-staging
       yarn deploy-staging --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
-      yarn override-config-production
-      yarn deploy-production --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
+
+      if ! is_prerelease "$TRAVIS_TAG" ; then
+        yarn override-config-production
+        yarn deploy-production --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
+      fi
     )
     (
       cd packages/sil-governance
       yarn override-config-staging
       yarn deploy-staging --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
-      yarn override-config-production
-      yarn deploy-production --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
+
+      if ! is_prerelease "$TRAVIS_TAG" ; then
+        yarn override-config-production
+        yarn deploy-production --token "$FIREBASE_TOKEN" --message "$FIREBASE_MESSAGE"
+      fi
     )
     fold_end
   )
@@ -215,13 +232,16 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
       -T packages/sanes-browser-extension/exports/staging/*.zip \
       "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING"
     echo # add missing newline
-    curl -sS \
-      -H "Authorization: Bearer $ACCESS_TOKEN" \
-      -H "x-goog-api-version: 2" \
-      -X PUT \
-      -T packages/sanes-browser-extension/exports/production/*.zip \
-      "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION"
-    echo # add missing newline
+
+    if ! is_prerelease "$TRAVIS_TAG" ; then
+      curl -sS \
+        -H "Authorization: Bearer $ACCESS_TOKEN" \
+        -H "x-goog-api-version: 2" \
+        -X PUT \
+        -T packages/sanes-browser-extension/exports/production/*.zip \
+        "https://www.googleapis.com/upload/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION"
+      echo # add missing newline
+    fi
 
     # Publish
     curl -sS \
@@ -231,13 +251,16 @@ elif [[ "$TRAVIS_TAG" != "" ]]; then
       -X POST \
       "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_STAGING/publish"
     echo # add missing newline
-    curl -sS \
-      -H "Authorization: Bearer $ACCESS_TOKEN" \
-      -H "x-goog-api-version: 2" \
-      -H "Content-Length: 0" \
-      -X POST \
-      "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION/publish"
-    echo # add missing newline
+
+    if ! is_prerelease "$TRAVIS_TAG" ; then
+      curl -sS \
+        -H "Authorization: Bearer $ACCESS_TOKEN" \
+        -H "x-goog-api-version: 2" \
+        -H "Content-Length: 0" \
+        -X POST \
+        "https://www.googleapis.com/chromewebstore/v1.1/items/$CHROME_WEBSTORE_EXTENSION_ID_PRODUCTION/publish"
+      echo # add missing newline
+    fi
     fold_end
   )
 else
