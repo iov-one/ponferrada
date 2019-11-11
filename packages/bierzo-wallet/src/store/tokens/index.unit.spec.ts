@@ -40,14 +40,6 @@ withChainsDescribe("Tokens reducer", () => {
           tokenTicker: "ETH",
         },
       },
-      ASH: {
-        chainId: "local-iov-devnet",
-        token: {
-          fractionalDigits: 9,
-          tokenName: "Let the Phoenix arise",
-          tokenTicker: "ASH",
-        },
-      },
       BASH: {
         chainId: "local-iov-devnet",
         token: {
@@ -70,6 +62,14 @@ withChainsDescribe("Tokens reducer", () => {
           fractionalDigits: 8,
           tokenName: "Lisk",
           tokenTicker: "LSK",
+        },
+      },
+      MASH: {
+        chainId: "local-iov-devnet",
+        token: {
+          fractionalDigits: 9,
+          tokenName: "The mashed coin",
+          tokenTicker: "MASH",
         },
       },
     };
