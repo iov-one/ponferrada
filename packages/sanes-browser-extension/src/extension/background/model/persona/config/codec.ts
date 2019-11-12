@@ -1,11 +1,12 @@
-import { Algorithm, ChainConnector, ChainId } from "@iov/bcp";
+import { Algorithm, ChainConnector } from "@iov/bcp";
 import { createBnsConnector } from "@iov/bns";
 import { Slip10RawIndex } from "@iov/crypto";
 import { createEthereumConnector } from "@iov/ethereum";
 import { HdPaths } from "@iov/keycontrol";
 import { createLiskConnector } from "@iov/lisk";
 
-import { CodecString } from "./configurationfile";
+import { getErc20TokensConfig } from "../../../../../utils/tokens";
+import { ChainSpec, CodecString } from "./configurationfile";
 
 export enum CodecType {
   Bns,
@@ -54,19 +55,23 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
   return pathBuilder;
 }
 
-export function chainConnector(
-  codec: CodecType,
-  expectedChainId: ChainId,
-  nodeUrl: string,
-  scraper: string | undefined,
-): ChainConnector {
+export function chainConnector(codec: CodecType, chainSpec: ChainSpec): ChainConnector {
   switch (codec) {
     case CodecType.Bns:
-      return createBnsConnector(nodeUrl, expectedChainId);
+      return createBnsConnector(chainSpec.node, chainSpec.chainId);
     case CodecType.Lisk:
-      return createLiskConnector(nodeUrl, expectedChainId);
+      return createLiskConnector(chainSpec.node, chainSpec.chainId);
     case CodecType.Ethereum:
-      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedChainId);
+      return createEthereumConnector(
+        chainSpec.node,
+        {
+          scraperApiUrl: chainSpec.scraper,
+          erc20Tokens: chainSpec.ethereumOptions
+            ? getErc20TokensConfig(chainSpec.ethereumOptions)
+            : undefined,
+        },
+        chainSpec.chainId,
+      );
     default:
       throw new Error("No connector for this codec found");
   }
