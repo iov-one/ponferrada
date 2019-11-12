@@ -43,8 +43,8 @@ branches:
     - master
     # Minor version branches: 0.9, 0.10, 1.2 etc.
     - /^[0-9]+\.[0-9]+$/
-    # Tag builds
-    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+    # Tag builds: v0.9.1, v1.2.3-alpha456+build789 etc.
+    - /^v[0-9]+\.[0-9]+\.[0-9]+/
 
 notifications:
   email: false
