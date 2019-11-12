@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Change Lisk node to `main-01.liskapi.io` due to expired certificate
+
 ## 1.0.1
 
 - Upgrade and simplify material UI dependencies

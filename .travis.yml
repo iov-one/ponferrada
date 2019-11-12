@@ -40,8 +40,11 @@ script:
 # whitelist long living branches to avoid testing feature branches twice (as branch and as pull request)
 branches:
   only:
-  - master
-  - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+    - master
+    # Minor version branches: 0.9, 0.10, 1.2 etc.
+    - /^[0-9]+\.[0-9]+$/
+    # Tag builds
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
 
 notifications:
   email: false
