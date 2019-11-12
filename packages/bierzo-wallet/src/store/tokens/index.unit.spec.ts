@@ -40,15 +40,15 @@ withChainsDescribe("Tokens reducer", () => {
           tokenTicker: "ETH",
         },
       },
-      ASH: {
-        chainId: "local-iov-devnet",
+      TRASH: {
+        chainId: "ethereum-eip155-5777",
         token: {
-          fractionalDigits: 9,
-          tokenName: "Let the Phoenix arise",
-          tokenTicker: "ASH",
+          fractionalDigits: 18,
+          tokenName: "Trash Token",
+          tokenTicker: "TRASH",
         },
       },
-      ASHETH: {
+      ASH: {
         chainId: "ethereum-eip155-5777",
         token: {
           fractionalDigits: 18,
@@ -62,14 +62,6 @@ withChainsDescribe("Tokens reducer", () => {
           fractionalDigits: 9,
           tokenName: "Another token of this chain",
           tokenTicker: "BASH",
-        },
-      },
-      TRASH: {
-        chainId: "ethereum-eip155-5777",
-        token: {
-          fractionalDigits: 18,
-          tokenName: "Trash Token",
-          tokenTicker: "TRASH",
         },
       },
       CASH: {
