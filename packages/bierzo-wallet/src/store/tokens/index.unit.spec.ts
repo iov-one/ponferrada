@@ -53,7 +53,7 @@ withChainsDescribe("Tokens reducer", () => {
         token: {
           fractionalDigits: 18,
           tokenName: "Ash Token",
-          tokenTicker: "ASHETH",
+          tokenTicker: "ASH",
         },
       },
       BASH: {
