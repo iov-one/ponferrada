@@ -14,9 +14,9 @@ import {
 } from "medulas-react-components";
 import React, { useContext, useState } from "react";
 
-import { PersonaContext } from "../../../../../context/PersonaProvider";
-import { checkPassword } from "../../../../../utils/chrome";
-import lockIcon from "../../../assets/lock.svg";
+import { PersonaContext } from "../../../../../../context/PersonaProvider";
+import { checkPassword } from "../../../../../../utils/chrome";
+import lockIcon from "../../../../assets/lock.svg";
 
 export const passwordField = "passwordInputField";
 const passwordPlaceholder = "Enter your password";

@@ -1,7 +1,7 @@
 import { Block, Image, List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
 import React from "react";
 
-import bulletPoint from "../../../assets/bulletPoint.svg";
+import bulletPoint from "../../../../assets/bulletPoint.svg";
 
 const useStyles = makeStyles({
   listRoot: {

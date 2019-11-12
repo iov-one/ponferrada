@@ -1,8 +1,8 @@
 import { Block, Image, List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
 import React from "react";
 
-import greenRightChevron from "../../../assets/chevronRightGreen.svg";
-import { Views } from ".";
+import { Views } from "..";
+import greenRightChevron from "../../../../assets/chevronRightGreen.svg";
 
 const useStyles = makeStyles({
   listRoot: {

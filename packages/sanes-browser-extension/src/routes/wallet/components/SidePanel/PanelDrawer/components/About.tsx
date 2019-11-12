@@ -1,7 +1,7 @@
 import { Block, Image, Link, Typography } from "medulas-react-components";
 import React from "react";
 
-import neumaLogo from "../../../assets/NeumaLogoNoText.svg";
+import neumaLogo from "../../../../assets/NeumaLogoNoText.svg";
 
 const About = (): JSX.Element => {
   return (

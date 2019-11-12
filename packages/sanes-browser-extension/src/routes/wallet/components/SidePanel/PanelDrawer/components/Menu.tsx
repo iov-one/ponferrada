@@ -1,11 +1,11 @@
 import { Block, Image, List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
 import React from "react";
 
-import { clearPersona } from "../../../../../utils/chrome";
-import { history } from "../../../../../utils/history";
-import { WELCOME_ROUTE } from "../../../../paths";
-import greenRightChevron from "../../../assets/chevronRightGreen.svg";
-import { Views } from ".";
+import { Views } from "..";
+import { clearPersona } from "../../../../../../utils/chrome";
+import { history } from "../../../../../../utils/history";
+import { WELCOME_ROUTE } from "../../../../../paths";
+import greenRightChevron from "../../../../assets/chevronRightGreen.svg";
 
 const requestsText = "Requests";
 const settingsText = "Settings";

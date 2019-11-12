@@ -13,10 +13,10 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import { PersonaContext } from "../../../../../context/PersonaProvider";
-import { clearDatabase, clearPersona } from "../../../../../utils/chrome";
-import { history } from "../../../../../utils/history";
-import { WELCOME_ROUTE } from "../../../../paths";
+import { PersonaContext } from "../../../../../../context/PersonaProvider";
+import { clearDatabase, clearPersona } from "../../../../../../utils/chrome";
+import { history } from "../../../../../../utils/history";
+import { WELCOME_ROUTE } from "../../../../../paths";
 
 export const MNEMONIC_FIELD = "mnemonicInputField";
 

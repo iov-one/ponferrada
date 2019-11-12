@@ -16,9 +16,9 @@ import * as React from "react";
 import {
   isGetIdentitiesRequest,
   Request,
-} from "../../../../../../extension/background/model/requestsHandler/requestQueueManager";
-import { history } from "../../../../../../utils/history";
-import { SHARE_IDENTITY, TX_REQUEST } from "../../../../../paths";
+} from "../../../../../../../extension/background/model/requestsHandler/requestQueueManager";
+import { history } from "../../../../../../../utils/history";
+import { SHARE_IDENTITY, TX_REQUEST } from "../../../../../../paths";
 
 interface Props {
   readonly requests: readonly Request[];
