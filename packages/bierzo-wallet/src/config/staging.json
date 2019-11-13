@@ -3,7 +3,7 @@
   "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-clapnet",
+      "testnetBuild": "iov-dancenet",
       "mainnetBuild": "iov-mainnet"
     }
   },
@@ -12,9 +12,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "iov-clapnet",
-        "name": "IOV Clapnet",
-        "node": "wss://rpc-private-a-vip2-clapnet.iov.one/"
+        "chainId": "iov-dancenet",
+        "name": "IOV Dancenet",
+        "node": "wss://rpc-private-a-x-dancenet.iov.one/"
       }
     },
     {

@@ -8,6 +8,7 @@
 - Governance: Improve test coverage
 - Extension: Add `*.neuma.io` to whitelisted domains
 - Wallet and Extension: Add ERC20 tokens to configuration
+- Connect to Dancenet 💃
 
 ## 1.0.2
 

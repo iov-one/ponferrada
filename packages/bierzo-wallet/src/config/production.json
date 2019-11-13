@@ -3,7 +3,7 @@
   "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-clapnet",
+      "testnetBuild": "iov-dancenet",
       "mainnetBuild": "iov-mainnet"
     }
   },
