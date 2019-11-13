@@ -51,7 +51,7 @@ withChainsDescribe("Tokens reducer", () => {
       ASH: {
         chainId: "ethereum-eip155-5777",
         token: {
-          fractionalDigits: 18,
+          fractionalDigits: 12,
           tokenName: "Ash Token",
           tokenTicker: "ASH",
         },
