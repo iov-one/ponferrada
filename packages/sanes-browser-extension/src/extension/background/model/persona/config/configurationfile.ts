@@ -3,12 +3,24 @@ import { singleton } from "ui-logic";
 
 export type CodecString = "bns" | "lsk" | "eth";
 
+export interface ConfigErc20Options {
+  readonly name?: string;
+  readonly contractAddress: string;
+  readonly symbol: string;
+  readonly decimals: number;
+}
+
+export interface ConfigEthereumOptions {
+  readonly erc20s: readonly ConfigErc20Options[];
+}
+
 export interface ChainSpec {
   readonly codecType: CodecString;
   readonly node: string;
   readonly name: string;
   readonly chainId: ChainId;
   readonly scraper?: string;
+  readonly ethereumOptions?: ConfigEthereumOptions;
 }
 
 export interface ChainConfig {

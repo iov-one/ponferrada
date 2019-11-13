@@ -18,6 +18,17 @@ export interface Config {
   readonly chains: readonly ChainConfig[];
 }
 
+export interface ConfigErc20Options {
+  readonly name?: string;
+  readonly contractAddress: string;
+  readonly symbol: string;
+  readonly decimals: number;
+}
+
+export interface ConfigEthereumOptions {
+  readonly erc20s: readonly ConfigErc20Options[];
+}
+
 export interface ChainConfig {
   readonly chainSpec: ChainSpec;
   readonly faucetSpec?: FaucetSpec;
@@ -32,18 +43,13 @@ export function isChainConfigWithFaucet(chain: ChainConfig): chain is ChainConfi
   return !!chain.faucetSpec;
 }
 
-export interface ConfigErc20Options {
-  readonly contractAddress: string;
-  readonly symbol: string;
-  readonly decimals: number;
-}
-
 export interface ChainSpec {
   readonly codecType: string;
   readonly chainId: string;
   readonly name: string;
   readonly node: string;
   readonly scraper?: string;
+  readonly ethereumOptions?: ConfigEthereumOptions;
 }
 
 export interface FaucetSpec {

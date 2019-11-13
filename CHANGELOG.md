@@ -7,6 +7,7 @@
 - Governance: Allow inputting validator pubkeys in base64 format
 - Governance: Improve test coverage
 - Extension: Add `*.neuma.io` to whitelisted domains
+- Wallet and Extension: Add ERC20 tokens to configuration
 
 ## 1.0.2
 

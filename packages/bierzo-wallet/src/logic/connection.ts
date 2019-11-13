@@ -4,6 +4,7 @@ import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereu
 import { createLiskConnector } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
+import { getErc20TokensConfig } from "../utils/tokens";
 
 const connections = new Map<ChainId, BlockchainConnection>();
 
@@ -48,6 +49,7 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
   if (isEthSpec(spec)) {
     return await establishEthereumConnection(spec.node, spec.chainId as ChainId, {
       scraperApiUrl: spec.scraper,
+      erc20Tokens: spec.ethereumOptions ? getErc20TokensConfig(spec.ethereumOptions) : undefined,
     });
   }
   if (isBnsSpec(spec)) {
