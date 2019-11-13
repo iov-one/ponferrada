@@ -1,22 +1,21 @@
-import { Block, Typography } from "medulas-react-components";
-import React from "react";
+import { Block } from "medulas-react-components";
+import React, { useState } from "react";
 
-import { RequestContext } from "../../../../../../../context/RequestProvider";
 import RequestList from "./RequestList";
+import ShowRequest from "./ShowRequest";
+
+// TODO find better way to calculate 100% of the parent component (panelWidth = 310px) minus 2 x 24px margins = 262px
+const maxWidthWithMargins = "262px";
 
 const Requests = (): JSX.Element => {
-  const requestContext = React.useContext(RequestContext);
-  const { requests } = requestContext;
-  const hasRequests = requests.length > 0;
+  const [showRequest, setShowRequest] = useState(false);
+
+  const goBackToList = (): void => setShowRequest(false);
 
   return (
-    <Block marginLeft={3} marginRight={3}>
-      {!hasRequests && (
-        <Typography align="center" weight="semibold">
-          No requests in queue
-        </Typography>
-      )}
-      {hasRequests && <RequestList requests={requests} />}
+    <Block maxWidth={maxWidthWithMargins} marginLeft={3} marginRight={3}>
+      {showRequest && <ShowRequest goBackToList={goBackToList} />}
+      {!showRequest && <RequestList setShowRequest={setShowRequest} />}
     </Block>
   );
 };

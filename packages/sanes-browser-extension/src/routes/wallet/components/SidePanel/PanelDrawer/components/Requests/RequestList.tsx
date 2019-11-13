@@ -13,16 +13,11 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
+import { RequestContext } from "../../../../../../../context/RequestProvider";
 import {
   isGetIdentitiesRequest,
   Request,
 } from "../../../../../../../extension/background/model/requestsHandler/requestQueueManager";
-import { history } from "../../../../../../../utils/history";
-import { SHARE_IDENTITY, TX_REQUEST } from "../../../../../../paths";
-
-interface Props {
-  readonly requests: readonly Request[];
-}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -40,23 +35,26 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const REQUEST_FIELD = "req";
 
-function buildClickHandlerFrom(request: Request): () => void {
-  const pathname = isGetIdentitiesRequest(request) ? SHARE_IDENTITY : TX_REQUEST;
-
-  return () =>
-    history.push({
-      pathname,
-      state: {
-        [REQUEST_FIELD]: request.id,
-      },
-    });
+interface Props {
+  readonly setShowRequest: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const RequestList = ({ requests }: Props): JSX.Element => {
+const RequestList = ({ setShowRequest }: Props): JSX.Element => {
   const classes = useStyles();
   const secondaryProps: TypographyProps = {
     color: "textPrimary",
   };
+
+  const requestContext = React.useContext(RequestContext);
+  const { requests } = requestContext;
+  const hasRequests = requests.length > 0;
+
+  if (!hasRequests)
+    return (
+      <Typography align="center" weight="semibold">
+        No requests in queue
+      </Typography>
+    );
 
   return (
     <React.Fragment>
@@ -69,7 +67,7 @@ const RequestList = ({ requests }: Props): JSX.Element => {
         {requests.map((req: Request, index: number) => {
           const first = index === 0;
           const firstElemClass = first ? classes.first : undefined;
-          const onRequestClick = buildClickHandlerFrom(req);
+          const onRequestClick = (): void => setShowRequest(true);
           const text = isGetIdentitiesRequest(req) ? "Get Identities Request" : "Sign Request";
 
           return (
