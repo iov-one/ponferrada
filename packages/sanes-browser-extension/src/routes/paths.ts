@@ -10,12 +10,8 @@ export const WALLET_STATUS_ROUTE = "/wallet";
 export const REQUEST_ROUTE = "/requests";
 export const TERMS_URL = "https://support.iov.one/hc/en-us";
 
-export function initialUrl(personaLoaded: boolean, hasPersonaStored: boolean, hasRequests: boolean): string {
-  if (personaLoaded && hasRequests) {
-    return REQUEST_ROUTE;
-  }
-
-  if (personaLoaded && !hasRequests) {
+export function initialUrl(personaLoaded: boolean, hasPersonaStored: boolean): string {
+  if (personaLoaded) {
     return WALLET_STATUS_ROUTE;
   }
 

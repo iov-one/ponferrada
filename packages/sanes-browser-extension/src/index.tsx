@@ -39,8 +39,7 @@ type PersonaContexType = [GetPersonaResponse, boolean];
 Promise.all([getPersonaData(), getHasStoredPersona()]).then(
   ([persona, hasStoredPersona]: PersonaContexType) => {
     const requests = getQueuedRequests();
-    const hasRequests = requests.length > 0;
-    const url = initialUrl(!!persona, hasStoredPersona, hasRequests);
+    const url = initialUrl(!!persona, hasStoredPersona);
     history.push(url);
     render(Route, hasStoredPersona, persona, requests);
 

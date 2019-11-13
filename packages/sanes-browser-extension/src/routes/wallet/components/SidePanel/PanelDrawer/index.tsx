@@ -1,9 +1,10 @@
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import { Block, Image, makeStyles, Typography } from "medulas-react-components";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { panelWidth } from "..";
+import { RequestContext } from "../../../../../context/RequestProvider";
 import chevronLeft from "../../../assets/chevronLeft.svg";
 import chevronRight from "../../../assets/chevronRight.svg";
 import closeButton from "../../../assets/closeButton.svg";
@@ -82,6 +83,13 @@ const PanelDrawer = ({ open, closePanel }: Props): JSX.Element => {
   const [viewTitle, setViewTitle] = useState(Views.Menu);
 
   const ViewComponent = viewComponents[viewTitle];
+
+  const requestContext = useContext(RequestContext);
+  useEffect(() => {
+    const hasRequests = requestContext.requests.length > 0;
+
+    if (hasRequests) setViewTitle(Views.Requests);
+  }, [requestContext.requests.length]);
 
   const goBack = (): void => {
     const previousView = previousViews[viewTitle];

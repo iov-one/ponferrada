@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { Block, Hairline, Typography } from "medulas-react-components";
 import React, { ReactNode, useState } from "react";
 
+import { RequestContext } from "../../../../context/RequestProvider";
 import PanelDrawer, { toolbarHeight } from "./PanelDrawer";
 
 export const panelWidth = 310;
@@ -46,7 +47,10 @@ interface Props {
 }
 
 const SidePanel = ({ children }: Props): JSX.Element => {
-  const [open, setOpen] = useState(false);
+  const requestContext = React.useContext(RequestContext);
+  const hasRequests = requestContext.requests.length > 0;
+
+  const [open, setOpen] = useState(hasRequests);
   const openPanel = (): void => setOpen(true);
   const closePanel = (): void => setOpen(false);
 
