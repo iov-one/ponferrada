@@ -31,21 +31,7 @@
         "chainId": "ethereum-eip155-1",
         "name": "Ethereum Mainnet",
         "node": "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
-        "scraper": "https://api.etherscan.io/api",
-        "ethereumOptions": {
-          "erc20s": [
-            {
-              "contractAddress": "<DAI Contract Address",
-              "decimals": 18,
-              "symbol": "DAI"
-            },
-            {
-              "contractAddress": "<USDT Contract Address>",
-              "decimals": 18,
-              "symbol": "USDT"
-            }
-          ]
-        }
+        "scraper": "https://api.etherscan.io/api"
       }
     }
   ]
