@@ -39,7 +39,7 @@ const Networks = (): JSX.Element => {
     <Block width="100%">
       <List classes={listClasses}>
         {networksData.map(network => (
-          <ListItem classes={listItemClasses}>
+          <ListItem key={network.name} classes={listItemClasses}>
             <Image alt="Bullet Point" src={bulletPoint} />
             <Block marginLeft={2} />
             <ListItemText primary={network.name} secondary={network.url} />
