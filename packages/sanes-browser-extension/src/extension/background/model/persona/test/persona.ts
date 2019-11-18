@@ -48,6 +48,10 @@ export const mockLoadPersona = (personaData: PersonaData): void => {
   jest.spyOn(chromeInternalMsgs, "loadPersona").mockResolvedValueOnce(personaData);
 };
 
+export const mockcheckPassword = (): void => {
+  jest.spyOn(chromeInternalMsgs, "checkPassword").mockResolvedValueOnce(true);
+};
+
 export const mockClearPersona = (): jest.SpyInstance => {
   return jest.spyOn(chromeInternalMsgs, "clearPersona").mockResolvedValueOnce();
 };
