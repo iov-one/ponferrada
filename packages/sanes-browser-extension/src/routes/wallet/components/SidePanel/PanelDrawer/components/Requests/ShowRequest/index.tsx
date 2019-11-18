@@ -24,18 +24,26 @@ const ShowRequest = ({ goBackToList }: Props): JSX.Element => {
   const isIdentitiesRequest = isGetIdentitiesResponseData(firstRequest.responseData);
   const isSignAndPostRequest = isSignAndPostResponseData(firstRequest.responseData);
 
+  const closeExtension = (): void => {
+    goBackToList();
+
+    if (requestContext.requests.length === 0) {
+      window.close();
+    }
+  };
+
   return (
     <React.Fragment>
       {isIdentitiesRequest && (
         <ShareIdentity
           request={firstRequest as Request<GetIdentitiesResponseData>}
-          goBackToList={goBackToList}
+          closeExtension={closeExtension}
         />
       )}
       {isSignAndPostRequest && (
         <SignAndPostTx
           request={firstRequest as Request<SignAndPostResponseData>}
-          goBackToList={goBackToList}
+          closeExtension={closeExtension}
         />
       )}
     </React.Fragment>

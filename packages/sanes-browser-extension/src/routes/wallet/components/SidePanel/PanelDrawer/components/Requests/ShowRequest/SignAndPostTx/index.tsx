@@ -9,10 +9,10 @@ import ShowTx from "./ShowTx";
 
 interface Props {
   readonly request: Request<SignAndPostResponseData>;
-  readonly goBackToList: () => void;
+  readonly closeExtension: () => void;
 }
 
-const SignAndPostTx = ({ request, goBackToList }: Props): JSX.Element => {
+const SignAndPostTx = ({ request, closeExtension }: Props): JSX.Element => {
   const [action, setAction] = React.useState<"show" | "reject">("show");
   const { senderUrl, responseData, accept, reject } = request;
 
@@ -21,12 +21,12 @@ const SignAndPostTx = ({ request, goBackToList }: Props): JSX.Element => {
 
   const onAcceptRequest = (): void => {
     accept();
-    goBackToList();
+    closeExtension();
   };
 
   const onRejectRequest = (permanent: boolean): void => {
     reject(permanent);
-    goBackToList();
+    closeExtension();
   };
 
   return (

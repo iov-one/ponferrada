@@ -9,10 +9,10 @@ import ShowIdentity from "./ShowIdentity";
 
 interface Props {
   readonly request: Request<GetIdentitiesResponseData>;
-  readonly goBackToList: () => void;
+  readonly closeExtension: () => void;
 }
 
-const ShareIdentity = ({ request, goBackToList }: Props): JSX.Element => {
+const ShareIdentity = ({ request, closeExtension }: Props): JSX.Element => {
   const [action, setAction] = React.useState<"show" | "reject">("show");
   const { senderUrl, responseData, accept, reject } = request;
 
@@ -21,12 +21,12 @@ const ShareIdentity = ({ request, goBackToList }: Props): JSX.Element => {
 
   const onAcceptRequest = (): void => {
     accept();
-    goBackToList();
+    closeExtension();
   };
 
   const onRejectRequest = (permanent: boolean): void => {
     reject(permanent);
-    goBackToList();
+    closeExtension();
   };
 
   return (
