@@ -1,6 +1,7 @@
 import { Block, Image, Link, Typography } from "medulas-react-components";
 import React from "react";
 
+import { SUPPORT_CENTER_URL } from "../../../../../paths";
 import neumaLogo from "../../../../assets/NeumaLogoNoText.svg";
 
 const About = (): JSX.Element => {
@@ -13,7 +14,7 @@ const About = (): JSX.Element => {
       </Typography>
       <Block marginTop={6} />
       <Typography variant="subtitle1">Links</Typography>
-      <Link to="https://support.iov.one/hc/en-us/requests/new?ticket_form_id=360000387040">
+      <Link to={SUPPORT_CENTER_URL}>
         <Typography variant="subtitle2" color="primary" link>
           Visit our Support Center
         </Typography>

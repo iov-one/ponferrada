@@ -1,7 +1,8 @@
-import { Block, List, makeStyles } from "medulas-react-components";
+import { Block, Link, List, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
 import { Views } from "..";
+import { TERMS_URL } from "../../../../../paths";
 import ListNavView from "./ListNavView";
 
 const useStyles = makeStyles({
@@ -28,6 +29,13 @@ const Settings = ({ updateCurrentView }: Props): JSX.Element => {
         <ListNavView view={Views.RecoveryWords} updateCurrentView={updateCurrentView} />
         <ListNavView view={Views.DeleteWallet} updateCurrentView={updateCurrentView} />
       </List>
+      <Block marginTop={8} display="flex" justifyContent="center">
+        <Link to={TERMS_URL}>
+          <Typography variant="subtitle2" color="primary" link>
+            Terms & Conditions
+          </Typography>
+        </Link>
+      </Block>
     </Block>
   );
 };
