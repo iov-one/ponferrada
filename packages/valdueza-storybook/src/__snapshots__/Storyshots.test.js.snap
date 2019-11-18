@@ -184,7 +184,7 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -1176,7 +1176,7 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -2544,7 +2544,7 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -2742,7 +2742,7 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -2976,7 +2976,7 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -3303,7 +3303,7 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -3450,7 +3450,7 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -3590,7 +3590,7 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -3764,7 +3764,7 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
@@ -3924,7 +3924,7 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
     <img
       alt="Logo"
       className="makeStyles-root"
-      src="logoBlack.svg"
+      src="neumaWalletLogo.svg"
     />
     <div
       className="MuiBox-root MuiBox-root"
