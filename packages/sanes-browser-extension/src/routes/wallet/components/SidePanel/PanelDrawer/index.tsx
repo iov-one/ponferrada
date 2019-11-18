@@ -107,6 +107,7 @@ const PanelDrawer = ({ open, closePanel }: Props): JSX.Element => {
     <Drawer className={classes.drawer} variant="temporary" anchor="right" open={open} classes={drawerClasses}>
       <Block id={drawerHtmlId} width={panelWidth} height={`calc(100% - ${toolbarHeight}px)`}>
         <Block
+          id={viewTitle}
           height={toolbarHeight}
           display="flex"
           alignItems="center"

@@ -10,6 +10,7 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
+export const rejectIdentityHtmlId = "identity-request-reject";
 const PERMANENT_REJECT = "permanentRejectField";
 
 interface Props {
@@ -31,7 +32,7 @@ const RejectIdentity = ({ sender, onBack, onRejectRequest }: Props): JSX.Element
   });
 
   return (
-    <React.Fragment>
+    <Block id={rejectIdentityHtmlId}>
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center">
           <Typography variant="body1">The following site:</Typography>
@@ -62,7 +63,7 @@ const RejectIdentity = ({ sender, onBack, onRejectRequest }: Props): JSX.Element
           Back
         </Back>
       </Form>
-    </React.Fragment>
+    </Block>
   );
 };
 

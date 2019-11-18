@@ -3,6 +3,8 @@ import * as React from "react";
 
 import { UiIdentity } from "../../../../../../../../../extension/background/model/requestsHandler/requestQueueManager";
 
+export const showIdentityHtmlId = "identity-request-show";
+
 interface Props {
   readonly onAcceptRequest: () => void;
   readonly showRejectView: () => void;
@@ -11,7 +13,7 @@ interface Props {
 }
 
 const ShowIdentity = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.Element => (
-  <React.Fragment>
+  <Block id={showIdentityHtmlId}>
     <Block textAlign="center" marginBottom={2}>
       <Typography variant="body1">The following site:</Typography>
       <Typography variant="body1" color="primary">
@@ -49,7 +51,7 @@ const ShowIdentity = ({ sender, data, onAcceptRequest, showRejectView }: Props):
     <Button variant="contained" fullWidth color="secondary" onClick={showRejectView}>
       Reject
     </Button>
-  </React.Fragment>
+  </Block>
 );
 
 export default ShowIdentity;

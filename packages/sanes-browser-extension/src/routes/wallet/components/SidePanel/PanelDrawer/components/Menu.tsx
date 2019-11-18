@@ -8,7 +8,7 @@ import { WELCOME_ROUTE } from "../../../../../paths";
 import ListNavLink from "./ListNavLink";
 import ListNavView from "./ListNavView";
 
-const logoutText = "Log out";
+export const logoutText = "Log out";
 
 const logOut = async (): Promise<void> => {
   await clearPersona();

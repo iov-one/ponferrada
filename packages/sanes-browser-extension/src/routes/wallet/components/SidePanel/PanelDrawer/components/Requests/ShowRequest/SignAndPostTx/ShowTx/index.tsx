@@ -9,6 +9,8 @@ import ReqRegisterUsernameTx from "./ReqRegisterUsernameTx";
 import ReqSendTransaction from "./ReqSendTransaction";
 import ReqVoteTx from "./ReqVoteTx";
 
+export const showTxHtmlId = "tx-request-show";
+
 interface Props {
   readonly onAcceptRequest: () => void;
   readonly showRejectView: () => void;
@@ -32,7 +34,7 @@ const ShowTx = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
   }
 
   return (
-    <React.Fragment>
+    <Block id={showTxHtmlId}>
       <Block textAlign="center" marginBottom={2}>
         <Typography variant="body1" inline>
           {"The following site: "}
@@ -54,7 +56,7 @@ const ShowTx = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
         Reject
       </Button>
       <Block marginBottom={2} />
-    </React.Fragment>
+    </Block>
   );
 };
 

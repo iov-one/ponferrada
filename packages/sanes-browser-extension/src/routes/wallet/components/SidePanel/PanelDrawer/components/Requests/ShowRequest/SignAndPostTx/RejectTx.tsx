@@ -10,6 +10,7 @@ import {
 } from "medulas-react-components";
 import * as React from "react";
 
+export const rejectTxHtmlId = "tx-request-reject";
 const PERMANENT_REJECT = "permanentRejectField";
 
 interface Props {
@@ -30,7 +31,7 @@ const RejectTx = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
   });
 
   return (
-    <React.Fragment>
+    <Block id={rejectTxHtmlId}>
       <Form onSubmit={handleSubmit}>
         <Block textAlign="center" marginTop={2}>
           <Typography variant="body1" inline>
@@ -57,7 +58,7 @@ const RejectTx = ({ sender, onBack, onRejectRequest }: Props): JSX.Element => {
           Back
         </Back>
       </Form>
-    </React.Fragment>
+    </Block>
   );
 };
 
