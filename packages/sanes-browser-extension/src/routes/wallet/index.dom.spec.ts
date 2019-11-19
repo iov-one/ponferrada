@@ -175,7 +175,7 @@ describe("DOM > Feature > Wallet Status", () => {
     expect(accountInput.getAttribute("value")).toBe(ACCOUNT);
 
     await click(accountInput);
-    await checkCreateAccount(walletStatusDom);
+    checkCreateAccount(walletStatusDom);
   }, 60000);
 
   it("has a transactions box with two transactions", () => {
