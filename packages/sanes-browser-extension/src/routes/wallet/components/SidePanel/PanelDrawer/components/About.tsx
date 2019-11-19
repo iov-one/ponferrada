@@ -1,6 +1,7 @@
 import { Block, Image, Link, Typography } from "medulas-react-components";
 import React from "react";
 
+import version from "../../../../../../version";
 import { SUPPORT_CENTER_URL } from "../../../../../paths";
 import neumaLogo from "../../../../assets/NeumaLogoNoText.svg";
 
@@ -10,7 +11,7 @@ const About = (): JSX.Element => {
       <Image src={neumaLogo} alt="Logo" />
       <Typography variant="subtitle1">Neuma version</Typography>
       <Typography variant="subtitle2" color="textPrimary">
-        1.0.1
+        {version}
       </Typography>
       <Block marginTop={6} />
       <Typography variant="subtitle1">Links</Typography>

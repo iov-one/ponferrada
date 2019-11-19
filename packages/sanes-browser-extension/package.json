@@ -3,6 +3,7 @@
   "version": "1.1.0-alpha.0",
   "private": true,
   "scripts": {
+    "set-version": "replace --quiet \"@VERSION@\" \"$npm_package_version\" build/js/main.js",
     "use-config-development": "cp ./config/development.json ./public/assets/config/conf.json",
     "use-config-staging": "cp ./config/staging.json ./public/assets/config/conf.json",
     "use-config-production": "cp ./config/production.json ./public/assets/config/conf.json",
@@ -10,9 +11,9 @@
     "make-manifest-staging": "cp ./config/manifest-staging.json ./build/manifest.json && ./scripts/set_manifest_version.sh",
     "make-manifest-production": "cp ./config/manifest-production.json ./build/manifest.json && ./scripts/set_manifest_version.sh",
     "build-with-any-config": "react-scripts build src/extension/contentscript.ts src/extension/backgroundscript.ts",
-    "build-development": "yarn use-config-development && yarn build-with-any-config && yarn make-manifest-development",
-    "build-staging": "yarn use-config-staging && yarn build-with-any-config && yarn make-manifest-staging",
-    "build-production": "yarn use-config-production && yarn build-with-any-config && yarn make-manifest-production",
+    "build-development": "yarn use-config-development && yarn build-with-any-config && yarn make-manifest-development && yarn set-version",
+    "build-staging": "yarn use-config-staging && yarn build-with-any-config && yarn make-manifest-staging && yarn set-version",
+    "build-production": "yarn use-config-production && yarn build-with-any-config && yarn make-manifest-production && yarn set-version",
     "build": "yarn build-development",
     "dry-build": "tsc --noEmit",
     "override-config-development": "cp ./config/development.json ./build/assets/config/conf.json && yarn make-manifest-development",
@@ -68,6 +69,7 @@
     "react-final-form-hooks": "^2.0.1",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "replace": "^1.1.1",
     "typesafe-actions": "^3.2.1",
     "ui-logic": "^1.1.0-alpha.0"
   },
