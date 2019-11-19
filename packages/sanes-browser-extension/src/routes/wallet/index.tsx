@@ -34,15 +34,24 @@ const AccountView = (): JSX.Element => {
   });
 
   React.useEffect(() => {
+    let isSubscribed = true;
+
     async function fetchMyAccounts(): Promise<void> {
       const actualItems: SelectFieldItem[] = [
         { name: CREATE_NEW_ONE },
         ...personaProvider.accounts.map(account => ({ name: account.label })),
       ];
-      setAccounts(actualItems);
+
+      if (isSubscribed) {
+        setAccounts(actualItems);
+      }
     }
 
     fetchMyAccounts();
+
+    return () => {
+      isSubscribed = false;
+    };
   }, [personaProvider.accounts]);
 
   const onChange = async (item: SelectFieldItem): Promise<void> => {
