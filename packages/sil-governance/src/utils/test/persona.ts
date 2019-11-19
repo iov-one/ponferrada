@@ -74,6 +74,7 @@ export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
   await page.click('[aria-label="Open drawer"]');
   await sleep(1000);
 
+  // click on first request
   await page.click("ul > li > div");
   await sleep(500);
 
