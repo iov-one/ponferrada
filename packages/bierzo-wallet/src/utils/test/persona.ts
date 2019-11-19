@@ -50,17 +50,22 @@ export async function clickOnFirstRequest(browser: Browser): Promise<Page> {
 export async function acceptEnqueuedRequest(browser: Browser): Promise<void> {
   const extensionPage = await clickOnFirstRequest(browser);
 
+  const buttons = await extensionPage.$$("button");
+
   // accept it
-  await extensionPage.click("button");
+  await buttons[3].click();
 }
 
 export async function rejectEnqueuedRequest(browser: Browser): Promise<void> {
   const extensionPage = await clickOnFirstRequest(browser);
 
+  let buttons = await extensionPage.$$("button");
+
   // reject it
-  await extensionPage.click("button:nth-of-type(2)");
+  await buttons[4].click();
   await sleep(500);
 
+  buttons = await extensionPage.$$("button");
   // confirm rejection
-  await extensionPage.click("button");
+  await buttons[3].click();
 }
