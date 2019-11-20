@@ -25,10 +25,10 @@ const ShowRequest = ({ goBackToList }: Props): JSX.Element => {
   const isSignAndPostRequest = isSignAndPostResponseData(firstRequest.responseData);
 
   const closeExtension = (): void => {
-    goBackToList();
-
     if (requestContext.requests.length === 0) {
       window.close();
+    } else {
+      goBackToList();
     }
   };
 

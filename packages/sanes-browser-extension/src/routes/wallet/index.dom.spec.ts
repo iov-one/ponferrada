@@ -314,26 +314,27 @@ describe("DOM > Feature > Wallet Status Drawer > Requests", () => {
 
 describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
   let identityDOM: React.Component;
-  let windowCloseCalled = false;
+  let windowClose: () => void;
 
   beforeEach(async () => {
+    windowClose = window.close;
     requests.length = 0;
     requests.push(requestOne);
-    windowCloseCalled = false;
 
     identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
     await click(getFirstRequest(identityDOM));
     await findRenderedDOMComponentWithId(identityDOM, showIdentityHtmlId);
 
-    jest.spyOn(window, "close").mockImplementation(() => {
-      windowCloseCalled = true;
-    });
+    jest.spyOn(window, "close").mockImplementation(() => {});
   }, 60000);
 
-  it("should accept incoming request and  close extension popup", async () => {
+  afterEach(() => {
+    window.close = windowClose;
+  });
+
+  it("should accept incoming request and close extension popup", async () => {
     await confirmAcceptButtonId(identityDOM);
-    await findRenderedDOMComponentWithId(identityDOM, Views.Requests);
-    expect(windowCloseCalled).toBeTruthy();
+    expect(window.close).toBeCalled();
   }, 60000);
 
   it("should accept incoming request and redirect to the list of requests", async () => {
@@ -345,16 +346,14 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
 
     await confirmAcceptButtonId(identityDOM);
     await findRenderedDOMComponentWithId(identityDOM, Views.Requests);
-    expect(windowCloseCalled).toBeFalsy();
+    expect(window.close).not.toBeCalled();
   }, 60000);
 
   it("should reject incoming request and close extension popup", async () => {
     await clickOnRejectButtonId(identityDOM);
     await confirmRejectButtonId(identityDOM);
     // TODO: Check here that share request rejection has been reject successfuly
-
-    await findRenderedDOMComponentWithId(identityDOM, Views.Requests);
-    expect(windowCloseCalled).toBeTruthy();
+    expect(window.close).toBeCalled();
   }, 60000);
 
   it("should reject incoming request and redirect to the list of requests", async () => {
@@ -367,7 +366,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
     await clickOnRejectButtonId(identityDOM);
     await confirmRejectButtonId(identityDOM);
     await findRenderedDOMComponentWithId(identityDOM, Views.Requests);
-    expect(windowCloseCalled).toBeFalsy();
+    expect(window.close).not.toBeCalled();
   }, 60000);
 
   it("should reject incoming request permanently and come back", async () => {
@@ -381,26 +380,27 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
 
 describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
   let txRequestDOM: React.Component;
-  let windowCloseCalled = false;
+  let windowClose: () => void;
 
   beforeEach(async () => {
+    windowClose = window.close;
     requests.length = 0;
     requests.push(requestTwo);
-    windowCloseCalled = false;
 
     txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
     await click(getFirstRequest(txRequestDOM));
     await findRenderedDOMComponentWithId(txRequestDOM, showTxHtmlId);
 
-    jest.spyOn(window, "close").mockImplementation(() => {
-      windowCloseCalled = true;
-    });
+    jest.spyOn(window, "close").mockImplementation(() => {});
   }, 60000);
+
+  afterEach(() => {
+    window.close = windowClose;
+  });
 
   it("should accept incoming request and close extension popup", async () => {
     await confirmAcceptButtonTx(txRequestDOM);
-    await findRenderedDOMComponentWithId(txRequestDOM, Views.Requests);
-    expect(windowCloseCalled).toBeTruthy();
+    expect(window.close).toBeCalled();
   }, 60000);
 
   it("should accept incoming request and redirect to the list of requests", async () => {
@@ -412,7 +412,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
 
     await confirmAcceptButtonTx(txRequestDOM);
     await findRenderedDOMComponentWithId(txRequestDOM, Views.Requests);
-    expect(windowCloseCalled).toBeFalsy();
+    expect(window.close).not.toBeCalled();
   }, 60000);
 
   it("should reject incoming request and close extension popup", async () => {
@@ -420,8 +420,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
     await confirmRejectButtonTx(txRequestDOM);
     // TODO: Check here that share request rejection has been reject successfuly
 
-    await findRenderedDOMComponentWithId(txRequestDOM, Views.Requests);
-    expect(windowCloseCalled).toBeTruthy();
+    expect(window.close).toBeCalled();
   }, 60000);
 
   it("should reject incoming request and redirect to the list of requests", async () => {
@@ -434,12 +433,12 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
     await clickOnRejectButtonTx(txRequestDOM);
     await confirmRejectButtonTx(txRequestDOM);
     await findRenderedDOMComponentWithId(txRequestDOM, Views.Requests);
-    expect(windowCloseCalled).toBeFalsy();
+    expect(window.close).not.toBeCalled();
   }, 60000);
 
   it("should reject incoming request permanently and come back", async () => {
     await clickOnRejectButtonTx(txRequestDOM);
-    await checkPermanentRejectionTx(txRequestDOM);
+    checkPermanentRejectionTx(txRequestDOM);
     await confirmRejectButtonTx(txRequestDOM);
     await sleep(2000);
     // rejection flag has been set
