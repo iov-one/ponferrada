@@ -4,7 +4,7 @@ import * as React from "react";
 import { useSelector } from "react-redux";
 
 import { lastTxSelector } from "../../store/notifications/selectors";
-import logoBlack from "./assets/logoBlack.svg";
+import neumaLogo from "./assets/neumaWalletLogo.svg";
 import HiMenu from "./components/HiMenu";
 import LinksMenu from "./components/LinksMenu";
 
@@ -28,7 +28,7 @@ const Header = ({ path }: Props): JSX.Element => {
 
   return (
     <Block className={classes.root} padding={3} paddingBottom={2}>
-      <Image src={logoBlack} alt="Logo" />
+      <Image src={neumaLogo} alt="Logo" />
       <Block flexGrow={1} />
       <LinksMenu path={path} lastTx={lastTx} />
       <Block flexGrow={4} />
