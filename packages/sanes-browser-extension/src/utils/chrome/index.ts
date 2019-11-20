@@ -35,6 +35,13 @@ export async function loadPersona(password: string): Promise<PersonaData> {
   return response;
 }
 
+export async function checkPassword(password: string): Promise<boolean> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  const response = await extensionWindow.checkPassword(password);
+
+  return response;
+}
+
 export async function createAccount(): Promise<readonly PersonaAcccount[]> {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   const response = await extensionWindow.createAccount();

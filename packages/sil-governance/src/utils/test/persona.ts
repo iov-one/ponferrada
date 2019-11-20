@@ -74,16 +74,14 @@ export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
   await page.click('[aria-label="Open drawer"]');
   await sleep(1000);
 
-  // click on Requests
-  await page.click("#account-drawer > nav > div:nth-of-type(2)");
-  await sleep(500);
-
   // click on first request
   await page.click("ul > li > div");
   await sleep(500);
 
+  const buttons = await page.$$("button");
+
   // accept it
-  await page.click("button");
+  await buttons[3].click();
 }
 
 export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
@@ -93,34 +91,44 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   await page.click('[aria-label="Open drawer"]');
   await sleep(1000);
 
-  // click on Requests
-  await page.click("#account-drawer > nav > div:nth-of-type(2)");
-  await sleep(500);
-
   // click on first request
   await page.click("ul > li > div");
   await sleep(500);
 
+  let buttons = await page.$$("button");
+
   // reject it
-  await page.click("button:nth-of-type(2)");
+  await buttons[4].click();
   await sleep(500);
 
+  buttons = await page.$$("button");
   // confirm rejection
-  await page.click("button");
+  await buttons[3].click();
 }
 
 export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> {
   await extensionPage.bringToFront();
   await extensionPage.click("ul > li > div");
-  await sleep(1000);
-  await extensionPage.click("button");
+  await sleep(500);
+  const buttons = await extensionPage.$$("button");
+
+  // accept it
+  await buttons[3].click();
 }
 
 export async function rejectEnqueuedRequest(extensionPage: Page): Promise<void> {
   await extensionPage.bringToFront();
   await extensionPage.click("ul > li > div");
-  await sleep(1000);
-  await extensionPage.click("button:nth-of-type(2)");
+  await sleep(500);
+  let buttons = await extensionPage.$$("button");
+
+  // reject it
+  await buttons[4].click();
+  await sleep(500);
+
+  buttons = await extensionPage.$$("button");
+  // confirm rejection
+  await buttons[3].click();
 }
 
 export async function loginAsGovernor(page: Page, extensionPage: Page): Promise<void> {

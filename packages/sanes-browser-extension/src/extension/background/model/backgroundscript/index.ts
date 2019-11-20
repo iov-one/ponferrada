@@ -9,6 +9,7 @@ export interface IovWindowExtension extends Window {
   getQueuedRequests: () => readonly Request[];
   createPersona: (password: string, mnemonic: string | undefined) => Promise<PersonaData>;
   loadPersona: (password: string) => Promise<PersonaData>;
+  checkPassword: (password: string) => Promise<boolean>;
   clearPersona: () => void;
   createAccount: () => Promise<readonly PersonaAcccount[]>;
   getPersonaData: () => Promise<GetPersonaResponse>;
@@ -65,6 +66,17 @@ class Backgroundscript {
     };
   }
 
+  private async checkPassword(password: string): Promise<boolean> {
+    if (!this.persona) throw new Error(NOT_FOUND_ERR);
+
+    const persona = await Persona.load(this.db.getDb(), password, signer =>
+      this.requestsHandler.makeAuthorizationCallbacks(signer),
+    );
+
+    if (persona.mnemonic === this.persona.mnemonic) return true;
+    return false;
+  }
+
   private async createAccount(): Promise<readonly PersonaAcccount[]> {
     if (!this.persona) throw new Error(NOT_FOUND_ERR);
     await this.persona.createAccount(this.db.getDb());
@@ -104,6 +116,7 @@ class Backgroundscript {
     windowExtension.getQueuedRequests = () => this.requestsHandler.getPendingRequests();
     windowExtension.createPersona = (pss, mn) => this.createPersona(pss, mn);
     windowExtension.loadPersona = pss => this.loadPersona(pss);
+    windowExtension.checkPassword = pss => this.checkPassword(pss);
     windowExtension.createAccount = () => this.createAccount();
     windowExtension.getPersonaData = () => this.getPersonaData();
     windowExtension.hasStoredPersona = () => this.hasStoredPersona();

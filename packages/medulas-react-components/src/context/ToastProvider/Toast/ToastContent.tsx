@@ -1,4 +1,4 @@
-import { createStyles, IconButton, makeStyles, SnackbarContent, Theme } from "@material-ui/core";
+import { IconButton, makeStyles, SnackbarContent } from "@material-ui/core";
 import classNames from "classnames";
 import * as React from "react";
 
@@ -18,40 +18,40 @@ const variantIcon = {
   info: SuccessIcon,
 };
 
-const useStyles = makeStyles(
-  (theme: Theme): ReturnType<typeof createStyles> => ({
-    success: {
-      color: theme.palette.primary.main,
-    },
-    error: {
-      color: "#F05956",
-    },
-    info: {
-      color: theme.palette.secondary.main,
-    },
-    warning: {
-      color: theme.palette.error.main,
-    },
-    icon: {
-      fontSize: 30,
-    },
-    iconVariant: {},
-    message: {
-      alignItems: "center",
-      display: "flex",
-    },
-    iconBackground: {
-      backgroundColor: "#f5f7f9",
-      height: 60,
-      minWidth: 60,
-      borderRadius: 60,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      marginRight: `${theme.spacing(3)}px`,
-    },
-  }),
-);
+const useStyles = makeStyles({
+  snackbarContent: {
+    padding: "24px",
+  },
+  snackbarAction: {
+    padding: 0,
+    minWidth: "20px",
+    minHeight: "20px",
+  },
+  success: {
+    backgroundColor: "#09d69e",
+  },
+  error: {
+    backgroundColor: "#f17f5c",
+  },
+  info: {
+    backgroundColor: "#09d69e",
+  },
+  warning: {
+    backgroundColor: "#ffb968",
+  },
+  icon: {
+    fontSize: 20,
+  },
+  text: {
+    color: "#fff",
+  },
+  iconBackground: {
+    backgroundColor: "#f5f7f9",
+  },
+  closeButton: {
+    padding: 0,
+  },
+});
 
 interface Props {
   readonly className?: string;
@@ -65,23 +65,43 @@ const ToastContent = React.forwardRef(
     const Icon = variantIcon[variant];
     const classes = useStyles();
 
+    const snackbarClasses = {
+      root: classes.snackbarContent,
+      action: classes.snackbarAction,
+    };
+
     return (
       <SnackbarContent
         innerRef={ref}
         className={classNames(classes[variant], className)}
+        classes={snackbarClasses}
         message={
-          <Block className={classes.message} flexGrow={1}>
-            <div className={classes.iconBackground}>
+          <Block display="flex" alignItems="center">
+            <Block
+              minWidth="48px"
+              minHeight="48px"
+              borderRadius="24px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              className={classes.iconBackground}
+            >
               <Image src={Icon} alt="Toast icon" width={24} height={24} />
-            </div>
-
-            <Typography variant="subtitle1" className={classes[variant]}>
+            </Block>
+            <Block marginLeft={3} />
+            <Typography variant="subtitle1" weight="semibold" className={classes.text}>
               {message}
             </Typography>
           </Block>
         }
         action={[
-          <IconButton key="close" aria-label="Close" color="secondary" onClick={onClose}>
+          <IconButton
+            key="close"
+            aria-label="Close"
+            color="secondary"
+            className={classes.closeButton}
+            onClick={onClose}
+          >
             <Image src={CloseIcon} alt="Close" width={20} height={20} />
           </IconButton>,
         ]}
