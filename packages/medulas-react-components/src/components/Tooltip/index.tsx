@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
+import { ClickAwayListener, createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import * as React from "react";
 
@@ -134,7 +134,9 @@ const Tooltip = ({ children, maxWidth = 200 }: Props): JSX.Element => {
         modifiers={popperModifiers}
       >
         <span className={classes.arrow} ref={arrowRefCb} />
-        <Paper className={classes.paper}>{children}</Paper>
+        <ClickAwayListener onClickAway={onClick}>
+          <Paper className={classes.paper}>{children}</Paper>
+        </ClickAwayListener>
       </Popper>
     </React.Fragment>
   );
