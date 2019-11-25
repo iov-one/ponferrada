@@ -2,7 +2,7 @@
 
 ## 1.1.0 (not yet released)
 
-- Wallet: Improve UI
+- Wallet and Extension: Improve UI
 - Wallet: Rename to "Neuma Wallet"
 - Governance: Allow inputting validator pubkeys in base64 format
 - Governance: Improve test coverage
