@@ -1,14 +1,15 @@
 import { ClickAwayListener, createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
+import clipboardCopy from "clipboard-copy";
 import * as React from "react";
 
 import { useOpen } from "../../hooks/open";
-import infoNormal from "../../theme/assets/info_normal.svg";
 import theme from "../../theme/utils/mui";
 import Block from "../Block";
-import Typography from "../Typography";
 
-const DEFAULT_HEIGHT = 16;
+const DIV_OVERFLOW_HEIGHT = 64;
+const POPUP_COPY_TO_TEXT = "Copy to clipboard";
+const POPUP_COPIED_TEXT = "Copied!";
 
 const useStyles = makeStyles(
   (theme: Theme): ReturnType<typeof createStyles> => ({
@@ -16,10 +17,14 @@ const useStyles = makeStyles(
       padding: theme.spacing(0.5),
       boxShadow: `0 0 14px 0 #edeff4`,
       backgroundColor: theme.palette.primary.main,
+      cursor: "pointer",
     },
     container: {
-      // height: `${DEFAULT_HEIGHT}px`,
       display: "inline-block",
+    },
+    popupText: {
+      color: "white",
+      fontSize: "1.4rem",
     },
     popper: {
       zIndex: 1,
@@ -89,8 +94,10 @@ interface Props {
   readonly maxWidth?: number;
 }
 
-const PopupCopy = ({ children, maxWidth = 200 }: Props): JSX.Element => {
+const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element => {
   const [isOpen, toggle, clickAway] = useOpen();
+  const [overflowHeight, setOverflowHeight] = React.useState<number | undefined>(undefined);
+  const [popupText, setPopupText] = React.useState<string>(POPUP_COPY_TO_TEXT);
 
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
 
@@ -118,18 +125,26 @@ const PopupCopy = ({ children, maxWidth = 200 }: Props): JSX.Element => {
     },
   };
 
+  const copyText = (): void => {
+    clipboardCopy(textToCopy);
+    setPopupText(POPUP_COPIED_TEXT);
+  };
+
   const onMouseEnter = (): void => {
     if (!isOpen) {
       toggle();
+      setOverflowHeight(DIV_OVERFLOW_HEIGHT);
+      setPopupText(POPUP_COPY_TO_TEXT);
     }
   };
 
   const onClose = (): void => {
     clickAway();
+    setOverflowHeight(undefined);
   };
 
   return (
-    <Block className={classes.container} height={64} onMouseLeave={onClose} zIndex={999}>
+    <Block className={classes.container} height={overflowHeight} onMouseLeave={onClose} zIndex={999}>
       <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseEnter}>
         {children}
       </div>
@@ -144,10 +159,8 @@ const PopupCopy = ({ children, maxWidth = 200 }: Props): JSX.Element => {
       >
         <span className={classes.arrow} ref={arrowRefCb} />
         <ClickAwayListener onClickAway={onClose}>
-          <Paper className={classes.paper}>
-            <Typography inline variant="body2" color="">
-              Copy to clipboard
-            </Typography>
+          <Paper className={classes.paper} onClick={copyText}>
+            <span className={classes.popupText}>{popupText}</span>
           </Paper>
         </ClickAwayListener>
       </Popper>
