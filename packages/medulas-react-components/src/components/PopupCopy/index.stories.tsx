@@ -11,7 +11,7 @@ storiesOf(`${medulasRoot}/components`, module).add("Popup copy", () => {
     <Storybook>
       <Block>
         <PopupCopy textToCopy={"Text to copy"}>
-          <Typography inline>Text to copy</Typography>
+          <Typography inline>Some simple text</Typography>
         </PopupCopy>
       </Block>
     </Storybook>
