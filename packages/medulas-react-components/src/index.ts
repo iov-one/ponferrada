@@ -15,6 +15,7 @@ import CircleImage from "./components/Image/CircleImage";
 import Link from "./components/Link";
 import { List, ListItem, ListItemAvatar, ListItemIcon, ListItemText } from "./components/List";
 import PageLayout from "./components/PageLayout";
+import PopupCopy from "./components/PopupCopy";
 import Switch from "./components/Switch";
 import Paragraph from "./components/TextMarkup/Paragraph";
 import Section from "./components/TextMarkup/Section";
@@ -54,6 +55,7 @@ export {
   MedulasThemeProvider,
   PageLayout,
   Paragraph,
+  PopupCopy,
   Section,
   SelectField,
   SelectFieldItem,
