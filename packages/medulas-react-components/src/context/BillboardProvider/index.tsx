@@ -3,7 +3,12 @@ import * as React from "react";
 import Billboard, { HPosition, VPosition } from "./Billboard";
 
 export interface BillboardContextInterface {
-  readonly show: (message: React.ReactNode, vPosition: VPosition, hPosition: HPosition) => void;
+  readonly show: (
+    message: React.ReactNode,
+    vPosition: VPosition,
+    hPosition: HPosition,
+    delay: number,
+  ) => void;
   readonly close: () => void;
 }
 
@@ -21,6 +26,7 @@ interface BillboardState {
   readonly message: React.ReactNode;
   readonly vPosition: VPosition;
   readonly hPosition: HPosition;
+  readonly delay: number; // Delay before showing billboard message in milliseconds
 }
 
 export function BillboardProvider({ children }: Props): JSX.Element {
@@ -29,18 +35,21 @@ export function BillboardProvider({ children }: Props): JSX.Element {
     message: "",
     vPosition: "center",
     hPosition: "center",
+    delay: 0,
   });
 
   const show = (
     message: React.ReactNode,
     vPosition: VPosition = "center",
     hPosition: HPosition = "center",
+    delay: number = 0,
   ): void =>
     setMessage({
       show: true,
       message,
-      vPosition: vPosition,
-      hPosition: hPosition,
+      vPosition,
+      hPosition,
+      delay,
     });
 
   const close = (): void =>
@@ -49,6 +58,7 @@ export function BillboardProvider({ children }: Props): JSX.Element {
       message: "",
       vPosition: "center",
       hPosition: "center",
+      delay: 0,
     });
 
   const billboardConfig: BillboardContextInterface = {

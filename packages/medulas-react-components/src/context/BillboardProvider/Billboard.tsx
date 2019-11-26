@@ -22,10 +22,25 @@ interface Props {
   readonly children: React.ReactNode;
   readonly vPosition: VPosition;
   readonly hPosition: HPosition;
+  readonly delay: number;
 }
 
-function Billboard({ show, children, message, hPosition, vPosition }: Props): JSX.Element {
+function Billboard({ show, children, message, hPosition, vPosition, delay }: Props): JSX.Element {
   const classes = useStyles();
+  const [visible, setVisible] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (delay > 0 && show) {
+      const timer = setTimeout(() => {
+        setVisible(show);
+      }, delay);
+
+      return () => clearTimeout(timer);
+    } else {
+      setVisible(show);
+      return;
+    }
+  }, [show, delay]);
 
   const billboardMessage = (
     <Block
@@ -44,7 +59,7 @@ function Billboard({ show, children, message, hPosition, vPosition }: Props): JS
 
   return (
     <Block className={classes.billboard}>
-      {show ? billboardMessage : null}
+      {visible ? billboardMessage : null}
       {children}
     </Block>
   );
