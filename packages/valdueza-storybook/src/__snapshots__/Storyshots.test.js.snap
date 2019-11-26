@@ -7370,6 +7370,28 @@ exports[`Storyshots Medulas React Components/components PageLayout 1`] = `
 </div>
 `;
 
+exports[`Storyshots Medulas React Components/components Popup copy 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-container"
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="makeStyles-container"
+      onMouseEnter={[Function]}
+    >
+      <p
+        className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
+      >
+        Some simple text
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Medulas React Components/components Switch 1`] = `
 Array [
   <div
