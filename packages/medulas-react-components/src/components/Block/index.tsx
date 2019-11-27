@@ -34,6 +34,7 @@ interface Props extends BlockStyleProps {
   readonly id?: string;
   readonly className?: string;
   readonly onClick?: React.MouseEventHandler<Element>;
+  readonly onMouseLeave?: React.MouseEventHandler<Element>;
 }
 
 const Block = ({ children, display = "block", ...restProps }: Props): JSX.Element => {
