@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import { Storybook } from "medulas-react-components";
 import React from "react";
@@ -9,8 +10,9 @@ import Layout from "./index";
 
 const persona: GetPersonaResponse = {
   mnemonic: "",
-  accounts: [{ label: "Account 0" }],
+  accounts: [{ label: "Account 0", address: "" as Address }],
   txs: [],
+  balances: [],
 };
 
 storiesOf(`${sanesRoot}/Welcome page`, module)
