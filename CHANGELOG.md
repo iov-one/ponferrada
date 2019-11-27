@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 (not yet released)
+## 1.1.0
 
 - Wallet and Extension: Improve UI
 - Wallet: Rename to "Neuma Wallet"
