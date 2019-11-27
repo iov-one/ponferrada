@@ -16,6 +16,7 @@ import Layout from "./components/index";
 
 export const PAYMENT_STORY_PATH = `${bierzoRoot}/Payment`;
 export const PAYMENT_STORY_PAYMENT_PATH = "Payment";
+export const PAYMENT_STORY_PAYMENT_EMPTY_PATH = "No balance";
 const PAYMENT_STORY_CONFIRMATION_PATH = "Confirmation";
 
 const BALANCES: BalanceState = {
@@ -49,6 +50,16 @@ storiesOf(PAYMENT_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(PAYMENT_STORY_PAYMENT_PATH, () => (
     <DecoratedStorybook storeProps={fullStore()}>
+      <Layout
+        onCancelPayment={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+        onSubmit={onSubmit}
+        onTokenSelectionChanged={onTokenSelectionChanged}
+        selectedChainCodec={liskCodec}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(PAYMENT_STORY_PAYMENT_EMPTY_PATH, () => (
+    <DecoratedStorybook>
       <Layout
         onCancelPayment={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         onSubmit={onSubmit}
