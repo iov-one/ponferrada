@@ -64,7 +64,15 @@ const SidePanel = ({ children }: Props): JSX.Element => {
   return (
     <Block minHeight="100vh" display="flex" className={classes.root}>
       <AppBar position="fixed" color="inherit" className={appBarClasses} elevation={0}>
-        <Block display="flex" alignItems="center" justifyContent="space-between" margin="32px 24px">
+        <Block
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          marginTop={4}
+          marginBottom={3}
+          marginLeft={3}
+          marginRight={3}
+        >
           <Block minWidth="200px">
             <Typography color="primary" variant="h4" inline>
               Wallet
