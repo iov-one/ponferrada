@@ -4903,7 +4903,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
               <h6
                 className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
               >
-                Your personalized address
+                Create your IOV starname
               </h6>
               <div
                 className="MuiBox-root MuiBox-root"
@@ -5274,7 +5274,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
               <h6
                 className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
               >
-                Your personalized address
+                Create your IOV starname
               </h6>
               <div
                 className="MuiBox-root MuiBox-root"
