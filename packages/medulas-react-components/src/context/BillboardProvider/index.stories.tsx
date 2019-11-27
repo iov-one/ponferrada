@@ -22,7 +22,7 @@ function BillboardStory(): JSX.Element {
   );
 
   const showBillboard = (): void => {
-    billboard.show(billboardMessage, "center", "center");
+    billboard.show(billboardMessage, "center", "center", 0);
     setTimeout(() => {
       billboard.close();
     }, 2000);

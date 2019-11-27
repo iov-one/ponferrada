@@ -97,12 +97,14 @@ const Payment = (): JSX.Element => {
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
           "start",
           "flex-end",
+          0,
         );
       } else {
         billboard.show(
           <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
           "center",
           "center",
+          0,
         );
       }
 

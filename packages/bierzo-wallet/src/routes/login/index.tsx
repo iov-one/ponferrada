@@ -81,6 +81,7 @@ const Login = (): JSX.Element => {
         <NeumaBillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />,
         "start",
         "flex-end",
+        100,
       );
       const { installed, connected, identities } = await getExtensionStatus();
       if (!installed) {
@@ -112,6 +113,7 @@ const Login = (): JSX.Element => {
         <LedgerBillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />,
         "center",
         "center",
+        100,
       );
       const request = await generateGetIdentitiesRequest();
       const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
