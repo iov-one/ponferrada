@@ -52,6 +52,16 @@ export const greaterOrEqualThan = (min: number): FieldValidator<FieldInputValue>
   };
 };
 
+export const greaterThan = (min: number): FieldValidator<FieldInputValue> => {
+  return (value): ValidationError => {
+    if (value && Number(value) <= min) {
+      return `Should be greater than ${min}`;
+    }
+
+    return undefined;
+  };
+};
+
 export const notLongerThan = (maxLength: number): FieldValidator<FieldInputValue> => {
   return (value): ValidationError => {
     if (value && value.length > maxLength) {

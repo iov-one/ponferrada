@@ -76,6 +76,7 @@ export {
   composeValidators,
   FieldInputValue,
   greaterOrEqualThan,
+  greaterThan,
   lowerOrEqualThan,
   longerThan,
   notLongerThan,

@@ -7,5 +7,6 @@ export declare const number: FieldValidator<FieldInputValue>;
 export declare const validAddress: FieldValidator<FieldInputValue>;
 export declare const lowerOrEqualThan: (max: number) => FieldValidator<string | undefined>;
 export declare const greaterOrEqualThan: (min: number) => FieldValidator<string | undefined>;
+export declare const greaterThan: (min: number) => FieldValidator<string | undefined>;
 export declare const notLongerThan: (maxLength: number) => FieldValidator<string | undefined>;
 export declare const longerThan: (minLength: number) => FieldValidator<string | undefined>;
