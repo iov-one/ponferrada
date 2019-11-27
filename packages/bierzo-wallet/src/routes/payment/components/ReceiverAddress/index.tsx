@@ -17,9 +17,10 @@ export const ADDRESS_FIELD = "addressField";
 interface Props {
   readonly form: FormApi;
   readonly selectedChainCodec: TxCodec | null;
+  readonly noBalance: boolean;
 }
 
-const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
+const ReceiverAddress = ({ form, selectedChainCodec, noBalance }: Props): JSX.Element => {
   const recipientValidator = React.useMemo(() => {
     const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
       if (typeof value !== "string") throw new Error("Input must be a string");
@@ -49,7 +50,7 @@ const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
           form={form}
           validate={validator}
           placeholder="Recipient's address"
-          disabled={selectedChainCodec === null}
+          disabled={selectedChainCodec === null || noBalance}
           fullWidth
           margin="none"
         />

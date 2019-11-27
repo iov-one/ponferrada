@@ -7,7 +7,7 @@ import { FormApi } from "final-form";
 import {
   Block,
   composeValidators,
-  greaterOrEqualThan,
+  greaterThan,
   lowerOrEqualThan,
   number,
   required,
@@ -17,10 +17,9 @@ import {
   Typography,
 } from "medulas-react-components";
 import React, { useMemo, useState } from "react";
-import * as ReactRedux from "react-redux";
 import { amountToNumber, amountToString } from "ui-logic";
 
-import { RootState } from "../../../../store/reducers";
+import { BalanceState } from "../../../../store/balances";
 
 const useStyles = makeStyles({
   avatar: {
@@ -33,16 +32,17 @@ const useStyles = makeStyles({
 });
 
 export const QUANTITY_FIELD = "quantityField";
-const QUANTITY_MIN = 1e-9;
+const QUANTITY_MIN = 0;
 export const CURRENCY_FIELD = "currencyField";
 
 interface Props {
   readonly form: FormApi;
+  readonly balances: BalanceState;
+  readonly noBalance: boolean;
   readonly onTokenSelectionChanged: (ticker: TokenTicker) => Promise<void>;
 }
 
-const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element => {
-  const balances = ReactRedux.useSelector((state: RootState) => state.balances);
+const CurrencyToSend = ({ form, onTokenSelectionChanged, balances, noBalance }: Props): JSX.Element => {
   const classes = useStyles();
 
   const currencyItems = Object.keys(balances)
@@ -57,7 +57,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
       required,
       number,
       lowerOrEqualThan(selectedTokenTicker ? amountToNumber(balances[selectedTokenTicker]) : 0),
-      greaterOrEqualThan(QUANTITY_MIN),
+      greaterThan(QUANTITY_MIN),
     );
   }, [balances, selectedTokenTicker]);
 
@@ -94,6 +94,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
               placeholder="0.00"
               fullWidth
               margin="none"
+              disabled={noBalance}
             />
           </Block>
           <Block marginTop={0.5} marginLeft={1}>
@@ -104,6 +105,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged }: Props): JSX.Element =
               items={currencyItems}
               initial={firstToken ? firstToken.name : "–"}
               onChangeCallback={onSelectionChanged}
+              disabled={noBalance}
             />
           </Block>
         </Block>

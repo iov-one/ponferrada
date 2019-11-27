@@ -5,12 +5,13 @@ import React from "react";
 export const TEXTNOTE_FIELD = "textNoteField";
 
 interface Props {
-  form: FormApi;
+  readonly form: FormApi;
+  readonly noBalance: boolean;
 }
 
 const validator = notLongerThan(150);
 
-const TextNote = (props: Props): JSX.Element => {
+const TextNote = ({ form, noBalance }: Props): JSX.Element => {
   return (
     <Block width="100%" marginTop={4} display="flex" flexDirection="column">
       <Typography color="textPrimary" variant="subtitle2">
@@ -19,13 +20,14 @@ const TextNote = (props: Props): JSX.Element => {
       <Block marginTop={1}>
         <TextField
           name={TEXTNOTE_FIELD}
-          form={props.form}
+          form={form}
           validate={validator}
           placeholder="Add an optional message"
           multiline
           rows="2"
           fullWidth
           margin="none"
+          disabled={noBalance}
         />
       </Block>
     </Block>

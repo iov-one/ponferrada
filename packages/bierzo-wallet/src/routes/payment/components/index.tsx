@@ -1,7 +1,9 @@
 import { TokenTicker, TxCodec } from "@iov/bcp";
 import { Back, Block, Button, Form, useForm } from "medulas-react-components";
 import React from "react";
+import * as ReactRedux from "react-redux";
 
+import { RootState } from "../../../store/reducers";
 import CurrencyToSend from "./CurrencyToSend";
 import ReceiverAddress from "./ReceiverAddress";
 import TextNote from "./TextNote";
@@ -19,6 +21,8 @@ const Layout = ({
   onTokenSelectionChanged,
   selectedChainCodec,
 }: Props): JSX.Element => {
+  const balances = ReactRedux.useSelector((state: RootState) => state.balances);
+  const noBalance = Object.keys(balances).length === 0;
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
     onSubmit,
   });
@@ -28,12 +32,17 @@ const Layout = ({
       <Block marginTop={5} display="flex" justifyContent="center">
         <Block width="450px" display="flex" flexDirection="column" alignItems="center">
           <Block width="450px" bgcolor="white" padding={5}>
-            <CurrencyToSend form={form} onTokenSelectionChanged={onTokenSelectionChanged} />
-            <ReceiverAddress form={form} selectedChainCodec={selectedChainCodec} />
-            <TextNote form={form} />
+            <CurrencyToSend
+              form={form}
+              balances={balances}
+              noBalance={noBalance}
+              onTokenSelectionChanged={onTokenSelectionChanged}
+            />
+            <ReceiverAddress form={form} noBalance={noBalance} selectedChainCodec={selectedChainCodec} />
+            <TextNote form={form} noBalance={noBalance} />
           </Block>
           <Block width="75%" marginTop={4}>
-            <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
+            <Button fullWidth type="submit" disabled={invalid || pristine || submitting || noBalance}>
               Continue
             </Button>
             <Back fullWidth disabled={submitting} onClick={onCancelPayment}>
