@@ -1,4 +1,11 @@
-import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
+import {
+  Address,
+  Amount,
+  isSendTransaction,
+  SendTransaction,
+  UnsignedTransaction,
+  WithCreator,
+} from "@iov/bcp";
 import {
   BnsConnection,
   CreateProposalTx,
@@ -84,6 +91,7 @@ export interface MakeAuthorizationCallbacks {
 export interface PersonaAcccount {
   /** human readable address or placeholder text */
   readonly label: string;
+  readonly address: Address;
 }
 
 export type UseOnlyJsonRpcSigningServer = Pick<JsonRpcSigningServer, "handleUnchecked" | "handleChecked">;
@@ -261,8 +269,9 @@ export class Persona {
           throw new Error(`Missing BNS identity for account at index ${index}`);
         }
 
+        const address = this.signer.identityToAddress(bnsIdentity);
         let label: string;
-        const names = await bnsConnection.getUsernames({ owner: this.signer.identityToAddress(bnsIdentity) });
+        const names = await bnsConnection.getUsernames({ owner: address });
         if (names.length > 1) {
           // this case will not happen for regular users that do not professionally collect username NFTs
           label = `Multiple names`;
@@ -272,7 +281,7 @@ export class Persona {
           label = `Account ${account.index}`;
         }
 
-        return { label: label };
+        return { label, address };
       }),
     );
   }
@@ -292,6 +301,30 @@ export class Persona {
     const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
     const filtered = processed.filter(isNonNull);
     return filtered;
+  }
+
+  public async getBalances(): Promise<readonly Amount[]> {
+    // TODO use first account
+    const accountIndex = 0;
+
+    const accounts = await this.accountManager.accounts();
+    if (accounts.length <= accountIndex) {
+      throw new Error("Account does not exist");
+    }
+    const account = accounts[accountIndex];
+    const pendingAccountResults = account.identities.map(identity => {
+      const { chainId, pubkey } = identity;
+      return this.signer.connection(chainId).getAccount({ pubkey });
+    });
+    const accountResults = await Promise.all(pendingAccountResults);
+
+    const out: Amount[] = [];
+    for (const result of accountResults) {
+      if (result) {
+        out.push(...result.balance);
+      }
+    }
+    return out;
   }
 
   private getBnsConnection(): BnsConnection {
