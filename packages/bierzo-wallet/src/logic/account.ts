@@ -15,7 +15,7 @@ export async function lookupRecipientAddressByName(
   chainId: ChainId,
 ): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
   if (!isIov(username)) {
-    throw new Error("Username must include namespace suffix");
+    throw new Error("IOV starname must include *iov");
   }
 
   const connection = await getConnectionForBns();
