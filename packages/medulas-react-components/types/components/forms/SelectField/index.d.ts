@@ -14,6 +14,7 @@ interface InnerProps {
   readonly validate?: FieldValidator<FieldInputValue>;
   readonly items: readonly SelectFieldItem[];
   readonly maxWidth?: string;
+  readonly hiddenInput?: boolean;
 }
 export declare type Props = InnerProps & InputBaseProps;
 declare const SelectField: ({
@@ -24,5 +25,6 @@ declare const SelectField: ({
   onChangeCallback,
   maxWidth,
   validate,
+  hiddenInput,
 }: Props) => JSX.Element;
 export default SelectField;
