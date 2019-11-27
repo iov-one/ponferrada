@@ -4196,6 +4196,342 @@ exports[`Storyshots Bierzo Wallet/Payment Confirmation 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/Payment No balance 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiAvatar-root makeStyles-avatar MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-user fa-w-14 "
+              color="#ffffff"
+              data-icon="user"
+              data-prefix="far"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </div>
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            Send tokens
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+            >
+              Amount
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                >
+                  <div
+                    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-fullWidth MuiInputBase-formControl"
+                    onClick={[Function]}
+                  >
+                    <input
+                      aria-invalid={false}
+                      className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled"
+                      disabled={true}
+                      name="quantityField"
+                      onAnimationStart={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="0.00"
+                      required={false}
+                      type="text"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden={true}
+                      className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                      style={
+                        Object {
+                          "paddingLeft": 8,
+                        }
+                      }
+                    >
+                      <legend
+                        className="PrivateNotchedOutline-legend"
+                        style={
+                          Object {
+                            "width": 0.01,
+                          }
+                        }
+                      >
+                        <span
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "&#8203;",
+                            }
+                          }
+                        />
+                      </legend>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="makeStyles-dropdown"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiInputBase-root makeStyles-root makeStyles-root"
+                    onClick={[Function]}
+                    role="button"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="MuiInputBase-input makeStyles-input"
+                      name="currencyField"
+                      onAnimationStart={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      readOnly={true}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <img
+                    alt="Phone Menu"
+                    className="makeStyles-root makeStyles-noShrink"
+                    height="5"
+                    src="selectChevron.svg"
+                    width="8"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h6
+                className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              >
+                Balance: 
+                –
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            To
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            >
+              <div
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-fullWidth MuiInputBase-formControl"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled"
+                  disabled={true}
+                  name="addressField"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Recipient's address"
+                  required={false}
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden={true}
+                  className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                  style={
+                    Object {
+                      "paddingLeft": 8,
+                    }
+                  }
+                >
+                  <legend
+                    className="PrivateNotchedOutline-legend"
+                    style={
+                      Object {
+                        "width": 0.01,
+                      }
+                    }
+                  >
+                    <span
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "&#8203;",
+                        }
+                      }
+                    />
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            Note
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            >
+              <div
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                onClick={[Function]}
+              >
+                <textarea
+                  aria-invalid={false}
+                  className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-disabled MuiOutlinedInput-disabled MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                  disabled={true}
+                  name="textNoteField"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Add an optional message"
+                  required={false}
+                  rows="2"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden={true}
+                  className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                  style={
+                    Object {
+                      "paddingLeft": 8,
+                    }
+                  }
+                >
+                  <legend
+                    className="PrivateNotchedOutline-legend"
+                    style={
+                      Object {
+                        "width": 0.01,
+                      }
+                    }
+                  >
+                    <span
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "&#8203;",
+                        }
+                      }
+                    />
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
+          disabled={true}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Continue
+          </span>
+        </button>
+        <button
+          aria-label="Go back"
+          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Cancel
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
 exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
 <form
   onSubmit={[Function]}
