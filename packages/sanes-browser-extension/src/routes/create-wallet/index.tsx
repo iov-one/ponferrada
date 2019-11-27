@@ -48,6 +48,7 @@ const CreateWallet = (): JSX.Element => {
       accounts: response.accounts,
       mnemonic: response.mnemonic,
       txs: response.txs,
+      balances: response.balances,
       hasStoredPersona: true,
     });
     onShowWords();

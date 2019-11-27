@@ -36,6 +36,7 @@ const Unlock = (): JSX.Element => {
         accounts: response.accounts,
         mnemonic: response.mnemonic,
         txs: response.txs,
+        balances: response.balances,
       });
       history.push(WALLET_STATUS_ROUTE);
     } catch (_) {
