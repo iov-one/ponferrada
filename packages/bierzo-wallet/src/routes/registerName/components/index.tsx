@@ -129,7 +129,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
         <Block textAlign="left">
           <Block display="flex" justifyContent="space-between" marginBottom={1}>
             <Typography variant="subtitle2" weight="semibold">
-              Your personalized address
+              Create your IOV starname
             </Typography>
             <Block display="flex" alignItems="center">
               <Tooltip maxWidth={320}>
