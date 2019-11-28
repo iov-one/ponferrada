@@ -3,6 +3,7 @@
 ## 1.1.1 (Not released)
 
 - Wallet and Extension: DAI stablecoin support
+- Wallet: Get Neuma extension URL from config
 
 ## 1.1.0
 
