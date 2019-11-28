@@ -67,7 +67,7 @@ function webUsbAvailable(): boolean {
 
 async function onGetNeumaExtension(): Promise<void> {
   const config = await getConfig();
-  window.open(config.neumaUrl, "_blank");
+  window.open(config.extensionLink, "_blank");
 }
 
 const Login = (): JSX.Element => {
