@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (Not released)
+
+- Wallet and Extension: DAI stablecoin support
+
 ## 1.1.0
 
 - Wallet and Extension: Improve UI
