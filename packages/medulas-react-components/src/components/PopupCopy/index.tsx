@@ -21,6 +21,7 @@ const useStyles = makeStyles(
     },
     container: {
       display: "inline-block",
+      position: "relative",
     },
     popupText: {
       color: "white",
@@ -96,7 +97,7 @@ interface Props {
 
 const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element => {
   const [isOpen, toggle, clickAway] = useOpen();
-  const [overflowHeight, setOverflowHeight] = React.useState<number | undefined>(undefined);
+  const [overflowVisible, setOverflowVisible] = React.useState<"visible" | "hidden">("hidden");
   const [popupText, setPopupText] = React.useState<string>(POPUP_COPY_TO_TEXT);
 
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
@@ -133,21 +134,41 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
   const onMouseEnter = (): void => {
     if (!isOpen) {
       toggle();
-      setOverflowHeight(DIV_OVERFLOW_HEIGHT);
+      setOverflowVisible("visible");
       setPopupText(POPUP_COPY_TO_TEXT);
     }
   };
 
   const onClose = (): void => {
     clickAway();
-    setOverflowHeight(undefined);
+    setOverflowVisible("hidden");
   };
 
   return (
-    <Block className={classes.container} height={overflowHeight} onMouseLeave={onClose} zIndex={999}>
-      <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseEnter}>
-        {children}
-      </div>
+    <React.Fragment>
+      <Block className={classes.container}>
+        <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseEnter}>
+          {children}
+        </div>
+        <Block
+          visibility={overflowVisible}
+          onMouseEnter={onClose}
+          height={DIV_OVERFLOW_HEIGHT}
+          display="inline-block"
+          position="absolute"
+          width="100%"
+          left={0}
+        ></Block>
+        <Block
+          visibility={overflowVisible}
+          height={DIV_OVERFLOW_HEIGHT - 10}
+          display="inline-block"
+          position="absolute"
+          width="calc(100% - 10px)"
+          top={5}
+          left={5}
+        ></Block>
+      </Block>
 
       <Popper
         open={isOpen}
@@ -164,7 +185,7 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
           </Paper>
         </ClickAwayListener>
       </Popper>
-    </Block>
+    </React.Fragment>
   );
 };
 
