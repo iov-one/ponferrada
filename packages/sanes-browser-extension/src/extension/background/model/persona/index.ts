@@ -17,8 +17,7 @@ import {
 } from "@iov/bns";
 import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
-import { UserProfile } from "@iov/keycontrol";
-import { UserProfileEncryptionKey } from "@iov/keycontrol";
+import { UserProfile, UserProfileEncryptionKey } from "@iov/keycontrol";
 import {
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
@@ -30,7 +29,7 @@ import {
 import { ReadonlyDate } from "readonly-date";
 
 import { transactionsUpdater } from "../../updaters/appUpdater";
-import { AccountManager } from "../accountManager";
+import { AccountInfo, AccountManager } from "../accountManager";
 import {
   SoftwareAccountManager,
   SoftwareAccountManagerChainConfig,
@@ -91,7 +90,7 @@ export interface MakeAuthorizationCallbacks {
 export interface PersonaAcccount {
   /** human readable address or placeholder text */
   readonly label: string;
-  readonly address: Address;
+  readonly iovAddress: Address;
 }
 
 export type UseOnlyJsonRpcSigningServer = Pick<JsonRpcSigningServer, "handleUnchecked" | "handleChecked">;
@@ -269,9 +268,9 @@ export class Persona {
           throw new Error(`Missing BNS identity for account at index ${index}`);
         }
 
-        const address = this.signer.identityToAddress(bnsIdentity);
+        const iovAddress = this.signer.identityToAddress(bnsIdentity);
         let label: string;
-        const names = await bnsConnection.getUsernames({ owner: address });
+        const names = await bnsConnection.getUsernames({ owner: iovAddress });
         if (names.length > 1) {
           // this case will not happen for regular users that do not professionally collect username NFTs
           label = `Multiple names`;
@@ -281,7 +280,7 @@ export class Persona {
           label = `Account ${account.index}`;
         }
 
-        return { label, address };
+        return { label, iovAddress };
       }),
     );
   }
@@ -303,28 +302,22 @@ export class Persona {
     return filtered;
   }
 
-  public async getBalances(): Promise<readonly Amount[]> {
-    // TODO use first account
-    const accountIndex = 0;
+  public async getBalances(): Promise<readonly (readonly Amount[])[]> {
+    const accountsInfo = await this.accountManager.accounts();
+    const identities = accountsInfo.flatMap((accountInfo: AccountInfo) => accountInfo.identities);
 
-    const accounts = await this.accountManager.accounts();
-    if (accounts.length <= accountIndex) {
-      throw new Error("Account does not exist");
-    }
-    const account = accounts[accountIndex];
-    const pendingAccountResults = account.identities.map(identity => {
-      const { chainId, pubkey } = identity;
-      return this.signer.connection(chainId).getAccount({ pubkey });
-    });
-    const accountResults = await Promise.all(pendingAccountResults);
+    const accounts = await Promise.all(
+      identities.map(identity => {
+        const { chainId, pubkey } = identity;
+        return this.signer.connection(chainId).getAccount({ pubkey });
+      }),
+    );
 
-    const out: Amount[] = [];
-    for (const result of accountResults) {
-      if (result) {
-        out.push(...result.balance);
-      }
+    function notUndefined<T>(x: T | undefined): x is T {
+      return x !== undefined;
     }
-    return out;
+
+    return accounts.filter(notUndefined).map(account => account.balance);
   }
 
   private getBnsConnection(): BnsConnection {
