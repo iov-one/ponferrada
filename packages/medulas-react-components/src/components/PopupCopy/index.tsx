@@ -97,7 +97,7 @@ interface Props {
 
 const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element => {
   const [isOpen, toggle, clickAway] = useOpen();
-  const [overflowVisible, setOverflowVisible] = React.useState<"visible" | "hidden">("visible");
+  const [overflowVisible, setOverflowVisible] = React.useState<"visible" | "hidden">("hidden");
   const [popupText, setPopupText] = React.useState<string>(POPUP_COPY_TO_TEXT);
 
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
