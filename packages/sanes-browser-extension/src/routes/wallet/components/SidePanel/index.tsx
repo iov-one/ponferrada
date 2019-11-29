@@ -62,7 +62,7 @@ const SidePanel = ({ children }: Props): JSX.Element => {
   const contentClasses = classNames(classes.content);
 
   return (
-    <Block minHeight="100vh" display="flex" className={classes.root}>
+    <Block minHeight={`calc(100% - ${toolbarHeight}px)`} display="flex" className={classes.root}>
       <AppBar position="fixed" color="inherit" className={appBarClasses} elevation={0}>
         <Block
           display="flex"
