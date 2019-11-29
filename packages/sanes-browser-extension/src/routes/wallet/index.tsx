@@ -1,24 +1,44 @@
 import { Amount } from "@iov/bcp";
-import { Block } from "medulas-react-components";
+import { Theme } from "@material-ui/core/styles";
+import { Block, makeStyles, PopupCopy, Typography } from "medulas-react-components";
 import * as React from "react";
+import { useContext } from "react";
+import { ellipsifyMiddle } from "ui-logic";
 
-import SimplePageLayout from "../../components/SimplePageLayout";
+import SimplePageLayout, { defaultPageHeight } from "../../components/SimplePageLayout";
+import { PersonaContext } from "../../context/PersonaProvider";
 import ListCollectibles from "./components/ListCollectibles";
 import ListTokens from "./components/ListTokens";
 import SidePanel from "./components/SidePanel";
+import { toolbarHeight } from "./components/SidePanel/PanelDrawer";
+
+const addressLabel = "IOV address: ";
+
+const useStyles = makeStyles((theme: Theme) => ({
+  address: {
+    "& p:hover": {
+      cursor: "pointer",
+      color: theme.palette.primary.main,
+    },
+  },
+}));
 
 const AccountView = (): JSX.Element => {
-  // const persona = useContext(PersonaContext);
-  // console.log(persona.accounts);
+  const classes = useStyles();
+  const persona = useContext(PersonaContext);
+
+  const iovAddress = persona.accounts[0].iovAddress;
   const balances: { [tokenTicker: string]: Amount } = {};
-  // TODO load balances indexed object
-  /* persona.balances.forEach(token => {
-    balances[token.tokenTicker] = {
-      quantity: token.quantity,
-      fractionalDigits: token.fractionalDigits,
-      tokenTicker: token.tokenTicker,
-    };
-  }); */
+
+  for (const balance of persona.balances) {
+    for (const amount of balance) {
+      balances[amount.tokenTicker] = {
+        quantity: amount.quantity,
+        fractionalDigits: amount.fractionalDigits,
+        tokenTicker: amount.tokenTicker,
+      };
+    }
+  }
 
   // TODO load from chain when iov-core API ready
   const starnames: string[] = [];
@@ -26,7 +46,15 @@ const AccountView = (): JSX.Element => {
 
   return (
     <SidePanel>
-      <SimplePageLayout>
+      <SimplePageLayout height={`calc(${defaultPageHeight}px - ${toolbarHeight}px)`}>
+        <Block bgcolor="#fff" display="flex" padding="8px 24px">
+          <Typography inline>{addressLabel}</Typography>
+          <Block marginLeft={2} display="inline" className={classes.address}>
+            <PopupCopy textToCopy={iovAddress}>
+              <Typography inline>{ellipsifyMiddle(iovAddress, 16)}</Typography>
+            </PopupCopy>
+          </Block>
+        </Block>
         <Block marginTop={3} />
         <ListTokens balances={balances} />
         <Block marginTop={3} />
