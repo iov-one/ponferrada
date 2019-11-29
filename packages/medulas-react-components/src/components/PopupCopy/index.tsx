@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
+import { ClickAwayListener, createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import clipboardCopy from "clipboard-copy";
 import * as React from "react";
@@ -161,12 +161,12 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
         ></Block>
         <Block
           visibility={overflowVisible}
-          height={DIV_OVERFLOW_HEIGHT - 4}
+          height={DIV_OVERFLOW_HEIGHT - 10}
           display="inline-block"
           position="absolute"
-          width="calc(100% - 4px)"
-          top={2}
-          left={2}
+          width="calc(100% - 10px)"
+          top={5}
+          left={5}
         ></Block>
       </Block>
 
@@ -179,9 +179,11 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
         modifiers={popperModifiers}
       >
         <span className={classes.arrow} ref={arrowRefCb} />
-        <Paper className={classes.paper} onClick={copyText}>
-          <span className={classes.popupText}>{popupText}</span>
-        </Paper>
+        <ClickAwayListener onClickAway={onClose}>
+          <Paper className={classes.paper} onClick={copyText}>
+            <span className={classes.popupText}>{popupText}</span>
+          </Paper>
+        </ClickAwayListener>
       </Popper>
     </React.Fragment>
   );
