@@ -1,4 +1,4 @@
-import { ClickAwayListener, createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
+import { createStyles, makeStyles, Popper, Theme } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import clipboardCopy from "clipboard-copy";
 import * as React from "react";
@@ -21,6 +21,7 @@ const useStyles = makeStyles(
     },
     container: {
       display: "inline-block",
+      position: "relative",
     },
     popupText: {
       color: "white",
@@ -96,7 +97,7 @@ interface Props {
 
 const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element => {
   const [isOpen, toggle, clickAway] = useOpen();
-  const [overflowHeight, setOverflowHeight] = React.useState<number | undefined>(undefined);
+  const [overflowVisible, setOverflowVisible] = React.useState<"visible" | "hidden">("visible");
   const [popupText, setPopupText] = React.useState<string>(POPUP_COPY_TO_TEXT);
 
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement>();
@@ -133,21 +134,41 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
   const onMouseEnter = (): void => {
     if (!isOpen) {
       toggle();
-      setOverflowHeight(DIV_OVERFLOW_HEIGHT);
+      setOverflowVisible("visible");
       setPopupText(POPUP_COPY_TO_TEXT);
     }
   };
 
   const onClose = (): void => {
     clickAway();
-    setOverflowHeight(undefined);
+    setOverflowVisible("hidden");
   };
 
   return (
-    <Block className={classes.container} height={overflowHeight} onMouseLeave={onClose} zIndex={999}>
-      <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseEnter}>
-        {children}
-      </div>
+    <React.Fragment>
+      <Block className={classes.container}>
+        <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseEnter}>
+          {children}
+        </div>
+        <Block
+          visibility={overflowVisible}
+          onMouseEnter={onClose}
+          height={DIV_OVERFLOW_HEIGHT}
+          display="inline-block"
+          position="absolute"
+          width="100%"
+          left={0}
+        ></Block>
+        <Block
+          visibility={overflowVisible}
+          height={DIV_OVERFLOW_HEIGHT - 4}
+          display="inline-block"
+          position="absolute"
+          width="calc(100% - 4px)"
+          top={2}
+          left={2}
+        ></Block>
+      </Block>
 
       <Popper
         open={isOpen}
@@ -158,13 +179,11 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
         modifiers={popperModifiers}
       >
         <span className={classes.arrow} ref={arrowRefCb} />
-        <ClickAwayListener onClickAway={onClose}>
-          <Paper className={classes.paper} onClick={copyText}>
-            <span className={classes.popupText}>{popupText}</span>
-          </Paper>
-        </ClickAwayListener>
+        <Paper className={classes.paper} onClick={copyText}>
+          <span className={classes.popupText}>{popupText}</span>
+        </Paper>
       </Popper>
-    </Block>
+    </React.Fragment>
   );
 };
 
