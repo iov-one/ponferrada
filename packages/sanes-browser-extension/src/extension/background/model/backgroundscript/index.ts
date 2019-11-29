@@ -22,7 +22,7 @@ export interface PersonaData {
   readonly accounts: readonly PersonaAcccount[];
   readonly mnemonic: string;
   readonly txs: readonly ProcessedTx[];
-  readonly balances: readonly Amount[];
+  readonly balances: readonly (readonly Amount[])[];
 }
 
 const ALREADY_FOUND_ERR = "The persona instance is already set. This indicates a bug in the lifecycle.";

@@ -33,7 +33,7 @@ export const mockPersonaResponse = (
   accounts: PersonaAcccount[] = [],
   mnemonic: string = "",
   txs: ProcessedTx[] = [],
-  balances: Amount[] = [],
+  balances: Amount[][] = [],
 ): PersonaData => {
   return { accounts, mnemonic, txs, balances };
 };

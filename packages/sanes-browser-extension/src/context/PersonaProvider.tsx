@@ -14,14 +14,14 @@ export interface PersonaContextUpdateData {
   readonly accounts?: readonly PersonaAcccount[];
   readonly mnemonic?: string;
   readonly txs?: readonly ProcessedTx[];
-  readonly balances?: readonly Amount[];
+  readonly balances?: readonly (readonly Amount[])[];
   readonly hasStoredPersona?: boolean;
 }
 
 export interface PersonaContextInterface {
   readonly accounts: readonly PersonaAcccount[];
   readonly txs: readonly ProcessedTx[];
-  readonly balances: readonly Amount[];
+  readonly balances: readonly (readonly Amount[])[];
   readonly mnemonic: string;
   readonly hasStoredPersona: boolean;
   readonly update: (newData: PersonaContextUpdateData) => void;
@@ -49,7 +49,9 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
   const [storedPersonaExists, setStoredPersonaExists] = React.useState<boolean>(hasStoredPersona);
   const [txs, setTxs] = React.useState<readonly ProcessedTx[]>(persona ? persona.txs : []);
-  const [balances, setBalances] = React.useState<readonly Amount[]>(persona ? persona.balances : []);
+  const [balances, setBalances] = React.useState<readonly (readonly Amount[])[]>(
+    persona ? persona.balances : [],
+  );
   React.useEffect(() => {
     if (!extensionContext()) {
       return;
