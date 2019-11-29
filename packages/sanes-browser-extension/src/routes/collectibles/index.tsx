@@ -10,9 +10,6 @@ import chevronLeft from "./assets/chevronLeft.svg";
 import CollectibleItem from "./components/CollectibleItem";
 
 const useStyles = makeStyles({
-  boxBackground: {
-    backgroundColor: "#fff",
-  },
   chevronIcon: {
     margin: 0,
     padding: 0,
@@ -35,12 +32,12 @@ const Collectibles = ({ location }: RouteComponentProps): JSX.Element => {
   return (
     <SimplePageLayout id={COLLECTIBLES_ROUTE}>
       <Block
+        bgcolor="#fff"
         paddingLeft={3}
         paddingRight={3}
         height="103px"
         display="flex"
         alignItems="center"
-        className={classes.boxBackground}
       >
         <IconButton className={classes.chevronIcon} onClick={goBack}>
           <Image alt="Back Button" src={chevronLeft} className={classes.chevronButton} />
@@ -50,16 +47,16 @@ const Collectibles = ({ location }: RouteComponentProps): JSX.Element => {
         </Block>
       </Block>
       <Block marginTop={3} />
-      <Block className={classes.boxBackground}>
+      <Block bgcolor="#fff">
         {collectibles.map((text: string, index: number) => (
-          <React.Fragment>
+          <Block key={text}>
             {index > 0 && (
               <Block marginLeft={3}>
                 <Hairline color="#f3f3f3" />
               </Block>
             )}
             <CollectibleItem icon={icon} text={text} />
-          </React.Fragment>
+          </Block>
         ))}
       </Block>
     </SimplePageLayout>

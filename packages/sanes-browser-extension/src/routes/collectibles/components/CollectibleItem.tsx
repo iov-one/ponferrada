@@ -1,11 +1,5 @@
-import { Block, Image, makeStyles, Typography } from "medulas-react-components";
+import { Block, Image, Typography } from "medulas-react-components";
 import * as React from "react";
-
-const useStyles = makeStyles({
-  collectibleIcon: {
-    height: "40px",
-  },
-});
 
 interface Props {
   readonly icon: string;
@@ -13,8 +7,6 @@ interface Props {
 }
 
 const CollectibleItem = ({ icon, text }: Props): JSX.Element => {
-  const classes = useStyles();
-
   return (
     <Block
       display="flex"
@@ -24,7 +16,7 @@ const CollectibleItem = ({ icon, text }: Props): JSX.Element => {
       paddingLeft={3}
       paddingRight={3}
     >
-      <Image alt={`${text} Icon`} src={icon} className={classes.collectibleIcon} />
+      <Image alt={`${text} Icon`} src={icon} height="40px" />
       <Block marginLeft={2}>
         <Typography variant="body2">{text}</Typography>
       </Block>
