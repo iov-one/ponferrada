@@ -303,21 +303,31 @@ export class Persona {
   }
 
   public async getBalances(): Promise<readonly (readonly Amount[])[]> {
-    const accountsInfo = await this.accountManager.accounts();
-    const identities = accountsInfo.flatMap((accountInfo: AccountInfo) => accountInfo.identities);
-
-    const accounts = await Promise.all(
-      identities.map(identity => {
-        const { chainId, pubkey } = identity;
-        return this.signer.connection(chainId).getAccount({ pubkey });
-      }),
-    );
-
     function notUndefined<T>(x: T | undefined): x is T {
       return x !== undefined;
     }
 
-    return accounts.filter(notUndefined).map(account => account.balance);
+    const accountsInfos = await this.accountManager.accounts();
+
+    const balancesPerAccount = await Promise.all(
+      accountsInfos.map(
+        async (accountInfo: AccountInfo): Promise<readonly Amount[]> => {
+          const accounts = (await Promise.all(
+            accountInfo.identities.flatMap(async identity => {
+              const { chainId, pubkey } = identity;
+              const account = await this.signer.connection(chainId).getAccount({ pubkey });
+              return account;
+            }),
+          ))
+            .filter(notUndefined)
+            .flatMap(account => account.balance);
+
+          return accounts;
+        },
+      ),
+    );
+
+    return balancesPerAccount;
   }
 
   private getBnsConnection(): BnsConnection {
