@@ -1,6 +1,5 @@
 import { Amount } from "@iov/bcp";
-import { Theme } from "@material-ui/core/styles";
-import { Block, makeStyles, PopupCopy, Typography } from "medulas-react-components";
+import { Block, PopupCopy, Typography } from "medulas-react-components";
 import * as React from "react";
 import { useContext } from "react";
 import { ellipsifyMiddle } from "ui-logic";
@@ -14,17 +13,7 @@ import { toolbarHeight } from "./components/SidePanel/PanelDrawer";
 
 const addressLabel = "IOV address: ";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  address: {
-    "& p:hover": {
-      cursor: "pointer",
-      color: theme.palette.primary.main,
-    },
-  },
-}));
-
 const AccountView = (): JSX.Element => {
-  const classes = useStyles();
   const persona = useContext(PersonaContext);
 
   const iovAddress = persona.accounts[0].iovAddress;
@@ -49,7 +38,7 @@ const AccountView = (): JSX.Element => {
       <SimplePageLayout height={`calc(${defaultPageHeight}px - ${toolbarHeight}px)`}>
         <Block bgcolor="#fff" display="flex" padding="8px 24px">
           <Typography inline>{addressLabel}</Typography>
-          <Block marginLeft={2} display="inline" className={classes.address}>
+          <Block marginLeft={2} display="inline">
             <PopupCopy textToCopy={iovAddress}>
               <Typography inline>{ellipsifyMiddle(iovAddress, 16)}</Typography>
             </PopupCopy>
