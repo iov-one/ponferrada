@@ -14,6 +14,7 @@ import { toolbarHeight } from "./components/SidePanel/PanelDrawer";
 const addressLabel = "IOV address: ";
 
 const AccountView = (): JSX.Element => {
+  const [mouseOverAddress, setMouseOverAddress] = React.useState<boolean>(false);
   const persona = useContext(PersonaContext);
 
   const iovAddress = persona.accounts[0].iovAddress;
@@ -29,6 +30,9 @@ const AccountView = (): JSX.Element => {
     }
   }
 
+  const onMouseEnterAddress = (): void => setMouseOverAddress(true);
+  const onMouseLeaveAddress = (): void => setMouseOverAddress(false);
+
   // TODO load from chain when iov-core API ready
   const starnames: string[] = [];
   const awards: string[] = [];
@@ -39,8 +43,14 @@ const AccountView = (): JSX.Element => {
         <Block bgcolor="#fff" display="flex" padding="8px 24px">
           <Typography inline>{addressLabel}</Typography>
           <Block marginLeft={2} display="inline">
-            <PopupCopy textToCopy={iovAddress}>
-              <Typography inline>{ellipsifyMiddle(iovAddress, 16)}</Typography>
+            <PopupCopy
+              textToCopy={iovAddress}
+              onMouseEnter={onMouseEnterAddress}
+              onMouseLeave={onMouseLeaveAddress}
+            >
+              <Typography inline color={mouseOverAddress ? "primary" : undefined}>
+                {ellipsifyMiddle(iovAddress, 16)}
+              </Typography>
             </PopupCopy>
           </Block>
         </Block>
