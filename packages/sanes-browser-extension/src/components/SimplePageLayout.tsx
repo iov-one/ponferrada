@@ -1,14 +1,7 @@
-import { Block, makeStyles } from "medulas-react-components";
+import { Block } from "medulas-react-components";
 import * as React from "react";
 
 export const defaultPageHeight = 500;
-
-const useStyles = makeStyles({
-  root: {
-    backgroundColor: "#f5f7f9",
-    overflow: "auto",
-  },
-});
 
 interface Props {
   readonly id?: string;
@@ -17,15 +10,14 @@ interface Props {
 }
 
 const SimplePageLayout = ({ id, children, height }: Props): JSX.Element => {
-  const classes = useStyles();
-
   return (
     <Block
       id={id}
       height={height || defaultPageHeight}
       display="flex"
       flexDirection="column"
-      className={classes.root}
+      bgcolor="#f5f7f9"
+      overflow="auto"
     >
       {children}
     </Block>
