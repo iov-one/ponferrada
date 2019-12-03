@@ -74,7 +74,10 @@ import {
 import { checkCreateAccount, getTransactionsCount } from "./test/operateWallet";
 
 const ACCOUNT = "Account 0";
-const accountMock: PersonaAcccount = { label: ACCOUNT };
+const accountMock: PersonaAcccount = {
+  label: ACCOUNT,
+  iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
+};
 const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
 
 const defaultCreator: Identity = {
