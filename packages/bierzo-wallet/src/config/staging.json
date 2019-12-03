@@ -16,6 +16,10 @@
         "chainId": "iov-dancenet",
         "name": "IOV Dancenet",
         "node": "wss://rpc-private-a-x-dancenet.iov.one/"
+      },
+      "faucetSpec": {
+        "uri": "https://faucet.x-dancenet.iov.one",
+        "tokens": ["IOV"]
       }
     },
     {
