@@ -4,6 +4,7 @@
 
 - Wallet and Extension: DAI stablecoin support
 - Wallet: Get Neuma extension URL from config
+- Wallet: Add IOV faucet for staging configuration
 
 ## 1.1.0
 
