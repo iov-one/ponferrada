@@ -42,7 +42,6 @@ const RestoreWallet = (): JSX.Element => {
     personaProvider.update({
       accounts: response.accounts,
       mnemonic: response.mnemonic,
-      txs: response.txs,
       balances: response.balances,
     });
 
