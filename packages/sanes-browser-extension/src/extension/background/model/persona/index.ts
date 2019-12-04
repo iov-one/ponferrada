@@ -28,7 +28,6 @@ import {
 } from "@iov/multichain";
 import { ReadonlyDate } from "readonly-date";
 
-import { transactionsUpdater } from "../../updaters/appUpdater";
 import { AccountInfo, AccountManager } from "../accountManager";
 import {
   SoftwareAccountManager,
@@ -43,10 +42,6 @@ import {
   pathBuilderForCodec,
 } from "./config";
 import { createTwoWalletProfile } from "./userprofilehelpers";
-
-function isNonNull<T>(t: T | null): t is T {
-  return t !== null;
-}
 
 function isNonUndefined<T>(t: T | undefined): t is T {
   return t !== undefined;
@@ -210,18 +205,6 @@ export class Persona {
       console.error,
     );
     this.jsonRpcSigningServer = new JsonRpcSigningServer(this.core);
-
-    this.subscribeToTxUpdates(transactionsUpdater);
-  }
-
-  private subscribeToTxUpdates(notifyApp: (transactions: readonly ProcessedTx[]) => void): void {
-    this.core.signedAndPosted.updates.subscribe({
-      next: async signedAndPosted => {
-        const processed = await Promise.all(signedAndPosted.map(s => this.processTransaction(s)));
-        const filtered = processed.filter(isNonNull);
-        notifyApp(filtered);
-      },
-    });
   }
 
   /**
@@ -298,12 +281,6 @@ export class Persona {
     }
 
     return mnemonics.values().next().value;
-  }
-
-  public async getTxs(): Promise<readonly ProcessedTx[]> {
-    const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
-    const filtered = processed.filter(isNonNull);
-    return filtered;
   }
 
   public async getBalances(): Promise<readonly (readonly Amount[])[]> {
