@@ -12,9 +12,6 @@ import PanelDrawer, { toolbarHeight } from "./PanelDrawer";
 export const panelWidth = 310;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    backgroundColor: "white",
-  },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
@@ -44,9 +41,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface Props {
   readonly children: ReactNode;
+  readonly id?: string;
 }
 
-const SidePanel = ({ children }: Props): JSX.Element => {
+const SidePanel = ({ children, id }: Props): JSX.Element => {
   const requestContext = React.useContext(RequestContext);
   const hasRequests = requestContext.requests.length > 0;
 
@@ -62,7 +60,7 @@ const SidePanel = ({ children }: Props): JSX.Element => {
   const contentClasses = classNames(classes.content);
 
   return (
-    <Block minHeight={`calc(100% - ${toolbarHeight}px)`} display="flex" className={classes.root}>
+    <Block minHeight={`calc(100% - ${toolbarHeight}px)`} display="flex" bgcolor="white" id={id}>
       <AppBar position="fixed" color="inherit" className={appBarClasses} elevation={0}>
         <Block
           display="flex"
