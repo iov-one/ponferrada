@@ -36,14 +36,16 @@ const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
             {formatTime(tx.time)}
           </Typography>
         </Block>
-        <Block width="20%" paddingRight={3}>
-          <Typography variant="subtitle2" weight="regular" align="right" gutterBottom>
-            Transaction fee:
-          </Typography>
-          <Typography variant="subtitle2" weight="regular" color="textSecondary" align="right">
-            {txFee}
-          </Typography>
-        </Block>
+        {tx.outgoing && (
+          <Block width="20%" paddingRight={3}>
+            <Typography variant="subtitle2" weight="regular" align="right" gutterBottom>
+              Transaction fee:
+            </Typography>
+            <Typography variant="subtitle2" weight="regular" color="textSecondary" align="right">
+              {txFee}
+            </Typography>
+          </Block>
+        )}
       </Block>
       <Typography>&nbsp;</Typography>
       <Block>
