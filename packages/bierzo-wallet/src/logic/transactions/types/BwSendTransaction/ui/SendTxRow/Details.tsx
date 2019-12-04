@@ -22,13 +22,13 @@ const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
   return (
     <Block paddingLeft="56px" display="flex" flexDirection="column">
       <Block display="flex">
-        <Block width="40%">
+        <Block width="60%">
           <Typography variant="subtitle2" weight="regular" gutterBottom>
             Sender:
           </Typography>
           <BlockchainAddress userAddresses={userAddresses} address={tx.original.sender} />
         </Block>
-        <Block width="40%">
+        <Block width="20%">
           <Typography variant="subtitle2" weight="regular" gutterBottom>
             Time:
           </Typography>
@@ -46,21 +46,20 @@ const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
         </Block>
       </Block>
       <Typography>&nbsp;</Typography>
-      <Block display="flex">
-        <Block width="40%">
-          <Typography variant="subtitle2" weight="regular" gutterBottom>
-            Recipient:
-          </Typography>
-          <BlockchainAddress userAddresses={userAddresses} address={tx.original.recipient} />
-        </Block>
-        <Block width="60%" paddingRight={3}>
-          <Typography variant="subtitle2" weight="regular" gutterBottom>
-            Transaction id:
-          </Typography>
-          <Typography variant="subtitle2" weight="regular" color="textSecondary">
-            {tx.id}
-          </Typography>
-        </Block>
+      <Block>
+        <Typography variant="subtitle2" weight="regular" gutterBottom>
+          Recipient:
+        </Typography>
+        <BlockchainAddress userAddresses={userAddresses} address={tx.original.recipient} />
+      </Block>
+      <Typography>&nbsp;</Typography>
+      <Block>
+        <Typography variant="subtitle2" weight="regular" gutterBottom>
+          Transaction id:
+        </Typography>
+        <Typography variant="subtitle2" weight="regular" color="textSecondary">
+          {tx.id}
+        </Typography>
       </Block>
       <Typography>&nbsp;</Typography>
       <Block width="100%">
