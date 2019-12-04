@@ -9,11 +9,12 @@ import {
   REGISTER_USERNAME_REGISTRATION_STORY_PATH,
   REGISTER_USERNAME_STORY_PATH,
 } from "../registerName/index.stories";
+import { BwUsernameWithChainName } from ".";
 import AddressesTab from "./components/AddressesTab";
 import Starnames from "./components/Starnames";
 import UserAddresses from "./components/UserAddresses";
 
-const addresses: ChainAddressPairWithName[] = [
+const chainAddresses: ChainAddressPairWithName[] = [
   {
     chainId: "local-iov-devnet" as ChainId,
     address: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
@@ -31,24 +32,38 @@ const addresses: ChainAddressPairWithName[] = [
   },
 ];
 
+const usernames: readonly BwUsernameWithChainName[] = [
+  {
+    username: "test1*iov",
+    addresses: [chainAddresses[0]],
+  },
+  {
+    username: "test2*iov",
+    addresses: [chainAddresses[0], chainAddresses[1]],
+  },
+  {
+    username: "test3*iov",
+    addresses: [...chainAddresses],
+  },
+];
+
 storiesOf(`${bierzoRoot}/Addresses`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Main with extension", () => (
     <DecoratedStorybook>
       <AddressesTab
-        chainAddresses={addresses}
-        usernameAddresses={addresses}
+        chainAddresses={chainAddresses}
+        usernames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>
   ))
-  .add("Main with iovAddress", () => (
+  .add("Main with names", () => (
     <DecoratedStorybook>
       <AddressesTab
-        chainAddresses={addresses}
-        usernameAddresses={addresses}
-        iovAddress="albert*iov"
+        chainAddresses={chainAddresses}
+        usernames={usernames}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
@@ -57,8 +72,8 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Main with ledger", () => (
     <DecoratedStorybook>
       <AddressesTab
-        chainAddresses={addresses}
-        usernameAddresses={addresses}
+        chainAddresses={chainAddresses}
+        usernames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="ledger"
       />
@@ -66,13 +81,13 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   ))
   .add("Addresses tab", () => (
     <DecoratedStorybook>
-      <UserAddresses chainAddresses={addresses} />
+      <UserAddresses chainAddresses={chainAddresses} />
     </DecoratedStorybook>
   ))
   .add("Starnames tab", () => (
     <DecoratedStorybook>
       <Starnames
-        usernameAddresses={addresses}
+        usernames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
@@ -81,8 +96,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Starnames with name tab", () => (
     <DecoratedStorybook>
       <Starnames
-        usernameAddresses={addresses}
-        iovAddress="albert*iov"
+        usernames={usernames}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
