@@ -36,7 +36,7 @@ const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
             {formatTime(tx.time)}
           </Typography>
         </Block>
-        {userAddresses.includes(tx.original.sender) && (
+        {tx.outgoing && (
           <Block width="20%" paddingRight={3}>
             <Typography variant="subtitle2" weight="regular" align="right" gutterBottom>
               Transaction fee:
