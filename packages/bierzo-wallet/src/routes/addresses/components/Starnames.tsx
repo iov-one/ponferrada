@@ -1,33 +1,29 @@
 import { Block } from "medulas-react-components";
 import React from "react";
 
+import { BwUsernameWithChainName } from "..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import StarnamesExists from "./StarnamesExists";
 import StarnamesNotExists from "./StarnamesNotExists";
 
 export const starnamesViewId = "starnames-view-id";
 
 export interface StarnamesProps {
-  readonly iovAddress?: string;
+  readonly usernames: readonly BwUsernameWithChainName[];
   readonly onRegisterUsername: () => void;
   readonly rpcEndpointType: RpcEndpointType;
-  readonly usernameAddresses: readonly ChainAddressPairWithName[];
 }
 
-const Starnames = ({
-  iovAddress,
-  rpcEndpointType,
-  onRegisterUsername,
-  usernameAddresses,
-}: StarnamesProps): JSX.Element => {
+const Starnames = ({ usernames, rpcEndpointType, onRegisterUsername }: StarnamesProps): JSX.Element => {
+  const hasStarnames = usernames.length > 0;
+
   return (
     <Block marginTop={3} id={starnamesViewId}>
       <Block margin={2} />
-      {!iovAddress && (
+      {!hasStarnames && (
         <StarnamesNotExists rpcEndpointType={rpcEndpointType} onRegisterUsername={onRegisterUsername} />
       )}
-      {iovAddress && <StarnamesExists iovAddress={iovAddress} chainAddresses={usernameAddresses} />}
+      {hasStarnames && <StarnamesExists usernames={usernames} />}
     </Block>
   );
 };

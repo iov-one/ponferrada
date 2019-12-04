@@ -27,6 +27,48 @@
           "address": "tiov1l678408y7a64cj66s8j64fevmspyfxdmv38cxw"
         }
       ]
+    },
+    {
+      "username": "test1*iov",
+      "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+      "targets": [
+        {
+          "blockchain_id": "local-iov-devnet",
+          "address": "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+        }
+      ]
+    },
+    {
+      "username": "test2*iov",
+      "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+      "targets": [
+        {
+          "blockchain_id": "local-iov-devnet",
+          "address": "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+        },
+        {
+          "blockchain_id": "lisk-198f2b61a8",
+          "address": "1349293588603668134L"
+        }
+      ]
+    },
+    {
+      "username": "test3*iov",
+      "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+      "targets": [
+        {
+          "blockchain_id": "local-iov-devnet",
+          "address": "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+        },
+        {
+          "blockchain_id": "lisk-198f2b61a8",
+          "address": "1349293588603668134L"
+        },
+        {
+          "blockchain_id": "ethereum-eip155-5777",
+          "address": "0xD383382350F9f190Bd2608D6381B15b4e1cec0f3"
+        }
+      ]
     }
   ],
   "currencies": [
