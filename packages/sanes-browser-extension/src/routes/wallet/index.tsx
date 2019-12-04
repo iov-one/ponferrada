@@ -1,4 +1,4 @@
-import { Amount } from "@iov/bcp";
+import { Address, Amount } from "@iov/bcp";
 import { Block, PopupCopy, Typography } from "medulas-react-components";
 import * as React from "react";
 import { useContext } from "react";
@@ -6,6 +6,7 @@ import { ellipsifyMiddle } from "ui-logic";
 
 import SimplePageLayout, { defaultPageHeight } from "../../components/SimplePageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
+import { WALLET_STATUS_ROUTE } from "../paths";
 import ListCollectibles from "./components/ListCollectibles";
 import ListTokens from "./components/ListTokens";
 import SidePanel from "./components/SidePanel";
@@ -17,7 +18,10 @@ const AccountView = (): JSX.Element => {
   const [mouseOverAddress, setMouseOverAddress] = React.useState<boolean>(false);
   const persona = useContext(PersonaContext);
 
-  const iovAddress = persona.accounts[0].iovAddress;
+  let iovAddress = "" as Address;
+  if (persona.accounts.length) {
+    iovAddress = persona.accounts[0].iovAddress;
+  }
   const balances: { [tokenTicker: string]: Amount } = {};
 
   for (const balance of persona.balances) {
@@ -38,7 +42,7 @@ const AccountView = (): JSX.Element => {
   const awards: string[] = [];
 
   return (
-    <SidePanel>
+    <SidePanel id={WALLET_STATUS_ROUTE}>
       <SimplePageLayout height={`calc(${defaultPageHeight}px - ${toolbarHeight}px)`}>
         <Block bgcolor="#fff" display="flex" padding="8px 24px">
           <Typography inline>{addressLabel}</Typography>
