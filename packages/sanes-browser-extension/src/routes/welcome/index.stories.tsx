@@ -11,7 +11,6 @@ import Layout from "./index";
 const persona: GetPersonaResponse = {
   mnemonic: "",
   accounts: [{ label: "Account 0", iovAddress: "" as Address }],
-  txs: [],
   balances: [],
 };
 
