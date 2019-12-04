@@ -1,51 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import PageMenu from "../../components/PageMenu";
+import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { BwUsername } from "../../store/usernames";
-import { getFirstUsername } from "../../store/usernames/selectors";
-import { chainAddressPairSortedMapping, getChainAddressPairWithNames } from "../../utils/tokens";
+import { getChainAddressPairWithNames } from "../../utils/tokens";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
+
+export interface BwUsernameWithChainName extends BwUsername {
+  readonly addresses: readonly ChainAddressPairWithName[];
+}
 
 function onRegisterUsername(): void {
   history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE);
 }
 
 const Addresses = (): JSX.Element => {
-  const bnsUsername = ReactRedux.useSelector(getFirstUsername);
-  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
-  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const iovAddress = bnsUsername ? bnsUsername.username : undefined;
-  const [usernameAddresses, setUsernameAddresses] = React.useState<readonly ChainAddressPairWithName[]>([]);
+  const bwNames = ReactRedux.useSelector((state: RootState) => state.usernames);
+  const [bwNamesWithChain, setBwNamesWithChain] = useState<readonly BwUsernameWithChainName[]>([]);
 
-  const chainAddresses = getChainAddressPairWithNames(identities);
-
-  React.useEffect(() => {
+  useEffect(() => {
     let isSubscribed = true;
-    async function getAddressesPairs(bnsUsername: BwUsername | undefined): Promise<void> {
+    async function insertChainNames(): Promise<void> {
       if (isSubscribed) {
-        const chainAddresses = bnsUsername ? await chainAddressPairSortedMapping(bnsUsername.addresses) : [];
-        setUsernameAddresses(chainAddresses);
+        const bwNamesWithChain: BwUsernameWithChainName[] = await Promise.all(
+          bwNames.map(async name => {
+            return {
+              username: name.username,
+              addresses: await Promise.all(
+                name.addresses.map(async address => {
+                  return {
+                    chainId: address.chainId,
+                    address: address.address,
+                    chainName: await getChainName(address.chainId),
+                  };
+                }),
+              ),
+            };
+          }),
+        );
+
+        setBwNamesWithChain(bwNamesWithChain);
       }
     }
-    getAddressesPairs(bnsUsername);
+    insertChainNames();
 
     return () => {
       isSubscribed = false;
     };
-  }, [bnsUsername]);
+  }, [bwNames]);
+
+  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
+  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
+
+  const chainAddresses = getChainAddressPairWithNames(identities);
 
   return (
     <PageMenu>
       <AddressesTab
         chainAddresses={chainAddresses}
-        usernameAddresses={usernameAddresses}
-        iovAddress={iovAddress}
+        usernames={bwNamesWithChain}
         onRegisterUsername={onRegisterUsername}
         rpcEndpointType={rpcEndpointType}
       />
