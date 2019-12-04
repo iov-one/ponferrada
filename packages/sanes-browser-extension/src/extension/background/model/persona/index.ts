@@ -48,6 +48,10 @@ function isNonNull<T>(t: T | null): t is T {
   return t !== null;
 }
 
+function isNonUndefined<T>(t: T | undefined): t is T {
+  return t !== undefined;
+}
+
 /**
  * All transaction types that can be displayed and signed by the extension
  */
@@ -303,26 +307,22 @@ export class Persona {
   }
 
   public async getBalances(): Promise<readonly (readonly Amount[])[]> {
-    function notUndefined<T>(x: T | undefined): x is T {
-      return x !== undefined;
-    }
-
     const accountsInfos = await this.accountManager.accounts();
 
     const balancesPerAccount = await Promise.all(
       accountsInfos.map(
         async (accountInfo: AccountInfo): Promise<readonly Amount[]> => {
-          const accounts = (await Promise.all(
-            accountInfo.identities.flatMap(async identity => {
+          const balances = (await Promise.all(
+            accountInfo.identities.map(async identity => {
               const { chainId, pubkey } = identity;
               const account = await this.signer.connection(chainId).getAccount({ pubkey });
               return account;
             }),
           ))
-            .filter(notUndefined)
+            .filter(isNonUndefined)
             .flatMap(account => account.balance);
 
-          return accounts;
+          return balances;
         },
       ),
     );
