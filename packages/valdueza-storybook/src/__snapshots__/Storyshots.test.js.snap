@@ -10693,7 +10693,8 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Password page 1`]
 
 exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1`] = `
 <div
-  className="MuiBox-root MuiBox-root makeStyles-root"
+  className="MuiBox-root MuiBox-root"
+  id="/wallet"
 >
   <header
     className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar mui-fixed"
@@ -10963,7 +10964,8 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1
 
 exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions 1`] = `
 <div
-  className="MuiBox-root MuiBox-root makeStyles-root"
+  className="MuiBox-root MuiBox-root"
+  id="/wallet"
 >
   <header
     className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar mui-fixed"
