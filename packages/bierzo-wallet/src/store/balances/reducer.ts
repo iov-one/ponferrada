@@ -19,7 +19,7 @@ const initState: BalanceState = {};
 export function balancesReducer(state: BalanceState = initState, action: BalanceActions): BalanceState {
   switch (action.type) {
     case "@@balances/ADD":
-      return { ...state, ...action.payload };
+      return { ...action.payload };
     default:
       return state;
   }
