@@ -13,7 +13,7 @@ export const checkCreateAccount = (accountStatusDom: React.Component): void => {
   expect(createAccountElem.textContent).toBe("Create a new one");
 };
 
-export const getTransactionsCount = (accountStatusDom: React.Component): number => {
+export const getBalanceTokensCount = (accountStatusDom: React.Component): number => {
   // Total number of List component rows minus header row.
   return TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, "li").length - 1;
 };

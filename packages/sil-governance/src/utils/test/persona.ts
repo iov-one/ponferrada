@@ -75,7 +75,7 @@ export async function acceptGetIdentitiesRequest(page: Page): Promise<void> {
   await sleep(1000);
 
   // click on first request
-  await page.click("ul > li > div");
+  await page.click("#wallet-sidepanel ul > li > div");
   await sleep(500);
 
   const buttons = await page.$$("button");
@@ -92,7 +92,7 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
   await sleep(1000);
 
   // click on first request
-  await page.click("ul > li > div");
+  await page.click("#wallet-sidepanel ul > li > div");
   await sleep(500);
 
   let buttons = await page.$$("button");
@@ -108,7 +108,7 @@ export async function rejectGetIdentitiesRequest(page: Page): Promise<void> {
 
 export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> {
   await extensionPage.bringToFront();
-  await extensionPage.click("ul > li > div");
+  await extensionPage.click("#wallet-sidepanel ul > li > div");
   await sleep(500);
   const buttons = await extensionPage.$$("button");
 
@@ -118,7 +118,7 @@ export async function acceptEnqueuedRequest(extensionPage: Page): Promise<void> 
 
 export async function rejectEnqueuedRequest(extensionPage: Page): Promise<void> {
   await extensionPage.bringToFront();
-  await extensionPage.click("ul > li > div");
+  await extensionPage.click("#wallet-sidepanel ul > li > div");
   await sleep(500);
   let buttons = await extensionPage.$$("button");
 

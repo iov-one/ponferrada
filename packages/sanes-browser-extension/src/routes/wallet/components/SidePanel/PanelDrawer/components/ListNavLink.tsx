@@ -3,6 +3,7 @@ import React from "react";
 
 const useStyles = makeStyles({
   listButton: {
+    padding: "8px 24px",
     borderBottom: "1px solid #e0e0e0",
   },
 });

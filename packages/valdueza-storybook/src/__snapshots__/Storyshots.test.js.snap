@@ -11273,7 +11273,8 @@ exports[`Storyshots Sanes Browser Extension/Restore Wallet Set Password page 1`]
 
 exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1`] = `
 <div
-  className="MuiBox-root MuiBox-root makeStyles-root"
+  className="MuiBox-root MuiBox-root"
+  id="/wallet"
 >
   <header
     className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar mui-fixed"
@@ -11343,100 +11344,199 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1
     className="MuiBox-root MuiBox-root makeStyles-content"
   >
     <div
-      className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-      id="/wallet"
+      className="MuiBox-root MuiBox-root"
     >
       <div
         className="MuiBox-root MuiBox-root"
       >
-        <h4
-          className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+        <p
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
         >
-          
-        </h4>
-        <h4
-          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h4"
-        >
-           
-          
-        </h4>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
+          IOV address: 
+        </p>
         <div
           className="MuiBox-root MuiBox-root"
         >
-          <nav
-            className="MuiList-root MuiList-padding"
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-container"
           >
             <div
-              className="MuiBox-root MuiBox-root"
+              className="makeStyles-container"
+              onMouseEnter={[Function]}
             >
-              <li
-                className="MuiListItem-root MuiListItem-gutters"
-                disabled={false}
+              <p
+                className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
               >
-                <div
-                  className="MuiListItemText-root"
-                >
-                  <p
-                    className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
-                  >
-                    Signed Transactions
-                  </p>
-                </div>
-              </li>
+                
+              </p>
             </div>
             <div
               className="MuiBox-root MuiBox-root"
+              onMouseEnter={[Function]}
             />
             <div
               className="MuiBox-root MuiBox-root"
             />
-            <li
-              className="MuiListItem-root makeStyles-center MuiListItem-gutters"
-              disabled={false}
-            >
-              <div
-                className="MuiListItemIcon-root makeStyles-empty"
-              >
-                <img
-                  alt="No Signed Transactions"
-                  className="makeStyles-root"
-                  height="42"
-                  src="uptodate.svg"
-                />
-              </div>
-              <div
-                className="MuiListItemText-root makeStyles-text"
-              >
-                <span
-                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                >
-                  No Signed Transactions
-                </span>
-              </div>
-            </li>
-          </nav>
+          </div>
         </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root"
       />
+      <ul
+        className="MuiList-root makeStyles-boxBorder MuiList-padding"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <li
+            className="MuiListItem-root MuiListItem-gutters"
+            disabled={false}
+          >
+            <p
+              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+            >
+              Tokens
+            </p>
+          </li>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <li
+          className="MuiListItem-root"
+          disabled={false}
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemIcon-root"
+              >
+                <img
+                  alt="No Tokens"
+                  className="makeStyles-root"
+                  height="72"
+                  src="noFunds.svg"
+                />
+              </div>
+            </div>
+            <div
+              className="MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                >
+                  You have no funds available
+                </p>
+              </span>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemText-root"
+              >
+                <span
+                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+                  >
+                    Make your first deposit and your funds will appear here.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
       <div
         className="MuiBox-root MuiBox-root"
+      />
+      <nav
+        className="MuiList-root makeStyles-boxBorder MuiList-padding"
       >
-        <img
-          alt="Logo"
-          className="makeStyles-root"
-          src="NeumaLogo.svg"
-          width={100}
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <li
+            className="MuiListItem-root MuiListItem-gutters"
+            disabled={false}
+          >
+            <p
+              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+            >
+              Collectibles
+            </p>
+          </li>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
         />
-      </div>
+        <li
+          className="MuiListItem-root"
+          disabled={false}
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemIcon-root"
+              >
+                <img
+                  alt="No Collectibles"
+                  className="makeStyles-root"
+                  height="72"
+                  src="noCollectibles.svg"
+                />
+              </div>
+            </div>
+            <div
+              className="MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                >
+                  No collectibles yet
+                </p>
+              </span>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemText-root"
+              >
+                <span
+                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+                  >
+                    Register your first starname and it will appear here.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </nav>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
     </div>
   </div>
 </div>
@@ -11444,7 +11544,8 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1
 
 exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions 1`] = `
 <div
-  className="MuiBox-root MuiBox-root makeStyles-root"
+  className="MuiBox-root MuiBox-root"
+  id="/wallet"
 >
   <header
     className="MuiPaper-root MuiPaper-elevation0 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar mui-fixed"
@@ -11514,838 +11615,199 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
     className="MuiBox-root MuiBox-root makeStyles-content"
   >
     <div
-      className="MuiBox-root MuiBox-root makeStyles-root makeStyles-root"
-      id="/wallet"
+      className="MuiBox-root MuiBox-root"
     >
       <div
         className="MuiBox-root MuiBox-root"
       >
-        <h4
-          className="MuiTypography-root makeStyles-inline MuiTypography-h4 MuiTypography-colorPrimary"
+        <p
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
         >
-          
-        </h4>
-        <h4
-          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h4"
-        >
-           
-          
-        </h4>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
+          IOV address: 
+        </p>
         <div
           className="MuiBox-root MuiBox-root"
         >
-          <nav
-            className="MuiList-root MuiList-padding"
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-container"
           >
             <div
-              className="MuiBox-root MuiBox-root"
+              className="makeStyles-container"
+              onMouseEnter={[Function]}
             >
-              <li
-                className="MuiListItem-root MuiListItem-gutters"
-                disabled={false}
+              <p
+                className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
               >
-                <div
-                  className="MuiListItemText-root"
-                >
-                  <p
-                    className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
-                  >
-                    Signed Transactions
-                  </p>
-                </div>
-              </li>
+                
+              </p>
             </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+              onMouseEnter={[Function]}
+            />
             <div
               className="MuiBox-root MuiBox-root"
             />
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      ) have created
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      test*iov
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      personalized address.
-                    </p>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionError.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      Your attempt to create
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      test*iov
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      personalized address from
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      0x7c154...35023c30
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      was unsuccessful
-                    </p>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      )
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       sent 0.01 ETH 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      to:
-                    </p>
-                    <div
-                      className="MuiBox-root MuiBox-root"
-                    >
-                      <p
-                        className="MuiTypography-root makeStyles-inline makeStyles-link makeStyles-defaultColor MuiTypography-body1"
-                      >
-                        <a
-                          href="https://iov.one"
-                          onClick={[Function]}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        >
-                          0x12121...12121212
-                        </a>
-                      </p>
-                      <button
-                        aria-label="Copy to clipboard address"
-                        className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
-                        disabled={false}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={0}
-                        type="button"
-                      >
-                        <span
-                          className="MuiIconButton-label"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            role="presentation"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      )
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       sent 0.01 ETH 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      to:
-                    </p>
-                    <div
-                      className="MuiBox-root MuiBox-root"
-                    >
-                      <p
-                        className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                      >
-                        0x12121...12121212
-                      </p>
-                      <button
-                        aria-label="Copy to clipboard address"
-                        className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
-                        disabled={false}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={0}
-                        type="button"
-                      >
-                        <span
-                          className="MuiIconButton-label"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            role="presentation"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionError.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      Your 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      0.01 ETH
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       payment to 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      0x12121...12121212
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       from 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      0x7c154...35023c30
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      was unsuccessful
-                    </p>
-                    <div
-                      className="MuiBox-root MuiBox-root"
-                    />
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      )
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       sent 0.01 ETH 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      to:
-                    </p>
-                    <div
-                      className="MuiBox-root MuiBox-root"
-                    >
-                      <p
-                        className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                      >
-                        0x12121...12121212
-                      </p>
-                      <button
-                        aria-label="Copy to clipboard address"
-                        className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
-                        disabled={false}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={0}
-                        type="button"
-                      >
-                        <span
-                          className="MuiIconButton-label"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            role="presentation"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      )
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       sent 0.01 ETH 
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      to:
-                    </p>
-                    <div
-                      className="MuiBox-root MuiBox-root"
-                    >
-                      <p
-                        className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                      >
-                        0x12121...12121212
-                      </p>
-                      <button
-                        aria-label="Copy to clipboard address"
-                        className="MuiButtonBase-root MuiIconButton-root makeStyles-icon MuiIconButton-colorPrimary MuiIconButton-edgeEnd"
-                        disabled={false}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={0}
-                        type="button"
-                      >
-                        <span
-                          className="MuiIconButton-label"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                            focusable="false"
-                            role="presentation"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      ) have created the proposal
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      Just an idea
-                    </p>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionSend.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      You (
-                      0x7c154...35023c30
-                      ) have voted
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      yes
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      on proposal
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      666
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      .
-                    </p>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-item"
-            >
-              <li
-                className="MuiListItem-root"
-                disabled={false}
-              >
-                <img
-                  alt="Tx operation"
-                  className="makeStyles-root makeStyles-icon"
-                  height={32}
-                  src="transactionError.svg"
-                />
-                <div
-                  className="MuiListItemText-root makeStyles-msg MuiListItemText-multiline"
-                >
-                  <span
-                    className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
-                  >
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      Your attempt to vote
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      yes
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      on proposal
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      666
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      from
-                       
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                      0x7c154...35023c30
-                    </p>
-                    <p
-                      className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-                    >
-                       
-                      was unsuccessful
-                    </p>
-                  </span>
-                  <p
-                    className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  >
-                    Sat May 25 10:10:00 2019 +0200
-                  </p>
-                </div>
-              </li>
-            </div>
-          </nav>
+          </div>
         </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root"
       />
+      <ul
+        className="MuiList-root makeStyles-boxBorder MuiList-padding"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <li
+            className="MuiListItem-root MuiListItem-gutters"
+            disabled={false}
+          >
+            <p
+              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+            >
+              Tokens
+            </p>
+          </li>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <li
+          className="MuiListItem-root"
+          disabled={false}
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemIcon-root"
+              >
+                <img
+                  alt="No Tokens"
+                  className="makeStyles-root"
+                  height="72"
+                  src="noFunds.svg"
+                />
+              </div>
+            </div>
+            <div
+              className="MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                >
+                  You have no funds available
+                </p>
+              </span>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemText-root"
+              >
+                <span
+                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+                  >
+                    Make your first deposit and your funds will appear here.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
       <div
         className="MuiBox-root MuiBox-root"
+      />
+      <nav
+        className="MuiList-root makeStyles-boxBorder MuiList-padding"
       >
-        <img
-          alt="Logo"
-          className="makeStyles-root"
-          src="NeumaLogo.svg"
-          width={100}
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <li
+            className="MuiListItem-root MuiListItem-gutters"
+            disabled={false}
+          >
+            <p
+              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+            >
+              Collectibles
+            </p>
+          </li>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
         />
-      </div>
+        <li
+          className="MuiListItem-root"
+          disabled={false}
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemIcon-root"
+              >
+                <img
+                  alt="No Collectibles"
+                  className="makeStyles-root"
+                  height="72"
+                  src="noCollectibles.svg"
+                />
+              </div>
+            </div>
+            <div
+              className="MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                >
+                  No collectibles yet
+                </p>
+              </span>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemText-root"
+              >
+                <span
+                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+                  >
+                    Register your first starname and it will appear here.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </nav>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
     </div>
   </div>
 </div>

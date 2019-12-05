@@ -1,6 +1,8 @@
+import { Address } from "@iov/bcp";
 import TestUtils from "react-dom/test-utils";
 import { randomString } from "ui-logic";
 
+import { PersonaAcccount } from "../../extension/background/model/persona";
 import {
   mockCreatePersona,
   mockPersonaResponse,
@@ -32,7 +34,11 @@ describe("DOM > Feature > CreateWallet", () => {
   const password = randomString(10);
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const hint = randomString(10);
-  const personaMock = mockPersonaResponse([], mnemonic, []);
+  const account: PersonaAcccount = {
+    iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
+    label: "Account 0",
+  };
+  const personaMock = mockPersonaResponse([account], mnemonic, []);
 
   let createWalletDom: React.Component;
 
@@ -46,7 +52,7 @@ describe("DOM > Feature > CreateWallet", () => {
       mockCreatePersona(personaMock);
       await processCreateWallet();
     },
-    10000,
+    60000,
   );
 
   describe("New Wallet Step", () => {

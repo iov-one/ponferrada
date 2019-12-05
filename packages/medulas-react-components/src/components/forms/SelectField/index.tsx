@@ -32,6 +32,11 @@ const useStyles = makeStyles<Theme, RootStyleProps>((theme: Theme) => ({
     padding: `0 ${theme.spacing(1)}px`,
     cursor: "pointer",
   },
+  dropdownEmpty: {
+    width: "30px",
+    height: "46px",
+    justifyContent: "center",
+  },
   root: props => ({
     fontSize: theme.typography.subtitle2.fontSize,
     height: "32px",
@@ -56,6 +61,7 @@ interface InnerProps {
   readonly validate?: FieldValidator<FieldInputValue>;
   readonly items: readonly SelectFieldItem[];
   readonly maxWidth?: string;
+  readonly hiddenInput?: boolean;
 }
 
 export type Props = InnerProps & InputBaseProps;
@@ -68,6 +74,7 @@ const SelectField = ({
   onChangeCallback,
   maxWidth = "100%",
   validate,
+  hiddenInput,
 }: Props): JSX.Element => {
   const [isOpen, toggle] = useOpen();
   const classes = useStyles({ maxWidth });
@@ -105,9 +112,12 @@ const SelectField = ({
     toggle();
   };
 
+  const dropdownClasses = hiddenInput ? `${classes.dropdown} ${classes.dropdownEmpty}` : classes.dropdown;
+  const inputType = hiddenInput ? "hidden" : "text";
+
   return (
     <React.Fragment>
-      <div className={classes.dropdown} ref={inputRef} onClick={onClick}>
+      <div className={dropdownClasses} ref={inputRef} onClick={onClick}>
         <InputBase
           name={name}
           classes={inputClasses}
@@ -115,6 +125,7 @@ const SelectField = ({
           value={value}
           readOnly
           role="button"
+          type={inputType}
         />
         <Image noShrink src={selectChevron} alt="Phone Menu" width={`${CHEVRON_WIDTH}`} height="5" />
       </div>

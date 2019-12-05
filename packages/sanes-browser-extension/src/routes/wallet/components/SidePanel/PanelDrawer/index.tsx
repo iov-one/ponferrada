@@ -18,7 +18,7 @@ import Requests from "./components/Requests";
 import Settings from "./components/Settings";
 
 export const drawerHtmlId = "wallet-sidepanel";
-export const toolbarHeight = 102;
+export const toolbarHeight = 94;
 const logoWidth = 100;
 
 export enum Views {

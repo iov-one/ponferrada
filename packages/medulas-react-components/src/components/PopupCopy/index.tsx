@@ -93,9 +93,17 @@ interface Props {
   readonly children: React.ReactNode;
   readonly textToCopy: string;
   readonly maxWidth?: number;
+  readonly onMouseEnter?: () => void;
+  readonly onMouseLeave?: () => void;
 }
 
-const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element => {
+const PopupCopy = ({
+  children,
+  textToCopy,
+  maxWidth = 200,
+  onMouseEnter,
+  onMouseLeave,
+}: Props): JSX.Element => {
   const [isOpen, toggle, clickAway] = useOpen();
   const [overflowVisible, setOverflowVisible] = React.useState<"visible" | "hidden">("hidden");
   const [popupText, setPopupText] = React.useState<string>(POPUP_COPY_TO_TEXT);
@@ -131,42 +139,49 @@ const PopupCopy = ({ children, textToCopy, maxWidth = 200 }: Props): JSX.Element
     setPopupText(POPUP_COPIED_TEXT);
   };
 
-  const onMouseEnter = (): void => {
+  const onMouseAbove = (): void => {
     if (!isOpen) {
       toggle();
       setOverflowVisible("visible");
       setPopupText(POPUP_COPY_TO_TEXT);
+      if (onMouseEnter) {
+        onMouseEnter();
+      }
     }
   };
 
   const onClose = (): void => {
     clickAway();
     setOverflowVisible("hidden");
+    if (onMouseLeave) {
+      onMouseLeave();
+    }
   };
 
   return (
     <React.Fragment>
       <Block className={classes.container}>
-        <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseEnter}>
+        <div className={classes.container} ref={tooltipRef} onMouseEnter={onMouseAbove}>
           {children}
         </div>
         <Block
           visibility={overflowVisible}
           onMouseEnter={onClose}
+          height={DIV_OVERFLOW_HEIGHT + 30}
+          display="inline-block"
+          position="absolute"
+          width="calc(100% + 30px)"
+          left={-15}
+          top={-15}
+        ></Block>
+        <Block
+          visibility={overflowVisible}
           height={DIV_OVERFLOW_HEIGHT}
           display="inline-block"
           position="absolute"
           width="100%"
+          top={0}
           left={0}
-        ></Block>
-        <Block
-          visibility={overflowVisible}
-          height={DIV_OVERFLOW_HEIGHT - 10}
-          display="inline-block"
-          position="absolute"
-          width="calc(100% - 10px)"
-          top={5}
-          left={5}
         ></Block>
       </Block>
 

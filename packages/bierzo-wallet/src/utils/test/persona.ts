@@ -41,7 +41,7 @@ export async function clickOnFirstRequest(browser: Browser): Promise<Page> {
   await extensionPage.bringToFront();
 
   // click on first request
-  await extensionPage.click("ul > li > div");
+  await extensionPage.click("#wallet-sidepanel ul > li > div");
   await sleep(500);
 
   return extensionPage;

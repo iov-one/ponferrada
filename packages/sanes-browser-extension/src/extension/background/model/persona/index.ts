@@ -1,4 +1,11 @@
-import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
+import {
+  Address,
+  Amount,
+  isSendTransaction,
+  SendTransaction,
+  UnsignedTransaction,
+  WithCreator,
+} from "@iov/bcp";
 import {
   BnsConnection,
   CreateProposalTx,
@@ -10,8 +17,7 @@ import {
 } from "@iov/bns";
 import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
-import { UserProfile } from "@iov/keycontrol";
-import { UserProfileEncryptionKey } from "@iov/keycontrol";
+import { UserProfile, UserProfileEncryptionKey } from "@iov/keycontrol";
 import {
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
@@ -23,7 +29,7 @@ import {
 import { ReadonlyDate } from "readonly-date";
 
 import { transactionsUpdater } from "../../updaters/appUpdater";
-import { AccountManager } from "../accountManager";
+import { AccountInfo, AccountManager } from "../accountManager";
 import {
   SoftwareAccountManager,
   SoftwareAccountManagerChainConfig,
@@ -40,6 +46,10 @@ import { createTwoWalletProfile } from "./userprofilehelpers";
 
 function isNonNull<T>(t: T | null): t is T {
   return t !== null;
+}
+
+function isNonUndefined<T>(t: T | undefined): t is T {
+  return t !== undefined;
 }
 
 /**
@@ -84,6 +94,7 @@ export interface MakeAuthorizationCallbacks {
 export interface PersonaAcccount {
   /** human readable address or placeholder text */
   readonly label: string;
+  readonly iovAddress: Address;
 }
 
 export type UseOnlyJsonRpcSigningServer = Pick<JsonRpcSigningServer, "handleUnchecked" | "handleChecked">;
@@ -261,8 +272,9 @@ export class Persona {
           throw new Error(`Missing BNS identity for account at index ${index}`);
         }
 
+        const iovAddress = this.signer.identityToAddress(bnsIdentity);
         let label: string;
-        const names = await bnsConnection.getUsernames({ owner: this.signer.identityToAddress(bnsIdentity) });
+        const names = await bnsConnection.getUsernames({ owner: iovAddress });
         if (names.length > 1) {
           // this case will not happen for regular users that do not professionally collect username NFTs
           label = `Multiple names`;
@@ -272,7 +284,7 @@ export class Persona {
           label = `Account ${account.index}`;
         }
 
-        return { label: label };
+        return { label, iovAddress };
       }),
     );
   }
@@ -292,6 +304,30 @@ export class Persona {
     const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
     const filtered = processed.filter(isNonNull);
     return filtered;
+  }
+
+  public async getBalances(): Promise<readonly (readonly Amount[])[]> {
+    const accountsInfos = await this.accountManager.accounts();
+
+    const balancesPerAccount = await Promise.all(
+      accountsInfos.map(
+        async (accountInfo: AccountInfo): Promise<readonly Amount[]> => {
+          const balances = (await Promise.all(
+            accountInfo.identities.map(async identity => {
+              const { chainId, pubkey } = identity;
+              const account = await this.signer.connection(chainId).getAccount({ pubkey });
+              return account;
+            }),
+          ))
+            .filter(isNonUndefined)
+            .flatMap(account => account.balance);
+
+          return balances;
+        },
+      ),
+    );
+
+    return balancesPerAccount;
   }
 
   private getBnsConnection(): BnsConnection {

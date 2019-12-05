@@ -1,3 +1,4 @@
+import { Amount } from "@iov/bcp";
 import { randomString } from "ui-logic";
 
 import { PersonaAcccount, ProcessedTx } from "..";
@@ -32,8 +33,9 @@ export const mockPersonaResponse = (
   accounts: PersonaAcccount[] = [],
   mnemonic: string = "",
   txs: ProcessedTx[] = [],
+  balances: Amount[][] = [],
 ): PersonaData => {
-  return { accounts, mnemonic, txs };
+  return { accounts, mnemonic, txs, balances };
 };
 
 export const mockGetPersonaData = (personaData: PersonaData): void => {

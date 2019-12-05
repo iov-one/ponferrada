@@ -180,7 +180,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
 
     const persona: GetPersonaResponse = {
       mnemonic: "",
-      accounts: [{ label: "Account 0" }],
+      accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       txs: [
         usernameCreatedTx,
         errorUsernameCreatedTx,
@@ -193,6 +193,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
         voteTx,
         errorVoteTx,
       ],
+      balances: [],
     };
 
     return (
@@ -208,8 +209,9 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
   .add("No transactions", () => {
     const persona: GetPersonaResponse = {
       mnemonic: "",
-      accounts: [{ label: "Account 0" }],
+      accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       txs: [],
+      balances: [],
     };
 
     return (
