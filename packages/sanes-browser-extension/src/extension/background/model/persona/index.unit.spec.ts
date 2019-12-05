@@ -6,18 +6,16 @@ import { Ed25519HdWallet, HdPaths, UserProfile } from "@iov/keycontrol";
 import { sleep } from "ui-logic";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
-import * as txsUpdater from "../../updaters/appUpdater";
+import * as appUpdater from "../../updaters/appUpdater";
 import { Db } from "../backgroundscript/db";
 import { Persona, PersonaAcccount } from "./index";
 
 withChainsDescribe("Persona", () => {
   beforeAll(() => {
-    jest.spyOn(txsUpdater, "transactionsUpdater").mockImplementation(() => {});
-    jest.spyOn(txsUpdater, "updateRequestProvider").mockImplementation(() => {});
+    jest.spyOn(appUpdater, "updateRequestProvider").mockImplementation(() => {});
   });
   afterAll(() => {
-    jest.spyOn(txsUpdater, "transactionsUpdater").mockReset();
-    jest.spyOn(txsUpdater, "updateRequestProvider").mockReset();
+    jest.spyOn(appUpdater, "updateRequestProvider").mockReset();
   });
 
   describe("create", () => {

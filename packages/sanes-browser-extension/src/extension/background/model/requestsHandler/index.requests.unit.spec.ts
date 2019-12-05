@@ -4,7 +4,7 @@ import { sleep } from "ui-logic";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
 import { generateErrorResponse } from "../../errorResponseGenerator";
-import * as txsUpdater from "../../updaters/appUpdater";
+import * as appUpdater from "../../updaters/appUpdater";
 import { Db, StringDb } from "../backgroundscript/db";
 import { Persona } from "../persona";
 import RequestsHandler from "./index";
@@ -21,8 +21,7 @@ withChainsDescribe("background script handler for website request", () => {
   let requestsHandler: RequestsHandler;
 
   beforeAll(() => {
-    jest.spyOn(txsUpdater, "transactionsUpdater").mockImplementation(() => {});
-    jest.spyOn(txsUpdater, "updateRequestProvider").mockImplementation(() => {});
+    jest.spyOn(appUpdater, "updateRequestProvider").mockImplementation(() => {});
   });
   beforeEach(async () => {
     localStorage.clear();
@@ -42,8 +41,7 @@ withChainsDescribe("background script handler for website request", () => {
     db.close();
   });
   afterAll(() => {
-    jest.spyOn(txsUpdater, "transactionsUpdater").mockReset();
-    jest.spyOn(txsUpdater, "updateRequestProvider").mockReset();
+    jest.spyOn(appUpdater, "updateRequestProvider").mockReset();
   });
 
   function checkNextRequest(request: JsonRpcRequest, sender: string): void {

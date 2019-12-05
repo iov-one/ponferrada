@@ -1,7 +1,7 @@
 import { Amount } from "@iov/bcp";
 import { randomString } from "ui-logic";
 
-import { PersonaAcccount, ProcessedTx } from "..";
+import { PersonaAcccount } from "..";
 import {
   submitNewWallet,
   submitSecurityHint,
@@ -32,10 +32,9 @@ export async function processCreateWallet(
 export const mockPersonaResponse = (
   accounts: PersonaAcccount[] = [],
   mnemonic: string = "",
-  txs: ProcessedTx[] = [],
   balances: Amount[][] = [],
 ): PersonaData => {
-  return { accounts, mnemonic, txs, balances };
+  return { accounts, mnemonic, balances };
 };
 
 export const mockGetPersonaData = (personaData: PersonaData): void => {

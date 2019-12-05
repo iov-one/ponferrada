@@ -1,7 +1,7 @@
 import { Amount } from "@iov/bcp";
 import { JsonRpcResponse } from "@iov/jsonrpc";
 
-import { Persona, PersonaAcccount, ProcessedTx } from "../persona";
+import { Persona, PersonaAcccount } from "../persona";
 import RequestsHandler from "../requestsHandler";
 import { Request } from "../requestsHandler/requestQueueManager";
 import { Db } from "./db";
@@ -21,7 +21,6 @@ export interface IovWindowExtension extends Window {
 export interface PersonaData {
   readonly accounts: readonly PersonaAcccount[];
   readonly mnemonic: string;
-  readonly txs: readonly ProcessedTx[];
   readonly balances: readonly (readonly Amount[])[];
 }
 
@@ -47,7 +46,6 @@ class Backgroundscript {
 
     const response = {
       mnemonic: this.persona.mnemonic,
-      txs: await this.persona.getTxs(),
       balances: await this.persona.getBalances(),
       accounts: await this.persona.getAccounts(),
     };
@@ -64,7 +62,6 @@ class Backgroundscript {
 
     return {
       mnemonic: this.persona.mnemonic,
-      txs: await this.persona.getTxs(),
       balances: await this.persona.getBalances(),
       accounts: await this.persona.getAccounts(),
     };
@@ -95,7 +92,6 @@ class Backgroundscript {
 
     return {
       mnemonic: this.persona.mnemonic,
-      txs: await this.persona.getTxs(),
       balances: await this.persona.getBalances(),
       accounts: await this.persona.getAccounts(),
     };
