@@ -28,7 +28,7 @@ withChainsDescribe("Logic :: balance subscriptions", () => {
   });
 
   it("fires subscription callback when account balance changes", async () => {
-    const balanceSpy = jest.spyOn(balanceActions, "addBalancesAction");
+    const balanceSpy = jest.spyOn(balanceActions, "setBalancesAction");
 
     const store = aNewStore();
     const identities = await createIdentities();

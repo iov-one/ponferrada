@@ -6,7 +6,7 @@ import { aNewStore } from "../../store";
 import { establishAllConnections } from "../../utils/test/connections";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { ExtendedIdentity, IdentitiesState, setIdentities } from "../identities";
-import { addBalancesAction, getBalances } from "./actions";
+import { getBalances, setBalancesAction } from "./actions";
 
 withChainsDescribe("Tokens reducer", () => {
   beforeAll(async () => {
@@ -47,7 +47,7 @@ withChainsDescribe("Tokens reducer", () => {
     const tokens = await getBalances(
       Array.from(store.getState().identities.values()).map(ext => ext.identity),
     );
-    store.dispatch(addBalancesAction(tokens));
+    store.dispatch(setBalancesAction(tokens));
 
     const balances = store.getState().balances;
     expect(balances.ETH).toBeDefined();
