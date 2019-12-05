@@ -4933,11 +4933,15 @@ exports[`Storyshots Bierzo Wallet/Payment No balance 1`] = `
         <div
           className="MuiBox-root MuiBox-root"
         >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          <div
+            className="MuiBox-root MuiBox-root"
           >
-            To
-          </h6>
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+            >
+              To
+            </h6>
+          </div>
           <div
             className="MuiBox-root MuiBox-root"
           >
@@ -5269,11 +5273,15 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
         <div
           className="MuiBox-root MuiBox-root"
         >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          <div
+            className="MuiBox-root MuiBox-root"
           >
-            To
-          </h6>
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+            >
+              To
+            </h6>
+          </div>
           <div
             className="MuiBox-root MuiBox-root"
           >
@@ -5446,6 +5454,160 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
     </div>
   </div>
 </form>
+`;
+
+exports[`Storyshots Bierzo Wallet/Payment Unverified Recipient 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+    >
+      To
+    </h6>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="addressField"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Recipient's address"
+          required={false}
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Payment Verified Recipient 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+    >
+      To
+    </h6>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <h6
+        className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary"
+      >
+         
+        verified address
+      </h6>
+      <img
+        alt="Green Tick"
+        className="makeStyles-root"
+        height={14}
+        src="greenTick.svg"
+      />
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="addressField"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Recipient's address"
+          required={false}
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
