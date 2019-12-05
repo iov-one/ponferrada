@@ -1,5 +1,4 @@
 import { withChainsDescribe } from "../../../../../utils/test/testExecutor";
-import * as txsUpdater from "../../../updaters/appUpdater";
 import { Persona } from "../../persona";
 import { Db } from "./index";
 
@@ -17,13 +16,6 @@ withChainsDescribe("backgroundscript db", () => {
   });
 
   describe("hasStoredPersona", () => {
-    beforeAll(() => {
-      jest.spyOn(txsUpdater, "transactionsUpdater").mockImplementation(() => {});
-    });
-    afterAll(() => {
-      jest.spyOn(txsUpdater, "transactionsUpdater").mockReset();
-    });
-
     it("returns false for empty database", async () => {
       const db = new Db();
       const hasPersona = await db.hasPersona();

@@ -16,19 +16,15 @@ import {
   VoteTx,
 } from "@iov/bns";
 import { Bip39, Random } from "@iov/crypto";
-import { Encoding } from "@iov/encoding";
 import { UserProfile, UserProfileEncryptionKey } from "@iov/keycontrol";
 import {
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
   MultiChainSigner,
   SignAndPostAuthorization,
-  SignedAndPosted,
   SigningServerCore,
 } from "@iov/multichain";
-import { ReadonlyDate } from "readonly-date";
 
-import { transactionsUpdater } from "../../updaters/appUpdater";
 import { AccountInfo, AccountManager } from "../accountManager";
 import {
   SoftwareAccountManager,
@@ -44,10 +40,6 @@ import {
 } from "./config";
 import { createTwoWalletProfile } from "./userprofilehelpers";
 
-function isNonNull<T>(t: T | null): t is T {
-  return t !== null;
-}
-
 function isNonUndefined<T>(t: T | undefined): t is T {
   return t !== undefined;
 }
@@ -60,20 +52,6 @@ export type SupportedTransaction = (SendTransaction | RegisterUsernameTx | Creat
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
   return isSendTransaction(tx) || isRegisterUsernameTx(tx) || isCreateProposalTx(tx) || isVoteTx(tx);
-}
-
-/**
- * A transaction signed by the user of the extension.
- */
-export interface ProcessedTx {
-  readonly id: string;
-  readonly creator: Address;
-  readonly signer: string;
-  readonly time: string;
-  readonly blockExplorerUrl: string | null;
-  /** If error is null, the transaction succeeded */
-  readonly error: string | null;
-  readonly original: SupportedTransaction;
 }
 
 export interface AuthorizationCallbacks {
@@ -210,44 +188,6 @@ export class Persona {
       console.error,
     );
     this.jsonRpcSigningServer = new JsonRpcSigningServer(this.core);
-
-    this.subscribeToTxUpdates(transactionsUpdater);
-  }
-
-  private subscribeToTxUpdates(notifyApp: (transactions: readonly ProcessedTx[]) => void): void {
-    this.core.signedAndPosted.updates.subscribe({
-      next: async signedAndPosted => {
-        const processed = await Promise.all(signedAndPosted.map(s => this.processTransaction(s)));
-        const filtered = processed.filter(isNonNull);
-        notifyApp(filtered);
-      },
-    });
-  }
-
-  /**
-   * We keep this async for now to allow fetching IOV names
-   */
-  private async processTransaction(t: SignedAndPosted): Promise<ProcessedTx | null> {
-    if (!isSupportedTransaction(t.transaction)) {
-      // cannot process
-      return null;
-    }
-
-    const config = await getConfigurationFile();
-    const blockExplorerPattern = config.blockExplorers[t.transaction.creator.chainId];
-    const transactionId = t.postResponse.transactionId;
-    const blockExplorerUrl = blockExplorerPattern ? blockExplorerPattern.replace("%id", transactionId) : null;
-    const creatorAddress = this.signer.identityToAddress(t.transaction.creator);
-
-    return {
-      time: new ReadonlyDate(ReadonlyDate.now()).toLocaleString(),
-      id: transactionId,
-      creator: creatorAddress,
-      signer: Encoding.toHex(t.transaction.creator.pubkey.data),
-      blockExplorerUrl,
-      error: null,
-      original: t.transaction,
-    };
   }
 
   public destroy(): void {
@@ -298,12 +238,6 @@ export class Persona {
     }
 
     return mnemonics.values().next().value;
-  }
-
-  public async getTxs(): Promise<readonly ProcessedTx[]> {
-    const processed = await Promise.all(this.core.signedAndPosted.value.map(s => this.processTransaction(s)));
-    const filtered = processed.filter(isNonNull);
-    return filtered;
   }
 
   public async getBalances(): Promise<readonly (readonly Amount[])[]> {
