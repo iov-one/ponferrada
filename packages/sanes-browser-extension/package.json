@@ -77,6 +77,7 @@
     "@iov/browser-extension-react-scripts": "^3.1.1",
     "@types/levelup": "^3.1.0",
     "@types/memdown": "^3.0.0",
-    "puppeteer": "^1.13.0"
+    "puppeteer": "^1.13.0",
+    "clipboardy": "^2.1.0"
   }
 }
