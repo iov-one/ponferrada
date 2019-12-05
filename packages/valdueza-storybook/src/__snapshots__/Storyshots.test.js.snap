@@ -11528,6 +11528,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page No transactions 1
             >
               <p
                 className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
+                id="addressFieldId"
               >
                 
               </p>
@@ -11799,6 +11800,7 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With transactions
             >
               <p
                 className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
+                id="addressFieldId"
               >
                 
               </p>
