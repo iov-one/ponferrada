@@ -4,8 +4,8 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
 
-export interface AddBalancesActionType extends Action {
-  type: "@@balances/ADD";
+export interface SetBalancesActionType extends Action {
+  type: "@@balances/SET";
   payload: { [key: string]: Amount };
 }
 
@@ -18,8 +18,8 @@ const initState: BalanceState = {};
 
 export function balancesReducer(state: BalanceState = initState, action: BalanceActions): BalanceState {
   switch (action.type) {
-    case "@@balances/ADD":
-      return { ...state, ...action.payload };
+    case "@@balances/SET":
+      return { ...action.payload };
     default:
       return state;
   }

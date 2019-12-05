@@ -1,7 +1,7 @@
 import { Amount, Identity } from "@iov/bcp";
 
 import { getActiveConnections } from "../../logic/connection";
-import { AddBalancesActionType } from "./reducer";
+import { SetBalancesActionType } from "./reducer";
 
 export async function getBalances(identities: readonly Identity[]): Promise<{ [ticker: string]: Amount }> {
   const connections = getActiveConnections();
@@ -26,7 +26,7 @@ export async function getBalances(identities: readonly Identity[]): Promise<{ [t
   return balances;
 }
 
-export const addBalancesAction = (tokens: { [key: string]: Amount }): AddBalancesActionType => ({
-  type: "@@balances/ADD",
+export const setBalancesAction = (tokens: { [key: string]: Amount }): SetBalancesActionType => ({
+  type: "@@balances/SET",
   payload: tokens,
 });

@@ -16,7 +16,7 @@ import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
-import { addBalancesAction, getBalances } from "../../store/balances";
+import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
@@ -46,7 +46,7 @@ export const loginBootSequence = async (
   drinkFaucetIfNeeded(identities).catch(console.error);
 
   const balances = await getBalances(identities);
-  dispatch(addBalancesAction(balances));
+  dispatch(setBalancesAction(balances));
 
   await subscribeBalance(identities, dispatch);
   await subscribeTransaction(identities, dispatch);

@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
 import { getConfig } from "../config";
-import { addBalancesAction, getBalances } from "../store/balances";
+import { getBalances, setBalancesAction } from "../store/balances";
 import { getCodec } from "./codec";
 import { getActiveConnections } from "./connection";
 
@@ -32,7 +32,7 @@ export async function subscribeBalance(identities: readonly Identity[], dispatch
       next: async account => {
         if (account) {
           const balances = await getBalances(identities);
-          dispatch(addBalancesAction(balances));
+          dispatch(setBalancesAction(balances));
         }
       },
     });
