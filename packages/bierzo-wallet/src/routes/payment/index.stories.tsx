@@ -3,6 +3,7 @@ import { liskCodec } from "@iov/lisk";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
+import { FormApi } from "final-form";
 import React from "react";
 import { DeepPartial } from "redux";
 
@@ -13,11 +14,14 @@ import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.st
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
 import ConfirmPayment from "./components/ConfirmPayment";
 import Layout from "./components/index";
+import ReceiverAddress from "./components/ReceiverAddress";
 
 export const PAYMENT_STORY_PATH = `${bierzoRoot}/Payment`;
 export const PAYMENT_STORY_PAYMENT_PATH = "Payment";
 export const PAYMENT_STORY_PAYMENT_EMPTY_PATH = "No balance";
 const PAYMENT_STORY_CONFIRMATION_PATH = "Confirmation";
+const PAYMENT_STORY_UNVERIFIED_RECIPIENT = "Unverified Recipient";
+const PAYMENT_STORY_VERIFIED_RECIPIENT = "Verified Recipient";
 
 const BALANCES: BalanceState = {
   BASH: {
@@ -45,6 +49,53 @@ async function onTokenSelectionChanged(ticker: TokenTicker): Promise<void> {
 async function onSubmit(_: object): Promise<void> {
   linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_CONFIRMATION_PATH)();
 }
+
+const form: FormApi = {
+  batch: () => {},
+  blur: () => {},
+  change: () => {},
+  destroyOnUnregister: true,
+  focus: () => {},
+  initialize: () => {},
+  isValidationPaused: () => false,
+  getFieldState: () => undefined,
+  getRegisteredFields: () => [],
+  getState: () => {
+    return {
+      active: undefined,
+      dirty: false,
+      dirtyFields: {},
+      dirtySinceLastSubmit: false,
+      error: "",
+      errors: [],
+      hasSubmitErrors: false,
+      hasValidationErrors: false,
+      initialValues: {},
+      invalid: false,
+      modified: {},
+      pristine: false,
+      submitError: false,
+      submitErrors: {},
+      submitFailed: false,
+      submitSucceeded: false,
+      submitting: false,
+      touched: {},
+      valid: true,
+      validating: true,
+      values: {},
+      visited: {},
+    };
+  },
+  mutators: {},
+  pauseValidation: () => {},
+  registerField: () => () => {},
+  reset: () => {},
+  resetFieldState: () => {},
+  resumeValidation: () => {},
+  setConfig: () => {},
+  submit: () => undefined,
+  subscribe: () => () => {},
+};
 
 storiesOf(PAYMENT_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
@@ -75,6 +126,26 @@ storiesOf(PAYMENT_STORY_PATH, module)
         onNewPayment={linkTo(PAYMENT_STORY_PATH, PAYMENT_STORY_PAYMENT_PATH)}
         onSeeTrasactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
         onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(PAYMENT_STORY_UNVERIFIED_RECIPIENT, () => (
+    <DecoratedStorybook>
+      <ReceiverAddress
+        form={form}
+        noBalance={false}
+        selectedChainCodec={liskCodec}
+        initialHasValidCert={false}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(PAYMENT_STORY_VERIFIED_RECIPIENT, () => (
+    <DecoratedStorybook>
+      <ReceiverAddress
+        form={form}
+        noBalance={false}
+        selectedChainCodec={liskCodec}
+        initialHasValidCert={true}
       />
     </DecoratedStorybook>
   ));
