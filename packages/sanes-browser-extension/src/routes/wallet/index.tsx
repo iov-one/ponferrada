@@ -13,6 +13,7 @@ import SidePanel from "./components/SidePanel";
 import { toolbarHeight } from "./components/SidePanel/PanelDrawer";
 
 const addressLabel = "IOV address: ";
+export const addressId = "addressFieldId";
 
 const AccountView = (): JSX.Element => {
   const [mouseOverAddress, setMouseOverAddress] = React.useState<boolean>(false);
@@ -52,7 +53,7 @@ const AccountView = (): JSX.Element => {
               onMouseEnter={onMouseEnterAddress}
               onMouseLeave={onMouseLeaveAddress}
             >
-              <Typography inline color={mouseOverAddress ? "primary" : undefined}>
+              <Typography inline color={mouseOverAddress ? "primary" : undefined} id={addressId}>
                 {ellipsifyMiddle(iovAddress, 16)}
               </Typography>
             </PopupCopy>

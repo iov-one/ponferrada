@@ -1,3 +1,4 @@
+import { Page } from "puppeteer";
 import TestUtils from "react-dom/test-utils";
 
 export const getAccountDropDown = (accountStatusDom: React.Component): Element[] => {
@@ -17,3 +18,10 @@ export const getBalanceTokensCount = (accountStatusDom: React.Component): number
   // Total number of List component rows minus header row.
   return TestUtils.scryRenderedDOMComponentsWithTag(accountStatusDom, "li").length - 1;
 };
+
+export async function getBalanceAmount(page: Page): Promise<string> {
+  const balanceAmountElement = await page.$("h5");
+  if (!balanceAmountElement) throw new Error("h5 element not found");
+
+  return await (await balanceAmountElement.getProperty("textContent")).jsonValue();
+}
