@@ -37,8 +37,10 @@ const BALANCES: BalanceState = {
 };
 
 const fullStore = (): DeepPartial<RootState> => {
+  // REVIEW Type 'BalanceState' is not assignable to type 'DeepPartial<BalanceState>'
+  // Type 'TokenTicker' is not assignable to type 'undefined'
   return {
-    balances: BALANCES,
+    balances: BALANCES as any,
   };
 };
 

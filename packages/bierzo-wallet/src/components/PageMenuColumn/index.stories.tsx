@@ -78,8 +78,11 @@ const fullStore = (): DeepPartial<RootState> => {
   const fullTxs = [faultTx, incomingAndOutgoingSendTransaction, ...txs];
 
   return {
+    // REVIEW Type '{ transactions: readonly (ProcessedSendTransaction | ProcessedTx<LightTransaction>)[]; }'
+    // is not assignable to type 'DeepPartial<NotificationState>'.
+    // Type 'TransactionId' is not assignable to type 'undefined'
     notifications: {
-      transactions: fullTxs,
+      transactions: fullTxs as any,
     },
   };
 };
