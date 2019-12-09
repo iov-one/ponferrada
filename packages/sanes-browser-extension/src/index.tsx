@@ -34,20 +34,18 @@ const render = (
   );
 };
 
-type PersonaContexType = [GetPersonaResponse, boolean];
+// REVIEW getHasStoredPersona() has a Promise<boolean> signature but
+// hasStoredPersona gets type boolean | null
+Promise.all([getPersonaData(), getHasStoredPersona()]).then(([persona, hasStoredPersona]) => {
+  const requests = getQueuedRequests();
+  const url = initialUrl(!!persona, !!hasStoredPersona);
+  history.push(url);
+  render(Route, !!hasStoredPersona, persona, requests);
 
-Promise.all([getPersonaData(), getHasStoredPersona()]).then(
-  ([persona, hasStoredPersona]: PersonaContexType) => {
-    const requests = getQueuedRequests();
-    const url = initialUrl(!!persona, hasStoredPersona);
-    history.push(url);
-    render(Route, hasStoredPersona, persona, requests);
-
-    if (module.hot) {
-      module.hot.accept("./routes", (): void => {
-        const NextApp = require("./routes").default;
-        render(NextApp, hasStoredPersona, persona, requests);
-      });
-    }
-  },
-);
+  if (module.hot) {
+    module.hot.accept("./routes", (): void => {
+      const NextApp = require("./routes").default;
+      render(NextApp, !!hasStoredPersona, persona, requests);
+    });
+  }
+});
