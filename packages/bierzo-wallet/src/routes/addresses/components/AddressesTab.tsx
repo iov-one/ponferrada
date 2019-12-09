@@ -4,10 +4,10 @@ import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { AddressesTableProps } from "../../../components/AddressesTable";
-import Starnames, { StarnamesProps } from "./Starnames";
+import Iovnames, { IovnamesProps } from "./Iovnames";
 import UserAddresses from "./UserAddresses";
 
-export const yourStarnames = "Your starnames";
+export const yourIovnames = "Your iovnames";
 export const yourAddresses = "Your blockchain addresses";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -57,24 +57,24 @@ function AddressesTab({
   usernames,
   onRegisterUsername,
   rpcEndpointType,
-}: AddressesTableProps & StarnamesProps): JSX.Element {
-  const [selectedTab, setSelectedTab] = React.useState<"starnames" | "addresses">("starnames");
+}: AddressesTableProps & IovnamesProps): JSX.Element {
+  const [selectedTab, setSelectedTab] = React.useState<"iovnames" | "addresses">("iovnames");
 
   const changeTabToAddresses = (): void => setSelectedTab("addresses");
-  const changeTabToStarnames = (): void => setSelectedTab("starnames");
+  const changeTabToIovnames = (): void => setSelectedTab("iovnames");
 
   return (
     <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
       <Block display="flex">
-        <TabItem selected={selectedTab === "starnames"} onChangeTab={changeTabToStarnames}>
-          {yourStarnames}
+        <TabItem selected={selectedTab === "iovnames"} onChangeTab={changeTabToIovnames}>
+          {yourIovnames}
         </TabItem>
         <TabItem selected={selectedTab === "addresses"} onChangeTab={changeTabToAddresses}>
           {yourAddresses}
         </TabItem>
       </Block>
-      {selectedTab === "starnames" && (
-        <Starnames
+      {selectedTab === "iovnames" && (
+        <Iovnames
           usernames={usernames}
           onRegisterUsername={onRegisterUsername}
           rpcEndpointType={rpcEndpointType}

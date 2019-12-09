@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-function StarnamesExists({ usernames }: Props): JSX.Element {
+function IovnamesExists({ usernames }: Props): JSX.Element {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
@@ -43,9 +43,9 @@ function StarnamesExists({ usernames }: Props): JSX.Element {
   return (
     <React.Fragment>
       {usernames.map(username => {
-        const onStarnameCopy = (): void => {
+        const onIovnameCopy = (): void => {
           clipboardCopy(username.username);
-          toast.show("Startname has been copied to clipboard.", ToastVariant.INFO);
+          toast.show("Iovname has been copied to clipboard.", ToastVariant.INFO);
         };
 
         return (
@@ -64,7 +64,7 @@ function StarnamesExists({ usernames }: Props): JSX.Element {
                     {username.username}
                   </Typography>
                   <Block marginRight={2} />
-                  <Block onClick={onStarnameCopy} className={classes.link}>
+                  <Block onClick={onIovnameCopy} className={classes.link}>
                     <Image src={copy} alt="Copy" width={20} />
                   </Block>
                 </Block>
@@ -91,4 +91,4 @@ function StarnamesExists({ usernames }: Props): JSX.Element {
   );
 }
 
-export default StarnamesExists;
+export default IovnamesExists;
