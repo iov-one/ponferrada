@@ -28,7 +28,7 @@ const balancesAmount: DeepPartial<BalanceState> = {
     fractionalDigits: 5,
     tokenTicker: "CASH" as TokenTicker,
   },
-};
+} as any;
 
 const bnsChainId = "local-iov-devnet" as ChainId;
 const usernames: DeepPartial<UsernamesState> = [
@@ -40,7 +40,7 @@ const usernames: DeepPartial<UsernamesState> = [
         address: "some_address",
       },
     ],
-  },
+  } as any,
 ];
 
 const identities: IdentitiesState = new Map<ChainId, ExtendedIdentity>([

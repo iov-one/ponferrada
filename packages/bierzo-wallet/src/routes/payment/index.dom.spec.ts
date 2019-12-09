@@ -23,7 +23,7 @@ const balancesAmount: DeepPartial<BalanceState> = {
     fractionalDigits: 5,
     tokenTicker: "CASH" as TokenTicker,
   },
-};
+} as any;
 
 const bnsChainId = "local-iov-devnet" as ChainId;
 const identities = new Map([
