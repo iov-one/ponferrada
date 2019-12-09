@@ -34,18 +34,16 @@ const render = (
   );
 };
 
-// REVIEW getHasStoredPersona() has a Promise<boolean> signature but
-// hasStoredPersona gets type boolean | null
-Promise.all([getPersonaData(), getHasStoredPersona()]).then(([persona, hasStoredPersona]) => {
+Promise.all([getPersonaData(), getHasStoredPersona()] as const).then(([persona, hasStoredPersona]) => {
   const requests = getQueuedRequests();
-  const url = initialUrl(!!persona, !!hasStoredPersona);
+  const url = initialUrl(!!persona, hasStoredPersona);
   history.push(url);
-  render(Route, !!hasStoredPersona, persona, requests);
+  render(Route, hasStoredPersona, persona, requests);
 
   if (module.hot) {
     module.hot.accept("./routes", (): void => {
       const NextApp = require("./routes").default;
-      render(NextApp, !!hasStoredPersona, persona, requests);
+      render(NextApp, hasStoredPersona, persona, requests);
     });
   }
 });
