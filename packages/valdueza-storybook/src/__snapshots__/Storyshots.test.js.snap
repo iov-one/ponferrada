@@ -1841,6 +1841,556 @@ exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/Addresses Iovnames tab 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="iovnames-view-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+        >
+          yourname*iov
+        </h6>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <h6
+        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+      >
+        You have no starnames
+      </h6>
+      <p
+        className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+      >
+        With Neuma you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.
+      </p>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <h6
+        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+        id="/register-personalized-address"
+        onClick={[Function]}
+      >
+        Choose Now
+      </h6>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="iovnames-view-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  />
+  <p
+    className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+  >
+    Register new iovname
+  </p>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h4
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+          >
+            test1*iov
+          </h4>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-link"
+            onClick={[Function]}
+          >
+            <img
+              alt="Copy"
+              className="makeStyles-root"
+              src="copy.svg"
+              width={20}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            IS LINKED TO THESE ADDRESSES
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="makeStyles-container"
+            onClick={[Function]}
+          >
+            <img
+              alt="Info"
+              className="makeStyles-root"
+              height={16}
+              src="info_normal.svg"
+              width={16}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <table
+          className="MuiTable-root"
+        >
+          <thead
+            className="MuiTableHead-root"
+          >
+            <tr
+              className="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              >
+                Blockchain
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              >
+                Address
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              />
+            </tr>
+          </thead>
+          <tbody
+            className="MuiTableBody-root"
+          >
+            <tr
+              className="MuiTableRow-root"
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                IOV Devnet
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={14}
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h4
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+          >
+            test2*iov
+          </h4>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-link"
+            onClick={[Function]}
+          >
+            <img
+              alt="Copy"
+              className="makeStyles-root"
+              src="copy.svg"
+              width={20}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            IS LINKED TO THESE ADDRESSES
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="makeStyles-container"
+            onClick={[Function]}
+          >
+            <img
+              alt="Info"
+              className="makeStyles-root"
+              height={16}
+              src="info_normal.svg"
+              width={16}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <table
+          className="MuiTable-root"
+        >
+          <thead
+            className="MuiTableHead-root"
+          >
+            <tr
+              className="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              >
+                Blockchain
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              >
+                Address
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              />
+            </tr>
+          </thead>
+          <tbody
+            className="MuiTableBody-root"
+          >
+            <tr
+              className="MuiTableRow-root"
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                IOV Devnet
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={14}
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root"
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                Lisk Devnet
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                1349293588603668134L
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={14}
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h4
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+          >
+            test3*iov
+          </h4>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-link"
+            onClick={[Function]}
+          >
+            <img
+              alt="Copy"
+              className="makeStyles-root"
+              src="copy.svg"
+              width={20}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            IS LINKED TO THESE ADDRESSES
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="makeStyles-container"
+            onClick={[Function]}
+          >
+            <img
+              alt="Info"
+              className="makeStyles-root"
+              height={16}
+              src="info_normal.svg"
+              width={16}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <table
+          className="MuiTable-root"
+        >
+          <thead
+            className="MuiTableHead-root"
+          >
+            <tr
+              className="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              >
+                Blockchain
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              >
+                Address
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                scope="col"
+              />
+            </tr>
+          </thead>
+          <tbody
+            className="MuiTableBody-root"
+          >
+            <tr
+              className="MuiTableRow-root"
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                Ganache
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={14}
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root"
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                IOV Devnet
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={14}
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root"
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                Lisk Devnet
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+              >
+                1349293588603668134L
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={14}
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -1858,7 +2408,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
         >
-          Your starnames
+          Your iovnames
         </h6>
         <div
           className="MuiBox-root MuiBox-root makeStyles-line"
@@ -1885,7 +2435,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
   </div>
   <div
     className="MuiBox-root MuiBox-root"
-    id="starnames-view-id"
+    id="iovnames-view-id"
   >
     <div
       className="MuiBox-root MuiBox-root"
@@ -1951,7 +2501,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
         >
-          Your starnames
+          Your iovnames
         </h6>
         <div
           className="MuiBox-root MuiBox-root makeStyles-line"
@@ -1978,7 +2528,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
   </div>
   <div
     className="MuiBox-root MuiBox-root"
-    id="starnames-view-id"
+    id="iovnames-view-id"
   >
     <div
       className="MuiBox-root MuiBox-root"
@@ -2050,7 +2600,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
         >
-          Your starnames
+          Your iovnames
         </h6>
         <div
           className="MuiBox-root MuiBox-root makeStyles-line"
@@ -2077,11 +2627,16 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
   </div>
   <div
     className="MuiBox-root MuiBox-root"
-    id="starnames-view-id"
+    id="iovnames-view-id"
   >
     <div
       className="MuiBox-root MuiBox-root"
     />
+    <p
+      className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+    >
+      Register new iovname
+    </p>
     <div
       className="MuiBox-root MuiBox-root"
     >
@@ -2563,551 +3118,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Starnames tab 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
-  id="starnames-view-id"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-        >
-          yourname*iov
-        </h6>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
-      >
-        You have no starnames
-      </h6>
-      <p
-        className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
-      >
-        With Neuma you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.
-      </p>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-        id="/register-personalized-address"
-        onClick={[Function]}
-      >
-        Choose Now
-      </h6>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
-  id="starnames-view-id"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h4
-            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
-          >
-            test1*iov
-          </h4>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-link"
-            onClick={[Function]}
-          >
-            <img
-              alt="Copy"
-              className="makeStyles-root"
-              src="copy.svg"
-              width={20}
-            />
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-          >
-            IS LINKED TO THESE ADDRESSES
-          </h6>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <div
-            className="makeStyles-container"
-            onClick={[Function]}
-          >
-            <img
-              alt="Info"
-              className="makeStyles-root"
-              height={16}
-              src="info_normal.svg"
-              width={16}
-            />
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <table
-          className="MuiTable-root"
-        >
-          <thead
-            className="MuiTableHead-root"
-          >
-            <tr
-              className="MuiTableRow-root MuiTableRow-head"
-            >
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              >
-                Blockchain
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              >
-                Address
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              />
-            </tr>
-          </thead>
-          <tbody
-            className="MuiTableBody-root"
-          >
-            <tr
-              className="MuiTableRow-root"
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                IOV Devnet
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-link"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Copy"
-                    className="makeStyles-root"
-                    src="copy.svg"
-                    width={14}
-                  />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h4
-            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
-          >
-            test2*iov
-          </h4>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-link"
-            onClick={[Function]}
-          >
-            <img
-              alt="Copy"
-              className="makeStyles-root"
-              src="copy.svg"
-              width={20}
-            />
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-          >
-            IS LINKED TO THESE ADDRESSES
-          </h6>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <div
-            className="makeStyles-container"
-            onClick={[Function]}
-          >
-            <img
-              alt="Info"
-              className="makeStyles-root"
-              height={16}
-              src="info_normal.svg"
-              width={16}
-            />
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <table
-          className="MuiTable-root"
-        >
-          <thead
-            className="MuiTableHead-root"
-          >
-            <tr
-              className="MuiTableRow-root MuiTableRow-head"
-            >
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              >
-                Blockchain
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              >
-                Address
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              />
-            </tr>
-          </thead>
-          <tbody
-            className="MuiTableBody-root"
-          >
-            <tr
-              className="MuiTableRow-root"
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                IOV Devnet
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-link"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Copy"
-                    className="makeStyles-root"
-                    src="copy.svg"
-                    width={14}
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root"
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                Lisk Devnet
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                1349293588603668134L
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-link"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Copy"
-                    className="makeStyles-root"
-                    src="copy.svg"
-                    width={14}
-                  />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h4
-            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
-          >
-            test3*iov
-          </h4>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-link"
-            onClick={[Function]}
-          >
-            <img
-              alt="Copy"
-              className="makeStyles-root"
-              src="copy.svg"
-              width={20}
-            />
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-          >
-            IS LINKED TO THESE ADDRESSES
-          </h6>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <div
-            className="makeStyles-container"
-            onClick={[Function]}
-          >
-            <img
-              alt="Info"
-              className="makeStyles-root"
-              height={16}
-              src="info_normal.svg"
-              width={16}
-            />
-          </div>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <table
-          className="MuiTable-root"
-        >
-          <thead
-            className="MuiTableHead-root"
-          >
-            <tr
-              className="MuiTableRow-root MuiTableRow-head"
-            >
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              >
-                Blockchain
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              >
-                Address
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
-                scope="col"
-              />
-            </tr>
-          </thead>
-          <tbody
-            className="MuiTableBody-root"
-          >
-            <tr
-              className="MuiTableRow-root"
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                Ganache
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                0xD383382350F9f190Bd2608D6381B15b4e1cec0f3
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-link"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Copy"
-                    className="makeStyles-root"
-                    src="copy.svg"
-                    width={14}
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root"
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                IOV Devnet
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-link"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Copy"
-                    className="makeStyles-root"
-                    src="copy.svg"
-                    width={14}
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root"
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                Lisk Devnet
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
-              >
-                1349293588603668134L
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-link"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Copy"
-                    className="makeStyles-root"
-                    src="copy.svg"
-                    width={14}
-                  />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
@@ -5971,7 +5981,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
             <span
               className="MuiButton-label"
             >
-              Back
+              Cancel
             </span>
           </button>
         </div>
@@ -6342,7 +6352,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
             <span
               className="MuiButton-label"
             >
-              Back
+              Cancel
             </span>
           </button>
         </div>
