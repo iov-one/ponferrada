@@ -43,7 +43,7 @@ function IovnamesExists({ usernames }: Props): JSX.Element {
   return (
     <React.Fragment>
       <Typography link color="primary" align="center">
-        Register new iovname
+        + Create new iovname
       </Typography>
       {usernames.map(username => {
         const onIovnameCopy = (): void => {
