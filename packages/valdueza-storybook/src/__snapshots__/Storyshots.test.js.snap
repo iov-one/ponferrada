@@ -1903,7 +1903,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
   <p
     className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignCenter"
   >
-    Register new iovname
+    + Create new iovname
   </p>
   <div
     className="MuiBox-root MuiBox-root"
@@ -2635,7 +2635,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
     <p
       className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignCenter"
     >
-      Register new iovname
+      + Create new iovname
     </p>
     <div
       className="MuiBox-root MuiBox-root"
