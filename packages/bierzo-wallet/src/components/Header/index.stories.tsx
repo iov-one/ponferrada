@@ -57,8 +57,11 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx)[] = [
 ];
 
 const txStore: DeepPartial<RootState> = {
+  // REVIEW Type '{ transactions: readonly (ProcessedSendTransaction | ProcessedTx<LightTransaction>)[]; }'
+  // is not assignable to type 'DeepPartial<NotificationState>'.
+  // Type 'TransactionId' is not assignable to type 'undefined'
   notifications: {
-    transactions: txs,
+    transactions: txs as any,
   },
 };
 

@@ -62,9 +62,13 @@ interface WindowWithConfig extends Window {
   readonly developmentConfig: Config;
 }
 
+function getWindowWithConfig(): WindowWithConfig {
+  return (window as Window) as WindowWithConfig;
+}
+
 const loadConfigurationFile = async (): Promise<Config> => {
   if (process.env.NODE_ENV === "test") {
-    return (window as WindowWithConfig).developmentConfig;
+    return getWindowWithConfig().developmentConfig;
   }
 
   if (process.env.NODE_ENV === "development") {

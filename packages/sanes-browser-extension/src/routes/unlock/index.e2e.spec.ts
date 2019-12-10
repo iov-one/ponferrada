@@ -50,7 +50,7 @@ withChainsDescribe("DOM > Unlock route", (): void => {
     await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
 
     await bgPage.evaluate((): void => {
-      (window as IovWindowExtension).clearPersona();
+      ((window as Window) as IovWindowExtension).clearPersona();
     });
 
     // Simulating reload

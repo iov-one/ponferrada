@@ -3,7 +3,7 @@ import Backgroundscript, { IovWindowExtension } from "./background/model/backgro
 import { updateExtensionBadge } from "./background/updaters/extensionBadgeUpdater";
 
 const backgroundScript = new Backgroundscript();
-backgroundScript.registerActionsInBackground(window as IovWindowExtension);
+backgroundScript.registerActionsInBackground((window as Window) as IovWindowExtension);
 
 // Reset extension badge to clear one after browser start because of queue reset
 updateExtensionBadge(0);
