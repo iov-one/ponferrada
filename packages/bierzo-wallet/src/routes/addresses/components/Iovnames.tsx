@@ -6,7 +6,7 @@ import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import IovnamesExists from "./IovnamesExists";
 import IovnamesNotExists from "./IovnamesNotExists";
 
-export const iovnamesViewId = "starnames-view-id";
+export const iovnamesViewId = "iovnames-view-id";
 
 export interface IovnamesProps {
   readonly usernames: readonly BwUsernameWithChainName[];
@@ -15,15 +15,15 @@ export interface IovnamesProps {
 }
 
 const Iovnames = ({ usernames, rpcEndpointType, onRegisterUsername }: IovnamesProps): JSX.Element => {
-  const hasStarnames = usernames.length > 0;
+  const hasIovnames = usernames.length > 0;
 
   return (
     <Block marginTop={3} id={iovnamesViewId}>
       <Block margin={2} />
-      {!hasStarnames && (
+      {!hasIovnames && (
         <IovnamesNotExists rpcEndpointType={rpcEndpointType} onRegisterUsername={onRegisterUsername} />
       )}
-      {hasStarnames && <IovnamesExists usernames={usernames} />}
+      {hasIovnames && <IovnamesExists usernames={usernames} />}
     </Block>
   );
 };
