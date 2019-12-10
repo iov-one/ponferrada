@@ -42,6 +42,9 @@ function IovnamesExists({ usernames }: Props): JSX.Element {
 
   return (
     <React.Fragment>
+      <Typography link color="primary" align="center">
+        Register new iovname
+      </Typography>
       {usernames.map(username => {
         const onIovnameCopy = (): void => {
           clipboardCopy(username.username);
