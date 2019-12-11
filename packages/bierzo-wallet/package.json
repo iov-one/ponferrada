@@ -37,7 +37,7 @@
     "@types/express": "^4.16.1",
     "@types/file-saver": "^2.0.1",
     "clipboardy": "^2.1.0",
-    "react-scripts": "^3.1.1"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "use-extension-config-development": "cd ../sanes-browser-extension && yarn use-config-development && yarn override-config-development && cd ../bierzo-wallet",
