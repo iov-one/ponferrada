@@ -117,7 +117,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
       </Block>
       <Block width="75%" marginTop={1}>
         <Back fullWidth disabled={submitting} onClick={onCancel}>
-          Back
+          Cancel
         </Back>
       </Block>
     </Block>

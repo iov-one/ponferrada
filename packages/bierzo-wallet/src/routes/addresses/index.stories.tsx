@@ -11,7 +11,7 @@ import {
 } from "../registerName/index.stories";
 import { BwUsernameWithChainName } from ".";
 import AddressesTab from "./components/AddressesTab";
-import Starnames from "./components/Starnames";
+import Iovnames from "./components/Iovnames";
 import UserAddresses from "./components/UserAddresses";
 
 const chainAddresses: ChainAddressPairWithName[] = [
@@ -84,18 +84,18 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
       <UserAddresses chainAddresses={chainAddresses} />
     </DecoratedStorybook>
   ))
-  .add("Starnames tab", () => (
+  .add("Iovnames tab", () => (
     <DecoratedStorybook>
-      <Starnames
+      <Iovnames
         usernames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>
   ))
-  .add("Starnames with name tab", () => (
+  .add("Iovnames with name tab", () => (
     <DecoratedStorybook>
-      <Starnames
+      <Iovnames
         usernames={usernames}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
