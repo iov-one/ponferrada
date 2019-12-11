@@ -12,6 +12,7 @@ const persona: GetPersonaResponse = {
   mnemonic: "",
   accounts: [{ label: "Account 0", iovAddress: "" as Address }],
   balances: [],
+  starnames: [],
 };
 
 storiesOf(`${sanesRoot}/Welcome page`, module)
