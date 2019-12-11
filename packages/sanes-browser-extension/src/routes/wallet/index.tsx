@@ -1,7 +1,7 @@
 import { Address, Amount } from "@iov/bcp";
 import { Block, PopupCopy, Typography } from "medulas-react-components";
 import * as React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ellipsifyMiddle } from "ui-logic";
 
 import SimplePageLayout, { defaultPageHeight } from "../../components/SimplePageLayout";
@@ -16,7 +16,7 @@ const addressLabel = "IOV address: ";
 export const addressId = "addressFieldId";
 
 const AccountView = (): JSX.Element => {
-  const [mouseOverAddress, setMouseOverAddress] = React.useState<boolean>(false);
+  const [mouseOverAddress, setMouseOverAddress] = useState<boolean>(false);
   const persona = useContext(PersonaContext);
 
   let iovAddress = "" as Address;
@@ -39,7 +39,6 @@ const AccountView = (): JSX.Element => {
   const onMouseLeaveAddress = (): void => setMouseOverAddress(false);
 
   // TODO load from chain when iov-core API ready
-  const starnames: string[] = [];
   const awards: string[] = [];
 
   return (
@@ -62,7 +61,7 @@ const AccountView = (): JSX.Element => {
         <Block marginTop={3} />
         <ListTokens balances={balances} />
         <Block marginTop={3} />
-        <ListCollectibles starnames={starnames} awards={awards} />
+        <ListCollectibles starnames={persona.starnames} awards={awards} />
         <Block marginTop={3} />
       </SimplePageLayout>
     </SidePanel>
