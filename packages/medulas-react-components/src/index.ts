@@ -7,6 +7,7 @@ import DownloadButton from "./components/Button/Download";
 import Drawer, { DRAWER_HTML_ID } from "./components/Drawer";
 import CheckboxField from "./components/forms/CheckboxField";
 import Form, { FormValues, useForm, ValidationError } from "./components/forms/Form";
+import InputGroup from "./components/forms/InputGroup";
 import SelectField, { SelectFieldItem } from "./components/forms/SelectField";
 import TextField from "./components/forms/TextField";
 import Hairline from "./components/Hairline";
@@ -44,6 +45,7 @@ export {
   FormValues,
   Hairline,
   Image,
+  InputGroup,
   Link,
   ListMenu,
   List,
