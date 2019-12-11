@@ -6,7 +6,7 @@ import Block from "../../Block";
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   root: {
-    border: `1px soli1d ${theme.palette.grey[200]}`,
+    border: `1px solid ${theme.palette.grey[200]}`,
     borderRadius: 4,
     boxSizing: "border-box",
 
