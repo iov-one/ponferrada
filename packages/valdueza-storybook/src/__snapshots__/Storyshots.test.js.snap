@@ -4897,7 +4897,7 @@ exports[`Storyshots Bierzo Wallet/Payment No balance 1`] = `
                 className="MuiBox-root MuiBox-root"
               >
                 <div
-                  className="makeStyles-dropdown"
+                  className="form-select-field makeStyles-dropdown"
                   onClick={[Function]}
                 >
                   <div
@@ -5237,7 +5237,7 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                 className="MuiBox-root MuiBox-root"
               >
                 <div
-                  className="makeStyles-dropdown"
+                  className="form-select-field makeStyles-dropdown"
                   onClick={[Function]}
                 >
                   <div
@@ -7400,7 +7400,7 @@ Array [
               onSubmit={[Function]}
             >
               <div
-                className="makeStyles-dropdown"
+                className="form-select-field makeStyles-dropdown"
                 onClick={[Function]}
               >
                 <div
@@ -12766,7 +12766,7 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
               className="MuiBox-root MuiBox-root"
             >
               <div
-                className="makeStyles-dropdown"
+                className="form-select-field makeStyles-dropdown"
                 onClick={[Function]}
               >
                 <div
@@ -12817,7 +12817,7 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
             className="MuiBox-root MuiBox-root"
           >
             <div
-              className="makeStyles-dropdown"
+              className="form-select-field makeStyles-dropdown"
               onClick={[Function]}
             >
               <div
@@ -13195,7 +13195,7 @@ exports[`Storyshots Sil Governance Dashboard 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <div
-            className="makeStyles-dropdown"
+            className="form-select-field makeStyles-dropdown"
             onClick={[Function]}
           >
             <div
@@ -14697,7 +14697,7 @@ exports[`Storyshots Sil Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
       className="MuiBox-root MuiBox-root"
     >
       <div
-        className="makeStyles-dropdown"
+        className="form-select-field makeStyles-dropdown"
         onClick={[Function]}
       >
         <div
