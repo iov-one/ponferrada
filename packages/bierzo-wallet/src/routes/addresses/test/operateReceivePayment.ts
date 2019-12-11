@@ -1,6 +1,6 @@
 import { Page } from "puppeteer";
 
-import { starnamesViewId } from "../components/Starnames";
+import { iovnamesViewId } from "../components/Iovnames";
 
 export async function getAddressRow(page: Page, dataIndex: number): Promise<readonly string[]> {
   const chainNameEl = await page.$(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(1)`);
@@ -31,10 +31,10 @@ export async function copyAddress(page: Page, dataIndex: number): Promise<string
 }
 
 export async function copyStarname(page: Page): Promise<void> {
-  const starnameEl = await page.$(`#${starnamesViewId} h4`);
+  const starnameEl = await page.$(`#${iovnamesViewId} h4`);
   if (starnameEl === null) {
     throw new Error(`Starname element was not found.`);
   }
 
-  await page.click(`#${starnamesViewId} img`);
+  await page.click(`#${iovnamesViewId} img`);
 }

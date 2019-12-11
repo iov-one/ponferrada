@@ -7,7 +7,7 @@ import { amountToString } from "ui-logic";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import PageContent from "../../../components/PageContent";
-import { GetYourAddress } from "../../addresses/components/StarnamesNotExists";
+import { GetYourAddress } from "../../addresses/components/IovnamesNotExists";
 import wallet from "../assets/wallet.svg";
 
 const walletIcon = <Image src={wallet} alt="wallet ico" />;

@@ -3,8 +3,8 @@ import { Page } from "puppeteer";
 import { ADDRESSES_TEXT } from "../../../components/Header/components/LinksMenu";
 import { whenOnNavigatedToE2eRoute } from "../../../utils/test/navigation";
 import { ADDRESSES_ROUTE } from "../../paths";
-import { yourAddresses, yourStarnames } from "../components/AddressesTab";
-import { starnamesViewId } from "../components/Starnames";
+import { yourAddresses, yourIovnames } from "../components/AddressesTab";
+import { iovnamesViewId } from "../components/Iovnames";
 import { yourBlockchainAddressesId } from "../components/UserAddresses";
 
 export async function travelToAddressesE2E(page: Page): Promise<void> {
@@ -20,7 +20,7 @@ export async function travelToBlockchainAddressesTabE2E(page: Page): Promise<voi
 }
 
 export async function travelToStarnamesTabE2E(page: Page): Promise<void> {
-  const [addressesLink] = await page.$x(`//h6[contains(., '${yourStarnames}')]`);
+  const [addressesLink] = await page.$x(`//h6[contains(., '${yourIovnames}')]`);
   await addressesLink.click();
-  await page.waitForSelector(`#${starnamesViewId}`);
+  await page.waitForSelector(`#${iovnamesViewId}`);
 }

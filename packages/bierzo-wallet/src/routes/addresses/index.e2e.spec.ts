@@ -113,7 +113,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
       expect(clipboardy.readSync()).toBe(username);
 
       const toastMessage = await getToastMessage(page);
-      expect(toastMessage).toBe("Startname has been copied to clipboard.");
+      expect(toastMessage).toBe("Iovname has been copied to clipboard.");
       await closeToast(page);
     }, 35000);
   });
