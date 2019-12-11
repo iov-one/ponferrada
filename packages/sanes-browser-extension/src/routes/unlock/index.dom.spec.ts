@@ -54,7 +54,7 @@ describe("DOM > Feature > Unlock", () => {
   it('has a valid "Continue" button that redirects to the Account Status view if unlock successful when clicked', async () => {
     const password = randomString(10);
     const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
-    const personaMock = mockPersonaResponse([], mnemonic, []);
+    const personaMock = mockPersonaResponse(mnemonic, [], [], []);
 
     mockCreatePersona(personaMock);
     await processCreateWallet(undefined, password);
