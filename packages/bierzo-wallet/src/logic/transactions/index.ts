@@ -46,9 +46,9 @@ export async function subscribeTransaction(
               addresses: usernameTx.targets,
             },
           ];
-          await dispatch(addUsernamesAction(usernames));
+          dispatch(addUsernamesAction(usernames));
         }
-        await dispatch(addTransaction(parsedTx));
+        dispatch(addTransaction(parsedTx));
       },
       error: error => console.error(error),
     });
