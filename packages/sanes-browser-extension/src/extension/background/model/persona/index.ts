@@ -267,7 +267,7 @@ export class Persona {
   }
 
   public async getStarnames(): Promise<readonly string[]> {
-    let starnames: readonly BnsUsernameNft[] = [];
+    const starnames: BnsUsernameNft[] = [];
 
     const bnsConnection = this.getBnsConnection();
     const accounts = await this.accountManager.accounts();
@@ -278,7 +278,7 @@ export class Persona {
     await Promise.all(
       bnsIdentities.map(async bnsIdentity => {
         const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
-        starnames = [...(await bnsConnection.getUsernames({ owner: bnsAddress }))];
+        starnames.push(...(await bnsConnection.getUsernames({ owner: bnsAddress })));
       }),
     );
 
