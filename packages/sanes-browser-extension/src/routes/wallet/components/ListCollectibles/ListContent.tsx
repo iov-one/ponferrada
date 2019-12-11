@@ -11,8 +11,8 @@ const starnamesTitle = "Starnames";
 const awardsTitle = "Awards";
 
 interface Props {
-  readonly starnames: string[];
-  readonly awards: string[];
+  readonly starnames: readonly string[];
+  readonly awards: readonly string[];
 }
 
 const ListContent = ({ starnames, awards }: Props): JSX.Element => {

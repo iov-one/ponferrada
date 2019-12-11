@@ -38,7 +38,7 @@ describe("DOM > Feature > CreateWallet", () => {
     iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
     label: "Account 0",
   };
-  const personaMock = mockPersonaResponse([account], mnemonic, []);
+  const personaMock = mockPersonaResponse(mnemonic, [account], [], []);
 
   let createWalletDom: React.Component;
 
@@ -173,7 +173,7 @@ describe("DOM > Feature > CreateWallet", () => {
     let continueButton: Element;
 
     beforeEach(async () => {
-      mockCreatePersona(mockPersonaResponse([], mnemonic, []));
+      mockCreatePersona(mockPersonaResponse(mnemonic, [], [], []));
       await submitNewWallet(createWalletDom, password);
 
       checkbox = TestUtils.findRenderedDOMComponentWithTag(createWalletDom, "input");
@@ -217,7 +217,7 @@ describe("DOM > Feature > CreateWallet", () => {
     let createButton: Element;
 
     beforeEach(async () => {
-      mockCreatePersona(mockPersonaResponse([], mnemonic, []));
+      mockCreatePersona(mockPersonaResponse(mnemonic, [], [], []));
       await submitNewWallet(createWalletDom, password);
       await submitShowWords(createWalletDom);
 

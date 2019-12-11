@@ -19,9 +19,10 @@ export interface IovWindowExtension extends Window {
 }
 
 export interface PersonaData {
-  readonly accounts: readonly PersonaAcccount[];
   readonly mnemonic: string;
+  readonly accounts: readonly PersonaAcccount[];
   readonly balances: readonly (readonly Amount[])[];
+  readonly starnames: readonly string[];
 }
 
 const ALREADY_FOUND_ERR = "The persona instance is already set. This indicates a bug in the lifecycle.";
@@ -46,8 +47,9 @@ class Backgroundscript {
 
     const response = {
       mnemonic: this.persona.mnemonic,
-      balances: await this.persona.getBalances(),
       accounts: await this.persona.getAccounts(),
+      balances: await this.persona.getBalances(),
+      starnames: await this.persona.getStarnames(),
     };
 
     return response;
@@ -62,8 +64,9 @@ class Backgroundscript {
 
     return {
       mnemonic: this.persona.mnemonic,
-      balances: await this.persona.getBalances(),
       accounts: await this.persona.getAccounts(),
+      balances: await this.persona.getBalances(),
+      starnames: await this.persona.getStarnames(),
     };
   }
 
@@ -92,8 +95,9 @@ class Backgroundscript {
 
     return {
       mnemonic: this.persona.mnemonic,
-      balances: await this.persona.getBalances(),
       accounts: await this.persona.getAccounts(),
+      balances: await this.persona.getBalances(),
+      starnames: await this.persona.getStarnames(),
     };
   }
 

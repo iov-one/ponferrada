@@ -354,7 +354,7 @@ describe("DOM > Feature > Wallet Status Drawer > Create Proposal Request", () =>
 
 withChainsDescribe("DOM > Feature > Wallet Status Drawer > Recovery Words", () => {
   it("shows the mnemonic for the current Persona", async () => {
-    const personaMock = mockPersonaResponse([accountMock], mnemonic, []);
+    const personaMock = mockPersonaResponse(mnemonic, [accountMock], [], []);
     const recoveryWordsDom = await travelToWallet(personaMock);
     await goToRecoveryWords(recoveryWordsDom);
     await submitPasswordForm(recoveryWordsDom);
@@ -368,7 +368,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer > Delete Wallet", () =>
   let mnemonicInput: Element;
   let form: Element;
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
-  const personaMock = mockPersonaResponse([accountMock], mnemonic, []);
+  const personaMock = mockPersonaResponse(mnemonic, [accountMock], [], []);
 
   beforeEach(async () => {
     deleteWalletDom = await travelToWallet(personaMock);
