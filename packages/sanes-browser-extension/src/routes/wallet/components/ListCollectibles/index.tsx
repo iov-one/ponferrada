@@ -16,8 +16,8 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  readonly starnames: string[];
-  readonly awards: string[];
+  readonly starnames: readonly string[];
+  readonly awards: readonly string[];
 }
 
 const ListCollectibles = ({ starnames, awards }: Props): JSX.Element => {

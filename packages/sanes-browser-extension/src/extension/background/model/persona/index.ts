@@ -7,7 +7,9 @@ import {
   WithCreator,
 } from "@iov/bcp";
 import {
+  bnsCodec,
   BnsConnection,
+  BnsUsernameNft,
   CreateProposalTx,
   isCreateProposalTx,
   isRegisterUsernameTx,
@@ -262,6 +264,25 @@ export class Persona {
     );
 
     return balancesPerAccount;
+  }
+
+  public async getStarnames(): Promise<readonly string[]> {
+    const starnames: BnsUsernameNft[] = [];
+
+    const bnsConnection = this.getBnsConnection();
+    const accounts = await this.accountManager.accounts();
+    const bnsIdentities = accounts
+      .flatMap(account => account.identities)
+      .filter(ident => ident.chainId === bnsConnection.chainId());
+
+    await Promise.all(
+      bnsIdentities.map(async bnsIdentity => {
+        const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
+        starnames.push(...(await bnsConnection.getUsernames({ owner: bnsAddress })));
+      }),
+    );
+
+    return starnames.map(username => username.id);
   }
 
   private getBnsConnection(): BnsConnection {

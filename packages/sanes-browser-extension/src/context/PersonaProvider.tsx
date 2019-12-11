@@ -6,24 +6,27 @@ import { PersonaAcccount } from "../extension/background/model/persona";
 
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
-  readonly accounts?: readonly PersonaAcccount[];
   readonly mnemonic?: string;
+  readonly accounts?: readonly PersonaAcccount[];
   readonly balances?: readonly (readonly Amount[])[];
+  readonly starnames?: readonly string[];
   readonly hasStoredPersona?: boolean;
 }
 
 export interface PersonaContextInterface {
+  readonly mnemonic: string;
   readonly accounts: readonly PersonaAcccount[];
   readonly balances: readonly (readonly Amount[])[];
-  readonly mnemonic: string;
+  readonly starnames: readonly string[];
   readonly hasStoredPersona: boolean;
   readonly update: (newData: PersonaContextUpdateData) => void;
 }
 
 export const PersonaContext = React.createContext<PersonaContextInterface>({
-  accounts: [],
   mnemonic: "",
+  accounts: [],
   balances: [],
+  starnames: [],
   hasStoredPersona: false,
   update: (): void => {},
 });
@@ -37,31 +40,35 @@ interface Props {
 type Accounts = readonly PersonaAcccount[];
 
 export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props): JSX.Element => {
-  const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
-  const [storedPersonaExists, setStoredPersonaExists] = React.useState<boolean>(hasStoredPersona);
+  const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
   const [balances, setBalances] = React.useState<readonly (readonly Amount[])[]>(
     persona ? persona.balances : [],
   );
+  const [starnames, setStarnames] = React.useState<readonly string[]>(persona ? persona.starnames : []);
+  const [storedPersonaExists, setStoredPersonaExists] = React.useState<boolean>(hasStoredPersona);
 
   const loadPersonaInReact = (newData: PersonaContextUpdateData): void => {
-    if (newData.accounts !== undefined) setAccounts(newData.accounts);
     if (newData.mnemonic !== undefined) setMnemonic(newData.mnemonic);
+    if (newData.accounts !== undefined) setAccounts(newData.accounts);
     if (newData.balances !== undefined) setBalances(newData.balances);
+    if (newData.starnames !== undefined) setStarnames(newData.starnames);
     if (newData.hasStoredPersona !== undefined) {
       setStoredPersonaExists(newData.hasStoredPersona);
       if (!newData.hasStoredPersona) {
         setAccounts([]);
         setMnemonic("");
         setBalances([]);
+        setStarnames([]);
       }
     }
   };
 
   const personaContextValue = {
-    accounts,
     mnemonic,
+    accounts,
     balances,
+    starnames,
     hasStoredPersona: storedPersonaExists,
     update: loadPersonaInReact,
   };

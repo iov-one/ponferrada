@@ -23,6 +23,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
       mnemonic: "",
       accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       balances: [balance1, balance2],
+      starnames: [],
     };
 
     return (
@@ -40,6 +41,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
       mnemonic: "",
       accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       balances: [],
+      starnames: [],
     };
 
     return (
