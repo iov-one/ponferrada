@@ -48,6 +48,11 @@ export const sendGetIdentitiesRequest = async (): Promise<
 
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
+      if (chrome.runtime.lastError) {
+        resolve(undefined);
+        return;
+      }
+
       if (response === undefined) {
         resolve(undefined);
         return;
