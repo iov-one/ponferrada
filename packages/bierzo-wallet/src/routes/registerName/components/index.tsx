@@ -1,10 +1,11 @@
-import { Fee } from "@iov/bcp";
+import { Address, ChainId, Fee } from "@iov/bcp";
 import {
   Avatar,
   Back,
   Block,
   Button,
   Form,
+  FormValues,
   Hairline,
   Image,
   makeStyles,
@@ -16,10 +17,10 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { AddressesTableProps } from "../../../components/AddressesTable";
+import { AddressesTableProps, ChainAddressPairWithName } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
 import shield from "../assets/shield.svg";
-import SelectAddressesTable from "./SelectAddressesTable";
+import SelectAddressesTable, { addressValueField, blockchainValueField } from "./SelectAddressesTable";
 
 export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";
 export const REGISTER_USERNAME_FIELD = "register-username-field";
@@ -85,6 +86,18 @@ function getSubmitButtonCaption(fee: Fee | undefined): string {
   return "Register";
 }
 
+function getFormInitValues(chainAddresses: readonly ChainAddressPairWithName[]): FormValues {
+  const initialValues: FormValues = {};
+  chainAddresses.forEach((pair, index) => {
+    initialValues[`${pair.chainId}_${addressValueField}_${index}`] = pair.address;
+    initialValues[`${pair.chainId}_${blockchainValueField}_${index}`] = pair.chainName;
+  });
+
+  console.log(initialValues);
+
+  return initialValues;
+}
+
 interface Props extends AddressesTableProps {
   readonly onSubmit: (values: object) => Promise<void>;
   readonly validate: (values: object) => Promise<object>;
@@ -93,10 +106,47 @@ interface Props extends AddressesTableProps {
 }
 
 const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
+  const [chainItems, setChainItems] = React.useState<ChainAddressPairWithName[]>([]);
+
+  const chainAddressesSorted = React.useMemo(
+    () =>
+      Array.from(chainAddresses).sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+      ),
+    [chainAddresses],
+  );
+
+  const initialValues = React.useMemo(() => getFormInitValues(chainAddressesSorted), [chainAddressesSorted]);
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
     onSubmit,
     validate,
+    initialValues,
   });
+
+  React.useEffect(() => {
+    if (chainItems.length === 0) {
+      setChainItems(chainAddressesSorted);
+    }
+  }, [chainAddressesSorted, chainItems.length]);
+
+  const blockChainItems = React.useMemo(() => chainAddresses.map(pair => ({ name: pair.chainName })), [
+    chainAddresses,
+  ]);
+
+  const addAddress = (): void => {
+    const newItem = [...chainItems];
+    newItem.push({
+      address: "" as Address,
+      chainId: "" as ChainId,
+      chainName: "Select",
+    });
+    setChainItems(newItem);
+  };
+
+  const removeAddress = (idx: number): void => {
+    const newItem = [...chainItems.splice(0, idx - 2), ...chainItems.splice(idx, chainItems.length - 1)];
+    setChainItems(newItem);
+  };
 
   const buttons = (
     <Block
@@ -178,8 +228,16 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
                 Optional
               </Typography>
             </Block>
-            <SelectAddressesTable chainAddresses={chainAddresses} form={form} />
+            <SelectAddressesTable
+              blockChainItems={blockChainItems}
+              removeAddress={removeAddress}
+              chainAddresses={chainItems}
+              form={form}
+            />
           </Block>
+          <Typography link color="primary" onClick={addAddress}>
+            + Add more
+          </Typography>
         </Block>
       </PageContent>
     </Form>
