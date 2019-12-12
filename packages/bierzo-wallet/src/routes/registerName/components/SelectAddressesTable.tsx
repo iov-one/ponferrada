@@ -3,6 +3,7 @@ import { Theme } from "@material-ui/core";
 import { FormApi } from "final-form";
 import {
   defaultColor,
+  InputGroup,
   makeStyles,
   SelectField,
   SelectFieldItem,
@@ -62,23 +63,25 @@ const AddressRow = ({ chain, form }: RowProps): JSX.Element => {
   return (
     <TableRow key={chain.chainId}>
       <TableCell classes={cellClasses} align="left">
-        <SelectField
-          fieldName={`${blockchainValueField}_${chain.chainId}`}
-          form={form}
-          maxWidth="100px"
-          items={blockChainItems}
-          initial={chain.chainName}
-        />
-      </TableCell>
-      <TableCell classes={cellClasses} align="left">
-        <TextField
-          name={`${addressValueField}_${chain.chainId}`}
-          form={form}
-          placeholder="Add blockchain address"
-          fullWidth
-          value={chain.address}
-          margin="none"
-        />
+        <InputGroup
+          prepend={
+            <SelectField
+              fieldName={`${blockchainValueField}_${chain.chainId}`}
+              form={form}
+              maxWidth="200px"
+              items={blockChainItems}
+              initial={chain.chainName}
+            />
+          }
+        >
+          <TextField
+            name={`${addressValueField}_${chain.chainId}`}
+            form={form}
+            placeholder="Add blockchain address"
+            fullWidth
+            margin="none"
+          />
+        </InputGroup>
       </TableCell>
       <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
         <Typography variant="body2" link weight="semibold" color="primary">
