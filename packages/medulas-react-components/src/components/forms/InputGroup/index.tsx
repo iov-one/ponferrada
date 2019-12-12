@@ -49,7 +49,7 @@ const InputGroup = ({ children, prepend }: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Block className={classes.root} display="flex" alignItems="center">
+    <Block className={classes.root} display="flex1" alignItems="center">
       {prepend && <Block className={classes.prepend}>{prepend}</Block>}
       {children}
     </Block>
