@@ -4897,7 +4897,7 @@ exports[`Storyshots Bierzo Wallet/Payment No balance 1`] = `
                 className="MuiBox-root MuiBox-root"
               >
                 <div
-                  className="makeStyles-dropdown"
+                  className="form-select-field makeStyles-dropdown"
                   onClick={[Function]}
                 >
                   <div
@@ -5237,7 +5237,7 @@ exports[`Storyshots Bierzo Wallet/Payment Payment 1`] = `
                 className="MuiBox-root MuiBox-root"
               >
                 <div
-                  className="makeStyles-dropdown"
+                  className="form-select-field makeStyles-dropdown"
                   onClick={[Function]}
                 >
                   <div
@@ -7400,7 +7400,7 @@ Array [
               onSubmit={[Function]}
             >
               <div
-                className="makeStyles-dropdown"
+                className="form-select-field makeStyles-dropdown"
                 onClick={[Function]}
               >
                 <div
@@ -9123,7 +9123,7 @@ Array [
       className="MuiBox-root MuiBox-root"
     >
       <div
-        className="makeStyles-dropdown"
+        className="form-select-field makeStyles-dropdown"
         onClick={[Function]}
       >
         <div
@@ -9243,6 +9243,112 @@ Array [
 ]
 `;
 
+exports[`Storyshots Medulas React Components/components/forms Input Group 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root"
+  />,
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-prepend"
+          >
+            <div
+              className="form-select-field makeStyles-dropdown"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiInputBase-root makeStyles-root makeStyles-root"
+                onClick={[Function]}
+                role="button"
+              >
+                <input
+                  autoComplete="off"
+                  className="MuiInputBase-input makeStyles-input"
+                  name="field-filled_select"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  readOnly={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+              <img
+                alt="Phone Menu"
+                className="makeStyles-root makeStyles-noShrink"
+                height="5"
+                src="selectChevron.svg"
+                width="8"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+          >
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                defaultValue="test*iov"
+                disabled={false}
+                name="field-filled"
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                style={
+                  Object {
+                    "paddingLeft": 8,
+                  }
+                }
+              >
+                <legend
+                  className="PrivateNotchedOutline-legend"
+                  style={
+                    Object {
+                      "width": 0,
+                    }
+                  }
+                >
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "&#8203;",
+                      }
+                    }
+                  />
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>,
+]
+`;
+
 exports[`Storyshots Medulas React Components/components/forms SelectField 1`] = `
 Array [
   <div
@@ -9252,7 +9358,7 @@ Array [
       onSubmit={[Function]}
     >
       <div
-        className="makeStyles-dropdown"
+        className="form-select-field makeStyles-dropdown"
         onClick={[Function]}
       >
         <div
@@ -9313,7 +9419,7 @@ Array [
       onSubmit={[Function]}
     >
       <div
-        className="makeStyles-dropdown"
+        className="form-select-field makeStyles-dropdown"
         onClick={[Function]}
       >
         <div
@@ -12660,7 +12766,7 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
               className="MuiBox-root MuiBox-root"
             >
               <div
-                className="makeStyles-dropdown"
+                className="form-select-field makeStyles-dropdown"
                 onClick={[Function]}
               >
                 <div
@@ -12711,7 +12817,7 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
             className="MuiBox-root MuiBox-root"
           >
             <div
-              className="makeStyles-dropdown"
+              className="form-select-field makeStyles-dropdown"
               onClick={[Function]}
             >
               <div
@@ -13089,7 +13195,7 @@ exports[`Storyshots Sil Governance Dashboard 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <div
-            className="makeStyles-dropdown"
+            className="form-select-field makeStyles-dropdown"
             onClick={[Function]}
           >
             <div
@@ -14591,7 +14697,7 @@ exports[`Storyshots Sil Governance/Create proposal ReleaseGuaranteeFunds 1`] = `
       className="MuiBox-root MuiBox-root"
     >
       <div
-        className="makeStyles-dropdown"
+        className="form-select-field makeStyles-dropdown"
         onClick={[Function]}
       >
         <div

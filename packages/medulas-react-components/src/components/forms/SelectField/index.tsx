@@ -117,7 +117,7 @@ const SelectField = ({
 
   return (
     <React.Fragment>
-      <div className={dropdownClasses} ref={inputRef} onClick={onClick}>
+      <div className={`form-select-field ${dropdownClasses}`} ref={inputRef} onClick={onClick}>
         <InputBase
           name={name}
           classes={inputClasses}
