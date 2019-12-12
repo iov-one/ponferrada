@@ -3,6 +3,7 @@ import { Theme } from "@material-ui/core";
 import { FormApi } from "final-form";
 import {
   defaultColor,
+  FormValues,
   InputGroup,
   makeStyles,
   SelectField,
@@ -12,14 +13,10 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import {
-  AddressesRowProps,
-  AddressesTableProps,
-  ChainAddressPairWithName,
-} from "../../../components/AddressesTable";
+import { AddressesRowProps, AddressesTableProps } from "../../../components/AddressesTable";
 
-const addressValueField = "address-value-field";
-const blockchainValueField = "blockchain-value-field";
+export const addressValueField = "address-value-field";
+export const blockchainValueField = "blockchain-value-field";
 
 const useStyles = makeStyles((theme: Theme) => ({
   cell: {
@@ -44,21 +41,27 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const blockChainItems: SelectFieldItem[] = [
-  { name: "Lisk Devnet" },
-  { name: "Ganache" },
-  { name: "IOV Devnet" },
-];
-
 interface RowProps extends AddressesRowProps {
   readonly form: FormApi;
+  readonly index: number;
+  readonly blockChainItems: SelectFieldItem[];
+  readonly removeAddress: (idx: number) => void;
 }
 
-const AddressRow = ({ chain, form }: RowProps): JSX.Element => {
+const AddressRow = ({ chain, form, index, blockChainItems, removeAddress }: RowProps): JSX.Element => {
   const classes = useStyles();
   const cellClasses = {
     root: classes.cell,
   };
+
+  const onRemove = (): void => {
+    removeAddress(index);
+  };
+
+  console.log(
+    `${chain.chainId}_${blockchainValueField}_${index}`,
+    `${chain.chainId}_${addressValueField}_${index}`,
+  );
 
   return (
     <TableRow key={chain.chainId}>
@@ -66,16 +69,17 @@ const AddressRow = ({ chain, form }: RowProps): JSX.Element => {
         <InputGroup
           prepend={
             <SelectField
-              fieldName={`${blockchainValueField}_${chain.chainId}`}
+              fieldName={`${chain.chainId}_${blockchainValueField}_${index}`}
               form={form}
               maxWidth="200px"
               items={blockChainItems}
               initial={chain.chainName}
+              placeholder="Select"
             />
           }
         >
           <TextField
-            name={`${addressValueField}_${chain.chainId}`}
+            name={`${chain.chainId}_${addressValueField}_${index}`}
             form={form}
             placeholder="Add blockchain address"
             fullWidth
@@ -84,7 +88,7 @@ const AddressRow = ({ chain, form }: RowProps): JSX.Element => {
         </InputGroup>
       </TableCell>
       <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
-        <Typography variant="body2" link weight="semibold" color="primary">
+        <Typography variant="body2" link weight="semibold" color="primary" onClick={onRemove}>
           Remove
         </Typography>
       </TableCell>
@@ -94,19 +98,28 @@ const AddressRow = ({ chain, form }: RowProps): JSX.Element => {
 
 interface TableProps extends AddressesTableProps {
   readonly form: FormApi;
+  readonly blockChainItems: SelectFieldItem[];
+  readonly removeAddress: (idx: number) => void;
 }
 
-const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element => {
-  const chainAddressesSorted = Array.from(chainAddresses).sort(
-    (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
-      a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-  );
-
+const SelectAddressesTable = ({
+  chainAddresses,
+  removeAddress,
+  form,
+  blockChainItems,
+}: TableProps): JSX.Element => {
   return (
     <Table>
       <TableBody>
-        {chainAddressesSorted.map(chain => (
-          <AddressRow key={chain.chainId} chain={chain} form={form} />
+        {chainAddresses.map((chain, index) => (
+          <AddressRow
+            key={`${chain.chainId}_${index}`}
+            index={index}
+            chain={chain}
+            form={form}
+            blockChainItems={blockChainItems}
+            removeAddress={removeAddress}
+          />
         ))}
       </TableBody>
     </Table>
