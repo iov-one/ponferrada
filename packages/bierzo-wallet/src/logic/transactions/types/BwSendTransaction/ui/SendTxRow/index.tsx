@@ -36,6 +36,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();
 
+  const address = sendTx.outgoing ? sendTx.original.recipient : sendTx.original.sender;
   const amountSign = sendTx.outgoing ? "-" : "+";
   const amountClass = sendTx.outgoing ? undefined : classes.amountFrom;
 
@@ -55,7 +56,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
           />
           <Block className={classes.cell} paddingLeft={2} paddingRight={2}>
             <Typography variant="subtitle2" weight="semibold">
-              {getAddressPrefix(sendTx)} {ellipsifyAddress(sendTx.original.sender)}
+              {getAddressPrefix(sendTx)} {ellipsifyAddress(address)}
             </Typography>
           </Block>
           <Block flexGrow={1} />
