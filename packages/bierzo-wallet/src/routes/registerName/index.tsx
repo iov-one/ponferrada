@@ -109,6 +109,10 @@ const RegisterUsername = (): JSX.Element => {
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const addresses = getChainAddressPairWithNames(identities);
+  const addressesSorted = Array.from(addresses).sort(
+    (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+      a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+  );
 
   const bnsIdentity = getBnsIdentity(identities);
 
@@ -185,7 +189,7 @@ const RegisterUsername = (): JSX.Element => {
           onSubmit={onSubmit}
           validate={validate}
           onCancel={onReturnToBalance}
-          chainAddresses={addresses}
+          chainAddresses={addressesSorted}
           transactionFee={transactionFee}
         />
       )}
