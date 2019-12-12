@@ -26,7 +26,9 @@ const CommitteeRulesSelect = ({ form, electionRules, electionRuleChanged }: Prop
 
   const showRules = threshold && period;
 
-  const changeCommittee = (selectedItem: SelectFieldItem): void => {
+  const changeCommittee = (selectedItem: SelectFieldItem | undefined): void => {
+    if (!selectedItem) return;
+
     const ruleId = parseInt(selectedItem.name.substring(0, selectedItem.name.indexOf(":")), 10);
     const rule = electionRules.find(rule => rule.id === ruleId);
     if (!rule) throw new Error("Selected committee not found. This is a bug.");

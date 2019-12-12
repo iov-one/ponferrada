@@ -80,7 +80,9 @@ const ProposalsList = ({ filterType }: Props): JSX.Element => {
 
   const [comparatorId, setComparatorId] = useState<ComparatorId>(ComparatorId.IdDescending);
 
-  const changeComparator = (selectedItem: SelectFieldItem): void => {
+  const changeComparator = (selectedItem: SelectFieldItem | undefined): void => {
+    if (!selectedItem) return;
+
     switch (selectedItem.name) {
       case ComparatorLabels.ExpiryDate:
         setComparatorId(ComparatorId.ExpiryDate);

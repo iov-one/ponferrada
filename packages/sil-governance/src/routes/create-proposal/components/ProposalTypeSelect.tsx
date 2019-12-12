@@ -1,6 +1,6 @@
 import { ProposalType } from "@iov/bns-governance";
 import { FormApi } from "final-form";
-import { Block, SelectField, Typography } from "medulas-react-components";
+import { Block, SelectField, SelectFieldItem, Typography } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
 
 const PROPOSAL_TYPE_FIELD = "Proposal Type";
@@ -30,6 +30,11 @@ interface Props {
 }
 
 const ProposalTypeSelect = ({ form, changeProposalType }: Props): JSX.Element => {
+  const onSelect = (selectedItem: SelectFieldItem | undefined): void => {
+    if (!selectedItem) return;
+
+    changeProposalType(formOptions[selectedItem.name]);
+  };
   return (
     <Block marginTop={2} display="flex" alignItems="center">
       <Typography>{PROPOSAL_TYPE_FIELD}</Typography>
@@ -40,7 +45,7 @@ const ProposalTypeSelect = ({ form, changeProposalType }: Props): JSX.Element =>
           form={form}
           items={formOptionsItems}
           initial={PROPOSAL_TYPE_INITIAL}
-          onChangeCallback={selectedItem => changeProposalType(formOptions[selectedItem.name])}
+          onChangeCallback={onSelect}
         />
       </Block>
     </Block>

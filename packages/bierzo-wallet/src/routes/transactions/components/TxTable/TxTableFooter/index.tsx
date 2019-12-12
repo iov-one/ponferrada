@@ -13,7 +13,7 @@ import arrowLeft from "../../../assets/arrowLeft.svg";
 import arrowRight from "../../../assets/arrowRight.svg";
 
 interface Props {
-  readonly onChangeRows: (item: SelectFieldItem) => void;
+  readonly onChangeRows: (item: SelectFieldItem | undefined) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;
 }
