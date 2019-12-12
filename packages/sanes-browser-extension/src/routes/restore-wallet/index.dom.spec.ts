@@ -26,7 +26,7 @@ import {
 withChainsDescribe("DOM > Feature > Restore Wallet", () => {
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
   const password = randomString(10);
-  const personaMock = mockPersonaResponse([], mnemonic, []);
+  const personaMock = mockPersonaResponse(mnemonic, [], [], []);
 
   let restoreWalletDom: React.Component;
 
