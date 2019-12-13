@@ -3,7 +3,6 @@ import { Theme } from "@material-ui/core";
 import { FormApi } from "final-form";
 import {
   defaultColor,
-  FormValues,
   InputGroup,
   makeStyles,
   SelectField,
@@ -13,7 +12,7 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import { AddressesRowProps, AddressesTableProps } from "../../../components/AddressesTable";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 
 export const addressValueField = "address-value-field";
 export const blockchainValueField = "blockchain-value-field";
@@ -41,14 +40,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface RowProps extends AddressesRowProps {
+export interface SelectAddressItem {
+  readonly id: string;
+  readonly chain: ChainAddressPairWithName;
+}
+
+interface RowProps {
   readonly form: FormApi;
   readonly index: number;
+  readonly addressItem: SelectAddressItem;
   readonly blockChainItems: SelectFieldItem[];
   readonly removeAddress: (idx: number) => void;
 }
 
-const AddressRow = ({ chain, form, index, blockChainItems, removeAddress }: RowProps): JSX.Element => {
+const AddressRow = ({ addressItem, form, index, blockChainItems, removeAddress }: RowProps): JSX.Element => {
   const classes = useStyles();
   const cellClasses = {
     root: classes.cell,
@@ -58,28 +63,23 @@ const AddressRow = ({ chain, form, index, blockChainItems, removeAddress }: RowP
     removeAddress(index);
   };
 
-  console.log(
-    `${chain.chainId}_${blockchainValueField}_${index}`,
-    `${chain.chainId}_${addressValueField}_${index}`,
-  );
-
   return (
-    <TableRow key={chain.chainId}>
+    <TableRow>
       <TableCell classes={cellClasses} align="left">
         <InputGroup
           prepend={
             <SelectField
-              fieldName={`${chain.chainId}_${blockchainValueField}_${index}`}
+              fieldName={`${addressItem.id}_${blockchainValueField}`}
               form={form}
               maxWidth="200px"
               items={blockChainItems}
-              initial={chain.chainName}
+              initial={addressItem.chain.chainName}
               placeholder="Select"
             />
           }
         >
           <TextField
-            name={`${chain.chainId}_${addressValueField}_${index}`}
+            name={`${addressItem.id}_${addressValueField}`}
             form={form}
             placeholder="Add blockchain address"
             fullWidth
@@ -96,9 +96,10 @@ const AddressRow = ({ chain, form, index, blockChainItems, removeAddress }: RowP
   );
 };
 
-interface TableProps extends AddressesTableProps {
+interface TableProps {
   readonly form: FormApi;
   readonly blockChainItems: SelectFieldItem[];
+  readonly chainAddresses: SelectAddressItem[];
   readonly removeAddress: (idx: number) => void;
 }
 
@@ -111,11 +112,11 @@ const SelectAddressesTable = ({
   return (
     <Table>
       <TableBody>
-        {chainAddresses.map((chain, index) => (
+        {chainAddresses.map((addressItem, index) => (
           <AddressRow
-            key={`${chain.chainId}_${index}`}
+            key={addressItem.id}
             index={index}
-            chain={chain}
+            addressItem={addressItem}
             form={form}
             blockChainItems={blockChainItems}
             removeAddress={removeAddress}
