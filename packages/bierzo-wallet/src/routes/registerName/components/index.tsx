@@ -15,12 +15,16 @@ import {
   useForm,
 } from "medulas-react-components";
 import React from "react";
-import { amountToString } from "ui-logic";
+import { amountToString, randomString } from "ui-logic";
 
 import { AddressesTableProps, ChainAddressPairWithName } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
 import shield from "../assets/shield.svg";
-import SelectAddressesTable, { addressValueField, blockchainValueField } from "./SelectAddressesTable";
+import SelectAddressesTable, {
+  addressValueField,
+  blockchainValueField,
+  SelectAddressItem,
+} from "./SelectAddressesTable";
 
 export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";
 export const REGISTER_USERNAME_FIELD = "register-username-field";
@@ -86,16 +90,26 @@ function getSubmitButtonCaption(fee: Fee | undefined): string {
   return "Register";
 }
 
-function getFormInitValues(chainAddresses: readonly ChainAddressPairWithName[]): FormValues {
+function getFormInitValues(addressItems: SelectAddressItem[]): FormValues {
   const initialValues: FormValues = {};
-  chainAddresses.forEach((pair, index) => {
-    initialValues[`${pair.chainId}_${addressValueField}_${index}`] = pair.address;
-    initialValues[`${pair.chainId}_${blockchainValueField}_${index}`] = pair.chainName;
+  addressItems.forEach(item => {
+    initialValues[`${item.id}_${addressValueField}`] = item.chain.address;
+    initialValues[`${item.id}_${blockchainValueField}`] = item.chain.chainName;
   });
 
-  console.log(initialValues);
-
   return initialValues;
+}
+
+function getAddressItems(chainAddresses: readonly ChainAddressPairWithName[]): SelectAddressItem[] {
+  const addressItems: SelectAddressItem[] = [];
+  chainAddresses.forEach((chain, index) => {
+    addressItems.push({
+      id: `${chain.chainId}_${index}`,
+      chain,
+    });
+  });
+
+  return addressItems;
 }
 
 interface Props extends AddressesTableProps {
@@ -106,17 +120,18 @@ interface Props extends AddressesTableProps {
 }
 
 const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
-  const [chainItems, setChainItems] = React.useState<ChainAddressPairWithName[]>([]);
+  const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>([]);
 
-  const chainAddressesSorted = React.useMemo(
-    () =>
-      Array.from(chainAddresses).sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+  const chainAddressesItems = React.useMemo(() => {
+    const sorted = Array.from(chainAddresses).sort(
+      (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
         a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-      ),
-    [chainAddresses],
-  );
+    );
 
-  const initialValues = React.useMemo(() => getFormInitValues(chainAddressesSorted), [chainAddressesSorted]);
+    return getAddressItems(sorted);
+  }, [chainAddresses]);
+
+  const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
     onSubmit,
     validate,
@@ -124,28 +139,36 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
   });
 
   React.useEffect(() => {
-    if (chainItems.length === 0) {
-      setChainItems(chainAddressesSorted);
-    }
-  }, [chainAddressesSorted, chainItems.length]);
+    setChainItems(chainAddressesItems);
+  }, [chainAddressesItems]);
 
   const blockChainItems = React.useMemo(() => chainAddresses.map(pair => ({ name: pair.chainName })), [
     chainAddresses,
   ]);
 
   const addAddress = (): void => {
-    const newItem = [...chainItems];
-    newItem.push({
-      address: "" as Address,
-      chainId: "" as ChainId,
-      chainName: "Select",
+    const newItems = [...chainItems];
+    newItems.push({
+      id: `new_item_${randomString(4)}`,
+      chain: {
+        address: "" as Address,
+        chainId: "" as ChainId,
+        chainName: "Select",
+      },
     });
-    setChainItems(newItem);
+    setChainItems(newItems);
   };
 
   const removeAddress = (idx: number): void => {
-    const newItem = [...chainItems.splice(0, idx - 2), ...chainItems.splice(idx, chainItems.length - 1)];
-    setChainItems(newItem);
+    const newItems = [...chainItems];
+    const [removedItem] = newItems.splice(idx, 1);
+
+    form.batch(() => {
+      form.change(`${removedItem.id}_${blockchainValueField}`, null);
+      form.change(`${removedItem.id}_${addressValueField}`, null);
+    });
+
+    setChainItems(newItems);
   };
 
   const buttons = (
