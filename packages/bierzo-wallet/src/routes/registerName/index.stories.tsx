@@ -37,7 +37,10 @@ const addresses: ChainAddressPairWithName[] = [
   },
 ];
 
-async function onSubmit(_: object): Promise<void> {
+async function onSubmit(values: object): Promise<void> {
+  const formValues = values as FormValues;
+  // eslint-disable-next-line no-console
+  console.log(formValues);
   action("onSubmit")();
 }
 
