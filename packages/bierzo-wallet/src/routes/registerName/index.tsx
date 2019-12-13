@@ -1,4 +1,4 @@
-import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
 import {
   BillboardContext,
@@ -25,8 +25,9 @@ import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
-import Layout, { REGISTER_USERNAME_FIELD } from "./components";
+import Layout, { fieldValueIdxLength, REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
+import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -99,6 +100,52 @@ const validate = async (values: object): Promise<object> => {
   return errors;
 };
 
+function getChainAddressPairsFromValues(
+  values: FormValues,
+  addresses: readonly ChainAddressPairWithName[],
+): readonly ChainAddressPairWithName[] {
+  const chainAddressMap: Map<string, Partial<ChainAddressPairWithName>> = new Map<
+    string,
+    Partial<ChainAddressPairWithName>
+  >();
+  Object.keys(values).forEach(key => {
+    const index = key.substr(0, fieldValueIdxLength);
+    let pair = chainAddressMap.get(index);
+    if (!pair) {
+      pair = {};
+    }
+
+    const type = key.substr(fieldValueIdxLength + 1);
+    switch (type) {
+      case addressValueField:
+        pair = { ...pair, address: values[key] as Address };
+        break;
+      case blockchainValueField:
+        // eslint-disable-next-line no-case-declarations
+        const chain = addresses.find(address => address.chainName === values[key]);
+        if (chain) {
+          pair = { ...pair, chainId: chain.chainId, chainName: chain.chainName };
+        }
+        break;
+    }
+
+    chainAddressMap.set(index, pair);
+  });
+
+  const chainAddressPair: ChainAddressPairWithName[] = [];
+  chainAddressMap.forEach(value => {
+    if (value.address && value.chainId && value.chainName) {
+      chainAddressPair.push({
+        address: value.address,
+        chainId: value.chainId,
+        chainName: value.chainName,
+      });
+    }
+  });
+
+  return chainAddressPair;
+}
+
 const RegisterUsername = (): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>(undefined);
@@ -142,9 +189,10 @@ const RegisterUsername = (): JSX.Element => {
     const formValues = values as FormValues;
 
     const username = formValues[REGISTER_USERNAME_FIELD];
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, addresses);
 
     try {
-      const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
+      const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addressesToRegister);
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
