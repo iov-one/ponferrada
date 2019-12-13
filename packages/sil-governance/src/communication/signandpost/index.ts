@@ -45,7 +45,7 @@ export async function sendSignAndPostRequest(
 
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(config.extensionId, request, response => {
-      if (response === undefined) {
+      if (chrome.runtime.lastError) {
         resolve(undefined);
         return;
       }
