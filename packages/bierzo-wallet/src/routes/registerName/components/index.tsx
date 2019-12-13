@@ -28,6 +28,7 @@ import SelectAddressesTable, {
 
 export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";
 export const REGISTER_USERNAME_FIELD = "register-username-field";
+export const fieldValueIdxLength = 5;
 
 const registerIcon = <Image src={shield} alt="shield" />;
 const registerTooltipIcon = <Image src={shield} alt="shield" width={24} height={24} />;
@@ -104,7 +105,7 @@ function getAddressItems(chainAddresses: readonly ChainAddressPairWithName[]): S
   const addressItems: SelectAddressItem[] = [];
   chainAddresses.forEach((chain, index) => {
     addressItems.push({
-      id: `${chain.chainId}_${index}`,
+      id: randomString(fieldValueIdxLength),
       chain,
     });
   });
@@ -149,7 +150,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
   const addAddress = (): void => {
     const newItems = [...chainItems];
     newItems.push({
-      id: `new_item_${randomString(4)}`,
+      id: randomString(fieldValueIdxLength),
       chain: {
         address: "" as Address,
         chainId: "" as ChainId,
