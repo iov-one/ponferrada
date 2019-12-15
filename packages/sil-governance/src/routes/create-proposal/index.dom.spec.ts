@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import { ReadonlyDate } from "readonly-date";
 import { Store } from "redux";
 
@@ -37,7 +38,9 @@ describe("DOM > Feature > Create Proposal", () => {
       },
     });
 
-    electorateDom = await travelToCreateProposal(store);
+    await act(async () => {
+      electorateDom = await travelToCreateProposal(store);
+    });
   }, 60000);
 
   it("has a header with a logo", async () => {
