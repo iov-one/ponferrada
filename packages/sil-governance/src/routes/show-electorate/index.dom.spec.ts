@@ -1,4 +1,4 @@
-import { act, findRenderedDOMComponentWithTag, scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
+import { findRenderedDOMComponentWithTag, scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 import { ReadonlyDate } from "readonly-date";
 import { Store } from "redux";
 
@@ -37,9 +37,7 @@ describe("DOM > Feature > Show Electorate", () => {
       },
     });
 
-    await act((async () => {
-      electorateDom = await travelToShowElectorate(store, "1");
-    }) as () => void);
+    electorateDom = await travelToShowElectorate(store, "1");
   }, 60000);
 
   it("has a header with a logo", async () => {
@@ -95,9 +93,7 @@ describe("DOM > Feature > Show Electorate", () => {
   }, 60000);
 
   it("has an Equal Electorate with expected members", async () => {
-    await act((async () => {
-      electorateDom = await travelToShowElectorate(store, "1");
-    }) as () => void);
+    electorateDom = await travelToShowElectorate(store, "1");
 
     const heading = findRenderedDOMComponentWithTag(electorateDom, "h6");
     expect(heading.textContent).toBe("Equal Electorate members:");
@@ -115,9 +111,7 @@ describe("DOM > Feature > Show Electorate", () => {
   }, 60000);
 
   it("has a Weighted Electorate with expected members", async () => {
-    await act((async () => {
-      electorateDom = await travelToShowElectorate(store, "2");
-    }) as () => void);
+    electorateDom = await travelToShowElectorate(store, "2");
 
     const heading = findRenderedDOMComponentWithTag(electorateDom, "h6");
     expect(heading.textContent).toBe("Weighted Electorate members:");
