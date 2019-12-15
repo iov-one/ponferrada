@@ -26,6 +26,7 @@ const ShowRequest = ({ goBackToList }: Props): JSX.Element => {
 
   const closeExtension = (): void => {
     if (requestContext.requests.length === 0) {
+      goBackToList();
       window.close();
     } else {
       goBackToList();
