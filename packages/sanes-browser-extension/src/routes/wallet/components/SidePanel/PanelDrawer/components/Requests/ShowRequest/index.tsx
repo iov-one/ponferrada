@@ -25,10 +25,15 @@ const ShowRequest = ({ goBackToList }: Props): JSX.Element => {
   const isSignAndPostRequest = isSignAndPostResponseData(firstRequest.responseData);
 
   const closeExtension = (): void => {
+    /*
+     Do not render ShowRequest once the request disappears to avoid error:
+     "Did not find an authorization request"
+    */
+
+    goBackToList();
+
     if (requestContext.requests.length === 0) {
       window.close();
-    } else {
-      goBackToList();
     }
   };
 
