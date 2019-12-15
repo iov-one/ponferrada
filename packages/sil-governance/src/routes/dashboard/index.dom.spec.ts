@@ -52,9 +52,9 @@ describe("DOM > Feature > Dashboard", () => {
       },
     });
 
-    await act(async () => {
+    await act((async () => {
       dashboardDom = await travelToDashboard(store);
-    });
+    }) as () => void);
   }, 60000);
 
   it("has a header with a logo", async () => {
@@ -102,27 +102,27 @@ describe("DOM > Feature > Dashboard", () => {
   }, 60000);
 
   it("has a proposal list with six active proposals", async () => {
-    await act(async () => {
+    await act((async () => {
       dashboardDom = await travelToDashboardActive(store);
-    });
+    }) as () => void);
 
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(6);
   }, 60000);
 
   it("has a proposal list with four authored proposals", async () => {
-    await act(async () => {
+    await act((async () => {
       dashboardDom = await travelToDashboardAuthored(store);
-    });
+    }) as () => void);
 
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(4);
   }, 60000);
 
   it("has a proposal list with three ended proposals", async () => {
-    await act(async () => {
+    await act((async () => {
       dashboardDom = await travelToDashboardEnded(store);
-    });
+    }) as () => void);
 
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(3);

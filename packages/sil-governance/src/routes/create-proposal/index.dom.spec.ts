@@ -38,9 +38,9 @@ describe("DOM > Feature > Create Proposal", () => {
       },
     });
 
-    await act(async () => {
+    await act((async () => {
       electorateDom = await travelToCreateProposal(store);
-    });
+    }) as () => void);
   }, 60000);
 
   it("has a header with a logo", async () => {
