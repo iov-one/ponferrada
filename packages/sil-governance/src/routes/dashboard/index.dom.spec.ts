@@ -30,6 +30,9 @@ import {
   travelToDashboardEnded,
 } from "./test/travelToDashboard";
 
+const getElectorates = jest.fn(() => getDummyElectorates());
+const getProposalsState = jest.fn(() => getDummyProposalsState());
+
 describe("DOM > Feature > Dashboard", () => {
   let store: Store<RootState>;
   let dashboardDom: React.Component;
@@ -39,12 +42,9 @@ describe("DOM > Feature > Dashboard", () => {
       extension: {
         connected: true,
         installed: true,
-        governor: {
-          address: adminAddress,
-          getElectorates: getDummyElectorates,
-        },
+        governor: { address: adminAddress, getElectorates },
       },
-      proposals: getDummyProposalsState(),
+      proposals: getProposalsState(),
       blockchain: {
         lastBlockTime: new ReadonlyDate(),
         lastBlockHeight: 44447774,
@@ -100,18 +100,21 @@ describe("DOM > Feature > Dashboard", () => {
 
   it("has a proposal list with six active proposals", async () => {
     dashboardDom = await travelToDashboardActive(store);
+
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(6);
   }, 60000);
 
   it("has a proposal list with four authored proposals", async () => {
     dashboardDom = await travelToDashboardAuthored(store);
+
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(4);
   }, 60000);
 
   it("has a proposal list with three ended proposals", async () => {
     dashboardDom = await travelToDashboardEnded(store);
+
     const proposals = await getProposals(dashboardDom);
     expect(proposals.length).toBe(3);
   }, 60000);

@@ -1,4 +1,5 @@
 import { Page } from "puppeteer";
+import { Component } from "react";
 import TestUtils from "react-dom/test-utils";
 import { Store } from "redux";
 
@@ -12,45 +13,28 @@ import {
   DASHBOARD_ROUTE,
 } from "../../paths";
 
-export const travelToDashboard = async (store: Store): Promise<React.Component> => {
-  const dom = createDom(store);
-  TestUtils.act((): void => {
-    history.push(DASHBOARD_ROUTE);
-  });
-  await whenOnNavigatedToRoute(DASHBOARD_ROUTE);
+const travelTo = async (route: string, store: Store): Promise<Component> => {
+  let dom: Component = new Component({});
+
+  await TestUtils.act((async () => {
+    dom = createDom(store);
+    history.push(route);
+    await whenOnNavigatedToRoute(route);
+  }) as () => void);
 
   return dom;
 };
 
-export const travelToDashboardActive = async (store: Store): Promise<React.Component> => {
-  const dom = createDom(store);
-  TestUtils.act((): void => {
-    history.push(DASHBOARD_ACTIVE_ROUTE);
-  });
-  await whenOnNavigatedToRoute(DASHBOARD_ACTIVE_ROUTE);
+export const travelToDashboard = async (store: Store): Promise<Component> => travelTo(DASHBOARD_ROUTE, store);
 
-  return dom;
-};
+export const travelToDashboardActive = async (store: Store): Promise<Component> =>
+  travelTo(DASHBOARD_ACTIVE_ROUTE, store);
 
-export const travelToDashboardAuthored = async (store: Store): Promise<React.Component> => {
-  const dom = createDom(store);
-  TestUtils.act((): void => {
-    history.push(DASHBOARD_AUTHORED_ROUTE);
-  });
-  await whenOnNavigatedToRoute(DASHBOARD_AUTHORED_ROUTE);
+export const travelToDashboardAuthored = async (store: Store): Promise<Component> =>
+  travelTo(DASHBOARD_AUTHORED_ROUTE, store);
 
-  return dom;
-};
-
-export const travelToDashboardEnded = async (store: Store): Promise<React.Component> => {
-  const dom = createDom(store);
-  TestUtils.act((): void => {
-    history.push(DASHBOARD_ENDED_ROUTE);
-  });
-  await whenOnNavigatedToRoute(DASHBOARD_ENDED_ROUTE);
-
-  return dom;
-};
+export const travelToDashboardEnded = async (store: Store): Promise<Component> =>
+  travelTo(DASHBOARD_ENDED_ROUTE, store);
 
 export const travelToDashboardE2e = async (page: Page): Promise<void> => {
   await page.click("button");

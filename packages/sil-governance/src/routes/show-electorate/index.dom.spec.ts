@@ -94,6 +94,7 @@ describe("DOM > Feature > Show Electorate", () => {
 
   it("has an Equal Electorate with expected members", async () => {
     electorateDom = await travelToShowElectorate(store, "1");
+
     const heading = findRenderedDOMComponentWithTag(electorateDom, "h6");
     expect(heading.textContent).toBe("Equal Electorate members:");
 
@@ -111,6 +112,7 @@ describe("DOM > Feature > Show Electorate", () => {
 
   it("has a Weighted Electorate with expected members", async () => {
     electorateDom = await travelToShowElectorate(store, "2");
+
     const heading = findRenderedDOMComponentWithTag(electorateDom, "h6");
     expect(heading.textContent).toBe("Weighted Electorate members:");
 
