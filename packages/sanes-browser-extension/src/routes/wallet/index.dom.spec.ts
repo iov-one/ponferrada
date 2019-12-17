@@ -24,6 +24,7 @@ import { showIdentityHtmlId } from "./components/SidePanel/PanelDrawer/component
 import { showTxHtmlId } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx";
 import { REQ_REGISTER_USERNAME } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqRegisterUsernameTx";
 import { REQ_SEND_TX } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqSendTransaction";
+import { REQ_UPDATE_TARGETS_USERNAME } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqUpdateTargetsOfUsernameTx";
 import { getMnemonicValidity, isButtonDisabled } from "./test/operateDeleteWallet";
 import {
   goToAbout,
@@ -49,6 +50,7 @@ import {
   getCashTransaction,
   getCreateTextResolutionActionTransaction,
   getProposalStartDate,
+  getUpdateUsernameTargetsTransaction,
   getUsernameTransaction,
 } from "./test/operateTXRequest";
 
@@ -322,6 +324,32 @@ describe("DOM > Feature > Wallet Status Drawer > Username Registration Request",
 
   it("should show register username request accept view", async () => {
     await findRenderedDOMComponentWithId(txRequestDOM, REQ_REGISTER_USERNAME);
+  }, 60000);
+});
+
+describe("DOM > Feature > Wallet Status Drawer > Username Targets Update Request", () => {
+  const requests: readonly Request[] = [
+    {
+      id: 1,
+      senderUrl: "http://finnex.com",
+      reason: "Test username targets update",
+      responseData: {
+        tx: getUpdateUsernameTargetsTransaction(),
+      },
+      accept: jest.fn(),
+      reject: jest.fn(),
+    },
+  ];
+
+  let txRequestDOM: React.Component;
+
+  beforeEach(async () => {
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    await click(getFirstRequest(txRequestDOM));
+  }, 60000);
+
+  it("should show update username targets request accept view", async () => {
+    await findRenderedDOMComponentWithId(txRequestDOM, REQ_UPDATE_TARGETS_USERNAME);
   }, 60000);
 });
 
