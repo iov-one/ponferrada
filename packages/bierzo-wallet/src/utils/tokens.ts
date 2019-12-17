@@ -43,6 +43,16 @@ export function getChainAddressPairWithNames(
   return addresses;
 }
 
+export function getChainAddressPairWithNamesSorted(
+  identities: ReadonlyMap<ChainId, ExtendedIdentity>,
+): readonly ChainAddressPairWithName[] {
+  const chainAddresses = getChainAddressPairWithNames(identities);
+
+  return Array.from(chainAddresses).sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+    a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+  );
+}
+
 /**
  * This method will convert ChainAddressPair to ChainAddressPairWithName
  */
