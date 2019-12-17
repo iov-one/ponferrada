@@ -9082,7 +9082,7 @@ exports[`Storyshots Medulas React Components/components/forms DateTimePicker 1`]
         readOnly={true}
         required={false}
         type="text"
-        value="Dec 17, 2019, 9:37 AM"
+        value="Dec 17, 2019, 3:04 PM"
       />
       <fieldset
         aria-hidden={true}
@@ -12724,7 +12724,7 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
                   readOnly={true}
                   required={false}
                   type="text"
-                  value="December 17 09:37"
+                  value="December 17 15:04"
                 />
                 <fieldset
                   aria-hidden={true}
