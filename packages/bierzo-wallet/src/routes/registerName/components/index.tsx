@@ -1,4 +1,4 @@
-import { Address, ChainId, Fee } from "@iov/bcp";
+import { Fee } from "@iov/bcp";
 import {
   Avatar,
   Back,
@@ -23,12 +23,12 @@ import shield from "../assets/shield.svg";
 import SelectAddressesTable, {
   addressValueField,
   blockchainValueField,
+  fieldValueIdxLength,
   SelectAddressItem,
 } from "./SelectAddressesTable";
 
 export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";
 export const REGISTER_USERNAME_FIELD = "register-username-field";
-export const fieldValueIdxLength = 5;
 
 const registerIcon = <Image src={shield} alt="shield" />;
 const registerTooltipIcon = <Image src={shield} alt="shield" width={24} height={24} />;
@@ -121,8 +121,6 @@ interface Props extends AddressesTableProps {
 }
 
 const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
-  const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>([]);
-
   const chainAddressesItems = React.useMemo(() => getAddressItems(chainAddresses), [chainAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
@@ -131,39 +129,6 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
     validate,
     initialValues,
   });
-
-  React.useEffect(() => {
-    setChainItems(chainAddressesItems);
-  }, [chainAddressesItems]);
-
-  const blockChainItems = React.useMemo(() => chainAddresses.map(pair => ({ name: pair.chainName })), [
-    chainAddresses,
-  ]);
-
-  const addAddress = (): void => {
-    const newItems = [...chainItems];
-    newItems.push({
-      id: randomString(fieldValueIdxLength),
-      chain: {
-        address: "" as Address,
-        chainId: "" as ChainId,
-        chainName: "Select",
-      },
-    });
-    setChainItems(newItems);
-  };
-
-  const removeAddress = (idx: number): void => {
-    const newItems = [...chainItems];
-    const [removedItem] = newItems.splice(idx, 1);
-
-    form.batch(() => {
-      form.change(`${removedItem.id}_${blockchainValueField}`, null);
-      form.change(`${removedItem.id}_${addressValueField}`, null);
-    });
-
-    setChainItems(newItems);
-  };
 
   const buttons = (
     <Block
@@ -245,16 +210,8 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
                 Optional
               </Typography>
             </Block>
-            <SelectAddressesTable
-              blockChainItems={blockChainItems}
-              removeAddress={removeAddress}
-              chainAddresses={chainItems}
-              form={form}
-            />
+            <SelectAddressesTable chainAddresses={chainAddressesItems} form={form} />
           </Block>
-          <Typography link color="primary" onClick={addAddress}>
-            + Add more
-          </Typography>
         </Block>
       </PageContent>
     </Form>
