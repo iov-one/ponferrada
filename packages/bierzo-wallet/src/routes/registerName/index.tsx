@@ -25,9 +25,13 @@ import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
-import Layout, { fieldValueIdxLength, REGISTER_USERNAME_FIELD } from "./components";
+import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
-import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
+import {
+  addressValueField,
+  blockchainValueField,
+  fieldValueIdxLength,
+} from "./components/SelectAddressesTable";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
