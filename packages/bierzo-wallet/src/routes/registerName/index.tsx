@@ -117,16 +117,17 @@ function getChainAddressPairsFromValues(
 
     const type = key.substr(fieldValueIdxLength + 1);
     switch (type) {
-      case addressValueField:
+      case addressValueField: {
         pair = { ...pair, address: values[key] as Address };
         break;
-      case blockchainValueField:
-        // eslint-disable-next-line no-case-declarations
+      }
+      case blockchainValueField: {
         const chain = addresses.find(address => address.chainName === values[key]);
         if (chain) {
           pair = { ...pair, chainId: chain.chainId, chainName: chain.chainName };
         }
         break;
+      }
     }
 
     chainAddressMap.set(index, pair);
