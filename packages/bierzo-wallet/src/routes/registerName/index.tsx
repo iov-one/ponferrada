@@ -23,7 +23,7 @@ import { isValidIov } from "../../logic/account";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPairWithNames } from "../../utils/tokens";
+import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { fieldValueIdxLength, REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
@@ -155,11 +155,7 @@ const RegisterUsername = (): JSX.Element => {
 
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const addresses = getChainAddressPairWithNames(identities);
-  const addressesSorted = Array.from(addresses).sort(
-    (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
-      a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-  );
+  const addressesSorted = React.useMemo(() => getChainAddressPairWithNamesSorted(identities), [identities]);
 
   const bnsIdentity = getBnsIdentity(identities);
 
@@ -178,18 +174,18 @@ const RegisterUsername = (): JSX.Element => {
         setTransactionFee(fee);
       }
     }
-    getFee(bnsIdentity, addresses);
+    getFee(bnsIdentity, addressesSorted);
 
     return () => {
       isSubscribed = false;
     };
-  }, [bnsIdentity, addresses]);
+  }, [addressesSorted, bnsIdentity]);
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
     const username = formValues[REGISTER_USERNAME_FIELD];
-    const addressesToRegister = getChainAddressPairsFromValues(formValues, addresses);
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
 
     try {
       const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addressesToRegister);
