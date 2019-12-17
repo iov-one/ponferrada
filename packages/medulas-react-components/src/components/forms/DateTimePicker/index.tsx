@@ -4,8 +4,10 @@ import {
   DateTimePicker as MuiDateTimePicker,
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
+import { ParsableDate } from "@material-ui/pickers/constants/prop-types";
 import { FieldSubscription, FieldValidator, FormApi } from "final-form";
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { useField } from "react-final-form-hooks";
 
 import { FieldInputValue } from "../../../utils/forms/validators";
@@ -25,7 +27,10 @@ type Props = InnerProps & BaseDateTimePickerProps;
 const DateTimePicker = ({ name, form, validate, onChanged, ...restProps }: Props): JSX.Element => {
   const { input, meta } = useField(name, form, validate);
   const error = meta.error && (meta.touched || !meta.pristine);
-  const value = input.value ? input.value : getNextMinuteDate();
+  const [value, setValue] = useState<ParsableDate>("1970-01-01T00:00");
+
+  // Sets value after render to make storybook work
+  useEffect(() => setValue(input.value ? input.value : getNextMinuteDate()), [input.value]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     input.onChange(event);
