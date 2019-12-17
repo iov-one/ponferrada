@@ -14,10 +14,12 @@ import React from "react";
 import { BwUsernameWithChainName } from "..";
 import AddressesTable from "../../../components/AddressesTable";
 import copy from "../../../components/AddressesTable/assets/copy.svg";
+import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
 import { AddressesTooltipHeader, TooltipContent } from "../../registerName/components";
 
 interface Props {
   readonly usernames: readonly BwUsernameWithChainName[];
+  readonly onRegisterUsername: () => void;
 }
 
 const usePaper = makeStyles({
@@ -35,14 +37,20 @@ const useStyles = makeStyles({
   },
 });
 
-function IovnamesExists({ usernames }: Props): JSX.Element {
+function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
   return (
     <React.Fragment>
-      <Typography link color="primary" align="center">
+      <Typography
+        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+        link
+        color="primary"
+        align="center"
+        onClick={onRegisterUsername}
+      >
         + Create new iovname
       </Typography>
       {usernames.map(username => {

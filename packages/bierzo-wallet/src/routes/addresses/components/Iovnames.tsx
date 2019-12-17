@@ -23,7 +23,7 @@ const Iovnames = ({ usernames, rpcEndpointType, onRegisterUsername }: IovnamesPr
       {!hasIovnames && (
         <IovnamesNotExists rpcEndpointType={rpcEndpointType} onRegisterUsername={onRegisterUsername} />
       )}
-      {hasIovnames && <IovnamesExists usernames={usernames} />}
+      {hasIovnames && <IovnamesExists usernames={usernames} onRegisterUsername={onRegisterUsername} />}
     </Block>
   );
 };
