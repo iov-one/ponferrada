@@ -123,14 +123,7 @@ interface Props extends AddressesTableProps {
 const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
   const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>([]);
 
-  const chainAddressesItems = React.useMemo(() => {
-    const sorted = Array.from(chainAddresses).sort(
-      (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
-        a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-    );
-
-    return getAddressItems(sorted);
-  }, [chainAddresses]);
+  const chainAddressesItems = React.useMemo(() => getAddressItems(chainAddresses), [chainAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
