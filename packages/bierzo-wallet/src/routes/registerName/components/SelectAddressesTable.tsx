@@ -1,3 +1,4 @@
+import { Address, ChainId } from "@iov/bcp";
 import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 import { Theme } from "@material-ui/core";
 import { FormApi } from "final-form";
@@ -11,11 +12,13 @@ import {
   Typography,
 } from "medulas-react-components";
 import React from "react";
+import { randomString } from "ui-logic";
 
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 
 export const addressValueField = "address-value-field";
 export const blockchainValueField = "blockchain-value-field";
+export const fieldValueIdxLength = 5;
 
 const useStyles = makeStyles((theme: Theme) => ({
   cell: {
@@ -51,16 +54,34 @@ interface RowProps {
   readonly addressItem: SelectAddressItem;
   readonly blockChainItems: SelectFieldItem[];
   readonly removeAddress: (idx: number) => void;
+  readonly removeBlockchainItem: (chain: SelectFieldItem) => void;
+  readonly addBlockchainItem: (chain: SelectFieldItem) => void;
 }
 
-const AddressRow = ({ addressItem, form, index, blockChainItems, removeAddress }: RowProps): JSX.Element => {
+const AddressRow = ({
+  addressItem,
+  form,
+  index,
+  blockChainItems,
+  removeAddress,
+  removeBlockchainItem,
+  addBlockchainItem,
+}: RowProps): JSX.Element => {
   const classes = useStyles();
   const cellClasses = {
     root: classes.cell,
   };
 
   const onRemove = (): void => {
+    addBlockchainItem({ name: addressItem.chain.chainName });
     removeAddress(index);
+  };
+
+  const onSelectionChanged = (value: SelectFieldItem | undefined): void => {
+    if (value) {
+      addBlockchainItem({ name: addressItem.chain.chainName });
+      removeBlockchainItem(value);
+    }
   };
 
   return (
@@ -74,7 +95,8 @@ const AddressRow = ({ addressItem, form, index, blockChainItems, removeAddress }
               maxWidth="200px"
               items={blockChainItems}
               initial={addressItem.chain.chainName}
-              placeholder="Select"
+              placeholder={blockChainItems.length > 0 ? "Select" : undefined}
+              onChangeCallback={onSelectionChanged}
             />
           }
         >
@@ -98,32 +120,74 @@ const AddressRow = ({ addressItem, form, index, blockChainItems, removeAddress }
 
 interface TableProps {
   readonly form: FormApi;
-  readonly blockChainItems: SelectFieldItem[];
   readonly chainAddresses: SelectAddressItem[];
-  readonly removeAddress: (idx: number) => void;
 }
 
-const SelectAddressesTable = ({
-  chainAddresses,
-  removeAddress,
-  form,
-  blockChainItems,
-}: TableProps): JSX.Element => {
+const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element => {
+  const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>(chainAddresses);
+  const [blockChainItems, setBlockchainItems] = React.useState<SelectFieldItem[]>([]);
+
+  const removeBlockchainItem = (chain: SelectFieldItem): void => {
+    const newItem = blockChainItems.filter(item => item.name !== chain.name);
+    setBlockchainItems(newItem);
+  };
+
+  const addBlockchainItem = (chain: SelectFieldItem): void => {
+    const newItem = [...blockChainItems];
+    newItem.push(chain);
+    newItem.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+    setBlockchainItems(newItem);
+  };
+
+  const addAddress = (): void => {
+    const newItems = [...chainItems];
+    newItems.push({
+      id: randomString(fieldValueIdxLength),
+      chain: {
+        address: "" as Address,
+        chainId: "" as ChainId,
+        chainName: "Select",
+      },
+    });
+    setChainItems(newItems);
+  };
+
+  const removeAddress = (idx: number): void => {
+    const newItems = [...chainItems];
+    const [removedItem] = newItems.splice(idx, 1);
+
+    form.batch(() => {
+      form.change(`${removedItem.id}_${blockchainValueField}`, null);
+      form.change(`${removedItem.id}_${addressValueField}`, null);
+    });
+
+    setChainItems(newItems);
+  };
+
   return (
-    <Table>
-      <TableBody>
-        {chainAddresses.map((addressItem, index) => (
-          <AddressRow
-            key={addressItem.id}
-            index={index}
-            addressItem={addressItem}
-            form={form}
-            blockChainItems={blockChainItems}
-            removeAddress={removeAddress}
-          />
-        ))}
-      </TableBody>
-    </Table>
+    <React.Fragment>
+      <Table>
+        <TableBody>
+          {chainItems.map((addressItem, index) => (
+            <AddressRow
+              key={addressItem.id}
+              index={index}
+              addressItem={addressItem}
+              form={form}
+              blockChainItems={blockChainItems}
+              removeAddress={removeAddress}
+              removeBlockchainItem={removeBlockchainItem}
+              addBlockchainItem={addBlockchainItem}
+            />
+          ))}
+        </TableBody>
+      </Table>
+      {blockChainItems.length > 0 && (
+        <Typography link color="primary" onClick={addAddress}>
+          + Add more
+        </Typography>
+      )}
+    </React.Fragment>
   );
 };
 
