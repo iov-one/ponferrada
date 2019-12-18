@@ -5791,15 +5791,331 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
               >
                 <tbody
                   className="MuiTableBody-root"
-                />
+                >
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-root"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-prepend"
+                        >
+                          <div
+                            className="form-select-field makeStyles-dropdown"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="MuiInputBase-root makeStyles-root makeStyles-root"
+                              onClick={[Function]}
+                              role="button"
+                            >
+                              <input
+                                autoComplete="off"
+                                className="MuiInputBase-input makeStyles-input"
+                                name="ohetl_blockchain-value-field"
+                                onAnimationStart={[Function]}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                            <img
+                              alt="Phone Menu"
+                              className="makeStyles-root makeStyles-noShrink"
+                              height="5"
+                              src="selectChevron.svg"
+                              width="8"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                        >
+                          <div
+                            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                            onClick={[Function]}
+                          >
+                            <input
+                              aria-invalid={false}
+                              className="MuiInputBase-input MuiOutlinedInput-input"
+                              disabled={false}
+                              name="ohetl_address-value-field"
+                              onAnimationStart={[Function]}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Add blockchain address"
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                            <fieldset
+                              aria-hidden={true}
+                              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                              style={
+                                Object {
+                                  "paddingLeft": 8,
+                                }
+                              }
+                            >
+                              <legend
+                                className="PrivateNotchedOutline-legend"
+                                style={
+                                  Object {
+                                    "width": 0.01,
+                                  }
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "&#8203;",
+                                    }
+                                  }
+                                />
+                              </legend>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body2 MuiTypography-colorPrimary"
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-root"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-prepend"
+                        >
+                          <div
+                            className="form-select-field makeStyles-dropdown"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="MuiInputBase-root makeStyles-root makeStyles-root"
+                              onClick={[Function]}
+                              role="button"
+                            >
+                              <input
+                                autoComplete="off"
+                                className="MuiInputBase-input makeStyles-input"
+                                name="8g8m4_blockchain-value-field"
+                                onAnimationStart={[Function]}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                            <img
+                              alt="Phone Menu"
+                              className="makeStyles-root makeStyles-noShrink"
+                              height="5"
+                              src="selectChevron.svg"
+                              width="8"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                        >
+                          <div
+                            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                            onClick={[Function]}
+                          >
+                            <input
+                              aria-invalid={false}
+                              className="MuiInputBase-input MuiOutlinedInput-input"
+                              disabled={false}
+                              name="8g8m4_address-value-field"
+                              onAnimationStart={[Function]}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Add blockchain address"
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                            <fieldset
+                              aria-hidden={true}
+                              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                              style={
+                                Object {
+                                  "paddingLeft": 8,
+                                }
+                              }
+                            >
+                              <legend
+                                className="PrivateNotchedOutline-legend"
+                                style={
+                                  Object {
+                                    "width": 0.01,
+                                  }
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "&#8203;",
+                                    }
+                                  }
+                                />
+                              </legend>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body2 MuiTypography-colorPrimary"
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-root"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-prepend"
+                        >
+                          <div
+                            className="form-select-field makeStyles-dropdown"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="MuiInputBase-root makeStyles-root makeStyles-root"
+                              onClick={[Function]}
+                              role="button"
+                            >
+                              <input
+                                autoComplete="off"
+                                className="MuiInputBase-input makeStyles-input"
+                                name="l64jn_blockchain-value-field"
+                                onAnimationStart={[Function]}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                            <img
+                              alt="Phone Menu"
+                              className="makeStyles-root makeStyles-noShrink"
+                              height="5"
+                              src="selectChevron.svg"
+                              width="8"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                        >
+                          <div
+                            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                            onClick={[Function]}
+                          >
+                            <input
+                              aria-invalid={false}
+                              className="MuiInputBase-input MuiOutlinedInput-input"
+                              disabled={false}
+                              name="l64jn_address-value-field"
+                              onAnimationStart={[Function]}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Add blockchain address"
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                            <fieldset
+                              aria-hidden={true}
+                              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                              style={
+                                Object {
+                                  "paddingLeft": 8,
+                                }
+                              }
+                            >
+                              <legend
+                                className="PrivateNotchedOutline-legend"
+                                style={
+                                  Object {
+                                    "width": 0.01,
+                                  }
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "&#8203;",
+                                    }
+                                  }
+                                />
+                              </legend>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body2 MuiTypography-colorPrimary"
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
-            <p
-              className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-              onClick={[Function]}
-            >
-              + Add more
-            </p>
           </div>
         </div>
       </div>
@@ -6064,15 +6380,331 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
               >
                 <tbody
                   className="MuiTableBody-root"
-                />
+                >
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-root"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-prepend"
+                        >
+                          <div
+                            className="form-select-field makeStyles-dropdown"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="MuiInputBase-root makeStyles-root makeStyles-root"
+                              onClick={[Function]}
+                              role="button"
+                            >
+                              <input
+                                autoComplete="off"
+                                className="MuiInputBase-input makeStyles-input"
+                                name="5chai_blockchain-value-field"
+                                onAnimationStart={[Function]}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                            <img
+                              alt="Phone Menu"
+                              className="makeStyles-root makeStyles-noShrink"
+                              height="5"
+                              src="selectChevron.svg"
+                              width="8"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                        >
+                          <div
+                            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                            onClick={[Function]}
+                          >
+                            <input
+                              aria-invalid={false}
+                              className="MuiInputBase-input MuiOutlinedInput-input"
+                              disabled={false}
+                              name="5chai_address-value-field"
+                              onAnimationStart={[Function]}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Add blockchain address"
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                            <fieldset
+                              aria-hidden={true}
+                              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                              style={
+                                Object {
+                                  "paddingLeft": 8,
+                                }
+                              }
+                            >
+                              <legend
+                                className="PrivateNotchedOutline-legend"
+                                style={
+                                  Object {
+                                    "width": 0.01,
+                                  }
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "&#8203;",
+                                    }
+                                  }
+                                />
+                              </legend>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body2 MuiTypography-colorPrimary"
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-root"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-prepend"
+                        >
+                          <div
+                            className="form-select-field makeStyles-dropdown"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="MuiInputBase-root makeStyles-root makeStyles-root"
+                              onClick={[Function]}
+                              role="button"
+                            >
+                              <input
+                                autoComplete="off"
+                                className="MuiInputBase-input makeStyles-input"
+                                name="6sb5z_blockchain-value-field"
+                                onAnimationStart={[Function]}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                            <img
+                              alt="Phone Menu"
+                              className="makeStyles-root makeStyles-noShrink"
+                              height="5"
+                              src="selectChevron.svg"
+                              width="8"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                        >
+                          <div
+                            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                            onClick={[Function]}
+                          >
+                            <input
+                              aria-invalid={false}
+                              className="MuiInputBase-input MuiOutlinedInput-input"
+                              disabled={false}
+                              name="6sb5z_address-value-field"
+                              onAnimationStart={[Function]}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Add blockchain address"
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                            <fieldset
+                              aria-hidden={true}
+                              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                              style={
+                                Object {
+                                  "paddingLeft": 8,
+                                }
+                              }
+                            >
+                              <legend
+                                className="PrivateNotchedOutline-legend"
+                                style={
+                                  Object {
+                                    "width": 0.01,
+                                  }
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "&#8203;",
+                                    }
+                                  }
+                                />
+                              </legend>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body2 MuiTypography-colorPrimary"
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-root"
+                      >
+                        <div
+                          className="MuiBox-root MuiBox-root makeStyles-prepend"
+                        >
+                          <div
+                            className="form-select-field makeStyles-dropdown"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="MuiInputBase-root makeStyles-root makeStyles-root"
+                              onClick={[Function]}
+                              role="button"
+                            >
+                              <input
+                                autoComplete="off"
+                                className="MuiInputBase-input makeStyles-input"
+                                name="8qlt4_blockchain-value-field"
+                                onAnimationStart={[Function]}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                            <img
+                              alt="Phone Menu"
+                              className="makeStyles-root makeStyles-noShrink"
+                              height="5"
+                              src="selectChevron.svg"
+                              width="8"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                        >
+                          <div
+                            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                            onClick={[Function]}
+                          >
+                            <input
+                              aria-invalid={false}
+                              className="MuiInputBase-input MuiOutlinedInput-input"
+                              disabled={false}
+                              name="8qlt4_address-value-field"
+                              onAnimationStart={[Function]}
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Add blockchain address"
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                            <fieldset
+                              aria-hidden={true}
+                              className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                              style={
+                                Object {
+                                  "paddingLeft": 8,
+                                }
+                              }
+                            >
+                              <legend
+                                className="PrivateNotchedOutline-legend"
+                                style={
+                                  Object {
+                                    "width": 0.01,
+                                  }
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "&#8203;",
+                                    }
+                                  }
+                                />
+                              </legend>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <p
+                        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-body2 MuiTypography-colorPrimary"
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
-            <p
-              className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-              onClick={[Function]}
-            >
-              + Add more
-            </p>
           </div>
         </div>
       </div>
