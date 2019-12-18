@@ -133,22 +133,23 @@ const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element
   };
 
   const addBlockchainItem = (chain: SelectFieldItem): void => {
-    const newItem = [...blockChainItems];
-    newItem.push(chain);
+    const newItem = [...blockChainItems, chain];
     newItem.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
     setBlockchainItems(newItem);
   };
 
   const addAddress = (): void => {
-    const newItems = [...chainItems];
-    newItems.push({
-      id: randomString(fieldValueIdxLength),
-      chain: {
-        address: "" as Address,
-        chainId: "" as ChainId,
-        chainName: "Select",
+    const newItems = [
+      ...chainItems,
+      {
+        id: randomString(fieldValueIdxLength),
+        chain: {
+          address: "" as Address,
+          chainId: "" as ChainId,
+          chainName: "Select",
+        },
       },
-    });
+    ];
     setChainItems(newItems);
   };
 
