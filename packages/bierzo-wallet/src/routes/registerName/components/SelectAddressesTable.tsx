@@ -18,7 +18,9 @@ import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 
 export const addressValueField = "address-value-field";
 export const blockchainValueField = "blockchain-value-field";
-export const fieldValueIdxLength = 5;
+
+export const getAddressInputName = (id: string): string => `${id}-${addressValueField}`;
+export const getBlockchainInputName = (id: string): string => `${id}-${blockchainValueField}`;
 
 const useStyles = makeStyles((theme: Theme) => ({
   cell: {
@@ -90,7 +92,7 @@ const AddressRow = ({
         <InputGroup
           prepend={
             <SelectField
-              fieldName={`${addressItem.id}_${blockchainValueField}`}
+              fieldName={getBlockchainInputName(addressItem.id)}
               form={form}
               maxWidth="200px"
               items={blockChainItems}
@@ -101,7 +103,7 @@ const AddressRow = ({
           }
         >
           <TextField
-            name={`${addressItem.id}_${addressValueField}`}
+            name={getAddressInputName(addressItem.id)}
             form={form}
             placeholder="Add blockchain address"
             fullWidth
@@ -142,7 +144,7 @@ const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element
     const newItems = [
       ...chainItems,
       {
-        id: randomString(fieldValueIdxLength),
+        id: randomString(5),
         chain: {
           address: "" as Address,
           chainId: "" as ChainId,
@@ -158,8 +160,8 @@ const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element
     const [removedItem] = newItems.splice(idx, 1);
 
     form.batch(() => {
-      form.change(`${removedItem.id}_${blockchainValueField}`, null);
-      form.change(`${removedItem.id}_${addressValueField}`, null);
+      form.change(getBlockchainInputName(removedItem.id), null);
+      form.change(getAddressInputName(removedItem.id), null);
     });
 
     setChainItems(newItems);

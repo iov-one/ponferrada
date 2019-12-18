@@ -28,11 +28,7 @@ import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
-import {
-  addressValueField,
-  blockchainValueField,
-  fieldValueIdxLength,
-} from "./components/SelectAddressesTable";
+import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -67,13 +63,16 @@ function getChainAddressPairsFromValues(
     Partial<ChainAddressPairWithName>
   >();
   Object.keys(values).forEach(key => {
-    const index = key.substr(0, fieldValueIdxLength);
+    const idxLenght = key.indexOf("-");
+    if (idxLenght === -1) return;
+
+    const index = key.substr(0, idxLenght);
     let pair = chainAddressMap.get(index);
     if (!pair) {
       pair = {};
     }
 
-    const type = key.substr(fieldValueIdxLength + 1);
+    const type = key.substr(idxLenght + 1);
     switch (type) {
       case addressValueField: {
         pair = { ...pair, address: values[key] as Address };

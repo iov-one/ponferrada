@@ -15,15 +15,14 @@ import {
   useForm,
 } from "medulas-react-components";
 import React from "react";
-import { amountToString, randomString } from "ui-logic";
+import { amountToString } from "ui-logic";
 
 import { AddressesTableProps, ChainAddressPairWithName } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable, {
-  addressValueField,
-  blockchainValueField,
-  fieldValueIdxLength,
+  getAddressInputName,
+  getBlockchainInputName,
   SelectAddressItem,
 } from "./SelectAddressesTable";
 
@@ -94,8 +93,8 @@ function getSubmitButtonCaption(fee: Fee | undefined): string {
 function getFormInitValues(addressItems: SelectAddressItem[]): FormValues {
   const initialValues: FormValues = {};
   addressItems.forEach(item => {
-    initialValues[`${item.id}_${addressValueField}`] = item.chain.address;
-    initialValues[`${item.id}_${blockchainValueField}`] = item.chain.chainName;
+    initialValues[getAddressInputName(item.id)] = item.chain.address;
+    initialValues[getBlockchainInputName(item.id)] = item.chain.chainName;
   });
 
   return initialValues;
@@ -105,7 +104,7 @@ function getAddressItems(chainAddresses: readonly ChainAddressPairWithName[]): S
   const addressItems: SelectAddressItem[] = [];
   chainAddresses.forEach((chain, index) => {
     addressItems.push({
-      id: randomString(fieldValueIdxLength),
+      id: index.toString(),
       chain,
     });
   });
