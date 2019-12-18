@@ -25,6 +25,7 @@ import { getConnectionForBns, getConnectionForChainId } from "../../logic/connec
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
+import { BwUsernameWithChainName } from "../addresses";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
@@ -116,6 +117,11 @@ const RegisterUsername = (): JSX.Element => {
   const addressesSorted = React.useMemo(() => getChainAddressPairWithNamesSorted(identities), [identities]);
 
   const bnsIdentity = getBnsIdentity(identities);
+
+  if (history.location.state) {
+    const iovname: BwUsernameWithChainName = history.location.state;
+    console.log(iovname);
+  }
 
   if (!bnsIdentity) throw new Error("No BNS identity available.");
   if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
