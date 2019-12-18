@@ -5817,7 +5817,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                               <input
                                 autoComplete="off"
                                 className="MuiInputBase-input makeStyles-input"
-                                name="ohetl_blockchain-value-field"
+                                name="0vas9_blockchain-value-field"
                                 onAnimationStart={[Function]}
                                 onBlur={[Function]}
                                 onChange={[Function]}
@@ -5847,7 +5847,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                               aria-invalid={false}
                               className="MuiInputBase-input MuiOutlinedInput-input"
                               disabled={false}
-                              name="ohetl_address-value-field"
+                              name="0vas9_address-value-field"
                               onAnimationStart={[Function]}
                               onBlur={[Function]}
                               onChange={[Function]}
@@ -5924,7 +5924,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                               <input
                                 autoComplete="off"
                                 className="MuiInputBase-input makeStyles-input"
-                                name="8g8m4_blockchain-value-field"
+                                name="wep72_blockchain-value-field"
                                 onAnimationStart={[Function]}
                                 onBlur={[Function]}
                                 onChange={[Function]}
@@ -5954,7 +5954,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                               aria-invalid={false}
                               className="MuiInputBase-input MuiOutlinedInput-input"
                               disabled={false}
-                              name="8g8m4_address-value-field"
+                              name="wep72_address-value-field"
                               onAnimationStart={[Function]}
                               onBlur={[Function]}
                               onChange={[Function]}
@@ -6031,7 +6031,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                               <input
                                 autoComplete="off"
                                 className="MuiInputBase-input makeStyles-input"
-                                name="l64jn_blockchain-value-field"
+                                name="rvrz9_blockchain-value-field"
                                 onAnimationStart={[Function]}
                                 onBlur={[Function]}
                                 onChange={[Function]}
@@ -6061,7 +6061,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
                               aria-invalid={false}
                               className="MuiInputBase-input MuiOutlinedInput-input"
                               disabled={false}
-                              name="l64jn_address-value-field"
+                              name="rvrz9_address-value-field"
                               onAnimationStart={[Function]}
                               onBlur={[Function]}
                               onChange={[Function]}
@@ -6406,7 +6406,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
                               <input
                                 autoComplete="off"
                                 className="MuiInputBase-input makeStyles-input"
-                                name="5chai_blockchain-value-field"
+                                name="mzxlo_blockchain-value-field"
                                 onAnimationStart={[Function]}
                                 onBlur={[Function]}
                                 onChange={[Function]}
@@ -6436,7 +6436,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
                               aria-invalid={false}
                               className="MuiInputBase-input MuiOutlinedInput-input"
                               disabled={false}
-                              name="5chai_address-value-field"
+                              name="mzxlo_address-value-field"
                               onAnimationStart={[Function]}
                               onBlur={[Function]}
                               onChange={[Function]}
@@ -6513,7 +6513,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
                               <input
                                 autoComplete="off"
                                 className="MuiInputBase-input makeStyles-input"
-                                name="6sb5z_blockchain-value-field"
+                                name="ysec7_blockchain-value-field"
                                 onAnimationStart={[Function]}
                                 onBlur={[Function]}
                                 onChange={[Function]}
@@ -6543,7 +6543,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
                               aria-invalid={false}
                               className="MuiInputBase-input MuiOutlinedInput-input"
                               disabled={false}
-                              name="6sb5z_address-value-field"
+                              name="ysec7_address-value-field"
                               onAnimationStart={[Function]}
                               onBlur={[Function]}
                               onChange={[Function]}
@@ -6620,7 +6620,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
                               <input
                                 autoComplete="off"
                                 className="MuiInputBase-input makeStyles-input"
-                                name="8qlt4_blockchain-value-field"
+                                name="n4lvz_blockchain-value-field"
                                 onAnimationStart={[Function]}
                                 onBlur={[Function]}
                                 onChange={[Function]}
@@ -6650,7 +6650,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Register Username without fe
                               aria-invalid={false}
                               className="MuiInputBase-input MuiOutlinedInput-input"
                               disabled={false}
-                              name="8qlt4_address-value-field"
+                              name="n4lvz_address-value-field"
                               onAnimationStart={[Function]}
                               onBlur={[Function]}
                               onChange={[Function]}
