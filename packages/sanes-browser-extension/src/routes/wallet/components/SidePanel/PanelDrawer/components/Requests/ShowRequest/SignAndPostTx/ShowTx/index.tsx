@@ -1,5 +1,5 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx } from "@iov/bns";
+import { isCreateProposalTx, isRegisterUsernameTx, isUpdateTargetsOfUsernameTx, isVoteTx } from "@iov/bns";
 import { Block, Button, Typography } from "medulas-react-components";
 import * as React from "react";
 
@@ -7,6 +7,7 @@ import { SupportedTransaction } from "../../../../../../../../../../extension/ba
 import ReqCreateProposalTx from "./ReqCreateProposalTx";
 import ReqRegisterUsernameTx from "./ReqRegisterUsernameTx";
 import ReqSendTransaction from "./ReqSendTransaction";
+import ReqUpdateTargetsOfUsernameTx from "./ReqUpdateTargetsOfUsernameTx";
 import ReqVoteTx from "./ReqVoteTx";
 
 export const showTxHtmlId = "tx-request-show";
@@ -25,6 +26,8 @@ const ShowTx = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
     req = <ReqSendTransaction tx={tx} />;
   } else if (isRegisterUsernameTx(tx)) {
     req = <ReqRegisterUsernameTx tx={tx} />;
+  } else if (isUpdateTargetsOfUsernameTx(tx)) {
+    req = <ReqUpdateTargetsOfUsernameTx tx={tx} />;
   } else if (isCreateProposalTx(tx)) {
     req = <ReqCreateProposalTx tx={tx} />;
   } else if (isVoteTx(tx)) {

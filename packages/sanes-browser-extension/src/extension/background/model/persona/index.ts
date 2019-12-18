@@ -13,8 +13,10 @@ import {
   CreateProposalTx,
   isCreateProposalTx,
   isRegisterUsernameTx,
+  isUpdateTargetsOfUsernameTx,
   isVoteTx,
   RegisterUsernameTx,
+  UpdateTargetsOfUsernameTx,
   VoteTx,
 } from "@iov/bns";
 import { Bip39, Random } from "@iov/crypto";
@@ -49,11 +51,22 @@ function isNonUndefined<T>(t: T | undefined): t is T {
 /**
  * All transaction types that can be displayed and signed by the extension
  */
-export type SupportedTransaction = (SendTransaction | RegisterUsernameTx | CreateProposalTx | VoteTx) &
+export type SupportedTransaction = (
+  | SendTransaction
+  | RegisterUsernameTx
+  | UpdateTargetsOfUsernameTx
+  | CreateProposalTx
+  | VoteTx) &
   WithCreator;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
-  return isSendTransaction(tx) || isRegisterUsernameTx(tx) || isCreateProposalTx(tx) || isVoteTx(tx);
+  return (
+    isSendTransaction(tx) ||
+    isRegisterUsernameTx(tx) ||
+    isUpdateTargetsOfUsernameTx(tx) ||
+    isCreateProposalTx(tx) ||
+    isVoteTx(tx)
+  );
 }
 
 export interface AuthorizationCallbacks {
