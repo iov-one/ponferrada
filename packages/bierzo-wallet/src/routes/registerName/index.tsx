@@ -187,16 +187,15 @@ const RegisterUsername = (): JSX.Element => {
     }
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
-    for (let index = 0; index < addressesToRegister.length; index++) {
-      const address = addressesToRegister[index];
+    for (const address of addressesToRegister) {
       const codec = await getCodecForChainId(address.chainId);
       if (!codec.isValidAddress(address.address)) {
-        const addressFieldId = Object.entries(formValues).find(([_id, value]) => {
+        const addressField = Object.entries(formValues).find(([_id, value]) => {
           if (value === address.address) return true;
           return false;
         });
-        if (addressFieldId) {
-          errors[addressFieldId[0]] = "Not valid blockchain address";
+        if (addressField) {
+          errors[addressField[0]] = "Not valid blockchain address";
         }
       }
     }
