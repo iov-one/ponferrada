@@ -12,6 +12,7 @@ import {
 import React from "react";
 
 import { BwUsernameWithChainName } from "..";
+import { history } from "../..";
 import AddressesTable from "../../../components/AddressesTable";
 import copy from "../../../components/AddressesTable/assets/copy.svg";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
@@ -59,6 +60,10 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
           toast.show("Iovname has been copied to clipboard.", ToastVariant.INFO);
         };
 
+        const onEdit = (): void => {
+          history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE, username);
+        };
+
         return (
           <Block key={username.username} marginTop={1} width={650}>
             <Paper classes={paperClasses}>
@@ -91,7 +96,15 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                     </TooltipContent>
                   </Tooltip>
                   <Block flexGrow={1} />
-                  <Typography variant="subtitle2" weight="semibold" inline link color="primary" align="right">
+                  <Typography
+                    variant="subtitle2"
+                    weight="semibold"
+                    inline
+                    link
+                    color="primary"
+                    align="right"
+                    onClick={onEdit}
+                  >
                     Edit
                   </Typography>
                   <Block marginLeft={1} />
