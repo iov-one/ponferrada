@@ -20,6 +20,7 @@ import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBill
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
+import { getCodecForChainId } from "../../logic/codec";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
@@ -56,53 +57,6 @@ async function getPersonalizedAddressRegistrationFee(
 
   return transactionWithFee.fee;
 }
-
-const validate = async (values: object): Promise<object> => {
-  const formValues = values as FormValues;
-  const errors: ValidationError = {};
-
-  const username = formValues[REGISTER_USERNAME_FIELD];
-  if (!username) {
-    errors[REGISTER_USERNAME_FIELD] = "Required";
-    return errors;
-  }
-
-  const checkResult = isValidIov(username);
-
-  switch (checkResult) {
-    case "not_iov":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname must include *iov";
-      break;
-    case "wrong_number_of_asterisks":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname must include only one namespace";
-      break;
-    case "too_short":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname should be at least 3 characters";
-      break;
-    case "too_long":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname should be maximum 64 characters";
-      break;
-    case "wrong_chars":
-      errors[REGISTER_USERNAME_FIELD] =
-        "IOV starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-      break;
-    case "valid":
-      break;
-    default:
-      throw new Error(`"Unknown IOV starname validation error: ${checkResult}`);
-  }
-
-  if (checkResult !== "valid") {
-    return errors;
-  }
-
-  const connection = await getConnectionForBns();
-  const usernames = await connection.getUsernames({ username });
-  if (usernames.length > 0) {
-    errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
-  }
-  return errors;
-};
 
 function getChainAddressPairsFromValues(
   values: FormValues,
@@ -185,6 +139,70 @@ const RegisterUsername = (): JSX.Element => {
       isSubscribed = false;
     };
   }, [addressesSorted, bnsIdentity]);
+
+  const validate = async (values: object): Promise<object> => {
+    const formValues = values as FormValues;
+    const errors: ValidationError = {};
+
+    const username = formValues[REGISTER_USERNAME_FIELD];
+    if (!username) {
+      errors[REGISTER_USERNAME_FIELD] = "Required";
+      return errors;
+    }
+
+    const checkResult = isValidIov(username);
+
+    switch (checkResult) {
+      case "not_iov":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname must include *iov";
+        break;
+      case "wrong_number_of_asterisks":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname must include only one namespace";
+        break;
+      case "too_short":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname should be at least 3 characters";
+        break;
+      case "too_long":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname should be maximum 64 characters";
+        break;
+      case "wrong_chars":
+        errors[REGISTER_USERNAME_FIELD] =
+          "IOV starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+        break;
+      case "valid":
+        break;
+      default:
+        throw new Error(`"Unknown IOV starname validation error: ${checkResult}`);
+    }
+
+    if (checkResult !== "valid") {
+      return errors;
+    }
+
+    const connection = await getConnectionForBns();
+    const usernames = await connection.getUsernames({ username });
+    if (usernames.length > 0) {
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
+      return errors;
+    }
+
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
+    for (let index = 0; index < addressesToRegister.length; index++) {
+      const address = addressesToRegister[index];
+      const codec = await getCodecForChainId(address.chainId);
+      if (!codec.isValidAddress(address.address)) {
+        const addressFieldId = Object.entries(formValues).find(([_id, value]) => {
+          if (value === address.address) return true;
+          return false;
+        });
+        if (addressFieldId) {
+          errors[addressFieldId[0]] = "Not valid blockchain address";
+        }
+      }
+    }
+
+    return errors;
+  };
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
