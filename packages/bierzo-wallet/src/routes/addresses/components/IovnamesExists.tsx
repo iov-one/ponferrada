@@ -81,7 +81,7 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                 </Block>
                 <Block display="flex" alignItems="center" marginBottom={1} marginTop={4}>
                   <Typography variant="subtitle2" weight="semibold" inline>
-                    IS LINKED TO THESE ADDRESSES
+                    LINKED ADDRESSES
                   </Typography>
                   <Block marginRight={1} />
                   <Tooltip maxWidth={320}>
@@ -90,6 +90,11 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                       addresses. Just give your friends your personalized address.
                     </TooltipContent>
                   </Tooltip>
+                  <Block flexGrow={1} />
+                  <Typography variant="subtitle2" weight="semibold" inline link color="primary" align="right">
+                    Edit
+                  </Typography>
+                  <Block marginLeft={1} />
                 </Block>
                 <Block marginTop={2} />
                 <AddressesTable chainAddresses={username.addresses} />
