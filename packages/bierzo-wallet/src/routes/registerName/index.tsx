@@ -1,4 +1,4 @@
-import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
 import {
   BillboardContext,
@@ -20,13 +20,15 @@ import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBill
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { isValidIov } from "../../logic/account";
+import { getCodecForChainId } from "../../logic/codec";
 import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPairWithNames } from "../../utils/tokens";
+import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
+import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -52,52 +54,55 @@ async function getPersonalizedAddressRegistrationFee(
   return transactionWithFee.fee;
 }
 
-const validate = async (values: object): Promise<object> => {
-  const formValues = values as FormValues;
-  const errors: ValidationError = {};
+function getChainAddressPairsFromValues(
+  values: FormValues,
+  addresses: readonly ChainAddressPairWithName[],
+): readonly ChainAddressPairWithName[] {
+  const chainAddressMap: Map<string, Partial<ChainAddressPairWithName>> = new Map<
+    string,
+    Partial<ChainAddressPairWithName>
+  >();
+  Object.keys(values).forEach(key => {
+    const idxLenght = key.indexOf("-");
+    if (idxLenght === -1) return;
 
-  const username = formValues[REGISTER_USERNAME_FIELD];
-  if (!username) {
-    errors[REGISTER_USERNAME_FIELD] = "Required";
-    return errors;
-  }
+    const index = key.substr(0, idxLenght);
+    let pair = chainAddressMap.get(index);
+    if (!pair) {
+      pair = {};
+    }
 
-  const checkResult = isValidIov(username);
+    const type = key.substr(idxLenght + 1);
+    switch (type) {
+      case addressValueField: {
+        pair = { ...pair, address: values[key] as Address };
+        break;
+      }
+      case blockchainValueField: {
+        const chain = addresses.find(address => address.chainName === values[key]);
+        if (chain) {
+          pair = { ...pair, chainId: chain.chainId, chainName: chain.chainName };
+        }
+        break;
+      }
+    }
 
-  switch (checkResult) {
-    case "not_iov":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname must include *iov";
-      break;
-    case "wrong_number_of_asterisks":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname must include only one namespace";
-      break;
-    case "too_short":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname should be at least 3 characters";
-      break;
-    case "too_long":
-      errors[REGISTER_USERNAME_FIELD] = "IOV starname should be maximum 64 characters";
-      break;
-    case "wrong_chars":
-      errors[REGISTER_USERNAME_FIELD] =
-        "IOV starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-      break;
-    case "valid":
-      break;
-    default:
-      throw new Error(`"Unknown IOV starname validation error: ${checkResult}`);
-  }
+    chainAddressMap.set(index, pair);
+  });
 
-  if (checkResult !== "valid") {
-    return errors;
-  }
+  const chainAddressPair: ChainAddressPairWithName[] = [];
+  chainAddressMap.forEach(value => {
+    if (value.address && value.chainId && value.chainName) {
+      chainAddressPair.push({
+        address: value.address,
+        chainId: value.chainId,
+        chainName: value.chainName,
+      });
+    }
+  });
 
-  const connection = await getConnectionForBns();
-  const usernames = await connection.getUsernames({ username });
-  if (usernames.length > 0) {
-    errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
-  }
-  return errors;
-};
+  return chainAddressPair;
+}
 
 const RegisterUsername = (): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
@@ -108,7 +113,7 @@ const RegisterUsername = (): JSX.Element => {
 
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const addresses = getChainAddressPairWithNames(identities);
+  const addressesSorted = React.useMemo(() => getChainAddressPairWithNamesSorted(identities), [identities]);
 
   const bnsIdentity = getBnsIdentity(identities);
 
@@ -127,20 +132,84 @@ const RegisterUsername = (): JSX.Element => {
         setTransactionFee(fee);
       }
     }
-    getFee(bnsIdentity, addresses);
+    getFee(bnsIdentity, addressesSorted);
 
     return () => {
       isSubscribed = false;
     };
-  }, [bnsIdentity, addresses]);
+  }, [addressesSorted, bnsIdentity]);
+
+  const validate = async (values: object): Promise<object> => {
+    const formValues = values as FormValues;
+    const errors: ValidationError = {};
+
+    const username = formValues[REGISTER_USERNAME_FIELD];
+    if (!username) {
+      errors[REGISTER_USERNAME_FIELD] = "Required";
+      return errors;
+    }
+
+    const checkResult = isValidIov(username);
+
+    switch (checkResult) {
+      case "not_iov":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname must include *iov";
+        break;
+      case "wrong_number_of_asterisks":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname must include only one namespace";
+        break;
+      case "too_short":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname should be at least 3 characters";
+        break;
+      case "too_long":
+        errors[REGISTER_USERNAME_FIELD] = "IOV starname should be maximum 64 characters";
+        break;
+      case "wrong_chars":
+        errors[REGISTER_USERNAME_FIELD] =
+          "IOV starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+        break;
+      case "valid":
+        break;
+      default:
+        throw new Error(`"Unknown IOV starname validation error: ${checkResult}`);
+    }
+
+    if (checkResult !== "valid") {
+      return errors;
+    }
+
+    const connection = await getConnectionForBns();
+    const usernames = await connection.getUsernames({ username });
+    if (usernames.length > 0) {
+      errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
+      return errors;
+    }
+
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
+    for (const address of addressesToRegister) {
+      const codec = await getCodecForChainId(address.chainId);
+      if (!codec.isValidAddress(address.address)) {
+        const addressField = Object.entries(formValues).find(([_id, value]) => {
+          if (value === address.address) return true;
+          return false;
+        });
+        if (addressField) {
+          errors[addressField[0]] = "Not valid blockchain address";
+        }
+      }
+    }
+
+    return errors;
+  };
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
     const username = formValues[REGISTER_USERNAME_FIELD];
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
 
     try {
-      const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addresses);
+      const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addressesToRegister);
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -185,7 +254,7 @@ const RegisterUsername = (): JSX.Element => {
           onSubmit={onSubmit}
           validate={validate}
           onCancel={onReturnToBalance}
-          chainAddresses={addresses}
+          chainAddresses={addressesSorted}
           transactionFee={transactionFee}
         />
       )}

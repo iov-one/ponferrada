@@ -31,8 +31,10 @@ const Transactions = (): JSX.Element => {
     [orderedTxs, userAddresses],
   );
 
-  function onChangeRows(item: SelectFieldItem): void {
-    setRows(Number(item.name));
+  function onChangeRows(item: SelectFieldItem | undefined): void {
+    if (item) {
+      setRows(Number(item.name));
+    }
   }
 
   function onSort(receivedOrderBy: TxsOrder, receivedOrder: SortOrder): () => void {

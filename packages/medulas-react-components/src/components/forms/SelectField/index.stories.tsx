@@ -12,6 +12,7 @@ import SelectField, { SelectFieldItem } from "./index";
 interface Props {
   readonly value?: string;
   readonly fieldName: string;
+  readonly placeholder?: string;
 }
 
 const validate = (values: object): object => {
@@ -24,14 +25,13 @@ const validate = (values: object): object => {
   return errors;
 };
 
-const SelectFieldExample = ({ value, fieldName }: Props): JSX.Element => {
+const SelectFieldExample = ({ value, fieldName, placeholder }: Props): JSX.Element => {
   const { form, handleSubmit } = useForm({
     onSubmit: action("Form submit"),
     validate,
   });
 
   const items = [
-    { name: "", additionalText: "" },
     { name: "Create new account", additionalText: "Hello world" },
     { name: "IOV2", additionalText: "This attr is optional" },
     { name: "ETH3" },
@@ -44,7 +44,14 @@ const SelectFieldExample = ({ value, fieldName }: Props): JSX.Element => {
         initial={value}
         form={form}
         fieldName={fieldName}
-        onChangeCallback={(item: SelectFieldItem) => console.log(`received ---> ${item.name}`)}
+        placeholder={placeholder}
+        onChangeCallback={(item: SelectFieldItem | undefined) => {
+          if (item) {
+            console.log(`received ---> ${item.name}`);
+          } else {
+            console.log("Default item was selected");
+          }
+        }}
       />
       <Button type="submit">Submit</Button>
     </Form>
@@ -58,6 +65,9 @@ storiesOf(`${medulasRoot}/components/forms`, module).add("SelectField", () => (
     </Block>
     <Block marginBottom={2}>
       <SelectFieldExample fieldName="SELECT_FIELD_ATTR_EMPTY" />
+    </Block>
+    <Block marginBottom={2}>
+      <SelectFieldExample fieldName="SELECT_FIELD_ATTR_PLACEHOLDER" placeholder="Select" />
     </Block>
   </Storybook>
 ));

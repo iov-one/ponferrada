@@ -56,12 +56,13 @@ interface InnerProps {
   readonly fieldName: string;
   readonly initial: string;
   readonly form: FormApi;
-  readonly onChangeCallback?: (value: SelectFieldItem) => void;
+  readonly onChangeCallback?: (value: SelectFieldItem | undefined) => void;
   readonly subscription?: FieldSubscription;
   readonly validate?: FieldValidator<FieldInputValue>;
   readonly items: readonly SelectFieldItem[];
   readonly maxWidth?: string;
   readonly hiddenInput?: boolean;
+  readonly placeholder?: string;
 }
 
 export type Props = InnerProps & InputBaseProps;
@@ -75,6 +76,7 @@ const SelectField = ({
   maxWidth = "100%",
   validate,
   hiddenInput,
+  placeholder,
 }: Props): JSX.Element => {
   const [isOpen, toggle] = useOpen();
   const classes = useStyles({ maxWidth });
@@ -94,16 +96,28 @@ const SelectField = ({
     try {
       const firstRender = value === "";
       if (firstRender) {
-        onChange(initial);
+        onChange(initial ? initial : placeholder);
       }
     } catch (err) {}
-  }, [initial, input, onChange, value]);
+  }, [initial, input, onChange, value, placeholder]);
   const inputClasses = { root: classes.root, input: classes.input };
 
+  const allItems = React.useMemo(() => {
+    if (placeholder) {
+      return [{ name: placeholder }, ...items];
+    }
+    return items;
+  }, [items, placeholder]);
+
   const onAction = (item: SelectFieldItem): (() => void) => () => {
+    let selectedItem: SelectFieldItem | undefined = item;
+    if (item.name === placeholder) {
+      selectedItem = undefined;
+    }
+
     onChange(item.name);
     if (onChangeCallback) {
-      onChangeCallback(item);
+      onChangeCallback(selectedItem);
     }
     toggle();
   };
@@ -137,7 +151,7 @@ const SelectField = ({
       <Popper open={isOpen} anchorEl={inputRef.current} placement="bottom-start">
         {() => (
           <Block marginTop={1}>
-            <SelectItems selectedItem={value} items={items} action={onAction} />
+            <SelectItems selectedItem={value} items={allItems} action={onAction} />
           </Block>
         )}
       </Popper>

@@ -65,8 +65,10 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged, balances, noBalance }: 
     onTokenSelectionChanged(selectedTokenTicker as TokenTicker);
   }, [onTokenSelectionChanged, selectedTokenTicker]);
 
-  const onSelectionChanged = (item: SelectFieldItem): void => {
-    setSelectedTokenTicker(item.name);
+  const onSelectionChanged = (item: SelectFieldItem | undefined): void => {
+    if (item) {
+      setSelectedTokenTicker(item.name);
+    }
   };
 
   const avatarClasses = {
