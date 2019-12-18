@@ -9,7 +9,15 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { ActionKind, bnsCodec, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import {
+  ActionKind,
+  bnsCodec,
+  CreateProposalTx,
+  RegisterUsernameTx,
+  UpdateTargetsOfUsernameTx,
+  VoteOption,
+  VoteTx,
+} from "@iov/bns";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import TestUtils from "react-dom/test-utils";
@@ -91,6 +99,18 @@ export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
     creator: defaultCreator,
     username: "test*iov",
     targets: [{ chainId: "foobar" as ChainId, address: defaultAddress }],
+    fee: {
+      tokens: defaultAmount,
+    },
+  };
+}
+
+export function getUpdateUsernameTargetsTransaction(): UpdateTargetsOfUsernameTx & WithCreator {
+  return {
+    kind: "bns/update_targets_of_username",
+    creator: defaultCreator,
+    username: "test*iov",
+    targets: [{ chainId: "barfoo" as ChainId, address: defaultAddress }],
     fee: {
       tokens: defaultAmount,
     },

@@ -9496,6 +9496,65 @@ Array [
 ]
 `;
 
+exports[`Storyshots Medulas React Components/components/forms DateTimePicker 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiFormControl-root MuiTextField-root"
+    format="ff"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+  >
+    <div
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        className="MuiInputBase-input MuiOutlinedInput-input"
+        disabled={false}
+        name="When"
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={true}
+        required={false}
+        type="text"
+        value="Jan 1, 1970, 12:00 AM"
+      />
+      <fieldset
+        aria-hidden={true}
+        className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+        style={
+          Object {
+            "paddingLeft": 8,
+          }
+        }
+      >
+        <legend
+          className="PrivateNotchedOutline-legend"
+          style={
+            Object {
+              "width": 0,
+            }
+          }
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "&#8203;",
+              }
+            }
+          />
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+</form>
+`;
+
 exports[`Storyshots Medulas React Components/components/forms Form 1`] = `
 Array [
   <div
@@ -13145,10 +13204,13 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
               When
             </p>
             <div
-              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+              className="MuiFormControl-root MuiTextField-root"
+              format="MMMM dd T"
+              onClick={[Function]}
+              onKeyDown={[Function]}
             >
               <div
-                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
                 onClick={[Function]}
               >
                 <input
@@ -13160,9 +13222,10 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
+                  readOnly={true}
                   required={false}
-                  type="datetime-local"
-                  value=""
+                  type="text"
+                  value="January 01 00:00"
                 />
                 <fieldset
                   aria-hidden={true}
@@ -13177,7 +13240,7 @@ exports[`Storyshots Sil Governance Create Proposal 1`] = `
                     className="PrivateNotchedOutline-legend"
                     style={
                       Object {
-                        "width": 0.01,
+                        "width": 0,
                       }
                     }
                   >
