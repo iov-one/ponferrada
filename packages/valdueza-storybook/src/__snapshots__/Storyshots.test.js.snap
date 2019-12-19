@@ -1945,7 +1945,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
           >
-            IS LINKED TO THESE ADDRESSES
+            LINKED ADDRESSES
           </h6>
           <div
             className="MuiBox-root MuiBox-root"
@@ -1962,6 +1962,18 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
               width={16}
             />
           </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+            onClick={[Function]}
+          >
+            Edit
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
         </div>
         <div
           className="MuiBox-root MuiBox-root"
@@ -2074,7 +2086,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
           >
-            IS LINKED TO THESE ADDRESSES
+            LINKED ADDRESSES
           </h6>
           <div
             className="MuiBox-root MuiBox-root"
@@ -2091,6 +2103,18 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
               width={16}
             />
           </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+            onClick={[Function]}
+          >
+            Edit
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
         </div>
         <div
           className="MuiBox-root MuiBox-root"
@@ -2235,7 +2259,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
           >
-            IS LINKED TO THESE ADDRESSES
+            LINKED ADDRESSES
           </h6>
           <div
             className="MuiBox-root MuiBox-root"
@@ -2252,6 +2276,18 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
               width={16}
             />
           </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+            onClick={[Function]}
+          >
+            Edit
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
         </div>
         <div
           className="MuiBox-root MuiBox-root"
@@ -2679,7 +2715,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             <h6
               className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
             >
-              IS LINKED TO THESE ADDRESSES
+              LINKED ADDRESSES
             </h6>
             <div
               className="MuiBox-root MuiBox-root"
@@ -2696,6 +2732,18 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
                 width={16}
               />
             </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+              onClick={[Function]}
+            >
+              Edit
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
           </div>
           <div
             className="MuiBox-root MuiBox-root"
@@ -2808,7 +2856,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             <h6
               className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
             >
-              IS LINKED TO THESE ADDRESSES
+              LINKED ADDRESSES
             </h6>
             <div
               className="MuiBox-root MuiBox-root"
@@ -2825,6 +2873,18 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
                 width={16}
               />
             </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+              onClick={[Function]}
+            >
+              Edit
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
           </div>
           <div
             className="MuiBox-root MuiBox-root"
@@ -2969,7 +3029,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             <h6
               className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
             >
-              IS LINKED TO THESE ADDRESSES
+              LINKED ADDRESSES
             </h6>
             <div
               className="MuiBox-root MuiBox-root"
@@ -2986,6 +3046,18 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
                 width={16}
               />
             </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+              onClick={[Function]}
+            >
+              Edit
+            </h6>
+            <div
+              className="MuiBox-root MuiBox-root"
+            />
           </div>
           <div
             className="MuiBox-root MuiBox-root"
