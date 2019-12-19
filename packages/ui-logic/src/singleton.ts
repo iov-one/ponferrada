@@ -12,7 +12,7 @@ export function singleton<T extends SingletonInitializerFunction>(
     }
 
     executed = true;
-    response = fn.apply(undefined, args);
+    response = fn(...args);
 
     return response;
   };

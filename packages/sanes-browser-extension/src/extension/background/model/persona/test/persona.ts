@@ -30,7 +30,7 @@ export async function processCreateWallet(
 }
 
 export const mockPersonaResponse = (
-  mnemonic: string = "",
+  mnemonic = "",
   accounts: PersonaAcccount[] = [],
   balances: Amount[][] = [],
   starnames: string[] = [],

@@ -19,7 +19,7 @@ class FakeDom extends React.Component<{ children: React.ReactNode }> {
 export const createDom = (
   requests: readonly Request[] = [],
   persona: GetPersonaResponse = null,
-  hasStoredPersona: boolean = false,
+  hasStoredPersona = false,
 ): React.Component =>
   TestUtils.renderIntoDocument(
     <FakeDom>

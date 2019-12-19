@@ -4,7 +4,7 @@ import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from "../../theme/constants";
 
 export const EXTENSION_ID = "dafekhlcpidfaopcimocbcpciholgkkb";
 
-export function launchBrowser(slowMo: number = 0): Promise<Browser> {
+export function launchBrowser(slowMo = 0): Promise<Browser> {
   const CRX_PATH = require("path").join(__dirname, "../../../build");
   return puppeteer.launch({
     headless: false,
