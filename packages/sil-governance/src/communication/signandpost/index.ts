@@ -1,6 +1,6 @@
 /* global chrome */
 import { Identity, TransactionId } from "@iov/bcp";
-import { BnsConnection, BnsTx } from "@iov/bns";
+import { bnsCodec, BnsConnection, BnsTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
 
@@ -20,7 +20,7 @@ async function generateSignAndPostRequest(
   signer: Identity,
   tx: BnsTx,
 ): Promise<JsonRpcRequest> {
-  const txWithFee = await connection.withDefaultFee(tx);
+  const txWithFee = await connection.withDefaultFee(tx, bnsCodec.identityToAddress(signer));
   return {
     jsonrpc: "2.0",
     id: makeJsonRpcId(),
