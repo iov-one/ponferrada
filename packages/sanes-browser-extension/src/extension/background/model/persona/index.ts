@@ -56,8 +56,7 @@ export type SupportedTransaction = (
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
   | CreateProposalTx
-  | VoteTx
-) &
+  | VoteTx) &
   WithCreator;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
@@ -262,15 +261,13 @@ export class Persona {
     const balancesPerAccount = await Promise.all(
       accountsInfos.map(
         async (accountInfo: AccountInfo): Promise<readonly Amount[]> => {
-          const balances = (
-            await Promise.all(
-              accountInfo.identities.map(async identity => {
-                const { chainId, pubkey } = identity;
-                const account = await this.signer.connection(chainId).getAccount({ pubkey });
-                return account;
-              }),
-            )
-          )
+          const balances = (await Promise.all(
+            accountInfo.identities.map(async identity => {
+              const { chainId, pubkey } = identity;
+              const account = await this.signer.connection(chainId).getAccount({ pubkey });
+              return account;
+            }),
+          ))
             .filter(isNonUndefined)
             .flatMap(account => account.balance);
 
