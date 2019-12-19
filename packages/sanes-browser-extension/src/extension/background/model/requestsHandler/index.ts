@@ -63,6 +63,7 @@ export default class RequestsHandler {
       },
       authorizeSignAndPost: (
         reason: string,
+        signer: Identity,
         transaction: UnsignedTransaction,
         meta: any,
       ): Promise<boolean> => {

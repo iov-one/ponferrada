@@ -1,12 +1,4 @@
-import {
-  Address,
-  Identity,
-  isIdentity,
-  SendTransaction,
-  TokenTicker,
-  UnsignedTransaction,
-  WithCreator,
-} from "@iov/bcp";
+import { Address, Identity, isIdentity, SendTransaction, TokenTicker, UnsignedTransaction } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { ethereumCodec, EthereumConnection } from "@iov/ethereum";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
@@ -30,12 +22,12 @@ async function withEthereumFee<T extends UnsignedTransaction>(transaction: T): P
   return withFee;
 }
 
-export const generateSignAndPostRequest = async (creator: Identity): Promise<JsonRpcRequest> => {
-  const transactionWithFee: SendTransaction & WithCreator = await withEthereumFee({
+export const generateSignAndPostRequest = async (sender: Identity): Promise<JsonRpcRequest> => {
+  const transactionWithFee: SendTransaction = await withEthereumFee({
     kind: "bcp/send",
+    chainId: sender.chainId,
     recipient: "0x0000000000000000000000000000000000000000" as Address,
-    creator: creator,
-    sender: ethereumCodec.identityToAddress(creator),
+    sender: ethereumCodec.identityToAddress(sender),
     amount: {
       quantity: "1234000000000000000",
       fractionalDigits: 18,

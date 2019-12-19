@@ -1,4 +1,4 @@
-import { TokenTicker, WithCreator } from "@iov/bcp";
+import { TokenTicker } from "@iov/bcp";
 import { bnsCodec, BnsConnection, RegisterUsernameTx } from "@iov/bns";
 import { Bip39, EnglishMnemonic, Random } from "@iov/crypto";
 import { IovFaucet } from "@iov/faucets";
@@ -120,51 +120,53 @@ withChainsDescribe("Persona", () => {
         const connection = await BnsConnection.establish(bnsUrl);
         const profile = new UserProfile();
         const wallet = profile.addWallet(Ed25519HdWallet.fromMnemonic(mnemonic));
-        const identity0 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(0));
-        const identity1 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(1));
-        const identity2 = await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(2));
+        const identities = [
+          await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(0)),
+          await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(1)),
+          await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(2)),
+        ];
 
         // Ensure transaction creators can pay their fees
         const bnsFaucet = new IovFaucet(bnsFaucetUrl);
         await Promise.all([
-          bnsFaucet.credit(bnsCodec.identityToAddress(identity0), bnsFeeToken),
-          bnsFaucet.credit(bnsCodec.identityToAddress(identity1), bnsFeeToken),
-          bnsFaucet.credit(bnsCodec.identityToAddress(identity2), bnsFeeToken),
+          bnsFaucet.credit(bnsCodec.identityToAddress(identities[0]), bnsFeeToken),
+          bnsFaucet.credit(bnsCodec.identityToAddress(identities[1]), bnsFeeToken),
+          bnsFaucet.credit(bnsCodec.identityToAddress(identities[2]), bnsFeeToken),
         ]);
 
-        const registerName0: RegisterUsernameTx & WithCreator = {
+        const registerName0: RegisterUsernameTx = {
           kind: "bns/register_username",
-          creator: identity0,
+          chainId: connection.chainId(),
           username: name0,
           targets: [],
         };
 
-        const registerName1: RegisterUsernameTx & WithCreator = {
+        const registerName1: RegisterUsernameTx = {
           kind: "bns/register_username",
-          creator: identity1,
+          chainId: connection.chainId(),
           username: name1,
           targets: [],
         };
 
-        const registerName2a: RegisterUsernameTx & WithCreator = {
+        const registerName2a: RegisterUsernameTx = {
           kind: "bns/register_username",
-          creator: identity2,
+          chainId: connection.chainId(),
           username: name2[0],
           targets: [],
         };
 
-        const registerName2b: RegisterUsernameTx & WithCreator = {
+        const registerName2b: RegisterUsernameTx = {
           kind: "bns/register_username",
-          creator: identity2,
+          chainId: connection.chainId(),
           username: name2[1],
           targets: [],
         };
 
         const transactions = [[registerName0], [registerName1], [registerName2a, registerName2b]];
         const nonces = [
-          await connection.getNonces({ pubkey: identity0.pubkey }, 1),
-          await connection.getNonces({ pubkey: identity1.pubkey }, 1),
-          await connection.getNonces({ pubkey: identity2.pubkey }, 2),
+          await connection.getNonces({ pubkey: identities[0].pubkey }, 1),
+          await connection.getNonces({ pubkey: identities[1].pubkey }, 1),
+          await connection.getNonces({ pubkey: identities[2].pubkey }, 2),
         ];
 
         for (const creatorIndex of [0, 1, 2]) {
@@ -173,7 +175,8 @@ withChainsDescribe("Persona", () => {
             const nonce = nonces[creatorIndex][i];
 
             const withFee = await connection.withDefaultFee(tx);
-            const signed = await profile.signTransaction(withFee, bnsCodec, nonce);
+            const signer = identities[creatorIndex];
+            const signed = await profile.signTransaction(signer, withFee, bnsCodec, nonce);
             await connection.postTx(bnsCodec.bytesToPost(signed));
           }
         }

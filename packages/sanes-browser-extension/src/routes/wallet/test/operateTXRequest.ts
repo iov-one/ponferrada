@@ -7,7 +7,6 @@ import {
   PubkeyBytes,
   SendTransaction,
   TokenTicker,
-  WithCreator,
 } from "@iov/bcp";
 import {
   ActionKind,
@@ -60,10 +59,10 @@ const gasPrice = {
   tokenTicker: "ETH" as TokenTicker,
 };
 
-export function getCashTransaction(): SendTransaction & WithCreator {
+export function getCashTransaction(): SendTransaction {
   return {
     kind: "bcp/send",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     sender: bnsCodec.identityToAddress(defaultCreator),
     amount: defaultAmount,
     recipient: defaultAddress,
@@ -74,10 +73,10 @@ export function getCashTransaction(): SendTransaction & WithCreator {
   };
 }
 
-export function getEthTransaction(): SendTransaction & WithCreator {
+export function getEthTransaction(): SendTransaction {
   return {
     kind: "bcp/send",
-    creator: ethereumCreator,
+    chainId: ethereumCreator.chainId,
     sender: ethereumCodec.identityToAddress(ethereumCreator),
     amount: {
       quantity: "1230000000000000000", // 1.23 ETH
@@ -93,10 +92,10 @@ export function getEthTransaction(): SendTransaction & WithCreator {
   };
 }
 
-export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
+export function getUsernameTransaction(): RegisterUsernameTx {
   return {
     kind: "bns/register_username",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     username: "test*iov",
     targets: [{ chainId: "foobar" as ChainId, address: defaultAddress }],
     fee: {
@@ -105,10 +104,10 @@ export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
   };
 }
 
-export function getUpdateUsernameTargetsTransaction(): UpdateTargetsOfUsernameTx & WithCreator {
+export function getUpdateUsernameTargetsTransaction(): UpdateTargetsOfUsernameTx {
   return {
     kind: "bns/update_targets_of_username",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     username: "test*iov",
     targets: [{ chainId: "barfoo" as ChainId, address: defaultAddress }],
     fee: {
@@ -117,10 +116,10 @@ export function getUpdateUsernameTargetsTransaction(): UpdateTargetsOfUsernameTx
   };
 }
 
-export function getCreateTextResolutionActionTransaction(): CreateProposalTx & WithCreator {
+export function getCreateTextResolutionActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -136,10 +135,10 @@ export function getCreateTextResolutionActionTransaction(): CreateProposalTx & W
   };
 }
 
-export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & WithCreator {
+export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -160,10 +159,10 @@ export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & Wi
   };
 }
 
-export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator {
+export function getCreateSendActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -186,10 +185,10 @@ export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator
   };
 }
 
-export function getSetValidatorsActionTransaction(): CreateProposalTx & WithCreator {
+export function getSetValidatorsActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -210,10 +209,10 @@ export function getSetValidatorsActionTransaction(): CreateProposalTx & WithCrea
   };
 }
 
-export function getUpdateElectionRuleActionTransaction(): CreateProposalTx & WithCreator {
+export function getUpdateElectionRuleActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -232,10 +231,10 @@ export function getUpdateElectionRuleActionTransaction(): CreateProposalTx & Wit
   };
 }
 
-export function getUpdateElectorateActionTransaction(): CreateProposalTx & WithCreator {
+export function getUpdateElectorateActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -257,10 +256,10 @@ export function getUpdateElectorateActionTransaction(): CreateProposalTx & WithC
   };
 }
 
-export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & WithCreator {
+export function getExecuteProposalBatchActionTransaction(): CreateProposalTx {
   return {
     kind: "bns/create_proposal",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
     fee: {
       tokens: defaultAmount,
     },
@@ -327,10 +326,11 @@ export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & W
   };
 }
 
-export function getVoteTransaction(): VoteTx & WithCreator {
+export function getVoteTransaction(): VoteTx {
   return {
     kind: "bns/vote",
-    creator: defaultCreator,
+    chainId: defaultCreator.chainId,
+    voter: bnsCodec.identityToAddress(defaultCreator),
     fee: {
       tokens: defaultAmount,
     },
