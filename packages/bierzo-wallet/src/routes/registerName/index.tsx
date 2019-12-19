@@ -1,5 +1,6 @@
 import { Address, ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
+import { JsonRpcRequest } from "@iov/jsonrpc";
 import {
   BillboardContext,
   FormValues,
@@ -14,6 +15,7 @@ import { history } from "..";
 import {
   generateRegisterUsernameTxRequest,
   generateRegisterUsernameTxWithFee,
+  generateUpdateUsernameTxRequest,
 } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
@@ -117,11 +119,7 @@ const RegisterUsername = (): JSX.Element => {
   const addressesSorted = React.useMemo(() => getChainAddressPairWithNamesSorted(identities), [identities]);
 
   const bnsIdentity = getBnsIdentity(identities);
-
-  if (history.location.state) {
-    const iovname: BwUsernameWithChainName = history.location.state;
-    console.log(iovname);
-  }
+  const iovnameAddresses: BwUsernameWithChainName | undefined = history.location.state;
 
   if (!bnsIdentity) throw new Error("No BNS identity available.");
   if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
@@ -149,46 +147,48 @@ const RegisterUsername = (): JSX.Element => {
     const formValues = values as FormValues;
     const errors: ValidationError = {};
 
-    const username = formValues[REGISTER_USERNAME_FIELD];
-    if (!username) {
-      errors[REGISTER_USERNAME_FIELD] = "Required";
-      return errors;
-    }
+    if (!iovnameAddresses) {
+      const username = formValues[REGISTER_USERNAME_FIELD];
+      if (!username) {
+        errors[REGISTER_USERNAME_FIELD] = "Required";
+        return errors;
+      }
 
-    const checkResult = isValidIov(username);
+      const checkResult = isValidIov(username);
 
-    switch (checkResult) {
-      case "not_iov":
-        errors[REGISTER_USERNAME_FIELD] = "IOV starname must include *iov";
-        break;
-      case "wrong_number_of_asterisks":
-        errors[REGISTER_USERNAME_FIELD] = "IOV starname must include only one namespace";
-        break;
-      case "too_short":
-        errors[REGISTER_USERNAME_FIELD] = "IOV starname should be at least 3 characters";
-        break;
-      case "too_long":
-        errors[REGISTER_USERNAME_FIELD] = "IOV starname should be maximum 64 characters";
-        break;
-      case "wrong_chars":
-        errors[REGISTER_USERNAME_FIELD] =
-          "IOV starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-        break;
-      case "valid":
-        break;
-      default:
-        throw new Error(`"Unknown IOV starname validation error: ${checkResult}`);
-    }
+      switch (checkResult) {
+        case "not_iov":
+          errors[REGISTER_USERNAME_FIELD] = "IOV starname must include *iov";
+          break;
+        case "wrong_number_of_asterisks":
+          errors[REGISTER_USERNAME_FIELD] = "IOV starname must include only one namespace";
+          break;
+        case "too_short":
+          errors[REGISTER_USERNAME_FIELD] = "IOV starname should be at least 3 characters";
+          break;
+        case "too_long":
+          errors[REGISTER_USERNAME_FIELD] = "IOV starname should be maximum 64 characters";
+          break;
+        case "wrong_chars":
+          errors[REGISTER_USERNAME_FIELD] =
+            "IOV starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+          break;
+        case "valid":
+          break;
+        default:
+          throw new Error(`"Unknown IOV starname validation error: ${checkResult}`);
+      }
 
-    if (checkResult !== "valid") {
-      return errors;
-    }
+      if (checkResult !== "valid") {
+        return errors;
+      }
 
-    const connection = await getConnectionForBns();
-    const usernames = await connection.getUsernames({ username });
-    if (usernames.length > 0) {
-      errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
-      return errors;
+      const connection = await getConnectionForBns();
+      const usernames = await connection.getUsernames({ username });
+      if (usernames.length > 0) {
+        errors[REGISTER_USERNAME_FIELD] = "Personalized address already exists";
+        return errors;
+      }
     }
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
@@ -211,11 +211,23 @@ const RegisterUsername = (): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
-    const username = formValues[REGISTER_USERNAME_FIELD];
     const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
 
     try {
-      const request = await generateRegisterUsernameTxRequest(bnsIdentity, username, addressesToRegister);
+      let request: JsonRpcRequest;
+      if (iovnameAddresses) {
+        request = await generateUpdateUsernameTxRequest(
+          bnsIdentity,
+          iovnameAddresses.username,
+          addressesToRegister,
+        );
+      } else {
+        request = await generateRegisterUsernameTxRequest(
+          bnsIdentity,
+          formValues[REGISTER_USERNAME_FIELD],
+          addressesToRegister,
+        );
+      }
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -261,6 +273,7 @@ const RegisterUsername = (): JSX.Element => {
           validate={validate}
           onCancel={onReturnToBalance}
           chainAddresses={addressesSorted}
+          iovnameAddresses={iovnameAddresses}
           transactionFee={transactionFee}
         />
       )}
