@@ -41,7 +41,7 @@ const Buttons = ({ id, vote }: Props): JSX.Element => {
       const connection = await getBnsConnection();
       const voteTx = await governor.buildVoteTx(id, currentVote);
 
-      const transactionId = await sendSignAndPostRequest(connection, voteTx);
+      const transactionId = await sendSignAndPostRequest(connection, governor.identity, voteTx);
       if (transactionId === undefined) {
         toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
       } else if (transactionId === "not_ready") {

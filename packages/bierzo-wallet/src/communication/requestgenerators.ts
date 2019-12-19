@@ -104,6 +104,7 @@ export const generateRegisterUsernameTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(creator),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
@@ -122,6 +123,7 @@ export const generateUpdateUsernameTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(creator),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };

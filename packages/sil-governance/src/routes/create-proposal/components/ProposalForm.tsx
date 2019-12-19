@@ -198,7 +198,7 @@ const ProposalForm = (): JSX.Element => {
       const proposalOptions = buildProposalOptions(values);
       const createProposalTx = await governor.buildCreateProposalTx(proposalOptions);
 
-      const transactionId = await sendSignAndPostRequest(connection, createProposalTx);
+      const transactionId = await sendSignAndPostRequest(connection, governor.identity, createProposalTx);
       if (transactionId === undefined) {
         toast.show(communicationTexts.notAvailableMessage, ToastVariant.ERROR);
       } else if (transactionId === "not_ready") {

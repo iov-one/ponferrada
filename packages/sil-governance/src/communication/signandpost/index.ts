@@ -1,5 +1,5 @@
 /* global chrome */
-import { TransactionId } from "@iov/bcp";
+import { Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection, BnsTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
@@ -15,7 +15,11 @@ function isExtensionContext(): boolean {
   );
 }
 
-async function generateSignAndPostRequest(connection: BnsConnection, tx: BnsTx): Promise<JsonRpcRequest> {
+async function generateSignAndPostRequest(
+  connection: BnsConnection,
+  signer: Identity,
+  tx: BnsTx,
+): Promise<JsonRpcRequest> {
   const txWithFee = await connection.withDefaultFee(tx);
   return {
     jsonrpc: "2.0",
@@ -23,6 +27,7 @@ async function generateSignAndPostRequest(connection: BnsConnection, tx: BnsTx):
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(signer),
       transaction: TransactionEncoder.toJson(txWithFee),
     },
   };
@@ -33,11 +38,12 @@ async function generateSignAndPostRequest(connection: BnsConnection, tx: BnsTx):
  */
 export async function sendSignAndPostRequest(
   connection: BnsConnection,
+  signer: Identity,
   tx: BnsTx,
 ): Promise<SignAndPostResponse | undefined | "not_ready"> {
   if (!isExtensionContext()) return undefined;
 
-  const request = await generateSignAndPostRequest(connection, tx);
+  const request = await generateSignAndPostRequest(connection, signer, tx);
   const config = await getConfig();
 
   return new Promise((resolve, reject) => {

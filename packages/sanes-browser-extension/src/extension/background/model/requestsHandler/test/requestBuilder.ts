@@ -41,6 +41,7 @@ export const generateSignAndPostRequest = async (sender: Identity): Promise<Json
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(sender),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
