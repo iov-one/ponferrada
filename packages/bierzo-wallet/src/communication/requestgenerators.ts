@@ -1,5 +1,5 @@
 import { Address, Amount, Identity, SendTransaction, UnsignedTransaction } from "@iov/bcp";
-import { ChainAddressPair, RegisterUsernameTx, UpdateTargetsOfUsernameTx } from "@iov/bns";
+import { bnsCodec, ChainAddressPair, RegisterUsernameTx, UpdateTargetsOfUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
@@ -22,12 +22,12 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
   };
 }
 
-async function withChainFee<T extends UnsignedTransaction>(transaction: T): Promise<T> {
+async function withChainFee<T extends UnsignedTransaction>(transaction: T, feePayer: Address): Promise<T> {
   const connection = getConnectionForChainId(transaction.chainId);
   if (!connection) {
     throw new Error(`Active connection for chain with ${transaction.chainId} was not found.`);
   }
-  const withFee = await connection.withDefaultFee(transaction);
+  const withFee = await connection.withDefaultFee(transaction, feePayer);
   return withFee;
 }
 
@@ -39,15 +39,19 @@ export const generateSendTxRequest = async (
 ): Promise<JsonRpcRequest> => {
   const codec = await getCodecForChainId(sender.chainId);
 
-  const transactionWithFee: SendTransaction = await withChainFee({
-    kind: "bcp/send",
-    chainId: sender.chainId,
-    recipient,
-    senderPubkey: sender.pubkey,
-    sender: codec.identityToAddress(sender),
-    amount: amount,
-    memo: memo,
-  });
+  const senderAddress = codec.identityToAddress(sender);
+  const transactionWithFee: SendTransaction = await withChainFee(
+    {
+      kind: "bcp/send",
+      chainId: sender.chainId,
+      recipient,
+      senderPubkey: sender.pubkey,
+      sender: senderAddress,
+      amount: amount,
+      memo: memo,
+    },
+    senderAddress,
+  );
 
   return {
     jsonrpc: "2.0",
@@ -73,7 +77,7 @@ export const generateRegisterUsernameTxWithFee = async (
     targets,
   };
 
-  return await withChainFee(regUsernameTx);
+  return withChainFee(regUsernameTx, bnsCodec.identityToAddress(creator));
 };
 
 export const generateUpdateUsernameTxWithFee = async (
@@ -88,7 +92,7 @@ export const generateUpdateUsernameTxWithFee = async (
     targets,
   };
 
-  return await withChainFee(regUsernameTx);
+  return await withChainFee(regUsernameTx, bnsCodec.identityToAddress(creator));
 };
 
 export const generateRegisterUsernameTxRequest = async (
