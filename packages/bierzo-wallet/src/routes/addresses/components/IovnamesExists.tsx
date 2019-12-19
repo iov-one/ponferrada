@@ -86,7 +86,7 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                 </Block>
                 <Block display="flex" alignItems="center" marginBottom={1} marginTop={4}>
                   <Typography variant="subtitle2" weight="semibold" inline>
-                    LINKED ADDRESSES
+                    {username.addresses.length > 0 ? "LINKED ADDRESSES" : "NO LINKED ADDRESSES"}
                   </Typography>
                   <Block marginRight={1} />
                   <Tooltip maxWidth={320}>
@@ -105,12 +105,12 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                     align="right"
                     onClick={onEdit}
                   >
-                    Edit
+                    {username.addresses.length > 0 ? "Edit" : "Link Now"}
                   </Typography>
                   <Block marginLeft={1} />
                 </Block>
                 <Block marginTop={2} />
-                <AddressesTable chainAddresses={username.addresses} />
+                {username.addresses.length > 0 && <AddressesTable chainAddresses={username.addresses} />}
               </Block>
             </Paper>
           </Block>
