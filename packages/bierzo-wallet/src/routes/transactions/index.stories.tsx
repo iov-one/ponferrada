@@ -37,6 +37,9 @@ const currentUsersIovAddress = "tiov16cmjakgflq4ru6n6dm5egrztn6gc0l7af7r2tc" as 
 const currentUsersEthAddress = "0x794d591840927890aC7C162C3B3e4665725f8f40" as Address;
 const currentUsersLiskAddress = "16376202734673246431L" as Address;
 
+const chainIdIov = "local-iov-devnet" as ChainId;
+const chainIdLisk = "lisk-da3ed6a454" as ChainId;
+
 const currentUsersAddresses = [
   currentUsersIovAddress,
   currentUsersEthAddress,
@@ -67,6 +70,7 @@ const incomingSendTransaction: ProcessedSendTransaction = {
   id: makeExampleEthTransactionId(),
   original: {
     kind: "bcp/send",
+    chainId: chainIdIov,
     sender: "0x979a731650b6F5cbE0dB2966e9b43e9a6a931bdA" as Address,
     recipient: currentUsersEthAddress,
     amount: stringToAmount("10.5", eth),
@@ -82,6 +86,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   id: makeExampleIovTransactionId(),
   original: {
     kind: "bcp/send",
+    chainId: chainIdIov,
     sender: currentUsersIovAddress as Address,
     recipient: currentUsersIovAddress as Address,
     amount: stringToAmount("7.4", iov),
@@ -97,13 +102,19 @@ const voteTx: ProcessedTx<VoteTx> = {
   time: new ReadonlyDate("2018-03-05T05:04:03.763Z"),
   original: {
     kind: "bns/vote",
+    chainId: chainIdIov,
+    voter: currentUsersIovAddress,
     fee: { tokens: stringToAmount("0.5", iov) },
     proposalId: 55,
     selection: VoteOption.Abstain,
   },
 };
 
-const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | ProcessedTx)[] = [
+const parsedTxs: readonly (
+  | ProcessedSendTransaction
+  | ProcessedTx<RegisterUsernameTx>
+  | ProcessedTx<VoteTx>
+)[] = [
   incomingSendTransaction,
   voteTx,
   {
@@ -111,6 +122,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     time: new ReadonlyDate("2018-04-07T06:05:04.763Z"),
     original: {
       kind: "bns/register_username",
+      chainId: chainIdIov,
       username: "albert*iov",
       targets: [
         {
@@ -137,6 +149,9 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bns/register_username",
+      chainId: chainIdIov,
+      username: "bob*iov",
+      targets: [],
       fee: {
         tokens: stringToAmount("100", iov),
       },
@@ -147,6 +162,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
+      chainId: chainIdIov,
       sender: "me" as Address,
       recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("25.5", iov),
@@ -162,6 +178,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
+      chainId: chainIdIov,
       sender: "me" as Address,
       recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("100.5", iov),
@@ -178,6 +195,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleLiskTransactionId(),
     original: {
       kind: "bcp/send",
+      chainId: chainIdLisk,
       sender: "4652772502274938600L" as Address,
       recipient: currentUsersLiskAddress,
       amount: stringToAmount("10.5", lsk),
@@ -192,6 +210,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
+      chainId: chainIdIov,
       sender: currentUsersIovAddress,
       recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("25.5", iov),
@@ -205,6 +224,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
+      chainId: chainIdIov,
       sender: currentUsersIovAddress,
       recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("100.5", iov),
@@ -218,6 +238,7 @@ const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUserna
     id: makeExampleIovTransactionId(),
     original: {
       kind: "bcp/send",
+      chainId: chainIdIov,
       sender: currentUsersIovAddress,
       recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
       amount: stringToAmount("25.5", iov),

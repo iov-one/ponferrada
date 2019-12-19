@@ -5,6 +5,7 @@ import {
   ChainId,
   FullSignature,
   Identity,
+  isIdentity,
   isUnsignedTransaction,
   PubkeyBytes,
   SignatureBytes,
@@ -104,13 +105,18 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       );
     }
 
+    const signer = TransactionEncoder.fromJson(request.params.signer);
+    if (!isIdentity(signer)) {
+      throw new Error("Invalid signer format in RPC request to Ledger endpoint.");
+    }
+
     const transaction = TransactionEncoder.fromJson(request.params.transaction);
     if (!isUnsignedTransaction(transaction)) {
       throw new Error("Invalid transaction format in RPC request to Ledger endpoint.");
     }
 
     const bnsConnection = await getConnectionForBns();
-    const nonce = await bnsConnection.getNonce({ pubkey: transaction.creator.pubkey });
+    const nonce = await bnsConnection.getNonce({ pubkey: signer.pubkey });
     const { bytes } = bnsCodec.bytesToSign(transaction, nonce);
 
     let transport: TransportWebUSB;
@@ -126,21 +132,23 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     if (!isIovLedgerAppVersion(versionResponse)) throw new Error(versionResponse.errorMessage);
     const addressResponse = await app.getAddress(addressIndex);
     if (!isIovLedgerAppAddress(addressResponse)) throw new Error(addressResponse.errorMessage);
+    if (addressResponse.address !== bnsCodec.identityToAddress(signer)) {
+      throw new Error("Address response does not match expected signer");
+    }
     const signatureResponse = await app.sign(addressIndex, bytes);
     if (!isIovLedgerAppSignature(signatureResponse)) throw new Error(signatureResponse.errorMessage);
 
     await transport.close();
 
     const signature: FullSignature = {
-      pubkey: transaction.creator.pubkey,
+      pubkey: signer.pubkey,
       nonce: nonce,
       signature: signatureResponse.signature as SignatureBytes,
     };
 
     const signedTransaction: SignedTransaction = {
       transaction: transaction,
-      primarySignature: signature,
-      otherSignatures: [],
+      signatures: [signature],
     };
 
     const transactionId = bnsCodec.identifier(signedTransaction);

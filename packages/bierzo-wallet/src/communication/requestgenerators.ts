@@ -1,12 +1,4 @@
-import {
-  Address,
-  Amount,
-  ChainId,
-  Identity,
-  SendTransaction,
-  UnsignedTransaction,
-  WithCreator,
-} from "@iov/bcp";
+import { Address, Amount, Identity, SendTransaction, UnsignedTransaction } from "@iov/bcp";
 import { ChainAddressPair, RegisterUsernameTx, UpdateTargetsOfUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
@@ -30,28 +22,29 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
   };
 }
 
-async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
-  const connection = getConnectionForChainId(chainId);
+async function withChainFee<T extends UnsignedTransaction>(transaction: T): Promise<T> {
+  const connection = getConnectionForChainId(transaction.chainId);
   if (!connection) {
-    throw new Error(`Active connection for chain with ${chainId} was not found.`);
+    throw new Error(`Active connection for chain with ${transaction.chainId} was not found.`);
   }
   const withFee = await connection.withDefaultFee(transaction);
   return withFee;
 }
 
 export const generateSendTxRequest = async (
-  creator: Identity,
+  sender: Identity,
   recipient: Address,
   amount: Amount,
   memo: string | undefined,
 ): Promise<JsonRpcRequest> => {
-  const codec = await getCodecForChainId(creator.chainId);
+  const codec = await getCodecForChainId(sender.chainId);
 
-  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(creator.chainId, {
+  const transactionWithFee: SendTransaction = await withChainFee({
     kind: "bcp/send",
+    chainId: sender.chainId,
     recipient,
-    creator,
-    sender: codec.identityToAddress(creator),
+    senderPubkey: sender.pubkey,
+    sender: codec.identityToAddress(sender),
     amount: amount,
     memo: memo,
   });
@@ -62,6 +55,7 @@ export const generateSendTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(sender),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
@@ -71,30 +65,30 @@ export const generateRegisterUsernameTxWithFee = async (
   creator: Identity,
   username: string,
   targets: readonly ChainAddressPair[],
-): Promise<RegisterUsernameTx & WithCreator> => {
-  const regUsernameTx: RegisterUsernameTx & WithCreator = {
+): Promise<RegisterUsernameTx> => {
+  const regUsernameTx: RegisterUsernameTx = {
     kind: "bns/register_username",
-    creator,
+    chainId: creator.chainId,
     username,
     targets,
   };
 
-  return await withChainFee(creator.chainId, regUsernameTx);
+  return await withChainFee(regUsernameTx);
 };
 
 export const generateUpdateUsernameTxWithFee = async (
   creator: Identity,
   username: string,
   targets: readonly ChainAddressPair[],
-): Promise<UpdateTargetsOfUsernameTx & WithCreator> => {
-  const regUsernameTx: UpdateTargetsOfUsernameTx & WithCreator = {
+): Promise<UpdateTargetsOfUsernameTx> => {
+  const regUsernameTx: UpdateTargetsOfUsernameTx = {
     kind: "bns/update_targets_of_username",
-    creator,
+    chainId: creator.chainId,
     username,
     targets,
   };
 
-  return await withChainFee(creator.chainId, regUsernameTx);
+  return await withChainFee(regUsernameTx);
 };
 
 export const generateRegisterUsernameTxRequest = async (
