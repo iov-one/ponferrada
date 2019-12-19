@@ -94,6 +94,7 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
   .add(REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
     <DecoratedStorybook>
       <Layout
+        iovnameAddresses={undefined}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         onSubmit={onSubmit}
         validate={validate}
@@ -105,6 +106,7 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
   .add(REGISTER_USERNAME_REGISTRATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <Layout
+        iovnameAddresses={undefined}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         onSubmit={onSubmit}
         validate={validate}
