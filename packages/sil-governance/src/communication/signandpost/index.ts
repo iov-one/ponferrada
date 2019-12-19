@@ -1,5 +1,5 @@
 /* global chrome */
-import { TransactionId, WithCreator } from "@iov/bcp";
+import { TransactionId } from "@iov/bcp";
 import { BnsConnection, BnsTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, makeJsonRpcId, parseJsonRpcResponse } from "@iov/jsonrpc";
@@ -15,10 +15,7 @@ function isExtensionContext(): boolean {
   );
 }
 
-async function generateSignAndPostRequest(
-  connection: BnsConnection,
-  tx: BnsTx & WithCreator,
-): Promise<JsonRpcRequest> {
+async function generateSignAndPostRequest(connection: BnsConnection, tx: BnsTx): Promise<JsonRpcRequest> {
   const txWithFee = await connection.withDefaultFee(tx);
   return {
     jsonrpc: "2.0",
@@ -36,7 +33,7 @@ async function generateSignAndPostRequest(
  */
 export async function sendSignAndPostRequest(
   connection: BnsConnection,
-  tx: BnsTx & WithCreator,
+  tx: BnsTx,
 ): Promise<SignAndPostResponse | undefined | "not_ready"> {
   if (!isExtensionContext()) return undefined;
 
