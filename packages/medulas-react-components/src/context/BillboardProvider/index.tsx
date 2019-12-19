@@ -42,7 +42,7 @@ export function BillboardProvider({ children }: Props): JSX.Element {
     message: React.ReactNode,
     vPosition: VPosition = "center",
     hPosition: HPosition = "center",
-    delay: number = 0,
+    delay = 0,
   ): void =>
     setMessage({
       show: true,

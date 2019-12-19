@@ -7,7 +7,7 @@ const retryInterval = 200;
  * @param timeout timeout in milliseconds. Defaults to 10 seconds
  * @returns a promise that resolves when the callback returned true and is rejected when timeout is reached.
  */
-export function whenTrue(callback: () => boolean | Promise<boolean>, timeout: number = 10000): Promise<void> {
+export function whenTrue(callback: () => boolean | Promise<boolean>, timeout = 10000): Promise<void> {
   return new Promise((resolve, reject): void => {
     const startTime = Date.now();
     const interval = setInterval(async () => {
