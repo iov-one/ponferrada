@@ -79,10 +79,9 @@ const AddressesTable = ({ chainAddresses }: AddressesTableProps): JSX.Element =>
     head: classes.cellHead,
   };
 
-  const chainAddressesSorted = Array.from(
-    chainAddresses,
-  ).sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
-    a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+  const chainAddressesSorted = Array.from(chainAddresses).sort(
+    (a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+      a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
   );
 
   return (
