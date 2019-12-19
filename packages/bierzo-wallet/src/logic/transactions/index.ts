@@ -47,7 +47,7 @@ export async function subscribeTransaction(
           !isFailedTransaction(tx) &&
           (isRegisterUsernameTx(parsedTx.original) || isUpdateTargetsOfUsernameTx(parsedTx.original))
         ) {
-          const usernameTx = parsedTx.original as (RegisterUsernameTx | UpdateTargetsOfUsernameTx);
+          const usernameTx = parsedTx.original as RegisterUsernameTx | UpdateTargetsOfUsernameTx;
           const usernames: BwUsername[] = [
             {
               username: usernameTx.username,
