@@ -174,8 +174,8 @@ withChainsDescribe("Persona", () => {
             const tx = transactions[creatorIndex][i];
             const nonce = nonces[creatorIndex][i];
 
-            const withFee = await connection.withDefaultFee(tx);
             const signer = identities[creatorIndex];
+            const withFee = await connection.withDefaultFee(tx, bnsCodec.identityToAddress(signer));
             const signed = await profile.signTransaction(signer, withFee, bnsCodec, nonce);
             await connection.postTx(bnsCodec.bytesToPost(signed));
           }
