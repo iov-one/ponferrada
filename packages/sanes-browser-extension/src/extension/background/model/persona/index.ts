@@ -1,11 +1,4 @@
-import {
-  Address,
-  Amount,
-  isSendTransaction,
-  SendTransaction,
-  UnsignedTransaction,
-  WithCreator,
-} from "@iov/bcp";
+import { Address, Amount, isSendTransaction, SendTransaction, UnsignedTransaction } from "@iov/bcp";
 import {
   bnsCodec,
   BnsConnection,
@@ -51,14 +44,12 @@ function isNonUndefined<T>(t: T | undefined): t is T {
 /**
  * All transaction types that can be displayed and signed by the extension
  */
-export type SupportedTransaction = (
+export type SupportedTransaction =
   | SendTransaction
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
   | CreateProposalTx
-  | VoteTx
-) &
-  WithCreator;
+  | VoteTx;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
   return (

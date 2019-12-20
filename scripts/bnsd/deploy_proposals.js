@@ -4,6 +4,7 @@ const { bnsCodec, BnsConnection, VoteOption } = require("@iov/bns");
 const { Governor, ProposalType } = require("@iov/bns-governance");
 const { Encoding } = require("@iov/encoding");
 const { Ed25519HdWallet, HdPaths, UserProfile } = require("@iov/keycontrol");
+const { sleep } = require("@iov/utils");
 
 // Dev admin
 // path: m/44'/234'/0'
@@ -18,9 +19,9 @@ const bnsdUrl = "ws://localhost:23456";
 const connectionPromise = BnsConnection.establish(bnsdUrl);
 
 function createSignAndPoster(connection, profile) {
-  return async function signAndPost(tx) {
-    const nonce = await connection.getNonce({ pubkey: tx.creator.pubkey });
-    const signed = await profile.signTransaction(tx, bnsCodec, nonce);
+  return async function signAndPost(identity, tx) {
+    const nonce = await connection.getNonce({ pubkey: identity.pubkey });
+    const signed = await profile.signTransaction(identity, tx, bnsCodec, nonce);
     const txBytes = bnsCodec.bytesToPost(signed);
     const post = await connection.postTx(txBytes);
     const blockInfo = await post.blockInfo.waitFor(info => !isBlockInfoPending(info));
@@ -30,33 +31,33 @@ function createSignAndPoster(connection, profile) {
   };
 }
 
-async function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 async function main() {
   const connection = await connectionPromise;
   const chainId = await connection.chainId();
   const profile = new UserProfile();
   const wallet = profile.addWallet(Ed25519HdWallet.fromMnemonic(adminMnemonic));
   const identity = await profile.createIdentity(wallet.id, chainId, adminPath);
+  const senderAddress = bnsCodec.identityToAddress(identity);
   const guaranteeFundEscrowId = Encoding.fromHex("0000000000000001");
   const rewardFundAddress = "tiov1k0dp2fmdunscuwjjusqtk6mttx5ufk3z0mmp0z";
   const signAndPost = createSignAndPoster(connection, profile);
 
-  const initialTxForReward = await connection.withDefaultFee({
-    kind: "bcp/send",
-    recipient: rewardFundAddress,
-    creator: identity,
-    sender: bnsCodec.identityToAddress(identity),
-    amount: {
-      quantity: "10000000000",
-      fractionalDigits: 9,
-      tokenTicker: "CASH",
+  const initialTxForReward = await connection.withDefaultFee(
+    {
+      kind: "bcp/send",
+      recipient: rewardFundAddress,
+      chainId: chainId,
+      sender: senderAddress,
+      amount: {
+        quantity: "10000000000",
+        fractionalDigits: 9,
+        tokenTicker: "CASH",
+      },
     },
-  });
+    senderAddress,
+  );
 
-  await signAndPost(initialTxForReward);
+  await signAndPost(identity, initialTxForReward);
 
   const governorOptions = {
     connection,
@@ -164,7 +165,7 @@ async function main() {
       ...proposalOptions[i],
       startTime: new Date(Date.now() + 1000),
     });
-    await signAndPost(createProposalTx);
+    await signAndPost(identity, createProposalTx);
 
     await sleep(7000);
 
@@ -176,14 +177,19 @@ async function main() {
         // Vote Yes 1/2 of the time, No for the other 1/2
         i % 2 ? VoteOption.Yes : VoteOption.No,
       );
-      await signAndPost(voteTx);
+      await signAndPost(identity, voteTx);
     }
   }
 }
 
-main()
-  .catch(console.error)
-  .finally(async () => {
+main().then(
+  async () => {
     (await connectionPromise).disconnect();
     process.exit(0);
-  });
+  },
+  async error => {
+    console.error(error);
+    (await connectionPromise).disconnect();
+    process.exit(1);
+  },
+);

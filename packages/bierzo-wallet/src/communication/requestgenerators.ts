@@ -1,13 +1,5 @@
-import {
-  Address,
-  Amount,
-  ChainId,
-  Identity,
-  SendTransaction,
-  UnsignedTransaction,
-  WithCreator,
-} from "@iov/bcp";
-import { ChainAddressPair, RegisterUsernameTx, UpdateTargetsOfUsernameTx } from "@iov/bns";
+import { Address, Amount, Identity, SendTransaction, UnsignedTransaction } from "@iov/bcp";
+import { bnsCodec, ChainAddressPair, RegisterUsernameTx, UpdateTargetsOfUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
@@ -30,31 +22,36 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
   };
 }
 
-async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
-  const connection = getConnectionForChainId(chainId);
+async function withChainFee<T extends UnsignedTransaction>(transaction: T, feePayer: Address): Promise<T> {
+  const connection = getConnectionForChainId(transaction.chainId);
   if (!connection) {
-    throw new Error(`Active connection for chain with ${chainId} was not found.`);
+    throw new Error(`Active connection for chain with ${transaction.chainId} was not found.`);
   }
-  const withFee = await connection.withDefaultFee(transaction);
+  const withFee = await connection.withDefaultFee(transaction, feePayer);
   return withFee;
 }
 
 export const generateSendTxRequest = async (
-  creator: Identity,
+  sender: Identity,
   recipient: Address,
   amount: Amount,
   memo: string | undefined,
 ): Promise<JsonRpcRequest> => {
-  const codec = await getCodecForChainId(creator.chainId);
+  const codec = await getCodecForChainId(sender.chainId);
 
-  const transactionWithFee: SendTransaction & WithCreator = await withChainFee(creator.chainId, {
-    kind: "bcp/send",
-    recipient,
-    creator,
-    sender: codec.identityToAddress(creator),
-    amount: amount,
-    memo: memo,
-  });
+  const senderAddress = codec.identityToAddress(sender);
+  const transactionWithFee: SendTransaction = await withChainFee(
+    {
+      kind: "bcp/send",
+      chainId: sender.chainId,
+      recipient,
+      senderPubkey: sender.pubkey,
+      sender: senderAddress,
+      amount: amount,
+      memo: memo,
+    },
+    senderAddress,
+  );
 
   return {
     jsonrpc: "2.0",
@@ -62,6 +59,7 @@ export const generateSendTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(sender),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
@@ -71,30 +69,30 @@ export const generateRegisterUsernameTxWithFee = async (
   creator: Identity,
   username: string,
   targets: readonly ChainAddressPair[],
-): Promise<RegisterUsernameTx & WithCreator> => {
-  const regUsernameTx: RegisterUsernameTx & WithCreator = {
+): Promise<RegisterUsernameTx> => {
+  const regUsernameTx: RegisterUsernameTx = {
     kind: "bns/register_username",
-    creator,
+    chainId: creator.chainId,
     username,
     targets,
   };
 
-  return await withChainFee(creator.chainId, regUsernameTx);
+  return withChainFee(regUsernameTx, bnsCodec.identityToAddress(creator));
 };
 
 export const generateUpdateUsernameTxWithFee = async (
   creator: Identity,
   username: string,
   targets: readonly ChainAddressPair[],
-): Promise<UpdateTargetsOfUsernameTx & WithCreator> => {
-  const regUsernameTx: UpdateTargetsOfUsernameTx & WithCreator = {
+): Promise<UpdateTargetsOfUsernameTx> => {
+  const regUsernameTx: UpdateTargetsOfUsernameTx = {
     kind: "bns/update_targets_of_username",
-    creator,
+    chainId: creator.chainId,
     username,
     targets,
   };
 
-  return await withChainFee(creator.chainId, regUsernameTx);
+  return await withChainFee(regUsernameTx, bnsCodec.identityToAddress(creator));
 };
 
 export const generateRegisterUsernameTxRequest = async (
@@ -110,6 +108,7 @@ export const generateRegisterUsernameTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(creator),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
@@ -128,6 +127,7 @@ export const generateUpdateUsernameTxRequest = async (
     method: "signAndPost",
     params: {
       reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(creator),
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };

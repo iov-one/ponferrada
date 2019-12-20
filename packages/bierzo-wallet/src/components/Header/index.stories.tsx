@@ -1,4 +1,4 @@
-import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import { Block, Hairline, Typography } from "medulas-react-components";
 import * as React from "react";
@@ -22,12 +22,16 @@ const lsk: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "LSK" as TokenTicker,
 };
 
+const chainIdIov = "local-iov-devnet" as ChainId;
+const chainIdLisk = "lisk-da3ed6a454" as ChainId;
+
 const txs: readonly (ProcessedSendTransaction | ProcessedTx)[] = [
   {
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx0" as TransactionId,
     original: {
       kind: "bns/register_username",
+      chainId: chainIdIov,
     },
   },
   {
@@ -35,6 +39,7 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx)[] = [
     id: "tx1" as TransactionId,
     original: {
       kind: "bcp/send",
+      chainId: chainIdLisk,
       sender: "123L" as Address,
       recipient: "456L" as Address,
       amount: stringToAmount("10.5", lsk),
@@ -47,6 +52,7 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx)[] = [
     id: "tx2" as TransactionId,
     original: {
       kind: "bcp/send",
+      chainId: chainIdIov,
       sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
       recipient: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address,
       amount: stringToAmount("25.5", iov),

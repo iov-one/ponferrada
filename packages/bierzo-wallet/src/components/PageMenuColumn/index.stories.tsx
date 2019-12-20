@@ -1,4 +1,4 @@
-import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import { Typography } from "medulas-react-components";
 import * as React from "react";
@@ -16,12 +16,16 @@ const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "IOV" as TokenTicker,
 };
 
+const chainIdIov = "local-iov-devnet" as ChainId;
+const chainIdLisk = "lisk-da3ed6a454" as ChainId;
+
 const txs: readonly ProcessedSendTransaction[] = [
   {
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx1" as TransactionId,
     original: {
       kind: "bcp/send",
+      chainId: chainIdLisk,
       amount: {
         quantity: "1050000000",
         fractionalDigits: 8,
@@ -37,6 +41,7 @@ const txs: readonly ProcessedSendTransaction[] = [
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx2" as TransactionId,
     original: {
+      chainId: chainIdIov,
       kind: "bcp/send",
       amount: stringToAmount("25.5", iov),
       sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
@@ -51,6 +56,7 @@ const faultTx: ProcessedSendTransaction = {
   time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
   id: "tx3" as TransactionId,
   original: {
+    chainId: chainIdIov,
     kind: "bcp/send",
     amount: stringToAmount("100.5", iov),
     sender: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
@@ -65,6 +71,7 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   id: "EDBBA9C7C558A60E09A589C2263CF5DDC7B25ED014E3EF5959C6B1C8E6DBAD4E" as TransactionId,
   original: {
     kind: "bcp/send",
+    chainId: chainIdIov,
     sender: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
     recipient: "tiov1xgm95mecmf3vkn7lnszfe9q4uy6nv0pwkr8wc3" as Address,
     amount: stringToAmount("7.4", iov),

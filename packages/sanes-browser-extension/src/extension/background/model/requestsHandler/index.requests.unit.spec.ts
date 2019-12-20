@@ -70,6 +70,7 @@ withChainsDescribe("background script handler for website request", () => {
     const expectedError = generateErrorResponse(1, "Signing server not ready", -32010);
     const response = await requestsHandler.handleRequestMessage(request, sender);
     expect(response).toEqual(expectedError);
+    // eslint-disable-next-line require-atomic-updates
     requestsHandler["signingServer"] = ssRef;
   });
 

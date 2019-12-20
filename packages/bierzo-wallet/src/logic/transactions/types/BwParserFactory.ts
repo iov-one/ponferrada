@@ -5,7 +5,7 @@ import {
   isConfirmedTransaction,
   isFailedTransaction,
   isSendTransaction,
-  LightTransaction,
+  UnsignedTransaction,
 } from "@iov/bcp";
 import { isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
 
@@ -45,8 +45,8 @@ export class BwParserFactory {
   }
 
   public static getBwTransactionFrom(
-    trans: ConfirmedTransaction<LightTransaction> | FailedTransaction,
-  ): BwParser<LightTransaction> {
+    trans: ConfirmedTransaction<UnsignedTransaction> | FailedTransaction,
+  ): BwParser<UnsignedTransaction> {
     if (isFailedTransaction(trans)) {
       throw new Error("Not supported error txs for now");
     }

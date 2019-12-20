@@ -46,7 +46,7 @@ withChainsDescribe("E2E > Dashboard route", () => {
     server.close();
   });
 
-  it("has an 'Add New Proposal' button that redirects to /create-proposal", async (): Promise<void> => {
+  it("has an 'Add New Proposal' button that redirects to /create-proposal", async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
@@ -56,9 +56,7 @@ withChainsDescribe("E2E > Dashboard route", () => {
     await whenOnNavigatedToE2eRoute(page, CREATE_PROPOSAL_ROUTE);
   }, 45000);
 
-  it("has a 'Sort by' button that sorts the proposals by 'Expiry Date', 'Start Date', or 'Vote'", async (): Promise<
-    void
-  > => {
+  it("has a 'Sort by' button that sorts the proposals by 'Expiry Date', 'Start Date', or 'Vote'", async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
@@ -92,7 +90,7 @@ withChainsDescribe("E2E > Dashboard route", () => {
     expect(titles[8]).toBe("Amend protocol");
   }, 45000);
 
-  it("redirects to confirmation page if vote accepted", async (): Promise<void> => {
+  it("redirects to confirmation page if vote accepted", async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
@@ -115,7 +113,7 @@ withChainsDescribe("E2E > Dashboard route", () => {
     await sleep(5000);
   }, 45000);
 
-  it("does not redirect if vote rejected", async (): Promise<void> => {
+  it("does not redirect if vote rejected", async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
     extensionPage = await createExtensionPage(browser);
