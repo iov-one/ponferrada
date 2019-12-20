@@ -3,7 +3,7 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";
 import * as React from "react";
-import { amountToString, ellipsifyAddress } from "ui-logic";
+import { amountToString, ellipsifyAddress, sumToString } from "ui-logic";
 
 import { getAddressPrefix } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
@@ -34,11 +34,16 @@ interface Props {
 function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<Theme>();
+  const amountClass = sendTx.outgoing ? undefined : classes.amountFrom;
+
   const [isOpen, toggle] = useOpen();
 
   const address = sendTx.outgoing ? sendTx.original.recipient : sendTx.original.sender;
   const amountSign = sendTx.outgoing ? "-" : "+";
-  const amountClass = sendTx.outgoing ? undefined : classes.amountFrom;
+
+  const amount = sendTx.original.amount;
+  const fee = sendTx.outgoing && sendTx.original.fee && sendTx.original.fee.tokens;
+  const totalAmount = fee ? sumToString(amount, fee) : amountToString(amount);
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
@@ -66,7 +71,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
           <Block flexGrow={1} />
           <Block className={classes.cell}>
             <Typography variant="subtitle2" weight="regular" align="right" className={amountClass}>
-              {`${amountSign}${amountToString(sendTx.original.amount)}`}
+              {`${amountSign}${totalAmount}`}
             </Typography>
           </Block>
           <Block padding={0.5} />
