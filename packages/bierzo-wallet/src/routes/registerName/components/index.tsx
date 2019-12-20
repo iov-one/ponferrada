@@ -19,6 +19,7 @@ import { amountToString } from "ui-logic";
 
 import { AddressesTableProps, ChainAddressPairWithName } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
+import { BwUsernameWithChainName } from "../../addresses";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable, {
   getAddressInputName,
@@ -116,11 +117,24 @@ interface Props extends AddressesTableProps {
   readonly onSubmit: (values: object) => Promise<void>;
   readonly validate: (values: object) => Promise<object>;
   readonly onCancel: () => void;
+  readonly iovnameAddresses: BwUsernameWithChainName | undefined;
   readonly transactionFee: Fee | undefined;
 }
 
-const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
-  const chainAddressesItems = React.useMemo(() => getAddressItems(chainAddresses), [chainAddresses]);
+const Layout = ({
+  chainAddresses,
+  iovnameAddresses,
+  validate,
+  onSubmit,
+  onCancel,
+  transactionFee,
+}: Props): JSX.Element => {
+  const chainAddressesItems = React.useMemo(() => {
+    if (iovnameAddresses) {
+      return getAddressItems(iovnameAddresses.addresses);
+    }
+    return getAddressItems(chainAddresses);
+  }, [chainAddresses, iovnameAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
@@ -160,32 +174,42 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
     <Form onSubmit={handleSubmit}>
       <PageContent id={REGISTER_USERNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
-          <Block display="flex" justifyContent="space-between" marginBottom={1}>
-            <Typography variant="subtitle2" weight="semibold">
-              Create your iovname
+          {iovnameAddresses && (
+            <Typography variant="h4" align="center">
+              {iovnameAddresses.username}
             </Typography>
-            <Block display="flex" alignItems="center">
-              <Tooltip maxWidth={320}>
-                <TooltipContent header={<NoUsernameHeader />} title="Choose your address">
-                  With IOV you can choose your easy to read human readable address. No more complicated
-                  cryptography when sending to friends.
-                </TooltipContent>
-              </Tooltip>
-              <Block marginRight={1} />
-              <Typography variant="subtitle2" inline weight="regular">
-                How it works
-              </Typography>
-            </Block>
-          </Block>
-          <Block width="100%" marginBottom={1}>
-            <TextField
-              name={REGISTER_USERNAME_FIELD}
-              form={form}
-              placeholder="eg. username*iov"
-              fullWidth
-              margin="none"
-            />
-          </Block>
+          )}
+          {!iovnameAddresses && (
+            <React.Fragment>
+              <Block display="flex" justifyContent="space-between" marginBottom={1}>
+                <Typography variant="subtitle2" weight="semibold">
+                  Create your iovname
+                </Typography>
+                <Block display="flex" alignItems="center">
+                  <Tooltip maxWidth={320}>
+                    <TooltipContent header={<NoUsernameHeader />} title="Choose your address">
+                      With IOV you can choose your easy to read human readable address. No more complicated
+                      cryptography when sending to friends.
+                    </TooltipContent>
+                  </Tooltip>
+                  <Block marginRight={1} />
+                  <Typography variant="subtitle2" inline weight="regular">
+                    How it works
+                  </Typography>
+                </Block>
+              </Block>
+              <Block width="100%" marginBottom={1}>
+                <TextField
+                  name={REGISTER_USERNAME_FIELD}
+                  form={form}
+                  placeholder="eg. username*iov"
+                  fullWidth
+                  margin="none"
+                />
+              </Block>
+            </React.Fragment>
+          )}
+
           <Block width="100%" marginTop={3} marginBottom={1}>
             <Block display="flex" alignItems="center" marginBottom={1}>
               <Block width={440}>
@@ -209,7 +233,11 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
                 Optional
               </Typography>
             </Block>
-            <SelectAddressesTable chainAddresses={chainAddressesItems} form={form} />
+            <SelectAddressesTable
+              availableBlockchains={chainAddresses}
+              chainAddressesItems={chainAddressesItems}
+              form={form}
+            />
           </Block>
         </Block>
       </PageContent>

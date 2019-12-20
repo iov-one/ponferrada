@@ -18,6 +18,7 @@ import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 
 export const addressValueField = "address-value-field";
 export const blockchainValueField = "blockchain-value-field";
+const emptySelectorName = "Select";
 
 export const getAddressInputName = (id: string): string => `${id}-${addressValueField}`;
 export const getBlockchainInputName = (id: string): string => `${id}-${blockchainValueField}`;
@@ -73,15 +74,19 @@ const AddressRow = ({
   const cellClasses = {
     root: classes.cell,
   };
+  const [selectedBlockchain, setSelectedBlockchain] = React.useState<SelectFieldItem>({
+    name: addressItem.chain.chainName,
+  });
 
   const onRemove = (): void => {
-    addBlockchainItem({ name: addressItem.chain.chainName });
+    addBlockchainItem(selectedBlockchain);
     removeAddress(index);
   };
 
   const onSelectionChanged = (value: SelectFieldItem | undefined): void => {
     if (value) {
-      addBlockchainItem({ name: addressItem.chain.chainName });
+      addBlockchainItem(selectedBlockchain);
+      setSelectedBlockchain(value);
       removeBlockchainItem(value);
     }
   };
@@ -97,7 +102,7 @@ const AddressRow = ({
               maxWidth="200px"
               items={blockChainItems}
               initial={addressItem.chain.chainName}
-              placeholder={blockChainItems.length > 0 ? "Select" : undefined}
+              placeholder={blockChainItems.length > 0 ? emptySelectorName : undefined}
               onChangeCallback={onSelectionChanged}
             />
           }
@@ -122,12 +127,22 @@ const AddressRow = ({
 
 interface TableProps {
   readonly form: FormApi;
-  readonly chainAddresses: SelectAddressItem[];
+  readonly chainAddressesItems: SelectAddressItem[];
+  readonly availableBlockchains: readonly ChainAddressPairWithName[];
 }
 
-const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element => {
-  const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>(chainAddresses);
-  const [blockChainItems, setBlockchainItems] = React.useState<SelectFieldItem[]>([]);
+const SelectAddressesTable = ({
+  availableBlockchains,
+  chainAddressesItems,
+  form,
+}: TableProps): JSX.Element => {
+  const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>(chainAddressesItems);
+  const [blockChainItems, setBlockchainItems] = React.useState<SelectFieldItem[]>(() => {
+    const addressesChains = chainAddressesItems.map(address => address.chain.chainId);
+    return availableBlockchains
+      .filter(item => !addressesChains.includes(item.chainId))
+      .map(item => ({ name: item.chainName }));
+  });
 
   const removeBlockchainItem = (chain: SelectFieldItem): void => {
     const newItem = blockChainItems.filter(item => item.name !== chain.name);
@@ -135,9 +150,11 @@ const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element
   };
 
   const addBlockchainItem = (chain: SelectFieldItem): void => {
-    const newItem = [...blockChainItems, chain];
-    newItem.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
-    setBlockchainItems(newItem);
+    if (chain.name !== emptySelectorName) {
+      const newItem = [...blockChainItems, chain];
+      newItem.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+      setBlockchainItems(newItem);
+    }
   };
 
   const addAddress = (): void => {
@@ -148,7 +165,7 @@ const SelectAddressesTable = ({ chainAddresses, form }: TableProps): JSX.Element
         chain: {
           address: "" as Address,
           chainId: "" as ChainId,
-          chainName: "Select",
+          chainName: emptySelectorName,
         },
       },
     ];

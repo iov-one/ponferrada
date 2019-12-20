@@ -12,6 +12,7 @@ import {
 import React from "react";
 
 import { BwUsernameWithChainName } from "..";
+import { history } from "../..";
 import AddressesTable from "../../../components/AddressesTable";
 import copy from "../../../components/AddressesTable/assets/copy.svg";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
@@ -59,6 +60,10 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
           toast.show("Iovname has been copied to clipboard.", ToastVariant.INFO);
         };
 
+        const onEdit = (): void => {
+          history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE, username);
+        };
+
         return (
           <Block key={username.username} marginTop={1} width={650}>
             <Paper classes={paperClasses}>
@@ -81,7 +86,7 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                 </Block>
                 <Block display="flex" alignItems="center" marginBottom={1} marginTop={4}>
                   <Typography variant="subtitle2" weight="semibold" inline>
-                    IS LINKED TO THESE ADDRESSES
+                    {username.addresses.length > 0 ? "LINKED ADDRESSES" : "NO LINKED ADDRESSES"}
                   </Typography>
                   <Block marginRight={1} />
                   <Tooltip maxWidth={320}>
@@ -90,9 +95,22 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
                       addresses. Just give your friends your personalized address.
                     </TooltipContent>
                   </Tooltip>
+                  <Block flexGrow={1} />
+                  <Typography
+                    variant="subtitle2"
+                    weight="semibold"
+                    inline
+                    link
+                    color="primary"
+                    align="right"
+                    onClick={onEdit}
+                  >
+                    {username.addresses.length > 0 ? "Edit" : "Link Now"}
+                  </Typography>
+                  <Block marginLeft={1} />
                 </Block>
                 <Block marginTop={2} />
-                <AddressesTable chainAddresses={username.addresses} />
+                {username.addresses.length > 0 && <AddressesTable chainAddresses={username.addresses} />}
               </Block>
             </Paper>
           </Block>

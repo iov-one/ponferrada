@@ -7,7 +7,7 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from "@iov/bcp";
-import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
+import { ChainAddressPair, RegisterUsernameTx, UpdateTargetsOfUsernameTx } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
@@ -82,12 +82,45 @@ export const generateRegisterUsernameTxWithFee = async (
   return await withChainFee(creator.chainId, regUsernameTx);
 };
 
+export const generateUpdateUsernameTxWithFee = async (
+  creator: Identity,
+  username: string,
+  targets: readonly ChainAddressPair[],
+): Promise<UpdateTargetsOfUsernameTx & WithCreator> => {
+  const regUsernameTx: UpdateTargetsOfUsernameTx & WithCreator = {
+    kind: "bns/update_targets_of_username",
+    creator,
+    username,
+    targets,
+  };
+
+  return await withChainFee(creator.chainId, regUsernameTx);
+};
+
 export const generateRegisterUsernameTxRequest = async (
   creator: Identity,
   username: string,
   targets: readonly ChainAddressPair[],
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateRegisterUsernameTxWithFee(creator, username, targets);
+
+  return {
+    jsonrpc: "2.0",
+    id: makeJsonRpcId(),
+    method: "signAndPost",
+    params: {
+      reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      transaction: TransactionEncoder.toJson(transactionWithFee),
+    },
+  };
+};
+
+export const generateUpdateUsernameTxRequest = async (
+  creator: Identity,
+  username: string,
+  targets: readonly ChainAddressPair[],
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateUpdateUsernameTxWithFee(creator, username, targets);
 
   return {
     jsonrpc: "2.0",
