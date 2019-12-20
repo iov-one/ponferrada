@@ -1,6 +1,6 @@
 import { Amount, Token, TokenTicker } from "@iov/bcp";
 
-import { amountToGwei, amountToString, stringToAmount } from "./balances";
+import { amountToGwei, amountToString, stringToAmount, sumToString } from "./balances";
 
 function makeAmount(quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount {
   return {
@@ -116,6 +116,34 @@ describe("balances", () => {
       expect(amountToGwei({ ...meta, quantity: "123000000" })).toEqual("0.12 Gwei");
       expect(amountToGwei({ ...meta, quantity: "1333333333" })).toEqual("1.33 Gwei");
       expect(amountToGwei({ ...meta, quantity: "1999999999" })).toEqual("2.00 Gwei");
+    });
+  });
+
+  describe("sumToString", () => {
+    const amountA: Amount = {
+      quantity: "5",
+      fractionalDigits: 9,
+      tokenTicker: "ETH" as TokenTicker,
+    };
+
+    const amountB: Amount = {
+      quantity: "10",
+      fractionalDigits: 9,
+      tokenTicker: "ETH" as TokenTicker,
+    };
+
+    const amountC: Amount = {
+      quantity: "10",
+      fractionalDigits: 9,
+      tokenTicker: "BTC" as TokenTicker,
+    };
+
+    it("correctly sums two amounts", () => {
+      expect(sumToString(amountA, amountB)).toEqual("0.000000015 ETH");
+    });
+
+    it("cannot sum different tokens", () => {
+      expect(() => sumToString(amountA, amountC)).toThrowError(/Cannot add amounts of different tokens/);
     });
   });
 });

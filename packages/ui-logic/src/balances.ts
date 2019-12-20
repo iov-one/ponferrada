@@ -40,3 +40,12 @@ export function amountToGwei(amount: Amount): string {
   const display = Number.isInteger(value) ? value : value.toFixed(2);
   return `${display} Gwei`;
 }
+
+export function sumToString(amountA: Amount, amountB: Amount): string {
+  if (amountA.tokenTicker !== amountB.tokenTicker) throw new Error("Cannot add amounts of different tokens");
+
+  const a = Decimal.fromAtomics(amountA.quantity, amountA.fractionalDigits);
+  const b = Decimal.fromAtomics(amountB.quantity, amountB.fractionalDigits);
+
+  return `${a.plus(b).toString()} ${amountA.tokenTicker}`;
+}
