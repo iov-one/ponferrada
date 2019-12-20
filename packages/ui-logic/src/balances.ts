@@ -41,11 +41,19 @@ export function amountToGwei(amount: Amount): string {
   return `${display} Gwei`;
 }
 
-export function sumToString(amountA: Amount, amountB: Amount): string {
+export function sumAmounts(amountA: Amount, amountB: Amount): Amount {
   if (amountA.tokenTicker !== amountB.tokenTicker) throw new Error("Cannot add amounts of different tokens");
+  if (amountA.fractionalDigits !== amountB.fractionalDigits)
+    throw new Error("Cannot add amounts with different fractional digits");
 
-  const a = Decimal.fromAtomics(amountA.quantity, amountA.fractionalDigits);
-  const b = Decimal.fromAtomics(amountB.quantity, amountB.fractionalDigits);
+  const decimalA = Decimal.fromAtomics(amountA.quantity, amountA.fractionalDigits);
+  const decimalB = Decimal.fromAtomics(amountB.quantity, amountB.fractionalDigits);
 
-  return `${a.plus(b).toString()} ${amountA.tokenTicker}`;
+  const result = decimalA.plus(decimalB);
+
+  return {
+    quantity: result.atomics,
+    fractionalDigits: result.fractionalDigits,
+    tokenTicker: amountA.tokenTicker,
+  };
 }

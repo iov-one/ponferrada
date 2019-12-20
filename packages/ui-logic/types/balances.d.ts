@@ -16,4 +16,4 @@ export declare function stringToAmount(
  */
 export declare function amountToNumber(amount: Amount): number;
 export declare function amountToGwei(amount: Amount): string;
-export declare function sumToString(amountA: Amount, amountB: Amount): string;
+export declare function sumAmounts(amountA: Amount, amountB: Amount): Amount;

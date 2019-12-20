@@ -3,7 +3,7 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";
 import * as React from "react";
-import { amountToString, ellipsifyAddress, sumToString } from "ui-logic";
+import { amountToString, ellipsifyAddress, sumAmounts } from "ui-logic";
 
 import { getAddressPrefix } from "../../../../../../routes/transactions/components/TxTable/rowTxBuilder";
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
@@ -43,7 +43,7 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
 
   const amount = sendTx.original.amount;
   const fee = sendTx.outgoing && sendTx.original.fee?.tokens;
-  const totalAmount = fee ? sumToString(amount, fee) : amountToString(amount);
+  const totalAmount = fee ? amountToString(sumAmounts(amount, fee)) : amountToString(amount);
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
