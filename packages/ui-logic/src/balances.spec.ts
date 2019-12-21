@@ -1,6 +1,6 @@
 import { Amount, Token, TokenTicker } from "@iov/bcp";
 
-import { amountToGwei, amountToString, stringToAmount } from "./balances";
+import { amountToGwei, amountToString, stringToAmount, sumAmounts } from "./balances";
 
 function makeAmount(quantity: string, fractionalDigits: number, tokenTicker: TokenTicker): Amount {
   return {
@@ -116,6 +116,50 @@ describe("balances", () => {
       expect(amountToGwei({ ...meta, quantity: "123000000" })).toEqual("0.12 Gwei");
       expect(amountToGwei({ ...meta, quantity: "1333333333" })).toEqual("1.33 Gwei");
       expect(amountToGwei({ ...meta, quantity: "1999999999" })).toEqual("2.00 Gwei");
+    });
+  });
+
+  describe("sumAmounts", () => {
+    const amountA: Amount = {
+      quantity: "5",
+      fractionalDigits: 9,
+      tokenTicker: "ETH" as TokenTicker,
+    };
+
+    const amountB: Amount = {
+      quantity: "10",
+      fractionalDigits: 9,
+      tokenTicker: "ETH" as TokenTicker,
+    };
+
+    const amountC: Amount = {
+      quantity: "10",
+      fractionalDigits: 9,
+      tokenTicker: "BTC" as TokenTicker,
+    };
+
+    const amountD: Amount = {
+      quantity: "10",
+      fractionalDigits: 5,
+      tokenTicker: "ETH" as TokenTicker,
+    };
+
+    it("correctly sums two amounts", () => {
+      expect(sumAmounts(amountA, amountB)).toEqual({
+        quantity: "15",
+        fractionalDigits: 9,
+        tokenTicker: "ETH" as TokenTicker,
+      });
+    });
+
+    it("cannot sum different tokens", () => {
+      expect(() => sumAmounts(amountA, amountC)).toThrowError(/Cannot add amounts of different tokens/);
+    });
+
+    it("cannot sum different fractionalDigits", () => {
+      expect(() => sumAmounts(amountA, amountD)).toThrowError(
+        /Cannot add amounts with different fractional digits/,
+      );
     });
   });
 });

@@ -1,4 +1,4 @@
-export { amountToGwei, amountToNumber, amountToString, stringToAmount } from "./balances";
+export { amountToGwei, amountToNumber, amountToString, stringToAmount, sumAmounts } from "./balances";
 export { parseRecipients } from "./csv";
 export { ErrorParser } from "./error";
 export { round } from "./number";
