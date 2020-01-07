@@ -102,7 +102,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer", () => {
 
     const liElements = scryRenderedDOMComponentsWithTag(walletStatusDom, "li");
     const liskNetwork = liElements[5];
-    expect(liskNetwork.textContent).toBe("Lisk Networkhttps://api.infura.io/v1/jsonrpc/rinkeby");
+    expect(liskNetwork.textContent).toBe("Lisk Devnethttp://localhost:4000/");
   }, 60000);
 
   it("settings view has link to support center", async () => {
