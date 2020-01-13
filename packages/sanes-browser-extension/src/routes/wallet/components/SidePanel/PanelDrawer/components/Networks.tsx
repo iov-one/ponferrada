@@ -1,19 +1,9 @@
 import { Block, Image, List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 
-import { getConfigurationFile } from "../../../../../../extension/background/model/persona/config";
-import bulletPoint from "../../../../assets/bulletPoint.svg";
-
-type NetworkData = { name: string; url: string };
-
-const getNetworksData = async (): Promise<NetworkData[]> => {
-  const networksData: NetworkData[] = [];
-
-  const chains = (await getConfigurationFile()).chains;
-  chains.forEach(chain => networksData.push({ name: chain.chainSpec.name, url: chain.chainSpec.node }));
-
-  return networksData;
-};
+import { PersonaContext } from "../../../../../../context/PersonaProvider";
+import bulletPointGreen from "../../../../assets/bulletPointGreen.svg";
+import bulletPointRed from "../../../../assets/bulletPointRed.svg";
 
 const useStyles = makeStyles({
   listRoot: {
@@ -28,7 +18,7 @@ const useStyles = makeStyles({
 });
 
 const Networks = (): JSX.Element => {
-  const [networksData, setNetworksData] = useState<NetworkData[]>([]);
+  const networks = useContext(PersonaContext).chainStatuses;
 
   const classes = useStyles();
   const listClasses = {
@@ -38,30 +28,14 @@ const Networks = (): JSX.Element => {
     root: classes.listItem,
   };
 
-  useEffect(() => {
-    let isSubscribed = true;
-    async function updateNetworks(): Promise<void> {
-      const networksData = await getNetworksData();
-
-      if (isSubscribed) {
-        setNetworksData(networksData);
-      }
-    }
-    updateNetworks();
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, []);
-
   return (
     <Block width="100%">
       <List classes={listClasses}>
-        {networksData.map(network => (
+        {networks.map(network => (
           <ListItem key={network.name} classes={listItemClasses}>
-            <Image alt="Bullet Point" src={bulletPoint} />
+            <Image alt="Bullet Point" src={network.connected ? bulletPointGreen : bulletPointRed} />
             <Block marginLeft={2} />
-            <ListItemText primary={network.name} secondary={network.url} />
+            <ListItemText primary={network.name} secondary={network.node} />
           </ListItem>
         ))}
       </List>
