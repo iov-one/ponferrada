@@ -1,7 +1,7 @@
 import { Amount } from "@iov/bcp";
 import { JsonRpcResponse } from "@iov/jsonrpc";
 
-import { Persona, PersonaAcccount } from "../persona";
+import { ChainStatus, Persona, PersonaAcccount } from "../persona";
 import RequestsHandler from "../requestsHandler";
 import { Request } from "../requestsHandler/requestQueueManager";
 import { Db } from "./db";
@@ -20,6 +20,7 @@ export interface IovWindowExtension extends Window {
 
 export interface PersonaData {
   readonly mnemonic: string;
+  readonly chainStatuses: readonly ChainStatus[];
   readonly accounts: readonly PersonaAcccount[];
   readonly balances: readonly (readonly Amount[])[];
   readonly starnames: readonly string[];
@@ -47,6 +48,7 @@ class Backgroundscript {
 
     const response = {
       mnemonic: this.persona.mnemonic,
+      chainStatuses: this.persona.chainStatuses,
       accounts: await this.persona.getAccounts(),
       balances: await this.persona.getBalances(),
       starnames: await this.persona.getStarnames(),
@@ -64,6 +66,7 @@ class Backgroundscript {
 
     return {
       mnemonic: this.persona.mnemonic,
+      chainStatuses: this.persona.chainStatuses,
       accounts: await this.persona.getAccounts(),
       balances: await this.persona.getBalances(),
       starnames: await this.persona.getStarnames(),
@@ -95,6 +98,7 @@ class Backgroundscript {
 
     return {
       mnemonic: this.persona.mnemonic,
+      chainStatuses: this.persona.chainStatuses,
       accounts: await this.persona.getAccounts(),
       balances: await this.persona.getBalances(),
       starnames: await this.persona.getStarnames(),
