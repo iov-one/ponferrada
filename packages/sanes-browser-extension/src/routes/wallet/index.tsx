@@ -1,7 +1,7 @@
 import { Address, Amount } from "@iov/bcp";
-import { Block, PopupCopy, Typography } from "medulas-react-components";
+import { Block, PopupCopy, ToastContext, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ellipsifyMiddle } from "ui-logic";
 
 import SimplePageLayout, { defaultPageHeight } from "../../components/SimplePageLayout";
@@ -16,8 +16,22 @@ const addressLabel = "IOV address: ";
 export const addressId = "addressFieldId";
 
 const AccountView = (): JSX.Element => {
-  const [mouseOverAddress, setMouseOverAddress] = useState<boolean>(false);
   const persona = useContext(PersonaContext);
+  const toast = useContext(ToastContext);
+
+  const [mouseOverAddress, setMouseOverAddress] = useState<boolean>(false);
+
+  useEffect(() => {
+    const disconnectedChains = persona.chainStatuses
+      .filter(chain => !chain.connected)
+      .map(chain => chain.name);
+
+    if (disconnectedChains.length > 0) {
+      toast.show("Unable to connect to " + disconnectedChains.join(", "), ToastVariant.WARNING);
+    }
+    // Next line makes eslint not add "toast" as a dependency, so that it does not render all the time
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [persona.chainStatuses]);
 
   let iovAddress = "" as Address;
   if (persona.accounts.length) {
@@ -41,23 +55,27 @@ const AccountView = (): JSX.Element => {
   // TODO load from chain when iov-core API ready
   const awards: string[] = [];
 
+  const showIovAddress = persona.chainStatuses[0]?.connected;
+
   return (
     <SidePanel id={WALLET_STATUS_ROUTE}>
       <SimplePageLayout height={`calc(${defaultPageHeight}px - ${toolbarHeight}px)`}>
-        <Block bgcolor="#fff" display="flex" padding="8px 24px">
-          <Typography inline>{addressLabel}</Typography>
-          <Block marginLeft={2} display="inline">
-            <PopupCopy
-              textToCopy={iovAddress}
-              onMouseEnter={onMouseEnterAddress}
-              onMouseLeave={onMouseLeaveAddress}
-            >
-              <Typography inline color={mouseOverAddress ? "primary" : undefined} id={addressId}>
-                {ellipsifyMiddle(iovAddress, 16)}
-              </Typography>
-            </PopupCopy>
+        {showIovAddress && (
+          <Block bgcolor="#fff" display="flex" padding="8px 24px">
+            <Typography inline>{addressLabel}</Typography>
+            <Block marginLeft={2} display="inline">
+              <PopupCopy
+                textToCopy={iovAddress}
+                onMouseEnter={onMouseEnterAddress}
+                onMouseLeave={onMouseLeaveAddress}
+              >
+                <Typography inline color={mouseOverAddress ? "primary" : undefined} id={addressId}>
+                  {ellipsifyMiddle(iovAddress, 16)}
+                </Typography>
+              </PopupCopy>
+            </Block>
           </Block>
-        </Block>
+        )}
         <Block marginTop={3} />
         <ListTokens balances={balances} />
         <Block marginTop={3} />
