@@ -69,3 +69,14 @@ export async function getChainName(chainId: ChainId): Promise<string> {
     return chainId;
   }
 }
+
+export async function getChainNode(chainId: ChainId): Promise<string> {
+  const chains = (await getConfigurationFile()).chains;
+  const selectedChain = chains.find(chain => chain.chainSpec.chainId === chainId);
+
+  if (selectedChain) {
+    return selectedChain.chainSpec.node;
+  } else {
+    return "";
+  }
+}
