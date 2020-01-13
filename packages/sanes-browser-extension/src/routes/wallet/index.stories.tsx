@@ -21,6 +21,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
 
     const persona: GetPersonaResponse = {
       mnemonic: "",
+      chainStatuses: [],
       accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       balances: [balance1, balance2],
       starnames: [],
@@ -39,6 +40,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
   .add("No balances", () => {
     const persona: GetPersonaResponse = {
       mnemonic: "",
+      chainStatuses: [],
       accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       balances: [],
       starnames: [],

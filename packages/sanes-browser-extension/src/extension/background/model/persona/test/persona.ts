@@ -31,11 +31,12 @@ export async function processCreateWallet(
 
 export const mockPersonaResponse = (
   mnemonic = "",
+  chainStatuses = [],
   accounts: PersonaAcccount[] = [],
   balances: Amount[][] = [],
   starnames: string[] = [],
 ): PersonaData => {
-  return { mnemonic, accounts, balances, starnames };
+  return { mnemonic, chainStatuses, accounts, balances, starnames };
 };
 
 export const mockGetPersonaData = (personaData: PersonaData): void => {
