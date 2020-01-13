@@ -1,4 +1,4 @@
-import { Page } from "puppeteer";
+import { ElementHandle, Page } from "puppeteer";
 
 import { iovnamesViewId } from "../components/Iovnames";
 
@@ -37,4 +37,29 @@ export async function copyStarname(page: Page): Promise<void> {
   }
 
   await page.click(`#${iovnamesViewId} img`);
+}
+
+export async function getStarnames(page: Page): Promise<string[]> {
+  const starnameEls = await page.$$("h4");
+  const names: string[] = [];
+  for (const el of starnameEls) {
+    names.push(await (await el.getProperty("textContent")).jsonValue());
+  }
+
+  return names;
+}
+
+export async function getRemoveActions(page: Page): Promise<ElementHandle<Element>[]> {
+  return await page.$x(`//p[contains(., 'Remove')]`);
+}
+
+export async function getLinkedAddresses(page: Page): Promise<string[]> {
+  const addressesRows = await page.$$("tr");
+  const addresses: string[] = [];
+  for (const el of addressesRows) {
+    addresses.push(await (await el.getProperty("textContent")).jsonValue());
+  }
+
+  addresses.splice(0, 1);
+  return addresses;
 }

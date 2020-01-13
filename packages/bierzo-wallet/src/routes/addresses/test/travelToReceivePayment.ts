@@ -3,6 +3,7 @@ import { Page } from "puppeteer";
 import { ADDRESSES_TEXT } from "../../../components/Header/components/LinksMenu";
 import { whenOnNavigatedToE2eRoute } from "../../../utils/test/navigation";
 import { ADDRESSES_ROUTE } from "../../paths";
+import { REGISTER_USERNAME_VIEW_ID } from "../../registerName/components";
 import { yourAddresses, yourIovnames } from "../components/AddressesTab";
 import { iovnamesViewId } from "../components/Iovnames";
 import { yourBlockchainAddressesId } from "../components/UserAddresses";
@@ -23,4 +24,10 @@ export async function travelToStarnamesTabE2E(page: Page): Promise<void> {
   const [addressesLink] = await page.$x(`//h6[contains(., '${yourIovnames}')]`);
   await addressesLink.click();
   await page.waitForSelector(`#${iovnamesViewId}`);
+}
+
+export async function openFirstStarnameForEditingE2E(page: Page, username: string): Promise<void> {
+  const [firstStarnameEditLink] = await page.$x(`//h6[contains(., 'Edit')]`);
+  await firstStarnameEditLink.click();
+  await page.waitForSelector(`#${REGISTER_USERNAME_VIEW_ID}`);
 }
