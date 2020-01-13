@@ -32,6 +32,8 @@ import {
   algorithmForCodec,
   chainConnector,
   codecTypeFromString,
+  getChainName,
+  getChainNode,
   getConfigurationFile,
   pathBuilderForCodec,
 } from "./config";
@@ -82,12 +84,19 @@ export interface PersonaAcccount {
   readonly iovAddress: Address;
 }
 
+export interface ChainStatus {
+  readonly name: string;
+  readonly node: string;
+  readonly connected: boolean;
+}
+
 export type UseOnlyJsonRpcSigningServer = Pick<JsonRpcSigningServer, "handleUnchecked" | "handleChecked">;
 
 export class Persona {
   private readonly encryptionKey: UserProfileEncryptionKey;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
+  public readonly chainStatuses: ChainStatus[];
   private readonly accountManager: AccountManager;
   private readonly core: SigningServerCore;
   private readonly jsonRpcSigningServer: JsonRpcSigningServer;
@@ -115,14 +124,15 @@ export class Persona {
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).toString();
     const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
-    const managerChains = await Persona.connectToAllConfiguredChains(signer);
+    const chainStatuses: ChainStatus[] = [];
+    const managerChains = await Persona.connectToAllConfiguredChains(signer, chainStatuses);
     const manager = new SoftwareAccountManager(profile, managerChains);
 
     // Setup initial account of index 0
     await manager.generateNextAccount();
     await profile.storeIn(db, encryptionKey);
 
-    return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
+    return new Persona(encryptionKey, profile, signer, chainStatuses, manager, makeAuthorizationCallbacks);
   }
 
   public static async load(
@@ -134,14 +144,16 @@ export class Persona {
 
     const profile = await UserProfile.loadFrom(db, encryptionKey);
     const signer = new MultiChainSigner(profile);
-    const managerChains = await Persona.connectToAllConfiguredChains(signer);
+    const chainStatuses: ChainStatus[] = [];
+    const managerChains = await Persona.connectToAllConfiguredChains(signer, chainStatuses);
     const manager = new SoftwareAccountManager(profile, managerChains);
 
-    return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
+    return new Persona(encryptionKey, profile, signer, chainStatuses, manager, makeAuthorizationCallbacks);
   }
 
   private static async connectToAllConfiguredChains(
     signer: MultiChainSigner,
+    chainStatuses: ChainStatus[],
   ): Promise<readonly SoftwareAccountManagerChainConfig[]> {
     const config = await getConfigurationFile();
 
@@ -149,12 +161,34 @@ export class Persona {
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
       const connector = chainConnector(codecType, chainSpec);
-      const { connection } = await signer.addChain(connector);
-      out.push({
-        chainId: connection.chainId(),
-        algorithm: algorithmForCodec(codecType),
-        derivePath: pathBuilderForCodec(codecType),
-      });
+
+      try {
+        const { connection } = await signer.addChain(connector);
+        const chainId = connection.chainId();
+
+        out.push({
+          chainId: chainId,
+          algorithm: algorithmForCodec(codecType),
+          derivePath: pathBuilderForCodec(codecType),
+        });
+
+        chainStatuses.push({
+          name: await getChainName(chainId),
+          node: await getChainNode(chainId),
+          connected: true,
+        });
+      } catch {
+        // Add disconnected chain when addChain()'s connection fails
+        const chainId = connector.expectedChainId;
+
+        if (chainId) {
+          chainStatuses.push({
+            name: await getChainName(chainId),
+            node: await getChainNode(chainId),
+            connected: false,
+          });
+        }
+      }
     }
 
     return out;
@@ -168,12 +202,14 @@ export class Persona {
     encryptionKey: UserProfileEncryptionKey,
     profile: UserProfile,
     signer: MultiChainSigner,
+    chainStatuses: ChainStatus[],
     accountManager: AccountManager,
     makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
   ) {
     this.encryptionKey = encryptionKey;
     this.profile = profile;
     this.signer = signer;
+    this.chainStatuses = chainStatuses;
     this.accountManager = accountManager;
 
     const { authorizeGetIdentities, authorizeSignAndPost } = makeAuthorizationCallbacks
