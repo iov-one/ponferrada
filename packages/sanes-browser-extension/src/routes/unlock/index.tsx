@@ -33,12 +33,14 @@ const Unlock = (): JSX.Element => {
     try {
       const response = await loadPersona(password);
       personaProvider.update({
-        accounts: response.accounts,
         mnemonic: response.mnemonic,
+        chainStatuses: response.chainStatuses,
+        accounts: response.accounts,
         balances: response.balances,
+        starnames: response.starnames,
       });
       history.push(WALLET_STATUS_ROUTE);
-    } catch (_) {
+    } catch {
       toast.show("Error during unlock", ToastVariant.ERROR);
     }
   };

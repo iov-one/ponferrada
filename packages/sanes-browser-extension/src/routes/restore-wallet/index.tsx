@@ -40,9 +40,11 @@ const RestoreWallet = (): JSX.Element => {
       return;
     }
     personaProvider.update({
-      accounts: response.accounts,
       mnemonic: response.mnemonic,
+      chainStatuses: response.chainStatuses,
+      accounts: response.accounts,
       balances: response.balances,
+      starnames: response.starnames,
     });
 
     history.push(WALLET_STATUS_ROUTE);
