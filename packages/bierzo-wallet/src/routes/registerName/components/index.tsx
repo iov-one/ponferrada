@@ -137,7 +137,7 @@ const Layout = ({
   }, [chainAddresses, iovnameAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
-  const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
+  const { form, handleSubmit, invalid, submitting, validating } = useForm({
     onSubmit,
     validate,
     initialValues,
@@ -156,7 +156,7 @@ const Layout = ({
         <Button
           fullWidth
           type="submit"
-          disabled={invalid || pristine || submitting || validating}
+          disabled={invalid || submitting || validating}
           spinner={submitting || validating}
         >
           {getSubmitButtonCaption(transactionFee)}

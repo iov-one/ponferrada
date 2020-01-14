@@ -2,13 +2,23 @@ import clipboardy from "clipboardy";
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { sleep } from "ui-logic";
 
 import { closeBrowser, closeToast, createPage, getToastMessage, launchBrowser } from "../../utils/test/e2e";
+import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { registerPersonalizedAddress, waitForAllBalances } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
-import { copyAddress, copyStarname, getAddressRow } from "./test/operateReceivePayment";
 import {
+  copyAddress,
+  copyStarname,
+  getAddressRow,
+  getLinkedAddresses,
+  getRemoveActions,
+  getStarnames,
+} from "./test/operateReceivePayment";
+import {
+  openFirstStarnameForEditingE2E,
   travelToAddressesE2E,
   travelToBlockchainAddressesTabE2E,
   travelToStarnamesTabE2E,
@@ -107,7 +117,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
       await closeToast(page);
     }, 35000);
 
-    it("should check username", async () => {
+    fit("should check username open it and remove last address", async () => {
       await copyStarname(page);
 
       expect(clipboardy.readSync()).toBe(username);
@@ -115,6 +125,32 @@ withChainsDescribe("E2E > Receive Payment route", () => {
       const toastMessage = await getToastMessage(page);
       expect(toastMessage).toBe("Iovname has been copied to clipboard.");
       await closeToast(page);
+      const addresses = await getLinkedAddresses(page);
+
+      await openFirstStarnameForEditingE2E(page, username);
+      const [removeFirstAddressAction] = await getRemoveActions(page);
+      await removeFirstAddressAction.click();
+      await page.click('button[type="submit"]');
+
+      await acceptEnqueuedRequest(browser);
+      await page.bringToFront();
+      await sleep(1000);
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+      const addressesUpdated = await getLinkedAddresses(page);
+      // Remove first address to compare it with current linked addresses state
+      addresses.splice(0, 1);
+      expect(addressesUpdated).toEqual(addresses);
+    }, 35000);
+
+    it("should open tab, create couple of address and check main window", async () => {
+      const username2 = await registerPersonalizedAddress(browser, page);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      const starnames = await getStarnames(page);
+      expect(starnames).toEqual([username, username2]);
     }, 35000);
   });
 });
