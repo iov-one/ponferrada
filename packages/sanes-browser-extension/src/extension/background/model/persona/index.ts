@@ -96,7 +96,7 @@ export class Persona {
   private readonly encryptionKey: UserProfileEncryptionKey;
   private readonly profile: UserProfile;
   private readonly signer: MultiChainSigner;
-  public readonly chainStatuses: ChainStatus[];
+  public readonly chainStatuses: readonly ChainStatus[];
   private readonly accountManager: AccountManager;
   private readonly core: SigningServerCore;
   private readonly jsonRpcSigningServer: JsonRpcSigningServer;
@@ -124,8 +124,7 @@ export class Persona {
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).toString();
     const profile = createTwoWalletProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
-    const chainStatuses: ChainStatus[] = [];
-    const managerChains = await Persona.connectToAllConfiguredChains(signer, chainStatuses);
+    const [chainStatuses, managerChains] = await Persona.connectToAllConfiguredChains(signer);
     const manager = new SoftwareAccountManager(profile, managerChains);
 
     // Setup initial account of index 0
@@ -144,8 +143,7 @@ export class Persona {
 
     const profile = await UserProfile.loadFrom(db, encryptionKey);
     const signer = new MultiChainSigner(profile);
-    const chainStatuses: ChainStatus[] = [];
-    const managerChains = await Persona.connectToAllConfiguredChains(signer, chainStatuses);
+    const [chainStatuses, managerChains] = await Persona.connectToAllConfiguredChains(signer);
     const manager = new SoftwareAccountManager(profile, managerChains);
 
     return new Persona(encryptionKey, profile, signer, chainStatuses, manager, makeAuthorizationCallbacks);
@@ -153,11 +151,12 @@ export class Persona {
 
   private static async connectToAllConfiguredChains(
     signer: MultiChainSigner,
-    chainStatuses: ChainStatus[],
-  ): Promise<readonly SoftwareAccountManagerChainConfig[]> {
+  ): Promise<[readonly ChainStatus[], readonly SoftwareAccountManagerChainConfig[]]> {
     const config = await getConfigurationFile();
 
-    const out: SoftwareAccountManagerChainConfig[] = [];
+    const chainStatuses: ChainStatus[] = [];
+    const managerChains: SoftwareAccountManagerChainConfig[] = [];
+
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
       const connector = chainConnector(codecType, chainSpec);
@@ -166,16 +165,16 @@ export class Persona {
         const { connection } = await signer.addChain(connector);
         const chainId = connection.chainId();
 
-        out.push({
-          chainId: chainId,
-          algorithm: algorithmForCodec(codecType),
-          derivePath: pathBuilderForCodec(codecType),
-        });
-
         chainStatuses.push({
           name: await getChainName(chainId),
           node: await getChainNode(chainId),
           connected: true,
+        });
+
+        managerChains.push({
+          chainId: chainId,
+          algorithm: algorithmForCodec(codecType),
+          derivePath: pathBuilderForCodec(codecType),
         });
       } catch {
         // Add disconnected chain when addChain()'s connection fails
@@ -191,7 +190,7 @@ export class Persona {
       }
     }
 
-    return out;
+    return [chainStatuses, managerChains];
   }
 
   /**
@@ -202,7 +201,7 @@ export class Persona {
     encryptionKey: UserProfileEncryptionKey,
     profile: UserProfile,
     signer: MultiChainSigner,
-    chainStatuses: ChainStatus[],
+    chainStatuses: readonly ChainStatus[],
     accountManager: AccountManager,
     makeAuthorizationCallbacks: MakeAuthorizationCallbacks | undefined,
   ) {
