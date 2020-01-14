@@ -33,12 +33,13 @@ import {
 describe("DOM > Feature > CreateWallet", () => {
   const password = randomString(10);
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
+  const chainStatus = { name: "Example Chain", node: "example url", connected: true };
   const hint = randomString(10);
   const account: PersonaAcccount = {
     iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
     label: "Account 0",
   };
-  const personaMock = mockPersonaResponse(mnemonic, [account], [], []);
+  const personaMock = mockPersonaResponse(mnemonic, [chainStatus], [account], [], []);
 
   let createWalletDom: React.Component;
 
