@@ -10,7 +10,7 @@ import Layout from "./index";
 
 const persona: GetPersonaResponse = {
   mnemonic: "",
-  chainStatuses: [],
+  chainStatuses: [{ name: "Example Chain", node: "example url", connected: true }],
   accounts: [{ label: "Account 0", iovAddress: "" as Address }],
   balances: [],
   starnames: [],
