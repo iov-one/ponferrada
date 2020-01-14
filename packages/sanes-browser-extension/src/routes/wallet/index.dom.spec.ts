@@ -54,12 +54,15 @@ import {
   getUsernameTransaction,
 } from "./test/operateTXRequest";
 
+const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
+
+const chainStatus = { name: "Example Chain", node: "example url", connected: true };
+
 const ACCOUNT = "Account 0";
 const accountMock: PersonaAcccount = {
   label: ACCOUNT,
   iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
 };
-const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
 
 const requests: Request[] = [];
 
@@ -92,17 +95,18 @@ const requestTwo: Request = {
 
 withChainsDescribe("DOM > Feature > Wallet Status Drawer", () => {
   let walletStatusDom: React.Component;
+  const personaMock = mockPersonaResponse(mnemonic, [chainStatus], [], [], []);
 
   beforeEach(async () => {
-    walletStatusDom = await travelToWallet();
+    walletStatusDom = await travelToWallet(personaMock);
   }, 60000);
 
   it("lists networks", async () => {
     await goToNetworks(walletStatusDom);
 
     const liElements = scryRenderedDOMComponentsWithTag(walletStatusDom, "li");
-    const liskNetwork = liElements[5];
-    expect(liskNetwork.textContent).toBe("Lisk Devnethttp://localhost:4000/");
+    const liskNetwork = liElements[4];
+    expect(liskNetwork.textContent).toBe("Example Chainexample url");
   }, 60000);
 
   it("settings view has link to support center", async () => {
@@ -382,7 +386,7 @@ describe("DOM > Feature > Wallet Status Drawer > Create Proposal Request", () =>
 
 withChainsDescribe("DOM > Feature > Wallet Status Drawer > Recovery Words", () => {
   it("shows the mnemonic for the current Persona", async () => {
-    const personaMock = mockPersonaResponse(mnemonic, [accountMock], [], []);
+    const personaMock = mockPersonaResponse(mnemonic, [chainStatus], [accountMock], [], []);
     const recoveryWordsDom = await travelToWallet(personaMock);
     await goToRecoveryWords(recoveryWordsDom);
     await submitPasswordForm(recoveryWordsDom);
@@ -396,7 +400,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer > Delete Wallet", () =>
   let mnemonicInput: Element;
   let form: Element;
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
-  const personaMock = mockPersonaResponse(mnemonic, [accountMock], [], []);
+  const personaMock = mockPersonaResponse(mnemonic, [chainStatus], [accountMock], [], []);
 
   beforeEach(async () => {
     deleteWalletDom = await travelToWallet(personaMock);
