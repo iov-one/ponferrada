@@ -1,7 +1,9 @@
+import { ChainId } from "@iov/bcp";
 import { Block, Image, List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
+import { getConfigurationFile } from "../../../../../../extension/background/model/persona/config";
 import bulletPointGreen from "../../../../assets/bulletPointGreen.svg";
 import bulletPointRed from "../../../../assets/bulletPointRed.svg";
 
@@ -17,8 +19,46 @@ const useStyles = makeStyles({
   },
 });
 
+export interface Network {
+  readonly name: string;
+  readonly node: string;
+  readonly connected: boolean;
+}
+
+export const getNetworks = async (connectedChains: readonly ChainId[]): Promise<readonly Network[]> => {
+  const configuredChains = (await getConfigurationFile()).chains.map(chain => chain.chainSpec);
+
+  return configuredChains.map(chain => {
+    const connected = connectedChains.includes(chain.chainId);
+    return {
+      name: chain.name,
+      node: chain.node,
+      connected,
+    };
+  });
+};
+
 const Networks = (): JSX.Element => {
-  const networks = useContext(PersonaContext).chainStatuses;
+  const connectedChains = useContext(PersonaContext).connectedChains;
+  const [networks, setNetworks] = useState<readonly Network[]>([]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+
+    async function updateNetworks(): Promise<void> {
+      const networks = await getNetworks(connectedChains);
+
+      if (isSubscribed) {
+        setNetworks(networks);
+      }
+    }
+
+    updateNetworks();
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [connectedChains]);
 
   const classes = useStyles();
   const listClasses = {
