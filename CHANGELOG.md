@@ -5,11 +5,12 @@
 - Wallet and Extension: DAI stablecoin support
 - Wallet: Get Neuma extension URL from config
 - Wallet: Add IOV faucet for staging configuration
-- Extension: Improve UI
 - Wallet: Assign arbitrary addresses of the supported blockchains to the iovnames
+- Wallet: Improves "Amount" column of the transactions
+- Extension: Improve UI
+- Extension: Adds network status and correct url to Networks view
 - Wallet and Extension: Add ability to update iovname
 - Upgrade IOV-Core to 2.0.0-alpha.5
-
 
 ## 1.1.0
 

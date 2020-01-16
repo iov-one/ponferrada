@@ -1,4 +1,4 @@
-import { Address } from "@iov/bcp";
+import { Address, ChainId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import { Storybook } from "medulas-react-components";
 import React from "react";
@@ -10,6 +10,7 @@ import Layout from "./index";
 
 const persona: GetPersonaResponse = {
   mnemonic: "",
+  connectedChains: ["local-iov-devnet" as ChainId],
   accounts: [{ label: "Account 0", iovAddress: "" as Address }],
   balances: [],
   starnames: [],

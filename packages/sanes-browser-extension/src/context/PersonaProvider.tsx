@@ -1,4 +1,4 @@
-import { Amount } from "@iov/bcp";
+import { Amount, ChainId } from "@iov/bcp";
 import * as React from "react";
 
 import { GetPersonaResponse } from "../extension/background/model/backgroundscript";
@@ -7,6 +7,7 @@ import { PersonaAcccount } from "../extension/background/model/persona";
 /** Only the fields that are set will be updated */
 export interface PersonaContextUpdateData {
   readonly mnemonic?: string;
+  readonly connectedChains?: readonly ChainId[];
   readonly accounts?: readonly PersonaAcccount[];
   readonly balances?: readonly (readonly Amount[])[];
   readonly starnames?: readonly string[];
@@ -15,6 +16,7 @@ export interface PersonaContextUpdateData {
 
 export interface PersonaContextInterface {
   readonly mnemonic: string;
+  readonly connectedChains: readonly ChainId[];
   readonly accounts: readonly PersonaAcccount[];
   readonly balances: readonly (readonly Amount[])[];
   readonly starnames: readonly string[];
@@ -24,6 +26,7 @@ export interface PersonaContextInterface {
 
 export const PersonaContext = React.createContext<PersonaContextInterface>({
   mnemonic: "",
+  connectedChains: [],
   accounts: [],
   balances: [],
   starnames: [],
@@ -41,6 +44,9 @@ type Accounts = readonly PersonaAcccount[];
 
 export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props): JSX.Element => {
   const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
+  const [connectedChains, setConnectedChains] = React.useState<readonly ChainId[]>(
+    persona ? persona.connectedChains : [],
+  );
   const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
   const [balances, setBalances] = React.useState<readonly (readonly Amount[])[]>(
     persona ? persona.balances : [],
@@ -50,14 +56,16 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
 
   const loadPersonaInReact = (newData: PersonaContextUpdateData): void => {
     if (newData.mnemonic !== undefined) setMnemonic(newData.mnemonic);
+    if (newData.connectedChains !== undefined) setConnectedChains(newData.connectedChains);
     if (newData.accounts !== undefined) setAccounts(newData.accounts);
     if (newData.balances !== undefined) setBalances(newData.balances);
     if (newData.starnames !== undefined) setStarnames(newData.starnames);
     if (newData.hasStoredPersona !== undefined) {
       setStoredPersonaExists(newData.hasStoredPersona);
       if (!newData.hasStoredPersona) {
-        setAccounts([]);
         setMnemonic("");
+        setConnectedChains([]);
+        setAccounts([]);
         setBalances([]);
         setStarnames([]);
       }
@@ -66,6 +74,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
 
   const personaContextValue = {
     mnemonic,
+    connectedChains,
     accounts,
     balances,
     starnames,

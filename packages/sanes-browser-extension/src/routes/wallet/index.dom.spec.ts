@@ -1,4 +1,4 @@
-import { Address } from "@iov/bcp";
+import { Address, ChainId } from "@iov/bcp";
 import TestUtils, {
   findRenderedDOMComponentWithTag,
   scryRenderedDOMComponentsWithTag,
@@ -54,12 +54,21 @@ import {
   getUsernameTransaction,
 } from "./test/operateTXRequest";
 
+const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
+
+const connectedChains = [
+  "local-iov-devnet" as ChainId,
+  "lisk-198f2b61a8" as ChainId,
+  "ethereum-eip155-5777" as ChainId,
+];
+
 const ACCOUNT = "Account 0";
 const accountMock: PersonaAcccount = {
   label: ACCOUNT,
   iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
 };
-const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
+
+const personaMock = mockPersonaResponse(mnemonic, connectedChains, [accountMock], [], []);
 
 const requests: Request[] = [];
 
@@ -94,15 +103,15 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer", () => {
   let walletStatusDom: React.Component;
 
   beforeEach(async () => {
-    walletStatusDom = await travelToWallet();
+    walletStatusDom = await travelToWallet(personaMock);
   }, 60000);
 
   it("lists networks", async () => {
     await goToNetworks(walletStatusDom);
 
     const liElements = scryRenderedDOMComponentsWithTag(walletStatusDom, "li");
-    const liskNetwork = liElements[5];
-    expect(liskNetwork.textContent).toBe("Lisk Devnethttp://localhost:4000/");
+    const liskNetwork = liElements[4];
+    expect(liskNetwork.textContent).toBe("IOV Devnethttp://localhost:23456/");
   }, 60000);
 
   it("settings view has link to support center", async () => {
@@ -130,7 +139,7 @@ describe("DOM > Feature > Wallet Status Drawer > Requests", () => {
 
   beforeEach(async () => {
     resetHistory();
-    requestsDom = await travelTo(WALLET_STATUS_ROUTE, [requestOne, requestTwo]);
+    requestsDom = await travelTo(WALLET_STATUS_ROUTE, [requestOne, requestTwo], personaMock);
   }, 60000);
 
   it('has a "Requests" list that shows all pending requests', async () => {
@@ -145,7 +154,7 @@ describe("DOM > Feature > Wallet Status Drawer > Requests", () => {
 
   it('redirects to the TX Request view when a Request of type "signAndPost" is clicked', async () => {
     resetHistory();
-    requestsDom = await travelTo(WALLET_STATUS_ROUTE, [requestTwo, requestOne]);
+    requestsDom = await travelTo(WALLET_STATUS_ROUTE, [requestTwo, requestOne], personaMock);
     const txRequest = getFirstRequest(requestsDom);
 
     click(txRequest);
@@ -162,7 +171,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
     requests.length = 0;
     requests.push(requestOne);
 
-    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(identityDOM));
     await findRenderedDOMComponentWithId(identityDOM, showIdentityHtmlId);
 
@@ -181,7 +190,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
   it("should accept incoming request and redirect to the list of requests", async () => {
     requests.push(requestTwo);
 
-    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(identityDOM));
     await findRenderedDOMComponentWithId(identityDOM, showIdentityHtmlId);
 
@@ -200,7 +209,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
   it("should reject incoming request and redirect to the list of requests", async () => {
     requests.push(requestTwo);
 
-    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(identityDOM));
     await findRenderedDOMComponentWithId(identityDOM, showIdentityHtmlId);
 
@@ -228,7 +237,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
     requests.length = 0;
     requests.push(requestTwo);
 
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
     await findRenderedDOMComponentWithId(txRequestDOM, showTxHtmlId);
 
@@ -247,7 +256,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
   it("should accept incoming request and redirect to the list of requests", async () => {
     requests.push({ id: 3, ...requestOne });
 
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
     await findRenderedDOMComponentWithId(txRequestDOM, showTxHtmlId);
 
@@ -267,7 +276,7 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
   it("should reject incoming request and redirect to the list of requests", async () => {
     requests.push({ id: 3, ...requestOne });
 
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
     await findRenderedDOMComponentWithId(txRequestDOM, showTxHtmlId);
 
@@ -292,7 +301,7 @@ describe("DOM > Feature > Wallet Status Drawer > Send Transaction Request", () =
   beforeEach(async () => {
     requests.length = 0;
     requests.push(requestTwo);
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
   }, 60000);
 
@@ -318,7 +327,7 @@ describe("DOM > Feature > Wallet Status Drawer > Username Registration Request",
   let txRequestDOM: React.Component;
 
   beforeEach(async () => {
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
   }, 60000);
 
@@ -344,7 +353,7 @@ describe("DOM > Feature > Wallet Status Drawer > Username Targets Update Request
   let txRequestDOM: React.Component;
 
   beforeEach(async () => {
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
   }, 60000);
 
@@ -370,7 +379,7 @@ describe("DOM > Feature > Wallet Status Drawer > Create Proposal Request", () =>
   let txRequestDOM: React.Component;
 
   beforeEach(async () => {
-    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests);
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
     await click(getFirstRequest(txRequestDOM));
   }, 60000);
 
@@ -382,7 +391,6 @@ describe("DOM > Feature > Wallet Status Drawer > Create Proposal Request", () =>
 
 withChainsDescribe("DOM > Feature > Wallet Status Drawer > Recovery Words", () => {
   it("shows the mnemonic for the current Persona", async () => {
-    const personaMock = mockPersonaResponse(mnemonic, [accountMock], [], []);
     const recoveryWordsDom = await travelToWallet(personaMock);
     await goToRecoveryWords(recoveryWordsDom);
     await submitPasswordForm(recoveryWordsDom);
@@ -396,7 +404,6 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer > Delete Wallet", () =>
   let mnemonicInput: Element;
   let form: Element;
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
-  const personaMock = mockPersonaResponse(mnemonic, [accountMock], [], []);
 
   beforeEach(async () => {
     deleteWalletDom = await travelToWallet(personaMock);

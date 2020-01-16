@@ -1,4 +1,4 @@
-import { Address, Amount, isSendTransaction, SendTransaction, UnsignedTransaction } from "@iov/bcp";
+import { Address, Amount, ChainId, isSendTransaction, SendTransaction, UnsignedTransaction } from "@iov/bcp";
 import {
   bnsCodec,
   BnsConnection,
@@ -144,20 +144,27 @@ export class Persona {
     signer: MultiChainSigner,
   ): Promise<readonly SoftwareAccountManagerChainConfig[]> {
     const config = await getConfigurationFile();
+    const managerChains: SoftwareAccountManagerChainConfig[] = [];
 
-    const out: SoftwareAccountManagerChainConfig[] = [];
     for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
       const connector = chainConnector(codecType, chainSpec);
-      const { connection } = await signer.addChain(connector);
-      out.push({
-        chainId: connection.chainId(),
-        algorithm: algorithmForCodec(codecType),
-        derivePath: pathBuilderForCodec(codecType),
-      });
+
+      try {
+        const { connection } = await signer.addChain(connector);
+        const chainId = connection.chainId();
+
+        managerChains.push({
+          chainId: chainId,
+          algorithm: algorithmForCodec(codecType),
+          derivePath: pathBuilderForCodec(codecType),
+        });
+      } catch (e) {
+        console.error("Could not add chain. " + e);
+      }
     }
 
-    return out;
+    return managerChains;
   }
 
   /**
@@ -210,30 +217,34 @@ export class Persona {
   public async getAccounts(): Promise<readonly PersonaAcccount[]> {
     const accounts = await this.accountManager.accounts();
 
-    const bnsConnection = this.getBnsConnection();
+    try {
+      const bnsConnection = this.getBnsConnection();
 
-    return Promise.all(
-      accounts.map(async (account, index) => {
-        const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId());
-        if (!bnsIdentity) {
-          throw new Error(`Missing BNS identity for account at index ${index}`);
-        }
+      return Promise.all(
+        accounts.map(async (account, index) => {
+          const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId());
+          if (!bnsIdentity) {
+            throw new Error(`Missing BNS identity for account at index ${index}`);
+          }
 
-        const iovAddress = this.signer.identityToAddress(bnsIdentity);
-        let label: string;
-        const names = await bnsConnection.getUsernames({ owner: iovAddress });
-        if (names.length > 1) {
-          // this case will not happen for regular users that do not professionally collect username NFTs
-          label = `Multiple names`;
-        } else if (names.length === 1) {
-          label = `${names[0].id}`;
-        } else {
-          label = `Account ${account.index}`;
-        }
+          const iovAddress = this.signer.identityToAddress(bnsIdentity);
+          let label: string;
+          const names = await bnsConnection.getUsernames({ owner: iovAddress });
+          if (names.length > 1) {
+            // this case will not happen for regular users that do not professionally collect username NFTs
+            label = `Multiple names`;
+          } else if (names.length === 1) {
+            label = `${names[0].id}`;
+          } else {
+            label = `Account ${account.index}`;
+          }
 
-        return { label, iovAddress };
-      }),
-    );
+          return { label, iovAddress };
+        }),
+      );
+    } catch {
+      return [];
+    }
   }
 
   public get mnemonic(): string {
@@ -247,6 +258,10 @@ export class Persona {
     return mnemonics.values().next().value;
   }
 
+  public get connectedChains(): readonly ChainId[] {
+    return this.signer.chainIds();
+  }
+
   public async getBalances(): Promise<readonly (readonly Amount[])[]> {
     const accountsInfos = await this.accountManager.accounts();
 
@@ -257,8 +272,12 @@ export class Persona {
             await Promise.all(
               accountInfo.identities.map(async identity => {
                 const { chainId, pubkey } = identity;
-                const account = await this.signer.connection(chainId).getAccount({ pubkey });
-                return account;
+                try {
+                  const account = await this.signer.connection(chainId).getAccount({ pubkey });
+                  return account;
+                } catch {
+                  return undefined;
+                }
               }),
             )
           )
@@ -276,20 +295,24 @@ export class Persona {
   public async getStarnames(): Promise<readonly string[]> {
     const starnames: BnsUsernameNft[] = [];
 
-    const bnsConnection = this.getBnsConnection();
-    const accounts = await this.accountManager.accounts();
-    const bnsIdentities = accounts
-      .flatMap(account => account.identities)
-      .filter(ident => ident.chainId === bnsConnection.chainId());
+    try {
+      const bnsConnection = this.getBnsConnection();
+      const accounts = await this.accountManager.accounts();
+      const bnsIdentities = accounts
+        .flatMap(account => account.identities)
+        .filter(ident => ident.chainId === bnsConnection.chainId());
 
-    await Promise.all(
-      bnsIdentities.map(async bnsIdentity => {
-        const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
-        starnames.push(...(await bnsConnection.getUsernames({ owner: bnsAddress })));
-      }),
-    );
+      await Promise.all(
+        bnsIdentities.map(async bnsIdentity => {
+          const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
+          starnames.push(...(await bnsConnection.getUsernames({ owner: bnsAddress })));
+        }),
+      );
 
-    return starnames.map(username => username.id);
+      return starnames.map(username => username.id);
+    } catch {
+      return [];
+    }
   }
 
   private getBnsConnection(): BnsConnection {
