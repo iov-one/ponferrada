@@ -11,6 +11,7 @@ import ListCollectibles from "./components/ListCollectibles";
 import ListTokens from "./components/ListTokens";
 import SidePanel from "./components/SidePanel";
 import { toolbarHeight } from "./components/SidePanel/PanelDrawer";
+import { getNetworks } from "./components/SidePanel/PanelDrawer/components/Networks";
 
 const addressLabel = "IOV address: ";
 export const addressId = "addressFieldId";
@@ -22,16 +23,25 @@ const AccountView = (): JSX.Element => {
   const [mouseOverAddress, setMouseOverAddress] = useState<boolean>(false);
 
   useEffect(() => {
-    const disconnectedChains = persona.chainStatuses
-      .filter(chain => !chain.connected)
-      .map(chain => chain.name);
+    let isSubscribed = true;
 
-    if (disconnectedChains.length > 0) {
-      toast.show("Unable to connect to " + disconnectedChains.join(", "), ToastVariant.WARNING);
+    async function warnOfflineNetworks(): Promise<void> {
+      const networks = await getNetworks(persona.connectedChains);
+      const offlineNetworks = networks.filter(chain => !chain.connected).map(chain => chain.name);
+
+      if (isSubscribed && offlineNetworks.length > 0) {
+        toast.show("Unable to connect to " + offlineNetworks.join(", "), ToastVariant.WARNING);
+      }
     }
+
+    warnOfflineNetworks();
+
+    return () => {
+      isSubscribed = false;
+    };
     // Next line makes eslint not add "toast" as a dependency, so that it does not render all the time
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [persona.chainStatuses]);
+  }, [persona.connectedChains]);
 
   let iovAddress = "" as Address;
   if (persona.accounts.length) {
@@ -55,7 +65,7 @@ const AccountView = (): JSX.Element => {
   // TODO load from chain when iov-core API ready
   const awards: string[] = [];
 
-  const showIovAddress = persona.chainStatuses[0]?.connected;
+  const showIovAddress = persona.connectedChains.length > 0;
 
   return (
     <SidePanel id={WALLET_STATUS_ROUTE}>
