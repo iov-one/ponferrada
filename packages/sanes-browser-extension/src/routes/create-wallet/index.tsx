@@ -46,7 +46,7 @@ const CreateWallet = (): JSX.Element => {
 
     personaProvider.update({
       mnemonic: response.mnemonic,
-      chainStatuses: response.chainStatuses,
+      connectedChains: response.connectedChains,
       accounts: response.accounts,
       balances: response.balances,
       starnames: response.starnames,
