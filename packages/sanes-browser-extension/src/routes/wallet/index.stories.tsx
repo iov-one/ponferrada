@@ -1,4 +1,4 @@
-import { Address, Amount, TokenTicker } from "@iov/bcp";
+import { Address, Amount, ChainId, TokenTicker } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import { Storybook, ToastProvider } from "medulas-react-components";
 import React from "react";
@@ -21,7 +21,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
 
     const persona: GetPersonaResponse = {
       mnemonic: "",
-      chainStatuses: [{ name: "Example Chain", node: "example url", connected: true }],
+      connectedChains: ["local-iov-devnet" as ChainId],
       accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       balances: [balance1, balance2],
       starnames: [],
@@ -40,7 +40,7 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
   .add("No balances", () => {
     const persona: GetPersonaResponse = {
       mnemonic: "",
-      chainStatuses: [{ name: "Example Chain", node: "example url", connected: true }],
+      connectedChains: ["local-iov-devnet" as ChainId],
       accounts: [{ label: "Account 0", iovAddress: "" as Address }],
       balances: [],
       starnames: [],

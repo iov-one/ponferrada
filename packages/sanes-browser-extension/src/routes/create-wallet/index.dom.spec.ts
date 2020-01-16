@@ -1,4 +1,4 @@
-import { Address } from "@iov/bcp";
+import { Address, ChainId } from "@iov/bcp";
 import TestUtils from "react-dom/test-utils";
 import { randomString } from "ui-logic";
 
@@ -9,10 +9,15 @@ import {
   processCreateWallet,
 } from "../../extension/background/model/persona/test/persona";
 import { check, click, input, submit } from "../../utils/test/dom";
-import { travelToCreateWallet, travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
+import {
+  travelTo,
+  travelToCreateWallet,
+  travelToWelcome,
+  whenOnNavigatedToRoute,
+} from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { mayTestChains } from "../../utils/test/testExecutor";
-import { WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
+import { CREATE_WALLET_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
 import { CREATE_WALLET_ID_STEP_1 } from "./components/NewWalletForm";
 import { CREATE_WALLET_ID_STEP_3 } from "./components/SecurityHintForm";
 import { CREATE_WALLET_ID_STEP_2 } from "./components/ShowWordsForm";
@@ -33,18 +38,23 @@ import {
 describe("DOM > Feature > CreateWallet", () => {
   const password = randomString(10);
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
-  const chainStatus = { name: "Example Chain", node: "example url", connected: true };
+  const connectedChains = [
+    "local-iov-devnet" as ChainId,
+    "lisk-198f2b61a8" as ChainId,
+    "ethereum-eip155-5777" as ChainId,
+  ];
   const hint = randomString(10);
   const account: PersonaAcccount = {
     iovAddress: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
     label: "Account 0",
   };
-  const personaMock = mockPersonaResponse(mnemonic, [chainStatus], [account], [], []);
+  const personaMock = mockPersonaResponse(mnemonic, connectedChains, [account], [], []);
 
   let createWalletDom: React.Component;
 
   beforeEach(async () => {
-    createWalletDom = await travelToCreateWallet();
+    // createWalletDom = await travelToCreateWallet();
+    createWalletDom = await travelTo(CREATE_WALLET_ROUTE, [], personaMock);
   }, 10000);
 
   mayTestChains(
