@@ -10,6 +10,7 @@ import chevronRight from "../../../assets/chevronRight.svg";
 import closeButton from "../../../assets/closeButton.svg";
 import neumaLogo from "../../../assets/NeumaLogo.svg";
 import About from "./components/About";
+import ChangeNetwork from "./components/ChangeNetwork";
 import DeleteWallet from "./components/DeleteWallet";
 import Menu from "./components/Menu";
 import Networks from "./components/Networks";
@@ -29,6 +30,7 @@ export enum Views {
   About = "About",
   RecoveryWords = "Recovery Words",
   DeleteWallet = "Delete Wallet",
+  ChangeNetwork = "Change Network",
 }
 
 const viewComponents = {
@@ -39,6 +41,7 @@ const viewComponents = {
   [Views.About]: About,
   [Views.RecoveryWords]: RecoveryWords,
   [Views.DeleteWallet]: DeleteWallet,
+  [Views.ChangeNetwork]: ChangeNetwork,
 };
 
 const previousViews = {
@@ -49,6 +52,7 @@ const previousViews = {
   [Views.About]: Views.Settings,
   [Views.RecoveryWords]: Views.Settings,
   [Views.DeleteWallet]: Views.Settings,
+  [Views.ChangeNetwork]: Views.Networks,
 };
 
 const useStyles = makeStyles({
