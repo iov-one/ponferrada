@@ -184,6 +184,8 @@ const SelectAddressesTable = ({
     setChainItems(newItems);
   };
 
+  const allowAddChain = chainItems.length < availableBlockchains.length;
+
   return (
     <React.Fragment>
       <Table>
@@ -202,7 +204,7 @@ const SelectAddressesTable = ({
           ))}
         </TableBody>
       </Table>
-      {blockChainItems.length > 0 && (
+      {allowAddChain && (
         <Typography link color="primary" onClick={addAddress}>
           + Add more
         </Typography>
