@@ -14,8 +14,9 @@ interface Props {
 
 const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
   let txFee = "-";
-  if (tx.original.fee && tx.original.fee.tokens) {
-    txFee = amountToString(tx.original.fee.tokens);
+  const amount = tx.original.fee?.tokens || tx.original.fee?.gasPrice;
+  if (amount) {
+    txFee = amountToString(amount);
     if (tx.outgoing) txFee = "-" + txFee;
   }
 
