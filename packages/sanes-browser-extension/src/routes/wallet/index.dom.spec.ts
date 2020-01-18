@@ -111,7 +111,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer", () => {
 
     const liElements = scryRenderedDOMComponentsWithTag(walletStatusDom, "li");
     const liskNetwork = liElements[4];
-    expect(liskNetwork.textContent).toBe("IOV Devnethttp://localhost:23456/");
+    expect(liskNetwork.textContent).toBe("IOV Devnethttp://localhost:23456/Change");
   }, 60000);
 
   it("settings view has link to support center", async () => {
