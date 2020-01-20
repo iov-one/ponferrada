@@ -101,7 +101,7 @@ export async function getChains(): Promise<ChainConfig[]> {
     };
 
     const withoutBns = chains.filter(chain => chain.chainSpec.codecType !== "bns");
-    return [...withoutBns, updatedBns];
+    return [updatedBns, ...withoutBns];
   }
 
   return chains;
