@@ -1,6 +1,8 @@
 import { ChainId } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
+import { getBnsRpc } from "../../../../../utils/localstorage/bnsRpc";
+
 export type CodecString = "bns" | "lsk" | "eth";
 
 export interface ConfigErc20Options {
@@ -60,7 +62,7 @@ export const getConfigurationFile = singleton<typeof loadConfigurationFile>(load
  * if no name is found.
  */
 export async function getChainName(chainId: ChainId): Promise<string> {
-  const chains = (await getConfigurationFile()).chains;
+  const chains = await getChains();
   const selectedChain = chains.find(chain => chain.chainSpec.chainId === chainId);
 
   if (selectedChain) {
@@ -71,7 +73,7 @@ export async function getChainName(chainId: ChainId): Promise<string> {
 }
 
 export async function getChainNode(chainId: ChainId): Promise<string> {
-  const chains = (await getConfigurationFile()).chains;
+  const chains = await getChains();
   const selectedChain = chains.find(chain => chain.chainSpec.chainId === chainId);
 
   if (selectedChain) {
@@ -79,4 +81,28 @@ export async function getChainNode(chainId: ChainId): Promise<string> {
   } else {
     return "";
   }
+}
+
+export async function getChains(): Promise<ChainConfig[]> {
+  const chains = (await getConfigurationFile()).chains;
+  const bnsRpcConfig = getBnsRpc();
+  if (bnsRpcConfig) {
+    const bnsChain = chains.find(chain => chain.chainSpec.codecType === "bns");
+    if (!bnsChain) {
+      return chains;
+    }
+
+    const updatedBns = {
+      chainSpec: {
+        ...bnsChain.chainSpec,
+        name: bnsRpcConfig.networkName,
+        node: bnsRpcConfig.rpcUrl,
+      },
+    };
+
+    const withoutBns = chains.filter(chain => chain.chainSpec.codecType !== "bns");
+    return [updatedBns, ...withoutBns];
+  }
+
+  return chains;
 }

@@ -10,7 +10,7 @@ import ListNavView from "./ListNavView";
 
 export const logoutText = "Log out";
 
-const logOut = async (): Promise<void> => {
+export const logOut = async (): Promise<void> => {
   await clearPersona();
   history.push(WELCOME_ROUTE);
 };

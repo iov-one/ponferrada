@@ -11,6 +11,7 @@
 - Extension: Adds network status and correct url to Networks view
 - Wallet and Extension: Add ability to update iovname
 - Upgrade IOV-Core to 2.0.0-alpha.5
+- Wallet, Governance and Extension: Adds ability to edit IOV RPC URL and name
 
 ## 1.1.0
 

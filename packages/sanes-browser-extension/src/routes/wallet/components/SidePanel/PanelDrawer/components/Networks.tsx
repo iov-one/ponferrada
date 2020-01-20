@@ -1,9 +1,10 @@
 import { ChainId } from "@iov/bcp";
-import { Block, Image, List, ListItem, ListItemText, makeStyles } from "medulas-react-components";
+import { Block, Image, List, ListItem, ListItemText, makeStyles, Typography } from "medulas-react-components";
 import React, { useContext, useEffect, useState } from "react";
 
+import { Views } from "..";
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
-import { getConfigurationFile } from "../../../../../../extension/background/model/persona/config";
+import { getChains } from "../../../../../../extension/background/model/persona/config";
 import bulletPointGreen from "../../../../assets/bulletPointGreen.svg";
 import bulletPointRed from "../../../../assets/bulletPointRed.svg";
 
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
   },
   listItem: {
     display: "flex",
+    flexDirection: "column",
     alignItems: "baseline",
     overflowWrap: "break-word",
     padding: "0 24px",
@@ -23,24 +25,32 @@ export interface Network {
   readonly name: string;
   readonly node: string;
   readonly connected: boolean;
+  readonly isBNS: boolean;
 }
 
 export const getNetworks = async (connectedChains: readonly ChainId[]): Promise<readonly Network[]> => {
-  const configuredChains = (await getConfigurationFile()).chains.map(chain => chain.chainSpec);
+  const configuredChains = (await getChains()).map(chain => chain.chainSpec);
 
   return configuredChains.map(chain => {
     const connected = connectedChains.includes(chain.chainId);
     return {
       name: chain.name,
       node: chain.node,
+      isBNS: chain.codecType === "bns",
       connected,
     };
   });
 };
 
-const Networks = (): JSX.Element => {
+interface Props {
+  readonly updateCurrentView: (newView: Views) => void;
+}
+
+const Networks = ({ updateCurrentView }: Props): JSX.Element => {
   const connectedChains = useContext(PersonaContext).connectedChains;
   const [networks, setNetworks] = useState<readonly Network[]>([]);
+
+  const onChangeNetwork = (): void => updateCurrentView(Views.ChangeNetwork);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -71,13 +81,25 @@ const Networks = (): JSX.Element => {
   return (
     <Block width="100%">
       <List classes={listClasses}>
-        {networks.map(network => (
-          <ListItem key={network.name} classes={listItemClasses}>
-            <Image alt="Bullet Point" src={network.connected ? bulletPointGreen : bulletPointRed} />
-            <Block marginLeft={2} />
-            <ListItemText primary={network.name} secondary={network.node} />
-          </ListItem>
-        ))}
+        {networks.map(network => {
+          return (
+            <ListItem key={network.name} classes={listItemClasses}>
+              <Block display="flex">
+                <Image alt="Bullet Point" src={network.connected ? bulletPointGreen : bulletPointRed} />
+                <Block marginLeft={2} />
+                <ListItemText primary={network.name} secondary={network.node} />
+              </Block>
+              {network.isBNS && (
+                <Block display="flex">
+                  <Block marginLeft={3} />
+                  <Typography link color="primary" variant="body2" onClick={onChangeNetwork}>
+                    Change
+                  </Typography>
+                </Block>
+              )}
+            </ListItem>
+          );
+        })}
       </List>
     </Block>
   );

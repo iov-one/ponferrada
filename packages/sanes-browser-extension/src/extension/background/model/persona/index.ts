@@ -32,7 +32,7 @@ import {
   algorithmForCodec,
   chainConnector,
   codecTypeFromString,
-  getConfigurationFile,
+  getChains,
   pathBuilderForCodec,
 } from "./config";
 import { createTwoWalletProfile } from "./userprofilehelpers";
@@ -143,10 +143,9 @@ export class Persona {
   private static async connectToAllConfiguredChains(
     signer: MultiChainSigner,
   ): Promise<readonly SoftwareAccountManagerChainConfig[]> {
-    const config = await getConfigurationFile();
     const managerChains: SoftwareAccountManagerChainConfig[] = [];
 
-    for (const chainSpec of config.chains.map(chain => chain.chainSpec)) {
+    for (const chainSpec of (await getChains()).map(chain => chain.chainSpec)) {
       const codecType = codecTypeFromString(chainSpec.codecType);
       const connector = chainConnector(codecType, chainSpec);
 
