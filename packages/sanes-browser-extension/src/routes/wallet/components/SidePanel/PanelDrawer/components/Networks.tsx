@@ -42,6 +42,8 @@ export const getNetworks = async (connectedChains: readonly ChainId[]): Promise<
   });
 };
 
+const isProduction = process.env.NODE_ENV === "production";
+
 interface Props {
   readonly updateCurrentView: (newView: Views) => void;
 }
@@ -89,7 +91,7 @@ const Networks = ({ updateCurrentView }: Props): JSX.Element => {
                 <Block marginLeft={2} />
                 <ListItemText primary={network.name} secondary={network.node} />
               </Block>
-              {network.isBNS && (
+              {network.isBNS && !isProduction && (
                 <Block display="flex">
                   <Block marginLeft={3} />
                   <Typography link color="primary" variant="body2" onClick={onChangeNetwork}>
