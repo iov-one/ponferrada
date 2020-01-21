@@ -28,6 +28,18 @@ export const number: FieldValidator<FieldInputValue> = (value): ValidationError 
   return value && !Number.isNaN(+value) ? undefined : "Must be a number";
 };
 
+export const maxFractionalDigits = (maxDigits: number): FieldValidator<FieldInputValue> => {
+  return (value): ValidationError => {
+    if (value) {
+      // TODO update logic when locale digit separator is supported on payment input
+      const valueDigits = value.split(".")[1];
+      if (valueDigits?.length > maxDigits) return `Fractional digits must be ${maxDigits} or fewer`;
+    }
+
+    return undefined;
+  };
+};
+
 export const validAddress: FieldValidator<FieldInputValue> = (value): ValidationError => {
   return (value || "").endsWith("*iov") ? undefined : "Invalid address";
 };
