@@ -85,6 +85,9 @@ export async function getChainNode(chainId: ChainId): Promise<string> {
 
 export async function getChains(): Promise<ChainConfig[]> {
   const chains = (await getConfigurationFile()).chains;
+  if (process.env.NODE_ENV === "production") {
+    return chains;
+  }
   const bnsRpcConfig = getBnsRpc();
   if (bnsRpcConfig) {
     const bnsChain = chains.find(chain => chain.chainSpec.codecType === "bns");
