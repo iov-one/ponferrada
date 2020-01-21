@@ -43,7 +43,10 @@ function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
 
   const amount = sendTx.original.amount;
   const fee = sendTx.outgoing && sendTx.original.fee?.tokens;
-  const totalAmount = fee ? amountToString(sumAmounts(amount, fee)) : amountToString(amount);
+  const totalAmount =
+    fee && amount.tokenTicker === fee.tokenTicker
+      ? amountToString(sumAmounts(amount, fee))
+      : amountToString(amount);
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={3} paddingRight={3}>
