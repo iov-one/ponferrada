@@ -39,6 +39,6 @@ withChainsDescribe("E2E > Wallet route", () => {
     expect(clipboardy.readSync()).toBe("tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea");
 
     const balanceAmount = await getBalanceAmount(page);
-    expect(balanceAmount).toBe("123456778.84 CASH");
+    expect(balanceAmount).toBe("123,456,778.84 CASH");
   }, 20000);
 });
