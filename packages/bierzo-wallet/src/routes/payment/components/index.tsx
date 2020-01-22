@@ -3,6 +3,8 @@ import { Back, Block, Button, Form, useForm } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
+import { ConfigErc20Options, getConfig } from "../../../config";
+import { isEthSpec } from "../../../logic/connection";
 import { RootState } from "../../../store/reducers";
 import CurrencyToSend from "./CurrencyToSend";
 import ReceiverAddress from "./ReceiverAddress";
@@ -21,11 +23,24 @@ const Layout = ({
   onTokenSelectionChanged,
   selectedChainCodec,
 }: Props): JSX.Element => {
+  const [memoDisabled, setMemoDisabled] = React.useState(false);
+
   const balances = ReactRedux.useSelector((state: RootState) => state.balances);
   const noBalance = Object.keys(balances).length === 0;
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
     onSubmit,
   });
+
+  const onTokenSelectionControl = async (ticker: TokenTicker): Promise<void> => {
+    const chains = (await getConfig()).chains;
+    const ethChain = chains.find(chain => isEthSpec(chain.chainSpec));
+    const erc20s = ethChain?.chainSpec?.ethereumOptions?.erc20s;
+    if (erc20s) {
+      const erc20Tokens = erc20s as ConfigErc20Options[];
+      setMemoDisabled(erc20Tokens.some(token => token.symbol.toUpperCase() === ticker.toUpperCase()));
+    }
+    onTokenSelectionChanged(ticker);
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -36,10 +51,10 @@ const Layout = ({
               form={form}
               balances={balances}
               noBalance={noBalance}
-              onTokenSelectionChanged={onTokenSelectionChanged}
+              onTokenSelectionControl={onTokenSelectionControl}
             />
             <ReceiverAddress form={form} noBalance={noBalance} selectedChainCodec={selectedChainCodec} />
-            <TextNote form={form} noBalance={noBalance} />
+            <TextNote form={form} noMemo={noBalance || memoDisabled} />
           </Block>
           <Block width="75%" marginTop={4}>
             <Button fullWidth type="submit" disabled={invalid || pristine || submitting || noBalance}>
