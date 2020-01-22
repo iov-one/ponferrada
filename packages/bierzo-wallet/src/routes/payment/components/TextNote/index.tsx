@@ -6,12 +6,12 @@ export const TEXTNOTE_FIELD = "textNoteField";
 
 interface Props {
   readonly form: FormApi;
-  readonly noBalance: boolean;
+  readonly noMemo: boolean;
 }
 
 const validator = notLongerThan(150);
 
-const TextNote = ({ form, noBalance }: Props): JSX.Element => {
+const TextNote = ({ form, noMemo }: Props): JSX.Element => {
   return (
     <Block width="100%" marginTop={4} display="flex" flexDirection="column">
       <Typography color="textPrimary" variant="subtitle2">
@@ -27,7 +27,7 @@ const TextNote = ({ form, noBalance }: Props): JSX.Element => {
           rows="2"
           fullWidth
           margin="none"
-          disabled={noBalance}
+          disabled={noMemo}
         />
       </Block>
     </Block>
