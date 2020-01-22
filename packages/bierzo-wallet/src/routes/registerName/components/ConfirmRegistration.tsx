@@ -33,10 +33,9 @@ const copyIcon = <Image src={copySvg} alt="Tick" />;
 interface Props {
   readonly transactionId: TransactionId;
   readonly onSeeTrasactions: () => void;
-  readonly onReturnToBalance: () => void;
 }
 
-const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalance }: Props): JSX.Element => {
+const ConfirmRegistration = ({ transactionId, onSeeTrasactions }: Props): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useClasses();
 
