@@ -42,6 +42,7 @@ export {
   greaterThan,
   longerThan,
   lowerOrEqualThan,
+  maxFractionalDigits,
   notLongerThan,
   number,
   required,

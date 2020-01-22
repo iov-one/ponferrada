@@ -120,7 +120,6 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
       <ConfirmRegistration
         transactionId={"0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e" as TransactionId}
         onSeeTrasactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
-        onReturnToBalance={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
       />
     </DecoratedStorybook>
   ));

@@ -16,11 +16,11 @@ describe("balances", () => {
 
     it("should handle whole numbers", () => {
       expect(amountToString(makeAmount("123", 0, iov))).toEqual("123 IOV");
-      expect(amountToString(makeAmount("123000", 0, iov))).toEqual("123000 IOV");
+      expect(amountToString(makeAmount("123000", 0, iov))).toEqual("123,000 IOV");
     });
 
     it("should handle fractional", () => {
-      expect(amountToString(makeAmount("123456", 2, iov))).toEqual("1234.56 IOV");
+      expect(amountToString(makeAmount("123456", 2, iov))).toEqual("1,234.56 IOV");
       expect(amountToString(makeAmount("123456", 4, iov))).toEqual("12.3456 IOV");
       expect(amountToString(makeAmount("123456", 6, iov))).toEqual("0.123456 IOV");
     });

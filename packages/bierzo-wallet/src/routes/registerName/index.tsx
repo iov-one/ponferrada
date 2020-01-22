@@ -28,7 +28,7 @@ import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BwUsernameWithChainName } from "../addresses";
-import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
+import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
 import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
@@ -38,6 +38,9 @@ function onSeeTrasactions(): void {
 }
 function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
+}
+function onReturnToAddresses(): void {
+  history.push(ADDRESSES_ROUTE);
 }
 
 function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
@@ -262,16 +265,12 @@ const RegisterUsername = (): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmRegistration
-          transactionId={transactionId}
-          onSeeTrasactions={onSeeTrasactions}
-          onReturnToBalance={onReturnToBalance}
-        />
+        <ConfirmRegistration transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
       ) : (
         <Layout
           onSubmit={onSubmit}
           validate={validate}
-          onCancel={onReturnToBalance}
+          onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
           chainAddresses={addressesSorted}
           iovnameAddresses={iovnameAddresses}
           transactionFee={transactionFee}
