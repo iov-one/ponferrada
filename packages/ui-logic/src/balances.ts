@@ -6,7 +6,9 @@ import { Decimal } from "@iov/encoding";
  */
 export function amountToString(amount: Amount): string {
   const { quantity, fractionalDigits, tokenTicker } = amount;
-  return `${Decimal.fromAtomics(quantity, fractionalDigits).toString()} ${tokenTicker}`;
+  return `${Decimal.fromAtomics(quantity, fractionalDigits)
+    .toFloatApproximation()
+    .toLocaleString(undefined, { maximumFractionDigits: fractionalDigits })} ${tokenTicker}`;
 }
 
 /**

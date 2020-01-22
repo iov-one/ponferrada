@@ -4,6 +4,7 @@ export declare function composeValidators<T>(...validators: readonly FieldValida
 export declare type FieldInputValue = string | undefined;
 export declare const required: FieldValidator<FieldInputValue>;
 export declare const number: FieldValidator<FieldInputValue>;
+export declare const maxFractionalDigits: (maxDigits: number) => FieldValidator<string | undefined>;
 export declare const validAddress: FieldValidator<FieldInputValue>;
 export declare const lowerOrEqualThan: (max: number) => FieldValidator<string | undefined>;
 export declare const greaterOrEqualThan: (min: number) => FieldValidator<string | undefined>;
