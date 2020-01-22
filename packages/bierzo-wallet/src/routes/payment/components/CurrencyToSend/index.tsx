@@ -39,10 +39,10 @@ interface Props {
   readonly form: FormApi;
   readonly balances: BalanceState;
   readonly noBalance: boolean;
-  readonly onTokenSelectionChanged: (ticker: TokenTicker) => Promise<void>;
+  readonly onTokenSelectionControl: (ticker: TokenTicker) => Promise<void>;
 }
 
-const CurrencyToSend = ({ form, onTokenSelectionChanged, balances, noBalance }: Props): JSX.Element => {
+const CurrencyToSend = ({ form, onTokenSelectionControl, balances, noBalance }: Props): JSX.Element => {
   const classes = useStyles();
 
   const currencyItems = Object.keys(balances)
@@ -62,8 +62,8 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged, balances, noBalance }: 
   }, [balances, selectedTokenTicker]);
 
   React.useEffect(() => {
-    onTokenSelectionChanged(selectedTokenTicker as TokenTicker);
-  }, [onTokenSelectionChanged, selectedTokenTicker]);
+    onTokenSelectionControl(selectedTokenTicker as TokenTicker);
+  }, [onTokenSelectionControl, selectedTokenTicker]);
 
   const onSelectionChanged = (item: SelectFieldItem | undefined): void => {
     if (item) {
