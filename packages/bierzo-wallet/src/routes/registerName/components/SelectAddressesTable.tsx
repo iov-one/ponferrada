@@ -145,15 +145,19 @@ const SelectAddressesTable = ({
   });
 
   const removeBlockchainItem = (chain: SelectFieldItem): void => {
-    const newItem = blockChainItems.filter(item => item.name !== chain.name);
-    setBlockchainItems(newItem);
+    setBlockchainItems(oldItems => {
+      const newItem = oldItems.filter(item => item.name !== chain.name);
+      return newItem;
+    });
   };
 
   const addBlockchainItem = (chain: SelectFieldItem): void => {
     if (chain.name !== emptySelectorName) {
-      const newItem = [...blockChainItems, chain];
-      newItem.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
-      setBlockchainItems(newItem);
+      setBlockchainItems(oldItems => {
+        const newItem = [...oldItems, chain];
+        newItem.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+        return newItem;
+      });
     }
   };
 
