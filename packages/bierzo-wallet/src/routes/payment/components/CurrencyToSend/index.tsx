@@ -9,6 +9,7 @@ import {
   composeValidators,
   greaterThan,
   lowerOrEqualThan,
+  maxFractionalDigits,
   number,
   required,
   SelectField,
@@ -56,6 +57,7 @@ const CurrencyToSend = ({ form, onTokenSelectionChanged, balances, noBalance }: 
     return composeValidators(
       required,
       number,
+      maxFractionalDigits(selectedTokenTicker ? balances[selectedTokenTicker].fractionalDigits : 0),
       lowerOrEqualThan(selectedTokenTicker ? amountToNumber(balances[selectedTokenTicker]) : 0),
       greaterThan(QUANTITY_MIN),
     );
