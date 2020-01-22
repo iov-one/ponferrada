@@ -8,7 +8,7 @@ export function amountToString(amount: Amount): string {
   const { quantity, fractionalDigits, tokenTicker } = amount;
   return `${Decimal.fromAtomics(quantity, fractionalDigits)
     .toFloatApproximation()
-    .toLocaleString()} ${tokenTicker}`;
+    .toLocaleString(undefined, { maximumFractionDigits: fractionalDigits })} ${tokenTicker}`;
 }
 
 /**
