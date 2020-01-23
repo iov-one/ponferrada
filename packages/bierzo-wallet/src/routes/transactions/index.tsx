@@ -54,7 +54,7 @@ const Transactions = (): JSX.Element => {
   }
 
   function onNextPage(): void {
-    const totalPages = Math.ceil(txs.length / rows);
+    const totalPages = Math.ceil(parsedTxs.length / rows);
     if (page === totalPages - 1) {
       return;
     }
