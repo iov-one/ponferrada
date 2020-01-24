@@ -41,5 +41,6 @@
     }
   ],
   "walletCreationDisabled": false,
-  "accountCreationDisabled": true
+  "accountCreationDisabled": true,
+  "production": "true"
 }

@@ -40,6 +40,8 @@ export interface ConfigurationFile {
   readonly walletCreationDisabled?: boolean;
   /** If set to true, account creation is disabled. Unsets is interpreted as false. */
   readonly accountCreationDisabled?: boolean;
+  /** Producation environment flag */
+  readonly production?: boolean;
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
@@ -84,8 +86,9 @@ export async function getChainNode(chainId: ChainId): Promise<string> {
 }
 
 export async function getChains(): Promise<ChainConfig[]> {
-  const chains = (await getConfigurationFile()).chains;
-  if (process.env.NODE_ENV === "production") {
+  const config = await getConfigurationFile();
+  const chains = config.chains;
+  if (config.production) {
     return chains;
   }
   const bnsRpcConfig = getBnsRpc();
