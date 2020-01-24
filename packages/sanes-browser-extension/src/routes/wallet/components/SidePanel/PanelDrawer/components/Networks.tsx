@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { Views } from "..";
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
-import { getChains } from "../../../../../../extension/background/model/persona/config";
+import { getChains, getConfigurationFile } from "../../../../../../extension/background/model/persona/config";
 import bulletPointGreen from "../../../../assets/bulletPointGreen.svg";
 import bulletPointRed from "../../../../assets/bulletPointRed.svg";
 
@@ -42,8 +42,6 @@ export const getNetworks = async (connectedChains: readonly ChainId[]): Promise<
   });
 };
 
-const isProduction = process.env.NODE_ENV === "production";
-
 interface Props {
   readonly updateCurrentView: (newView: Views) => void;
 }
@@ -51,6 +49,7 @@ interface Props {
 const Networks = ({ updateCurrentView }: Props): JSX.Element => {
   const connectedChains = useContext(PersonaContext).connectedChains;
   const [networks, setNetworks] = useState<readonly Network[]>([]);
+  const [isProduction, setProductionState] = useState(true);
 
   const onChangeNetwork = (): void => updateCurrentView(Views.ChangeNetwork);
 
@@ -59,9 +58,11 @@ const Networks = ({ updateCurrentView }: Props): JSX.Element => {
 
     async function updateNetworks(): Promise<void> {
       const networks = await getNetworks(connectedChains);
+      const isProduction = !!(await getConfigurationFile()).production;
 
       if (isSubscribed) {
         setNetworks(networks);
+        setProductionState(isProduction);
       }
     }
 
