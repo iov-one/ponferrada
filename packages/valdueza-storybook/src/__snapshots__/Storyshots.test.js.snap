@@ -12808,6 +12808,22 @@ exports[`Storyshots Sanes Browser Extension/Welcome page With persona 1`] = `
         Import Wallet
       </span>
     </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <a
+        href="https://www.neuma.io/policy"
+        onClick={[Function]}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
+        >
+          Privacy policy
+        </h6>
+      </a>
+    </div>
   </div>
   <div
     className="MuiBox-root MuiBox-root"
@@ -12912,6 +12928,22 @@ exports[`Storyshots Sanes Browser Extension/Welcome page Without persona 1`] = `
         Import Wallet
       </span>
     </button>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <a
+        href="https://www.neuma.io/policy"
+        onClick={[Function]}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
+        >
+          Privacy policy
+        </h6>
+      </a>
+    </div>
   </div>
   <div
     className="MuiBox-root MuiBox-root"
