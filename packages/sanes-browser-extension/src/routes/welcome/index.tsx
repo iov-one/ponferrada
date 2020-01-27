@@ -1,11 +1,11 @@
-import { Block, Button, ToastContext, ToastVariant, Typography } from "medulas-react-components";
+import { Block, Button, Link, ToastContext, ToastVariant, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../utils/history";
-import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
+import { CREATE_WALLET_ROUTE, POLICY_URL, RESTORE_WALLET, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 
 export const UNLOCK_WALLET_ID = "welcome-unlock-wallet";
 export const CREATE_WALLET_ID = "welcome-create-wallet";
@@ -54,6 +54,13 @@ const Welcome = (): JSX.Element => {
       <Button variant="contained" fullWidth onClick={importWallet} id={IMPORT_WALLET_ID}>
         Import Wallet
       </Button>
+      <Block marginTop={8} display="flex" justifyContent="center">
+        <Link to={POLICY_URL}>
+          <Typography variant="subtitle2" color="primary" link>
+            Privacy policy
+          </Typography>
+        </Link>
+      </Block>
     </NeumaPageLayout>
   );
 };
