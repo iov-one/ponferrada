@@ -2,7 +2,7 @@ import TestUtils from "react-dom/test-utils";
 
 import { click } from "../../utils/test/dom";
 import { travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE } from "../paths";
+import { CREATE_WALLET_ROUTE, POLICY_URL, RESTORE_WALLET, UNLOCK_ROUTE } from "../paths";
 
 describe("DOM > Feature > Welcome", () => {
   let welcomeDom: React.Component;
@@ -43,5 +43,10 @@ describe("DOM > Feature > Welcome", () => {
     expect(importAccountButton.textContent).toBe("Import Wallet");
     click(importAccountButton);
     await whenOnNavigatedToRoute(RESTORE_WALLET);
+  }, 60000);
+
+  it("has a link to privacy policy", async () => {
+    const policyLink = TestUtils.findRenderedDOMComponentWithTag(welcomeDom, "a");
+    expect(policyLink.getAttribute("href")).toBe(POLICY_URL);
   }, 60000);
 });
