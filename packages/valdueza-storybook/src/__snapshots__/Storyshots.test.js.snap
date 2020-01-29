@@ -12586,30 +12586,59 @@ exports[`Storyshots Sanes Browser Extension/Wallet Status page With balances 1`]
         <div
           className="MuiBox-root MuiBox-root"
         />
-        <div
-          className="MuiBox-root MuiBox-root"
+        <li
+          className="MuiListItem-root"
+          disabled={false}
         >
-          <li
-            className="MuiListItem-root MuiListItem-gutters"
-            disabled={false}
+          <div
+            className="MuiBox-root MuiBox-root"
           >
-            <h5
-              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary"
+            <div
+              className="MuiBox-root MuiBox-root"
             >
-              100 ETH
-            </h5>
-          </li>
-          <li
-            className="MuiListItem-root MuiListItem-gutters"
-            disabled={false}
-          >
-            <h5
-              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary"
+              <div
+                className="MuiListItemIcon-root"
+              >
+                <img
+                  alt="No Tokens"
+                  className="makeStyles-root"
+                  height="72"
+                  src="noFunds.svg"
+                />
+              </div>
+            </div>
+            <div
+              className="MuiListItemText-root"
             >
-              1 LSK
-            </h5>
-          </li>
-        </div>
+              <span
+                className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+              >
+                <p
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                >
+                  You have no funds available
+                </p>
+              </span>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiListItemText-root"
+              >
+                <span
+                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+                  >
+                    Make your first deposit and your funds will appear here.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
       </ul>
       <div
         className="MuiBox-root MuiBox-root"
