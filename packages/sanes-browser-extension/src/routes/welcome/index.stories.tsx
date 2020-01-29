@@ -11,9 +11,9 @@ import Layout from "./index";
 const persona: GetPersonaResponse = {
   mnemonic: "",
   connectedChains: ["local-iov-devnet" as ChainId],
-  accounts: [{ label: "Account 0", iovAddress: "" as Address }],
-  balances: [],
-  starnames: [],
+  getAccounts: () => new Promise(resolve => resolve([{ label: "Account 0", iovAddress: "" as Address }])),
+  getBalances: () => new Promise(resolve => resolve([])),
+  getStarnames: () => new Promise(resolve => resolve([])),
 };
 
 storiesOf(`${sanesRoot}/Welcome page`, module)

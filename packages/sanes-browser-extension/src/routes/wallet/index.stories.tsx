@@ -22,9 +22,9 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
     const persona: GetPersonaResponse = {
       mnemonic: "",
       connectedChains: ["local-iov-devnet" as ChainId],
-      accounts: [{ label: "Account 0", iovAddress: "" as Address }],
-      balances: [balance1, balance2],
-      starnames: [],
+      getAccounts: () => new Promise(resolve => resolve([{ label: "Account 0", iovAddress: "" as Address }])),
+      getBalances: () => new Promise(resolve => resolve([balance1, balance2])),
+      getStarnames: () => new Promise(resolve => resolve([])),
     };
 
     return (
@@ -41,9 +41,9 @@ storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
     const persona: GetPersonaResponse = {
       mnemonic: "",
       connectedChains: ["local-iov-devnet" as ChainId],
-      accounts: [{ label: "Account 0", iovAddress: "" as Address }],
-      balances: [],
-      starnames: [],
+      getAccounts: () => new Promise(resolve => resolve([{ label: "Account 0", iovAddress: "" as Address }])),
+      getBalances: () => new Promise(resolve => resolve([])),
+      getStarnames: () => new Promise(resolve => resolve([])),
     };
 
     return (
