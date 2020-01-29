@@ -21,9 +21,9 @@ export interface IovWindowExtension extends Window {
 export interface PersonaData {
   readonly mnemonic: string;
   readonly connectedChains: readonly ChainId[];
-  readonly accounts: readonly PersonaAcccount[];
-  readonly balances: readonly (readonly Amount[])[];
-  readonly starnames: readonly string[];
+  readonly getAccounts: () => Promise<readonly PersonaAcccount[]>;
+  readonly getBalances: () => Promise<readonly (readonly Amount[])[]>;
+  readonly getStarnames: () => Promise<readonly string[]>;
 }
 
 const ALREADY_FOUND_ERR = "The persona instance is already set. This indicates a bug in the lifecycle.";
@@ -46,12 +46,15 @@ class Backgroundscript {
     );
     this.requestsHandler.start(this.persona.signingServer);
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const persona = this.persona!;
+
     const response = {
       mnemonic: this.persona.mnemonic,
       connectedChains: this.persona.connectedChains,
-      accounts: await this.persona.getAccounts(),
-      balances: await this.persona.getBalances(),
-      starnames: await this.persona.getStarnames(),
+      getAccounts: () => persona.getAccounts(),
+      getBalances: () => persona.getBalances(),
+      getStarnames: () => persona.getStarnames(),
     };
 
     return response;
@@ -64,12 +67,15 @@ class Backgroundscript {
     );
     this.requestsHandler.start(this.persona.signingServer);
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const persona = this.persona!;
+
     return {
       mnemonic: this.persona.mnemonic,
       connectedChains: this.persona.connectedChains,
-      accounts: await this.persona.getAccounts(),
-      balances: await this.persona.getBalances(),
-      starnames: await this.persona.getStarnames(),
+      getAccounts: () => persona.getAccounts(),
+      getBalances: () => persona.getBalances(),
+      getStarnames: () => persona.getStarnames(),
     };
   }
 
@@ -96,12 +102,15 @@ class Backgroundscript {
       return null;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const persona = this.persona!;
+
     return {
       mnemonic: this.persona.mnemonic,
       connectedChains: this.persona.connectedChains,
-      accounts: await this.persona.getAccounts(),
-      balances: await this.persona.getBalances(),
-      starnames: await this.persona.getStarnames(),
+      getAccounts: () => persona.getAccounts(),
+      getBalances: () => persona.getBalances(),
+      getStarnames: () => persona.getStarnames(),
     };
   }
 
