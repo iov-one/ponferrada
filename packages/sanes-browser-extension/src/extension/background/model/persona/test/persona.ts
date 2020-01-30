@@ -36,7 +36,12 @@ export const mockPersonaResponse = (
   balances: Amount[][] = [],
   starnames: string[] = [],
 ): PersonaData => {
-  return { mnemonic, connectedChains, accounts, balances, starnames };
+  const getAccounts = (): Promise<readonly PersonaAcccount[]> => new Promise(resolve => resolve(accounts));
+  const getBalances = (): Promise<readonly (readonly Amount[])[]> =>
+    new Promise(resolve => resolve(balances));
+  const getStarnames = (): Promise<readonly string[]> => new Promise(resolve => resolve(starnames));
+
+  return { mnemonic, connectedChains, getAccounts, getBalances, getStarnames };
 };
 
 export const mockGetPersonaData = (personaData: PersonaData): void => {

@@ -43,16 +43,35 @@ interface Props {
 type Accounts = readonly PersonaAcccount[];
 
 export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props): JSX.Element => {
-  const [mnemonic, setMnemonic] = React.useState<string>(persona ? persona.mnemonic : "");
+  const [mnemonic, setMnemonic] = React.useState<string>("");
   const [connectedChains, setConnectedChains] = React.useState<readonly ChainId[]>(
     persona ? persona.connectedChains : [],
   );
-  const [accounts, setAccounts] = React.useState<Accounts>(persona ? persona.accounts : []);
-  const [balances, setBalances] = React.useState<readonly (readonly Amount[])[]>(
-    persona ? persona.balances : [],
-  );
-  const [starnames, setStarnames] = React.useState<readonly string[]>(persona ? persona.starnames : []);
+  const [accounts, setAccounts] = React.useState<Accounts>([]);
+  const [balances, setBalances] = React.useState<readonly (readonly Amount[])[]>([]);
+  const [starnames, setStarnames] = React.useState<readonly string[]>([]);
   const [storedPersonaExists, setStoredPersonaExists] = React.useState<boolean>(hasStoredPersona);
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+    async function loadPersonaData(persona: GetPersonaResponse): Promise<void> {
+      const personaData: PersonaContextUpdateData = {
+        ...persona,
+        accounts: await persona?.getAccounts(),
+        balances: await persona?.getBalances(),
+        starnames: await persona?.getStarnames(),
+      };
+
+      if (isSubscribed && personaData) {
+        loadPersonaInReact(personaData);
+      }
+    }
+    loadPersonaData(persona);
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [persona]);
 
   const loadPersonaInReact = (newData: PersonaContextUpdateData): void => {
     if (newData.mnemonic !== undefined) setMnemonic(newData.mnemonic);

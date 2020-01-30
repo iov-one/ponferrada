@@ -1,7 +1,7 @@
 import { FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 
-import { PersonaContext } from "../../context/PersonaProvider";
+import { PersonaContext, PersonaContextUpdateData } from "../../context/PersonaProvider";
 import { PersonaData } from "../../extension/background/model/backgroundscript";
 import { createPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
@@ -39,13 +39,15 @@ const RestoreWallet = (): JSX.Element => {
       console.error(error);
       return;
     }
-    personaProvider.update({
-      mnemonic: response.mnemonic,
-      connectedChains: response.connectedChains,
-      accounts: response.accounts,
-      balances: response.balances,
-      starnames: response.starnames,
-    });
+
+    const personaData: PersonaContextUpdateData = {
+      ...response,
+      accounts: await response?.getAccounts(),
+      balances: await response?.getBalances(),
+      starnames: await response?.getStarnames(),
+    };
+
+    personaProvider.update(personaData);
 
     history.push(WALLET_STATUS_ROUTE);
   };
