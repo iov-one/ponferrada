@@ -7,6 +7,7 @@ import { AddressesTableProps } from "../../../components/AddressesTable";
 import Iovnames, { IovnamesProps } from "./Iovnames";
 import UserAddresses from "./UserAddresses";
 
+export const yourStarnames = "Your starnames";
 export const yourIovnames = "Your iovnames";
 export const yourAddresses = "Your blockchain addresses";
 
@@ -58,14 +59,18 @@ function AddressesTab({
   onRegisterUsername,
   rpcEndpointType,
 }: AddressesTableProps & IovnamesProps): JSX.Element {
-  const [selectedTab, setSelectedTab] = React.useState<"iovnames" | "addresses">("iovnames");
+  const [selectedTab, setSelectedTab] = React.useState<"starnames" | "iovnames" | "addresses">("starnames");
 
-  const changeTabToAddresses = (): void => setSelectedTab("addresses");
+  const changeTabToStarnames = (): void => setSelectedTab("starnames");
   const changeTabToIovnames = (): void => setSelectedTab("iovnames");
+  const changeTabToAddresses = (): void => setSelectedTab("addresses");
 
   return (
     <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
       <Block display="flex">
+        <TabItem selected={selectedTab === "starnames"} onChangeTab={changeTabToStarnames}>
+          {yourStarnames}
+        </TabItem>
         <TabItem selected={selectedTab === "iovnames"} onChangeTab={changeTabToIovnames}>
           {yourIovnames}
         </TabItem>
@@ -73,6 +78,11 @@ function AddressesTab({
           {yourAddresses}
         </TabItem>
       </Block>
+      {selectedTab === "starnames" && (
+        <Typography variant="subtitle2" weight="semibold">
+          WORK IN PROGRESS
+        </Typography>
+      )}
       {selectedTab === "iovnames" && (
         <Iovnames
           usernames={usernames}
