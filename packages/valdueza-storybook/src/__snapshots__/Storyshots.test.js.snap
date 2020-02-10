@@ -2488,11 +2488,54 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
       </div>
     </div>
   </div>
-  <h6
-    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="starnames-view-id"
   >
-    WORK IN PROGRESS
-  </h6>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+          >
+            *yourstarname
+          </h6>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+        >
+          Register your starname
+        </h6>
+        <p
+          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+        >
+          A starname is your universal username for the blockchain world. It enables you to receive crypto-currencies or to log in to blockchain applications in a seamless way. Transferring value becomes fast an easy.
+        </p>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+          id="/register-personalized-address"
+          onClick={[Function]}
+        >
+          Register Now
+        </h6>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2555,11 +2598,60 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
       </div>
     </div>
   </div>
-  <h6
-    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="starnames-view-id"
   >
-    WORK IN PROGRESS
-  </h6>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+          >
+            *yourstarname
+          </h6>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <p
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-body1"
+        >
+          You can not register
+        </p>
+        <p
+          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
+          id="/register-personalized-address"
+        >
+          starname
+        </p>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
+          >
+            using
+             
+          </p>
+          <p
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
+          >
+            Ledger Nano S
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2622,11 +2714,54 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
       </div>
     </div>
   </div>
-  <h6
-    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="starnames-view-id"
   >
-    WORK IN PROGRESS
-  </h6>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+          >
+            *yourstarname
+          </h6>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+        >
+          Register your starname
+        </h6>
+        <p
+          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+        >
+          A starname is your universal username for the blockchain world. It enables you to receive crypto-currencies or to log in to blockchain applications in a seamless way. Transferring value becomes fast an easy.
+        </p>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+          id="/register-personalized-address"
+          onClick={[Function]}
+        >
+          Register Now
+        </h6>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
