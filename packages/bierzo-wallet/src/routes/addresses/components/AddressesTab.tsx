@@ -5,6 +5,7 @@ import React from "react";
 
 import { AddressesTableProps } from "../../../components/AddressesTable";
 import Iovnames, { IovnamesProps } from "./Iovnames";
+import Starnames, { StarnamesProps } from "./Starnames";
 import UserAddresses from "./UserAddresses";
 
 export const yourStarnames = "Your starnames";
@@ -56,9 +57,11 @@ function TabItem({ children, selected, onChangeTab }: TabItemProps): JSX.Element
 function AddressesTab({
   chainAddresses,
   usernames,
+  starnames,
   onRegisterUsername,
+  onRegisterStarname,
   rpcEndpointType,
-}: AddressesTableProps & IovnamesProps): JSX.Element {
+}: AddressesTableProps & IovnamesProps & StarnamesProps): JSX.Element {
   const [selectedTab, setSelectedTab] = React.useState<"starnames" | "iovnames" | "addresses">("starnames");
 
   const changeTabToStarnames = (): void => setSelectedTab("starnames");
@@ -79,9 +82,11 @@ function AddressesTab({
         </TabItem>
       </Block>
       {selectedTab === "starnames" && (
-        <Typography variant="subtitle2" weight="semibold">
-          WORK IN PROGRESS
-        </Typography>
+        <Starnames
+          starnames={starnames}
+          onRegisterStarname={onRegisterStarname}
+          rpcEndpointType={rpcEndpointType}
+        />
       )}
       {selectedTab === "iovnames" && (
         <Iovnames
