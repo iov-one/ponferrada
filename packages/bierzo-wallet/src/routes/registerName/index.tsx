@@ -49,6 +49,7 @@ function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Ide
       return identity;
     }
   }
+  return undefined;
 }
 
 async function getPersonalizedAddressRegistrationFee(
