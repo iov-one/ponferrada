@@ -46,8 +46,7 @@ class Backgroundscript {
     );
     this.requestsHandler.start(this.persona.signingServer);
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const persona = this.persona!;
+    const persona = this.persona;
 
     const response = {
       mnemonic: this.persona.mnemonic,
@@ -67,8 +66,7 @@ class Backgroundscript {
     );
     this.requestsHandler.start(this.persona.signingServer);
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const persona = this.persona!;
+    const persona = this.persona;
 
     return {
       mnemonic: this.persona.mnemonic,
@@ -102,8 +100,7 @@ class Backgroundscript {
       return null;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const persona = this.persona!;
+    const persona = this.persona;
 
     return {
       mnemonic: this.persona.mnemonic,

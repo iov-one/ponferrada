@@ -1,6 +1,12 @@
 module.exports = {
   //https://codequs.com/p/rk7e07UBV/using-eslint-and-prettier-in-a-typescript-project
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2018,
+    project: "./tsconfig.json",
+    tsconfigRootDir: __dirname,
+  },
+  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -24,6 +30,6 @@ module.exports = {
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "warn",
   },
-  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
 };
