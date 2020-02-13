@@ -5,7 +5,7 @@ import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { NoStarnameHeader } from "../../registerStarName";
+import { NoUsernameHeader } from "../../registerName/components";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterStarname: () => void;
@@ -17,7 +17,7 @@ export function GetYourAddressWithExtension({
 }: Omit<StarnamesNotExistsProps, "rpcEndpointType">): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoStarnameHeader />
+      <NoUsernameHeader />
       <Block marginTop={3} />
       <Typography variant="subtitle1" weight="semibold" gutterBottom>
         Register your starname
@@ -46,7 +46,7 @@ export function GetYourAddressWithExtension({
 export function GetYourAddressWithLedger(): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoStarnameHeader />
+      <NoUsernameHeader />
       <Block marginTop={4} />
       <Typography variant="body1" weight="light">
         You can not register
