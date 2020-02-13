@@ -1,6 +1,7 @@
 module.exports = {
   //https://codequs.com/p/rk7e07UBV/using-eslint-and-prettier-in-a-typescript-project
   parser: '@typescript-eslint/parser',
+  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -25,5 +26,4 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
   },
-  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
 };
