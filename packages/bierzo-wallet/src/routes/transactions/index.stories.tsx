@@ -87,8 +87,8 @@ const incomingAndOutgoingSendTransaction: ProcessedSendTransaction = {
   original: {
     kind: "bcp/send",
     chainId: chainIdIov,
-    sender: currentUsersIovAddress as Address,
-    recipient: currentUsersIovAddress as Address,
+    sender: currentUsersIovAddress,
+    recipient: currentUsersIovAddress,
     amount: stringToAmount("7.4", iov),
     memo: "Send money to myself for fun",
     fee: { tokens: stringToAmount("1.2", iov) },

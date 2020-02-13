@@ -28,8 +28,7 @@ async function openDrawer(drawerComponent: React.Component): Promise<void> {
 export const goToMenu = async (drawerComponent: React.Component): Promise<DrawerMenuResult> => {
   await openDrawer(drawerComponent);
   const menuHeader = (await findRenderedDOMComponentWithId(drawerComponent, Views.Menu)) as Element;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const menu = menuHeader!.nextElementSibling;
+  const menu = menuHeader.nextElementSibling;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const menuLinks = menu!.querySelectorAll("nav > div");
@@ -53,8 +52,7 @@ export const goToSettings = async (drawerComponent: React.Component): Promise<Dr
   const { settingsLink } = await goToMenu(drawerComponent);
   await click(settingsLink);
   const settingsHeader = (await findRenderedDOMComponentWithId(drawerComponent, Views.Settings)) as Element;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const settings = settingsHeader!.nextElementSibling;
+  const settings = settingsHeader.nextElementSibling;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const settingsLinks = settings!.querySelectorAll("nav > div");

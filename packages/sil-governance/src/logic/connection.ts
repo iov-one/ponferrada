@@ -11,7 +11,7 @@ export async function getBnsConnection(): Promise<BnsConnection> {
   const { bnsChain } = await getConfig();
   const chainConnector = createBnsConnector(bnsChain.chainSpec.node, bnsChain.chainSpec.chainId as ChainId);
   // eslint-disable-next-line require-atomic-updates
-  bnsConnection = (await chainConnector.establishConnection()) as BnsConnection;
+  bnsConnection = await chainConnector.establishConnection();
   return bnsConnection;
 }
 
