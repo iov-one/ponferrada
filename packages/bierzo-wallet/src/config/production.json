@@ -7,7 +7,7 @@
       "mainnetBuild": "iov-mainnet"
     }
   },
-  "websiteName": "wallet.iov.one",
+  "websiteName": "wallet.neuma.io",
   "chains": [
     {
       "chainSpec": {
