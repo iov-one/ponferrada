@@ -13,6 +13,6 @@
     "rootDir": "src",
     "typeRoots": ["./src/react-app-env.d.ts"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src"],
   "exclude": ["src/**/*stories.tsx"]
 }

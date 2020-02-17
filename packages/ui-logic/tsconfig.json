@@ -13,5 +13,6 @@
     },
     "rootDir": "src"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src"],
+  "exclude": ["src/**/*stories.tsx"]
 }

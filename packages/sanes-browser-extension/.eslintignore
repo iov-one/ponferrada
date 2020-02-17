@@ -1,1 +1,5 @@
 build/
+types/
+src/**/*.stories.tsx
+src/setupTests.js
+src/extension/contentscript.ts

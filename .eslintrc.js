@@ -4,8 +4,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     project: [
-      "tsconfig.json",
-      "packages/**/tsconfig.json"
+      "./tsconfig.json",
+      "./packages/**/tsconfig.json"
     ],
     tsconfigRootDir: __dirname,
   },

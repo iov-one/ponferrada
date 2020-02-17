@@ -12,6 +12,6 @@
     "module": "esnext",
     "noEmit": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/setupTests.js", "src/extension/contentscript.ts"]
+  "include": ["src"],
+  "exclude": ["src/setupTests.js", "src/extension/contentscript.ts", "src/**/*stories.tsx"]
 }

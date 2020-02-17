@@ -1,3 +1,4 @@
 build/
 packages/medulas-react-components/types/
 packages/ui-logic/types/
+packages/**/*.stories.tsx
