@@ -7,7 +7,7 @@ import { AddUsernamesActionType, BwUsername } from "./reducer";
 export async function getUsernames(identities: readonly Identity[]): Promise<readonly BwUsername[]> {
   const bnsConnection = await getConnectionForBns();
 
-  const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId());
+  const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId);
   if (!bnsIdentity) return [];
 
   const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);

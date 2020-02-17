@@ -25,7 +25,7 @@ export async function subscribeTransaction(
       continue;
     }
     const codec = getCodec(chain.chainSpec);
-    const identity = identities.find(identity => identity.chainId === connection.chainId());
+    const identity = identities.find(identity => identity.chainId === connection.chainId);
     if (!identity) {
       continue;
     }

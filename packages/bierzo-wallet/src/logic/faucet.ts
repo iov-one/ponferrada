@@ -16,7 +16,7 @@ export async function drinkFaucetIfNeeded(identities: readonly Identity[]): Prom
       return;
     }
     const codec = getCodec(chainSpec);
-    const chainId = connection.chainId();
+    const chainId = connection.chainId;
     const identity = identities.find(identity => identity.chainId === chainId);
     if (!identity) {
       return;

@@ -151,10 +151,8 @@ export class Persona {
 
       try {
         const { connection } = await signer.addChain(connector);
-        const chainId = connection.chainId();
-
         managerChains.push({
-          chainId: chainId,
+          chainId: connection.chainId,
           algorithm: algorithmForCodec(codecType),
           derivePath: pathBuilderForCodec(codecType),
         });
@@ -221,7 +219,7 @@ export class Persona {
 
       return Promise.all(
         accounts.map(async (account, index) => {
-          const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId());
+          const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId);
           if (!bnsIdentity) {
             throw new Error(`Missing BNS identity for account at index ${index}`);
           }
@@ -299,7 +297,7 @@ export class Persona {
       const accounts = await this.accountManager.accounts();
       const bnsIdentities = accounts
         .flatMap(account => account.identities)
-        .filter(ident => ident.chainId === bnsConnection.chainId());
+        .filter(ident => ident.chainId === bnsConnection.chainId);
 
       await Promise.all(
         bnsIdentities.map(async bnsIdentity => {

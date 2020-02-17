@@ -9,7 +9,7 @@ export async function getBalances(identities: readonly Identity[]): Promise<{ [t
   const balances: { [ticker: string]: Amount } = {};
 
   for (const connection of connections) {
-    const identity = identities.find(identity => identity.chainId === connection.chainId());
+    const identity = identities.find(identity => identity.chainId === connection.chainId);
     if (!identity) {
       continue;
     }
