@@ -3,7 +3,10 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
-    project: "./tsconfig.json",
+    project: [
+      "tsconfig.json",
+      "packages/**/tsconfig.json"
+    ],
     tsconfigRootDir: __dirname,
   },
   plugins: ["@typescript-eslint", "react", "simple-import-sort"],
