@@ -16,7 +16,7 @@
 - Wallet and Extension: Add ability to update iovname
 - Wallet and Extension: Displays currencies with locale separators
 - Wallet, Governance and Extension: Adds ability to edit IOV RPC URL and name
-- Upgrade IOV-Core to 2.0.0-alpha.5
+- Upgrade IOV-Core to 2.0.2
 
 ## 1.1.0
 

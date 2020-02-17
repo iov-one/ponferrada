@@ -10,7 +10,7 @@ export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
 
     for (const chainToken of chainTokens) {
       const ticker = chainToken.tokenTicker as string;
-      tokens[ticker] = { chainId: connection.chainId(), token: chainToken };
+      tokens[ticker] = { chainId: connection.chainId, token: chainToken };
     }
   }
 

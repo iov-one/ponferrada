@@ -42,7 +42,7 @@ export const sendGetIdentitiesRequest = async (): Promise<
 
   const connection = await getBnsConnection();
 
-  const request = generateGetIdentitiesRequest(connection.chainId());
+  const request = generateGetIdentitiesRequest(connection.chainId);
 
   const config = await getConfig();
 

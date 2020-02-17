@@ -121,9 +121,9 @@ withChainsDescribe("Persona", () => {
         const profile = new UserProfile();
         const wallet = profile.addWallet(Ed25519HdWallet.fromMnemonic(mnemonic));
         const identities = [
-          await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(0)),
-          await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(1)),
-          await profile.createIdentity(wallet.id, connection.chainId(), HdPaths.iov(2)),
+          await profile.createIdentity(wallet.id, connection.chainId, HdPaths.iov(0)),
+          await profile.createIdentity(wallet.id, connection.chainId, HdPaths.iov(1)),
+          await profile.createIdentity(wallet.id, connection.chainId, HdPaths.iov(2)),
         ];
 
         // Ensure transaction creators can pay their fees
@@ -136,28 +136,28 @@ withChainsDescribe("Persona", () => {
 
         const registerName0: RegisterUsernameTx = {
           kind: "bns/register_username",
-          chainId: connection.chainId(),
+          chainId: connection.chainId,
           username: name0,
           targets: [],
         };
 
         const registerName1: RegisterUsernameTx = {
           kind: "bns/register_username",
-          chainId: connection.chainId(),
+          chainId: connection.chainId,
           username: name1,
           targets: [],
         };
 
         const registerName2a: RegisterUsernameTx = {
           kind: "bns/register_username",
-          chainId: connection.chainId(),
+          chainId: connection.chainId,
           username: name2[0],
           targets: [],
         };
 
         const registerName2b: RegisterUsernameTx = {
           kind: "bns/register_username",
-          chainId: connection.chainId(),
+          chainId: connection.chainId,
           username: name2[1],
           targets: [],
         };

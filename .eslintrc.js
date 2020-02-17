@@ -32,4 +32,13 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unnecessary-type-assertion": "warn",
   },
+  overrides: [
+    {
+      files: "**/*.js",
+      rules: {
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+      },
+    },
+  ],
 };

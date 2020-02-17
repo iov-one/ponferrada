@@ -15,11 +15,11 @@ export async function subscribeBalance(identities: readonly Identity[], dispatch
   const connections = getActiveConnections();
 
   for (const connection of connections) {
-    const chain = chains.find(chain => chain.chainSpec.chainId === connection.chainId());
+    const chain = chains.find(chain => chain.chainSpec.chainId === connection.chainId);
     if (!chain) {
-      throw new Error(`Chain for ${connection.chainId()} not found.`);
+      throw new Error(`Chain for ${connection.chainId} not found.`);
     }
-    const identity = identities.find(identity => identity.chainId === connection.chainId());
+    const identity = identities.find(identity => identity.chainId === connection.chainId);
     if (!identity) {
       continue;
     }
