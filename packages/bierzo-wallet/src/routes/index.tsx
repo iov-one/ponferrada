@@ -12,13 +12,15 @@ import {
   LOGIN_ROUTE,
   PAYMENT_ROUTE,
   POLICY_ROUTE,
-  REGISTER_PERSONALIZED_ADDRESS_ROUTE,
+  REGISTER_IOVNAME_ROUTE,
+  REGISTER_NAME_ROUTE,
+  REGISTER_STARNAME_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "./paths";
 import Payment from "./payment";
 import Policy from "./policy";
-import RegisterUsername from "./registerName";
+import Register, { ToRegister } from "./register";
 import Terms from "./terms";
 import Transactions from "./transactions";
 
@@ -34,7 +36,17 @@ const Routes = (): JSX.Element => (
         <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
-        <Route exact path={REGISTER_PERSONALIZED_ADDRESS_ROUTE} component={RegisterUsername} />
+        <Route
+          exact
+          path={REGISTER_IOVNAME_ROUTE}
+          component={() => <Register entity={ToRegister.Iovname} />}
+        />
+        <Route
+          exact
+          path={REGISTER_STARNAME_ROUTE}
+          component={() => <Register entity={ToRegister.Starname} />}
+        />
+        <Route exact path={REGISTER_NAME_ROUTE} component={() => <Register entity={ToRegister.Name} />} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />
       </RequireLogin>
