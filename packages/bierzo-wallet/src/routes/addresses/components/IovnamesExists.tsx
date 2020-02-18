@@ -15,8 +15,8 @@ import { BwUsernameWithChainName } from "..";
 import { history } from "../..";
 import AddressesTable from "../../../components/AddressesTable";
 import copy from "../../../components/AddressesTable/assets/copy.svg";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { AddressesTooltipHeader, TooltipContent } from "../../registerName/components";
+import { REGISTER_IOVNAME_ROUTE } from "../../paths";
+import { AddressesTooltipHeader, TooltipContent } from "../../register";
 
 interface Props {
   readonly usernames: readonly BwUsernameWithChainName[];
@@ -46,7 +46,7 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
   return (
     <React.Fragment>
       <Typography
-        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+        id={REGISTER_IOVNAME_ROUTE}
         link
         color="primary"
         align="center"
@@ -61,7 +61,7 @@ function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
         };
 
         const onEdit = (): void => {
-          history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE, username);
+          history.push(REGISTER_IOVNAME_ROUTE, username);
         };
 
         return (
