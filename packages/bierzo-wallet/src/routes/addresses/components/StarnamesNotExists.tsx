@@ -3,9 +3,10 @@ import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
+import { history } from "../..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { NoUsernameHeader } from "../../registerName/components";
+import { REGISTER_NAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../paths";
+import { NoStarnameHeader } from "../../register/components/StarnameForm";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterStarname: () => void;
@@ -17,7 +18,7 @@ export function GetYourAddressWithExtension({
 }: Omit<StarnamesNotExistsProps, "rpcEndpointType">): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoUsernameHeader />
+      <NoStarnameHeader />
       <Block marginTop={3} />
       <Typography variant="subtitle1" weight="semibold" gutterBottom>
         Register your starname
@@ -29,7 +30,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+        id={REGISTER_STARNAME_ROUTE}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -39,6 +40,19 @@ export function GetYourAddressWithExtension({
       >
         Register Now
       </Typography>
+      {/* TODO remove this Typography when /register-name accessible from starname list */}
+      <Typography
+        variant="subtitle1"
+        color="primary"
+        weight="semibold"
+        inline
+        link
+        onClick={() => {
+          history.push(REGISTER_NAME_ROUTE);
+        }}
+      >
+        Register your name
+      </Typography>
     </Block>
   );
 }
@@ -46,12 +60,12 @@ export function GetYourAddressWithExtension({
 export function GetYourAddressWithLedger(): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoUsernameHeader />
+      <NoStarnameHeader />
       <Block marginTop={4} />
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={REGISTER_PERSONALIZED_ADDRESS_ROUTE} variant="body1" color="primary" weight="light">
+      <Typography id={REGISTER_STARNAME_ROUTE} variant="body1" color="primary" weight="light">
         starname
       </Typography>
       <Block textAlign="center">
