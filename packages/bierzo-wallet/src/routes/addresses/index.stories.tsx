@@ -15,6 +15,7 @@ import {
 import { BwUsernameWithChainName } from ".";
 import AddressesTab from "./components/AddressesTab";
 import Iovnames from "./components/Iovnames";
+import ManageName from "./components/ManageName";
 import Starnames from "./components/Starnames";
 import UserAddresses from "./components/UserAddresses";
 
@@ -141,6 +142,14 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
         starnames={starnames}
         onRegisterStarname={linkTo(REGISTER_STARNAME_STORY_PATH, REGISTER_STARNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
+      />
+    </DecoratedStorybook>
+  ))
+  .add("Manage names", () => (
+    <DecoratedStorybook>
+      <ManageName
+        account={usernames[0]}
+        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
       />
     </DecoratedStorybook>
   ));
