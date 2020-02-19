@@ -61,7 +61,7 @@ function NoNameHeader(): JSX.Element {
   return (
     <Block className={classes.iovnameHeader} borderRadius={40} width={145} padding={1}>
       <Typography variant="subtitle1" weight="semibold" color="primary" align="center">
-        name*yourstarname
+        eg. anna*yourstarname
       </Typography>
     </Block>
   );
