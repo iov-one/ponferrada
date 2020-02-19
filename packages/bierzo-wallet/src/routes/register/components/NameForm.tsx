@@ -38,7 +38,7 @@ import { AddressesTableProps } from "../../../components/AddressesTable";
 import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../components/PageContent";
-import { isValidIov } from "../../../logic/account";
+import { isValidName } from "../../../logic/account";
 import { getCodecForChainId } from "../../../logic/codec";
 import { getConnectionForBns } from "../../../logic/connection";
 import { BwUsernameWithChainName } from "../../addresses";
@@ -170,29 +170,26 @@ const NameForm = ({
             return errors;
           }
 
-          const checkResult = isValidIov(username);
+          const checkResult = isValidName(username);
 
           switch (checkResult) {
-            case "not_iov":
-              errors[REGISTER_NAME_FIELD] = "Iovname must include *iov";
-              break;
             case "wrong_number_of_asterisks":
-              errors[REGISTER_NAME_FIELD] = "Iovname must include only one namespace";
+              errors[REGISTER_NAME_FIELD] = "Name must include only one namespace";
               break;
             case "too_short":
-              errors[REGISTER_NAME_FIELD] = "Iovname should be at least 3 characters";
+              errors[REGISTER_NAME_FIELD] = "Name should be at least 3 characters";
               break;
             case "too_long":
-              errors[REGISTER_NAME_FIELD] = "Iovname should be maximum 64 characters";
+              errors[REGISTER_NAME_FIELD] = "Name should be maximum 64 characters";
               break;
             case "wrong_chars":
               errors[REGISTER_NAME_FIELD] =
-                "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+                "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
               break;
             case "valid":
               break;
             default:
-              throw new Error(`"Unknown iovname validation error: ${checkResult}`);
+              throw new Error(`"Unknown name validation error: ${checkResult}`);
           }
 
           if (checkResult !== "valid") {

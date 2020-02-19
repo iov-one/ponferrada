@@ -71,11 +71,30 @@ export function isValidStarname(
   // Domain length must be at least 3 chars long
   if (domain.length < 3) return "too_short";
 
-  // Domain length must maximum 64 chars long
+  // Domain length must maximum 16 chars long
   if (domain.length > 16) return "too_long";
 
   // Must contain only allowed chars
   if (/^[a-z0-9_\-.]{3,16}/.test(starname)) return "valid";
+
+  return "wrong_chars";
+}
+
+export function isValidName(
+  starname: string,
+): "valid" | "wrong_number_of_asterisks" | "too_short" | "too_long" | "wrong_chars" {
+  const parts = starname.split("*");
+  if (parts.length !== 2) return "wrong_number_of_asterisks";
+  const name = parts[0];
+
+  // Domain length must be at least 3 chars long
+  if (name.length < 3) return "too_short";
+
+  // Domain length must maximum 64 chars long
+  if (name.length > 64) return "too_long";
+
+  // Must contain only allowed chars
+  if (/^[a-z0-9_\-.]{3,16}/.test(name)) return "valid";
 
   return "wrong_chars";
 }
