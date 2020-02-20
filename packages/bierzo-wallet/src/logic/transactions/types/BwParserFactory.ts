@@ -8,14 +8,17 @@ import {
   UnsignedTransaction,
 } from "@iov/bcp";
 import {
+  isRegisterDomainTx,
   isRegisterUsernameTx,
   isUpdateTargetsOfUsernameTx,
+  RegisterDomainTx,
   RegisterUsernameTx,
   UpdateTargetsOfUsernameTx,
 } from "@iov/bns";
 
 import { ProcessedSendTransaction } from "../../../store/notifications";
 import { BwParser, ProcessedTx } from "../types/BwParser";
+import { BwRegisterDomainParser } from "./BwRegisterDomainTx";
 import { BwRegisterUsernameParser } from "./BwRegisterUsernameTx";
 import { BwSendParser } from "./BwSendTransaction";
 import { BwUnkownParser } from "./BwUnkownTransaction";
@@ -33,6 +36,10 @@ function isProcessedUpdateUsernameTargetsTx(tx: ProcessedTx): tx is ProcessedTx<
   return isUpdateTargetsOfUsernameTx(tx.original);
 }
 
+function isProcessedRegisterDomainTx(tx: ProcessedTx): tx is ProcessedTx<RegisterDomainTx> {
+  return isRegisterDomainTx(tx.original);
+}
+
 export class BwParserFactory {
   public static getReactComponent(tx: ProcessedTx, userAddresses: readonly Address[]): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
@@ -41,6 +48,8 @@ export class BwParserFactory {
       return new BwRegisterUsernameParser().graphicalRepresentation(tx);
     } else if (isProcessedUpdateUsernameTargetsTx(tx)) {
       return new BwUpdateUsernameTargetParser().graphicalRepresentation(tx);
+    } else if (isProcessedRegisterDomainTx(tx)) {
+      return new BwRegisterDomainParser().graphicalRepresentation(tx);
     }
 
     return new BwUnkownParser().graphicalRepresentation(tx);
