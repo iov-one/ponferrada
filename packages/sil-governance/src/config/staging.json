@@ -2,7 +2,6 @@
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
   "bnsChain": {
     "chainSpec": {
-      "codecType": "bns",
       "node": "wss://rpc-private-a-x-dancenet.iov.one/",
       "chainId": "iov-dancenet",
       "name": "IOV Dancenet"

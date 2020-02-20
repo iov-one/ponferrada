@@ -2,7 +2,6 @@
   "extensionId": "gegmganblgchemddleocdoadmljledcj",
   "bnsChain": {
     "chainSpec": {
-      "codecType": "bns",
       "node": "wss://rpc-private-a-vip-mainnet.iov.one/",
       "chainId": "iov-mainnet",
       "name": "IOV Mainnet"
