@@ -3,7 +3,7 @@ import { BnsConnection, createBnsConnector } from "@iov/bns";
 import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
 import { createLiskConnector } from "@iov/lisk";
 
-import { ChainSpec, getConfig } from "../config";
+import { ChainSpec, CodecType, getConfig } from "../config";
 import { getErc20TokensConfig } from "../utils/tokens";
 
 const connections = new Map<ChainId, BlockchainConnection>();
@@ -33,33 +33,20 @@ async function establishLiskConnection(url: string, chainId: ChainId): Promise<v
   }
 }
 
-export function isBnsSpec(spec: ChainSpec): boolean {
-  return spec.codecType === "bns";
-}
-
-export function isLskSpec(spec: ChainSpec): boolean {
-  return spec.codecType === "lsk";
-}
-
-export function isEthSpec(spec: ChainSpec): boolean {
-  return spec.codecType === "eth";
-}
-
 export async function establishConnection(spec: ChainSpec): Promise<void> {
-  if (isEthSpec(spec)) {
-    return await establishEthereumConnection(spec.node, spec.chainId as ChainId, {
-      scraperApiUrl: spec.scraper,
-      erc20Tokens: spec.ethereumOptions ? getErc20TokensConfig(spec.ethereumOptions) : undefined,
-    });
+  switch (spec.codecType) {
+    case CodecType.Bns:
+      return await establishBnsConnection(spec.node, spec.chainId as ChainId);
+    case CodecType.Ethereum:
+      return await establishEthereumConnection(spec.node, spec.chainId as ChainId, {
+        scraperApiUrl: spec.scraper,
+        erc20Tokens: spec.ethereumOptions ? getErc20TokensConfig(spec.ethereumOptions) : undefined,
+      });
+    case CodecType.Lisk:
+      return await establishLiskConnection(spec.node, spec.chainId as ChainId);
+    default:
+      throw new Error("Chain spec not supported");
   }
-  if (isBnsSpec(spec)) {
-    return await establishBnsConnection(spec.node, spec.chainId as ChainId);
-  }
-  if (isLskSpec(spec)) {
-    return await establishLiskConnection(spec.node, spec.chainId as ChainId);
-  }
-
-  throw new Error("Chain spec not supported");
 }
 
 export function getActiveConnections(): readonly BlockchainConnection[] {
@@ -72,7 +59,7 @@ export function getConnectionForChainId(chainId: ChainId): BlockchainConnection 
 
 export async function getConnectionForBns(): Promise<BnsConnection> {
   const chains = (await getConfig()).chains;
-  const bnsChain = chains.find(chain => isBnsSpec(chain.chainSpec));
+  const bnsChain = chains.find(chain => chain.chainSpec.codecType === CodecType.Bns);
   if (bnsChain) {
     return getConnectionForChainId(bnsChain.chainSpec.chainId as ChainId) as BnsConnection;
   }

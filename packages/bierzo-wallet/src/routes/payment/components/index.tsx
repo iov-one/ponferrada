@@ -3,8 +3,7 @@ import { Back, Block, Button, Form, useForm } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
-import { ConfigErc20Options, getConfig } from "../../../config";
-import { isEthSpec } from "../../../logic/connection";
+import { CodecType, ConfigErc20Options, getConfig } from "../../../config";
 import { RootState } from "../../../store/reducers";
 import CurrencyToSend from "./CurrencyToSend";
 import ReceiverAddress from "./ReceiverAddress";
@@ -33,7 +32,7 @@ const Layout = ({
 
   const onTokenSelectionControl = async (ticker: TokenTicker): Promise<void> => {
     const chains = (await getConfig()).chains;
-    const ethChain = chains.find(chain => isEthSpec(chain.chainSpec));
+    const ethChain = chains.find(chain => chain.chainSpec.codecType === CodecType.Ethereum);
     const erc20s = ethChain?.chainSpec?.ethereumOptions?.erc20s;
     if (erc20s) {
       const erc20Tokens = erc20s as ConfigErc20Options[];

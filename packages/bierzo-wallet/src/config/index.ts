@@ -5,6 +5,13 @@ import { getCodecForChainId } from "../logic/codec";
 import { ExtendedIdentity } from "../store/identities";
 import developmentConfig from "./development.json";
 
+/** The string value must match the codec type in the config file */
+export enum CodecType {
+  Bns = "bns",
+  Ethereum = "eth",
+  Lisk = "lsk",
+}
+
 export interface Config {
   readonly extensionId: string;
   readonly extensionLink: string;
@@ -45,7 +52,7 @@ export function isChainConfigWithFaucet(chain: ChainConfig): chain is ChainConfi
 }
 
 export interface ChainSpec {
-  readonly codecType: string;
+  readonly codecType: CodecType;
   readonly chainId: string;
   readonly name: string;
   readonly node: string;
