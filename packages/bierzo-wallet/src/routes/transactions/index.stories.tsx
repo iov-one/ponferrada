@@ -1,5 +1,5 @@
 import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
-import { RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import { RegisterDomainTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
 import { Sha256 } from "@iov/crypto";
 import { Encoding, Uint64 } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";
@@ -65,6 +65,23 @@ function makeExampleLiskTransactionId(): TransactionId {
   return Uint64.fromNumber(2347199254740991 + txCount++).toString() as TransactionId;
 }
 
+const incomingNewDomainTransaction: ProcessedTx<RegisterDomainTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/register_domain",
+    chainId: chainIdIov,
+    domain: "test",
+    admin: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+    hasSuperuser: true,
+    msgFees: [],
+    accountRenew: 2 * 3600,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
 const incomingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2018-01-01T03:02:01.763Z"),
   id: makeExampleEthTransactionId(),
@@ -114,7 +131,9 @@ const parsedTxs: readonly (
   | ProcessedSendTransaction
   | ProcessedTx<RegisterUsernameTx>
   | ProcessedTx<VoteTx>
+  | ProcessedTx<RegisterDomainTx>
 )[] = [
+  incomingNewDomainTransaction,
   incomingSendTransaction,
   voteTx,
   {
