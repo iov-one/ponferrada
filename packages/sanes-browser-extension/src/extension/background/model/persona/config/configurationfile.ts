@@ -3,7 +3,12 @@ import { singleton } from "ui-logic";
 
 import { getBnsRpc } from "../../../../../utils/localstorage/bnsRpc";
 
-export type CodecString = "bns" | "lsk" | "eth";
+/** The string value must match the codec type in the config file */
+export enum CodecType {
+  Bns = "bns",
+  Ethereum = "eth",
+  Lisk = "lsk",
+}
 
 export interface ConfigErc20Options {
   readonly name?: string;
@@ -17,7 +22,7 @@ export interface ConfigEthereumOptions {
 }
 
 export interface ChainSpec {
-  readonly codecType: CodecString;
+  readonly codecType: CodecType;
   readonly node: string;
   readonly name: string;
   readonly chainId: ChainId;

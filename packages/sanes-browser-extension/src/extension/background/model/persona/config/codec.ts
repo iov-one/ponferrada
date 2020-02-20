@@ -6,26 +6,7 @@ import { HdPaths } from "@iov/keycontrol";
 import { createLiskConnector } from "@iov/lisk";
 
 import { getErc20TokensConfig } from "../../../../../utils/tokens";
-import { ChainSpec, CodecString } from "./configurationfile";
-
-export enum CodecType {
-  Bns,
-  Lisk,
-  Ethereum,
-}
-
-export function codecTypeFromString(input: CodecString): CodecType {
-  switch (input) {
-    case "bns":
-      return CodecType.Bns;
-    case "lsk":
-      return CodecType.Lisk;
-    case "eth":
-      return CodecType.Ethereum;
-    default:
-      throw new Error(`Codec '${input}' not supported`);
-  }
-}
+import { ChainSpec, CodecType } from "./configurationfile";
 
 export function algorithmForCodec(codec: CodecType): Algorithm {
   switch (codec) {
@@ -55,8 +36,8 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
   return pathBuilder;
 }
 
-export function chainConnector(codec: CodecType, chainSpec: ChainSpec): ChainConnector {
-  switch (codec) {
+export function chainConnector(chainSpec: ChainSpec): ChainConnector {
+  switch (chainSpec.codecType) {
     case CodecType.Bns:
       return createBnsConnector(chainSpec.node, chainSpec.chainId);
     case CodecType.Lisk:

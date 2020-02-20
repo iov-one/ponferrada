@@ -3,23 +3,19 @@ import { bnsCodec } from "@iov/bns";
 import { ethereumCodec } from "@iov/ethereum";
 import { liskCodec } from "@iov/lisk";
 
-import { ChainSpec, getConfig } from "../config";
-import { isBnsSpec, isEthSpec, isLskSpec } from "./connection";
+import { ChainSpec, CodecType, getConfig } from "../config";
 
 export function getCodec(spec: ChainSpec): TxCodec {
-  if (isEthSpec(spec)) {
-    return ethereumCodec;
+  switch (spec.codecType) {
+    case CodecType.Bns:
+      return bnsCodec;
+    case CodecType.Ethereum:
+      return ethereumCodec;
+    case CodecType.Lisk:
+      return liskCodec;
+    default:
+      throw new Error("Unsupported codecType for chain spec");
   }
-
-  if (isBnsSpec(spec)) {
-    return bnsCodec;
-  }
-
-  if (isLskSpec(spec)) {
-    return liskCodec;
-  }
-
-  throw new Error("Unsupported codecType for chain spec");
 }
 
 export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
