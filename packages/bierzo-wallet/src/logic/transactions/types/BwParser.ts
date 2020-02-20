@@ -3,6 +3,7 @@ import {
   BlockchainConnection,
   ConfirmedTransaction,
   FailedTransaction,
+  isFailedTransaction,
   TransactionId,
   UnsignedTransaction,
 } from "@iov/bcp";
@@ -15,11 +16,24 @@ export interface ProcessedTx<T extends UnsignedTransaction = UnsignedTransaction
 }
 
 export abstract class BwParser<K extends UnsignedTransaction> {
-  abstract async parse(
+  public async parse(
     conn: BlockchainConnection,
     transaction: ConfirmedTransaction<K> | FailedTransaction,
-    currentUserAddress: Address,
-  ): Promise<ProcessedTx<K>>;
+    _: Address,
+  ): Promise<ProcessedTx<K>> {
+    if (isFailedTransaction(transaction)) {
+      throw new Error("Not supported error txs for now");
+    }
+
+    const header = await conn.getBlockHeader(transaction.height);
+    const time = header.time;
+
+    return {
+      id: transaction.transactionId,
+      time,
+      original: transaction.transaction,
+    };
+  }
   abstract graphicalRepresentation(tx: ProcessedTx<K>, addresses: Address[]): JSX.Element;
   abstract headerRepresentation(tx: ProcessedTx<K>, lastOne: boolean): JSX.Element;
 }
