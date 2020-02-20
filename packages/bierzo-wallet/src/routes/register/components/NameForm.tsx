@@ -1,11 +1,13 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { JsonRpcRequest } from "@iov/jsonrpc";
+import { FieldValidator } from "final-form";
 import {
   Back,
   BillboardContext,
   Block,
   Button,
+  FieldInputValue,
   Form,
   FormValues,
   Hairline,
@@ -17,7 +19,6 @@ import {
   Tooltip,
   Typography,
   useForm,
-  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
@@ -39,8 +40,6 @@ import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerB
 import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../components/PageContent";
 import { isValidName } from "../../../logic/account";
-import { getCodecForChainId } from "../../../logic/codec";
-import { getConnectionForBns } from "../../../logic/connection";
 import { BwUsernameWithChainName } from "../../addresses";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
@@ -95,113 +94,100 @@ const NameForm = ({
     return getAddressItems(chainAddresses);
   }, [chainAddresses, iovnameAddresses]);
 
-  const onSubmitCallback = React.useCallback(
-    (values: object) => {
-      const onSubmit = async (values: object): Promise<void> => {
-        const formValues = values as FormValues;
+  const onSubmit = async (values: object): Promise<void> => {
+    const formValues = values as FormValues;
 
-        const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-        const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+    const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
 
-        try {
-          let request: JsonRpcRequest;
-          if (iovnameAddresses) {
-            request = await generateReplaceAccountTargetsTxRequest(
-              bnsIdentity,
-              domain,
-              name,
-              addressesToRegister,
-            );
-          } else {
-            request = await generateRegisterAccountTxRequest(
-              bnsIdentity,
-              domain,
-              name,
-              bnsCodec.identityToAddress(bnsIdentity),
-              addressesToRegister,
-            );
-          }
-          if (rpcEndpoint.type === "extension") {
-            billboard.show(
-              <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-              "start",
-              "flex-end",
-              0,
-            );
-          } else {
-            billboard.show(
-              <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-              "center",
-              "center",
-              0,
-            );
-          }
-          const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-          if (transactionId === undefined) {
-            toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-          } else if (transactionId === null) {
-            toast.show("Request rejected", ToastVariant.ERROR);
-          } else {
-            setTransactionId(transactionId);
-          }
-        } catch (error) {
-          console.error(error);
-          toast.show("An error occurred", ToastVariant.ERROR);
-        } finally {
-          billboard.close();
-        }
-      };
+    try {
+      let request: JsonRpcRequest;
+      if (iovnameAddresses) {
+        request = await generateReplaceAccountTargetsTxRequest(
+          bnsIdentity,
+          domain,
+          name,
+          addressesToRegister,
+        );
+      } else {
+        request = await generateRegisterAccountTxRequest(
+          bnsIdentity,
+          domain,
+          name,
+          bnsCodec.identityToAddress(bnsIdentity),
+          addressesToRegister,
+        );
+      }
+      if (rpcEndpoint.type === "extension") {
+        billboard.show(
+          <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "start",
+          "flex-end",
+          0,
+        );
+      } else {
+        billboard.show(
+          <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "center",
+          "center",
+          0,
+        );
+      }
+      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+      if (transactionId === undefined) {
+        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      } else if (transactionId === null) {
+        toast.show("Request rejected", ToastVariant.ERROR);
+      } else {
+        setTransactionId(transactionId);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
+    } finally {
+      billboard.close();
+    }
+  };
 
-      onSubmit(values);
-    },
-    [billboard, bnsIdentity, chainAddresses, iovnameAddresses, rpcEndpoint, setTransactionId, toast],
-  );
+  const nameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
+    if (!iovnameAddresses) {
+      if (!value) {
+        return "Required";
+      }
 
-  const validateCallback = React.useCallback(
+      const checkResult = isValidName(value);
+
+      switch (checkResult) {
+        case "wrong_number_of_asterisks":
+          return "Name must include only one namespace";
+        case "too_short":
+          return "Name should be at least 3 characters";
+        case "too_long":
+          return "Name should be maximum 64 characters";
+        case "wrong_chars":
+          return "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+        case "valid":
+          break;
+        default:
+          throw new Error(`"Unknown name validation error: ${checkResult}`);
+      }
+    }
+
+    return undefined;
+  };
+
+  /* const validateNameExistsAndAddresses = React.useCallback(
     (values: object) => {
       const validate = async (values: object): Promise<object> => {
         const formValues = values as FormValues;
         const errors: ValidationError = {};
 
-        if (!iovnameAddresses) {
-          const username = formValues[REGISTER_NAME_FIELD];
-          if (!username) {
-            errors[REGISTER_NAME_FIELD] = "Required";
-            return errors;
-          }
-
-          const checkResult = isValidName(username);
-
-          switch (checkResult) {
-            case "wrong_number_of_asterisks":
-              errors[REGISTER_NAME_FIELD] = "Name must include only one namespace";
-              break;
-            case "too_short":
-              errors[REGISTER_NAME_FIELD] = "Name should be at least 3 characters";
-              break;
-            case "too_long":
-              errors[REGISTER_NAME_FIELD] = "Name should be maximum 64 characters";
-              break;
-            case "wrong_chars":
-              errors[REGISTER_NAME_FIELD] =
-                "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-              break;
-            case "valid":
-              break;
-            default:
-              throw new Error(`"Unknown name validation error: ${checkResult}`);
-          }
-
-          if (checkResult !== "valid") {
-            return errors;
-          }
-
-          const connection = await getConnectionForBns();
-          const usernames = await connection.getUsernames({ username });
-          if (usernames.length > 0) {
-            errors[REGISTER_NAME_FIELD] = "Personalized address already exists";
-            return errors;
-          }
+        const connection = await getConnectionForBns();
+        const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
+        const accounts = await connection.getAccounts({ domain: domain });
+        if (accounts.find(account => account.name === name)) {
+          errors[REGISTER_NAME_FIELD] = "Name already exists";
+          return errors;
         }
 
         const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
@@ -223,13 +209,13 @@ const NameForm = ({
 
       validate(values);
     },
-    [chainAddresses, iovnameAddresses],
-  );
+    [chainAddresses],
+  ); */
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating } = useForm({
-    onSubmit: onSubmitCallback,
-    validate: validateCallback,
+    onSubmit,
+    // validate: validateNameExistsAndAddresses,
     initialValues,
   });
 
@@ -292,6 +278,7 @@ const NameForm = ({
                 <TextField
                   name={REGISTER_NAME_FIELD}
                   form={form}
+                  validate={nameValidator}
                   placeholder="eg. yourname*iov"
                   fullWidth
                   margin="none"

@@ -1,10 +1,12 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
+import { FieldValidator } from "final-form";
 import {
   Back,
   BillboardContext,
   Block,
   Button,
+  FieldInputValue,
   Form,
   FormValues,
   Hairline,
@@ -16,7 +18,6 @@ import {
   Tooltip,
   Typography,
   useForm,
-  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
@@ -38,8 +39,6 @@ import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerB
 import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../components/PageContent";
 import { isValidIov } from "../../../logic/account";
-import { getCodecForChainId } from "../../../logic/codec";
-import { getConnectionForBns } from "../../../logic/connection";
 import { BwUsernameWithChainName } from "../../addresses";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
@@ -94,112 +93,98 @@ const IovnameForm = ({
     return getAddressItems(chainAddresses);
   }, [chainAddresses, iovnameAddresses]);
 
-  const onSubmitCallback = React.useCallback(
-    (values: object) => {
-      const onSubmit = async (values: object): Promise<void> => {
-        const formValues = values as FormValues;
+  const onSubmit = async (values: object): Promise<void> => {
+    const formValues = values as FormValues;
 
-        const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+    const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
-        try {
-          let request: JsonRpcRequest;
-          if (iovnameAddresses) {
-            request = await generateUpdateUsernameTxRequest(
-              bnsIdentity,
-              iovnameAddresses.username,
-              addressesToRegister,
-            );
-          } else {
-            request = await generateRegisterUsernameTxRequest(
-              bnsIdentity,
-              formValues[REGISTER_IOVNAME_FIELD],
-              addressesToRegister,
-            );
-          }
-          if (rpcEndpoint.type === "extension") {
-            billboard.show(
-              <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-              "start",
-              "flex-end",
-              0,
-            );
-          } else {
-            billboard.show(
-              <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-              "center",
-              "center",
-              0,
-            );
-          }
-          const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-          if (transactionId === undefined) {
-            toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-          } else if (transactionId === null) {
-            toast.show("Request rejected", ToastVariant.ERROR);
-          } else {
-            setTransactionId(transactionId);
-          }
-        } catch (error) {
-          console.error(error);
-          toast.show("An error occurred", ToastVariant.ERROR);
-        } finally {
-          billboard.close();
-        }
-      };
+    try {
+      let request: JsonRpcRequest;
+      if (iovnameAddresses) {
+        request = await generateUpdateUsernameTxRequest(
+          bnsIdentity,
+          iovnameAddresses.username,
+          addressesToRegister,
+        );
+      } else {
+        request = await generateRegisterUsernameTxRequest(
+          bnsIdentity,
+          formValues[REGISTER_IOVNAME_FIELD],
+          addressesToRegister,
+        );
+      }
+      if (rpcEndpoint.type === "extension") {
+        billboard.show(
+          <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "start",
+          "flex-end",
+          0,
+        );
+      } else {
+        billboard.show(
+          <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "center",
+          "center",
+          0,
+        );
+      }
+      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+      if (transactionId === undefined) {
+        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      } else if (transactionId === null) {
+        toast.show("Request rejected", ToastVariant.ERROR);
+      } else {
+        setTransactionId(transactionId);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
+    } finally {
+      billboard.close();
+    }
+  };
 
-      onSubmit(values);
-    },
-    [billboard, bnsIdentity, chainAddresses, iovnameAddresses, rpcEndpoint, setTransactionId, toast],
-  );
+  const iovnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
+    if (!iovnameAddresses) {
+      if (!value) {
+        return "Required";
+      }
 
-  const validateCallback = React.useCallback(
+      const checkResult = isValidIov(value);
+
+      switch (checkResult) {
+        case "not_iov":
+          return "Iovname must end with *iov";
+        case "wrong_number_of_asterisks":
+          return "Iovname must include only one namespace";
+        case "too_short":
+          return "Iovname should be at least 3 characters";
+        case "too_long":
+          return "Iovname should be maximum 64 characters";
+        case "wrong_chars":
+          return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+        case "valid":
+          break;
+        default:
+          throw new Error(`"Unknown iovname validation error: ${checkResult}`);
+      }
+    }
+
+    return undefined;
+  };
+
+  /* const validateIovnameExistsAndAddresses = React.useCallback(
     (values: object) => {
       const validate = async (values: object): Promise<object> => {
         const formValues = values as FormValues;
         const errors: ValidationError = {};
 
-        if (!iovnameAddresses) {
-          const username = formValues[REGISTER_IOVNAME_FIELD];
-          if (!username) {
-            errors[REGISTER_IOVNAME_FIELD] = "Required";
-            return errors;
-          }
-
-          const checkResult = isValidIov(username);
-
-          switch (checkResult) {
-            case "not_iov":
-              errors[REGISTER_IOVNAME_FIELD] = "Iovname must include *iov";
-              break;
-            case "wrong_number_of_asterisks":
-              errors[REGISTER_IOVNAME_FIELD] = "Iovname must include only one namespace";
-              break;
-            case "too_short":
-              errors[REGISTER_IOVNAME_FIELD] = "Iovname should be at least 3 characters";
-              break;
-            case "too_long":
-              errors[REGISTER_IOVNAME_FIELD] = "Iovname should be maximum 64 characters";
-              break;
-            case "wrong_chars":
-              errors[REGISTER_IOVNAME_FIELD] =
-                "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-              break;
-            case "valid":
-              break;
-            default:
-              throw new Error(`"Unknown iovname validation error: ${checkResult}`);
-          }
-
-          if (checkResult !== "valid") {
-            return errors;
-          }
-
-          const connection = await getConnectionForBns();
-          const usernames = await connection.getUsernames({ username });
-          if (usernames.length > 0) {
-            errors[REGISTER_IOVNAME_FIELD] = "Personalized address already exists";
-            return errors;
-          }
+        const connection = await getConnectionForBns();
+        const username = formValues[REGISTER_IOVNAME_FIELD];
+        const usernames = await connection.getUsernames({ username: username });
+        if (usernames.length > 0) {
+          errors[REGISTER_IOVNAME_FIELD] = "Iovname already exists";
+          return errors;
         }
 
         const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
@@ -221,13 +206,13 @@ const IovnameForm = ({
 
       validate(values);
     },
-    [chainAddresses, iovnameAddresses],
-  );
+    [chainAddresses],
+  ); */
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating } = useForm({
-    onSubmit: onSubmitCallback,
-    validate: validateCallback,
+    onSubmit,
+    // validate: validateIovnameExistsAndAddresses,
     initialValues,
   });
 
@@ -290,6 +275,7 @@ const IovnameForm = ({
                 <TextField
                   name={REGISTER_IOVNAME_FIELD}
                   form={form}
+                  validate={iovnameValidator}
                   placeholder="eg. yourname*iov"
                   fullWidth
                   margin="none"

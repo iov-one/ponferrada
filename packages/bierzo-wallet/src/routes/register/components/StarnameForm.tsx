@@ -1,9 +1,11 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
+import { FieldValidator } from "final-form";
 import {
   Back,
   BillboardContext,
   Block,
   Button,
+  FieldInputValue,
   Form,
   FormValues,
   Image,
@@ -14,7 +16,6 @@ import {
   Tooltip,
   Typography,
   useForm,
-  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
@@ -25,7 +26,6 @@ import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerB
 import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../components/PageContent";
 import { isValidStarname } from "../../../logic/account";
-import { getConnectionForBns } from "../../../logic/connection";
 import { BwUsernameWithChainName } from "../../addresses";
 import shield from "../assets/shield.svg";
 
@@ -71,111 +71,94 @@ const StarnameForm = ({
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
-  const onSubmitCallback = React.useCallback(
-    (values: object) => {
-      const onSubmit = async (values: object): Promise<void> => {
-        const formValues = values as FormValues;
-        const domain = formValues[REGISTER_STARNAME_FIELD].split("*")[1];
+  const onSubmit = async (values: object): Promise<void> => {
+    const formValues = values as FormValues;
+    const domain = formValues[REGISTER_STARNAME_FIELD].split("*")[1];
 
-        try {
-          const request = await generateRegisterDomainTxRequest(bnsIdentity, domain);
-          if (rpcEndpoint.type === "extension") {
-            billboard.show(
-              <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-              "start",
-              "flex-end",
-              0,
-            );
-          } else {
-            billboard.show(
-              <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-              "center",
-              "center",
-              0,
-            );
-          }
-          const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-          if (transactionId === undefined) {
-            toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-          } else if (transactionId === null) {
-            toast.show("Request rejected", ToastVariant.ERROR);
-          } else {
-            setTransactionId(transactionId);
-          }
-        } catch (error) {
-          console.error(error);
-          toast.show("An error occurred", ToastVariant.ERROR);
-        } finally {
-          billboard.close();
-        }
-      };
+    try {
+      const request = await generateRegisterDomainTxRequest(bnsIdentity, domain);
+      if (rpcEndpoint.type === "extension") {
+        billboard.show(
+          <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "start",
+          "flex-end",
+          0,
+        );
+      } else {
+        billboard.show(
+          <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+          "center",
+          "center",
+          0,
+        );
+      }
+      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+      if (transactionId === undefined) {
+        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+      } else if (transactionId === null) {
+        toast.show("Request rejected", ToastVariant.ERROR);
+      } else {
+        setTransactionId(transactionId);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.show("An error occurred", ToastVariant.ERROR);
+    } finally {
+      billboard.close();
+    }
+  };
 
-      onSubmit(values);
-    },
-    [billboard, bnsIdentity, rpcEndpoint, setTransactionId, toast],
-  );
+  const starnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
+    if (!iovnameAddresses) {
+      if (!value) {
+        return "Required";
+      }
 
-  const validateCallback = React.useCallback(
-    (values: object) => {
-      const validate = async (values: object): Promise<object> => {
-        const formValues = values as FormValues;
-        const errors: ValidationError = {};
+      const checkResult = isValidStarname(value);
 
-        if (!iovnameAddresses) {
-          const username = formValues[REGISTER_STARNAME_FIELD];
-          if (!username) {
-            errors[REGISTER_STARNAME_FIELD] = "Required";
-            return errors;
-          }
+      switch (checkResult) {
+        case "not_starname":
+          return "Starname must include namespace after '*'";
+        case "wrong_number_of_asterisks":
+          return "Starname must include only one namespace";
+        case "too_short":
+          return "Starname should be at least 3 characters";
+        case "too_long":
+          return "Starname should be maximum 16 characters";
+        case "wrong_chars":
+          return "Starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+        case "valid":
+          break;
+        default:
+          throw new Error(`"Unknown starname validation error: ${checkResult}`);
+      }
+    }
 
-          const checkResult = isValidStarname(username);
+    return undefined;
+  };
 
-          switch (checkResult) {
-            case "not_starname":
-              errors[REGISTER_STARNAME_FIELD] = "Starname must have format *starname";
-              break;
-            case "wrong_number_of_asterisks":
-              errors[REGISTER_STARNAME_FIELD] = "Starname must include only one namespace";
-              break;
-            case "too_short":
-              errors[REGISTER_STARNAME_FIELD] = "Starname should be at least 3 characters";
-              break;
-            case "too_long":
-              errors[REGISTER_STARNAME_FIELD] = "Starname should be maximum 16 characters";
-              break;
-            case "wrong_chars":
-              errors[REGISTER_STARNAME_FIELD] =
-                "Starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-              break;
-            case "valid":
-              break;
-            default:
-              throw new Error(`"Unknown starname validation error: ${checkResult}`);
-          }
+  /* const validateStarnameExists = React.useCallback((values: object) => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
 
-          if (checkResult !== "valid") {
-            return errors;
-          }
-
-          const connection = await getConnectionForBns();
-          const usernames = await connection.getUsernames({ username });
-          if (usernames.length > 0) {
-            errors[REGISTER_STARNAME_FIELD] = "Personalized address already exists";
-            return errors;
-          }
-        }
-
+      const connection = await getConnectionForBns();
+      const noAsteriskDomain = value.substring(1);
+      const domains = await connection.getDomains({ name: noAsteriskDomain });
+      if (domains.length > 0) {
+        errors[REGISTER_STARNAME_FIELD] = "Starname already exists";
         return errors;
-      };
+      }
 
-      validate(values);
-    },
-    [iovnameAddresses],
-  );
+      return errors;
+    };
+
+    validate(values);
+  }, []); */
 
   const { form, handleSubmit, invalid, submitting, validating } = useForm({
-    onSubmit: onSubmitCallback,
-    validate: validateCallback,
+    onSubmit,
+    // validate: validateStarnameExists,
   });
 
   const buttons = (
@@ -237,6 +220,7 @@ const StarnameForm = ({
                 <TextField
                   name={REGISTER_STARNAME_FIELD}
                   form={form}
+                  validate={starnameValidator}
                   placeholder="eg. *starname"
                   fullWidth
                   margin="none"
