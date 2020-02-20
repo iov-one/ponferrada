@@ -66,25 +66,28 @@ function getWindowWithConfig(): WindowWithConfig {
   return (window as Window) as WindowWithConfig;
 }
 
-const loadConfigurationFile = async (): Promise<Config> => {
+async function loadConfigurationFile(): Promise<Config> {
   if (process.env.NODE_ENV === "test") {
     return getWindowWithConfig().developmentConfig;
   }
 
+  // We don't have type checks that ensure the runtime value match
+  let uncheckedConfig: any;
+
   if (process.env.NODE_ENV === "development") {
     // This is the `yarn start` case. Only the development config is supported here.
     // If you need to use a different configuration, use yarn build + docker build + docker run.
-    return developmentConfig;
+    uncheckedConfig = developmentConfig;
+  } else {
+    const response = await fetch("/config/conf.json");
+    if (!response.ok) {
+      throw new Error(`Failed to fetch URL. Response status code: ${response.status}`);
+    }
+    uncheckedConfig = await response.json();
   }
 
-  const response = await fetch("/config/conf.json");
-  if (!response.ok) {
-    throw new Error(`Failed to fetch URL. Response status code: ${response.status}`);
-  }
-
-  const json = await response.json();
-  return json;
-};
+  return uncheckedConfig;
+}
 
 export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurationFile);
 
