@@ -53,7 +53,8 @@ export function isValidIov(
   // Username length must maximum 64 chars long
   if (name.length > 64) return "too_long";
 
-  // Must contain only allowed chars
+  /* Must contain only allowed chars as per /scripts/bnsd/genesis_app_state.json:
+  conf: {username: {valid_username_name, valid_username_label}} */
   if (/^[a-z0-9_\-.]{3,64}\*iov$/.test(username)) return "valid";
 
   return "wrong_chars";
@@ -74,8 +75,9 @@ export function isValidStarname(
   // Domain length must maximum 16 chars long
   if (domain.length > 16) return "too_long";
 
-  // Must contain only allowed chars
-  if (/^[a-z0-9_\-.]{3,16}/.test(starname)) return "valid";
+  /* Must contain only allowed chars as per /scripts/bnsd/genesis_app_state.json:
+  conf: {account: {valid_domain}} plus initial asterisk */
+  if (/^\*[a-z0-9\-_]{3,16}$/.test(starname)) return "valid";
 
   return "wrong_chars";
 }
@@ -93,8 +95,9 @@ export function isValidName(
   // Domain length must maximum 64 chars long
   if (name.length > 64) return "too_long";
 
-  // Must contain only allowed chars
-  if (/^[a-z0-9_\-.]{3,16}/.test(name)) return "valid";
+  /* Must contain only allowed chars as per /scripts/bnsd/genesis_app_state.json:
+  conf: {account: {valid_name, valid_domain}} plus asterisk separator */
+  if (/^[a-z0-9\-_.]{3,64}\*[a-z0-9\-_]{3,16}$/.test(starname)) return "valid";
 
   return "wrong_chars";
 }
