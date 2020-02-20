@@ -7,5 +7,6 @@ export const ADDRESSES_ROUTE = "/addresses";
 export const REGISTER_IOVNAME_ROUTE = "/iovname/register";
 export const REGISTER_STARNAME_ROUTE = "/starname/register";
 export const REGISTER_NAME_ROUTE = "/name/register";
+export const ADDRESS_MANAGE_ROUTE = "/address-manage";
 export const TERMS_ROUTE = "/terms";
 export const POLICY_ROUTE = "/policy";

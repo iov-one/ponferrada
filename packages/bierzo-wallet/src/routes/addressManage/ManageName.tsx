@@ -14,15 +14,16 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import { BwUsernameWithChainName } from "..";
-import { history } from "../..";
-import AddressesTable from "../../../components/AddressesTable";
-import copy from "../../../components/AddressesTable/assets/copy.svg";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { AddressesTooltipHeader, TooltipContent } from "../../registerName/components";
+import { history } from "..";
+import AddressesTable from "../../components/AddressesTable";
+import copy from "../../components/AddressesTable/assets/copy.svg";
+import { BwUsernameWithChainName } from "../addresses";
+import { REGISTER_IOVNAME_ROUTE } from "../paths";
+import { AddressesTooltipHeader, TooltipContent } from "../register";
 
 interface Props {
   readonly account: BwUsernameWithChainName;
+  readonly menuItems: readonly ActionMenuItem[];
   readonly onRegisterUsername: () => void;
 }
 
@@ -35,19 +36,12 @@ const usePaper = makeStyles({
   },
 });
 
-const menuItems: ActionMenuItem[] = [
-  { title: "Renew", action: () => console.log("Renew") },
-  { title: "Transfer iovname", action: () => console.log("Transfer iovname") },
-  { title: "Delete iovname", action: () => console.log("Delete iovname") },
-];
-
 const useStyles = makeStyles({
   link: {
     cursor: "pointer",
   },
 });
-
-const ManageName: React.FunctionComponent<Props> = ({ account, onRegisterUsername }) => {
+const ManageName: React.FunctionComponent<Props> = ({ account, menuItems, onRegisterUsername }) => {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
@@ -58,7 +52,7 @@ const ManageName: React.FunctionComponent<Props> = ({ account, onRegisterUsernam
   };
 
   const onEdit = (): void => {
-    history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE, account);
+    history.push(REGISTER_IOVNAME_ROUTE, account);
   };
 
   return (

@@ -4,9 +4,11 @@ import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
 import Addresses from "./addresses";
+import AddressManage from "./addressManage";
 import Balance from "./balance";
 import Login from "./login";
 import {
+  ADDRESS_MANAGE_ROUTE,
   ADDRESSES_ROUTE,
   BALANCE_ROUTE,
   LOGIN_ROUTE,
@@ -34,6 +36,7 @@ const Routes = (): JSX.Element => (
       <RequireLogin>
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
+        <Route exact path={ADDRESS_MANAGE_ROUTE} component={AddressManage} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <Register entity={ToRegister.Iovname} />} />
