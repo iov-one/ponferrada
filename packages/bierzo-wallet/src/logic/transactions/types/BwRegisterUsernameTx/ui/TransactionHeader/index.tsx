@@ -6,8 +6,8 @@ import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
 
 import { itemBackground } from "../../../../../../theme/css";
+import sendTx from "../../../../assets/transactionSend.svg";
 import { ProcessedTx } from "../../../../types/BwParser";
-import sendTx from "../assets/transactionSend.svg";
 import Msg from "./MsgSuccess";
 
 interface ItemProps {

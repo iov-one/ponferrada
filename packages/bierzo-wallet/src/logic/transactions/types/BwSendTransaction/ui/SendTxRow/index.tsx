@@ -9,9 +9,9 @@ import { getAddressPrefix } from "../../../../../../routes/transactions/componen
 import { ProcessedSendTransaction } from "../../../../../../store/notifications";
 import { getBorderColor } from "../../../../../../theme/css";
 import { formatDate } from "../../../../../../utils/date";
-import dropdownArrow from "../assets/dropdownArrow.svg";
-import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
-import txIcon from "../assets/user.svg";
+import dropdownArrow from "../../../../assets/dropdownArrow.svg";
+import dropdownArrowClose from "../../../../assets/dropdownArrowClose.svg";
+import txIcon from "../../../../assets/user.svg";
 import SendTxDetails from "./Details";
 
 const useStyles = makeStyles((theme: Theme) => ({
