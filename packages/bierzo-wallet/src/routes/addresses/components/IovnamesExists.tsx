@@ -54,9 +54,9 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
         };
 
         return (
-          <React.Fragment>
+          <React.Fragment key={iovname.username}>
             <Block marginTop={3} />
-            <Paper key={iovname.username} classes={paperClasses}>
+            <Paper classes={paperClasses}>
               <Block
                 width={650}
                 padding={5}
