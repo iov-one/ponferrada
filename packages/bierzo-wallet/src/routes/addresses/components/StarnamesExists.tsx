@@ -53,9 +53,9 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
         };
 
         return (
-          <React.Fragment>
+          <React.Fragment key={`${starname.name}*${starname.domain}`}>
             <Block marginTop={3} />
-            <Paper key={`${starname.name}*${starname.domain}`} classes={paperClasses}>
+            <Paper classes={paperClasses}>
               <Block
                 width={650}
                 padding={5}
