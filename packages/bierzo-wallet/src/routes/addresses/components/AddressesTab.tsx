@@ -58,7 +58,7 @@ function AddressesTab({
   chainAddresses,
   usernames,
   starnames,
-  onRegisterUsername,
+  onRegisterIovname,
   onRegisterStarname,
   rpcEndpointType,
 }: AddressesTableProps & IovnamesProps & StarnamesProps): JSX.Element {
@@ -91,7 +91,7 @@ function AddressesTab({
       {selectedTab === "iovnames" && (
         <Iovnames
           usernames={usernames}
-          onRegisterUsername={onRegisterUsername}
+          onRegisterIovname={onRegisterIovname}
           rpcEndpointType={rpcEndpointType}
         />
       )}
