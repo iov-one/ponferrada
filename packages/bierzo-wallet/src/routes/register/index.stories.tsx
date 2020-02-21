@@ -7,10 +7,10 @@ import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
 import ConfirmRegistration from "./components/ConfirmRegistration";
 
-export const REGISTER_USERNAME_STORY_PATH = `${bierzoRoot}/Register Username`;
-export const REGISTER_USERNAME_REGISTRATION_STORY_PATH = "Register Username";
+export const REGISTER_IOVNAME_STORY_PATH = `${bierzoRoot}/Register Iovname`;
+export const REGISTER_IOVNAME_REGISTRATION_STORY_PATH = "Register Iovname";
 // const REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH = "Register Username without fee";
-const REGISTER_USERNAME_CONFIRMATION_STORY_PATH = "Registration confirmation";
+const REGISTER_IOVNAME_CONFIRMATION_STORY_PATH = "Registration confirmation";
 
 /* const addresses: ChainAddressPairWithName[] = [
   {
@@ -39,7 +39,7 @@ const fee: Fee = {
   tokens: stringToAmount("5", iov),
 }; */
 
-storiesOf(REGISTER_USERNAME_STORY_PATH, module)
+storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   // TODO adapt this stories to new components
   /* .add(REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
@@ -62,7 +62,7 @@ storiesOf(REGISTER_USERNAME_STORY_PATH, module)
       />
     </DecoratedStorybook>
   )) */
-  .add(REGISTER_USERNAME_CONFIRMATION_STORY_PATH, () => (
+  .add(REGISTER_IOVNAME_CONFIRMATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <ConfirmRegistration
         transactionId={"0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e" as TransactionId}

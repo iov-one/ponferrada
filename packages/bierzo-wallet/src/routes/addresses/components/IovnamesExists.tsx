@@ -20,7 +20,7 @@ import { AddressesTooltipHeader, TooltipContent } from "../../register";
 
 interface Props {
   readonly usernames: readonly BwUsernameWithChainName[];
-  readonly onRegisterUsername: () => void;
+  readonly onRegisterIovname: () => void;
 }
 
 const usePaper = makeStyles({
@@ -38,20 +38,14 @@ const useStyles = makeStyles({
   },
 });
 
-function IovnamesExists({ usernames, onRegisterUsername }: Props): JSX.Element {
+function IovnamesExists({ usernames, onRegisterIovname }: Props): JSX.Element {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
   return (
     <React.Fragment>
-      <Typography
-        id={REGISTER_IOVNAME_ROUTE}
-        link
-        color="primary"
-        align="center"
-        onClick={onRegisterUsername}
-      >
+      <Typography id={REGISTER_IOVNAME_ROUTE} link color="primary" align="center" onClick={onRegisterIovname}>
         + Create new iovname
       </Typography>
       {usernames.map(username => {

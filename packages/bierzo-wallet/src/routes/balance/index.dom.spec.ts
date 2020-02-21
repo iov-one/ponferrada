@@ -114,7 +114,7 @@ describe("The /balance route", () => {
     it("should show that there is no bns username available", async () => {
       const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
 
-      expect(noUsernameMessage).toBe("You have no starnames");
+      expect(noUsernameMessage).toBe("You have no iovnames");
     });
   });
 

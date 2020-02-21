@@ -6,8 +6,8 @@ import React from "react";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
-  REGISTER_USERNAME_REGISTRATION_STORY_PATH,
-  REGISTER_USERNAME_STORY_PATH,
+  REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
+  REGISTER_IOVNAME_STORY_PATH,
 } from "../register/index.stories";
 import { BwUsernameWithChainName } from ".";
 import AddressesTab from "./components/AddressesTab";
@@ -55,7 +55,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
         chainAddresses={chainAddresses}
         usernames={[]}
         starnames={[]}
-        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
         rpcEndpointType="extension"
       />
@@ -67,7 +67,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
         chainAddresses={chainAddresses}
         usernames={usernames}
         starnames={[]}
-        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
         rpcEndpointType="extension"
       />
@@ -79,7 +79,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
         chainAddresses={chainAddresses}
         usernames={[]}
         starnames={[]}
-        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
         rpcEndpointType="ledger"
       />
@@ -94,7 +94,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <Iovnames
         usernames={[]}
-        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>
@@ -103,7 +103,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <Iovnames
         usernames={usernames}
-        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>
