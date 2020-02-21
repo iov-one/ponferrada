@@ -16,6 +16,7 @@ import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
+import { addAccountsAction, getAccounts } from "../../store/accounts";
 import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
@@ -53,6 +54,9 @@ export const loginBootSequence = async (
 
   const usernames = await getUsernames(identities);
   dispatch(addUsernamesAction(usernames));
+
+  const accounts = await getAccounts(identities);
+  dispatch(addAccountsAction(accounts));
 };
 
 /**
