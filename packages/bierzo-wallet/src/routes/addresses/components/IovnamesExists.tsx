@@ -1,113 +1,86 @@
 import Paper from "@material-ui/core/Paper";
-import clipboardCopy from "clipboard-copy";
-import {
-  Block,
-  Image,
-  makeStyles,
-  ToastContext,
-  ToastVariant,
-  Tooltip,
-  Typography,
-} from "medulas-react-components";
+import { Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
-import { BwUsernameWithChainName } from "..";
 import { history } from "../..";
-import AddressesTable from "../../../components/AddressesTable";
-import copy from "../../../components/AddressesTable/assets/copy.svg";
+import iovnameLogo from "../../../assets/iovname-logo.svg";
+import { BwUsername } from "../../../store/usernames";
 import { REGISTER_IOVNAME_ROUTE } from "../../paths";
-import { AddressesTooltipHeader, TooltipContent } from "../../register";
 
 interface Props {
-  readonly usernames: readonly BwUsernameWithChainName[];
+  readonly iovnames: readonly BwUsername[];
   readonly onRegisterIovname: () => void;
 }
 
 const usePaper = makeStyles({
   rounded: {
     borderRadius: "5px",
+    height: "100%",
   },
   elevation1: {
     boxShadow: "none",
   },
 });
 
-const useStyles = makeStyles({
-  link: {
-    cursor: "pointer",
-  },
-});
-
-function IovnamesExists({ usernames, onRegisterIovname }: Props): JSX.Element {
+function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
   const paperClasses = usePaper();
-  const classes = useStyles();
-  const toast = React.useContext(ToastContext);
 
   return (
     <React.Fragment>
-      <Typography id={REGISTER_IOVNAME_ROUTE} link color="primary" align="center" onClick={onRegisterIovname}>
-        + Create new iovname
-      </Typography>
-      {usernames.map(username => {
-        const onIovnameCopy = (): void => {
-          clipboardCopy(username.username);
-          toast.show("Iovname has been copied to clipboard.", ToastVariant.INFO);
-        };
-
-        const onEdit = (): void => {
-          history.push(REGISTER_IOVNAME_ROUTE, username);
+      <Paper classes={paperClasses}>
+        <Block
+          width={650}
+          padding={5}
+          border="1px solid #F3F3F3"
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Block display="flex" alignItems="center">
+            <Image alt="Iovname Logo" src={iovnameLogo} />
+            <Block marginLeft={4} />
+            <Typography variant="h5" align="center">
+              Register a new iovname
+            </Typography>
+          </Block>
+          <Typography id={REGISTER_IOVNAME_ROUTE} link color="primary" onClick={onRegisterIovname}>
+            Register now
+          </Typography>
+        </Block>
+      </Paper>
+      {iovnames.map(iovname => {
+        const onManage = (): void => {
+          history.push(REGISTER_IOVNAME_ROUTE, iovname);
         };
 
         return (
-          <Block key={username.username} marginTop={1} width={650}>
-            <Paper classes={paperClasses}>
+          <React.Fragment>
+            <Block marginTop={3} />
+            <Paper key={iovname.username} classes={paperClasses}>
               <Block
-                display="flex"
-                flexDirection="column"
-                width="100%"
-                marginTop={4}
+                width={650}
                 padding={5}
                 border="1px solid #F3F3F3"
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
               >
-                <Block display="flex" alignItems="center" alignSelf="center">
-                  <Typography variant="h4" align="center">
-                    {username.username}
-                  </Typography>
-                  <Block marginRight={2} />
-                  <Block onClick={onIovnameCopy} className={classes.link}>
-                    <Image src={copy} alt="Copy" width={20} />
-                  </Block>
-                </Block>
-                <Block display="flex" alignItems="center" marginBottom={1} marginTop={4}>
-                  <Typography variant="subtitle2" weight="semibold" inline>
-                    {username.addresses.length > 0 ? "LINKED ADDRESSES" : "NO LINKED ADDRESSES"}
-                  </Typography>
-                  <Block marginRight={1} />
-                  <Tooltip maxWidth={320}>
-                    <TooltipContent header={<AddressesTooltipHeader />} title="Your linked addresses">
-                      With IOV you can have an universal blockchain address that is linked to all your
-                      addresses. Just give your friends your personalized address.
-                    </TooltipContent>
-                  </Tooltip>
-                  <Block flexGrow={1} />
-                  <Typography
-                    variant="subtitle2"
-                    weight="semibold"
-                    inline
-                    link
-                    color="primary"
-                    align="right"
-                    onClick={onEdit}
-                  >
-                    {username.addresses.length > 0 ? "Edit" : "Link Now"}
-                  </Typography>
-                  <Block marginLeft={1} />
-                </Block>
-                <Block marginTop={2} />
-                {username.addresses.length > 0 && <AddressesTable chainAddresses={username.addresses} />}
+                <Typography variant="h5" weight="semibold">
+                  {iovname.username}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  weight="semibold"
+                  inline
+                  link
+                  color="primary"
+                  onClick={onManage}
+                >
+                  Manage
+                </Typography>
               </Block>
             </Paper>
-          </Block>
+          </React.Fragment>
         );
       })}
     </React.Fragment>
