@@ -16,7 +16,7 @@ export interface BwUsernameWithChainName extends BwUsername {
   readonly addresses: readonly ChainAddressPairWithName[];
 }
 
-function onRegisterUsername(): void {
+function onRegisterIovname(): void {
   history.push(REGISTER_IOVNAME_ROUTE);
 }
 
@@ -79,7 +79,7 @@ const Addresses = (): JSX.Element => {
         chainAddresses={chainAddresses}
         usernames={bwNamesWithChain}
         starnames={[]}
-        onRegisterUsername={onRegisterUsername}
+        onRegisterIovname={onRegisterIovname}
         onRegisterStarname={onRegisterStarname}
         rpcEndpointType={rpcEndpointType}
       />

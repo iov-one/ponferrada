@@ -9,7 +9,7 @@ import { getFirstUsername } from "../../store/usernames/selectors";
 import { REGISTER_IOVNAME_ROUTE } from "../paths";
 import Layout from "./components";
 
-function onRegisterUsername(): void {
+function onRegisterIovname(): void {
   history.push(REGISTER_IOVNAME_ROUTE);
 }
 
@@ -22,7 +22,7 @@ const Balance = (): JSX.Element => {
   return (
     <PageMenu>
       <Layout
-        onRegisterUsername={onRegisterUsername}
+        onRegisterIovname={onRegisterIovname}
         iovAddress={iovAddress}
         balances={tokens}
         rpcEndpointType={rpcEndpointType}

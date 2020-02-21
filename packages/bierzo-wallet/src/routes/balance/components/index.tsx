@@ -15,11 +15,11 @@ const walletIcon = <Image src={wallet} alt="wallet ico" />;
 interface Props {
   readonly iovAddress?: string;
   readonly balances: { [token: string]: Amount };
-  readonly onRegisterUsername: () => void;
+  readonly onRegisterIovname: () => void;
   readonly rpcEndpointType: RpcEndpointType;
 }
 
-const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointType }: Props): JSX.Element => {
+const BalanceLayout = ({ iovAddress, balances, onRegisterIovname, rpcEndpointType }: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();
@@ -38,7 +38,7 @@ const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointTy
           textAlign="center"
           border="1px solid #F3F3F3"
         >
-          <GetYourAddress onRegisterUsername={onRegisterUsername} rpcEndpointType={rpcEndpointType} />
+          <GetYourAddress onRegisterIovname={onRegisterIovname} rpcEndpointType={rpcEndpointType} />
         </Block>
       )}
       <Block margin={2} />
