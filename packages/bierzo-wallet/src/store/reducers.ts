@@ -1,6 +1,7 @@
 import { Action, combineReducers, Reducer } from "redux";
 import { ActionType } from "typesafe-actions";
 
+import { accountsReducer, AccountsState } from "./accounts";
 import * as actions from "./actions";
 import { balancesReducer, BalanceState } from "./balances";
 import { identitiesReducer, IdentitiesState } from "./identities";
@@ -20,6 +21,7 @@ export interface RootState {
   tokens: TokenState;
   balances: BalanceState;
   usernames: UsernamesState;
+  accounts: AccountsState;
 }
 
 const allReducers = combineReducers({
@@ -29,6 +31,7 @@ const allReducers = combineReducers({
   tokens: tokensReducer,
   balances: balancesReducer,
   usernames: usernamesReducer,
+  accounts: accountsReducer,
 });
 
 const createRootReducer = (): Reducer<RootState> => (
