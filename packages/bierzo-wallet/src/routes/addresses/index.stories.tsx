@@ -53,7 +53,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={chainAddresses}
-        usernames={[]}
+        iovnames={[]}
         starnames={[]}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
@@ -65,7 +65,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={chainAddresses}
-        usernames={usernames}
+        iovnames={usernames}
         starnames={[]}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
@@ -77,7 +77,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={chainAddresses}
-        usernames={[]}
+        iovnames={[]}
         starnames={[]}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
@@ -93,7 +93,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Iovnames tab", () => (
     <DecoratedStorybook>
       <Iovnames
-        usernames={[]}
+        iovnames={[]}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
@@ -102,7 +102,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Iovnames with name tab", () => (
     <DecoratedStorybook>
       <Iovnames
-        usernames={usernames}
+        iovnames={usernames}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />

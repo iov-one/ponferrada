@@ -1,21 +1,21 @@
 import { Block } from "medulas-react-components";
 import React from "react";
 
-import { BwUsernameWithChainName } from "..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
+import { BwUsername } from "../../../store/usernames";
 import IovnamesExists from "./IovnamesExists";
 import IovnamesNotExists from "./IovnamesNotExists";
 
 export const iovnamesViewId = "iovnames-view-id";
 
 export interface IovnamesProps {
-  readonly usernames: readonly BwUsernameWithChainName[];
+  readonly iovnames: readonly BwUsername[];
   readonly onRegisterIovname: () => void;
   readonly rpcEndpointType: RpcEndpointType;
 }
 
-const Iovnames = ({ usernames, rpcEndpointType, onRegisterIovname }: IovnamesProps): JSX.Element => {
-  const hasIovnames = usernames.length > 0;
+const Iovnames = ({ iovnames, rpcEndpointType, onRegisterIovname }: IovnamesProps): JSX.Element => {
+  const hasIovnames = iovnames.length > 0;
 
   return (
     <Block marginTop={3} id={iovnamesViewId}>
@@ -23,7 +23,7 @@ const Iovnames = ({ usernames, rpcEndpointType, onRegisterIovname }: IovnamesPro
       {!hasIovnames && (
         <IovnamesNotExists rpcEndpointType={rpcEndpointType} onRegisterIovname={onRegisterIovname} />
       )}
-      {hasIovnames && <IovnamesExists usernames={usernames} onRegisterIovname={onRegisterIovname} />}
+      {hasIovnames && <IovnamesExists iovnames={iovnames} onRegisterIovname={onRegisterIovname} />}
     </Block>
   );
 };
