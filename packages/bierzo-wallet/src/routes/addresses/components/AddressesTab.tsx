@@ -56,7 +56,7 @@ function TabItem({ children, selected, onChangeTab }: TabItemProps): JSX.Element
 
 function AddressesTab({
   chainAddresses,
-  usernames,
+  iovnames,
   starnames,
   onRegisterIovname,
   onRegisterStarname,
@@ -90,7 +90,7 @@ function AddressesTab({
       )}
       {selectedTab === "iovnames" && (
         <Iovnames
-          usernames={usernames}
+          iovnames={iovnames}
           onRegisterIovname={onRegisterIovname}
           rpcEndpointType={rpcEndpointType}
         />
