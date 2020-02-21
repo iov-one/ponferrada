@@ -25,7 +25,7 @@ withChainsDescribe("Usernames reducer", () => {
     expect(usernames).toEqual([]);
   });
 
-  it("returns empty when no bns identity key is s passed to getUsernames function", async () => {
+  it("returns empty when no bns identity key is passed to getUsernames function", async () => {
     const identities: Identity[] = [
       {
         chainId: "ethereum-eip155-5777" as ChainId,
