@@ -1,15 +1,15 @@
 import { Block } from "medulas-react-components";
 import React from "react";
 
-import { BwUsernameWithChainName } from "..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
+import { BwAccount } from "../../../store/accounts";
 import StarnamesExists from "./StarnamesExists";
 import StarnamesNotExists from "./StarnamesNotExists";
 
 export const starnamesViewId = "starnames-view-id";
 
 export interface StarnamesProps {
-  readonly starnames: readonly BwUsernameWithChainName[];
+  readonly starnames: readonly BwAccount[];
   readonly onRegisterStarname: () => void;
   readonly rpcEndpointType: RpcEndpointType;
 }
@@ -23,7 +23,7 @@ const Starnames = ({ starnames, rpcEndpointType, onRegisterStarname }: Starnames
       {!hasStarnames && (
         <StarnamesNotExists rpcEndpointType={rpcEndpointType} onRegisterStarname={onRegisterStarname} />
       )}
-      {hasStarnames && <StarnamesExists />}
+      {hasStarnames && <StarnamesExists starnames={starnames} onRegisterStarname={onRegisterStarname} />}
     </Block>
   );
 };
