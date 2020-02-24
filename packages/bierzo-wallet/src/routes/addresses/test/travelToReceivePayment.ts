@@ -27,7 +27,7 @@ export async function travelToStarnamesTabE2E(page: Page): Promise<void> {
 }
 
 export async function openFirstStarnameForEditingE2E(page: Page, username: string): Promise<void> {
-  const [firstStarnameEditLink] = await page.$x(`//h6[contains(., 'Edit')]`);
+  const [firstStarnameEditLink] = await page.$x(`//h6[contains(., 'Manage')]`);
   await firstStarnameEditLink.click();
   await page.waitForSelector(`#${REGISTER_IOVNAME_VIEW_ID}`);
 }
