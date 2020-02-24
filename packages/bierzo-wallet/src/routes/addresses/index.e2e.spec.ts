@@ -11,7 +11,6 @@ import { registerPersonalizedAddress, waitForAllBalances } from "../balance/test
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
 import {
   copyAddress,
-  copyStarname,
   getAddressRow,
   getLinkedAddresses,
   getRemoveActions,
@@ -118,13 +117,6 @@ withChainsDescribe("E2E > Receive Payment route", () => {
     }, 35000);
 
     it("should check username open it and remove last address", async () => {
-      await copyStarname(page);
-
-      expect(clipboardy.readSync()).toBe(username);
-
-      const toastMessage = await getToastMessage(page);
-      expect(toastMessage).toBe("Iovname has been copied to clipboard.");
-      await closeToast(page);
       const addresses = await getLinkedAddresses(page);
 
       await openFirstStarnameForEditingE2E(page, username);
