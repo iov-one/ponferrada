@@ -74,7 +74,10 @@ const incomingNewDomainTransaction: ProcessedTx<RegisterDomainTx> = {
     domain: "test",
     admin: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
     hasSuperuser: true,
-    msgFees: [],
+    msgFees: [
+      { msgPath: "path-1", fee: stringToAmount("2", iov) },
+      { msgPath: "path-2", fee: stringToAmount("3", iov) },
+    ],
     accountRenew: 2 * 3600,
     fee: {
       tokens: stringToAmount("100", iov),
