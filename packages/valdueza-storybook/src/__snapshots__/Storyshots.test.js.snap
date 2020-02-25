@@ -5107,6 +5107,79 @@ Array [
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
                   >
+                    Starname registration
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
                     To
                      
                     tiov18c8a...4cl27
@@ -5703,7 +5776,7 @@ Array [
                   className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
                 >
                   The transaction ID is: 
-                  CD04A4754498E06DB5A13C5F371F1F04FF6D2470F24AA9BD886540E5DCE77F70
+                  D5688A52D55A02EC4AEA5EC1EADFFFE1C9E0EE6A4DDBE2377F98326D42DFC975
                 </h6>
               </div>
             </div>
