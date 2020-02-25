@@ -4,7 +4,7 @@ import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 import { amountToString } from "ui-logic";
 
-import { formatTime } from "../../../../../../utils/date";
+import { formatDuration, formatTime } from "../../../../../../utils/date";
 import { ProcessedTx } from "../../../../types/BwParser";
 
 const useStyles = makeStyles({
@@ -63,7 +63,47 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
       </Block>
       <Typography>&nbsp;</Typography>
       <Block display="flex">
-        <Block width="60%" paddingRight={3}>
+        <Block width="40%">
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Has Superuser:
+          </Typography>
+          <Typography variant="subtitle2" weight="regular" color="textSecondary">
+            {tx.original.hasSuperuser ? "Yes" : "No"}
+          </Typography>
+        </Block>
+        <Block width="40%">
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Broker:
+          </Typography>
+          <Typography variant="subtitle2" weight="regular" color="textSecondary">
+            {tx.original.broker ? tx.original.broker : "-"}
+          </Typography>
+        </Block>
+        <Block width="20%" paddingRight={3}>
+          <Typography variant="subtitle2" weight="regular" align="right" gutterBottom>
+            Account Renew:
+          </Typography>
+          <Typography variant="subtitle2" weight="regular" color="textSecondary" align="right">
+            {formatDuration(tx.original.accountRenew)}
+          </Typography>
+        </Block>
+      </Block>
+      <Typography>&nbsp;</Typography>
+      <Block display="flex">
+        <Block paddingRight={3}>
+          <Typography variant="subtitle2" weight="regular" gutterBottom>
+            Fee:
+          </Typography>
+          {tx.original.msgFees.map(fee => (
+            <Typography variant="subtitle2" weight="regular" color="textSecondary" gutterBottom>
+              {`${fee.msgPath} (${amountToString(fee.fee)})`}
+            </Typography>
+          ))}
+        </Block>
+      </Block>
+      <Typography>&nbsp;</Typography>
+      <Block display="flex">
+        <Block paddingRight={3}>
           <Typography variant="subtitle2" weight="regular" gutterBottom>
             Transaction id:
           </Typography>
