@@ -48,41 +48,48 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
           </Typography>
         </Block>
       </Paper>
-      {iovnames.map(iovname => {
-        const onManage = (): void => {
-          history.push(REGISTER_IOVNAME_ROUTE, iovname);
-        };
+      {iovnames
+        .slice()
+        .sort((a, b) => {
+          if (a.username < b.username) return -1;
+          if (a.username > b.username) return 1;
+          return 0;
+        })
+        .map(iovname => {
+          const onManage = (): void => {
+            history.push(REGISTER_IOVNAME_ROUTE, iovname);
+          };
 
-        return (
-          <React.Fragment key={iovname.username}>
-            <Block marginTop={3} />
-            <Paper classes={paperClasses}>
-              <Block
-                width={650}
-                padding={5}
-                border="1px solid #F3F3F3"
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-              >
-                <Typography variant="h5" weight="semibold">
-                  {iovname.username}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  weight="semibold"
-                  inline
-                  link
-                  color="primary"
-                  onClick={onManage}
+          return (
+            <React.Fragment key={iovname.username}>
+              <Block marginTop={3} />
+              <Paper classes={paperClasses}>
+                <Block
+                  width={650}
+                  padding={5}
+                  border="1px solid #F3F3F3"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
                 >
-                  Manage
-                </Typography>
-              </Block>
-            </Paper>
-          </React.Fragment>
-        );
-      })}
+                  <Typography variant="h5" weight="semibold">
+                    {iovname.username}
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    weight="semibold"
+                    inline
+                    link
+                    color="primary"
+                    onClick={onManage}
+                  >
+                    Manage
+                  </Typography>
+                </Block>
+              </Paper>
+            </React.Fragment>
+          );
+        })}
     </React.Fragment>
   );
 }
