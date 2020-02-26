@@ -8,9 +8,11 @@ import {
   UnsignedTransaction,
 } from "@iov/bcp";
 import {
+  isRegisterAccountTx,
   isRegisterDomainTx,
   isRegisterUsernameTx,
   isUpdateTargetsOfUsernameTx,
+  RegisterAccountTx,
   RegisterDomainTx,
   RegisterUsernameTx,
   UpdateTargetsOfUsernameTx,
@@ -18,6 +20,7 @@ import {
 
 import { ProcessedSendTransaction } from "../../../store/notifications";
 import { BwParser, ProcessedTx } from "../types/BwParser";
+import { BwRegisterAccountParser } from "./BwRegisterAccountTx";
 import { BwRegisterDomainParser } from "./BwRegisterDomainTx";
 import { BwRegisterUsernameParser } from "./BwRegisterUsernameTx";
 import { BwSendParser } from "./BwSendTransaction";
@@ -40,6 +43,10 @@ function isProcessedRegisterDomainTx(tx: ProcessedTx): tx is ProcessedTx<Registe
   return isRegisterDomainTx(tx.original);
 }
 
+function isProcessedRegisterAccountTx(tx: ProcessedTx): tx is ProcessedTx<RegisterAccountTx> {
+  return isRegisterAccountTx(tx.original);
+}
+
 export class BwParserFactory {
   public static getReactComponent(tx: ProcessedTx, userAddresses: readonly Address[]): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
@@ -50,6 +57,8 @@ export class BwParserFactory {
       return new BwUpdateUsernameTargetParser().graphicalRepresentation(tx);
     } else if (isProcessedRegisterDomainTx(tx)) {
       return new BwRegisterDomainParser().graphicalRepresentation(tx);
+    } else if (isProcessedRegisterAccountTx(tx)) {
+      return new BwRegisterAccountParser().graphicalRepresentation(tx);
     }
 
     return new BwUnkownParser().graphicalRepresentation(tx);
@@ -62,6 +71,10 @@ export class BwParserFactory {
       return new BwRegisterUsernameParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedUpdateUsernameTargetsTx(tx)) {
       return new BwUpdateUsernameTargetParser().headerRepresentation(tx, lastOne);
+    } else if (isProcessedRegisterDomainTx(tx)) {
+      return new BwRegisterDomainParser().headerRepresentation(tx, lastOne);
+    } else if (isProcessedRegisterAccountTx(tx)) {
+      return new BwRegisterAccountParser().headerRepresentation(tx, lastOne);
     }
 
     return new BwUnkownParser().headerRepresentation(tx, lastOne);

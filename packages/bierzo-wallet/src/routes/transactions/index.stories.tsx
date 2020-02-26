@@ -1,5 +1,5 @@
 import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
-import { RegisterDomainTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import { RegisterAccountTx, RegisterDomainTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
 import { Sha256 } from "@iov/crypto";
 import { Encoding, Uint64 } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";
@@ -85,6 +85,36 @@ const incomingNewDomainTransaction: ProcessedTx<RegisterDomainTx> = {
   },
 };
 
+const incomingRegisterAccountTransaction: ProcessedTx<RegisterAccountTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/register_account",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    owner: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+    targets: [
+      {
+        chainId: "local-iov-devnet" as ChainId,
+        address: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+      },
+      {
+        chainId: "lisk-198f2b61a8" as ChainId,
+        address: "13751834438426525516L" as Address,
+      },
+      {
+        chainId: "ethereum-eip155-5777" as ChainId,
+        address: "0x695874053fcB8D9cF038ee4E53b7b24fB0baFa4c" as Address,
+      },
+    ],
+    broker: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
 const incomingSendTransaction: ProcessedSendTransaction = {
   time: new ReadonlyDate("2018-01-01T03:02:01.763Z"),
   id: makeExampleEthTransactionId(),
@@ -135,7 +165,9 @@ const parsedTxs: readonly (
   | ProcessedTx<RegisterUsernameTx>
   | ProcessedTx<VoteTx>
   | ProcessedTx<RegisterDomainTx>
+  | ProcessedTx<RegisterAccountTx>
 )[] = [
+  incomingRegisterAccountTransaction,
   incomingNewDomainTransaction,
   incomingSendTransaction,
   voteTx,
