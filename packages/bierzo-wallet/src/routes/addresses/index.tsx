@@ -62,7 +62,16 @@ const Addresses = (): JSX.Element => {
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
 
-  const chainAddresses = getChainAddressPairWithNames(identities);
+  const supportedChains = React.useMemo(
+    () =>
+      Array.from(identities.values()).map(extendedIdentity => ({
+        chainId: extendedIdentity.identity.chainId,
+        name: extendedIdentity.chainName,
+      })),
+    [identities],
+  );
+
+  const chainAddresses = getChainAddressPairWithNames(identities, supportedChains);
 
   return (
     <PageMenu>
