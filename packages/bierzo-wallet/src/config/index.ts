@@ -24,6 +24,12 @@ export interface Config {
   };
   readonly websiteName: string;
   readonly chains: readonly ChainConfig[];
+  readonly supportedChains: readonly SupportedChain[];
+}
+
+export interface SupportedChain {
+  readonly chainId: string;
+  readonly name: string;
 }
 
 export interface ConfigErc20Options {
