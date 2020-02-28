@@ -4,7 +4,7 @@ import { ChainAddressPair } from "@iov/bns";
 import { Erc20Options, Erc20TokensMap } from "@iov/ethereum";
 
 import { ChainAddressPairWithName } from "../components/AddressesTable";
-import { ConfigEthereumOptions, getChainName } from "../config";
+import { ConfigEthereumOptions, getChainName, SupportedChain } from "../config";
 import { ExtendedIdentity } from "../store/identities";
 
 // exported for testing purposes
@@ -30,13 +30,22 @@ export async function filterExistingTokens(
  */
 export function getChainAddressPairWithNames(
   identities: ReadonlyMap<ChainId, ExtendedIdentity>,
+  supportedChains: readonly SupportedChain[],
 ): readonly ChainAddressPairWithName[] {
   const addresses: ChainAddressPairWithName[] = [];
-  for (const extendedIdentity of identities.values()) {
+
+  for (const chain of supportedChains) {
+    let address = "" as Address;
+    const chainId = chain.chainId as ChainId;
+    const identity = identities.get(chainId);
+    if (identity) {
+      address = identity.address;
+    }
+
     addresses.push({
-      address: extendedIdentity.address,
-      chainId: extendedIdentity.identity.chainId,
-      chainName: extendedIdentity.chainName,
+      address: address,
+      chainId: chain.chainId as ChainId,
+      chainName: chain.name,
     });
   }
 
@@ -45,8 +54,9 @@ export function getChainAddressPairWithNames(
 
 export function getChainAddressPairWithNamesSorted(
   identities: ReadonlyMap<ChainId, ExtendedIdentity>,
+  supportedChains: readonly SupportedChain[],
 ): readonly ChainAddressPairWithName[] {
-  const chainAddresses = getChainAddressPairWithNames(identities);
+  const chainAddresses = getChainAddressPairWithNames(identities, supportedChains);
 
   return Array.from(chainAddresses).sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
     a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
