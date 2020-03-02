@@ -124,7 +124,6 @@ const Layout = ({
   transactionFee,
 }: Props): JSX.Element => {
   const chainAddressesItems = React.useMemo(() => {
-    console.log(chainAddresses, iovnameAddresses);
     if (iovnameAddresses) {
       return getAddressItems(iovnameAddresses.addresses);
     }
