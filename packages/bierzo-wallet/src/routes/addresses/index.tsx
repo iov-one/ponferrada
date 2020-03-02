@@ -9,7 +9,7 @@ import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { BwUsername } from "../../store/usernames";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
-import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../paths";
+import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
 
 export interface BwUsernameWithChainName extends BwUsername {
@@ -17,11 +17,7 @@ export interface BwUsernameWithChainName extends BwUsername {
 }
 
 function onRegisterUsername(): void {
-  history.push(REGISTER_IOVNAME_ROUTE);
-}
-
-function onRegisterStarname(): void {
-  history.push(REGISTER_STARNAME_ROUTE);
+  history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE);
 }
 
 const Addresses = (): JSX.Element => {
@@ -78,9 +74,7 @@ const Addresses = (): JSX.Element => {
       <AddressesTab
         chainAddresses={chainAddresses}
         usernames={bwNamesWithChain}
-        starnames={[]}
         onRegisterUsername={onRegisterUsername}
-        onRegisterStarname={onRegisterStarname}
         rpcEndpointType={rpcEndpointType}
       />
     </PageMenu>
