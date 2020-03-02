@@ -109,11 +109,11 @@ export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurati
  * if no name is found.
  */
 export async function getChainName(chainId: ChainId): Promise<string> {
-  const chains = (await getConfig()).chains;
-  const selectedChain = chains.find(chain => chain.chainSpec.chainId === chainId);
+  const chains = (await getConfig()).supportedChains;
+  const selectedChain = chains.find(chain => chain.chainId === chainId);
 
   if (selectedChain) {
-    return selectedChain.chainSpec.name;
+    return selectedChain.name;
   } else {
     return chainId;
   }
