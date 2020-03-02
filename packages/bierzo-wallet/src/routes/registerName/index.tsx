@@ -70,7 +70,6 @@ function getChainAddressPairsFromValues(
     string,
     Partial<ChainAddressPairWithName>
   >();
-  console.log("getChainAddressPairsFromValues: 1");
   Object.keys(values).forEach(key => {
     const idxLenght = key.indexOf("-");
     if (idxLenght === -1) return;
@@ -99,8 +98,6 @@ function getChainAddressPairsFromValues(
     chainAddressMap.set(index, pair);
   });
 
-  console.log("getChainAddressPairsFromValues: 2");
-
   const chainAddressPair: ChainAddressPairWithName[] = [];
   chainAddressMap.forEach(value => {
     if (value.address && value.chainId && value.chainName) {
@@ -111,8 +108,6 @@ function getChainAddressPairsFromValues(
       });
     }
   });
-
-  console.log("getChainAddressPairsFromValues: 3");
 
   return chainAddressPair;
 }
@@ -162,7 +157,6 @@ const RegisterUsername = (): JSX.Element => {
   const validate = async (values: object): Promise<object> => {
     const formValues = values as FormValues;
     const errors: ValidationError = {};
-    console.log("validate: ", formValues);
     if (!iovnameAddresses) {
       const username = formValues[REGISTER_USERNAME_FIELD];
       if (!username) {
@@ -209,15 +203,16 @@ const RegisterUsername = (): JSX.Element => {
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
     for (const address of addressesToRegister) {
-      const codec = await getCodecForChainId(address.chainId);
-      if (!codec.isValidAddress(address.address)) {
-        const addressField = Object.entries(formValues).find(([_id, value]) => {
-          if (value === address.address) return true;
-          return false;
-        });
-        if (addressField) {
-          errors[addressField[0]] = "Not valid blockchain address";
+      try {
+        const codec = await getCodecForChainId(address.chainId);
+        if (!codec.isValidAddress(address.address)) {
+          const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+          if (addressField) {
+            errors[addressField[0]] = "Not valid blockchain address";
+          }
         }
+      } catch (err) {
+        console.info(err);
       }
     }
 
@@ -227,9 +222,7 @@ const RegisterUsername = (): JSX.Element => {
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
-    console.log("onSubmit: ", onSubmit);
     const addressesToRegister = getChainAddressPairsFromValues(formValues, addressesSorted);
-    console.log("addressesToRegister: ", addressesToRegister);
 
     try {
       let request: JsonRpcRequest;
