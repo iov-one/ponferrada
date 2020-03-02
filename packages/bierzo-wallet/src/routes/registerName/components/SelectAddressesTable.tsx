@@ -145,7 +145,6 @@ const SelectAddressesTable = ({
       .filter(item => !addressesChains.includes(item.chainId))
       .map(item => ({ name: item.chainName }));
 
-    console.log(chainAddressesItems, addressesChains, items);
     setBlockchainItems(items);
     setChainItems(chainAddressesItems);
   }, [availableBlockchains, chainAddressesItems]);
