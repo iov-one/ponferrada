@@ -8,7 +8,7 @@ import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
   REGISTER_USERNAME_REGISTRATION_STORY_PATH,
   REGISTER_USERNAME_STORY_PATH,
-} from "../register/index.stories";
+} from "../registerName/index.stories";
 import { BwUsernameWithChainName } from ".";
 import AddressesTab from "./components/AddressesTab";
 import Iovnames from "./components/Iovnames";
@@ -54,9 +54,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
       <AddressesTab
         chainAddresses={chainAddresses}
         usernames={[]}
-        starnames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
-        onRegisterStarname={() => {}}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>
@@ -66,9 +64,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
       <AddressesTab
         chainAddresses={chainAddresses}
         usernames={usernames}
-        starnames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
-        onRegisterStarname={() => {}}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>
@@ -78,9 +74,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
       <AddressesTab
         chainAddresses={chainAddresses}
         usernames={[]}
-        starnames={[]}
         onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
-        onRegisterStarname={() => {}}
         rpcEndpointType="ledger"
       />
     </DecoratedStorybook>

@@ -9,6 +9,17 @@
     }
   },
   "websiteName": "wallet-staging.iov.one",
+  "supportedChains": [
+    { "chainId": "iov-dancenet", "name": "IOV Dancenet" },
+    { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
+    { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
+    { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
+    { "chainId": "cosmos-cosmoshub-3", "name": "Cosmos Hub" },
+    { "chainId": "cosmos-irishub", "name": "IrisNet" },
+    { "chainId": "cosmos-kava-2", "name": "kava" },
+    { "chainId": "bip122-000000000019d6689c085ae165831e93", "name": "Bitcoin" },
+    { "chainId": "bip122-12a765e31ffd4059bada1e25190f6e98", "name": "Litecoin" }
+  ],
   "chains": [
     {
       "chainSpec": {

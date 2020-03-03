@@ -9,7 +9,6 @@
 - Wallet: Correctly displays transaction of type Update Username Targets
 - Wallet: Adds number of fractional digits to the validation of a payment
 - Wallet: Makes editing addresses of a username more reliable
-- Wallet: Adds wip starnames tab and updates stories
 - Extension: Improve UI
 - Extension: Adds network status and correct url to Networks view
 - Wallet and Extension: DAI stablecoin support

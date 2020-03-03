@@ -5,10 +5,8 @@ import React from "react";
 
 import { AddressesTableProps } from "../../../components/AddressesTable";
 import Iovnames, { IovnamesProps } from "./Iovnames";
-import Starnames, { StarnamesProps } from "./Starnames";
 import UserAddresses from "./UserAddresses";
 
-export const yourStarnames = "Your starnames";
 export const yourIovnames = "Your iovnames";
 export const yourAddresses = "Your blockchain addresses";
 
@@ -57,23 +55,17 @@ function TabItem({ children, selected, onChangeTab }: TabItemProps): JSX.Element
 function AddressesTab({
   chainAddresses,
   usernames,
-  starnames,
   onRegisterUsername,
-  onRegisterStarname,
   rpcEndpointType,
-}: AddressesTableProps & IovnamesProps & StarnamesProps): JSX.Element {
-  const [selectedTab, setSelectedTab] = React.useState<"starnames" | "iovnames" | "addresses">("starnames");
+}: AddressesTableProps & IovnamesProps): JSX.Element {
+  const [selectedTab, setSelectedTab] = React.useState<"iovnames" | "addresses">("iovnames");
 
-  const changeTabToStarnames = (): void => setSelectedTab("starnames");
-  const changeTabToIovnames = (): void => setSelectedTab("iovnames");
   const changeTabToAddresses = (): void => setSelectedTab("addresses");
+  const changeTabToIovnames = (): void => setSelectedTab("iovnames");
 
   return (
     <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
       <Block display="flex">
-        <TabItem selected={selectedTab === "starnames"} onChangeTab={changeTabToStarnames}>
-          {yourStarnames}
-        </TabItem>
         <TabItem selected={selectedTab === "iovnames"} onChangeTab={changeTabToIovnames}>
           {yourIovnames}
         </TabItem>
@@ -81,13 +73,6 @@ function AddressesTab({
           {yourAddresses}
         </TabItem>
       </Block>
-      {selectedTab === "starnames" && (
-        <Starnames
-          starnames={starnames}
-          onRegisterStarname={onRegisterStarname}
-          rpcEndpointType={rpcEndpointType}
-        />
-      )}
       {selectedTab === "iovnames" && (
         <Iovnames
           usernames={usernames}
