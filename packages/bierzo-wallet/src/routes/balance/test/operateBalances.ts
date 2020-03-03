@@ -45,6 +45,7 @@ export const registerPersonalizedAddress = async (browser: Browser, page: Page):
   await page.click(`#${REGISTER_PERSONALIZED_ADDRESS_ROUTE.replace("/", "\\/")}`);
 
   // Fill the form
+  await sleep(1000);
   const username = `${randomString(10)}*iov`;
   await page.type(`input[name="${REGISTER_USERNAME_FIELD}"]`, username);
   await page.click('button[type="submit"]');

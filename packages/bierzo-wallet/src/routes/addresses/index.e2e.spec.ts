@@ -117,7 +117,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
       await closeToast(page);
     }, 35000);
 
-    fit("should check username open it and remove last address", async () => {
+    it("should check username open it and remove last address", async () => {
       await copyStarname(page);
 
       expect(clipboardy.readSync()).toBe(username);
