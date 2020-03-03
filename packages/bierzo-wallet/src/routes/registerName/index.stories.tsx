@@ -39,7 +39,7 @@ const addresses: ChainAddressPairWithName[] = [
 
 async function onSubmit(values: object): Promise<void> {
   const formValues = values as FormValues;
-  action("onSubmit")();
+  action("onSubmit")(formValues);
 }
 
 async function validate(values: object): Promise<object> {
