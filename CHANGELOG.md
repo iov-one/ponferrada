@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.1 (Not released)
+## 1.1.1
 
 - Wallet: Get Neuma extension URL from config
 - Wallet: Add IOV faucet for staging configuration
@@ -9,6 +9,7 @@
 - Wallet: Correctly displays transaction of type Update Username Targets
 - Wallet: Adds number of fractional digits to the validation of a payment
 - Wallet: Makes editing addresses of a username more reliable
+- Wallet: Adds support for Terra Money, Cosmos Hub, IrisNet, kava, Bitcoin, and Litecoin addresses
 - Extension: Improve UI
 - Extension: Adds network status and correct url to Networks view
 - Wallet and Extension: DAI stablecoin support
