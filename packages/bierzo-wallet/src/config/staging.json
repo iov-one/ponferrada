@@ -1,10 +1,10 @@
 {
-  "extensionId": "ililemcipflfijjbkniehikepfpdgail",
-  "extensionLink": "https://chrome.google.com/webstore/detail/neuma-staging/ililemcipflfijjbkniehikepfpdgail",
+  "extensionId": "hanbjcoilbbikpffhiogdeepkahpohna",
+  "extensionLink": "https://chrome.google.com/webstore/detail/neuma-staging/hanbjcoilbbikpffhiogdeepkahpohna",
   "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-dancenet",
+      "testnetBuild": "iov-exchangenet",
       "mainnetBuild": "iov-mainnet"
     }
   },
@@ -24,12 +24,12 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "iov-dancenet",
-        "name": "IOV Dancenet",
-        "node": "wss://rpc-private-a-x-dancenet.iov.one/"
+        "chainId": "iov-exchangenet",
+        "name": "IOV Exchangenet",
+        "node": "wss://rpc-private-a-x-exchangenet.iov.one/"
       },
       "faucetSpec": {
-        "uri": "https://faucet.x-dancenet.iov.one",
+        "uri": "https://faucet.x-exchangenet.iov.one",
         "tokens": ["IOV"]
       }
     },
