@@ -5,10 +5,16 @@ import {
   BnsUsernameNft,
   CreateProposalTx,
   isCreateProposalTx,
+  isRegisterAccountTx,
+  isRegisterDomainTx,
   isRegisterUsernameTx,
+  isReplaceAccountTargetsTx,
   isUpdateTargetsOfUsernameTx,
   isVoteTx,
+  RegisterAccountTx,
+  RegisterDomainTx,
   RegisterUsernameTx,
+  ReplaceAccountTargetsTx,
   UpdateTargetsOfUsernameTx,
   VoteTx,
 } from "@iov/bns";
@@ -28,7 +34,13 @@ import {
   SoftwareAccountManagerChainConfig,
 } from "../accountManager/softwareAccountManager";
 import { StringDb } from "../backgroundscript/db";
-import { algorithmForCodec, chainConnector, getChains, pathBuilderForCodec } from "./config";
+import {
+  algorithmForCodec,
+  chainConnector,
+  codecTypeFromString,
+  getChains,
+  pathBuilderForCodec,
+} from "./config";
 import { createTwoWalletProfile } from "./userprofilehelpers";
 
 function isNonUndefined<T>(t: T | undefined): t is T {
@@ -42,6 +54,9 @@ export type SupportedTransaction =
   | SendTransaction
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
+  | RegisterDomainTx
+  | RegisterAccountTx
+  | ReplaceAccountTargetsTx
   | CreateProposalTx
   | VoteTx;
 
@@ -50,6 +65,9 @@ export function isSupportedTransaction(tx: UnsignedTransaction): tx is Supported
     isSendTransaction(tx) ||
     isRegisterUsernameTx(tx) ||
     isUpdateTargetsOfUsernameTx(tx) ||
+    isRegisterDomainTx(tx) ||
+    isRegisterAccountTx(tx) ||
+    isReplaceAccountTargetsTx(tx) ||
     isCreateProposalTx(tx) ||
     isVoteTx(tx)
   );
@@ -140,14 +158,15 @@ export class Persona {
     const managerChains: SoftwareAccountManagerChainConfig[] = [];
 
     for (const chainSpec of (await getChains()).map(chain => chain.chainSpec)) {
-      const connector = chainConnector(chainSpec);
+      const codecType = codecTypeFromString(chainSpec.codecType);
+      const connector = chainConnector(codecType, chainSpec);
 
       try {
         const { connection } = await signer.addChain(connector);
         managerChains.push({
           chainId: connection.chainId,
-          algorithm: algorithmForCodec(chainSpec.codecType),
-          derivePath: pathBuilderForCodec(chainSpec.codecType),
+          algorithm: algorithmForCodec(codecType),
+          derivePath: pathBuilderForCodec(codecType),
         });
       } catch (e) {
         console.error("Could not add chain. " + e);

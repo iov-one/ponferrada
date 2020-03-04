@@ -1,11 +1,22 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isCreateProposalTx, isRegisterUsernameTx, isUpdateTargetsOfUsernameTx, isVoteTx } from "@iov/bns";
+import {
+  isCreateProposalTx,
+  isRegisterAccountTx,
+  isRegisterDomainTx,
+  isRegisterUsernameTx,
+  isReplaceAccountTargetsTx,
+  isUpdateTargetsOfUsernameTx,
+  isVoteTx,
+} from "@iov/bns";
 import { Block, Button, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { SupportedTransaction } from "../../../../../../../../../../extension/background/model/persona";
 import ReqCreateProposalTx from "./ReqCreateProposalTx";
+import ReqRegisterAccountTx from "./ReqRegisterAccountTx";
+import ReqRegisterDomainTx from "./ReqRegisterDomainTx";
 import ReqRegisterUsernameTx from "./ReqRegisterUsernameTx";
+import ReqReplaceAccountTargetsTx from "./ReqReplaceAccountTargetsTx";
 import ReqSendTransaction from "./ReqSendTransaction";
 import ReqUpdateTargetsOfUsernameTx from "./ReqUpdateTargetsOfUsernameTx";
 import ReqVoteTx from "./ReqVoteTx";
@@ -28,6 +39,12 @@ const ShowTx = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
     req = <ReqRegisterUsernameTx tx={tx} />;
   } else if (isUpdateTargetsOfUsernameTx(tx)) {
     req = <ReqUpdateTargetsOfUsernameTx tx={tx} />;
+  } else if (isRegisterDomainTx(tx)) {
+    req = <ReqRegisterDomainTx tx={tx} />;
+  } else if (isRegisterAccountTx(tx)) {
+    req = <ReqRegisterAccountTx tx={tx} />;
+  } else if (isReplaceAccountTargetsTx(tx)) {
+    req = <ReqReplaceAccountTargetsTx tx={tx} />;
   } else if (isCreateProposalTx(tx)) {
     req = <ReqCreateProposalTx tx={tx} />;
   } else if (isVoteTx(tx)) {
