@@ -7,9 +7,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "iov-dancenet",
-        "name": "IOV Dancenet",
-        "node": "https://rpc-private-a-x-dancenet.iov.one/"
+        "chainId": "iov-exchangenet",
+        "name": "IOV Exchangenet",
+        "node": "https://rpc-private-a-x-exchangenet.iov.one/"
       }
     },
     {

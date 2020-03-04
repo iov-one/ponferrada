@@ -17,6 +17,7 @@
 - Wallet and Extension: Displays currencies with locale separators
 - Wallet, Governance and Extension: Adds ability to edit IOV RPC URL and name
 - Upgrade IOV-Core to 2.0.2
+- Connect to Exchangenet 📈
 
 ## 1.1.0
 
