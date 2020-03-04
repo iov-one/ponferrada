@@ -15,7 +15,7 @@ import copySvg from "../../../assets/copy.svg";
 import tickSvg from "../../../assets/tick.svg";
 import PageContent from "../../../components/PageContent";
 
-export const USERNAME_CONFIRMATION_VIEW_ID = "username-confirmation-view-id";
+export const REGISTER_CONFIRMATION_VIEW_ID = "register-confirmation-view-id";
 
 const useClasses = makeStyles({
   txId: {
@@ -62,9 +62,9 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions }: Props): JSX.El
   };
 
   return (
-    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
+    <PageContent id={REGISTER_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
       <Typography color="textPrimary" variant="subtitle1" weight="semibold" align="center">
-        Your personalized address registration request was successfully signed and sent to the network.
+        Your registration request was successfully signed and sent to the network.
       </Typography>
       <Block marginTop={4} alignSelf="flex-start">
         <Typography color="textPrimary" variant="subtitle2" weight="semibold">
