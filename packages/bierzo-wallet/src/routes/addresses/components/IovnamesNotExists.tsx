@@ -4,8 +4,8 @@ import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { NoUsernameHeader } from "../../registerName/components";
+import { REGISTER_IOVNAME_ROUTE } from "../../paths";
+import { NoIovnameHeader } from "../../register/components/IovnameForm";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterUsername: () => void;
@@ -17,7 +17,7 @@ export function GetYourAddressWithExtension({
 }: Omit<StarnamesNotExistsProps, "rpcEndpointType">): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoUsernameHeader />
+      <NoIovnameHeader />
       <Block marginTop={3} />
       <Typography variant="subtitle1" weight="semibold" gutterBottom>
         You have no starnames
@@ -28,7 +28,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+        id={REGISTER_IOVNAME_ROUTE}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -45,12 +45,12 @@ export function GetYourAddressWithExtension({
 export function GetYourAddressWithLedger(): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoUsernameHeader />
+      <NoIovnameHeader />
       <Block marginTop={4} />
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={REGISTER_PERSONALIZED_ADDRESS_ROUTE} variant="body1" color="primary" weight="light">
+      <Typography id={REGISTER_IOVNAME_ROUTE} variant="body1" color="primary" weight="light">
         personalized address
       </Typography>
       <Block textAlign="center">

@@ -5,10 +5,16 @@ import {
   BnsUsernameNft,
   CreateProposalTx,
   isCreateProposalTx,
+  isRegisterAccountTx,
+  isRegisterDomainTx,
   isRegisterUsernameTx,
+  isReplaceAccountTargetsTx,
   isUpdateTargetsOfUsernameTx,
   isVoteTx,
+  RegisterAccountTx,
+  RegisterDomainTx,
   RegisterUsernameTx,
+  ReplaceAccountTargetsTx,
   UpdateTargetsOfUsernameTx,
   VoteTx,
 } from "@iov/bns";
@@ -42,6 +48,9 @@ export type SupportedTransaction =
   | SendTransaction
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
+  | RegisterDomainTx
+  | RegisterAccountTx
+  | ReplaceAccountTargetsTx
   | CreateProposalTx
   | VoteTx;
 
@@ -50,6 +59,9 @@ export function isSupportedTransaction(tx: UnsignedTransaction): tx is Supported
     isSendTransaction(tx) ||
     isRegisterUsernameTx(tx) ||
     isUpdateTargetsOfUsernameTx(tx) ||
+    isRegisterDomainTx(tx) ||
+    isRegisterAccountTx(tx) ||
+    isReplaceAccountTargetsTx(tx) ||
     isCreateProposalTx(tx) ||
     isVoteTx(tx)
   );

@@ -1856,7 +1856,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames tab 1`] = `
       className="MuiBox-root MuiBox-root"
     >
       <div
-        className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+        className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
       >
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
@@ -1882,7 +1882,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames tab 1`] = `
       />
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-        id="/register-personalized-address"
+        id="/register-iovname"
         onClick={[Function]}
       >
         Choose Now
@@ -1902,7 +1902,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
   />
   <p
     className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-    id="/register-personalized-address"
+    id="/register-iovname"
     onClick={[Function]}
   >
     + Create new iovname
@@ -2502,7 +2502,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
         className="MuiBox-root MuiBox-root"
       >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+          className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
         >
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
@@ -2528,10 +2528,16 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
         />
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-          id="/register-personalized-address"
+          id="/register-starname"
           onClick={[Function]}
         >
           Register Now
+        </h6>
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+          onClick={[Function]}
+        >
+          Register your name
         </h6>
       </div>
     </div>
@@ -2612,7 +2618,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
         className="MuiBox-root MuiBox-root"
       >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+          className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
         >
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
@@ -2630,7 +2636,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
         </p>
         <p
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
-          id="/register-personalized-address"
+          id="/register-starname"
         >
           starname
         </p>
@@ -2728,7 +2734,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
         className="MuiBox-root MuiBox-root"
       >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+          className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
         >
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
@@ -2754,10 +2760,16 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
         />
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-          id="/register-personalized-address"
+          id="/register-starname"
           onClick={[Function]}
         >
           Register Now
+        </h6>
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+          onClick={[Function]}
+        >
+          Register your name
         </h6>
       </div>
     </div>
@@ -3110,7 +3122,7 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
           className="MuiBox-root MuiBox-root"
         >
           <div
-            className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+            className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
           >
             <h6
               className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
@@ -3128,7 +3140,7 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
           </p>
           <p
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
-            id="/register-personalized-address"
+            id="/register-iovname"
           >
             personalized address
           </p>
@@ -3344,7 +3356,7 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
           className="MuiBox-root MuiBox-root"
         >
           <div
-            className="MuiBox-root MuiBox-root makeStyles-usernameHeader"
+            className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
           >
             <h6
               className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
@@ -3370,7 +3382,7 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
           />
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-            id="/register-personalized-address"
+            id="/register-iovname"
             onClick={[Function]}
           >
             Choose Now
@@ -5261,556 +5273,10 @@ exports[`Storyshots Bierzo Wallet/Payment Verified Recipient 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo Wallet/Register Username Register Username 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <div
-    className="MuiBox-root MuiBox-root"
-    id="register-username-view-id"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
-          >
-            <img
-              alt="shield"
-              className="makeStyles-root"
-              src="shield.svg"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <h6
-                className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-              >
-                Create your iovname
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="makeStyles-container"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Info"
-                    className="makeStyles-root"
-                    height={16}
-                    src="info_normal.svg"
-                    width={16}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-                >
-                  How it works
-                </h6>
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-              >
-                <div
-                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-                  onClick={[Function]}
-                >
-                  <input
-                    aria-invalid={false}
-                    className="MuiInputBase-input MuiOutlinedInput-input"
-                    disabled={false}
-                    name="register-username-field"
-                    onAnimationStart={[Function]}
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    placeholder="eg. username*iov"
-                    required={false}
-                    type="text"
-                    value=""
-                  />
-                  <fieldset
-                    aria-hidden={true}
-                    className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-                    style={
-                      Object {
-                        "paddingLeft": 8,
-                      }
-                    }
-                  >
-                    <legend
-                      className="PrivateNotchedOutline-legend"
-                      style={
-                        Object {
-                          "width": 0.01,
-                        }
-                      }
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "&#8203;",
-                          }
-                        }
-                      />
-                    </legend>
-                  </fieldset>
-                </div>
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <p
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body2"
-                  >
-                    CHOOSE LINKED ADDRESSES
-                  </p>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <div
-                    className="makeStyles-container"
-                    onClick={[Function]}
-                  >
-                    <img
-                      alt="Info"
-                      className="makeStyles-root"
-                      height={16}
-                      src="info_normal.svg"
-                      width={16}
-                    />
-                  </div>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <div
-                    className="MuiBox-root MuiBox-root"
-                  />
-                </div>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-                >
-                  Optional
-                </h6>
-              </div>
-              <table
-                className="MuiTable-root"
-              >
-                <tbody
-                  className="MuiTableBody-root"
-                />
-              </table>
-              <p
-                className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-                onClick={[Function]}
-              >
-                + Add more
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
-            disabled={true}
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={-1}
-            type="submit"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
-                  role="progressbar"
-                  style={
-                    Object {
-                      "height": 22,
-                      "width": 22,
-                    }
-                  }
-                >
-                  <svg
-                    className="MuiCircularProgress-svg"
-                    viewBox="22 22 44 44"
-                  >
-                    <circle
-                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-                      cx={44}
-                      cy={44}
-                      fill="none"
-                      r={20.2}
-                      strokeWidth={3.6}
-                      style={Object {}}
-                    />
-                  </svg>
-                </div>
-              </div>
-              Register for 5 IOV
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <button
-            aria-label="Go back"
-            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              Cancel
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-`;
-
-exports[`Storyshots Bierzo Wallet/Register Username Register Username without fee 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <div
-    className="MuiBox-root MuiBox-root"
-    id="register-username-view-id"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <div
-            className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
-          >
-            <img
-              alt="shield"
-              className="makeStyles-root"
-              src="shield.svg"
-            />
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <h6
-                className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-              >
-                Create your iovname
-              </h6>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="makeStyles-container"
-                  onClick={[Function]}
-                >
-                  <img
-                    alt="Info"
-                    className="makeStyles-root"
-                    height={16}
-                    src="info_normal.svg"
-                    width={16}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-                >
-                  How it works
-                </h6>
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-              >
-                <div
-                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-                  onClick={[Function]}
-                >
-                  <input
-                    aria-invalid={false}
-                    className="MuiInputBase-input MuiOutlinedInput-input"
-                    disabled={false}
-                    name="register-username-field"
-                    onAnimationStart={[Function]}
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    placeholder="eg. username*iov"
-                    required={false}
-                    type="text"
-                    value=""
-                  />
-                  <fieldset
-                    aria-hidden={true}
-                    className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
-                    style={
-                      Object {
-                        "paddingLeft": 8,
-                      }
-                    }
-                  >
-                    <legend
-                      className="PrivateNotchedOutline-legend"
-                      style={
-                        Object {
-                          "width": 0.01,
-                        }
-                      }
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "&#8203;",
-                          }
-                        }
-                      />
-                    </legend>
-                  </fieldset>
-                </div>
-              </div>
-            </div>
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <p
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body2"
-                  >
-                    CHOOSE LINKED ADDRESSES
-                  </p>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <div
-                    className="makeStyles-container"
-                    onClick={[Function]}
-                  >
-                    <img
-                      alt="Info"
-                      className="makeStyles-root"
-                      height={16}
-                      src="info_normal.svg"
-                      width={16}
-                    />
-                  </div>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <div
-                    className="MuiBox-root MuiBox-root"
-                  />
-                </div>
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
-                >
-                  Optional
-                </h6>
-              </div>
-              <table
-                className="MuiTable-root"
-              >
-                <tbody
-                  className="MuiTableBody-root"
-                />
-              </table>
-              <p
-                className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-                onClick={[Function]}
-              >
-                + Add more
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
-            disabled={true}
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={-1}
-            type="submit"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
-                  role="progressbar"
-                  style={
-                    Object {
-                      "height": 22,
-                      "width": 22,
-                    }
-                  }
-                >
-                  <svg
-                    className="MuiCircularProgress-svg"
-                    viewBox="22 22 44 44"
-                  >
-                    <circle
-                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-                      cx={44}
-                      cy={44}
-                      fill="none"
-                      r={20.2}
-                      strokeWidth={3.6}
-                      style={Object {}}
-                    />
-                  </svg>
-                </div>
-              </div>
-              Register
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <button
-            aria-label="Go back"
-            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              Cancel
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-`;
-
 exports[`Storyshots Bierzo Wallet/Register Username Registration confirmation 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="username-confirmation-view-id"
+  id="register-confirmation-view-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -5833,7 +5299,7 @@ exports[`Storyshots Bierzo Wallet/Register Username Registration confirmation 1`
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorTextPrimary MuiTypography-alignCenter"
         >
-          Your personalized address registration request was successfully signed and sent to the network.
+          Your registration request was successfully signed and sent to the network.
         </h6>
         <div
           className="MuiBox-root MuiBox-root"

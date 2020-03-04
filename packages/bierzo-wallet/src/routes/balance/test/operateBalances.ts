@@ -2,8 +2,8 @@ import { Browser, ElementHandle, Page } from "puppeteer";
 import { randomString, sleep, whenTrue } from "ui-logic";
 
 import { acceptEnqueuedRequest } from "../../../utils/test/persona";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { REGISTER_USERNAME_FIELD } from "../../registerName/components";
+import { REGISTER_IOVNAME_ROUTE } from "../../paths";
+import { REGISTER_IOVNAME_FIELD } from "../../register/components/IovnameForm";
 
 const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;
@@ -42,12 +42,12 @@ export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Elem
 };
 
 export const registerPersonalizedAddress = async (browser: Browser, page: Page): Promise<string> => {
-  await page.click(`#${REGISTER_PERSONALIZED_ADDRESS_ROUTE.replace("/", "\\/")}`);
+  await page.click(`#${REGISTER_IOVNAME_ROUTE.replace("/", "\\/")}`);
 
   // Fill the form
   await sleep(1000);
   const username = `${randomString(10)}*iov`;
-  await page.type(`input[name="${REGISTER_USERNAME_FIELD}"]`, username);
+  await page.type(`input[name="${REGISTER_IOVNAME_FIELD}"]`, username);
   await page.click('button[type="submit"]');
 
   await acceptEnqueuedRequest(browser);
