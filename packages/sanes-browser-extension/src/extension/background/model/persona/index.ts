@@ -34,13 +34,7 @@ import {
   SoftwareAccountManagerChainConfig,
 } from "../accountManager/softwareAccountManager";
 import { StringDb } from "../backgroundscript/db";
-import {
-  algorithmForCodec,
-  chainConnector,
-  codecTypeFromString,
-  getChains,
-  pathBuilderForCodec,
-} from "./config";
+import { algorithmForCodec, chainConnector, getChains, pathBuilderForCodec } from "./config";
 import { createTwoWalletProfile } from "./userprofilehelpers";
 
 function isNonUndefined<T>(t: T | undefined): t is T {
@@ -158,15 +152,14 @@ export class Persona {
     const managerChains: SoftwareAccountManagerChainConfig[] = [];
 
     for (const chainSpec of (await getChains()).map(chain => chain.chainSpec)) {
-      const codecType = codecTypeFromString(chainSpec.codecType);
-      const connector = chainConnector(codecType, chainSpec);
+      const connector = chainConnector(chainSpec);
 
       try {
         const { connection } = await signer.addChain(connector);
         managerChains.push({
           chainId: connection.chainId,
-          algorithm: algorithmForCodec(codecType),
-          derivePath: pathBuilderForCodec(codecType),
+          algorithm: algorithmForCodec(chainSpec.codecType),
+          derivePath: pathBuilderForCodec(chainSpec.codecType),
         });
       } catch (e) {
         console.error("Could not add chain. " + e);
