@@ -1,32 +1,38 @@
 import { Address, ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
-import { Avatar, Block, FormValues, Image, makeStyles, Typography } from "medulas-react-components";
+import { JsonRpcRequest } from "@iov/jsonrpc";
+import {
+  BillboardContext,
+  FormValues,
+  ToastContext,
+  ToastVariant,
+  ValidationError,
+} from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
-import { amountToString } from "ui-logic";
 
 import { history } from "..";
-import { generateRegisterUsernameTxWithFee } from "../../communication/requestgenerators";
+import {
+  generateRegisterUsernameTxRequest,
+  generateRegisterUsernameTxWithFee,
+  generateUpdateUsernameTxRequest,
+} from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
-import { getConnectionForChainId } from "../../logic/connection";
+import { getConfig, SupportedChain } from "../../config";
+import { isValidIov } from "../../logic/account";
+import { getCodecForChainId } from "../../logic/codec";
+import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BwUsernameWithChainName } from "../addresses";
 import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
-import shield from "./assets/shield.svg";
+import Layout, { REGISTER_USERNAME_FIELD } from "./components";
 import ConfirmRegistration from "./components/ConfirmRegistration";
-import IovnameForm from "./components/IovnameForm";
-import NameForm from "./components/NameForm";
-import {
-  addressValueField,
-  blockchainValueField,
-  getAddressInputName,
-  getBlockchainInputName,
-  SelectAddressItem,
-} from "./components/SelectAddressesTable";
-import StarnameForm from "./components/StarnameForm";
+import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -187,10 +193,14 @@ interface Props {
 const Register = ({ entity }: Props): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>(undefined);
+  const [supportedChains, setSupportedChains] = React.useState<readonly SupportedChain[]>([]);
 
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const addressesSorted = React.useMemo(() => getChainAddressPairWithNamesSorted(identities), [identities]);
+  const addressesSorted = React.useMemo(
+    () => getChainAddressPairWithNamesSorted(identities, supportedChains),
+    [identities, supportedChains],
+  );
 
   const bnsIdentity = getBnsIdentity(identities);
   const iovnameAddresses: BwUsernameWithChainName | undefined = history.location.state;
@@ -200,17 +210,19 @@ const Register = ({ entity }: Props): JSX.Element => {
 
   React.useEffect(() => {
     let isSubscribed = true;
-    async function getFee(
+    async function getFeeAndConfig(
       bnsIdentity: Identity,
       addresses: readonly ChainAddressPairWithName[],
     ): Promise<void> {
       const fee = await getPersonalizedAddressRegistrationFee(bnsIdentity, addresses);
+      const config = await getConfig();
 
       if (isSubscribed) {
         setTransactionFee(fee);
+        setSupportedChains(config.supportedChains);
       }
     }
-    getFee(bnsIdentity, addressesSorted);
+    getFeeAndConfig(bnsIdentity, addressesSorted);
 
     return () => {
       isSubscribed = false;
@@ -261,4 +273,4 @@ const Register = ({ entity }: Props): JSX.Element => {
   );
 };
 
-export default Register;
+export default RegisterUsername;

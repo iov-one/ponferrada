@@ -189,15 +189,16 @@ const IovnameForm = ({
 
         const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
         for (const address of addressesToRegister) {
-          const codec = await getCodecForChainId(address.chainId);
-          if (!codec.isValidAddress(address.address)) {
-            const addressField = Object.entries(formValues).find(([_id, value]) => {
-              if (value === address.address) return true;
-              return false;
-            });
-            if (addressField) {
-              errors[addressField[0]] = "Not valid blockchain address";
+          try {
+            const codec = await getCodecForChainId(address.chainId);
+            if (!codec.isValidAddress(address.address)) {
+              const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+              if (addressField) {
+                errors[addressField[0]] = "Not valid blockchain address";
+              }
             }
+          } catch (err) {
+            console.info(err);
           }
         }
 
