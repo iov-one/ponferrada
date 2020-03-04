@@ -12,7 +12,7 @@ import {
 import React, { useState } from "react";
 
 import tickIcon from "../../../../assets/greenTick.svg";
-import { isIov } from "../../../../logic/account";
+import { isIovname } from "../../../../logic/account";
 
 export const ADDRESS_FIELD = "addressField";
 
@@ -39,7 +39,7 @@ const ReceiverAddress = ({
     const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
       if (typeof value !== "string") throw new Error("Input must be a string");
 
-      if (isIov(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
+      if (isIovname(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
         setAddressHasValidCert(isCertValid(value));
 
         return undefined;
