@@ -6,11 +6,11 @@ import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { getFirstUsername } from "../../store/usernames/selectors";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
+import { REGISTER_IOVNAME_ROUTE } from "../paths";
 import Layout from "./components";
 
 function onRegisterUsername(): void {
-  history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE);
+  history.push(REGISTER_IOVNAME_ROUTE);
 }
 
 const Balance = (): JSX.Element => {

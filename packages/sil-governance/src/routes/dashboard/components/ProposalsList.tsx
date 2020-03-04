@@ -1,5 +1,4 @@
 import { Address } from "@iov/bcp";
-import { VoteOption } from "@iov/bns";
 import { Block, SelectField, SelectFieldItem, Typography, useForm } from "medulas-react-components";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -63,24 +62,23 @@ const compareByExpiryDate: ProposalsComparator = (proposal1, proposal2): number 
 const compareByStartDate: ProposalsComparator = (proposal1, proposal2): number => {
   return proposal1.startDate.getTime() - proposal2.startDate.getTime();
 };
-function voteValue(vote: VoteOption): number {
-  // The values of the original numeric VoteOption enum implementation. There is no specific reason to use those values.
-  switch (vote) {
-    case VoteOption.Yes:
-      return 0;
-    case VoteOption.No:
-      return 1;
-    case VoteOption.Abstain:
-      return 2;
-    default:
-      throw new Error("Unsupported vote option");
-  }
-}
 const compareByVote: ProposalsComparator = (proposal1, proposal2): number => {
   if (proposal1.vote === undefined && proposal2.vote === undefined) return 0;
   if (proposal1.vote === undefined) return 1;
   if (proposal2.vote === undefined) return -1;
-  return voteValue(proposal1.vote) - voteValue(proposal2.vote);
+
+  if (proposal1.vote === "abstain" && proposal2.vote === "abstain") return 0;
+  if (proposal1.vote === "abstain") return 1;
+
+  if (proposal1.vote === "no" && proposal2.vote === "abstain") return -1;
+  if (proposal1.vote === "no" && proposal2.vote === "no") return 0;
+  if (proposal1.vote === "no") return 1;
+
+  if (proposal1.vote === "yes" && proposal2.vote === "abstain") return -1;
+  if (proposal1.vote === "yes" && proposal2.vote === "no") return -1;
+  if (proposal1.vote === "yes") return 0;
+
+  return 0;
 };
 
 interface Props {
