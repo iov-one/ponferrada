@@ -1,38 +1,33 @@
 import { Address, ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
-import { JsonRpcRequest } from "@iov/jsonrpc";
-import {
-  BillboardContext,
-  FormValues,
-  ToastContext,
-  ToastVariant,
-  ValidationError,
-} from "medulas-react-components";
+import { Avatar, Block, FormValues, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
+import { amountToString } from "ui-logic";
 
 import { history } from "..";
-import {
-  generateRegisterUsernameTxRequest,
-  generateRegisterUsernameTxWithFee,
-  generateUpdateUsernameTxRequest,
-} from "../../communication/requestgenerators";
+import { generateRegisterUsernameTxWithFee } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
 import { getConfig, SupportedChain } from "../../config";
-import { isValidIov } from "../../logic/account";
-import { getCodecForChainId } from "../../logic/codec";
-import { getConnectionForBns, getConnectionForChainId } from "../../logic/connection";
+import { getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
 import { BwUsernameWithChainName } from "../addresses";
 import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
-import Layout, { REGISTER_USERNAME_FIELD } from "./components";
+import shield from "./assets/shield.svg";
 import ConfirmRegistration from "./components/ConfirmRegistration";
-import { addressValueField, blockchainValueField } from "./components/SelectAddressesTable";
+import IovnameForm from "./components/IovnameForm";
+import NameForm from "./components/NameForm";
+import {
+  addressValueField,
+  blockchainValueField,
+  getAddressInputName,
+  getBlockchainInputName,
+  SelectAddressItem,
+} from "./components/SelectAddressesTable";
+import StarnameForm from "./components/StarnameForm";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -273,4 +268,4 @@ const Register = ({ entity }: Props): JSX.Element => {
   );
 };
 
-export default RegisterUsername;
+export default Register;
