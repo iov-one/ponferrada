@@ -1,5 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core";
 import { Block } from "medulas-react-components";
 import * as React from "react";
 
@@ -8,12 +7,7 @@ import { TxTableProps } from "./rowTxBuilder";
 import TxTableFooter from "./TxTableFooter";
 import TxTableHeader from "./TxTableHeader";
 
-const txTablePadding = 20;
-
 const useStyles = makeStyles({
-  inner: {
-    flexBasis: "auto",
-  },
   panel: {
     boxShadow: `0 0 20px 0 ${getShadowColor()}`,
   },
@@ -29,13 +23,19 @@ function TxTable({
   onPrevPage,
 }: TxTableProps): JSX.Element {
   const classes = useStyles();
-  const theme = useTheme<Theme>();
 
   return (
     <Block display="flex">
-      <Block width={theme.spacing(txTablePadding)} flexShrink={1} />
-      <Block display="flex" flexGrow={1} flexShrink={0} flexDirection="column" className={classes.inner}>
-        <Block margin={3} />
+      <Block
+        display="flex"
+        flexBasis="80%"
+        flexShrink={0}
+        flexDirection="column"
+        marginTop={6}
+        marginBottom={6}
+        marginLeft="auto"
+        marginRight="auto"
+      >
         <Block
           display="flex"
           flexDirection="column"
@@ -49,9 +49,7 @@ function TxTable({
             <TxTableFooter onChangeRows={onChangeRows} onNextPage={onNextPage} onPrevPage={onPrevPage} />
           </Block>
         </Block>
-        <Block margin={3} />
       </Block>
-      <Block width={theme.spacing(txTablePadding)} flexShrink={1} />
     </Block>
   );
 }
