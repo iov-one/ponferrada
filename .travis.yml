@@ -1,9 +1,9 @@
 language: node_js
 dist: xenial
 node_js:
-# Use Node.js >= 12.x since we got problems with exceeding the default 1400MB
-# memory limit in Node.js 10 during webpack builds.
-# See also https://developer.ibm.com/articles/nodejs-memory-management-in-container-environments/
+  # Use Node.js >= 12.x since we got problems with exceeding the default 1400MB
+  # memory limit in Node.js 10 during webpack builds.
+  # See also https://developer.ibm.com/articles/nodejs-memory-management-in-container-environments/
   - "12.15.0"
 sudo: required
 
@@ -41,6 +41,7 @@ script:
 branches:
   only:
     - master
+    - /^milestone\/.+$/
     # Minor version branches: 0.9, 0.10, 1.2 etc.
     - /^[0-9]+\.[0-9]+$/
     # Tag builds: v0.9.1, v1.2.3-alpha456+build789 etc.
