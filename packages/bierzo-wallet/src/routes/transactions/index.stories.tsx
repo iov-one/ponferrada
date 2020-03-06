@@ -1,5 +1,23 @@
 import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
-import { RegisterAccountTx, RegisterDomainTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import {
+  AddAccountCertificateTx,
+  DeleteAccountCertificateTx,
+  DeleteAccountTx,
+  DeleteAllAccountsTx,
+  DeleteDomainTx,
+  RegisterAccountTx,
+  RegisterDomainTx,
+  RegisterUsernameTx,
+  RenewAccountTx,
+  RenewDomainTx,
+  ReplaceAccountMsgFeesTx,
+  ReplaceAccountTargetsTx,
+  TransferAccountTx,
+  TransferDomainTx,
+  UpdateAccountConfigurationTx,
+  VoteOption,
+  VoteTx,
+} from "@iov/bns";
 import { Sha256 } from "@iov/crypto";
 import { Encoding, Uint64 } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";
@@ -48,6 +66,12 @@ const currentUsersAddresses = [
 
 let txCount = 0;
 
+const defaultCertificate = Encoding.fromHex(
+  "517fdb504c6f68fa715a10569a294060beaefae0906feb333600cc1fce04737f0f0590c8999d8694ca90c9d042395b50a02d1de2c88832610cf2d5c51df8e6e131765771b3944e19919fc250572e06a8c86bc334023cb570ffd502145cbd2f51b8b0559dc6f2af3fd7f6e846d43f20f1ed4db537ff6fa9966ced5dc40f0a36f7d32a42ad81f03bdc15f1d27afc095cd5112a41e613b2e9f4f2fda0befc0231df",
+);
+
+const defaultCertificateHash = Encoding.fromHex("569a294060beaefae090");
+
 function makeExampleEthTransactionId(): TransactionId {
   // The generated hash is deterministic but arbitrary and has the correct format (see https://etherscan.io/txs)
   const data = Uint64.fromNumber(txCount++).toBytesBigEndian();
@@ -85,6 +109,46 @@ const incomingNewDomainTransaction: ProcessedTx<RegisterDomainTx> = {
   },
 };
 
+const incomingTransferDomainTransaction: ProcessedTx<TransferDomainTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/transfer_domain",
+    chainId: chainIdIov,
+    domain: "test",
+    newAdmin: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingRenewDomainTransaction: ProcessedTx<RenewDomainTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/renew_domain",
+    chainId: chainIdIov,
+    domain: "test",
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingDeleteDomainTransaction: ProcessedTx<DeleteDomainTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/delete_domain",
+    chainId: chainIdIov,
+    domain: "test",
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
 const incomingRegisterAccountTransaction: ProcessedTx<RegisterAccountTx> = {
   id: makeExampleIovTransactionId(),
   time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
@@ -109,6 +173,179 @@ const incomingRegisterAccountTransaction: ProcessedTx<RegisterAccountTx> = {
       },
     ],
     broker: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingTransferAccountTransaction: ProcessedTx<TransferAccountTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/transfer_account",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    newOwner: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingReplaceAccountTargetsTransaction: ProcessedTx<ReplaceAccountTargetsTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/replace_account_targets",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    newTargets: [
+      {
+        chainId: "local-iov-devnet" as ChainId,
+        address: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+      },
+      {
+        chainId: "lisk-198f2b61a8" as ChainId,
+        address: "13751834438426525516L" as Address,
+      },
+      {
+        chainId: "ethereum-eip155-5777" as ChainId,
+        address: "0x695874053fcB8D9cF038ee4E53b7b24fB0baFa4c" as Address,
+      },
+    ],
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingDeleteAccountTransaction: ProcessedTx<DeleteAccountTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/delete_account",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingDeleteAllAccountsTransaction: ProcessedTx<DeleteAllAccountsTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/delete_all_accounts",
+    chainId: chainIdIov,
+    domain: "test",
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingRenewAccountTransaction: ProcessedTx<RenewAccountTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/renew_account",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingAddAccountCertificateTransaction: ProcessedTx<AddAccountCertificateTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/add_account_certificate",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    certificate: defaultCertificate,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingReplaceAccountMsgFeesTransaction: ProcessedTx<ReplaceAccountMsgFeesTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/replace_account_msg_fees",
+    chainId: chainIdIov,
+    domain: "test",
+    newMsgFees: [
+      {
+        msgPath: "fee-path-1",
+        fee: {
+          fractionalDigits: 9,
+          quantity: "10",
+          tokenTicker: "ETH" as TokenTicker,
+        },
+      },
+      {
+        msgPath: "fee-path-2",
+        fee: {
+          fractionalDigits: 9,
+          quantity: "20",
+          tokenTicker: "IOV" as TokenTicker,
+        },
+      },
+      {
+        msgPath: "fee-path-3",
+        fee: {
+          fractionalDigits: 9,
+          quantity: "30",
+          tokenTicker: "LSK" as TokenTicker,
+        },
+      },
+    ],
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingDeleteAccountCertificateTransaction: ProcessedTx<DeleteAccountCertificateTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/delete_account_certificate",
+    chainId: chainIdIov,
+    domain: "test",
+    name: "account",
+    certificateHash: defaultCertificateHash,
+    fee: {
+      tokens: stringToAmount("100", iov),
+    },
+  },
+};
+
+const incomingUpdateAccountConfigurationTransaction: ProcessedTx<UpdateAccountConfigurationTx> = {
+  id: makeExampleIovTransactionId(),
+  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  original: {
+    kind: "bns/update_account_configuration",
+    chainId: chainIdIov,
+    configuration: {
+      owner: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
+      domainRenew: 1000000000,
+      validDomain: "testDomain",
+      validName: "testName",
+      validBlockchainId: "test-blockchain-id",
+      validBlockchainAddress: "test-blockchain-address",
+    },
     fee: {
       tokens: stringToAmount("100", iov),
     },
@@ -165,10 +402,34 @@ const parsedTxs: readonly (
   | ProcessedTx<RegisterUsernameTx>
   | ProcessedTx<VoteTx>
   | ProcessedTx<RegisterDomainTx>
+  | ProcessedTx<TransferDomainTx>
+  | ProcessedTx<RenewDomainTx>
+  | ProcessedTx<DeleteDomainTx>
   | ProcessedTx<RegisterAccountTx>
+  | ProcessedTx<TransferAccountTx>
+  | ProcessedTx<ReplaceAccountTargetsTx>
+  | ProcessedTx<DeleteAccountTx>
+  | ProcessedTx<DeleteAllAccountsTx>
+  | ProcessedTx<RenewAccountTx>
+  | ProcessedTx<AddAccountCertificateTx>
+  | ProcessedTx<ReplaceAccountMsgFeesTx>
+  | ProcessedTx<UpdateAccountConfigurationTx>
+  | ProcessedTx<DeleteAccountCertificateTx>
 )[] = [
-  incomingRegisterAccountTransaction,
   incomingNewDomainTransaction,
+  incomingTransferDomainTransaction,
+  incomingRenewDomainTransaction,
+  incomingDeleteDomainTransaction,
+  incomingRegisterAccountTransaction,
+  incomingTransferAccountTransaction,
+  incomingReplaceAccountTargetsTransaction,
+  incomingDeleteAccountTransaction,
+  incomingDeleteAllAccountsTransaction,
+  incomingRenewAccountTransaction,
+  incomingAddAccountCertificateTransaction,
+  incomingReplaceAccountMsgFeesTransaction,
+  incomingDeleteAccountCertificateTransaction,
+  incomingUpdateAccountConfigurationTransaction,
   incomingSendTransaction,
   voteTx,
   {
