@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.1
+## 1.2.0
 
 - Wallet: Get Neuma extension URL from config
 - Wallet: Add IOV faucet for staging configuration
