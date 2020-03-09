@@ -15,7 +15,7 @@ const Link = ({ children, to, ...rest }: Props): JSX.Element => {
         event.preventDefault();
       };
       return (
-        <a href={to} target="_blank" onClick={clickHandler} rel="noopener noreferrer" {...rest}>
+        <a href={to} target="_blank" onClick={clickHandler} rel="noopener noreferrer">
           {children}
         </a>
       );
