@@ -62,11 +62,9 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
       </Paper>
       {starnames
         .slice()
-        .sort((a, b) => {
-          if (`${a.name}*${a.domain}` < `${b.name}*${b.domain}`) return -1;
-          if (`${a.name}*${a.domain}` > `${b.name}*${b.domain}`) return 1;
-          return 0;
-        })
+        .sort((a, b) =>
+          `${a.name}*${a.domain}`.localeCompare(`${b.name}*${b.domain}`, undefined, { sensitivity: "base" }),
+        )
         .map(starname => {
           const onManage = (): void => {
             history.push(REGISTER_STARNAME_ROUTE, starname);

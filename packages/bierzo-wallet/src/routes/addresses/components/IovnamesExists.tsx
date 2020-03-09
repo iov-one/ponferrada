@@ -50,11 +50,7 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
       </Paper>
       {iovnames
         .slice()
-        .sort((a, b) => {
-          if (a.username < b.username) return -1;
-          if (a.username > b.username) return 1;
-          return 0;
-        })
+        .sort((a, b) => a.username.localeCompare(b.username, undefined, { sensitivity: "base" }))
         .map(iovname => {
           const onManage = (): void => {
             history.push(REGISTER_IOVNAME_ROUTE, iovname);
