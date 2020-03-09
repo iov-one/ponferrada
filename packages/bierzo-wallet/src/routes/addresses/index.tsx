@@ -79,7 +79,7 @@ const Addresses = (): JSX.Element => {
         chainAddresses={chainAddresses}
         starnames={starnames}
         onRegisterIovname={onRegisterIovname}
-        usernames={bwNamesWithChain}
+        iovnames={bwNamesWithChain}
         onRegisterStarname={onRegisterStarname}
         rpcEndpointType={rpcEndpointType}
       />

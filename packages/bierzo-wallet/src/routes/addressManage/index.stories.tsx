@@ -9,8 +9,8 @@ import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwUsernameWithChainName } from "../addresses";
 import {
-  REGISTER_USERNAME_REGISTRATION_STORY_PATH,
-  REGISTER_USERNAME_STORY_PATH,
+  REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
+  REGISTER_IOVNAME_STORY_PATH,
 } from "../register/index.stories";
 import ManageName from "./ManageName";
 
@@ -65,7 +65,7 @@ storiesOf(`${bierzoRoot}/Address Manage`, module)
       <ManageName
         account={username}
         menuItems={menuItems}
-        onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+        onRegisterUsername={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
       />
     </DecoratedStorybook>
   ));
