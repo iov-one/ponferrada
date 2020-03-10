@@ -128,7 +128,7 @@ const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onE
         >
           <Block display="flex" alignItems="center" alignSelf="center">
             <Typography variant="h4" align="center">
-              {isAccountData(account) ? account.name : account.username}
+              {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
             </Typography>
             <Block marginRight={2} />
             <Block onClick={onAccountCopy} className={classes.link}>
