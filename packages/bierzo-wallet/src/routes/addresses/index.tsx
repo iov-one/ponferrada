@@ -2,19 +2,14 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import { BwUsernameWithChainName } from "../../components/AccountManage";
 import PageMenu from "../../components/PageMenu";
 import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
-import { BwUsername } from "../../store/usernames";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
 import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
-
-export interface BwUsernameWithChainName extends BwUsername {
-  readonly addresses: readonly ChainAddressPairWithName[];
-}
 
 function onRegisterIovname(): void {
   history.push(REGISTER_IOVNAME_ROUTE);

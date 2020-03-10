@@ -22,24 +22,26 @@ import {
 import React from "react";
 
 import {
-  AddressesTooltipHeader,
-  getAddressItems,
-  getChainAddressPairsFromValues,
-  getFormInitValues,
-  getSubmitButtonCaption,
-  TooltipContent,
-} from "..";
-import {
   generateRegisterUsernameTxRequest,
   generateUpdateUsernameTxRequest,
 } from "../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../communication/rpcEndpoint";
+import {
+  getAddressItems,
+  getChainAddressPairsFromValues,
+  getFormInitValues,
+  getSubmitButtonCaption,
+} from "../../../components/AccountEdit";
+import {
+  AddressesTooltipHeader,
+  BwUsernameWithChainName,
+  TooltipContent,
+} from "../../../components/AccountManage";
 import { AddressesTableProps } from "../../../components/AddressesTable";
 import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../components/PageContent";
 import { isValidIov } from "../../../logic/account";
-import { BwUsernameWithChainName } from "../../addresses";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
 
