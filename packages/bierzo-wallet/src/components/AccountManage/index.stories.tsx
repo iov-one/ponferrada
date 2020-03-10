@@ -57,9 +57,12 @@ const menuItems: readonly ActionMenuItem[] = [
   },
 ];
 
-storiesOf(`${bierzoRoot}/Account Manage`, module)
+export const ACCOUNT_MANAGE_STORY_PATH = `${bierzoRoot}/Account Manage`;
+export const ACCOUNT_MANAGE_SAMPLE_STORY_PATH = "Manage sample";
+
+storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add("Manage sample", () => (
+  .add(ACCOUNT_MANAGE_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountManage
         onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}

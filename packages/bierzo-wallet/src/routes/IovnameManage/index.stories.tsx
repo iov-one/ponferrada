@@ -6,12 +6,13 @@ import { ActionMenuItem } from "medulas-react-components";
 import React from "react";
 
 import AccountManage, { BwUsernameWithChainName } from "../../components/AccountManage";
+import { ACCOUNT_MANAGE_STORY_PATH } from "../../components/AccountManage/index.stories";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
 } from "../../routes/register/index.stories";
-import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
+import DecoratedStorybook from "../../utils/storybook";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -57,9 +58,11 @@ const menuItems: readonly ActionMenuItem[] = [
   },
 ];
 
-storiesOf(`${bierzoRoot}/Account Manage`, module)
+export const ACCOUNT_MANAGE_IOVNAMES_STORY_PATH = "Manage iovnames";
+
+storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add("Manage iovnames", () => (
+  .add(ACCOUNT_MANAGE_IOVNAMES_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountManage
         onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
