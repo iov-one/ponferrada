@@ -4,14 +4,16 @@ import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
 import Addresses from "./addresses";
-import AddressManage from "./addressManage";
 import Balance from "./balance";
+import IovnameManage from "./IovnameManage";
 import Login from "./login";
+import NameManage from "./NameManage";
 import {
-  ADDRESS_MANAGE_ROUTE,
   ADDRESSES_ROUTE,
   BALANCE_ROUTE,
+  IOVNAME_MANAGE_ROUTE,
   LOGIN_ROUTE,
+  NAME_MANAGE_ROUTE,
   PAYMENT_ROUTE,
   POLICY_ROUTE,
   REGISTER_IOVNAME_ROUTE,
@@ -36,7 +38,8 @@ const Routes = (): JSX.Element => (
       <RequireLogin>
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
-        <Route exact path={ADDRESS_MANAGE_ROUTE} component={AddressManage} />
+        <Route exact path={IOVNAME_MANAGE_ROUTE} component={IovnameManage} />
+        <Route exact path={NAME_MANAGE_ROUTE} component={NameManage} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <Register entity={ToRegister.Iovname} />} />
