@@ -27,8 +27,8 @@ import {
   TooltipContent,
 } from "../AccountManage";
 import { AddressesTableProps, ChainAddressPairWithName } from "../AddressesTable";
-import shield from "../assets/shield.svg";
 import PageContent from "../PageContent";
+import shield from "./assets/shield.svg";
 import SelectAddressesTable, {
   addressValueField,
   blockchainValueField,
