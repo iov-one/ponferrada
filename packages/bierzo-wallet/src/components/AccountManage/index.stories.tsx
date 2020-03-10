@@ -6,13 +6,12 @@ import { ActionMenuItem } from "medulas-react-components";
 import React from "react";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
-import { BwUsernameWithChainName } from "../addresses";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
-} from "../register/index.stories";
-import ManageName from "./ManageName";
+} from "../../routes/register/index.stories";
+import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
+import AccountManage, { BwUsernameWithChainName } from ".";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -58,14 +57,14 @@ const menuItems: readonly ActionMenuItem[] = [
   },
 ];
 
-storiesOf(`${bierzoRoot}/Address Manage`, module)
+storiesOf(`${bierzoRoot}/Account Manage`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add("Manage names", () => (
+  .add("Manage sample", () => (
     <DecoratedStorybook>
-      <ManageName
+      <AccountManage
+        onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         account={username}
         menuItems={menuItems}
-        onRegisterUsername={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
       />
     </DecoratedStorybook>
   ));
