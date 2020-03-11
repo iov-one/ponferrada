@@ -7,6 +7,8 @@ import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { REGISTER_IOVNAME_ROUTE } from "../../paths";
 import { NoIovnameHeader } from "../../register/components/IovnameForm";
 
+export const registerIovnameId = REGISTER_IOVNAME_ROUTE.replace(/\//g, "-");
+
 interface StarnamesNotExistsProps {
   readonly onRegisterIovname: () => void;
   readonly rpcEndpointType: RpcEndpointType;
@@ -28,7 +30,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={REGISTER_IOVNAME_ROUTE}
+        id={registerIovnameId}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -50,7 +52,7 @@ export function GetYourAddressWithLedger(): JSX.Element {
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={REGISTER_IOVNAME_ROUTE} variant="body1" color="primary" weight="light">
+      <Typography id={registerIovnameId} variant="body1" color="primary" weight="light">
         iovnames
       </Typography>
       <Block textAlign="center">
