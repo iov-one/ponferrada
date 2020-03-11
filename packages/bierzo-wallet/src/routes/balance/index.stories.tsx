@@ -9,7 +9,7 @@ import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
-} from "../register/index.stories";
+} from "../account/register/index.stories";
 import Layout from "./components/index";
 
 export const BALANCE_STORY_PATH = `${bierzoRoot}/Balance`;

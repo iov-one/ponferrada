@@ -5,7 +5,7 @@ import React from "react";
 import { history } from "../..";
 import iovnameLogo from "../../../assets/iovname-logo.svg";
 import { BwUsername } from "../../../store/usernames";
-import { IOVNAME_MANAGE_ROUTE } from "../../paths";
+import { IOVNAME_MANAGE_ROUTE, REGISTER_IOVNAME_ROUTE } from "../../paths";
 
 interface Props {
   readonly iovnames: readonly BwUsername[];

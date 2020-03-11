@@ -3,8 +3,7 @@ import React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
-import AccountManage from "./account/manage";
-import Register from "./account/register";
+import { AccountManage, AccountRegister } from "./account";
 import Addresses from "./addresses";
 import Balance from "./balance";
 import Login from "./login";
@@ -41,9 +40,9 @@ const Routes = (): JSX.Element => (
         <Route exact path={NAME_MANAGE_ROUTE} render={() => <AccountManage entity="name" />} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
-        <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <Register entity="iovname" />} />
-        <Route exact path={REGISTER_STARNAME_ROUTE} render={() => <Register entity="starname" />} />
-        <Route exact path={REGISTER_NAME_ROUTE} render={() => <Register entity="name" />} />
+        <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <AccountRegister entity="iovname" />} />
+        <Route exact path={REGISTER_STARNAME_ROUTE} render={() => <AccountRegister entity="starname" />} />
+        <Route exact path={REGISTER_NAME_ROUTE} render={() => <AccountRegister entity="name" />} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />
       </RequireLogin>

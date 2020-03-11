@@ -11,9 +11,9 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import copySvg from "../../../assets/copy.svg";
-import tickSvg from "../../../assets/tick.svg";
-import PageContent from "../../../components/PageContent";
+import copySvg from "../../../../assets/copy.svg";
+import tickSvg from "../../../../assets/tick.svg";
+import PageContent from "../../../../components/PageContent";
 
 export const UPDATE_CONFIRMATION_VIEW_ID = "update-confirmation-view-id";
 

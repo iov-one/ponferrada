@@ -2,8 +2,8 @@ import { Browser, ElementHandle, Page } from "puppeteer";
 import { randomString, sleep, whenTrue } from "ui-logic";
 
 import { acceptEnqueuedRequest } from "../../../utils/test/persona";
+import { REGISTER_IOVNAME_FIELD } from "../../account/register/components/IovnameForm";
 import { registerIovnameId } from "../../addresses/components/IovnamesNotExists";
-import { REGISTER_IOVNAME_FIELD } from "../../register/components/IovnameForm";
 
 const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;

@@ -5,8 +5,8 @@ import React from "react";
 
 import { history } from "../..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
+import { NoStarnameHeader } from "../../account/register/components/StarnameForm";
 import { REGISTER_NAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../paths";
-import { NoStarnameHeader } from "../../register/components/StarnameForm";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterStarname: () => void;
