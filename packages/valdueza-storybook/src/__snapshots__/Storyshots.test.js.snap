@@ -1882,7 +1882,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames tab 1`] = `
       />
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-        id="/iovname/register"
+        id="-iovname-register"
         onClick={[Function]}
       >
         Choose Now
@@ -2712,7 +2712,7 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
           </p>
           <p
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
-            id="/iovname/register"
+            id="-iovname-register"
           >
             iovnames
           </p>
@@ -2954,7 +2954,7 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
           />
           <h6
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-            id="/iovname/register"
+            id="-iovname-register"
             onClick={[Function]}
           >
             Choose Now
