@@ -1,4 +1,5 @@
 import { Address, Fee } from "@iov/bcp";
+import clipboardCopy from "clipboard-copy";
 import { FieldValidator } from "final-form";
 import {
   Back,
@@ -11,6 +12,8 @@ import {
   Image,
   makeStyles,
   TextField,
+  ToastContext,
+  ToastVariant,
   Tooltip,
   Typography,
   useForm,
@@ -18,15 +21,16 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
+import { formatDate, formatTime } from "../../utils/date";
 import {
   AddressesTooltipHeader,
   BwAccountWithChainName,
   BwUsernameWithChainName,
   isAccountData,
-  isUsernameData,
   TooltipContent,
 } from "../AccountManage";
 import { AddressesTableProps, ChainAddressPairWithName } from "../AddressesTable";
+import copy from "../AddressesTable/assets/copy.svg";
 import PageContent from "../PageContent";
 import shield from "./assets/shield.svg";
 import SelectAddressesTable, {
@@ -126,6 +130,9 @@ const useStyles = makeStyles({
   iovnameHeader: {
     boxShadow: "0px 0px 14px #EDEFF4",
   },
+  link: {
+    cursor: "pointer",
+  },
 });
 
 export function NoIovnameHeader(): JSX.Element {
@@ -158,6 +165,9 @@ const AccountEdit = ({
   transactionFee,
   onSubmit,
 }: Props): JSX.Element => {
+  const classes = useStyles();
+  const toast = React.useContext(ToastContext);
+
   const chainAddressesItems = React.useMemo(() => {
     if (account) {
       return getAddressItems(account.addresses);
@@ -170,6 +180,14 @@ const AccountEdit = ({
     onSubmit,
     initialValues,
   });
+
+  const onAccountCopy = (): void => {
+    if (account) {
+      const name = isAccountData(account) ? account.name : account.username;
+      clipboardCopy(name);
+      toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
+    }
+  };
 
   const buttons = (
     <Block
@@ -203,10 +221,22 @@ const AccountEdit = ({
       <PageContent id={EDIT_ACCOUNT_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
           {account && (
-            <Typography variant="h4" align="center">
-              {isUsernameData(account) && account.username}
-              {isAccountData(account) && `${account.name}*${account.domain}`}
-            </Typography>
+            <React.Fragment>
+              <Block display="flex" justifyContent="center">
+                <Typography variant="h4" align="center">
+                  {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
+                </Typography>
+                <Block marginRight={2} />
+                <Block onClick={onAccountCopy} className={classes.link} marginTop={1}>
+                  <Image src={copy} alt="Copy" width={20} />
+                </Block>
+              </Block>
+              {isAccountData(account) && (
+                <Typography variant="body2" inline align="center" color="textSecondary">
+                  Expires on {formatDate(account.expiryDate)} {formatTime(account.expiryDate)}
+                </Typography>
+              )}
+            </React.Fragment>
           )}
           {!account && (
             <React.Fragment>
