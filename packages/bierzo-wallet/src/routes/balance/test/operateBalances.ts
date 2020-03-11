@@ -2,7 +2,7 @@ import { Browser, ElementHandle, Page } from "puppeteer";
 import { randomString, sleep, whenTrue } from "ui-logic";
 
 import { acceptEnqueuedRequest } from "../../../utils/test/persona";
-import { REGISTER_IOVNAME_ROUTE } from "../../paths";
+import { registerIovnameId } from "../../addresses/components/IovnamesNotExists";
 import { REGISTER_IOVNAME_FIELD } from "../../register/components/IovnameForm";
 
 const mainMenuH6Elements = 3;
@@ -42,7 +42,7 @@ export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Elem
 };
 
 export const registerPersonalizedAddress = async (browser: Browser, page: Page): Promise<string> => {
-  await page.click(`#${REGISTER_IOVNAME_ROUTE.replace("/", "\\/")}`);
+  await page.click(`#${registerIovnameId}`);
 
   // Fill the form
   await sleep(1000);

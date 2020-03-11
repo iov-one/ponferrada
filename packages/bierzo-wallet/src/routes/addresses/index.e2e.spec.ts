@@ -84,7 +84,7 @@ withChainsDescribe("E2E > Receive Payment route", () => {
     }, 35000);
   });
 
-  describe("Starnames tab", () => {
+  describe.skip("Starnames tab", () => {
     let username: string;
     beforeEach(async () => {
       await travelToStarnamesTabE2E(page);
