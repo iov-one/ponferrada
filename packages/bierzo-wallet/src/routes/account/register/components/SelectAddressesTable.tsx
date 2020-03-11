@@ -14,7 +14,7 @@ import {
 import React from "react";
 import { randomString } from "ui-logic";
 
-import { ChainAddressPairWithName } from "../../../components/AddressesTable";
+import { ChainAddressPairWithName } from "../../../../components/AddressesTable";
 
 export const addressValueField = "address-value-field";
 export const blockchainValueField = "blockchain-value-field";

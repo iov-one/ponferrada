@@ -5,13 +5,16 @@ import { storiesOf } from "@storybook/react";
 import { ActionMenuItem } from "medulas-react-components";
 import React from "react";
 
-import AccountManage, { BwAccountWithChainName } from "../../components/AccountManage";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import AccountManage, {
+  BwAccountWithChainName,
+  BwUsernameWithChainName,
+} from "../../../components/AccountManage";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
+import DecoratedStorybook, { bierzoRoot } from "../../../utils/storybook";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
-} from "../../routes/register/index.stories";
-import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
+} from "../register/index.stories";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -38,6 +41,11 @@ const account: BwAccountWithChainName = {
   addresses: [chainAddresses[0], chainAddresses[1]],
 };
 
+const username: BwUsernameWithChainName = {
+  username: "test2*iov",
+  addresses: [chainAddresses[0], chainAddresses[1]],
+};
+
 const menuItems: readonly ActionMenuItem[] = [
   {
     title: "Renew",
@@ -59,6 +67,8 @@ const menuItems: readonly ActionMenuItem[] = [
   },
 ];
 
+export const ACCOUNT_MANAGE_IOVNAMES_STORY_PATH = "Manage iovname";
+
 storiesOf(`${bierzoRoot}/Account Manage`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Manage name", () => (
@@ -66,6 +76,15 @@ storiesOf(`${bierzoRoot}/Account Manage`, module)
       <AccountManage
         onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         account={account}
+        menuItems={menuItems}
+      />
+    </DecoratedStorybook>
+  ))
+  .add(ACCOUNT_MANAGE_IOVNAMES_STORY_PATH, () => (
+    <DecoratedStorybook>
+      <AccountManage
+        onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
+        account={username}
         menuItems={menuItems}
       />
     </DecoratedStorybook>

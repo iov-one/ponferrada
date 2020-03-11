@@ -19,14 +19,14 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import { generateRegisterDomainTxRequest } from "../../../communication/requestgenerators";
-import { RpcEndpoint } from "../../../communication/rpcEndpoint";
-import { getSubmitButtonCaption } from "../../../components/AccountEdit";
-import { BwUsernameWithChainName, TooltipContent } from "../../../components/AccountManage";
-import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
-import PageContent from "../../../components/PageContent";
-import { isValidStarname } from "../../../logic/account";
+import { generateRegisterDomainTxRequest } from "../../../../communication/requestgenerators";
+import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
+import { getSubmitButtonCaption } from "../../../../components/AccountEdit";
+import { BwUsernameWithChainName, TooltipContent } from "../../../../components/AccountManage";
+import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
+import PageContent from "../../../../components/PageContent";
+import { isValidStarname } from "../../../../logic/account";
 import shield from "../assets/shield.svg";
 
 export const REGISTER_STARNAME_VIEW_ID = "register-starname-view-id";

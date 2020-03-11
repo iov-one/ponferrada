@@ -49,17 +49,13 @@ async function getPersonalizedAddressRegistrationFee(
   return transactionWithFee.fee;
 }
 
-export enum ToRegister {
-  Iovname = "iovname",
-  Starname = "starname",
-  Name = "name",
+export type AccountEntity = "iovname" | "starname" | "name";
+
+export interface AccountProps {
+  entity: AccountEntity;
 }
 
-interface Props {
-  entity: ToRegister;
-}
-
-const Register = ({ entity }: Props): JSX.Element => {
+const Register = ({ entity }: AccountProps): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>(undefined);
   const [supportedChains, setSupportedChains] = React.useState<readonly SupportedChain[]>([]);
@@ -104,7 +100,7 @@ const Register = ({ entity }: Props): JSX.Element => {
         <ConfirmRegistration transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
       ) : (
         <React.Fragment>
-          {entity === ToRegister.Iovname && (
+          {entity === "iovname" && (
             <IovnameForm
               onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
               chainAddresses={addressesSorted}
@@ -115,7 +111,7 @@ const Register = ({ entity }: Props): JSX.Element => {
               setTransactionId={setTransactionId}
             />
           )}
-          {entity === ToRegister.Starname && (
+          {entity === "starname" && (
             <StarnameForm
               onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
               iovnameAddresses={iovnameAddresses}
@@ -125,7 +121,7 @@ const Register = ({ entity }: Props): JSX.Element => {
               setTransactionId={setTransactionId}
             />
           )}
-          {entity === ToRegister.Name && (
+          {entity === "name" && (
             <NameForm
               onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
               chainAddresses={addressesSorted}

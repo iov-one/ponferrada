@@ -9,7 +9,7 @@ import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
-} from "../../routes/register/index.stories";
+} from "../../routes/account/register/index.stories";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import AccountManage, { BwUsernameWithChainName } from ".";
 

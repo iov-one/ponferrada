@@ -1,10 +1,9 @@
-import { ActionMenuItem, Block } from "medulas-react-components";
+import { ActionMenuItem } from "medulas-react-components";
 import * as React from "react";
 
-import { history } from "..";
-import AccountManage, { BwUsernameWithChainName } from "../../components/AccountManage";
-import PageMenu from "../../components/PageMenu";
-import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../paths";
+import { history } from "../../..";
+import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
+import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../../paths";
 
 function onRegisterUsername(): void {
   history.push(REGISTER_IOVNAME_ROUTE);
@@ -20,7 +19,7 @@ const menuItems: readonly ActionMenuItem[] = [
   { title: "Delete iovname", action: () => console.log("Delete iovname") },
 ];
 
-const AddressManage = (): JSX.Element => {
+const IovnameAccountManage = (): JSX.Element => {
   const aadressToManage: BwUsernameWithChainName | undefined = history.location.state;
 
   if (!aadressToManage) {
@@ -31,13 +30,7 @@ const AddressManage = (): JSX.Element => {
     history.push(REGISTER_IOVNAME_ROUTE, aadressToManage);
   };
 
-  return (
-    <PageMenu>
-      <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <AccountManage menuItems={menuItems} onEditAccount={onEditAccount} account={aadressToManage} />
-      </Block>
-    </PageMenu>
-  );
+  return <AccountManage menuItems={menuItems} onEditAccount={onEditAccount} account={aadressToManage} />;
 };
 
-export default AddressManage;
+export default IovnameAccountManage;

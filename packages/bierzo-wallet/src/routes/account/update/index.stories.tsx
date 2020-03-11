@@ -7,14 +7,14 @@ import { FieldInputValue } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
-import AccountEdit from "../../components/AccountEdit";
-import { UPDATE_ACCOUNT_STORY_PATH } from "../../components/AccountEdit/index.stories";
-import { BwUsernameWithChainName } from "../../components/AccountManage";
-import { ACCOUNT_MANAGE_STORY_PATH } from "../../components/AccountManage/index.stories";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import DecoratedStorybook from "../../utils/storybook";
-import { ACCOUNT_MANAGE_IOVNAMES_STORY_PATH } from "../IovnameManage/index.stories";
-import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
+import AccountEdit from "../../../components/AccountEdit";
+import { UPDATE_ACCOUNT_STORY_PATH } from "../../../components/AccountEdit/index.stories";
+import { BwUsernameWithChainName } from "../../../components/AccountManage";
+import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
+import DecoratedStorybook from "../../../utils/storybook";
+import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../../transactions/index.stories";
+import { ACCOUNT_MANAGE_IOVNAMES_STORY_PATH } from "../manage/index.stories";
 import ConfirmUpdate from "./components/ConfirmUpdate";
 
 export const UPDATE_IOVNAME_REGISTRATION_STORY_PATH = "Update Iovname";

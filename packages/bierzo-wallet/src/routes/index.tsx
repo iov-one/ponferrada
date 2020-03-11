@@ -3,11 +3,11 @@ import React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
+import AccountManage from "./account/manage";
+import Register from "./account/register";
 import Addresses from "./addresses";
 import Balance from "./balance";
-import IovnameManage from "./IovnameManage";
 import Login from "./login";
-import NameManage from "./NameManage";
 import {
   ADDRESSES_ROUTE,
   BALANCE_ROUTE,
@@ -24,7 +24,6 @@ import {
 } from "./paths";
 import Payment from "./payment";
 import Policy from "./policy";
-import Register, { ToRegister } from "./register";
 import Terms from "./terms";
 import Transactions from "./transactions";
 
@@ -38,17 +37,13 @@ const Routes = (): JSX.Element => (
       <RequireLogin>
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
-        <Route exact path={IOVNAME_MANAGE_ROUTE} component={IovnameManage} />
-        <Route exact path={NAME_MANAGE_ROUTE} component={NameManage} />
+        <Route exact path={IOVNAME_MANAGE_ROUTE} render={() => <AccountManage entity="iovname" />} />
+        <Route exact path={NAME_MANAGE_ROUTE} render={() => <AccountManage entity="name" />} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
-        <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <Register entity={ToRegister.Iovname} />} />
-        <Route
-          exact
-          path={REGISTER_STARNAME_ROUTE}
-          render={() => <Register entity={ToRegister.Starname} />}
-        />
-        <Route exact path={REGISTER_NAME_ROUTE} render={() => <Register entity={ToRegister.Name} />} />
+        <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <Register entity="iovname" />} />
+        <Route exact path={REGISTER_STARNAME_ROUTE} render={() => <Register entity="starname" />} />
+        <Route exact path={REGISTER_NAME_ROUTE} render={() => <Register entity="name" />} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />
       </RequireLogin>

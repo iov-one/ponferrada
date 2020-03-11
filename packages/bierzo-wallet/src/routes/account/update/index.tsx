@@ -11,27 +11,27 @@ import {
 import React from "react";
 import * as ReactRedux from "react-redux";
 
-import { history } from "..";
+import { history } from "../..";
 import {
   generateRegisterUsernameTxRequest,
   generateRegisterUsernameTxWithFee,
-} from "../../communication/requestgenerators";
+} from "../../../communication/requestgenerators";
 import AccountEdit, {
   EDIT_ACCOUNT_FIELD,
   getChainAddressPairsFromValues,
-} from "../../components/AccountEdit";
-import { BwUsernameWithChainName } from "../../components/AccountManage";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
-import PageMenu from "../../components/PageMenu";
-import { getConfig, SupportedChain } from "../../config";
-import { isValidIov } from "../../logic/account";
-import { getConnectionForChainId } from "../../logic/connection";
-import { ExtendedIdentity } from "../../store/identities";
-import { RootState } from "../../store/reducers";
-import { getChainAddressPairWithNamesSorted } from "../../utils/tokens";
-import { IOVNAME_MANAGE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
+} from "../../../components/AccountEdit";
+import { BwUsernameWithChainName } from "../../../components/AccountManage";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
+import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
+import PageMenu from "../../../components/PageMenu";
+import { getConfig, SupportedChain } from "../../../config";
+import { isValidIov } from "../../../logic/account";
+import { getConnectionForChainId } from "../../../logic/connection";
+import { ExtendedIdentity } from "../../../store/identities";
+import { RootState } from "../../../store/reducers";
+import { getChainAddressPairWithNamesSorted } from "../../../utils/tokens";
+import { IOVNAME_MANAGE_ROUTE, TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmRegistration from "./components/ConfirmUpdate";
 
 function onSeeTrasactions(): void {
