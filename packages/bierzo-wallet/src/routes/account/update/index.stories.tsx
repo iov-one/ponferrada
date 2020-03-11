@@ -18,7 +18,6 @@ import { ACCOUNT_MANAGE_IOVNAMES_STORY_PATH } from "../manage/index.stories";
 import ConfirmUpdate from "./components/ConfirmUpdate";
 
 export const UPDATE_IOVNAME_REGISTRATION_STORY_PATH = "Update Iovname";
-// const REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH = "Register Username without fee";
 const REGISTER_IOVNAME_CONFIRMATION_STORY_PATH = "Update confirmation";
 
 const addresses: ChainAddressPairWithName[] = [
