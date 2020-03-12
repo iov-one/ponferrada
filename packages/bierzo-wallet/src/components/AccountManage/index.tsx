@@ -73,6 +73,7 @@ type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
 interface Props {
   readonly account: AccountModuleMixedType;
   readonly menuItems: readonly ActionMenuItem[];
+  readonly hideExpiration?: boolean;
   readonly onEditAccount: () => void;
 }
 
@@ -99,7 +100,12 @@ const useStyles = makeStyles({
   },
 });
 
-const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onEditAccount }) => {
+const AccountManage: React.FunctionComponent<Props> = ({
+  account,
+  menuItems,
+  onEditAccount,
+  hideExpiration,
+}) => {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
@@ -135,7 +141,7 @@ const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onE
               <Image src={copy} alt="Copy" width={20} />
             </Block>
           </Block>
-          {isAccountData(account) && (
+          {isAccountData(account) && !hideExpiration && (
             <Typography variant="body2" inline align="center" color="textSecondary">
               Expires on {formatDate(account.expiryDate)} {formatTime(account.expiryDate)}
             </Typography>
