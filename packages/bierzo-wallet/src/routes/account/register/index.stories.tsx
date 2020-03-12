@@ -4,12 +4,10 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../../utils/storybook";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../../transactions/index.stories";
-import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
-import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
-import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
 import ConfirmRegistration from "./components/ConfirmRegistration";
 import IovnameForm from "./components/IovnameForm";
 import StarnameForm from "./components/StarnameForm";
