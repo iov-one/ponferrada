@@ -54,8 +54,8 @@ export function NoStarnameHeader(): JSX.Element {
 interface Props {
   readonly onCancel: () => void;
   readonly iovnameAddresses: BwUsernameWithChainName | undefined;
-  readonly bnsIdentity: Identity;
-  readonly rpcEndpoint: RpcEndpoint;
+  readonly bnsIdentity: Identity | undefined;
+  readonly rpcEndpoint: RpcEndpoint | undefined;
   readonly transactionFee: Fee | undefined;
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
@@ -72,6 +72,9 @@ const StarnameForm = ({
   const toast = React.useContext(ToastContext);
 
   const onSubmit = async (values: object): Promise<void> => {
+    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
+    if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
+
     const formValues = values as FormValues;
     const domain = formValues[REGISTER_STARNAME_FIELD].split("*")[1];
 

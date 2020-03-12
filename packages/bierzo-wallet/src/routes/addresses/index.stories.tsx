@@ -4,14 +4,18 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import { BwAccount } from "../../store/accounts";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
+  REGISTER_STARNAME_REGISTRATION_STORY_PATH,
+  REGISTER_STARNAME_STORY_PATH,
 } from "../register/index.stories";
 import { BwUsernameWithChainName } from ".";
 import AddressesTab from "./components/AddressesTab";
 import Iovnames from "./components/Iovnames";
+import Starnames from "./components/Starnames";
 import UserAddresses from "./components/UserAddresses";
 
 const chainAddresses: ChainAddressPairWithName[] = [
@@ -32,7 +36,7 @@ const chainAddresses: ChainAddressPairWithName[] = [
   },
 ];
 
-const usernames: readonly BwUsernameWithChainName[] = [
+const ivonames: readonly BwUsernameWithChainName[] = [
   {
     username: "test1*iov",
     addresses: [chainAddresses[0]],
@@ -44,6 +48,29 @@ const usernames: readonly BwUsernameWithChainName[] = [
   {
     username: "test3*iov",
     addresses: [...chainAddresses],
+  },
+];
+
+const defaultExpiryDate = new Date(new Date().getTime() + 1000000000);
+
+const starnames: readonly BwAccount[] = [
+  {
+    domain: "domain1",
+    name: "name1",
+    expiryDate: defaultExpiryDate,
+    addresses: [chainAddresses[0]],
+  },
+  {
+    domain: "domain2",
+    name: "name2",
+    expiryDate: defaultExpiryDate,
+    addresses: [chainAddresses[0]],
+  },
+  {
+    domain: "domain1",
+    name: "name2",
+    expiryDate: defaultExpiryDate,
+    addresses: [chainAddresses[0]],
   },
 ];
 
@@ -65,8 +92,8 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={chainAddresses}
-        iovnames={usernames}
-        starnames={[]}
+        iovnames={ivonames}
+        starnames={starnames}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
         rpcEndpointType="extension"
@@ -102,8 +129,17 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Iovnames with name tab", () => (
     <DecoratedStorybook>
       <Iovnames
-        iovnames={usernames}
+        iovnames={ivonames}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
+        rpcEndpointType="extension"
+      />
+    </DecoratedStorybook>
+  ))
+  .add("Starnames with name tab", () => (
+    <DecoratedStorybook>
+      <Starnames
+        starnames={starnames}
+        onRegisterStarname={linkTo(REGISTER_STARNAME_STORY_PATH, REGISTER_STARNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />
     </DecoratedStorybook>

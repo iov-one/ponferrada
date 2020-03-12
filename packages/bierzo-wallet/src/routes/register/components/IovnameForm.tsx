@@ -68,8 +68,8 @@ export function NoIovnameHeader(): JSX.Element {
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
   readonly iovnameAddresses: BwUsernameWithChainName | undefined;
-  readonly bnsIdentity: Identity;
-  readonly rpcEndpoint: RpcEndpoint;
+  readonly bnsIdentity: Identity | undefined;
+  readonly rpcEndpoint: RpcEndpoint | undefined;
   readonly transactionFee: Fee | undefined;
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
@@ -94,6 +94,9 @@ const IovnameForm = ({
   }, [chainAddresses, iovnameAddresses]);
 
   const onSubmit = async (values: object): Promise<void> => {
+    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
+    if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
+
     const formValues = values as FormValues;
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
