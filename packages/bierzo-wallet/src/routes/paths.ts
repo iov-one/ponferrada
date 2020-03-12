@@ -11,5 +11,7 @@ export const ADDRESS_MANAGE_ROUTE = "/address-manage";
 export const IOVNAME_MANAGE_ROUTE = "/iovname/manage";
 export const IOVNAME_EDIT_ROUTE = "/iovname/edit";
 export const NAME_MANAGE_ROUTE = "/name/manage";
+export const NAME_EDIT_ROUTE = "/name/edit";
+export const STARNAME_EDIT_ROUTE = "/starname/edit";
 export const TERMS_ROUTE = "/terms";
 export const POLICY_ROUTE = "/policy";
