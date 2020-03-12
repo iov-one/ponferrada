@@ -14,7 +14,7 @@ const ReqRegisterDomainTx = ({ tx }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Typography variant="body1" inline color="primary" id={REQ_REGISTER_DOMAIN}>
-        {tx.domain}
+        *{tx.domain}
       </Typography>
       <Typography variant="body1" inline>
         {" "}
