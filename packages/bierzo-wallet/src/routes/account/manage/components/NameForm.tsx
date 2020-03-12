@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../../paths";
+import { NAME_EDIT_ROUTE, REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../../paths";
 
 function onRegisterUsername(): void {
   history.push(REGISTER_IOVNAME_ROUTE);
@@ -13,11 +13,7 @@ function onRegisterStarname(): void {
   history.push(REGISTER_STARNAME_ROUTE);
 }
 
-const menuItems: readonly ActionMenuItem[] = [
-  { title: "Renew", action: () => console.log("Renew") },
-  { title: "Transfer iovname", action: () => console.log("Transfer iovname") },
-  { title: "Delete iovname", action: () => console.log("Delete iovname") },
-];
+const menuItems: readonly ActionMenuItem[] = [{ title: "Renew", action: () => console.log("Delete") }];
 
 const NameAccountManage = (): JSX.Element => {
   const aadressToManage: BwUsernameWithChainName | undefined = history.location.state;
@@ -27,7 +23,7 @@ const NameAccountManage = (): JSX.Element => {
   }
 
   const onEditAccount = (): void => {
-    history.push(REGISTER_IOVNAME_ROUTE, aadressToManage);
+    history.push(NAME_EDIT_ROUTE, aadressToManage);
   };
 
   return <AccountManage menuItems={menuItems} onEditAccount={onEditAccount} account={aadressToManage} />;
