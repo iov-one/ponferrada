@@ -3,10 +3,8 @@ import { ActionMenuItem, Block, Image, makeStyles, Typography } from "medulas-re
 import React from "react";
 
 import { history } from "../../..";
-import starnameLogo from "../../../../assets/starname-logo.svg";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { BwAccount } from "../../../../store/accounts";
-import { NAME_EDIT_ROUTE, NAME_MANAGE_ROUTE, REGISTER_STARNAME_ROUTE } from "../../../paths";
+import { NAME_EDIT_ROUTE } from "../../../paths";
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 
