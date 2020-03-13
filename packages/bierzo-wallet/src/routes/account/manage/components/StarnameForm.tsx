@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../../paths";
+import { REGISTER_IOVNAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
 import AssociatedNamesList from "./AssociatedNamesList";
 
 function onRegisterUsername(): void {
@@ -11,7 +11,7 @@ function onRegisterUsername(): void {
 }
 
 function onRegisterStarname(): void {
-  history.push(REGISTER_STARNAME_ROUTE);
+  history.push(STARNAME_REGISTER_ROUTE);
 }
 
 const menuItems: readonly ActionMenuItem[] = [

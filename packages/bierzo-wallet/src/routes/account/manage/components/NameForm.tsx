@@ -3,14 +3,14 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import { NAME_EDIT_ROUTE, REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../../paths";
+import { NAME_EDIT_ROUTE, REGISTER_IOVNAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
 
 function onRegisterUsername(): void {
   history.push(REGISTER_IOVNAME_ROUTE);
 }
 
 function onRegisterStarname(): void {
-  history.push(REGISTER_STARNAME_ROUTE);
+  history.push(STARNAME_REGISTER_ROUTE);
 }
 
 const menuItems: readonly ActionMenuItem[] = [{ title: "Renew", action: () => console.log("Delete") }];

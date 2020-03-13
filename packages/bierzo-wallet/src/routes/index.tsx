@@ -17,7 +17,7 @@ import {
   POLICY_ROUTE,
   REGISTER_IOVNAME_ROUTE,
   REGISTER_NAME_ROUTE,
-  REGISTER_STARNAME_ROUTE,
+  STARNAME_REGISTER_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "./paths";
@@ -41,7 +41,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <AccountRegister entity="iovname" />} />
-        <Route exact path={REGISTER_STARNAME_ROUTE} render={() => <AccountRegister entity="starname" />} />
+        <Route exact path={STARNAME_REGISTER_ROUTE} render={() => <AccountRegister entity="starname" />} />
         <Route exact path={REGISTER_NAME_ROUTE} render={() => <AccountRegister entity="name" />} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />

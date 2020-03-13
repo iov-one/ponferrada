@@ -8,7 +8,7 @@ import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
-import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../paths";
+import { REGISTER_IOVNAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
 
 function onRegisterIovname(): void {
@@ -16,7 +16,7 @@ function onRegisterIovname(): void {
 }
 
 function onRegisterStarname(): void {
-  history.push(REGISTER_STARNAME_ROUTE);
+  history.push(STARNAME_REGISTER_ROUTE);
 }
 
 const Addresses = (): JSX.Element => {
