@@ -1,17 +1,14 @@
 import { Address, Fee } from "@iov/bcp";
 import clipboardCopy from "clipboard-copy";
-import { FieldValidator } from "final-form";
 import {
   Back,
   Block,
   Button,
-  FieldInputValue,
   Form,
   FormValues,
   Hairline,
   Image,
   makeStyles,
-  TextField,
   ToastContext,
   ToastVariant,
   Tooltip,
@@ -115,10 +112,12 @@ export function getFormInitValues(addressItems: SelectAddressItem[]): FormValues
 export function getAddressItems(chainAddresses: readonly ChainAddressPairWithName[]): SelectAddressItem[] {
   const addressItems: SelectAddressItem[] = [];
   chainAddresses.forEach((chain, index) => {
-    addressItems.push({
-      id: index.toString(),
-      chain,
-    });
+    if (chain.address) {
+      addressItems.push({
+        id: index.toString(),
+        chain,
+      });
+    }
   });
 
   return addressItems;
@@ -148,32 +147,21 @@ export function NoIovnameHeader(): JSX.Element {
 
 export interface AccountEditProps extends AddressesTableProps {
   readonly onCancel: () => void;
-  readonly account: BwUsernameWithChainName | BwAccountWithChainName | undefined;
+  readonly account: BwUsernameWithChainName | BwAccountWithChainName;
   readonly transactionFee: Fee | undefined;
 }
 
 interface Props extends AccountEditProps {
-  readonly accountValidator: FieldValidator<FieldInputValue>;
   readonly onSubmit: (values: object) => Promise<void>;
 }
 
-const AccountEdit = ({
-  accountValidator,
-  chainAddresses,
-  account,
-  onCancel,
-  transactionFee,
-  onSubmit,
-}: Props): JSX.Element => {
+const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubmit }: Props): JSX.Element => {
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
   const chainAddressesItems = React.useMemo(() => {
-    if (account) {
-      return getAddressItems(account.addresses);
-    }
-    return getAddressItems(chainAddresses);
-  }, [chainAddresses, account]);
+    return getAddressItems(account.addresses);
+  }, [account]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating } = useForm({
@@ -220,54 +208,21 @@ const AccountEdit = ({
     <Form onSubmit={handleSubmit}>
       <PageContent id={EDIT_ACCOUNT_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
-          {account && (
-            <React.Fragment>
-              <Block display="flex" justifyContent="center">
-                <Typography variant="h4" align="center">
-                  {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
-                </Typography>
-                <Block marginRight={2} />
-                <Block onClick={onAccountCopy} className={classes.link} marginTop={1}>
-                  <Image src={copy} alt="Copy" width={20} />
-                </Block>
-              </Block>
-              {isAccountData(account) && (
-                <Typography variant="body2" inline align="center" color="textSecondary">
-                  Expires on {formatDate(account.expiryDate)} {formatTime(account.expiryDate)}
-                </Typography>
-              )}
-            </React.Fragment>
-          )}
-          {!account && (
-            <React.Fragment>
-              <Block display="flex" justifyContent="space-between" marginBottom={1}>
-                <Typography variant="subtitle2" weight="semibold">
-                  Create your iovname
-                </Typography>
-                <Block display="flex" alignItems="center">
-                  <Tooltip maxWidth={320}>
-                    <TooltipContent header={<NoIovnameHeader />} title="Choose your address">
-                      With IOV you can choose your easy to read human readable address. No more complicated
-                      cryptography when sending to friends.
-                    </TooltipContent>
-                  </Tooltip>
-                  <Block marginRight={1} />
-                  <Typography variant="subtitle2" inline weight="regular">
-                    How it works
-                  </Typography>
-                </Block>
-              </Block>
-              <Block width="100%" marginBottom={1}>
-                <TextField
-                  name={EDIT_ACCOUNT_FIELD}
-                  form={form}
-                  validate={accountValidator}
-                  placeholder="eg. yourname*iov"
-                  fullWidth
-                  margin="none"
-                />
-              </Block>
-            </React.Fragment>
+          <Block display="flex" justifyContent="center">
+            <Typography variant="h4" align="center">
+              {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
+            </Typography>
+            <Block marginRight={2} />
+            <Block onClick={onAccountCopy} className={classes.link} marginTop={1}>
+              <Image src={copy} alt="Copy" width={20} />
+            </Block>
+          </Block>
+          {isAccountData(account) && (
+            <Block display="flex" justifyContent="center">
+              <Typography variant="body2" inline align="center" color="textSecondary">
+                Expires on {formatDate(account.expiryDate)} {formatTime(account.expiryDate)}
+              </Typography>
+            </Block>
           )}
 
           <Block width="100%" marginTop={3} marginBottom={1}>
