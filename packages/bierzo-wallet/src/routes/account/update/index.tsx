@@ -16,6 +16,7 @@ import { TRANSACTIONS_ROUTE } from "../../paths";
 import { AccountProps } from "../register";
 import ConfirmRegistration from "./components/ConfirmUpdate";
 import IovnameAccountUpdate from "./components/IovnameForm";
+import NameAccountUpdate from "./components/NameForm";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
@@ -93,7 +94,7 @@ const AccountUpdate = ({ entity }: AccountProps): JSX.Element => {
             />
           )}
           {entity === "name" && (
-            <IovnameAccountUpdate
+            <NameAccountUpdate
               setTransactionId={setTransactionId}
               transactionFee={transactionFee}
               rpcEndpoint={rpcEndpoint}
