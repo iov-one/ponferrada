@@ -5,7 +5,7 @@ import React from "react";
 import { history } from "../..";
 import starnameLogo from "../../../assets/starname-logo.svg";
 import { BwAccount } from "../../../store/accounts";
-import { REGISTER_NAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
+import { NAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
 
 interface Props {
   readonly starnames: readonly BwAccount[];
@@ -53,7 +53,7 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
             inline
             link
             onClick={() => {
-              history.push(REGISTER_NAME_ROUTE);
+              history.push(NAME_REGISTER_ROUTE);
             }}
           >
             Register your name

@@ -6,7 +6,7 @@ import React from "react";
 import { history } from "../..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { NoStarnameHeader } from "../../account/register/components/StarnameForm";
-import { REGISTER_NAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
+import { NAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterStarname: () => void;
@@ -48,7 +48,7 @@ export function GetYourAddressWithExtension({
         inline
         link
         onClick={() => {
-          history.push(REGISTER_NAME_ROUTE);
+          history.push(NAME_REGISTER_ROUTE);
         }}
       >
         Register your name
