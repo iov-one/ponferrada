@@ -2,8 +2,6 @@ import { Address, ChainId, Fee, Token, TokenTicker } from "@iov/bcp";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
-import { FieldValidator } from "final-form";
-import { FieldInputValue } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
@@ -48,11 +46,6 @@ const account: BwUsernameWithChainName = {
   addresses: addresses,
 };
 
-const accountValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-  action("Account validation")(value);
-  return undefined;
-};
-
 export const UPDATE_ACCOUNT_STORY_PATH = `${bierzoRoot}/Update Account`;
 export const UPDATE_ACCOUNT_SAMPLE_STORY_PATH = "Update sample";
 
@@ -61,7 +54,6 @@ storiesOf(UPDATE_ACCOUNT_STORY_PATH, module)
   .add(UPDATE_ACCOUNT_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountEdit
-        accountValidator={accountValidator}
         chainAddresses={addresses}
         account={account}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_SAMPLE_STORY_PATH)}

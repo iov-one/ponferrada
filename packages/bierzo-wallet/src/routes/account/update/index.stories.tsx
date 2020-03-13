@@ -2,8 +2,6 @@ import { Address, ChainId, Fee, Token, TokenTicker, TransactionId } from "@iov/b
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
-import { FieldValidator } from "final-form";
-import { FieldInputValue } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
@@ -47,11 +45,6 @@ const fee: Fee = {
   tokens: stringToAmount("5", iov),
 };
 
-const iovnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-  action("Iovname validation")(value);
-  return undefined;
-};
-
 const account: BwUsernameWithChainName = {
   username: "test*iov",
   addresses: addresses,
@@ -73,7 +66,6 @@ storiesOf(UPDATE_ACCOUNT_STORY_PATH, module)
   .add(UPDATE_IOVNAME_REGISTRATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountEdit
-        accountValidator={iovnameValidator}
         chainAddresses={addresses}
         account={account}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_IOVNAMES_STORY_PATH)}

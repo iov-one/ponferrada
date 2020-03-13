@@ -1,27 +1,16 @@
 import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
-import { FieldValidator } from "final-form";
-import {
-  BillboardContext,
-  FieldInputValue,
-  FormValues,
-  ToastContext,
-  ToastVariant,
-} from "medulas-react-components";
+import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
 
 import { history } from "../../..";
-import { generateRegisterUsernameTxRequest } from "../../../../communication/requestgenerators";
+import { generateUpdateUsernameTxRequest } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
-import AccountEdit, {
-  EDIT_ACCOUNT_FIELD,
-  getChainAddressPairsFromValues,
-} from "../../../../components/AccountEdit";
+import AccountEdit, { getChainAddressPairsFromValues } from "../../../../components/AccountEdit";
 import { BwUsernameWithChainName } from "../../../../components/AccountManage";
 import { ChainAddressPairWithName } from "../../../../components/AddressesTable";
 import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
-import { isValidIov } from "../../../../logic/account";
 import { getConnectionForChainId } from "../../../../logic/connection";
 import { ExtendedIdentity } from "../../../../store/identities";
 import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
@@ -50,7 +39,7 @@ const IovnameAccountUpdate = ({
   bnsIdentity,
   chainAddresses,
 }: Props): JSX.Element => {
-  const account: BwUsernameWithChainName | undefined = history.location.state;
+  const account: BwUsernameWithChainName = history.location.state;
 
   const onReturnToManage = (): void => {
     history.push(IOVNAME_MANAGE_ROUTE, account);
@@ -59,44 +48,18 @@ const IovnameAccountUpdate = ({
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
-  const iovnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-    if (!account) {
-      if (!value) {
-        return "Required";
-      }
-
-      const checkResult = isValidIov(value);
-
-      switch (checkResult) {
-        case "not_iov":
-          return "Iovname must end with *iov";
-        case "wrong_number_of_asterisks":
-          return "Iovname must include only one namespace";
-        case "too_short":
-          return "Iovname should be at least 3 characters";
-        case "too_long":
-          return "Iovname should be maximum 64 characters";
-        case "wrong_chars":
-          return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-        case "valid":
-          break;
-        default:
-          throw new Error(`"Unknown iovname validation error: ${checkResult}`);
-      }
-    }
-
-    return undefined;
-  };
-
   const onSubmit = async (values: object): Promise<void> => {
+    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
+    if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
+
     const formValues = values as FormValues;
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
     try {
-      const request = await generateRegisterUsernameTxRequest(
+      const request = await generateUpdateUsernameTxRequest(
         bnsIdentity,
-        formValues[EDIT_ACCOUNT_FIELD],
+        account.username,
         addressesToRegister,
       );
 
@@ -133,7 +96,6 @@ const IovnameAccountUpdate = ({
 
   return (
     <AccountEdit
-      accountValidator={iovnameValidator}
       chainAddresses={chainAddresses}
       account={account}
       onCancel={onReturnToManage}
