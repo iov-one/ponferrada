@@ -118,7 +118,7 @@ const AccountManage: React.FunctionComponent<Props> = ({
 
   const onEdit = (): void => {
     onEditAccount();
-    // history.push(REGISTER_IOVNAME_ROUTE, account);
+    // history.push(IOVNAME_REGISTER_ROUTE, account);
   };
 
   return (

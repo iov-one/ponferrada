@@ -3,10 +3,10 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import { NAME_EDIT_ROUTE, REGISTER_IOVNAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
+import { IOVNAME_REGISTER_ROUTE, NAME_EDIT_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
 
 function onRegisterUsername(): void {
-  history.push(REGISTER_IOVNAME_ROUTE);
+  history.push(IOVNAME_REGISTER_ROUTE);
 }
 
 function onRegisterStarname(): void {

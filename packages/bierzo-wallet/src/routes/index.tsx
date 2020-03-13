@@ -11,12 +11,12 @@ import {
   ADDRESSES_ROUTE,
   BALANCE_ROUTE,
   IOVNAME_MANAGE_ROUTE,
+  IOVNAME_REGISTER_ROUTE,
   LOGIN_ROUTE,
   NAME_MANAGE_ROUTE,
   NAME_REGISTER_ROUTE,
   PAYMENT_ROUTE,
   POLICY_ROUTE,
-  REGISTER_IOVNAME_ROUTE,
   STARNAME_REGISTER_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
@@ -40,7 +40,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={NAME_MANAGE_ROUTE} render={() => <AccountManage entity="name" />} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
-        <Route exact path={REGISTER_IOVNAME_ROUTE} render={() => <AccountRegister entity="iovname" />} />
+        <Route exact path={IOVNAME_REGISTER_ROUTE} render={() => <AccountRegister entity="iovname" />} />
         <Route exact path={STARNAME_REGISTER_ROUTE} render={() => <AccountRegister entity="starname" />} />
         <Route exact path={NAME_REGISTER_ROUTE} render={() => <AccountRegister entity="name" />} />
         <Route exact path={TERMS_ROUTE} component={Terms} />

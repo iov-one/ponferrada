@@ -3,10 +3,10 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import { REGISTER_IOVNAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
+import { IOVNAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
 
 function onRegisterUsername(): void {
-  history.push(REGISTER_IOVNAME_ROUTE);
+  history.push(IOVNAME_REGISTER_ROUTE);
 }
 
 function onRegisterStarname(): void {
@@ -27,7 +27,7 @@ const IovnameAccountManage = (): JSX.Element => {
   }
 
   const onEditAccount = (): void => {
-    history.push(REGISTER_IOVNAME_ROUTE, aadressToManage);
+    history.push(IOVNAME_REGISTER_ROUTE, aadressToManage);
   };
 
   return <AccountManage menuItems={menuItems} onEditAccount={onEditAccount} account={aadressToManage} />;

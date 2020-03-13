@@ -8,11 +8,11 @@ import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
-import { REGISTER_IOVNAME_ROUTE, STARNAME_REGISTER_ROUTE } from "../paths";
+import { IOVNAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
 
 function onRegisterIovname(): void {
-  history.push(REGISTER_IOVNAME_ROUTE);
+  history.push(IOVNAME_REGISTER_ROUTE);
 }
 
 function onRegisterStarname(): void {

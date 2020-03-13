@@ -5,9 +5,9 @@ import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { NoIovnameHeader } from "../../account/register/components/IovnameForm";
-import { REGISTER_IOVNAME_ROUTE } from "../../paths";
+import { IOVNAME_REGISTER_ROUTE } from "../../paths";
 
-export const registerIovnameId = REGISTER_IOVNAME_ROUTE.replace(/\//g, "-");
+export const registerIovnameId = IOVNAME_REGISTER_ROUTE.replace(/\//g, "-");
 
 interface StarnamesNotExistsProps {
   readonly onRegisterIovname: () => void;
