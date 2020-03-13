@@ -13,7 +13,6 @@ export const NAME_EDIT_ROUTE = "/name/edit";
 export const NAME_REGISTER_ROUTE = "/name/register";
 // Account: Starnames paths
 export const STARNAME_MANAGE_ROUTE = "/starname/manage";
-export const STARNAME_EDIT_ROUTE = "/starname/edit";
 export const STARNAME_REGISTER_ROUTE = "/starname/register";
 
 export const TERMS_ROUTE = "/terms";
