@@ -2,7 +2,7 @@ import { ActionMenuItem } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../..";
-import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
+import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import { IOVNAME_REGISTER_ROUTE, NAME_EDIT_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
 
 function onRegisterUsername(): void {
@@ -16,17 +16,13 @@ function onRegisterStarname(): void {
 const menuItems: readonly ActionMenuItem[] = [{ title: "Renew", action: () => console.log("Delete") }];
 
 const NameAccountManage = (): JSX.Element => {
-  const aadressToManage: BwUsernameWithChainName | undefined = history.location.state;
+  const account: BwAccountWithChainName = history.location.state;
 
-  if (!aadressToManage) {
-    throw new Error("No address to manage provided, something wrong.");
-  }
-
-  const onEditAccount = (): void => {
-    history.push(NAME_EDIT_ROUTE, aadressToManage);
+  const onEdit = (): void => {
+    history.push(NAME_EDIT_ROUTE, account);
   };
 
-  return <AccountManage menuItems={menuItems} onEditAccount={onEditAccount} account={aadressToManage} />;
+  return <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} />;
 };
 
 export default NameAccountManage;
