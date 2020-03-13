@@ -1,3 +1,4 @@
+import Collapse from "@material-ui/core/Collapse";
 import Paper from "@material-ui/core/Paper";
 import { ActionMenuItem, Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
@@ -29,7 +30,19 @@ const menuItems: readonly ActionMenuItem[] = [
 ];
 
 const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegisterName }): JSX.Element => {
+  const [show, setShow] = React.useState(false);
+  const [showIcon, setShowIcon] = React.useState(arrowUp);
+
   const paperClasses = usePaper();
+
+  const toggleShowAccounts = (): void => {
+    setShow(show => !show);
+    if (show) {
+      setShowIcon(arrowDown);
+    } else {
+      setShowIcon(arrowUp);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -49,37 +62,34 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegister
           </Block>
         </Paper>
 
-        <Block marginTop={4} marginBottom={3} display="flex" justifyContent="center">
+        <Block marginTop={4} display="flex" justifyContent="center">
           <Block>
             <Block display="inline" marginRight={1}>
               <Typography variant="subtitle2" weight="semibold" align="center" inline>
                 Names associated with this starname
               </Typography>
             </Block>
-            <Image src={arrowUp} alt="arrow" />
+            <Image src={showIcon} alt="arrow" onClick={toggleShowAccounts} />
           </Block>
         </Block>
-        {names
-          .slice()
-          .sort((a, b) =>
-            `${a.name}*${a.domain}`.localeCompare(`${b.name}*${b.domain}`, undefined, {
-              sensitivity: "base",
-            }),
-          )
-          .map(name => {
-            const onEditAccount = (): void => {
-              history.push(NAME_EDIT_ROUTE, name);
-            };
+        <Collapse in={show}>
+          {names
+            .slice()
+            .sort((a, b) =>
+              `${a.name}*${a.domain}`.localeCompare(`${b.name}*${b.domain}`, undefined, {
+                sensitivity: "base",
+              }),
+            )
+            .map(name => {
+              const onEdit = (): void => {
+                history.push(NAME_EDIT_ROUTE, name);
+              };
 
-            return (
-              <AccountManage
-                menuItems={menuItems}
-                onEditAccount={onEditAccount}
-                account={name}
-                hideExpiration={true}
-              />
-            );
-          })}
+              return (
+                <AccountManage menuItems={menuItems} onEdit={onEdit} account={name} hideExpiration={true} />
+              );
+            })}
+        </Collapse>
       </Block>
     </React.Fragment>
   );
