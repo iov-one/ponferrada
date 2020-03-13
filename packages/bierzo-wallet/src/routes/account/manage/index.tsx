@@ -5,6 +5,7 @@ import PageMenu from "../../../components/PageMenu";
 import { AccountProps } from "../register";
 import IovnameAccountManage from "./components/IovnameForm";
 import NameAccountManage from "./components/NameForm";
+import StarnameAccountManage from "./components/StarnameForm";
 
 const AccountManage = ({ entity }: AccountProps): JSX.Element => {
   return (
@@ -12,6 +13,7 @@ const AccountManage = ({ entity }: AccountProps): JSX.Element => {
       <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         {entity === "iovname" && <IovnameAccountManage />}
         {entity === "name" && <NameAccountManage />}
+        {entity === "starname" && <StarnameAccountManage />}
       </Block>
     </PageMenu>
   );
