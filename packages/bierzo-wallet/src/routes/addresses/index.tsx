@@ -2,7 +2,7 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { BwUsernameWithChainName } from "../../components/AccountManage";
+import { BwAccountWithChainName, BwUsernameWithChainName } from "../../components/AccountManage";
 import PageMenu from "../../components/PageMenu";
 import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
@@ -25,6 +25,7 @@ const Addresses = (): JSX.Element => {
   const starnames = ReactRedux.useSelector((state: RootState) => state.accounts);
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
   const [bwNamesWithChain, setBwNamesWithChain] = React.useState<readonly BwUsernameWithChainName[]>([]);
+  const [bwAccountsWithChain, setBwAccountsWithChain] = React.useState<readonly BwAccountWithChainName[]>([]);
 
   React.useEffect(() => {
     let isSubscribed = true;
@@ -57,6 +58,37 @@ const Addresses = (): JSX.Element => {
     };
   }, [bwNames]);
 
+  React.useEffect(() => {
+    let isSubscribed = true;
+    async function insertChainNames(): Promise<void> {
+      if (isSubscribed) {
+        const bwAccountsWithChain: BwAccountWithChainName[] = await Promise.all(
+          starnames.map(async name => {
+            return {
+              ...name,
+              addresses: await Promise.all(
+                name.addresses.map(async address => {
+                  return {
+                    chainId: address.chainId,
+                    address: address.address,
+                    chainName: await getChainName(address.chainId),
+                  };
+                }),
+              ),
+            };
+          }),
+        );
+
+        setBwAccountsWithChain(bwAccountsWithChain);
+      }
+    }
+    insertChainNames();
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [starnames]);
+
   const supportedChains = React.useMemo(
     () =>
       Array.from(identities.values()).map(extendedIdentity => ({
@@ -72,7 +104,7 @@ const Addresses = (): JSX.Element => {
     <PageMenu>
       <AddressesTab
         chainAddresses={chainAddresses}
-        starnames={starnames}
+        starnames={bwAccountsWithChain}
         onRegisterIovname={onRegisterIovname}
         iovnames={bwNamesWithChain}
         onRegisterStarname={onRegisterStarname}
