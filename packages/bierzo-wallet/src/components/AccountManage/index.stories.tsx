@@ -65,7 +65,7 @@ storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
   .add(ACCOUNT_MANAGE_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountManage
-        onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
+        onEdit={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         account={username}
         menuItems={menuItems}
       />

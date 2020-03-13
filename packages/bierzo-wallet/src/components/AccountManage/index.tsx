@@ -74,7 +74,7 @@ interface Props {
   readonly account: AccountModuleMixedType;
   readonly menuItems: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
-  readonly onEditAccount: () => void;
+  readonly onEdit: () => void;
 }
 
 export function isUsernameData(account: AccountModuleMixedType): account is BwUsernameWithChainName {
@@ -100,25 +100,15 @@ const useStyles = makeStyles({
   },
 });
 
-const AccountManage: React.FunctionComponent<Props> = ({
-  account,
-  menuItems,
-  onEditAccount,
-  hideExpiration,
-}) => {
+const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onEdit, hideExpiration }) => {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
   const onAccountCopy = (): void => {
-    const name = isAccountData(account) ? account.name : account.username;
+    const name = isAccountData(account) ? `${account.name}*${account.domain}` : account.username;
     clipboardCopy(name);
     toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
-  };
-
-  const onEdit = (): void => {
-    onEditAccount();
-    // history.push(IOVNAME_REGISTER_ROUTE, account);
   };
 
   return (

@@ -96,7 +96,7 @@ storiesOf(`${bierzoRoot}/Account Manage`, module)
   .add("Manage name", () => (
     <DecoratedStorybook>
       <AccountManage
-        onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
+        onEdit={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         account={account}
         menuItems={menuItems}
       />
@@ -105,7 +105,7 @@ storiesOf(`${bierzoRoot}/Account Manage`, module)
   .add(ACCOUNT_MANAGE_IOVNAMES_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountManage
-        onEditAccount={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
+        onEdit={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         account={username}
         menuItems={menuItems}
       />
