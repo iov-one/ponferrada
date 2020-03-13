@@ -5,7 +5,7 @@ import React from "react";
 import { history } from "../..";
 import starnameLogo from "../../../assets/starname-logo.svg";
 import { BwAccount } from "../../../store/accounts";
-import { NAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
+import { NAME_REGISTER_ROUTE, STARNAME_MANAGE_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
 
 interface Props {
   readonly starnames: readonly BwAccount[];
@@ -67,7 +67,7 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
         )
         .map(starname => {
           const onManage = (): void => {
-            history.push(STARNAME_REGISTER_ROUTE, starname);
+            history.push(STARNAME_MANAGE_ROUTE, starname);
           };
 
           return (
