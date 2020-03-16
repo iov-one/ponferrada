@@ -3,6 +3,7 @@ import { BnsConnection } from "@iov/bns";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
+import { AccountProps } from "..";
 import { history } from "../..";
 import { generateRegisterUsernameTxWithFee } from "../../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
@@ -13,7 +14,6 @@ import { ExtendedIdentity } from "../../../store/identities";
 import { RootState } from "../../../store/reducers";
 import { getChainAddressPairWithNamesSorted } from "../../../utils/tokens";
 import { TRANSACTIONS_ROUTE } from "../../paths";
-import { AccountProps } from "../register";
 import ConfirmRegistration from "./components/ConfirmUpdate";
 import IovnameAccountUpdate from "./components/IovnameForm";
 import NameAccountUpdate from "./components/NameForm";

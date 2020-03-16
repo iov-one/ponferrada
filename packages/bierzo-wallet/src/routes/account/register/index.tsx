@@ -3,6 +3,7 @@ import { BnsConnection } from "@iov/bns";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
+import { AccountProps } from "..";
 import { history } from "../..";
 import { generateRegisterUsernameTxWithFee } from "../../../communication/requestgenerators";
 import { BwUsernameWithChainName } from "../../../components/AccountManage";
@@ -45,12 +46,6 @@ async function getPersonalizedAddressRegistrationFee(
   const transactionWithFee = await generateRegisterUsernameTxWithFee(bnsIdentity, "feetest*iov", addresses);
 
   return transactionWithFee.fee;
-}
-
-export type AccountEntity = "iovname" | "starname" | "name";
-
-export interface AccountProps {
-  entity: AccountEntity;
 }
 
 const Register = ({ entity }: AccountProps): JSX.Element => {

@@ -1,8 +1,8 @@
 import { Block } from "medulas-react-components";
 import * as React from "react";
 
+import { AccountProps } from "..";
 import PageMenu from "../../../components/PageMenu";
-import { AccountProps } from "../register";
 import IovnameAccountManage from "./components/IovnameForm";
 import NameAccountManage from "./components/NameForm";
 import StarnameAccountManage from "./components/StarnameForm";
