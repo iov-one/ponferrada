@@ -22,7 +22,7 @@ const NameAccountManage = (): JSX.Element => {
     history.push(NAME_EDIT_ROUTE, account);
   };
 
-  return <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} />;
+  return <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} hideExpiration />;
 };
 
 export default NameAccountManage;
