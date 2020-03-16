@@ -9,8 +9,11 @@ import { NAME_EDIT_ROUTE, NAME_REGISTER_ROUTE } from "../../../paths";
 import AssociatedNamesList from "./AssociatedNamesList";
 
 const menuItems: readonly ActionMenuItem[] = [
+  // eslint-disable-next-line no-console
   { title: "Renew", action: () => console.log("Renew") },
+  // eslint-disable-next-line no-console
   { title: "Transfer starname", action: () => console.log("Transfer starname") },
+  // eslint-disable-next-line no-console
   { title: "Delete starname", action: () => console.log("Delete starname") },
 ];
 

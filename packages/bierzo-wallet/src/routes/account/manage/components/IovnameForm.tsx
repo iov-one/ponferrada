@@ -3,19 +3,14 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import { IOVNAME_EDIT_ROUTE, IOVNAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../../paths";
-
-function onRegisterUsername(): void {
-  history.push(IOVNAME_REGISTER_ROUTE);
-}
-
-function onRegisterStarname(): void {
-  history.push(STARNAME_REGISTER_ROUTE);
-}
+import { IOVNAME_EDIT_ROUTE } from "../../../paths";
 
 const menuItems: readonly ActionMenuItem[] = [
+  // eslint-disable-next-line no-console
   { title: "Renew", action: () => console.log("Renew") },
+  // eslint-disable-next-line no-console
   { title: "Transfer iovname", action: () => console.log("Transfer iovname") },
+  // eslint-disable-next-line no-console
   { title: "Delete iovname", action: () => console.log("Delete iovname") },
 ];
 

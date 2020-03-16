@@ -24,8 +24,11 @@ const usePaper = makeStyles({
 });
 
 const menuItems: readonly ActionMenuItem[] = [
+  // eslint-disable-next-line no-console
   { title: "Transfer name", action: () => console.log("Transfer name") },
+  // eslint-disable-next-line no-console
   { title: "Transfer it back to me", action: () => console.log("Transfer it back to me") },
+  // eslint-disable-next-line no-console
   { title: "Delete name", action: () => console.log("Delete name") },
 ];
 
