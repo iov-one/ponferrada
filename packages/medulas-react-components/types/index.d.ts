@@ -1,3 +1,4 @@
+import ActionMenu, { ActionMenuItem } from "./components/ActionMenu";
 import Avatar from "./components/Avatar";
 import Badge from "./components/Badge";
 import Block from "./components/Block";
@@ -48,6 +49,8 @@ export {
 } from "./utils/forms/validators";
 export { Storybook } from "./utils/storybook";
 export {
+  ActionMenu,
+  ActionMenuItem,
   Avatar,
   Back,
   Badge,

@@ -36,6 +36,7 @@
   },
   "browserslist": [
     ">0.2%",
+    "chrome 45",
     "not dead",
     "not ie <= 11",
     "not op_mini all"

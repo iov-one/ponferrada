@@ -5,8 +5,8 @@ import React from "react";
 
 import { history } from "../..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { REGISTER_NAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../../paths";
-import { NoStarnameHeader } from "../../register/components/StarnameForm";
+import { NoStarnameHeader } from "../../account/register/components/StarnameForm";
+import { NAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterStarname: () => void;
@@ -30,7 +30,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={REGISTER_STARNAME_ROUTE}
+        id={STARNAME_REGISTER_ROUTE}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -48,7 +48,7 @@ export function GetYourAddressWithExtension({
         inline
         link
         onClick={() => {
-          history.push(REGISTER_NAME_ROUTE);
+          history.push(NAME_REGISTER_ROUTE);
         }}
       >
         Register your name
@@ -65,7 +65,7 @@ export function GetYourAddressWithLedger(): JSX.Element {
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={REGISTER_STARNAME_ROUTE} variant="body1" color="primary" weight="light">
+      <Typography id={STARNAME_REGISTER_ROUTE} variant="body1" color="primary" weight="light">
         starname
       </Typography>
       <Block textAlign="center">

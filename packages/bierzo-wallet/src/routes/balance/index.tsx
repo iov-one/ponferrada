@@ -6,11 +6,11 @@ import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { getFirstUsername } from "../../store/usernames/selectors";
-import { REGISTER_IOVNAME_ROUTE } from "../paths";
+import { IOVNAME_REGISTER_ROUTE } from "../paths";
 import Layout from "./components";
 
 function onRegisterIovname(): void {
-  history.push(REGISTER_IOVNAME_ROUTE);
+  history.push(IOVNAME_REGISTER_ROUTE);
 }
 
 const Balance = (): JSX.Element => {

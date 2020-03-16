@@ -3,6 +3,7 @@ import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
+import { BwUsernameWithChainName } from "../../components/AccountManage";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import { BwAccount } from "../../store/accounts";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
@@ -11,8 +12,7 @@ import {
   REGISTER_IOVNAME_STORY_PATH,
   REGISTER_STARNAME_REGISTRATION_STORY_PATH,
   REGISTER_STARNAME_STORY_PATH,
-} from "../register/index.stories";
-import { BwUsernameWithChainName } from ".";
+} from "../account/register/index.stories";
 import AddressesTab from "./components/AddressesTab";
 import Iovnames from "./components/Iovnames";
 import Starnames from "./components/Starnames";

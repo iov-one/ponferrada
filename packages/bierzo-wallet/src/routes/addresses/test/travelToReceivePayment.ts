@@ -2,8 +2,8 @@ import { Page } from "puppeteer";
 
 import { ADDRESSES_TEXT } from "../../../components/Header/components/LinksMenu";
 import { whenOnNavigatedToE2eRoute } from "../../../utils/test/navigation";
+import { REGISTER_IOVNAME_VIEW_ID } from "../../account/register/components/IovnameForm";
 import { ADDRESSES_ROUTE } from "../../paths";
-import { REGISTER_IOVNAME_VIEW_ID } from "../../register/components/IovnameForm";
 import { yourAddresses, yourIovnames } from "../components/AddressesTab";
 import { iovnamesViewId } from "../components/Iovnames";
 import { yourBlockchainAddressesId } from "../components/UserAddresses";

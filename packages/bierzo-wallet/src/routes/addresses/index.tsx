@@ -2,29 +2,92 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import { BwAccountWithChainName, BwUsernameWithChainName } from "../../components/AccountManage";
 import PageMenu from "../../components/PageMenu";
+import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
-import { BwUsername } from "../../store/usernames";
 import { getChainAddressPairWithNames } from "../../utils/tokens";
-import { REGISTER_IOVNAME_ROUTE, REGISTER_STARNAME_ROUTE } from "../paths";
+import { IOVNAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../paths";
 import AddressesTab from "./components/AddressesTab";
 
-export interface BwUsernameWithChainName extends BwUsername {
-  readonly addresses: readonly ChainAddressPairWithName[];
-}
-
 function onRegisterIovname(): void {
-  history.push(REGISTER_IOVNAME_ROUTE);
+  history.push(IOVNAME_REGISTER_ROUTE);
 }
 
 function onRegisterStarname(): void {
-  history.push(REGISTER_STARNAME_ROUTE);
+  history.push(STARNAME_REGISTER_ROUTE);
 }
 
 const Addresses = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
+  const bwNames = ReactRedux.useSelector((state: RootState) => state.usernames);
+  const starnames = ReactRedux.useSelector((state: RootState) => state.accounts);
+  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
+  const [bwNamesWithChain, setBwNamesWithChain] = React.useState<readonly BwUsernameWithChainName[]>([]);
+  const [bwAccountsWithChain, setBwAccountsWithChain] = React.useState<readonly BwAccountWithChainName[]>([]);
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+    async function insertChainNames(): Promise<void> {
+      if (isSubscribed) {
+        const bwNamesWithChain: BwUsernameWithChainName[] = await Promise.all(
+          bwNames.map(async name => {
+            return {
+              username: name.username,
+              addresses: await Promise.all(
+                name.addresses.map(async address => {
+                  return {
+                    chainId: address.chainId,
+                    address: address.address,
+                    chainName: await getChainName(address.chainId),
+                  };
+                }),
+              ),
+            };
+          }),
+        );
+
+        setBwNamesWithChain(bwNamesWithChain);
+      }
+    }
+    insertChainNames();
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [bwNames]);
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+    async function insertChainNames(): Promise<void> {
+      if (isSubscribed) {
+        const bwAccountsWithChain: BwAccountWithChainName[] = await Promise.all(
+          starnames.map(async name => {
+            return {
+              ...name,
+              addresses: await Promise.all(
+                name.addresses.map(async address => {
+                  return {
+                    chainId: address.chainId,
+                    address: address.address,
+                    chainName: await getChainName(address.chainId),
+                  };
+                }),
+              ),
+            };
+          }),
+        );
+
+        setBwAccountsWithChain(bwAccountsWithChain);
+      }
+    }
+    insertChainNames();
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [starnames]);
 
   const supportedChains = React.useMemo(
     () =>
@@ -36,17 +99,14 @@ const Addresses = (): JSX.Element => {
   );
 
   const chainAddresses = getChainAddressPairWithNames(identities, supportedChains);
-  const iovnames = ReactRedux.useSelector((state: RootState) => state.usernames);
-  const starnames = ReactRedux.useSelector((state: RootState) => state.accounts);
-  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
 
   return (
     <PageMenu>
       <AddressesTab
         chainAddresses={chainAddresses}
-        iovnames={iovnames}
-        starnames={starnames}
+        starnames={bwAccountsWithChain}
         onRegisterIovname={onRegisterIovname}
+        iovnames={bwNamesWithChain}
         onRegisterStarname={onRegisterStarname}
         rpcEndpointType={rpcEndpointType}
       />

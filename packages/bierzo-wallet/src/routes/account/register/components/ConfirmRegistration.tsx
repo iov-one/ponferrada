@@ -11,9 +11,9 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import copySvg from "../../../assets/copy.svg";
-import tickSvg from "../../../assets/tick.svg";
-import PageContent from "../../../components/PageContent";
+import copySvg from "../../../../assets/copy.svg";
+import tickSvg from "../../../../assets/tick.svg";
+import PageContent from "../../../../components/PageContent";
 
 export const REGISTER_CONFIRMATION_VIEW_ID = "register-confirmation-view-id";
 
@@ -28,7 +28,7 @@ const useClasses = makeStyles({
 });
 
 const tickIcon = <Image src={tickSvg} alt="Tick" />;
-const copyIcon = <Image src={copySvg} alt="Tick" />;
+const copyIcon = <Image src={copySvg} alt="Copy" />;
 
 interface Props {
   readonly transactionId: TransactionId;

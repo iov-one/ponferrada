@@ -67,7 +67,7 @@ async function mayDispatchAccount(dispatch: Dispatch, accountTx: UnsignedTransac
 
   if (isReplaceAccountTargetsTx(accountTx)) {
     const connection = await getConnectionForBns();
-    const accounts = await connection.getAccounts({ name: accountTx.name, domain: accountTx.domain });
+    const accounts = await connection.getAccounts({ name: `${accountTx.name}*${accountTx.domain}` });
     if (accounts.length !== 1) throw Error("Did not find unique account");
 
     const account: BwAccount = {

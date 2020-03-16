@@ -23,5 +23,5 @@ export async function getBalanceAmount(page: Page): Promise<string> {
   const balanceAmountElement = await page.$("h5");
   if (!balanceAmountElement) throw new Error("h5 element not found");
 
-  return await (await balanceAmountElement.getProperty("textContent")).jsonValue();
+  return (await (await balanceAmountElement.getProperty("textContent")).jsonValue()) as string;
 }

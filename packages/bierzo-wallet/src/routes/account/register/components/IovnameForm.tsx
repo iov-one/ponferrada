@@ -1,5 +1,4 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { FieldValidator } from "final-form";
 import {
@@ -23,29 +22,31 @@ import {
 import React from "react";
 
 import {
-  AddressesTooltipHeader,
+  generateRegisterUsernameTxRequest,
+  generateUpdateUsernameTxRequest,
+} from "../../../../communication/requestgenerators";
+import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
+import {
   getAddressItems,
   getChainAddressPairsFromValues,
   getFormInitValues,
   getSubmitButtonCaption,
-  TooltipContent,
-} from "..";
+} from "../../../../components/AccountEdit";
 import {
-  generateRegisterAccountTxRequest,
-  generateReplaceAccountTargetsTxRequest,
-} from "../../../communication/requestgenerators";
-import { RpcEndpoint } from "../../../communication/rpcEndpoint";
-import { AddressesTableProps } from "../../../components/AddressesTable";
-import LedgerBillboardMessage from "../../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../../components/BillboardMessage/NeumaBillboardMessage";
-import PageContent from "../../../components/PageContent";
-import { isValidName } from "../../../logic/account";
-import { BwUsernameWithChainName } from "../../addresses";
+  AddressesTooltipHeader,
+  BwUsernameWithChainName,
+  TooltipContent,
+} from "../../../../components/AccountManage";
+import { AddressesTableProps } from "../../../../components/AddressesTable";
+import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
+import PageContent from "../../../../components/PageContent";
+import { isValidIov } from "../../../../logic/account";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
 
-export const REGISTER_NAME_VIEW_ID = "register-name-view-id";
-export const REGISTER_NAME_FIELD = "register-name-field";
+export const REGISTER_IOVNAME_VIEW_ID = "register-iovname-view-id";
+export const REGISTER_IOVNAME_FIELD = "register-iovname-field";
 
 const registerIcon = <Image src={shield} alt="shield" />;
 
@@ -55,12 +56,12 @@ const useStyles = makeStyles({
   },
 });
 
-function NoNameHeader(): JSX.Element {
+export function NoIovnameHeader(): JSX.Element {
   const classes = useStyles();
   return (
     <Block className={classes.iovnameHeader} borderRadius={40} width={145} padding={1}>
       <Typography variant="subtitle1" weight="semibold" color="primary" align="center">
-        eg. anna*yourstarname
+        yourname*iov
       </Typography>
     </Block>
   );
@@ -69,13 +70,13 @@ function NoNameHeader(): JSX.Element {
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
   readonly iovnameAddresses: BwUsernameWithChainName | undefined;
-  readonly bnsIdentity: Identity;
-  readonly rpcEndpoint: RpcEndpoint;
+  readonly bnsIdentity: Identity | undefined;
+  readonly rpcEndpoint: RpcEndpoint | undefined;
   readonly transactionFee: Fee | undefined;
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
-const NameForm = ({
+const IovnameForm = ({
   chainAddresses,
   iovnameAddresses,
   bnsIdentity,
@@ -95,26 +96,25 @@ const NameForm = ({
   }, [chainAddresses, iovnameAddresses]);
 
   const onSubmit = async (values: object): Promise<void> => {
+    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
+    if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
+
     const formValues = values as FormValues;
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-    const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
 
     try {
       let request: JsonRpcRequest;
       if (iovnameAddresses) {
-        request = await generateReplaceAccountTargetsTxRequest(
+        request = await generateUpdateUsernameTxRequest(
           bnsIdentity,
-          domain,
-          name,
+          iovnameAddresses.username,
           addressesToRegister,
         );
       } else {
-        request = await generateRegisterAccountTxRequest(
+        request = await generateRegisterUsernameTxRequest(
           bnsIdentity,
-          domain,
-          name,
-          bnsCodec.identityToAddress(bnsIdentity),
+          formValues[REGISTER_IOVNAME_FIELD],
           addressesToRegister,
         );
       }
@@ -149,58 +149,61 @@ const NameForm = ({
     }
   };
 
-  const nameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
+  const iovnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
     if (!iovnameAddresses) {
       if (!value) {
         return "Required";
       }
 
-      const checkResult = isValidName(value);
+      const checkResult = isValidIov(value);
 
       switch (checkResult) {
+        case "not_iov":
+          return "Iovname must end with *iov";
         case "wrong_number_of_asterisks":
-          return "Name must include only one namespace";
+          return "Iovname must include only one namespace";
         case "too_short":
-          return "Name should be at least 3 characters";
+          return "Iovname should be at least 3 characters";
         case "too_long":
-          return "Name should be maximum 64 characters";
+          return "Iovname should be maximum 64 characters";
         case "wrong_chars":
-          return "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+          return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
         case "valid":
           break;
         default:
-          throw new Error(`"Unknown name validation error: ${checkResult}`);
+          throw new Error(`"Unknown iovname validation error: ${checkResult}`);
       }
     }
 
     return undefined;
   };
 
-  /* const validateNameExistsAndAddresses = React.useCallback(
+  /* const validateIovnameExistsAndAddresses = React.useCallback(
     (values: object) => {
       const validate = async (values: object): Promise<object> => {
         const formValues = values as FormValues;
         const errors: ValidationError = {};
 
         const connection = await getConnectionForBns();
-        const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
-        const accounts = await connection.getAccounts({ domain: domain });
-        if (accounts.find(account => account.name === name)) {
-          errors[REGISTER_NAME_FIELD] = "Name already exists";
+        const username = formValues[REGISTER_IOVNAME_FIELD];
+        const usernames = await connection.getUsernames({ username: username });
+        if (usernames.length > 0) {
+          errors[REGISTER_IOVNAME_FIELD] = "Iovname already exists";
           return errors;
         }
 
         const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
         for (const address of addressesToRegister) {
-          const codec = await getCodecForChainId(address.chainId);
-          if (!codec.isValidAddress(address.address)) {
-            const addressField = Object.entries(formValues).find(([_id, value]) => {
-              if (value === address.address) return true;
-              return false;
-            });
-            if (addressField) {
-              errors[addressField[0]] = "Not valid blockchain address";
+          try {
+            const codec = await getCodecForChainId(address.chainId);
+            if (!codec.isValidAddress(address.address)) {
+              const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+              if (addressField) {
+                errors[addressField[0]] = "Not valid blockchain address";
+              }
             }
+          } catch (err) {
+            console.info(err);
           }
         }
 
@@ -215,7 +218,7 @@ const NameForm = ({
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating } = useForm({
     onSubmit,
-    // validate: validateNameExistsAndAddresses,
+    // validate: validateIovnameExistsAndAddresses,
     initialValues,
   });
 
@@ -248,7 +251,7 @@ const NameForm = ({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <PageContent id={REGISTER_NAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
+      <PageContent id={REGISTER_IOVNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
           {iovnameAddresses && (
             <Typography variant="h4" align="center">
@@ -259,11 +262,11 @@ const NameForm = ({
             <React.Fragment>
               <Block display="flex" justifyContent="space-between" marginBottom={1}>
                 <Typography variant="subtitle2" weight="semibold">
-                  Register your new name
+                  Create your iovname
                 </Typography>
                 <Block display="flex" alignItems="center">
                   <Tooltip maxWidth={320}>
-                    <TooltipContent header={<NoNameHeader />} title="Choose your address">
+                    <TooltipContent header={<NoIovnameHeader />} title="Choose your address">
                       With IOV you can choose your easy to read human readable address. No more complicated
                       cryptography when sending to friends.
                     </TooltipContent>
@@ -276,9 +279,9 @@ const NameForm = ({
               </Block>
               <Block width="100%" marginBottom={1}>
                 <TextField
-                  name={REGISTER_NAME_FIELD}
+                  name={REGISTER_IOVNAME_FIELD}
                   form={form}
-                  validate={nameValidator}
+                  validate={iovnameValidator}
                   placeholder="eg. yourname*iov"
                   fullWidth
                   margin="none"
@@ -299,7 +302,7 @@ const NameForm = ({
                 <Tooltip maxWidth={320}>
                   <TooltipContent header={<AddressesTooltipHeader />} title="Your linked addresses">
                     With Neuma you can have an universal blockchain address that is linked to all your
-                    addresses. Just give your friends your starname.
+                    addresses. Just give your friends your iovname.
                   </TooltipContent>
                 </Tooltip>
               </Block>
@@ -322,4 +325,4 @@ const NameForm = ({
   );
 };
 
-export default NameForm;
+export default IovnameForm;

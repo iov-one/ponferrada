@@ -2,8 +2,8 @@ import { Browser, ElementHandle, Page } from "puppeteer";
 import { randomString, sleep, whenTrue } from "ui-logic";
 
 import { acceptEnqueuedRequest } from "../../../utils/test/persona";
+import { REGISTER_IOVNAME_FIELD } from "../../account/register/components/IovnameForm";
 import { registerIovnameId } from "../../addresses/components/IovnamesNotExists";
-import { REGISTER_IOVNAME_FIELD } from "../../register/components/IovnameForm";
 
 const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;
@@ -27,7 +27,7 @@ export const getBalanceTextAtIndex = async (
   index: number,
 ): Promise<string> => {
   const property = await h5Elements[index].getProperty("textContent");
-  return (await property.jsonValue()) || "";
+  return ((await property.jsonValue()) as string) || "";
 };
 
 export function waitForAllBalances(page: Page): Promise<void> {
@@ -38,7 +38,7 @@ export function waitForAllBalances(page: Page): Promise<void> {
 
 export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
   const index = mainMenuH6Elements + 2;
-  return (await (await h6Elements[index].getProperty("textContent")).jsonValue()) || "";
+  return ((await (await h6Elements[index].getProperty("textContent")).jsonValue()) as string) || "";
 };
 
 export const registerPersonalizedAddress = async (browser: Browser, page: Page): Promise<string> => {

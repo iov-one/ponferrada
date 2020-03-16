@@ -4,10 +4,10 @@ import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { REGISTER_IOVNAME_ROUTE } from "../../paths";
-import { NoIovnameHeader } from "../../register/components/IovnameForm";
+import { NoIovnameHeader } from "../../account/register/components/IovnameForm";
+import { IOVNAME_REGISTER_ROUTE } from "../../paths";
 
-export const registerIovnameId = REGISTER_IOVNAME_ROUTE.replace(/\//g, "-");
+export const registerIovnameId = IOVNAME_REGISTER_ROUTE.replace(/\//g, "-");
 
 interface StarnamesNotExistsProps {
   readonly onRegisterIovname: () => void;

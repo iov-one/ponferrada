@@ -5,7 +5,7 @@ import React from "react";
 import { history } from "../..";
 import iovnameLogo from "../../../assets/iovname-logo.svg";
 import { BwUsername } from "../../../store/usernames";
-import { REGISTER_IOVNAME_ROUTE } from "../../paths";
+import { IOVNAME_MANAGE_ROUTE, IOVNAME_REGISTER_ROUTE } from "../../paths";
 
 interface Props {
   readonly iovnames: readonly BwUsername[];
@@ -43,7 +43,7 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
               Register a new iovname
             </Typography>
           </Block>
-          <Typography id={REGISTER_IOVNAME_ROUTE} link color="primary" onClick={onRegisterIovname}>
+          <Typography id={IOVNAME_REGISTER_ROUTE} link color="primary" onClick={onRegisterIovname}>
             Register now
           </Typography>
         </Block>
@@ -53,7 +53,7 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
         .sort((a, b) => a.username.localeCompare(b.username, undefined, { sensitivity: "base" }))
         .map(iovname => {
           const onManage = (): void => {
-            history.push(REGISTER_IOVNAME_ROUTE, iovname);
+            history.push(IOVNAME_MANAGE_ROUTE, iovname);
           };
 
           return (
