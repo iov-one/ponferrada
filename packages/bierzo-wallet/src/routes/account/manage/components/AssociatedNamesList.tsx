@@ -35,13 +35,16 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegister
 
   const paperClasses = usePaper();
 
-  const toggleShowAccounts = (): void => {
-    setShow(show => !show);
+  React.useEffect(() => {
     if (show) {
       setShowIcon(arrowDown);
     } else {
       setShowIcon(arrowUp);
     }
+  }, [show]);
+
+  const toggleShowAccounts = (): void => {
+    setShow(show => !show);
   };
 
   return (
@@ -63,13 +66,13 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegister
         </Paper>
 
         <Block marginTop={4} display="flex" justifyContent="center">
-          <Block>
+          <Block onClick={toggleShowAccounts}>
             <Block display="inline" marginRight={1}>
-              <Typography variant="subtitle2" weight="semibold" align="center" inline>
+              <Typography variant="subtitle2" weight="semibold" align="center" inline link>
                 Names associated with this starname
               </Typography>
             </Block>
-            <Image src={showIcon} alt="arrow" onClick={toggleShowAccounts} />
+            <Image src={showIcon} alt="arrow" />
           </Block>
         </Block>
         <Collapse in={show}>
