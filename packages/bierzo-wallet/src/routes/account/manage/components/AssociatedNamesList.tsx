@@ -89,7 +89,13 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegister
               };
 
               return (
-                <AccountManage menuItems={menuItems} onEdit={onEdit} account={name} hideExpiration={true} />
+                <AccountManage
+                  key={`${name.name}*${name.domain}`}
+                  menuItems={menuItems}
+                  onEdit={onEdit}
+                  account={name}
+                  hideExpiration={true}
+                />
               );
             })}
         </Collapse>

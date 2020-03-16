@@ -70,6 +70,7 @@ export interface BwAccountWithChainName extends BwAccount {
 type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
 
 interface Props {
+  readonly key?: string;
   readonly account: AccountModuleMixedType;
   readonly menuItems: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
