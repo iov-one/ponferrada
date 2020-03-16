@@ -18,7 +18,7 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { formatDate, formatTime } from "../../utils/date";
+import { isIovname } from "../../logic/account";
 import {
   AddressesTooltipHeader,
   BwAccountWithChainName,
@@ -218,10 +218,21 @@ const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubm
             </Block>
           </Block>
           {isAccountData(account) && (
-            <Block display="flex" justifyContent="center">
-              <Typography variant="body2" inline align="center" color="textSecondary">
-                Expires on {formatDate(account.expiryDate)} {formatTime(account.expiryDate)}
-              </Typography>
+            <Block display="flex" justifyContent="center" marginTop={1}>
+              {isIovname(`${account.name}*${account.domain}`) || !account.name ? (
+                <Typography variant="body2" inline align="center" color="textSecondary">
+                  Expires on {account.expiryDate.toLocaleDateString()}
+                </Typography>
+              ) : (
+                <React.Fragment>
+                  <Typography variant="body2" inline align="center" color="textSecondary">
+                    Name assigned to you by
+                  </Typography>
+                  <Typography variant="body2" weight="semibold" inline align="center" color="textSecondary">
+                    {` *${account.domain}`}
+                  </Typography>
+                </React.Fragment>
+              )}
             </Block>
           )}
 

@@ -17,7 +17,6 @@ import React from "react";
 
 import { BwAccount } from "../../store/accounts";
 import { BwUsername } from "../../store/usernames";
-import { formatDate, formatTime } from "../../utils/date";
 import AddressesTable, { ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import shield from "./assets/shield.svg";
@@ -132,9 +131,11 @@ const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onE
             </Block>
           </Block>
           {isAccountData(account) && !hideExpiration && (
-            <Typography variant="body2" inline align="center" color="textSecondary">
-              Expires on {formatDate(account.expiryDate)} {formatTime(account.expiryDate)}
-            </Typography>
+            <Block display="flex" justifyContent="center" marginTop={1}>
+              <Typography variant="body2" inline align="center" color="textSecondary">
+                Expires on {account.expiryDate.toLocaleDateString()}
+              </Typography>
+            </Block>
           )}
           <Block display="flex" alignItems="center" marginBottom={1} marginTop={4}>
             <Block display="flex" alignItems="center" width={162}>
