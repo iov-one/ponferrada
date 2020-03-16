@@ -8338,153 +8338,7 @@ Array [
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
                   >
-                    Delete certificate from account
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  1 Dec 2019
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
-                  >
-                    -
-                    100 IOV
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <img
-                  alt="Sorting"
-                  className="makeStyles-root"
-                  height={10}
-                  src="dropdownArrow.svg"
-                  width={16}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
-              onClick={[Function]}
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <img
-                    alt="Transaction type"
-                    className="makeStyles-root"
-                    height={24}
-                    src="user.svg"
-                    width={24}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-                  >
-                    Starname registration
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  1 Dec 2019
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
-                  >
-                    -
-                    100 IOV
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <img
-                  alt="Sorting"
-                  className="makeStyles-root"
-                  height={10}
-                  src="dropdownArrow.svg"
-                  width={16}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
-              onClick={[Function]}
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <img
-                    alt="Transaction type"
-                    className="makeStyles-root"
-                    height={24}
-                    src="user.svg"
-                    width={24}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-                  >
-                    Starname renewal
+                    Account targets update
                   </h6>
                 </div>
                 <div
@@ -8630,299 +8484,7 @@ Array [
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
                   >
-                    Account registration
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  1 Dec 2019
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
-                  >
-                    -
-                    100 IOV
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <img
-                  alt="Sorting"
-                  className="makeStyles-root"
-                  height={10}
-                  src="dropdownArrow.svg"
-                  width={16}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
-              onClick={[Function]}
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <img
-                    alt="Transaction type"
-                    className="makeStyles-root"
-                    height={24}
-                    src="user.svg"
-                    width={24}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-                  >
-                    Account transfer
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  1 Dec 2019
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
-                  >
-                    -
-                    100 IOV
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <img
-                  alt="Sorting"
-                  className="makeStyles-root"
-                  height={10}
-                  src="dropdownArrow.svg"
-                  width={16}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
-              onClick={[Function]}
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <img
-                    alt="Transaction type"
-                    className="makeStyles-root"
-                    height={24}
-                    src="user.svg"
-                    width={24}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-                  >
-                    Account targets update
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  1 Dec 2019
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
-                  >
-                    -
-                    100 IOV
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <img
-                  alt="Sorting"
-                  className="makeStyles-root"
-                  height={10}
-                  src="dropdownArrow.svg"
-                  width={16}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
-              onClick={[Function]}
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <img
-                    alt="Transaction type"
-                    className="makeStyles-root"
-                    height={24}
-                    src="user.svg"
-                    width={24}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-                  >
-                    Account deletion
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h6
-                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
-                >
-                  1 Dec 2019
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
-                  >
-                    -
-                    100 IOV
-                  </h6>
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <img
-                  alt="Sorting"
-                  className="makeStyles-root"
-                  height={10}
-                  src="dropdownArrow.svg"
-                  width={16}
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <div
-              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
-              onClick={[Function]}
-            >
-              <div
-                className="MuiBox-root MuiBox-root"
-              />
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <div
-                  className="MuiBox-root MuiBox-root"
-                >
-                  <img
-                    alt="Transaction type"
-                    className="makeStyles-root"
-                    height={24}
-                    src="user.svg"
-                    width={24}
-                  />
-                </div>
-                <div
-                  className="MuiBox-root MuiBox-root makeStyles-cell"
-                >
-                  <h6
-                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-                  >
-                    All accounts deletion
+                    Starname registration
                   </h6>
                 </div>
                 <div
@@ -9068,7 +8630,7 @@ Array [
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
                   >
-                    Add certificate to account
+                    All accounts deletion
                   </h6>
                 </div>
                 <div
@@ -9141,7 +8703,153 @@ Array [
                   <h6
                     className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
                   >
-                    Fees update for accounts
+                    Account deletion
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    Account transfer
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    Starname renewal
                   </h6>
                 </div>
                 <div
@@ -9288,6 +8996,298 @@ Array [
                     className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
                   >
                     Account configuration update
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    Delete certificate from account
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    Fees update for accounts
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    Add certificate to account
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <h6
+                  className="MuiTypography-root makeStyles-cell makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorSecondary"
+                >
+                  1 Dec 2019
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignRight"
+                  >
+                    -
+                    100 IOV
+                  </h6>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <img
+                  alt="Sorting"
+                  className="makeStyles-root"
+                  height={10}
+                  src="dropdownArrow.svg"
+                  width={16}
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+            </div>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root makeStyles-rowToggle"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <img
+                    alt="Transaction type"
+                    className="makeStyles-root"
+                    height={24}
+                    src="user.svg"
+                    width={24}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-cell"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    Account registration
                   </h6>
                 </div>
                 <div
