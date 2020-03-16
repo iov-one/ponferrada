@@ -2361,7 +2361,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/24/2020
+            3/27/2020
           </h6>
         </div>
         <h6
@@ -2396,7 +2396,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/24/2020
+            3/27/2020
           </h6>
         </div>
         <h6
@@ -2431,7 +2431,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/24/2020
+            3/27/2020
           </h6>
         </div>
         <h6
@@ -2516,7 +2516,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/24/2020
+          3/27/2020
         </h6>
       </div>
       <h6
@@ -2551,7 +2551,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/24/2020
+          3/27/2020
         </h6>
       </div>
       <h6
@@ -2586,7 +2586,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/24/2020
+          3/27/2020
         </h6>
       </div>
       <h6
@@ -6000,7 +6000,7 @@ exports[`Storyshots Bierzo Wallet/Registration confirmation Registration confirm
             onClick={[Function]}
           >
             <img
-              alt="Tick"
+              alt="Copy"
               className="makeStyles-root"
               src="copy.svg"
             />
@@ -7806,6 +7806,462 @@ Array [
     </div>
   </div>,
 ]
+`;
+
+exports[`Storyshots Bierzo Wallet/Update Account Update Iovname 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="edit-account-view-id"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
+          >
+            <img
+              alt="shield"
+              className="makeStyles-root"
+              src="shield.svg"
+            />
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h4
+                className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+              >
+                test*iov
+              </h4>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={20}
+                />
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body2"
+                  >
+                    CHOOSE LINKED ADDRESSES
+                  </p>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="makeStyles-container"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Info"
+                      className="makeStyles-root"
+                      height={16}
+                      src="info_normal.svg"
+                      width={16}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                >
+                  Optional
+                </h6>
+              </div>
+              <table
+                className="MuiTable-root"
+              >
+                <tbody
+                  className="MuiTableBody-root"
+                />
+              </table>
+              <p
+                className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
+                onClick={[Function]}
+              >
+                + Add more
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Register for 5 IOV
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Storyshots Bierzo Wallet/Update Account Update confirmation 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="update-confirmation-view-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
+        >
+          <img
+            alt="Tick"
+            className="makeStyles-root"
+            src="tick.svg"
+          />
+        </div>
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorTextPrimary MuiTypography-alignCenter"
+        >
+          Your account update request was successfully signed and sent to the network.
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            Transaction ID
+          </h6>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-txId MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+          >
+            0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-copyButton"
+            onClick={[Function]}
+          >
+            <img
+              alt="Tick"
+              className="makeStyles-root"
+              src="copy.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            See Transactions
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Update Account Update sample 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+    id="edit-account-view-id"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
+          >
+            <img
+              alt="shield"
+              className="makeStyles-root"
+              src="shield.svg"
+            />
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <h4
+                className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+              >
+                test*iov
+              </h4>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={20}
+                />
+              </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <p
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body2"
+                  >
+                    CHOOSE LINKED ADDRESSES
+                  </p>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="makeStyles-container"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Info"
+                      className="makeStyles-root"
+                      height={16}
+                      src="info_normal.svg"
+                      width={16}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                >
+                  Optional
+                </h6>
+              </div>
+              <table
+                className="MuiTable-root"
+              >
+                <tbody
+                  className="MuiTableBody-root"
+                />
+              </table>
+              <p
+                className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
+                onClick={[Function]}
+              >
+                + Add more
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Register for 5 IOV
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 `;
 
 exports[`Storyshots Medulas React Components/components Avatars 1`] = `
