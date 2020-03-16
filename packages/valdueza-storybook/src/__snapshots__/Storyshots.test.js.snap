@@ -1686,6 +1686,2138 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <h6
+        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+        onClick={[Function]}
+      >
+        + Create a new name
+      </h6>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignCenter"
+        >
+          Names associated with this starname
+        </h6>
+      </div>
+      <img
+        alt="arrow"
+        className="makeStyles-root"
+        src="arrow-up.svg"
+      />
+    </div>
+  </div>
+  <div
+    className="MuiCollapse-container MuiCollapse-hidden"
+    style={
+      Object {
+        "minHeight": "0px",
+      }
+    }
+  >
+    <div
+      className="MuiCollapse-wrapper"
+    >
+      <div
+        className="MuiCollapse-wrapperInner"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <h4
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+                >
+                  test1*iov
+                </h4>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={20}
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    LINKED ADDRESSES
+                  </h6>
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                  <div
+                    className="makeStyles-container"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Info"
+                      className="makeStyles-root"
+                      height={16}
+                      src="info_normal.svg"
+                      width={16}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+                  onClick={[Function]}
+                >
+                  Edit
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <a
+                  className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                    />
+                  </svg>
+                </a>
+                <div
+                  onKeyDown={[Function]}
+                  role="presentation"
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "fixed",
+                      "right": 0,
+                      "top": 0,
+                      "visibility": "hidden",
+                      "zIndex": 1300,
+                    }
+                  }
+                >
+                  <div
+                    data-test="sentinelStart"
+                    tabIndex={0}
+                  />
+                  <div
+                    className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+                    role="document"
+                    style={
+                      Object {
+                        "opacity": 0,
+                        "transform": "scale(0.75, 0.5625)",
+                        "visibility": "hidden",
+                      }
+                    }
+                    tabIndex="-1"
+                  >
+                    <ul
+                      className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+                      onKeyDown={[Function]}
+                      role="menu"
+                      tabIndex={-1}
+                    >
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={0}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Transfer name
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={-1}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Transfer it back to me
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={-1}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Delete name
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    data-test="sentinelEnd"
+                    tabIndex={0}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <table
+                className="MuiTable-root"
+              >
+                <thead
+                  className="MuiTableHead-root"
+                >
+                  <tr
+                    className="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    >
+                      Blockchain
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    >
+                      Address
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    />
+                  </tr>
+                </thead>
+                <tbody
+                  className="MuiTableBody-root"
+                >
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      IOV Devnet
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-link"
+                        onClick={[Function]}
+                      >
+                        <img
+                          alt="Copy"
+                          className="makeStyles-root"
+                          src="copy.svg"
+                          width={14}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      Lisk Devnet
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      1349293588603668134L
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-link"
+                        onClick={[Function]}
+                      >
+                        <img
+                          alt="Copy"
+                          className="makeStyles-root"
+                          src="copy.svg"
+                          width={14}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <h4
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+                >
+                  test2*iov
+                </h4>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={20}
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    LINKED ADDRESSES
+                  </h6>
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                  <div
+                    className="makeStyles-container"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Info"
+                      className="makeStyles-root"
+                      height={16}
+                      src="info_normal.svg"
+                      width={16}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+                  onClick={[Function]}
+                >
+                  Edit
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <a
+                  className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                    />
+                  </svg>
+                </a>
+                <div
+                  onKeyDown={[Function]}
+                  role="presentation"
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "fixed",
+                      "right": 0,
+                      "top": 0,
+                      "visibility": "hidden",
+                      "zIndex": 1300,
+                    }
+                  }
+                >
+                  <div
+                    data-test="sentinelStart"
+                    tabIndex={0}
+                  />
+                  <div
+                    className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+                    role="document"
+                    style={
+                      Object {
+                        "opacity": 0,
+                        "transform": "scale(0.75, 0.5625)",
+                        "visibility": "hidden",
+                      }
+                    }
+                    tabIndex="-1"
+                  >
+                    <ul
+                      className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+                      onKeyDown={[Function]}
+                      role="menu"
+                      tabIndex={-1}
+                    >
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={0}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Transfer name
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={-1}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Transfer it back to me
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={-1}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Delete name
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    data-test="sentinelEnd"
+                    tabIndex={0}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <table
+                className="MuiTable-root"
+              >
+                <thead
+                  className="MuiTableHead-root"
+                >
+                  <tr
+                    className="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    >
+                      Blockchain
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    >
+                      Address
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    />
+                  </tr>
+                </thead>
+                <tbody
+                  className="MuiTableBody-root"
+                >
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      IOV Devnet
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-link"
+                        onClick={[Function]}
+                      >
+                        <img
+                          alt="Copy"
+                          className="makeStyles-root"
+                          src="copy.svg"
+                          width={14}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      Lisk Devnet
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      1349293588603668134L
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-link"
+                        onClick={[Function]}
+                      >
+                        <img
+                          alt="Copy"
+                          className="makeStyles-root"
+                          src="copy.svg"
+                          width={14}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <h4
+                  className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+                >
+                  test3*iov
+                </h4>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <div
+                  className="MuiBox-root MuiBox-root makeStyles-link"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="Copy"
+                    className="makeStyles-root"
+                    src="copy.svg"
+                    width={20}
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <h6
+                    className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+                  >
+                    LINKED ADDRESSES
+                  </h6>
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                  <div
+                    className="makeStyles-container"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Info"
+                      className="makeStyles-root"
+                      height={16}
+                      src="info_normal.svg"
+                      width={16}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  />
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+                  onClick={[Function]}
+                >
+                  Edit
+                </h6>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+                <a
+                  className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                    />
+                  </svg>
+                </a>
+                <div
+                  onKeyDown={[Function]}
+                  role="presentation"
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "fixed",
+                      "right": 0,
+                      "top": 0,
+                      "visibility": "hidden",
+                      "zIndex": 1300,
+                    }
+                  }
+                >
+                  <div
+                    data-test="sentinelStart"
+                    tabIndex={0}
+                  />
+                  <div
+                    className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+                    role="document"
+                    style={
+                      Object {
+                        "opacity": 0,
+                        "transform": "scale(0.75, 0.5625)",
+                        "visibility": "hidden",
+                      }
+                    }
+                    tabIndex="-1"
+                  >
+                    <ul
+                      className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+                      onKeyDown={[Function]}
+                      role="menu"
+                      tabIndex={-1}
+                    >
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={0}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Transfer name
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={-1}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Transfer it back to me
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        aria-disabled={false}
+                        className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onDragLeave={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="menuitem"
+                        tabIndex={-1}
+                      >
+                        <div
+                          className="MuiListItemText-root"
+                        >
+                          <div
+                            className="MuiBox-root MuiBox-root"
+                          >
+                            <p
+                              className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                            >
+                              Delete name
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    data-test="sentinelEnd"
+                    tabIndex={0}
+                  />
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root"
+                />
+              </div>
+              <div
+                className="MuiBox-root MuiBox-root"
+              />
+              <table
+                className="MuiTable-root"
+              >
+                <thead
+                  className="MuiTableHead-root"
+                >
+                  <tr
+                    className="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    >
+                      Blockchain
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    >
+                      Address
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+                      scope="col"
+                    />
+                  </tr>
+                </thead>
+                <tbody
+                  className="MuiTableBody-root"
+                >
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      IOV Devnet
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-link"
+                        onClick={[Function]}
+                      >
+                        <img
+                          alt="Copy"
+                          className="makeStyles-root"
+                          src="copy.svg"
+                          width={14}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    className="MuiTableRow-root"
+                  >
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      Lisk Devnet
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+                    >
+                      1349293588603668134L
+                    </td>
+                    <td
+                      aria-sort={null}
+                      className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+                    >
+                      <div
+                        className="MuiBox-root MuiBox-root makeStyles-link"
+                        onClick={[Function]}
+                      >
+                        <img
+                          alt="Copy"
+                          className="makeStyles-root"
+                          src="copy.svg"
+                          width={14}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h4
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+        >
+          test2*iov
+        </h4>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-link"
+          onClick={[Function]}
+        >
+          <img
+            alt="Copy"
+            className="makeStyles-root"
+            src="copy.svg"
+            width={20}
+          />
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            LINKED ADDRESSES
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="makeStyles-container"
+            onClick={[Function]}
+          >
+            <img
+              alt="Info"
+              className="makeStyles-root"
+              height={16}
+              src="info_normal.svg"
+              width={16}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+          onClick={[Function]}
+        >
+          Edit
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <a
+          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </a>
+        <div
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "fixed",
+              "right": 0,
+              "top": 0,
+              "visibility": "hidden",
+              "zIndex": 1300,
+            }
+          }
+        >
+          <div
+            data-test="sentinelStart"
+            tabIndex={0}
+          />
+          <div
+            className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+            role="document"
+            style={
+              Object {
+                "opacity": 0,
+                "transform": "scale(0.75, 0.5625)",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex="-1"
+          >
+            <ul
+              className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+              onKeyDown={[Function]}
+              role="menu"
+              tabIndex={-1}
+            >
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Renew
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Transfer iovname
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Delete iovname
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            data-test="sentinelEnd"
+            tabIndex={0}
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <table
+        className="MuiTable-root"
+      >
+        <thead
+          className="MuiTableHead-root"
+        >
+          <tr
+            className="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            >
+              Blockchain
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            >
+              Address
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          className="MuiTableBody-root"
+        >
+          <tr
+            className="MuiTableRow-root"
+          >
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              IOV Devnet
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={14}
+                />
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="MuiTableRow-root"
+          >
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              Lisk Devnet
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              1349293588603668134L
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={14}
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h4
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+        >
+          test2*iov
+        </h4>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-link"
+          onClick={[Function]}
+        >
+          <img
+            alt="Copy"
+            className="makeStyles-root"
+            src="copy.svg"
+            width={20}
+          />
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <p
+          className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+        >
+          Expires on 
+          3/16/2020
+        </p>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            LINKED ADDRESSES
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="makeStyles-container"
+            onClick={[Function]}
+          >
+            <img
+              alt="Info"
+              className="makeStyles-root"
+              height={16}
+              src="info_normal.svg"
+              width={16}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+          onClick={[Function]}
+        >
+          Edit
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <a
+          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </a>
+        <div
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "fixed",
+              "right": 0,
+              "top": 0,
+              "visibility": "hidden",
+              "zIndex": 1300,
+            }
+          }
+        >
+          <div
+            data-test="sentinelStart"
+            tabIndex={0}
+          />
+          <div
+            className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+            role="document"
+            style={
+              Object {
+                "opacity": 0,
+                "transform": "scale(0.75, 0.5625)",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex="-1"
+          >
+            <ul
+              className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+              onKeyDown={[Function]}
+              role="menu"
+              tabIndex={-1}
+            >
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Renew
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Transfer iovname
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Delete iovname
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            data-test="sentinelEnd"
+            tabIndex={0}
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <table
+        className="MuiTable-root"
+      >
+        <thead
+          className="MuiTableHead-root"
+        >
+          <tr
+            className="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            >
+              Blockchain
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            >
+              Address
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          className="MuiTableBody-root"
+        >
+          <tr
+            className="MuiTableRow-root"
+          >
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              IOV Devnet
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={14}
+                />
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="MuiTableRow-root"
+          >
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              Lisk Devnet
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              1349293588603668134L
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={14}
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h4
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+        >
+          test2*iov
+        </h4>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <div
+          className="MuiBox-root MuiBox-root makeStyles-link"
+          onClick={[Function]}
+        >
+          <img
+            alt="Copy"
+            className="makeStyles-root"
+            src="copy.svg"
+            width={20}
+          />
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            LINKED ADDRESSES
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="makeStyles-container"
+            onClick={[Function]}
+          >
+            <img
+              alt="Info"
+              className="makeStyles-root"
+              height={16}
+              src="info_normal.svg"
+              width={16}
+            />
+          </div>
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+        </div>
+        <h6
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+          onClick={[Function]}
+        >
+          Edit
+        </h6>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+        <a
+          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </a>
+        <div
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "fixed",
+              "right": 0,
+              "top": 0,
+              "visibility": "hidden",
+              "zIndex": 1300,
+            }
+          }
+        >
+          <div
+            data-test="sentinelStart"
+            tabIndex={0}
+          />
+          <div
+            className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+            role="document"
+            style={
+              Object {
+                "opacity": 0,
+                "transform": "scale(0.75, 0.5625)",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex="-1"
+          >
+            <ul
+              className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+              onKeyDown={[Function]}
+              role="menu"
+              tabIndex={-1}
+            >
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={0}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Renew
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Transfer iovname
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+              >
+                <div
+                  className="MuiListItemText-root"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+                    >
+                      Delete iovname
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            data-test="sentinelEnd"
+            tabIndex={0}
+          />
+        </div>
+        <div
+          className="MuiBox-root MuiBox-root"
+        />
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      />
+      <table
+        className="MuiTable-root"
+      >
+        <thead
+          className="MuiTableHead-root"
+        >
+          <tr
+            className="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            >
+              Blockchain
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            >
+              Address
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-head makeStyles-cellHead"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          className="MuiTableBody-root"
+        >
+          <tr
+            className="MuiTableRow-root"
+          >
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              IOV Devnet
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={14}
+                />
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="MuiTableRow-root"
+          >
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              Lisk Devnet
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell MuiTableCell-alignLeft MuiTableCell-body"
+            >
+              1349293588603668134L
+            </td>
+            <td
+              aria-sort={null}
+              className="MuiTableCell-root makeStyles-cell makeStyles-copyCell MuiTableCell-alignCenter MuiTableCell-body"
+            >
+              <div
+                className="MuiBox-root MuiBox-root makeStyles-link"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Copy"
+                  className="makeStyles-root"
+                  src="copy.svg"
+                  width={14}
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -2361,7 +4493,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/27/2020
+            3/28/2020
           </h6>
         </div>
         <h6
@@ -2396,7 +4528,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/27/2020
+            3/28/2020
           </h6>
         </div>
         <h6
@@ -2431,7 +4563,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/27/2020
+            3/28/2020
           </h6>
         </div>
         <h6
@@ -2516,7 +4648,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/27/2020
+          3/28/2020
         </h6>
       </div>
       <h6
@@ -2551,7 +4683,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/27/2020
+          3/28/2020
         </h6>
       </div>
       <h6
@@ -2586,7 +4718,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/27/2020
+          3/28/2020
         </h6>
       </div>
       <h6
@@ -8262,6 +10394,171 @@ exports[`Storyshots Bierzo Wallet/Update Account Update sample 1`] = `
     </div>
   </div>
 </form>
+`;
+
+exports[`Storyshots Medulas React Components/components ActionMenu 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <a
+    className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+  >
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+      />
+    </svg>
+  </a>
+  <div
+    onKeyDown={[Function]}
+    role="presentation"
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "visibility": "hidden",
+        "zIndex": 1300,
+      }
+    }
+  >
+    <div
+      data-test="sentinelStart"
+      tabIndex={0}
+    />
+    <div
+      className="MuiPaper-root MuiMenu-paper makeStyles-paper MuiPaper-elevation0 MuiPopover-paper MuiPaper-rounded"
+      role="document"
+      style={
+        Object {
+          "opacity": 0,
+          "transform": "scale(0.75, 0.5625)",
+          "visibility": "hidden",
+        }
+      }
+      tabIndex="-1"
+    >
+      <ul
+        className="MuiList-root MuiMenu-list makeStyles-list MuiList-padding"
+        onKeyDown={[Function]}
+        role="menu"
+        tabIndex={-1}
+      >
+        <li
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="menuitem"
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemText-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+              >
+                Renew
+              </p>
+            </div>
+          </div>
+        </li>
+        <li
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="menuitem"
+          tabIndex={-1}
+        >
+          <div
+            className="MuiListItemText-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+              >
+                Transfer iovname
+              </p>
+            </div>
+          </div>
+        </li>
+        <li
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="menuitem"
+          tabIndex={-1}
+        >
+          <div
+            className="MuiListItemText-root"
+          >
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+              >
+                Delete iovname
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      data-test="sentinelEnd"
+      tabIndex={0}
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Medulas React Components/components Avatars 1`] = `
