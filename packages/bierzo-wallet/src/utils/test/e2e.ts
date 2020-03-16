@@ -66,5 +66,5 @@ export async function getToastMessage(page: Page): Promise<string> {
   const toastTextElement = await page.$("#toast-provider h6");
   if (!toastTextElement) throw new Error("h6 element not found");
 
-  return await (await toastTextElement.getProperty("textContent")).jsonValue();
+  return (await (await toastTextElement.getProperty("textContent")).jsonValue()) as string;
 }
