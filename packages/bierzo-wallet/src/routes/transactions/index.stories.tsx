@@ -151,7 +151,7 @@ const incomingDeleteDomainTransaction: ProcessedTx<DeleteDomainTx> = {
 
 const incomingRegisterAccountTransaction: ProcessedTx<RegisterAccountTx> = {
   id: makeExampleIovTransactionId(),
-  time: new ReadonlyDate("2019-12-01T03:02:01.763Z"),
+  time: new ReadonlyDate("2019-12-01T03:01:41.763Z"),
   original: {
     kind: "bns/register_account",
     chainId: chainIdIov,
