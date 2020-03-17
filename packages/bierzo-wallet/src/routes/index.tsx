@@ -4,6 +4,7 @@ import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
 import { AccountManage, AccountRegister, AccountUpdate } from "./account";
+import AccountTransfer from "./account/transfer";
 import Addresses from "./addresses";
 import Balance from "./balance";
 import Login from "./login";
@@ -13,6 +14,7 @@ import {
   IOVNAME_EDIT_ROUTE,
   IOVNAME_MANAGE_ROUTE,
   IOVNAME_REGISTER_ROUTE,
+  IOVNAME_TRANSFER_ROUTE,
   LOGIN_ROUTE,
   NAME_EDIT_ROUTE,
   NAME_MANAGE_ROUTE,
@@ -47,6 +49,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={NAME_REGISTER_ROUTE} render={() => <AccountRegister entity="name" />} />
         <Route exact path={IOVNAME_EDIT_ROUTE} render={() => <AccountUpdate entity="iovname" />} />
         <Route exact path={NAME_EDIT_ROUTE} render={() => <AccountUpdate entity="name" />} />
+        <Route exact path={IOVNAME_TRANSFER_ROUTE} render={() => <AccountTransfer entity="iovname" />} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={TERMS_ROUTE} component={Terms} />

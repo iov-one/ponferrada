@@ -7,6 +7,7 @@ export const ADDRESSES_ROUTE = "/addresses";
 export const IOVNAME_MANAGE_ROUTE = "/iovname/manage";
 export const IOVNAME_EDIT_ROUTE = "/iovname/edit";
 export const IOVNAME_REGISTER_ROUTE = "/iovname/register";
+export const IOVNAME_TRANSFER_ROUTE = "/iovname/transfer";
 // Account: Names paths
 export const NAME_MANAGE_ROUTE = "/name/manage";
 export const NAME_EDIT_ROUTE = "/name/edit";
