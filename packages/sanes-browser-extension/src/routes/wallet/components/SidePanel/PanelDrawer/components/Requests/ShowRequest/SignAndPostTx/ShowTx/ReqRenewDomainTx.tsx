@@ -1,24 +1,24 @@
-import { RegisterDomainTx } from "@iov/bns";
+import { RenewDomainTx } from "@iov/bns";
 import { Block, List, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import TransactionFee from "./TransactionFee";
 
-export const REQ_REGISTER_DOMAIN = "req-register-domain-tx";
+export const REQ_RENEW_DOMAIN = "req-renew-domain-tx";
 
 interface Props {
-  readonly tx: RegisterDomainTx;
+  readonly tx: RenewDomainTx;
 }
 
-const ReqRegisterDomainTx = ({ tx }: Props): JSX.Element => {
+const ReqRenewDomainTx = ({ tx }: Props): JSX.Element => {
   return (
     <React.Fragment>
-      <Typography variant="body1" inline color="primary" id={REQ_REGISTER_DOMAIN}>
+      <Typography variant="body1" inline color="primary" id={REQ_RENEW_DOMAIN}>
         *{tx.domain}
       </Typography>
       <Typography variant="body1" inline>
         {" "}
-        starname registration request.
+        starname renewal request.
       </Typography>
       <Block marginTop={1} />
       <List>
@@ -28,4 +28,4 @@ const ReqRegisterDomainTx = ({ tx }: Props): JSX.Element => {
   );
 };
 
-export default ReqRegisterDomainTx;
+export default ReqRenewDomainTx;

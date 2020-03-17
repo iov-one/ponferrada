@@ -1,24 +1,24 @@
-import { RegisterDomainTx } from "@iov/bns";
+import { DeleteAllAccountsTx } from "@iov/bns";
 import { Block, List, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import TransactionFee from "./TransactionFee";
 
-export const REQ_REGISTER_DOMAIN = "req-register-domain-tx";
+export const REQ_DELETE_ALL_ACCOUNTS = "req-delete-all-accounts-tx";
 
 interface Props {
-  readonly tx: RegisterDomainTx;
+  readonly tx: DeleteAllAccountsTx;
 }
 
-const ReqRegisterDomainTx = ({ tx }: Props): JSX.Element => {
+const ReqDeleteAllAccountsTx = ({ tx }: Props): JSX.Element => {
   return (
     <React.Fragment>
-      <Typography variant="body1" inline color="primary" id={REQ_REGISTER_DOMAIN}>
+      <Typography variant="body1" inline color="primary" id={REQ_DELETE_ALL_ACCOUNTS}>
         *{tx.domain}
       </Typography>
       <Typography variant="body1" inline>
         {" "}
-        starname registration request.
+        starname all accounts deletion request.
       </Typography>
       <Block marginTop={1} />
       <List>
@@ -28,4 +28,4 @@ const ReqRegisterDomainTx = ({ tx }: Props): JSX.Element => {
   );
 };
 
-export default ReqRegisterDomainTx;
+export default ReqDeleteAllAccountsTx;
