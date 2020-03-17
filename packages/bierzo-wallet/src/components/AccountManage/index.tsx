@@ -67,7 +67,7 @@ export interface BwAccountWithChainName extends BwAccount {
   readonly addresses: readonly ChainAddressPairWithName[];
 }
 
-type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
+export type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
 
 interface Props {
   readonly key?: string;
