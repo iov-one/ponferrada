@@ -1,5 +1,4 @@
-import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
-import { BnsConnection } from "@iov/bns";
+import { Fee, Identity, TransactionId } from "@iov/bcp";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
@@ -10,10 +9,8 @@ import { BwUsernameWithChainName } from "../../../components/AccountManage";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import PageMenu from "../../../components/PageMenu";
 import { getConfig, SupportedChain } from "../../../config";
-import { getConnectionForChainId } from "../../../logic/connection";
-import { ExtendedIdentity } from "../../../store/identities";
 import { RootState } from "../../../store/reducers";
-import { getChainAddressPairWithNamesSorted } from "../../../utils/tokens";
+import { getBnsIdentity, getChainAddressPairWithNamesSorted } from "../../../utils/tokens";
 import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmRegistration from "./components/ConfirmRegistration";
 import IovnameForm from "./components/IovnameForm";
@@ -28,15 +25,6 @@ function onReturnToBalance(): void {
 }
 function onReturnToAddresses(): void {
   history.push(ADDRESSES_ROUTE);
-}
-
-export function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
-  for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
-    if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
-      return identity;
-    }
-  }
-  return undefined;
 }
 
 async function getPersonalizedAddressRegistrationFee(
