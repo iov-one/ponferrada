@@ -1,4 +1,4 @@
-import { Fee } from "@iov/bcp";
+import { Address, Fee } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { List, ListItem, Paper, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
@@ -19,10 +19,10 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { isStarname, isValidName } from "../../logic/account";
+import { isValidName } from "../../logic/account";
 import { AccountModuleMixedType, isAccountData } from "../AccountManage";
 
-const RECEPIENT_ADDRESS = "account-recepient-address";
+export const RECEPIENT_ADDRESS = "account-recepient-address";
 
 const useMessagePaper = makeStyles({
   rounded: {
@@ -88,7 +88,7 @@ interface Props {
   readonly account: AccountModuleMixedType;
   readonly onTransfer: (values: object) => Promise<void>;
   readonly onCancel: () => void;
-  readonly getFee: () => Fee | undefined;
+  readonly getFee: (newOwner: Address) => Promise<Fee | undefined>;
 }
 
 const AccountTransfer = ({ account, id, onTransfer, onCancel, getFee }: Props): JSX.Element => {
@@ -99,15 +99,28 @@ const AccountTransfer = ({ account, id, onTransfer, onCancel, getFee }: Props): 
   const listItemClasses = useListItem();
   const theme = useTheme<Theme>();
 
-  const { form, handleSubmit, invalid, pristine, submitting } = useForm({
+  const { form, handleSubmit, invalid, pristine, submitting, values } = useForm({
     onSubmit: onTransfer,
   });
 
   React.useEffect(() => {
-    if (!invalid) {
-      setTransferFee(getFee());
+    let isSubscribed = true;
+
+    async function setFee(): Promise<void> {
+      const fee = await getFee(values[RECEPIENT_ADDRESS] as Address);
+      if (isSubscribed) {
+        setTransferFee(fee);
+      }
     }
-  }, [getFee, invalid]);
+
+    if (!invalid && values[RECEPIENT_ADDRESS]) {
+      setFee();
+    }
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [getFee, invalid, values]);
 
   return (
     <Block
