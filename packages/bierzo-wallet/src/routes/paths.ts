@@ -15,6 +15,7 @@ export const NAME_REGISTER_ROUTE = "/name/register";
 // Account: Starnames paths
 export const STARNAME_MANAGE_ROUTE = "/starname/manage";
 export const STARNAME_REGISTER_ROUTE = "/starname/register";
+export const STARNAME_TRANSFER_ROUTE = "/starname/transfer";
 
 export const TERMS_ROUTE = "/terms";
 export const POLICY_ROUTE = "/policy";
