@@ -4,6 +4,7 @@ import {
   isRegisterDomainTx,
   isRegisterUsernameTx,
   isReplaceAccountTargetsTx,
+  isTransferUsernameTx,
   isUpdateTargetsOfUsernameTx,
 } from "@iov/bns";
 import { Dispatch } from "redux";
@@ -12,7 +13,7 @@ import { Subscription } from "xstream";
 import { getConfig } from "../../config";
 import { addAccountsAction, BwAccount } from "../../store/accounts";
 import { addTransaction } from "../../store/notifications";
-import { addUsernamesAction, BwUsername } from "../../store/usernames";
+import { addUsernamesAction, BwUsername, removeUsernameAction } from "../../store/usernames";
 import { getCodec } from "../codec";
 import { getConnectionForBns, getConnectionForChainId } from "../connection";
 import { BwParserFactory } from "./types/BwParserFactory";
@@ -25,6 +26,9 @@ function mayDispatchUsername(dispatch: Dispatch, usernameTx: UnsignedTransaction
     };
 
     dispatch(addUsernamesAction([username]));
+  }
+  if (isTransferUsernameTx(usernameTx)) {
+    dispatch(removeUsernameAction(usernameTx.username));
   }
 }
 
