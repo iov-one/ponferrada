@@ -19,7 +19,8 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { isValidName } from "../../logic/account";
+import { isValidName, lookupRecipientAddressByName } from "../../logic/account";
+import { getConnectionForBns } from "../../logic/connection";
 import { AccountModuleMixedType, isAccountData } from "../AccountManage";
 
 export const RECEPIENT_ADDRESS = "account-recepient-address";
@@ -69,16 +70,29 @@ function getTransferButtonCaption(fee: Fee | undefined): string {
   return "Transfer";
 }
 
-const recipientValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
+const recipientValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
   if (typeof value !== "string") throw new Error("Input must be a string");
 
   const nameValidity = isValidName(value);
 
-  if (nameValidity === "valid" || bnsCodec.isValidAddress(value)) {
-    return undefined;
-  } else {
+  if (nameValidity !== "valid" && !bnsCodec.isValidAddress(value)) {
     return "Must be an IOV human readable address or a native IOV address";
   }
+
+  if (nameValidity !== "valid" && bnsCodec.isValidAddress(value)) {
+    return undefined;
+  }
+
+  const connection = await getConnectionForBns();
+  const lookupResult = await lookupRecipientAddressByName(value, connection.chainId);
+
+  if (lookupResult === "name_not_found") {
+    return "Recipient's account was not found";
+  } else if (lookupResult === "no_address_for_blockchain") {
+    return "Recipient's account does not contain an address for this blockchain";
+  }
+
+  return undefined;
 };
 
 const validator = composeValidators(required, recipientValidator);
