@@ -12,6 +12,7 @@ import { BwUsernameWithChainName } from "../../../../components/AccountManage";
 import AccountTransfer, { RECEPIENT_ADDRESS } from "../../../../components/AccountTransfer";
 import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
+import { isValidName, lookupRecipientAddressByName } from "../../../../logic/account";
 import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
 
 const IOVNAME_TRANSFER_ID = "iovname-transfer-id";
@@ -49,11 +50,14 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
   const onTransfer = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
 
-    const newOwner = formValues[RECEPIENT_ADDRESS] as Address;
+    let newOwner: Address = formValues[RECEPIENT_ADDRESS] as Address;
+    if (isValidName(newOwner) === "valid") {
+      const lookupResult = await lookupRecipientAddressByName(newOwner, bnsIdentity.chainId);
+      newOwner = lookupResult as Address;
+    }
 
     try {
       const request = await generateTransferUsernameTxRequest(bnsIdentity, account.username, newOwner);
-
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -97,3 +101,9 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
 };
 
 export default IovnameAccountTransfer;
+
+// clay design suit town spoil pond among sand swap roof license hand
+// tiov1ar2nnfd8zzp3c4d28w6aukxlt80y3hy0y42ly7
+
+// enforce slight dice song slush extend cool wrist short civil album crush
+// tiov1k59l3mfe0h5zaws95zuy3esuyea22y00vpkd7e
