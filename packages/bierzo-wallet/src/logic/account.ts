@@ -13,7 +13,7 @@ export function isStarname(starname: string): boolean {
 
 /**
  * Returns the address associated with the name, or undefined if not registered.
- * The name must include a namespace ("*iov")
+ * The name must be valid starname
  */
 export async function lookupRecipientAddressByName(
   username: string,
