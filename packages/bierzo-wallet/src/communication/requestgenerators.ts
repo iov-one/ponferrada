@@ -6,6 +6,7 @@ import {
   RegisterDomainTx,
   RegisterUsernameTx,
   ReplaceAccountTargetsTx,
+  TransferDomainTx,
   TransferUsernameTx,
   UpdateTargetsOfUsernameTx,
 } from "@iov/bns";
@@ -139,6 +140,23 @@ export const generateRegisterDomainTxWithFee = async (
   return await withChainFee(regDomainTx, creatorAddress);
 };
 
+export const generateTransferDomainTxWithFee = async (
+  creator: Identity,
+  domain: string,
+  newAdmin: Address,
+): Promise<TransferDomainTx> => {
+  const creatorAddress = bnsCodec.identityToAddress(creator);
+
+  const regDomainTx: TransferDomainTx = {
+    kind: "bns/transfer_domain",
+    chainId: creator.chainId,
+    domain: domain,
+    newAdmin: newAdmin,
+  };
+
+  return await withChainFee(regDomainTx, creatorAddress);
+};
+
 export const generateRegisterAccountTxWithFee = async (
   creator: Identity,
   domain: string,
@@ -237,6 +255,25 @@ export const generateRegisterDomainTxRequest = async (
   domain: string,
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateRegisterDomainTxWithFee(creator, domain);
+
+  return {
+    jsonrpc: "2.0",
+    id: makeJsonRpcId(),
+    method: "signAndPost",
+    params: {
+      reason: TransactionEncoder.toJson("I would like you to sign this request"),
+      signer: TransactionEncoder.toJson(creator),
+      transaction: TransactionEncoder.toJson(transactionWithFee),
+    },
+  };
+};
+
+export const generateTransferDomainTxRequest = async (
+  creator: Identity,
+  domain: string,
+  newOwner: Address,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateTransferDomainTxWithFee(creator, domain, newOwner);
 
   return {
     jsonrpc: "2.0",
