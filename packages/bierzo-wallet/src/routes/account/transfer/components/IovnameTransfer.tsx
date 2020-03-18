@@ -1,5 +1,6 @@
 import { Address, Fee, Identity, TransactionId } from "@iov/bcp";
-import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
+import { JsonRpcRequest } from "@iov/jsonrpc";
+import { List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../..";
@@ -9,23 +10,26 @@ import {
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwUsernameWithChainName } from "../../../../components/AccountManage";
-import AccountTransfer, { RECEPIENT_ADDRESS } from "../../../../components/AccountTransfer";
-import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
-import { isValidName, lookupRecipientAddressByName } from "../../../../logic/account";
+import AccountTransfer from "../../../../components/AccountTransfer";
 import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
 
 const IOVNAME_TRANSFER_ID = "iovname-transfer-id";
 
-export async function getAccountTransferFee(
-  bnsIdentity: Identity,
-  username: string,
-  newOwner: Address,
-): Promise<Fee | undefined> {
-  const transactionWithFee = await generateTransferUsernameTxWithFee(bnsIdentity, username, newOwner);
+const useList = makeStyles({
+  root: {
+    backgroundColor: "inherit",
+    border: "none",
+    listStyle: "disc inside",
+    fontSize: "1.6rem",
+    color: "#1C1C1C",
+  },
+});
 
-  return transactionWithFee.fee;
-}
+const useListItem = makeStyles({
+  root: {
+    display: "list-item",
+  },
+});
 
 interface Props {
   readonly bnsIdentity: Identity;
@@ -34,8 +38,8 @@ interface Props {
 }
 
 const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
-  const billboard = React.useContext(BillboardContext);
-  const toast = React.useContext(ToastContext);
+  const listClasses = useList();
+  const listItemClasses = useListItem();
 
   const account: BwUsernameWithChainName = history.location.state;
 
@@ -44,49 +48,11 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
   };
 
   const getFee = async (newOwner: Address): Promise<Fee | undefined> => {
-    return await getAccountTransferFee(bnsIdentity, account.username, newOwner);
+    return (await generateTransferUsernameTxWithFee(bnsIdentity, account.username, newOwner)).fee;
   };
 
-  const onTransfer = async (values: object): Promise<void> => {
-    const formValues = values as FormValues;
-
-    let newOwner: Address = formValues[RECEPIENT_ADDRESS] as Address;
-    if (isValidName(newOwner) === "valid") {
-      const lookupResult = await lookupRecipientAddressByName(newOwner, bnsIdentity.chainId);
-      newOwner = lookupResult as Address;
-    }
-
-    try {
-      const request = await generateTransferUsernameTxRequest(bnsIdentity, account.username, newOwner);
-      if (rpcEndpoint.type === "extension") {
-        billboard.show(
-          <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-          "start",
-          "flex-end",
-          0,
-        );
-      } else {
-        billboard.show(
-          <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-          "center",
-          "center",
-          0,
-        );
-      }
-      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-      if (transactionId === undefined) {
-        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      } else if (transactionId === null) {
-        toast.show("Request rejected", ToastVariant.ERROR);
-      } else {
-        setTransactionId(transactionId);
-      }
-    } catch (error) {
-      console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
-    } finally {
-      billboard.close();
-    }
+  const getRequest = async (newOwner: Address): Promise<JsonRpcRequest> => {
+    return await generateTransferUsernameTxRequest(bnsIdentity, account.username, newOwner);
   };
 
   return (
@@ -94,16 +60,32 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
       id={IOVNAME_TRANSFER_ID}
       onCancel={onReturnToManage}
       account={account}
-      onTransfer={onTransfer}
       getFee={getFee}
-    />
+      getRequest={getRequest}
+      bnsChainId={bnsIdentity.chainId}
+      rpcEndpoint={rpcEndpoint}
+      setTransactionId={setTransactionId}
+    >
+      <List disablePadding classes={listClasses}>
+        <ListItem disableGutters classes={listItemClasses}>
+          <Typography color="default" variant="subtitle1" inline>
+            The iovname and all associated names will be transfered to a new owner.
+          </Typography>
+        </ListItem>
+        <ListItem disableGutters classes={listItemClasses}>
+          <Typography color="default" variant="subtitle1" inline>
+            No one will be able to send you assets on this iovname or any names associated to this iovname.
+          </Typography>
+        </ListItem>
+        <ListItem disableGutters classes={listItemClasses}>
+          <Typography color="default" variant="subtitle1" inline>
+            You will not be able to recover this iovname after you transfer it, only if the new owner
+            transfers it back to you.
+          </Typography>
+        </ListItem>
+      </List>
+    </AccountTransfer>
   );
 };
 
 export default IovnameAccountTransfer;
-
-// clay design suit town spoil pond among sand swap roof license hand
-// tiov1ar2nnfd8zzp3c4d28w6aukxlt80y3hy0y42ly7
-
-// enforce slight dice song slush extend cool wrist short civil album crush
-// tiov1k59l3mfe0h5zaws95zuy3esuyea22y00vpkd7e

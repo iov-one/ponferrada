@@ -1,27 +1,35 @@
-import { Address, Fee } from "@iov/bcp";
+import { Address, ChainId, Fee, TransactionId } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
-import { List, ListItem, Paper, Theme } from "@material-ui/core";
+import { JsonRpcRequest } from "@iov/jsonrpc";
+import { Paper, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { FieldValidator } from "final-form";
 import {
   Back,
+  BillboardContext,
   Block,
   Button,
   composeValidators,
   FieldInputValue,
   Form,
+  FormValues,
   makeStyles,
   required,
   TextField,
+  ToastContext,
   Typography,
   useForm,
 } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
+import { RpcEndpoint } from "../../communication/rpcEndpoint";
 import { isValidName, lookupRecipientAddressByName } from "../../logic/account";
 import { getConnectionForBns } from "../../logic/connection";
+import { submitTransaction } from "../../utils/transaction";
 import { AccountModuleMixedType, isAccountData } from "../AccountManage";
+import LedgerBillboardMessage from "../BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "../BillboardMessage/NeumaBillboardMessage";
 
 export const RECEPIENT_ADDRESS = "account-recepient-address";
 
@@ -43,22 +51,6 @@ const usePromptPaper = makeStyles({
   },
   elevation1: {
     boxShadow: "none",
-  },
-});
-
-const useList = makeStyles({
-  root: {
-    backgroundColor: "inherit",
-    border: "none",
-    listStyle: "disc inside",
-    fontSize: "1.6rem",
-    color: "#1C1C1C",
-  },
-});
-
-const useListItem = makeStyles({
-  root: {
-    display: "list-item",
   },
 });
 
@@ -100,21 +92,56 @@ const validator = composeValidators(required, recipientValidator);
 interface Props {
   readonly id: string;
   readonly account: AccountModuleMixedType;
-  readonly onTransfer: (values: object) => Promise<void>;
+  readonly children: React.ReactNode;
+  readonly bnsChainId: ChainId;
   readonly onCancel: () => void;
   readonly getFee: (newOwner: Address) => Promise<Fee | undefined>;
+  readonly getRequest: (newOwner: Address) => Promise<JsonRpcRequest>;
+  readonly rpcEndpoint: RpcEndpoint;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
-const AccountTransfer = ({ account, id, onTransfer, onCancel, getFee }: Props): JSX.Element => {
+const AccountTransfer = ({
+  account,
+  id,
+  onCancel,
+  getFee,
+  getRequest,
+  bnsChainId,
+  children,
+  rpcEndpoint,
+  setTransactionId,
+}: Props): JSX.Element => {
   const [transferFee, setTransferFee] = React.useState<Fee | undefined>();
   const messagePaperClasses = useMessagePaper();
   const promptPaperClasses = usePromptPaper();
-  const listClasses = useList();
-  const listItemClasses = useListItem();
   const theme = useTheme<Theme>();
+  const billboard = React.useContext(BillboardContext);
+  const toast = React.useContext(ToastContext);
+
+  const onSubmit = async (values: object): Promise<void> => {
+    const formValues = values as FormValues;
+
+    let newOwner: Address = formValues[RECEPIENT_ADDRESS] as Address;
+    if (isValidName(newOwner) === "valid") {
+      const lookupResult = await lookupRecipientAddressByName(newOwner, bnsChainId);
+      newOwner = lookupResult as Address;
+    }
+
+    const request = await getRequest(newOwner);
+    await submitTransaction(
+      request,
+      billboard,
+      toast,
+      rpcEndpoint,
+      <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+      <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+      (transactionId: TransactionId) => setTransactionId(transactionId),
+    );
+  };
 
   const { form, handleSubmit, invalid, pristine, submitting, values } = useForm({
-    onSubmit: onTransfer,
+    onSubmit,
   });
 
   React.useEffect(() => {
@@ -165,25 +192,7 @@ const AccountTransfer = ({ account, id, onTransfer, onCancel, getFee }: Props): 
               bgcolor={theme.palette.background.default}
               borderLeft="4px solid rgba(255, 189, 2, .5)"
             >
-              <List disablePadding classes={listClasses}>
-                <ListItem disableGutters classes={listItemClasses}>
-                  <Typography color="default" variant="subtitle1" inline>
-                    The iovname and all associated names will be transfered to a new owner.
-                  </Typography>
-                </ListItem>
-                <ListItem disableGutters classes={listItemClasses}>
-                  <Typography color="default" variant="subtitle1" inline>
-                    No one will be able to send you assets on this iovname or any names associated to this
-                    iovname.
-                  </Typography>
-                </ListItem>
-                <ListItem disableGutters classes={listItemClasses}>
-                  <Typography color="default" variant="subtitle1" inline>
-                    You will not be able to recover this iovname after you transfer it, only if the new owner
-                    transfers it back to you.
-                  </Typography>
-                </ListItem>
-              </List>
+              {children}
             </Block>
           </Block>
         </Paper>
