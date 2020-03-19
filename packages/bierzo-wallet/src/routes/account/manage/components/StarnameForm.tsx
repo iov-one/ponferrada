@@ -5,21 +5,21 @@ import { history } from "../../..";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import { getChainName } from "../../../../config";
 import { getConnectionForBns } from "../../../../logic/connection";
-import { NAME_EDIT_ROUTE, NAME_REGISTER_ROUTE } from "../../../paths";
+import { NAME_EDIT_ROUTE, NAME_REGISTER_ROUTE, STARNAME_TRANSFER_ROUTE } from "../../../paths";
 import AssociatedNamesList from "./AssociatedNamesList";
-
-const menuItems: readonly ActionMenuItem[] = [
-  // eslint-disable-next-line no-console
-  { title: "Renew", action: () => console.log("Renew") },
-  // eslint-disable-next-line no-console
-  { title: "Transfer starname", action: () => console.log("Transfer starname") },
-  // eslint-disable-next-line no-console
-  { title: "Delete starname", action: () => console.log("Delete starname") },
-];
 
 const StarnameAccountManage = (): JSX.Element => {
   const [domainAccounts, setDomainAccounts] = React.useState<BwAccountWithChainName[]>([]);
   const account: BwAccountWithChainName = history.location.state;
+
+  const menuItems: readonly ActionMenuItem[] = [
+    // eslint-disable-next-line no-console
+    { title: "Renew", action: () => console.log("Renew") },
+    // eslint-disable-next-line no-console
+    { title: "Transfer starname", action: () => history.push(STARNAME_TRANSFER_ROUTE, account) },
+    // eslint-disable-next-line no-console
+    { title: "Delete starname", action: () => console.log("Delete starname") },
+  ];
 
   React.useEffect(() => {
     let isSubscribed = true;
