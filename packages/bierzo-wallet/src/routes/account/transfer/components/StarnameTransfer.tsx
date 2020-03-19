@@ -69,17 +69,17 @@ const StarnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            The iovname and all associated names will be transfered to a new owner.
+            The starname and all associated names will be transfered to a new owner.
           </Typography>
         </ListItem>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            No one will be able to send you assets on this iovname or any names associated to this iovname.
+            No one will be able to send you assets on this starname or any names associated to this starname.
           </Typography>
         </ListItem>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            You will not be able to recover this iovname after you transfer it, only if the new owner
+            You will not be able to recover this starname after you transfer it, only if the new owner
             transfers it back to you.
           </Typography>
         </ListItem>
