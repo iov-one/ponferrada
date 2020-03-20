@@ -234,6 +234,14 @@ export class BwParserFactory {
       return new BwRegisterUsernameParser();
     } else if (isUpdateTargetsOfUsernameTx(payload)) {
       return new BwUpdateUsernameTargetParser();
+    } else if (isRegisterAccountTx(payload)) {
+      return new BwUpdateUsernameTargetParser();
+    } else if (isReplaceAccountTargetsTx(payload)) {
+      return new BwUpdateUsernameTargetParser();
+    } else if (isTransferAccountTx(payload)) {
+      return new BwUpdateUsernameTargetParser();
+    } else if (isTransferDomainTx(payload)) {
+      return new BwUpdateUsernameTargetParser();
     }
 
     return new BwUnkownParser();
