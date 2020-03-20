@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import Collapse from "@material-ui/core/Collapse";
 import Paper from "@material-ui/core/Paper";
 import { ActionMenuItem, Block, Image, makeStyles, Typography } from "medulas-react-components";
@@ -5,11 +6,12 @@ import React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { NAME_EDIT_ROUTE } from "../../../paths";
+import { NAME_EDIT_ROUTE, NAME_TRANSFER_ROUTE } from "../../../paths";
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 
 interface Props {
+  readonly bnsAddress: Address;
   readonly names: readonly BwAccountWithChainName[];
   readonly onRegisterName: () => void;
 }
@@ -23,16 +25,11 @@ const usePaper = makeStyles({
   },
 });
 
-const menuItems: readonly ActionMenuItem[] = [
-  // eslint-disable-next-line no-console
-  { title: "Transfer name", action: () => console.log("Transfer name") },
-  // eslint-disable-next-line no-console
-  { title: "Transfer it back to me", action: () => console.log("Transfer it back to me") },
-  // eslint-disable-next-line no-console
-  { title: "Delete name", action: () => console.log("Delete name") },
-];
-
-const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegisterName }): JSX.Element => {
+const AssociatedNamesList: React.FunctionComponent<Props> = ({
+  bnsAddress,
+  names,
+  onRegisterName,
+}): JSX.Element => {
   const [show, setShow] = React.useState(false);
   const [showIcon, setShowIcon] = React.useState(arrowUp);
 
@@ -91,6 +88,14 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegister
                 history.push(NAME_EDIT_ROUTE, name);
               };
 
+              const menuItems: readonly ActionMenuItem[] = [
+                { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, name) },
+                // eslint-disable-next-line no-console
+                { title: "Transfer it back to me", action: () => console.log("Transfer it back to me") },
+                // eslint-disable-next-line no-console
+                { title: "Delete name", action: () => console.log("Delete name") },
+              ];
+
               return (
                 <AccountManage
                   key={`${name.name}*${name.domain}`}
@@ -98,6 +103,7 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({ names, onRegister
                   onEdit={onEdit}
                   account={name}
                   hideExpiration={true}
+                  transferedTo={bnsAddress !== name.owner ? name.owner : undefined}
                 />
               );
             })}
