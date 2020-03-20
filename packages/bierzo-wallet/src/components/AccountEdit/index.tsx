@@ -221,7 +221,8 @@ const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubm
             <Block display="flex" justifyContent="center" marginTop={1}>
               {isIovname(`${account.name}*${account.domain}`) || !account.name ? (
                 <Typography variant="body2" inline align="center" color="textSecondary">
-                  Expires on {account.expiryDate.toLocaleDateString()}
+                  Expires on {account.expiryDate.toLocaleDateString()}{" "}
+                  {account.expiryDate.toLocaleTimeString()}
                 </Typography>
               ) : (
                 <React.Fragment>
@@ -229,7 +230,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubm
                     Name assigned to you by
                   </Typography>
                   <Typography variant="body2" weight="semibold" inline align="center" color="textSecondary">
-                    {` *${account.domain}`}
+                    &nbsp;*{account.domain}
                   </Typography>
                 </React.Fragment>
               )}

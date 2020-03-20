@@ -97,7 +97,8 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
                     </Typography>
                     <Block marginTop={2} />
                     <Typography variant="subtitle2" weight="semibold" color="textPrimary">
-                      Expires on {starname.expiryDate.toLocaleDateString()}
+                      Expires on {starname.expiryDate.toLocaleDateString()}{" "}
+                      {starname.expiryDate.toLocaleTimeString()}
                     </Typography>
                   </Block>
                   <Typography
