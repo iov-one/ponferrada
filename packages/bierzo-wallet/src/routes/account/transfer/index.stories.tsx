@@ -53,6 +53,12 @@ const bnsIdentity: Identity = {
   },
 };
 
+const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+  <Typography color="default" variant="subtitle2">
+    New owner blockchain address, iovname or starname
+  </Typography>
+);
+
 export const ACCOUNT_TRANSFER_IOVNAMES_STORY_PATH = "Transfer iovname";
 
 storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
@@ -76,6 +82,7 @@ storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
         setTransactionId={value => {
           action("setTransactionId")(value);
         }}
+        transferPrompt={<TransferPrompt />}
       >
         <Typography>Some additional description</Typography>
       </AccountTransfer>

@@ -31,6 +31,12 @@ const useListItem = makeStyles({
   },
 });
 
+const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+  <Typography color="default" variant="subtitle2">
+    New owner blockchain address or Starname
+  </Typography>
+);
+
 interface Props {
   readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
@@ -65,6 +71,7 @@ const StarnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
       bnsChainId={bnsIdentity.chainId}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
+      transferPrompt={<TransferPrompt />}
     >
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>

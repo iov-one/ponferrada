@@ -5,8 +5,8 @@ import * as React from "react";
 
 import { history } from "../../..";
 import {
-  generateTransferDomainTxRequest,
-  generateTransferDomainTxWithFee,
+  generateTransferAccountTxRequest,
+  generateTransferAccountTxWithFee,
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
@@ -31,6 +31,12 @@ const useListItem = makeStyles({
   },
 });
 
+const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+  <Typography color="default" variant="subtitle2">
+    Person who will be using this name
+  </Typography>
+);
+
 interface Props {
   readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
@@ -48,11 +54,11 @@ const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pro
   };
 
   const getFee = async (newOwner: Address): Promise<Fee | undefined> => {
-    return (await generateTransferDomainTxWithFee(bnsIdentity, account.domain, newOwner)).fee;
+    return (await generateTransferAccountTxWithFee(bnsIdentity, account.name, account.domain, newOwner)).fee;
   };
 
   const getRequest = async (newOwner: Address): Promise<JsonRpcRequest> => {
-    return await generateTransferDomainTxRequest(bnsIdentity, account.domain, newOwner);
+    return await generateTransferAccountTxRequest(bnsIdentity, account.name, account.domain, newOwner);
   };
 
   return (
@@ -65,22 +71,18 @@ const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pro
       bnsChainId={bnsIdentity.chainId}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
+      transferPrompt={<TransferPrompt />}
     >
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            The starname and all associated names will be transfered to a new owner.
+            The person receiving this name will not have ownership over it, they can only use it to receive
+            funds and link blockchain addresses to it.
           </Typography>
         </ListItem>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            No one will be able to send you assets on this starname or any names associated to this starname.
-          </Typography>
-        </ListItem>
-        <ListItem disableGutters classes={listItemClasses}>
-          <Typography color="default" variant="subtitle1" inline>
-            You will not be able to recover this starname after you transfer it, only if the new owner
-            transfers it back to you.
+            Any associated blockchain addresses will be unlinked before the name is transferred.
           </Typography>
         </ListItem>
       </List>

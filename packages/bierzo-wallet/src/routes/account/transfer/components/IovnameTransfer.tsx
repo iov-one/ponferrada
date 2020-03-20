@@ -31,6 +31,12 @@ const useListItem = makeStyles({
   },
 });
 
+const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+  <Typography color="default" variant="subtitle2">
+    New owner blockchain address, iovname or starname
+  </Typography>
+);
+
 interface Props {
   readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
@@ -65,6 +71,7 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
       bnsChainId={bnsIdentity.chainId}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
+      transferPrompt={<TransferPrompt />}
     >
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
@@ -89,9 +96,3 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
 };
 
 export default IovnameAccountTransfer;
-
-// clay design suit town spoil pond among sand swap roof license hand
-// tiov1ar2nnfd8zzp3c4d28w6aukxlt80y3hy0y42ly7
-
-// vehicle grass omit barrel syrup broom inmate grit anxiety device speak elbow
-// tiov12e3wga6y4jf0xjx37svm2thk52ek0slsm8dje6
