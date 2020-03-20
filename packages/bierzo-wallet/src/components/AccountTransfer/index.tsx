@@ -93,6 +93,7 @@ interface Props {
   readonly id: string;
   readonly account: AccountModuleMixedType;
   readonly children: React.ReactNode;
+  readonly transferPrompt: React.ReactNode;
   readonly bnsChainId: ChainId;
   readonly onCancel: () => void;
   readonly getFee: (newOwner: Address) => Promise<Fee | undefined>;
@@ -111,6 +112,7 @@ const AccountTransfer = ({
   children,
   rpcEndpoint,
   setTransactionId,
+  transferPrompt,
 }: Props): JSX.Element => {
   const [transferFee, setTransferFee] = React.useState<Fee | undefined>();
   const messagePaperClasses = useMessagePaper();
@@ -206,9 +208,7 @@ const AccountTransfer = ({
                 Who will you be transferring it to?
               </Typography>
               <Block marginTop={3} />
-              <Typography color="default" variant="subtitle2">
-                New owner blockchain address, iovname or starname
-              </Typography>
+              {transferPrompt}
 
               <Block marginTop={1} />
               <TextField
