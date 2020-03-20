@@ -59,18 +59,21 @@ const starnames: readonly BwAccount[] = [
     name: "name1",
     expiryDate: defaultExpiryDate,
     addresses: [chainAddresses[0]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     domain: "domain2",
     name: "name2",
     expiryDate: defaultExpiryDate,
     addresses: [chainAddresses[0]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     domain: "domain1",
     name: "name2",
     expiryDate: defaultExpiryDate,
     addresses: [chainAddresses[0]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
 ];
 

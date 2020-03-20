@@ -43,6 +43,7 @@ const account: BwAccountWithChainName = {
   domain: "iov",
   expiryDate: new Date(),
   addresses: [chainAddresses[0], chainAddresses[1]],
+  owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
 };
 
 const names: BwAccountWithChainName[] = [
@@ -51,18 +52,21 @@ const names: BwAccountWithChainName[] = [
     domain: "iov",
     expiryDate: new Date(),
     addresses: [chainAddresses[0], chainAddresses[1]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     name: "test2",
     domain: "iov",
     expiryDate: new Date(),
     addresses: [chainAddresses[0], chainAddresses[1]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     name: "test3",
     domain: "iov",
     expiryDate: new Date(),
     addresses: [chainAddresses[0], chainAddresses[1]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
 ];
 
@@ -121,6 +125,7 @@ storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
         onRegisterName={() => {
           action("Register Name")();
         }}
+        bnsAddress={"tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address}
       />
     </DecoratedStorybook>
   ));

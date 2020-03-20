@@ -15,7 +15,6 @@ const StarnameAccountManage = (): JSX.Element => {
   const menuItems: readonly ActionMenuItem[] = [
     // eslint-disable-next-line no-console
     { title: "Renew", action: () => console.log("Renew") },
-    // eslint-disable-next-line no-console
     { title: "Transfer starname", action: () => history.push(STARNAME_TRANSFER_ROUTE, account) },
     // eslint-disable-next-line no-console
     { title: "Delete starname", action: () => console.log("Delete starname") },
@@ -35,6 +34,7 @@ const StarnameAccountManage = (): JSX.Element => {
                 name: nft.name ? nft.name : "",
                 domain: nft.domain,
                 expiryDate: new Date(nft.validUntil * 1000),
+                owner: nft.owner,
                 addresses: await Promise.all(
                   nft.targets.map(async address => {
                     return {
@@ -69,7 +69,11 @@ const StarnameAccountManage = (): JSX.Element => {
   return (
     <React.Fragment>
       <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} />
-      <AssociatedNamesList names={domainAccounts} onRegisterName={onRegisterName} />
+      <AssociatedNamesList
+        bnsAddress={account.owner}
+        names={domainAccounts}
+        onRegisterName={onRegisterName}
+      />
     </React.Fragment>
   );
 };
