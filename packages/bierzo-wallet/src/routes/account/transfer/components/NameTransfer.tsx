@@ -5,15 +5,15 @@ import * as React from "react";
 
 import { history } from "../../..";
 import {
-  generateTransferUsernameTxRequest,
-  generateTransferUsernameTxWithFee,
+  generateTransferDomainTxRequest,
+  generateTransferDomainTxWithFee,
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
-import { BwUsernameWithChainName } from "../../../../components/AccountManage";
+import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountTransfer from "../../../../components/AccountTransfer";
-import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
+import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const IOVNAME_TRANSFER_ID = "iovname-transfer-id";
+const STARNAME_TRANSFER_ID = "starname-transfer-id";
 
 const useList = makeStyles({
   root: {
@@ -37,31 +37,31 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
-const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 
-  const account: BwUsernameWithChainName = history.location.state;
+  const account: BwAccountWithChainName = history.location.state;
 
   const onReturnToManage = (): void => {
-    history.push(IOVNAME_MANAGE_ROUTE, account);
+    history.push(STARNAME_MANAGE_ROUTE, account);
   };
 
   const getFee = async (newOwner: Address): Promise<Fee | undefined> => {
-    return (await generateTransferUsernameTxWithFee(bnsIdentity, account.username, newOwner)).fee;
+    return (await generateTransferDomainTxWithFee(bnsIdentity, account.domain, newOwner)).fee;
   };
 
   const getRequest = async (newOwner: Address): Promise<JsonRpcRequest> => {
-    return await generateTransferUsernameTxRequest(bnsIdentity, account.username, newOwner);
+    return await generateTransferDomainTxRequest(bnsIdentity, account.domain, newOwner);
   };
 
   return (
     <AccountTransfer
-      id={IOVNAME_TRANSFER_ID}
+      id={STARNAME_TRANSFER_ID}
       onCancel={onReturnToManage}
       account={account}
-      getFee={getFee}
       getRequest={getRequest}
+      getFee={getFee}
       bnsChainId={bnsIdentity.chainId}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
@@ -69,17 +69,17 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            The iovname and all associated names will be transfered to a new owner.
+            The starname and all associated names will be transfered to a new owner.
           </Typography>
         </ListItem>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            No one will be able to send you assets on this iovname or any names associated to this iovname.
+            No one will be able to send you assets on this starname or any names associated to this starname.
           </Typography>
         </ListItem>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            You will not be able to recover this iovname after you transfer it, only if the new owner
+            You will not be able to recover this starname after you transfer it, only if the new owner
             transfers it back to you.
           </Typography>
         </ListItem>
@@ -88,10 +88,4 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
   );
 };
 
-export default IovnameAccountTransfer;
-
-// clay design suit town spoil pond among sand swap roof license hand
-// tiov1ar2nnfd8zzp3c4d28w6aukxlt80y3hy0y42ly7
-
-// vehicle grass omit barrel syrup broom inmate grit anxiety device speak elbow
-// tiov12e3wga6y4jf0xjx37svm2thk52ek0slsm8dje6
+export default NameAccountTransfer;

@@ -12,6 +12,7 @@ export const IOVNAME_TRANSFER_ROUTE = "/iovname/transfer";
 export const NAME_MANAGE_ROUTE = "/name/manage";
 export const NAME_EDIT_ROUTE = "/name/edit";
 export const NAME_REGISTER_ROUTE = "/name/register";
+export const NAME_TRANSFER_ROUTE = "/name/transfer";
 // Account: Starnames paths
 export const STARNAME_MANAGE_ROUTE = "/starname/manage";
 export const STARNAME_REGISTER_ROUTE = "/starname/register";

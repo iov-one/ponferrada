@@ -11,6 +11,7 @@ import { getBnsIdentity } from "../../../utils/tokens";
 import { TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmTransfer from "./components/ConfirmTransfer";
 import IovnameAccountTransfer from "./components/IovnameTransfer";
+import NameAccountTransfer from "./components/NameTransfer";
 import StarnameAccountTransfer from "./components/StarnameTransfer";
 
 function onSeeTrasactions(): void {
@@ -47,6 +48,13 @@ const AccountTransfer = ({ entity }: AccountProps): JSX.Element => {
           )}
           {entity === "starname" && (
             <StarnameAccountTransfer
+              bnsIdentity={bnsIdentity}
+              rpcEndpoint={rpcEndpoint}
+              setTransactionId={setTransactionId}
+            />
+          )}
+          {entity === "name" && (
+            <NameAccountTransfer
               bnsIdentity={bnsIdentity}
               rpcEndpoint={rpcEndpoint}
               setTransactionId={setTransactionId}
