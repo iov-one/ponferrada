@@ -17,7 +17,7 @@ describe("Logic :: account", () => {
 
     it("should throw exception if namespace is missing", async () => {
       await expect(lookupRecipientAddressByName("test1", "ethereum-eip155-5777" as ChainId)).rejects.toThrow(
-        /Not valid account name/i,
+        /Not valid account name1/i,
       );
     });
 
