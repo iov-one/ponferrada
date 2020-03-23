@@ -51,7 +51,7 @@ const ivonames: readonly BwUsernameWithChainName[] = [
   },
 ];
 
-const defaultExpiryDate = new Date(new Date().getTime() + 1000000000);
+const defaultExpiryDate = new Date("June 5, 2120 03:00:00");
 
 const starnames: readonly BwAccount[] = [
   {

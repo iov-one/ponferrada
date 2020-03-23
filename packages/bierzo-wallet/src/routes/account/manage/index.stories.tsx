@@ -41,7 +41,7 @@ const chainAddresses: ChainAddressPairWithName[] = [
 const account: BwAccountWithChainName = {
   name: "test2",
   domain: "iov",
-  expiryDate: new Date(),
+  expiryDate: new Date("June 5, 2120 03:00:00"),
   addresses: [chainAddresses[0], chainAddresses[1]],
   owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
 };
@@ -50,21 +50,21 @@ const names: BwAccountWithChainName[] = [
   {
     name: "test1",
     domain: "iov",
-    expiryDate: new Date(),
+    expiryDate: new Date("June 5, 2120 03:00:00"),
     addresses: [chainAddresses[0], chainAddresses[1]],
     owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     name: "test2",
     domain: "iov",
-    expiryDate: new Date(),
+    expiryDate: new Date("June 5, 2120 03:00:00"),
     addresses: [chainAddresses[0], chainAddresses[1]],
     owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     name: "test3",
     domain: "iov",
-    expiryDate: new Date(),
+    expiryDate: new Date(new Date("June 5, 2120 03:00:00")),
     addresses: [chainAddresses[0], chainAddresses[1]],
     owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
