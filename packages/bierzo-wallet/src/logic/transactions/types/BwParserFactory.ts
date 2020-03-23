@@ -235,13 +235,13 @@ export class BwParserFactory {
     } else if (isUpdateTargetsOfUsernameTx(payload)) {
       return new BwUpdateUsernameTargetParser();
     } else if (isRegisterAccountTx(payload)) {
-      return new BwUpdateUsernameTargetParser();
+      return new BwRegisterAccountParser();
     } else if (isReplaceAccountTargetsTx(payload)) {
-      return new BwUpdateUsernameTargetParser();
+      return new BwReplaceAccountTargetsParser();
     } else if (isTransferAccountTx(payload)) {
-      return new BwUpdateUsernameTargetParser();
+      return new BwTransferAccountParser();
     } else if (isTransferDomainTx(payload)) {
-      return new BwUpdateUsernameTargetParser();
+      return new BwTransferDomainParser();
     }
 
     return new BwUnkownParser();
