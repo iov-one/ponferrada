@@ -1,7 +1,7 @@
 import { TransactionId } from "@iov/bcp";
 import { Block } from "medulas-react-components";
 import React from "react";
-import ReactRedux from "react-redux";
+import * as ReactRedux from "react-redux";
 
 import { AccountProps } from "..";
 import { history } from "../..";
