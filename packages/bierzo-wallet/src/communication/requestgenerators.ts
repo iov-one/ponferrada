@@ -2,6 +2,8 @@ import { Address, Amount, Identity, SendTransaction, UnsignedTransaction } from 
 import {
   bnsCodec,
   ChainAddressPair,
+  DeleteAccountTx,
+  DeleteDomainTx,
   RegisterAccountTx,
   RegisterDomainTx,
   RegisterUsernameTx,
@@ -158,6 +160,38 @@ export const generateTransferDomainTxWithFee = async (
   return await withChainFee(regDomainTx, creatorAddress);
 };
 
+export const generateDeleteDomainTxWithFee = async (
+  creator: Identity,
+  domain: string,
+): Promise<DeleteDomainTx> => {
+  const creatorAddress = bnsCodec.identityToAddress(creator);
+
+  const transaction: DeleteDomainTx = {
+    kind: "bns/delete_domain",
+    chainId: creator.chainId,
+    domain: domain,
+  };
+
+  return await withChainFee(transaction, creatorAddress);
+};
+
+export const generateDeleteAccountTxWithFee = async (
+  creator: Identity,
+  name: string,
+  domain: string,
+): Promise<DeleteAccountTx> => {
+  const creatorAddress = bnsCodec.identityToAddress(creator);
+
+  const transaction: DeleteAccountTx = {
+    kind: "bns/delete_account",
+    chainId: creator.chainId,
+    name: name,
+    domain: domain,
+  };
+
+  return await withChainFee(transaction, creatorAddress);
+};
+
 export const generateRegisterAccountTxWithFee = async (
   creator: Identity,
   domain: string,
@@ -280,6 +314,25 @@ export const generateTransferAccountTxRequest = async (
   newOwner: Address,
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateTransferAccountTxWithFee(creator, name, domain, newOwner);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateDeleteDomainTxRequest = async (
+  creator: Identity,
+  domain: string,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateDeleteDomainTxWithFee(creator, domain);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateDeleteAccountTxRequest = async (
+  creator: Identity,
+  name: string,
+  domain: string,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateDeleteAccountTxWithFee(creator, name, domain);
 
   return generateJsonPrcRequest(creator, transactionWithFee);
 };
