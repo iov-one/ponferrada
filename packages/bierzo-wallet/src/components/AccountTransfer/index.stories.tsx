@@ -34,9 +34,9 @@ const chainAddresses: ChainAddressPairWithName[] = [
 const account: BwAccountWithChainName = {
   name: "albert",
   domain: "iov",
-  expiryDate: new Date(),
+  expiryDate: new Date("June 5, 2120 03:00:00"),
   owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
-  addresses: [chainAddresses[0], chainAddresses[1]],
+  addresses: chainAddresses,
 };
 
 export const ACCOUNT_TRANSFER_STORY_PATH = `${bierzoRoot}/Account Transfer`;
