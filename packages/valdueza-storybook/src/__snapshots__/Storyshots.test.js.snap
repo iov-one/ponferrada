@@ -3158,7 +3158,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
           className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
         >
           Expires on 
-          3/18/2020
+          6/5/2120
+           
+          3:00:00 AM
         </p>
       </div>
       <div
@@ -3814,6 +3816,370 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="account-transfer-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+          You are transferring
+           
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          test2*iov
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+           
+          from your domain
+        </h5>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+          >
+            Some additional description
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h5
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h5"
+          >
+            Who will you be transferring it to?
+          </h5>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            New owner blockchain address, iovname or starname
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+          >
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                disabled={false}
+                name="account-recepient-address"
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Enter blockchain address or iovname"
+                required={false}
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                style={
+                  Object {
+                    "paddingLeft": 8,
+                  }
+                }
+              >
+                <legend
+                  className="PrivateNotchedOutline-legend"
+                  style={
+                    Object {
+                      "width": 0.01,
+                    }
+                  }
+                >
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "&#8203;",
+                      }
+                    }
+                  />
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
+            disabled={true}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Transfer
+            </span>
+          </button>
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="account-transfer-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+          You are transferring
+           
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          albert*iov
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+           
+          from your domain
+        </h5>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+          >
+            Some additional description
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <h5
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h5"
+          >
+            Who will you be transferring it to?
+          </h5>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-subtitle2"
+          >
+            New owner blockchain address, iovname or starname
+          </h6>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <div
+            className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+          >
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                disabled={false}
+                name="account-recepient-address"
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Enter blockchain address or iovname"
+                required={false}
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root MuiOutlinedInput-notchedOutline"
+                style={
+                  Object {
+                    "paddingLeft": 8,
+                  }
+                }
+              >
+                <legend
+                  className="PrivateNotchedOutline-legend"
+                  style={
+                    Object {
+                      "width": 0.01,
+                    }
+                  }
+                >
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "&#8203;",
+                      }
+                    }
+                  />
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
+            disabled={true}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Transfer
+            </span>
+          </button>
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 `;
@@ -4493,7 +4859,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/30/2020
+            6/5/2120
+             
+            3:00:00 AM
           </h6>
         </div>
         <h6
@@ -4528,7 +4896,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/30/2020
+            6/5/2120
+             
+            3:00:00 AM
           </h6>
         </div>
         <h6
@@ -4563,7 +4933,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
             className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
           >
             Expires on 
-            3/30/2020
+            6/5/2120
+             
+            3:00:00 AM
           </h6>
         </div>
         <h6
@@ -4648,7 +5020,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/30/2020
+          6/5/2120
+           
+          3:00:00 AM
         </h6>
       </div>
       <h6
@@ -4683,7 +5057,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/30/2020
+          6/5/2120
+           
+          3:00:00 AM
         </h6>
       </div>
       <h6
@@ -4718,7 +5094,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
         >
           Expires on 
-          3/30/2020
+          6/5/2120
+           
+          3:00:00 AM
         </h6>
       </div>
       <h6

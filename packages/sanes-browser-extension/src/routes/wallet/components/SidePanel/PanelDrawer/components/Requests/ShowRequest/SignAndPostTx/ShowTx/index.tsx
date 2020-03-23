@@ -15,6 +15,7 @@ import {
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
+  isTransferUsernameTx,
   isUpdateAccountConfigurationTx,
   isUpdateTargetsOfUsernameTx,
   isVoteTx,
@@ -39,6 +40,7 @@ import ReqReplaceAccountTargetsTx from "./ReqReplaceAccountTargetsTx";
 import ReqSendTransaction from "./ReqSendTransaction";
 import ReqTransferAccountTx from "./ReqTransferAccountTx";
 import ReqTransferDomainTx from "./ReqTransferDomainTx";
+import ReqTransferUsernameTx from "./ReqTransferUsernameTx";
 import ReqUpdateAccountConfigurationTx from "./ReqUpdateAccountConfigurationTx";
 import ReqUpdateTargetsOfUsernameTx from "./ReqUpdateTargetsOfUsernameTx";
 import ReqVoteTx from "./ReqVoteTx";
@@ -59,6 +61,8 @@ const ShowTx = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
     req = <ReqSendTransaction tx={tx} />;
   } else if (isRegisterUsernameTx(tx)) {
     req = <ReqRegisterUsernameTx tx={tx} />;
+  } else if (isTransferUsernameTx(tx)) {
+    req = <ReqTransferUsernameTx tx={tx} />;
   } else if (isUpdateTargetsOfUsernameTx(tx)) {
     req = <ReqUpdateTargetsOfUsernameTx tx={tx} />;
   } else if (isRegisterDomainTx(tx)) {

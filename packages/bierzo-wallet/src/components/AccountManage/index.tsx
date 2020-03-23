@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import Paper from "@material-ui/core/Paper";
 import clipboardCopy from "clipboard-copy";
 import {
@@ -67,7 +68,7 @@ export interface BwAccountWithChainName extends BwAccount {
   readonly addresses: readonly ChainAddressPairWithName[];
 }
 
-type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
+export type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
 
 interface Props {
   readonly key?: string;
@@ -75,6 +76,7 @@ interface Props {
   readonly menuItems: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
   readonly onEdit: () => void;
+  readonly transferedTo?: Address;
 }
 
 export function isUsernameData(account: AccountModuleMixedType): account is BwUsernameWithChainName {
@@ -100,7 +102,13 @@ const useStyles = makeStyles({
   },
 });
 
-const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onEdit, hideExpiration }) => {
+const AccountManage: React.FunctionComponent<Props> = ({
+  account,
+  menuItems,
+  onEdit,
+  hideExpiration,
+  transferedTo,
+}) => {
   const paperClasses = usePaper();
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
@@ -134,8 +142,20 @@ const AccountManage: React.FunctionComponent<Props> = ({ account, menuItems, onE
           {isAccountData(account) && !hideExpiration && (
             <Block display="flex" justifyContent="center" marginTop={1}>
               <Typography variant="body2" inline align="center" color="textSecondary">
-                Expires on {account.expiryDate.toLocaleDateString()}
+                Expires on {account.expiryDate.toLocaleDateString()} {account.expiryDate.toLocaleTimeString()}
               </Typography>
+            </Block>
+          )}
+          {transferedTo && (
+            <Block marginBottom={1} marginTop={4}>
+              <Typography variant="subtitle2" weight="semibold" gutterBottom>
+                This name has been transferred to
+              </Typography>
+              <Block border="1px solid #F3F3F3" bgcolor="#FCFCFC" borderRadius={4} padding={1}>
+                <Typography variant="h6" weight="light">
+                  {transferedTo}
+                </Typography>
+              </Block>
             </Block>
           )}
           <Block display="flex" alignItems="center" marginBottom={1} marginTop={4}>

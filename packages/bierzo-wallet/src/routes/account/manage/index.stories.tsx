@@ -9,12 +9,15 @@ import AccountManage, {
   BwAccountWithChainName,
   BwUsernameWithChainName,
 } from "../../../components/AccountManage";
+import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
+import { ACCOUNT_TRANSFER_STORY_PATH } from "../../../components/AccountTransfer/index.stories";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
-import DecoratedStorybook, { bierzoRoot } from "../../../utils/storybook";
+import DecoratedStorybook from "../../../utils/storybook";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
 } from "../register/index.stories";
+import { ACCOUNT_TRANSFER_IOVNAMES_STORY_PATH } from "../transfer/index.stories";
 import AssociatedNamesList from "./components/AssociatedNamesList";
 
 const chainAddresses: ChainAddressPairWithName[] = [
@@ -38,28 +41,32 @@ const chainAddresses: ChainAddressPairWithName[] = [
 const account: BwAccountWithChainName = {
   name: "test2",
   domain: "iov",
-  expiryDate: new Date(),
+  expiryDate: new Date("June 5, 2120 03:00:00"),
   addresses: [chainAddresses[0], chainAddresses[1]],
+  owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
 };
 
 const names: BwAccountWithChainName[] = [
   {
     name: "test1",
     domain: "iov",
-    expiryDate: new Date(),
+    expiryDate: new Date("June 5, 2120 03:00:00"),
     addresses: [chainAddresses[0], chainAddresses[1]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     name: "test2",
     domain: "iov",
-    expiryDate: new Date(),
+    expiryDate: new Date("June 5, 2120 03:00:00"),
     addresses: [chainAddresses[0], chainAddresses[1]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
   {
     name: "test3",
     domain: "iov",
-    expiryDate: new Date(),
+    expiryDate: new Date(new Date("June 5, 2120 03:00:00")),
     addresses: [chainAddresses[0], chainAddresses[1]],
+    owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   },
 ];
 
@@ -78,7 +85,7 @@ const menuItems: readonly ActionMenuItem[] = [
   {
     title: "Transfer iovname",
     action: () => {
-      action("Transfer iovname")();
+      linkTo(ACCOUNT_TRANSFER_STORY_PATH, ACCOUNT_TRANSFER_IOVNAMES_STORY_PATH)();
     },
   },
   {
@@ -91,7 +98,7 @@ const menuItems: readonly ActionMenuItem[] = [
 
 export const ACCOUNT_MANAGE_IOVNAMES_STORY_PATH = "Manage iovname";
 
-storiesOf(`${bierzoRoot}/Account Manage`, module)
+storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Manage name", () => (
     <DecoratedStorybook>
@@ -118,6 +125,7 @@ storiesOf(`${bierzoRoot}/Account Manage`, module)
         onRegisterName={() => {
           action("Register Name")();
         }}
+        bnsAddress={"tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address}
       />
     </DecoratedStorybook>
   ));

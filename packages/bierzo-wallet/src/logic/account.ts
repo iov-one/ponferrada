@@ -1,4 +1,5 @@
 import { Address, ChainId } from "@iov/bcp";
+import { AccountNft, BnsUsernameNft } from "@iov/bns";
 
 import { getConnectionForBns } from "./connection";
 
@@ -12,23 +13,29 @@ export function isStarname(starname: string): boolean {
 
 /**
  * Returns the address associated with the name, or undefined if not registered.
- * The name must include a namespace ("*iov")
+ * The name must be valid starname
  */
 export async function lookupRecipientAddressByName(
   username: string,
   chainId: ChainId,
 ): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
-  if (!isIovname(username)) {
-    throw new Error("IOV starname must include *iov");
+  if (isValidName(username) !== "valid") {
+    throw new Error("Not valid account name");
   }
 
   const connection = await getConnectionForBns();
-  const usernames = await connection.getUsernames({ username });
-  if (usernames.length !== 1) {
+  let accounts: readonly BnsUsernameNft[] | readonly AccountNft[];
+  if (isValidIov(username)) {
+    accounts = await connection.getUsernames({ username });
+  } else {
+    accounts = await connection.getAccounts({ name: username });
+  }
+
+  if (accounts.length !== 1) {
     return "name_not_found";
   }
 
-  const chainAddressPair = usernames[0].targets.find(addr => addr.chainId === chainId);
+  const chainAddressPair = accounts[0].targets.find(addr => addr.chainId === chainId);
 
   if (chainAddressPair) {
     return chainAddressPair.address;

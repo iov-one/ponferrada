@@ -9,12 +9,18 @@ import {
   isRegisterDomainTx,
   isRegisterUsernameTx,
   isReplaceAccountTargetsTx,
+  isTransferAccountTx,
+  isTransferDomainTx,
+  isTransferUsernameTx,
   isUpdateTargetsOfUsernameTx,
   isVoteTx,
   RegisterAccountTx,
   RegisterDomainTx,
   RegisterUsernameTx,
   ReplaceAccountTargetsTx,
+  TransferAccountTx,
+  TransferDomainTx,
+  TransferUsernameTx,
   UpdateTargetsOfUsernameTx,
   VoteTx,
 } from "@iov/bns";
@@ -48,6 +54,9 @@ export type SupportedTransaction =
   | SendTransaction
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
+  | TransferUsernameTx
+  | TransferDomainTx
+  | TransferAccountTx
   | RegisterDomainTx
   | RegisterAccountTx
   | ReplaceAccountTargetsTx
@@ -59,8 +68,11 @@ export function isSupportedTransaction(tx: UnsignedTransaction): tx is Supported
     isSendTransaction(tx) ||
     isRegisterUsernameTx(tx) ||
     isUpdateTargetsOfUsernameTx(tx) ||
+    isTransferUsernameTx(tx) ||
     isRegisterDomainTx(tx) ||
+    isTransferDomainTx(tx) ||
     isRegisterAccountTx(tx) ||
+    isTransferAccountTx(tx) ||
     isReplaceAccountTargetsTx(tx) ||
     isCreateProposalTx(tx) ||
     isVoteTx(tx)

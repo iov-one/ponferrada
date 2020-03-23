@@ -6,6 +6,9 @@ import {
   RegisterDomainTx,
   RegisterUsernameTx,
   ReplaceAccountTargetsTx,
+  TransferAccountTx,
+  TransferDomainTx,
+  TransferUsernameTx,
   UpdateTargetsOfUsernameTx,
 } from "@iov/bns";
 import { TransactionEncoder } from "@iov/encoding";
@@ -103,6 +106,21 @@ export const generateUpdateUsernameTxWithFee = async (
   return await withChainFee(regUsernameTx, bnsCodec.identityToAddress(creator));
 };
 
+export const generateTransferUsernameTxWithFee = async (
+  creator: Identity,
+  username: string,
+  newOwner: Address,
+): Promise<TransferUsernameTx> => {
+  const transferUsernameTx: TransferUsernameTx = {
+    kind: "bns/transfer_username",
+    chainId: creator.chainId,
+    username,
+    newOwner,
+  };
+
+  return withChainFee(transferUsernameTx, bnsCodec.identityToAddress(creator));
+};
+
 export const generateRegisterDomainTxWithFee = async (
   creator: Identity,
   domain: string,
@@ -118,6 +136,23 @@ export const generateRegisterDomainTxWithFee = async (
     hasSuperuser: true,
     msgFees: [],
     accountRenew: TwoHoursInSeconds,
+  };
+
+  return await withChainFee(regDomainTx, creatorAddress);
+};
+
+export const generateTransferDomainTxWithFee = async (
+  creator: Identity,
+  domain: string,
+  newAdmin: Address,
+): Promise<TransferDomainTx> => {
+  const creatorAddress = bnsCodec.identityToAddress(creator);
+
+  const regDomainTx: TransferDomainTx = {
+    kind: "bns/transfer_domain",
+    chainId: creator.chainId,
+    domain: domain,
+    newAdmin: newAdmin,
   };
 
   return await withChainFee(regDomainTx, creatorAddress);
@@ -142,6 +177,23 @@ export const generateRegisterAccountTxWithFee = async (
   return await withChainFee(regAccountTx, bnsCodec.identityToAddress(creator));
 };
 
+export const generateTransferAccountTxWithFee = async (
+  creator: Identity,
+  name: string,
+  domain: string,
+  newOwner: Address,
+): Promise<TransferAccountTx> => {
+  const transferUsernameTx: TransferAccountTx = {
+    kind: "bns/transfer_account",
+    chainId: creator.chainId,
+    name,
+    domain,
+    newOwner,
+  };
+
+  return withChainFee(transferUsernameTx, bnsCodec.identityToAddress(creator));
+};
+
 export const generateReplaceAccountTargetsTxWithFee = async (
   creator: Identity,
   domain: string,
@@ -159,13 +211,7 @@ export const generateReplaceAccountTargetsTxWithFee = async (
   return await withChainFee(regAccountTx, bnsCodec.identityToAddress(creator));
 };
 
-export const generateRegisterUsernameTxRequest = async (
-  creator: Identity,
-  username: string,
-  targets: readonly ChainAddressPair[],
-): Promise<JsonRpcRequest> => {
-  const transactionWithFee = await generateRegisterUsernameTxWithFee(creator, username, targets);
-
+function generateJsonPrcRequest<TValue>(creator: Identity, transactionWithFee: TValue): JsonRpcRequest {
   return {
     jsonrpc: "2.0",
     id: makeJsonRpcId(),
@@ -176,6 +222,26 @@ export const generateRegisterUsernameTxRequest = async (
       transaction: TransactionEncoder.toJson(transactionWithFee),
     },
   };
+}
+
+export const generateTransferUsernameTxRequest = async (
+  creator: Identity,
+  username: string,
+  newOwner: Address,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateTransferUsernameTxWithFee(creator, username, newOwner);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateRegisterUsernameTxRequest = async (
+  creator: Identity,
+  username: string,
+  targets: readonly ChainAddressPair[],
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateRegisterUsernameTxWithFee(creator, username, targets);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
 };
 
 export const generateUpdateUsernameTxRequest = async (
@@ -185,16 +251,7 @@ export const generateUpdateUsernameTxRequest = async (
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateUpdateUsernameTxWithFee(creator, username, targets);
 
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "signAndPost",
-    params: {
-      reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      signer: TransactionEncoder.toJson(creator),
-      transaction: TransactionEncoder.toJson(transactionWithFee),
-    },
-  };
+  return generateJsonPrcRequest(creator, transactionWithFee);
 };
 
 export const generateRegisterDomainTxRequest = async (
@@ -203,16 +260,28 @@ export const generateRegisterDomainTxRequest = async (
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateRegisterDomainTxWithFee(creator, domain);
 
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "signAndPost",
-    params: {
-      reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      signer: TransactionEncoder.toJson(creator),
-      transaction: TransactionEncoder.toJson(transactionWithFee),
-    },
-  };
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateTransferDomainTxRequest = async (
+  creator: Identity,
+  domain: string,
+  newOwner: Address,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateTransferDomainTxWithFee(creator, domain, newOwner);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateTransferAccountTxRequest = async (
+  creator: Identity,
+  name: string,
+  domain: string,
+  newOwner: Address,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateTransferAccountTxWithFee(creator, name, domain, newOwner);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
 };
 
 export const generateRegisterAccountTxRequest = async (
@@ -224,16 +293,7 @@ export const generateRegisterAccountTxRequest = async (
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateRegisterAccountTxWithFee(creator, domain, name, owner, targets);
 
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "signAndPost",
-    params: {
-      reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      signer: TransactionEncoder.toJson(creator),
-      transaction: TransactionEncoder.toJson(transactionWithFee),
-    },
-  };
+  return generateJsonPrcRequest(creator, transactionWithFee);
 };
 
 export const generateReplaceAccountTargetsTxRequest = async (
@@ -244,14 +304,5 @@ export const generateReplaceAccountTargetsTxRequest = async (
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateReplaceAccountTargetsTxWithFee(creator, domain, name, newTargets);
 
-  return {
-    jsonrpc: "2.0",
-    id: makeJsonRpcId(),
-    method: "signAndPost",
-    params: {
-      reason: TransactionEncoder.toJson("I would like you to sign this request"),
-      signer: TransactionEncoder.toJson(creator),
-      transaction: TransactionEncoder.toJson(transactionWithFee),
-    },
-  };
+  return generateJsonPrcRequest(creator, transactionWithFee);
 };

@@ -1,3 +1,4 @@
+import { Address } from "@iov/bcp";
 import { ChainAddressPair } from "@iov/bns";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
@@ -8,12 +9,18 @@ export interface BwAccount {
   readonly name: string;
   readonly domain: string;
   readonly expiryDate: Date;
+  readonly owner: Address;
   readonly addresses: readonly ChainAddressPair[];
 }
 
 export interface AddAccountsActionType extends Action {
   readonly type: "@@accounts/ADD";
   readonly payload: readonly BwAccount[];
+}
+
+export interface RemoveAccountActionType extends Action {
+  readonly type: "@@accounts/REMOVE";
+  readonly payload: string;
 }
 
 export type AccountsActions = ActionType<typeof actions>;
@@ -31,6 +38,9 @@ export function accountsReducer(state: AccountsState = initState, action: Accoun
         oldAccount => !updatedAccounts.includes(`${oldAccount.name}*${oldAccount.domain}`),
       );
       return [...oldAccountsToCopy, ...action.payload];
+    }
+    case "@@accounts/REMOVE": {
+      return state.filter(oldAccount => `${oldAccount.name}*${oldAccount.domain}` !== action.payload);
     }
     default:
       return state;

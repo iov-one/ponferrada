@@ -51,6 +51,7 @@ withChainsDescribe("Accounts reducer", () => {
           name: "foobar",
           domain: "fizzbuzz",
           expiryDate: defaultDate,
+          owner: "aabbccdd" as Address,
           addresses: [],
         },
       ];
@@ -67,6 +68,7 @@ withChainsDescribe("Accounts reducer", () => {
           name: "foobar",
           domain: "fizzbuzz",
           expiryDate: defaultDate,
+          owner: "aabbccdd" as Address,
           addresses: [],
         },
       ];
@@ -75,6 +77,7 @@ withChainsDescribe("Accounts reducer", () => {
           name: "foobar",
           domain: "fizzbuzz",
           expiryDate: defaultDate,
+          owner: "aabbccdd" as Address,
           addresses: [
             {
               address: "aabbccdd" as Address,
@@ -96,6 +99,7 @@ withChainsDescribe("Accounts reducer", () => {
           name: "foobar1",
           domain: "fizzbuzz1",
           expiryDate: defaultDate,
+          owner: "aabbccdd" as Address,
           addresses: [],
         },
       ];
@@ -104,6 +108,7 @@ withChainsDescribe("Accounts reducer", () => {
           name: "foobar2",
           domain: "fizzbuzz2",
           expiryDate: defaultDate,
+          owner: "aabbccdd" as Address,
           addresses: [],
         },
       ];
