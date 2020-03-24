@@ -1,5 +1,4 @@
-import { Address, ChainId, Fee, TransactionId } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
+import { ChainId, Fee, TransactionId } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { Paper, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
@@ -35,16 +34,9 @@ const useMessagePaper = makeStyles({
   },
 });
 
-function getTransferButtonCaption(fee: Fee | undefined): string {
-  if (fee && fee.tokens) {
-    return `Transfer for ${amountToString(fee.tokens)}`;
-  }
-
-  return "Transfer";
-}
-
 interface Props {
   readonly id: string;
+  readonly submitCaption: string;
   readonly children: React.ReactNode;
   readonly subSection?: (form: FormApi) => React.FunctionComponent;
   readonly header?: React.ReactNode;
@@ -56,7 +48,7 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
-const AccountOperation = ({
+const AccountOperation: React.FunctionComponent<Props> = ({
   id,
   onCancel,
   getFee,
@@ -65,13 +57,22 @@ const AccountOperation = ({
   rpcEndpoint,
   setTransactionId,
   subSection,
+  submitCaption,
   header,
-}: Props): JSX.Element => {
+}): JSX.Element => {
   const [transferFee, setTransferFee] = React.useState<Fee | undefined>();
   const messagePaperClasses = useMessagePaper();
   const theme = useTheme<Theme>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
+
+  const getSubmitButtonCaption = (fee: Fee | undefined): string => {
+    if (fee && fee.tokens) {
+      return `${submitCaption} for ${amountToString(fee.tokens)}`;
+    }
+
+    return submitCaption;
+  };
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
@@ -88,7 +89,7 @@ const AccountOperation = ({
     );
   };
 
-  const { form, handleSubmit, invalid, pristine, submitting, values } = useForm({
+  const { form, handleSubmit, invalid, submitting, values } = useForm({
     onSubmit,
   });
 
@@ -110,14 +111,17 @@ const AccountOperation = ({
       }
     }
 
-    if (!invalid && values[RECEPIENT_ADDRESS]) {
+    if (!invalid) {
       setFee();
+    } else {
+      setTransferFee(undefined);
     }
 
     return () => {
       isSubscribed = false;
     };
   }, [getFee, invalid, values]);
+  console.log(invalid, submitting);
 
   return (
     <Block
@@ -158,8 +162,8 @@ const AccountOperation = ({
             flexDirection="column"
           >
             <Block width="75%">
-              <Button fullWidth type="submit" disabled={invalid || pristine || submitting}>
-                {getTransferButtonCaption(transferFee)}
+              <Button fullWidth type="submit" disabled={invalid || submitting}>
+                {getSubmitButtonCaption(transferFee)}
               </Button>
               <Back fullWidth disabled={submitting} onClick={onCancel}>
                 Cancel

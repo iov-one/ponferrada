@@ -76,6 +76,7 @@ storiesOf(`${bierzoRoot}/Account Operation`, module)
     <DecoratedStorybook>
       <AccountOperation
         id="account-operation-id"
+        submitCaption="Operation"
         getRequest={async (formValues: FormValues): Promise<JsonRpcRequest> => {
           action("getRequest")(formValues);
           return await generateTransferDomainTxRequest(

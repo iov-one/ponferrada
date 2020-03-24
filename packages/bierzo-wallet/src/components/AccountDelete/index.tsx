@@ -1,6 +1,6 @@
-import { Address, ChainId, Fee, TransactionId } from "@iov/bcp";
+import { ChainId, Fee, TransactionId } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
-import { FormValues, Typography } from "medulas-react-components";
+import { Typography } from "medulas-react-components";
 import React from "react";
 
 import { RpcEndpoint } from "../../communication/rpcEndpoint";
@@ -56,6 +56,7 @@ const AccountDelete = ({
   return (
     <AccountOperation
       id={id}
+      submitCaption="Delete"
       onCancel={onCancel}
       getFee={getDeleteFee}
       getRequest={getDeleteRequest}
