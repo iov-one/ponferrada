@@ -5,7 +5,8 @@ import React from "react";
 import { history } from "../..";
 import iovnameLogo from "../../../assets/iovname-logo.svg";
 import { BwUsername } from "../../../store/usernames";
-import { IOVNAME_MANAGE_ROUTE, IOVNAME_REGISTER_ROUTE } from "../../paths";
+import { IOVNAME_MANAGE_ROUTE } from "../../paths";
+import { registerIovnameId } from "./Iovnames";
 
 interface Props {
   readonly iovnames: readonly BwUsername[];
@@ -43,7 +44,7 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
               Register a new iovname
             </Typography>
           </Block>
-          <Typography id={IOVNAME_REGISTER_ROUTE} link color="primary" onClick={onRegisterIovname}>
+          <Typography id={registerIovnameId} link color="primary" onClick={onRegisterIovname}>
             Register now
           </Typography>
         </Block>

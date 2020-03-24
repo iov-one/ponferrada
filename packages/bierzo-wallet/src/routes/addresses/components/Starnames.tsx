@@ -3,10 +3,12 @@ import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { BwAccount } from "../../../store/accounts";
+import { STARNAME_REGISTER_ROUTE } from "../../paths";
 import StarnamesExists from "./StarnamesExists";
 import StarnamesNotExists from "./StarnamesNotExists";
 
 export const starnamesViewId = "starnames-view-id";
+export const registerStarnameId = STARNAME_REGISTER_ROUTE.replace(/\//g, "-");
 
 export interface StarnamesProps {
   readonly starnames: readonly BwAccount[];

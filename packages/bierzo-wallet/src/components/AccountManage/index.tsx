@@ -22,6 +22,9 @@ import AddressesTable, { ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import shield from "./assets/shield.svg";
 
+export const manageIovnameId = "iovname-manage";
+export const manageStarnameId = "starname-manage";
+
 const registerTooltipIcon = <Image src={shield} alt="shield" width={24} height={24} />;
 
 const useTooltipHeaderStyles = makeStyles({
@@ -113,6 +116,8 @@ const AccountManage: React.FunctionComponent<Props> = ({
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
+  const manageViewId = isUsernameData(account) ? manageIovnameId : manageStarnameId;
+
   const onAccountCopy = (): void => {
     const name = isAccountData(account) ? `${account.name}*${account.domain}` : account.username;
     clipboardCopy(name);
@@ -120,7 +125,7 @@ const AccountManage: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <Block marginTop={1} width={650}>
+    <Block id={manageViewId} marginTop={1} width={650}>
       <Paper classes={paperClasses}>
         <Block
           display="flex"
