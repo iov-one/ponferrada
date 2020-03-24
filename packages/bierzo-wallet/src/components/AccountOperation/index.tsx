@@ -121,7 +121,6 @@ const AccountOperation: React.FunctionComponent<Props> = ({
       isSubscribed = false;
     };
   }, [getFee, invalid, values]);
-  console.log(invalid, submitting);
 
   return (
     <Block
