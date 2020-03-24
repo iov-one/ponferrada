@@ -1743,6 +1743,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
       >
         <div
           className="MuiBox-root MuiBox-root"
+          id="starname-manage"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -2085,6 +2086,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
         </div>
         <div
           className="MuiBox-root MuiBox-root"
+          id="starname-manage"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -2427,6 +2429,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
         </div>
         <div
           className="MuiBox-root MuiBox-root"
+          id="starname-manage"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -2776,6 +2779,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
+  id="iovname-manage"
 >
   <div
     className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -3121,6 +3125,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
+  id="starname-manage"
 >
   <div
     className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -3478,6 +3483,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
+  id="iovname-manage"
 >
   <div
     className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -4423,7 +4429,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
       </div>
       <p
         className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-        id="/iovname/register"
+        id="-iovname-register"
         onClick={[Function]}
       >
         Register now
@@ -4598,16 +4604,10 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
         />
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-          id="/starname/register"
+          id="-starname-register"
           onClick={[Function]}
         >
           Register Now
-        </h6>
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-          onClick={[Function]}
-        >
-          Register your name
         </h6>
       </div>
     </div>
@@ -4706,7 +4706,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
         </p>
         <p
           className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
-          id="/starname/register"
+          id="-starname-register"
         >
           starname
         </p>
@@ -4822,17 +4822,11 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
         </div>
         <p
           className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-          id="/starname/register"
+          id="-starname-register"
           onClick={[Function]}
         >
           Register now
         </p>
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-          onClick={[Function]}
-        >
-          Register your name
-        </h6>
       </div>
     </div>
     <div
@@ -4983,17 +4977,11 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
       </div>
       <p
         className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-        id="/starname/register"
+        id="-starname-register"
         onClick={[Function]}
       >
         Register now
       </p>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Register your name
-      </h6>
     </div>
   </div>
   <div
