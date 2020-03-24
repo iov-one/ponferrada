@@ -7,7 +7,7 @@ import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
   getAddressCreationPromptE2E,
   getBalanceTextAtIndex,
-  registerPersonalizedAddress,
+  registerIovname,
   waitForAllBalances,
 } from "./test/operateBalances";
 import { travelToBalanceE2E } from "./test/travelToBalance";
@@ -63,6 +63,6 @@ withChainsDescribe("E2E > Balance route", () => {
   }, 45000);
 
   it("should create personalized address", async () => {
-    await registerPersonalizedAddress(browser, page);
+    await registerIovname(browser, page);
   }, 45000);
 });

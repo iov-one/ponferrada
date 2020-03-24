@@ -3,10 +3,9 @@ import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
-import { history } from "../..";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { NoStarnameHeader } from "../../account/register/components/StarnameForm";
-import { NAME_REGISTER_ROUTE, STARNAME_REGISTER_ROUTE } from "../../paths";
+import { registerStarnameId } from "./Starnames";
 
 interface StarnamesNotExistsProps {
   readonly onRegisterStarname: () => void;
@@ -30,7 +29,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={STARNAME_REGISTER_ROUTE}
+        id={registerStarnameId}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -39,19 +38,6 @@ export function GetYourAddressWithExtension({
         onClick={onRegisterStarname}
       >
         Register Now
-      </Typography>
-      {/* TODO remove this Typography when /register-name accessible from starname list */}
-      <Typography
-        variant="subtitle1"
-        color="primary"
-        weight="semibold"
-        inline
-        link
-        onClick={() => {
-          history.push(NAME_REGISTER_ROUTE);
-        }}
-      >
-        Register your name
       </Typography>
     </Block>
   );
@@ -65,7 +51,7 @@ export function GetYourAddressWithLedger(): JSX.Element {
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={STARNAME_REGISTER_ROUTE} variant="body1" color="primary" weight="light">
+      <Typography id={registerStarnameId} variant="body1" color="primary" weight="light">
         starname
       </Typography>
       <Block textAlign="center">

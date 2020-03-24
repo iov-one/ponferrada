@@ -5,12 +5,8 @@ import React from "react";
 import { history } from "../..";
 import starnameLogo from "../../../assets/starname-logo.svg";
 import { BwAccount } from "../../../store/accounts";
-import {
-  NAME_MANAGE_ROUTE,
-  NAME_REGISTER_ROUTE,
-  STARNAME_MANAGE_ROUTE,
-  STARNAME_REGISTER_ROUTE,
-} from "../../paths";
+import { NAME_MANAGE_ROUTE, STARNAME_MANAGE_ROUTE } from "../../paths";
+import { registerStarnameId } from "./Starnames";
 
 interface Props {
   readonly starnames: readonly BwAccount[];
@@ -47,21 +43,8 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
               Register a new starname
             </Typography>
           </Block>
-          <Typography id={STARNAME_REGISTER_ROUTE} link color="primary" onClick={onRegisterStarname}>
+          <Typography id={registerStarnameId} link color="primary" onClick={onRegisterStarname}>
             Register now
-          </Typography>
-          {/* TODO remove this Typography when /register-name accessible from starname list */}
-          <Typography
-            variant="subtitle1"
-            color="primary"
-            weight="semibold"
-            inline
-            link
-            onClick={() => {
-              history.push(NAME_REGISTER_ROUTE);
-            }}
-          >
-            Register your name
           </Typography>
         </Block>
       </Paper>

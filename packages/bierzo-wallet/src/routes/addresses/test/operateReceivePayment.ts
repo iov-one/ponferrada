@@ -1,6 +1,6 @@
 import { ElementHandle, Page } from "puppeteer";
 
-import { iovnamesViewId } from "../components/Iovnames";
+import { iovnamesViewId as starnamesViewId } from "../components/Iovnames";
 
 export async function getAddressRow(page: Page, dataIndex: number): Promise<readonly string[]> {
   const chainNameEl = await page.$(`tbody tr:nth-of-type(${dataIndex}) td:nth-of-type(1)`);
@@ -30,17 +30,36 @@ export async function copyAddress(page: Page, dataIndex: number): Promise<string
   return (await (await addressEl.getProperty("textContent")).jsonValue()) as string;
 }
 
+export async function copyIovname(page: Page): Promise<void> {
+  const iovnameEl = await page.$(`#${starnamesViewId} h4`);
+  if (iovnameEl === null) {
+    throw new Error(`Iovname element was not found.`);
+  }
+
+  await page.click(`#${starnamesViewId} img`);
+}
+
+export async function getIovnames(page: Page): Promise<string[]> {
+  const iovnameEls = (await page.$$("h5")).slice(1);
+  const names: string[] = [];
+  for (const el of iovnameEls) {
+    names.push((await (await el.getProperty("textContent")).jsonValue()) as string);
+  }
+
+  return names;
+}
+
 export async function copyStarname(page: Page): Promise<void> {
-  const starnameEl = await page.$(`#${iovnamesViewId} h4`);
+  const starnameEl = await page.$(`#${starnamesViewId} h4`);
   if (starnameEl === null) {
     throw new Error(`Starname element was not found.`);
   }
 
-  await page.click(`#${iovnamesViewId} img`);
+  await page.click(`#${starnamesViewId} img`);
 }
 
 export async function getStarnames(page: Page): Promise<string[]> {
-  const starnameEls = await page.$$("h4");
+  const starnameEls = (await page.$$("h5")).slice(1);
   const names: string[] = [];
   for (const el of starnameEls) {
     names.push((await (await el.getProperty("textContent")).jsonValue()) as string);

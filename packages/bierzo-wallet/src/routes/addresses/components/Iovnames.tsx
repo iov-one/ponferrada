@@ -3,10 +3,12 @@ import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { BwUsername } from "../../../store/usernames";
+import { IOVNAME_REGISTER_ROUTE } from "../../paths";
 import IovnamesExists from "./IovnamesExists";
 import IovnamesNotExists from "./IovnamesNotExists";
 
 export const iovnamesViewId = "iovnames-view-id";
+export const registerIovnameId = IOVNAME_REGISTER_ROUTE.replace(/\//g, "-");
 
 export interface IovnamesProps {
   readonly iovnames: readonly BwUsername[];
