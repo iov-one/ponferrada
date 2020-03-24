@@ -1,5 +1,7 @@
 import { Address, ChainId, Identity, UnsignedTransaction } from "@iov/bcp";
 import {
+  isDeleteAccountTx,
+  isDeleteDomainTx,
   isRegisterAccountTx,
   isRegisterDomainTx,
   isRegisterUsernameTx,
@@ -99,6 +101,14 @@ async function mayDispatchAccount(
     if (accountTx.newAdmin !== owner) {
       dispatch(removeAccountAction(`*${accountTx.domain}`));
     }
+  }
+
+  if (isDeleteDomainTx(accountTx)) {
+    dispatch(removeAccountAction(`*${accountTx.domain}`));
+  }
+
+  if (isDeleteAccountTx(accountTx)) {
+    dispatch(removeAccountAction(`${accountTx.name}*${accountTx.domain}`));
   }
 }
 
