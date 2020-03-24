@@ -147,6 +147,8 @@ const AccountTransfer = ({
   };
 
   const getTransferFee = async (values: FormValues): Promise<Fee | undefined> => {
+    if (!values[RECEPIENT_ADDRESS]) return undefined;
+
     const newOwner = await getNewOwnerAddress(values[RECEPIENT_ADDRESS]);
 
     return await getFee(newOwner);
@@ -155,6 +157,7 @@ const AccountTransfer = ({
   return (
     <AccountOperation
       id={id}
+      submitCaption="Transfer"
       onCancel={onCancel}
       getFee={getTransferFee}
       getRequest={getTransferRequest}
