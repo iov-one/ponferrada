@@ -7,7 +7,7 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { generateTransferDomainTxRequest } from "../../communication/requestgenerators";
+import { generateDeleteDomainTxRequest } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
@@ -39,8 +39,8 @@ const account: BwAccountWithChainName = {
   addresses: chainAddresses,
 };
 
-export const ACCOUNT_TRANSFER_STORY_PATH = `${bierzoRoot}/Account Transfer`;
-export const ACCOUNT_TRANSFER_SAMPLE_STORY_PATH = "Transfer sample";
+export const ACCOUNT_DELETE_STORY_PATH = `${bierzoRoot}/Account Delete`;
+export const ACCOUNT_DELETE_SAMPLE_STORY_PATH = "Delete sample";
 
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   fractionalDigits: 9,
@@ -55,26 +55,20 @@ const bnsIdentity: Identity = {
   },
 };
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
-  <Typography color="default" variant="subtitle2">
-    New owner blockchain address, iovname or starname
-  </Typography>
-);
-
-storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
+storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(ACCOUNT_TRANSFER_SAMPLE_STORY_PATH, () => (
+  .add(ACCOUNT_DELETE_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountTransfer
-        id="account-transfer-id"
+        id="account-delete-id"
         account={account}
-        getRequest={async (newOwner: Address): Promise<JsonRpcRequest> => {
-          action("getRequest")(newOwner);
-          return await generateTransferDomainTxRequest(bnsIdentity, account.domain, newOwner);
+        getRequest={async (): Promise<JsonRpcRequest> => {
+          action("getRequest")();
+          return await generateDeleteDomainTxRequest(bnsIdentity, account.domain);
         }}
         onCancel={action("Transfer cancel")}
-        getFee={async newOwner => {
-          action("get fee")(newOwner);
+        getFee={async () => {
+          action("get fee")();
           return { tokens: stringToAmount("5", iov) };
         }}
         bnsChainId={"local-iov-devnet" as ChainId}
@@ -82,7 +76,6 @@ storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
         setTransactionId={value => {
           action("setTransactionId")(value);
         }}
-        transferPrompt={<TransferPrompt />}
       >
         <Typography>Some additional description</Typography>
       </AccountTransfer>

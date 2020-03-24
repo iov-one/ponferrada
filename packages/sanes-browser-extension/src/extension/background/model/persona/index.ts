@@ -4,7 +4,11 @@ import {
   BnsConnection,
   BnsUsernameNft,
   CreateProposalTx,
+  DeleteAccountTx,
+  DeleteDomainTx,
   isCreateProposalTx,
+  isDeleteAccountTx,
+  isDeleteDomainTx,
   isRegisterAccountTx,
   isRegisterDomainTx,
   isRegisterUsernameTx,
@@ -52,6 +56,8 @@ function isNonUndefined<T>(t: T | undefined): t is T {
  */
 export type SupportedTransaction =
   | SendTransaction
+  | DeleteAccountTx
+  | DeleteDomainTx
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
   | TransferUsernameTx
@@ -66,6 +72,8 @@ export type SupportedTransaction =
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
   return (
     isSendTransaction(tx) ||
+    isDeleteDomainTx(tx) ||
+    isDeleteAccountTx(tx) ||
     isRegisterUsernameTx(tx) ||
     isUpdateTargetsOfUsernameTx(tx) ||
     isTransferUsernameTx(tx) ||

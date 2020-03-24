@@ -2,7 +2,7 @@ import { Address, Algorithm, ChainId, Identity, PubkeyBytes, Token, TokenTicker 
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
-import { Typography } from "medulas-react-components";
+import { FormValues, Typography } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
@@ -11,7 +11,7 @@ import { generateTransferDomainTxRequest } from "../../communication/requestgene
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
-import AccountTransfer from ".";
+import AccountOperation, { RECEPIENT_ADDRESS } from ".";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -55,22 +55,35 @@ const bnsIdentity: Identity = {
   },
 };
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
-  <Typography color="default" variant="subtitle2">
-    New owner blockchain address, iovname or starname
-  </Typography>
+const Header: React.FunctionComponent = (): JSX.Element => (
+  <React.Fragment>
+    <Typography color="default" variant="h5" inline>
+      You are makeing operation with{" "}
+    </Typography>
+    <Typography color="primary" variant="h5" inline>
+      albert*iov
+    </Typography>
+    <Typography color="default" variant="h5" inline>
+      {" "}
+      account
+    </Typography>
+  </React.Fragment>
 );
 
-storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
+storiesOf(`${bierzoRoot}/Account Operation`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(ACCOUNT_TRANSFER_SAMPLE_STORY_PATH, () => (
+  .add("Sample", () => (
     <DecoratedStorybook>
-      <AccountTransfer
-        id="account-transfer-id"
-        account={account}
-        getRequest={async (newOwner: Address): Promise<JsonRpcRequest> => {
-          action("getRequest")(newOwner);
-          return await generateTransferDomainTxRequest(bnsIdentity, account.domain, newOwner);
+      <AccountOperation
+        id="account-operation-id"
+        submitCaption="Operation"
+        getRequest={async (formValues: FormValues): Promise<JsonRpcRequest> => {
+          action("getRequest")(formValues);
+          return await generateTransferDomainTxRequest(
+            bnsIdentity,
+            account.domain,
+            formValues[RECEPIENT_ADDRESS] as Address,
+          );
         }}
         onCancel={action("Transfer cancel")}
         getFee={async newOwner => {
@@ -82,9 +95,9 @@ storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
         setTransactionId={value => {
           action("setTransactionId")(value);
         }}
-        transferPrompt={<TransferPrompt />}
+        header={<Header />}
       >
         <Typography>Some additional description</Typography>
-      </AccountTransfer>
+      </AccountOperation>
     </DecoratedStorybook>
   ));

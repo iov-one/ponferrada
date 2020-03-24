@@ -1,17 +1,21 @@
 import { Address, Algorithm, ChainId, Identity, PubkeyBytes, Token, TokenTicker } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import { Typography } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
-import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { generateTransferDomainTxRequest } from "../../communication/requestgenerators";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
-import { BwAccountWithChainName } from "../AccountManage";
-import AccountTransfer from ".";
+import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
+import { generateDeleteDomainTxRequest } from "../../../communication/requestgenerators";
+import AccountDelete from "../../../components/AccountDelete";
+import { ACCOUNT_DELETE_STORY_PATH } from "../../../components/AccountDelete/index.stories";
+import { BwAccountWithChainName } from "../../../components/AccountManage";
+import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
+import DecoratedStorybook from "../../../utils/storybook";
+import { ACCOUNT_MANAGE_IOVNAMES_STORY_PATH } from "../manage/index.stories";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -32,15 +36,12 @@ const chainAddresses: ChainAddressPairWithName[] = [
 ];
 
 const account: BwAccountWithChainName = {
-  name: "albert",
+  name: "test2",
   domain: "iov",
   expiryDate: new Date("June 5, 2120 03:00:00"),
   owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
   addresses: chainAddresses,
 };
-
-export const ACCOUNT_TRANSFER_STORY_PATH = `${bierzoRoot}/Account Transfer`;
-export const ACCOUNT_TRANSFER_SAMPLE_STORY_PATH = "Transfer sample";
 
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   fractionalDigits: 9,
@@ -55,26 +56,22 @@ const bnsIdentity: Identity = {
   },
 };
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
-  <Typography color="default" variant="subtitle2">
-    New owner blockchain address, iovname or starname
-  </Typography>
-);
+export const ACCOUNT_DELETE_STARNAME_STORY_PATH = "Delete starname";
 
-storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
+storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add(ACCOUNT_TRANSFER_SAMPLE_STORY_PATH, () => (
+  .add(ACCOUNT_DELETE_STARNAME_STORY_PATH, () => (
     <DecoratedStorybook>
-      <AccountTransfer
-        id="account-transfer-id"
+      <AccountDelete
+        id="account-delete-id"
         account={account}
-        getRequest={async (newOwner: Address): Promise<JsonRpcRequest> => {
-          action("getRequest")(newOwner);
-          return await generateTransferDomainTxRequest(bnsIdentity, account.domain, newOwner);
+        getRequest={async (): Promise<JsonRpcRequest> => {
+          action("getRequest")();
+          return await generateDeleteDomainTxRequest(bnsIdentity, account.domain);
         }}
-        onCancel={action("Transfer cancel")}
-        getFee={async newOwner => {
-          action("get fee")(newOwner);
+        onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_IOVNAMES_STORY_PATH)}
+        getFee={async () => {
+          action("get fee")();
           return { tokens: stringToAmount("5", iov) };
         }}
         bnsChainId={"local-iov-devnet" as ChainId}
@@ -82,9 +79,8 @@ storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
         setTransactionId={value => {
           action("setTransactionId")(value);
         }}
-        transferPrompt={<TransferPrompt />}
       >
         <Typography>Some additional description</Typography>
-      </AccountTransfer>
+      </AccountDelete>
     </DecoratedStorybook>
   ));
