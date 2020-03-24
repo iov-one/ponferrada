@@ -55,12 +55,6 @@ const bnsIdentity: Identity = {
   },
 };
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
-  <Typography color="default" variant="subtitle2">
-    New owner blockchain address, iovname or starname
-  </Typography>
-);
-
 storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(ACCOUNT_DELETE_SAMPLE_STORY_PATH, () => (
