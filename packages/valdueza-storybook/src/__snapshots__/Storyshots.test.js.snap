@@ -1686,6 +1686,212 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/Account Delete Delete sample 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="account-delete-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+          You are deleting
+           
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          albert*iov
+        </h5>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+          >
+            Some additional description
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Delete
+            </span>
+          </button>
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Account Delete Delete starname 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="account-delete-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+          You are deleting
+           
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          test2*iov
+        </h5>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+          >
+            Some additional description
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Delete
+            </span>
+          </button>
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -3820,6 +4026,115 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
 </div>
 `;
 
+exports[`Storyshots Bierzo Wallet/Account Operation Sample 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+  id="account-operation-id"
+>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+          You are makeing operation with
+           
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+        >
+          albert*iov
+        </h5>
+        <h5
+          className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
+        >
+           
+          account
+        </h5>
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <p
+            className="MuiTypography-root makeStyles-defaultColor MuiTypography-body1"
+          >
+            Some additional description
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Operation
+            </span>
+          </button>
+          <button
+            aria-label="Go back"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Cancel
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -3948,8 +4263,8 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
-            disabled={true}
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -3961,7 +4276,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex={-1}
+            tabIndex={0}
             type="submit"
           >
             <span
@@ -4130,8 +4445,8 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
           className="MuiBox-root MuiBox-root"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disabled MuiButton-fullWidth MuiButtonBase-disabled"
-            disabled={true}
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -4143,7 +4458,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex={-1}
+            tabIndex={0}
             type="submit"
           >
             <span
