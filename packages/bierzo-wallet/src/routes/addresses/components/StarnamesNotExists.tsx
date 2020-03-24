@@ -40,19 +40,6 @@ export function GetYourAddressWithExtension({
       >
         Register Now
       </Typography>
-      {/* TODO remove this Typography when /register-name accessible from starname list */}
-      <Typography
-        variant="subtitle1"
-        color="primary"
-        weight="semibold"
-        inline
-        link
-        onClick={() => {
-          history.push(NAME_REGISTER_ROUTE);
-        }}
-      >
-        Register your name
-      </Typography>
     </Block>
   );
 }

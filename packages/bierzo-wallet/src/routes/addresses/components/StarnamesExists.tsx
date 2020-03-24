@@ -50,19 +50,6 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
           <Typography id={STARNAME_REGISTER_ROUTE} link color="primary" onClick={onRegisterStarname}>
             Register now
           </Typography>
-          {/* TODO remove this Typography when /register-name accessible from starname list */}
-          <Typography
-            variant="subtitle1"
-            color="primary"
-            weight="semibold"
-            inline
-            link
-            onClick={() => {
-              history.push(NAME_REGISTER_ROUTE);
-            }}
-          >
-            Register your name
-          </Typography>
         </Block>
       </Paper>
       {starnames
