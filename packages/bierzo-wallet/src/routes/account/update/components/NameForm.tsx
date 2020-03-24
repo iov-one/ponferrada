@@ -59,8 +59,8 @@ const NameAccountUpdate = ({
     try {
       const request = await generateReplaceAccountTargetsTxRequest(
         bnsIdentity,
-        account.domain,
         account.name,
+        account.domain,
         addressesToRegister,
       );
 

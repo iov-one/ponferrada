@@ -194,8 +194,8 @@ export const generateDeleteAccountTxWithFee = async (
 
 export const generateRegisterAccountTxWithFee = async (
   creator: Identity,
-  domain: string,
   name: string,
+  domain: string,
   owner: Address,
   targets: readonly ChainAddressPair[],
 ): Promise<RegisterAccountTx> => {
@@ -230,15 +230,15 @@ export const generateTransferAccountTxWithFee = async (
 
 export const generateReplaceAccountTargetsTxWithFee = async (
   creator: Identity,
-  domain: string,
   name: string,
+  domain: string,
   newTargets: readonly ChainAddressPair[],
 ): Promise<ReplaceAccountTargetsTx> => {
   const regAccountTx: ReplaceAccountTargetsTx = {
     kind: "bns/replace_account_targets",
     chainId: creator.chainId,
+    name: name ? name : undefined,
     domain: domain,
-    name: name,
     newTargets: newTargets,
   };
 
@@ -339,23 +339,23 @@ export const generateDeleteAccountTxRequest = async (
 
 export const generateRegisterAccountTxRequest = async (
   creator: Identity,
-  domain: string,
   name: string,
+  domain: string,
   owner: Address,
   targets: readonly ChainAddressPair[],
 ): Promise<JsonRpcRequest> => {
-  const transactionWithFee = await generateRegisterAccountTxWithFee(creator, domain, name, owner, targets);
+  const transactionWithFee = await generateRegisterAccountTxWithFee(creator, name, domain, owner, targets);
 
   return generateJsonPrcRequest(creator, transactionWithFee);
 };
 
 export const generateReplaceAccountTargetsTxRequest = async (
   creator: Identity,
-  domain: string,
   name: string,
+  domain: string,
   newTargets: readonly ChainAddressPair[],
 ): Promise<JsonRpcRequest> => {
-  const transactionWithFee = await generateReplaceAccountTargetsTxWithFee(creator, domain, name, newTargets);
+  const transactionWithFee = await generateReplaceAccountTargetsTxWithFee(creator, name, domain, newTargets);
 
   return generateJsonPrcRequest(creator, transactionWithFee);
 };

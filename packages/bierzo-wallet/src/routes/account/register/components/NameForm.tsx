@@ -107,15 +107,15 @@ const NameForm = ({
       if (iovnameAddresses) {
         request = await generateReplaceAccountTargetsTxRequest(
           bnsIdentity,
-          domain,
           name,
+          domain,
           addressesToRegister,
         );
       } else {
         request = await generateRegisterAccountTxRequest(
           bnsIdentity,
-          domain,
           name,
+          domain,
           bnsCodec.identityToAddress(bnsIdentity),
           addressesToRegister,
         );
