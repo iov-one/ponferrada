@@ -23,7 +23,7 @@ import {
   travelToStarnamesTabE2E,
 } from "./test/travelToReceivePayment";
 
-withChainsDescribe.only("E2E > Addresses route", () => {
+withChainsDescribe("E2E > Addresses route", () => {
   let browser: Browser;
   let page: Page;
   let server: Server;
