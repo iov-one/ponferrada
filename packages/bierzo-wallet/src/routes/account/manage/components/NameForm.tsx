@@ -6,7 +6,7 @@ import AccountManage, { BwAccountWithChainName } from "../../../../components/Ac
 import { NAME_EDIT_ROUTE } from "../../../paths";
 
 // eslint-disable-next-line no-console
-const menuItems: readonly ActionMenuItem[] = [{ title: "Renew", action: () => console.log("Delete") }];
+const menuItems: readonly ActionMenuItem[] = [{ title: "Renew", action: () => console.log("Renew") }];
 
 const NameAccountManage = (): JSX.Element => {
   const account: BwAccountWithChainName = history.location.state;

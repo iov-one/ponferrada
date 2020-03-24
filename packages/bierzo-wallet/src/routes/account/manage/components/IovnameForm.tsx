@@ -9,12 +9,7 @@ const IovnameAccountManage = (): JSX.Element => {
   const account: BwUsernameWithChainName = history.location.state;
 
   const menuItems: readonly ActionMenuItem[] = [
-    // eslint-disable-next-line no-console
-    { title: "Renew", action: () => console.log("Renew") },
-    // eslint-disable-next-line no-console
     { title: "Transfer iovname", action: () => history.push(IOVNAME_TRANSFER_ROUTE, account) },
-    // eslint-disable-next-line no-console
-    { title: "Delete iovname", action: () => console.log("Delete iovname") },
   ];
 
   const onEdit = (): void => {
