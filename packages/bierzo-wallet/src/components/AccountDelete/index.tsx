@@ -4,11 +4,11 @@ import { Typography } from "medulas-react-components";
 import React from "react";
 
 import { RpcEndpoint } from "../../communication/rpcEndpoint";
-import { AccountModuleMixedType, isAccountData } from "../AccountManage";
+import { BwAccountWithChainName } from "../AccountManage";
 import AccountOperation from "../AccountOperation";
 
 interface HeaderProps {
-  readonly account: AccountModuleMixedType;
+  readonly account: BwAccountWithChainName;
 }
 
 const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
@@ -17,14 +17,14 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
       You are deleting{" "}
     </Typography>
     <Typography color="primary" variant="h5" inline>
-      {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
+      {account.name}*{account.domain}
     </Typography>
   </React.Fragment>
 );
 
 interface Props {
   readonly id: string;
-  readonly account: AccountModuleMixedType;
+  readonly account: BwAccountWithChainName;
   readonly children: React.ReactNode;
   readonly bnsChainId: ChainId;
   readonly onCancel: () => void;

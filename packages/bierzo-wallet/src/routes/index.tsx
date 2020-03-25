@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
-import { AccountDelete, AccountManage, AccountRegister, AccountUpdate } from "./account";
+import { AccountDelete, AccountManage, AccountRegister, AccountRenew, AccountUpdate } from "./account";
 import AccountTransfer from "./account/transfer";
 import Addresses from "./addresses";
 import Balance from "./balance";
@@ -26,6 +26,7 @@ import {
   STARNAME_DELETE_ROUTE,
   STARNAME_MANAGE_ROUTE,
   STARNAME_REGISTER_ROUTE,
+  STARNAME_RENEW_ROUTE,
   STARNAME_TRANSFER_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
@@ -63,6 +64,8 @@ const Routes = (): JSX.Element => (
 
         <Route exact path={STARNAME_DELETE_ROUTE} render={() => <AccountDelete entity="starname" />} />
         <Route exact path={NAME_DELETE_ROUTE} render={() => <AccountDelete entity="name" />} />
+
+        <Route exact path={STARNAME_RENEW_ROUTE} render={() => <AccountRenew entity="starname" />} />
 
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
