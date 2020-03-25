@@ -7,6 +7,8 @@ import {
   RegisterAccountTx,
   RegisterDomainTx,
   RegisterUsernameTx,
+  RenewAccountTx,
+  RenewDomainTx,
   ReplaceAccountTargetsTx,
   TransferAccountTx,
   TransferDomainTx,
@@ -158,6 +160,38 @@ export const generateTransferDomainTxWithFee = async (
   };
 
   return await withChainFee(regDomainTx, creatorAddress);
+};
+
+export const generateRenewDomainTxWithFee = async (
+  creator: Identity,
+  domain: string,
+): Promise<RenewDomainTx> => {
+  const creatorAddress = bnsCodec.identityToAddress(creator);
+
+  const transaction: RenewDomainTx = {
+    kind: "bns/renew_domain",
+    chainId: creator.chainId,
+    domain: domain,
+  };
+
+  return await withChainFee(transaction, creatorAddress);
+};
+
+export const generateRenewAccountTxWithFee = async (
+  creator: Identity,
+  name: string,
+  domain: string,
+): Promise<RenewAccountTx> => {
+  const creatorAddress = bnsCodec.identityToAddress(creator);
+
+  const transaction: RenewAccountTx = {
+    kind: "bns/renew_account",
+    chainId: creator.chainId,
+    name: name,
+    domain: domain,
+  };
+
+  return await withChainFee(transaction, creatorAddress);
 };
 
 export const generateDeleteDomainTxWithFee = async (
@@ -314,6 +348,25 @@ export const generateTransferAccountTxRequest = async (
   newOwner: Address,
 ): Promise<JsonRpcRequest> => {
   const transactionWithFee = await generateTransferAccountTxWithFee(creator, name, domain, newOwner);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateRenewDomainTxRequest = async (
+  creator: Identity,
+  domain: string,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateRenewDomainTxWithFee(creator, domain);
+
+  return generateJsonPrcRequest(creator, transactionWithFee);
+};
+
+export const generateRenewAccountTxRequest = async (
+  creator: Identity,
+  name: string,
+  domain: string,
+): Promise<JsonRpcRequest> => {
+  const transactionWithFee = await generateRenewAccountTxWithFee(creator, name, domain);
 
   return generateJsonPrcRequest(creator, transactionWithFee);
 };
