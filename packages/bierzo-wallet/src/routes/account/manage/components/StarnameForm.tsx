@@ -9,6 +9,7 @@ import {
   NAME_EDIT_ROUTE,
   NAME_REGISTER_ROUTE,
   STARNAME_DELETE_ROUTE,
+  STARNAME_RENEW_ROUTE,
   STARNAME_TRANSFER_ROUTE,
 } from "../../../paths";
 import AssociatedNamesList from "./AssociatedNamesList";
@@ -18,8 +19,7 @@ const StarnameAccountManage = (): JSX.Element => {
   const account: BwAccountWithChainName = history.location.state;
 
   const menuItems: readonly ActionMenuItem[] = [
-    // eslint-disable-next-line no-console
-    { title: "Renew", action: () => console.log("Renew") },
+    { title: "Renew", action: () => history.push(STARNAME_RENEW_ROUTE, account) },
     { title: "Transfer starname", action: () => history.push(STARNAME_TRANSFER_ROUTE, account) },
     { title: "Delete starname", action: () => history.push(STARNAME_DELETE_ROUTE, account) },
   ];
