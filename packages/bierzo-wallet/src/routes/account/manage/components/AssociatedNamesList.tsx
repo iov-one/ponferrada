@@ -95,7 +95,6 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
 
               const menuItems: readonly ActionMenuItem[] = [
                 { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, name) },
-                // eslint-disable-next-line no-console
                 {
                   title: "Transfer it back to me",
                   action: () => history.push(NAME_TRANSFER_BACK_ROUTE, name),
