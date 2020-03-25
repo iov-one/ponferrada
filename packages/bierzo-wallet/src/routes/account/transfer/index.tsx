@@ -19,7 +19,13 @@ function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
-const AccountTransfer = ({ entity }: AccountProps): JSX.Element => {
+interface AccountTransferEntity {
+  entity: "name-back";
+}
+
+type AccountTransferProps = AccountProps | AccountTransferEntity;
+
+const AccountTransfer = ({ entity }: AccountTransferProps): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
