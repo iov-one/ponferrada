@@ -7,10 +7,7 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import {
-  generateDeleteDomainTxRequest,
-  generateRenewDomainTxRequest,
-} from "../../communication/requestgenerators";
+import { generateRenewDomainTxRequest } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
