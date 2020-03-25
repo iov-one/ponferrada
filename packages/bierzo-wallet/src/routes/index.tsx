@@ -20,6 +20,7 @@ import {
   NAME_EDIT_ROUTE,
   NAME_MANAGE_ROUTE,
   NAME_REGISTER_ROUTE,
+  NAME_TRANSFER_BACK_ROUTE,
   NAME_TRANSFER_ROUTE,
   PAYMENT_ROUTE,
   POLICY_ROUTE,
@@ -60,6 +61,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={IOVNAME_TRANSFER_ROUTE} render={() => <AccountTransfer entity="iovname" />} />
         <Route exact path={STARNAME_TRANSFER_ROUTE} render={() => <AccountTransfer entity="starname" />} />
         <Route exact path={NAME_TRANSFER_ROUTE} render={() => <AccountTransfer entity="name" />} />
+        <Route exact path={NAME_TRANSFER_BACK_ROUTE} render={() => <AccountTransfer entity="name-back" />} />
 
         <Route exact path={STARNAME_DELETE_ROUTE} render={() => <AccountDelete entity="starname" />} />
         <Route exact path={NAME_DELETE_ROUTE} render={() => <AccountDelete entity="name" />} />
