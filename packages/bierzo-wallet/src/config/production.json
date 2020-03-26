@@ -11,8 +11,8 @@
   "websiteName": "wallet.neuma.io",
   "supportedChains": [
     { "chainId": "iov-mainnet", "name": "IOV Mainnet" },
-    { "chainId": "lisk-ed14889723", "name": "Lisk Mainnet" },
-    { "chainId": "ethereum-eip155-1", "name": "Ethereum Mainnet" },
+    { "chainId": "lisk-ed14889723", "name": "Lisk" },
+    { "chainId": "ethereum-eip155-1", "name": "Ethereum" },
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
     { "chainId": "cosmos-cosmoshub-3", "name": "Cosmos Hub" },
     { "chainId": "cosmos-irishub", "name": "IrisNet" },
