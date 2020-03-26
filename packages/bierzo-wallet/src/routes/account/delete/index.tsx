@@ -13,7 +13,7 @@ import ConfirmDelete from "./components/ConfirmDelete";
 import NameAccountDelete from "./components/NameDelete";
 import StarnameAccountDelete from "./components/StarnameDelete";
 
-function onSeeTrasactions(): void {
+function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
@@ -29,7 +29,7 @@ const AccountDelete = ({ entity }: AccountProps): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmDelete transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
+        <ConfirmDelete transactionId={transactionId} onSeeTransactions={onSeeTransactions} />
       ) : (
         <Block
           marginTop={4}

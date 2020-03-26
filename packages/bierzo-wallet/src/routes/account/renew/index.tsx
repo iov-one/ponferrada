@@ -12,7 +12,7 @@ import { TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmRenew from "./components/ConfirmRenew";
 import StarnameAccountRenew from "./components/StarnameRenew";
 
-function onSeeTrasactions(): void {
+function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
@@ -28,7 +28,7 @@ const AccountRenew = ({ entity }: AccountProps): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmRenew transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
+        <ConfirmRenew transactionId={transactionId} onSeeTransactions={onSeeTransactions} />
       ) : (
         <Block
           marginTop={4}

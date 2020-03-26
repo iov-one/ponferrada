@@ -14,7 +14,7 @@ import IovnameAccountTransfer from "./components/IovnameTransfer";
 import NameAccountTransfer from "./components/NameTransfer";
 import StarnameAccountTransfer from "./components/StarnameTransfer";
 
-function onSeeTrasactions(): void {
+function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
@@ -30,7 +30,7 @@ const AccountTransfer = ({ entity }: AccountProps): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmTransfer transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
+        <ConfirmTransfer transactionId={transactionId} onSeeTransactions={onSeeTransactions} />
       ) : (
         <Block
           marginTop={4}

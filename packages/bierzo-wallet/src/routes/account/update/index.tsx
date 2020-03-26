@@ -15,7 +15,7 @@ import ConfirmRegistration from "./components/ConfirmUpdate";
 import IovnameAccountUpdate from "./components/IovnameForm";
 import NameAccountUpdate from "./components/NameForm";
 
-function onSeeTrasactions(): void {
+function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
@@ -69,7 +69,7 @@ const AccountUpdate = ({ entity }: AccountProps): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmRegistration transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
+        <ConfirmRegistration transactionId={transactionId} onSeeTransactions={onSeeTransactions} />
       ) : (
         <React.Fragment>
           {entity === "iovname" && (
