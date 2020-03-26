@@ -87,6 +87,8 @@ export const registerName = async (browser: Browser, page: Page): Promise<string
   createNewNameLink.click();
   await page.waitForSelector(`#${REGISTER_NAME_VIEW_ID}`);
 
+  // Fill the form
+  await sleep(1000);
   const name = `${randomString(10)}${starname}`;
   await page.type(`input[name="${REGISTER_NAME_FIELD}"]`, name);
   await page.click('button[type="submit"]');
