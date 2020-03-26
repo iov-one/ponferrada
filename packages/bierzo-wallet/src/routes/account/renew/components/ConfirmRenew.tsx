@@ -15,7 +15,7 @@ import copySvg from "../../../../assets/copy.svg";
 import tickSvg from "../../../../assets/tick.svg";
 import PageContent from "../../../../components/PageContent";
 
-export const DELETE_CONFIRMATION_VIEW_ID = "delete-confirmation-view-id";
+export const RENEW_CONFIRMATION_VIEW_ID = "renew-confirmation-view-id";
 
 const useClasses = makeStyles({
   txId: {
@@ -35,7 +35,7 @@ interface Props {
   readonly onSeeTransactions: () => void;
 }
 
-const ConfirmDelete = ({ transactionId, onSeeTransactions }: Props): JSX.Element => {
+const ConfirmRenew = ({ transactionId, onSeeTransactions }: Props): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useClasses();
 
@@ -62,9 +62,9 @@ const ConfirmDelete = ({ transactionId, onSeeTransactions }: Props): JSX.Element
   };
 
   return (
-    <PageContent id={DELETE_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
+    <PageContent id={RENEW_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
       <Typography color="textPrimary" variant="subtitle1" weight="semibold" align="center">
-        Your delete request was successfully signed and sent to the network.
+        Your renew request was successfully signed and sent to the network.
       </Typography>
       <Block marginTop={4} alignSelf="flex-start">
         <Typography color="textPrimary" variant="subtitle2" weight="semibold">
@@ -83,4 +83,4 @@ const ConfirmDelete = ({ transactionId, onSeeTransactions }: Props): JSX.Element
   );
 };
 
-export default ConfirmDelete;
+export default ConfirmRenew;

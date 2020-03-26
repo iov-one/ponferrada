@@ -78,7 +78,7 @@ storiesOf(UPDATE_ACCOUNT_STORY_PATH, module)
     <DecoratedStorybook>
       <ConfirmUpdate
         transactionId={"0x2be250c978013e0b3af09916c421511a07fac45bce16cdd891b7001a150cde0e" as TransactionId}
-        onSeeTrasactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
+        onSeeTransactions={linkTo(TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH)}
       />
     </DecoratedStorybook>
   ));

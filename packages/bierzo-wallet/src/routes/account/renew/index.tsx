@@ -9,23 +9,14 @@ import PageMenu from "../../../components/PageMenu";
 import { RootState } from "../../../store/reducers";
 import { getBnsIdentity } from "../../../utils/tokens";
 import { TRANSACTIONS_ROUTE } from "../../paths";
-import ConfirmTransfer from "./components/ConfirmTransfer";
-import IovnameAccountTransfer from "./components/IovnameTransfer";
-import NameAccountTransfer from "./components/NameTransfer";
-import NameAccountTransferBack from "./components/NameTransferBack";
-import StarnameAccountTransfer from "./components/StarnameTransfer";
+import ConfirmRenew from "./components/ConfirmRenew";
+import StarnameAccountRenew from "./components/StarnameRenew";
 
 function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
-interface AccountTransferEntity {
-  entity: "name-back";
-}
-
-type AccountTransferProps = AccountProps | AccountTransferEntity;
-
-const AccountTransfer = ({ entity }: AccountTransferProps): JSX.Element => {
+const AccountRenew = ({ entity }: AccountProps): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
@@ -37,7 +28,7 @@ const AccountTransfer = ({ entity }: AccountTransferProps): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmTransfer transactionId={transactionId} onSeeTransactions={onSeeTransactions} />
+        <ConfirmRenew transactionId={transactionId} onSeeTransactions={onSeeTransactions} />
       ) : (
         <Block
           marginTop={4}
@@ -46,29 +37,8 @@ const AccountTransfer = ({ entity }: AccountTransferProps): JSX.Element => {
           alignItems="center"
           justifyContent="center"
         >
-          {entity === "iovname" && (
-            <IovnameAccountTransfer
-              bnsIdentity={bnsIdentity}
-              rpcEndpoint={rpcEndpoint}
-              setTransactionId={setTransactionId}
-            />
-          )}
           {entity === "starname" && (
-            <StarnameAccountTransfer
-              bnsIdentity={bnsIdentity}
-              rpcEndpoint={rpcEndpoint}
-              setTransactionId={setTransactionId}
-            />
-          )}
-          {entity === "name" && (
-            <NameAccountTransfer
-              bnsIdentity={bnsIdentity}
-              rpcEndpoint={rpcEndpoint}
-              setTransactionId={setTransactionId}
-            />
-          )}
-          {entity === "name-back" && (
-            <NameAccountTransferBack
+            <StarnameAccountRenew
               bnsIdentity={bnsIdentity}
               rpcEndpoint={rpcEndpoint}
               setTransactionId={setTransactionId}
@@ -80,4 +50,4 @@ const AccountTransfer = ({ entity }: AccountTransferProps): JSX.Element => {
   );
 };
 
-export default AccountTransfer;
+export default AccountRenew;

@@ -32,10 +32,10 @@ const copyIcon = <Image src={copySvg} alt="Tick" />;
 
 interface Props {
   readonly transactionId: TransactionId;
-  readonly onSeeTrasactions: () => void;
+  readonly onSeeTransactions: () => void;
 }
 
-const ConfirmRegistration = ({ transactionId, onSeeTrasactions }: Props): JSX.Element => {
+const ConfirmRegistration = ({ transactionId, onSeeTransactions }: Props): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const classes = useClasses();
 
@@ -49,7 +49,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions }: Props): JSX.El
       flexDirection="column"
     >
       <Block width="75%">
-        <Button fullWidth onClick={onSeeTrasactions}>
+        <Button fullWidth onClick={onSeeTransactions}>
           See Transactions
         </Button>
       </Block>

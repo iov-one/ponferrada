@@ -12,6 +12,8 @@ import {
   isRegisterAccountTx,
   isRegisterDomainTx,
   isRegisterUsernameTx,
+  isRenewAccountTx,
+  isRenewDomainTx,
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
@@ -21,6 +23,8 @@ import {
   RegisterAccountTx,
   RegisterDomainTx,
   RegisterUsernameTx,
+  RenewAccountTx,
+  RenewDomainTx,
   ReplaceAccountTargetsTx,
   TransferAccountTx,
   TransferDomainTx,
@@ -65,6 +69,8 @@ export type SupportedTransaction =
   | TransferAccountTx
   | RegisterDomainTx
   | RegisterAccountTx
+  | RenewAccountTx
+  | RenewDomainTx
   | ReplaceAccountTargetsTx
   | CreateProposalTx
   | VoteTx;
@@ -74,6 +80,8 @@ export function isSupportedTransaction(tx: UnsignedTransaction): tx is Supported
     isSendTransaction(tx) ||
     isDeleteDomainTx(tx) ||
     isDeleteAccountTx(tx) ||
+    isRenewDomainTx(tx) ||
+    isRenewAccountTx(tx) ||
     isRegisterUsernameTx(tx) ||
     isUpdateTargetsOfUsernameTx(tx) ||
     isTransferUsernameTx(tx) ||

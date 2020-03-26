@@ -14,7 +14,7 @@ interface HeaderProps {
 const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
   <React.Fragment>
     <Typography color="default" variant="h5" inline>
-      You are deleting{" "}
+      You are about to renew{" "}
     </Typography>
     <Typography color="primary" variant="h5" inline>
       {account.name}*{account.domain}
@@ -34,7 +34,7 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
-const AccountDelete = ({
+const AccountRenew: React.FunctionComponent<Props> = ({
   account,
   id,
   onCancel,
@@ -44,22 +44,14 @@ const AccountDelete = ({
   children,
   rpcEndpoint,
   setTransactionId,
-}: Props): JSX.Element => {
-  const getDeleteRequest = async (): Promise<JsonRpcRequest> => {
-    return await getRequest();
-  };
-
-  const getDeleteFee = async (): Promise<Fee | undefined> => {
-    return await getFee();
-  };
-
+}): JSX.Element => {
   return (
     <AccountOperation
       id={id}
-      submitCaption="Delete"
+      submitCaption="Renew"
       onCancel={onCancel}
-      getFee={getDeleteFee}
-      getRequest={getDeleteRequest}
+      getFee={getFee}
+      getRequest={getRequest}
       bnsChainId={bnsChainId}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
@@ -70,4 +62,4 @@ const AccountDelete = ({
   );
 };
 
-export default AccountDelete;
+export default AccountRenew;
