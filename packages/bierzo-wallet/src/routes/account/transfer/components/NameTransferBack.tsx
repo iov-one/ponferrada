@@ -26,7 +26,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
       Transfer{" "}
     </Typography>
     <Typography color="primary" variant="h5" inline>
-      {`${account.name}*${account.domain}`}
+      ${account.name}*${account.domain}
     </Typography>
     <Typography color="default" variant="h5" inline>
       {" "}
