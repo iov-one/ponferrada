@@ -1,6 +1,6 @@
 {
   "name": "valdueza-storybook",
-  "version": "1.2.0",
+  "version": "1.2.1-e-alpha.0",
   "private": true,
   "scripts": {
     "build-storybook": "build-storybook -s public",
@@ -21,12 +21,12 @@
   },
   "dependencies": {
     "babel-loader": "^8.0.6",
-    "medulas-react-components": "^1.2.0"
+    "medulas-react-components": "^1.2.1-e-alpha.0"
   },
   "devDependencies": {
     "@iov/browser-extension-react-scripts": "^3.3.0",
-    "react-test-renderer": "^16.13.0",
     "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.13.0",
     "require-context.macro": "^1.2.2"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "sil-governance",
-  "version": "1.2.0",
+  "version": "1.2.1-e-alpha.0",
   "private": true,
   "dependencies": {
     "@iov/bcp": "^2.2.0",
@@ -11,7 +11,7 @@
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "@material-ui/styles": "^4.5.0",
-    "medulas-react-components": "^1.2.0",
+    "medulas-react-components": "^1.2.1-e-alpha.0",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -19,7 +19,7 @@
     "react-router-dom": "^5.0.0",
     "readonly-date": "^1.0.0",
     "redux": "^4.0.1",
-    "ui-logic": "^1.2.0"
+    "ui-logic": "^1.2.1-e-alpha.0"
   },
   "devDependencies": {
     "react-scripts": "^3.3.0"
