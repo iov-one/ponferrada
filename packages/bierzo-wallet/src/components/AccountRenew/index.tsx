@@ -45,21 +45,13 @@ const AccountRenew: React.FunctionComponent<Props> = ({
   rpcEndpoint,
   setTransactionId,
 }): JSX.Element => {
-  const getRenewRequest = async (): Promise<JsonRpcRequest> => {
-    return await getRequest();
-  };
-
-  const getRenewFee = async (): Promise<Fee | undefined> => {
-    return await getFee();
-  };
-
   return (
     <AccountOperation
       id={id}
       submitCaption="Renew"
       onCancel={onCancel}
-      getFee={getRenewFee}
-      getRequest={getRenewRequest}
+      getFee={getFee}
+      getRequest={getRequest}
       bnsChainId={bnsChainId}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
