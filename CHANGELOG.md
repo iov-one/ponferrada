@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+- Wallet: Add support for e-Money chain
+
 ## 1.2.0
 
 - Wallet: Get Neuma extension URL from config
