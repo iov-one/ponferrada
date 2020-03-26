@@ -6,7 +6,12 @@ import React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { NAME_DELETE_ROUTE, NAME_EDIT_ROUTE, NAME_TRANSFER_ROUTE } from "../../../paths";
+import {
+  NAME_DELETE_ROUTE,
+  NAME_EDIT_ROUTE,
+  NAME_TRANSFER_BACK_ROUTE,
+  NAME_TRANSFER_ROUTE,
+} from "../../../paths";
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 
@@ -90,8 +95,10 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
 
               const menuItems: readonly ActionMenuItem[] = [
                 { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, name) },
-                // eslint-disable-next-line no-console
-                { title: "Transfer it back to me", action: () => console.log("Transfer it back to me") },
+                {
+                  title: "Transfer it back to me",
+                  action: () => history.push(NAME_TRANSFER_BACK_ROUTE, name),
+                },
                 { title: "Delete name", action: () => history.push(NAME_DELETE_ROUTE, name) },
               ];
 

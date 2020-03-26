@@ -12,13 +12,20 @@ import { TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmTransfer from "./components/ConfirmTransfer";
 import IovnameAccountTransfer from "./components/IovnameTransfer";
 import NameAccountTransfer from "./components/NameTransfer";
+import NameAccountTransferBack from "./components/NameTransferBack";
 import StarnameAccountTransfer from "./components/StarnameTransfer";
 
 function onSeeTrasactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
-const AccountTransfer = ({ entity }: AccountProps): JSX.Element => {
+interface AccountTransferEntity {
+  entity: "name-back";
+}
+
+type AccountTransferProps = AccountProps | AccountTransferEntity;
+
+const AccountTransfer = ({ entity }: AccountTransferProps): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
@@ -55,6 +62,13 @@ const AccountTransfer = ({ entity }: AccountProps): JSX.Element => {
           )}
           {entity === "name" && (
             <NameAccountTransfer
+              bnsIdentity={bnsIdentity}
+              rpcEndpoint={rpcEndpoint}
+              setTransactionId={setTransactionId}
+            />
+          )}
+          {entity === "name-back" && (
+            <NameAccountTransferBack
               bnsIdentity={bnsIdentity}
               rpcEndpoint={rpcEndpoint}
               setTransactionId={setTransactionId}
