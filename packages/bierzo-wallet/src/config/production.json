@@ -16,7 +16,7 @@
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
     { "chainId": "cosmos-cosmoshub-3", "name": "Cosmos Hub" },
     { "chainId": "cosmos-irishub", "name": "IrisNet" },
-    { "chainId": "cosmos-kava-2", "name": "kava" },
+    { "chainId": "cosmos-kava-2", "name": "Kava" },
     { "chainId": "bip122-tmp-bitcoin", "name": "Bitcoin" },
     { "chainId": "bip122-tmp-litecoin", "name": "Litecoin" }
   ],
