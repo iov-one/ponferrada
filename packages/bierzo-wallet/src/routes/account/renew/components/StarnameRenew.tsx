@@ -12,7 +12,6 @@ import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountRenew from "../../../../components/AccountRenew";
 import { getConnectionForBns } from "../../../../logic/connection";
-import { formatDuration } from "../../../../utils/date";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
 const STARNAME_RENEW_ID = "starname-renew-id";
@@ -40,7 +39,7 @@ interface Props {
 }
 
 const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
-  const [renewPeriod, setRenewPeriod] = React.useState(0);
+  const [renewUntil, setRenewUntil] = React.useState(new Date());
   const listClasses = useList();
   const listItemClasses = useListItem();
 
@@ -51,8 +50,9 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
     async function getDomainAccounts(): Promise<void> {
       const connection = await getConnectionForBns();
       const domainsNft = await connection.getDomains({ name: account.domain });
+      const now = Date.now() / 1000;
       if (isSubscribed) {
-        setRenewPeriod(domainsNft[0].accountRenew);
+        setRenewUntil(new Date((now + domainsNft[0].accountRenew) * 1000));
       }
     }
     getDomainAccounts();
@@ -88,7 +88,8 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            You are renewing *{account.domain} for {formatDuration(renewPeriod)}
+            You are renewing *{account.domain} until {renewUntil.toLocaleDateString()}{" "}
+            {renewUntil.toLocaleTimeString()}
           </Typography>
         </ListItem>
       </List>
