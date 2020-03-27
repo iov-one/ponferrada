@@ -17,6 +17,7 @@ import {
   Tooltip,
   Typography,
   useForm,
+  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
@@ -37,6 +38,8 @@ import LedgerBillboardMessage from "../../../../components/BillboardMessage/Ledg
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
 import { isValidIov } from "../../../../logic/account";
+import { getCodecForChainId } from "../../../../logic/codec";
+import { getConnectionForBns } from "../../../../logic/connection";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
 
@@ -61,6 +64,39 @@ export function NoIovnameHeader(): JSX.Element {
     </Block>
   );
 }
+
+const iovnameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
+  if (!value) {
+    return "Required";
+  }
+
+  const checkResult = isValidIov(value);
+
+  if (checkResult === "valid") {
+    const connection = await getConnectionForBns();
+    const usernames = await connection.getUsernames({ username: value });
+    if (usernames.length > 0) {
+      return "Iovname already exists";
+    }
+
+    return;
+  }
+
+  switch (checkResult) {
+    case "not_iov":
+      return "Iovname must end with *iov";
+    case "wrong_number_of_asterisks":
+      return "Iovname must include only one namespace";
+    case "too_short":
+      return "Iovname should be at least 3 characters";
+    case "too_long":
+      return "Iovname should be maximum 64 characters";
+    case "wrong_chars":
+      return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+    default:
+      throw new Error(`"Unknown iovname validation error: ${checkResult}`);
+  }
+};
 
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
@@ -126,9 +162,36 @@ const IovnameForm = ({
     }
   };
 
+  const validateAddresses = React.useMemo(() => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
+
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      for (const address of addressesToRegister) {
+        try {
+          const codec = await getCodecForChainId(address.chainId);
+          if (!codec.isValidAddress(address.address)) {
+            const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+            if (addressField) {
+              errors[addressField[0]] = "Not valid blockchain address";
+            }
+          }
+        } catch (err) {
+          console.info(err);
+        }
+      }
+
+      return errors;
+    };
+
+    return validate;
+  }, [chainAddresses]);
+
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
     onSubmit,
+    validate: validateAddresses,
     initialValues,
   });
 
@@ -162,70 +225,6 @@ const IovnameForm = ({
       isSubscribed = false;
     };
   }, [bnsIdentity, chainAddresses, invalid, values]);
-
-  const iovnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-    if (!value) {
-      return "Required";
-    }
-
-    const checkResult = isValidIov(value);
-
-    switch (checkResult) {
-      case "not_iov":
-        return "Iovname must end with *iov";
-      case "wrong_number_of_asterisks":
-        return "Iovname must include only one namespace";
-      case "too_short":
-        return "Iovname should be at least 3 characters";
-      case "too_long":
-        return "Iovname should be maximum 64 characters";
-      case "wrong_chars":
-        return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-      case "valid":
-        break;
-      default:
-        throw new Error(`"Unknown iovname validation error: ${checkResult}`);
-    }
-
-    return undefined;
-  };
-
-  /* const validateIovnameExistsAndAddresses = React.useCallback(
-    (values: object) => {
-      const validate = async (values: object): Promise<object> => {
-        const formValues = values as FormValues;
-        const errors: ValidationError = {};
-
-        const connection = await getConnectionForBns();
-        const username = formValues[REGISTER_IOVNAME_FIELD];
-        const usernames = await connection.getUsernames({ username: username });
-        if (usernames.length > 0) {
-          errors[REGISTER_IOVNAME_FIELD] = "Iovname already exists";
-          return errors;
-        }
-
-        const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-        for (const address of addressesToRegister) {
-          try {
-            const codec = await getCodecForChainId(address.chainId);
-            if (!codec.isValidAddress(address.address)) {
-              const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
-              if (addressField) {
-                errors[addressField[0]] = "Not valid blockchain address";
-              }
-            }
-          } catch (err) {
-            console.info(err);
-          }
-        }
-
-        return errors;
-      };
-
-      validate(values);
-    },
-    [chainAddresses],
-  ); */
 
   const buttons = (
     <Block
