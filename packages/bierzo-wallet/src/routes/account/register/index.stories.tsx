@@ -1,19 +1,8 @@
-import {
-  Address,
-  Algorithm,
-  ChainId,
-  Fee,
-  Identity,
-  PubkeyBytes,
-  Token,
-  TokenTicker,
-  TransactionId,
-} from "@iov/bcp";
+import { Address, Algorithm, ChainId, Identity, PubkeyBytes, TransactionId } from "@iov/bcp";
 import { Encoding } from "@iov/encoding";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";

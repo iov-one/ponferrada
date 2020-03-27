@@ -1,4 +1,4 @@
-import { Address, ChainId, Fee, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
@@ -40,10 +40,6 @@ const addresses: ChainAddressPairWithName[] = [
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   fractionalDigits: 9,
   tokenTicker: "IOV" as TokenTicker,
-};
-
-const fee: Fee = {
-  tokens: stringToAmount("5", iov),
 };
 
 const account: BwUsernameWithChainName = {
