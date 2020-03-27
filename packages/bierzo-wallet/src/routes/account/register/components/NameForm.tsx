@@ -18,6 +18,7 @@ import {
   Tooltip,
   Typography,
   useForm,
+  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
@@ -38,6 +39,8 @@ import LedgerBillboardMessage from "../../../../components/BillboardMessage/Ledg
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
 import { isValidName } from "../../../../logic/account";
+import { getCodecForChainId } from "../../../../logic/codec";
+import { getConnectionForBns } from "../../../../logic/connection";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
 
@@ -62,6 +65,37 @@ function NoNameHeader(): JSX.Element {
     </Block>
   );
 }
+
+const nameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
+  if (!value) {
+    return "Required";
+  }
+
+  const checkResult = isValidName(value);
+
+  if (checkResult === "valid") {
+    const connection = await getConnectionForBns();
+    const usernames = await connection.getAccounts({ name: value });
+    if (usernames.length > 0) {
+      return "Name already exists";
+    }
+
+    return;
+  }
+
+  switch (checkResult) {
+    case "wrong_number_of_asterisks":
+      return "Name must include only one namespace";
+    case "too_short":
+      return "Name should be at least 3 characters";
+    case "too_long":
+      return "Name should be maximum 64 characters";
+    case "wrong_chars":
+      return "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+    default:
+      throw new Error(`"Unknown name validation error: ${checkResult}`);
+  }
+};
 
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
@@ -130,9 +164,36 @@ const NameForm = ({
     }
   };
 
+  const validateAddresses = React.useMemo(() => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
+
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      for (const address of addressesToRegister) {
+        try {
+          const codec = await getCodecForChainId(address.chainId);
+          if (!codec.isValidAddress(address.address)) {
+            const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+            if (addressField) {
+              errors[addressField[0]] = "Not valid blockchain address";
+            }
+          }
+        } catch (err) {
+          console.info(err);
+        }
+      }
+
+      return errors;
+    };
+
+    return validate;
+  }, [chainAddresses]);
+
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
     onSubmit,
+    validate: validateAddresses,
     initialValues,
   });
 
@@ -171,67 +232,6 @@ const NameForm = ({
       isSubscribed = false;
     };
   }, [bnsIdentity, chainAddresses, invalid, values]);
-
-  const nameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-    if (!value) {
-      return "Required";
-    }
-
-    const checkResult = isValidName(value);
-
-    switch (checkResult) {
-      case "wrong_number_of_asterisks":
-        return "Name must include only one namespace";
-      case "too_short":
-        return "Name should be at least 3 characters";
-      case "too_long":
-        return "Name should be maximum 64 characters";
-      case "wrong_chars":
-        return "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-      case "valid":
-        break;
-      default:
-        throw new Error(`"Unknown name validation error: ${checkResult}`);
-    }
-
-    return undefined;
-  };
-
-  /* const validateNameExistsAndAddresses = React.useCallback(
-    (values: object) => {
-      const validate = async (values: object): Promise<object> => {
-        const formValues = values as FormValues;
-        const errors: ValidationError = {};
-
-        const connection = await getConnectionForBns();
-        const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
-        const accounts = await connection.getAccounts({ domain: domain });
-        if (accounts.find(account => account.name === name)) {
-          errors[REGISTER_NAME_FIELD] = "Name already exists";
-          return errors;
-        }
-
-        const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-        for (const address of addressesToRegister) {
-          const codec = await getCodecForChainId(address.chainId);
-          if (!codec.isValidAddress(address.address)) {
-            const addressField = Object.entries(formValues).find(([_id, value]) => {
-              if (value === address.address) return true;
-              return false;
-            });
-            if (addressField) {
-              errors[addressField[0]] = "Not valid blockchain address";
-            }
-          }
-        }
-
-        return errors;
-      };
-
-      validate(values);
-    },
-    [chainAddresses],
-  ); */
 
   const buttons = (
     <Block

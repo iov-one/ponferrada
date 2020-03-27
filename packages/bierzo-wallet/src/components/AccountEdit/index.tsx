@@ -14,11 +14,13 @@ import {
   Tooltip,
   Typography,
   useForm,
+  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
 import { isIovname } from "../../logic/account";
+import { getCodecForChainId } from "../../logic/codec";
 import {
   AddressesTooltipHeader,
   BwAccountWithChainName,
@@ -165,9 +167,36 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
     return getAddressItems(account.addresses);
   }, [account]);
 
+  const validateAddresses = React.useMemo(() => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
+
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      for (const address of addressesToRegister) {
+        try {
+          const codec = await getCodecForChainId(address.chainId);
+          if (!codec.isValidAddress(address.address)) {
+            const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+            if (addressField) {
+              errors[addressField[0]] = "Not valid blockchain address";
+            }
+          }
+        } catch (err) {
+          console.info(err);
+        }
+      }
+
+      return errors;
+    };
+
+    return validate;
+  }, [chainAddresses]);
+
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
   const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
     onSubmit,
+    validate: validateAddresses,
     initialValues,
   });
 
