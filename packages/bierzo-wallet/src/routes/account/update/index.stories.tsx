@@ -5,6 +5,7 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
+import { FormValues } from "../../../../../medulas-react-components/src/components/forms/Form/index";
 import AccountEdit from "../../../components/AccountEdit";
 import { UPDATE_ACCOUNT_STORY_PATH } from "../../../components/AccountEdit/index.stories";
 import { BwUsernameWithChainName } from "../../../components/AccountManage";
@@ -68,8 +69,11 @@ storiesOf(UPDATE_ACCOUNT_STORY_PATH, module)
       <AccountEdit
         chainAddresses={addresses}
         account={account}
+        getFee={async (values: FormValues) => {
+          action("get fee")(values);
+          return { tokens: stringToAmount("5", iov) };
+        }}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_IOVNAMES_STORY_PATH)}
-        transactionFee={fee}
         onSubmit={async (values: object): Promise<void> => action("Iovname update submit")(values)}
       />
     </DecoratedStorybook>
