@@ -1,12 +1,10 @@
-import { Fee, Identity, TransactionId } from "@iov/bcp";
+import { TransactionId } from "@iov/bcp";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { AccountProps } from "..";
 import { history } from "../..";
-import { generateRegisterUsernameTxWithFee } from "../../../communication/requestgenerators";
 import { BwUsernameWithChainName } from "../../../components/AccountManage";
-import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import PageMenu from "../../../components/PageMenu";
 import { getConfig, SupportedChain } from "../../../config";
 import { RootState } from "../../../store/reducers";
@@ -27,18 +25,8 @@ function onReturnToAddresses(): void {
   history.push(ADDRESSES_ROUTE);
 }
 
-async function getPersonalizedAddressRegistrationFee(
-  bnsIdentity: Identity,
-  addresses: readonly ChainAddressPairWithName[],
-): Promise<Fee | undefined> {
-  const transactionWithFee = await generateRegisterUsernameTxWithFee(bnsIdentity, "feetest*iov", addresses);
-
-  return transactionWithFee.fee;
-}
-
 const Register = ({ entity }: AccountProps): JSX.Element => {
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
-  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>(undefined);
   const [supportedChains, setSupportedChains] = React.useState<readonly SupportedChain[]>([]);
 
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
@@ -56,19 +44,14 @@ const Register = ({ entity }: AccountProps): JSX.Element => {
 
   React.useEffect(() => {
     let isSubscribed = true;
-    async function getFeeAndConfig(
-      bnsIdentity: Identity,
-      addresses: readonly ChainAddressPairWithName[],
-    ): Promise<void> {
-      const fee = await getPersonalizedAddressRegistrationFee(bnsIdentity, addresses);
+    async function getSupportedChains(): Promise<void> {
       const config = await getConfig();
 
       if (isSubscribed) {
-        setTransactionFee(fee);
         setSupportedChains(config.supportedChains);
       }
     }
-    getFeeAndConfig(bnsIdentity, addressesSorted);
+    getSupportedChains();
 
     return () => {
       isSubscribed = false;
@@ -85,20 +68,16 @@ const Register = ({ entity }: AccountProps): JSX.Element => {
             <IovnameForm
               onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
               chainAddresses={addressesSorted}
-              iovnameAddresses={iovnameAddresses}
               bnsIdentity={bnsIdentity}
               rpcEndpoint={rpcEndpoint}
-              transactionFee={transactionFee}
               setTransactionId={setTransactionId}
             />
           )}
           {entity === "starname" && (
             <StarnameForm
               onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
-              iovnameAddresses={iovnameAddresses}
               bnsIdentity={bnsIdentity}
               rpcEndpoint={rpcEndpoint}
-              transactionFee={transactionFee}
               setTransactionId={setTransactionId}
             />
           )}
@@ -106,10 +85,8 @@ const Register = ({ entity }: AccountProps): JSX.Element => {
             <NameForm
               onCancel={iovnameAddresses ? onReturnToAddresses : onReturnToBalance}
               chainAddresses={addressesSorted}
-              iovnameAddresses={iovnameAddresses}
               bnsIdentity={bnsIdentity}
               rpcEndpoint={rpcEndpoint}
-              transactionFee={transactionFee}
               setTransactionId={setTransactionId}
             />
           )}

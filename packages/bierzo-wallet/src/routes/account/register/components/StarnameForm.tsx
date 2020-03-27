@@ -19,10 +19,13 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import { generateRegisterDomainTxRequest } from "../../../../communication/requestgenerators";
+import {
+  generateRegisterDomainTxRequest,
+  generateRegisterDomainTxWithFee,
+} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { getSubmitButtonCaption } from "../../../../components/AccountEdit";
-import { BwUsernameWithChainName, TooltipContent } from "../../../../components/AccountManage";
+import { TooltipContent } from "../../../../components/AccountManage";
 import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
@@ -53,28 +56,17 @@ export function NoStarnameHeader(): JSX.Element {
 
 interface Props {
   readonly onCancel: () => void;
-  readonly iovnameAddresses: BwUsernameWithChainName | undefined;
-  readonly bnsIdentity: Identity | undefined;
-  readonly rpcEndpoint: RpcEndpoint | undefined;
-  readonly transactionFee: Fee | undefined;
+  readonly bnsIdentity: Identity;
+  readonly rpcEndpoint: RpcEndpoint;
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
-const StarnameForm = ({
-  iovnameAddresses,
-  bnsIdentity,
-  rpcEndpoint,
-  onCancel,
-  transactionFee,
-  setTransactionId,
-}: Props): JSX.Element => {
+const StarnameForm = ({ bnsIdentity, rpcEndpoint, onCancel, setTransactionId }: Props): JSX.Element => {
+  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
   const onSubmit = async (values: object): Promise<void> => {
-    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
-    if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
-
     const formValues = values as FormValues;
     const domain = formValues[REGISTER_STARNAME_FIELD].split("*")[1];
 
@@ -111,30 +103,57 @@ const StarnameForm = ({
     }
   };
 
+  const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
+    onSubmit,
+  });
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+
+    async function setFee(): Promise<void> {
+      const formValues = values as FormValues;
+      const domain = formValues[REGISTER_STARNAME_FIELD].split("*")[1];
+
+      const fee = (await generateRegisterDomainTxWithFee(bnsIdentity, domain)).fee;
+
+      if (isSubscribed) {
+        setTransactionFee(fee);
+      }
+    }
+
+    if (!invalid) {
+      setFee();
+    } else {
+      setTransactionFee(undefined);
+    }
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [bnsIdentity, invalid, values]);
+
   const starnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-    if (!iovnameAddresses) {
-      if (!value) {
-        return "Required";
-      }
+    if (!value) {
+      return "Required";
+    }
 
-      const checkResult = isValidStarname(value);
+    const checkResult = isValidStarname(value);
 
-      switch (checkResult) {
-        case "not_starname":
-          return "Starname must include namespace after '*'";
-        case "wrong_number_of_asterisks":
-          return "Starname must include only one namespace";
-        case "too_short":
-          return "Starname should be at least 3 characters";
-        case "too_long":
-          return "Starname should be maximum 16 characters";
-        case "wrong_chars":
-          return "Starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-        case "valid":
-          break;
-        default:
-          throw new Error(`"Unknown starname validation error: ${checkResult}`);
-      }
+    switch (checkResult) {
+      case "not_starname":
+        return "Starname must include namespace after '*'";
+      case "wrong_number_of_asterisks":
+        return "Starname must include only one namespace";
+      case "too_short":
+        return "Starname should be at least 3 characters";
+      case "too_long":
+        return "Starname should be maximum 16 characters";
+      case "wrong_chars":
+        return "Starname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+      case "valid":
+        break;
+      default:
+        throw new Error(`"Unknown starname validation error: ${checkResult}`);
     }
 
     return undefined;
@@ -158,11 +177,6 @@ const StarnameForm = ({
 
     validate(values);
   }, []); */
-
-  const { form, handleSubmit, invalid, submitting, validating } = useForm({
-    onSubmit,
-    // validate: validateStarnameExists,
-  });
 
   const buttons = (
     <Block
@@ -195,42 +209,33 @@ const StarnameForm = ({
     <Form onSubmit={handleSubmit}>
       <PageContent id={REGISTER_STARNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block width="100%" textAlign="left">
-          {iovnameAddresses && (
-            <Typography variant="h4" align="center">
-              {iovnameAddresses.username}
+          <Block display="flex" justifyContent="space-between" marginBottom={1}>
+            <Typography variant="subtitle2" weight="semibold">
+              Register your starname
             </Typography>
-          )}
-          {!iovnameAddresses && (
-            <React.Fragment>
-              <Block display="flex" justifyContent="space-between" marginBottom={1}>
-                <Typography variant="subtitle2" weight="semibold">
-                  Register your starname
-                </Typography>
-                <Block display="flex" alignItems="center">
-                  <Tooltip maxWidth={320}>
-                    <TooltipContent header={<NoStarnameHeader />} title="Choose your address">
-                      With IOV you can choose your easy to read human readable address. No more complicated
-                      cryptography when sending to friends.
-                    </TooltipContent>
-                  </Tooltip>
-                  <Block marginRight={1} />
-                  <Typography variant="subtitle2" inline weight="regular">
-                    How it works
-                  </Typography>
-                </Block>
-              </Block>
-              <Block width="100%" marginBottom={1}>
-                <TextField
-                  name={REGISTER_STARNAME_FIELD}
-                  form={form}
-                  validate={starnameValidator}
-                  placeholder="eg. *starname"
-                  fullWidth
-                  margin="none"
-                />
-              </Block>
-            </React.Fragment>
-          )}
+            <Block display="flex" alignItems="center">
+              <Tooltip maxWidth={320}>
+                <TooltipContent header={<NoStarnameHeader />} title="Choose your address">
+                  With IOV you can choose your easy to read human readable address. No more complicated
+                  cryptography when sending to friends.
+                </TooltipContent>
+              </Tooltip>
+              <Block marginRight={1} />
+              <Typography variant="subtitle2" inline weight="regular">
+                How it works
+              </Typography>
+            </Block>
+          </Block>
+          <Block width="100%" marginBottom={1}>
+            <TextField
+              name={REGISTER_STARNAME_FIELD}
+              form={form}
+              validate={starnameValidator}
+              placeholder="eg. *starname"
+              fullWidth
+              margin="none"
+            />
+          </Block>
         </Block>
       </PageContent>
     </Form>
