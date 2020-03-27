@@ -112,6 +112,8 @@ const StarnameForm = ({ bnsIdentity, rpcEndpoint, onCancel, setTransactionId }: 
 
     async function setFee(): Promise<void> {
       const formValues = values as FormValues;
+      if (!formValues[REGISTER_STARNAME_FIELD]) return;
+
       const domain = formValues[REGISTER_STARNAME_FIELD].split("*")[1];
 
       const fee = (await generateRegisterDomainTxWithFee(bnsIdentity, domain)).fee;

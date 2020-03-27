@@ -142,6 +142,8 @@ const NameForm = ({
     async function setFee(): Promise<void> {
       const formValues = values as FormValues;
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      if (!formValues[REGISTER_NAME_FIELD]) return;
+
       const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
 
       const fee = (
