@@ -14,12 +14,20 @@ function PolicyLayoutInternal(): JSX.Element {
   const [websiteName, setWebsiteName] = React.useState("");
 
   React.useEffect(() => {
+    let isSubscribed = true;
+
     async function getWebsiteName(): Promise<void> {
       const config = await getConfig();
-      setWebsiteName(config.websiteName);
+      if (isSubscribed) {
+        setWebsiteName(config.websiteName);
+      }
     }
 
     getWebsiteName();
+
+    return () => {
+      isSubscribed = false;
+    };
   }, []);
 
   return (
