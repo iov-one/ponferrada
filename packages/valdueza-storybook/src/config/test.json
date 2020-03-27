@@ -1,0 +1,33 @@
+{
+  "extensionId": "N/A",
+  "extensionLink": "N/A",
+  "neumaUrl": "https://www.neuma.io/",
+  "websiteName": "localhost",
+  "supportedChains": [],
+  "chains": [
+    {
+      "chainSpec": {
+        "codecType": "bns",
+        "chainId": "local-iov-devnet",
+        "name": "IOV Devnet",
+        "node": "ws://localhost:23456/"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "lsk",
+        "chainId": "lisk-198f2b61a8",
+        "name": "Lisk Devnet",
+        "node": "http://localhost:4000/"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "eth",
+        "chainId": "ethereum-eip155-5777",
+        "name": "Ganache",
+        "node": "http://localhost:8545"
+      }
+    }
+  ]
+}
