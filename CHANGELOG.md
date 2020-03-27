@@ -1,8 +1,13 @@
 # Changelog
 
+## 1.3.0 (To be released)
+
+- Wallet: Support for starnames
+
 ## 1.2.1
 
 - Wallet: Add support for e-Money chain
+- Extension: support for future starname features
 
 ## 1.2.0
 
