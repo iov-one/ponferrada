@@ -148,14 +148,16 @@ export function NoIovnameHeader(): JSX.Element {
 export interface AccountEditProps extends AddressesTableProps {
   readonly onCancel: () => void;
   readonly account: BwUsernameWithChainName | BwAccountWithChainName;
-  readonly transactionFee: Fee | undefined;
 }
 
 interface Props extends AccountEditProps {
   readonly onSubmit: (values: object) => Promise<void>;
+  readonly getFee: (values: FormValues) => Promise<Fee | undefined>;
 }
 
-const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubmit }: Props): JSX.Element => {
+const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Props): JSX.Element => {
+  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
+
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
@@ -164,10 +166,31 @@ const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubm
   }, [account]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
-  const { form, handleSubmit, invalid, submitting, validating } = useForm({
+  const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
     onSubmit,
     initialValues,
   });
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+
+    async function setFee(): Promise<void> {
+      const fee = await getFee(values as FormValues);
+      if (isSubscribed) {
+        setTransactionFee(fee);
+      }
+    }
+
+    if (!invalid) {
+      setFee();
+    } else {
+      setTransactionFee(undefined);
+    }
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [getFee, invalid, values]);
 
   const onAccountCopy = (): void => {
     if (account) {
