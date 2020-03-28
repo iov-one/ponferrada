@@ -1,6 +1,5 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { FieldValidator } from "final-form";
 import {
   Back,
@@ -19,12 +18,13 @@ import {
   Tooltip,
   Typography,
   useForm,
+  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
 import {
   generateRegisterAccountTxRequest,
-  generateReplaceAccountTargetsTxRequest,
+  generateRegisterAccountTxWithFee,
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import {
@@ -33,16 +33,14 @@ import {
   getFormInitValues,
   getSubmitButtonCaption,
 } from "../../../../components/AccountEdit";
-import {
-  AddressesTooltipHeader,
-  BwUsernameWithChainName,
-  TooltipContent,
-} from "../../../../components/AccountManage";
+import { AddressesTooltipHeader, TooltipContent } from "../../../../components/AccountManage";
 import { AddressesTableProps } from "../../../../components/AddressesTable";
 import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
 import { isValidName } from "../../../../logic/account";
+import { getCodecForChainId } from "../../../../logic/codec";
+import { getConnectionForBns } from "../../../../logic/connection";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
 
@@ -68,33 +66,58 @@ function NoNameHeader(): JSX.Element {
   );
 }
 
+const nameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
+  if (!value) {
+    return "Required";
+  }
+
+  const checkResult = isValidName(value);
+
+  if (checkResult === "valid") {
+    const connection = await getConnectionForBns();
+    const usernames = await connection.getAccounts({ name: value });
+    if (usernames.length > 0) {
+      return "Name already exists";
+    }
+
+    return;
+  }
+
+  switch (checkResult) {
+    case "wrong_number_of_asterisks":
+      return "Name must include only one namespace";
+    case "too_short":
+      return "Name should be at least 3 characters";
+    case "too_long":
+      return "Name should be maximum 64 characters";
+    case "wrong_chars":
+      return "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+    default:
+      throw new Error(`"Unknown name validation error: ${checkResult}`);
+  }
+};
+
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
-  readonly iovnameAddresses: BwUsernameWithChainName | undefined;
   readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly transactionFee: Fee | undefined;
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
 const NameForm = ({
   chainAddresses,
-  iovnameAddresses,
   bnsIdentity,
   rpcEndpoint,
   onCancel,
-  transactionFee,
   setTransactionId,
 }: Props): JSX.Element => {
+  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
   const chainAddressesItems = React.useMemo(() => {
-    if (iovnameAddresses) {
-      return getAddressItems(iovnameAddresses.addresses);
-    }
     return getAddressItems(chainAddresses);
-  }, [chainAddresses, iovnameAddresses]);
+  }, [chainAddresses]);
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
@@ -103,23 +126,13 @@ const NameForm = ({
     const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
 
     try {
-      let request: JsonRpcRequest;
-      if (iovnameAddresses) {
-        request = await generateReplaceAccountTargetsTxRequest(
-          bnsIdentity,
-          name,
-          domain,
-          addressesToRegister,
-        );
-      } else {
-        request = await generateRegisterAccountTxRequest(
-          bnsIdentity,
-          name,
-          domain,
-          bnsCodec.identityToAddress(bnsIdentity),
-          addressesToRegister,
-        );
-      }
+      const request = await generateRegisterAccountTxRequest(
+        bnsIdentity,
+        name,
+        domain,
+        bnsCodec.identityToAddress(bnsIdentity),
+        addressesToRegister,
+      );
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -151,75 +164,74 @@ const NameForm = ({
     }
   };
 
-  const nameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-    if (!iovnameAddresses) {
-      if (!value) {
-        return "Required";
-      }
+  const validateAddresses = React.useMemo(() => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
 
-      const checkResult = isValidName(value);
-
-      switch (checkResult) {
-        case "wrong_number_of_asterisks":
-          return "Name must include only one namespace";
-        case "too_short":
-          return "Name should be at least 3 characters";
-        case "too_long":
-          return "Name should be maximum 64 characters";
-        case "wrong_chars":
-          return "Name should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-        case "valid":
-          break;
-        default:
-          throw new Error(`"Unknown name validation error: ${checkResult}`);
-      }
-    }
-
-    return undefined;
-  };
-
-  /* const validateNameExistsAndAddresses = React.useCallback(
-    (values: object) => {
-      const validate = async (values: object): Promise<object> => {
-        const formValues = values as FormValues;
-        const errors: ValidationError = {};
-
-        const connection = await getConnectionForBns();
-        const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
-        const accounts = await connection.getAccounts({ domain: domain });
-        if (accounts.find(account => account.name === name)) {
-          errors[REGISTER_NAME_FIELD] = "Name already exists";
-          return errors;
-        }
-
-        const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-        for (const address of addressesToRegister) {
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      for (const address of addressesToRegister) {
+        try {
           const codec = await getCodecForChainId(address.chainId);
           if (!codec.isValidAddress(address.address)) {
-            const addressField = Object.entries(formValues).find(([_id, value]) => {
-              if (value === address.address) return true;
-              return false;
-            });
+            const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
             if (addressField) {
               errors[addressField[0]] = "Not valid blockchain address";
             }
           }
+        } catch (err) {
+          console.info(err);
         }
+      }
 
-        return errors;
-      };
+      return errors;
+    };
 
-      validate(values);
-    },
-    [chainAddresses],
-  ); */
+    return validate;
+  }, [chainAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
-  const { form, handleSubmit, invalid, submitting, validating } = useForm({
+  const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
     onSubmit,
-    // validate: validateNameExistsAndAddresses,
+    validate: validateAddresses,
     initialValues,
   });
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+
+    async function setFee(): Promise<void> {
+      const formValues = values as FormValues;
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      if (!formValues[REGISTER_NAME_FIELD]) return;
+
+      const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
+
+      const fee = (
+        await generateRegisterAccountTxWithFee(
+          bnsIdentity,
+          name,
+          domain,
+          bnsCodec.identityToAddress(bnsIdentity),
+          addressesToRegister,
+        )
+      ).fee;
+
+      if (isSubscribed) {
+        setTransactionFee(fee);
+      }
+    }
+
+    if (!invalid) {
+      setFee();
+    } else {
+      setTransactionFee(undefined);
+    }
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [bnsIdentity, chainAddresses, invalid, values]);
 
   const buttons = (
     <Block
@@ -252,42 +264,33 @@ const NameForm = ({
     <Form onSubmit={handleSubmit}>
       <PageContent id={REGISTER_NAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
-          {iovnameAddresses && (
-            <Typography variant="h4" align="center">
-              {iovnameAddresses.username}
+          <Block display="flex" justifyContent="space-between" marginBottom={1}>
+            <Typography variant="subtitle2" weight="semibold">
+              Register your new name
             </Typography>
-          )}
-          {!iovnameAddresses && (
-            <React.Fragment>
-              <Block display="flex" justifyContent="space-between" marginBottom={1}>
-                <Typography variant="subtitle2" weight="semibold">
-                  Register your new name
-                </Typography>
-                <Block display="flex" alignItems="center">
-                  <Tooltip maxWidth={320}>
-                    <TooltipContent header={<NoNameHeader />} title="Choose your address">
-                      With IOV you can choose your easy to read human readable address. No more complicated
-                      cryptography when sending to friends.
-                    </TooltipContent>
-                  </Tooltip>
-                  <Block marginRight={1} />
-                  <Typography variant="subtitle2" inline weight="regular">
-                    How it works
-                  </Typography>
-                </Block>
-              </Block>
-              <Block width="100%" marginBottom={1}>
-                <TextField
-                  name={REGISTER_NAME_FIELD}
-                  form={form}
-                  validate={nameValidator}
-                  placeholder="eg. yourname*iov"
-                  fullWidth
-                  margin="none"
-                />
-              </Block>
-            </React.Fragment>
-          )}
+            <Block display="flex" alignItems="center">
+              <Tooltip maxWidth={320}>
+                <TooltipContent header={<NoNameHeader />} title="Choose your address">
+                  With IOV you can choose your easy to read human readable address. No more complicated
+                  cryptography when sending to friends.
+                </TooltipContent>
+              </Tooltip>
+              <Block marginRight={1} />
+              <Typography variant="subtitle2" inline weight="regular">
+                How it works
+              </Typography>
+            </Block>
+          </Block>
+          <Block width="100%" marginBottom={1}>
+            <TextField
+              name={REGISTER_NAME_FIELD}
+              form={form}
+              validate={nameValidator}
+              placeholder="eg. yourname*iov"
+              fullWidth
+              margin="none"
+            />
+          </Block>
 
           <Block width="100%" marginTop={3} marginBottom={1}>
             <Block display="flex" alignItems="center" marginBottom={1}>

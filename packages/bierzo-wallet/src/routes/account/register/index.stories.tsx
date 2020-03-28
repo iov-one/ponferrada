@@ -1,9 +1,10 @@
-import { Address, ChainId, Fee, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { Address, Algorithm, ChainId, Identity, PubkeyBytes, TransactionId } from "@iov/bcp";
+import { Encoding } from "@iov/encoding";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import { stringToAmount } from "ui-logic";
 
+import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../../balance/index.stories";
@@ -39,13 +40,12 @@ const addresses: ChainAddressPairWithName[] = [
   },
 ];
 
-const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
-  fractionalDigits: 9,
-  tokenTicker: "IOV" as TokenTicker,
-};
-
-const fee: Fee = {
-  tokens: stringToAmount("5", iov),
+const bnsIdentity: Identity = {
+  chainId: "local-iov-devnet" as ChainId,
+  pubkey: {
+    algo: Algorithm.Secp256k1,
+    data: Encoding.fromHex("ddeeff") as PubkeyBytes,
+  },
 };
 
 storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
@@ -54,11 +54,9 @@ storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
     <DecoratedStorybook>
       <IovnameForm
         chainAddresses={addresses}
-        iovnameAddresses={undefined}
-        bnsIdentity={undefined}
-        rpcEndpoint={undefined}
+        bnsIdentity={bnsIdentity}
+        rpcEndpoint={extensionRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        transactionFee={undefined}
         setTransactionId={() => {}}
       />
     </DecoratedStorybook>
@@ -67,11 +65,9 @@ storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
     <DecoratedStorybook>
       <IovnameForm
         chainAddresses={addresses}
-        iovnameAddresses={undefined}
-        bnsIdentity={undefined}
-        rpcEndpoint={undefined}
+        bnsIdentity={bnsIdentity}
+        rpcEndpoint={extensionRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        transactionFee={fee}
         setTransactionId={() => {}}
       />
     </DecoratedStorybook>
@@ -82,11 +78,9 @@ storiesOf(REGISTER_STARNAME_STORY_PATH, module)
   .add(REGISTER_STARNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
     <DecoratedStorybook>
       <StarnameForm
-        iovnameAddresses={undefined}
-        bnsIdentity={undefined}
-        rpcEndpoint={undefined}
+        bnsIdentity={bnsIdentity}
+        rpcEndpoint={extensionRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        transactionFee={undefined}
         setTransactionId={() => {}}
       />
     </DecoratedStorybook>
@@ -94,11 +88,9 @@ storiesOf(REGISTER_STARNAME_STORY_PATH, module)
   .add(REGISTER_STARNAME_REGISTRATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <StarnameForm
-        iovnameAddresses={undefined}
-        bnsIdentity={undefined}
-        rpcEndpoint={undefined}
+        bnsIdentity={bnsIdentity}
+        rpcEndpoint={extensionRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        transactionFee={fee}
         setTransactionId={() => {}}
       />
     </DecoratedStorybook>

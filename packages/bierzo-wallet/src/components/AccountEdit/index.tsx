@@ -14,11 +14,13 @@ import {
   Tooltip,
   Typography,
   useForm,
+  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
 import { isIovname } from "../../logic/account";
+import { getCodecForChainId } from "../../logic/codec";
 import {
   AddressesTooltipHeader,
   BwAccountWithChainName,
@@ -148,14 +150,16 @@ export function NoIovnameHeader(): JSX.Element {
 export interface AccountEditProps extends AddressesTableProps {
   readonly onCancel: () => void;
   readonly account: BwUsernameWithChainName | BwAccountWithChainName;
-  readonly transactionFee: Fee | undefined;
 }
 
 interface Props extends AccountEditProps {
   readonly onSubmit: (values: object) => Promise<void>;
+  readonly getFee: (values: FormValues) => Promise<Fee | undefined>;
 }
 
-const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubmit }: Props): JSX.Element => {
+const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Props): JSX.Element => {
+  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
+
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
@@ -163,11 +167,59 @@ const AccountEdit = ({ chainAddresses, account, onCancel, transactionFee, onSubm
     return getAddressItems(account.addresses);
   }, [account]);
 
+  const validateAddresses = React.useMemo(() => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
+
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      for (const address of addressesToRegister) {
+        try {
+          const codec = await getCodecForChainId(address.chainId);
+          if (!codec.isValidAddress(address.address)) {
+            const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+            if (addressField) {
+              errors[addressField[0]] = "Not valid blockchain address";
+            }
+          }
+        } catch (err) {
+          console.info(err);
+        }
+      }
+
+      return errors;
+    };
+
+    return validate;
+  }, [chainAddresses]);
+
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
-  const { form, handleSubmit, invalid, submitting, validating } = useForm({
+  const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
     onSubmit,
+    validate: validateAddresses,
     initialValues,
   });
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+
+    async function setFee(): Promise<void> {
+      const fee = await getFee(values as FormValues);
+      if (isSubscribed) {
+        setTransactionFee(fee);
+      }
+    }
+
+    if (!invalid) {
+      setFee();
+    } else {
+      setTransactionFee(undefined);
+    }
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [getFee, invalid, values]);
 
   const onAccountCopy = (): void => {
     if (account) {

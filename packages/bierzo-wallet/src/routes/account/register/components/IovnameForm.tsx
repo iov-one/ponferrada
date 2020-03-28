@@ -1,5 +1,4 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { FieldValidator } from "final-form";
 import {
   Back,
@@ -18,12 +17,13 @@ import {
   Tooltip,
   Typography,
   useForm,
+  ValidationError,
 } from "medulas-react-components";
 import React from "react";
 
 import {
   generateRegisterUsernameTxRequest,
-  generateUpdateUsernameTxRequest,
+  generateRegisterUsernameTxWithFee,
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import {
@@ -32,16 +32,14 @@ import {
   getFormInitValues,
   getSubmitButtonCaption,
 } from "../../../../components/AccountEdit";
-import {
-  AddressesTooltipHeader,
-  BwUsernameWithChainName,
-  TooltipContent,
-} from "../../../../components/AccountManage";
+import { AddressesTooltipHeader, TooltipContent } from "../../../../components/AccountManage";
 import { AddressesTableProps } from "../../../../components/AddressesTable";
 import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
 import { isValidIov } from "../../../../logic/account";
+import { getCodecForChainId } from "../../../../logic/codec";
+import { getConnectionForBns } from "../../../../logic/connection";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
 
@@ -67,57 +65,72 @@ export function NoIovnameHeader(): JSX.Element {
   );
 }
 
+const iovnameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
+  if (!value) {
+    return "Required";
+  }
+
+  const checkResult = isValidIov(value);
+
+  if (checkResult === "valid") {
+    const connection = await getConnectionForBns();
+    const usernames = await connection.getUsernames({ username: value });
+    if (usernames.length > 0) {
+      return "Iovname already exists";
+    }
+
+    return;
+  }
+
+  switch (checkResult) {
+    case "not_iov":
+      return "Iovname must end with *iov";
+    case "wrong_number_of_asterisks":
+      return "Iovname must include only one namespace";
+    case "too_short":
+      return "Iovname should be at least 3 characters";
+    case "too_long":
+      return "Iovname should be maximum 64 characters";
+    case "wrong_chars":
+      return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
+    default:
+      throw new Error(`"Unknown iovname validation error: ${checkResult}`);
+  }
+};
+
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
-  readonly iovnameAddresses: BwUsernameWithChainName | undefined;
-  readonly bnsIdentity: Identity | undefined;
-  readonly rpcEndpoint: RpcEndpoint | undefined;
-  readonly transactionFee: Fee | undefined;
+  readonly bnsIdentity: Identity;
+  readonly rpcEndpoint: RpcEndpoint;
   readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
 }
 
 const IovnameForm = ({
   chainAddresses,
-  iovnameAddresses,
   bnsIdentity,
   rpcEndpoint,
   onCancel,
-  transactionFee,
   setTransactionId,
 }: Props): JSX.Element => {
+  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
   const chainAddressesItems = React.useMemo(() => {
-    if (iovnameAddresses) {
-      return getAddressItems(iovnameAddresses.addresses);
-    }
     return getAddressItems(chainAddresses);
-  }, [chainAddresses, iovnameAddresses]);
+  }, [chainAddresses]);
 
   const onSubmit = async (values: object): Promise<void> => {
-    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
-    if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
-
     const formValues = values as FormValues;
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
     try {
-      let request: JsonRpcRequest;
-      if (iovnameAddresses) {
-        request = await generateUpdateUsernameTxRequest(
-          bnsIdentity,
-          iovnameAddresses.username,
-          addressesToRegister,
-        );
-      } else {
-        request = await generateRegisterUsernameTxRequest(
-          bnsIdentity,
-          formValues[REGISTER_IOVNAME_FIELD],
-          addressesToRegister,
-        );
-      }
+      const request = await generateRegisterUsernameTxRequest(
+        bnsIdentity,
+        formValues[REGISTER_IOVNAME_FIELD],
+        addressesToRegister,
+      );
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -149,78 +162,69 @@ const IovnameForm = ({
     }
   };
 
-  const iovnameValidator: FieldValidator<FieldInputValue> = (value): string | undefined => {
-    if (!iovnameAddresses) {
-      if (!value) {
-        return "Required";
+  const validateAddresses = React.useMemo(() => {
+    const validate = async (values: object): Promise<object> => {
+      const formValues = values as FormValues;
+      const errors: ValidationError = {};
+
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+      for (const address of addressesToRegister) {
+        try {
+          const codec = await getCodecForChainId(address.chainId);
+          if (!codec.isValidAddress(address.address)) {
+            const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
+            if (addressField) {
+              errors[addressField[0]] = "Not valid blockchain address";
+            }
+          }
+        } catch (err) {
+          console.info(err);
+        }
       }
 
-      const checkResult = isValidIov(value);
+      return errors;
+    };
 
-      switch (checkResult) {
-        case "not_iov":
-          return "Iovname must end with *iov";
-        case "wrong_number_of_asterisks":
-          return "Iovname must include only one namespace";
-        case "too_short":
-          return "Iovname should be at least 3 characters";
-        case "too_long":
-          return "Iovname should be maximum 64 characters";
-        case "wrong_chars":
-          return "Iovname should contain 'abcdefghijklmnopqrstuvwxyz0123456789-_.' characters only";
-        case "valid":
-          break;
-        default:
-          throw new Error(`"Unknown iovname validation error: ${checkResult}`);
+    return validate;
+  }, [chainAddresses]);
+
+  const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
+  const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
+    onSubmit,
+    validate: validateAddresses,
+    initialValues,
+  });
+
+  React.useEffect(() => {
+    let isSubscribed = true;
+
+    async function setFee(): Promise<void> {
+      const formValues = values as FormValues;
+      const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+
+      const fee = (
+        await generateRegisterUsernameTxWithFee(
+          bnsIdentity,
+          formValues[REGISTER_IOVNAME_FIELD],
+          addressesToRegister,
+        )
+      ).fee;
+
+      if (isSubscribed) {
+        setTransactionFee(fee);
       }
     }
 
-    return undefined;
-  };
+    if (!invalid) {
+      setFee();
+    } else {
+      setTransactionFee(undefined);
+    }
 
-  /* const validateIovnameExistsAndAddresses = React.useCallback(
-    (values: object) => {
-      const validate = async (values: object): Promise<object> => {
-        const formValues = values as FormValues;
-        const errors: ValidationError = {};
-
-        const connection = await getConnectionForBns();
-        const username = formValues[REGISTER_IOVNAME_FIELD];
-        const usernames = await connection.getUsernames({ username: username });
-        if (usernames.length > 0) {
-          errors[REGISTER_IOVNAME_FIELD] = "Iovname already exists";
-          return errors;
-        }
-
-        const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-        for (const address of addressesToRegister) {
-          try {
-            const codec = await getCodecForChainId(address.chainId);
-            if (!codec.isValidAddress(address.address)) {
-              const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
-              if (addressField) {
-                errors[addressField[0]] = "Not valid blockchain address";
-              }
-            }
-          } catch (err) {
-            console.info(err);
-          }
-        }
-
-        return errors;
-      };
-
-      validate(values);
-    },
-    [chainAddresses],
-  ); */
-
-  const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
-  const { form, handleSubmit, invalid, submitting, validating } = useForm({
-    onSubmit,
-    // validate: validateIovnameExistsAndAddresses,
-    initialValues,
-  });
+    return () => {
+      isSubscribed = false;
+    };
+  }, [bnsIdentity, chainAddresses, invalid, values]);
 
   const buttons = (
     <Block
@@ -253,42 +257,35 @@ const IovnameForm = ({
     <Form onSubmit={handleSubmit}>
       <PageContent id={REGISTER_IOVNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
-          {iovnameAddresses && (
-            <Typography variant="h4" align="center">
-              {iovnameAddresses.username}
-            </Typography>
-          )}
-          {!iovnameAddresses && (
-            <React.Fragment>
-              <Block display="flex" justifyContent="space-between" marginBottom={1}>
-                <Typography variant="subtitle2" weight="semibold">
-                  Create your iovname
+          <React.Fragment>
+            <Block display="flex" justifyContent="space-between" marginBottom={1}>
+              <Typography variant="subtitle2" weight="semibold">
+                Create your iovname
+              </Typography>
+              <Block display="flex" alignItems="center">
+                <Tooltip maxWidth={320}>
+                  <TooltipContent header={<NoIovnameHeader />} title="Choose your address">
+                    With IOV you can choose your easy to read human readable address. No more complicated
+                    cryptography when sending to friends.
+                  </TooltipContent>
+                </Tooltip>
+                <Block marginRight={1} />
+                <Typography variant="subtitle2" inline weight="regular">
+                  How it works
                 </Typography>
-                <Block display="flex" alignItems="center">
-                  <Tooltip maxWidth={320}>
-                    <TooltipContent header={<NoIovnameHeader />} title="Choose your address">
-                      With IOV you can choose your easy to read human readable address. No more complicated
-                      cryptography when sending to friends.
-                    </TooltipContent>
-                  </Tooltip>
-                  <Block marginRight={1} />
-                  <Typography variant="subtitle2" inline weight="regular">
-                    How it works
-                  </Typography>
-                </Block>
               </Block>
-              <Block width="100%" marginBottom={1}>
-                <TextField
-                  name={REGISTER_IOVNAME_FIELD}
-                  form={form}
-                  validate={iovnameValidator}
-                  placeholder="eg. yourname*iov"
-                  fullWidth
-                  margin="none"
-                />
-              </Block>
-            </React.Fragment>
-          )}
+            </Block>
+            <Block width="100%" marginBottom={1}>
+              <TextField
+                name={REGISTER_IOVNAME_FIELD}
+                form={form}
+                validate={iovnameValidator}
+                placeholder="eg. yourname*iov"
+                fullWidth
+                margin="none"
+              />
+            </Block>
+          </React.Fragment>
 
           <Block width="100%" marginTop={3} marginBottom={1}>
             <Block display="flex" alignItems="center" marginBottom={1}>

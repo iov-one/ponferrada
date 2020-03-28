@@ -7,3 +7,4 @@ const window = global.window || {};
 window.disableShallowSupport = true;
 
 global.window = window;
+global.developmentConfig = require("./config/test.json");

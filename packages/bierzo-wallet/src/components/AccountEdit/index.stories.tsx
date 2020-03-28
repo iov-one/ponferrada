@@ -1,10 +1,11 @@
-import { Address, ChainId, Fee, Token, TokenTicker } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker } from "@iov/bcp";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
+import { FormValues } from "../../../../medulas-react-components/src/components/forms/Form/index";
 import AccountEdit from "../../components/AccountEdit";
 import {
   ACCOUNT_MANAGE_SAMPLE_STORY_PATH,
@@ -37,10 +38,6 @@ const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "IOV" as TokenTicker,
 };
 
-const fee: Fee = {
-  tokens: stringToAmount("5", iov),
-};
-
 const account: BwUsernameWithChainName = {
   username: "test*iov",
   addresses: addresses,
@@ -56,8 +53,11 @@ storiesOf(UPDATE_ACCOUNT_STORY_PATH, module)
       <AccountEdit
         chainAddresses={addresses}
         account={account}
+        getFee={async (values: FormValues) => {
+          action("get fee")(values);
+          return { tokens: stringToAmount("5", iov) };
+        }}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_SAMPLE_STORY_PATH)}
-        transactionFee={fee}
         onSubmit={async (values: object): Promise<void> => action("Account update submit")(values)}
       />
     </DecoratedStorybook>

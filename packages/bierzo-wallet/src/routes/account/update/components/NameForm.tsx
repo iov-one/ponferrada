@@ -4,7 +4,10 @@ import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medula
 import React, { Dispatch, SetStateAction } from "react";
 
 import { history } from "../../..";
-import { generateReplaceAccountTargetsTxRequest } from "../../../../communication/requestgenerators";
+import {
+  generateReplaceAccountTargetsTxRequest,
+  generateReplaceAccountTargetsTxWithFee,
+} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountEdit, { getChainAddressPairsFromValues } from "../../../../components/AccountEdit";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
@@ -26,7 +29,6 @@ export function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity
 
 export interface Props {
   readonly setTransactionId: Dispatch<SetStateAction<TransactionId | null>>;
-  readonly transactionFee: Fee | undefined;
   readonly rpcEndpoint: RpcEndpoint;
   readonly chainAddresses: readonly ChainAddressPairWithName[];
   readonly bnsIdentity: Identity;
@@ -34,7 +36,6 @@ export interface Props {
 
 const NameAccountUpdate = ({
   setTransactionId,
-  transactionFee,
   rpcEndpoint,
   bnsIdentity,
   chainAddresses,
@@ -47,6 +48,19 @@ const NameAccountUpdate = ({
 
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
+
+  const getFee = async (values: FormValues): Promise<Fee | undefined> => {
+    const addressesToRegister = getChainAddressPairsFromValues(values, chainAddresses);
+
+    return (
+      await generateReplaceAccountTargetsTxWithFee(
+        bnsIdentity,
+        account.name,
+        account.domain,
+        addressesToRegister,
+      )
+    ).fee;
+  };
 
   const onSubmit = async (values: object): Promise<void> => {
     if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
@@ -100,7 +114,7 @@ const NameAccountUpdate = ({
       chainAddresses={chainAddresses}
       account={account}
       onCancel={onReturnToManage}
-      transactionFee={transactionFee}
+      getFee={getFee}
       onSubmit={onSubmit}
     />
   );
