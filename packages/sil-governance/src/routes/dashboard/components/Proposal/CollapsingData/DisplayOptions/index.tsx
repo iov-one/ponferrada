@@ -3,6 +3,7 @@ import React from "react";
 
 import CreateTextResolution from "./CreateTextResolution";
 import ExecuteProposalBatch from "./ExecuteProposalBatch";
+import GenericProposal from "./GenericProposal";
 import ReleaseEscrow from "./ReleaseEscrow";
 import SetValidators from "./SetValidators";
 import UpdateElectionRule from "./UpdateElectionRule";
@@ -26,8 +27,18 @@ const DisplayOptions = ({ action }: Props): JSX.Element => {
       return <UpdateElectionRule action={action} />;
     case ActionKind.UpdateElectorate:
       return <UpdateElectorate action={action} />;
+    case ActionKind.ExecuteMigration:
+    case ActionKind.SetAccountConfiguration:
+    case ActionKind.SetCashConfiguration:
+    case ActionKind.SetMsgFeeConfiguration:
+    case ActionKind.SetPreRegistrationConfiguration:
+    case ActionKind.SetQualityScoreConfiguration:
+    case ActionKind.SetTermDepositConfiguration:
+    case ActionKind.SetTxFeeConfiguration:
+    case ActionKind.UpgradeSchema:
+      return <GenericProposal action={action} />;
     default:
-      throw new Error("Action Kind not found. This is a bug.");
+      throw new Error(`Action Kind "${action.kind}" not found. This is a bug.`);
   }
 };
 
