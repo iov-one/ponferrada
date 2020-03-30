@@ -27,6 +27,7 @@ const DisplayOptions = ({ action }: Props): JSX.Element => {
       return <UpdateElectionRule action={action} />;
     case ActionKind.UpdateElectorate:
       return <UpdateElectorate action={action} />;
+    // the following cases use GenericProposal just so that we can upgrade the mainnet asap
     case ActionKind.ExecuteMigration:
     case ActionKind.SetAccountConfiguration:
     case ActionKind.SetCashConfiguration:
