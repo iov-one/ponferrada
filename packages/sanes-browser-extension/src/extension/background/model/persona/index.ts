@@ -295,7 +295,8 @@ export class Persona {
       await Promise.all(
         bnsIdentities.map(async bnsIdentity => {
           const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
-          starnames.push(...(await bnsConnection.getUsernames({ owner: bnsAddress })));
+          const usernames = await bnsConnection.getUsernames({ owner: bnsAddress });
+          usernames.forEach(username => starnames.push(username));
         }),
       );
 
