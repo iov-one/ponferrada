@@ -9,7 +9,7 @@
     "@iov/bcp": "^2.0.2",
     "@iov/encoding": "^2.0.2",
     "@iov/ethereum": "^2.0.2",
-    "@iov/faucets": "^2.0.2",
+    "@iov/faucets": "^2.2.4",
     "@iov/jsonrpc": "^2.0.2",
     "@iov/ledger-bns": "^0.14.1",
     "@ledgerhq/hw-transport-webusb": "^4.69.0",
