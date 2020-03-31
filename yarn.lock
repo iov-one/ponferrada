@@ -2201,17 +2201,6 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@iov/bcp@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/bcp/-/bcp-2.0.2.tgz#d63a996e0c2c7eff218f3dfca44dbcfaaf80ed0b"
-  integrity sha512-7uvDXh74CbU+xpIcLQDS0qNbvD1YDQXI+YlVMWMLQdnltAxGetKPA9vDI/rcl4rjYXkGbXWjXvFYBxftj5S5QQ==
-  dependencies:
-    "@iov/crypto" "^2.0.2"
-    "@iov/encoding" "^2.0.2"
-    "@iov/stream" "^2.0.2"
-    type-tagger "^1.0.0"
-    xstream "^11.10.0"
-
 "@iov/bcp@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/bcp/-/bcp-2.2.0.tgz#4db3502115c5bb1bb34f471c0d129734ee449da5"
@@ -2314,23 +2303,6 @@
   optionalDependencies:
     fsevents "2.1.2"
 
-"@iov/crypto@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/crypto/-/crypto-2.0.2.tgz#22da5ca5c76e2f8e1a8e592195aa754584e1c1d6"
-  integrity sha512-UeBleADtU4RMPGjo5RmF+vAW0krV+TZtJetbY6i05J/cRWElKx/FxLvChRO4HciyE7KBKMTZmt+erKzpr/D9ZA==
-  dependencies:
-    "@iov/encoding" "^2.0.2"
-    bip39 "^3.0.2"
-    bn.js "^4.11.8"
-    elliptic "^6.4.0"
-    js-sha3 "^0.8.0"
-    libsodium-wrappers "^0.7.6"
-    pbkdf2 "^3.0.16"
-    ripemd160 "^2.0.2"
-    sha.js "^2.4.11"
-    type-tagger "^1.0.0"
-    unorm "^1.5.0"
-
 "@iov/crypto@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/crypto/-/crypto-2.2.0.tgz#9413436fa6ddf8fadddb1c208dd1304dc654287c"
@@ -2348,16 +2320,6 @@
     type-tagger "^1.0.0"
     unorm "^1.5.0"
 
-"@iov/encoding@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/encoding/-/encoding-2.0.2.tgz#e83330aa8dcf0de422a1599a6d08653f74275f8e"
-  integrity sha512-IlqBGZz4iOz6QjYJB0rCVCiaZojOJpSjapT8575M8BZ7K40jLVe1DaSxGFF0G8orY9I9Kc/7fGMvr0a2wR3HAw==
-  dependencies:
-    base64-js "^1.3.0"
-    bech32 "^1.1.3"
-    bn.js "^4.11.8"
-    readonly-date "^1.0.0"
-
 "@iov/encoding@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/encoding/-/encoding-2.2.0.tgz#584454c12b7fa754b714912cb9595a85303bfa75"
@@ -2368,19 +2330,19 @@
     bn.js "^4.11.8"
     readonly-date "^1.0.0"
 
-"@iov/ethereum@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/ethereum/-/ethereum-2.0.2.tgz#c9e33fe30b5a4d54489bee1a255e109ef4e3ca66"
-  integrity sha512-AGtFCyP9oGkniE7vPrk/IvRn05unKuc+jMJ7th6WiLIPy+yaALDmzGob8HIVGWBk9ZHtI23vlRE/+1oN7Astlg==
+"@iov/ethereum@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@iov/ethereum/-/ethereum-2.2.0.tgz#2f8958e37e4a38a62ffb6d83b8c42b325a91e047"
+  integrity sha512-Qm7hUVsZACRMwOrZt98ToOfEwv4lrhFXfXk+Q54Z7XzstoQ3uRVwwcI18i+tc8wmgA2IuQTtL6QpIpw6L7zeiw==
   dependencies:
-    "@iov/bcp" "^2.0.2"
-    "@iov/crypto" "^2.0.2"
-    "@iov/encoding" "^2.0.2"
-    "@iov/jsonrpc" "^2.0.2"
-    "@iov/keycontrol" "^2.0.2"
-    "@iov/socket" "^2.0.2"
-    "@iov/stream" "^2.0.2"
-    "@iov/utils" "^2.0.2"
+    "@iov/bcp" "^2.2.0"
+    "@iov/crypto" "^2.2.0"
+    "@iov/encoding" "^2.2.0"
+    "@iov/jsonrpc" "^2.2.0"
+    "@iov/keycontrol" "^2.2.0"
+    "@iov/socket" "^2.2.0"
+    "@iov/stream" "^2.2.0"
+    "@iov/utils" "^2.2.0"
     "@types/long" "^4.0.0"
     axios "^0.19.0"
     bn.js "^4.11.8"
@@ -2401,15 +2363,6 @@
     "@iov/encoding" "^2.2.0"
     axios "^0.19.0"
 
-"@iov/jsonrpc@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/jsonrpc/-/jsonrpc-2.0.2.tgz#0a4f75b317db8b1ece000d3bdb1644980414d1df"
-  integrity sha512-/4q9a7puVfv4uDtO2wl5DVt8cbRWt0ef10k/JzdX8O9AojM9/4TIW7iFBs87iEJnh0sl/TL0/nEhDAw3aX63uQ==
-  dependencies:
-    "@iov/encoding" "^2.0.2"
-    "@iov/stream" "^2.0.2"
-    xstream "^11.10.0"
-
 "@iov/jsonrpc@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/jsonrpc/-/jsonrpc-2.2.0.tgz#e5c7d53d8885281bb144e277d1bce7d922dff68c"
@@ -2417,26 +2370,6 @@
   dependencies:
     "@iov/encoding" "^2.2.0"
     "@iov/stream" "^2.2.0"
-    xstream "^11.10.0"
-
-"@iov/keycontrol@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/keycontrol/-/keycontrol-2.0.2.tgz#10113d5d8223912f6325f1fc68746852fd1dec23"
-  integrity sha512-XubfYpNFr/xwGQC7e0VFc9oug4S5/muzIgQJRDxGcGNyE1YhQbfAzYLfxC7Th0Dq5rRui3MKWhLehYydqNxvvw==
-  dependencies:
-    "@iov/bcp" "^2.0.2"
-    "@iov/crypto" "^2.0.2"
-    "@iov/encoding" "^2.0.2"
-    "@iov/stream" "^2.0.2"
-    "@types/abstract-leveldown" "^5.0.1"
-    "@types/levelup" "^3.1.0"
-    "@types/node" "^10.12.18"
-    "@types/random-js" "^1.0.31"
-    levelup "^4.0.0"
-    long "^4.0.0"
-    random-js "^1.0.8"
-    readonly-date "^1.0.0"
-    type-tagger "^1.0.0"
     xstream "^11.10.0"
 
 "@iov/keycontrol@^2.2.0":
@@ -2466,16 +2399,16 @@
   dependencies:
     "@types/ledgerhq__hw-transport" "^4.21.2"
 
-"@iov/lisk@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/lisk/-/lisk-2.0.2.tgz#c90df9ea715276c6cdc37bc880845b84f70f525d"
-  integrity sha512-JJ6oVhK+YIGDXfo3txFXJ9a/jwk1AXbvnC4vIm+D2vTOBaT5RmGoZhG95JMg1DwLX0aOdCcCxEk32wH9aGEwDw==
+"@iov/lisk@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@iov/lisk/-/lisk-2.2.0.tgz#c94ca1f700a2a3ecdb0e30c87c93361cfc4b62cd"
+  integrity sha512-dP4HoclH3IyZQN010k5xB9KUd/4Zso3C+w78m4cV0XKkm6pOK+IwVeOUFyys5jlUJUNrwMJuXNDZ8C09X1h1bA==
   dependencies:
-    "@iov/bcp" "^2.0.2"
-    "@iov/crypto" "^2.0.2"
-    "@iov/encoding" "^2.0.2"
-    "@iov/keycontrol" "^2.0.2"
-    "@iov/stream" "^2.0.2"
+    "@iov/bcp" "^2.2.0"
+    "@iov/crypto" "^2.2.0"
+    "@iov/encoding" "^2.2.0"
+    "@iov/keycontrol" "^2.2.0"
+    "@iov/stream" "^2.2.0"
     "@types/long" "^4.0.0"
     axios "^0.19.0"
     fast-deep-equal "^3.1.1"
@@ -2495,16 +2428,6 @@
     "@types/long" "^4.0.0"
     long "^4.0.0"
 
-"@iov/socket@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/socket/-/socket-2.0.2.tgz#5af0fb0e0ff4ecd260269556fb33cc8fc27b38bf"
-  integrity sha512-lC+F+wYbou6mF/EGwQhEha3ML9RW+IWOe5zC6LHG4fTbbBvsuj9vya0VNYpYdKwBgTXCvssgP4zVICAln5F+2Q==
-  dependencies:
-    "@iov/stream" "^2.0.2"
-    isomorphic-ws "^4.0.1"
-    ws "^6.2.0"
-    xstream "^11.10.0"
-
 "@iov/socket@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/socket/-/socket-2.2.0.tgz#746b43198dc4081d7b6e63011d9f698532e9c5ae"
@@ -2513,13 +2436,6 @@
     "@iov/stream" "^2.2.0"
     isomorphic-ws "^4.0.1"
     ws "^6.2.0"
-    xstream "^11.10.0"
-
-"@iov/stream@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/stream/-/stream-2.0.2.tgz#270805d0c03fb05664910384ad94b1e4d8d1d08e"
-  integrity sha512-XooKTuWIc1E3weYT77a4dd/hsO7Yo3roQtBj8VSkqRg3TZnhy+SBBCWu77nlUnAYZ/KzXHKCRg0iUgazuy8Y4w==
-  dependencies:
     xstream "^11.10.0"
 
 "@iov/stream@^2.2.0":
@@ -2543,10 +2459,10 @@
     type-tagger "^1.0.0"
     xstream "^11.10.0"
 
-"@iov/utils@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iov/utils/-/utils-2.0.2.tgz#3527f376d26100e07ac823bf87bebd0f24680d1c"
-  integrity sha512-4D8MEvTcFc/DVy5q25vHxRItmgJyeX85dixMH+MxdKr+yy71h3sYk+sVBEIn70uqGP7VqAJkGOPNFs08/XYELw==
+"@iov/utils@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@iov/utils/-/utils-2.2.0.tgz#46e234db283b5553f7c1ce24307a708b9710b0bc"
+  integrity sha512-dy3iWphow125x1cChOBye0knmm9ddnmkv5/aOmu8w/KL5H3Y7WkJ8VY/Gz3ePdBIjPXU8sEihnmanVGiz0WsPw==
 
 "@jest/console@^24.7.1":
   version "24.7.1"
@@ -6881,10 +6797,15 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001022:
+caniuse-lite@^1.0.0:
   version "1.0.30001022"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001022.tgz#9eeffe580c3a8f110b7b1742dcf06a395885e4c6"
   integrity sha512-FjwPPtt/I07KyLPkBQ0g7/XuZg6oUkYBVnPHNj3VHJbOjmmJ/GdSo/GUY6MwINEQvjhP6WZVbX8Tvms8xh0D5A==
+
+caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000980, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30000984, caniuse-lite@^1.0.30000989, caniuse-lite@^1.0.30001010:
+  version "1.0.30001038"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001038.tgz#44da3cbca2ab6cb6aa83d1be5d324e17f141caff"
+  integrity sha512-zii9quPo96XfOiRD4TrfYGs+QsGZpb2cGiMAzPjtf/hpFgB6zCPZgJb7I1+EATeMw/o+lG8FyRAnI+CWStHcaQ==
 
 canvg@1.5.3:
   version "1.5.3"
