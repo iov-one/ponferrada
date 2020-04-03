@@ -16,7 +16,7 @@ import LedgerBillboardMessage from "../../../../components/BillboardMessage/Ledg
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import { getConnectionForChainId } from "../../../../logic/connection";
 import { ExtendedIdentity } from "../../../../store/identities";
-import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
+import { NAME_MANAGE_ROUTE } from "../../../paths";
 
 export function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
   for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
@@ -43,7 +43,7 @@ const NameAccountUpdate = ({
   const account: BwAccountWithChainName = history.location.state;
 
   const onReturnToManage = (): void => {
-    history.push(IOVNAME_MANAGE_ROUTE, account);
+    history.push(NAME_MANAGE_ROUTE, account);
   };
 
   const billboard = React.useContext(BillboardContext);
