@@ -33,12 +33,15 @@ withChainsDescribe("E2E > Wallet route", () => {
     await sleep(500);
 
     await page.hover(`#${addressId}`);
+    await sleep(500);
 
     const [addressesCopy] = await page.$x(`//span[contains(., 'Copy to clipboard')]`);
     await addressesCopy.click();
     expect(clipboardy.readSync()).toBe("tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea");
+  }, 20000);
 
+  it("can get balance amount", async () => {
     const balanceAmount = await getBalanceAmount(page);
-    expect(balanceAmount).toBe("123,456,778.84 CASH");
+    expect(balanceAmount).toBe("10 BASH");
   }, 20000);
 });
