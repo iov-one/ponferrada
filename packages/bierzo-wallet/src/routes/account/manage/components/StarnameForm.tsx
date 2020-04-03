@@ -73,11 +73,7 @@ const StarnameAccountManage = (): JSX.Element => {
   return (
     <React.Fragment>
       <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} />
-      <AssociatedNamesList
-        bnsAddress={account.owner}
-        names={domainAccounts}
-        onRegisterName={onRegisterName}
-      />
+      <AssociatedNamesList domain={account} names={domainAccounts} onRegisterName={onRegisterName} />
     </React.Fragment>
   );
 };

@@ -3,6 +3,7 @@ import { JsonRpcRequest } from "@iov/jsonrpc";
 import { List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
+import { AccountLocationState } from "../..";
 import { history } from "../../..";
 import {
   generateDeleteAccountTxRequest,
@@ -10,8 +11,7 @@ import {
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountDelete from "../../../../components/AccountDelete";
-import { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { NAME_MANAGE_ROUTE } from "../../../paths";
+import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
 const NAME_DELETE_ID = "name-delete-id";
 
@@ -41,10 +41,10 @@ const NameAccountDelete = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props
   const listClasses = useList();
   const listItemClasses = useListItem();
 
-  const account: BwAccountWithChainName = history.location.state;
+  const { account, domain }: AccountLocationState = history.location.state;
 
   const onReturnToManage = (): void => {
-    history.push(NAME_MANAGE_ROUTE, account);
+    history.push(STARNAME_MANAGE_ROUTE, domain);
   };
 
   const getFee = async (): Promise<Fee | undefined> => {
