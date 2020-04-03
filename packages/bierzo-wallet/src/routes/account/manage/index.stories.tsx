@@ -38,6 +38,14 @@ const chainAddresses: ChainAddressPairWithName[] = [
   },
 ];
 
+const domain: BwAccountWithChainName = {
+  name: "",
+  domain: "iov",
+  expiryDate: new Date("June 5, 2120 03:00:00"),
+  addresses: [],
+  owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
+};
+
 const account: BwAccountWithChainName = {
   name: "test2",
   domain: "iov",
@@ -125,7 +133,7 @@ storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
         onRegisterName={() => {
           action("Register Name")();
         }}
-        bnsAddress={"tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address}
+        domain={domain}
       />
     </DecoratedStorybook>
   ));

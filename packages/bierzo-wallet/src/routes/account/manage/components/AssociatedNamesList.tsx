@@ -1,9 +1,9 @@
-import { Address } from "@iov/bcp";
 import Collapse from "@material-ui/core/Collapse";
 import Paper from "@material-ui/core/Paper";
 import { ActionMenuItem, Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
+import { AccountLocationState } from "../..";
 import { history } from "../../..";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import {
@@ -16,7 +16,7 @@ import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 
 interface Props {
-  readonly bnsAddress: Address;
+  readonly domain: BwAccountWithChainName;
   readonly names: readonly BwAccountWithChainName[];
   readonly onRegisterName: () => void;
 }
@@ -31,7 +31,7 @@ const usePaper = makeStyles({
 });
 
 const AssociatedNamesList: React.FunctionComponent<Props> = ({
-  bnsAddress,
+  domain,
   names,
   onRegisterName,
 }): JSX.Element => {
@@ -93,13 +93,18 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
                 history.push(NAME_EDIT_ROUTE, name);
               };
 
+              const accountState: AccountLocationState = {
+                domain: domain,
+                account: name,
+              };
+
               const menuItems: readonly ActionMenuItem[] = [
-                { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, name) },
+                { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, accountState) },
                 {
                   title: "Transfer it back to me",
-                  action: () => history.push(NAME_TRANSFER_BACK_ROUTE, name),
+                  action: () => history.push(NAME_TRANSFER_BACK_ROUTE, accountState),
                 },
-                { title: "Delete name", action: () => history.push(NAME_DELETE_ROUTE, name) },
+                { title: "Delete name", action: () => history.push(NAME_DELETE_ROUTE, accountState) },
               ];
 
               return (
@@ -109,7 +114,7 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
                   onEdit={onEdit}
                   account={name}
                   hideExpiration={true}
-                  transferedTo={bnsAddress !== name.owner ? name.owner : undefined}
+                  transferedTo={domain.owner !== name.owner ? name.owner : undefined}
                 />
               );
             })}

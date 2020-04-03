@@ -4,6 +4,7 @@ import { JsonRpcRequest } from "@iov/jsonrpc";
 import { FormValues, List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import * as React from "react";
 
+import { AccountLocationState } from "../..";
 import { history } from "../../..";
 import {
   generateTransferAccountTxRequest,
@@ -26,7 +27,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
       Transfer{" "}
     </Typography>
     <Typography color="primary" variant="h5" inline>
-      ${account.name}*${account.domain}
+      {account.name}*{account.domain}
     </Typography>
     <Typography color="default" variant="h5" inline>
       {" "}
@@ -61,11 +62,11 @@ const NameAccountTransferBack = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
   const listClasses = useList();
   const listItemClasses = useListItem();
 
-  const account: BwAccountWithChainName = history.location.state;
+  const { account, domain }: AccountLocationState = history.location.state;
   const ownerAddress = bnsCodec.identityToAddress(bnsIdentity);
 
   const onReturnToManage = (): void => {
-    history.push(STARNAME_MANAGE_ROUTE, account);
+    history.push(STARNAME_MANAGE_ROUTE, domain);
   };
 
   const getFee = async (_values: FormValues): Promise<Fee | undefined> =>
