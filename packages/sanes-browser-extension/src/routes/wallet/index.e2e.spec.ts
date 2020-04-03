@@ -42,6 +42,6 @@ withChainsDescribe("E2E > Wallet route", () => {
 
   it("can get balance amount", async () => {
     const balanceAmount = await getBalanceAmount(page);
-    expect(balanceAmount).toBe("10 BASH");
+    expect(balanceAmount).toBe("123,456,778.84 CASH");
   }, 20000);
 });
