@@ -87,9 +87,10 @@ interface MenuItemProps {
 }
 
 const LinkMenuItem = ({ itemTitle, onClick, showBadge, badgeText }: MenuItemProps): JSX.Element => {
+  const marginTop = showBadge ? "8px" : "12px";
   return (
-    <Block marginTop="12px">
-      <Block marginTop="12px">
+    <Block marginTop={marginTop}>
+      <Block marginTop={marginTop}>
         <Badge variant="text" badgeContent={badgeText} invisible={!showBadge}>
           <Typography variant="subtitle2" color="textPrimary" onClick={onClick} id={itemTitle}>
             {itemTitle}
