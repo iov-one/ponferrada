@@ -1689,7 +1689,6 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Delete Delete sample 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-delete-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -1708,6 +1707,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete sample 1`] = `
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+          data-test="account-delete-label"
         >
           albert
           *
@@ -1738,6 +1738,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete sample 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -1762,6 +1763,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete sample 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1794,7 +1796,6 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete sample 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Delete Delete starname 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-delete-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -1813,6 +1814,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete starname 1`] = `
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+          data-test="account-delete-label"
         >
           test2
           *
@@ -1843,6 +1845,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete starname 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -1867,6 +1870,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete starname 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -1899,7 +1903,6 @@ exports[`Storyshots Bierzo Wallet/Account Delete Delete starname 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Delete Renew starname 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-renew-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -1918,6 +1921,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Renew starname 1`] = `
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+          data-test="account-delete-label"
         >
           test2
           *
@@ -1948,6 +1952,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Renew starname 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -1972,6 +1977,7 @@ exports[`Storyshots Bierzo Wallet/Account Delete Renew starname 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -2013,6 +2019,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
     >
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+        data-test="account-manage-create-name-link"
         onClick={[Function]}
       >
         + Create a new name
@@ -2024,6 +2031,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
   >
     <div
       className="MuiBox-root MuiBox-root"
+      data-test="account-manage-toggle-show-names"
       onClick={[Function]}
     >
       <div
@@ -2071,6 +2079,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
               >
                 <h4
                   className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+                  data-test="account-manage-name-label"
                 >
                   test1*iov
                 </h4>
@@ -2079,6 +2088,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 />
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
+                  data-test="account-manage-copy-button"
                   onClick={[Function]}
                 >
                   <img
@@ -2125,6 +2135,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 </div>
                 <h6
                   className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+                  data-test="account-manage-edit-button"
                   onClick={[Function]}
                 >
                   Edit
@@ -2134,6 +2145,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 />
                 <a
                   className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  data-test="account-manage-menu-button"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -2190,6 +2202,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2222,6 +2235,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2254,6 +2268,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2332,6 +2347,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 >
                   <tr
                     className="MuiTableRow-root"
+                    data-test="table-address-row"
                   >
                     <td
                       aria-sort={null}
@@ -2364,6 +2380,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                   </tr>
                   <tr
                     className="MuiTableRow-root"
+                    data-test="table-address-row"
                   >
                     <td
                       aria-sort={null}
@@ -2414,6 +2431,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
               >
                 <h4
                   className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+                  data-test="account-manage-name-label"
                 >
                   test2*iov
                 </h4>
@@ -2422,6 +2440,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 />
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
+                  data-test="account-manage-copy-button"
                   onClick={[Function]}
                 >
                   <img
@@ -2468,6 +2487,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 </div>
                 <h6
                   className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+                  data-test="account-manage-edit-button"
                   onClick={[Function]}
                 >
                   Edit
@@ -2477,6 +2497,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 />
                 <a
                   className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  data-test="account-manage-menu-button"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -2533,6 +2554,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2565,6 +2587,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2597,6 +2620,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2675,6 +2699,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 >
                   <tr
                     className="MuiTableRow-root"
+                    data-test="table-address-row"
                   >
                     <td
                       aria-sort={null}
@@ -2707,6 +2732,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                   </tr>
                   <tr
                     className="MuiTableRow-root"
+                    data-test="table-address-row"
                   >
                     <td
                       aria-sort={null}
@@ -2757,6 +2783,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
               >
                 <h4
                   className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+                  data-test="account-manage-name-label"
                 >
                   test3*iov
                 </h4>
@@ -2765,6 +2792,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 />
                 <div
                   className="MuiBox-root MuiBox-root makeStyles-link"
+                  data-test="account-manage-copy-button"
                   onClick={[Function]}
                 >
                   <img
@@ -2811,6 +2839,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 </div>
                 <h6
                   className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+                  data-test="account-manage-edit-button"
                   onClick={[Function]}
                 >
                   Edit
@@ -2820,6 +2849,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 />
                 <a
                   className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  data-test="account-manage-menu-button"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -2876,6 +2906,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2908,6 +2939,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -2940,6 +2972,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                       <li
                         aria-disabled={false}
                         className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                        data-test="account-manage-menu-item"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onDragLeave={[Function]}
@@ -3018,6 +3051,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                 >
                   <tr
                     className="MuiTableRow-root"
+                    data-test="table-address-row"
                   >
                     <td
                       aria-sort={null}
@@ -3050,6 +3084,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                   </tr>
                   <tr
                     className="MuiTableRow-root"
+                    data-test="table-address-row"
                   >
                     <td
                       aria-sort={null}
@@ -3107,6 +3142,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
       >
         <h4
           className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+          data-test="account-manage-name-label"
         >
           test2*iov
         </h4>
@@ -3115,6 +3151,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
         />
         <div
           className="MuiBox-root MuiBox-root makeStyles-link"
+          data-test="account-manage-copy-button"
           onClick={[Function]}
         >
           <img
@@ -3161,6 +3198,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
         </div>
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+          data-test="account-manage-edit-button"
           onClick={[Function]}
         >
           Edit
@@ -3170,6 +3208,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
         />
         <a
           className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+          data-test="account-manage-menu-button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -3226,6 +3265,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3258,6 +3298,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3290,6 +3331,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3368,6 +3410,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
         >
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -3400,6 +3443,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
           </tr>
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -3453,6 +3497,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
       >
         <h4
           className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+          data-test="account-manage-name-label"
         >
           test2*iov
         </h4>
@@ -3461,6 +3506,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
         />
         <div
           className="MuiBox-root MuiBox-root makeStyles-link"
+          data-test="account-manage-copy-button"
           onClick={[Function]}
         >
           <img
@@ -3476,6 +3522,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
       >
         <p
           className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+          data-test="account-manage-name-expiration"
         >
           Expires on 
           6/5/2120
@@ -3519,6 +3566,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
         </div>
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+          data-test="account-manage-edit-button"
           onClick={[Function]}
         >
           Edit
@@ -3528,6 +3576,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
         />
         <a
           className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+          data-test="account-manage-menu-button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -3584,6 +3633,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3616,6 +3666,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3648,6 +3699,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3726,6 +3778,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
         >
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -3758,6 +3811,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
           </tr>
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -3811,6 +3865,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
       >
         <h4
           className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
+          data-test="account-manage-name-label"
         >
           test2*iov
         </h4>
@@ -3819,6 +3874,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
         />
         <div
           className="MuiBox-root MuiBox-root makeStyles-link"
+          data-test="account-manage-copy-button"
           onClick={[Function]}
         >
           <img
@@ -3865,6 +3921,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
         </div>
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignRight"
+          data-test="account-manage-edit-button"
           onClick={[Function]}
         >
           Edit
@@ -3874,6 +3931,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
         />
         <a
           className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+          data-test="account-manage-menu-button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -3930,6 +3988,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3962,6 +4021,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -3994,6 +4054,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
               <li
                 aria-disabled={false}
                 className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                data-test="account-manage-menu-item"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onDragLeave={[Function]}
@@ -4072,6 +4133,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
         >
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -4104,6 +4166,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
           </tr>
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -4144,7 +4207,6 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Operation Sample 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-operation-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -4197,6 +4259,7 @@ exports[`Storyshots Bierzo Wallet/Account Operation Sample 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -4221,6 +4284,7 @@ exports[`Storyshots Bierzo Wallet/Account Operation Sample 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -4253,7 +4317,6 @@ exports[`Storyshots Bierzo Wallet/Account Operation Sample 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Renew Renew sample 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-renew-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -4302,6 +4365,7 @@ exports[`Storyshots Bierzo Wallet/Account Renew Renew sample 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -4326,6 +4390,7 @@ exports[`Storyshots Bierzo Wallet/Account Renew Renew sample 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -4358,7 +4423,6 @@ exports[`Storyshots Bierzo Wallet/Account Renew Renew sample 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-transfer-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -4377,6 +4441,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+          data-test="account-transfer-label"
         >
           test2*iov
         </h5>
@@ -4427,6 +4492,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
           />
           <div
             className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            data-test="account-transfer-recipient"
           >
             <div
               className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -4436,7 +4502,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
                 aria-invalid={false}
                 className="MuiInputBase-input MuiOutlinedInput-input"
                 disabled={false}
-                name="account-recepient-address"
+                name="account-transfer-recipient"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -4484,6 +4550,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -4508,6 +4575,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -4540,7 +4608,6 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
 exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
-  id="account-transfer-id"
 >
   <div
     className="MuiBox-root MuiBox-root"
@@ -4559,6 +4626,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
+          data-test="account-transfer-label"
         >
           albert*iov
         </h5>
@@ -4609,6 +4677,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
           />
           <div
             className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            data-test="account-transfer-recipient"
           >
             <div
               className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -4618,7 +4687,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
                 aria-invalid={false}
                 className="MuiInputBase-input MuiOutlinedInput-input"
                 disabled={false}
-                name="account-recepient-address"
+                name="account-transfer-recipient"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -4666,6 +4735,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+            data-test="account-operation-submit-button"
             disabled={false}
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -4690,6 +4760,7 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
           <button
             aria-label="Go back"
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-fullWidth"
+            data-test="account-operation-cancel-button"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -4773,6 +4844,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
         >
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -4805,6 +4877,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
           </tr>
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -4837,6 +4910,7 @@ exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
           </tr>
           <tr
             className="MuiTableRow-root"
+            data-test="table-address-row"
           >
             <td
               aria-sort={null}
@@ -11001,6 +11075,7 @@ exports[`Storyshots Bierzo Wallet/Update Account Update Iovname 1`] = `
               </table>
               <p
                 className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
+                data-test="account-edit-add-chain"
                 onClick={[Function]}
               >
                 + Add more
@@ -11305,6 +11380,7 @@ exports[`Storyshots Bierzo Wallet/Update Account Update sample 1`] = `
               </table>
               <p
                 className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
+                data-test="account-edit-add-chain"
                 onClick={[Function]}
               >
                 + Add more
