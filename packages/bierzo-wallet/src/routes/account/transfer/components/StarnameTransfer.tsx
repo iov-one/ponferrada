@@ -13,8 +13,6 @@ import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountTransfer from "../../../../components/AccountTransfer";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const STARNAME_TRANSFER_ID = "starname-transfer-id";
-
 const useList = makeStyles({
   root: {
     backgroundColor: "inherit",
@@ -63,7 +61,6 @@ const StarnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
 
   return (
     <AccountTransfer
-      id={STARNAME_TRANSFER_ID}
       onCancel={onReturnToManage}
       account={account}
       getRequest={getRequest}

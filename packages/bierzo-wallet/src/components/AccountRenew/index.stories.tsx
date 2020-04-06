@@ -11,7 +11,7 @@ import { generateRenewDomainTxRequest } from "../../communication/requestgenerat
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
-import AccountTransfer from ".";
+import AccountRenew from ".";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -59,14 +59,13 @@ storiesOf(ACCOUNT_RENEW_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(ACCOUNT_RENEW_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
-      <AccountTransfer
-        id="account-renew-id"
+      <AccountRenew
         account={account}
         getRequest={async (): Promise<JsonRpcRequest> => {
           action("getRequest")();
           return await generateRenewDomainTxRequest(bnsIdentity, account.domain);
         }}
-        onCancel={action("Transfer cancel")}
+        onCancel={action("Renew cancel")}
         getFee={async () => {
           action("get fee")();
           return { tokens: stringToAmount("5", iov) };
@@ -78,6 +77,6 @@ storiesOf(ACCOUNT_RENEW_STORY_PATH, module)
         }}
       >
         <Typography>Some additional description</Typography>
-      </AccountTransfer>
+      </AccountRenew>
     </DecoratedStorybook>
   ));

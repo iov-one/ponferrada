@@ -15,7 +15,7 @@ import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountOperation from "../../../../components/AccountOperation";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const NAME_TRANSFER_BACK_ID = "name-transfer-back-id";
+export const ACCOUNT_TRANSFER_BACK_LABEL = "account-transfer-back-label";
 
 interface HeaderProps {
   readonly account: BwAccountWithChainName;
@@ -26,7 +26,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
     <Typography color="default" variant="h5" inline>
       Transfer{" "}
     </Typography>
-    <Typography color="primary" variant="h5" inline>
+    <Typography color="primary" variant="h5" inline data-test={ACCOUNT_TRANSFER_BACK_LABEL}>
       {account.name}*{account.domain}
     </Typography>
     <Typography color="default" variant="h5" inline>
@@ -77,7 +77,6 @@ const NameAccountTransferBack = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
 
   return (
     <AccountOperation
-      id={NAME_TRANSFER_BACK_ID}
       submitCaption="Transfer back to me"
       onCancel={onReturnToManage}
       getFee={getFee}

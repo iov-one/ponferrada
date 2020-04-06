@@ -1,4 +1,4 @@
-import { ActionMenuItem } from "medulas-react-components";
+import { ActionMenuItem, Block } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../..";
@@ -13,6 +13,8 @@ import {
   STARNAME_TRANSFER_ROUTE,
 } from "../../../paths";
 import AssociatedNamesList from "./AssociatedNamesList";
+
+export const STARNAME_MANAGE_VIEW = "starname-manage-view";
 
 const StarnameAccountManage = (): JSX.Element => {
   const [domainAccounts, setDomainAccounts] = React.useState<BwAccountWithChainName[]>([]);
@@ -71,10 +73,10 @@ const StarnameAccountManage = (): JSX.Element => {
   };
 
   return (
-    <React.Fragment>
+    <Block data-test={STARNAME_MANAGE_VIEW}>
       <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} />
       <AssociatedNamesList domain={account} names={domainAccounts} onRegisterName={onRegisterName} />
-    </React.Fragment>
+    </Block>
   );
 };
 

@@ -75,7 +75,6 @@ storiesOf(`${bierzoRoot}/Account Operation`, module)
   .add("Sample", () => (
     <DecoratedStorybook>
       <AccountOperation
-        id="account-operation-id"
         submitCaption="Operation"
         getRequest={async (formValues: FormValues): Promise<JsonRpcRequest> => {
           action("getRequest")(formValues);

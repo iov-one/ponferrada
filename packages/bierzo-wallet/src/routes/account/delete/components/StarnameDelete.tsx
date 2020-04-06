@@ -13,8 +13,6 @@ import AccountDelete from "../../../../components/AccountDelete";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const STARNAME_DELETE_ID = "starname-delete-id";
-
 const useList = makeStyles({
   root: {
     backgroundColor: "inherit",
@@ -57,7 +55,6 @@ const StarnameAccountDelete = ({ setTransactionId, bnsIdentity, rpcEndpoint }: P
 
   return (
     <AccountDelete
-      id={STARNAME_DELETE_ID}
       onCancel={onReturnToManage}
       account={account}
       getRequest={getRequest}

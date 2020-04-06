@@ -23,6 +23,8 @@ import LedgerBillboardMessage from "../BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../BillboardMessage/NeumaBillboardMessage";
 
 export const RECEPIENT_ADDRESS = "account-recepient-address";
+export const ACCOUNT_OPERATION_SUBMIT_BUTTON = "account-operation-submit-button";
+export const ACCOUNT_OPERATION_CANCEL_BUTTON = "account-operation-cancel-button";
 
 const useMessagePaper = makeStyles({
   rounded: {
@@ -35,7 +37,6 @@ const useMessagePaper = makeStyles({
 });
 
 interface Props {
-  readonly id: string;
   readonly submitCaption: string;
   readonly children: React.ReactNode;
   readonly subSection?: (form: FormApi) => React.FunctionComponent;
@@ -49,7 +50,6 @@ interface Props {
 }
 
 const AccountOperation: React.FunctionComponent<Props> = ({
-  id,
   onCancel,
   getFee,
   getRequest,
@@ -124,7 +124,6 @@ const AccountOperation: React.FunctionComponent<Props> = ({
 
   return (
     <Block
-      id={id}
       marginTop={5}
       display="flex"
       flexDirection="column"
@@ -161,10 +160,20 @@ const AccountOperation: React.FunctionComponent<Props> = ({
             flexDirection="column"
           >
             <Block width="75%">
-              <Button fullWidth type="submit" disabled={invalid || submitting}>
+              <Button
+                fullWidth
+                type="submit"
+                disabled={invalid || submitting}
+                data-test={ACCOUNT_OPERATION_SUBMIT_BUTTON}
+              >
                 {getSubmitButtonCaption(transferFee)}
               </Button>
-              <Back fullWidth disabled={submitting} onClick={onCancel}>
+              <Back
+                fullWidth
+                disabled={submitting}
+                onClick={onCancel}
+                data-test={ACCOUNT_OPERATION_CANCEL_BUTTON}
+              >
                 Cancel
               </Back>
             </Block>

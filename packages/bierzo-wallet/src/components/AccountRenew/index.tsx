@@ -23,7 +23,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
 );
 
 interface Props {
-  readonly id: string;
   readonly account: BwAccountWithChainName;
   readonly children: React.ReactNode;
   readonly bnsChainId: ChainId;
@@ -36,7 +35,6 @@ interface Props {
 
 const AccountRenew: React.FunctionComponent<Props> = ({
   account,
-  id,
   onCancel,
   getFee,
   getRequest,
@@ -47,7 +45,6 @@ const AccountRenew: React.FunctionComponent<Props> = ({
 }): JSX.Element => {
   return (
     <AccountOperation
-      id={id}
       submitCaption="Renew"
       onCancel={onCancel}
       getFee={getFee}

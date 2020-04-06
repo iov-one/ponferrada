@@ -24,6 +24,12 @@ import shield from "./assets/shield.svg";
 
 export const manageIovnameId = "iovname-manage";
 export const manageStarnameId = "starname-manage";
+export const ACCOUNT_MANAGE_NAME_LABEL = "account-manage-name-label";
+export const ACCOUNT_MANAGE_NAME_EXPIRATION = "account-manage-name-expiration";
+export const ACCOUNT_MANAGE_COPY_BUTTON = "account-manage-copy-button";
+export const ACCOUNT_MANAGE_EDIT_BUTTON = "account-manage-edit-button";
+export const ACCOUNT_MANAGE_MENU_BUTTON = "account-manage-menu-button";
+export const ACCOUNT_MANAGE_MENU_ITEM = "account-manage-menu-item";
 
 const registerTooltipIcon = <Image src={shield} alt="shield" width={24} height={24} />;
 
@@ -76,7 +82,7 @@ export type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChai
 interface Props {
   readonly key?: string;
   readonly account: AccountModuleMixedType;
-  readonly menuItems: readonly ActionMenuItem[];
+  readonly menuItems?: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
   readonly onEdit: () => void;
   readonly transferedTo?: Address;
@@ -136,17 +142,23 @@ const AccountManage: React.FunctionComponent<Props> = ({
           border="1px solid #F3F3F3"
         >
           <Block display="flex" alignItems="center" alignSelf="center">
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" data-test={ACCOUNT_MANAGE_NAME_LABEL}>
               {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
             </Typography>
             <Block marginRight={2} />
-            <Block onClick={onAccountCopy} className={classes.link}>
+            <Block onClick={onAccountCopy} className={classes.link} data-test={ACCOUNT_MANAGE_COPY_BUTTON}>
               <Image src={copy} alt="Copy" width={20} />
             </Block>
           </Block>
           {isAccountData(account) && !hideExpiration && (
             <Block display="flex" justifyContent="center" marginTop={1}>
-              <Typography variant="body2" inline align="center" color="textSecondary">
+              <Typography
+                variant="body2"
+                inline
+                align="center"
+                color="textSecondary"
+                data-test={ACCOUNT_MANAGE_NAME_EXPIRATION}
+              >
                 Expires on {account.expiryDate.toLocaleDateString()} {account.expiryDate.toLocaleTimeString()}
               </Typography>
             </Block>
@@ -188,11 +200,16 @@ const AccountManage: React.FunctionComponent<Props> = ({
               color="primary"
               align="right"
               onClick={onEdit}
+              data-test={ACCOUNT_MANAGE_EDIT_BUTTON}
             >
               {account.addresses.length > 0 ? "Edit" : "Link Now"}
             </Typography>
             <Block marginLeft={2} marginRight={2} borderColor="grey.100" borderLeft="1px solid" height={30} />
-            <ActionMenu menuItems={menuItems} />
+            <ActionMenu
+              menuItems={menuItems}
+              menuButtonDataTestTag={ACCOUNT_MANAGE_MENU_BUTTON}
+              menuItemDataTestTag={ACCOUNT_MANAGE_MENU_ITEM}
+            />
             <Block marginLeft={1} />
           </Block>
           <Block marginTop={2} />
