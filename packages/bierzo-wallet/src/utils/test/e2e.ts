@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import puppeteer, { Browser, Page } from "puppeteer";
+import puppeteer, { Browser, ElementHandle, Page } from "puppeteer";
 
 import { getConfig } from "../../config";
 
@@ -67,4 +67,19 @@ export async function getToastMessage(page: Page): Promise<string> {
   if (!toastTextElement) throw new Error("h6 element not found");
 
   return (await (await toastTextElement.getProperty("textContent")).jsonValue()) as string;
+}
+
+export async function getElements(page: Page, dataTestTag: string): Promise<ElementHandle<Element>[]> {
+  const selector = `[data-test=${dataTestTag}]`;
+  const elements = await page.$$(selector);
+
+  return elements;
+}
+
+export async function waitForView(page: Page, dataTestTag: string): Promise<void> {
+  try {
+    await getElements(page, dataTestTag);
+  } catch {
+    throw Error(`Could not reach view: ${dataTestTag}`);
+  }
 }
