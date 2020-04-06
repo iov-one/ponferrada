@@ -37,9 +37,15 @@ const transformOrigin: PopoverOrigin = {
 
 interface Props {
   readonly menuItems: readonly ActionMenuItem[];
+  readonly menuButtonDataTestTag?: string;
+  readonly menuItemDataTestTag?: string;
 }
 
-const ActionMenu: React.FunctionComponent<Props> = ({ menuItems }) => {
+const ActionMenu: React.FunctionComponent<Props> = ({
+  menuItems,
+  menuButtonDataTestTag,
+  menuItemDataTestTag,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState<(EventTarget & HTMLAnchorElement) | null>(null);
   const menuClasses = useMenuStyles();
 
@@ -53,7 +59,7 @@ const ActionMenu: React.FunctionComponent<Props> = ({ menuItems }) => {
 
   return (
     <React.Fragment>
-      <Link onClick={handleClick}>
+      <Link onClick={handleClick} data-test={menuButtonDataTestTag}>
         <MoreHorizIcon fontSize="large" />
       </Link>
       <Menu
@@ -68,7 +74,7 @@ const ActionMenu: React.FunctionComponent<Props> = ({ menuItems }) => {
         onClose={handleClose}
       >
         {menuItems.map(item => (
-          <MenuItem key={item.title} onClick={item.action}>
+          <MenuItem key={item.title} onClick={item.action} data-test={menuItemDataTestTag}>
             <ListItemText
               disableTypography
               primary={
