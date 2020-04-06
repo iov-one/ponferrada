@@ -14,7 +14,7 @@ import AccountRenew from "../../../../components/AccountRenew";
 import { getConnectionForBns } from "../../../../logic/connection";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const STARNAME_RENEW_ID = "starname-renew-id";
+export const STARNAME_RENEW_EXPIRATION = "starname-renew-expiration";
 
 const useList = makeStyles({
   root: {
@@ -76,7 +76,6 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
 
   return (
     <AccountRenew
-      id={STARNAME_RENEW_ID}
       onCancel={onReturnToManage}
       account={account}
       getRequest={getRequest}
@@ -88,8 +87,10 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            You are renewing *{account.domain} until {renewUntil.toLocaleDateString()}{" "}
-            {renewUntil.toLocaleTimeString()}
+            You are renewing *{account.domain} until{" "}
+          </Typography>
+          <Typography color="default" variant="subtitle1" inline data-test={STARNAME_RENEW_EXPIRATION}>
+            {renewUntil.toLocaleDateString()} {renewUntil.toLocaleTimeString()}
           </Typography>
         </ListItem>
       </List>

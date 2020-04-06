@@ -11,7 +11,7 @@ import { generateDeleteDomainTxRequest } from "../../communication/requestgenera
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
-import AccountTransfer from ".";
+import AccountDelete from ".";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -59,8 +59,7 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(ACCOUNT_DELETE_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
-      <AccountTransfer
-        id="account-delete-id"
+      <AccountDelete
         account={account}
         getRequest={async (): Promise<JsonRpcRequest> => {
           action("getRequest")();
@@ -78,6 +77,6 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
         }}
       >
         <Typography>Some additional description</Typography>
-      </AccountTransfer>
+      </AccountDelete>
     </DecoratedStorybook>
   ));

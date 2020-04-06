@@ -2,9 +2,24 @@ import clipboardy from "clipboardy";
 import express, { Request, Response } from "express";
 import { Server } from "http";
 import { Browser, Page } from "puppeteer";
+import { sleep } from "ui-logic";
 
-import { closeBrowser, closeToast, createPage, getToastMessage, launchBrowser } from "../../utils/test/e2e";
+import { ACCOUNT_MANAGE_MENU_BUTTON, ACCOUNT_MANAGE_MENU_ITEM } from "../../components/AccountManage";
+import { ACCOUNT_OPERATION_SUBMIT_BUTTON } from "../../components/AccountOperation";
+import { ACCOUNT_TRANSFER_RECIPIENT } from "../../components/AccountTransfer";
+import {
+  closeBrowser,
+  closeToast,
+  createPage,
+  getElements,
+  getToastMessage,
+  launchBrowser,
+} from "../../utils/test/e2e";
+import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
+import { DELETE_CONFIRMATION_VIEW_ID } from "../account/delete/components/ConfirmDelete";
+import { ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES } from "../account/manage/components/AssociatedNamesList";
+import { TRANSFER_CONFIRMATION_VIEW_ID } from "../account/transfer/components/ConfirmTransfer";
 import {
   registerIovname,
   registerName,
@@ -113,6 +128,35 @@ withChainsDescribe("E2E > Addresses route", () => {
       await manageFirstIovnameE2E(page);
       await page.$x(`//h6[contains(., '${iovname}')]`);
     }, 60000);
+
+    it("iovnames can be transferred", async () => {
+      await manageFirstIovnameE2E(page);
+
+      const [menuButton] = await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON);
+      await menuButton.click();
+      const [transferLink] = await getElements(page, ACCOUNT_MANAGE_MENU_ITEM);
+      await transferLink.click();
+
+      const [recipientParent] = await getElements(page, ACCOUNT_TRANSFER_RECIPIENT);
+      const recipientField = await recipientParent.$("input");
+      if (!recipientField) throw Error("Recipient field for transfer not found");
+      await recipientField.type("test1*iov");
+
+      const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToIovnamesTabE2E(page);
+
+      const iovnameMatches = await page.$x(`//h5[contains(., '${iovname}')]`);
+      expect(iovnameMatches.length).toBe(0);
+    }, 60000);
   });
 
   describe("Starnames tab", () => {
@@ -169,6 +213,164 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       await manageFirstNameE2E(page);
       await page.$x(`//h6[contains(., '${name}')]`);
+    }, 60000);
+
+    it("starnames can be transferred", async () => {
+      await manageFirstStarnameE2E(page);
+
+      const [menuButton] = await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON);
+      await menuButton.click();
+      const transferLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[1];
+      await transferLink.click();
+
+      const [recipientParent] = await getElements(page, ACCOUNT_TRANSFER_RECIPIENT);
+      const recipientField = await recipientParent.$("input");
+      if (!recipientField) throw Error("Recipient field for transfer not found");
+      await recipientField.type("test1*iov");
+
+      const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      const starnameMatches = await page.$x(`//h5[contains(., '${starname}')]`);
+      expect(starnameMatches.length).toBe(0);
+    }, 60000);
+
+    it("starnames can be deleted and delete associated names", async () => {
+      await manageFirstStarnameE2E(page);
+      await registerName(browser, page);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      await manageFirstStarnameE2E(page);
+
+      const [menuButton] = await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON);
+      await menuButton.click();
+      const deleteLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[2];
+      await deleteLink.click();
+
+      const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${DELETE_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      const starnameMatches = await page.$x(`//h5[contains(., '${starname}')]`);
+      expect(starnameMatches.length).toBe(0);
+    }, 60000);
+
+    it("names can be transferred and trasferred back", async () => {
+      // Transfer
+      await manageFirstStarnameE2E(page);
+      const name = await registerName(browser, page);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      await manageFirstStarnameE2E(page);
+      const [toggleShowName] = await getElements(page, ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES);
+      await toggleShowName.click();
+      await sleep(2000);
+
+      const menuButton = (await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON))[1];
+      await menuButton.click();
+      const transferLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[3];
+      await transferLink.click();
+
+      const [recipientParent] = await getElements(page, ACCOUNT_TRANSFER_RECIPIENT);
+      const recipientField = await recipientParent.$("input");
+      if (!recipientField) throw Error("Recipient field for transfer not found");
+      await recipientField.type("test1*iov");
+
+      const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      const nameMatches = await page.$x(`//h5[contains(., '${name}')]`);
+      expect(nameMatches.length).toBe(0);
+
+      // Transfer back
+
+      await manageFirstStarnameE2E(page);
+      const [toggleShowName2] = await getElements(page, ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES);
+      await toggleShowName2.click();
+      await sleep(2000);
+
+      const menuButton2 = (await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON))[1];
+      await menuButton2.click();
+      const transferBackLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[4];
+      await transferBackLink.click();
+
+      const [submitButton2] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton2.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      const nameMatches2 = await page.$x(`//h5[contains(., '${name}')]`);
+      expect(nameMatches2.length).toBe(1);
+    }, 60000);
+
+    it("names can be deleted", async () => {
+      await manageFirstStarnameE2E(page);
+      const name = await registerName(browser, page);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      await manageFirstStarnameE2E(page);
+      const [toggleShowName] = await getElements(page, ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES);
+      await toggleShowName.click();
+      await sleep(2000);
+
+      const menuButton = (await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON))[1];
+      await menuButton.click();
+      const deleteLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[5];
+      await deleteLink.click();
+
+      const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${DELETE_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      const nameMatches = await page.$x(`//h5[contains(., '${name}')]`);
+      expect(nameMatches.length).toBe(0);
     }, 60000);
   });
 });

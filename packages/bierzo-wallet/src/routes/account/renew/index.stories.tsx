@@ -63,7 +63,6 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
   .add(ACCOUNT_DELETE_STARNAME_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountDelete
-        id="account-renew-id"
         account={account}
         getRequest={async (): Promise<JsonRpcRequest> => {
           action("getRequest")();

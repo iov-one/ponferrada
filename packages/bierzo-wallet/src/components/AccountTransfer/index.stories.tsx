@@ -66,7 +66,6 @@ storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
   .add(ACCOUNT_TRANSFER_SAMPLE_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountTransfer
-        id="account-transfer-id"
         account={account}
         getRequest={async (newOwner: Address): Promise<JsonRpcRequest> => {
           action("getRequest")(newOwner);

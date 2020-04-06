@@ -13,8 +13,6 @@ import { BwUsernameWithChainName } from "../../../../components/AccountManage";
 import AccountTransfer from "../../../../components/AccountTransfer";
 import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
 
-const IOVNAME_TRANSFER_ID = "iovname-transfer-id";
-
 const useList = makeStyles({
   root: {
     backgroundColor: "inherit",
@@ -63,7 +61,6 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
 
   return (
     <AccountTransfer
-      id={IOVNAME_TRANSFER_ID}
       onCancel={onReturnToManage}
       account={account}
       getFee={getFee}

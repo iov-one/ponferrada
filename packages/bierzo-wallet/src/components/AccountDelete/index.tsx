@@ -7,6 +7,8 @@ import { RpcEndpoint } from "../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../AccountManage";
 import AccountOperation from "../AccountOperation";
 
+export const ACCOUNT_DELETE_LABEL = "account-delete-label";
+
 interface HeaderProps {
   readonly account: BwAccountWithChainName;
 }
@@ -16,14 +18,13 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
     <Typography color="default" variant="h5" inline>
       You are deleting{" "}
     </Typography>
-    <Typography color="primary" variant="h5" inline>
+    <Typography color="primary" variant="h5" inline data-test={ACCOUNT_DELETE_LABEL}>
       {account.name}*{account.domain}
     </Typography>
   </React.Fragment>
 );
 
 interface Props {
-  readonly id: string;
   readonly account: BwAccountWithChainName;
   readonly children: React.ReactNode;
   readonly bnsChainId: ChainId;
@@ -36,7 +37,6 @@ interface Props {
 
 const AccountDelete = ({
   account,
-  id,
   onCancel,
   getFee,
   getRequest,
@@ -55,7 +55,6 @@ const AccountDelete = ({
 
   return (
     <AccountOperation
-      id={id}
       submitCaption="Delete"
       onCancel={onCancel}
       getFee={getDeleteFee}

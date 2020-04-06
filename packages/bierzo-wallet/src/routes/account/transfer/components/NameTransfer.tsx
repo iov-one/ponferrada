@@ -13,8 +13,6 @@ import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountTransfer from "../../../../components/AccountTransfer";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const NAME_TRANSFER_ID = "name-transfer-id";
-
 const useList = makeStyles({
   root: {
     backgroundColor: "inherit",
@@ -63,7 +61,6 @@ const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pro
 
   return (
     <AccountTransfer
-      id={NAME_TRANSFER_ID}
       onCancel={onReturnToManage}
       account={account}
       getRequest={getRequest}

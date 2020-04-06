@@ -18,6 +18,7 @@ import { ChainAddressPairWithName } from "../AddressesTable";
 
 export const addressValueField = "address-value-field";
 export const blockchainValueField = "blockchain-value-field";
+export const ACCOUNT_EDIT_ADD_CHAIN = "account-edit-add-chain";
 const emptySelectorName = "Select";
 
 export const getAddressInputName = (id: string): string => `${id}-${addressValueField}`;
@@ -214,7 +215,7 @@ const SelectAddressesTable = ({
         </TableBody>
       </Table>
       {allowAddChain && (
-        <Typography link color="primary" onClick={addAddress}>
+        <Typography link color="primary" onClick={addAddress} data-test={ACCOUNT_EDIT_ADD_CHAIN}>
           + Add more
         </Typography>
       )}

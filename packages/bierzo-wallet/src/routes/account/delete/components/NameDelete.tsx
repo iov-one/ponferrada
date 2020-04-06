@@ -13,8 +13,6 @@ import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountDelete from "../../../../components/AccountDelete";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
-const NAME_DELETE_ID = "name-delete-id";
-
 const useList = makeStyles({
   root: {
     backgroundColor: "inherit",
@@ -57,7 +55,6 @@ const NameAccountDelete = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props
 
   return (
     <AccountDelete
-      id={NAME_DELETE_ID}
       onCancel={onReturnToManage}
       account={account}
       getRequest={getRequest}

@@ -40,7 +40,7 @@ export function accountsReducer(state: AccountsState = initState, action: Accoun
       return [...oldAccountsToCopy, ...action.payload];
     }
     case "@@accounts/REMOVE": {
-      return state.filter(oldAccount => `${oldAccount.name}*${oldAccount.domain}` !== action.payload);
+      return state.filter(oldAccount => !`${oldAccount.name}*${oldAccount.domain}`.endsWith(action.payload));
     }
     default:
       return state;

@@ -21,7 +21,8 @@ import { getConnectionForBns } from "../../logic/connection";
 import { AccountModuleMixedType, isAccountData } from "../AccountManage";
 import AccountOperation from "../AccountOperation";
 
-export const RECEPIENT_ADDRESS = "account-recepient-address";
+export const ACCOUNT_TRANSFER_LABEL = "account-transfer-label";
+export const ACCOUNT_TRANSFER_RECIPIENT = "account-transfer-recipient";
 
 const usePromptPaper = makeStyles({
   rounded: {
@@ -68,7 +69,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
     <Typography color="default" variant="h5" inline>
       You are transferring{" "}
     </Typography>
-    <Typography color="primary" variant="h5" inline>
+    <Typography color="primary" variant="h5" inline data-test={ACCOUNT_TRANSFER_LABEL}>
       {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
     </Typography>
     <Typography color="default" variant="h5" inline>
@@ -81,7 +82,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
 const validator = composeValidators(required, recipientValidator);
 
 interface Props {
-  readonly id: string;
   readonly account: AccountModuleMixedType;
   readonly children: React.ReactNode;
   readonly transferPrompt: React.ReactNode;
@@ -95,7 +95,6 @@ interface Props {
 
 const AccountTransfer = ({
   account,
-  id,
   onCancel,
   getFee,
   getRequest,
@@ -119,12 +118,13 @@ const AccountTransfer = ({
 
           <Block marginTop={1} />
           <TextField
-            name={RECEPIENT_ADDRESS}
+            name={ACCOUNT_TRANSFER_RECIPIENT}
             form={form}
             validate={validator}
             placeholder="Enter blockchain address or iovname"
             fullWidth
             margin="none"
+            data-test={ACCOUNT_TRANSFER_RECIPIENT}
           />
         </Block>
       </Paper>
@@ -141,22 +141,21 @@ const AccountTransfer = ({
   };
 
   const getTransferRequest = async (values: FormValues): Promise<JsonRpcRequest> => {
-    const newOwner = await getNewOwnerAddress(values[RECEPIENT_ADDRESS]);
+    const newOwner = await getNewOwnerAddress(values[ACCOUNT_TRANSFER_RECIPIENT]);
 
     return await getRequest(newOwner);
   };
 
   const getTransferFee = async (values: FormValues): Promise<Fee | undefined> => {
-    if (!values[RECEPIENT_ADDRESS]) return undefined;
+    if (!values[ACCOUNT_TRANSFER_RECIPIENT]) return undefined;
 
-    const newOwner = await getNewOwnerAddress(values[RECEPIENT_ADDRESS]);
+    const newOwner = await getNewOwnerAddress(values[ACCOUNT_TRANSFER_RECIPIENT]);
 
     return await getFee(newOwner);
   };
 
   return (
     <AccountOperation
-      id={id}
       submitCaption="Transfer"
       onCancel={onCancel}
       getFee={getTransferFee}

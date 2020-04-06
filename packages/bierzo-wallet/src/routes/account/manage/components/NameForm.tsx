@@ -1,12 +1,11 @@
-import { ActionMenuItem } from "medulas-react-components";
+import { Block } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import { NAME_EDIT_ROUTE } from "../../../paths";
 
-// eslint-disable-next-line no-console
-const menuItems: readonly ActionMenuItem[] = [{ title: "Renew", action: () => console.log("Renew") }];
+export const NAME_MANAGE_VIEW = "name-manage-view";
 
 const NameAccountManage = (): JSX.Element => {
   const account: BwAccountWithChainName = history.location.state;
@@ -15,7 +14,11 @@ const NameAccountManage = (): JSX.Element => {
     history.push(NAME_EDIT_ROUTE, account);
   };
 
-  return <AccountManage menuItems={menuItems} onEdit={onEdit} account={account} hideExpiration />;
+  return (
+    <Block data-test={NAME_MANAGE_VIEW}>
+      <AccountManage onEdit={onEdit} account={account} hideExpiration />
+    </Block>
+  );
 };
 
 export default NameAccountManage;

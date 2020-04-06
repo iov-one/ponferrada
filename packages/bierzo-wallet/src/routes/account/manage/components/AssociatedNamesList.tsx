@@ -15,6 +15,9 @@ import {
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 
+export const ACCOUNT_MANAGE_CREATE_NAME_LINK = "account-manage-create-name-link";
+export const ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES = "account-manage-toggle-show-names";
+
 interface Props {
   readonly domain: BwAccountWithChainName;
   readonly names: readonly BwAccountWithChainName[];
@@ -64,6 +67,7 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
               align="center"
               link
               onClick={onRegisterName}
+              data-test={ACCOUNT_MANAGE_CREATE_NAME_LINK}
             >
               + Create a new name
             </Typography>
@@ -71,7 +75,7 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
         </Paper>
 
         <Block marginTop={4} display="flex" justifyContent="center">
-          <Block onClick={toggleShowAccounts}>
+          <Block onClick={toggleShowAccounts} data-test={ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES}>
             <Block display="inline" marginRight={1}>
               <Typography variant="subtitle2" weight="semibold" align="center" inline link>
                 Names associated with this starname
