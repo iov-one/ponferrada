@@ -204,12 +204,22 @@ const AccountManage: React.FunctionComponent<Props> = ({
             >
               {account.addresses.length > 0 ? "Edit" : "Link Now"}
             </Typography>
-            <Block marginLeft={2} marginRight={2} borderColor="grey.100" borderLeft="1px solid" height={30} />
-            <ActionMenu
-              menuItems={menuItems}
-              menuButtonDataTestTag={ACCOUNT_MANAGE_MENU_BUTTON}
-              menuItemDataTestTag={ACCOUNT_MANAGE_MENU_ITEM}
-            />
+            {menuItems && menuItems.length > 0 && (
+              <React.Fragment>
+                <Block
+                  marginLeft={2}
+                  marginRight={2}
+                  borderColor="grey.100"
+                  borderLeft="1px solid"
+                  height={30}
+                />
+                <ActionMenu
+                  menuItems={menuItems}
+                  menuButtonDataTestTag={ACCOUNT_MANAGE_MENU_BUTTON}
+                  menuItemDataTestTag={ACCOUNT_MANAGE_MENU_ITEM}
+                />
+              </React.Fragment>
+            )}
             <Block marginLeft={1} />
           </Block>
           <Block marginTop={2} />
