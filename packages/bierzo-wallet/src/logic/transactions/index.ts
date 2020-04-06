@@ -94,6 +94,20 @@ async function mayDispatchAccount(
   if (isTransferAccountTx(accountTx)) {
     if (accountTx.newOwner !== owner) {
       dispatch(removeAccountAction(`${accountTx.name}*${accountTx.domain}`));
+    } else {
+      const connection = await getConnectionForBns();
+      const accounts = await connection.getAccounts({ name: `${accountTx.name}*${accountTx.domain}` });
+      if (accounts.length !== 1) throw Error("Did not find unique account");
+
+      const account: BwAccount = {
+        name: accounts[0].name || "",
+        domain: accounts[0].domain,
+        expiryDate: new Date(accounts[0].validUntil * 1000),
+        addresses: accounts[0].targets,
+        owner: accountTx.newOwner,
+      };
+
+      dispatch(addAccountsAction([account]));
     }
   }
 
