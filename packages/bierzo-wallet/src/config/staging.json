@@ -10,7 +10,7 @@
   },
   "websiteName": "wallet-staging.iov.one",
   "supportedChains": [
-    { "chainId": "iov-exchangenet1", "name": "IOV Exchangenet" },
+    { "chainId": "iov-exchangenet", "name": "IOV Exchangenet" },
     { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
     { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
