@@ -1,6 +1,6 @@
 {
   "name": "bierzo-wallet",
-  "version": "1.3.0-alpha.3",
+  "version": "1.3.0-w-alpha.4",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
