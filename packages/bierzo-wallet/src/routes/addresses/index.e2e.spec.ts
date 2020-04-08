@@ -240,6 +240,7 @@ withChainsDescribe("E2E > Addresses route", () => {
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const starnameMatches = await page.$x(`//h5[contains(., '${starname}')]`);
       expect(starnameMatches.length).toBe(0);
     }, 60000);
