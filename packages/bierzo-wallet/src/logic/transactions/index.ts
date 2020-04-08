@@ -1,5 +1,6 @@
-import { Address, ChainId, Identity, UnsignedTransaction } from "@iov/bcp";
+import { Address, ChainId, Identity, isFailedTransaction, UnsignedTransaction } from "@iov/bcp";
 import {
+  BnsConnection,
   isDeleteAccountTx,
   isDeleteDomainTx,
   isRegisterAccountTx,
@@ -11,7 +12,6 @@ import {
   isTransferUsernameTx,
   isUpdateTargetsOfUsernameTx,
 } from "@iov/bns";
-import { ReadonlyDate } from "readonly-date";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
@@ -148,29 +148,31 @@ export async function subscribeTransaction(
 
     const address = codec.identityToAddress(identity);
 
-    let lastTxTime = ReadonlyDate.now();
-
-    // subscribe to balance changes via
+    // subscribe to all transactions via
     const subscription = connection.liveTx({ sentFromOrTo: address }).subscribe({
       next: async tx => {
         const bwTransaction = BwParserFactory.getBwTransactionFrom(tx);
         const parsedTx = await bwTransaction.parse(connection, tx, address);
-        const currentTxTime = parsedTx.time.getTime();
-        if (currentTxTime > lastTxTime) {
-          lastTxTime = currentTxTime;
-        }
 
-        if (lastTxTime <= currentTxTime) {
-          // Not required to process history transactions. Because we load all owned transaction
-          // in src/store/accounts/actions.ts in getAccounts method
-          mayDispatchUsername(dispatch, parsedTx.original);
-          await mayDispatchAccount(dispatch, parsedTx.original, address);
-        }
         dispatch(addTransaction(parsedTx));
       },
       error: error => console.error(error),
     });
     txsSubscriptions.push(subscription);
+
+    if (connection instanceof BnsConnection) {
+      // subscribe to all newly added transactions to update data realtime via
+      const liveSubscription = connection.listenTx({ sentFromOrTo: address }).subscribe({
+        next: async tx => {
+          if (!isFailedTransaction(tx)) {
+            mayDispatchUsername(dispatch, tx.transaction);
+            await mayDispatchAccount(dispatch, tx.transaction, address);
+          }
+        },
+        error: error => console.error(error),
+      });
+      txsSubscriptions.push(liveSubscription);
+    }
   }
 }
 
