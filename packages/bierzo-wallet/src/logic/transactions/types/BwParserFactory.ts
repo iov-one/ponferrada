@@ -27,6 +27,7 @@ import {
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
+  isTransferUsernameTx,
   isUpdateAccountConfigurationTx,
   isUpdateTargetsOfUsernameTx,
   RegisterAccountTx,
@@ -38,6 +39,7 @@ import {
   ReplaceAccountTargetsTx,
   TransferAccountTx,
   TransferDomainTx,
+  TransferUsernameTx,
   UpdateAccountConfigurationTx,
   UpdateTargetsOfUsernameTx,
 } from "@iov/bns";
@@ -59,6 +61,7 @@ import { BwReplaceAccountTargetsParser } from "./BwReplaceAccountTargetsTx";
 import { BwSendParser } from "./BwSendTransaction";
 import { BwTransferAccountParser } from "./BwTransferAccountTx";
 import { BwTransferDomainParser } from "./BwTransferDomainTx";
+import { BwTransferUsernameParser } from "./BwTransferUsernameTx";
 import { BwUnkownParser } from "./BwUnkownTransaction";
 import { BwUpdateAccountConfigurationParser } from "./BwUpdateAccountConfigurationTx";
 import { BwUpdateUsernameTargetParser } from "./BwUpdateUsernameTargetsTx";
@@ -77,6 +80,10 @@ function isProcessedUpdateUsernameTargetsTx(tx: ProcessedTx): tx is ProcessedTx<
 
 function isProcessedRegisterDomainTx(tx: ProcessedTx): tx is ProcessedTx<RegisterDomainTx> {
   return isRegisterDomainTx(tx.original);
+}
+
+function isProcessedTransferUsernameTx(tx: ProcessedTx): tx is ProcessedTx<TransferUsernameTx> {
+  return isTransferUsernameTx(tx.original);
 }
 
 function isProcessedTransferDomainTx(tx: ProcessedTx): tx is ProcessedTx<TransferDomainTx> {
@@ -155,6 +162,8 @@ export class BwParserFactory {
       return new BwRegisterAccountParser().graphicalRepresentation(tx);
     } else if (isProcessedTransferAccountTx(tx)) {
       return new BwTransferAccountParser().graphicalRepresentation(tx);
+    } else if (isProcessedTransferUsernameTx(tx)) {
+      return new BwTransferUsernameParser().graphicalRepresentation(tx);
     } else if (isProcessedReplaceAccountTargetsTx(tx)) {
       return new BwReplaceAccountTargetsParser().graphicalRepresentation(tx);
     } else if (isProcessedDeleteAccountTx(tx)) {
@@ -195,6 +204,8 @@ export class BwParserFactory {
       return new BwRegisterAccountParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedTransferAccountTx(tx)) {
       return new BwTransferAccountParser().headerRepresentation(tx, lastOne);
+    } else if (isProcessedTransferUsernameTx(tx)) {
+      return new BwTransferUsernameParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedReplaceAccountTargetsTx(tx)) {
       return new BwReplaceAccountTargetsParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedDeleteAccountTx(tx)) {
@@ -228,6 +239,7 @@ export class BwParserFactory {
     }
 
     const { transaction: payload } = trans;
+
     if (isSendTransaction(payload)) {
       return new BwSendParser();
     } else if (isRegisterUsernameTx(payload)) {
@@ -240,6 +252,8 @@ export class BwParserFactory {
       return new BwReplaceAccountTargetsParser();
     } else if (isTransferAccountTx(payload)) {
       return new BwTransferAccountParser();
+    } else if (isTransferUsernameTx(payload)) {
+      return new BwTransferUsernameParser();
     } else if (isTransferDomainTx(payload)) {
       return new BwTransferDomainParser();
     }
