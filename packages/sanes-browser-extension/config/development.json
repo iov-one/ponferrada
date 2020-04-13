@@ -21,6 +21,24 @@
     },
     {
       "chainSpec": {
+        "codecType": "cosmwasm",
+        "chainId": "cosmos:testing",
+        "name": "Cosmos",
+        "node": "http://localhost:26657",
+        "tokenConfig": {
+          "bankTokens": [
+            {
+              "fractionalDigits": 6,
+              "name": "Fee Token",
+              "ticker": "ATOM",
+              "denom": "uatom"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "chainSpec": {
         "codecType": "eth",
         "chainId": "ethereum-eip155-5777",
         "name": "Ganache",

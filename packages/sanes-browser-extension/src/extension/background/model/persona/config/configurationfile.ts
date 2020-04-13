@@ -7,6 +7,7 @@ import { getBnsRpc } from "../../../../../utils/localstorage/bnsRpc";
 export enum CodecType {
   Bns = "bns",
   Ethereum = "eth",
+  CosmWasm = "cosmwasm",
   Lisk = "lsk",
 }
 
