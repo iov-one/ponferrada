@@ -22,6 +22,24 @@
     },
     {
       "chainSpec": {
+        "codecType": "cosmwasm",
+        "chainId": "cosmos:cosmoshub-3",
+        "name": "Cosmos",
+        "node": "http://api.cosmos.network/",
+        "tokenConfig": {
+          "bankTokens": [
+            {
+              "fractionalDigits": 6,
+              "name": "Fee Token",
+              "ticker": "ATOM",
+              "denom": "uatom"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "chainSpec": {
         "codecType": "eth",
         "chainId": "ethereum-eip155-1",
         "name": "Ethereum Mainnet",

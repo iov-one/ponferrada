@@ -1,3 +1,4 @@
+import { createCosmWasmConnector, TokenConfiguration } from "@cosmwasm/bcp";
 import { Algorithm, ChainConnector } from "@iov/bcp";
 import { createBnsConnector } from "@iov/bns";
 import { Slip10RawIndex } from "@iov/crypto";
@@ -13,6 +14,7 @@ export function algorithmForCodec(codec: CodecType): Algorithm {
     case CodecType.Bns:
     case CodecType.Lisk:
       return Algorithm.Ed25519;
+    case CodecType.CosmWasm:
     case CodecType.Ethereum:
       return Algorithm.Secp256k1;
     default:
@@ -25,6 +27,8 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
     switch (codecType) {
       case CodecType.Bns:
         return HdPaths.iov(derivation);
+      case CodecType.CosmWasm:
+        return HdPaths.cosmos(derivation);
       case CodecType.Lisk:
         return HdPaths.bip44Like(134, derivation);
       case CodecType.Ethereum:
@@ -40,6 +44,11 @@ export function chainConnector(chainSpec: ChainSpec): ChainConnector {
   switch (chainSpec.codecType) {
     case CodecType.Bns:
       return createBnsConnector(chainSpec.node, chainSpec.chainId);
+    case CodecType.CosmWasm: {
+      const addressPrefix = "cosmos";
+      const tokenConfig: TokenConfiguration = (chainSpec as any).tokenConfig;
+      return createCosmWasmConnector(chainSpec.node, addressPrefix, tokenConfig, chainSpec.chainId);
+    }
     case CodecType.Lisk:
       return createLiskConnector(chainSpec.node, chainSpec.chainId);
     case CodecType.Ethereum:
