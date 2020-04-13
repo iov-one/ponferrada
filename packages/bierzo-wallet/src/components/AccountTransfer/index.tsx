@@ -18,7 +18,7 @@ import React from "react";
 import { RpcEndpoint } from "../../communication/rpcEndpoint";
 import { isValidName, lookupRecipientAddressByName } from "../../logic/account";
 import { getConnectionForBns } from "../../logic/connection";
-import { AccountModuleMixedType, isAccountData } from "../AccountManage";
+import { BwAccountWithChainName } from "../AccountManage";
 import AccountOperation from "../AccountOperation";
 
 export const ACCOUNT_TRANSFER_LABEL = "account-transfer-label";
@@ -61,7 +61,7 @@ const recipientValidator: FieldValidator<FieldInputValue> = async (value): Promi
 };
 
 interface HeaderProps {
-  readonly account: AccountModuleMixedType;
+  readonly account: BwAccountWithChainName;
 }
 
 const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
@@ -70,7 +70,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
       You are transferring{" "}
     </Typography>
     <Typography color="primary" variant="h5" inline data-test={ACCOUNT_TRANSFER_LABEL}>
-      {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
+      {account.name}*{account.domain}
     </Typography>
     <Typography color="default" variant="h5" inline>
       {" "}
@@ -82,7 +82,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
 const validator = composeValidators(required, recipientValidator);
 
 interface Props {
-  readonly account: AccountModuleMixedType;
+  readonly account: BwAccountWithChainName;
   readonly children: React.ReactNode;
   readonly transferPrompt: React.ReactNode;
   readonly bnsChainId: ChainId;

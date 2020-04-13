@@ -30,7 +30,7 @@ const txs: readonly (ProcessedSendTransaction | ProcessedTx)[] = [
     time: new ReadonlyDate("2018-12-24T10:51:33.763Z"),
     id: "tx0" as TransactionId,
     original: {
-      kind: "bns/register_username",
+      kind: "bns/register_account",
       chainId: chainIdIov,
     },
   },

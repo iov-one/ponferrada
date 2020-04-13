@@ -16,8 +16,8 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
+import { isIovname } from "../../logic/account";
 import { BwAccount } from "../../store/accounts";
-import { BwUsername } from "../../store/usernames";
 import AddressesTable, { ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import shield from "./assets/shield.svg";
@@ -69,31 +69,17 @@ export function TooltipContent({ children, title, header }: TooltipContentProps)
   );
 }
 
-export interface BwUsernameWithChainName extends BwUsername {
-  readonly addresses: readonly ChainAddressPairWithName[];
-}
-
 export interface BwAccountWithChainName extends BwAccount {
   readonly addresses: readonly ChainAddressPairWithName[];
 }
 
-export type AccountModuleMixedType = BwUsernameWithChainName | BwAccountWithChainName;
-
 interface Props {
   readonly key?: string;
-  readonly account: AccountModuleMixedType;
+  readonly account: BwAccountWithChainName;
   readonly menuItems?: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
   readonly onEdit: () => void;
   readonly transferedTo?: Address;
-}
-
-export function isUsernameData(account: AccountModuleMixedType): account is BwUsernameWithChainName {
-  return typeof (account as BwUsername).username !== "undefined";
-}
-
-export function isAccountData(account: AccountModuleMixedType): account is BwAccountWithChainName {
-  return typeof (account as BwAccount).name !== "undefined";
 }
 
 const usePaper = makeStyles({
@@ -122,11 +108,10 @@ const AccountManage: React.FunctionComponent<Props> = ({
   const classes = useStyles();
   const toast = React.useContext(ToastContext);
 
-  const manageViewId = isUsernameData(account) ? manageIovnameId : manageStarnameId;
+  const manageViewId = isIovname(`${account.name}*${account.domain}`) ? manageIovnameId : manageStarnameId;
 
   const onAccountCopy = (): void => {
-    const name = isAccountData(account) ? `${account.name}*${account.domain}` : account.username;
-    clipboardCopy(name);
+    clipboardCopy(`${account.name}*${account.domain}`);
     toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
   };
 
@@ -143,14 +128,14 @@ const AccountManage: React.FunctionComponent<Props> = ({
         >
           <Block display="flex" alignItems="center" alignSelf="center">
             <Typography variant="h4" align="center" data-test={ACCOUNT_MANAGE_NAME_LABEL}>
-              {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
+              {account.name}*{account.domain}
             </Typography>
             <Block marginRight={2} />
             <Block onClick={onAccountCopy} className={classes.link} data-test={ACCOUNT_MANAGE_COPY_BUTTON}>
               <Image src={copy} alt="Copy" width={20} />
             </Block>
           </Block>
-          {isAccountData(account) && !hideExpiration && (
+          {!hideExpiration && (
             <Block display="flex" justifyContent="center" marginTop={1}>
               <Typography
                 variant="body2"

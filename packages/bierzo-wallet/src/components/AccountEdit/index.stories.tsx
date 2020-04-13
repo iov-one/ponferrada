@@ -13,7 +13,7 @@ import {
 } from "../../components/AccountManage/index.stories";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
-import { BwUsernameWithChainName } from "../AccountManage";
+import { BwAccountWithChainName } from "../AccountManage";
 
 const addresses: ChainAddressPairWithName[] = [
   {
@@ -38,8 +38,11 @@ const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "IOV" as TokenTicker,
 };
 
-const account: BwUsernameWithChainName = {
-  username: "test*iov",
+const account: BwAccountWithChainName = {
+  name: "test",
+  domain: "iov",
+  expiryDate: new Date("June 5, 2120 03:00:00"),
+  owner: addresses[0].address,
   addresses: addresses,
 };
 

@@ -11,7 +11,7 @@ import {
   REGISTER_IOVNAME_STORY_PATH,
 } from "../../routes/account/register/index.stories";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
-import AccountManage, { BwUsernameWithChainName } from ".";
+import AccountManage, { BwAccountWithChainName } from ".";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -31,8 +31,11 @@ const chainAddresses: ChainAddressPairWithName[] = [
   },
 ];
 
-const username: BwUsernameWithChainName = {
-  username: "test2*iov",
+const account: BwAccountWithChainName = {
+  name: "test2",
+  domain: "iov",
+  expiryDate: new Date("June 5, 2120 03:00:00"),
+  owner: chainAddresses[0].address,
   addresses: [chainAddresses[0], chainAddresses[1]],
 };
 
@@ -66,7 +69,7 @@ storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
     <DecoratedStorybook>
       <AccountManage
         onEdit={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
-        account={username}
+        account={account}
         menuItems={menuItems}
       />
     </DecoratedStorybook>

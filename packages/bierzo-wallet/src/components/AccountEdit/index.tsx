@@ -21,13 +21,7 @@ import { amountToString } from "ui-logic";
 
 import { isIovname } from "../../logic/account";
 import { getCodecForChainId } from "../../logic/codec";
-import {
-  AddressesTooltipHeader,
-  BwAccountWithChainName,
-  BwUsernameWithChainName,
-  isAccountData,
-  TooltipContent,
-} from "../AccountManage";
+import { AddressesTooltipHeader, BwAccountWithChainName, TooltipContent } from "../AccountManage";
 import { AddressesTableProps, ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import PageContent from "../PageContent";
@@ -149,7 +143,7 @@ export function NoIovnameHeader(): JSX.Element {
 
 export interface AccountEditProps extends AddressesTableProps {
   readonly onCancel: () => void;
-  readonly account: BwUsernameWithChainName | BwAccountWithChainName;
+  readonly account: BwAccountWithChainName;
 }
 
 interface Props extends AccountEditProps {
@@ -223,8 +217,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
 
   const onAccountCopy = (): void => {
     if (account) {
-      const name = isAccountData(account) ? account.name : account.username;
-      clipboardCopy(name);
+      clipboardCopy(account.name);
       toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
     }
   };
@@ -262,33 +255,29 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
         <Block textAlign="left">
           <Block display="flex" justifyContent="center">
             <Typography variant="h4" align="center">
-              {isAccountData(account) ? `${account.name}*${account.domain}` : account.username}
+              {account.name}*{account.domain}
             </Typography>
             <Block marginRight={2} />
             <Block onClick={onAccountCopy} className={classes.link} marginTop={1}>
               <Image src={copy} alt="Copy" width={20} />
             </Block>
           </Block>
-          {isAccountData(account) && (
-            <Block display="flex" justifyContent="center" marginTop={1}>
-              {isIovname(`${account.name}*${account.domain}`) || !account.name ? (
+          <Block display="flex" justifyContent="center" marginTop={1}>
+            {isIovname(`${account.name}*${account.domain}`) ? (
+              <Typography variant="body2" inline align="center" color="textSecondary">
+                Expires on {account.expiryDate.toLocaleDateString()} {account.expiryDate.toLocaleTimeString()}
+              </Typography>
+            ) : (
+              <React.Fragment>
                 <Typography variant="body2" inline align="center" color="textSecondary">
-                  Expires on {account.expiryDate.toLocaleDateString()}{" "}
-                  {account.expiryDate.toLocaleTimeString()}
+                  Name assigned to you by
                 </Typography>
-              ) : (
-                <React.Fragment>
-                  <Typography variant="body2" inline align="center" color="textSecondary">
-                    Name assigned to you by
-                  </Typography>
-                  <Typography variant="body2" weight="semibold" inline align="center" color="textSecondary">
-                    &nbsp;*{account.domain}
-                  </Typography>
-                </React.Fragment>
-              )}
-            </Block>
-          )}
-
+                <Typography variant="body2" weight="semibold" inline align="center" color="textSecondary">
+                  &nbsp;*{account.domain}
+                </Typography>
+              </React.Fragment>
+            )}
+          </Block>
           <Block width="100%" marginTop={3} marginBottom={1}>
             <Block display="flex" alignItems="center" marginBottom={1}>
               <Block width={440}>
