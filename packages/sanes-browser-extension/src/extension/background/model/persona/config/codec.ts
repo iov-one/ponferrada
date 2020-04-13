@@ -46,8 +46,9 @@ export function chainConnector(chainSpec: ChainSpec): ChainConnector {
       return createBnsConnector(chainSpec.node, chainSpec.chainId);
     case CodecType.CosmWasm: {
       const addressPrefix = "cosmos";
-      const tokenConfig: TokenConfiguration = (chainSpec as any).tokenConfig;
-      return createCosmWasmConnector(chainSpec.node, addressPrefix, tokenConfig, chainSpec.chainId);
+      const tokenConfig = chainSpec.tokenConfig;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      return createCosmWasmConnector(chainSpec.node, addressPrefix, tokenConfig!, chainSpec.chainId);
     }
     case CodecType.Lisk:
       return createLiskConnector(chainSpec.node, chainSpec.chainId);

@@ -1,3 +1,4 @@
+import { TokenConfiguration } from "@cosmwasm/bcp";
 import { ChainId } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
@@ -28,6 +29,7 @@ export interface ChainSpec {
   readonly name: string;
   readonly chainId: ChainId;
   readonly scraper?: string;
+  readonly tokenConfig?: TokenConfiguration;
   readonly ethereumOptions?: ConfigEthereumOptions;
 }
 
