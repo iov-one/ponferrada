@@ -1,5 +1,5 @@
 import { TokenTicker } from "@iov/bcp";
-import { bnsCodec, BnsConnection, RegisterUsernameTx } from "@iov/bns";
+import { bnsCodec, BnsConnection, RegisterAccountTx } from "@iov/bns";
 import { Bip39, EnglishMnemonic, Random } from "@iov/crypto";
 import { IovFaucet } from "@iov/faucets";
 import { Ed25519HdWallet, HdPaths, UserProfile } from "@iov/keycontrol";
@@ -134,31 +134,39 @@ withChainsDescribe("Persona", () => {
           bnsFaucet.credit(bnsCodec.identityToAddress(identities[2]), bnsFeeToken),
         ]);
 
-        const registerName0: RegisterUsernameTx = {
-          kind: "bns/register_username",
+        const registerName0: RegisterAccountTx = {
+          kind: "bns/register_account",
           chainId: connection.chainId,
-          username: name0,
+          name: name0.split("*")[0],
+          domain: name0.split("*")[1],
+          owner: bnsCodec.identityToAddress(identities[0]),
           targets: [],
         };
 
-        const registerName1: RegisterUsernameTx = {
-          kind: "bns/register_username",
+        const registerName1: RegisterAccountTx = {
+          kind: "bns/register_account",
           chainId: connection.chainId,
-          username: name1,
+          name: name1.split("*")[0],
+          domain: name1.split("*")[1],
+          owner: bnsCodec.identityToAddress(identities[1]),
           targets: [],
         };
 
-        const registerName2a: RegisterUsernameTx = {
-          kind: "bns/register_username",
+        const registerName2a: RegisterAccountTx = {
+          kind: "bns/register_account",
           chainId: connection.chainId,
-          username: name2[0],
+          name: name2[0].split("*")[0],
+          domain: name2[0].split("*")[1],
+          owner: bnsCodec.identityToAddress(identities[2]),
           targets: [],
         };
 
-        const registerName2b: RegisterUsernameTx = {
-          kind: "bns/register_username",
+        const registerName2b: RegisterAccountTx = {
+          kind: "bns/register_account",
           chainId: connection.chainId,
-          username: name2[1],
+          name: name2[1].split("*")[0],
+          domain: name2[1].split("*")[1],
+          owner: bnsCodec.identityToAddress(identities[2]),
           targets: [],
         };
 

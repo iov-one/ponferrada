@@ -23,7 +23,7 @@ export interface PersonaData {
   readonly connectedChains: readonly ChainId[];
   readonly getAccounts: () => Promise<readonly PersonaAcccount[]>;
   readonly getBalances: () => Promise<readonly (readonly Amount[])[]>;
-  readonly getStarnames: () => Promise<readonly string[]>;
+  readonly getNames: () => Promise<readonly string[]>;
 }
 
 const ALREADY_FOUND_ERR = "The persona instance is already set. This indicates a bug in the lifecycle.";
@@ -53,7 +53,7 @@ class Backgroundscript {
       connectedChains: this.persona.connectedChains,
       getAccounts: () => persona.getAccounts(),
       getBalances: () => persona.getBalances(),
-      getStarnames: () => persona.getStarnames(),
+      getNames: () => persona.getNames(),
     };
 
     return response;
@@ -73,7 +73,7 @@ class Backgroundscript {
       connectedChains: this.persona.connectedChains,
       getAccounts: () => persona.getAccounts(),
       getBalances: () => persona.getBalances(),
-      getStarnames: () => persona.getStarnames(),
+      getNames: () => persona.getNames(),
     };
   }
 
@@ -107,7 +107,7 @@ class Backgroundscript {
       connectedChains: this.persona.connectedChains,
       getAccounts: () => persona.getAccounts(),
       getBalances: () => persona.getBalances(),
-      getStarnames: () => persona.getStarnames(),
+      getNames: () => persona.getNames(),
     };
   }
 

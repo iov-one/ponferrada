@@ -1,8 +1,8 @@
 import { Address, Amount, ChainId, isSendTransaction, SendTransaction, UnsignedTransaction } from "@iov/bcp";
 import {
+  AccountNft,
   bnsCodec,
   BnsConnection,
-  BnsUsernameNft,
   CreateProposalTx,
   DeleteAccountTx,
   DeleteDomainTx,
@@ -11,25 +11,19 @@ import {
   isDeleteDomainTx,
   isRegisterAccountTx,
   isRegisterDomainTx,
-  isRegisterUsernameTx,
   isRenewAccountTx,
   isRenewDomainTx,
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
-  isTransferUsernameTx,
-  isUpdateTargetsOfUsernameTx,
   isVoteTx,
   RegisterAccountTx,
   RegisterDomainTx,
-  RegisterUsernameTx,
   RenewAccountTx,
   RenewDomainTx,
   ReplaceAccountTargetsTx,
   TransferAccountTx,
   TransferDomainTx,
-  TransferUsernameTx,
-  UpdateTargetsOfUsernameTx,
   VoteTx,
 } from "@iov/bns";
 import { Bip39, Random } from "@iov/crypto";
@@ -62,9 +56,6 @@ export type SupportedTransaction =
   | SendTransaction
   | DeleteAccountTx
   | DeleteDomainTx
-  | RegisterUsernameTx
-  | UpdateTargetsOfUsernameTx
-  | TransferUsernameTx
   | TransferDomainTx
   | TransferAccountTx
   | RegisterDomainTx
@@ -82,9 +73,6 @@ export function isSupportedTransaction(tx: UnsignedTransaction): tx is Supported
     isDeleteAccountTx(tx) ||
     isRenewDomainTx(tx) ||
     isRenewAccountTx(tx) ||
-    isRegisterUsernameTx(tx) ||
-    isUpdateTargetsOfUsernameTx(tx) ||
-    isTransferUsernameTx(tx) ||
     isRegisterDomainTx(tx) ||
     isTransferDomainTx(tx) ||
     isRegisterAccountTx(tx) ||
@@ -245,28 +233,28 @@ export class Persona {
   }
 
   public async getAccounts(): Promise<readonly PersonaAcccount[]> {
-    const accounts = await this.accountManager.accounts();
+    const accountInfos = await this.accountManager.accounts();
 
     try {
       const bnsConnection = this.getBnsConnection();
 
       return Promise.all(
-        accounts.map(async (account, index) => {
-          const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId);
+        accountInfos.map(async (accountInfo, index) => {
+          const bnsIdentity = accountInfo.identities.find(ident => ident.chainId === bnsConnection.chainId);
           if (!bnsIdentity) {
             throw new Error(`Missing BNS identity for account at index ${index}`);
           }
 
           const iovAddress = this.signer.identityToAddress(bnsIdentity);
           let label: string;
-          const names = await bnsConnection.getUsernames({ owner: iovAddress });
-          if (names.length > 1) {
-            // this case will not happen for regular users that do not professionally collect username NFTs
+          const accountNfts = await bnsConnection.getAccounts({ owner: iovAddress });
+          if (accountNfts.length > 1) {
+            // this case will not happen for regular users that do not professionally collect account NFTs
             label = `Multiple names`;
-          } else if (names.length === 1) {
-            label = `${names[0].id}`;
+          } else if (accountNfts.length === 1) {
+            label = `${accountNfts[0].name || ""}*${accountNfts[0].domain}`;
           } else {
-            label = `Account ${account.index}`;
+            label = `Account ${accountInfo.index}`;
           }
 
           return { label, iovAddress };
@@ -322,24 +310,24 @@ export class Persona {
     return balancesPerAccount;
   }
 
-  public async getStarnames(): Promise<readonly string[]> {
-    const starnames: BnsUsernameNft[] = [];
+  public async getNames(): Promise<readonly string[]> {
+    const accounts: AccountNft[] = [];
 
     try {
       const bnsConnection = this.getBnsConnection();
-      const accounts = await this.accountManager.accounts();
-      const bnsIdentities = accounts
+      const accountInfos = await this.accountManager.accounts();
+      const bnsIdentities = accountInfos
         .flatMap(account => account.identities)
         .filter(ident => ident.chainId === bnsConnection.chainId);
 
       await Promise.all(
         bnsIdentities.map(async bnsIdentity => {
           const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
-          starnames.push(...(await bnsConnection.getUsernames({ owner: bnsAddress })));
+          accounts.push(...(await bnsConnection.getAccounts({ owner: bnsAddress })));
         }),
       );
 
-      return starnames.map(username => username.id);
+      return accounts.map(accounts => `${accounts.name || ""}*${accounts.domain}`);
     } catch {
       return [];
     }
