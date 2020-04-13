@@ -42,15 +42,15 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@iov/bns": "^2.2.3",
+    "@iov/bns": "^2.2.4",
     "@iov/crypto": "^2.2.0",
     "@iov/encoding": "^2.2.0",
     "@iov/ethereum": "^2.2.0",
-    "@iov/faucets": "^2.2.3",
+    "@iov/faucets": "^2.2.4",
     "@iov/jsonrpc": "^2.2.0",
     "@iov/keycontrol": "^2.2.0",
     "@iov/lisk": "^2.2.0",
-    "@iov/multichain": "^2.2.3",
+    "@iov/multichain": "^2.2.4",
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "@material-ui/styles": "^4.5.0",
