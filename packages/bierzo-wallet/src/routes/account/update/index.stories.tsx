@@ -8,7 +8,7 @@ import { stringToAmount } from "ui-logic";
 import { FormValues } from "../../../../../medulas-react-components/src/components/forms/Form/index";
 import AccountEdit from "../../../components/AccountEdit";
 import { UPDATE_ACCOUNT_STORY_PATH } from "../../../components/AccountEdit/index.stories";
-import { BwUsernameWithChainName } from "../../../components/AccountManage";
+import { BwAccountWithChainName } from "../../../components/AccountManage";
 import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import DecoratedStorybook from "../../../utils/storybook";
@@ -42,24 +42,16 @@ const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "IOV" as TokenTicker,
 };
 
-const account: BwUsernameWithChainName = {
-  username: "test*iov",
+const account: BwAccountWithChainName = {
+  name: "test",
+  domain: "iov",
+  expiryDate: new Date("June 5, 2120 03:00:00"),
+  owner: addresses[0].address,
   addresses: addresses,
 };
 
 storiesOf(UPDATE_ACCOUNT_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  // TODO adapt this stories to new components
-  /* .add(REGISTER_USERNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
-    <DecoratedStorybook>
-      <IovnameForm
-        iovnameAddresses={undefined}
-        onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
-        chainAddresses={addresses}
-        transactionFee={undefined}
-      />
-    </DecoratedStorybook>
-  ))*/
   .add(UPDATE_IOVNAME_REGISTRATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <AccountEdit

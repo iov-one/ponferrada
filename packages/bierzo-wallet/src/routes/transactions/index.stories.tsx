@@ -7,7 +7,6 @@ import {
   DeleteDomainTx,
   RegisterAccountTx,
   RegisterDomainTx,
-  RegisterUsernameTx,
   RenewAccountTx,
   RenewDomainTx,
   ReplaceAccountMsgFeesTx,
@@ -399,7 +398,6 @@ const voteTx: ProcessedTx<VoteTx> = {
 
 const parsedTxs: readonly (
   | ProcessedSendTransaction
-  | ProcessedTx<RegisterUsernameTx>
   | ProcessedTx<VoteTx>
   | ProcessedTx<RegisterDomainTx>
   | ProcessedTx<TransferDomainTx>
@@ -432,46 +430,7 @@ const parsedTxs: readonly (
   incomingUpdateAccountConfigurationTransaction,
   incomingSendTransaction,
   voteTx,
-  {
-    id: makeExampleIovTransactionId(),
-    time: new ReadonlyDate("2018-04-07T06:05:04.763Z"),
-    original: {
-      kind: "bns/register_username",
-      chainId: chainIdIov,
-      username: "albert*iov",
-      targets: [
-        {
-          chainId: "local-iov-devnet" as ChainId,
-          address: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
-        },
-        {
-          chainId: "lisk-198f2b61a8" as ChainId,
-          address: "13751834438426525516L" as Address,
-        },
-        {
-          chainId: "ethereum-eip155-5777" as ChainId,
-          address: "0x695874053fcB8D9cF038ee4E53b7b24fB0baFa4c" as Address,
-        },
-      ],
-      fee: {
-        tokens: stringToAmount("100", iov),
-      },
-    },
-  },
   incomingAndOutgoingSendTransaction,
-  {
-    time: new ReadonlyDate("2018-05-09T07:06:05.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bns/register_username",
-      chainId: chainIdIov,
-      username: "bob*iov",
-      targets: [],
-      fee: {
-        tokens: stringToAmount("100", iov),
-      },
-    },
-  },
   {
     time: new ReadonlyDate("2018-06-10T08:07:06.763Z"),
     id: makeExampleIovTransactionId(),

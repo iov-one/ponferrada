@@ -21,7 +21,6 @@ import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
-import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { BALANCE_ROUTE } from "../paths";
 import PageColumn from "./components/PageColumn";
 
@@ -51,9 +50,6 @@ export const loginBootSequence = async (
 
   await subscribeBalance(identities, dispatch);
   await subscribeTransaction(identities, dispatch);
-
-  const usernames = await getUsernames(identities);
-  dispatch(addUsernamesAction(usernames));
 
   const accounts = await getAccounts(identities);
   dispatch(addAccountsAction(accounts));

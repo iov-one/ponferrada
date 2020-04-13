@@ -16,12 +16,12 @@ export const getNoFundsMessage = (h6Elements: Element[]): string => {
   return h6Elements[index].textContent || "";
 };
 
-export const getIovUsername = (h6Elements: Element[]): string => {
+export const getIovname = (h6Elements: Element[]): string => {
   const index = mainMenuH6Elements + 2;
   return h6Elements[index].textContent || "";
 };
 
-export const getLedgerUsernameWarning = (pElements: Element[]): string => {
+export const getLedgerIovnameWarning = (pElements: Element[]): string => {
   return pElements[0].textContent || "";
 };
 

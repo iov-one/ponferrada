@@ -8,8 +8,8 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
-import { generateTransferUsernameTxRequest } from "../../../communication/requestgenerators";
-import { BwUsernameWithChainName } from "../../../components/AccountManage";
+import { generateTransferAccountTxRequest } from "../../../communication/requestgenerators";
+import { BwAccountWithChainName } from "../../../components/AccountManage";
 import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
 import AccountTransfer from "../../../components/AccountTransfer";
 import { ACCOUNT_TRANSFER_STORY_PATH } from "../../../components/AccountTransfer/index.stories";
@@ -35,8 +35,11 @@ const chainAddresses: ChainAddressPairWithName[] = [
   },
 ];
 
-const account: BwUsernameWithChainName = {
-  username: "test2*iov",
+const account: BwAccountWithChainName = {
+  name: "test2",
+  domain: "iov",
+  expiryDate: new Date("June 5, 2120 03:00:00"),
+  owner: chainAddresses[0].address,
   addresses: chainAddresses,
 };
 
@@ -69,7 +72,7 @@ storiesOf(ACCOUNT_TRANSFER_STORY_PATH, module)
         account={account}
         getRequest={async (newOwner: Address): Promise<JsonRpcRequest> => {
           action("getRequest")(newOwner);
-          return await generateTransferUsernameTxRequest(bnsIdentity, account.username, newOwner);
+          return await generateTransferAccountTxRequest(bnsIdentity, account.name, account.domain, newOwner);
         }}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_IOVNAMES_STORY_PATH)}
         getFee={async newOwner => {

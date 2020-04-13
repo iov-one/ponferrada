@@ -3,7 +3,7 @@ import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { BwUsernameWithChainName } from "../../components/AccountManage";
+import { BwAccountWithChainName } from "../../components/AccountManage";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import { BwAccount } from "../../store/accounts";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
@@ -36,17 +36,26 @@ const chainAddresses: ChainAddressPairWithName[] = [
   },
 ];
 
-const ivonames: readonly BwUsernameWithChainName[] = [
+const iovnames: readonly BwAccountWithChainName[] = [
   {
-    username: "test1*iov",
+    name: "test1",
+    domain: "iov",
+    expiryDate: new Date("June 5, 2120 03:00:00"),
+    owner: chainAddresses[0].address,
     addresses: [chainAddresses[0]],
   },
   {
-    username: "test2*iov",
+    name: "test2",
+    domain: "iov",
+    expiryDate: new Date("June 5, 2120 03:00:00"),
+    owner: chainAddresses[0].address,
     addresses: [chainAddresses[0], chainAddresses[1]],
   },
   {
-    username: "test3*iov",
+    name: "test3",
+    domain: "iov",
+    expiryDate: new Date("June 5, 2120 03:00:00"),
+    owner: chainAddresses[0].address,
     addresses: [...chainAddresses],
   },
 ];
@@ -95,7 +104,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
     <DecoratedStorybook>
       <AddressesTab
         chainAddresses={chainAddresses}
-        iovnames={ivonames}
+        iovnames={iovnames}
         starnames={starnames}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         onRegisterStarname={() => {}}
@@ -132,7 +141,7 @@ storiesOf(`${bierzoRoot}/Addresses`, module)
   .add("Iovnames with name tab", () => (
     <DecoratedStorybook>
       <Iovnames
-        iovnames={ivonames}
+        iovnames={iovnames}
         onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         rpcEndpointType="extension"
       />

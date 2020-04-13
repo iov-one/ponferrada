@@ -5,7 +5,6 @@ import { history } from "..";
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
-import { getFirstUsername } from "../../store/usernames/selectors";
 import { IOVNAME_REGISTER_ROUTE } from "../paths";
 import Layout from "./components";
 
@@ -14,17 +13,19 @@ function onRegisterIovname(): void {
 }
 
 const Balance = (): JSX.Element => {
-  const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
-  const bnsUsername = ReactRedux.useSelector(getFirstUsername);
+  const balances = ReactRedux.useSelector((state: RootState) => state.balances);
+  const accounts = ReactRedux.useSelector((state: RootState) => state.accounts);
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
-  const iovAddress = bnsUsername ? bnsUsername.username : undefined;
+
+  const firstIovAccount = accounts.find(account => account.domain === "iov");
+  const iovAddress = firstIovAccount ? `${firstIovAccount.name}*${firstIovAccount.domain}` : undefined;
 
   return (
     <PageMenu>
       <Layout
-        onRegisterIovname={onRegisterIovname}
         iovAddress={iovAddress}
-        balances={tokens}
+        balances={balances}
+        onRegisterIovname={onRegisterIovname}
         rpcEndpointType={rpcEndpointType}
       />
     </PageMenu>

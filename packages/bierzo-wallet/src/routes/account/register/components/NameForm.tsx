@@ -66,17 +66,17 @@ function NoNameHeader(): JSX.Element {
   );
 }
 
-const nameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
-  if (!value) {
+const nameValidator: FieldValidator<FieldInputValue> = async (name): Promise<string | undefined> => {
+  if (!name) {
     return "Required";
   }
 
-  const checkResult = isValidName(value);
+  const checkResult = isValidName(name);
 
   if (checkResult === "valid") {
     const connection = await getConnectionForBns();
-    const usernames = await connection.getAccounts({ name: value });
-    if (usernames.length > 0) {
+    const accounts = await connection.getAccounts({ name });
+    if (accounts.length > 0) {
       return "Name already exists";
     }
 

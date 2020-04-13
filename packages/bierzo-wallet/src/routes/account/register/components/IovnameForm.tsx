@@ -1,4 +1,5 @@
 import { Fee, Identity, TransactionId } from "@iov/bcp";
+import { bnsCodec } from "@iov/bns";
 import { FieldValidator } from "final-form";
 import {
   Back,
@@ -22,8 +23,8 @@ import {
 import React from "react";
 
 import {
-  generateRegisterUsernameTxRequest,
-  generateRegisterUsernameTxWithFee,
+  generateRegisterAccountTxRequest,
+  generateRegisterAccountTxWithFee,
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import {
@@ -65,17 +66,17 @@ export function NoIovnameHeader(): JSX.Element {
   );
 }
 
-const iovnameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
-  if (!value) {
+const iovnameValidator: FieldValidator<FieldInputValue> = async (iovname): Promise<string | undefined> => {
+  if (!iovname) {
     return "Required";
   }
 
-  const checkResult = isValidIov(value);
+  const checkResult = isValidIov(iovname);
 
   if (checkResult === "valid") {
     const connection = await getConnectionForBns();
-    const usernames = await connection.getUsernames({ username: value });
-    if (usernames.length > 0) {
+    const accounts = await connection.getAccounts({ name: iovname });
+    if (accounts.length > 0) {
       return "Iovname already exists";
     }
 
@@ -122,13 +123,17 @@ const IovnameForm = ({
 
   const onSubmit = async (values: object): Promise<void> => {
     const formValues = values as FormValues;
-
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
+    let [name, domain] = ["", ""];
+    if (formValues[REGISTER_IOVNAME_FIELD]) [name, domain] = formValues[REGISTER_IOVNAME_FIELD].split("*");
+
     try {
-      const request = await generateRegisterUsernameTxRequest(
+      const request = await generateRegisterAccountTxRequest(
         bnsIdentity,
-        formValues[REGISTER_IOVNAME_FIELD],
+        name,
+        domain,
+        bnsCodec.identityToAddress(bnsIdentity),
         addressesToRegister,
       );
       if (rpcEndpoint.type === "extension") {
@@ -202,10 +207,15 @@ const IovnameForm = ({
       const formValues = values as FormValues;
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
+      let [name, domain] = ["", ""];
+      if (formValues[REGISTER_IOVNAME_FIELD]) [name, domain] = formValues[REGISTER_IOVNAME_FIELD].split("*");
+
       const fee = (
-        await generateRegisterUsernameTxWithFee(
+        await generateRegisterAccountTxWithFee(
           bnsIdentity,
-          formValues[REGISTER_IOVNAME_FIELD],
+          name,
+          domain,
+          bnsCodec.identityToAddress(bnsIdentity),
           addressesToRegister,
         )
       ).fee;

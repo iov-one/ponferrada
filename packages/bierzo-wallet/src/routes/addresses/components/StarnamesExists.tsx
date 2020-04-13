@@ -76,7 +76,7 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
                 >
                   <Block display="flex" flexDirection="column">
                     <Typography variant="h5" weight="semibold">
-                      {`${starname.name}*${starname.domain}`}
+                      {starname.name}*{starname.domain}
                     </Typography>
                     <Block marginTop={2} />
                     <Typography variant="subtitle2" weight="semibold" color="textPrimary">

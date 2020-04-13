@@ -5,11 +5,11 @@ import * as React from "react";
 
 import { history } from "../../..";
 import {
-  generateTransferUsernameTxRequest,
-  generateTransferUsernameTxWithFee,
+  generateTransferAccountTxRequest,
+  generateTransferAccountTxWithFee,
 } from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
-import { BwUsernameWithChainName } from "../../../../components/AccountManage";
+import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountTransfer from "../../../../components/AccountTransfer";
 import { IOVNAME_MANAGE_ROUTE } from "../../../paths";
 
@@ -45,18 +45,18 @@ const IovnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: 
   const listClasses = useList();
   const listItemClasses = useListItem();
 
-  const account: BwUsernameWithChainName = history.location.state;
+  const account: BwAccountWithChainName = history.location.state;
 
   const onReturnToManage = (): void => {
     history.push(IOVNAME_MANAGE_ROUTE, account);
   };
 
   const getFee = async (newOwner: Address): Promise<Fee | undefined> => {
-    return (await generateTransferUsernameTxWithFee(bnsIdentity, account.username, newOwner)).fee;
+    return (await generateTransferAccountTxWithFee(bnsIdentity, account.name, account.domain, newOwner)).fee;
   };
 
   const getRequest = async (newOwner: Address): Promise<JsonRpcRequest> => {
-    return await generateTransferUsernameTxRequest(bnsIdentity, account.username, newOwner);
+    return await generateTransferAccountTxRequest(bnsIdentity, account.name, account.domain, newOwner);
   };
 
   return (

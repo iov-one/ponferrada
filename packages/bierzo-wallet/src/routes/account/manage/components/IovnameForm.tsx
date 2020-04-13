@@ -2,13 +2,13 @@ import { ActionMenuItem, Block } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../..";
-import AccountManage, { BwUsernameWithChainName } from "../../../../components/AccountManage";
+import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import { IOVNAME_EDIT_ROUTE, IOVNAME_TRANSFER_ROUTE } from "../../../paths";
 
 export const IOVNAME_MANAGE_VIEW = "iovname-manage-view";
 
 const IovnameAccountManage = (): JSX.Element => {
-  const account: BwUsernameWithChainName = history.location.state;
+  const account: BwAccountWithChainName = history.location.state;
 
   const menuItems: readonly ActionMenuItem[] = [
     { title: "Transfer iovname", action: () => history.push(IOVNAME_TRANSFER_ROUTE, account) },

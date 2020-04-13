@@ -4,12 +4,12 @@ import React from "react";
 
 import { history } from "../..";
 import iovnameLogo from "../../../assets/iovname-logo.svg";
-import { BwUsername } from "../../../store/usernames";
+import { BwAccount } from "../../../store/accounts";
 import { IOVNAME_MANAGE_ROUTE } from "../../paths";
 import { registerIovnameId } from "./Iovnames";
 
 interface Props {
-  readonly iovnames: readonly BwUsername[];
+  readonly iovnames: readonly BwAccount[];
   readonly onRegisterIovname: () => void;
 }
 
@@ -51,14 +51,16 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
       </Paper>
       {iovnames
         .slice()
-        .sort((a, b) => a.username.localeCompare(b.username, undefined, { sensitivity: "base" }))
+        .sort((a, b) =>
+          `${a.name}*${a.domain}`.localeCompare(`${b.name}*${b.domain}`, undefined, { sensitivity: "base" }),
+        )
         .map(iovname => {
           const onManage = (): void => {
             history.push(IOVNAME_MANAGE_ROUTE, iovname);
           };
 
           return (
-            <React.Fragment key={iovname.username}>
+            <React.Fragment key={`${iovname.name}*${iovname.domain}`}>
               <Block marginTop={3} />
               <Paper classes={paperClasses}>
                 <Block
@@ -70,7 +72,7 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
                   justifyContent="space-between"
                 >
                   <Typography variant="h5" weight="semibold">
-                    {iovname.username}
+                    {iovname.name}*{iovname.domain}
                   </Typography>
                   <Typography
                     variant="subtitle2"

@@ -4,7 +4,7 @@ import * as ReactRedux from "react-redux";
 
 import { AccountProps } from "..";
 import { history } from "../..";
-import { BwUsernameWithChainName } from "../../../components/AccountManage";
+import { BwAccountWithChainName } from "../../../components/AccountManage";
 import PageMenu from "../../../components/PageMenu";
 import { getConfig, SupportedChain } from "../../../config";
 import { RootState } from "../../../store/reducers";
@@ -37,7 +37,7 @@ const Register = ({ entity }: AccountProps): JSX.Element => {
   );
 
   const bnsIdentity = getBnsIdentity(identities);
-  const iovnameAddresses: BwUsernameWithChainName | undefined = history.location.state;
+  const iovnameAddresses: BwAccountWithChainName | undefined = history.location.state;
 
   if (!bnsIdentity) throw new Error("No BNS identity available.");
   if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");

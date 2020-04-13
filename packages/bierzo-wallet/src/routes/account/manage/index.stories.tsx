@@ -5,10 +5,7 @@ import { storiesOf } from "@storybook/react";
 import { ActionMenuItem } from "medulas-react-components";
 import React from "react";
 
-import AccountManage, {
-  BwAccountWithChainName,
-  BwUsernameWithChainName,
-} from "../../../components/AccountManage";
+import AccountManage, { BwAccountWithChainName } from "../../../components/AccountManage";
 import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
 import { ACCOUNT_TRANSFER_STORY_PATH } from "../../../components/AccountTransfer/index.stories";
 import { ChainAddressPairWithName } from "../../../components/AddressesTable";
@@ -46,7 +43,15 @@ const domain: BwAccountWithChainName = {
   owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
 };
 
-const account: BwAccountWithChainName = {
+const name: BwAccountWithChainName = {
+  name: "test2",
+  domain: "asdf",
+  expiryDate: new Date("June 5, 2120 03:00:00"),
+  addresses: [chainAddresses[0], chainAddresses[1]],
+  owner: "tiov1dcg3fat5zrvw00xezzjk3jgedm7pg70y222af3" as Address,
+};
+
+const iovName: BwAccountWithChainName = {
   name: "test2",
   domain: "iov",
   expiryDate: new Date("June 5, 2120 03:00:00"),
@@ -78,11 +83,6 @@ const names: BwAccountWithChainName[] = [
   },
 ];
 
-const username: BwUsernameWithChainName = {
-  username: "test2*iov",
-  addresses: [chainAddresses[0], chainAddresses[1]],
-};
-
 const menuItems: readonly ActionMenuItem[] = [
   {
     title: "Renew",
@@ -112,7 +112,7 @@ storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
     <DecoratedStorybook>
       <AccountManage
         onEdit={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
-        account={account}
+        account={name}
         menuItems={menuItems}
       />
     </DecoratedStorybook>
@@ -121,7 +121,7 @@ storiesOf(ACCOUNT_MANAGE_STORY_PATH, module)
     <DecoratedStorybook>
       <AccountManage
         onEdit={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
-        account={username}
+        account={iovName}
         menuItems={menuItems}
       />
     </DecoratedStorybook>

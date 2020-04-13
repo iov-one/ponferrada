@@ -2,7 +2,7 @@ import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
-import { BwAccountWithChainName, BwUsernameWithChainName } from "../../components/AccountManage";
+import { BwAccountWithChainName } from "../../components/AccountManage";
 import PageMenu from "../../components/PageMenu";
 import { getChainName } from "../../config";
 import { RootState } from "../../store/reducers";
@@ -21,22 +21,20 @@ function onRegisterStarname(): void {
 
 const Addresses = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const bwNames = ReactRedux.useSelector((state: RootState) => state.usernames);
-  const starnames = ReactRedux.useSelector((state: RootState) => state.accounts);
+  const accounts = ReactRedux.useSelector((state: RootState) => state.accounts);
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
-  const [bwNamesWithChain, setBwNamesWithChain] = React.useState<readonly BwUsernameWithChainName[]>([]);
   const [bwAccountsWithChain, setBwAccountsWithChain] = React.useState<readonly BwAccountWithChainName[]>([]);
 
   React.useEffect(() => {
     let isSubscribed = true;
     async function insertChainNames(): Promise<void> {
       if (isSubscribed) {
-        const bwNamesWithChain: BwUsernameWithChainName[] = await Promise.all(
-          bwNames.map(async name => {
+        const newBwAccountsWithChain: BwAccountWithChainName[] = await Promise.all(
+          accounts.map(async account => {
             return {
-              username: name.username,
+              ...account,
               addresses: await Promise.all(
-                name.addresses.map(async address => {
+                account.addresses.map(async address => {
                   return {
                     chainId: address.chainId,
                     address: address.address,
@@ -48,7 +46,7 @@ const Addresses = (): JSX.Element => {
           }),
         );
 
-        setBwNamesWithChain(bwNamesWithChain);
+        setBwAccountsWithChain(newBwAccountsWithChain);
       }
     }
     insertChainNames();
@@ -56,38 +54,7 @@ const Addresses = (): JSX.Element => {
     return () => {
       isSubscribed = false;
     };
-  }, [bwNames]);
-
-  React.useEffect(() => {
-    let isSubscribed = true;
-    async function insertChainNames(): Promise<void> {
-      if (isSubscribed) {
-        const bwAccountsWithChain: BwAccountWithChainName[] = await Promise.all(
-          starnames.map(async name => {
-            return {
-              ...name,
-              addresses: await Promise.all(
-                name.addresses.map(async address => {
-                  return {
-                    chainId: address.chainId,
-                    address: address.address,
-                    chainName: await getChainName(address.chainId),
-                  };
-                }),
-              ),
-            };
-          }),
-        );
-
-        setBwAccountsWithChain(bwAccountsWithChain);
-      }
-    }
-    insertChainNames();
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [starnames]);
+  }, [accounts]);
 
   const supportedChains = React.useMemo(
     () =>
@@ -99,14 +66,16 @@ const Addresses = (): JSX.Element => {
   );
 
   const chainAddresses = getChainAddressPairWithNames(identities, supportedChains);
+  const iovnames = bwAccountsWithChain.filter(account => account.domain === "iov");
+  const starnames = bwAccountsWithChain.filter(account => account.domain !== "iov");
 
   return (
     <PageMenu>
       <AddressesTab
         chainAddresses={chainAddresses}
-        starnames={bwAccountsWithChain}
+        iovnames={iovnames}
+        starnames={starnames}
         onRegisterIovname={onRegisterIovname}
-        iovnames={bwNamesWithChain}
         onRegisterStarname={onRegisterStarname}
         rpcEndpointType={rpcEndpointType}
       />

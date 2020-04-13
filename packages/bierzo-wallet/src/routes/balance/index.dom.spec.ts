@@ -7,14 +7,14 @@ import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
 import { aNewStore } from "../../store";
+import { AccountsState } from "../../store/accounts";
 import { BalanceState } from "../../store/balances";
 import { ExtendedIdentity, IdentitiesState } from "../../store/identities";
 import { RootState } from "../../store/reducers";
-import { UsernamesState } from "../../store/usernames";
 import { click, expectRoute } from "../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { TRANSACTIONS_ROUTE } from "../paths";
-import { getIovUsername, getLedgerUsernameWarning, getNoFundsMessage } from "./test/operateBalances";
+import { getIovname, getLedgerIovnameWarning, getNoFundsMessage } from "./test/operateBalances";
 import { travelToBalance } from "./test/travelToBalance";
 
 const balancesAmount: DeepPartial<BalanceState> = {
@@ -31,9 +31,10 @@ const balancesAmount: DeepPartial<BalanceState> = {
 } as any;
 
 const bnsChainId = "local-iov-devnet" as ChainId;
-const usernames: DeepPartial<UsernamesState> = [
+const accounts: DeepPartial<AccountsState> = [
   {
-    username: "albert*iov",
+    name: "albert",
+    domain: "iov",
     addresses: [
       {
         chainId: bnsChainId,
@@ -63,12 +64,12 @@ const identities: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
 describe("The /balance route", () => {
   let store: Store<RootState>;
   let balanceDom: React.Component;
-  describe("with balance and username", () => {
+  describe("with balance and iovname", () => {
     beforeEach(async () => {
       store = aNewStore({
         identities: identities,
         balances: balancesAmount,
-        usernames: usernames,
+        accounts: accounts,
         rpcEndpoint: extensionRpcEndpoint,
       });
       balanceDom = await travelToBalance(store);
@@ -96,7 +97,7 @@ describe("The /balance route", () => {
     });
   });
 
-  describe("without balance and username with extension RPC Endpoint", () => {
+  describe("without balance and iovname with extension RPC Endpoint", () => {
     beforeEach(async () => {
       store = aNewStore({
         identities,
@@ -111,14 +112,14 @@ describe("The /balance route", () => {
       expect(noFundsMessage).toBe("You have no funds available");
     });
 
-    it("should show that there is no bns username available", async () => {
-      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
+    it("should show that there is no iovname available", async () => {
+      const noIovnameMessage = getIovname(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
 
-      expect(noUsernameMessage).toBe("You have no iovnames");
+      expect(noIovnameMessage).toBe("You have no iovnames");
     });
   });
 
-  describe("without balance and username with Ledger RPC Endpoint", () => {
+  describe("without balance and iovname with Ledger RPC Endpoint", () => {
     beforeEach(async () => {
       store = aNewStore({
         identities,
@@ -127,12 +128,12 @@ describe("The /balance route", () => {
       balanceDom = await travelToBalance(store);
     });
 
-    it("should show that there is no bns username available", async () => {
-      const noUsernameMessage = getLedgerUsernameWarning(
+    it("should show that there is no iovname available", async () => {
+      const noIovnameMessage = getLedgerIovnameWarning(
         TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "p"),
       );
 
-      expect(noUsernameMessage).toBe("You can not register");
+      expect(noIovnameMessage).toBe("You can not register");
     });
   });
 });
