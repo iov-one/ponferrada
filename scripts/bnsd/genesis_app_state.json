@@ -22,7 +22,8 @@
       {
         "admin": "seq:test/alice/1",
         "domain": "iov",
-        "valid_until": 1895827578
+        "valid_until": 1895827578,
+        "has_superuser": false
       }
     ],
     "accounts": [
