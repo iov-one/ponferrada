@@ -217,7 +217,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
 
   const onAccountCopy = (): void => {
     if (account) {
-      clipboardCopy(account.name);
+      clipboardCopy(`${account.name}*${account.domain}`);
       toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
     }
   };
