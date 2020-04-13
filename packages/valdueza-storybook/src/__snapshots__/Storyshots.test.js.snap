@@ -2066,7 +2066,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
       >
         <div
           className="MuiBox-root MuiBox-root"
-          id="starname-manage"
+          id="iovname-manage"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -2081,7 +2081,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                   className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
                   data-test="account-manage-name-label"
                 >
-                  test1*iov
+                  test1
+                  *
+                  iov
                 </h4>
                 <div
                   className="MuiBox-root MuiBox-root"
@@ -2418,7 +2420,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
         </div>
         <div
           className="MuiBox-root MuiBox-root"
-          id="starname-manage"
+          id="iovname-manage"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -2433,7 +2435,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                   className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
                   data-test="account-manage-name-label"
                 >
-                  test2*iov
+                  test2
+                  *
+                  iov
                 </h4>
                 <div
                   className="MuiBox-root MuiBox-root"
@@ -2770,7 +2774,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
         </div>
         <div
           className="MuiBox-root MuiBox-root"
-          id="starname-manage"
+          id="iovname-manage"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
@@ -2785,7 +2789,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Associated names list 1`] = `
                   className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
                   data-test="account-manage-name-label"
                 >
-                  test3*iov
+                  test3
+                  *
+                  iov
                 </h4>
                 <div
                   className="MuiBox-root MuiBox-root"
@@ -3144,7 +3150,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
           className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
           data-test="account-manage-name-label"
         >
-          test2*iov
+          test2
+          *
+          iov
         </h4>
         <div
           className="MuiBox-root MuiBox-root"
@@ -3161,6 +3169,19 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage iovname 1`] = `
             width={20}
           />
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <p
+          className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+          data-test="account-manage-name-expiration"
+        >
+          Expires on 
+          6/5/2120
+           
+          3:00:00 AM
+        </p>
       </div>
       <div
         className="MuiBox-root MuiBox-root"
@@ -3499,7 +3520,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
           className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
           data-test="account-manage-name-label"
         >
-          test2*iov
+          test2
+          *
+          asdf
         </h4>
         <div
           className="MuiBox-root MuiBox-root"
@@ -3867,7 +3890,9 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
           className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
           data-test="account-manage-name-label"
         >
-          test2*iov
+          test2
+          *
+          iov
         </h4>
         <div
           className="MuiBox-root MuiBox-root"
@@ -3884,6 +3909,19 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage sample 1`] = `
             width={20}
           />
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <p
+          className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+          data-test="account-manage-name-expiration"
+        >
+          Expires on 
+          6/5/2120
+           
+          3:00:00 AM
+        </p>
       </div>
       <div
         className="MuiBox-root MuiBox-root"
@@ -4443,7 +4481,9 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer iovname 1`] = `
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
           data-test="account-transfer-label"
         >
-          test2*iov
+          test2
+          *
+          iov
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
@@ -4628,7 +4668,9 @@ exports[`Storyshots Bierzo Wallet/Account Transfer Transfer sample 1`] = `
           className="MuiTypography-root makeStyles-inline MuiTypography-h5 MuiTypography-colorPrimary"
           data-test="account-transfer-label"
         >
-          albert*iov
+          albert
+          *
+          iov
         </h5>
         <h5
           className="MuiTypography-root makeStyles-inline makeStyles-defaultColor MuiTypography-h5"
@@ -5051,7 +5093,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
       <h5
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
       >
-        test1*iov
+        test1
+        *
+        iov
       </h5>
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5073,7 +5117,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
       <h5
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
       >
-        test2*iov
+        test2
+        *
+        iov
       </h5>
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5095,7 +5141,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
       <h5
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
       >
-        test3*iov
+        test3
+        *
+        iov
       </h5>
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5447,7 +5495,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
           <h5
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
           >
-            name1*domain1
+            name1
+            *
+            domain1
           </h5>
           <div
             className="MuiBox-root MuiBox-root"
@@ -5484,7 +5534,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
           <h5
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
           >
-            name2*domain1
+            name2
+            *
+            domain1
           </h5>
           <div
             className="MuiBox-root MuiBox-root"
@@ -5521,7 +5573,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
           <h5
             className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
           >
-            name2*domain2
+            name2
+            *
+            domain2
           </h5>
           <div
             className="MuiBox-root MuiBox-root"
@@ -5602,7 +5656,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
         <h5
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
         >
-          name1*domain1
+          name1
+          *
+          domain1
         </h5>
         <div
           className="MuiBox-root MuiBox-root"
@@ -5639,7 +5695,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
         <h5
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
         >
-          name2*domain1
+          name2
+          *
+          domain1
         </h5>
         <div
           className="MuiBox-root MuiBox-root"
@@ -5676,7 +5734,9 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
         <h5
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
         >
-          name2*domain2
+          name2
+          *
+          domain2
         </h5>
         <div
           className="MuiBox-root MuiBox-root"
@@ -11002,7 +11062,9 @@ exports[`Storyshots Bierzo Wallet/Update Account Update Iovname 1`] = `
               <h4
                 className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
               >
-                test*iov
+                test
+                *
+                iov
               </h4>
               <div
                 className="MuiBox-root MuiBox-root"
@@ -11018,6 +11080,18 @@ exports[`Storyshots Bierzo Wallet/Update Account Update Iovname 1`] = `
                   width={20}
                 />
               </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+              >
+                Expires on 
+                6/5/2120
+                 
+                3:00:00 AM
+              </p>
             </div>
             <div
               className="MuiBox-root MuiBox-root"
@@ -11307,7 +11381,9 @@ exports[`Storyshots Bierzo Wallet/Update Account Update sample 1`] = `
               <h4
                 className="MuiTypography-root makeStyles-defaultColor MuiTypography-h4 MuiTypography-alignCenter"
               >
-                test*iov
+                test
+                *
+                iov
               </h4>
               <div
                 className="MuiBox-root MuiBox-root"
@@ -11323,6 +11399,18 @@ exports[`Storyshots Bierzo Wallet/Update Account Update sample 1`] = `
                   width={20}
                 />
               </div>
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root"
+            >
+              <p
+                className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+              >
+                Expires on 
+                6/5/2120
+                 
+                3:00:00 AM
+              </p>
             </div>
             <div
               className="MuiBox-root MuiBox-root"
