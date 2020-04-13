@@ -10,7 +10,7 @@ export interface PersonaContextUpdateData {
   readonly connectedChains?: readonly ChainId[];
   readonly accounts?: readonly PersonaAcccount[];
   readonly balances?: readonly (readonly Amount[])[];
-  readonly starnames?: readonly string[];
+  readonly names?: readonly string[];
   readonly hasStoredPersona?: boolean;
 }
 
@@ -19,7 +19,7 @@ export interface PersonaContextInterface {
   readonly connectedChains: readonly ChainId[];
   readonly accounts: readonly PersonaAcccount[];
   readonly balances: readonly (readonly Amount[])[];
-  readonly starnames: readonly string[];
+  readonly names: readonly string[];
   readonly hasStoredPersona: boolean;
   readonly update: (newData: PersonaContextUpdateData) => void;
 }
@@ -29,7 +29,7 @@ export const PersonaContext = React.createContext<PersonaContextInterface>({
   connectedChains: [],
   accounts: [],
   balances: [],
-  starnames: [],
+  names: [],
   hasStoredPersona: false,
   update: (): void => {},
 });
@@ -49,7 +49,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
   );
   const [accounts, setAccounts] = React.useState<Accounts>([]);
   const [balances, setBalances] = React.useState<readonly (readonly Amount[])[]>([]);
-  const [starnames, setStarnames] = React.useState<readonly string[]>([]);
+  const [names, setNames] = React.useState<readonly string[]>([]);
   const [storedPersonaExists, setStoredPersonaExists] = React.useState<boolean>(hasStoredPersona);
 
   React.useEffect(() => {
@@ -59,7 +59,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
         ...persona,
         accounts: await persona?.getAccounts(),
         balances: await persona?.getBalances(),
-        starnames: await persona?.getStarnames(),
+        names: await persona?.getNames(),
       };
 
       if (isSubscribed && personaData) {
@@ -78,7 +78,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
     if (newData.connectedChains !== undefined) setConnectedChains(newData.connectedChains);
     if (newData.accounts !== undefined) setAccounts(newData.accounts);
     if (newData.balances !== undefined) setBalances(newData.balances);
-    if (newData.starnames !== undefined) setStarnames(newData.starnames);
+    if (newData.names !== undefined) setNames(newData.names);
     if (newData.hasStoredPersona !== undefined) {
       setStoredPersonaExists(newData.hasStoredPersona);
       if (!newData.hasStoredPersona) {
@@ -86,7 +86,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
         setConnectedChains([]);
         setAccounts([]);
         setBalances([]);
-        setStarnames([]);
+        setNames([]);
       }
     }
   };
@@ -96,7 +96,7 @@ export const PersonaProvider = ({ children, persona, hasStoredPersona }: Props):
     connectedChains,
     accounts,
     balances,
-    starnames,
+    names,
     hasStoredPersona: storedPersonaExists,
     update: loadPersonaInReact,
   };
