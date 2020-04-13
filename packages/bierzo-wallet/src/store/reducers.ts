@@ -8,7 +8,6 @@ import { identitiesReducer, IdentitiesState } from "./identities";
 import { notificationReducer, NotificationState } from "./notifications";
 import { rpcEndpointReducer, RpcEndpointState } from "./rpcendpoint";
 import { tokensReducer, TokenState } from "./tokens";
-import { usernamesReducer, UsernamesState } from "./usernames";
 
 export interface ResetAppActionType extends Action {
   type: "@@app/RESET";
@@ -20,7 +19,6 @@ export interface RootState {
   notifications: NotificationState;
   tokens: TokenState;
   balances: BalanceState;
-  usernames: UsernamesState;
   accounts: AccountsState;
 }
 
@@ -30,7 +28,6 @@ const allReducers = combineReducers({
   notifications: notificationReducer,
   tokens: tokensReducer,
   balances: balancesReducer,
-  usernames: usernamesReducer,
   accounts: accountsReducer,
 });
 
