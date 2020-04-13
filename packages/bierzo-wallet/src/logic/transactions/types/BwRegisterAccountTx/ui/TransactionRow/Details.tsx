@@ -79,7 +79,13 @@ const TxDetails = ({ tx }: Props): JSX.Element => {
             Blockchain:
           </Typography>
           {addresses.map(chain => (
-            <Typography variant="subtitle2" weight="regular" color="textSecondary" gutterBottom>
+            <Typography
+              key={chain.chainName}
+              variant="subtitle2"
+              weight="regular"
+              color="textSecondary"
+              gutterBottom
+            >
               {`${chain.chainName} (${ellipsifyMiddle(chain.address, 20)})`}
             </Typography>
           ))}

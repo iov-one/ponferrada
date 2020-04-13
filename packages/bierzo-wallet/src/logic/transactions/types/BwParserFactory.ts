@@ -20,28 +20,22 @@ import {
   isDeleteDomainTx,
   isRegisterAccountTx,
   isRegisterDomainTx,
-  isRegisterUsernameTx,
   isRenewAccountTx,
   isRenewDomainTx,
   isReplaceAccountMsgFeesTx,
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
-  isTransferUsernameTx,
   isUpdateAccountConfigurationTx,
-  isUpdateTargetsOfUsernameTx,
   RegisterAccountTx,
   RegisterDomainTx,
-  RegisterUsernameTx,
   RenewAccountTx,
   RenewDomainTx,
   ReplaceAccountMsgFeesTx,
   ReplaceAccountTargetsTx,
   TransferAccountTx,
   TransferDomainTx,
-  TransferUsernameTx,
   UpdateAccountConfigurationTx,
-  UpdateTargetsOfUsernameTx,
 } from "@iov/bns";
 
 import { ProcessedSendTransaction } from "../../../store/notifications";
@@ -53,7 +47,6 @@ import { BwDeleteAllAccountsParser } from "./BwDeleteAllAccountsTx";
 import { BwDeleteDomainParser } from "./BwDeleteDomainTx";
 import { BwRegisterAccountParser } from "./BwRegisterAccountTx";
 import { BwRegisterDomainParser } from "./BwRegisterDomainTx";
-import { BwRegisterUsernameParser } from "./BwRegisterUsernameTx";
 import { BwRenewAccountParser } from "./BwRenewAccountTx";
 import { BwRenewDomainParser } from "./BwRenewDomainTx";
 import { BwReplaceAccountMsgFeesParser } from "./BwReplaceAccountMsgFeesTx";
@@ -61,29 +54,15 @@ import { BwReplaceAccountTargetsParser } from "./BwReplaceAccountTargetsTx";
 import { BwSendParser } from "./BwSendTransaction";
 import { BwTransferAccountParser } from "./BwTransferAccountTx";
 import { BwTransferDomainParser } from "./BwTransferDomainTx";
-import { BwTransferUsernameParser } from "./BwTransferUsernameTx";
 import { BwUnkownParser } from "./BwUnkownTransaction";
 import { BwUpdateAccountConfigurationParser } from "./BwUpdateAccountConfigurationTx";
-import { BwUpdateUsernameTargetParser } from "./BwUpdateUsernameTargetsTx";
 
 function isProcessedSendTransaction(tx: ProcessedTx): tx is ProcessedSendTransaction {
   return isSendTransaction(tx.original);
 }
 
-function isProcessedRegisterUsernameTx(tx: ProcessedTx): tx is ProcessedTx<RegisterUsernameTx> {
-  return isRegisterUsernameTx(tx.original);
-}
-
-function isProcessedUpdateUsernameTargetsTx(tx: ProcessedTx): tx is ProcessedTx<UpdateTargetsOfUsernameTx> {
-  return isUpdateTargetsOfUsernameTx(tx.original);
-}
-
 function isProcessedRegisterDomainTx(tx: ProcessedTx): tx is ProcessedTx<RegisterDomainTx> {
   return isRegisterDomainTx(tx.original);
-}
-
-function isProcessedTransferUsernameTx(tx: ProcessedTx): tx is ProcessedTx<TransferUsernameTx> {
-  return isTransferUsernameTx(tx.original);
 }
 
 function isProcessedTransferDomainTx(tx: ProcessedTx): tx is ProcessedTx<TransferDomainTx> {
@@ -146,10 +125,6 @@ export class BwParserFactory {
   public static getReactComponent(tx: ProcessedTx, userAddresses: readonly Address[]): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().graphicalRepresentation(tx, userAddresses);
-    } else if (isProcessedRegisterUsernameTx(tx)) {
-      return new BwRegisterUsernameParser().graphicalRepresentation(tx);
-    } else if (isProcessedUpdateUsernameTargetsTx(tx)) {
-      return new BwUpdateUsernameTargetParser().graphicalRepresentation(tx);
     } else if (isProcessedRegisterDomainTx(tx)) {
       return new BwRegisterDomainParser().graphicalRepresentation(tx);
     } else if (isProcessedTransferDomainTx(tx)) {
@@ -162,8 +137,6 @@ export class BwParserFactory {
       return new BwRegisterAccountParser().graphicalRepresentation(tx);
     } else if (isProcessedTransferAccountTx(tx)) {
       return new BwTransferAccountParser().graphicalRepresentation(tx);
-    } else if (isProcessedTransferUsernameTx(tx)) {
-      return new BwTransferUsernameParser().graphicalRepresentation(tx);
     } else if (isProcessedReplaceAccountTargetsTx(tx)) {
       return new BwReplaceAccountTargetsParser().graphicalRepresentation(tx);
     } else if (isProcessedDeleteAccountTx(tx)) {
@@ -188,10 +161,6 @@ export class BwParserFactory {
   public static getHeaderRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().headerRepresentation(tx, lastOne);
-    } else if (isProcessedRegisterUsernameTx(tx)) {
-      return new BwRegisterUsernameParser().headerRepresentation(tx, lastOne);
-    } else if (isProcessedUpdateUsernameTargetsTx(tx)) {
-      return new BwUpdateUsernameTargetParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedRegisterDomainTx(tx)) {
       return new BwRegisterDomainParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedTransferDomainTx(tx)) {
@@ -204,8 +173,6 @@ export class BwParserFactory {
       return new BwRegisterAccountParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedTransferAccountTx(tx)) {
       return new BwTransferAccountParser().headerRepresentation(tx, lastOne);
-    } else if (isProcessedTransferUsernameTx(tx)) {
-      return new BwTransferUsernameParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedReplaceAccountTargetsTx(tx)) {
       return new BwReplaceAccountTargetsParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedDeleteAccountTx(tx)) {
@@ -242,18 +209,12 @@ export class BwParserFactory {
 
     if (isSendTransaction(payload)) {
       return new BwSendParser();
-    } else if (isRegisterUsernameTx(payload)) {
-      return new BwRegisterUsernameParser();
-    } else if (isUpdateTargetsOfUsernameTx(payload)) {
-      return new BwUpdateUsernameTargetParser();
     } else if (isRegisterAccountTx(payload)) {
       return new BwRegisterAccountParser();
     } else if (isReplaceAccountTargetsTx(payload)) {
       return new BwReplaceAccountTargetsParser();
     } else if (isTransferAccountTx(payload)) {
       return new BwTransferAccountParser();
-    } else if (isTransferUsernameTx(payload)) {
-      return new BwTransferUsernameParser();
     } else if (isTransferDomainTx(payload)) {
       return new BwTransferDomainParser();
     }

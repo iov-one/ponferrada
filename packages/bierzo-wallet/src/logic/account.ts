@@ -1,14 +1,13 @@
 import { Address, ChainId } from "@iov/bcp";
-import { AccountNft, BnsUsernameNft } from "@iov/bns";
 
 import { getConnectionForBns } from "./connection";
 
-export function isIovname(username: string): boolean {
-  return username.endsWith("*iov");
+export function isIovname(iovname: string): boolean {
+  return iovname.endsWith("*iov");
 }
 
 export function isStarname(starname: string): boolean {
-  return starname.startsWith("*");
+  return starname.startsWith("*") && !isIovname(starname);
 }
 
 /**
@@ -16,20 +15,15 @@ export function isStarname(starname: string): boolean {
  * The name must be valid starname
  */
 export async function lookupRecipientAddressByName(
-  username: string,
+  name: string,
   chainId: ChainId,
 ): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
-  if (isValidName(username) !== "valid") {
+  if (isValidName(name) !== "valid") {
     throw new Error("Not valid account name");
   }
 
   const connection = await getConnectionForBns();
-  let accounts: readonly BnsUsernameNft[] | readonly AccountNft[];
-  if (isValidIov(username)) {
-    accounts = await connection.getUsernames({ username });
-  } else {
-    accounts = await connection.getAccounts({ name: username });
-  }
+  const accounts = await connection.getAccounts({ name });
 
   if (accounts.length !== 1) {
     return "name_not_found";
@@ -45,24 +39,24 @@ export async function lookupRecipientAddressByName(
 }
 
 export function isValidIov(
-  username: string,
+  iovname: string,
 ): "valid" | "not_iov" | "wrong_number_of_asterisks" | "too_short" | "too_long" | "wrong_chars" {
-  if (!isIovname(username)) return "not_iov";
+  if (!isIovname(iovname)) return "not_iov";
 
-  const parts = username.split("*");
+  const parts = iovname.split("*");
   if (parts.length !== 2) return "wrong_number_of_asterisks";
   // TODO: add namespace variable as soon as multiple namespaces has been supported
   const [name] = parts;
 
-  // Username length must be at least 3 chars long
+  // Iovname length must be at least 3 chars long
   if (name.length < 3) return "too_short";
 
-  // Username length must maximum 64 chars long
+  // Iovname length must maximum 64 chars long
   if (name.length > 64) return "too_long";
 
   /* Must contain only allowed chars as per /scripts/bnsd/genesis_app_state.json:
-  conf: {username: {valid_username_name, valid_username_label}} */
-  if (/^[a-z0-9_\-.]{3,64}\*iov$/.test(username)) return "valid";
+  conf: {iovname: {iovname_name, valid_iovname_label}} */
+  if (/^[a-z0-9_\-.]{3,64}\*iov$/.test(iovname)) return "valid";
 
   return "wrong_chars";
 }

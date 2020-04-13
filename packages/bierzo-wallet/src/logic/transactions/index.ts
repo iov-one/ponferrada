@@ -5,12 +5,9 @@ import {
   isDeleteDomainTx,
   isRegisterAccountTx,
   isRegisterDomainTx,
-  isRegisterUsernameTx,
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
-  isTransferUsernameTx,
-  isUpdateTargetsOfUsernameTx,
 } from "@iov/bns";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
@@ -18,24 +15,9 @@ import { Subscription } from "xstream";
 import { getConfig } from "../../config";
 import { addAccountsAction, BwAccount, removeAccountAction } from "../../store/accounts";
 import { addTransaction } from "../../store/notifications";
-import { addUsernamesAction, BwUsername, removeUsernameAction } from "../../store/usernames";
 import { getCodec } from "../codec";
 import { getConnectionForBns, getConnectionForChainId } from "../connection";
 import { BwParserFactory } from "./types/BwParserFactory";
-
-function mayDispatchUsername(dispatch: Dispatch, usernameTx: UnsignedTransaction): void {
-  if (isRegisterUsernameTx(usernameTx) || isUpdateTargetsOfUsernameTx(usernameTx)) {
-    const username: BwUsername = {
-      username: usernameTx.username,
-      addresses: usernameTx.targets,
-    };
-
-    dispatch(addUsernamesAction([username]));
-  }
-  if (isTransferUsernameTx(usernameTx)) {
-    dispatch(removeUsernameAction(usernameTx.username));
-  }
-}
 
 async function mayDispatchAccount(
   dispatch: Dispatch,
@@ -165,7 +147,6 @@ export async function subscribeTransaction(
       const liveSubscription = connection.listenTx({ sentFromOrTo: address }).subscribe({
         next: async tx => {
           if (!isFailedTransaction(tx)) {
-            mayDispatchUsername(dispatch, tx.transaction);
             await mayDispatchAccount(dispatch, tx.transaction, address);
           }
         },
