@@ -13,7 +13,7 @@ const persona: GetPersonaResponse = {
   connectedChains: ["local-iov-devnet" as ChainId],
   getAccounts: () => new Promise(resolve => resolve([{ label: "Account 0", iovAddress: "" as Address }])),
   getBalances: () => new Promise(resolve => resolve([])),
-  getStarnames: () => new Promise(resolve => resolve([])),
+  getNames: () => new Promise(resolve => resolve([])),
 };
 
 storiesOf(`${sanesRoot}/Welcome page`, module)

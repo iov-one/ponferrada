@@ -89,7 +89,7 @@ const AccountView = (): JSX.Element => {
         <Block marginTop={3} />
         <ListTokens balances={balances} />
         <Block marginTop={3} />
-        <ListCollectibles starnames={persona.starnames} awards={awards} />
+        <ListCollectibles starnames={persona.names} awards={awards} />
         <Block marginTop={3} />
       </SimplePageLayout>
     </SidePanel>

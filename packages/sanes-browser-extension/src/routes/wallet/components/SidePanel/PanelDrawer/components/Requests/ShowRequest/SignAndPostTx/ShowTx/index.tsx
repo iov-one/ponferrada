@@ -8,16 +8,13 @@ import {
   isDeleteDomainTx,
   isRegisterAccountTx,
   isRegisterDomainTx,
-  isRegisterUsernameTx,
   isRenewAccountTx,
   isRenewDomainTx,
   isReplaceAccountMsgFeesTx,
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
-  isTransferUsernameTx,
   isUpdateAccountConfigurationTx,
-  isUpdateTargetsOfUsernameTx,
   isVoteTx,
 } from "@iov/bns";
 import { Block, Button, Typography } from "medulas-react-components";
@@ -32,7 +29,6 @@ import ReqDeleteAllAccountsTx from "./ReqDeleteAllAccountsTx";
 import ReqDeleteDomainTx from "./ReqDeleteDomainTx";
 import ReqRegisterAccountTx from "./ReqRegisterAccountTx";
 import ReqRegisterDomainTx from "./ReqRegisterDomainTx";
-import ReqRegisterUsernameTx from "./ReqRegisterUsernameTx";
 import ReqRenewAccountTx from "./ReqRenewAccountTx";
 import ReqRenewDomainTx from "./ReqRenewDomainTx";
 import ReqReplaceAccountMsgFeesTx from "./ReqReplaceAccountMsgFeesTx";
@@ -40,9 +36,7 @@ import ReqReplaceAccountTargetsTx from "./ReqReplaceAccountTargetsTx";
 import ReqSendTransaction from "./ReqSendTransaction";
 import ReqTransferAccountTx from "./ReqTransferAccountTx";
 import ReqTransferDomainTx from "./ReqTransferDomainTx";
-import ReqTransferUsernameTx from "./ReqTransferUsernameTx";
 import ReqUpdateAccountConfigurationTx from "./ReqUpdateAccountConfigurationTx";
-import ReqUpdateTargetsOfUsernameTx from "./ReqUpdateTargetsOfUsernameTx";
 import ReqVoteTx from "./ReqVoteTx";
 
 export const showTxHtmlId = "tx-request-show";
@@ -59,12 +53,6 @@ const ShowTx = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
 
   if (isSendTransaction(tx)) {
     req = <ReqSendTransaction tx={tx} />;
-  } else if (isRegisterUsernameTx(tx)) {
-    req = <ReqRegisterUsernameTx tx={tx} />;
-  } else if (isTransferUsernameTx(tx)) {
-    req = <ReqTransferUsernameTx tx={tx} />;
-  } else if (isUpdateTargetsOfUsernameTx(tx)) {
-    req = <ReqUpdateTargetsOfUsernameTx tx={tx} />;
   } else if (isRegisterDomainTx(tx)) {
     req = <ReqRegisterDomainTx tx={tx} />;
   } else if (isTransferDomainTx(tx)) {

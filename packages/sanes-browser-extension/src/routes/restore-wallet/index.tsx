@@ -44,7 +44,7 @@ const RestoreWallet = (): JSX.Element => {
       ...response,
       accounts: await response?.getAccounts(),
       balances: await response?.getBalances(),
-      starnames: await response?.getStarnames(),
+      names: await response?.getNames(),
     };
 
     personaProvider.update(personaData);

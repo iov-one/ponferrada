@@ -12,8 +12,8 @@ import {
   ActionKind,
   bnsCodec,
   CreateProposalTx,
-  RegisterUsernameTx,
-  UpdateTargetsOfUsernameTx,
+  RegisterAccountTx,
+  ReplaceAccountTargetsTx,
   VoteOption,
   VoteTx,
 } from "@iov/bns";
@@ -92,27 +92,24 @@ export function getEthTransaction(): SendTransaction {
   };
 }
 
-export function getUsernameTransaction(): RegisterUsernameTx {
+export function getRegisterAccountTransaction(): RegisterAccountTx {
   return {
-    kind: "bns/register_username",
-    chainId: defaultCreator.chainId,
-    username: "test*iov",
-    targets: [{ chainId: "foobar" as ChainId, address: defaultAddress }],
-    fee: {
-      tokens: defaultAmount,
-    },
+    kind: "bns/register_account",
+    chainId: "some-chain" as ChainId,
+    domain: "testdomain",
+    name: "testname",
+    owner: defaultAddress,
+    targets: [],
   };
 }
 
-export function getUpdateUsernameTargetsTransaction(): UpdateTargetsOfUsernameTx {
+export function getReplaceAccountTargetsTransaction(): ReplaceAccountTargetsTx {
   return {
-    kind: "bns/update_targets_of_username",
-    chainId: defaultCreator.chainId,
-    username: "test*iov",
-    targets: [{ chainId: "barfoo" as ChainId, address: defaultAddress }],
-    fee: {
-      tokens: defaultAmount,
-    },
+    kind: "bns/replace_account_targets",
+    chainId: "some-chain" as ChainId,
+    domain: "testdomain",
+    name: "testname",
+    newTargets: [{ chainId: "some-chain" as ChainId, address: defaultAddress }],
   };
 }
 

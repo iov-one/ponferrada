@@ -22,9 +22,9 @@ import { SUPPORT_CENTER_URL, TERMS_URL, WALLET_STATUS_ROUTE, WELCOME_ROUTE } fro
 import { Views } from "./components/SidePanel/PanelDrawer";
 import { showIdentityHtmlId } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/ShareIdentity/ShowIdentity";
 import { showTxHtmlId } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx";
-import { REQ_REGISTER_USERNAME } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqRegisterUsernameTx";
+import { REQ_REGISTER_ACCOUNT } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqRegisterAccountTx";
+import { REQ_REPLACE_ACCOUNT_TARGETS } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqReplaceAccountTargetsTx";
 import { REQ_SEND_TX } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqSendTransaction";
-import { REQ_UPDATE_TARGETS_USERNAME } from "./components/SidePanel/PanelDrawer/components/Requests/ShowRequest/SignAndPostTx/ShowTx/ReqUpdateTargetsOfUsernameTx";
 import { getMnemonicValidity, isButtonDisabled } from "./test/operateDeleteWallet";
 import {
   goToAbout,
@@ -50,8 +50,8 @@ import {
   getCashTransaction,
   getCreateTextResolutionActionTransaction,
   getProposalStartDate,
-  getUpdateUsernameTargetsTransaction,
-  getUsernameTransaction,
+  getRegisterAccountTransaction,
+  getReplaceAccountTargetsTransaction,
 } from "./test/operateTXRequest";
 
 const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
@@ -310,14 +310,14 @@ describe("DOM > Feature > Wallet Status Drawer > Send Transaction Request", () =
   }, 60000);
 });
 
-describe("DOM > Feature > Wallet Status Drawer > Username Registration Request", () => {
+describe("DOM > Feature > Wallet Status Drawer > Accounts Registration Request", () => {
   const requests: readonly Request[] = [
     {
       id: 1,
       senderUrl: "http://finnex.com",
-      reason: "Test username registration",
+      reason: "Test account registration",
       responseData: {
-        tx: getUsernameTransaction(),
+        tx: getRegisterAccountTransaction(),
       },
       accept: jest.fn(),
       reject: jest.fn(),
@@ -331,19 +331,19 @@ describe("DOM > Feature > Wallet Status Drawer > Username Registration Request",
     await click(getFirstRequest(txRequestDOM));
   }, 60000);
 
-  it("should show register username request accept view", async () => {
-    await findRenderedDOMComponentWithId(txRequestDOM, REQ_REGISTER_USERNAME);
+  it("should show register account request accept view", async () => {
+    await findRenderedDOMComponentWithId(txRequestDOM, REQ_REGISTER_ACCOUNT);
   }, 60000);
 });
 
-describe("DOM > Feature > Wallet Status Drawer > Username Targets Update Request", () => {
+describe("DOM > Feature > Wallet Status Drawer > Account Targets Replace Request", () => {
   const requests: readonly Request[] = [
     {
       id: 1,
       senderUrl: "http://finnex.com",
-      reason: "Test username targets update",
+      reason: "Test account targets replace",
       responseData: {
-        tx: getUpdateUsernameTargetsTransaction(),
+        tx: getReplaceAccountTargetsTransaction(),
       },
       accept: jest.fn(),
       reject: jest.fn(),
@@ -357,8 +357,8 @@ describe("DOM > Feature > Wallet Status Drawer > Username Targets Update Request
     await click(getFirstRequest(txRequestDOM));
   }, 60000);
 
-  it("should show update username targets request accept view", async () => {
-    await findRenderedDOMComponentWithId(txRequestDOM, REQ_UPDATE_TARGETS_USERNAME);
+  it("should show replace account targets request accept view", async () => {
+    await findRenderedDOMComponentWithId(txRequestDOM, REQ_REPLACE_ACCOUNT_TARGETS);
   }, 60000);
 });
 
