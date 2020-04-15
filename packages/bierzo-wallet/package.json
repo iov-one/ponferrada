@@ -12,6 +12,7 @@
     "@iov/faucets": "^2.0.2",
     "@iov/jsonrpc": "^2.0.2",
     "@iov/ledger-bns": "^0.14.1",
+    "@cosmwasm/bcp": "^0.0.7",
     "@ledgerhq/hw-transport-webusb": "^4.69.0",
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
