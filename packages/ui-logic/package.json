@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@iov/bcp": "^2.2.0",
-    "@iov/bns": "^2.2.4",
+    "@iov/bns": "^2.2.5",
     "random-js": "^2.1.0"
   }
 }
