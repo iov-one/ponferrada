@@ -68,11 +68,9 @@ Builds of the browser extension are available through the CI.
 
 To get started, please go to the root directory and run:
 
-```
+```shell
 yarn install
 yarn build
-cd packages/sanes-browser-extension/
-yarn start
 ```
 
 Then open your chrome browser and add the new generated extension (the build folder)
@@ -81,6 +79,13 @@ Then open your chrome browser and add the new generated extension (the build fol
 2. Turn on `Developer mode`
 3. Click load unpacked and go to the `ponferrada/build` folder
 4. You have the iov-ponferrada extension in your browser!
+
+With the extension fully working, you may want to enable hot reloading of the changes you make to the extension by running:
+
+```shell
+cd packages/sanes-browser-extension/
+yarn start
+```
 
 ### Testing
 
@@ -94,7 +99,7 @@ We take seriously the testing environment, performing three different types of t
 
 Used for generating JEST Snapshot tests, and also for develoing components and fast prototype iteration when condig routes. From main folder, run following command:
 
-```
+```shell
 yarn storybook
 ```
 
@@ -104,7 +109,7 @@ For updating snapshots after some changes in order to make everything to work re
 
 Main test stack. It is used to run DOM tests using react test-utils functionalities. From main folder, run following command:
 
-```
+```shell
 yarn test
 ```
 
@@ -144,7 +149,7 @@ unset CHAINS_ENABLED
 Framework used for running e2e tests. It launches chrome instances with the extension installed and executes logic simulating human interaction.
 From main folder, run following command:
 
-```
+```shell
 yarn test
 ```
 
