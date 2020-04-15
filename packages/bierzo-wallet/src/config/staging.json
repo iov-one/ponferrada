@@ -14,7 +14,7 @@
     { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
     { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
-    { "chainId": "cosmos-cosmoshub-3", "name": "Cosmos Hub" },
+    { "chainId": "cosmos:cosmoshub-3", "name": "Cosmos Hub" },
     { "chainId": "cosmos-irishub", "name": "IrisNet" },
     { "chainId": "cosmos-kava-2", "name": "Kava" },
     { "chainId": "cosmos-emoney-1", "name": "e-Money" },
@@ -40,6 +40,24 @@
         "chainId": "lisk-da3ed6a454",
         "name": "Lisk Testnet",
         "node": "https://testnet.lisk.io"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "cosmwasm",
+        "chainId": "cosmos:cosmoshub-3",
+        "name": "Cosmos",
+        "node": "http://api.cosmos.network/",
+        "tokenConfig": {
+          "bankTokens": [
+            {
+              "fractionalDigits": 6,
+              "name": "Fee Token",
+              "ticker": "ATOM",
+              "denom": "uatom"
+            }
+          ]
+        }
       }
     },
     {

@@ -15,6 +15,7 @@
     { "chainId": "ethereum-eip155-5777", "name": "Ganache" },
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
     { "chainId": "cosmos-cosmoshub-3", "name": "Cosmos Hub" },
+    { "chainId": "cosmos:testing", "name": "Cosmos Hub Test" },
     { "chainId": "cosmos-irishub", "name": "IrisNet" },
     { "chainId": "cosmos-kava-2", "name": "Kava" },
     { "chainId": "cosmos-emoney-1", "name": "e-Money" },
@@ -44,6 +45,36 @@
       "faucetSpec": {
         "uri": "http://localhost:8002",
         "tokens": ["LSK"]
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "cosmwasm",
+        "chainId": "cosmos:testing",
+        "name": "Cosmos",
+        "node": "http://localhost:1317",
+        "tokenConfig": {
+          "bankTokens": [
+            {
+              "fractionalDigits": 6,
+              "name": "Fee Token",
+              "ticker": "COSM",
+              "denom": "ucosm"
+            },
+            {
+              "fractionalDigits": 6,
+              "name": "Staking Token",
+              "ticker": "STAKE",
+              "denom": "ustake"
+            },
+            {
+              "fractionalDigits": 6,
+              "name": "Fee Token",
+              "ticker": "ATOM",
+              "denom": "uatom"
+            }
+          ]
+        }
       }
     },
     {

@@ -1,3 +1,4 @@
+import { TokenConfiguration } from "@cosmwasm/bcp";
 import { ChainId, Identity } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
@@ -9,6 +10,7 @@ import developmentConfig from "./development.json";
 export enum CodecType {
   Bns = "bns",
   Ethereum = "eth",
+  CosmWasm = "cosmwasm",
   Lisk = "lsk",
 }
 
@@ -63,6 +65,7 @@ export interface ChainSpec {
   readonly name: string;
   readonly node: string;
   readonly scraper?: string;
+  readonly tokenConfig?: TokenConfiguration;
   readonly ethereumOptions?: ConfigEthereumOptions;
 }
 

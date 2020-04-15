@@ -1,4 +1,4 @@
-import { createCosmWasmConnector, TokenConfiguration } from "@cosmwasm/bcp";
+import { createCosmWasmConnector } from "@cosmwasm/bcp";
 import { Algorithm, ChainConnector } from "@iov/bcp";
 import { createBnsConnector } from "@iov/bns";
 import { Slip10RawIndex } from "@iov/crypto";
