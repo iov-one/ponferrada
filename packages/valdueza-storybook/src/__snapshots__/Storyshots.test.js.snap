@@ -5449,17 +5449,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
           >
             name1*domain1
           </h5>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            Expires on 
-            6/5/2120
-             
-            3:00:00 AM
-          </h6>
         </div>
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5486,17 +5475,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
           >
             name2*domain1
           </h5>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            Expires on 
-            6/5/2120
-             
-            3:00:00 AM
-          </h6>
         </div>
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5523,17 +5501,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
           >
             name2*domain2
           </h5>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-          >
-            Expires on 
-            6/5/2120
-             
-            3:00:00 AM
-          </h6>
         </div>
         <h6
           className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5604,17 +5571,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
         >
           name1*domain1
         </h5>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-        >
-          Expires on 
-          6/5/2120
-           
-          3:00:00 AM
-        </h6>
       </div>
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5641,17 +5597,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
         >
           name2*domain1
         </h5>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-        >
-          Expires on 
-          6/5/2120
-           
-          3:00:00 AM
-        </h6>
       </div>
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
@@ -5678,17 +5623,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
         >
           name2*domain2
         </h5>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-        >
-          Expires on 
-          6/5/2120
-           
-          3:00:00 AM
-        </h6>
       </div>
       <h6
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
