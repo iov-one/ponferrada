@@ -2212,22 +2212,22 @@
     type-tagger "^1.0.0"
     xstream "^11.10.0"
 
-"@iov/bns-governance@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@iov/bns-governance/-/bns-governance-2.2.4.tgz#e341986444013064d9b8297f154f2394a7d7e2ad"
-  integrity sha512-3RtXswFNnWoEcIKnnoA16GflHRLw/Y5F9tG65T4TEGIyRFHat7llNOIu498Vt4Ya+tJb6hk5nY/7r2/TkIvT5Q==
+"@iov/bns-governance@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@iov/bns-governance/-/bns-governance-2.2.5.tgz#248e7bf14de6bc7a329f60880a8c1d7d2b6a1acd"
+  integrity sha512-7va/LjvHyjLQuLlEpIg7y0u2WJOf6ijsu+nhz8UFm9T6NxYUHlq4fo4WWnGcjgcERxia5JvOoOAv+1xJlxyJMg==
   dependencies:
     "@iov/bcp" "^2.2.0"
-    "@iov/bns" "^2.2.4"
+    "@iov/bns" "^2.2.5"
     "@iov/keycontrol" "^2.2.0"
     bn.js "^4.11.8"
     readonly-date "^1.0.0"
     type-tagger "^1.0.0"
 
-"@iov/bns@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@iov/bns/-/bns-2.2.4.tgz#f997372ee8171ed7db924519617b5ba8793e197b"
-  integrity sha512-E5AujFZRs7gTqN+VM1VZlZhnYCypQO0dNKaKkOPjTPtdZqDljWLq8s5pHnlnSC/CvBX8bRBNIkbEPXdWGf9sQQ==
+"@iov/bns@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@iov/bns/-/bns-2.2.5.tgz#c2054de663b6b4fc3efd45b18ae427e1eec8b580"
+  integrity sha512-je28DnxcHg2Ae7H9oiNmpTBJHo6WN3CkFmDkgUKmC4nFdmkYTWncqLVPPs/2UJ+Vh/UJGVBJeqTl3p62/40IvQ==
   dependencies:
     "@iov/bcp" "^2.2.0"
     "@iov/crypto" "^2.2.0"
@@ -2330,10 +2330,10 @@
     bn.js "^4.11.8"
     readonly-date "^1.0.0"
 
-"@iov/ethereum@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@iov/ethereum/-/ethereum-2.2.0.tgz#2f8958e37e4a38a62ffb6d83b8c42b325a91e047"
-  integrity sha512-Qm7hUVsZACRMwOrZt98ToOfEwv4lrhFXfXk+Q54Z7XzstoQ3uRVwwcI18i+tc8wmgA2IuQTtL6QpIpw6L7zeiw==
+"@iov/ethereum@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@iov/ethereum/-/ethereum-2.2.5.tgz#c1143673a8ff9be5683fe2af8a205ca41b01f1b4"
+  integrity sha512-R+SRzGWglpyuF40VbunWL/Jgkr5lWSPKw9XYgoce+sY9sfttJ8BcRFUDLdwfnnMThQkHndPqSnE0LZlqNZoulA==
   dependencies:
     "@iov/bcp" "^2.2.0"
     "@iov/crypto" "^2.2.0"
@@ -2352,13 +2352,13 @@
     rlp "^2.2.3"
     xstream "^11.10.0"
 
-"@iov/faucets@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@iov/faucets/-/faucets-2.2.4.tgz#bf9e0dcb7dba31ad934e993e46703bdb1b008075"
-  integrity sha512-HM4MEPQkpaqJ/036sqzJUZ+5OM9u41ritkpq0TgHn0pS2XwBpphPxuRiUtgh6TAYn7j5NvkBzDUlK4vJZgOcdw==
+"@iov/faucets@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@iov/faucets/-/faucets-2.2.5.tgz#2a064e4ca29fb23f0b320c569d6110d2bb2637d2"
+  integrity sha512-xckIcQXuhf5epuxsozPknaAEv9HCFHE+SIRJzDOH1ztsIm8yMwedojTlsR7ytwLaCUbpS42FVoNkWfwRsUd73w==
   dependencies:
     "@iov/bcp" "^2.2.0"
-    "@iov/bns" "^2.2.4"
+    "@iov/bns" "^2.2.5"
     "@iov/crypto" "^2.2.0"
     "@iov/encoding" "^2.2.0"
     axios "^0.19.0"
@@ -2416,10 +2416,10 @@
     readonly-date "^1.0.0"
     xstream "^11.10.0"
 
-"@iov/multichain@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@iov/multichain/-/multichain-2.2.4.tgz#5914e19924e462261f2f3972a77789635b2da728"
-  integrity sha512-yO6rU9ySBuCriJ5tt8AwEqfIwkXcs51rkqiKCK82TtM9AMYtiTwr5aw3/1ANA3LoQ/LZ2f64Xt2Dl6ObAk2c0w==
+"@iov/multichain@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@iov/multichain/-/multichain-2.2.5.tgz#590e58fca0ba0fdf9fbf98873146e4b4f8d3c50f"
+  integrity sha512-0iSKPgW3HOmoQMGAVTDIqUNERoozklOiGvg9Mgg99bo3dfF68aV3Be/suwzG0/Sp41dMOeUMVgcgith4DE7vtg==
   dependencies:
     "@iov/bcp" "^2.2.0"
     "@iov/encoding" "^2.2.0"
