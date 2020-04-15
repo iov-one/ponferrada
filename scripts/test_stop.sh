@@ -28,4 +28,9 @@ echo
 "${SCRIPT_DIR}"/ethereum/scraper_stop.sh || true
 "${SCRIPT_DIR}"/ethereum/stop.sh || true
 
+echo
+echo ">>> Stopping cosmos chain..."
+echo
+"${SCRIPT_DIR}"/wasmd/stop.sh || true
+
 echo "Done!"

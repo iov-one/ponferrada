@@ -36,6 +36,12 @@ echo
 "${SCRIPT_DIR}"/ethereum/scraper_start.sh
 
 echo
+echo ">>> Starting cosmos chain..."
+echo
+"${SCRIPT_DIR}"/wasmd/start.sh
+"${SCRIPT_DIR}"/wasmd/init.sh
+
+echo
 echo ">>> Waiting for faucets to load tokens..."
 echo
 sleep 5
