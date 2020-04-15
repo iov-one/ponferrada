@@ -56,6 +56,30 @@ withChainsDescribe("Tokens reducer", () => {
           tokenTicker: "ASH",
         },
       },
+      ATOM: {
+        chainId: "cosmos:testing",
+        token: {
+          fractionalDigits: 6,
+          tokenName: "Fee Token",
+          tokenTicker: "ATOM",
+        },
+      },
+      COSM: {
+        chainId: "cosmos:testing",
+        token: {
+          fractionalDigits: 6,
+          tokenName: "Fee Token",
+          tokenTicker: "COSM",
+        },
+      },
+      STAKE: {
+        chainId: "cosmos:testing",
+        token: {
+          fractionalDigits: 6,
+          tokenName: "Staking Token",
+          tokenTicker: "STAKE",
+        },
+      },
       BASH: {
         chainId: "local-iov-devnet",
         token: {
