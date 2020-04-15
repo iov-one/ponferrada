@@ -78,11 +78,15 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
                     <Typography variant="h5" weight="semibold">
                       {`${starname.name}*${starname.domain}`}
                     </Typography>
-                    <Block marginTop={2} />
-                    <Typography variant="subtitle2" weight="semibold" color="textPrimary">
-                      Expires on {starname.expiryDate.toLocaleDateString()}{" "}
-                      {starname.expiryDate.toLocaleTimeString()}
-                    </Typography>
+                    {!starname.name && (
+                      <React.Fragment>
+                        <Block marginTop={2} />
+                        <Typography variant="subtitle2" weight="semibold" color="textPrimary">
+                          Expires on {starname.expiryDate.toLocaleDateString()}{" "}
+                          {starname.expiryDate.toLocaleTimeString()}
+                        </Typography>
+                      </React.Fragment>
+                    )}
                   </Block>
                   <Typography
                     variant="subtitle2"
