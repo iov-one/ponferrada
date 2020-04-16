@@ -11,7 +11,6 @@ import {
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountRenew from "../../../../components/AccountRenew";
-import { getConnectionForBns } from "../../../../logic/connection";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
 
 export const STARNAME_RENEW_EXPIRATION = "starname-renew-expiration";
@@ -39,28 +38,10 @@ interface Props {
 }
 
 const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
-  const [renewUntil, setRenewUntil] = React.useState(new Date());
   const listClasses = useList();
   const listItemClasses = useListItem();
 
   const account: BwAccountWithChainName = history.location.state;
-
-  React.useEffect(() => {
-    let isSubscribed = true;
-    async function getDomainAccounts(): Promise<void> {
-      const connection = await getConnectionForBns();
-      const domainsNft = await connection.getDomains({ name: account.domain });
-      const now = Date.now() / 1000;
-      if (isSubscribed) {
-        setRenewUntil(new Date((now + domainsNft[0].accountRenew) * 1000));
-      }
-    }
-    getDomainAccounts();
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [account.domain]);
 
   const onReturnToManage = (): void => {
     history.push(STARNAME_MANAGE_ROUTE, account);
@@ -87,10 +68,7 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
       <List disablePadding classes={listClasses}>
         <ListItem disableGutters classes={listItemClasses}>
           <Typography color="default" variant="subtitle1" inline>
-            You are renewing *{account.domain} until{" "}
-          </Typography>
-          <Typography color="default" variant="subtitle1" inline data-test={STARNAME_RENEW_EXPIRATION}>
-            {renewUntil.toLocaleDateString()} {renewUntil.toLocaleTimeString()}
+            You are renewing *{account.domain}
           </Typography>
         </ListItem>
       </List>
