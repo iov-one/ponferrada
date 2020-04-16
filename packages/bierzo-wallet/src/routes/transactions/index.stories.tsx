@@ -341,6 +341,7 @@ const incomingUpdateAccountConfigurationTransaction: ProcessedTx<UpdateAccountCo
     configuration: {
       owner: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
       domainRenew: 1000000000,
+      domainGracePeriod: 1000000000,
       validDomain: "testDomain",
       validName: "testName",
       validBlockchainId: "test-blockchain-id",
