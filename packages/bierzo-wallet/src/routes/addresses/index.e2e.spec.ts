@@ -19,6 +19,7 @@ import { acceptEnqueuedRequest } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { DELETE_CONFIRMATION_VIEW_ID } from "../account/delete/components/ConfirmDelete";
 import { ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES } from "../account/manage/components/AssociatedNamesList";
+import { RENEW_CONFIRMATION_VIEW_ID } from "../account/renew/components/ConfirmRenew";
 import { TRANSFER_CONFIRMATION_VIEW_ID } from "../account/transfer/components/ConfirmTransfer";
 import {
   registerIovname,
@@ -27,7 +28,14 @@ import {
   waitForAllBalances,
 } from "../balance/test/operateBalances";
 import { travelToBalanceE2E } from "../balance/test/travelToBalance";
-import { copyAddress, getAddressRow, getIovnames, getStarnames } from "./test/operateReceivePayment";
+import { STARNAMES_LIST_EXPIRY_DATE } from "./components/StarnamesExists";
+import {
+  copyAddress,
+  getAddressRow,
+  getIovnames,
+  getStarnames,
+  parseExpiryDateLocaleEnUs,
+} from "./test/operateReceivePayment";
 import {
   manageFirstIovnameE2E,
   manageFirstNameE2E,
@@ -243,6 +251,43 @@ withChainsDescribe("E2E > Addresses route", () => {
       await sleep(2000);
       const starnameMatches = await page.$x(`//h5[contains(., '${starname}')]`);
       expect(starnameMatches.length).toBe(0);
+    }, 60000);
+
+    it("starnames can be renewed", async () => {
+      const [expiryLabelElement] = await getElements(page, STARNAMES_LIST_EXPIRY_DATE);
+      const expiryLabelString = (await (
+        await expiryLabelElement.getProperty("textContent")
+      ).jsonValue()) as string;
+      const expiryDate = parseExpiryDateLocaleEnUs(expiryLabelString);
+
+      await manageFirstStarnameE2E(page);
+
+      const [menuButton] = await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON);
+      await menuButton.click();
+      const renewLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[0];
+      await renewLink.click();
+
+      const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
+      await submitButton.click();
+
+      await sleep(1000);
+      await acceptEnqueuedRequest(browser);
+      await sleep(1000);
+      await page.bringToFront();
+      await page.waitForSelector(`#${RENEW_CONFIRMATION_VIEW_ID}`);
+
+      await travelToAddressesE2E(page);
+      await travelToStarnamesTabE2E(page);
+
+      await sleep(2000);
+
+      const [newExpiryLabelElement] = await getElements(page, STARNAMES_LIST_EXPIRY_DATE);
+      const newExpiryLabelString = (await (
+        await newExpiryLabelElement.getProperty("textContent")
+      ).jsonValue()) as string;
+      const newExpiryDate = parseExpiryDateLocaleEnUs(newExpiryLabelString);
+
+      expect(newExpiryDate > expiryDate).toBeTruthy();
     }, 60000);
 
     it("starnames can be deleted and delete associated names", async () => {
