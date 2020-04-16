@@ -17,6 +17,72 @@
       "coins": ["4000 BASH"]
     }
   ],
+  "account": {
+    "domains": [
+      {
+        "admin": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+        "domain": "testDomain1",
+        "valid_until": 2000000000
+      },
+      {
+        "admin": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+        "domain": "testDomain2",
+        "valid_until": 1000000000
+      },
+      {
+        "admin": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku",
+        "domain": "testDomain3",
+        "valid_until": 2000000000
+      }
+    ],
+    "accounts": [
+      {
+        "metadata": {
+          "schema": 1
+        },
+        "domain": "testDomain1",
+        "name": "testAccount",
+        "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+        "valid_until": 2000000000,
+        "targets": [
+          {
+            "blockchain_id": "local-iov-devnet",
+            "address": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+          }
+        ]
+      },
+      {
+        "metadata": {
+          "schema": 1
+        },
+        "domain": "testDomain2",
+        "name": "testAccount",
+        "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+        "valid_until": 1000000000,
+        "targets": [
+          {
+            "blockchain_id": "local-iov-devnet",
+            "address": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+          }
+        ]
+      },
+      {
+        "metadata": {
+          "schema": 1
+        },
+        "domain": "testDomain3",
+        "name": "testAccount",
+        "owner": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku",
+        "valid_until": 2000000000,
+        "targets": [
+          {
+            "blockchain_id": "local-iov-devnet",
+            "address": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku"
+          }
+        ]
+      }
+    ]
+  },
   "username": [
     {
       "username": "ledger-dev*iov",
@@ -54,11 +120,11 @@
     },
     {
       "username": "test3*iov",
-      "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
+      "owner": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku",
       "targets": [
         {
           "blockchain_id": "local-iov-devnet",
-          "address": "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+          "address": "tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku"
         },
         {
           "blockchain_id": "lisk-198f2b61a8",
