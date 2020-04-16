@@ -43,10 +43,9 @@ async function mayDispatchAccount(
   owner: Address,
 ): Promise<void> {
   if (isRegisterDomainTx(accountTx)) {
-    const nowInMs = new Date().getTime();
-    const accountRenewInMs = accountTx.accountRenew * 1000;
-    // TODO not sure if precise, since getting from current time
-    const expiryDate = new Date(nowInMs + accountRenewInMs);
+    const bnsConnection = await getConnectionForBns();
+    const domainEntity = (await bnsConnection.getDomains({ name: accountTx.domain }))[0];
+    const expiryDate = new Date(domainEntity.validUntil * 1000);
 
     const account: BwAccount = {
       name: "",
