@@ -82,3 +82,11 @@ export async function getLinkedAddresses(page: Page): Promise<string[]> {
   addresses.splice(0, 1);
   return addresses;
 }
+
+// Expects an expirty date label with the format: Expires on 4/15/2020 8:43:10 AM
+export function parseExpiryDateLocaleEnUs(expiryLabel: string): Date {
+  const [, , dateString, ...timeArray] = expiryLabel.split(" ");
+  const timeString = timeArray.join(" ");
+
+  return new Date(`${dateString} ${timeString}`);
+}
