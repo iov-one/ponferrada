@@ -229,6 +229,9 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
     }
   };
 
+  const now = new Date();
+  const expiryLabel = isAccountData(account) && now < account.expiryDate ? "Expires on" : "Expired on";
+
   const buttons = (
     <Block
       marginTop={4}
@@ -273,8 +276,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
             <Block display="flex" justifyContent="center" marginTop={1}>
               {isIovname(`${account.name}*${account.domain}`) || !account.name ? (
                 <Typography variant="body2" inline align="center" color="textSecondary">
-                  Expires on {account.expiryDate.toLocaleDateString()}{" "}
-                  {account.expiryDate.toLocaleTimeString()}
+                  {`${expiryLabel} ${account.expiryDate.toLocaleDateString()} ${account.expiryDate.toLocaleTimeString()}`}
                 </Typography>
               ) : (
                 <React.Fragment>
