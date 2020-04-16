@@ -130,7 +130,7 @@ export const generateRegisterDomainTxWithFee = async (
   domain: string,
 ): Promise<RegisterDomainTx> => {
   const creatorAddress = bnsCodec.identityToAddress(creator);
-  const AThousandYearsInSeconds = 365 * 24 * 60 * 60;
+  const AThousandYearsInSeconds = 1000 * 365 * 24 * 60 * 60;
 
   const regDomainTx: RegisterDomainTx = {
     kind: "bns/register_domain",
