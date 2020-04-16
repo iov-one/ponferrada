@@ -47,7 +47,7 @@
         "targets": [
           {
             "blockchain_id": "local-iov-devnet",
-            "address": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+            "address": "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
           }
         ]
       },
@@ -62,7 +62,7 @@
         "targets": [
           {
             "blockchain_id": "local-iov-devnet",
-            "address": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
+            "address": "tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea"
           }
         ]
       },
@@ -77,7 +77,7 @@
         "targets": [
           {
             "blockchain_id": "local-iov-devnet",
-            "address": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku"
+            "address": "tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku"
           }
         ]
       }
