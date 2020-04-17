@@ -130,6 +130,9 @@ const AccountManage: React.FunctionComponent<Props> = ({
     toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
   };
 
+  const now = new Date();
+  const expiryLabel = isAccountData(account) && now < account.expiryDate ? "Expires on" : "Expired on";
+
   return (
     <Block id={manageViewId} marginTop={1} width={650}>
       <Paper classes={paperClasses}>
@@ -159,7 +162,7 @@ const AccountManage: React.FunctionComponent<Props> = ({
                 color="textSecondary"
                 data-test={ACCOUNT_MANAGE_NAME_EXPIRATION}
               >
-                Expires on {account.expiryDate.toLocaleDateString()} {account.expiryDate.toLocaleTimeString()}
+                {`${expiryLabel} ${account.expiryDate.toLocaleDateString()} ${account.expiryDate.toLocaleTimeString()}`}
               </Typography>
             </Block>
           )}

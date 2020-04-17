@@ -8,6 +8,8 @@ import { BwAccount } from "../../../store/accounts";
 import { NAME_MANAGE_ROUTE, STARNAME_MANAGE_ROUTE } from "../../paths";
 import { registerStarnameId } from "./Starnames";
 
+export const STARNAMES_LIST_EXPIRY_DATE = "starnames-list-expiry-date";
+
 interface Props {
   readonly starnames: readonly BwAccount[];
   readonly onRegisterStarname: () => void;
@@ -62,6 +64,9 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
             }
           };
 
+          const now = new Date();
+          const expiryLabel = now < starname.expiryDate ? "Expires on" : "Expired on";
+
           return (
             <React.Fragment key={`${starname.name}*${starname.domain}`}>
               <Block marginTop={3} />
@@ -81,9 +86,13 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
                     {!starname.name && (
                       <React.Fragment>
                         <Block marginTop={2} />
-                        <Typography variant="subtitle2" weight="semibold" color="textPrimary">
-                          Expires on {starname.expiryDate.toLocaleDateString()}{" "}
-                          {starname.expiryDate.toLocaleTimeString()}
+                        <Typography
+                          variant="subtitle2"
+                          weight="semibold"
+                          color="textPrimary"
+                          data-test={STARNAMES_LIST_EXPIRY_DATE}
+                        >
+                          {`${expiryLabel} ${starname.expiryDate.toLocaleDateString()} ${starname.expiryDate.toLocaleTimeString()}`}
                         </Typography>
                       </React.Fragment>
                     )}

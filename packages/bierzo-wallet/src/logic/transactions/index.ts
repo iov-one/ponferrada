@@ -6,6 +6,7 @@ import {
   isRegisterAccountTx,
   isRegisterDomainTx,
   isRegisterUsernameTx,
+  isRenewDomainTx,
   isReplaceAccountTargetsTx,
   isTransferAccountTx,
   isTransferDomainTx,
@@ -43,10 +44,9 @@ async function mayDispatchAccount(
   owner: Address,
 ): Promise<void> {
   if (isRegisterDomainTx(accountTx)) {
-    const nowInMs = new Date().getTime();
-    const accountRenewInMs = accountTx.accountRenew * 1000;
-    // TODO not sure if precise, since getting from current time
-    const expiryDate = new Date(nowInMs + accountRenewInMs);
+    const bnsConnection = await getConnectionForBns();
+    const domainEntity = (await bnsConnection.getDomains({ name: accountTx.domain }))[0];
+    const expiryDate = new Date(domainEntity.validUntil * 1000);
 
     const account: BwAccount = {
       name: "",
@@ -115,6 +115,25 @@ async function mayDispatchAccount(
     if (accountTx.newAdmin !== owner) {
       dispatch(removeAccountAction(`*${accountTx.domain}`));
     }
+  }
+
+  if (isRenewDomainTx(accountTx)) {
+    const bnsConnection = await getConnectionForBns();
+    const domainEntity = (await bnsConnection.getDomains({ name: accountTx.domain }))[0];
+    const expiryDate = new Date(domainEntity.validUntil * 1000);
+    const accounts = await bnsConnection.getAccounts({ domain: domainEntity.domain });
+
+    const updatedAccounts: BwAccount[] = accounts.map(accountNft => {
+      return {
+        name: accountNft.name || "",
+        domain: accountNft.domain,
+        expiryDate: expiryDate,
+        addresses: accountNft.targets,
+        owner: accountNft.owner,
+      };
+    });
+
+    dispatch(addAccountsAction(updatedAccounts));
   }
 
   if (isDeleteDomainTx(accountTx)) {

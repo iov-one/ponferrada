@@ -3524,10 +3524,7 @@ exports[`Storyshots Bierzo Wallet/Account Manage Manage name 1`] = `
           className="MuiTypography-root makeStyles-inline MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
           data-test="account-manage-name-expiration"
         >
-          Expires on 
-          6/5/2120
-           
-          3:00:00 AM
+          Expires on 6/5/2120 3:00:00 AM
         </p>
       </div>
       <div
