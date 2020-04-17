@@ -14,6 +14,7 @@ REST_SERVER_LOGFILE="$TMP_DIR/rest-server.log"
 SCRIPT_DIR="$(realpath "$(dirname "$0")")"
 HOME_DIR="/home"
 CONTAINER_NAME="gaiad"
+REVERSE_PROXY_CONTAINER_NAME="cosmoshub-reverse-proxy"
 
 rm -rf "$SCRIPT_DIR/.gaiad/data"
 mkdir -p "$SCRIPT_DIR/.gaiad/data"
@@ -54,4 +55,9 @@ docker exec "$CONTAINER_NAME" \
   --laddr tcp://0.0.0.0:1317 \
   > "$REST_SERVER_LOGFILE" &
 
-echo "rest server running on http://localhost:1317 and logging into $REST_SERVER_LOGFILE"
+
+
+docker build -t ${REVERSE_PROXY_CONTAINER_NAME} "$SCRIPT_DIR/reverse_proxy/"
+docker run --network="host" --rm --detach -it --name ${REVERSE_PROXY_CONTAINER_NAME} ${REVERSE_PROXY_CONTAINER_NAME}
+
+echo "rest server running on http://localhost:1318 and logging into $REST_SERVER_LOGFILE"

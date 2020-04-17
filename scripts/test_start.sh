@@ -38,7 +38,7 @@ echo
 echo
 echo ">>> Starting cosmos chain..."
 echo
-"${SCRIPT_DIR}"/wasmd/start.sh
+"${SCRIPT_DIR}"/cosmoshub/start.sh
 
 echo
 echo ">>> Waiting for faucets to load tokens..."

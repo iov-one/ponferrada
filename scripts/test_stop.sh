@@ -31,6 +31,6 @@ echo
 echo
 echo ">>> Stopping cosmos chain..."
 echo
-"${SCRIPT_DIR}"/wasmd/stop.sh || true
+"${SCRIPT_DIR}"/cosmoshub/stop.sh || true
 
 echo "Done!"
