@@ -21,17 +21,17 @@
     "domains": [
       {
         "admin": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
-        "domain": "testDomain1",
+        "domain": "testdomain1",
         "valid_until": 2000000000
       },
       {
         "admin": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
-        "domain": "testDomain2",
+        "domain": "testdomain2",
         "valid_until": 1000000000
       },
       {
         "admin": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku",
-        "domain": "testDomain3",
+        "domain": "testdomain3",
         "valid_until": 2000000000
       }
     ],
@@ -40,8 +40,8 @@
         "metadata": {
           "schema": 1
         },
-        "domain": "testDomain1",
-        "name": "testAccount",
+        "domain": "testdomain1",
+        "name": "testaccount",
         "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
         "valid_until": 2000000000,
         "targets": [
@@ -55,8 +55,8 @@
         "metadata": {
           "schema": 1
         },
-        "domain": "testDomain2",
-        "name": "testAccount",
+        "domain": "testdomain2",
+        "name": "testaccount",
         "owner": "bech32:tiov15nuhg3l8ma2mdmcdvgy7hme20v3xy5mkxcezea",
         "valid_until": 1000000000,
         "targets": [
@@ -70,8 +70,8 @@
         "metadata": {
           "schema": 1
         },
-        "domain": "testDomain3",
-        "name": "testAccount",
+        "domain": "testdomain3",
+        "name": "testaccount",
         "owner": "bech32:tiov1q5lyl7asgr2dcweqrhlfyexqpkgcuzrm4e0cku",
         "valid_until": 2000000000,
         "targets": [
