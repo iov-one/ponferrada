@@ -24,7 +24,7 @@
         "codecType": "cosmwasm",
         "chainId": "cosmos:testing",
         "name": "Cosmos",
-        "node": "http://localhost:1317",
+        "node": "http://localhost:1318",
         "tokenConfig": {
           "bankTokens": [
             {
