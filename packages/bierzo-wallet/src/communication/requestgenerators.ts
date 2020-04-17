@@ -130,7 +130,8 @@ export const generateRegisterDomainTxWithFee = async (
   domain: string,
 ): Promise<RegisterDomainTx> => {
   const creatorAddress = bnsCodec.identityToAddress(creator);
-  const AThousandYearsInSeconds = 1000 * 365 * 24 * 60 * 60;
+  // NOTE: cannot be 1000 years, 68 years is the limit for some reason
+  const SixtyEightYearsInSeconds = 68 * 365 * 24 * 60 * 60;
 
   const regDomainTx: RegisterDomainTx = {
     kind: "bns/register_domain",
@@ -139,7 +140,7 @@ export const generateRegisterDomainTxWithFee = async (
     admin: creatorAddress,
     hasSuperuser: true,
     msgFees: [],
-    accountRenew: AThousandYearsInSeconds,
+    accountRenew: SixtyEightYearsInSeconds,
   };
 
   return await withChainFee(regDomainTx, creatorAddress);
