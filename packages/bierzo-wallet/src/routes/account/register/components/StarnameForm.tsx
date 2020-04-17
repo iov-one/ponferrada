@@ -18,6 +18,7 @@ import {
   useForm,
 } from "medulas-react-components";
 import React from "react";
+import { ErrorParser } from "ui-logic";
 
 import {
   generateRegisterDomainTxRequest,
@@ -97,7 +98,8 @@ const StarnameForm = ({ bnsIdentity, rpcEndpoint, onCancel, setTransactionId }: 
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }

@@ -1,6 +1,7 @@
 import { TransactionId } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { BillboardContextInterface, ToastContextInterface, ToastVariant } from "medulas-react-components";
+import { ErrorParser } from "ui-logic";
 
 import { RpcEndpoint } from "../communication/rpcEndpoint";
 
@@ -29,7 +30,8 @@ export async function submitTransaction(
     }
   } catch (error) {
     console.error(error);
-    toast.show("An error occurred", ToastVariant.ERROR);
+    const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+    toast.show(message, ToastVariant.ERROR);
   } finally {
     billboard.close();
   }
