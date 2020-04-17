@@ -2,7 +2,7 @@ import { Address, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
 import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
-import { stringToAmount } from "ui-logic";
+import { ErrorParser, stringToAmount } from "ui-logic";
 
 import { history } from "..";
 import { generateSendTxRequest } from "../../communication/requestgenerators";
@@ -118,7 +118,8 @@ const Payment = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }

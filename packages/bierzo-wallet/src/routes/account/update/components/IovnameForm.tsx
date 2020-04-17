@@ -2,6 +2,7 @@ import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
 import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
+import { ErrorParser } from "ui-logic";
 
 import { history } from "../../..";
 import {
@@ -95,7 +96,8 @@ const IovnameAccountUpdate = ({
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }

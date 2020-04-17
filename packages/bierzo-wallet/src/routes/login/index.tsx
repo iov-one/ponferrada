@@ -3,6 +3,7 @@ import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-comp
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
+import { ErrorParser } from "ui-logic";
 
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
@@ -100,7 +101,8 @@ const Login = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }
@@ -133,7 +135,8 @@ const Login = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }

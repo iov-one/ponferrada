@@ -21,6 +21,7 @@ import {
   ValidationError,
 } from "medulas-react-components";
 import React from "react";
+import { ErrorParser } from "ui-logic";
 
 import {
   generateRegisterAccountTxRequest,
@@ -158,7 +159,8 @@ const NameForm = ({
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }
