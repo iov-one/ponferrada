@@ -4,7 +4,7 @@ command -v shellcheck > /dev/null && shellcheck "$0"
 
 # Choose from https://hub.docker.com/r/tendermint/gaia/tags
 REPOSITORY="tendermint/gaia"
-VERSION="v2.0.4"
+VERSION="v2.0.8"
 
 TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/gaia.XXXXXXXXX")
 chmod 777 "$TMP_DIR"
@@ -19,6 +19,8 @@ REVERSE_PROXY_CONTAINER_NAME="cosmoshub-reverse-proxy"
 rm -rf "$SCRIPT_DIR/.gaiad/data"
 mkdir -p "$SCRIPT_DIR/.gaiad/data"
 cp "$SCRIPT_DIR/priv_validator_state.template.json" "$SCRIPT_DIR/.gaiad/data/priv_validator_state.json"
+
+
 
 docker run \
   --rm \
@@ -58,6 +60,6 @@ docker exec "$CONTAINER_NAME" \
 
 
 docker build -t ${REVERSE_PROXY_CONTAINER_NAME} "$SCRIPT_DIR/reverse_proxy/"
-docker run --network="host" --rm --detach -it --name ${REVERSE_PROXY_CONTAINER_NAME} ${REVERSE_PROXY_CONTAINER_NAME}
+docker run --rm --detach -it -p 1318:80 --link gaiad:gaiad  --name ${REVERSE_PROXY_CONTAINER_NAME} ${REVERSE_PROXY_CONTAINER_NAME}
 
 echo "rest server running on http://localhost:1318 and logging into $REST_SERVER_LOGFILE"
