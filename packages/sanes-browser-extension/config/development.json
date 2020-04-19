@@ -30,6 +30,18 @@
             {
               "fractionalDigits": 6,
               "name": "Fee Token",
+              "ticker": "COSM",
+              "denom": "ucosm"
+            },
+            {
+              "fractionalDigits": 6,
+              "name": "Staking Token",
+              "ticker": "STAKE",
+              "denom": "stake"
+            },
+            {
+              "fractionalDigits": 6,
+              "name": "Fee Token",
               "ticker": "ATOM",
               "denom": "uatom"
             }

@@ -65,7 +65,7 @@
               "fractionalDigits": 6,
               "name": "Staking Token",
               "ticker": "STAKE",
-              "denom": "ustake"
+              "denom": "stake"
             },
             {
               "fractionalDigits": 6,
