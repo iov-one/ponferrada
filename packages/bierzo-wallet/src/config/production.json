@@ -43,7 +43,7 @@
         "codecType": "cosmwasm",
         "chainId": "cosmos:cosmoshub-3",
         "name": "Cosmos",
-        "node": "http://api.cosmos.network/",
+        "node": "https://api.cosmos.network/",
         "tokenConfig": {
           "bankTokens": [
             {
