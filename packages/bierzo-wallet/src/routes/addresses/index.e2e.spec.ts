@@ -120,10 +120,12 @@ withChainsDescribe("E2E > Addresses route", () => {
 
     it("has a register iovname link and shows all registered iovnames", async () => {
       const iovname2 = await registerIovname(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToIovnamesTabE2E(page);
 
+      await sleep(2000);
       const iovnames = await getIovnames(page);
       const expected = [iovname, iovname2].sort((a, b) =>
         a.localeCompare(b, undefined, { sensitivity: "base" }),
@@ -152,16 +154,17 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
 
       await travelToAddressesE2E(page);
       await travelToIovnamesTabE2E(page);
 
+      await sleep(2000);
       const iovnameMatches = await page.$x(`//h5[contains(., '${iovname}')]`);
       expect(iovnameMatches.length).toBe(0);
     }, 60000);
@@ -180,10 +183,12 @@ withChainsDescribe("E2E > Addresses route", () => {
 
     it("has a register starname link and shows all registered starnames", async () => {
       const starname2 = await registerStarname(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const starnames = await getStarnames(page);
       const expected = [starname, starname2].sort((a, b) =>
         a.localeCompare(b, undefined, { sensitivity: "base" }),
@@ -195,10 +200,12 @@ withChainsDescribe("E2E > Addresses route", () => {
     it("shows names besides starnames", async () => {
       await manageFirstStarnameE2E(page);
       const name = await registerName(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const starnamesAndNames = await getStarnames(page);
       const expected = [starname, name].sort((a, b) =>
         a.localeCompare(b, undefined, { sensitivity: "base" }),
@@ -215,10 +222,12 @@ withChainsDescribe("E2E > Addresses route", () => {
     it('names have "Manage" links that redirect to the Manage route for that name', async () => {
       await manageFirstStarnameE2E(page);
       const name = await registerName(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       await manageFirstNameE2E(page);
       await page.$x(`//h6[contains(., '${name}')]`);
     }, 60000);
@@ -238,10 +247,10 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
 
@@ -269,10 +278,10 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${RENEW_CONFIRMATION_VIEW_ID}`);
 
@@ -280,7 +289,6 @@ withChainsDescribe("E2E > Addresses route", () => {
       await travelToStarnamesTabE2E(page);
 
       await sleep(2000);
-
       const [newExpiryLabelElement] = await getElements(page, STARNAMES_LIST_EXPIRY_DATE);
       const newExpiryLabelString = (await (
         await newExpiryLabelElement.getProperty("textContent")
@@ -293,10 +301,12 @@ withChainsDescribe("E2E > Addresses route", () => {
     it("starnames can be deleted and delete associated names", async () => {
       await manageFirstStarnameE2E(page);
       await registerName(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       await manageFirstStarnameE2E(page);
 
       const [menuButton] = await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON);
@@ -306,16 +316,17 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${DELETE_CONFIRMATION_VIEW_ID}`);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const starnameMatches = await page.$x(`//h5[contains(., '${starname}')]`);
       expect(starnameMatches.length).toBe(0);
     }, 60000);
@@ -324,10 +335,12 @@ withChainsDescribe("E2E > Addresses route", () => {
       // Transfer
       await manageFirstStarnameE2E(page);
       const name = await registerName(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       await manageFirstStarnameE2E(page);
       const [toggleShowName] = await getElements(page, ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES);
       await toggleShowName.click();
@@ -337,6 +350,7 @@ withChainsDescribe("E2E > Addresses route", () => {
       await menuButton.click();
       const transferLink = (await getElements(page, ACCOUNT_MANAGE_MENU_ITEM))[3];
       await transferLink.click();
+      await sleep(2000);
 
       const [recipientParent] = await getElements(page, ACCOUNT_TRANSFER_RECIPIENT);
       const recipientField = await recipientParent.$("input");
@@ -345,16 +359,17 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const nameMatches = await page.$x(`//h5[contains(., '${name}')]`);
       expect(nameMatches.length).toBe(0);
 
@@ -372,16 +387,17 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton2] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton2.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${TRANSFER_CONFIRMATION_VIEW_ID}`);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const nameMatches2 = await page.$x(`//h5[contains(., '${name}')]`);
       expect(nameMatches2.length).toBe(1);
     }, 60000);
@@ -389,10 +405,12 @@ withChainsDescribe("E2E > Addresses route", () => {
     it("names can be deleted", async () => {
       await manageFirstStarnameE2E(page);
       const name = await registerName(browser, page);
+      await sleep(2000);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       await manageFirstStarnameE2E(page);
       const [toggleShowName] = await getElements(page, ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES);
       await toggleShowName.click();
@@ -405,16 +423,17 @@ withChainsDescribe("E2E > Addresses route", () => {
 
       const [submitButton] = await getElements(page, ACCOUNT_OPERATION_SUBMIT_BUTTON);
       await submitButton.click();
+      await sleep(2000);
 
-      await sleep(1000);
       await acceptEnqueuedRequest(browser);
-      await sleep(1000);
+      await sleep(2000);
       await page.bringToFront();
       await page.waitForSelector(`#${DELETE_CONFIRMATION_VIEW_ID}`);
 
       await travelToAddressesE2E(page);
       await travelToStarnamesTabE2E(page);
 
+      await sleep(2000);
       const nameMatches = await page.$x(`//h5[contains(., '${name}')]`);
       expect(nameMatches.length).toBe(0);
     }, 60000);
