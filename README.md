@@ -6,11 +6,14 @@ The most beautiful UI in Blockchain.
 
 ## Packages
 
-Ponferrada browser extension is split in 4 packages:
+The Ponferrada repo is split in 6 packages:
 
-- **medulas-react-components**: All the react components that we use in the UI, based on material-ui v4.0.
-- **sanes-browser-extension**: Main application
-- **valdueza-storybook**: Storybook configuration
+- **medulas-react-components**: Shared react components between the packages, based on Material-UI.
+- **ui-logic**: Shared UI logic functions between the packages.
+- **sanes-browser-extension**: Neuma browser extension.
+- **bierzo-wallet**: Neuma wallet.
+- **sil-governance**: Dashboard for the IOV governance committee.
+- **valdueza-storybook**: Storybook configuration.
 
 ## Tools
 
