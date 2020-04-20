@@ -6,11 +6,14 @@ The most beautiful UI in Blockchain.
 
 ## Packages
 
-Ponferrada browser extension is split in 4 packages:
+The Ponferrada repo is split in 6 packages:
 
-- **medulas-react-components**: All the react components that we use in the UI, based on material-ui v4.0.
-- **sanes-browser-extension**: Main application
-- **valdueza-storybook**: Storybook configuration
+- **medulas-react-components**: Shared react components between the packages, based on Material-UI.
+- **ui-logic**: Shared UI logic functions between the packages.
+- **sanes-browser-extension**: Neuma browser extension.
+- **bierzo-wallet**: Neuma wallet.
+- **sil-governance**: Dashboard for the IOV governance committee.
+- **valdueza-storybook**: Storybook configuration.
 
 ## Tools
 
@@ -54,25 +57,13 @@ before starting on a PR. If you don't know where to start, we try to tag
 ["good first issues"](https://github.com/iov-one/ponferrada/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 that provide a nice way to get started with the ponferrada repo.
 
-### Download and test builds
-
-Builds of the browser extension are available through the CI.
-
-1. Install the [Nightly](https://www.mozilla.org/firefox/nightly/all/) or [Developer](https://www.mozilla.org/firefox/developer/) edition of Firefox. Those versions allow using unsigned extensions.
-2. Go to about:config and set `xpinstall.signatures.required` to `false`.
-3. Go to https://ci.appveyor.com/project/webmaster128/ponferrada/history and pick a recent build
-4. Go to the "Artifacts" tab and download the browser extension artifact (.zip file)
-5. Install the downloaded extension using _Install Add-on From File_ in the Add-on manager (about:addons).
-
 ### Development Environment
 
 To get started, please go to the root directory and run:
 
-```
+```shell
 yarn install
 yarn build
-cd packages/sanes-browser-extension/
-yarn start
 ```
 
 Then open your chrome browser and add the new generated extension (the build folder)
@@ -81,6 +72,13 @@ Then open your chrome browser and add the new generated extension (the build fol
 2. Turn on `Developer mode`
 3. Click load unpacked and go to the `ponferrada/build` folder
 4. You have the iov-ponferrada extension in your browser!
+
+With the extension fully working, you may want to enable hot reloading of the changes you make to the extension by running:
+
+```shell
+cd packages/sanes-browser-extension/
+yarn start
+```
 
 ### Testing
 
@@ -94,7 +92,7 @@ We take seriously the testing environment, performing three different types of t
 
 Used for generating JEST Snapshot tests, and also for develoing components and fast prototype iteration when condig routes. From main folder, run following command:
 
-```
+```shell
 yarn storybook
 ```
 
@@ -104,7 +102,7 @@ For updating snapshots after some changes in order to make everything to work re
 
 Main test stack. It is used to run DOM tests using react test-utils functionalities. From main folder, run following command:
 
-```
+```shell
 yarn test
 ```
 
@@ -144,7 +142,7 @@ unset CHAINS_ENABLED
 Framework used for running e2e tests. It launches chrome instances with the extension installed and executes logic simulating human interaction.
 From main folder, run following command:
 
-```
+```shell
 yarn test
 ```
 
@@ -152,7 +150,7 @@ For installing automatically the extension on each chrome's instance we have had
 
 ## Internals
 
-The extension package has been created using create-react-app extension, but we have had to modify some parts in order to allow Webpack's HMR while developing, and chrome extension's part integration. For more details [read this](./docs/extension).
+The extension package has been created using create-react-app extension, but we have had to modify some parts in order to allow Webpack's HMR while developing, and chrome extension's part integration. For more details [read this](./docs/extension.md).
 
 ## License
 
