@@ -1,8 +1,13 @@
 # Changelog
 
+## 1.3.0 (To be released)
+
+- Wallet: Support for starnames
+
 ## 1.2.1
 
 - Wallet: Add support for e-Money chain
+- Extension: support for future starname features
 
 ## 1.2.0
 
@@ -13,6 +18,7 @@
 - Wallet: Correctly displays transaction of type Update Username Targets
 - Wallet: Adds number of fractional digits to the validation of a payment
 - Wallet: Makes editing addresses of a username more reliable
+- Wallet: Adds wip starnames tab and updates stories
 - Wallet: Adds support for Terra Money, Cosmos Hub, IrisNet, kava, Bitcoin, and Litecoin addresses
 - Extension: Improve UI
 - Extension: Adds network status and correct url to Networks view

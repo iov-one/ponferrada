@@ -4,11 +4,31 @@ import {
   BnsConnection,
   BnsUsernameNft,
   CreateProposalTx,
+  DeleteAccountTx,
+  DeleteDomainTx,
   isCreateProposalTx,
+  isDeleteAccountTx,
+  isDeleteDomainTx,
+  isRegisterAccountTx,
+  isRegisterDomainTx,
   isRegisterUsernameTx,
+  isRenewAccountTx,
+  isRenewDomainTx,
+  isReplaceAccountTargetsTx,
+  isTransferAccountTx,
+  isTransferDomainTx,
+  isTransferUsernameTx,
   isUpdateTargetsOfUsernameTx,
   isVoteTx,
+  RegisterAccountTx,
+  RegisterDomainTx,
   RegisterUsernameTx,
+  RenewAccountTx,
+  RenewDomainTx,
+  ReplaceAccountTargetsTx,
+  TransferAccountTx,
+  TransferDomainTx,
+  TransferUsernameTx,
   UpdateTargetsOfUsernameTx,
   VoteTx,
 } from "@iov/bns";
@@ -40,16 +60,36 @@ function isNonUndefined<T>(t: T | undefined): t is T {
  */
 export type SupportedTransaction =
   | SendTransaction
+  | DeleteAccountTx
+  | DeleteDomainTx
   | RegisterUsernameTx
   | UpdateTargetsOfUsernameTx
+  | TransferUsernameTx
+  | TransferDomainTx
+  | TransferAccountTx
+  | RegisterDomainTx
+  | RegisterAccountTx
+  | RenewAccountTx
+  | RenewDomainTx
+  | ReplaceAccountTargetsTx
   | CreateProposalTx
   | VoteTx;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
   return (
     isSendTransaction(tx) ||
+    isDeleteDomainTx(tx) ||
+    isDeleteAccountTx(tx) ||
+    isRenewDomainTx(tx) ||
+    isRenewAccountTx(tx) ||
     isRegisterUsernameTx(tx) ||
     isUpdateTargetsOfUsernameTx(tx) ||
+    isTransferUsernameTx(tx) ||
+    isRegisterDomainTx(tx) ||
+    isTransferDomainTx(tx) ||
+    isRegisterAccountTx(tx) ||
+    isTransferAccountTx(tx) ||
+    isReplaceAccountTargetsTx(tx) ||
     isCreateProposalTx(tx) ||
     isVoteTx(tx)
   );

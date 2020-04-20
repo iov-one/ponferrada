@@ -3,6 +3,7 @@ import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-comp
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
+import { ErrorParser } from "ui-logic";
 
 import { history } from "..";
 import { getExtensionStatus } from "../../communication/extension";
@@ -16,6 +17,7 @@ import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
+import { addAccountsAction, getAccounts } from "../../store/accounts";
 import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
@@ -53,6 +55,9 @@ export const loginBootSequence = async (
 
   const usernames = await getUsernames(identities);
   dispatch(addUsernamesAction(usernames));
+
+  const accounts = await getAccounts(identities);
+  dispatch(addAccountsAction(accounts));
 };
 
 /**
@@ -96,7 +101,8 @@ const Login = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }
@@ -129,7 +135,8 @@ const Login = (): JSX.Element => {
       }
     } catch (error) {
       console.error(error);
-      toast.show("An error occurred", ToastVariant.ERROR);
+      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      toast.show(message, ToastVariant.ERROR);
     } finally {
       billboard.close();
     }

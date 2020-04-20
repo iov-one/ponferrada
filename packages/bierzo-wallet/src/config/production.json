@@ -19,7 +19,10 @@
     { "chainId": "cosmos-kava-2", "name": "Kava" },
     { "chainId": "cosmos-emoney-1", "name": "e-Money" },
     { "chainId": "bip122-tmp-bitcoin", "name": "Bitcoin" },
-    { "chainId": "bip122-tmp-litecoin", "name": "Litecoin" }
+    { "chainId": "bip122-tmp-litecoin", "name": "Litecoin" },
+    { "chainId": "cosmos-binance-chain-tigris", "name": "Binance Chain" },
+    { "chainId": "bip122-tmp-bcash", "name": "Bitcoin Cash" },
+    { "chainId": "tezos-tmp-mainnet", "name": "Tezos" }
   ],
   "chains": [
     {

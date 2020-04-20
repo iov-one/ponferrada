@@ -27,7 +27,7 @@ export async function getPaymentRequestData(page: Page, dataIndex: number): Prom
     throw new Error(`LI element with index: ${dataIndex} not found.`);
   }
 
-  return await (await element.getProperty("textContent")).jsonValue();
+  return (await (await element.getProperty("textContent")).jsonValue()) as string;
 }
 
 export async function getInvalidAddressError(page: Page): Promise<string> {
@@ -36,5 +36,5 @@ export async function getInvalidAddressError(page: Page): Promise<string> {
     throw new Error(`Validation error message was not found.`);
   }
 
-  return await (await validationError.getProperty("textContent")).jsonValue();
+  return (await (await validationError.getProperty("textContent")).jsonValue()) as string;
 }

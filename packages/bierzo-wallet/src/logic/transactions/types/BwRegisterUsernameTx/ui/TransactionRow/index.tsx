@@ -7,10 +7,10 @@ import { amountToString } from "ui-logic";
 
 import { getBorderColor } from "../../../../../../theme/css";
 import { formatDate } from "../../../../../../utils/date";
+import dropdownArrow from "../../../../assets/dropdownArrow.svg";
+import dropdownArrowClose from "../../../../assets/dropdownArrowClose.svg";
+import txIcon from "../../../../assets/user.svg";
 import { ProcessedTx } from "../../../../types/BwParser";
-import dropdownArrow from "../assets/dropdownArrow.svg";
-import dropdownArrowClose from "../assets/dropdownArrowClose.svg";
-import txIcon from "../assets/user.svg";
 import TxDetails from "./Details";
 
 const useStyles = makeStyles({

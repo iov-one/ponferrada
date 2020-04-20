@@ -4,23 +4,23 @@ import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
-import { NoUsernameHeader } from "../../registerName/components";
+import { NoIovnameHeader } from "../../account/register/components/IovnameForm";
+import { registerIovnameId } from "./Iovnames";
 
 interface StarnamesNotExistsProps {
-  readonly onRegisterUsername: () => void;
+  readonly onRegisterIovname: () => void;
   readonly rpcEndpointType: RpcEndpointType;
 }
 
 export function GetYourAddressWithExtension({
-  onRegisterUsername,
+  onRegisterIovname,
 }: Omit<StarnamesNotExistsProps, "rpcEndpointType">): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoUsernameHeader />
+      <NoIovnameHeader />
       <Block marginTop={3} />
       <Typography variant="subtitle1" weight="semibold" gutterBottom>
-        You have no starnames
+        You have no iovnames
       </Typography>
       <Typography variant="body2" color="textPrimary">
         With Neuma you can choose your easy to read human readable address. No more complicated cryptography
@@ -28,13 +28,13 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={REGISTER_PERSONALIZED_ADDRESS_ROUTE}
+        id={registerIovnameId}
         variant="subtitle1"
         color="primary"
         weight="semibold"
         inline
         link
-        onClick={onRegisterUsername}
+        onClick={onRegisterIovname}
       >
         Choose Now
       </Typography>
@@ -45,13 +45,13 @@ export function GetYourAddressWithExtension({
 export function GetYourAddressWithLedger(): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
-      <NoUsernameHeader />
+      <NoIovnameHeader />
       <Block marginTop={4} />
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={REGISTER_PERSONALIZED_ADDRESS_ROUTE} variant="body1" color="primary" weight="light">
-        personalized address
+      <Typography id={registerIovnameId} variant="body1" color="primary" weight="light">
+        iovnames
       </Typography>
       <Block textAlign="center">
         <Typography variant="body1" weight="light" inline>
@@ -65,19 +65,16 @@ export function GetYourAddressWithLedger(): JSX.Element {
   );
 }
 
-export function GetYourAddress({
-  rpcEndpointType,
-  onRegisterUsername,
-}: StarnamesNotExistsProps): JSX.Element {
+export function GetYourAddress({ rpcEndpointType, onRegisterIovname }: StarnamesNotExistsProps): JSX.Element {
   switch (rpcEndpointType) {
     case "extension":
-      return <GetYourAddressWithExtension onRegisterUsername={onRegisterUsername} />;
+      return <GetYourAddressWithExtension onRegisterIovname={onRegisterIovname} />;
     case "ledger":
       return <GetYourAddressWithLedger />;
   }
 }
 
-function StarnamesNotExists({ onRegisterUsername, rpcEndpointType }: StarnamesNotExistsProps): JSX.Element {
+function StarnamesNotExists({ onRegisterIovname, rpcEndpointType }: StarnamesNotExistsProps): JSX.Element {
   const theme = useTheme<Theme>();
 
   return (
@@ -91,7 +88,7 @@ function StarnamesNotExists({ onRegisterUsername, rpcEndpointType }: StarnamesNo
       textAlign="center"
       border="1px solid #F3F3F3"
     >
-      <GetYourAddress onRegisterUsername={onRegisterUsername} rpcEndpointType={rpcEndpointType} />
+      <GetYourAddress onRegisterIovname={onRegisterIovname} rpcEndpointType={rpcEndpointType} />
     </Block>
   );
 }

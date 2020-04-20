@@ -1,12 +1,12 @@
 import { ChainAddressPair } from "@iov/bns";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
-import { Theme } from "@material-ui/core";
+import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
-import { Block, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
-import { defaultColor } from "medulas-react-components";
+import { Block, defaultColor, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 
 import copy from "./assets/copy.svg";
+
+export const TABLE_ADDRESS_ROW = "table-address-row";
 
 export interface ChainAddressPairWithName extends ChainAddressPair {
   readonly chainName: string;
@@ -52,7 +52,7 @@ const AddressRow = ({ chain }: AddressesRowProps): JSX.Element => {
   };
 
   return (
-    <TableRow key={chain.chainId}>
+    <TableRow key={chain.chainId} data-test={TABLE_ADDRESS_ROW}>
       <TableCell classes={cellClasses} align="left">
         {chain.chainName}
       </TableCell>
@@ -79,11 +79,11 @@ const AddressesTable = ({ chainAddresses }: AddressesTableProps): JSX.Element =>
     head: classes.cellHead,
   };
 
-  const chainAddressesSorted = Array.from(
-    chainAddresses,
-  ).sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
-    a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
-  );
+  const chainAddressesSorted = chainAddresses
+    .slice()
+    .sort((a: ChainAddressPairWithName, b: ChainAddressPairWithName) =>
+      a.chainName.localeCompare(b.chainName, undefined, { sensitivity: "base" }),
+    );
 
   return (
     <Table>

@@ -6,11 +6,11 @@ import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
 import { getRpcEndpointType } from "../../store/rpcendpoint/selectors";
 import { getFirstUsername } from "../../store/usernames/selectors";
-import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../paths";
+import { IOVNAME_REGISTER_ROUTE } from "../paths";
 import Layout from "./components";
 
-function onRegisterUsername(): void {
-  history.push(REGISTER_PERSONALIZED_ADDRESS_ROUTE);
+function onRegisterIovname(): void {
+  history.push(IOVNAME_REGISTER_ROUTE);
 }
 
 const Balance = (): JSX.Element => {
@@ -22,7 +22,7 @@ const Balance = (): JSX.Element => {
   return (
     <PageMenu>
       <Layout
-        onRegisterUsername={onRegisterUsername}
+        onRegisterIovname={onRegisterIovname}
         iovAddress={iovAddress}
         balances={tokens}
         rpcEndpointType={rpcEndpointType}

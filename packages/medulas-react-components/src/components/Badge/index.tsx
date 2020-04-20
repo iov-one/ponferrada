@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "initial",
     transform: "initial",
     marginLeft: `${theme.spacing(0.5)}px`,
+    zIndex: 0,
   },
   textRoot: {
     position: "initial",

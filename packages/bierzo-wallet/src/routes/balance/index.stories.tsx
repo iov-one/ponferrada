@@ -7,9 +7,9 @@ import PageMenu from "../../components/PageMenu";
 import { BalanceState } from "../../store/balances";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
-  REGISTER_USERNAME_REGISTRATION_STORY_PATH,
-  REGISTER_USERNAME_STORY_PATH,
-} from "../registerName/index.stories";
+  REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
+  REGISTER_IOVNAME_STORY_PATH,
+} from "../account/register/index.stories";
 import Layout from "./components/index";
 
 export const BALANCE_STORY_PATH = `${bierzoRoot}/Balance`;
@@ -41,7 +41,7 @@ storiesOf(BALANCE_STORY_PATH, module)
           iovAddress={ACCOUNT_NAME}
           rpcEndpointType="extension"
           balances={BALANCE}
-          onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+          onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         />
       </PageMenu>
     </DecoratedStorybook>
@@ -53,7 +53,7 @@ storiesOf(BALANCE_STORY_PATH, module)
           iovAddress={undefined}
           rpcEndpointType="extension"
           balances={NO_BALANCE}
-          onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+          onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         />
       </PageMenu>
     </DecoratedStorybook>
@@ -65,7 +65,7 @@ storiesOf(BALANCE_STORY_PATH, module)
           iovAddress={undefined}
           rpcEndpointType="ledger"
           balances={NO_BALANCE}
-          onRegisterUsername={linkTo(REGISTER_USERNAME_STORY_PATH, REGISTER_USERNAME_REGISTRATION_STORY_PATH)}
+          onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         />
       </PageMenu>
     </DecoratedStorybook>
