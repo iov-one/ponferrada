@@ -54,16 +54,6 @@ before starting on a PR. If you don't know where to start, we try to tag
 ["good first issues"](https://github.com/iov-one/ponferrada/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 that provide a nice way to get started with the ponferrada repo.
 
-### Download and test builds
-
-Builds of the browser extension are available through the CI.
-
-1. Install the [Nightly](https://www.mozilla.org/firefox/nightly/all/) or [Developer](https://www.mozilla.org/firefox/developer/) edition of Firefox. Those versions allow using unsigned extensions.
-2. Go to about:config and set `xpinstall.signatures.required` to `false`.
-3. Go to https://ci.appveyor.com/project/webmaster128/ponferrada/history and pick a recent build
-4. Go to the "Artifacts" tab and download the browser extension artifact (.zip file)
-5. Install the downloaded extension using _Install Add-on From File_ in the Add-on manager (about:addons).
-
 ### Development Environment
 
 To get started, please go to the root directory and run:
