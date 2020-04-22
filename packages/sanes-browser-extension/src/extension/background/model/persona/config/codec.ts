@@ -7,6 +7,7 @@ import { createLiskConnector } from "@iov/lisk";
 
 import { getErc20TokensConfig } from "../../../../../utils/tokens";
 import { ChainSpec, CodecType } from "./configurationfile";
+import { createStar1Connector } from "./mockstar1chain";
 
 export function algorithmForCodec(codec: CodecType): Algorithm {
   switch (codec) {
@@ -14,6 +15,7 @@ export function algorithmForCodec(codec: CodecType): Algorithm {
     case CodecType.Lisk:
       return Algorithm.Ed25519;
     case CodecType.Ethereum:
+    case CodecType.Iovns:
       return Algorithm.Secp256k1;
     default:
       throw new Error(`unsupported codec: ${codec}`);
@@ -24,6 +26,7 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
   const pathBuilder = (derivation: number): readonly Slip10RawIndex[] => {
     switch (codecType) {
       case CodecType.Bns:
+      case CodecType.Iovns:
         return HdPaths.iov(derivation);
       case CodecType.Lisk:
         return HdPaths.bip44Like(134, derivation);
@@ -53,6 +56,8 @@ export function chainConnector(chainSpec: ChainSpec): ChainConnector {
         },
         chainSpec.chainId,
       );
+    case CodecType.Iovns:
+      return createStar1Connector(chainSpec);
     default:
       throw new Error("No connector for this codec found");
   }

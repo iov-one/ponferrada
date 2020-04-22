@@ -9,6 +9,7 @@ import developmentConfig from "./development.json";
 export enum CodecType {
   Bns = "bns",
   Ethereum = "eth",
+  Iovns = "iovns",
   Lisk = "lsk",
 }
 

@@ -10,6 +10,7 @@
   },
   "websiteName": "wallet-staging.iov.one",
   "supportedChains": [
+    { "chainId": "starname-network", "name": "Starname Network" },
     { "chainId": "iov-exchangenet", "name": "IOV Exchangenet" },
     { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
     { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
@@ -25,6 +26,14 @@
     { "chainId": "tezos-tmp-mainnet", "name": "Tezos" }
   ],
   "chains": [
+    {
+      "chainSpec": {
+        "codecType": "iovns",
+        "chainId": "starname-network",
+        "name": "Starname Network",
+        "node": "http://localhost:23456/"
+      }
+    },
     {
       "chainSpec": {
         "codecType": "bns",

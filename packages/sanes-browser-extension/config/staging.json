@@ -6,6 +6,14 @@
   "chains": [
     {
       "chainSpec": {
+        "codecType": "iovns",
+        "chainId": "starname-network",
+        "name": "Starname Network",
+        "node": "http://localhost:23456/"
+      }
+    },
+    {
+      "chainSpec": {
         "codecType": "bns",
         "chainId": "iov-exchangenet",
         "name": "IOV Exchangenet",

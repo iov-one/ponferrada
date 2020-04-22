@@ -42,6 +42,8 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
         scraperApiUrl: spec.scraper,
         erc20Tokens: spec.ethereumOptions ? getErc20TokensConfig(spec.ethereumOptions) : undefined,
       });
+    case CodecType.Iovns:
+      return undefined;
     case CodecType.Lisk:
       return await establishLiskConnection(spec.node, spec.chainId as ChainId);
     default:
