@@ -1,8 +1,9 @@
 # Changelog
 
-## 1.3.0 (To be released)
+## 1.3.0
 
 - Wallet: Support for starnames
+- Starnames and iovnames are now available in the main header
 
 ## 1.2.1
 
