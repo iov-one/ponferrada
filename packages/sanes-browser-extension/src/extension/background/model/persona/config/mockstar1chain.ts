@@ -38,7 +38,6 @@ const bankToken = {
   ticker: "IOV",
   denom: "IOV",
 };
-console.warn(`HARD-CODED values in codec.ts: ${JSON.stringify({ account0, addressPefix, bankToken })}`);
 
 /**
  * This class simulates a live connection to a star1 prefixed chain.

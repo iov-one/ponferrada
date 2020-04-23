@@ -22,7 +22,6 @@ export function getCodec(spec: ChainSpec): TxCodec {
         denom: "IOV",
       };
       const cosmwasmCodec = new CosmWasmCodec(addressPefix, [bankToken]);
-      console.warn(`HARD-CODED values in codec.ts: ${JSON.stringify({ addressPefix, bankToken })}`);
       return cosmwasmCodec;
     }
     case CodecType.Lisk:
