@@ -55,6 +55,8 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
     setShow(show => !show);
   };
 
+  const hasAssociatedNames = names.length > 0;
+
   return (
     <React.Fragment>
       <Block width={650} display="flex" justifyContent="center" flexDirection="column">
@@ -74,55 +76,59 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
           </Block>
         </Paper>
 
-        <Block marginTop={4} display="flex" justifyContent="center">
-          <Block onClick={toggleShowAccounts} data-test={ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES}>
-            <Block display="inline" marginRight={1}>
-              <Typography variant="subtitle2" weight="semibold" align="center" inline link>
-                Names associated with this starname
-              </Typography>
+        {hasAssociatedNames && (
+          <React.Fragment>
+            <Block marginTop={4} display="flex" justifyContent="center">
+              <Block onClick={toggleShowAccounts} data-test={ACCOUNT_MANAGE_TOGGLE_SHOW_NAMES}>
+                <Block display="inline" marginRight={1}>
+                  <Typography variant="subtitle2" weight="semibold" align="center" inline link>
+                    Names associated with this starname
+                  </Typography>
+                </Block>
+                <Image src={showIcon} alt="arrow" />
+              </Block>
             </Block>
-            <Image src={showIcon} alt="arrow" />
-          </Block>
-        </Block>
-        <Collapse in={show}>
-          {names
-            .slice()
-            .sort((a, b) =>
-              `${a.name}*${a.domain}`.localeCompare(`${b.name}*${b.domain}`, undefined, {
-                sensitivity: "base",
-              }),
-            )
-            .map(name => {
-              const onEdit = (): void => {
-                history.push(NAME_EDIT_ROUTE, name);
-              };
+            <Collapse in={show}>
+              {names
+                .slice()
+                .sort((a, b) =>
+                  `${a.name}*${a.domain}`.localeCompare(`${b.name}*${b.domain}`, undefined, {
+                    sensitivity: "base",
+                  }),
+                )
+                .map(name => {
+                  const onEdit = (): void => {
+                    history.push(NAME_EDIT_ROUTE, name);
+                  };
 
-              const accountState: AccountLocationState = {
-                domain: domain,
-                account: name,
-              };
+                  const accountState: AccountLocationState = {
+                    domain: domain,
+                    account: name,
+                  };
 
-              const menuItems: readonly ActionMenuItem[] = [
-                { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, accountState) },
-                {
-                  title: "Transfer it back to me",
-                  action: () => history.push(NAME_TRANSFER_BACK_ROUTE, accountState),
-                },
-                { title: "Delete name", action: () => history.push(NAME_DELETE_ROUTE, accountState) },
-              ];
+                  const menuItems: readonly ActionMenuItem[] = [
+                    { title: "Transfer name", action: () => history.push(NAME_TRANSFER_ROUTE, accountState) },
+                    {
+                      title: "Transfer it back to me",
+                      action: () => history.push(NAME_TRANSFER_BACK_ROUTE, accountState),
+                    },
+                    { title: "Delete name", action: () => history.push(NAME_DELETE_ROUTE, accountState) },
+                  ];
 
-              return (
-                <AccountManage
-                  key={`${name.name}*${name.domain}`}
-                  menuItems={menuItems}
-                  onEdit={onEdit}
-                  account={name}
-                  hideExpiration={true}
-                  transferedTo={domain.owner !== name.owner ? name.owner : undefined}
-                />
-              );
-            })}
-        </Collapse>
+                  return (
+                    <AccountManage
+                      key={`${name.name}*${name.domain}`}
+                      menuItems={menuItems}
+                      onEdit={onEdit}
+                      account={name}
+                      hideExpiration={true}
+                      transferedTo={domain.owner !== name.owner ? name.owner : undefined}
+                    />
+                  );
+                })}
+            </Collapse>
+          </React.Fragment>
+        )}
       </Block>
     </React.Fragment>
   );
