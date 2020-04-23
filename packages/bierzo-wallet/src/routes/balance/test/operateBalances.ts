@@ -5,19 +5,19 @@ import { acceptEnqueuedRequest } from "../../../utils/test/persona";
 import { REGISTER_IOVNAME_FIELD } from "../../account/register/components/IovnameForm";
 import { REGISTER_NAME_FIELD, REGISTER_NAME_VIEW_ID } from "../../account/register/components/NameForm";
 import { REGISTER_STARNAME_FIELD } from "../../account/register/components/StarnameForm";
-import { registerIovnameId } from "../../addresses/components/Iovnames";
-import { registerStarnameId } from "../../addresses/components/Starnames";
+import { REGISTER_IOVNAME_LINK } from "../../iovnames";
+import { REGISTER_STARNAME_LINK } from "../../starnames";
 
 const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;
 
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
-  const index = mainMenuH6Elements + 4;
+  const index = mainMenuH6Elements + 6;
   return h6Elements[index].textContent || "";
 };
 
 export const getIovUsername = (h6Elements: Element[]): string => {
-  const index = mainMenuH6Elements + 2;
+  const index = mainMenuH6Elements + 4;
   return h6Elements[index].textContent || "";
 };
 
@@ -40,12 +40,12 @@ export function waitForAllBalances(page: Page): Promise<void> {
 }
 
 export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
-  const index = mainMenuH6Elements + 2;
+  const index = mainMenuH6Elements + 4;
   return ((await (await h6Elements[index].getProperty("textContent")).jsonValue()) as string) || "";
 };
 
 export const registerIovname = async (browser: Browser, page: Page): Promise<string> => {
-  await page.click(`#${registerIovnameId}`);
+  await page.click(`#${REGISTER_IOVNAME_LINK}`);
 
   // Fill the form
   await sleep(1000);
@@ -63,7 +63,7 @@ export const registerIovname = async (browser: Browser, page: Page): Promise<str
 };
 
 export const registerStarname = async (browser: Browser, page: Page): Promise<string> => {
-  await page.click(`#${registerStarnameId}`);
+  await page.click(`#${REGISTER_STARNAME_LINK}`);
 
   // Fill the form
   await sleep(1000);
@@ -84,6 +84,7 @@ export const registerName = async (browser: Browser, page: Page): Promise<string
   const starname = (await (await (await page.$$("h4"))[0].getProperty("textContent")).jsonValue()) as string;
 
   const [createNewNameLink] = await page.$x(`//h6[contains(., '+ Create a new name')]`);
+  await sleep(10000);
   createNewNameLink.click();
   await page.waitForSelector(`#${REGISTER_NAME_VIEW_ID}`);
 

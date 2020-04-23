@@ -2,19 +2,17 @@ import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
+import * as ReactRedux from "react-redux";
 
-import { RpcEndpointType } from "../../../communication/rpcEndpoint";
+import { REGISTER_STARNAME_LINK } from "..";
+import { getRpcEndpointType } from "../../../store/rpcendpoint/selectors";
 import { NoStarnameHeader } from "../../account/register/components/StarnameForm";
-import { registerStarnameId } from "./Starnames";
 
-interface StarnamesNotExistsProps {
+interface Props {
   readonly onRegisterStarname: () => void;
-  readonly rpcEndpointType: RpcEndpointType;
 }
 
-export function GetYourAddressWithExtension({
-  onRegisterStarname,
-}: Omit<StarnamesNotExistsProps, "rpcEndpointType">): JSX.Element {
+export function GetYourAddressWithExtension({ onRegisterStarname }: Props): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <NoStarnameHeader />
@@ -29,7 +27,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={registerStarnameId}
+        id={REGISTER_STARNAME_LINK}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -51,7 +49,7 @@ export function GetYourAddressWithLedger(): JSX.Element {
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={registerStarnameId} variant="body1" color="primary" weight="light">
+      <Typography id={REGISTER_STARNAME_LINK} variant="body1" color="primary" weight="light">
         starname
       </Typography>
       <Block textAlign="center">
@@ -66,10 +64,9 @@ export function GetYourAddressWithLedger(): JSX.Element {
   );
 }
 
-export function GetYourAddress({
-  rpcEndpointType,
-  onRegisterStarname,
-}: StarnamesNotExistsProps): JSX.Element {
+export function GetYourAddress({ onRegisterStarname }: Props): JSX.Element {
+  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
+
   switch (rpcEndpointType) {
     case "extension":
       return <GetYourAddressWithExtension onRegisterStarname={onRegisterStarname} />;
@@ -78,7 +75,7 @@ export function GetYourAddress({
   }
 }
 
-function StarnamesNotExists({ onRegisterStarname, rpcEndpointType }: StarnamesNotExistsProps): JSX.Element {
+function StarnamesNotExists({ onRegisterStarname }: Props): JSX.Element {
   const theme = useTheme<Theme>();
 
   return (
@@ -92,7 +89,7 @@ function StarnamesNotExists({ onRegisterStarname, rpcEndpointType }: StarnamesNo
       textAlign="center"
       border="1px solid #F3F3F3"
     >
-      <GetYourAddress onRegisterStarname={onRegisterStarname} rpcEndpointType={rpcEndpointType} />
+      <GetYourAddress onRegisterStarname={onRegisterStarname} />
     </Block>
   );
 }

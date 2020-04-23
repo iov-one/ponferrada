@@ -2,19 +2,17 @@ import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
+import * as ReactRedux from "react-redux";
 
-import { RpcEndpointType } from "../../../communication/rpcEndpoint";
+import { REGISTER_IOVNAME_LINK } from "..";
+import { getRpcEndpointType } from "../../../store/rpcendpoint/selectors";
 import { NoIovnameHeader } from "../../account/register/components/IovnameForm";
-import { registerIovnameId } from "./Iovnames";
 
-interface StarnamesNotExistsProps {
+interface Props {
   readonly onRegisterIovname: () => void;
-  readonly rpcEndpointType: RpcEndpointType;
 }
 
-export function GetYourAddressWithExtension({
-  onRegisterIovname,
-}: Omit<StarnamesNotExistsProps, "rpcEndpointType">): JSX.Element {
+export function GetYourAddressWithExtension({ onRegisterIovname }: Props): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <NoIovnameHeader />
@@ -28,7 +26,7 @@ export function GetYourAddressWithExtension({
       </Typography>
       <Block marginTop={3} />
       <Typography
-        id={registerIovnameId}
+        id={REGISTER_IOVNAME_LINK}
         variant="subtitle1"
         color="primary"
         weight="semibold"
@@ -50,7 +48,7 @@ export function GetYourAddressWithLedger(): JSX.Element {
       <Typography variant="body1" weight="light">
         You can not register
       </Typography>
-      <Typography id={registerIovnameId} variant="body1" color="primary" weight="light">
+      <Typography id={REGISTER_IOVNAME_LINK} variant="body1" color="primary" weight="light">
         iovnames
       </Typography>
       <Block textAlign="center">
@@ -65,7 +63,9 @@ export function GetYourAddressWithLedger(): JSX.Element {
   );
 }
 
-export function GetYourAddress({ rpcEndpointType, onRegisterIovname }: StarnamesNotExistsProps): JSX.Element {
+export function GetYourAddress({ onRegisterIovname }: Props): JSX.Element {
+  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
+
   switch (rpcEndpointType) {
     case "extension":
       return <GetYourAddressWithExtension onRegisterIovname={onRegisterIovname} />;
@@ -74,7 +74,7 @@ export function GetYourAddress({ rpcEndpointType, onRegisterIovname }: Starnames
   }
 }
 
-function StarnamesNotExists({ onRegisterIovname, rpcEndpointType }: StarnamesNotExistsProps): JSX.Element {
+function StarnamesNotExists({ onRegisterIovname }: Props): JSX.Element {
   const theme = useTheme<Theme>();
 
   return (
@@ -88,7 +88,7 @@ function StarnamesNotExists({ onRegisterIovname, rpcEndpointType }: StarnamesNot
       textAlign="center"
       border="1px solid #F3F3F3"
     >
-      <GetYourAddress onRegisterIovname={onRegisterIovname} rpcEndpointType={rpcEndpointType} />
+      <GetYourAddress onRegisterIovname={onRegisterIovname} />
     </Block>
   );
 }

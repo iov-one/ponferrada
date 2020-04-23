@@ -1,11 +1,16 @@
 import { makeStyles, Theme } from "@material-ui/core";
-import classNames from "classnames";
 import { Badge, Block, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
+import {
+  ADDRESSES_ROUTE,
+  BALANCE_ROUTE,
+  IOVNAME_ROUTE,
+  STARNAME_ROUTE,
+  TRANSACTIONS_ROUTE,
+} from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -21,13 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       cursor: "pointer",
     },
   },
-  activated: {
-    "& $line": {
-      visibility: "visible",
-    },
-  },
   line: {
-    visibility: "hidden",
     height: "4px",
     backgroundColor: theme.palette.primary.main,
     borderRadius: "4px",
@@ -39,12 +38,20 @@ const onBalance = (): void => {
   history.push(BALANCE_ROUTE);
 };
 
-const onAddresses = (): void => {
-  history.push(ADDRESSES_ROUTE);
+const onStarnames = (): void => {
+  history.push(STARNAME_ROUTE);
+};
+
+const onIovnames = (): void => {
+  history.push(IOVNAME_ROUTE);
 };
 
 const onTransactions = (): void => {
   history.push(TRANSACTIONS_ROUTE);
+};
+
+const onAddresses = (): void => {
+  history.push(ADDRESSES_ROUTE);
 };
 
 const lastTxNewer = (lastTx: TxMeta, lastStoredTx: TxMeta): boolean => {
@@ -75,9 +82,11 @@ const calcTxBadgeVisibilityState = (
   return false;
 };
 
-const BALANCE_TEXT = "Balances";
-export const ADDRESSES_TEXT = "Addresses";
-export const TRANSACTIONS_TEXT = "Transactions";
+export const BALANCES_TAB_TITLE = "Balances";
+export const STARNAMES_TAB_TITLE = "Starnames";
+export const IOVNAMES_TAB_TITLE = "iovnames";
+export const TRANSACTIONS_TAB_TITLE = "Transactions";
+export const ADDRESSES_TAB_TITLE = "Addresses";
 
 interface MenuItemProps {
   readonly showBadge?: boolean;
@@ -108,34 +117,41 @@ interface Props {
 
 const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
   const classes = useStyles();
-  const showBalance = path === BALANCE_ROUTE;
+
+  const showBalances = path === BALANCE_ROUTE;
+  const showStarnames = path === STARNAME_ROUTE;
+  const showIovnames = path === IOVNAME_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showAddresses = path === ADDRESSES_ROUTE;
-
-  const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
-  const addressesClasses = classNames(classes.item, showAddresses ? classes.activated : undefined);
-  const transactionsClasses = classNames(classes.item, showTransactions ? classes.activated : undefined);
 
   const showBadge = calcTxBadgeVisibilityState(lastTx, getLastTx());
 
   return (
     <Block className={classes.root}>
-      <Block className={balanceClasses}>
-        <LinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
-        <Block className={classes.line} />
+      <Block className={classes.item}>
+        <LinkMenuItem onClick={onBalance} itemTitle={BALANCES_TAB_TITLE} />
+        {showBalances && <Block className={classes.line} />}
       </Block>
-      <Block className={addressesClasses}>
-        <LinkMenuItem onClick={onAddresses} itemTitle={ADDRESSES_TEXT} />
-        <Block className={classes.line} />
+      <Block className={classes.item}>
+        <LinkMenuItem onClick={onStarnames} itemTitle={STARNAMES_TAB_TITLE} />
+        {showStarnames && <Block className={classes.line} />}
       </Block>
-      <Block className={transactionsClasses}>
+      <Block className={classes.item}>
+        <LinkMenuItem onClick={onIovnames} itemTitle={IOVNAMES_TAB_TITLE} />
+        {showIovnames && <Block className={classes.line} />}
+      </Block>
+      <Block className={classes.item}>
         <LinkMenuItem
           onClick={onTransactions}
-          itemTitle={TRANSACTIONS_TEXT}
+          itemTitle={TRANSACTIONS_TAB_TITLE}
           badgeText="new"
           showBadge={showBadge}
         />
-        <Block className={classes.line} />
+        {showTransactions && <Block className={classes.line} />}
+      </Block>
+      <Block className={classes.item}>
+        <LinkMenuItem onClick={onAddresses} itemTitle={ADDRESSES_TAB_TITLE} />
+        {showAddresses && <Block className={classes.line} />}
       </Block>
     </Block>
   );

@@ -210,9 +210,6 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -225,16 +222,32 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -254,9 +267,25 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -1202,9 +1231,6 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -1217,16 +1243,32 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -1246,9 +1288,25 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -4945,693 +5003,6 @@ exports[`Storyshots Bierzo Wallet/Addresses Addresses tab 1`] = `
 </div>
 `;
 
-exports[`Storyshots Bierzo Wallet/Addresses Iovnames tab 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
-  id="iovnames-view-id"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-        >
-          yourname*iov
-        </h6>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
-      >
-        You have no iovnames
-      </h6>
-      <p
-        className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
-      >
-        With Neuma you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.
-      </p>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-        id="-iovname-register"
-        onClick={[Function]}
-      >
-        Choose Now
-      </h6>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Iovnames with name tab 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
-  id="iovnames-view-id"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <img
-          alt="Iovname Logo"
-          className="makeStyles-root"
-          src="iovname-logo.svg"
-        />
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h5
-          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h5 MuiTypography-alignCenter"
-        >
-          Register a new iovname
-        </h5>
-      </div>
-      <p
-        className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-        id="-iovname-register"
-        onClick={[Function]}
-      >
-        Register now
-      </p>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-      >
-        test1*iov
-      </h5>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Manage
-      </h6>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-      >
-        test2*iov
-      </h5>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Manage
-      </h6>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-      >
-        test3*iov
-      </h5>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Manage
-      </h6>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Main with extension 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item makeStyles-activated"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your starnames
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your iovnames
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your blockchain addresses
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-    id="starnames-view-id"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
-        >
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            *yourstarname
-          </h6>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
-        >
-          Register your starname
-        </h6>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
-        >
-          A starname is your universal username for the blockchain world. It enables you to receive crypto-currencies or to log in to blockchain applications in a seamless way. Transferring value becomes fast an easy.
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-          id="-starname-register"
-          onClick={[Function]}
-        >
-          Register Now
-        </h6>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Main with ledger 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item makeStyles-activated"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your starnames
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your iovnames
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your blockchain addresses
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-    id="starnames-view-id"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
-        >
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            *yourstarname
-          </h6>
-        </div>
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <p
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-body1"
-        >
-          You can not register
-        </p>
-        <p
-          className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
-          id="-starname-register"
-        >
-          starname
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <p
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-          >
-            using
-             
-          </p>
-          <p
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-          >
-            Ledger Nano S
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Main with names 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item makeStyles-activated"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your starnames
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your iovnames
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root makeStyles-item"
-        onClick={[Function]}
-      >
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2"
-        >
-          Your blockchain addresses
-        </h6>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-    id="starnames-view-id"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <img
-            alt="Iovname Logo"
-            className="makeStyles-root"
-            src="starname-logo.svg"
-          />
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <h5
-            className="MuiTypography-root makeStyles-defaultColor MuiTypography-h5 MuiTypography-alignCenter"
-          >
-            Register a new starname
-          </h5>
-        </div>
-        <p
-          className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-          id="-starname-register"
-          onClick={[Function]}
-        >
-          Register now
-        </p>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h5
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-          >
-            name1*domain1
-          </h5>
-        </div>
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-          onClick={[Function]}
-        >
-          Manage
-        </h6>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h5
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-          >
-            name2*domain1
-          </h5>
-        </div>
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-          onClick={[Function]}
-        >
-          Manage
-        </h6>
-      </div>
-    </div>
-    <div
-      className="MuiBox-root MuiBox-root"
-    />
-    <div
-      className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <div
-          className="MuiBox-root MuiBox-root"
-        >
-          <h5
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-          >
-            name2*domain2
-          </h5>
-        </div>
-        <h6
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-          onClick={[Function]}
-        >
-          Manage
-        </h6>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Bierzo Wallet/Addresses Starnames with name tab 1`] = `
-<div
-  className="MuiBox-root MuiBox-root"
-  id="starnames-view-id"
->
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <img
-          alt="Iovname Logo"
-          className="makeStyles-root"
-          src="starname-logo.svg"
-        />
-        <div
-          className="MuiBox-root MuiBox-root"
-        />
-        <h5
-          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h5 MuiTypography-alignCenter"
-        >
-          Register a new starname
-        </h5>
-      </div>
-      <p
-        className="MuiTypography-root makeStyles-link MuiTypography-body1 MuiTypography-colorPrimary"
-        id="-starname-register"
-        onClick={[Function]}
-      >
-        Register now
-      </p>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <h5
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-        >
-          name1*domain1
-        </h5>
-      </div>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Manage
-      </h6>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <h5
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-        >
-          name2*domain1
-        </h5>
-      </div>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Manage
-      </h6>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root"
-  />
-  <div
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
-  >
-    <div
-      className="MuiBox-root MuiBox-root"
-    >
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
-        <h5
-          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5"
-        >
-          name2*domain2
-        </h5>
-      </div>
-      <h6
-        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle2 MuiTypography-colorPrimary"
-        onClick={[Function]}
-      >
-        Manage
-      </h6>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
 <div
   className="MuiBox-root MuiBox-root"
@@ -5668,9 +5039,6 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -5683,16 +5051,32 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -5712,9 +5096,25 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -5866,9 +5266,6 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -5881,16 +5278,32 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -5910,9 +5323,25 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6100,9 +5529,6 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6115,16 +5541,32 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6144,9 +5586,25 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6427,9 +5885,6 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6442,16 +5897,32 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6480,9 +5951,25 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
             </span>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6574,9 +6061,6 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6589,16 +6073,32 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6618,9 +6118,25 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6714,9 +6230,6 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6729,16 +6242,32 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6767,9 +6296,25 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
             </span>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6888,9 +6433,6 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6903,16 +6445,32 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -6941,9 +6499,25 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
             </span>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -7048,9 +6622,6 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -7063,16 +6634,32 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
-              id="Addresses"
+              id="Starnames"
               onClick={[Function]}
             >
-              Addresses
+              Starnames
             </h6>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
       </div>
       <div
         className="MuiBox-root MuiBox-root makeStyles-item"
@@ -7101,9 +6688,25 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
             </span>
           </div>
         </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
         <div
-          className="MuiBox-root MuiBox-root makeStyles-line"
-        />
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -7168,6 +6771,430 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
       </strong>
        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </p>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Iovnames With iovnames 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="neumaWalletLogo.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balances"
+              onClick={[Function]}
+            >
+              Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Starnames"
+              onClick={[Function]}
+            >
+              Starnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+      id="iovnames-view-id"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            >
+              yourname*iov
+            </h6>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+          >
+            You have no iovnames
+          </h6>
+          <p
+            className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+          >
+            With Neuma you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+            id="-iovname-register"
+            onClick={[Function]}
+          >
+            Choose Now
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Iovnames Without iovnames 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="neumaWalletLogo.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balances"
+              onClick={[Function]}
+            >
+              Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Starnames"
+              onClick={[Function]}
+            >
+              Starnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+      id="iovnames-view-id"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            >
+              yourname*iov
+            </h6>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+          >
+            You have no iovnames
+          </h6>
+          <p
+            className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+          >
+            With Neuma you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+            id="-iovname-register"
+            onClick={[Function]}
+          >
+            Choose Now
+          </h6>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -9128,6 +9155,430 @@ exports[`Storyshots Bierzo Wallet/Registration confirmation Registration confirm
             See Transactions
           </span>
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Starnames With starnames 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="neumaWalletLogo.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balances"
+              onClick={[Function]}
+            >
+              Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Starnames"
+              onClick={[Function]}
+            >
+              Starnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+      id="starnames-view-id"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            >
+              *yourstarname
+            </h6>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+          >
+            Register your starname
+          </h6>
+          <p
+            className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+          >
+            A starname is your universal username for the blockchain world. It enables you to receive crypto-currencies or to log in to blockchain applications in a seamless way. Transferring value becomes fast an easy.
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+            id="-starname-register"
+            onClick={[Function]}
+          >
+            Register Now
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Bierzo Wallet/Starnames Without starnames 1`] = `
+<div
+  className="MuiBox-root MuiBox-root"
+>
+  <div
+    className="MuiBox-root MuiBox-root makeStyles-root"
+  >
+    <img
+      alt="Logo"
+      className="makeStyles-root"
+      src="neumaWalletLogo.svg"
+    />
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="MuiBox-root MuiBox-root makeStyles-root"
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Balances"
+              onClick={[Function]}
+            >
+              Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Starnames"
+              onClick={[Function]}
+            >
+              Starnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="iovnames"
+              onClick={[Function]}
+            >
+              iovnames
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Transactions"
+              onClick={[Function]}
+            >
+              Transactions
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Addresses"
+              onClick={[Function]}
+            >
+              Addresses
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root"
+    />
+    <div
+      className="makeStyles-root"
+      id="hi-menu"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-root"
+      >
+        <h6
+          className="MuiTypography-root makeStyles-defaultColor MuiTypography-h6"
+        >
+          Hi!
+        </h6>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <img
+              alt="Open"
+              className="makeStyles-root"
+              src="chevronDown.svg"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root"
+  >
+    <div
+      className="MuiBox-root MuiBox-root"
+      id="starnames-view-id"
+    >
+      <div
+        className="MuiBox-root MuiBox-root"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root makeStyles-starnameHeader"
+          >
+            <h6
+              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            >
+              *yourstarname
+            </h6>
+          </div>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
+          >
+            Register your starname
+          </h6>
+          <p
+            className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
+          >
+            A starname is your universal username for the blockchain world. It enables you to receive crypto-currencies or to log in to blockchain applications in a seamless way. Transferring value becomes fast an easy.
+          </p>
+          <div
+            className="MuiBox-root MuiBox-root"
+          />
+          <h6
+            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+            id="-starname-register"
+            onClick={[Function]}
+          >
+            Register Now
+          </h6>
+        </div>
       </div>
     </div>
   </div>
