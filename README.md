@@ -48,6 +48,30 @@ And we use the following specific packages to connect to each blockchain:
 
 For more detail, check [keybase documentation](https://github.com/iov-one/iov-core/blob/master/docs/KeyBase.md) into iov-core folder.
 
+## Interact with the extension
+
+In case you want to make an app that interacts with the Neuma extension, here are some directions to do so.
+
+### The chrome.runtime.sendMessage method
+
+The communication between an app and the extension makes use of [the `sendMessage` method from the `chrome.runtime` API](https://developer.chrome.com/apps/runtime#method-sendMessage):
+
+```typescript
+function sendMessage(extensionId: string, message: any, responseCallback?: (response: any) => void): void;
+```
+
+- `extensionId`'s [value should vary](https://github.com/iov-one/ponferrada/wiki/Browser-Extension-IDs) according to the environment of the extension you are using.
+- `message`'s value would be our request to the extension, that should comply with the [JSON RPC 2.0 specification](https://www.jsonrpc.org/specification). For this, you could input a message with the type of [@iov/jsonrpc's `JsonRpcRequest`](https://github.com/iov-one/iov-core/blob/master/packages/iov-jsonrpc/src/types.ts).
+
+### Extension request types
+
+- Get Identities: returns an array with the identities of the extension's user.
+- Sign and Post Transaction: signs the transaction found in the request with the extension's user key, posts it to the chain, and then returns the transaction's ID. The transaction must be [one of the `SupportedTransaction`s](https://github.com/iov-one/ponferrada/blob/master/packages/sanes-browser-extension/src/extension/background/model/persona/index.ts).
+
+### Further directions
+
+There are a lot of helpers that you can set up in order to facilitate the interaction with the extension. You can check [the communications folder of the wallet](https://github.com/iov-one/ponferrada/tree/master/packages/bierzo-wallet/src/communication) for a complete setup.
+
 ## Contributing
 
 We are more than happy to accept open source contributions. However, please try
