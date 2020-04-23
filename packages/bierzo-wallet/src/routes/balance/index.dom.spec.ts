@@ -5,7 +5,7 @@ import { DeepPartial, Store } from "redux";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
-import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
+import { TRANSACTIONS_TAB_TITLE } from "../../components/Header/components/LinksMenu";
 import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
 import { ExtendedIdentity, IdentitiesState } from "../../store/identities";
@@ -77,10 +77,10 @@ describe("The /balance route", () => {
     it("redirects to the /transactions route when clicked", async () => {
       const transactionsCard = (await findRenderedDOMComponentWithId(
         balanceDom,
-        TRANSACTIONS_TEXT,
+        TRANSACTIONS_TAB_TITLE,
       )) as Element;
 
-      expect(transactionsCard.textContent).toBe(TRANSACTIONS_TEXT);
+      expect(transactionsCard.textContent).toBe(TRANSACTIONS_TAB_TITLE);
 
       await click(transactionsCard);
       expectRoute(TRANSACTIONS_ROUTE);

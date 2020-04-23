@@ -3,7 +3,7 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { whenTrue } from "ui-logic";
 
-import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
+import { TRANSACTIONS_TAB_TITLE } from "../../components/Header/components/LinksMenu";
 import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
@@ -45,7 +45,7 @@ withChainsDescribe("E2E > Transactions route", () => {
   it("contains faucet transactions", async () => {
     await waitForAllBalances(page);
 
-    const [txLink] = await page.$x(`//h6[contains(., '${TRANSACTIONS_TEXT}')]`);
+    const [txLink] = await page.$x(`//h6[contains(., '${TRANSACTIONS_TAB_TITLE}')]`);
     await txLink.click();
     await whenOnNavigatedToE2eRoute(page, TRANSACTIONS_ROUTE);
 
