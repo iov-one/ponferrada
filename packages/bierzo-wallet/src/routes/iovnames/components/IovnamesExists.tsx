@@ -2,16 +2,11 @@ import Paper from "@material-ui/core/Paper";
 import { Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
+import { REGISTER_IOVNAME_LINK } from "..";
 import { history } from "../..";
 import iovnameLogo from "../../../assets/iovname-logo.svg";
-import { BwUsername } from "../../../store/usernames";
+import { BwUsernameWithChainName } from "../../../components/AccountManage";
 import { IOVNAME_MANAGE_ROUTE } from "../../paths";
-import { registerIovnameId } from "./Iovnames";
-
-interface Props {
-  readonly iovnames: readonly BwUsername[];
-  readonly onRegisterIovname: () => void;
-}
 
 const usePaper = makeStyles({
   rounded: {
@@ -22,6 +17,11 @@ const usePaper = makeStyles({
     boxShadow: "none",
   },
 });
+
+interface Props {
+  readonly iovnames: readonly BwUsernameWithChainName[];
+  readonly onRegisterIovname: () => void;
+}
 
 function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
   const paperClasses = usePaper();
@@ -44,7 +44,7 @@ function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
               Register a new iovname
             </Typography>
           </Block>
-          <Typography id={registerIovnameId} link color="primary" onClick={onRegisterIovname}>
+          <Typography id={REGISTER_IOVNAME_LINK} link color="primary" onClick={onRegisterIovname}>
             Register now
           </Typography>
         </Block>

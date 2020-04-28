@@ -3,6 +3,7 @@ import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
+import { RpcEndpoint } from "../../communication/rpcEndpoint";
 import PageMenu from "../../components/PageMenu";
 import { BalanceState } from "../../store/balances";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
@@ -32,6 +33,26 @@ const NO_BALANCE = {};
 
 const ACCOUNT_NAME = "adolfo*iov";
 
+const extensionRpcEndpoint: RpcEndpoint = {
+  authorizeGetIdentitiesMessage: "test authorizeGetIdentitiesMessage",
+  authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
+  noMatchingIdentityMessage: "test noMatchingIdentityMessage",
+  notAvailableMessage: "test notAvailableMessage",
+  sendGetIdentitiesRequest: _req => Promise.resolve(undefined),
+  sendSignAndPostRequest: _req => Promise.resolve(undefined),
+  type: "extension",
+};
+
+const ledgerRpcEndpoint: RpcEndpoint = {
+  authorizeGetIdentitiesMessage: "test authorizeGetIdentitiesMessage",
+  authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
+  noMatchingIdentityMessage: "test noMatchingIdentityMessage",
+  notAvailableMessage: "test notAvailableMessage",
+  sendGetIdentitiesRequest: _req => Promise.resolve(undefined),
+  sendSignAndPostRequest: _req => Promise.resolve(undefined),
+  type: "ledger",
+};
+
 storiesOf(BALANCE_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add(BALANCE_STORY_VIEW_PATH, () => (
@@ -39,7 +60,6 @@ storiesOf(BALANCE_STORY_PATH, module)
       <PageMenu>
         <Layout
           iovAddress={ACCOUNT_NAME}
-          rpcEndpointType="extension"
           balances={BALANCE}
           onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         />
@@ -47,11 +67,10 @@ storiesOf(BALANCE_STORY_PATH, module)
     </DecoratedStorybook>
   ))
   .add("View without tokens and without name", () => (
-    <DecoratedStorybook>
+    <DecoratedStorybook storeProps={{ rpcEndpoint: extensionRpcEndpoint }}>
       <PageMenu>
         <Layout
           iovAddress={undefined}
-          rpcEndpointType="extension"
           balances={NO_BALANCE}
           onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         />
@@ -59,11 +78,10 @@ storiesOf(BALANCE_STORY_PATH, module)
     </DecoratedStorybook>
   ))
   .add("View on ledger and without name", () => (
-    <DecoratedStorybook>
+    <DecoratedStorybook storeProps={{ rpcEndpoint: ledgerRpcEndpoint }}>
       <PageMenu>
         <Layout
           iovAddress={undefined}
-          rpcEndpointType="ledger"
           balances={NO_BALANCE}
           onRegisterIovname={linkTo(REGISTER_IOVNAME_STORY_PATH, REGISTER_IOVNAME_REGISTRATION_STORY_PATH)}
         />

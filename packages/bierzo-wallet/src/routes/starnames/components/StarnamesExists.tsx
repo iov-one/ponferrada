@@ -2,18 +2,13 @@ import Paper from "@material-ui/core/Paper";
 import { Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
+import { REGISTER_STARNAME_LINK } from "..";
 import { history } from "../..";
 import starnameLogo from "../../../assets/starname-logo.svg";
-import { BwAccount } from "../../../store/accounts";
+import { BwAccountWithChainName } from "../../../components/AccountManage";
 import { NAME_MANAGE_ROUTE, STARNAME_MANAGE_ROUTE } from "../../paths";
-import { registerStarnameId } from "./Starnames";
 
 export const STARNAMES_LIST_EXPIRY_DATE = "starnames-list-expiry-date";
-
-interface Props {
-  readonly starnames: readonly BwAccount[];
-  readonly onRegisterStarname: () => void;
-}
 
 const usePaper = makeStyles({
   rounded: {
@@ -23,6 +18,11 @@ const usePaper = makeStyles({
     boxShadow: "none",
   },
 });
+
+interface Props {
+  readonly starnames: readonly BwAccountWithChainName[];
+  readonly onRegisterStarname: () => void;
+}
 
 function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element {
   const paperClasses = usePaper();
@@ -45,7 +45,7 @@ function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element 
               Register a new starname
             </Typography>
           </Block>
-          <Typography id={registerStarnameId} link color="primary" onClick={onRegisterStarname}>
+          <Typography id={REGISTER_STARNAME_LINK} link color="primary" onClick={onRegisterStarname}>
             Register now
           </Typography>
         </Block>
