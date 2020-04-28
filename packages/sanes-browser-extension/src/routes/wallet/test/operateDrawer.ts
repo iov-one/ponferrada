@@ -20,9 +20,12 @@ interface DrawerSettingsResult {
 }
 
 async function openDrawer(drawerComponent: React.Component): Promise<void> {
-  const drawerButton = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, "button")[0];
-  expect(drawerButton.getAttribute("aria-label")).toBe("Open drawer");
-  await click(drawerButton);
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(drawerComponent, "button");
+  const openDrawerButton = buttons.find(button => button.getAttribute("aria-label") === "Open drawer");
+
+  if (!openDrawerButton) throw Error("Open drawer button not found");
+
+  await click(openDrawerButton);
 }
 
 export const goToMenu = async (drawerComponent: React.Component): Promise<DrawerMenuResult> => {
