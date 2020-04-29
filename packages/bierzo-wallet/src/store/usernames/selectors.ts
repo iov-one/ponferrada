@@ -8,7 +8,7 @@ export const getFirstUsername = (state: RootState): BwUsername | undefined => {
 
 export const getFirstUsernameWithNewChain = (state: RootState): BwUsername | undefined => {
   const firstUsernameWithNewChain = state.usernames.find(row =>
-    row.addresses.find((address: any) => address.chainId === "starname-network-devnet"),
+    row.addresses.find(address => address.chainId === "starname-network-devnet"),
   );
   return firstUsernameWithNewChain;
 };
