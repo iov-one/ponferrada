@@ -6,7 +6,6 @@ import React from "react";
 import { amountToString } from "ui-logic";
 
 import PageContent from "../../../components/PageContent";
-import { GetYourAddress } from "../../iovnames/components/IovnamesNotExists";
 import wallet from "../assets/wallet.svg";
 
 const walletIcon = <Image src={wallet} alt="wallet ico" />;

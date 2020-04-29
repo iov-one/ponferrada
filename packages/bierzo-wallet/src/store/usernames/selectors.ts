@@ -7,7 +7,7 @@ export const getFirstUsername = (state: RootState): BwUsername | undefined => {
 };
 
 export const findNewChain = (row: any) => {
-  return row.addresses.find((address: any) => address.chainId == "starname-network-devnet");
+  return row.addresses.find((address: any) => address.chainId === "starname-network-devnet");
 };
 
 export const getFirstUsernameWithNewChain = (state: RootState): BwUsername | undefined => {
