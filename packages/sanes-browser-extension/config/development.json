@@ -6,7 +6,7 @@
     {
       "chainSpec": {
         "codecType": "iovns",
-        "chainId": "starname-network",
+        "chainId": "starname-network-devnet",
         "name": "Starname Network",
         "node": "http://localhost:23456/"
       }
