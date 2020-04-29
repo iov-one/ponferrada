@@ -339,21 +339,20 @@ export function getVoteTransaction(): VoteTx {
   };
 }
 
-export const confirmAcceptButton = async (TXRequestDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+export const confirmApproveButton = async (TXRequestDom: React.Component): Promise<void> => {
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+  const approveButton = buttons.find(button => button.textContent === "Approve");
 
-  expect(inputs.length).toBe(5);
+  if (!approveButton) throw Error("Approve button not found");
 
-  const acceptButton = inputs[3];
-  await click(acceptButton);
+  await click(approveButton);
 };
 
 export const clickOnRejectButton = async (TXRequestDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+  const rejectButton = buttons.find(button => button.textContent === "Reject");
 
-  expect(inputs.length).toBe(5);
-
-  const rejectButton = inputs[4];
+  if (!rejectButton) throw Error("Reject button not found");
 
   await click(rejectButton);
 
@@ -378,16 +377,12 @@ export const checkPermanentRejection = (TXRequestDom: React.Component): void => 
 };
 
 export const clickOnBackButton = async (TXRequestDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(TXRequestDom, "button");
+  const goBackButton = buttons.find(button => button.getAttribute("aria-label") === "Go back");
 
-  expect(inputs.length).toBe(5);
+  if (!goBackButton) throw Error("Go back button not found");
 
-  const backButton = inputs[1];
-  expect(backButton.getAttribute("aria-label")).toBe("Go back");
-
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(backButton);
-  });
+  await click(goBackButton);
 
   await findRenderedDOMComponentWithId(TXRequestDom, showTxHtmlId);
 };

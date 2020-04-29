@@ -6,20 +6,19 @@ import { rejectIdentityHtmlId } from "../components/SidePanel/PanelDrawer/compon
 import { showIdentityHtmlId } from "../components/SidePanel/PanelDrawer/components/Requests/ShowRequest/ShareIdentity/ShowIdentity";
 
 export const confirmAcceptButton = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
+  const acceptButton = buttons.find(button => button.textContent === "Accept");
 
-  expect(inputs.length).toBe(5);
+  if (!acceptButton) throw Error("Accept button not found");
 
-  const acceptButton = inputs[3];
   await click(acceptButton);
 };
 
 export const clickOnRejectButton = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
+  const rejectButton = buttons.find(button => button.textContent === "Reject");
 
-  expect(inputs.length).toBe(5);
-
-  const rejectButton = inputs[4];
+  if (!rejectButton) throw Error("Reject button not found");
 
   await click(rejectButton);
 
@@ -44,15 +43,12 @@ export const checkPermanentRejection = async (ShareIdentityDom: React.Component)
 };
 
 export const clickOnBackButton = async (ShareIdentityDom: React.Component): Promise<void> => {
-  const inputs = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
+  const buttons = TestUtils.scryRenderedDOMComponentsWithTag(ShareIdentityDom, "button");
+  const backButton = buttons.find(button => button.textContent === "Back");
 
-  expect(inputs.length).toBe(5);
+  if (!backButton) throw Error("Back button not found");
 
-  const backButton = inputs[1];
-
-  TestUtils.act(() => {
-    TestUtils.Simulate.click(backButton);
-  });
+  await click(backButton);
 
   await findRenderedDOMComponentWithId(ShareIdentityDom, showIdentityHtmlId);
 };

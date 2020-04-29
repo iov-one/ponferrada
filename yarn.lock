@@ -1827,6 +1827,34 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@cosmwasm/bcp@^0.7.7":
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/@cosmwasm/bcp/-/bcp-0.7.7.tgz#5dec9c671fb853bdb6538f29b9e3ef09ba77fc44"
+  integrity sha512-evl1v5OMBxXohinbw1LtQtNBAWveMGjYnVPw/Xile0+tjkfeOLqXYUkAh66dCbD3bdV+U0csa+uSQpFGW8mOuw==
+  dependencies:
+    "@cosmwasm/sdk" "^0.7.7"
+    "@iov/bcp" "^2.1.0"
+    "@iov/crypto" "^2.1.0"
+    "@iov/encoding" "^2.1.0"
+    "@iov/stream" "^2.0.2"
+    "@iov/utils" "^2.0.2"
+    bn.js "^5.1.1"
+    fast-deep-equal "^3.1.1"
+    readonly-date "^1.0.0"
+    xstream "^11.11.0"
+
+"@cosmwasm/sdk@^0.7.7":
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/@cosmwasm/sdk/-/sdk-0.7.7.tgz#c8c7af854a5f1745999809957463ed101bca1cfb"
+  integrity sha512-zT3iO30aJPOPCdNxhFzMYDygPShiEzRUIzg0oi7xZfRwNqmuWE63NmZo5+BhOTMKL398b4D3zeEL6kH6O+aawg==
+  dependencies:
+    "@iov/crypto" "^2.1.0"
+    "@iov/encoding" "^2.1.0"
+    "@iov/utils" "^2.0.2"
+    axios "^0.19.0"
+    fast-deep-equal "^3.1.1"
+    pako "^1.0.11"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -2152,7 +2180,7 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
-"@iov/bcp@^2.2.0":
+"@iov/bcp@^2.1.0", "@iov/bcp@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/bcp/-/bcp-2.2.0.tgz#4db3502115c5bb1bb34f471c0d129734ee449da5"
   integrity sha512-jeFvT9oYiYAKhO2p70G3tpcWKkZIGkVq7daI367RzTIPJC29CCGajde2OdBN6O0OMSMctW0hksC7bVz+Pfv/tg==
@@ -2254,7 +2282,7 @@
   optionalDependencies:
     fsevents "2.1.2"
 
-"@iov/crypto@^2.2.0":
+"@iov/crypto@^2.1.0", "@iov/crypto@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/crypto/-/crypto-2.2.0.tgz#9413436fa6ddf8fadddb1c208dd1304dc654287c"
   integrity sha512-E/DJ0Y4z1ZXCWlXlx2J9SZ/oollaBQu1u5kT53ypRZcAe3X9UTJFGusi/SuZ/fuyvIKwlsa9mUqvJQt2tl2RxQ==
@@ -2271,7 +2299,7 @@
     type-tagger "^1.0.0"
     unorm "^1.5.0"
 
-"@iov/encoding@^2.2.0":
+"@iov/encoding@^2.1.0", "@iov/encoding@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/encoding/-/encoding-2.2.0.tgz#584454c12b7fa754b714912cb9595a85303bfa75"
   integrity sha512-C61ysbRja92CC37gD66ndy+fpbXswlQWgiEftAqHG6QuFs4Zng1/3zwL5Mb4DhzlH2z21+YPwRtfWM5rk1kDmQ==
@@ -2389,7 +2417,7 @@
     ws "^6.2.0"
     xstream "^11.10.0"
 
-"@iov/stream@^2.2.0":
+"@iov/stream@^2.0.2", "@iov/stream@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/stream/-/stream-2.2.0.tgz#a26eaaff391a7304d481867843d8afe81321db27"
   integrity sha512-idtQoaNsGCS5KHO6Ymq9w2P6bq2yIaQfdAjjXuzQPX79lmuS1w2Pq6XGBnhMeQ7LVbluvy9JFIgZVcEQ7iSHvA==
@@ -2410,7 +2438,7 @@
     type-tagger "^1.0.0"
     xstream "^11.10.0"
 
-"@iov/utils@^2.2.0":
+"@iov/utils@^2.0.2", "@iov/utils@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@iov/utils/-/utils-2.2.0.tgz#46e234db283b5553f7c1ce24307a708b9710b0bc"
   integrity sha512-dy3iWphow125x1cChOBye0knmm9ddnmkv5/aOmu8w/KL5H3Y7WkJ8VY/Gz3ePdBIjPXU8sEihnmanVGiz0WsPw==
@@ -6308,6 +6336,11 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.11.1, bn.js@^4.11.8, bn.js@^4
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
+
+bn.js@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.1.tgz#48efc4031a9c4041b9c99c6941d903463ab62eb5"
+  integrity sha512-IUTD/REb78Z2eodka1QZyyEk66pciRcP6Sroka0aI3tG/iwIdYLrBD62RsubR7vqdt3WyX8p4jxeatzmRSphtA==
 
 body-parser@1.19.0, body-parser@^1.19.0:
   version "1.19.0"
@@ -15856,6 +15889,11 @@ package-json@^6.3.0:
     registry-url "^5.0.0"
     semver "^6.2.0"
 
+pako@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
+  integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
+
 pako@~1.0.2, pako@~1.0.5:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
@@ -21748,7 +21786,7 @@ xregexp@^4.2.4:
   dependencies:
     "@babel/runtime-corejs2" "^7.2.0"
 
-xstream@^11.10.0:
+xstream@^11.10.0, xstream@^11.11.0:
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/xstream/-/xstream-11.11.0.tgz#2c963cf0a6cb3eafecb57eaeae16c9850235b422"
   integrity sha512-0zF3PLsHrmbToPBgX1jYZFNw+t5octSFJgVRH44HGlGBBjY7gscvDQOZvty8IQV15Snia1RcLPECWDfEaE4aXg==

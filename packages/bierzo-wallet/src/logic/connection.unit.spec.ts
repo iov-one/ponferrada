@@ -9,7 +9,7 @@ withChainsDescribe("Logic :: connection", () => {
 
   beforeEach(async () => {
     const config = await getConfig();
-    firstChain = config.chains[2];
+    firstChain = config.chains[3];
   });
   afterAll(() => disconnect());
 

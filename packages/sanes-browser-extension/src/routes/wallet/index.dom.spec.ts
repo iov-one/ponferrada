@@ -3,7 +3,7 @@ import TestUtils, {
   findRenderedDOMComponentWithTag,
   scryRenderedDOMComponentsWithTag,
 } from "react-dom/test-utils";
-import { randomString, sleep } from "ui-logic";
+import { randomString } from "ui-logic";
 
 import { PersonaAcccount } from "../../extension/background/model/persona";
 import {
@@ -45,7 +45,7 @@ import {
 import {
   checkPermanentRejection as checkPermanentRejectionTx,
   clickOnRejectButton as clickOnRejectButtonTx,
-  confirmAcceptButton as confirmAcceptButtonTx,
+  confirmApproveButton as confirmAcceptButtonTx,
   confirmRejectButton as confirmRejectButtonTx,
   getCashTransaction,
   getCreateTextResolutionActionTransaction,
@@ -111,7 +111,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer", () => {
 
     const liElements = scryRenderedDOMComponentsWithTag(walletStatusDom, "li");
     const liskNetwork = liElements[4];
-    expect(liskNetwork.textContent).toBe("IOV Devnethttp://localhost:23456/Change");
+    expect(liskNetwork.textContent).toBe("Starname Networkhttp://localhost:23456/");
   }, 60000);
 
   it("settings view has link to support center", async () => {
@@ -220,11 +220,17 @@ describe("DOM > Feature > Wallet Status Drawer > Show Share Identity", () => {
   }, 60000);
 
   it("should reject incoming request permanently and come back", async () => {
+    requests.push(requestTwo);
+
+    identityDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
+    await click(getFirstRequest(identityDOM));
+    await findRenderedDOMComponentWithId(identityDOM, showIdentityHtmlId);
+
     await clickOnRejectButtonId(identityDOM);
     await checkPermanentRejectionId(identityDOM);
     await confirmRejectButtonId(identityDOM);
-    await sleep(2000);
-    // rejection flag has been set
+    await findRenderedDOMComponentWithId(identityDOM, Views.Requests);
+    expect(window.close).not.toBeCalled();
   }, 60000);
 });
 
@@ -287,10 +293,17 @@ describe("DOM > Feature > Wallet Status Drawer > Show TX", () => {
   }, 60000);
 
   it("should reject incoming request permanently and come back", async () => {
+    requests.push({ id: 3, ...requestOne });
+
+    txRequestDOM = await travelTo(WALLET_STATUS_ROUTE, requests, personaMock);
+    await click(getFirstRequest(txRequestDOM));
+    await findRenderedDOMComponentWithId(txRequestDOM, showTxHtmlId);
+
     await clickOnRejectButtonTx(txRequestDOM);
     checkPermanentRejectionTx(txRequestDOM);
     await confirmRejectButtonTx(txRequestDOM);
-    await sleep(2000);
+    await findRenderedDOMComponentWithId(txRequestDOM, Views.Requests);
+    expect(window.close).not.toBeCalled();
     // rejection flag has been set
   }, 60000);
 });
@@ -400,7 +413,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer > Recovery Words", () =
 
 withChainsDescribe("DOM > Feature > Wallet Status Drawer > Delete Wallet", () => {
   let deleteWalletDom: React.Component;
-  let deleteButton: Element;
+  let buttons: Element[];
   let mnemonicInput: Element;
   let form: Element;
   const mnemonic = "badge cattle stool execute involve main mirror envelope brave scrap involve simple";
@@ -408,7 +421,7 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer > Delete Wallet", () =>
   beforeEach(async () => {
     deleteWalletDom = await travelToWallet(personaMock);
     await goToDeleteWallet(deleteWalletDom);
-    deleteButton = TestUtils.scryRenderedDOMComponentsWithTag(deleteWalletDom, "button")[3];
+    buttons = TestUtils.scryRenderedDOMComponentsWithTag(deleteWalletDom, "button");
     mnemonicInput = TestUtils.findRenderedDOMComponentWithTag(deleteWalletDom, "textarea");
     form = TestUtils.findRenderedDOMComponentWithTag(deleteWalletDom, "form");
   }, 60000);
@@ -433,7 +446,9 @@ withChainsDescribe("DOM > Feature > Wallet Status Drawer > Delete Wallet", () =>
     mockClearPersona();
     mockClearDatabase();
 
-    expect(deleteButton.textContent).toBe("Delete Wallet");
+    const deleteButton = buttons.find(button => button.textContent === "Delete Wallet");
+    if (!deleteButton) throw Error("Delete Wallet button not found");
+
     expect(isButtonDisabled(deleteButton)).toBeTruthy();
 
     input(mnemonicInput, randomString(10));
