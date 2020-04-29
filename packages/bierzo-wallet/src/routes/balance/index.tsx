@@ -17,15 +17,14 @@ const Balance = (): JSX.Element => {
   const bnsUsername = ReactRedux.useSelector(getFirstUsername);
   const bnsUsernameWithNewChain = ReactRedux.useSelector(getFirstUsernameWithNewChain);
   const iovAddress = bnsUsername ? bnsUsername.username : undefined;
-  const needUpgrade = bnsUsernameWithNewChain ? bnsUsernameWithNewChain.username : undefined;
-
+  const iovAddressWithNewChain = bnsUsernameWithNewChain ? bnsUsernameWithNewChain.username : undefined;
   return (
     <PageMenu>
       <Layout
         onRegisterIovname={onRegisterIovname}
         iovAddress={iovAddress}
         balances={tokens}
-        needUpgrade={needUpgrade}
+        iovAddressWithNewChain={iovAddressWithNewChain}
       />
     </PageMenu>
   );
