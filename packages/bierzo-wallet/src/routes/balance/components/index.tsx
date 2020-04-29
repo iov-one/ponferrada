@@ -13,11 +13,12 @@ const walletIcon = <Image src={wallet} alt="wallet ico" />;
 
 interface Props {
   readonly iovAddress?: string;
+  readonly needUpgrade?: string;
   readonly balances: { [token: string]: Amount };
   readonly onRegisterIovname: () => void;
 }
 
-const BalanceLayout = ({ iovAddress, balances, onRegisterIovname }: Props): JSX.Element => {
+const BalanceLayout = ({ iovAddress, balances, onRegisterIovname, needUpgrade }: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();
@@ -25,42 +26,52 @@ const BalanceLayout = ({ iovAddress, balances, onRegisterIovname }: Props): JSX.
   return (
     <Block alignSelf="center">
       <Block margin={2} />
-      {!iovAddress && (
-        <Block
-          width={450}
-          bgcolor={theme.palette.background.paper}
-          padding={5}
-          display="flex"
-          flexDirection="column"
-          borderRadius={5}
-          textAlign="center"
-          border="1px solid #F3F3F3"
-        >
-          <GetYourAddress onRegisterIovname={onRegisterIovname} />
-        </Block>
+      {needUpgrade && (
+        <>
+          <Block
+            width={450}
+            bgcolor={theme.palette.background.paper}
+            padding={5}
+            display="flex"
+            flexDirection="column"
+            borderRadius={5}
+            textAlign="center"
+            border="1px solid #F3F3F3"
+            fontSize={18}
+          >
+            You need to upgrade your wallet now.
+            <br />
+            <br />
+            Please click on the button below to migrate to the new chain.
+          </Block>
+        </>
       )}
-      <Block margin={2} />
-      <PageContent icon={walletIcon} width={450} avatarColor="#31E6C9">
-        <Block display="flex" flexDirection="column">
-          <Typography variant="subtitle2" align="center" weight="semibold">
-            {hasTokens ? "Your currencies" : "You have no funds available"}
-          </Typography>
-          <Block margin={1} />
-          {tickersList.map(ticker => (
-            <Typography
-              key={balances[ticker].tokenTicker}
-              variant="h5"
-              weight="regular"
-              color="primary"
-              align="center"
-              gutterBottom
-            >
-              {`${amountToString(balances[ticker])}`}
-            </Typography>
-          ))}
-          <Block margin={1} />
-        </Block>
-      </PageContent>
+      {!needUpgrade && (
+        <>
+          <Block margin={2} />
+          <PageContent icon={walletIcon} width={450} avatarColor="#31E6C9">
+            <Block display="flex" flexDirection="column">
+              <Typography variant="subtitle2" align="center" weight="semibold">
+                {hasTokens ? "Your currencies" : "You have no funds available"}
+              </Typography>
+              <Block margin={1} />
+              {tickersList.map(ticker => (
+                <Typography
+                  key={balances[ticker].tokenTicker}
+                  variant="h5"
+                  weight="regular"
+                  color="primary"
+                  align="center"
+                  gutterBottom
+                >
+                  {`${amountToString(balances[ticker])}`}
+                </Typography>
+              ))}
+              <Block margin={1} />
+            </Block>
+          </PageContent>
+        </>
+      )}
     </Block>
   );
 };
