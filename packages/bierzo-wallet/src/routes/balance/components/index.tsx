@@ -33,67 +33,78 @@ const BalanceLayout = ({
       <Block margin={2} />
       {!iovAddressWithNewChain && (
         <>
-          <Block
-            width={450}
-            bgcolor={theme.palette.background.paper}
-            padding={5}
-            display="flex"
-            flexDirection="column"
-            borderRadius={5}
-            textAlign="center"
-            border="1px solid #F3F3F3"
-            fontSize={18}
-          >
-            <Block marginTop={3} />
-            <Typography variant="subtitle1" weight="semibold" gutterBottom>
-              You need to register your iovname.
-            </Typography>
-            <Typography variant="body2" color="textPrimary">
-              You need to register an iovname to be able migrate to the upcoming Starname Service.
-            </Typography>
-            <Block marginTop={3} />
-            <Typography
-              variant="subtitle1"
-              color="primary"
-              weight="semibold"
-              inline
-              link
-              onClick={onRegisterIovname}
+          {!iovAddress && (
+            <Block
+              width={500}
+              bgcolor={theme.palette.background.paper}
+              padding={5}
+              display="flex"
+              flexDirection="column"
+              borderRadius={5}
+              textAlign="center"
+              border="1px solid #F3F3F3"
+              fontSize={24}
             >
-              Create Now
-            </Typography>
-          </Block>
-          <br />
-          <br />
-          <Block
-            width={450}
-            bgcolor={theme.palette.background.paper}
-            padding={5}
-            display="flex"
-            flexDirection="column"
-            borderRadius={5}
-            textAlign="center"
-            border="1px solid #F3F3F3"
-            fontSize={18}
-          >
-            You need to upgrade your iovname now.
-            <br />
-            <br />
-            Please click on the button below in order for us to migrate your account to the upcoming Starname
-            Service.
-            <br />
-            <br />
-            <Typography
-              variant="subtitle1"
-              color="primary"
-              weight="semibold"
-              inline
-              link
-              onClick={onUpgradeIovname}
+              <Block marginTop={3} />
+              <Typography variant="h5" weight="semibold" gutterBottom>
+                You need to register an iovname
+                <br /> to migrate to the Starname Service.
+              </Typography>
+              <br />
+              <Typography variant="body1" color="textPrimary">
+                1. Register your iovname by clicking on the button below
+                <br />
+                <br />
+                2. After the registration is successfull, we will contact you for the migration to the
+                Starname Service.
+              </Typography>
+              <Block marginTop={3} />
+              <Typography
+                variant="subtitle1"
+                color="primary"
+                weight="semibold"
+                inline
+                link
+                onClick={onRegisterIovname}
+              >
+                Register Now
+              </Typography>
+            </Block>
+          )}
+          {iovAddress && (
+            <Block
+              width={500}
+              bgcolor={theme.palette.background.paper}
+              padding={5}
+              display="flex"
+              flexDirection="column"
+              borderRadius={5}
+              textAlign="center"
+              border="1px solid #F3F3F3"
+              fontSize={18}
             >
-              Create Now
-            </Typography>
-          </Block>
+              <Typography variant="h5" weight="semibold" gutterBottom>
+                You need to upgrade your iovname
+                <br /> to migrate to the Starname Service.
+              </Typography>
+              <br />
+              <br />
+              Please click on the button below to upgrade your iovname to be able to migrate to the Starname
+              Service.
+              <br />
+              <br />
+              <Typography
+                variant="subtitle1"
+                color="primary"
+                weight="semibold"
+                inline
+                link
+                onClick={onUpgradeIovname}
+              >
+                Upgrade Now
+              </Typography>
+            </Block>
+          )}
         </>
       )}
       {iovAddressWithNewChain && (
