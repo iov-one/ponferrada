@@ -1,3 +1,4 @@
+import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
 import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
@@ -15,18 +16,19 @@ interface Props {
   readonly iovAddressWithNewChain?: string;
   readonly balances: { [token: string]: Amount };
   readonly onRegisterIovname: () => void;
+  readonly onUpgradeIovname?: () => void;
 }
 
 const BalanceLayout = ({
   iovAddress,
   balances,
   onRegisterIovname,
+  onUpgradeIovname,
   iovAddressWithNewChain,
 }: Props): JSX.Element => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();
-
   return (
     <Block alignSelf="center">
       <Block margin={2} />
@@ -88,7 +90,7 @@ const BalanceLayout = ({
               weight="semibold"
               inline
               link
-              onClick={onRegisterIovname}
+              onClick={onUpgradeIovname}
             >
               Create Now
             </Typography>
