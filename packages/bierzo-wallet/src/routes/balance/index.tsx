@@ -83,12 +83,12 @@ const Balance = (): JSX.Element => {
       } else if (transactionId === null) {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
-        console.log("good");
-        //setTransactionId(transactionId);
+        // looks good
+        // setTransactionId(transactionId);
       }
     } catch (error) {
       console.error(error);
-      //const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
+      // const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
       toast.show("error", ToastVariant.ERROR);
     } finally {
       billboard.close();
