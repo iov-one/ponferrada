@@ -1,7 +1,7 @@
 import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import { Block, Image, Typography, Button } from "medulas-react-components";
+import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
