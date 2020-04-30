@@ -5174,56 +5174,42 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
       />
       <div
         className="MuiBox-root MuiBox-root"
-      />
-      <div
-        className="MuiBox-root MuiBox-root"
       >
-        <div
-          className="MuiBox-root MuiBox-root"
+        <h5
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5 MuiTypography-gutterBottom"
         >
-          <div
-            className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+          You need to upgrade your iovname
+          <br />
+           to migrate to the Starname Service.
+        </h5>
+        <br />
+        <br />
+        Please click on the button below to upgrade your iovname to be able to migrate to the Starname Service.
+        <br />
+        <br />
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
           >
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
-              >
-                <img
-                  alt="wallet ico"
-                  className="makeStyles-root"
-                  src="wallet.svg"
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignCenter"
-                >
-                  Your currencies
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <h5
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-                >
-                  8.25 BASH
-                </h5>
-                <h5
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-h5 MuiTypography-colorPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-                >
-                  12.26775 CASH
-                </h5>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+            Upgrade Now
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -5404,89 +5390,50 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
       >
         <div
           className="MuiBox-root MuiBox-root"
+        />
+        <h5
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5 MuiTypography-gutterBottom"
         >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
-          >
-            <h6
-              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-            >
-              yourname*iov
-            </h6>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <p
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-body1"
-          >
-            You can not register
-          </p>
-          <p
-            className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-body1 MuiTypography-colorPrimary"
-            id="-iovname-register"
-          >
-            iovnames
-          </p>
-          <div
-            className="MuiBox-root MuiBox-root"
-          >
-            <p
-              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-            >
-              using
-               
-            </p>
-            <p
-              className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-defaultColor MuiTypography-body1"
-            >
-              Ledger Nano S
-            </p>
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
+          You need to register an iovname
+          <br />
+           to migrate to the Starname Service.
+        </h5>
+        <br />
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          1. Register your iovname by clicking on the button below
+          <br />
+          <br />
+          2. After the registration is successfull, we will contact you for the migration to the Starname Service.
+        </p>
         <div
           className="MuiBox-root MuiBox-root"
+        />
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
         >
-          <div
-            className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+          <span
+            className="MuiButton-label"
           >
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
-              >
-                <img
-                  alt="wallet ico"
-                  className="makeStyles-root"
-                  src="wallet.svg"
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignCenter"
-                >
-                  You have no funds available
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+            Register Now
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -5667,83 +5614,50 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
       >
         <div
           className="MuiBox-root MuiBox-root"
+        />
+        <h5
+          className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5 MuiTypography-gutterBottom"
         >
-          <div
-            className="MuiBox-root MuiBox-root makeStyles-iovnameHeader"
-          >
-            <h6
-              className="MuiTypography-root makeStyles-weight makeStyles-weight MuiTypography-subtitle1 MuiTypography-colorPrimary MuiTypography-alignCenter"
-            >
-              yourname*iov
-            </h6>
-          </div>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle1 MuiTypography-gutterBottom"
-          >
-            You have no iovnames
-          </h6>
-          <p
-            className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"
-          >
-            With Neuma you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.
-          </p>
-          <div
-            className="MuiBox-root MuiBox-root"
-          />
-          <h6
-            className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
-            id="-iovname-register"
-            onClick={[Function]}
-          >
-            Choose Now
-          </h6>
-        </div>
-      </div>
-      <div
-        className="MuiBox-root MuiBox-root"
-      />
-      <div
-        className="MuiBox-root MuiBox-root"
-      >
+          You need to register an iovname
+          <br />
+           to migrate to the Starname Service.
+        </h5>
+        <br />
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          1. Register your iovname by clicking on the button below
+          <br />
+          <br />
+          2. After the registration is successfull, we will contact you for the migration to the Starname Service.
+        </p>
         <div
           className="MuiBox-root MuiBox-root"
+        />
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
         >
-          <div
-            className="MuiPaper-root MuiPaper-elevation1 makeStyles-elevation1 MuiPaper-rounded makeStyles-rounded"
+          <span
+            className="MuiButton-label"
           >
-            <div
-              className="MuiBox-root MuiBox-root"
-            >
-              <div
-                className="MuiAvatar-root makeStyles-root makeStyles-root MuiAvatar-colorDefault"
-              >
-                <img
-                  alt="wallet ico"
-                  className="makeStyles-root"
-                  src="wallet.svg"
-                />
-              </div>
-              <div
-                className="MuiBox-root MuiBox-root"
-              >
-                <h6
-                  className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-subtitle2 MuiTypography-alignCenter"
-                >
-                  You have no funds available
-                </h6>
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-                <div
-                  className="MuiBox-root MuiBox-root"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+            Register Now
+          </span>
+        </button>
       </div>
     </div>
   </div>
