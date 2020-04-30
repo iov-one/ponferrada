@@ -4,13 +4,7 @@ import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import {
-  ADDRESSES_ROUTE,
-  BALANCE_ROUTE,
-  IOVNAME_ROUTE,
-  STARNAME_ROUTE,
-  TRANSACTIONS_ROUTE,
-} from "../../../../routes/paths";
+import { ADDRESSES_ROUTE, BALANCE_ROUTE, IOVNAME_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -38,9 +32,12 @@ const onBalance = (): void => {
   history.push(BALANCE_ROUTE);
 };
 
+// NOTE: disabled starnames
+/*
 const onStarnames = (): void => {
   history.push(STARNAME_ROUTE);
 };
+*/
 
 const onIovnames = (): void => {
   history.push(IOVNAME_ROUTE);
@@ -119,7 +116,8 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
   const classes = useStyles();
 
   const showBalances = path === BALANCE_ROUTE;
-  const showStarnames = path === STARNAME_ROUTE;
+  // NOTE: disabled starnames
+  // const showStarnames = path === STARNAME_ROUTE;
   const showIovnames = path === IOVNAME_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showAddresses = path === ADDRESSES_ROUTE;
@@ -132,10 +130,11 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
         <LinkMenuItem onClick={onBalance} itemTitle={BALANCES_TAB_TITLE} />
         {showBalances && <Block className={classes.line} />}
       </Block>
-      <Block className={classes.item}>
+      {/* NOTE: disabled starnames */}
+      {/* <Block className={classes.item}>
         <LinkMenuItem onClick={onStarnames} itemTitle={STARNAMES_TAB_TITLE} />
         {showStarnames && <Block className={classes.line} />}
-      </Block>
+      </Block> */}
       <Block className={classes.item}>
         <LinkMenuItem onClick={onIovnames} itemTitle={IOVNAMES_TAB_TITLE} />
         {showIovnames && <Block className={classes.line} />}
