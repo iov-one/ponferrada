@@ -43,10 +43,55 @@ const BalanceLayout = ({
             border="1px solid #F3F3F3"
             fontSize={18}
           >
-            You need to upgrade your wallet now.
+            <Block marginTop={3} />
+            <Typography variant="subtitle1" weight="semibold" gutterBottom>
+              You need to register your iovname.
+            </Typography>
+            <Typography variant="body2" color="textPrimary">
+              You need to register an iovname to be able migrate to the upcoming Starname Service.
+            </Typography>
+            <Block marginTop={3} />
+            <Typography
+              variant="subtitle1"
+              color="primary"
+              weight="semibold"
+              inline
+              link
+              onClick={onRegisterIovname}
+            >
+              Create Now
+            </Typography>
+          </Block>
+          <br />
+          <br />
+          <Block
+            width={450}
+            bgcolor={theme.palette.background.paper}
+            padding={5}
+            display="flex"
+            flexDirection="column"
+            borderRadius={5}
+            textAlign="center"
+            border="1px solid #F3F3F3"
+            fontSize={18}
+          >
+            You need to upgrade your iovname now.
             <br />
             <br />
-            Please click on the button below to migrate to the new chain.
+            Please click on the button below in order for us to migrate your account to the upcoming Starname
+            Service.
+            <br />
+            <br />
+            <Typography
+              variant="subtitle1"
+              color="primary"
+              weight="semibold"
+              inline
+              link
+              onClick={onRegisterIovname}
+            >
+              Create Now
+            </Typography>
           </Block>
         </>
       )}
