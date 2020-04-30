@@ -44,7 +44,9 @@ export function waitForAllBalances(page: Page): Promise<void> {
 }
 
 export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
-  const index = mainMenuH6Elements + 4;
+  // NOTE: disabled "starnames" tab
+  // const index = mainMenuH6Elements + 4;
+  const index = mainMenuH6Elements + 3;
   return ((await (await h6Elements[index].getProperty("textContent")).jsonValue()) as string) || "";
 };
 
