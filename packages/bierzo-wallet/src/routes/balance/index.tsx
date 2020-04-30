@@ -46,9 +46,9 @@ const Balance = (): JSX.Element => {
     if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
     if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
 
-    //const formValues = values as FormValues;
+    // const formValues = values as FormValues;
 
-    //const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+    // const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
     try {
       const request = await generateUpdateUsernameTxRequest(bnsIdentity, "antoine*iov", [
