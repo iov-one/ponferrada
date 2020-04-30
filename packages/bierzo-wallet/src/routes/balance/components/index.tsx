@@ -1,7 +1,7 @@
 import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import { Block, Image, Typography } from "medulas-react-components";
+import { Block, Image, Typography, Button } from "medulas-react-components";
 import React from "react";
 import { amountToString } from "ui-logic";
 
@@ -59,16 +59,7 @@ const BalanceLayout = ({
                 Starname Service.
               </Typography>
               <Block marginTop={3} />
-              <Typography
-                variant="subtitle1"
-                color="primary"
-                weight="semibold"
-                inline
-                link
-                onClick={onRegisterIovname}
-              >
-                Register Now
-              </Typography>
+              <Button onClick={onRegisterIovname}>Register Now</Button>
             </Block>
           )}
           {iovAddress && (
@@ -93,16 +84,7 @@ const BalanceLayout = ({
               Service.
               <br />
               <br />
-              <Typography
-                variant="subtitle1"
-                color="primary"
-                weight="semibold"
-                inline
-                link
-                onClick={onUpgradeIovname}
-              >
-                Upgrade Now
-              </Typography>
+              <Button onClick={onUpgradeIovname}>Upgrade Now</Button>
             </Block>
           )}
         </>
