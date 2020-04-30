@@ -8,17 +8,14 @@ import { getFirstUsername, getFirstUsernameWithNewChain } from "../../store/user
 import { IOVNAME_REGISTER_ROUTE } from "../paths";
 import Layout from "./components";
 import { BnsConnection } from "@iov/bns";
-import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 
-import { ChainId, Fee, Identity, TransactionId, Address } from "@iov/bcp";
+import { ChainId, Identity, Address } from "@iov/bcp";
 import { ExtendedIdentity } from "../../store/identities";
 import { getConnectionForChainId } from "../../logic/connection";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
-import {
-  generateUpdateUsernameTxRequest,
-  generateUpdateUsernameTxWithFee,
-} from "../../communication/requestgenerators";
+import { generateUpdateUsernameTxRequest } from "../../communication/requestgenerators";
 
 function onRegisterIovname(): void {
   history.push(IOVNAME_REGISTER_ROUTE);
