@@ -1,21 +1,20 @@
+import { Address, ChainId, Identity } from "@iov/bcp";
+import { BnsConnection } from "@iov/bns";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
 import { history } from "..";
+import { generateUpdateUsernameTxRequest } from "../../communication/requestgenerators";
+import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
+import { getConnectionForChainId } from "../../logic/connection";
+import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getFirstUsername, getFirstUsernameWithNewChain } from "../../store/usernames/selectors";
 import { IOVNAME_REGISTER_ROUTE } from "../paths";
 import Layout from "./components";
-import { BnsConnection } from "@iov/bns";
-import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
-
-import { ChainId, Identity, Address } from "@iov/bcp";
-import { ExtendedIdentity } from "../../store/identities";
-import { getConnectionForChainId } from "../../logic/connection";
-import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
-import { generateUpdateUsernameTxRequest } from "../../communication/requestgenerators";
 
 function onRegisterIovname(): void {
   history.push(IOVNAME_REGISTER_ROUTE);
