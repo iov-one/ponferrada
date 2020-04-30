@@ -12,12 +12,16 @@ const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;
 
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
-  const index = mainMenuH6Elements + 6;
+  // NOTE disabled "starnames" tab
+  // const index = mainMenuH6Elements + 6;
+  const index = mainMenuH6Elements + 5;
   return h6Elements[index].textContent || "";
 };
 
 export const getIovUsername = (h6Elements: Element[]): string => {
-  const index = mainMenuH6Elements + 4;
+  // NOTE disabled "starnames" tab
+  // const index = mainMenuH6Elements + 4;
+  const index = mainMenuH6Elements + 3;
   return h6Elements[index].textContent || "";
 };
 
