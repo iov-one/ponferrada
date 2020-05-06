@@ -17,7 +17,7 @@
         "codecType": "lsk",
         "chainId": "lisk-ed14889723",
         "name": "Lisk Mainnet",
-        "node": "https://main-01.liskapi.io"
+        "node": "https://main-02.liskapi.io"
       }
     },
     {
