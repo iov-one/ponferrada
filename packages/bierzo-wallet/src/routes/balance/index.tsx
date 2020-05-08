@@ -47,11 +47,11 @@ const Balance = (): JSX.Element => {
 
     // const formValues = values as FormValues;
     // const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-    //console.log("---------");
-    //console.log(bnsUsername!.addresses);
-    //console.log(iovAddress);
-    //console.log(identities.get('starname-network-devnet' as ChainId)!.address);
-    //console.log(iovAddressWithNewChain);
+    // console.log("---------");
+    // console.log(bnsUsername!.addresses);
+    // console.log(iovAddress);
+    // console.log(identities.get('starname-network-devnet' as ChainId)!.address);
+    // console.log(iovAddressWithNewChain);
 
     try {
       const request = await generateUpdateUsernameTxRequest(bnsIdentity, iovAddress as string, [
