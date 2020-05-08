@@ -24,7 +24,8 @@ import {
   travelToStarnamesTabE2E,
 } from "./test/operateStarnames";
 
-withChainsDescribe("E2E > Starnames route", () => {
+// NOTE: disabled starnames
+withChainsDescribe.skip("E2E > Starnames route", () => {
   let server: Server;
   let browser: Browser;
   let page: Page;

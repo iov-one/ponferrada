@@ -26,8 +26,9 @@ export function pathBuilderForCodec(codecType: CodecType): (derivation: number) 
   const pathBuilder = (derivation: number): readonly Slip10RawIndex[] => {
     switch (codecType) {
       case CodecType.Bns:
-      case CodecType.Iovns:
         return HdPaths.iov(derivation);
+      case CodecType.Iovns:
+        return HdPaths.bip44(234, 0, 0, derivation);
       case CodecType.Lisk:
         return HdPaths.bip44Like(134, derivation);
       case CodecType.Ethereum:
