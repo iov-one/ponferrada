@@ -46,19 +46,20 @@ const Balance = (): JSX.Element => {
     if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
 
     // const formValues = values as FormValues;
-
     // const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+    //console.log("---------");
+    //console.log(bnsUsername!.addresses);
+    //console.log(iovAddress);
+    //console.log(identities.get('starname-network-devnet' as ChainId)!.address);
+    //console.log(iovAddressWithNewChain);
 
     try {
-      const request = await generateUpdateUsernameTxRequest(bnsIdentity, "antoine*iov", [
+      const request = await generateUpdateUsernameTxRequest(bnsIdentity, iovAddress as string, [
         {
-          chainId: "cosmos:cosmoshub-3" as ChainId,
-          address: "cosmos1ylz6tqpgz0flpl6h5szmj6mmzyr598rqe3908y" as Address,
+          chainId: "starname-network-devnet" as ChainId,
+          address: identities.get("starname-network-devnet" as ChainId)!.address,
         },
-        {
-          chainId: "bip122:000000000019d6689c085ae165831e93" as ChainId, // bitcoin
-          address: "3QJev38iDbvdaM4DoWkGoKyQTYAXv812RY" as Address,
-        },
+        ...bnsUsername!.addresses,
       ]);
 
       if (rpcEndpoint.type === "extension") {
