@@ -56,7 +56,7 @@ const Balance = (): JSX.Element => {
     try {
       const starnameIdentity = identities.get("starname-network-devnet" as ChainId);
       if (starnameIdentity === undefined || bnsUsername === undefined) {
-        throw "no starname network address or iovname available";
+        throw new Error("no starname network address or iovname available");
       } else {
         const request = await generateUpdateUsernameTxRequest(bnsIdentity, iovAddress as string, [
           {
