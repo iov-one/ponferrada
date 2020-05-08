@@ -1,4 +1,4 @@
-import { Address, ChainId, Identity } from "@iov/bcp";
+import { ChainId, Identity } from "@iov/bcp";
 import { BnsConnection } from "@iov/bns";
 import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
@@ -54,37 +54,42 @@ const Balance = (): JSX.Element => {
     // console.log(iovAddressWithNewChain);
 
     try {
-      const request = await generateUpdateUsernameTxRequest(bnsIdentity, iovAddress as string, [
-        {
-          chainId: "starname-network-devnet" as ChainId,
-          address: identities.get("starname-network-devnet" as ChainId)!.address,
-        },
-        ...bnsUsername!.addresses,
-      ]);
+      const starnameIdentity = identities.get("starname-network-devnet" as ChainId);
+      if (starnameIdentity === undefined || bnsUsername === undefined) {
+        throw "no starname network address or iovname available";
+      } else {
+        const request = await generateUpdateUsernameTxRequest(bnsIdentity, iovAddress as string, [
+          {
+            chainId: "starname-network-devnet" as ChainId,
+            address: starnameIdentity.address,
+          },
+          ...bnsUsername.addresses,
+        ]);
 
-      if (rpcEndpoint.type === "extension") {
-        billboard.show(
-          <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-          "start",
-          "flex-end",
-          0,
-        );
-      } else {
-        billboard.show(
-          <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-          "center",
-          "center",
-          0,
-        );
-      }
-      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
-      if (transactionId === undefined) {
-        toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      } else if (transactionId === null) {
-        toast.show("Request rejected", ToastVariant.ERROR);
-      } else {
-        // looks good
-        // setTransactionId(transactionId);
+        if (rpcEndpoint.type === "extension") {
+          billboard.show(
+            <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+            "start",
+            "flex-end",
+            0,
+          );
+        } else {
+          billboard.show(
+            <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
+            "center",
+            "center",
+            0,
+          );
+        }
+        const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+        if (transactionId === undefined) {
+          toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
+        } else if (transactionId === null) {
+          toast.show("Request rejected", ToastVariant.ERROR);
+        } else {
+          // looks good
+          // setTransactionId(transactionId);
+        }
       }
     } catch (error) {
       console.error(error);
