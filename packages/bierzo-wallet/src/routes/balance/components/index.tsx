@@ -33,7 +33,7 @@ const BalanceLayout = ({
       <Block margin={2} />
       {!iovAddressWithNewChain && (
         <>
-          {iovAddress && (
+          {!iovAddress && (
             <Block
               width={500}
               bgcolor={theme.palette.background.paper}
@@ -58,7 +58,7 @@ const BalanceLayout = ({
               <Button onClick={onRegisterIovname}>Register Now</Button>
             </Block>
           )}
-          {!iovAddress && (
+          {iovAddress && (
             <Block
               width={500}
               bgcolor={theme.palette.background.paper}
