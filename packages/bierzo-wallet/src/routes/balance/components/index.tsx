@@ -33,7 +33,7 @@ const BalanceLayout = ({
       <Block margin={2} />
       {!iovAddressWithNewChain && (
         <>
-          {!iovAddress && (
+          {iovAddress && (
             <Block
               width={500}
               bgcolor={theme.palette.background.paper}
@@ -47,22 +47,18 @@ const BalanceLayout = ({
             >
               <Block marginTop={3} />
               <Typography variant="h5" weight="semibold" gutterBottom>
-                You need to register an iovname
-                <br /> to migrate to the Starname Service.
+                Please register an iovname.
               </Typography>
               <br />
               <Typography variant="body1" color="textPrimary">
-                1. Register your iovname by clicking on the button below
-                <br />
-                <br />
-                2. After the registration is successfull, we will contact you for the migration to the
-                Starname Service.
+                We are improving our technlogy and will do a migration soon. To make sure you receive your IOV
+                tokens after the migration, please click on the button below and create an iovname.
               </Typography>
               <Block marginTop={3} />
               <Button onClick={onRegisterIovname}>Register Now</Button>
             </Block>
           )}
-          {iovAddress && (
+          {!iovAddress && (
             <Block
               width={500}
               bgcolor={theme.palette.background.paper}
@@ -75,13 +71,11 @@ const BalanceLayout = ({
               fontSize={18}
             >
               <Typography variant="h5" weight="semibold" gutterBottom>
-                You need to upgrade your iovname
-                <br /> to migrate to the Starname Service.
+                Please upgrade your account.
               </Typography>
               <br />
-              <br />
-              Please click on the button below to upgrade your iovname to be able to migrate to the Starname
-              Service.
+              We are improving our technlogy. To make sure you receive your IOV tokens after the migration,
+              please click on the button below and follow the steps.
               <br />
               <br />
               <Button onClick={onUpgradeIovname}>Upgrade Now</Button>
