@@ -51,7 +51,7 @@ withChainsDescribe("E2E > Iovnames route", () => {
     server.close();
   });
 
-  it("has a register iovname link and shows all registered iovnames", async () => {
+  xit("has a register iovname link and shows all registered iovnames", async () => {
     const iovname2 = await registerIovname(browser, page);
     await sleep(2000);
 
