@@ -11,6 +11,7 @@
   "websiteName": "wallet.neuma.io",
   "supportedChains": [
     { "chainId": "iov-mainnet", "name": "IOV Mainnet" },
+    { "chainId": "starname-migration", "name": "Starname Network" },
     { "chainId": "lisk-ed14889723", "name": "Lisk" },
     { "chainId": "ethereum-eip155-1", "name": "Ethereum" },
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
@@ -31,6 +32,14 @@
         "chainId": "iov-mainnet",
         "name": "IOV Mainnet",
         "node": "wss://rpc-private-a-vip-mainnet.iov.one/"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "iovns",
+        "chainId": "starname-migration",
+        "name": "Starname Network",
+        "node": "http://localhost:23456/"
       }
     },
     {
