@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+Change Lisk node to main-02.liskapi.io
+
 ## 1.3.0
 
 - Wallet: Support for starnames
