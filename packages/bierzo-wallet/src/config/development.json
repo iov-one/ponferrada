@@ -10,7 +10,7 @@
   },
   "websiteName": "localhost",
   "supportedChains": [
-    { "chainId": "starname-network-devnet", "name": "Starname Network" },
+    { "chainId": "starname-migration", "name": "Starname Network" },
     { "chainId": "local-iov-devnet", "name": "IOV Devnet" },
     { "chainId": "lisk-198f2b61a8", "name": "Lisk Devnet" },
     { "chainId": "ethereum-eip155-5777", "name": "Ganache" },
@@ -29,7 +29,7 @@
     {
       "chainSpec": {
         "codecType": "iovns",
-        "chainId": "starname-network-devnet",
+        "chainId": "starname-migration",
         "name": "Starname Network",
         "node": "http://localhost:23456/"
       }

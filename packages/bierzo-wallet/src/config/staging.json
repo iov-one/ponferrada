@@ -10,7 +10,7 @@
   },
   "websiteName": "wallet-staging.iov.one",
   "supportedChains": [
-    { "chainId": "starname-network-devnet", "name": "Starname Network" },
+    { "chainId": "starname-migration", "name": "Starname Network" },
     { "chainId": "iov-exchangenet", "name": "IOV Exchangenet" },
     { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
     { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
@@ -29,7 +29,7 @@
     {
       "chainSpec": {
         "codecType": "iovns",
-        "chainId": "starname-network-devnet",
+        "chainId": "starname-migration",
         "name": "Starname Network",
         "node": "http://localhost:23456/"
       }
