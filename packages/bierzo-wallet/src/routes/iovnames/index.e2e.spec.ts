@@ -66,12 +66,12 @@ withChainsDescribe("E2E > Iovnames route", () => {
     expect(iovnames).toEqual(expected);
   }, 60000);
 
-  it('iovnames have "Manage" links that redirect to the Manage route for that iovname', async () => {
+  xit('iovnames have "Manage" links that redirect to the Manage route for that iovname', async () => {
     await manageFirstIovnameE2E(page);
     await page.$x(`//h6[contains(., '${iovname}')]`);
   }, 60000);
 
-  it("iovnames can be transferred", async () => {
+  xit("iovnames can be transferred", async () => {
     await manageFirstIovnameE2E(page);
 
     const [menuButton] = await getElements(page, ACCOUNT_MANAGE_MENU_BUTTON);
