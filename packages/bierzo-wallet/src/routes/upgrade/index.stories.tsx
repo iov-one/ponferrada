@@ -6,7 +6,7 @@ import Upgrade from "./";
 
 storiesOf(bierzoRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add("Terms", () => (
+  .add("Upgrade", () => (
     <DecoratedStorybook>
       <Upgrade />
     </DecoratedStorybook>
