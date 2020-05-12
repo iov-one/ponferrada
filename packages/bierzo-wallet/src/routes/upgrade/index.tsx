@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import PageMenuColumn from "../../components/PageMenuColumn";
 import Layout from "./components";
 
 class Upgrade extends React.Component {

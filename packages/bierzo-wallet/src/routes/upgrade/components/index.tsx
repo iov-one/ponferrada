@@ -1,4 +1,4 @@
-import { Block, Link, Paragraph, Section, Title } from "medulas-react-components";
+import { Paragraph, Section, Title } from "medulas-react-components";
 import React from "react";
 
 export default (): JSX.Element => {

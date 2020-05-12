@@ -40,8 +40,8 @@ import Payment from "./payment";
 import Policy from "./policy";
 import Starnames from "./starnames";
 import Terms from "./terms";
-import Upgrade from "./upgrade";
 import Transactions from "./transactions";
+import Upgrade from "./upgrade";
 
 export const history = createBrowserHistory();
 
