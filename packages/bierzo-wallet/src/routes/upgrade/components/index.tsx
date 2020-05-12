@@ -1,11 +1,8 @@
 import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import { Block, Button, Image, Typography } from "medulas-react-components";
+import { Block, Button, Typography } from "medulas-react-components";
 import React from "react";
-import { amountToString } from "ui-logic";
-
-import PageContent from "../../../components/PageContent";
 
 interface Props {
   readonly iovAddress?: string;
@@ -22,8 +19,6 @@ const UpgradeProcess = ({
   onUpgradeIovname,
   iovAddressWithNewChain,
 }: Props): JSX.Element => {
-  const tickersList = Object.keys(balances).sort();
-  const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();
   return (
     <Block alignSelf="center">

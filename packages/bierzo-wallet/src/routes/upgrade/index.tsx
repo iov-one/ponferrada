@@ -8,7 +8,6 @@ import { history } from "..";
 import { generateUpdateUsernameTxRequest } from "../../communication/requestgenerators";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
-import PageMenu from "../../components/PageMenu";
 import { getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
