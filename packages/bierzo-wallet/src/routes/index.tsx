@@ -34,11 +34,13 @@ import {
   STARNAME_TRANSFER_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
+  UPGRADE_ROUTE,
 } from "./paths";
 import Payment from "./payment";
 import Policy from "./policy";
 import Starnames from "./starnames";
 import Terms from "./terms";
+import Upgrade from "./upgrade";
 import Transactions from "./transactions";
 
 export const history = createBrowserHistory();
@@ -48,6 +50,7 @@ const Routes = (): JSX.Element => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path={LOGIN_ROUTE} component={Login} />
+      <Route exact path={UPGRADE_ROUTE} component={Upgrade} />
       <RequireLogin>
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
