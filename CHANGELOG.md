@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.1
+## 1.3.2
 
 Change Lisk node to main-02.liskapi.io
 
