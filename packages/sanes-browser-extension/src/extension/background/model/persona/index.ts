@@ -171,6 +171,13 @@ export class Persona {
     const managerChains = await Persona.connectToAllConfiguredChains(signer);
     const manager = new SoftwareAccountManager(profile, managerChains);
 
+    // write into the DB the identity for starname-migration chain in case it is not present yet
+    const identityWithStarname = profile.getAllIdentities().find(row => row.chainId === "starname-migration");
+    if (!identityWithStarname) {
+      await manager.updateAccount();
+      await profile.storeIn(db, encryptionKey);
+    }
+
     return new Persona(encryptionKey, profile, signer, manager, makeAuthorizationCallbacks);
   }
 
