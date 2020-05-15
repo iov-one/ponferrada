@@ -1,8 +1,12 @@
 # Changelog
 
+## 1.3.3
+
+- Extension: Fix bug during migration
+
 ## 1.3.2
 
-Change Lisk node to main-02.liskapi.io
+- Extension: Change Lisk node to main-02.liskapi.io
 
 ## 1.3.0
 
