@@ -24,6 +24,10 @@ export class SoftwareAccountManager implements AccountManager {
     await this.generateAccount(nextDerivation);
   }
 
+  public async updateAccount(): Promise<void> {
+    await this.generateAccount(0);
+  }
+
   /**
    * @returns a predefined names based on the derivation ie: account0, account1...
    */
