@@ -10,6 +10,7 @@ interface Props {
   readonly balances: { [token: string]: Amount };
   readonly onRegisterIovname: () => void;
   readonly onUpgradeIovname?: () => void;
+  readonly onGoHome?: () => void;
 }
 
 const UpgradeProcess = ({
@@ -17,6 +18,7 @@ const UpgradeProcess = ({
   balances,
   onRegisterIovname,
   onUpgradeIovname,
+  onGoHome,
   iovAddressWithNewChain,
 }: Props): JSX.Element => {
   const theme = useTheme<Theme>();
@@ -90,6 +92,9 @@ const UpgradeProcess = ({
           >
             Your account has been successfully upgraded. <br /> <br />
             You are all set!
+            <br />
+            <br />
+            <Button onClick={onGoHome}>Go Back to Neuma</Button>
           </Block>
         </>
       )}

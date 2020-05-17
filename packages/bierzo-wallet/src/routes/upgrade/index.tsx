@@ -12,11 +12,15 @@ import { getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getFirstUsername, getFirstUsernameMigrated } from "../../store/usernames/selectors";
-import { IOVNAME_REGISTER_ROUTE } from "../paths";
+import { IOVNAME_REGISTER_ROUTE, BALANCE_ROUTE } from "../paths";
 import UpgradeProcess from "./components";
 
 function onRegisterIovname(): void {
   history.push(IOVNAME_REGISTER_ROUTE);
+}
+
+function onGoHome(): void {
+  history.push(BALANCE_ROUTE);
 }
 
 export function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
@@ -96,6 +100,7 @@ const Upgrade = (): JSX.Element => {
       <UpgradeProcess
         onRegisterIovname={onRegisterIovname}
         onUpgradeIovname={onUpgradeIovname}
+        onGoHome={onGoHome}
         balances={tokens}
         iovAddress={iovAddress}
         iovAddressWithNewChain={iovAddressWithNewChain}
