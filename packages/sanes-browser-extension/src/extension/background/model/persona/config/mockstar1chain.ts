@@ -22,15 +22,11 @@ import {
   TransactionQuery,
   UnsignedTransaction,
 } from "@iov/bcp";
-import { HdPaths, Secp256k1HdWallet } from "@iov/keycontrol";
-import * as React from "react";
 import { Stream } from "xstream";
 
-import { PersonaContext } from "../../../../../context/PersonaProvider";
 import { ChainSpec } from "./configurationfile";
 
 // The following HARD-CODED values are shared between Neuma and the apps
-const account0 = 0;
 const addressPefix = "star";
 const bankToken = {
   fractionalDigits: 9,
@@ -82,23 +78,7 @@ class IovnsConnection implements BlockchainConnection {
   }
 
   public async getAccount(query: AccountQuery): Promise<Account | undefined> {
-    // HACK: easy access to the user profile is not had, so just use brute force
-    const personaProvider = React.useContext(PersonaContext);
-    const wallet = Secp256k1HdWallet.fromMnemonic(personaProvider.mnemonic);
-    const identity = await wallet.createIdentity(this.chainId, HdPaths.iov(account0));
-    const address = this.codec.identityToAddress(identity);
-
-    return {
-      address: address,
-      pubkey: undefined,
-      balance: [
-        {
-          quantity: "0",
-          fractionalDigits: bankToken.fractionalDigits,
-          tokenTicker: bankToken.ticker as TokenTicker,
-        },
-      ],
-    };
+    return undefined;
   }
 
   public async getNonce(_: AddressQuery | PubkeyQuery): Promise<Nonce> {
