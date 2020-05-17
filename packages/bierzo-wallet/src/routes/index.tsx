@@ -50,7 +50,6 @@ const Routes = (): JSX.Element => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path={LOGIN_ROUTE} component={Login} />
-      <Route exact path={UPGRADE_ROUTE} component={Upgrade} />
       <RequireLogin>
         <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
@@ -58,6 +57,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />
+        <Route exact path={UPGRADE_ROUTE} component={Upgrade} />
 
         <Route exact path={STARNAME_ROUTE} component={Starnames} />
         <Route exact path={IOVNAME_ROUTE} component={Iovnames} />

@@ -9,7 +9,7 @@ import * as ReactRedux from "react-redux";
 
 import { disconnect } from "../../../../logic/connection";
 import { history } from "../../../../routes";
-import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
+import { POLICY_ROUTE, TERMS_ROUTE, UPGRADE_ROUTE } from "../../../../routes/paths";
 import { resetAppAction } from "../../../../store";
 import { getBorderColor } from "../../../../theme/css";
 import chevronDown from "../../assets/chevronDown.svg";
@@ -21,6 +21,7 @@ import terms from "../../assets/terms.svg";
 export const TERMS_CONDITIONS_ID = "terms";
 export const PRIVACY_POLICY_ID = "privacy-policy";
 export const LOG_OUT_ID = "log-out";
+export const UPGRADE_ID = "upgrade";
 
 export const MENU_ID = "hi-menu";
 
@@ -73,6 +74,10 @@ const onPolicy = (): void => {
   history.push(POLICY_ROUTE);
 };
 
+const onUpgrade = (): void => {
+  history.push(UPGRADE_ROUTE);
+};
+
 const HiMenu = (props: {}): JSX.Element => {
   const classes = useStyles();
   const dispatch = ReactRedux.useDispatch();
@@ -95,6 +100,8 @@ const HiMenu = (props: {}): JSX.Element => {
   return (
     <ListMenu starter={starter} listWidth={280} listId={MENU_ID} {...rest}>
       <Block paddingLeft={2} paddingRight={2} paddingBottom={1} paddingTop={1}>
+        <HiElement src={terms} id={UPGRADE_ID} action={onUpgrade} msg="About" alt="About" />
+        <Hairline />
         <HiElement
           src={terms}
           id={TERMS_CONDITIONS_ID}
