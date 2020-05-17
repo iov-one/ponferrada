@@ -17,6 +17,7 @@ import chevronUp from "../../assets/chevronUp.svg";
 import logout from "../../assets/logout.svg";
 import privacy from "../../assets/privacyPolicy.svg";
 import terms from "../../assets/terms.svg";
+import account from "../../assets/account.svg";
 
 export const TERMS_CONDITIONS_ID = "terms";
 export const PRIVACY_POLICY_ID = "privacy-policy";
@@ -100,7 +101,7 @@ const HiMenu = (props: {}): JSX.Element => {
   return (
     <ListMenu starter={starter} listWidth={280} listId={MENU_ID} {...rest}>
       <Block paddingLeft={2} paddingRight={2} paddingBottom={1} paddingTop={1}>
-        <HiElement src={terms} id={UPGRADE_ID} action={onUpgrade} msg="About" alt="About" />
+        <HiElement src={account} id={UPGRADE_ID} action={onUpgrade} msg="Upgrade My Account" alt="About" />
         <Hairline />
         <HiElement
           src={terms}

@@ -44,14 +44,6 @@ const Upgrade = (): JSX.Element => {
     if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
     if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
 
-    // const formValues = values as FormValues;
-    // const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-    // console.log("---------");
-    // console.log(bnsUsername!.addresses);
-    // console.log(iovAddress);
-    // console.log(identities.get('starname-migration' as ChainId)!.address);
-    // console.log(iovAddressWithNewChain);
-
     try {
       const starnameIdentity = identities.get("starname-migration" as ChainId);
       if (starnameIdentity === undefined || bnsUsername === undefined) {
