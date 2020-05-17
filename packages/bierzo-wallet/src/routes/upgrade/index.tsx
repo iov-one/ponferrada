@@ -12,7 +12,7 @@ import { getConnectionForChainId } from "../../logic/connection";
 import { ExtendedIdentity } from "../../store/identities";
 import { RootState } from "../../store/reducers";
 import { getFirstUsername, getFirstUsernameMigrated } from "../../store/usernames/selectors";
-import { IOVNAME_REGISTER_ROUTE, BALANCE_ROUTE } from "../paths";
+import { BALANCE_ROUTE, IOVNAME_REGISTER_ROUTE } from "../paths";
 import UpgradeProcess from "./components";
 
 function onRegisterIovname(): void {

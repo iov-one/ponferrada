@@ -12,12 +12,12 @@ import { history } from "../../../../routes";
 import { POLICY_ROUTE, TERMS_ROUTE, UPGRADE_ROUTE } from "../../../../routes/paths";
 import { resetAppAction } from "../../../../store";
 import { getBorderColor } from "../../../../theme/css";
+import account from "../../assets/account.svg";
 import chevronDown from "../../assets/chevronDown.svg";
 import chevronUp from "../../assets/chevronUp.svg";
 import logout from "../../assets/logout.svg";
 import privacy from "../../assets/privacyPolicy.svg";
 import terms from "../../assets/terms.svg";
-import account from "../../assets/account.svg";
 
 export const TERMS_CONDITIONS_ID = "terms";
 export const PRIVACY_POLICY_ID = "privacy-policy";
