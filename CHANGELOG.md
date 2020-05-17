@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.4
+## 1.3.5
 
 - Extension: Fix bug during migration
 
