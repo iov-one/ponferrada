@@ -49,17 +49,17 @@ const Upgrade = (): JSX.Element => {
     // console.log("---------");
     // console.log(bnsUsername!.addresses);
     // console.log(iovAddress);
-    // console.log(identities.get('starname-network-devnet' as ChainId)!.address);
+    // console.log(identities.get('starname-migration' as ChainId)!.address);
     // console.log(iovAddressWithNewChain);
 
     try {
-      const starnameIdentity = identities.get("starname-network-devnet" as ChainId);
+      const starnameIdentity = identities.get("starname-migration" as ChainId);
       if (starnameIdentity === undefined || bnsUsername === undefined) {
         throw new Error("no starname network address or iovname available");
       } else {
         const request = await generateUpdateUsernameTxRequest(bnsIdentity, iovAddress as string, [
           {
-            chainId: "starname-network-devnet" as ChainId,
+            chainId: "starname-migration" as ChainId,
             address: starnameIdentity.address,
           },
           ...bnsUsername.addresses,

@@ -77,8 +77,20 @@ const UpgradeProcess = ({
       )}
       {iovAddressWithNewChain && (
         <>
-          <Block margin={2} />
-          Migration Completed
+          <Block
+            width={500}
+            bgcolor={theme.palette.background.paper}
+            padding={5}
+            display="flex"
+            flexDirection="column"
+            borderRadius={5}
+            textAlign="center"
+            border="1px solid #F3F3F3"
+            fontSize={18}
+          >
+            Your account has been successfully upgraded. <br /> <br />
+            You are all set!
+          </Block>
         </>
       )}
     </Block>
