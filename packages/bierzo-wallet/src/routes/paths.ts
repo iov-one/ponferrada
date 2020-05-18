@@ -4,6 +4,7 @@ export const ADDRESSES_ROUTE = "/addresses";
 export const TRANSACTIONS_ROUTE = "/transactions";
 export const PAYMENT_ROUTE = "/payment";
 export const TERMS_ROUTE = "/terms";
+export const UPGRADE_ROUTE = "/upgrade";
 export const POLICY_ROUTE = "/policy";
 // Account: Iovnames paths
 export const IOVNAME_ROUTE = "/iovname";
