@@ -12,6 +12,7 @@ import Login from "./login";
 import {
   ADDRESSES_ROUTE,
   BALANCE_ROUTE,
+  CHECK_MIGRATION_ROUTE,
   IOVNAME_EDIT_ROUTE,
   IOVNAME_MANAGE_ROUTE,
   IOVNAME_REGISTER_ROUTE,
@@ -42,6 +43,7 @@ import Starnames from "./starnames";
 import Terms from "./terms";
 import Transactions from "./transactions";
 import Upgrade from "./upgrade";
+import CheckMigration from "./checkmigration";
 
 export const history = createBrowserHistory();
 
@@ -57,6 +59,7 @@ const Routes = (): JSX.Element => (
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />
+        <Route exact path={CHECK_MIGRATION_ROUTE} component={CheckMigration} />
         <Route exact path={UPGRADE_ROUTE} component={Upgrade} />
 
         <Route exact path={STARNAME_ROUTE} component={Starnames} />

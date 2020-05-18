@@ -23,7 +23,7 @@ import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
 import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
-import { BALANCE_ROUTE } from "../paths";
+import { CHECK_MIGRATION_ROUTE } from "../paths";
 import PageColumn from "./components/PageColumn";
 
 export const loginBootSequence = async (
@@ -97,7 +97,7 @@ const Login = (): JSX.Element => {
         dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(extensionRpcEndpoint));
         await loginBootSequence(identities, dispatch);
-        history.push(BALANCE_ROUTE);
+        history.push(CHECK_MIGRATION_ROUTE);
       }
     } catch (error) {
       console.error(error);
@@ -131,7 +131,7 @@ const Login = (): JSX.Element => {
         dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(ledgerRpcEndpoint));
         await loginBootSequence(identities, dispatch);
-        history.push(BALANCE_ROUTE);
+        history.push(CHECK_MIGRATION_ROUTE);
       }
     } catch (error) {
       console.error(error);
