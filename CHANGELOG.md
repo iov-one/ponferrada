@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.6
+
+- Wallet: Fix Menu
+
 ## 1.3.5
 
 - Extension: Fix bug during migration
