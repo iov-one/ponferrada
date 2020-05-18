@@ -7,6 +7,7 @@ import { AccountDelete, AccountManage, AccountRegister, AccountRenew, AccountUpd
 import AccountTransfer from "./account/transfer";
 import Addresses from "./addresses";
 import Balance from "./balance";
+import CheckMigration from "./checkmigration";
 import Iovnames from "./iovnames";
 import Login from "./login";
 import {
@@ -43,7 +44,6 @@ import Starnames from "./starnames";
 import Terms from "./terms";
 import Transactions from "./transactions";
 import Upgrade from "./upgrade";
-import CheckMigration from "./checkmigration";
 
 export const history = createBrowserHistory();
 
