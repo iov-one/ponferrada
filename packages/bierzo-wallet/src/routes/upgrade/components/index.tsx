@@ -46,7 +46,7 @@ const UpgradeProcess = ({
               <br />
               <Typography variant="body1" color="textPrimary">
                 We are improving our technlogy and will do a migration soon. To make sure you receive your IOV
-                tokens after the migration, please click on the button below and create an iovname.
+                tokens just after the migration, please click on the button below and create an iovname.
               </Typography>
               <Block marginTop={3} />
               <Button onClick={onRegisterIovname}>Register Now</Button>
@@ -68,8 +68,8 @@ const UpgradeProcess = ({
                 Please upgrade your account.
               </Typography>
               <br />
-              We are improving our technlogy. To make sure you receive your IOV tokens after the migration,
-              please click on the button below and follow the steps.
+              We are improving our technlogy. To make sure you receive your IOV tokens just after the
+              migration, please click on the button below and follow the steps.
               <br />
               <br />
               <Button onClick={onUpgradeIovname}>Upgrade Now</Button>
