@@ -1719,6 +1719,11 @@ exports[`Storyshots Bierzo Wallet Upgrade 1`] = `
   <div
     className="MuiBox-root MuiBox-root"
   >
+    <img
+      alt="logo"
+      className="makeStyles-root"
+      src="neumaWalletLogo.svg"
+    />
     <div
       className="MuiBox-root MuiBox-root"
     />
@@ -1731,13 +1736,15 @@ exports[`Storyshots Bierzo Wallet Upgrade 1`] = `
       <h5
         className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-defaultColor MuiTypography-h5 MuiTypography-gutterBottom"
       >
-        Please register an iovname.
+        Please register an iovname 
+        <br />
+         before the migration
       </h5>
       <br />
       <p
         className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
       >
-        We are improving our technlogy and will do a migration soon. To make sure you receive your IOV tokens after the migration, please click on the button below and create an iovname.
+        We will do a migration soon as we are improving our technology. To make sure you receive your IOV tokens just after the migration, please click on the button below and create an iovname.
       </p>
       <div
         className="MuiBox-root MuiBox-root"
@@ -1766,6 +1773,22 @@ exports[`Storyshots Bierzo Wallet Upgrade 1`] = `
           Register Now
         </span>
       </button>
+      <br />
+      <h6
+        className="MuiTypography-root makeStyles-weight makeStyles-weight makeStyles-inline makeStyles-link MuiTypography-subtitle1 MuiTypography-colorPrimary"
+        id="go-to-balance-link"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "grey",
+            "cursor": "pointer",
+            "fontSize": "12px",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Later
+      </h6>
     </div>
   </div>
 </div>
