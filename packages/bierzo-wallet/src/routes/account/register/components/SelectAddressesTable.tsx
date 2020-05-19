@@ -22,6 +22,7 @@ const emptySelectorName = "Select";
 
 export const getAddressInputName = (id: string): string => `${id}-${addressValueField}`;
 export const getBlockchainInputName = (id: string): string => `${id}-${blockchainValueField}`;
+export const getRemoveInputName = (id: string): string => `remove-${id}`;
 
 const useStyles = makeStyles((theme: Theme) => ({
   cell: {
@@ -117,7 +118,14 @@ const AddressRow = ({
         </InputGroup>
       </TableCell>
       <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
-        <Typography variant="body2" link weight="semibold" color="primary" onClick={onRemove}>
+        <Typography
+          variant="body2"
+          link
+          weight="semibold"
+          color="primary"
+          onClick={onRemove}
+          id={getRemoveInputName(addressItem.id)}
+        >
           Remove
         </Typography>
       </TableCell>

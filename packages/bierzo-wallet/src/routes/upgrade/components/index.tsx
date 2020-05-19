@@ -53,7 +53,9 @@ const UpgradeProcess = ({
                 IOV tokens just after the migration, please click on the button below and create an iovname.
               </Typography>
               <Block marginTop={3} />
-              <Button onClick={onRegisterIovname}>Register Now</Button>
+              <Button onClick={onRegisterIovname} id="register-now">
+                Register Now
+              </Button>
               <br />
               <Typography
                 id={GO_TO_BALANCE_LINK}
@@ -89,7 +91,9 @@ const UpgradeProcess = ({
               IOV tokens just after the migration, please click on the button below and follow the steps.
               <br />
               <br />
-              <Button onClick={onUpgradeIovname}>Upgrade Now</Button>
+              <Button onClick={onUpgradeIovname} id="upgrade-now">
+                Upgrade Now
+              </Button>
               <br />
               <Typography
                 id={GO_TO_BALANCE_LINK}
@@ -120,7 +124,10 @@ const UpgradeProcess = ({
             border="1px solid #F3F3F3"
             fontSize={18}
           >
-            Your account has been successfully upgraded. <br /> <br />
+            <Typography variant="h5" weight="semibold" gutterBottom>
+              Your account has been successfully upgraded.
+            </Typography>
+            <br /> <br />
             You are all set!
             <br />
             <br />

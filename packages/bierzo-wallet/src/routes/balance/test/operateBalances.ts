@@ -68,6 +68,25 @@ export const registerIovname = async (browser: Browser, page: Page): Promise<str
   return iovname;
 };
 
+export const registerIovnameWithoutStarname = async (browser: Browser, page: Page): Promise<string> => {
+  await page.click(`#${REGISTER_IOVNAME_LINK}`);
+
+  // Fill the form
+  await sleep(1000);
+  const iovname = `${randomString(10)}*iov`;
+  await page.type(`input[name="${REGISTER_IOVNAME_FIELD}"]`, iovname);
+  await page.click("#remove-11"); // remove starname address for now
+  await page.click('button[type="submit"]');
+
+  await acceptEnqueuedRequest(browser);
+  await page.bringToFront();
+  await sleep(1000);
+  const buttons = await page.$$("button");
+  await buttons[1].click();
+
+  return iovname;
+};
+
 export const registerStarname = async (browser: Browser, page: Page): Promise<string> => {
   await page.click(`#${REGISTER_STARNAME_LINK}`);
 
