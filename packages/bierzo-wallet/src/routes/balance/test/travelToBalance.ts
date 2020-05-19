@@ -32,7 +32,7 @@ export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<
   await sleep(1000);
   await acceptEnqueuedRequest(browser);
   await page.bringToFront();
-  await sleep(500);
+  await sleep(1000);
   await page.click(`#${GO_TO_BALANCE_LINK.replace("/", "\\/")}`);
   await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
 }
