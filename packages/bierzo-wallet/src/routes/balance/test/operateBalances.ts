@@ -12,16 +12,15 @@ const mainMenuH6Elements = 3;
 const numberOfTokensFromFaucet = 4;
 
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
-  // NOTE disabled "starnames" tab
-  // const index = mainMenuH6Elements + 6;
-  const index = mainMenuH6Elements + 5;
+  // NOTE disabled "starnames" tab +1 or -1
+  const index = mainMenuH6Elements + 6;
+  // const index = mainMenuH6Elements + 5;
   return h6Elements[index].textContent || "";
 };
 
 export const getIovUsername = (h6Elements: Element[]): string => {
-  // NOTE disabled "starnames" tab
-  // const index = mainMenuH6Elements + 4;
-  const index = mainMenuH6Elements + 3;
+  // NOTE disabled "starnames" tab +1 or -1
+  const index = mainMenuH6Elements + 4;
   return h6Elements[index].textContent || "";
 };
 
@@ -45,8 +44,8 @@ export function waitForAllBalances(page: Page): Promise<void> {
 
 export const getAddressCreationPromptE2E = async (h6Elements: ElementHandle<Element>[]): Promise<string> => {
   // NOTE: disabled "starnames" tab
-  // const index = mainMenuH6Elements + 4;
-  const index = mainMenuH6Elements + 3;
+  const index = mainMenuH6Elements + 4;
+  // const index = mainMenuH6Elements + 3;
   return ((await (await h6Elements[index].getProperty("textContent")).jsonValue()) as string) || "";
 };
 
@@ -57,6 +56,25 @@ export const registerIovname = async (browser: Browser, page: Page): Promise<str
   await sleep(1000);
   const iovname = `${randomString(10)}*iov`;
   await page.type(`input[name="${REGISTER_IOVNAME_FIELD}"]`, iovname);
+  await page.click('button[type="submit"]');
+
+  await acceptEnqueuedRequest(browser);
+  await page.bringToFront();
+  await sleep(1000);
+  const buttons = await page.$$("button");
+  await buttons[1].click();
+
+  return iovname;
+};
+
+export const registerIovnameWithoutStarname = async (browser: Browser, page: Page): Promise<string> => {
+  await page.click(`#${REGISTER_IOVNAME_LINK}`);
+
+  // Fill the form
+  await sleep(1000);
+  const iovname = `${randomString(10)}*iov`;
+  await page.type(`input[name="${REGISTER_IOVNAME_FIELD}"]`, iovname);
+  await page.click("#remove-11"); // remove starname address for now
   await page.click('button[type="submit"]');
 
   await acceptEnqueuedRequest(browser);

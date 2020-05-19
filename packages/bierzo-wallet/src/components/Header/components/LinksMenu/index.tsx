@@ -4,7 +4,13 @@ import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import { ADDRESSES_ROUTE, BALANCE_ROUTE, IOVNAME_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
+import {
+  ADDRESSES_ROUTE,
+  BALANCE_ROUTE,
+  IOVNAME_ROUTE,
+  TRANSACTIONS_ROUTE,
+  UPGRADE_ROUTE,
+} from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -51,6 +57,9 @@ const onAddresses = (): void => {
   history.push(ADDRESSES_ROUTE);
 };
 
+const onUpgrade = (): void => {
+  history.push(UPGRADE_ROUTE);
+};
 const lastTxNewer = (lastTx: TxMeta, lastStoredTx: TxMeta): boolean => {
   return lastTx.time.getTime() > lastStoredTx.time.getTime();
 };
@@ -84,6 +93,7 @@ export const STARNAMES_TAB_TITLE = "Starnames";
 export const IOVNAMES_TAB_TITLE = "iovnames";
 export const TRANSACTIONS_TAB_TITLE = "Transactions";
 export const ADDRESSES_TAB_TITLE = "Addresses";
+export const UPGRADE_TAB_TITLE = "Upgrade";
 
 interface MenuItemProps {
   readonly showBadge?: boolean;
@@ -129,6 +139,9 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
       <Block className={classes.item}>
         <LinkMenuItem onClick={onBalance} itemTitle={BALANCES_TAB_TITLE} />
         {showBalances && <Block className={classes.line} />}
+      </Block>
+      <Block className={classes.item}>
+        <LinkMenuItem onClick={onUpgrade} itemTitle={UPGRADE_TAB_TITLE} />
       </Block>
       {/* NOTE: disabled starnames */}
       {/* <Block className={classes.item}>

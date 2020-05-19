@@ -6,6 +6,7 @@ export const PAYMENT_ROUTE = "/payment";
 export const TERMS_ROUTE = "/terms";
 export const UPGRADE_ROUTE = "/upgrade";
 export const POLICY_ROUTE = "/policy";
+export const CHECK_MIGRATION_ROUTE = "/check-migration";
 // Account: Iovnames paths
 export const IOVNAME_ROUTE = "/iovname";
 export const IOVNAME_MANAGE_ROUTE = "/iovname/manage";
