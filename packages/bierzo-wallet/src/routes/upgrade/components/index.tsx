@@ -4,6 +4,8 @@ import { useTheme } from "@material-ui/styles";
 import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
+import { GO_TO_BALANCE_LINK } from "..";
+
 import neumaLogo from "./../../../components/Header/assets/neumaWalletLogo.svg";
 
 interface Props {
@@ -55,7 +57,7 @@ const UpgradeProcess = ({
               <Button onClick={onRegisterIovname}>Register Now</Button>
               <br />
               <Typography
-                id="Ok-home"
+                id={GO_TO_BALANCE_LINK}
                 variant="subtitle1"
                 color="primary"
                 weight="semibold"
@@ -91,7 +93,7 @@ const UpgradeProcess = ({
               <Button onClick={onUpgradeIovname}>Upgrade Now</Button>
               <br />
               <Typography
-                id="Ok-home"
+                id={GO_TO_BALANCE_LINK}
                 variant="subtitle1"
                 color="primary"
                 weight="semibold"
