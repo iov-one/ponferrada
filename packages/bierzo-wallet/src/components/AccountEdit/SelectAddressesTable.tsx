@@ -92,20 +92,33 @@ const AddressRow = ({
     }
   };
 
+  const isStarname = addressItem.chain.chainName.toLocaleLowerCase().indexOf("starname") !== -1;
+
   return (
     <TableRow>
       <TableCell classes={cellClasses} align="left">
         <InputGroup
           prepend={
-            <SelectField
-              fieldName={getBlockchainInputName(addressItem.id)}
-              form={form}
-              maxWidth="200px"
-              items={blockChainItems}
-              initial={addressItem.chain.chainName}
-              placeholder={blockChainItems.length > 0 ? emptySelectorName : undefined}
-              onChangeCallback={onSelectionChanged}
-            />
+            isStarname ? ( // this is required because SelectField's disable doesn't work
+              <TextField
+                name={getBlockchainInputName(addressItem.id)}
+                form={form}
+                margin="none"
+                disabled
+                multiline={true}
+              />
+            ) : (
+              <SelectField
+                fieldName={getBlockchainInputName(addressItem.id)}
+                form={form}
+                maxWidth="200px"
+                items={blockChainItems}
+                initial={addressItem.chain.chainName}
+                placeholder={blockChainItems.length > 0 ? emptySelectorName : undefined}
+                onChangeCallback={onSelectionChanged}
+                disabled={isStarname} // why doesn't this work?!?
+              />
+            )
           }
         >
           <TextField
@@ -114,14 +127,17 @@ const AddressRow = ({
             placeholder="Add blockchain address"
             fullWidth
             margin="none"
+            disabled={isStarname} // works here
           />
         </InputGroup>
       </TableCell>
-      <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
-        <Typography variant="body2" link weight="semibold" color="primary" onClick={onRemove}>
-          Remove
-        </Typography>
-      </TableCell>
+      {!isStarname && (
+        <TableCell classes={cellClasses} align="center" className={classes.copyCell}>
+          <Typography variant="body2" link weight="semibold" color="primary" onClick={onRemove}>
+            Remove
+          </Typography>
+        </TableCell>
+      )}
     </TableRow>
   );
 };
