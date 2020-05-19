@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.7
+
+- Wallet: Dialog box
+
 ## 1.3.6
 
 - Wallet: Fix Menu
