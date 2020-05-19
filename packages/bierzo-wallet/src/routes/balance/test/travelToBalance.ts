@@ -9,6 +9,7 @@ import { createExtensionPage, getBackgroundPage } from "../../../utils/test/e2e"
 import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from "../../../utils/test/navigation";
 import { acceptEnqueuedRequest, submitExtensionCreateWalletForm } from "../../../utils/test/persona";
 import { BALANCE_ROUTE } from "../../paths";
+import { GO_TO_BALANCE_LINK } from "../../upgrade";
 
 export const travelToBalance = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
@@ -31,5 +32,7 @@ export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<
   await sleep(1000);
   await acceptEnqueuedRequest(browser);
   await page.bringToFront();
+  await sleep(500);
+  await page.click(`#${GO_TO_BALANCE_LINK.replace("/", "\\/")}`);
   await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
 }

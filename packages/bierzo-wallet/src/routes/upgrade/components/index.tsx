@@ -5,7 +5,6 @@ import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
 import { GO_TO_BALANCE_LINK } from "..";
-
 import neumaLogo from "./../../../components/Header/assets/neumaWalletLogo.svg";
 
 interface Props {
