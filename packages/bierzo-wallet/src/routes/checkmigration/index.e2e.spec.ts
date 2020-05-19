@@ -6,7 +6,7 @@ import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { travelToUpgradeE2E } from "./test/travelToUpgrade";
 
-withChainsDescribe("E2E > Terms route", () => {
+withChainsDescribe("E2E > Check Migration route", () => {
   let browser: Browser;
   let page: Page;
   let server: Server;
