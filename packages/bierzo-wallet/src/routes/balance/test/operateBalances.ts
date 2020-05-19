@@ -14,7 +14,7 @@ const numberOfTokensFromFaucet = 4;
 export const getNoFundsMessage = (h6Elements: Element[]): string => {
   // NOTE disabled "starnames" tab +1 or -1
   const index = mainMenuH6Elements + 6;
-  //const index = mainMenuH6Elements + 5;
+  // const index = mainMenuH6Elements + 5;
   return h6Elements[index].textContent || "";
 };
 
