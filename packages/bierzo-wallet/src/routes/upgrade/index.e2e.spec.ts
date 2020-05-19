@@ -3,17 +3,12 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { sleep } from "ui-logic";
 
+import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { acceptEnqueuedRequest } from "../../utils/test/persona";
-
-import { closeBrowser, createPage, launchBrowser, getElements } from "../../utils/test/e2e";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { travelToUpgradeE2E } from "./test/travelToUpgrade";
 import { registerIovnameWithoutStarname, waitForAllBalances } from "../balance/test/operateBalances";
-import {
-  getIovnames,
-  manageFirstIovnameE2E,
-  travelToIovnamesTabE2E,
-} from "./../iovnames/test/operateIovnames";
+import { travelToIovnamesTabE2E } from "./../iovnames/test/operateIovnames";
+import { travelToUpgradeE2E } from "./test/travelToUpgrade";
 
 withChainsDescribe("E2E > Upgrade route", () => {
   let browser: Browser;
