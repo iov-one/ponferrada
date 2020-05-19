@@ -20,7 +20,7 @@ import {
   submitExtensionCreateWalletForm,
 } from "../../utils/test/persona";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
-import { BALANCE_ROUTE } from "../paths";
+import { UPGRADE_ROUTE } from "../paths";
 
 withChainsDescribe("E2E > Login route", () => {
   let browser: Browser;
@@ -73,7 +73,7 @@ withChainsDescribe("E2E > Login route", () => {
       await sleep(1000);
       await acceptEnqueuedRequest(browser);
       await page.bringToFront();
-      await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
+      await whenOnNavigatedToE2eRoute(page, UPGRADE_ROUTE);
     }, 60000);
 
     it("should stay in login view if enqueued login request is rejected", async () => {
