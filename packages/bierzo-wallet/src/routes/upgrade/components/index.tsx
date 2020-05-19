@@ -53,12 +53,18 @@ const UpgradeProcess = ({
               <Block marginTop={3} />
               <Button onClick={onRegisterIovname}>Register Now</Button>
               <br />
-              <a
-                onClick={onGoHome}
+              <Typography
+                id="Ok-home"
+                variant="subtitle1"
+                color="primary"
+                weight="semibold"
+                inline
+                link
                 style={{ fontSize: "12px", textDecoration: "none", color: "grey", cursor: "pointer" }}
+                onClick={onGoHome}
               >
                 Later
-              </a>
+              </Typography>
             </Block>
           )}
           {iovAddress && (
@@ -83,12 +89,18 @@ const UpgradeProcess = ({
               <br />
               <Button onClick={onUpgradeIovname}>Upgrade Now</Button>
               <br />
-              <a
-                onClick={onGoHome}
+              <Typography
+                id="Ok-home"
+                variant="subtitle1"
+                color="primary"
+                weight="semibold"
+                inline
+                link
                 style={{ fontSize: "12px", textDecoration: "none", color: "grey", cursor: "pointer" }}
+                onClick={onGoHome}
               >
                 Later
-              </a>
+              </Typography>
             </Block>
           )}
         </>
