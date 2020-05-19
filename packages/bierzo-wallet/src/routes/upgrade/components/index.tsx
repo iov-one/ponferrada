@@ -1,8 +1,9 @@
 import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import { Block, Image, Button, Typography } from "medulas-react-components";
+import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
+
 import neumaLogo from "./../../../components/Header/assets/neumaWalletLogo.svg";
 
 interface Props {

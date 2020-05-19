@@ -15,6 +15,8 @@ import { getFirstUsername, getFirstUsernameMigrated } from "../../store/username
 import { BALANCE_ROUTE, IOVNAME_REGISTER_ROUTE } from "../paths";
 import UpgradeProcess from "./components";
 
+export const GO_TO_BALANCE_LINK = "go-to-balance-link";
+
 function onRegisterIovname(): void {
   history.push(IOVNAME_REGISTER_ROUTE);
 }
