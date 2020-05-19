@@ -92,6 +92,8 @@ const AddressRow = ({
     }
   };
 
+  const isStarname = addressItem.chain.chainName.toLocaleLowerCase().indexOf("starname") !== -1;
+
   return (
     <TableRow>
       <TableCell classes={cellClasses} align="left">
@@ -114,6 +116,7 @@ const AddressRow = ({
             placeholder="Add blockchain address"
             fullWidth
             margin="none"
+            disabled={isStarname}
           />
         </InputGroup>
       </TableCell>
