@@ -222,6 +222,25 @@ exports[`Storyshots Bierzo Wallet Policy 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -1224,6 +1243,25 @@ exports[`Storyshots Bierzo Wallet Terms 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -1752,6 +1790,7 @@ exports[`Storyshots Bierzo Wallet Upgrade 1`] = `
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
         disabled={false}
+        id="register-now"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
@@ -5101,6 +5140,25 @@ exports[`Storyshots Bierzo Wallet/Balance View 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -5294,6 +5352,25 @@ exports[`Storyshots Bierzo Wallet/Balance View on ledger and without name 1`] = 
               onClick={[Function]}
             >
               Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
             </h6>
           </div>
         </div>
@@ -5538,6 +5615,25 @@ exports[`Storyshots Bierzo Wallet/Balance View without tokens and without name 1
               onClick={[Function]}
             >
               Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
             </h6>
           </div>
         </div>
@@ -5890,6 +5986,25 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -6047,6 +6162,25 @@ exports[`Storyshots Bierzo Wallet/Components Header 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -6182,6 +6316,25 @@ exports[`Storyshots Bierzo Wallet/Components PageMenuColumn 1`] = `
               onClick={[Function]}
             >
               Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
             </h6>
           </div>
         </div>
@@ -6381,6 +6534,25 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu With padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -6551,6 +6723,25 @@ exports[`Storyshots Bierzo Wallet/Components/PageMenu Without padding 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -6706,6 +6897,25 @@ exports[`Storyshots Bierzo Wallet/Iovnames With iovnames 1`] = `
               onClick={[Function]}
             >
               Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
             </h6>
           </div>
         </div>
@@ -6899,6 +7109,25 @@ exports[`Storyshots Bierzo Wallet/Iovnames Without iovnames 1`] = `
               onClick={[Function]}
             >
               Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
             </h6>
           </div>
         </div>
@@ -9069,6 +9298,25 @@ exports[`Storyshots Bierzo Wallet/Starnames With starnames 1`] = `
           >
             <h6
               className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
               id="iovnames"
               onClick={[Function]}
             >
@@ -9247,6 +9495,25 @@ exports[`Storyshots Bierzo Wallet/Starnames Without starnames 1`] = `
               onClick={[Function]}
             >
               Balances
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root makeStyles-item"
+      >
+        <div
+          className="MuiBox-root MuiBox-root"
+        >
+          <div
+            className="MuiBox-root MuiBox-root"
+          >
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextPrimary"
+              id="Upgrade"
+              onClick={[Function]}
+            >
+              Upgrade
             </h6>
           </div>
         </div>
