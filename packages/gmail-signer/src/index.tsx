@@ -5,14 +5,13 @@ import ReactDOM from "react-dom";
 import { PersonaProvider } from "./context/PersonaProvider";
 import { RequestProvider } from "./context/RequestProvider";
 import { GetPersonaResponse } from "./extension/background/model/backgroundscript";
+import Backgroundscript, { IovWindowExtension } from "./extension/background/model/backgroundscript";
 import { Request } from "./extension/background/model/requestsHandler/requestQueueManager";
 import Route from "./routes";
 import { initialUrl } from "./routes/paths";
 import { globalStyles } from "./theme/globalStyles";
 import { getHasStoredPersona, getPersonaData, getQueuedRequests } from "./utils/chrome";
 import { history } from "./utils/history";
-
-import Backgroundscript, { IovWindowExtension } from "./extension/background/model/backgroundscript";
 const backgroundScript = new Backgroundscript();
 backgroundScript.registerActionsInBackground((window as Window) as IovWindowExtension);
 

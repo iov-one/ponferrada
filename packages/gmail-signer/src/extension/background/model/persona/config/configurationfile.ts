@@ -1,9 +1,8 @@
 import { ChainId } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
-import { getBnsRpc } from "../../../../../utils/localstorage/bnsRpc";
-
 import developmentConfig from "../../../../../config/development.json";
+import { getBnsRpc } from "../../../../../utils/localstorage/bnsRpc";
 
 /** The string value must match the codec type in the config file */
 export enum CodecType {
