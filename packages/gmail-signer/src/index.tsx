@@ -12,6 +12,10 @@ import { globalStyles } from "./theme/globalStyles";
 import { getHasStoredPersona, getPersonaData, getQueuedRequests } from "./utils/chrome";
 import { history } from "./utils/history";
 
+import Backgroundscript, { IovWindowExtension } from "./extension/background/model/backgroundscript";
+const backgroundScript = new Backgroundscript();
+backgroundScript.registerActionsInBackground((window as Window) as IovWindowExtension);
+
 const rootEl = document.getElementById("root");
 
 const render = (
@@ -39,11 +43,4 @@ Promise.all([getPersonaData(), getHasStoredPersona()] as const).then(([persona, 
   const url = initialUrl(!!persona, hasStoredPersona);
   history.push(url);
   render(Route, hasStoredPersona, persona, requests);
-
-  if (module.hot) {
-    module.hot.accept("./routes", (): void => {
-      const NextApp = require("./routes").default;
-      render(NextApp, hasStoredPersona, persona, requests);
-    });
-  }
 });
