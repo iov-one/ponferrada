@@ -3,6 +3,8 @@ import { singleton } from "ui-logic";
 
 import { getBnsRpc } from "../../../../../utils/localstorage/bnsRpc";
 
+import developmentConfig from "../../../../../config/development.json";
+
 /** The string value must match the codec type in the config file */
 export enum CodecType {
   Bns = "bns",
@@ -51,6 +53,7 @@ export interface ConfigurationFile {
 }
 
 const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
+  /*
   if (process.env.NODE_ENV === "test") {
     const config = (window as any).config;
     return config;
@@ -61,6 +64,8 @@ const loadConfigurationFile = async (): Promise<ConfigurationFile> => {
   const json = await data.json();
 
   return json;
+  */
+  return (developmentConfig as unknown) as ConfigurationFile;
 };
 
 export const getConfigurationFile = singleton<typeof loadConfigurationFile>(loadConfigurationFile);
