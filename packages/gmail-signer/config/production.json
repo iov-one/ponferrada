@@ -1,0 +1,54 @@
+{
+  "blockExplorers": {
+    "lisk-ed14889723": "https://explorer.lisk.io/tx/%id",
+    "ethereum-eip155-1": "https://etherscan.io/tx/%id"
+  },
+  "chains": [
+    {
+      "chainSpec": {
+        "codecType": "bns",
+        "chainId": "iov-mainnet",
+        "name": "IOV Mainnet",
+        "node": "https://rpc-private-a-vip-mainnet.iov.one/"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "iovns",
+        "chainId": "starname-migration",
+        "name": "Starname Network",
+        "node": "http://localhost:23456/"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "lsk",
+        "chainId": "lisk-ed14889723",
+        "name": "Lisk Mainnet",
+        "node": "https://main-02.liskapi.io"
+      }
+    },
+    {
+      "chainSpec": {
+        "codecType": "eth",
+        "chainId": "ethereum-eip155-1",
+        "name": "Ethereum Mainnet",
+        "node": "https://mainnet.infura.io/v3/36cd381ebed84d9996403e5c736fd8eb",
+        "scraper": "https://api.etherscan.io/api",
+        "ethereumOptions": {
+          "erc20s": [
+            {
+              "contractAddress": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "decimals": 18,
+              "symbol": "DAI",
+              "name": "Dai Stablecoin"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "walletCreationDisabled": false,
+  "accountCreationDisabled": true,
+  "production": "true"
+}

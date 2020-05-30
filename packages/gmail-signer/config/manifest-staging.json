@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "Neuma (Quality Assurance)",
+  "version": "will_be_set_in_build_step",
+  "version_name": "will_be_set_in_build_step",
+  "description": "Key manager and transaction signer for the IOV, Ethereum and Lisk blockchains (Quality Assurance)",
+  "browser_action": {
+    "default_title": "Neuma (Quality Assurance)",
+    "default_popup": "index.html"
+  },
+  "applications": {
+    "gecko": {
+      "id": "admin@iov.one"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "content_scripts": [],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost/*",
+      "https://*.iov.one/*",
+      "https://*.neuma.io/*",
+      "https://*.starname.network/*"
+    ]
+  },
+  "background": {
+    "scripts": ["js/backgroundScript.js"],
+    "persistent": true
+  },
+  "permissions": [],
+  "web_accessible_resources": ["js/*"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-qAcmzXQ8jmB7ddF3B7OWAJKIn2C00zGiCGj8W5dG+wo='; object-src 'self'"
+}

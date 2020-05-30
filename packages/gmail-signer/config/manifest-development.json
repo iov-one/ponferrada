@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Neuma (development)",
+  "version": "will_be_set_in_build_step",
+  "version_name": "will_be_set_in_build_step",
+  "description": "Key manager and transaction signer for the IOV, Ethereum and Lisk blockchains (development)",
+  "browser_action": {
+    "default_title": "Neuma (development)",
+    "default_popup": "index.html"
+  },
+  "applications": {
+    "gecko": {
+      "id": "admin@iov.one"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "content_scripts": [],
+  "externally_connectable": {
+    "matches": ["http://localhost/*"]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmFh+Ts/tyjeI6tbH9oWZfw6kSoPGxw/o9JE0DXcu4aM0He6j9FLDRfJPwBxXFhQQ4jt0ZO/wsMdqgt5W26bNCK0sL+QYN+Yr4yXfIH34LH9M3ETk7TTfhFLDyNDslQ1SZlqSbZ74UfRh5sCUmv3/xg9mj+DBCecNd+lZYAQSUKu1L3eyiRn7AYsBGTZel0+3s+DxstcLXb5w6FPx3exQikEaErvKwkwMh6LXqLqkLa/5z83MHpufPWHe4Az81sEdBNrVFZ1tZ/5/PORhvfGkRo5RjVlE2t9wcmjdYoSH2CWkhCqbmTrACWbz9RIrsdxqbzaggdSegtG8b/yOUuZE0QIDAQAB",
+  "background": {
+    "scripts": ["js/backgroundScript.js"],
+    "persistent": true
+  },
+  "permissions": [],
+  "web_accessible_resources": ["js/*"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-qAcmzXQ8jmB7ddF3B7OWAJKIn2C00zGiCGj8W5dG+wo='; object-src 'self'"
+}
