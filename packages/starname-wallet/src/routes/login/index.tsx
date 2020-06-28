@@ -13,16 +13,12 @@ import { generateGetIdentitiesRequest } from "../../communication/requestgenerat
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import { getConfig, makeExtendedIdentities } from "../../config";
-import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
-import { subscribeTransaction } from "../../logic/transactions";
-import { addAccountsAction, getAccounts } from "../../store/accounts";
 import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
-import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
 import { CHECK_MIGRATION_ROUTE } from "../paths";
 import PageColumn from "./components/PageColumn";
 
@@ -49,15 +45,6 @@ export const loginBootSequence = async (
 
   const balances = await getBalances(identities);
   dispatch(setBalancesAction(balances));
-
-  // await subscribeBalance(identities, dispatch);
-  // await subscribeTransaction(identities, dispatch);
-
-  // const usernames = await getUsernames(identities);
-  // dispatch(addUsernamesAction(usernames));
-
-  // const accounts = await getAccounts(identities);
-  // dispatch(addAccountsAction(accounts));
 };
 
 /**
