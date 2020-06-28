@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import { ADDRESSES_ROUTE, STARNAME_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
+import { ADDRESSES_ROUTE, BALANCE_ROUTE, STARNAME_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
