@@ -1855,6 +1855,15 @@
     bech32 "^1.1.4"
     readonly-date "^1.0.0"
 
+"@cosmjs/encoding@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@cosmjs/encoding/-/encoding-0.21.0.tgz#e1bf840c6a2ec68c70e5a824087a67aca8428580"
+  integrity sha512-rv/w2MA+1nbgBzf8Wr1nGsH1ay+omsVCBMaIbeX26frA/3L+y56DVbUqcvnsNitfJLQd8AvuNEmaElW5qQP7Ww==
+  dependencies:
+    base64-js "^1.3.0"
+    bech32 "^1.1.4"
+    readonly-date "^1.0.0"
+
 "@cosmjs/math@^0.20.0":
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/@cosmjs/math/-/math-0.20.0.tgz#fc343fd8d659474a9d2a7b0261d3fab70b173d2b"
