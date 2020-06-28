@@ -1,7 +1,6 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
 import { BnsConnection, createBnsConnector } from "@iov/bns";
 import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
-import { createLiskConnector } from "@iov/lisk";
 
 import { ChainSpec, CodecType, getConfig } from "../config";
 import { getErc20TokensConfig } from "../utils/tokens";
@@ -26,13 +25,6 @@ async function establishBnsConnection(url: string, chainId: ChainId): Promise<vo
   }
 }
 
-async function establishLiskConnection(url: string, chainId: ChainId): Promise<void> {
-  if (!connections.has(chainId)) {
-    const connector = createLiskConnector(url, chainId);
-    connections.set(chainId, await connector.establishConnection());
-  }
-}
-
 export async function establishConnection(spec: ChainSpec): Promise<void> {
   switch (spec.codecType) {
     case CodecType.Bns:
@@ -44,8 +36,6 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
       });
     case CodecType.Iovns:
       return undefined;
-    case CodecType.Lisk:
-      return await establishLiskConnection(spec.node, spec.chainId as ChainId);
     default:
       throw new Error("Chain spec not supported");
   }
