@@ -12,7 +12,7 @@ export function getCodec(spec: ChainSpec): TxCodec {
       return bnsCodec;
     case CodecType.Ethereum:
       return ethereumCodec;
-    case CodecType.Cosmos:
+    case CodecType.Cosmos: {
       const defaultBankTokens = [
         {
           fractionalDigits: 6,
@@ -21,6 +21,7 @@ export function getCodec(spec: ChainSpec): TxCodec {
         },
       ];
       return new CosmosCodec("star1", defaultBankTokens);
+    }
     case CodecType.Lisk:
       return liskCodec;
     default:
