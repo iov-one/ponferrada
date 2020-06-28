@@ -1,5 +1,7 @@
 import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
 
+import { Secp256k1 } from "@cosmjs/crypto";
+import { fromHex } from "@cosmjs/encoding";
 import {
   Algorithm,
   ChainId,
@@ -21,9 +23,6 @@ import {
   isIovLedgerAppVersion,
 } from "@iov/ledger-bns";
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
-
-import { fromHex } from "@cosmjs/encoding";
-import { Secp256k1 } from "@cosmjs/crypto";
 
 import { getConnectionForBns } from "../logic/connection";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";

@@ -1,7 +1,7 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
 import { BnsConnection, createBnsConnector } from "@iov/bns";
-import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
 import { createCosmosConnector } from "@iov/cosmos-sdk";
+import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
 
 import { ChainSpec, CodecType, getConfig } from "../config";
 import { getErc20TokensConfig } from "../utils/tokens";
