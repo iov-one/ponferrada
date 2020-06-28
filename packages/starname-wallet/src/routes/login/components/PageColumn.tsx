@@ -113,11 +113,6 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           <SubtitleSection>
             To access the wallet please authenticate using Neuma or Ledger Nano S
           </SubtitleSection>
-          <Block marginBottom={2}>
-            <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
-              Continue with Neuma Browser Extension
-            </Button>
-          </Block>
           <Block marginBottom={4}>
             <Button fullWidth color="inverted" onClick={onLoginWithLedger} startIcon={<LedgerIcon />}>
               Continue with Ledger Nano S
