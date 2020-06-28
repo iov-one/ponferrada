@@ -4,13 +4,7 @@ import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import {
-  ADDRESSES_ROUTE,
-  BALANCE_ROUTE,
-  IOVNAME_ROUTE,
-  TRANSACTIONS_ROUTE,
-  UPGRADE_ROUTE,
-} from "../../../../routes/paths";
+import { ADDRESSES_ROUTE, STARNAME_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -38,15 +32,8 @@ const onBalance = (): void => {
   history.push(BALANCE_ROUTE);
 };
 
-// NOTE: disabled starnames
-/*
 const onStarnames = (): void => {
   history.push(STARNAME_ROUTE);
-};
-*/
-
-const onIovnames = (): void => {
-  history.push(IOVNAME_ROUTE);
 };
 
 const onTransactions = (): void => {
@@ -57,9 +44,6 @@ const onAddresses = (): void => {
   history.push(ADDRESSES_ROUTE);
 };
 
-const onUpgrade = (): void => {
-  history.push(UPGRADE_ROUTE);
-};
 const lastTxNewer = (lastTx: TxMeta, lastStoredTx: TxMeta): boolean => {
   return lastTx.time.getTime() > lastStoredTx.time.getTime();
 };
@@ -126,9 +110,8 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
   const classes = useStyles();
 
   const showBalances = path === BALANCE_ROUTE;
-  // NOTE: disabled starnames
-  // const showStarnames = path === STARNAME_ROUTE;
-  const showIovnames = path === IOVNAME_ROUTE;
+
+  const showStarnames = path === STARNAME_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showAddresses = path === ADDRESSES_ROUTE;
 
@@ -141,16 +124,8 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
         {showBalances && <Block className={classes.line} />}
       </Block>
       <Block className={classes.item}>
-        <LinkMenuItem onClick={onUpgrade} itemTitle={UPGRADE_TAB_TITLE} />
-      </Block>
-      {/* NOTE: disabled starnames */}
-      {/* <Block className={classes.item}>
         <LinkMenuItem onClick={onStarnames} itemTitle={STARNAMES_TAB_TITLE} />
         {showStarnames && <Block className={classes.line} />}
-      </Block> */}
-      <Block className={classes.item}>
-        <LinkMenuItem onClick={onIovnames} itemTitle={IOVNAMES_TAB_TITLE} />
-        {showIovnames && <Block className={classes.line} />}
       </Block>
       <Block className={classes.item}>
         <LinkMenuItem
