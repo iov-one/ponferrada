@@ -50,14 +50,14 @@ export const loginBootSequence = async (
   const balances = await getBalances(identities);
   dispatch(setBalancesAction(balances));
 
-  //await subscribeBalance(identities, dispatch);
-  //await subscribeTransaction(identities, dispatch);
+  // await subscribeBalance(identities, dispatch);
+  // await subscribeTransaction(identities, dispatch);
 
-  //const usernames = await getUsernames(identities);
-  //dispatch(addUsernamesAction(usernames));
+  // const usernames = await getUsernames(identities);
+  // dispatch(addUsernamesAction(usernames));
 
-  //const accounts = await getAccounts(identities);
-  //dispatch(addAccountsAction(accounts));
+  // const accounts = await getAccounts(identities);
+  // dispatch(addAccountsAction(accounts));
 };
 
 /**
