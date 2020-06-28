@@ -5,7 +5,6 @@ import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
 import ledgerIcon from "../assets/ledger.svg";
-import neumaIcon from "../assets/neuma.svg";
 import neumaWalletLogo from "../assets/neumaWalletLogo.svg";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
@@ -36,10 +35,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 5,
   },
 }));
-
-function NeumaIcon(): JSX.Element {
-  return <Image src={neumaIcon} alt="Neuma login icon" />;
-}
 
 function LedgerIcon(): JSX.Element {
   return <Image src={ledgerIcon} alt="Ledger login icon" />;

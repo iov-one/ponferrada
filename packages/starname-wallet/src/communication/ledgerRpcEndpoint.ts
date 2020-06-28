@@ -16,14 +16,11 @@ import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import {
   IovLedgerApp,
-  IovLedgerAppAddress,
   isIovLedgerAppAddress,
   isIovLedgerAppSignature,
   isIovLedgerAppVersion,
 } from "@iov/ledger-bns";
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
-
-import { getConfig } from "../config";
 
 import { fromHex } from "@cosmjs/encoding";
 import { Secp256k1 } from "@cosmjs/crypto";
@@ -57,10 +54,6 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
         "Unsupported request format. Since this request was created by the same application, this is a bug.",
       );
     }
-
-    let transport: TransportWebUSB | undefined;
-    let testnetApp: boolean;
-    let addressResponse: IovLedgerAppAddress;
 
     /*
 

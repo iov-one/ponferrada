@@ -1,4 +1,4 @@
-import { CosmWasmCodec } from "@cosmwasm/bcp";
+import { CosmosCodec } from "@iov/cosmos-sdk";
 import { ChainId, TxCodec } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { ethereumCodec } from "@iov/ethereum";
@@ -12,18 +12,15 @@ export function getCodec(spec: ChainSpec): TxCodec {
       return bnsCodec;
     case CodecType.Ethereum:
       return ethereumCodec;
-    case CodecType.Iovns: {
-      // HARD-CODED values in conjunction with .../sanes-browser-extension/src/extension/background/model/persona/config/mockstar1chain.ts
-      const addressPefix = "star";
-      const bankToken = {
-        fractionalDigits: 9,
-        name: "Internet Of Value Token",
-        ticker: "IOV",
-        denom: "IOV",
-      };
-      const cosmwasmCodec = new CosmWasmCodec(addressPefix, [bankToken]);
-      return cosmwasmCodec;
-    }
+    case CodecType.Cosmos:
+      const defaultBankTokens = [
+        {
+          fractionalDigits: 6,
+          ticker: "IOV",
+          denom: "uiov",
+        },
+      ];
+      return new CosmosCodec("star1", defaultBankTokens);
     case CodecType.Lisk:
       return liskCodec;
     default:

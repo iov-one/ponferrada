@@ -11,6 +11,7 @@ export enum CodecType {
   Ethereum = "eth",
   Iovns = "iovns",
   Lisk = "lsk",
+  Cosmos = "cosmos",
 }
 
 export interface Config {

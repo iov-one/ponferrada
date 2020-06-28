@@ -27,10 +27,10 @@
   "chains": [
     {
       "chainSpec": {
-        "codecType": "bns",
+        "codecType": "cosmos",
         "chainId": "iovns-galaxynet",
         "name": "IOV Galaxy",
-        "node": "ws://rpc.cluster-galaxynet.iov.one/:23456/"
+        "node": "wss://rpc.cluster-galaxynet.iov.one/"
       }
     }
   ]
