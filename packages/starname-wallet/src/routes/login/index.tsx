@@ -19,7 +19,7 @@ import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
-import { CHECK_MIGRATION_ROUTE } from "../paths";
+import { BALANCE_ROUTE } from "../paths";
 import PageColumn from "./components/PageColumn";
 
 export const loginBootSequence = async (
@@ -84,7 +84,7 @@ const Login = (): JSX.Element => {
         dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(extensionRpcEndpoint));
         await loginBootSequence(identities, dispatch);
-        history.push(CHECK_MIGRATION_ROUTE);
+        history.push(BALANCE_ROUTE);
       }
     } catch (error) {
       console.error(error);
@@ -118,7 +118,7 @@ const Login = (): JSX.Element => {
         dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(ledgerRpcEndpoint));
         await loginBootSequence(identities, dispatch);
-        history.push(CHECK_MIGRATION_ROUTE);
+        history.push(BALANCE_ROUTE);
       }
     } catch (error) {
       console.error(error);
