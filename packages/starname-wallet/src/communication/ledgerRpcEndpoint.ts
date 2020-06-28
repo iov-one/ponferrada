@@ -24,6 +24,10 @@ import {
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 
 import { getConfig } from "../config";
+
+import { fromHex } from "@cosmjs/encoding";
+import { Secp256k1 } from "@cosmjs/crypto";
+
 import { getConnectionForBns } from "../logic/connection";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
@@ -58,6 +62,8 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     let testnetApp: boolean;
     let addressResponse: IovLedgerAppAddress;
 
+    /*
+
     try {
       transport = await TransportWebUSB.create(5000);
       const app = new IovLedgerApp(transport);
@@ -77,14 +83,19 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     } finally {
       if (transport) await transport.close();
     }
-
+    
     const ledgerChainIds = (await getConfig()).ledger.chainIds;
 
+    */
+
+    const privkey = fromHex("5b1d5975dfdfb0027802265241d891e4af744cd39e78595658afaa7ac801d1d3");
+    const keypair = await Secp256k1.makeKeypair(privkey);
+
     const bnsIdentity: Identity = {
-      chainId: (testnetApp ? ledgerChainIds.testnetBuild : ledgerChainIds.mainnetBuild) as ChainId,
+      chainId: "iovns-galaxynet" as ChainId,
       pubkey: {
-        algo: Algorithm.Ed25519,
-        data: addressResponse.pubkey as PubkeyBytes,
+        algo: Algorithm.Secp256k1,
+        data: keypair.pubkey as PubkeyBytes,
       },
     };
 
