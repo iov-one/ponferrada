@@ -26,6 +26,11 @@ DerivationPath{44, 234, account, 0, index}
 const HDPATH = [44, 234, 0, 0, 0];
 const BECH32PREFIX = "star";
 
+interface Version {
+  readonly version: string;
+  readonly test_mode: boolean;
+}
+
 export default class Ledger {
   private readonly testModeAllowed: boolean;
   private iovApp: any;
@@ -61,7 +66,7 @@ export default class Ledger {
     // check if the version is supported
     const version = await this.getIovAppVersion();
 
-    if (!semver.gte(version, REQUIRED_IOV_APP_VERSION)) {
+    if (!semver.gte(version.version, REQUIRED_IOV_APP_VERSION)) {
       const msg = "Outdated version: Please update Ledger IOV App to the latest version.";
       throw new Error(msg);
     }
@@ -140,17 +145,19 @@ export default class Ledger {
     return this;
   }
 
-  // returns the IOV app version as a string like "1.1.0"
-  async getIovAppVersion(): Promise<string> {
+  // returns the test_mode and IOV app version as a string like "1.1.0"
+  async getIovAppVersion(): Promise<Version> {
     await this.connect();
 
     const response = await this.iovApp.getVersion();
     this.checkLedgerErrors(response);
-    const { major, minor, patch, testMode } = response;
-    checkAppMode(this.testModeAllowed, testMode);
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    const { major, minor, patch, test_mode } = response;
+    checkAppMode(this.testModeAllowed, test_mode);
     const version = versionString({ major, minor, patch });
 
-    return version;
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    return { version, test_mode };
   }
 
   // checks if the IOV app is open
@@ -199,7 +206,7 @@ export default class Ledger {
     await this.connect();
     const iovAppVersion = await this.getIovAppVersion();
 
-    if (semver.lt(iovAppVersion, REQUIRED_IOV_APP_VERSION)) {
+    if (semver.lt(iovAppVersion.version, REQUIRED_IOV_APP_VERSION)) {
       // we can't check the address on an old IOV app
       return;
     }

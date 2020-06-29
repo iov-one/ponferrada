@@ -4,7 +4,7 @@
   "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iov-exchangenet",
+      "testnetBuild": "iovns-galaxynet",
       "mainnetBuild": "iov-mainnet"
     }
   },

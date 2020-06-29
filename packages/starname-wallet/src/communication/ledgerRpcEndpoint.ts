@@ -1,30 +1,21 @@
-import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
+// dmjp import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
 
 import { Secp256k1 } from "@cosmjs/crypto";
 import { fromHex } from "@cosmjs/encoding";
-import {
-  Algorithm,
-  ChainId,
-  FullSignature,
-  Identity,
-  isIdentity,
-  isUnsignedTransaction,
-  PubkeyBytes,
-  SignatureBytes,
-  SignedTransaction,
-} from "@iov/bcp";
+import { Algorithm, ChainId, Identity, isIdentity, isUnsignedTransaction, PubkeyBytes } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import {
-  IovLedgerApp,
+  IovLedgerAppAddress,
   isIovLedgerAppAddress,
   isIovLedgerAppSignature,
   isIovLedgerAppVersion,
 } from "@iov/ledger-bns";
-import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 
+import { getConfig } from "../config";
 import { getConnectionForBns } from "../logic/connection";
+import Ledger from "./ledger";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
 const addressIndex = 0; // Leads to path m/44'/234'/0'
@@ -54,40 +45,45 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       );
     }
 
-    /*
+    const config = await getConfig();
+    let testnetApp: boolean;
+    let addressResponse: IovLedgerAppAddress;
 
     try {
-      transport = await TransportWebUSB.create(5000);
-      const app = new IovLedgerApp(transport);
+      const ledger = new Ledger(
+        { testModeAllowed: true },
+        [44, 234, 0, 0, 0], // HDPATH
+        config.addressPrefix,
+      );
 
       // Check if correct app is open. This also works with auto-locked Ledger.
-      const version = await app.getVersion();
-      if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
-      testnetApp = version.testMode;
+      const version = await ledger.getIovAppVersion();
+      // dmjp if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
+      testnetApp = version.test_mode;
 
       // Get address/pubkey. This requires unlocked Ledger.
-      const response = await app.getAddress(addressIndex);
-      if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
+      const pubkey = await ledger.getPubKey();
+      const address = await ledger.getIovAddress();
+      const response = {
+        address: address,
+        errorMessage: "",
+        pubkey: pubkey,
+        returnCode: 0,
+      };
+      // dmjp if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
       addressResponse = response;
     } catch (error) {
       console.info("Could not get address from Ledger. Full error details:", error);
       return undefined;
-    } finally {
-      if (transport) await transport.close();
     }
-    
-    const ledgerChainIds = (await getConfig()).ledger.chainIds;
 
-    */
-
-    const privkey = fromHex("5b1d5975dfdfb0027802265241d891e4af744cd39e78595658afaa7ac801d1d3");
-    const keypair = await Secp256k1.makeKeypair(privkey);
+    const ledgerChainIds = config.ledger.chainIds;
 
     const bnsIdentity: Identity = {
-      chainId: "iovns-galaxynet" as ChainId,
+      chainId: (testnetApp ? ledgerChainIds.testnetBuild : ledgerChainIds.mainnetBuild) as ChainId,
       pubkey: {
         algo: Algorithm.Secp256k1,
-        data: keypair.pubkey as PubkeyBytes,
+        data: addressResponse.pubkey as PubkeyBytes,
       },
     };
 
@@ -122,6 +118,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     const nonce = await bnsConnection.getNonce({ pubkey: signer.pubkey });
     const { bytes } = bnsCodec.bytesToSign(transaction, nonce);
 
+    /*
     let transport: TransportWebUSB;
     try {
       transport = await TransportWebUSB.create(5000);
@@ -159,5 +156,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     await bnsConnection.postTx(bnsCodec.bytesToPost(signedTransaction));
 
     return transactionId;
+    */
+    return Promise.resolve(undefined);
   },
 };
