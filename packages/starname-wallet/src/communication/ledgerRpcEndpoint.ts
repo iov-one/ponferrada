@@ -1,17 +1,9 @@
 // dmjp import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
 
-import { Secp256k1 } from "@cosmjs/crypto";
-import { fromHex } from "@cosmjs/encoding";
 import { Algorithm, ChainId, Identity, isIdentity, isUnsignedTransaction, PubkeyBytes } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
-import {
-  IovLedgerAppAddress,
-  isIovLedgerAppAddress,
-  isIovLedgerAppSignature,
-  isIovLedgerAppVersion,
-} from "@iov/ledger-bns";
 
 import { getConfig } from "../config";
 import { getConnectionForBns } from "../logic/connection";
@@ -47,31 +39,28 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     const config = await getConfig();
     let testnetApp: boolean;
-    let addressResponse: IovLedgerAppAddress;
+    let addressResponse: Record<string, any>;
 
     try {
       const ledger = new Ledger(
         { testModeAllowed: true },
-        [44, 234, 0, 0, 0], // HDPATH
+        [44, 234, 0, 0, addressIndex], // HARD-CODED
         config.addressPrefix,
       );
 
       // Check if correct app is open. This also works with auto-locked Ledger.
-      const version = await ledger.getIovAppVersion();
-      // dmjp if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
+      const version = await ledger.getIovAppVersion(); // throws on error
       testnetApp = version.test_mode;
 
       // Get address/pubkey. This requires unlocked Ledger.
-      const pubkey = await ledger.getPubKey();
-      const address = await ledger.getIovAddress();
-      const response = {
+      const pubkey = await ledger.getPubKey(); // throws on error
+      const address = await ledger.getIovAddress(); // throws on error
+      addressResponse = {
         address: address,
-        errorMessage: "",
+        errorMessage: "No errors", // HARD-CODED in conjunction with ledger.getPubKey()
         pubkey: pubkey,
-        returnCode: 0,
+        returnCode: 36864, // HARD-CODED in conjunction with ledger.getPubKey()
       };
-      // dmjp if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
-      addressResponse = response;
     } catch (error) {
       console.info("Could not get address from Ledger. Full error details:", error);
       return undefined;
@@ -114,11 +103,11 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       throw new Error("Invalid transaction format in RPC request to Ledger endpoint.");
     }
 
+    /*
     const bnsConnection = await getConnectionForBns();
     const nonce = await bnsConnection.getNonce({ pubkey: signer.pubkey });
     const { bytes } = bnsCodec.bytesToSign(transaction, nonce);
 
-    /*
     let transport: TransportWebUSB;
     try {
       transport = await TransportWebUSB.create(5000);
@@ -157,6 +146,6 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     return transactionId;
     */
-    return Promise.resolve(undefined);
+    return Promise.resolve(undefined); // dmjp
   },
 };
