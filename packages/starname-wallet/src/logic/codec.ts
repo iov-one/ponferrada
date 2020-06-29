@@ -20,7 +20,7 @@ export function getCodec(spec: ChainSpec): TxCodec {
           denom: "uiov",
         },
       ];
-      return new CosmosCodec("star1", defaultBankTokens);
+      return new CosmosCodec("star", defaultBankTokens);
     }
     case CodecType.Lisk:
       return liskCodec;
