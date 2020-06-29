@@ -1,4 +1,5 @@
 import { ChainId, Identity } from "@iov/bcp";
+import { TokenConfiguration } from "@iov/cosmos-sdk";
 import { singleton } from "ui-logic";
 
 import { getCodecForChainId } from "../logic/codec";
@@ -27,6 +28,8 @@ export interface Config {
   readonly websiteName: string;
   readonly chains: readonly ChainConfig[];
   readonly supportedChains: readonly SupportedChain[];
+  readonly addressPrefix: string;
+  readonly tokenConfiguration: TokenConfiguration;
 }
 
 export interface SupportedChain {

@@ -33,5 +33,16 @@
         "node": "https://iovnscli-rest-api.cluster-galaxynet.iov.one/"
       }
     }
-  ]
+  ],
+  "addressPrefix": "star",
+  "tokenConfiguration": {
+    "bankTokens": [
+      {
+        "fractionalDigits": 6,
+        "name": "IOV Devnet Token",
+        "ticker": "VOI",
+        "denom": "uvoi"
+      }
+    ]
+  }
 }

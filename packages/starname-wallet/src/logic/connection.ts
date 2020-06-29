@@ -27,20 +27,10 @@ async function establishBnsConnection(url: string, chainId: ChainId): Promise<vo
 }
 
 async function establishCosmosConnection(url: string, chainId: ChainId): Promise<void> {
-  const defaultConfig = {
-    bankTokens: [
-      {
-        fractionalDigits: 6,
-        name: "IOV Token",
-        ticker: "IOV",
-        denom: "uiov",
-      },
-    ],
-  };
-
-  const defaultAddressPrefix = "star";
-
-  const connector = createCosmosConnector(url, defaultAddressPrefix, defaultConfig);
+  const config = await getConfig();
+  const tokenConfiguration = config.tokenConfiguration;
+  const prefix = config.addressPrefix;
+  const connector = createCosmosConnector(url, prefix, tokenConfiguration);
   connections.set(chainId, await connector.establishConnection());
 }
 

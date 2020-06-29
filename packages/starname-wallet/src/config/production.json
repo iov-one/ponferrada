@@ -69,5 +69,16 @@
         }
       }
     }
-  ]
+  ],
+  "addressPrefix": "star",
+  "tokenConfiguration": {
+    "bankTokens": [
+      {
+        "fractionalDigits": 6,
+        "name": "IOV Token",
+        "ticker": "IOV",
+        "denom": "uiov"
+      }
+    ]
+  }
 }

@@ -159,7 +159,7 @@ export async function subscribeTransaction(
     if (!connection) {
       continue;
     }
-    const codec = getCodec(chain.chainSpec);
+    const codec = getCodec(chain.chainSpec, config);
     const identity = identities.find(identity => identity.chainId === connection.chainId);
     if (!identity) {
       continue;

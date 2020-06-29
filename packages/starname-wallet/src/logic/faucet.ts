@@ -7,7 +7,8 @@ import { getCodec } from "./codec";
 import { getConnectionForChainId } from "./connection";
 
 export async function drinkFaucetIfNeeded(identities: readonly Identity[]): Promise<void> {
-  const chainsWithFaucet = (await getConfig()).chains.filter(isChainConfigWithFaucet);
+  const config = await getConfig();
+  const chainsWithFaucet = config.chains.filter(isChainConfigWithFaucet);
 
   // Create one job per chain that sends all available tokens. All jobs run in parallel.
   const jobs = chainsWithFaucet.map(async ({ chainSpec, faucetSpec }) => {
@@ -15,7 +16,7 @@ export async function drinkFaucetIfNeeded(identities: readonly Identity[]): Prom
     if (!connection) {
       return;
     }
-    const codec = getCodec(chainSpec);
+    const codec = getCodec(chainSpec, config);
     const chainId = connection.chainId;
     const identity = identities.find(identity => identity.chainId === chainId);
     if (!identity) {

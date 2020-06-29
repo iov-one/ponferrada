@@ -24,7 +24,7 @@ export async function subscribeBalance(identities: readonly Identity[], dispatch
       continue;
     }
 
-    const codec = getCodec(chain.chainSpec);
+    const codec = getCodec(chain.chainSpec, config);
     const address = codec.identityToAddress(identity);
 
     // subscribe to balance changes via

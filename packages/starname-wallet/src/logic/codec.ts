@@ -4,23 +4,19 @@ import { CosmosCodec } from "@iov/cosmos-sdk";
 import { ethereumCodec } from "@iov/ethereum";
 import { liskCodec } from "@iov/lisk";
 
-import { ChainSpec, CodecType, getConfig } from "../config";
+import { ChainSpec, CodecType, Config, getConfig } from "../config";
 
-export function getCodec(spec: ChainSpec): TxCodec {
+export function getCodec(spec: ChainSpec, config: Config): TxCodec {
   switch (spec.codecType) {
     case CodecType.Bns:
       return bnsCodec;
     case CodecType.Ethereum:
       return ethereumCodec;
     case CodecType.Cosmos: {
-      const defaultBankTokens = [
-        {
-          fractionalDigits: 6,
-          ticker: "IOV",
-          denom: "uiov",
-        },
-      ];
-      return new CosmosCodec("star", defaultBankTokens);
+      const addressPrefix = config.addressPrefix;
+      const tokenConfiguration = config.tokenConfiguration;
+
+      return new CosmosCodec(addressPrefix, tokenConfiguration.bankTokens);
     }
     case CodecType.Lisk:
       return liskCodec;
@@ -30,10 +26,11 @@ export function getCodec(spec: ChainSpec): TxCodec {
 }
 
 export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
-  const chains = (await getConfig()).chains;
+  const config = await getConfig();
+  const chains = config.chains;
   const specificChain = chains.find(chain => chain.chainSpec.chainId === chainId);
   if (specificChain) {
-    return getCodec(specificChain.chainSpec);
+    return getCodec(specificChain.chainSpec, config);
   }
 
   throw new Error("No codec found or no active connection for this chainId");
