@@ -42,11 +42,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     let addressResponse: Record<string, any>;
 
     try {
-      const ledger = new Ledger(
-        { testModeAllowed: true },
-        [44, 234, 0, 0, addressIndex], // HARD-CODED
-        config.addressPrefix,
-      );
+      const ledger = new Ledger({ testModeAllowed: true, hrp: config.addressPrefix });
 
       // Check if correct app is open. This also works with auto-locked Ledger.
       const version = await ledger.getIovAppVersion(); // throws on error

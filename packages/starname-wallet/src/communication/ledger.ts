@@ -23,8 +23,8 @@ declare global {
 HD wallet derivation path (BIP44)
 DerivationPath{44, 234, account, 0, index}
 */
-const HDPATH = [44, 234, 0, 0, 0];
-const BECH32PREFIX = "star";
+const HDPATH = [44, 234, 0, 0, 0]; // HARD-CODED
+const BECH32PREFIX = "star"; // HARD-CODED
 
 interface Version {
   readonly version: string;
@@ -40,9 +40,15 @@ export default class Ledger {
   public userAgent: string;
 
   constructor(
-    { testModeAllowed = false }: { testModeAllowed: boolean } = { testModeAllowed: false },
-    hdPath: Array<number> = HDPATH,
-    hrp: string = BECH32PREFIX,
+    {
+      testModeAllowed = false,
+      hdPath = HDPATH,
+      hrp = BECH32PREFIX,
+    }: { testModeAllowed: boolean; hdPath?: Array<number>; hrp?: string } = {
+      testModeAllowed: false,
+      hdPath: HDPATH,
+      hrp: BECH32PREFIX,
+    },
   ) {
     this.testModeAllowed = testModeAllowed;
     this.hdPath = hdPath;
