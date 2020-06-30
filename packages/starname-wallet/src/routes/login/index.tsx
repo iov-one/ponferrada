@@ -14,6 +14,7 @@ import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBill
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import { getConfig, makeExtendedIdentities } from "../../config";
 import { establishConnection } from "../../logic/connection";
+import { subscribeTransaction } from "../../logic/transactions";
 import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { getBalances, setBalancesAction } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
@@ -44,6 +45,9 @@ export const loginBootSequence = async (
   drinkFaucetIfNeeded(identities).catch(console.error);
 
   const balances = await getBalances(identities);
+
+  await subscribeTransaction(identities, dispatch);
+
   dispatch(setBalancesAction(balances));
 };
 
