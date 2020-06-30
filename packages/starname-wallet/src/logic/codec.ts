@@ -12,7 +12,7 @@ export function getCodec(spec: ChainSpec, config: Config): TxCodec {
       return bnsCodec;
     case CodecType.Ethereum:
       return ethereumCodec;
-    case CodecType.Cosmos: {
+    case CodecType.Iovns: {
       const addressPrefix = config.addressPrefix;
       const tokenConfiguration = config.tokenConfiguration;
 

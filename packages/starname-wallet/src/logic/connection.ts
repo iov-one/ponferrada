@@ -27,11 +27,19 @@ async function establishBnsConnection(url: string, chainId: ChainId): Promise<vo
 }
 
 async function establishCosmosConnection(url: string, chainId: ChainId): Promise<void> {
+  //throw new Error("Cosmos connection is not implemented as of 2020.06.30.");
+}
+
+async function establishIovnsConnection(url: string, chainId: ChainId): Promise<void> {
+  if (connections.has(chainId)) return;
+
   const config = await getConfig();
   const tokenConfiguration = config.tokenConfiguration;
   const prefix = config.addressPrefix;
   const connector = createCosmosConnector(url, prefix, tokenConfiguration);
-  connections.set(chainId, await connector.establishConnection());
+  const connection = await connector.establishConnection();
+
+  connections.set(chainId, connection);
 }
 
 export async function establishConnection(spec: ChainSpec): Promise<void> {
@@ -46,7 +54,7 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
         erc20Tokens: spec.ethereumOptions ? getErc20TokensConfig(spec.ethereumOptions) : undefined,
       });
     case CodecType.Iovns:
-      return undefined;
+      return await establishIovnsConnection(spec.node, spec.chainId as ChainId);
     default:
       throw new Error("Chain spec not supported");
   }

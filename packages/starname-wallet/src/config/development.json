@@ -4,8 +4,8 @@
   "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iovns-galaxynet",
-      "mainnetBuild": "iov-mainnet"
+      "testnetBuild": "cosmos:iovns-galaxynet",
+      "mainnetBuild": "cosmos:iov-mainnet"
     }
   },
   "websiteName": "localhost",
@@ -27,8 +27,8 @@
   "chains": [
     {
       "chainSpec": {
-        "codecType": "cosmos",
-        "chainId": "iovns-galaxynet",
+        "codecType": "iovns",
+        "chainId": "cosmos:iovns-galaxynet",
         "name": "IOV Galaxy",
         "node": "https://iovnscli-rest-api.cluster-galaxynet.iov.one/"
       }
