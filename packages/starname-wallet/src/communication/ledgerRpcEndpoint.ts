@@ -83,6 +83,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     return out;
   },
   sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
+    if (bnsCodec || getConnectionForBns || addressIndex) alert("TODO"); // dmjp
     if (request.method !== "signAndPost" || !isJsonCompatibleDictionary(request.params)) {
       throw new Error(
         "Unsupported request format. Since this request was created by the same application, this is a bug.",

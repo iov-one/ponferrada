@@ -27,7 +27,7 @@ async function establishBnsConnection(url: string, chainId: ChainId): Promise<vo
 }
 
 async function establishCosmosConnection(url: string, chainId: ChainId): Promise<void> {
-  //throw new Error("Cosmos connection is not implemented as of 2020.06.30.");
+  // throw new Error("Cosmos connection is not implemented as of 2020.06.30.");
 }
 
 async function establishIovnsConnection(url: string, chainId: ChainId): Promise<void> {
