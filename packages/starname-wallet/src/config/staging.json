@@ -4,14 +4,13 @@
   "neumaUrl": "https://www.neuma.io/",
   "ledger": {
     "chainIds": {
-      "testnetBuild": "iovns-galaxynet",
-      "mainnetBuild": "iov-mainnet"
+      "testnetBuild": "cosmos:iovns-galaxynet",
+      "mainnetBuild": "cosmos:iov-mainnet"
     }
   },
-  "websiteName": "wallet-staging.iov.one",
+  "websiteName": "starname-wallet-staging.iov.one",
   "supportedChains": [
-    { "chainId": "starname-migration", "name": "Starname Network" },
-    { "chainId": "iov-exchangenet", "name": "IOV Exchangenet" },
+    { "chainId": "iovns-galaxynet", "name": "IOV Galaxynet" },
     { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
     { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
     { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
@@ -29,60 +28,9 @@
     {
       "chainSpec": {
         "codecType": "iovns",
-        "chainId": "starname-migration",
-        "name": "Starname Network",
-        "node": "http://localhost:23456/"
-      }
-    },
-    {
-      "chainSpec": {
-        "codecType": "bns",
-        "chainId": "iov-exchangenet",
-        "name": "IOV Exchangenet",
-        "node": "wss://rpc-private-a-x-exchangenet.iov.one/"
-      },
-      "faucetSpec": {
-        "uri": "https://faucet.x-exchangenet.iov.one",
-        "tokens": ["IOV"]
-      }
-    },
-    {
-      "chainSpec": {
-        "codecType": "lsk",
-        "chainId": "lisk-da3ed6a454",
-        "name": "Lisk Testnet",
-        "node": "https://testnet.lisk.io"
-      }
-    },
-    {
-      "chainSpec": {
-        "codecType": "eth",
-        "chainId": "ethereum-eip155-4",
-        "name": "Rinkeby",
-        "node": "https://rinkeby.infura.io/v3/143ecb3d2d864557b4b140f731530909",
-        "scraper": "https://api-rinkeby.etherscan.io/api",
-        "ethereumOptions": {
-          "erc20s": [
-            {
-              "contractAddress": "0x0c8184c21a51cdb7df9e5dc415a6a54b3a39c991",
-              "decimals": 18,
-              "symbol": "AVO",
-              "name": "Avocado"
-            },
-            {
-              "contractAddress": "0xc778417e063141139fce010982780140aa0cd5ab",
-              "decimals": 18,
-              "symbol": "WETH",
-              "name": "Wrapped Ether"
-            },
-            {
-              "contractAddress": "0x1f9061B953bBa0E36BF50F21876132DcF276fC6e",
-              "decimals": 0,
-              "symbol": "ZEENUS",
-              "name": "Zeenus"
-            }
-          ]
-        }
+        "chainId": "cosmos:iovns-galaxynet",
+        "name": "IOV Galaxy",
+        "node": "https://iovnscli-rest-api.cluster-galaxynet.iov.one/"
       }
     }
   ],

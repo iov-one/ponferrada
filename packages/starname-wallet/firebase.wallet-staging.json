@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "iov-wallet-staging",
+    "site": "starname-wallet-staging",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
