@@ -3,9 +3,7 @@ import { Back, Block, Button, Form, useForm } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
-import { CodecType, ConfigErc20Options, getConfig } from "../../../config";
 import { RootState } from "../../../store/reducers";
-import CurrencyToSend from "./CurrencyToSend";
 import ReceiverAddress from "./ReceiverAddress";
 import TextNote from "./TextNote";
 
@@ -16,30 +14,14 @@ interface Props {
   readonly selectedChainCodec: TxCodec | null;
 }
 
-const Layout = ({
-  onSubmit,
-  onCancelPayment,
-  onTokenSelectionChanged,
-  selectedChainCodec,
-}: Props): JSX.Element => {
-  const [memoDisabled, setMemoDisabled] = React.useState(false);
+const Layout = ({ onSubmit, onCancelPayment, selectedChainCodec }: Props): JSX.Element => {
+  const [memoDisabled] = React.useState(false);
 
   const balances = ReactRedux.useSelector((state: RootState) => state.balances);
   const noBalance = Object.keys(balances).length === 0;
   const { form, handleSubmit, invalid, pristine, submitting } = useForm({
     onSubmit,
   });
-
-  const onTokenSelectionControl = async (ticker: TokenTicker): Promise<void> => {
-    const chains = (await getConfig()).chains;
-    const ethChain = chains.find(chain => chain.chainSpec.codecType === CodecType.Ethereum);
-    const erc20s = ethChain?.chainSpec?.ethereumOptions?.erc20s;
-    if (erc20s) {
-      const erc20Tokens = erc20s as ConfigErc20Options[];
-      setMemoDisabled(erc20Tokens.some(token => token.symbol.toUpperCase() === ticker.toUpperCase()));
-    }
-    onTokenSelectionChanged(ticker);
-  };
 
   return (
     <Form onSubmit={handleSubmit}>
