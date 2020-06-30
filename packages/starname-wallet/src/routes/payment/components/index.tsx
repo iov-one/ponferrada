@@ -46,12 +46,6 @@ const Layout = ({
       <Block marginTop={5} display="flex" justifyContent="center">
         <Block width="450px" display="flex" flexDirection="column" alignItems="center">
           <Block width="450px" bgcolor="white" padding={5}>
-            <CurrencyToSend
-              form={form}
-              balances={balances}
-              noBalance={noBalance}
-              onTokenSelectionControl={onTokenSelectionControl}
-            />
             <ReceiverAddress form={form} noBalance={noBalance} selectedChainCodec={selectedChainCodec} />
             <TextNote form={form} noMemo={noBalance || memoDisabled} />
           </Block>
