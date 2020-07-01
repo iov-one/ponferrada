@@ -3,7 +3,7 @@
   "version": "1.3.7",
   "private": true,
   "dependencies": {
-    "@cosmjs/encoding": "^0.20.1",
+    "@cosmjs/encoding": "^0.21.1",
     "@cosmjs/utils": "^0.20.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-regular-svg-icons": "^5.10.1",
@@ -16,7 +16,6 @@
     "@iov/jsonrpc": "^2.5.0",
     "@ledgerhq/hw-transport-webhid": "^5.17.0",
     "@ledgerhq/hw-transport-webusb": "^5.17.0",
-    "@lunie/cosmos-api": "^0.2.5",
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "@material-ui/styles": "^4.5.0",

@@ -1,3 +1,4 @@
+import { toBase64 } from "@cosmjs/encoding";
 import {
   Algorithm,
   ChainId,
@@ -9,7 +10,6 @@ import {
 } from "@iov/bcp";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
-import Cosmos from "@lunie/cosmos-api";
 
 import { getConfig } from "../config";
 import Ledger from "./ledger";
@@ -116,7 +116,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     //   throw new Error("Address response does not match expected signer.");
     // }
 
-    // Quick and dirty send via @lunie/cosmos-api instead of an IOVNS connection.
+    // Quick and dirty send via the REST API instead of an IOVNS connection.
     // In other words, sendSignAndPostRequest() has gone from being able to sign and post
     // any transaction type to solely being able to handle a send tx.
     const chain = config.chains.find(chain => chain.chainSpec.chainId === signer.chainId);
@@ -133,40 +133,75 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       );
     }
 
-    // create the send message
-    const message = {
-      type: "cosmos-sdk/StdTx",
-      value: {
-        // eslint-disable-next-line @typescript-eslint/camelcase
-        from_address: addressResponse.address,
-        // eslint-disable-next-line @typescript-eslint/camelcase
-        to_address: transaction.recipient,
-        amount: [{ denom: coin.denom, amount: transaction.amount.quantity }],
+    const got = await fetch(`${chain.chainSpec.node}/auth/accounts/${addressResponse.address}`); // HARD-CODED
+    const account: any = await got.json();
+    const unsigned: any = {
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      account_number: String(account.result.value.account_number),
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      sequence: String(account.result.value.sequence),
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      chain_id: chain.chainSpec.chainId.split(":")[1],
+      fee: {
+        amount: [
+          {
+            amount: "2000000", // HARD-CODED; gas * 10.0uiov
+            denom: coin.denom,
+          },
+        ],
+        gas: "200000", // HARD-CODED
       },
+      msgs: [
+        {
+          type: "cosmos-sdk/MsgSend",
+          value: {
+            amount: [
+              {
+                amount: transaction.amount.quantity,
+                denom: coin.denom,
+              },
+            ],
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            from_address: addressResponse.address,
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            to_address: transaction.recipient,
+          },
+        },
+      ],
+      memo: transaction.memo || "",
     };
-    // create a signer
-    const ledgerSigner = async (signMessage: string): Promise<any> => {
-      const publicKey = await ledger.getPubKey();
-      const signature = await ledger.sign(signMessage);
+    const sorted: any = {};
+    Object.keys(unsigned)
+      .sort()
+      .forEach((key: string) => {
+        sorted[key] = unsigned[key];
+      });
+    const signature: Uint8Array = await ledger.sign(JSON.stringify(sorted));
 
-      return {
-        signature,
-        publicKey,
-      };
-    };
-    const cosmos = new Cosmos(chain.chainSpec.node, addressResponse.address);
-    const { included } = await cosmos.send(
-      addressResponse.address,
-      {
-        gas: 200000, // HARD-CODED
-        gasPrices: [{ amount: "10.0", denom: coin.denom }], // HARD-CODED amount
-        memo: transaction.memo,
-      },
-      [message],
-      ledgerSigner,
-    );
-    const transactionId = await included();
+    sorted["msg"] = sorted.msgs; // Ledger needs msgs, API needs msg
+    delete sorted.msgs;
 
-    return transactionId;
+    const signed = Object.assign({}, sorted, {
+      signatures: [
+        {
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          account_number: String(account.result.value.account_number),
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          sequence: String(account.result.value.sequence),
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          pub_key: {
+            type: "tendermint/PubKeySecp256k1",
+            value: toBase64(addressResponse.pubkey),
+          },
+          signature: toBase64(signature),
+        },
+      ],
+    });
+    const broadcastable = { tx: signed, mode: "block" }; // HARD-CODED mode
+    const body = JSON.stringify(broadcastable);
+    const fetched = await fetch(`${chain.chainSpec.node}/txs`, { method: "POST", body: body }); // HARD-CODED
+    const response = await fetched.json();
+
+    return response.txhash;
   },
 };
