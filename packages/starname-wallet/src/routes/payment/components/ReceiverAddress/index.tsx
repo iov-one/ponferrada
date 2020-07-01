@@ -39,7 +39,11 @@ const ReceiverAddress = ({
     const validator: FieldValidator<FieldInputValue> = (value): string | undefined => {
       if (typeof value !== "string") throw new Error("Input must be a string");
 
-      if (isIovname(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
+      if (
+        isIovname(value) ||
+        (selectedChainCodec && selectedChainCodec.isValidAddress(value)) ||
+        value.match(/^star1[qpzry9x8gf2tvdw0s3jn54khce6mua7l]{38}$/) // HACK: TODO: deal with changes in commit 77b7a6c08021eed43ae16712de2a877ed0639f7c
+      ) {
         setAddressHasValidCert(isCertValid(value));
 
         return undefined;
