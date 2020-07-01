@@ -141,7 +141,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       // eslint-disable-next-line @typescript-eslint/camelcase
       sequence: String(account.result.value.sequence),
       // eslint-disable-next-line @typescript-eslint/camelcase
-      chain_id: chain.chainSpec.chainId.split(":")[1],
+      chain_id: chain.chainSpec.chainId.split(":")[1], // HARD-CODED: chain_id must match the genesis file
       fee: {
         amount: [
           {
