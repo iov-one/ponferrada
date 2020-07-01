@@ -77,7 +77,7 @@ const ReceiverAddress = ({
           form={form}
           validate={validator}
           placeholder="Recipient's address"
-          disabled={selectedChainCodec === null || noBalance}
+          disabled={noBalance}
           fullWidth
           margin="none"
         />
