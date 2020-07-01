@@ -1,9 +1,17 @@
 // dmjp import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
-
-import { Algorithm, ChainId, Identity, isIdentity, isUnsignedTransaction, PubkeyBytes } from "@iov/bcp";
+import {
+  Algorithm,
+  ChainId,
+  Identity,
+  isIdentity,
+  isUnsignedTransaction,
+  PubkeyBytes,
+  SendTransaction,
+} from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
+import Cosmos from "@lunie/cosmos-api";
 
 import { getConfig } from "../config";
 import { getConnectionForBns } from "../logic/connection";
@@ -17,6 +25,19 @@ function isArrayOfString(data: unknown): data is readonly string[] {
     return false;
   }
   return data.every(element => typeof element === "string");
+}
+
+async function getLedgerAddress(ledger: Ledger): Promise<Record<string, any>> {
+  const pubkey = await ledger.getPubKey(); // throws on error
+  const address = await ledger.getIovAddress(); // throws on error
+  const addressResponse = {
+    address: address,
+    errorMessage: "No errors", // HARD-CODED in conjunction with ledger.getPubKey()
+    pubkey: pubkey,
+    returnCode: 36864, // HARD-CODED in conjunction with ledger.getPubKey()
+  };
+
+  return addressResponse;
 }
 
 export const ledgerRpcEndpoint: RpcEndpoint = {
@@ -49,14 +70,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       testnetApp = version.test_mode;
 
       // Get address/pubkey. This requires unlocked Ledger.
-      const pubkey = await ledger.getPubKey(); // throws on error
-      const address = await ledger.getIovAddress(); // throws on error
-      addressResponse = {
-        address: address,
-        errorMessage: "No errors", // HARD-CODED in conjunction with ledger.getPubKey()
-        pubkey: pubkey,
-        returnCode: 36864, // HARD-CODED in conjunction with ledger.getPubKey()
-      };
+      addressResponse = await getLedgerAddress(ledger);
     } catch (error) {
       console.info("Could not get address from Ledger. Full error details:", error);
       return undefined;
@@ -83,7 +97,6 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     return out;
   },
   sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
-    if (bnsCodec || getConnectionForBns || addressIndex) alert("TODO"); // dmjp
     if (request.method !== "signAndPost" || !isJsonCompatibleDictionary(request.params)) {
       throw new Error(
         "Unsupported request format. Since this request was created by the same application, this is a bug.",
@@ -95,54 +108,70 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       throw new Error("Invalid signer format in RPC request to Ledger endpoint.");
     }
 
-    const transaction = TransactionEncoder.fromJson(request.params.transaction);
+    const transaction = TransactionEncoder.fromJson(request.params.transaction) as SendTransaction;
     if (!isUnsignedTransaction(transaction)) {
       throw new Error("Invalid transaction format in RPC request to Ledger endpoint.");
     }
 
-    /*
-    const bnsConnection = await getConnectionForBns();
-    const nonce = await bnsConnection.getNonce({ pubkey: signer.pubkey });
-    const { bytes } = bnsCodec.bytesToSign(transaction, nonce);
+    const config = await getConfig();
+    const ledger = new Ledger({ testModeAllowed: true, hrp: config.addressPrefix });
+    const addressResponse = await getLedgerAddress(ledger);
+    // The following check fails because it assumes a ED25519 key, which was used by weave.
+    // if (addressResponse.address !== bnsCodec.identityToAddress(signer)) {
+    //   throw new Error("Address response does not match expected signer.");
+    // }
 
-    let transport: TransportWebUSB;
-    try {
-      transport = await TransportWebUSB.create(5000);
-    } catch (error) {
-      console.warn(error);
-      return undefined;
+    // Quick and dirty send via @lunie/cosmos-api instead of an IOVNS connection.
+    // In other words, sendSignAndPostRequest() has gone from being able to sign and post
+    // any transaction type to solely being able to handle a send tx.
+    const chain = config.chains.find(chain => chain.chainSpec.chainId === signer.chainId);
+    const coin = config.tokenConfiguration.bankTokens.find(
+      token => token.ticker === transaction.amount.tokenTicker,
+    );
+
+    if (!chain) {
+      throw new Error(`Couldn't find chain ${signer.chainId} in config.chains.`);
+    }
+    if (!coin) {
+      throw new Error(
+        `Couldn't find ticker ${transaction.amount.tokenTicker} in config.tokenConfiguration.bankTokens..`,
+      );
     }
 
-    const app = new IovLedgerApp(transport);
-    const versionResponse = await app.getVersion();
-    if (!isIovLedgerAppVersion(versionResponse)) throw new Error(versionResponse.errorMessage);
-    const addressResponse = await app.getAddress(addressIndex);
-    if (!isIovLedgerAppAddress(addressResponse)) throw new Error(addressResponse.errorMessage);
-    if (addressResponse.address !== bnsCodec.identityToAddress(signer)) {
-      throw new Error("Address response does not match expected signer");
-    }
-    const signatureResponse = await app.sign(addressIndex, bytes);
-    if (!isIovLedgerAppSignature(signatureResponse)) throw new Error(signatureResponse.errorMessage);
-
-    await transport.close();
-
-    const signature: FullSignature = {
-      pubkey: signer.pubkey,
-      nonce: nonce,
-      signature: signatureResponse.signature as SignatureBytes,
+    // create the send message
+    const message = {
+      type: "cosmos-sdk/StdTx",
+      value: {
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        from_address: addressResponse.address,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        to_address: transaction.recipient,
+        amount: [{ denom: coin.denom, amount: transaction.amount.quantity }],
+      },
     };
+    // create a signer
+    const ledgerSigner = async (signMessage: string): Promise<any> => {
+      const publicKey = await ledger.getPubKey();
+      const signature = await ledger.sign(signMessage);
 
-    const signedTransaction: SignedTransaction = {
-      transaction: transaction,
-      signatures: [signature],
+      return {
+        signature,
+        publicKey,
+      };
     };
-
-    const transactionId = bnsCodec.identifier(signedTransaction);
-
-    await bnsConnection.postTx(bnsCodec.bytesToPost(signedTransaction));
+    const cosmos = new Cosmos(chain.chainSpec.node, addressResponse.address);
+    const { included } = await cosmos.send(
+      addressResponse.address,
+      {
+        gas: 200000, // HARD-CODED
+        gasPrices: [{ amount: "10.0", denom: coin.denom }], // HARD-CODED amount
+        memo: transaction.memo,
+      },
+      [message],
+      ledgerSigner,
+    );
+    const transactionId = await included();
 
     return transactionId;
-    */
-    return Promise.resolve(undefined); // dmjp
   },
 };

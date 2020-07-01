@@ -30,7 +30,7 @@
         "codecType": "iovns",
         "chainId": "cosmos:iovns-galaxynet",
         "name": "IOV Galaxy",
-        "node": "https://iovnscli-rest-api.cluster-galaxynet.iov.one/"
+        "node": "https://iovnscli-rest-api.cluster-galaxynet.iov.one"
       }
     }
   ],
