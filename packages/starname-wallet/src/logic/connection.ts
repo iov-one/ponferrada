@@ -70,7 +70,7 @@ export function getConnectionForChainId(chainId: ChainId): BlockchainConnection 
 
 export async function getConnectionForBns(): Promise<BnsConnection> {
   const chains = (await getConfig()).chains;
-  const bnsChain = chains.find(chain => chain.chainSpec.codecType === CodecType.Bns);
+  const bnsChain = chains.find(chain => chain.chainSpec.codecType === CodecType.Iovns);
   if (bnsChain) {
     return getConnectionForChainId(bnsChain.chainSpec.chainId as ChainId) as BnsConnection;
   }
