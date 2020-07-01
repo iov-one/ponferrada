@@ -43,12 +43,7 @@ interface Props {
   readonly onTokenSelectionControl: (ticker: TokenTicker) => Promise<void>;
 }
 
-let beenHere = false; // TODO: delete me
-
 const CurrencyToSend = ({ form, onTokenSelectionControl, balances, noBalance }: Props): JSX.Element => {
-  if (beenHere) throw new Error("wtf"); // TODO: delete me
-  beenHere = true; // TODO: delete me
-
   const classes = useStyles();
 
   const currencyItems = Object.keys(balances)

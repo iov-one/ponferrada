@@ -12,7 +12,7 @@ import TextNote from "./TextNote";
 interface Props {
   readonly onSubmit: (values: object) => Promise<void>;
   readonly onCancelPayment: () => void;
-  readonly onTokenSelectionChanged: (ticker: TokenTicker) => Promise<void>;
+  readonly onTokenSelectionChanged: (ticker: TokenTicker) => void;
   readonly selectedChainCodec: TxCodec | null;
 }
 

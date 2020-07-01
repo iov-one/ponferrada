@@ -42,12 +42,22 @@ const Payment = (): JSX.Element => {
     setTransactionId(null);
   };
 
-  const onTokenSelectionChanged = async (ticker: TokenTicker): Promise<void> => {
+  /** Avoid
+   *
+   * Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your
+   * application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+   *     in Payment (created by Context.Consumer)
+   *
+   * by deferring setSelectedChainCodec() to onSubmit, making onTokenSelectionChanged a no-op (and not a promise)
+   **/
+  const onTokenSelectionChanged = (ticker: TokenTicker): void => {
+    /* no-op
     const token = tokens[ticker];
     if (token) {
       const chainId = token.chainId;
       setSelectedChainCodec(await getCodecForChainId(chainId));
     }
+    */
   };
 
   const onSubmit = async (values: object): Promise<void> => {
@@ -57,6 +67,8 @@ const Payment = (): JSX.Element => {
     const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
 
     const chainId = token.chainId;
+
+    setSelectedChainCodec(await getCodecForChainId(chainId));
 
     let recipient: Address;
     if (isIovname(formValues[ADDRESS_FIELD])) {
