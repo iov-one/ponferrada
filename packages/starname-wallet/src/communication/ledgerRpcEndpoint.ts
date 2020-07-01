@@ -1,4 +1,3 @@
-// dmjp import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
 import {
   Algorithm,
   ChainId,
@@ -8,17 +7,13 @@ import {
   PubkeyBytes,
   SendTransaction,
 } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import Cosmos from "@lunie/cosmos-api";
 
 import { getConfig } from "../config";
-import { getConnectionForBns } from "../logic/connection";
 import Ledger from "./ledger";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
-
-const addressIndex = 0; // Leads to path m/44'/234'/0'
 
 function isArrayOfString(data: unknown): data is readonly string[] {
   if (!Array.isArray(data)) {
