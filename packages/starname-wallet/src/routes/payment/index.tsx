@@ -1,11 +1,13 @@
-import { Address, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
+import { toHex } from "@cosmjs/encoding";
+import { isUint8Array } from "@cosmjs/utils";
+import { Address, SendTransaction, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
+import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
 import { ErrorParser, stringToAmount } from "ui-logic";
 
 import { history } from "..";
-import { generateSendTxRequest } from "../../communication/requestgenerators";
 import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
@@ -67,8 +69,9 @@ const Payment = (): JSX.Element => {
     const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
 
     const chainId = token.chainId;
+    const codec = await getCodecForChainId(chainId);
 
-    setSelectedChainCodec(await getCodecForChainId(chainId));
+    setSelectedChainCodec(codec);
 
     let recipient: Address;
     if (isIovname(formValues[ADDRESS_FIELD])) {
@@ -98,12 +101,87 @@ const Payment = (): JSX.Element => {
     if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
 
     try {
-      const request = await generateSendTxRequest(
-        identity.identity,
+      /** HACK: TODO: use
+       * const request = await generateSendTxRequest(
+       *   identity.identity,
+       *   recipient,
+       *   amount,
+       *   formValues[TEXTNOTE_FIELD],
+       * );
+       */
+      // HACK: don't try to debug @iov/encoding, just
+      const prefixes = {
+        string: "string:",
+        bytes: "bytes:",
+      };
+      const toJson = (data: any): any => {
+        if (typeof data === "number" || typeof data === "boolean") {
+          return data;
+        }
+        if (data === null) {
+          return null;
+        }
+        if (typeof data === "string") {
+          return `${prefixes.string}${data}`;
+        }
+        if (isUint8Array(data)) {
+          return `${prefixes.bytes}${toHex(data)}`;
+        }
+        if (Array.isArray(data)) {
+          return data.map(toJson);
+        }
+        // Exclude special kind of objects like Array, Date or Uint8Array
+        // Object.prototype.toString() returns a specified value:
+        // http://www.ecma-international.org/ecma-262/7.0/index.html#sec-object.prototype.tostring
+        if (
+          typeof data === "object" &&
+          data !== null &&
+          Object.prototype.toString.call(data) === "[object Object]"
+        ) {
+          const out: any = {};
+          for (const key of Object.keys(data)) {
+            const value = data[key];
+            // Skip dictionary entries with value `undefined`, just like native JSON:
+            // > JSON.stringify({ foo: undefined })
+            // '{}'
+            if (value === undefined) continue;
+
+            // super HACK: isUint8Array() is falling on Uint8Arrays
+            if (key === "data") {
+              // tslint:disable-next-line: no-object-mutation
+              out[key] = `${prefixes.bytes}${toHex(value)}`;
+            } else {
+              // tslint:disable-next-line: no-object-mutation
+              out[key] = toJson(value);
+            }
+          }
+          return out;
+        }
+        throw new Error("Cannot encode type to JSON");
+      };
+      const sender = identity.identity;
+      const senderAddress = codec.identityToAddress(sender);
+      const transactionWithFee: SendTransaction = {
+        kind: "bcp/send",
+        chainId: sender.chainId,
         recipient,
-        amount,
-        formValues[TEXTNOTE_FIELD],
-      );
+        senderPubkey: sender.pubkey,
+        sender: senderAddress,
+        amount: amount,
+        memo: formValues[TEXTNOTE_FIELD],
+      };
+
+      const request: JsonRpcRequest = {
+        jsonrpc: "2.0",
+        id: makeJsonRpcId(),
+        method: "signAndPost",
+        params: {
+          reason: toJson("I would like you to sign this request"),
+          signer: toJson(sender),
+          transaction: toJson(transactionWithFee),
+        },
+      };
+
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
