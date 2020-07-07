@@ -38,7 +38,8 @@ async function getLedgerAddress(ledger: Ledger): Promise<Record<string, any>> {
 export const ledgerRpcEndpoint: RpcEndpoint = {
   authorizeGetIdentitiesMessage: "Waiting for Ledger device to provide identity...",
   authorizeSignAndPostMessage: "Please sign transaction on Ledger device to continue.",
-  notAvailableMessage: "Please connect your Ledger Nano S, open the IOV app and try again.",
+  notAvailableMessage:
+    "Please connect your Ledger, open the IOV app and try again. See the console for more info.",
   noMatchingIdentityMessage: "No matching identity found. Did you open the correct app?",
   type: "ledger",
 
