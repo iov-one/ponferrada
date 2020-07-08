@@ -10,29 +10,25 @@ import {
 } from "@iov/bcp";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
+import {
+  IovLedgerApp,
+  IovLedgerAppAddress,
+  isIovLedgerAppAddress,
+  isIovLedgerAppSignature,
+  isIovLedgerAppVersion,
+} from "@iov/ledger-bns";
+import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 
 import { getConfig } from "../config";
-import Ledger from "./ledger";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
+
+const addressIndex = 0; // Leads to path m/44'/234'/0'
 
 function isArrayOfString(data: unknown): data is readonly string[] {
   if (!Array.isArray(data)) {
     return false;
   }
   return data.every(element => typeof element === "string");
-}
-
-async function getLedgerAddress(ledger: Ledger): Promise<Record<string, any>> {
-  const pubkey = await ledger.getPubKey(); // throws on error
-  const address = await ledger.getIovAddress(); // throws on error
-  const addressResponse = {
-    address: address,
-    errorMessage: "No errors", // HARD-CODED in conjunction with ledger.getPubKey()
-    pubkey: pubkey,
-    returnCode: 36864, // HARD-CODED in conjunction with ledger.getPubKey()
-  };
-
-  return addressResponse;
 }
 
 export const ledgerRpcEndpoint: RpcEndpoint = {
@@ -55,21 +51,28 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
     }
 
     const config = await getConfig();
+    let transport: TransportWebUSB | undefined;
     let testnetApp: boolean;
-    let addressResponse: Record<string, any>;
+    let addressResponse: IovLedgerAppAddress;
 
     try {
-      const ledger = new Ledger({ testModeAllowed: true, hrp: config.addressPrefix });
+      transport = await TransportWebUSB.create(5000);
+      const ledger = new IovLedgerApp(transport);
 
       // Check if correct app is open. This also works with auto-locked Ledger.
-      const version = await ledger.getIovAppVersion(); // throws on error
-      testnetApp = version.test_mode;
+      const version = await ledger.getVersion(); // throws on error
+      if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
+      testnetApp = version.testMode;
 
       // Get address/pubkey. This requires unlocked Ledger.
-      addressResponse = await getLedgerAddress(ledger);
+      const response = await ledger.getAddress(addressIndex);
+      if (!isIovLedgerAppAddress(response)) throw new Error(response.errorMessage);
+      addressResponse = response;
     } catch (error) {
       console.info("Could not get address from Ledger. Full error details:", error);
       return undefined;
+    } finally {
+      if (transport) await transport.close();
     }
 
     const ledgerChainIds = config.ledger.chainIds;
@@ -109,9 +112,19 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       throw new Error("Invalid transaction format in RPC request to Ledger endpoint.");
     }
 
+    let transport: TransportWebUSB;
+    try {
+      transport = await TransportWebUSB.create(5000);
+    } catch (error) {
+      console.warn(error);
+      return undefined;
+    }
     const config = await getConfig();
-    const ledger = new Ledger({ testModeAllowed: true, hrp: config.addressPrefix });
-    const addressResponse = await getLedgerAddress(ledger);
+    const ledger = new IovLedgerApp(transport);
+    const version = await ledger.getVersion(); // throws on error
+    if (!isIovLedgerAppVersion(version)) throw new Error(version.errorMessage);
+    const addressResponse = await ledger.getAddress(addressIndex);
+    if (!isIovLedgerAppAddress(addressResponse)) throw new Error(addressResponse.errorMessage);
     // The following check fails because it assumes a ED25519 key, which was used by weave.
     // if (addressResponse.address !== bnsCodec.identityToAddress(signer)) {
     //   throw new Error("Address response does not match expected signer.");
@@ -176,7 +189,10 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       .forEach((key: string) => {
         sorted[key] = unsigned[key];
       });
-    const signature: Uint8Array = await ledger.sign(JSON.stringify(sorted));
+    const signature = await ledger.sign(addressIndex, JSON.stringify(sorted));
+    if (!isIovLedgerAppSignature(signature)) throw new Error(signature.errorMessage);
+
+    await transport.close();
 
     sorted["msg"] = sorted.msgs; // Ledger needs msgs, API needs msg
     delete sorted.msgs;
@@ -192,7 +208,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
             type: "tendermint/PubKeySecp256k1",
             value: toBase64(addressResponse.pubkey),
           },
-          signature: toBase64(signature),
+          signature: toBase64(signature.signature),
         },
       ],
     });
