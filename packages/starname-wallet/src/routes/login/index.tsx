@@ -1,4 +1,3 @@
-import { Identity } from "@iov/bcp";
 import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
@@ -6,48 +5,35 @@ import { Dispatch } from "redux";
 import { ErrorParser } from "ui-logic";
 
 import { history } from "..";
-import { getExtensionStatus } from "../../communication/extension";
-import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
-import { generateGetIdentitiesRequest } from "../../communication/requestgenerators";
-import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
-import { getConfig, makeExtendedIdentities } from "../../config";
-import { establishConnection } from "../../logic/connection";
-import { drinkFaucetIfNeeded } from "../../logic/faucet";
-import { subscribeTransaction } from "../../logic/transactions";
-import { getBalances, setBalancesAction } from "../../store/balances";
-import { setIdentities } from "../../store/identities";
-import { setRpcEndpoint } from "../../store/rpcendpoint";
-import { addTickersAction, getTokens } from "../../store/tokens";
+import { getExtensionStatus } from "communication/extension";
+import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
+import LedgerBillboardMessage from "components/BillboardMessage/LedgerBillboardMessage";
+import NeumaBillboardMessage from "components/BillboardMessage/NeumaBillboardMessage";
+import { getConfig, makeExtendedIdentities } from "config";
+import { getBalances, setBalancesAction } from "store/balances";
+import { setRpcEndpoint } from "store/rpcendpoint";
+import { addTickersAction, getTokens } from "store/tokens";
 import { BALANCE_ROUTE } from "../paths";
-import PageColumn from "./components/PageColumn";
+import PageColumn from "routes/login/components/PageColumn";
+import { setIdentities } from "store/identities";
+import { Target } from "logic/api";
 
-export const loginBootSequence = async (
-  identities: readonly Identity[],
-  dispatch: Dispatch,
-): Promise<void> => {
+export const loginBootSequence = async (targets: readonly Target[], dispatch: Dispatch): Promise<void> => {
   const chains = (await getConfig()).chains;
-  for (const identity of identities) {
-    const chain = chains.find(chain => chain.chainSpec.chainId === identity.chainId);
-    if (chain) {
-      await establishConnection(chain.chainSpec);
-    } else {
-      throw new Error(`Chain with ${identity.chainId} was not found.`);
+  for (const target of targets) {
+    const chain = chains.find(chain => chain.chainSpec.chainId === target.id);
+    if (!chain) {
+      throw new Error(`Chain with ${target.id} was not found.`);
     }
   }
-
   const chainTokens = await getTokens();
   dispatch(addTickersAction(chainTokens));
-
   // Do not block the use of the wallet just because the faucet might take
   // some time send tokens
-  drinkFaucetIfNeeded(identities).catch(console.error);
-
-  const balances = await getBalances(identities);
-
-  await subscribeTransaction(identities, dispatch);
-
+  // drinkFaucetIfNeeded(targets).catch(console.error);
+  const balances = await getBalances(targets);
+  // await subscribeTransaction(targets, dispatch);
   dispatch(setBalancesAction(balances));
 };
 
@@ -79,15 +65,15 @@ const Login = (): JSX.Element => {
         "flex-end",
         100,
       );
-      const { installed, connected, identities } = await getExtensionStatus();
+      const { installed, connected } = await getExtensionStatus();
       if (!installed) {
         toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       } else if (!connected) {
         toast.show(extensionRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
       } else {
-        dispatch(setIdentities(await makeExtendedIdentities(identities)));
+        // dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(extensionRpcEndpoint));
-        await loginBootSequence(identities, dispatch);
+        await loginBootSequence([], dispatch);
         history.push(BALANCE_ROUTE);
       }
     } catch (error) {
@@ -112,16 +98,16 @@ const Login = (): JSX.Element => {
         "center",
         100,
       );
-      const request = await generateGetIdentitiesRequest();
-      const identities = await ledgerRpcEndpoint.sendGetIdentitiesRequest(request);
-      if (identities === undefined) {
+      const targets: Target[] | undefined = await ledgerRpcEndpoint.getTargets();
+      console.log(targets);
+      if (targets === undefined) {
         toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      } else if (identities.length === 0) {
+      } else if (targets.length === 0) {
         toast.show(ledgerRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
       } else {
-        dispatch(setIdentities(await makeExtendedIdentities(identities)));
+        dispatch(setIdentities(await makeExtendedIdentities(targets)));
         dispatch(setRpcEndpoint(ledgerRpcEndpoint));
-        await loginBootSequence(identities, dispatch);
+        await loginBootSequence(targets, dispatch);
         history.push(BALANCE_ROUTE);
       }
     } catch (error) {

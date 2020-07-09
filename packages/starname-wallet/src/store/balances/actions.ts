@@ -1,13 +1,9 @@
-import { Amount, Identity } from "@iov/bcp";
-
-import { getActiveConnections } from "../../logic/connection";
 import { SetBalancesActionType } from "./reducer";
+import { Target } from "logic/api";
 
-export async function getBalances(identities: readonly Identity[]): Promise<{ [ticker: string]: Amount }> {
-  const connections = getActiveConnections();
-
-  const balances: { [ticker: string]: Amount } = {};
-
+export async function getBalances(identities: readonly Target[]): Promise<{ [ticker: string]: any }> {
+  const balances: { [ticker: string]: any } = {};
+  /*const connections = getActiveConnections();
   for (const connection of connections) {
     const identity = identities.find(identity => identity.chainId === connection.chainId);
     if (!identity) {
@@ -21,12 +17,11 @@ export async function getBalances(identities: readonly Identity[]): Promise<{ [t
     for (const balance of account.balance) {
       balances[balance.tokenTicker] = balance;
     }
-  }
-
+  }*/
   return balances;
 }
 
-export const setBalancesAction = (tokens: { [key: string]: Amount }): SetBalancesActionType => ({
+export const setBalancesAction = (tokens: { [key: string]: any }): SetBalancesActionType => ({
   type: "@@balances/SET",
   payload: tokens,
 });

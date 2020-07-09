@@ -1,10 +1,9 @@
 import { Address, BlockchainConnection, ChainId, Identity, TokenTicker } from "@iov/bcp";
-import { BnsConnection, ChainAddressPair } from "@iov/bns";
+import { ChainAddressPair } from "@iov/bns";
 import { Erc20Options, Erc20TokensMap } from "@iov/ethereum";
 
 import { ChainAddressPairWithName } from "../components/AddressesTable";
 import { ConfigEthereumOptions, getChainName, SupportedChain } from "../config";
-import { getConnectionForChainId } from "../logic/connection";
 import { ExtendedIdentity } from "../store/identities";
 
 // exported for testing purposes
@@ -98,13 +97,4 @@ export function getErc20TokensConfig(options: ConfigEthereumOptions): Erc20Token
   });
 
   return erc20s;
-}
-
-export function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
-  for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
-    if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
-      return identity;
-    }
-  }
-  return undefined;
 }

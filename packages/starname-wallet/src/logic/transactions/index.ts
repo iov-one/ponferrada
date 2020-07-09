@@ -1,30 +1,4 @@
-import { Address, ChainId, Identity, isFailedTransaction, UnsignedTransaction } from "@iov/bcp";
-import {
-  BnsConnection,
-  isDeleteAccountTx,
-  isDeleteDomainTx,
-  isRegisterAccountTx,
-  isRegisterDomainTx,
-  isRegisterUsernameTx,
-  isRenewDomainTx,
-  isReplaceAccountTargetsTx,
-  isTransferAccountTx,
-  isTransferDomainTx,
-  isTransferUsernameTx,
-  isUpdateTargetsOfUsernameTx,
-} from "@iov/bns";
-import { Dispatch } from "redux";
-import { Subscription } from "xstream";
-
-import { getConfig } from "../../config";
-import { addAccountsAction, BwAccount, removeAccountAction } from "../../store/accounts";
-import { addTransaction } from "../../store/notifications";
-import { addUsernamesAction, BwUsername, removeUsernameAction } from "../../store/usernames";
-import { getCodec } from "../codec";
-import { getConnectionForBns, getConnectionForChainId } from "../connection";
-import { BwParserFactory } from "./types/BwParserFactory";
-
-function mayDispatchUsername(dispatch: Dispatch, usernameTx: UnsignedTransaction): void {
+/*function mayDispatchUsername(dispatch: Dispatch, usernameTx: UnsignedTransaction): void {
   if (isRegisterUsernameTx(usernameTx) || isUpdateTargetsOfUsernameTx(usernameTx)) {
     const username: BwUsername = {
       username: usernameTx.username,
@@ -198,4 +172,5 @@ export async function subscribeTransaction(
 export function unsubscribeTransactions(): void {
   txsSubscriptions.forEach(subs => subs.unsubscribe());
   txsSubscriptions = [];
-}
+}*/
+export const transactions = null;

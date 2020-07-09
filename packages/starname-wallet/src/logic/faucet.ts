@@ -1,13 +1,7 @@
-import { ChainId, Identity, TokenTicker } from "@iov/bcp";
-import { IovFaucet } from "@iov/faucets";
+import { Target } from "logic/api";
 
-import { getConfig, isChainConfigWithFaucet } from "../config";
-import { filterExistingTokens } from "../utils/tokens";
-import { getCodec } from "./codec";
-import { getConnectionForChainId } from "./connection";
-
-export async function drinkFaucetIfNeeded(identities: readonly Identity[]): Promise<void> {
-  const config = await getConfig();
+export async function drinkFaucetIfNeeded(identities: readonly Target[]): Promise<void> {
+  /*const config = await getConfig();
   const chainsWithFaucet = config.chains.filter(isChainConfigWithFaucet);
 
   // Create one job per chain that sends all available tokens. All jobs run in parallel.
@@ -38,5 +32,5 @@ export async function drinkFaucetIfNeeded(identities: readonly Identity[]): Prom
     }
   });
 
-  await Promise.all(jobs);
+  await Promise.all(jobs);*/
 }

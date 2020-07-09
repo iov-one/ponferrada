@@ -1,11 +1,8 @@
-import { Identity } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
-
-import { getConnectionForBns } from "../../logic/connection";
 import { AddUsernamesActionType, BwUsername, RemoveUsernameActionType } from "./reducer";
+import { Target } from "logic/api";
 
-export async function getUsernames(identities: readonly Identity[]): Promise<readonly BwUsername[]> {
-  const bnsConnection = await getConnectionForBns();
+export async function getUsernames(identities: readonly Target[]): Promise<readonly BwUsername[]> {
+  /*const bnsConnection = await getConnectionForBns();
 
   const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId);
   if (!bnsIdentity) return [];
@@ -17,7 +14,8 @@ export async function getUsernames(identities: readonly Identity[]): Promise<rea
   return usernames.map(username => ({
     username: username.id,
     addresses: username.targets,
-  }));
+  }));*/
+  return [];
 }
 
 export const addUsernamesAction = (usernames: readonly BwUsername[]): AddUsernamesActionType => ({

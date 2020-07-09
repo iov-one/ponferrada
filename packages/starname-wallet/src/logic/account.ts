@@ -1,7 +1,4 @@
-import { Address, ChainId } from "@iov/bcp";
-import { AccountNft, BnsUsernameNft } from "@iov/bns";
-
-import { getConnectionForBns } from "./connection";
+import { Address } from "cluster";
 
 export function isIovname(username: string): boolean {
   return username.endsWith("*iov");
@@ -17,9 +14,9 @@ export function isStarname(starname: string): boolean {
  */
 export async function lookupRecipientAddressByName(
   username: string,
-  chainId: ChainId,
+  chainId: string,
 ): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
-  if (isValidName(username) !== "valid") {
+  /*if (isValidName(username) !== "valid") {
     throw new Error("Not valid account name");
   }
 
@@ -39,7 +36,7 @@ export async function lookupRecipientAddressByName(
 
   if (chainAddressPair) {
     return chainAddressPair.address;
-  }
+  }*/
 
   return "no_address_for_blockchain";
 }
@@ -67,25 +64,30 @@ export function isValidIov(
   return "wrong_chars";
 }
 
-export function isValidStarname(
-  starname: string,
-): "valid" | "not_starname" | "wrong_number_of_asterisks" | "too_short" | "too_long" | "wrong_chars" {
+type StarnameValidationResult =
+  | "valid"
+  | "not_starname"
+  | "wrong_number_of_asterisks"
+  | "too_short"
+  | "too_long"
+  | "wrong_chars"
+  | "empty";
+
+export function isValidStarname(starname: string | null | undefined): StarnameValidationResult {
+  if (starname === null || starname === undefined) return "empty";
   if (!isStarname(starname)) return "not_starname";
-
-  const parts = starname.split("*");
-  if (parts.length !== 2) return "wrong_number_of_asterisks";
-  const domain = parts[1];
-
+  const fragments = starname.split("*");
+  if (fragments.length !== 2) return "wrong_number_of_asterisks";
+  const domain = fragments[1];
   // Domain length must be at least 3 chars long
   if (domain.length < 3) return "too_short";
-
   // Domain length must maximum 16 chars long
   if (domain.length > 16) return "too_long";
-
-  /* Must contain only allowed chars as per /scripts/bnsd/genesis_app_state.json:
-  conf: {account: {valid_domain}} plus initial asterisk */
+  /*
+   * Must contain only allowed chars as per /scripts/bnsd/genesis_app_state.json:
+   * conf: {account: {valid_domain}} plus initial asterisk
+   */
   if (/^\*[a-z0-9\-_]{3,16}$/.test(starname)) return "valid";
-
   return "wrong_chars";
 }
 

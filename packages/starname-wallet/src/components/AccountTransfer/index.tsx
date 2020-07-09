@@ -1,6 +1,3 @@
-import { Address, ChainId, Fee, TransactionId } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { Paper } from "@material-ui/core";
 import { FieldValidator, FormApi } from "final-form";
 import {
@@ -17,7 +14,6 @@ import React from "react";
 
 import { RpcEndpoint } from "../../communication/rpcEndpoint";
 import { isValidName, lookupRecipientAddressByName } from "../../logic/account";
-import { getConnectionForBns } from "../../logic/connection";
 import { AccountModuleMixedType, isAccountData } from "../AccountManage";
 import AccountOperation from "../AccountOperation";
 
@@ -36,7 +32,7 @@ const usePromptPaper = makeStyles({
 });
 
 const recipientValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
-  if (typeof value !== "string") throw new Error("Input must be a string");
+  /*if (typeof value !== "string") throw new Error("Input must be a string");
 
   const nameValidity = isValidName(value);
 
@@ -48,7 +44,8 @@ const recipientValidator: FieldValidator<FieldInputValue> = async (value): Promi
     return undefined;
   }
 
-  const connection = await getConnectionForBns();
+  // FIXME: replace this with the actual new methods
+  const connection = {chainId: "" as ChainId};
   const lookupResult = await lookupRecipientAddressByName(value, connection.chainId);
 
   if (lookupResult === "name_not_found") {
@@ -57,6 +54,7 @@ const recipientValidator: FieldValidator<FieldInputValue> = async (value): Promi
     return "Recipient's account does not contain an address for this blockchain";
   }
 
+  return undefined;*/
   return undefined;
 };
 
@@ -85,12 +83,12 @@ interface Props {
   readonly account: AccountModuleMixedType;
   readonly children: React.ReactNode;
   readonly transferPrompt: React.ReactNode;
-  readonly bnsChainId: ChainId;
+  readonly bnsChainId: string;
   readonly onCancel: () => void;
-  readonly getFee: (newOwner: Address) => Promise<Fee | undefined>;
-  readonly getRequest: (newOwner: Address) => Promise<JsonRpcRequest>;
+  readonly getFee: (newOwner: any) => Promise<any | undefined>;
+  readonly getRequest: (newOwner: any) => Promise<any>;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const AccountTransfer = ({
@@ -131,22 +129,20 @@ const AccountTransfer = ({
     );
   };
 
-  const getNewOwnerAddress = async (newOwner: string): Promise<Address> => {
+  const getNewOwnerAddress = async (newOwner: string): Promise<any> => {
     if (isValidName(newOwner) === "valid") {
       const lookupResult = await lookupRecipientAddressByName(newOwner, bnsChainId);
-      return lookupResult as Address;
+      return lookupResult;
     }
-
-    return newOwner as Address;
+    return newOwner;
   };
 
-  const getTransferRequest = async (values: FormValues): Promise<JsonRpcRequest> => {
+  const getTransferRequest = async (values: FormValues): Promise<any> => {
     const newOwner = await getNewOwnerAddress(values[ACCOUNT_TRANSFER_RECIPIENT]);
-
     return await getRequest(newOwner);
   };
 
-  const getTransferFee = async (values: FormValues): Promise<Fee | undefined> => {
+  const getTransferFee = async (values: FormValues): Promise<any | undefined> => {
     if (!values[ACCOUNT_TRANSFER_RECIPIENT]) return undefined;
 
     const newOwner = await getNewOwnerAddress(values[ACCOUNT_TRANSFER_RECIPIENT]);

@@ -1,14 +1,9 @@
-import { Address, Fee, Identity, TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
+import { Address } from "@iov/bcp";
 import { List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { AccountLocationState } from "../..";
 import { history } from "../../..";
-import {
-  generateTransferAccountTxRequest,
-  generateTransferAccountTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountTransfer from "../../../../components/AccountTransfer";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
@@ -36,12 +31,11 @@ const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
 );
 
 interface Props {
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountTransfer = ({ setTransactionId, rpcEndpoint }: Props): JSX.Element => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 
@@ -51,13 +45,9 @@ const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pro
     history.push(STARNAME_MANAGE_ROUTE, domain);
   };
 
-  const getFee = async (newOwner: Address): Promise<Fee | undefined> => {
-    return (await generateTransferAccountTxWithFee(bnsIdentity, account.name, account.domain, newOwner)).fee;
-  };
+  const getFee = async (newOwner: Address): Promise<any | undefined> => {};
 
-  const getRequest = async (newOwner: Address): Promise<JsonRpcRequest> => {
-    return await generateTransferAccountTxRequest(bnsIdentity, account.name, account.domain, newOwner);
-  };
+  const getRequest = async (newOwner: Address): Promise<any> => {};
 
   return (
     <AccountTransfer
@@ -65,7 +55,7 @@ const NameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pro
       account={account}
       getRequest={getRequest}
       getFee={getFee}
-      bnsChainId={bnsIdentity.chainId}
+      bnsChainId={""}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
       transferPrompt={<TransferPrompt />}

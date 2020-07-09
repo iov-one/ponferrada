@@ -1,18 +1,16 @@
-import { TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { BillboardContextInterface, ToastContextInterface, ToastVariant } from "medulas-react-components";
 import { ErrorParser } from "ui-logic";
 
 import { RpcEndpoint } from "../communication/rpcEndpoint";
 
 export async function submitTransaction(
-  request: JsonRpcRequest,
+  request: any,
   billboard: BillboardContextInterface,
   toast: ToastContextInterface,
   rpcEndpoint: RpcEndpoint,
   extensionBillboardMsg: React.ReactNode,
   ledgerBillboardMsg: React.ReactNode,
-  setTransactionId: (transactionId: TransactionId) => void,
+  setTransactionId: (transactionId: string) => void,
 ): Promise<void> {
   try {
     if (rpcEndpoint.type === "extension") {
@@ -20,7 +18,7 @@ export async function submitTransaction(
     } else {
       billboard.show(ledgerBillboardMsg, "center", "center", 0);
     }
-    const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+    const transactionId = await rpcEndpoint.executeRequest(request);
     if (transactionId === undefined) {
       toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
     } else if (transactionId === null) {

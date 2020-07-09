@@ -7,7 +7,6 @@ import { Block, Hairline, Image, ListMenu, Typography } from "medulas-react-comp
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 
-import { disconnect } from "../../../../logic/connection";
 import { history } from "../../../../routes";
 import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
 import { resetAppAction } from "../../../../store";
@@ -79,7 +78,8 @@ const HiMenu = (props: {}): JSX.Element => {
   const { ...rest } = props;
 
   const onLogout = (): void => {
-    disconnect();
+    // FIXME: run any "disconnection" code if needed
+    // disconnect();
     dispatch(resetAppAction());
   };
 

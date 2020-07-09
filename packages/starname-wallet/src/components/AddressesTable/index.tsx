@@ -1,4 +1,3 @@
-import { ChainAddressPair } from "@iov/bns";
 import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
 import { Block, defaultColor, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
@@ -8,7 +7,9 @@ import copy from "./assets/copy.svg";
 
 export const TABLE_ADDRESS_ROW = "table-address-row";
 
-export interface ChainAddressPairWithName extends ChainAddressPair {
+export interface ChainAddressPairWithName {
+  readonly chainId: string;
+  readonly address: string;
   readonly chainName: string;
 }
 

@@ -20,7 +20,6 @@ import React from "react";
 import { amountToString } from "ui-logic";
 
 import { isIovname } from "../../logic/account";
-import { getCodecForChainId } from "../../logic/codec";
 import {
   AddressesTooltipHeader,
   BwAccountWithChainName,
@@ -174,7 +173,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
 
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
       for (const address of addressesToRegister) {
-        try {
+        /*try {
           const codec = await getCodecForChainId(address.chainId);
           if (!codec.isValidAddress(address.address)) {
             const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
@@ -184,9 +183,8 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
           }
         } catch (err) {
           console.info(err);
-        }
+        }*/
       }
-
       return errors;
     };
 

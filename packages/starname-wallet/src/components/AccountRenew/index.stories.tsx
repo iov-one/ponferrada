@@ -7,7 +7,6 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { generateRenewDomainTxRequest } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
@@ -63,7 +62,8 @@ storiesOf(ACCOUNT_RENEW_STORY_PATH, module)
         account={account}
         getRequest={async (): Promise<JsonRpcRequest> => {
           action("getRequest")();
-          return await generateRenewDomainTxRequest(bnsIdentity, account.domain);
+          // return await generateRenewDomainTxRequest(bnsIdentity, account.domain);
+          return {} as JsonRpcRequest;
         }}
         onCancel={action("Renew cancel")}
         getFee={async () => {

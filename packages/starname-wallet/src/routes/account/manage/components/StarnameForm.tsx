@@ -3,8 +3,6 @@ import * as React from "react";
 
 import { history } from "../../..";
 import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { getChainName } from "../../../../config";
-import { getConnectionForBns } from "../../../../logic/connection";
 import {
   NAME_EDIT_ROUTE,
   NAME_REGISTER_ROUTE,
@@ -26,7 +24,7 @@ const StarnameAccountManage = (): JSX.Element => {
     { title: "Delete starname", action: () => history.push(STARNAME_DELETE_ROUTE, account) },
   ];
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     let isSubscribed = true;
     async function getDomainAccounts(): Promise<void> {
       const connection = await getConnectionForBns();
@@ -53,7 +51,6 @@ const StarnameAccountManage = (): JSX.Element => {
               };
             }),
         );
-
         setDomainAccounts(bwAccountsWithChain);
       }
     }
@@ -62,7 +59,7 @@ const StarnameAccountManage = (): JSX.Element => {
     return () => {
       isSubscribed = false;
     };
-  }, [account]);
+  }, [account]);*/
 
   const onEdit = (): void => {
     history.push(NAME_EDIT_ROUTE, account);

@@ -1,9 +1,6 @@
-import { BlockchainConnection, ChainId } from "@iov/bcp";
-import { BnsConnection, createBnsConnector } from "@iov/bns";
-import { createCosmosConnector } from "@iov/cosmos-sdk";
-import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
+export const x = null;
 
-import { ChainSpec, CodecType, getConfig } from "../config";
+/*import { ChainSpec, CodecType, getConfig } from "../config";
 import { getErc20TokensConfig } from "../utils/tokens";
 
 const connections = new Map<ChainId, BlockchainConnection>();
@@ -76,16 +73,17 @@ export async function getConnectionForBns(): Promise<BnsConnection> {
   }
 
   throw new Error("No connection found for BNS chain");
-}
+}*/
 
 /**
  * Disconnects all blockchain connections. Calling establishConnection after
  * this will establich a new connection.
  */
-export function disconnect(): void {
+/*export function disconnect(): void {
   connections.forEach(connection => {
     connection.disconnect();
   });
 
   connections.clear();
 }
+*/

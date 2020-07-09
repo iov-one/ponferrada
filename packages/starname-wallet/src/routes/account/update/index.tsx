@@ -1,4 +1,3 @@
-import { TransactionId } from "@iov/bcp";
 import React from "react";
 import * as ReactRedux from "react-redux";
 
@@ -7,30 +6,27 @@ import { history } from "../..";
 import PageMenu from "../../../components/PageMenu";
 import { getConfig, SupportedChain } from "../../../config";
 import { RootState } from "../../../store/reducers";
-import { getBnsIdentity, getChainAddressPairWithNamesSorted } from "../../../utils/tokens";
 import { TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmRegistration from "./components/ConfirmUpdate";
 import IovnameAccountUpdate from "./components/IovnameForm";
 import NameAccountUpdate from "./components/NameForm";
+import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 
 function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 
 const AccountUpdate = ({ entity }: AccountProps): JSX.Element => {
-  const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
+  const [transactionId, setTransactionId] = React.useState<string | null>(null);
   const [supportedChains, setSupportedChains] = React.useState<readonly SupportedChain[]>([]);
 
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const addressesSorted = React.useMemo(
+  const addressesSorted: ChainAddressPairWithName[] = []; /*React.useMemo(
     () => getChainAddressPairWithNamesSorted(identities, supportedChains),
     [identities, supportedChains],
-  );
+  )*/
 
-  const bnsIdentity = getBnsIdentity(identities);
-
-  if (!bnsIdentity) throw new Error("No BNS identity available.");
   if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
 
   React.useEffect(() => {
@@ -47,7 +43,7 @@ const AccountUpdate = ({ entity }: AccountProps): JSX.Element => {
     return () => {
       isSubscribed = false;
     };
-  }, [addressesSorted, bnsIdentity]);
+  }, [addressesSorted]);
 
   return (
     <PageMenu>
@@ -60,7 +56,6 @@ const AccountUpdate = ({ entity }: AccountProps): JSX.Element => {
               setTransactionId={setTransactionId}
               rpcEndpoint={rpcEndpoint}
               chainAddresses={addressesSorted}
-              bnsIdentity={bnsIdentity}
             />
           )}
           {entity === "name" && (
@@ -68,7 +63,6 @@ const AccountUpdate = ({ entity }: AccountProps): JSX.Element => {
               setTransactionId={setTransactionId}
               rpcEndpoint={rpcEndpoint}
               chainAddresses={addressesSorted}
-              bnsIdentity={bnsIdentity}
             />
           )}
         </React.Fragment>

@@ -2,11 +2,12 @@ import { Address, ChainId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { RpcEndpoint } from "../../communication/rpcEndpoint";
-import { BwUsernameWithChainName } from "../../components/AccountManage";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
+import { RpcEndpoint } from "communication/rpcEndpoint";
+import { BwUsernameWithChainName } from "components/AccountManage";
+import { ChainAddressPairWithName } from "components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import Iovnames from ".";
+import { Target, Account, Task } from "logic/api";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -31,9 +32,13 @@ const rpcEndpoint: RpcEndpoint = {
   authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
   noMatchingIdentityMessage: "test noMatchingIdentityMessage",
   notAvailableMessage: "test notAvailableMessage",
-  sendGetIdentitiesRequest: _req => Promise.resolve(undefined),
-  sendSignAndPostRequest: _req => Promise.resolve(undefined),
   type: "extension",
+  resolveStarname: (query: string): Task<Account> => ({
+    run: () => Promise.resolve<Account>({} as Account),
+    abort: () => null,
+  }),
+  executeRequest: async (request: any): Promise<string> => "",
+  getTargets: async (): Promise<Target[]> => [],
 };
 
 const iovnames: readonly BwUsernameWithChainName[] = [

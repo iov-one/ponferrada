@@ -1,46 +1,22 @@
-import { ChainId, Fee, Identity, TransactionId } from "@iov/bcp";
-import { BnsConnection } from "@iov/bns";
+import { Fee } from "@iov/bcp";
 import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
 import { ErrorParser } from "ui-logic";
 
 import { history } from "../../..";
-import {
-  generateReplaceAccountTargetsTxRequest,
-  generateReplaceAccountTargetsTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountEdit, { getChainAddressPairsFromValues } from "../../../../components/AccountEdit";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import { ChainAddressPairWithName } from "../../../../components/AddressesTable";
-import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
-import { getConnectionForChainId } from "../../../../logic/connection";
-import { ExtendedIdentity } from "../../../../store/identities";
 import { NAME_MANAGE_ROUTE } from "../../../paths";
 
-export function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
-  for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
-    if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
-      return identity;
-    }
-  }
-  return undefined;
-}
-
 export interface Props {
-  readonly setTransactionId: Dispatch<SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: Dispatch<SetStateAction<string | null>>;
   readonly rpcEndpoint: RpcEndpoint;
   readonly chainAddresses: readonly ChainAddressPairWithName[];
-  readonly bnsIdentity: Identity;
 }
 
-const NameAccountUpdate = ({
-  setTransactionId,
-  rpcEndpoint,
-  bnsIdentity,
-  chainAddresses,
-}: Props): JSX.Element => {
+const NameAccountUpdate = ({ setTransactionId, rpcEndpoint, chainAddresses }: Props): JSX.Element => {
   const account: BwAccountWithChainName = history.location.state;
 
   const onReturnToManage = (): void => {
@@ -51,7 +27,7 @@ const NameAccountUpdate = ({
   const toast = React.useContext(ToastContext);
 
   const getFee = async (values: FormValues): Promise<Fee | undefined> => {
-    const addressesToRegister = getChainAddressPairsFromValues(values, chainAddresses);
+    /*const addressesToRegister = getChainAddressPairsFromValues(values, chainAddresses);
 
     return (
       await generateReplaceAccountTargetsTxWithFee(
@@ -60,11 +36,11 @@ const NameAccountUpdate = ({
         account.domain,
         addressesToRegister,
       )
-    ).fee;
+    ).fee;*/
+    return {} as Fee;
   };
 
   const onSubmit = async (values: object): Promise<void> => {
-    if (!bnsIdentity) throw Error("No bnsIdentity found for submit");
     if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
 
     const formValues = values as FormValues;
@@ -72,7 +48,7 @@ const NameAccountUpdate = ({
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
 
     try {
-      const request = await generateReplaceAccountTargetsTxRequest(
+      /*const request = await generateReplaceAccountTargetsTxRequest(
         bnsIdentity,
         account.name,
         account.domain,
@@ -101,7 +77,7 @@ const NameAccountUpdate = ({
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
         setTransactionId(transactionId);
-      }
+      }*/
     } catch (error) {
       console.error(error);
       const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";

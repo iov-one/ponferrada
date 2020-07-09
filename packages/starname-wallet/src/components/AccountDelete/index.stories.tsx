@@ -7,7 +7,6 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { generateDeleteDomainTxRequest } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
@@ -63,7 +62,7 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
         account={account}
         getRequest={async (): Promise<JsonRpcRequest> => {
           action("getRequest")();
-          return await generateDeleteDomainTxRequest(bnsIdentity, account.domain);
+          return {} as JsonRpcRequest;
         }}
         onCancel={action("Transfer cancel")}
         getFee={async () => {

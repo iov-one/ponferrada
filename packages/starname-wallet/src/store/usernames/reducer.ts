@@ -1,4 +1,3 @@
-import { ChainAddressPair } from "@iov/bns";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
@@ -6,7 +5,7 @@ import * as actions from "./actions";
 
 export interface BwUsername {
   readonly username: string;
-  readonly addresses: readonly ChainAddressPair[];
+  readonly addresses: readonly any[];
 }
 
 export interface AddUsernamesActionType extends Action {

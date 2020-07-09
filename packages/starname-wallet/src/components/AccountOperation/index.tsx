@@ -1,5 +1,3 @@
-import { ChainId, Fee, TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { Paper, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { FormApi } from "final-form";
@@ -41,12 +39,12 @@ interface Props {
   readonly children: React.ReactNode;
   readonly subSection?: (form: FormApi) => React.FunctionComponent;
   readonly header?: React.ReactNode;
-  readonly bnsChainId: ChainId;
+  readonly bnsChainId: string;
   readonly onCancel: () => void;
-  readonly getFee: (values: FormValues) => Promise<Fee | undefined>;
-  readonly getRequest: (values: FormValues) => Promise<JsonRpcRequest>;
+  readonly getFee: (values: FormValues) => Promise<any | undefined>;
+  readonly getRequest: (values: FormValues) => Promise<any>;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const AccountOperation: React.FunctionComponent<Props> = ({
@@ -60,13 +58,13 @@ const AccountOperation: React.FunctionComponent<Props> = ({
   submitCaption,
   header,
 }): JSX.Element => {
-  const [transferFee, setTransferFee] = React.useState<Fee | undefined>();
+  const [transferFee, setTransferFee] = React.useState<any | undefined>();
   const messagePaperClasses = useMessagePaper();
   const theme = useTheme<Theme>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
-  const getSubmitButtonCaption = (fee: Fee | undefined): string => {
+  const getSubmitButtonCaption = (fee: any | undefined): string => {
     if (fee && fee.tokens) {
       return `${submitCaption} for ${amountToString(fee.tokens)}`;
     }
@@ -85,7 +83,7 @@ const AccountOperation: React.FunctionComponent<Props> = ({
       rpcEndpoint,
       <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
       <LedgerBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
-      (transactionId: TransactionId) => setTransactionId(transactionId),
+      (transactionId: string) => setTransactionId(transactionId),
     );
   };
 

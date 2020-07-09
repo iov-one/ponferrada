@@ -1,9 +1,8 @@
-import { Identity, isIdentity, TransactionId } from "@iov/bcp";
+import { Identity, isIdentity } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
-import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
-
-import { getConfig } from "../config";
-import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
+import { isJsonRpcErrorResponse, parseJsonRpcResponse } from "@iov/jsonrpc";
+import { RpcEndpoint } from "./rpcEndpoint";
+import { Target, Account, Task } from "logic/api";
 
 function isExtensionContext(): boolean {
   return (
@@ -41,59 +40,12 @@ export const extensionRpcEndpoint: RpcEndpoint = {
   notAvailableMessage: "You need to install the Neuma browser extension.",
   noMatchingIdentityMessage: "Please unlock Neuma to continue.",
   type: "extension",
-  sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
-    if (!isExtensionContext()) return undefined;
-
-    const config = await getConfig();
-
-    return new Promise(resolve => {
-      chrome.runtime.sendMessage(config.extensionId, request, response => {
-        if (chrome.runtime.lastError) {
-          resolve(undefined);
-          return;
-        }
-
-        try {
-          const identities = parseGetIdentitiesResponse(response);
-          resolve(identities);
-        } catch (error) {
-          console.error(error);
-          resolve([]);
-        }
-      });
-    });
+  resolveStarname: (query: string): Task<Account> => {
+    return {
+      run: () => Promise.resolve<Account>({} as Account),
+      abort: () => null,
+    };
   },
-  sendSignAndPostRequest: async (request: JsonRpcRequest): Promise<SignAndPostResponse | undefined> => {
-    if (!isExtensionContext()) return undefined;
-
-    const config = await getConfig();
-
-    return new Promise((resolve, reject) => {
-      chrome.runtime.sendMessage(config.extensionId, request, response => {
-        if (chrome.runtime.lastError) {
-          resolve(undefined);
-          return;
-        }
-
-        try {
-          const parsedResponse = parseJsonRpcResponse(response);
-          if (isJsonRpcErrorResponse(parsedResponse)) {
-            reject(parsedResponse.error.message);
-            return;
-          }
-
-          const parsedResult = TransactionEncoder.fromJson(parsedResponse.result);
-          if (typeof parsedResult === "string") {
-            resolve(parsedResult as TransactionId);
-          } else if (parsedResult === null) {
-            resolve(null);
-          } else {
-            reject("Got unexpected type of result");
-          }
-        } catch (error) {
-          reject(error);
-        }
-      });
-    });
-  },
+  executeRequest: async (request: any): Promise<string | undefined> => undefined,
+  getTargets: async (): Promise<Target[]> => [],
 };

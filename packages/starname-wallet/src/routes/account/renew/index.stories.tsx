@@ -1,5 +1,4 @@
 import { Address, Algorithm, ChainId, Identity, PubkeyBytes, Token, TokenTicker } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
@@ -8,7 +7,6 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
-import { generateRenewDomainTxRequest } from "../../../communication/requestgenerators";
 import AccountDelete from "../../../components/AccountDelete";
 import { ACCOUNT_DELETE_STORY_PATH } from "../../../components/AccountDelete/index.stories";
 import { BwAccountWithChainName } from "../../../components/AccountManage";
@@ -64,9 +62,9 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
     <DecoratedStorybook>
       <AccountDelete
         account={account}
-        getRequest={async (): Promise<JsonRpcRequest> => {
+        getRequest={async (): Promise<any> => {
           action("getRequest")();
-          return await generateRenewDomainTxRequest(bnsIdentity, account.domain);
+          return undefined;
         }}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_IOVNAMES_STORY_PATH)}
         getFee={async () => {

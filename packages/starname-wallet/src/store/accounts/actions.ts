@@ -1,11 +1,8 @@
-import { Identity } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
-
-import { getConnectionForBns } from "../../logic/connection";
 import { AddAccountsActionType, BwAccount, RemoveAccountActionType } from "./reducer";
+import { Target } from "logic/api";
 
-export async function getAccounts(identities: readonly Identity[]): Promise<readonly BwAccount[]> {
-  const bnsConnection = await getConnectionForBns();
+export async function getAccounts(identities: readonly Target[]): Promise<readonly BwAccount[]> {
+  /*const bnsConnection = await getConnectionForBns();
 
   const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId);
   if (!bnsIdentity) return [];
@@ -20,7 +17,8 @@ export async function getAccounts(identities: readonly Identity[]): Promise<read
     expiryDate: new Date(account.validUntil * 1000),
     addresses: account.targets,
     owner: account.owner,
-  }));
+  }));*/
+  return [];
 }
 
 export const addAccountsAction = (accounts: readonly BwAccount[]): AddAccountsActionType => {

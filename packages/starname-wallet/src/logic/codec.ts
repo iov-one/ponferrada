@@ -1,4 +1,4 @@
-import { ChainId, TxCodec } from "@iov/bcp";
+/*import { ChainId, TxCodec } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { CosmosCodec } from "@iov/cosmos-sdk";
 import { ethereumCodec } from "@iov/ethereum";
@@ -34,4 +34,6 @@ export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
   }
 
   throw new Error("No codec found or no active connection for this chainId");
-}
+}*/
+
+export const nothing = null;

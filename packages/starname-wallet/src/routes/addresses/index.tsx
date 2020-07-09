@@ -4,8 +4,8 @@ import * as ReactRedux from "react-redux";
 
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
-import { getChainAddressPairWithNames } from "../../utils/tokens";
 import UserAddresses from "./components/UserAddresses";
+import { ChainAddressPairWithName } from "../../components/AddressesTable";
 
 export const ADDRESSES_VIEW_ID = "addresses-view-id";
 
@@ -21,7 +21,7 @@ const Addresses = (): JSX.Element => {
     [identities],
   );
 
-  const chainAddresses = getChainAddressPairWithNames(identities, supportedChains);
+  const chainAddresses: ChainAddressPairWithName[] = []; // getChainAddressPairWithNames(identities, supportedChains);
 
   return (
     <PageMenu>

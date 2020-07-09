@@ -8,7 +8,6 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
-import { generateDeleteDomainTxRequest } from "../../../communication/requestgenerators";
 import AccountDelete from "../../../components/AccountDelete";
 import { ACCOUNT_DELETE_STORY_PATH } from "../../../components/AccountDelete/index.stories";
 import { BwAccountWithChainName } from "../../../components/AccountManage";
@@ -66,7 +65,7 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
         account={account}
         getRequest={async (): Promise<JsonRpcRequest> => {
           action("getRequest")();
-          return await generateDeleteDomainTxRequest(bnsIdentity, account.domain);
+          return {} as JsonRpcRequest;
         }}
         onCancel={linkTo(ACCOUNT_MANAGE_STORY_PATH, ACCOUNT_MANAGE_IOVNAMES_STORY_PATH)}
         getFee={async () => {

@@ -2,17 +2,15 @@ import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
-import * as ReactRedux from "react-redux";
 
 import { REGISTER_STARNAME_LINK } from "..";
-import { getRpcEndpointType } from "../../../store/rpcendpoint/selectors";
-import { NoStarnameHeader } from "../../account/register/components/StarnameForm";
+import { NoStarnameHeader } from "routes/account/register/components/StarnameForm/noStarnameHeader";
 
 interface Props {
   readonly onRegisterStarname: () => void;
 }
 
-export function GetYourAddressWithExtension({ onRegisterStarname }: Props): JSX.Element {
+export function GetYourAddress({ onRegisterStarname }: Props): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <NoStarnameHeader />
@@ -39,40 +37,6 @@ export function GetYourAddressWithExtension({ onRegisterStarname }: Props): JSX.
       </Typography>
     </Block>
   );
-}
-
-export function GetYourAddressWithLedger(): JSX.Element {
-  return (
-    <Block display="flex" flexDirection="column" alignItems="center">
-      <NoStarnameHeader />
-      <Block marginTop={4} />
-      <Typography variant="body1" weight="light">
-        You can not register
-      </Typography>
-      <Typography id={REGISTER_STARNAME_LINK} variant="body1" color="primary" weight="light">
-        starname
-      </Typography>
-      <Block textAlign="center">
-        <Typography variant="body1" weight="light" inline>
-          using{" "}
-        </Typography>
-        <Typography variant="body1" weight="semibold" inline>
-          Ledger Nano S
-        </Typography>
-      </Block>
-    </Block>
-  );
-}
-
-export function GetYourAddress({ onRegisterStarname }: Props): JSX.Element {
-  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
-
-  switch (rpcEndpointType) {
-    case "extension":
-      return <GetYourAddressWithExtension onRegisterStarname={onRegisterStarname} />;
-    case "ledger":
-      return <GetYourAddressWithLedger />;
-  }
 }
 
 function StarnamesNotExists({ onRegisterStarname }: Props): JSX.Element {

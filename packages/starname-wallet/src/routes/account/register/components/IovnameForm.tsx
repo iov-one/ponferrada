@@ -1,4 +1,4 @@
-import { Fee, Identity, TransactionId } from "@iov/bcp";
+import { Fee } from "@iov/bcp";
 import { FieldValidator } from "final-form";
 import {
   Back,
@@ -22,10 +22,6 @@ import {
 import React from "react";
 import { ErrorParser } from "ui-logic";
 
-import {
-  generateRegisterUsernameTxRequest,
-  generateRegisterUsernameTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import {
   getAddressItems,
@@ -39,10 +35,9 @@ import LedgerBillboardMessage from "../../../../components/BillboardMessage/Ledg
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
 import { isValidIov } from "../../../../logic/account";
-import { getCodecForChainId } from "../../../../logic/codec";
-import { getConnectionForBns } from "../../../../logic/connection";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
+import { getCurrentSigner, Signer } from "../../../../logic/signer";
 
 export const REGISTER_IOVNAME_VIEW_ID = "register-iovname-view-id";
 export const REGISTER_IOVNAME_FIELD = "register-iovname-field";
@@ -66,24 +61,18 @@ export function NoIovnameHeader(): JSX.Element {
   );
 }
 
-const iovnameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
-  if (!value) {
-    return "Required";
-  }
-
+const iovnameValidator: (ep: RpcEndpoint) => FieldValidator<FieldInputValue> = (ep: RpcEndpoint) => async (
+  value: FieldInputValue,
+): Promise<string | undefined> => {
+  if (value === undefined) return "Value is required";
   const checkResult = isValidIov(value);
-
-  if (checkResult === "valid") {
-    const connection = await getConnectionForBns();
-    const usernames = await connection.getUsernames({ username: value });
-    if (usernames.length > 0) {
-      return "Iovname already exists";
-    }
-
-    return;
-  }
-
   switch (checkResult) {
+    case "valid":
+      if ((await ep.resolveStarname(value)) !== undefined) {
+        return "Iovname already exists";
+      } else {
+        return undefined;
+      }
     case "not_iov":
       return "Iovname must end with *iov";
     case "wrong_number_of_asterisks":
@@ -101,18 +90,11 @@ const iovnameValidator: FieldValidator<FieldInputValue> = async (value): Promise
 
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const IovnameForm = ({
-  chainAddresses,
-  bnsIdentity,
-  rpcEndpoint,
-  onCancel,
-  setTransactionId,
-}: Props): JSX.Element => {
+const IovnameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: Props): JSX.Element => {
   const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
@@ -125,13 +107,11 @@ const IovnameForm = ({
     const formValues = values as FormValues;
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
+    const signer: Signer = getCurrentSigner();
 
     try {
-      const request = await generateRegisterUsernameTxRequest(
-        bnsIdentity,
-        formValues[REGISTER_IOVNAME_FIELD],
-        addressesToRegister,
-      );
+      // FIXME: fill the request right?
+      const request = {};
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -147,7 +127,7 @@ const IovnameForm = ({
           0,
         );
       }
-      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+      const transactionId = await rpcEndpoint.executeRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       } else if (transactionId === null) {
@@ -171,7 +151,7 @@ const IovnameForm = ({
 
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
       for (const address of addressesToRegister) {
-        try {
+        /*try {
           const codec = await getCodecForChainId(address.chainId);
           if (!codec.isValidAddress(address.address)) {
             const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
@@ -181,7 +161,7 @@ const IovnameForm = ({
           }
         } catch (err) {
           console.info(err);
-        }
+        }*/
       }
 
       return errors;
@@ -197,7 +177,7 @@ const IovnameForm = ({
     initialValues,
   });
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     let isSubscribed = true;
 
     async function setFee(): Promise<void> {
@@ -226,7 +206,7 @@ const IovnameForm = ({
     return () => {
       isSubscribed = false;
     };
-  }, [bnsIdentity, chainAddresses, invalid, values]);
+  }, [bnsIdentity, chainAddresses, invalid, values]);*/
 
   const buttons = (
     <Block
@@ -281,7 +261,7 @@ const IovnameForm = ({
               <TextField
                 name={REGISTER_IOVNAME_FIELD}
                 form={form}
-                validate={iovnameValidator}
+                validate={iovnameValidator(rpcEndpoint)}
                 placeholder="eg. yourname*iov"
                 fullWidth
                 margin="none"

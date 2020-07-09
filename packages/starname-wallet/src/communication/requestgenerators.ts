@@ -1,28 +1,5 @@
-import { Address, Amount, Identity, SendTransaction, UnsignedTransaction } from "@iov/bcp";
-import {
-  bnsCodec,
-  ChainAddressPair,
-  DeleteAccountTx,
-  DeleteDomainTx,
-  RegisterAccountTx,
-  RegisterDomainTx,
-  RegisterUsernameTx,
-  RenewAccountTx,
-  RenewDomainTx,
-  ReplaceAccountTargetsTx,
-  TransferAccountTx,
-  TransferDomainTx,
-  TransferUsernameTx,
-  UpdateTargetsOfUsernameTx,
-} from "@iov/bns";
-import { TransactionEncoder } from "@iov/encoding";
-import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
-
-import { getConfig } from "../config";
-import { getCodecForChainId } from "../logic/codec";
-import { getConnectionForChainId } from "../logic/connection";
-
-export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
+export const requestGenerators = null;
+/*export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
   const chains = (await getConfig()).chains;
   const chainIdsToRequest = chains.map(chain => chain.chainSpec.chainId);
 
@@ -413,3 +390,4 @@ export const generateReplaceAccountTargetsTxRequest = async (
 
   return generateJsonPrcRequest(creator, transactionWithFee);
 };
+*/

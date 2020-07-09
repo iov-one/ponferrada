@@ -3,15 +3,16 @@ import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { RpcEndpoint } from "../../communication/rpcEndpoint";
+import { RpcEndpoint } from "communication/rpcEndpoint";
 import PageMenu from "../../components/PageMenu";
-import { BalanceState } from "../../store/balances";
+import { BalanceState } from "store/balances";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
 } from "../account/register/index.stories";
 import Layout from "./components/index";
+import { Target, Account, Task } from "logic/api";
 
 export const BALANCE_STORY_PATH = `${bierzoRoot}/Balance`;
 export const BALANCE_STORY_VIEW_PATH = "View";
@@ -38,9 +39,13 @@ const extensionRpcEndpoint: RpcEndpoint = {
   authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
   noMatchingIdentityMessage: "test noMatchingIdentityMessage",
   notAvailableMessage: "test notAvailableMessage",
-  sendGetIdentitiesRequest: _req => Promise.resolve(undefined),
-  sendSignAndPostRequest: _req => Promise.resolve(undefined),
   type: "extension",
+  resolveStarname: (query: string): Task<Account> => ({
+    run: () => Promise.resolve<Account>({} as Account),
+    abort: () => null,
+  }),
+  executeRequest: async (request: any): Promise<string> => "",
+  getTargets: async (): Promise<Target[]> => [],
 };
 
 const ledgerRpcEndpoint: RpcEndpoint = {
@@ -48,9 +53,13 @@ const ledgerRpcEndpoint: RpcEndpoint = {
   authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
   noMatchingIdentityMessage: "test noMatchingIdentityMessage",
   notAvailableMessage: "test notAvailableMessage",
-  sendGetIdentitiesRequest: _req => Promise.resolve(undefined),
-  sendSignAndPostRequest: _req => Promise.resolve(undefined),
   type: "ledger",
+  resolveStarname: (query: string): Task<Account> => ({
+    run: () => Promise.resolve<Account>({} as Account),
+    abort: () => null,
+  }),
+  executeRequest: async (request: any): Promise<string> => "",
+  getTargets: async (): Promise<Target[]> => [],
 };
 
 storiesOf(BALANCE_STORY_PATH, module)

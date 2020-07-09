@@ -65,10 +65,11 @@ function Starnames(): JSX.Element {
         alignItems="center"
         justifyContent="center"
       >
-        {hasStarnames && (
+        {hasStarnames ? (
           <StarnamesExists starnames={starnamesWithChain} onRegisterStarname={onRegisterStarname} />
+        ) : (
+          <StarnamesNotExists onRegisterStarname={onRegisterStarname} />
         )}
-        {!hasStarnames && <StarnamesNotExists onRegisterStarname={onRegisterStarname} />}
       </Block>
     </PageMenu>
   );

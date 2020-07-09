@@ -3,8 +3,8 @@ import * as ReactRedux from "react-redux";
 
 import { history } from "..";
 import PageMenu from "../../components/PageMenu";
-import { RootState } from "../../store/reducers";
-import { getFirstUsername } from "../../store/usernames/selectors";
+import { RootState } from "store/reducers";
+import { getFirstUsername } from "store/usernames/selectors";
 import { IOVNAME_REGISTER_ROUTE } from "../paths";
 import Layout from "./components";
 

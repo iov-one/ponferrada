@@ -7,11 +7,10 @@ import React from "react";
 import { stringToAmount } from "ui-logic";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { generateTransferDomainTxRequest } from "../../communication/requestgenerators";
 import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
-import AccountOperation, { RECEPIENT_ADDRESS } from ".";
+import AccountOperation from ".";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {
@@ -78,11 +77,7 @@ storiesOf(`${bierzoRoot}/Account Operation`, module)
         submitCaption="Operation"
         getRequest={async (formValues: FormValues): Promise<JsonRpcRequest> => {
           action("getRequest")(formValues);
-          return await generateTransferDomainTxRequest(
-            bnsIdentity,
-            account.domain,
-            formValues[RECEPIENT_ADDRESS] as Address,
-          );
+          return {} as JsonRpcRequest;
         }}
         onCancel={action("Transfer cancel")}
         getFee={async newOwner => {

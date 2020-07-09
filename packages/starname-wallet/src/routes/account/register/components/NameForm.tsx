@@ -1,5 +1,4 @@
-import { Fee, Identity, TransactionId } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
+import { Fee } from "@iov/bcp";
 import { FieldValidator } from "final-form";
 import {
   Back,
@@ -23,10 +22,6 @@ import {
 import React from "react";
 import { ErrorParser } from "ui-logic";
 
-import {
-  generateRegisterAccountTxRequest,
-  generateRegisterAccountTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import {
   getAddressItems,
@@ -40,10 +35,9 @@ import LedgerBillboardMessage from "../../../../components/BillboardMessage/Ledg
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
 import { isValidName } from "../../../../logic/account";
-import { getCodecForChainId } from "../../../../logic/codec";
-import { getConnectionForBns } from "../../../../logic/connection";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
+import { Signer, getCurrentSigner } from "../../../../logic/signer";
 
 export const REGISTER_NAME_VIEW_ID = "register-name-view-id";
 export const REGISTER_NAME_FIELD = "register-name-field";
@@ -67,24 +61,20 @@ function NoNameHeader(): JSX.Element {
   );
 }
 
-const nameValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
+const nameValidator: (ep: RpcEndpoint) => FieldValidator<FieldInputValue> = (ep: RpcEndpoint) => async (
+  value: FieldInputValue,
+): Promise<string | undefined> => {
   if (!value) {
     return "Required";
   }
-
   const checkResult = isValidName(value);
-
-  if (checkResult === "valid") {
-    const connection = await getConnectionForBns();
-    const usernames = await connection.getAccounts({ name: value });
-    if (usernames.length > 0) {
-      return "Name already exists";
-    }
-
-    return;
-  }
-
   switch (checkResult) {
+    case "valid":
+      if (ep.resolveStarname(value) !== undefined) {
+        return "Name already exists";
+      }
+      return;
+
     case "wrong_number_of_asterisks":
       return "Name must include only one namespace";
     case "too_short":
@@ -100,18 +90,11 @@ const nameValidator: FieldValidator<FieldInputValue> = async (value): Promise<st
 
 interface Props extends AddressesTableProps {
   readonly onCancel: () => void;
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameForm = ({
-  chainAddresses,
-  bnsIdentity,
-  rpcEndpoint,
-  onCancel,
-  setTransactionId,
-}: Props): JSX.Element => {
+const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: Props): JSX.Element => {
   const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
@@ -125,15 +108,11 @@ const NameForm = ({
 
     const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
     const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
-
+    // FIXME: fill this with the correct value
+    const address: string = "";
+    const signer: Signer = getCurrentSigner();
     try {
-      const request = await generateRegisterAccountTxRequest(
-        bnsIdentity,
-        name,
-        domain,
-        bnsCodec.identityToAddress(bnsIdentity),
-        addressesToRegister,
-      );
+      const request = {};
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,
@@ -149,7 +128,7 @@ const NameForm = ({
           0,
         );
       }
-      const transactionId = await rpcEndpoint.sendSignAndPostRequest(request);
+      const transactionId = await rpcEndpoint.executeRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       } else if (transactionId === null) {
@@ -173,7 +152,7 @@ const NameForm = ({
 
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
       for (const address of addressesToRegister) {
-        try {
+        /*try {
           const codec = await getCodecForChainId(address.chainId);
           if (!codec.isValidAddress(address.address)) {
             const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
@@ -183,7 +162,7 @@ const NameForm = ({
           }
         } catch (err) {
           console.info(err);
-        }
+        }*/
       }
 
       return errors;
@@ -199,7 +178,7 @@ const NameForm = ({
     initialValues,
   });
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     let isSubscribed = true;
 
     async function setFee(): Promise<void> {
@@ -233,7 +212,7 @@ const NameForm = ({
     return () => {
       isSubscribed = false;
     };
-  }, [bnsIdentity, chainAddresses, invalid, values]);
+  }, [bnsIdentity, chainAddresses, invalid, values]);*/
 
   const buttons = (
     <Block
@@ -287,7 +266,7 @@ const NameForm = ({
             <TextField
               name={REGISTER_NAME_FIELD}
               form={form}
-              validate={nameValidator}
+              validate={nameValidator(rpcEndpoint)}
               placeholder="eg. yourname*iov"
               fullWidth
               margin="none"
