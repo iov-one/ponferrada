@@ -1,0 +1,48 @@
+{
+  "extensionId": "hanbjcoilbbikpffhiogdeepkahpohna",
+  "extensionLink": "https://chrome.google.com/webstore/detail/neuma-staging/hanbjcoilbbikpffhiogdeepkahpohna",
+  "neumaUrl": "https://www.neuma.io/",
+  "ledger": {
+    "chainIds": {
+      "testnetBuild": "cosmos:iovns-galaxynet",
+      "mainnetBuild": "cosmos:iov-mainnet"
+    }
+  },
+  "websiteName": "starname-wallet-staging.iov.one",
+  "supportedChains": [
+    { "chainId": "iovns-galaxynet", "name": "IOV Galaxynet" },
+    { "chainId": "lisk-da3ed6a454", "name": "Lisk Testnet" },
+    { "chainId": "ethereum-eip155-4", "name": "Rinkeby" },
+    { "chainId": "cosmos-columbus-3", "name": "Terra Money" },
+    { "chainId": "cosmos-cosmoshub-3", "name": "Cosmos Hub" },
+    { "chainId": "cosmos-irishub", "name": "IrisNet" },
+    { "chainId": "cosmos-kava-2", "name": "Kava" },
+    { "chainId": "cosmos-emoney-1", "name": "e-Money" },
+    { "chainId": "bip122-tmp-bitcoin", "name": "Bitcoin" },
+    { "chainId": "bip122-tmp-litecoin", "name": "Litecoin" },
+    { "chainId": "cosmos-binance-chain-tigris", "name": "Binance Chain" },
+    { "chainId": "bip122-tmp-bcash", "name": "Bitcoin Cash" },
+    { "chainId": "tezos-tmp-mainnet", "name": "Tezos" }
+  ],
+  "chains": [
+    {
+      "chainSpec": {
+        "codecType": "iovns",
+        "chainId": "cosmos:iovns-galaxynet",
+        "name": "IOV Galaxy",
+        "node": "https://iovnscli-rest-api.cluster-galaxynet.iov.one"
+      }
+    }
+  ],
+  "addressPrefix": "star",
+  "tokenConfiguration": {
+    "bankTokens": [
+      {
+        "fractionalDigits": 6,
+        "name": "IOV Testnet Token",
+        "ticker": "VOI",
+        "denom": "uvoi"
+      }
+    ]
+  }
+}
