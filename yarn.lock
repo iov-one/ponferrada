@@ -2577,10 +2577,10 @@
   dependencies:
     "@types/ledgerhq__hw-transport" "^4.21.2"
 
-"@iov/ledger-bns@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@iov/ledger-bns/-/ledger-bns-2.0.0.tgz#7fff928be2f377d654a834e64d17ee55ce04afe3"
-  integrity sha512-BygDC3X/Ax6wWeM3SV6xz4RvavM+4bLbE7l8dc7fG848Nc2HNMGJnQhIWdvBIYvMId3H6VL1RGRbMA99Xd1R2g==
+"@iov/ledger-iovns@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@iov/ledger-iovns/-/ledger-iovns-2.0.2.tgz#e64986b87f84f24efb8c57263a460ec2920f911a"
+  integrity sha512-cYdaQ1yE/v62YPxI8iTP+hP9+hw0CcplCCP7Jr0tnm5cK0i/mLOIS+boVZ6JOfKylS34+LY6f5NwN7bst/CyMQ==
   dependencies:
     "@ledgerhq/hw-transport" "^5.11.0"
 
@@ -15415,9 +15415,9 @@ no-case@^2.2.0:
     lower-case "^1.1.1"
 
 node-addon-api@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-2.0.1.tgz#4fd0931bf6d7e48b219ff3e6abc73cbb0252b7a3"
-  integrity sha512-2WVfwRfIr1AVn3dRq4yRc2Hn35ND+mPJH6inC6bjpYCZVrpXPB4j3T6i//OGVfqVsR1t/X/axRulDsheq4F0LQ==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-2.0.2.tgz#432cfa82962ce494b132e9d72a15b29f71ff5d32"
+  integrity sha512-Ntyt4AIXyaLIuMHF6IOoTakB3K+RWxwtsHNRxllEoA6vPwP9o4866g6YWDLUdnucilZhmkxiHwHr11gAENw+QA==
 
 node-dir@^0.1.10:
   version "0.1.17"

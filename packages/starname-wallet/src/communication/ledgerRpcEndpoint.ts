@@ -16,8 +16,9 @@ import {
   isIovLedgerAppAddress,
   isIovLedgerAppSignature,
   isIovLedgerAppVersion,
-} from "@iov/ledger-bns";
+} from "@iov/ledger-iovns";
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
+import { signatureImport } from "secp256k1";
 
 import { getConfig } from "../config";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
@@ -183,21 +184,15 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       ],
       memo: transaction.memo || "",
     };
-    const sorted: any = {};
-    Object.keys(unsigned)
-      .sort()
-      .forEach((key: string) => {
-        sorted[key] = unsigned[key];
-      });
-    const signature = await ledger.sign(addressIndex, JSON.stringify(sorted));
+    const signature = await ledger.sign(addressIndex, unsigned);
     if (!isIovLedgerAppSignature(signature)) throw new Error(signature.errorMessage);
 
     await transport.close();
 
-    sorted["msg"] = sorted.msgs; // Ledger needs msgs, API needs msg
-    delete sorted.msgs;
+    unsigned["msg"] = unsigned.msgs; // Ledger needs msgs, API needs msg
+    delete unsigned.msgs;
 
-    const signed = Object.assign({}, sorted, {
+    const signed = Object.assign({}, unsigned, {
       signatures: [
         {
           // eslint-disable-next-line @typescript-eslint/camelcase
@@ -208,7 +203,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
             type: "tendermint/PubKeySecp256k1",
             value: toBase64(addressResponse.pubkey),
           },
-          signature: toBase64(signature.signature),
+          signature: toBase64(signatureImport(signature.signature.toDer())),
         },
       ],
     });
