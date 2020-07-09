@@ -22,7 +22,7 @@ interface Props {
   path: string;
 }
 
-const Header = ({ path }: Props): JSX.Element => {
+const Header = ({ path }: Props): React.ReactElement => {
   const classes = useStyles();
   const lastTx = useSelector(lastTxSelector);
 

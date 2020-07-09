@@ -47,7 +47,7 @@ import Upgrade from "./upgrade";
 
 export const history = createBrowserHistory();
 
-const Routes = (): JSX.Element => (
+const Routes = (): React.ReactElement => (
   <Router history={history}>
     <Switch>
       <Route exact path="/" component={Login} />

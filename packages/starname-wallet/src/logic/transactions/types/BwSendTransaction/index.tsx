@@ -27,11 +27,11 @@ export class BwSendParser extends BwParser<SendTransaction> {
   public graphicalRepresentation(
     sendTx: ProcessedSendTransaction,
     userAddresses: readonly Address[],
-  ): JSX.Element {
+  ): React.ReactElement {
     return <SendTransactionRow key={sendTx.id} sendTx={sendTx} userAddresses={userAddresses} />;
   }
 
-  public headerRepresentation(tx: ProcessedSendTransaction, lastOne: boolean): JSX.Element {
+  public headerRepresentation(tx: ProcessedSendTransaction, lastOne: boolean): React.ReactElement {
     return <SendTransactionHeader key={tx.id} item={tx} lastOne={lastOne} />;
   }
 }

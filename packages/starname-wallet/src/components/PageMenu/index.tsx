@@ -15,7 +15,7 @@ const PageMenu = ({
   children,
   padding = true,
   location,
-}: RouteComponentProps & PageMenuProps): JSX.Element => {
+}: RouteComponentProps & PageMenuProps): React.ReactElement => {
   const theme = useTheme<Theme>();
 
   return (

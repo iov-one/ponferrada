@@ -1,13 +1,13 @@
-import { Address, Algorithm, ChainId, Identity, PubkeyBytes, Token, TokenTicker } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
+import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ChainAddressPairWithName } from "components/AddressesTable";
 import { Typography } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
-import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BwAccountWithChainName } from "../AccountManage";
 import AccountTransfer from ".";
@@ -46,15 +46,7 @@ const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   tokenTicker: "IOV" as TokenTicker,
 };
 
-const bnsIdentity: Identity = {
-  chainId: "local-iov-devnet" as ChainId,
-  pubkey: {
-    algo: Algorithm.Ed25519,
-    data: new Uint8Array([]) as PubkeyBytes,
-  },
-};
-
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+const TransferPrompt: React.FunctionComponent = (): React.ReactElement => (
   <Typography color="default" variant="subtitle2">
     New owner blockchain address, iovname or starname
   </Typography>

@@ -1,8 +1,9 @@
+import { Account, Api, Target, Task } from "logic/api";
+
 import Ledger from "./ledger";
 import { RpcEndpoint } from "./rpcEndpoint";
-import { Api, Target, Account, Task } from "logic/api";
 
-/*async function getLedgerAddress(ledger: Ledger): Promise<Record<string, any>> {
+/* async function getLedgerAddress(ledger: Ledger): Promise<Record<string, any>> {
   const pubkey = await ledger.getPubKey(); // throws on error
   const address = await ledger.getIovAddress(); // throws on error
   const addressResponse = {

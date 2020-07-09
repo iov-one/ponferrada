@@ -1,9 +1,10 @@
-import { SetBalancesActionType } from "./reducer";
 import { Target } from "logic/api";
+
+import { SetBalancesActionType } from "./reducer";
 
 export async function getBalances(identities: readonly Target[]): Promise<{ [ticker: string]: any }> {
   const balances: { [ticker: string]: any } = {};
-  /*const connections = getActiveConnections();
+  /* const connections = getActiveConnections();
   for (const connection of connections) {
     const identity = identities.find(identity => identity.chainId === connection.chainId);
     if (!identity) {

@@ -12,7 +12,7 @@ interface Props {
   readonly onRegisterIovname: () => void;
 }
 
-export function GetYourAddressWithExtension({ onRegisterIovname }: Props): JSX.Element {
+export function GetYourAddressWithExtension({ onRegisterIovname }: Props): React.ReactElement {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <NoIovnameHeader />
@@ -40,7 +40,7 @@ export function GetYourAddressWithExtension({ onRegisterIovname }: Props): JSX.E
   );
 }
 
-export function GetYourAddressWithLedger(): JSX.Element {
+export function GetYourAddressWithLedger(): React.ReactElement {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <NoIovnameHeader />
@@ -63,7 +63,7 @@ export function GetYourAddressWithLedger(): JSX.Element {
   );
 }
 
-export function GetYourAddress({ onRegisterIovname }: Props): JSX.Element {
+export function GetYourAddress({ onRegisterIovname }: Props): React.ReactElement {
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
 
   switch (rpcEndpointType) {
@@ -74,7 +74,7 @@ export function GetYourAddress({ onRegisterIovname }: Props): JSX.Element {
   }
 }
 
-function StarnamesNotExists({ onRegisterIovname }: Props): JSX.Element {
+function StarnamesNotExists({ onRegisterIovname }: Props): React.ReactElement {
   const theme = useTheme<Theme>();
 
   return (

@@ -1,18 +1,18 @@
 import { TokenTicker } from "@iov/bcp";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
-import React from "react";
-
 import { RpcEndpoint } from "communication/rpcEndpoint";
-import PageMenu from "../../components/PageMenu";
+import { Account, Target, Task } from "logic/api";
+import React from "react";
 import { BalanceState } from "store/balances";
+
+import PageMenu from "../../components/PageMenu";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import {
   REGISTER_IOVNAME_REGISTRATION_STORY_PATH,
   REGISTER_IOVNAME_STORY_PATH,
 } from "../account/register/index.stories";
 import Layout from "./components/index";
-import { Target, Account, Task } from "logic/api";
 
 export const BALANCE_STORY_PATH = `${bierzoRoot}/Balance`;
 export const BALANCE_STORY_VIEW_PATH = "View";

@@ -32,7 +32,7 @@ const ReceiverAddress = ({
   selectedChainCodec,
   noBalance,
   initialHasValidCert,
-}: Props): JSX.Element => {
+}: Props): React.ReactElement => {
   const [addressHasValidCert, setAddressHasValidCert] = useState(initialHasValidCert);
 
   const recipientValidator = React.useMemo(() => {

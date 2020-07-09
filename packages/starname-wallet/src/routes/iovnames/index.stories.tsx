@@ -1,13 +1,13 @@
 import { Address, ChainId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
-import React from "react";
-
 import { RpcEndpoint } from "communication/rpcEndpoint";
 import { BwUsernameWithChainName } from "components/AccountManage";
 import { ChainAddressPairWithName } from "components/AddressesTable";
+import { Account, Target, Task } from "logic/api";
+import React from "react";
+
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import Iovnames from ".";
-import { Target, Account, Task } from "logic/api";
 
 const chainAddresses: ChainAddressPairWithName[] = [
   {

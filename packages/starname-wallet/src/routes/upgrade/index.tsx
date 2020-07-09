@@ -1,10 +1,10 @@
 import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
+import { RootState } from "store/reducers";
+import { getFirstUsername, getFirstUsernameMigrated } from "store/usernames/selectors";
 
 import { history } from "..";
-import { RootState } from "../../store/reducers";
-import { getFirstUsername, getFirstUsernameMigrated } from "../../store/usernames/selectors";
 import { BALANCE_ROUTE, IOVNAME_REGISTER_ROUTE } from "../paths";
 import UpgradeProcess from "./components";
 
@@ -18,14 +18,13 @@ function onGoHome(): void {
   history.push(BALANCE_ROUTE);
 }
 
-const Upgrade = (): JSX.Element => {
+const Upgrade = (): React.ReactElement => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
   const bnsUsername = ReactRedux.useSelector(getFirstUsername);
   const bnsUsernameMigrated = ReactRedux.useSelector(getFirstUsernameMigrated);
   const iovAddress = bnsUsername ? bnsUsername.username : undefined;
   const iovAddressWithNewChain = bnsUsernameMigrated ? bnsUsernameMigrated.username : undefined;
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
-  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
@@ -33,7 +32,7 @@ const Upgrade = (): JSX.Element => {
     if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
 
     try {
-      /*const starnameIdentity = identities.get("starname-migration" as ChainId);
+      /* const starnameIdentity = identities.get("starname-migration" as ChainId);
       if (starnameIdentity === undefined || bnsUsername === undefined) {
         throw new Error("no starname network address or iovname available");
       } else {

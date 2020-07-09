@@ -1,4 +1,4 @@
-/*function mayDispatchUsername(dispatch: Dispatch, usernameTx: UnsignedTransaction): void {
+/* function mayDispatchUsername(dispatch: Dispatch, usernameTx: UnsignedTransaction): void {
   if (isRegisterUsernameTx(usernameTx) || isUpdateTargetsOfUsernameTx(usernameTx)) {
     const username: BwUsername = {
       username: usernameTx.username,

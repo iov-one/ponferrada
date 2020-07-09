@@ -42,7 +42,7 @@ const useTooltipHeaderStyles = makeStyles({
   },
 });
 
-export function AddressesTooltipHeader(): JSX.Element {
+export function AddressesTooltipHeader(): React.ReactElement {
   const classes = useTooltipHeaderStyles();
   const avatarClasses = { root: classes.addressesHeader };
   return <Avatar classes={avatarClasses}>{registerTooltipIcon}</Avatar>;
@@ -54,7 +54,7 @@ interface TooltipContentProps {
   readonly children: React.ReactNode;
 }
 
-export function TooltipContent({ children, title, header }: TooltipContentProps): JSX.Element {
+export function TooltipContent({ children, title, header }: TooltipContentProps): React.ReactElement {
   return (
     <Block padding={2} display="flex" flexDirection="column" alignItems="center">
       {header}

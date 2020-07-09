@@ -25,7 +25,7 @@ interface Props extends SortingStateProps {
   readonly alignRight?: boolean;
 }
 
-const TxSortableColumn = ({ name, order, orderBy, alignRight, onSort }: Props): JSX.Element => {
+const TxSortableColumn = ({ name, order, orderBy, alignRight, onSort }: Props): React.ReactElement => {
   const classes = useStyles();
   const headerClasses = classNames(classes.header, { [classes.alignRight]: alignRight });
   const sortOrder = orderBy === name ? order : undefined;

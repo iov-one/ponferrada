@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
+const TxItem = ({ item, lastOne }: ItemProps): React.ReactElement => {
   const classes = useStyles();
   const { time, outgoing, original } = item;
 

@@ -1,8 +1,9 @@
-import { AddAccountsActionType, BwAccount, RemoveAccountActionType } from "./reducer";
 import { Target } from "logic/api";
 
+import { AddAccountsActionType, BwAccount, RemoveAccountActionType } from "./reducer";
+
 export async function getAccounts(identities: readonly Target[]): Promise<readonly BwAccount[]> {
-  /*const bnsConnection = await getConnectionForBns();
+  /* const bnsConnection = await getConnectionForBns();
 
   const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId);
   if (!bnsIdentity) return [];

@@ -1,17 +1,17 @@
-import { Address, Algorithm, ChainId, Identity, PubkeyBytes, Token, TokenTicker } from "@iov/bcp";
+import { Address, ChainId, Token, TokenTicker } from "@iov/bcp";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
+import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ACCOUNT_DELETE_STORY_PATH } from "components/AccountDelete/index.stories";
+import { BwAccountWithChainName } from "components/AccountManage";
+import { ACCOUNT_MANAGE_STORY_PATH } from "components/AccountManage/index.stories";
+import { ChainAddressPairWithName } from "components/AddressesTable";
 import { Typography } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
 
-import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
 import AccountDelete from "../../../components/AccountDelete";
-import { ACCOUNT_DELETE_STORY_PATH } from "../../../components/AccountDelete/index.stories";
-import { BwAccountWithChainName } from "../../../components/AccountManage";
-import { ACCOUNT_MANAGE_STORY_PATH } from "../../../components/AccountManage/index.stories";
-import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import DecoratedStorybook from "../../../utils/storybook";
 import { ACCOUNT_MANAGE_IOVNAMES_STORY_PATH } from "../manage/index.stories";
 
@@ -44,14 +44,6 @@ const account: BwAccountWithChainName = {
 const iov: Pick<Token, "tokenTicker" | "fractionalDigits"> = {
   fractionalDigits: 9,
   tokenTicker: "IOV" as TokenTicker,
-};
-
-const bnsIdentity: Identity = {
-  chainId: "local-iov-devnet" as ChainId,
-  pubkey: {
-    algo: Algorithm.Ed25519,
-    data: new Uint8Array([]) as PubkeyBytes,
-  },
 };
 
 export const ACCOUNT_DELETE_STARNAME_STORY_PATH = "Renew starname";

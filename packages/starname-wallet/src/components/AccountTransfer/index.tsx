@@ -32,7 +32,7 @@ const usePromptPaper = makeStyles({
 });
 
 const recipientValidator: FieldValidator<FieldInputValue> = async (value): Promise<string | undefined> => {
-  /*if (typeof value !== "string") throw new Error("Input must be a string");
+  /* if (typeof value !== "string") throw new Error("Input must be a string");
 
   const nameValidity = isValidName(value);
 
@@ -62,7 +62,7 @@ interface HeaderProps {
   readonly account: AccountModuleMixedType;
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
+const Header: React.FunctionComponent<HeaderProps> = ({ account }): React.ReactElement => (
   <React.Fragment>
     <Typography color="default" variant="h5" inline>
       You are transferring{" "}
@@ -101,10 +101,10 @@ const AccountTransfer = ({
   rpcEndpoint,
   setTransactionId,
   transferPrompt,
-}: Props): JSX.Element => {
+}: Props): React.ReactElement => {
   const promptPaperClasses = usePromptPaper();
 
-  const subSection = (form: FormApi): React.FunctionComponent => (): JSX.Element => {
+  const subSection = (form: FormApi): React.FunctionComponent => (): React.ReactElement => {
     return (
       <Paper classes={promptPaperClasses}>
         <Block padding={5}>

@@ -16,7 +16,7 @@ export async function lookupRecipientAddressByName(
   username: string,
   chainId: string,
 ): Promise<Address | "name_not_found" | "no_address_for_blockchain"> {
-  /*if (isValidName(username) !== "valid") {
+  /* if (isValidName(username) !== "valid") {
     throw new Error("Not valid account name");
   }
 

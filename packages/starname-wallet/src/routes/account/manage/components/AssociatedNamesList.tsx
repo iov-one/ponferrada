@@ -37,7 +37,7 @@ const AssociatedNamesList: React.FunctionComponent<Props> = ({
   domain,
   names,
   onRegisterName,
-}): JSX.Element => {
+}): React.ReactElement => {
   const [show, setShow] = React.useState(false);
   const [showIcon, setShowIcon] = React.useState(arrowUp);
 

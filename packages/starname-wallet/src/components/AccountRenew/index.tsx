@@ -11,7 +11,7 @@ interface HeaderProps {
   readonly account: BwAccountWithChainName;
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
+const Header: React.FunctionComponent<HeaderProps> = ({ account }): React.ReactElement => (
   <React.Fragment>
     <Typography color="default" variant="h5" inline>
       You are about to renew{" "}
@@ -42,7 +42,7 @@ const AccountRenew: React.FunctionComponent<Props> = ({
   children,
   rpcEndpoint,
   setTransactionId,
-}): JSX.Element => {
+}): React.ReactElement => {
   return (
     <AccountOperation
       submitCaption="Renew"

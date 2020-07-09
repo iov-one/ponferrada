@@ -57,7 +57,7 @@ const AccountOperation: React.FunctionComponent<Props> = ({
   subSection,
   submitCaption,
   header,
-}): JSX.Element => {
+}): React.ReactElement => {
   const [transferFee, setTransferFee] = React.useState<any | undefined>();
   const messagePaperClasses = useMessagePaper();
   const theme = useTheme<Theme>();

@@ -1,23 +1,23 @@
-import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
-import * as React from "react";
-import * as ReactRedux from "react-redux";
-import { Dispatch } from "redux";
-import { ErrorParser } from "ui-logic";
-
-import { history } from "..";
 import { getExtensionStatus } from "communication/extension";
 import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import LedgerBillboardMessage from "components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "components/BillboardMessage/NeumaBillboardMessage";
 import { getConfig, makeExtendedIdentities } from "config";
+import { Target } from "logic/api";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
+import * as React from "react";
+import * as ReactRedux from "react-redux";
+import { Dispatch } from "redux";
+import PageColumn from "routes/login/components/PageColumn";
 import { getBalances, setBalancesAction } from "store/balances";
+import { setIdentities } from "store/identities";
 import { setRpcEndpoint } from "store/rpcendpoint";
 import { addTickersAction, getTokens } from "store/tokens";
+import { ErrorParser } from "ui-logic";
+
+import { history } from "..";
 import { BALANCE_ROUTE } from "../paths";
-import PageColumn from "routes/login/components/PageColumn";
-import { setIdentities } from "store/identities";
-import { Target } from "logic/api";
 
 export const loginBootSequence = async (targets: readonly Target[], dispatch: Dispatch): Promise<void> => {
   const chains = (await getConfig()).chains;
@@ -52,7 +52,7 @@ async function onGetNeumaExtension(): Promise<void> {
   window.open(config.extensionLink, "_blank");
 }
 
-const Login = (): JSX.Element => {
+const Login = (): React.ReactElement => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
@@ -99,7 +99,6 @@ const Login = (): JSX.Element => {
         100,
       );
       const targets: Target[] | undefined = await ledgerRpcEndpoint.getTargets();
-      console.log(targets);
       if (targets === undefined) {
         toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
       } else if (targets.length === 0) {

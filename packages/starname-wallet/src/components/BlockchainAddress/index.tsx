@@ -14,7 +14,7 @@ interface Props {
   readonly address: Address;
 }
 
-const BlockchainAddress = ({ userAddresses, address }: Props): JSX.Element => {
+const BlockchainAddress = ({ userAddresses, address }: Props): React.ReactElement => {
   const classes = useStyles();
 
   const addressNode = (

@@ -1,11 +1,10 @@
-import { Address, Algorithm, ChainId, Identity, PubkeyBytes, TransactionId } from "@iov/bcp";
-import { Encoding } from "@iov/encoding";
+import { Address, ChainId, TransactionId } from "@iov/bcp";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
+import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ChainAddressPairWithName } from "components/AddressesTable";
 import React from "react";
 
-import { extensionRpcEndpoint } from "../../../communication/extensionRpcEndpoint";
-import { ChainAddressPairWithName } from "../../../components/AddressesTable";
 import DecoratedStorybook, { bierzoRoot } from "../../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../../transactions/index.stories";
@@ -39,14 +38,6 @@ const addresses: ChainAddressPairWithName[] = [
     chainName: "Ganache",
   },
 ];
-
-const bnsIdentity: Identity = {
-  chainId: "local-iov-devnet" as ChainId,
-  pubkey: {
-    algo: Algorithm.Secp256k1,
-    data: Encoding.fromHex("ddeeff") as PubkeyBytes,
-  },
-};
 
 storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })

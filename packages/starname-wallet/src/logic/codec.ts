@@ -1,4 +1,4 @@
-/*import { ChainId, TxCodec } from "@iov/bcp";
+/* import { ChainId, TxCodec } from "@iov/bcp";
 import { bnsCodec } from "@iov/bns";
 import { CosmosCodec } from "@iov/cosmos-sdk";
 import { ethereumCodec } from "@iov/ethereum";

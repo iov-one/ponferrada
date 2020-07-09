@@ -143,7 +143,7 @@ function isProcessedUpdateAccountConfigurationTx(
 }
 
 export class BwParserFactory {
-  public static getReactComponent(tx: ProcessedTx, userAddresses: readonly Address[]): JSX.Element {
+  public static getReactComponent(tx: ProcessedTx, userAddresses: readonly Address[]): React.ReactElement {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().graphicalRepresentation(tx, userAddresses);
     } else if (isProcessedRegisterUsernameTx(tx)) {
@@ -185,7 +185,7 @@ export class BwParserFactory {
     return new BwUnkownParser().graphicalRepresentation(tx);
   }
 
-  public static getHeaderRepresentation(tx: ProcessedTx, lastOne: boolean): JSX.Element {
+  public static getHeaderRepresentation(tx: ProcessedTx, lastOne: boolean): React.ReactElement {
     if (isProcessedSendTransaction(tx)) {
       return new BwSendParser().headerRepresentation(tx, lastOne);
     } else if (isProcessedRegisterUsernameTx(tx)) {

@@ -1,4 +1,4 @@
-import { Target, Account, Task } from "logic/api";
+import { Account, Target, Task } from "logic/api";
 
 export type RpcEndpointType = "ledger" | "extension";
 

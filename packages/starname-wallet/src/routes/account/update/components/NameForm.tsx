@@ -1,14 +1,14 @@
 import { Fee } from "@iov/bcp";
-import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
+import { RpcEndpoint } from "communication/rpcEndpoint";
+import { BwAccountWithChainName } from "components/AccountManage";
+import { ChainAddressPairWithName } from "components/AddressesTable";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import React, { Dispatch, SetStateAction } from "react";
+import { NAME_MANAGE_ROUTE } from "routes/paths";
 import { ErrorParser } from "ui-logic";
 
 import { history } from "../../..";
-import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
-import AccountEdit, { getChainAddressPairsFromValues } from "../../../../components/AccountEdit";
-import { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { ChainAddressPairWithName } from "../../../../components/AddressesTable";
-import { NAME_MANAGE_ROUTE } from "../../../paths";
+import AccountEdit from "../../../../components/AccountEdit";
 
 export interface Props {
   readonly setTransactionId: Dispatch<SetStateAction<string | null>>;
@@ -16,7 +16,7 @@ export interface Props {
   readonly chainAddresses: readonly ChainAddressPairWithName[];
 }
 
-const NameAccountUpdate = ({ setTransactionId, rpcEndpoint, chainAddresses }: Props): JSX.Element => {
+const NameAccountUpdate = ({ rpcEndpoint, chainAddresses }: Props): React.ReactElement => {
   const account: BwAccountWithChainName = history.location.state;
 
   const onReturnToManage = (): void => {
@@ -26,8 +26,8 @@ const NameAccountUpdate = ({ setTransactionId, rpcEndpoint, chainAddresses }: Pr
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
-  const getFee = async (values: FormValues): Promise<Fee | undefined> => {
-    /*const addressesToRegister = getChainAddressPairsFromValues(values, chainAddresses);
+  const getFee = async (/* values: FormValues */): Promise<Fee | undefined> => {
+    /* const addressesToRegister = getChainAddressPairsFromValues(values, chainAddresses);
 
     return (
       await generateReplaceAccountTargetsTxWithFee(
@@ -40,15 +40,10 @@ const NameAccountUpdate = ({ setTransactionId, rpcEndpoint, chainAddresses }: Pr
     return {} as Fee;
   };
 
-  const onSubmit = async (values: object): Promise<void> => {
+  const onSubmit = async (/* values: object */): Promise<void> => {
     if (!rpcEndpoint) throw Error("No rpcEndpoint found for submit");
-
-    const formValues = values as FormValues;
-
-    const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-
     try {
-      /*const request = await generateReplaceAccountTargetsTxRequest(
+      /* const request = await generateReplaceAccountTargetsTxRequest(
         bnsIdentity,
         account.name,
         account.domain,

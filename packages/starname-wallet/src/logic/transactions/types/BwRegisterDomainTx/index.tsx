@@ -6,11 +6,11 @@ import TransactionHeader from "./ui/TransactionHeader";
 import TransactionRow from "./ui/TransactionRow";
 
 export class BwRegisterDomainParser extends BwParser<RegisterDomainTx> {
-  public graphicalRepresentation(tx: ProcessedTx<RegisterDomainTx>): JSX.Element {
+  public graphicalRepresentation(tx: ProcessedTx<RegisterDomainTx>): React.ReactElement {
     return <TransactionRow key={tx.id} tx={tx} />;
   }
 
-  public headerRepresentation(tx: ProcessedTx<RegisterDomainTx>, lastOne: boolean): JSX.Element {
+  public headerRepresentation(tx: ProcessedTx<RegisterDomainTx>, lastOne: boolean): React.ReactElement {
     return <TransactionHeader key={tx.id} item={tx} lastOne={lastOne} />;
   }
 }

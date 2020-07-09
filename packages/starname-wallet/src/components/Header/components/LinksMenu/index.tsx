@@ -86,7 +86,7 @@ interface MenuItemProps {
   readonly onClick: () => void;
 }
 
-const LinkMenuItem = ({ itemTitle, onClick, showBadge, badgeText }: MenuItemProps): JSX.Element => {
+const LinkMenuItem = ({ itemTitle, onClick, showBadge, badgeText }: MenuItemProps): React.ReactElement => {
   const marginTop = showBadge ? "8px" : "12px";
   return (
     <Block marginTop={marginTop}>
@@ -106,7 +106,7 @@ interface Props {
   readonly lastTx?: ProcessedTx;
 }
 
-const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
+const LinksMenu = ({ path, lastTx }: Props): React.ReactElement => {
   const classes = useStyles();
 
   const showBalances = path === BALANCE_ROUTE;

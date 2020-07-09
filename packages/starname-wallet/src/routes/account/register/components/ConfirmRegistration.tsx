@@ -34,7 +34,7 @@ interface Props {
   readonly onSeeTrasactions: () => void;
 }
 
-const ConfirmRegistration = ({ transactionId, onSeeTrasactions }: Props): JSX.Element => {
+const ConfirmRegistration = ({ transactionId, onSeeTrasactions }: Props): React.ReactElement => {
   const toast = React.useContext(ToastContext);
   const classes = useClasses();
 

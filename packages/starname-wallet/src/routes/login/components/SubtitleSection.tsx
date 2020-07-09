@@ -5,7 +5,7 @@ interface Props {
   readonly children: string;
 }
 
-const SubtitleSection = ({ children }: Props): JSX.Element => (
+const SubtitleSection = ({ children }: Props): React.ReactElement => (
   <Block marginTop={2} marginBottom={4}>
     <Typography variant="h6" weight="light" color="textPrimary">
       {children}

@@ -14,7 +14,7 @@ interface HeaderProps {
   readonly account: BwAccountWithChainName;
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
+const Header: React.FunctionComponent<HeaderProps> = ({ account }): React.ReactElement => (
   <React.Fragment>
     <Typography color="default" variant="h5" inline>
       Transfer{" "}
@@ -50,7 +50,7 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameAccountTransferBack = ({ setTransactionId, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountTransferBack = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 

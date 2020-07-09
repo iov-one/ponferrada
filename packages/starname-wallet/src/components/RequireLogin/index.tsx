@@ -9,7 +9,7 @@ interface Props {
   readonly children: React.ReactNode;
 }
 
-const RequireLogin = ({ children }: Props): JSX.Element => {
+const RequireLogin = ({ children }: Props): React.ReactElement => {
   const identities = useSelector((state: RootState) => state.identities);
 
   if (identities.size !== 0) {

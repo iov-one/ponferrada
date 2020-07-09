@@ -6,7 +6,7 @@ interface MsgProps {
   readonly domain: string;
 }
 
-const Msg = ({ name, domain }: MsgProps): JSX.Element => {
+const Msg = ({ name, domain }: MsgProps): React.ReactElement => {
   return (
     <React.Fragment>
       <Typography variant="body2" weight="semibold" inline>

@@ -18,7 +18,7 @@ function onRegisterStarname(): void {
   history.push(STARNAME_REGISTER_ROUTE);
 }
 
-function Starnames(): JSX.Element {
+function Starnames(): React.ReactElement {
   const starnames = ReactRedux.useSelector((state: RootState) => state.accounts);
   const [starnamesWithChain, setStarnamesWithChain] = React.useState<readonly BwAccountWithChainName[]>([]);
 

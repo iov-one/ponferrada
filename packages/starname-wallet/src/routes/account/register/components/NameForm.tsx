@@ -1,5 +1,15 @@
 import { Fee } from "@iov/bcp";
+import { RpcEndpoint } from "communication/rpcEndpoint";
+import {
+  getAddressItems,
+  getChainAddressPairsFromValues,
+  getFormInitValues,
+  getSubmitButtonCaption,
+} from "components/AccountEdit";
+import { AddressesTooltipHeader, TooltipContent } from "components/AccountManage";
+import { AddressesTableProps } from "components/AddressesTable";
 import { FieldValidator } from "final-form";
+import { isValidName } from "logic/account";
 import {
   Back,
   BillboardContext,
@@ -22,22 +32,11 @@ import {
 import React from "react";
 import { ErrorParser } from "ui-logic";
 
-import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
-import {
-  getAddressItems,
-  getChainAddressPairsFromValues,
-  getFormInitValues,
-  getSubmitButtonCaption,
-} from "../../../../components/AccountEdit";
-import { AddressesTooltipHeader, TooltipContent } from "../../../../components/AccountManage";
-import { AddressesTableProps } from "../../../../components/AddressesTable";
 import LedgerBillboardMessage from "../../../../components/BillboardMessage/LedgerBillboardMessage";
 import NeumaBillboardMessage from "../../../../components/BillboardMessage/NeumaBillboardMessage";
 import PageContent from "../../../../components/PageContent";
-import { isValidName } from "../../../../logic/account";
 import shield from "../assets/shield.svg";
 import SelectAddressesTable from "./SelectAddressesTable";
-import { Signer, getCurrentSigner } from "../../../../logic/signer";
 
 export const REGISTER_NAME_VIEW_ID = "register-name-view-id";
 export const REGISTER_NAME_FIELD = "register-name-field";
@@ -50,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-function NoNameHeader(): JSX.Element {
+function NoNameHeader(): React.ReactElement {
   const classes = useStyles();
   return (
     <Block className={classes.iovnameHeader} borderRadius={40} width={145} padding={1}>
@@ -70,6 +69,7 @@ const nameValidator: (ep: RpcEndpoint) => FieldValidator<FieldInputValue> = (ep:
   const checkResult = isValidName(value);
   switch (checkResult) {
     case "valid":
+      // noinspection TypeScriptValidateTypes
       if (ep.resolveStarname(value) !== undefined) {
         return "Name already exists";
       }
@@ -94,8 +94,8 @@ interface Props extends AddressesTableProps {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: Props): JSX.Element => {
-  const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
+const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: Props): React.ReactElement => {
+  const [transactionFee] = React.useState<Fee | undefined>();
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
 
@@ -103,14 +103,7 @@ const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: P
     return getAddressItems(chainAddresses);
   }, [chainAddresses]);
 
-  const onSubmit = async (values: object): Promise<void> => {
-    const formValues = values as FormValues;
-
-    const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
-    const [name, domain] = formValues[REGISTER_NAME_FIELD].split("*");
-    // FIXME: fill this with the correct value
-    const address: string = "";
-    const signer: Signer = getCurrentSigner();
+  const onSubmit = async (/* values: object */): Promise<void> => {
     try {
       const request = {};
       if (rpcEndpoint.type === "extension") {
@@ -131,10 +124,13 @@ const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: P
       const transactionId = await rpcEndpoint.executeRequest(request);
       if (transactionId === undefined) {
         toast.show(rpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      } else if (transactionId === null) {
-        toast.show("Request rejected", ToastVariant.ERROR);
       } else {
-        setTransactionId(transactionId);
+        // noinspection TypeScriptValidateTypes
+        if (transactionId === null) {
+          toast.show("Request rejected", ToastVariant.ERROR);
+        } else {
+          setTransactionId(transactionId);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -146,13 +142,14 @@ const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: P
   };
 
   const validateAddresses = React.useMemo(() => {
-    const validate = async (values: object): Promise<object> => {
+    return async (values: object): Promise<object> => {
       const formValues = values as FormValues;
       const errors: ValidationError = {};
 
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
       for (const address of addressesToRegister) {
-        /*try {
+        void address;
+        /* try {
           const codec = await getCodecForChainId(address.chainId);
           if (!codec.isValidAddress(address.address)) {
             const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
@@ -164,21 +161,18 @@ const NameForm = ({ chainAddresses, rpcEndpoint, onCancel, setTransactionId }: P
           console.info(err);
         }*/
       }
-
       return errors;
     };
-
-    return validate;
   }, [chainAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
-  const { form, handleSubmit, invalid, submitting, validating, values } = useForm({
+  const { form, handleSubmit, invalid, submitting, validating } = useForm({
     onSubmit,
     validate: validateAddresses,
     initialValues,
   });
 
-  /*React.useEffect(() => {
+  /* React.useEffect(() => {
     let isSubscribed = true;
 
     async function setFee(): Promise<void> {

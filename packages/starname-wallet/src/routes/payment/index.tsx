@@ -1,16 +1,17 @@
-import { TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
-import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
+import { TransactionId, TxCodec } from "@iov/bcp";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
-import { ErrorParser, stringToAmount } from "ui-logic";
+import { RootState } from "store/reducers";
+import { ErrorParser } from "ui-logic";
 
 import { history } from "..";
 import PageMenu from "../../components/PageMenu";
-import { RootState } from "store/reducers";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout from "./components";
 import ConfirmPayment from "./components/ConfirmPayment";
-import { CURRENCY_FIELD, QUANTITY_FIELD } from "./components/CurrencyToSend";
+
+// import { CURRENCY_FIELD, QUANTITY_FIELD } from "./components/CurrencyToSend";
 
 function onCancelPayment(): void {
   history.push(BALANCE_ROUTE);
@@ -22,14 +23,12 @@ function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
 }
 
-const Payment = (): JSX.Element => {
+const Payment = (): React.ReactElement => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
-  const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
-  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
-  const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
+  const [selectedChainCodec] = React.useState<TxCodec | null>(null);
 
   const onNewPayment = (): void => {
     setTransactionId(null);
@@ -43,7 +42,7 @@ const Payment = (): JSX.Element => {
    *
    * by deferring setSelectedChainCodec() to onSubmit, making onTokenSelectionChanged a no-op (and not a promise)
    **/
-  const onTokenSelectionChanged = (ticker: TokenTicker): void => {
+  const onTokenSelectionChanged = (/* ticker: TokenTicker */): void => {
     /* no-op
     const token = tokens[ticker];
     if (token) {
@@ -53,14 +52,14 @@ const Payment = (): JSX.Element => {
     */
   };
 
-  const onSubmit = async (values: object): Promise<void> => {
+  const onSubmit = async (/* values: object */): Promise<void> => {
     // const formValues = values as FormValues;
 
     // const token = tokens[formValues[CURRENCY_FIELD] as TokenTicker];
     // const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
 
     // const chainId = token.chainId;
-    /*const codec = await getCodecForChainId(chainId);
+    /* const codec = await getCodecForChainId(chainId);
 
     setSelectedChainCodec(codec);
 
@@ -101,7 +100,7 @@ const Payment = (): JSX.Element => {
        * );
        */
       // HACK: don't try to debug @iov/encoding, just
-      /*const prefixes = {
+      /* const prefixes = {
         string: "string:",
         bytes: "bytes:",
       };

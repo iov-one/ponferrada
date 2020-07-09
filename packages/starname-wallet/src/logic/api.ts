@@ -1,6 +1,6 @@
 import { BwToken } from "store/tokens";
 
-const baseUrl: string = "https://iovnscli-rest-api.cluster-galaxynet.iov.one";
+const baseUrl = "https://iovnscli-rest-api.cluster-galaxynet.iov.one";
 
 export interface Task<T> {
   abort: () => void;
@@ -38,14 +38,13 @@ const request = <T>(method: "GET" | "POST", url: string, data?: any): Task<T> =>
   return {
     run: run,
     abort: () => {
-      console.log("aborting request");
       xhr.abort();
     },
   };
 };
 
-const post = <T>(url: string, data: any) => request<T>("POST", url, data);
-const get = <T>(url: string) => request<T>("GET", url);
+const post = <T>(url: string, data: any): Task<T> => request<T>("POST", url, data);
+const get = <T>(url: string): Task<T> => request<T>("GET", url);
 
 interface ApplicationVersion {
   build_tags: string;
@@ -80,16 +79,6 @@ interface NodeInfoResponse {
   node_info: NodeInfo;
 }
 
-interface SupplyTotal {
-  denom: string;
-  amount: string;
-}
-
-interface SupplyTotalResponse {
-  height: string;
-  result: readonly SupplyTotal[];
-}
-
 export interface Target {
   id: string /* chain id */;
   address: string;
@@ -118,8 +107,9 @@ export const Api = {
     const task: Task<NodeInfoResponse | undefined> = get<NodeInfoResponse>(baseUrl + "/node_info");
     const response: NodeInfoResponse | undefined = await task.run();
     if (response === undefined) return "invalid";
-    const { node_info } = response;
-    return "cosmos:" + node_info.network;
+    // This is to make eslint happy
+    const { node_info: nodeInfo } = response;
+    return "cosmos:" + nodeInfo.network;
   },
   getTokens: async (): Promise<{ [ticker: string]: BwToken }> => {
     const chainId: string = await Api.getChainId();
@@ -143,7 +133,7 @@ export const Api = {
         const { result }: ResolveResponse = await task.run();
         return result.account;
       },
-      abort: () => {
+      abort: (): void => {
         task.abort();
       },
     };

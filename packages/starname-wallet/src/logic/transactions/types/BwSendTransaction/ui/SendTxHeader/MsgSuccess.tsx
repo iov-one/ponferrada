@@ -10,7 +10,7 @@ interface MsgProps {
   readonly onVisitSendPayment: (address: string) => () => void;
 }
 
-const Msg = ({ amount, outgoing, sender, recipient, onVisitSendPayment }: MsgProps): JSX.Element => {
+const Msg = ({ amount, outgoing, sender, recipient, onVisitSendPayment }: MsgProps): React.ReactElement => {
   const senderWeight = outgoing ? "regular" : "semibold";
   const recipientWeight = outgoing ? "semibold" : "regular";
 

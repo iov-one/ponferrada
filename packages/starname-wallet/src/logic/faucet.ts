@@ -1,7 +1,7 @@
 import { Target } from "logic/api";
 
 export async function drinkFaucetIfNeeded(identities: readonly Target[]): Promise<void> {
-  /*const config = await getConfig();
+  /* const config = await getConfig();
   const chainsWithFaucet = config.chains.filter(isChainConfigWithFaucet);
 
   // Create one job per chain that sends all available tokens. All jobs run in parallel.

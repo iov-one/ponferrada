@@ -1,6 +1,6 @@
 export const x = null;
 
-/*import { ChainSpec, CodecType, getConfig } from "../config";
+/* import { ChainSpec, CodecType, getConfig } from "../config";
 import { getErc20TokensConfig } from "../utils/tokens";
 
 const connections = new Map<ChainId, BlockchainConnection>();
@@ -79,7 +79,7 @@ export async function getConnectionForBns(): Promise<BnsConnection> {
  * Disconnects all blockchain connections. Calling establishConnection after
  * this will establich a new connection.
  */
-/*export function disconnect(): void {
+/* export function disconnect(): void {
   connections.forEach(connection => {
     connection.disconnect();
   });

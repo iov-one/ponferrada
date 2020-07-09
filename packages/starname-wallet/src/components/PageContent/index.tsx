@@ -43,7 +43,7 @@ function PageContent({
   buttons,
   avatarColor = "#ffe152",
   width = 650,
-}: Props): JSX.Element {
+}: Props): React.ReactElement {
   const avatarClasses = useAvatar({ bgcolor: avatarColor });
   const paperClasses = usePaper();
   const theme = useTheme<Theme>();

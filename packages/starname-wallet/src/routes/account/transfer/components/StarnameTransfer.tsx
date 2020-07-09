@@ -24,7 +24,7 @@ const useListItem = makeStyles({
   },
 });
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+const TransferPrompt: React.FunctionComponent = (): React.ReactElement => (
   <Typography color="default" variant="subtitle2">
     New owner blockchain address or Starname
   </Typography>
@@ -35,7 +35,7 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const StarnameAccountTransfer = ({ setTransactionId, rpcEndpoint }: Props): JSX.Element => {
+const StarnameAccountTransfer = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const TransactionHeader = ({ item, lastOne }: ItemProps): JSX.Element => {
+const TransactionHeader = ({ item, lastOne }: ItemProps): React.ReactElement => {
   const classes = useStyles();
   const { time, original } = item;
 

@@ -5,7 +5,7 @@ import { history } from "..";
 import { getFirstUsernameMigrated } from "../../store/usernames/selectors";
 import { BALANCE_ROUTE, UPGRADE_ROUTE } from "../paths";
 
-const CheckMigration = (): JSX.Element => {
+const CheckMigration = (): React.ReactElement => {
   const bnsUsernameMigrated = ReactRedux.useSelector(getFirstUsernameMigrated);
   const iovAddressWithNewChain = bnsUsernameMigrated ? bnsUsernameMigrated.username : undefined;
 

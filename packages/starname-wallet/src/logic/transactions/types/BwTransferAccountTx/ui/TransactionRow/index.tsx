@@ -26,7 +26,7 @@ interface Props {
   readonly tx: ProcessedTx<TransferAccountTx>;
 }
 
-function TransactionRow({ tx }: Props): JSX.Element {
+function TransactionRow({ tx }: Props): React.ReactElement {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const [isOpen, toggle] = useOpen();

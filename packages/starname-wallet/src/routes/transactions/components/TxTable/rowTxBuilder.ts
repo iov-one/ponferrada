@@ -4,7 +4,7 @@ import { ProcessedSendTransaction } from "../../../../store/notifications";
 import { SortingStateProps } from "../sorting";
 
 export interface TxTableProps extends SortingStateProps {
-  readonly rows: readonly JSX.Element[];
+  readonly rows: readonly React.ReactElement[];
   readonly onChangeRows: (item: SelectFieldItem | undefined) => void;
   readonly onPrevPage: () => void;
   readonly onNextPage: () => void;

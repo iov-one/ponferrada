@@ -24,7 +24,7 @@ const useListItem = makeStyles({
   },
 });
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+const TransferPrompt: React.FunctionComponent = (): React.ReactElement => (
   <Typography color="default" variant="subtitle2">
     Person who will be using this name
   </Typography>
@@ -35,7 +35,7 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameAccountTransfer = ({ setTransactionId, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountTransfer = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 

@@ -1,5 +1,6 @@
-import { AddTickerActionType, BwToken } from "./reducer";
 import { Api } from "logic/api";
+
+import { AddTickerActionType, BwToken } from "./reducer";
 
 export async function getTokens(): Promise<{ [ticker: string]: BwToken }> {
   return Api.getTokens();

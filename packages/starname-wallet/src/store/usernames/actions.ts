@@ -1,8 +1,9 @@
-import { AddUsernamesActionType, BwUsername, RemoveUsernameActionType } from "./reducer";
 import { Target } from "logic/api";
 
+import { AddUsernamesActionType, BwUsername, RemoveUsernameActionType } from "./reducer";
+
 export async function getUsernames(identities: readonly Target[]): Promise<readonly BwUsername[]> {
-  /*const bnsConnection = await getConnectionForBns();
+  /* const bnsConnection = await getConnectionForBns();
 
   const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId);
   if (!bnsIdentity) return [];

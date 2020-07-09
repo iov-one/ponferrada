@@ -1,18 +1,18 @@
+import { BwUsernameWithChainName } from "components/AccountManage";
+import { getConfig, SupportedChain } from "config";
+import { RpcEndpointContext } from "contexts/rpcEndpointContext";
 import React from "react";
 import * as ReactRedux from "react-redux";
+import { RegisterFormSelector } from "routes/account/register/components/registerFormSelector";
+import { RootState } from "store/reducers";
 
 import { AccountProps } from "..";
 import { history } from "../..";
-import { BwUsernameWithChainName } from "components/AccountManage";
 import PageMenu from "../../../components/PageMenu";
-import { getConfig, SupportedChain } from "config";
-import { RootState } from "store/reducers";
 import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../paths";
 import ConfirmRegistration from "./components/ConfirmRegistration";
-import { RpcEndpointContext } from "contexts/rpcEndpointContext";
-import { RegisterFormSelector } from "routes/account/register/components/registerFormSelector";
 
-function onSeeTrasactions(): void {
+function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 function onReturnToBalance(): void {
@@ -22,13 +22,12 @@ function onReturnToAddresses(): void {
   history.push(ADDRESSES_ROUTE);
 }
 
-const Register = ({ entity }: AccountProps): JSX.Element => {
+const Register = ({ entity }: AccountProps): React.ReactElement => {
   const [transactionId, setTransactionId] = React.useState<string | null>(null);
-  const [supportedChains, setSupportedChains] = React.useState<readonly SupportedChain[]>([]);
+  const [, setSupportedChains] = React.useState<readonly SupportedChain[]>([]);
 
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
-  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
-  const addressesSorted: any[] = []; /*React.useMemo(
+  const addressesSorted: any[] = []; /* React.useMemo(
     () => getChainAddressPairWithNamesSorted(identities, supportedChains),
     [identities, supportedChains],
   );*/
@@ -55,7 +54,7 @@ const Register = ({ entity }: AccountProps): JSX.Element => {
   return (
     <PageMenu>
       {transactionId ? (
-        <ConfirmRegistration transactionId={transactionId} onSeeTrasactions={onSeeTrasactions} />
+        <ConfirmRegistration transactionId={transactionId} onSeeTrasactions={onSeeTransactions} />
       ) : (
         <RpcEndpointContext.Provider value={rpcEndpoint}>
           <RegisterFormSelector

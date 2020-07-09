@@ -31,7 +31,7 @@ interface Props {
   readonly userAddresses: readonly Address[];
 }
 
-function SendTxRow({ sendTx, userAddresses }: Props): JSX.Element {
+function SendTxRow({ sendTx, userAddresses }: Props): React.ReactElement {
   const classes = useStyles();
   const theme = useTheme<Theme>();
   const amountClass = sendTx.outgoing ? undefined : classes.amountFrom;

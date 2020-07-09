@@ -1,5 +1,5 @@
 export const requestGenerators = null;
-/*export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
+/* export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
   const chains = (await getConfig()).chains;
   const chainIdsToRequest = chains.map(chain => chain.chainSpec.chainId);
 

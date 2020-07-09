@@ -28,7 +28,7 @@ interface Props {
   readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameAccountDelete = ({ setTransactionId, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountDelete = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 

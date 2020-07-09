@@ -1,8 +1,8 @@
+import { Target } from "logic/api";
+import { ExtendedIdentity } from "store/identities";
 import { singleton } from "ui-logic";
 
-import { ExtendedIdentity } from "store/identities";
 import developmentConfig from "./development.json";
-import { Target } from "logic/api";
 
 /** The string value must match the codec type in the config file */
 export enum CodecType {

@@ -1,6 +1,6 @@
-import React from "react";
-import { FormStatus, BaseAction } from "forms";
 import { Fee } from "@iov/bcp";
+import { BaseAction, FormStatus } from "forms";
+import React from "react";
 
 export enum StarnameFormActions {
   SET_STARNAME_EXISTS_ERROR = "SET_STARNAME_EXISTS_ERROR",

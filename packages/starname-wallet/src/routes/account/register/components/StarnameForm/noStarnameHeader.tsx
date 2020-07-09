@@ -1,5 +1,5 @@
+import { Block, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
-import { Block, Typography, makeStyles } from "medulas-react-components";
 
 const useStyles = makeStyles({
   starnameHeader: {

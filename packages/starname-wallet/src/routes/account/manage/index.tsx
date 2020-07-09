@@ -7,7 +7,7 @@ import IovnameAccountManage from "./components/IovnameForm";
 import NameAccountManage from "./components/NameForm";
 import StarnameAccountManage from "./components/StarnameForm";
 
-const AccountManage = ({ entity }: AccountProps): JSX.Element => {
+const AccountManage = ({ entity }: AccountProps): React.ReactElement => {
   return (
     <PageMenu>
       <Block marginTop={4} display="flex" flexDirection="column" alignItems="center" justifyContent="center">

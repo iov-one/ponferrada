@@ -1,6 +1,6 @@
-import React from "react";
-import { Block, Button, Back } from "medulas-react-components";
 import { FormStatus } from "forms";
+import { Back, Block, Button } from "medulas-react-components";
+import React from "react";
 
 interface Props {
   status: FormStatus;

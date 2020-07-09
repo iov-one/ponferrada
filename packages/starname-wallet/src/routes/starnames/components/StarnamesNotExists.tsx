@@ -2,15 +2,15 @@ import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
+import { NoStarnameHeader } from "routes/account/register/components/StarnameForm/noStarnameHeader";
 
 import { REGISTER_STARNAME_LINK } from "..";
-import { NoStarnameHeader } from "routes/account/register/components/StarnameForm/noStarnameHeader";
 
 interface Props {
   readonly onRegisterStarname: () => void;
 }
 
-export function GetYourAddress({ onRegisterStarname }: Props): JSX.Element {
+export function GetYourAddress({ onRegisterStarname }: Props): React.ReactElement {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <NoStarnameHeader />
@@ -39,7 +39,7 @@ export function GetYourAddress({ onRegisterStarname }: Props): JSX.Element {
   );
 }
 
-function StarnamesNotExists({ onRegisterStarname }: Props): JSX.Element {
+function StarnamesNotExists({ onRegisterStarname }: Props): React.ReactElement {
   const theme = useTheme<Theme>();
 
   return (
