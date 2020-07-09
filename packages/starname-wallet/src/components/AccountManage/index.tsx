@@ -14,9 +14,9 @@ import {
   Typography,
 } from "medulas-react-components";
 import React from "react";
-
 import { BwAccount } from "store/accounts";
 import { BwUsername } from "store/usernames";
+
 import AddressesTable, { ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import shield from "./assets/shield.svg";
