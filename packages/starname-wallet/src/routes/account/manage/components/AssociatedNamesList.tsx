@@ -11,7 +11,7 @@ import {
   NAME_EDIT_ROUTE,
   NAME_TRANSFER_BACK_ROUTE,
   NAME_TRANSFER_ROUTE,
-} from "../../../paths";
+} from "routes/paths";
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 

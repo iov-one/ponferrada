@@ -1,4 +1,3 @@
-import { Address } from "@iov/bcp";
 import Paper from "@material-ui/core/Paper";
 import clipboardCopy from "clipboard-copy";
 import {
@@ -16,8 +15,8 @@ import {
 } from "medulas-react-components";
 import React from "react";
 
-import { BwAccount } from "../../store/accounts";
-import { BwUsername } from "../../store/usernames";
+import { BwAccount } from "store/accounts";
+import { BwUsername } from "store/usernames";
 import AddressesTable, { ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import shield from "./assets/shield.svg";
@@ -85,7 +84,7 @@ interface Props {
   readonly menuItems?: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
   readonly onEdit: () => void;
-  readonly transferedTo?: Address;
+  readonly transferedTo?: string;
 }
 
 export function isUsernameData(account: AccountModuleMixedType): account is BwUsernameWithChainName {

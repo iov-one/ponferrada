@@ -50,9 +50,9 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
     <DecoratedStorybook>
       <AccountDelete
         account={account}
-        getRequest={async (): Promise<JsonRpcRequest> => {
+        getRequest={async (): Promise<any> => {
           action("getRequest")();
-          return {} as JsonRpcRequest;
+          return {};
         }}
         onCancel={action("Transfer cancel")}
         getFee={async () => {
