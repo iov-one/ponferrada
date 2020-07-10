@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-function NeumaBillboardMessage({ text }: BillboardMessageProps): JSX.Element {
+function NeumaBillboardMessage({ text }: BillboardMessageProps): React.ReactElement {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 

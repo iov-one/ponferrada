@@ -36,11 +36,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-function LedgerIcon(): JSX.Element {
+function LedgerIcon(): React.ReactElement {
   return <Image src={ledgerIcon} alt="Ledger login icon" />;
 }
 
-const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }: Props): JSX.Element => {
+const PageColumn = ({
+  onLoginWithNeuma,
+  onLoginWithLedger,
+  onGetNeumaExtension,
+}: Props): React.ReactElement => {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const UnknownTxHeader = ({ tx, lastOne }: Props): JSX.Element => {
+const UnknownTxHeader = ({ tx, lastOne }: Props): React.ReactElement => {
   const classes = useStyles();
 
   return (

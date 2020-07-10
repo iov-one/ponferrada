@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-function UnknownTxRow({ tx }: Props): JSX.Element {
+function UnknownTxRow({ tx }: Props): React.ReactElement {
   const classes = useStyles();
 
   return (

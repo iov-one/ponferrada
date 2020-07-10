@@ -23,7 +23,7 @@ const UpgradeProcess = ({
   onUpgradeIovname,
   onGoHome,
   iovAddressWithNewChain,
-}: Props): JSX.Element => {
+}: Props): React.ReactElement => {
   const theme = useTheme<Theme>();
   return (
     <Block alignSelf="center" textAlign="center" width="500px">

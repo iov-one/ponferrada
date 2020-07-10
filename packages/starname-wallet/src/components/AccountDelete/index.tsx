@@ -1,4 +1,4 @@
-import { ChainId, Fee, TransactionId } from "@iov/bcp";
+import { Fee } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { Typography } from "medulas-react-components";
 import React from "react";
@@ -13,7 +13,7 @@ interface HeaderProps {
   readonly account: BwAccountWithChainName;
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
+const Header: React.FunctionComponent<HeaderProps> = ({ account }): React.ReactElement => (
   <React.Fragment>
     <Typography color="default" variant="h5" inline>
       You are deleting{" "}
@@ -27,12 +27,12 @@ const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element 
 interface Props {
   readonly account: BwAccountWithChainName;
   readonly children: React.ReactNode;
-  readonly bnsChainId: ChainId;
+  readonly bnsChainId: string;
   readonly onCancel: () => void;
   readonly getFee: () => Promise<Fee | undefined>;
   readonly getRequest: () => Promise<JsonRpcRequest>;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const AccountDelete = ({
@@ -44,7 +44,7 @@ const AccountDelete = ({
   children,
   rpcEndpoint,
   setTransactionId,
-}: Props): JSX.Element => {
+}: Props): React.ReactElement => {
   const getDeleteRequest = async (): Promise<JsonRpcRequest> => {
     return await getRequest();
   };

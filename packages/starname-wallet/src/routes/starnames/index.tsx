@@ -18,7 +18,7 @@ function onRegisterStarname(): void {
   history.push(STARNAME_REGISTER_ROUTE);
 }
 
-function Starnames(): JSX.Element {
+function Starnames(): React.ReactElement {
   const starnames = ReactRedux.useSelector((state: RootState) => state.accounts);
   const [starnamesWithChain, setStarnamesWithChain] = React.useState<readonly BwAccountWithChainName[]>([]);
 
@@ -65,10 +65,11 @@ function Starnames(): JSX.Element {
         alignItems="center"
         justifyContent="center"
       >
-        {hasStarnames && (
+        {hasStarnames ? (
           <StarnamesExists starnames={starnamesWithChain} onRegisterStarname={onRegisterStarname} />
+        ) : (
+          <StarnamesNotExists onRegisterStarname={onRegisterStarname} />
         )}
-        {!hasStarnames && <StarnamesNotExists onRegisterStarname={onRegisterStarname} />}
       </Block>
     </PageMenu>
   );

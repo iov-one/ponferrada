@@ -12,7 +12,7 @@ interface Props {
   readonly userAddresses: readonly Address[];
 }
 
-const TxDetails = ({ userAddresses, tx }: Props): JSX.Element => {
+const TxDetails = ({ userAddresses, tx }: Props): React.ReactElement => {
   let txFee = "-";
   const amount = tx.original.fee?.tokens || tx.original.fee?.gasPrice;
   if (amount) {

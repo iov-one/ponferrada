@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-function LedgerBillboardMessage({ text }: BillboardMessageProps): JSX.Element {
+function LedgerBillboardMessage({ text }: BillboardMessageProps): React.ReactElement {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 

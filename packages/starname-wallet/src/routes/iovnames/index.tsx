@@ -18,7 +18,7 @@ function onRegisterIovname(): void {
   history.push(IOVNAME_REGISTER_ROUTE);
 }
 
-function Iovnames(): JSX.Element {
+function Iovnames(): React.ReactElement {
   const iovnames = ReactRedux.useSelector((state: RootState) => state.usernames);
   const [iovnamesWithChain, setIovnamesWithChain] = React.useState<readonly BwUsernameWithChainName[]>([]);
 

@@ -11,7 +11,7 @@ interface Props {
 
 const validator = notLongerThan(150);
 
-const TextNote = ({ form, noMemo }: Props): JSX.Element => {
+const TextNote = ({ form, noMemo }: Props): React.ReactElement => {
   return (
     <Block width="100%" marginTop={4} display="flex" flexDirection="column">
       <Typography color="textPrimary" variant="subtitle2">

@@ -41,7 +41,7 @@ const ConfirmPayment = ({
   onNewPayment,
   onSeeTrasactions,
   onReturnToBalance,
-}: Props): JSX.Element => {
+}: Props): React.ReactElement => {
   const toast = React.useContext(ToastContext);
   const classes = useClasses();
 

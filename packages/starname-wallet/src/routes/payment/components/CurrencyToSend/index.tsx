@@ -43,7 +43,12 @@ interface Props {
   readonly onTokenSelectionControl: (ticker: TokenTicker) => Promise<void>;
 }
 
-const CurrencyToSend = ({ form, onTokenSelectionControl, balances, noBalance }: Props): JSX.Element => {
+const CurrencyToSend = ({
+  form,
+  onTokenSelectionControl,
+  balances,
+  noBalance,
+}: Props): React.ReactElement => {
   const classes = useStyles();
 
   const currencyItems = Object.keys(balances)

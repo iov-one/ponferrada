@@ -1,23 +1,21 @@
 import { ActionMenuItem, Block } from "medulas-react-components";
 import * as React from "react";
-
-import { history } from "../../..";
-import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
-import { getChainName } from "../../../../config";
-import { getConnectionForBns } from "../../../../logic/connection";
 import {
   NAME_EDIT_ROUTE,
   NAME_REGISTER_ROUTE,
   STARNAME_DELETE_ROUTE,
   STARNAME_RENEW_ROUTE,
   STARNAME_TRANSFER_ROUTE,
-} from "../../../paths";
+} from "routes/paths";
+
+import { history } from "../../..";
+import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AssociatedNamesList from "./AssociatedNamesList";
 
 export const STARNAME_MANAGE_VIEW = "starname-manage-view";
 
-const StarnameAccountManage = (): JSX.Element => {
-  const [domainAccounts, setDomainAccounts] = React.useState<BwAccountWithChainName[]>([]);
+const StarnameAccountManage = (): React.ReactElement => {
+  const [domainAccounts] = React.useState<BwAccountWithChainName[]>([]);
   const account: BwAccountWithChainName = history.location.state;
 
   const menuItems: readonly ActionMenuItem[] = [
@@ -26,7 +24,7 @@ const StarnameAccountManage = (): JSX.Element => {
     { title: "Delete starname", action: () => history.push(STARNAME_DELETE_ROUTE, account) },
   ];
 
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     let isSubscribed = true;
     async function getDomainAccounts(): Promise<void> {
       const connection = await getConnectionForBns();
@@ -53,7 +51,6 @@ const StarnameAccountManage = (): JSX.Element => {
               };
             }),
         );
-
         setDomainAccounts(bwAccountsWithChain);
       }
     }
@@ -62,7 +59,7 @@ const StarnameAccountManage = (): JSX.Element => {
     return () => {
       isSubscribed = false;
     };
-  }, [account]);
+  }, [account]);*/
 
   const onEdit = (): void => {
     history.push(NAME_EDIT_ROUTE, account);

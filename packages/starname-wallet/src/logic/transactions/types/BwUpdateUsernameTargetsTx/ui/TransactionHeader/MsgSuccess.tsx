@@ -5,7 +5,7 @@ interface MsgProps {
   readonly username: string;
 }
 
-const Msg = ({ username }: MsgProps): JSX.Element => {
+const Msg = ({ username }: MsgProps): React.ReactElement => {
   return (
     <React.Fragment>
       <Typography variant="body2" weight="semibold" inline>

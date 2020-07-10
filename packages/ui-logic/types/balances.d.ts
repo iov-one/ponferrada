@@ -1,4 +1,3 @@
-import { Amount, Token } from "@iov/bcp";
 /**
  * This produces a human readable format of the amount, value and token ticker
  */

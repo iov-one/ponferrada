@@ -23,7 +23,7 @@ interface Props {
   readonly onRegisterIovname: () => void;
 }
 
-function IovnamesExists({ iovnames, onRegisterIovname }: Props): JSX.Element {
+function IovnamesExists({ iovnames, onRegisterIovname }: Props): React.ReactElement {
   const paperClasses = usePaper();
 
   return (

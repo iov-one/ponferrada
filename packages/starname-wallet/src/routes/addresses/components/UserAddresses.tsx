@@ -15,7 +15,7 @@ const usePaper = makeStyles({
   },
 });
 
-const UserAddresses = ({ chainAddresses }: AddressesTableProps): JSX.Element => {
+const UserAddresses = ({ chainAddresses }: AddressesTableProps): React.ReactElement => {
   const paperClasses = usePaper();
 
   return (

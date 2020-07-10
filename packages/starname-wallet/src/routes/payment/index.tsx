@@ -1,44 +1,34 @@
-import { toHex } from "@cosmjs/encoding";
-import { isUint8Array } from "@cosmjs/utils";
-import { Address, SendTransaction, TokenTicker, TransactionId, TxCodec } from "@iov/bcp";
-import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
-import { BillboardContext, FormValues, ToastContext, ToastVariant } from "medulas-react-components";
+import { TransactionId, TxCodec } from "@iov/bcp";
+import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
-import { ErrorParser, stringToAmount } from "ui-logic";
+import { RootState } from "store/reducers";
+import { ErrorParser } from "ui-logic";
 
 import { history } from "..";
-import LedgerBillboardMessage from "../../components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillboardMessage";
 import PageMenu from "../../components/PageMenu";
-import { isIovname, lookupRecipientAddressByName } from "../../logic/account";
-import { getCodecForChainId } from "../../logic/codec";
-import { RootState } from "../../store/reducers";
 import { BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../paths";
 import Layout from "./components";
 import ConfirmPayment from "./components/ConfirmPayment";
-import { CURRENCY_FIELD, QUANTITY_FIELD } from "./components/CurrencyToSend";
-import { ADDRESS_FIELD } from "./components/ReceiverAddress";
-import { TEXTNOTE_FIELD } from "./components/TextNote";
+
+// import { CURRENCY_FIELD, QUANTITY_FIELD } from "./components/CurrencyToSend";
 
 function onCancelPayment(): void {
   history.push(BALANCE_ROUTE);
 }
-function onSeeTrasactions(): void {
+function onSeeTransactions(): void {
   history.push(TRANSACTIONS_ROUTE);
 }
 function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
 }
 
-const Payment = (): JSX.Element => {
+const Payment = (): React.ReactElement => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
-  const tokens = ReactRedux.useSelector((state: RootState) => state.tokens);
-  const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const rpcEndpoint = ReactRedux.useSelector((state: RootState) => state.rpcEndpoint);
   const [transactionId, setTransactionId] = React.useState<TransactionId | null>(null);
-  const [selectedChainCodec, setSelectedChainCodec] = React.useState<TxCodec | null>(null);
+  const [selectedChainCodec] = React.useState<TxCodec | null>(null);
 
   const onNewPayment = (): void => {
     setTransactionId(null);
@@ -52,7 +42,7 @@ const Payment = (): JSX.Element => {
    *
    * by deferring setSelectedChainCodec() to onSubmit, making onTokenSelectionChanged a no-op (and not a promise)
    **/
-  const onTokenSelectionChanged = (ticker: TokenTicker): void => {
+  const onTokenSelectionChanged = (/* ticker: TokenTicker */): void => {
     /* no-op
     const token = tokens[ticker];
     if (token) {
@@ -62,14 +52,14 @@ const Payment = (): JSX.Element => {
     */
   };
 
-  const onSubmit = async (values: object): Promise<void> => {
-    const formValues = values as FormValues;
+  const onSubmit = async (/* values: object */): Promise<void> => {
+    // const formValues = values as FormValues;
 
-    const token = tokens[formValues[CURRENCY_FIELD] as TokenTicker];
-    const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
+    // const token = tokens[formValues[CURRENCY_FIELD] as TokenTicker];
+    // const amount = stringToAmount(formValues[QUANTITY_FIELD], token.token);
 
-    const chainId = token.chainId;
-    const codec = await getCodecForChainId(chainId);
+    // const chainId = token.chainId;
+    /* const codec = await getCodecForChainId(chainId);
 
     setSelectedChainCodec(codec);
 
@@ -96,7 +86,7 @@ const Payment = (): JSX.Element => {
     if (!identity) {
       toast.show("None of your identities can send on this chain", ToastVariant.ERROR);
       return;
-    }
+    }*/
 
     if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
 
@@ -110,7 +100,7 @@ const Payment = (): JSX.Element => {
        * );
        */
       // HACK: don't try to debug @iov/encoding, just
-      const prefixes = {
+      /* const prefixes = {
         string: "string:",
         bytes: "bytes:",
       };
@@ -205,7 +195,7 @@ const Payment = (): JSX.Element => {
         toast.show("Request rejected", ToastVariant.ERROR);
       } else {
         setTransactionId(transactionId);
-      }
+      }*/
     } catch (error) {
       console.error(error);
       const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
@@ -221,7 +211,7 @@ const Payment = (): JSX.Element => {
         <ConfirmPayment
           transactionId={transactionId}
           onNewPayment={onNewPayment}
-          onSeeTrasactions={onSeeTrasactions}
+          onSeeTrasactions={onSeeTransactions}
           onReturnToBalance={onReturnToBalance}
         />
       ) : (

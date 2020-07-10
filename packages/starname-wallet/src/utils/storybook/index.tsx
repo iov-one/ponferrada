@@ -15,7 +15,7 @@ interface Props {
   readonly storeProps?: DeepPartial<RootState>;
 }
 
-const DecoratedStorybook = ({ children, storeProps }: Props): JSX.Element => {
+const DecoratedStorybook = ({ children, storeProps }: Props): React.ReactElement => {
   return (
     <Provider store={aNewStore(storeProps)}>
       <MedulasThemeProvider injectFonts injectStyles={globalStyles}>

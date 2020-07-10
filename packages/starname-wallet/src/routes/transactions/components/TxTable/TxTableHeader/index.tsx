@@ -5,7 +5,7 @@ import { SortingStateProps, TX_AMOUNT_COLUMN, TX_DATE_COLUMN } from "../../sorti
 import TxColumn from "./utils/TxColumn";
 import TxSortableColumn from "./utils/TxSortableColumn";
 
-const TxTableHeader = ({ orderBy, order, onSort }: SortingStateProps): JSX.Element => (
+const TxTableHeader = ({ orderBy, order, onSort }: SortingStateProps): React.ReactElement => (
   <React.Fragment>
     <Block margin={1} />
     <Block display="flex" alignItems="center" paddingLeft={3} paddingRight={3}>

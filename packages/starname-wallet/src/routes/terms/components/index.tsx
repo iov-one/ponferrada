@@ -3,7 +3,7 @@ import React from "react";
 
 import { getConfig } from "../../../config";
 
-export default (): JSX.Element => {
+export default (): React.ReactElement => {
   const [websiteName, setWebsiteName] = React.useState("");
 
   React.useEffect(() => {

@@ -22,7 +22,7 @@ interface Props {
   readonly tx: ProcessedTx<RegisterAccountTx>;
 }
 
-const TxDetails = ({ tx }: Props): JSX.Element => {
+const TxDetails = ({ tx }: Props): React.ReactElement => {
   const classes = useStyles();
   const [addresses, setAddresses] = React.useState<readonly ChainAddressPairWithName[]>([]);
 

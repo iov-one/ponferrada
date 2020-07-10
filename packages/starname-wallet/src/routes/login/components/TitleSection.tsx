@@ -6,7 +6,7 @@ interface Props {
   readonly secondaryTitle: string;
 }
 
-const TitleSection = ({ primaryTitle, secondaryTitle }: Props): JSX.Element => (
+const TitleSection = ({ primaryTitle, secondaryTitle }: Props): React.ReactElement => (
   <React.Fragment>
     <Typography variant="h4" color="primary" inline>
       {`${primaryTitle} `}

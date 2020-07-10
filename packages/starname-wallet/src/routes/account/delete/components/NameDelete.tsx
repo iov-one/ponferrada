@@ -1,14 +1,8 @@
-import { Fee, Identity, TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
 import { AccountLocationState } from "../..";
 import { history } from "../../..";
-import {
-  generateDeleteAccountTxRequest,
-  generateDeleteAccountTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import AccountDelete from "../../../../components/AccountDelete";
 import { STARNAME_MANAGE_ROUTE } from "../../../paths";
@@ -30,12 +24,11 @@ const useListItem = makeStyles({
 });
 
 interface Props {
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameAccountDelete = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountDelete = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 
@@ -45,12 +38,13 @@ const NameAccountDelete = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props
     history.push(STARNAME_MANAGE_ROUTE, domain);
   };
 
-  const getFee = async (): Promise<Fee | undefined> => {
-    return (await generateDeleteAccountTxWithFee(bnsIdentity, account.name, account.domain)).fee;
+  const getFee = async (): Promise<any | undefined> => {
+    // return (await generateDeleteAccountTxWithFee(bnsIdentity, account.name, account.domain)).fee;
+    return undefined;
   };
 
-  const getRequest = async (): Promise<JsonRpcRequest> => {
-    return await generateDeleteAccountTxRequest(bnsIdentity, account.name, account.domain);
+  const getRequest = async (): Promise<any> => {
+    // return await generateDeleteAccountTxRequest(bnsIdentity, account.name, account.domain);
   };
 
   return (
@@ -59,7 +53,7 @@ const NameAccountDelete = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props
       account={account}
       getRequest={getRequest}
       getFee={getFee}
-      bnsChainId={bnsIdentity.chainId}
+      bnsChainId={""}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
     >

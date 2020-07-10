@@ -17,7 +17,7 @@ interface Props {
   readonly onRegisterIovname: () => void;
 }
 
-const BalanceLayout = ({ iovAddress, balances, onRegisterIovname }: Props): JSX.Element => {
+const BalanceLayout = ({ iovAddress, balances, onRegisterIovname }: Props): React.ReactElement => {
   const tickersList = Object.keys(balances).sort();
   const hasTokens = tickersList.length > 0;
   const theme = useTheme<Theme>();

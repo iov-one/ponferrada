@@ -21,7 +21,7 @@ const Layout = ({
   onCancelPayment,
   onTokenSelectionChanged,
   selectedChainCodec,
-}: Props): JSX.Element => {
+}: Props): React.ReactElement => {
   const [memoDisabled, setMemoDisabled] = React.useState(false);
 
   const balances = ReactRedux.useSelector((state: RootState) => state.balances);

@@ -7,7 +7,6 @@ import { Block, Hairline, Image, ListMenu, Typography } from "medulas-react-comp
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 
-import { disconnect } from "../../../../logic/connection";
 import { history } from "../../../../routes";
 import { POLICY_ROUTE, TERMS_ROUTE } from "../../../../routes/paths";
 import { resetAppAction } from "../../../../store";
@@ -33,8 +32,8 @@ interface HiElementProps {
   readonly height?: string;
 }
 
-const HiElement = ({ src, alt, id, action, msg, height = "18" }: HiElementProps): JSX.Element => {
-  const ItemIcon = (): JSX.Element => (
+const HiElement = ({ src, alt, id, action, msg, height = "18" }: HiElementProps): React.ReactElement => {
+  const ItemIcon = (): React.ReactElement => (
     <ListItemIcon>
       <Image src={src} alt={alt} height={height} />
     </ListItemIcon>
@@ -73,17 +72,18 @@ const onPolicy = (): void => {
   history.push(POLICY_ROUTE);
 };
 
-const HiMenu = (props: {}): JSX.Element => {
+const HiMenu = (props: {}): React.ReactElement => {
   const classes = useStyles();
   const dispatch = ReactRedux.useDispatch();
   const { ...rest } = props;
 
   const onLogout = (): void => {
-    disconnect();
+    // FIXME: run any "disconnection" code if needed
+    // disconnect();
     dispatch(resetAppAction());
   };
 
-  const starter = (open: boolean): JSX.Element => (
+  const starter = (open: boolean): React.ReactElement => (
     <Block className={classes.root}>
       <Typography variant="h6">Hi!</Typography>
       <IconButton disableRipple>

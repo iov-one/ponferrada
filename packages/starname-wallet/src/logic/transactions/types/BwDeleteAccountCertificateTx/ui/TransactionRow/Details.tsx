@@ -24,7 +24,7 @@ interface Props {
   readonly tx: ProcessedTx<DeleteAccountCertificateTx>;
 }
 
-const TxDetails = ({ tx }: Props): JSX.Element => {
+const TxDetails = ({ tx }: Props): React.ReactElement => {
   const classes = useStyles();
 
   let txFee = "-";

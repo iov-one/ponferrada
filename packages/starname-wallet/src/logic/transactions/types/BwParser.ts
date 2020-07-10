@@ -34,6 +34,6 @@ export abstract class BwParser<K extends UnsignedTransaction> {
       original: transaction.transaction,
     };
   }
-  abstract graphicalRepresentation(tx: ProcessedTx<K>, addresses: Address[]): JSX.Element;
-  abstract headerRepresentation(tx: ProcessedTx<K>, lastOne: boolean): JSX.Element;
+  abstract graphicalRepresentation(tx: ProcessedTx<K>, addresses: Address[]): React.ReactElement;
+  abstract headerRepresentation(tx: ProcessedTx<K>, lastOne: boolean): React.ReactElement;
 }

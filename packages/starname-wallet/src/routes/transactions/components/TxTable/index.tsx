@@ -21,7 +21,7 @@ function TxTable({
   onChangeRows,
   onNextPage,
   onPrevPage,
-}: TxTableProps): JSX.Element {
+}: TxTableProps): React.ReactElement {
   const classes = useStyles();
 
   return (

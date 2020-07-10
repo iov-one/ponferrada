@@ -1,13 +1,7 @@
-import { Fee, Identity, TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
 import { history } from "../../..";
-import {
-  generateRenewDomainTxRequest,
-  generateRenewDomainTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountRenew from "../../../../components/AccountRenew";
@@ -32,12 +26,11 @@ const useListItem = makeStyles({
 });
 
 interface Props {
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
+const StarnameAccountRenew = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 
@@ -47,13 +40,9 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
     history.push(STARNAME_MANAGE_ROUTE, account);
   };
 
-  const getFee = async (): Promise<Fee | undefined> => {
-    return (await generateRenewDomainTxWithFee(bnsIdentity, account.domain)).fee;
-  };
+  const getFee = async (): Promise<any | undefined> => {};
 
-  const getRequest = async (): Promise<JsonRpcRequest> => {
-    return await generateRenewDomainTxRequest(bnsIdentity, account.domain);
-  };
+  const getRequest = async (): Promise<any> => {};
 
   return (
     <AccountRenew
@@ -61,7 +50,7 @@ const StarnameAccountRenew = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Pr
       account={account}
       getRequest={getRequest}
       getFee={getFee}
-      bnsChainId={bnsIdentity.chainId}
+      bnsChainId={""}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
     >

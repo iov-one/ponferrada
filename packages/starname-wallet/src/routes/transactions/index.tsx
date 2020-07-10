@@ -10,7 +10,7 @@ import { storeLastTx, TxMeta } from "../../utils/localstorage/transactions";
 import Layout from "./components";
 import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
-const Transactions = (): JSX.Element => {
+const Transactions = (): React.ReactElement => {
   const [rows, setRows] = React.useState(5);
   const [page, setPage] = React.useState(0);
   const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN);

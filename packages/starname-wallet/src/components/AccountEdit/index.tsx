@@ -1,5 +1,6 @@
 import { Address, Fee } from "@iov/bcp";
 import clipboardCopy from "clipboard-copy";
+import { isIovname } from "logic/account";
 import {
   Back,
   Block,
@@ -19,8 +20,6 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { isIovname } from "../../logic/account";
-import { getCodecForChainId } from "../../logic/codec";
 import {
   AddressesTooltipHeader,
   BwAccountWithChainName,
@@ -51,24 +50,24 @@ export function getChainAddressPairsFromValues(
     string,
     Partial<ChainAddressPairWithName>
   >();
-  Object.keys(values).forEach(key => {
-    const idxLenght = key.indexOf("-");
-    if (idxLenght === -1) return;
+  Object.keys(values).forEach((key): void => {
+    const idLength = key.indexOf("-");
+    if (idLength === -1) return;
 
-    const index = key.substr(0, idxLenght);
+    const index = key.substr(0, idLength);
     let pair = chainAddressMap.get(index);
     if (!pair) {
       pair = {};
     }
 
-    const type = key.substr(idxLenght + 1);
+    const type = key.substr(idLength + 1);
     switch (type) {
       case addressValueField: {
         pair = { ...pair, address: values[key] as Address };
         break;
       }
       case blockchainValueField: {
-        const chain = addresses.find(address => address.chainName === values[key]);
+        const chain = addresses.find((address): boolean => address.chainName === values[key]);
         if (chain) {
           pair = { ...pair, chainId: chain.chainId, chainName: chain.chainName };
         }
@@ -80,13 +79,10 @@ export function getChainAddressPairsFromValues(
   });
 
   const chainAddressPair: ChainAddressPairWithName[] = [];
-  chainAddressMap.forEach(value => {
+  chainAddressMap.forEach((value): void => {
     if (value.address && value.chainId && value.chainName) {
-      chainAddressPair.push({
-        address: value.address,
-        chainId: value.chainId,
-        chainName: value.chainName,
-      });
+      const chainAddressPairItem: ChainAddressPairWithName = { ...value } as ChainAddressPairWithName;
+      chainAddressPair.push(chainAddressPairItem);
     }
   });
 
@@ -103,7 +99,7 @@ export function getSubmitButtonCaption(fee: Fee | undefined): string {
 
 export function getFormInitValues(addressItems: SelectAddressItem[]): FormValues {
   const initialValues: FormValues = {};
-  addressItems.forEach(item => {
+  addressItems.forEach((item): void => {
     initialValues[getAddressInputName(item.id)] = item.chain.address;
     initialValues[getBlockchainInputName(item.id)] = item.chain.chainName;
   });
@@ -136,7 +132,7 @@ const useStyles = makeStyles({
   },
 });
 
-export function NoIovnameHeader(): JSX.Element {
+export function NoIovnameHeader(): React.ReactElement {
   const classes = useStyles();
   return (
     <Block className={classes.iovnameHeader} borderRadius={40} width={145} padding={1}>
@@ -157,7 +153,7 @@ interface Props extends AccountEditProps {
   readonly getFee: (values: FormValues) => Promise<Fee | undefined>;
 }
 
-const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Props): JSX.Element => {
+const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Props): React.ReactElement => {
   const [transactionFee, setTransactionFee] = React.useState<Fee | undefined>();
 
   const classes = useStyles();
@@ -168,13 +164,15 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
   }, [account]);
 
   const validateAddresses = React.useMemo(() => {
-    const validate = async (values: object): Promise<object> => {
+    return async (values: object): Promise<object> => {
       const formValues = values as FormValues;
       const errors: ValidationError = {};
 
       const addressesToRegister = getChainAddressPairsFromValues(formValues, chainAddresses);
       for (const address of addressesToRegister) {
-        try {
+        // eslint-disable-next-line no-console
+        console.log(address);
+        /* try {
           const codec = await getCodecForChainId(address.chainId);
           if (!codec.isValidAddress(address.address)) {
             const addressField = Object.entries(formValues).find(([_id, value]) => value === address.address);
@@ -184,13 +182,10 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
           }
         } catch (err) {
           console.info(err);
-        }
+        }*/
       }
-
       return errors;
     };
-
-    return validate;
   }, [chainAddresses]);
 
   const initialValues = React.useMemo(() => getFormInitValues(chainAddressesItems), [chainAddressesItems]);
@@ -211,6 +206,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
     }
 
     if (!invalid) {
+      // noinspection JSIgnoredPromiseFromCall
       setFee();
     } else {
       setTransactionFee(undefined);
@@ -224,6 +220,7 @@ const AccountEdit = ({ chainAddresses, account, onCancel, onSubmit, getFee }: Pr
   const onAccountCopy = (): void => {
     if (account) {
       const name = isAccountData(account) ? account.name : account.username;
+      // noinspection JSIgnoredPromiseFromCall
       clipboardCopy(name);
       toast.show("Account has been copied to clipboard.", ToastVariant.INFO);
     }

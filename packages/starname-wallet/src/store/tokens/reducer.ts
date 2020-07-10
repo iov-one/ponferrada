@@ -1,12 +1,14 @@
-import { ChainId, Token } from "@iov/bcp";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
 
 export interface BwToken {
-  readonly chainId: ChainId;
-  readonly token: Token;
+  readonly chainId: string;
+  readonly token: {
+    tokenTicker: string;
+    fractionalDigits: number;
+  };
 }
 
 export interface AddTickerActionType extends Action {

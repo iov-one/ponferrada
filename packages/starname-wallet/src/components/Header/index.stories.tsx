@@ -75,7 +75,7 @@ interface EnahncedHeaderProps {
   readonly text: string;
 }
 
-const EnhancedHeader = ({ text }: EnahncedHeaderProps): JSX.Element => (
+const EnhancedHeader = ({ text }: EnahncedHeaderProps): React.ReactElement => (
   <React.Fragment>
     <Typography variant="h6">{text}</Typography>
     <Header path="example" />

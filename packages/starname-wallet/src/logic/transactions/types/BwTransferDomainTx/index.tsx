@@ -6,11 +6,11 @@ import TransactionHeader from "./ui/TransactionHeader";
 import TransactionRow from "./ui/TransactionRow";
 
 export class BwTransferDomainParser extends BwParser<TransferDomainTx> {
-  public graphicalRepresentation(tx: ProcessedTx<TransferDomainTx>): JSX.Element {
+  public graphicalRepresentation(tx: ProcessedTx<TransferDomainTx>): React.ReactElement {
     return <TransactionRow key={tx.id} tx={tx} />;
   }
 
-  public headerRepresentation(tx: ProcessedTx<TransferDomainTx>, lastOne: boolean): JSX.Element {
+  public headerRepresentation(tx: ProcessedTx<TransferDomainTx>, lastOne: boolean): React.ReactElement {
     return <TransactionHeader key={tx.id} item={tx} lastOne={lastOne} />;
   }
 }

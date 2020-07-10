@@ -8,9 +8,9 @@ import { getConfig } from "../../../config";
  * https://github.com/prettier/prettier/issues/2347
  */
 
-const addLinkTo = (link: string): JSX.Element => <Link to={link}>{link}</Link>;
+const addLinkTo = (link: string): React.ReactElement => <Link to={link}>{link}</Link>;
 
-function PolicyLayoutInternal(): JSX.Element {
+function PolicyLayoutInternal(): React.ReactElement {
   const [websiteName, setWebsiteName] = React.useState("");
 
   React.useEffect(() => {

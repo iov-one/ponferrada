@@ -1,10 +1,11 @@
 import { Address, ChainId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
+import { RpcEndpoint } from "communication/rpcEndpoint";
+import { ChainAddressPairWithName } from "components/AddressesTable";
+import { Account, Target, Task } from "logic/api";
 import React from "react";
+import { BwAccount } from "store/accounts";
 
-import { RpcEndpoint } from "../../communication/rpcEndpoint";
-import { ChainAddressPairWithName } from "../../components/AddressesTable";
-import { BwAccount } from "../../store/accounts";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import Starnames from ".";
 
@@ -33,8 +34,12 @@ const rpcEndpoint: RpcEndpoint = {
   authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
   noMatchingIdentityMessage: "test noMatchingIdentityMessage",
   notAvailableMessage: "test notAvailableMessage",
-  sendGetIdentitiesRequest: _req => Promise.resolve(undefined),
-  sendSignAndPostRequest: _req => Promise.resolve(undefined),
+  resolveStarname: (query: string): Task<Account> => ({
+    run: () => Promise.resolve<Account>({} as Account),
+    abort: () => null,
+  }),
+  executeRequest: async (request: any): Promise<string> => "",
+  getTargets: async (): Promise<Target[]> => [],
   type: "extension",
 };
 

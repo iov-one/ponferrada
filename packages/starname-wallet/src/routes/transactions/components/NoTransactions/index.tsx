@@ -3,7 +3,7 @@ import * as React from "react";
 
 import noTransactions from "../../assets/noTransactions.svg";
 
-const NoTransactions = (): JSX.Element => (
+const NoTransactions = (): React.ReactElement => (
   <Block display="flex" flexDirection="column" justifyContent="center" paddingTop="100px">
     <Image src={noTransactions} alt="No Transactions" />
     <Block margin={4} />

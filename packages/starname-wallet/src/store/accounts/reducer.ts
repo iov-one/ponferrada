@@ -1,5 +1,3 @@
-import { Address } from "@iov/bcp";
-import { ChainAddressPair } from "@iov/bns";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
@@ -9,8 +7,8 @@ export interface BwAccount {
   readonly name: string;
   readonly domain: string;
   readonly expiryDate: Date;
-  readonly owner: Address;
-  readonly addresses: readonly ChainAddressPair[];
+  readonly owner: string;
+  readonly addresses: readonly any[];
 }
 
 export interface AddAccountsActionType extends Action {

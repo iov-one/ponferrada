@@ -3,7 +3,7 @@ import * as React from "react";
 import PageMenuColumn from "../../components/PageMenuColumn";
 import Layout from "./components";
 
-const Policy = (): JSX.Element => (
+const Policy = (): React.ReactElement => (
   <PageMenuColumn maxWidth={960}>
     <Layout />
   </PageMenuColumn>

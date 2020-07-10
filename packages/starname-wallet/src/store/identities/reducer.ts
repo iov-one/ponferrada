@@ -1,15 +1,14 @@
-import { Address, ChainId, Identity } from "@iov/bcp";
 import { Action } from "redux";
 
 import { IdentitiesActions } from "./actions";
 
 export interface ExtendedIdentity {
-  readonly identity: Identity;
-  readonly address: Address;
+  readonly identity: any;
+  readonly address: any;
   readonly chainName: string;
 }
 
-export type IdentitiesState = ReadonlyMap<ChainId, ExtendedIdentity>;
+export type IdentitiesState = ReadonlyMap<string, ExtendedIdentity>;
 
 export interface SetIdentitiesStateActionType extends Action {
   type: "@@identities/SET";

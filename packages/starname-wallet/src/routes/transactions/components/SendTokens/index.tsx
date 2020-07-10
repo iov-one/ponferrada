@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const SendTokens = (): JSX.Element => {
+const SendTokens = (): React.ReactElement => {
   const theme = useTheme<Theme>();
   const classes = useStyles();
 

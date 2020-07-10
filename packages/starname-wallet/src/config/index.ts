@@ -1,9 +1,7 @@
-import { ChainId, Identity } from "@iov/bcp";
-import { TokenConfiguration } from "@iov/cosmos-sdk";
+import { Target } from "logic/api";
+import { ExtendedIdentity } from "store/identities";
 import { singleton } from "ui-logic";
 
-import { getCodecForChainId } from "../logic/codec";
-import { ExtendedIdentity } from "../store/identities";
 import developmentConfig from "./development.json";
 
 /** The string value must match the codec type in the config file */
@@ -29,7 +27,7 @@ export interface Config {
   readonly chains: readonly ChainConfig[];
   readonly supportedChains: readonly SupportedChain[];
   readonly addressPrefix: string;
-  readonly tokenConfiguration: TokenConfiguration;
+  readonly tokenConfiguration: any;
 }
 
 export interface SupportedChain {
@@ -113,10 +111,9 @@ export const getConfig = singleton<typeof loadConfigurationFile>(loadConfigurati
  * Gets a chain name from the configuration file. Falls back to the chain ID
  * if no name is found.
  */
-export async function getChainName(chainId: ChainId): Promise<string> {
+export async function getChainName(chainId: string): Promise<string> {
   const chains = (await getConfig()).supportedChains;
   const selectedChain = chains.find(chain => chain.chainId === chainId);
-
   if (selectedChain) {
     return selectedChain.name;
   } else {
@@ -125,14 +122,14 @@ export async function getChainName(chainId: ChainId): Promise<string> {
 }
 
 export async function makeExtendedIdentities(
-  identities: readonly Identity[],
-): Promise<Map<ChainId, ExtendedIdentity>> {
-  const out = new Map<ChainId, ExtendedIdentity>();
-  for (const identity of identities) {
-    out.set(identity.chainId, {
-      identity: identity,
-      address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
-      chainName: await getChainName(identity.chainId),
+  targets: readonly Target[],
+): Promise<Map<string, ExtendedIdentity>> {
+  const out = new Map<string, ExtendedIdentity>();
+  for (const target of targets) {
+    out.set(target.id, {
+      identity: target,
+      address: target.address,
+      chainName: await getChainName(target.id),
     });
   }
   return out;

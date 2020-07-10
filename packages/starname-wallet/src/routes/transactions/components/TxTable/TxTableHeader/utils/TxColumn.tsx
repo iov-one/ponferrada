@@ -17,7 +17,7 @@ interface Props {
   readonly alignRight?: boolean;
 }
 
-const TxColumn = ({ name, alignRight }: Props): JSX.Element => {
+const TxColumn = ({ name, alignRight }: Props): React.ReactElement => {
   const classes = useStyles();
   const headerClasses = classNames(classes.header, { [classes.alignRight]: alignRight });
 

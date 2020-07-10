@@ -27,7 +27,7 @@ const rowsSelectorData: readonly SelectFieldItem[] = [
 
 const onSubmit = (): void => {};
 
-const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): JSX.Element => {
+const TxTableFooter = ({ onChangeRows, onPrevPage, onNextPage }: Props): React.ReactElement => {
   const { handleSubmit, form } = useForm({
     onSubmit,
   });

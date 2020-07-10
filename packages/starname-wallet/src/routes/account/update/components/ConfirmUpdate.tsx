@@ -1,4 +1,3 @@
-import { TransactionId } from "@iov/bcp";
 import clipboardCopy from "clipboard-copy";
 import {
   Block,
@@ -31,11 +30,11 @@ const tickIcon = <Image src={tickSvg} alt="Tick" />;
 const copyIcon = <Image src={copySvg} alt="Tick" />;
 
 interface Props {
-  readonly transactionId: TransactionId;
+  readonly transactionId: string;
   readonly onSeeTransactions: () => void;
 }
 
-const ConfirmRegistration = ({ transactionId, onSeeTransactions }: Props): JSX.Element => {
+const ConfirmRegistration = ({ transactionId, onSeeTransactions }: Props): React.ReactElement => {
   const toast = React.useContext(ToastContext);
   const classes = useClasses();
 

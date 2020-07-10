@@ -1,13 +1,8 @@
-import { Address, Fee, Identity, TransactionId } from "@iov/bcp";
-import { JsonRpcRequest } from "@iov/jsonrpc";
+import { Address } from "@iov/bcp";
 import { List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { history } from "../../..";
-import {
-  generateTransferDomainTxRequest,
-  generateTransferDomainTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountTransfer from "../../../../components/AccountTransfer";
@@ -29,19 +24,18 @@ const useListItem = makeStyles({
   },
 });
 
-const TransferPrompt: React.FunctionComponent = (): JSX.Element => (
+const TransferPrompt: React.FunctionComponent = (): React.ReactElement => (
   <Typography color="default" variant="subtitle2">
     New owner blockchain address or Starname
   </Typography>
 );
 
 interface Props {
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const StarnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
+const StarnameAccountTransfer = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 
@@ -51,12 +45,12 @@ const StarnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
     history.push(STARNAME_MANAGE_ROUTE, account);
   };
 
-  const getFee = async (newOwner: Address): Promise<Fee | undefined> => {
-    return (await generateTransferDomainTxWithFee(bnsIdentity, account.domain, newOwner)).fee;
+  const getFee = async (newOwner: Address): Promise<any | undefined> => {
+    return undefined;
   };
 
-  const getRequest = async (newOwner: Address): Promise<JsonRpcRequest> => {
-    return await generateTransferDomainTxRequest(bnsIdentity, account.domain, newOwner);
+  const getRequest = async (newOwner: Address): Promise<any> => {
+    return undefined;
   };
 
   return (
@@ -65,7 +59,7 @@ const StarnameAccountTransfer = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
       account={account}
       getRequest={getRequest}
       getFee={getFee}
-      bnsChainId={bnsIdentity.chainId}
+      bnsChainId={""}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
       transferPrompt={<TransferPrompt />}

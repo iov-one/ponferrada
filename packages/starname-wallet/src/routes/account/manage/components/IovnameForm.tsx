@@ -7,7 +7,7 @@ import { IOVNAME_EDIT_ROUTE, IOVNAME_TRANSFER_ROUTE } from "../../../paths";
 
 export const IOVNAME_MANAGE_VIEW = "iovname-manage-view";
 
-const IovnameAccountManage = (): JSX.Element => {
+const IovnameAccountManage = (): React.ReactElement => {
   const account: BwUsernameWithChainName = history.location.state;
 
   const menuItems: readonly ActionMenuItem[] = [

@@ -1,4 +1,3 @@
-import { Address } from "@iov/bcp";
 import Paper from "@material-ui/core/Paper";
 import clipboardCopy from "clipboard-copy";
 import {
@@ -15,9 +14,9 @@ import {
   Typography,
 } from "medulas-react-components";
 import React from "react";
+import { BwAccount } from "store/accounts";
+import { BwUsername } from "store/usernames";
 
-import { BwAccount } from "../../store/accounts";
-import { BwUsername } from "../../store/usernames";
 import AddressesTable, { ChainAddressPairWithName } from "../AddressesTable";
 import copy from "../AddressesTable/assets/copy.svg";
 import shield from "./assets/shield.svg";
@@ -42,7 +41,7 @@ const useTooltipHeaderStyles = makeStyles({
   },
 });
 
-export function AddressesTooltipHeader(): JSX.Element {
+export function AddressesTooltipHeader(): React.ReactElement {
   const classes = useTooltipHeaderStyles();
   const avatarClasses = { root: classes.addressesHeader };
   return <Avatar classes={avatarClasses}>{registerTooltipIcon}</Avatar>;
@@ -54,7 +53,7 @@ interface TooltipContentProps {
   readonly children: React.ReactNode;
 }
 
-export function TooltipContent({ children, title, header }: TooltipContentProps): JSX.Element {
+export function TooltipContent({ children, title, header }: TooltipContentProps): React.ReactElement {
   return (
     <Block padding={2} display="flex" flexDirection="column" alignItems="center">
       {header}
@@ -85,7 +84,7 @@ interface Props {
   readonly menuItems?: readonly ActionMenuItem[];
   readonly hideExpiration?: boolean;
   readonly onEdit: () => void;
-  readonly transferedTo?: Address;
+  readonly transferedTo?: string;
 }
 
 export function isUsernameData(account: AccountModuleMixedType): account is BwUsernameWithChainName {

@@ -7,7 +7,7 @@ import { NAME_EDIT_ROUTE } from "../../../paths";
 
 export const NAME_MANAGE_VIEW = "name-manage-view";
 
-const NameAccountManage = (): JSX.Element => {
+const NameAccountManage = (): React.ReactElement => {
   const account: BwAccountWithChainName = history.location.state;
 
   const onEdit = (): void => {

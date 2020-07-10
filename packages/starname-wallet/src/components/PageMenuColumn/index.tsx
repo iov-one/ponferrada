@@ -8,7 +8,7 @@ interface Props extends PageMenuProps {
   readonly maxWidth?: number;
 }
 
-const PageMenuColumn = ({ children, maxWidth = 650, ...props }: Props): JSX.Element => {
+const PageMenuColumn = ({ children, maxWidth = 650, ...props }: Props): React.ReactElement => {
   return (
     <PageMenu {...props}>
       <Block display="flex" margin={2}>

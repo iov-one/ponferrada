@@ -14,7 +14,7 @@ const Layout = ({
   onSort,
   orderBy,
   order,
-}: TxTableProps): JSX.Element => {
+}: TxTableProps): React.ReactElement => {
   const hasRows = rows && rows.length > 0;
 
   return (

@@ -70,7 +70,7 @@ const AddressRow = ({
   removeAddress,
   removeBlockchainItem,
   addBlockchainItem,
-}: RowProps): JSX.Element => {
+}: RowProps): React.ReactElement => {
   const classes = useStyles();
   const cellClasses = {
     root: classes.cell,
@@ -146,7 +146,7 @@ const SelectAddressesTable = ({
   availableBlockchains,
   chainAddressesItems,
   form,
-}: TableProps): JSX.Element => {
+}: TableProps): React.ReactElement => {
   const [chainItems, setChainItems] = React.useState<SelectAddressItem[]>([]);
   const [blockChainItems, setBlockchainItems] = React.useState<SelectFieldItem[]>([]);
 

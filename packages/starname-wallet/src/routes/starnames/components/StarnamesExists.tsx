@@ -24,7 +24,7 @@ interface Props {
   readonly onRegisterStarname: () => void;
 }
 
-function StarnamesExists({ starnames, onRegisterStarname }: Props): JSX.Element {
+function StarnamesExists({ starnames, onRegisterStarname }: Props): React.ReactElement {
   const paperClasses = usePaper();
 
   return (

@@ -1,15 +1,8 @@
-import { Fee, Identity, TransactionId } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
-import { JsonRpcRequest } from "@iov/jsonrpc";
 import { FormValues, List, ListItem, makeStyles, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import { AccountLocationState } from "../..";
 import { history } from "../../..";
-import {
-  generateTransferAccountTxRequest,
-  generateTransferAccountTxWithFee,
-} from "../../../../communication/requestgenerators";
 import { RpcEndpoint } from "../../../../communication/rpcEndpoint";
 import { BwAccountWithChainName } from "../../../../components/AccountManage";
 import AccountOperation from "../../../../components/AccountOperation";
@@ -21,7 +14,7 @@ interface HeaderProps {
   readonly account: BwAccountWithChainName;
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ account }): JSX.Element => (
+const Header: React.FunctionComponent<HeaderProps> = ({ account }): React.ReactElement => (
   <React.Fragment>
     <Typography color="default" variant="h5" inline>
       Transfer{" "}
@@ -53,27 +46,23 @@ const useListItem = makeStyles({
 });
 
 interface Props {
-  readonly bnsIdentity: Identity;
   readonly rpcEndpoint: RpcEndpoint;
-  readonly setTransactionId: React.Dispatch<React.SetStateAction<TransactionId | null>>;
+  readonly setTransactionId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const NameAccountTransferBack = ({ setTransactionId, bnsIdentity, rpcEndpoint }: Props): JSX.Element => {
+const NameAccountTransferBack = ({ setTransactionId, rpcEndpoint }: Props): React.ReactElement => {
   const listClasses = useList();
   const listItemClasses = useListItem();
 
   const { account, domain }: AccountLocationState = history.location.state;
-  const ownerAddress = bnsCodec.identityToAddress(bnsIdentity);
 
   const onReturnToManage = (): void => {
     history.push(STARNAME_MANAGE_ROUTE, domain);
   };
 
-  const getFee = async (_values: FormValues): Promise<Fee | undefined> =>
-    (await generateTransferAccountTxWithFee(bnsIdentity, account.name, account.domain, ownerAddress)).fee;
+  const getFee = async (_values: FormValues): Promise<any | undefined> => undefined;
 
-  const getRequest = async (_values: FormValues): Promise<JsonRpcRequest> =>
-    await generateTransferAccountTxRequest(bnsIdentity, account.name, account.domain, ownerAddress);
+  const getRequest = async (_values: FormValues): Promise<any> => undefined;
 
   return (
     <AccountOperation
@@ -81,7 +70,7 @@ const NameAccountTransferBack = ({ setTransactionId, bnsIdentity, rpcEndpoint }:
       onCancel={onReturnToManage}
       getFee={getFee}
       getRequest={getRequest}
-      bnsChainId={bnsIdentity.chainId}
+      bnsChainId={""}
       rpcEndpoint={rpcEndpoint}
       setTransactionId={setTransactionId}
       header={<Header account={account} />}
