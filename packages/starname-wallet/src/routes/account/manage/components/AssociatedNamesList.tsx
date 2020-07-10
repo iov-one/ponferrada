@@ -2,16 +2,16 @@ import Collapse from "@material-ui/core/Collapse";
 import Paper from "@material-ui/core/Paper";
 import { ActionMenuItem, Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
-
-import { AccountLocationState } from "../..";
-import { history } from "../../..";
-import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import {
   NAME_DELETE_ROUTE,
   NAME_EDIT_ROUTE,
   NAME_TRANSFER_BACK_ROUTE,
   NAME_TRANSFER_ROUTE,
 } from "routes/paths";
+
+import { AccountLocationState } from "../..";
+import { history } from "../../..";
+import AccountManage, { BwAccountWithChainName } from "../../../../components/AccountManage";
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 
