@@ -37,16 +37,6 @@ export const loginBootSequence = async (targets: readonly Target[], dispatch: Di
   dispatch(setBalancesAction(balances));
 };
 
-/**
- * Tests if current environment has WebUSB available
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/API/USB
- */
-function webUsbAvailable(): boolean {
-  const nav: any = navigator;
-  return typeof nav !== "undefined" && typeof nav.usb !== "undefined";
-}
-
 async function onGetNeumaExtension(): Promise<void> {
   const config = await getConfig();
   window.open(config.extensionLink, "_blank");
@@ -86,11 +76,6 @@ const Login = (): React.ReactElement => {
   };
 
   const onLoginWithLedger = async (): Promise<void> => {
-    if (!webUsbAvailable()) {
-      toast.show("Your browser does not support WebUSB", ToastVariant.ERROR);
-      return;
-    }
-
     try {
       billboard.show(
         <LedgerBillboardMessage text={ledgerRpcEndpoint.authorizeGetIdentitiesMessage} />,

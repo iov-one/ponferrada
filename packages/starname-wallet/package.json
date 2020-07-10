@@ -51,7 +51,7 @@
     "lint": "eslint -c .eslintrc.js --max-warnings 0 'src/**/*.ts{,x}'",
     "lint-fix": "eslint -c .eslintrc.js 'src/**/*.ts{,x}' --fix",
     "format": "prettier --write --loglevel warn './src/**/*.{ts,tsx,json,md,css}'",
-    "start-development": "react-scripts start",
+    "start-development": "HTTPS=true react-scripts start",
     "start-staging": "yarn override-config-staging && docker build --no-cache -t 'iov1/bierzo-wallet:manual' . && docker run --read-only --rm -p 3000:3000 'iov1/bierzo-wallet:manual'",
     "start": "yarn start-development",
     "build-development": "yarn react-scripts build && yarn override-config-development",
