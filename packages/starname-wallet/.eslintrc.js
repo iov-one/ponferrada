@@ -1,6 +1,3 @@
 module.exports = {
-  extends: "../../.eslintrc.js",
-  rules: {
-    camelcase: "off",
-  },
+  extends: "../../.eslintrc.js"
 };
