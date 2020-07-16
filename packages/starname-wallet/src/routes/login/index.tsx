@@ -1,9 +1,7 @@
-import { getExtensionStatus } from "communication/extension";
-import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
 import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
+import { RpcEndpoint } from "communication/rpcEndpoint";
 import LedgerBillboardMessage from "components/BillboardMessage/LedgerBillboardMessage";
-import NeumaBillboardMessage from "components/BillboardMessage/NeumaBillboardMessage";
-import { getConfig, makeExtendedIdentities } from "config";
+import { getConfig } from "config";
 import { Target } from "logic/api";
 import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
@@ -11,13 +9,15 @@ import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
 import PageColumn from "routes/login/components/PageColumn";
 import { getBalances, setBalancesAction } from "store/balances";
-import { setIdentities } from "store/identities";
-import { setRpcEndpoint } from "store/rpcendpoint";
 import { addTickersAction, getTokens } from "store/tokens";
 import { ErrorParser } from "ui-logic";
 
 import { history } from "..";
 import { BALANCE_ROUTE } from "../paths";
+
+interface Props {
+  onSignedIn: (rpcEndpoint: RpcEndpoint) => void;
+}
 
 export const loginBootSequence = async (targets: readonly Target[], dispatch: Dispatch): Promise<void> => {
   const chains = (await getConfig()).chains;
@@ -42,38 +42,10 @@ async function onGetNeumaExtension(): Promise<void> {
   window.open(config.extensionLink, "_blank");
 }
 
-const Login = (): React.ReactElement => {
+const Login: React.FC<Props> = (props: Props): React.ReactElement => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
-
-  const onLoginWithNeuma = async (): Promise<void> => {
-    try {
-      billboard.show(
-        <NeumaBillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />,
-        "start",
-        "flex-end",
-        100,
-      );
-      const { installed, connected } = await getExtensionStatus();
-      if (!installed) {
-        toast.show(extensionRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      } else if (!connected) {
-        toast.show(extensionRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
-      } else {
-        // dispatch(setIdentities(await makeExtendedIdentities(identities)));
-        dispatch(setRpcEndpoint(extensionRpcEndpoint));
-        await loginBootSequence([], dispatch);
-        history.push(BALANCE_ROUTE);
-      }
-    } catch (error) {
-      console.error(error);
-      const message = ErrorParser.tryParseWeaveError(error) || "An unknown error occurred";
-      toast.show(message, ToastVariant.ERROR);
-    } finally {
-      billboard.close();
-    }
-  };
 
   const onLoginWithLedger = async (): Promise<void> => {
     try {
@@ -83,15 +55,14 @@ const Login = (): React.ReactElement => {
         "center",
         100,
       );
-      const targets: Target[] | undefined = await ledgerRpcEndpoint.getTargets();
-      if (targets === undefined) {
+      if (!(await ledgerRpcEndpoint.start())) {
         toast.show(ledgerRpcEndpoint.notAvailableMessage, ToastVariant.ERROR);
-      } else if (targets.length === 0) {
-        toast.show(ledgerRpcEndpoint.noMatchingIdentityMessage, ToastVariant.ERROR);
       } else {
-        dispatch(setIdentities(await makeExtendedIdentities(targets)));
-        dispatch(setRpcEndpoint(ledgerRpcEndpoint));
-        await loginBootSequence(targets, dispatch);
+        // dispatch(setIdentities(await makeExtendedIdentities(targets)));
+        // dispatch(setRpcEndpoint(ledgerRpcEndpoint));
+        props.onSignedIn(ledgerRpcEndpoint);
+        // What?
+        // await loginBootSequence(targets, dispatch);
         history.push(BALANCE_ROUTE);
       }
     } catch (error) {
@@ -105,7 +76,7 @@ const Login = (): React.ReactElement => {
 
   return (
     <PageColumn
-      onLoginWithNeuma={onLoginWithNeuma}
+      onLoginWithNeuma={() => undefined}
       onLoginWithLedger={onLoginWithLedger}
       onGetNeumaExtension={onGetNeumaExtension}
     />

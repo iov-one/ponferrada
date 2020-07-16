@@ -6,7 +6,8 @@ import NeumaBillboardMessage from "components/BillboardMessage/NeumaBillboardMes
 import PageContent from "components/PageContent";
 import { FormStatus } from "forms";
 // import { getCurrentSigner, Signer } from "logic/signer";
-import { Account, Task } from "logic/api";
+import { Account } from "logic/api";
+import { Task } from "logic/http";
 import {
   BillboardContext,
   Block,

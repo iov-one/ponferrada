@@ -4,6 +4,7 @@ import { Subscription } from "xstream";
 let balanceSubscriptions: Subscription[] = [];
 
 export async function subscribeBalance(identities: readonly any[], dispatch: Dispatch): Promise<void> {
+  console.log(identities);
   /* const config = await getConfig();
   const chains = config.chains;
   const connections = getActiveConnections();

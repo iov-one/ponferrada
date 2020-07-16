@@ -1,9 +1,7 @@
-import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Image, Typography } from "medulas-react-components";
 import React from "react";
-import { amountToString } from "ui-logic";
 
 import PageContent from "../../../components/PageContent";
 import { GetYourAddress } from "../../iovnames/components/IovnamesNotExists";
@@ -13,7 +11,7 @@ const walletIcon = <Image src={wallet} alt="wallet ico" />;
 
 interface Props {
   readonly iovAddress?: string;
-  readonly balances: { [token: string]: Amount };
+  readonly balances: { [token: string]: number };
   readonly onRegisterIovname: () => void;
 }
 
@@ -46,18 +44,20 @@ const BalanceLayout = ({ iovAddress, balances, onRegisterIovname }: Props): Reac
             {hasTokens ? "Your currencies" : "You have no funds available"}
           </Typography>
           <Block margin={1} />
-          {tickersList.map(ticker => (
-            <Typography
-              key={balances[ticker].tokenTicker}
-              variant="h5"
-              weight="regular"
-              color="primary"
-              align="center"
-              gutterBottom
-            >
-              {`${amountToString(balances[ticker])}`}
-            </Typography>
-          ))}
+          {tickersList.map(
+            (ticker: string): React.ReactElement => (
+              <Typography
+                key={ticker}
+                variant="h5"
+                weight="regular"
+                color="primary"
+                align="center"
+                gutterBottom
+              >
+                {`${balances[ticker] / 1000000} ${ticker}`}
+              </Typography>
+            ),
+          )}
           <Block margin={1} />
         </Block>
       </PageContent>

@@ -2,7 +2,7 @@ import { Address, ChainId, Token, TokenTicker } from "@iov/bcp";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
-import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import { ACCOUNT_DELETE_STORY_PATH } from "components/AccountDelete/index.stories";
 import { BwAccountWithChainName } from "components/AccountManage";
 import { ACCOUNT_MANAGE_STORY_PATH } from "components/AccountManage/index.stories";
@@ -64,7 +64,7 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
           return { tokens: stringToAmount("5", iov) };
         }}
         bnsChainId={"local-iov-devnet" as ChainId}
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         setTransactionId={value => {
           action("setTransactionId")(value);
         }}

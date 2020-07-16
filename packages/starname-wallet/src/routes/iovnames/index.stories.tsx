@@ -1,9 +1,8 @@
 import { Address, ChainId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
-import { RpcEndpoint } from "communication/rpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import { BwUsernameWithChainName } from "components/AccountManage";
 import { ChainAddressPairWithName } from "components/AddressesTable";
-import { Account, Target, Task } from "logic/api";
 import React from "react";
 
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
@@ -27,20 +26,6 @@ const chainAddresses: ChainAddressPairWithName[] = [
   },
 ];
 
-const rpcEndpoint: RpcEndpoint = {
-  authorizeGetIdentitiesMessage: "test authorizeGetIdentitiesMessage",
-  authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
-  noMatchingIdentityMessage: "test noMatchingIdentityMessage",
-  notAvailableMessage: "test notAvailableMessage",
-  type: "extension",
-  resolveStarname: (query: string): Task<Account> => ({
-    run: () => Promise.resolve<Account>({} as Account),
-    abort: () => null,
-  }),
-  executeRequest: async (request: any): Promise<string> => "",
-  getTargets: async (): Promise<Target[]> => [],
-};
-
 const iovnames: readonly BwUsernameWithChainName[] = [
   {
     username: "test1*iov",
@@ -59,12 +44,12 @@ const iovnames: readonly BwUsernameWithChainName[] = [
 storiesOf(`${bierzoRoot}/Iovnames`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Without iovnames", () => (
-    <DecoratedStorybook storeProps={{ rpcEndpoint }}>
+    <DecoratedStorybook storeProps={{ rpcEndpoint: ledgerRpcEndpoint }}>
       <Iovnames />
     </DecoratedStorybook>
   ))
   .add("With iovnames", () => (
-    <DecoratedStorybook storeProps={{ usernames: iovnames, rpcEndpoint } as any}>
+    <DecoratedStorybook storeProps={{ usernames: iovnames, rpcEndpoint: ledgerRpcEndpoint } as any}>
       <Iovnames />
     </DecoratedStorybook>
   ));

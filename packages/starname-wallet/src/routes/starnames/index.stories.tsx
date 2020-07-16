@@ -1,8 +1,7 @@
 import { Address, ChainId } from "@iov/bcp";
 import { storiesOf } from "@storybook/react";
-import { RpcEndpoint } from "communication/rpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import { ChainAddressPairWithName } from "components/AddressesTable";
-import { Account, Target, Task } from "logic/api";
 import React from "react";
 import { BwAccount } from "store/accounts";
 
@@ -28,20 +27,6 @@ const chainAddresses: ChainAddressPairWithName[] = [
     chainName: "Ganache",
   },
 ];
-
-const rpcEndpoint: RpcEndpoint = {
-  authorizeGetIdentitiesMessage: "test authorizeGetIdentitiesMessage",
-  authorizeSignAndPostMessage: "test authorizeSignAndPostMessage",
-  noMatchingIdentityMessage: "test noMatchingIdentityMessage",
-  notAvailableMessage: "test notAvailableMessage",
-  resolveStarname: (query: string): Task<Account> => ({
-    run: () => Promise.resolve<Account>({} as Account),
-    abort: () => null,
-  }),
-  executeRequest: async (request: any): Promise<string> => "",
-  getTargets: async (): Promise<Target[]> => [],
-  type: "extension",
-};
 
 const starnames: readonly BwAccount[] = [
   {
@@ -70,12 +55,12 @@ const starnames: readonly BwAccount[] = [
 storiesOf(`${bierzoRoot}/Starnames`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Without starnames", () => (
-    <DecoratedStorybook storeProps={{ rpcEndpoint }}>
+    <DecoratedStorybook storeProps={{ rpcEndpoint: ledgerRpcEndpoint }}>
       <Starnames />
     </DecoratedStorybook>
   ))
   .add("With starnames", () => (
-    <DecoratedStorybook storeProps={{ accounts: starnames, rpcEndpoint } as any}>
+    <DecoratedStorybook storeProps={{ accounts: starnames, rpcEndpoint: ledgerRpcEndpoint } as any}>
       <Starnames />
     </DecoratedStorybook>
   ));

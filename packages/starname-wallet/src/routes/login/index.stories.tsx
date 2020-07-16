@@ -8,6 +8,6 @@ storiesOf(bierzoRoot, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
   .add("Login page", () => (
     <DecoratedStorybook>
-      <Login />
+      <Login onSignedIn={() => null} />
     </DecoratedStorybook>
   ));

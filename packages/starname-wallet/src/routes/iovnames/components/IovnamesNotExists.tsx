@@ -2,11 +2,11 @@ import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
-import * as ReactRedux from "react-redux";
 
 import { REGISTER_IOVNAME_LINK } from "..";
-import { getRpcEndpointType } from "../../../store/rpcendpoint/selectors";
 import { NoIovnameHeader } from "../../account/register/components/IovnameForm";
+import { useRpcEndpoint } from "contexts/rpcEndpointContext";
+import { RpcEndpoint } from "communication/rpcEndpoint";
 
 interface Props {
   readonly onRegisterIovname: () => void;
@@ -64,9 +64,8 @@ export function GetYourAddressWithLedger(): React.ReactElement {
 }
 
 export function GetYourAddress({ onRegisterIovname }: Props): React.ReactElement {
-  const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
-
-  switch (rpcEndpointType) {
+  const rpcEndpoint: RpcEndpoint = useRpcEndpoint();
+  switch (rpcEndpoint.type) {
     case "extension":
       return <GetYourAddressWithExtension onRegisterIovname={onRegisterIovname} />;
     case "ledger":

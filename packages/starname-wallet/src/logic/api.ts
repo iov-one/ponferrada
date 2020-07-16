@@ -1,50 +1,18 @@
 import { BwToken } from "store/tokens";
 
+import { get, post, Task } from "./http";
+
 const baseUrl = "https://iovnscli-rest-api.cluster-galaxynet.iov.one";
 
-export interface Task<T> {
-  abort: () => void;
-  run: () => Promise<T>;
+export interface Coin {
+  denom: string;
+  amount: number;
 }
 
-const request = <T>(method: "GET" | "POST", url: string, data?: any): Task<T> => {
-  const xhr: XMLHttpRequest = new XMLHttpRequest();
-  const run: () => Promise<T> = () =>
-    new Promise<T>((resolve: (data: T | undefined) => void, reject: (reason: any) => void) => {
-      xhr.open(method, url, true);
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState !== 4) return; // Ignore progress or other states for now
-        if (xhr.status >= 400) {
-          reject({
-            status: xhr.status,
-            data: JSON.parse(xhr.responseText),
-          });
-        } else if (xhr.status >= 200 && xhr.status < 300) {
-          // Good one!
-          const response: any = JSON.parse(xhr.responseText);
-          resolve(response as T);
-        } else {
-          // Something else that we don't want
-        }
-      };
-      xhr.onabort = () => reject("aborted");
-      if (data !== undefined) {
-        xhr.setRequestHeader("content-type", "application/json");
-        xhr.send(JSON.stringify(data));
-      } else {
-        xhr.send();
-      }
-    });
-  return {
-    run: run,
-    abort: () => {
-      xhr.abort();
-    },
-  };
-};
-
-const post = <T>(url: string, data: any): Task<T> => request<T>("POST", url, data);
-const get = <T>(url: string): Task<T> => request<T>("GET", url);
+interface BalanceResponse {
+  height: number;
+  result: Coin[];
+}
 
 interface ApplicationVersion {
   build_tags: string;
@@ -102,6 +70,59 @@ export interface Account {
   metadataURI: string;
 }
 
+interface Msg {
+  value: {
+    from_address: string;
+    to_address: string;
+    amount: Coin[];
+  };
+}
+
+export interface StdTx {
+  msg: Msg[];
+  fee: {
+    gas: string;
+    amount: Coin[];
+  };
+  memo: string;
+  signature: {
+    signature: string;
+    pub_key: {
+      type: string;
+      value: string;
+    };
+    account_number: string;
+    sequence: string;
+  };
+}
+
+export enum TransactionDirection {
+  Incoming,
+  Outgoing,
+}
+
+export interface Transaction {
+  txhash: string;
+  height: number;
+  tx: StdTx;
+  direction: TransactionDirection;
+  result: {
+    log: string;
+    gas_wanted: string;
+    gas_used: string;
+    tags: { key: string; value: string }[];
+  };
+}
+
+interface TransactionsResponse {
+  total_count: number;
+  count: number;
+  page_number: number;
+  page_total: number;
+  limit: number;
+  txs: Transaction[];
+}
+
 export const Api = {
   getChainId: async (): Promise<string> => {
     const task: Task<NodeInfoResponse | undefined> = get<NodeInfoResponse>(baseUrl + "/node_info");
@@ -123,6 +144,31 @@ export const Api = {
     return {
       IOV: IovToken,
     };
+  },
+  getReceiveTransactions: async (address: string): Promise<TransactionsResponse> => {
+    const task: Task<TransactionsResponse> = get<TransactionsResponse>(
+      baseUrl + "/txs?message.action=send&transfer.recipient=" + address,
+    );
+    return task.run();
+  },
+  getSendTransactions: async (address: string): Promise<TransactionsResponse> => {
+    const task: Task<TransactionsResponse> = get<TransactionsResponse>(
+      baseUrl + "/txs?message.action=send&message.sender=" + address,
+    );
+    return task.run();
+  },
+  getTransactions: async (address: string): Promise<Transaction[]> => {
+    const outgoing: TransactionsResponse = await Api.getReceiveTransactions(address);
+    const incoming: TransactionsResponse = await Api.getSendTransactions(address);
+    return [
+      ...incoming.txs.map((tx: Transaction) => ({ ...tx, direction: TransactionDirection.Incoming })),
+      ...outgoing.txs.map((tx: Transaction) => ({ ...tx, direction: TransactionDirection.Outgoing })),
+    ];
+  },
+  getBalance: async (address: string): Promise<Coin[]> => {
+    const task: Task<BalanceResponse> = get<BalanceResponse>(baseUrl + "/bank/balances/" + address);
+    const response: BalanceResponse = await task.run();
+    return response.result;
   },
   resolveStarname: (starname: string): Task<Account> => {
     const task: Task<ResolveResponse> = post<ResolveResponse>(baseUrl + "/starname/query/resolve", {
