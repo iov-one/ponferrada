@@ -1,3 +1,4 @@
+import { RpcEndpoint } from "communication/rpcEndpoint";
 import { createBrowserHistory } from "history";
 import React from "react";
 import { Route, Router, Switch } from "react-router";
@@ -44,7 +45,6 @@ import Starnames from "./starnames";
 import Terms from "./terms";
 import Transactions from "./transactions";
 import Upgrade from "./upgrade";
-import { RpcEndpoint } from "communication/rpcEndpoint";
 
 export const history = createBrowserHistory();
 

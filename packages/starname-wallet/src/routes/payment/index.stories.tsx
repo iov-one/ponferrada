@@ -6,9 +6,9 @@ import { storiesOf } from "@storybook/react";
 import { FormApi } from "final-form";
 import React from "react";
 import { DeepPartial } from "redux";
-
 import { BalanceState } from "store/balances";
 import { RootState } from "store/reducers";
+
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";

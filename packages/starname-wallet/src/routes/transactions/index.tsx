@@ -1,4 +1,3 @@
-import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { RpcEndpoint } from "communication/rpcEndpoint";
@@ -10,28 +9,12 @@ import { Block, Hairline, Image } from "medulas-react-components";
 import * as React from "react";
 import NoTransactions from "routes/transactions/components/NoTransactions";
 import SendTokens from "routes/transactions/components/SendTokens";
-import { itemBackground } from "theme/css";
 
 import PageMenu from "../../components/PageMenu";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  msg: {
-    "& > span": {
-      lineHeight: 1.3,
-      marginBottom: `${theme.spacing(1)}xs`,
-    },
-  },
-  item: {
-    backgroundColor: itemBackground,
-  },
-}));
-
 const Transactions = (): React.ReactElement => {
   const rpcEndpoint: RpcEndpoint = useRpcEndpoint();
-  const classes = useStyles();
-
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
-
   // const [rows, setRows] = React.useState(5);
   // const [page, setPage] = React.useState(0);
   // const [orderBy, setOrderBy] = React.useState(TX_DATE_COLUMN);
@@ -111,9 +94,8 @@ const Transactions = (): React.ReactElement => {
             const {
               value: { memo, msg },
             } = transaction.tx;
-            console.log(transaction.tx);
             const {
-              value: { from_address, to_address, amount },
+              value: { from_address: fromAddress, to_address: toAddress, amount },
             } = msg[0];
             const icon = transaction.direction === TransactionDirection.Outgoing ? sendTx : receiveTx;
             return (
@@ -135,7 +117,7 @@ const Transactions = (): React.ReactElement => {
                         <Block paddingLeft={2}>
                           <ListItemText
                             className={}
-                            primary={`${from_address} sent ${amount[0].value / 1e6} IOV to ${to_address}`}
+                            primary={`${fromAddress} sent ${amount[0].value / 1e6} IOV to ${toAddress}`}
                             secondary={memo}
                           />
                         </Block>

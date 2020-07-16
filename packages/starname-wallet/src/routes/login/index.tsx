@@ -5,7 +5,6 @@ import { getConfig } from "config";
 import { Target } from "logic/api";
 import { BillboardContext, ToastContext, ToastVariant } from "medulas-react-components";
 import * as React from "react";
-import * as ReactRedux from "react-redux";
 import { Dispatch } from "redux";
 import PageColumn from "routes/login/components/PageColumn";
 import { getBalances, setBalancesAction } from "store/balances";
@@ -45,7 +44,7 @@ async function onGetNeumaExtension(): Promise<void> {
 const Login: React.FC<Props> = (props: Props): React.ReactElement => {
   const billboard = React.useContext(BillboardContext);
   const toast = React.useContext(ToastContext);
-  const dispatch = ReactRedux.useDispatch();
+  // const dispatch = ReactRedux.useDispatch();
 
   const onLoginWithLedger = async (): Promise<void> => {
     try {

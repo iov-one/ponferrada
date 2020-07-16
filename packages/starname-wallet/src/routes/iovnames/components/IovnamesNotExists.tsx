@@ -1,12 +1,12 @@
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
+import { RpcEndpoint } from "communication/rpcEndpoint";
+import { useRpcEndpoint } from "contexts/rpcEndpointContext";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
 import { REGISTER_IOVNAME_LINK } from "..";
 import { NoIovnameHeader } from "../../account/register/components/IovnameForm";
-import { useRpcEndpoint } from "contexts/rpcEndpointContext";
-import { RpcEndpoint } from "communication/rpcEndpoint";
 
 interface Props {
   readonly onRegisterIovname: () => void;
