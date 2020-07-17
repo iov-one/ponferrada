@@ -116,7 +116,6 @@ const Transactions = (): React.ReactElement => {
                         <Image src={icon} height={30} alt="Tx operation" />
                         <Block paddingLeft={2}>
                           <ListItemText
-                            className={}
                             primary={`${fromAddress} sent ${amount[0].value / 1e6} IOV to ${toAddress}`}
                             secondary={memo}
                           />
