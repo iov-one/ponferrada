@@ -2,7 +2,7 @@ import { ChainId, Token, TokenTicker } from "@iov/bcp";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
-import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import { FormValues, Typography } from "medulas-react-components";
 import React from "react";
 import { stringToAmount } from "ui-logic";
@@ -46,7 +46,7 @@ storiesOf(`${bierzoRoot}/Account Operation`, module)
           return { tokens: stringToAmount("5", iov) };
         }}
         bnsChainId={"local-iov-devnet" as ChainId}
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         setTransactionId={value => {
           action("setTransactionId")(value);
         }}

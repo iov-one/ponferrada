@@ -18,9 +18,8 @@ import {
   Typography,
 } from "medulas-react-components";
 import React, { useMemo, useState } from "react";
+import { BalanceState } from "store/balances";
 import { amountToNumber, amountToString } from "ui-logic";
-
-import { BalanceState } from "../../../../store/balances";
 
 const useStyles = makeStyles({
   avatar: {
@@ -62,7 +61,7 @@ const CurrencyToSend = ({
     return composeValidators(
       required,
       number,
-      maxFractionalDigits(selectedTokenTicker ? balances[selectedTokenTicker].fractionalDigits : 0),
+      maxFractionalDigits(selectedTokenTicker ? 6 : 0),
       lowerOrEqualThan(selectedTokenTicker ? amountToNumber(balances[selectedTokenTicker]) : 0),
       greaterThan(QUANTITY_MIN),
     );

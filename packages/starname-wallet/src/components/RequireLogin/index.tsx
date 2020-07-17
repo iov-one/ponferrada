@@ -1,21 +1,20 @@
+import { RpcEndpoint } from "communication/rpcEndpoint";
+import { RpcEndpointContext } from "contexts/rpcEndpointContext";
 import * as React from "react";
-import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
-
-import { LOGIN_ROUTE } from "../../routes/paths";
-import { RootState } from "../../store/reducers";
+import { LOGIN_ROUTE } from "routes/paths";
 
 interface Props {
-  readonly children: React.ReactNode;
+  readonly rpcEndpoint: RpcEndpoint | null;
 }
 
-const RequireLogin = ({ children }: Props): React.ReactElement => {
-  const identities = useSelector((state: RootState) => state.identities);
-
-  if (identities.size !== 0) {
-    return <React.Fragment>{children}</React.Fragment>;
+const RequireLogin: React.FC<React.PropsWithChildren<Props>> = ({
+  children,
+  rpcEndpoint,
+}: React.PropsWithChildren<Props>): React.ReactElement => {
+  if (rpcEndpoint !== null) {
+    return <RpcEndpointContext.Provider value={rpcEndpoint}>{children}</RpcEndpointContext.Provider>;
   }
-
   return <Redirect push to={LOGIN_ROUTE} />;
 };
 

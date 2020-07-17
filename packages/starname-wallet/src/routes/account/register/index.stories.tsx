@@ -1,7 +1,7 @@
 import { Address, ChainId, TransactionId } from "@iov/bcp";
 import { linkTo } from "@storybook/addon-links";
 import { storiesOf } from "@storybook/react";
-import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import { ChainAddressPairWithName } from "components/AddressesTable";
 import React from "react";
 
@@ -45,7 +45,7 @@ storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
     <DecoratedStorybook>
       <IovnameForm
         chainAddresses={addresses}
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         setTransactionId={() => {}}
       />
@@ -55,7 +55,7 @@ storiesOf(REGISTER_IOVNAME_STORY_PATH, module)
     <DecoratedStorybook>
       <IovnameForm
         chainAddresses={addresses}
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         setTransactionId={() => {}}
       />
@@ -67,7 +67,7 @@ storiesOf(REGISTER_STARNAME_STORY_PATH, module)
   .add(REGISTER_STARNAME_REGISTRATION_STORY_ZERO_FEE_PATH, () => (
     <DecoratedStorybook>
       <StarnameForm
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         setTransactionId={() => {}}
       />
@@ -76,7 +76,7 @@ storiesOf(REGISTER_STARNAME_STORY_PATH, module)
   .add(REGISTER_STARNAME_REGISTRATION_STORY_PATH, () => (
     <DecoratedStorybook>
       <StarnameForm
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         onCancel={linkTo(BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH)}
         setTransactionId={() => {}}
       />

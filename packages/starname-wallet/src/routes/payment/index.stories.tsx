@@ -6,9 +6,9 @@ import { storiesOf } from "@storybook/react";
 import { FormApi } from "final-form";
 import React from "react";
 import { DeepPartial } from "redux";
+import { BalanceState } from "store/balances";
+import { RootState } from "store/reducers";
 
-import { BalanceState } from "../../store/balances";
-import { RootState } from "../../store/reducers";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import { BALANCE_STORY_PATH, BALANCE_STORY_VIEW_PATH } from "../balance/index.stories";
 import { TRANSACTIONS_STORY_PATH, TRANSACTIONS_STORY_SHOW_PATH } from "../transactions/index.stories";
@@ -24,16 +24,7 @@ const PAYMENT_STORY_UNVERIFIED_RECIPIENT = "Unverified Recipient";
 const PAYMENT_STORY_VERIFIED_RECIPIENT = "Verified Recipient";
 
 const BALANCES: BalanceState = {
-  BASH: {
-    quantity: "82500",
-    fractionalDigits: 4,
-    tokenTicker: "BASH" as TokenTicker,
-  },
-  CASH: {
-    quantity: "1226775",
-    fractionalDigits: 5,
-    tokenTicker: "CASH" as TokenTicker,
-  },
+  BASH: 82500,
 };
 
 const fullStore = (): DeepPartial<RootState> => {

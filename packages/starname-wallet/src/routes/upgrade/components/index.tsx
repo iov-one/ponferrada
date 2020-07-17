@@ -1,4 +1,3 @@
-import { Amount } from "@iov/bcp";
 import { Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, Button, Image, Typography } from "medulas-react-components";
@@ -10,7 +9,7 @@ import neumaLogo from "./../../../components/Header/assets/neumaWalletLogo.svg";
 interface Props {
   readonly iovAddress?: string;
   readonly iovAddressWithNewChain?: string;
-  readonly balances: { [token: string]: Amount };
+  readonly balances: { [token: string]: number };
   readonly onRegisterIovname: () => void;
   readonly onUpgradeIovname?: () => void;
   readonly onGoHome?: () => void;
@@ -18,7 +17,6 @@ interface Props {
 
 const UpgradeProcess = ({
   iovAddress,
-  balances,
   onRegisterIovname,
   onUpgradeIovname,
   onGoHome,

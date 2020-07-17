@@ -1,4 +1,3 @@
-import { Amount } from "@iov/bcp";
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
 
@@ -6,13 +5,13 @@ import * as actions from "./actions";
 
 export interface SetBalancesActionType extends Action {
   type: "@@balances/SET";
-  payload: { [key: string]: Amount };
+  payload: { [key: string]: number };
 }
 
 export type BalanceActions = ActionType<typeof actions>;
 
 export interface BalanceState {
-  [token: string]: Amount;
+  [token: string]: number;
 }
 const initState: BalanceState = {};
 

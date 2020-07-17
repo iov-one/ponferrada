@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
-import { extensionRpcEndpoint } from "communication/extensionRpcEndpoint";
+import { ledgerRpcEndpoint } from "communication/ledgerRpcEndpoint";
 import { ChainAddressPairWithName } from "components/AddressesTable";
 import { Typography } from "medulas-react-components";
 import React from "react";
@@ -60,7 +60,7 @@ storiesOf(ACCOUNT_DELETE_STORY_PATH, module)
           return { tokens: stringToAmount("5", iov) };
         }}
         bnsChainId={"local-iov-devnet"}
-        rpcEndpoint={extensionRpcEndpoint}
+        rpcEndpoint={ledgerRpcEndpoint}
         setTransactionId={(value): void => {
           action("setTransactionId")(value);
         }}

@@ -1,39 +1,21 @@
-import {
-  Address,
-  BlockchainConnection,
-  ConfirmedTransaction,
-  FailedTransaction,
-  isFailedTransaction,
-  TransactionId,
-  UnsignedTransaction,
-} from "@iov/bcp";
+import { StdTx, Transaction } from "logic/api";
+import React from "react";
 import { ReadonlyDate } from "readonly-date";
 
-export interface ProcessedTx<T extends UnsignedTransaction = UnsignedTransaction> {
+export interface ProcessedTx {
   readonly time: ReadonlyDate;
-  readonly id: TransactionId;
-  readonly original: T;
+  readonly id: string;
+  readonly original: StdTx;
 }
 
-export abstract class BwParser<K extends UnsignedTransaction> {
-  public async parse(
-    conn: BlockchainConnection,
-    transaction: ConfirmedTransaction<K> | FailedTransaction,
-    _: Address,
-  ): Promise<ProcessedTx<K>> {
-    if (isFailedTransaction(transaction)) {
-      throw new Error("Not supported error txs for now");
-    }
-
-    const header = await conn.getBlockHeader(transaction.height);
-    const time = header.time;
-
+export abstract class BwParser<K extends Transaction> {
+  public async parse(transaction: K, _: string): Promise<ProcessedTx> {
     return {
-      id: transaction.transactionId,
-      time,
-      original: transaction.transaction,
+      id: transaction.hash,
+      time: new Date(),
+      original: transaction.tx,
     };
   }
-  abstract graphicalRepresentation(tx: ProcessedTx<K>, addresses: Address[]): React.ReactElement;
-  abstract headerRepresentation(tx: ProcessedTx<K>, lastOne: boolean): React.ReactElement;
+  abstract graphicalRepresentation(tx: ProcessedTx, addresses: string[]): React.ReactElement;
+  abstract headerRepresentation(tx: ProcessedTx, lastOne: boolean): React.ReactElement;
 }

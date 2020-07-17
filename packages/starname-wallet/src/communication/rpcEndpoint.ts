@@ -1,4 +1,5 @@
-import { Account, Target, Task } from "logic/api";
+import { Account, Coin, Transaction } from "logic/api";
+import { Task } from "logic/http";
 
 export type RpcEndpointType = "ledger" | "extension";
 
@@ -9,7 +10,9 @@ export interface RpcEndpoint {
   readonly noMatchingIdentityMessage: string;
   readonly type: RpcEndpointType;
 
-  resolveStarname: (query: string) => Task<Account>;
-  executeRequest: (request: any) => Promise<string | undefined>;
-  getTargets: () => Promise<Target[] | undefined>;
+  resolveStarname(query: string): Task<Account>;
+  executeRequest(request: any): Promise<string | undefined>;
+  start(): Promise<boolean>;
+  getBalances(): Promise<Coin[]>;
+  getTransactions(): Promise<Transaction[]>;
 }
