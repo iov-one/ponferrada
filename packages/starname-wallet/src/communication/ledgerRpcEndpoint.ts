@@ -14,7 +14,7 @@ import { RpcEndpoint } from "./rpcEndpoint";
   };
   return addressResponse;
 }*/
-/*import { toBase64 } from "@cosmjs/encoding";
+/* import { toBase64 } from "@cosmjs/encoding";
 import {
   Algorithm,
   ChainId,
@@ -64,7 +64,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
   getTargets: async (): Promise<Target[]> => {
     const ledger: Ledger = new Ledger({
       testModeAllowed: true,
-/*
+      /*
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     if (
       request.method !== "getIdentities" ||
