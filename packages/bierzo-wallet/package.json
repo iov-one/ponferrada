@@ -1,6 +1,6 @@
 {
   "name": "bierzo-wallet",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "private": true,
   "dependencies": {
     "@cosmwasm/bcp": "^0.7.7",
