@@ -1,4 +1,3 @@
-export { Amount, Token } from "obsolete-types";
 export { amountToGwei, amountToNumber, amountToString, stringToAmount, sumAmounts } from "./balances";
 export { parseRecipients } from "./csv";
 export { ErrorParser } from "./error";
