@@ -110,32 +110,36 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           textAlign="center"
         >
           <TitleSection primaryTitle="Welcome" secondaryTitle="to your Neuma wallet" />
-          <SubtitleSection>
-            To access the wallet please authenticate using Neuma or Ledger Nano S
-          </SubtitleSection>
-          <Block marginBottom={2}>
-            <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
-              Continue with Neuma Browser Extension
-            </Button>
-          </Block>
-          <Block marginBottom={4}>
-            <Button fullWidth color="inverted" onClick={onLoginWithLedger} startIcon={<LedgerIcon />}>
-              Continue with Ledger Nano S
-            </Button>
-          </Block>
-          <Block marginBottom={5}>
-            <Typography variant="body1" weight="light" color="textPrimary">
-              or, in case you don’t have the extension
-            </Typography>
-          </Block>
-          <Button
-            fullWidth
-            variant="text"
-            onClick={onGetNeumaExtension}
-            endIcon={<ArrowForwardIcon fontSize="small" />}
-          >
-            Get Neuma Browser Extension
-          </Button>
+          {false && (
+            <>
+              <SubtitleSection>
+                To access the wallet please authenticate using Neuma or Ledger Nano S
+              </SubtitleSection>
+              <Block marginBottom={2}>
+                <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
+                  Continue with Neuma Browser Extension
+                </Button>
+              </Block>
+              <Block marginBottom={4}>
+                <Button fullWidth color="inverted" onClick={onLoginWithLedger} startIcon={<LedgerIcon />}>
+                  Continue with Ledger Nano S
+                </Button>
+              </Block>
+              <Block marginBottom={5}>
+                <Typography variant="body1" weight="light" color="textPrimary">
+                  or, in case you don’t have the extension
+                </Typography>
+              </Block>
+              <Button
+                fullWidth
+                variant="text"
+                onClick={onGetNeumaExtension}
+                endIcon={<ArrowForwardIcon fontSize="small" />}
+              >
+                Get Neuma Browser Extension
+              </Button>
+            </>
+          )}
         </Block>
       </Block>
     </Block>
