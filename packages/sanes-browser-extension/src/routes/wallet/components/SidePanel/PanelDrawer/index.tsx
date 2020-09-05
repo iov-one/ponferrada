@@ -13,9 +13,9 @@ import About from "./components/About";
 import ChangeNetwork from "./components/ChangeNetwork";
 import DeleteWallet from "./components/DeleteWallet";
 import Menu from "./components/Menu";
+import Migration from "./components/Migration";
 import Networks from "./components/Networks";
 import RecoveryWords from "./components/RecoveryWords";
-import Migration from "./components/Migration";
 import Requests from "./components/Requests";
 import Settings from "./components/Settings";
 
