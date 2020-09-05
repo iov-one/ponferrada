@@ -15,11 +15,11 @@ import {
 import React, { useContext, useState } from "react";
 
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
-import { checkPassword, getMigrationSignature } from "../../../../../../utils/chrome";
+import { checkPassword } from "../../../../../../utils/chrome";
+// import { getMigrationSignature } from "../../../../../../utils/chrome";
 import lockIcon from "../../../../assets/lock.svg";
 
 export const passwordField = "passwordInputField";
-const passwordPlaceholder = "Enter your password";
 const errorIncorrectPassword = "Incorrect password";
 
 const useStyles = makeStyles({
@@ -51,9 +51,7 @@ const Migration = (): JSX.Element => {
   const toast = useContext(ToastContext);
 
   const checkMnemonicPassword = async (formValues: FormValues): Promise<void> => {
-    console.log("Tentative");
-    const blini = await getMigrationSignature();
-    console.log(blini);
+    // await getMigrationSignature();
     const password = formValues[passwordField];
     let passwordValid = false;
 
@@ -76,7 +74,7 @@ const Migration = (): JSX.Element => {
     return errors;
   };
 
-  const { form, handleSubmit, pristine, submitting, invalid } = useForm({
+  const { form, handleSubmit } = useForm({
     onSubmit: checkMnemonicPassword,
     validate,
   });
