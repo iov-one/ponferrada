@@ -51,9 +51,11 @@ const Migration = (): JSX.Element => {
   const toast = useContext(ToastContext);
 
   const checkMnemonicPassword = async (formValues: FormValues): Promise<void> => {
+    /* eslint-disable no-console */
     console.log("Tentative");
     const blini = await getMigrationSignature();
     console.log(blini);
+    /* eslint-enable no-console */
     const password = formValues[passwordField];
     let passwordValid = false;
 

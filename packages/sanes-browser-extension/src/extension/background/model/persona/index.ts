@@ -4,10 +4,10 @@ import {
   Amount,
   ChainId,
   isSendTransaction,
-  SendTransaction,
-  UnsignedTransaction,
   Nonce,
+  SendTransaction,
   TokenTicker,
+  UnsignedTransaction,
 } from "@iov/bcp";
 import {
   bnsCodec,
