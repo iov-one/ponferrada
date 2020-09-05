@@ -1,4 +1,14 @@
-import { Address, Amount, ChainId, isSendTransaction, SendTransaction, UnsignedTransaction } from "@iov/bcp";
+import { CosmWasmCodec } from "@cosmwasm/bcp";
+import {
+  Address,
+  Amount,
+  ChainId,
+  isSendTransaction,
+  SendTransaction,
+  UnsignedTransaction,
+  Nonce,
+  TokenTicker,
+} from "@iov/bcp";
 import {
   bnsCodec,
   BnsConnection,
@@ -352,8 +362,44 @@ export class Persona {
     }
   }
 
-  public async getMigrationSignature(): Promise<string> {
-    return "oups!!";
+  public async getMigrationSignature(): Promise<any> {
+    const chainId = "local-iov-devnet" as ChainId;
+    const profile = this.profile;
+    const faucet = profile.getAllIdentities().find(row => row.chainId === "local-iov-devnet");
+    const faucet2 = profile.getAllIdentities().find(row => row.chainId === "starname-migration");
+    if (faucet && faucet2) {
+      const faucetAddress = bnsCodec.identityToAddress(faucet);
+
+      const addressPefix = "star";
+      const bankToken = {
+        fractionalDigits: 9,
+        name: "Internet Of Value Token",
+        ticker: "IOV",
+        denom: "IOV",
+      };
+      const cosmwasmCodec = new CosmWasmCodec(addressPefix, [bankToken]);
+      const starnameAddress = cosmwasmCodec.identityToAddress(faucet2);
+
+      const sendTx = {
+        kind: "bcp/send",
+        chainId: chainId,
+        sender: faucetAddress,
+        recipient: "tiov100ltqp3g7sxzqkkzv7qtz43932lhmm6gtnx5x8",
+        memo: starnameAddress,
+        amount: {
+          quantity: "1000000001",
+          fractionalDigits: 9,
+          tokenTicker: "CASH" as TokenTicker,
+        },
+        fee: {
+          tokens: { quantity: "500000000", fractionalDigits: 9, tokenTicker: "IOV" as TokenTicker },
+          payer: faucetAddress,
+        },
+      };
+      return await profile.signTransaction(faucet, sendTx as UnsignedTransaction, bnsCodec, 10000 as Nonce);
+    } else {
+      return "ERROR";
+    }
   }
 
   private getBnsConnection(): BnsConnection {

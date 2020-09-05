@@ -16,7 +16,7 @@ import React, { useContext, useState } from "react";
 
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
 import { checkPassword } from "../../../../../../utils/chrome";
-// import { getMigrationSignature } from "../../../../../../utils/chrome";
+import { getMigrationSignature } from "../../../../../../utils/chrome";
 import lockIcon from "../../../../assets/lock.svg";
 
 export const passwordField = "passwordInputField";
@@ -51,7 +51,9 @@ const Migration = (): JSX.Element => {
   const toast = useContext(ToastContext);
 
   const checkMnemonicPassword = async (formValues: FormValues): Promise<void> => {
-    // await getMigrationSignature();
+    console.log("Tentative");
+    const blini = await getMigrationSignature();
+    console.log(blini);
     const password = formValues[passwordField];
     let passwordValid = false;
 

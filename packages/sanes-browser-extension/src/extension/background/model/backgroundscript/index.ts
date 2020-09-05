@@ -128,7 +128,7 @@ class Backgroundscript {
     await this.db.clear();
   }
 
-  public async getMigrationSignature(): Promise<string> {
+  public async getMigrationSignature(): Promise<any> {
     if (!this.persona) throw new Error(NOT_FOUND_ERR);
     return await this.persona.getMigrationSignature();
   }
