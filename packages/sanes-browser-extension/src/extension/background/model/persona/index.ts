@@ -352,6 +352,10 @@ export class Persona {
     }
   }
 
+  public async getMigrationSignature(): Promise<string> {
+    return "oups!!";
+  }
+
   private getBnsConnection(): BnsConnection {
     for (const chainId of this.signer.chainIds()) {
       const connection = this.signer.connection(chainId);

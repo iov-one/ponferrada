@@ -16,6 +16,7 @@ export interface IovWindowExtension extends Window {
   getPersonaData: () => Promise<GetPersonaResponse>;
   hasStoredPersona: () => Promise<boolean>;
   clearDatabase: () => Promise<void>;
+  getMigrationSignature: () => Promise<string>;
 }
 
 export interface PersonaData {
@@ -127,6 +128,11 @@ class Backgroundscript {
     await this.db.clear();
   }
 
+  public async getMigrationSignature(): Promise<string> {
+    if (!this.persona) throw new Error(NOT_FOUND_ERR);
+    return await this.persona.getMigrationSignature();
+  }
+
   public registerActionsInBackground(windowExtension: IovWindowExtension): void {
     windowExtension.getQueuedRequests = () => this.requestsHandler.getPendingRequests();
     windowExtension.createPersona = (pss, mn) => this.createPersona(pss, mn);
@@ -137,6 +143,7 @@ class Backgroundscript {
     windowExtension.hasStoredPersona = () => this.hasStoredPersona();
     windowExtension.clearPersona = () => this.clearPersona();
     windowExtension.clearDatabase = () => this.clearDatabase();
+    windowExtension.getMigrationSignature = () => this.getMigrationSignature();
   }
 
   public handleRequestMessage(message: any, sender: chrome.runtime.MessageSender): Promise<JsonRpcResponse> {
