@@ -15,6 +15,7 @@ import DeleteWallet from "./components/DeleteWallet";
 import Menu from "./components/Menu";
 import Networks from "./components/Networks";
 import RecoveryWords from "./components/RecoveryWords";
+import Migration from "./components/Migration";
 import Requests from "./components/Requests";
 import Settings from "./components/Settings";
 
@@ -31,6 +32,7 @@ export enum Views {
   RecoveryWords = "Recovery Words",
   DeleteWallet = "Delete Wallet",
   ChangeNetwork = "Change Network",
+  Migration = "Migration",
 }
 
 const viewComponents = {
@@ -42,12 +44,14 @@ const viewComponents = {
   [Views.RecoveryWords]: RecoveryWords,
   [Views.DeleteWallet]: DeleteWallet,
   [Views.ChangeNetwork]: ChangeNetwork,
+  [Views.Migration]: Migration,
 };
 
 const previousViews = {
   [Views.Menu]: Views.Menu,
   [Views.Requests]: Views.Menu,
   [Views.Settings]: Views.Menu,
+  [Views.Migration]: Views.Menu,
   [Views.Networks]: Views.Settings,
   [Views.About]: Views.Settings,
   [Views.RecoveryWords]: Views.Settings,
