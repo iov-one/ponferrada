@@ -35,7 +35,7 @@ export const goToMenu = async (drawerComponent: React.Component): Promise<Drawer
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const menuLinks = menu!.querySelectorAll("nav > div");
-  expect(menuLinks.length).toBe(3);
+  expect(menuLinks.length).toBe(4);
 
   const [requestsLink, settingsLink, logOutLink] = menuLinks;
   expect(requestsLink.textContent).toBe(Views.Requests);
