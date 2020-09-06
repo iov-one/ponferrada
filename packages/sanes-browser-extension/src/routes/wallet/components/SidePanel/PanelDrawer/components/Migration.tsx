@@ -56,7 +56,6 @@ const Migration = (): JSX.Element => {
       } else {
         url = "http://kip-metadata-demo.herokuapp.com/signatures";
       }
-
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -65,7 +64,7 @@ const Migration = (): JSX.Element => {
         },
         body: JSON.stringify({
           iov1: signature.transaction.sender,
-          neuma_signature: JSON.stringify(jsonSignature),
+          neuma: JSON.stringify(jsonSignature),
         }),
       });
 
