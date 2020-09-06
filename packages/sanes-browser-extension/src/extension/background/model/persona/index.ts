@@ -371,7 +371,6 @@ export class Persona {
       chainId = "iov-mainnet" as ChainId;
       iovIdentity = profile.getAllIdentities().find(row => row.chainId === "iov-mainnet");
     }
-    console.log(profile.getAllIdentities());
 
     const starnameIdentity = profile.getAllIdentities().find(row => row.chainId === "starname-migration");
     if (iovIdentity && starnameIdentity) {

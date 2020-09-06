@@ -49,16 +49,12 @@ const Migration = (): JSX.Element => {
   const toast = useContext(ToastContext);
 
   const submitMigrationRequest = async (formValues: FormValues): Promise<void> => {
-    /* eslint-disable no-console */
     const signature = await getMigrationSignature();
-    console.log(signature);
     const jsonSignature = TransactionEncoder.toJson(signature);
 
-    /* eslint-enable no-console */
     setIov1address(signature.transaction.sender);
     setStar1address(signature.transaction.memo);
     setChainid(signature.transaction.chainId);
-    // toast.show("Incorrect password", ToastVariant.ERROR);
 
     try {
       let url;
