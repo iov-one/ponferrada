@@ -27,7 +27,7 @@
     "scripts": ["js/backgroundScript.js"],
     "persistent": true
   },
-  "permissions": [],
+  "permissions": ["http://localhost/*"],
   "web_accessible_resources": ["js/*"],
   "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-qAcmzXQ8jmB7ddF3B7OWAJKIn2C00zGiCGj8W5dG+wo='; object-src 'self'"
 }

@@ -11,16 +11,13 @@ import {
   Typography,
   useForm,
   ValidationError,
+  Link,
 } from "medulas-react-components";
 import React, { useContext, useState } from "react";
+import { TransactionEncoder } from "@iov/encoding";
 
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
-import { checkPassword } from "../../../../../../utils/chrome";
 import { getMigrationSignature } from "../../../../../../utils/chrome";
-import lockIcon from "../../../../assets/lock.svg";
-
-export const passwordField = "passwordInputField";
-const errorIncorrectPassword = "Incorrect password";
 
 const useStyles = makeStyles({
   textLines: {
@@ -34,7 +31,7 @@ const useStyles = makeStyles({
   },
   password: {
     height: "24px",
-    padding: "16px 16px 16px 56px",
+    padding: "16px 16px 16px 16px",
     backgroundColor: "#FCFCFC",
   },
   wordsContainer: {
@@ -44,87 +41,101 @@ const useStyles = makeStyles({
 
 const Migration = (): JSX.Element => {
   const classes = useStyles();
+  const [iov1address, setIov1address] = useState("");
+  const [star1address, setStar1address] = useState("");
+  const [statuscode, setStatuscode] = useState("");
+  const [chainid, setChainid] = useState("");
 
-  const [showMnemonic, setShowMnemonic] = useState(false);
-
-  const persona = useContext(PersonaContext);
   const toast = useContext(ToastContext);
 
-  const checkMnemonicPassword = async (formValues: FormValues): Promise<void> => {
+  const submitMigrationRequest = async (formValues: FormValues): Promise<void> => {
     /* eslint-disable no-console */
-    console.log("Tentative");
-    const blini = await getMigrationSignature();
-    console.log(blini);
+    const signature = await getMigrationSignature();
+    console.log(signature);
+    const jsonSignature = TransactionEncoder.toJson(signature);
+
     /* eslint-enable no-console */
-    const password = formValues[passwordField];
-    let passwordValid = false;
+    setIov1address(signature.transaction.sender);
+    setStar1address(signature.transaction.memo);
+    setChainid(signature.transaction.chainId);
+    // toast.show("Incorrect password", ToastVariant.ERROR);
 
     try {
-      passwordValid = await checkPassword(password);
-    } catch {
-      toast.show(errorIncorrectPassword, ToastVariant.ERROR);
-    }
+      let url;
+      if (signature.transaction.chainId == "local-iov-devnet") {
+        url = "http://localhost:3000/signatures";
+      } else {
+        url = "http://kip-metadata-demo.herokuapp.com/signatures";
+      }
 
-    setShowMnemonic(passwordValid);
+      let response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          iov1: signature.transaction.sender,
+          neuma_signature: JSON.stringify(jsonSignature),
+        }),
+      });
+
+      if (!response.ok) throw response;
+
+      const data = await response.json();
+      console.log(data.txid);
+      setStatuscode(data.txid);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const validate = (values: object): object => {
     const formValues = values as FormValues;
     const errors: ValidationError = {};
-    if (!formValues[passwordField]) {
-      errors[passwordField] = "Required";
-    }
-
     return errors;
   };
 
   const { form, handleSubmit } = useForm({
-    onSubmit: checkMnemonicPassword,
+    onSubmit: submitMigrationRequest,
     validate,
   });
 
   return (
     <Block marginLeft={3} marginRight={3}>
       <Typography variant="subtitle1" className={classes.textLines}>
-        To migrate please enter your email address press the green button so our support can migrate your
-        token.
+        To migrate please press the green button. After signature verification, the IOV support will start the
+        migration of your token.
       </Typography>
       <Block marginTop={4} />
       <Block marginTop={1} />
-      {!showMnemonic && (
-        <Form onSubmit={handleSubmit}>
-          <Block display="flex" alignItems="flex-start">
-            <TextField
-              placeholder="enter your email address"
-              type="text"
-              form={form}
-              required
-              fullWidth
-              margin="none"
-              name={passwordField}
-              inputProps={{ className: classes.password }}
-            />
-          </Block>
-          <Block marginTop={2} />
-          <Button fullWidth type="submit">
-            Request Migration
-          </Button>
-        </Form>
-      )}
-      {showMnemonic && (
-        <Block
-          padding={2}
-          border="1px solid #E0E0E0"
-          borderRadius="4px"
-          display="flex"
-          alignItems="flex-start"
-          className={classes.wordsContainer}
-        >
-          <Image alt="Lock" src={lockIcon} width="24px" />
-          <Block marginLeft={2} />
-          <Typography variant="body1" className={classes.textLines}>
-            {persona.mnemonic}
-          </Typography>
+
+      <Form onSubmit={handleSubmit}>
+        <Block display="flex" alignItems="flex-start"></Block>
+        <Block marginTop={2} />
+        <Button fullWidth type="submit">
+          Request Migration
+        </Button>
+      </Form>
+      <br />
+      <br />
+      <br />
+      {iov1address && (
+        <Block padding={2} border="1px solid #E0E0E0" borderRadius="4px">
+          Status
+          <br />
+          <br />
+          {!statuscode && <b>Pending</b>}
+          {!!statuscode && <Link to={statuscode}>Migration Complete</Link>}
+          <br />
+          <br />
+          {chainid}
+          <br />
+          <br />
+          {iov1address}
+          <br />
+          <br />
+          {star1address}
         </Block>
       )}
     </Block>

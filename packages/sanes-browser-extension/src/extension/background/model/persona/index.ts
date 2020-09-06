@@ -200,15 +200,15 @@ export class Persona {
       const connector = chainConnector(chainSpec);
 
       try {
-        const { connection } = await signer.addChain(connector);
-        managerChains.push({
-          chainId: connection.chainId,
-          algorithm: algorithmForCodec(chainSpec.codecType),
-          derivePath: pathBuilderForCodec(chainSpec.codecType),
-        });
+        await signer.addChain(connector);
       } catch (e) {
         console.error("Could not add chain. " + e);
       }
+      managerChains.push({
+        chainId: chainSpec.chainId,
+        algorithm: algorithmForCodec(chainSpec.codecType),
+        derivePath: pathBuilderForCodec(chainSpec.codecType),
+      });
     }
 
     return managerChains;
@@ -363,12 +363,19 @@ export class Persona {
   }
 
   public async getMigrationSignature(): Promise<any> {
-    const chainId = "local-iov-devnet" as ChainId;
     const profile = this.profile;
-    const faucet = profile.getAllIdentities().find(row => row.chainId === "local-iov-devnet");
-    const faucet2 = profile.getAllIdentities().find(row => row.chainId === "starname-migration");
-    if (faucet && faucet2) {
-      const faucetAddress = bnsCodec.identityToAddress(faucet);
+
+    let chainId = "local-iov-devnet" as ChainId;
+    let iovIdentity = profile.getAllIdentities().find(row => row.chainId === "local-iov-devnet");
+    if (!iovIdentity) {
+      chainId = "iov-mainnet" as ChainId;
+      iovIdentity = profile.getAllIdentities().find(row => row.chainId === "iov-mainnet");
+    }
+    console.log(profile.getAllIdentities());
+
+    const starnameIdentity = profile.getAllIdentities().find(row => row.chainId === "starname-migration");
+    if (iovIdentity && starnameIdentity) {
+      const iovAddress = bnsCodec.identityToAddress(iovIdentity);
 
       const addressPefix = "star";
       const bankToken = {
@@ -378,12 +385,12 @@ export class Persona {
         denom: "IOV",
       };
       const cosmwasmCodec = new CosmWasmCodec(addressPefix, [bankToken]);
-      const starnameAddress = cosmwasmCodec.identityToAddress(faucet2);
+      const starnameAddress = cosmwasmCodec.identityToAddress(starnameIdentity);
 
       const sendTx = {
         kind: "bcp/send",
         chainId: chainId,
-        sender: faucetAddress,
+        sender: iovAddress,
         recipient: "tiov100ltqp3g7sxzqkkzv7qtz43932lhmm6gtnx5x8",
         memo: starnameAddress,
         amount: {
@@ -393,10 +400,15 @@ export class Persona {
         },
         fee: {
           tokens: { quantity: "500000000", fractionalDigits: 9, tokenTicker: "IOV" as TokenTicker },
-          payer: faucetAddress,
+          payer: iovAddress,
         },
       };
-      return await profile.signTransaction(faucet, sendTx as UnsignedTransaction, bnsCodec, 10000 as Nonce);
+      return await profile.signTransaction(
+        iovIdentity,
+        sendTx as UnsignedTransaction,
+        bnsCodec,
+        10000 as Nonce,
+      );
     } else {
       return "ERROR";
     }

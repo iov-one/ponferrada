@@ -16,7 +16,7 @@ export interface IovWindowExtension extends Window {
   getPersonaData: () => Promise<GetPersonaResponse>;
   hasStoredPersona: () => Promise<boolean>;
   clearDatabase: () => Promise<void>;
-  getMigrationSignature: () => Promise<string>;
+  getMigrationSignature: () => Promise<any>;
 }
 
 export interface PersonaData {
