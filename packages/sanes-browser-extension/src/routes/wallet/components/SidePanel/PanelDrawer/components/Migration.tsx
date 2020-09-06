@@ -4,19 +4,14 @@ import {
   Button,
   Form,
   FormValues,
-  Image,
   Link,
   makeStyles,
-  TextField,
-  ToastContext,
-  ToastVariant,
   Typography,
   useForm,
   ValidationError,
 } from "medulas-react-components";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
-import { PersonaContext } from "../../../../../../context/PersonaProvider";
 import { getMigrationSignature } from "../../../../../../utils/chrome";
 
 const useStyles = makeStyles({
@@ -46,8 +41,6 @@ const Migration = (): JSX.Element => {
   const [statuscode, setStatuscode] = useState("");
   const [chainid, setChainid] = useState("");
 
-  const toast = useContext(ToastContext);
-
   const submitMigrationRequest = async (formValues: FormValues): Promise<void> => {
     const signature = await getMigrationSignature();
     const jsonSignature = TransactionEncoder.toJson(signature);
@@ -58,7 +51,7 @@ const Migration = (): JSX.Element => {
 
     try {
       let url;
-      if (signature.transaction.chainId == "local-iov-devnet") {
+      if (signature.transaction.chainId === "local-iov-devnet") {
         url = "http://localhost:3000/signatures";
       } else {
         url = "http://kip-metadata-demo.herokuapp.com/signatures";
@@ -79,7 +72,6 @@ const Migration = (): JSX.Element => {
       if (!response.ok) throw response;
 
       const data = await response.json();
-      console.log(data.txid);
       setStatuscode(data.txid);
     } catch (e) {
       console.error(e);
@@ -87,12 +79,11 @@ const Migration = (): JSX.Element => {
   };
 
   const validate = (values: object): object => {
-    const formValues = values as FormValues;
     const errors: ValidationError = {};
     return errors;
   };
 
-  const { form, handleSubmit } = useForm({
+  const { handleSubmit } = useForm({
     onSubmit: submitMigrationRequest,
     validate,
   });
