@@ -1,9 +1,11 @@
+import { TransactionEncoder } from "@iov/encoding";
 import {
   Block,
   Button,
   Form,
   FormValues,
   Image,
+  Link,
   makeStyles,
   TextField,
   ToastContext,
@@ -11,10 +13,8 @@ import {
   Typography,
   useForm,
   ValidationError,
-  Link,
 } from "medulas-react-components";
 import React, { useContext, useState } from "react";
-import { TransactionEncoder } from "@iov/encoding";
 
 import { PersonaContext } from "../../../../../../context/PersonaProvider";
 import { getMigrationSignature } from "../../../../../../utils/chrome";
@@ -64,7 +64,7 @@ const Migration = (): JSX.Element => {
         url = "http://kip-metadata-demo.herokuapp.com/signatures";
       }
 
-      let response = await fetch(url, {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
