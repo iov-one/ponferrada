@@ -1,6 +1,6 @@
 {
   "lerna": "3.20.0",
-  "version": "1.3.8",
+  "version": "1.3.9-e",
   "npmClient": "yarn",
   "useWorkspaces": true
 }
