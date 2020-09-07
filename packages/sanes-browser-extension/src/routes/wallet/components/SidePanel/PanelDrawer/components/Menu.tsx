@@ -37,6 +37,7 @@ const Menu = ({ updateCurrentView }: Props): JSX.Element => {
         <ListNavView view={Views.Requests} updateCurrentView={updateCurrentView} />
         <ListNavView view={Views.Settings} updateCurrentView={updateCurrentView} />
         <ListNavLink text={logoutText} onClick={logOut} />
+        <ListNavView view={Views.Migration} updateCurrentView={updateCurrentView} />
       </List>
     </Block>
   );

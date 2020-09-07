@@ -72,3 +72,10 @@ export async function clearDatabase(): Promise<void> {
   const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
   extensionWindow.clearDatabase();
 }
+
+export async function getMigrationSignature(): Promise<any> {
+  const extensionWindow = chrome.extension.getBackgroundPage() as IovWindowExtension;
+  const response = await extensionWindow.getMigrationSignature();
+
+  return response;
+}
