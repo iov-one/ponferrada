@@ -9,10 +9,13 @@ interface Props {
 const TitleSection = ({ primaryTitle, secondaryTitle }: Props): JSX.Element => (
   <React.Fragment>
     <Typography variant="h4" color="primary" inline>
-      {`${primaryTitle} `}
+      Neuma Wallet is now closed.
     </Typography>
+
+    <br />
+    <br />
     <Typography variant="h4" inline>
-      {secondaryTitle}
+      <a href="https://wallet.cosmostation.io/">You can now use Cosmostation Wallet.</a>
     </Typography>
   </React.Fragment>
 );
